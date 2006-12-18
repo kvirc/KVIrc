@@ -1,0 +1,90 @@
+//=============================================================================
+//
+//   File : kvi_kvs_treenode_modulefunctioncall.cpp
+//   Created on Tue 07 Oct 2003 03:19:28 by Szymon Stefanek
+//
+//   This file is part of the KVIrc IRC client distribution
+//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
+#define __KVIRC__
+
+#include "kvi_kvs_treenode_modulefunctioncall.h"
+#include "kvi_kvs_treenode_datalist.h"
+
+#include "kvi_modulemanager.h"
+#include "kvi_locale.h"
+#include "kvi_kvs_moduleinterface.h"
+#include "kvi_kvs_runtimecontext.h"
+
+
+KviKvsTreeNodeModuleFunctionCall::KviKvsTreeNodeModuleFunctionCall(const QChar * pLocation,const QString &szModuleName,const QString &szFncName,KviKvsTreeNodeDataList * pParams)
+: KviKvsTreeNodeFunctionCall(pLocation,szFncName,pParams)
+{
+	m_szModuleName = szModuleName;
+}
+
+KviKvsTreeNodeModuleFunctionCall::~KviKvsTreeNodeModuleFunctionCall()
+{
+}
+
+void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
+{
+	szBuffer = "Module Function Call \"";
+	szBuffer += m_szModuleName;
+	szBuffer += ".";
+	szBuffer += m_szFunctionName;
+	szBuffer += "\"";
+}
+
+void KviKvsTreeNodeModuleFunctionCall::dump(const char * prefix)
+{
+	debug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szFunctionName.utf8().data());
+	QString tmp = prefix;
+	tmp.append("  ");
+	m_pParams->dump(tmp.utf8().data());
+}
+
+bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+{
+//#warning "FIXME: module names should be UNICODE!"
+	KviModule * m = g_pModuleManager->getModule(m_szModuleName.utf8().data());
+	if(!m)
+	{
+		QString szErr = g_pModuleManager->lastError().ptr(); // <-- fixme!
+		c->error(this,__tr2qs("Module function call failed: can't load the module '%Q': %Q"),&m_szModuleName,&szErr);
+		return false;
+	}
+
+	KviKvsModuleFunctionExecRoutine * proc = m->kvsFindFunction(m_szFunctionName);
+	if(!proc)
+	{
+		c->error(this,__tr2qs("Module function call failed: the module '%Q' doesn't export a function named '%Q'"),&m_szModuleName,&m_szFunctionName);
+		return false;
+	}
+	
+	KviKvsVariantList l;
+	if(!m_pParams->evaluate(c,&l))return false;
+
+	pBuffer->setNothing();
+	c->setDefaultReportLocation(this);
+	KviKvsModuleFunctionCall call(m,c,&l,pBuffer);
+
+	return (*proc)(&call);
+}
+

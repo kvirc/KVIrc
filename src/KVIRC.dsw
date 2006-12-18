@@ -1,0 +1,1055 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "KVILIB"=.\kvilib\KVILIB.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "idleui"=.\modules\my\win32\idleui.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "kviabout"=.\modules\about\kviabout.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviaction"=.\modules\action\kviaction.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviactioneditor"=.\modules\actioneditor\kviactioneditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviaddon"=.\modules\addon\kviaddon.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "kvialiaseditor"=.\modules\aliaseditor\kvialiaseditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviavatar"=.\modules\avatar\kviavatar.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvichan"=.\modules\chan\kvichan.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvichannelsjoin"=.\modules\channelsjoin\kvichannelsjoin.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvicodetester"=.\modules\codetester\kvicodetester.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviconfig"=.\modules\config\kviconfig.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvidcc"=.\modules\dcc\kvidcc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvidialog"=.\modules\dialog\kvidialog.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvidockwidget"=.\modules\dockwidget\kvidockwidget.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvieditor"=.\modules\editor\kvieditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvieventeditor"=.\modules\eventeditor\kvieventeditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvifile"=.\modules\file\kvifile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvifiletransferwindow"=.\modules\filetransferwindow\kvifiletransferwindow.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvihelp"=.\modules\help\kvihelp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvihttp"=.\modules\http\kvihttp.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviident"=.\modules\ident\kviident.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilag"=.\modules\lag\kvilag.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilamerizer"=.\modules\lamerizer\kvilamerizer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilanguage"=.\modules\language\kvilanguange.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilinks"=.\modules\links\kvilinks.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilist"=.\modules\list\kvilist.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilog"=.\modules\log\kvilog.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvilogview"=.\modules\logview\kvilogview.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvimask"=.\modules\mask\kvimask.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvimath"=.\modules\math\kvimath.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvimediaplayer"=.\modules\mediaplayer\kvimediaplayer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvimircimport"=.\modules\mircimport\kvimircimport.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvimy"=.\modules\my\kvimy.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name idleui
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvinotifier"=.\modules\notifier\kvinotifier.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviobjects"=.\modules\objects\kviobjects.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "kvioptions"=.\modules\options\kvioptions.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviperl"=.\modules\perl\kviperl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviperlcore"=.\modules\perlcore\kviperlcore.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvipopupeditor"=.\modules\popupeditor\kvipopupeditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviraweditor"=.\modules\raweditor\kviraweditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvirc"=.\kvirc\kvirc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviregchan"=.\modules\regchan\kviregchan.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvireguser"=.\modules\reguser\kvireguser.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvirijndael"=.\modules\rijndael\kvirijndael.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisetup"=.\modules\setup\kvisetup.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisharedfiles"=.\modules\sharedfile\kvisharedfile.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisharedfileswindow"=.\modules\sharedfileswindow\kvisharedfileswindow.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisnd"=.\modules\snd\kvisnd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisocketspy"=.\modules\socketspy\kvisocketspy.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvispaste"=.\modules\spaste\kvispaste.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvistr"=.\modules\str\kvistr.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvisystem"=.\modules\system\kvisystem.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvitip"=.\modules\tip\kvitip.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvitmphighlight"=.\modules\tmphighlight\kvitmphighlight.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvitoolbar"=.\modules\toolbar\kvitoolbar.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kvitoolbareditor"=.\modules\toolbareditor\kvitoolbareditor.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviurl"=.\modules\url\kviurl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "kviwindow"=.\modules\window\kviwindow.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name KVILIB
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name kvirc
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

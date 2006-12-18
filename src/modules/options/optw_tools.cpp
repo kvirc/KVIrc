@@ -1,0 +1,50 @@
+//=============================================================================
+//
+//   File : optw_tools.cpp
+//   Creation date : Wed Ott 19 16:15:16 2005 GMT by Grifisx & Noldor
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2005 Grifisx & Noldor
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
+#include "optw_tools.h"
+
+#include <qlayout.h>
+
+#include "kvi_settings.h"
+#include "kvi_options.h"
+#include "kvi_locale.h"
+
+KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
+: KviOptionsWidget(parent,"tools_options_widget")
+{
+	
+	createLayout(1,1);
+
+	QLabel * l;
+	l = addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools<br>"\
+		"<p>like<b> away, lag and logging system. </b> " \
+		"</p>","options"));
+
+}
+
+KviToolsOptionsWidget::~KviToolsOptionsWidget()
+{
+}
+
+#include "m_optw_tools.moc"

@@ -1,0 +1,1518 @@
+  The Linux Installation HOWTO - Svensk översättning
+  av Eric S. Raymond, svensk översättning: Linus Åkerlund,
+  uxm165t@tninet.se
+  v4.11, 20 April 1998, svensk översättning: 3 juni 1998
+
+  Det här dokumentet beskriver hur du kan få tag på och installera
+  Linux. Det är det första dokumentet som en ny Linux-användare bör
+  läsa, för att komma igång.
+  ______________________________________________________________________
+
+  Innehållsförteckning
+
+
+  1. Inledning
+
+     1.1 Syftet med detta dokument
+     1.2 Andra informations-källor
+     1.3 Nya versioner av det här dokumentet
+     1.4 Läsarrespons och rättelser
+
+  2. De senaste ändringarna
+
+  3. Den enklaste lösningen: bygg inte, köp
+
+  4. Innan du sätter igång
+
+     4.1 Hårdvaru-krav
+     4.2 Utrymmeskrav och samexistens
+     4.3 Att välja en Linux-distribution
+
+  5. Översikt över installeringen
+
+     5.1 Grundläggande installerings-steg
+     5.2 Grundläggande delar i ett installerings-paket
+
+  6. Installering i detalj
+
+     6.1 Förbereda sig för installeringen
+     6.2 Skapa start- och rot-disketter
+     6.3 Partitionera om din DOS/Windows-hårddisk
+     6.4 Skapa partitioner för Linux
+        6.4.1 Grundläggande om partitioner
+        6.4.2 Partitions-storlekar
+     6.5 Starta från installerings-disketten
+     6.6 Använda rot-disketten
+        6.6.1 Välja EGA- eller X-installering
+        6.6.2 Använda
+        6.6.3 Steg efter installeringen
+     6.7 Installera mjukvaru-paket
+     6.8 Efter paket-installeringen
+        6.8.1 LILO, LInux LOader
+        6.8.2 Skapa en start-diskett (valfritt)
+        6.8.3 Diverse system-inställningar
+
+  7. Starta ditt nya system
+
+  8. Efter din första uppstartning
+
+     8.1 Inledande system-administrering
+     8.2 Speciella LILO-inställningar
+
+  9. Administrations-tjafs
+
+     9.1 Användnings-villkor
+     9.2 Tillkännagivanden
+
+  ______________________________________________________________________
+
+  1.  Inledning
+
+
+
+  1.1.  Syftet med detta dokument
+
+  Linux är en fritt distribuerbar implementering av Unix för billiga
+  persondatorer (det utvecklades på en 386 och stödjer nu 486, 586,
+  Pentium, PowerPC, Sun Sparc och DEC Alpha). Det stödjer en stor mängd
+  mjukvara, inklusive X-Windows, Emacs, TCP/IP-nätverk (inklusive SLIP),
+  och många andra applikationer.
+
+  Det här dokumentet förutsätter att du har hört talas om och känner
+  till Linux, och nu vill installera och köra det. Det är i första hand
+  riktat mot den Intel-baserade versionen, vilken är den mest populära,
+  men mycket av råden är även tillämpliga på Power PC, Sparc och Alpha.
+
+
+  1.2.  Andra informations-källor
+
+  Om Linux är något nytt för dig, så finns det flera källor med
+  grundläggande information om systemet. Det bästa stället att hitta
+  dessa är Linux Documentation Projects hemsida på
+  <http://sunsite.unc.edu/LDP/linux.html>. Du hittar den senaste,
+  uppdaterade versionen av det här dokumentet där, som
+  <http://sunsite.unc.edu/LDP/HOWTO/Installation-HOWTO.html>
+
+  Det är antagligen bäst om du börjar med att gå igenom informationen
+  under General Linux Information; the Linux INFO-SHEET
+  <http://sunsite.unc.edu/LDP/HOWTO/INFO-SHEET.html> och Linux META-FAQ
+  <http://sunsite.unc.edu/LDP/HOWTO/META-FAQ.html>. 'Linux Frequently
+  Asked Questions' (Ofta ställda frågor om Linux) innehåller många
+  vanliga frågor (och svar!) om Linux---den är ett ``måste'' för nya
+  användare.
+
+  Du kan få hjälp med många vanliga frågor i USENET-nyhetsgrupperna
+  comp.os.linux.help och comp.os.linux.announce.
+
+  Linux Documentation Project skriver en uppsättning manualer och böcker
+  om Linux, vilka alla kan distribueras fritt på  nätet, och är
+  tillgängliga på LDPs hemsida.
+
+  Boken ``Linux installation and getting started'' är en fullständig
+  guide till hur du får tag på och installerar Linux, och ger dig även
+  instruktioner om hur du ska använda systemet, då du fått igång det.
+  Det innehåller en komplett handledning till användning och körning av
+  systemet, och mycket mer information än vad som finns med här. Du kan
+  läsa den on-line, eller ladda ned ett exemplar, från LDPs hemsida.
+
+  Slutligen så finns det en ganska teknisk Guide to x86 bootstrapping
+  <http://www.paranoia.com/~vax/boot.html>.  Det dokumentet är snarare
+  inriktat på NetBSD, än Linux, men innehåller användbart material om
+  disk-konfigurering och ``boot managers'' för användning av flera
+  operativ-system.
+
+
+  1.3.  Nya versioner av det här dokumentet
+
+  Nya versioner av Linux Installation HOWTO postas regelbundet till
+  comp.os.linux.help och news.answers. De laddas även upp till diverse
+  Linux-relaterade WWW- och FTP-sajter, inklusive LDPs hemsida.
+
+  Du kan också läsa den senaste versionen av det här dokumentet på WWW,
+  via URLen <http://sunsite.unc.edu/LDP/HOWTO/Installation-HOWTO.html>.
+  1.4.  Läsarrespons och rättelser
+
+  Om du har några frågor om eller kommentarer till det här dokumentet,
+  så får du gärna skicka ett e-brev till Eric S. Raymond, på
+  esr@thyrsus.com. Jag välkomnar alla sorters förslag och kritik. Om du
+  hittar något fel i det här dokumentet, var vänlig underrätta mig om
+  detta, så att jag kan korrigera det i nästa version. Tack.
+
+  Var vänlig skicka inte e-brev med frågor om hur du kan lösa hårdvaru-
+  problem, som du stöter på under installeringen. Konsultera ``Linux
+  installation and getting started'', fråga din försäljare eller fråga i
+  nyhetsgruppen comp.os.linux.setup. Den här HOWTOn är menad som en
+  snabb, smärtfri guide till en normal installering -- en separat HOWTO
+  om hårdvaru-problem och lösningar är under framställning.
+
+
+  2.  De senaste ändringarna
+
+
+  ·  La till `Bygg inte, köp'.
+
+
+  3.  Den enklaste lösningen: bygg inte, köp
+
+  Linux har nu mognat tillräckligt för att det ska finnas system-
+  leverantörer som sätter ihop en arbetsstation till dig, installerar
+  och konfigurerar Linux och gör en intensiv `burn-in'-test, innan de
+  skickar den till dig. Om du har mer pengar än tid, eller om du har
+  väldigt höga krav på tillförlitlighet och prestanda, så levererar
+  dessa företag en mycket värdefull tjänst, genom att se till att du
+  inte får hårdvara som är skakig eller dör två dagar efter att du fått
+  den.
+
+  Det finns flera sådana företag (och jag kommer lista dem här, i den
+  takt jag får reda på mer om dem). Det enda sådana företaget jag känner
+  till personligen är VA Research <http://www.varesearch.com>. Dessa
+  fina människor bygger avancerade Linux arbetstationer av hög kvalitet,
+  med en flott Tux-the-penguin-logo framtill. De har intima relationer
+  med Linux-världen (Debian-projektet <http://www.debian.org> ligger på
+  en av deras maskiner, Linux har en dator från dem och de slänger även
+  till er ödmjuke HOWTO-författare en del prylar då och då).
+
+  För dem av er med en mer begränsad budget, så handlar resten av detta
+  dokument om hur du ska göra för att själv installera Linux.
+
+
+  4.  Innan du sätter igång
+
+  Innan du kan installera Linux, så måste du se till så att din maskin
+  klarar av Linux, och välja ett Linux att installera.
+
+
+  4.1.  Hårdvaru-krav
+
+  Vilken sorts system krävs för att köra Linux? Det är en bra fråga;
+  systemets faktiska hårdvaru-krav ändras regelbundet. Linux Hardware-
+  HOWTO  <http://sunsite.unc.edu/LDP/HOWTO/Hardware-HOWTO.html>, ger en
+  mer eller mindre komplett lista över hårdvara som stöds av Linux.
+  Linux INFO-SHEET  <http://sunsite.unc.edu/LDP/HOWTO/INFO-SHEET.html>
+  innehåller en annan lista.
+
+  För Intel-version krävs en hårdvaru-konfiguration som ser ut så här:
+
+  Vilket ISA, EISA, VESA Local Bus eller PCI 80386, 80486, Pentium eller
+  Pentium Pro-system som helst går bra.  MCA-arkitekturen (vilken finns
+  i IBM PS/2-maksiner) stöds av de senaste utvecklings-kärnorna (2.1.x),
+  men de kanske inte är riktigt redo för full användning än. Vilken
+  processor som helst, från 386SX till P-6, fungerar. Du behöver inte en
+  flyttals-hjälpprocessor, även om det är trevligt att ha en.
+
+  Du behöver naturligtvis en hårddisk och en AT-standard `controller'.
+  Alla MFM, RLL och IDE-diskar och `controllers' bör fungera. Många
+  SCSI-diskar och -adaptors fungerar även bra; Linux SCSI-HOWTO
+  innehåller mer information om SCSI. Om du plockar ihop ett eget system
+  för att köra Linux, så är en lilla extra kostnaden för SCSI väl värd
+  den extra prestanda och tillförlitlighet som den ger.
+
+  Du behöver en 3.5" floppy-station. Även om 5.25"-disketter stöds under
+  Linux, så används de så lite att du inte kan lita på att `disk images'
+  (start- och rot-diskar) får plats på dem. (En nedbantad version av
+  Linux kan faktiskt köras på en enda diskett, men det är inte
+  användbart för installering och vissa former av felsökning.)
+
+  Du behöver också ett MDA, Hercules, CGA, EGA, VGA eller Super VGA
+  grafikkort och skärm. Rent generellt kan man säga, att om ditt
+  grafikkort och din skärm fungerar under MS-DOS, så ska de fungera
+  under Linux också. Men om du vill köra X-Windows, så finns det andra
+  begränsningar, vad gäller stöd för grafik-hårdvara. Linux
+  XFree86-HOWTOn,
+  <http://sunsite.unc.edu/LDP/HOWTO/XFree86-HOWTO.html>, innehåller mer
+  information om att köra X, och vad som krävs för detta.
+
+  Du behöver också en CD-ROM-spelare. Om det är en ATAPI, SCSI eller en
+  äkta IDE, så kommer du inte ha några problem med att få den att
+  fungera (men se upp med billiga CD-ROM-spelare som skyltar med
+  "IDE"-gränssnitt, men inte är äkta IDE). Om din CD-ROM-spelare
+  använder ett annat gränssnitts-kort, så är det möjligt att
+  installerings-kärnan, vilken laddas från start-disketten, inte kommer
+  kunna se den -- och en CD-ROM-spelare som du inte kan komma åt är inte
+  roligt. CD-ROM-spelare som ansluts till parallell-porten fungerar inte
+  alls. Om du är tveksam, ta en titt på Linux CD-ROM HOWTOn,
+  <http://sunsite.unc.edu/LDP/HOWTO/CDROM-HOWTO.html>, för en lista och
+  detaljer om hårdvara som stöds.
+
+  Så kallade "Plug'n'Play"-kort utan jumprar kan också leda till
+  problem.  Stöd för sådana är under intensiv utveckling, men finns inte
+  med i 2.0.25-kärnan. Lyckligtvis så är det här antagligen bara ett
+  problem med ljud- och Ethernet-kort.
+
+  Om du kör en burk som använder någon av Motorolas 68K-processorer
+  (inklusive Amiga-, Atari- eller VMEbus-maskiner), så ta en titt på
+  Linux/m68k FAQ, på
+  <http://www.clark.net/pub/lawrencc/linux/faq/faq.html>, för
+  information om minimi-krav och denna portnings status. Denna FAQ säger
+  nu att m68k Linux är lika stabilt och användbart som Intel-versionen.
+
+
+  4.2.  Utrymmeskrav och samexistens
+
+  Du kommer behöva ledigt utrymme för Linux på din hårddisk. Mängden
+  utrymme som behövs beror på hur mycket mjukvara du har tänkt
+  installera.  De flesta installationer kräver någonting i stil med 200
+  till 500 meg.  Det inkluderar plats för mjukvara, "swap"-utrymme
+  (vilket används som virtuellt minne på din maskin), ledigt utrymme för
+  användare osv.
+
+  Det är inte otroligt att du skulle kunna köra ett minimalt Linux-
+  system på 80 meg eller mindre (det var vanligt, på den tiden då Linux-
+  distributionerna var mindre), och det är inte otroligt att du skulle
+  kunna använda 500 meg, eller mer, för alla Linux-program. Mängden
+  varierar väldigt mycket, beroende på mängden program du installerar
+  och hur mycket plats de kräver. Mer om detta senare.
+  Linux kan samexistera med andra operativ-system, som MS-DOS, Microsoft
+  Windows och OS/2, på din hårddisk. (Du kan t.o.m. komma åt MS-DOS-
+  filer och köra vissa MS-DOS-program från Linux.) Med andra ord, när du
+  partitionerar din hårddisk för Linux, så finns MS-DOS eller OS/2 på
+  sina egna partitioner och Linux finns på sina egna. Vi ska titta
+  närmare på sådana ``dual-boot''-system senare.
+
+  Du behöver INTE köra MS-DOS, OS/2 eller något annat operativ-system
+  för att kunna använda Linux. Linux är ett helt annorlunda, fristående
+  operativ-system, vilket inte är beroende av andra operativ-system för
+  installering och användning.
+
+  Allt som allt, så är de minimala kraven för Linux inte mycket större
+  än vad som krävs för de flesta MS-DOS- och Windows 3.1-system, som
+  säljs idag (och de är en hel del mindre än minimum-kraven för Windows
+  95!).  Om du har en 386 eller 486, med åtminstone 4 meg RAM, så kommer
+  du att kunna köra Linux, och vara nöjd med det. Linux kräver inte
+  enorma mängder hårddisk-utrymme, minne eller processor-hastighet. Matt
+  Welsh, grundaren av denna HOWTO, körde förut Linux på en 386/16 MHz
+  (den långsammaste maskin du kan få tag på) med 4 meg RAM, och var
+  ganska nöjd. Ju mer du vill göra, desto mer minna (och snabbare
+  processor) behöver du. Enligt vår erfarenhet så vinner en 486 med 16
+  megabytes RAM över flera dyra arbetsstationer.
+
+
+  4.3.  Att välja en Linux-distribution
+
+  Innan du kan installera Linux, så måste du bestämma dig för vilken av
+  de tillgängliga Linux-``distributionerna'' du ska ha. Det finns inte
+  en enda standard-utgåva av Linux-mjukvaran---det finns många sådana
+  utgåvor.  Varje utgåva har sin egen dokumentation och sina egna
+  installerings-instruktioner.
+
+  Linux-distributioner finns tillgängliga via anonym FTP och via
+  beställning på diskett, band och CD-ROM. Linux Distribution HOWTO
+  <http://sunsite.unc.edu/LDP/HOWTO/Distribution-HOWTO.html> innehåller
+  beskrivningar av många Linux-distributioner, vilka är tillgängliga via
+  FTP och beställning.
+
+  I det dimmiga och avlägsna förflutna, då denna HOWTO först skrevs
+  (1992-93), skaffade de flesta Linux med plågsamma medel, vilka
+  innehöll långa nedladdningar från Internet eller BBSer, till deras
+  DOS-maskiner, vilka följdes av en utstuderad procedur, för att föra
+  över det nedladdade materialet till en massa disketter. En av dessa
+  disketter skulle sedan användas för att starta upp, och användes för
+  att installera de, flera dussin, andra. Med tur (och utan problem med
+  trasiga disketter), kunde man, flera timmar senare, avsluta
+  installeringen med ett fungerande Linux. Eller inte.
+
+  Medan den här vägen fortfarande är möjligt (och du kan ladda ned flera
+  distributioner från
+  <http://sunsite.unc.edu/pub/Linux/distributions/>), så finns det nu
+  mycket mindre ansträngande sätt. Det enklaste är att köpa någon av de
+  hög-kvalitativa kommersiella Linux-distributionerna som ges ut på CD-
+  ROM, som Red Hat, Craftworks, Linux Pro eller WGS. Dessa finns i
+  typfallet tillgängliga för mindre än $50 på din lokala bok- eller
+  datoraffär, och du kommer spara in många betungande timmar.
+
+  Du kan också köpa samlings-CD-ROM, som InfoMagic Linux Developer's
+  Resource. Dessa innehåller i vanliga fall flera Linux-distributioner
+  och en aktuell kopia av flera viktiga Linux-arkiv, som sunsite och
+  tsx-11.
+
+  I resten av den här HOWTOn ska vi rikta in oss på de steg som krävs
+  för att installera fårn en samlings-CD-ROM, eller någon annan
+  kommersiell Linux, som inte innehåller någon tryckt installerings-
+  manual. Om ditt Linux innehåller en manual på papper, så kan vissa
+  delar av den här HOWTOn ge dig nyttiga bakgrundskunskaper, men du ska
+  i första se till din manual, för detaljerade instruktioner.
+
+
+  5.  Översikt över installeringen
+
+
+
+  5.1.  Grundläggande installerings-steg
+
+  Den grundläggande planen för en Linux-installering är enkel:
+
+
+  1. Samla ihop konfigurations-information om din hårdvara.
+
+  2. Skapa installerings-disketter
+
+  3. Om du vill köra ett "dual-boot"-system (Linux och Dos eller
+     Windows, eller båda), omarrangera (partitionera om) din hårddisk
+     för att skapa utrymme för Linux.
+
+  4. Starta ett installerings-mini-Linux från disktterna, för att få
+     tillgång till CD-ROMen.
+
+  5. Preparera ett Linux-filsystem. (Om du inte modifierade hårddiskens
+     partitions-tabell tidigare, så ska du göra det nu.)
+
+  6. Installera ett Linux-system från CD-ROMen.
+
+  7. Starta upp Linux från hårddisken.
+
+  8. (Valfritt) Installera flera paket från CD-ROMen.
+
+
+  5.2.  Grundläggande delar i ett installerings-paket
+
+  Här är de grundläggande delarna i en installeringsbar distribution:
+
+
+  1. README- och FAQ-filerna. Dessa ligger vanligtvis i rot-katalogen på
+     din CD-ROM och kan läsas, så fort hårddisken har monterats, under
+     Linux. (Beroende på hur CD-ROMen framställts, så kan de även vara
+     tillgängliga från DOS/Windows.) Det är en god idé att läsa dessa
+     filer så fort du har tillgång till dem, för att få reda på viktiga
+     uppdateringar och ändringar.
+
+  2. Ett antal start-disketter (ofta i en underkatalog). En av dessa är
+     filen som du ska skriva till en diskett, för att skapa din start-
+     diskett. Du ska välja en av dessa, beroende på vilken typ av
+     hårdvara du har i ditt system.
+
+     Grejen här är att vissa hårdvaru-drivrutiner hamnar i konflikt med
+     varandra, på diverse underliga sätt, och istället för att försöka
+     lösa hårdvaru-problemen på ditt system, så är det lättare att
+     använda en start-diskett, vilken bara innehåller de drivrutiner du
+     verkligen behöver. (Detta har den trevliga bieffekten att det gör
+     din kärna mindre.)
+
+
+  ·  En rot-diskett (eller kanske två). Detta är en fil som du ska
+     skriva till en diskett, för att skapa installations-disken (eller
+     -diskarna). Nu för tiden är rot-disketterna oftast oberoende av din
+     hårdvaru-typ; den kommer förutsätta en EGA- eller bättre skärm.
+
+
+  ·  En räddnings-diskett. Detta är en disk som innehåller en kärna och
+     verktyg för att rädda dig från en katastrof, om något skulle trampa
+     på din kärna eller start-blocket på din hårddisk.
+
+  ·  RAWRITE.EXE. Detta är ett MS-DOS-program som kan skriva innehållet
+     i en fil (som start- och rot-disketterna) direkt till en diskett,
+     oberoende av format.
+
+  Du kommer behöva RAWRITE.EXE endast om du planerar att skapa dina
+  start- och rot-disketter från ett MS-DOS-system. Om du har tillgång
+  till en UNIX arbetsstation med en floppy-station, så kan du istället
+  skapa dina disketter därifrån, med hjälp av `dd`-kommandot, eller
+  möjligtvis ett skalprogram som kommer med distributionen. Se man-sidan
+  för dd(1) och fråga dina lokala UNIX-experter om hjälp.
+
+
+  ·  CD-ROMen själv. Syftet med start-disketten är att göra din maskin
+     redo att ladda rot- eller installerings-disketterna, vilka i sin
+     tur bara är verktyg för att preparera din hårddisk, och kopiera
+     delar av CD-ROMen till den.
+
+
+  6.  Installering i detalj
+
+  6.1.  Förbereda sig för installeringen
+
+  Linux använder PCns hårdvara på ett mer effektivt sätt än MS-DOS,
+  Windows och NT, och är därför mindre tolerant med felkonfigurerad
+  hårdvara. Det finns några saker du kan göra innan du börjar, som
+  minskar chanserna att du blir hindrad av sådana problem.
+
+  För det första, samla ihop alla manualer till din hårdvara --
+  moderkort, grafikkort, skärm, modem osv. -- och lägg dem någonstans
+  där du lätt kan komma åt dem.
+
+  För det andra, skaffa detaljerad information om din hårdvaru-
+  konfiguration.  Ett enkelt sätt att göra detta, om du kör MS-DOS 5.0,
+  eller högre, är att skriva ut en rapport från Microsofts
+  diagnosticerings-verktyg msd.exe (du kan strunta i TSR, "driver",
+  minnes-karta, miljö-strängar och operativ-versions-delarna). Bland
+  annat garanterar detta att du får fullständig och korrekt information
+  om ditt grafikkort och vilken sorts mus du har, vilket kan hjälpa dig,
+  då du senare ska konfigurera X.
+
+  För det tredje, kolla upp om din maskin har några konfigurations-
+  problem med hårdvaru-stöd, som kan leda till olösliga låsningar under
+  Linux-installeringen.
+
+
+  ·  Det är möjligt för ett DOS/Windows-system att använda IDE-
+     hårddiskar och -CD-ROM-spelare, även om master/slav-jumprarna är
+     felaktigt inställda. Linux går dock inte med på detta. Om du är
+     osäker, kolla dina master/slave-jumprar!
+
+  ·  Är några av dina externa hårdvaru-pryttlar tillverkade utan varken
+     konfigurerings-jumprar eller resident konfigurerings-minne? I så
+     fall kan de kräva initiering via något MS-DOS-verktyg, då du
+     startar upp datorn, för att de ska funka, och kan vara oåtkomliga
+     för Linux.  CD-ROM-spelare, ljudkort, Ethernet-kort och billiga
+     band-spelare kan ha sådana problem. Om det är så, så kan du kanske
+     arbeta runt det med en parameter till start-prompten; se Linux Boot
+     Prompt HOWTO  <http://sunsite.unc.edu/LDP/HOWTO/BootPrompt-
+     HOWTO.html> för detaljer.
+
+  ·  Vissa andra operativ-system tillåter en buss-mus att dela en IRQ
+     med andra enheter. Linux tillåter inte detta; om du försöker med
+     det, så kan det låsa din maskin. Om du använder en buss-mus, ta en
+     titt på Linux Bus Mouse HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/Busmouse-HOWTO.html>, för
+     detaljer.
+
+  Om det är möjligt, skaffa telefonnumret till en erfaren Linux-
+  användare, som du kan ringa till, om du skulle hamna i en
+  nödsituation. Nio gånger av tio kommer du inte behöva det, men det
+  känns tryggare.
+
+  Tid till istalleringen. Det kan ta runt en timme på ett rent system,
+  eller ett som ska konverteras till ett rent Linux-system. Eller upp
+  till tre timmar för ett dual-boot-system (de har en mycket större
+  tendens att krångla till det och hänga sig).
+
+
+  6.2.  Skapa start- och rot-disketter
+
+  Din Linux-CD-ROM kanske kommer med installerings-hjälp, vilken kan ta
+  dig genom processen att skapa start-, rot- och räddnings-disketter,
+  med interaktion. Det kan röra sig om ett MS-DOS-installeringsprogram
+  (som Red Hats redhat.exe-program) eller ett UNIX skal-program, eller
+  båda.
+
+  Om du har ett sådant program, och kan använda det, så bör du läsa
+  resten av den här underavdelningen, bara för att få information. Kör
+  programmet för att göra den faktiska installeringen -- dess skapare
+  visste säkert mer om den specifika distributionen än jag gör, och du
+  undviker många fel-möjligheter.
+
+  Mer detaljerad information om att skapa start- och rot-disketter finns
+  i Linux Bootdisk HOWTO på  <http://sunsite.unc.edu/LDP/HOWTO/Bootdisk-
+  HOWTO.html>.
+
+  Ditt första steg blir att välja en start-diskett, vilken passar din
+  hårdvara. Om du måste göra det för hand, så kommer du för det mesta
+  upptäcka antingen att (a) start-disketterna på din CD-ROM heter saker
+  som kommer hjälpa dig att välja rätt, eller (b) det finns en
+  innehållsförteckning, i en fil i närheten, som beskriver varje
+  diskett.
+
+  Nästa steg är att skapa disketter från start-disketten du har valt,
+  och från rot- och räddnings-disketterna. Det är till detta du behöver
+  MS-DOS-programmet RAWRITE.EXE.
+
+  Vidare måste du ha två eller tre high-density MS-DOS-formatterade
+  disketter. (De måste vara av samma typ; alltså, om start-disketten är
+  en 3.5", så måste båda disketterna vara 3.5"-diskar.) Du använder
+  RAWRITE.EXE för att skriva start- och rot-diskarna till disketter.
+
+  Anropa det utan argument, så här:
+
+
+       C:\> RAWRITE
+
+
+  Svara på frågorna om namnen på filerna som ska skrivas, och till
+  vilken floppy-station de ska skrivas (som A:). RAWRITE kommer kopiera
+  filen, block per block, direkt till disketten. Använd också RAWRITE
+  till rot-disketten (t.ex. COLOR144). När du är klar så har du två
+  disketter: den ena är en start-diskett, den andra är en rot-diskett.
+  Observera att dessa båda disketter inte längre kan läsas av MS-DOS (de
+  är på sätt och vis ``Linux-formatterade'' disketter).
+
+  Du kan använda dd(1)-kommandot på ett UNIX-system, för att utföra
+  samma sak. (Till detta behöver du naturligtvis en UNIX arbetsstation
+  med en floppy-station.) T.ex. så kan du, på en Sun arbetsstation, med
+  floppy-stationen på enhet /dev/rfd0 använda följande kommando:
+
+
+
+       $ dd if=bare of=/dev/rfd0 obs=18k
+
+
+
+
+  Du måste ange en passande block-storleks-parameter (`obs'-parametern)
+  på vissa arbetsstationer (t.ex. Sun), annars kommer det misslyckas. Om
+  du har problem så kan man-sidan för dd(1) vara behjälplig.
+
+  Se till så att du använder oanvända, felfria disketter. Disketterna
+  får inte innehålla några korrupta block.
+
+  Observera att du inte behöver köra Linux eller MS-DOS redan, för att
+  kunna installera Linux. Att köra Linux eller MS-DOS gör det dock
+  enklare att skapa start- och rot-disketterna från din CD-ROM. Om du
+  inte har något operativ-system på din masking, så kan du använda någon
+  annans Linux- eller MS-DOS-maskin, bara för att skapa disketterna, och
+  sedan installera.
+
+
+  6.3.  Partitionera om din DOS/Windows-hårddisk
+
+  På de flesta använda system, så tas redan hårddisken upp av
+  partitioner med MS-DOS, OS/2 osv. Du måste ändra storleken på dessa
+  partitioner, för att kunna göra utrymme tillgängligt för Linux. Om du
+  ska köra ett dual-boot-system, så är rekommenderas det starkt att du
+  läser en eller flera av de följande mini-HOWTOna, vilket beskriver
+  olika dual-boot-konfigurationer.
+
+
+  ·  Linux+DOS+Win95 mini-HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/mini/Linux+DOS+Win95.html>.
+
+  ·  Linux+OS2+DOS mini-HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/mini/Linux+OS2+DOS.html>.
+
+  ·  DOS-Win95-OS2-Linux mini-HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/mini/Linux+DOS+Win95+OS2.html>.
+
+  ·  Linux+Win95 mini-HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/mini/Linux+Win95.html>
+
+  ·  Linux+WinNT-Loader mini-HOWTO,
+     <http://sunsite.unc.edu/LDP/HOWTO/mini/Linux+WinNT-Loader.html>
+
+     Även om de inte är direkt tillämpbara på ditt system, så kommer de
+     hjälpa dit att första problemen
+
+  Observera: Vissa Linux-distributioner kan installeras i en katalog på
+  din MS-DOS-partition. (Vilket skiljer sig från att installera FRÅN en
+  MS-DOS-partition.) Istället kan du använda ``UMSDOS-filsystemet'',
+  vilket låter dig behandla en katalog på din MS-DOS-partition som ett
+  Linux-filsystem. På det sättet kan du undvika att partitionera om din
+  hårddisk.
+
+  Jag rekommenderar denna metod endast om din hårddisk redan har fyra
+  partitioner, och en om-partitionering skulle ställa till större
+  problem än det är värt (det gör Linux långsammare, p.g.a. att
+  filnamnen måste översättas). Eller, om du vill testa Linux, innan du
+  partitionerar om, så är det här ett bra sätt att göra det. I de flesta
+  fall ska du dock partitionera om, som det beskrivs här. Om du planerar
+  att använda UMSDOS är får du klara dig på egen hand--det dokumenteras
+  inte i detalj här. Fr.o.m. nu förutsätter vi att du INTE använder
+  UMSDOS, och att du kommer att partitionera om.
+
+  En partition är en avdelning av hårddisken, vilken används av ett
+  visst operativ-system. Om du bara har MS-DOS installerat, så har din
+  hårddisk antagligen bara en partition. För att använda Linux blir du
+  dock tvungen att partitionera om hårddisken, så att du har en
+  partition för MS-DOs och en (eller flera) för Linux.
+
+  Det finns tre sorters partitioner: primära, utökade och logiska. För
+  att uttrycka det enkelt, så är primära partitioner en av de fyra
+  huvud-partitionerna på hårddisken. Men om du vill ha mer än fyra
+  partitioner per hårddisk, så måste du skapa en utökad partition,
+  vilken kan innehålla flera logiska partitioner. Du lagrar inte data
+  direkt på en utökad partition--den används endast som en behållare för
+  logiska partitioner. Data lagras endast på antingen primära eller
+  logiska partitioner.
+
+  För att uttrycka det på ett annat sätt, så använder de flesta bara
+  primära partitioner. Men om du behöver mer än fyra partitioner på en
+  hårddisk, så skapar du utökade partitioner. Logiska partitioner skapas
+  sen ovanpå den utökade partitionen, och så har du gjort det--mer än
+  fyra partitioner på en hårddisk.
+
+  Observera att du enkelt kan installera Linux på den andra hårddisken i
+  ditt system (vilken kallas D: under MS-DOS). Du anger helt enkelt det
+  rätta enhets-namnet då du skapar Linux-partitioner. Detta beskrivs i
+  detalj nedan.
+
+  Tillbaks ompartitioneringen av din hårddisk: problemet med att ändra
+  storlek på partitioner är att det inte finns något (enkelt) sätt att
+  göra det, utan att ta bort all data på de partitionerna. Därför är du
+  tvungen att ta en fullständig säkerhetskopia på hela ditt system,
+  innan du partitionerar om. För att ändra storlek på en partition, tar
+  vi helt enkelt bort den (eller dem) och återskapar den (dem) med
+  mindre storlekar.
+
+  Observera: Det finns en icke-destruktiv ompartitionerare för MS-DOS,
+  som heter FIPSs. Titta på
+  <http://sunsite.unc.edu/pub/Linux/system/Install>. Med FIPS, en disk-
+  optimerare (t.ex. Norton Speed Disk) och lite tur, så kan du ändra
+  storlek på dina MS-DOS-partitioner, utan att ta bort datan på dem. Det
+  rekommenderas fortfarande att du tar en fullständig säkerhetskopia,
+  innan du ger dig på detta.
+
+  Om du inte använder FIPS, så är det klassiska sättet att modifiera
+  partitioner med programmet FDISK. T.ex., låt oss säga att du har en
+  hårddisk på 80 meg, tillägnad MS-DOS. Du skulle vilja dela den på
+  mitten---40 meg till MS-DOs och 40 meg till Linux. För att göra detta,
+  kör FDISK under MS-DOS, förstör den 80-megs MS-DOS-partitionen och
+  skapa en ny MS-DOS-partition på 40 meg, i dess ställe. Sen kan du
+  formattera den nya partitionen och återinstallera dina MS-DOS-program
+  från säkerhets-kopior. 40 megabytes hårddisk-utrymme är tomt. Senare
+  skapar du Linux-partitioner, på denna oanvända del av hårddisken.
+
+  I korthet är det följande det du ska göra för att ändra storlek på MS-
+  DOS-partitioner med FDISK:
+
+
+  1. Gör en fullständig säkerhetskopia av ditt system.
+
+  2. Skapa en MS-DOS start-diskett, med ett kommando som
+
+       FORMAT /S A:
+
+  3. Kopiera filerna FDISK.EXE och FORMAT.COM till denna diskett,
+     tillsammans med andra verktyg du behöver. (T.ex. verktyg för att
+     återskapa ditt system från säkerhetskopian.)
+
+  4. Starta med MS-DOS start-disketten.
+
+  5. Kör FDISK, och specificera eventuellt vilken hårddisk du vill
+     modifiera (som t.ex.  C: eller D:).
+
+  6. Använd FDISK-menyerna för att ta bort partitionerna som du vill
+     ändra storlek på. Detta kommer förstöra all data på de angivna
+     partitionerna.
+
+  7. Använd FDISK-menyerna för att återskap dessa partitioner, med
+     mindre storlekar.
+
+  8. Avsluta FDISK och formattera om de nya partitionerna med FORMAT-
+     kommandot.
+
+  9. Återställ original-filerna från säkerhetskopian.
+
+     Observera att MS-DOS FDISK ger dig alternativet att skapa en
+     "logisk DOS-enhet" (logical DOS drive). En logisk DOS-enhet är bara
+     en logisk partition på din hårddisk. Du kan installera Linux på en
+     logisk partition, men du bör inte skapa den logiska partitionen med
+     MS-DOS fdisk. Så om du för tillfället använder en logisk DOS-enhet
+     och vill installera Linux istället för den, så ska du ta bort den
+     logiska enheten med MS-DOS FDISK och (senare) skapa en logisk
+     partition för Linux i dess ställe.
+
+  Mekanismerna som används för att partitionera om för OS/2 och andra
+  operativ-system liknar dessa. Se dokumentationen för dessa operativ-
+  system för detaljer.
+
+
+  6.4.  Skapa partitioner för Linux
+
+  När du har partitionerat om din hårddisk så måste du skapa Linux-
+  partitioner. Innan jag beskriver hur du gör det, så ska vi prata lite
+  om partitioner och filsystem under Linux.
+
+
+  6.4.1.  Grundläggande om partitioner
+
+  Linux kräver åtminstone en partition, för rot-filsystemet, vilken
+  innehåller kärnan och själva mjukvaran.
+
+  Du kan tänka på ett filsystem som en partition som är formatterad för
+  Linux. Filsystem används för att lagra filer. Varje system måste
+  åtminstone ha ett rot-filsystem. Många användare föredrar dock att att
+  ha flera filsystem---ett för varje huvudsaklig del av katalog-trädet.
+  T.ex. så kan du vilja ha ett separat filsystem för att lagra alla
+  filer under /usr-katalogen. (Observera att framåt-lutande snedstreck
+  används för att åtskilja kataloger under UNIX, inte bakåt-lutande, som
+  i MS-DOS.) I det fallet har du både ett rot-filsystem och ett /usr-
+  filsystem.
+
+  Varje filsystem behöver sin egen partition. Alltså, om du använder
+  både rot- och /usr-filsystem, så måste du skapa två Linux-partitioner.
+
+  Vidare skapar de flesta användare en swap-partition, vilken används
+  till det virtuella minnet. Om du har, säg, 4 megabyte minne i din
+  maskin, och en 10-megabytes swap-partition, så anser Linux att du har
+  14 megabytes virtuellt minne.
+
+
+  När du använder swap-utrymme, så flyttar Linux oanvända minnes-"sidor"
+  (pages) till hårddisken, vilket tillåter dig att köra flera
+  applikationer på en gång, på ditt system. Eftersom swappning ofta är
+  långsamt, så är det dock ingen ersättning för fysiskt RAM. Men
+  applikationer som kräver en väldig massa minne (som t.ex.  X-Window-
+  systemet), är ofta beroende av swap-utrymme, om du inte har
+  tillräckligt mycket fysiskt RAM.
+
+  Nästan alla Linux-användare tar till en swap-partition. Om du har 4
+  megabytes RAM minde så krävs en swap-partition för att installera
+  mjukvaran. Det rekommenderas starkt att du har en swap-partition i
+  alla fall, om du inte har väldigt mycket fysiskt RAM.
+
+  Storleken på swap-partitionen beror på hur mycket virtuellt minne du
+  behöver. Det föreslås ofta att du ska ha minst 16 megabytes virtuellt
+  minne totalt. Alltså, om du har 8 meg fysiskt RAM, så ska du ha en 8
+  megabytes swap-partition. Observera att swap-partitioner inte kan vara
+  större än 128 megabytes stora. Om du vill ha mer än 128 meg swap, så
+  måste du skapa flera swap-partitioner. Du kan ha upp till 16 swap-
+  partitioner allt som allt.
+
+  Du kan hitta mer om teorin bakom swap-utrymme och hur det ska läggas
+  upp, och om disk-partitionering i Linux Partition mini-HOWTO (
+  <http://sunsite.unc.edu/LDP/HOWTO/mini/Partition>).
+
+  Observera: det är möjligt, men lite krångligt, att dela en swap-
+  partition mellan Linux och Windows 95 på ett dual-boot-system. För
+  detaljer, se Linux Swap Space Mini-HOWTO, url url="http://sunsite.unc
+  edu/LDP/HOWTO/mini/Swap-Space">.
+
+  Problem #1: Om du har en EIDE-hårddisk med en partition som är större
+  än 504 MB så kanske din BIOS inte låter dig starta ett Linux som är
+  installerat på den. Det här ska inte vara ett problem om du har en
+  SCSI-controller, vilka vanligtvis har sina egna BIOS. För tekniska
+  detaljer, se Large Disk Mini-HOWTO,
+  <http://sunsite.unc.edu/LDP/HOWTO/mini/Large-Disk>.
+
+  Problem #2: Har du både IDE- och SCSI-hårddiskar? I så fall måste du
+  se upp. Ditt BIOS kanske inte låter dig starta direkt från en SCSI-
+  hårddisk
+
+
+  6.4.2.  Partitions-storlekar
+
+  Förutom dina rot- och swap-partitioner, kommer du vilja skapa en eller
+  flera partitioner för mjukvara och hem-kataloger.
+
+  Även om det är teoretiskt möjligt att köra allt från en stor
+  partition, så är det nästan ingen som gör det. Att ha flera
+  partitioner har flera fördelar:
+
+
+  ·  Det minskar ofta tiden som går åt till att kolla fil-systemen, då
+     systemet startas upp.
+
+  ·  Filer kan inte växa över partitions-gränserna. Alltså kan du
+     använda partitions-gränser som brandväggar mot program (som Usenet-
+     nyheter) som vill äta upp enorma mängder hårddisk-utrymme, för att
+     hindra dem från att växa så att de tar upp utrymme som behövs av
+     kärnan och resten av dina applikationer.
+
+  ·  Om det skulle bli något svårt fel på någon sektor på din hårddisk,
+     så är det mindre smärtsamt att formattera och fixa en enda
+     partition, än att hålla på och göra om allt från början.
+
+
+  Nu för tiden är hårddiskarna väldigt stora, och en bra konfiguration
+  är att ha en liten partition (mindre än 80 med), en hyffsat stor /usr-
+  partition (upp till 300 meg eller så) för att lagra system-mjukvaran
+  på, och resten av ditt tillgängliga utrymme för hem-kataloger.
+
+  Du kan utveckla detta, för att passa dig. Om du kommer att köra
+  Usenet-nyheter, t.ex., så kommer du vilja ge en partition till detta,
+  för att se till att det inte äter upp mer hårddisk-utrymme än du vill
+  att det ska. Eller skapa en /var-partition för e-post, nyheter och
+  tillfälliga filer tillsammans. Men i dessa tider av väldigt billiga,
+  väldigt stora hårddiskar, blir dessa komplikationer mindre och mindre
+  för din första Linux-installering. Speciellt första gången är det bäst
+  att göra allt så enkelt som möjligt.
+
+
+  6.5.  Starta från installerings-disketten
+
+  Första steget är att starta upp från start-disketten, som du skapade I
+  normala fall kommer du att kunna starta upp utan problem: start-
+  prompten kommer fylla i sig själv efter 10 sekunder. Men genom att
+  ange parametrar efter namnet på kärnan så kan du specificera diverse
+  hårdvaru-parametrar, som din SCSI-controllers IRQ och adress, eller
+  hårddisk-geometri, innan kärnan startas. Det här är nödvändigt om
+  Linux t.ex. inte ser din SCSI-controller eller hårddisk-geometri.
+
+  Många BIOS-lösa SCSI-controllers kräver att du specificerar post-
+  adress och IRQ då du startar upp. Även IBM PS/1-, ThinkPad- och
+  ValuePoint-maskiner kan behöva detta, då de inte sparar hårddisk-
+  geometrin i CMOS, vilket gör att du måste specificera dem då du
+  startar upp. (Senare kommer du själv kunna konfigurera systemet, så
+  att det själv kan kan ge dessa parametrar.
+
+  Kolla meddelandena då systemet startas. De listar och beskriver den
+  hårdvara din Linux-installation ser. Speciellt om du har en SCSI-
+  controller, så ska du se en listning av upptäkta SCSI-enheter. Om du
+  ser meddelandet
+
+
+
+       SCSI: 0 hosts
+
+
+
+
+  så upptäcktes inte din SCSI-controller, och du måste ta reda på hur du
+  ska tala om för kärnan var den finns.
+
+  Ditt system visar också information om upptäkta hårddisk-partitioner
+  och enheter. Om något i denna information är felaktig, eller fattas,
+  så måste du tvinga fram systemet att se hårdvaran.
+
+  Å andra sidan, om allt går väl och  din hårdvara verkar bli sedd, så
+  kan du hoppa till avsnittet "Ladda rot-disketten".
+
+  För att tvinga systemet att se din hårdvara, så måste du ange de
+  korrekta parametrarna vid start-prompten, genom att använda följande
+  syntax:
+
+
+
+       linux <parametrar...>
+
+
+
+
+
+  Det finns ett antal sådana parametrar tillgängliga; vi tar upp några
+  av de vanligaste nedan. Moderna start-disketter ger dig ofta möjlighet
+  att se en hjälp-sida, vilken beskriver kärn-parametrarna, innan du
+  startar upp systemet.
+
+
+  ·  hd=cylinders,heads,sectors Specificera hårddisk-geometrin.  Krävs
+     för system såsom IBM PS/1, ValuePoint and ThinkPad. Om din hårddisk
+     t.ex. har 683 cylindrar, 16 huvuden och 32 sektorer per track,
+     skriv
+
+
+
+       linux hd=683,16,32
+
+
+
+
+
+  ·  tmc8xx=memaddr,irq Specificera adress och IRQ för BIOS-lös Future
+     Domain TMC-8xx SCSI-controller. T.ex.
+
+
+
+       linux tmc8xx=0xca000,5
+
+
+
+
+
+  Observera att 0x-prefixet måste användas för alla värden som anges i
+  hex. Detta gäller för alla de följande alternativen.
+
+  ·  st0x=memaddr,irq Specificera adress och IRQ för BIOS-lös Seagate
+     ST02-controller.
+
+  ·  t128=memaddr,irq Specificera adress och IRQ för BIOS-lös Trantor
+     T128B-controller.
+
+  ·  ncr5380=port,irq,dma Specificera port, IRQ och DMA-kanal för vanlig
+     NCR5380-controller.
+
+  ·  aha152x=port,irq,scsi_id,1 Specificera port, IRQ och SCSI ID för
+     BIOS-lös AIC-6260-controller. Dessa inkluderar Adaptec 1510, 152x
+     och Soundblaster SCSI-controllers.
+
+  Om du har frågor om dessa start-alternativ, läs Linux SCSI HOWTO,
+  vilken ska finnas tillgänglig på de flesta Linux FTP-arkiv (eller från
+  samma ställe som du fick tag på det här dokumentet ifrån). SCSI HOWTOn
+  förklarar Linux SCSI-kompatibilitet i mycket större detalj.
+
+
+  6.6.  Använda rot-disketten
+
+  Efter att du har starta start-disketten, så kommer du bli tillsagt att
+  sätta i rot-disken (eller diskarna). Då ska du ta ut start-disketten
+  från floppy-stationen och sätta i rot-disketten. Tryck sedan enter för
+  att fortsätta. Du kan också bli tvungen att ladda en andra rot-
+  diskett.
+
+  Vad som faktiskt händer är följande: start-disketten skapar ett
+  operativ-system i miniatyr, vilket (p.g.a. att hårddisken inte är
+  preparerad) använder en bit av ditt RAM som virtuell disk (vilken,
+  logiskt nog, kallas en "ramdisk").
+
+
+  Rot-disketten laddar in en uppsättning små filer och installerings-
+  verktyg på ramdisken, som du kommer använda för att preparera din
+  hårddisk och installera ett Linux till den, från din CD-ROM.
+
+
+  6.6.1.  Välja EGA- eller X-installering
+
+  Äldre Linux-varianter (inklusive Slackware) gav dig, vid den här
+  tidpunkten, ett skal och krävde att du skulle skriva installerings-
+  kommandon för hand, i en beskriven ordning. Detta är fortfarande
+  möjligt, men nyare distributioner startar genom att köra ett skärm-
+  orienterar installerings-program, vilket försöker leda dig genom de
+  återstående stegen, och ge en massa hjälp under tiden.
+
+  Du kommer antagligen att bli erbjuden möjligheten att konfigurera X
+  med en gång, så att installerings-programmen kan köra i grafik-läge.
+  Om du väljer den vägen så kommer installerings-programmet att fråga
+  dig om din mus och skärm-typ, innan själva installeringen inleds. Så
+  fort du lyckas få Linux installerat så kommer dessa inställningar att
+  sparas åt dig. Du kommer att kunna ställa in skärmens prestanda
+  senare, så på det här stadiet får man nöja sig med ett vanligt 640x480
+  SVGA-läge.
+
+  X är inte nödvändigt för installeringen, men (förutsatt att du kan
+  komma förbi mus- och skärm-konfigureringen) många tycker att ett
+  grafiskt användar-gränssnitt är enklare att använda. Och du kommer
+  vilja få igång X i alla fall, så att försöka göra det med en gång är
+  ett naturligt steg.
+
+  Följ bara instruktionerna i programmet. Det kommer att ta dig genom de
+  nödvändiga stegen för att preparera din hårddisk, skapa användar-
+  konton och installera mjukvaru-paket från CD-ROMen.
+
+  I de följande under-avsnitten kommer vi att beskriva några av de svåra
+  områdena i installerings-processon, som om vi gjorde dem för hand. Det
+  här hjälper dig att förstå vad installations-programmet gör, och
+  varför.
+
+
+  6.6.2.  Använda fdisk  och cfdisk
+
+  Ditt första installerings-steg, så fort rot-diskettens Linux är
+  startat, kommer bli att skapa eller modifiera partitions-tabellen på
+  dina hårddiskar. Även om du använda FDISK för att skapa partitioner
+  tidigare, så kommer du behöva gå tillbaks till partitions-tabellen nu
+  och sätta in en del Linux-specifik information i den.
+
+  För att skapa eller modifiera Linux-partitioner kommer vi använda
+  Linux-versionen av fdisk-programmet, eller dess skärm-orienterade
+  släkting cfdisk.
+
+  Oftast kommer installerings-programmet leta efter en redan existerande
+  partitions-tabell och erbjuda dig att köra fdisk eller cfdisk på den,
+  åt dig. Av de två är cfdisk definitivt enklare att använda, med senare
+  versioner av det är också mindre tolerant mot icke-existerande eller
+  korrupta partitions-tabeller.
+
+  Därför kanske du finner (speciellt om du installerar på oanvänd
+  hårdvara) att du kommer behöva börja med fdisk för att ta dig till en
+  position som cfdisk kan hantera. Försök köra cfdisk; om det klagar,
+  kör fdisk. (Ett bra sätt att fortsätta, om du installerar ett system
+  med bara Linux och cfdisk klagar, är att använda fdisk för att
+  förstöra alla existerande partitioner, och sedan köra igång cfdisk för
+  att modifiera den tomma tabellen.)
+
+
+  Några anmärkningar är tillämpliga på både fdisk och cfdisk. Båda tar
+  en parameter, vilket är namnet på hårddisken som du vill skapa Linux-
+  partitioner på. Hårddiskarnas enhets-namn är:
+
+
+  ·  /dev/hda Första IDE-driven
+
+  ·  /dev/hdb Andra IDE-driven
+
+  ·  /dev/sda Första SCSI-driven
+
+  ·  /dev/sdb Andra SCSI-driven
+
+  T.ex., för att skapa Linux-partitioner på den första SCSI-hårddisken
+  på ditt system så kommer du använda (eller ditt installerings-program
+  gör det från ett meny-val) kommandot:
+
+
+       cfdisk /dev/sda
+
+
+  Om du använder fdisk eller cfdisk utan parametrar, så kommer det att
+  anta /dev/hda.
+
+  För att skapa Linux-partitioner på den andra hårddisken på ditt
+  system, ange helt enkelt antingen /dev/hdb (för IDE-hårddiskar) eller
+  /dev/sdb (för SCSI-hårddiskar), när du kör fdisk.
+
+  Alla dina Linux-partitioner behöver inte finnas på samma hårddisk. Du
+  kanske t.ex. vill skapa din rot-filsystems-partition på /dev/hda och
+  din swap-partition på /dev/hdb. För att göra detta behöver du bara
+  köra fdisk eller cfdisk en gång för varje hårddisk.
+
+  I Linux ges partitionerna ett namn, baserat på vilken hårddisk de
+  finns på. T.ex. så är första partitionen på hårddisken /dev/hda
+  /dev/hda1, den andra är /dev/hda2 osv. Om du har några logiska
+  partitioner, så numreras de med början vid /dev/hda5, /dev/hda6 osv.
+
+  Observera: Du ska inte skapa eller ta bort partitioner för andra
+  operativ-system än Linux med Linux fdisk eller cfdisk. Alltså, skapa
+  inte och ta inte bort MS-DOS-partitioner med denna version av fdisk;
+  använd MS-DOS version av FDISK istället. Om du försöker skapa MS-DOS-
+  partitioner med Linux fdisk, så finns det risk att MS-DOS inte kommer
+  känna igen dessa partitioner, och vägra att starta.
+
+  Här är ett exempel på användning av fdisk. Här har vi en enda MS-DOS-
+  partition, vilken använder 61693 block på hårddisken, och resten av
+  den är ledig för Linux. (Under Linux är ett block 1024 bytes. 61693
+  block är alltså runt 61 megabytes.) Vi kommer att skapa två
+  partitioner för detta läro-exempel, swap och rot. Du gör nog bäst i
+  att utvidga detta till fyra Linux-partitioner, i linje med
+  rekommendationerna ovan: en för swap, en för rot-filsystemet, ett för
+  system-mjukvara och en för hem-kataloger.
+
+  Först använder vi "p"-kommandot, för att visa den nuvarande
+  partitions-tabellen. Som du kan se så är /dev/hda1 (den första
+  partitionen på /dev/hda en DOS-partition om 61693 block.
+
+
+
+
+
+
+
+
+
+  Command (m for help):   p
+  Disk /dev/hda: 16 heads, 38 sectors, 683 cylinders
+  Units = cylinders of 608 * 512 bytes
+
+       Device Boot  Begin   Start     End  Blocks   Id  System
+    /dev/hda1   *       1       1     203   61693    6  DOS 16-bit >=32M
+
+  Command (m for help):
+
+
+
+
+  Nästa steg är att använda "n"-kommandot för att skapa en ny partition.
+  Linux rot-partitionen gör vi 80 meg stor.
+
+
+
+       Command (m for help):  n
+       Command action
+           e   extended
+           p   primary partition (1-4)
+       p
+
+
+
+
+  Här tillfrågas vi om vi vill skapa en utökad eller en primär
+  partition. I de flesta fall vill du använda primära partitioner, om du
+  inte behöver mer än fyra partitioner på en hårddisk. Se avsnittet
+  "Oartitionera om" ovan, för mer information.
+
+
+
+       Partition number (1-4): 2
+       First cylinder (204-683):  204
+       Last cylinder or +size or +sizeM or +sizeK (204-683): +80M
+
+
+
+
+  Den första cylinderna ska vara cylindern EFTER den sista i den
+  föregående partitionen. I det här fallet slutade /dev/hda1 på cylinder
+  203, så vi startar den nya partitionen på cylinder 204.
+
+  Som du kan se, så använder vi notationen "+80M", vilket specificerar
+  en partition som är 80 meg stor. På samma sätt skulle notationen
+  "+80K" specificera en partition på 80 kilobytes och "+80" skulle
+  specificera en partition på endast 80 bytes.
+
+
+
+       Warning: Linux cannot currently use 33090 sectors of this partition
+
+
+
+
+  Om du ser den här varningen så kan du ignorera den. Den finns kvar
+  från en gammal begränsning, som gjorde att Linux filsystem endast
+  kunde vara 64 meg stora. Med nya filsystems-typer, så gäller inte
+  detta längre...  partitioner kan nu vara upp till 4 terabytes stora.
+
+  Nästa steg är att skapa en swap-partition på 10 megabytes, /dev/hda3.
+
+
+
+
+  Command (m for help): n
+  Command action
+      e   extended
+      p   primary partition (1-4)
+  p
+
+  Partition number (1-4): 3
+  First cylinder (474-683):  474
+  Last cylinder or +size or +sizeM or +sizeK (474-683):  +10M
+
+
+
+
+  Igen så visar vi först innehållet i partitions-tabellen. Se till att
+  skriva ner den här informationen, speciellt storleken, i block, på
+  varje partition. Du kommer behöva den här informationen senare.
+
+
+
+       Command (m for help): p
+       Disk /dev/hda: 16 heads, 38 sectors, 683 cylinders
+       Units = cylinders of 608 * 512 bytes
+
+            Device Boot  Begin   Start     End  Blocks   Id  System
+         /dev/hda1   *       1       1     203   61693    6  DOS 16-bit >=32M
+         /dev/hda2         204     204     473   82080   83  Linux native
+         /dev/hda3         474     474     507   10336   83  Linux native
+
+
+
+
+  Observera att Linux swap-partitionen (här /dev/hda3) är av typen
+  "Linux native". Vi måste byta typen till den rätta för swap-
+  partitioner, "Linux swap", så att installerings-programmet kan känna
+  igen den som en sådan. För att uppnå detta, använd kommandot "t":
+
+
+
+       Command (m for help): t
+       Partition number (1-4): 3
+       Hex code (type L to list codes): 82
+
+
+
+
+  Om du använder "L" för att visa typ-koderna, så finner du att 82 är
+  typen som motsvarar Linux swap.
+
+  För att avsluta fdisk och spara ändringarna till partitions-tabellen
+  så använder du "w"-kommandot. För att avsluta fdisk UTAN att spara
+  ändringarna, använd "q"-kommandot.
+
+  Efter att du avslutat fdisk kanske systemet säger åt dig att starta
+  om, för att se till att ändringarna fick önskad effekt. Rent generellt
+  så finns det ingen anledning att starta om, efter att du har använt
+  fdisk---moderna versioner av fdisk och cfdisk är tillräckligt smarta
+  för att kunna uppdatera partitionerna utan att starta om.
+
+
+  6.6.3.  Steg efter installeringen
+
+  När du har modifierat partitions-tabeller så ska dina installerings-
+  program leta efter dem, och erbjuda dig att möjliggöra swappning, med
+  din swap-partition. Svara ja.
+
+
+  (Anledningen till att denna fråga över huvud ställs, istället för att
+  det bara görs automatisk, är att du kanske kör ett dual-boot-system
+  och någon av dina icke-Linux-partitioner ser ut som en swap-
+  partition.)
+
+  Nästa steg är att programmet ber dig ge Linux filsystems-namn (som /,
+  /usr, /var, /tmp, /home, /home2 etc.) till varje icke-swap-partition
+  som du ska använda.
+
+  Det finns bara en hård och snabb regel för detta. Det måste finnas ett
+  rot-filsystem, vilket heter /, och man måste kunna starta från det. Du
+  kan kalla dina andra Linux-partitioner vad du vill. Men det finns
+  vissa konventioner om vad du ska kalla dem, vilka antagligen kommer
+  göra ditt liv lättare sen.
+
+  Tidigare rekommenderade jag en grundläggande tre-partitionerns
+  konfigurering, vilken inkluderade en liten rot-, en mellan-stor
+  system-mjukvaru-partition och en stor hem-katalogs-partition.
+  Traditionellt skulle dessa heta /, /usr och /home. Det ointuitiva
+  "/usr"-namnet är en historisk kvarleva från tiderna då (mycket mindre)
+  Unix-system hade system-mjukvara och användarnas hem-kataloger på en
+  enda icke-rot-partition. En del mjukvara är fortfarande beroende av
+  den.
+
+  Om du har mer än ett område för hem-kataloger, så är det konvention
+  att kalla dem /home, /home2, /home3 osv. Det här kan bli aktuellt om
+  du har två fysiska hårddiskar. På mitt personliga system, t.ex., ser
+  det för tillfället ut så här:
+
+
+
+       Filesystem         1024-blocks  Used Available Capacity Mounted on
+       /dev/sda1              30719   22337     6796     77%   /
+       /dev/sda3             595663  327608   237284     58%   /usr
+       /dev/sda4            1371370    1174  1299336      0%   /home
+       /dev/sdb1            1000949  643108   306130     68%   /home2
+
+
+
+
+  Den andra hårddisken (sdb1) är egentligen inte alls bara /home2; swap-
+  partitionerna på sda och sdb visas inte här. Men du kan se att /home
+  är en stor, ledig area på sda, och att /home2 är hem-katalogs-utrymmet
+  å sdb.
+
+  Om du vill skapa en partition för strunt, spool, temporära filer, e-
+  post och nyhets-filer, kalla den /var. Annars kommer du antagligen
+  vilja skapa en /usr/var och skapa en symbolisk link, som heter /var,
+  som pekar tillbaks på den (installerings-programmet kanske erbjuder
+  dig att utföra detta).
+
+
+  6.7.  Installera mjukvaru-paket
+
+  Så fort du har klarat av att preparera dina partitioner, så är
+  återstoden av installeringen nästan automatisk. Ditt installerings-
+  program (vare sig det är EGA- eller X-baserat) kommer att leda dig
+  genom några menyer, vilka låter dig välja vilken CD-ROM du ska
+  installera från, vilka partitioner du vill använda osv.
+
+  Här ska vi inte gå igenom så många specifika saker av detta steg av
+  installeringen. Det är en av de delar som skiljer sig mest år, mellan
+  olika Linux-distributioner (tillverkarna tävlar, av tradition, om att
+  lägga till mest här), men också den enklaste delen. Och installerings-
+  programmen säger sig ganska mycket själv, men bra hjälp tillgänglig.
+
+  6.8.  Efter paket-installeringen
+
+  Efter att installeringen är färdig, och om allt får väl, så kommer
+  installerings-programmet att leda dig genom några alternativ för att
+  konfigurera ditt system, innan det för första gången ska startas från
+  hårddisken.
+
+
+  6.8.1.  LILO, LInux LOader
+
+  LILO (vilket står för LInux LOader (Linux-laddare)) är ett program som
+  låter dig starta Linux (och andra operativ-system, som MS-DOS) från
+  din hårddisk.
+
+  Du kanske ges möjlighet att installera LILO på din hårddisk. Om du
+  inte kör OS/2, svara "ja". OS/2 har speciella krav; se ``Speciella
+  LILO-inställningar'' nedan.
+
+  Att installera LILO som din primära laddare gör en separat start-
+  diskett onödig; istället kan du säga åt LILO, varje gång du startar om
+  datorn, vilket operativ-system det ska starta åt dig.
+
+
+  6.8.2.  Skapa en start-diskett (valfritt)
+
+  Du kanske också ges chansen att skapa en "standard start-diskett",
+  vilken du kan använda för att starta ditt nyligen installerade Linux-
+  system. (Det här är en äldre och något mindre praktisk metod, vilken
+  antar att du vanligtvis startar DOS, men använder start-disketten för
+  att starta Linux.)
+
+  Till detta behöver du en tom, "high-density" MS-DOS-formatterad
+  diskett av den sort som du kan starta med på ditt system. Sätt bara i
+  disketten när du blir tillsagd att göra det, och en start-diskett
+  kommer skapas.  (Den här är inte densamma som installations-start-
+  disketten, och du kan inte byta ut den ena mot den andra!)
+
+
+  6.8.3.  Diverse system-inställningar
+
+  Proceduren efter installeringen tar dig också genom flera menyer,
+  vilka låter dig konfigurera ditt system. Detta inkluderar att
+  specificera dina modem- och mus-enheter, samt tids-zon. Följ meny-
+  alternativen.
+
+  Det kanske också ber dig skapa användar-konton eller att skapa ett
+  lösenord för roots (system-administratören) konto. Detta är inte
+  komplicerat och du kan för det mesta bara gå igenom instruktionerna
+  som ges på skärmen.
+
+
+  7.  Starta ditt nya system
+
+  Om allt gick som planerat, så ska du nu kunna starta Linux från din
+  hårddisk, med hjälp av LILO. Alternativt kan du starta det från din
+  Linux-start-diskett (inte den ursprungliga start-disketten, utan den
+  som du skapade efter att mjukvaran installerats). Efter att du har
+  startat, logga in som root. Gratulerar! Du har ditt alldeles egna
+  Linux-system.
+
+  Om du startar upp med hjälp av LILO, pröva att hålla ner shift eller
+  ctrl när systemet startas. Detta ger dig en start-prompt; tryck tab
+  för att se en lista av alternativ. På det här sättet kan du starta
+  Linux, MS-DOS eller vad du vill, direkt från LILO.
+
+
+  8.  Efter din första uppstartning
+
+  Du ska nu se login-prompten i ett nytt Linux, just startat från din
+  hårddisk. Gratulerar!
+
+
+  8.1.  Inledande system-administrering
+
+  Beroende på hur installerings-fasen gick, så kan du nu bli tvungen att
+  skapa användar-konton, ändra maskin-namnet eller (om)konfigurera X.
+  Det finns många fler saker som du kan ställa in och konfigurera,
+  inklusive enheter för säkerhetskopiering, SLIP/PPP-länkar to en ISP
+  (internet-leverantör) osv.
+
+  En bra bok om system-administrering under UNIX kan vara till stor
+  hjälp.  (Jag föreslår Essential system administration från O'Reilly
+  and Associates.) Du kommer att lära dig de har sakerna pö om pö. Du
+  bör läsa diverse Linux-HOWTOn, som NET-2-HOWTO och Printing-HOWTO, för
+  information om andra konfigurerings-uppgifter.
+
+
+  8.2.  Speciella LILO-inställningar
+
+  LILO är en "boot loader", som kan användas för att välja antingen
+  Linux, MS-DOS, eller något annat operativ-system, då systemet startas.
+  Det finns vissa möjligheter att din distribution automatiskt
+  konfigurerade LILO åt dig, under installerings-fasen (om du inte
+  använder OS/2, så är det vad du skulle ha gjort). I så fall kan du
+  hoppa över resten av det här avsnittet.
+
+  Om du installerade LILO som primär boot loader, så kommer det ta hand
+  om första stegets start-process för alla operativ-system på din
+  hårddisk. Detta fungerar bra om MS-DOS är det enda andra operativ-
+  systemet du har installerat. Det kan dock hända att du kör OS/2, som
+  har sin egen "Boot Manager". I så fall så ska du låta OS/2s Boot
+  Manager sköta första stegets start-process och använda LILO endast för
+  att starta Linux (som andra stegets boot loader).
+
+  Ett viktig sak att tänka på för folk som använder EIDE-system: p.g.a.
+  BIOS-begränsningar så måste boot-sektorerna för alla operativ-system
+  finnas på en de två första fysiska hårddiskarna. Annars hänger sig
+  LILO efter att ha skrivit ut "LI", oavsett var du kör det ifrån.
+
+  Om du måste ställa in LILO manuellt, så innebär detta att du ska
+  editera filen /etc/lilo.conf. Nedan presenterar vi ett exempel på en
+  konfigurerings-fil för LILO, där Linux rot-partition är på /dev/hda2
+  och MS-DOS finns installerat på /dev/hdb1 (på den andra hårddisken).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # Säg åt LILO att installera sig som den primära boot-laddaren på /dev/hda.
+  boot = /dev/hda
+  # "Boot image" att installera; du ska nog inte ändra på det här
+  install = /boot/boot.b
+
+  # Stycket för att starta Linux.
+  image = /vmlinuz       # Kärnan är i /vmlinuz
+    label = linux        # Ge den namnet "linux"
+    root = /dev/hda2     # Använd /dev/hda2 som rot-filsystem
+    vga = ask            # Fråga om VGA-läge
+    append = "aha152x=0x340,11,7,1"  # Lägg det här till start-alternativen,
+                                     # för att se SCSI-controllern
+
+  # Stycket för att starta MS-DOS
+  other = /dev/hdb1      # Det här är MS-DOS-partitionen
+    label = msdos        # Ge den namnet "msdos"
+    table = /dev/hdb     # Partitions-tabellen för andra hårddisken
+
+
+
+
+  När du har editerat /etc/lilo.conf-filen, kör /sbin/lilo som root.
+  Detta kommer att installera LILO på din hårddisk. Observera att du
+  måste köra /sbin/lilo varje gång du kompilerat om din kärna, för att
+  få boot-laddaren att peka på den (något du inte behöver oroa dig för
+  just nu, men lägg det på minnet).
+
+  Observera hur vi använder append-alternativet i /etc/lilo.conf för att
+  specificera start-parametrar, som vi gjorde när vi startade start-
+  disketten.
+
+  Nu kan du starta om ditt system från hårddisken. Som standard kommer
+  LILO att starta det operativ-system som står först i konfigurerings-
+  filen, vilket i detta fall är Linux. För att få upp start-menyn, för
+  att välja ett annat operativ-system, håll shift eller ctrl nedtryckt
+  då systemet startas; du ska nu se en prompt som
+
+       Boot:
+
+
+  Skriv här antingen namnet på operativ-systemet du vill starta (angiven
+  av label-raden i konfigurerings-filen; i det här fallet är det antin­
+  gen linux eller msdos), eller tryck tab för att få en lista.
+
+  Låt oss nu tänka oss att du vill använda LILO som andra stegets boot
+  loader; om du vill starta Linux från OS/2s Boot Manager t.ex.  För att
+  kunna starta från en Linux-partition med OS/2s Boot Manager måste du,
+  tyvärr, skapa partitionen med OS/2s FDISK, (inte Linux), och
+  formattera partitionen som FAT eller HPFS, så att OS/2 känner igen
+  den. (Det är IBM, det.)
+
+  För att få LILO att starta Linux från OS/2s Boot Manager, så behöver
+  du bara installera LILO på ditt Linux-rot-filsystem (i det ovanstående
+  exemplet /dev/hda2). I så fall ska din LILO-konfigureringsfil se ut
+  något i stil med:
+
+
+
+
+
+
+
+
+
+
+
+  boot = /dev/hda2
+  install = /boot/boot.b
+  compact
+
+  image = /vmlinuz
+    label = linux
+    root = /dev/hda2
+    vga = ask
+
+
+
+
+  Observera ändringen i boot-raden. Efter att du kört /sbin/lilo så ska
+  du kunna lägga till Linux-partitionen till Boot Manager. Denna
+  mekanism ska fungera för boot loaders som används av andra operativ-
+  system också.
+
+
+  9.  Administrations-tjafs
+
+
+  9.1.  Användnings-villkor
+
+  Detta dokuments upphovsrätt tillhör Eric S. Raymond, 1998. Du får
+  använda, sprida och reproducera det fritt, förutsatt att du:
+
+
+  ·  Inte utelämnar eller ändrar denna upphovsrätts-notis
+
+  ·  Inte utelämnar eller ändrar versions-numret eller datumet.
+
+  ·  Inte utelämnar eller ändrar dokumentets pekare till den senaste
+     WWW-versionen.
+
+  ·  Klart markerar eventuella förkortade eller ändrar versioner som
+     sådana.
+
+  Dessa restriktioner är till för att skydda potentiella läsare från
+  inaktuella eller förstörda versioner. Om du tycker att du har en bra
+  bra anledning för ett undantag, fråga mig.
+
+
+  9.2.  Tillkännagivanden
+
+  Ett tacksamt tillkännagivande till Matt D. Welsh, som grundade denna
+  HOWTO. Jag tog bort mycket Slackware-specifikt innehåll och inriktade
+  återstoden av dokumentet på CD-ROM-installering,  men en stor del av
+  innehållet är fortfarande hans.
+
+  Version 4.1 blev mycket förbättrad genom några förslag från David Shao
+  <dshao@best.com>.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

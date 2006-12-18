@@ -1,0 +1,85 @@
+//
+//   File : optw_lag.cpp
+//   Creation date : Wed Cct 16 10:45:54 CEST 2002 by Juanjo Álvarez (juanjux@yahoo.es)
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+
+
+#include "optw_lag.h"
+
+#include <qlayout.h>
+#include <qtooltip.h>
+
+#include "kvi_options.h"
+#include "kvi_locale.h"
+
+//#warning "Info tips"
+
+
+KviLagOptionsWidget::KviLagOptionsWidget(QWidget * parent)
+: KviOptionsWidget(parent,"lag_options_widget")
+{
+	createLayout(3,1);
+
+	KviBoolSelector * pUse = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable lag meter","options"), KviOption_boolUseLagMeterEngine);
+#ifdef COMPILE_INFO_TIPS
+    mergeTip(pUse,__tr2qs_ctx("<center>This enables the lag meter engine, which checks at regular intervals how much lag (latency) the server has.</center>","options"));
+#endif
+    QGroupBox *g = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
+    KviUIntSelector * pInterval = addUIntSelector(g, __tr2qs_ctx("Lag meter heartbeat:","options"),KviOption_uintLagMeterHeartbeat,2000,10000,5000,KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
+    pInterval->setSuffix(__tr2qs_ctx(" msec","options"));
+#ifdef COMPILE_INFO_TIPS
+    mergeTip(pInterval,
+		__tr2qs_ctx("<center>This option allows you to set the lag meter heartbeat interval.<br>" \
+			"The lower the heartbeat interval the higher will be the accuracy of the lag check " \
+			"but also higher cpu usage and data traffic to the server.<br>" \
+			"Please note that this is NOT the interval between pings sent to the server: " \
+			"the pings (if any) will be sent really less often. " \
+			"5000 is a reasonable value.</center>","options"));
+#endif
+    connect(pUse,SIGNAL(toggled(bool)),pInterval,SLOT(setEnabled(bool)));
+
+    KviUIntSelector * pAlarm = addUIntSelector(g, __tr2qs_ctx("Trigger event if lag exceeds:","options"), KviOption_uintLagAlarmTime,5000,1000000,30000, KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
+    pAlarm->setSuffix(__tr2qs_ctx(" msec","options"));
+#ifdef COMPILE_INFO_TIPS
+	mergeTip(pAlarm,__tr2qs_ctx("<center>This option controls the threshold for the " \
+			"OnLagAlarmTimeUp and OnLagAlarmTimeDown events. When the lag goes above " \
+			"the threshold OnLagAlarmTimeUp will be triggered and when the lag falls " \
+			"back below the threshold then OnLagAlarmTimeDown will be triggered</center>","options"));
+#endif
+    connect(pUse,SIGNAL(toggled(bool)),pAlarm,SLOT(setEnabled(bool)));
+
+    KviBoolSelector * pShow = addBoolSelector(g, __tr2qs_ctx("Show lag in IRC context display","options"), KviOption_boolShowLagOnContextDisplay, KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
+#ifdef COMPILE_INFO_TIPS
+    mergeTip(pShow,__tr2qs_ctx("<center>This makes the IRC context display applet show the current lag after the user's nickname (in seconds)</center>","options"));
+#endif
+
+    connect(pUse,SIGNAL(toggled(bool)),pShow,SLOT(setEnabled(bool)));
+    connect(pUse,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
+
+	addRowSpacer(0,2,0,2);
+
+}
+
+KviLagOptionsWidget::~KviLagOptionsWidget()
+{
+}
+
+
+#include "m_optw_lag.moc"

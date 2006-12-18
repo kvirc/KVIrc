@@ -1,0 +1,471 @@
+//=============================================================================
+//
+//   File : kvi_app_setup.cpp
+//   Creation date : Fri Apr 2 1999 02:38:05 by Szymon Stefanek
+//
+//   This file is part of the Kvirc irc client distribution
+//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
+#define __KVIRC__
+
+//#define _KVI_DEBUG_CHECK_RANGE_
+//#include "kvi_debug.h"
+
+#include <qtextcodec.h>
+
+#include "kvi_settings.h"
+#include "kvi_defaults.h"
+
+#include "kvi_window.h"
+#include "kvi_frame.h"
+
+#include "kvi_app.h"
+
+#include "kvi_fileutils.h"
+#include "kvi_locale.h"
+#include "kvi_msgbox.h"
+#include "kvi_library.h"
+#include "kvi_sourcesdate.h"
+#include "kvi_iconmanager.h"
+#include "kvi_config.h"
+
+#ifndef COMPILE_ON_WINDOWS
+
+	#include <stdlib.h> // for getenv()
+	#include <unistd.h> // for symlink() <-- unused ?
+	
+	#ifdef COMPILE_KDE_SUPPORT
+		#include <kconfig.h>
+		#include <kstddirs.h>
+	#endif
+
+#else
+
+	#include <windows.h> // at least for GetModuleFileName and *PrivateProfileString
+
+#endif //COMPILE_ON_WINDOWS
+
+#include <qfile.h>
+#include <qtextstream.h>
+#include <qdir.h>
+
+
+
+
+//
+// Things launched at startup:
+// - Attempt to find the global Kvirc directory
+// - Attempt to find the local Kvirc directory
+//   and if it is not found , ask the user to choose one
+//
+
+bool KviApp::checkGlobalKvircDirectory(const QString dir)
+{
+	//First check if the help subdir exists
+	QString szDir2 = dir;
+	szDir2+=KVI_PATH_SEPARATOR"modules";
+	if(!KviFileUtils::directoryExists(szDir2))return false;
+	//Then check if the pics subdir exists
+	QString szDir = dir;
+	szDir+=KVI_PATH_SEPARATOR"pics";
+	if(!KviFileUtils::directoryExists(szDir))return false;
+	//Now make sure that it is the dir that we're looking for.
+	//Check for an image file that we need.
+	szDir.append(KVI_PATH_SEPARATOR);
+	szDir.append(KVI_ACTIVITYMETER_IMAGE_NAME);
+	return KviFileUtils::isReadable(szDir);
+}
+
+bool KviApp::checkLocalKvircDirectory(const QString szDir)
+{
+	//First check if the dir exists
+	if(!KviFileUtils::directoryExists(szDir))return false;
+	if(!QFileInfo(szDir).isWritable()) return false;
+	
+	QString szBuff;
+	getLocalKvircDirectory(szBuff,Config);
+	if(!KviFileUtils::directoryExists(szBuff)) return false;
+	
+	return true;
+}
+
+//#ifdef BRAIN_DAMAGED_AUTHOR_PARANOIA
+//#define I_DO_NOT_WANT_TO_HEAR_IT_ANYMORE_THAT_KVIRC_CAN_NOT_FIND_THE_BASE_PIXMAPS
+
+// search paths for Unix-like platforms
+#ifndef COMPILE_ON_WINDOWS
+	const char * usualKvircGlobalPrePath[]=
+	{
+		"/usr/local",       "/opt/kde",       "/usr",
+		"/usr/local/lib",   "/opt/kde3",      "/usr/lib",
+		"/usr/local/kde",   "/opt",           "/usr/etc",
+		"/usr/local/kde3",  "/usr/lib/X11R6", "/usr/X11R6",
+		"/usr/local/X11R6", "/lib/X11",       "/usr/kde",
+		"/usr/local/X11",   "/etc",           "/usr/kde3",
+		"/usr/local/etc",   "/lib",           "/usr/X11",
+		"/etc/X11",         "/home",          "/home/kvirc",
+		0
+	};
+	
+	const char * usualKvircGlobalDir[]=
+	{
+		"/share/kvirc/",            "/share/apps/kvirc/",
+		"/apps/kvirc/",             "/kvirc/",
+		"/kvirc/share/apps/kvirc/", "/kvirc/share/kvirc/", //<------ ???!!!???
+		"/kvirc/share/",            0
+	};
+
+#endif //!COMPILE_ON_WINDOWS
+
+//#endif //BRAIN_DAMAGED_AUTHOR_PARANOIA
+
+void KviApp::findGlobalKvircDirectory()
+{
+	// Look for the installation directory
+	// with the image and help files inside
+#ifdef GLOBAL_KVIRC_DIR
+	m_szGlobalKvircDir = GLOBAL_KVIRC_DIR;
+	kvi_adjustFilePath(m_szGlobalKvircDir);
+	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+#endif //GLOBAL_KVIRC_DIR
+
+#ifdef COMPILE_ON_WINDOWS
+
+	m_szGlobalKvircDir = applicationDirPath();
+	KviFileUtils::adjustFilePath(m_szGlobalKvircDir);
+	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+
+	KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+			"The usual path for this directory is c:\\kvirc\\" KVI_VERSION_BRANCH "\\.\n"\
+			"I have tried %Q, but it seemed to fail\n" \
+			"Trying to run anyway...\n",&m_szGlobalKvircDir);
+#else // !COMPILE_ON_WINDOWS
+
+	// Since I had many problems with it
+	// because of strange distributions or KDEDIRS
+	// I do it in that way...
+	#ifdef COMPILE_KDE_SUPPORT
+		// KDE compilation ...
+		// The things usually go installed into $KDEDIR/share/apps/kvirc/$KVI_VERSION_BRANCH
+		// Look in the main KDE directory
+		KStandardDirs * d = dirs();
+		if(d)
+		{
+			m_szGlobalKvircDir = locate("appdata","");
+			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+			#ifdef HAVE_GETENV
+				//KDEDIR sanity check...
+				m_szGlobalKvircDir = getenv("KDEDIR");
+				m_szGlobalKvircDir+="/share/apps/kvirc/" KVI_VERSION_BRANCH;
+				if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+			#endif
+		}
+		// FAILED ? Check the usual way...
+	#endif //COMPILE_WITH_KDE
+
+	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$KVI_VERSION_BRANCH
+
+	// Check for MacOS X Bundle compilation
+	#ifdef Q_OS_MACX
+		m_szGlobalKvircDir = applicationDirPath();
+		m_szGlobalKvircDir+= "/../Resources/kvirc/";
+		m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+	#endif //Q_OS_MACX
+
+	// Check usual directories...
+	for(int j=0;usualKvircGlobalPrePath[j] != 0;j++){
+		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
+			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
+			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
+			m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;	
+		}
+	}
+
+	//Last resource , try $HOME and $HOME/.kde
+	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
+		m_szGlobalKvircDir = QDir::homeDirPath();
+		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
+		m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+	}
+
+	#ifdef COMPILE_KDE_SUPPORT
+		for(int k=0;usualKvircGlobalDir[k] != 0;k++){
+			m_szGlobalKvircDir = QDir::homeDirPath();
+			m_szGlobalKvircDir+= "/.kde";
+			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
+			m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+		}
+	#endif //COMPILE_KDE_SUPPORT
+
+	m_szGlobalKvircDir="";
+
+	// DO NOT TRANSLATE THIS
+	// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
+	// AND THE LOCALE IS NOT INITIALIZED AT ALL
+
+	#ifdef COMPILE_KDE_SUPPORT
+		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+				"The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"\
+				"Are you sure that 'make install' worked correctly ?\n"\
+				"Please make sure that you have the read permission to that directory\n"\
+				"and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"\
+				"A detailed explaination of the Kvirc directory system is in the INSTALL document\n"\
+				"shipped with the kvirc source dirstribution.\n"\
+				"Trying to run anyway...");
+	#elif defined(Q_OS_MACX)
+		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+				"The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"\
+				"Something went wrong during the bundle creation.\n"\
+				"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"\
+				"Trying to run anyway...\n");
+	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(Q_OS_MACX)
+		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+				"The usual path for this directory is /usr/local/share/kvirc.\n"\
+				"Are you sure that 'make install' worked correctly ?\n"\
+				"Please make sure that you have the read permission to that directory.\n"\
+				"You may also need to rerun 'make install'.\n"\
+				"A detailed explaination of the Kvirc directory system is in the INSTALL document\n"\
+				"shipped with the kvirc source dirstribution.\n"\
+				"Trying to run anyway...\n");
+	#endif //!Q_OS_MACX
+#endif //!COMPILE_ON_WINDOWS
+}
+
+
+bool KviApp::findLocalKvircDirectory()
+{
+	// Here we check if we already did the setup
+	// and we have the kvirc local directory saved somewhere
+#ifdef COMPILE_KDE_SUPPORT
+	if(m_szConfigFile.isEmpty())
+	{  // don't do that if user supplied a config file :)
+		KConfig * cfg = config();
+		if(cfg)
+		{
+			if(cfg->getConfigState() == KConfig::ReadWrite)
+			{
+				cfg->setGroup("Main");
+				m_szLocalKvircDir = cfg->readEntry("LocalKvircDirectory","");
+				
+				unsigned int uSourcesDate = cfg->readUnsignedNumEntry("SourcesDate",0);
+				if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
+					return false; // we force a setup anyway
+
+				// If we have it , ok...done
+				if(checkLocalKvircDirectory(m_szLocalKvircDir))return true;
+			}
+		}
+	}
+#endif //COMPILE_KDE_SUPPORT
+
+#ifdef COMPILE_ON_WINDOWS
+	if(KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable")) {
+		m_szLocalKvircDir=g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Settings";
+		if(checkLocalKvircDirectory(m_szLocalKvircDir)) return true;
+	}
+#endif
+	//Check if we have a special .kvirc.rc in $HOME
+	QString szF = QDir::homeDirPath();
+
+	if(!m_szConfigFile.isEmpty())
+	{
+		QString szConfig = m_szConfigFile;
+		if(QDir::isRelativePath(szConfig))
+		{
+			szF+=KVI_PATH_SEPARATOR;
+			szF+=szConfig;
+		} else {
+			szF=szConfig;
+		}
+	} else {
+		szF+=KVI_PATH_SEPARATOR;
+		szF+=KVI_HOME_CONFIG_FILE_NAME;
+	}
+	//If the file exists , read the first non empty line.
+	//FIXME: LOCALE BROKEN!!!
+	KviConfig cfgx(szF,KviConfig::Read);
+
+	cfgx.setGroup("Main");
+	m_szLocalKvircDir = cfgx.readEntry("LocalKvircDirectory","");
+	
+	unsigned int uSourcesDate = cfgx.readUIntEntry("SourcesDate",0);
+	if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
+		return false; // we force a setup anyway
+
+	// If we have it , ok...done
+	if(checkLocalKvircDirectory(m_szLocalKvircDir))return true;
+	return false;
+}
+
+void KviApp::loadDirectories()
+{
+	// First find the global (readable) one...
+	findGlobalKvircDirectory();
+	// Init locale
+	QString szLocalePath = m_szGlobalKvircDir;
+	szLocalePath.append(KVI_PATH_SEPARATOR);
+	szLocalePath.append("locale");
+	szLocalePath.append(KVI_PATH_SEPARATOR);
+	
+	KviLocale::init(this,szLocalePath);
+
+	//__debug_1arg("Global Kvirc directory is %s",m_szGlobalKvircDir.ptr());
+	// Now look for the local (writable) one
+	m_bFirstTimeRun = !findLocalKvircDirectory();
+
+	if(m_bFirstTimeRun)setupBegin();
+}
+
+static kvi_library_t g_hSetupLibrary = 0;
+
+
+void KviApp::setupBegin()
+{
+	//We must do the setup...ask the user..
+	QString szSetupLib;
+	getGlobalKvircDirectory(szSetupLib,KviApp::Modules);
+	KviQString::ensureLastCharIs(szSetupLib,KVI_PATH_SEPARATOR_CHAR);
+#ifdef COMPILE_ON_WINDOWS
+	szSetupLib.append("kvisetup.dll");
+#else
+	szSetupLib.append("libkvisetup.so");
+#endif
+	g_hSetupLibrary = kvi_library_open(szSetupLib.local8Bit().data());
+	if(!g_hSetupLibrary)
+	{
+		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
+			"I have been looking for the %s library but I haven't been able to load it\n" \
+			"due to the following error: \"%s\"\nAborting."),szSetupLib.utf8().data(),kvi_library_error());
+#ifdef COMPILE_ON_WINDOWS
+		ExitProcess(-1);
+#else
+		::exit(-1);
+#endif
+	}
+
+	bool (*sfunc)() = (bool(*)())kvi_library_symbol(g_hSetupLibrary,"setup_begin");
+	if(!sfunc)
+	{
+		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+			"The setup module does not export the \"setup_begin\" function.\n" \
+			"Aborting!"));
+#ifdef COMPILE_ON_WINDOWS
+		ExitProcess(-1);
+#else
+		::exit(-1);
+#endif
+	}
+
+	bool bRet = sfunc();
+
+	if(!bRet)
+	{
+		KviMessageBox::warning(__tr2qs("Setup aborted"));
+#ifdef COMPILE_ON_WINDOWS
+		ExitProcess(-1);
+#else //!COMPILE_ON_WINDOWS
+		::exit(-1);
+#endif //!COMPILE_ON_WINDOWS
+	}
+
+	// Now save it
+	//Let it be done by setup function
+//	saveKvircDirectory();
+}
+
+
+void KviApp::setupFinish()
+{
+	if(!g_hSetupLibrary)
+	{
+		debug("Oops... lost the setup library ?");
+		return;
+	}
+
+	void (*sfunc)() = (void(*)())kvi_library_symbol(g_hSetupLibrary,"setup_finish");
+	if(!sfunc)
+	{
+		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
+			"The setup module does not export the \"setup_finish\" function.\n" \
+			"Trying to continue anyway..."));
+	}
+
+	sfunc();
+
+	kvi_library_close(g_hSetupLibrary);
+	g_hSetupLibrary = 0;
+}
+
+
+void KviApp::saveKvircDirectory()
+{
+/*
+#ifdef COMPILE_ON_WINDOWS
+	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",KVI_VERSION_BRANCH);
+	WritePrivateProfileString("kvirc",szKey.ptr(),m_szLocalKvircDir.ptr(),KVI_HOME_CONFIG_FILE_NAME);
+#else //!COMPILE_ON_WINDOWS
+*/
+	// Here we save the local directory path
+#ifdef COMPILE_KDE_SUPPORT
+	// In KDE we use the application config file
+	if(m_szConfigFile.isEmpty())
+	{	// not if user supplied a config file
+		KConfig * cfg = config();
+		if(cfg)
+		{
+			if(cfg->getConfigState() == KConfig::ReadWrite)
+			{
+				cfg->setGroup("Main");
+				cfg->writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
+				cfg->writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
+				cfg->sync();
+				return;
+			}
+		}
+	}
+#endif //COMPILE_KDE_SUPPORT
+	// In NON-KDE we use $HOME/.kvirc.rc or $HOME/kvirc.ini
+
+	QString szF = QDir::homeDirPath();
+	if(!m_szConfigFile.isEmpty())
+	{//Must be changed from QString::fromLocal8Bit to QTextCodec::codecForLocale()
+		QString szConfig = m_szConfigFile;
+		if(QDir::isRelativePath(szConfig))
+		{
+			szF+=KVI_PATH_SEPARATOR;
+			szF+=szConfig;
+		} else {
+			szF=szConfig;
+		}
+	} else {
+		szF+=KVI_PATH_SEPARATOR;
+		szF+=KVI_HOME_CONFIG_FILE_NAME;
+	}
+	//FIXME: LOCALE BROKEN!!!
+
+	KviConfig cfgx(szF,KviConfig::Write);
+
+	cfgx.setGroup("Main");
+	cfgx.writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
+	cfgx.writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
+}
