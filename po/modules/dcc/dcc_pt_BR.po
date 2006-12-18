@@ -1,0 +1,1035 @@
+# translation of dcc_pt_BR.po to 
+# translation of dcc_pt_BR.po to
+# translation of dcc.pot to Brazilian-Protugues
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Adilson GonAalves Soares Junior <cabide@brfree.com.br>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dcc_pt_BR\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2004-11-15 19:17+0000\n"
+"Last-Translator: \n"
+"Language-Team:  <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:75
+msgid "Attempting a passive DCC CANVAS connection"
+msgstr "Tentando uma conexão passiva DCC CANVAS"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:80
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:764
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:183
+#, fuzzy
+msgid "Listening on interface %Q port %Q"
+msgstr "Escutar a interface %s na porta %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:95
+#, fuzzy
+msgid ""
+"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr ""
+"Enviado pedido DCC CANVAS para %s, esperando que o cliente remoto conecte..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:97
+msgid "DCC CANVAS request not sent: awaiting manual connections"
+msgstr "Pedido DCC CANVAS não enviado; esperando conexões manuais"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:101
+msgid "Attempting an active DCC CANVAS connection"
+msgstr "Tentando uma conexão DCC CANVAS ativa"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:104
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:761
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:181
+#, fuzzy
+msgid "Contacting host %Q on port %Q"
+msgstr "Contactando com a máquina %s na porta %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:274
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:910
+msgid "DCC Failed: %Q"
+msgstr "DCC falhou: %Q"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:279
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:919
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:514
+#, fuzzy
+msgid "Connected to %Q:%Q"
+msgstr "Conectado a %s:%s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:281
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:921
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:516
+#, fuzzy
+msgid "Local end is %Q:%Q"
+msgstr "Local de destino é %s:%s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:258
+msgid "WARNING: The peer is sending garbage data past the end of the file"
+msgstr ""
+"ATENÇÃO: O destino (outro usuário) está enviando dados (lixo) que entram "
+"depois do fim do arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:259
+msgid ""
+"WARNING: Ignoring data past the declared end of file and closing the "
+"connection"
+msgstr ""
+"ATENCÃO: Ignorando dados que venham depois do envío do arquivo e fechando a "
+"conexão"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:358
+msgid ""
+"Data transfer terminated, waiting 30 seconds for the peer to close the "
+"connection..."
+msgstr ""
+"Transferência de dados terminada, esperar 30 segundos para quem enviou "
+"fechar a conexão..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:365
+msgid "Data transfer was terminated 30 seconds ago, closing the connection"
+msgstr "Transferência de dados terminou à 30 segundos, fechando a conexão"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:595
+msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
+msgstr "ATENÇÃO: Dados recebidos de um DCC TSEND, não devia haver confirmações"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:727
+#, c-format
+msgid "TRANSFER %d"
+msgstr "TRANSFERÊNCIA %d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:750
+msgid "Setting up the connection"
+msgstr "Configurar a conexão"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:809
+msgid "Attempting a passive DCC %1 connection"
+msgstr "Tentar uma conexão DCC passiva %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:813
+msgid "Attempting an active DCC %1 connection"
+msgstr "Tentar uma conexão DCC ativa %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:839
+msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
+msgstr "DCC RESUME enviado pedido por %1, esperando que aceite"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:909
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:920
+msgid "Aborted"
+msgstr "Abortado"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:919
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1598
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1675
+msgid "Transfer failed: "
+msgstr "Transferência falhou: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:931
+msgid "Configure Bandwidth..."
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:933
+msgid "Resend DCC"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:934
+msgid "Resend TDCC"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:935
+msgid "Resend RevDCC"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:939
+msgid "Abort"
+msgstr "Abortar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1130
+msgid "From: "
+msgstr "De: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1131
+msgid "To: "
+msgstr "Para: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1234
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1241
+msgid "%1 of %2 bytes (%3%)"
+msgstr "%1 de %2 bytes (%3%)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1245
+msgid "%1 bytes"
+msgstr "%1 bytes"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1258
+msgid "Spd:"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1273
+msgid "Avg:"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1344
+msgid "Transfer Log"
+msgstr "Registo de Transferências"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1475
+msgid "Contacting host %1 on port %2"
+msgstr "Contactar a máquina %1 na porta %2"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1482
+msgid "Listening on interface %1 port %2"
+msgstr "Escutar a interface %1 na porta %2"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1505
+msgid "The local IP address is private, determining from IRC server: %1"
+msgstr "O endereço IP local é privado, determinando pelo servidor IRC: %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1507
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:208
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+"O endereço IP local é privado, e não foi possível determinar pelo servidor "
+"IRC"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1510
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:211
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+"O endereço IP local é privado, mas não tem nenhum servidor IRC para o "
+"determinar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1556
+msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
+msgstr "DCC %1 enviado para %2, esperando que o cliente remoto conecte..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1558
+msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr "DCC %1 não enviado, esperando conexão manual"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1569
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:244
+msgid "Low-level transport connection established"
+msgstr "Conexão de transporte de baixo nível estabelecida"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1570
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:245
+msgid "Starting Secure Socket Layer handshake"
+msgstr "Iniciando negociação do Secure Socket Layer"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1577
+msgid "[SSL ERROR]: %1"
+msgstr "[ERRO SSL]: %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1620
+#, fuzzy
+msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
+msgstr "Transferência DCC %s com %s@%s:%s completa: \r![!dbl]play $0\r%s\r"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1639
+msgid "Transfer completed"
+msgstr "Transferência completa"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1684
+msgid "Connected to %1:%2"
+msgstr "Conectado a %1:%2"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1685
+msgid "Local end is %1:%2"
+msgstr "A extremidade local é %1:%2"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1729
+msgid "Transferring data"
+msgstr "Transferindo dados"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1755
+msgid "RESUME accepted, transfer will begin at position %1"
+msgstr "RESUME aceito, a transferência começará na posição %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1786
+msgid "Internal error in RESUME request"
+msgstr "Erro interno no pedido RESUME"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1791
+msgid "Invalid RESUME request: Position %1 is larger than file size"
+msgstr "Pedido RESUME inválido: a posição %1 é maior que o tamanho do arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1795
+msgid "Accepting RESUME request, transfer will begin at position %1"
+msgstr "Aceitar pedido RESUME, a transferência começará na posição %1"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1827
+msgid "Configure bandwidth for DCC transfer %1"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1830
+msgid "Limit upload bandwidth to"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1830
+msgid "Limit download bandwidth to"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1843
+#, fuzzy
+msgid "bytes/sec"
+msgstr "Media: ? bytes/seg"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1847
+msgid "OK"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/send.cpp:1852
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:286
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1559
+msgid "&Line"
+msgstr "&Linha"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1560
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1568
+msgid "&Rectangle"
+msgstr "&Retângulo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1561
+msgid "&Ellipse"
+msgstr "&Elipse"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1562
+msgid "&Pie"
+msgstr "&Torta"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1563
+msgid "&Chord"
+msgstr "&Corda"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1565
+msgid "&Rich text (html)"
+msgstr "Texto en&riquecido (html)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1567
+msgid "&Triangle"
+msgstr "&Triângulo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1569
+msgid "&Pentagon"
+msgstr "&Pentágono"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1570
+msgid "&Hexagon"
+msgstr "&Hexágono"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1572
+msgid "&Shape"
+msgstr "&Figura"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1573
+msgid "&Item"
+msgstr "&Item"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1574
+msgid "&Polygons"
+msgstr "&Polígonos"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1576
+msgid "&Insert"
+msgstr "&Inserir"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:164
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard , use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+"ATENÇÃO: falhou ao verificar se a placa de som é duplex: se esta é uma placa "
+"de som half-duplex, utilize a opção DCC VOICE para forçar um algorítmo half-"
+"duplex"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:172
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+"Detectada placa de som half-duplex, você não será capaz de falar e ouvir ao "
+"mesmo tempo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:213
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+"ATENÇÃO: falhou ao configurar a frequência de amostra solicitada (%d): o "
+"dispositivo usou a combinação mais próxima (%d)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:271
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+"Opa...falhou ao testar as capacidades da placa de som...pode esperar "
+"problemas..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:662
+msgid "Input buffer"
+msgstr "Buffer de entrada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:664
+msgid "Output buffer"
+msgstr "Buffer de saída"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:746
+msgid "Attempting a passive DCC VOICE connection"
+msgstr "Tentar uma conexão DCC VOICE passiva"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:751
+msgid "Attempting an active DCC VOICE connection"
+msgstr "Tentar uma conexão DCC VOICE ativa"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:779
+#, fuzzy
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+"Enviado DCC VOICE (%s) para %s, esperando que o cliente remoto conecte..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:781
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr "Pedido de DCC VOICE não enviado: esperando conexões manuais"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:827
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:399
+msgid "ERROR: %Q"
+msgstr "ERRO: %Q"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:885
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr "Buffer de entrada: %d bytes"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:887
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr "Buffer de saída: %d bytes"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:939
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr "O codec atual usado é '%s'"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/voice.cpp:1023
+#, c-format
+msgid "Volume: %i"
+msgstr "Volume: %i"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/descriptor.cpp:70
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:484
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:514
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:519
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:134
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:135
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:136
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:111
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:408
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:443
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:642
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:666
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:803
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:805
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1121
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1171
+msgid "unknown"
+msgstr "desconhecido"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:59
+msgid "&Accept"
+msgstr "&Aceitar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:64
+msgid "&Reject"
+msgstr "&Rejeitar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:114
+msgid "Choose Save Location - KVIrc"
+msgstr "Escolha o diretório para salvar - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:181
+msgid "Choose Files to Send - KVIrc"
+msgstr "Escolha os arquivos para enviar - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:273
+msgid "&Rename"
+msgstr "&Renomear"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:277
+msgid "Over&write"
+msgstr "&Sobrescrever"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:281
+msgid "Re&sume"
+msgstr "Re&sumir"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:293
+msgid "File Already Exists - KVIrc"
+msgstr "O arquivo já existe - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/utils.cpp:122
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr "Não foi possível encontrar um endereço IPV4 local apropriado"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/utils.cpp:140
+#, c-format
+msgid ""
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
+msgstr ""
+"Impossivel escutar a interface padrão '%s': corrija isto no diálogo de "
+"opções, desativando a opção (para que o próximo dcc funcione)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:164
+#, fuzzy
+msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
+msgstr ""
+"Não foi possível enviar o pedido de DCC %s para %s: A conexão de IRC foi "
+"terminada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:174
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:753
+#, fuzzy
+msgid "Can't open file %Q for reading"
+msgstr "Não foi possível abrir o arquivo %s para leitura"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:238
+msgid ""
+"<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
+"mode.<br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> pedida uma <b>Conexão Direta com o Cliente (DCC)</b> em "
+"modo <b>%4</b><br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:243
+msgid "The connection will be secured using SSL.<br>"
+msgstr "A conexão estará segura se utilizar SSL.<br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:249
+msgid "You will be the passive side of the connection.<br>"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:253
+msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
+msgstr "O destino da conexão será a máquina <b>%1</b> na porta <b>%2</b><br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:258
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:493
+msgid "DCC %1 Request - KVIrc"
+msgstr "Pedido de DCC %1 - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:309
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
+"b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
+"b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> pedida uma<br><b>Conexão Directa com o Cliente (DCC)</b> "
+"em modo <b>VOICE</b>.<br>O destino da conexão será a máquina <b>%4</b> na "
+"porta <b>%5</b><br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:315
+msgid "DCC VOICE request"
+msgstr "Pedido de  DCC VOICE"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:378
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
+"<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
+"<b>%5</b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> pedida uma<br><b>Conexão Direta com o Cliente (DCC)</b> em "
+"modo <b>CANVAS</b>.<br>O destino da conexão será a máquina <b>%4</b> na "
+"porta <b>%5</b><br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:384
+msgid "DCC CANVAS request"
+msgstr "Pedido de DCC CANVAS"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:452
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
+"large.<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> quer te enviar um arquivo '<b>%4</b>', de <b>%5</b> bytes "
+"de tamanho.<br>O destino da conexão será a máquina <b>%6</b> na porta <b>%7</"
+"b><br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:465
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
+"large.<br>You will be the passive side of the connection.<br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> quer te enviar um arquivo '<b>%4</b>', de <b>%5</b> bytes "
+"de tamanho.<br>Você será o lado passivo da conexão.<br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:478
+msgid ""
+"<center><b>Note:</b></center>The file appears to be an avatar that you have "
+"requested. You should not change its filename. Save it in a location where "
+"KVIrc can find it, such as the 'avatars', 'incoming', or 'pics' directories, "
+"your home directory, or the save directory for the incoming file type. The "
+"default save path will probably work. You can instruct KVIrc to accept "
+"incoming avatars automatically by setting the option "
+"<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
+msgstr ""
+"<center><b>Nota:</b></center>O arquivo parece ser um avatar que você "
+"solicitou. Você não deve mudar o nome do arquivo. Salve-o em um diretório "
+"onde o KVirc o possa encontrar, como 'avatares', diretórios de 'fotos', seu "
+"diretório pessoal, ou o diretório que estão os arquivos recebidos. "
+"Provavelmente o diretório pré -definido para salvar arquivos irá funcionar. "
+"Você pode fazer com que o KVIrc receba avatares automáticamente ao "
+"configurar/ativar a opção <tt>Aceitar receber avatares automaticamente</tt>."
+"<br>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:507
+#, fuzzy
+msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
+msgstr ""
+"Aceitar automaticamente pedidos de DCC %s de %s!%s@%s para o arquivo %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:581
+#, fuzzy
+msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
+msgstr "Salvar automaticamente o DCC %s arquivo %s como \r![!dbl]play $0\r%s\r"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:615
+msgid ""
+"The file '<b>%1</b>' already existsand is <b>%2</b> bytes large.<br>Do you "
+"wish to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the "
+"new file, or<br><b>resume</b> an incomplete download?"
+msgstr ""
+"O arquivo '<b>%1</b>' já existe e tem <b>%2</b> bytes de tamanho."
+"<br>Deseja<br><b>sobrescrever</b> o arquivo existente,<br> <b>auto-renomear</"
+"b> o arquivo novo, ou<br><b>resumir</b> uma transferência incompleta?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:628
+#, fuzzy
+msgid ""
+"The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
+"you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
+"the new file ?"
+msgstr ""
+"O arquivo '<b>%1</b>' já existe e tem <b>%2</b> bytes de tamanho."
+"<br>Deseja<br><b>sobrescrever</b> o arquivo existente,<br> <b>auto-renomear</"
+"b> o arquivo novo, ou<br><b>resumir</b> uma transferência incompleta?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/broker.cpp:698
+#, fuzzy
+msgid "File %s exists, auto-renaming to %Q"
+msgstr "O arquivo %s já existe, auto-renomear para %m"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:77
+#, fuzzy
+msgid "Unable to process the above request: %Q, %Q"
+msgstr "Incapaz de processar o pedido anterior: %s, %Q"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:79
+msgid "Ignoring and notifying failure"
+msgstr "Ignorando e notificando a falha"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:79
+msgid "Ignoring"
+msgstr "Ignorando"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:95
+#, c-format
+msgid "Concurrent transfer limit reached (%u of %u transfers running)"
+msgstr ""
+"Limite de transferências correntes alcançado (%u de %u transferências em "
+"execução)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:111
+#, c-format
+msgid "Slot limit reached (%u slots of %u)"
+msgstr "Limite de Slots alcançado (%u slots de %u)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:120
+msgid "Too many pending connections"
+msgstr "Muitas conexões pendentes"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:156
+#, c-format
+msgid "Invalid port number %s"
+msgstr "Número de porta inválido %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:172
+#, c-format
+msgid "Invalid IP address in old format %s"
+msgstr "Endereço de IP Inválido em formato antigo %s "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:191
+#, c-format
+msgid "Invalid IP address %s"
+msgstr "Endereço de IP inválido %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:258
+#, c-format
+msgid ""
+"The above request is broken: The second parameter is '%s' and should be "
+"'chat', trying to continue"
+msgstr ""
+"O pedido anterior é incorrecto: o segundo parâmetro é '%s' e deveria ser "
+"'chat', tentando continuar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:270
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC CHAT is not available"
+msgstr ""
+"Este executável foi compilado sem suporte SSL, a extensão SSL  para DCC CHAT "
+"não está disponível"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:321
+msgid ""
+"The above request is broken: it looks like a zero port tag acknowledge but I "
+"have either never seen this tag or it was sent more than 120 seconds ago"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:322
+msgid "It seems that I haven't requested this dcc chat"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:442
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number, trying to continue"
+msgstr ""
+"O seguinte pedido esta quebrado: o quarto parâmetro deveria ser o tamanhodo "
+"arquivo, mas não parece ser um número sem sinal, tentando continuar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:444
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:730
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:634
+msgid "<unknown size>"
+msgstr "<tamanho desconhecido>"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:452
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:600
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:738
+msgid ""
+"The above request is broken: The filename contains path components, "
+"stripping the leading path and trying to continue"
+msgstr ""
+"O seguinte pedido esta quebrado: o nome do arquivo contém um caminho de "
+"componentes, tirando o caminho indicado e tentando continuar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:466
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC SEND is not available"
+msgstr ""
+"Este executável foi compilado sem suporte SSL, a extensão SSL para DCC CHAT "
+"não está disponível"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:528
+#, c-format
+msgid ""
+"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgstr ""
+"Não foi possível prosseguir com DCC REVC: transferência do arquivo %s na "
+"porta %s não iniciada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:553
+#, c-format
+msgid "Invalid resume position argument '%s'"
+msgstr "Argumento '%s' da posição de resume inválido"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:565
+#, c-format
+msgid ""
+"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
+"or invalid resume size"
+msgstr ""
+"Não foi possível prosseguir com o DCC SEND: transferência do arquivo %s, na "
+"porta %s não iniciada, ou resumo de tamanho inválido"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:590
+msgid ""
+"The above request has resume file size missing, assuming a resume file size "
+"of 0"
+msgstr ""
+"O pedido acima falta o tamanho do arquivo para continuar o resumo, assumindo "
+"0 como tamanho de arquivo para resumo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:614
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RECV is not available"
+msgstr ""
+"Este executável foi compilado sem suporte SSL, extensão SSL para DCC RECV "
+"não disponível"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:629
+#, c-format
+msgid "Invalid RECV request: Position %u is is larger than file size"
+msgstr "Pedido RECV inválido: posição %u é maior que o tamanho do arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:683
+msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
+msgstr "%s [%s@%s] está pronto para receber o arquivo \"%s\""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:689
+#, c-format
+msgid "The remote client is listening on interface %s and port %s"
+msgstr "O cliente remoto está escutando na interface %s e porta %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:696
+msgid ""
+"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
+"to send the file (or double-click on the socket)"
+msgstr ""
+"Usar %c\r![!dbl]dcc.send %s -i=%s -p=%s %s\r/dcc.send %s -i=%s -p=%s %s\r%"
+"cpara enviar o arquivo (ou clique duas vezes no socket)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:728
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number; trying to continue"
+msgstr ""
+"O pedido anterior está errado: o quarto parâmetro devia ser o tamanho do "
+"arquivo mas não parece ser um inteiro sem sinal; tentando continuar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:752
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RSEND is not available"
+msgstr ""
+"Este executavel foi compilado sem suporte SSL, a extensão SSL para DCC RSEND "
+"não está disponivel"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:763
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:932
+msgid "(unknown)"
+msgstr "(Desconhecido)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:769
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:918
+msgid "No suitable interface to listen on, trying to continue anyway..."
+msgstr ""
+"Sem interface apropriada para escutar, tentando continuar de qualquer modo..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:835
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC GET is not available"
+msgstr ""
+"Este executavel foi compilado sem suporte SSL, a extenão SSL para DCC GET "
+"não está disponivel"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:846
+msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
+msgstr ""
+"Nenhum arquivo compartilhado chamado '%s' (com tamanho %s) disponivel para %"
+"Q [%Q@%Q]"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:847
+msgid "\"any\""
+msgstr "\"qualquer\""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:891
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %s since we can't accept incoming connections (user option)"
+msgstr ""
+"Aceitando pedido de arquivo de %Q [%Q@%Q] para '%s' (arquivo real: %Q), "
+"oferecendo DCC %s já que não podemos aceitar conexões (opção do usuário)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:948
+#, fuzzy
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %Q"
+msgstr ""
+"Aceitando pedido do arquivo de %Q [%Q@%Q] para '%s' (arquivo real: %Q),"
+"oferecendo DCC %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:982
+#, fuzzy
+msgid ""
+"The above request cannot be accepted: DCC VOICE support not enabled at "
+"compilation time "
+msgstr "O seguinte pedido não pode ser aceito: codec não suportado '%s'"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:992
+#, c-format
+msgid "The above request cannot be accepted: Unsupported codec '%s'"
+msgstr "O seguinte pedido não pode ser aceito: codec não suportado '%s'"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:1005
+#, c-format
+msgid ""
+"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
+"to 8000"
+msgstr ""
+"O seguinte pedido parece estar quebrado: frequência de amostra '%s' "
+"inválida, colocar 8000 por padrão "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/requests.cpp:1150
+#, c-format
+msgid "Unknown DCC type '%s'"
+msgstr "Tipo DCC desconhecido '%s'"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:91
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+"Esta janela não tem contexto IRC associado (é necessário um contexto IRC a "
+"menos que -c ou -n sejam passado(s))"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:104
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+"Você não está conectado a um servidor (uma conexão ativa é necessária a "
+"menos que -c ou -n sejam passado(s))"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:129
+#, fuzzy
+msgid "Unable to get address of interface %Q"
+msgstr "Não foi possível obter o endereço da interface %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:139
+msgid "No suitable interfaces to listen on, use -i"
+msgstr "Não existem interfaces adequadas para escutar, use -i"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:172
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr "Este executável foi compilado sem suporte SSL, opção -s ignorada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:434
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:657
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1159
+msgid "-c requires -i and -p"
+msgstr "-c requer -i e -p"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:890
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr "Este executável foi compilado sem suporte SSL, opção -s ignorada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:960
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr "Este executável não tem suporte SSL, opção -s ignorada"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1114
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1132
+#, fuzzy
+msgid "Invalid sample rate specified, defaulting to 8000"
+msgstr "Frequência de exemplo '%s' inválida, passando para 8000 por padrão"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1148
+#, fuzzy
+msgid "Invalid codec specified, defaulting to 'adpcm'"
+msgstr "Codec '%s' inválido, passando para 'adpcm' por padrão"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1577
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2507
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2527
+msgid "The current window has no associated DCC session"
+msgstr "A janela corrente nao esta associada a uma sessão DCC "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1582
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr "O paramêtro especificado nao é um identificador DCC válido"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2518
+msgid "The specified window identifier is not valid"
+msgstr "O identificador de janela especificado nao é válido"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:157
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr "Tentando uma conexão %s DCC passiva"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:167
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr "Tentando uma conexão %s DCC ativa"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:206
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr "O endereço IP local é privado, determinando pelo servidor IRC: %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:233
+#, fuzzy
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr "DCC %s enviado  para %s, esperando que o cliente remoto conecte..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:236
+#, fuzzy
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr "Pedido de DCC %s não foi enviado, esperando conexão manual"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:253
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr "[ERRO de SSL]: %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:301
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:384
+msgid "Cannot send data: No active connection"
+msgstr "Não foi possível enviar dados: Não há uma conexão ativa"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:341
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %s, no "
+"data was sent to the remote end"
+msgstr ""
+"O motor de criptografia não é capaz de descriptografar a mensagem atual (%"
+"Q): %s, os dados não foram enviados ao destino remoto"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:441
+#, c-format
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %s"
+msgstr ""
+"A seguinte mensagem parece estar criptografada, mas o motor de criptografia "
+"falhou ao decodificá-la: %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/dcc/chat.cpp:486
+#, fuzzy
+msgid "DCC %Q failed: %Q"
+msgstr "DCC %s falhou: %Q"
+
+#~ msgid "Contacting host %s on port %s"
+#~ msgstr "Contactando com a máquina %s na porta %s"
+
+#~ msgid "Missing target nickname"
+#~ msgstr "Faltando apelido de destino"
+
+#~ msgid "Missing filename"
+#~ msgstr "Faltando o nome do arquivo"
+
+#~ msgid "The file size is not an positive number"
+#~ msgstr "O tamanho do arquivo não é um número positivo"
+
+#~ msgid "Invalid file size specified, no message sent"
+#~ msgstr "Tamanho do arquivo especificado é inválido, mensagem não enviada"
+
+#~ msgid "Avg: %1 bytes/sec"
+#~ msgstr "Media: %1 bytes/seg"

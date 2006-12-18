@@ -1,0 +1,128 @@
+# translation of filetransferwindow_pt_BR.po to 
+# translation of filetransferwindow_pt_BR.po to
+# translation of filetransferwindow.pot to Brazilian-Protugues
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Adilson GonAalves Soares Junior <cabide@brfree.com.br>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: filetransferwindow_pt_BR\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2004-11-15 19:20+0000\n"
+"Last-Translator: \n"
+"Language-Team:  <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:159
+msgid "Type"
+msgstr "Tipo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:160
+msgid "Information"
+msgstr "Informação"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:161
+msgid "Progress"
+msgstr "Progresso"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:311
+msgid "Size: %1 bytes"
+msgstr "Tamanho: %1 bytes"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:329
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:359
+msgid "&Open"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:347
+msgid "&Other..."
+msgstr "&Outro..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:350
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:362
+msgid "Open &With"
+msgstr "Abrir &Com..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:352
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:364
+msgid "Open &Location"
+msgstr "Abrir &Diretório"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:353
+msgid "Terminal at Location"
+msgstr "Terminal no Destino"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:365
+#, fuzzy
+msgid "MS-DOS Prompt at Location"
+msgstr "Terminal no Destino"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
+msgid "&Copy Path to Clipboard"
+msgstr "&Copiar o caminho para a Área de Transferência"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:372
+msgid "&Delete file"
+msgstr "&Apagar Arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:374
+msgid "Local &File"
+msgstr "Diretório do &Arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:397
+msgid "&Clear Terminated"
+msgstr "&Limpar Concluido(s)"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:404
+msgid "Clear &All"
+msgstr "Limpar &Tudo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:494
+msgid "Do you really want to delete the file %Q?"
+msgstr "Você deseja realmente apagar o arquivo %Q?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:496
+msgid "Confirm delete"
+msgstr "Confirmar deleção"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "Yes"
+msgstr "Sim"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "No"
+msgstr "Não"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:501
+msgid "Delete failed"
+msgstr "Falhou ao deletar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
+msgid "Failed to remove the file"
+msgstr "Falhou ao remover o arquivo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:503
+msgid "OK"
+msgstr "Aceitar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:651
+msgid "Clear all transfers, including any in progress?"
+msgstr "Limpar todas as transferências, incluindo às em progresso?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:653
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Limpar Todas as Transferências? - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:688
+msgid "File Transfers"
+msgstr "Transferência de Arquivos"
+
+#~ msgid "&Default Application"
+#~ msgstr "Aplicação Pa&drão"

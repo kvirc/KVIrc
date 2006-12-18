@@ -1,0 +1,114 @@
+# translation of editor_pt_BR.po to 
+# translation of editor.pot to Brazilian-Protugues
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Adilson GonAalves Soares Junior <cabide@brfree.com.br>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_pt_BR\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2004-11-15 02:17+0000\n"
+"Last-Translator: \n"
+"Language-Team:  <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:163
+msgid "Preferences"
+msgstr "Preferências"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:166
+msgid "Font:"
+msgstr "Fonte:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:171
+msgid "Background:"
+msgstr "Fundo:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Normal text:"
+msgstr "Texto normal:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:173
+msgid "Brackets:"
+msgstr "Parênteses:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:174
+msgid "Comments:"
+msgstr "Comentários:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Functions:"
+msgstr "Funções:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:176
+msgid "Keywords:"
+msgstr "Palavras chave:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Variables:"
+msgstr "Variáveis:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:178
+msgid "Punctuation:"
+msgstr "Pontuação:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:179
+msgid "Find:"
+msgstr ""
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "&OK"
+msgstr "&Aceitar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:818
+msgid "&Open..."
+msgstr "&Abrir..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:819
+msgid "&Save As..."
+msgstr "&Salvar Como..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:821
+msgid "&Configure Editor..."
+msgstr "&Configurar Editor..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Choose a Filename - KVIrc"
+msgstr "Escolha um Nome de Arquivo - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:949
+msgid "Save Failed - KVIrc"
+msgstr "Falha ao Salvar - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:950
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Não foi possível abrir o arquivo %s para escrita."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1007
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1022
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Linha: %d Coluna: %d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1032
+msgid "Load Script File - KVIrc"
+msgstr "Carregar Arquivo de Script - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1045
+msgid "Open Failed - KVIrc"
+msgstr "Falhou ao Abrir - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1046
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Não foi possível abrir o arquivo %s para leitura."

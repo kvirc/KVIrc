@@ -1,0 +1,43 @@
+# translation of perl_hu.po to hungarian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ádám Fibinger <vfiber@interware.hu>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: perl_hu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2006-05-24 04:54+0200\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:48
+msgid "The perlcore module can't be loaded: perl support not available"
+msgstr "A perl mag modul nem tölthetõ be, perl támogatás nem lesz elérhetõ"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:49
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr "További részletekért a betöltési hibáról próbáld: /perlcore.load"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:62
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Ez a KVIrc verzió perl támogatás nélkül lett lefordítva"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:462
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:536
+msgid ""
+"The perlcore module failed to execute the code: something is wrong with the "
+"perl support"
+msgstr ""
+"A perl mag modul nem képes kódot futtatni. Valami nem stimmel a perl "
+"támogatással"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:479
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:483
+msgid "Perl execution error:"
+msgstr "Perl végrehajtási hiba:"

@@ -1,0 +1,137 @@
+# translation of editor_it.po to italiano
+# KVIrc Editor module Italian translation file
+# Italian translation file for KVIrc 3.0
+# Copyright (C) Szymon Stefanek
+# This file is distributed under the same license as the KVIrc package.
+# Eva <eva@cyberbeat.it>, 2004.
+# Etherea <cle at virg0 dot org>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_it\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2006-02-10 01:23+0200\n"
+"Last-Translator: Etherea <cle at virg0 dot org>\n"
+"Language-Team: italiano <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.2beta3\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:163
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:166
+msgid "Font:"
+msgstr "Carattere:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:171
+msgid "Background:"
+msgstr "Sfondo:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Normal text:"
+msgstr "Testo normale:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:173
+msgid "Brackets:"
+msgstr "Parentesi graffe:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:174
+msgid "Comments:"
+msgstr "Commenti:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Functions:"
+msgstr "Funzioni:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:176
+msgid "Keywords:"
+msgstr "Parole chiave:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Variables:"
+msgstr "Variabili:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:178
+msgid "Punctuation:"
+msgstr "Punteggiatura:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:179
+msgid "Find:"
+msgstr "Trova:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "&OK"
+msgstr "&OK"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Cancel"
+msgstr "Annulla"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:818
+msgid "&Open..."
+msgstr "&Apri..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:819
+msgid "&Save As..."
+msgstr "&Salva con nome..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:821
+msgid "&Configure Editor..."
+msgstr "&Configura Editor..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Choose a Filename - KVIrc"
+msgstr "Scegli un Nome - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:949
+msgid "Save Failed - KVIrc"
+msgstr "Impossibile Salvare - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:950
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Impossible aprire il file %s in scrittura."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1007
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1022
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Riga: %d Colonna: %d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1032
+msgid "Load Script File - KVIrc"
+msgstr "Caricare lo Script - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1045
+msgid "Open Failed - KVIrc"
+msgstr "Apertura Fallita - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1046
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Impossibile aprire il file %s in lettura."
+
+#~ msgid "KVIrc Scripts (*.kvs);;All Files (*)"
+#~ msgstr "Script di KVIrc (*.kvs);;Tutti i File (*)"
+
+#~ msgid "Ok"
+#~ msgstr "Ok"
+
+#~ msgid "Save to file"
+#~ msgstr "Salva su file"
+
+#~ msgid "Load from file"
+#~ msgstr "Carica da file"
+
+#~ msgid "Configure colors and fonts"
+#~ msgstr "Configura i colori ed i caratteri"
+
+#~ msgid "Choose a script file to load"
+#~ msgstr "Scegli un file da caricare"
+
+#~ msgid "Load failed"
+#~ msgstr "Caricamento fallito"

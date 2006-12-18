@@ -1,0 +1,111 @@
+# translation of editor_es.po to spanish
+# José Luis Sánchez <jsanchezv@teleline.es>, 2004-2005
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_es\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2004-10-23 11:25+0100\n"
+"Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
+"Language-Team: spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:163
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:166
+msgid "Font:"
+msgstr "Fuente:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:171
+msgid "Background:"
+msgstr "Fondo:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Normal text:"
+msgstr "Texto normal:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:173
+msgid "Brackets:"
+msgstr "Llaves:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:174
+msgid "Comments:"
+msgstr "Comentarios:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Functions:"
+msgstr "Funciones:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:176
+msgid "Keywords:"
+msgstr "Identificadores:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Variables:"
+msgstr "Variables:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:178
+msgid "Punctuation:"
+msgstr "Puntuación:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:179
+msgid "Find:"
+msgstr "Buscar:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "&OK"
+msgstr "&Aceptar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:818
+msgid "&Open..."
+msgstr "&Abrir..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:819
+msgid "&Save As..."
+msgstr "&Guardar Como..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:821
+msgid "&Configure Editor..."
+msgstr "&Configurar Editor..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Choose a Filename - KVIrc"
+msgstr "Escoja un Nombre de Archivo - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:949
+msgid "Save Failed - KVIrc"
+msgstr "Falló la Grabación - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:950
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "No pude abrir el archivo %s para escritura."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1007
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1022
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Fila: %d Col: %d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1032
+msgid "Load Script File - KVIrc"
+msgstr "Cargar Archivo de Script - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1045
+msgid "Open Failed - KVIrc"
+msgstr "Falló la apertura - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1046
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "No pude abrir el archivo %s para lectura."

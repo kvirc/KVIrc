@@ -1,0 +1,115 @@
+# translation of mediaplayer_fr.po to Français
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ahinu <ahinu@wanadoo.fr>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer_fr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-24 10:40+0200\n"
+"PO-Revision-Date: 2005-04-24 10:56+0200\n"
+"Last-Translator: Ahinu <ahinu@wanadoo.fr>\n"
+"Language-Team: Français <kde-francophone@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:91
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr "Essai de l'interface de lecture multimédia \"%Q\" : score %d"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Pas sûr des résultats, essai d'une seconde méthode de détection de mot de pass plus aggressive"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:101
+msgid "Choosing media player interface \"%Q\""
+msgstr "Choix de l'interface de lecture multimédia \"%Q\""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:104
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Il semble qu'il n'y ait pas de lecteur multimédia utilisable sur cette machine"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Aucune interface de lecture multimédia selectionnée. Essayez /mediaplayer.detect"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:129
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:522
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:558
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1016
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1128
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1167
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1304
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1323
+msgid "The selected media player interface failed to execute the requested function"
+msgstr "L'interface de lecture multimédia a échoué lors de l'exécution de la fonction demandée"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:130
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:523
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:559
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1017
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1129
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1168
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1305
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1324
+msgid "Last interface error: "
+msgstr "Dernière erreur de l'interface : "
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:429
+msgid "No such media player interface (try /mediaplayer.detect)"
+msgstr "Aucune interface de lecture multimédia (essayez /mediaplayer.detect)"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:36
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+"Une interface pour xmms, le populaire lecteur multimédia UNIX.\n"
+"Téléchargez-le depuis http://www.xmms.org\n"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:77
+msgid "Can't load the xmms library (libxmms.so)"
+msgstr "Impossible de charger la librairie xmms (libxmms.so)"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:84
+#, c-format
+msgid "Can't find symbol %s in libxmms.so"
+msgstr "Impossible de trouver le symbole %s dans libxmms.so"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+msgid "An interface to the AmaroK KDE media player."
+msgstr "Une interface pour AmaroK, lecteur multimédia de KDE."
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+msgid "An interface to the Juk KDE media player."
+msgstr "Une interface pour Juk, lecteur multimédia de KDE."
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:172
+msgid "Can't find a running winamp window"
+msgstr "Impossible de trouver une fenêtre winamp."
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:182
+msgid ""
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+"Une interface pour Winamp, le populaire lecteur multimédia.\n"
+"Vous pouvez le télécharger depuis http://www.winamp.com.\n"
+"Pour utilisez toutes les fonctionnalités de cette interface, vous devez copier le module externe gen_kvirc.dll situé dans la distribution de KVIrc vers le répertoire des modules externes de Winamp et redémarrer Winamp."
+
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:304
+#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:336
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr "Le module externe de winamp n'a pas été installé proprement. Utilisez /help mediaplayer.nowplaying"
+

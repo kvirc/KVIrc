@@ -1,0 +1,118 @@
+# translation of editor_ru.po to russian
+# translation of editor_ru.po to русский
+# translation of editor.po to русский
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Valerius <valeragir@mail.ru>, 2004, 2005.
+# Valeriy Girchenko <valeragir@mail.ru>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_ru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2005-12-27 23:04+0200\n"
+"Last-Translator: Valerius <valeragir@mail.ru>\n"
+"Language-Team: russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:163
+msgid "Preferences"
+msgstr "Предпочтения"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:166
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:171
+msgid "Background:"
+msgstr "Фон:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Normal text:"
+msgstr "Обычный текст:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:173
+msgid "Brackets:"
+msgstr "Скобки:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:174
+msgid "Comments:"
+msgstr "Комментарии:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Functions:"
+msgstr "Функции:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:176
+msgid "Keywords:"
+msgstr "Ключевые слова:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Variables:"
+msgstr "Переменные:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:178
+msgid "Punctuation:"
+msgstr "Знаки препинания:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:179
+msgid "Find:"
+msgstr "Поиск:"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "&OK"
+msgstr "&Ok"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Cancel"
+msgstr "Отмена"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:818
+msgid "&Open..."
+msgstr "&Открыть..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:819
+msgid "&Save As..."
+msgstr "&Сохранить как..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:821
+msgid "&Configure Editor..."
+msgstr "&Настроить редактор..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Choose a Filename - KVIrc"
+msgstr "Выберите имя файла - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:949
+msgid "Save Failed - KVIrc"
+msgstr "Ошибка записи - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:950
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Невозможно открыть файл %s на запись."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1007
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1022
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Строк: %d Колонок:%d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1032
+msgid "Load Script File - KVIrc"
+msgstr "Загрузить файл скрипта - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1045
+msgid "Open Failed - KVIrc"
+msgstr "Ошибка открытия - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1046
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Невозможно открыть файл %s на чтение."

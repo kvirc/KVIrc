@@ -1,0 +1,113 @@
+# translation of editor.po to hungarian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ádám Fibinger <vfiber@interware.hu>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2006-05-23 18:10+0200\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:163
+msgid "Preferences"
+msgstr "Tulajdonságok"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:166
+msgid "Font:"
+msgstr "Betûtípus"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:171
+msgid "Background:"
+msgstr "Háttér: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Normal text:"
+msgstr "Normál szöveg"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:173
+msgid "Brackets:"
+msgstr "Zárójelek: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:174
+msgid "Comments:"
+msgstr "Kommentek: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Functions:"
+msgstr "Függvények: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:176
+msgid "Keywords:"
+msgstr "Kulcsszavak: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Variables:"
+msgstr "Változók: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:178
+msgid "Punctuation:"
+msgstr "Központozás: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:179
+msgid "Find:"
+msgstr "Keresés: "
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "&OK"
+msgstr "&OK"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:818
+msgid "&Open..."
+msgstr "Megnyitás"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:819
+msgid "&Save As..."
+msgstr "Mentés másként"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:821
+msgid "&Configure Editor..."
+msgstr "Szerkesztõ beállításai..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Choose a Filename - KVIrc"
+msgstr "Válassz Fájlnevet - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:949
+msgid "Save Failed - KVIrc"
+msgstr "Mentés Sikertelen - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:950
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Nem tudom megnyitni írásra: %s"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1007
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1022
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Sor: %d Oszlop: %d"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1032
+msgid "Load Script File - KVIrc"
+msgstr "Szkript Fájl Betöltése"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1045
+msgid "Open Failed - KVIrc"
+msgstr "Megnyitás Sikertelen - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/editor/scripteditor.cpp:1046
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Nem tudom megnyitni írásra: %s"

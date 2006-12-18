@@ -1,0 +1,43 @@
+# Czech translation of Kvirc 3.
+# Copyright (C) 2004 THE Kvirc 3'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Kvirc 3 package.
+# Dusan Hokuv <dusan@mirc.cz>, 2004.
+# 
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Kvirc 3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2004-10-16 11:22+0200\n"
+"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:48
+msgid "The perlcore module can't be loaded: perl support not available"
+msgstr "Modul perlcore nemůže být nahrán: chybí podpora perlu"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:49
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr "Pro více detailů o selhání zkuste /perlcore.load"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:62
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Tato verze KVIrc byla zkompilována bez podpory perl skriptování"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:462
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:536
+msgid ""
+"The perlcore module failed to execute the code: something is wrong with the "
+"perl support"
+msgstr ""
+"Modul perlcore selhal při spuštění kódu: něco je v nepořádku s podporou perlu"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:479
+#: /home/alexey/kvirccvs/kvirc/src/modules/perl/libkviperl.cpp:483
+msgid "Perl execution error:"
+msgstr "Spouštěcí chyba Perlu:"

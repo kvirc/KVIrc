@@ -1,0 +1,19 @@
+#!/bin/sh
+# make messages-extract && make messages-update
+# helper script for KVIrc translators
+# Dusan Hokuv, 2005
+# Modified: Ahinu, 2006
+
+modules="about dcc editor filetransferwindow logview notifier perl perlcore sharedfileswindow options"
+
+cd kvirc
+make messages-extract && make messages-update
+cd ..
+cd modules
+for module in $modules ; do
+	cd $module
+	make messages-extract && make messages-update
+	cd ..
+done
+
+echo "Finished!"

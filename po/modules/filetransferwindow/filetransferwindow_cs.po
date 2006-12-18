@@ -1,0 +1,125 @@
+# Czech translation of Kvirc-3.0.
+# Copyright (C) 2004 THE Kvirc-3.0'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Kvirc-3.0 package.
+# Dušan Hokův <dusan@mirc.cz>, 2004.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Kvirc-3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2005-02-09 16:11+0100\n"
+"Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:159
+msgid "Type"
+msgstr "Typ"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:160
+msgid "Information"
+msgstr "Informace"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:161
+msgid "Progress"
+msgstr "Průběh"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:311
+msgid "Size: %1 bytes"
+msgstr "Velikost: %1 bajtů"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:329
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:359
+msgid "&Open"
+msgstr "&Otevřít"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:347
+msgid "&Other..."
+msgstr "&Ostatní..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:350
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:362
+msgid "Open &With"
+msgstr "Otevřít &Pomocí"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:352
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:364
+msgid "Open &Location"
+msgstr "Otevřít &Umístění"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:353
+msgid "Terminal at Location"
+msgstr "Terminál v Umístění"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:365
+msgid "MS-DOS Prompt at Location"
+msgstr "MS-DOS Prompt na umístění"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
+msgid "&Copy Path to Clipboard"
+msgstr "&Kopírovat cestu do schránky"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:372
+msgid "&Delete file"
+msgstr "&Smazat soubor"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:374
+msgid "Local &File"
+msgstr "Lokální &Soubor"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:397
+msgid "&Clear Terminated"
+msgstr "&Smazat přerušené"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:404
+msgid "Clear &All"
+msgstr "Smazat &Vše"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:494
+msgid "Do you really want to delete the file %Q?"
+msgstr "Opravdu chcete smazat soubor %Q?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:496
+msgid "Confirm delete"
+msgstr "Potvrdit smazání"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "Yes"
+msgstr "Ano"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "No"
+msgstr "Ne"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:501
+msgid "Delete failed"
+msgstr "Smazání selhalo"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
+msgid "Failed to remove the file"
+msgstr "Selhalo smazání souboru"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:503
+msgid "OK"
+msgstr "OK"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:651
+msgid "Clear all transfers, including any in progress?"
+msgstr "Smazat všechny přenosy, včetně probíhajících?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:653
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Smazat všechny přenosy: - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:688
+msgid "File Transfers"
+msgstr "Souborové přenosy"
+
+#~ msgid "&Default Application"
+#~ msgstr "&Výchozí aplikace"

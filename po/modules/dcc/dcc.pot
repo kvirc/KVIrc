@@ -1,0 +1,927 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-11-27 16:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:127
+msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:137
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:678
+msgid "Can't open file %Q for reading"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:178
+msgid ""
+"<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
+"mode.<br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:183
+msgid "The connection will be secured using SSL.<br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:187
+msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:191
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:426
+msgid "DCC %1 Request - KVIrc"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:242
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
+"b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
+"b><br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:248
+msgid "DCC VOICE request"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:311
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
+"<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
+"<b>%5</b><br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:317
+msgid "DCC CANVAS request"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:385
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
+"large.<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:398
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
+"large.<br>You will be the passive side of the connection.<br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:411
+msgid ""
+"<center><b>Note:</b></center>The file appears to be an avatar that you have "
+"requested. You should not change its filename. Save it in a location where "
+"KVIrc can find it, such as the 'avatars', 'incoming', or 'pics' directories, "
+"your home directory, or the save directory for the incoming file type. The "
+"default save path will probably work. You can instruct KVIrc to accept "
+"incoming avatars automatically by setting the option "
+"<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:440
+msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:497
+msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:531
+msgid ""
+"The file '<b>%1</b>' already existsand is <b>%2</b> bytes large.<br>Do you "
+"wish to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the "
+"new file, or<br><b>resume</b> an incomplete download?"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:544
+msgid ""
+"The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
+"you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
+"the new file ?"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/broker.cpp:614
+msgid "File %s exists, auto-renaming to %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:75
+msgid "Attempting a passive DCC CANVAS connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:80
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:183
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:764
+#, c-format
+msgid "Listening on interface %s port %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:95
+msgid ""
+"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:97
+msgid "DCC CANVAS request not sent: awaiting manual connections"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:101
+msgid "Attempting an active DCC CANVAS connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:104
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:181
+msgid "Contacting host %Q on port %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:274
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:910
+msgid "DCC Failed: %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:279
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:510
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:919
+#, c-format
+msgid "Connected to %s:%s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvas.cpp:281
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:512
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:921
+#, c-format
+msgid "Local end is %s:%s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1559
+msgid "&Line"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1560
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1568
+msgid "&Rectangle"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1561
+msgid "&Ellipse"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1562
+msgid "&Pie"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1563
+msgid "&Chord"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1565
+msgid "&Rich text (html)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1567
+msgid "&Triangle"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1569
+msgid "&Pentagon"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1570
+msgid "&Hexagon"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1572
+msgid "&Shape"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1573
+msgid "&Item"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1574
+msgid "&Polygons"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/canvaswidget.cpp:1576
+msgid "&Insert"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:157
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:167
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:206
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:208
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1485
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:211
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1488
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:233
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:236
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:244
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1543
+msgid "Low-level transport connection established"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:245
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1544
+msgid "Starting Secure Socket Layer handshake"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:253
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:297
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:380
+msgid "Cannot send data: No active connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:337
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %s, no "
+"data was sent to the remote end"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:395
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:827
+msgid "ERROR: %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:437
+#, c-format
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/chat.cpp:482
+msgid "DCC %Q failed: %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/descriptor.cpp:70
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:118
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:227
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:468
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:660
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:683
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:745
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:769
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:847
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:849
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1094
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1143
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1183
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1275
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:486
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:516
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/marshal.cpp:521
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:132
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:133
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:134
+msgid "unknown"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:59
+msgid "&Accept"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:64
+msgid "&Reject"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:114
+msgid "Choose Save Location - KVIrc"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:181
+msgid "Choose Files to Send - KVIrc"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:273
+msgid "&Rename"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:277
+msgid "Over&write"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:281
+msgid "Re&sume"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:286
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1812
+msgid "Cancel"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/dialogs.cpp:293
+msgid "File Already Exists - KVIrc"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:98
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:207
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:111
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:220
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:137
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:245
+msgid "Unable to get address of interface %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:146
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:255
+msgid "No suitable interfaces to listen on, use -i"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:181
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:288
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:445
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:640
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:841
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:907
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:977
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1089
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1178
+msgid "Missing target nickname"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:460
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:675
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:760
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1132
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1264
+msgid "-c requires -i and -p"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:654
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:737
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:334
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:616
+msgid "<unknown size>"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:842
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:978
+msgid "Missing filename"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:843
+msgid "The file size is not an positive number"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:919
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:971
+msgid "Invalid file size specified, no message sent"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:993
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1085
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1108
+#, c-format
+msgid "Invalid sample rate '%s', defaulting to 8000"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1121
+#, c-format
+msgid "Invalid codec '%s', defaulting to 'adpcm'"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1562
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2380
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2400
+msgid "The current window has no associated DCC session"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:1569
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/libkvidcc.cpp:2391
+msgid "The specified window identifier is not valid"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:75
+msgid "Unable to process the above request: %Q, %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:77
+msgid "Ignoring and notifying failure"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:77
+msgid "Ignoring"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:93
+#, c-format
+msgid "Concurrent transfer limit reached (%u of %u transfers running)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:109
+#, c-format
+msgid "Slot limit reached (%u slots of %u)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:118
+msgid "Too many pending connections"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:154
+#, c-format
+msgid "Invalid port number %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:170
+#, c-format
+msgid "Invalid IP address in old format %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:189
+#, c-format
+msgid "Invalid IP address %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:235
+#, c-format
+msgid ""
+"The above request is broken: The second parameter is '%s' and should be "
+"'chat', trying to continue"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:247
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC CHAT is not available"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:332
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number, trying to continue"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:342
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:486
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:624
+msgid ""
+"The above request is broken: The filename contains path components, "
+"stripping the leading path and trying to continue"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:356
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC SEND is not available"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:418
+#, c-format
+msgid ""
+"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:432
+#, c-format
+msgid "Invalid resume position argument '%s'"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:451
+#, c-format
+msgid ""
+"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
+"or invalid resume size"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:476
+msgid ""
+"The above request has resume file size missing, assuming a resume file size "
+"of 0"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:500
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RECV is not available"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:515
+#, c-format
+msgid "Invalid RECV request: Position %u is is larger than file size"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:569
+msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:575
+#, c-format
+msgid "The remote client is listening on interface %s and port %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:582
+msgid ""
+"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
+"to send the file (or double-click on the socket)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:614
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number; trying to continue"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:638
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RSEND is not available"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:649
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:798
+msgid "(unknown)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:655
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:784
+msgid "No suitable interface to listen on, trying to continue anyway..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:721
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC GET is not available"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:732
+msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:733
+msgid "\"any\""
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:757
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %s since we can't accept incoming connections (user option)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:814
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %Q"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:848
+msgid ""
+"The above request cannot be accepted: DCC VOICE support not enabled at "
+"compilation time "
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:858
+#, c-format
+msgid "The above request cannot be accepted: Unsupported codec '%s'"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:871
+#, c-format
+msgid ""
+"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
+"to 8000"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/requests.cpp:1016
+#, c-format
+msgid "Unknown DCC type '%s'"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:256
+msgid "WARNING: The peer is sending garbage data past the end of the file"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:257
+msgid ""
+"WARNING: Ignoring data past the declared end of file and closing the "
+"connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:356
+msgid ""
+"Data transfer terminated, waiting 30 seconds for the peer to close the "
+"connection..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:363
+msgid "Data transfer was terminated 30 seconds ago, closing the connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:593
+msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:725
+#, c-format
+msgid "TRANSFER %d"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:748
+msgid "Setting up the connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:807
+msgid "Attempting a passive DCC %1 connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:815
+msgid "Attempting an active DCC %1 connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:829
+msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:887
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:898
+msgid "Aborted"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:897
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1572
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1644
+msgid "Transfer failed: "
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:909
+msgid "Configure Bandwidth..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:911
+msgid "Resend DCC"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:912
+msgid "Resend TDCC"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:913
+msgid "Resend RevDCC"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:917
+msgid "Abort"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1108
+msgid "From: "
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1109
+msgid "To: "
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1212
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1219
+msgid "%1 of %2 bytes (%3%)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1223
+msgid "%1 bytes"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1236
+msgid "Spd:"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1251
+msgid "Avg:"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1322
+msgid "Transfer Log"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1453
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1723
+msgid "Contacting host %1 on port %2"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1460
+msgid "Listening on interface %1 port %2"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1483
+msgid "The local IP address is private, determining from IRC server: %1"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1530
+msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1532
+msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1551
+msgid "[SSL ERROR]: %1"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1591
+msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1610
+msgid "Transfer completed"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1653
+msgid "Connected to %1:%2"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1654
+msgid "Local end is %1:%2"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1698
+msgid "Transferring data"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1716
+msgid "RESUME accepted, transfer will begin at position %1"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1746
+msgid "Internal error in RESUME request"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1751
+msgid "Invalid RESUME request: Position %1 is larger than file size"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1755
+msgid "Accepting RESUME request, transfer will begin at position %1"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1787
+msgid "Configure bandwidth for DCC transfer %1"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1790
+msgid "Limit upload bandwidth to"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1790
+msgid "Limit download bandwidth to"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1803
+msgid "bytes/sec"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/send.cpp:1807
+msgid "OK"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/utils.cpp:53
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/utils.cpp:123
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/utils.cpp:71
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/utils.cpp:141
+#, c-format
+msgid ""
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:164
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard , use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:172
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:213
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:271
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:662
+msgid "Input buffer"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:664
+msgid "Output buffer"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:746
+msgid "Attempting a passive DCC VOICE connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:751
+msgid "Attempting an active DCC VOICE connection"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:761
+#, c-format
+msgid "Contacting host %s on port %s"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:779
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:781
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:885
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:887
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:939
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr ""
+
+#: /usr/build/kvirccvs/kvirc/src/modules/dcc/voice.cpp:1023
+#, c-format
+msgid "Volume: %i"
+msgstr ""

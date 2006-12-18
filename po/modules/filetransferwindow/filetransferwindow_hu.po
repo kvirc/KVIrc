@@ -1,0 +1,123 @@
+# translation of filetransferwindow.po to hungarian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ádám Fibinger <vfiber@interware.hu>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: filetransferwindow\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"PO-Revision-Date: 2006-05-23 18:15+0200\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10.2\n"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:159
+msgid "Type"
+msgstr "Típus"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:160
+msgid "Information"
+msgstr "Információ"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:161
+msgid "Progress"
+msgstr "Folyamat"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:311
+msgid "Size: %1 bytes"
+msgstr "Méret: %1 bájt"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:329
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:359
+msgid "&Open"
+msgstr "Megnyitás"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:347
+msgid "&Other..."
+msgstr "Egyéb"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:350
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:362
+msgid "Open &With"
+msgstr "Megnyitás ezzel..."
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:352
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:364
+msgid "Open &Location"
+msgstr "Hely megnyitása"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:353
+msgid "Terminal at Location"
+msgstr "Terminál az adott helyen"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:365
+msgid "MS-DOS Prompt at Location"
+msgstr "MS-DOS Promt az adott helyen"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
+msgid "&Copy Path to Clipboard"
+msgstr "Útvonal másolása vágólapra"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:372
+msgid "&Delete file"
+msgstr "Fájl Törlése"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:374
+msgid "Local &File"
+msgstr "Helyi Fájl"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:397
+msgid "&Clear Terminated"
+msgstr "Megszakított eltávolítása"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:404
+msgid "Clear &All"
+msgstr "Minden eltávolítása"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:494
+msgid "Do you really want to delete the file %Q?"
+msgstr "Tényleg törölni szeretnéd a fájlt: %Q?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:496
+msgid "Confirm delete"
+msgstr "Törlés Megerõssítése"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "Yes"
+msgstr "Igen"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:497
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:654
+msgid "No"
+msgstr "Nem"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:501
+msgid "Delete failed"
+msgstr "Törlés sikertelen"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
+msgid "Failed to remove the file"
+msgstr "A fájl eltávolítása sikertelen"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:503
+msgid "OK"
+msgstr "OK"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:651
+msgid "Clear all transfers, including any in progress?"
+msgstr ""
+"Minden adatátvitel eltávolítása, beleértve a még folyamatban lévõket is?"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:653
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Minden Adatátvitel eltávolítása? - KVIrc"
+
+#: /home/alexey/kvirccvs/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:688
+msgid "File Transfers"
+msgstr "Fájl Átvitelek"
