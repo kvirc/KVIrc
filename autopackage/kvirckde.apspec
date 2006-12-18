@@ -1,0 +1,52 @@
+# -*-shell-script-*-
+
+[Meta]
+RootName: @kvirc.net/kvirc-kde:3.0.1.99
+DisplayName: KVIrc Graphical IRC Client (with KDE support)
+ShortName: kvirc-kde
+Maintainer: Szymon Stefanek <kvirc@kvirc.net>
+Packager: Juanjo Alvarez <juanjo@juanjoalvarez.net>
+Summary: Powerfull GUI IRC client
+SoftwareVersion: 3.0.1.99
+
+# Only uncomment InterfaceVersion if your package exposes interfaces to other software,
+# for instance if it includes DSOs or python/perl modules
+InterfaceVersion: 3.0.0
+PackageVersion: 1
+
+[Description]
+KVIrc is the most powerfull IRC client on the place.
+
+[BuildPrepare]
+local oCFLAGS="$CFLAGS"
+local oCXXFLAGS="$CXXFLAGS"
+export CC=gcc
+export CXX=g++
+local TARGET
+prepareBuild --with-x --with-fno-rtti --with-aa-fonts --with-big-channels --with-pipes 
+
+[BuildUnprepare]
+unprepareBuild
+
+[Imports]
+echo '*' | import
+
+[Prepare]
+# Dependency checking
+require @trolltech.com/qt 3.2
+require @kde.org/kdelibs 3.2
+require @xfree86.org/xlib
+recommend @perl.org/perl
+
+[Install]
+# Put your installation script here
+installExe bin/* 
+#installLib lib/libkvilib.la
+installLib lib/libkvilib.so.3.0.0
+installMan 1 man/kvirc.1
+copyFiles share/kvirc "$prefix/share"
+installDesktop "" ./share/applnk/kvirc.desktop
+
+[Uninstall]
+# Usually just the following line is enough to uninstall everything
+uninstallFromLog
