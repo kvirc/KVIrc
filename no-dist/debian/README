@@ -1,0 +1,37 @@
+============================================================================
+
+	This is more or less how I build a KVIrc 3 Debian package:
+
+	1. Copy the following files into kvirccvs, i.e. into the directory where
+	kvirc/ is in:
+	       Makefile.generic
+	       Makefile
+
+	2. If you do an 'ls' now you should see something like this:
+			Makefile Makefile.generic kvirc/ modules/ etc...
+
+	3. Run "make release"
+
+    --------------------------------------------------------------------
+
+	If you change the order of the DEB_BUILD_OPTIONS= lines in the
+	Makefile you can choose whether you want to build a package with debug
+	symbols left in.
+
+	Interesting targets to call are:
+
+	checkout      Retrieve the new source from CVS.
+	update        Update the current local source tree.
+	setup         Create a source tree which is ready to be used for
+	              a Debian source package. Among other things, the configure
+				  script will have been created.
+	build         Build packages for local use.
+	release       Build packages ready to be released in Debian.
+	valgrind      Run KVIrc 3 under valgrind.
+	mpatrol       Run KVIrc 3 under mpatrol.
+
+
+	--
+	Robin <robin@debian.org>
+
+============================================================================
