@@ -1,0 +1,25 @@
+## This file must be renamed to "preinstalled.kvc"
+## and placed in global KVIrc folder!
+
+
+## This config file needed to make custom KVIrc packages
+## for Windows with custom preferences. You can tell
+## KVIrc to skip some pages in setup wizard. For
+## example, you can use custom serverlist, or tell
+## KVIrc to not show directody selection dialog, if
+## you think, that it is confusing users.
+
+#[Setup]
+
+## Hide server list if you include a new one
+
+#hideServerList = true
+
+## Set to 1 if you want KVIrc to place settings in default
+## folder
+## Set to 2 if you want to make KVIrc portable by default
+
+## If this option will be setted, KVIrc will skip directory
+## selection page
+
+#settingsDir = 2
