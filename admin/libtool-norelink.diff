@@ -1,0 +1,12 @@
+--- libtool.orig	2005-01-08 20:19:50.000000000 +0100
++++ libtool	2005-01-08 20:30:14.000000000 +0100
+@@ -5777,6 +5777,9 @@
+ 	*/* | *\\*) . $file ;;
+ 	*) . ./$file ;;
+ 	esac
++	
++	echo "Pragma: killing the relink command"
++	relink_command=
+ 
+ 	# Add the libdir to current_libdirs if it is the destination.
+ 	if test "X$destdir" = "X$libdir"; then
