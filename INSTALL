@@ -1,0 +1,741 @@
+Szymon Stefanek                                                 Wed Feb 16 2005
+###############################################################################
+General notes for the installation of the 3.2.0 release of KVIrc 
+###############################################################################
+
+    This document contains the procedures to compile and install
+    the version 3.2.0 of KVIrc.
+
+###############################################################################
+# 0. Table of contents
+###############################################################################
+
+    1. Introduction
+    2. Guru-level installation
+    3. Hacker-level installation
+    4. Human (detailed) installation instructions
+    5. How to compile KVIrc with Qt-embedded
+    6. Compiling KVIrc on Mac OS X
+    7. A note about Windows 95/98/ME
+
+###############################################################################
+# 1. Introduction
+###############################################################################
+
+    This document contains the procedures to compile and install
+    the version 3.2.0 of KVIrc.
+
+    If you have found this document in a binary distribution then
+    KVIrc has been probably already installed by your favorite package
+    manager and maybe something is not working as expected. In this case
+    this document and the accompanying FAQ can help you in guessing
+    what's wrong.
+
+    If you have found this document in a source distribution or you
+    have downloaded it by using the cvs then well...
+    this is a standard INSTALL file :)
+
+###############################################################################
+# 2. Guru installation:
+###############################################################################
+
+    # ./configure
+    # make install
+
+###############################################################################
+# 3. Hacker installation:
+###############################################################################
+
+    If you're compiling the cvs version of KVirc run ./autogen.sh
+    (You NEED automake >= 1.5 for autogen.sh to run).
+
+    # export QTDIR="your qtlibrary path"
+
+    eventually:
+
+    # export KDEDIR="your kde library path"
+
+    We're using GNU tools here.
+
+    # ./configure --help
+    # ./configure [your options]
+    # make
+    # make install
+
+###############################################################################
+# 4. Human (detailed) installation:
+###############################################################################
+
+        If you're not a guru, or have problems with the installation
+        read these instructions carefully.
+
+    ###
+    ### Step 0 (ONLY FOR THE CVS VERSION)
+    ###
+
+        If (*** AND ONLY IF ***) you're compiling the cvs version of kvirc
+        you need to generate the configure script. If you're compiling
+        a downloaded tar.gz (or tar.bz2) package or you don't know what
+        cvs is then jump directly to step 1!
+
+        You need a recent automake and autoconf installed on your system.
+        It is also reccomended to have a recent (matching) libtool installed
+        (libtool is not strictly necessary since KVIrc has a bundled one,
+        but a libtool matching your automake/autoconf versions will probably
+        run better on your system).
+
+        Anyway, run:
+    
+        # ./autogen.sh
+
+        If it runs without any error (it will tell you "Done") then
+        you may skip to step 1, otherwise read on.
+
+        First of all check your auomake version.
+        You need automake 1.5: older versions will NOT WORK.
+        You can check the automake version with the command
+
+        # automake --version
+
+        If your automake version is lower than 1.5 upgrade it.
+        You can find it at http://www.gnu.org/software/automake/ (source)
+        or on your favorite distribution site as auto-installing package.
+
+            Automake installation tip: automake installs in /usr/local/
+            by default. If you have an older automake installation that
+            resides in /usr/ it's better to remove it or (better) overwrite it
+            with the new installation.
+            If you choose to overwrite the old installation with the new
+            one then just use "./configure --prefix=/usr" as the automake's
+            configure command.
+            If you choose to remove the old version then the files to be
+            removed are /usr/bin/automake /usr/bin/aclocal /usr/share/automake
+            /usr/share/aclocal. If you feel unsure about removing it, rename it.
+
+        If the script fails to run then you might try
+
+        # ./autogen.sh --bundled-libtool
+
+        to force the usage of the bundled libtool version.
+        If you later have unexplicable problems with the compilation tools
+        you might also try the bundled libtool.
+
+    ###
+    ### Step 1 : Matching the requirements
+    ###
+
+        - You NEED the Qt library.
+
+        You can download the latest version from ftp://ftp.trolltech.com.
+        The main Qt www site is http://www.trolltech.com.
+        Note for the GPL maniacs: Qt IS GPL.
+        The minimum required version is 3.1.2 (older versions *might* work)
+        Download and install it by following the rules
+        explained in the excellent documentation that comes with the library.
+
+
+        - You need a decent pthread implementation.
+
+        This is usually included in your distribution and is probably
+        already installed. The library is called libpthread.so.
+        You can look for it with the "find" command:
+
+        # find / -name libpthread.so
+
+        On my system the output is:
+
+        # /usr/lib/libpthread.so 
+
+        If you don't have it (the configure script will tell you)
+        you can download it from your favorite GNU mirror.
+
+        On Solaris you can use the native libthread.so library instead
+        but you will have to pass the specific option to configure (see below).
+        FreeBSD has a native implementation of pthreads in libc_r and
+        the gcc compiler has a special -pthread flag to link to it.
+        If you're on FreeBSD, use the --with-freebsd-pthread configure
+        option and make sure that you don't have other pthread wrappers
+        installed (that might collide with the native header files).
+
+        The configure script will also fail if the library is
+        hidden somewhere on your system (eg. not in /lib , /usr/lib or
+        /usr/local/lib): you should probably move it.
+
+
+        - You need the dynamic linker interface library libdl.so.
+
+        This is usually installed on your system , so don't care until
+        configure complatins about it. Some system have the interface
+        builtin in libc. The configure script can detect it.
+
+
+        - (Optional) If you want to compile the KDE integration support
+        you obviousy need KDE. The kdelibs package should suffice.
+
+
+        - (Optional) If you want the translations to non-english languages to work
+        then you need the GNU gettext package. In particular KVIrc uses
+        the msgfmt program.
+
+        This is usually included in your distribution and is probably
+        already installed. You can check it by running 
+
+        # msgfmt --version
+
+        KVIrc will not complain if the command above is missing: it will
+        just skip the creation of the translation files.
+        If the command above fails then you need to install the gettext package
+        if you want any language other than english.
+
+
+        - (Optional) If you want DCC VOICE to support the gsm codec,
+        you need a recent copy of libgsm. This is not strictly required
+        at compile time since KVIrc will look for the library at run-time,
+        and only if the DCC VOICE with the gsm codec is requested.
+        You can check for libgsm using the 'find' command.
+
+        # find / -name libgsm*
+
+        The output should be sometihg like
+
+        # /usr/lib/libgsm.so
+
+        This library is included in most distributions. Some distros ship
+        only the static version of the library "libgsm.a": if the previous
+        find returned only something similar to "/usr/lib/libgsm.a" , you might
+        create manually the shared archive by running:
+
+        # cd /usr/lib
+        # ld --whole-archive -shared -o libgsm.so.1 libgsm.a
+        # ln -s libgsm.so.1 libgsm.so
+        # ldconfig
+
+        If you don't have it installed at all, you might have a look in your
+        distribution CD, or download it from the web.
+
+
+        - (Optional) If you want the /snd plugin to play various audio formats
+        you either need a running artsd, a running esd or a reasonably recent
+        audiofile library. Without these KVIrc will be only able to play *.au
+        files.
+
+
+        - (Optional) If you want to generate the on-line documentation
+        you also need perl: any version will do (I guess).
+
+
+        - (Optional) If you want the secure socket layer support to be compiled
+        you need the OpenSSL library and headers. (libssl.so and openssl/ssl.h)
+
+        - (Optional) If you want perl scripting support to be compiled
+        you need a working perl installation. Your libperl.so MUST be compiled
+        with the MULTIPLICITY option. (You can check it with perl -V).
+
+    ###
+    ### Step 2 : Running the configure script (mandatory)
+    ###
+
+        First of all you must run the configure script that will guess some
+        info about your system and prepare the compilation.
+        You may try to "simply run" it and check if it works...the configure
+        script tries to be smart , but in some cases it will fail.
+
+        So before running the script make sure that the enviroinement
+        variable $QTDIR points to the right location. This will help
+        in finding the correct version of Qt.
+        You might eventually set it with the command:
+
+        # export QTDIR="your qt dir"
+
+        On my system qt is installed in /usr/local/kde/qt
+        so I actually execute
+
+        # export QTDIR="/usr/local/kde/qt"
+
+        If you want to compile the KDE support you might want to do the same
+        with KDEDIR
+
+        # export KDEDIR="your kde dir"
+
+        In my case KDE is installed in /usr/local/kde so I use
+
+        # export KDEDIR="/usr/local/kde"
+   
+        The configure script has a lot of options that can be listed by using
+
+        # ./configure --help
+
+        Here's a list with explainations (the most common are at the top):
+
+        --enable-debug
+            This is for debugging and reporting problems.
+            It sets the compiler options in order to leave the debugging
+            informations into the kvirc executable and the libraries.
+            In this way you will be able to produce a gdb backtrace
+            in case of a crash.
+            YOU NEED THIS OPTION IF YOU WANT TO REPORT A PROGRAM CRASH.
+
+        --enable-pipes
+            Asks the compiler to use pipes instead of files for the
+            compilation stage. The pipes will help in reducing disk usage and
+            will probably shorten the compilation a bit. Use this option if
+            your platform supports it.
+
+        --with-qt-library-dir=<DIR>
+            Look for the qt library in <DIR>.
+            You might want to use this if the configure script has trouble
+            in finding the qt library.
+            You should have no problems if you use export QTDIR="<DIR>"
+            before launching the configure script, but it might help you
+            if you have a non standard Qt installation.
+        
+        --with-qt-include-dir=<DIR>
+            Look for the qt headers in <DIR>.
+            You might want to use this if the configure script has trouble
+            in finding the qt headers. It may especially help if your headers
+            are in a place different than $QTDIR/include (and thus you have
+            a non standard installation)
+         
+        --with-qt-moc=<PATH>
+            Use the qt meta-object compiler found in <PATH>
+            The path is usually $QTDIR/bin/moc , and the
+            configure script will find it if you have a standard
+            Qt installation and $QTDIR points to the right directory.
+            Thus should have no problems if you use export QTDIR="<DIR>"
+            before launching the configure script, but it might help you
+            if you have a non standard Qt installation.
+            This will also help if you have the moc compiler renamed
+            in some way: like "moc2" or sth...
+            <PATH> in this case is a FULL path: directory/program_name!
+        
+        --disable-qt-check
+            This disables Qt checking at compilation time.
+            If this is the only way to compile and run
+            the kvirc executable , then there is something
+            wrong with the configure script.
+
+        --without-kde-support
+            The configure script will look for the KDE headers and libraries
+            and if found it will enable the KDE support. If you don't want
+            the KDE support even if KDE is detected, just use this switch.
+        
+        --with-kde-library-dir=<DIR>
+            Look for the KDE libraries in <DIR>
+            If $KDEDIR points to the right place, you shouldn't need this.
+        
+        --with-kde-include-dir=<DIR>
+            Look for the KDE headers in <DIR>
+            If $KDEDIR points to the right place, you shouldn't need this.
+
+        --with-kde-services-dir=<DIR>
+            Install the kde service protocol files in <DIR>
+            If $KDEDIR points to the right place, you shouldn't need this.
+            This is also non-critical for kvirc: if the configure script
+            can't find this directory, you will only looose the support for
+            irc:// urls in konqueror
+
+        --without-kde-check
+            Similar to --without-qt-check but for KDE.
+
+        --enable-optimisation=<NUMBER>
+            Enables the compiler optimisation flag -o<NUMBER>.
+            Possible values are 0 , 1, 2 and 3 (but if you compiler supports
+            more optimisation levels , you might use other numbers here).
+            Increases compilation time but may produce a slightly faster
+            executable. 
+
+        --with-other-libs=<libraries>
+            Explicitly link to the specified libraries.
+            Example: --with-other-libs="-lmylib -lstrangesystemsupport"
+        
+        --with-other-ldirs=<paths>
+            Explicitly add the specified library search paths
+            Example: --with-other-ldirs="-L/home/pippo/lib/ -L/my/library/"
+        
+        --with-other-idirs
+            Explicitly add the specified include search path
+            Example: --with-other-idirs="-I/home/pippo/include/ -I/tmp/inc/"
+
+        --enable-objprelink
+            This is an experimental support for object prelinking that improves
+            significantly the executable startup time. In order to use it you
+            need to have the "objprelink" program in the PATH. The objprelink
+            program is included in the distribution in the admin directory.
+            In order to use it, you will need to:
+
+            # cd admin
+            # make objprelink
+            # cp objprelink /somewhere_on_your_path
+
+            All this AFTER running ./configure and BEFORE running make.
+
+        --with-no-pthread-check
+            Do not check if the pthread stuff works.
+            If configure fails in the pthread library check , you might want to
+            try this...(but then you will have really to "pray" that
+            the check has been broken by some "unusual" conditions and the
+            compilation will succeed).
+
+        --x-includes=DIR
+            Specifies explicitly the path to the X header files.
+            You might want to use this if the configure script
+            has trouble in finding it.
+        
+        --x-libraries=DIR
+            Specifies explicitly the path to the X libraries.
+            You might want to use this if the configure script
+            has trouble in finding it.
+
+        --with-qt-name=<NAME>
+            Use <NAME> instead of "qt" as the Qt library name.
+            This is useful on systems where Qt has been installed with
+            a name different than the default "qt".
+            It happens often that to allow multiple copies of qt to work
+            the newest have the version name appended to it.
+            For example, on FreeBSD I have found "qt" being Qt1.* and
+            "qt2" being Qt 2.*. Since you need Qt 2.* for kvirc to work,
+            you will need to use --with-qt-name=qt2.
+            If you use this option, you will probably also need to remap
+            the moc compiler path/name with --with-qt-moc.
+
+        --disable-qt-mt
+            Disable checking for the multithreaded version of Qt.
+            By default , KVIrc will try to link to the multithreaded version
+            if found on the system.
+            NOTE: if you enable the KDE support , KVIrc MUST be linked to the
+                  qt library that KDE is linked to.
+
+        --with-ix86-asm
+            KVIrc contains some ix86 assembly routines that *could*
+            performs some things faster (this is not always true, depends
+            on the compiler). You might want to try it if your kvirc seems to
+            be really slow...
+
+        --without-ipv6-support
+            The IPV6 support is compiled by default on the platforms that
+            support it: this option disables it.
+            Even if you have a plain IPV4-only connection, you might want to
+            keep the IPV6 support: you will be able to lookup IPV6 hostnames.
+
+        --without-system-memmove
+            This will disable the use of the system memmove() memcpy() and
+            memset() functions and enable the bundled implementations. Use
+            it if you have undefined references to these functions while
+            compiling.
+
+        --with-ignore-sigalarm
+            This is a hack mainly for Solaris.
+            Use this option if kvirc exits with no apparent reason and
+            the system prints a message related to an "Alarm" :)
+
+            This is a mail that suggests an explaination for the SIGALARM fault.
+            If you experience the problem please drop me a mail at pragma at kvirc dot net
+            and we'll try to look for a solution.
+
+              From: "Andre Stechert" (astechert at email dot com)
+              Date:  26/7/2005 09:36
+
+              Hi,
+              I noticed in your readme that you were having problems with sigalarm
+              in your solaris port and you weren't sure why.  I quickly scanned your
+              source code and noticed that you use usleep and threads.  That's the problem,
+              if you haven't already figured it out. On Solaris, usleep is implemented with
+              SIGALARM. So is threading. So if you the active thread changes while
+              a usleep is in progress, bang, the process is dead.
+
+        --without-crypt-support
+            Disables the cryptographic engines and the whole
+            cryptography/text-transformation support. Produces a slightly
+            smaller executable. Anyway, if you don't know what the
+            ctryptography/text-transformation
+            support is ,I suggest you to avoid using this option.
+        
+        --enable-new-kvs
+            Developers only!
+            This enables the compilation of the new KVS parser, currently
+            under heavy development. This will produce a bigger and possibly
+            unstable executable: do not use if you don't know what you're doing.
+
+        --enable-new-kvs-only
+            Developers only!
+            This hardwires the new KVS parser to be used as the main scripting
+            engine in KVIrc. Be aware that the new KVS engine is NOT YET 100% COMPLETE
+            so some scripts will simply fail.
+
+        --without-transparency
+            This option disables pseudo-transparency support.
+            The pseudo transparency support makes the KVirc windows
+            look like semi-transparent (this is NOT real transparency: this is
+            just a nice-looking hack).
+            If KDE support is enabled, KVirc will have an option that
+            makes all windows use a faded KDE desktop background image
+            as background. Without KDE support you will be able to choose
+            a fake background image and use it as background. (You can still
+            choose your desktop wallpaper: this will (more-or-less) work in
+            all the window managers).
+            It is cool-looking but usually eats some memory when enabled.
+            It also eats some executable size.
+            So this option allows to disable the pseudo-transparency.
+
+        --with-solaris-lthread
+            If you're on Solaris and don't have the pthread library (A wrapper
+            I guess) you might try this option: it attempts to use the native
+            Solaris threading support.
+
+        --with-freebsd-pthread
+            If you're on FreeBSD, you NEED this option. This enables the usage
+            of the native FreeBSD pthread implementation found in libc_r.
+            This requires you to use the native gcc compiler: it has a special
+            -pthread flag that enables the linkage to libc_r instead
+            of plain libc.
+
+        --with-libresolv
+            Link to libresolv. I guess that this is required for Solaris
+        
+        --with-libsocket
+            Link to libsocket. I guess that this is required for Solaris
+        
+        --with-libnsl
+            Link to libnsl. I guess that this is required for Solaris
+
+        --with-libcompat
+            Link to libcompat. This might be required for some systems...
+            but I have no idea which ones. If you find it useful: mail me.
+
+        --enable-fno-rtti
+            Disables compiler runtime type information generation.
+            This is probably needed only with qt-embedded.
+            DON'T use it if you don't exactly know what it does.
+            Actually this may even make KVIrc crash in some situations.
+            For example the KDE sources use __dynamic_cast...
+
+        --disable-x-support
+            Disables completely the X Windows support.
+            This is useful in environments where X is not needed to compile KVIrc
+            such as Qt-Mac on MacOSX, QtEmbedded or Windows.
+            This switch implies also --without-x-bell
+
+        --without-x-bell
+            Disables the usage of the XBell function (needed if you want to
+            compile KVIrc with qt-embedded (no X at all))
+            This is implied by --disable-x-support
+
+        --with-qt-embedded
+            You need this to compile KVIrc with qt-embedded
+
+        --without-ipc
+            Disables support for inter-process communication.
+            You will be not able to send remote commands to running
+            kvirc sessions: this basically means that every time you run
+            the kvirc executable , a new session will be started.
+            If you don't use this switch, a new session will be started
+            only if no session is running on the same display or
+            "new session" has been forced by a commandline switch.
+            If a session is already running, the commandline will be
+            passed to that session via IPC (X-event-based communication).
+            This option saves some KB of the KVIrc executable,
+            so if you're really short in memory , you might use it,
+            otherwise, IPC is a nice feature.
+       
+        --without-dyn-labels
+            You should not need this option.
+            It disables compilation of code that relies on a particular
+            compiler feature (jumping to a dynamic label with a goto).
+            Not all compilers support this , but configure shoud detect
+            it automatically. Anyway , if you get compilation errors on
+            kvi_ircview.cpp, you may try this option...
+            This may also help if the configure script seems to hang
+            when checking for the "compiler dynamic label support".
+
+        --without-splash-screen
+            Do not compile the splash screen code.
+            This will remove you that nice "banner" image that pops up
+            while kvirc is starting up. It will maybe help in making an
+            executable smaller by a couple of KB and save a couple
+            of extra milliseconds during the startup. Use it if you're
+            tring to build a performance critical executable and you're
+            short both in memory and CPU time :)
+
+        --without-info-tips
+            This will disable some informational tooltips in the option
+            dialogs. It will help in making a smaller executable and
+            modules. Use this option if you're a KVIrc guru
+            and you don't need tips about using the options.
+
+        --without-gsm
+            Explicitly disable the usage of the GSM library. This will
+            disable the DCC VOICE gsm codec but might help when the
+            compilation stops complaining of something related to GSM :)
+
+        --without-dcc-sound
+            Explicitly disable the DCC VOICE sound support. This might help
+            if you have problems in compilation of src/modules/dcc/voice.cpp.
+            It will disable the sound support
+            (and thus make DCC VOICE not usable).
+
+        --disable-ssl
+            Disables the secure socket layer support. The SSL support is
+            automatically enabled if OpenSSL is detected at ./configure time.
+            This option forces it to be left out.
+
+        --with-memory-profile
+            Debug stuff...enables memory allocation profiling (don't use it :)
+
+        --with-memory-checks
+            Enables malloc() memory checks. This will print a nice message
+            if your system goes out of memory...
+            It can't save you from buying new RAM,
+            but at least you will know that your system went out of memory
+            and it is not a proper kvirc fault. Actually you probably have
+            no reason in using it.
+
+        --with-big-channels
+            Minor hash table optimisations: higher memory usage but
+            faster user lookups. Use it if you often stay in channels with
+            a lot of users. (this is not critical anyway)
+
+        --enable-profiling
+            Asks the compiler/linker to include profiling informations in the
+            executable. This is useful only if you want to profile KVIrc by
+            using the gprof program. Note that this will generate a bigger
+            and slower executable.
+
+        --disable-perl
+            Forcibly disable perl support.
+
+        So finally you have to run
+
+        # ./configure <your options>
+
+        For example , my common options are:
+
+        # ./configure --enable-pipes --enable-debug
+
+        On FreeBSD I have found useful this command line:
+
+        # ./configure --with-qt-name=qt2 --with-qt-moc=/<PATH_HERE>/moc2 \
+                         --with-freebsd-pthread
+
+        Once the configure script ran succesfully you can go to the next step.
+
+    ###
+    ### Step 3 : Compiling (mandatory)
+    ###
+
+        This step is easy:
+        Cross your fingers and run
+
+        # make kvirc
+
+        If your make is not a GNU make (this happens on FreeBSD for example)
+        you should use "gmake" instead.
+        The compilation process will take from 6-7 minutes to several hours
+        depending on the machine capabilities and load.
+        If you have a slow cpu but have a couple of computers in a lan you
+        might consider using distcc to distribute the compilation.
+
+        Once the compilation has been succesfull, run
+
+        # make install
+
+        Same as above: use "gmake install" if your make is not GNU make.
+
+        This will install the executable in /usr/local/bin
+        (if you don't have specified a different --prefix option in
+        the configure script) , the libraries in /usr/local/lib
+        and the shared data in /usr/local/share/kvirc.
+        If you had a previous kvirc installation , the default prefix
+        will be referring to the directory where the old kvirc
+        executable was found.
+
+        Make sure that /usr/local/lib is in your /etc/ld.so.conf , 
+        if it isn't there , put it there and run
+
+        # ldconfig
+
+        If you have decided to use the KDE support the installation
+        might have placed all these files in your $KDEDIR tree
+        instead of /usr/local. In this case you should be OK since
+        KDE requires its library dir to be in /etc/ld.so.conf
+
+    ###
+    ### Step 4: Having fun
+    ###
+
+        # kvirc &
+
+        That's all folks.
+
+
+###############################################################################
+# 5. Compiling KVIrc on qt-embedded
+###############################################################################
+
+    Do you want KVIrc 3 on your hand computer ?
+    On your Nokia 9999910 ?
+    On your LINUX CONSOLE?
+
+    Well, for the third it's really easy, just follow carefully those steps:
+
+    1. Install qt-embedded libraries (including the development files).
+       This can be as easy as: apt-get install libqt-emb-dev on Debian.
+
+    2. cd to the KVIrc3 source directory
+
+    3. run configure with the following parameters:
+
+        # ./configure --with-qt-name=qte --with-fno-rtti --without-x-calls
+               --without-ipc --without-splash-screen --without-transparency
+               --with-qt-embedded --without-x-bell
+
+       then run make and make install as usual
+
+    4. Try to have a life for the next minutes while kvirc3 compiles
+
+    5. You need your kernel with framebuffer support (it's under 'Console')
+       so if your kernel don't have it reconfigure and recompile your kernel.
+
+    6. switch to a console
+
+    7. export QTDIR=[path] On Debian is '/usr'
+
+    8. Read http://doc.trolltech.com/3.0/envvars.html and configure your
+       environment vars until kvirc3-emb loads (it will give you an error
+       indicating what went wrong else). Pay especial attention to
+       QWS_MOUSE_PROTO, QWS_CARD_SLOT and QWS_DISPLAY
+
+    9. Enjoy :)
+
+###############################################################################
+# 6. Compiling KVIrc on MacOSX
+###############################################################################
+
+    There is a detailed compilation and installation HOWTO for MacOSX systems
+    located in the doc dorectory.
+
+###############################################################################
+# 7. A note about Windows 95/98/ME
+###############################################################################
+
+    On Windows versions prior to 2000 the KVIrc binary may refuse to start
+    because of an incompatible msvcrt.dll included in the distribution.
+
+    If this happens to you then you may try the following tricks:
+
+    - Find msvcrt.dll in your C:\Windows directory. It may also be
+      in C:\Windows\System or C:\Windows\System32
+      Copy it to the KVIrc installation folder overwriting the existing
+      msvcrt.dll shipped with kvirc.
+
+    - Find msvcrt.dll somewhere on the net. An url hint might be:
+      http://www.dll-files.com/dllindex/dll-files.shtml?msvcrt 
+      Download the file and copy it to the KVIrc installation folder
+      overwriting the existing msvcrt.dll shipped with kvirc.
+
+    If none of the two steps work for you please write a mail to
+    pragma at kvirc dot net reporting your exact Windows version and build
+    and including the exact messages that the system reports when trying
+    to run the KVIrc executable.
+
+    Thanx to Dusan Hokuv for reporting this and suggesting the fixes.
+
