@@ -1,0 +1,124 @@
+# This code adds a channel popup that accepts:
+# a comma separated list of nicknames
+
+defpopup (channel)
+{
+	prologue
+	{
+		# the local variables are visible in the entire defpopup scope
+		%visible=$0
+		%multiple = 0
+		if($str.findfirst(%visible,",") != -1)
+		{
+			%visible = "multiple users"
+			%multiple = 1
+		}
+	}
+
+	popup(Control,9)($isMeOp)
+	{
+		label(Operator power)
+		item(Op %visible,34)op $0
+		item(Deop %visible,62)deop $0
+		separator;
+		item(Voice %visible,35)voice $0
+		item(Devoice %visible,63)devoice $0
+		separator;
+		item(Kick %visible (You're not welcome here!),110)kick $0 You're not welcome here!
+		item(Ban %visible (Nick!*@* mask),67)ban $0
+	}
+
+	popup(Info,49)
+	{
+		item(Who %visible,75)who $0
+		item(Whois %visible,75)whois $0
+		item(Whois %visible (with idle time),75) whois $0 $0
+		item(Whowas %visible,92)whowas $0
+	}
+
+	popup(Ctcp,51)
+	{
+		item(PING,36)ping $0
+		item(VERSION,16)ctcp $0 VERSION
+		item(USERINFO,57)ctcp $0 USERINFO
+		item(CLIENTINFO,52)ctcp $0 CLIENTINFO
+		item(SOURCE,14)ctcp $0 SOURCE
+		item(FINGER,53)ctcp $0 FINGER
+		item(TIME,93)ctcp $0 TIME
+	}
+
+	popup(Dcc,77)
+	{
+		item(Chat with %visible,78) dcc.chat $0
+		item(Send to %visible,79) dcc.send $0
+		item(TDCC Send to %visible,77) dcc.send -t $0
+	}
+
+	popup("Registration",111)(!%multiple)
+	{
+		prologue
+		{
+			# This is really smart...we're loading
+			# the reguser module only if this popup is being requested.
+			%regName = $reguser.match($mask(%visible))
+			%labelText = "<center><b>%visible</b> is";
+			if("%regName" != "")
+			{
+				%labelText << "registered as<br><b>%regName</b>"
+				# We want to display masks here!!!
+				%inNotifyList = $reguser.property(%regName,notify);
+				if("%inNotifyList" != "")%labelText << "<br>$0 is in the notify list"
+				%curAvatar = $avatar($0);
+				%defAvatar = $reguser.property(%regName,avatar);
+				if("%defAvatar" != "")%labelText << "<br>$0 has a default avatar"
+				%labelText << "</center>"
+			} else {
+				%labelText << "not registered</center>"
+			}
+		}
+		label("%labelText")
+		popup("Register")("%regName" == "")
+		{
+			item("Register as $0 ($mask(%visible,11))")("$reguser.exactMatch($mask(%visible,11))" == "")reguser.add %visible $mask(%visible,11)
+			item("Register as $0 ($mask(%visible,12))")("$reguser.exactMatch($mask(%visible,12))" == "")reguser.add %visible $mask(%visible,12)
+			item("Register as $0 ($mask(%visible,13))")("$reguser.exactMatch($mask(%visible,13))" == "")reguser.add %visible $mask(%visible,13)
+			item("Register as $0 ($mask(%visible,3))")("$reguser.exactMatch($mask(%visible,3))" == "")reguser.add %visible $mask(%visible,3)
+			item("Register as $0 ($mask(%visible,4))")("$reguser.exactMatch($mask(%visible,4))" == "")reguser.add %visible $mask(%visible,4)
+			item("Register as $0 ($mask(%visible,5))")("$reguser.exactMatch($mask(%visible,5))" == "")reguser.add %visible $mask(%visible,5)
+		}
+		item("Edit registration entry",113)("%regName" != "")reguser.edit "%regName"
+		item("Unregister %regName")("%regName" != "")reguser.remove "%regName"
+
+		item("Add to notify list")(("%regName" != "") && ("%inNotifyList" == ""))
+			reguser.setproperty -n "%regName" notify %visible
+
+		item("Remove from notify list")
+			(("%regName" != "") && ("%inNotifyList" != ""))
+			reguser.setproperty -n "%regName" notify
+
+		item("Set the current avatar as default")(("%curAvatar" != "") && ("%curAvatar" != "%defAvatar"))
+			reguser.setproperty "%regName" avatar %curAvatar
+
+		item("Unset the default avatar")("%defAvatar" != "")
+			reguser.setproperty %regName avatar
+
+#		item("Choose the default avatar")("%regMask" != "")
+#			dialog.fileopen("Choose the avatar filename",%regMask){ reguser.setproperty -e $magic $selectedFile; }
+
+	}
+
+	separator;
+
+	#item(Notify avatar,57)("$0" != "$myNick")avatar $0
+	#item(Notify avatar (No offer),57)("$0" != "$myNick")avatar -n $0
+	item(Notify avatar,57)avatar $0
+	item(Notify avatar (No offer),57)avatar -n $0
+
+	separator;
+	item(Query %visible,47)(!%multiple)query $0
+	item(Query %visible (Single queries),47)(%multiple)query $0
+	item(Query %visible (Multiple query),47)(%multiple)query -m $0
+}
+
+
+event (OnChannelUserListRightClicked,default){ if("$selected" != "")popup channel $selected; };

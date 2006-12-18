@@ -1,0 +1,147 @@
+# The scripts in this tutorial implement the famous minesweeper game
+# STEP 3
+
+# We want the labels to report us the clicks thus we will use
+# a class derived from label
+class(minelabel,label)
+{
+	# We ovverride the implementation for mousePressEvent()
+	# and we signal the mouse press to the parent minesweeper widget
+	mousePressEvent()
+	{
+		# We could check that $$->$parent() is a minesweeper in fact...
+		# but well... let's keep it simple :)
+		$$->$parent()->$mineLabelPressed($this)
+	}
+}
+
+class(minesweepermain,widget)
+{
+	constructor()
+	{
+		$$->$setCaption("KVIrc's Minesweeper (0.1.0)");
+
+		$$->%rows = 10
+		$$->%cols = 10
+		$$->%mines = 10
+
+		$$->%layout = $new(layout,$this)
+
+		for(%i = 0;%i < $$->%rows;%i++)
+		{
+			for(%j = 0;%j < $$->%cols;%j++)
+			{
+				# we change label to minelabel then
+				#$$->%label{%i,%j}=$new(label,$this,"%i_%j")
+				$$->%label{%i,%j}=$new(minelabel,$this,"%i_%j")
+				$$->%label{%i,%j}->%row = %i
+				$$->%label{%i,%j}->%col = %j
+				$$->%layout->$addWidget($$->%label{%i,%j},%i,%j)
+			}
+		}
+
+		$$->$newGame()
+	}
+
+	newGame()
+	{
+		for(%i = 0;%i < $$->%rows;%i++)
+		{
+			for(%j = 0;%j < $$->%cols;%j++)
+			{
+				%l = $$->%label{%i,%j}
+				%l->$setFrameStyle(Raised,WinPanel);
+				%l->%bIsMine = 0
+				%l->%numMines = 0
+				%l->%bIsDiscovered = 0
+				%l->$setText("")
+			}
+		}
+		# drop the mines
+		for(%i = 0;%i < $$->%mines;%i++)
+		{
+			%row = $rand($($$->%rows - 1))
+			%col = $rand($($$->%cols - 1))
+			while($$->%label{%row,%col}->%bIsMine != 0)
+			{
+				%row = $rand($($$->%rows - 1))
+				%col = $rand($($$->%cols - 1))
+			} 
+			$$->%label{%row,%col}->%bIsMine = 1
+			# increase the mine count for the adiacent cells
+			if(%row > 0)
+			{
+				$$->%label{$(%row - 1),%col}->%numMines++
+				if(%col > 0)$$->%label{$(%row - 1),$(%col - 1)}->%numMines++
+				if(%col < ($$->%cols - 1))$$->%label{$(%row - 1),$(%col + 1)}->%numMines++
+			}
+			if(%row < ($$->%rows - 1))
+			{
+				$$->%label{$(%row + 1),%col}->%numMines++
+				if(%col > 0)$$->%label{$(%row + 1),$(%col - 1)}->%numMines++
+				if(%col < ($$->%cols - 1))$$->%label{$(%row + 1),$(%col + 1)}->%numMines++
+			}
+			if(%col > 0)$$->%label{%row,$(%col - 1)}->%numMines++
+			if(%col < ($$->%cols - 1))$$->%label{%row,$(%col + 1)}->%numMines++
+		}
+	}
+
+	# A mine label was pressed!
+	# This function is called by our children minelabel objects
+	# and the parameter passed is the minelabel reference
+	mineLabelPressed($0 = mine label object that has been pressed)
+	{
+		# Is is a mine ?
+		if($0->%bIsMine)
+		{
+			# Yes , a mine :(
+			# Game over
+			$0->$setFrameStyle(WinPanel,Sunken)
+			$0->$setText("*")
+		} else {
+			# Not a mine.. discover the adiacent cells
+			# We pass the minelabel reference
+			$$->$discoverCells($0)
+		}
+	}
+
+	# This function is recursive: it discovers the adjacent cells
+	# that are not mines
+	discoverCells($0 = mine label that has to be discovered)
+	{
+		# If it is a mine ,then do not discover it
+		if($0->%bIsMine)return;
+		# If it is already discovered , return too
+		if($0->%bIsDiscovered)return;
+		# Ok.. this is discovered
+		$0->%bIsDiscovered = 1
+		$0->$setFrameStyle(WinPanel,Sunken)
+		# If this cell has adjacent mines then show their number and return
+		if($0->%numMines > 0)$0->$setText($0->%numMines)
+		else {
+			# There are no adjacent mines : discover the cells recursively
+			# This block of code is similar to the one used in dropping the bombs around
+			if($0->%row > 0)
+			{
+				# Discover the cells in the row above
+				$$->$discoverCells($$->%label{$($0->%row - 1),$0->%col})
+				if($0->%col > 0)$$->$discoverCells($$->%label{$($0->%row - 1),$($0->%col - 1)})
+				if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$($0->%row - 1),$($0->%col + 1)})
+			}
+			if($0->%row < ($$->%rows - 1))
+			{
+				# Discover the cells in the row below
+				$$->$discoverCells($$->%label{$($0->%row + 1),$0->%col})
+				if($0->%col > 0)$$->$discoverCells($$->%label{$($0->%row + 1),$($0->%col - 1)})
+				if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$($0->%row + 1),$($0->%col + 1)})
+			}
+			# Discover on the left and right
+			if($0->%col > 0)$$->$discoverCells($$->%label{$0->%row,$($0->%col - 1)})
+			if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$0->%row,$($0->%col + 1)})
+		}
+	}
+
+}
+
+%m = $new(minesweepermain)
+%m->$show()

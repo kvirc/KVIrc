@@ -1,0 +1,20 @@
+# a stupid game :)
+
+srand $unixTime
+
+%w = $new(widget,0,mywidget)
+%w->$setCaption(":)");
+%w->$setGeometry($rand(770),$rand(570),30,30);
+
+privateimpl(%w,mouseEnterEvent)
+{
+	$$->$move($rand(770),$rand(570));
+}
+
+privateimpl(%w,mousePressEvent)
+{
+	echo "You got me!"
+	delete $$
+}
+
+%w->$show()

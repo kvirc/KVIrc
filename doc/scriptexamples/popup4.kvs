@@ -1,0 +1,40 @@
+defpopup (windowpopup)
+{
+	label("$caption")
+
+	popup(Logging,119)
+	{
+		prologue
+		{
+			%logfile = $log.file
+		}
+		label("Logging to file<br><b>%logfile</b>")("%logfile" != "")
+		item("Stop logging")("%logfile" != "")log.stop
+		item("Flush log file")("%logfile" != "")log.flush
+
+		label("Logging is disabled")("%logfile" == "")
+		item("Log (default file)")("%logfile" == "")log.start
+		item("Log (default file) (prepend existing data)")("%logfile" == "")log.start -e
+	}
+#	popup(Buffer)
+#	{
+#		item("Save to file...")window.savebuffer
+#		item("Clear")window.clear
+#		item("Find...")window.findtext
+#	}
+#	popup(View)
+#	{
+#		item("Show images")($window.images == 0)window.images 1
+#		item("Enable timestamps")($window.timestamp == 0)window.timestamp 1
+#		item("Disable timestamps")($window.timestam == 1)window.timestamp 0
+#		item("Set font...")$window.setfont
+#		item("Set background...")$window.setbackground
+#	}
+#	popup(Mdi)
+#	{
+#		item("Minimize")window.minimize
+#		item("Maximize")window.maximize
+#	}
+}
+
+event (OnWindowPopupRequest,default){ popup windowpopup; }
