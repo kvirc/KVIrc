@@ -1,0 +1,26 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    configure)
+        update-alternatives --quiet --install \
+            /usr/share/services/irc.protocol irc.protocol \
+            /usr/share/kvirc/3.2.0/services/irc.protocol 60
+        update-alternatives --quiet --install \
+            /usr/share/services/irc6.protocol irc6.protocol \
+            /usr/share/kvirc/3.2.0/services/irc6.protocol 60
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

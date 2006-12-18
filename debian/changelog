@@ -1,0 +1,861 @@
+kvirc (2:3.2.4-4) unstable; urgency=low
+
+  * Fix non-POSIX shell code in debian/rules (Closes: #384915).
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 31 Aug 2006 11:05:34 +0500
+
+kvirc (2:3.2.4-3) unstable; urgency=low
+
+  * Rebuild with official 3.2.4 release code.
+
+ -- Robin Verduijn <robin@debian.org>  Wed,  9 Aug 2006 11:49:12 +0500
+
+kvirc (2:3.2.4-2) unstable; urgency=low
+
+  * Rebuild in newer chroot.
+
+ -- Robin Verduijn <robin@debian.org>  Tue,  1 Aug 2006 12:10:05 +0500
+
+kvirc (2:3.2.4-1) unstable; urgency=low
+
+  * Bring debian directory in sync again with the rest of the source.
+  * Bump Standards-Version to 3.7.2.0:
+    - rename shellscripts in /usr/bin to not have .sh extension
+  * Fix for license file location.
+
+ -- Robin Verduijn <robin@debian.org>  Fri, 28 Jul 2006 16:58:36 +0500
+
+kvirc (2:3.2.0-5) unstable; urgency=low
+
+  * Rebuild for current dependencies.
+  * Update FSF address.
+  * Bump Standards-Version to 3.6.2.0 (no changes).
+  * Fix invalid characters in manpage.
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 21 Nov 2005 22:49:53 -0500
+
+kvirc (2:3.2.0-4) unstable; urgency=low
+
+  * Fix compilation with gcc 4 (Closes: #325365).
+    Thanks, Andrea Briganti!
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 31 Aug 2005 13:22:05 -0400
+
+kvirc (2:3.2.0-3) experimental; urgency=low
+
+  * Changes to make KVIrc cooperate better with other IRC clients that
+    also register KDE services (Closes: #303216).
+
+ -- Robin Verduijn <robin@debian.org>  Tue,  3 May 2005 20:36:06 -0400
+
+kvirc (2:3.2.0-2) experimental; urgency=low
+
+  * Upstream patches to fix avatar resizing (Closes: #305191)
+  * Upstream patch to fix AwayBack action button (Closes: #305370)
+
+ -- Robin Verduijn <robin@debian.org>  Sun,  1 May 2005 18:17:17 -0400
+
+kvirc (2:3.2.0-1) experimental; urgency=low
+
+  Getting KVIrc 3 in shape for Debian
+
+  * Fix up autogen.sh to be more robust in incomplete build environments
+  * Add kvirc-data package which holds architecture-independent files
+  * Set necessary Lintian overrides because we keep some files in kvirc-data
+  * Remove unnecessary dependencies from debian/control
+  * Add dependency on libperl-dev so we get Perl support
+  * Update package descriptions
+  * Rearrange file lists between kvirc, kvirc-data, and kvirc-dev
+  * Add missing themes/ directory to the kvirc-data package
+  * Don't run autogen.sh from debian/rules
+  * Remove configure options that are already turned on by default,
+    and add some that we'd want turned on (--enable-perl, --with-pic)
+  * Turn off compiler optimizations as they might cause hard to find bugs
+    on architectures with odd compilers
+  * Remove some unnecessary code from debian/rules
+  * Closes: #245726, #255968, #263914, #267876 (RFPs for KVIrc 3)
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 27 Feb 2005 02:45:27 -0500
+
+kvirc2 (2.1.3-1) experimental; urgency=low
+
+  * Drop kvirc-doc package; move its contents to kvirc-data.
+  * Rename packages to kvirc2, kvirc2-data and kvirc2-dev.
+    This opens up the possibility of packaging a new upstream
+    kvirc package without having to drop the stable KVIrc 2 first.
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 20 Feb 2005 16:00:57 -0500
+
+kvirc (2:2.1.3.1-2) unstable; urgency=low
+
+  * Change Recommends on xmms to a Suggests.
+  * Rebuild against KDE 3.3.1
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 14 Dec 2004 15:32:19 -0500
+
+kvirc (2:2.1.3.0-2) testing-proposed-updates; urgency=medium
+
+  * Set correct Depends for kvirc and kvirc-data. (Closes #272569)
+  * Urgency medium because kvirc will not be installable in sarge if this goes
+    in.
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 20 Sep 2004 18:30:15 -0400
+
+kvirc (2:2.1.3.0-1) testing-proposed-updates; urgency=low
+
+  * Target a new upload to testing-proposed-updates to try and get
+    kvirc into Sarge on time for the release.
+  * Main reasons for t-p-u:
+    - DFSG files in kvirc_2.1.3.orig.tar.gz warrant a fresh tarball.
+    - Fixed segfault due to non-threadsafe access to topic editor history.
+
+ -- Robin Verduijn <robin@debian.org>  Fri, 27 Aug 2004 09:51:29 -0400
+
+kvirc (2:2.1.3.1-1) unstable; urgency=low
+
+  * Patch release 2.1.3.1
+    The bumped version number ensures that non-DFSG files will not appear in
+    the .orig.tar.gz file anymore.
+  * Replaced .mo file hackery in kvi_locale with full libintl support.
+  * Refreshed .po files with current source.
+  * Encoded language files in UTF-8.
+  * Fixed image loading when only Qt is enabled.
+  * "What is This?" routine won't timeout if user is still moving the mouse.
+  * Fixed segfault due to non-threadsafe access to topic editor history.
+  * Fixed Qt-only compilation.
+  * Improved logic to find a suitable fixed font.
+  * Fixed compilation under Cygwin.
+  * Put generated files in the .orig.tar.gz to help make the diff.gz smaller.
+
+ -- Robin Verduijn <robin@debian.org>  Sun,  8 Aug 2004 16:35:46 -0400
+
+kvirc (2:2.1.3-11) unstable; urgency=low
+
+  * Fix gcc 3.4 warnings and errors. (Closes: #259033)
+  * Use better-looking default fonts.
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 18 Jul 2004 21:07:00 -0400
+
+kvirc (2:2.1.3-10) unstable; urgency=low
+
+  * Update the build number as well. (Still closes: #256522) 
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  1 Jul 2004 14:39:36 -0400
+
+kvirc (2:2.1.3-9) unstable; urgency=low
+
+  * Allow -session commandline parameter. (Closes: #256522) 
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 30 Jun 2004 20:25:30 -0400
+
+kvirc (2:2.1.3-8) unstable; urgency=low
+
+  * Remove unnecessary depends on (build-essential) dpkg-dev package.
+  * Fix warnings produced by automake1.8
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 20 May 2004 12:15:01 -0400
+
+kvirc (2:2.1.3-7) unstable; urgency=low
+
+  * Fix application constructor call for KDE 3.2. (Closes: #242503)
+
+ -- Robin Verduijn <robin@debian.org>  Wed,  7 Apr 2004 19:45:36 -0400
+
+kvirc (2:2.1.3-6) unstable; urgency=low
+
+  * Fix for FTBFS on all architectures.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  5 Apr 2004 20:24:17 -0400
+
+kvirc (2:2.1.3-5) unstable; urgency=low
+
+  * Distribute architecture independent files in kvirc-data.
+  * Improve package descriptions.
+  * Remove unnecessary build depends.
+  * Fix compile warnings with KDE 3.2.
+  * Do not use -O3 optimization by default.
+  * Update RELEASE information.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 11 Mar 2004 21:11:50 -0600
+
+kvirc (2:2.1.3-4) unstable; urgency=low
+
+  * Fix includes to remedy m68k FTBFS
+
+ -- Robin Verduijn <robin@debian.org>  Sat, 28 Feb 2004 17:25:15 -0600
+
+kvirc (2:2.1.3-3) unstable; urgency=low
+
+  * Can now recommend xmms instead of xmms-dev due to improvement
+    in XMMS plugin loader.
+  * Update config.* from latest autotools-dev.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 17 Feb 2004 14:39:16 -0600
+
+kvirc (2:2.1.3-2) unstable; urgency=low
+
+  * No longer distribute any RFCs due to licensing issues.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 28 Jan 2004 21:41:12 -0600
+
+kvirc (2:2.1.3-1) unstable; urgency=low
+
+  * The KVIrc 2.1.3 "Renaissance" release.
+  * New splash screen.
+  * Add myself to the list of credits.
+  * debian/copyright: improved copyright text.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 14 Jan 2004 18:21:05 -0600
+
+kvirc (2:2.1.2.99pre6-1) unstable; urgency=low
+
+  * New prerelease:
+    - Changed KVIrc name from 'Monolith' to 'Renaissance' in
+      anticipation of new release.
+    - Fix mouse event handling in Message Colors screen.
+    - General Options dialog and Script Center are now KDE widgets.
+    - Prevent KDE Help browser from starting when using "What is This?"
+      in the User Configuration, Server, and Registered Users dialogs.
+    - Listview field editors now work properly.
+    - Use KProcess for spawning processes.
+    - Make user toolbar editor more easy to use.
+    - Taskbar indicates better which window is active.
+    - Fix crash when updating application font.
+    - Fix double-clicking on links in IRC window.
+    - Script editor now uses QTextEdit.
+    - Use completion picker when there are multiple matches for completion in
+      the script editor.
+    - Use QTextEdit for editor plugin + general usability improvements.
+    See the RELEASE file for details.
+  * debian/rules:
+    - Remove unnecessary --x-includes switch.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  1 Dec 2003 15:09:22 -0600
+
+kvirc (2:2.1.2.99pre5-1) unstable; urgency=low
+
+  * New prerelease:
+    - Add tear-offs to selected menus.
+    - Use QDns instead of KviAsyncDns.
+    - Use QThread instead of direct pthreads calls.
+    - Use KDE icons for toolbars.
+    - Directory browser now uses KDE mime icons.
+    - If a hostname lookup returns multiple IP addresses, use all of them when
+      trying to connect before giving up.
+    - Fix horrible segfaults in DCC send.
+    - Generate correct title for misc documentation pages.
+    See the RELEASE file for details.
+  * debian/rules:
+    - Enable debug and optimization options.
+    - Remove --with-ignore-sigalarm option.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  3 Nov 2003 13:55:29 -0600
+
+kvirc (2:2.1.2.99pre4-1) unstable; urgency=low
+
+  * Add numeric sorting for channel list.
+  * Fix Qt-only compilation.
+  * Fix compiler warnings on 64-bit architectures.
+  * Fix alternative nick calculation.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 21 Oct 2003 14:51:09 -0500
+
+kvirc (2:2.1.2.99pre3-1) unstable; urgency=low
+
+  * Putting the "K" (back) in KVIrc.
+  * KDE integration: use KDE classes instead of Qt wherever possible.
+  * Fix basicplugin example.
+  * Add AC_PROG_CXXCPP, removing workaround for libtool.
+  * Newer libtool also fixes the -rpath issue; remove workaround for it.
+  * Fix missing documentation in kvirc-doc.
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 20 Oct 2003 09:10:21 -0500
+
+kvirc (2:2.1.2.99pre2-2) unstable; urgency=low
+
+  * Change debian/rules file to use cdbs.
+  * Overhaul kvirc autoconf macros.
+  * Enable AM_MAINTAINER_MODE to avoid failed autobuilds.
+  * Remove build dependencies on libtool, automake, devscripts, kdebase-dev.
+  * Remove obsolete configure options.
+
+ -- Robin Verduijn <robin@debian.org>  Fri, 10 Oct 2003 23:03:18 -0500
+
+kvirc (2:2.1.2.99pre2-1) unstable; urgency=low
+
+  * Improvements to the KVIrc autoconf system.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  9 Oct 2003 18:55:15 -0500
+
+kvirc (2:2.1.2.99pre1-3) unstable; urgency=low
+
+  * Build-Depend on libxrender-dev (>= 0.8.3-2) to fix autobuild failures.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  9 Oct 2003 00:00:08 -0500
+
+kvirc (2:2.1.2.99pre1-2) unstable; urgency=low
+
+  * Remove Build-Dependency for libxrender-dev. (Closes: #214717)
+    This will still cause the package to fail to build, but until bugs
+    #214726 and #214793 are fixed there is not much I can do about it,
+    unfortunately.
+
+ -- Robin Verduijn <robin@debian.org>  Wed,  8 Oct 2003 16:59:49 -0500
+
+kvirc (2:2.1.2.99pre1-1) unstable; urgency=low
+
+  * Add include headers for socket() and bind() calls to kvi_netutils.
+    This should fix build failure for HPPA.
+  * Until I figure out why libtool insist on linking in the non-existant
+    /usr/X11R6/lib/libXrender.la, add a Build-Depend on the previous version
+    of the libxrender-dev package. That should fix all the other build
+    failures.
+
+ -- Robin Verduijn <robin@debian.org>  Wed,  8 Oct 2003 02:25:06 -0500
+
+kvirc (2:2.1.2.99pre1-0) unstable; urgency=low
+
+  * Prerelease for new upstream KVIrc version 2.1.3:
+    - Many crashes have been addressed, some of which were due to interaction
+      between the ancient code in KVIrc 2.1.2 and the new Qt libraries, some of
+      which were due to a newer gcc version, and some of which were just plain bugs.
+    - Also has LOTS and lots of spelling fixes and general UI polish.
+    See the RELEASE file for details.
+  * Fix libtool breakage.
+  * Ship example scripts in /usr/share/doc/kvirc-dev/script-examples.
+  * Build with --with-ignore-sigalarm switch.
+  * Tighten Build-Depends for libtool and libqt3-mt-dev.
+  * Add xmms-dev to Recommends since the libkvixmms.so plugin needs it.
+  * Remove now-obsolete Build-Depends on libqt3-plugins-headers and
+    libqt3-compat-headers.
+
+ -- Robin Verduijn <robin@debian.org>  Tue,  7 Oct 2003 17:47:37 -0500
+
+kvirc (2:2.1.2-24) unstable; urgency=low
+
+  * With kdelibs built successfully on all architectures, try to get KVIrc
+    into testing again.
+
+ -- Robin Verduijn <robin@debian.org>  Tue,  9 Sep 2003 21:38:34 -0100
+
+kvirc (2:2.1.2-23) unstable; urgency=low
+
+  * Tightened build dependencies, in another attempt to get successfully
+    built by the autobuilders.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  4 Sep 2003 12:02:12 -0100
+
+kvirc (2:2.1.2-22) unstable; urgency=low
+
+  * Tighten build dependencies to make autobuilders happy again.
+    I *hate* the autobuilders. Why can't they go make themselves happy?
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  1 Sep 2003 22:56:06 -0100
+
+kvirc (2:2.1.2-21) unstable; urgency=low
+
+  * Run it through the autobuilders again, since a newer Qt messed up
+    the chroots on most of the build machines.
+  * Fixed another crash-on-exit problem.
+  * Add libxcursor-dev to the build dependencies (temporarily, just to
+    get kvirc through the autobuilders while libqt3c102-mt and libxcursor1
+    work it out between them).
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  1 Sep 2003 19:25:41 -0100
+
+kvirc (2:2.1.2-20) unstable; urgency=low
+
+  * Bump standards-version to 3.6.1.0 (no changes).
+  * Temporarily disable building the "style" plugin, since it does not
+    build with the latest Qt.
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 31 Aug 2003 22:40:19 -0100
+
+kvirc (2:2.1.2-19) unstable; urgency=low
+
+  * Build with more recent automake. (Closes: #204039)
+    My guess is that since the HPPA autobuilders were unavailable for
+    so long, the automake environment in unstable has since gotten
+    out of date.
+  * Bump standards-version to 3.6.0.
+  * Fixed miscellaneous autoconf warnings and errors.
+  * Fix a crash-on-exit problem.
+  * Updated config.sub, config.guess.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 19 Aug 2003 14:23:11 -0100
+
+kvirc (2:2.1.2-18) unstable; urgency=low
+
+  * Remove RFCs from the kvirc-doc package. (Closes: #199806)
+
+ -- Robin Verduijn <robin@debian.org>  Sun,  6 Jul 2003 13:20:00 -0100
+
+kvirc (2:2.1.2-17) unstable; urgency=low
+
+  * Bump the revision to -17 because the autobuilders claim that
+    there are older .changes files lying around which have the same
+    name.
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 29 Jun 2003 21:22:27 -0100
+
+kvirc (2:2.1.2-9) unstable; urgency=low
+
+  * Upload with proper maintainer name. (Closes: #194482)
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 29 Jun 2003 19:27:57 -0100
+
+kvirc (2:2.1.2-8) unstable; urgency=low
+
+  * Now that menu does not proscribe the colour map from cmap.xpm anymore,
+    switch back to a better-looking icon.
+  * Bump Standards-Version to 3.5.10 (no changes necessary).
+  * Rebuild with newer automake. (Closes: #194482)
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 29 Jun 2003 15:24:17 -0100
+
+kvirc (2:2.1.2-7) unstable; urgency=low
+
+  * Fixed character width calculations. (Closes: #184165)
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 17 Apr 2003 17:22:25 -0100
+
+kvirc (2:2.1.2-6) unstable; urgency=low
+
+  * Let kvirc be a good autobuilder citizen: break up rules in
+    separate -arch and -indep targets. (Closes: #186617)
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 10 Apr 2003 10:26:37 -0100
+
+kvirc (2:2.1.2-5) unstable; urgency=low
+
+  * Change CXXFLAGS to fix autobuilds. The march=cpu_type flag had been getting
+    the wrong cpu_type.
+
+ -- Robin Verduijn <robin@debian.org>  Sat, 22 Mar 2003 11:50:08 -0100
+
+kvirc (2:2.1.2-4) unstable; urgency=low
+
+  * Rely on the Build-Depends to ensure the correct libqt is installed.
+  * Bump Standards-Version.
+  * Various debhelper changes.
+  * Updated dependencies for latest KDE packages.
+  * Print config.log if an error occurred during configure target.
+  * Try to get it through the autobuilders.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 20 Mar 2003 19:19:00 -0100
+
+kvirc (2:2.1.2-3) unstable; urgency=low
+
+  * Another attempt at getting it through the autobuilders - disabled pthread
+    check.
+  * Better check for libqt-mt.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  3 Mar 2003 15:07:56 -0100
+
+kvirc (2:2.1.2-2) unstable; urgency=low
+
+  * Fixed bug where not having kvirc-doc installed would make it impossible
+    to find the global kvirc directory. (Closes: #180987)
+  * Fixed check for Qt after the reorganization of the libqt* packages broke
+    it.
+  * Add libqt3-compat-headers to the list of build-depends.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 26 Feb 2003 13:03:05 -0100
+
+kvirc (2:2.1.2-1) unstable; urgency=low
+
+  * Since it seems the autobuilders cannot find kvirc_2.1.2.1.orig.tar.gz,
+    try uploading a new .orig.tar.gz.
+  * Fix sections for kvirc-doc and kvirc-dev.
+
+ -- Robin Verduijn <robin@debian.org>  Sat,  8 Feb 2003 11:12:37 -0100
+
+kvirc (1:2.1.2.1-1.1) unstable; urgency=low
+
+  * Updated Standards-Version to 3.5.8.
+  * Remove workaround for g++ problem on SPARC in the hopes that the latest
+    gcc-3.2 no longer suffers from the problem.
+  *	Use dh_install (simplifies debian/rules nicely).
+  * Minor changes to auto* scripts to deal with newer Qt.
+  * Compile against Qt3. (Closes: #173881, #177818)
+
+ -- Robin Verduijn <robin@debian.org>  Sat,  8 Feb 2003 00:56:30 -0100
+
+kvirc (1:2.1.2.1-1) unstable; urgency=low
+
+  * Due to bug #162712 in liblcms1, kvirc did not build on HPPA. This problem
+    should be resolved with the newer version of liblcms1. (Closes: #162929)
+  * I had already noticed the autobuilders did not work. This was due to
+    configure not existing in the original .orig.tar.gz file. It was created
+    by patch from the .diff.gz file and as a result, did not have executable
+    permission. This was fixed in the previous release - which did not make it
+    into the archives due to the above problem. (Closes: #162447)
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 30 Sep 2002 21:24:17 +0000
+
+kvirc (1:2.1.2.0-1) unstable; urgency=low
+
+  * Release to make the autobuilders happy again.
+  * KVIrc now builds and runs with KDE 3.0.3. Not yet fully tested,
+    but KDE 3 will not be in unstable for a while anyway.
+
+ -- Robin Verduijn <robin@debian.org>  Fri, 27 Sep 2002 11:00:15 +0000
+
+kvirc (1:2.1.2-16) unstable; urgency=low
+
+  * Rebuilt in a pristine, chroot'ed build environment. (Closes: #157289)
+  * Provide .orig.tar.gz and .diff.gz files. (Closes: #161595)
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 25 Sep 2002 11:13:21 +0000
+
+kvirc (1:2.1.2-15) unstable; urgency=low
+
+  * Turn on KDE support for autobuilt KVIrc packages.
+
+ -- Robin Verduijn <robin@debian.org>  Fri,  9 Aug 2002 18:30:31 +0000
+
+kvirc (1:2.1.2-14) unstable; urgency=low
+
+  * The autobuilders failed on -13 because the .po files had
+    duplicate messages; turns out I had an older msgfmt which was less
+    strict about that. Grrr...
+    (Somehow, I *knew* version -13 would be bad news)
+
+ -- Robin Verduijn <robin@debian.org>  Fri,  9 Aug 2002 02:24:03 +0000
+
+kvirc (1:2.1.2-13) unstable; urgency=low
+
+  * Added automake1.6 to the build dependencies. (Closes: #155918)
+  * Fixed build problems on IA64.
+  * Tightened build dependency on debhelper to >= 4.1.1 since I am
+    using its -L flag.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  8 Aug 2002 13:31:31 +0000
+
+kvirc (1:2.1.2-12) unstable; urgency=low
+
+  * The "121212" release :)
+  * Upstream usability fixes; see upstream changelog for details.
+  * Upstream stability fixes:
+    - Closes: #149254 - crash when executing /part in private chat.
+    - Closes: #150383 - crash when using /topic in a channel.
+    - Closes: #139431 - problem was with spaces in username.
+  * Run dh_shlibdeps properly to avoid generating a self-dependency.
+  * When -debug is specified in DEB_BUILD_OPTIONS, optimizations
+    are turned off for better debugging results.
+  * Added the KVIrc homepage to the description.
+  * Changed the Suggests on kvirc-doc to a Recommends.
+  * Suggest xmms.
+  * I removed some plugins that were not so useful.
+
+ -- Robin Verduijn <robin@debian.org>  Wed,  7 Aug 2002 16:32:56 +0000
+
+kvirc (1:2.1.2-11) unstable; urgency=low
+
+  * #138169: The problem in bug #138169 is due to a bug in libtool. See
+    bug #98342 for details. KVIrc still does not build correctly even with
+    the latest libtool (1.4.2-4). When this gets properly fixed I will update
+    kvirc's build dependency on libtool. In the mean time, I have applied a
+    patch from that bug report which fixes it for me.
+    (Closes: #138169)
+  * Redid debian/rules somewhat; no longer try to build differently
+    depending on how KDE is installed. If the preferred configuration breaks
+    for some platform, I'd rather know about it.
+  * Do not link versus qt-mt anymore.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 16 Apr 2002 10:21:07 -0400
+
+kvirc (1:2.1.2-10) unstable; urgency=low
+
+  * Change default alternative nick to "newbie_".
+    Set auto-rejoin-on-kick to off by default.
+    (Closes: #138633)
+  * Add devscripts to Build-Depends because dch is used by the autoconf
+    update routine.
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 15 Apr 2002 07:54:37 -0400
+
+kvirc (1:2.1.2-9) unstable; urgency=low
+
+  * Remove "-pre" from the version as it tends to clutter up users' home
+    directories. Users should remove any redundant ~/.kvirc-2.1.2-preX
+    directories themselves if they are not using them anymore. The window
+    caption is stored inside ~/.kvirc-2.1.2/config/kvi.irc.conf and
+    can be configured from within KVIrc. (Closes: #133471)
+  * Fix the autoconf bit to make it compile with the autoconf EXEEXT
+    bug. Basically this involves making sure that autoconf 2.5x is used
+    instead of autoconf 2.13. Strange that this did not bite me before.
+  * Various upstream bug fixes.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 27 Feb 2002 19:23:43 +0000
+
+kvirc (1:2.1.2-8) unstable; urgency=low
+
+  * Fix compilation on alpha. (Closes: #121385)
+  * Upstream bug fixes. See changelog for details.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 27 Nov 2001 12:55:37 -0700
+
+kvirc (1:2.1.2-7) unstable; urgency=low
+
+  * Minor spelling changes. (Closes: #118872)
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 22 Nov 2001 11:26:39 -0700
+
+kvirc (1:2.1.2-6) unstable; urgency=low
+
+  * Compile with the latest binutils in order to benefit from prelinking.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 31 Oct 2001 20:59:17 -0700
+
+kvirc (1:2.1.2-5) unstable; urgency=low
+
+  * Support pulling in the latest config.{sub,guess} add compile-time.
+  * Build-Depends: autotools-dev.
+  * Build with -fno-exceptions again.
+
+ -- Robin Verduijn <robin@debian.org>  Sat, 13 Oct 2001 11:42:08 -0600
+
+kvirc (1:2.1.2-4) unstable; urgency=low
+
+  * Use updated config.sub and config.guess so we properly build on all
+    architectures. (Closes: #115144)
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 10 Oct 2001 10:27:01 -0600
+
+kvirc (1:2.1.2-3) unstable; urgency=low
+
+  * Removed the build dependency on automake by moving the autogen.sh
+    outside of the debian/rules and shipping the configure and Makefile.in
+    files in the source package. In the long term kvirc will have to be able
+    to use automake 1.5 but in the mean time I will keep the old automake
+    around on my machine. (Closes: #114714)
+  * Modified the descriptions a bit to make them more, well...  descriptive.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  8 Oct 2001 17:41:36 -0600
+
+kvirc (1:2.1.2-2) unstable; urgency=low
+
+  * Small fix in the handling of options to configure.
+  * Include .xpm files in source package to avoid the segfault in convert.
+  * Removed the build-dependency on imagemagick.
+  * Fixed ldconfig handling in postinst and postrm scripts.
+  * Cleaned up rules files.
+
+ -- Robin Verduijn <robin@debian.org>  Fri,  5 Oct 2001 14:26:35 -0600
+
+kvirc (1:2.1.2-1) unstable; urgency=low
+
+  * Change the version number to 2.1.2 to match upstream version.
+  * Hopefully with dependencies installed on arm and powerpc the package
+    will build for those platforms now...
+  * Fixed a harmless warning during doc generation.
+  * Disable objprelink for Debian build since it confuses lintian
+    (shlib-with-non-pic code).
+  * Previous upload fixed the segfault bug. (Closes: #111625)
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 24 Sep 2001 12:59:10 -0600
+
+kvirc (2.1.2-pre8) unstable; urgency=low
+
+  * Fixed the segfault on exit bug.
+  * Change build dependency on libqt-dev.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 11 Sep 2001 18:26:29 -0600
+
+kvirc (2.1.2-pre7) unstable; urgency=low
+
+  * Add ldconfig to postinst script for kvirc.
+  * Fix -rpath issues. For good this time, I hope.
+  * Change build dependency on imagemagick (>= 5.2.8) since older
+    versions of imagemagick would segfault on big-endian systems.
+    Hopefully this makes the autobuilders happy again.
+    See #107294 for details.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  6 Sep 2001 15:41:09 -0600
+
+kvirc (2.1.2-pre6) unstable; urgency=low
+
+  * Upstream: more bug fixes.
+  * Upstream: better sound support.
+  * Upstream: Xft fixes.
+  * Upstream: documentation updates.
+  * Upstream: usability enhancements.
+  * Enable -O3 optimisation for x86 platforms.
+  * Generate 64x64 icons.
+  * Sanitized debian/rules.
+  * Add hints to the menu file.
+  * Integrate objprelink with libtool to make for faster startup.
+  * Have KVIrc report the proper version.
+  * kvirc-doc should be Architecture: all.
+  * KVIrc is now lintian-clean.
+  * Font anti-aliasing was turned on in 2.1.2-pre3. (Closes: #108490)
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 29 Aug 2001 11:54:52 -0600
+
+kvirc (2.1.2-pre5) unstable; urgency=low
+
+  * Yet more upstream enhancements... Triskelios never sleeps, it seems.
+  * Enabled multithread support.
+  * Do not patch Makefile; patch acinclude.m4.in instead.
+  * Add Depends: kvirc to kvirc-dev and kvirc-doc.
+  * Make the configure target change the literal $PREFIX in the man page
+    to the prefix we're installing in, i.e. /usr.
+  * Add a versioned dependancy on libqt2 (>= 2.3) and kdelibs3 (>= 2.2)
+    since I think only specifying libqt2 was creating problems for
+    people on older systems.
+  * Supply rfc2810.txt, rfc2811.txt, rfc2812.txt and rfc2813.txt with
+    kvirc-doc, since the documentation mentions their existence.
+  * Supply Plugins-devel-HOWTO with kvirc-dev.
+  * Supply the example plugin with kvirc-dev, to help people figure out
+    how to write their own plugins.
+  * Have a working basicplugin example that compiles properly.
+  * Allow for compilation of plugins using the kvirc-config script. This
+    used not to work unless one had the full source package installed.
+  * KVIrc is compliant with standards version 3.5.6 now.
+  * It should now be easier for (beginning) developers to sit down and
+    write plugins for KVIrc :)
+
+ -- Robin Verduijn <robin@debian.org>  Mon, 30 Jul 2001 19:55:37 -0600
+
+kvirc (2.1.2-pre4) unstable; urgency=low
+
+  * New logo.
+  * Do not use --with-o3-optimisation.
+  * Xft fixes.
+
+ -- Robin Verduijn <robin@debian.org>  Sun, 29 Jul 2001 02:47:57 -0600
+
+kvirc (2.1.2-pre3) unstable; urgency=low
+
+  * More upstream fixes.
+  * Xft support added.
+  * New icons.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 18 Jul 2001 09:43:01 -0600
+
+kvirc (2.1.2-pre2) unstable; urgency=low
+
+  * Added imagemagick to Build-Depends. (Closes: #102836)
+  * Lots of upstream fixes and enhancements, such as:
+  * - Support for more Qt styles.
+  * - New IRC commands (33).
+  * - KDE-style icon sets.
+  * - More dock widget configurability.
+  * - Cosmetic fixes.
+  * Bug fixes.
+
+ -- Robin Verduijn <robin@debian.org>  Mon,  2 Jul 2001 16:21:34 -0600
+
+kvirc (2.1.2-pre1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 28 Jun 2001 15:23:52 -0600
+
+kvirc (2.1.1-4) unstable; urgency=low
+
+  * Added Build-Depends: field. (Closes: #101989)
+  * Changed KVirc to KVIrc everywhere.
+  * Capitalize Description: field in control.
+
+ -- Robin Verduijn <robin@debian.org>  Sat, 23 Jun 2001 18:28:00 -0600
+
+kvirc (2.1.1-3) unstable; urgency=low
+
+  * First Debian upload.
+  * Use DH_COMPAT=3
+  * Removed some unnecessary cruft from the {pre,post}-inst scripts since
+    debhelper now takes care of that.
+  * Add error-checking to 'for' loop in debian/rules.
+  * Updated description for KVIrc.
+  * Compiled with Standards-Version 3.5.5
+  * Use DEB_BUILD_OPTIONS to build a debug-enabled version, if desired.
+  * Use DEB_BUILD_GNU_CPU to determine C++ compile flags.
+  * Move static libraries to kvirc-dev.
+  * Add "set -e" to kvi* scripts.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 20 Jun 2001 00:00:22 -0600
+
+kvirc (2.1.1-2) unstable; urgency=low
+
+  * Synchronized with cvs.
+  * Fix lintian warnings about .../doc/*/INSTALL.gz.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 2 May 2001 11:33:10 -0700
+
+kvirc (2.1.1-1) unstable; urgency=low
+
+  * Synchronized with cvs.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 11 Apr 2001 22:36:12 -0700
+
+kvirc (2.1.0-1) unstable; urgency=low
+
+  * Synchronized with cvs.
+
+ -- Robin Verduijn <robin@debian.org>  Fri, 16 Feb 2001 11:23:34 +0000
+
+kvirc (2.1.0) unstable; urgency=low
+
+  * Enabled IPv6 support.
+  * Removed my icon stuff since the main tree is doing it correctly now.
+  * Bumped the version number to 2.1.0. Release time!
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 1 Feb 2001 14:07:15 +0000
+
+kvirc (2.1.0-pre4) unstable; urgency=low
+
+  * Added a #DEBHELPER# line to each of the {pre,post}inst scripts
+  * Synchronized with CVS.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 31 Jan 2001 10:16:35 +0000
+
+kvirc (2.1.0-pre3) unstable; urgency=low
+
+  * Synchronized with CVS.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 25 Jan 2001 19:31:04 +0000
+
+kvirc (2.1.0-pre2) unstable; urgency=low
+
+  * Ran lintian and corrected all warnings.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 18 Jan 2001 23:44:00 -0700
+
+kvirc (2.1.0-pre1) unstable; urgency=low
+
+  * Install the proper icon files to improve KDE2 icon handling.
+  * Synchronized with CVS.
+  * Re-enabled the tkjb plugin.
+  * Moved some documentation files to the kvirc-doc package.
+  * Bumped the version number.
+
+ -- Robin Verduijn <robin@debian.org>  Thu, 28 Dec 2000 14:21:44 +0000
+
+kvirc (2.0-4) unstable; urgency=low
+
+  * Added files to dh_installdocs.
+  * Synchronized with CVS.
+
+ -- Robin Verduijn <robin@debian.org>  Wed, 29 Nov 2000 18:52:07 +0000
+
+kvirc (2.0-3) unstable; urgency=low
+
+  * Removed --without-kde-support flag since it caused KDE support to be
+    enabled.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 22 Nov 2000 23:22:19 +0000
+
+kvirc (2.0-2) unstable; urgency=low
+
+  * Synchronized with CVS.
+
+ -- Robin Verduijn <robin@debian.org>  Thu,  2 Nov 2000 16:00:22 +0000
+
+kvirc (2.0-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Robin Verduijn <robin@debian.org>  Tue, 10 Oct 2000 14:25:47 +0000
+
