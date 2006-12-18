@@ -1,0 +1,24 @@
+#! /bin/sh
+
+set -e
+
+BROWSER=
+
+if [ -z "$1" ]; then
+	echo "Missing URL"
+else
+	for BROWSER in firefox seamonkey mozilla netscape ""; do
+		if [ -z "$BROWSER" ]; then 
+			echo "Could not find either Netscape or Mozilla"
+			exit 0
+		fi
+		if which "$BROWSER" > /dev/null; then
+			break;
+		fi
+	done
+		
+	if ! "$BROWSER" -remote "openURL($1)" 2> /dev/null; then
+		echo "$BROWSER is not currently running. Starting a new instance..."
+		exec "$BROWSER" "$1"
+	fi
+fi
