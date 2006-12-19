@@ -32,7 +32,7 @@ General notes for the installation of the 3.2.0 release of KVIrc
     what's wrong.
 
     If you have found this document in a source distribution or you
-    have downloaded it by using the cvs then well...
+    have downloaded it by using the svn then well...
     this is a standard INSTALL file :)
 
 ###############################################################################
@@ -46,7 +46,7 @@ General notes for the installation of the 3.2.0 release of KVIrc
 # 3. Hacker installation:
 ###############################################################################
 
-    If you're compiling the cvs version of KVirc run ./autogen.sh
+    If you're compiling the svn version of KVirc run ./autogen.sh
     (You NEED automake >= 1.5 for autogen.sh to run).
 
     # export QTDIR="your qtlibrary path"
@@ -73,10 +73,10 @@ General notes for the installation of the 3.2.0 release of KVIrc
     ### Step 0 (ONLY FOR THE CVS VERSION)
     ###
 
-        If (*** AND ONLY IF ***) you're compiling the cvs version of kvirc
+        If (*** AND ONLY IF ***) you're compiling the svn version of kvirc
         you need to generate the configure script. If you're compiling
         a downloaded tar.gz (or tar.bz2) package or you don't know what
-        cvs is then jump directly to step 1!
+        svn is then jump directly to step 1!
 
         You need a recent automake and autoconf installed on your system.
         It is also reccomended to have a recent (matching) libtool installed
