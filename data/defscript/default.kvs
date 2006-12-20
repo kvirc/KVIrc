@@ -1419,7 +1419,7 @@ defpopup(channel)
 event (OnChannelNickPopupRequest,default){ if($0 != "")popup channel $0; }
 
 # lets set also the default (double click) action
-event(OnChannelNickDefaultActionRequest,default){ if($0 != "")query $0; }
+event(OnChannelNickDefaultActionRequest,default){ if(!$isEmpty($0))query $0; }
 
 
 # Popup to show on right-clicking channel links
