@@ -13,9 +13,8 @@ End Function
 SSLLIBDIR=GetEnv("SSLLIBDIR")
 PERLDIR=GetEnv("PERLDIR")
 QTDIR=GetEnv("QTDIR")
+MSGFMT=GetEnv("MSGFMT")
 
-
-MSGFMT="c:\Programming\gettext\bin\msgfmt"
 PROJECTDIR=".."
 PACKAGEDIR="package"
 DOCSDIR="..\..\kvirc-docs"
@@ -166,7 +165,7 @@ If (MsgBox("Do you want to run gendoc.pl? (This may take a while)", vbYesNo) = v
 	GenDoc PROJECTDIR
 	
 	MsgBox("""" + PERLDIR + "bin\perl.exe"" """ + PROJECTDIR + "\admin\gendoc.pl"" """ + DOCSDIR + """ " + docFiles )
-	Set oExec = oShell.Exec("""" + PERLDIR + "bin\perl.exe"" """ + PROJECTDIR + "\admin\gendoc.pl"" """ + DOCSDIR + """ " + docFiles)
+	Set oExec = oShell.Exec("""" + PERLDIR + "\bin\perl.exe"" """ + PROJECTDIR + "\admin\gendoc.pl"" """ + DOCSDIR + """ " + docFiles)
 	
 	Do While oExec.Status = 0
 	     WScript.Sleep 100
