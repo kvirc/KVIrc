@@ -1,3 +1,15 @@
+27 Dec 2006
+   [Noldor}
+   - Alias editor module: 
+     added the possibility to save a selection of aliases in separated files (every file will have the alias name);
+     fixed search function;
+   - Script editor module:
+     fixed replace command(in "replace all aliases" too);
+     now syntax highlighter recognize command "function" and "internal";
+   - Objects module:
+     added objects.classes, objects.variables, objects.classAllHandlers;
+     fixed crash in listviewitem class;
+     fixed little bug in multilinnedit class (function $setWordWrap); 
 17 Dec 2006
    [Pragma]
    - Committed the new german translation file by Mihai "Ionic" Moldovan

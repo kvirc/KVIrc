@@ -204,6 +204,8 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 {
 	m_pLastEditedItem = 0;
 	m_pLastClickedItem = 0;
+	m_szDir = QDir::homeDirPath();
+  
 
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
 
@@ -229,7 +231,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
-	//connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
+	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
 
 	m_pContextPopup = new QPopupMenu(this);
 
@@ -444,6 +446,13 @@ void KviAliasEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			__tr2qs("Export Selected in singles files..."),
+			this,SLOT(exportSelectedSepFiles()));
+
+	m_pContextPopup->setItemEnabled(id,bHasSelected);
+
+	m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
 			__tr2qs("Export All..."),
 			this,SLOT(exportAll()));
 	m_pContextPopup->setItemEnabled(id,bHasItems);
@@ -467,21 +476,22 @@ void KviAliasEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
 	m_pContextPopup->popup(pnt);
 }
 
-void KviAliasEditor::recursiveSearch(const QString &szSearch,KviAliasEditorListViewItem * it)
+void KviAliasEditor::recursiveSearchReplace(const QString &szSearch,KviAliasEditorListViewItem * it,bool bReplace,const QString &szReplace)
 {
 	if(!it)return;
 	if(it->isAlias())
 	{
-		if(((KviAliasListViewItem *)it)->buffer().find(szSearch,false) != -1)
+		if(((KviAliasListViewItem *)it)->buffer().find(szSearch,0,false) != -1)
 		{
 			it->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED)));
+			if (bReplace) ((QString &)((KviAliasListViewItem *)it)->buffer()).replace(szSearch,szReplace,false);
 			openParentItems(it);
 		} else
 			it->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)));
 	} else {
-		recursiveSearch(szSearch,(KviAliasEditorListViewItem *)(it->firstChild()));
+		recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)(it->firstChild()),bReplace,szReplace);
 	}
-	recursiveSearch(szSearch,(KviAliasEditorListViewItem *)(it->nextSibling()));
+	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)(it->nextSibling()),bReplace,szReplace);
 }
 
 void KviAliasEditor::slotFind()
@@ -498,12 +508,15 @@ void KviAliasEditor::slotFind()
 	g_pAliasEditorModule->unlock();
 	if(!bOk)return;
 	if(szSearch.isEmpty())return;
+	m_pEditor->setFindText(szSearch);
 	
-	recursiveSearch(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
+	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
 }
 void KviAliasEditor::slotFindWord(const QString &szSearch)
 {
-	recursiveSearch(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
+	m_pEditor->setFindText(szSearch);
+	
+	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
 
 }
 void KviAliasEditor::recursiveCollapseNamespaces(KviAliasEditorListViewItem * it)
@@ -522,17 +535,12 @@ void KviAliasEditor::slotCollapseNamespaces()
 	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)m_pListView->firstChild());
 }
 
-/*
+
 void KviAliasEditor::slotReplaceAll(const QString &before,const QString &after)
 {
-	QListViewItemIterator itv( m_pListView );
-    while ( itv.current() ) 
-    {
-	((KviAliasListViewItem*)itv.current())->m_szBuffer.replace(before,after,FALSE);
-	++itv;
-	}
+	recursiveSearchReplace(before,(KviAliasEditorListViewItem *)m_pListView->firstChild(),true,after);
 }
-*/
+
 
 
 void KviAliasEditor::getExportAliasBuffer(QString &buffer,KviAliasListViewItem * it)
@@ -554,12 +562,66 @@ void KviAliasEditor::exportAll()
 	exportAliases(false);
 }
 
+void KviAliasEditor::exportSelectedSepFiles()
+{
+	exportAliases (true,true);
+}
 void KviAliasEditor::exportSelected()
 {
 	exportAliases(true);
 }
 
-void KviAliasEditor::exportAliases(bool bSelectedOnly)
+void KviAliasEditor::exportSelectionInSinglesFiles(KviPtrList<KviAliasListViewItem> *l)
+{
+	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
+	debug ("dir %s",m_szDir.latin1());
+	if (!l->first())
+	{
+		g_pAliasEditorModule->lock();
+		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("There is not selection!"),__tr2qs("Ok"));
+		g_pAliasEditorModule->unlock();
+		return;
+	}
+	g_pAliasEditorModule->lock();
+
+	if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs("Choose a Directory - KVIrc"),m_szDir)){
+		g_pAliasEditorModule->unlock();
+		return;
+	}
+	
+	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
+	debug ("dir changed in %s",m_szDir.latin1());
+	
+	bool bReplaceAll=false;
+	
+	for(KviAliasListViewItem * it = l->first();it;it = l->next())
+	{
+		QString tmp;
+		getExportAliasBuffer(tmp,it);
+		QString szFileName=buildFullItemName(it);
+		szFileName += ".kvs";
+		szFileName.replace("::","_");
+		QString szCompletePath=m_szDir+szFileName;
+	
+		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
+		{
+				QString szMsg;
+				KviQString::sprintf(szMsg,__tr2qs("The file \"%Q\" exists. Do you want to replace it ?"),&szFileName);
+				int ret = QMessageBox::question(this,__tr2qs("Replace file"),szMsg,__tr2qs("Yes"),__tr2qs("Yes to All"),__tr2qs("No"));
+				if (ret!=2){
+					KviFileUtils::writeFile(szCompletePath,tmp);
+					if (ret==1)	bReplaceAll=true;
+				}
+		
+		}
+		else
+		KviFileUtils::writeFile(szCompletePath,tmp);
+		
+	}
+	g_pAliasEditorModule->unlock();
+
+}
+void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 {
 	saveLastEditedItem();
 	
@@ -569,7 +631,12 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly)
 	QString out;
 
 	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),bSelectedOnly);
+	if (bSingleFiles)
+	{ 
+			exportSelectionInSinglesFiles(&l);
+			return;
 
+	}
 	int count=0;
 	KviAliasListViewItem * tempitem=0;
 	for(KviAliasListViewItem * it = l.first();it;it = l.next())
@@ -590,21 +657,26 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly)
 		return;
 	}
 
-	QString szName = QDir::homeDirPath();
+	QString szName = m_szDir;
   
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
+	QString szFile;
+	g_pAliasEditorModule->lock();
+	
 	if (count==1)
 	{
-		QString tmp=buildFullItemName(tempitem);
-		szNameFile = tmp.replace("::","_");
+			QString tmp=buildFullItemName(tempitem);
+			szNameFile = tmp.replace("::","_");
 	}
 	else szNameFile="aliases";
 	szName += szNameFile;
 	szName += ".kvs";
-	QString szFile;
-
-	g_pAliasEditorModule->lock();
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",false,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",false,true,true))
+	{
+		g_pAliasEditorModule->unlock();		
+		return;
+	}
+	m_szDir=QFileInfo(szFile).dirPath(TRUE);
 	g_pAliasEditorModule->unlock();
 
 	if(!KviFileUtils::writeFile(szFile,out))

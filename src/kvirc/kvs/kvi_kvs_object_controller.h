@@ -64,6 +64,7 @@ public:
 	KviKvsObjectClass * lookupClass(const QString &szClass,bool bBuiltinOnly = false);
 	KviKvsObject * lookupObject(kvs_hobject_t hObject){ return m_pObjectDict->find(hObject); };
 	QPtrDict<KviKvsObject> * objectDict(){ return m_pObjectDict; };
+	QDict<KviKvsObjectClass> * classDict(){ return m_pClassDict; };
 };
 
 #endif //!_KVI_KVS_OBJECT_CONTROLLER_H_

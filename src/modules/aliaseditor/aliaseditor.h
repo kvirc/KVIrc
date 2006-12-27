@@ -116,10 +116,13 @@ public:
 	//KviAliasListViewItem * m_pLastEditedItem;
 	QPopupMenu                 * m_pContextPopup;
 	QSplitter                  * m_pSplitter;
+	QString						m_szDir;
 public:
 	//bool modified(){ return m_bModified; };
 	void commit();
-	void exportAliases(bool);
+	void exportAliases(bool,bool=false);
+	void exportSelectionInSinglesFiles(KviPtrList<KviAliasListViewItem> *l);
+
 	void saveProperties(KviConfig *);
 	void loadProperties(KviConfig *);
 	static void splitFullAliasOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
@@ -128,6 +131,7 @@ protected slots:
 	void newAlias();
 	void newNamespace();
 	void exportAll();
+	void exportSelectedSepFiles();
 	void exportSelected();
 	void removeSelectedItems();
 	void itemPressed(QListViewItem *it,const QPoint &pnt,int col);
@@ -135,10 +139,12 @@ protected slots:
 	void slotFind();
 	void slotCollapseNamespaces();
 	void slotFindWord(const QString &);
+	void slotReplaceAll(const QString &before,const QString &after);
 protected:
 //	QString const & findWord(const QString &txt,bool);
 	void recursiveCollapseNamespaces(KviAliasEditorListViewItem * it);
-	void recursiveSearch(const QString &szSearch,KviAliasEditorListViewItem * it);
+	void recursiveSearchReplace(const QString &szSearch,KviAliasEditorListViewItem * it,bool bReplace=false,const QString &szReplace="n");
+	
 	void recursiveCommit(KviAliasEditorListViewItem * it);
 	void getExportAliasBuffer(QString &buffer,KviAliasListViewItem * it);
 	void oneTimeSetup();

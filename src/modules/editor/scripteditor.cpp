@@ -447,6 +447,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 
 	QString parse;
 	KviQString::sprintf(parse,"timer -s (help,0){ help -s %Q; }",&buffer);
+	debug ("parsing %s",parse.latin1());
 	KviKvsScript::run(parse,(KviWindow*)g_pApp->activeConsole());
 	
 	return true;
@@ -668,7 +669,30 @@ int KviScriptSyntaxHighlighter::highlightParagraph(const QString &text,int endSt
 						continue;
 					}
 				}
-				// not an else... FIXME: should check for callbacks.. but that's prolly too difficult :)
+				else
+				if(pBegin->unicode() == 'f')
+				{
+					if(c - pBegin == 8)
+					{
+						// might be "function"
+						QString tmp(pBegin,8);
+						if(tmp.lower() == "function")bNewCommand = true;
+						continue;
+					}
+				}
+
+				if(pBegin->unicode() == 'i')
+				{
+					if(c - pBegin == 8)
+					{
+						// might be "internal"
+						QString tmp(pBegin,8);
+						if(tmp.lower() == "internal")bNewCommand = true;
+						continue;
+					}
+				}
+
+				// not an else or special command function... FIXME: should check for callbacks.. but that's prolly too difficult :)
 				continue;
 			}
 		}
@@ -1143,8 +1167,9 @@ void KviScriptEditorReplaceDialog::slotReplace()
 {
 	QString txt=((KviScriptEditorWidget *)m_pParent)->text();
 	if (checkReplaceAll->isChecked()) emit replaceAll(m_pFindlineedit->text(),m_pReplacelineedit->text());
-	else txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),false);
+	txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),false);
 	((KviScriptEditorWidget *)m_pParent)->setText(txt);
+	((KviScriptEditorWidget *)m_pParent)->setModified(true);
 	m_pFindlineedit->setText("");
 	m_pReplacelineedit->setText("");
 	setTabOrder(m_pFindlineedit,m_pReplacelineedit);

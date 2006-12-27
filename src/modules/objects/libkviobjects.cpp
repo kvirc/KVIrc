@@ -40,6 +40,7 @@
 #include "kvi_cmdformatter.h"
 #include "kvi_out.h"
 #include "kvi_app.h"
+#include "kvi_fileutils.h"
 
 #include "class_button.h"
 #include "class_checkbox.h"
@@ -395,6 +396,144 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 		}
 	}
 	return true;
+}
+/*
+		@doc: objects.variables
+		@title:
+			objects.variables
+		@type:
+			command
+		@short:
+			List object's variables.
+		@syntax:
+			<hash> objects.variables(<hobject>)
+		@description:
+			Returns an hash with the object's variables(useful only for debugging).			
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
+{
+	kvs_hobject_t hObj;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("object",KVS_PT_HOBJECT,0,hObj)
+	KVSM_PARAMETERS_END(c)
+	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+	if (!ob)
+	{
+		c->warning(__tr2qs("Object does not exists"));
+		return true;
+	}
+	QDictIterator<KviKvsVariant> it(* ob->dataContainer()->dict());
+	KviKvsHash* pHash = new KviKvsHash();
+	c->returnValue()->setHash(pHash);
+	while(KviKvsVariant * t = it.current())
+	{
+		pHash->set(it.currentKey(),new KviKvsVariant(*t));
+		++it;
+	}
+	return true;
+
+	
+
+}
+/*
+		@doc: objects.classAllHandlers
+		@title:
+			objects.classAllHandlers
+		@type:
+			function
+		@short:
+			List all the functions .
+		@syntax:
+			<hash> objects.classAllHandlers(<class name:string>)
+		@description:
+			Returns an hash with the class's functions(useful only for debugging).			
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
+{
+	QString szClassName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("class name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+	KVSM_PARAMETERS_END(c)
+	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+	if(!pClass)
+	{
+		c->warning(__tr2qs("The class '%Q' does not exist"),&szClassName);
+		return true;
+	}
+
+	QDictIterator<KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+	KviKvsHash* pHash = new KviKvsHash();
+	c->returnValue()->setHash(pHash);
+	while(KviKvsObjectFunctionHandler * t = it.current())
+	{
+		QString szCode;
+		KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
+		pClass->getFunctionCode(szCode,*handler);
+		pHash->set(it.currentKey(),new KviKvsVariant(szCode));
+		++it;
+	}
+
+	return true;
+}
+static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
+{ 
+	
+	/*
+		@doc: objects.classes
+		@title:
+			objects.classes
+		@type:
+			command
+		@short:
+			List user defined classes
+		@syntax:
+			<array> $object.classes()
+		@description:
+			Returns an array with the user defined classes(useful only for debugging).			
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+	
+	KviKvsArray * pArry = new KviKvsArray();
+	c->returnValue()->setArray(pArry);
+	int uIdx=0;
+	QDictIterator<KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	QDict<bool> *classdict=new QDict<bool>;
+	classdict->setAutoDelete(true);
+	bool bFake=true;
+	while(KviKvsObjectClass * pClass=it.current())
+	{
+		if (!pClass->isBuiltin())classdict->insert(it.currentKey(),&bFake);
+		++it;
+	}
+	QString szPath;
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes);
+	QDir d(szPath);
+	QStringList sl;
+	sl = d.entryList(QDir::Files);
+	for(QStringList::Iterator it2 = sl.begin();it2 != sl.end();++it2)
+	{
+		QString szName=*it2;
+		szName.replace("--","::");		
+		if (szName!=".." && szName!=".") classdict->insert(szName.left(szName.length()-4),&bFake);	
+	}
+	KviKvsArray* pArray = new KviKvsArray();
+	c->returnValue()->setArray(pArray);
+	int idx=0;
+	QDictIterator<bool>  strIt(*classdict);
+	while(strIt.current())
+	{
+		pArray->set(idx,new KviKvsVariant(strIt.currentKey()));
+		idx++;
+		++strIt;
+	}
+	
+	return true;
+
 }
 
 static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
@@ -799,7 +938,11 @@ static bool objects_module_can_unload(KviModule *m)
 	// functions
 	KVSM_REGISTER_FUNCTION(m,"exists",objects_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"instances",objects_kvs_fnc_instances);
+	KVSM_REGISTER_FUNCTION(m,"classes",objects_kvs_fnc_classes);
 	KVSM_REGISTER_FUNCTION(m,"dump",objects_kvs_fnc_listObjects);
+	KVSM_REGISTER_FUNCTION(m,"variables",objects_kvs_fnc_variables);
+	KVSM_REGISTER_FUNCTION(m,"classAllHandlers",objects_kvs_fnc_classAllHandlers);
+	
 	// commands
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"connect",objects_kvs_cmd_connect);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);

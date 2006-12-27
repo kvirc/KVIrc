@@ -93,6 +93,9 @@ public:
 
 	bool save(const QString &szFileName);
 	static bool load(const QString &szFileName);
+	void getFunctionCode(QString &szCode,KviKvsObjectFunctionHandler &h);
+	QDict<KviKvsObjectFunctionHandler> * getHandlers(){return m_pFunctionHandlers;};
+
 };
 
 

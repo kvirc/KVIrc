@@ -193,7 +193,7 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 		{
 			szBuffer += "	";
 			if(h->flags() & KviKvsObjectFunctionHandler::Internal)
-				szBuffer += "internal ";
+			szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += it.currentKey();
 			szBuffer += "()\n";
@@ -210,6 +210,12 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 	
 	return KviFileUtils::writeFile(szFileName,szBuffer);
 }
+void KviKvsObjectClass::getFunctionCode(QString &szCode,KviKvsObjectFunctionHandler &h)
+{
+	szCode=h.scriptHandlerCode();
+}
+	
+
 
 bool KviKvsObjectClass::load(const QString &szFileName)
 {

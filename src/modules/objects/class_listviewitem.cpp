@@ -137,6 +137,11 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_listviewitem)
 
 bool KviKvsObject_listviewitem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
+	if (!parentObject())
+	{
+			pContext->error(__tr2qs("The listviewitem cannot be parentless"));
+			return false;
+	}
 	if(parentObject()->inherits("KviKvsObject_listviewitem"))
 	{
 		 m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviKvsObject_listviewitem *)parentObject())->m_pListViewItem);

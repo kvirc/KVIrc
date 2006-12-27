@@ -469,7 +469,7 @@ bool KviKvsObject_mledit::functionSetWordWrap(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("word_wrap",KVS_PT_STRING,0,szWrap)
 	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szWrap,"NoWrap)"))
+	if(KviQString::equalCI(szWrap,"NoWrap"))
 			((QMultiLineEdit *)widget())->setWordWrap(QTextEdit::NoWrap);
 	else if(KviQString::equalCI(szWrap,"WidgetWidth"))
 			((QMultiLineEdit *)widget())->setWordWrap(QTextEdit::WidgetWidth);
