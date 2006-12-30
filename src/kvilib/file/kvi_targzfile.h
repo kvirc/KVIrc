@@ -33,4 +33,6 @@ public:
 	KviGzPacker(){};
 	~KviGzPacker(){};
 }
+
+
 #endif //_KVI_TARGZFILE_H_

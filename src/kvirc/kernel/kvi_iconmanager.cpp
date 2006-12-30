@@ -340,7 +340,9 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"saykvs", // 286
 	"themeoptions", // 287
 	"bug", // 288
-	"refresh" //289
+	"refresh", //289
+	"theme", // 290
+	"themes" // 291
 };
 
 KviIconWidget::KviIconWidget()

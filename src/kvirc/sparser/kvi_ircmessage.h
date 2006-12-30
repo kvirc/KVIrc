@@ -6,7 +6,7 @@
 //   Creation date : Fri Aug  2 23:08:55 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2006 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -56,13 +56,10 @@ private:
 	KviStr                m_szPrefix;           // the extracted prefix string
 	KviStr                m_szCommand;          // the extracted command (may be numeric)
 	KviPtrList<KviStr>  * m_pParams;            // the list of parameters
-	//KviPtrList<QCString> * m_pcParams;  QCString has same data as KviStr and has worse management than KviStr (beside other thingies, it CAN be null)
-	//                                    the pointer was also mem-leaked :(
 	KviConsole          * m_pConsole;           // the console we're attacched to
 	KviIrcConnection    * m_pConnection;        // the connection we're attacched to
 	int                   m_iNumericCommand;    // the numeric of the command (0 if non numeric)
 	int                   m_iFlags;             // yes.. flags :D
-	//QCString	      m_SafeTrailingString;
 public:
 	KviConsole       * console(){ return m_pConsole; };
 	KviIrcConnection * connection(){ return m_pConsole->connection(); };
@@ -82,17 +79,14 @@ public:
 	int                paramCount(){ return m_pParams->count(); };
 
 	const char       * param(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : 0; };
-	//const QCString	 * cParam(unsigned int idx){ return (idx < m_pcParams->count()) ? m_pcParams->at(idx) : 0; };
 	
 	const char       * safeParam(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : KviStr::emptyString().ptr(); };
-	//const QCString	 * cSafeParam(unsigned int idx){ return (idx < m_pcParams->count()) ? m_pcParams->at(idx) : new QCString(); }; <-- this leaks memory
 	
 	KviStr           * paramString(unsigned int idx){ return m_pParams->at(idx); };
 
 	const char       * trailing(){ KviStr * tr = m_pParams->last(); return tr ? tr->ptr() : 0; };
 	KviStr           * trailingString(){ return m_pParams->last(); };
 	KviStr           & safeTrailingString(){ KviStr * tr = m_pParams->last(); return tr ? *tr : KviStr::emptyString(); };
-	//QCString	 & qcSafeTrailingString() { return m_SafeTrailingString; };
 	const char       * safeTrailing(){ KviStr * tr = m_pParams->last(); return tr ? tr->ptr() : KviStr::emptyString().ptr(); };
 
 	const char       * allParams(){ return m_ptr; };

@@ -1,13 +1,13 @@
-#ifndef _OPTW_THEME_H_
-#define _OPTW_THEME_H_
+#ifndef _KVI_FILEEXTENSIONS_H_
+#define _KVI_FILEEXTENSIONS_H_
 
 //=============================================================================
 //
-//   File : optw_theme.h
-//   Creation date : Sun May 25 2003 18:03:11 by Szymon Stefanek
+//   File : kvi_fileextensions.h
+//   Creation date : Tue Dec 26 2006 05:09:22 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,6 +25,13 @@
 //
 //=============================================================================
 
+//=============================================================================
+// This file contains the file extensions used by KVIrc
+//=============================================================================
 
+#define KVI_FILEEXTENSION_CONFIG "kvc"
+#define KVI_FILEEXTENSION_SCRIPT "kvs"
+#define KVI_FILEEXTENSION_THEMEPACKAGE "kvt"
+#define KVI_FILEEXTENSION_ADDONPACKAGE "kva"
 
-#endif //!_OPTW_THEME_H_
+#endif //_KVI_FILEEXTENSIONS_H_

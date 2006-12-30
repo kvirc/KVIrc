@@ -25,6 +25,8 @@
 //
 //=============================================================================
 
+#include "kvi_fileextensions.h"
+
 //=============================================================================
 // This file contains the config file names used in KVIrc
 //
@@ -32,27 +34,27 @@
 // may find themselves in trouble
 //=============================================================================
 
-#define KVI_CONFIGFILE_MAIN "main.kvc"
-#define KVI_CONFIGFILE_WINPROPERTIES "winproperties.kvc"
-#define KVI_CONFIGFILE_SERVERDB "serverdb.kvc"
-#define KVI_CONFIGFILE_PROXYDB "proxydb.kvc"
-#define KVI_CONFIGFILE_EVENTS "events.kvc"
-#define KVI_CONFIGFILE_RAWEVENTS "rawevents.kvc"
-#define KVI_CONFIGFILE_POPUPS "popups.kvc"
-#define KVI_CONFIGFILE_SCRIPTTOOLBARS "toolbars.kvc"
-#define KVI_CONFIGFILE_CUSTOMTOOLBARS "customtoolbars.kvc"
-#define KVI_CONFIGFILE_MEDIATYPES "mediatypes.kvc"
-#define KVI_CONFIGFILE_REGUSERDB "reguserdb.kvc"
-#define KVI_CONFIGFILE_SHAREDFILES "sharedfiles.kvc"
-#define KVI_CONFIGFILE_RECENT "recent.kvc"
-#define KVI_CONFIGFILE_TOOLBARS "toolbarpos.kvc"
-#define KVI_CONFIGFILE_ALIASES "aliases.kvc"
-#define KVI_CONFIGFILE_NICKSERVDATABASE "nickserv.kvc"
-#define KVI_CONFIGFILE_TEXTICONS "texticons.kvc"
-#define KVI_CONFIGFILE_REGCHANDB "regchan.kvc"
-#define KVI_CONFIGFILE_INPUTHISTORY "inputhistory.kvc"
-#define KVI_CONFIGFILE_AVATARCACHE "avatarcache.kvc"
-#define KVI_CONFIGFILE_USERACTIONS "useractions.kvc"
-#define KVI_CONFIGFILE_SCRIPTADDONS "scriptaddons.kvc"
+#define KVI_CONFIGFILE_MAIN "main." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_WINPROPERTIES "winproperties." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SERVERDB "serverdb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_PROXYDB "proxydb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_EVENTS "events." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_RAWEVENTS "rawevents." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_POPUPS "popups." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SCRIPTTOOLBARS "toolbars." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_CUSTOMTOOLBARS "customtoolbars." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_MEDIATYPES "mediatypes." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_REGUSERDB "reguserdb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SHAREDFILES "sharedfiles." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_RECENT "recent." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_TOOLBARS "toolbarpos." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_ALIASES "aliases." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_NICKSERVDATABASE "nickserv." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_TEXTICONS "texticons." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_REGCHANDB "regchan." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_INPUTHISTORY "inputhistory." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_AVATARCACHE "avatarcache." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_USERACTIONS "useractions." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SCRIPTADDONS "scriptaddons." KVI_FILEEXTENSION_CONFIG
 
 #endif //_KVI_CONFIGNAMES_H_

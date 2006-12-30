@@ -1004,6 +1004,8 @@ void KviServerParser::parseNumericNicknameProblem(KviIrcMessage *msg)
 void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 {
 // FIXME: #warning "Need an icon here too: sth like KVI_OUT_WHOISSERVER, but with 'A' letter"
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
 	QString szNk = msg->connection()->decodeText(msg->safeParam(1));
 	KviIrcUserDataBase * db = msg->connection()->userDataBase();
 	KviIrcUserEntry * e = db->find(szNk);
@@ -1026,6 +1028,8 @@ void KviServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 {
 	// 311: RPL_WHOISUSER [I,E,U,D]
 	// :prefix 311 <target> <nick> <user> <host> * :<real_name>
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szUser = msg->connection()->decodeText(msg->safeParam(2));
 	QString szHost = msg->connection()->decodeText(msg->safeParam(3));
@@ -1076,6 +1080,7 @@ void KviServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 {
 	// 314: RPL_WHOWASUSER [I,E,U,D]
 	// :prefix 314 <target> <nick> <user> <host> * :<real_name>
+
 	if(!msg->haltOutput())
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
@@ -1100,6 +1105,8 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 {
 	// 319: RPL_WHOISCHANNELS [I,E,U,D]
 	// :prefix 319 <target> <nick> :<channel list>
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szChans = msg->connection()->decodeText(msg->safeTrailing());
@@ -1163,6 +1170,7 @@ void KviServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 	// :prefix 317 <target> <nick> <number> <number> :seconds idle, signon time
 
 	// FIXME: #warning "and NICK LINKS"
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 
@@ -1218,6 +1226,7 @@ void KviServerParser::parseNumericWhoisServer(KviIrcMessage *msg)
 {
 	// 312: RPL_WHOISSERVER [I,E,U,D] (sent also in response to WHOWAS)
 	// :prefix 312 <target> <nick> <server> :<server description / last whowas date>
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szServ = msg->connection()->decodeText(msg->safeParam(2));
@@ -1250,6 +1259,7 @@ void KviServerParser::parseNumericWhoisAuth(KviIrcMessage *msg)
 {
 	// :prefix RPL_WHOISAUTH <target> <nick> :is authed as
 	// actually seen only on Quakenet
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szAuth = msg->connection()->decodeText(msg->safeParam(2));
@@ -1270,6 +1280,10 @@ void KviServerParser::parseNumericWhoisOther(KviIrcMessage *msg)
 	// :prefix * <target> <nick> :<description>
 	// used for RPL_WHOISCHANOP,RPL_WHOISADMIN,
 	// RPL_WHOISSADMIN,RPL_WHOISOPERATOR,RPL_WHOISREGNICK,RPL_WHOISSSL
+	// and all the other unrecognized codes that look really like a RPL_WHOIS*
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szOth = msg->connection()->decodeText(msg->safeTrailing());
 
@@ -1298,6 +1312,9 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 {
 	// 318: RPL_ENDOFWHOIS [I,E,U,D]
 	// :prefix 318 <target> <nick> :End of /WHOIS list
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(0);
+
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
@@ -1909,6 +1926,9 @@ void KviServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 	// a nice extension for irc.wenet.ru
 	// 703: RPL_WHOISSCHEME
 	// :prefix 703 <mynick> <nick> <encoding> :translation scheme
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
 	if(msg->connection()->serverInfo()->supportsCodePages())
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));

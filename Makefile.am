@@ -51,6 +51,7 @@ messages:
 	cd $(topdir)/po/modules/perl && make messages
 	cd $(topdir)/po/modules/perlcore && make messages
 	cd $(topdir)/po/modules/sharedfileswindow && make messages
+	cd $(topdir)/po/modules/theme && make messages
 
 ###############################################################################
 # Generate documentation

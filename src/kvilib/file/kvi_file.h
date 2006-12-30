@@ -30,7 +30,7 @@
 #include "kvi_inttypes.h"
 
 #include <qfile.h>
-
+#include <qcstring.h>
 #include <time.h>
 
 
@@ -42,29 +42,41 @@ public:
 	~KviFile();
 public:
 	// This stuff loads and saves LITTLE ENDIAN DATA!
-	bool save(kvi_i32_t t);
-	bool load(kvi_i32_t &t);
+	bool save(kvi_u64_t t);
+	bool load(kvi_u64_t &t);
 
-	bool save(kvi_u32_t t){ return save((kvi_i32_t)t); };
-	bool load(kvi_u32_t &t){ return load((kvi_i32_t &)t); };
+	bool save(kvi_i64_t t){ return save((kvi_u64_t)t); };
+	bool load(kvi_i64_t &t){ return load((kvi_u64_t &)t); };
 
-	bool save(kvi_i16_t t);
-	bool load(kvi_i16_t &t);
+	bool save(kvi_u32_t t);
+	bool load(kvi_u32_t &t);
 
-	bool save(kvi_u16_t t){ return save((kvi_i16_t)t); };
-	bool load(kvi_u16_t &t){ return load((kvi_i16_t &)t); };
+	bool save(kvi_i32_t t){ return save((kvi_u32_t)t); };
+	bool load(kvi_i32_t &t){ return load((kvi_u32_t &)t); };
 
-	bool save(kvi_i8_t t);
-	bool load(kvi_i8_t &t);
+	bool save(kvi_u16_t t);
+	bool load(kvi_u16_t &t);
 
-	bool save(kvi_u8_t t){ return save((kvi_i8_t)t); };
-	bool load(kvi_u8_t &t){ return load((kvi_i8_t &)t); };;
+	bool save(kvi_i16_t t){ return save((kvi_u16_t)t); };
+	bool load(kvi_i16_t &t){ return load((kvi_u16_t &)t); };
+
+	bool save(kvi_u8_t t);
+	bool load(kvi_u8_t &t);
+
+	bool save(kvi_i8_t t){ return save((kvi_u8_t)t); };
+	bool load(kvi_i8_t &t){ return load((kvi_u8_t &)t); };;
 
 //	bool save(time_t t){ return save((kvi_i32_t)t); };
 //	bool load(time_t &t){ return load((kvi_i32_t)t); };
 
 	bool save(const KviStr &szData);
 	bool load(KviStr &szData);
+	
+	bool save(const QCString &szData);
+	bool load(QCString &szData);
+
+	bool save(const QByteArray &bData);
+	bool load(QByteArray &bData);
 
 	bool save(const QString &szData);
 	bool load(QString &szData);

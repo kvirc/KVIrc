@@ -135,7 +135,6 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 { 
-
 	QString doc;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
@@ -150,12 +149,11 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!c->switches()->find('n',"new"))
 	{
-		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child(
-			"help_widget","KviHelpWidget");
-
+		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child("help_widget","KviHelpWidget");
 		if(w)
 		{
 			w->textBrowser()->setSource(doc);
+			return true;
 		}
 	}
 	if(c->switches()->find('m',"mdi")) 

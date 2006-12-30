@@ -40,4 +40,4 @@ namespace KviOsInfo
 	extern KVILIB_API QString hostname();
 };
 
-#endif
+#endif //!_KVI_OSINFO_H_

@@ -52,7 +52,7 @@ namespace KviMessageBox
 #endif
 	}
 	
-	void infoBox(const QString &fmt,...)
+	void information(const QString &fmt,...)
 	{
 		kvi_va_list list;
 		kvi_va_start_by_reference(list,fmt);

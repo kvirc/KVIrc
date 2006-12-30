@@ -7,7 +7,7 @@
 //   Creation date : Fri Mar 19 1999 03:15:21 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2006 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,22 +26,37 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_inttypes.h"
 
-// Removed : kvi_settings.h includes qglobal.h for debug()
-//#include <qglobal.h> // for Q_UINT* and Q_INT*
 
 // KVILIB_API has been removed from therse two functions
 // these should always go inlined
 
-inline Q_UINT32 kvi_swap32(Q_UINT32 i)
+inline kvi_u64_t kvi_swap64(kvi_u64_t i)
 {
+	// abcdefgh to hgfedcba
+	return ((i << 56) |                /* h to a */
+			((i & 0xff00) << 40) |     /* g to b */
+			((i & 0xff0000) << 24) |   /* f to c */
+			((i & 0xff000000) << 8) |  /* e to d */
+			((i >> 8) & 0xff000000) |  /* d to e */
+			((i >> 24) & 0xff0000) |   /* c to f */
+			((i >> 40) & 0xff00) |     /* b to g */
+			(i >> 56));                /* a to h */
+}
+
+inline kvi_u32_t kvi_swap32(kvi_u32_t i)
+{
+	// abcd to dcba
 	return ((i << 24) | ((i & 0xff00) << 8) | ((i >> 8) & 0xff00) | (i >> 24));
 }
 
-inline Q_UINT16 kvi_swap16(Q_UINT16 i)
+inline kvi_u16_t kvi_swap16(kvi_u16_t i)
 {
+	// ab to ba
 	return ((i << 8) | (i >> 8));
 }
+
 
 
 

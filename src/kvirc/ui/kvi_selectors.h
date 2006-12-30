@@ -181,16 +181,26 @@ class KVIRC_API KviFileSelector : public QHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
+	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0,const QString &szFilter = QString::null);
 	~KviFileSelector(){};
+public:
+	enum Flags {
+		ChooseSaveFileName = 1,
+		DontConfirmOverwrite = 2
+	};
 protected:
 	QLabel      * m_pLabel;
 	QLineEdit   * m_pLineEdit;
 	QPushButton * m_pButton;
 	QString     * m_pOption;
+	unsigned int  m_uFlags;
+	QString       m_szFilter;
 public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
+	void setSelection(const QString &szSelection);
+signals:
+	void selectionChanged(const QString &szNewValue);
 private slots:
 	void browseClicked();
 protected:

@@ -50,6 +50,7 @@ protected:
 	bool         m_bSimulateUnexpectedDisconnect; // this is set to true if we have to simulate an unexpected disconnect even if we have sent a normal quit message
 	kvi_time_t   m_tLastReceivedChannelWhoReply;  // the time that we have received our last channel who reply
 	kvi_time_t   m_tLastSentChannelWhoRequest;    // the time that we have sent our last channel who request
+	kvi_time_t   m_tLastReceivedWhoisReply;       // the time that we have received the last whois reply, reset to 0 when we receive an /END OF WHOIS
 public:
 	bool sentQuit(){ return m_bSentQuit; };
 	void setSentQuit(){ m_bSentQuit = true; };
@@ -59,6 +60,9 @@ public:
 	
 	kvi_time_t lastSentChannelWhoRequest(){ return m_tLastSentChannelWhoRequest; };
 	void setLastSentChannelWhoRequest(kvi_time_t tTime){ m_tLastSentChannelWhoRequest = tTime; };	
+
+	kvi_time_t lastReceivedWhoisReply(){ return m_tLastReceivedWhoisReply; };
+	void setLastReceivedWhoisReply(kvi_time_t tTime){ m_tLastReceivedWhoisReply = tTime; };
 	
 	bool simulateUnexpectedDisconnect(){ return m_bSimulateUnexpectedDisconnect; };
 	void setSimulateUnexpectedDisconnect(){ m_bSimulateUnexpectedDisconnect = true; };

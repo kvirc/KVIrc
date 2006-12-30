@@ -377,3 +377,4 @@ namespace KviOsInfo
 			return QString::null;
 	}
 }
+

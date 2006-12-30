@@ -281,6 +281,36 @@ namespace KviFileUtils
 		return removeDir(szPath);
 	}
 
+	bool deleteDir(const QString &szPath)
+	{
+		QDir d(szPath);
+		QStringList sl = d.entryList(QDir::Dirs);
+		QStringList::Iterator it;
+		for(it=sl.begin();it != sl.end();it++)
+		{
+			QString szSubdir = *it;
+			if(!(KviQString::equalCS(szSubdir,"..") || KviQString::equalCS(szSubdir,".")))
+			{
+				QString szSubPath = szPath;
+				KviQString::ensureLastCharIs(szSubPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+				szSubPath += szSubdir;
+				if(!KviFileUtils::deleteDir(szSubPath))
+					return false;
+			}
+		}
+
+		sl = d.entryList(QDir::Files);
+		for(it=sl.begin();it != sl.end();it++)
+		{
+			QString szFilePath = szPath;
+			KviQString::ensureLastCharIs(szFilePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+			szFilePath += *it;
+			if(!KviFileUtils::removeFile(szFilePath))
+				return false;
+		}
+
+		return KviFileUtils::removeDir(szPath);
+	}
 	
 	bool writeFile(const QString &szPath,const QString &szData,bool bAppend)
 	{

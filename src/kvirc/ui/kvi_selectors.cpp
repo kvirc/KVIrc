@@ -300,9 +300,11 @@ void KviPixmapSelector::setEnabled(bool bEnabled)
 
 
 // FIXME: #warning "Option for DIR_MUST_EXISTS...(this widget could be turned into a file selector too)"
-KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
+KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags,const QString &szFilter)
 : QHBox(par), KviSelectorInterface()
 {
+	m_uFlags = uFlags;
+	m_szFilter = szFilter;
 	m_pLabel = new QLabel(txt,this);
 	m_pLineEdit = new QLineEdit(this);
 	//m_pLineEdit->setMinimumWidth(200);
@@ -337,13 +339,29 @@ void KviFileSelector::browseClicked()
 	select();
 }
 
+void KviFileSelector::setSelection(const QString &szSelection)
+{
+	m_pLineEdit->setText(szSelection);
+}
+
+
 void KviFileSelector::select()
 {
 	//KviStr tmp;
-	QString tmp;
- 	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose a File - KVIrc")))
+	QString tmp = *m_pOption;
+	if(m_uFlags & ChooseSaveFileName)
 	{
-		m_pLineEdit->setText(tmp);
+ 		if(KviFileDialog::askForSaveFileName(tmp,__tr2qs("Choose a File - KVIrc"),tmp,m_szFilter,true,!(m_uFlags & DontConfirmOverwrite)))
+		{
+			m_pLineEdit->setText(tmp);
+			emit selectionChanged(tmp);
+		}
+	} else {
+ 		if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose a File - KVIrc"),tmp,m_szFilter,true))
+		{
+			m_pLineEdit->setText(tmp);
+			emit selectionChanged(tmp);
+		}
 	}
 
 }

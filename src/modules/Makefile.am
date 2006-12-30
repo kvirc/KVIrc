@@ -52,6 +52,7 @@ SUBDIRS = about \
 		system \
 		term \
 		texticons \
+		theme \
 		tip \
 		tmphighlight \
 		toolbar \

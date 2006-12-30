@@ -9,4 +9,5 @@ SUBDIRS = about \
 	options \
 	perl \
 	perlcore \
-	sharedfileswindow
+	sharedfileswindow \
+	theme

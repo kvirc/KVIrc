@@ -1,5 +1,21 @@
+28 Dec 2006
+   [Pragma]
+   - Added handling of unknown RPL_WHOIS* numeric replies by implementing a nice
+     "guessing" algorithm suggested by Elephantman
+   - Added a file with KVIrc file extension definitions. We should use the defs instead
+     of hardcoding extensions like .kvt, .kvs or .kvp.
+   - Added a fast generic packaging engine. A KVIrc package is a kind of zip archive
+     with an uncompressed metadata header. It can be used to distribute both themes and addons.
+   - First works on the theme exporting engine. Saving and packaging are now different operations.
+     One first saves his theme to disk, eventually edits it manually (maybe by adding a nice
+     splash screen or fixing some icons) and finally packages it by invoking a nice
+     wizard based procedure. Still need to write the installation dialog.
+   - Moved the whole theme management engine to a new module. It exports the
+     management dialogs and some utility commands. There is no reason to load
+     all this stuff at startup with the options dialog now.
+
 27 Dec 2006
-   [Noldor}
+   [Noldor]
    - Alias editor module: 
      added the possibility to save a selection of aliases in separated files (every file will have the alias name);
      fixed search function;
@@ -10,6 +26,12 @@
      added objects.classes, objects.variables, objects.classAllHandlers;
      fixed crash in listviewitem class;
      fixed little bug in multilinnedit class (function $setWordWrap); 
+
+
+19 Dec 2006
+   [Pragma]
+   - help.open: open only one help window unless -n is used
+
 17 Dec 2006
    [Pragma]
    - Committed the new german translation file by Mihai "Ionic" Moldovan

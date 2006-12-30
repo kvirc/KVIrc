@@ -64,6 +64,8 @@ namespace KviFileUtils
 	// removes a dir (must be empty)
 	extern KVILIB_API bool removeDir(const QString &szPath);
 	extern KVILIB_API bool removeDir(const char* path);
+	// removes a dir recursively
+	extern KVILIB_API bool deleteDir(const QString &szPath);
 	// writes a complete file (utf8 version)
 	extern KVILIB_API bool writeFile(const QString &szPath,const QString &szData,bool bAppend = false);
 	extern KVILIB_API bool writeFile(const char* path,const QString &szData,bool bAppend = false);

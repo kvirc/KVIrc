@@ -426,11 +426,6 @@ KviOptionsWidget * classKviTextIconsOptionsWidget_createInstanceProc(QWidget * p
 	return new KviTextIconsOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviThemeOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviThemeOptionsWidget(parent);
-}
-
 KviOptionsWidget * classKviToolsOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviToolsOptionsWidget(parent);
@@ -618,8 +613,6 @@ static const char * g_szName_KviTextEncodingOptionsWidget = KVI_OPTIONS_WIDGET_N
 static const char * g_szClassName_KviTextEncodingOptionsWidget = "KviTextEncodingOptionsWidget";
 static const char * g_szName_KviTextIconsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTextIconsOptionsWidget;
 static const char * g_szClassName_KviTextIconsOptionsWidget = "KviTextIconsOptionsWidget";
-static const char * g_szName_KviThemeOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeOptionsWidget;
-static const char * g_szClassName_KviThemeOptionsWidget = "KviThemeOptionsWidget";
 static const char * g_szName_KviToolsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviToolsOptionsWidget;
 static const char * g_szClassName_KviToolsOptionsWidget = "KviToolsOptionsWidget";
 static const char * g_szName_KviTopicLabelLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTopicLabelLookOptionsWidget;
@@ -3202,40 +3195,6 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviClassicTaskBarOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
-
-	e0 = new KviOptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviThemeOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviTopicLabelLookOptionsWidget_createInstanceProc;

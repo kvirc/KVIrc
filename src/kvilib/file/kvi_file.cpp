@@ -26,7 +26,7 @@
 
 
 #include "kvi_file.h"
-#include "kvi_bswap.h"
+#include "kvi_byteorder.h"
 
 
 KviFile::KviFile()
@@ -43,17 +43,48 @@ KviFile::~KviFile()
 {
 }
 
+bool KviFile::save(const QByteArray &bData)
+{
+	if(!save((kvi_u32_t)(bData.size())))return false;
+	return (writeBlock(bData.data(),bData.size()) == ((int)(bData.size())));
+}
+
+bool KviFile::load(QByteArray &bData)
+{
+	kvi_u32_t iLen;
+	if(!load(iLen))return false;
+	bData.resize(iLen);
+	if(readBlock((char *)(bData.data()),iLen) != iLen)return false;
+	return true;
+}
+
+bool KviFile::save(const QCString &szData)
+{
+	if(!save((kvi_u32_t)(szData.length())))return false;
+	return (writeBlock(szData.data(),szData.length()) == ((int)(szData.length())));
+}
+
+bool KviFile::load(QCString &szData)
+{
+	kvi_u32_t iLen;
+	if(!load(iLen))return false;
+	szData.resize(iLen + 1);
+	if(readBlock((char *)(szData.data()),iLen) != iLen)return false;
+	*(szData.data() + iLen) = 0;
+	return true;
+}
+
 
 bool KviFile::save(const QString &szData)
 {
 	QCString c = szData.utf8();
-	if(!save(c.length()))return false;
+	if(!save((kvi_u32_t)(c.length())))return false;
 	return (writeBlock(c.data(),c.length()) == ((int)(c.length())));
 }
 
 bool KviFile::load(QString &szData)
 {
-	int iLen;
+	kvi_u32_t iLen;
 	if(!load(iLen))return false;
 	QCString tmp;
 	tmp.resize(iLen + 1);
@@ -65,67 +96,79 @@ bool KviFile::load(QString &szData)
 
 bool KviFile::save(const KviStr &szData)
 {
-	if(!save(szData.len()))return false;
+	if(!save((kvi_u32_t)(szData.len())))return false;
 	return (writeBlock(szData.ptr(),szData.len()) == (int) szData.len());
 }
 
 bool KviFile::load(KviStr &szData)
 {
-	int iLen;
+	kvi_u32_t iLen;
 	if(!load(iLen))return false;
 	szData.setLength(iLen);
 	return (readBlock((char *)(szData.ptr()),iLen) == iLen);
 }
 
-bool KviFile::save(kvi_i32_t t)
+bool KviFile::save(kvi_u32_t t)
 {
-#ifdef BIGENDIAN_MACHINE_BYTE_ORDER
-	t = kvi_swap32(t);
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_localCpuToLittleEndian32(t);
 #endif
-	return (writeBlock((const char *)(&t),sizeof(kvi_i32_t)) == sizeof(kvi_i32_t));
+	return (writeBlock((const char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t));
 }
 
-bool KviFile::load(kvi_i32_t &t)
+bool KviFile::load(kvi_u32_t &t)
 {
-#ifdef BIGENDIAN_MACHINE_BYTE_ORDER
-	if(!(readBlock((char *)(&t),sizeof(kvi_i32_t)) == sizeof(kvi_i32_t)))return false;
-	t = kvi_swap32(t);
+	if(!(readBlock((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_littleEndianToLocalCpu32(t)
+#endif
 	return true;
-#else
-	return (readBlock((char *)(&t),sizeof(kvi_i32_t)) == sizeof(kvi_i32_t));
-#endif
 }
 
-bool KviFile::save(kvi_i16_t t)
+bool KviFile::save(kvi_u64_t t)
 {
-#ifdef BIGENDIAN_MACHINE_BYTE_ORDER
-	t = kvi_swap16(t);
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_localCpuToLittleEndian64(t);
 #endif
-	return (writeBlock((const char *)(&t),sizeof(kvi_i16_t)) == sizeof(kvi_i16_t));
+	return (writeBlock((const char *)(&t),sizeof(kvi_u64_t)) == sizeof(kvi_u64_t));
 }
 
-bool KviFile::load(kvi_i16_t &t)
+bool KviFile::load(kvi_u64_t &t)
 {
-#ifdef BIGENDIAN_MACHINE_BYTE_ORDER
-	if(!(readBlock((char *)(&t),sizeof(kvi_i16_t)) == sizeof(kvi_i16_t)))return false;
-	t = kvi_swap32(t);
+	if(!(readBlock((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_littleEndianToLocalCpu32(t)
+#endif
 	return true;
-#else
-	return (readBlock((char *)(&t),sizeof(kvi_i16_t)) == sizeof(kvi_i16_t));
+}
+
+
+bool KviFile::save(kvi_u16_t t)
+{
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_localCpuToLittleEndian16(t);
 #endif
+	return (writeBlock((const char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t));
 }
 
-bool KviFile::save(kvi_i8_t t)
+bool KviFile::load(kvi_u16_t &t)
 {
-	return (writeBlock((const char *)(&t),sizeof(kvi_i8_t)) == sizeof(kvi_i8_t));
+	if(!(readBlock((char *)(&t),sizeof(kvi_u16_t)) == sizeof(kvi_u16_t)))return false;
+#ifndef LOCAL_CPU_LITTLE_ENDIAN
+	t = kvi_littleEndianToLocalCpu16(t);
+#endif
+	return true;
 }
 
-bool KviFile::load(kvi_i8_t &t)
+bool KviFile::save(kvi_u8_t t)
 {
-	return (readBlock((char *)(&t),sizeof(kvi_i8_t)) == sizeof(kvi_i8_t));
+	return (writeBlock((const char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
 }
 
-
+bool KviFile::load(kvi_u8_t &t)
+{
+	return (readBlock((char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
+}
 
 
 bool KviFile::save(KviPtrList<KviStr> * pData)

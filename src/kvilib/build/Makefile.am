@@ -58,6 +58,7 @@ libkvilib_la_SOURCES = \
 	../ext/kvi_stringconversion.cpp \
 	../file/kvi_file.cpp \
 	../file/kvi_fileutils.cpp \
+	../file/kvi_packagefile.cpp \
 	../file/kvi_targzfile.cpp \
 	../irc/kvi_avatar.cpp \
 	../irc/kvi_avatarcache.cpp \
@@ -91,21 +92,50 @@ libkvilib_la_SOURCES = \
 #
 
 
-headers_HEADERS       = ../config/kvi_confignames.h ../config/kvi_debug.h ../config/kvi_defaults.h \
-../config/kvi_settings.h ../config/kvi_sourcesdate.h ../config/kvi_wincfg.h ../core/kvi_bswap.h ../core/kvi_error.h \
-../core/kvi_heapobject.h ../core/kvi_inttypes.h ../core/kvi_list.h ../core/kvi_malloc.h \
-../core/kvi_memmove.h ../core/kvi_qstring.h ../core/kvi_strasm.h ../core/kvi_string.h \
-../core/kvi_stringarray.h \
-../ext/kvi_cmdformatter.h ../ext/kvi_config.h \
-../ext/kvi_crypt.h ../ext/kvi_databuffer.h \
-../ext/kvi_datacontainer.h \
-../ext/kvi_doublebuffer.h \
-../ext/kvi_osinfo.h \
-../ext/kvi_garbage.h ../ext/kvi_imagelib.h \
-../ext/kvi_md5.h ../ext/kvi_mediatype.h ../ext/kvi_msgtype.h ../ext/kvi_parameterlist.h ../ext/kvi_pixmap.h \
-../ext/kvi_proxydb.h ../ext/kvi_regchan.h ../ext/kvi_regusersdb.h ../ext/kvi_sharedfiles.h \
-../ext/kvi_stringconversion.h ../ext/kvi_xlib.h ../file/kvi_file.h \
-../file/kvi_fileutils.h ../file/kvi_targzfile.h ../irc/kvi_avatar.h ../irc/kvi_avatarcache.h ../irc/kvi_ircmask.h \
+headers_HEADERS = \
+	../config/kvi_confignames.h \
+	../config/kvi_debug.h \
+	../config/kvi_defaults.h \
+	../config/kvi_fileextensions.h \
+	../config/kvi_settings.h \
+	../config/kvi_sourcesdate.h \
+	../config/kvi_wincfg.h \
+	../core/kvi_bswap.h \
+	../core/kvi_error.h \
+	../core/kvi_heapobject.h \
+	../core/kvi_inttypes.h \
+	../core/kvi_list.h \
+	../core/kvi_malloc.h \
+	../core/kvi_memmove.h \
+	../core/kvi_qstring.h \
+	../core/kvi_strasm.h \
+	../core/kvi_string.h \
+	../core/kvi_stringarray.h \
+	../ext/kvi_cmdformatter.h \
+	../ext/kvi_config.h \
+	../ext/kvi_crypt.h \
+	../ext/kvi_databuffer.h \
+	../ext/kvi_datacontainer.h \
+	../ext/kvi_doublebuffer.h \
+	../ext/kvi_osinfo.h \
+	../ext/kvi_garbage.h \
+	../ext/kvi_imagelib.h \
+	../ext/kvi_md5.h \
+	../ext/kvi_mediatype.h \
+	../ext/kvi_msgtype.h \
+	../ext/kvi_parameterlist.h \
+	../ext/kvi_pixmap.h \
+	../ext/kvi_proxydb.h \
+	../ext/kvi_regchan.h \
+	../ext/kvi_regusersdb.h \
+	../ext/kvi_sharedfiles.h \
+	../ext/kvi_stringconversion.h \
+	../ext/kvi_xlib.h \
+	../file/kvi_file.h \
+	../file/kvi_fileutils.h \
+	../file/kvi_packagefile.h \
+	../file/kvi_targzfile.h \
+	../irc/kvi_avatar.h ../irc/kvi_avatarcache.h ../irc/kvi_ircmask.h \
 ../irc/kvi_ircserverdb.h ../irc/kvi_ircserver.h ../irc/kvi_ircuserdb.h ../irc/kvi_mirccntrl.h \
 ../irc/kvi_nickserv.h ../net/kvi_dns.h ../net/kvi_http.h ../net/kvi_netutils.h ../net/kvi_socket.h \
 ../net/kvi_sockettype.h ../net/kvi_ssl.h ../net/kvi_url.h ../system/kvi_env.h \
@@ -121,6 +151,9 @@ headers_HEADERS       = ../config/kvi_confignames.h ../config/kvi_debug.h ../con
 
 
 ../ext/moc_%.cpp: ../ext/%.h
+	$(SS_QT_MOC) $< -o $@
+
+../file/moc_%.cpp: ../file/%.h
 	$(SS_QT_MOC) $< -o $@
 
 ../irc/moc_%.cpp: ../irc/%.h
