@@ -136,7 +136,7 @@
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="true"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ZLIBINCDIR)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -335,6 +335,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\file\kvi_packagefile.cpp"
+				>
+			</File>
+			<File
 				RelativePath="ext\kvi_parameterlist.cpp"
 				>
 			</File>
@@ -400,6 +404,10 @@
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_toolbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\file\kvi_targzfile.cpp"
 				>
 			</File>
 			<File
@@ -802,6 +810,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\file\kvi_packagefile.h"
+				>
+			</File>
+			<File
 				RelativePath="ext\kvi_parameterlist.h"
 				>
 			</File>
@@ -1031,6 +1043,10 @@
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_toolbardocktype.h"
+				>
+			</File>
+			<File
+				RelativePath=".\file\kvi_targzfile.h"
 				>
 			</File>
 			<File
