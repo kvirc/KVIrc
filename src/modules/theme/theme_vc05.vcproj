@@ -4,7 +4,7 @@
 	Version="8,00"
 	Name="theme"
 	ProjectGUID="{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}"
-	RootNamespace="str"
+	RootNamespace="theme"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -69,10 +69,10 @@
 				GenerateManifest="true"
 				IgnoreAllDefaultLibraries="true"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/str.pdb"
+				ProgramDatabaseFile="$(OutDir)/theme.pdb"
 				SubSystem="2"
 				TurnOffAssemblyGeneration="true"
-				ImportLibrary="$(OutDir)/str.lib"
+				ImportLibrary="$(OutDir)/theme.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -169,7 +169,7 @@
 				OptimizeForWindows98="1"
 				LinkTimeCodeGeneration="1"
 				TurnOffAssemblyGeneration="true"
-				ImportLibrary="$(OutDir)/str.lib"
+				ImportLibrary="$(OutDir)/theme.lib"
 				TargetMachine="1"
 			/>
 			<Tool
