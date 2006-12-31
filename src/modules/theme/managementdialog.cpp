@@ -1048,10 +1048,7 @@ void KviThemeManagementDialog::installFromXml()
 	pByteArray = r.binaryInfoFields()->find("Image");
 	if(pByteArray)
 	{
-		QBuffer buffer(*pByteArray);
-		buffer.open(IO_ReadOnly);
-		pix.load(&buffer,0,0);
-		buffer.close();
+		pix.loadFromData(*pByteArray,0,0);
 	}
 	
 	if(pix.isNull())
