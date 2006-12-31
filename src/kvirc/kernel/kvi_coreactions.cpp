@@ -216,8 +216,8 @@ void register_core_actions(KviActionManager * m)
 		__tr2qs("Manage Themes..."),
 		__tr2qs("Allows you to manage the themes"),
 		KviActionManager::categorySettings(),
-		"kvi_bigicon_themes.png",
-		KVI_SMALLICON_THEMES,
+		"kvi_bigicon_theme.png",
+		KVI_SMALLICON_THEME,
 		0,
 		"Ctrl+Alt+L");
 

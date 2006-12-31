@@ -341,8 +341,7 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"themeoptions", // 287
 	"bug", // 288
 	"refresh", //289
-	"theme", // 290
-	"themes" // 291
+	"theme" // 290
 };
 
 KviIconWidget::KviIconWidget()

@@ -807,7 +807,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 : QDialog(parent,"theme_options_widget")
 {
 	setCaption(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEMES)));
+	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
 
 	setModal(true);
 
@@ -820,17 +820,18 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	QHBox *hb = new QHBox(this);
 	g->addMultiCellWidget(hb,0,0,0,1);
 
-	KviStyledToolButton * tb = new KviStyledToolButton(hb);
-	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
-	tb->setUsesBigPixmap(true);
-	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
-	connect(tb,SIGNAL(clicked()),this,SLOT(installFromXml()));
+	KviStyledToolButton * tb;
+	QFrame * sep;
 
 	tb = new KviStyledToolButton(hb);
 	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
 	tb->setUsesBigPixmap(true);
 	QToolTip::add(tb,__tr2qs_ctx("Save Current Theme...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(saveCurrentTheme()));
+
+	sep = new QFrame(hb);
+	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
+	sep->setMinimumWidth(12);
 	
 	m_pPackThemeButton = new KviStyledToolButton(hb);
 	m_pPackThemeButton->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
@@ -843,6 +844,16 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	m_pDeleteThemeButton->setUsesBigPixmap(true);
 	QToolTip::add(m_pDeleteThemeButton,__tr2qs_ctx("Delete Selected Themes","theme"));
 	connect(m_pDeleteThemeButton,SIGNAL(clicked()),this,SLOT(deleteTheme()));
+
+	sep = new QFrame(hb);
+	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
+	sep->setMinimumWidth(12);
+
+	tb = new KviStyledToolButton(hb);
+	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
+	tb->setUsesBigPixmap(true);
+	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
+	connect(tb,SIGNAL(clicked()),this,SLOT(installFromXml()));
 
 	tb = new KviStyledToolButton(hb);
 	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
@@ -869,7 +880,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	g->addWidget(b,2,1);
 
 	g->setRowStretch(1,0);
-	g->setColStretch(0,0);
+	g->setColStretch(0,1);
 
 	fillThemeBox();
 	m_pContextPopup = new QPopupMenu(this);
@@ -1031,7 +1042,22 @@ void KviThemeManagementDialog::installFromXml()
 
 	// ok.. it should be really valid at this point
 	
-	// load it's picture
+	// load its picture
+	QByteArray * pByteArray = r.binaryInfoFields()->find("Image");
+	QPixmap pix;
+	if(pByteArray)
+	{
+		QBuffer buffer(*pByteArray);
+		buffer.open(IO_ReadOnly);
+		pix.load(&buffer);
+		buffer.close();
+	}
+	
+	if(pix.isNull())
+	{
+		// load the default icon
+	}
+	
 	/*
 	KviUnpackThemeDialog * pDialog = new KviUnpackThemeDialog(this,szFileName);
 	bool bInstall = pDialog->exec() == QDialog::Accepted;

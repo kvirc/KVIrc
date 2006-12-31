@@ -1352,6 +1352,7 @@ void KviApp::loadTheme(const QString &themeDir)
 	getLocalKvircDirectory(szPointerFile,Themes,"current-splash");
 	KviFileUtils::removeFile(szPointerFile);
 
+
 	QString szD = themeDir;
 	KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
 	szD.append("themedata.kvc");
@@ -1361,9 +1362,7 @@ void KviApp::loadTheme(const QString &themeDir)
 	cfg.setGroup("ThemeData");
 
 	int i;
-
 	int iResetFlags = 0;
-
 
 	#undef READ_OPTIONS
 

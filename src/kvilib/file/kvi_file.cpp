@@ -120,7 +120,7 @@ bool KviFile::load(kvi_u32_t &t)
 {
 	if(!(readBlock((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = kvi_littleEndianToLocalCpu32(t)
+	t = kvi_littleEndianToLocalCpu32(t);
 #endif
 	return true;
 }
@@ -137,7 +137,7 @@ bool KviFile::load(kvi_u64_t &t)
 {
 	if(!(readBlock((char *)(&t),sizeof(kvi_u32_t)) == sizeof(kvi_u32_t)))return false;
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
-	t = kvi_littleEndianToLocalCpu32(t)
+	t = kvi_littleEndianToLocalCpu32(t);
 #endif
 	return true;
 }

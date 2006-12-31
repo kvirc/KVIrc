@@ -35,12 +35,6 @@
 #include <qcursor.h>
 #include <qwizard.h>
 
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeManagementDialog KVI_SMALLICON_GUI
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeManagementDialog __tr2qs_no_lookup("Load & Save")
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviThemeManagementDialog 90000
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeManagementDialog __tr2qs_no_lookup("theme")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeManagementDialog "themeLoader"
-
 class QLineEdit;
 class QTextEdit;
 class QPushButton;
