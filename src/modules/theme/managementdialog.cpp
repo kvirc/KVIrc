@@ -1002,6 +1002,8 @@ void KviThemeManagementDialog::installFromXml()
 	QDict<QString> * pInfoFields;
 	QString * pValue;
 	bool bInstall;
+	QPixmap pix;
+	QByteArray * pByteArray;
 
 	const char * check_fields[] = { "Name", "Version", "Author", "Description", "Date", "KVIrcVersion" };
 	
@@ -1043,13 +1045,12 @@ void KviThemeManagementDialog::installFromXml()
 	// ok.. it should be really valid at this point
 	
 	// load its picture
-	QByteArray * pByteArray = r.binaryInfoFields()->find("Image");
-	QPixmap pix;
+	pByteArray = r.binaryInfoFields()->find("Image");
 	if(pByteArray)
 	{
 		QBuffer buffer(*pByteArray);
 		buffer.open(IO_ReadOnly);
-		pix.load(&buffer);
+		pix.load(&buffer,0,0);
 		buffer.close();
 	}
 	
