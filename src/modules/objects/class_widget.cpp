@@ -1636,16 +1636,16 @@ bool KviKvsObject_widget::function_setDynamicToolTip(KviKvsObjectFunctionCall *c
 	if (!m_pTip)m_pTip=new KviKvsTip(this,widget());
 	
 	QString szTip;
-	kvs_int_t uXstart,uYstart,uXend,uYend;
+	kvs_int_t iXstart,iYstart,uWidth,uHeight;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tip_text",KVS_PT_STRING,0,szTip)
-		KVSO_PARAMETER("left",KVS_PT_INT,0,uXstart)
-		KVSO_PARAMETER("top",KVS_PT_INT,0,uYstart)
-		KVSO_PARAMETER("right",KVS_PT_INT,0,uXend)
-		KVSO_PARAMETER("bottom",KVS_PT_INT,0,uYend)
+		KVSO_PARAMETER("x_start",KVS_PT_INT,0,iXstart)
+		KVSO_PARAMETER("y_start",KVS_PT_INT,0,iYstart)
+		KVSO_PARAMETER("width",KVS_PT_INT,0,uWidth)
+		KVSO_PARAMETER("height",KVS_PT_INT,0,uHeight)
 		KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	m_pTip->doTip(QRect(QPoint(uXstart,uYstart),QPoint(uXend,uYend)),szTip);
+	m_pTip->doTip(QRect(QPoint(iXstart,iYstart),QSize(uWidth,uHeight)),szTip);
 	return true;
 }
 

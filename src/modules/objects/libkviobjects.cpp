@@ -493,7 +493,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 		@syntax:
 			<array> $object.classes()
 		@description:
-			Returns an array with the user defined classes(useful only for debugging).			
+			Returns an array with the user defined classes.			
 		@seealso:
 			[doc:objects]objects documentation[/doc]
 	*/
@@ -503,7 +503,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	int uIdx=0;
 	QDictIterator<KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
 	QDict<bool> *classdict=new QDict<bool>;
-	classdict->setAutoDelete(true);
+	classdict->setAutoDelete(false);
 	bool bFake=true;
 	while(KviKvsObjectClass * pClass=it.current())
 	{
@@ -531,7 +531,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 		idx++;
 		++strIt;
 	}
-	
+	delete classdict;
 	return true;
 
 }

@@ -369,8 +369,8 @@ kvs_uint_t uIndex;
 		KviKvsArray * a = new KviKvsArray();
 		a->set(0,new KviKvsVariant((kvs_int_t)rect.left()));
 		a->set(1,new KviKvsVariant((kvs_int_t)rect.top()));
-		a->set(2,new KviKvsVariant((kvs_int_t)rect.bottom()));
-		a->set(3,new KviKvsVariant((kvs_int_t)rect.right()));
+		a->set(2,new KviKvsVariant((kvs_int_t)rect.width()));
+		a->set(3,new KviKvsVariant((kvs_int_t)rect.height()));
 		c->returnValue()->setArray(a);
 	}
 		return true;
