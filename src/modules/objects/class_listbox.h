@@ -56,9 +56,13 @@ protected:
 	bool functionsetSelected(KviKvsObjectFunctionCall *c);
 	bool functionisSelected(KviKvsObjectFunctionCall *c);
 	bool functioncurrentItemChangeEvent(KviKvsObjectFunctionCall *c);
+	bool functiononItemEvent(KviKvsObjectFunctionCall *c);
+	bool functionitemAt(KviKvsObjectFunctionCall *c);
+	bool functionitemRect(KviKvsObjectFunctionCall *c);
 protected slots:
 	void selectionChanged();
 	void currentItemChanged(QListBoxItem *);
+	void onItem(QListBoxItem *);
 };
 
 

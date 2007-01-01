@@ -23,13 +23,10 @@
 //
 
 #include "kvi_string.h"
-
-
-
-
-
+#include "qtooltip.h"
 #include "object_macros.h"
 
+class KviKvsTip;
 class KviKvsObject_widget : public KviKvsObject
 {
 	Q_OBJECT
@@ -51,7 +48,7 @@ protected:
 	// so the name of the C++ function matches exactly the name of the KVS function at this point
 	
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
-
+	KviKvsTip *m_pTip;
 	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
 	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
 	bool function_caption(KviKvsObjectFunctionCall *c);
@@ -102,8 +99,23 @@ protected:
 	bool function_width(KviKvsObjectFunctionCall *);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
+	bool function_enableDynamicToolTip(KviKvsObjectFunctionCall *c);
+	bool function_disableDynamicToolTip(KviKvsObjectFunctionCall *c);
+	bool function_setDynamicToolTip(KviKvsObjectFunctionCall *c);
+
 signals:
 	void aboutToDie();
+};
+class KviKvsTip : public QToolTip
+{
+public:
+	KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget);
+	~KviKvsTip();
+public:
+	void maybeTip(const QPoint &pnt);
+	void doTip(const QRect &rct,const QString &str){ tip(rct,str); };
+protected:
+	KviKvsObject_widget * m_pParent;
 };
 
 

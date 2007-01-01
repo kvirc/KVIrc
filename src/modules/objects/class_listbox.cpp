@@ -2,7 +2,7 @@
 //   File : class_listbox.cpp
 //   Creation date : Sat Oct 2 03:40:28 CET 2004 by Szymon Stefanek
 //
-//   This file is part of the KVirc irc client distribution
+//    This file is part of the KVirc irc client distribution
 //   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -113,6 +113,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentText", functioncurrentText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItem", functioncurrentItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"textAt", functiontextAt);
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemAt", functionitemAt);
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemRect", functionitemRect);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setCurrentItem", functionsetCurrentItem);
 
 
@@ -121,6 +123,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelected",functionsetSelected);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"isSelected",functionisSelected);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItemChangeEvent",functioncurrentItemChangeEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentnItemEvent",functiononItemEvent);
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listbox,"selectionChangeEvent")
 
@@ -142,6 +145,9 @@ bool KviKvsObject_listbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	b->setSelectionMode(QListBox::Single);
 	connect(b,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
 	connect(b,SIGNAL(currentChanged(QListBoxItem *)),this,SLOT(currentItemChanged(QListBoxItem *)));
+	
+	connect(b,SIGNAL(onItem(QListBoxItem *)),this,SLOT(onItem(QListBoxItem *)));
+
 	setObject(b,true);;
 	return true;
 }
@@ -302,6 +308,17 @@ bool KviKvsObject_listbox::functionsetSelected(KviKvsObjectFunctionCall *c)
 	if(widget()) ((QListBox *)widget())->setSelected(uIndex,bSel);
 	return true;
 }
+bool KviKvsObject_listbox::functionitemAt(KviKvsObjectFunctionCall *c)
+{
+	kvs_uint_t uX,uY;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
+		KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+	KVSO_PARAMETERS_END(c)
+	if(widget()) 
+		c->returnValue()->setInteger(((QListBox *)widget())->index(((QListBox *)widget())->itemAt(QPoint(uX,uY))));
+	return true;
+}
 
 bool KviKvsObject_listbox::functioncurrentItemChangeEvent(KviKvsObjectFunctionCall *c)
 {
@@ -326,8 +343,38 @@ void KviKvsObject_listbox::currentItemChanged(QListBoxItem *item)
 	}
 
 }
+bool KviKvsObject_listbox::functiononItemEvent(KviKvsObjectFunctionCall *c)
+{
+	emitSignal("onItem",c,c->params());
+
+	return true;
+}
+
+void KviKvsObject_listbox::onItem(QListBoxItem *item)
+{
+		KviKvsVariantList params(new KviKvsVariant(item->text()));
+		callFunction(this,"onItemEvent",0,&params);
+}
 
 
+bool KviKvsObject_listbox::functionitemRect(KviKvsObjectFunctionCall *c)
+{
+kvs_uint_t uIndex;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("uIndex",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+	KVSO_PARAMETERS_END(c)
+	if(widget())
+	{
+		QRect rect=((QListBox *)widget())->itemRect(((QListBox *)widget())->item(uIndex));
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0,new KviKvsVariant((kvs_int_t)rect.left()));
+		a->set(1,new KviKvsVariant((kvs_int_t)rect.top()));
+		a->set(2,new KviKvsVariant((kvs_int_t)rect.bottom()));
+		a->set(3,new KviKvsVariant((kvs_int_t)rect.right()));
+		c->returnValue()->setArray(a);
+	}
+		return true;
+}
 
 
 

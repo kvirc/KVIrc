@@ -75,7 +75,6 @@ const int widgettypes_cod[] = {
 
 #define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
 
-
 /*
 	@doc: widget
 	@keyterms:
@@ -452,6 +451,22 @@ const int widgettypes_cod[] = {
 		[/example]
 
 */
+KviKvsTip::KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget)
+: QToolTip(pWidget,0)
+{
+	m_pParent=pParent;
+}
+KviKvsTip::~KviKvsTip()
+{
+}
+
+void KviKvsTip::maybeTip(const QPoint &pnt)
+{
+	KviKvsVariant *x=new KviKvsVariant((kvs_int_t)pnt.x());
+	KviKvsVariant *y=new KviKvsVariant((kvs_int_t)pnt.y());
+	KviKvsVariantList params(x,y);
+	m_pParent->callFunction(m_pParent,"maybeTipEvent",0,&params);			
+}
 
 
 
@@ -547,6 +562,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setBackgroundImage",function_setBackgroundImage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"enableDynamicToolTip",function_enableDynamicToolTip)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"disableDynamicToolTip",function_disableDynamicToolTip)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setDynamicToolTip",function_setDynamicToolTip)
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -564,18 +582,23 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"moveEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"paintEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"keyPressEvent")
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
-
+	m_pTip=0;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
-
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
 	emit aboutToDie();
+	if (m_pTip)
+	{
+		delete m_pTip;
+		m_pTip=0;
+	}
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
@@ -1593,4 +1616,37 @@ bool KviKvsObject_widget::function_globalCursorY(KviKvsObjectFunctionCall *c)
 	if(widget())c->returnValue()->setInteger(QCursor::pos().y());
 	return true;
 }
+bool KviKvsObject_widget::function_enableDynamicToolTip(KviKvsObjectFunctionCall *c)
+{
+	if (!m_pTip) m_pTip=new KviKvsTip(this,widget());
+	return true;
+}
+bool KviKvsObject_widget::function_disableDynamicToolTip(KviKvsObjectFunctionCall *c)
+{
+	if (m_pTip)
+	{
+		delete m_pTip;
+		m_pTip=0;
+	}
+	return true;
+}
+
+bool KviKvsObject_widget::function_setDynamicToolTip(KviKvsObjectFunctionCall *c)
+{
+	if (!m_pTip)m_pTip=new KviKvsTip(this,widget());
+	
+	QString szTip;
+	kvs_int_t uXstart,uYstart,uXend,uYend;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("tip_text",KVS_PT_STRING,0,szTip)
+		KVSO_PARAMETER("left",KVS_PT_INT,0,uXstart)
+		KVSO_PARAMETER("top",KVS_PT_INT,0,uYstart)
+		KVSO_PARAMETER("right",KVS_PT_INT,0,uXend)
+		KVSO_PARAMETER("bottom",KVS_PT_INT,0,uYend)
+		KVSO_PARAMETERS_END(c)
+	if(!widget())return true;
+	m_pTip->doTip(QRect(QPoint(uXstart,uYstart),QPoint(uXend,uYend)),szTip);
+	return true;
+}
+
 #include "m_class_widget.moc"
