@@ -37,6 +37,7 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 	m_nRefs = 1;
 	m_iHops = -1;
 	m_bAway = false;
+	m_eGender = Unknown;
 }
 
 KviIrcUserEntry::~KviIrcUserEntry()

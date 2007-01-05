@@ -350,6 +350,15 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 		buffer += "</b></center></td></tr>";
 	}
 
+	if(e->gender()!=KviIrcUserEntry::Unknown)
+	{
+		buffer += "<tr><td>";
+		buffer += __tr2qs("Gender:");
+		buffer += " ";
+		buffer += (e->gender()==KviIrcUserEntry::Male) ? __tr2qs("Male") : __tr2qs("Female");
+		buffer += "</td></tr>";
+	}
+
 	if(u)
 	{
 		QString mask;

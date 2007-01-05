@@ -322,7 +322,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 		zstr.avail_in = iReaded;
 		zstr.next_out = obuffer;
 		zstr.avail_out = BUFFER_SIZE;
-	
+
 		if(deflateInit(&zstr,9) != Z_OK)
 		{
 			setLastError(__tr2qs("Compression library initialization error"));

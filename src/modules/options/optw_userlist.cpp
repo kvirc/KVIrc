@@ -218,15 +218,16 @@ void KviUserListLookBackgroundOptionsWidget::commit()
 KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistfeatures_options_widget")
 {
-	createLayout(6,1);
+	createLayout(7,1);
 
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
-	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
-	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Hide users label","options"),KviOption_boolDisableUserListLabel);
-	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Hide avatars","options"),KviOption_boolDisableAvatars);
+	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
+	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
+	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
+	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Hide users label","options"),KviOption_boolDisableUserListLabel);
+	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
+	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide avatars","options"),KviOption_boolDisableAvatars);
 
-	addRowSpacer(0,5,0,5);
+	addRowSpacer(0,6,0,6);
 }
 
 KviUserListFeaturesOptionsWidget::~KviUserListFeaturesOptionsWidget()

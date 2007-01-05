@@ -973,6 +973,12 @@ void KviIrcConnection::loginToIrcServer()
 			}
 		}
 	} // else buuug
+	
+	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+			e->setGender(KviIrcUserEntry::Male);
+	} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+			e->setGender(KviIrcUserEntry::Female);
+	}
 
 	// on connect stuff ?
 

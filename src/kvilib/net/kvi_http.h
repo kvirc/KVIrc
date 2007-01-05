@@ -33,6 +33,7 @@
 #include "kvi_inttypes.h"
 #include "kvi_url.h"
 
+//#include <zlib.h>
 #include <qobject.h>
 #include <qasciidict.h>
 #include <qfile.h>
@@ -74,9 +75,11 @@ protected:
 	KviDataBuffer        * m_pBuffer;
 	bool                   m_bHeaderProcessed;
 	bool                   m_bChunkedTransferEncoding;
+	bool                   m_bGzip;
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
 	QFile                * m_pFile;
+//	z_stream               m_zStream;
 protected:
 	bool startDnsLookup();
 	virtual bool event(QEvent *e);

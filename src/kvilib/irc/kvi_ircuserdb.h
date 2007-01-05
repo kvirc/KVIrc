@@ -40,6 +40,13 @@ class KVILIB_API KviIrcUserEntry
 public:
 	KviIrcUserEntry(const QString &user,const QString &host);
 	~KviIrcUserEntry();
+
+	enum Gender {
+		Male = 0,
+		Female = 1,
+		Unknown = 3
+	};
+
 protected:
 	QString     m_szUser;
 	QString     m_szHost;
@@ -47,6 +54,7 @@ protected:
 	QString     m_szServer;
 	QString     m_szRealName;
 	int         m_iHops;
+	Gender      m_eGender;
 	
 	bool        m_bAway;
 
@@ -54,6 +62,8 @@ protected:
 
 	int         m_nRefs;
 public:
+	Gender gender() { return m_eGender; };
+	void setGender(Gender g) { m_eGender=g; };
 	void setUser(const QString &user)   { m_szUser = user; };
 	bool hasUser()                      { return (!m_szUser.isEmpty()); };
 	void setHost(const QString &host)   { m_szHost = host; };

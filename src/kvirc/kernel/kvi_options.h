@@ -306,8 +306,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolMuteAllSounds 212
 #define KviOption_boolCreateMinimizedChannels 213
 #define KviOption_boolShowNetworkNameForConsoleTaskBarEntry 214
+#define KviOption_boolDrawGenderIcons 215
 
-#define KVI_NUM_BOOL_OPTIONS 215
+#define KVI_NUM_BOOL_OPTIONS 216
 
 
 

@@ -1456,6 +1456,15 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 	// AVATAR
 	if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpAvatar))
 	{
+		QString szGenderTag=" ";
+		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+			szGenderTag.append("M");
+		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+			szGenderTag.append("F");
+		} else {
+			szGenderTag.append("?");
+		}
+
 		KviAvatar * a = msg->msg->console()->currentAvatar();
 		if(a)
 		{
@@ -1488,9 +1497,10 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 								KVI_OPTION_UINT(KviOption_uintAvatarOfferTimeoutInSecs),&(a->name()),&(a->localPath()),&szUserMask);
 						}
 					}
-					if(o)szReply.append(QString(" %1").arg(o->fileSize()));
+					//if(o)szReply.append(QString(" %1").arg(o->fileSize()));
 				}
 				
+				szReply.append(szGenderTag);
 				replyCtcp(msg,szReply.utf8().data());
 			}
 		} else {
@@ -1511,10 +1521,11 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 {
 	QString szRemoteFile;
-	QString szSize;
+	QString szGender;
 	QString decoded=msg->msg->console()->decodeText(msg->pData);
 
 	decoded = extractCtcpParameter(decoded.utf8().data(),szRemoteFile,true);
+	decoded = extractCtcpParameter(decoded.utf8().data(),szGender,true);
 	szRemoteFile.stripWhiteSpace();
 
 	bool bPrivate = IS_ME(msg->msg,msg->szTarget);
@@ -1529,6 +1540,15 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 	KviQString::sprintf(nickLink,"\r!n\r%Q\r",&(msg->pSource->nick()));
 
 	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
+	if(e){
+		if( (szGender=="m") || (szGender=="M") ) {
+			e->setGender(KviIrcUserEntry::Male);
+		} else if((szGender=="f") || (szGender=="F") ) {
+			e->setGender(KviIrcUserEntry::Female);
+		} else {
+			e->setGender(KviIrcUserEntry::Unknown);
+		}
+	}
 
 	QString szWhere = bPrivate ? __tr2qs("private") : __tr2qs("channel notification:");
 	QString szWhat = bPrivate ? __tr2qs("notification") : msg->szTarget;

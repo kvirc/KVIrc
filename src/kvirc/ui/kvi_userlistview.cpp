@@ -1033,9 +1033,11 @@ bool KviUserListView::nickChange(const QString &oldNick,const QString &newNick)
 		kvi_time_t joint  = it->m_joinTime;
 		bool bSelect      = it->m_bSelected;
 		KviAvatar * av    = it->m_pGlobalData->forgetAvatar();
+		KviIrcUserEntry::Gender gender = it->m_pGlobalData->gender();
 		part(oldNick);
 		__range_invalid(m_pEntryDict->find(oldNick));
 		it = join(newNick,user,host,iFlags);
+		it->m_pGlobalData->setGender(gender);
 		it->m_joinTime = joint;
 		it->m_lastActionTime = kvi_unixTime();
 		it->m_bSelected = bSelect;
@@ -1428,6 +1430,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 
 	bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons);
 	bool bShowState = KVI_OPTION_BOOL(KviOption_boolShowUserChannelState);
+	bool bShowGender = KVI_OPTION_BOOL(KviOption_boolDrawGenderIcons);
 	
 	while(e && theY <= r.bottom())
 	{
@@ -1492,6 +1495,8 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	
 			if(bShowState)iAvatarAndTextX += 11;
 			if(bShowIcons)iAvatarAndTextX += 18;
+			//TODO: gender
+			if(bShowGender)iAvatarAndTextX += 13;
 
 			if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
 			{
@@ -1622,7 +1627,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				}
 				theX += 11;
 			}
-	
+			
 			if(bShowIcons)
 			{
 				//p.drawRect(theX,theY + 2,18,e->m_iHeight - 4);
@@ -1650,8 +1655,24 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 										);
 					p.drawPixmap(theX,theY,*ico);
 				}
+				theX +=18;
+
+				if(bShowGender && e->globalData()->gender()!=KviIrcUserEntry::Unknown) {
+					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
+					theX +=1;
+					p.drawPixmap(theX,theY,*ico);
+					theX +=12;
+				}
+
 				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,AlignLeft|AlignVCenter,e->m_szNick);
 			} else {
+				if(bShowGender && e->globalData()->gender()!=KviIrcUserEntry::Unknown) {
+					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
+					theX +=1;
+					p.drawPixmap(theX,theY,*ico);
+					theX +=12;
+				}
+
 				char flag = m_pListView->getUserFlag(e);
 				if(flag)
 				{

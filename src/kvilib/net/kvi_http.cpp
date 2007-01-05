@@ -27,6 +27,7 @@
 
 #include <qdir.h>
 #include <qtimer.h>
+//#include <zlib.h>
 
 #include "kvi_http.h"
 #include "kvi_locale.h"
@@ -106,6 +107,7 @@ void KviHttpRequest::resetData()
 	m_uMaxContentLength = 0;
 	m_uContentOffset = 0;
 	m_bChunkedTransferEncoding = false;
+	m_bGzip = false;
 	m_bIgnoreRemainingData = false;
 	m_uRemainingChunkSize = 0;
 }
@@ -536,6 +538,12 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		m_uTotalSize = size->toUInt(&bOk);
 		if(!bOk)m_uTotalSize = 0;
 	}
+
+	KviStr * contentEncoding = hdr.find("Content-encoding");
+	if(contentEncoding)
+	{
+		m_bGzip = contentEncoding->equalsCI("gzip");
+	}
 	
 	KviStr * transferEncoding = hdr.find("Transfer-Encoding");
 	if(transferEncoding)
@@ -621,9 +629,11 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 
 	return true;
 }
+#define BUFFER_SIZE 32768
 
 void KviHttpRequest::processData(KviDataBuffer * data)
 {
+//	unsigned char obuffer[BUFFER_SIZE];
 	if(m_bChunkedTransferEncoding && m_bIgnoreRemainingData)
 	{
 		// In chunked transfer encoding mode there may be additional headers
@@ -661,6 +671,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 
 		m_uReceivedSize = m_pBuffer->size();
 		
+
 		// here the header is complete and the eventual remaining data is in m_pBuffer. data has been already used.
 		
 	} else {
@@ -675,8 +686,9 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		// This is a good optimisation since for large files we can save allocating
 		// space for and moving megabytes of data...
 		
+
 		if((!m_bChunkedTransferEncoding) && ((m_eProcessingType == Blocks) || (m_eProcessingType == StoreToFile)))
-		{
+		{	
 			switch(m_eProcessingType)
 			{
 				case Blocks:
