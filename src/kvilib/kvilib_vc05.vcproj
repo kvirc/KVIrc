@@ -43,7 +43,7 @@
 				Optimization="0"
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
