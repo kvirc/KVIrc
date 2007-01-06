@@ -1409,13 +1409,19 @@ dnl ############################################################################
 
 AC_DEFUN([AC_SS_FIND_QT],
 [
-	AC_SS_FIND_QT_NAME
-	AC_SS_FIND_QT_GENERAL_DIR
-	AC_SS_FIND_QT_LIBRARY_DIR
-	AC_SS_FIND_QT_INCLUDE_DIR
-	AC_SS_FIND_QT_MOC
-	AC_SS_FIND_QT_MT
-	AC_SS_ENSURE_CAN_COMPILE_X_AND_QT
+	AC_ARG_ENABLE(qt-check,
+			AC_HELP_STRING([--disable-qt-check],[Do not check if Qt and X compile])
+			,SS_CHECK_QTX_COMPILE="$withval",SS_CHECK_QTX_COMPILE="yes")
+	
+	 	if test "$SS_CHECK_QTX_COMPILE" = "yes"; then
+			AC_SS_FIND_QT_NAME
+			AC_SS_FIND_QT_GENERAL_DIR
+			AC_SS_FIND_QT_LIBRARY_DIR
+			AC_SS_FIND_QT_INCLUDE_DIR
+			AC_SS_FIND_QT_MOC
+			AC_SS_FIND_QT_MT
+			AC_SS_ENSURE_CAN_COMPILE_X_AND_QT
+		fi
 ])
 
 AC_DEFUN([AC_SS_FIND_QT_NAME],
@@ -1642,11 +1648,7 @@ AC_DEFUN([AC_SS_FIND_QT_MT],
 
 AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT],
 [
-	AC_ARG_ENABLE(qt-check,
-		AC_HELP_STRING([--disable-qt-check],[Do not check if Qt and X compile])
-		,SS_CHECK_QTX_COMPILE="$withval",SS_CHECK_QTX_COMPILE="yes")
-
- 	if test "$SS_CHECK_QTX_COMPILE" = "yes"; then
+	
 		AC_MSG_CHECKING([if we can compile an X-Qt application])
 		AC_LANG_CPLUSPLUS
 		ss_save_CPPFLAGS="$CPPFLAGS"
@@ -1723,7 +1725,6 @@ AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT],
 		CXXFLAGS="$ss_save_CXXFLAGS"
 		CPPFLAGS="$ss_save_CPPFLAGS"
 		AC_MSG_RESULT([success])
-	fi
 ])
 
 dnl ###################################################################################################################

@@ -1503,7 +1503,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 			if(bShowState)iAvatarAndTextX += 11;
 			if(bShowIcons)iAvatarAndTextX += 18;
 			//TODO: gender
-			if(bShowGender)iAvatarAndTextX += 13;
+			if(bShowGender)iAvatarAndTextX += 11;
 
 			if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
 			{
@@ -1666,18 +1666,16 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 
 				if(bShowGender && e->globalData()->gender()!=KviIrcUserEntry::Unknown) {
 					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
-					theX +=1;
 					p.drawPixmap(theX,theY,*ico);
-					theX +=12;
+					theX +=11;
 				}
 
 				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,AlignLeft|AlignVCenter,e->m_szNick);
 			} else {
 				if(bShowGender && e->globalData()->gender()!=KviIrcUserEntry::Unknown) {
 					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
-					theX +=1;
-					p.drawPixmap(theX,theY,*ico);
-					theX +=12;
+					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-11)/2,*ico);
+					theX +=11;
 				}
 
 				char flag = m_pListView->getUserFlag(e);
