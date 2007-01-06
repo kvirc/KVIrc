@@ -1411,7 +1411,7 @@ AC_DEFUN([AC_SS_FIND_QT],
 [
 	AC_ARG_ENABLE(qt-check,
 			AC_HELP_STRING([--disable-qt-check],[Do not check if Qt and X compile])
-			,SS_CHECK_QTX_COMPILE="$withval",SS_CHECK_QTX_COMPILE="yes")
+			,SS_CHECK_QTX_COMPILE="yes")
 	
 	 	if test "$SS_CHECK_QTX_COMPILE" = "yes"; then
 			AC_SS_FIND_QT_NAME
