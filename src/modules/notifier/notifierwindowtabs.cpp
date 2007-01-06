@@ -511,12 +511,13 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 	
 	int i = 0;
 	while(m_iTabToStartFrom!=i) {
-		i++;
-		++tabIterator;
 		if(tabIterator.current()==m_pTabFocused)
 		{
 			m_iTabToStartFrom=i;
+			break;
 		}
+		i++;
+		++tabIterator;
 	}
 	int iWidth = 0;
 	QPtrListIterator<KviNotifierWindowTab> startIterator (m_tabPtrList);
