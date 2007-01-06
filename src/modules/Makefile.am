@@ -30,7 +30,6 @@ SUBDIRS = about \
 		math \
 		mediaplayer \
 		mircimport \
-		mp3player \
 		my \
 		notifier \
 		objects \
