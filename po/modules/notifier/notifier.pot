@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-11-27 16:37+0100\n"
+"POT-Creation-Date: 2007-01-06 19:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,61 +16,58 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:136
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:190
-msgid "The specified window does not exist"
-msgstr ""
-
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:152
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:204
-msgid "The specified timeout is not valid, assuming 0"
-msgstr ""
-
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:155
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:207
-msgid "The -t switch expects a timeout in seconds"
-msgstr ""
-
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1098
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1072
 msgid "Hide"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1101
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1075
 msgid "1 Minute"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1102
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1076
 msgid "5 Minutes"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1103
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1077
 msgid "15 Minutes"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1104
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1078
 msgid "30 Minutes"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1105
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1079
 msgid "1 Hour"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1107
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1081
 msgid "Until KVIrc is Restarted"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1108
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1082
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1110
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1084
 msgid "Disable"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1201
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1175
 msgid "Write text or commands to window"
 msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1269
-msgid "The command parser raised an error"
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr ""
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr ""
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr ""
+
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindowtabs.cpp:517
+msgid "Close tab"
 msgstr ""

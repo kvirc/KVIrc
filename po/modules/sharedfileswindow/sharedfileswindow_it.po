@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"POT-Creation-Date: 2007-01-06 19:39+0300\n"
 "PO-Revision-Date: 2006-06-06 01:57+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
@@ -20,43 +20,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.2\n"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr "Edita File Condivisi - KVIrc"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
 msgid "Share name:"
 msgstr "Nome Condiviso:"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
 msgid "File path:"
 msgstr "Percorso:"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
 msgid "&Browse..."
 msgstr "&Scegli..."
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
 msgid "User mask:"
 msgstr "Maschera Utente:"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
 msgid "Expire at:"
 msgstr "Scadenza:"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
 msgid "&OK"
 msgstr "&OK"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
 msgid "Cancel"
 msgstr "Cancella"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
 msgid "Invalid expire time"
 msgstr "Tempo di scadenza non valido"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -64,65 +64,65 @@ msgstr ""
 "La data/ora di scadenza è impostata al passato: per favore rimuovi l'opzione "
 "\"Scandenza\" o specifica una data/ora con scadenza futura"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
 msgid "OK"
 msgstr "OK"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
 msgid "Invalid share name"
 msgstr "Nome condiviso non valido"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
 msgid "The share name can't be empty, please correct it"
 msgstr "Il nome condiviso non puo essere nullo, perfavore correggerlo"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
 msgid "Can't open the file"
 msgstr "Impossibile aprire il file"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr ""
 "Il file non esiste o non è leggibile, perfavore controlla il suo percorso"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
 msgid "Never"
 msgstr "Mai"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:217
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:217
 msgid "Name"
 msgstr "Nome"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:218
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:218
 msgid "Filename"
 msgstr "Nome del File"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:219
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:219
 msgid "Mask"
 msgstr "Maschera"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
 msgid "Expires"
 msgstr "Scadenza"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:230
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:230
 msgid "&Add..."
 msgstr "&Aggiungi..."
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:232
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:232
 msgid "Re&move"
 msgstr "&Rimuovi"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:234
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:234
 msgid "&Edit"
 msgstr "&Modifica"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:686
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:686
 msgid "Shared Files"
 msgstr "File Condivisi"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
+#: /home/alexey/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
 msgid "Manage S&hared Files"
 msgstr "Organizza File &Condivisi"

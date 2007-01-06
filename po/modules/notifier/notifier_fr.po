@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"POT-Creation-Date: 2007-01-06 19:39+0300\n"
 "PO-Revision-Date: 2005-04-24 15:07+0200\n"
 "Last-Translator: Ahinu <ahinu@wanadoo.fr>\n"
 "Language-Team: Français <kde-francophone@kde.org>\n"
@@ -16,57 +16,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr "La fenêtre spécifiée n'existe pas"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Le temps d'expiration spécifié est invalide, on assume 0"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "L'option -t necessite un temps d'expiration en secondes"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1118
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1072
 msgid "Hide"
 msgstr "Cacher"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1121
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1075
 msgid "1 Minute"
 msgstr "1 Minute"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1122
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1076
 msgid "5 Minutes"
 msgstr "5 Minutes"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1123
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1077
 msgid "15 Minutes"
 msgstr "15 Minutes"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1124
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1078
 msgid "30 Minutes"
 msgstr "30 Minutes"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1125
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1079
 msgid "1 Hour"
 msgstr "1 Hour"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1127
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1081
 msgid "Until KVIrc is Restarted"
 msgstr "Jusqu'à ce que KVIrc soit redémarré"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1128
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1082
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "En permanence (jusqu'à explicite réactivation)"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1130
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1084
 msgid "Disable"
 msgstr "Désactiver"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1221
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1175
 msgid "Write text or commands to window"
 msgstr "Écrire texte ou commandes dans la fenêtre"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "La fenêtre spécifiée n'existe pas"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Le temps d'expiration spécifié est invalide, on assume 0"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "L'option -t necessite un temps d'expiration en secondes"
+
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindowtabs.cpp:517
+msgid "Close tab"
+msgstr ""
 
 #~ msgid "The command parser raised an error"
 #~ msgstr "L'analyseur de commande a noté une erreur"

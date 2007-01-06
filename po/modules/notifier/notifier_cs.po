@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-07 16:23+0400\n"
+"POT-Creation-Date: 2007-01-06 19:39+0300\n"
 "PO-Revision-Date: 2004-07-12 10:00+0200\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -17,57 +17,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr "Zadané okno neexistuje"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Zadaná prodleva je neplatná, nastavuji 0"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "Přepínač -t očekává prodlevu v sekundách"
-
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1118
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1072
 msgid "Hide"
 msgstr "Schovat"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1121
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1075
 msgid "1 Minute"
 msgstr "1 ninuta"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1122
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1076
 msgid "5 Minutes"
 msgstr "5 minut"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1123
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1077
 msgid "15 Minutes"
 msgstr "15 minut"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1124
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1078
 msgid "30 Minutes"
 msgstr "30 minut"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1125
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1079
 msgid "1 Hour"
 msgstr "1 hodina"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1127
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1081
 msgid "Until KVIrc is Restarted"
 msgstr "Dokud se KVIrc nerestartuje"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1128
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1082
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Pemanentně (Dokud je explicitně povolen)"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1130
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1084
 msgid "Disable"
 msgstr "Vypnout"
 
-#: /home/alexey/kvirccvs/kvirc/src/modules/notifier/notifierwindow.cpp:1221
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindow.cpp:1175
 msgid "Write text or commands to window"
 msgstr "Napíše text nebo příkaz do okna"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "Zadané okno neexistuje"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Zadaná prodleva je neplatná, nastavuji 0"
+
+#: /home/alexey/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Přepínač -t očekává prodlevu v sekundách"
+
+#: /home/alexey/kvirc/src/modules/notifier/notifierwindowtabs.cpp:517
+msgid "Close tab"
+msgstr ""
 
 #~ msgid "The command parser raised an error"
 #~ msgstr "Parser příkazu vyvolal chybu"
