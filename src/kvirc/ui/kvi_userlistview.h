@@ -163,6 +163,7 @@ protected:
 	void setUserDataBase(KviIrcUserDataBase * db){ m_pIrcUserDataBase = db; };
 	void updateScrollBarRange();
 public:
+	void updateArea();
 	void select(const QString&);
 	void applyOptions();
 	QDict<KviUserListEntry> * entryDict(){ return m_pEntryDict; };

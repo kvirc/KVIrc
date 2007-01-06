@@ -1786,8 +1786,7 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 	if(bNeedToUpdateUserlist) {
 		if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
 		{
-			((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(true);
-			((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(false);
+			((KviChannel*)g_pActiveWindow)->userListView()->updateArea();
 		}
 		
 	}

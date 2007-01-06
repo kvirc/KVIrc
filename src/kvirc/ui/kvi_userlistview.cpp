@@ -308,6 +308,13 @@ void KviUserListView::applyOptions()
 	resizeEvent(0); // this will call update() too
 	repaint();
 }
+void KviUserListView::updateArea()
+{
+	bool bEnable = m_pViewArea->isUpdatesEnabled();
+	if(!bEnable) m_pViewArea->setUpdatesEnabled(true);
+	triggerUpdate();
+	if(!bEnable) m_pViewArea->setUpdatesEnabled(false);
+}
 
 void KviUserListView::enableUpdates(bool bEnable)
 {
