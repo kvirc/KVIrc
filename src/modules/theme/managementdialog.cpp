@@ -998,6 +998,7 @@ jump_out:
 
 void KviThemeManagementDialog::installFromXml()
 {
+	int iThemeCount=0;
 	QString szFileName;
 	QDict<QString> * pInfoFields;
 	QString * pValue;
@@ -1038,7 +1039,7 @@ void KviThemeManagementDialog::installFromXml()
 	pValue = pInfoFields->find("ThemeCount");
 	if(!pValue)goto not_a_valid_theme_package;
 	bool bOk;
-	int iThemeCount = pValue->toInt(&bOk);
+	iThemeCount = pValue->toInt(&bOk);
 	if(!bOk)goto not_a_valid_theme_package;
 	if(iThemeCount < 1)goto not_a_valid_theme_package;
 
