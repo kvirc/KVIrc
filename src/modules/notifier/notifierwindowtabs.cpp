@@ -247,16 +247,16 @@ void KviNotifierWindowTabs::addMessage(KviWindow * pWnd, KviNotifierMessage * me
 	if (!m_tabMap.contains(pWnd)) {
 		m_tabMap.insert(pWnd, tab = new KviNotifierWindowTab(pWnd, sender));
 		m_tabPtrList.append(tab);
-		setFocusOn(tab);
 	} else {
 		tab = m_tabMap[pWnd];
 	}
 
 	tab->appendMessage(message);
 	
+	setFocusOn(tab);
 	if((g_pNotifierWindow->state()==Hidden) || (!m_pTabFocused))
 	{
-		setFocusOn(tab);
+//		setFocusOn(tab);
 	} else {
 		needToRedraw();
 	}
