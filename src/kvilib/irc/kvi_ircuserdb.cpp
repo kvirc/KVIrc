@@ -27,6 +27,7 @@
 
 #include "kvi_debug.h"
 #include "kvi_ircuserdb.h"
+#include "kvi_mirccntrl.h"
 
 
 KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
@@ -38,6 +39,27 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 	m_iHops = -1;
 	m_bAway = false;
 	m_eGender = Unknown;
+}
+
+void KviIrcUserEntry::setRealName(const QString &rn)
+{ 
+	m_szRealName = rn;
+	m_szRealName = m_szRealName.stripWhiteSpace();
+	if(m_szRealName.length()>=3)
+	{
+		if( (m_szRealName[0].latin1()==KVI_TEXT_COLOR) && (m_szRealName[2].latin1()==KVI_TEXT_RESET) )
+		{
+			switch(m_szRealName[1].latin1()){
+				case '1':
+					setGender(Male);
+					break;
+				case '2':
+					setGender(Female);
+					break;
+			}
+			m_szRealName.remove(0,3);
+		}
+	}
 }
 
 KviIrcUserEntry::~KviIrcUserEntry()

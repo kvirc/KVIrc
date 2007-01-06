@@ -299,7 +299,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("MuteAllSounds",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("CreateMinimizedChannels",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowNetworkNameForConsoleTaskBarEntry",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
-	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme)
+	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

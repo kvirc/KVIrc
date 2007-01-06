@@ -64,6 +64,7 @@
 #include "kvi_kvs_eventtriggers.h"
 
 #include "kvi_kvs_script.h"
+#include "kvi_mirccntrl.h"
 
 #include <qtimer.h>
 #include <qtextcodec.h>
@@ -946,6 +947,17 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		// disconnected :(
 		return;
+	}
+	QString szGenderTag;
+	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty()){
+		szGenderTag.append(KVI_TEXT_COLOR);
+		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+			szGenderTag.append("1");
+		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+			szGenderTag.append("2");
+		}
+		szGenderTag.append(KVI_TEXT_RESET);
+		szReal.prepend(szGenderTag);
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),

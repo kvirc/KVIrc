@@ -307,8 +307,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCreateMinimizedChannels 213
 #define KviOption_boolShowNetworkNameForConsoleTaskBarEntry 214
 #define KviOption_boolDrawGenderIcons 215
+#define KviOption_boolPrependGenderInfoToRealname 216
 
-#define KVI_NUM_BOOL_OPTIONS 216
+#define KVI_NUM_BOOL_OPTIONS 217
 
 
 

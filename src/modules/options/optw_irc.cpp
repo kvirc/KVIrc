@@ -71,7 +71,7 @@ KviIrcGeneralOptionsWidget::~KviIrcGeneralOptionsWidget()
 KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irc_advanced_options_widget")
 {
-	createLayout(2,1);
+	createLayout(3,1);
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
 #ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
@@ -81,6 +81,7 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 		"to close the connection.<br>" \
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
 #endif
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);    
 }
 
 KviIrcAdvancedOptionsWidget::~KviIrcAdvancedOptionsWidget()

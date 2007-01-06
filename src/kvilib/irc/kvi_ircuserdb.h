@@ -69,7 +69,7 @@ public:
 	void setHost(const QString &host)   { m_szHost = host; };
 	bool hasHost()                      { return (!m_szHost.isEmpty()); };
 	void setServer(const QString &serv) { m_szServer = serv; };
-	void setRealName(const QString &rn) { m_szRealName = rn; };
+	void setRealName(const QString &rn);
 	void setHops(int hops)              { m_iHops = hops; };
 	const QString &user()               { return m_szUser; };
 	const QString &host()               { return m_szHost; };

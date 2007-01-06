@@ -757,6 +757,8 @@ void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
+		chan->userListView()->enableUpdates(true);
+		chan->userListView()->enableUpdates(false);
 		kvi_time_t tNow = kvi_unixTime();
 		msg->connection()->stateData()->setLastReceivedChannelWhoReply(tNow);
 		chan->setLastReceivedWhoReply(tNow);
@@ -1041,6 +1043,13 @@ void KviServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 		e->setUser(szUser);
 		e->setHost(szHost);
 		e->setRealName(szReal);
+		if(e->gender()!=KviIrcUserEntry::Unknown) {
+			if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
+			{
+				((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(true);
+				((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(false);
+			}
+		}
 		KviQuery * q = msg->connection()->findQuery(szNick);
 		if(q) q->updateLabelText();
 		if(!e->avatar())
