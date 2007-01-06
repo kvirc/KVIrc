@@ -247,6 +247,7 @@ void KviNotifierWindowTabs::addMessage(KviWindow * pWnd, KviNotifierMessage * me
 	if (!m_tabMap.contains(pWnd)) {
 		m_tabMap.insert(pWnd, tab = new KviNotifierWindowTab(pWnd, sender));
 		m_tabPtrList.append(tab);
+		setFocusOn(tab);
 	} else {
 		tab = m_tabMap[pWnd];
 	}
@@ -500,6 +501,48 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 	}
 	
 	m_lastVisitedTabPtrList.insert(0, tab);
+
+	//scrollTabsRight();
+
+	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	
+	
+	tabIterator.toFirst();
+	
+	int i = 0;
+	while(m_iTabToStartFrom!=i) {
+		i++;
+		++tabIterator;
+		if(tabIterator.current()==m_pTabFocused)
+		{
+			m_iTabToStartFrom=i;
+		}
+	}
+	int iWidth = 0;
+	QPtrListIterator<KviNotifierWindowTab> startIterator (m_tabPtrList);
+
+	i=0;
+	while(m_iTabToStartFrom!=i) {
+		i++;
+		++startIterator;
+	}
+
+	KviNotifierWindowTab * pTab = tabIterator.current();
+	while ( pTab )
+	{
+		iWidth+=pTab->width();
+		while(iWidth>=m_rctTabs.width())
+		{
+			m_iTabToStartFrom++;
+			iWidth-=startIterator.current()->width();
+			++startIterator;
+		}
+		
+		if(pTab == m_pTabFocused ) break;
+
+		++tabIterator;
+		pTab = tabIterator.current();
+	}
 
 	needToRedraw();
 
