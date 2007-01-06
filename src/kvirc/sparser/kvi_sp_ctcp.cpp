@@ -1754,6 +1754,47 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 	}
 }
 
+void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
+{
+	QString szRemoteFile;
+	QString szGender;
+	QString decoded=msg->msg->console()->decodeText(msg->pData);
+	
+	bool bNeedToUpdateUserlist = false;
+	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
+	if(e){
+		int pos = decoded.find("Gender=",0,false);	
+		
+		if(pos>=0)
+		{
+			QChar c = decoded[pos+7];
+			switch(c) {
+				case 'F':
+				case 'f':
+					bNeedToUpdateUserlist = true;
+					e->setGender(KviIrcUserEntry::Female);
+					break;
+				case 'M':
+				case 'm':
+					bNeedToUpdateUserlist = true;
+					e->setGender(KviIrcUserEntry::Male);
+					break;
+			}
+		}
+	}
+
+	if(bNeedToUpdateUserlist) {
+		if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
+		{
+			((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(true);
+			((KviChannel*)g_pActiveWindow)->userListView()->enableUpdates(false);
+		}
+		
+	}
+
+	echoCtcpReply(msg);
+}
+
 void KviServerParser::parseCtcpReplyGeneric(KviCtcpMessage *msg)
 {
 	echoCtcpReply(msg);

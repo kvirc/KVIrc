@@ -244,6 +244,7 @@ private:
 	void parseCtcpRequestPage(KviCtcpMessage *msg);
 
 	void parseCtcpReplyAvatar(KviCtcpMessage *msg);
+	void parseCtcpReplyUserinfo(KviCtcpMessage *msg);
 	void parseCtcpReplyGeneric(KviCtcpMessage *msg);
 	void parseCtcpReplyPing(KviCtcpMessage *msg);
 	void parseCtcpReplyLagcheck(KviCtcpMessage *msg);

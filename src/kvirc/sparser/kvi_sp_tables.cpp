@@ -73,7 +73,7 @@ KviCtcpMessageParseStruct KviServerParser::m_ctcpReplyParseProcTable[]=
 	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
 	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
 	{ "VERSION"    , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "USERINFO"   , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "USERINFO"   , PTM(parseCtcpReplyUserinfo)     , 0 },
 	{ "CLIENTINFO" , PTM(parseCtcpReplyGeneric)      , 0 },
 	{ "FINGER"     , PTM(parseCtcpReplyGeneric)      , 0 },
 	{ "TIME"       , PTM(parseCtcpReplyGeneric)      , 0 },
