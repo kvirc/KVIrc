@@ -15,7 +15,7 @@ AC_SS_HEADER([Initializing automake])
 
 AC_PREREQ(2.52)
 
-AM_INIT_AUTOMAKE(kvirc,3.2.5)
+AM_INIT_AUTOMAKE(kvirc,3.2.6)
 
 AC_PREFIX_DEFAULT(/usr/local)
 AM_CONFIG_HEADER(src/config.h)

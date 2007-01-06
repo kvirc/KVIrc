@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '3.2.5'
+!define VERSION '3.2.6'
 !define RELEASE_NAME 'Anomalies'
 !define /date RELEASE_VERSION '%Y%m%d'
 !define URL_ABOUT 'http://www.kvirc.net/'
