@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:39+0300\n"
-"PO-Revision-Date: 2006-11-11 15:43+0100\n"
+"PO-Revision-Date: 2007-01-06 21:35+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -681,8 +681,7 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1153
@@ -700,10 +699,8 @@ msgid "Connect &Now"
 msgstr "&Connetti Ora"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1177
 msgid ""
@@ -1143,7 +1140,7 @@ msgid ""
 "taskbar entry instead of the server name. This is nice to keep on unless "
 "your servers are not organized in networks or you often connect to two "
 "servers of the same network.</center>"
-msgstr ""
+msgstr "<center>Quest'opzione farà in modo che KVIrc mostrerà il nome della rete come nella console invece del nome del server. Questo è efficace quando i tuoi server non sono organizzati in reti o se connetti più server della stessa rete.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:75
 msgid "Force immediate quit"
@@ -1164,7 +1161,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:84
 msgid "Prepend gender info to realname"
-msgstr ""
+msgstr "Aggiungi informazioni sul sesso nel realname"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:110
 msgid "On Channel Kick"
@@ -1420,20 +1417,20 @@ msgid ""
 "navigate through the option pages. The text box in the bottom left corner is "
 "a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
-msgstr ""
+msgstr "Questo dialog contiene un set di settaggi KVIrc. Usa i pulsanti sulla sinistra per navigare attraverso le opzioni. La casella in basso a sinistra è un piccolo motore di ricerca- Evidenzierà le pagine che contengono le opzioni relative alle parole che hai cercato."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:141
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
-msgstr ""
+msgstr "Molti settaggi hanno dei tooltip che possono essere mostrati tenendo il cursore del mouse sopra la loro etichetta per qualche secondo."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:146
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
-msgstr ""
+msgstr "Quando hai finito, clicca \"<b>OK</b>\" per accettare i cambiamenti o \"<b>Annulla</b>\" per tralasciarli. Cliccando \"<b>Applica</b>\" salverai i cambiamenti senza chiudere la finestra."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:211
 msgid ""
@@ -1442,7 +1439,7 @@ msgid ""
 "button on the right. The pages that contain some options related to the "
 "search term will be highlighted and you will be able to quickly find them.</"
 "p><p>Try \"nickname\" for example.</p>"
-msgstr ""
+msgstr "<p>Questo è lo strumento di ricerca per questa dialog.</p><p>Puoi inserire una parola da cercare nella tua lingua o in inglese e premere il pulsante sulla destra. Le pagine che contengono delle opzioni relative alla parola cercata saranno evidenziate e tu sarai così in grado di trovarle velocemente.</p><p>Per esempio prova ad inserire \"nickname\".</p>"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:243
 #: /home/alexey/kvirc/src/modules/options/container.cpp:56
@@ -1792,8 +1789,7 @@ msgstr ""
 "delle citazioni casuali o delle frasi.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -1883,7 +1879,7 @@ msgid ""
 "small file (say 150 Kb max) because<br>most clients have a limit on the size "
 "of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
-msgstr ""
+msgstr "Qui puoi scegliere l'immagine per il tuo avatar. Sarà visibile<br>dalle alle persone che lo richiedono. Scegli una tua immagine carina,<br>possibilmente evitando oscenità e immagini offensive. E' una buona idea<br>scegliere un file relativamente piccolo (diciamo 150 Kb max) perché<br>molti client hanno un limite sulla dimensione degli avatar da scaricare.<br>L'immagine inoltre dev'essere più piccola di 800x600 pixel in modo<br>da essere vista sul monitor di tutti."
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:511
 msgid "Use avatar"
@@ -1927,7 +1923,7 @@ msgid ""
 "scaled by the remote clients with poor quality<br>algorithms to improve "
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
 "or choose a different image."
-msgstr ""
+msgstr "L'avatar scelto è più grande di 1024x768 pixel.<br>Un'immagine così grossa potrebbe non essere vista sui monitor di tutti<br>e probabilmente verrà scalata dal client remoto con una bassa qualità<br>per migliorare le prestazioni. *Dovresti* scalarla manualmente<br>a una grandezza decente (tipo 800x600) o scegliere un'altra immagine."
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:685
 msgid "Default Messages"
@@ -2287,8 +2283,7 @@ msgid "Minimum alert level:"
 msgstr "Livello di allerta minimo:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -3260,13 +3255,11 @@ msgstr "Il campo NickName non può contenere spazi"
 
 #: /home/alexey/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: /home/alexey/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: /home/alexey/kvirc/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -3621,7 +3614,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
-msgstr ""
+msgstr "Apri sempre la finestra di trasferimento minimizzata"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:238
 msgid "Bug Compatibility"
@@ -3675,7 +3668,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:262
 msgid "Limits"
-msgstr ""
+msgstr "Limiti"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:265
 msgid "Limit upload bandwidth to"
@@ -4073,7 +4066,7 @@ msgstr "tema,mdi"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:87
 msgid "Workspace"
-msgstr ""
+msgstr "Area di lavoro"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:100
 msgid "ToolBar Applets"
@@ -4151,7 +4144,7 @@ msgstr "temi,colori,messaggi"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:153
 msgid "Color Set"
-msgstr ""
+msgstr "Set di colori"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:30
 msgid "Userlist"
@@ -4388,187 +4381,3 @@ msgstr "Icona del vassoio di sistema"
 msgid "tray,dockwidget"
 msgstr "vassoio,oggetto da scrivania"
 
-#~ msgid "Save Current Theme"
-#~ msgstr "Salva il Tema Corrente"
-
-#~ msgid "Theme name:"
-#~ msgstr "Nome del Tema:"
-
-#~ msgid "Version:"
-#~ msgstr "Versione:"
-
-#~ msgid "Author:"
-#~ msgstr "Autore:"
-
-#~ msgid "Include message colors information"
-#~ msgstr "Includi le informazioni dei colori nei messaggi"
-
-#~ msgid "Package format:"
-#~ msgstr "Formato del pacchetto:"
-
-#~ msgid "XML single-file format"
-#~ msgstr "Singolo file XML"
-
-#~ msgid "New multi-file format"
-#~ msgstr "Nuovo formato multi-file"
-
-#~ msgid "Old format"
-#~ msgstr "Vecchio formato"
-
-#~ msgid "Save Theme - KVIrc"
-#~ msgstr "Salva Tema - KVIrc"
-
-#~ msgid "Unable to create theme directory."
-#~ msgstr "Impossibile creare la directory dei temi"
-
-#~ msgid "Theme saved successfully to "
-#~ msgstr "Tema salvato con successo in "
-
-#~ msgid "Choose save directory"
-#~ msgstr "Seleziona la directory di salvataggio"
-
-#~ msgid "You must select save directory"
-#~ msgstr "Devi selezionare la directory di salvataggio"
-
-#~ msgid "Unable to create theme files directory."
-#~ msgstr "Impossibile creare la directory dei temi."
-
-#~ msgid "Unable to create theme utils directory."
-#~ msgstr "Impossibile creare la directory dei temi"
-
-#~ msgid "Cannot find installer.kvs."
-#~ msgstr "Impossibile trovare installer.kvs"
-
-#~ msgid "Cannot write installer.kvs."
-#~ msgstr "Impossibile scrivere installer.kvs"
-
-#~ msgid "Cannot write install.kvs."
-#~ msgstr "Impossibile scrivere install.kvs"
-
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "Impossibile leggere il file install.kvs."
-
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "Impossibile scrivere sul file install.kvs"
-
-#~ msgid "Choose filaname"
-#~ msgstr "Scegli un File"
-
-#~ msgid "You must select filename"
-#~ msgstr "Devi scegliere un nome per il tema!"
-
-#~ msgid "You must choose a theme name!"
-#~ msgstr "Devi scegliere un nome per il tema!"
-
-#~ msgid ""
-#~ "To apply a theme select it and click \"Ok\" or \"Apply\".<br>Your theme "
-#~ "dir is:<br><b>"
-#~ msgstr ""
-#~ "Per applicare un tema devi selezionarlo e clickare su \"Ok\" o \"Applica"
-#~ "\".<br>La directory del tema è:<br><b>"
-
-#~ msgid "Refresh Theme List"
-#~ msgstr "Aggiorna Lista dei Temi"
-
-#~ msgid "Install XML theme pack"
-#~ msgstr "Installa il pacchetto del tema in XML"
-
-#~ msgid "Save Current Theme..."
-#~ msgstr "Salva Tema Corrente..."
-
-#~ msgid "Delete Selected Theme"
-#~ msgstr "Cancella il tema selezionato"
-
-#~ msgid "Get More Themes..."
-#~ msgstr "Scarica altri Temi..."
-
-#~ msgid "Open Theme - KVIrc"
-#~ msgstr "Apri Tema - KVIrc"
-
-#~ msgid "You must select file"
-#~ msgstr "Devi selezionare il file"
-
-#~ msgid "Current Theme"
-#~ msgstr "Tema Corrente"
-
-#~ msgid "<p>The active theme settings</p>"
-#~ msgstr "<p>Impostazioni tema corrente</p>"
-
-#~ msgid "<p>Theme: %1</p>"
-#~ msgstr "<p>Tema: %1</p>"
-
-#~ msgid "<p>Version: %1</p>"
-#~ msgstr "<p>Versione: %1</p>"
-
-#~ msgid "<p>Date: %1</p>"
-#~ msgstr "<p>Data: %1</p>"
-
-#~ msgid "<p>Author: %1</p>"
-#~ msgstr "<p>Autore: %1</p>"
-
-#~ msgid "Minimize new queries"
-#~ msgstr "Minimizza nuove query"
-
-#~ msgid "Automatically close on completion"
-#~ msgstr "Chiudi automaticamente quando completato"
-
-#~ msgid "Speed limits"
-#~ msgstr "Limiti banda"
-
-#~ msgid "Idle interval:"
-#~ msgstr "Intervallo di inattività"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>These sections contain various settings for "
-#~ "KVIrc</b></center><br><br><p>When you have finished, click \"<b>OK</b>\" "
-#~ "to accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing the window.</"
-#~ "td></tr><tr><td>Many settings have tooltips that can be shown by holding "
-#~ "the cursor over their label for a few seconds.</p></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">Impostazioni Generali</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>Questa sezione contine varie impostazioni "
-#~ "per KVIrc</b></center><br><br><p>Quando hai finito, fai click su \"<b>OK</"
-#~ "b>\" per confermare i cambiamenti o \"<b>Annulla</b>\" per scartarli. "
-#~ "Clickando su \"<b>Applica</b>\" applicherai i cambiamenti senza chiudere "
-#~ "questa finestra.</td></tr><tr><td>Molte impostazioni hanno dei tooltip "
-#~ "per aiutarti, per visualizzarli basta posizionare il cursore sull'opzione "
-#~ "per pochi secondi.</p></td></tr></table>"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Select a category in the list view on the left to view "
-#~ "the related settings. When you have finished, click \"<b>OK</b>\" to "
-#~ "accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing this window."
-#~ "<br><br></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">Impostazioni Generali</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Seleziona una categoria nella lista di sinistra per "
-#~ "vedere le relative opzioni. Quando hai finito, fai click su \"<b>OK</b>\" "
-#~ "per confermare i cambiamenti o \"<b>Annulla</b>\" per scartarli. "
-#~ "Clickando su \"<b>Applica</b>\" applicherai i cambiamenti senza chiudere "
-#~ "questa finestra.<br><br></td></tr></table>"
-
-#~ msgid "Preferences - KVIrc"
-#~ msgstr "Preferenze - KVIrc"
-
-#~ msgid "Standard Colors"
-#~ msgstr "Colori Standard"
-
-#~ msgid "Avatar Handling"
-#~ msgstr "Gestione Avatar"
-
-#~ msgid "MDI Area"
-#~ msgstr "MDI Area"
-
-#~ msgid "Load & Save"
-#~ msgstr "Carica & Salva"
-
-#~ msgid "Output Style"
-#~ msgstr "Stile dei messaggi"
