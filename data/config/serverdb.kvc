@@ -1675,6 +1675,10 @@ NServers=4
 [SyrolNet(it)]
 0_Hostname=irc.syrolnet.org
 0_Description=SyrolNet round robin
-1_Hostname=moon.syrolnet.org
-1_Description=Moon irc server
-NServers=2
+1_Hostname=ipv6.syrolnet.org
+1_Description=IPv6 round robin
+2_Hostname=moon.syrolnet.org
+2_Description=Moon irc server
+3_Hostname=phobos.syrolnet.org
+3_Description=IPv6/IPv4 Hub server
+NServers=4
