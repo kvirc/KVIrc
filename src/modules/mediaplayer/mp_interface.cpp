@@ -27,6 +27,13 @@
 #include "kvi_options.h"
 #include <qtextcodec.h>
 
+static QTextCodec * mediaplayer_get_codec()
+{
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)); 
+	if(!c)c = QTextCodec::codecForLocale(); 
+	return c;
+
+}
 int KviMediaPlayerInterface::position()
 {
 	return -1;
@@ -75,10 +82,7 @@ QString KviMediaPlayerInterface::getLocalFile()
 	mp3info mp3; \
 	if(!scan_mp3_file(f,&mp3))return QString::null; \
 	QTextCodec *pCodec; \
-	if(!KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding).isEmpty()) \
-			pCodec = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)); \
-	else \
-			pCodec = QTextCodec::codecForLocale();
+	pCodec=mediaplayer_get_codec();
 
 #define SCAN_MP3_FILE_RET_INT \
 	QString f = getLocalFile(); \

@@ -166,6 +166,15 @@
 #define KVIRC_WM_USER_GETFILE 10000
 #define KVIRC_WM_USER_TRANSFER 15000
 
+
+static QTextCodec * mediaplayer_get_codec()
+{
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)); 
+	if(!c)c = QTextCodec::codecForLocale(); 
+	return c;
+
+}
+
 static HWND find_winamp(KviWinampInterface * i)
 {
 	HWND hWnd = FindWindow("Winamp v1.x",NULL);
@@ -319,10 +328,9 @@ QString KviWinampInterface::mrl()
 				szBuffer[i] = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_TRANSFER + i);
 			}
 			szBuffer[len] = '\0';
-			if(!KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).isEmpty())
-				ret = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding))->toUnicode(szBuffer);
-			else
-				ret = QTextCodec::codecForLocale()->toUnicode(szBuffer);
+			QTextCodec *c=mediaplayer_get_codec();
+			if (c) ret = c->toUnicode(szBuffer);
+			else ret=szBuffer;
 			if(!ret.startsWith("http://",false))
 				ret.prepend("file://");
 		}
@@ -369,7 +377,8 @@ bool KviWinampInterface::playMrl(const QString &mrl)
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		KviStr szMrl = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding))->fromUnicode(mrl);
+		QTextCodec *c=mediaplayer_get_codec();
+		KviStr szMrl = c ? c->fromUnicode(mrl) : mrl.utf8();
 		COPYDATASTRUCT cds;
 		cds.dwData = IPC_PLAYFILE;
 		cds.lpData = (void *)szMrl.ptr();
