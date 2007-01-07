@@ -363,10 +363,9 @@ QString KviWinampInterface::nowPlaying()
 			}
 			szBuffer[ len ] = '\0';
 			
-			if(!KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).isEmpty())
-				ret = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding))->toUnicode(szBuffer);
-			else
-				ret = QTextCodec::codecForLocale()->toUnicode(szBuffer);
+			QTextCodec *c=mediaplayer_get_codec();
+			if (c) ret = c->toUnicode(szBuffer);
+			else ret=szBuffer;
 		}
 	}
 	return ret;
