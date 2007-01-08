@@ -2,20 +2,20 @@
 # translation of options_pt.po to
 # translation of kvirc_pt.po to
 #
+# Copyright (C) 2002,2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+#: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <mmodem@netcabo.pt>, 2005.
-# Zé <mmodem00@gmail.com>, 2006.
-# Copyright (C) 2002,2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-#: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:304
+# Zé <mmodem00@gmail.com>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:39+0300\n"
-"PO-Revision-Date: 2006-10-28 15:45+0100\n"
+"PO-Revision-Date: 08-01-2007 18:17\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -683,10 +683,8 @@ msgid "Server:"
 msgstr "Servidor:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
-msgstr ""
-"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
+msgstr "<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1153
 msgid "Advanced..."
@@ -701,8 +699,7 @@ msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
 #: /home/alexey/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Prima este botão para conectar ao actual servidor seleccionado.</"
 "center>"
@@ -879,7 +876,7 @@ msgstr "Mostrar pings do servidor"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ircoutput.cpp:72
 msgid "Show own parts in the console"
-msgstr "Mostrar as suas saídas na consola"
+msgstr "Mostrar as suas próprias saídas na consola"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ircoutput.cpp:73
 msgid "Show compact mode changes"
@@ -939,9 +936,8 @@ msgid "Don't show colors in user messages"
 msgstr "Não mostrar cores nas mensagens de utilizadores"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:88
-#, fuzzy
 msgid "Nicknames"
-msgstr "Apelido"
+msgstr "Alcunhas"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:90
 msgid "\"Smart\" nickname colors"
@@ -980,13 +976,12 @@ msgid "Postfix:"
 msgstr "Sufixo:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:122
-#, fuzzy
 msgid "Timestamp"
-msgstr "Cor das horas nas mensagens"
+msgstr "Marcação horária"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:124
 msgid "Show timestamp"
-msgstr "Mostrar hora nas mensagens"
+msgstr "Mostrar marcação horária"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:127
 msgid "Use UTC time for timestamp"
@@ -1135,9 +1130,8 @@ msgstr ""
 "após autenticação com sucesso num servidor.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:55
-#, fuzzy
 msgid "Show network name in console taskbar entry"
-msgstr "Mostrar icones das Janelas na barra de tarefas"
+msgstr "Mostrar nome da rede na barra de tarefas da consola"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:57
 msgid ""
@@ -1225,9 +1219,8 @@ msgstr ""
 "b>Isto pode ajudar ou fazer com que alguns spammers o chateiem. :)</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:144
-#, fuzzy
 msgid "Always open channels as minimized"
-msgstr "Abrir todos minimizados"
+msgstr "Abrir sempre os canais como minimizados"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:148
 #, fuzzy
@@ -1353,8 +1346,7 @@ msgstr " seg"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -1405,14 +1397,12 @@ msgid "General Preferences"
 msgstr "Preferências Gerais"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:128
-#, fuzzy
 msgid "Theme Preferences"
-msgstr "Preferências"
+msgstr "Preferências do Tema"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:130
-#, fuzzy
 msgid "KVIrc Preferences"
-msgstr "Preferências"
+msgstr "Preferências KVirc"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:133
 msgid ""
@@ -1572,7 +1562,6 @@ msgstr "Imagem de fundo:"
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.cpp:116
 #: /home/alexey/kvirc/src/modules/options/optw_input.cpp:46
 #: /home/alexey/kvirc/src/modules/options/optw_ircview.cpp:51
-#, fuzzy
 msgid "Horizontal align:"
 msgstr "Alinhamento horizontal:"
 
@@ -1791,10 +1780,8 @@ msgstr ""
 "umas citações ou frases quaisquer.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
-"este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:356
 msgid "Profile"
@@ -1914,9 +1901,8 @@ msgid "Avatar Download Failed - KVIrc"
 msgstr "Transferência Falhada de Avatar - KVirc"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:647
-#, fuzzy
 msgid "Avatar Might Be Too Big - KVIrc"
-msgstr "Transferência de Avatar - KVirc"
+msgstr "Imagem Avatar Talvez Demasiado Grande - KVirc"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:648
 msgid ""
@@ -2217,7 +2203,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.cpp:91
 msgid "Alert Restrictions"
-msgstr ""
+msgstr "Restrições de Alerta"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.cpp:92
 msgid "Restrict alert"
@@ -2279,8 +2265,7 @@ msgid "Minimum alert level:"
 msgstr "Nível de alerta mínimo:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Esta opção define o nível de alerta mínimo para a barra de tarefas.</"
 "center>"
@@ -2322,9 +2307,8 @@ msgstr ""
 "center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_query.cpp:62
-#, fuzzy
 msgid "Always open queries as minimized"
-msgstr "Abrir todos minimizados"
+msgstr "Abrir sempre todos os privados como minimizados"
 
 #: /home/alexey/kvirc/src/modules/options/optw_query.cpp:66
 msgid ""
@@ -2710,8 +2694,7 @@ msgstr "Atraso entre tentativas:"
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_connection.cpp:122
 msgid "Certificate"
@@ -2921,19 +2904,16 @@ msgid "Dotted Grid"
 msgstr "Grelha Pontilhada"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:123
-#, fuzzy
 msgid "Horizontal Alignment:"
-msgstr "Alinhamento horizontal:"
+msgstr "Alinhamento Horizontal:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:127
-#, fuzzy
 msgid "Vertical Alignment:"
-msgstr "Alinhamento vertical:"
+msgstr "Alinhamento Vertical:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:223
-#, fuzzy
 msgid "Show gender icons"
-msgstr "Mostrar ícones das mensagens"
+msgstr "Mostrar género dos ícones"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:224
 msgid "Show user channel icons"
@@ -3098,8 +3078,7 @@ msgstr "Activar piscar de ícone na barra de tarefas"
 
 #: /home/alexey/kvirc/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
+msgstr "Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
 
 #: /home/alexey/kvirc/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -3248,8 +3227,7 @@ msgstr "O campo do Apelido não pode conter espaços!"
 
 #: /home/alexey/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr "A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: /home/alexey/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -3552,18 +3530,16 @@ msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:200
-#, fuzzy
 msgid "Open transfer window as minimized when auto-accepted"
-msgstr "Abrir minimizado quando auto-aceite"
+msgstr "Abrir janela de transferência como minimizada quando auto-aceite"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:201
 msgid "Automatically resume when auto-accepted"
 msgstr "Resumir automaticamente quando auto-aceite"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:203
-#, fuzzy
 msgid "Save Location"
-msgstr "Localização:"
+msgstr "Gravar Localização"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:204
 msgid "Download folder:"
@@ -3578,9 +3554,8 @@ msgid "Guess save path from media type"
 msgstr "Adivinhar localização de gravação pelo tipo de média"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:209
-#, fuzzy
 msgid "On Download Completion"
-msgstr "Pasta de Transferências:"
+msgstr "Ao Terminar a Transferências"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:210
 msgid "Notify completion in console"
@@ -3591,9 +3566,8 @@ msgid "Notify completion in notifier"
 msgstr "Notificar completação no notificador"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:212
-#, fuzzy
 msgid "Automatically clear transfer"
-msgstr "Aceitar automaticamente"
+msgstr "Limpar transferência automaticamente"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:215
 #, fuzzy
@@ -3606,7 +3580,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
-msgstr ""
+msgstr "Abrir sempre janela de transferência minimizada"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:238
 msgid "Bug Compatibility"
@@ -3644,8 +3618,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:254
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr ""
-"Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
+msgstr "Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:257
 msgid ""
@@ -3660,7 +3633,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:262
 msgid "Limits"
-msgstr ""
+msgstr "Limites"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:265
 msgid "Limit upload bandwidth to"
@@ -3762,9 +3735,8 @@ msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando auto-aceite"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:353
-#, fuzzy
 msgid "Always open as minimized"
-msgstr "Abrir todos minimizados"
+msgstr "Abrir sempre como minimizado"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:369
 msgid "Open all minimized"
@@ -4371,187 +4343,3 @@ msgstr "Ícone da barra de tarefas"
 msgid "tray,dockwidget"
 msgstr "barra de tarefas"
 
-#~ msgid "Save Current Theme"
-#~ msgstr "Gravar Tema Actual"
-
-#~ msgid "Theme name:"
-#~ msgstr "Nome do tema:"
-
-#~ msgid "Version:"
-#~ msgstr "Versão:"
-
-#~ msgid "Author:"
-#~ msgstr "Autor:"
-
-#~ msgid "Include message colors information"
-#~ msgstr "Incluir informação de cor das mensagens"
-
-#~ msgid "Package format:"
-#~ msgstr "Formato do pacote:"
-
-#~ msgid "XML single-file format"
-#~ msgstr "Formato de único ficheiro XML"
-
-#~ msgid "New multi-file format"
-#~ msgstr "Novo formato multi-ficheiros"
-
-#~ msgid "Old format"
-#~ msgstr "Formato antigo"
-
-#~ msgid "Save Theme - KVIrc"
-#~ msgstr "Gravar Tema - KVirc"
-
-#~ msgid "Unable to create theme directory."
-#~ msgstr "Falha ao criar a pasta do tema."
-
-#~ msgid "Theme saved successfully to "
-#~ msgstr "Tema gravado com sucesso em "
-
-#~ msgid "Choose save directory"
-#~ msgstr "Escolha um directório para gravar"
-
-#~ msgid "You must select save directory"
-#~ msgstr "Deve seleccionar um directório para gravar"
-
-#~ msgid "Unable to create theme files directory."
-#~ msgstr "Não é possível criar um directório de ficheiros de temas."
-
-#~ msgid "Unable to create theme utils directory."
-#~ msgstr "Não é possível criar um directório de utilidades de temas."
-
-#~ msgid "Cannot find installer.kvs."
-#~ msgstr "Não é possível encontrar o ficheiro installer.kvs."
-
-#~ msgid "Cannot write installer.kvs."
-#~ msgstr "Não é possível escrever o ficheiro installer.kvs."
-
-#~ msgid "Cannot write install.kvs."
-#~ msgstr "Não é possível escrever o ficheiro install.kvs."
-
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "Não é possível abrir o ficheiroinstall.kvs para leitura."
-
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "Não é possível abrir o ficheiro install.kvs para escrita."
-
-#~ msgid "Choose filaname"
-#~ msgstr "Escolha um ficheiro"
-
-#~ msgid "You must select filename"
-#~ msgstr "Deve seleccionar um ficheiro"
-
-#~ msgid "You must choose a theme name!"
-#~ msgstr "Deve escolher um nome para o tema!"
-
-#~ msgid ""
-#~ "To apply a theme select it and click \"Ok\" or \"Apply\".<br>Your theme "
-#~ "dir is:<br><b>"
-#~ msgstr ""
-#~ "Pra aplicar um tema seleccione-o e clique em \"Ok\" ou \"Aplicar\".<br>O "
-#~ "directório do seu tema é:<br><b>"
-
-#~ msgid "Refresh Theme List"
-#~ msgstr "Actualizar Lista dos Temas"
-
-#~ msgid "Install XML theme pack"
-#~ msgstr "Instalar pacote de tema XML"
-
-#~ msgid "Save Current Theme..."
-#~ msgstr "Gravar Tema Actual..."
-
-#~ msgid "Delete Selected Theme"
-#~ msgstr "Apagar Tema Seleccionado"
-
-#~ msgid "Get More Themes..."
-#~ msgstr "Obter Mais Temas..."
-
-#~ msgid "Open Theme - KVIrc"
-#~ msgstr "Abrir Tema - KVirc"
-
-#~ msgid "You must select file"
-#~ msgstr "Deve seleccionar um ficheiro"
-
-#~ msgid "Current Theme"
-#~ msgstr "Tema Actual"
-
-#~ msgid "<p>The active theme settings</p>"
-#~ msgstr "<p>As configurações actuais do tema</p>"
-
-#~ msgid "<p>Theme: %1</p>"
-#~ msgstr "<p>Tema: %1</p>"
-
-#~ msgid "<p>Version: %1</p>"
-#~ msgstr "<p>Versão: %1</p>"
-
-#~ msgid "<p>Date: %1</p>"
-#~ msgstr "<p>Data: %1</p>"
-
-#~ msgid "<p>Author: %1</p>"
-#~ msgstr "<p>Autor: %1</p>"
-
-#~ msgid "Minimize new queries"
-#~ msgstr "Minimizar novos privados"
-
-#~ msgid "Automatically close on completion"
-#~ msgstr "Fechar automaticamente quando completo"
-
-#~ msgid "Speed limits"
-#~ msgstr "Limites de velocidade"
-
-#~ msgid "Idle interval:"
-#~ msgstr "Intervalo inactivo:"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>These sections contain various settings for "
-#~ "KVIrc</b></center><br><br><p>When you have finished, click \"<b>OK</b>\" "
-#~ "to accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing the window.</"
-#~ "td></tr><tr><td>Many settings have tooltips that can be shown by holding "
-#~ "the cursor over their label for a few seconds.</p></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font "
-#~ "color= \"#FFFFFF\">Preferências Gerais</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>Estas secções contém várias configurações "
-#~ "para o KVIrc</b></center><br><br><p>Quando tiver acabado clique em "
-#~ "\"<b>OK</b>\" para aceitar as alterações ou \"<b>Cancelar</b>\" para "
-#~ "rejeitar. Ao clicar em \"<b>Aplicar</b>\" irá efectuar as alterações por "
-#~ "si feitas, sem que a janela seja fechada.</td></tr><tr><td>Muitas "
-#~ "configurações têm dicas que são mostradas ao passar o cursor do rato por "
-#~ "cima delas por alguns segundos.</p></td></tr></table>"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Select a category in the list view on the left to view "
-#~ "the related settings. When you have finished, click \"<b>OK</b>\" to "
-#~ "accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing this window."
-#~ "<br><br></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">Preferências Gerais</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Seleccione uma categoria da parte esquerda da lista "
-#~ "para ver as configurações associadas. Quando tiver acabado, clique em "
-#~ "\"<b>OK</b>\" para aceitar as alterações ou \"<b>Cancelar</b>\" para "
-#~ "rejeitar. Ao clicar em \"<b>Aplicar</b>\" irá efectuar as alterações por "
-#~ "si feitas sem que a janela seja fechada.<br><br></td></tr></table>"
-
-#~ msgid "Preferences - KVIrc"
-#~ msgstr "Preferências - KVirc"
-
-#~ msgid "Standard Colors"
-#~ msgstr "Cores Predefinidas"
-
-#~ msgid "Avatar Handling"
-#~ msgstr "Gestão de Avatares"
-
-#~ msgid "MDI Area"
-#~ msgstr "Área MDI"
-
-#~ msgid "Load & Save"
-#~ msgstr "Carregar e Gravar"
-
-#~ msgid "Output Style"
-#~ msgstr "Estilo de Saída"
