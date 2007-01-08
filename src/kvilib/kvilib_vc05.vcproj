@@ -41,7 +41,6 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
@@ -82,7 +81,6 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="true"
 				VerboseOutput="true"
 			/>
 			<Tool
@@ -130,19 +128,13 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="1"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="true"
-				EnableFiberSafeOptimizations="true"
-				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ZLIBINCDIR)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
-				StringPooling="true"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
 				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -161,16 +153,12 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="qt-$(QTTAG).lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib"
 				OutputFile="$(OutDir)\kvilib.dll"
-				LinkIncremental="1"
+				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
 				IgnoreAllDefaultLibraries="true"
-				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				OptimizeForWindows98="1"
-				LinkTimeCodeGeneration="1"
 				TurnOffAssemblyGeneration="true"
 				ImportLibrary="$(OutDir)/kvilib.lib"
 				TargetMachine="1"
@@ -180,7 +168,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="true"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				VerboseOutput="true"
 			/>
 			<Tool

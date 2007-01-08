@@ -81,7 +81,6 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="true"
 				VerboseOutput="true"
 			/>
 			<Tool
@@ -129,23 +128,16 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="1"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
+				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="true"
-				EnableFiberSafeOptimizations="true"
-				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
-				StringPooling="true"
 				MinimalRebuild="true"
-				ExceptionHandling="1"
 				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -167,19 +159,15 @@
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				OptimizeForWindows98="1"
-				LinkTimeCodeGeneration="1"
 				TurnOffAssemblyGeneration="false"
 				TargetMachine="1"
-				AllowIsolation="false"
 			/>
 			<Tool
 				Name="VCALinkTool"
 			/>
 			<Tool
 				Name="VCManifestTool"
-				EmbedManifest="true"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				VerboseOutput="true"
 			/>
 			<Tool
