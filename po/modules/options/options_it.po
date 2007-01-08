@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:39+0300\n"
-"PO-Revision-Date: 2007-01-07 18:27+0100\n"
+"PO-Revision-Date: 2007-01-09 00:12+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -934,7 +934,6 @@ msgid "Don't show colors in user messages"
 msgstr "Non mostrare i colori nei messaggi degli utenti"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:88
-#, fuzzy
 msgid "Nicknames"
 msgstr "Nickname"
 
@@ -975,9 +974,8 @@ msgid "Postfix:"
 msgstr "Suffisso:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:122
-#, fuzzy
 msgid "Timestamp"
-msgstr "Colore Timestamp"
+msgstr "Orario"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.cpp:124
 msgid "Show timestamp"
@@ -1132,7 +1130,7 @@ msgstr ""
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:55
 #, fuzzy
 msgid "Show network name in console taskbar entry"
-msgstr "Mostra le icone delle finestre nella lista dei canali"
+msgstr "Mostra il nome della rete nella console"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:57
 msgid ""
@@ -1221,19 +1219,17 @@ msgstr ""
 "essere un aiuto per spammer che vogliono dar fastidio :)</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:144
-#, fuzzy
 msgid "Always open channels as minimized"
-msgstr "Apri tutte minimizzate"
+msgstr "Apri i canali minimizzati"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:148
-#, fuzzy
 msgid ""
 "<center>This option causes newly created channel windows to be immediately "
 "minimized.<br>Enable this if you don't like channels popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Questa opzione fa sì che le nuove finestre di query vengano "
-"minimizzate immediatamente.<br>Abilitala se non vuoi che le query si aprano "
+"<center>Questa opzione fa sì che le nuove finestre dei canali vengano "
+"minimizzate immediatamente.<br>Abilitala se non vuoi che i canali si aprano "
 "mentre stai scrivendo qualcosa in un canale :D</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:168
@@ -1402,14 +1398,12 @@ msgid "General Preferences"
 msgstr "Impostazioni Generali"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:128
-#, fuzzy
 msgid "Theme Preferences"
-msgstr "Preferenze"
+msgstr "Preferenze Tema"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:130
-#, fuzzy
 msgid "KVIrc Preferences"
-msgstr "Preferenze"
+msgstr "Preferenze KVIrc"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:133
 msgid ""
@@ -1567,9 +1561,8 @@ msgstr "Immagine di sfondo:"
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.cpp:116
 #: /home/alexey/kvirc/src/modules/options/optw_input.cpp:46
 #: /home/alexey/kvirc/src/modules/options/optw_ircview.cpp:51
-#, fuzzy
 msgid "Horizontal align:"
-msgstr "Allineamento orizzontale"
+msgstr "Allineamento orizzontale:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.cpp:120
 #: /home/alexey/kvirc/src/modules/options/optw_input.cpp:50
@@ -1912,9 +1905,8 @@ msgid "Avatar Download Failed - KVIrc"
 msgstr "Impossibile Scaricare l'Avatar - KVIrc"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:647
-#, fuzzy
 msgid "Avatar Might Be Too Big - KVIrc"
-msgstr "Scarica Avatar - KVIrc"
+msgstr "L'avatar potrebbe essere troppo grosso - KVIrc"
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:648
 msgid ""
@@ -2324,9 +2316,8 @@ msgstr ""
 "verranno mostrati nella finestra attiva.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_query.cpp:62
-#, fuzzy
 msgid "Always open queries as minimized"
-msgstr "Apri tutte minimizzate"
+msgstr "Apri tutte le query minimizzate"
 
 #: /home/alexey/kvirc/src/modules/options/optw_query.cpp:66
 msgid ""
@@ -2925,19 +2916,16 @@ msgid "Dotted Grid"
 msgstr "Griglia a puntini"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:123
-#, fuzzy
 msgid "Horizontal Alignment:"
-msgstr "Allineamento orizzontale"
+msgstr "Allineamento orizzontale:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:127
-#, fuzzy
 msgid "Vertical Alignment:"
 msgstr "Allineamento verticale:"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:223
-#, fuzzy
 msgid "Show gender icons"
-msgstr "Mostra icone dei messaggi"
+msgstr "Mostra icone del sesso"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.cpp:224
 msgid "Show user channel icons"
@@ -3561,9 +3549,8 @@ msgid "Automatically accept"
 msgstr "Accetta Automaticamente"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:200
-#, fuzzy
 msgid "Open transfer window as minimized when auto-accepted"
-msgstr "Crea minimizzata quando auto-accettata"
+msgstr "Apri la finestra di trasferimento minimizzata quando auto-accettata"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:201
 msgid "Automatically resume when auto-accepted"
@@ -3600,18 +3587,14 @@ msgid "Notify completion in notifier"
 msgstr "Notifica il completamento nella finestra di notifica"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:212
-#, fuzzy
 msgid "Automatically clear transfer"
-msgstr "Accetta Automaticamente"
+msgstr "Pulisci i trasferimenti automaticamente"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:215
-#, fuzzy
 msgid ""
 "<center>This option will cause succesfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
-msgstr ""
-"<center>Questa opzione fa sì che KVIrc si connetta a questa rete all'avvio</"
-"center>"
+msgstr "<center>Questa opzione fa sì che KVIrc rimuova automaticamente i trasferimenti completati dalla finestra di trasferimento.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
@@ -3773,9 +3756,8 @@ msgid "Open minimized when auto-accepted"
 msgstr "Crea minimizzata quando auto-accettata"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:353
-#, fuzzy
 msgid "Always open as minimized"
-msgstr "Apri tutte minimizzate"
+msgstr "Apri sempre minimizzata"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:369
 msgid "Open all minimized"
@@ -4056,9 +4038,8 @@ msgid "theme,background"
 msgstr "tema,fondo"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:74
-#, fuzzy
 msgid "Window Captions"
-msgstr "MDI Captions"
+msgstr "Caption Finestra"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:75
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:88
@@ -4124,19 +4105,16 @@ msgid "theme,colors,output"
 msgstr "tema,colori,uscita"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:52
-#, fuzzy
 msgid "Message Style"
-msgstr "Tipo di messaggio"
+msgstr "Stile Messaggio"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:56
-#, fuzzy
 msgid "theme,privmsg,output,format"
-msgstr "tema,privmsg,formattazione"
+msgstr "tema,privmsg,uscita,formattazione"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:73
-#, fuzzy
 msgid "Message Colors"
-msgstr "Colore Nickname"
+msgstr "Colori Messaggio"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:74
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:154
@@ -4156,20 +4134,17 @@ msgid "theme,userlist,channel"
 msgstr "tema,lista utenti,canale"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:45
-#, fuzzy
 msgid "theme,userlist,channel,background"
-msgstr "tema,lista utenti,canale"
+msgstr "tema,lista utenti,canale,sfondo"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:65
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:63
-#, fuzzy
 msgid "Foreground"
-msgstr "Primo piano:"
+msgstr "Primo piano"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:66
-#, fuzzy
 msgid "theme,userlist,channel,colors"
-msgstr "tema,lista utenti,canale"
+msgstr "tema,lista utenti,canale,colori"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:85
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:97
@@ -4186,9 +4161,8 @@ msgid "IRC"
 msgstr "IRC"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.h:73
-#, fuzzy
 msgid "Channel"
-msgstr "Annulla"
+msgstr "Canale"
 
 #: /home/alexey/kvirc/src/modules/options/optw_avatar.h:32
 #, fuzzy
@@ -4235,9 +4209,8 @@ msgid "Sound"
 msgstr "Sistema sonoro"
 
 #: /home/alexey/kvirc/src/modules/options/optw_sound.h:48
-#, fuzzy
 msgid "sound,xmms,audio,play,amarok"
-msgstr "suono,xmms,audio,play"
+msgstr "suono,xmms,audio,play,amarok"
 
 #: /home/alexey/kvirc/src/modules/options/optw_sound.h:81
 msgid "Sounds"
@@ -4285,9 +4258,8 @@ msgid "Alert/Highlight"
 msgstr "Avvisa per i messaggi evidenziati"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.h:42
-#, fuzzy
 msgid "Highlight"
-msgstr "Avvisa per i messaggi evidenziati"
+msgstr "Evidenziazione"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.h:55
 msgid "Taskbar Alert"
@@ -4306,9 +4278,8 @@ msgid "Output"
 msgstr "Uscita"
 
 #: /home/alexey/kvirc/:48
-#, fuzzy
 msgid "Look"
-msgstr "Stile"
+msgstr "Aspetto"
 
 #: /home/alexey/kvirc/src/modules/options/optw_antispam.h:28
 msgid "Anti-spam"
