@@ -4,7 +4,7 @@
 [Setup]
 
 AppName=KVIrc
-AppVerName=KVIrc 3.2.3 "Anomalies"
+AppVerName=KVIrc 3.2.6 "Anomalies"
 AppId=KVIrc
 AppPublisher=Szymon Stefanek and The KVIrc Development Team
 AppPublisherURL=http://www.kvirc.net
