@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:39+0300\n"
-"PO-Revision-Date: 08-01-2007 18:17\n"
+"PO-Revision-Date: 08-01-2007 20:23\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1140,6 +1140,10 @@ msgid ""
 "your servers are not organized in networks or you often connect to two "
 "servers of the same network.</center>"
 msgstr ""
+"<center>Esta opção irá fazer com que o KVirc mostre o nome da rede como "
+"na entrada da barra de tarefas da consola em vez de mostrar o nome do servidor. "
+"É bom manter esta opção a não ser que os seus servidores não estejam organizados "
+"em redes ou geralmente se conecta a dois servidores da mesma rede.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:75
 msgid "Force immediate quit"
@@ -1223,15 +1227,14 @@ msgid "Always open channels as minimized"
 msgstr "Abrir sempre os canais como minimizados"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:148
-#, fuzzy
 msgid ""
 "<center>This option causes newly created channel windows to be immediately "
 "minimized.<br>Enable this if you don't like channels popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Esta opção faz com que as novas janelas de privados criadas sejam "
+"<center>Esta opção faz com que as janelas dos novos canais criados sejam "
 "imediatamente minimizadas.<br>Active esta opção se não quer janelas de "
-"privados aparecerem enquanto escreve algo num canal. :D</center>"
+"canais a aparecerem enquanto digita algo num canal. :D</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:168
 msgid "Log joined channels history"
@@ -1411,6 +1414,10 @@ msgid ""
 "a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
+"Este diálogo contém um conjunto de definições. Use os ícones à sua esquerda "
+"para navegar atravéz das opções das páginas. A próxima caixa de verificação "
+"no canto esquerdo ao fundo é um pequeno motor de busca. Irá destacar as "
+"páginas que contenham opções relacionadas com a procura que tenha feito."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:141
 msgid ""
@@ -3570,13 +3577,12 @@ msgid "Automatically clear transfer"
 msgstr "Limpar transferência automaticamente"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:215
-#, fuzzy
 msgid ""
 "<center>This option will cause succesfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
 msgstr ""
-"<center>Esta opção faz com que o KVirc se conecte automaticamente nesta rede "
-"ao iniciar.</center>"
+"<center>Esta opção faz com que as trasnferências terminadas sejam "
+"automaticamente removidas da janela de transferência.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
@@ -3661,9 +3667,8 @@ msgstr ""
 "irá recusar os pedidos quando este limite é alcançado.</center>"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:283
-#, fuzzy
 msgid "Tweaks"
-msgstr "Teste"
+msgstr "Melhoramentos"
 
 #: /home/alexey/kvirc/src/modules/options/optw_dcc.cpp:285
 msgid "Use fast send (send ahead)"
@@ -4017,9 +4022,8 @@ msgid "theme,background"
 msgstr "tema,fundo"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:74
-#, fuzzy
 msgid "Window Captions"
-msgstr "Captações MIDI"
+msgstr "Captações de Janelas"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:75
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:88
@@ -4028,7 +4032,7 @@ msgstr "tema,mdi"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:87
 msgid "Workspace"
-msgstr ""
+msgstr "Área de Trabalho"
 
 #: /home/alexey/kvirc/src/modules/options/optw_interfacelookglobal.h:100
 msgid "ToolBar Applets"
@@ -4085,19 +4089,16 @@ msgid "theme,colors,output"
 msgstr "tema,cores,saída"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:52
-#, fuzzy
 msgid "Message Style"
-msgstr "Tipo de Mensagem"
+msgstr "Estilo de Mensagem"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:56
-#, fuzzy
 msgid "theme,privmsg,output,format"
-msgstr "tema,mensagem privada,formato"
+msgstr "tema,mensagem privada,saída,formato"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:73
-#, fuzzy
 msgid "Message Colors"
-msgstr "Cores do Apelido"
+msgstr "Cores de Mensagens"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:74
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:154
@@ -4106,7 +4107,7 @@ msgstr "tema,cores,menssages,sída"
 
 #: /home/alexey/kvirc/src/modules/options/optw_messages.h:153
 msgid "Color Set"
-msgstr ""
+msgstr "Conjunto de Cores"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:30
 msgid "Userlist"
@@ -4117,26 +4118,23 @@ msgid "theme,userlist,channel"
 msgstr "tema,lista de utilizadores,canal"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:45
-#, fuzzy
 msgid "theme,userlist,channel,background"
-msgstr "tema,lista de utilizadores,canal"
+msgstr "tema,lista de utilizadores,canal,fundo"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:65
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:63
-#, fuzzy
 msgid "Foreground"
-msgstr "Primeiro plano:"
+msgstr "Primeiro plano"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:66
-#, fuzzy
 msgid "theme,userlist,channel,colors"
-msgstr "tema,lista de utilizadores,canal"
+msgstr "tema,lista de utilizadores,canal,cores"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:85
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:97
 #: /home/alexey/kvirc/src/modules/options/optw_ircview.h:68
 msgid "Features"
-msgstr ""
+msgstr "Opções"
 
 #: /home/alexey/kvirc/src/modules/options/optw_userlist.h:86
 msgid "userlist,channel"
@@ -4147,14 +4145,12 @@ msgid "IRC"
 msgstr "IRC"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.h:73
-#, fuzzy
 msgid "Channel"
-msgstr "Cancelar"
+msgstr "Canal"
 
 #: /home/alexey/kvirc/src/modules/options/optw_avatar.h:32
-#, fuzzy
 msgid "Avatars"
-msgstr "Avatar"
+msgstr "Avatares"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ignore.h:29
 msgid "Ignore"
@@ -4181,24 +4177,20 @@ msgid "Taskbar"
 msgstr "Barra de Tarefas"
 
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:47
-#, fuzzy
 msgid "Tree Taskbar"
 msgstr "Barra de Tarefas em Árvore"
 
 #: /home/alexey/kvirc/src/modules/options/optw_taskbar.h:111
-#, fuzzy
 msgid "Classic Taskbar"
 msgstr "Barra de Tarefas Clássica"
 
 #: /home/alexey/kvirc/src/modules/options/optw_sound.h:32
-#, fuzzy
 msgid "Sound"
 msgstr "Som"
 
 #: /home/alexey/kvirc/src/modules/options/optw_sound.h:48
-#, fuzzy
 msgid "sound,xmms,audio,play,amarok"
-msgstr "som,xmms,áudio,tocar"
+msgstr "som,xmms,áudio,tocar,amarok"
 
 #: /home/alexey/kvirc/src/modules/options/optw_sound.h:81
 msgid "Sounds"
@@ -4246,9 +4238,8 @@ msgid "Alert/Highlight"
 msgstr "Alerta/Destaque"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.h:42
-#, fuzzy
 msgid "Highlight"
-msgstr "Alerta/Destaque"
+msgstr "Destaque"
 
 #: /home/alexey/kvirc/src/modules/options/optw_highlighting.h:55
 msgid "Taskbar Alert"
@@ -4268,7 +4259,7 @@ msgstr "Saída"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ircview.h:48
 msgid "Look"
-msgstr ""
+msgstr "Aparência"
 
 #: /home/alexey/kvirc/src/modules/options/optw_antispam.h:28
 msgid "Anti-spam"
@@ -4299,7 +4290,6 @@ msgid "scripting,kvs,debug"
 msgstr "script,kvs,depurar"
 
 #: /home/alexey/kvirc/src/modules/options/optw_ircoutput.h:32
-#, fuzzy
 msgid "Verbosity And Output"
 msgstr "Detalhe e Saída"
 
