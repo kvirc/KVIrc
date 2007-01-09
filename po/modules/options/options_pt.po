@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:39+0300\n"
-"PO-Revision-Date: 08-01-2007 20:23\n"
+"PO-Revision-Date: 09-01-2007 17:27\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -1163,7 +1163,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:84
 msgid "Prepend gender info to realname"
-msgstr ""
+msgstr "Adicionar informação acerca do género ao nome real"
 
 #: /home/alexey/kvirc/src/modules/options/optw_irc.cpp:110
 msgid "On Channel Kick"
@@ -1424,6 +1424,8 @@ msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
+"Muitas definições têm dicas que podem ser mostradas ao apontar o cursor "
+"sobre o seu rótulo por alguns segundos."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:146
 msgid ""
@@ -1431,6 +1433,9 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
+"Quando tiver terminado, clique em \"<b>OK</b>\" para aceitar as suas alterações "
+"ou clique em \"<b>Cancelar</b>\" para as perder. Ao clicar em \"<b>Aplicar</b>\" "
+"irá aplicar as suas alterações sem fechar a janela."
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:211
 msgid ""
@@ -1440,6 +1445,11 @@ msgid ""
 "search term will be highlighted and you will be able to quickly find them.</"
 "p><p>Try \"nickname\" for example.</p>"
 msgstr ""
+"<p>Esta é a ferramenta de procura para este diálogo de opções.</p><p>"
+"Pode indicar um termo de procura na sua língua nativa ou em inglês e "
+"premir o botão à direita. As páginas que contenham algumas opções "
+"relacionadas com os termos de procura serão destacadas e irá poder "
+"encontrá-las facilmente.</p><p>Por exemplo tente \"alcunha\".</p>"
 
 #: /home/alexey/kvirc/src/modules/options/dialog.cpp:243
 #: /home/alexey/kvirc/src/modules/options/container.cpp:56
@@ -1876,6 +1886,13 @@ msgid ""
 "of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
+"Aqui pode escolher a sua imagem avatar. Será visivel<br>para outras pessoas "
+"que a pedirem, Escolha uma boa imagem de si próprio,<br>geralmente "
+"evitando obscinidades e imagens ofensivas. é uma boa ideia escolher<br>"
+"uma relativamente pquena (tipo 150 Kb máximo) porque<br>muitos clientes "
+"têm limite no tamanho das avatares a ser transferidas.<br>A imagem deve "
+"também ser mais pequena que 800x600 pontos já que<br>irá ter que ser "
+"vista nos monitores de todaa as pessoas."
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:511
 msgid "Use avatar"
@@ -1919,6 +1936,11 @@ msgid ""
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
 "or choose a different image."
 msgstr ""
+"A imagem avatar que escolheu é maior que1024x76 pontos.<br>Uma imagem "
+"tão grande não será vista por todos os monitores<br>e provavelmente "
+"irá ser redimensionada pelos clientes remotos com algoritmos de pouca "
+"qualidade<br>para melhorar a performance. Deve escalá-la manualmente<br>para "
+"um bom tamanho (tipo 800x600) ou escolher uma imagem diferente."
 
 #: /home/alexey/kvirc/src/modules/options/optw_identity.cpp:685
 msgid "Default Messages"
