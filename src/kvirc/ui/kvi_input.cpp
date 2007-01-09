@@ -1411,11 +1411,22 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 				if(!m_bReadOnly) pasteClipboardWithConfirmation();
 			break;
 			case Qt::Key_Backspace:
-				if(m_pInputParent->inherits("KviInput"))
+				if(!m_bReadOnly && !hasSelection())
+				{
+					while(m_iCursorPosition>0 && !m_szTextBuffer[m_iCursorPosition-1].isSpace())
+					{
+						m_szTextBuffer.remove(m_iCursorPosition-1,1);
+						m_iCursorPosition--;
+						if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar--;
+					}
+					selectOneChar(-1);
+					repaintWithCursorOn();
+				}
+				/*if(m_pInputParent->inherits("KviInput"))
 				{
 					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
 					clear();
-				}
+				}*/
 			break;
 			case Qt::Key_PageUp:
 				if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory)) break;
@@ -1454,7 +1465,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 				
 					m_iCurHistoryIdx = -1;
 				}
-			break;
+				break;	
 			default:
 				if(!m_bReadOnly) insertText(e->text());
 			break;
@@ -2334,7 +2345,8 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 			}
 			break;
 			case Qt::Key_Backspace:
-				multilineEditorButtonToggled(!m_pMultiLineEditor);
+				if(m_pMultiLineEditor)
+					multilineEditorButtonToggled(!m_pMultiLineEditor);
 			break;
 			case Qt::Key_PageUp:
 				historyButtonClicked();

@@ -140,11 +140,14 @@ void KviMdiCaption::fontChange(const QFont &old)
 	((KviMdiChild *)parent())->resizeEvent(0);
 }
 
-void KviMdiCaption::mousePressEvent(QMouseEvent *)
+void KviMdiCaption::mousePressEvent(QMouseEvent *e)
 {
+	debug("mouse press");
 	m_bMouseGrabbed = true;
 	m_lastMousePos = QCursor::pos();
-	grabMouse(Qt::sizeAllCursor);
+	setCursor(QCursor::sizeAllCursor);
+	//grabMouse(Qt::sizeAllCursor);
+	//e->ignore();
 }
 
 void KviMdiCaption::mouseMoveEvent(QMouseEvent *)
@@ -202,7 +205,8 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
 {
 	m_bMouseGrabbed = false;
-	releaseMouse();
+	setCursor(QCursor::arrowCursor);
+//	releaseMouse();
 }
 
 void KviMdiCaption::setFocusProxy(QWidget * w)
