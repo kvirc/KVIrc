@@ -1411,6 +1411,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 				if(!m_bReadOnly) pasteClipboardWithConfirmation();
 			break;
 			case Qt::Key_Backspace:
+			case Qt::Key_W:
 				if(!m_bReadOnly && !hasSelection())
 				{
 					while(m_iCursorPosition>0 && !m_szTextBuffer[m_iCursorPosition-1].isSpace())
@@ -1422,11 +1423,6 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					selectOneChar(-1);
 					repaintWithCursorOn();
 				}
-				/*if(m_pInputParent->inherits("KviInput"))
-				{
-					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
-					clear();
-				}*/
 			break;
 			case Qt::Key_PageUp:
 				if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory)) break;
@@ -1485,6 +1481,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			m_szAltKeyCode += e->ascii();
 			return;
 		}
+
 		//debug("%c",e->ascii());
 		if(!m_bReadOnly) insertText(e->text());
 		return;
@@ -1510,7 +1507,20 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			break;
 		}
 	}
-
+	if(e->state() & AltButton)
+	{
+		switch(e->key())
+		{
+			case Qt::Key_Backspace:
+				if(m_pInputParent->inherits("KviInput"))
+				{
+					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
+					clear();
+					return;
+				}
+				break;
+		}
+	}
 	switch(e->key())
 	{
 		case Qt::Key_Right:
