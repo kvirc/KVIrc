@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:36+0300\n"
-"PO-Revision-Date: 09-01-2007 16:50\n"
+"PO-Revision-Date: 09-01-2007 17:11\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: /home/alexey/kvirc/src/kvilib/file/kvi_packagefile.cpp:126
-#, fuzzy
 msgid "Operation cancelled"
-msgstr "Operação abortada"
+msgstr "Operação cancelada"
 
 #: /home/alexey/kvirc/src/kvilib/file/kvi_packagefile.cpp:134
 #: /home/alexey/kvirc/src/kvilib/system/kvi_locale.cpp:897
@@ -116,6 +115,8 @@ msgid ""
 "The package has an invalid version number, it might have been created by a "
 "newer KVIrc"
 msgstr ""
+"O pacote tem um número de versão inválido, pode ter sido criado por um "
+"novo KVirc"
 
 #: /home/alexey/kvirc/src/kvilib/file/kvi_packagefile.cpp:659
 msgid "Invalid info field: the package is probably corrupt"
@@ -131,7 +132,7 @@ msgstr "Não é possível abrir o ficheiro para leitura"
 msgid ""
 "The package contains compressed data but this executable does not support "
 "compression"
-msgstr ""
+msgstr "O pacote contém dados comprimidos mas este executável não suporta compressão"
 
 #: /home/alexey/kvirc/src/kvilib/file/kvi_packagefile.cpp:715
 msgid "Failed to create the target directory"
@@ -552,9 +553,8 @@ msgid "Protocol error: invalid chunk size"
 msgstr "Erro de protocolo: tamanho inválido"
 
 #: /home/alexey/kvirc/src/kvilib/net/kvi_http.cpp:813
-#, fuzzy
 msgid "Chunk header too long: exceeded 4096 bytes"
-msgstr "Cabeçalho demasiado comprido: excedeu 4096 bytes"
+msgstr "Cabeçalho demasiado longo: excedeu 4096 bytes"
 
 #: /home/alexey/kvirc/src/kvilib/net/kvi_http.cpp:967
 #: /home/alexey/kvirc/src/kvilib/net/kvi_http.cpp:1232
@@ -605,9 +605,8 @@ msgid "Remote end has closed the connection"
 msgstr "A máquina remota fechou a conexão"
 
 #: /home/alexey/kvirc/src/kvilib/net/kvi_http.cpp:1079
-#, fuzzy
 msgid "Unrecoverable SSL error during handshake"
-msgstr "Erro irrecuperável no servidor de nomes (bloqueado?)"
+msgstr "Erro SSL irrecuperável durante negociação"
 
 #: /home/alexey/kvirc/src/kvilib/net/kvi_http.cpp:1175
 #, c-format
@@ -1578,7 +1577,7 @@ msgstr "Modo de selecção inválido '%Q', a assumir único"
 
 #: /home/alexey/kvirc/src/modules/objects/class_listviewitem.cpp:142
 msgid "The listviewitem cannot be parentless"
-msgstr ""
+msgstr "O item da lista de visualização não pode estar entre parêntesis"
 
 #: /home/alexey/kvirc/src/modules/objects/class_listviewitem.cpp:152
 msgid ""
@@ -2063,71 +2062,68 @@ msgid "[IDENT]: %s"
 msgstr "[IDENT]: %s"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:113
-#, fuzzy
 msgid "Shutting down identd service (spontaneous action)"
-msgstr "A resumir conexão directa do servidor"
+msgstr "A desligar o serviço de identificação (acção espontãnea)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:118
 msgid "Shutting down identd service (requesetd action)"
-msgstr ""
+msgstr "A desligar o serviço de identificação (acção requerida)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:220
-#, fuzzy
 msgid "Can't start the ident service : socket() failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação: socket() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:226
-#, fuzzy
 msgid "Can't start the ident service : async setting failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação: definição async falhada"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:232
 msgid "Can't enable the ident service : can't setup the listen address"
 msgstr ""
+"Não é possível activar o serviçode identificação: nãoé possível configurar o "
+"endereço de escuta"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:238
-#, fuzzy
 msgid "Can't start the ident service : bind() failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação: bind() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:244
-#, fuzzy
 msgid "Can't start the ident service : listen() failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação: listen() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:258
 msgid "Can't start the ident service on IpV6 : socket() failed"
-msgstr ""
+msgstr "Não é possível iniciar o serviço de identificação em IpV6: socket() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:264
 msgid "Can't start the ident service on IpV6 : async setting failed"
-msgstr ""
+msgstr "Não é possível iniciar o serviço de identificação em IpV6: definição async falhada"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:272
 msgid "Can't enable the ident service on IpV6 : can't setup the listen address"
 msgstr ""
+"Não é possível activar o serviço de identificaçãoem IpV6: não é possível configurar "
+"o endereço de escuta"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:280
-#, fuzzy
 msgid "Can't start the ident service on IpV6 : bind() failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação em IpV6: bind() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:289
-#, fuzzy
 msgid "Can't start the ident service on IpV6 : listen() failed"
-msgstr "Não é possível configurar um socket de escuta: ligação falhada"
+msgstr "Não é possível iniciar o serviço de identificação em IpV6: listen() falhado"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:305
 msgid "Starting identd service (IpV4/V6 on separate namespaces)"
-msgstr ""
+msgstr "A iniciar o serviço de identificação (IpV4/V6 em nomes de espaços separados)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:308
 msgid "Starting identd service (IpV4/V6 in IpV6 namespace)"
-msgstr ""
+msgstr "A iniciar o serviço de identificação (IpV4/V6 no nome de espaço IpV6)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:313
 msgid "Starting identd service (IpV4)"
-msgstr ""
+msgstr "A iniciar o serviço de identificação (IpV4)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:317
 msgid "Service startup (IpV4)"
@@ -2135,21 +2131,20 @@ msgstr "Inicio do serviço (IpV4)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:387
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:407
-#, fuzzy
 msgid "Identd accepting connection"
-msgstr "conexão segura"
+msgstr "conexão de aceitação da identificação"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:430
 msgid "Identd socket error : dropping connection"
-msgstr ""
+msgstr "Erro do socket de identificação: a desligar conexão"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:435
 msgid "Identd connection closed by remote host"
-msgstr ""
+msgstr "Conexão de identificação fgechado por endereço remoto"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:456
 msgid "Identd processing request"
-msgstr ""
+msgstr "Pedido de processamento de identificação"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:471
 msgid "Empty request (EOT ?)"
@@ -2157,11 +2152,11 @@ msgstr "Pedido vazio (EOT ?)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:482
 msgid "Dropping connection (request too long)"
-msgstr ""
+msgstr "A desligar conexão (pedido demasiado longo)"
 
 #: /home/alexey/kvirc/src/modules/ident/libkviident.cpp:495
 msgid "Timed out while waiting for the request : dropping connection"
-msgstr ""
+msgstr "Tempo expirado ao esperar pelo pedido: a desligar conexão"
 
 #: /home/alexey/kvirc/src/modules/window/libkviwindow.cpp:78
 #: /home/alexey/kvirc/src/modules/window/libkviwindow.cpp:1083
@@ -2454,9 +2449,8 @@ msgid "My ToolBar"
 msgstr "A Minha Barra de Ferramentas"
 
 #: /home/alexey/kvirc/src/modules/theme/managementdialog.cpp:735
-#, fuzzy
 msgid "Package saved succesfully"
-msgstr "%1 servidores importados com sucesso"
+msgstr "Paocte gravado com sucesso"
 
 #: /home/alexey/kvirc/src/modules/avatar/libkviavatar.cpp:66
 msgid "Choose Avatar - KVIrc"
@@ -2974,7 +2968,7 @@ msgstr "Transferir ficheiros para a pasta:"
 
 #: /home/alexey/kvirc/src/modules/setup/setupwizard.cpp:280
 msgid "All settings in  shared program folder (portable)"
-msgstr ""
+msgstr "Todas as definições na pasta do programa partilhado (portável)"
 
 #: /home/alexey/kvirc/src/modules/setup/setupwizard.cpp:283
 msgid "Restore from backup archive"
@@ -3657,9 +3651,8 @@ msgid "Export Selected..."
 msgstr "Exportar Seleccionado..."
 
 #: /home/alexey/kvirc/src/modules/aliaseditor/aliaseditor.cpp:449
-#, fuzzy
 msgid "Export Selected in singles files..."
-msgstr "Exportar Seleccionado..."
+msgstr "Exportar Seleccionado em ficheiros únicos..."
 
 #: /home/alexey/kvirc/src/modules/aliaseditor/aliaseditor.cpp:456
 msgid "Export All..."
@@ -3698,9 +3691,8 @@ msgid "Choose a Directory - KVIrc"
 msgstr "Escolha um Directório - KVirc"
 
 #: /home/alexey/kvirc/src/modules/aliaseditor/aliaseditor.cpp:609
-#, fuzzy
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "O ficheiro %s já existe.<br>Deseja-o sobrescrever?"
+msgstr "O ficheiro %Q já existe. Deseja-o substituir?"
 
 #: /home/alexey/kvirc/src/modules/aliaseditor/aliaseditor.cpp:610
 msgid "Replace file"
@@ -4576,9 +4568,8 @@ msgid "Enable ignore for this user"
 msgstr "Activar ignorar para este utilizador"
 
 #: /home/alexey/kvirc/src/modules/reguser/edituser.cpp:444
-#, fuzzy
 msgid "Hide ignore-messages (incomplete)"
-msgstr "Esconder mensagens de ignorar"
+msgstr "Esconder mensagens de ignorar (incompleto)"
 
 #: /home/alexey/kvirc/src/modules/reguser/edituser.cpp:449
 msgid "Ignore everything"
@@ -4708,9 +4699,8 @@ msgid "No entries selected."
 msgstr "Nenhuma entrada seleccionada."
 
 #: /home/alexey/kvirc/src/modules/reguser/edituser.cpp:1344
-#, fuzzy
 msgid "Can't open file %Q for writing."
-msgstr "Não é possível abrir o ficheiro de filtro %s para escrita."
+msgstr "Não é possível abrir o ficheiro %Q para escrita."
 
 #: /home/alexey/kvirc/src/modules/reguser/edituser.cpp:1425
 msgid "Can't export the registered users database: Write error."
@@ -6393,9 +6383,8 @@ msgstr ""
 "pode estar em baixo)"
 
 #: /home/alexey/kvirc/src/kvirc/kernel/kvi_irclink.cpp:100
-#, fuzzy
 msgid "Ops... for some reason the link filter object has been destroyed"
-msgstr "Ops...por alguma razão o objecto da ligação foi destruído"
+msgstr "Ops...por alguma razão o objecto do filtro da ligação foi destruído"
 
 #: /home/alexey/kvirc/src/kvirc/kernel/kvi_irclink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
@@ -9439,20 +9428,16 @@ msgid "You don't appear to be on channel %s"
 msgstr "Não parece estar no canal %s"
 
 #: /home/alexey/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:795
-#, fuzzy
 msgid "Module command call failed: can't load the module 'snd'"
-msgstr ""
-"Chamada de comando do módulo falhada: não é possível carregar o módulo '%Q': "
-"%Q"
+msgstr "Chamada de comando do módulo falhada: não é possível carregar o módulo 'snd'"
 
 #: /home/alexey/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:802
-#, fuzzy
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
 msgstr ""
-"Chamada de comando do módulo falhada: o módulo '%Q' não exporta um comando "
-"chamado '%Q'"
+"Chamada de comando do módulo falhada: o módulo 'snd' não exporta um comando "
+"chamado 'play'"
 
 #: /home/alexey/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:857
 msgid "Popup %Q is not defined"
@@ -10509,14 +10494,12 @@ msgid "Select a Name for the Filter File"
 msgstr "Escolha um nome para o ficheiro filtro"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:259
-#, fuzzy
 msgid "Failed to write the filter file %Q (IO Error)"
-msgstr "Falha ao escrever no ficheiro filtro %s (Erro E/S)"
+msgstr "Falha ao escrever no ficheiro filtro %Q (Erro E/S)"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:261
-#, fuzzy
 msgid "Can't open the filter file %Q for writing"
-msgstr "Não é possível abrir o ficheiro filtro %s para escrita"
+msgstr "Não é possível abrir o ficheiro filtro %Q para escrita"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_frame.cpp:945
 msgid "There are active connections, are you sure you wish to "
@@ -10590,7 +10573,7 @@ msgstr "Endereço:"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_console.cpp:133
 msgid "Current IRC URI"
-msgstr ""
+msgstr "Actual IRC URI"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_console.cpp:146
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_console.cpp:149
@@ -10646,6 +10629,8 @@ msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
+"O KVirc aceita apenas URL's irc://, irc6://, ircs:// ou irc6s://\n"
+"O seu URL é inválido. Verifique a ortografia a tente novamente"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_console.cpp:550
 msgid ""
@@ -10764,7 +10749,7 @@ msgstr "Localização completa"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:241
 msgid "Builtin $icon(%Q) [index %d]"
-msgstr ""
+msgstr "Integrado $icon(%Q) [índice %d]"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:274
 msgid "directory"
@@ -11397,15 +11382,16 @@ msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
+"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
+"<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_ircview.cpp:4944
-#, fuzzy
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
 msgstr ""
-"<b>%Q</b>: Nenhuma informação dísponivel<hr>Duplo clique para entrar em %"
-"Q<br><br>Clique direito para outras opções"
+"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Duplo "
+"clique para entrar%Q<br>Clique direito para ver outras opções"
 
 #: /home/alexey/kvirc/src/kvirc/ui/kvi_ircview.cpp:4964
 msgid "<b>Double-click:</b><br>%Q"
