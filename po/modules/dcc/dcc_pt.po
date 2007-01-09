@@ -9,13 +9,13 @@
 # Zé <mmodem00@netvisao.pt>, 2004, 2006.
 # Américo José Melo <mmodem00@netvisao.pt>, 2005.
 # José Melo <mmodem00@gmail.com>, 2005.
-# Zé <mmodem00@gmail.com>, 2006.
+# Zé <mmodem00@gmail.com>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-01-06 19:38+0300\n"
-"PO-Revision-Date: 2006-10-08 21:57+0100\n"
+"PO-Revision-Date: 09-01-2007 17:29\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -53,8 +53,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/dcc/voice.cpp:271
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-"Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
+msgstr "Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
 
 #: /home/alexey/kvirc/src/modules/dcc/voice.cpp:662
 msgid "Input buffer"
@@ -162,8 +161,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/dcc/chat.cpp:211
 #: /home/alexey/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "O endereço IP local é privado, mas não tem nenhum servidor de IRC para o "
 "determinar"
@@ -453,8 +451,7 @@ msgstr ""
 
 #: /home/alexey/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Não é possível com DCC REVC: transferência não iniciada do ficheiro %s na "
 "porta %s"
@@ -604,10 +601,8 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "A tentar uma conexão passiva DCC CANVAS"
 
 #: /home/alexey/kvirc/src/modules/dcc/canvas.cpp:95
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr "Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
 
 #: /home/alexey/kvirc/src/modules/dcc/canvas.cpp:97
 msgid "DCC CANVAS request not sent: awaiting manual connections"
@@ -677,8 +672,7 @@ msgstr "Escolher Ficheiros para Enviar - KVIrc"
 
 #: /home/alexey/kvirc/src/modules/dcc/broker.cpp:187
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr ""
-"Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
+msgstr "Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
 
 #: /home/alexey/kvirc/src/modules/dcc/broker.cpp:197
 #: /home/alexey/kvirc/src/modules/dcc/broker.cpp:812
@@ -778,9 +772,8 @@ msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Auto-aceitar pedidos DCC %Q de %Q!%Q@%Q para o ficheiro %Q"
 
 #: /home/alexey/kvirc/src/modules/dcc/broker.cpp:609
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "Escolher Ficheiros para Enviar - KVIrc"
+msgstr "Escolher Ficheiros para Gravar - KVIrc"
 
 #: /home/alexey/kvirc/src/modules/dcc/broker.cpp:622
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
@@ -813,8 +806,7 @@ msgstr "O ficheiro %s já existe, auto-renomear para %Q"
 
 #: /home/alexey/kvirc/src/modules/dcc/send.cpp:258
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr ""
-"AVISO: A máquina remota está a enviar lixo depois do fim do envio do ficheiro"
+msgstr "AVISO: A máquina remota está a enviar lixo depois do fim do envio do ficheiro"
 
 #: /home/alexey/kvirc/src/modules/dcc/send.cpp:259
 msgid ""
@@ -836,8 +828,7 @@ msgstr "Transferência de dados terminada à 30 segundos, a fechar a conexão"
 
 #: /home/alexey/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
+msgstr "AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
 
 #: /home/alexey/kvirc/src/modules/dcc/send.cpp:727
 #, c-format
@@ -1000,5 +991,3 @@ msgstr "bytes/seg"
 msgid "OK"
 msgstr "OK"
 
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "Escolher Localização para Gravar - KVIrc"
