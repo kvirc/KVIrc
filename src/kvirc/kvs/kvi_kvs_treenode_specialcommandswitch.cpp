@@ -35,37 +35,29 @@
 KviKvsTreeNodeSpecialCommandSwitchLabel::KviKvsTreeNodeSpecialCommandSwitchLabel(const QChar * pLocation)
 : KviKvsTreeNode(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pParameter = 0;
 	m_pInstruction = 0;
 	m_bHasTerminatingBreak = false;
-#endif
 }
 
 KviKvsTreeNodeSpecialCommandSwitchLabel::~KviKvsTreeNodeSpecialCommandSwitchLabel()
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pParameter)delete m_pParameter;
 	if(m_pInstruction)delete m_pInstruction;
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabel::setParameter(KviKvsTreeNodeData * pParameter)
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pParameter)delete m_pParameter;
 	m_pParameter = pParameter;
 	if(m_pParameter)m_pParameter->setParent(this);
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabel::setInstruction(KviKvsTreeNodeInstruction * pInstruction)
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pInstruction)delete m_pInstruction;
 	m_pInstruction = pInstruction;
 	if(m_pInstruction)m_pInstruction->setParent(this);
-#endif
 }
 
 
@@ -83,25 +75,20 @@ KviKvsTreeNodeSpecialCommandSwitchLabelCase::~KviKvsTreeNodeSpecialCommandSwitch
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Label \"case\" For Special Command \"switch\"";
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SpecialCommandSwitchLabelCase",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
 	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant v;
 	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
 
@@ -146,7 +133,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext *
 		c->setBreakPending();
 		return false;
 	}
-#endif
 	return true;
 }
 
@@ -164,26 +150,21 @@ KviKvsTreeNodeSpecialCommandSwitchLabelMatch::~KviKvsTreeNodeSpecialCommandSwitc
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Label \"match\" For Special Command \"switch\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SpecialCommandSwitchLabelMatch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
 	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant v;
 	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
 
@@ -206,7 +187,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext 
 		c->setBreakPending();
 		return false;
 	}
-#endif
 	return true;
 }
 
@@ -224,26 +204,21 @@ KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::~KviKvsTreeNodeSpecialCommandSwit
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Label \"regexp\" For Special Command \"switch\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SpecialCommandSwitchLabelRegexp",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
 	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant v;
 	if(!m_pParameter->evaluateReadOnly(c,&v))return false;
 
@@ -266,7 +241,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext
 		c->setBreakPending();
 		return false;
 	}
-#endif
 	return true;
 }
 
@@ -286,25 +260,20 @@ KviKvsTreeNodeSpecialCommandSwitchLabelDefault::~KviKvsTreeNodeSpecialCommandSwi
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Label \"default\" For Special Command \"switch\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SpecialCommandSwitchLabelDefault",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pInstruction)
 	{
 		if(!m_pInstruction->execute(c))return false; // might be a break too
@@ -314,7 +283,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContex
 		c->setBreakPending();
 		return false;
 	}
-#endif
 	return true;
 }
 
@@ -324,53 +292,42 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContex
 KviKvsTreeNodeSpecialCommandSwitch::KviKvsTreeNodeSpecialCommandSwitch(const QChar * pLocation,KviKvsTreeNodeExpression * e)
 : KviKvsTreeNodeSpecialCommand(pLocation,"switch")
 {
-#ifdef COMPILE_NEW_KVS
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pLabels = new KviPtrList<KviKvsTreeNodeSpecialCommandSwitchLabel>;
 	m_pLabels->setAutoDelete(true);
-#endif
 }
 
 KviKvsTreeNodeSpecialCommandSwitch::~KviKvsTreeNodeSpecialCommandSwitch()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pExpression;
 	delete m_pLabels;
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandSwitch::addLabel(KviKvsTreeNodeSpecialCommandSwitchLabel * l)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pLabels->append(l);
 	l->setParent(this);
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandSwitch::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Special Command \"switch\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSpecialCommandSwitch::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SpecialCommandSwitch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pExpression->dump(tmp.utf8().data());
 	for(KviKvsTreeNodeSpecialCommandSwitchLabel * l = m_pLabels->first();l;l = m_pLabels->next())
 		l->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitch::execute(KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant v;
 	if(!m_pExpression->evaluateReadOnly(c,&v))return false;
 
@@ -388,6 +345,5 @@ bool KviKvsTreeNodeSpecialCommandSwitch::execute(KviKvsRunTimeContext * c)
 			return false;
 		}
 	}
-#endif
 	return true;
 }

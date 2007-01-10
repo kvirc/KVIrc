@@ -30,9 +30,6 @@
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 
-// increment only when there are INCOMPATIBLE changes in the file format (should never happen)
-#define CURRENT_THEMEINFO_FILE_VERSION "1.0.0"
-
 
 KviThemeInfo::KviThemeInfo()
 : KviHeapObject()
@@ -57,9 +54,12 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	QString tmp = cfg.readQStringEntry("ThemeInfoFileVersion",CURRENT_THEMEINFO_FILE_VERSION);
-	if(KviMiscUtils::compareVersions(tmp,CURRENT_THEMEINFO_FILE_VERSION) < 0)
-		return false; // incompatible ThemeInfoFileVersion
+	m_szThemeEngineVersion = cfg.readQStringEntry("ThemeEngineVersion","1.0.0");
+	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
+	{
+		KviQString::sprintf(m_szLastError,__tr2qs("This KVIrc executable is too old for this theme (minimum theme engine version required is %Q while this theme engine has version %s)"),&m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION);
+		return false; // incompatible theme engine (will not work)
+	}
 
 	// mandatory fields
 	m_szName = cfg.readQStringEntry("Name","");
@@ -86,18 +86,6 @@ bool KviThemeInfo::load(const QString &szThemeFileName)
 	if(m_szApplication.isEmpty())
 		m_szApplication = szUnknown;
 
-	m_szMinimumKVIrcVersion = cfg.readQStringEntry("MinimumKVIrcVersion","3.0.0");
-	// if present, must be verified
-
-	if(!m_szMinimumKVIrcVersion.isEmpty())
-	{
-		if(KviMiscUtils::compareVersions(m_szMinimumKVIrcVersion,KVI_VERSION "." KVI_SOURCES_DATE) < 0)
-		{
-			KviQString::sprintf(m_szLastError,__tr2qs("This KVIrc executable is too old for this theme (minimum version required is %Q)"),&m_szMinimumKVIrcVersion);
-			return false;
-		}
-	}
-
 	return true;
 }
 
@@ -114,22 +102,7 @@ bool KviThemeInfo::save(const QString &szThemeFileName)
 	inf.writeEntry("Author",m_szAuthor);
 	inf.writeEntry("Description",m_szDescription);
 	inf.writeEntry("Date",m_szDate);
-	
-	if(!m_szMinimumKVIrcVersion.isEmpty())
-	{
-		if(
-			(!KviMiscUtils::isValidVersionString(m_szMinimumKVIrcVersion))
-			||
-			(KviMiscUtils::compareVersions(m_szMinimumKVIrcVersion,KVI_VERSION "." KVI_SOURCES_DATE) < 0)
-		)
-		{
-			m_szLastError = __tr2qs("The specified minimum KVIrc version is not valid");
-			return false;
-		}
-	}
-
-	inf.writeEntry("MinimumKVIrcVersion",m_szMinimumKVIrcVersion);
-	inf.writeEntry("ThemeInfoFileVersion",CURRENT_THEMEINFO_FILE_VERSION);
+	inf.writeEntry("ThemeEngineVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
 	inf.writeEntry("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
 	return true;

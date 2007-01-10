@@ -32,6 +32,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_theme.h"
 
 #include <qmime.h>
 
@@ -53,7 +54,7 @@ namespace KviThemeFunctions
 		QByteArray * pByteArray;
 		KviHtmlDialogData hd;
 
-		const char * check_fields[] = { "Name", "Version", "Author", "Description", "Date", "MinimumKVIrcVersion", "Application" };
+		const char * check_fields[] = { "Name", "Version", "Author", "Description", "Date", "Application" };
 	
 		// check if it is a valid theme file
 		KviPackageReader r;
@@ -100,13 +101,12 @@ namespace KviThemeFunctions
 			pix = *(g_pIconManager->getBigIcon(KVI_BIGICON_THEME));
 		}
 
-		///////////////////////////////////
 		QString szPackageName;
 		QString szPackageVersion;
 		QString szPackageAuthor;
 		QString szPackageDescription;
 		QString szPackageDate;
-		QString szPackageMinimumKVIrcVersion;
+		QString szPackageThemeEngineVersion;
 		QString szPackageApplication;
 
 		QString szAuthor = __tr2qs_ctx("Author","theme");
@@ -117,50 +117,99 @@ namespace KviThemeFunctions
 		r.getStringInfoField("Version",szPackageVersion);
 		r.getStringInfoField("Author",szPackageAuthor);
 		r.getStringInfoField("Description",szPackageDescription);
-		r.getStringInfoField("MinimumKVIrcVersion",szPackageMinimumKVIrcVersion);
 		r.getStringInfoField("Application",szPackageApplication);
 		r.getStringInfoField("Date",szPackageDate);
 
-		if(KviMiscUtils::compareVersions(KVI_VERSION "." KVI_SOURCES_DATE,szPackageMinimumKVIrcVersion) > 0)
-		{
-			KviQString::sprintf(szError,__tr2qs_ctx("The selected theme package requires at least KVIrc %Q","theme"),&szPackageMinimumKVIrcVersion);
-			return false;
-		}
+		QString szWarnings;
+		QString szDetails = "<html><body bgcolor=\"#ffffff\">";
+		QString szTmp;
 
-		/*
 		int iIdx = 0;
-		for(KviThemeInfo * pInfo = m_pThemeInfoList->first();pInfo;pInfo = m_pThemeInfoList->next())
+		int iValidThemeCount = iThemeCount;
+		
+		while(iIdx < iThemeCount)
 		{
+			bool bValid = true;
+		
+			QString szThemeName;
+			QString szThemeVersion;
+			QString szThemeDescription;
+			QString szThemeDate;
+			QString szThemeSubdirectory;
+			QString szThemeAuthor;
+			QString szThemeThemeEngineVersion;
+			QString szThemeApplication;
+
 			KviQString::sprintf(szTmp,"Theme%dName",iIdx);
-			f.addInfoField(szTmp,pInfo->szName);
+			r.getStringInfoField(szTmp,szThemeName);
 			KviQString::sprintf(szTmp,"Theme%dVersion",iIdx);
-			f.addInfoField(szTmp,pInfo->szVersion);
+			r.getStringInfoField(szTmp,szThemeVersion);
+			KviQString::sprintf(szTmp,"Theme%dApplication",iIdx);
+			r.getStringInfoField(szTmp,szThemeApplication);
 			KviQString::sprintf(szTmp,"Theme%dDescription",iIdx);
-			f.addInfoField(szTmp,pInfo->szDescription);
+			r.getStringInfoField(szTmp,szThemeDescription);
 			KviQString::sprintf(szTmp,"Theme%dDate",iIdx);
-			f.addInfoField(szTmp,pInfo->szDate);
+			r.getStringInfoField(szTmp,szThemeDate);
 			KviQString::sprintf(szTmp,"Theme%dSubdirectory",iIdx);
-			f.addInfoField(szTmp,pInfo->szSubdirectory);
+			r.getStringInfoField(szTmp,szThemeSubdirectory);
 			KviQString::sprintf(szTmp,"Theme%dAuthor",iIdx);
-			f.addInfoField(szTmp,pInfo->szAuthor);
-			KviQString::sprintf(szTmp,"Theme%dKVIrcVersion",iIdx);
-			f.addInfoField(szTmp,pInfo->szKvircVersion);
-			if(!f.addDirectory(pInfo->szAbsoluteDirectory,pInfo->szSubdirectory))
+			r.getStringInfoField(szTmp,szThemeAuthor);
+			KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
+			r.getStringInfoField(szTmp,szThemeThemeEngineVersion);
+
+			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeThemeEngineVersion.isEmpty())
+				bValid = false;
+			if(KviMiscUtils::compareVersions(szThemeThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
+				bValid = false;
+
+			QString szDetailsBuffer;
+
+			getThemeHtmlDescription(
+				szDetailsBuffer,
+				szThemeName,
+				szThemeVersion,
+				szThemeDescription,
+				szThemeSubdirectory,
+				szThemeApplication,
+				szThemeAuthor,
+				szThemeDate,
+				szThemeThemeEngineVersion
+			);
+
+			szDetails += szDetailsBuffer;
+
+			if(!bValid)
 			{
-				szTmp = __tr2qs_ctx("Packaging failed","theme");
-				szTmp += ": ";
-				szTmp += f.lastError();
-				QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),szTmp,
-						QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+				szDetails += "<p><center><font color=\"#ff0000\"><b>";
+				szDetails += __tr2qs_ctx("Warning: The theme might be incompatible with this version of KVIrc","theme");
+				szDetails += "</b></font></center></p>";
+				iValidThemeCount--;
 			}
+
+			if(iIdx > 0)
+				szDetails += "<hr>";
+
 			iIdx++;
 		}
-		*/
+
+		szDetails += "<p><center><a href=\"theme_dialog_main\">";
+		szDetails +=  __tr2qs_ctx("Go Back to Package Data","theme");
+		szDetails += "</a></center></p>";
+
+		szDetails += "</body></html>";
+
+		if(iValidThemeCount < iThemeCount)
+		{
+			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
+			szWarnings += __tr2qs_ctx("Warning: Some of the theme contained in this package might be either corrupted or incompatible with this version of KVIrc","theme");
+			szWarnings += "</b></font></center></p>";
+		}
+
+		QString szShowDetails = __tr2qs_ctx("Show Details","theme");
 
 		KviQString::sprintf(hd.szHtmlText,
 			"<html bgcolor=\"#ffffff\">" \
 				"<body bgcolor=\"#ffffff\">" \
-					"<br>" \
 					"<p><center>" \
 						"<h2>%Q %Q</h2>" \
 					"</center></p>" \
@@ -179,9 +228,10 @@ namespace KviThemeFunctions
 							"%Q: %Q<br>" \
 						"</font>" \
 					"</center></p>" \
+					"%Q" \
 					"<br>" \
 					"<p><center>" \
-						"<a href=\"theme_dialog_details\">Show Details</a>" \
+						"<a href=\"theme_dialog_details\">%Q</a>" \
 					"</center></p>" \
 				"</body>" \
 			"</html>",
@@ -193,10 +243,10 @@ namespace KviThemeFunctions
 			&szCreatedAt,
 			&szPackageDate,
 			&szCreatedOn,
-			&szPackageApplication
+			&szPackageApplication,
+			&szWarnings
 		);
 
-		QString szDetails = "Doh.. da details";
 		
 
 		QMimeSourceFactory::defaultFactory()->setPixmap("theme_dialog_pack_image",pix);
@@ -233,6 +283,60 @@ namespace KviThemeFunctions
 		}
 
 		return true;
+	}
+
+
+	void getThemeHtmlDescription(
+		QString &szBuffer,
+		const QString &szThemeName,
+		const QString &szThemeVersion,
+		const QString &szThemeDescription,
+		const QString &szThemeSubdirectory,
+		const QString &szThemeApplication,
+		const QString &szThemeAuthor,
+		const QString &szThemeDate,
+		const QString &szThemeThemeEngineVersion
+	)
+	{
+		QString szAuthor = __tr2qs_ctx("Author","theme");
+		QString szCreatedAt = __tr2qs_ctx("Created at","theme");
+		QString szCreatedOn = __tr2qs_ctx("Created with","theme");
+		QString szThemeEngineVersion = __tr2qs_ctx("Theme Engine Version","theme");
+		QString szSubdirectory = __tr2qs_ctx("Subdirectory","theme");
+
+		KviQString::sprintf(
+			szBuffer,
+			"<p>" \
+				"<h2>%Q %Q</h2>" \
+			"</p>" \
+			"<p>" \
+				"<i>%Q</i>" \
+			"</p>" \
+			"<p>" \
+				"%Q: <b>%Q</b><br>" \
+				"%Q: <b>%Q</b><br>" \
+			"</p>" \
+			"<p>" \
+				"<font color=\"#808080\">" \
+					"%Q: %Q<br>" \
+					"%Q: %Q<br>" \
+					"%Q: %Q<br>" \
+				"</font>" \
+			"</p>",
+			&szThemeName,
+			&szThemeVersion,
+			&szThemeDescription,
+			&szAuthor,
+			&szThemeAuthor,
+			&szCreatedAt,
+			&szThemeDate,
+			&szCreatedOn,
+			&szThemeApplication,
+			&szThemeEngineVersion,
+			&szThemeThemeEngineVersion,
+			&szSubdirectory,
+			&szThemeSubdirectory
+		);
 	}
 
 

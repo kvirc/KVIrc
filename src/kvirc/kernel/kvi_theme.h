@@ -36,6 +36,10 @@
 #define KVI_THEMEINFO_CONFIG_GROUP "ThemeInfo"
 #define KVI_THEMEDATA_CONFIG_GROUP "ThemeData"
 
+// The current theme engine version: bump up if you make INCOMPATIBLE
+// changes in the method of saving the theme.
+#define KVI_CURRENT_THEME_ENGINE_VERSION "1.0.0"
+
 class KVIRC_API KviThemeInfo : public KviHeapObject
 {
 public:
@@ -50,7 +54,7 @@ protected:
 	QString m_szDescription; // description of the theme
 	QString m_szDate; // theme creation date
 	QString m_szApplication; // theme creation (KVIrc) version
-	QString m_szMinimumKVIrcVersion; // minimum KVIrc version for this theme to work
+	QString m_szThemeEngineVersion; // the theme engine version that saved this theme
 	
 	QString m_szLastError; // reported when some function fails
 public:
@@ -77,8 +81,8 @@ public:
 	void setDate(const QString &szDate){ m_szDate = szDate; };
 	const QString & application(){ return m_szApplication; };
 	void setApplication(const QString &szApplication){ m_szApplication = szApplication; };
-	const QString & minimumKVIrcVersion(){ return m_szMinimumKVIrcVersion; };
-	void setMinimumKVIrcVersion(const QString &szMinimumKVIrcVersion){ m_szMinimumKVIrcVersion = szMinimumKVIrcVersion; };
+	const QString & themeEngineVersion(){ return m_szThemeEngineVersion; };
+	void setThemeEngineVersion(const QString &szThemeEngineVersion){ m_szThemeEngineVersion = szThemeEngineVersion; };
 
 	// Attempt to load a themeinfo file present in the specified directory
 	// This function will fail if the directory contains a valid themeinfo

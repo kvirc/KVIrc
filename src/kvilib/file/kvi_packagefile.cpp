@@ -701,6 +701,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	szFileName += szPath;
 
+	// no attacks please :)
 	szFileName.replace(QString("..\\"),QString(""));
 	szFileName.replace(QString("..//"),QString(""));
 	

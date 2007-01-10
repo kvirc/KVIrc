@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "packthemedialog.h"
+#include "themefunctions.h"
 
 #include <qlayout.h>
 #include <qpushbutton.h>
@@ -55,6 +56,7 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
+
 
 
 KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo> * pThemeInfoList)
@@ -121,51 +123,25 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 
-	QString szAuthor = __tr2qs_ctx("Author","theme");
-	QString szCreatedAt = __tr2qs_ctx("Created at","theme");
-	QString szCreatedOn = __tr2qs_ctx("Created with","theme");
-	QString szMinKVIrc = __tr2qs_ctx("Minimum KVIrc version","theme");
-	QString szSubdirectory = __tr2qs_ctx("Subdirectory","theme");
-
 	QString szThemesDescription = "<html><body bgcolor=\"#ffffff\">";
 
 	int iIdx = 0;
 	for(pThemeInfo = m_pThemeInfoList->first();pThemeInfo;pThemeInfo = m_pThemeInfoList->next())
 	{
 		QString szThemeDescription;
-		KviQString::sprintf(
+		
+		KviThemeFunctions::getThemeHtmlDescription(
 			szThemeDescription,
-			"<p>" \
-				"<h2>%Q %Q</h2>" \
-			"</p>" \
-			"<p>" \
-				"<i>%Q</i>" \
-			"</p>" \
-			"<p>" \
-				"%Q: <b>%Q</b><br>" \
-				"%Q: <b>%Q</b><br>" \
-			"</p>" \
-			"<p>" \
-				"<font color=\"#808080\">" \
-					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
-				"</font>" \
-			"</p>",
-			&(pThemeInfo->name()),
-			&(pThemeInfo->version()),
-			&(pThemeInfo->description()),
-			&szAuthor,
-			&(pThemeInfo->author()),
-			&szCreatedAt,
-			&(pThemeInfo->date()),
-			&szCreatedOn,
-			&(pThemeInfo->application()),
-			&szMinKVIrc,
-			&(pThemeInfo->minimumKVIrcVersion()),
-			&szSubdirectory,
-			&(pThemeInfo->subdirectory())
+			pThemeInfo->name(),
+			pThemeInfo->version(),
+			pThemeInfo->description(),
+			pThemeInfo->subdirectory(),
+			pThemeInfo->application(),
+			pThemeInfo->author(),
+			pThemeInfo->date(),
+			pThemeInfo->themeEngineVersion()
 		);
+
 		if(iIdx > 0)
 			szThemesDescription += "<hr>";
 		szThemesDescription += szThemeDescription;
@@ -394,8 +370,6 @@ bool KviPackThemeDialog::packTheme()
 	szTmp.setNum(m_pThemeInfoList->count());
 	f.addInfoField("ThemeCount",szTmp);
 
-	QString szMinimumKVIrcVersion = "0";
-
 	int iIdx = 0;
 	for(KviThemeInfo * pInfo = m_pThemeInfoList->first();pInfo;pInfo = m_pThemeInfoList->next())
 	{
@@ -413,8 +387,8 @@ bool KviPackThemeDialog::packTheme()
 		f.addInfoField(szTmp,pInfo->author());
 		KviQString::sprintf(szTmp,"Theme%dApplication",iIdx);
 		f.addInfoField(szTmp,pInfo->application());
-		KviQString::sprintf(szTmp,"Theme%dMinimumKVIrcVersion",iIdx);
-		f.addInfoField(szTmp,pInfo->minimumKVIrcVersion());
+		KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
+		f.addInfoField(szTmp,pInfo->themeEngineVersion());
 		if(!f.addDirectory(pInfo->absoluteDirectory(),pInfo->subdirectory()))
 		{
 			szTmp = __tr2qs_ctx("Packaging failed","theme");
@@ -423,17 +397,9 @@ bool KviPackThemeDialog::packTheme()
 			QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),szTmp,
 					QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		}
-		
-		if(KviMiscUtils::compareVersions(pInfo->minimumKVIrcVersion(),szMinimumKVIrcVersion) < 0)
-			szMinimumKVIrcVersion = pInfo->minimumKVIrcVersion();
-		
+
 		iIdx++;
 	}
-
-	// This is the maximum of the minimum KVIrc versions of the packed themes!
-	// FIXME: The packages should be warned if in this way we're raising the
-	//        requirements on one of the packed themes...
-	f.addInfoField("MinimumKVIrcVersion",szMinimumKVIrcVersion);
 
 	if(!f.pack(m_szPackagePath))
 	{

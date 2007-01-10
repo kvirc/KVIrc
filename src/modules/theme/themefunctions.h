@@ -32,6 +32,17 @@
 namespace KviThemeFunctions
 {
 	bool installThemePackage(const QString &szThemePackageFileName,QString &szError,QWidget * pDialogParent = 0);
+	void getThemeHtmlDescription(
+		QString &szBuffer,
+		const QString &szThemeName,
+		const QString &szThemeVersion,
+		const QString &szThemeDescription,
+		const QString &szThemeSubdirectory,
+		const QString &szThemeApplication,
+		const QString &szThemeAuthor,
+		const QString &szThemeDate,
+		const QString &szThemeThemeEngineVersion
+	);
 };
 
 

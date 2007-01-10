@@ -1290,7 +1290,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			The <value> is evaluated and is compared against the result of <expression>.
 			The comparison is case insensitive (if the values are strings).[br]
 			If <value> is equal to <expression> then <command> is executed.
-			<command> is a single instruction or an instruction block enclosed in braces.
+			Please note that <command> must be either a single instruction or an instruction block [b]enclosed in braces[/b].
 			If <command> contains a [cmd]break[/cmd] statement inside or if [cmd]break[/cmd]
 			is specified just after the <command> then the execution of the switch is terminated
 			otherwise the nex label is evaluated.[br]
