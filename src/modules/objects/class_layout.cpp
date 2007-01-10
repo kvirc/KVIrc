@@ -117,8 +117,8 @@ bool KviKvsObject_layout::functionAddWidget(KviKvsObjectFunctionCall *c)
 	kvs_uint_t uCol,uRow;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!widget())return true;
@@ -137,7 +137,7 @@ bool KviKvsObject_layout::functionAddWidget(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uCol,uRow);
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uRow,uCol);
 	return true;
 }
 bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c)
@@ -147,10 +147,10 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 	kvs_uint_t uStartCol,uStartRow,uEndCol,uEndRow;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("start_column",KVS_PT_UNSIGNEDINTEGER,0,uStartCol)
-		KVSO_PARAMETER("end_column",KVS_PT_UNSIGNEDINTEGER,0,uEndCol)
 		KVSO_PARAMETER("start_row",KVS_PT_UNSIGNEDINTEGER,0,uStartRow)
 		KVSO_PARAMETER("end_row",KVS_PT_UNSIGNEDINTEGER,0,uEndRow)
+		KVSO_PARAMETER("start_column",KVS_PT_UNSIGNEDINTEGER,0,uStartCol)
+		KVSO_PARAMETER("end_column",KVS_PT_UNSIGNEDINTEGER,0,uEndCol)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!widget())return true;
@@ -169,7 +169,7 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QGridLayout *)object())->addMultiCellWidget(((QWidget *)(pObject->object())),uStartCol,uEndCol,uStartRow,uEndRow);
+	((QGridLayout *)object())->addMultiCellWidget(((QWidget *)(pObject->object())),uStartRow,uEndRow,uStartCol,uEndCol);
 	return true;
 }
 bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)

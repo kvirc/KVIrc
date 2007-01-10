@@ -61,8 +61,12 @@ static char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"dialog.file(open,\"Select a Script File\"){ if(!$str.isEmpty($0))parse $0; }",
 	"actioneditor.open",
 	"quit",
-	"openurl http://www.kvirc.ru"
+	"openurl http://www.kvirc.ru",
+	"openurl irc://freenode/kvirc",
+	"openurl irc://ircnet/kvirc",
+	"openurl irc://azzurra/kvirc.net"
 };
+
 
 char * kvi_getInternalCommandBuffer(int idx)
 {
