@@ -4,7 +4,7 @@
 # Dusan Hokuv, 2005
 # Modified: Ahinu, 2006
 
-modules="about dcc editor filetransferwindow logview notifier perl perlcore sharedfileswindow options"
+modules="about dcc editor filetransferwindow logview notifier perl perlcore sharedfileswindow options theme"
 
 cd kvirc
 make messages-extract && make messages-update
