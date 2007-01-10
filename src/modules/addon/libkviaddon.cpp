@@ -35,6 +35,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_config.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_miscutils.h"
 
 #include "managementdialog.h"
 
@@ -75,7 +76,7 @@ static bool addon_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 		{
 			c->returnValue()->setBoolean(true);
 		} else {
-			c->returnValue()->setBoolean(KviKvsScriptAddonManager::instance()->compareVersions(a->version(),szVersion) < 0);
+			c->returnValue()->setBoolean(KviMiscUtils::compareVersions(a->version(),szVersion) < 0);
 		}
 	} else {
 		c->returnValue()->setBoolean(false);
@@ -530,19 +531,19 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	if(c->callback())
 		rd.szUninstallCallbackScript = c->callback()->code();
 
-	if(!KviKvsScriptAddonManager::instance()->isValidVersionString(rd.szVersion))
+	if(!KviMiscUtils::isValidVersionString(rd.szVersion))
 	{
 		c->error(__tr2qs("The specified version \"%Q\" is not a valid version string"),&(rd.szVersion));
 		return false;
 	}
 
-	if(!KviKvsScriptAddonManager::instance()->isValidVersionString(szMinKVIrcVersion))
+	if(!KviMiscUtils::isValidVersionString(szMinKVIrcVersion))
 	{
 		c->error(__tr2qs("The specified KVIrc version \"%Q\" is not a valid version string"),&szMinKVIrcVersion);
 		return false;
 	}
 
-	if(KviKvsScriptAddonManager::instance()->compareVersions(szMinKVIrcVersion,KVI_VERSION "." KVI_SOURCES_DATE) < 0)
+	if(KviMiscUtils::compareVersions(szMinKVIrcVersion,KVI_VERSION "." KVI_SOURCES_DATE) < 0)
 	{
 		c->error(__tr2qs("This KVIrc executable is too old to run this addon (minimum version required is %Q)"),&szMinKVIrcVersion);
 		return false;
@@ -555,7 +556,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	if(a)
 	{
 		// the same addon already exists
-		if(KviKvsScriptAddonManager::instance()->compareVersions(a->version(),rd.szVersion) < 0)
+		if(KviMiscUtils::compareVersions(a->version(),rd.szVersion) < 0)
 		{
 			// and it has a higher version...
 			// complain unless -f is used

@@ -902,6 +902,14 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	return true;
 }
 
+bool KviPackageReader::getStringInfoField(const QString &szName,QString &szBuffer)
+{
+	QString * pVal = m_pStringInfoFields->find(szName);
+	if(!pVal)return false;
+	szBuffer = *pVal;
+	return true;
+}
+
 bool KviPackageReader::unpack(const QString &szLocalFileName,const QString &szUnpackPath,kvi_u32_t uUnpackFlags)
 {
 	bool bRet = unpackInternal(szLocalFileName,szUnpackPath,uUnpackFlags);

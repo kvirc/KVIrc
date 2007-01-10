@@ -1396,7 +1396,7 @@ MP_KVS_FUNCTION(status)
 		the informations about the currently played media (in order to implement the nice /playing
 		scripts). The module has replaced the old mediaplayer module which after
 		years of development had developed some design flaws and needed a complete rewrite.
-		At the moment of writing the supported players are: xmms (unix), winamp (windows),
+		At the moment of writing the supported players are: xmms (unix), audacious (unix), winamp (windows),
 		amarok (kde) and juk (kde). You choose the player interface by either setting
 		the option in the settings dialog, by manually setting [cmd]option[/cmd] stringPreferredMediaPlayer
 		or by running [cmd]mediaplayer.detect[/cmd] that will guess the media player interface for you.[br]
@@ -1516,6 +1516,7 @@ static bool mediaplayer_module_init( KviModule * m )
 
 #ifndef COMPILE_ON_WINDOWS
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
 #endif
 
 #ifdef COMPILE_ON_WINDOWS

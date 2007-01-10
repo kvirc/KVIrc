@@ -6,7 +6,7 @@
 //   Created on Fri 25 Mar 2005 20:04:54 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2007 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,11 +22,14 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//   Thnx to Alexander Stillich <torque at pltn dot org> for Audacious
+//   media player interface hints :)
+//
 //=============================================================================
 
 #include "kvi_settings.h"
 #include "mp_interface.h"
-
+#include "kvi_library.h"
 
 #ifndef COMPILE_ON_WINDOWS
 	class KviXmmsInterface : public KviMediaPlayerInterface
@@ -34,6 +37,10 @@
 	public:
 		KviXmmsInterface();
 		virtual ~KviXmmsInterface();
+	protected:
+		kvi_library_t m_hPlayerLibrary;
+		QString m_szPlayerLibraryName;
+		const char ** m_pLibraryPaths;
 	public:
 		virtual int detect(bool bStart);
 		virtual bool prev();
@@ -57,10 +64,22 @@
 		virtual bool setRepeat(bool &bVal);
 		virtual bool setShuffle(bool &bVal);
 	protected:
-		bool initPlayer();
+		bool loadPlayerLibrary();
+		void * lookupSymbol(const char * szSymbolName);
 	};
 	
 	MP_DECLARE_DESCRIPTOR(KviXmmsInterface)
+	
+	class KviAudaciousInterface : public KviXmmsInterface
+	{
+	public:
+		KviAudaciousInterface();
+		virtual ~KviAudaciousInterface();
+	protected:
+		virtual void * lookupSymbol(const char * szSymbolName);
+	};
+	
+	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	
 #endif //!COMPILE_ON_WINDOWS
 

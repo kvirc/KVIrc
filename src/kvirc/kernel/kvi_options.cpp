@@ -41,6 +41,7 @@
 #include "kvi_splash.h"
 #include "kvi_frame.h"
 #include "kvi_internalcmd.h"
+#include "kvi_theme.h"
 #include <qmessagebox.h>
 #include <qregexp.h>
 //#include "kvi_textencoding.h"
@@ -929,131 +930,6 @@ void KviApp::saveOptions()
 	#undef WRITE_OPTIONS
 }
 
-/*
-void KviApp::loadThemeOptions(KviConfig * cfg)
-{
-	int i;
-
-	#define READ_OPTIONS(_num,_table,_readFnc) \
-	for(i=0;i<_num;i++) \
-	{ \
-		if(_table[i].flags & KviOption_groupTheme) \
-			_table[i].option = cfg->_readFnc(_table[i].name,_table[i].option); \
-	} \
-
-	READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
-	READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
-	READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readEntry)
-	READ_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable,readColorEntry)
-	READ_OPTIONS(KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable,readPixmapEntry)
-	READ_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable,readUIntEntry)
-	READ_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,readFontEntry)
-	READ_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,readMsgTypeEntry)
-	READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,readStringListEntry)
-	READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable,readColorEntry)
-	READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
-
-	#undef READ_OPTIONS
-}
-*/
-
-bool KviApp::loadThemeInfo(const QString &themeDir,KviThemeInfo &inf)
-{
-	KviStr szD = themeDir;
-	szD.append(KVI_PATH_SEPARATOR_CHAR);
-	szD.append("themeinfo.kvc");
-
-	if(!KviFileUtils::fileExists(szD.ptr()))return false;
-
-	KviConfig cfg(szD.ptr(),KviConfig::Read);
-
-	cfg.setGroup("ThemeInfo");
-
-	inf.szAbsoluteDirectory = themeDir;
-	inf.szName = cfg.readQStringEntry("Name","");
-	inf.szVersion = cfg.readQStringEntry("Version","");
-	inf.szAuthor = cfg.readQStringEntry("Author","");
-	inf.szDescription = cfg.readQStringEntry("Description","");
-	inf.szDate = cfg.readQStringEntry("Date","");
-	inf.szKvircVersion = cfg.readQStringEntry("KvircVersion","");
-
-	QString tmp = cfg.readQStringEntry("ThemeEngineVersion","");
-
-	szD = themeDir;
-	szD.append(KVI_PATH_SEPARATOR_CHAR);
-	szD.append("themedata.kvc");
-
-	if(!KviFileUtils::fileExists(szD.ptr()))return false;
-
-	return !(inf.szName.isEmpty() || inf.szKvircVersion.isEmpty() || tmp.isEmpty());
-}
-
-#define XML_READ_ATTR(_tag,_buff) \
-	list=pElement->elementsByTagName(_tag);\
-	if(list.count()>0) \
-		_buff=list.item(0).toElement().text();
-
-void KviApp::loadXmlTheme(QDomElement *pElement)
-{
-	KviThemeInfo info;
-	char * buf;
-	QDomNodeList list;
-	QFile file;
-	
-	info.szName=pElement->attribute("Name","Name");
-	info.szVersion=pElement->attribute("Version","0.0.0");
-	
-	XML_READ_ATTR("Author",info.szAuthor);
-	XML_READ_ATTR("Description",info.szDescription);
-	XML_READ_ATTR("Date",info.szDate);
-	XML_READ_ATTR("KvircVersion",info.szKvircVersion);
-	
-	info.szSubdirectory = info.szName + QString("-") + info.szVersion;
-	info.szSubdirectory.replace(QRegExp("[ \\\\/:][ \\\\/:]*"),"_");
-	
-	getLocalKvircDirectory(info.szAbsoluteDirectory,KviApp::Themes,info.szSubdirectory,true);
-	if(!KviFileUtils::makeDir(info.szAbsoluteDirectory))
-	{
-		QMessageBox::critical(0,__tr2qs("Load Theme - KVIrc"),__tr2qs("Unable to create theme directory."),
-			QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-		return;
-	}
-	KviQString::ensureLastCharIs(info.szAbsoluteDirectory,KVI_PATH_SEPARATOR_CHAR);
-	
-	list=pElement->elementsByTagName("FileSystem");
-	if(list.count()>0)
-	{
-		QDomElement element=list.item(0).toElement();
-		for( QDomNode n = element.firstChild(); !n.isNull(); n = n.nextSibling() )
-		{
-				if(n.nodeName()=="File" && n.isElement())
-				{
-					QDomElement tmp=n.toElement();
-					QString szName=tmp.attribute("name");
-					KviStr szValue=tmp.text();
-					
-					int len = szValue.base64ToBuffer(&buf);
-					file.setName(info.szAbsoluteDirectory+QFileInfo(szName).fileName());
-					if ( !file.open( IO_WriteOnly ) )
-						break;
-					
-					file.writeBlock(buf,len);
-					file.close();
-				}
-		}
-	}
-	KviConfig inf(info.szAbsoluteDirectory+"themeinfo.kvc",KviConfig::Write);
-
-	inf.setGroup("ThemeInfo");
-
-	inf.writeEntry("Version",info.szVersion);
-	inf.writeEntry("Name",info.szName);
-	inf.writeEntry("Author",info.szAuthor);
-	inf.writeEntry("Description",info.szDescription);
-	inf.writeEntry("Date",info.szDate);
-	inf.writeEntry("KvircVersion",info.szKvircVersion);
-	inf.writeEntry("ThemeEngineVersion","1.0.0");
-}
 
 #undef WRITE_OPTIONS
 
@@ -1063,382 +939,251 @@ void KviApp::loadXmlTheme(QDomElement *pElement)
 		if(_table[i].flags & KviOption_groupTheme) \
 			cfg.writeEntry(_table[i].name,_table[i].option); \
 	}
-	
-#define WRITE_MSGCOLORS_OPTIONS \
-	if(opt.bIncludeMsgColors) \
-	{\
-		for(i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++) \
-		{ \
-			cfg.writeEntry(g_msgtypeOptionsTable[i].name,g_msgtypeOptionsTable[i].option); \
-		}\
-	}
 
-#define SET_XML_THEME_OPTION(_option,_value) \
-	option = doc.createElement( _option ); \
-	cdata=doc.createTextNode(_value);\
-	option.appendChild(cdata);\
-	info.appendChild(option);\
-
-#define XML_APPEND_FILE(_name,_file) \
-	reader.setName(_file); \
-		if ( reader.open( IO_ReadOnly ) ) \
-		{ \
-			data = reader.readAll(); \
-			reader.close(); \
-			decoder.bufferToBase64((char*)(data.data()),data.size()); \
-			option = doc.createElement( "File" ); \
-			option.setAttribute("name",(_name)); \
-			cdata=doc.createTextNode(decoder.ptr()); \
-			option.appendChild(cdata); \
-			filesys.appendChild(option); \
-		}
-void KviApp::saveXmlTheme(KviThemeInfo &opt,const QString& filename)
+namespace KviTheme
 {
-	// This function should be renamed to "Pack Theme"
-	// and take a Directory as parameter instead of KviThemeInfo.
-	// It should read the themeinfo file, add an apropriate header
-	// to the xml and then append the whole (compressed?) directory
-	// at the end.
-
-	QDomDocument doc;
-
-	//XML storing
-	QDomElement info,root,option;
-	QDomText cdata;
-	
-	//file storing;
-	QFile reader;
-	QByteArray data;
-	KviStr decoder;
-	
-	doc.appendChild(doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\""));
-	
-	root = doc.createElement( "Package" );
-	doc.appendChild( root );
-	
-	info = doc.createElement( "Theme" );
-	root.appendChild( info );
-	root=info;
-	
-	info = doc.createElement( "ThemeInfo" );
-	root.appendChild( info );
-	
-	root.appendChild( info );
-	root.setAttribute("Name",opt.szName);
-	root.setAttribute("Version",opt.szVersion);
-
-	SET_XML_THEME_OPTION("Author",opt.szAuthor);
-	SET_XML_THEME_OPTION("Description",opt.szDescription);
-	SET_XML_THEME_OPTION("Date",opt.szDate);
-	SET_XML_THEME_OPTION("KvircVersion",opt.szKvircVersion);
-	SET_XML_THEME_OPTION("ThemeEngineVersion","1.0.0");
-	
-	QDomElement filesys = doc.createElement( "FileSystem" );
-	root.appendChild( filesys );
-	
-	QString szOptionsFile,szPixFile;
-	getLocalKvircDirectory(szOptionsFile,Tmp,"themedata.kvc",TRUE);
-	KviConfig cfg(szOptionsFile,KviConfig::Write);
-	
-	cfg.setGroup("ThemeData");
-
-	int i;
-
-	WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
- 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)
-	WRITE_MSGCOLORS_OPTIONS
-	WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
-	
-	for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
+	// utility functions for the KviTheme namespace (kvi_theme.h)
+	// that are implemented here for convenience (in saving the options)
+	bool save(KviThemeInfo &options)
 	{
-		if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
+		QString szD = options.absoluteDirectory();
+	
+		if(szD.isEmpty())
 		{
-			if(g_pixmapOptionsTable[i].option.pixmap())
+			options.setLastError(__tr2qs("Missing absolute directory for the theme informations"));
+			return false;
+		}
+	
+		if(!KviFileUtils::directoryExists(szD))
+		{
+			if(!KviFileUtils::makeDir(szD))
 			{
-				QString szPixName = g_pixmapOptionsTable[i].name;
-				szPixName += ".png";
-				getLocalKvircDirectory(szPixFile,Tmp,szPixName,TRUE);
-				
-				if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixFile,"PNG"))
-				{
-					cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
-					
-					XML_APPEND_FILE(szPixName,szPixFile);
-					KviFileUtils::removeFile(szPixFile);
-					
-				} else {
-					debug("failed to save %s",szPixFile.utf8().data());
-					cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
-				}
-			} else {
-				cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
+				options.setLastError(__tr2qs("Failed to create the theme directory"));
+				return false;
 			}
 		}
-	}
 	
-	QString szPixPath=KVI_OPTION_STRING(KviOption_stringIconThemeSubdir);
-	QString szMainPicsPath;
-
-	g_pApp->getGlobalKvircDirectory(szMainPicsPath,KviApp::Pics);
-
-	QDir d(szMainPicsPath);
-	// note that now the small icons are in the coresmall subdirectory (and in the theme must end there too)
-	QStringList sl = d.entryList("kvi_bigicon_*.png",QDir::Files)+d.entryList("kvi_smallicon_*.png",QDir::Files);
-
-	for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
-	{
-		KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
-		if(p)
+		szD.append(KVI_PATH_SEPARATOR_CHAR);
+		szD.append(KVI_THEMEINFO_FILE_NAME);
+	
+		if(!options.save(szD))
 		{
-			if(p->path().find(szMainPicsPath)!=0)
-				XML_APPEND_FILE(*it,p->path());
+			return false;
 		}
-	}
-
-	cfg.writeEntry("stringIconThemeSubdir",opt.szSubdirectory);
-	cfg.sync();
 	
+		szD = options.absoluteDirectory();
+		szD.append(KVI_PATH_SEPARATOR_CHAR);
+		szD.append(KVI_THEMEDATA_FILE_NAME);
 	
-	XML_APPEND_FILE("themedata.kvc",szOptionsFile);
-	KviFileUtils::removeFile(szOptionsFile);
+		KviConfig cfg(szD,KviConfig::Write);
 	
-	QString xml = doc.toString(5);
+		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
 	
-	gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(filename).data(),"wb9");
-	if(file)
-	{
-		gzwrite(file,xml.utf8().data(),xml.utf8().length());
-		gzclose(file);
-	}
-}
-#undef SET_XML_THEME_OPTION
-#undef XML_APPEND_FILE
-
-void KviApp::saveTheme(KviThemeInfo &opt)
-{
-	QString szD = opt.szAbsoluteDirectory;
-
-	KviFileUtils::makeDir(szD);
-
-	szD.append(KVI_PATH_SEPARATOR_CHAR);
-	szD.append("themeinfo.kvc");
-
-	KviConfig inf(szD,KviConfig::Write);
-
-	inf.clear();
-
-	inf.setGroup("ThemeInfo");
-
-	inf.writeEntry("Version",opt.szVersion);
-	inf.writeEntry("Name",opt.szName);
-	inf.writeEntry("Author",opt.szAuthor);
-	inf.writeEntry("Description",opt.szDescription);
-	inf.writeEntry("Date",opt.szDate);
-	inf.writeEntry("KvircVersion",opt.szKvircVersion);
-	inf.writeEntry("ThemeEngineVersion","1.0.0");
-
-
-	szD = opt.szAbsoluteDirectory;
-	szD.append(KVI_PATH_SEPARATOR_CHAR);
-	szD.append("themedata.kvc");
-
-	KviConfig cfg(szD,KviConfig::Write);
-
-	cfg.setGroup("ThemeData");
-
-	int i;
-
-	WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
- 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)
-	WRITE_MSGCOLORS_OPTIONS
-	WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
-
-	#undef WRITE_OPTIONS
-
-	// the pixmap options need special processing
-	for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
-	{
-		if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
+		int i;
+	
+		WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
+	 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
+	
+		#undef WRITE_OPTIONS
+	
+		// the pixmap options need special processing
+		for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
-			if(g_pixmapOptionsTable[i].option.pixmap())
+			if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
 			{
-				QString szPixPath = opt.szAbsoluteDirectory;
+				if(g_pixmapOptionsTable[i].option.pixmap())
+				{
+					QString szPixPath = options.absoluteDirectory();
+					szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+					QString szPixName = g_pixmapOptionsTable[i].name;
+					szPixName += ".png";
+					szPixPath += szPixName;
+	
+					if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixPath,"PNG"))
+					{
+						cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
+					} else {
+						// we ignore this error for now
+						debug("failed to save %s",szPixPath.utf8().data());
+						cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
+					}
+				} else {
+					cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
+				}
+			}
+		}
+	
+		cfg.writeEntry("stringIconThemeSubdir",options.subdirectory());
+	
+		// find all the "kvi_bigicon" images that we can find in the main pics directory
+		QString szPicsPath;
+	
+		g_pApp->getGlobalKvircDirectory(szPicsPath,KviApp::Pics);
+		QDir d(szPicsPath);
+		QStringList sl = d.entryList("kvi_bigicon_*.png",QDir::Files);
+	
+		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
+		{
+			KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
+			if(p)
+			{
+				QString szPixPath = options.absoluteDirectory();
 				szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
-				QString szPixName = g_pixmapOptionsTable[i].name;
-				szPixName += ".png";
-				szPixPath += szPixName;
-
-				if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixPath,"PNG"))
+				szPixPath += *it;
+	
+				if(!KviFileUtils::copyFile(p->path(),szPixPath))
 				{
-					cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
-				} else {
-					debug("failed to save %s",szPixPath.utf8().data());
-					cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
+					options.setLastError(__tr2qs("Failed to save one of the theme images"));
+					return false;
 				}
-			} else {
-				cfg.writeEntry(g_pixmapOptionsTable[i].name,"");
 			}
 		}
-	}
-
-	cfg.writeEntry("stringIconThemeSubdir",opt.szSubdirectory);
-
-	// find all the "kvi_bigicon" images that we can find in the main pics directory
-	QString szPicsPath;
-
-	g_pApp->getGlobalKvircDirectory(szPicsPath,KviApp::Pics);
-	QDir d(szPicsPath);
-	QStringList sl = d.entryList("kvi_bigicon_*.png",QDir::Files);
-	//QStringList sl2 = d.entryList("kvi_smallicon_*.png",QDir::Files);
-
-	for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
-	{
-		KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
-		if(p)
-		{
-			QString szPixPath = opt.szAbsoluteDirectory;
-			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
-			szPixPath += *it;
-
-			KviFileUtils::copyFile(p->path(),szPixPath);
-		}
-	}
-
-
-	szD = opt.szAbsoluteDirectory;
-	szD.append(KVI_PATH_SEPARATOR_CHAR);
-	szD.append(KVI_SMALLICONS_SUBDIRECTORY);
-
-	KviFileUtils::makeDir(szD);
-
-	// We actually need to *save* the small icons since
-	// we have a compatibility mode that can load them from
-	// the old format kvi_smallicon_XY.png multiimage libraries.
-
-	for(int j=0;j<KVI_NUM_SMALL_ICONS;j++)
-	{
-		QPixmap * pix = g_pIconManager->getSmallIcon(j);
-
-		QString szPixPath = opt.szAbsoluteDirectory;
-		szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
-		szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
-		szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
-		szPixPath.append("kcs_");
-		szPixPath.append(g_pIconManager->getSmallIconName(j));
-		szPixPath.append(".png");
-		
-		pix->save(szPixPath,"PNG",90);
-	}
-
-}
-
-void KviApp::loadTheme(const QString &themeDir)
-{
-	// reset the current theme subdir
-	KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
 	
-	// reset the splash screen pointer
-	QString szPointerFile;
-	getLocalKvircDirectory(szPointerFile,Themes,"current-splash");
-	KviFileUtils::removeFile(szPointerFile);
+	
+		szD = options.absoluteDirectory();
+		szD.append(KVI_PATH_SEPARATOR_CHAR);
+		szD.append(KVI_SMALLICONS_SUBDIRECTORY);
+	
+		if(!KviFileUtils::makeDir(szD))
+		{
+			options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
+			return false;
+		}
+	
+		// We actually need to *save* the small icons since
+		// we have a compatibility mode that can load them from
+		// the old format kvi_smallicon_XY.png multiimage libraries.
+	
+		for(int j=0;j<KVI_NUM_SMALL_ICONS;j++)
+		{
+			QPixmap * pix = g_pIconManager->getSmallIcon(j);
+	
+			QString szPixPath = options.absoluteDirectory();
+			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+			szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
+			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
+			szPixPath.append("kcs_");
+			szPixPath.append(g_pIconManager->getSmallIconName(j));
+			szPixPath.append(".png");
+			
+			if(!pix->save(szPixPath,"PNG",90))
+			{
+				options.setLastError(__tr2qs("Failed to save one of the theme images"));
+				return false;
+			}
+		}
+	
+		return true;
+	}
+	
+	bool load(const QString &themeDir,KviThemeInfo &buffer)
+	{
+		if(!buffer.loadFromDirectory(themeDir))
+			return false; // makes sure that themedata exists too
+	
+		// reset the current theme subdir
+		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
+		
+		// reset the splash screen pointer
+		QString szPointerFile;
+		g_pApp->getLocalKvircDirectory(szPointerFile,KviApp::Themes,"current-splash");
+		KviFileUtils::removeFile(szPointerFile);
 
-
-	QString szD = themeDir;
-	KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
-	szD.append("themedata.kvc");
-
-	KviConfig cfg(szD,KviConfig::Read);
-
-	cfg.setGroup("ThemeData");
-
-	int i;
-	int iResetFlags = 0;
-
-	#undef READ_OPTIONS
-
-	#define READ_OPTIONS(_num,_table,_readFnc) \
-	for(i=0;i<_num;i++) \
-	{ \
-		if(_table[i].flags & KviOption_groupTheme) \
+		QString szD = themeDir;
+		KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
+		szD.append(KVI_THEMEDATA_FILE_NAME);
+	
+		KviConfig cfg(szD,KviConfig::Read);
+	
+		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
+	
+		int i;
+		int iResetFlags = 0;
+	
+		#undef READ_OPTIONS
+	
+		#define READ_OPTIONS(_num,_table,_readFnc) \
+		for(i=0;i<_num;i++) \
+		{ \
+			if(_table[i].flags & KviOption_groupTheme) \
+			{ \
+				if(cfg.hasKey(_table[i].name)) \
+				{ \
+					iResetFlags |= (_table[i].flags & KviOption_resetMask); \
+					_table[i].option = cfg._readFnc(_table[i].name,_table[i].option); \
+				} \
+			} \
+		}
+		
+		#define READ_ALL_OPTIONS(_num,_table,_readFnc) \
+		for(i=0;i<_num;i++) \
 		{ \
 			if(cfg.hasKey(_table[i].name)) \
 			{ \
 				iResetFlags |= (_table[i].flags & KviOption_resetMask); \
 				_table[i].option = cfg._readFnc(_table[i].name,_table[i].option); \
 			} \
-		} \
-	}
+		}
 	
-	#define READ_ALL_OPTIONS(_num,_table,_readFnc) \
-	for(i=0;i<_num;i++) \
-	{ \
-		if(cfg.hasKey(_table[i].name)) \
-		{ \
-			iResetFlags |= (_table[i].flags & KviOption_resetMask); \
-			_table[i].option = cfg._readFnc(_table[i].name,_table[i].option); \
-		} \
-	}
-
-	READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
-	READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
-	READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readQStringEntry)
-	READ_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable,readColorEntry)
-	READ_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable,readUIntEntry)
-	READ_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,readFontEntry)
-	READ_ALL_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,readMsgTypeEntry)
-	READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,readStringListEntry)
-	READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable,readColorEntry)
-	READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
-
-	#undef READ_OPTIONS
-	#undef READ_ALL_OPTIONS
-	KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).stripWhiteSpace();
-
-
-	// the pixmap options need special processing
-	for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
-	{
-		if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
+		READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
+		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
+		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readQStringEntry)
+		READ_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable,readColorEntry)
+		READ_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable,readUIntEntry)
+		READ_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,readFontEntry)
+		READ_ALL_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,readMsgTypeEntry)
+		READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,readStringListEntry)
+		READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable,readColorEntry)
+		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
+	
+		#undef READ_OPTIONS
+		#undef READ_ALL_OPTIONS
+		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).stripWhiteSpace();
+	
+	
+		// the pixmap options need special processing
+		for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
-			if(cfg.hasKey(g_pixmapOptionsTable[i].name))
+			if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
 			{
-				QString szVal = cfg.readQStringEntry(g_pixmapOptionsTable[i].name,"");
-				szVal.stripWhiteSpace();
-				QString szBuffer;
-				if(!szVal.isEmpty())
+				if(cfg.hasKey(g_pixmapOptionsTable[i].name))
 				{
-					findImage(szBuffer,szVal);
-				} else {
-					szBuffer = szVal;
+					QString szVal = cfg.readQStringEntry(g_pixmapOptionsTable[i].name,"");
+					szVal.stripWhiteSpace();
+					QString szBuffer;
+					if(!szVal.isEmpty())
+					{
+						g_pApp->findImage(szBuffer,szVal);
+					} else {
+						szBuffer = szVal;
+					}
+	
+					KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option);
+	
+					// reset anyway
+					iResetFlags |= g_pixmapOptionsTable[i].flags & KviOption_resetMask;
 				}
-
-				KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option);
-
-				// reset anyway
-				iResetFlags |= g_pixmapOptionsTable[i].flags & KviOption_resetMask;
 			}
 		}
+	
+		// create the splash screen pointer if this theme has some pixmaps in it
+		if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
+			KviFileUtils::writeFile(szPointerFile,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+	
+		// force reloading of images anyway
+		g_pApp->optionResetUpdate(iResetFlags | KviOption_resetReloadImages);
+
+		return true;
 	}
-
-	// create the splash screen pointer if this theme has some pixmaps in it
-	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
-		KviFileUtils::writeFile(szPointerFile,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-
-	// force reloading of images anyway
-	optionResetUpdate(iResetFlags | KviOption_resetReloadImages);
-}
+};
 
 void KviApp::listAvailableOptions(KviWindow *wnd)
 {

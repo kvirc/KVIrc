@@ -36,6 +36,7 @@
 #include "kvi_sourcesdate.h"
 
 #include "managementdialog.h"
+#include "themefunctions.h"
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
@@ -56,6 +57,19 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 
 static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 {
+	QString szThemePackFile; 
+	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_path",KVS_PT_STRING,0,szThemePackFile)
+	KVSM_PARAMETERS_END(c)
+
+	QString szError;
+	if(!KviThemeFunctions::installThemePackage(szThemePackFile,szError))
+	{
+		c->error(__tr2qs_ctx("Error installing theme package: %Q","theme"),&szError);
+		return false;
+	}
+
 	return true;
 }
 

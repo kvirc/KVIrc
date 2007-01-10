@@ -67,19 +67,6 @@ typedef struct _KviPendingAvatarChange
 	QString      szHost;
 } KviPendingAvatarChange;
 
-typedef struct _KviThemeInfoTag
-{
-	QString szName; // name of the theme
-	QString szVersion; // version of the theme
-	QString szSubdirectory; // subdirectory of $LOCALKVIRCDIR/themes where the theme is saved to
-	QString szAbsoluteDirectory; // absolute directory where the theme should be saved to
-	QString szAuthor; // author of the theme
-	QString szDescription; // description of the theme
-	QString szDate; // theme creation date
-	QString szKvircVersion; // theme creation KVIrc version
-	bool    bIncludeMsgColors;
-} KviThemeInfo;
-
 #ifdef Unsorted
 	#undef Unsorted
 #endif
@@ -185,13 +172,6 @@ public:
 	// kvi_options.cpp : Options saving and loading (kvi.main.conf))
 	void loadOptions();
 	void saveOptions();
-
-	void saveTheme(KviThemeInfo &opt);
-	void saveXmlTheme(KviThemeInfo &opt,const QString& filename);
-	void loadXmlTheme(QDomElement *pElement);
-	// returns false if the theme informations can't be loaded or the theme dir do not appear to contain a valid theme
-	bool loadThemeInfo(const QString &themeDir,KviThemeInfo &inf);
-	void loadTheme(const QString &themeDir);
 
 	void listAvailableOptions(KviWindow *wnd);
 	bool getOptionString(const char * optName,QString &buffer);

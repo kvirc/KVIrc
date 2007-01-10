@@ -338,50 +338,8 @@ QDict<KviKvsScriptAddon> * KviKvsScriptAddonManager::addonDict()
 }
 
 
-bool KviKvsScriptAddonManager::isValidVersionString(const QString &szVersion)
-{
-	QStringList sl = QStringList::split(".",szVersion);
-	if(sl.isEmpty())return false;
-	// must all be numbers
-	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
-	{
-		bool bOk;
-		int i = (*it).toInt(&bOk);
-		if(!bOk)return false;
-		if(i < 0)return false;
-	}
-	return true;
-}
 
-int KviKvsScriptAddonManager::compareVersions(const QString &szVersion1,const QString &szVersion2)
-{
-	QStringList sl1 = QStringList::split(".",szVersion1);
-	QStringList sl2 = QStringList::split(".",szVersion2);
 
-	QStringList::Iterator it1 = sl1.begin();
-	QStringList::Iterator it2 = sl2.begin();
-	while((it1 != sl1.end()) && (it2 != sl2.end()))
-	{
-		bool bOk;
-		int i1 = (*it1).toInt(&bOk);
-		if(!bOk)return 1;
-		int i2 = (*it2).toInt(&bOk);
-		if(!bOk)return -1;
-		if(i1 != i2)
-		{
-			// field not equal
-			if(i1 > i2)return -1;
-			else return 1;
-		}
-		it1++;
-		it2++;
-	}
-	// both are equal until now
-	if(it1 != sl1.end())return -1; // 1 has at least one field more
-	if(it2 != sl2.end())return 1;  // 2 has at least one field more
-	// both are equal also in length
-	return 0;
-}
 
 bool KviKvsScriptAddonManager::registerAddon(KviKvsScriptAddonRegistrationData * d)
 {

@@ -22,6 +22,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+/*
 #define __KVIRC__
 
 #include "kvi_locale.h"
@@ -144,3 +145,5 @@ void KviXmlAddonLoader::fillListView()
 		}
 	}
 }
+
+*/

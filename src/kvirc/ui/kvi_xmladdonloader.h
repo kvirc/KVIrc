@@ -25,6 +25,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+/*
 #include "kvi_heapobject.h"
 #include <qdialog.h>
 #include <qlistview.h> 
@@ -57,5 +58,6 @@ protected slots:
 protected:
 	void fillListView();
 };
+*/
 
 #endif //!_KVI_XML_ADDON_LOADER_H_

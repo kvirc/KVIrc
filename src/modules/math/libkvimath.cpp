@@ -472,7 +472,7 @@ static bool math_module_cleanup(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"System",                                                 // module name
+	"Math",                                                 // module name
 	"1.0.0",                                                // module version
 	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"\
 	"Tonino Imbesi (grifisx at barmes dot org)," \

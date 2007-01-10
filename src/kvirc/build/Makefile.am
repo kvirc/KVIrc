@@ -44,6 +44,7 @@ nodist_kvirc_SOURCES = ../kernel/moc_kvi_action.cpp \
 ../ui/moc_kvi_actiondrawer.cpp \
 ../ui/moc_kvi_customtoolbar.cpp \
 ../ui/moc_kvi_debugwindow.cpp \
+../ui/moc_kvi_htmldialog.cpp \
 ../ui/moc_kvi_imagedialog.cpp \
 ../ui/moc_kvi_ircviewtools.cpp \
 ../ui/moc_kvi_mdicaption.cpp \
@@ -83,8 +84,13 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../kernel/kvi_irclink.cpp \
 ../kernel/kvi_ircsocket.cpp \
 ../kernel/kvi_ircurl.cpp \
-../kernel/kvi_main.cpp ../kernel/kvi_lagmeter.cpp ../kernel/kvi_notifylist.cpp \
-../kernel/kvi_options.cpp  ../kernel/kvi_sslmaster.cpp ../kernel/kvi_texticonmanager.cpp \
+../kernel/kvi_main.cpp \
+../kernel/kvi_lagmeter.cpp \
+../kernel/kvi_notifylist.cpp \
+../kernel/kvi_options.cpp \
+../kernel/kvi_sslmaster.cpp \
+../kernel/kvi_texticonmanager.cpp \
+../kernel/kvi_theme.cpp \
 ../kernel/kvi_useraction.cpp \
 ../kernel/kvi_userinput.cpp \
 ../kvs/kvi_kvs.cpp \
@@ -219,6 +225,7 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../ui/kvi_filedialog.cpp \
 ../ui/kvi_frame.cpp \
 ../ui/kvi_historywin.cpp \
+../ui/kvi_htmldialog.cpp \
 ../ui/kvi_imagedialog.cpp \
 ../ui/kvi_input.cpp \
 ../ui/kvi_ipeditor.cpp \
@@ -289,8 +296,14 @@ headers_HEADERS = ../kernel/kvi_action.h \
 ../kernel/kvi_ircsocket.h \
 ../kernel/kvi_ircurl.h \
 ../kernel/kvi_lagmeter.h \
-../kernel/kvi_notifylist.h ../kernel/kvi_options.h ../kernel/kvi_out.h ../kernel/kvi_sslmaster.h \
-../kernel/kvi_texticonmanager.h ../sparser/kvi_antispam.h ../sparser/kvi_ircmessage.h \
+../kernel/kvi_notifylist.h \
+../kernel/kvi_options.h \
+../kernel/kvi_out.h \
+../kernel/kvi_sslmaster.h \
+../kernel/kvi_texticonmanager.h \
+../kernel/kvi_theme.h \
+../sparser/kvi_antispam.h \
+../sparser/kvi_ircmessage.h \
 ../kernel/kvi_useraction.h \
 ../kernel/kvi_userinput.h \
 ../kvs/kvi_kvs.h \
@@ -413,6 +426,7 @@ headers_HEADERS = ../kernel/kvi_action.h \
 ../ui/kvi_filedialog.h \
 ../ui/kvi_frame.h \
 ../ui/kvi_historywin.h \
+../ui/kvi_htmldialog.h \
 ../ui/kvi_imagedialog.h \
 ../ui/kvi_input.h \
 ../ui/kvi_ipeditor.h \

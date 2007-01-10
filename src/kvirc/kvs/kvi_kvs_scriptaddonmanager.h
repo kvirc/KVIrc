@@ -114,9 +114,6 @@ public:
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
-	bool isValidVersionString(const QString &szVersion);
-	// returns x < 0 if szVersion1 is greater, x = 0 if the versions are equal and x > 0 otherwise
-	int compareVersions(const QString &szVersion1,const QString &szVersion2);
 	bool registerAddon(KviKvsScriptAddonRegistrationData * d);
 	KviKvsScriptAddon * findAddon(const QString &szName);
 	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true);

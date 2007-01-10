@@ -35,6 +35,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_window.h"
+#include "kvi_theme.h"
 
 // this will be choosen during the setup process
 QString g_szChoosenIncomingDirectory;
@@ -97,7 +98,8 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		}*/
 		
 		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"silverirc");
-		g_pApp->loadTheme(szDir);
+		KviThemeInfo out;
+		KviTheme::load(szDir,out);
 		
 		g_pApp->loadDefaultScript();
 		if(!szUrl.isEmpty())

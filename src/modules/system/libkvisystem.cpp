@@ -44,6 +44,8 @@
 	#include <dcopclient.h>
 #endif
 
+#include "kvi_modulemanager.h"
+
 /*
 	@doc: system.ostype
 	@type:
@@ -329,6 +331,39 @@ static bool system_kvs_cmd_setSelection(KviKvsModuleCommandCall * c)
 static bool system_kvs_fnc_selection(KviKvsModuleFunctionCall *c)
 {
 	c->returnValue()->setString(g_pApp->clipboard()->text(QClipboard::Selection));
+	return true;
+}
+
+
+/*
+	@doc: system.checkModule
+	@keyterms:
+		Module checking
+	@type:
+		function
+	@title:
+		$system.checkModule
+	@short:
+		Checks if a KVIrc module is loadable
+	@syntax:
+		<boolean> $system.checkModule(<module_name:string>)
+	@description:
+		Attempts to load the specified module and returns
+		$true if succesfull and $false otherwise. This can
+		be effectively used to test if a KVIrc exension module
+		is present on the system and can be loaded by the
+		KVIrc engine.
+*/
+
+static bool system_kvs_fnc_checkModule(KviKvsModuleFunctionCall *c)
+{
+	QString szModuleName;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("module_name",KVS_PT_STRING,0,szModuleName)
+	KVSM_PARAMETERS_END(c)
+
+	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName.utf8().data()));
 	return true;
 }
 
@@ -622,6 +657,7 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"dcop",system_kvs_fnc_dcop);
 	KVSM_REGISTER_FUNCTION(m,"clipboard",system_kvs_fnc_clipboard);
 	KVSM_REGISTER_FUNCTION(m,"selection",system_kvs_fnc_selection);
+	KVSM_REGISTER_FUNCTION(m,"checkModule",system_kvs_fnc_checkModule);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setenv",system_kvs_cmd_setenv);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setClipboard",system_kvs_cmd_setClipboard);

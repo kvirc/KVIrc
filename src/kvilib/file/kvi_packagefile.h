@@ -129,6 +129,7 @@ public:
 	enum UnpackFlags {
 		NoProgressDialog = 1
 	};
+	bool getStringInfoField(const QString &szName,QString &szBuffer);
 	bool unpack(const QString &szLocalFileName,const QString &szUnpackPath,kvi_u32_t uUnpackFlags = 0);
 private:
 	bool unpackInternal(const QString &szLocalFileName,const QString &szUnpackPath,kvi_u32_t uUnpackFlags = 0);

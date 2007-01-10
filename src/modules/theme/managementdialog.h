@@ -26,6 +26,7 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_list.h"
+#include "kvi_theme.h"
 
 #include <qdialog.h>
 #include <qsimplerichtext.h>
@@ -35,6 +36,7 @@
 #include <qcursor.h>
 #include <qwizard.h>
 
+
 class QLineEdit;
 class QTextEdit;
 class QPushButton;
@@ -42,72 +44,12 @@ class QLabel;
 class QCheckBox;
 class QMultiLineEdit;
 
-typedef struct _KviThemeInfoTag KviThemeInfo;
-
-class KviSaveThemeDialog : public QDialog
-{
-	Q_OBJECT
-public:
-	KviSaveThemeDialog(QWidget *par);
-	~KviSaveThemeDialog();
-protected:
-	QLineEdit   * m_pAuthorEdit;
-	QLineEdit   * m_pThemeNameEdit;
-	QLineEdit   * m_pVersionEdit;
-	QTextEdit   * m_pDescriptionEdit;
-	QPushButton * m_pOkButton;
-//	QComboBox   * m_pFormatCombo;
-	QCheckBox   * m_pIncludeMsgcolors;
-
-private:
-	void saveThemeInNewFormat(KviThemeInfo& info);
-	void saveThemeInOldFormat(KviThemeInfo& info);
-	void saveThemeInXmlFormat(KviThemeInfo& info);
-protected slots:
-	void saveTheme();
-	void themeNameChanged(const QString &txt);
-};
-
-class KviPackThemeDialog : public QWizard
-{
-	Q_OBJECT
-public:
-	KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo> * pThemeInfoList);
-	~KviPackThemeDialog();
-protected:
-	QString m_szImagePath;
-	KviFileSelector * m_pImageSelector;
-	QString m_szPackagePath;
-	KviFileSelector * m_pPathSelector;
-	QLabel * m_pImageLabel;
-	KviPtrList<KviThemeInfo> * m_pThemeInfoList;
-	QLineEdit * m_pPackageNameEdit;
-	QMultiLineEdit * m_pPackageDescriptionEdit;
-	QLineEdit * m_pPackageVersionEdit;
-	QLineEdit * m_pPackagerNameEdit;
-	QWidget * m_pImageSelectionPage;
-protected:
-	virtual void accept();
-protected slots:
-	bool packTheme();
-	void imageSelectionChanged(const QString &szImagePath);
-};
-
-/*
-class KviUnpackThemeDialog : public QDialog
-{
-	Q_OBJECT
-public:
-	KviUnpackThemeDialog(QWidget * pParent);
-	~KviUnpackThemeDialog();
-};
-*/
 
 class KviThemeListBoxItem : public QListBoxText
 {
 public:
 	KviThemeListBoxItem(QListBox * box,KviThemeInfo * inf);
-	~KviThemeListBoxItem();
+	virtual ~KviThemeListBoxItem();
 public:
 	KviThemeInfo * m_pThemeInfo;
 	QSimpleRichText * m_pText;
@@ -126,12 +68,11 @@ class KviThemeManagementDialog : public QDialog
 	Q_OBJECT
 public:
 	KviThemeManagementDialog(QWidget * parent);
-	~KviThemeManagementDialog();
+	virtual ~KviThemeManagementDialog();
 protected:
 	static KviThemeManagementDialog * m_pInstance;
 	QListBox            * m_pListBox;
 	QPopupMenu          * m_pContextPopup; 
-	KviSaveThemeDialog  * m_pSaveThemeDialog;
 	KviStyledToolButton * m_pDeleteThemeButton;
 	KviStyledToolButton * m_pPackThemeButton;
 public:
@@ -144,7 +85,7 @@ protected:
 protected slots:
 	void saveCurrentTheme();
 	void getMoreThemes();
-	void installFromXml();
+	void installFromFile();
 	void fillThemeBox();
 	void deleteTheme();
 	void closeClicked();

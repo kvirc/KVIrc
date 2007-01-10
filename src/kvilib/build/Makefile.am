@@ -48,6 +48,7 @@ libkvilib_la_SOURCES = \
 	../ext/kvi_imagelib.cpp \
 	../ext/kvi_md5.cpp \
 	../ext/kvi_mediatype.cpp \
+	../ext/kvi_miscutils.cpp \
 	../ext/kvi_msgtype.cpp \
 	../ext/kvi_parameterlist.cpp \
 	../ext/kvi_pixmap.cpp \
@@ -122,6 +123,7 @@ headers_HEADERS = \
 	../ext/kvi_imagelib.h \
 	../ext/kvi_md5.h \
 	../ext/kvi_mediatype.h \
+	../ext/kvi_miscutils.h \
 	../ext/kvi_msgtype.h \
 	../ext/kvi_parameterlist.h \
 	../ext/kvi_pixmap.h \

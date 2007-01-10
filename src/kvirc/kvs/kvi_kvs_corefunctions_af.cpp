@@ -674,7 +674,7 @@ namespace KviKvsCoreFunctions
 			$context[(<server>,<nickname>)]
 		@description:
 			Returns the [b]IRC context ID[/b] of the IRC context that uses
-			the specified <server> and <nickname>.[br] This function can
+			the specified <server> and local user's <nickname>.[br] This function can
 			find only connected IRC contexts.
 			If no context matches the server and nickname, and invalid
 			[b]IRC context ID[/b] is returned (0).[br]
