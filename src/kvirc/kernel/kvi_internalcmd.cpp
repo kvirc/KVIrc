@@ -64,7 +64,10 @@ static char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 	"openurl http://www.kvirc.ru",
 	"openurl irc://freenode/kvirc",
 	"openurl irc://ircnet/kvirc",
-	"openurl irc://azzurra/kvirc.net"
+	"openurl irc://azzurra/kvirc.net",
+	"openurl http://kvirc-fr.info",
+	"openurl irc://freenode/kvirc-fr",
+	"openurl irc://irc.europenet.org/kvirc"
 };
 
 

@@ -119,8 +119,16 @@ void KviMenuBar::setupHelpPopup()
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Russian Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
-	help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
+	if(kvi_strEqualCIN(KviLocale::localeName(),"ru",2))
+	{
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Russian Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
+		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
+	}
+	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
+	{
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc French Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
+		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
+	}
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),__tr2qs("Subscribe to the Mailing List"),m_pFrm,SLOT(executeInternalCommand(int)));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
@@ -136,6 +144,15 @@ void KviMenuBar::setupHelpPopup()
 		// join #kvirc.net on azzurra
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"),m_pFrm,SLOT(executeInternalCommand(int)));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_IT_ON_AZZURRA);
+	}
+	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
+	{
+		// join #kvirc-fr on freenode
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on Freenode"),m_pFrm,SLOT(executeInternalCommand(int)));
+		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_FREENODE);
+		// join #kvirc on europenet
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropeNet"),m_pFrm,SLOT(executeInternalCommand(int)));
+		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPENET);
 	}
 	// add your localized #kvirc channels here...
 }
