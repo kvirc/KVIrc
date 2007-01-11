@@ -150,9 +150,9 @@ void KviMenuBar::setupHelpPopup()
 		// join #kvirc-fr on freenode
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on Freenode"),m_pFrm,SLOT(executeInternalCommand(int)));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_FREENODE);
-		// join #kvirc on europenet
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropeNet"),m_pFrm,SLOT(executeInternalCommand(int)));
-		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPENET);
+		// join #kvirc on europnet
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropNet"),m_pFrm,SLOT(executeInternalCommand(int)));
+		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPNET);
 	}
 	// add your localized #kvirc channels here...
 }
