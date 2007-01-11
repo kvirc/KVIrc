@@ -225,7 +225,7 @@ public:
 
 	// kvi_app.cpp : Window stuff
 	KviWindow       * findWindow(const char * windowId);
-	KviWindow       * findWindowByCaption(const QString &windowCaption);
+	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);
 	KviConsole      * findConsole(unsigned int ircContextId);
 	KviConsole      * findConsole(KviStr & server,KviStr & nick);
 	KviConsole      * findConsole(QString & servr,QString & nick);

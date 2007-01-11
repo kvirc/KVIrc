@@ -1708,14 +1708,15 @@ KviWindow * KviApp::findWindow(const char * windowId)
 	return g_pGlobalWindowDict->find(windowId);
 }
 
-KviWindow * KviApp::findWindowByCaption(const QString &windowCaption)
+KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContextId)
 {
 	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
-		if(KviQString::equalCI(windowCaption,it.current()->plainTextCaption()))
-			return it.current();
+		if(KviQString::equalCI(windowCaption,it.current()->plainTextCaption()) && 
+			(iContextId==-1 || it.current()->context()->id() == iContextId))
+				return it.current();
 		++it;
 	}
 	return 0;

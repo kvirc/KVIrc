@@ -1031,7 +1031,7 @@ namespace KviKvsCoreFunctions
 			Retrieve the id of a specified window.
 		@syntax:
 			<string> $window
-			<string> $window(<caption_text:hash>)
+			<string> $window([<caption_text:hash>[,<context_id:uint>]])
 		@description:
 			Returns the [b]window id[/b] of the first window that
 			has the specified <caption text>.[br]
@@ -1039,6 +1039,7 @@ namespace KviKvsCoreFunctions
 			window id is returned (0).[br]
 			If no <caption text> is specified , this function returns the id
 			of the current window.[br]
+			<context_id> restrict search in only one irc context.
 		@examples:
  			[example]
  				[cmd]echo[/cmd] This is the window with id $window
@@ -1055,17 +1056,22 @@ namespace KviKvsCoreFunctions
 #ifdef COMPILE_NEW_KVS
 		//#warning "FIXME: the window identifiers could be numbers!"
 		QString szCaption;
+		int iContextId;
 
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("caption_text",KVS_PT_STRING,KVS_PF_OPTIONAL,szCaption)
+			KVSCF_PARAMETER("context_id",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iContextId)
 		KVSCF_PARAMETERS_END
+
+		if(KVSCF_pParams->count()<2)
+			iContextId=-1;
 
 		KviWindow * pWnd;
 		if(szCaption.isEmpty())
 		{
 			pWnd = KVSCF_pContext->window();
 		} else {
-			pWnd = g_pApp->findWindowByCaption(szCaption);
+			pWnd = g_pApp->findWindowByCaption(szCaption,iContextId);
 			if(!pWnd)
 			{
 				//follow the documented behaviour
