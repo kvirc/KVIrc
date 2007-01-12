@@ -646,7 +646,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 	QString col;
 	KviStringConversion::toString(m_pCustomColorSelector->getColor(),col);
 //	debug(col);
-	u->setProperty("customColor",col.utf8().data());
+	u->setProperty("customColor",col);
 
 	
 	if(m_pIgnoreSilent->state()==QButton::NoChange)
