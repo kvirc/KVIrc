@@ -1963,6 +1963,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 	// a CoreSimpleCommand but parses the parameters as constants
 	
 	// we handle a single big parameter, with whitespace stripped
+	// This is because we want the identifiers to be preserved
+	// as unevaluated (i.e $function).
 
 	skipSpaces();
 

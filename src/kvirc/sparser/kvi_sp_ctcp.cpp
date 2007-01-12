@@ -1000,7 +1000,6 @@ void KviServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 			} else bIsChannel = true;
 		}
 
-
 		QString szRequest = pOut->decodeText(req);
 		QString szTag = pOut->decodeText(msg->szTag);
 		QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");

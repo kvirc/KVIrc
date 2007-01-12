@@ -52,6 +52,7 @@ KviIrcServer::KviIrcServer()
 	m_uPort  = 6667;
 	m_pChannelList = 0;
 	m_bAutoConnect = false;
+	m_iProxy = -1;
 }
 
 KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)

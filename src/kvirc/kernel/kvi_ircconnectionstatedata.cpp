@@ -33,6 +33,7 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 	m_bSimulateUnexpectedDisconnect = false;
 	m_tLastReceivedChannelWhoReply = kvi_unixTime();
 	m_tLastSentChannelWhoRequest = m_tLastReceivedChannelWhoReply;
+	m_tLastReceivedWhoisReply = 0;
 }
 
 KviIrcConnectionStateData::~KviIrcConnectionStateData()

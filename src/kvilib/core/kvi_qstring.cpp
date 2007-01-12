@@ -501,19 +501,13 @@ namespace KviQString
 				case 's': // char * string
 				{
 					argString = kvi_va_arg(list,char *);
-					if(!argString)
-					{
-						argString = "[!NULL!]";
-						argValue = 8;
-					} else {
-						argValue = (long)strlen(argString);
-					}
-					//check for space...
-					if((allocsize - reallen) < argValue)INCREMENT_MEM_BY(argValue)
+					if(!argString)argString = "[!NULL!]";
 					QString str(argString);
 					if(str.isEmpty())continue;
 					int len = str.length();
 					const QChar * ch = str.unicode();
+					if(!ch)continue;
+					if((allocsize - reallen) < len)INCREMENT_MEM_BY(len)
 					while(len--)*p++ = *ch++;
 					reallen += str.length();
 					continue;
@@ -534,8 +528,9 @@ namespace KviQString
 					if(!str)continue;
 					if(str->isEmpty())continue;
 					int len = str->length();
-					if((allocsize - reallen) < len)INCREMENT_MEM_BY(len)
 					const QChar * ch = str->unicode();
+					if(!ch)continue;
+					if((allocsize - reallen) < len)INCREMENT_MEM_BY(len)
 					while(len--)*p++ = *ch++;
 					reallen += str->length();
 					continue;

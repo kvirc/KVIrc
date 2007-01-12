@@ -114,6 +114,7 @@ static bool may_be_utf8(const unsigned char * p)
 
 static bool may_be_utf8(const unsigned char * p,int len)
 {
+	if(!p)return false;
 	while(*p && (len > 0))
 	{
 		if(*p < 0x80)
@@ -158,14 +159,13 @@ class KviSmartTextCodec : public QTextCodec
 {
 protected:
 	KviStr       m_szName;
-	QTextCodec * m_pChildCodec;
+	QTextCodec * m_pRecvCodec;
+	QTextCodec * m_pSendCodec;
 public:
-	KviSmartTextCodec(const char * szName)
+	KviSmartTextCodec(const char * szName,const char * szChildCodecName,bool bSendInUtf8)
 	: QTextCodec()
 	{
 		m_szName = szName;
-		KviStr tmp = m_szName;
-		tmp.cutToFirst('/');
 		if(!g_pUtf8TextCodec)
 		{
 			g_pUtf8TextCodec = QTextCodec::codecForName("UTF-8");
@@ -175,58 +175,62 @@ public:
 				g_pUtf8TextCodec = QTextCodec::codecForLocale(); // try anything else...
 			}
 		}
-		m_pChildCodec = QTextCodec::codecForName(tmp.ptr());
-		if(!m_pChildCodec)
+		m_pRecvCodec = QTextCodec::codecForName(szChildCodecName);
+		if(!m_pRecvCodec)
 		{
-			debug("Can't find the codec for name %s (composite codec creation)",tmp.ptr());
-			m_pChildCodec = g_pUtf8TextCodec;
+			debug("Can't find the codec for name %s (composite codec creation)",szName);
+			m_pRecvCodec = g_pUtf8TextCodec;
 		}
+		if(bSendInUtf8)
+			m_pSendCodec = g_pUtf8TextCodec;
+		else
+			m_pSendCodec = m_pRecvCodec;
 	}
 public:
-	bool ok(){ return m_pChildCodec && g_pUtf8TextCodec; };
+	bool ok(){ return m_pRecvCodec && g_pUtf8TextCodec; };
 	virtual const char * name () const { return m_szName.ptr(); };
-	virtual const char * mimeName () const { return m_pChildCodec->mimeName(); };
+	virtual const char * mimeName () const { return m_pRecvCodec->mimeName(); };
 	virtual int mibEnum () const { return 0; };
-	virtual QTextDecoder * makeDecoder () const { return m_pChildCodec->makeDecoder(); };
-	virtual QTextEncoder * makeEncoder () const { return m_pChildCodec->makeEncoder(); };
-	QCString fromUnicode ( const QString & uc ) const { return m_pChildCodec->fromUnicode(uc); };
-	virtual QCString fromUnicode ( const QString & uc, int & lenInOut ) const { return m_pChildCodec->fromUnicode(uc,lenInOut); };
+	virtual QTextDecoder * makeDecoder () const { return m_pRecvCodec->makeDecoder(); };
+	virtual QTextEncoder * makeEncoder () const { return m_pSendCodec->makeEncoder(); };
+	QCString fromUnicode ( const QString & uc ) const { return m_pSendCodec->fromUnicode(uc); };
+	virtual QCString fromUnicode ( const QString & uc, int & lenInOut ) const { return m_pSendCodec->fromUnicode(uc,lenInOut); };
 	QString toUnicode(const char * chars) const
 	{
 		if(may_be_utf8((const unsigned char *)chars))return g_pUtf8TextCodec->toUnicode(chars);
-		return m_pChildCodec->toUnicode(chars);
+		return m_pRecvCodec->toUnicode(chars);
 	};
 	virtual QString toUnicode(const char * chars,int len) const
 	{
 		if(may_be_utf8((const unsigned char *)chars,len))return g_pUtf8TextCodec->toUnicode(chars,len);
-		return m_pChildCodec->toUnicode(chars,len);
+		return m_pRecvCodec->toUnicode(chars,len);
 	};
 	QString toUnicode(const QByteArray & a,int len) const
 	{
 		if(may_be_utf8((const unsigned char *)(a.data()),len))return g_pUtf8TextCodec->toUnicode(a,len);
-		return m_pChildCodec->toUnicode(a,len);
+		return m_pRecvCodec->toUnicode(a,len);
 	};
 	QString toUnicode(const QByteArray & a) const
 	{
 		if(may_be_utf8((const unsigned char *)(a.data()),a.size()))return g_pUtf8TextCodec->toUnicode(a);
-		return m_pChildCodec->toUnicode(a);
+		return m_pRecvCodec->toUnicode(a);
 	};
 	QString toUnicode(const QCString & a,int len) const
 	{
 		if(may_be_utf8((const unsigned char *)(a.data()),len))return g_pUtf8TextCodec->toUnicode(a,len);
-		return m_pChildCodec->toUnicode(a,len);
+		return m_pRecvCodec->toUnicode(a,len);
 	};
 	QString toUnicode(const QCString & a) const
 	{
 		if(may_be_utf8((const unsigned char *)(a.data())))return g_pUtf8TextCodec->toUnicode(a);
-		return m_pChildCodec->toUnicode(a);
+		return m_pRecvCodec->toUnicode(a);
 	};
-	virtual bool canEncode(QChar ch) const { return m_pChildCodec->canEncode(ch); };
-	virtual bool canEncode(const QString &s) const { return m_pChildCodec->canEncode(s); };
+	virtual bool canEncode(QChar ch) const { return m_pSendCodec->canEncode(ch); };
+	virtual bool canEncode(const QString &s) const { return m_pSendCodec->canEncode(s); };
 	virtual int heuristicContentMatch(const char * chars,int len) const
 	{
 		int iii = g_pUtf8TextCodec->heuristicContentMatch(chars,len);
-		if(iii < 0)return m_pChildCodec->heuristicContentMatch(chars,len);
+		if(iii < 0)return m_pRecvCodec->heuristicContentMatch(chars,len);
 		return iii;
 	}
 	virtual int heuristicNameMatch(const char * hint) const { return 0; };
@@ -542,94 +546,144 @@ const QString & KviMessageCatalogue::translateToQString(const char *text)
 namespace KviLocale
 {
 #ifndef QT_NO_BIG_CODECS
-	#define NUM_ENCODINGS 73
+	#define NUM_ENCODINGS 109
 #else
-	#define NUM_ENCODINGS 57
+	#define NUM_ENCODINGS 85
 #endif
 
 
 
 	static EncodingDescription supported_encodings[]=
 	{
-		{ "UTF-8"                , 0 , "8-bit Unicode" },
-		{ "ISO-8859-1"           , 0 , "Western, Latin-1" },
-		{ "ISO-8859-2"           , 0 , "Central European 1" },
-		{ "ISO-8859-3"           , 0 , "Central European 2" },
-		{ "ISO-8859-4"           , 0 , "Baltic, Standard" },
-		{ "ISO-8859-5"           , 0 , "Cyrillic, ISO" },
-		{ "ISO-8859-6"           , 0 , "Arabic, Standard" },
-		{ "ISO-8859-7"           , 0 , "Greek" },
-		{ "ISO-8859-8"           , 0 , "Hebrew, visually ordered" },
-		{ "ISO-8859-8-i"         , 0 , "Hebrew, logically ordered" },
-		{ "ISO-8859-9"           , 0 , "Turkish, Latin-5" },
-		{ "ISO-8859-15"          , 0 , "Western, Latin-1 + Euro" },
-		{ "KOI8-R"               , 0 , "Cyrillic, KOI" },
-		{ "KOI8-U"               , 0 , "Ukrainian" },
-		{ "CP-1250"              , 0 , "Central European 3" },
-		{ "CP-1251"              , 0 , "Cyrillic, Windows" },
-		{ "CP-1252"              , 0 , "Western, CP" },
-		{ "CP-1253"              , 0 , "Greek, CP" },
-		{ "CP-1256"              , 0 , "Arabic, CP" },
-		{ "CP-1257"              , 0 , "Baltic, CP" },
-		{ "CP-1255"              , 0 , "Hebrew, CP" },
-		{ "CP-1254"              , 0 , "Turkish, CP" },
-		{ "TIS-620"              , 0 , "Thai" },
+		{ "UTF-8"                , 0 , 0 , "8-bit Unicode" },
+		{ "ISO-8859-1"           , 0 , 0 , "Western, Latin-1" },
+		{ "ISO-8859-2"           , 0 , 0 , "Central European 1" },
+		{ "ISO-8859-3"           , 0 , 0 , "Central European 2" },
+		{ "ISO-8859-4"           , 0 , 0 , "Baltic, Standard" },
+		{ "ISO-8859-5"           , 0 , 0 , "Cyrillic, ISO" },
+		{ "ISO-8859-6"           , 0 , 0 , "Arabic, Standard" },
+		{ "ISO-8859-7"           , 0 , 0 , "Greek" },
+		{ "ISO-8859-8"           , 0 , 0 , "Hebrew, visually ordered" },
+		{ "ISO-8859-8-i"         , 0 , 0 , "Hebrew, logically ordered" },
+		{ "ISO-8859-9"           , 0 , 0 , "Turkish, Latin-5" },
+		{ "ISO-8859-15"          , 0 , 0 , "Western, Latin-1 + Euro" },
+		{ "KOI8-R"               , 0 , 0 , "Cyrillic, KOI" },
+		{ "KOI8-U"               , 0 , 0 , "Ukrainian" },
+		{ "CP-1250"              , 0 , 0 , "Central European 3" },
+		{ "CP-1251"              , 0 , 0 , "Cyrillic, Windows" },
+		{ "CP-1252"              , 0 , 0 , "Western, CP" },
+		{ "CP-1253"              , 0 , 0 , "Greek, CP" },
+		{ "CP-1256"              , 0 , 0 , "Arabic, CP" },
+		{ "CP-1257"              , 0 , 0 , "Baltic, CP" },
+		{ "CP-1255"              , 0 , 0 , "Hebrew, CP" },
+		{ "CP-1254"              , 0 , 0 , "Turkish, CP" },
+		{ "TIS-620"              , 0 , 0 , "Thai" },
 #ifndef QT_NO_BIG_CODECS
-		{ "Big5"                 , 0 , "Chinese Traditional" },
-		{ "Big5-HKSCS"           , 0 , "Chinese Traditional, Hong Kong" },
-		{ "GB18030"              , 0 , "Chinese Simplified" },
-		{ "JIS7"                 , 0 , "Japanese (JIS7)" },
-		{ "Shift-JIS"            , 0 , "Japanese (Shift-JIS)" },
-		{ "EUC-JP"               , 0 , "Japanese (EUC-JP)" },
-		{ "EUC-KR"               , 0 , "Korean" },
-		{ "TSCII"                , 0 , "Tamil" },
+		{ "Big5"                 , 0 , 0 , "Chinese Traditional" },
+		{ "Big5-HKSCS"           , 0 , 0 , "Chinese Traditional, Hong Kong" },
+		{ "GB18030"              , 0 , 0 , "Chinese Simplified" },
+		{ "JIS7"                 , 0 , 0 , "Japanese (JIS7)" },
+		{ "Shift-JIS"            , 0 , 0 , "Japanese (Shift-JIS)" },
+		{ "EUC-JP"               , 0 , 0 , "Japanese (EUC-JP)" },
+		{ "EUC-KR"               , 0 , 0 , "Korean" },
+		{ "TSCII"                , 0 , 0 , "Tamil" },
 #endif
-		{ "ISO-8859-10"          , 0 , "ISO-8859-10" },
-		{ "ISO-8859-13"          , 0 , "ISO-8859-13" },
-		{ "ISO-8859-14"          , 0 , "ISO-8859-14" },
-		{ "IBM-850"              , 0 , "IBM-850" },
-		{ "IBM-866"              , 0 , "IBM-866" },
-		{ "CP874"                , 0 , "CP874" },
+		{ "ISO-8859-10"          , 0 , 0 , "ISO-8859-10" },
+		{ "ISO-8859-13"          , 0 , 0 , "ISO-8859-13" },
+		{ "ISO-8859-14"          , 0 , 0 , "ISO-8859-14" },
+		{ "IBM-850"              , 0 , 0 , "IBM-850" },
+		{ "IBM-866"              , 0 , 0 , "IBM-866" },
+		{ "CP874"                , 0 , 0 , "CP874" },
 
-		{ "UTF-8/ISO-8859-1"     , 1 , "UTF-8? -> Western, Latin-1" },
-		{ "UTF-8/ISO-8859-2"     , 1 , "UTF-8? -> Central European 1" },
-		{ "UTF-8/ISO-8859-3"     , 1 , "UTF-8? -> Central European 2" },
-		{ "UTF-8/ISO-8859-4"     , 1 , "UTF-8? -> Baltic, Standard" },
-		{ "UTF-8/ISO-8859-5"     , 1 , "UTF-8? -> Cyrillic, ISO" },
-		{ "UTF-8/ISO-8859-6"     , 1 , "UTF-8? -> Arabic, Standard" },
-		{ "UTF-8/ISO-8859-7"     , 1 , "UTF-8? -> Greek" },
-		{ "UTF-8/ISO-8859-8"     , 1 , "UTF-8? -> Hebrew, visually ordered" },
-		{ "UTF-8/ISO-8859-8-i"   , 1 , "UTF-8? -> Hebrew, logically ordered" },
-		{ "UTF-8/ISO-8859-9"     , 1 , "UTF-8? -> Turkish, Latin-5" },
-		{ "UTF-8/ISO-8859-15"    , 1 , "UTF-8? -> Western, Latin-1 + Euro" },
-		{ "UTF-8/KOI8-R"         , 1 , "UTF-8? -> Cyrillic, KOI" },
-		{ "UTF-8/KOI8-U"         , 1 , "UTF-8? -> Ukrainian" },
-		{ "UTF-8/CP-1250"        , 1 , "UTF-8? -> Central European 3" },
-		{ "UTF-8/CP-1251"        , 1 , "UTF-8? -> Cyrillic, Windows" },
-		{ "UTF-8/CP-1252"        , 1 , "UTF-8? -> Western, CP" },
-		{ "UTF-8/CP-1253"        , 1 , "UTF-8? -> Greek, CP" },
-		{ "UTF-8/CP-1256"        , 1 , "UTF-8? -> Arabic, CP" },
-		{ "UTF-8/CP-1257"        , 1 , "UTF-8? -> Baltic, CP" },
-		{ "UTF-8/CP-1255"        , 1 , "UTF-8? -> Hebrew, CP" },
-		{ "UTF-8/CP-1254"        , 1 , "UTF-8? -> Turkish, CP" },
-		{ "UTF-8/TIS-620"        , 1 , "UTF-8? -> Thai" },
+		// smart codecs that send in the local charset
+		{ "ISO-8859-1 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Western Latin-1, O: Western Latin-1" },
+		{ "ISO-8859-2 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Central European 1, O: Central European 1" },
+		{ "ISO-8859-3 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Central European 2, O: Central European 2" },
+		{ "ISO-8859-4 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Baltic, Standard, O: Baltic, Standard" },
+		{ "ISO-8859-5 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Cyrillic, ISO, O: Cyrillic, ISO" },
+		{ "ISO-8859-6 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Arabic, Standard, O: Arabic, Standard" },
+		{ "ISO-8859-7 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Greek, O: Greek" },
+		{ "ISO-8859-8 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Hebrew, visually ordered, O: Hebrew, visually ordered" },
+		{ "ISO-8859-8-i (UTF-8)"   , 1 , 0 , "I: 8-bit Unicode / Hebrew, logically ordered, O: Hebrew, logically ordered" },
+		{ "ISO-8859-9 (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Turkish, Latin-5, O: Turkish, Latin-5" },
+		{ "ISO-8859-15 (UTF-8)"    , 1 , 0 , "I: 8-bit Unicode / Western, Latin-1 + Euro, O: Western, Latin-1 + Euro" },
+		{ "KOI8-R (UTF-8)"         , 1 , 0 , "I: 8-bit Unicode / Cyrillic, KOI, O: Cyrillic, KOI" },
+		{ "KOI8-U (UTF-8)"         , 1 , 0 , "I: 8-bit Unicode / Ukrainian, O: Ukrainian" },
+		{ "CP-1250 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Central European 3, O: Central European 3" },
+		{ "CP-1251 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Cyrillic, Windows, O: Cyrillic, Windows" },
+		{ "CP-1252 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Western, CP, O: Western, CP" },
+		{ "CP-1253 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Greek, CP, O: Greek, CP" },
+		{ "CP-1256 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Arabic, CP, O: Arabic, CP" },
+		{ "CP-1257 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Baltic, CP, O: Baltic, CP" },
+		{ "CP-1255 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Hebrew, CP, O: Hebrew, CP" },
+		{ "CP-1254 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Turkish, CP, O: Turkish, CP" },
+		{ "TIS-620 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Thai, O: Thai" },
 #ifndef QT_NO_BIG_CODECS
-		{ "UTF-8/Big5"           , 1 , "UTF-8? -> Chinese Traditional" },
-		{ "UTF-8/Big5-HKSCS"     , 1 , "UTF-8? -> Chinese Traditional, Hong Kong" },
-		{ "UTF-8/GB18030"        , 1 , "UTF-8? -> Chinese Simplified" },
-		{ "UTF-8/JIS7"           , 1 , "UTF-8? -> Japanese (JIS7)" },
-		{ "UTF-8/Shift-JIS"      , 1 , "UTF-8? -> Japanese (Shift-JIS)" },
-		{ "UTF-8/EUC-JP"         , 1 , "UTF-8? -> Japanese (EUC-JP)" },
-		{ "UTF-8/EUC-KR"         , 1 , "UTF-8? -> Korean" },
-		{ "UTF-8/TSCII"          , 1 , "UTF-8? -> Tamil" },
+		{ "Big5 (UTF-8)"           , 1 , 0 , "I: 8-bit Unicode / Chinese Traditional, O: Chinese Traditional" },
+		{ "Big5-HKSCS (UTF-8)"     , 1 , 0 , "I: 8-bit Unicode / Chinese Traditional, Hong Kong, O: Chinese Traditional, Hong Kong" },
+		{ "GB18030 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / Chinese Simplified, O: Chinese Simplified" },
+		{ "JIS7 (UTF-8)"           , 1 , 0 , "I: 8-bit Unicode / Japanese (JIS7), O: Japanese " },
+		{ "Shift-JIS (UTF-8)"      , 1 , 0 , "I: 8-bit Unicode / Japanese (Shift-JIS), O: Japanese (Shift-JIS)" },
+		{ "EUC-JP (UTF-8)"         , 1 , 0 , "I: 8-bit Unicode / Japanese (EUC-JP), O: Japanese (EUC-JP)" },
+		{ "EUC-KR (UTF-8)"         , 1 , 0 , "I: 8-bit Unicode / Korean, O: Korean" },
+		{ "TSCII (UTF-8)"          , 1 , 0 , "I: 8-bit Unicode / Tamil, O: Tamil" },
 #endif
-		{ "UTF-8/ISO-8859-10"    , 1 , "UTF-8? -> ISO-8859-10" },
-		{ "UTF-8/ISO-8859-13"    , 1 , "UTF-8? -> ISO-8859-13" },
-		{ "UTF-8/ISO-8859-14"    , 1 , "UTF-8? -> ISO-8859-14" },
-		{ "UTF-8/IBM-850"        , 1 , "UTF-8? -> IBM-850" },
-		{ "UTF-8/IBM-866"        , 1 , "UTF-8? -> IBM-866" },
-		{ "UTF-8/CP874"          , 1 , "UTF-8? -> CP874" },
-		{ 0                      , 0 , 0 }
+		{ "ISO-8859-10 (UTF-8)"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-10, O: ISO-8859-10" },
+		{ "ISO-8859-13 (UTF-8)"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-13, O: ISO-8859-13" },
+		{ "ISO-8859-14 (UTF-8)"    , 1 , 0 , "I: 8-bit Unicode / ISO-8859-14, O: ISO-8859-14" },
+		{ "IBM-850 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / IBM-850, O: IBM-850" },
+		{ "IBM-866 (UTF-8)"        , 1 , 0 , "I: 8-bit Unicode / IBM-866, O: IBM-866" },
+		{ "CP874 (UTF-8)"          , 1 , 0 , "I: 8-bit Unicode / CP874, O: CP874" },
+
+		// smart codecs that send in utf8
+		{ "UTF-8 (ISO-8859-1)"     , 1 , 1 , "I: 8-bit Unicode / Western Latin-1, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-2)"     , 1 , 1 , "I: 8-bit Unicode / Central European 1, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-3)"     , 1 , 1 , "I: 8-bit Unicode / Central European 2, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-4)"     , 1 , 1 , "I: 8-bit Unicode / Baltic, Standard, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (ISO-8859-5)"     , 1 , 1 , "I: 8-bit Unicode / Cyrillic, ISO, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-6)"     , 1 , 1 , "I: 8-bit Unicode / Arabic, Standard, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-7)"     , 1 , 1 , "I: 8-bit Unicode / Greek, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-8)"     , 1 , 1 , "I: 8-bit Unicode / Hebrew, visually ordered, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (ISO-8859-8-i)"   , 1 , 1 , "I: 8-bit Unicode / Hebrew, logically ordered, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-9)"     , 1 , 1 , "I: 8-bit Unicode / Turkish, Latin-5, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-15)"    , 1 , 1 , "I: 8-bit Unicode / Western, Latin-1 + Euro, O: 8-bit Unicode" },
+		{ "UTF-8 (KOI8-R)"         , 1 , 1 , "I: 8-bit Unicode / Cyrillic, KOI, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (KOI8-U)"         , 1 , 1 , "I: 8-bit Unicode / Ukrainian, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1250)"        , 1 , 1 , "I: 8-bit Unicode / Central European 3, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1251)"        , 1 , 1 , "I: 8-bit Unicode / Cyrillic, Windows, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1252)"        , 1 , 1 , "I: 8-bit Unicode / Western, CP, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (CP-1253)"        , 1 , 1 , "I: 8-bit Unicode / Greek, CP, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1256)"        , 1 , 1 , "I: 8-bit Unicode / Arabic, CP, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1257)"        , 1 , 1 , "I: 8-bit Unicode / Baltic, CP, O: 8-bit Unicode" },
+		{ "UTF-8 (CP-1255)"        , 1 , 1 , "I: 8-bit Unicode / Hebrew, CP, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (CP-1254)"        , 1 , 1 , "I: 8-bit Unicode / Turkish, CP, O: 8-bit Unicode" },
+		{ "UTF-8 (TIS-620)"        , 1 , 1 , "I: 8-bit Unicode / Thai, O: 8-bit Unicode" },
+#ifndef QT_NO_BIG_CODECS
+		{ "UTF-8 (Big5)"           , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, O: 8-bit Unicode" },
+		{ "UTF-8 (Big5-HKSCS)"     , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, Hong Kong, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (GB18030)"        , 1 , 1 , "I: 8-bit Unicode / Chinese Simplified, O: 8-bit Unicode" },
+		{ "UTF-8 (JIS7)"           , 1 , 1 , "I: 8-bit Unicode / Japanese (JIS7), O: 8-bit Unicode" },
+		{ "UTF-8 (Shift-JIS)"      , 1 , 1 , "I: 8-bit Unicode / Japanese (Shift-JIS), O: Japanese (Shift-JIS)" },
+		{ "UTF-8 (EUC-JP)"         , 1 , 1 , "I: 8-bit Unicode / Japanese (EUC-JP), O: Japanese (EUC-JP)" },
+		
+		{ "UTF-8 (EUC-KR)"         , 1 , 1 , "I: 8-bit Unicode / Korean, O: 8-bit Unicode" },
+		{ "UTF-8 (TSCII)"          , 1 , 1 , "I: 8-bit Unicode / Tamil, O: 8-bit Unicode" },
+#endif
+		{ "UTF-8 (ISO-8859-10)"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-10, O: 8-bit Unicode" },
+		{ "UTF-8 (ISO-8859-13)"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-13, O: 8-bit Unicode" },
+		
+		{ "UTF-8 (ISO-8859-14)"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-14, O: 8-bit Unicode" },
+		{ "UTF-8 (IBM-850)"        , 1 , 1 , "I: 8-bit Unicode / IBM-850, O: 8-bit Unicode" },
+		{ "UTF-8 (IBM-866)"        , 1 , 1 , "I: 8-bit Unicode / IBM-866, O: 8-bit Unicode" },
+		{ "UTF-8 (CP874)"          , 1 , 1 , "I: 8-bit Unicode / CP874, O: 8-bit Unicode" },
+
+		{ 0                        , 0 , 0 , 0 }
 	};
 	
 	EncodingDescription * encodingDescription(int iIdx)
@@ -640,14 +694,25 @@ namespace KviLocale
 
 	QTextCodec * codecForName(const char * szName)
 	{
-		if(kvi_strEqualCIN("UTF-8/",szName,6))
+		KviStr szTmp = szName;
+		int idx = szTmp.findFirstIdx('(');
+		if(idx != -1)
 		{
-			// composite codec
+			// composite codec: either UTF-8 (child codec) or child codec (UTF-8)
 			KviSmartTextCodec * c = g_pSmartCodecDict->find(szName);
 			if(c)return c;
-			KviStr tmp = szName;
-			tmp.cutToFirst('/');
-			c = new KviSmartTextCodec(tmp.ptr());
+			
+			szTmp.replaceAll("UTF-8 (","");
+			szTmp.replaceAll(")","");
+			
+			if(kvi_strEqualCIN("UTF-8 (",szName,7))
+			{
+				// smart codec that sends UTF-8
+				c = new KviSmartTextCodec(szName,szTmp.ptr(),true);
+			} else {
+				// smart codec that sends child encoding
+				c = new KviSmartTextCodec(szName,szTmp.ptr(),false);
+			}
 			if(c->ok())
 			{
 				g_pSmartCodecDict->replace(szName,c);

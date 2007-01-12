@@ -687,6 +687,19 @@ _OUTPUT_PARANOIC: returns true if the users allows KVIrc to print anything
       including debug info. This is intended mainly for developers.
       Usage: if(_OUTPUT_PARANOIC)output...
 
+-------------------------------------------------------------------------------
+Rule for safe text output
+-------------------------------------------------------------------------------
 
+If the format string you're going to output is not constant (i.e. it
+comes from the server) you MUST use KviWindow::outputNoFmt() instead 
+of KviWindow::output().
 
+BAD:
+	QString szText = pConnection->decodeText(msg.safeTrailing());
+	pWindow->output(KVI_OUT_SOMETHING,szText); <--potential crash/security hole
+
+GOOD:
+	QString szText = pConnection->decodeText(msg.safeTrailing());
+	pWindow->outputNoFmt(KVI_OUT_SOMETHING,szText); <--faster and no crashes
 

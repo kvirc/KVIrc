@@ -94,6 +94,7 @@ static QPopupMenu * g_pMdiWindowSystemMainPopup = 0;
 static QPopupMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
 static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
 static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
+static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
@@ -162,6 +163,8 @@ KviWindow::~KviWindow()
 			delete g_pMdiWindowSystemTextEncodingPopupStandard;
 		if(g_pMdiWindowSystemTextEncodingPopupSmart)
 			delete g_pMdiWindowSystemTextEncodingPopupSmart;
+		if(g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
+			delete g_pMdiWindowSystemTextEncodingPopupSmartUtf8;
 	}
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(m_pCryptSessionInfo)
@@ -718,6 +721,13 @@ void KviWindow::createSystemTextEncodingPopup()
 		disconnect(g_pMdiWindowSystemTextEncodingPopupSmart,SIGNAL(activated(int)),0,0);
 	}
 
+	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
+		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new QPopupMenu();
+	else
+	{
+		g_pMdiWindowSystemTextEncodingPopupSmartUtf8->clear();
+		disconnect(g_pMdiWindowSystemTextEncodingPopupSmartUtf8,SIGNAL(activated(int)),0,0);
+	}
 
 	QTextCodec * c = defaultTextCodec();
 	QString tmp = __tr2qs("Use Default Encoding");
@@ -734,13 +744,14 @@ void KviWindow::createSystemTextEncodingPopup()
 
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart"),g_pMdiWindowSystemTextEncodingPopupSmart);
+	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
 	
 	int i = 0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-		QPopupMenu * ppp = d->bSmart ? g_pMdiWindowSystemTextEncodingPopupSmart : g_pMdiWindowSystemTextEncodingPopupStandard;
+		QPopupMenu * ppp = d->bSmart ? (d->bSendUtf8 ? g_pMdiWindowSystemTextEncodingPopupSmartUtf8 : g_pMdiWindowSystemTextEncodingPopupSmart) : g_pMdiWindowSystemTextEncodingPopupStandard;
 		id = ppp->insertItem(tmp);
 		if(KviQString::equalCI(m_szTextEncoding,d->szName))
 			ppp->setItemChecked(id,true);
@@ -749,6 +760,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	}
 
 	connect(g_pMdiWindowSystemTextEncodingPopupSmart,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupSmartActivated(int)));
+	connect(g_pMdiWindowSystemTextEncodingPopupSmartUtf8,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupSmartUtf8Activated(int)));
 	connect(g_pMdiWindowSystemTextEncodingPopupStandard,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupStandardActivated(int)));
 }
 
@@ -815,6 +827,15 @@ void KviWindow::systemTextEncodingPopupSmartActivated(int id)
 	if(!g_pMdiWindowSystemTextEncodingPopupSmart)
 		return;
 	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmart->text(id);
+	KviQString::cutFromFirst(tmp,' ');
+	setTextEncoding(tmp);
+}
+
+void KviWindow::systemTextEncodingPopupSmartUtf8Activated(int id)
+{
+	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
+		return;
+	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->text(id);
 	KviQString::cutFromFirst(tmp,' ');
 	setTextEncoding(tmp);
 }

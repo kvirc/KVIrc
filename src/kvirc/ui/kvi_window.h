@@ -305,6 +305,7 @@ protected slots:
 	void textEncodingButtonClicked();
 	void systemPopupRequest(const QPoint &pnt);
 	void systemTextEncodingPopupSmartActivated(int id);
+	void systemTextEncodingPopupSmartUtf8Activated(int id);
 	void systemTextEncodingPopupStandardActivated(int id);
 	void systemTextEncodingPopupDefault();
 	void childDestroyed();

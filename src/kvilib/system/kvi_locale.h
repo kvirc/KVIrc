@@ -41,6 +41,7 @@ namespace KviLocale
 	{
 		char * szName;
 		char   bSmart; // is it a smart codec ?
+		char   bSendUtf8; // does it send utf8 or the local charset ?
 		char * szDescription;
 	} EncodingDescription;
 

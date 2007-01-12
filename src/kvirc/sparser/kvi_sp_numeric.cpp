@@ -84,7 +84,7 @@ void KviServerParser::parseNumeric001(KviIrcMessage *msg)
 	if(msg->connection()->context()->state() != KviIrcContext::Connected)
 		msg->connection()->loginComplete(msg->connection()->decodeText(msg->param(0)));
 	if(!msg->haltOutput())
-		msg->console()->output(KVI_OUT_SERVERINFO,szText);
+		msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,szText);
 }
 
 void KviServerParser::parseNumeric002(KviIrcMessage *msg)
@@ -93,7 +93,7 @@ void KviServerParser::parseNumeric002(KviIrcMessage *msg)
 	// :prefix 002 target :Your host is <server name>, running version <server version>
 	if(msg->connection()->context()->state() != KviIrcContext::Connected)
 		msg->connection()->loginComplete(msg->connection()->decodeText(msg->param(0)));
-	if(!msg->haltOutput())msg->console()->output(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
+	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
 }
 
 void KviServerParser::parseNumeric003(KviIrcMessage *msg)
@@ -102,7 +102,7 @@ void KviServerParser::parseNumeric003(KviIrcMessage *msg)
 	// :prefix 003 target :This server was created <date>
 	if(msg->connection()->context()->state() != KviIrcContext::Connected)
 		msg->connection()->loginComplete(msg->connection()->decodeText(msg->param(0)));
-	if(!msg->haltOutput())msg->console()->output(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
+	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()));
 }
 
 void KviServerParser::parseNumeric004(KviIrcMessage *msg)
@@ -1735,7 +1735,7 @@ void KviServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->output(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).utf8().data());
+			pOut->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).utf8().data());
 	}
 }
 void KviServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
