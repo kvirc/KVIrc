@@ -2254,7 +2254,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	m_pMultiEditorButton->setIconSet(is2);
-	QToolTip::add(m_pMultiEditorButton,__tr2qs("Multi-line Editor<br>&lt;Ctrl+Backspace&gt;"));
+	QToolTip::add(m_pMultiEditorButton,__tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;"));
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
 	
@@ -2385,7 +2385,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	} else {
 		if(!bOn)return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
-		m_pMultiLineEditor->setFindText(__tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor"));
+		m_pMultiLineEditor->setFindText(__tr2qs("<Alt+Return>; submits, <Alt+Backspace>; hides this editor"));
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
 		m_pMultiLineEditor->show();
