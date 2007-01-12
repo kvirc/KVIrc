@@ -2300,6 +2300,18 @@ void KviInput::inputEditorEnterPressed()
 void KviInput::keyPressEvent(QKeyEvent *e)
 {
 	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().utf8().data());
+
+	if(e->state() & ControlButton)
+	{
+		switch(e->key())
+		{
+			case Qt::Key_Backspace:
+				if(m_pMultiLineEditor)
+					multilineEditorButtonToggled(!m_pMultiLineEditor);
+			break;
+		}
+	}
+
 	if(e->state() & ControlButton)
 	{
 		switch(e->key())
@@ -2354,10 +2366,6 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 				}
 			}
 			break;
-			case Qt::Key_Backspace:
-				if(m_pMultiLineEditor)
-					multilineEditorButtonToggled(!m_pMultiLineEditor);
-			break;
 			case Qt::Key_PageUp:
 				historyButtonClicked();
 			break;
@@ -2385,7 +2393,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	} else {
 		if(!bOn)return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
-		m_pMultiLineEditor->setFindText(__tr2qs("<Alt+Return>; submits, <Alt+Backspace>; hides this editor"));
+		m_pMultiLineEditor->setFindText(__tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"));
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
 		m_pMultiLineEditor->show();
