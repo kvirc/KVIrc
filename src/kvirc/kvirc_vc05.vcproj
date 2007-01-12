@@ -1049,6 +1049,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\kernel\kvi_theme.cpp"
+					>
+				</File>
+				<File
 					RelativePath="kernel\kvi_useraction.cpp"
 					>
 				</File>
@@ -2811,6 +2815,10 @@
 							Outputs="$(InputDir)\$(InputName).moc"
 						/>
 					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\kernel\kvi_theme.h"
+					>
 				</File>
 				<File
 					RelativePath="kernel\kvi_useraction.h"

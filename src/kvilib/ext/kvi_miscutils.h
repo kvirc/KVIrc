@@ -34,10 +34,10 @@ namespace KviMiscUtils
 	// Compare two x.y.z... version strings.
 	// The function behaves like strcmp: it returns 0 when the versions
 	// are equal, -1 if the szVersion1 is greater and 1 if szVersion2 is greater
-	int compareVersions(const QString &szVersion1,const QString &szVersion2);
+	extern KVILIB_API int compareVersions(const QString &szVersion1,const QString &szVersion2);
 
 	// Check if the argument string is a valid x.y.z.... version string
-	bool isValidVersionString(const QString &szVersion);
+	extern KVILIB_API bool isValidVersionString(const QString &szVersion);
 
 };
 
