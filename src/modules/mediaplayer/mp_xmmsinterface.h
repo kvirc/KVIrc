@@ -75,8 +75,6 @@
 	public:
 		KviAudaciousInterface();
 		virtual ~KviAudaciousInterface();
-	protected:
-		virtual void * lookupSymbol(const char * szSymbolName);
 	};
 	
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
