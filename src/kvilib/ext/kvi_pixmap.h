@@ -48,7 +48,8 @@ public:
 	void setNull();
 };
 
-namespace KviPixmapUtils {
+namespace KviPixmapUtils
+{
 	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight);
 	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy);
 };

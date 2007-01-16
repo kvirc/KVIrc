@@ -703,3 +703,89 @@ GOOD:
 	QString szText = pConnection->decodeText(msg.safeTrailing());
 	pWindow->outputNoFmt(KVI_OUT_SOMETHING,szText); <--faster and no crashes
 
+-------------------------------------------------------------------------------
+KVIrc (and script) versioning
+-------------------------------------------------------------------------------
+
+- Standard definition
+
+The KVIrc versioning follows a really common standard: we use a
+string of numbers separated by dots with decreasing weight from left to right.
+
+	<N1>.<N2>.<N3>.<N4>.....
+
+where each <NX> is a number.
+
+Theoretically there is no limit on the parts the version can be composed
+of but in fact we use either three or four part versions. The omitted
+parts on the right are implicitly assumed to be 0.
+
+The first part is called the major release number and it is bumped
+up only when really big changes occur in the source tree. A bump from N to N+1
+in the major version number means that a great milestone has been achieved
+and the software is really different from what it was in the moment
+when the major number was bumped from N-1 to N. This usually also means
+that the software might be somewhat incompatible with the previous major release.
+
+When the major number is bumped up all the following parts are reset to 0
+(and could be even temporairly omitted).
+
+The second part is called minor release number and it is increased
+more often than the major. A bump from N to N+1 in the minor version number
+means that an ordinary (small) development milestone has been achieved.
+Software versions with the same major and close minor numbers are likely
+to be totally compatible with each other.
+
+When the minor number is bumped up all the following parts are reset to 0.
+
+The thirs part is called revision number and it is increased often. A bump
+from N to N+1 in the revision number usually means that a set of bugfixes
+or some new features have been included in the software. Compatibility
+should be assumed unless explicitly noted. Again, when the revision number
+is bumped up all the following parts are reset to 0.
+
+The fourth part is actually used only on the svn tree and it is usually not
+present in the official public releases (it is assumed to be 0 for comparison
+purposes). KVIrc uses the ISO sources date in the format YYYYMMDD for this number.
+The sources date number is defined in src/kvilib/config/kvi_sourcesdate.h
+and is also displayed by kvirc --version.
+
+It is unlikely that you will find a KVIrc versioned with more than
+four numbers... but if you will (for some strange reason) then it will
+still follow the same rules: it will be increased for yet minor changes
+(two versions within a single day ?) and will be reset to (implicit)
+zero when the fourth part changes.
+
+- Comparison of version strings
+
+The comparison of two version strings is defined as follows.
+Let N1.N2.N3.N4.N5..... and M1.M2.M3.M4.M5..... be version strings.
+To find out which one is greater compare each couple of numbers Ni-Mi at the same
+position i (with the same weight) until Ni and Mi differ or both Ni and
+Mi are omitted. If both Ni and Mi are omitted then the version strings
+are equal, otherwise the greater version string is the one that
+contains the greater of the Ni - Mi couple. Easy, right ?
+
+This means that to compare 3.2.6.3.4 and 3.2.9 you first compare
+3 with 3 and find that they are equal. Then you compare 2 with 2
+and find that they are equal. Then compare 6 with 9 and find that
+they are different and 9 is greater. This allows you to say that
+the first version string is greater than the second.
+
+To compare 3.2.6.1 with 3.2.6 you compare 3 and 3, 2 and 2, 6 and 6
+and 1 with (implicit) 0, that tells you that the first version string
+is greater than the second one.
+
+This also means that 3 and 3.0.0 are assumed to be EQUAL.
+
+- Package versioning schemes with letters
+
+It is common for packages to add letters to some of the parts
+of the version string. This causes the string to lose the
+advantage of being universally comparable but it might still
+define a consistent scheme for some package line. In the case
+that letters are added to a version string (like 3.2.6.svn10)
+we say that it is comparable only to the version strings
+that have the same letter pattern: 3.2.6.svn10 and 4.3.1.svn344
+are comparable but 3.2.6.svn10 and 3.2.6.cvs15 are not.
+For comparable strings we strip the letters in order to make the comparison.

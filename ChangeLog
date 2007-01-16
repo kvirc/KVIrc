@@ -14,6 +14,8 @@
      We will need to "abstract" several collection classes to make everything
      work with both Qt 3.x and Qt 4.x. The goal is (or better would be) to hide everything in
      kvilib in order to have almost no conditional compilation in the kvirc core and in the modules.
+   - Added a discussion about the versioning scheme in the hackers.guide.txt. Give
+     it a read and make/add your comments :)
 
 12 Jan 2007
    [Pragma]
