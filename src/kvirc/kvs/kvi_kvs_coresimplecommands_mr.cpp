@@ -591,8 +591,6 @@ namespace KviKvsCoreSimpleCommands
 
 		if(KviFileUtils::directoryExists(szFileName))
 		{
-			// FIXME: Throw away KviStr!!!
-			//KviStr szTmp;
 			QString szTmp;
 			KVSCSC_pContext->enterBlockingSection();
 			

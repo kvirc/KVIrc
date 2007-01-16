@@ -1,3 +1,20 @@
+15 Jan 2007
+   [Pragma]
+   - Fixed the smart encoders a bit more
+   - Theme management: rewritten the theme save dialog as a wizard, added screenshot management.
+   - Really first step to Qt 4.x support: added ./configure switches to handle qt4 and
+     fiddled the makefile variables to contain the right include and library paths.
+     Still have no idea if everything works correctly since compilation bails out
+     very early in kvilib.
+     You're likely to have problems with moc since the configure script tends
+     to find the Qt 3.x moc instead of the correct one. Use the --with-qt4-moc option
+     to force the right moc compiler path.
+     In Qt 4.x mode the COMPILE_USE_QT4 preprocessor variable is set: use it for conditionals...
+     an #ifdef COMPILE_USE_QT4 is more or less equivalent to #if QT_VERSION >= 0x040000.
+     We will need to "abstract" several collection classes to make everything
+     work with both Qt 3.x and Qt 4.x. The goal is (or better would be) to hide everything in
+     kvilib in order to have almost no conditional compilation in the kvirc core and in the modules.
+
 12 Jan 2007
    [Pragma]
    - Added a set of smart encoders that send in UTF-8 instead of the child encoding
@@ -5,6 +22,7 @@
      to certain messages from server
    - Added corrections and null checks in some places to make KVIrc resist to
      the ircfuzz.c attack.
+   - Committed the spanish translation by Roberto Ciria
 
 08 Jan 2007
    [Pragma]

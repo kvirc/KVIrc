@@ -33,6 +33,7 @@
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_theme.h"
+#include "kvi_frame.h"
 
 #include <qmime.h>
 
@@ -156,6 +157,11 @@ namespace KviThemeFunctions
 			r.getStringInfoField(szTmp,szThemeAuthor);
 			KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
 			r.getStringInfoField(szTmp,szThemeThemeEngineVersion);
+			KviQString::sprintf(szTmp,"Theme%dScreenshot",iIdx);
+			QPixmap pixScreenshot;
+			pByteArray = r.binaryInfoFields()->find(szTmp);
+			if(pByteArray)
+				pixScreenshot.loadFromData(*pByteArray,0,0);
 
 			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeThemeEngineVersion.isEmpty())
 				bValid = false;
@@ -173,8 +179,13 @@ namespace KviThemeFunctions
 				szThemeApplication,
 				szThemeAuthor,
 				szThemeDate,
-				szThemeThemeEngineVersion
+				szThemeThemeEngineVersion,
+				pixScreenshot,
+				iIdx
 			);
+
+			if(iIdx > 0)
+				szDetails += "<hr>";
 
 			szDetails += szDetailsBuffer;
 
@@ -186,16 +197,12 @@ namespace KviThemeFunctions
 				iValidThemeCount--;
 			}
 
-			if(iIdx > 0)
-				szDetails += "<hr>";
-
 			iIdx++;
 		}
 
-		szDetails += "<p><center><a href=\"theme_dialog_main\">";
+		szDetails += "<br><p><center><a href=\"theme_dialog_main\">";
 		szDetails +=  __tr2qs_ctx("Go Back to Package Data","theme");
 		szDetails += "</a></center></p>";
-
 		szDetails += "</body></html>";
 
 		if(iValidThemeCount < iThemeCount)
@@ -244,7 +251,8 @@ namespace KviThemeFunctions
 			&szPackageDate,
 			&szCreatedOn,
 			&szPackageApplication,
-			&szWarnings
+			&szWarnings,
+			&szShowDetails
 		);
 
 		
@@ -295,7 +303,9 @@ namespace KviThemeFunctions
 		const QString &szThemeApplication,
 		const QString &szThemeAuthor,
 		const QString &szThemeDate,
-		const QString &szThemeThemeEngineVersion
+		const QString &szThemeThemeEngineVersion,
+		const QPixmap &pixScreenshot,
+		int iUniqueIndexInDocument
 	)
 	{
 		QString szAuthor = __tr2qs_ctx("Author","theme");
@@ -304,27 +314,40 @@ namespace KviThemeFunctions
 		QString szThemeEngineVersion = __tr2qs_ctx("Theme Engine Version","theme");
 		QString szSubdirectory = __tr2qs_ctx("Subdirectory","theme");
 
+		QString szScreenshot;
+		if(!pixScreenshot.isNull())
+		{
+			KviQString::sprintf(szScreenshot,"<p><center><img src=\"theme_shot%d\"></center></p>",iUniqueIndexInDocument);
+			QString szTmp;
+			KviQString::sprintf(szTmp,"theme_shot%d",iUniqueIndexInDocument);
+			QMimeSourceFactory::defaultFactory()->setPixmap(szTmp,pixScreenshot);
+		} else {
+			szScreenshot = "";
+		}
+
 		KviQString::sprintf(
 			szBuffer,
-			"<p>" \
+			"<p><center>" \
 				"<h2>%Q %Q</h2>" \
-			"</p>" \
-			"<p>" \
+			"</center></p>" \
+			"%Q" \
+			"<p><center>" \
 				"<i>%Q</i>" \
-			"</p>" \
-			"<p>" \
+			"</center></p>" \
+			"<p><center>" \
 				"%Q: <b>%Q</b><br>" \
 				"%Q: <b>%Q</b><br>" \
-			"</p>" \
-			"<p>" \
+			"</center></p>" \
+			"<p><center>" \
 				"<font color=\"#808080\">" \
 					"%Q: %Q<br>" \
 					"%Q: %Q<br>" \
 					"%Q: %Q<br>" \
 				"</font>" \
-			"</p>",
+			"</center></p>",
 			&szThemeName,
 			&szThemeVersion,
+			&szScreenshot,
 			&szThemeDescription,
 			&szAuthor,
 			&szThemeAuthor,
@@ -339,6 +362,30 @@ namespace KviThemeFunctions
 		);
 	}
 
+	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame)
+	{
+		if(bMaximizeFrame)
+		{
+			if(g_pFrame->isMaximized())
+				bMaximizeFrame = false;
+		}
+	
+		if(bMaximizeFrame)
+			g_pFrame->showMaximized();
+		
+		QPixmap pix = QPixmap::grabWidget(g_pFrame);
+		bool bResult = true;
+		
+		if(pix.isNull())
+			bResult = false;
+		else {
+			if(!pix.save(szSavePngFilePath,"PNG",100))
+				bResult = false;
+		}
 
+		if(bMaximizeFrame)
+			g_pFrame->showNormal();
+		return bResult;
+	}
 };
 

@@ -366,6 +366,17 @@ void register_core_actions(KviActionManager * m)
 		0,
 		QString::null);
 
+	SCRIPT_ACTION(
+		KVI_COREACTION_SCREENSHOT,
+		"theme.screenshot",
+		__tr2qs("Acquire Screenshot"),
+		__tr2qs("Acquires a Screenshot of the KVIrc main window"),
+		KviActionManager::categoryGeneric(),
+		"kvi_bigicon_screenshot.png",
+		KVI_SMALLICON_SCREENSHOT,
+		0,
+		QString::null);
+
 
 	SLOT_ACTION(
 		KVI_COREACTION_CASCADEWINDOWS,

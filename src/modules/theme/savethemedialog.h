@@ -26,10 +26,11 @@
 
 #include "kvi_settings.h"
 #include "kvi_list.h"
+#include "kvi_theme.h"
 
 #include <qdialog.h>
+#include <qwizard.h>
 
-#include "kvi_theme.h"
 
 class QLineEdit;
 class QTextEdit;
@@ -40,21 +41,29 @@ class QMultiLineEdit;
 class KviFileSelector;
 
 
-class KviSaveThemeDialog : public QDialog
+class KviSaveThemeDialog : public QWizard
 {
 	Q_OBJECT
 public:
-	KviSaveThemeDialog(QWidget *par);
+	KviSaveThemeDialog(QWidget * pParent);
 	virtual ~KviSaveThemeDialog();
 protected:
-	QLineEdit   * m_pAuthorEdit;
-	QLineEdit   * m_pThemeNameEdit;
-	QLineEdit   * m_pVersionEdit;
-	QTextEdit   * m_pDescriptionEdit;
+	QString m_szScreenshotPath;
+	KviFileSelector * m_pImageSelector;
+	QLabel * m_pImageLabel;
+	QLineEdit * m_pThemeNameEdit;
+	QTextEdit * m_pThemeDescriptionEdit;
+	QLineEdit * m_pThemeVersionEdit;
+	QLineEdit * m_pAuthorNameEdit;
+	QWidget * m_pImageSelectionPage;
 	QPushButton * m_pOkButton;
+protected:
+	virtual void accept();
+	bool saveTheme();
 protected slots:
-	void saveTheme();
-	void themeNameChanged(const QString &txt);
+	void makeScreenshot();
+	void imageSelectionChanged(const QString &szImagePath);
+	//void themeNameChanged(const QString &txt);
 };
 
 

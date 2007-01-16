@@ -1,12 +1,12 @@
-#ifndef _KVI_LIST_H_
-#define _KVI_LIST_H_
+#ifndef _KVI_VALUELIST_H_
+#define _KVI_VALUELIST_H_
 //=================================================================================================
 //
-//   File : kvi_list.h
-//   Creation date : Tue Jul 6 1999 14:52:20 by Szymon Stefanek
+//   File : kvi_valuelist.h
+//   Creation date : Mon Jan 15 2007 04:53 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,32 +24,14 @@
 //
 //=================================================================================================
 
-
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3ptrlist.h>
-	#define KviPtrList Q3PtrList
-	#define KviPtrListBase Q3PtrList
-	#define KviPtrListIterator Q3PtrListIterator
+#if COMPILE_USE_QT4
+	#include <q3valuelist.h>
+	#define KviValueList Q3ValueList
 #else
-	#if QT_VERSION >= 300
-		#include <qptrlist.h>
-		#define KviPtrList QPtrList
-		#define KviPtrListBase QPtrList
-		#define KviPtrListIterator QPtrListIterator
-	#else
-		#include <qlist.h>
-		#define KviPtrList QList
-		#define KviPtrListBase QList
-		#define KviPtrListIterator QListIterator
-	#endif
+	#include <qvaluelist.h>
+	#define KviValueList QValueList
 #endif
 
-// BROKEN MSVC LINKER
-#ifdef COMPILE_ON_WINDOWS
-	#include "kvi_string.h"
-	template class KVILIB_API KviPtrList<KviStr>;
-#endif
-
-#endif //_KVI_LIST_H_
+#endif //_KVI_VALUELIST_H_

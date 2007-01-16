@@ -132,6 +132,8 @@
 */
 #define KVI_DEPRECATED
 
-
+#ifdef COMPILE_USE_QT4
+	#define debug qDebug
+#endif
 
 #endif //_KVI_SETTINGS_H_

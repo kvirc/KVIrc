@@ -101,7 +101,9 @@ headers_HEADERS = \
 	../config/kvi_settings.h \
 	../config/kvi_sourcesdate.h \
 	../config/kvi_wincfg.h \
+	../core/kvi_asciidict.h \
 	../core/kvi_bswap.h \
+	../core/kvi_dict.h \
 	../core/kvi_error.h \
 	../core/kvi_heapobject.h \
 	../core/kvi_inttypes.h \
@@ -112,6 +114,7 @@ headers_HEADERS = \
 	../core/kvi_strasm.h \
 	../core/kvi_string.h \
 	../core/kvi_stringarray.h \
+	../core/kvi_valuelist.h \
 	../ext/kvi_cmdformatter.h \
 	../ext/kvi_config.h \
 	../ext/kvi_crypt.h \

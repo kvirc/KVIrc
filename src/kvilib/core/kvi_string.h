@@ -36,8 +36,17 @@
 
 #include <qglobal.h>
 #include <qstring.h>
-#include <qcstring.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <q3cstring.h> // includes <qbytearray.h>
+	#define _QCString QByteArray
+#else
+	// this is dead in Qt 4.x
+	#include <qcstring.h>
+	#define _QCString QCString
+#endif
+
+#include "kvi_inttypes.h"
 #include "kvi_heapobject.h"
 #include "kvi_stdarg.h"
 
@@ -90,8 +99,8 @@ __KVI_EXTERN KVILIB_API int kvi_strcmpCI(const char *str1,const char *str2);
 __KVI_EXTERN KVILIB_API int kvi_strcmpCS(const char *str1,const char *str2);
 
 // some wide char stuff
-typedef Q_UINT16 kvi_wchar_t;
-typedef Q_UINT32 kvi_wslen_t;
+typedef kvi_u16_t kvi_wchar_t;
+typedef kvi_u32_t kvi_wslen_t;
 
 __KVI_EXTERN KVILIB_API kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str);
 __KVI_EXTERN KVILIB_API int kvi_wvsnprintcf(kvi_wchar_t * buffer,kvi_wslen_t len,const char *fmt,kvi_va_list list);
@@ -147,7 +156,7 @@ public:
 	// Safe even if the QString is null.
 	KviStr(const QString &str);
 
-	KviStr(const QCString &str);
+	KviStr(const _QCString &str);
 
 	// Fill sonstructor.
 	// Creates a string long fillLen characters filled with character c.<br>
@@ -256,7 +265,7 @@ public:
 	KviStr & operator=(const char *str);         // str can be NULL here
 	KviStr & operator=(char c);                  // 2 bytes allocated ,m_len = 1
 	KviStr & operator=(const QString &str);
-	KviStr & operator=(const QCString &str);
+	KviStr & operator=(const _QCString &str);
 
 	// Append operators
 	KviStr & operator+=(const KviStr &str)      { append(str); return (*this);          };

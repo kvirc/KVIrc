@@ -266,35 +266,37 @@ void KviMenuBar::newConnectionToServer(int id)
 
 void KviMenuBar::setupToolsPopup()
 {
-   QPopupMenu * m = (QPopupMenu *)sender();
-   if(!m)return;
+	QPopupMenu * m = (QPopupMenu *)sender();
+	if(!m)return;
 
-   m->clear();
+	m->clear();
 
-   KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("tool");
-   if(l)
-   {
-      for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
-      {
-         int id;
-         if(d->icon())id = m->insertItem(*(d->icon()),d->visibleName());
-         else id = m->insertItem(d->visibleName());
-         //m->setItemChecked(id,(m_pFrm->moduleExtensionToolBar(d->id())));
-         m->setItemParameter(id,d->id());
-      }
-   }
-   m->insertSeparator();
-   ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
-   ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS,m)
-   ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST,m)
-   m->insertSeparator();
+	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("tool");
+	if(l)
+	{
+		for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
+		{
+			int id;
+			if(d->icon())id = m->insertItem(*(d->icon()),d->visibleName());
+			else id = m->insertItem(d->visibleName());
+			//m->setItemChecked(id,(m_pFrm->moduleExtensionToolBar(d->id())));
+			m->setItemParameter(id,d->id());
+		}
+	}
+	m->insertSeparator();
+	ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS,m)
+	ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST,m)
+	m->insertSeparator();
 
-   // moved the old tools here
-   m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
+	ACTION_POPUP_ITEM(KVI_COREACTION_SCREENSHOT,m)
+
+	// moved the old tools here
+	m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
 #ifdef COMPILE_KDE_SUPPORT
-   int id;
-   id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),__tr2qs("Open &Terminal"),m_pFrm,SLOT(executeInternalCommand(int)));
-   m->setItemParameter(id,KVI_INTERNALCOMMAND_TERM_OPEN);
+	int id;
+	id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),__tr2qs("Open &Terminal"),m_pFrm,SLOT(executeInternalCommand(int)));
+	m->setItemParameter(id,KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 
 	

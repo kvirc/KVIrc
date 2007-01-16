@@ -34,6 +34,8 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_config.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_fileutils.h"
+#include "kvi_filedialog.h"
 
 #include "managementdialog.h"
 #include "themefunctions.h"
@@ -74,6 +76,56 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 }
 
 /*
+	@doc: theme.screenshot
+	@type:
+		command
+	@title:
+		theme.screenshot
+	@short:
+		Makes a screenshot of the KVIrc window
+	@syntax:
+		theme.screenshot [file_name_path:string]
+	@description:
+		Makes a screenshot of the KVIrc main window
+		and saves it in the specified file. If [file_name_path]
+		is not specified then a save file dialog is shown.
+*/
+
+static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
+{
+	QString szFileName; 
+	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("file_name_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
+	KVSM_PARAMETERS_END(c)
+
+
+	KviFileUtils::adjustFilePath(szFileName);
+
+	QString szTmp;
+	c->enterBlockingSection();
+
+	bool bResult = KviFileDialog::askForSaveFileName(szTmp,__tr2qs_ctx("Choose a file to save the screenshot to","theme"),szFileName,"*.png");
+
+	if(!c->leaveBlockingSection())return false; // need to stop immediately
+	if(!bResult)return true;
+
+	szFileName = szTmp;
+
+	if(szFileName.isEmpty())return true; // done
+	KviFileUtils::adjustFilePath(szFileName);
+
+	QString szError;
+	if(!KviThemeFunctions::makeKVIrcScreenshot(szFileName))
+	{
+		c->error(__tr2qs_ctx("Error making screenshot","theme")); // FIXME: a nicer error ?
+		return false;
+	}
+
+	return true;
+}
+
+/*
 	@doc: theme.dialog
 	@type:
 		command
@@ -97,6 +149,7 @@ static bool theme_module_init(KviModule *m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",theme_kvs_cmd_dialog);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"install",theme_kvs_cmd_install);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"screenshot",theme_kvs_cmd_screenshot);
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);

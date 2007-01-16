@@ -39,7 +39,7 @@
 /* define if you want the IpV6 support */
 #undef COMPILE_IPV6_SUPPORT
 
-/* define if you want to compile the KDE 2.x support */
+/* define if you want to compile the KDE 3.x support */
 #undef COMPILE_KDE_SUPPORT
 
 /* define if you want the memory checks */
@@ -87,6 +87,9 @@
 
 /* define if you have libgsm and want the GSM code to be compiled */
 #undef COMPILE_USE_GSM
+
+/* define if you want to compile the Qt 4.x support */
+#undef COMPILE_USE_QT4
 
 /* define if you trust your memmove() function */
 #undef COMPILE_WITH_SYSTEM_MEMMOVE
@@ -187,31 +190,31 @@
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
 
-/* The size of `int', as computed by sizeof. */
+/* The size of a `int', as computed by sizeof. */
 #undef SIZEOF_INT
 
-/* The size of `long int', as computed by sizeof. */
+/* The size of a `long int', as computed by sizeof. */
 #undef SIZEOF_LONG_INT
 
-/* The size of `long long int', as computed by sizeof. */
+/* The size of a `long long int', as computed by sizeof. */
 #undef SIZEOF_LONG_LONG_INT
 
-/* The size of `short int', as computed by sizeof. */
+/* The size of a `short int', as computed by sizeof. */
 #undef SIZEOF_SHORT_INT
 
-/* The size of `unsigned int', as computed by sizeof. */
+/* The size of a `unsigned int', as computed by sizeof. */
 #undef SIZEOF_UNSIGNED_INT
 
-/* The size of `unsigned long int', as computed by sizeof. */
+/* The size of a `unsigned long int', as computed by sizeof. */
 #undef SIZEOF_UNSIGNED_LONG_INT
 
-/* The size of `unsigned long long int', as computed by sizeof. */
+/* The size of a `unsigned long long int', as computed by sizeof. */
 #undef SIZEOF_UNSIGNED_LONG_LONG_INT
 
-/* The size of `unsigned short int', as computed by sizeof. */
+/* The size of a `unsigned short int', as computed by sizeof. */
 #undef SIZEOF_UNSIGNED_SHORT_INT
 
-/* The size of `void *', as computed by sizeof. */
+/* The size of a `void *', as computed by sizeof. */
 #undef SIZEOF_VOID_P
 
 /* Define to 1 if you have the ANSI C header files. */

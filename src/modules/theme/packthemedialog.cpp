@@ -39,6 +39,7 @@
 #include <qmultilineedit.h>
 #include <qbuffer.h>
 #include <qlabel.h>
+#include <qregexp.h>
 
 
 #include "kvi_options.h"
@@ -69,11 +70,17 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	QString szPackageAuthor;
 	QString szPackageDescription;
 	QString szPackageVersion;
+
+	m_szPackagePath = QDir::homeDirPath();
+	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+
+	bool bPackagePathSet = false;
+
 	if(m_pThemeInfoList->count() > 1)
 	{
 		szPackageName = "MyThemes";
 		szPackageAuthor = __tr2qs_ctx("Your name here","theme");
-		szPackageVersion = "1.0";
+		szPackageVersion = "1.0.0";
 		szPackageDescription = __tr2qs_ctx("Put a package description here...","theme");
 	} else {
 		if(m_pThemeInfoList->count() > 0)
@@ -83,9 +90,28 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 			szPackageAuthor = pThemeInfo->author();
 			szPackageDescription = pThemeInfo->description();
 			szPackageVersion = pThemeInfo->version();
+
+			m_szPackagePath += pThemeInfo->subdirectory();
+			if(m_szPackagePath.find(QRegExp("[0-9]\\.[0-9]")) == -1)
+			{
+				m_szPackagePath += "-";
+				m_szPackagePath += szPackageVersion;
+			}
+			m_szPackagePath += ".";
+			m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
+			
+			bPackagePathSet = true;
 		}
 	}
 
+	if(!bPackagePathSet)
+	{
+		m_szPackagePath += szPackageName;
+		m_szPackagePath += "-";
+		m_szPackagePath += szPackageVersion;
+		m_szPackagePath += ".";
+		m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
+	}
 
 	setCaption(__tr2qs_ctx("Export Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
@@ -126,9 +152,19 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	QString szThemesDescription = "<html><body bgcolor=\"#ffffff\">";
 
 	int iIdx = 0;
+	QPixmap pixScreenshot;
+	QString szScreenshotPath;
+
 	for(pThemeInfo = m_pThemeInfoList->first();pThemeInfo;pThemeInfo = m_pThemeInfoList->next())
 	{
 		QString szThemeDescription;
+		
+		if(pixScreenshot.isNull())
+		{
+			pixScreenshot = pThemeInfo->smallScreenshot();
+			if(!pixScreenshot.isNull())
+				szScreenshotPath = pThemeInfo->smallScreenshotPath();
+		}
 		
 		KviThemeFunctions::getThemeHtmlDescription(
 			szThemeDescription,
@@ -139,7 +175,9 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 			pThemeInfo->application(),
 			pThemeInfo->author(),
 			pThemeInfo->date(),
-			pThemeInfo->themeEngineVersion()
+			pThemeInfo->themeEngineVersion(),
+			pThemeInfo->smallScreenshot(),
+			iIdx
 		);
 
 		if(iIdx > 0)
@@ -193,7 +231,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 	
-	m_pPackageDescriptionEdit = new QMultiLineEdit(pPage);
+	m_pPackageDescriptionEdit = new QTextEdit(pPage);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
@@ -254,15 +292,6 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 
-	m_szPackagePath = QDir::homeDirPath();
-	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-	
-	m_szPackagePath += szPackageName;
-	m_szPackagePath += "-";
-	m_szPackagePath += szPackageVersion;
-	m_szPackagePath += ".";
-	m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
-
 	szFilter = "*.";
 	szFilter += KVI_FILEEXTENSION_THEMEPACKAGE;
 	m_pPathSelector = new KviFileSelector(pPage,"",&m_szPackagePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
@@ -281,6 +310,11 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	setNextEnabled(pPage,false);
 	setFinishEnabled(pPage,true);
 
+	if(!szScreenshotPath.isEmpty())
+	{
+		m_pImageSelector->setSelection(szScreenshotPath);
+		imageSelectionChanged(szScreenshotPath);
+	}
 }
 
 KviPackThemeDialog::~KviPackThemeDialog()
@@ -389,6 +423,18 @@ bool KviPackThemeDialog::packTheme()
 		f.addInfoField(szTmp,pInfo->application());
 		KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
 		f.addInfoField(szTmp,pInfo->themeEngineVersion());
+		QPixmap pixScreenshot = pInfo->smallScreenshot();
+		if(!pixScreenshot.isNull())
+		{
+			KviQString::sprintf(szTmp,"Theme%dScreenshot",iIdx);
+			QByteArray * pba = new QByteArray();
+			QBuffer bufferz(*pba);
+			bufferz.open(IO_WriteOnly);
+			pixScreenshot.save(&bufferz,"PNG");
+			bufferz.close();
+			f.addInfoField(szTmp,pba);
+		}
+
 		if(!f.addDirectory(pInfo->absoluteDirectory(),pInfo->subdirectory()))
 		{
 			szTmp = __tr2qs_ctx("Packaging failed","theme");

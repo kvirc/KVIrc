@@ -44,6 +44,9 @@ class QLabel;
 class QCheckBox;
 class QMultiLineEdit;
 
+class KviDynamicToolTip;
+class KviStyledToolButton;
+
 
 class KviThemeListBoxItem : public QListBoxText
 {
@@ -60,8 +63,6 @@ protected:
 	virtual void paint ( QPainter * painter );
 };
 
-
-class KviStyledToolButton;
 
 class KviThemeManagementDialog : public QDialog
 {
@@ -94,6 +95,7 @@ protected slots:
 	void applyCurrentTheme();
 	void enableDisableButtons();
 	void contextMenuRequested(QListBoxItem * item, const QPoint & pos);
+	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 };
 
 #endif //!_MANAGEMENTDIALOG_H_

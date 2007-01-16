@@ -329,8 +329,9 @@
 #define KVI_SMALLICON_BUG 288
 #define KVI_SMALLICON_REFRESH 289
 #define KVI_SMALLICON_THEME 290
+#define KVI_SMALLICON_SCREENSHOT 291
 
-#define KVI_NUM_SMALL_ICONS 291
+#define KVI_NUM_SMALL_ICONS 292
 
 
 #define KVI_BIGICON_DISCONNECTED "kvi_bigicon_disconnected.png"
@@ -356,6 +357,7 @@
 #define KVI_BIGICON_REMOVE "kvi_bigicon_remove.png"
 #define KVI_BIGICON_WWW "kvi_bigicon_www.png"
 #define KVI_BIGICON_PACK "kvi_bigicon_pack.png"
+#define KVI_BIGICON_SCREENSHOT "kvi_bigicon_screenshot.png"
 
 #define KVI_SMALLICONS_SUBDIRECTORY "coresmall"
 #define KVI_SMALLICONS_PREFIX "kcs_"

@@ -31,6 +31,8 @@
 
 #include "kvi_fileextensions.h"
 
+#include <qpixmap.h>
+
 #define KVI_THEMEINFO_FILE_NAME "themeinfo." KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEDATA_FILE_NAME "themedata." KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEINFO_CONFIG_GROUP "ThemeInfo"
@@ -57,6 +59,10 @@ protected:
 	QString m_szThemeEngineVersion; // the theme engine version that saved this theme
 	
 	QString m_szLastError; // reported when some function fails
+	
+	QPixmap m_pixScreenshotLarge;
+	QPixmap m_pixScreenshotMedium;
+	QPixmap m_pixScreenshotSmall;
 public:
 	// load a specified themeinfo file
 	bool load(const QString &szThemeFileName);
@@ -88,6 +94,14 @@ public:
 	// This function will fail if the directory contains a valid themeinfo
 	// file but no themedata file unless bIgnoreThemeData is set to true
 	bool loadFromDirectory(const QString &szThemeDirectory,bool bIgnoreThemeData = false);
+
+	// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
+	// These functions will work only if the absoluteDirectory() of the theme
+	// has been set, otherwise the returned pixmaps will be null.
+	const QPixmap & smallScreenshot();
+	const QPixmap & mediumScreenshot();
+	const QPixmap & largeScreenshot();
+	QString smallScreenshotPath();
 };
 
 namespace KviTheme
@@ -107,6 +121,9 @@ namespace KviTheme
 	// but this feature is actually unused.
 	// Note that for convenience this function is implemented in kvi_options.cpp
 	bool KVIRC_API save(KviThemeInfo &options);
+	// Save the theme screenshots in the given EXISTING directory and given
+	// an existing screenshot on disk.
+	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
 };
 
 

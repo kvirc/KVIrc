@@ -28,22 +28,22 @@
 #include "kvi_string.h"
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
+#include "kvi_dict.h"
+#include "kvi_valuelist.h"
 
-#include <qdict.h>
 #include <qcolor.h>
 #include <qfont.h>
 #include <qrect.h>
 #include <qstringlist.h>
-#include <qvaluelist.h>
 
 #define KVI_CONFIG_DEFAULT_GROUP "KVIrc"
 
 class KviPixmap;
 class KviMsgType;
 
-typedef QDict<QString> KviConfigGroup;
-typedef QDictIterator<QString> KviConfigGroupIterator;
-typedef QDictIterator<KviConfigGroup> KviConfigIterator;
+typedef KviDict<QString> KviConfigGroup;
+typedef KviDictIterator<QString> KviConfigGroupIterator;
+typedef KviDictIterator<KviConfigGroup> KviConfigIterator;
 
 class KVILIB_API KviConfig : public KviHeapObject
 {
@@ -54,7 +54,7 @@ public:
 	KviConfig(const char *filename,FileMode f/* = ReadWrite*/);
 	~KviConfig();
 private:
-	QDict<KviConfigGroup>      * m_pDict;
+	KviDict<KviConfigGroup>      * m_pDict;
 	QString                      m_szFileName;
 	bool                         m_bDirty;
 	QString                      m_szStrBuffer;
@@ -88,7 +88,7 @@ public:
 	// as default configuration, alter its settings and save it to the
 	// user local configuration directory
 	void setSavePath(const QString & savePath){ m_szFileName = savePath; };
-	QDict<KviConfigGroup> *dict(){ return m_pDict; };
+	KviDict<KviConfigGroup> *dict(){ return m_pDict; };
 
 	void clearDirtyFlag(){ m_bDirty = false; };
 	void clear();
@@ -124,8 +124,8 @@ public:
 	void writeEntry(const QString & szKey,const QRect &rct);
 	QStringList readStringListEntry(const QString & szKey,const QStringList &list);
 	void writeEntry(const QString & szKey,const QStringList &list);
-	QValueList<int> readIntListEntry(const QString & ,const QValueList<int> &list);
-	void writeEntry(const QString & szKey,const QValueList<int> &list);
+	KviValueList<int> readIntListEntry(const QString & ,const KviValueList<int> &list);
+	void writeEntry(const QString & szKey,const KviValueList<int> &list);
 	QString readQStringEntry(const QString & szKey,const QString &szDefault = QString::null)
 		{ return readEntry(szKey,szDefault); };
 	//void writeEntry(const QString & szKey,const QString &szValue);

@@ -46,7 +46,7 @@ KviConfig::KviConfig(const QString &filename,FileMode f)
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
 	m_bPreserveEmptyGroups = false;
 	m_bReadOnly            = (f == KviConfig::Read);
-	m_pDict                = new QDict<KviConfigGroup>(17,false);
+	m_pDict                = new KviDict<KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	if(f != KviConfig::Write)load();
 }
@@ -58,7 +58,7 @@ KviConfig::KviConfig(const char* filename,FileMode f)
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
 	m_bPreserveEmptyGroups = false;
 	m_bReadOnly            = (f == KviConfig::Read);
-	m_pDict                = new QDict<KviConfigGroup>(17,false);
+	m_pDict                = new KviDict<KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	if(f != KviConfig::Write)load();
 }
@@ -73,7 +73,7 @@ KviConfig::~KviConfig()
 void KviConfig::clear()
 {
 	delete m_pDict;
-	m_pDict      = new QDict<KviConfigGroup>(17,false);
+	m_pDict      = new KviDict<KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	m_bDirty     = false;
 	m_szGroup    = KVI_CONFIG_DEFAULT_GROUP;
@@ -103,13 +103,13 @@ void KviConfig::getContentsString(KviStr &buffer)
 	buffer.append('\n');
 	int sections = 0;
 	int keys     = 0;
-	QDictIterator<KviStrDict> it(*m_pDict);
+	KviDictIterator<KviStrDict> it(*m_pDict);
 	while(it.current()){
 		buffer.append(" Section [");
 		buffer.append(it.currentKey());
 		buffer.append("]\n");
 		int sectionKeys = 0;
-		QDictIterator<KviStr> it2(*it.current());
+		KviDictIterator<KviStr> it2(*it.current());
 		while(it2.current()){
 			buffer.append("  Key [");
 			buffer.append(it2.currentKey());
@@ -495,7 +495,7 @@ bool KviConfig::save()
 	if(!f.open(IO_WriteOnly | IO_Truncate))return false;
 	if(f.writeBlock("# KVIrc configuration file\n",27) != 27)return false;
 
-	QDictIterator<KviConfigGroup> it(*m_pDict);
+	KviDictIterator<KviConfigGroup> it(*m_pDict);
 	while (it.current())
 	{
 		if((it.current()->count() != 0) || (m_bPreserveEmptyGroups))
@@ -636,9 +636,9 @@ void KviConfig::writeEntry(const QString & szKey,const QStringList &list)
 	p_group->replace(szKey,p_data);
 }
 
-////////////////////////////////// QValueList<int>
+////////////////////////////////// KviValueList<int>
 
-QValueList<int> KviConfig::readIntListEntry(const QString & szKey,const QValueList<int> &list)
+KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviValueList<int> &list)
 {
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
@@ -648,7 +648,7 @@ QValueList<int> KviConfig::readIntListEntry(const QString & szKey,const QValueLi
 		return list;
 	}
 	QStringList sl = QStringList::split(",",*p_str);
-	QValueList<int> ret;
+	KviValueList<int> ret;
 
 	//debug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
 
@@ -663,12 +663,12 @@ QValueList<int> KviConfig::readIntListEntry(const QString & szKey,const QValueLi
 }
 
 
-void KviConfig::writeEntry(const QString & szKey,const QValueList<int> &list)
+void KviConfig::writeEntry(const QString & szKey,const KviValueList<int> &list)
 {
 	m_bDirty = true;
 	KviConfigGroup * p_group = getCurrentGroup();
 	KviStr szData;
-	for(QValueList<int>::ConstIterator it = list.begin();it != list.end();++it)
+	for(KviValueList<int>::ConstIterator it = list.begin();it != list.end();++it)
 	{
 		if(szData.hasData())szData.append(',');
 		szData.append(KviStr::Format,"%d",*it);

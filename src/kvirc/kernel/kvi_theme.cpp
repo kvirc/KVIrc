@@ -30,6 +30,11 @@
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 
+#include <qimage.h>
+
+#define KVI_THEME_SMALL_SCREENSHOT_NAME "screenshot_small.png"
+#define KVI_THEME_MEDIUM_SCREENSHOT_NAME "screenshot_medium.png"
+#define KVI_THEME_LARGE_SCREENSHOT_NAME "screenshot.png"
 
 KviThemeInfo::KviThemeInfo()
 : KviHeapObject()
@@ -130,3 +135,159 @@ bool KviThemeInfo::loadFromDirectory(const QString &szThemeDirectory,bool bIgnor
 	return KviFileUtils::fileExists(szD);
 }
 
+QString KviThemeInfo::smallScreenshotPath()
+{
+	QString ret;
+	if(!m_szAbsoluteDirectory.isEmpty())
+	{
+		ret = m_szAbsoluteDirectory;
+		KviQString::ensureLastCharIs(ret,KVI_PATH_SEPARATOR_CHAR);
+		ret.append(KVI_THEME_SMALL_SCREENSHOT_NAME);
+	}
+	return ret;
+}
+
+const QPixmap & KviThemeInfo::smallScreenshot()
+{
+	if(!m_pixScreenshotSmall.isNull())return m_pixScreenshotSmall;
+
+	if(!m_szAbsoluteDirectory.isEmpty())
+	{
+		QString szFileName = m_szAbsoluteDirectory;
+		KviQString::ensureLastCharIs(szFileName,KVI_PATH_SEPARATOR_CHAR);
+		szFileName.append(KVI_THEME_SMALL_SCREENSHOT_NAME);
+		QPixmap pix(szFileName);
+		if(!pix.isNull())
+		{
+			m_pixScreenshotSmall = pix;
+			return m_pixScreenshotSmall;
+		}
+		// try to scale it from the large one (and save it by the way)
+		pix = mediumScreenshot();
+		if(pix.isNull())return m_pixScreenshotSmall;
+
+		if(pix.width() > 300 || pix.height() > 225)
+		{
+			QImage sbri = pix.convertToImage();
+			pix.convertFromImage(sbri.smoothScale(300,225,QImage::ScaleMin));
+		}
+
+		pix.save(szFileName,"PNG");
+
+		m_pixScreenshotSmall = pix;
+		return m_pixScreenshotSmall;
+	}
+
+	return m_pixScreenshotSmall;
+}
+
+const QPixmap & KviThemeInfo::mediumScreenshot()
+{
+	if(!m_pixScreenshotMedium.isNull())return m_pixScreenshotMedium;
+
+	if(!m_szAbsoluteDirectory.isEmpty())
+	{
+		QString szFileName = m_szAbsoluteDirectory;
+		KviQString::ensureLastCharIs(szFileName,KVI_PATH_SEPARATOR_CHAR);
+		szFileName.append(KVI_THEME_MEDIUM_SCREENSHOT_NAME);
+		QPixmap pix(szFileName);
+		if(!pix.isNull())
+		{
+			m_pixScreenshotMedium = pix;
+			return m_pixScreenshotMedium;
+		}
+		// try to scale it from the large one (and save it by the way)
+		pix = largeScreenshot();
+		if(pix.isNull())return m_pixScreenshotMedium;
+
+		if(pix.width() > 600 || pix.height() > 450)
+		{
+			QImage sbri = pix.convertToImage();
+			pix.convertFromImage(sbri.smoothScale(600,450,QImage::ScaleMin));
+		}
+
+		pix.save(szFileName,"PNG");
+
+		m_pixScreenshotMedium = pix;
+		return m_pixScreenshotMedium;
+	}
+
+	return m_pixScreenshotMedium;
+}
+
+const QPixmap & KviThemeInfo::largeScreenshot()
+{
+	if(!m_pixScreenshotLarge.isNull())return m_pixScreenshotLarge;
+
+	if(!m_szAbsoluteDirectory.isEmpty())
+	{
+		QString szFileName = m_szAbsoluteDirectory;
+		KviQString::ensureLastCharIs(szFileName,KVI_PATH_SEPARATOR_CHAR);
+		szFileName.append(KVI_THEME_LARGE_SCREENSHOT_NAME);
+		QPixmap pix(szFileName);
+		if(pix.isNull())return m_pixScreenshotLarge;
+		m_pixScreenshotLarge = pix;
+	}
+	return m_pixScreenshotLarge;
+}
+
+
+namespace KviTheme
+{
+	bool saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath)
+	{
+		QImage pix(szOriginalScreenshotPath);
+		if(pix.isNull())
+		{
+			options.setLastError(__tr2qs("Failed to load the specified screenshot image"));
+			return false;
+		}
+
+		QPixmap out;
+
+		QString szScreenshotFileName = options.absoluteDirectory();
+		if(szScreenshotFileName.isEmpty())
+		{
+			options.setLastError(__tr2qs("Invalid option"));
+			return false;
+		}
+
+		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
+		szScreenshotFileName.append(KVI_THEME_LARGE_SCREENSHOT_NAME);
+		if(!pix.save(szScreenshotFileName,"PNG"))
+		{
+			options.setLastError(__tr2qs("Failed to save the screenshot image"));
+			return false;
+		}
+
+		if(pix.width() > 600 || pix.height() > 450)
+			out.convertFromImage(pix.smoothScale(600,450,QImage::ScaleMin));
+		else
+			out.convertFromImage(pix);
+
+		szScreenshotFileName = options.absoluteDirectory();
+		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
+		szScreenshotFileName.append(KVI_THEME_MEDIUM_SCREENSHOT_NAME);
+		if(!out.save(szScreenshotFileName,"PNG"))
+		{
+			options.setLastError(__tr2qs("Failed to save the screenshot image"));
+			return false;
+		}
+
+		if(pix.width() > 300 || pix.height() > 225)
+			out.convertFromImage(pix.smoothScale(300,225,QImage::ScaleMin));
+		else
+			out.convertFromImage(pix);
+
+		szScreenshotFileName = options.absoluteDirectory();
+		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
+		szScreenshotFileName.append(KVI_THEME_SMALL_SCREENSHOT_NAME);
+		if(!out.save(szScreenshotFileName,"PNG"))
+		{
+			options.setLastError(__tr2qs("Failed to save the screenshot image"));
+			return false;
+		}
+		
+		return true;
+	}
+};

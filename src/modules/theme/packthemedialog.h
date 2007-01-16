@@ -32,6 +32,7 @@
 #include <qwizard.h>
 
 class QLineEdit;
+class QTextEdit;
 class QLabel;
 class QMultiLineEdit;
 class KviFileSelector;
@@ -51,14 +52,14 @@ protected:
 	QLabel * m_pImageLabel;
 	KviPtrList<KviThemeInfo> * m_pThemeInfoList;
 	QLineEdit * m_pPackageNameEdit;
-	QMultiLineEdit * m_pPackageDescriptionEdit;
+	QTextEdit * m_pPackageDescriptionEdit;
 	QLineEdit * m_pPackageVersionEdit;
 	QLineEdit * m_pPackagerNameEdit;
 	QWidget * m_pImageSelectionPage;
 protected:
 	virtual void accept();
-protected slots:
 	bool packTheme();
+protected slots:
 	void imageSelectionChanged(const QString &szImagePath);
 };
 

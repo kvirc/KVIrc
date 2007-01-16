@@ -827,7 +827,7 @@ void KviWindow::systemTextEncodingPopupSmartActivated(int id)
 	if(!g_pMdiWindowSystemTextEncodingPopupSmart)
 		return;
 	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmart->text(id);
-	KviQString::cutFromFirst(tmp,' ');
+	KviQString::cutFromFirst(tmp," (");
 	setTextEncoding(tmp);
 }
 
@@ -836,7 +836,7 @@ void KviWindow::systemTextEncodingPopupSmartUtf8Activated(int id)
 	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
 		return;
 	QString tmp = g_pMdiWindowSystemTextEncodingPopupSmartUtf8->text(id);
-	KviQString::cutFromFirst(tmp,' ');
+	KviQString::cutFromFirst(tmp," (");
 	setTextEncoding(tmp);
 }
 
@@ -845,7 +845,7 @@ void KviWindow::systemTextEncodingPopupStandardActivated(int id)
 	if(!g_pMdiWindowSystemTextEncodingPopupStandard)
 		return;
 	QString tmp = g_pMdiWindowSystemTextEncodingPopupStandard->text(id);
-	KviQString::cutFromFirst(tmp,' ');
+	KviQString::cutFromFirst(tmp," (");
 	setTextEncoding(tmp);
 }
 

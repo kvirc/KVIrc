@@ -185,7 +185,7 @@ public:
 	void getGlobalKvircDirectory(KviStr &szData,KvircSubdir dir,const QString &appendFile = QString::null);
 	void getLocalKvircDirectory(KviStr  &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
 	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
-	void getTmpFileName(KviStr &szBuffer,const char * pattern = 0);
+	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString::null);
 	bool trashFile(const char *filename);
 	void getChannelDumpLogFileName(KviStr &str);
 

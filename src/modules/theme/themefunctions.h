@@ -28,6 +28,7 @@
 #include "kvi_qstring.h"
 
 #include <qwidget.h>
+#include <qpixmap.h>
 
 namespace KviThemeFunctions
 {
@@ -41,8 +42,11 @@ namespace KviThemeFunctions
 		const QString &szThemeApplication,
 		const QString &szThemeAuthor,
 		const QString &szThemeDate,
-		const QString &szThemeThemeEngineVersion
+		const QString &szThemeThemeEngineVersion,
+		const QPixmap &pixScreenshot,
+		int iUniqueIndexInDocument = 0
 	);
+	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame = false);
 };
 
 

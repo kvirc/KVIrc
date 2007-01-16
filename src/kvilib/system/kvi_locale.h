@@ -29,6 +29,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_string.h"
+#include "kvi_asciidict.h"
 
 #include <qapplication.h>
 
@@ -93,8 +94,8 @@ public:
 	KviMessageCatalogue();
 	~KviMessageCatalogue();
 protected:
-	QAsciiDict<KviTranslationEntry> * m_pMessages;
-	QTextCodec                      * m_pTextCodec;
+	KviAsciiDict<KviTranslationEntry> * m_pMessages;
+	QTextCodec                        * m_pTextCodec;
 public:
 	bool load(const QString& name);
 	const char * translate(const char * text);
@@ -129,8 +130,15 @@ class KVILIB_API KviTranslator : public QTranslator
 		KviTranslator(QObject * parent,const char * name);
 		~KviTranslator();
 	public:
+#ifdef COMPILE_USE_QT4
+		virtual QString translate(const char * context,const char * message,const char * comment) const;
+#endif
+		// Deprecated in qt 4.x
 		virtual QString find(const char * context,const char * message) const;
+#ifndef COMPILE_USE_QT4
+		// Dead in qt 4.x
 		virtual QTranslatorMessage findMessage(const char * context,const char * sourceText,const char * comment = 0) const;
+#endif
 };
 
 

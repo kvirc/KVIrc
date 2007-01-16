@@ -1640,7 +1640,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.grep
 	@short:
-		Emulates the GNU Regular ExPression engine
+		Emulates the GNU Regular Expression Parser
 	@syntax:
 		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>])
 	@description:

@@ -190,19 +190,21 @@ void KviApp::getLocalKvircDirectory(KviStr &szData,KvircSubdir dir,const QString
 	szData=szBuffer;
 }
 
-void KviApp::getTmpFileName(KviStr &szBuffer,const char * pattern)
+void KviApp::getTmpFileName(QString &szBuffer,const QString &szEndingFileName)
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Tmp);
-	tmp.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
+	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 
 	struct timeval tmv;
 	kvi_gettimeofday(&tmv,0);
 
+	QString szFileName = szEndingFileName.isNull() ? QString("file.tmp") : szEndingFileName;
 	do {
-		szBuffer.append(KviStr::Format,"kvirc_%d_%s",tmv.tv_usec,pattern ? pattern : "file.tmp");
+		szBuffer = tmp;
+		KviQString::appendFormatted(szBuffer,"kvirc_%d_%Q",tmv.tv_usec,&szFileName);
 		tmv.tv_usec++;
-	} while(KviFileUtils::fileExists(szBuffer.ptr()));
+	} while(KviFileUtils::fileExists(szBuffer));
 }
 
 //====================== trashFile ====================//
