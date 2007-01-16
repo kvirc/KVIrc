@@ -738,17 +738,21 @@ to be totally compatible with each other.
 
 When the minor number is bumped up all the following parts are reset to 0.
 
-The thirs part is called revision number and it is increased often. A bump
-from N to N+1 in the revision number usually means that a set of bugfixes
+The thirs part is called (public) revision number and it is increased often.
+A bump from N to N+1 in the revision number usually means that a set of bugfixes
 or some new features have been included in the software. Compatibility
 should be assumed unless explicitly noted. Again, when the revision number
 is bumped up all the following parts are reset to 0.
 
 The fourth part is actually used only on the svn tree and it is usually not
 present in the official public releases (it is assumed to be 0 for comparison
-purposes). KVIrc uses the ISO sources date in the format YYYYMMDD for this number.
-The sources date number is defined in src/kvilib/config/kvi_sourcesdate.h
-and is also displayed by kvirc --version.
+purposes). It is called the "internal revision" number and when taken
+out of the version string it may assume a meaning on its own (but it's not
+required in fact). KVIrc uses the ISO sources date in the format YYYYMMDD for this
+number. The sources date number is defined in src/kvilib/config/kvi_sourcesdate.h
+and is also displayed by kvirc --version. Some packagers prefer to use the svn
+revision number instead of the sources date. This is not "official" but it's
+still ok as long as it follows the "order-preserving" rule (see below).
 
 It is unlikely that you will find a KVIrc versioned with more than
 four numbers... but if you will (for some strange reason) then it will
@@ -776,7 +780,13 @@ To compare 3.2.6.1 with 3.2.6 you compare 3 and 3, 2 and 2, 6 and 6
 and 1 with (implicit) 0, that tells you that the first version string
 is greater than the second one.
 
-This also means that 3 and 3.0.0 are assumed to be EQUAL.
+This also means that 3 and 3.0.0 are assumed to be EQUAL since
+the algorithm above finds that at the fourth comparison step
+both numbers are omitted (thus zero from there up to infinity).
+
+This comparison function is monotonically increasing or in
+other words order-preserving. This is a *requirement* for a consistent
+versioning scheme.
 
 - Package versioning schemes with letters
 
@@ -789,3 +799,60 @@ we say that it is comparable only to the version strings
 that have the same letter pattern: 3.2.6.svn10 and 4.3.1.svn344
 are comparable but 3.2.6.svn10 and 3.2.6.cvs15 are not.
 For comparable strings we strip the letters in order to make the comparison.
+
+- Stable and unstable versions
+
+Our numbering scheme does NOT tell which versions are stable
+and which are unstable. The versions are declared to be (more or less) stable
+by other means (read: the mailing list and the www site).
+It is true, tough, that stable versions are likely to have
+more numbers omitted (read: 3.5 looks more "stable" than 3.4.5.43),
+but this is not a strict requirement. It is also true that
+almost all "unstable" versions come out from the svn tree and
+usually contain all the four parts.
+
+- Official, semi-official and unofficial packages
+
+We tend to have three types of packages. The official packages are the
+ones considered to be stable and released on the site in all the supported forms
+(source and various kinds of binaries). The official releases are also announced
+in tracker sites and spread between distributors. Since "most" stable, the
+official releases are the ones likely to be included in the OS distributions.
+The official packages have md5 sums and a gpg signature of one of the KVIrc
+developers (with a public key available from a "trusteable" location such
+as the KVIrc web site).
+
+The semi-official packages are snapshots of the source tree made when
+some important changes have occured. They are announced on the KVIrc site
+only and are likely to be stable (but are not declared officially to be so).
+The semi-official packages usually are at least in the source form but
+there are likely to be some binaries available too.
+We do not sign the semi-official packages but it's still somewhat
+granted that WE (the KVIrc Development Team) make them and thus the
+source can be trusted.
+
+The unofficial packages are random snapshots of the svn source tree made
+by anyone who wants to do it at any time. They are not announced on the KVIrc
+web site (but might be uploaded to ftp.kvirc.net) but rather announced and available
+at some other internet location. Since we always try to keep the svn
+tree clean and compilable they should work fine but there is no guarantee.
+There is no rule for the unofficial package format: there might be source-only
+or binary only packages. We *suggest* to use the four part version string format
+but in fact they might contain third party patches and even follow their own
+derived version numbering scheme. The general rule is: we don't control
+the unofficial packages and don't provide support if they don't compile/work
+as expected: the user/packager is on his own.. but we'll try to be helpful,
+if possible :)
+
+- Putting it all together
+
+At the moment of writing the KVIrc svn tree has version 3.2.6.20070115.
+Today is 15 Jan 2007 and the current svn revision number is 174.
+The latest "semi-official" release was 3.2.6 (where the internal revision number
+was omitted and implicitly assumed to be 0).
+If tomorrow we had to emit a quick fix for the semi-official release we'd either
+use 3.2.7 (increasing the public revision for a large set of bugfixes) or
+(unlikely) 3.2.6.20060116 (expliciting the internal revision number for a small
+set of quick, and probably dirty, bugfixes). The next "semi-official"
+release is likely to be 3.2.7 while the next official stable release
+might be 3.3, 3.4 or even 4.
