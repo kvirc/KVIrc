@@ -452,6 +452,59 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setInteger(f.size());
 	return true;
 }
+/*
+	@doc: file.allSizese
+	@type:
+		function
+	@title:
+		$file.allSizes
+	@short:
+		Returns all sizes of a specified directory.
+	@syntax:
+	<array> $file.allSize(<dirname:string>)
+	@description:
+	Returns the size of every files of the specified directory as an array.[br]
+*/
+
+static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
+{
+	QString szDir;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("directory",KVS_PT_NONEMPTYSTRING,0,szDir)
+	KVSM_PARAMETERS_END(c)
+	KviFileUtils::adjustFilePath(szDir);
+	
+	QDir d(szDir);
+	if(!d.exists())
+	{
+		c->warning(__tr2qs("The specified directory does not exist '%Q'"),&szDir);
+		return true;
+	}
+
+	int iFlags = QDir::Files;
+	QStringList sl;
+	sl = d.entryList(iFlags);
+
+	KviKvsArray * a = new KviKvsArray();
+	QString szFile;
+	if(!sl.isEmpty())
+	{
+		int idx = 0;
+		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+		{
+			szFile=szDir+(*it);
+			QFileInfo f(szFile);
+			a->set(idx,new KviKvsVariant((kvs_int_t)f.size()));
+			idx++;
+		}
+	}
+	c->returnValue()->setArray(a);
+
+
+
+
+	return true;
+}
 
 /*
 	@doc: file.fixpath
@@ -745,7 +798,6 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
-	kvs_uint_t uSize;
 	QString szFlags;
 	kvs_int_t iStartLine;
 	kvs_int_t iCount;
@@ -1172,6 +1224,9 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"exists",file_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"type",file_kvs_fnc_type);
 	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);
+	
+	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
+	
 	KVSM_REGISTER_FUNCTION(m,"fixpath",file_kvs_fnc_fixpath);
 	KVSM_REGISTER_FUNCTION(m,"ps",file_kvs_fnc_ps);
 	KVSM_REGISTER_FUNCTION(m,"read",file_kvs_fnc_read);

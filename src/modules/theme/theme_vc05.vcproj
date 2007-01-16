@@ -221,6 +221,30 @@
 				RelativePath=".\moc_managementdialog.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\moc_packthemedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\moc_savethemedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\moc_themefunctions.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\packthemedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\savethemedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\themefunctions.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -245,6 +269,45 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\packthemedialog.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\savethemedialog.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\themefunctions.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
 				</FileConfiguration>

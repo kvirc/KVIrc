@@ -341,6 +341,18 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\ui\moc_kvi_htmldialog.cpp"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							PreprocessorDefinitions="__KVIRC__"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="ui\moc_kvi_imagedialog.cpp"
 					>
 					<FileConfiguration
@@ -1106,6 +1118,10 @@
 				</File>
 				<File
 					RelativePath="ui\kvi_historywin.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_htmldialog.cpp"
 					>
 				</File>
 				<File
@@ -3080,6 +3096,19 @@
 							Name="VCCustomBuildTool"
 							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 							Outputs="$(InputDir)\$(InputName).moc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_htmldialog.h"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"
 						/>
 					</FileConfiguration>
 				</File>

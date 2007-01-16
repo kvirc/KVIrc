@@ -69,7 +69,6 @@
 #include "kvi_packagefile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_filedialog.h"
-#include "kvi_dynamictooltip.h"
 
 #include <stdlib.h> // rand & srand
 
@@ -117,7 +116,7 @@ KviThemeListBoxItem::~KviThemeListBoxItem()
 	delete m_pText;
 }
 
-void KviThemeListBoxItem::paint(QPainter * p)
+void KviThemeListBoxItem::paint ( QPainter * p )
 {
 	QListBoxText::paint(p);
 	p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))) );
@@ -127,7 +126,7 @@ void KviThemeListBoxItem::paint(QPainter * p)
 	m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
 }
 
-int KviThemeListBoxItem::height(const QListBox * lb) const 
+int KviThemeListBoxItem::height ( const QListBox * lb ) const 
 {
 	int iHeight = m_pText->height() + (2 * LVI_BORDER);
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
@@ -206,8 +205,6 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	connect(m_pListBox,SIGNAL(selectionChanged()),this,SLOT(enableDisableButtons()));
 	g->addMultiCellWidget(m_pListBox,1,1,0,1);
 
-	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListBox);
-	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
@@ -241,34 +238,11 @@ void KviThemeManagementDialog::closeClicked()
 	m_pInstance = 0;
 }
 
-void KviThemeManagementDialog::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
-{
-	KviThemeListBoxItem * it = (KviThemeListBoxItem *)(m_pListBox->itemAt(pnt));
-	if(!it)return;
-	KviThemeInfo * pThemeInfo = it->themeInfo();
-
-	QString szThemeDescription;
-	KviThemeFunctions::getThemeHtmlDescription(
-			szThemeDescription,
-			pThemeInfo->name(),
-			pThemeInfo->version(),
-			pThemeInfo->description(),
-			pThemeInfo->subdirectory(),
-			pThemeInfo->application(),
-			pThemeInfo->author(),
-			pThemeInfo->date(),
-			pThemeInfo->themeEngineVersion(),
-			pThemeInfo->mediumScreenshot(),
-			0
-	);
-
-	pTip->tip(m_pListBox->itemRect(it),szThemeDescription);
-}
 
 void KviThemeManagementDialog::display()
 {
-	if(m_pInstance)return;
-	m_pInstance = new KviThemeManagementDialog(g_pFrame);
+	if(!m_pInstance)
+			m_pInstance = new KviThemeManagementDialog(g_pFrame);
 	m_pInstance->show();
 }
 

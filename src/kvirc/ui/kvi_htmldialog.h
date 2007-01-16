@@ -25,6 +25,8 @@
 //=============================================================================
 
 #include "kvi_qstring.h"
+#include "kvi_settings.h"
+
 
 #include <qpixmap.h>
 #include <qdialog.h>
@@ -58,7 +60,7 @@ public:
 	int iSelectedButton;      // returns 1,2 or 3
 };
 
-class KviHtmlDialog : public QDialog
+class KVIRC_API KviHtmlDialog : public QDialog
 {
 	Q_OBJECT
 public:

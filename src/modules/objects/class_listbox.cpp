@@ -98,10 +98,16 @@
 		This function is called by KVIrc when the selection in the listbox changes.
 		!fn: $currentItemChangeEvent()
 		This function is called by KVIrc when the current item changes.
+		!fn: <index:integer> $onItemEvent()
+		This function is called by KVIrc when the current item pointed by the mouse changes and gives in $0 the item index.
+		
 		@signals:
 		!sg: <string> $currentItemChange()
 		This signal is emitted by the default implementation of [classfnc]$currentItemChangeEvent[/classfnc]().[br]
-*/
+		!sg: <string> $onItem()
+		This signal is emitted by the default implementation of [classfnc]$onItemEvent[/classfnc]().[br]
+
+		*/
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
@@ -123,7 +129,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelected",functionsetSelected);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"isSelected",functionisSelected);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItemChangeEvent",functioncurrentItemChangeEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentnItemEvent",functiononItemEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"onItemEvent",functiononItemEvent);
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listbox,"selectionChangeEvent")
 
@@ -352,7 +358,8 @@ bool KviKvsObject_listbox::functiononItemEvent(KviKvsObjectFunctionCall *c)
 
 void KviKvsObject_listbox::onItem(QListBoxItem *item)
 {
-		KviKvsVariantList params(new KviKvsVariant(item->text()));
+		QListBox *lbx(item->listBox());
+		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)lbx->index(item)));
 		callFunction(this,"onItemEvent",0,&params);
 }
 
