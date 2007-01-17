@@ -439,7 +439,7 @@ namespace KviKvsCoreFunctions
 			wnd = KVSCF_pContext->window();
 		}
 
-		debug("CALLING $target on window %s",wnd->name());
+		//debug("CALLING $target on window %s",wnd->name());
 		QString szTa = wnd->target();
 
 
@@ -1039,7 +1039,7 @@ namespace KviKvsCoreFunctions
 			window id is returned (0).[br]
 			If no <caption text> is specified , this function returns the id
 			of the current window.[br]
-			<context_id> restrict search in only one irc context.
+			<context_id> restricts search in only one irc context.
 		@examples:
  			[example]
  				[cmd]echo[/cmd] This is the window with id $window
@@ -1053,18 +1053,17 @@ namespace KviKvsCoreFunctions
 
  	KVSCF(window)
  	{
-#ifdef COMPILE_NEW_KVS
 		//#warning "FIXME: the window identifiers could be numbers!"
 		QString szCaption;
-		int iContextId;
+		kvs_int_t iContextId; // kvs_int_t is 64bit while int is 32 (and thus KVSCF_PARAMETER() crashes)
 
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("caption_text",KVS_PT_STRING,KVS_PF_OPTIONAL,szCaption)
 			KVSCF_PARAMETER("context_id",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iContextId)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pParams->count()<2)
-			iContextId=-1;
+		if(KVSCF_pParams->count() < 2)
+			iContextId = -1;
 
 		KviWindow * pWnd;
 		if(szCaption.isEmpty())
@@ -1080,7 +1079,6 @@ namespace KviKvsCoreFunctions
 			}
 		}
 		KVSCF_pRetBuffer->setInteger(pWnd->numericId());
-#endif
 		return true;
 	}
 };

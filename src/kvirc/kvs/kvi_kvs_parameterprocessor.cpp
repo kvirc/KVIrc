@@ -141,10 +141,13 @@ namespace KviKvsParameterProcessor
 	{
 		KviKvsVariant * v = pVariantList->first();
 	
+		debug("PROCESSING PARAM");
+	
 		while(pFmtArray->szName)
 		{
 			if(!v)
 			{
+				debug("NO V");
 				// parameter not present
 				// it MUST be optional
 				if(!(pFmtArray->uFlags & KVS_PF_OPTIONAL))
@@ -155,6 +158,7 @@ namespace KviKvsParameterProcessor
 					pContext->error(szError);
 					return false;
 				}
+				debug("SETTING DEFAULT VALUES");
 				// ok, missing but optional (all the following are implicitly optional too)
 				// set to default values
 				do {
@@ -163,11 +167,12 @@ namespace KviKvsParameterProcessor
 				} while(pFmtArray->szName);
 				return true;
 			}
-			
+			debug("GOT V");
 			// here we do only "light" casts: hard ones must be done explicitly by the user
 			switch(pFmtArray->uType)
 			{
 				case KVS_PT_STRING:
+					debug("IS STRING");
 					v->asString(*((QString *)(pFmtArray->pContainer)));
 					if(pFmtArray->uFlags & KVS_PF_APPENDREMAINING)
 					{

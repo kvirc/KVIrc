@@ -8,7 +8,7 @@
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Wed Jan 10 02:18:33 UTC 2007"
+#define BUILD_DATE "Wed Jan 17 20:09:43 UTC 2007"
 
 /* these are the build flags */
 #define BUILD_FLAGS "x86_64-cefgikopsAGTZ"
@@ -40,7 +40,7 @@
 /* define if you want the IpV6 support */
 #define COMPILE_IPV6_SUPPORT 1
 
-/* define if you want to compile the KDE 2.x support */
+/* define if you want to compile the KDE 3.x support */
 #define COMPILE_KDE_SUPPORT 1
 
 /* define if you want the memory checks */
@@ -88,6 +88,9 @@
 
 /* define if you have libgsm and want the GSM code to be compiled */
 #define COMPILE_USE_GSM 1
+
+/* define if you want to compile the Qt 4.x support */
+/* #undef COMPILE_USE_QT4 */
 
 /* define if you trust your memmove() function */
 #define COMPILE_WITH_SYSTEM_MEMMOVE 1

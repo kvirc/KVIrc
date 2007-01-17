@@ -83,6 +83,7 @@ public:
 protected:
 	void fillThemeBox(const QString &szDir);
 	bool hasSelectedItems();
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void saveCurrentTheme();
 	void getMoreThemes();
