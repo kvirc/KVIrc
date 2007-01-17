@@ -82,7 +82,8 @@
 #include "class_dockwindow.h"
 #include "class_vbox.h"
 #include "class_hbox.h"
-
+static int contatore=0;
+static QPtrDict<KviKvsObject> *objectsdict=new QPtrDict<KviKvsObject>;
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
 
 static bool objects_module_cleanup(KviModule *m)
@@ -236,31 +237,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]object.disconnect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-	/*
-		@doc: connect
-		@title:
-			connect
-		@type:
-			command
-		@short:
-			Connects a signal to a slot
-		@syntax:
-			[Deprecated]connect <source_object:hobject> <signal_name:string> <target_object:hobject> <slot_name:string>
-		@description:
-			[DEPRECATED]
-			Connects the <source_object>'s signal <signal_name> to the
-			<target_object>'s slot <slot_name>.
-			When one of the two objects is destroyed, the signal/slot
-			connection is automatically removed.[br]
-			WARNING: This command name collides with the [doc:rfc2812]RFC2812[/doc]
-			CONNECT IRC Op command: this IRC command is available to operators only
-			and is rather rarely used: you can use it by the means of [doc:raw]raw[/doc].
-			For this reason this command is actually deprecated and will be removed
-			in a future release in favor of [cmd]objects.connect[/cmd]. Don't use it.
-		@seealso:
-			[cmd]class[/cmd], [cmd]objects.disconnect[/cmd], [doc:objects]objects documentation[/doc]
-	*/
-
+	
 	KviKvsObject *obSrc;
 	KviKvsObject *obTrg;
 	QString szSignal,szSlot;
@@ -273,6 +250,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	obTrg=KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
+	objectsdict->insert(obTrg->handle(),obSrc);
 	if(!obTrg)
 	{
 		c->warning(__tr2qs("Inexisting target object for objects.connect"));
@@ -371,6 +349,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 	QPtrDict<KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
+
 	QPtrDictIterator<KviKvsObject> it(*od);
 	kvs_uint_t uIdx = 0;
 	if(szFlags.contains(QChar('s')))
@@ -557,24 +536,7 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-	/*
-		@doc: disconnect
-		@title:
-			disconnect
-		@type:
-			command
-		@short:
-			[Deprecated]Disconnects a signal from a slot
-		@syntax:
-			disconnect <source_object:hobject> <signal_name:string> <target_object:hobject> <slot_name:string>
-		@description:
-			Disconnects the <source_object>'s signal <signal_name> from the
-			<target_object>'s slot <slot_name>.
-			When one of the two objects is destroyed, the signal/slot
-			connection is automatically removed.
-		@seealso:
-			[cmd]class[/cmd], [cmd]connect[/cmd], [doc:objects]objects documentation[/doc]
-	*/
+	
 
 
 	KviKvsObject *obSrc;
@@ -589,6 +551,16 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	obTrg=KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
+	if(!obTrg)
+	{
+		c->warning(__tr2qs("Inexisting target object for objects.disconnect"));
+		return true;
+	}
+	if(!obSrc)
+	{
+		c->warning(__tr2qs("Inexisting source object for objects.disconnect"));
+		return true;
+	}
 	obSrc->disconnectSignal(szSignal,obTrg,szSlot);
 	return true;
 }
@@ -734,12 +706,6 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("One o more of background, foreground or destination aren't objects"));
 		return true;
 	}
-/*	if (!obFor->object() || !obBck->object() || !obDest->object())
-	{
-		c->warning(__tr2qs("One o more of background, foreground or destination aren't valid objects"));
-		return true;
-	}
-*/
 
 	if (!obBck->inherits("KviKvsObject_image") || !obFor->inherits("KviKvsObject_image"))
 	{
