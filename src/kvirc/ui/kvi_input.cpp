@@ -210,6 +210,8 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	
 	m_pIconMenu = new QPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
+
+	setCursor( IbeamCursor );
 }
 
 KviInputEditor::~KviInputEditor()
