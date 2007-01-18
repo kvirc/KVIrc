@@ -1,5 +1,6 @@
-Win32 KVIrc compiling 1.0.1 
-a tutorial by <Grifisx> 
+Win32 KVIrc compiling 1.2 
+a tutorial by <Grifisx>
+updated by <LoSko> on 2007/01/18
 
 english translation by <etherea`> 
 
@@ -200,7 +201,14 @@ SSLLIBDIR
 Value: 
 C:\OpenSSL\lib\VC 
 Meaning: 
-OpenSSL .lib files storage 
+OpenSSL .lib files storage
+
+Variable: 
+MSGFMT 
+Value: 
+C:\Program Files\GnuWin32\bin\msgfmt.exe
+Meaning: 
+msgfmt executable path
 
 After you've added all the variables with their own values you need to reboot. 
 
@@ -224,10 +232,7 @@ If you're reading this, thank God, your patience and your mother (yes, yet she d
 managed to kill you death nevertheless you spent 28 hours a day reading lines on a 
 monitor) you're almost done! 
 The latest 2 steps are quite easy. 
-Go to folder kvirccvs\kvirc\win32build and run makedist.vbs file (be careful: if you didn't 
-installed gettext in the folder I suggested, you need to modify file makedist.vbs on this 
-line: MSGFMT="C:\Program Files\GnuWin32\bin\msqfmt" by replacing the path with the one 
-you did installed gettext executable: msgfmt.exe). 
+Go to folder kvirccvs\kvirc\win32build and run makedist.vbs file. 
 Then run the process, on which end you'll get a folder named pakage; be sure inside 
 there are kvirc.exe, kvilib.dll, the folder with every KVIrc module and the following dlls: 
 
@@ -262,6 +267,7 @@ If everything went ok then.. EnjoY! =D
 
 Tonino Imbesi 
 <Grifisx> 
+
 
 
 
