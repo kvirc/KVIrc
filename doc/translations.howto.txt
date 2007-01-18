@@ -2,9 +2,9 @@ This mini-howto describes the procedure for translating KVIrc in a new language.
 
 Step 0: Getting the right sources.
 
-	First of all you need the CVS version of kvirc.
-	To obtain the CVS version you can follow the instructions on
-	http://www.kvirc.net/?id=cvs
+	First of all you need the SVN version of kvirc.
+	To obtain the SVN version you can follow the instructions on
+	http://www.kvirc.net/?id=svn
 	
 	The translation stuff is in kvirc/po/kvirc .
 
@@ -103,7 +103,7 @@ Step 6: Updating the translation when the sources change
 
 While the development goes on new messages are added to the sources
 and a small part of the existing messages change.
-When you do a cvs update to obtain the latest sources you should
+When you do a svn update to obtain the latest sources you should
 cd to kvirc/po/kvirc and run:
 
 # make messages-update
@@ -119,15 +119,15 @@ Misc:
 
 If you're in doubt about some translation, you should take a look at how
 similar sentences have been translated in the KDE *.po files: there should
-be a hungarian translation file for KDE available on the KDE cvs.
+be a hungarian translation file for KDE available on the KDE svn.
 
 Since many of the modules have their own translation files then
 the procedure above may (but not must) be repeated for the po/modules/*/ 
 subdirectories.
 
 When you're satisfied with your translation you may send your *.po files to
-pragma at kvirc dot net asking for inclusion in the cvs. If you want
-to mantain the translation then you may also ask for a writeable cvs account.
+pragma at kvirc dot net asking for inclusion in the svn. If you want
+to mantain the translation then you may also ask for a writeable svn account.
 
 
 Happy translating :)
