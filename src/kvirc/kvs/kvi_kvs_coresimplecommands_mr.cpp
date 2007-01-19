@@ -342,14 +342,14 @@ namespace KviKvsCoreSimpleCommands
 		@examples:
 			[example]
 				openurl http://www.kvirc.net
+				openurl https://www.secure.net
+				openurl file://home/pragma/pippo.txt
 				openurl irc://irc.eu.dal.net:6667
 				openurl irc6://irc.ircd.it/#kvirc
 				openurl ircs://crypto.azzurra.org:9999
 				openurl ircs6://ngnet.azzurra.org:9999
-				openurl www.kvirc.net
 				openurl ftp://ftp.localhost.net/pub/kvirc/
-				openurl https://www.secure.net
-				openurl file://home/pragma/pippo.txt
+				openurl mailto:users@domain.extension
 			[/example]
 	*/
 
