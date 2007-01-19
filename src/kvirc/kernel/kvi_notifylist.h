@@ -30,7 +30,7 @@
 
 #include <qobject.h>
 #include "kvi_list.h"
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qtimer.h>
 
 #include "kvi_qstring.h"
@@ -75,7 +75,7 @@ protected:
 	KviIsOnNotifyListManager(KviIrcConnection * pConnection);
 	~KviIsOnNotifyListManager();
 private:
-	QDict<QString>      * m_pRegUserDict;            // dict notifystring->reguser name
+	KviDict<QString>      * m_pRegUserDict;            // dict notifystring->reguser name
 	KviPtrList<QString> * m_pNotifyList;                  // list of notifystring (total)
 	KviPtrList<QString> * m_pIsOnList;                    // list of notifystring (one session)
 	QString               m_szIsOnString;                 // m_pIsOnList in form of a string
@@ -148,7 +148,7 @@ public:
 	KviWatchNotifyListManager(KviIrcConnection * pConnection);
 	~KviWatchNotifyListManager();
 protected:
-	QDict<QString> * m_pRegUserDict;            // dict notifystring->reguser name
+	KviDict<QString> * m_pRegUserDict;            // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
 	virtual void start();

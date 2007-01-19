@@ -66,7 +66,7 @@ void KviAvatarCache::done()
 
 KviAvatarCache::KviAvatarCache()
 {
-	m_pAvatarDict = new QDict<KviAvatarCacheEntry>(CACHE_DICT_SIZE,false);
+	m_pAvatarDict = new KviDict<KviAvatarCacheEntry>(CACHE_DICT_SIZE,false);
 	m_pAvatarDict->setAutoDelete(true);
 }
 
@@ -163,7 +163,7 @@ void KviAvatarCache::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 //	cfg.clear(); // not needed with KviConfig::Write
 
-	QDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
 
 	while(KviAvatarCacheEntry * e = it.current())
 	{
@@ -180,7 +180,7 @@ void KviAvatarCache::save(const QString &szFileName)
 void KviAvatarCache::cleanup()
 {
 	// first do a quick run deleting the avatars really too old
-	QDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
 	
 	kvi_time_t tNow = kvi_unixTime();
 

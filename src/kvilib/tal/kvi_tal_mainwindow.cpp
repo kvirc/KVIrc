@@ -41,7 +41,11 @@
 #else
 
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
+#ifdef COMPILE_USE_QT4
+	: QMainWindow(par)
+#else
 	: QMainWindow(par,nam)
+#endif
 	{
 	}
 

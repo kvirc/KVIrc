@@ -1,11 +1,12 @@
 #ifndef _KVI_REGCHAN_H_
 #define _KVI_REGCHAN_H_
+//=============================================================================
 //
 //   File : kvi_regchan.h
 //   Creation date : Sat Jun 29 01:01:15 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,13 +22,14 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 #include "kvi_list.h"
 
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 
 class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {
@@ -38,9 +40,9 @@ public:
 protected:
 	KviStr               m_szName;
 	KviStr               m_szNetMask;
-	QAsciiDict<KviStr> * m_pPropertyDict;
+	KviAsciiDict<KviStr> * m_pPropertyDict;
 public:
-	QAsciiDict<KviStr> * propertyDict(){ return m_pPropertyDict; };
+	KviAsciiDict<KviStr> * propertyDict(){ return m_pPropertyDict; };
 	const KviStr & name(){ return m_szName; };
 	const KviStr & netMask(){ return m_szNetMask; };
 	KviStr * property(const char * name){ return m_pPropertyDict->find(name); };
@@ -57,9 +59,9 @@ public:
 	KviRegisteredChannelDataBase();
 	~KviRegisteredChannelDataBase();
 protected:
-	QAsciiDict<KviRegisteredChannelList> * m_pChannelDict;
+	KviAsciiDict<KviRegisteredChannelList> * m_pChannelDict;
 public:
-	QAsciiDict<KviRegisteredChannelList> * channelDict(){ return m_pChannelDict; };
+	KviAsciiDict<KviRegisteredChannelList> * channelDict(){ return m_pChannelDict; };
 	KviRegisteredChannel * find(const char * name,const char * net);
 	KviRegisteredChannel * findExact(const char * name,const char * netmask);
 	void remove(KviRegisteredChannel * c);

@@ -38,10 +38,10 @@
 #include "dialog.h"
 
 #include <qsplitter.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 
-QDict<KviOptionsDialog> * g_pOptionsDialogDict = 0;
+KviDict<KviOptionsDialog> * g_pOptionsDialogDict = 0;
 
 KviOptionsInstanceManager * g_pOptionsInstanceManager = 0;
 
@@ -280,7 +280,7 @@ static bool options_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"edit",options_kvs_cmd_edit);
 	KVSM_REGISTER_FUNCTION(m,"isDialog",options_kvs_fnc_isdialog);
 
-	g_pOptionsDialogDict = new QDict<KviOptionsDialog>;
+	g_pOptionsDialogDict = new KviDict<KviOptionsDialog>;
 	g_pOptionsDialogDict->setAutoDelete(false);
 
 	return true;
@@ -288,7 +288,7 @@ static bool options_module_init(KviModule * m)
 
 static bool options_module_cleanup(KviModule *m)
 {
-	QDictIterator<KviOptionsDialog> it(*g_pOptionsDialogDict);
+	KviDictIterator<KviOptionsDialog> it(*g_pOptionsDialogDict);
 	KviPtrList<KviOptionsDialog> l;
 	l.setAutoDelete(false);
 	KviOptionsDialog * d;

@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_filetrader.cpp
 //   Creation date : Wed Aug 27 2000 10:33:11 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #define __KVILIB__
 
@@ -84,7 +86,12 @@ KviSharedFile::KviSharedFile(const QString &szName,const QString &szAbsPath,cons
 	m_szUserMask = szUserMask;
 	m_expireTime = expireTime;
 	m_uFileSize = uFileSize;
+#ifdef COMPILE_USE_QT4
+	// QT4ROX: Because they have finally moved the functionality of QString::contains() to QString::count(), and QString::contains() now does the right job
+	m_uWildCount = m_szUserMask.count('*');
+#else
 	m_uWildCount = m_szUserMask.contains('*');
+#endif
 	m_uNonWildCount = m_szUserMask.length() - m_uWildCount;
 }
 
@@ -96,7 +103,7 @@ KviSharedFile::~KviSharedFile()
 KviSharedFilesManager::KviSharedFilesManager()
 : QObject()
 {
-	m_pSharedListDict = new QDict<KviSharedFileList>();
+	m_pSharedListDict = new KviDict<KviSharedFileList>();
 	m_pSharedListDict->setAutoDelete(true);
 	m_pCleanupTimer = new QTimer();
 	connect(m_pCleanupTimer,SIGNAL(timeout()),this,SLOT(cleanup()));
@@ -111,7 +118,7 @@ KviSharedFilesManager::~KviSharedFilesManager()
 
 void KviSharedFilesManager::cleanup()
 {
-	QDictIterator<KviSharedFileList> it(*m_pSharedListDict);
+	KviDictIterator<KviSharedFileList> it(*m_pSharedListDict);
 	time_t curTime = time(0);
 
 	bool bOtherStuffToCleanup = false;
@@ -258,7 +265,7 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString &szName,const
 
 		return o;
 	} else {
-		debug("File %s unreadable: can't add offer",szAbsPath.utf8().data());
+		debug("File %s unreadable: can't add offer",KviQString::toUtf8(szAbsPath).data());
 		return 0;
 	}
 }
@@ -354,7 +361,7 @@ void KviSharedFilesManager::save(const QString &filename)
 	cfg.clear();
 	cfg.setGroup("PermanentFileOffers");
 
-	QDictIterator<KviSharedFileList> it(*m_pSharedListDict);
+	KviDictIterator<KviSharedFileList> it(*m_pSharedListDict);
 	int idx = 0;
 	while(KviSharedFileList * l = it.current())
 	{

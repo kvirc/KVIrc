@@ -4,7 +4,7 @@
 //   Creation date : Sat Jul 21 2000 17:19:31 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,7 +22,6 @@
 //
 //=============================================================================
 #define __KVILIB__
-
 
 #include "kvi_dns.h"
 #include "kvi_error.h"
@@ -61,9 +60,9 @@
 KviDnsResult::KviDnsResult()
 {
 	m_iError = KviError_success;
-	m_pHostnameList = new KviPtrList<KviStr>;
+	m_pHostnameList = new KviPtrList<QString>;
 	m_pHostnameList->setAutoDelete(true);
-	m_pIpAddressList = new KviPtrList<KviStr>;
+	m_pIpAddressList = new KviPtrList<QString>;
 	m_pIpAddressList->setAutoDelete(true);
 
 }
@@ -74,18 +73,16 @@ KviDnsResult::~KviDnsResult()
 	delete m_pIpAddressList;
 }
 
-void KviDnsResult::appendHostname(const char * host)
+void KviDnsResult::appendHostname(const QString &host)
 {
-	m_pHostnameList->append(new KviStr(host));
+	m_pHostnameList->append(new QString(host));
 }
 
 
-void KviDnsResult::appendAddress(const char * addr)
+void KviDnsResult::appendAddress(const QString &addr)
 {
-	m_pIpAddressList->append(new KviStr(addr));
+	m_pIpAddressList->append(new QString(addr));
 }
-
-
 
 
 
@@ -144,11 +141,9 @@ void KviDnsThread::postDnsError(KviDnsResult * dns,int iErr)
 
 void KviDnsThread::run()
 {
-	m_szQuery.stripWhiteSpace();
-
 	KviDnsResult * dns = new KviDnsResult();
 
-	dns->setQuery(m_szQuery.ptr());
+	dns->setQuery(m_szQuery);
 
 	if(m_szQuery.isEmpty())
 	{
@@ -183,11 +178,11 @@ void KviDnsThread::run()
 
 	// DIE DIE!....I hope that this stuff will disappear sooner or later :)
 
-	if(kvi_stringIpToBinaryIp(m_szQuery.ptr(),&inAddr))
+	if(KviNetUtils::stringIpToBinaryIp(m_szQuery,&inAddr))
 	{
 		pHostEntry = gethostbyaddr((const char *)&inAddr,sizeof(inAddr),AF_INET);
 	} else {
-		pHostEntry = gethostbyname(m_szQuery.ptr());
+		pHostEntry = gethostbyname(m_szQuery);
 	}
 
 	if(!pHostEntry)
@@ -203,21 +198,21 @@ void KviDnsThread::run()
 	} else {
 		dns->appendHostname(pHostEntry->h_name);
 		QString szIp;
-		kvi_binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr)),szIp);
+		KviNetUtils::binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr)),szIp);
 		dns->appendAddress(szIp);
 
 		int idx = 1;
 		while(pHostEntry->h_addr_list[idx])
 		{
 			QString tmp;
-			kvi_binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr_list[idx])),tmp);
+			KviNetUtils::binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr_list[idx])),tmp);
 			if(tmp.hasData())dns->appendAddress(tmp);
 			++idx;
 		}
 		if(pHostEntry->h_aliases[0])
 		{
-			dns->appendHostname(pHostEntry->h_aliases[0]);
-			if(pHostEntry->h_aliases[1])dns->appendHostname(pHostEntry->h_aliases[1]);
+			dns->appendHostname(QString::fromUtf8(pHostEntry->h_aliases[0]));
+			if(pHostEntry->h_aliases[1])dns->appendHostname(QString::fromUtf8(pHostEntry->h_aliases[1]));
 		}
 	}
 
@@ -235,10 +230,10 @@ void KviDnsThread::run()
 	bool bIsIpV6Ip = false;
 #endif
 
-	bool bIsIpV4Ip = kvi_stringIpToBinaryIp(m_szQuery.ptr(),(struct in_addr *)&(ipv4Addr.sin_addr));
+	bool bIsIpV4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery,(struct in_addr *)&(ipv4Addr.sin_addr));
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(!bIsIpV4Ip)bIsIpV6Ip = kvi_stringIpToBinaryIp_V6(m_szQuery.ptr(),(struct in6_addr *)&(ipv6Addr.sin6_addr));
+	if(!bIsIpV4Ip)bIsIpV6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery,(struct in6_addr *)&(ipv6Addr.sin6_addr));
 #endif
 
 //#ifdef HAVE_GETNAMEINFO
@@ -272,7 +267,7 @@ void KviDnsThread::run()
 		if(retVal != 0)dns->setError(translateDnsError(retVal));
 		else {
 			dns->appendHostname(retname);
-			dns->appendAddress(m_szQuery.ptr());
+			dns->appendAddress(m_szQuery);
 		}
 			
 	} else {
@@ -298,17 +293,17 @@ void KviDnsThread::run()
 		hints.ai_addr      = 0;
 		hints.ai_next      = 0;
 
-		retVal = getaddrinfo(m_szQuery.ptr(),0,&hints,&pRet);
+		retVal = getaddrinfo(KviQString::toUtf8(m_szQuery).data(),0,&hints,&pRet);
 
 		if(retVal != 0)dns->setError(translateDnsError(retVal));
 		else {
-			dns->appendHostname(pRet->ai_canonname ? pRet->ai_canonname : m_szQuery.ptr());
+			dns->appendHostname(pRet->ai_canonname ? QString::fromUtf8(pRet->ai_canonname) : m_szQuery);
 			QString szIp;
 #ifdef COMPILE_IPV6_SUPPORT
-			if(pRet->ai_family == PF_INET6)kvi_binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr,szIp);
+			if(pRet->ai_family == PF_INET6)KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr,szIp);
 			else {
 #endif
-				kvi_binaryIpToStringIp(((sockaddr_in *)(pRet->ai_addr))->sin_addr,szIp);
+				KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pRet->ai_addr))->sin_addr,szIp);
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
@@ -319,10 +314,10 @@ void KviDnsThread::run()
 			{
 				QString tmp;
 #ifdef COMPILE_IPV6_SUPPORT
-				if(pNext->ai_family == PF_INET6)kvi_binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr,tmp);
+				if(pNext->ai_family == PF_INET6)KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr,tmp);
 				else {
 #endif
-					kvi_binaryIpToStringIp(((sockaddr_in *)(pNext->ai_addr))->sin_addr,tmp);
+					KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pNext->ai_addr))->sin_addr,tmp);
 #ifdef COMPILE_IPV6_SUPPORT
 				}
 #endif
@@ -331,7 +326,7 @@ void KviDnsThread::run()
 				if(pNext->ai_canonname)
 				{
 					// FIXME: only of not equal to other names ?
-					dns->appendHostname(pNext->ai_canonname);
+					dns->appendHostname(QString::fromUtf8(pNext->ai_canonname));
 				}
 
 				pNext = pNext->ai_next;
@@ -380,7 +375,7 @@ bool KviDns::isRunning() const
 bool KviDns::lookup(const QString &query,QueryType type)
 {
 	if(m_state == Busy)return false;
-	m_pSlaveThread->setQuery(query,type);
+	m_pSlaveThread->setQuery(KviQString::trimmed(query),type);
 	bool bStarted = m_pSlaveThread->start();
 	m_state = bStarted ? Busy : Failure;
 	return bStarted;
@@ -398,12 +393,12 @@ KviDnsResult * KviDns::result()
 	return m_pDnsResult;
 }
 
-KviPtrList<KviStr> * KviDns::hostnameList()
+KviPtrList<QString> * KviDns::hostnameList()
 {
 	return result()->hostnameList();
 }
 
-KviPtrList<KviStr> * KviDns::ipAddressList()
+KviPtrList<QString> * KviDns::ipAddressList()
 {
 	return result()->ipAddressList();
 }
@@ -418,19 +413,21 @@ int KviDns::ipAddressCount()
 	return result()->ipAddressList()->count();
 }
 
-const char * KviDns::firstHostname()
+const QString & KviDns::firstHostname()
 {
-	if(result()->hostnameList()->first())return result()->hostnameList()->first()->ptr();
-	return KviStr::emptyString().ptr();
+	QString * pStr = result()->hostnameList()->first();
+	if(pStr)return *pStr;
+	return QString::null;
 }
 
-const char * KviDns::firstIpAddress()
+const QString & KviDns::firstIpAddress()
 {
-	if(result()->ipAddressList()->first())return result()->ipAddressList()->first()->ptr();
-	return KviStr::emptyString().ptr();
+	QString * pStr = result()->ipAddressList()->first();
+	if(pStr)return *pStr;
+	return QString::null;
 }
 
-const char * KviDns::query()
+const QString & KviDns::query()
 {
 	return result()->query();
 }

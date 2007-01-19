@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_tal_filedialog.coo
 //   Creation date : Thu Sep 11 2003 04:09:24 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,69 +20,21 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #define __KVILIB__
 
 
 #include "kvi_tal_filedialog.h"
 
-#ifdef COMPILE_KDE_SUPPORT
-
-	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
-	: KFileDialog(dirName,filter,parent,name,modal)
-	{
-		clearWFlags(WDestructiveClose);
-	}
-
-	KviTalFileDialog::~KviTalFileDialog()
-	{
-	}
-	
-	void KviTalFileDialog::setFileMode(FileMode m)
-	{
-		switch(m)
-		{
-			case AnyFile:
-				setMode(KFile::File | KFile::LocalOnly);
-				setOperationMode(Saving);
-			break;
-			case ExistingFile:
-				setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-				setOperationMode(Opening);
-			break;
-			case ExistingFiles:
-				setMode(KFile::Files | KFile::ExistingOnly | KFile::LocalOnly);
-				setOperationMode(Opening);
-			break;
-			case Directory:
-				setMode(KFile::Directory);
-			break;
-			case DirectoryOnly:
-				setMode(KFile::Directory);
-			break;
-			default:
-				setMode(KFile::File | KFile::LocalOnly);
-				setOperationMode(Saving);
-			break;
-		}
-	}
-	
-	void KviTalFileDialog::setDirectory(const QString &szDirectory)
-	{
-		setURL(szDirectory);
-	}
-
-
-	#include "kvi_tal_filedialog_kde.moc"
-
-#else
+#ifdef COMPILE_USE_QT4
 
 	#include <qdir.h>
 
 	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
-	: QFileDialog(dirName,filter,parent,name,modal)
+	: QFileDialog(parent,"",dirName,filter)
 	{
-		clearWFlags(WDestructiveClose);
+		setModal(modal);
 	}
 
 	KviTalFileDialog::~KviTalFileDialog()
@@ -93,32 +46,131 @@
 		switch(m)
 		{
 			case AnyFile:
-				setMode(QFileDialog::AnyFile);
+				QFileDialog::setFileMode(QFileDialog::AnyFile);
 			break;
 			case ExistingFile:
-				setMode(QFileDialog::ExistingFile);
+				QFileDialog::setFileMode(QFileDialog::ExistingFile);
 			break;
 			case ExistingFiles:
-				setMode(QFileDialog::ExistingFiles);
+				QFileDialog::setFileMode(QFileDialog::ExistingFiles);
 			break;
 			case Directory:
-				setMode(QFileDialog::Directory);
+				QFileDialog::setFileMode(QFileDialog::Directory);
 			break;
 			case DirectoryOnly:
-				setMode(QFileDialog::DirectoryOnly);
+				QFileDialog::setFileMode(QFileDialog::DirectoryOnly);
 			break;
 			default:
-				setMode(QFileDialog::AnyFile);
+				QFileDialog::setFileMode(QFileDialog::AnyFile);
 			break;
 		}
 	}
 	
 	void KviTalFileDialog::setDirectory(const QString &szDirectory)
 	{
-		setDir(QDir(szDirectory));
+		setDirectory(szDirectory);
 	}
 
 
-	#include "kvi_tal_filedialog_qt.moc"
+	#include "kvi_tal_filedialog_qt4.moc"
 
+#else
+
+	#ifdef COMPILE_KDE_SUPPORT
+	
+		KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
+		: KFileDialog(dirName,filter,parent,name,modal)
+		{
+			clearWFlags(WDestructiveClose);
+		}
+	
+		KviTalFileDialog::~KviTalFileDialog()
+		{
+		}
+		
+		void KviTalFileDialog::setFileMode(FileMode m)
+		{
+			switch(m)
+			{
+				case AnyFile:
+					setMode(KFile::File | KFile::LocalOnly);
+					setOperationMode(Saving);
+				break;
+				case ExistingFile:
+					setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
+					setOperationMode(Opening);
+				break;
+				case ExistingFiles:
+					setMode(KFile::Files | KFile::ExistingOnly | KFile::LocalOnly);
+					setOperationMode(Opening);
+				break;
+				case Directory:
+					setMode(KFile::Directory);
+				break;
+				case DirectoryOnly:
+					setMode(KFile::Directory);
+				break;
+				default:
+					setMode(KFile::File | KFile::LocalOnly);
+					setOperationMode(Saving);
+				break;
+			}
+		}
+		
+		void KviTalFileDialog::setDirectory(const QString &szDirectory)
+		{
+			setURL(szDirectory);
+		}
+	
+	
+		#include "kvi_tal_filedialog_kde.moc"
+	
+	#else
+	
+		#include <qdir.h>
+	
+		KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
+		: QFileDialog(dirName,filter,parent,name,modal)
+		{
+			clearWFlags(WDestructiveClose);
+		}
+	
+		KviTalFileDialog::~KviTalFileDialog()
+		{
+		}
+	
+		void KviTalFileDialog::setFileMode(FileMode m)
+		{
+			switch(m)
+			{
+				case AnyFile:
+					setMode(QFileDialog::AnyFile);
+				break;
+				case ExistingFile:
+					setMode(QFileDialog::ExistingFile);
+				break;
+				case ExistingFiles:
+					setMode(QFileDialog::ExistingFiles);
+				break;
+				case Directory:
+					setMode(QFileDialog::Directory);
+				break;
+				case DirectoryOnly:
+					setMode(QFileDialog::DirectoryOnly);
+				break;
+				default:
+					setMode(QFileDialog::AnyFile);
+				break;
+			}
+		}
+		
+		void KviTalFileDialog::setDirectory(const QString &szDirectory)
+		{
+			setDir(QDir(szDirectory));
+		}
+	
+	
+		#include "kvi_tal_filedialog_qt.moc"
+	
+	#endif
 #endif

@@ -61,7 +61,7 @@ void KviModuleExtensionDescriptor::setIcon(const QPixmap &pix)
 	else m_pIcon = new QPixmap(pix);
 }
 
-KviModuleExtension * KviModuleExtensionDescriptor::allocate(KviWindow * pWnd,QDict<QVariant> * pParams,void * pSpecial)
+KviModuleExtension * KviModuleExtensionDescriptor::allocate(KviWindow * pWnd,KviDict<QVariant> * pParams,void * pSpecial)
 {
 	KviModuleExtensionAllocStruct s;
 	s.pDescriptor = this;
@@ -91,7 +91,7 @@ void KviModuleExtensionDescriptor::unregisterObject(KviModuleExtension * e)
 
 KviModuleExtensionManager::KviModuleExtensionManager()
 {
-	m_pExtensionDict = new QAsciiDict<KviModuleExtensionDescriptorList>(17,false);
+	m_pExtensionDict = new KviAsciiDict<KviModuleExtensionDescriptorList>(17,false);
 	m_pExtensionDict->setAutoDelete(true);
 }
 
@@ -122,7 +122,7 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::registerExtension(KviM
 
 void KviModuleExtensionManager::unregisterExtensionsByModule(KviModule * m)
 {
-	QAsciiDictIterator<KviModuleExtensionDescriptorList> it(*m_pExtensionDict);
+	KviAsciiDictIterator<KviModuleExtensionDescriptorList> it(*m_pExtensionDict);
 	KviPtrList<KviStr> dying;
 	dying.setAutoDelete(true);
 	while(KviModuleExtensionDescriptorList * l = it.current())
@@ -181,7 +181,7 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescripto
 	return 0;
 }
 
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd,QDict<QVariant> * pParams,void * pSpecial,const char * preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd,KviDict<QVariant> * pParams,void * pSpecial,const char * preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
 	if(!l)return 0;
@@ -208,7 +208,7 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &
 }
 
 
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,int id,KviWindow * pWnd,QDict<QVariant> * pParams,void * pSpecial,const char * preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,int id,KviWindow * pWnd,KviDict<QVariant> * pParams,void * pSpecial,const char * preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
 	if(!l)return 0;

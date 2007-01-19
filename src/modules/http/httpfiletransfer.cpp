@@ -58,13 +58,13 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 
 	m_pHttpRequest = new KviHttpRequest();
 
-	connect(m_pHttpRequest,SIGNAL(status(const char *)),this,SLOT(statusMessage(const char *)));
+	connect(m_pHttpRequest,SIGNAL(status(const QString &)),this,SLOT(statusMessage(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(transferTerminated(bool)));
-	connect(m_pHttpRequest,SIGNAL(header(QAsciiDict<KviStr> *)),this,SLOT(headersReceived(QAsciiDict<KviStr> *)));
-	connect(m_pHttpRequest,SIGNAL(resolvingHost(const char *)),this,SLOT(resolvingHost(const char *)));
+	connect(m_pHttpRequest,SIGNAL(header(KviAsciiDict<KviStr> *)),this,SLOT(headersReceived(KviAsciiDict<KviStr> *)));
+	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const char *)));
 	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
-	connect(m_pHttpRequest,SIGNAL(contactingHost(const char *)),this,SLOT(contactingHost(const char *)));
-	connect(m_pHttpRequest,SIGNAL(receivedResponse(const char *)),this,SLOT(receivedResponse(const char *)));
+	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(receivedResponse(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
 	
 	m_eGeneralStatus = Initializing;
@@ -387,19 +387,19 @@ void KviHttpFileTransfer::connectionEstabilished()
 	displayUpdate();
 }
 
-void KviHttpFileTransfer::resolvingHost(const char *hostname)
+void KviHttpFileTransfer::resolvingHost(const QString &hostname)
 {
 	m_szStatusString = __tr2qs_ctx("Resolving host %1","http").arg(hostname);
 	displayUpdate();
 }
 
-void KviHttpFileTransfer::contactingHost(const char *ipandport)
+void KviHttpFileTransfer::contactingHost(const QString &ipandport)
 {
 	m_szStatusString = __tr2qs_ctx("Contacting host %1","http").arg(ipandport);
 	displayUpdate();
 }
 
-void KviHttpFileTransfer::receivedResponse(const char * response)
+void KviHttpFileTransfer::receivedResponse(const QString &response)
 {
 	m_lHeaders.clear();
 	m_lHeaders.append(response);
@@ -409,11 +409,11 @@ void KviHttpFileTransfer::receivedResponse(const char * response)
 	displayUpdate();
 }
 
-void KviHttpFileTransfer::statusMessage(const char *txt)
+void KviHttpFileTransfer::statusMessage(const QString &txt)
 {
 	KviWindow * out = transferWindow();
 	if(out && (!m_bNoOutput))
-		out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]: %s",id(),txt);
+		out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]: %Q",id(),&txt);
 }
 
 void KviHttpFileTransfer::transferTerminated(bool bSuccess)
@@ -461,13 +461,13 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 	}
 }
 
-void KviHttpFileTransfer::headersReceived(QAsciiDict<KviStr> *h)
+void KviHttpFileTransfer::headersReceived(KviAsciiDict<KviStr> *h)
 {
 	if(!h)return;
 	KviWindow * out = transferWindow();
 
 	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: Response headers:","http"),id());
-	QAsciiDictIterator<KviStr> it(*h);
+	KviAsciiDictIterator<KviStr> it(*h);
 	while(KviStr * s = it.current())
 	{
 		QString szHeader = it.currentKey();

@@ -85,14 +85,14 @@ public:
 	virtual QString tipText();
 	virtual QString localFileName();
 protected slots:
-	void statusMessage(const char * txt);
+	void statusMessage(const QString &txt);
 	void transferTerminated(bool bSuccess);
-	void headersReceived(QAsciiDict<KviStr> *h);
+	void headersReceived(KviAsciiDict<KviStr> *h);
 	void requestSent(const QStringList &sl);
 
-	void resolvingHost(const char * hostname);
-	void contactingHost(const char * ipandport);
-	void receivedResponse(const char * response);
+	void resolvingHost(const QString &hostname);
+	void contactingHost(const QString &ipandport);
+	void receivedResponse(const QString &response);
 	void connectionEstabilished();
 
 	void abort();

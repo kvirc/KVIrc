@@ -29,7 +29,7 @@
 #include "kvi_string.h"
 #include "kvi_sockettype.h"
 
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 
 #include <openssl/ssl.h>
 
@@ -41,8 +41,8 @@ public:
 	~KviSSLCertificate();
 protected:
 	X509 * m_pX509;
-	QAsciiDict<KviStr> * m_pSubject;
-	QAsciiDict<KviStr> * m_pIssuer;
+	KviAsciiDict<KviStr> * m_pSubject;
+	KviAsciiDict<KviStr> * m_pIssuer;
 	int                  m_iPubKeyBits;
 	KviStr               m_szPubKeyType;
 	int                  m_iSerialNumber;
@@ -55,8 +55,8 @@ private:
 	void extractPubKeyInfo();
 	void extractSerialNumber();
 	void extractSignature();
-	const char * dictEntry(QAsciiDict<KviStr> * dict,const char * entry);
-	void splitX509String(QAsciiDict<KviStr> * dict,const char * t);
+	const char * dictEntry(KviAsciiDict<KviStr> * dict,const char * entry);
+	void splitX509String(KviAsciiDict<KviStr> * dict,const char * t);
 //	void getPKeyType(int type,KviStr &buffer);
 public:
 	void setX509(X509 * x509);

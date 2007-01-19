@@ -293,7 +293,11 @@ bool KviIrcMask::hasNumericHost() const
 			else {
 				if((uc < '0') || (uc > '9'))
 				{
+#ifdef COMPILE_USE_QT4
+					uc = p->toUpper().unicode();
+#else
 					uc = p->upper().unicode();
+#endif
 					if((uc < 'A') || (uc > 'F'))return false;
 				}
 			}

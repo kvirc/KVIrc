@@ -141,7 +141,7 @@ void KviApp::findGlobalKvircDirectory()
 	// with the image and help files inside
 #ifdef GLOBAL_KVIRC_DIR
 	m_szGlobalKvircDir = GLOBAL_KVIRC_DIR;
-	kvi_adjustFilePath(m_szGlobalKvircDir);
+	KviFileUtils::adjustFilePath(m_szGlobalKvircDir);
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 #endif //GLOBAL_KVIRC_DIR
 

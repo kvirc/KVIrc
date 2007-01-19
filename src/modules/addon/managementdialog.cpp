@@ -250,9 +250,9 @@ KviScriptManagementDialog::~KviScriptManagementDialog()
 void KviScriptManagementDialog::fillListView()
 {
 	m_pListView->clear();
-	QDict<KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
+	KviDict<KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
 	if(!d)return;
-	QDictIterator<KviKvsScriptAddon> it(*d);
+	KviDictIterator<KviKvsScriptAddon> it(*d);
 	KviScriptAddonListViewItem * item;
 	while(KviKvsScriptAddon * a = it.current())
 	{

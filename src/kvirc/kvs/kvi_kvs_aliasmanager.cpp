@@ -32,7 +32,7 @@ KviKvsAliasManager * KviKvsAliasManager::m_pAliasManager = 0;
 KviKvsAliasManager::KviKvsAliasManager()
 {
 	m_pAliasManager = this;
-	m_pAliasDict = new QDict<KviKvsScript>(51,false);
+	m_pAliasDict = new KviDict<KviKvsScript>(51,false);
 	m_pAliasDict->setAutoDelete(true);
 }
 
@@ -63,7 +63,7 @@ void KviKvsAliasManager::done()
 
 void KviKvsAliasManager::completeCommand(const QString &word,KviPtrList<QString> * matches)
 {
-	QDictIterator<KviKvsScript> it(*m_pAliasDict);
+	KviDictIterator<KviKvsScript> it(*m_pAliasDict);
 	while(it.current())
 	{
 		if(KviQString::equalCIN(word,it.current()->name(),word.length()))
@@ -79,7 +79,7 @@ void KviKvsAliasManager::save(const QString & filename)
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();
 
-	QDictIterator<KviKvsScript> it(*m_pAliasDict);
+	KviDictIterator<KviKvsScript> it(*m_pAliasDict);
 
 	while(it.current())
 	{

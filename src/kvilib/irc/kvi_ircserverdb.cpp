@@ -90,7 +90,7 @@ KviIrcServer * KviIrcServerDataBaseRecord::currentServer()
 
 KviIrcServerDataBase::KviIrcServerDataBase()
 {
-	m_pRecords = new QDict<KviIrcServerDataBaseRecord>(17,false);
+	m_pRecords = new KviDict<KviIrcServerDataBaseRecord>(17,false);
 	m_pRecords->setAutoDelete(true);
 	m_pAutoConnectOnStartupServers = 0;
 	m_pAutoConnectOnStartupNetworks = 0;
@@ -149,7 +149,7 @@ KviIrcServerDataBaseRecord * KviIrcServerDataBase::currentRecord()
 	if(!m_szCurrentNetwork.isEmpty())r = m_pRecords->find(m_szCurrentNetwork);
 	if(r)return r;
 
-	QDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
 	r = it.current();
 	if(!r)return 0;
 	m_szCurrentNetwork = r->network()->name();
@@ -158,7 +158,7 @@ KviIrcServerDataBaseRecord * KviIrcServerDataBase::currentRecord()
 
 void KviIrcServerDataBase::updateServerIp(KviIrcServer * pServer,const QString & ip)
 {
-	QDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
 	while(KviIrcServerDataBaseRecord * r = it.current())
 	{
 		KviIrcServer * srv = r->findServer(pServer);
@@ -184,8 +184,13 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetNa
 
 	for(KviIrcServer * s = r->m_pServerList->first();s;s = r->m_pServerList->next())
 	{
+#ifdef COMPILE_USE_QT4
+		if(s->m_szDescription.contains("random",Qt::CaseInsensitive) ||
+			(s->m_szDescription.contains("round",Qt::CaseInsensitive) && s->m_szDescription.contains("robin",Qt::CaseInsensitive)))
+#else
 		if(s->m_szDescription.contains("random",false) ||
 			(s->m_szDescription.contains("round",false) && s->m_szDescription.contains("robin",false)))
+#endif
 		{
 			r->setCurrentServer(s);
 			return true;
@@ -220,7 +225,7 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 {
 	KviIrcServer * pServer = 0;
 
-	QDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
 	KviIrcServerDataBaseRecord * r = 0;
 	KviIrcServer * srv;
 
@@ -338,7 +343,11 @@ search_finished:
 	if(!(bIsValidIpV4 || bIsValidIpV6))
 	{
 		// is it a valid hostname ? (must contain at least one dot)
+#ifdef COMPILE_USE_QT4
+		if(!d->szServer.contains('.'))
+#else
 		if(d->szServer.contains('.') < 1)
+#endif
 		{
 			// assume it is a network name!
 			KviIrcServerDataBaseRecord * r = m_pRecords->find(d->szServer);
@@ -462,7 +471,7 @@ void KviIrcServerDataBase::save(const QString &filename)
 
 	cfg.clear(); // clear any old entry
 
-	QDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
 
 	QString tmp;
 

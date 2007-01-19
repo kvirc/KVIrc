@@ -86,7 +86,7 @@
 #endif
 #endif
 
-extern KVIRC_API QAsciiDict<KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
 static KviPtrList<KviDockWidget> * g_pDockWidgetList = 0;
 
 static QPixmap * g_pDock1 = 0;
@@ -377,7 +377,7 @@ void KviDockWidget::doAway(int id)
 {
 	if(id<0)
 	{
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 		while(KviWindow * wnd = it.current())
 		{
 			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -422,7 +422,7 @@ void KviDockWidget::fillContextPopup()
 		
 		int iSeparator=m_pAwayPopup->insertSeparator();
 		
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 		bool bAllAway=1;
 		bool bAllUnaway=1;
 		int iNetCount=0;

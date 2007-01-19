@@ -215,11 +215,14 @@ void KviRegisteredUser::setProperty(const QString & name,const QString & value)
 	{
 		if(!m_pPropertyDict)
 		{
-			m_pPropertyDict = new QDict<QString>(7,false);
+			m_pPropertyDict = new KviDict<QString>(7,false);
 			m_pPropertyDict->setAutoDelete(true);
 		}
-		QString * val = new QString(value);
-		val->stripWhiteSpace();
+#ifdef COMPILE_USE_QT4
+		QString * val = new QString(value.trimmed());
+#else
+		QString * val = new QString(value.stripWhiteSpace());
+#endif
 		if(!val->isEmpty())
 		{
 			m_pPropertyDict->replace(name,val);
@@ -244,8 +247,8 @@ bool KviRegisteredUser::getProperty(const QString & name,QString &value)
 
 const QString & KviRegisteredUser::getProperty(const QString & name)
 {
-	if(!m_pPropertyDict) return QString::null;
-	if(name.isEmpty()) return QString::null;
+	if(!m_pPropertyDict)return QString::null;
+	if(name.isEmpty())return QString::null;
 	QString * pValue = m_pPropertyDict->find(name);
 	if(pValue)return *pValue;
 	return QString::null;
@@ -262,6 +265,9 @@ bool KviRegisteredUser::getBoolProperty(const QString & name,bool def)
 		if(KviQString::equalCS(*pValue,"1"))return true;
 		if(KviQString::equalCI(*pValue,"true"))return true;
 		if(KviQString::equalCI(*pValue,"yes"))return true;
+		//if(KviQString::equalCI(*pValue,"yeah"))return true;
+		//if(KviQString::equalCI(*pValue,"sure"))return true;
+		//if(KviQString::equalCI(*pValue,"sureashell"))return true;
 	}
 	return def;
 }
@@ -288,16 +294,16 @@ KviRegisteredUserGroup::~KviRegisteredUserGroup()
 
 KviRegisteredUserDataBase::KviRegisteredUserDataBase()
 {
-	m_pUserDict = new QDict<KviRegisteredUser>(31,false); // do not copy keys
+	m_pUserDict = new KviDict<KviRegisteredUser>(31,false); // do not copy keys
 	m_pUserDict->setAutoDelete(true);
 
 	m_pWildMaskList = new KviRegisteredMaskList;
 	m_pWildMaskList->setAutoDelete(true);
 
-	m_pMaskDict = new QDict<KviRegisteredMaskList>(49,false); // copy keys here!
+	m_pMaskDict = new KviDict<KviRegisteredMaskList>(49,false); // copy keys here!
 	m_pMaskDict->setAutoDelete(true);
 	
-	m_pGroupDict = new  QDict<KviRegisteredUserGroup>(5,false); // copy keys here!
+	m_pGroupDict = new  KviDict<KviRegisteredUserGroup>(5,false); // copy keys here!
 	m_pGroupDict->setAutoDelete(true);
 }
 
@@ -424,7 +430,7 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 	m_pMaskDict->clear();
 	m_pGroupDict->clear();
 
-	QDictIterator<KviRegisteredUser> it(*(db->m_pUserDict));
+	KviDictIterator<KviRegisteredUser> it(*(db->m_pUserDict));
 
 	while(KviRegisteredUser * theCur = it.current())
 	{
@@ -437,10 +443,10 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 			addMask(u,m2);
 		}
 		// copy properties
-		QDict<QString> * pd = theCur->propertyDict();
+		KviDict<QString> * pd = theCur->propertyDict();
 		if(pd)
 		{
-			QDictIterator<QString> pdi(*pd);
+			KviDictIterator<QString> pdi(*pd);
 			while(pdi.current())
 			{
 				u->setProperty(pdi.currentKey(),*(pdi.current()));
@@ -451,7 +457,7 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 		++it;
 	}
 	
-	QDictIterator<KviRegisteredUserGroup> git(*db->m_pGroupDict);
+	KviDictIterator<KviRegisteredUserGroup> git(*db->m_pGroupDict);
 	while(git.current())
 	{
 		addGroup(git.currentKey());	
@@ -468,7 +474,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 	while(KviIrcMask * mask = u->maskList()->first())
 	{
 		if(!removeMaskByPointer(mask))
-			debug("Ops... removeMaskByPointer(%s) failed ?",name.utf8().data());
+			debug("Ops... removeMaskByPointer(%s) failed ?",KviQString::toUtf8(name).data());
 	}
 	m_pUserDict->remove(name);
 	return true;
@@ -663,7 +669,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 	cfg.clear();
 	cfg.preserveEmptyGroups(true);
 
-	QDictIterator<KviRegisteredUser> it(*m_pUserDict);
+	KviDictIterator<KviRegisteredUser> it(*m_pUserDict);
 
 	while(it.current())
 	{
@@ -671,7 +677,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		// Write properties
 		if(it.current()->propertyDict())
 		{
-			QDictIterator<QString> pit(*(it.current()->propertyDict()));
+			KviDictIterator<QString> pit(*(it.current()->propertyDict()));
 			while(pit.current())
 			{
 				QString tmp = "prop_";
@@ -695,7 +701,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		++it;
 	}
 	
-	QDictIterator<KviRegisteredUserGroup> git(*m_pGroupDict);
+	KviDictIterator<KviRegisteredUserGroup> git(*m_pGroupDict);
 	QString szTmp;
 	while(git.current())
 	{

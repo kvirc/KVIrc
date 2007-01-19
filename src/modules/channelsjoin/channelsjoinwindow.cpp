@@ -173,10 +173,10 @@ void KviChannelsJoinWindow::fillListView()
 	par = new QListViewItem(m_pListView,__tr2qs("Registered Channels"));
 	par->setOpen(true);
 
-	QAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
+	KviAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
 	if(d)
 	{
-		QAsciiDictIterator<KviRegisteredChannelList> it(*d);
+		KviAsciiDictIterator<KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
 			chld = new QListViewItem(par,it.currentKey());

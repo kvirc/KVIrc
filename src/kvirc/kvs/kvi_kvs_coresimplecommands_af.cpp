@@ -51,7 +51,7 @@
 #include <qtooltip.h>
 
 // kvi_app.cpp
-extern QAsciiDict<KviWindow> * g_pGlobalWindowDict;
+extern KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -116,7 +116,7 @@ namespace KviKvsCoreSimpleCommands
 	
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
-			QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+			KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -170,7 +170,7 @@ namespace KviKvsCoreSimpleCommands
 		
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
-			QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+			KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)

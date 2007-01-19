@@ -44,7 +44,7 @@ KviKvsObjectController::KviKvsObjectController()
 	m_pTopLevelObjectList->setAutoDelete(false);
 	m_pObjectDict = new QPtrDict<KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
-	m_pClassDict = new QDict<KviKvsObjectClass>(31,false);
+	m_pClassDict = new KviDict<KviKvsObjectClass>(31,false);
 	m_pClassDict->setAutoDelete(false);
 }
 
@@ -104,7 +104,7 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 void KviKvsObjectController::clearUserClasses()
 {
 	flushUserClasses();
-	QDictIterator<KviKvsObjectClass> it(*m_pClassDict);
+	KviDictIterator<KviKvsObjectClass> it(*m_pClassDict);
 	KviPtrList<KviKvsObjectClass> l;
 	l.setAutoDelete(true);
 	while(it.current())
@@ -156,7 +156,7 @@ void KviKvsObjectController::unregisterObject(KviKvsObject *pObject)
 
 void KviKvsObjectController::flushUserClasses()
 {
-	QDictIterator<KviKvsObjectClass> it(*m_pClassDict);
+	KviDictIterator<KviKvsObjectClass> it(*m_pClassDict);
 	while(KviKvsObjectClass * c = it.current())
 	{
 		if(!c->isBuiltin())

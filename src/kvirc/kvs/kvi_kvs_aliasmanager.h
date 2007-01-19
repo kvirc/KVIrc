@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include <qdict.h>
+#include "kvi_dict.h"
 
 #include "kvi_list.h"
 #include "kvi_qstring.h"
@@ -38,7 +38,7 @@ protected: // it only can be created and destroyed by KviKvsAliasManager::init()
 	KviKvsAliasManager();
 	~KviKvsAliasManager();
 protected:
-	QDict<KviKvsScript>        * m_pAliasDict;
+	KviDict<KviKvsScript>        * m_pAliasDict;
 	static KviKvsAliasManager  * m_pAliasManager;
 public:
 	static KviKvsAliasManager * instance()
@@ -46,7 +46,7 @@ public:
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
-	QDict<KviKvsScript> * aliasDict(){ return m_pAliasDict; };
+	KviDict<KviKvsScript> * aliasDict(){ return m_pAliasDict; };
 	const KviKvsScript * lookup(const QString & szName)
 		{ return m_pAliasDict->find(szName); };
 	void add(const QString &szName,KviKvsScript * pAlias)

@@ -519,8 +519,8 @@ static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	
 	int cnt = 0;
 
-	QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 
 	while(KviRegisteredUser * u = it.current())
 	{
@@ -575,8 +575,8 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 
 	int count = 0;
 
-	QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
 		KviPtrList<KviIrcMask> * ml = u->maskList();
@@ -594,10 +594,10 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 				}
 			}
 
-			QDict<QString> * pd = u->propertyDict();
+			KviDict<QString> * pd = u->propertyDict();
 			if(pd)
 			{
-				QDictIterator<QString> pdit(*pd);
+				KviDictIterator<QString> pdit(*pd);
 				while(pdit.current())
 				{
 					QString key = pdit.currentKey();
@@ -725,8 +725,8 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 //
 //	KviStr list;
 //
-//	const QAsciiDict<KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
-//	QAsciiDictIterator<KviRegisteredUserList> it(*d);
+//	const KviAsciiDict<KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
+//	KviAsciiDictIterator<KviRegisteredUserList> it(*d);
 //	while(KviRegisteredUserList * l = it.current())
 //	{
 //		search_reguser_list(l,c->window(),parms->safeFirstParam(),list);

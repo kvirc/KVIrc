@@ -4,7 +4,7 @@
 //   Creation date : Mon Dec 17 2001 00:04:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -43,6 +43,25 @@ KviFile::~KviFile()
 {
 }
 
+bool KviFile::openForReading()
+{
+#ifdef COMPILE_USE_QT4
+	return open(QFile::ReadOnly);
+#else
+	return open(IO_ReadOnly);
+#endif
+}
+
+bool KviFile::openForWriting(bool bAppend)
+{
+#ifdef COMPILE_USE_QT4
+	return open(QFile::ReadOnly | (bAppend ? QFile::Append : QFile::Truncate));
+#else
+	return open(IO_WriteOnly | (bAppend ? IO_Append : IO_Truncate));
+#endif
+}
+
+
 bool KviFile::save(const QByteArray &bData)
 {
 	if(!save((kvi_u32_t)(bData.size())))return false;
@@ -53,31 +72,35 @@ bool KviFile::load(QByteArray &bData)
 {
 	kvi_u32_t iLen;
 	if(!load(iLen))return false;
-	bData.resize(iLen);
+	bData.resize(iLen); // it is automatically null terminated in Qt 4.x... BLEAH :D
 	if(readBlock((char *)(bData.data()),iLen) != iLen)return false;
 	return true;
 }
 
-bool KviFile::save(const QCString &szData)
+#ifndef COMPILE_USE_QT4
+
+bool KviFile::save(const KviQCString &szData)
 {
 	if(!save((kvi_u32_t)(szData.length())))return false;
 	return (writeBlock(szData.data(),szData.length()) == ((int)(szData.length())));
 }
 
-bool KviFile::load(QCString &szData)
+bool KviFile::load(KviQCString &szData)
 {
 	kvi_u32_t iLen;
 	if(!load(iLen))return false;
-	szData.resize(iLen + 1);
+	szData.resize(iLen + 1); // this would allocate one extra byte with Qt 4.x...
 	if(readBlock((char *)(szData.data()),iLen) != iLen)return false;
 	*(szData.data() + iLen) = 0;
 	return true;
 }
 
+#endif
+
 
 bool KviFile::save(const QString &szData)
 {
-	QCString c = szData.utf8();
+	KviQCString c = KviQString::toUtf8(szData);
 	if(!save((kvi_u32_t)(c.length())))return false;
 	return (writeBlock(c.data(),c.length()) == ((int)(c.length())));
 }
@@ -86,7 +109,7 @@ bool KviFile::load(QString &szData)
 {
 	kvi_u32_t iLen;
 	if(!load(iLen))return false;
-	QCString tmp;
+	KviQCString tmp;
 	tmp.resize(iLen + 1);
 	if(readBlock((char *)(tmp.data()),iLen) != iLen)return false;
 	*(tmp.data() + iLen) = 0;
@@ -204,9 +227,9 @@ bool KviFile::skipFirst(char t,unsigned int maxdist)
 {
 	while(maxdist > 0)
 	{
-		int c = getch();
+		char c;
+		if(!getChar(&c))return false;
 		if(((char)c) == t)return true;
-		if(c == -1)return false;
 		maxdist--;
 	}
 	return false;
@@ -217,13 +240,13 @@ bool KviFile::skipFirst(const KviStr &t,unsigned int maxdist)
 	char * ptr = t.ptr();
 	while(maxdist > 0)
 	{
-		int c = getch();
+		char c;
+		if(!getChar(&c))return false;
 		if(c == *ptr)
 		{
 			ptr++;
 			if(!*ptr)return true;
 		} else {
-			if(c == -1)return false;
 			ptr = t.ptr();
 		}
 		maxdist--;

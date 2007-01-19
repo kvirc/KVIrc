@@ -87,7 +87,7 @@ public:
 	KviNickServRuleSet(const KviNickServRuleSet &s);
 	~KviNickServRuleSet();
 protected:
-	KviPtrList<KviNickServRule> * m_pRules; // FIXME: Replace with QDict<KviPtrList>
+	KviPtrList<KviNickServRule> * m_pRules; // FIXME: Replace with KviDict<KviPtrList>
 	bool                          m_bEnabled;
 public:
 	// avoid crashes under windows

@@ -66,7 +66,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 	} else {
 		KviKvsHash* hash = new KviKvsHash();
 		
-		QDictIterator<KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
+		KviDictIterator<KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 		
 		while(KviTextIcon * i = it.current())
 		{

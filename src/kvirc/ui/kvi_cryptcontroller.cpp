@@ -41,21 +41,21 @@
 	#include "kvi_toolwindows_container.h"
 	
 	#include <qlayout.h>
-	#include <qasciidict.h>
+	#include "kvi_asciidict.h"
 
 	// kvi_app.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
 
 	KviEngineListBoxItem::KviEngineListBoxItem(QListBox * lb,KviCryptEngineDescription * d,const char * modName)
-	: QListBoxText(lb,d->szName.ptr())
+	: QListBoxText(lb,d->szName)
 	{
 		m_szName = d->szName;
 		m_szAuthor = d->szAuthor;
 		m_szDescription = d->szDescription;
 		m_iFlags = d->iFlags;
 		m_szModuleName = modName;
-		setText(d->szName.ptr());
+		setText(d->szName);
 	}
 
 	KviEngineListBoxItem::~KviEngineListBoxItem()
@@ -176,10 +176,10 @@
 
 	void KviCryptController::fillEngineList()
 	{
-		const QAsciiDict<KviCryptEngineDescription> * a = g_pCryptEngineManager->engineDict();
+		const KviDict<KviCryptEngineDescription> * a = g_pCryptEngineManager->engineDict();
 		if(a)
 		{
-			QAsciiDictIterator<KviCryptEngineDescription> it(*a);
+			KviDictIterator<KviCryptEngineDescription> it(*a);
 			while(it.current())
 			{
 				KviStr modName = it.current()->providerHandle ? ((KviModule *)(it.current()->providerHandle))->name() : "";

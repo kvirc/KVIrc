@@ -52,7 +52,7 @@
 
 
 //extern KviModule * g_pOptionsModule;
-extern QDict<KviOptionsDialog> * g_pOptionsDialogDict;
+extern KviDict<KviOptionsDialog> * g_pOptionsDialogDict;
 
 extern KVIRC_API KviApp * g_pApp;
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;

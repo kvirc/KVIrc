@@ -31,6 +31,7 @@
 #include "kvi_tal_application.h"
 #include "kvi_list.h"
 #include "kvi_time.h"
+#include "kvi_asciidict.h" // ?
 
 #define KVI_RECENT_CHANNELS_SEPARATOR ":"
 
@@ -94,7 +95,7 @@ protected:
 	bool                            m_bUpdateGuiPending;
 	KviPtrList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
 	bool                            m_bSetupDone;
-	QAsciiDict<QStringList>        *m_pRecentChannelsDict;
+	KviAsciiDict<QStringList>     * m_pRecentChannelsDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool                            m_bUpdatePseudoTransparencyPending;
 #endif
@@ -187,7 +188,7 @@ public:
 	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
 	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString::null);
 	bool trashFile(const char *filename);
-	void getChannelDumpLogFileName(KviStr &str);
+	void getChannelDumpLogFileName(QString &str);
 
 	static QTextCodec * defaultTextCodec();
 

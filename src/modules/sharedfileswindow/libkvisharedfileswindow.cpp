@@ -106,7 +106,7 @@ static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",KVI_SHARED_FILES_WINDOW_EXTENSION_NAME);
 	if(d)
 	{
-		QDict<QVariant> dict(17,true);
+		KviDict<QVariant> dict(17,true);
 		dict.setAutoDelete(true);
 		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',"minimized")));
 		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',"noraise")));

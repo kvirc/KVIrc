@@ -49,7 +49,7 @@ KviKvsObjectClass::KviKvsObjectClass(
 	m_szName        = szName;
 	m_bBuiltin      = bBuiltin;
 	m_bDirty        = !bBuiltin;
-	m_pFunctionHandlers = new QDict<KviKvsObjectFunctionHandler>(17,false);
+	m_pFunctionHandlers = new KviDict<KviKvsObjectFunctionHandler>(17,false);
 	m_pFunctionHandlers->setAutoDelete(true);
 	m_pChildClasses = new KviPtrList<KviKvsObjectClass>;
 	m_pChildClasses->setAutoDelete(false);
@@ -58,7 +58,7 @@ KviKvsObjectClass::KviKvsObjectClass(
 	// inherit everything from the class above
 	if(pParent)
 	{
-		QDictIterator<KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
+		KviDictIterator<KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
 		while(KviKvsObjectFunctionHandler * fh = it.current())
 		{
 			m_pFunctionHandlers->insert(it.currentKey(),fh->clone());
@@ -185,7 +185,7 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 					"{\n",
 					&m_szName,&szParentName);
 		
-	QDictIterator<KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
+	KviDictIterator<KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
 	
 	while(KviKvsObjectFunctionHandler * h = it.current())
 	{

@@ -33,7 +33,7 @@
 #include <qpixmap.h>
 #include <qobject.h>
 #include <qwidget.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 
 
@@ -439,8 +439,8 @@ private:
 	QPixmap                     * m_smallIcons[KVI_NUM_SMALL_ICONS];
 	KviIconWidget               * m_pIconWidget;
 
-	QDict<KviCachedPixmap>      * m_pCachedImages;
-	QDict<int>                  * m_pIconNames;
+	KviDict<KviCachedPixmap>      * m_pCachedImages;
+	KviDict<int>                  * m_pIconNames;
 	unsigned int                  m_uCacheTotalSize;
 	unsigned int                  m_uCacheMaxSize;
 public:

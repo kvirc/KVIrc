@@ -262,21 +262,23 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 			__tr2qs("Resuming direct server connection"));
 		m_pTarget->clearProxy();
 	} else {
+		QString szFirstIpAddress = m_pProxyDns->firstIpAddress();
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-				__tr2qs("Proxy hostname resolved to %s"),m_pProxyDns->firstIpAddress());
+				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
+		
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.ptr(),m_pProxyDns->firstIpAddress());
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.ptr(),szFirstIpAddress);
 
 		if(m_pProxyDns->hostnameCount() > 1)
 		{
-			KviStr szFirstHostname = m_pProxyDns->firstHostname();
+			QString szFirstHostname = m_pProxyDns->firstHostname();
 
-			for(KviStr * addr = m_pProxyDns->hostnameList()->next();addr;addr = m_pProxyDns->hostnameList()->next())
+			for(QString * addr = m_pProxyDns->hostnameList()->next();addr;addr = m_pProxyDns->hostnameList()->next())
 			{
 				if(!_OUTPUT_QUIET)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-						__tr2qs("Proxy %s has a nickname: %s"),szFirstHostname.ptr(),addr->ptr());
+						__tr2qs("Proxy %Q has a nickname: %Q"),&szFirstHostname,addr);
 			}
 		}
 	}
@@ -324,17 +326,17 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 		{
 			m_pTarget->server()->m_szIp=m_pTarget->server()->m_szHostname;
 			haveServerIp();
-		} else {	
+		} else {
 			if(m_pServerDns)
 			{
 				debug("Something weird is happening, m_pServerDns is non-zero in lookupServerHostname()");
 				delete m_pServerDns;
-		m_pServerDns = 0;
+				m_pServerDns = 0;
 			}
 			m_pServerDns = new KviDns();
 			connect(m_pServerDns,SIGNAL(lookupDone(KviDns *)),this,
 				SLOT(serverLookupTerminated(KviDns *)));
-			if(!m_pServerDns->lookup(m_pTarget->server()->m_szHostname.utf8().data(),
+			if(!m_pServerDns->lookup(m_pTarget->server()->m_szHostname,
 				m_pTarget->server()->isIpV6() ? KviDns::IpV6 : KviDns::IpV4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
@@ -364,42 +366,42 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 		if(!(m_pTarget->server()->isIpV6()))
 		{
 			m_pConsole->output(KVI_OUT_SYSTEMERROR,
-				__tr2qs("If this server is an IPv6 one, try /server -i %s"),
-				m_pTarget->server()->m_szHostname.utf8().data());
+				__tr2qs("If this server is an IPv6 one, try /server -i %Q"),
+				&(m_pTarget->server()->m_szHostname));
 		}
 #endif
 		terminate(Error,m_pServerDns->error());
 		return;
 	}
-	
+	QString szFirstIpAddress = m_pServerDns->firstIpAddress();
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			__tr2qs("Server hostname resolved to %s"),
-			m_pServerDns->firstIpAddress());
-	g_pIrcServerDataBase->updateServerIp(m_pTarget->server(),m_pServerDns->firstIpAddress());
+			__tr2qs("Server hostname resolved to %Q"),
+			&szFirstIpAddress);
+	g_pIrcServerDataBase->updateServerIp(m_pTarget->server(),szFirstIpAddress);
 
-	if(!kvi_strEqualCI(m_pTarget->server()->m_szHostname.utf8().data(),m_pServerDns->firstHostname()))
+	QString szFirstHostname = m_pServerDns->firstHostname();
+
+	if(!KviQString::equalCI(m_pTarget->server()->m_szHostname,m_pServerDns->firstHostname()))
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-				__tr2qs("Real hostname for %s is %s"),
-				m_pTarget->server()->m_szHostname.utf8().data(),
-				m_pServerDns->firstHostname());
-		m_pTarget->server()->m_szHostname = m_pServerDns->firstHostname();
+				__tr2qs("Real hostname for %Q is %Q"),
+				&(m_pTarget->server()->m_szHostname),
+				&szFirstHostname);
+		m_pTarget->server()->m_szHostname = szFirstHostname;
 	}
 
 	m_pTarget->server()->m_szIp = m_pServerDns->firstIpAddress();
 
 	if(m_pServerDns->hostnameCount() > 1)
 	{
-		KviStr szFirstHostname = m_pServerDns->firstHostname();
-
-		for(KviStr * addr = m_pServerDns->hostnameList()->next();addr;addr = m_pServerDns->hostnameList()->next())
+		for(QString * addr = m_pServerDns->hostnameList()->next();addr;addr = m_pServerDns->hostnameList()->next())
 		{
 			if(!_OUTPUT_QUIET)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-					__tr2qs("Server %s has a nickname: %s"),
-					szFirstHostname.ptr(),addr->ptr());
+					__tr2qs("Server %Q has a nickname: %Q"),
+					&szFirstHostname,addr);
 		}
 	}
 

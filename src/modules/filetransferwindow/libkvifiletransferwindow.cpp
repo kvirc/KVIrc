@@ -105,7 +105,7 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(d)
 	{
-		QDict<QVariant> dict(17,true);
+		KviDict<QVariant> dict(17,true);
 		dict.setAutoDelete(true);
 		QString dummy;
 		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));

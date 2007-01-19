@@ -1,12 +1,13 @@
 #ifndef _KVI_PIXMAP_H_
 #define _KVI_PIXMAP_H_
 
+//=============================================================================
 //
 //   File : kvi_pixmap.h
 //   Creation date : Sat Jun 24 2000 13:59:04 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +23,8 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
@@ -50,8 +53,9 @@ public:
 
 namespace KviPixmapUtils
 {
-	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight);
-	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy);
+	extern KVILIB_API void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy);
+	inline void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight)
+		{ KviPixmapUtils::drawPixmapWithPainter(p,pix,flags,paintRect,iWidgetWidth,iWidgetHeight,paintRect.left(),paintRect.top()); };
 };
 
 #endif //_KVI_PIXMAP_H_

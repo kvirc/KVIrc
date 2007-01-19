@@ -29,7 +29,6 @@
 #include "kvi_channel.h"
 #include "kvi_locale.h"
 #include "kvi_topicw.h"
-#include "kvi_datacontainer.h"
 #include "kvi_ircmask.h"
 #include "kvi_maskeditor.h"
 #include "kvi_ircurl.h"

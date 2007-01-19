@@ -6,7 +6,7 @@
 //   Creation date : Sat Aug 17 13:43:31 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -33,22 +33,40 @@
 #include "kvi_inttypes.h"
 #include "kvi_url.h"
 
-//#include <zlib.h>
 #include <qobject.h>
-#include <qasciidict.h>
-#include <qfile.h>
+#include "kvi_asciidict.h"
+#include "kvi_file.h"
 #include <qstringlist.h>
 
 class KviDns;
 class KviSSL;
 class KviHttpRequestThread;
 
+//
+// This class implements a HTTP protocol client.
+// It's able to send GET, POST and HEAD requests,
+// download stuff to a file or to a qt SLOT().
+//
+
 class KVILIB_API KviHttpRequest : public QObject, public KviHeapObject
 {
 	Q_OBJECT
 public:
-	enum ProcessingType { HeadersOnly, WholeFile, Blocks, Lines, StoreToFile };
-	enum ExistingFileAction { Overwrite, RenameIncoming, RenameExisting, Resume };
+	enum ProcessingType
+	{
+		HeadersOnly,    // Download headers only (HEAD request)
+		WholeFile,      // Emit the data as whole file (binaryData() is emitted)
+		Blocks,         // Emit the data as blocks (binaryData() is emitted)
+		Lines,          // Emit the data as ASCII text lines (the client must take care of decoding the data)
+		StoreToFile     // Store the data to a file
+	};
+	enum ExistingFileAction
+	{
+		Overwrite,      // Overwrite existing file
+		RenameIncoming, // Automatically rename the incoming file
+		RenameExisting, // Automatically rename the existing file
+		Resume          // Attempt to resume the file (get partial content)
+	};
 public:
 	KviHttpRequest();
 	~KviHttpRequest();
@@ -62,14 +80,12 @@ protected:
 	unsigned int           m_uMaxContentLength;
 	unsigned int           m_uContentOffset;
 	QString                m_szPostData;
-
 	// status
 	QString                m_szLastError;
 	unsigned int           m_uTotalSize;
 	unsigned int           m_uReceivedSize;
-
 	// internal status
-	KviStr                 m_szIp;
+	QString                m_szIp;
 	KviDns               * m_pDns;
 	KviHttpRequestThread * m_pThread;
 	KviDataBuffer        * m_pBuffer;
@@ -78,8 +94,7 @@ protected:
 	bool                   m_bGzip;
 	unsigned int           m_uRemainingChunkSize;
 	bool                   m_bIgnoreRemainingData; // used in chunked transfer after the last chunk has been seen
-	QFile                * m_pFile;
-//	z_stream               m_zStream;
+	KviFile              * m_pFile;
 protected:
 	bool startDnsLookup();
 	virtual bool event(QEvent *e);
@@ -115,29 +130,29 @@ public:
 	void setPrivateData(void * ptr){ m_pPrivateData = ptr; };
 	void setMaxContentLength(int uMaxContentLength){ m_uMaxContentLength = uMaxContentLength; }; //0 means unlimited
 	// this will work regardless of ExistingFileAction : even if the file doesn't exist
-	void setContentOffset(int uContentOffset){ m_uContentOffset= uContentOffset; };
+	void setContentOffset(int uContentOffset){ m_uContentOffset = uContentOffset; };
 
 	bool start();
 
 	// this is a shortcut for reset()+setUrl()+setProcessingType()+setFileName()+start()
-	bool get(const KviUrl &u,ProcessingType p = WholeFile,const char * szFileName = 0);
+	bool get(const KviUrl &u,ProcessingType p = WholeFile,const QString &szFileName = QString::null);
 
 	const QString & lastError(){ return m_szLastError; };
 
 	void abort();
 signals:
-	void resolvingHost(const char * hostname);
-	void contactingHost(const char * ipandport);
+	void resolvingHost(const QString &hostname);
+	void contactingHost(const QString &ipandport);
 	void connectionEstabilished();
-	void receivedResponse(const char * response);
+	void receivedResponse(const QString &response);
 
 	void terminated(bool bSuccess);
 
 
-	void status(const char * message);
+	void status(const QString &message);
 	void data(const KviStr &data);
 	void binaryData(const KviDataBuffer &data);
-	void header(QAsciiDict<KviStr> * hdr);
+	void header(KviAsciiDict<KviStr> * hdr);
 	void requestSent(const QStringList &request);
 };
 
@@ -149,10 +164,10 @@ public:
 	enum RequestMethod { Post, Get , Head };
 protected:
 	KviHttpRequestThread(KviHttpRequest * r,
-		const char * szHost,
-		const char * szIp,
+		const QString &szHost,
+		const QString &szIp,
 		unsigned short uPort,
-		const char * szPath,
+		const QString &szPath,
 		unsigned int uContentOffset,
 		RequestMethod m,
 		const QString &szPostData = QString::null,
@@ -163,9 +178,9 @@ public:
 protected:
 	KviHttpRequest * m_pRequest;
 
-	KviStr           m_szHost;
-	KviStr           m_szIp;
-	KviStr           m_szPath;
+	QString           m_szHost;
+	QString          m_szIp;
+	QString          m_szPath;
 	unsigned int     m_uContentOffset;
 	RequestMethod    m_eRequestMethod;
 	QString          m_szPostData;
@@ -180,8 +195,8 @@ protected:
 	int selectForReadStep();
 	bool selectForRead(int iTimeoutInSecs);
 	bool readDataStep();
-	bool sendBuffer(const char * buffer,int bufLen,int iTimeoutInSecs);
-	bool failure(const char * error = 0);
+	bool sendBuffer(const char *buffer,int bufLen,int iTimeoutInSecs);
+	bool failure(const char *error=0);
 	bool sslFailure();
 	bool selectForWrite(int iTimeoutInSecs);
 	bool connectToRemoteHost();

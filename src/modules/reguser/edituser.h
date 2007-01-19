@@ -33,7 +33,7 @@
 #include <qpushbutton.h>
 #include <qlistview.h>
 #include <qlistbox.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qtabdialog.h>
 #include <qtable.h>
 #include <qpopupmenu.h>
@@ -44,11 +44,11 @@ class KviReguserPropertiesDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviReguserPropertiesDialog(QWidget *p,QDict<QString> * dict);
+	KviReguserPropertiesDialog(QWidget *p,KviDict<QString> * dict);
 	~KviReguserPropertiesDialog();
 protected:
 	QTable             * m_pTable;
-	QDict<QString>     * m_pPropertyDict;
+	KviDict<QString>     * m_pPropertyDict;
 	QPushButton        * m_pDelButton;
 	QPushButton        * m_pAddButton;
 protected:
@@ -157,7 +157,7 @@ protected:
 	KviPixmap          * m_pAvatar;
 	KviPixmapSelector  * m_pAvatarSelector;
 
-	QDict<QString>     * m_pPropertyDict;
+	KviDict<QString>     * m_pPropertyDict;
 	
 	QCheckBox          * m_pCustomColorCheck;
 	QColor		   * m_pCustomColor;

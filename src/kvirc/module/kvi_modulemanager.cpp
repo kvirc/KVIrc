@@ -43,7 +43,7 @@ KviModuleManager * g_pModuleManager = 0;
 
 KviModuleManager::KviModuleManager()
 {
-	m_pModuleDict = new QAsciiDict<KviModule>(17,false);
+	m_pModuleDict = new KviAsciiDict<KviModule>(17,false);
 	m_pModuleDict->setAutoDelete(false);
 
 	m_pCleanupTimer = new QTimer(this);
@@ -309,7 +309,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 
 bool KviModuleManager::hasLockedModules()
 {
-	QAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
 	while(KviModule * m = it.current())
 	{
 		if(m->isLocked())return true;
@@ -321,7 +321,7 @@ bool KviModuleManager::hasLockedModules()
 
 void KviModuleManager::cleanupUnusedModules()
 {
-	QAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
 	while(it.current())
 	{
 		if(it.current()->secondsSinceLastAccess() > KVI_OPTION_UINT(KviOption_uintModuleCleanupTimeout))
@@ -351,6 +351,6 @@ void KviModuleManager::cleanupUnusedModules()
 
 void KviModuleManager::unloadAllModules()
 {
-	QAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
 	while(it.current())unloadModule(it.current());
 }

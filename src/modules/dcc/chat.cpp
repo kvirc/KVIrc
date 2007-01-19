@@ -337,9 +337,12 @@ void KviDccChat::ownMessage(const QString &text)
 					}
 					break;
 					default: // also case KviCryptEngine::EncryptError
+					{
+						QString szErr = cryptSessionInfo()->pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %s, no data was sent to the remote end","dcc"),
-							&text,cryptSessionInfo()->pEngine->lastError());
+							__tr2qs_ctx("The crypto engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end","dcc"),
+							&text,&szErr);
+					}
 					break;
 				}
 				return;
@@ -437,9 +440,12 @@ bool KviDccChat::event(QEvent *e)
 								break;
 								
 								default: // also case KviCryptEngine::DecryptError
+								{
+									QString szErr = cinf->pEngine->lastError();
 									output(KVI_OUT_SYSTEMERROR,
-										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %s","dcc"),
-										cinf->pEngine->lastError());
+										__tr2qs_ctx("The following message appears to be encrypted, but the crypto engine failed to decode it: %Q","dcc"),
+										&szErr);
+								}
 								break;
 							}
 						}

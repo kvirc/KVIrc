@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 
 #include <qpixmap.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 
 class KVIRC_API KviTextIcon
@@ -60,11 +60,11 @@ public:
 	KviTextIconManager();
 	~KviTextIconManager();
 private:
-	QDict<KviTextIcon> * m_pTextIconDict;
+	KviDict<KviTextIcon> * m_pTextIconDict;
 signals:
 	void changed();
 public:
-	QDict<KviTextIcon> * textIconDict(){ return m_pTextIconDict; };
+	KviDict<KviTextIcon> * textIconDict(){ return m_pTextIconDict; };
 	void checkDefaultAssociations();
 	void clear();
 	void insert(const QString &name,int id);

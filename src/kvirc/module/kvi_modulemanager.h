@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 
 #include <qobject.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qtimer.h>
 #include "kvi_list.h"
 
@@ -41,7 +41,7 @@ public:
 	KviModuleManager();
 	~KviModuleManager();
 private:
-	QAsciiDict<KviModule>                        * m_pModuleDict;
+	KviAsciiDict<KviModule>                        * m_pModuleDict;
 	QTimer                                       * m_pCleanupTimer;
 	KviStr                                         m_szLastError;
 public:

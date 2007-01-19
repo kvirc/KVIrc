@@ -83,7 +83,7 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pThreadList = new KviPtrList<KviSoundThread>;
 	m_pThreadList->setAutoDelete(true);
 
-	m_pSoundSystemDict = new QDict<SoundSystemRoutine>(17,false);
+	m_pSoundSystemDict = new KviDict<SoundSystemRoutine>(17,false);
 	m_pSoundSystemDict->setAutoDelete(true);
 
 #ifdef COMPILE_ON_WINDOWS
@@ -134,7 +134,7 @@ KviSoundPlayer::~KviSoundPlayer()
 
 void KviSoundPlayer::getAvailableSoundSystems(QStringList *l)
 {
-	QDictIterator<SoundSystemRoutine> it(*m_pSoundSystemDict);
+	KviDictIterator<SoundSystemRoutine> it(*m_pSoundSystemDict);
 	while(it.current())
 	{
 		l->append(it.currentKey());

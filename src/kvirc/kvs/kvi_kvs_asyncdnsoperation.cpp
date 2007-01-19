@@ -79,13 +79,13 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 			params.append(new KviKvsVariant());
 			params.append(new KviKvsVariant(*m_pMagic));
 		} else {
-			KviStr * fh = m_pDns->hostnameList()->first();
-			KviStr * fi = m_pDns->ipAddressList()->first();
+			QString * fh = m_pDns->hostnameList()->first();
+			QString * fi = m_pDns->ipAddressList()->first();
 
 			params.append(new KviKvsVariant(m_szQuery));
 			params.append(new KviKvsVariant((kvs_int_t)1));
-			params.append(new KviKvsVariant(fi ? QString(fi->ptr()) : QString("?.?.?.?")));
-			params.append(new KviKvsVariant(fh ? QString(fh->ptr()) : QString("?.?")));
+			params.append(new KviKvsVariant(fi ? *fi : QString("?.?.?.?")));
+			params.append(new KviKvsVariant(fh ? *fh : QString("?.?")));
 			params.append(new KviKvsVariant(*m_pMagic));
 		}
 
@@ -104,15 +104,15 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 		pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Error: %Q"),&strDescription);
 	} else {
 		int idx = 1;
-		for(KviStr * h = m_pDns->hostnameList()->first();h;h = m_pDns->hostnameList()->next())
+		for(QString * h = m_pDns->hostnameList()->first();h;h = m_pDns->hostnameList()->next())
 		{
-			pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Hostname %d: %s"),idx,h->ptr());
+			pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Hostname %d: %Q"),idx,h);
 			idx++;
 		}
 		idx = 1;
-		for(KviStr * a = m_pDns->ipAddressList()->first();a;a = m_pDns->ipAddressList()->next())
+		for(QString * a = m_pDns->ipAddressList()->first();a;a = m_pDns->ipAddressList()->next())
 		{
-			pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs("IP address %d: %s"),idx,a->ptr());
+			pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs("IP address %d: %Q"),idx,a);
 			idx++;
 		}
 	}

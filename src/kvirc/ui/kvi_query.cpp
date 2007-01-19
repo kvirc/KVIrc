@@ -410,7 +410,7 @@ void KviQuery::notifyCommonChannels(const QString &nick,const QString &user,cons
 
 	if(targetCount() > 0)
 	{
-		QDictIterator<KviUserListEntry> it(*(m_pUserListView->entryDict()));
+		KviDictIterator<KviUserListEntry> it(*(m_pUserListView->entryDict()));
 		if(it.current())szName = it.currentKey();
 	}
 

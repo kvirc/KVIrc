@@ -41,7 +41,7 @@
 #include "kvi_channel.h"
 #include "userwindow.h"
 
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qtimer.h>
 
 
@@ -54,7 +54,7 @@
 
 
 // kvi_app.cpp
-extern KVIRC_API QAsciiDict<KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
 KviPtrList<KviUserWindow> * g_pUserWindowList = 0;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
@@ -830,7 +830,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts but no "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType,"all");
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -854,7 +854,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts and also "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -875,7 +875,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// only "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -920,7 +920,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		}
 
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{

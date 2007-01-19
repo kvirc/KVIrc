@@ -199,7 +199,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 
 	int tot = 0;
 
-	QAsciiDictIterator<KviRegisteredChannelList> it(*(g_pRegisteredChannelDataBase->channelDict()));
+	KviAsciiDictIterator<KviRegisteredChannelList> it(*(g_pRegisteredChannelDataBase->channelDict()));
 	while(KviRegisteredChannelList * l = it.current())
 	{
 		for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
@@ -207,7 +207,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 			tot++;
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Channel: %c%s@%s"),
 				KVI_TEXT_BOLD,ch->name().ptr(),ch->netMask().ptr());
-			QAsciiDictIterator<KviStr> pit(*(ch->propertyDict()));
+			KviAsciiDictIterator<KviStr> pit(*(ch->propertyDict()));
 			while(KviStr * s = pit.current())
 			{
 				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("   Property: %s=%s"),pit.currentKey(),s->ptr());
@@ -259,8 +259,8 @@ static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	if(szChan.isEmpty())szChan="*";
 	if(szNetmask.isEmpty())szNetmask="*";
 
-	QAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
-	QAsciiDictIterator<KviRegisteredChannelList> it(*d);
+	KviAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
+	KviAsciiDictIterator<KviRegisteredChannelList> it(*d);
 
 	while(KviRegisteredChannelList * l = it.current())
 	{

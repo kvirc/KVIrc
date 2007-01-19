@@ -965,7 +965,7 @@ void KviConsole::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 	QString szAvatar;
 	if(!u->getProperty("avatar",szAvatar))return;
 
-	QDictIterator<KviIrcUserEntry> it(*(connection()->userDataBase()->dict()));
+	KviDictIterator<KviIrcUserEntry> it(*(connection()->userDataBase()->dict()));
 	while(KviIrcUserEntry * e = it.current())
 	{
 		if(e->hasHost())

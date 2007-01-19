@@ -4,7 +4,7 @@
 //   Last major modification : Thu Jan 14 1999 18:03:59 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,12 +24,6 @@
 
 #define __KVILIB__
 
-
-
-#define _KVI_DEBUG_CHECK_RANGE_
-#include "kvi_debug.h"
-
-#define _KVI_CONFIG_CPP_
 #include "kvi_config.h"
 #include "kvi_fileutils.h"
 #include "kvi_pixmap.h"
@@ -37,6 +31,7 @@
 #include "kvi_stringconversion.h"
 #include "kvi_memmove.h"
 #include "kvi_malloc.h"
+#include "kvi_file.h"
 
 
 KviConfig::KviConfig(const QString &filename,FileMode f)
@@ -83,7 +78,6 @@ void KviConfig::clearGroup(const QString & szGroup)
 {
 	m_bDirty = true;
 	m_pDict->remove(szGroup);
-	__range_invalid(m_pDict->find(szGroup));
 	if(!m_pDict->find(m_szGroup))m_szGroup = KVI_CONFIG_DEFAULT_GROUP; //removed the current one
 }
 
@@ -140,8 +134,8 @@ bool KviConfig::load()
 	// this is really faster than the old version :)
 
 	// open the file
-	QFile f(m_szFileName);
-	if(!f.open(IO_ReadOnly))return false;
+	KviFile f(m_szFileName);
+	if(!f.openForReading())return false;
 
 	KviStr tmp;
 	KviConfigGroup * p_group = 0;
@@ -362,7 +356,6 @@ bool KviConfig::load()
 	QFile f(m_szFileName);
 	if(!f.open(IO_ReadOnly))return false;
 
-	__range_valid(m_pDict->isEmpty());
 
 	KviConfigGroup * p_group = 0;
 
@@ -491,8 +484,8 @@ bool KviConfig::save()
 
 	if(m_bReadOnly)return false;
 
-	QFile f(m_szFileName);
-	if(!f.open(IO_WriteOnly | IO_Truncate))return false;
+	KviFile f(m_szFileName);
+	if(!f.openForWriting())return false;
 	if(f.writeBlock("# KVIrc configuration file\n",27) != 27)return false;
 
 	KviDictIterator<KviConfigGroup> it(*m_pDict);
@@ -500,10 +493,10 @@ bool KviConfig::save()
 	{
 		if((it.current()->count() != 0) || (m_bPreserveEmptyGroups))
 		{
-			KviStr group(it.currentKey().utf8());
+			KviStr group(KviQString::toUtf8(it.currentKey()));
 			group.hexEncodeWithTable(encode_table);
 
-			if(f.putch('[') == -1)return false;
+			if(!f.putChar('['))return false;
 			if(f.writeBlock(group.ptr(),group.len()) < (int) group.len())return false;
 			if(f.writeBlock("]\n",2) < 2)return false;
 
@@ -513,15 +506,15 @@ bool KviConfig::save()
 			KviStr szName,szValue;
 			while(QString * p_str = it2.current())
 			{
-				szName = it2.currentKey().utf8();
-				szValue = p_str->utf8();
+				szName = KviQString::toUtf8(it2.currentKey());
+				szValue = KviQString::toUtf8(*p_str);
 				szName.hexEncodeWithTable(encode_table);
 				szValue.hexEncodeWhiteSpace();
 				
 				if(f.writeBlock(szName.ptr(),szName.len()) < (int) szName.len())return false;
-				if(f.putch('=') == -1)return false;
+				if(!f.putChar('='))return false;
 				if(f.writeBlock(szValue.ptr(),szValue.len()) < (int) szValue.len())return false;
-				if(f.putch('\n') == -1)return false;
+				if(!f.putChar('\n'))return false;
 				++it2;
 			}
 		}
@@ -600,7 +593,6 @@ QString KviConfig::readEntry(const QString & szKey,const QString & szDefault)
 /*
 QString KviConfig::readQStringEntry(const char *szKey,const QString &szDefault)
 {
-	__range_valid(szKey);
 	KviStrDict * p_group = getCurrentGroup();
 	KviStr * p_str = p_group->find(szKey);
 	if(!p_str)return szDefault;
@@ -611,7 +603,6 @@ QString KviConfig::readQStringEntry(const char *szKey,const QString &szDefault)
 /*
 void KviConfig::writeEntry(const char *szKey,const QString &szValue)
 {
-	__range_valid(szKey);
 	m_bDirty = true;
 	KviStrDict * p_group = getCurrentGroup();
 	p_group->replace(szKey,new KviStr(szValue.utf8().data()));
@@ -620,19 +611,25 @@ void KviConfig::writeEntry(const char *szKey,const QString &szValue)
 
 ////////////////////////////////// QStringList
 
+static QString g_szConfigStringListSeparator(",\\[ITEM],");
+
 QStringList KviConfig::readStringListEntry(const QString & szKey,const QStringList &list)
 {
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
 	if(!p_str)return list;
-	return QStringList::split(",\\[ITEM],",*p_str);
+#ifdef COMPILE_USE_QT4
+	return p_str->split(g_szConfigStringListSeparator);
+#else
+	return QStringList::split(g_szConfigStringListSeparator,*p_str);
+#endif
 }
 
 void KviConfig::writeEntry(const QString & szKey,const QStringList &list)
 {
 	m_bDirty = true;
 	KviConfigGroup * p_group = getCurrentGroup();
-	QString *p_data=new QString(list.join(",\\[ITEM],"));
+	QString *p_data=new QString(list.join(g_szConfigStringListSeparator));
 	p_group->replace(szKey,p_data);
 }
 
@@ -647,7 +644,11 @@ KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviVal
 		//debug("Returning default list for group %s and key %s",m_szGroup.latin1(),szKey.latin1());
 		return list;
 	}
+#ifdef COMPILE_USE_QT4
+	QStringList sl = p_str->split(",");
+#else
 	QStringList sl = QStringList::split(",",*p_str);
+#endif
 	KviValueList<int> ret;
 
 	//debug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
@@ -822,7 +823,8 @@ bool KviConfig::readBoolEntry(const QString & szKey,bool bTrue)
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
 	if(!p_str)return bTrue;
-	return p_str->lower() == "true";
+	static QString szTrue = "true";
+	return (KviQString::toLower(*p_str) == szTrue);
 }
 
 ////////////////////////////////// QRect
@@ -872,7 +874,6 @@ unsigned short int KviConfig::readUShortEntry(const QString & szKey,unsigned sho
 Unused code
 void KviConfig::writeEntry(const char *szKey,unsigned long lValue)
 {
-	__range_valid(szKey);
 	m_bDirty = true;
 	KviStrDict * p_group = getCurrentGroup();
 	KviStr *p_data = new KviStr();
@@ -882,7 +883,6 @@ void KviConfig::writeEntry(const char *szKey,unsigned long lValue)
 
 unsigned long KviConfig::readULongEntry(const char *szKey,unsigned long lDefault)
 {
-	__range_valid(szKey);
 	KviStrDict * p_group = getCurrentGroup();
 	KviStr * p_str = p_group->find(szKey);
 	if(!p_str)return lDefault;

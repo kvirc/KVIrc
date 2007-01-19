@@ -462,7 +462,7 @@ KviIconManager::KviIconManager()
 
 	//loadSmallIcons();
 
-	m_pCachedImages = new QDict<KviCachedPixmap>(21,true);
+	m_pCachedImages = new KviDict<KviCachedPixmap>(21,true);
 	m_pCachedImages->setAutoDelete(true);
 
 	m_uCacheTotalSize = 0;
@@ -527,7 +527,7 @@ int KviIconManager::getSmallIconIdFromName(const QString &szName)
 {
 	if(!m_pIconNames)
 	{
-		m_pIconNames = new QDict<int>(257,false);
+		m_pIconNames = new KviDict<int>(257,false);
 		m_pIconNames->setAutoDelete(true);
 		
 		for(int i=0;i<KVI_NUM_SMALL_ICONS;i++)
@@ -874,7 +874,7 @@ void KviIconManager::cacheCleanup()
 {
 	QStringList l;
 
-	QDictIterator<KviCachedPixmap> it(*m_pCachedImages);
+	KviDictIterator<KviCachedPixmap> it(*m_pCachedImages);
 
 
 //#warning "IMPLEMENT CLEANUP"

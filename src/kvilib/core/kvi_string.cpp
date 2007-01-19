@@ -34,6 +34,8 @@
 #include "kvi_memmove.h"
 #include "kvi_malloc.h"
 
+#include "kvi_qstring.h"
+
 kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str)
 {
 	const kvi_wchar_t * ptr = str;
@@ -746,11 +748,7 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-#ifdef COMPILE_USE_QT4
-				_QCString cs = s->toUtf8();
-#else
-				_QCString cs = s->utf8();
-#endif
+				KviQCString cs = KviQString::toUtf8(*s);
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				//check for space...
@@ -815,11 +813,7 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-#ifdef COMPILE_USE_QT4
-				_QCString cs = s->toUtf8();
-#else
-				_QCString cs = s->utf8();
-#endif
+				KviQCString cs = KviQString::toUtf8(*s);
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				while(*t)
@@ -1044,7 +1038,7 @@ KviStr::KviStr(const char *str)
 	}
 }
 
-KviStr::KviStr(const _QCString &str)
+KviStr::KviStr(const KviQCString &str)
 {
 	//Deep copy constructor
 	if(str.data())
@@ -1123,11 +1117,7 @@ KviStr::KviStr(const KviStr &str)
 
 KviStr::KviStr(const QString &str)
 {
-#ifdef COMPILE_USE_QT4
-	_QCString sz = str.toUtf8();
-#else
-	_QCString sz = str.utf8();
-#endif
+	KviQCString sz = KviQString::toUtf8(str);
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
@@ -1206,7 +1196,7 @@ KviStr & KviStr::operator=(const KviStr &str)
 	return (*this);
 }
 
-KviStr & KviStr::operator=(const _QCString &str)
+KviStr & KviStr::operator=(const KviQCString &str)
 {
 	m_len = str.length();
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -1502,11 +1492,7 @@ KviStr & KviStr::setStr(const char *str,int len)
 
 KviStr & KviStr::operator=(const QString &str)
 {
-#ifdef COMPILE_USE_QT4
-	_QCString sz =str.toUtf8();
-#else
-	_QCString sz =str.utf8();
-#endif
+	KviQCString sz = KviQString::toUtf8(str);
 	if(sz.length() > 0){
 		m_len = sz.length();
 		m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -1555,11 +1541,7 @@ void KviStr::append(const char *str)
 
 void KviStr::append(const QString &str)
 {
-#ifdef COMPILE_USE_QT4
-	_QCString sz=str.toUtf8();
-#else
-	_QCString sz=str.utf8();
-#endif
+	KviQCString sz = KviQString::toUtf8(str);
 	if(sz.length() < 1)return;
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+sz.length()+1);
 	kvi_fastmove((m_ptr+m_len),sz.data(),sz.length()+1);

@@ -52,10 +52,10 @@ extern void register_core_actions(KviActionManager *);
 KviActionManager::KviActionManager()
 : QObject()
 {
-	m_pActions = new QDict<KviAction>(101);
+	m_pActions = new KviDict<KviAction>(101);
 	m_pActions->setAutoDelete(false);
 
-	m_pCategories = new QDict<KviActionCategory>(17,false);
+	m_pCategories = new KviDict<KviActionCategory>(17,false);
 	m_pCategories->setAutoDelete(true);
 
 #define CATEGORY(__var,__name,__vname,__descr) \
@@ -82,7 +82,7 @@ KviActionManager::~KviActionManager()
 	// killed all the modules at this point...
 	//KviActionDialog::cleanup();
 
-	QDictIterator<KviAction> it(*m_pActions);
+	KviDictIterator<KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		disconnect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
@@ -113,7 +113,7 @@ void KviActionManager::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
 	
-	QDictIterator<KviAction> it(*m_pActions);
+	KviDictIterator<KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -130,7 +130,7 @@ void KviActionManager::killAllKvsUserActions()
 	KviPtrList<KviKvsUserAction> dying;
 	dying.setAutoDelete(true);
 
-	QDictIterator<KviAction> it(*m_pActions);
+	KviDictIterator<KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -238,7 +238,7 @@ void KviActionManager::done()
 
 void KviActionManager::delayedRegisterAccelerators()
 {
-	QDictIterator<KviAction> it(*m_pActions);
+	KviDictIterator<KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		a->registerAccelerator();
@@ -310,7 +310,7 @@ void KviActionManager::listActionsByCategory(const QString &szCatName,KviPtrList
 	pBuffer->setAutoDelete(false);
 	pBuffer->clear();
 	if(!pCat)return;
-	QDictIterator<KviAction> it(*m_pActions);
+	KviDictIterator<KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->category() == pCat)

@@ -31,7 +31,7 @@
 #include "kvi_string.h"
 
 #include "kvi_list.h"
-#include <qdict.h>
+#include "kvi_dict.h"
 #include "kvi_options.h"
 
 //class KviWavSoundFileReader
@@ -183,7 +183,7 @@ public:
 	void setMuted(bool muted) {KVI_OPTION_BOOL(KviOption_boolMuteAllSounds)=muted;};
 protected:
 	KviPtrList<KviSoundThread> * m_pThreadList;
-	QDict<SoundSystemRoutine> * m_pSoundSystemDict;
+	KviDict<SoundSystemRoutine> * m_pSoundSystemDict;
 protected:
 	void registerSoundThread(KviSoundThread * t);
 	void unregisterSoundThread(KviSoundThread * t);

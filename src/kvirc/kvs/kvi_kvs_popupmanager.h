@@ -33,7 +33,7 @@ protected: // can only be created by init/done
 	KviKvsPopupManager();
 	~KviKvsPopupManager();
 protected:
-	QDict<KviKvsPopupMenu>    * m_pPopupDict;
+	KviDict<KviKvsPopupMenu>    * m_pPopupDict;
 	static KviKvsPopupManager * m_pInstance;
 public:
 	static KviKvsPopupManager * instance(){ return m_pInstance; };
@@ -41,7 +41,7 @@ public:
 	static void done();
 	int popupCount(){ return m_pPopupDict->count(); };
 
-	QDict<KviKvsPopupMenu> * popupDict(){ return m_pPopupDict; };
+	KviDict<KviKvsPopupMenu> * popupDict(){ return m_pPopupDict; };
 
 	KviKvsPopupMenu * lookup(const QString &szPopupName){ return m_pPopupDict->find(szPopupName); };
 	KviKvsPopupMenu * get(const QString &szPopupName);

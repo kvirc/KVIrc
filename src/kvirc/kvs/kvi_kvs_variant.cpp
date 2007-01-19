@@ -412,7 +412,7 @@ void KviKvsVariant::castToArray(KviKvsArrayCast *c) const
 		break;
 		case KviKvsVariantData::Hash:
 		{
-			QDictIterator<KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
+			KviDictIterator<KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
 			KviKvsArray * a = new KviKvsArray();
 			kvs_int_t idx = 0;
 			while(KviKvsVariant * v = it.current())
@@ -450,7 +450,7 @@ void KviKvsVariant::convertToArray()
 		break;
 		case KviKvsVariantData::Hash:
 		{
-			QDictIterator<KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
+			KviDictIterator<KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
 			KviKvsArray * a = new KviKvsArray();
 			kvs_int_t idx = 0;
 			while(KviKvsVariant * v = it.current())

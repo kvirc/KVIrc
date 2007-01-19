@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_pixmap.cpp
 //   Creation date : Sat Jun 24 2000 14:00:27 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,11 +20,11 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 
 #define __KVILIB__
 
-#define _KVI_DEBUG_CHECK_RANGE_
 
 #include "kvi_debug.h"
 #include "kvi_pixmap.h"
@@ -52,7 +53,6 @@ KviPixmap::KviPixmap(const KviPixmap &pix)
 		if(pix.pixmap())
 		{
 			m_pPix = new QPixmap(*(pix.pixmap()));
-			__range_invalid(m_pPix->isNull());
 		}
 	}
 }
@@ -136,52 +136,45 @@ KviPixmap & KviPixmap::operator=(const KviPixmap &pix)
 		if(pix.pixmap())
 		{
 			m_pPix = new QPixmap(*(pix.pixmap()));
-			__range_invalid(m_pPix->isNull());
 		}
 	}
 	return (*this);
 }
 
-void KviPixmapUtils::drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight)
-{
-	KviPixmapUtils::drawPixmapWithPainter(p,pix,flags,paintRect,iWidgetWidth,iWidgetHeight,paintRect.left(),paintRect.top());
-}
 
-void KviPixmapUtils::drawPixmapWithPainter(QPainter* p,QPixmap * pix,Qt::AlignmentFlags flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy)
+void KviPixmapUtils::drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy)
 {
-	if(pix)
+	if(!pix)return;
+	if(!flags)
 	{
-		if(flags==Qt::AlignAuto )
-		{
-			p->drawTiledPixmap(paintRect.left(),paintRect.top(),paintRect.width(),paintRect.height(),*pix,dx,dy);
-		} else {
-			int iPixWidth=pix->width();
-			int iPixHeight=pix->height();
-			int x=0;
-			int y=0;
-			
-			if( !(flags & Qt::AlignHorizontal_Mask ))
-				x=-1;
-			else if ( flags & Qt::AlignRight )
-				x=iWidgetWidth - iPixWidth;
-			else if( flags & Qt::AlignHCenter )
-				x=(iWidgetWidth - iPixWidth)/2;
-			
-			if( !(flags & Qt::AlignVertical_Mask ))
-				y=-1;
-			else if ( flags & Qt::AlignBottom )
-				y=iWidgetHeight - iPixHeight;
-			else if( flags & Qt::AlignVCenter )
-				y=(iWidgetHeight - iPixHeight)/2;
-			
-			if(x==-1) {
-				p->drawTiledPixmap(paintRect.left(),y,paintRect.width(),iPixHeight,*pix,dx,dy);
-			} else if(y==-1) {
-				p->drawTiledPixmap(x,paintRect.top(),iPixWidth,paintRect.height(),*pix,dx,dy);
-			} else {
-				p->drawPixmap(x,y,*pix);
-			}
-			
-		}
+		p->drawTiledPixmap(paintRect.left(),paintRect.top(),paintRect.width(),paintRect.height(),*pix,dx,dy);
+		return;
+	}
+
+	int iPixWidth=pix->width();
+	int iPixHeight=pix->height();
+	int x=0;
+	int y=0;
+	
+	if( !(flags & Qt::AlignHorizontal_Mask ))
+		x=-1;
+	else if ( flags & Qt::AlignRight )
+		x=iWidgetWidth - iPixWidth;
+	else if( flags & Qt::AlignHCenter )
+		x=(iWidgetWidth - iPixWidth)/2;
+	
+	if( !(flags & Qt::AlignVertical_Mask ))
+		y=-1;
+	else if ( flags & Qt::AlignBottom )
+		y=iWidgetHeight - iPixHeight;
+	else if( flags & Qt::AlignVCenter )
+		y=(iWidgetHeight - iPixHeight)/2;
+	
+	if(x==-1) {
+		p->drawTiledPixmap(paintRect.left(),y,paintRect.width(),iPixHeight,*pix,dx,dy);
+	} else if(y==-1) {
+		p->drawTiledPixmap(x,paintRect.top(),iPixWidth,paintRect.height(),*pix,dx,dy);
+	} else {
+		p->drawPixmap(x,y,*pix);
 	}
 }

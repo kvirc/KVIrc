@@ -1,12 +1,13 @@
 #ifndef _KVI_CRYPT_H_
 #define _KVI_CRYPT_H_
 
+//=============================================================================
 //
 //   File : kvi_crypt.h
 //   Creation date : Fri Nov 03 2000 01:45:21 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 
@@ -35,11 +37,12 @@
 //
 
 
-	#include "kvi_string.h"
-	#include "kvi_heapobject.h"
-	#include <qasciidict.h>
-	#include <qobject.h>
-	//#include <qguardedptr.h>
+#include "kvi_qstring.h"
+#include "kvi_string.h"
+#include "kvi_heapobject.h"
+#include "kvi_dict.h"
+
+#include <qobject.h>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptEngine;
@@ -50,29 +53,29 @@
 
 	// we must include this declaration to make moc happy even
 	// if we're not compiling the crypt support
-
+	
 	class KVILIB_API KviCryptEngine : public QObject, public KviHeapObject
 	{
-		friend class KviCryptEngineManager;
 		Q_OBJECT
+		friend class KviCryptEngineManager;
 	public:
 		KviCryptEngine();
 		virtual ~KviCryptEngine();
-
+	
 #ifdef COMPILE_CRYPT_SUPPORT
 	private:
 		crypt_engine_deallocator_func m_deallocFunc;    // this is accessed by KviCryptEngineManager only
-		KviStr                        m_szLastError;
+		QString                       m_szLastError;
 		int                           m_iMaxEncryptLen;
 	public:
 		void setMaxEncryptLen(int m){ m_iMaxEncryptLen = m; };
 		int maxEncryptLen(){ return m_iMaxEncryptLen; };
 		virtual bool init(const char * encKey,int encKeyLen,const char * decKey,int decKeyLen);
 		//
-		// Encrypts plainText and returns the encrypted
+		// Encrypts utf8 plainText and returns the encrypted
 		// data in outBuffer. The encrypted data must be
 		// suitable for sending thru an IRC (eventually DCC
-		// that is less restrictive) connection: so
+		// that is less restrictive) connection and must be utf8 encoded: so
 		// no NULL, CR and LF in the output.
 		// 0x01 should be also avoided since
 		// it is the CTCP delimiter.
@@ -85,7 +88,7 @@
 		enum EncryptResult { Encrypted, Encoded, EncryptError };
 		virtual EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
 		//
-		// Decrypts the data in inBuffer and puts the decrypted
+		// Decrypts the utf8 data in inBuffer and puts the decrypted utf8
 		// stuff in plainText. inBuffer is the thingie
 		// that we got from outBuffer of encrupt() so it
 		// follows the same rules.
@@ -98,13 +101,13 @@
 		// of the last error or an empty string if there
 		// was no error after the last init() call.
 		//
-		const char * lastError(){ return m_szLastError.ptr(); };
+		const QString &lastError(){ return m_szLastError; };
 	protected:
 		//
 		// The following two should have clear meaning
 		//
 		void clearLastError(){ m_szLastError = ""; };
-		void setLastError(const char * err){ m_szLastError = err; };
+		void setLastError(const QString &err){ m_szLastError = err; };
 #endif //COMPILE_CRYPT_SUPPORT
 	};
 
@@ -120,9 +123,9 @@
 		KviCryptEngineDescription(){};
 		virtual ~KviCryptEngineDescription(){};
 	public:
-		KviStr                        szName;           // engine name
-		KviStr                        szDescription;    // details
-		KviStr                        szAuthor;         // algorithm author
+		QString                       szName;           // engine name
+		QString                       szDescription;    // details
+		QString                       szAuthor;         // algorithm author
 		int                           iFlags;           // properties
 		crypt_engine_allocator_func   allocFunc;        // engine allocator
 		crypt_engine_deallocator_func deallocFunc;      // deallocation function (if called from outside the origin module)
@@ -136,18 +139,18 @@
 		KviCryptEngineManager();
 		virtual ~KviCryptEngineManager();
 	private:
-		QAsciiDict<KviCryptEngineDescription> * m_pEngineDict;
+		KviDict<KviCryptEngineDescription> * m_pEngineDict;
 	public:
-		const QAsciiDict<KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
+		const KviDict<KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
 		void registerEngine(KviCryptEngineDescription * d);
-		void unregisterEngine(const char * szName);
+		void unregisterEngine(const QString &szName);
 		void unregisterEngines(void * providerHandle);
 		//
 		// Allocates a crypt engine
 		// Please note that the engine may be deleted from outside
 		// so you'd better connect the "destroyed" signal
 		//
-		KviCryptEngine * allocateEngine(const char * szName);
+		KviCryptEngine * allocateEngine(const QString &szName);
 		void deallocateEngine(KviCryptEngine * e);
 	};
 

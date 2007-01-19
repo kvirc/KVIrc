@@ -1,13 +1,13 @@
-#ifndef _KVI_TAL_FILEDIALOG_H_
-#define _KVI_TAL_FILEDIALOG_H_
+#ifndef _KVI_QCSTRING_H_
+#define _KVI_QCSTRING_H_
 
 //=============================================================================
 //
-//   File : kvi_tal_filedialog.h
-//   Creation date : Thu Sep 11 2003 04:41:08 by Szymon Stefanek
+//   File : kvi_qcstring.h
+//   Creation date : Thu Jan 18 2007 00:34:33 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,13 +28,12 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_USE_QT4
-	#include "kvi_tal_filedialog_qt4.h"
+	#include <q3cstring.h> // includes <qbytearray.h>
+	#define KviQCString QByteArray
 #else
-	#ifdef COMPILE_KDE_SUPPORT
-		#include "kvi_tal_filedialog_kde.h"
-	#else
-		#include "kvi_tal_filedialog_qt.h"
-	#endif
+	// this is dead in Qt 4.x
+	#include <qcstring.h>
+	#define KviQCString QCString
 #endif
 
-#endif // _KVI_TAL_FILEDIALOG_H_
+#endif //!_KVI_QCSTRING_H_

@@ -189,17 +189,17 @@ KviThreadManager::KviThreadManager()
 
 	if(pipe(m_fd) != 0)
 	{
-		debug("Ops...thread manager pipe creation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).utf8().data());
+		debug("Ops...thread manager pipe creation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_SLAVE],F_SETFL,O_NONBLOCK) == -1)
 	{
-		debug("Ops...thread manager slave pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).utf8().data());
+		debug("Ops...thread manager slave pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	if(fcntl(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],F_SETFL,O_NONBLOCK) == -1)
 	{
-		debug("Ops...thread manager master pipe initialisation failed (%s)",KviError::getDescription(KviError::translateSystemError(errno)).utf8().data());
+		debug("Ops...thread manager master pipe initialisation failed (%s)",KviQString::toUtf8(KviError::getDescription(KviError::translateSystemError(errno))).data());
 	}
 
 	m_pSn = new QSocketNotifier(m_fd[KVI_THREAD_PIPE_SIDE_MASTER],QSocketNotifier::Read);

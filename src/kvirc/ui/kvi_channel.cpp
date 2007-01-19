@@ -76,7 +76,7 @@
 #include <qvaluelist.h>
 #include <qpalette.h>
 #include <qpopupmenu.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qmessagebox.h>
 #include <qwidgetstack.h> 
 
@@ -1278,7 +1278,7 @@ void KviChannel::getChannelActivityStats(KviChannelActivityStats * s)
 	tTwoMinsAgo-= 120;
 	tNow -= 60;
 
-	QDict<int> userDict;
+	KviDict<int> userDict;
 	userDict.setAutoDelete(false);
 
 	int fake;

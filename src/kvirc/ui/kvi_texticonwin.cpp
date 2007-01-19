@@ -60,8 +60,8 @@ KviTextIconWindow::~KviTextIconWindow()
 void KviTextIconWindow::fill()
 {
 	clear();
-	QDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
-	QDictIterator<KviTextIcon> it(*d);
+	KviDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
+	KviDictIterator<KviTextIcon> it(*d);
 	while(KviTextIcon * i = it.current())
 	{
 		QPixmap *pix = i->pixmap();

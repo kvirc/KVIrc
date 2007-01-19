@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 #include "kvi_kvs_runtimecall.h"
 #include "kvi_kvs_parameterprocessor.h"
@@ -137,9 +137,9 @@ public:
 	KviKvsModuleInterface();
 	~KviKvsModuleInterface();
 protected:
-	QDict<KviKvsModuleSimpleCommandExecRoutine>         * m_pModuleSimpleCommandExecRoutineDict;
-	QDict<KviKvsModuleFunctionExecRoutine>              * m_pModuleFunctionExecRoutineDict;
-	QDict<KviKvsModuleCallbackCommandExecRoutine>       * m_pModuleCallbackCommandExecRoutineDict;
+	KviDict<KviKvsModuleSimpleCommandExecRoutine>         * m_pModuleSimpleCommandExecRoutineDict;
+	KviDict<KviKvsModuleFunctionExecRoutine>              * m_pModuleFunctionExecRoutineDict;
+	KviDict<KviKvsModuleCallbackCommandExecRoutine>       * m_pModuleCallbackCommandExecRoutineDict;
 public:
 	void kvsRegisterSimpleCommand(const QString &szCommand,KviKvsModuleSimpleCommandExecRoutine r);
 	void kvsRegisterCallbackCommand(const QString &szCommand,KviKvsModuleCallbackCommandExecRoutine r);

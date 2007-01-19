@@ -322,7 +322,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	g->setColStretch(1,1);
 
 
-	QDictIterator<KviActionCategory> it(*(KviActionManager::instance()->categories()));
+	KviDictIterator<KviActionCategory> it(*(KviActionManager::instance()->categories()));
 	while(KviActionCategory * ac = it.current())
 	{
 		m_pCategoryCombo->insertItem(ac->visibleName() + " (" + ac->name() + ")");
@@ -681,7 +681,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	KviActionEditorListViewItem * last = 0;
 	KviActionEditorListViewItem * first = 0;
 
-	QDictIterator<KviAction> it(*(KviActionManager::instance()->actions()));
+	KviDictIterator<KviAction> it(*(KviActionManager::instance()->actions()));
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())

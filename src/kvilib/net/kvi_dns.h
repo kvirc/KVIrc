@@ -1,12 +1,13 @@
 #ifndef _KVI_DNS_H_
 #define _KVI_DNS_H_
 
+//=============================================================================
 //
 //   File : kvi_dns.h
 //   Creation date : Sat Jul 21 2000 13:59:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,11 +23,12 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_thread.h"
-#include "kvi_string.h"
+#include "kvi_qstring.h"
 
 
 class KviDnsThread; // not part of the API
@@ -42,21 +44,21 @@ public:
 	~KviDnsResult();
 protected:
 	int             m_iError;
-	KviPtrList<KviStr> * m_pHostnameList;
-	KviPtrList<KviStr> * m_pIpAddressList;
-	KviStr               m_szQuery;
+	KviPtrList<QString> * m_pHostnameList;
+	KviPtrList<QString> * m_pIpAddressList;
+	QString               m_szQuery;
 public:
 	int error(){ return m_iError; };
 	// never store nor delete these pointers!
 	// (these are NEVER 0)
-	KviPtrList<KviStr> * hostnameList(){ return m_pHostnameList; };
-	KviPtrList<KviStr> * ipAddressList(){ return m_pIpAddressList; };
-	const char * query(){ return m_szQuery.ptr(); };
+	KviPtrList<QString> * hostnameList(){ return m_pHostnameList; };
+	KviPtrList<QString> * ipAddressList(){ return m_pIpAddressList; };
+	const QString &query(){ return m_szQuery; };
 protected:
 	void setError(int iError){ m_iError = iError; };
 	void setQuery(const QString &query){ m_szQuery = query; };
-	void appendHostname(const char * host);
-	void appendAddress(const char * addr);
+	void appendHostname(const QString &host);
+	void appendAddress(const QString &addr);
 };
 
 
@@ -90,13 +92,13 @@ public:
 
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
 	int error();
-	const char * firstHostname();
-	const char * firstIpAddress();
+	const QString & firstHostname();
+	const QString & firstIpAddress();
 	int hostnameCount();
 	int ipAddressCount();
-	KviPtrList<KviStr> * hostnameList();
-	KviPtrList<KviStr> * ipAddressList();
-	const char * query();
+	KviPtrList<QString> * hostnameList();
+	KviPtrList<QString> * ipAddressList();
+	const QString & query();
 	bool isRunning() const;
 
 	// Auxiliary data store
@@ -125,11 +127,11 @@ protected:
 	KviDnsThread(KviDns * pDns);
 	~KviDnsThread();
 protected:
-	KviStr              m_szQuery;
-	KviDns::QueryType   m_queryType;
-	KviDns            * m_pParentDns;
+	QString              m_szQuery;
+	KviDns::QueryType    m_queryType;
+	KviDns             * m_pParentDns;
 public:
-	void setQuery(const char * query,KviDns::QueryType type){ m_szQuery = query; m_queryType = type; };
+	void setQuery(const QString &query,KviDns::QueryType type){ m_szQuery = query; m_queryType = type; };
 protected:
 	virtual void run();
 	int translateDnsError(int iErr);

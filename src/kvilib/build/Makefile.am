@@ -41,7 +41,6 @@ libkvilib_la_SOURCES = \
 	../ext/kvi_config.cpp \
 	../ext/kvi_crypt.cpp \
 	../ext/kvi_databuffer.cpp \
-	../ext/kvi_datacontainer.cpp \
 	../ext/kvi_doublebuffer.cpp \
 	../ext/kvi_garbage.cpp \
 	../ext/kvi_osinfo.cpp \
@@ -110,6 +109,7 @@ headers_HEADERS = \
 	../core/kvi_list.h \
 	../core/kvi_malloc.h \
 	../core/kvi_memmove.h \
+	../core/kvi_qcstring.h \
 	../core/kvi_qstring.h \
 	../core/kvi_strasm.h \
 	../core/kvi_string.h \
@@ -119,7 +119,6 @@ headers_HEADERS = \
 	../ext/kvi_config.h \
 	../ext/kvi_crypt.h \
 	../ext/kvi_databuffer.h \
-	../ext/kvi_datacontainer.h \
 	../ext/kvi_doublebuffer.h \
 	../ext/kvi_osinfo.h \
 	../ext/kvi_garbage.h \
@@ -140,17 +139,44 @@ headers_HEADERS = \
 	../file/kvi_fileutils.h \
 	../file/kvi_packagefile.h \
 	../file/kvi_targzfile.h \
-	../irc/kvi_avatar.h ../irc/kvi_avatarcache.h ../irc/kvi_ircmask.h \
-../irc/kvi_ircserverdb.h ../irc/kvi_ircserver.h ../irc/kvi_ircuserdb.h ../irc/kvi_mirccntrl.h \
-../irc/kvi_nickserv.h ../net/kvi_dns.h ../net/kvi_http.h ../net/kvi_netutils.h ../net/kvi_socket.h \
-../net/kvi_sockettype.h ../net/kvi_ssl.h ../net/kvi_url.h ../system/kvi_env.h \
-../system/kvi_library.h ../system/kvi_locale.h ../system/kvi_stdarg.h \
-../system/kvi_thread.h ../system/kvi_time.h ../tal/kvi_tal_application.h ../tal/kvi_tal_application_kde.h \
-../tal/kvi_tal_application_qt.h ../tal/kvi_tal_filedialog.h ../tal/kvi_tal_filedialog_kde.h \
-../tal/kvi_tal_filedialog_qt.h ../tal/kvi_tal_mainwindow.h ../tal/kvi_tal_mainwindow_kde.h \
-../tal/kvi_tal_mainwindow_qt.h ../tal/kvi_tal_menubar.h ../tal/kvi_tal_menubar_kde.h \
-../tal/kvi_tal_menubar_qt.h ../tal/kvi_tal_toolbar.h ../tal/kvi_tal_toolbar_kde.h ../tal/kvi_tal_toolbar_qt.h \
-../tal/kvi_tal_toolbardocktype.h
+	../irc/kvi_avatar.h \
+	../irc/kvi_avatarcache.h \
+	../irc/kvi_ircmask.h \
+	../irc/kvi_ircserverdb.h \
+	../irc/kvi_ircserver.h \
+	../irc/kvi_ircuserdb.h \
+	../irc/kvi_mirccntrl.h \
+	../irc/kvi_nickserv.h \
+	../net/kvi_dns.h \
+	../net/kvi_http.h \
+	../net/kvi_netutils.h \
+	../net/kvi_socket.h \
+	../net/kvi_sockettype.h \
+	../net/kvi_ssl.h \
+	../net/kvi_url.h \
+	../system/kvi_env.h \
+	../system/kvi_library.h \
+	../system/kvi_locale.h \
+	../system/kvi_stdarg.h \
+	../system/kvi_thread.h \
+	../system/kvi_time.h \
+	../tal/kvi_tal_application.h \
+	../tal/kvi_tal_application_kde.h \
+	../tal/kvi_tal_application_qt.h \
+	../tal/kvi_tal_filedialog.h \
+	../tal/kvi_tal_filedialog_kde.h \
+	../tal/kvi_tal_filedialog_qt.h \
+	../tal/kvi_tal_filedialog_qt4.h \
+	../tal/kvi_tal_mainwindow.h \
+	../tal/kvi_tal_mainwindow_kde.h \
+	../tal/kvi_tal_mainwindow_qt.h \
+	../tal/kvi_tal_menubar.h \
+	../tal/kvi_tal_menubar_kde.h \
+	../tal/kvi_tal_menubar_qt.h \
+	../tal/kvi_tal_toolbar.h \
+	../tal/kvi_tal_toolbar_kde.h \
+	../tal/kvi_tal_toolbar_qt.h \
+	../tal/kvi_tal_toolbardocktype.h
 
 
 
@@ -195,6 +221,7 @@ headers_HEADERS = \
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_kde.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt.moc
+../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt4.moc
 
 
 #

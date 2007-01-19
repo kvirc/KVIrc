@@ -48,11 +48,11 @@ bool KviKvsModuleCallbackCommandCall::getParameterCode(unsigned int uParamIdx,QS
 
 KviKvsModuleInterface::KviKvsModuleInterface()
 {
-	m_pModuleSimpleCommandExecRoutineDict = new QDict<KviKvsModuleSimpleCommandExecRoutine>(17,false);
+	m_pModuleSimpleCommandExecRoutineDict = new KviDict<KviKvsModuleSimpleCommandExecRoutine>(17,false);
 	m_pModuleSimpleCommandExecRoutineDict->setAutoDelete(true);
-	m_pModuleFunctionExecRoutineDict = new QDict<KviKvsModuleFunctionExecRoutine>(17,false);
+	m_pModuleFunctionExecRoutineDict = new KviDict<KviKvsModuleFunctionExecRoutine>(17,false);
 	m_pModuleFunctionExecRoutineDict->setAutoDelete(true);
-	m_pModuleCallbackCommandExecRoutineDict = new QDict<KviKvsModuleCallbackCommandExecRoutine>(17,false);
+	m_pModuleCallbackCommandExecRoutineDict = new KviDict<KviKvsModuleCallbackCommandExecRoutine>(17,false);
 	m_pModuleCallbackCommandExecRoutineDict->setAutoDelete(true);
 }
 
@@ -66,7 +66,7 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 
 #define COMPLETE_WORD_BY_DICT(__word,__list,__type,__dict) \
 	{ \
-		QDictIterator<__type> it(*__dict); \
+		KviDictIterator<__type> it(*__dict); \
 		int l = __word.length(); \
 		while(it.current()) \
 		{ \

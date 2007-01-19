@@ -181,6 +181,7 @@
 namespace KviError
 {
 	KVILIB_API QString getDescription(int iErrorCode);
+	KVILIB_API const char * getUntranslatedDescription(int iErrorCode);
 	KVILIB_API int translateSystemError(int iErrNo);
 };
 

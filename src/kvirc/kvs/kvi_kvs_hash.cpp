@@ -28,15 +28,15 @@
 
 KviKvsHash::KviKvsHash()
 {
-	m_pDict = new QDict<KviKvsVariant>(17,false);
+	m_pDict = new KviDict<KviKvsVariant>(17,false);
 	m_pDict->setAutoDelete(true);
 }
 
 KviKvsHash::KviKvsHash(const KviKvsHash &h)
 {
-	m_pDict = new QDict<KviKvsVariant>();
+	m_pDict = new KviDict<KviKvsVariant>();
 	m_pDict->setAutoDelete(true);
-	QDictIterator<KviKvsVariant> it(*(h.m_pDict));
+	KviDictIterator<KviKvsVariant> it(*(h.m_pDict));
 	while(it.current())
 	{
 		m_pDict->replace(it.currentKey(),new KviKvsVariant(*(it.current())));
@@ -51,7 +51,7 @@ KviKvsHash::~KviKvsHash()
 
 void KviKvsHash::appendAsString(QString &szBuffer) const
 {
-	QDictIterator<KviKvsVariant> it(*m_pDict);
+	KviDictIterator<KviKvsVariant> it(*m_pDict);
 	bool bNeedComma = false;
 	while(KviKvsVariant * s = it.current())
 	{

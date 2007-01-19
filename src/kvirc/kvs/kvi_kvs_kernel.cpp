@@ -47,13 +47,13 @@ KviKvsKernel::KviKvsKernel()
 {
 	m_pKvsKernel = this;
 
-	m_pSpecialCommandParsingRoutineDict = new QDict<KviKvsSpecialCommandParsingRoutine>(17,false);
+	m_pSpecialCommandParsingRoutineDict = new KviDict<KviKvsSpecialCommandParsingRoutine>(17,false);
 	m_pSpecialCommandParsingRoutineDict->setAutoDelete(true);
-	m_pCoreSimpleCommandExecRoutineDict = new QDict<KviKvsCoreSimpleCommandExecRoutine>(51,false);
+	m_pCoreSimpleCommandExecRoutineDict = new KviDict<KviKvsCoreSimpleCommandExecRoutine>(51,false);
 	m_pCoreSimpleCommandExecRoutineDict->setAutoDelete(true);
-	m_pCoreFunctionExecRoutineDict = new QDict<KviKvsCoreFunctionExecRoutine>(51,false);
+	m_pCoreFunctionExecRoutineDict = new KviDict<KviKvsCoreFunctionExecRoutine>(51,false);
 	m_pCoreFunctionExecRoutineDict->setAutoDelete(true);
-	m_pCoreCallbackCommandExecRoutineDict = new QDict<KviKvsCoreCallbackCommandExecRoutine>(17,false);
+	m_pCoreCallbackCommandExecRoutineDict = new KviDict<KviKvsCoreCallbackCommandExecRoutine>(17,false);
 	m_pCoreCallbackCommandExecRoutineDict->setAutoDelete(true);
 
 	m_pGlobalVariables = new KviKvsHash();
@@ -101,7 +101,7 @@ void KviKvsKernel::done()
 
 #define COMPLETE_COMMAND_BY_DICT(__type,__dict) \
 	{ \
-		QDictIterator<__type> it(*__dict); \
+		KviDictIterator<__type> it(*__dict); \
 		int l = szCommandBegin.length(); \
 		while(it.current()) \
 		{ \
@@ -162,7 +162,7 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPtrList<QS
 	{
 		// no module name inside
 
-		QDictIterator<KviKvsCoreFunctionExecRoutine> it(*m_pCoreFunctionExecRoutineDict);
+		KviDictIterator<KviKvsCoreFunctionExecRoutine> it(*m_pCoreFunctionExecRoutineDict);
 		int l = szFunctionBegin.length();
 		while(it.current())
 		{

@@ -29,7 +29,7 @@
 #include "kvi_kvs_variant.h"
 
 #include <qintdict.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 class KVIRC_API KviKvsSwitchList
 {
@@ -38,7 +38,7 @@ public:
 	~KviKvsSwitchList();
 protected:
 	QIntDict<KviKvsVariant> * m_pShortSwitchDict;
-	QDict<KviKvsVariant>    * m_pLongSwitchDict;
+	KviDict<KviKvsVariant>    * m_pLongSwitchDict;
 public:
 	void clear();
 	void addShort(unsigned short uShortKey,KviKvsVariant * pVariant);

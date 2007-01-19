@@ -30,7 +30,7 @@
 #include "kvi_statusbar.h"
 
 #include <qstring.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qstatusbar.h>
 #include <qlabel.h>
 #include <qpixmap.h>

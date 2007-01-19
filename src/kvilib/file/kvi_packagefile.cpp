@@ -31,6 +31,8 @@
 #include "kvi_inttypes.h"
 
 #include <qprogressdialog.h>
+#include <qlabel.h>
+
 #include <qdir.h>
 
 #ifdef COMPILE_ZLIB_SUPPORT
@@ -101,9 +103,9 @@
 KviPackageIOEngine::KviPackageIOEngine()
 {
 	m_pProgressDialog = 0;
-	m_pStringInfoFields = new QDict<QString>();
+	m_pStringInfoFields = new KviDict<QString>();
 	m_pStringInfoFields->setAutoDelete(true);
-	m_pBinaryInfoFields = new QDict<QByteArray>();
+	m_pBinaryInfoFields = new KviDict<QByteArray>();
 	m_pBinaryInfoFields->setAutoDelete(true);
 }
 
@@ -118,7 +120,11 @@ KviPackageIOEngine::~KviPackageIOEngine()
 bool KviPackageIOEngine::updateProgress(int iProgress,const QString &szLabel)
 {
 	if(!m_pProgressDialog)return true;
+#ifdef COMPILE_USE_QT4
+	m_pProgressDialog->setValue(iProgress);
+#else
 	m_pProgressDialog->setProgress(iProgress);
+#endif
 	m_pProgressDialogLabel->setText(szLabel);
 	qApp->processEvents();
 	if(m_pProgressDialog->wasCanceled())
@@ -131,8 +137,14 @@ bool KviPackageIOEngine::updateProgress(int iProgress,const QString &szLabel)
 
 void KviPackageIOEngine::showProgressDialog(const QString &szCaption,int iTotalSteps)
 {
+#ifdef COMPILE_USE_QT4
+	m_pProgressDialog = new QProgressDialog(QString(""),__tr2qs("Cancel"),0,iTotalSteps,0);
+	m_pProgressDialog->setModal(true);
+	m_pProgressDialog->setWindowTitle(szCaption);
+#else
 	m_pProgressDialog = new QProgressDialog(QString(""),__tr2qs("Cancel"),iTotalSteps,0,"",true);
 	m_pProgressDialog->setCaption(szCaption);
+#endif
 	m_pProgressDialogLabel = new QLabel(m_pProgressDialog);
 	m_pProgressDialogLabel->setMaximumSize(500,300);
 	m_pProgressDialog->setLabel(m_pProgressDialogLabel);
@@ -214,34 +226,67 @@ bool KviPackageWriter::addFileInternal(const QFileInfo * fi,const QString &szLoc
 bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QString &szTargetDirectoryPrefix,kvi_u32_t uAddFileFlags)
 {
 	QDir d(szLocalDirectoryName);
-	int iFlags = QDir::Files | QDir::Readable;
+#ifdef COMPILE_USE_QT4
+	QDir::Filters iFlags;
+#else
+	int iFlags;
+#endif
+	iFlags = QDir::Files | QDir::Readable;
 	if(!(uAddFileFlags & FollowSymLinks))
 		iFlags |= QDir::NoSymLinks;
+
+	// QT4SUX: Because the QDir::entryInfoList() breaks really a lot of code by returning an object that behaves in a _totally_ different way.. it's also much slower
+
+#ifdef COMPILE_USE_QT4
+	int j;
+	QFileInfoList sl = d.entryInfoList(iFlags);
+	for(j=0;j<sl.size();j++)
+	{
+#else
 	const QFileInfoList * sl = d.entryInfoList(iFlags);
 	if(!sl)return false;
 	QFileInfoListIterator it(*sl);
 	while(QFileInfo * fi = it.current())
 	{
+#endif
 		QString szSFileName = szLocalDirectoryName;
 		KviQString::ensureLastCharIs(szSFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+#ifdef COMPILE_USE_QT4
+		QFileInfo slowCopy = sl.at(j);
+		szSFileName += slowCopy.fileName();
+#else
 		szSFileName += fi->fileName();
+#endif
 		QString szDFileName = szTargetDirectoryPrefix;
 		KviQString::ensureLastCharIs(szDFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+#ifdef COMPILE_USE_QT4
+		szDFileName += slowCopy.fileName();
+		if(!addFileInternal(&slowCopy,szSFileName,szDFileName,uAddFileFlags))
+			return false;
+#else
 		szDFileName += fi->fileName();
 		if(!addFileInternal(fi,szSFileName,szDFileName,uAddFileFlags))
 			return false;
+#endif
+#ifndef COMPILE_USE_QT4
 		++it;
+#endif
 	}
 	iFlags = QDir::Dirs | QDir::Readable;
 	if(!(uAddFileFlags & FollowSymLinks))
 		iFlags |= QDir::NoSymLinks;
 	sl = d.entryInfoList(iFlags);
+#ifdef COMPILE_USE_QT4
+	for(j=0;j<sl.size();j++)
+	{
+		QString szDir = sl.at(j).fileName();
+#else
 	if(!sl)return false;
-
 	QFileInfoListIterator it2(*sl);
 	while(QFileInfo * fi2 = it2.current())
 	{
 		QString szDir = fi2->fileName();
+#endif
 		if(!KviQString::equalCS(szDir,"..") && !KviQString::equalCS(szDir,"."))
 		{
 			QString szSDirName = szLocalDirectoryName;
@@ -253,7 +298,9 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 			if(!addDirectory(szSDirName,szDDirName,uAddFileFlags))
 				return false;
 		}
+#ifndef COMPILE_USE_QT4
 		++it2;
+#endif
 	}
 	
 	return true;
@@ -272,7 +319,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 
 
 	KviFile source(pDataField->m_szFileLocalName);
-	if(!source.open(IO_ReadOnly))
+	if(!source.openForReading())
 	{
 		setLastError(__tr2qs("Failed to open a source file for reading"));
 		return false;
@@ -291,12 +338,12 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 
 	if(!pFile->save(uFlags))return writeError();
 
-	QCString szTargetFileName = pDataField->m_szFileTargetName.utf8();
+	KviQCString szTargetFileName = KviQString::toUtf8(pDataField->m_szFileTargetName);
 
 	// Path
 	if(!pFile->save(szTargetFileName))return writeError();
 
-	KviFile::Offset savedSizeOffset = pFile->at();
+	kvi_file_offset_t savedSizeOffset = pFile->pos();
 
 	// Size : will update it if compression is requested
 	if(!pFile->save(uSize))return writeError();
@@ -418,8 +465,8 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 		} while(ret == Z_OK);
 
 		// store the compressed data size
-		KviFile::Offset here = pFile->at();
-		pFile->at(savedSizeOffset);
+		kvi_file_offset_t here = pFile->pos();
+		pFile->seek(savedSizeOffset);
 		uSize = zstr.total_out;
 
 		deflateEnd(&zstr);
@@ -431,7 +478,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,DataField * pDataField)
 			return false;
 		}
 
-		pFile->at(here);
+		pFile->seek(here);
 	} else {
 #endif
 		unsigned char buffer[BUFFER_SIZE];
@@ -482,7 +529,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 {
 
 	KviFile f(szFileName);
-	if(!f.open(IO_WriteOnly | IO_Truncate))
+	if(!f.openForWriting())
 	{
 		setLastError(__tr2qs("Can't open file for writing"));
 		return false;
@@ -517,7 +564,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 		return false; // aborted
 	
 	// InfoFields (string)
-	QDictIterator<QString> it(*m_pStringInfoFields);
+	KviDictIterator<QString> it(*m_pStringInfoFields);
 	while(QString * s = it.current())
 	{
 		if(!f.save(it.currentKey()))return writeError();
@@ -528,7 +575,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 	}
 	
 	// InfoFields (binary)
-	QDictIterator<QByteArray> it2(*m_pBinaryInfoFields);
+	KviDictIterator<QByteArray> it2(*m_pBinaryInfoFields);
 	while(QByteArray * b = it2.current())
 	{
 		if(!f.save(it2.currentKey()))return writeError();
@@ -549,7 +596,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 		kvi_u32_t uDataFieldType = pDataField->m_uType;
 		if(!f.save(uDataFieldType))return writeError();
 		
-		KviFile::Offset savedLenOffset = f.at();
+		kvi_file_offset_t savedLenOffset = f.pos();
 		// here we will store the length of the field once it's written
 		if(!f.save(uDataFieldType))return writeError();
 
@@ -567,12 +614,12 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 			break;
 		}
 		
-		KviFile::Offset savedEndOffset = f.at();
-		f.at(savedLenOffset);
+		kvi_file_offset_t savedEndOffset = f.pos();
+		f.seek(savedLenOffset);
 		if(!f.save(pDataField->m_uWrittenFieldLength))
 			return writeError();
 
-		f.at(savedEndOffset);
+		f.seek(savedEndOffset);
 		iIdx++;
 	}
 
@@ -669,7 +716,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &szLocal
 bool KviPackageReader::readHeader(const QString &szLocalFileName)
 {
 	KviFile f(szLocalFileName);
-	if(!f.open(IO_ReadOnly))
+	if(!f.openForReading())
 	{
 		setLastError(__tr2qs("Can't open file for reading"));
 		return false;
@@ -707,7 +754,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	
 	KviFileUtils::adjustFilePath(szFileName);
 
-	int idx = szFileName.findRev(QChar(KVI_PATH_SEPARATOR_CHAR));
+	int idx = KviQString::findRev(szFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
 	if(idx != -1)
 	{
 		QString szPrefixPath = szFileName.left(idx);
@@ -719,7 +766,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	}
 
 	KviFile dest(szFileName);
-	if(!dest.open(IO_WriteOnly | IO_Truncate))
+	if(!dest.openForWriting())
 	{
 		setLastError(__tr2qs("Failed to open a source file for reading"));
 		return false;
@@ -727,7 +774,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 	QString szProgressText;
 	KviQString::sprintf(szProgressText,__tr2qs("Unpacking file %Q"),&szFileName);
-	if(!updateProgress(pFile->at(),szProgressText))
+	if(!updateProgress(pFile->pos(),szProgressText))
 		return false; // aborted
 
 	// Size
@@ -816,7 +863,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					QString szTmp;
 					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),zstr.total_in,uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(pFile->at(),szPrg))
+					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted
 				}
 			}
@@ -884,7 +931,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					QString szTmp;
 					KviQString::sprintf(szTmp,QString(" (%d of %d bytes)"),iTotalFileSize,uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(pFile->at(),szPrg))
+					if(!updateProgress(pFile->pos(),szPrg))
 						return false; // aborted
 				}
 
@@ -922,13 +969,13 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 {
 
 	KviFile f(szLocalFileName);
-	if(!f.open(IO_ReadOnly))
+	if(!f.openForReading())
 	{
 		setLastError(__tr2qs("Can't open file for reading"));
 		return false;
 	}
 
-	KviFile::Offset size = f.size();
+	kvi_file_offset_t size = f.size();
 
 	if(!(uUnpackFlags & NoProgressDialog))
 	{
@@ -940,7 +987,7 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 	if(!readHeaderInternal(&f,szLocalFileName))
 		return false;
 
-	if(!updateProgress(f.at(),__tr2qs("Reading package data")))
+	if(!updateProgress(f.pos(),__tr2qs("Reading package data")))
 		return false; // aborted
 
 	while(!f.atEnd())

@@ -1,12 +1,13 @@
 #ifndef _KVI_FILE_H_
 #define _KVI_FILE_H_
 
+//=============================================================================
 //
 //   File : kvi_file.h
 //   Creation date : Mon Dec 17 2001 00:05:04 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,16 +23,24 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
+#include "kvi_qstring.h"
 #include "kvi_string.h"
 #include "kvi_list.h"
 #include "kvi_inttypes.h"
+#include "kvi_qcstring.h"
 
 #include <qfile.h>
-#include <qcstring.h>
 #include <time.h>
+
+#ifdef COMPILE_USE_QT4
+	#define kvi_file_offset_t qlonglong
+#else
+	#define kvi_file_offset_t QFile::Offset
+#endif
 
 
 class KVILIB_API KviFile : public QFile, public KviHeapObject
@@ -41,6 +50,25 @@ public:
 	KviFile(const QString &name);
 	~KviFile();
 public:
+	// Wrappers portable across Qt 3.x and Qt 4.x
+	bool openForReading();
+	bool openForWriting(bool bAppend = false);
+
+#ifndef COMPILE_USE_QT4
+	// Functions present in Qt 4.x but not Qt 3.x
+	bool putChar(char c){ return putch(c) != -1; };
+	bool ungetChar(char c){ return ungetch(c) != -1; };
+	bool getChar(char * c){ *c = getch(); return *c != -1; };
+	bool seek(kvi_file_offset_t o){ return at(o); };
+	kvi_file_offset_t pos(){ return at(); };
+#endif
+
+#ifdef COMPILE_USE_QT4
+	// Missing functions in Qt 4.x
+	quint64 writeBlock(const char * data,quint64 uLen){ return write(data,uLen); };
+	quint64 readBlock(char * data,quint64 uLen){ return read(data,uLen); };
+#endif
+
 	// This stuff loads and saves LITTLE ENDIAN DATA!
 	bool save(kvi_u64_t t);
 	bool load(kvi_u64_t &t);
@@ -66,14 +94,14 @@ public:
 	bool save(kvi_i8_t t){ return save((kvi_u8_t)t); };
 	bool load(kvi_i8_t &t){ return load((kvi_u8_t &)t); };;
 
-//	bool save(time_t t){ return save((kvi_i32_t)t); };
-//	bool load(time_t &t){ return load((kvi_i32_t)t); };
-
 	bool save(const KviStr &szData);
 	bool load(KviStr &szData);
-	
-	bool save(const QCString &szData);
-	bool load(QCString &szData);
+
+#ifndef COMPILE_USE_QT4
+	// Under Qt 4.x these collide with QByteArray
+	bool save(const KviQCString &szData);
+	bool load(KviQCString &szData);
+#endif
 
 	bool save(const QByteArray &bData);
 	bool load(QByteArray &bData);
@@ -87,7 +115,6 @@ public:
 	bool save(KviPtrList<KviStr> * pData);
 	bool load(KviPtrList<KviStr> * pData);
 };
-
 
 
 #endif //_KVI_FILE_H_

@@ -976,7 +976,7 @@ namespace KviNetUtils
 		return FALSE;
 #else //HAVE_INET_ATON
 		if(szStringIp.isEmpty())return false;
-		return (inet_aton(szStringIp.utf8().data(),address) != 0);
+		return (inet_aton(KviQString::toUtf8(szStringIp).data(),address) != 0);
 #endif //HAVE_INET_ATON
 	}
 
@@ -1003,7 +1003,7 @@ namespace KviNetUtils
 
 	{
 
-		return (inet_pton(AF_INET6,szStringIp.utf8().data(),(void *)address) == 1);
+		return (inet_pton(AF_INET6,KviQString::toUtf8(szStringIp).data(),(void *)address) == 1);
 
 	}
 
@@ -1020,6 +1020,15 @@ namespace KviNetUtils
 		return stringIpToBinaryIp_V6(szIp,&address);
 
 	}
+
+	bool binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer)
+	{
+		char buf[46];
+		bool bRet =  inet_ntop(AF_INET6,(void *)&in,buf,46);
+		szBuffer= buf;
+		return bRet;
+	}
+	
 
 #endif //COMPILE_IPV6_SUPPORT
 
@@ -1107,7 +1116,7 @@ namespace KviNetUtils
 
 
 
-		kvi_memmove(ifr.ifr_name,szInterfaceName.utf8().data(),len + 1);
+		kvi_memmove(ifr.ifr_name,KviQString::toUtf8(szInterfaceName).data(),len + 1);
 
 
 

@@ -82,7 +82,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	
 	m_pClickedApplet = 0;
 
-	m_pAppletDescriptors = new QDict<KviStatusBarAppletDescriptor>;
+	m_pAppletDescriptors = new KviDict<KviStatusBarAppletDescriptor>;
 	m_pAppletDescriptors->setAutoDelete(true);
 
 	KviStatusBarClock::selfRegister(this);
@@ -366,7 +366,7 @@ void KviStatusBar::appletsPopupAboutToShow()
 	// FIXME: could we cache the module results in some way ?
 	g_pModuleManager->loadModulesByCaps("statusbarapplet");
 	
-	QDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
+	KviDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
 		int id;
@@ -398,7 +398,7 @@ void KviStatusBar::appletsPopupActivated(int id)
 
 	if(!m_pAppletsPopup)return;
 	int par = m_pAppletsPopup->itemParameter(id);
-	QDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
+	KviDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
 		if(par == d->id())

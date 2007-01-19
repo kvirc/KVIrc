@@ -92,71 +92,18 @@ namespace KviFileUtils
 	extern KVILIB_API bool isAbsolutePath(const QString &szPath);
 };
 
-/*
-Important:
-
-REMEMBER: ONLY QString's doesn't break localization!
-char* filenames breaks it
-instead of QFile(char*) we MUST use QString szString=char* ; QFile(szString);
-*/
+// ALL THIS STUFF BELOW SHOULD DIE: IF YOU SEE IT, REPLACE WITH THE FUNCTIONS IN THE NAMESPACE ABOVE
 
 // Returns true if the path begins with '/'
 KVILIB_API extern bool kvi_isAbsolutePath(const char *path);
-// Simplifies the path from double separators , and eventually converts the separators
-KVILIB_API extern void kvi_adjustFilePath(KviStr & path);
-KVILIB_API extern void kvi_adjustFilePath(QString & path);
 // Translates ANY string into a valid filename (with no path!)
 // There is NO way to come back to the original string
 // the algo is one-way only
 KVILIB_API extern void kvi_encodeFileName(KviStr & path);
 KVILIB_API extern void kvi_encodeFileName(QString & path);
-// Returns true if the file exists and IS a file
-//DEPRECATED: breaks intarnationalization!
-//KVILIB_API extern bool kvi_fileExists(const char *path);
-
-// kvi_fileExists & isReadable
-//DEPRECATED: breaks intarnationalization!
-//KVILIB_API extern bool kvi_fileIsReadable(const char *path);
-
-// Returns true if the file exists and IS a directory
-//DEPRECATED: breaks intarnationalization!
-//KVILIB_API extern bool kvi_directoryExists(const char *path);
-
-// Makes a directory (and eventually all the leading path)
-//KVILIB_API extern bool kvi_makeDir(const char *path);
-
-// Loads a file to a buffer (false if the file does not exist)
-//DEPRECATED: breaks intarnationalization!
-//KVILIB_API extern bool kvi_loadFile(const char *path,KviStr &buffer);
-// Writes a buffer to a new file
-
-//DEPRECATED: breaks intarnationalization!
-//KVILIB_API extern bool kvi_writeFile(const char *path,KviStr &buffer,bool bAppend = false);
-
-// cp :)
-//KVILIB_API extern bool kvi_copyFile(const char *src,const char *dst);
-
-// mv :)
-//KVILIB_API extern bool kvi_renameFile(const char *src,const char *dst);
 
 // Reads a single line from the file and returns false if EOF was encountered.
 KVILIB_API extern bool kvi_readLine(QFile *f,KviStr &str);
-// Same as above but strips whitespace too.
-KVILIB_API extern bool kvi_readStrippedLine(QFile *f,KviStr &str);
-// Reads stripped lines until a non empty one is found...
-// An empty line may be returned if EOF is found before reading any significant data.
-KVILIB_API extern bool kvi_readFirstNonEmptyStrippedLine(QFile *f,KviStr &str);
-// Writes a data line to the file f and returns false if an error occurs
-KVILIB_API extern bool kvi_writeLine(QFile *f,const char *line);
 // Removes a file
-KVILIB_API extern bool kvi_removeFile(const char * path);
-// Removes a dir
-//KVILIB_API extern bool kvi_removeDir(const char * path);
-
-// File dialogs (DEAD)
-//__kvi_extern QString kvi_askForDirectoryName(const char * basePath = 0);
-//__kvi_extern QString kvi_askForOpenFileName(const char *basePath = 0,const char *filter = 0);
-//__kvi_extern QStringList kvi_askForOpenFileNames(const char * basePath = 0,const char * filter = 0);
-//__kvi_extern QString kvi_askForSaveFileName(const char *baseFileName = 0);
 
 #endif //_KVI_FILEUTILS_H_INCLUDED_

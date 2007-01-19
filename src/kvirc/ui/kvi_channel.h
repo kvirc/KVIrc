@@ -37,7 +37,7 @@
 
 #include <qstrlist.h>
 #include <qdatetime.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qstringlist.h>
 
 class KviConsole;

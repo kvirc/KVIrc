@@ -301,13 +301,14 @@ void KviApp::completeDirectory(const QString &word,KviPtrList<QString> * matches
 // Returns a valid filename for the channel dump log
 //
 
-void KviApp::getChannelDumpLogFileName(KviStr &str)
+void KviApp::getChannelDumpLogFileName(QString &str)
 {
 	unsigned int logN = 0;
-	KviStr fPrefix="kick_";
+	QString fPrefix="kick_";
 	do{
-		KviStr fName(KviStr::Format,"%s%u.log",fPrefix.ptr(),logN);
-		getLocalKvircDirectory(str,Log,fName.ptr());
+		QString fName;
+		KviQString::sprintf(fName,"%Q%u.log",&fPrefix,logN);
+		getLocalKvircDirectory(str,Log,fName);
 		logN++;
 		if(logN > 9999)
 		{
@@ -315,8 +316,8 @@ void KviApp::getChannelDumpLogFileName(KviStr &str)
 			fPrefix+="x";
 			logN = 0;
 		}
-	} while(KviFileUtils::fileExists(str.ptr()));
-	kvi_adjustFilePath(str);
+	} while(KviFileUtils::fileExists(str));
+	KviFileUtils::adjustFilePath(str);
 }
 
 bool KviApp::findFileByMediaType(KviStr &szRetPath,const char * filename)
@@ -339,7 +340,9 @@ bool KviApp::findFileByMediaType(KviStr &szRetPath,const char * filename)
 				{
 					g_pMediaManager->unlock();
 					//if(retMediaType)*retMediaType = mt;
-					kvi_adjustFilePath(szRetPath);
+					QString szTmp = szRetPath.ptr(); // FIXME
+					KviFileUtils::adjustFilePath(szTmp);
+					szRetPath = szTmp;
 					return true;
 				} // else mime type not matched...we should not be looking there!
 			}
@@ -364,7 +367,9 @@ bool KviApp::findUserFile(KviStr &szRetPath,const char *filename)
 	if(kvi_isAbsolutePath(filename))
 	{
 		szRetPath=filename;
-		kvi_adjustFilePath(szRetPath);
+		QString szTmp = szRetPath.ptr(); // FIXME
+		KviFileUtils::adjustFilePath(szTmp);
+		szRetPath = szTmp;
 		return KviFileUtils::fileExists(filename);
 	}
 

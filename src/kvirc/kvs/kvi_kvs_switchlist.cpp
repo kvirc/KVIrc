@@ -76,7 +76,7 @@ void KviKvsSwitchList::addLong(const QString &szLongKey,KviKvsVariant * pVariant
 #ifdef COMPILE_NEW_KVS
 	if(!m_pLongSwitchDict)
 	{
-		m_pLongSwitchDict = new QDict<KviKvsVariant>(11);
+		m_pLongSwitchDict = new KviDict<KviKvsVariant>(11);
 		m_pLongSwitchDict->setAutoDelete(true);
 	}
 	m_pLongSwitchDict->replace(szLongKey,pVariant);

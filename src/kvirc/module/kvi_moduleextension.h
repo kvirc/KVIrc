@@ -27,10 +27,10 @@
 #include "kvi_list.h"
 #include "kvi_heapobject.h"
 
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qpixmap.h>
 #include <qvariant.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 class KviWindow;
 class KviModule;
@@ -41,7 +41,7 @@ typedef struct _KviModuleExtensionAllocStructTag
 {
 	KviModuleExtensionDescriptor * pDescriptor; // module extension that this alloc routine refers to
 	KviWindow                    * pWindow;     // may be 0!
-	QDict<QVariant>              * pParams;     // parameter dict (may be 0!)
+	KviDict<QVariant>              * pParams;     // parameter dict (may be 0!)
 	void                         * pSpecial;    // special parameter passed to the alloc routine, may be 0
 } KviModuleExtensionAllocStruct;
 
@@ -70,7 +70,7 @@ private:
 	KviModule                      * m_pModule;        // module pointer
 public:
 	// pParams ownership is NOT taken
-	KviModuleExtension * allocate(KviWindow * pWnd = 0,QDict<QVariant> * pParams = 0,void * pSpecial = 0);
+	KviModuleExtension * allocate(KviWindow * pWnd = 0,KviDict<QVariant> * pParams = 0,void * pSpecial = 0);
 
 	int id(){ return m_iId; };
 	KviModule * module(){ return m_pModule; };
@@ -107,7 +107,7 @@ protected:
 	KviModuleExtensionManager(); // KviApp calls this
 	~KviModuleExtensionManager(); // and this
 protected:
-	QAsciiDict<KviModuleExtensionDescriptorList> * m_pExtensionDict;
+	KviAsciiDict<KviModuleExtensionDescriptorList> * m_pExtensionDict;
 protected:
 	// Only KviModule can call this
 	KviModuleExtensionDescriptor * registerExtension(KviModule * m,const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon);
@@ -116,8 +116,8 @@ public:
 	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviStr &szType,const KviStr &szName);
 	static KviModuleExtensionManager * instance(){ return g_pModuleExtensionManager; };
 	KviModuleExtensionDescriptorList * getExtensionList(const KviStr &szType);
-	KviModuleExtension * allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd = 0,QDict<QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
-	KviModuleExtension * allocateExtension(const KviStr &szType,int id,KviWindow * pWnd = 0,QDict<QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
+	KviModuleExtension * allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd = 0,KviDict<QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
+	KviModuleExtension * allocateExtension(const KviStr &szType,int id,KviWindow * pWnd = 0,KviDict<QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
 private:
 	KviModuleExtensionDescriptorList * allocateExtensionGetDescriptorList(const KviStr &szType,const char * preloadModule);
 };

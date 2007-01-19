@@ -41,7 +41,11 @@
 #else
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
+#ifdef COMPILE_USE_QT4
+	: QMenuBar(par)
+#else
 	: QMenuBar(par,nam)
+#endif
 	{
 	}
 

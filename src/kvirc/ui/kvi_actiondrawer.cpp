@@ -181,13 +181,13 @@ void KviActionDrawer::fill()
 {
 	KviActionManager::loadAllAvailableActions();
 
-	QDict<KviActionDrawerPage> pages;
+	KviDict<KviActionDrawerPage> pages;
 	pages.setAutoDelete(false);
 
-	QDict<KviAction> * d = KviActionManager::instance()->actions();
+	KviDict<KviAction> * d = KviActionManager::instance()->actions();
 	if(!d)return; // ooops
 
-	QDictIterator<KviAction> it(*d);
+	KviDictIterator<KviAction> it(*d);
 	while(KviAction * a = it.current())
 	{
 		KviActionCategory * c = a->category();

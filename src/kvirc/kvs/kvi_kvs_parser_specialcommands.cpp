@@ -260,7 +260,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 
 		if(!m_pGlobals)
 		{
-			m_pGlobals = new QDict<QString>(17,false);
+			m_pGlobals = new KviDict<QString>(17,false);
 			m_pGlobals->setAutoDelete(true);
 		}
 		m_pGlobals->replace(szIdentifier,new QString());

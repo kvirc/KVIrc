@@ -43,16 +43,22 @@ namespace KviStringConversion
 		g_szLocalDir=szLocalDir;
 	}
 
-	void encodePath(QString& buffer) {
-		if(!buffer.isEmpty()) {
-			if(!g_szLocalDir.isEmpty()) {
-				if(buffer.find(g_szLocalDir)==0) {
+	void encodePath(QString& buffer)
+	{
+		if(!buffer.isEmpty())
+		{
+			if(!g_szLocalDir.isEmpty())
+			{
+				if(KviQString::find(buffer,g_szLocalDir)==0)
+				{
 					buffer.remove(0,g_szLocalDir.length());
 					buffer.prepend("local://");
 				}
 			}
-			if(!g_szGlobalDir.isEmpty()) {
-				if(buffer.find(g_szGlobalDir)==0) {
+			if(!g_szGlobalDir.isEmpty())
+			{
+				if(KviQString::find(buffer,g_szGlobalDir)==0)
+				{
 					buffer.remove(0,g_szGlobalDir.length());
 					buffer.prepend("global://");
 				}
@@ -60,16 +66,22 @@ namespace KviStringConversion
 		}
 	}
 
-	void decodePath(QString& buffer) {
-		if(!buffer.isEmpty()) {
-			if(!g_szLocalDir.isEmpty()) {
-				if(buffer.find("local://")==0) {
+	void decodePath(QString& buffer)
+	{
+		if(!buffer.isEmpty())
+		{
+			if(!g_szLocalDir.isEmpty())
+			{
+				if(KviQString::find(buffer,"local://")==0)
+				{
 					buffer.remove(0,8);
 					buffer.prepend(g_szLocalDir);
 				}
 			}
-			if(!g_szGlobalDir.isEmpty()) {
-				if(buffer.find("global://")==0) {
+			if(!g_szGlobalDir.isEmpty())
+			{
+				if(KviQString::find(buffer,"global://")==0)
+				{
 					buffer.remove(0,9);
 					buffer.prepend(g_szGlobalDir);
 				}
@@ -77,14 +89,18 @@ namespace KviStringConversion
 		}
 	}
 	
-	void encodePath(QStringList& buffer){
-		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it ) {
+	void encodePath(QStringList& buffer)
+	{
+		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it )
+		{
 			encodePath(*it);
 		}
 	}
 
-	void decodePath(QStringList& buffer){
-		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it ) {
+	void decodePath(QStringList& buffer)
+	{
+		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it )
+		{
 			decodePath(*it);
 		}
 	}
@@ -132,7 +148,7 @@ namespace KviStringConversion
 	
 	bool fromString(const QString & szValue,QRect &buffer)
 	{
-		const char * c = szValue.latin1();
+		const char * c = KviQString::toUtf8(szValue).data();
 		if(!c)return false;
 		int l,t,w,h;
 		if(sscanf(c,"%d,%d,%d,%d",&l,&t,&w,&h) != 4)return false;
@@ -178,7 +194,7 @@ namespace KviStringConversion
 	{
 		int iId,iLog,iLevel;
 		unsigned int uFore,uBack;
-		const char * c = szValue.latin1();
+		const char * c = KviQString::toUtf8(szValue).data();
 		if(!c)return false;
 		if(sscanf(c,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;
 		buffer = KviMsgType(buffer.m_szType,iId,uFore,uBack,iLog,iLevel);
@@ -198,7 +214,7 @@ namespace KviStringConversion
 	void toString(const QFont &fValue,QString &buffer)
 	{
 		QString family(fValue.family());
-		buffer.sprintf("%s,%d,%d,%d",family.utf8().data(),fValue.pointSize(),fValue.styleHint(),fValue.weight());
+		buffer.sprintf("%s,%d,%d,%d",KviQString::toUtf8(family).data(),fValue.pointSize(),fValue.styleHint(),fValue.weight());
 		QString options;
 		if(fValue.bold())options.append('b');
 		if(fValue.italic())options.append('i');
@@ -248,7 +264,11 @@ namespace KviStringConversion
 	
 	bool fromString(const QString & szValue,QStringList &buffer)
 	{
+#ifdef COMPILE_USE_QT4
+		buffer = szValue.split(",");
+#else
 		buffer = QStringList::split(",",szValue);
+#endif
 		return true;
 	}
 

@@ -33,7 +33,7 @@ KviKvsPopupManager * KviKvsPopupManager::m_pInstance = 0;
 KviKvsPopupManager::KviKvsPopupManager()
 {
 	m_pInstance = this;
-	m_pPopupDict = new QDict<KviKvsPopupMenu>(17,false);
+	m_pPopupDict = new KviDict<KviKvsPopupMenu>(17,false);
 	m_pPopupDict->setAutoDelete(true);
 }
 
@@ -104,7 +104,7 @@ void KviKvsPopupManager::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
 
-	QDictIterator<KviKvsPopupMenu> it(*m_pPopupDict);
+	KviDictIterator<KviKvsPopupMenu> it(*m_pPopupDict);
 	while(it.current())
 	{
 		cfg.setGroup(it.current()->popupName());

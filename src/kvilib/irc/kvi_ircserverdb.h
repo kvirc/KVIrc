@@ -28,7 +28,7 @@
 #include "kvi_qstring.h"
 #include "kvi_ircserver.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 typedef struct _KviIrcServerDefinition
 {
@@ -75,7 +75,7 @@ public:
 	KviIrcServerDataBase();
 	~KviIrcServerDataBase();
 private:
-	QDict<KviIrcServerDataBaseRecord> * m_pRecords;
+	KviDict<KviIrcServerDataBaseRecord> * m_pRecords;
 	QString                             m_szCurrentNetwork;
 	// This list is computed when the data are loaded from disk
 	// during the startup and is used by KviApp to
@@ -89,7 +89,7 @@ private:
 	KviPtrList<KviIrcServerDataBaseRecord>  * m_pAutoConnectOnStartupNetworks;
 public:
 	void clear();
-	QDict<KviIrcServerDataBaseRecord> * recordDict(){ return m_pRecords; };
+	KviDict<KviIrcServerDataBaseRecord> * recordDict(){ return m_pRecords; };
 	KviPtrList<KviIrcServer> * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
 	KviPtrList<KviIrcServerDataBaseRecord> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
 	void clearAutoConnectOnStartupServers();

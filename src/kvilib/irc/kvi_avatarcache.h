@@ -29,7 +29,7 @@
 #include "kvi_time.h"
 #include "kvi_ircmask.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 
 typedef struct _KviAvatarCacheEntry
@@ -46,7 +46,7 @@ protected:
 	KviAvatarCache();
 	~KviAvatarCache();
 public:
-	QDict<KviAvatarCacheEntry> * m_pAvatarDict;
+	KviDict<KviAvatarCacheEntry> * m_pAvatarDict;
 protected:
 	static KviAvatarCache * m_pAvatarCacheInstance;
 public:

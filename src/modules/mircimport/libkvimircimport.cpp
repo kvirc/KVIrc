@@ -216,7 +216,7 @@ void KviRemoteMircServerImportWizard::start()
 
 	m_pRequest = new KviHttpRequest();
 	connect(m_pRequest,SIGNAL(terminated(bool)),this,SLOT(getListTerminated(bool)));
-	connect(m_pRequest,SIGNAL(status(const char *)),this,SLOT(getListMessage(const char *)));
+	connect(m_pRequest,SIGNAL(status(const QString &)),this,SLOT(getListMessage(const QString &)));
 
 	QString szTmp;
 	g_pApp->getTmpFileName(szTmp,"servers.ini");
@@ -230,7 +230,7 @@ void KviRemoteMircServerImportWizard::start()
 	}
 }
 
-void KviRemoteMircServerImportWizard::getListMessage(const char * message)
+void KviRemoteMircServerImportWizard::getListMessage(const QString &message)
 {
 	if(message)m_pOutput->setText(message);
 }

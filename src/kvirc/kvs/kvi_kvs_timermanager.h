@@ -30,7 +30,7 @@
 
 #include <qobject.h>
 #include <qintdict.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include "kvi_list.h"
 
 class KviKvsTimerManager;
@@ -93,7 +93,7 @@ protected: // it only can be created and destroyed by KviKvsTimerManager::init()
 	~KviKvsTimerManager();
 private:
 	QIntDict<KviKvsTimer>     * m_pTimerDictById;      // stored by id
-	QDict<KviKvsTimer>        * m_pTimerDictByName;    // stored by name
+	KviDict<KviKvsTimer>        * m_pTimerDictByName;    // stored by name
 	static KviKvsTimerManager * m_pInstance;           // the one and only timer manager instance
 	KviPtrList<KviKvsTimer>   * m_pKilledTimerList;    // list of timers for that killing has been scheduled
 	int                         m_iAssassinTimer;      // assassin timer id

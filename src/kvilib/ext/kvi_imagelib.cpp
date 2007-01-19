@@ -1,3 +1,4 @@
+//=============================================================================
 //
 //   File : kvi_imagelib.cpp
 //   Creation date : Wed Jul 21 1999 16:41:26 by Szymon Stefanek
@@ -19,13 +20,9 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #define __KVILIB__
-
-
-
-//#define _KVI_DEBUG_CLASS_NAME_ "KviImageLibrary"
-#define _KVI_DEBUG_CHECK_RANGE_
-#include "kvi_debug.h"
 
 #include <qnamespace.h>
 
@@ -33,6 +30,8 @@
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_memmove.h"
+
+#include <qpixmap.h>
 
 
 //KviImageLibrary::KviImageLibrary(const QPixmap &pixmap,int imageWidth,int imageHeight)
@@ -74,8 +73,6 @@ void KviImageLibrary::unloadLibrary()
 
 bool KviImageLibrary::setImageSize(int imageWidth,int imageHeight)
 {
-	__range_valid(imageWidth>0);
-	__range_valid(imageHeight>0);
 	m_iWidth=((imageWidth>0) ? imageWidth : 16);
 	m_iHeight=((imageHeight>0) ? imageHeight : 16);
 	return true;
@@ -83,27 +80,16 @@ bool KviImageLibrary::setImageSize(int imageWidth,int imageHeight)
 
 bool KviImageLibrary::loadLibrary(const QString &path)
 {
-	__range_valid(path);
 	if(m_pLibrary)delete m_pLibrary;
 	m_pLibrary=new QImage(path);
 	if(m_pLibrary->isNull())
 	{
 		delete m_pLibrary;
 		m_pLibrary=0;
-		debug(__tr("WARNING : Can not load image library %s"),path.latin1());
+		debug("WARNING : Can not load image library %s",KviQString::toUtf8(path).data());
 	}
-// else {
-//		if(!m_pLibrary->mask())m_pLibrary->setMask(m_pLibrary->createHeuristicMask());
-//	}
 	return (m_pLibrary != 0);
 }
-
-//void KviImageLibrary::forceMask()
-//{
-//	if(m_pLibrary){
-//		if(!m_pLibrary->mask())m_pLibrary->setMask(m_pLibrary->createHeuristicMask());
-//	}
-//}
 
 int KviImageLibrary::imageCount()
 {
@@ -115,9 +101,6 @@ int KviImageLibrary::imageCount()
 
 QPixmap KviImageLibrary::getImage(int zeroBasedIndex)
 {
-	__range_valid(zeroBasedIndex >=0);
-	__range_valid(zeroBasedIndex < imageCount());
-
 	if((zeroBasedIndex >= imageCount())||(zeroBasedIndex < 0)||(m_pLibrary->depth() < 8))
 	{
 		QPixmap image(32,32);
@@ -130,28 +113,26 @@ QPixmap KviImageLibrary::getImage(int zeroBasedIndex)
 	int xOffset=(zeroBasedIndex % imPerRow) * m_iWidth;
 	int yOffset=(zeroBasedIndex / imPerRow) * m_iHeight;
 
+#ifdef COMPILE_USE_QT4
+	QImage image(m_iWidth,m_iHeight,m_pLibrary->format());
+#else
 	QImage image(m_iWidth,m_iHeight,m_pLibrary->depth());
+#endif
+
+	int d = image.depth() / 8;
+#ifndef COMPILE_USE_QT4
+	if(d == 4)image.setAlphaBuffer(true); // Qt 4.x should manage it automagically
+#endif
 	//Copy the image data
 	//bitBlt(&image,0,0,m_pLibrary,xOffset,yOffset,m_iWidth,m_iHeight,Qt::CopyROP,false);
-	int d = image.depth() / 8;
-	if(d == 4)image.setAlphaBuffer(true);
 
-//	debug("IMAGE DEPTH IS %d",d);
 	for(int i=0;i<m_iHeight;i++)
 		kvi_memmove(image.scanLine(i),m_pLibrary->scanLine(i + yOffset) + (xOffset * d),m_iWidth * d);
-/*
-	if(m_pLibrary->mask())
-	{
-		//copy the mask too
-		QBitmap bmp(m_iWidth,m_iHeight);
-		bitBlt(&bmp,0,0,m_pLibrary->mask(),xOffset,yOffset,m_iWidth,m_iHeight,Qt::CopyROP,false);
-		image.setMask(bmp);
-	}
-*/
 
+#ifdef COMPILE_USE_QT4
+	QPixmap p = QPixmap::fromImage(image);
+#else
 	QPixmap p(image);
-
-//	debug("PIXMAP DEPTH IS %d",p.depth());
-
+#endif
 	return p;
 }

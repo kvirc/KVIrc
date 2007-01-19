@@ -75,7 +75,7 @@ QPixmap * KviTextIcon::pixmap()
 KviTextIconManager::KviTextIconManager()
 : QObject()
 {
-	m_pTextIconDict = new QDict<KviTextIcon>(47,false);
+	m_pTextIconDict = new KviDict<KviTextIcon>(47,false);
 	m_pTextIconDict->setAutoDelete(true);
 }
 
@@ -240,7 +240,7 @@ void KviTextIconManager::save(const QString &filename)
 
 	cfg.setGroup("TextIcons");
 
-	QDictIterator<KviTextIcon> it(*m_pTextIconDict);
+	KviDictIterator<KviTextIcon> it(*m_pTextIconDict);
 	while(KviTextIcon * i = it.current())
 	{
 		if(i->id()!=-1)

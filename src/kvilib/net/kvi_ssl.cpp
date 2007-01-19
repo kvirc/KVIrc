@@ -481,9 +481,9 @@ KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 
 KviSSLCertificate::KviSSLCertificate(X509 * x509)
 {
-	m_pSubject = new QAsciiDict<KviStr>(17);
+	m_pSubject = new KviAsciiDict<KviStr>(17);
 	m_pSubject->setAutoDelete(true);
-	m_pIssuer = new QAsciiDict<KviStr>(17);
+	m_pIssuer = new KviAsciiDict<KviStr>(17);
 	m_pIssuer->setAutoDelete(true);
 	m_pX509 = 0;
 	setX509(x509);
@@ -546,7 +546,7 @@ void KviSSLCertificate::extractIssuer()
 	splitX509String(m_pIssuer,t);
 }
 
-void KviSSLCertificate::splitX509String(QAsciiDict<KviStr> * dict,const char * t)
+void KviSSLCertificate::splitX509String(KviAsciiDict<KviStr> * dict,const char * t)
 {
 	KviStr buf = t;
 	int cnt;
@@ -575,7 +575,7 @@ void KviSSLCertificate::splitX509String(QAsciiDict<KviStr> * dict,const char * t
 }
 
 
-const char * KviSSLCertificate::dictEntry(QAsciiDict<KviStr> * dict,const char * entry)
+const char * KviSSLCertificate::dictEntry(KviAsciiDict<KviStr> * dict,const char * entry)
 {
 	KviStr * t = dict->find(entry);
 	if(!t)return __tr("Unknown");

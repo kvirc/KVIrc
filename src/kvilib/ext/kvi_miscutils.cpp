@@ -31,8 +31,13 @@ namespace KviMiscUtils
 {
 	int compareVersions(const QString &szVersion1,const QString &szVersion2)
 	{
+#ifdef COMPILE_USE_QT4
+		QStringList sl1 = szVersion1.split(".");
+		QStringList sl2 = szVersion2.split(".");
+#else
 		QStringList sl1 = QStringList::split(".",szVersion1);
 		QStringList sl2 = QStringList::split(".",szVersion2);
+#endif
 	
 		QStringList::Iterator it1 = sl1.begin();
 		QStringList::Iterator it2 = sl2.begin();
@@ -61,7 +66,11 @@ namespace KviMiscUtils
 
 	bool isValidVersionString(const QString &szVersion)
 	{
+#ifdef COMPILE_USE_QT4
+		QStringList sl = szVersion.split(".");
+#else
 		QStringList sl = QStringList::split(".",szVersion);
+#endif
 		if(sl.isEmpty())return false;
 		// must all be numbers
 		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)

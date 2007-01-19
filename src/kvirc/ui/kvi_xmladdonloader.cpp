@@ -105,7 +105,7 @@ void KviXmlAddonLoader::fillListView()
 {
 	m_pListView->clear();
 	
-	QAsciiDict<QCheckListItem> dict;
+	KviAsciiDict<QCheckListItem> dict;
 	
 	if(m_pDocument) delete m_pDocument;
 	m_pDocument = new QDomDocument();

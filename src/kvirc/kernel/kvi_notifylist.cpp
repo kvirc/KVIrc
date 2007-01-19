@@ -168,8 +168,8 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 	else
 		KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
 	
-	QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	QString szNotify;
 	
 	while(KviRegisteredUser * u = it.current())
@@ -228,8 +228,8 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 	
 		QString szMsg;
 		
-		QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-		QDictIterator<KviRegisteredUser> it(*d);
+		KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+		KviDictIterator<KviRegisteredUser> it(*d);
 		QString szNotify;
 		
 		while(KviRegisteredUser * u = it.current())
@@ -321,7 +321,7 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 KviIsOnNotifyListManager::KviIsOnNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pRegUserDict = new QDict<QString>(17,false); // case insensitive , copy keys
+	m_pRegUserDict = new KviDict<QString>(17,false); // case insensitive , copy keys
 	m_pRegUserDict->setAutoDelete(true);
 	m_pNotifyList  = new KviPtrList<QString>;
 	m_pNotifyList->setAutoDelete(true);
@@ -378,8 +378,8 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 {
 	m_pRegUserDict->clear();
 
-	const QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
 		QString notify;
@@ -437,7 +437,7 @@ void KviIsOnNotifyListManager::newNotifySession()
 void KviIsOnNotifyListManager::buildNotifyList()
 {
 	m_pNotifyList->clear();
-	QDictIterator<QString> it(*m_pRegUserDict);
+	KviDictIterator<QString> it(*m_pRegUserDict);
 	while(it.current())
 	{
 		m_pNotifyList->append(new QString(it.currentKey()));
@@ -1052,8 +1052,8 @@ void KviStupidNotifyListManager::stop()
 
 void KviStupidNotifyListManager::buildNickList()
 {
-	const QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	m_pNickList->clear();
 	while(it.current())
 	{
@@ -1075,7 +1075,7 @@ void KviStupidNotifyListManager::buildNickList()
 KviWatchNotifyListManager::KviWatchNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pRegUserDict = new QDict<QString>(17,false);
+	m_pRegUserDict = new KviDict<QString>(17,false);
 	m_pRegUserDict->setAutoDelete(true);
 }
 
@@ -1088,8 +1088,8 @@ void KviWatchNotifyListManager::buildRegUserDict()
 {
 	m_pRegUserDict->clear();
 
-	const QDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
 		QString notify;
@@ -1114,7 +1114,7 @@ void KviWatchNotifyListManager::start()
 
 	QString watchStr;
 
-	QDictIterator<QString> it(*m_pRegUserDict);
+	KviDictIterator<QString> it(*m_pRegUserDict);
 	while(it.current())
 	{
 		QString nk = it.currentKey();

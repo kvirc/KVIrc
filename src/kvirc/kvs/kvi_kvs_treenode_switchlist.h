@@ -28,7 +28,7 @@
 #include "kvi_qstring.h"
 
 #include <qintdict.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 #include "kvi_kvs_treenode_base.h"
 #include "kvi_kvs_treenode_data.h"
@@ -43,7 +43,7 @@ public:
 	~KviKvsTreeNodeSwitchList();
 public:
 	QIntDict<KviKvsTreeNodeData> * m_pShortSwitchDict;
-	QDict<KviKvsTreeNodeData> *m_pLongSwitchDict;
+	KviDict<KviKvsTreeNodeData> *m_pLongSwitchDict;
 public:
 	void addShort(int iShortKey,KviKvsTreeNodeData * p);
 	void addLong(const QString &szLongKey,KviKvsTreeNodeData * p);

@@ -119,7 +119,7 @@ void KviHttpRequest::reset()
 	resetInternalStatus();
 }
 
-bool KviHttpRequest::get(const KviUrl &u,ProcessingType p,const char * szFileName)
+bool KviHttpRequest::get(const KviUrl &u,ProcessingType p,const QString &szFileName)
 {
 	reset();
 	setUrl(u);
@@ -145,7 +145,7 @@ bool KviHttpRequest::start()
 		if((m_eExistingFileAction == Resume) && (m_uContentOffset == 0))
 		{
 			// determine the content offset automatically
-			if(QFile::exists(m_szFileName))
+			if(KviFile::exists(m_szFileName))
 			{
 				// we check it
 				QFileInfo fi(m_szFileName);
@@ -190,25 +190,25 @@ bool KviHttpRequest::startDnsLookup()
 		return false;
 	}
 
-	KviStr tmp(KviStr::Format,__tr2qs("Looking up host %s"),m_url.host().ptr());
-	emit status(tmp.ptr());
+	QString tmp;
+	KviQString::sprintf(tmp,__tr2qs("Looking up host %s"),m_url.host().ptr());
+	emit status(tmp); // FIXME
 
-	emit resolvingHost(m_url.host().ptr());
+	emit resolvingHost(QString(m_url.host().ptr()));
 
 	return true;
 }
 
 void KviHttpRequest::dnsLookupDone(KviDns *d)
 {
-	__range_valid(m_pDns == d);
-
 	if(d->state() == KviDns::Success)
 	{
 		m_szIp = d->firstIpAddress();
 		delete m_pDns;
 		m_pDns = 0;
-		KviStr tmp(KviStr::Format,__tr2qs("Host %s resolved to %s"),m_url.host().ptr(),m_szIp.ptr());
-		emit status(tmp.ptr());
+		QString tmp;
+		KviQString::sprintf(tmp,__tr2qs("Host %s resolved to %Q"),m_url.host().ptr(),&m_szIp);
+		emit status(tmp);
 		haveServerIp();
 	} else {
 		int iErr = d->error();
@@ -223,16 +223,16 @@ void KviHttpRequest::haveServerIp()
 	unsigned short uPort = m_url.port();
 	if(uPort == 0)uPort = 80;
 
-	KviStr tmp;
-	tmp.sprintf("%s:%u",m_szIp.ptr(),uPort);
-	emit contactingHost(tmp.ptr());
+	QString tmp;
+	KviQString::sprintf(tmp,"%Q:%u",&m_szIp,uPort);
+	emit contactingHost(tmp);
 
 	if(m_pThread)delete m_pThread;
 
 	m_pThread = new KviHttpRequestThread(
 						this,
 						m_url.host().ptr(),
-						m_szIp.ptr(),
+						m_szIp,
 						uPort,
 						m_url.path().ptr(),
 						m_uContentOffset,
@@ -248,8 +248,8 @@ void KviHttpRequest::haveServerIp()
 		return;
 	}
 
-	tmp.sprintf(__tr2qs("Contacting host %s on port %u"),m_szIp.ptr(),uPort);
-	emit status(tmp.ptr());
+	KviQString::sprintf(tmp,__tr2qs("Contacting host %Q on port %u"),&m_szIp,uPort);
+	emit status(tmp);
 }
 
 bool KviHttpRequest::event(QEvent *e)
@@ -273,8 +273,12 @@ bool KviHttpRequest::event(QEvent *e)
 			break;
 			case KVI_HTTP_REQUEST_THREAD_EVENT_REQUESTSENT:
 			{
-				KviStr * req = ((KviThreadDataEvent<KviStr> *)e)->getData();
-				QStringList sl = QStringList::split("\r\n",req->ptr());
+				QString * req = ((KviThreadDataEvent<QString> *)e)->getData();
+#ifdef COMPILE_USE_QT4
+				QStringList sl = req->split("\r\n");
+#else
+				QStringList sl = QStringList::split("\r\n",*req);
+#endif
 				emit requestSent(sl);
 				delete req;
 				return true;
@@ -322,7 +326,7 @@ bool KviHttpRequest::event(QEvent *e)
 			case KVI_THREAD_EVENT_ERROR:
 			{
 				KviStr * err = ((KviThreadDataEvent<KviStr> *)e)->getData();
-				m_szLastError = __tr_no_xgettext(err->ptr());
+				m_szLastError = __tr2qs_no_xgettext(err->ptr());
 				delete err;
 				resetInternalStatus();
 				emit terminated(false);
@@ -332,7 +336,7 @@ bool KviHttpRequest::event(QEvent *e)
 			case KVI_THREAD_EVENT_MESSAGE:
 			{
 				KviStr * msg = ((KviThreadDataEvent<KviStr> *)e)->getData();
-				emit status(__tr_no_xgettext(msg->ptr()));
+				emit status(__tr2qs_no_xgettext(msg->ptr()));
 				delete msg;
 				return true;
 			}
@@ -387,16 +391,16 @@ bool KviHttpRequest::openFile()
 {
 	if(m_eProcessingType != StoreToFile)return true;
 
-	int iOpenFlags = IO_WriteOnly;
+	bool bAppend = false;
 
 	// take action when the file is existing
-	if(QFile::exists(m_szFileName))
+	if(KviFile::exists(m_szFileName))
 	{
 		switch(m_eExistingFileAction)
 		{
 			case Resume:
 			{
-				iOpenFlags = IO_WriteOnly | IO_Append;
+				bAppend = true;
 			}
 			break;
 			case RenameIncoming:
@@ -406,7 +410,7 @@ bool KviHttpRequest::openFile()
 				do {
 					i++;
 					m_szFileName = tmp + QString(".kvirnm-%1").arg(i);
-				} while(QFile::exists(m_szFileName));
+				} while(KviFile::exists(m_szFileName));
 			}
 			break;
 			case RenameExisting:
@@ -416,7 +420,7 @@ bool KviHttpRequest::openFile()
 				do {
 					i++;
 					tmp = m_szFileName + QString(".kvirnm-%1").arg(i);
-				} while(QFile::exists(tmp));
+				} while(KviFile::exists(tmp));
 				QDir d;
 				if(!d.rename(m_szFileName,tmp))
 				{
@@ -435,12 +439,12 @@ bool KviHttpRequest::openFile()
 		}
 	}
 
-	m_pFile = new QFile(m_szFileName);
+	m_pFile = new KviFile(m_szFileName);
 
-	if(!m_pFile->open(iOpenFlags))
+	if(!m_pFile->openForWriting(bAppend))
 	{
 		resetInternalStatus();
-		m_szLastError.sprintf(__tr2qs("Can't open file \"%s\" for writing"),m_szFileName.utf8().data());
+		KviQString::sprintf(m_szLastError,__tr2qs("Can't open file \"%Q\" for writing"),&m_szFileName);
 		emit terminated(false);
 		return false;
 	}
@@ -495,10 +499,11 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		return false;
 	}
 
-	KviStr tmp(KviStr::Format,__tr2qs("Received HTTP response: %s"),szResponse.ptr());
+	QString tmp;
+	KviQString::sprintf(tmp,__tr2qs("Received HTTP response: %s"),szResponse.ptr());
 
-	emit status(tmp.ptr());
-	emit receivedResponse(szResponse.ptr());
+	emit status(tmp);
+	emit receivedResponse(QString(szResponse.ptr()));
 
 	KviPtrList<KviStr> hlist;
 	hlist.setAutoDelete(true);
@@ -515,7 +520,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	}
 	if(szHeader.hasData())hlist.append(new KviStr(szHeader));
 
-	QAsciiDict<KviStr> hdr(11,false,true);
+	KviAsciiDict<KviStr> hdr(11,false,true);
 	hdr.setAutoDelete(true);
 
 	for(KviStr * s = hlist.first();s;s = hlist.next())
@@ -865,8 +870,17 @@ check_stream_length:
 
 
 
-KviHttpRequestThread::KviHttpRequestThread(KviHttpRequest * r,const char * szHost,const char * szIp,unsigned short uPort,const char * szPath,unsigned int uContentOffset,RequestMethod m,const QString &szPostData,bool bUseSSL)
-: KviSensitiveThread()
+KviHttpRequestThread::KviHttpRequestThread(
+	KviHttpRequest * r,
+	const QString &szHost,
+	const QString &szIp,
+	unsigned short uPort,
+	const QString & szPath,
+	unsigned int uContentOffset,
+	RequestMethod m,
+	const QString &szPostData,
+	bool bUseSSL
+) : KviSensitiveThread()
 {
 	m_pRequest = r;
 	m_szHost = szHost;
@@ -910,7 +924,7 @@ bool KviHttpRequestThread::processInternalEvents()
 	return true;
 }
 
-bool KviHttpRequestThread::failure(const char * error)
+bool KviHttpRequestThread::failure(const char *error)
 {
 	if(error)
 	{
@@ -931,7 +945,7 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 	{
 		if(!processInternalEvents())
 		{
-			return failure();
+			return failure(0);
 		}
 
 		fd_set writeSet;
@@ -964,15 +978,13 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 				if((err != EAGAIN) && (err != EINTR))
 #endif
 				{
-					KviStr tmp(KviStr::Format,__tr2qs("Select error: %s (errno=%d)"),
-						KviError::getDescription(KviError::translateSystemError(err)).utf8().data(),err);
-					return failure(tmp.ptr());
+					return failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 				}
 			}
 		}
 
 
-		if((time(0) - startTime) > iTimeoutInSecs)return failure(__tr2qs("Operation timed out"));
+		if((time(0) - startTime) > iTimeoutInSecs)return failure(__tr_no_lookup("Operation timed out"));
 
 		usleep(100000); // 1/10 sec
 	}
@@ -988,7 +1000,7 @@ bool KviHttpRequestThread::sslFailure()
 	{
 		failure(buffer.ptr());
 	} else {
-		failure(__tr2qs("Unexpected SSL error"));
+		failure(__tr_no_lookup("Unexpected SSL error"));
 	}
 #endif
 	return false;
@@ -998,15 +1010,15 @@ bool KviHttpRequestThread::connectToRemoteHost()
 {
 	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,0); //tcp
 	if(m_sock == KVI_INVALID_SOCKET)
-		return failure(__tr2qs("Failed to create the socket"));
+		return failure(__tr_no_lookup("Failed to create the socket"));
 
 	if(!kvi_socket_setNonBlocking(m_sock))
-		return failure(__tr2qs("Failed to enter non blocking mode"));
+		return failure(__tr_no_lookup("Failed to enter non blocking mode"));
 
 	sockaddr_in saddr;
 
-	if(!kvi_stringIpToBinaryIp(m_szIp.ptr(),&(saddr.sin_addr)))
-		return failure(__tr2qs("Invalid target address"));
+	if(!KviNetUtils::stringIpToBinaryIp(m_szIp,&(saddr.sin_addr)))
+		return failure(__tr_no_lookup("Invalid target address"));
 
 	saddr.sin_port = htons(m_uPort);
 	saddr.sin_family = AF_INET;
@@ -1016,9 +1028,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 		int err = kvi_socket_error();
 		if(!kvi_socket_recoverableConnectError(err))
 		{
-			KviStr tmp(KviStr::Format,__tr2qs("Connect error: %s (errno=%d)"),
-				KviError::getDescription(KviError::translateSystemError(err)).utf8().data(),err);
-			return failure(tmp.ptr());
+			return failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 		}
 	}
 
@@ -1035,9 +1045,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 		//failed
 		if(sockError > 0)sockError = KviError::translateSystemError(sockError);
 		else sockError = KviError_unknownError;
-		KviStr tmp(KviStr::Format,__tr2qs("Connect error: %s (errno=%d)"),
-			KviError::getDescription(sockError).utf8().data(),sockError);
-		return failure(tmp.ptr());
+		return failure(KviError::getUntranslatedDescription(sockError));
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -1045,9 +1053,9 @@ bool KviHttpRequestThread::connectToRemoteHost()
 	{
 		m_pSSL = new KviSSL();
 		if(!m_pSSL->initContext(KviSSL::Client))
-			return failure(__tr2qs("Failed to initialize the SSL context"));
+			return failure(__tr_no_lookup("Failed to initialize the SSL context"));
 		if(!m_pSSL->initSocket(m_sock))
-			return failure(__tr2qs("Failed to initialize the SSL connection"));
+			return failure(__tr_no_lookup("Failed to initialize the SSL connection"));
 		
 		for(;;)
 		{
@@ -1064,7 +1072,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 					if(!selectForWrite(60))return false;
 				break;
 				case KviSSL::RemoteEndClosedConnection:
-					return failure(__tr2qs("Remote end has closed the connection"));
+					return failure(__tr_no_lookup("Remote end has closed the connection"));
 				break;
 				case KviSSL::SSLError:
 					return sslFailure();
@@ -1076,7 +1084,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 					if(!kvi_socket_recoverableError(err))
 					{
 						// Declare problems :)
-						return failure(__tr2qs("Unrecoverable SSL error during handshake"));
+						return failure(__tr_no_lookup("Unrecoverable SSL error during handshake"));
 					} // else can recover ? (EAGAIN , EINTR ?) ... should select for read or for write 
 				}
 				break;
@@ -1143,7 +1151,7 @@ bool KviHttpRequestThread::sendBuffer(const char * buffer,int bufLen,int iTimeou
 						case KviSSL::SyscallError:
 							if(wrtn == 0)
 							{
-								return failure(__tr("Remote end has closed the connection"));
+								return failure(__tr_no_lookup("Remote end has closed the connection"));
 							} else {
 								int iSSLErr = m_pSSL->getLastError(true);
 								if(iSSLErr != 0)
@@ -1172,9 +1180,7 @@ handle_system_error:
 					if((err != EAGAIN) && (err != EINTR))
 #endif
 					{
-						KviStr tmp(KviStr::Format,__tr2qs("Write error: %s (errno=%d)"),
-								KviError::getDescription(KviError::translateSystemError(err)).utf8().data(),err);
-						return failure(tmp.ptr());
+						return failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 					}
 #ifdef COMPILE_SSL_SUPPORT
 				}
@@ -1184,7 +1190,7 @@ handle_system_error:
 
 		int diff = time(0) - startTime;
 		if(diff > iTimeoutInSecs)
-			return failure(__tr2qs("Operation timed out"));
+			return failure(__tr_no_lookup("Operation timed out"));
 
 		usleep(10000);
 	}
@@ -1229,9 +1235,7 @@ int KviHttpRequestThread::selectForReadStep()
 			if((err != EAGAIN) && (err != EINTR))
 #endif
 			{
-				KviStr tmp(KviStr::Format,__tr2qs("Select error: %s (errno=%d)"),
-					KviError::getDescription(KviError::translateSystemError(err)).utf8().data(),err);
-				failure(tmp.ptr());
+				failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 				return -1;
 			}
 		}
@@ -1265,7 +1269,7 @@ bool KviHttpRequestThread::selectForRead(int iTimeoutInSecs)
 
 		int diff = time(0) - startTime;
 		if(diff > iTimeoutInSecs)
-			return failure(__tr2qs("Operation timed out (while selecting for read)"));
+			return failure(__tr_no_lookup("Operation timed out (while selecting for read)"));
 
 		usleep(100000); // 1/10 sec
 	}
@@ -1333,9 +1337,7 @@ bool KviHttpRequestThread::readDataStep()
 #endif
 			{
 				// yes...read error
-				KviStr tmp(KviStr::Format,__tr2qs("Read error: %s (errno=%d)"),
-						KviError::getDescription(KviError::translateSystemError(err)).utf8().data(),err);
-				return failure(tmp.ptr());
+				return failure(KviError::getUntranslatedDescription(KviError::translateSystemError(err)));
 			}
 			return selectForRead(120); // EINTR or EAGAIN...transient problem
 		} else {
@@ -1377,7 +1379,7 @@ void KviHttpRequestThread::runInternal()
 #ifndef COMPILE_SSL_SUPPORT
 	if(m_bUseSSL)
 	{
-		failure(__tr2qs("This KVIrc executable has no SSL support"));
+		failure(__tr_no_lookup("This KVIrc executable has no SSL support"));
 		return;
 	}
 #endif
@@ -1401,27 +1403,25 @@ void KviHttpRequestThread::runInternal()
 				"Connection: Close\r\n" \
 				"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
 				"Accept: */*\r\n",
-				szMethod.ptr(),m_szPath.ptr(),m_szHost.ptr());
+				szMethod.ptr(),KviQString::toUtf8(m_szPath).data(),KviQString::toUtf8(m_szHost).data());
 
 	if(m_uContentOffset > 0)
 		szRequest.append(KviStr::Format,"Range: bytes=%u-\r\n",m_uContentOffset);
-
-	QCString szPostData = m_szPostData.utf8();
 
 	if(m_eRequestMethod == Post)
 	{
 		szRequest.append(KviStr::Format,"Content-Type: application/x-www-form-urlencoded\r\n" \
 				"Content-Length: %u\r\n" \
 				"Cache-control: no-cache\r\n" \
-				"Pragma: no-cache\r\n",szPostData.length());
+				"Pragma: no-cache\r\n",m_szPostData.length());
 	}
 
 	szRequest += "\r\n";
 
 	if(m_eRequestMethod == Post)
 	{
-		if(!szPostData.isEmpty())
-			szRequest.append(szPostData.data());
+		if(!m_szPostData.isEmpty())
+			szRequest.append(m_szPostData);
 		szRequest += "\r\n";
 	}
 
@@ -1430,7 +1430,7 @@ void KviHttpRequestThread::runInternal()
 	if(!sendBuffer(szRequest.ptr(),szRequest.len(),60))return;
 
 	// now loop reading data
-	postEvent(m_pRequest,new KviThreadDataEvent<KviStr>(KVI_HTTP_REQUEST_THREAD_EVENT_REQUESTSENT,new KviStr(szRequest)));
+	postEvent(m_pRequest,new KviThreadDataEvent<QString>(KVI_HTTP_REQUEST_THREAD_EVENT_REQUESTSENT,new QString(szRequest)));
 
 	for(;;)
 	{

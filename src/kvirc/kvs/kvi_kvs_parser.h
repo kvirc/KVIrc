@@ -28,7 +28,7 @@
 #include "kvi_qstring.h"
 #include "kvi_list.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 class KviKvsTreeNode;
 
@@ -64,7 +64,7 @@ private:
 	const QChar              * m_pBuffer;        // the local pointer to the beginning of the buffer
 	const QChar              * m_ptr;            // the parsing pointer
 	// parsing state
-	QDict<QString>           * m_pGlobals;       // the dict of the vars declared with global in this script
+	KviDict<QString>           * m_pGlobals;       // the dict of the vars declared with global in this script
 	int                        m_iFlags;         // the current parsing flags
 	bool                       m_bError;         // error(..) was called ?
 	// this stuff is used only for reporting errors and warnings

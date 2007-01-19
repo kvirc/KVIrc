@@ -31,7 +31,7 @@
 #include "kvi_userlistview.h"
 #include "kvi_themedlabel.h"
 
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qgrid.h> 
 
 class KviConsole;

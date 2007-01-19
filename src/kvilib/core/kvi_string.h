@@ -37,15 +37,8 @@
 #include <qglobal.h>
 #include <qstring.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <q3cstring.h> // includes <qbytearray.h>
-	#define _QCString QByteArray
-#else
-	// this is dead in Qt 4.x
-	#include <qcstring.h>
-	#define _QCString QCString
-#endif
 
+#include "kvi_qcstring.h"
 #include "kvi_inttypes.h"
 #include "kvi_heapobject.h"
 #include "kvi_stdarg.h"
@@ -156,7 +149,7 @@ public:
 	// Safe even if the QString is null.
 	KviStr(const QString &str);
 
-	KviStr(const _QCString &str);
+	KviStr(const KviQCString &str);
 
 	// Fill sonstructor.
 	// Creates a string long fillLen characters filled with character c.<br>
@@ -265,7 +258,7 @@ public:
 	KviStr & operator=(const char *str);         // str can be NULL here
 	KviStr & operator=(char c);                  // 2 bytes allocated ,m_len = 1
 	KviStr & operator=(const QString &str);
-	KviStr & operator=(const _QCString &str);
+	KviStr & operator=(const KviQCString &str);
 
 	// Append operators
 	KviStr & operator+=(const KviStr &str)      { append(str); return (*this);          };

@@ -4,7 +4,7 @@
 //   Creation date : Fri Dec 25 1998 18:26:48 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1998-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1998-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,20 +25,17 @@
 #define __KVILIB__
 
 
-#define _KVI_DEBUG_CHECK_RANGE_
-#include "kvi_debug.h"
-
 #define _KVI_FILEUTLIS_CPP_
 #include "kvi_fileutils.h"
 #include "kvi_qstring.h"
-
+#include "kvi_file.h"
 #include "kvi_malloc.h"
 
 #include <qdir.h>
-#include <qfile.h>
 #include <qfileinfo.h>
 #include <qglobal.h>
 #include <qtextcodec.h>
+#include <qtextstream.h>
 
 
 namespace KviFileUtils
@@ -103,8 +100,7 @@ namespace KviFileUtils
 	bool makeDir(const QString &szPath)
 	{
 		QDir d;
-		szPath.stripWhiteSpace();
-		QString dir = szPath;
+		QString dir = KviQString::trimmed(szPath);
 		adjustFilePath(dir);
 		QString createdDir;
 
@@ -126,7 +122,7 @@ namespace KviFileUtils
 			{
 				if(!d.mkdir(createdDir))
 				{
-					debug("Can't create directory %s",createdDir.utf8().data());
+					debug("Can't create directory %s",KviQString::toUtf8(createdDir).data());
 					return false;
 				}
 			}
@@ -156,10 +152,10 @@ namespace KviFileUtils
 
 	bool copyFile(const QString &szSrc,const QString &szDst)
 	{
-		QFile f1(szSrc);
-		if(!f1.open(IO_ReadOnly))return false;
-		QFile f2(szDst);
-		if(!f2.open(IO_WriteOnly|IO_Truncate))
+		KviFile f1(szSrc);
+		if(!f1.openForReading())return false;
+		KviFile f2(szDst);
+		if(!f2.openForWriting())
 		{
 			f1.close();
 			return false;
@@ -190,8 +186,8 @@ namespace KviFileUtils
 
 	bool loadFile(const QString &szPath,QString &szBuffer,bool bUtf8)
 	{
-		QFile f(szPath);
-		if(!f.open(IO_ReadOnly))return false;
+		KviFile f(szPath);
+		if(!f.openForReading())return false;
 		if(bUtf8)
 		{
 			QByteArray ba = f.readAll();
@@ -218,7 +214,7 @@ namespace KviFileUtils
 		if(szPath.startsWith("\\"))szPath.prepend("C:");
 #else
 		szPath.replace('\\',"/");
-		while(szPath.find("//") != -1)szPath.replace("//","/");
+		while(KviQString::find(szPath,"//") != -1)szPath.replace("//","/");
 		// deal with windows paths
 		if((szPath.length() > 2) && (szPath.at(0) != QChar('/')))
 		{
@@ -227,7 +223,11 @@ namespace KviFileUtils
 				szPath.remove(0,2);
 			}
 		}
+#ifdef COMPILE_USE_QT4
+		szPath=QDir::cleanPath(szPath);
+#else
 		szPath=QDir::cleanDirPath(szPath);
+#endif
 #endif
 		
 	}
@@ -260,7 +260,7 @@ namespace KviFileUtils
 	bool removeFile(const QString &szPath)
 	{
 		QDir d;
-		return d.remove(szPath,true);
+		return d.remove(szPath);
 	}
 
 	bool removeFile(const char* path)
@@ -314,12 +314,9 @@ namespace KviFileUtils
 	
 	bool writeFile(const QString &szPath,const QString &szData,bool bAppend)
 	{
-		QFile f(szPath);
-		int iFlags = IO_WriteOnly;
-		if(bAppend)iFlags |= IO_Append;
-		else iFlags |= IO_Truncate;
-		if(!f.open(iFlags))return false;
-		QCString szTmp = szData.utf8();
+		KviFile f(szPath);
+		if(!f.openForWriting(bAppend))return false;
+		KviQCString szTmp = KviQString::toUtf8(szData);
 		if(!szTmp.data())return true;
 		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((int)(szTmp.length())))return false;
 		return true;
@@ -333,12 +330,9 @@ namespace KviFileUtils
 
 	bool writeFileLocal8Bit(const QString &szPath,const QString &szData,bool bAppend)
 	{
-		QFile f(szPath);
-		int iFlags = IO_WriteOnly;
-		if(bAppend)iFlags |= IO_Append;
-		else iFlags |= IO_Truncate;
-		if(!f.open(iFlags))return false;
-		QCString szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
+		KviFile f(szPath);
+		if(!f.openForWriting(bAppend))return false;
+		KviQCString szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
 		if(!szTmp.data())return true;
 		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((int)(szTmp.length())))return false;
 		return true;
@@ -352,8 +346,8 @@ namespace KviFileUtils
 
 	bool readFile(const QString &szPath,QString &szBuffer,unsigned int uMaxSize)
 	{
-		QFile f(szPath);
-		if(!f.open(IO_ReadOnly))return false;
+		KviFile f(szPath);
+		if(!f.openForReading())return false;
 		if(f.size() < 1)
 		{
 			szBuffer = "";
@@ -383,7 +377,11 @@ namespace KviFileUtils
 	
 	QString extractFileName(const QString &szFileNameWithPath)
 	{
+#ifdef COMPILE_USE_QT4
+		return QFileInfo(szFileNameWithPath).absoluteFilePath();
+#else
 		return QFileInfo(szFileNameWithPath).absFilePath();
+#endif
 	}
 
 	bool readLine(QFile * f,QString &szBuffer,bool bUtf8)
@@ -412,144 +410,8 @@ namespace KviFileUtils
 	}
 };
 
-//================ kvi_askFor*Name ============//
-//
-//	THIS STUFF IS DEAD: NOBODY USES IT
-//#include <qfiledialog.h>
-//#warning "These functions should die in favr of g_pApp->askFor*Name"
-//
-//QString kvi_askForDirectoryName(const char *basePath)
-//{
-//	return QFileDialog::getExistingDirectory(basePath);
-//}
-//
-//QString kvi_askForOpenFileName(const char *basePath,const char *filter)
-//{
-//	return QFileDialog::getOpenFileName(basePath,filter);
-//}
-//
-//QStringList kvi_askForOpenFileNames(const char *basePath,const char *filter)
-//{
-//	return QFileDialog::getOpenFileNames(filter,basePath);
-//}
-//
-//QString kvi_askForSaveFileName(const char *baseFileName)
-//{
-//	return QFileDialog::getSaveFileName(baseFileName);
-//}
-//
-
-void kvi_adjustFilePath(KviStr & path)
-{
-#ifdef COMPILE_ON_WINDOWS
-	path.replaceAll("/","\\");
-	while(path.findFirstIdx("\\\\") != -1)path.replaceAll("\\\\","\\");
-	if(path.firstCharIs('\\'))path.prepend("C:"); // use the default drive
-#else
-	path.replaceAll("\\","/");
-	while(path.findFirstIdx("//") != -1)path.replaceAll("//","/");
-	if((*(path.ptr()) != '/') && (path.len() > 2))
-	{
-		if((*(path.ptr() + 1) == ':') && (*(path.ptr() + 2) == '/'))
-		{
-			path.cutLeft(2);
-		}
-	}
-#endif
-}
-
-void kvi_adjustFilePath(QString & path)
-{
-#ifdef COMPILE_ON_WINDOWS
-	path.replace("/","\\");
-	while(path.find("\\\\") != -1)path.replace("\\\\","\\");
-	if( path[0]== ('\\') )path.prepend("C:"); // use the default drive
-#else
-	path.replace("\\","/");
-	while(path.find("//") != -1)path.replace("//","/");
-	if((*(path.utf8().data()) != '/') && (path.length() > 2))
-	{
-		if((*(path.utf8().data() + 1) == ':') && (*(path.utf8().data() + 2) == '/'))
-		{
-			path = path.right(path.length()-2);
-		}
-	}
-#endif
-}
-
-static Q_UINT32 replacetable[8] = 
-{
-	0xFFFFFFFF,
-	0xD4008424,
-	0x10000000,
-	0x10000000,
-	0xFFFFFFFF,
-	0xFFFFFFFF,
-	0xFFFFFFFF,
-	0xFFFFFFFF
-};
-
 static char hexchars[16] = { '0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , 'A' , 'B' , 'C' , 'D' , 'E' , 'F' };
 
-/*void kvi_encodeFileName(KviStr & path)
-{
-	char * aux = path.ptr();
-
-	char * repl = (char *)kvi_malloc((sizeof(char) * path.len() * 3) + 1);
-
-	char * dst = repl;
-
-	while(*aux)
-	{
-		//if(replacetable[*((unsigned char *)aux) / 32] & ((Q_UINT32)(1 << (*((unsigned char *)aux) % 32))))
-		if( (*aux)<32 || !QChar(*aux).isPrint() )
-		{
-			*dst++ = '%';
-			*dst++ = hexchars[*((unsigned char *)aux) >> 4];
-			*dst++ = hexchars[*((unsigned char *)aux) & 15];
-		} else {
-			*dst++ = tolower(*aux);
-		}
-
-		aux++;
-	}
-
-	*dst = '\0';
-
-	path = repl;
-
-	kvi_free(repl);
-}
-
-void kvi_encodeFileName(QString & path)
-{
-	char * aux = path.utf8().data();
-
-	char * repl = (char *)kvi_malloc((sizeof(char) * path.length() * 3) + 1);
-
-	char * dst = repl;
-
-	while(*aux)
-	{
-		//if(replacetable[*((unsigned char *)aux) / 32] & ((Q_UINT32)(1 << (*((unsigned char *)aux) % 32))))
-		if( (*aux)<32 || !QChar(*aux).isPrint() )
-		{
-			*dst++ = '%';
-			*dst++ = hexchars[*((unsigned char *)aux) >> 4];
-			*dst++ = hexchars[*((unsigned char *)aux) & 15];
-		} else {
-			*dst++ = tolower(*aux);
-		}
-
-		aux++;
-	}
-
-	*dst = '\0';
-
-	path = repl;
-
-	kvi_free(repl);
-}*/
 
 void kvi_encodeFileName(KviStr & path)
 {
@@ -565,7 +427,7 @@ void kvi_encodeFileName(QString & path)
 	for(int i=0;i<src.length();i++)
 	{
 		QChar cur=src[i];
-		if( ! (cur.isLetter() || cur.isDigit() || cur==" " || cur=="_" || cur=="." || cur=="#" || cur=="%") )
+		if( ! (cur.isLetter() || cur.isDigit() || cur==' ' || cur=='_' || cur=='.' || cur=='#' || cur=='%') )
 		{
 			if(cur.row()!=0)
 			{
@@ -576,7 +438,8 @@ void kvi_encodeFileName(QString & path)
 			path+='%';
 			path+=hexchars[cur.cell() >> 4];
 			path+=hexchars[cur.cell() & 15];
-		} else if (cur=="%"){
+		} else if (cur=='%')
+		{
 			path+="%%";
 		} else {
 			path+=cur;
@@ -588,7 +451,6 @@ void kvi_encodeFileName(QString & path)
 
 bool kvi_isAbsolutePath(const char *path)
 {
-	__range_valid(path);
 	if(*path == '/')return true;
 	if(isalpha(*path))
 	{
@@ -597,87 +459,6 @@ bool kvi_isAbsolutePath(const char *path)
 	return false;
 }
 
-//============ kvi_directoryExists ================//
-
-/*bool kvi_directoryExists(const char *path)
-{
-	__range_valid(path);
-	QFileInfo f(QTextCodec::codecForLocale()->fromUnicode(path));
-	return (f.exists() && f.isDir());
-}*/
-
-//============ kvi_fileExists ================//
-
-/*bool kvi_fileExists(const char *path)
-{
-	__range_valid(path);
-	QFileInfo f(QTextCodec::codecForLocale()->fromUnicode(path));
-	return (f.exists() && f.isFile());
-}*/
-
-/*bool kvi_removeFile(const char * path)
-{
-	__range_valid(path);
-	QDir d;
-	return d.remove(QTextCodec::codecForLocale()->fromUnicode(path),true);
-}*/
-
-/*
-bool kvi_removeDir(const char * path)
-{
-	__range_valid(path);
-	QDir d;
-	return d.rmdir(path);
-}
-*/
-
-//============= kvi_fileIsReadable =============//
-
-/*bool kvi_fileIsReadable(const char *path)
-{
-	__range_valid(path);
-	QFileInfo f(QTextCodec::codecForLocale()->fromUnicode(path));
-	return (f.exists() && f.isFile() && f.isReadable());
-}*/
-
-//================ kvi_makeDir ================//
-/*
-bool kvi_makeDir(const char *path)
-{
-	__range_valid(path);
-	QDir d;
-	KviStr dir(path);
-	dir.stripWhiteSpace();
-	kvi_adjustFilePath(dir);
-	KviStr createdDir("");
-#ifndef COMPILE_ON_WINDOWS
-	dir.stripLeft(KVI_PATH_SEPARATOR_CHAR);
-#else
-	int idx = dir.findFirstIdx(":");
-	if(idx == 1)
-	{
-		KviStr drive = dir.left(2);
-		dir.cutLeft(2);
-		createdDir = drive;
-	}
-	dir.stripLeft(KVI_PATH_SEPARATOR_CHAR);
-#endif
-	while(dir.hasData())
-	{
-		createdDir+=KVI_PATH_SEPARATOR;
-		createdDir+=dir.getToken(KVI_PATH_SEPARATOR_CHAR);
-		if(!kvi_directoryExists(createdDir.m_ptr))
-		{
-			if(!d.mkdir(createdDir.m_ptr)){
-				debug("Can't create directory %s",createdDir.m_ptr);
-				return false;
-			}
-		}
-		dir.stripLeft(KVI_PATH_SEPARATOR_CHAR);
-	}
-	return true;
-}
-*/
 //=================== kvi_readLine =====================//
 
 bool kvi_readLine(QFile *f,KviStr &str)
@@ -688,98 +469,4 @@ bool kvi_readLine(QFile *f,KviStr &str)
 	return szBuff.isNull() ? 1 : 0;
 }
 
-//==================== kvi_readStrippedLine =====================//
 
-bool kvi_readStrippedLine(QFile *f,KviStr &str)
-{
-	bool bRet = kvi_readLine(f,str);
-	str.stripWhiteSpace();
-	return bRet;
-}
-
-//==================== kvi_readFirstNonEmptyStrippedLine =========================//
-
-// FIXME: #warning "This is used only by kvi_config.cpp (1 occurence) and opw_servers.cpp (1 occurence)"
-// FIXME: #warning "Maybe remove it ? (It is a bad concept at all)"
-
-bool kvi_readFirstNonEmptyStrippedLine(QFile *f,KviStr &str)
-{
-	bool bContinue;
-	do{
-		bContinue = kvi_readStrippedLine(f,str);
-	} while(bContinue && str.isEmpty());
-	return bContinue;
-}
-
-//=================== kvi_writeLine =======================//
-
-bool kvi_writeLine(QFile *f,const char *line)
-{
-	bool bRet = (f->writeBlock(line,(Q_ULONG)strlen(line)) != -1);
-	return bRet ? (f->putch('\n') != -1) : false;
-}
-
-//=================== kvi_loadFile =======================//
-
-/*bool kvi_loadFile(const char *path,KviStr &buffer)
-{
-	QFile f(QTextCodec::codecForLocale()->fromUnicode(path));
-	if(!f.open(IO_ReadOnly))return false;
-	buffer = "";
-	KviStr tmp;
-	while(kvi_readLine(&f,tmp))
-	{
-		buffer.append(tmp);
-		buffer.append('\n'); // kvi_readLine returned true...last char was a newline
-	}
-	// kvi_readLine returned false , no ending newline encountered
-	// but tmp may still contain some data
-	if(tmp.hasData())buffer.append(tmp);
-	return true;
-}*/
-
-/*bool kvi_writeFile(const char *path,KviStr &buffer,bool bAppend)
-{
-	QFile f(QTextCodec::codecForLocale()->fromUnicode(path));
-	int iFlags = IO_WriteOnly;
-	if(bAppend)iFlags |= IO_Append;
-	else iFlags |= IO_Truncate;
-	if(!f.open(iFlags))return false;
-	if(f.writeBlock(buffer.ptr(),buffer.len()) != buffer.len())return false;
-	f.close();
-	return true;
-}*/
-
-/*
-bool kvi_copyFile(const char *src,const char *dst)
-{
-	QFile f1(src);
-	if(!f1.open(IO_ReadOnly))return false;
-	QFile f2(dst);
-	if(!f2.open(IO_WriteOnly|IO_Truncate)){
-		f1.close();
-		return false;
-	}
-	char buffer[1024];
-	while(!f1.atEnd())
-	{
-		int len = f1.readBlock(buffer,1024);
-		if(len <= 0)
-		{
-			f1.close();
-			f2.close();
-			return false; //"serious error"
-		}
-		f2.writeBlock(buffer,len);
-	}
-	f1.close();
-	f2.close();
-	return true;
-}
-
-bool kvi_renameFile(const char *src,const char *dst)
-{
-	QDir d;
-	return d.rename(QString(src),QString(dst));
-}
-*/

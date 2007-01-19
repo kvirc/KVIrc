@@ -365,10 +365,10 @@ KviAliasNamespaceListViewItem * KviAliasEditor::createFullNamespaceItem(const QS
 
 void KviAliasEditor::oneTimeSetup()
 {
-	QDict<KviKvsScript> * a = KviKvsAliasManager::instance()->aliasDict();
+	KviDict<KviKvsScript> * a = KviKvsAliasManager::instance()->aliasDict();
 	if(!a)return;
 
-	QDictIterator<KviKvsScript> it(*a);
+	KviDictIterator<KviKvsScript> it(*a);
 
 	KviAliasListViewItem * item;
 	while(it.current())

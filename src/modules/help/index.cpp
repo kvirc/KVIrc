@@ -60,7 +60,7 @@
 
 #include <qstringlist.h>
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 #include <qapplication.h>
 
@@ -337,7 +337,7 @@ void Index::writeDict()
 
 {
 
-    QDictIterator<Entry> it( dict );
+    KviDictIterator<Entry> it( dict );
 
     QFile f( dictFile );
 
@@ -600,7 +600,7 @@ QStringList Index::getWildcardTerms( const QString &term )
 
 
 
-    QDictIterator<Entry> it( dict );
+    KviDictIterator<Entry> it( dict );
 
     for( ; it.current(); ++it ) {
 

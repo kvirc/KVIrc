@@ -46,7 +46,7 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtooltip.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qpushbutton.h>
 #include <qvbox.h>
 
@@ -1059,10 +1059,10 @@ void KviPopupEditor::oneTimeSetup()
 	if(m_bOneTimeSetupDone)return;
 	m_bOneTimeSetupDone = true;
 
-	const QDict<KviKvsPopupMenu> * a = KviKvsPopupManager::instance()->popupDict();
+	const KviDict<KviKvsPopupMenu> * a = KviKvsPopupManager::instance()->popupDict();
 	if(!a)return;
 
-	QDictIterator<KviKvsPopupMenu> it(*a);
+	KviDictIterator<KviKvsPopupMenu> it(*a);
 
 	KviMenuListViewItem * item;
 
@@ -1247,7 +1247,7 @@ void KviPopupEditor::commit()
 	KviMenuListViewItem * it = (KviMenuListViewItem *)m_pListView->firstChild();
 
 	// Copy the original popup dict
-	QDict<KviKvsPopupMenu> copy(*(KviKvsPopupManager::instance()->popupDict()));
+	KviDict<KviKvsPopupMenu> copy(*(KviKvsPopupManager::instance()->popupDict()));
 	copy.setAutoDelete(false);
 
 	while(it)
@@ -1262,7 +1262,7 @@ void KviPopupEditor::commit()
 
 	// the remaining elements in the copy need to be removed from
 	// the "new" dictionary (they are no longer used)
-	QDictIterator<KviKvsPopupMenu> iter(copy);
+	KviDictIterator<KviKvsPopupMenu> iter(copy);
 
 	while(iter.current())
 	{

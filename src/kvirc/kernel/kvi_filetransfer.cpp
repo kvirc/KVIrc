@@ -88,7 +88,7 @@ void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateM
 {
 	if(!m_pTransferWindow)
 	{
-		QDict<QVariant> d(7,false);
+		KviDict<QVariant> d(7,false);
 		d.setAutoDelete(true);
 		d.replace("bCreateMinimized",new QVariant(bCreateMinimized,0));
 		d.replace("bNoRaise",new QVariant(bNoRaise,0));

@@ -55,7 +55,7 @@ static bool action_kvs_cmd_list(KviKvsModuleCommandCall * c)
 {
 	KviWindow * pOut = c->window();
 
-	QDictIterator<KviAction> it(*(KviActionManager::instance()->actions()));
+	KviDictIterator<KviAction> it(*(KviActionManager::instance()->actions()));
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())

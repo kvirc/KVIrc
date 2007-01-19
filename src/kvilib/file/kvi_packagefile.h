@@ -26,9 +26,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include <qdict.h>
+#include "kvi_dict.h"
+#include "kvi_qcstring.h" // QByteArray anyway
 #include <qobject.h>
-#include <qcstring.h> // QByteArray
 #include "kvi_list.h"
 
 class KviFile;
@@ -48,15 +48,15 @@ public:
 	virtual ~KviPackageIOEngine();
 protected:
 	QString m_szLastError;
-	QDict<QString> * m_pStringInfoFields;
-	QDict<QByteArray> * m_pBinaryInfoFields;
+	KviDict<QString> * m_pStringInfoFields;
+	KviDict<QByteArray> * m_pBinaryInfoFields;
 	QProgressDialog * m_pProgressDialog;
 	QLabel * m_pProgressDialogLabel;
 public:
 	const QString & lastError(){ return m_szLastError; };
 	void setLastError(const QString &szLastError){ m_szLastError = szLastError; };
-	QDict<QString> * stringInfoFields(){ return m_pStringInfoFields; };
-	QDict<QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
+	KviDict<QString> * stringInfoFields(){ return m_pStringInfoFields; };
+	KviDict<QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
 protected:
 	void showProgressDialog(const QString &szCaption,int iTotalSteps);
 	void hideProgressDialog();

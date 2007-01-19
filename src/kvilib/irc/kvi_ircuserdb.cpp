@@ -28,6 +28,7 @@
 #include "kvi_debug.h"
 #include "kvi_ircuserdb.h"
 #include "kvi_mirccntrl.h"
+#include "kvi_qstring.h"
 
 
 KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
@@ -44,13 +45,14 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 void KviIrcUserEntry::setRealName(const QString &rn)
 { 
 	m_szRealName = rn;
-	m_szRealName = m_szRealName.stripWhiteSpace();
+	m_szRealName = KviQString::trimmed(m_szRealName);
 	if(m_szRealName.length()>=3)
 	{
-		if( (m_szRealName[0].latin1()==KVI_TEXT_COLOR) && (m_szRealName[2].latin1()==KVI_TEXT_RESET) )
+		if( (m_szRealName[0].unicode()==KVI_TEXT_COLOR) && (m_szRealName[2].unicode()==KVI_TEXT_RESET) )
 		{
-			switch(m_szRealName[1].latin1()){
-				case '1':
+			switch(m_szRealName[1].unicode())
+			{
+				case '1': // hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
 					setGender(Male);
 					break;
 				case '2':
@@ -92,7 +94,7 @@ KviIrcUserDataBase::KviIrcUserDataBase()
 	// the performance increase since kvirc versions < 3.0.0
 	// is really big anyway (there was a linear list instead of a hash!!!)
 
-	m_pDict = new QDict<KviIrcUserEntry>(4001,false);
+	m_pDict = new KviDict<KviIrcUserEntry>(4001,false);
 	m_pDict->setAutoDelete(true);
 }
 
@@ -104,7 +106,7 @@ KviIrcUserDataBase::~KviIrcUserDataBase()
 void KviIrcUserDataBase::clear()
 {
 	delete m_pDict;
-	m_pDict = new QDict<KviIrcUserEntry>(4001,false);
+	m_pDict = new KviDict<KviIrcUserEntry>(4001,false);
 	m_pDict->setAutoDelete(true);
 }
 

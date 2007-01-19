@@ -315,7 +315,7 @@ public:
 	~KviVoiceConference();
 public:
 	KviPtrList<KviVoiceLink> * m_pLinks;
-	QDict<KviVoiceLink> * 
+	KviDict<KviVoiceLink> * 
 	SOCKET m_hUdpSocket;
 	QString m_szLastError;
 	

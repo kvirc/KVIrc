@@ -618,18 +618,6 @@ void KviSetupWizard::chooseIncomingPath()
 	}
 }
 
-/*
-void KviSetupWizard::directorySelected(const QString &szDir)
-{
-	KviStr szDirectory = szDir;
-	kvi_adjustFilePath(szDirectory);
-	szDirectory.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
-	szDirectory.append(KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME);
-	szDirectory.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
-	kvi_adjustFilePath(szDirectory);
-	m_pDirectoryEdit->setText(szDirectory.ptr());
-}
-*/
 
 void KviSetupWizard::makeLink()
 {

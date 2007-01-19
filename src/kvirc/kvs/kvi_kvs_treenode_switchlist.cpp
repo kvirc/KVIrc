@@ -65,7 +65,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 	}
 	if(m_pLongSwitchDict)
 	{
-		QDictIterator<KviKvsTreeNodeData> it(*m_pLongSwitchDict);
+		KviDictIterator<KviKvsTreeNodeData> it(*m_pLongSwitchDict);
 		while(it.current())
 		{
 			QString tmp = prefix;
@@ -94,7 +94,7 @@ void KviKvsTreeNodeSwitchList::addLong(const QString &szLongKey,KviKvsTreeNodeDa
 {
 	if(!m_pLongSwitchDict)
 	{
-		m_pLongSwitchDict = new QDict<KviKvsTreeNodeData>(11);
+		m_pLongSwitchDict = new KviDict<KviKvsTreeNodeData>(11);
 		m_pLongSwitchDict->setAutoDelete(true);
 	}
 
@@ -124,7 +124,7 @@ bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchLis
 	}
 	if(m_pLongSwitchDict)
 	{
-		QDictIterator<KviKvsTreeNodeData> it(*m_pLongSwitchDict);
+		KviDictIterator<KviKvsTreeNodeData> it(*m_pLongSwitchDict);
 		while(KviKvsTreeNodeData * d = it.current())
 		{
 			KviKvsVariant * v = new KviKvsVariant();

@@ -1,13 +1,13 @@
-#ifndef _KVI_TAL_FILEDIALOG_H_
-#define _KVI_TAL_FILEDIALOG_H_
+#ifndef _KVI_TAL_FILEDIALOG_QT4_H_
+#define _KVI_TAL_FILEDIALOG_QT4_H_
 
 //=============================================================================
 //
-//   File : kvi_tal_filedialog.h
-//   Creation date : Thu Sep 11 2003 04:41:08 by Szymon Stefanek
+//   File : kvi_tal_filedialog_qt4.h
+//   Creation date : Fri 19 Jan 2007 02:17:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,16 +25,22 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
+#include <qfiledialog.h>
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_filedialog_qt4.h"
-#else
-	#ifdef COMPILE_KDE_SUPPORT
-		#include "kvi_tal_filedialog_kde.h"
-	#else
-		#include "kvi_tal_filedialog_qt.h"
-	#endif
-#endif
+class KVILIB_API KviTalFileDialog : public QFileDialog
+{
+	Q_OBJECT
+public:
+	KviTalFileDialog(const QString &dirName,const QString &filter = QString::null,QWidget *parent = 0,const char *name = 0,bool modal = FALSE);
+	~KviTalFileDialog();
+public:
+	enum FileMode { AnyFile, ExistingFile, ExistingFiles, Directory, DirectoryOnly };
 
-#endif // _KVI_TAL_FILEDIALOG_H_
+	void setFileMode(FileMode m);
+	void setDirectory(const QString &szDirectory);
+
+	static QString getExistingDirectoryPath(const QString &dir = QString::null,const QString &caption = QString::null,QWidget *parent = 0)
+		{ return getExistingDirectory(parent,caption,dir); };
+};
+
+#endif // _KVI_TAL_FILEDIALOG_QT_H_

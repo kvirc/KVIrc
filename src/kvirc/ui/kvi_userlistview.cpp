@@ -190,7 +190,7 @@ KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* butto
 {
 	setAutoDelete(0);
 	m_pKviWindow  = pWnd;
-	m_pEntryDict  = new QDict<KviUserListEntry>(dictSize,false);
+	m_pEntryDict  = new KviDict<KviUserListEntry>(dictSize,false);
 	m_pEntryDict->setAutoDelete(true);
 
 	m_pUsersLabel = new QLabel(this,"userslabel");
@@ -944,7 +944,7 @@ void KviUserListView::appendSelectedNicknames(QString &buffer)
 }
 
 void KviUserListView::select(const QString& nick){
-	QDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		((KviUserListEntry *)it.current())->m_bSelected = false;
@@ -1084,7 +1084,7 @@ void KviUserListView::updateUsersLabel()
 void KviUserListView::partAllButOne(const QString &whoNot)
 {
 	QStringList ll;
-	QDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		if(!KviQString::equalCI(whoNot,it.currentKey()))
@@ -1099,7 +1099,7 @@ void KviUserListView::partAllButOne(const QString &whoNot)
 
 void KviUserListView::removeAllEntries()
 {
-	QDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		m_pIrcUserDataBase->removeUser(it.currentKey(),

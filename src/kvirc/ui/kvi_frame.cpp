@@ -1045,7 +1045,7 @@ void KviFrame::fillToolBarsPopup(QPopupMenu * p)
 	}
 
 	// FIXME: Should this display "Hide %1" when the toolbar is already visible ?
-	QDictIterator<KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviDictIterator<KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
 	if(it2.current())
 	{
 		if(cnt > 0)p->insertSeparator();

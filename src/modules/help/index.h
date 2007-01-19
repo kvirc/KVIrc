@@ -30,7 +30,7 @@
 #define INDEX_H
 
 #include <qstringlist.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qdatastream.h>
 #include <qobject.h>
 
@@ -97,8 +97,8 @@ private:
     void buildMiniDict( const QString& );
     QStringList docList;
     QStringList titleList;
-    QDict<Entry> dict;
-    QDict<PosEntry> miniDict;
+    KviDict<Entry> dict;
+    KviDict<PosEntry> miniDict;
     uint wordNum;
     QString docPath;
     QString dictFile, docListFile;

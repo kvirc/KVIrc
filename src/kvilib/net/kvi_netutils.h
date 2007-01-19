@@ -93,6 +93,7 @@ namespace KviNetUtils
 #ifdef COMPILE_IPV6_SUPPORT
 	KVILIB_API bool isValidStringIp_V6(const QString &szStringIp);
 	KVILIB_API bool stringIpToBinaryIp_V6(const QString &szStringIp,struct in6_addr * address);
+	KVILIB_API bool binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer);
 #endif
 	KVILIB_API bool isRoutableIp(const char * ipaddr);
 	KVILIB_API bool isRoutableIpString(const QString &szIpString);

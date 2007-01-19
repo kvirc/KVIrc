@@ -58,7 +58,7 @@ KviDccBroker::KviDccBroker()
 	m_pDccWindowList = new KviPtrList<KviWindow>;
 	m_pDccWindowList->setAutoDelete(false);
 
-	m_pZeroPortTags = new QDict<KviDccZeroPortTag>(17);
+	m_pZeroPortTags = new KviDict<KviDccZeroPortTag>(17);
 	m_pZeroPortTags->setAutoDelete(true);
 }
 

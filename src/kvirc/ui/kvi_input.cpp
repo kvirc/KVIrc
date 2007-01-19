@@ -816,8 +816,8 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		g_pInputPopup->insertSeparator();
 		m_pIconMenu->clear();
 		
-		QDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
-		QDictIterator<KviTextIcon> it(*d);
+		KviDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
+		KviDictIterator<KviTextIcon> it(*d);
 		QStringList strList;
 		while(KviTextIcon * i = it.current())
 		{

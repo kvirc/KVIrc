@@ -38,7 +38,12 @@ KviDoubleBuffer::KviDoubleBuffer(unsigned int uWidth,unsigned int uHeight)
 		// There is either no such user requirement or it has grown by the meantime
 		unsigned int uMaxW = uWidth > g_pMemoryPixmap->width() ? uWidth : g_pMemoryPixmap->width();
 		unsigned int uMaxH = uHeight > g_pMemoryPixmap->height() ? uHeight : g_pMemoryPixmap->height();
+#ifdef COMPILE_USE_QT4
+		// QT4SUX: QPixmap::resize() is missing (it's a widely used function and assigning a new QPixmap() seems to be slower and not intuitive)
+		*g_pMemoryPixmap = QPixmap(uMaxW,uMaxH);
+#else
 		g_pMemoryPixmap->resize(uMaxW,uMaxH);
+#endif
 	}
 
 	if(uWidth > g_uMaxRequestedWidth)g_uMaxRequestedWidth = uWidth;
@@ -73,7 +78,12 @@ void KviDoubleBuffer::heartbeat()
 	if(((g_uMaxRequestedHeight + 64) < g_pMemoryPixmap->height()) || ((g_uMaxRequestedWidth + 64) < g_pMemoryPixmap->width()))
 	{
 		// do shrink :)
+#ifdef COMPILE_USE_QT4
+		// QT4SUX: QPixmap::resize() is missing (it's a widely used function and assigning a new QPixmap() seems to be slower and not intuitive)
+		*g_pMemoryPixmap = QPixmap(g_uMaxRequestedWidth,g_uMaxRequestedHeight);
+#else
 		g_pMemoryPixmap->resize(g_uMaxRequestedWidth,g_uMaxRequestedHeight);
+#endif
 	}
 	g_uMaxRequestedHeight = 0;
 	g_uMaxRequestedWidth = 0;

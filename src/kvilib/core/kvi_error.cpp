@@ -41,6 +41,11 @@
 #include <string.h> // for strerror()
 #endif
 
+// FIXME: This stuff should basically die and be eventually replaced with some
+//        helper functions for handling ONLY system errors.
+//
+// WARNING: getDescription() is not even thread safe... it will die in the near future
+
 const char * g_errorTable[KVI_NUM_ERRORS]=
 {
 	__tr_no_lookup("Success"),                                                  // 000: success 
@@ -168,14 +173,19 @@ const char * g_errorTable[KVI_NUM_ERRORS]=
 
 namespace KviError
 {
-	QString getDescription(int iErrorCode)
+	const char * getUntranslatedDescription(int iErrorCode)
 	{
 		if((iErrorCode < KVI_NUM_ERRORS) && (iErrorCode >= 0))
-			return __tr2qs_no_xgettext(g_errorTable[iErrorCode]);
+			return g_errorTable[iErrorCode];
 #ifdef HAVE_STRERROR
-		if(iErrorCode < 0)return QString(strerror(-iErrorCode));
+		if(iErrorCode < 0)return strerror(-iErrorCode);
 #endif
-		return __tr2qs_no_xgettext(g_errorTable[KviError_unknownError]);
+		return g_errorTable[KviError_unknownError];
+	}
+	
+	QString getDescription(int iErrorCode)
+	{
+		return __tr2qs_no_xgettext(getUntranslatedDescription(iErrorCode));
 	}
 	
 	int translateSystemError(int iErrNo)

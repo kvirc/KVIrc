@@ -59,7 +59,7 @@
 #include <qtooltip.h>
 #include <qvalidator.h>
 #include <qmessagebox.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qcombobox.h>
 #include <qbuttongroup.h>
 #include <qmessagebox.h>
@@ -1288,7 +1288,7 @@ void KviServerOptionsWidget::fillServerList()
 	KviServerOptionsListViewItem * srv;
 	KviServerOptionsListViewItem * cur = 0;
 
-	QDictIterator<KviIrcServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
+	KviDictIterator<KviIrcServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
 
 	while(KviIrcServerDataBaseRecord * r = it.current())
 	{

@@ -638,7 +638,7 @@ KviKvsObject::~KviKvsObject()
 	// Disconnect all the signals
 	if(m_pSignalDict)
 	{
-		QDictIterator<KviKvsObjectConnectionList> it(*m_pSignalDict);
+		KviDictIterator<KviKvsObjectConnectionList> it(*m_pSignalDict);
 
 		while(it.current())
 		{
@@ -715,7 +715,7 @@ bool KviKvsObject::connectSignal(const QString &sigName,KviKvsObject * pTarget,c
 
 	if(!m_pSignalDict)
 	{
-		m_pSignalDict = new QDict<KviKvsObjectConnectionList>(7,false);
+		m_pSignalDict = new KviDict<KviKvsObjectConnectionList>(7,false);
 		m_pSignalDict->setAutoDelete(true);
 	}
 
@@ -1608,7 +1608,7 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 	} else {
 		if(!m_pFunctionHandlers)
 		{
-			m_pFunctionHandlers = new QDict<KviKvsObjectFunctionHandler>(7,false);
+			m_pFunctionHandlers = new KviDict<KviKvsObjectFunctionHandler>(7,false);
 			m_pFunctionHandlers->setAutoDelete(true);
 		}
 

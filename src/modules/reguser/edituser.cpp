@@ -43,7 +43,7 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qheader.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qimage.h>
 #include <qstring.h>
 #include <qcombobox.h>
@@ -70,7 +70,7 @@ static KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase = 0; // local 
 
 
 
-KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,QDict<QString> * dict)
+KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviDict<QString> * dict)
 : QDialog(p,"property_editor",true)
 {
 	m_pPropertyDict = dict;
@@ -136,7 +136,7 @@ void KviReguserPropertiesDialog::closeEvent(QCloseEvent *e)
 void KviReguserPropertiesDialog::fillData()
 {
 	m_pTable->setNumRows(m_pPropertyDict->count());
-	QDictIterator<QString> it(*m_pPropertyDict);
+	KviDictIterator<QString> it(*m_pPropertyDict);
 	int row = 0;
 	while(it.current())
 	{
@@ -312,7 +312,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		KviStringConversion::fromString(col,(*m_pCustomColor));
 	}
 	
-	m_pPropertyDict = new QDict<QString>(17,false);
+	m_pPropertyDict = new KviDict<QString>(17,false);
 	m_pPropertyDict->setAutoDelete(true);
 
 	//setMinimumSize(400,450);
@@ -510,7 +510,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 		if(r->propertyDict())
 		{
-			QDictIterator<QString> it(*(r->propertyDict()));
+			KviDictIterator<QString> it(*(r->propertyDict()));
 			while(QString *s = it.current())
 			{
 				m_pPropertyDict->insert(it.currentKey(),new QString(*s));
@@ -629,7 +629,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");
 
-	QDictIterator<QString> it(*m_pPropertyDict);
+	KviDictIterator<QString> it(*m_pPropertyDict);
 	while(QString *s = it.current())
 	{
 		u->setProperty(it.currentKey(),*s);
@@ -1056,8 +1056,8 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 		group->setName(text);
 		g_pLocalRegisteredUserDataBase->groupDict()->insert(text,group);
 		
-		QDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-		QDictIterator<KviRegisteredUser> it(*d);
+		KviDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
+		KviDictIterator<KviRegisteredUser> it(*d);
 	
 		while(KviRegisteredUser * u = it.current())
 		{
@@ -1080,8 +1080,8 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( QListViewItem * pIte
 		{
 			QPopupMenu *groups = new QPopupMenu;
 			
-			QDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-			QDictIterator<KviRegisteredUserGroup> git(*pGroups);
+			KviDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
+			KviDictIterator<KviRegisteredUserGroup> git(*pGroups);
 			m_TmpDict.clear();
 			while(KviRegisteredUserGroup * g = git.current())
 			{
@@ -1117,10 +1117,10 @@ void KviRegisteredUsersDialog::moveToGroupMenuClicked(int id)
 void KviRegisteredUsersDialog::fillList()
 {
 	m_pListView->clear();
-	QDict<KviRegisteredUsersGroupItem> groupItems(5,false);
+	KviDict<KviRegisteredUsersGroupItem> groupItems(5,false);
 	
-	QDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-	QDictIterator<KviRegisteredUserGroup> git(*pGroups);
+	KviDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
+	KviDictIterator<KviRegisteredUserGroup> git(*pGroups);
 	while(KviRegisteredUserGroup * g = git.current())
 	{
 		KviRegisteredUsersGroupItem* pCur = new KviRegisteredUsersGroupItem(m_pListView,g);
@@ -1129,8 +1129,8 @@ void KviRegisteredUsersDialog::fillList()
 		++git;
 	}
 	
-	QDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-	QDictIterator<KviRegisteredUser> it(*d);
+	KviDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
+	KviDictIterator<KviRegisteredUser> it(*d);
 	KviRegisteredUsersDialogItem * item;
 
 	while(KviRegisteredUser * u = it.current())
@@ -1361,11 +1361,11 @@ void KviRegisteredUsersDialog::exportClicked()
 			if(u)
 			{
 				if(!f.save(szName))goto write_error;
-				QDict<QString> * pd = u->propertyDict();
+				KviDict<QString> * pd = u->propertyDict();
 				if(pd)
 				{
 					if(!f.save(pd->count()))goto write_error;
-					QDictIterator<QString> it(*pd);
+					KviDictIterator<QString> it(*pd);
 					while(it.current())
 					{
 						QString key = it.currentKey();

@@ -403,7 +403,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 		c->warning(__tr2qs("Object does not exists"));
 		return true;
 	}
-	QDictIterator<KviKvsVariant> it(* ob->dataContainer()->dict());
+	KviDictIterator<KviKvsVariant> it(* ob->dataContainer()->dict());
 	KviKvsHash* pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(KviKvsVariant * t = it.current())
@@ -444,7 +444,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	QDictIterator<KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+	KviDictIterator<KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
 	KviKvsHash* pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(KviKvsObjectFunctionHandler * t = it.current())
@@ -480,8 +480,8 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	KviKvsArray * pArry = new KviKvsArray();
 	c->returnValue()->setArray(pArry);
 	int uIdx=0;
-	QDictIterator<KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	QDict<bool> *classdict=new QDict<bool>;
+	KviDictIterator<KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	KviDict<bool> *classdict=new KviDict<bool>;
 	classdict->setAutoDelete(false);
 	bool bFake=true;
 	while(KviKvsObjectClass * pClass=it.current())
@@ -503,7 +503,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	KviKvsArray* pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 	int idx=0;
-	QDictIterator<bool>  strIt(*classdict);
+	KviDictIterator<bool>  strIt(*classdict);
 	while(strIt.current())
 	{
 		pArray->set(idx,new KviKvsVariant(strIt.currentKey()));

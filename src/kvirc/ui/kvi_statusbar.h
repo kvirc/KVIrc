@@ -29,7 +29,7 @@
 #include "kvi_heapobject.h"
 
 #include <qstring.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 #include <qstatusbar.h>
 
 class KviFrame;
@@ -74,7 +74,7 @@ protected:
 	QTimer                                   * m_pMessageTimer;
 	QLabel                                   * m_pMessageLabel;
 	KviPtrList<KviStatusBarApplet>           * m_pAppletList;
-	QDict<KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
+	KviDict<KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
 	QPopupMenu                               * m_pContextPopup;
 	QPopupMenu                               * m_pAppletsPopup;
 	KviStatusBarApplet                       * m_pClickedApplet;

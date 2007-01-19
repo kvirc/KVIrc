@@ -86,7 +86,7 @@
 #include <qpopupmenu.h>
 #include <qsplitter.h>
 #include <qstringlist.h>
-#include <qasciidict.h>
+#include "kvi_asciidict.h"
 #include <qmime.h>
 #include <qlistbox.h>
 #include <qclipboard.h>
@@ -113,7 +113,7 @@ KVIRC_API KviTextIconWindow            * g_pTextIconWindow            = 0;
 KVIRC_API QPopupMenu                   * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
 //KVIRC_API QStringList                  * g_pBookmarkList              = 0;
-KVIRC_API QAsciiDict<KviWindow>        * g_pGlobalWindowDict          = 0;
+KVIRC_API KviAsciiDict<KviWindow>        * g_pGlobalWindowDict          = 0;
 KVIRC_API KviMediaManager              * g_pMediaManager              = 0;
 KVIRC_API KviRegisteredUserDataBase    * g_pRegisteredUserDataBase    = 0;
 KVIRC_API KviSharedFilesManager        * g_pSharedFilesManager        = 0;
@@ -421,7 +421,7 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(91)
 
 	// Global window dictionary
-	g_pGlobalWindowDict = new QAsciiDict<KviWindow>(41);
+	g_pGlobalWindowDict = new KviAsciiDict<KviWindow>(41);
 	g_pGlobalWindowDict->setAutoDelete(false);
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
@@ -889,7 +889,7 @@ void KviApp::setClipboardText(const KviStr &str)
 
 void KviApp::setAvatarFromOptions()
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1544,7 +1544,7 @@ void KviApp::destroyFrame()
 
 bool KviApp::connectionExists(KviIrcConnection *cnn)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1557,7 +1557,7 @@ bool KviApp::connectionExists(KviIrcConnection *cnn)
 
 bool KviApp::windowExists(KviWindow *wnd)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1574,7 +1574,7 @@ unsigned int KviApp::windowCount()
 
 KviConsole * KviApp::findConsole(QString &server,QString &nick)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1619,7 +1619,7 @@ KviConsole * KviApp::findConsole(KviStr &server,KviStr &nick)
 
 void KviApp::restartLagMeters()
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1634,7 +1634,7 @@ void KviApp::restartLagMeters()
 
 void KviApp::restartNotifyLists()
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1649,7 +1649,7 @@ void KviApp::restartNotifyLists()
 
 void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1663,7 +1663,7 @@ void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 
 KviConsole * KviApp::findConsole(unsigned int ircContextId)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1689,7 +1689,7 @@ KviConsole * KviApp::topmostConnectedConsole()
 
 	// try ANY connected console
 
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1710,7 +1710,7 @@ KviWindow * KviApp::findWindow(const char * windowId)
 
 KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContextId)
 {
-	QAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1806,7 +1806,7 @@ void KviApp::buildRecentChannels()
 {
 	if(m_pRecentChannelsDict)
 		delete m_pRecentChannelsDict;
-	m_pRecentChannelsDict = new QAsciiDict<QStringList>;
+	m_pRecentChannelsDict = new KviAsciiDict<QStringList>;
 	m_pRecentChannelsDict->setAutoDelete(TRUE);
 	QString szChan,szNet;
 	for ( 
@@ -1841,7 +1841,7 @@ void KviApp::saveRecentChannels()
 	if(!m_pRecentChannelsDict) return;
 	QString szTmp;
 	KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).clear();
-	QAsciiDictIterator<QStringList> it( *m_pRecentChannelsDict );
+	KviAsciiDictIterator<QStringList> it( *m_pRecentChannelsDict );
 	for( ; it.current(); ++it )
 	{
 		for ( QStringList::Iterator it_str = it.current()->begin(); it_str != it.current()->end(); ++it_str ) {

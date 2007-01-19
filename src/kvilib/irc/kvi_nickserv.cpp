@@ -203,11 +203,19 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString &szNick,const KviI
 		if(!KviQString::matchStringCI(r->registeredNick(),szNick,false,true)) continue;
 		if(!szServer.isEmpty())
 		{
+#ifdef COMPILE_USE_QT4
+			QRegExp res(r->serverMask(),Qt::CaseInsensitive,QRegExp::Wildcard);
+#else
 			QRegExp res(r->serverMask(),false,true);
+#endif
 			if(!res.exactMatch(szServer))continue;
 		}
 		if(!nickServ->matchedBy(KviIrcMask(r->nickServMask())))continue;
+#ifdef COMPILE_USE_QT4
+		QRegExp re(r->messageRegexp(),Qt::CaseInsensitive,QRegExp::Wildcard);
+#else
 		QRegExp re(r->messageRegexp(),false,true);
+#endif
 		if(re.exactMatch(szMsg))return r;
 	}
 	return 0;
@@ -275,8 +283,7 @@ bool KviNickServRule::load(KviConfig * cfg,const QString &prefix)
 {
 	QString tmp;
 	KviQString::sprintf(tmp,"%QRegisteredNick",&prefix);
-	m_szRegisteredNick = cfg->readQStringEntry(tmp);
-	m_szRegisteredNick.stripWhiteSpace();
+	m_szRegisteredNick = KviQString::trimmed(cfg->readQStringEntry(tmp));
 	if(m_szRegisteredNick.isEmpty())return false;
 	KviQString::sprintf(tmp,"%QNickServMask",&prefix);
 	m_szNickServMask = cfg->readQStringEntry(tmp);

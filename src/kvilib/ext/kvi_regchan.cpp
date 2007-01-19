@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_regchan.cpp
 //   Creation date : Sat Jun 29 01:01:16 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,18 +20,19 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #define __KVILIB__
 
-
 #include "kvi_regchan.h"
 #include "kvi_config.h"
+#include "kvi_qstring.h"
 
 KviRegisteredChannel::KviRegisteredChannel(const KviStr &name,const KviStr &netmask)
 {
 	m_szName = name;
 	m_szNetMask = netmask;
-	m_pPropertyDict = new QAsciiDict<KviStr>(7,false,true);
+	m_pPropertyDict = new KviAsciiDict<KviStr>(7,false,true);
 	m_pPropertyDict->setAutoDelete(true);
 }
 
@@ -43,7 +45,7 @@ KviRegisteredChannel::~KviRegisteredChannel()
 
 KviRegisteredChannelDataBase::KviRegisteredChannelDataBase()
 {
-	m_pChannelDict = new QAsciiDict<KviRegisteredChannelList>(17,false,true);
+	m_pChannelDict = new KviAsciiDict<KviRegisteredChannelList>(17,false,true);
 	m_pChannelDict->setAutoDelete(true);
 }
 
@@ -67,7 +69,7 @@ void KviRegisteredChannelDataBase::load(const char * filename)
 		KviConfigGroupIterator sit(*d);
 		while(QString * s = sit.current())
 		{
-			c->setProperty(sit.currentKey().utf8().data(),new KviStr(*s));
+			c->setProperty(KviQString::toUtf8(sit.currentKey()).data(),new KviStr(*s));
 			++sit;
 		}
 		++it;
@@ -79,14 +81,14 @@ void KviRegisteredChannelDataBase::save(const char * filename)
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();
 
-	QAsciiDictIterator<KviRegisteredChannelList> it(*m_pChannelDict);
+	KviAsciiDictIterator<KviRegisteredChannelList> it(*m_pChannelDict);
 	while(KviRegisteredChannelList * l = it.current())
 	{
 		for(KviRegisteredChannel * c = l->first();c;c = l->next())
 		{
 			KviStr szGrp(KviStr::Format,"%s@%s",c->name().ptr(),c->netMask().ptr());
 			cfg.setGroup(szGrp.ptr());
-			QAsciiDictIterator<KviStr> pit(*(c->propertyDict()));
+			KviAsciiDictIterator<KviStr> pit(*(c->propertyDict()));
 			while(KviStr * s = pit.current())
 			{
 				cfg.writeEntry(pit.currentKey(),s->ptr());
@@ -145,7 +147,7 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 	KviRegisteredChannel * old = findExact(c->name().ptr(),c->netMask().ptr());
 	if(old)
 	{
-		QAsciiDictIterator<KviStr> pit(*(old->propertyDict()));
+		KviAsciiDictIterator<KviStr> pit(*(old->propertyDict()));
 		while(KviStr *s = pit.current())
 		{
 			if(!c->property(pit.currentKey()))

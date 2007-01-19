@@ -72,7 +72,7 @@ KviKvsTimerManager::KviKvsTimerManager()
 {
 	m_pTimerDictById = new QIntDict<KviKvsTimer>(17);
 	m_pTimerDictById->setAutoDelete(false);
-	m_pTimerDictByName = new QDict<KviKvsTimer>(17,false);
+	m_pTimerDictByName = new KviDict<KviKvsTimer>(17,false);
 	m_pTimerDictByName->setAutoDelete(false);
 	m_pKilledTimerList = 0;
 	m_iAssassinTimer = 0;

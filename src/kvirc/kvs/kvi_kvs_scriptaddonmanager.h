@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_qstring.h"
-#include <qdict.h>
+#include "kvi_dict.h"
 
 
 class KviConfig;
@@ -50,7 +50,7 @@ protected:
 		);
 public:
 	KviKvsScriptAddon(const KviKvsScriptAddon &a);
-public: // QDict wants that... how to restrict the deletion to KviKvsScriptAddonManager only ?
+public: // KviDict wants that... how to restrict the deletion to KviKvsScriptAddonManager only ?
 	~KviKvsScriptAddon();
 protected:
 	QString        m_szName;              // the short name of the addon
@@ -108,7 +108,7 @@ protected:
 	// this class implements delayed loading
 	QString                            m_szFileName;  // the file name that we will load from
 	bool                               m_bLoaded;     // have we loaded stuff from disk yet ?
-	QDict<KviKvsScriptAddon>         * m_pAddonDict;  // all the registered addons
+	KviDict<KviKvsScriptAddon>         * m_pAddonDict;  // all the registered addons
 public:
 	static KviKvsScriptAddonManager * instance(){ return m_pInstance; };
 	static void init(); // called by KviKvs::init()
@@ -117,7 +117,7 @@ public:
 	bool registerAddon(KviKvsScriptAddonRegistrationData * d);
 	KviKvsScriptAddon * findAddon(const QString &szName);
 	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true);
-	QDict<KviKvsScriptAddon> * addonDict();
+	KviDict<KviKvsScriptAddon> * addonDict();
 
 	void clear();
 	void load(const QString &szFileName); // called in the KviKvs namespace

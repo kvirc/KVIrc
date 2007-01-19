@@ -30,7 +30,7 @@
 #include "kvi_list.h"
 #include "kvi_qstring.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 class KviKvsTreeNodeSpecialCommand;
 class KviKvsObjectController;
@@ -76,11 +76,11 @@ public:
 private:
 	static KviKvsKernel * m_pKvsKernel; // global kernel object
 
-	QDict<KviKvsSpecialCommandParsingRoutine>     * m_pSpecialCommandParsingRoutineDict;
+	KviDict<KviKvsSpecialCommandParsingRoutine>     * m_pSpecialCommandParsingRoutineDict;
 	
-	QDict<KviKvsCoreSimpleCommandExecRoutine>     * m_pCoreSimpleCommandExecRoutineDict;
-	QDict<KviKvsCoreCallbackCommandExecRoutine>   * m_pCoreCallbackCommandExecRoutineDict;
-	QDict<KviKvsCoreFunctionExecRoutine>          * m_pCoreFunctionExecRoutineDict;
+	KviDict<KviKvsCoreSimpleCommandExecRoutine>     * m_pCoreSimpleCommandExecRoutineDict;
+	KviDict<KviKvsCoreCallbackCommandExecRoutine>   * m_pCoreCallbackCommandExecRoutineDict;
+	KviDict<KviKvsCoreFunctionExecRoutine>          * m_pCoreFunctionExecRoutineDict;
 	
 	KviKvsHash                                    * m_pGlobalVariables;
 	KviKvsVariantList                             * m_pEmptyParameterList;

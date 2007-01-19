@@ -42,8 +42,16 @@
 #else
 
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
+#ifdef COMPILE_USE_QT4
+	: QToolBar(label,w)
+#else
 	: QToolBar(label,w,dock,bNewLine,nam)
+#endif
 	{
+#ifdef COMPILE_USE_QT4
+		if(bNewLine)w->addToolBarBreak(dock);
+		w->addToolBar(dock,this);
+#endif
 	}
 
 	KviTalToolBar::~KviTalToolBar()

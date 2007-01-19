@@ -287,7 +287,7 @@ void KviSharedFilesWindow::editClicked()
 void KviSharedFilesWindow::fillFileView()
 {
 	m_pListView->clear();
-	QDictIterator<KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
+	KviDictIterator<KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
 
 	KviSharedFilesListViewItem * itm;
 

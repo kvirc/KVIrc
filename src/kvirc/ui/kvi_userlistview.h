@@ -36,7 +36,7 @@
 #include <qtooltip.h>
 #include <qwidget.h>
 #include "kvi_list.h"
-#include <qdict.h>
+#include "kvi_dict.h"
 #include "kvi_toolwindows_container.h"
 
 class QLabel;
@@ -130,7 +130,7 @@ public:
 	KviUserListView(QWidget * parent,KviWindowToolPageButton* button,KviIrcUserDataBase * db,KviWindow * pWnd,int dictSize = 5,const QString &label_text = QString::null,const char * name = 0);
 	~KviUserListView();
 protected:
-	QDict<KviUserListEntry>         * m_pEntryDict;
+	KviDict<KviUserListEntry>         * m_pEntryDict;
 	KviUserListEntry                * m_pTopItem;
 	KviUserListEntry                * m_pHeadItem;
 	KviUserListEntry                * m_pTailItem;
@@ -166,7 +166,7 @@ public:
 	void updateArea();
 	void select(const QString&);
 	void applyOptions();
-	QDict<KviUserListEntry> * entryDict(){ return m_pEntryDict; };
+	KviDict<KviUserListEntry> * entryDict(){ return m_pEntryDict; };
 	KviUserListEntry * firstItem(){ return m_pHeadItem; };
 	KviUserListEntry * itemAt(const QPoint &pnt,QRect * rct = 0);
 	bool itemVisible(KviUserListEntry * e);

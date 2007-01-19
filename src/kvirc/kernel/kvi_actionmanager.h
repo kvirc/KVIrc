@@ -28,7 +28,7 @@
 #include "kvi_action.h"
 
 #include <qobject.h>
-#include <qdict.h>
+#include "kvi_dict.h"
 
 class KviActionDrawer;
 class KviCustomToolBar;
@@ -45,8 +45,8 @@ public:
 	~KviActionManager();
 protected:
 	static KviActionManager * m_pInstance;
-	QDict<KviAction> * m_pActions;
-	QDict<KviActionCategory> * m_pCategories;
+	KviDict<KviAction> * m_pActions;
+	KviDict<KviActionCategory> * m_pCategories;
 	static bool m_bCustomizingToolBars;
 	
 	// action categories
@@ -74,9 +74,9 @@ public:
 	static KviActionCategory * categoryChannel(){ return m_pCategoryChannel; };
 	static KviActionCategory * categoryTools(){ return m_pCategoryTools; };
 	
-	QDict<KviAction> * actions(){ return m_pActions; };
+	KviDict<KviAction> * actions(){ return m_pActions; };
 	KviActionCategory * category(const QString &szName);
-	QDict<KviActionCategory> * categories(){ return m_pCategories; };
+	KviDict<KviActionCategory> * categories(){ return m_pCategories; };
 	
 	void killAllKvsUserActions();
 

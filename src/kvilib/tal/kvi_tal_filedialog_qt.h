@@ -37,9 +37,6 @@ public:
 	void setFileMode(FileMode m);
 	void setDirectory(const QString &szDirectory);
 
-
-
-
 	static QString getExistingDirectoryPath(const QString &dir = QString::null,const QString &caption = QString::null,QWidget *parent = 0)
 		{ return getExistingDirectory(dir,parent,0 /* name */,caption); };
 };

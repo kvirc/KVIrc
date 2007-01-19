@@ -1,11 +1,12 @@
 #ifndef _KVI_FILETRADER_H_
 #define _KVI_FILETRADER_H_
+//=============================================================================
 //
 //   File : kvi_filetrader.h
 //   Creation date : Wed Aug 27 2000 10:28:51 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
@@ -29,7 +31,7 @@
 #include "kvi_list.h"
 #include "kvi_qstring.h"
 
-#include <qdict.h>
+#include "kvi_dict.h"
 
 #include <time.h>
 #include <qtimer.h>
@@ -77,7 +79,7 @@ public:
 	~KviSharedFilesManager();
 private:
 	QTimer                     * m_pCleanupTimer;
-	QDict<KviSharedFileList>   * m_pSharedListDict;
+	KviDict<KviSharedFileList>   * m_pSharedListDict;
 public:
 	void addSharedFile(KviSharedFile * f);
 	KviSharedFile * addSharedFile(const QString &szName,const QString &szAbsPath,const QString &szMask,int timeoutInSecs);
@@ -87,7 +89,7 @@ public:
 	void load(const QString &filename);
 	void save(const QString &filename);
 	void clear();
-	QDict<KviSharedFileList> * sharedFileListDict(){ return m_pSharedListDict; };
+	KviDict<KviSharedFileList> * sharedFileListDict(){ return m_pSharedListDict; };
 private:
 	void doInsert(KviSharedFileList * l, KviSharedFile * o);
 private slots:

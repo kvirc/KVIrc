@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_crypt.cpp
 //   Creation date : Fri Nov 03 2000 02:34:43 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,9 +20,9 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #define __KVILIB__
-
-
 
 #include "kvi_crypt.h"
 #include "kvi_locale.h"
@@ -156,7 +157,7 @@
 	KviCryptEngine::KviCryptEngine()
 	{
 #ifdef COMPILE_CRYPT_SUPPORT
-		setLastError(__tr("Invalid crypt engine"));
+		setLastError(__tr2qs("Invalid crypt engine"));
 		m_iMaxEncryptLen = -1; // unlimited
 		m_deallocFunc = 0;
 #endif //COMPILE_CRYPT_SUPPORT
@@ -188,7 +189,7 @@
 
 	KviCryptEngineManager::KviCryptEngineManager()
 	{
-		m_pEngineDict = new QAsciiDict<KviCryptEngineDescription>;
+		m_pEngineDict = new KviDict<KviCryptEngineDescription>;
 		m_pEngineDict->setAutoDelete(true);
 	}
 
@@ -199,17 +200,17 @@
 
 	void KviCryptEngineManager::registerEngine(KviCryptEngineDescription * d)
 	{
-		m_pEngineDict->replace(d->szName.ptr(),d);
+		m_pEngineDict->replace(d->szName,d);
 	}
 
-	void KviCryptEngineManager::unregisterEngine(const char * szName)
+	void KviCryptEngineManager::unregisterEngine(const QString &szName)
 	{
 		m_pEngineDict->remove(szName);
 	}
 
 	void KviCryptEngineManager::unregisterEngines(void * providerHandle)
 	{
-		QAsciiDictIterator<KviCryptEngineDescription> it(*m_pEngineDict);
+		KviDictIterator<KviCryptEngineDescription> it(*m_pEngineDict);
 		while(it.current())
 		{
 			if(it.current()->providerHandle == providerHandle)
@@ -219,7 +220,7 @@
 		}
 	}
 
-	KviCryptEngine * KviCryptEngineManager::allocateEngine(const char * szName)
+	KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString &szName)
 	{
 		KviCryptEngineDescription * d =  m_pEngineDict->find(szName);
 		if(!d)return 0;

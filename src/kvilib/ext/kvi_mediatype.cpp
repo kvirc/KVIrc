@@ -32,10 +32,10 @@
 #include "kvi_config.h"
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
+#include "kvi_file.h"
 
 #include "kvi_settings.h"
 
-#include <qfile.h>
 #include <qregexp.h>
 #include <qdir.h>
 
@@ -235,12 +235,17 @@ void KviMediaManager::insertMediaType(KviMediaType * m)
 
 KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckMagic)
 {
+	// FIXME: This should be ported at least to QString....
 	__range_valid(locked());
 
 	KviStr szFullPath = filename;
 	if(!kvi_isAbsolutePath(szFullPath.ptr()))
 	{
+#ifdef COMPILE_USE_QT4
+		KviStr tmp = QDir::currentPath();
+#else
 		KviStr tmp = QDir::currentDirPath();
+#endif
 		tmp.ensureLastCharIs('/');
 		szFullPath.prepend(tmp);
 	}
@@ -378,8 +383,8 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 	if(bCheckMagic)
 	{
 		QString szTmp=QString::fromUtf8(szFullPath);
-		QFile f(szTmp);
-		if(f.open(IO_ReadOnly))
+		KviFile f(szTmp);
+		if(f.openForReading())
 		{
 			len = f.readBlock(buffer,16);
 			if(len > 0)
@@ -399,10 +404,16 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 			if(len && m->szMagicBytes.hasData())
 			{
 				QRegExp re(m->szMagicBytes.ptr());
-#if QT_VERSION >= 300
-				if(re.search(buffer) > -1)return m; // matched!
+				// It looks like they can't decide the name for this function :D
+				// ... well, maybe the latest choice is the best one.
+#ifdef COMPILE_USE_QT4
+				if(re.indexIn(buffer) > -1)return m; // matched!
 #else
+	#if QT_VERSION >= 300
+				if(re.search(buffer) > -1)return m; // matched!
+	#else
 				if(re.find(buffer,0) > -1)return m; // matched!
+	#endif
 #endif
 				// else magic failed...not a match
 			} else return m; // matched! (no magic check)

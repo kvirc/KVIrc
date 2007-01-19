@@ -48,7 +48,7 @@ namespace KviThemeFunctions
 
 	bool installThemePackage(const QString &szThemePackageFileName,QString &szError,QWidget * pDialogParent)
 	{
-		QDict<QString> * pInfoFields;
+		KviDict<QString> * pInfoFields;
 		QString * pValue;
 		bool bInstall;
 		QPixmap pix;
