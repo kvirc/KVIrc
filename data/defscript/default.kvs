@@ -99,7 +99,7 @@ alias(gnotice)
 	#Check null notice
 	if(!$0){
 		echo $tr("Usage"): /gnotice [-acohvq] <$tr("message")>
-		echo $tr("-a: send notice to all server admin in the channel")
+		echo $tr("-a: send notice to all channel owners")
 		echo $tr("-c: send notice to all channel admins")
 		echo $tr("-o: send notice to all channel ops")
 		echo $tr("-h: send notice to all channel halfops")
