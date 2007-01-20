@@ -826,7 +826,8 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *pDns)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q"),
 			&szErr);
 	} else {
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Local hostname as seen by the IRC server resolved to %s"),m_pLocalhostDns->firstIpAddress());
+		QString szIpAddr = m_pLocalhostDns->firstIpAddress();
+		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Local hostname as seen by the IRC server resolved to %Q"),&szIpAddr);
 		m_pUserInfo->setHostIp(m_pLocalhostDns->firstIpAddress());
 	}
 
