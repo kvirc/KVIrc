@@ -152,7 +152,7 @@ alias(wallop)
 		for(%i=0;%i<1;%i++){
 			if(%:localOps[%:curIndex] != $my.nick){
 				if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
-				msg %:localOps[%:curIndex] $1-
+				msg -q %:localOps[%:curIndex] $1-
 				%:curIndex++
 			}
 		}
