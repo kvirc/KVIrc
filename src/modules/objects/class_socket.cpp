@@ -1487,7 +1487,7 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 				m_bIpV6 = true;
 			} else {
 #else
-				c->warning(__tr2qs("Invalid IP address specified ('%Q')"),m_szLocalIp);
+				c->warning(__tr2qs("Invalid IP address specified ('%Q')"),&m_szLocalIp);
 				c->returnValue()->setBoolean(false);
 				reset();
 				return true;

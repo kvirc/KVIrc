@@ -617,9 +617,12 @@ void KviQuery::ownMessage(const QString &buffer)
 					}
 					break;
 					default: // also case KviCryptEngine::EncryptError
+					{
+						QString szEngineError = cryptSessionInfo()->pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
 							__tr2qs("The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
-							&buffer,cryptSessionInfo()->pEngine->lastError());
+							&buffer,&szEngineError);
+					}
 					break;
 				}
 				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);

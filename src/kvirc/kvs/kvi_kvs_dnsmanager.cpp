@@ -153,7 +153,8 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDns * pDns)
 		copy.run(o->window(),o->parameterList(),0,KviKvsScript::PreserveParams);
 
 	} else {
-		o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("DNS Lookup result for query \"%s\""),o->dns()->query());
+		QString szQuery = o->dns()->query();
+		o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("DNS Lookup result for query \"%Q\""),&szQuery);
 	
 		if(o->dns()->state() == KviDns::Failure)
 		{
