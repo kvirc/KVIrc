@@ -59,7 +59,6 @@ libkvilib_la_SOURCES = \
 	../file/kvi_file.cpp \
 	../file/kvi_fileutils.cpp \
 	../file/kvi_packagefile.cpp \
-	../file/kvi_targzfile.cpp \
 	../irc/kvi_avatar.cpp \
 	../irc/kvi_avatarcache.cpp \
 	../irc/kvi_ircmask.cpp \
@@ -68,6 +67,7 @@ libkvilib_la_SOURCES = \
 	../irc/kvi_ircuserdb.cpp \
 	../irc/kvi_mirccntrl.cpp \
 	../irc/kvi_nickserv.cpp \
+	../irc/kvi_useridentity.cpp \
 	../net/kvi_dns.cpp \
 	../net/kvi_http.cpp \
 	../net/kvi_netutils.cpp \
@@ -138,7 +138,6 @@ headers_HEADERS = \
 	../file/kvi_file.h \
 	../file/kvi_fileutils.h \
 	../file/kvi_packagefile.h \
-	../file/kvi_targzfile.h \
 	../irc/kvi_avatar.h \
 	../irc/kvi_avatarcache.h \
 	../irc/kvi_ircmask.h \
@@ -147,6 +146,7 @@ headers_HEADERS = \
 	../irc/kvi_ircuserdb.h \
 	../irc/kvi_mirccntrl.h \
 	../irc/kvi_nickserv.h \
+	../irc/kvi_useridentity.h \
 	../net/kvi_dns.h \
 	../net/kvi_http.h \
 	../net/kvi_netutils.h \

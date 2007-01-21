@@ -230,7 +230,15 @@ namespace KviQString
 #endif
 	}
 
-	
+	// WARNING: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
+	//          They are dangerous since with many compilers the returned string gets destroyed
+	//          at the end of the instruction and the c pointer gets thus invalidated.
+	//          Use
+	//           KviQCString tmp = KviQString::toUtf8(something);
+	//           char * c = tmp.data(); 
+	//          instead.
+	//          Yes, I know that it sucks, but it's the only way to
+	//          transit to qt 4.x more or less cleanly...
 	inline KviQCString toUtf8(const QString &s)
 	{
 #ifdef COMPILE_USE_QT4

@@ -8,7 +8,7 @@
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Fri Jan 19 01:41:16 UTC 2007"
+#define BUILD_DATE "Sat Jan 20 22:10:21 UTC 2007"
 
 /* these are the build flags */
 #define BUILD_FLAGS "x86_64-cefgikopsAGTZ"

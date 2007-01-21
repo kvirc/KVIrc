@@ -148,7 +148,8 @@ namespace KviStringConversion
 	
 	bool fromString(const QString & szValue,QRect &buffer)
 	{
-		const char * c = KviQString::toUtf8(szValue).data();
+		KviQCString tmp = KviQString::toUtf8(szValue);
+		const char * c = tmp.data();
 		if(!c)return false;
 		int l,t,w,h;
 		if(sscanf(c,"%d,%d,%d,%d",&l,&t,&w,&h) != 4)return false;
@@ -194,9 +195,10 @@ namespace KviStringConversion
 	{
 		int iId,iLog,iLevel;
 		unsigned int uFore,uBack;
-		const char * c = KviQString::toUtf8(szValue).data();
-		if(!c)return false;
-		if(sscanf(c,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;
+		KviQCString tmp = KviQString::toUtf8(szValue);
+		char * cx = tmp.data();
+		if(!cx)return false;
+		if(sscanf(cx,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;
 		buffer = KviMsgType(buffer.m_szType,iId,uFore,uBack,iLog,iLevel);
 		return true;
 	}
