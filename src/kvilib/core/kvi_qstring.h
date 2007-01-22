@@ -122,6 +122,9 @@ namespace KviQString
 
 	extern KVILIB_API void bufferToHex(QString &szRetBuffer,const unsigned char * buffer,unsigned int len);
 
+	// a global empty string (note that this is ALSO NULL under Qt 3.x)
+	extern KVILIB_API const QString empty;
+
 	inline QString toLower(const QString &s)
 	{
 #ifdef COMPILE_USE_QT4

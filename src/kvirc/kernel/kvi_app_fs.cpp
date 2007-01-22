@@ -692,15 +692,24 @@ bool KviApp::findSmallIcon(QString &szRetPath,const char *filename)
 
 bool KviApp::getReadOnlyConfigPath(KviStr &buffer,const char *config_name,KvircSubdir sbd,bool bNoFail)
 {
+	// DEPRECATED
+	QString tmp;
+	bool bRet = getReadOnlyConfigPath(tmp,config_name,sbd,bNoFail);
+	buffer = tmp;
+	return bRet;
+}
+
+bool KviApp::getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd,bool bNoFail)
+{
 	// Take a look in the local directory....
 	getLocalKvircDirectory(buffer,sbd,config_name);
 	//debug("%s %s %i |%s| %i",__FILE__,__FUNCTION__,__LINE__,buffer.ptr(),KviFileUtils::fileExists(buffer.ptr()));
-	if(!KviFileUtils::fileExists(buffer.ptr()))
+	if(!KviFileUtils::fileExists(buffer))
 	{
 		// No saved config yet... check for defaults
-		KviStr tmp;
+		QString tmp;
 		getGlobalKvircDirectory(tmp,sbd,config_name);
-		if(!KviFileUtils::fileExists(tmp.ptr()))
+		if(!KviFileUtils::fileExists(tmp))
 		{
 			// No defaults...no such config file at all.
 			if(bNoFail)getLocalKvircDirectory(buffer,sbd,config_name);

@@ -30,82 +30,48 @@
 
 // FIXME: Put here also the default away message, default away nick, default ctcp replies etc ?
 
-bool KviUserIdentity::load(KviConfig &cfg,const QString &szPrefix)
+bool KviUserIdentity::load(KviConfig &cfg)
 {
-	QString szTmp;
-	KviQString::sprintf(szTmp,"%QId",&szPrefix);
-	m_szId = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QNickName",&szPrefix);
-	m_szNickName = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QAltNickName1",&szPrefix);
-	m_szAltNickName1 = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QAltNickName2",&szPrefix);
-	m_szAltNickName2 = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QAltNickName3",&szPrefix);
-	m_szAltNickName3 = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QUserName",&szPrefix);
-	m_szUserName = cfg.readQStringEntry(szTmp);
+	m_szId = cfg.group();
+	m_szNickName = cfg.readQStringEntry("NickName");
+	m_szAltNickName1 = cfg.readQStringEntry("AltNickName1");
+	m_szAltNickName2 = cfg.readQStringEntry("AltNickName2");
+	m_szAltNickName3 = cfg.readQStringEntry("AltNickName3");
+	m_szUserName = cfg.readQStringEntry("UserName");
 	// FIXME: At least scramble the pass ?
-	KviQString::sprintf(szTmp,"%QPassword",&szPrefix);
-	m_szPassword = cfg.readQStringEntry(szTmp);
+	m_szPassword = cfg.readQStringEntry("Password");
 	KviPixmap def;
-	KviQString::sprintf(szTmp,"%QAvatar",&szPrefix);
-	m_pixAvatar = cfg.readPixmapEntry(szTmp,def);
-	KviQString::sprintf(szTmp,"%QPartMessage",&szPrefix);
-	m_szPartMessage = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QQuitMessage",&szPrefix);
-	m_szQuitMessage= cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QAge",&szPrefix);
-	m_szAge = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QGender",&szPrefix);
-	m_szGender = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QLocation",&szPrefix);
-	m_szLocation = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QLanguages",&szPrefix);
-	m_szLanguages = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QOtherInfo",&szPrefix);
-	m_szOtherInfo = cfg.readQStringEntry(szTmp);
-	KviQString::sprintf(szTmp,"%QUserMode",&szPrefix);
-	m_szUserMode = cfg.readQStringEntry(szTmp);
+	m_pixAvatar = cfg.readPixmapEntry("Avatar",def);
+	m_szPartMessage = cfg.readQStringEntry("PartMessage");
+	m_szQuitMessage= cfg.readQStringEntry("QuitMessage");
+	m_szAge = cfg.readQStringEntry("Age");
+	m_szGender = cfg.readQStringEntry("Gender");
+	m_szLocation = cfg.readQStringEntry("Location");
+	m_szLanguages = cfg.readQStringEntry("Languages");
+	m_szOtherInfo = cfg.readQStringEntry("OtherInfo");
+	m_szUserMode = cfg.readQStringEntry("UserMode");
 	return !(m_szId.isEmpty() || m_szNickName.isEmpty());
 }
 
-bool KviUserIdentity::save(KviConfig &cfg,const QString &szPrefix)
+bool KviUserIdentity::save(KviConfig &cfg)
 {
-	QString szTmp;
-	KviQString::sprintf(szTmp,"%QId",&szPrefix);
-	cfg.writeEntry(szTmp,m_szId);
-	KviQString::sprintf(szTmp,"%QNickName",&szPrefix);
-	cfg.writeEntry(szTmp,m_szNickName);
-	KviQString::sprintf(szTmp,"%QAltNickName1",&szPrefix);
-	cfg.writeEntry(szTmp,m_szAltNickName1);
-	KviQString::sprintf(szTmp,"%QAltNickName2",&szPrefix);
-	cfg.writeEntry(szTmp,m_szAltNickName2);
-	KviQString::sprintf(szTmp,"%QAltNickName3",&szPrefix);
-	cfg.writeEntry(szTmp,m_szAltNickName3);
-	KviQString::sprintf(szTmp,"%QUserName",&szPrefix);
-	cfg.writeEntry(szTmp,m_szUserName);
+	cfg.setGroup(m_szId);
+	cfg.writeEntry("NickName",m_szNickName);
+	cfg.writeEntry("AltNickName1",m_szAltNickName1);
+	cfg.writeEntry("AltNickName2",m_szAltNickName2);
+	cfg.writeEntry("AltNickName3",m_szAltNickName3);
+	cfg.writeEntry("UserName",m_szUserName);
 	// FIXME: At least scramble the pass ?
-	KviQString::sprintf(szTmp,"%QPassword",&szPrefix);
-	cfg.writeEntry(szTmp,m_szPassword);
-	KviQString::sprintf(szTmp,"%QAvatar",&szPrefix);
-	cfg.writeEntry(szTmp,m_pixAvatar);
-	KviQString::sprintf(szTmp,"%QPartMessage",&szPrefix);
-	cfg.writeEntry(szTmp,m_szPartMessage);
-	KviQString::sprintf(szTmp,"%QQuitMessage",&szPrefix);
-	cfg.writeEntry(szTmp,m_szQuitMessage);
-	KviQString::sprintf(szTmp,"%QAge",&szPrefix);
-	cfg.writeEntry(szTmp,m_szAge);
-	KviQString::sprintf(szTmp,"%QGender",&szPrefix);
-	cfg.writeEntry(szTmp,m_szGender);
-	KviQString::sprintf(szTmp,"%QLocation",&szPrefix);
-	cfg.writeEntry(szTmp,m_szLocation);
-	KviQString::sprintf(szTmp,"%QLanguages",&szPrefix);
-	cfg.writeEntry(szTmp,m_szLanguages);
-	KviQString::sprintf(szTmp,"%QOtherInfo",&szPrefix);
-	cfg.writeEntry(szTmp,m_szOtherInfo);
-	KviQString::sprintf(szTmp,"%QUserMode",&szPrefix);
-	cfg.writeEntry(szTmp,m_szUserMode);
+	cfg.writeEntry("Password",m_szPassword);
+	cfg.writeEntry("Avatar",m_pixAvatar);
+	cfg.writeEntry("PartMessage",m_szPartMessage);
+	cfg.writeEntry("QuitMessage",m_szQuitMessage);
+	cfg.writeEntry("Age",m_szAge);
+	cfg.writeEntry("Gender",m_szGender);
+	cfg.writeEntry("Location",m_szLocation);
+	cfg.writeEntry("Languages",m_szLanguages);
+	cfg.writeEntry("OtherInfo",m_szOtherInfo);
+	cfg.writeEntry("UserMode",m_szUserMode);
 	return true;
 }
 
@@ -206,21 +172,74 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 	return ret;
 }
 
-void KviUserIdentityManager::save(const QString &szFileName)
-{
-}
-
 void KviUserIdentityManager::load(const QString &szFileName)
 {
-}
+	m_pIdentityDict->clear();
 
-KviUserIdentityManager * KviUserIdentityManager::getWorkingCopy()
-{
-	return 0;
-}
+	KviConfig cfg(szFileName,KviConfig::Read);
 
-void KviUserIdentityManager::setValuesFrom(KviUserIdentityManager * pWorkingCopy)
-{
+	cfg.setGroup("KVIrc");
 	
+	m_szDefaultIdentity = cfg.readQStringEntry("DefaultIdentity","");
+
+	KviConfigIterator it(*(cfg.dict()));
+	while(KviConfigGroup * grp = it.current())
+	{
+		if(!KviQString::equalCI(it.currentKey(),"KVIrc"))
+		{
+			cfg.setGroup(it.currentKey());
+
+			KviUserIdentity * id = new KviUserIdentity();
+			if(id->load(cfg))
+				m_pIdentityDict->replace(id->id(),id);
+			else
+				delete id;
+		}
+		++it;
+	}
 }
+
+void KviUserIdentityManager::save(const QString &szFileName)
+{
+	KviConfig cfg(szFileName,KviConfig::Write);
+	cfg.clear();
+	
+	cfg.setGroup("KVIrc");
+
+	cfg.writeEntry("DefaultIdentity",m_szDefaultIdentity);
+	
+	KviDictIterator<KviUserIdentity> it(*m_pIdentityDict);
+	while(KviUserIdentity * id = it.current())
+	{
+		id->save(cfg);
+		++it;
+	}
+}
+
+void KviUserIdentityManager::copyFrom(KviUserIdentityManager * pWorkingCopy)
+{
+	m_pIdentityDict->clear();
+	m_szDefaultIdentity = pWorkingCopy->m_szDefaultIdentity;
+	KviDictIterator<KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
+	while(KviUserIdentity * id = it.current())
+	{
+		KviUserIdentity * pNew = new KviUserIdentity();
+		pNew->copyFrom(*id);
+		m_pIdentityDict->replace(pNew->id(),pNew);
+		++it;
+	}
+}
+
+KviUserIdentityManager * KviUserIdentityManager::createWorkingCopy()
+{
+	KviUserIdentityManager * pCopy = new KviUserIdentityManager();
+	pCopy->copyFrom(this);
+	return pCopy;
+}
+
+void KviUserIdentityManager::releaseWorkingCopy(KviUserIdentityManager * pWorkingCopy)
+{
+	if(pWorkingCopy)delete pWorkingCopy;
+}
+
 

@@ -71,6 +71,7 @@
 #include "kvi_time.h"
 #include "kvi_doublebuffer.h"
 #include "kvi_stringconversion.h"
+#include "kvi_useridentity.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "kvi_ipc.h"
@@ -191,7 +192,7 @@ void KviApp::setup()
 
 #ifndef COMPILE_NO_IPC
 	// Create this very early
-	// FIXME: this is still not early enough...
+	// FIXME: this is still not early enough... we actually HAVE race conditions (should use a file for locking this ?)
 	createIpcSentinel();
 #endif
 
@@ -227,19 +228,19 @@ void KviApp::setup()
 
 	// Set the default help files search path
 	QStringList list;
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Help); // localized help/lang or help if help/lang doesn't exist
-	list.append(tmp.ptr());
+	list.append(tmp);
 	getLocalKvircDirectory(tmp,HelpEN); // help/en
-	list.append(tmp.ptr());
+	list.append(tmp);
 	getLocalKvircDirectory(tmp,HelpNoIntl); // just help/
-	list.append(tmp.ptr());
+	list.append(tmp);
 	getGlobalKvircDirectory(tmp,Help);
-	list.append(tmp.ptr());
+	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpEN);
-	list.append(tmp.ptr());
+	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpNoIntl);
-	list.append(tmp.ptr());
+	list.append(tmp);
 	QMimeSourceFactory::defaultFactory()->setFilePath(list);
 
 	KVI_SPLASH_SET_PROGRESS(1)
@@ -265,14 +266,26 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(5)
 
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_USERACTIONS))
-		KviActionManager::instance()->load(tmp.ptr());
+		KviActionManager::instance()->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(8);
 
-	// Load the configuration
+	// Initialize and load the identities
+	KviUserIdentityManager::init();
+
+	KVI_SPLASH_SET_PROGRESS(9);
+
+	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_IDENTITIES))
+		KviUserIdentityManager::instance()->load(tmp);
+
+	KVI_SPLASH_SET_PROGRESS(12);
+
+	// Load the remaining configuration
+	// Note that loadOptions() assumes that the current progress is 12 and
+	// will bump it up to 45 in small steps
 	loadOptions();
 
-	KVI_SPLASH_SET_PROGRESS(42)
+	KVI_SPLASH_SET_PROGRESS(47)
 
 	// set the global font if needed
 	updateApplicationFont();
@@ -281,66 +294,66 @@ void KviApp::setup()
 	updatePseudoTransparency();
 #endif
 
-	KVI_SPLASH_SET_PROGRESS(44)
+	KVI_SPLASH_SET_PROGRESS(48)
 
 	// Load the win properties config
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_WINPROPERTIES);
-	g_pWinPropertiesConfig = new KviConfig(tmp.ptr(),KviConfig::ReadWrite);
+	g_pWinPropertiesConfig = new KviConfig(tmp,KviConfig::ReadWrite);
 
-	KVI_SPLASH_SET_PROGRESS(48)
+	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
 	g_pIrcServerDataBase   = new KviIrcServerDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SERVERDB))
-		g_pIrcServerDataBase->load(tmp.ptr());
+		g_pIrcServerDataBase->load(tmp);
 
-	KVI_SPLASH_SET_PROGRESS(51)
+	KVI_SPLASH_SET_PROGRESS(53)
 
 	// Load the proxy database
 	g_pProxyDataBase = new KviProxyDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_PROXYDB))
-		g_pProxyDataBase->load(tmp.ptr());
+		g_pProxyDataBase->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(54)
 
 	// Event manager
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_EVENTS))
-		KviKvs::loadAppEvents(tmp.ptr());
+		KviKvs::loadAppEvents(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(59)
 
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_RAWEVENTS))
-		KviKvs::loadRawEvents(tmp.ptr());
+		KviKvs::loadRawEvents(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(62)
 
 	// Popup manager
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_POPUPS))
-		KviKvs::loadPopups(tmp.ptr());
+		KviKvs::loadPopups(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(67)
 
 	KviCustomToolBarManager::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_CUSTOMTOOLBARS))
-		KviCustomToolBarManager::instance()->load(tmp.ptr());
+		KviCustomToolBarManager::instance()->load(tmp);
 	// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SCRIPTTOOLBARS);
-	if(KviFileUtils::fileExists(tmp.ptr()))
-		KviCustomToolBarManager::instance()->loadScripttoolbarsCompat(tmp.ptr());
+	if(KviFileUtils::fileExists(tmp))
+		KviCustomToolBarManager::instance()->loadScripttoolbarsCompat(tmp);
 	// EOF COMPATIBILITY
 
 	KVI_SPLASH_SET_PROGRESS(70)
 
 	// Alias manager
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_ALIASES))
-		KviKvs::loadAliases(tmp.ptr());
+		KviKvs::loadAliases(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(75)
 
 	// Script addons manager (this in fact has delayed loading, so we don't even care
 	// about showing up an entry in the splash screen)
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SCRIPTADDONS))
-		KviKvs::loadScriptAddons(tmp.ptr());
+		KviKvs::loadScriptAddons(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(77)
 
@@ -360,7 +373,7 @@ void KviApp::setup()
 	g_pMediaManager = new KviMediaManager();
 	g_pMediaManager->lock();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_MEDIATYPES))
-		g_pMediaManager->load(tmp.ptr());
+		g_pMediaManager->load(tmp);
 	g_pMediaManager->unlock();
 
 
@@ -369,39 +382,39 @@ void KviApp::setup()
 	// registered user data base
 	g_pRegisteredUserDataBase = new KviRegisteredUserDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_REGUSERDB))
-		g_pRegisteredUserDataBase->load(tmp.ptr());
+		g_pRegisteredUserDataBase->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(84)
 
 	// registered channel data base
 	g_pRegisteredChannelDataBase = new KviRegisteredChannelDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_REGCHANDB))
-		g_pRegisteredChannelDataBase->load(tmp.ptr());
+		g_pRegisteredChannelDataBase->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(85)
 
 	// file trader
 	g_pSharedFilesManager = new KviSharedFilesManager();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SHAREDFILES))
-		g_pSharedFilesManager->load(tmp.ptr());
+		g_pSharedFilesManager->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(86)
 
 	// nick serv data base
 	g_pNickServRuleSet = new KviNickServRuleSet();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_NICKSERVDATABASE))
-		g_pNickServRuleSet->load(tmp.ptr());
+		g_pNickServRuleSet->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(88)
 
 	g_pInputHistory = new KviInputHistory();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		g_pInputHistory->load(tmp.ptr());
+		g_pInputHistory->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(89)
 	KviAvatarCache::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_AVATARCACHE))
-		KviAvatarCache::instance()->load(tmp.ptr());
+		KviAvatarCache::instance()->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(90)
 
@@ -512,6 +525,8 @@ KviApp::~KviApp()
 	// We should have almost no UI here: only certain dialogs or popup windows may
 	// still exist: they should be harmless tough.
 	saveOptions();
+	saveIdentities();
+	KviUserIdentityManager::done();
 	if(m_pRecentChannelsDict) delete m_pRecentChannelsDict;
 	// now kill the stuff that the frame depends on
 	saveIrcServerDataBase();
@@ -1303,66 +1318,66 @@ void KviApp::updateApplicationFont()
 
 void KviApp::loadRecentEntries()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(tmp.ptr(),KviConfig::Read);
+	KviConfig cfg(tmp,KviConfig::Read);
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
 	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
 void KviApp::saveRecentEntries()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(tmp.ptr(),KviConfig::Write);
+	KviConfig cfg(tmp,KviConfig::Write);
 	cfg.writeEntry("RecentTopicList",*g_pRecentTopicList);
 	//cfg.writeEntry("Bookmarks",*g_pBookmarkList);
 }
 
 void KviApp::saveAvatarCache()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_AVATARCACHE);
-	KviAvatarCache::instance()->save(tmp.ptr());
+	KviAvatarCache::instance()->save(tmp);
 }
 
 
 void KviApp::saveToolBars()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_CUSTOMTOOLBARS);
-	KviCustomToolBarManager::instance()->save(tmp.ptr());
+	KviCustomToolBarManager::instance()->save(tmp);
 }
 
 void KviApp::savePopups()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_POPUPS);
-	KviKvs::savePopups(tmp.ptr());
+	KviKvs::savePopups(tmp);
 }
 
 void KviApp::saveInputHistory()
 {
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))
 	{
-		KviStr tmp;
+		QString tmp;
 		getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_INPUTHISTORY);
-		g_pInputHistory->save(tmp.ptr());
+		g_pInputHistory->save(tmp);
 	}
 }
 
 
 void KviApp::saveAliases()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_ALIASES);
-	KviKvs::saveAliases(tmp.ptr());
+	KviKvs::saveAliases(tmp);
 }
 
 void KviApp::saveScriptAddons()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SCRIPTADDONS);
-	KviKvs::saveScriptAddons(tmp.ptr());
+	KviKvs::saveScriptAddons(tmp);
 }
 
 void KviApp::saveTextIcons()
@@ -1372,74 +1387,81 @@ void KviApp::saveTextIcons()
 
 void KviApp::saveAppEvents()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_EVENTS);
-	KviKvs::saveAppEvents(tmp.ptr());
+	KviKvs::saveAppEvents(tmp);
 }
 
 void KviApp::saveRawEvents()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RAWEVENTS);
-	KviKvs::saveRawEvents(tmp.ptr());
+	KviKvs::saveRawEvents(tmp);
 }
 
 void KviApp::saveMediaTypes()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_MEDIATYPES);
 	g_pMediaManager->lock();
-	g_pMediaManager->save(tmp.ptr());
+	g_pMediaManager->save(tmp);
 	g_pMediaManager->unlock();
 }
 
 void KviApp::saveIrcServerDataBase()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SERVERDB);
-	g_pIrcServerDataBase->save(tmp.ptr());
+	g_pIrcServerDataBase->save(tmp);
 }
 
 void KviApp::saveProxyDataBase()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_PROXYDB);
-	g_pProxyDataBase->save(tmp.ptr());
+	g_pProxyDataBase->save(tmp);
 }
 
 void KviApp::saveRegisteredUsers()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_REGUSERDB);
-	g_pRegisteredUserDataBase->save(tmp.ptr());
+	g_pRegisteredUserDataBase->save(tmp);
 }
 
 void KviApp::saveRegisteredChannels()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_REGCHANDB);
-	g_pRegisteredChannelDataBase->save(tmp.ptr());
+	g_pRegisteredChannelDataBase->save(tmp);
 }
 
 void KviApp::saveNickServ()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_NICKSERVDATABASE);
-	g_pNickServRuleSet->save(tmp.ptr());
+	g_pNickServRuleSet->save(tmp);
 }
 
 void KviApp::saveSharedFiles()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SHAREDFILES);
-	g_pSharedFilesManager->save(tmp.ptr());
+	g_pSharedFilesManager->save(tmp);
 }
 
 void KviApp::saveActions()
 {
-	KviStr tmp;
+	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_USERACTIONS);
-	KviActionManager::instance()->save(tmp.ptr());
+	KviActionManager::instance()->save(tmp);
+}
+
+void KviApp::saveIdentities()
+{
+	QString tmp;
+	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_IDENTITIES);
+	KviUserIdentityManager::instance()->save(tmp);
 }
 
 void KviApp::saveConfiguration()
@@ -1447,6 +1469,7 @@ void KviApp::saveConfiguration()
 	// this is NOT called when the application is closing down
 	KviCustomToolBarManager::instance()->storeVisibilityState();
 	saveOptions();
+	saveIdentities();
 	saveActions();
 	saveIrcServerDataBase();
 	saveProxyDataBase();

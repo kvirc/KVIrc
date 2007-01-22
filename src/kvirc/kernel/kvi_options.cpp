@@ -837,7 +837,7 @@ void KviApp::loadOptions()
 	{
 		KviConfig cfg(buffer.ptr(),KviConfig::Read);
 
-		int prg = 8;
+		int prg = 12;
 		int i;
 
 		#define READ_OPTIONS(_num,_table,_readFnc) \

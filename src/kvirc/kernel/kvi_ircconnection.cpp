@@ -199,7 +199,7 @@ void KviIrcConnection::setupTextCodec()
 	m_pConsole->setTextEncoding(QString(m_pTextCodec->name()));
 }
 
-QCString KviIrcConnection::encodeText(const QString &szText)
+KviQCString KviIrcConnection::encodeText(const QString &szText)
 {
 	if(!m_pTextCodec)return szText.utf8();
 	return m_pTextCodec->fromUnicode(szText);
@@ -910,9 +910,9 @@ void KviIrcConnection::loginToIrcServer()
 	
 	// FIXME: The server's encoding!
 	setupTextCodec();
-	QCString szNick = encodeText(m_pUserInfo->nickName()); // never empty
-	QCString szUser = encodeText(m_pUserInfo->userName()); // never empty
-	QCString szReal = encodeText(m_pUserInfo->realName()); // may be empty
+	KviQCString szNick = encodeText(m_pUserInfo->nickName()); // never empty
+	KviQCString szUser = encodeText(m_pUserInfo->userName()); // never empty
+	KviQCString szReal = encodeText(m_pUserInfo->realName()); // may be empty
 
 	if(!szReal.data())szReal = "";
 
@@ -962,7 +962,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),
-			pServer->m_szHostname.utf8().data(),szReal.data()))
+			KviQString::toUtf8(pServer->m_szHostname).data(),szReal.data()))
 	{
 		// disconnected in the meantime!
 		return;

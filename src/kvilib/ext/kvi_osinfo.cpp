@@ -26,6 +26,7 @@
 
 #include "kvi_osinfo.h"
 #include "kvi_locale.h"
+#include "kvi_qstring.h"
 
 #ifndef COMPILE_ON_WINDOWS
 	#include <sys/utsname.h>
@@ -315,7 +316,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.sysname);
-		return QString::null;
+		return KviQString::empty;
 #endif
 	}
 	
@@ -327,7 +328,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.version);
-		return QString::null;
+		return KviQString::empty;
 #endif
 	}
 	
@@ -339,7 +340,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.release);
-		return QString::null;
+		return KviQString::empty;
 #endif
 	}
 	
@@ -352,7 +353,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.machine);
-		return QString::null;
+		return KviQString::empty;
 #endif
 	}
 	
@@ -364,7 +365,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.nodename);
-		return QString::null;
+		return KviQString::empty;
 #endif
 	}
 	
@@ -374,7 +375,7 @@ namespace KviOsInfo
 		if(gethostname(hbuffer,1024) == 0)
 			return QString::fromLocal8Bit(hbuffer);
 		else
-			return QString::null;
+			return KviQString::empty;
 	}
 }
 

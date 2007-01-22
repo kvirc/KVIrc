@@ -31,6 +31,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
+#include "kvi_ptrdict.h"
 
 #include <qlayout.h>
 #include <qaccel.h>
@@ -310,7 +311,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	}
 
 	bool bFoundSomethingHere = false;
-	QPtrDict<bool> lOptionWidgetsToMark;
+	KviPtrDict<bool> lOptionWidgetsToMark;
 	lOptionWidgetsToMark.setAutoDelete(true);
 	QTabWidget * pTabWidgetToMark = 0;
 	
@@ -396,7 +397,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 
 	if(pTabWidgetToMark)
 	{
-		QPtrDictIterator<bool> it(lOptionWidgetsToMark);
+		KviPtrDictIterator<bool> it(lOptionWidgetsToMark);
 		while(bool * pBool = it.current())
 		{
 			KviOptionsWidget * pOptionsWidget = (KviOptionsWidget *)it.currentKey();

@@ -83,7 +83,7 @@
 #include "class_vbox.h"
 #include "class_hbox.h"
 static int contatore=0;
-static QPtrDict<KviKvsObject> *objectsdict=new QPtrDict<KviKvsObject>;
+static KviPtrDict<KviKvsObject> *objectsdict=new KviPtrDict<KviKvsObject>;
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
 
 static bool objects_module_cleanup(KviModule *m)
@@ -348,9 +348,9 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 			c->warning(__tr2qs("The class '%Q' does not exist"),&szClassName);
 		return true;
 	}
-	QPtrDict<KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
+	KviPtrDict<KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
 
-	QPtrDictIterator<KviKvsObject> it(*od);
+	KviPtrDictIterator<KviKvsObject> it(*od);
 	kvs_uint_t uIdx = 0;
 	if(szFlags.contains(QChar('s')))
 	{

@@ -109,6 +109,7 @@ headers_HEADERS = \
 	../core/kvi_list.h \
 	../core/kvi_malloc.h \
 	../core/kvi_memmove.h \
+	../core/kvi_ptrdict.h \
 	../core/kvi_qcstring.h \
 	../core/kvi_qstring.h \
 	../core/kvi_strasm.h \

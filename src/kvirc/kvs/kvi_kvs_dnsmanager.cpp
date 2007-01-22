@@ -99,7 +99,7 @@ void KviKvsDnsManager::addDns(KviKvsDnsObject * pObject)
 {
 	if(!m_pDnsObjects)
 	{
-		m_pDnsObjects = new QPtrDict<KviKvsDnsObject>;
+		m_pDnsObjects = new KviPtrDict<KviKvsDnsObject>;
 		m_pDnsObjects->setAutoDelete(true);
 	}
 	m_pDnsObjects->replace(pObject->dns(),pObject);

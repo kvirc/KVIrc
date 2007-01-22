@@ -169,6 +169,7 @@ public:
 	void saveToolBars();
 	void saveActions();
 	void saveScriptAddons();
+	void saveIdentities();
 
 	// kvi_options.cpp : Options saving and loading (kvi.main.conf))
 	void loadOptions();
@@ -223,6 +224,7 @@ public:
 	// directory is used
 	//
 	bool getReadOnlyConfigPath(KviStr &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
+	bool getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
 
 	// kvi_app.cpp : Window stuff
 	KviWindow       * findWindow(const char * windowId);

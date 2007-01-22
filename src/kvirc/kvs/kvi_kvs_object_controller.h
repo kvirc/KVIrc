@@ -31,7 +31,7 @@
 #include "kvi_list.h"
 
 #include "kvi_dict.h"
-#include <qptrdict.h>
+#include "kvi_ptrdict.h"
 
 #include "kvi_kvs_object.h"
 #include "kvi_kvs_object_class.h"
@@ -45,7 +45,7 @@ public:
 	~KviKvsObjectController();
 protected:
 	KviPtrList<KviKvsObject>      * m_pTopLevelObjectList;
-	QPtrDict<KviKvsObject>        * m_pObjectDict;
+	KviPtrDict<KviKvsObject>        * m_pObjectDict;
 	KviDict<KviKvsObjectClass>      * m_pClassDict;
 	KviKvsObjectClass             * m_pObjectClass; //base class
 protected:
@@ -63,7 +63,7 @@ public:
 	void killAllObjectsWithClass(KviKvsObjectClass * pClass);
 	KviKvsObjectClass * lookupClass(const QString &szClass,bool bBuiltinOnly = false);
 	KviKvsObject * lookupObject(kvs_hobject_t hObject){ return m_pObjectDict->find(hObject); };
-	QPtrDict<KviKvsObject> * objectDict(){ return m_pObjectDict; };
+	KviPtrDict<KviKvsObject> * objectDict(){ return m_pObjectDict; };
 	KviDict<KviKvsObjectClass> * classDict(){ return m_pClassDict; };
 };
 

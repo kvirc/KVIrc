@@ -47,6 +47,9 @@ extern unsigned char iso88591_toUpper_map[256];
 
 namespace KviQString
 {
+	// The global empty (and null) string
+	const QString empty;
+
 	bool equalCSN(const QString &sz1,const QString &sz2,unsigned int len)
 	{
 		if(len == 0)return true; // assume equal

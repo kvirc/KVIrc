@@ -102,13 +102,13 @@ public:
 	void setUserMode(const QString &szUserMode){ m_szUserMode = szUserMode; };
 protected:
 	void copyFrom(const KviUserIdentity &src);
-	bool save(KviConfig &cfg,const QString &szPrefix);
-	bool load(KviConfig &cfg,const QString &szPrefix);
+	bool save(KviConfig &cfg);
+	bool load(KviConfig &cfg);
 };
 
 class KVILIB_API KviUserIdentityManager : public KviHeapObject
 {
-public:
+protected:
 	KviUserIdentityManager();
 	~KviUserIdentityManager();
 protected:
@@ -126,8 +126,9 @@ public:
 
 	void setDefaultIdentity(const QString &szIdentityId){ m_szDefaultIdentity = szIdentityId; };
 	
-	KviUserIdentityManager * getWorkingCopy();
-	void setValuesFrom(KviUserIdentityManager * pWorkingCopy);
+	KviUserIdentityManager * createWorkingCopy();
+	void copyFrom(KviUserIdentityManager * pWorkingCopy);
+	void releaseWorkingCopy(KviUserIdentityManager * pWorkingCopy);
 
 	void save(const QString &szFileName);
 	void load(const QString &szFileName);

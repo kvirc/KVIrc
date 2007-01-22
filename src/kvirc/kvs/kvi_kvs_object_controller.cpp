@@ -42,7 +42,7 @@ KviKvsObjectController::KviKvsObjectController()
 {
 	m_pTopLevelObjectList = new KviPtrList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
-	m_pObjectDict = new QPtrDict<KviKvsObject>(101);
+	m_pObjectDict = new KviPtrDict<KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
 	m_pClassDict = new KviDict<KviKvsObjectClass>(31,false);
 	m_pClassDict->setAutoDelete(false);
@@ -124,7 +124,7 @@ void KviKvsObjectController::clearInstances()
 	delete m_pObjectDict; // empty dict
 	m_pTopLevelObjectList = new KviPtrList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
-	m_pObjectDict = new QPtrDict<KviKvsObject>(101);
+	m_pObjectDict = new KviPtrDict<KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
 }
 

@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_list.h"
 #include "kvi_time.h"
 #include <qobject.h>
@@ -260,7 +261,7 @@ signals:
 	void chanListChanged();
 public:
 	QString decodeText(const char * szText);
-	QCString encodeText(const QString &szText);
+	KviQCString encodeText(const QString &szText);
 private:
 	void setupTextCodec();
 };
