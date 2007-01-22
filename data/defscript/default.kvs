@@ -98,9 +98,9 @@ alias(gnotice)
 
 	#Check null notice
 	if(!$0){
-		echo $tr("Usage"): /gnotice [-acohvq] <$tr("message")>
-		echo $tr("-a: send notice to all channel owners")
-		echo $tr("-c: send notice to all channel admins")
+		echo $tr("Usage"): /gnotice [-waohvq] <$tr("message")>
+		echo $tr("-w: send notice to all channel owners")
+		echo $tr("-a: send notice to all channel admins")
 		echo $tr("-o: send notice to all channel ops")
 		echo $tr("-h: send notice to all channel halfops")
 		echo $tr("-v: send notice to all channel voices")
@@ -109,7 +109,7 @@ alias(gnotice)
 	}
 
 	# Check null switches
-	if((!$sw(a))&&(!$sw(c))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
+	if((!$sw(w))&&(!$sw(a))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
 		notice $chan.name($active) $0-
 		halt
 	}
@@ -121,10 +121,10 @@ alias(gnotice)
 		%cmd="notice"
 
 	# Check switches passed
-	if($sw(a))
+	if($sw(w))
 		eval %cmd \~$chan.name($active) $0-
 
-	if($sw(c))
+	if($sw(a))
 		eval %cmd \!$chan.name($active) $0-
 
 	if($sw(o))
