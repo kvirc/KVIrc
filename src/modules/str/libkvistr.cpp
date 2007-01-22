@@ -1505,7 +1505,7 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<string> $str.digest(<data:string>[,<algorythm:string>])
 	@description:
-		Calcilates digest for given string,using algorytm,passed as 2nd argument.
+		Calculates digest for given string using algorithm passed as 2nd argument.
 		Currently supported: md5, md4, md2, sha1, mdc2, ripemd160, dss1
 		Default is md5. Requires OpenSSL support
 */

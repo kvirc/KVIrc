@@ -658,9 +658,15 @@ alias(dccallow)
 	quote dccallow $0
 }
 
-#shortcut for commonly called algorytm
-alias(md5) {
+#shortcut for commonly called algorithm
+alias(md5)
+{
 	return $str.digest($0-,md5)
+}
+
+alias(sha1)
+{
+	return $str.digest($0-,sha1)
 }
 
 # DNS : people like it
