@@ -708,9 +708,16 @@ alias(dns)
 
 alias(ss)
 {
-    #Silent
-    quote ss $0-
+	# Silent
+        quote ss $0-
 }
+
+alias(seenserv)
+{
+	# Silent
+	msg -q SeenServ $0-
+}
+
 alias(hs)
 {
     #Silent
