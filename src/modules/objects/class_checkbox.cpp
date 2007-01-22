@@ -82,6 +82,7 @@ bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 	KviStyledCheckBox  * cb = new KviStyledCheckBox(parentScriptWidget(), name());
 	setObject(cb, true);
 	connect(cb,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
+	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }
 
