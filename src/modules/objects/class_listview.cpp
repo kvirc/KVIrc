@@ -318,10 +318,10 @@ bool KviKvsObject_listview::function_setSelectionMode(KviKvsObjectFunctionCall *
 
 bool KviKvsObject_listview::function_setSorting(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t iCol;
+	kvs_int_t iCol;
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
 		KVSO_PARAMETER("benabled",KVS_PT_BOOL,0,bEnabled)
 		KVSO_PARAMETERS_END(c)
 	if (widget()) 	((QListView *)widget())->setSorting(iCol,bEnabled);
