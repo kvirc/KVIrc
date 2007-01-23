@@ -48,7 +48,7 @@
 	@functions:
 		!fn: $addTab(<widget:object>,<text_label:string>,[<icon_id>])
 		Adds another page to the tab view with the text label and optional icon.
-		!fn: $insertTab(<widget:object>,<tex_label:string>,<index:integer>)
+		!fn: $insertTab(<widget:object>,<tex_label:string>,<index:uinteger>)
 		Inserts another tab and page to the tab view with name and label-text specified.[br]
 		If index is not specified, the tab is simply appended.[br]
 		Otherwise the new tab is inserted at the specified position.
@@ -60,16 +60,16 @@
 		Sets the tab label for <tab_widget>  to label.
 		!fn: $changeTab(<tab_widget:object>,<label:text>,[<icon_id>])
 		Defines a new label, and optional icon, for the tab .
-		!fn: $setCurrentPage(<index:integer>)
+		!fn: $setCurrentPage(<index:uinteger>)
 		Sets the index position of the current tab page to <index>.
 		!fn: <integer> $currentPageIndex()
 		Returns the current page index.
-		!fn: <string> $label(<index:integer>)
+		!fn: <string> $label(<index:uinteger>)
 		Retunrs the label to the <index>.
 		!fn: <string> $currentTabLabel()
 		Returns the label of the current tab.
 		!fn: $setMargin(<margin:integer>)
-		Sets the margin in this tab widget to <number int>.
+		Sets the margin in this tab widget to <margin>.
 		!fn: <integer> $margin()
 		Returns the margin in this tab widget.
 		!fn: $removePage(<tab_widget:object>)
@@ -224,7 +224,7 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;
 	QString szLabel,szIcon;
-	kvs_int_t uIndex;
+	kvs_uint_t uIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tab_widget",KVS_PT_HOBJECT,0,hObject)
@@ -257,11 +257,11 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_tabwidget::functionsetCurrentPage(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iIndex;
+	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QTabWidget *)widget())->setCurrentPage(iIndex);
+	if (widget()) ((QTabWidget *)widget())->setCurrentPage(uIndex);
     return true;
 }
 bool KviKvsObject_tabwidget::functionsetTabToolTip(KviKvsObjectFunctionCall *c)
@@ -375,22 +375,22 @@ bool KviKvsObject_tabwidget::functioncurrentPageIndex(KviKvsObjectFunctionCall *
 }
 bool KviKvsObject_tabwidget::functiontabLabel(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iIndex;
+	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
+		KVSO_PARAMETER("index",KVS_PT_INT,0,uIndex)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
-	QString label=((QTabWidget *)widget())->label(iIndex);
+	QString label=((QTabWidget *)widget())->label(uIndex);
 	c->returnValue()->setString(label);
     return true;
 }
 bool KviKvsObject_tabwidget::functionsetMargin(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uMargin;
+	kvs_int_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
+		KVSO_PARAMETER("margin",KVS_PT_INT,0,iMargin)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QTabWidget *)widget())->setMargin(uMargin);
+	if (widget()) ((QTabWidget *)widget())->setMargin(iMargin);
     return true;
 }
 bool KviKvsObject_tabwidget::functionmargin(KviKvsObjectFunctionCall *c)

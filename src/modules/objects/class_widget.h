@@ -99,8 +99,6 @@ protected:
 	bool function_width(KviKvsObjectFunctionCall *);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
-	bool function_enableDynamicToolTip(KviKvsObjectFunctionCall *c);
-	bool function_disableDynamicToolTip(KviKvsObjectFunctionCall *c);
 	bool function_setDynamicToolTip(KviKvsObjectFunctionCall *c);
 
 signals:

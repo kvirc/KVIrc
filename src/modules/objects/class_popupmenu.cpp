@@ -55,20 +55,20 @@
 		The widget is treats as a separator; this means that the item is not selectable and you can, for example, simply insert a label if you need a popup menu with a title.
 		!fn: $insertHandle(<text_label:string>,<popupmenu:object>,[icon])
 		Inserts a submenu with optional icon into the popup menu.
-		!fn: $exec([<widget:objects>,<x:integer>,<y:integer>])
+		!fn: $exec([<widget:objects>,<x:uinteger>,<y:integer>])
 		If called without paramaters show the popup menu at the current pointer position.[br]
 		With the optional parameters show the popup menu at the coordinate x,y widget parameter relative.
-		!fn: $removeItem(<popup_id:integer>)
+		!fn: $removeItem(<popup_id:Uinteger>)
 		Removes the menu item that has the identifier id.
-		!fn: $removeItemAt(<index:integer>)
+		!fn: $removeItemAt(<index:uinteger>)
 		Removes the menu item at position index.
-		!fn: $insertSeparator(<index:integer>)
+		!fn: $insertSeparator(<index:uinteger>)
 		Inserts a separator at position index.[br]
 		If the index is negative the separator becomes the last menu item.
-		!fn: $activatedEvent(<popup_id:integer>)
+		!fn: $activatedEvent(<popup_id:uinteger>)
 		This function is called when a menu item and return the the item id.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
-		!fn: $highligthtedEvent(<popup_id:integer>)
+		!fn: $highligthtedEvent(<popup_id:uinteger>)
 		This function is called when a menu item is highlighted and return the item id.[br]
 		The default implementation emits the [classfnc]$highlighted[/classfnc]() signal.
 	@signals:
@@ -278,7 +278,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 	}
 
 	KviKvsObject *pObject;
-	kvs_int_t iX,iY;
+	kvs_uint_t iX,iY;
 	QString szLabel,szIcon;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -309,7 +309,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uItem;
+	kvs_uint_t uItem;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item_id",KVS_PT_UNSIGNEDINTEGER,0,uItem)
 	KVSO_PARAMETERS_END(c)
@@ -318,7 +318,7 @@ bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_popupmenu::functionremoveItemAt(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uIndex;
+	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
@@ -328,7 +328,7 @@ bool KviKvsObject_popupmenu::functionremoveItemAt(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_popupmenu::functioninsertSeparator(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uIndex;
+	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)

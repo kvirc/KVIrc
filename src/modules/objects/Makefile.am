@@ -11,6 +11,7 @@ libkviobjects_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviobjects_la_SOURCES =  libkviobjects.cpp \
 			    class_button.cpp \
+                      class_buttongroup.cpp \
 			    class_checkbox.cpp \
 			    class_combobox.cpp \
 			    class_dialog.cpp \
@@ -56,6 +57,7 @@ libkviobjects_la_SOURCES =  libkviobjects.cpp \
 libkviobjects_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
 noinst_HEADERS=	class_button.h \
+            class_buttongroup.h \
 		class_checkbox.h \
 		class_combobox.h \
 		class_dialog.h \

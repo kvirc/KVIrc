@@ -63,6 +63,7 @@
 #include "class_radiobutton.h"
 #include "class_process.h"
 #include "class_groupbox.h"
+#include "class_buttongroup.h"
 #include "class_tabwidget.h"
 #include "class_workspace.h"
 #include "class_popupmenu.h"
@@ -121,6 +122,7 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_hbox::unregisterSelf();
 	KviKvsObject_vbox::unregisterSelf();
 	KviKvsObject_label::unregisterSelf();
+	KviKvsObject_buttongroup::unregisterSelf();
 	KviKvsObject_groupbox::unregisterSelf();	
 	KviKvsObject_dialog::unregisterSelf();
 	KviKvsObject_checkbox::unregisterSelf();
@@ -927,6 +929,7 @@ static bool objects_module_can_unload(KviModule *m)
 	KviKvsObject_checkbox::registerSelf();
 	KviKvsObject_dialog::registerSelf();
 	KviKvsObject_groupbox::registerSelf();
+	KviKvsObject_buttongroup::registerSelf();
 	KviKvsObject_label::registerSelf();
 	KviKvsObject_vbox::registerSelf();
 	KviKvsObject_hbox::registerSelf();

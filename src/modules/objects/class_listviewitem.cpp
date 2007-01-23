@@ -385,13 +385,13 @@ bool KviKvsObject_listviewitem::function_text(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uCol;
+	kvs_uint_t uCol;
 	KviKvsObject *obPixmap;
 	kvs_hobject_t obHpixmap;
 	KviKvsVariant * vPixmap;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("column",KVS_PT_VARIANT,0,vPixmap)
+		KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
 	KVSO_PARAMETERS_END(c)
 	QPixmap *pix = 0;
 	if(vPixmap->isHObject())

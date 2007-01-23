@@ -516,7 +516,7 @@ bool KviKvsObject_painter::functionSetFont(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_painter::functionSetFontSize(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t uSize;
+	kvs_uint_t uSize;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("size",KVS_PT_UNSIGNEDINTEGER,0,uSize)
 	KVSO_PARAMETERS_END(c)

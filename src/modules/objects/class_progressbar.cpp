@@ -45,10 +45,10 @@
 	@description:
 		This widget can be used to display a horizontal progress bar.
 	@functions:
-		!fn: $setProgress(<steps_value:integer>)
+		!fn: $setProgress(<steps_value:uinteger>)
 		Set the amount of steps completed.
 		See also [classfnc]$settotalSteps[/classfnc]()
-		!fn: $settotalSteps(<total_steps:integer>)
+		!fn: $settotalSteps(<total_steps:uinteger>)
 		The progress bar uses the concept of steps; you give it the total number of steps
 		and the number of steps completed so far and it will display the percentage of steps that have been completed. 
 		See also [classfnc]$setProgress[/classfnc]() 
@@ -95,7 +95,7 @@ bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 
 bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iProgress;
+	kvs_uint_t iProgress;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("step_value",KVS_PT_UNSIGNEDINTEGER,0,iProgress)
 	KVSO_PARAMETERS_END(c)
@@ -104,7 +104,7 @@ bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_progressbar::functionSetTotalSteps(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iSteps;
+	kvs_uint_t iSteps;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("total_steps",KVS_PT_UNSIGNEDINTEGER,0,iSteps)
 	KVSO_PARAMETERS_END(c)

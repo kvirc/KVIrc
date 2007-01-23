@@ -214,6 +214,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\class_buttongroup.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\class_checkbox.cpp"
 				>
 			</File>
@@ -402,6 +406,19 @@
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\class_buttongroup.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine=""
+						Outputs=""
 					/>
 				</FileConfiguration>
 			</File>

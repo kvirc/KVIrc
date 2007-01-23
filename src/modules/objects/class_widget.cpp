@@ -392,7 +392,10 @@ const int widgettypes_cod[] = {
 		!fn: integer $globalCursorX()
 		Return the x coordinate of mouse pointer global position.
 		!fn: integer $globalCursorY()
-		Return the y coordinate of the mouse pointer global position.
+		Return the y coordinate of the mo>use pointer global position.
+		!fn: setDynamicTooltip(<text:string>,<x:integer>,<y:integer>,<width:uinteger>,<height:uinteger>)
+		Immediately pops up a tip saying text and removes the tip once the cursor moves out of rectangle at x,y widget coordinates and with width/height dimension. 
+		See also [classfnc]$mayTipEvent[/classfnc].
 		@examples:
 		[example]
 			%Widget = $new(widget)
@@ -562,8 +565,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setBackgroundImage",function_setBackgroundImage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"enableDynamicToolTip",function_enableDynamicToolTip)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"disableDynamicToolTip",function_disableDynamicToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setDynamicToolTip",function_setDynamicToolTip)
 
 	// events
@@ -1616,27 +1617,14 @@ bool KviKvsObject_widget::function_globalCursorY(KviKvsObjectFunctionCall *c)
 	if(widget())c->returnValue()->setInteger(QCursor::pos().y());
 	return true;
 }
-bool KviKvsObject_widget::function_enableDynamicToolTip(KviKvsObjectFunctionCall *c)
-{
-	if (!m_pTip) m_pTip=new KviKvsTip(this,widget());
-	return true;
-}
-bool KviKvsObject_widget::function_disableDynamicToolTip(KviKvsObjectFunctionCall *c)
-{
-	if (m_pTip)
-	{
-		delete m_pTip;
-		m_pTip=0;
-	}
-	return true;
-}
 
 bool KviKvsObject_widget::function_setDynamicToolTip(KviKvsObjectFunctionCall *c)
 {
 	if (!m_pTip)m_pTip=new KviKvsTip(this,widget());
 	
 	QString szTip;
-	kvs_int_t iXstart,iYstart,uWidth,uHeight;
+	kvs_int_t iXstart,iYstart;
+	kvs_uint_t uWidth,uHeight;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tip_text",KVS_PT_STRING,0,szTip)
 		KVSO_PARAMETER("x_start",KVS_PT_INT,0,iXstart)

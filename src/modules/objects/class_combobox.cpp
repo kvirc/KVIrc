@@ -285,7 +285,7 @@ bool KviKvsObject_combobox::functionsetEditText(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_combobox::functiontextAt(KviKvsObjectFunctionCall *c)
 {
 
-	kvs_int_t uIndex;
+	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)

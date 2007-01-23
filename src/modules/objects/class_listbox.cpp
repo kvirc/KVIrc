@@ -100,7 +100,9 @@
 		This function is called by KVIrc when the current item changes.
 		!fn: <index:integer> $onItemEvent()
 		This function is called by KVIrc when the current item pointed by the mouse changes and gives in $0 the item index.
-		
+		!fn: <array:x,y,width,height> $itemRect(<item:index>)
+		Returns the rectangle on the screen that item occupies, or an invalid rectangle if item is 0 or is not currently visible. 
+
 		@signals:
 		!sg: <string> $currentItemChange()
 		This signal is emitted by the default implementation of [classfnc]$currentItemChangeEvent[/classfnc]().[br]

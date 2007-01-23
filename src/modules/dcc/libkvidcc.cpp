@@ -1626,7 +1626,43 @@ static bool dcc_kvs_cmd_abort(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: dcc.setBandwidthLimit
+	@type:
+		command
+	@title:
+		dcc.setBandwidthLimit
+	@short:
+		Set the bandwidthlimit of a dcc.send session.
+	@syntax:
+		dcc.setBandwidthLimit [-q] [dcc_id:uint]
+	@description:
+		Terminates the Direct Client Connection specified by <dcc_id>.[br]
+		If <dcc_id> is omitted then the DCC Session associated
+		to the current window is assumed.[br]
+		If <dcc_id> is not a valid DCC session identifier (or it is omitted
+		and the current window has no associated DCC session) then
+		this function  prints a warning unless the -q switch is used.[br]
+		If <dcc_id> does not refers to a file transfer a warning will be printing unless the -q switch is used.[br]
+		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+	@examples:
+*/
+static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
+{
+	kvs_uint_t uDccId,uVal;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("limit_value",KVS_PT_UINT,0,uVal)
+		KVSM_PARAMETER("dcc_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uDccId)
+	KVSM_PARAMETERS_END(c)
 
+	KviDccDescriptor * dcc = dcc_kvs_find_dcc_descriptor(uDccId,c,!c->switches()->find('q',"quiet"));
+	if(dcc)
+	{
+		if (dcc->transfer())dcc->transfer()->setBandwidthLimit(uVal);
+		else if (!c->switches()->find('q',"quiet"))c->warning(__tr2qs_ctx("This DCC session is not a DCC transfer session","dcc"));
+	}
+	return true;
+}
 /*
 	@doc: dcc.protocol
 	@type:
@@ -2671,6 +2707,7 @@ static bool dcc_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"rsend",dcc_kvs_cmd_rsend);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"get",dcc_kvs_cmd_get);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"abort",dcc_kvs_cmd_abort);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setBandwidthLimit",dcc_kvs_cmd_setBandwidthLimit);
 
 
 	// FIXME: file upload / download state ?

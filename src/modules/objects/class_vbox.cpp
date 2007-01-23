@@ -41,9 +41,9 @@
 	@description:
 		The vbox class widget provides vertical geometry management for its child widgets.
 	@functions:
-		!fn: $setSpacing(<spacing:uint>)
+		!fn: $setSpacing(<spacing:int>)
 		Sets the default spacing of the widgets in pixels
-		!fn: $setMargin(<margin:uint>)
+		!fn: $setMargin(<margin:int>)
 		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
 		!fn: $setStretchFactor(<widget:hobject>,<stretch:uint>)
 		Sets the stretch factor of widget to stretch.
@@ -73,21 +73,21 @@ bool KviKvsObject_vbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 
 bool KviKvsObject_vbox::functionsetMargin(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t uMargin;
+	kvs_int_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
+		KVSO_PARAMETER("margin",KVS_PT_INT,0,iMargin)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QVBox *)widget())->setMargin(uMargin);
+    if (widget()) ((QVBox *)widget())->setMargin(iMargin);
 	return true;
 }
 
 bool KviKvsObject_vbox::functionsetSpacing(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t uSpacing;
+	kvs_int_t iSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
+		KVSO_PARAMETER("spacing",KVS_PT_INT,0,iSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QVBox *)widget())->setSpacing(uSpacing);
+    if (widget()) ((QVBox *)widget())->setSpacing(iSpacing);
 	return true;
 }
 

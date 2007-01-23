@@ -81,20 +81,20 @@ static int mod_cod[] =	{
 		ommited, the line is put at end.
 		!fn: $removeLine(<line:integer>)
 		Removes line number <line>.
-		!fn: $insertAt(<txt:string>, <line:integer>, <col:integer>)
+		!fn: $insertAt(<txt:string>, <line:uinteger>, <col:uinteger>)
 		Inserts txt at line number line, after character number col in
 		the line. If txt contains newline characters, new lines are
 		inserted.
 		!fn: <integer> $numLines()
 		Returns number of lines in the widget.
-		!fn: $setCursorPosition(<line:integer>, <col:integer>, <mark:boolean>)
+		!fn: $setCursorPosition(<line:integer>, <col:uinteger>, <mark:boolean>)
 		Sets the cursor position to character number col in line
 		number line. The parameters are adjusted to lie within the
 		legal range.[br]
 		If mark is 1, the selection is cleared. otherwise it
 		is extended
 		!fn: <line,col:integer> $cursorPosition()
-		Returns current cursor position in "<line:integer>, <col:integer>" format.
+		Returns current cursor position in "<line:uinteger>, <col:uinteger>" format.
 		!fn: $setReadOnly(<bReadOnly:boolean>)
 		Sets the editor to be read-only if bReadOnly is 1 or
 		removes the read-only status is ReadOnly is 0
@@ -395,12 +395,12 @@ bool KviKvsObject_mledit::functionRemoveLine(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_mledit::functionInsertAt(KviKvsObjectFunctionCall *c)
 
 {
-	kvs_int_t iLine,iCol;
+	kvs_uint_t iLine,iCol;
 	QString szInsert;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szInsert)
-		KVSO_PARAMETER("line",KVS_PT_INT,0,iLine)
-		KVSO_PARAMETER("col",KVS_PT_INT,0,iCol)
+		KVSO_PARAMETER("line",KVS_PT_UNSIGNEDINTEGER,0,iLine)
+		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(iLine < 0 || iCol < 0 || iLine > ((QMultiLineEdit *)widget())->numLines())
@@ -421,7 +421,7 @@ bool KviKvsObject_mledit::functionSetCursorPosition(KviKvsObjectFunctionCall *c)
 {
 
 	bool bFlag;
-	kvs_int_t iLine,iCol;
+	kvs_uint_t iLine,iCol;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line",KVS_PT_UNSIGNEDINTEGER,0,iLine)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
@@ -524,7 +524,7 @@ bool KviKvsObject_mledit::functionLength(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_mledit::functionSetMaxLines(KviKvsObjectFunctionCall *c)
 {
 
-	kvs_int_t imaxLines;
+	kvs_uint_t imaxLines;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_lines",KVS_PT_UNSIGNEDINTEGER,0,imaxLines)
 	KVSO_PARAMETERS_END(c)
@@ -842,12 +842,12 @@ bool KviKvsObject_mledit::functionsetColor(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_mledit::functionsetPointSize(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iPointSize;
+	kvs_uint_t uPointSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("point_size",KVS_PT_UNSIGNEDINTEGER,0,iPointSize)
+		KVSO_PARAMETER("point_size",KVS_PT_UNSIGNEDINTEGER,0,uPointSize)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QMultiLineEdit *)widget())->setPointSize(iPointSize);
+		((QMultiLineEdit *)widget())->setPointSize(uPointSize);
 	return true;
 }
 
