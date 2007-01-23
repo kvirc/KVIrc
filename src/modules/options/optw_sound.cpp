@@ -33,7 +33,7 @@
 
 #include <qlabel.h>
 #include <qpushbutton.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_INFO_TIPS
 	#include <qtooltip.h>
@@ -65,7 +65,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	QToolTip::add(g,__tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.","options"));
 
-	QHBox * h = new QHBox(g);
+	KviTalHBox * h = new KviTalHBox(g);
 
 	m_pSoundSystemBox = new QComboBox(false,h);
 
@@ -81,7 +81,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	QToolTip::add(g,__tr2qs_ctx("This allows you to select the preferred media player to be used with " \
 		"the mediaplayer.* module commands and functions.","options"));
 
-	h = new QHBox(g);
+	h = new KviTalHBox(g);
 
 	m_pMediaPlayerBox = new QComboBox(false,h);
 
@@ -103,7 +103,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	QToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
 
-	h = new QHBox(g);
+	h = new KviTalHBox(g);
 
 	m_pTagsEncodingCombo = new QComboBox(false,h);
 	m_pTagsEncodingCombo->insertItem(__tr2qs_ctx("Use Language Encoding","options"));
@@ -126,7 +126,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	QToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
 
-	h = new QHBox(g);
+	h = new KviTalHBox(g);
 
 	m_pWinampEncodingCombo = new QComboBox(false,h);
 	

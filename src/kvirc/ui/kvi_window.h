@@ -26,6 +26,7 @@
 
 #include "kvi_string.h"
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_settings.h"
 
 #ifdef COMPILE_ON_WINDOWS
@@ -47,14 +48,17 @@ class KviIrcContext;
 class KviIrcConnection;
 class KviWindowToolPageButton;
 
-class QPopupMenu;
+class KviTalPopupMenu;
 class QPixmap;
 class QSplitter;
-class QHBox;
+class KviTalHBox;
 class QAccel;
 class QToolButton;
 class QTextCodec;
-class QWidgetStack;
+class KviTalWidgetStack;
+
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_widgetstack.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptController;
@@ -152,7 +156,7 @@ protected: // almost private: don't touch :D
 	KviIrcView                          * m_pIrcView;
 	KviInput                            * m_pInput;
 	QSplitter                           * m_pSplitter;
-	QHBox                               * m_pButtonBox;
+	KviTalHBox                               * m_pButtonBox;
 	unsigned long int                     m_uId;
 	QString                               m_szTextEncoding;
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -216,9 +220,9 @@ public:
 	KviInput * input(){ return m_pInput; };
 
 	// The target of this window: empty when it makes no sense :D
-	virtual const QString & target(){ return QString::null; };
+	virtual const QString & target(){ return KviQString::empty; };
 	// The local nickname bound to this window: might be empty when a local nickname makes no sense
-	virtual const QString & localNick(){ return QString::null; };
+	virtual const QString & localNick(){ return KviQString::empty; };
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviCryptSessionInfo * cryptSessionInfo(){ return m_pCryptSessionInfo; };
@@ -241,7 +245,7 @@ public:
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
-	QCString encodeText(const QString &szText);
+	KviQCString encodeText(const QString &szText);
 	QString decodeText(const char * szText);
 
 	void contextPopup();
@@ -258,7 +262,7 @@ public:
 	void delayedClose(); // close that jumps out of the current event loop
 
 	// Interesting overridables:
-	virtual void fillContextPopup(QPopupMenu * p);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void getConfigGroupName(QString &buf);
 //	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);

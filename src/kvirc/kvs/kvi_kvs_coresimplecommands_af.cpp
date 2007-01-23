@@ -48,7 +48,7 @@
 	#include <unistd.h>   // for usleep();
 #endif
 
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 // kvi_app.cpp
 extern KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
@@ -416,8 +416,8 @@ namespace KviKvsCoreSimpleCommands
 		switch(o.unicode())
 		{
 			case 't':
-				QToolTip::remove(pButton);
-				QToolTip::add(pButton,tbPar);
+				KviTalToolTip::remove(pButton);
+				KviTalToolTip::add(pButton,tbPar);
 				pButton->setButtonText(tbPar);
 			break;
 			case 'i':

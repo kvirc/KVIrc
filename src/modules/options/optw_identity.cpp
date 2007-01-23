@@ -86,7 +86,7 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	m_pNickEdit3 = new QLineEdit(this);
 	g->addMultiCellWidget(m_pNickEdit3,3,3,1,2);
 	m_pNickEdit3->setText(n3);
-	QHBox * h = new QHBox(this);
+	KviTalHBox * h = new KviTalHBox(this);
 	h->setSpacing(8);
 	g->addWidget(h,4,2);
 
@@ -238,7 +238,7 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	g->addWidget(b,1,2);
-	QHBox * h = new QHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
+	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
 	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);
@@ -314,7 +314,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	layout()->setMargin(10);
 
 	QGroupBox * gbox = addGroupBox(0,0,0,0,1,QGroupBox::Horizontal,__tr2qs_ctx("Basic Properties","options"));
-	QHBox * hb = new QHBox(gbox);
+	KviTalHBox * hb = new KviTalHBox(gbox);
 	hb->setSpacing(3);
 
 	KviStringSelector * sel = addStringSelector(hb,__tr2qs_ctx("Nickname:","options"),KviOption_stringNickname1);
@@ -355,7 +355,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Profile","options"));
 
-	hb = new QHBox(gbox);
+	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	
 	QLabel * l = new QLabel(__tr2qs_ctx("Age:","options"),hb);
@@ -385,7 +385,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	hb->setStretchFactor(m_pAgeCombo,1);
 
 
-	hb = new QHBox(gbox);
+	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	
 	l = new QLabel(__tr2qs_ctx("Gender:","options"),hb);
@@ -524,7 +524,7 @@ KviIdentityAvatarOptionsWidget::KviIdentityAvatarOptionsWidget(QWidget * parent)
 	mergeTip(m_pAvatarPreview,szTip);
 #endif
 
-	QHBox * hb = new QHBox(this);
+	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setSpacing(4);
 	addWidgetToLayout(hb,0,2,0,2);
 

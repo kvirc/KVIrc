@@ -35,7 +35,7 @@
 #include <qcombobox.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 #include <qtooltip.h>
 #include <qtoolbutton.h>
@@ -79,7 +79,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
   mergeTip(m_pListView->viewport(),tiptxt);
 #endif
 
-  QVBox * vbox = new QVBox(this);
+  KviTalVBox * vbox = new KviTalVBox(this);
   addWidgetToLayout(vbox,1,1,1,1);
 
   QToolButton * tb = new KviStyledToolButton(vbox);
@@ -150,7 +150,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColStretch(0,1);
 
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 
 
 }

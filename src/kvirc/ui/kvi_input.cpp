@@ -58,7 +58,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <qfiledialog.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qpainter.h>
 #include <qclipboard.h>
 #include <qdragobject.h>
@@ -67,7 +67,7 @@
 #include <qapplication.h>
 #include <qclipboard.h>
 #include <qmessagebox.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qlayout.h> 
 #include <qstyle.h>
 
@@ -94,7 +94,7 @@
 extern KviColorWindow    * g_pColorWindow;
 extern KviTextIconWindow * g_pTextIconWindow;
 extern KviHistoryWindow  * g_pHistoryWindow;
-extern QPopupMenu        * g_pInputPopup;
+extern KviTalPopupMenu        * g_pInputPopup;
 
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -208,7 +208,7 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	setFrameShadow( Plain );
 	recalcFontMetrics();
 	
-	m_pIconMenu = new QPopupMenu();
+	m_pIconMenu = new KviTalPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
 
 	setCursor( IbeamCursor );
@@ -2207,7 +2207,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 	
-	m_pButtonContainer=new QHBox(this,"input_buttons_box");
+	m_pButtonContainer=new KviTalHBox(this);
 	
 	m_pHistoryButton = new KviStyledToolButton(m_pButtonContainer,"historybutton");
 	m_pHistoryButton->setUsesBigPixmap(false);
@@ -2217,14 +2217,14 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	{
 		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)),QIconSet::Small);
 		m_pHistoryButton->setIconSet(is1);
-		QToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	}
 	else
 	{
 		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)),QIconSet::Small);
 		m_pHistoryButton->setIconSet(is1);
-		QToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 	}
 
 	m_pIconButton = new KviStyledToolButton(m_pButtonContainer,"iconbutton");
@@ -2232,7 +2232,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	QIconSet is3;
 	is3.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),QIconSet::Small);
 	m_pIconButton->setIconSet(is3);
-	QToolTip::add(m_pIconButton,__tr2qs("Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
+	KviTalToolTip::add(m_pIconButton,__tr2qs("Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
 
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
@@ -2244,7 +2244,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	is0.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYSMILE)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is0.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYKVS)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	m_pCommandlineModeButton->setIconSet(is0);
-	QToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
+	KviTalToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setOn(true);
 
@@ -2256,7 +2256,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	m_pMultiEditorButton->setIconSet(is2);
-	QToolTip::add(m_pMultiEditorButton,__tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;"));
+	KviTalToolTip::add(m_pMultiEditorButton,__tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;"));
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
 	
@@ -2481,7 +2481,7 @@ void KviInput::applyOptions()
 		QIconSet is1;
 		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)),QIconSet::Small);
 		m_pHistoryButton->setIconSet(is1);
-		QToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));
 	}
 
@@ -2490,7 +2490,7 @@ void KviInput::applyOptions()
 		QIconSet is1;
 		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)),QIconSet::Small);
 		m_pHistoryButton->setIconSet(is1);
-		QToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	}
 

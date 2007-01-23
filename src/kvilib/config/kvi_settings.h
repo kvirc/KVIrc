@@ -136,4 +136,5 @@
 	#define debug qDebug
 #endif
 
+
 #endif //_KVI_SETTINGS_H_

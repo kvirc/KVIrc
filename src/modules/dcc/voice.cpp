@@ -42,7 +42,7 @@
 
 #include <qframe.h>
 #include <qsplitter.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qslider.h>
 #include <qtooltip.h>
 
@@ -655,9 +655,9 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
 
-	m_pHBox = new QHBox(this,"h_box");
+	m_pHBox = new KviTalHBox(this);
 
-	QVBox * vbox = new QVBox(m_pHBox,"v_box");
+	KviTalVBox * vbox = new KviTalVBox(m_pHBox);
 
 	m_pInputLabel = new QLabel(__tr2qs_ctx("Input buffer","dcc"),vbox);
 	m_pInputLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
@@ -665,7 +665,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pOutputLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	vbox->setSpacing(1);
 	
-	QVBox * vbox2 = new QVBox(m_pHBox,"v_box_2");
+	KviTalVBox * vbox2 = new KviTalVBox(m_pHBox);
 
 	m_pRecordingLabel = new QLabel(vbox2);
 	m_pRecordingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RECORD)));

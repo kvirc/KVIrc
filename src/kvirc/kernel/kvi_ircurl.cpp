@@ -35,8 +35,6 @@
 #include "kvi_console.h"
 #include "kvi_frame.h"
 
-#include <qptrlist.h>
-
 #define _KVI_IRCURL_CPP_
 #include "kvi_ircurl.h"
 

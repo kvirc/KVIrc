@@ -785,7 +785,8 @@ namespace KviLocale
 		QString szLocDir = szLocaleDir;
 		KviQString::ensureLastCharIs(szLocDir,KVI_PATH_SEPARATOR_CHAR);
 
-		szBuffer = szLocDir+name+"_"+szLocale.ptr()+".mo";
+		KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
+
 		if(KviFileUtils::fileExists(szBuffer))return true;
 
 		if(szLocale.findFirstIdx('.') != -1)
@@ -793,7 +794,8 @@ namespace KviLocale
 			// things like en_GB.utf8
 			// kill them
 			szLocale.cutFromFirst('.');
-			szBuffer = szLocDir+name+"_"+szLocale.ptr()+".mo";
+
+			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
 			if(KviFileUtils::fileExists(szBuffer))return true;
 		}
 
@@ -802,7 +804,7 @@ namespace KviLocale
 			// things like @euro ?
 			// kill them
 			szLocale.cutFromFirst('@');
-			szBuffer = szLocDir+name+"_"+szLocale.ptr()+".mo";
+			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
 			if(KviFileUtils::fileExists(szBuffer))return true;
 		}
 
@@ -811,13 +813,13 @@ namespace KviLocale
 			// things like en_GB
 			// kill them
 			szLocale.cutFromFirst('_');
-			szBuffer = szLocDir+name+"_"+szLocale.ptr()+".mo";
+			KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
 			if(KviFileUtils::fileExists(szBuffer))return true;
 		}
 
 		// try the lower case version too
 		szLocale.toLower();
-		szBuffer = szLocDir+name+"_"+szLocale.ptr()+".mo";
+		KviQString::sprintf(szBuffer,"%Q%Q_%s.mo",&szLocDir,&name,szLocale.ptr());
 		if(KviFileUtils::fileExists(szBuffer))return true;
 
 		return false;

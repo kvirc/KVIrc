@@ -1,11 +1,12 @@
 #ifndef _KVI_TOOLWINDOWS_CONTAINER_H_
 #define _KVI_TOOLWINDOWS_CONTAINER_H_
 
-#include <qwidgetstack.h> 
+#include "kvi_tal_widgetstack.h"
+#include "kvi_tal_vbox.h"
+
 #include <qtoolbutton.h> 
 #include <qobjectcleanuphandler.h> 
 #include <qpushbutton.h> 
-#include <qvbox.h> 
 
 #include "kvi_heapobject.h"
 #include "kvi_styled_controls.h"
@@ -15,33 +16,16 @@ class KviWindowToolPageButton;
 
 // FIXME: these classes are probably useless now... no ?
 
-class KVIRC_API KviToolWindowsContainer : public QFrame
-{
-	Q_OBJECT
-public:
-	KviToolWindowsContainer( QWidget * parent = 0, const char * name = 0, WFlags f = 0 );
-	~KviToolWindowsContainer();
-	
-	void registerWidget(KviWindowToolWidget* page);
-	void unregisterWidget(KviWindowToolWidget* page);
-	
-	QWidget* buttonContainer() { return m_pButtonContainer; };
-	
-protected:
-	QWidgetStack		*m_pStack;
-	KviWindowToolWidget	*m_pCurrentPage;
-	QVBox			*m_pButtonContainer;
-	QObjectCleanupHandler    m_ObjectHandler;
-protected:
-	QWidgetStack* widgetContainer() { return m_pStack; };
-};
+//    Pragma: KviWindowToolPageButton is actually used in kvi_window.h and others (need to fix the name and move
+//            it to its own file.
+
 
 
 class KVIRC_API KviWindowToolWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	KviWindowToolWidget( QWidget * parent,KviWindowToolPageButton* button, const char * name = 0, WFlags f = 0 );
+	KviWindowToolWidget( QWidget * parent,KviWindowToolPageButton* button/*, const char * name = 0, WFlags f = 0 */);
 	~KviWindowToolWidget();
 	
 	void setAutoDelete(bool b) { m_bAutoDelete=b; };
@@ -60,6 +44,9 @@ protected:
 //	QObjectCleanupHandler		 m_ObjectHandler;
 	
 };
+
+
+
 
 class KVIRC_API KviWindowToolPageButton : public KviStyledToolButton
 {

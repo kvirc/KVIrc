@@ -33,7 +33,7 @@
 #include "kvi_list.h"
 
 class KviFrame;
-class QPopupMenu;
+class KviTalPopupMenu;
 class KviKvsPopupMenu;
 
 typedef struct _KviScriptMenuBarItem
@@ -52,8 +52,8 @@ public:
 	KviMenuBar(KviFrame * par,const char * name);
 	~KviMenuBar();
 protected:
-	QPopupMenu                       * m_pToolbarsPopup;
-	QPopupMenu                       * m_pRecentServersPopup;
+	KviTalPopupMenu                       * m_pToolbarsPopup;
+	KviTalPopupMenu                       * m_pRecentServersPopup;
 	KviFrame                         * m_pFrm;
 	KviPtrList<KviScriptMenuBarItem> * m_pScriptItemList;
 	int                                m_iNumDefaultItems;
@@ -61,7 +61,7 @@ protected:
 protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
-	void addDefaultItem(const QString &text,QPopupMenu * pop);
+	void addDefaultItem(const QString &text,KviTalPopupMenu * pop);
 public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
 	void addMenu(const QString &text,KviKvsPopupMenu * p,int index);

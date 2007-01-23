@@ -50,6 +50,7 @@ class KviMexToolBar;
 class KviIrcContext;
 class KviIrcConnection;
 class KviStatusBar;
+class KviTalPopupMenu;
 
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPtrList<KviWindow> otherwise
@@ -60,11 +61,11 @@ class KviStatusBar;
 // this should be probably moved out of here
 class KVIRC_API KviDockExtension
 {
-public:
-	KviDockExtension():m_uStoredWindowState(Qt::WState_Maximized){};
-	virtual ~KviDockExtension(){};
 protected:
 	unsigned int m_uStoredWindowState;
+public:
+	KviDockExtension() : m_uStoredWindowState(0){};
+	virtual ~KviDockExtension(){};
 public:
 	void setPrevWindowState(unsigned int state) { m_uStoredWindowState = state; };
 	unsigned int getPrevWindowState() { return m_uStoredWindowState; };
@@ -164,7 +165,7 @@ public:
 	KviMexToolBar * moduleExtensionToolBar(int extensionId);
 	// Helper to fill the toolbars popup
 	// it is used by KviToolBar and KviMenuBar
-	void fillToolBarsPopup(QPopupMenu * p);
+	void fillToolBarsPopup(KviTalPopupMenu * p);
 	int registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot);
 	void unregisterAccelerator(int id);
 

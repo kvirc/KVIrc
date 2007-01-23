@@ -38,7 +38,7 @@
 #include <qlistview.h>
 #include <qfileinfo.h>
 #include <qdir.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 
 #ifdef COMPILE_ZLIB_SUPPORT
@@ -57,7 +57,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 	
-	m_pIndexTab  = new QVBox(m_pTabWidget);
+	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pIndexTab,__tr2qs_ctx("Index","logview"));
 	m_pListView = new QListView(m_pIndexTab);
 	m_pListView->addColumn(__tr2qs_ctx("Log File","logview"),135);
@@ -69,7 +69,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(itemSelected(QListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonClicked ( QListViewItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( QListViewItem * , const QPoint &, int )));
 	
-	//m_pSearchTab  = new QVBox(m_pTabWidget);
+	//m_pSearchTab  = new KviTalVBox(m_pTabWidget);
 	//m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Search","logview"));
 
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
@@ -293,7 +293,7 @@ void KviLogViewMDIWindow::rightButtonClicked ( QListViewItem * it, const QPoint 
 {
 	if(!it) return;
 	if(((KviLogListViewItem *)it)->fileName(0).isEmpty()) return;
-	QPopupMenu* popup = new QPopupMenu(this);
+	KviTalPopupMenu* popup = new KviTalPopupMenu(this);
 	popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
 	popup->exec( QCursor::pos() );
 }

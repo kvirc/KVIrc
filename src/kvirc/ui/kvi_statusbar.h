@@ -36,7 +36,7 @@ class KviFrame;
 
 class QTimer;
 class QLabel;
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KVIRC_API KviStatusBarMessage : public KviHeapObject
 {
@@ -75,8 +75,8 @@ protected:
 	QLabel                                   * m_pMessageLabel;
 	KviPtrList<KviStatusBarApplet>           * m_pAppletList;
 	KviDict<KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
-	QPopupMenu                               * m_pContextPopup;
-	QPopupMenu                               * m_pAppletsPopup;
+	KviTalPopupMenu                               * m_pContextPopup;
+	KviTalPopupMenu                               * m_pAppletsPopup;
 	KviStatusBarApplet                       * m_pClickedApplet;
 	int                                        m_iLastMinimumHeight;
 	bool                                       m_bStopLayoutOnAddRemove;
@@ -107,7 +107,7 @@ public:
 	// pnt is global!
 	KviStatusBarApplet * appletAt(const QPoint &pnt,bool bBestMatch = false);
 
-	QPopupMenu * contextPopup();
+	KviTalPopupMenu * contextPopup();
 	// takes the ownership of pMsg
 	void queueMessage(KviStatusBarMessage * pMsg);
 	// called by KviFrame

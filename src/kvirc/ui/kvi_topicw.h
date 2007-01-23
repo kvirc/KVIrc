@@ -37,7 +37,7 @@
 
 class QComboBox;
 class KviChannel;
-class QPopupMenu;
+class KviTalPopupMenu;
 class KviIrcConnection;
 class QListBox;
 
@@ -68,7 +68,7 @@ private:
 	QPushButton * m_pAccept;
 	QPushButton * m_pDiscard;
 	QPushButton * m_pHistory;
-	QPopupMenu  * m_pContextPopup;
+	KviTalPopupMenu  * m_pContextPopup;
 	QChar getSubstituteChar(unsigned short control_code);
 	int xCursorPostionCalculation(int xInd);
 	KviInputEditor* m_pInput;

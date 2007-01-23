@@ -28,8 +28,8 @@
 
 class KviPixmap;
 class KviPixmapSelector;
-class QVBoxLayout; 
-class QHBoxLayout; 
+class KviTalVBoxLayout; 
+class KviTalHBoxLayout; 
 class QGridLayout; 
 class QCheckBox;
 class QLabel;

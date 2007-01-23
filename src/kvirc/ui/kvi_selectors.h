@@ -29,8 +29,8 @@
 #include "kvi_settings.h"
 
 #include <qcheckbox.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_vbox.h"
 #include <qlineedit.h>
 #include <qlabel.h>
 #include <qscrollview.h>
@@ -91,7 +91,7 @@ public slots:
 	void setNotEnabled(bool bNotEnabled);
 };
 
-class KVIRC_API KviStringSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviStringSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -154,7 +154,7 @@ protected slots:
 	void choosePixmap();
 };
 
-class KVIRC_API KviUIntSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviUIntSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -177,7 +177,7 @@ public:
 };
 
 
-class KVIRC_API KviFileSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviFileSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -218,7 +218,7 @@ protected:
 };
 
 
-class KVIRC_API KviColorSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviColorSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -240,7 +240,7 @@ private slots:
 	void changeClicked();
 };
 
-class KVIRC_API KviFontSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviFontSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -259,7 +259,7 @@ private slots:
 	void changeClicked();
 };
 
-class KVIRC_API KviStringListSelector : public QVBox, public KviSelectorInterface
+class KVIRC_API KviStringListSelector : public KviTalVBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -282,9 +282,9 @@ private slots:
 	void removeClicked();
 };
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
-class KVIRC_API KviMircTextColorSelector : public QHBox, public KviSelectorInterface
+class KVIRC_API KviMircTextColorSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -297,9 +297,9 @@ private:
 	unsigned int * m_pUBack;
 	unsigned int m_uFore;
 	unsigned int m_uBack;
-	QPopupMenu * m_pContextPopup;
-	QPopupMenu * m_pForePopup;
-	QPopupMenu * m_pBackPopup;
+	KviTalPopupMenu * m_pContextPopup;
+	KviTalPopupMenu * m_pForePopup;
+	KviTalPopupMenu * m_pBackPopup;
 public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
@@ -337,7 +337,7 @@ public:
 	const QString& pass() { return m_szPass; }
 };
 
-class KVIRC_API KviCahnnelListSelector : public QVBox, public KviSelectorInterface
+class KVIRC_API KviCahnnelListSelector : public KviTalVBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:

@@ -34,7 +34,7 @@
 #include "kvi_dynamictooltip.h"
 
 #include <qlistview.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qtimer.h>
 #include <qpixmap.h>
@@ -66,9 +66,9 @@ public:
 protected:
 	QSplitter           * m_pVertSplitter;
 	QListView           * m_pListView;
-	QPopupMenu          * m_pContextPopup;
-	QPopupMenu          * m_pLocalFilePopup;
-	QPopupMenu          * m_pOpenFilePopup;
+	KviTalPopupMenu          * m_pContextPopup;
+	KviTalPopupMenu          * m_pLocalFilePopup;
+	KviTalPopupMenu          * m_pOpenFilePopup;
 	QTimer              * m_pTimer;
 	QPixmap             * m_pMemPixmap;
 	int                   m_iLineSpacing; // cached fm value

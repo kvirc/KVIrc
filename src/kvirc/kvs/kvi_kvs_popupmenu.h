@@ -32,7 +32,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_runtimecontext.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qlabel.h>
 #include <qpixmap.h>
 
@@ -235,7 +235,7 @@ public:
 
 
 
-class KVIRC_API KviKvsPopupMenu : public QPopupMenu
+class KVIRC_API KviKvsPopupMenu : public KviTalPopupMenu
 {
 	friend class KviKvsPopupMenuItemMenu;
 	friend class KviKvsPopupManager;

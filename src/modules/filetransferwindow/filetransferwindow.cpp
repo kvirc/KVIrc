@@ -38,7 +38,7 @@
 
 #include <qsplitter.h>
 #include <qtooltip.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qheader.h>
 #include <qpainter.h>
 #include <qmessagebox.h>
@@ -276,11 +276,11 @@ void KviFileTransferWindow::doubleClicked(QListViewItem *it,const QPoint &pnt,in
 
 void KviFileTransferWindow::rightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
 {
-	if(!m_pContextPopup)m_pContextPopup = new QPopupMenu(this);
-	if(!m_pLocalFilePopup)m_pLocalFilePopup = new QPopupMenu(this);
+	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
+	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
 	if(!m_pOpenFilePopup)
 	{
-		m_pOpenFilePopup= new QPopupMenu(this);
+		m_pOpenFilePopup= new KviTalPopupMenu(this);
 		connect(m_pOpenFilePopup,SIGNAL(activated(int)),this,SLOT(openFilePopupActivated(int)));
 	}
 

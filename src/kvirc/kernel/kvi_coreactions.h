@@ -41,7 +41,7 @@ protected:
 	QString m_szAbortConnectionString;
 	QString m_szDisconnectString;
 public:
-	virtual bool addToPopupMenu(QPopupMenu *p);
+	virtual bool addToPopupMenu(KviTalPopupMenu *p);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
 protected:
 	virtual void setup();
@@ -57,11 +57,11 @@ class KviSeparatorAction : public KviAction
 public:
 	KviSeparatorAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(QPopupMenu *p);
+	virtual bool addToPopupMenu(KviTalPopupMenu *p);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
 };
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviSubmenuAction : public KviKvsAction
 {
@@ -78,11 +78,11 @@ public:
 		unsigned int uFlags = 0);
 	~KviSubmenuAction();
 protected:
-	QPopupMenu * m_pPopup;
+	KviTalPopupMenu * m_pPopup;
 protected:
 	virtual void setup();
 public:
-	virtual bool addToPopupMenu(QPopupMenu *p);
+	virtual bool addToPopupMenu(KviTalPopupMenu *p);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
 protected slots:
 	virtual void popupAboutToShow();
@@ -158,7 +158,7 @@ class KviIrcContextDisplayAction : public KviAction
 public:
 	KviIrcContextDisplayAction(QObject * pParent);
 public:
-	virtual bool addToPopupMenu(QPopupMenu *p);
+	virtual bool addToPopupMenu(KviTalPopupMenu *p);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
 	virtual void activeContextStateChanged();
 	virtual void activeContextChanged();
@@ -176,7 +176,7 @@ protected:
 	QString m_szAwayString;
 	QString m_szBackString;
 public:
-	virtual bool addToPopupMenu(QPopupMenu *p);
+	virtual bool addToPopupMenu(KviTalPopupMenu *p);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *t);
 protected:
 	virtual void setup();

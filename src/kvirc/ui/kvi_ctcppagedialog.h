@@ -26,7 +26,7 @@
 
 #include "kvi_string.h"
 
-#include <qwidgetstack.h>
+#include "kvi_tal_widgetstack.h"
 #include <qtabbar.h>
 #include <qwidget.h>
 #include <qpushbutton.h>
@@ -38,7 +38,7 @@ public:
 	KviCtcpPageDialog();
 	~KviCtcpPageDialog();
 protected:
-	QWidgetStack * m_pWidgetStack;
+	KviTalWidgetStack * m_pWidgetStack;
 	QTabBar      * m_pTabBar;
 	QPushButton  * m_pCloseButton;
 public:

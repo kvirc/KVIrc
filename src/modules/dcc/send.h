@@ -36,9 +36,9 @@
 #include "kvi_list.h"
 #include <qlabel.h>
 #include <qprogressbar.h>
-#include <qpopupmenu.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include "kvi_tal_popupmenu.h"
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_vbox.h"
 #include <qfile.h>
 #include <qdialog.h>
 
@@ -167,7 +167,7 @@ protected slots:
 
 class KviDccMarshal;
 class QPainter;
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviDccFileTransfer : public KviFileTransfer, public KviDccMarshalOutputContext
 {
@@ -219,7 +219,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column,int width,int height);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(QPopupMenu * m,int column);
+	virtual void fillContextPopup(KviTalPopupMenu * m,int column);
 	virtual void fillStatusString(QString &szBuffer);
 	virtual bool active();
 	virtual void die();

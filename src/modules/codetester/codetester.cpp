@@ -39,7 +39,7 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include <qtoolbutton.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 extern KviPtrList<KviCodeTesterWindow> * g_pCodeTesterWindowList;
 

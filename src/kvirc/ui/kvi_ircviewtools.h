@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qframe.h>
 #include <qlistview.h>
 #include <qstring.h>
@@ -37,7 +37,7 @@ class QLineEdit;
 
 class KviIrcView;
 
-class KviIrcViewToolTip : public QToolTip
+class KviIrcViewToolTip : public KviTalToolTip
 {
 public:
 	KviIrcViewToolTip(KviIrcView * pView);

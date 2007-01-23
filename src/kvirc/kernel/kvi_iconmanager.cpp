@@ -410,7 +410,7 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 			int iVal = szName.toInt(&bOk);
 			if(bOk)emit selected(iVal);
 
-			if(parentWidget() && isVisible() && parentWidget()->inherits("QPopupMenu"))
+			if(parentWidget() && isVisible() && parentWidget()->inherits("KviTalPopupMenu"))
 			{
 				parentWidget()->close();
 				return true;

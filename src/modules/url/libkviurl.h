@@ -63,7 +63,7 @@ public:
 	~UrlDialog();
 private:
 	KviTalMenuBar *m_pMenuBar;
-	QPopupMenu *m_pListPopup;	// dynamic popup menu
+	KviTalPopupMenu *m_pListPopup;	// dynamic popup menu
 	KviStr m_szUrl;			// used to pass urls to sayToWin slot
 protected:
 	QPixmap *myIconPtr();

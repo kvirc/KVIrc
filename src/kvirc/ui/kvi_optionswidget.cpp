@@ -33,7 +33,7 @@
 
 #include "kvi_app.h"
 
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER 4
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE 6
@@ -73,15 +73,15 @@ void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 	static QString begin = "<table width=\"100%\" align=\"center\"><tr><td bgcolor=\"#fefef0\">";
 	static QString mid = "</td></tr><tr><td>";
 	static QString end = "</td></tr></table>";
-	QString s = QToolTip::textFor(w);
-	if(s.isEmpty())QToolTip::add(w,tip);
+	QString s = KviTalToolTip::textFor(w);
+	if(s.isEmpty())KviTalToolTip::add(w,tip);
 	else {
 		QString tmp = begin;
 		tmp += tip;
 		tmp += mid;
 		tmp += s;
 		tmp += end;
-		QToolTip::add(w,tmp);
+		KviTalToolTip::add(w,tmp);
 	}
 }
 
@@ -141,7 +141,7 @@ KviDirectorySelector * KviOptionsWidget::addDirectorySelector(int x1,int y1,int 
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -154,7 +154,7 @@ KviDirectorySelector * KviOptionsWidget::addDirectorySelector(QWidget * pParent,
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -186,7 +186,7 @@ KviFileSelector * KviOptionsWidget::addFileSelector(int x1,int y1,int x2,int y2,
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -199,7 +199,7 @@ KviFileSelector * KviOptionsWidget::addFileSelector(QWidget * pParent,const QStr
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -230,7 +230,7 @@ KviSoundSelector * KviOptionsWidget::addSoundSelector(int x1,int y1,int x2,int y
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -243,7 +243,7 @@ KviSoundSelector * KviOptionsWidget::addSoundSelector(QWidget * pParent,const QS
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 
 	return d;
 }
@@ -273,7 +273,7 @@ KviBoolSelector * KviOptionsWidget::addBoolSelector(int x1,int y1,int x2,int y2,
 	QString tmp = m_szBasicTipStart;
 	tmp += g_boolOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -284,7 +284,7 @@ KviBoolSelector * KviOptionsWidget::addBoolSelector(QWidget * pParent,const QStr
 	QString tmp = m_szBasicTipStart;
 	tmp += g_boolOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -306,7 +306,7 @@ KviPixmapSelector * KviOptionsWidget::addPixmapSelector(int x1,int y1,int x2,int
 	QString tmp = m_szBasicTipStart;
 	tmp += g_pixmapOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -341,7 +341,7 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1,int y1,int x2,int y2,
 	QString tmp = m_szBasicTipStart;
 	tmp += g_uintOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -354,7 +354,7 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent,const QStr
 	QString tmp = m_szBasicTipStart;
 	tmp += g_uintOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -395,7 +395,7 @@ KviStringSelector * KviOptionsWidget::addStringSelector(int x1,int y1,int x2,int
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -406,7 +406,7 @@ KviStringSelector * KviOptionsWidget::addStringSelector(QWidget * pParent,const 
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -435,7 +435,7 @@ KviPasswordSelector * KviOptionsWidget::addPasswordSelector(int x1,int y1,int x2
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -446,7 +446,7 @@ KviPasswordSelector * KviOptionsWidget::addPasswordSelector(QWidget * pParent,co
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -468,7 +468,7 @@ KviStringListSelector * KviOptionsWidget::addStringListSelector(int x1,int y1,in
 	QString tmp = m_szBasicTipStart;
 	tmp += g_stringlistOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -497,7 +497,7 @@ KviColorSelector * KviOptionsWidget::addColorSelector(int x1,int y1,int x2,int y
 	QString tmp = m_szBasicTipStart;
 	tmp += g_colorOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -508,7 +508,7 @@ KviColorSelector * KviOptionsWidget::addColorSelector(QWidget * pParent,const QS
 	QString tmp = m_szBasicTipStart;
 	tmp += g_colorOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -538,7 +538,7 @@ KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(int x1,int
 	QString tmp = m_szBasicTipStart;
 	tmp += g_uintOptionsTable[optForeId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -550,7 +550,7 @@ KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(QWidget * 
 	QString tmp = m_szBasicTipStart;
 	tmp += g_uintOptionsTable[optForeId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -580,7 +580,7 @@ KviFontSelector * KviOptionsWidget::addFontSelector(int x1,int y1,int x2,int y2,
 	QString tmp = m_szBasicTipStart;
 	tmp += g_fontOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 
@@ -591,7 +591,7 @@ KviFontSelector * KviOptionsWidget::addFontSelector(QWidget * pParent,const QStr
 	QString tmp = m_szBasicTipStart;
 	tmp += g_fontOptionsTable[optId].name;
 	tmp += m_szBasicTipEnd;
-	QToolTip::add(d,tmp);
+	KviTalToolTip::add(d,tmp);
 	return d;
 }
 

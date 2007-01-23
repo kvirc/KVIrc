@@ -34,6 +34,7 @@
 #include "kvi_list.h"
 
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_console.h"
 
 #include "kvi_ircmessage.h"
@@ -253,7 +254,7 @@ public:
 	static void encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);
 	static const char * decodeCtcpEscape(const char * msg_ptr,KviStr &buffer);
-	static const char * decodeCtcpEscape(const char * msg_ptr,QCString &buffer);
+	static const char * decodeCtcpEscape(const char * msg_ptr,KviQCString &buffer);
 	static const char * extractCtcpParameter(const char * msg_ptr,KviStr &buffer,bool bSpaceBreaks = true);
 	static const char * extractCtcpParameter(const char * msg_ptr,QString &buffer,bool bSpaceBreaks = true);
 };

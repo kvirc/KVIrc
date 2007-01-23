@@ -43,8 +43,8 @@
 
 #include <qsplitter.h>
 #include <qlayout.h>
-#include <qvbox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_vbox.h"
+#include "kvi_tal_popupmenu.h"
 #include <qtooltip.h>
 #include <qpushbutton.h>
 
@@ -73,7 +73,7 @@ KviEventEditor::KviEventEditor(QWidget * par)
 
 	l->addWidget(spl,0,0);
 
-	QVBox * boxi = new QVBox(spl);
+	KviTalVBox * boxi = new KviTalVBox(spl);
 	m_pListView = new QListView(boxi);
 	m_pListView->addColumn(__tr2qs("Event"));
 	m_pListView->setMultiSelection(false);
@@ -83,7 +83,7 @@ KviEventEditor::KviEventEditor(QWidget * par)
 	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),boxi);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
-	QVBox * box = new QVBox(spl);
+	KviTalVBox * box = new KviTalVBox(spl);
 	m_pNameEditor = new QLineEdit(box);
 	QToolTip::add(m_pNameEditor,__tr2qs("Edit the event handler name."));
 	m_pEditor = KviScriptEditor::createInstance(box);
@@ -125,7 +125,7 @@ void KviEventEditor::oneTimeSetup()
 	}
 
 
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 
 	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(selectionChanged(QListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),

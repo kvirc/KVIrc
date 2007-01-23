@@ -107,7 +107,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	g->addWidget(cancelButton,3,1);
 
 /*
-	QHBox * hb = new QHBox(this);
+	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setSpacing(4);
 	
 	QPushButton * namesButton = new QPushButton("/names", hb);

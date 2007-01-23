@@ -33,7 +33,7 @@
 #include "kvi_irccontext.h"
 
 #include <qlistview.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qlineedit.h>
 

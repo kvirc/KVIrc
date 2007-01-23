@@ -85,8 +85,8 @@
 #include <qtoolbar.h>
 #include <qtoolbutton.h>
 #include <qtimer.h>
-#include <qhbox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_popupmenu.h"
 #include <qmessagebox.h>
 #include <qstringlist.h>
 
@@ -117,7 +117,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 		m_iFlags |= KVI_CONSOLE_FLAG_FIRSTINAPP;
 	}
 
-	m_pButtonBox = new QHBox(this,"button_box");
+	m_pButtonBox = new KviTalHBox(this);
 	m_pButtonBox->setSpacing(5);
 	new QLabel(__tr2qs("Address:"),m_pButtonBox,"url_label");
 	m_pAddressEdit = new QComboBox(m_pButtonBox,"url_editor");
@@ -130,7 +130,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pAddressEdit->setInsertionPolicy(QComboBox::NoInsertion);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);
-	QToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
+	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
@@ -245,7 +245,7 @@ void KviConsole::triggerCreationEvents()
 }
 
 
-void KviConsole::fillContextPopup(QPopupMenu * p)
+void KviConsole::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id;
 	int cc = 0;

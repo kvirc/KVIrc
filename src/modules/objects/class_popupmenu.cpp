@@ -184,7 +184,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_popupmenu)
 
 bool KviKvsObject_popupmenu::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QPopupMenu(parentScriptWidget(), name()), true);
+	setObject(new KviTalPopupMenu(parentScriptWidget(), name()), true);
 	connect(widget(),SIGNAL(activated(int)),this,SLOT(slotactivated(int)));
 	connect(widget(),SIGNAL(highlighted(int)),this,SLOT(slothighlighted(int)));
 	return true;
@@ -203,12 +203,12 @@ bool KviKvsObject_popupmenu::functioninsertItem(KviKvsObjectFunctionCall *c)
     if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
-        if (pix) id=((QPopupMenu *)widget())->insertItem(*pix,szItem);
+        if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szItem);
 		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
 
 	}
 	else
-		id=((QPopupMenu *)widget())->insertItem(szItem);
+		id=((KviTalPopupMenu *)widget())->insertItem(szItem);
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -235,7 +235,7 @@ bool KviKvsObject_popupmenu::functioninsertWidget(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't add a non-widget object"));
         return TRUE;
     }
-	if (widget()) ((QPopupMenu *)widget())->insertItem(((QPopupMenu  *)(pObject->object())));
+	if (widget()) ((KviTalPopupMenu *)widget())->insertItem(((KviTalPopupMenu  *)(pObject->object())));
 	return true;
 }
 bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
@@ -260,12 +260,12 @@ bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
     if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
-        if (pix) id=((QPopupMenu *)widget())->insertItem(*pix,szLabel,((QPopupMenu  *)(ob->object())));
+        if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szLabel,((KviTalPopupMenu  *)(ob->object())));
 		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
 
 	}
 	else
-		id=((QPopupMenu *)widget())->insertItem(szLabel,((QPopupMenu  *)(ob->object())));
+		id=((KviTalPopupMenu *)widget())->insertItem(szLabel,((KviTalPopupMenu  *)(ob->object())));
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -273,7 +273,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 {
 	if(!c->params()->count())
 	{
-	 ((QPopupMenu *)widget())->exec(QCursor::pos());
+	 ((KviTalPopupMenu *)widget())->exec(QCursor::pos());
 	 return true;
 	}
 
@@ -303,7 +303,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 
-	((QPopupMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
+	((KviTalPopupMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
 
 	return true;
 }
@@ -313,7 +313,7 @@ bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item_id",KVS_PT_UNSIGNEDINTEGER,0,uItem)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((QPopupMenu *)widget())->removeItem(uItem);
+	if(widget()) ((KviTalPopupMenu *)widget())->removeItem(uItem);
 	return true;
 }
 bool KviKvsObject_popupmenu::functionremoveItemAt(KviKvsObjectFunctionCall *c)
@@ -322,7 +322,7 @@ bool KviKvsObject_popupmenu::functionremoveItemAt(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if(widget())((QPopupMenu *)widget())->removeItemAt(uIndex);
+	if(widget())((KviTalPopupMenu *)widget())->removeItemAt(uIndex);
 	return true;
 }
 
@@ -332,7 +332,7 @@ bool KviKvsObject_popupmenu::functioninsertSeparator(KviKvsObjectFunctionCall *c
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if(widget())((QPopupMenu *)widget())->insertSeparator(uIndex);
+	if(widget())((KviTalPopupMenu *)widget())->insertSeparator(uIndex);
 	return true;
 }
 

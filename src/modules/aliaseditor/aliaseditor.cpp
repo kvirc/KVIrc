@@ -42,7 +42,7 @@
 
 #include <qsplitter.h>
 #include <qlayout.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qtooltip.h>
 #include <qpushbutton.h>
 #include <qdir.h>
@@ -213,15 +213,15 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 
 	l->addWidget(m_pSplitter,0,0);
 	
-	QVBox * box = new QVBox(m_pSplitter);
+	KviTalVBox * box = new KviTalVBox(m_pSplitter);
 	m_pListView = new QListView(box);
 	m_pListView->addColumn(__tr2qs("Alias"));
 	m_pListView->setSelectionMode(QListView::Extended);
 	m_pListView->setShowSortIndicator(true);
 	m_pListView->setRootIsDecorated(true);
 
-	box = new QVBox(m_pSplitter);
-	QHBox * hbox = new QHBox(box);
+	box = new KviTalVBox(m_pSplitter);
+	KviTalHBox * hbox = new KviTalHBox(box);
 	m_pNameLabel = new QLabel(__tr2qs("No item selected"),hbox);
 	m_pRenameButton = new QPushButton(__tr2qs("Rename"),hbox);
 	m_pRenameButton->setEnabled(false);
@@ -233,7 +233,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
 	connect(m_pEditor,SIGNAL(replaceAll(const QString &,const QString &)),this,SLOT(slotReplaceAll(const QString &,const QString &)));
 
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 
 	oneTimeSetup();
 

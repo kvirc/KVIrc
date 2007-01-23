@@ -37,7 +37,7 @@
 
 class QTimer;
 class QLabel;
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviConfig;
 class KviFrame;
@@ -99,7 +99,7 @@ public:
 	bool isSelected(){ return m_bSelected; };
 protected:
 	virtual void paintEvent(QPaintEvent *e);
-	virtual void fillContextPopup(QPopupMenu *p){};
+	virtual void fillContextPopup(KviTalPopupMenu *p){};
 	virtual void loadState(const char * prefix,KviConfig *cfg){};
 	virtual void saveState(const char * prefix,KviConfig *cfg){};
 	virtual QString tipText(const QPoint &);
@@ -118,7 +118,7 @@ protected:
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
-	virtual void fillContextPopup(QPopupMenu * p);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
 	virtual void loadState(const char * prefix,KviConfig *cfg);
 	virtual void saveState(const char * prefix,KviConfig *cfg);
@@ -136,7 +136,7 @@ protected:
 	bool m_bTotal;
 protected:
 	virtual void timerEvent(QTimerEvent * e);
-	virtual void fillContextPopup(QPopupMenu *p);
+	virtual void fillContextPopup(KviTalPopupMenu *p);
 	virtual void loadState(const char * prefix,KviConfig *cfg);
 	virtual void saveState(const char * prefix,KviConfig *cfg);
 public:
@@ -168,7 +168,7 @@ protected:
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *e);
 	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(QPopupMenu *p);
+	virtual void fillContextPopup(KviTalPopupMenu *p);
 	virtual void loadState(const char * prefix,KviConfig *cfg);
 	virtual void saveState(const char * prefix,KviConfig *cfg);
 protected slots:

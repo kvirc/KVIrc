@@ -926,7 +926,7 @@ void KviDccFileTransfer::abort()
 }
 
 
-void KviDccFileTransfer::fillContextPopup(QPopupMenu * m,int column)
+void KviDccFileTransfer::fillContextPopup(KviTalPopupMenu * m,int column)
 {
 	m->insertItem(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
 	m->insertSeparator();

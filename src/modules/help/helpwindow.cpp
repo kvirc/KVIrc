@@ -73,14 +73,14 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
 	m_pHelpWidget = new KviHelpWidget(m_pSplitter,lpFrm);
 
-	m_pToolBar=new QVBox(m_pSplitter);
+	m_pToolBar=new KviTalVBox(m_pSplitter);
 
 	m_pTabWidget = new QTabWidget(m_pToolBar);
 	
-	m_pIndexTab  = new QVBox(m_pTabWidget);
+	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pIndexTab,__tr2qs("Index"));
 	
-	QHBox* pSearchBox = new QHBox(m_pIndexTab);
+	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
 	connect( m_pIndexSearch, SIGNAL( textChanged(const QString&) ),
 	     this, SLOT( searchInIndex(const QString&) ) );
@@ -98,7 +98,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect(m_pIndexListBox,SIGNAL(selected(int)),this,SLOT(indexSelected ( int )));
 	m_pIndexListBox->sort();
 	
-	m_pSearchTab  = new QVBox(m_pTabWidget);
+	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pSearchTab,__tr2qs("Search"));
 	
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);

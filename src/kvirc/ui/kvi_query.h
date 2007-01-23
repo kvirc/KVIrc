@@ -32,7 +32,7 @@
 #include "kvi_themedlabel.h"
 
 #include "kvi_asciidict.h"
-#include <qgrid.h> 
+#include "kvi_tal_grid.h"
 
 class KviConsole;
 class KviConfig;
@@ -51,8 +51,8 @@ protected:
 	KviUserListView                     * m_pUserListView;
 	KviWindowToolPageButton             * m_pListViewButton;
 	int                                   m_iFlags;
-	KviThemedLabel 			    * m_pLabel;
-	QGrid			 	    * m_pButtonGrid;
+	KviThemedLabel                      * m_pLabel;
+	KviTalGrid                          * m_pButtonGrid;
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();

@@ -30,7 +30,7 @@
 
 #include "kvi_list.h"
 #include <qframe.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qlistview.h>
 #include <qpushbutton.h>
 

@@ -32,7 +32,7 @@
 #include <qsimplerichtext.h>
 #include <qlistbox.h>
 #include <qcombobox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 #include <qwizard.h>
 
@@ -73,7 +73,7 @@ public:
 protected:
 	static KviThemeManagementDialog * m_pInstance;
 	QListBox            * m_pListBox;
-	QPopupMenu          * m_pContextPopup; 
+	KviTalPopupMenu          * m_pContextPopup; 
 	KviStyledToolButton * m_pDeleteThemeButton;
 	KviStyledToolButton * m_pPackThemeButton;
 public:

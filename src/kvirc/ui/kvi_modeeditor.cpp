@@ -47,7 +47,7 @@
 // FIXME: This widget should use a QScrollView!
 
 KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const char * mode,const char * key,const char * limit)
-: KviWindowToolWidget(par,button,nam)
+: KviWindowToolWidget(par,button)
 {
 	m_szMode = mode;
 	m_szKey = key;

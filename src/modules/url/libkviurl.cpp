@@ -24,6 +24,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_kvs_eventmanager.h"
+#include "kvi_tal_popupmenu.h"
 
 #include "kvi_menubar.h"
 #include "kvi_internalcmd.h"
@@ -113,15 +114,15 @@ UrlDialog::UrlDialog(KviPtrList<KviUrl> *g_pList)
 	//m_pUrlList = new KviListView(this,"list");
 	KviConfig cfg(szConfigPath.ptr(),KviConfig::Read);
 
-	QPopupMenu *pop;
+	KviTalPopupMenu *pop;
 
-	pop = new QPopupMenu(this);
+	pop = new KviTalPopupMenu(this);
 	pop->insertItem(__tr2qs("&Configure"),this,SLOT(config()));
 	pop->insertItem(__tr2qs("&Help"),this,SLOT(help()));
 	pop->insertItem(__tr2qs("Clo&se"),this,SLOT(close_slot()));
 	m_pMenuBar->insertItem(__tr2qs("&Module"),pop);
 
-	pop = new QPopupMenu(this);
+	pop = new KviTalPopupMenu(this);
 	pop->insertItem(__tr2qs("&Load"),this,SLOT(loadList()));
 	pop->insertItem(__tr2qs("&Save"),this,SLOT(saveList()));
 	pop->insertItem(__tr2qs("&Clear"),this,SLOT(clear()));
@@ -255,11 +256,11 @@ void UrlDialog::popup(QListViewItem *item, const QPoint &point, int col)
 {
 	if (col == 0) {
 		m_szUrl = item->text(0);
-		QPopupMenu p(0,"menu");
+		KviTalPopupMenu p(0,"menu");
 		p.insertItem(__tr2qs("&Remove"),this,SLOT(remove()));
 		p.insertItem(__tr2qs("&Find Text"),this,SLOT(findtext()));
 		p.insertSeparator();
-		m_pListPopup = new QPopupMenu(0,"list");
+		m_pListPopup = new KviTalPopupMenu(0,"list");
 		int i=0;
 		for(KviWindow *w=g_pFrame->windowList()->first();w;w=g_pFrame->windowList()->next()){
 			if ((w->type() <= 2) || (w->type() == 2) || (w->type() == 6)) {	// values defined in kvi_define.h (console,channel,query,chat,uwindow)

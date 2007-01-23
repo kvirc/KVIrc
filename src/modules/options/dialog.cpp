@@ -36,13 +36,13 @@
 #include <qlayout.h>
 #include <qaccel.h>
 #include <qlabel.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qsplitter.h>
-#include <qwidgetstack.h>
+#include "kvi_tal_widgetstack.h"
 #include <qpushbutton.h>
 #include <qtooltip.h>
 #include <qheader.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
@@ -184,7 +184,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	g1->addMultiCellWidget(spl,0,0,0,4);
 
-	QVBox * vbox = new QVBox(spl);
+	KviTalVBox * vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
 	vbox->setMargin(0);
 
@@ -196,7 +196,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pListView->setSorting(-1);
 	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(listViewItemSelectionChanged(QListViewItem *)));
 
-	QHBox * hbox = new QHBox(vbox);
+	KviTalHBox * hbox = new KviTalHBox(vbox);
 	vbox->setSpacing(2);
 	vbox->setMargin(0);
 
@@ -219,7 +219,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	QToolTip::add(m_pSearchButton,szTip);
 #endif
 
-	vbox = new QVBox(spl);
+	vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
 	vbox->setMargin(0);
 
@@ -230,7 +230,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
 	// Widget stack
-	m_pWidgetStack = new QWidgetStack(vbox);
+	m_pWidgetStack = new KviTalWidgetStack(vbox);
 	vbox->setStretchFactor(m_pWidgetStack,1);
 
 	// First widget visible

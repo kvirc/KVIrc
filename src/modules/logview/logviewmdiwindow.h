@@ -25,7 +25,7 @@
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
 
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qtabwidget.h>
 
 class QListView;
@@ -44,8 +44,8 @@ protected:
 	QStringList     * m_pFileNames;
 	QString           m_szLogDirectory;
 	QTabWidget    * m_pTabWidget;
-	QVBox         * m_pIndexTab;
-	QVBox         * m_pSearchTab;
+	KviTalVBox         * m_pIndexTab;
+	KviTalVBox         * m_pSearchTab;
 protected:
 	QStringList getFileNames();
 	

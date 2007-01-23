@@ -64,7 +64,7 @@
 
 #include <qsplitter.h>
 #include <qevent.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -91,7 +91,7 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
 	KviThemedLabel * dummy;
 	dummy = new KviThemedLabel(m_pTopSplitter,"dummy_label");
-	QVBox * box = new QVBox(m_pTopSplitter);
+	KviTalVBox * box = new KviTalVBox(m_pTopSplitter);
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(box);

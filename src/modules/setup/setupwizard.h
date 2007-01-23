@@ -24,8 +24,8 @@
 
 
 #include <qwizard.h>
-#include <qvbox.h>
-#include <qhbox.h>
+#include "kvi_tal_vbox.h"
+#include "kvi_tal_hbox.h"
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qlineedit.h>
@@ -40,14 +40,14 @@
 
 class KviSetupWizard;
 
-class KviSetupPage : public QHBox
+class KviSetupPage : public KviTalHBox
 {
 	Q_OBJECT
 public:
 	KviSetupPage(KviSetupWizard * w);
 	~KviSetupPage();
 public:
-	QVBox * m_pVBox;
+	KviTalVBox * m_pVBox;
 	QLabel * m_pPixmapLabel;
 	QLabel * m_pTextLabel;
    
@@ -95,9 +95,9 @@ public:
 #endif
 	QRadioButton  * m_pDirRestore;
 	QLineEdit     * m_pOldDataPathEdit;
-	QHBox         * m_pOldPathBox;
-	QHBox         * m_pNewPathBox;
-	QHBox         * m_pNewIncomingBox;
+	KviTalHBox         * m_pOldPathBox;
+	KviTalHBox         * m_pNewPathBox;
+	KviTalHBox         * m_pNewIncomingBox;
 	
 	//Identify
 	QComboBox        * m_pAgeCombo;

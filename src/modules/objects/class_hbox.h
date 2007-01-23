@@ -23,7 +23,7 @@
 //
 #include "kvi_string.h"
 
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include "object_macros.h"
 #include "class_widget.h"
 

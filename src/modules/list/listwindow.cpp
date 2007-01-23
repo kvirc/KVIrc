@@ -45,7 +45,7 @@
 #include <qfontmetrics.h>
 #include <qsplitter.h>
 #include <qtooltip.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 
 extern KviPtrList<KviListWindow> * g_pListWindowList;
 
@@ -171,7 +171,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
 	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
 
-	QHBox * box = new QHBox(m_pTopSplitter);
+	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 
 	m_pRequestButton = new QToolButton(box,"request_button");
 	m_pRequestButton->setUsesBigPixmap(false);

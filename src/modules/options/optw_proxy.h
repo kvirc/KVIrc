@@ -45,7 +45,7 @@ class QLabel;
 class QLineEdit;
 class KviIpEditor;
 class QCheckBox;
-class QPopupMenu;
+class KviTalPopupMenu;
 class QComboBox;
 
 #define KVI_OPTIONS_WIDGET_ICON_KviProxyOptionsWidget KVI_SMALLICON_PROXY
@@ -74,7 +74,7 @@ protected:
 	QLineEdit    * m_pPortEdit;
 	QLabel       * m_pProtocolLabel;
 	QComboBox    * m_pProtocolBox;
-	QPopupMenu   * m_pContextPopup;
+	KviTalPopupMenu   * m_pContextPopup;
 	QCheckBox    * m_pIpV6Check;
 	KviProxyOptionsListViewItem * m_pLastEditedItem;
 private:

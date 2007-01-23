@@ -46,7 +46,7 @@
 
 #include "kvi_kvs_script.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qobject.h>
 
 
@@ -464,7 +464,7 @@ void KviIrcContextDisplayAction::setup()
 	connect(g_pFrame,SIGNAL(activeConnectionLagChanged()),this,SLOT(activeContextStateChanged()));
 }
 
-bool KviIrcContextDisplayAction::addToPopupMenu(QPopupMenu *p)
+bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContextDisplay * w = new KviIrcContextDisplay(p,"kvirc.irccontextdisplay");
@@ -520,7 +520,7 @@ KviSeparatorAction::KviSeparatorAction(QObject * pParent)
 }
 
 
-bool KviSeparatorAction::addToPopupMenu(QPopupMenu *p)
+bool KviSeparatorAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
 	p->insertSeparator();
@@ -627,7 +627,7 @@ void KviConnectAction::activate()
 	if(c)c->connectOrDisconnect();
 }
 
-bool KviConnectAction::addToPopupMenu(QPopupMenu *p)
+bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pFrame->activeContext();
@@ -722,7 +722,7 @@ void KviSubmenuAction::setup()
 	KviKvsAction::setup();
 	if(!m_pPopup)
 	{
-		m_pPopup = new QPopupMenu();
+		m_pPopup = new KviTalPopupMenu();
 		connect(m_pPopup,SIGNAL(aboutToShow()),this,SLOT(popupAboutToShow()));
 		connect(m_pPopup,SIGNAL(activated(int)),this,SLOT(popupActivated(int)));
 	}
@@ -736,7 +736,7 @@ void KviSubmenuAction::popupActivated(int)
 {
 }
 
-bool KviSubmenuAction::addToPopupMenu(QPopupMenu *p)
+bool KviSubmenuAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
 	int id = p->insertItem(*(smallIcon()),visibleName(),m_pPopup);
@@ -1049,7 +1049,7 @@ void KviGoAwayAction::setup()
 	connect(g_pFrame,SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(activeContextStateChanged()));
 }
 
-bool KviGoAwayAction::addToPopupMenu(QPopupMenu *p)
+bool KviGoAwayAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pFrame->activeContext();

@@ -21,7 +21,7 @@
 //
 
 #include "window.h"
-#include <qhbox.h> 
+#include "kvi_tal_hbox.h" 
 
 KviDccWindow::KviDccWindow(int type,KviFrame * lpFrm,const char * name,KviDccDescriptor * d)
 : KviWindow(type,lpFrm,name)
@@ -29,7 +29,7 @@ KviDccWindow::KviDccWindow(int type,KviFrame * lpFrm,const char * name,KviDccDes
 	m_pDescriptor = d;
 	m_pDescriptor->setWindow(this);
 	m_pMarshal    = 0;
-	m_pButtonBox = new QHBox(this,"button_box");
+	m_pButtonBox = new KviTalHBox(this);
 	createTextEncodingButton(m_pButtonBox);
 }
 

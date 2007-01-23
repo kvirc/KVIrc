@@ -29,11 +29,11 @@
 
 #include <qlayout.h>
 #include <qcursor.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 
 
 KviTextIconEditor::KviTextIconEditor(QWidget * par,KviTextIcon * icon,KviTextIconTableItem* item)
-: QHBox(par),m_pTableItem(item)
+: KviTalHBox(par),m_pTableItem(item)
 {
 	m_pIconButton=new QToolButton(this);
 	m_pBrowseButton=new QToolButton(this);
@@ -56,7 +56,7 @@ void KviTextIconEditor::doPopup()
 {
 	if(!m_pPopup)
 	{
-		m_pPopup = new QPopupMenu(this);
+		m_pPopup = new KviTalPopupMenu(this);
 		KviIconWidget * iw = new KviIconWidget(m_pPopup);
 		connect(iw,SIGNAL(selected(int)),this,SLOT(iconSelected(int)));
 		m_pPopup->insertItem(iw);

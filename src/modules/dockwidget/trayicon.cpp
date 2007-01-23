@@ -19,7 +19,7 @@
  */
 
 #include "trayicon.h"
-#include "qpopupmenu.h"
+#include "kvi_tal_popupmenu.h"
 
 /*!
   \class TrayIcon qtrayicon.h
@@ -45,7 +45,7 @@ TrayIcon::TrayIcon( QObject *parent, const char *name )
 
   \sa show
 */
-TrayIcon::TrayIcon( const QPixmap &icon, const QString &tooltip, QPopupMenu *popup, QObject *parent, const char *name )
+TrayIcon::TrayIcon( const QPixmap &icon, const QString &tooltip, KviTalPopupMenu *popup, QObject *parent, const char *name )
 : QObject(parent, name), pop(popup), pm(icon), tip(tooltip), d(0)
 {
 	v_isWMDock = FALSE;
@@ -79,7 +79,7 @@ void TrayIcon::newTrayOwner()
   Sets the context menu to \a popup. The context menu will pop up when the
   user clicks the system tray entry with the right mouse button.
 */
-void TrayIcon::setPopup( QPopupMenu* popup )
+void TrayIcon::setPopup( KviTalPopupMenu* popup )
 {
     pop = popup;
 }
@@ -89,7 +89,7 @@ void TrayIcon::setPopup( QPopupMenu* popup )
 
   \sa setPopup
 */
-QPopupMenu* TrayIcon::popup() const
+KviTalPopupMenu* TrayIcon::popup() const
 {
     return pop;
 }

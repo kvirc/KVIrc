@@ -26,7 +26,7 @@
 #ifdef COMPILE_KDE_SUPPORT
 	class KPopupMenu;
 #else
-	class QPopupMenu;
+	class KviTalPopupMenu;
 #endif
 class QPixmap;
 class QTimer;
@@ -46,9 +46,9 @@ protected:
 #ifdef COMPILE_KDE_SUPPORT
 	KPopupMenu        * m_pContextPopup;
 #else
-	QPopupMenu        * m_pContextPopup;
+	KviTalPopupMenu        * m_pContextPopup;
 #endif
-	QPopupMenu        * m_pAwayPopup;
+	KviTalPopupMenu        * m_pAwayPopup;
 	int m_iToggleFrame;
 	int m_iAwayMenuId;
 

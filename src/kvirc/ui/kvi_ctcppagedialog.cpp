@@ -42,7 +42,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 		  WStyle_StaysOnTop | WStyle_Tool | WType_Dialog | WType_TopLevel)
 {
 	QGridLayout * g = new QGridLayout(this,4,1,6,0);
-	m_pWidgetStack = new QWidgetStack(this);
+	m_pWidgetStack = new KviTalWidgetStack(this);
 	g->addWidget(m_pWidgetStack,0,0);
 	m_pTabBar = new QTabBar(this);
 	m_pTabBar->setShape(QTabBar::TriangularBelow);

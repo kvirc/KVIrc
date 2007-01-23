@@ -36,7 +36,7 @@
 #include "kvi_mdicaption.h"
 #include "kvi_app.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qmenubar.h>
 #include <qlayout.h>
 #include <qpainter.h>
@@ -71,10 +71,10 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	m_pSdiRestoreButton = 0;
 	m_pSdiMinimizeButton = 0;
 
-	m_pWindowPopup = new QPopupMenu(this);
+	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
-	m_pTileMethodPopup = new QPopupMenu(this);
+	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
 	viewport()->setBackgroundMode(QWidget::NoBackground);

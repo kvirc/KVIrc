@@ -29,7 +29,7 @@
 #include <qframe.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 
 #include "kparts/part.h"
 
@@ -44,7 +44,7 @@ public:
 	KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone = false);
 	~KviTermWidget();
 private:
-	QHBox        * m_pHBox;
+	KviTalHBox        * m_pHBox;
 	QLabel       * m_pTitleLabel;
 	QPushButton  * m_pCloseButton;
 	KParts::Part * m_pKonsolePart;

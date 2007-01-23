@@ -113,7 +113,7 @@
 #include <qtoolbutton.h>
 #include <qfontmetrics.h> // needed
 #include <qapplication.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qmessagebox.h>
 #include <qtextcodec.h>
 #include <qdatetime.h>
@@ -358,7 +358,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 #else
 	m_pToolsButton->setOnIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 #endif
-	QToolTip::add(m_pToolsButton,__tr2qs("Search tools"));
+	KviTalToolTip::add(m_pToolsButton,__tr2qs("Search tools"));
 	m_pToolsButton->setFocusProxy(this);
 
 	connect(m_pToolsButton,SIGNAL(clicked()),this,SLOT(showToolsPopup()));
@@ -3775,7 +3775,7 @@ QSize KviIrcView::sizeHint() const
 void KviIrcView::showToolsPopup()
 {
 	if(!m_pToolsPopup)
-		m_pToolsPopup = new QPopupMenu(this);
+		m_pToolsPopup = new KviTalPopupMenu(this);
 
 	m_pToolsPopup->clear();
 

@@ -53,7 +53,7 @@ class KviNotifierWindowBody;
 class KviNotifierWindowBorder;
 class KviNotifierWindowProgressBar;
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 
@@ -115,8 +115,8 @@ protected:
 	int          m_iInputHeight;
 	int          m_iBlinkTimeout;
 	int          m_iBlinkCount;
-	QPopupMenu * m_pContextPopup;
-	QPopupMenu * m_pDisablePopup;
+	KviTalPopupMenu * m_pContextPopup;
+	KviTalPopupMenu * m_pDisablePopup;
 	KviWindow * m_pWindowToRaise;
 	kvi_time_t  m_tAutoHideAt;
 	kvi_time_t  m_tStartedAt;

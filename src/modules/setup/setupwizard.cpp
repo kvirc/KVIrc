@@ -42,7 +42,7 @@
 #include <qpushbutton.h>
 #include <qvalidator.h>
 #include <qtextcodec.h>
-#include <qhbox.h> 
+#include "kvi_tal_hbox.h" 
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <windows.h>
@@ -68,7 +68,7 @@ extern QString szUrl;
 #endif
 
 KviSetupPage::KviSetupPage(KviSetupWizard * w)
-: QHBox(w)
+: KviTalHBox(w)
 {
 	// we need this to set localized text on buttons (see QT doc/ QWizard class)
 	w->QWizard::backButton()->setText(__tr2qs("< &Back"));
@@ -86,7 +86,7 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	m_pPixmapLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	m_pPixmapLabel->setMargin(0);
 
-	m_pVBox = new QVBox(this);
+	m_pVBox = new KviTalVBox(this);
 	m_pVBox->setSpacing(8);
 
 	QLabel * l = new QLabel(m_pVBox);
@@ -215,7 +215,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pDirUsePrev = new QRadioButton(__tr2qs("Use settings folder from previous installation"),m_pDirButtonGroup);
 	connect(m_pDirUsePrev,SIGNAL(clicked()),this,SLOT(oldDirClicked()));
 	
-	m_pOldPathBox = new QHBox(m_pDirButtonGroup);
+	m_pOldPathBox = new KviTalHBox(m_pDirButtonGroup);
 	m_pOldDataPathEdit = new QLineEdit(m_pOldPathBox);
 	connect(m_pOldDataPathEdit,SIGNAL(textChanged ( const QString & )),this,SLOT(oldDataTextChanged ( const QString & )));
 	
@@ -230,7 +230,7 @@ KviSetupWizard::KviSetupWizard()
 	QLabel* l = new QLabel(m_pDirButtonGroup);
 	l->setText(__tr2qs("Settings folder:"));
 	
-	m_pNewPathBox = new QHBox(m_pDirButtonGroup);
+	m_pNewPathBox = new KviTalHBox(m_pDirButtonGroup);
 	m_pDataPathEdit = new QLineEdit(m_pNewPathBox);
 	
 	pb = new QPushButton(__tr2qs("&Browse..."),m_pNewPathBox);
@@ -257,7 +257,7 @@ KviSetupWizard::KviSetupWizard()
 	l->setText(__tr2qs("Download files to folder:"));
 
 
-	m_pNewIncomingBox = new QHBox(m_pDirButtonGroup);
+	m_pNewIncomingBox = new KviTalHBox(m_pDirButtonGroup);
 
 	m_pIncomingPathEdit = new QLineEdit(m_pNewIncomingBox);
 	
@@ -330,7 +330,7 @@ KviSetupWizard::KviSetupWizard()
 
 	gbox = new QGroupBox(1,QGroupBox::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
 
-	QHBox* hb = new QHBox(gbox);
+	KviTalHBox* hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	
 	l = new QLabel(__tr2qs("Age:"),hb);
@@ -356,7 +356,7 @@ KviSetupWizard::KviSetupWizard()
 	hb->setStretchFactor(m_pAgeCombo,1);
 
 
-	hb = new QHBox(gbox);
+	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	
 	l = new QLabel(__tr2qs("Gender:"),hb);
@@ -407,9 +407,9 @@ KviSetupWizard::KviSetupWizard()
 
 	m_pThemeButtonGroup = new QVButtonGroup(m_pTheme->m_pVBox);
 	
-	QHBox* pThemesHb = new QHBox(m_pThemeButtonGroup);
+	KviTalHBox* pThemesHb = new KviTalHBox(m_pThemeButtonGroup);
 
-	QVBox* pThemesVb = new QVBox(pThemesHb);
+	KviTalVBox* pThemesVb = new KviTalVBox(pThemesHb);
 	
 	QString szThemeImagePath;
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_hires.png");
@@ -430,7 +430,7 @@ KviSetupWizard::KviSetupWizard()
 	
 	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),pThemesVb);
 	
-	pThemesVb = new QVBox(pThemesHb);
+	pThemesVb = new KviTalVBox(pThemesHb);
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_lowres.png");
 	QPixmap* pLowResPixmap = new QPixmap(szThemeImagePath);
 	if(pLowResPixmap->isNull())
@@ -470,7 +470,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pServersChooseFromList = new QRadioButton(__tr2qs("Choose from built-in server list"),m_pServersButtonGroup);
 	
 	m_pServersSpecifyManually = new QRadioButton(__tr2qs("Specify server manually"),m_pServersButtonGroup);
-	hb = new QHBox(m_pServersButtonGroup);
+	hb = new KviTalHBox(m_pServersButtonGroup);
 	
 	m_uServerPort=6667;
 	m_pServerHostSelector = new KviStringSelector(hb,__tr2qs("Server:"),&m_szServerHost,true);

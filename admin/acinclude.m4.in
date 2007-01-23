@@ -2358,6 +2358,7 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	else
 		AC_DEFINE([COMPILE_USE_QT4], 1, [define if you want to compile the Qt 4.x support])
 		SS_INCDIRS="$SS_QT4_INCDIRECTORIES -I$SS_X_INCDIR"
+		SS_CPPFLAGS="$SS_CPPFLAGS -DQT3_SUPPORT"
 	fi
 
 	if test -n "$SS_X_INCDIR"; then

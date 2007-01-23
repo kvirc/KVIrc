@@ -46,7 +46,7 @@
 #include <qlayout.h>
 #include <qtimer.h>
 #include <qcursor.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qpixmap.h>
 
 // This class COULD be derived also from KStatusBar but in fact
@@ -306,11 +306,11 @@ void KviStatusBar::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
 	pTip->tip(r,szTip);
 }
 
-QPopupMenu * KviStatusBar::contextPopup()
+KviTalPopupMenu * KviStatusBar::contextPopup()
 {
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new QPopupMenu(this);
+		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
 	m_pClickedApplet = appletAt(QCursor::pos());
@@ -343,7 +343,7 @@ void KviStatusBar::contextPopupAboutToShow()
 
 	if(!m_pAppletsPopup)
 	{
-		m_pAppletsPopup = new QPopupMenu(this);
+		m_pAppletsPopup = new KviTalPopupMenu(this);
 		connect(m_pAppletsPopup,SIGNAL(aboutToShow()),this,SLOT(appletsPopupAboutToShow()));
 		connect(m_pAppletsPopup,SIGNAL(activated(int)),this,SLOT(appletsPopupActivated(int)));
 	}

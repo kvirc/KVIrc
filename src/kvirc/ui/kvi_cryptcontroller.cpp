@@ -66,7 +66,7 @@
 
 
 	KviCryptController::KviCryptController(QWidget * par,KviWindowToolPageButton* button,const char * name,KviWindow * wnd,KviCryptSessionInfo * cur)
-	: KviWindowToolWidget(par,button,name)
+	: KviWindowToolWidget(par,button)
 	{
 // FIXME: #warning "Load the available modules here"
 

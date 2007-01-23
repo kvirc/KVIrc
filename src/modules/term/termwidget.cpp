@@ -55,7 +55,7 @@ KviTermWidget::KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 
 	if(bIsStandalone)
 	{
-		m_pHBox = new QHBox(this);
+		m_pHBox = new KviTalHBox(this);
 		m_pTitleLabel = new QLabel(__tr2qs("Terminal emulator"),m_pHBox);
 		m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::WinPanel);
 		m_pCloseButton = new QPushButton("",m_pHBox);

@@ -48,7 +48,7 @@
 //class KviMdiCaptionButton;
 class KviFrame;
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviSdiButtonBox;
 class KviMenuBarToolButton;
@@ -67,7 +67,7 @@ public:
 	void manageChild(KviMdiChild * lpC,bool bCascade = true,QRect * setGeom = 0);
 	void setTopChild(KviMdiChild *lpC,bool bSetFocus);
 	void showAndActivate(KviMdiChild * lpC);
-	QPopupMenu * windowPopup(){ return m_pWindowPopup; };
+	KviTalPopupMenu * windowPopup(){ return m_pWindowPopup; };
 	void focusTopChild();
 	void destroyChild(KviMdiChild *lpC,bool bFocusTopChild = true);
 	int getVisibleChildCount();
@@ -85,8 +85,8 @@ protected:
 	int                        m_iSdiMinimizeItemId;
 	int                        m_iSdiCloseItemId;
 
-	QPopupMenu               * m_pWindowPopup;
-	QPopupMenu               * m_pTileMethodPopup;
+	KviTalPopupMenu               * m_pWindowPopup;
+	KviTalPopupMenu               * m_pTileMethodPopup;
 	KviFrame                 * m_pFrm;
 protected:
 	void updateContentsSize();

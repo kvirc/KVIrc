@@ -43,7 +43,7 @@
 
 #include <qstyle.h>
 #include <qpainter.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qlayout.h>
 
 

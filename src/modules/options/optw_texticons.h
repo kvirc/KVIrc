@@ -33,12 +33,12 @@
 
 #include <qtable.h>
 #include <qtoolbutton.h>
-#include <qpopupmenu.h>
-#include <qhbox.h> 
+#include "kvi_tal_popupmenu.h"
+#include "kvi_tal_hbox.h" 
 
 class KviTextIconTableItem;
 
-class KviTextIconEditor : public QHBox
+class KviTextIconEditor : public KviTalHBox
 {
 	Q_OBJECT
 public:
@@ -47,7 +47,7 @@ public:
 protected:
 	KviTextIconTableItem *m_pTableItem;
 	KviTextIcon     *m_pIcon;
-	QPopupMenu      *m_pPopup;
+	KviTalPopupMenu      *m_pPopup;
 	QToolButton     *m_pIconButton;
 	QToolButton     *m_pBrowseButton;
 public:

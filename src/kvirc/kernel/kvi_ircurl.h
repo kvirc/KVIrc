@@ -74,4 +74,5 @@ namespace KviIrcUrl
 	extern KVIRC_API void join(QString &url, KviIrcServer* server);
 	extern KVIRC_API void makeJoinCmd(const QStringList& chans, QString& szJoinCommand);
 }
+
 #endif // _KVI_IRCURL_H_

@@ -42,8 +42,8 @@
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qsplitter.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_vbox.h"
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qmessagebox.h>
@@ -209,7 +209,7 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
 
-	QVBox * vbox = new QVBox(m_pSplitter);
+	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 
 	m_pListView  = new QListView(vbox);
 	//m_pListView->header()->hide();
@@ -225,7 +225,7 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 	connect(g_pSharedFilesManager,SIGNAL(sharedFileAdded(KviSharedFile *)),this,SLOT(sharedFileAdded(KviSharedFile *)));
 	connect(g_pSharedFilesManager,SIGNAL(sharedFileRemoved(KviSharedFile *)),this,SLOT(sharedFileRemoved(KviSharedFile *)));
 
-	QHBox * b = new QHBox(vbox);
+	KviTalHBox * b = new KviTalHBox(vbox);
 
 	m_pAddButton = new QPushButton(__tr2qs_ctx("&Add...","sharedfileswindow"),b);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
@@ -376,11 +376,11 @@ void KviSharedFilesWindow::transferUnregistering(KviSharedFiles * t)
 
 void KviSharedFilesWindow::rightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
 {
-	if(!m_pContextPopup)m_pContextPopup = new QPopupMenu(this);
-	if(!m_pLocalFilePopup)m_pLocalFilePopup = new QPopupMenu(this);
+	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
+	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
 	if(!m_pOpenFilePopup)
 	{
-		m_pOpenFilePopup= new QPopupMenu(this);
+		m_pOpenFilePopup= new KviTalPopupMenu(this);
 		connect(m_pOpenFilePopup,SIGNAL(activated(int)),this,SLOT(openFilePopupActivated(int)));
 	}
 

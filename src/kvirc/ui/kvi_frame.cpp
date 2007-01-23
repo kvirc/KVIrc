@@ -55,6 +55,7 @@
 #include "kvi_actionmanager.h"
 #include "kvi_defaults.h"
 #include "kvi_ircview.h"
+#include "kvi_tal_popupmenu.h"
 
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
@@ -1020,7 +1021,7 @@ void KviFrame::toggleStatusBar()
 	}
 }
 
-void KviFrame::fillToolBarsPopup(QPopupMenu * p)
+void KviFrame::fillToolBarsPopup(KviTalPopupMenu * p)
 {
 	p->clear();
 
@@ -1091,8 +1092,8 @@ void KviFrame::toolbarsPopupSelected(int id)
 {
 	const QObject * o = sender();
 	if(!o)return;
-	if(!o->inherits("QPopupMenu"))return;
-	const QPopupMenu * p = (const QPopupMenu *)o;
+	if(!o->inherits("KviTalPopupMenu"))return;
+	const KviTalPopupMenu * p = (const KviTalPopupMenu *)o;
 	int idext = p->itemParameter(id);
 	
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);

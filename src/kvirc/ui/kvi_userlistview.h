@@ -33,7 +33,7 @@
 #include "kvi_time.h"
 
 #include <time.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qwidget.h>
 #include "kvi_list.h"
 #include "kvi_dict.h"
@@ -55,7 +55,7 @@ class KviWindow;
 #define KVI_USERLISTVIEW_GRIDTYPE_MAXIMUM 3
 #define KVI_USERLISTVIEW_GRIDTYPE_DEFAULT 0
 
-class KVIRC_API KviUserListToolTip : public QToolTip
+class KVIRC_API KviUserListToolTip : public KviTalToolTip
 {
 public:
 	KviUserListToolTip(KviUserListView *v,KviUserListViewArea * a);

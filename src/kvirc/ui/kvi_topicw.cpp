@@ -48,12 +48,12 @@ static int g_iInputFontCharWidth[256];
 
 #include <qpainter.h>
 #include <qfontmetrics.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qlineedit.h>
 #include <qlistbox.h>
 #include <qregexp.h>
 #include <qclipboard.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 // FIXME: #warning "The combo should disappear when it looses focus!...(how to do it ?)"
 
@@ -114,9 +114,9 @@ void KviTopicWidget::popDownListBox()
 
 void KviTopicWidget::reset()
 {
-	QToolTip::remove(this);
+	KviTalToolTip::remove(this);
 	m_szTopic = __tr2qs("Unknown");
-	QToolTip::add(this,__tr2qs("No topic message has been received from the server yet"));
+	KviTalToolTip::add(this,__tr2qs("No topic message has been received from the server yet"));
 	m_szSetAt = "";
 	m_szSetBy = "";
 	update();
@@ -464,7 +464,7 @@ void KviTopicWidget::setTopicSetAt(const QString & setAt)
 
 void KviTopicWidget::updateToolTip()
 {
-	QToolTip::remove(this);
+	KviTalToolTip::remove(this);
 
 	QString txt = "<html>" \
 			"<body>" \
@@ -521,7 +521,7 @@ void KviTopicWidget::updateToolTip()
 		"</body>" \
 	"<html>";
 
-	QToolTip::add(this,txt);
+	KviTalToolTip::add(this,txt);
 }
 
 QSize KviTopicWidget::sizeHint() const
@@ -567,7 +567,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pHistory = new QPushButton(this);
 		m_pHistory->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
-		QToolTip::add(m_pHistory,__tr2qs("History"));
+		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
 		connect(m_pHistory,SIGNAL(clicked()),this,SLOT(historyClicked()));
 		
@@ -576,13 +576,13 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
 		m_pAccept->show();
-		QToolTip::add(m_pAccept,__tr2qs("Commit Changes"));
+		KviTalToolTip::add(m_pAccept,__tr2qs("Commit Changes"));
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
 		
 		m_pDiscard = new QPushButton(this);
 		m_pDiscard->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
-		QToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
+		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
 		m_pDiscard->show();
 		connect(m_pDiscard,SIGNAL(clicked()),this,SLOT(discardClicked()));
 		
@@ -597,7 +597,7 @@ void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 	if(!(e->button() & RightButton))return;
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new QPopupMenu(this);
+		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
 	m_pContextPopup->popup(mapToGlobal(e->pos()));

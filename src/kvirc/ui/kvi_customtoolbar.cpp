@@ -32,7 +32,7 @@
 #include "kvi_customtoolbardescriptor.h"
 
 #include <qcursor.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qlayout.h>
 #include <qdragobject.h>
 #include <qpixmap.h>
@@ -518,7 +518,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 			if(o->isWidgetType())
 			{
 				if(!(
-					o->inherits("QPopupMenu") ||
+					o->inherits("KviTalPopupMenu") ||
 					o->inherits("QToolBarHandle") ||
 					o->inherits("QDockWindowHandle") ||
 					o->inherits("QDockWindowResizeHandle") ||

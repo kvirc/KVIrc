@@ -550,7 +550,7 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 	g_pNotifierWindow->update();
 }
 
-void KviNotifierWindowTabs::contextPopup(QPopupMenu *pPopup,const QPoint& pos)
+void KviNotifierWindowTabs::contextPopup(KviTalPopupMenu *pPopup,const QPoint& pos)
 {
 	if(m_rctTabs.contains(pos))
 	{

@@ -30,7 +30,7 @@
 #include "kvi_qstring.h"
 
 #include <qdir.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qmessagebox.h>
 
 extern KviMediaManager * g_pMediaManager;

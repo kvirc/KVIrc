@@ -45,9 +45,11 @@
 	#include <kwin.h>
 	#include <kpopupmenu.h>
 #else
-	#include <qpopupmenu.h>
 	#include <qlabel.h>
 #endif
+
+#include "kvi_tal_popupmenu.h"
+
 
 #include <qpixmap.h>
 #include <qpainter.h>
@@ -129,13 +131,13 @@ KviDockWidget::KviDockWidget(KviFrame * frm,const char * name)
 	m_pTip = new KviDynamicToolTip(this,"dock_tooltip");
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 	
-	m_pAwayPopup = new QPopupMenu(this);
+	m_pAwayPopup = new KviTalPopupMenu(this);
 	
 #ifdef COMPILE_KDE_SUPPORT
 	m_pContextPopup = new KPopupMenu(this);
 	m_pContextPopup->insertTitle(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("KVIrc"));
 #else
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 	QLabel * l = new QLabel(__tr2qs("KVIrc"),m_pContextPopup);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pContextPopup->insertItem(l);

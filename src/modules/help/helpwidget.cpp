@@ -53,7 +53,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	m_pTextBrowser = new QTextBrowser(this,"text_browser");
 	m_pTextBrowser->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pTextBrowser->setFocusPolicy(QWidget::NoFocus);
-	m_pToolBar = new QHBox(this,"help_tool_bar");
+	m_pToolBar = new KviTalHBox(this);
 
 	m_pBtnIndex = new KviStyledToolButton(m_pToolBar);
 	m_pBtnIndex->setIconSet(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX));

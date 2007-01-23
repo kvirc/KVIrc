@@ -46,7 +46,7 @@
 class KviWindow;
 class KviNotifierWindow;
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviNotifierMessage
 {

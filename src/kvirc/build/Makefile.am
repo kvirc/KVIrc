@@ -53,8 +53,7 @@ nodist_kvirc_SOURCES = ../kernel/moc_kvi_action.cpp \
 ../ui/moc_kvi_statusbar.cpp \
 ../ui/moc_kvi_statusbarapplet.cpp \
 ../ui/moc_kvi_toolwindows_container.cpp \
-../ui/moc_kvi_listview.cpp \
-../ui/moc_kvi_xmladdonloader.cpp 
+../ui/moc_kvi_listview.cpp
 
 kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../kernel/kvi_actionmanager.cpp \
@@ -232,6 +231,7 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../ui/kvi_irctoolbar.cpp \
 ../ui/kvi_ircview.cpp \
 ../ui/kvi_ircviewtools.cpp \
+../ui/kvi_listview.cpp \
 ../ui/kvi_maskeditor.cpp \
 ../ui/kvi_mdicaption.cpp \
 ../ui/kvi_mdichild.cpp \
@@ -256,9 +256,7 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../ui/kvi_styled_controls.cpp \
 ../ui/kvi_userlistview.cpp \
 ../ui/kvi_window.cpp \
-../ui/kvi_toolwindows_container.cpp \
-../ui/kvi_xmladdonloader.cpp \
-../ui/kvi_listview.cpp
+../ui/kvi_toolwindows_container.cpp
 
 #
 # Command useful to find out all the headers
@@ -434,6 +432,7 @@ headers_HEADERS = ../kernel/kvi_action.h \
 ../ui/kvi_ircview.h \
 ../ui/kvi_ircviewprivate.h \
 ../ui/kvi_ircviewtools.h \
+../ui/kvi_listview.h \
 ../ui/kvi_maskeditor.h \
 ../ui/kvi_mdicaption.h \
 ../ui/kvi_mdichild.h \
@@ -454,9 +453,7 @@ headers_HEADERS = ../kernel/kvi_action.h \
 ../ui/kvi_window.h \
 ../ui/kvi_modew.h \
 ../ui/kvi_styled_controls.h \
-../ui/kvi_toolwindows_container.h \
-../ui/kvi_listview.h \
-../ui/kvi_xmladdonloader.h
+../ui/kvi_toolwindows_container.h
 
 %.moc: %.h
 	$(SS_QT_MOC) $< -o $@

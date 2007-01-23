@@ -36,7 +36,7 @@
 #include "kvi_dict.h"
 #include <qtabdialog.h>
 #include <qtable.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 class KviRegisteredUser;
 

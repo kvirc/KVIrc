@@ -56,7 +56,7 @@
 
 #include <qpixmap.h>
 #include <qsplitter.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qtoolbutton.h>
 #include <qdragobject.h>
 #include <qgrid.h> 
@@ -69,18 +69,18 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 	connection()->registerQuery(this);
 
 	//m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
-	m_pButtonBox = new QHBox(this,"button_box");
+	m_pButtonBox = new KviTalHBox(this);
 	m_pLabel = new KviThemedLabel(m_pButtonBox,"query_label");
 	m_pLabel->setAutoHeight(1);
 	updateLabelText();
 	m_pButtonBox->setStretchFactor(m_pLabel,1);
 
 	// The button box on the right
-	//QHBox * box = new QHBox(m_pTopSplitter,"button_box");
+	//KviTalHBox * box = new KviTalHBox(m_pTopSplitter,"button_box");
 	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel))
-		m_pButtonGrid= new QGrid(2,Qt::Vertical,m_pButtonBox);
+		m_pButtonGrid= new KviTalGrid(2,Qt::Vertical,m_pButtonBox);
 	else
-		m_pButtonGrid= new QGrid(1,Qt::Vertical,m_pButtonBox);
+		m_pButtonGrid= new KviTalGrid(1,Qt::Vertical,m_pButtonBox);
 
 
 	createTextEncodingButton(m_pButtonGrid);
@@ -126,7 +126,7 @@ void KviQuery::updateLabelText()
 	if(szText!=m_pLabel->text())
 	{
 		m_pLabel->setText(szText);
-		QToolTip::add(m_pLabel,getInfoLabelTipText());
+		KviTalToolTip::add(m_pLabel,getInfoLabelTipText());
 	}
 }
 

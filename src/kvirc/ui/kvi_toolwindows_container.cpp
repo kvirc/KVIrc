@@ -1,12 +1,11 @@
 #define __KVIRC__
 
 
-#include <qwidgetstack.h> 
 #include <qlayout.h> 
 #include <qtoolbutton.h> 
 #include <qobjectcleanuphandler.h> 
 #include <qpushbutton.h> 
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qpainter.h>
 #include <qapplication.h>
 
@@ -14,73 +13,8 @@
 #include "kvi_iconmanager.h"
 
 
-KviToolWindowsContainer::KviToolWindowsContainer( QWidget * parent, const char * name, WFlags f )
-:QFrame(parent,name,f)
-{
-	new QHBoxLayout(this);
-	m_pStack=new QWidgetStack(this);
-	layout()->add(m_pStack);
-	m_pCurrentPage=0;
-	m_pButtonContainer=new QVBox(this);
-	m_pButtonContainer->setFixedWidth(24);
-	//m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored));
-	layout()->add(m_pButtonContainer);
-	
-	setMinimumWidth(24);
-}
-
-KviToolWindowsContainer::~KviToolWindowsContainer()
-{
-	
-}
-
-void KviToolWindowsContainer::unregisterWidget(KviWindowToolWidget* page)
-{
-	if(m_pStack->id(page)!=-1)
-		m_pStack->removeWidget(page);
-	if(page==m_pCurrentPage)
-	{
-		m_ObjectHandler.remove(page);
-		m_pCurrentPage=0;
-//		m_pStack->hide();
-//		resizeEvent(0);
-	}
-	if(!m_pStack->visibleWidget())
-	{
-//		m_pStack->setFixedWidth(0);
-		resize( m_pButtonContainer->size() );
-//		debug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,width());
-	}
-}
-
-void KviToolWindowsContainer::registerWidget(KviWindowToolWidget* page)
-{
-	if(page!=m_pCurrentPage && page!=0)
-	{
-		if(!m_ObjectHandler.isEmpty())
-		{
-//			debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
-			if(m_pCurrentPage->autoDelete())
-			{
-//				debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
-				delete m_pCurrentPage;
-			} else {
-//				debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
-				m_pCurrentPage->hide();
-			}
-		} else {
-			//m_pStack->setFixedWidth(0);
-		}
-		m_pCurrentPage=page;
-		m_ObjectHandler.add(page);
-		m_pStack->addWidget(m_pCurrentPage);
-		m_pStack->raiseWidget(m_pCurrentPage);
-	}
-}
-
-
-KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButton* button, const char * name, WFlags f )
-:QWidget(parent,name,f)
+KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButton* button/*, const char * name, WFlags f*/ )
+:QWidget(parent/*,name,f*/)
 {
 //	m_pContainer=parent;
 	m_pButton=button;

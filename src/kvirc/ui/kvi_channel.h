@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 
+
 #include "kvi_console.h"
 #include "kvi_window.h"
 #include "kvi_string.h"
@@ -34,8 +35,8 @@
 #include "kvi_userlistview.h"
 #include "kvi_time.h"
 #include "kvi_modew.h"
+#include "kvi_valuelist.h"
 
-#include <qstrlist.h>
 #include <qdatetime.h>
 #include "kvi_asciidict.h"
 #include <qstringlist.h>
@@ -46,6 +47,8 @@ class QToolButton;
 class KviTopicWidget;
 class KviIrcMask;
 class KviThemedLabel;
+class KviTalHBox;
+
 #ifdef COMPILE_ON_WINDOWS
 	// windows compiler wants this instead of the forward decl
 	#include "kvi_maskeditor.h"
@@ -136,19 +139,19 @@ protected:
 	KviPixmap                             m_privateBackground;
 	QDateTime                             m_joinTime;
 	QString                               m_szNameWithUserFlag;
-	QStrList                            * m_pTmpHighLighted;
+	KviAsciiDict<QString>               * m_pTmpHighLighted;
 	unsigned int                          m_uActionHistoryHotActionCount;
 	KviPtrList<KviChannelAction>        * m_pActionHistory;
 	kvi_time_t                            m_tLastReceivedWhoReply;
-	QValueList<int> 		      m_VertSplitterSizesList;
-	QHBox				    * m_pButtonContainer;
+	KviValueList<int>                     m_VertSplitterSizesList;
+	KviTalHBox                          * m_pButtonContainer;
 protected:
 	bool eventFilter(QObject *, QEvent *);
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
-//	virtual void fillContextPopup(QPopupMenu * p);
+//	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void getConfigGroupName(QString &buf);
 	virtual void saveProperties(KviConfig * cfg);
 	virtual void loadProperties(KviConfig * cfg);
@@ -282,7 +285,7 @@ public:
 
     void addHighlightedUser(const char * nick);
     void removeHighlightedUser(const char * nick);
-    int isHighlightedUser(const char * nick) { return (m_pTmpHighLighted->find(nick) == -1 ? 0 : 1); };
+    bool isHighlightedUser(const char * nick) { return m_pTmpHighLighted->find(nick); };
     KviIrcView * messageView() const { return m_pMessageView; };
 	virtual void lostUserFocus();
 	virtual void getTaskBarTipText(QString &buffer);

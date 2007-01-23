@@ -28,7 +28,7 @@
 #include <qlayout.h>
 #include <qtoolbutton.h>
 #include <qgroupbox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qmessagebox.h>
 #include <qtimer.h>
 #include <qobjectlist.h>
@@ -838,7 +838,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);
 
-	QPopupMenu * pop = new QPopupMenu(b);
+	KviTalPopupMenu * pop = new KviTalPopupMenu(b);
 	pop->insertItem(__tr2qs_ctx("&Open...","editor"),this,SLOT(loadFromFile()));
 	pop->insertItem(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
 	pop->insertSeparator();

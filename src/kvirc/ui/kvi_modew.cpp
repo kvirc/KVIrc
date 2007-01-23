@@ -30,7 +30,7 @@
 
 #include <qframe.h>
 #include <qlineedit.h>
-#include <qhbox.h> 
+#include "kvi_tal_hbox.h" 
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 :QFrame(par,name)

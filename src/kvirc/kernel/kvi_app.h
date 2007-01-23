@@ -48,7 +48,7 @@
 	class KviIpcSentinel;
 #endif // !COMPILE_NO_IPC
 
-class QPopupMenu;
+class KviTalPopupMenu;
 class QPixmap;
 class QListBox;
 class QTextCodec;
@@ -266,9 +266,9 @@ public:
 	QStringList* getRecentChannels(const QString& net);
 	
 	void addRecentServer(const QString& server);
-	void fillRecentServersPopup(QPopupMenu * m);
-	void fillRecentNicknamesPopup(QPopupMenu * m,KviConsole * pConsole);
-	void fillRecentChannelsPopup(QPopupMenu * m,KviConsole * pConsole);
+	void fillRecentServersPopup(KviTalPopupMenu * m);
+	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole);
+	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole);
 	
 	void autoConnectToServers();
 	

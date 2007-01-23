@@ -32,10 +32,10 @@
 #include "kvi_list.h"
 #include <qwidget.h>
 #include <qtoolbutton.h>
-#include <qwidgetstack.h>
+#include "kvi_tal_widgetstack.h"
 #include <qlabel.h>
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 
 //

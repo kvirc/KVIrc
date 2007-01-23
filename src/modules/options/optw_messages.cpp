@@ -28,7 +28,7 @@
 
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qcursor.h>
 #include <qpainter.h>
 #include "kvi_styled_controls.h"
@@ -103,7 +103,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 		l,
 		SLOT(setEnabled(bool)));
 
-	QHBox * hb = new QHBox(g);
+	KviTalHBox * hb = new KviTalHBox(g);
 
 	connect(
 		b,
@@ -128,7 +128,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 	
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 	
-	hb = new QHBox(g);
+	hb = new KviTalHBox(g);
 	
 	m_pSpecialTimestampColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use special color for timestamps","options"),KviOption_boolUseSpecialColorForTimestamp,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
 	connect(m_pSpecialTimestampColorSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
@@ -381,7 +381,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	addWidgetToLayout(m_pListView,0,0,2,0);
 
-	QVBox * box = new QVBox(this);
+	KviTalVBox * box = new KviTalVBox(this);
 	addWidgetToLayout(box,3,0,3,0);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Background:","options"),box);
@@ -415,7 +415,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pIconButton = new KviStyledToolButton(box);
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
-	m_pIconPopup = new QPopupMenu(this);
+	m_pIconPopup = new KviTalPopupMenu(this);
 	KviIconWidget * iw = new KviIconWidget(m_pIconPopup);
 	connect(iw,SIGNAL(selected(int)),this,SLOT(newIconSelected(int)));
 	m_pIconPopup->insertItem(iw);
@@ -423,7 +423,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	m_pEnableLogging = new KviStyledCheckBox(__tr2qs_ctx("Log this","options"),box);
 
-	QHBox * h = new QHBox(this);
+	KviTalHBox * h = new KviTalHBox(this);
 	addWidgetToLayout(h,0,1,3,1);
 	QPushButton * b = new QPushButton(__tr2qs_ctx("Load From...","options"),h);
 	connect(b,SIGNAL(clicked()),this,SLOT(load()));

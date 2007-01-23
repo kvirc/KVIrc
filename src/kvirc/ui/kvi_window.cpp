@@ -54,7 +54,7 @@
 #include "kvi_kvs_script.h"
 
 #include <qpixmap.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qsplitter.h>
@@ -71,7 +71,7 @@
 #include <qvariant.h>
 #include <qaccel.h>
 #include <qtoolbutton.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qmessagebox.h>
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -90,11 +90,11 @@
 
 KVIRC_API KviWindow * g_pActiveWindow = 0;
 
-static QPopupMenu * g_pMdiWindowSystemMainPopup = 0;
-static QPopupMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
-static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
-static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
-static QPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
+static KviTalPopupMenu * g_pMdiWindowSystemMainPopup = 0;
+static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopup = 0;
+static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupStandard = 0;
+static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmart = 0;
+static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
@@ -336,9 +336,9 @@ QTextCodec * KviWindow::defaultTextCodec()
 	return KviApp::defaultTextCodec();
 }
 
-QCString KviWindow::encodeText(const QString &szText)
+KviQCString KviWindow::encodeText(const QString &szText)
 {
-	if(!m_pTextCodec)return QCString(szText.utf8().data());
+	if(!m_pTextCodec)return KviQString::toUtf8(szText);
 	return m_pTextCodec->fromUnicode(szText);
 }
 
@@ -429,7 +429,7 @@ QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pix
 	b->setOffIconSet(*(g_pIconManager->getSmallIcon(pixoff)));
 #endif
 
-	QToolTip::add
+	KviTalToolTip::add
 		(b,tooltip);
 	b->setOn(bOn);
 	return b;
@@ -699,14 +699,14 @@ void KviWindow::updateCaption()
 void KviWindow::createSystemTextEncodingPopup()
 {
 	if(!g_pMdiWindowSystemTextEncodingPopup)
-		g_pMdiWindowSystemTextEncodingPopup = new QPopupMenu();
+		g_pMdiWindowSystemTextEncodingPopup = new KviTalPopupMenu();
 	else
 	{
 		g_pMdiWindowSystemTextEncodingPopup->clear();
 	}
 	
 	if(!g_pMdiWindowSystemTextEncodingPopupStandard)
-		g_pMdiWindowSystemTextEncodingPopupStandard = new QPopupMenu();
+		g_pMdiWindowSystemTextEncodingPopupStandard = new KviTalPopupMenu();
 	else
 	{
 		g_pMdiWindowSystemTextEncodingPopupStandard->clear();
@@ -714,7 +714,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	}
 
 	if(!g_pMdiWindowSystemTextEncodingPopupSmart)
-		g_pMdiWindowSystemTextEncodingPopupSmart = new QPopupMenu();
+		g_pMdiWindowSystemTextEncodingPopupSmart = new KviTalPopupMenu();
 	else
 	{
 		g_pMdiWindowSystemTextEncodingPopupSmart->clear();
@@ -722,7 +722,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	}
 
 	if(!g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
-		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new QPopupMenu();
+		g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = new KviTalPopupMenu();
 	else
 	{
 		g_pMdiWindowSystemTextEncodingPopupSmartUtf8->clear();
@@ -751,7 +751,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-		QPopupMenu * ppp = d->bSmart ? (d->bSendUtf8 ? g_pMdiWindowSystemTextEncodingPopupSmartUtf8 : g_pMdiWindowSystemTextEncodingPopupSmart) : g_pMdiWindowSystemTextEncodingPopupStandard;
+		KviTalPopupMenu * ppp = d->bSmart ? (d->bSendUtf8 ? g_pMdiWindowSystemTextEncodingPopupSmartUtf8 : g_pMdiWindowSystemTextEncodingPopupSmart) : g_pMdiWindowSystemTextEncodingPopupStandard;
 		id = ppp->insertItem(tmp);
 		if(KviQString::equalCI(m_szTextEncoding,d->szName))
 			ppp->setItemChecked(id,true);
@@ -768,7 +768,7 @@ void KviWindow::createSystemTextEncodingPopup()
 void KviWindow::systemPopupRequest(const QPoint &pnt)
 {
 	if(!g_pMdiWindowSystemMainPopup)
-		g_pMdiWindowSystemMainPopup = new QPopupMenu();
+		g_pMdiWindowSystemMainPopup = new KviTalPopupMenu();
 	else
 	{
 		g_pMdiWindowSystemMainPopup->clear();
@@ -868,7 +868,7 @@ void KviWindow::contextPopup()
 	systemPopupRequest(QCursor::pos());
 }
 
-void KviWindow::fillContextPopup(QPopupMenu *)
+void KviWindow::fillContextPopup(KviTalPopupMenu *)
 {
 	// nothing here
 }

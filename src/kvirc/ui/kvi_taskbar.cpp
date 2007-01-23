@@ -53,7 +53,7 @@
 #include <qpixmap.h>
 #include <qheader.h>
 #include <qimage.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -411,7 +411,7 @@ void KviTaskBarButton::highlight(int iLevel)
 //
 /*
 KviTaskBarToolTip::KviTaskBarToolTip(KviTaskBarButton * b)
-: QToolTip(b,0)
+: KviTalToolTip(b,0)
 {
 	m_pTaskBarButton = b;
 }
@@ -1070,7 +1070,7 @@ void KviTreeTaskBarListView::contentsMousePressEvent(QMouseEvent *e)
 	} else {
 		if(e->button() & RightButton)
 		{
-			QPopupMenu* pPopup=new QPopupMenu();
+			KviTalPopupMenu* pPopup=new KviTalPopupMenu();
 			pPopup->insertItem(__tr2qs("Sort"),this,SLOT(sort()));
 			pPopup->insertItem(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());

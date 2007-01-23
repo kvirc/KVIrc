@@ -45,7 +45,7 @@
 #endif
 */
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qapplication.h>
 #include <qpainter.h>
 #include <qimage.h>

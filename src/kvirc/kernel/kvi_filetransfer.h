@@ -33,7 +33,7 @@
 
 class KviFileTransfer;
 class KviWindow;
-class QPopupMenu;
+class KviTalPopupMenu;
 
 // This is for the external extension
 #define KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME "File transfer extension"
@@ -108,7 +108,7 @@ public:
 	virtual QString localFileName();
 	virtual QString retryCommand();
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(QPopupMenu * m,int column) = 0;
+	virtual void fillContextPopup(KviTalPopupMenu * m,int column) = 0;
 	virtual void die() = 0;
 };
 

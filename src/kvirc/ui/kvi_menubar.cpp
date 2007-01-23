@@ -40,7 +40,7 @@
 #include "kvi_coreactionnames.h"
 #include "kvi_kvs_script.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
       : KviTalMenuBar(par,name)
@@ -50,7 +50,7 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 	m_iNumDefaultItems = 0;
 	m_pDefaultItemId = 0;
 	
-	QPopupMenu * pop = new QPopupMenu(this,"KVIrc");
+	KviTalPopupMenu * pop = new KviTalPopupMenu(this,"KVIrc");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupMainPopup()));
 #ifndef Q_OS_MACX
 	addDefaultItem("&KVIrc",pop);
@@ -58,31 +58,31 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 	// Qt/Mac creates already a "KVirc" menu item on its own, and we don't like double entries ;-)
 	addDefaultItem("&IRC",pop);
 #endif //Q_OS_MACX
-	m_pRecentServersPopup = new QPopupMenu(this,"recentservers");
+	m_pRecentServersPopup = new KviTalPopupMenu(this,"recentservers");
 	connect(m_pRecentServersPopup,SIGNAL(aboutToShow()),this,SLOT(setupRecentServersPopup()));
 	connect(m_pRecentServersPopup,SIGNAL(activated(int)),this,SLOT(newConnectionToServer(int)));
 
 	m_pScriptItemList = 0;
 
-	pop = new QPopupMenu(this,"scripting");
+	pop = new KviTalPopupMenu(this,"scripting");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupScriptingPopup()));
 	addDefaultItem(__tr2qs("Scri&pting"),pop);
 
-	pop = new QPopupMenu(this,"tools");
+	pop = new KviTalPopupMenu(this,"tools");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupToolsPopup()));
 	connect(pop,SIGNAL(activated(int)),this,SLOT(toolsPopupSelected(int)));
 	addDefaultItem(__tr2qs("&Tools"),pop);
 
-	m_pToolbarsPopup = new QPopupMenu(this,"toolbars");
+	m_pToolbarsPopup = new KviTalPopupMenu(this,"toolbars");
 	connect(m_pToolbarsPopup,SIGNAL(aboutToShow()),this,SLOT(setupToolbarsPopup()));
 
-	pop = new QPopupMenu(this,"settings");
+	pop = new KviTalPopupMenu(this,"settings");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupSettingsPopup()));
 	addDefaultItem(__tr2qs("&Settings"),pop);
 
 	addDefaultItem(__tr2qs("&Window"),par->mdiManager()->windowPopup());
 
-	pop = new QPopupMenu(this,"help");
+	pop = new KviTalPopupMenu(this,"help");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupHelpPopup()));
 	addDefaultItem(__tr2qs("&Help"),pop);
 }
@@ -93,7 +93,7 @@ KviMenuBar::~KviMenuBar()
    if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
 }
 
-void KviMenuBar::addDefaultItem(const QString &text,QPopupMenu * pop)
+void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
    m_iNumDefaultItems++;
    m_pDefaultItemId = (int *)kvi_realloc((void *)m_pDefaultItemId,sizeof(int) * m_iNumDefaultItems);
@@ -102,7 +102,7 @@ void KviMenuBar::addDefaultItem(const QString &text,QPopupMenu * pop)
 
 void KviMenuBar::setupHelpPopup()
 {
-	QPopupMenu * help = (QPopupMenu *)sender();
+	KviTalPopupMenu * help = (KviTalPopupMenu *)sender();
 	help->clear();
 
 	// FIXME: Convert these to actions!
@@ -161,7 +161,7 @@ void KviMenuBar::setupSettingsPopup()
 {
 	// FIXME: Move everything to actions!
 
-	QPopupMenu * opt = (QPopupMenu *)sender();
+	KviTalPopupMenu * opt = (KviTalPopupMenu *)sender();
 	opt->clear();
 	
 	opt->insertItem(__tr2qs("Toolbars"),m_pToolbarsPopup);
@@ -186,7 +186,7 @@ void KviMenuBar::setupSettingsPopup()
 
 void KviMenuBar::setupScriptingPopup()
 {
-	QPopupMenu * script = (QPopupMenu *)sender();
+	KviTalPopupMenu * script = (KviTalPopupMenu *)sender();
 	script->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_ACTIONEDITOR,script)
@@ -205,7 +205,7 @@ void KviMenuBar::setupScriptingPopup()
 
 void KviMenuBar::setupMainPopup()
 {
-	QPopupMenu * main = (QPopupMenu *)sender();
+	KviTalPopupMenu * main = (KviTalPopupMenu *)sender();
 	main->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT,main)
@@ -239,7 +239,7 @@ void KviMenuBar::setupMainPopup()
 
 void KviMenuBar::setupRecentServersPopup()
 {
-	QPopupMenu * m = (QPopupMenu *)sender();
+	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
 	g_pApp->fillRecentServersPopup(m);
 	m->insertSeparator();
 	m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),__tr2qs("&Other..."));
@@ -266,7 +266,7 @@ void KviMenuBar::newConnectionToServer(int id)
 
 void KviMenuBar::setupToolsPopup()
 {
-	QPopupMenu * m = (QPopupMenu *)sender();
+	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
 	if(!m)return;
 
 	m->clear();
@@ -312,7 +312,7 @@ void KviMenuBar::setupToolsPopup()
 
 void KviMenuBar::toolsPopupSelected(int id)
 {
-   QPopupMenu * m = (QPopupMenu *)sender();
+   KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
    if(!m)return;
    int idext = m->itemParameter(id);
    g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());

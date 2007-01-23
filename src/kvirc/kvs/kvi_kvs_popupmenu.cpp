@@ -525,7 +525,7 @@ KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
 
 
 KviKvsPopupMenu::KviKvsPopupMenu(const QString &szName)
-:QPopupMenu(0,szName)
+:KviTalPopupMenu(0,szName)
 {
 	m_szName = szName;
 	m_pItemList = new KviPtrList<KviKvsPopupMenuItem>;
@@ -721,7 +721,7 @@ void KviKvsPopupMenu::doPopup(const QPoint & pnt,KviWindow * wnd,KviKvsVariantLi
 	clearMenuContents();
 	m_pTempTopLevelData = new KviKvsPopupMenuTopLevelData(pParams,wnd);
 	m_pTempTopLevelData->setTestMode(bTestMode);
-	QPopupMenu::popup(pnt);
+	KviTalPopupMenu::popup(pnt);
 }
 
 void KviKvsPopupMenu::clearMenuContents()

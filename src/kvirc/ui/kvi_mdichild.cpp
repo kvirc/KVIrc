@@ -41,7 +41,7 @@
 #include <qpixmap.h>
 #include <qstyle.h>
 #include <qpainter.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qobjectlist.h>
 
 #ifdef Q_OS_MACX

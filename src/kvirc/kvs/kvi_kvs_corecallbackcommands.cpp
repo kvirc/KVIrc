@@ -43,7 +43,7 @@
 #include "kvi_locale.h"
 
 #include <qregexp.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 namespace KviKvsCoreCallbackCommands
 {
@@ -455,11 +455,11 @@ namespace KviKvsCoreCallbackCommands
 			pButton->show();
 		}
 
-		QToolTip::remove(pButton);
+		KviTalToolTip::remove(pButton);
 		if(!szLabel.isEmpty())
 		{
 			pButton->setButtonText(szLabel);
-			QToolTip::add(pButton,szLabel);
+			KviTalToolTip::add(pButton,szLabel);
 		}
 
 		pButton->setButtonCode(new KviKvsScript(*KVSCCC_pCallback));

@@ -58,7 +58,7 @@ public:
 	virtual const QPixmap * pixmap(int col) const;
 };
 
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviRawEditor : public QWidget
 {
@@ -70,7 +70,7 @@ public:
 	KviScriptEditor * m_pEditor;
 	QListView       * m_pListView;
 	QLineEdit       * m_pNameEditor;
-	QPopupMenu      * m_pContextPopup;
+	KviTalPopupMenu      * m_pContextPopup;
 	KviRawHandlerListViewItem * m_pLastEditedItem;
 	bool              m_bOneTimeSetupDone;
 public:

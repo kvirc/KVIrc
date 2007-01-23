@@ -48,7 +48,7 @@
 #include <qstringlist.h>
 #include <qdatetime.h>
 #include <qfiledialog.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcombobox.h>
 #include <qpainter.h>
 #include <qtooltip.h>
@@ -150,7 +150,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 
 	QGridLayout * g = new QGridLayout(this,3,2,4,4);
 
-	QHBox *hb = new QHBox(this);
+	KviTalHBox *hb = new KviTalHBox(this);
 	g->addMultiCellWidget(hb,0,0,0,1);
 
 	KviStyledToolButton * tb;
@@ -218,7 +218,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	g->setColStretch(0,1);
 
 	fillThemeBox();
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{

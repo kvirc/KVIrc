@@ -29,7 +29,7 @@
 #include <qwidget.h>
 #include <qlistview.h>
 #include <qlineedit.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qpushbutton.h>
 
 class KviKvsPopupMenu;
@@ -85,7 +85,7 @@ protected:
 	QLineEdit            * m_pIconEditor;
 	QLineEdit            * m_pConditionEditor;
 	QLineEdit            * m_pExtNameEditor;
-	QPopupMenu           * m_pContextPopup;
+	KviTalPopupMenu           * m_pContextPopup;
 public:
 	void edit(KviMenuListViewItem * it);
 	KviKvsPopupMenu * getMenu();
@@ -158,7 +158,7 @@ public:
 	QListView            * m_pListView;
 	KviMenuListViewItem  * m_pLastEditedItem;
 	bool                   m_bOneTimeSetupDone;
-	QPopupMenu           * m_pContextPopup;
+	KviTalPopupMenu           * m_pContextPopup;
 public:
 	void commit();
 	void exportPopups(bool);

@@ -38,7 +38,7 @@
 #include "kvi_styled_controls.h"
 
 #include <qtoolbutton.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 
 KviAction::~KviAction()
@@ -374,7 +374,7 @@ void KviAction::activeContextStateChanged()
 	}
 }
 
-bool KviAction::addToPopupMenu(QPopupMenu *pMenu)
+bool KviAction::addToPopupMenu(KviTalPopupMenu *pMenu)
 {
 	if(!setupDone())setup();
 	QPixmap * p = smallIcon();

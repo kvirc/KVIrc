@@ -30,7 +30,7 @@
 #include <qpixmap.h>
 #include <qpoint.h>
 #include <qrect.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 #include "kvi_list.h"
 #include "notifiersettings.h"
@@ -188,7 +188,7 @@ private:
 
 public:
 	QMap<KviWindow *, KviNotifierWindowTab *>* tabs() { return &m_tabMap; };
-	void contextPopup(QPopupMenu *pPopup,const QPoint& pos);
+	void contextPopup(KviTalPopupMenu *pPopup,const QPoint& pos);
 	void addMessage(KviWindow *, KviNotifierMessage *);
 	void closeCurrentTab();
 	void closeTab(KviWindow * pWnd); // referes to void closeTab(KviWindow * pWnd, KviNotifierWindowTab * pTab);

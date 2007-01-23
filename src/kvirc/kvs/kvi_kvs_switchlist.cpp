@@ -28,24 +28,19 @@
 
 KviKvsSwitchList::KviKvsSwitchList()
 {
-#ifdef COMPILE_NEW_KVS
 	m_pShortSwitchDict = 0;
 	m_pLongSwitchDict = 0;
-#endif
 }
 
 	
 KviKvsSwitchList::~KviKvsSwitchList()
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pShortSwitchDict)delete m_pShortSwitchDict;
 	if(m_pLongSwitchDict)delete m_pLongSwitchDict;
-#endif
 }
 
 void KviKvsSwitchList::clear()
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pShortSwitchDict)
 	{
 		delete m_pShortSwitchDict;
@@ -56,30 +51,25 @@ void KviKvsSwitchList::clear()
 		delete m_pLongSwitchDict;
 		m_pLongSwitchDict = 0;
 	}
-#endif
 }
 
 void KviKvsSwitchList::addShort(unsigned short uShortKey,KviKvsVariant * pVariant)
 {
-#ifdef COMPILE_NEW_KVS
 	if(!m_pShortSwitchDict)
 	{
-		m_pShortSwitchDict = new QIntDict<KviKvsVariant>(11);
+		m_pShortSwitchDict = new KviIntDict<KviKvsVariant>(11);
 		m_pShortSwitchDict->setAutoDelete(true);
 	}
 	m_pShortSwitchDict->replace(uShortKey,pVariant);
-#endif
 }
 
 void KviKvsSwitchList::addLong(const QString &szLongKey,KviKvsVariant * pVariant)
 {
-#ifdef COMPILE_NEW_KVS
 	if(!m_pLongSwitchDict)
 	{
 		m_pLongSwitchDict = new KviDict<KviKvsVariant>(11);
 		m_pLongSwitchDict->setAutoDelete(true);
 	}
 	m_pLongSwitchDict->replace(szLongKey,pVariant);
-#endif
 }
 

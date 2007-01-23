@@ -30,12 +30,12 @@
 #include "kvi_app.h"
 
 #include <qcursor.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
-static QPopupMenu * g_pToolBarContextPopup = 0;
-static QPopupMenu * g_pToolBarWindowsPopup = 0;
-static QPopupMenu * g_pToolBarIconSizesPopup = 0;
-static QPopupMenu * g_pToolBarPositionsPopup = 0;
+static KviTalPopupMenu * g_pToolBarContextPopup = 0;
+static KviTalPopupMenu * g_pToolBarWindowsPopup = 0;
+static KviTalPopupMenu * g_pToolBarIconSizesPopup = 0;
+static KviTalPopupMenu * g_pToolBarPositionsPopup = 0;
 
 
 KviToolBar::KviToolBar(const QString &label,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
@@ -64,10 +64,10 @@ void KviToolBar::mousePressEvent(QMouseEvent *e)
 		return;
 	}
 	
-	if(!g_pToolBarContextPopup)g_pToolBarContextPopup = new QPopupMenu();
-	if(!g_pToolBarIconSizesPopup)g_pToolBarIconSizesPopup = new QPopupMenu();
-	if(!g_pToolBarPositionsPopup)g_pToolBarPositionsPopup = new QPopupMenu();
-	if(!g_pToolBarWindowsPopup)g_pToolBarWindowsPopup = new QPopupMenu();
+	if(!g_pToolBarContextPopup)g_pToolBarContextPopup = new KviTalPopupMenu();
+	if(!g_pToolBarIconSizesPopup)g_pToolBarIconSizesPopup = new KviTalPopupMenu();
+	if(!g_pToolBarPositionsPopup)g_pToolBarPositionsPopup = new KviTalPopupMenu();
+	if(!g_pToolBarWindowsPopup)g_pToolBarWindowsPopup = new KviTalPopupMenu();
 
 	g_pToolBarContextPopup->clear();
 	g_pToolBarIconSizesPopup->clear();

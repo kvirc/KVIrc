@@ -32,7 +32,7 @@
 #include <qwidget.h>
 #include <qlistview.h>
 #include <qlineedit.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qstringlist.h>
 #include <qpushbutton.h>
 #include <qlabel.h>
@@ -114,7 +114,7 @@ public:
 	KviAliasEditorListViewItem * m_pLastEditedItem;
 	KviAliasEditorListViewItem * m_pLastClickedItem;
 	//KviAliasListViewItem * m_pLastEditedItem;
-	QPopupMenu                 * m_pContextPopup;
+	KviTalPopupMenu                 * m_pContextPopup;
 	QSplitter                  * m_pSplitter;
 	QString						m_szDir;
 public:

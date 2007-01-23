@@ -45,7 +45,7 @@
 #include <qlayout.h>
 #include <qtimer.h>
 #include <qcursor.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qpixmap.h>
 
 // This class COULD be derived also from KStatusBar but in fact
@@ -189,7 +189,7 @@ void KviStatusBarAwayIndicator::toggleContext()
 	m_bAwayOnAllContexts = !m_bAwayOnAllContexts;
 }
 
-void KviStatusBarAwayIndicator::fillContextPopup(QPopupMenu *p)
+void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu *p)
 {
 	int id = p->insertItem(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
 	p->setItemChecked(id,m_bAwayOnAllContexts);	
@@ -417,7 +417,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 	setText(tmp);
 }
 
-void KviStatusBarClock::fillContextPopup(QPopupMenu * p)
+void KviStatusBarClock::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id = p->insertItem("UTC",this,SLOT(toggleUtc()));
 	p->setItemChecked(id,m_bUtc);
@@ -498,7 +498,7 @@ void KviStatusBarConnectionTimer::toggleTotal()
 	m_bTotal = !m_bTotal;
 }
 
-void KviStatusBarConnectionTimer::fillContextPopup(QPopupMenu *p)
+void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu *p)
 {
 	int id = p->insertItem(__tr2qs("Show total connection time"),this,SLOT(toggleTotal()));
 	p->setItemChecked(id,m_bTotal);	

@@ -84,7 +84,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_sourcesdate.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qsplitter.h>
 #include <qstringlist.h>
 #include "kvi_asciidict.h"
@@ -111,7 +111,7 @@ KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
 
 KVIRC_API KviColorWindow               * g_pColorWindow               = 0;
 KVIRC_API KviTextIconWindow            * g_pTextIconWindow            = 0;
-KVIRC_API QPopupMenu                   * g_pInputPopup                = 0;
+KVIRC_API KviTalPopupMenu                   * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
 //KVIRC_API QStringList                  * g_pBookmarkList              = 0;
 KVIRC_API KviAsciiDict<KviWindow>        * g_pGlobalWindowDict          = 0;
@@ -426,7 +426,7 @@ void KviApp::setup()
 	g_pGarbageCollector = new KviGarbageCollector();
 
 	// and the input popup
-	g_pInputPopup = new QPopupMenu();
+	g_pInputPopup = new KviTalPopupMenu();
 
 	// create the server parser
 	g_pServerParser = new KviServerParser();
@@ -1888,7 +1888,7 @@ void KviApp::addRecentServer(const QString& server)
 	merge_to_stringlist_option(server,KviOption_stringlistRecentServers,KVI_MAX_RECENT_SERVERS);
 }
 
-void KviApp::fillRecentServersPopup(QPopupMenu * m)
+void KviApp::fillRecentServersPopup(KviTalPopupMenu * m)
 {
 // FIXME: #warning "MAYBE DISABLE THE SERVERS THAT WE ARE ALREADY CONNECTED TO ?"
 	m->clear();
@@ -1898,7 +1898,7 @@ void KviApp::fillRecentServersPopup(QPopupMenu * m)
 	}
 }
 
-void KviApp::fillRecentNicknamesPopup(QPopupMenu * m,KviConsole * pConsole)
+void KviApp::fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 {
 	m->clear();
 	int id;
@@ -1918,7 +1918,7 @@ void KviApp::fillRecentNicknamesPopup(QPopupMenu * m,KviConsole * pConsole)
 	}
 }
 
-void KviApp::fillRecentChannelsPopup(QPopupMenu * m,KviConsole * pConsole)
+void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 {
 	m->clear();
 	int id;

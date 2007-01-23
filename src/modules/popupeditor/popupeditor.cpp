@@ -48,7 +48,7 @@
 #include <qtooltip.h>
 #include "kvi_asciidict.h"
 #include <qpushbutton.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 
 extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
@@ -188,7 +188,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 : QWidget(par)
 {
 	m_pLastSelectedItem = 0;
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 	m_pClipboard = 0;
 	m_pTestPopup = 0;
 
@@ -1028,7 +1028,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
 	l->addWidget(spl,0,0);
 	
-	QVBox * box = new QVBox(spl);
+	KviTalVBox * box = new KviTalVBox(spl);
 
 	m_pListView = new QListView(box);
 	m_pListView->addColumn(__tr2qs("Popup"));
@@ -1045,7 +1045,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	m_bOneTimeSetupDone = false;
 	m_pLastEditedItem = 0;
 
-	m_pContextPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
 
 	currentItemChanged(0);
 }

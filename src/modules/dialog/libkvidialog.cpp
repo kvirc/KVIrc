@@ -27,7 +27,7 @@
 
 #include <qmessagebox.h>
 #include <qlayout.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qlineedit.h>
 #include <qmultilineedit.h>
 #include <qlabel.h>
@@ -237,7 +237,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 
 	g->addMultiCellWidget(m_pEdit,1,1,0,1);
 
-	QHBox * box = new QHBox(this);
+	KviTalHBox * box = new KviTalHBox(this);
 	g->addMultiCellWidget(box,2,2,0,1);
 
 	m_iEscapeButton = 0;

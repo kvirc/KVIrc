@@ -50,7 +50,7 @@
 #include <qmessagebox.h>
 #include <qtimer.h>
 #include <qlabel.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qlayout.h>
 
 static KviPtrList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
@@ -89,7 +89,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	QPushButton * b = new QPushButton(__tr2qs("&Browse..."),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	g->addWidget(b,1,2);
-	QHBox * h = new QHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
+	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
 	b = new QPushButton(__tr2qs("&OK"),h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);

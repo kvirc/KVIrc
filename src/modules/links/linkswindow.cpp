@@ -35,7 +35,7 @@
 
 #include <qsplitter.h>
 #include <qtooltip.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qlabel.h>
 
 extern KviPtrList<KviLinksWindow> * g_pLinksWindowList;
@@ -48,7 +48,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
 
 	// The button box on the left
-	QHBox * box = new QHBox(m_pTopSplitter,"button_box");
+	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 
 	m_pRequestButton = new QToolButton(box,"request_button");
 	m_pRequestButton->setUsesBigPixmap(false);
@@ -80,7 +80,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pLinkList = new KviPtrList<KviLink>;
 	m_pLinkList->setAutoDelete(true);
 
-	m_pHostPopup = new QPopupMenu();
+	m_pHostPopup = new KviTalPopupMenu();
 	connect(m_pHostPopup,SIGNAL(activated(int)),this,SLOT(hostPopupClicked(int)));
 
 	connectionStateChange();

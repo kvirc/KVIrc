@@ -314,7 +314,7 @@ void KviIrcViewToolWidget::mouseMoveEvent(QMouseEvent *)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcViewToolTip::KviIrcViewToolTip(KviIrcView * pView)
-: QToolTip(pView,0)
+: KviTalToolTip(pView)
 {
 	m_pView = pView;
 }

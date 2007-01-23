@@ -24,12 +24,12 @@
 //
 
 #include "kvi_settings.h"
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qobject.h>
 
 class KviDynamicToolTip;
 
-class KVIRC_API KviDynamicToolTipHelper : public QToolTip
+class KVIRC_API KviDynamicToolTipHelper : public KviTalToolTip
 {
 	friend class KviDynamicToolTip;
 protected:

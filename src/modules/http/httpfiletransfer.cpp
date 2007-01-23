@@ -34,7 +34,7 @@
 
 #include "kvi_kvs_script.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qpainter.h>
 
 static KviPtrList<KviHttpFileTransfer> * g_pHttpFileTransfers = 0;
@@ -102,7 +102,7 @@ void KviHttpFileTransfer::abort()
 	m_pHttpRequest->abort();
 }
 
-void KviHttpFileTransfer::fillContextPopup(QPopupMenu * m,int column)
+void KviHttpFileTransfer::fillContextPopup(KviTalPopupMenu * m,int column)
 {
 	int id = m->insertItem(__tr2qs_ctx("Abort","http"),this,SLOT(abort()));
 	if(!active())m->setItemEnabled(id,false);

@@ -30,7 +30,7 @@
 #include "kvi_irccontext.h"
 
 #include <qlistview.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 
 class KviThemedLabel;
@@ -56,7 +56,7 @@ protected:
 	QSplitter      * m_pTopSplitter;
 	QListView      * m_pListView;
 	KviPtrList<KviLink> * m_pLinkList;
-	QPopupMenu     * m_pHostPopup;
+	KviTalPopupMenu     * m_pHostPopup;
 	QString          m_szRootServer;
 	QToolButton    * m_pRequestButton;
 	KviThemedLabel * m_pInfoLabel;

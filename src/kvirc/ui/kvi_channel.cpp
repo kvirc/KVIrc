@@ -70,15 +70,14 @@
 #include <time.h>
 
 #include <qsplitter.h>
-#include <qhbox.h>
 #include <qtoolbutton.h>
 #include <qlabel.h>
-#include <qvaluelist.h>
+
 #include <qpalette.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include "kvi_dict.h"
 #include <qmessagebox.h>
-#include <qwidgetstack.h> 
+#include "kvi_tal_widgetstack.h" 
 
 #ifndef AVERAGE_CHANNEL_USERS
 	#define AVERAGE_CHANNEL_USERS 101
@@ -106,20 +105,20 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
-	m_pTmpHighLighted      = new QStrList();
+	m_pTmpHighLighted      = new KviAsciiDict<QString>();
 	m_pTmpHighLighted->setAutoDelete(true);
 
 	// Register ourselves
 	connection()->registerChannel(this);
 	// And create the widgets layout
 	// Button box
-	m_pButtonBox = new QHBox(this,"button_box");
+	m_pButtonBox = new KviTalHBox(this);
 	
 	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,m_pButtonBox,"top_splitter");
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
 	
-	m_pButtonContainer = new QHBox(m_pButtonBox);
+	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
 	
 	// Topic widget on the left
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter,"topic_widget");
@@ -128,7 +127,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 		this,SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter,this,"mode_");
-	QToolTip::add(m_pModeWidget,__tr2qs("Channel mode"));
+	KviTalToolTip::add(m_pModeWidget,__tr2qs("Channel mode"));
 
 	createTextEncodingButton(m_pButtonContainer);
 
@@ -302,7 +301,7 @@ void KviChannel::saveProperties(KviConfig *cfg)
 void KviChannel::loadProperties(KviConfig *cfg)
 {
 	int w = width();
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append((w * 75) / 100);
 	def.append((w * 15) / 100);
 	def.append((w * 10) / 100);
@@ -574,18 +573,14 @@ void KviChannel::setChannelLimit(const char * limit)
 
 void KviChannel::addHighlightedUser(const char * nick)
 {
-    if(!m_pUserListView->findEntry(nick))return;
-    else
-    {
-        if(m_pTmpHighLighted->find(nick) != -1)return;
-        else m_pTmpHighLighted->append(nick);
-    }
+	if(!m_pUserListView->findEntry(nick))return;
+	else
+   		m_pTmpHighLighted->replace(nick,new QString());
 }
 
 void KviChannel::removeHighlightedUser(const char * nick)
 {
-    if(m_pTmpHighLighted->find(nick) == -1)return;
-    else m_pTmpHighLighted->remove(nick);
+	m_pTmpHighLighted->remove(nick);
 }
 
 void KviChannel::getChannelModeString(QString &buffer)
@@ -1486,8 +1481,8 @@ void KviChannel::updateModeLabel()
 	}
 
 	m_pModeWidget->refreshModes();
-	QToolTip::remove(m_pModeWidget);
-	QToolTip::add(m_pModeWidget,tip);
+	KviTalToolTip::remove(m_pModeWidget);
+	KviTalToolTip::add(m_pModeWidget,tip);
 }
 
 /*

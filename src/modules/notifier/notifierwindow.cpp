@@ -36,7 +36,7 @@
 #include "kvi_options.h"
 #include "kvi_userinput.h"
 
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qapplication.h>
 #include <qpainter.h>
 #include <qimage.h>
@@ -1039,9 +1039,9 @@ void KviNotifierWindow::contextPopup(const QPoint &pos)
 {
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new QPopupMenu(this);
+		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
-		m_pDisablePopup = new QPopupMenu(this);
+		m_pDisablePopup = new KviTalPopupMenu(this);
 	}
 
 	m_pContextPopup->clear();

@@ -54,7 +54,7 @@
 #include <qtoolbutton.h>
 #include <qlineedit.h>
 #include <qcheckbox.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 #include <qtooltip.h>
 #include <qvalidator.h>
@@ -1026,8 +1026,8 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 {
 	createLayout(4,2);
 
-	m_pContextPopup = new QPopupMenu(this);
-	m_pImportPopup = new QPopupMenu(this);
+	m_pContextPopup = new KviTalPopupMenu(this);
+	m_pImportPopup = new KviTalPopupMenu(this);
 
 	connect(m_pImportPopup,SIGNAL(aboutToShow()),this,SLOT(importPopupAboutToShow()));
 	connect(m_pImportPopup,SIGNAL(activated(int)),this,SLOT(importPopupActivated(int)));
@@ -1058,7 +1058,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QToolTip::add(m_pListView->viewport(),tiptxt);
 #endif
 
-	QVBox * vbox = new QVBox(this);
+	KviTalVBox * vbox = new KviTalVBox(this);
 	addWidgetToLayout(vbox,1,0,1,0);
 
 	m_pNewNetworkButton = new KviStyledToolButton(vbox);
@@ -1164,7 +1164,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
 #endif
 
-	m_pRecentPopup = new QPopupMenu(this);
+	m_pRecentPopup = new KviTalPopupMenu(this);
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 

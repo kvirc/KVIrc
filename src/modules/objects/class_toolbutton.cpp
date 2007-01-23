@@ -27,7 +27,7 @@
 
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 /*
 	@doc:	toolbutton
 	@keyterms:
@@ -265,7 +265,7 @@ bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
         return TRUE;
     }
 	if(widget())
-		((QToolButton *)widget())->setPopup(((QPopupMenu  *)(ob->object())));
+		((QToolButton *)widget())->setPopup(((KviTalPopupMenu  *)(ob->object())));
 	return true;
 }
 bool KviKvsObject_toolbutton::functionopenPopup(KviKvsObjectFunctionCall *c)

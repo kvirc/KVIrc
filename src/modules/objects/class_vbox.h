@@ -24,7 +24,7 @@
 #include "kvi_string.h"
 
 #include "class_widget.h"
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include "object_macros.h"
 
 class KviKvsObject_vbox : public KviKvsObject_widget

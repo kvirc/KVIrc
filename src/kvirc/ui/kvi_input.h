@@ -29,7 +29,7 @@
 
 
 #include <qwidget.h>
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qpixmap.h>
 #include "kvi_list.h"
 
@@ -41,7 +41,7 @@
 class KviUserListView;
 class KviWindow;
 class KviInput;
-class QHBox;
+class KviTalHBox;
 
 // Default maximum buffer size.
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
@@ -135,7 +135,7 @@ protected:
 	KviStr                   m_szAltKeyCode;
 	KviWindow              * m_pKviWindow;
 	QWidget                * m_pInputParent;
-	QPopupMenu             * m_pIconMenu;
+	KviTalPopupMenu             * m_pIconMenu;
 	bool			 m_bReadOnly;
 public:
 	int  heightHint() const;
@@ -218,7 +218,7 @@ public:
 	KviWindow       * m_pWindow;
 	KviInputEditor  * m_pInputEditor;
 	KviScriptEditor * m_pMultiLineEditor;
-	QHBox		* m_pButtonContainer;
+	KviTalHBox		* m_pButtonContainer;
 	QToolButton     * m_pMultiEditorButton;
 	QToolButton     * m_pHistoryButton;
 	QToolButton     * m_pIconButton;

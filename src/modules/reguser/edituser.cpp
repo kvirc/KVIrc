@@ -51,8 +51,8 @@
 
 #include <qstyle.h>
 #include <qpainter.h>
-#include <qhbox.h>
-#include <qvbox.h>
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_vbox.h"
 #include <qinputdialog.h>
 
 #include "wizard.h"
@@ -92,7 +92,7 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviDict<QStri
 	m_pTable->setMinimumSize(250,250);
 	//connect(m_pTable,SIGNAL(valueChanged(int,int)),this,SLOT(propertyValueChanged(int,int)));
 
-	QVBox * vb = new QVBox(this);
+	KviTalVBox * vb = new KviTalVBox(this);
 	vb->setSpacing(4);
 	g->addWidget(vb,0,2);
 
@@ -104,7 +104,7 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviDict<QStri
 	connect(m_pDelButton,SIGNAL(clicked()),this,SLOT(delClicked()));
 	m_pDelButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
-	QHBox * b = new QHBox(this);
+	KviTalHBox * b = new KviTalHBox(this);
 	b->setSpacing(4);
 	g->addMultiCellWidget(b,2,2,1,2);
 
@@ -208,7 +208,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	//l->setAlignment(AlignCenter);
 	g->addMultiCellWidget(l,0,0,0,1);
 
-	QHBox * b = new QHBox(this);
+	KviTalHBox * b = new KviTalHBox(this);
 	g->addMultiCellWidget(b,1,1,0,1);
 
 	m_pNickEdit = new QLineEdit(b);
@@ -248,7 +248,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 //	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 //	g->addMultiCellWidget(f,3,3,0,1);
 
-	b = new QHBox(this);
+	b = new KviTalHBox(this);
 	b->setSpacing(4);
 	g->addWidget(b,2,1);
 
@@ -349,7 +349,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	g->addMultiCellWidget(m_pMaskListBox,4,4,0,1);
 
-	QHBox * b = new QHBox(p1);
+	KviTalHBox * b = new KviTalHBox(p1);
 	g->addMultiCellWidget(b,5,5,0,1);
 	b->setSpacing(4);
 
@@ -851,7 +851,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	g->addMultiCellWidget(m_pListView,0,1,0,1);
 
-	QVBox * vbox = new QVBox(this);
+	KviTalVBox * vbox = new KviTalVBox(this);
 	vbox->setSpacing(4);
 	g->addWidget(vbox,0,2);
 
@@ -914,7 +914,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pImportButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
 
-	QHBox * hbox = new QHBox(this);
+	KviTalHBox * hbox = new KviTalHBox(this);
 	hbox->setSpacing(4);
 	g->addMultiCellWidget(hbox,3,3,1,2);
 
@@ -1078,7 +1078,7 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( QListViewItem * pIte
 		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)pItem;
 		if(b->type()==KviRegisteredUsersDialogItemBase::User)
 		{
-			QPopupMenu *groups = new QPopupMenu;
+			KviTalPopupMenu *groups = new KviTalPopupMenu;
 			
 			KviDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
 			KviDictIterator<KviRegisteredUserGroup> git(*pGroups);
@@ -1092,7 +1092,7 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( QListViewItem * pIte
 			
 			connect(groups,SIGNAL(activated ( int )),this,SLOT(moveToGroupMenuClicked(int)));
 			
-			QPopupMenu *mainPopup = new QPopupMenu;
+			KviTalPopupMenu *mainPopup = new KviTalPopupMenu;
 			mainPopup->insertItem(__tr("Move to group"),groups);
 			mainPopup->exec(point);
 		}

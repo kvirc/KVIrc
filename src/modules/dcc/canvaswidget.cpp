@@ -33,6 +33,7 @@
 #include "kvi_string.h"
 
 #include "kvi_locale.h"
+#include "kvi_tal_popupmenu.h"
 
 #include <math.h>
 
@@ -1552,10 +1553,10 @@ KviCanvasWidget::KviCanvasWidget(QWidget * par)
 
 	connect(m_pPropertiesWidget,SIGNAL(propertyChanged(const QString &,const QVariant &)),m_pCanvasView,SLOT(propertyChanged(const QString &,const QVariant &)));
 
-	QPopupMenu * add = new QPopupMenu(m_pMenuBar);
-	QPopupMenu * shapes = new QPopupMenu(add);
-	QPopupMenu * polygons = new QPopupMenu(add);
-	QPopupMenu * items = new QPopupMenu(add);
+	KviTalPopupMenu * add = new KviTalPopupMenu(m_pMenuBar);
+	KviTalPopupMenu * shapes = new KviTalPopupMenu(add);
+	KviTalPopupMenu * polygons = new KviTalPopupMenu(add);
+	KviTalPopupMenu * items = new KviTalPopupMenu(add);
 	shapes->insertItem(__tr2qs_ctx("&Line","dcc"),m_pCanvasView,SLOT(insertLine()));
 	shapes->insertItem(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertRectangle()));
 	shapes->insertItem(__tr2qs_ctx("&Ellipse","dcc"),m_pCanvasView,SLOT(insertEllipse()));

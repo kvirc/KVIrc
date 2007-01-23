@@ -34,7 +34,7 @@
 #include "instances.h"
 
 class QLabel;
-class QWidgetStack;
+class KviTalWidgetStack;
 class QPushButton;
 class QLineEdit;
 class QToolButton;
@@ -72,7 +72,7 @@ public:
 private:
 	QListView    * m_pListView;
 	QLabel       * m_pCategoryLabel;
-	QWidgetStack * m_pWidgetStack;
+	KviTalWidgetStack * m_pWidgetStack;
 	KviGeneralOptionsFrontWidget* m_pFrontWidget;
 	QString        m_szGroup;
 	QLineEdit    * m_pSearchLineEdit;

@@ -121,7 +121,7 @@ void KviMaskInputDialog::accept()
 }
 
 KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPtrList<KviMaskEntry> * maskList,char flag,const char * nam)
-: KviWindowToolWidget(par,button,nam)
+: KviWindowToolWidget(par,button)
 {
 	bool isEnabled=1;
 	

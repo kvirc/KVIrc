@@ -33,7 +33,6 @@
 #include "kvi_kvs_types.h"
 
 #include <qobject.h>
-#include <qintdict.h>
 
 
 class KviKvsObjectFunctionCall;

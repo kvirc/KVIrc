@@ -31,7 +31,7 @@
 #include <qlistbox.h>
 #include <qcheckbox.h>
 #include <qtoolbutton.h>
-#include <qpopupmenu.h>
+#include "kvi_tal_popupmenu.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_KviMessageOptionsWidget KVI_SMALLICON_MESSAGES
 #define KVI_OPTIONS_WIDGET_NAME_KviMessageOptionsWidget __tr2qs_no_lookup("Text")
@@ -136,7 +136,7 @@ public:
 	KviMessageListViewItem     * m_pLastItem;
 	QCheckBox                  * m_pEnableLogging;
 	QToolButton                * m_pIconButton;
-	QPopupMenu                 * m_pIconPopup;
+	KviTalPopupMenu                 * m_pIconPopup;
 public:
 	void saveLastItem();
 protected slots:

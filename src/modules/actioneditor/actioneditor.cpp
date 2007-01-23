@@ -44,7 +44,7 @@
 
 #include <qsplitter.h>
 #include <qlayout.h>
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qtooltip.h>
 #include <qpushbutton.h>
 #include <qdir.h>
@@ -657,7 +657,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	l->addWidget(m_pSplitter,0,0);
 	
 	
-	QVBox * box = new QVBox(m_pSplitter);
+	KviTalVBox * box = new KviTalVBox(m_pSplitter);
 	m_pListView = new KviActionEditorListView(box);
 	//m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);

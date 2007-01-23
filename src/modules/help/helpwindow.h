@@ -24,7 +24,7 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include <qvbox.h>
+#include "kvi_tal_vbox.h"
 #include <qtabwidget.h> 
 #include <qlistbox.h>
 #include <qlineedit.h>
@@ -41,10 +41,10 @@ public:
 	~KviHelpWindow();
 protected:
 	KviHelpWidget * m_pHelpWidget;
-	QVBox	      * m_pToolBar;
+	KviTalVBox	      * m_pToolBar;
 	QTabWidget    * m_pTabWidget;
-	QVBox         * m_pIndexTab;
-	QVBox         * m_pSearchTab;
+	KviTalVBox         * m_pIndexTab;
+	KviTalVBox         * m_pSearchTab;
 	
 	QListBox     * m_pIndexListBox;
 	QLineEdit    * m_pIndexSearch;

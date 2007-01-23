@@ -100,7 +100,7 @@ protected:
 	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void getTaskBarTipText(QString &buffer);
-	virtual void fillContextPopup(QPopupMenu * p);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual QSize sizeHint() const;
 	virtual void applyOptions();
 	virtual void triggerCreationEvents();

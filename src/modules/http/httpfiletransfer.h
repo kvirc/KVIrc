@@ -34,7 +34,7 @@
 #include <qtimer.h>
 
 class QPainter;
-class QPopupMenu;
+class KviTalPopupMenu;
 
 class KviHttpFileTransfer : public KviFileTransfer
 {
@@ -79,7 +79,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column,int width,int height);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(QPopupMenu * m,int column);
+	virtual void fillContextPopup(KviTalPopupMenu * m,int column);
 	virtual bool active();
 	virtual void die();
 	virtual QString tipText();

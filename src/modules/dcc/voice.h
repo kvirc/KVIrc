@@ -32,7 +32,7 @@
 #include "thread.h"
 #include "window.h"
 
-#include <qhbox.h>
+#include "kvi_tal_hbox.h"
 #include <qlabel.h>
 #include <qtoolbutton.h>
 #include <qtimer.h>
@@ -107,7 +107,7 @@ public:
 	KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccVoice();
 protected:
-	QHBox                  * m_pHBox;
+	KviTalHBox                  * m_pHBox;
 	QSlider                * m_pVolumeSlider;
 	QLabel                 * m_pInputLabel;
 	QLabel                 * m_pOutputLabel;

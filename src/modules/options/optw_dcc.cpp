@@ -97,7 +97,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 	mergeTip(b,__tr2qs_ctx("<center>Enable this option if you want specify a local port range for DCC.</center>","options"));
 #endif
 
-	QHBox * hb = new QHBox(g);
+	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
 	KviUIntSelector * u = addUIntSelector(hb,__tr2qs_ctx("Lowest port:","options"),KviOption_uintDccMinPort,1,65535,5000,KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
@@ -261,13 +261,13 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 
 	g = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Limits","options"));
 
-	QHBox * hb = new QHBox(g);
+	KviTalHBox * hb = new KviTalHBox(g);
 	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to","options"),KviOption_boolLimitDccSendSpeed);
 	KviUIntSelector * u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	
-	hb = new QHBox(g);
+	hb = new KviTalHBox(g);
 	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to","options"),KviOption_boolLimitDccRecvSpeed);
 	u = addUIntSelector(hb,"",KviOption_uintMaxDccRecvSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
@@ -290,7 +290,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 				"Most clients can handle this kind of optimisation so disable it only if you have problems.</center>","options"));
 #endif //COMPILE_INFO_TIPS
 
-	hb = new QHBox(g);
+	hb = new KviTalHBox(g);
 
 	b = addBoolSelector(hb,__tr2qs_ctx("Force idle step","options"),KviOption_boolDccSendForceIdleStep);
 #ifdef COMPILE_INFO_TIPS

@@ -68,7 +68,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_hbox)
 bool KviKvsObject_hbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	
-		setObject(new QHBox(parentScriptWidget(), name()), true);
+		setObject(new KviTalHBox(parentScriptWidget()), true);
 	return true;
 }
 bool KviKvsObject_hbox::functionsetMargin(KviKvsObjectFunctionCall *c)
@@ -77,7 +77,7 @@ bool KviKvsObject_hbox::functionsetMargin(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QHBox *)widget())->setMargin(uMargin);
+    if (widget()) ((KviTalHBox *)widget())->setMargin(uMargin);
 	return true;
 }
 
@@ -87,7 +87,7 @@ bool KviKvsObject_hbox::functionsetSpacing(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QHBox *)widget())->setSpacing(uSpacing);
+    if (widget()) ((KviTalHBox *)widget())->setSpacing(uSpacing);
 	return true;
 }
 bool KviKvsObject_hbox::functionsetStretchFactor(KviKvsObjectFunctionCall *c)
@@ -121,7 +121,7 @@ bool KviKvsObject_hbox::functionsetStretchFactor(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("The widget must be a child of this hbox"));
 		return true;
 	}
-	((QHBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
+	((KviTalHBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
 	return true;
 }
 

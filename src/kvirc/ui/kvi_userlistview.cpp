@@ -74,7 +74,7 @@ extern QPixmap * g_pUserChanStatePixmap;
 // FIXME: #warning "We want to be able to navigate the list with the keyboard!"
 
 KviUserListToolTip::KviUserListToolTip(KviUserListView * v,KviUserListViewArea * a)
-: QToolTip(a,0)
+: KviTalToolTip(a)
 {
 	m_pListView = v;
 }
@@ -186,7 +186,7 @@ void KviUserListEntry::recalcSize()
 
 
 KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* button,KviIrcUserDataBase * db,KviWindow * pWnd,int dictSize,const QString & label_text,const char * name)
-: KviWindowToolWidget(parent,button,name)
+: KviWindowToolWidget(parent,button)
 {
 	setAutoDelete(0);
 	m_pKviWindow  = pWnd;
@@ -194,7 +194,7 @@ KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* butto
 	m_pEntryDict->setAutoDelete(true);
 
 	m_pUsersLabel = new QLabel(this,"userslabel");
-	QToolTip::add(m_pUsersLabel,label_text);
+	KviTalToolTip::add(m_pUsersLabel,label_text);
 
 	m_pViewArea   = new KviUserListViewArea(this);
 	m_pToolTip    = new KviUserListToolTip(this,m_pViewArea);

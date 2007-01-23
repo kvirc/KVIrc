@@ -61,7 +61,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	addColorSelector(g,__tr2qs_ctx("User-op:","options"),KviOption_colorUserListViewUserOpForeground);
 	addColorSelector(g,__tr2qs_ctx("Away:","options"),KviOption_colorUserListViewAwayForeground);
 	
-	QHBox * hb = new QHBox(g);
+	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
 	KviBoolSelector * b = addBoolSelector(hb,__tr2qs_ctx("Use different color for own nick:","options"),KviOption_boolUseDifferentColorForOwnNick);
 	KviColorSelector * s = addColorSelector(hb,"",KviOption_colorUserListViewOwnForeground,KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick));
@@ -73,7 +73,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	s = addColorSelector(g,__tr2qs_ctx("Grid color:","options"),KviOption_colorUserListViewGrid,KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 
-	hb = new QHBox(g);
+	hb = new KviTalHBox(g);
 	hb->setSpacing(4);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Grid type:","options"),hb);

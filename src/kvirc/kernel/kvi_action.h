@@ -37,7 +37,7 @@
 // Known categories are: general (or empty), irc, script
 //
 
-class QPopupMenu;
+class KviTalPopupMenu;
 class QWidget;
 class KviCustomToolBar;
 class QPixmap;
@@ -128,7 +128,7 @@ public:
 	virtual void setEnabled(bool bEnabled);
 	virtual QPixmap * smallIcon();
 	virtual QPixmap * bigIcon();
-	virtual bool addToPopupMenu(QPopupMenu *pMenu);
+	virtual bool addToPopupMenu(KviTalPopupMenu *pMenu);
 	virtual QWidget * addToCustomToolBar(KviCustomToolBar *pParentToolBar);
 	void suicide() { delete this; };
 protected:

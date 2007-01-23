@@ -23,7 +23,7 @@
 #include "kvi_dynamictooltip.h"
 
 KviDynamicToolTipHelper::KviDynamicToolTipHelper(QWidget * parent,KviDynamicToolTip * parToolTip)
-: QToolTip(parent)
+: KviTalToolTip(parent)
 {
 	m_pParentToolTip = parToolTip;
 }
