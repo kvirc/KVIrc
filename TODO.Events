@@ -4,34 +4,22 @@ This is a list of KVIrc 2.x events that are not present yet on KVIRC 3.
 Please remove as you implement them.
 
 OnAway
-OnHighLight
 OnCTCPMultimedia
 OnChannelOpNotice
-OnConsoleInput
-OnChannelInput
-OnQueryInput
 OnError
 OnEventError
 OnIdleStart
 OnIdleStop
 OnKeyShorcut
 OnLogin?
-OnMeDeowner
-OnMeDeUserOp
 OnMeNotice
-OnMeOwner
-OnMeUserOp 
-OnNotify
-OnOwner
 OnUnhandedNumeric
 OnUserWindowFileDrop
 OnUserWindowInput
 OnUserWindowSelected
-OnUserOp
-OnWallops
 OnWhoisReply -> kvi_sp_numeric.cpp 851
 
-(25)
+(15)
 
 
 OnAction should also be triggered on DCC Chats actions?
@@ -39,40 +27,27 @@ OnAction should also be triggered on DCC Chats actions?
 Commands (Pragma please review, maybe remove ircop commands?)
 --------
 
-ANOTICE
 CD
 CTTPREPLY
-DEBUG
-DEHALFOP
-DEOWNER
-DEUSEROP
 DIR
 FINDTEXT
 GEOMETRY
-HALFOP
 KILL
 KILLPROC
-LAG
 LOCOPS
-MS
 MULTIMEDIA
-NAMES
-NS
-NSLOOKUP
 OPNOTICE
 OPERSERV
 OS
 OWNER
 PROCLIST
 REHASH
-SS
 STATSERV
 STATUS
 UMODE
 UNEXCEPT
-WALLOPS
 
-(32)
+(19)
 
 Functions
 ---------
