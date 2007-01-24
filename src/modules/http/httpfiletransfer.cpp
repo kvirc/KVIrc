@@ -61,7 +61,7 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 	connect(m_pHttpRequest,SIGNAL(status(const QString &)),this,SLOT(statusMessage(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(transferTerminated(bool)));
 	connect(m_pHttpRequest,SIGNAL(header(KviAsciiDict<KviStr> *)),this,SLOT(headersReceived(KviAsciiDict<KviStr> *)));
-	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const char *)));
+	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
 	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(receivedResponse(const QString &)));

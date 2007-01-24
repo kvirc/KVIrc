@@ -1568,10 +1568,13 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				}
 			}
 
-			if(bShowGender && e->globalData()->gender()!=KviIrcUserEntry::Unknown)
+			if(bShowGender)
 			{
-				QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
-				p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-11)/2,*ico);
+				if(e->globalData()->gender()!=KviIrcUserEntry::Unknown)
+				{
+					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
+					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-11)/2,*ico);
+				}
 				theX +=11;
 			}
 
