@@ -383,6 +383,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_grid.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox.cpp"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_mainwindow.cpp"
 				>
 			</File>
@@ -391,7 +399,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_popupmenu.cpp"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_toolbar.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tooltip.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack.cpp"
 				>
 			</File>
 			<File
@@ -940,6 +964,48 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_grid.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_grid_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_grid_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox_qt4.h"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_mainwindow.h"
 				>
 			</File>
@@ -1000,6 +1066,36 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_popupmenu.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine=""
+						Outputs=""
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_popupmenu_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_popupmenu_qt4.h"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_toolbar.h"
 				>
 			</File>
@@ -1031,6 +1127,56 @@
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_toolbardocktype.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tooltip.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_windowstate.h"
 				>
 			</File>
 			<File
