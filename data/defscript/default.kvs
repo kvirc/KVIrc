@@ -227,8 +227,12 @@ alias(names)
 {
 	if(!$0)
 	{
-		echo $tr("Usage:")
-		echo "	  /names <channel>"
+		if($window.type($active)!="channel")
+		{
+		        echo $tr("Usage:") "/names <channel>"
+		} else {
+			raw names $active
+		}
 	} else {
 		raw names $0-
 	}
