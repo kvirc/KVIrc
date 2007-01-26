@@ -107,8 +107,6 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	m_iLastMinimumHeight = 0;
 	m_bStopLayoutOnAddRemove = true;
 
-	load();
-
 	connect(m_pFrame,SIGNAL(activeContextChanged()),this,SLOT(setPermanentMessage()));
 	connect(m_pFrame,SIGNAL(activeContextStateChanged()),this,SLOT(setPermanentMessage()));
 	connect(m_pFrame,SIGNAL(activeConnectionUserModeChanged()),this,SLOT(setPermanentMessage()));
@@ -155,8 +153,13 @@ void KviStatusBar::load()
 			QString szPreloadModule = cfg.readEntry(tmp.ptr(),"");
 			if(!szPreloadModule.isEmpty())
 				g_pModuleManager->getModule(szPreloadModule.utf8().data());
+
 			KviStatusBarApplet * a = createApplet(szInternalName);
-			a->loadState(prefix.ptr(),&cfg);
+			if (a)
+				a->loadState(prefix.ptr(),&cfg);
+			else
+				debug("warning: failed to create applet %s (preload: %s)!",
+					szInternalName.utf8().data(), szPreloadModule.utf8().data());
 		}
 	}
 }

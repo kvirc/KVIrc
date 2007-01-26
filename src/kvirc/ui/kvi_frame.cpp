@@ -120,8 +120,16 @@ KviFrame::KviFrame()
 
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar"); // This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
+	{
 		m_pStatusBar = new KviStatusBar(this);
-	else
+		// torque: moved out of status bar constructor
+		// because module init functions exectued in load()
+		// couldn't access the status bar via g_pFrame->mainStatusBar()
+		// (assignment of m_pStatusBar happened after load() and
+		// the init function)
+		m_pStatusBar->load();
+
+	} else
 		m_pStatusBar = 0;
 
 	m_pTaskBar = 0;
@@ -1016,6 +1024,7 @@ void KviFrame::toggleStatusBar()
 		//if(statusBar())delete statusBar(); // kill any existing status bar (QT BUG)
 
 		m_pStatusBar = new KviStatusBar(this);
+		m_pStatusBar->load();
 		m_pStatusBar->show();
 		setUpLayout();
 	}

@@ -64,6 +64,7 @@ class KviDynamicToolTip;
 class KVIRC_API KviStatusBar : public QStatusBar
 {
 	friend class KviStatusBarApplet;
+	friend class KviFrame;
 	Q_OBJECT
 public:
 	KviStatusBar(KviFrame * pFrame);
