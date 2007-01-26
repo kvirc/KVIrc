@@ -5,7 +5,6 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2001-2005 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,9 +24,11 @@
 
 #include "kvi_module.h"
 #include "kvi_options.h"
+#include "kvi_frame.h"
 
 #include "tc_interface.h"
 #include "tc_ktorrentdcopinterface.h"
+#include "tc_statusbarapplet.h"
 
 #include "kvi_locale.h"
 #include "kvi_out.h"
@@ -36,7 +37,7 @@
 static KviPtrList<KviTorrentInterfaceDescriptor> * g_pDescriptorList = 0;
 
 // selected torrent interface
-static KviTorrentInterface *g_pTcInterface = 0;
+KviTorrentInterface *g_pTcInterface = 0;
 
 //static KviMediaPlayerInterface * g_pMPInterface = 0;
 
@@ -704,6 +705,10 @@ static bool torrent_module_init(KviModule *m)
 #endif // COMPILE_KDE_SUPPORT
 
 	g_pTcInterface = 0;
+
+	if (g_pFrame->mainStatusBar())
+		KviTorrentStatusBarApplet::selfRegister(g_pFrame->mainStatusBar());
+	
 
 /*	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
