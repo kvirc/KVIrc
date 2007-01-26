@@ -223,6 +223,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ext\kvi_dcophelper.cpp"
+				>
+			</File>
+			<File
 				RelativePath="net\kvi_dns.cpp"
 				>
 			</File>
@@ -391,6 +395,18 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_iconview.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview.cpp"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_mainwindow.cpp"
 				>
 			</File>
@@ -400,6 +416,10 @@
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_popupmenu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview.cpp"
 				>
 			</File>
 			<File
@@ -627,6 +647,10 @@
 			</File>
 			<File
 				RelativePath="ext\kvi_databuffer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ext\kvi_dcophelper.h"
 				>
 			</File>
 			<File
@@ -975,7 +999,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -996,13 +1020,76 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_hbox_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_iconview.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_iconview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_iconview_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview_qt4.h"
 				>
 			</File>
 			<File
@@ -1086,13 +1173,34 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_popupmenu_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview_qt4.h"
 				>
 			</File>
 			<File
@@ -1145,7 +1253,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1166,7 +1274,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
