@@ -66,14 +66,14 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
 	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
 
-	m_pListView  = new QListView(m_pVertSplitter);
+	m_pListView  = new KviTalListView(m_pVertSplitter);
 	m_pListView->addColumn(__tr2qs("Link"));
 	m_pListView->addColumn(__tr2qs("Hops"));
 	m_pListView->addColumn(__tr2qs("Description"));
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setAllColumnsShowFocus(true);
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-			this,SLOT(showHostPopup(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+			this,SLOT(showHostPopup(KviTalListViewItem *,const QPoint &,int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -194,8 +194,8 @@ void KviLinksWindow::endOfLinks()
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Received end of links."));
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,"======================");
 
-	QListViewItem * it   = 0;
-	QListViewItem * root = 0;
+	KviTalListViewItem * it   = 0;
+	KviTalListViewItem * root = 0;
 
 	int totalHosts  = 0;
 	int totalHops   = 0;
@@ -213,7 +213,7 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->setUpdatesEnabled(false);
 	for(KviLink *l=m_pLinkList->first();l;l=m_pLinkList->next()){
 		totalHosts++;
-		if(l->hops == 0)root = new QListViewItem(m_pListView,QString(l->host.ptr()),"0",QString(l->description.ptr()));
+		if(l->hops == 0)root = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),"0",QString(l->description.ptr()));
 		else {
 			totalHops += l->hops;
 			if(l->hops < 4){
@@ -237,10 +237,10 @@ void KviLinksWindow::endOfLinks()
 				brokenLinks++;
 				KviStr tmp(KviStr::Format,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
 				KviStr tmp2(KviStr::Format,"%d",l->hops);
-				if(root)it = new QListViewItem(m_pListView,root,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
+				if(root)it = new KviTalListViewItem(m_pListView,root,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
 				else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
-					it = new QListViewItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
+					it = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
 				}
 			} else {
 				it = it->parent();
@@ -304,35 +304,35 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->repaint();
 }
 
-QListViewItem * KviLinksWindow::insertLink(KviLink *l)
+KviTalListViewItem * KviLinksWindow::insertLink(KviLink *l)
 {
 	__range_valid(l->hops > 0);
-	QListViewItem * i = getItemByHost(l->parent.ptr(),0);
-	QListViewItem * it = 0;
+	KviTalListViewItem * i = getItemByHost(l->parent.ptr(),0);
+	KviTalListViewItem * it = 0;
 	if(!i)return 0;
 	else {
 		KviStr hops(KviStr::Format,"%d",l->hops);
-		it = new QListViewItem(i,QString(l->host.ptr()),QString(hops.ptr()),QString(l->description.ptr()));
+		it = new KviTalListViewItem(i,QString(l->host.ptr()),QString(hops.ptr()),QString(l->description.ptr()));
 		i->setOpen(true);
 	}
 	return it;
 }
 
-QListViewItem * KviLinksWindow::getItemByHost(const char *host,QListViewItem * par)
+KviTalListViewItem * KviLinksWindow::getItemByHost(const char *host,KviTalListViewItem * par)
 {
-	QListViewItem * i = (par ? par->firstChild() : m_pListView->firstChild());
+	KviTalListViewItem * i = (par ? par->firstChild() : m_pListView->firstChild());
 	if(!i)return 0;
 	while(i){
 		KviStr tmp = i->text(0);
 		if(kvi_strEqualCI(tmp.ptr(),host))return i;
-		QListViewItem * ch = getItemByHost(host,i);
+		KviTalListViewItem * ch = getItemByHost(host,i);
 		if(ch)return ch;
 		i = i->nextSibling();
 	}
 	return 0;
 }
 
-void KviLinksWindow::showHostPopup(QListViewItem *i,const QPoint &p,int)
+void KviLinksWindow::showHostPopup(KviTalListViewItem *i,const QPoint &p,int)
 {
 	if(!i)return;
 	KviStr host=i->text(0);

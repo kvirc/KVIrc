@@ -22,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include "class_widget.h"
 
 
@@ -36,7 +36,7 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_listviewitem)
 	void childDestroyed();
 protected:
-	QListViewItem * m_pListViewItem;
+	KviTalListViewItem * m_pListViewItem;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
@@ -56,16 +56,16 @@ protected:
 	bool function_firstChild(KviKvsObjectFunctionCall *c);
 	bool function_nextSibling(KviKvsObjectFunctionCall *c);
 public:
-	static kvs_hobject_t itemToHandle(QListViewItem * it);
+	static kvs_hobject_t itemToHandle(KviTalListViewItem * it);
 };
 
 
 
-class KviKvsMdmStandardListViewItem : public QListViewItem
+class KviKvsMdmStandardListViewItem : public KviTalListViewItem
 {
 public:
-	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,QListView * par);
-	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,QListViewItem * par);
+	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par);
+	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par);
 	virtual ~KviKvsMdmStandardListViewItem();
 protected:
 	KviKvsObject_listviewitem * m_pMasterObject;
@@ -73,11 +73,11 @@ public:
 	KviKvsObject_listviewitem * masterObject(){ return m_pMasterObject; }
 };
 
-class KviKvsMdmCheckListViewItem : public QCheckListItem
+class KviKvsMdmCheckListViewItem : public KviTalCheckListItem
 {
 public:
-	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,QListView * par);
-	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,QListViewItem * par);
+	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par);
+	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par);
 	virtual ~KviKvsMdmCheckListViewItem();
 protected:
 	KviKvsObject_listviewitem * m_pMasterObject;

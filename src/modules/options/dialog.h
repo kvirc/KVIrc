@@ -27,7 +27,7 @@
 
 
 #include <qdialog.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qstringlist.h>
 #include "kvi_optionswidget.h"
 
@@ -47,11 +47,11 @@ public:
 	~KviGeneralOptionsFrontWidget();
 };
 
-class KviOptionsListViewItem : public QListViewItem
+class KviOptionsListViewItem : public KviTalListViewItem
 {
 public:
-	KviOptionsListViewItem(QListView *parent,KviOptionsWidgetInstanceEntry * e);
-	KviOptionsListViewItem(QListViewItem *parent,KviOptionsWidgetInstanceEntry * e);
+	KviOptionsListViewItem(KviTalListView *parent,KviOptionsWidgetInstanceEntry * e);
+	KviOptionsListViewItem(KviTalListViewItem *parent,KviOptionsWidgetInstanceEntry * e);
 	~KviOptionsListViewItem();
 public:
 	KviOptionsWidgetInstanceEntry * m_pInstanceEntry;
@@ -70,7 +70,7 @@ public:
 	KviOptionsDialog(QWidget * par,const QString &szGroup); 
 	~KviOptionsDialog();
 private:
-	QListView    * m_pListView;
+	KviTalListView    * m_pListView;
 	QLabel       * m_pCategoryLabel;
 	KviTalWidgetStack * m_pWidgetStack;
 	KviGeneralOptionsFrontWidget* m_pFrontWidget;
@@ -79,11 +79,11 @@ private:
 	QToolButton  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsListViewItem *it);
-	void fillListView(QListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
-	//KviOptionsListViewItem * showHiddenChildren(QListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l);
+	void fillListView(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
+	//KviOptionsListViewItem * showHiddenChildren(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l);
 	KviOptionsListViewItem * findItemByPage(KviOptionsListViewItem *it,KviOptionsWidget * pPage);
 private slots:
-	void listViewItemSelectionChanged(QListViewItem *it);
+	void listViewItemSelectionChanged(KviTalListViewItem *it);
 	void applyClicked();
 	void okClicked();
 	void cancelClicked();

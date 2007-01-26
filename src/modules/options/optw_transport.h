@@ -24,6 +24,6 @@
 //
 
 #include "kvi_optionswidget.h"
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 #endif //!_OPTW_TRANSPORT_H_

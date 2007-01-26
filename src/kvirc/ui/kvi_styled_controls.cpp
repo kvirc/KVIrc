@@ -30,6 +30,7 @@
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_doublebuffer.h"
+#include "kvi_tal_toolbar.h"
 
 #include <qcheckbox.h>
 #include <qpainter.h>
@@ -237,7 +238,7 @@ KviStyledToolButton::KviStyledToolButton( QWidget * parent, const char * name )
 	resizeEvent(0);
 }
 
-KviStyledToolButton::KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, QToolBar * parent, const char * name )
+KviStyledToolButton::KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name )
 : QToolButton(iconSet,textLabel,grouptext,receiver,slot,parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
 	setWFlags(WNoAutoErase);

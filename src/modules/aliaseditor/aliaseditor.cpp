@@ -53,14 +53,14 @@
 extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
-KviAliasEditorListViewItem::KviAliasEditorListViewItem(QListView * pListView,Type eType,const QString &szName)
-: QListViewItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
+KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviTalListView * pListView,Type eType,const QString &szName)
+: KviTalListViewItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
 {
 	setName(szName);
 }
 
 KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,Type eType,const QString &szName)
-: QListViewItem(pParentNamespaceItem), m_eType(eType), m_pParentNamespaceItem(pParentNamespaceItem)
+: KviTalListViewItem(pParentNamespaceItem), m_eType(eType), m_pParentNamespaceItem(pParentNamespaceItem)
 {
 	setName(szName);
 }
@@ -88,7 +88,7 @@ KviAliasListViewItem::KviAliasListViewItem(KviAliasNamespaceListViewItem * pPare
 	m_cPos=QPoint(0,0);
 }
 
-KviAliasListViewItem::KviAliasListViewItem(QListView * pListView,const QString &szName)
+KviAliasListViewItem::KviAliasListViewItem(KviTalListView * pListView,const QString &szName)
 : KviAliasEditorListViewItem(pListView,KviAliasEditorListViewItem::Alias,szName)
 {
 	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)));
@@ -96,7 +96,7 @@ KviAliasListViewItem::KviAliasListViewItem(QListView * pListView,const QString &
 }
 
 
-KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(QListView * pListView,const QString &szName)
+KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(KviTalListView * pListView,const QString &szName)
 : KviAliasEditorListViewItem(pListView,KviAliasEditorListViewItem::Namespace,szName)
 {
 	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)));
@@ -214,9 +214,9 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	l->addWidget(m_pSplitter,0,0);
 	
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
-	m_pListView = new QListView(box);
+	m_pListView = new KviTalListView(box);
 	m_pListView->addColumn(__tr2qs("Alias"));
-	m_pListView->setSelectionMode(QListView::Extended);
+	m_pListView->setSelectionMode(KviTalListView::Extended);
 	m_pListView->setShowSortIndicator(true);
 	m_pListView->setRootIsDecorated(true);
 
@@ -379,12 +379,12 @@ void KviAliasEditor::oneTimeSetup()
 		++it;
 	}
 		
-	connect(m_pListView,SIGNAL(currentChanged(QListViewItem *)),this,SLOT(currentItemChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 }
 
-bool KviAliasEditor::hasSelectedItems(QListViewItem * it)
+bool KviAliasEditor::hasSelectedItems(KviTalListViewItem * it)
 {
 	if(!it)return false;
 	if(it->isSelected())return true;
@@ -395,7 +395,7 @@ bool KviAliasEditor::hasSelectedItems(QListViewItem * it)
 	return hasSelectedItems(it->nextSibling());
 }
 
-bool KviAliasEditor::itemExists(QListViewItem *pSearchFor,QListViewItem * pSearchAt)
+bool KviAliasEditor::itemExists(KviTalListViewItem *pSearchFor,KviTalListViewItem * pSearchAt)
 {
 	if(!pSearchFor)return false;
 	if(!pSearchAt)return false;
@@ -405,7 +405,7 @@ bool KviAliasEditor::itemExists(QListViewItem *pSearchFor,QListViewItem * pSearc
 }
 
 
-void KviAliasEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviAliasEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	m_pContextPopup->clear();
 	
@@ -958,7 +958,7 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 	return szNewName;
 }
 
-void KviAliasEditor::openParentItems(QListViewItem * it)
+void KviAliasEditor::openParentItems(KviTalListViewItem * it)
 {
 	if(it->parent())
 	{
@@ -968,7 +968,7 @@ void KviAliasEditor::openParentItems(QListViewItem * it)
 }
 
 
-void KviAliasEditor::selectOneItem(QListViewItem * it,QListViewItem *pStartFrom)
+void KviAliasEditor::selectOneItem(KviTalListViewItem * it,KviTalListViewItem *pStartFrom)
 {
 	if(!pStartFrom)return;
 	if(pStartFrom == it)pStartFrom->setSelected(true);
@@ -978,7 +978,7 @@ void KviAliasEditor::selectOneItem(QListViewItem * it,QListViewItem *pStartFrom)
 }
 
 
-void KviAliasEditor::activateItem(QListViewItem * it)
+void KviAliasEditor::activateItem(KviTalListViewItem * it)
 {
 	openParentItems(it);
 	selectOneItem(it,m_pListView->firstChild());
@@ -1062,9 +1062,9 @@ void KviAliasEditor::renameItem()
 	}
 
 	// take child items, if any
-	KviPtrList<QListViewItem> lChildren;
+	KviPtrList<KviTalListViewItem> lChildren;
 	lChildren.setAutoDelete(false);
-	QListViewItem * it = m_pLastEditedItem->firstChild();
+	KviTalListViewItem * it = m_pLastEditedItem->firstChild();
 	while(it)
 	{
 		lChildren.append(it);
@@ -1116,7 +1116,7 @@ void KviAliasEditor::saveLastEditedItem()
 	((KviAliasListViewItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 }
 
-void KviAliasEditor::currentItemChanged(QListViewItem *it)
+void KviAliasEditor::currentItemChanged(KviTalListViewItem *it)
 {
 	saveLastEditedItem();
 

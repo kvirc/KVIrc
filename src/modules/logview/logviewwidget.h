@@ -26,18 +26,18 @@
 #include "kvi_window.h"
 #include "kvi_scripteditor.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 
 class KviScriptEditor;
 
-class KviLogListViewItem : public QListViewItem
+class KviLogListViewItem : public KviTalListViewItem
 {
 public:
-	KviLogListViewItem(QListViewItem * par, const QString & typeName, const QString & name)
-	: QListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
-	KviLogListViewItem(QListView * par, const QString & typeName, const QString & name)
-	: QListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
+	KviLogListViewItem(KviTalListViewItem * par, const QString & typeName, const QString & name)
+	: KviTalListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
+	KviLogListViewItem(KviTalListView * par, const QString & typeName, const QString & name)
+	: KviTalListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
 	~KviLogListViewItem() {};
 public:
 	QString m_szTypeName;
@@ -50,7 +50,7 @@ public:
 class KviLogListViewItemType : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemType(QListView * par, const QString & typeName)
+	KviLogListViewItemType(KviTalListView * par, const QString & typeName)
 	: KviLogListViewItem(par,typeName,typeName) {};
 	~KviLogListViewItemType() {};
 public:
@@ -61,7 +61,7 @@ public:
 class KviLogListViewLog : public KviLogListViewItem
 {
 public:
-	KviLogListViewLog(QListViewItem * par,const QString & date, const QString & fileName, const QString & owner)
+	KviLogListViewLog(KviTalListViewItem * par,const QString & date, const QString & fileName, const QString & owner)
 	: KviLogListViewItem(par,"",date), m_szFileName(fileName), m_szOwner(owner) {};
 	~KviLogListViewLog() {};
 public:

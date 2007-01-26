@@ -30,10 +30,12 @@
 #include <qobject.h>
 
 #include "kvi_list.h"
+#include "kvi_tal_listview.h"
 
 class KviFileTransfer;
 class KviWindow;
 class KviTalPopupMenu;
+class QPainter;
 
 // This is for the external extension
 #define KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME "File transfer extension"
@@ -73,7 +75,6 @@ signals:
 #define COLUMN_FILEINFO 1
 #define COLUMN_PROGRESS 2
 
-class QListViewItem;
 
 class KVIRC_API KviFileTransfer : public QObject
 {
@@ -83,10 +84,10 @@ public:
 	~KviFileTransfer();
 protected:
 	int              m_iId;
-	QListViewItem  * m_pDisplayItem;
+	KviTalListViewItem  * m_pDisplayItem;
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(QListViewItem * i){ m_pDisplayItem = i; };
+	void setDisplayItem(KviTalListViewItem * i){ m_pDisplayItem = i; };
 	int id(){ return m_iId; };
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();

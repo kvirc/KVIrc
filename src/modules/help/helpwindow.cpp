@@ -92,7 +92,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
 	QToolTip::add( pBtnRefreshIndex, __tr2qs("Refresh index") );
 	
-	m_pIndexListBox = new QListBox(m_pIndexTab);
+	m_pIndexListBox = new KviTalListBox(m_pIndexTab);
 	QStringList docList=g_pDocIndex->titlesList();
 	m_pIndexListBox->insertStringList(docList);
 	connect(m_pIndexListBox,SIGNAL(selected(int)),this,SLOT(indexSelected ( int )));
@@ -107,7 +107,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect( m_pTermsEdit, SIGNAL( returnPressed() ),
 	     this, SLOT( startSearch() ) );
 	     
-	m_pResultBox = new QListBox(m_pSearchTab);
+	m_pResultBox = new KviTalListBox(m_pSearchTab);
 	connect(m_pResultBox,SIGNAL(selected(int)),this,SLOT(searchSelected ( int )));
 	
 	QValueList<int> li;
@@ -245,7 +245,7 @@ void KviHelpWindow::showIndexTopic()
 
 void KviHelpWindow::searchInIndex( const QString &s )
 {
-    QListBoxItem *i = m_pIndexListBox->firstItem();
+    KviTalListBoxItem *i = m_pIndexListBox->firstItem();
     QString sl = s.lower();
     while ( i ) {
 	QString t = i->text();

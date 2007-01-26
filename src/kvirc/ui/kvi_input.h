@@ -70,6 +70,9 @@ public:
 	void load(const char * filename);
 };
 
+#ifdef COMPILE_USE_QT4
+	#define QIMEvent QInputMethodEvent
+#endif
 
 class KVIRC_API KviInputEditor : public QFrame
 {

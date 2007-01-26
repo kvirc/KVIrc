@@ -72,8 +72,8 @@ static QString g_szLastEditedAction;
 #define LVI_MINIMUM_TEXT_WIDTH 150
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviActionEditorListViewItem::KviActionEditorListViewItem(QListView * v,KviActionData * a)
-: QListViewItem(v,"")
+KviActionEditorListViewItem::KviActionEditorListViewItem(KviTalListView * v,KviActionData * a)
+: KviTalListViewItem(v,"")
 {
 	m_pActionData = a;
 	m_pListView = v;
@@ -111,7 +111,7 @@ QString KviActionEditorListViewItem::key(int,bool) const
 
 void KviActionEditorListViewItem::setup()
 {
-	QListViewItem::setup();
+	KviTalListViewItem::setup();
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
@@ -617,7 +617,7 @@ void KviSingleActionEditor::commit()
 
 
 KviActionEditorListView::KviActionEditorListView(QWidget * pParent)
-: QListView(pParent)
+: KviTalListView(pParent)
 {
 	setSelectionMode(Extended);
 	int iWidth = visibleWidth();
@@ -633,7 +633,7 @@ KviActionEditorListView::~KviActionEditorListView()
 
 void KviActionEditorListView::resizeEvent(QResizeEvent * e)
 {
-	QListView::resizeEvent(e);
+	KviTalListView::resizeEvent(e);
 	int iWidth = visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setColumnWidth(0,iWidth);
@@ -662,7 +662,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	//m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);
 	m_pListView->setFocusPolicy(QWidget::StrongFocus);
-	connect(m_pListView,SIGNAL(currentChanged(QListViewItem *)),this,SLOT(currentChanged(QListViewItem *)));
+	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
 
 
 	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
@@ -846,7 +846,7 @@ bool KviActionEditor::actionExists(const QString &szName)
 }
 
 
-void KviActionEditor::currentChanged(QListViewItem * i)
+void KviActionEditor::currentChanged(KviTalListViewItem * i)
 {
 	if(m_pSingleActionEditor->actionData())
 	{

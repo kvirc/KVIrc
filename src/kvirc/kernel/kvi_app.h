@@ -50,7 +50,7 @@
 
 class KviTalPopupMenu;
 class QPixmap;
-class QListBox;
+class KviTalListBox;
 class QTextCodec;
 class QDomElement;
 

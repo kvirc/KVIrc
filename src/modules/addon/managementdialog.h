@@ -32,23 +32,23 @@
 #include <qlabel.h>
 #include <qdialog.h>
 #include <qcolor.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 class QPushButton;
 class QPixmap;
 class QSimpleRichText;
 class KviKvsScriptAddon;
 
-class KviScriptAddonListViewItem : public QListViewItem
+class KviScriptAddonListViewItem : public KviTalListViewItem
 {
 public:
-	KviScriptAddonListViewItem(QListView * v,KviKvsScriptAddon * a);
+	KviScriptAddonListViewItem(KviTalListView * v,KviKvsScriptAddon * a);
 	~KviScriptAddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
 	QSimpleRichText * m_pText;
 	QPixmap * m_pIcon;
-	QListView * m_pListView;
+	KviTalListView * m_pListView;
 	QString m_szKey;
 public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
@@ -92,7 +92,7 @@ protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent *e);
 protected slots:
-	void currentChanged(QListViewItem *i);
+	void currentChanged(KviTalListViewItem *i);
 	void closeClicked();
 	void showScriptHelp();
 	void configureScript();

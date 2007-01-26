@@ -117,7 +117,7 @@ namespace KviUserInput
 				case KVI_WINDOW_TYPE_CONSOLE:
 					if(pWindow->connection())
 					{
-						QCString data = pWindow->connection()->encodeText(buf);
+						KviQCString data = pWindow->connection()->encodeText(buf);
 						if(((KviConsole *)pWindow)->connection()->sendData(data.data()))
 						{
 							pWindow->output(KVI_OUT_RAW,"[RAW]: %Q",&buf);

@@ -155,14 +155,14 @@ namespace KviKvsCoreSimpleCommands
 
 		QStringList sl = QStringList::split(QRegExp("[, ]+"),szTokens,false);
 		
-		QCString szFlags;
-		QCString szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());
-		QCString szMessage;
+		KviQCString szFlags;
+		KviQCString szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());
+		KviQCString szMessage;
 
 		int i = 0;
 		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 		{
-			QCString szTxt = KVSCSC_pConnection->encodeText(*it);
+			KviQCString szTxt = KVSCSC_pConnection->encodeText(*it);
 			if(!szTxt.isEmpty())
 			{
 				szFlags += flag;
@@ -223,8 +223,8 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QCString txt = KVSCSC_pConnection->encodeText(szText);
-		QCString cmd = KVSCSC_pConnection->encodeText(((KviKvsTreeNodeCommand *)(KVSCSC_pContext->defaultReportLocation()))->commandName());
+		KviQCString txt = KVSCSC_pConnection->encodeText(szText);
+		KviQCString cmd = KVSCSC_pConnection->encodeText(((KviKvsTreeNodeCommand *)(KVSCSC_pContext->defaultReportLocation()))->commandName());
 
 		if(!KVSCSC_pConnection->sendFmtData("%s %s",cmd.data(),txt.data() ? txt.data() : ""))
 			return KVSCSC_pContext->warningNoIrcConnection();

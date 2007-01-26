@@ -33,8 +33,8 @@ class QGroupBox;
 class QPushButton;
 class KviStyledCheckBox;
 class QLineEdit;
-class QListView;
-class QListViewItem;
+
+#include "kvi_tal_listview.h"
 
 class KviChannelsJoinWindow : public QDialog
 {
@@ -44,7 +44,7 @@ public:
 	~KviChannelsJoinWindow();
 protected:
 	QLineEdit   * m_pChannelEdit; 
-	QListView   * m_pListView;
+	KviTalListView   * m_pListView;
 	QGroupBox   * m_pGroupBox;
 	QLineEdit   * m_pPass;
 	KviStyledCheckBox   * m_pShowAtStartupCheck;
@@ -58,8 +58,8 @@ public:
 	void setConsole(KviConsole  * pConsole);
 protected slots:
 	void editTextChanged(const QString &);
-	void itemClicked(QListViewItem *it);
-	void itemDoubleClicked(QListViewItem *it);
+	void itemClicked(KviTalListViewItem *it);
+	void itemDoubleClicked(KviTalListViewItem *it);
 	void editReturnPressed();
 	void cancelClicked();
 	void joinClicked();

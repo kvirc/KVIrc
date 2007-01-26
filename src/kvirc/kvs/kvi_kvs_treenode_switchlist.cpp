@@ -51,7 +51,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 	debug("%s SwitchList",prefix);
 	if(m_pShortSwitchDict)
 	{
-		QIntDictIterator<KviKvsTreeNodeData> it(*m_pShortSwitchDict);
+		KviIntDictIterator<KviKvsTreeNodeData> it(*m_pShortSwitchDict);
 		while(it.current())
 		{
 			QString tmp = prefix;
@@ -82,7 +82,7 @@ void KviKvsTreeNodeSwitchList::addShort(int iShortKey,KviKvsTreeNodeData * p)
 {
 	if(!m_pShortSwitchDict)
 	{
-		m_pShortSwitchDict = new QIntDict<KviKvsTreeNodeData>(11);
+		m_pShortSwitchDict = new KviIntDict<KviKvsTreeNodeData>(11);
 		m_pShortSwitchDict->setAutoDelete(true);
 	}
 
@@ -109,7 +109,7 @@ bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchLis
 
 	if(m_pShortSwitchDict)
 	{
-		QIntDictIterator<KviKvsTreeNodeData> it(*m_pShortSwitchDict);
+		KviIntDictIterator<KviKvsTreeNodeData> it(*m_pShortSwitchDict);
 		while(KviKvsTreeNodeData * d = it.current())
 		{
 			KviKvsVariant * v = new KviKvsVariant();

@@ -26,16 +26,18 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+#include "kvi_inttypes.h"
 
-class KVIRC_API KviBasicIrcServerInfo {
+class KVIRC_API KviBasicIrcServerInfo
+{
 protected:
 	QString m_szServerVersion;
 public:
-	KviBasicIrcServerInfo(const QString & version = QString::null);
+	KviBasicIrcServerInfo(const QString & version = KviQString::empty);
 	~KviBasicIrcServerInfo();
 protected:
-	virtual const QString & getCustomChannelModeDescription(QChar mode) { return QString::null; };
-	virtual const QString & getCustomUserModeDescription(QChar mode) { return QString::null; };
+	virtual const QString & getCustomChannelModeDescription(QChar mode) { return KviQString::empty; };
+	virtual const QString & getCustomUserModeDescription(QChar mode) { return KviQString::empty; };
 private:
 	const QString & getBasicChannelModeDescription(QChar mode);
 	const QString & getBasicUserModeDescription(QChar mode);
@@ -58,7 +60,7 @@ private:
 	QString m_szSupportedUserModes;        // the supported user modes
 	QString m_szSupportedChannelModes;     // the supported channel modes
 	QString m_szSupportedModePrefixes;     // the actually used mode prefixes  @+
-	Q_UINT32*  m_pModePrefixTable; // the mode prefixes above in a table
+	kvi_u32_t * m_pModePrefixTable;        // the mode prefixes above in a table
 	unsigned int m_uPrefixes;
 	QString m_szSupportedModeFlags;        // the actually used mode flags     ov
 	QString m_szSupportedChannelTypes;     // the supported channel types
@@ -92,10 +94,10 @@ public:
 	
 	bool isSupportedModePrefix(QChar c);
 	bool isSupportedModeFlag(QChar c);
-	QChar modePrefixChar(Q_UINT32 flag);
-	QChar modeFlagChar(Q_UINT32 flag);
-	Q_UINT32 modeFlagFromPrefixChar(QChar c);
-	Q_UINT32 modeFlagFromModeChar(QChar c);
+	QChar modePrefixChar(kvi_u32_t flag);
+	QChar modeFlagChar(kvi_u32_t flag);
+	kvi_u32_t modeFlagFromPrefixChar(QChar c);
+	kvi_u32_t modeFlagFromModeChar(QChar c);
 protected:
 	void setName(const QString &szName){ m_szName = szName; };
 	void setSupportedUserModes(const QString &szSupportedUserModes){ m_szSupportedUserModes = szSupportedUserModes; };

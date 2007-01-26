@@ -132,7 +132,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QCString szTxt = KVSCSC_pConnection->encodeText(szText);
+		KviQCString szTxt = KVSCSC_pConnection->encodeText(szText);
 
 		if(!szTxt.isEmpty())
 		{
@@ -219,7 +219,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QCString szData = KVSCSC_pConnection->encodeText(szNick);
+		KviQCString szData = KVSCSC_pConnection->encodeText(szNick);
 		if(!szData.data())szData = "";
 
 		if(!KVSCSC_pConnection->sendFmtData("NICK %s",szData.data()))
@@ -270,8 +270,8 @@ namespace KviKvsCoreSimpleCommands
 		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
 		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
 
-		QCString szT = KVSCSC_pConnection->encodeText(szTarget);
-		QCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
+		KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
+		KviQCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
 		if(!szT.data())szT = ""; // encoding problems ?
 		if(!szD.data())szD = ""; // encoding problems ?
 
@@ -708,13 +708,13 @@ namespace KviKvsCoreSimpleCommands
 			}
 		}
 
-		QCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
+		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
 		QStringList sl = QStringList::split(",",szChans);
 	
 		if(!szMsg.isEmpty())
 		{
-			QCString szText;
+			KviQCString szText;
 			if(sl.count() == 1)
 			{
 				// single chan , use channel encoding if possible
@@ -939,8 +939,8 @@ namespace KviKvsCoreSimpleCommands
 		if(w)w->ownMessage(szText);
 		else {
 
-			QCString szT = KVSCSC_pConnection->encodeText(szTarget);
-			QCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
+			KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
+			KviQCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
 			if(!szT.data())szT = ""; // encoding problems ?
 			if(!szD.data())szD = ""; // encoding problems ?
 
@@ -1168,7 +1168,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QCString szData = KVSCSC_pConnection->encodeText(szRawCommand);
+		KviQCString szData = KVSCSC_pConnection->encodeText(szRawCommand);
 		if(!szData.data())szData = "";
 
 		if(!KVSCSC_pConnection->sendData(szData.data()))
@@ -1311,9 +1311,15 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("parameters",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,l)
 		KVSCSC_PARAMETERS_END
 
+#ifdef COMPILE_USE_QT4
+		QProcess proc;
+		proc.start(szCommand,l);
+		// FIXME: KVSCSC_pContext->warning(__tr2qs("Failed to execute command '%Q'"),&szCommand);
+#else
 		QProcess proc(szCommand);
 		for ( QStringList::Iterator it = l.begin(); it != l.end(); ++it ) proc.addArgument(*it);
 		if(!proc.start())KVSCSC_pContext->warning(__tr2qs("Failed to execute command '%Q'"),&szCommand);
+#endif
 		return true;
 	}
 };

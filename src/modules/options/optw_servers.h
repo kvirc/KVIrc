@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qdialog.h>
 #include <qbuttongroup.h>
 #include <qtabwidget.h>
@@ -38,11 +38,11 @@ class KviMexServerImport;
 
 
 
-class KviServerOptionsListViewItem : public QListViewItem
+class KviServerOptionsListViewItem : public KviTalListViewItem
 {
 public:
-	KviServerOptionsListViewItem(QListView *parent,const QPixmap &pm,const KviIrcNetwork *n);
-	KviServerOptionsListViewItem(QListViewItem *parent,const QPixmap &pm,const KviIrcServer *s);
+	KviServerOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,const KviIrcNetwork *n);
+	KviServerOptionsListViewItem(KviTalListViewItem *parent,const QPixmap &pm,const KviIrcServer *s);
 	~KviServerOptionsListViewItem();
 public:
 	KviIrcServer * m_pServerData;
@@ -85,7 +85,7 @@ protected:
 	
 	QCheckBox             * m_pAutoConnectCheck;
 	
-	QListView             * m_pNickServListView;
+	KviTalListView             * m_pNickServListView;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
@@ -158,7 +158,7 @@ public:
 	KviServerOptionsWidget(QWidget * parent);
 	~KviServerOptionsWidget();
 protected:
-	QListView                    * m_pListView;
+	KviTalListView                    * m_pListView;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
 	//QLabel                       * m_pPortLabel;
@@ -190,8 +190,8 @@ protected slots:
 	void importerDead();
 	void importServer(const KviIrcServer & s,const char * network);
 	void importPopupAboutToShow();
-	void listViewItemSelectionChanged(QListViewItem *it);
-	void listViewRightButtonPressed(QListViewItem *it,const QPoint &pnt,int col);
+	void listViewItemSelectionChanged(KviTalListViewItem *it);
+	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
 	void newNetwork();
 	void removeCurrent();
 	void newServer();

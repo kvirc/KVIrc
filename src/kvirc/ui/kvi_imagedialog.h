@@ -29,29 +29,29 @@
 
 #include <qdialog.h>
 #include <qcombobox.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qvaluelist.h>
 #include <qtimer.h>
 #include <qstringlist.h>
 
 #include "kvi_dynamictooltip.h"
 
-class KviImageDialogItem : public QListBoxPixmap
+class KviImageDialogItem : public KviTalListBoxPixmap
 {
 public:
 	bool m_bIsFolder;
 	QString m_szImageId;
 	QString m_szTipText;
 public:
-	KviImageDialogItem(QListBox * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString::null,bool bIsFolder = false)
-	: QListBoxPixmap(b,thumb,szFile) , m_bIsFolder(bIsFolder) , m_szImageId(image_id) , m_szTipText(szTipText) {};
+	KviImageDialogItem(KviTalListBox * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString::null,bool bIsFolder = false)
+	: KviTalListBoxPixmap(b,thumb,szFile) , m_bIsFolder(bIsFolder) , m_szImageId(image_id) , m_szTipText(szTipText) {};
 	~KviImageDialogItem(){};
 public:
 	bool isFolder(){ return m_bIsFolder; };
 	const QString & imageId(){ return m_szImageId; };
 	const QString & tipText(){ return m_szTipText; };
-	virtual int height(const QListBox *) const;
-	virtual int width(const QListBox *) const;
+	virtual int height(const KviTalListBox *) const;
+	virtual int width(const KviTalListBox *) const;
 	virtual void paint(QPainter * p);
 };
 
@@ -75,7 +75,7 @@ public:
 protected:
 	QComboBox       * m_pTypeComboBox;
 	QValueList<int> * m_pTypeList;
-	QListBox        * m_pListBox;
+	KviTalListBox        * m_pListBox;
 	QTimer          * m_pTimer;
 	int               m_iJobType;
 
@@ -102,7 +102,7 @@ protected slots:
 	void cancelClicked();
 	void heartbeat();
 	void jobTypeSelected(int index);
-	void itemDoubleClicked(QListBoxItem * it);
+	void itemDoubleClicked(KviTalListBoxItem * it);
 	void tipRequest(KviDynamicToolTip *,const QPoint &pnt);
 };
 

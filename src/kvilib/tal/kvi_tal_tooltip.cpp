@@ -45,6 +45,10 @@ void KviTalToolTip::add(QWidget * widget,const QString & text)
 	QToolTip::add(widget,text);
 }
 
+void KviTalToolTip::remove(QWidget * widget)
+{
+	QToolTip::remove(widget);
+}
 
 void KviTalToolTip::tip(const QRect & rect,const QString & text)
 {

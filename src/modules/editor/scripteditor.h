@@ -33,18 +33,18 @@
 #include <qsyntaxhighlighter.h>
 #include <qdialog.h>
 #include <qcheckbox.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qevent.h> 
 
 #include "kvi_list.h"
 #include "kvi_selectors.h"
 typedef KviPtrList<int> ColumnList;
 
-class KviCompletionBox: public QListBox
+class KviCompletionBox: public KviTalListBox
 {
 	Q_OBJECT
 public:
-	KviCompletionBox(QWidget * parent, const char * name, WFlags f);
+	KviCompletionBox(QWidget * parent);
 	~KviCompletionBox(){};
 	
 	void updateContents(QString word);

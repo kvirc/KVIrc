@@ -40,6 +40,33 @@ public:
 		setName(szName);
 	};
 	virtual ~KviTalPopupMenu() {};
+
+	int insertItem(const QString &szText)
+	{
+		return Q3PopupMenu::insertItem(szText);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,-1,-1);
+	}
+	int insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot)
+	{
+		return Q3PopupMenu::insertItem(szText,pReceiver,szSlot);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,const QObject * pReceiver,const char * szSlot)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,pReceiver,szSlot);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,pMenu,-1,-1);
+	}
+	int insertItem(const QString &szText,QMenu *pMenu)
+	{
+		return Q3PopupMenu::insertItem(szText,pMenu,-1,-1);
+	}
+
+
 };
 
 #endif // _KVI_TAL_POPUPMENU_QT4_H_

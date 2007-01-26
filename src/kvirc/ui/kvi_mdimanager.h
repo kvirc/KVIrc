@@ -31,8 +31,9 @@
 #include <qwidget.h>
 #include <qframe.h>
 #include <qpixmap.h>
-#include <qscrollview.h>
 #include <qtoolbutton.h>
+
+#include "kvi_tal_scrollview.h"
 
 #define KVI_MDICHILD_BORDER 4
 #define KVI_MDICHILD_SPACING 2
@@ -53,7 +54,7 @@ class KviTalPopupMenu;
 class KviSdiButtonBox;
 class KviMenuBarToolButton;
 
-class KVIRC_API KviMdiManager : public QScrollView
+class KVIRC_API KviMdiManager : public KviTalScrollView
 {
 	friend class KviMdiChild;
 	friend class KviMdiCaption;

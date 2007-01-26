@@ -44,8 +44,8 @@ static void copyMediaType(KviMediaType * dst,const KviMediaType * src)
 	dst->szIcon                  = src->szIcon;
 }
 
-KviMediaTypeListViewItem::KviMediaTypeListViewItem(QListView * w,KviMediaType * t)
-: QListViewItem(w)
+KviMediaTypeListViewItem::KviMediaTypeListViewItem(KviTalListView * w,KviMediaType * t)
+: KviTalListViewItem(w)
 {
 	copyData(t);
 }
@@ -67,7 +67,7 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 {
 	createLayout(11,3);
 
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs_ctx("Pattern","options"));
 	m_pListView->addColumn(__tr2qs_ctx("MIME Type","options"));
 	m_pListView->addColumn(__tr2qs_ctx("Description","options"));
@@ -75,7 +75,7 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 
 
 
-	connect(m_pListView,SIGNAL(currentChanged(QListViewItem *)),this,SLOT(currentItemChanged(QListViewItem *)));
+	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
 
 	layout()->addMultiCellWidget(m_pListView,0,0,0,2);
 
@@ -212,7 +212,7 @@ void KviMediaTypesOptionsWidget::setLineEdits()
 	m_pIcon->setText(m_pLastItem ? m_pLastItem->data()->szIcon.ptr() : "");
 }
 
-void KviMediaTypesOptionsWidget::currentItemChanged(QListViewItem *it)
+void KviMediaTypesOptionsWidget::currentItemChanged(KviTalListViewItem *it)
 {
 	saveLastItem();
 	m_pLastItem = (KviMediaTypeListViewItem *)it;

@@ -54,7 +54,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QListView * par,KviIrcViewToolWidget * w,int id)
+KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id)
 : QCheckListItem(par,QString::null,QCheckListItem::CheckBox)
 {
 	m_iId = id;
@@ -143,7 +143,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	g = new QGridLayout(w1,5,2,2,1);
 
-	m_pFilterView = new QListView(w1);
+	m_pFilterView = new KviTalListView(w1);
 	m_pFilterView->addColumn(__tr2qs("Type"));
 	m_pFilterView->header()->hide();
 	m_pFilterView->setMinimumSize(QSize(10,10));

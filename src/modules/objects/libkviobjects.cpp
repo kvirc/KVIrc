@@ -24,7 +24,7 @@
 
 #include <qwidgetlist.h>
 #include <qobjectlist.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qimage.h>
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"

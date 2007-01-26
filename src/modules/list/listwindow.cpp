@@ -69,8 +69,8 @@ KviChannelListViewItemData::~KviChannelListViewItemData()
 
 
 
-KviChannelListViewItem::KviChannelListViewItem(QListView * v,KviChannelListViewItemData * pData)
-: QListViewItem(v)
+KviChannelListViewItem::KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData)
+: KviTalListViewItem(v)
 {
 	m_pData = pData;
 }
@@ -81,7 +81,7 @@ KviChannelListViewItem::~KviChannelListViewItem()
 	delete m_pData;
 }
 
-int KviChannelListViewItem::width ( const QFontMetrics & fm, const QListView * lv, int column ) const
+int KviChannelListViewItem::width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const
 {
 	QString szText;
 
@@ -109,7 +109,7 @@ void KviChannelListViewItem::paintCell(QPainter * p,const QColorGroup &cg,int co
 		default: szText = m_pData->m_szTopic;  break;
 	}
 
-	QListView* lv = listView();
+	KviTalListView* lv = (KviTalListView *)listView();
 	int marg = lv->itemMargin();
 	int r = marg;
 	
@@ -194,14 +194,14 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
-	m_pListView  = new QListView(m_pVertSplitter);
+	m_pListView  = new KviTalListView(m_pVertSplitter);
 	m_pListView->addColumn(__tr2qs("Channel"));
 	m_pListView->addColumn(__tr2qs("Users"));
 	m_pListView->addColumn(__tr2qs("Topic"));
 	m_pListView->setAllColumnsShowFocus(TRUE);
 	m_pListView->setSorting(100);
 	
-	connect(m_pListView,SIGNAL(doubleClicked(QListViewItem *)),this,SLOT(itemDoubleClicked(QListViewItem *)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -388,7 +388,7 @@ void KviListWindow::flush()
 	m_pListView->viewport()->update();
 }
 
-void KviListWindow::itemDoubleClicked(QListViewItem *it)
+void KviListWindow::itemDoubleClicked(KviTalListViewItem *it)
 {
 	QString sz = ((KviChannelListViewItem *)it)->channel();
 	if(sz.isEmpty())return;

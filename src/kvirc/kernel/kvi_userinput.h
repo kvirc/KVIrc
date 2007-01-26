@@ -32,10 +32,10 @@ namespace  KviUserInput
 {
 	// WARNING: May destroy szData
 	// returns false if szData is a command and it fails to run
-	KVIRC_API bool parse(QString &szData,KviWindow * pWindow,const QString &szContext = QString::null,bool bUserFriendlyCommandline = false);
+	KVIRC_API bool parse(QString &szData,KviWindow * pWindow,const QString &szContext = KviQString::empty,bool bUserFriendlyCommandline = false);
 	
-	KVIRC_API bool parseCommand(const QString &szData,KviWindow * pWindow,const QString &szContext = QString::null,bool bUserFriendlyCommandline = false);
-	//bool parseCommandWithSingleArgument(const QString &szData,KviWindow * pWindow,const QString &szContext = QString::null);
+	KVIRC_API bool parseCommand(const QString &szData,KviWindow * pWindow,const QString &szContext = KviQString::empty,bool bUserFriendlyCommandline = false);
+	//bool parseCommandWithSingleArgument(const QString &szData,KviWindow * pWindow,const QString &szContext = KviQString::empty);
 	KVIRC_API void parseNonCommand(QString &szData,KviWindow * pWindow);
 };
 

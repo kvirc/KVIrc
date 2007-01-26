@@ -25,7 +25,7 @@
 //=================================================================================
 
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qheader.h>
 #include "class_listview.h"
 #include "kvi_error.h"
@@ -213,17 +213,17 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_listview)
 bool KviKvsObject_listview::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	setObject(new KviKvsMdmListView(parentScriptWidget(),name(),this),true);
-	connect(widget(),SIGNAL(clicked(QListViewItem *)),this,SLOT(slotClicked(QListViewItem *)));
-	connect(widget(),SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(slotSelectionChanged(QListViewItem *)));
+	connect(widget(),SIGNAL(clicked(KviTalListViewItem *)),this,SLOT(slotClicked(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(slotSelectionChanged(KviTalListViewItem *)));
 	connect(widget(),SIGNAL(selectionChanged()),this,SLOT(slotMultipleSelectionChanged()));
-	connect(widget(),SIGNAL(currentChanged(QListViewItem *)),this,SLOT(slotCurrentChanged(QListViewItem *)));
-	connect(widget(),SIGNAL(returnPressed(QListViewItem *)),this,SLOT(slotReturnPressed(QListViewItem *)));
-	connect(widget(),SIGNAL(spacePressed(QListViewItem *)),this,SLOT(slotSpacePressed(QListViewItem *)));
-	connect(widget(),SIGNAL(onItem(QListViewItem *)),this,SLOT(slotOnItem(QListViewItem *)));
-	connect(widget(),SIGNAL(expanded(QListViewItem *)),this,SLOT(slotItemExpanded(QListViewItem *)));
-	connect(widget(),SIGNAL(collapsed(QListViewItem *)),this,SLOT(slotItemCollapsed(QListViewItem *)));
-	connect(widget(),SIGNAL(rightButtonClicked(QListViewItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(QListViewItem *,const QPoint &,int)));
-	connect(widget(),SIGNAL(itemRenamed(QListViewItem *,int,const QString &)),this,SLOT(slotItemRenamed(QListViewItem *,int,const QString &)));
+	connect(widget(),SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(slotCurrentChanged(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(returnPressed(KviTalListViewItem *)),this,SLOT(slotReturnPressed(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(spacePressed(KviTalListViewItem *)),this,SLOT(slotSpacePressed(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(onItem(KviTalListViewItem *)),this,SLOT(slotOnItem(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(expanded(KviTalListViewItem *)),this,SLOT(slotItemExpanded(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(collapsed(KviTalListViewItem *)),this,SLOT(slotItemCollapsed(KviTalListViewItem *)));
+	connect(widget(),SIGNAL(rightButtonClicked(KviTalListViewItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(KviTalListViewItem *,const QPoint &,int)));
+	connect(widget(),SIGNAL(itemRenamed(KviTalListViewItem *,int,const QString &)),this,SLOT(slotItemRenamed(KviTalListViewItem *,int,const QString &)));
 	return true;
 }
 
@@ -236,7 +236,7 @@ bool KviKvsObject_listview::function_addColumn(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("width",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QListView *)object())->addColumn(szLabel,iW);
+		((KviTalListView *)object())->addColumn(szLabel,iW);
     return true;
 }
 /*
@@ -247,21 +247,21 @@ bool KviKvsObject_listview::function_setAcceptDrops(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnable",KVS_PT_BOOLEAN,0,bEnable)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QListView *)object())->setAcceptDrops(bEnable);
+		((KviTalListView *)object())->setAcceptDrops(bEnable);
     return true;
 }
 */
 bool KviKvsObject_listview::function_clear(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		((QListView *)object())->clear();
+		((KviTalListView *)object())->clear();
 	return true;
 }
 
 bool KviKvsObject_listview::function_selectedItem(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((QListView *)widget())->selectedItem()));
+		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((KviTalListView *)widget())->selectedItem()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -270,7 +270,7 @@ bool KviKvsObject_listview::function_selectedItem(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_listview::function_firstChild(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((QListView *)widget())->firstChild()));
+		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((KviTalListView *)widget())->firstChild()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -279,7 +279,7 @@ bool KviKvsObject_listview::function_firstChild(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_listview::function_currentItem(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((QListView *)widget())->currentItem()));
+		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((KviTalListView *)widget())->currentItem()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -293,7 +293,7 @@ bool KviKvsObject_listview::function_setColumnText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETERS_END(c)
-	if (widget())((QListView *)widget())->setColumnText(uCol,szText);
+	if (widget())((KviTalListView *)widget())->setColumnText(uCol,szText);
     return true;
 }
 
@@ -305,13 +305,13 @@ bool KviKvsObject_listview::function_setSelectionMode(KviKvsObjectFunctionCall *
 		KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szMode,"NoSelection"))
-		((QListView *)widget())->setSelectionMode(QListView::NoSelection);
+		((KviTalListView *)widget())->setSelectionMode(KviTalListView::NoSelection);
 	else if(KviQString::equalCI(szMode,"Multi"))
-		((QListView *)widget())->setSelectionMode(QListView::Multi);
+		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Multi);
 	else if(KviQString::equalCI(szMode,"Extended"))
-		((QListView *)widget())->setSelectionMode(QListView::Extended);
+		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Extended);
 	else if(KviQString::equalCI(szMode,"Single"))
-		((QListView *)widget())->setSelectionMode(QListView::Single);
+		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Single);
 	else c->warning(__tr2qs("Invalid selection mode 'Q'"),&szMode);
     return true;
 }
@@ -324,7 +324,7 @@ bool KviKvsObject_listview::function_setSorting(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
 		KVSO_PARAMETER("benabled",KVS_PT_BOOL,0,bEnabled)
 		KVSO_PARAMETERS_END(c)
-	if (widget()) 	((QListView *)widget())->setSorting(iCol,bEnabled);
+	if (widget()) 	((KviTalListView *)widget())->setSorting(iCol,bEnabled);
     return true;
 }
 
@@ -335,7 +335,7 @@ bool KviKvsObject_listview::function_setRootIsDecorated(KviKvsObjectFunctionCall
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) 	((QListView *)widget())->setRootIsDecorated(bEnabled);
+	if (widget()) 	((KviTalListView *)widget())->setRootIsDecorated(bEnabled);
     return true;
 }
 
@@ -345,23 +345,23 @@ bool KviKvsObject_listview::function_setAllColumnsShowFocus(KviKvsObjectFunction
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bAllColumnsShowFocus",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget())((QListView *)widget())->setAllColumnsShowFocus(bEnabled);
+	if (widget())((KviTalListView *)widget())->setAllColumnsShowFocus(bEnabled);
 	return true;
 }
 
 bool KviKvsObject_listview::function_hideListViewHeader(KviKvsObjectFunctionCall *c)
 {
-	((QListView *)widget())->header()->hide();
+	((KviTalListView *)widget())->header()->hide();
 	return true;
 }
 bool KviKvsObject_listview::function_showListViewHeader(KviKvsObjectFunctionCall *c)
 {
-	((QListView *)widget())->header()->show();
+	((KviTalListView *)widget())->header()->show();
 	return true;
 }
 bool KviKvsObject_listview::function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c)
 {
-	c->returnValue()->setBoolean(((QListView *)widget())->header()->isVisible());
+	c->returnValue()->setBoolean(((KviTalListView *)widget())->header()->isVisible());
 	return true;
 }
 
@@ -371,7 +371,7 @@ bool KviKvsObject_listview::function_itemClickedEvent(KviKvsObjectFunctionCall *
 	return true;
 }
 
-void KviKvsObject_listview::slotClicked(QListViewItem * i)
+void KviKvsObject_listview::slotClicked(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"itemClickedEvent",0,&params);
@@ -383,7 +383,7 @@ bool KviKvsObject_listview::function_selectionChangedEvent(KviKvsObjectFunctionC
 	return true;
 }
 
-void KviKvsObject_listview::slotSelectionChanged(QListViewItem * i)
+void KviKvsObject_listview::slotSelectionChanged(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"selectionChangedEvent",0,&params);
@@ -402,7 +402,7 @@ bool KviKvsObject_listview::function_currentChangedEvent(KviKvsObjectFunctionCal
 	return true;
 }
 
-void KviKvsObject_listview::slotCurrentChanged(QListViewItem * i)
+void KviKvsObject_listview::slotCurrentChanged(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"currentChangedEvent",0,&params);
@@ -415,7 +415,7 @@ bool KviKvsObject_listview::function_returnPressedEvent(KviKvsObjectFunctionCall
 	return true;
 }
 
-void KviKvsObject_listview::slotReturnPressed(QListViewItem * i)
+void KviKvsObject_listview::slotReturnPressed(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"returnPressedEvent",0,&params);
@@ -427,7 +427,7 @@ bool KviKvsObject_listview::function_spacePressedEvent(KviKvsObjectFunctionCall 
 	return true;
 }
 
-void KviKvsObject_listview::slotSpacePressed(QListViewItem * i)
+void KviKvsObject_listview::slotSpacePressed(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"spacePressedEvent",0,&params);
@@ -439,7 +439,7 @@ bool KviKvsObject_listview::function_onItemEvent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-void KviKvsObject_listview::slotOnItem(QListViewItem * i)
+void KviKvsObject_listview::slotOnItem(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"onItemEvent",0,&params);
@@ -452,7 +452,7 @@ bool KviKvsObject_listview::function_itemExpandedEvent(KviKvsObjectFunctionCall 
 	return true;
 }
 
-void KviKvsObject_listview::slotItemExpanded(QListViewItem * i)
+void KviKvsObject_listview::slotItemExpanded(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"itemExpandedEvent",0,&params);
@@ -464,7 +464,7 @@ bool KviKvsObject_listview::function_itemCollapsedEvent(KviKvsObjectFunctionCall
 	return true;
 }
 
-void KviKvsObject_listview::slotItemCollapsed(QListViewItem * i)
+void KviKvsObject_listview::slotItemCollapsed(KviTalListViewItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(i)));
 	callFunction(this,"itemCollapsedEvent",0,&params);
@@ -476,7 +476,7 @@ bool KviKvsObject_listview::function_rightButtonClickedEvent(KviKvsObjectFunctio
 	return true;
 }
 
-void KviKvsObject_listview::slotRightButtonClicked(QListViewItem * i,const QPoint &coor, int col)
+void KviKvsObject_listview::slotRightButtonClicked(KviTalListViewItem * i,const QPoint &coor, int col)
 {
 	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)coor.x());
 	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)coor.y());
@@ -491,14 +491,14 @@ bool KviKvsObject_listview::function_itemRenamedEvent(KviKvsObjectFunctionCall *
 	return true;
 }
 
-void KviKvsObject_listview::slotItemRenamed(QListViewItem *item,int col,const QString & szText)
+void KviKvsObject_listview::slotItemRenamed(KviTalListViewItem *item,int col,const QString & szText)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
 	KviKvsVariant *txt=new KviKvsVariant(szText);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(item)),column,txt);
 	callFunction(this,"itemRenamedEvent",0,&params);
 }
-void KviKvsObject_listview::fileDropped(QString &szFile,QListViewItem *item)
+void KviKvsObject_listview::fileDropped(QString &szFile,KviTalListViewItem *item)
 {
 	KviKvsVariant *file=new KviKvsVariant(szFile);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle(item)),file);
@@ -506,7 +506,7 @@ void KviKvsObject_listview::fileDropped(QString &szFile,QListViewItem *item)
 }
 
 KviKvsMdmListView::KviKvsMdmListView(QWidget * par,const char * name,KviKvsObject_listview *parent)
-:QListView( par,name)
+:KviTalListView(par)
 {
 	m_pParentScript=parent;
 	setAcceptDrops(true);
@@ -543,7 +543,7 @@ void KviKvsMdmListView::contentsDropEvent(QDropEvent *e)
 				#ifndef COMPILE_ON_WINDOWS
 					if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
-				QListViewItem *i = itemAt( contentsToViewport(e->pos()) );
+				KviTalListViewItem *i = itemAt( contentsToViewport(e->pos()) );
 				m_pParentScript->fileDropped(tmp,i);
 			}
 		}

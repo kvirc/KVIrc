@@ -70,7 +70,7 @@ KviKvsTimerManager * KviKvsTimerManager::m_pInstance = 0;
 KviKvsTimerManager::KviKvsTimerManager()
 : QObject()
 {
-	m_pTimerDictById = new QIntDict<KviKvsTimer>(17);
+	m_pTimerDictById = new KviIntDict<KviKvsTimer>(17);
 	m_pTimerDictById->setAutoDelete(false);
 	m_pTimerDictByName = new KviDict<KviKvsTimer>(17,false);
 	m_pTimerDictByName->setAutoDelete(false);
@@ -162,7 +162,7 @@ bool KviKvsTimerManager::deleteCurrentTimer()
 void KviKvsTimerManager::deleteAllTimers()
 {
 	if(m_pTimerDictById->isEmpty())return;
-	QIntDictIterator<KviKvsTimer> it(*m_pTimerDictById);
+	KviIntDictIterator<KviKvsTimer> it(*m_pTimerDictById);
 	KviPtrList<KviKvsTimer> tl;
 	tl.setAutoDelete(false);
 	while(KviKvsTimer * t = it.current())

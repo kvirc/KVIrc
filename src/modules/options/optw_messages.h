@@ -27,8 +27,8 @@
 
 #include "kvi_msgtype.h"
 
-#include <qlistview.h>
-#include <qlistbox.h>
+#include "kvi_tal_listview.h"
+#include "kvi_tal_listbox.h"
 #include <qcheckbox.h>
 #include <qtoolbutton.h>
 #include "kvi_tal_popupmenu.h"
@@ -76,7 +76,7 @@ protected slots:
 #define KVI_OPTIONS_WIDGET_PARENT_KviMessageColorsOptionsWidget KviMessageOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget 30
 
-class KviMessageListView : public QListView
+class KviMessageListView : public KviTalListView
 {
 	Q_OBJECT
 public:
@@ -89,10 +89,10 @@ public:
 };
 
 
-class KviMessageListViewItem : public QListViewItem
+class KviMessageListViewItem : public KviTalListViewItem
 {
 public:
-	KviMessageListViewItem(QListView * l,int optId);
+	KviMessageListViewItem(KviTalListView * l,int optId);
 	~KviMessageListViewItem();
 private:
 	int          m_iOptId;
@@ -104,17 +104,17 @@ public:
 };
 
 
-class KviMessageColorListBoxItem : public QListBoxText
+class KviMessageColorListBoxItem : public KviTalListBoxText
 {
 public:
-	KviMessageColorListBoxItem(QListBox * b,const QColor & clr,int idx);
+	KviMessageColorListBoxItem(KviTalListBox * b,const QColor & clr,int idx);
 	~KviMessageColorListBoxItem();
 public:
 	int m_iClrIdx;
 	QColor m_clr;
 public:
 	virtual void paint(QPainter * p);
-	virtual int width(const QListBox * lv) const { return 120; };
+	virtual int width(const KviTalListBox * lv) const { return 120; };
 };
 
 
@@ -128,9 +128,9 @@ public:
 	~KviMessageColorsOptionsWidget();
 public:
 	KviMessageListView         * m_pListView;
-	QListBox                   * m_pForeListBox;
-	QListBox                   * m_pBackListBox;
-	QListBox                   * m_pLevelListBox;
+	KviTalListBox                   * m_pForeListBox;
+	KviTalListBox                   * m_pBackListBox;
+	KviTalListBox                   * m_pLevelListBox;
 	KviMessageColorListBoxItem * m_pForeItems[16];
 	KviMessageColorListBoxItem * m_pBackItems[17];
 	KviMessageListViewItem     * m_pLastItem;
@@ -140,8 +140,8 @@ public:
 public:
 	void saveLastItem();
 protected slots:
-	void itemChanged(QListViewItem * it);
-	void colorChanged(QListBoxItem *);
+	void itemChanged(KviTalListViewItem * it);
+	void colorChanged(KviTalListBoxItem *);
 	void iconButtonClicked();
 	void newIconSelected(int iconId);
 	virtual void commit();

@@ -56,5 +56,6 @@ SUBDIRS = about \
 		tmphighlight \
 		toolbar \
 		toolbareditor \
+		torrent \
 		url \
 		window

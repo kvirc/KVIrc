@@ -32,7 +32,7 @@
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qlineedit.h>
@@ -52,16 +52,16 @@ protected:
 	QString m_szUsersKey;
 };
 
-class KviChannelListViewItem : public QListViewItem
+class KviChannelListViewItem : public KviTalListViewItem
 {
 public:
-	KviChannelListViewItem(QListView * v,KviChannelListViewItemData * pData);
+	KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData);
 	~KviChannelListViewItem();
 protected:
 	KviChannelListViewItemData * m_pData;
 public:
 	const QString & channel(){ return m_pData->m_szChan; };
-	virtual int width ( const QFontMetrics & fm, const QListView * lv, int c ) const;
+	virtual int width ( const QFontMetrics & fm, const KviTalListView * lv, int c ) const;
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
 	virtual QString key(int col,bool) const;
@@ -78,7 +78,7 @@ public:
 protected:
 	QSplitter                              * m_pVertSplitter;
 	QSplitter                              * m_pTopSplitter;
-	QListView                              * m_pListView;
+	KviTalListView                              * m_pListView;
 	QLineEdit                              * m_pParamsEdit;
 	QToolButton                            * m_pRequestButton;
 	QToolButton							   * m_pStopListDownloadButton;
@@ -97,7 +97,7 @@ protected:
 	virtual void getBaseLogFileName(KviStr &buffer);
 protected slots:
 	void flush();
-	void itemDoubleClicked(QListViewItem *it);
+	void itemDoubleClicked(KviTalListViewItem *it);
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();

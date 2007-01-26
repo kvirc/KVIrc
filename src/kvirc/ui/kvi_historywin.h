@@ -26,13 +26,13 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 
 class KviInput;
 
 #define KVI_HISTORY_WIN_HEIGHT 130
 
-class KVIRC_API KviHistoryWindow : public QListBox
+class KVIRC_API KviHistoryWindow : public KviTalListBox
 {
 	Q_OBJECT
 public:

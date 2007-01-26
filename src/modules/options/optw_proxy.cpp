@@ -41,8 +41,8 @@
 #include <qtoolbutton.h>
 
 
-KviProxyOptionsListViewItem::KviProxyOptionsListViewItem(QListView *parent,const QPixmap &pm,KviProxy * prx)
-: QListViewItem(parent,prx->m_szHostname.ptr())
+KviProxyOptionsListViewItem::KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx)
+: KviTalListViewItem(parent,prx->m_szHostname.ptr())
 {
 	setPixmap(0,pm);
 	m_pProxyData = new KviProxy(*prx);
@@ -60,17 +60,17 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
 
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 	addWidgetToLayout(m_pListView,0,1,0,1);
 	m_pListView->addColumn(__tr2qs_ctx("Proxy","options"));
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(QListView::Single);
+	m_pListView->setSelectionMode(KviTalListView::Single);
 
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),
-		this,SLOT(listViewItemSelectionChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(listViewRightButtonPressed(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),
+		this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(listViewRightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
 
 #ifdef COMPILE_INFO_TIPS
   QString tiptxt = __tr2qs_ctx("<center>This is the list of available proxy servers.<br>" \
@@ -183,7 +183,7 @@ void KviProxyOptionsWidget::fillProxyList()
 	if(!(g_pProxyDataBase->currentProxy()))listViewItemSelectionChanged(0);
 }
 
-void KviProxyOptionsWidget::listViewItemSelectionChanged(QListViewItem *it)
+void KviProxyOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
 {
 	if(m_pLastEditedItem)saveLastItem();
 	m_pLastEditedItem = (KviProxyOptionsListViewItem *)it;
@@ -330,7 +330,7 @@ void KviProxyOptionsWidget::commit()
 	KviOptionsWidget::commit();
 }
 
-void KviProxyOptionsWidget::listViewRightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviProxyOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
@@ -353,7 +353,7 @@ void KviProxyOptionsWidget::removeCurrent()
 	{
 		delete m_pLastEditedItem;
 		m_pLastEditedItem = 0;
-		QListViewItem * it = m_pListView->firstChild();
+		KviTalListViewItem * it = m_pListView->firstChild();
 		if(it)
 		{
 			m_pListView->setSelected(it,true);

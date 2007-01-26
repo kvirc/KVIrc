@@ -30,7 +30,7 @@
 
 
 #include <qwidget.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qlineedit.h>
 #include "kvi_tal_popupmenu.h"
 #include <qstringlist.h>
@@ -41,12 +41,12 @@ class KviScriptEditor;
 class KviAliasNamespaceListViewItem;
 
 
-class KviAliasEditorListViewItem : public QListViewItem
+class KviAliasEditorListViewItem : public KviTalListViewItem
 {
 public:
 	enum Type { Alias, Namespace };
 public:
-	KviAliasEditorListViewItem(QListView * pListView,Type eType,const QString &szName);
+	KviAliasEditorListViewItem(KviTalListView * pListView,Type eType,const QString &szName);
 	KviAliasEditorListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,Type eType,const QString &szName);
 	~KviAliasEditorListViewItem(){};
 protected:
@@ -69,7 +69,7 @@ class KviAliasListViewItem;
 class KviAliasNamespaceListViewItem : public KviAliasEditorListViewItem
 {
 public:
-	KviAliasNamespaceListViewItem(QListView * pListView,const QString &szName);
+	KviAliasNamespaceListViewItem(KviTalListView * pListView,const QString &szName);
 	KviAliasNamespaceListViewItem(KviAliasNamespaceListViewItem * pParentNamespace,const QString &szName);
 	~KviAliasNamespaceListViewItem(){};
 public:
@@ -86,7 +86,7 @@ class KviAliasListViewItem : public KviAliasEditorListViewItem
 {
 public:
 	KviAliasListViewItem(KviAliasNamespaceListViewItem * pParentNamespace,const QString &szName);
-	KviAliasListViewItem(QListView *pListView,const QString &szName);
+	KviAliasListViewItem(KviTalListView *pListView,const QString &szName);
 	~KviAliasListViewItem(){};
 public:
 	QString m_szBuffer;
@@ -108,7 +108,7 @@ public:
 	~KviAliasEditor();
 public:
 	KviScriptEditor            * m_pEditor;
-	QListView                  * m_pListView;
+	KviTalListView                  * m_pListView;
 	QLabel                     * m_pNameLabel;
 	QPushButton                * m_pRenameButton;
 	KviAliasEditorListViewItem * m_pLastEditedItem;
@@ -127,14 +127,14 @@ public:
 	void loadProperties(KviConfig *);
 	static void splitFullAliasOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName);
 protected slots:
-	void currentItemChanged(QListViewItem *it);
+	void currentItemChanged(KviTalListViewItem *it);
 	void newAlias();
 	void newNamespace();
 	void exportAll();
 	void exportSelectedSepFiles();
 	void exportSelected();
 	void removeSelectedItems();
-	void itemPressed(QListViewItem *it,const QPoint &pnt,int col);
+	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
 	void renameItem();
 	void slotFind();
 	void slotCollapseNamespaces();
@@ -148,18 +148,18 @@ protected:
 	void recursiveCommit(KviAliasEditorListViewItem * it);
 	void getExportAliasBuffer(QString &buffer,KviAliasListViewItem * it);
 	void oneTimeSetup();
-	void selectOneItem(QListViewItem * it,QListViewItem *pStartFrom);
+	void selectOneItem(KviTalListViewItem * it,KviTalListViewItem *pStartFrom);
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorListViewItem *item,QString &buffer,KviAliasEditorListViewItem::Type eType);
 	void appendSelectedItems(KviPtrList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
 	void appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
 	bool removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
-	void openParentItems(QListViewItem * it);
-	void activateItem(QListViewItem * it);
+	void openParentItems(KviTalListViewItem * it);
+	void activateItem(KviTalListViewItem * it);
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
-	bool itemExists(QListViewItem *pSearchFor,QListViewItem * pSearchAt);
-	bool hasSelectedItems(QListViewItem * it);
+	bool itemExists(KviTalListViewItem *pSearchFor,KviTalListViewItem * pSearchAt);
+	bool hasSelectedItems(KviTalListViewItem * it);
 	KviAliasNamespaceListViewItem * findNamespaceItem(const QString &szName);
 	KviAliasNamespaceListViewItem * getNamespaceItem(const QString &szName);
 	KviAliasListViewItem * findAliasItem(const QString &szName);

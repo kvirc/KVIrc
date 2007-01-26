@@ -90,12 +90,13 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 	if(!cPrefix || !cFlag)return; // eh ?
 	
 	m_uPrefixes=QMIN(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());
-	m_pModePrefixTable=(Q_UINT32*)kvi_malloc(sizeof(Q_UINT32)*3*m_uPrefixes);
+	m_pModePrefixTable=(kvi_u32_t*)kvi_malloc(sizeof(kvi_u32_t)*3*m_uPrefixes);
 	
 	unsigned short uPrefix,uFlag;
 	
-	// FIXME: The whole mode handling needs rethinking!
-	//FIXED: rethinked:)
+	// Pragma: FIXME: The whole mode handling needs rethinking!
+	// Alexey: FIXED: rethinked:)
+	// Pragma: LOL :DDDD
 	int i=0;
 	while( (uPrefix = cPrefix->unicode()) && (uFlag = cFlag->unicode()) && i<m_uPrefixes*3)
 	{
@@ -145,7 +146,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 	return false;
 }
 
-QChar KviIrcConnectionServerInfo::modePrefixChar(Q_UINT32 flag)
+QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
 {
 	if(!m_pModePrefixTable) return 0;
 	for(int i=0;i<m_uPrefixes;i++)
@@ -155,7 +156,7 @@ QChar KviIrcConnectionServerInfo::modePrefixChar(Q_UINT32 flag)
 	return 0;
 }
 
-QChar KviIrcConnectionServerInfo::modeFlagChar(Q_UINT32 flag)
+QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
 {
 	if(!m_pModePrefixTable) return 0;
 	for(int i=0;i<m_uPrefixes;i++)
@@ -165,7 +166,7 @@ QChar KviIrcConnectionServerInfo::modeFlagChar(Q_UINT32 flag)
 	return 0;
 }
 
-Q_UINT32 KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
+kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
 {
 	if(!m_pModePrefixTable) return 0;
 	for(int i=0;i<m_uPrefixes;i++)
@@ -175,7 +176,7 @@ Q_UINT32 KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
 	return 0;
 }
 
-Q_UINT32 KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
+kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 {
 	if(!m_pModePrefixTable) return 0;
 	for(int i=0;i<m_uPrefixes;i++)
@@ -206,19 +207,19 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(QChar mode)
 {
 	QString tmp=getCustomChannelModeDescription(mode);
 	if(tmp.isNull()) return getBasicChannelModeDescription(mode);
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	QString tmp=getCustomUserModeDescription(mode);
 	if(tmp.isNull()) return getBasicUserModeDescription(mode);
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviBasicIrcServerInfo::getBasicChannelModeDescription(QChar mode)
 {
-	switch(mode)
+	switch(mode.unicode())
 	{
 		case 'o': return __tr2qs("Channel operators"); break;
 		case 'v': return __tr2qs("Voiced users"); break;
@@ -253,12 +254,12 @@ const QString & KviBasicIrcServerInfo::getBasicChannelModeDescription(QChar mode
 		case '7': return __tr2qs("Only 7-bit letters in nicknames allowed"); break;
 		case 'x': return __tr2qs("Impossible to use both 7-bit and 8-bit letters in nicknames"); break;
 	}
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviBasicIrcServerInfo::getBasicUserModeDescription(QChar mode)
 {
-	switch(mode)
+	switch(mode.unicode())
 	{
 		case 'o': return __tr2qs("o: IRC operator (OPER)"); break;
 		case 'O': return __tr2qs("O: Local IRC operator (LOCOP)"); break;
@@ -274,5 +275,5 @@ const QString & KviBasicIrcServerInfo::getBasicUserModeDescription(QChar mode)
 		case 'd': return __tr2qs("d: Obscure 'DEBUG' flag"); break;
 		case 'n': return __tr2qs("n: Recipient for nick changes"); break;
 	}
-	return QString::null;
+	return KviQString::empty;
 }

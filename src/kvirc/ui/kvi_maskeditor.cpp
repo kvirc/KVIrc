@@ -36,8 +36,8 @@
 #include <qlabel.h>
 #include <qvalidator.h> 
 
-KviMaskItem::KviMaskItem(QListView* parent,KviMaskEntry* entry)
-:QListViewItem(parent), m_Mask(*entry)
+KviMaskItem::KviMaskItem(KviTalListView* parent,KviMaskEntry* entry)
+:KviTalListViewItem(parent), m_Mask(*entry)
 {
 	QDateTime date;
 	date.setTime_t(mask()->uSetAt);
@@ -50,7 +50,7 @@ KviMaskItem::~KviMaskItem()
 {
 }
 
-int KviMaskItem::compare ( QListViewItem * i, int col, bool ascending ) const
+int KviMaskItem::compare ( KviTalListViewItem * i, int col, bool ascending ) const
 {
 	if(col==2)
 	{
@@ -58,7 +58,7 @@ int KviMaskItem::compare ( QListViewItem * i, int col, bool ascending ) const
 		if( ((KviMaskItem*)i)->mask()->uSetAt == m_Mask.uSetAt ) return  0;
 		if( ((KviMaskItem*)i)->mask()->uSetAt < m_Mask.uSetAt )  return  1;
 	}
-	return QListViewItem::compare(i,col,ascending);
+	return KviTalListViewItem::compare(i,col,ascending);
 }
 
 KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEditor,KviChannel * pChannel)
@@ -175,7 +175,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	g->addWidget(l,0,1);
 	g->addMultiCellWidget(l,1,1,0,1);
 	
-	m_pMaskBox = new QListView(this);
+	m_pMaskBox = new KviTalListView(this);
 	m_pMaskBox->setFocusPolicy(QWidget::ClickFocus);
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
@@ -186,7 +186,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	m_pMaskBox->setAllColumnsShowFocus(true);
 	m_pMaskBox->setShowSortIndicator(true);
 	m_pMaskBox->setSorting(2,false);
-	connect(m_pMaskBox,SIGNAL(doubleClicked ( QListViewItem * )),this,SLOT(listViewDoubleClicked( QListViewItem * )));
+	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalListViewItem * )),this,SLOT(listViewDoubleClicked( KviTalListViewItem * )));
 	g->addMultiCellWidget(m_pMaskBox,2,2,0,1);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
@@ -278,7 +278,7 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 	}
 }
 
-void KviMaskEditor::listViewDoubleClicked( QListViewItem * pItem)
+void KviMaskEditor::listViewDoubleClicked( KviTalListViewItem * pItem)
 {
 	if(pItem)
 	{

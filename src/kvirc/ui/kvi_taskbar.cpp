@@ -706,8 +706,8 @@ inline bool KviClassicTaskBar::setIterationPointer(KviTaskBarItem * it)
 //
 
 
-KviTreeTaskBarItem::KviTreeTaskBarItem(QListView * par,KviWindow * wnd)
-: QListViewItem(par) , KviTaskBarItem(wnd)
+KviTreeTaskBarItem::KviTreeTaskBarItem(KviTalListView * par,KviWindow * wnd)
+: KviTalListViewItem(par) , KviTaskBarItem(wnd)
 {
 	m_iStepNumber=0;
 	m_bIncreasing=0;
@@ -718,7 +718,7 @@ KviTreeTaskBarItem::KviTreeTaskBarItem(QListView * par,KviWindow * wnd)
 }
 
 KviTreeTaskBarItem::KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd)
-: QListViewItem(par) , KviTaskBarItem(wnd)
+: KviTalListViewItem(par) , KviTaskBarItem(wnd)
 {
 	m_iStepNumber=0;
 	m_bIncreasing=0;
@@ -736,7 +736,7 @@ int KviTreeTaskBarItem::calculateColor(int col1,int col2)
 
 KviTreeTaskBarItem::~KviTreeTaskBarItem()
 {
-	QListView* pView=listView();
+	KviTalListView* pView=(KviTalListView *)listView();
 	if(pView)
 		if(((KviTreeTaskBarListView*)(pView))->m_pPrevItem==this) ((KviTreeTaskBarListView*)(listView()))->m_pPrevItem=0;
 	delete m_pAnimTimer;
@@ -801,7 +801,11 @@ void KviTreeTaskBarItem::setActive(bool bActive)
 	}
 }
 
+#ifdef COMPILE_USE_QT4
+void KviTreeTaskBarItem::paintBranches(QPainter *p,const QColorGroup &,int w,int y,int h)
+#else
 void KviTreeTaskBarItem::paintBranches(QPainter *p,const QColorGroup &,int w,int y,int h,GUIStyle s)
+#endif
 {
 	((KviTreeTaskBarListView *)listView())->paintEmptyArea(p,QRect(0,y,w,totalHeight() - height()));
 }
@@ -1023,7 +1027,7 @@ void KviTreeTaskBarItem::mouseLeave()
 
 
 KviTreeTaskBarListView::KviTreeTaskBarListView(QWidget * par)
-: QListView(par,"ttblistview")
+: KviTalListView(par)
 {
 	//setSorting(0);
 	setShowSortIndicator(true);
@@ -1044,7 +1048,7 @@ void KviTreeTaskBarListView::contentsMouseMoveEvent ( QMouseEvent * e )
 	KviTreeTaskBarItem* pCur=(KviTreeTaskBarItem*)(itemAt(contentsToViewport(e->pos())));
 	if(pCur!=m_pPrevItem)
 	{
-		if(m_pPrevItem) m_pPrevItem->mouseLeave();
+		if(m_pPrevItem)m_pPrevItem->mouseLeave();
 		if(pCur) pCur->mouseEnter();
 		setCursor(Qt::PointingHandCursor);
 		m_pPrevItem=pCur;
@@ -1062,7 +1066,7 @@ void KviTreeTaskBarListView::leaveEvent(QEvent *)
 
 void KviTreeTaskBarListView::contentsMousePressEvent(QMouseEvent *e)
 {
-	QListViewItem * it = itemAt(contentsToViewport(e->pos()));
+	KviTalListViewItem * it = (KviTalListViewItem *)itemAt(contentsToViewport(e->pos()));
 	if(it)
 	{
 		if(e->button() & LeftButton)emit leftMousePress(it);
@@ -1090,7 +1094,7 @@ void KviTreeTaskBarListView::reverseSort()
 
 void KviTreeTaskBarListView::resizeEvent(QResizeEvent *e)
 {
-	QListView::resizeEvent(e);
+	KviTalListView::resizeEvent(e);
 	setColumnWidth(0,viewport()->width());
 	resizeContents(viewport()->width(),contentsHeight());
 }
@@ -1197,7 +1201,7 @@ void KviTreeTaskBar::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolShowTaskBarToolTips))
 	{
-		QListViewItem * it = m_pListView->itemAt(pnt);
+		KviTalListViewItem * it = (KviTalListViewItem *)m_pListView->itemAt(pnt);
 		if(it)
 		{
 			QString szText;
@@ -1383,7 +1387,7 @@ bool KviTreeTaskBar::setIterationPointer(KviTaskBarItem * it)
 {
 	m_pCurrentItem = (KviTreeTaskBarItem *)it;
 	if(!it)return true;
-	if(((QListView *)m_pListView) == ((KviTreeTaskBarItem *)it)->listView())return true;
+	if(((KviTalListView *)m_pListView) == ((KviTreeTaskBarItem *)it)->listView())return true;
 	m_pCurrentItem = 0;
 	return false;
 }

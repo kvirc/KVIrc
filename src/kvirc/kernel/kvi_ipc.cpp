@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_ipc.hcpp
 //   Creation date : Tue Apr 10 2001 15:04:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,7 +20,11 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #define __KVIRC__
+
+
 #include "kvi_ipc.h"
 
 
@@ -49,6 +54,15 @@
 		#include <unistd.h>    // for getuid
 		#include <sys/types.h> // for getuid
 
+		#ifdef COMPILE_USE_QT4
+			#include <qx11info_x11.h>
+			#define kvi_ipc_get_xdisplay QX11Info::display
+			#define kvi_ipc_get_xrootwin QX11Info::appRootWindow
+		#else
+			#define kvi_ipc_get_xdisplay qt_xdisplay
+			#define kvi_ipc_get_xrootwin qt_xrootwin
+		#endif
+
 		static Atom kvi_atom_ipc_sentinel_window;
 		static Atom kvi_atom_ipc_remote_command;
 		static Atom kvi_atom_ipc_remote_message;
@@ -60,14 +74,14 @@
 			if(g_bIpcAtomsLoaded)return;
 			g_bIpcAtomsLoaded = true;
 			kvi_sentinel_id.sprintf("tonno e mistero - %d",getuid());
-			kvi_atom_ipc_sentinel_window = XInternAtom(qt_xdisplay(),"XA_KVI_IPC_SENTINEL_WINDOW",False);
-			kvi_atom_ipc_remote_command = XInternAtom(qt_xdisplay(),"XA_KVI_IPC_REMOTE_COMMAND",False);
-			kvi_atom_ipc_remote_message = XInternAtom(qt_xdisplay(),"XA_KVI_IPC_REMOTE_MESSAGE",False);
+			kvi_atom_ipc_sentinel_window = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_SENTINEL_WINDOW",False);
+			kvi_atom_ipc_remote_command = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_COMMAND",False);
+			kvi_atom_ipc_remote_message = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_MESSAGE",False);
 		}
 	
 		static void kvi_ipcSetRemoteCommand(Window w,const char * command)
 		{
-			XChangeProperty(qt_xdisplay(),w,kvi_atom_ipc_remote_command,
+			XChangeProperty(kvi_ipc_get_xdisplay(),w,kvi_atom_ipc_remote_command,
 				XA_STRING,8,PropModeReplace,(const unsigned char *)command,kvi_strLen(command) + 1);
 		}
 	
@@ -77,7 +91,7 @@
 			int format;
 			unsigned long nItems,after;
 			unsigned char * data = 0;
-			if(XGetWindowProperty(qt_xdisplay(),win,kvi_atom_ipc_sentinel_window,0,32,FALSE,XA_STRING,
+			if(XGetWindowProperty(kvi_ipc_get_xdisplay(),win,kvi_atom_ipc_sentinel_window,0,32,FALSE,XA_STRING,
 				&type,&format,&nItems,&after,&data) == Success)
 			{
 				if((type == XA_STRING) && (format == 8))
@@ -97,7 +111,7 @@
 			Window * children;
 			unsigned int nChildren;
 	
-			if(!XQueryTree(qt_xdisplay(),win,&root,&parent,&children,&nChildren))
+			if(!XQueryTree(kvi_ipc_get_xdisplay(),win,&root,&parent,&children,&nChildren))
 			{
 				if(children)XFree((char *)children);
 				return 0;
@@ -138,22 +152,22 @@
 	
 		kvi_ipcLoadAtoms();
 
-		Window sentinel = kvi_x11_findIpcSentinel(qt_xrootwin());
+		Window sentinel = kvi_x11_findIpcSentinel(kvi_ipc_get_xrootwin());
 		if(sentinel != 0)
 		{
-//			XChangeProperty(qt_xdisplay(),sentinel,kvi_atom_ipc_remote_command,XA_STRING,8,
+//			XChangeProperty(kvi_ipc_get_xdisplay(),sentinel,kvi_atom_ipc_remote_command,XA_STRING,8,
 //				PropModeReplace,(const unsigned char *)message,kvi_strLen(message));
 			kvi_ipcSetRemoteCommand(sentinel,message);
 
 			XEvent e;
 			kvi_memset(&e,0,sizeof(XEvent));
 			e.type = ClientMessage;
-			e.xclient.display = qt_xdisplay();
+			e.xclient.display = kvi_ipc_get_xdisplay();
 			e.xclient.window = sentinel;
 			e.xclient.message_type = kvi_atom_ipc_remote_message;
 			e.xclient.format = 8;
 
-			XSendEvent(qt_xdisplay(),sentinel,False,0,&e);
+			XSendEvent(kvi_ipc_get_xdisplay(),sentinel,False,0,&e);
 
 			return true;
 		}
@@ -179,7 +193,7 @@
 	#ifndef COMPILE_NO_X
 		kvi_ipcLoadAtoms();
 
-		XChangeProperty(qt_xdisplay(),winId(),kvi_atom_ipc_sentinel_window,XA_STRING,8,
+		XChangeProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_sentinel_window,XA_STRING,8,
 			PropModeReplace,(const unsigned char *)kvi_sentinel_id.ptr(),kvi_sentinel_id.len());
 
 		kvi_ipcSetRemoteCommand(winId(),"");
@@ -228,7 +242,7 @@
 					unsigned long nItems,after;
 					unsigned char * data = 0;
 					KviStr szData;
-					if(XGetWindowProperty(qt_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,FALSE,XA_STRING,
+					if(XGetWindowProperty(kvi_ipc_get_xdisplay(),winId(),kvi_atom_ipc_remote_command,0,1024,FALSE,XA_STRING,
 						&type,&format,&nItems,&after,&data) == Success)
 					{
 						if((type == XA_STRING) && (format == 8) && (nItems > 0) && data)

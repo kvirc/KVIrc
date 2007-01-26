@@ -35,7 +35,7 @@
 #include <qpixmap.h>
 #include <qsplitter.h>
 #include <qtoolbutton.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qfileinfo.h>
 #include <qdir.h>
 #include "kvi_tal_popupmenu.h"
@@ -59,15 +59,15 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pIndexTab,__tr2qs_ctx("Index","logview"));
-	m_pListView = new QListView(m_pIndexTab);
+	m_pListView = new KviTalListView(m_pIndexTab);
 	m_pListView->addColumn(__tr2qs_ctx("Log File","logview"),135);
-	m_pListView->setColumnWidthMode(0,QListView::Maximum);
+	m_pListView->setColumnWidthMode(0,KviTalListView::Maximum);
 	m_pListView->setAllColumnsShowFocus(true);
 	m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);
 	m_pListView->setRootIsDecorated(true);
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(itemSelected(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonClicked ( QListViewItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( QListViewItem * , const QPoint &, int )));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemSelected(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )));
 	
 	//m_pSearchTab  = new KviTalVBox(m_pTabWidget);
 	//m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Search","logview"));
@@ -214,7 +214,7 @@ void KviLogViewMDIWindow::oneTimeSetup()
     }
 }
 
-void KviLogViewMDIWindow::itemSelected(QListViewItem * it)
+void KviLogViewMDIWindow::itemSelected(KviTalListViewItem * it)
 {
 	bool bCompressed=0;
 	//A parent node
@@ -289,7 +289,7 @@ QStringList KviLogViewMDIWindow::getFileNames()
     return logDir.entryList();
 }
 
-void KviLogViewMDIWindow::rightButtonClicked ( QListViewItem * it, const QPoint &, int )
+void KviLogViewMDIWindow::rightButtonClicked ( KviTalListViewItem * it, const QPoint &, int )
 {
 	if(!it) return;
 	if(((KviLogListViewItem *)it)->fileName(0).isEmpty()) return;

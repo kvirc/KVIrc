@@ -74,7 +74,7 @@ KviEventEditor::KviEventEditor(QWidget * par)
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * boxi = new KviTalVBox(spl);
-	m_pListView = new QListView(boxi);
+	m_pListView = new KviTalListView(boxi);
 	m_pListView->addColumn(__tr2qs("Event"));
 	m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);
@@ -127,12 +127,12 @@ void KviEventEditor::oneTimeSetup()
 
 	m_pContextPopup = new KviTalPopupMenu(this);
 
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(selectionChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(selectionChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 }
 
-void KviEventEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviEventEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	__range_valid(m_bOneTimeSetupDone);
 
@@ -205,14 +205,14 @@ void KviEventEditor::addHandlerForCurrentEvent()
 {
 	__range_valid(m_pOneTimeSetupDone);
 
-	QListViewItem * it = m_pListView->selectedItem();
+	KviTalListViewItem * it = m_pListView->selectedItem();
 	if(it)
 	{
 		if(it->parent() == 0)
 		{
 			QString buffer = __tr2qs("default");
 			getUniqueHandlerName((KviEventListViewItem *)it,buffer);
-			QListViewItem * ch = new KviEventHandlerListViewItem(it,buffer,"",true);
+			KviTalListViewItem * ch = new KviEventHandlerListViewItem(it,buffer,"",true);
 			it->setOpen(true);
 			m_pListView->setSelected(ch,true);
 		}
@@ -224,7 +224,7 @@ void KviEventEditor::removeCurrentHandler()
 	__range_valid(m_pOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
-		QListViewItem * it = m_pLastEditedItem;
+		KviTalListViewItem * it = m_pLastEditedItem;
 		m_pLastEditedItem = 0;
 		delete it;
 		m_pEditor->setEnabled(false);
@@ -249,13 +249,13 @@ void KviEventEditor::commit()
 
 	saveLastEditedItem();
 	KviKvsEventManager::instance()->removeAllScriptAppHandlers();
-	for(QListViewItem * it = m_pListView->firstChild();it;it = it->nextSibling())
+	for(KviTalListViewItem * it = m_pListView->firstChild();it;it = it->nextSibling())
 	{
 		if(it->firstChild())
 		{
 			QString szContext;
 		
-			for(QListViewItem * ch = it->firstChild();ch;ch = ch->nextSibling())
+			for(KviTalListViewItem * ch = it->firstChild();ch;ch = ch->nextSibling())
 			{
 				KviQString::sprintf(szContext,"%Q::%Q",&(((KviEventListViewItem *)it)->m_szName),&(((KviEventHandlerListViewItem *)ch)->m_szName));
 
@@ -292,7 +292,7 @@ void KviEventEditor::saveLastEditedItem()
 	m_pLastEditedItem->m_szBuffer = tmp;
 }
 
-void KviEventEditor::selectionChanged(QListViewItem * it)
+void KviEventEditor::selectionChanged(KviTalListViewItem * it)
 {
 	__range_valid(m_bOneTimeSetupDone);
 	saveLastEditedItem();

@@ -192,7 +192,7 @@ KviStandardColorsOptionsWidget::~KviStandardColorsOptionsWidget()
 
 
 KviMessageListView::KviMessageListView(QWidget * par)
-: QListView(par)
+: KviTalListView(par)
 {
 	setItemMargin(2);
 }
@@ -228,7 +228,7 @@ void KviMessageListView::paintEmptyAreaInternal(QPainter * p,const QRect &viewpo
 void KviMessageListView::paintEmptyArea(QPainter * p,const QRect &rct)
 {
 	paintEmptyAreaInternal(p,rct,rct);
-	QListView::paintEmptyArea(p,rct);
+	KviTalListView::paintEmptyArea(p,rct);
 }
 
 
@@ -236,8 +236,8 @@ void KviMessageListView::paintEmptyArea(QPainter * p,const QRect &rct)
 
 
 
-KviMessageListViewItem::KviMessageListViewItem(QListView * l,int optId)
-: QListViewItem(l)
+KviMessageListViewItem::KviMessageListViewItem(KviTalListView * l,int optId)
+: KviTalListViewItem(l)
 {
 	m_iOptId = optId;
 	setText(0,"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
@@ -297,8 +297,8 @@ void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int 
 }
 
 
-KviMessageColorListBoxItem::KviMessageColorListBoxItem(QListBox * b,const QColor &clr,int idx)
-: QListBoxText(b,QString::null)
+KviMessageColorListBoxItem::KviMessageColorListBoxItem(KviTalListBox * b,const QColor &clr,int idx)
+: KviTalListBoxText(b,QString::null)
 {
 	m_clr = clr;
 	m_iClrIdx = idx;
@@ -313,13 +313,15 @@ void KviMessageColorListBoxItem::paint(QPainter * p)
 {
 	QColor clr;
 
+	const KviTalListBox * lb = (const KviTalListBox *)listBox();
+
 	if((m_iClrIdx >= 0) && (m_iClrIdx <= 15))
 	{
-		clr = listBox()->isEnabled() ? KVI_OPTION_MIRCCOLOR(m_iClrIdx) : Qt::gray;
-		p->fillRect(0,0,width(listBox()),height(listBox()),clr);
+		clr = lb->isEnabled() ? KVI_OPTION_MIRCCOLOR(m_iClrIdx) : Qt::gray;
+		p->fillRect(0,0,width(lb),height(lb),clr);
 	} else {
 		clr = listBox()->colorGroup().background();
-		QListBoxText::paint(p);
+		KviTalListBoxText::paint(p);
 	}
 #if QT_VERSION >= 300
 	if(isSelected())
@@ -327,13 +329,13 @@ void KviMessageColorListBoxItem::paint(QPainter * p)
 	if(selected())
 #endif
 	{
-		p->drawWinFocusRect(0,0,width(listBox()),height(listBox()),clr);
-		p->drawWinFocusRect(1,1,width(listBox()) - 2,height(listBox()) - 2,clr);
-		p->drawWinFocusRect(2,2,width(listBox()) - 4,height(listBox()) - 4,clr);
+		p->drawWinFocusRect(0,0,width(lb),height(lb),clr);
+		p->drawWinFocusRect(1,1,width(lb) - 2,height(lb) - 2,clr);
+		p->drawWinFocusRect(2,2,width(lb) - 4,height(lb) - 4,clr);
 	}
 }
 /*
-int KviMessageColorListBoxItem::width(const QListBox * lb) const
+int KviMessageColorListBoxItem::width(const KviTalListBox * lb) const
 {
 	int w = lb->width();
 	if(w < 30)w = 30;
@@ -341,7 +343,7 @@ int KviMessageColorListBoxItem::width(const QListBox * lb) const
 	return w;
 }
 
-int KviMessageColorListBoxItem::height(const QListBox *) const 
+int KviMessageColorListBoxItem::height(const KviTalListBox *) const 
 {
 	return 30;
 }
@@ -374,7 +376,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pListView = new KviMessageListView(this);
 	m_pListView->addColumn(__tr2qs_ctx("Message Type","options"));
 	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(QListView::Single);
+	m_pListView->setSelectionMode(KviTalListView::Single);
 	m_pListView->setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
 	m_pListView->setStaticBackground(true);
 	m_pListView->viewport()->setBackgroundMode(QWidget::NoBackground);
@@ -386,7 +388,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Background:","options"),box);
 
-	m_pBackListBox = new QListBox(box);
+	m_pBackListBox = new KviTalListBox(box);
 	m_pBackItems[16] = new KviMessageColorListBoxItem(m_pBackListBox,Qt::gray,KVI_TRANSPARENT);
 	for(i=0;i<16;i++)
 	{
@@ -395,7 +397,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	l = new QLabel(__tr2qs_ctx("Foreground:","options"),box);
 
-	m_pForeListBox = new QListBox(box);
+	m_pForeListBox = new KviTalListBox(box);
 	for(i=0;i<16;i++)
 	{
 		m_pForeItems[i] = new KviMessageColorListBoxItem(m_pForeListBox,KVI_OPTION_MIRCCOLOR(i),i);
@@ -403,13 +405,13 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	l = new QLabel(__tr2qs_ctx("Alert level:","options"),box);
 
-	m_pLevelListBox = new QListBox(box);
-	QListBoxText * lbt;
+	m_pLevelListBox = new KviTalListBox(box);
+	KviTalListBoxText * lbt;
 	for(i=0;i<6;i++)
 	{
 		QString tmpn;
 		tmpn.setNum(i);
-		lbt = new QListBoxText(m_pLevelListBox,tmpn);
+		lbt = new KviTalListBoxText(m_pLevelListBox,tmpn);
 	}
 
 	m_pIconButton = new KviStyledToolButton(box);
@@ -441,9 +443,9 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColStretch(0,1);
 
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(itemChanged(QListViewItem *)));
-	connect(m_pForeListBox,SIGNAL(selectionChanged(QListBoxItem *)),this,SLOT(colorChanged(QListBoxItem *)));
-	connect(m_pBackListBox,SIGNAL(selectionChanged(QListBoxItem *)),this,SLOT(colorChanged(QListBoxItem *)));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemChanged(KviTalListViewItem *)));
+	connect(m_pForeListBox,SIGNAL(selectionChanged(KviTalListBoxItem *)),this,SLOT(colorChanged(KviTalListBoxItem *)));
+	connect(m_pBackListBox,SIGNAL(selectionChanged(KviTalListBoxItem *)),this,SLOT(colorChanged(KviTalListBoxItem *)));
 
 	itemChanged(0);
 }
@@ -487,7 +489,7 @@ void KviMessageColorsOptionsWidget::saveLastItem()
 	m_pListView->repaintItem(m_pLastItem);
 }
 
-void KviMessageColorsOptionsWidget::itemChanged(QListViewItem * it)
+void KviMessageColorsOptionsWidget::itemChanged(KviTalListViewItem * it)
 {
 	//debug("Item changed","options");
 	if(m_pLastItem)saveLastItem();
@@ -524,7 +526,7 @@ void KviMessageColorsOptionsWidget::itemChanged(QListViewItem * it)
 
 }
 
-void KviMessageColorsOptionsWidget::colorChanged(QListBoxItem *)
+void KviMessageColorsOptionsWidget::colorChanged(KviTalListBoxItem *)
 {
 	if(m_pLastItem)saveLastItem();
 }

@@ -69,8 +69,8 @@ static QColor g_clrFind(187,221,255);
 
 static QFont g_fntNormal("Fixed",12);
 
-KviCompletionBox::KviCompletionBox(QWidget * parent = 0, const char * name = 0, WFlags f = 0)
-: QListBox(parent,name,f)
+KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
+: KviTalListBox(parent)
 {
 	setPaletteForegroundColor(QColor(0,0,0));
 	setPaletteBackgroundColor(QColor(255,255,255));
@@ -80,7 +80,7 @@ KviCompletionBox::KviCompletionBox(QWidget * parent = 0, const char * name = 0, 
 	setFont(listfont);
 	setVariableWidth(false);
 	setFixedWidth(200);
-	//completelistbox->setColumnMode(QListBox::Variable);
+	//completelistbox->setColumnMode(KviTalListBox::Variable);
 	hide();
 }
 
@@ -152,7 +152,7 @@ void KviCompletionBox::keyPressEvent(QKeyEvent * e)
 			}
 		
 	}
-	QListBox::keyPressEvent(e);
+	KviTalListBox::keyPressEvent(e);
 }
 
 KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * pParent)
@@ -223,7 +223,7 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 	m_szHelp="Nothing";
 	updateOptions();
 	m_szFind="";
-	completelistbox=new KviCompletionBox(this,"completelistbox");
+	completelistbox=new KviCompletionBox(this);
 	connect (completelistbox,SIGNAL(selected(const QString &)),this,SLOT(slotComplete(const QString &)));
 }
 

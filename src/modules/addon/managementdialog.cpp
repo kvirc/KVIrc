@@ -62,8 +62,8 @@ extern QRect g_rectManagementDialogGeometry;
 #define LVI_MINIMUM_TEXT_WIDTH 300
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviScriptAddonListViewItem::KviScriptAddonListViewItem(QListView * v,KviKvsScriptAddon * a)
-: QListViewItem(v,"")
+KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListView * v,KviKvsScriptAddon * a)
+: KviTalListViewItem(v,"")
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
 	m_pListView = v;
@@ -98,7 +98,7 @@ QString KviScriptAddonListViewItem::key(int,bool) const
 
 void KviScriptAddonListViewItem::setup()
 {
-	QListViewItem::setup();
+	KviTalListViewItem::setup();
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
@@ -110,7 +110,7 @@ void KviScriptAddonListViewItem::setup()
 
 void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
-	QListViewItem::paintCell(p,cg,column,width,align);
+	KviTalListViewItem::paintCell(p,cg,column,width,align);
 //	p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
@@ -226,7 +226,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	fillListView();
 
 	currentChanged(0);
-	connect(m_pListView,SIGNAL(currentChanged(QListViewItem *)),this,SLOT(currentChanged(QListViewItem *)));
+	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
 	//currentToolBarChanged();
 
 	if(g_rectManagementDialogGeometry.y() < 5)
@@ -261,7 +261,7 @@ void KviScriptManagementDialog::fillListView()
 	}
 }
 
-void KviScriptManagementDialog::currentChanged(QListViewItem *)
+void KviScriptManagementDialog::currentChanged(KviTalListViewItem *)
 {
 	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListView->currentItem();
 	if(!it)

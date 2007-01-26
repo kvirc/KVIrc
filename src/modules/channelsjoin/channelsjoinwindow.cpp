@@ -37,7 +37,7 @@
 
 #include <qlabel.h>
 #include <qlineedit.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qgroupbox.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
@@ -60,13 +60,13 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	QGridLayout * g = new QGridLayout(this,4,2,4,8);
 	
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs("Channel"));
 	m_pListView->setRootIsDecorated(true);
-	m_pListView->setSelectionMode(QListView::Single);
+	m_pListView->setSelectionMode(KviTalListView::Single);
 	g->addMultiCellWidget(m_pListView,0,0,0,1);
-	connect(m_pListView,SIGNAL(clicked(QListViewItem *)),this,SLOT(itemClicked(QListViewItem *)));
-	connect(m_pListView,SIGNAL(doubleClicked(QListViewItem *)),this,SLOT(itemDoubleClicked(QListViewItem *)));
+	connect(m_pListView,SIGNAL(clicked(KviTalListViewItem *)),this,SLOT(itemClicked(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
 
 
 	m_pGroupBox = new QGroupBox(2,QGroupBox::Horizontal,__tr2qs("Channel" ),this);
@@ -151,9 +151,9 @@ void KviChannelsJoinWindow::fillListView()
 
 	m_pListView->header()->hide();
 
-	QListViewItem * par = new QListViewItem(m_pListView,__tr2qs("Recent Channels"));
+	KviTalListViewItem * par = new KviTalListViewItem(m_pListView,__tr2qs("Recent Channels"));
 	par->setOpen(true);
-	QListViewItem * chld;
+	KviTalListViewItem * chld;
 	
 	if(m_pConsole)
 	{
@@ -163,14 +163,14 @@ void KviChannelsJoinWindow::fillListView()
 		{
 			for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 			{
-				chld = new QListViewItem(par,*it);
+				chld = new KviTalListViewItem(par,*it);
 				chld->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			}
 		}
 	}
 
 	// FIXME: Registered channels go here!
-	par = new QListViewItem(m_pListView,__tr2qs("Registered Channels"));
+	par = new KviTalListViewItem(m_pListView,__tr2qs("Registered Channels"));
 	par->setOpen(true);
 
 	KviAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
@@ -179,7 +179,7 @@ void KviChannelsJoinWindow::fillListView()
 		KviAsciiDictIterator<KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
-			chld = new QListViewItem(par,it.currentKey());
+			chld = new KviTalListViewItem(par,it.currentKey());
 			chld->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;
 		}
@@ -188,7 +188,7 @@ void KviChannelsJoinWindow::fillListView()
 
 }
 
-void KviChannelsJoinWindow::itemClicked(QListViewItem * it) 
+void KviChannelsJoinWindow::itemClicked(KviTalListViewItem * it) 
 {
 	if(!it)return;
 	if(!it->parent())return;
@@ -197,7 +197,7 @@ void KviChannelsJoinWindow::itemClicked(QListViewItem * it)
 	enableJoin();
 }
 
-void KviChannelsJoinWindow::itemDoubleClicked(QListViewItem * it) 
+void KviChannelsJoinWindow::itemDoubleClicked(KviTalListViewItem * it) 
 {
 	if(!it)return;
 	if(!it->parent())return;
@@ -268,7 +268,7 @@ void KviChannelsJoinWindow::namesClicked()
 	if(!tmp.isEmpty())doCmd("raw names", tmp.ptr());
 }
 
-void KviChannelsJoinWindow::itemDoubleClicked(QListBoxItem * it)
+void KviChannelsJoinWindow::itemDoubleClicked(KviTalListBoxItem * it)
 {
 	if (it == 0)return;
 	KviStr tmp = it->text();

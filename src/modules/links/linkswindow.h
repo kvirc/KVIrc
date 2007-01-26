@@ -29,7 +29,7 @@
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 
@@ -54,7 +54,7 @@ public:
 protected:
 	QSplitter      * m_pVertSplitter;
 	QSplitter      * m_pTopSplitter;
-	QListView      * m_pListView;
+	KviTalListView      * m_pListView;
 	KviPtrList<KviLink> * m_pLinkList;
 	KviTalPopupMenu     * m_pHostPopup;
 	QString          m_szRootServer;
@@ -73,7 +73,7 @@ protected:
 //	virtual void setProperties(KviWindowProperty *p);
 //	virtual void saveProperties();
 protected slots:
-	void showHostPopup(QListViewItem *i,const QPoint &p,int c);
+	void showHostPopup(KviTalListViewItem *i,const QPoint &p,int c);
 	void hostPopupClicked(int id);
 	void requestLinks();
 	void connectionStateChange();
@@ -82,8 +82,8 @@ public:
 private:
 	void reset();
 	void endOfLinks();
-	QListViewItem * insertLink(KviLink * l);
-	QListViewItem * getItemByHost(const char *host,QListViewItem * par);
+	KviTalListViewItem * insertLink(KviLink * l);
+	KviTalListViewItem * getItemByHost(const char *host,KviTalListViewItem * par);
 };
 
 #endif //_KVI_LINKSWINDOW_H_

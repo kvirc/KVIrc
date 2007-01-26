@@ -181,8 +181,8 @@ void KviSharedFileEditDialog::okClicked()
 }
 
 
-KviSharedFilesListViewItem::KviSharedFilesListViewItem(QListView * lv,KviSharedFile * f)
-: QListViewItem(lv,f->name())
+KviSharedFilesListViewItem::KviSharedFilesListViewItem(KviTalListView * lv,KviSharedFile * f)
+: KviTalListViewItem(lv,f->name())
 {
 	setText(1,f->absFilePath());
 	setText(2,f->userMask());
@@ -211,14 +211,14 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 
-	m_pListView  = new QListView(vbox);
+	m_pListView  = new KviTalListView(vbox);
 	//m_pListView->header()->hide();
 	m_pListView->setAllColumnsShowFocus(true);
 	m_pListView->addColumn(__tr2qs_ctx("Name","sharedfileswindow"),200);
 	m_pListView->addColumn(__tr2qs_ctx("Filename","sharedfileswindow"),300);
 	m_pListView->addColumn(__tr2qs_ctx("Mask","sharedfileswindow"),200);
 	m_pListView->addColumn(__tr2qs_ctx("Expires","sharedfileswindow"),200);
-	m_pListView->setSelectionMode(QListView::Single);
+	m_pListView->setSelectionMode(KviTalListView::Single);
 	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(enableButtons()));
 
 	connect(g_pSharedFilesManager,SIGNAL(sharedFilesChanged()),this,SLOT(fillFileView()));
@@ -244,7 +244,7 @@ KviSharedFilesWindow::~KviSharedFilesWindow()
 
 void KviSharedFilesWindow::enableButtons()
 {
-	QListViewItem * it = m_pListView->currentItem();
+	KviTalListViewItem * it = m_pListView->currentItem();
 	m_pEditButton->setEnabled(it);
 	m_pRemoveButton->setEnabled(it);
 }
@@ -311,7 +311,7 @@ void KviSharedFilesWindow::sharedFileAdded(KviSharedFile * f)
 
 void KviSharedFilesWindow::sharedFileRemoved(KviSharedFile * f)
 {
-	QListViewItem * it = m_pListView->firstChild();
+	KviTalListViewItem * it = m_pListView->firstChild();
 	while(it)
 	{
 		if(((KviSharedFilesListViewItem *)it)->readOnlySharedFilePointer() == f)
@@ -374,7 +374,7 @@ void KviSharedFilesWindow::transferUnregistering(KviSharedFiles * t)
 	if(it)delete it;
 }
 
-void KviSharedFilesWindow::rightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviSharedFilesWindow::rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
 	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
@@ -487,7 +487,7 @@ void KviSharedFilesWindow::rightButtonPressed(QListViewItem *it,const QPoint &pn
 
 KviSharedFiles * KviSharedFilesWindow::selectedTransfer()
 {
-	QListViewItem * it = m_pListView->selectedItem();
+	KviTalListViewItem * it = m_pListView->selectedItem();
 	if(!it)return 0;
 	KviSharedFilesItem * i = (KviSharedFilesItem *)it;
 	return i->transfer();
@@ -623,8 +623,8 @@ void KviSharedFilesWindow::heartbeat()
 {
 	if(m_pListView->childCount() < 1)return;
 
-	QListViewItem * i1;
-	QListViewItem * i2;
+	KviTalListViewItem * i1;
+	KviTalListViewItem * i2;
 
 	i1 = m_pListView->itemAt(QPoint(1,1));
 	if(!i1)

@@ -50,6 +50,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_netutils.h"
 #include "kvi_ircurl.h"
+#include "kvi_qcstring.h"
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
@@ -842,7 +843,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce,const QString &szQuit
 					ret.asString(buffer);
 				else
 					buffer = szQuit;
-				QCString dat = console()->encodeText(buffer);
+				KviQCString dat = console()->encodeText(buffer);
 				bWasSentQuit = false;
 				connection()->stateData()->setSentQuit();
 				connection()->sendFmtData("QUIT :%s",dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected

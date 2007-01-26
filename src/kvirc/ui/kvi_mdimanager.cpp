@@ -54,7 +54,7 @@
 
 
 KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
-: QScrollView(parent,name)
+: KviTalScrollView(parent)
 {
 	setFrameShape(NoFrame);
 	m_pZ = new KviPtrList<KviMdiChild>;

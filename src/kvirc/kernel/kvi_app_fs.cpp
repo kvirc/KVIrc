@@ -37,6 +37,7 @@
 
 #include <qdir.h>
 #include <qfileinfo.h>
+#include <qdatetime.h>
 
 extern KviMediaManager * g_pMediaManager;
 

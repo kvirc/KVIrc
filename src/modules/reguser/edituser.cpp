@@ -343,8 +343,8 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	l = new QLabel(__tr2qs("Masks:"),p1);
 	g->addMultiCellWidget(l,3,3,0,1);
 
-	m_pMaskListBox = new QListBox(p1);
-	connect(m_pMaskListBox,SIGNAL(currentChanged(QListBoxItem *)),this,SLOT(maskCurrentChanged(QListBoxItem *)));
+	m_pMaskListBox = new KviTalListBox(p1);
+	connect(m_pMaskListBox,SIGNAL(currentChanged(KviTalListBoxItem *)),this,SLOT(maskCurrentChanged(KviTalListBoxItem *)));
 	m_pMaskListBox->setMinimumSize(300,200);
 
 	g->addMultiCellWidget(m_pMaskListBox,4,4,0,1);
@@ -548,7 +548,7 @@ KviRegisteredUserEntryDialog::~KviRegisteredUserEntryDialog()
 	delete m_pCustomColor;
 }
 
-void KviRegisteredUserEntryDialog::maskCurrentChanged(QListBoxItem *it)
+void KviRegisteredUserEntryDialog::maskCurrentChanged(KviTalListBoxItem *it)
 {
 	m_pDelMaskButton->setEnabled(it);
 	m_pEditMaskButton->setEnabled(it);
@@ -773,7 +773,7 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 
 }
 
-KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(QListViewItem * par,KviRegisteredUser * u)
+KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u)
 : KviRegisteredUsersDialogItemBase(User,par), m_pUser(u)
 {
 	setText(0,u->name());
@@ -783,7 +783,7 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 {
 	if(column == 1)
 	{
-		QListView *lv = listView();
+		KviTalListView *lv = (KviTalListView *)listView();
 		const BackgroundMode bgmode = lv->viewport()->backgroundMode();
 		const QColorGroup::ColorRole crole = QPalette::backgroundRoleFromMode( bgmode );
 		p->fillRect(0,0,width,height(),isSelected() ? cg.brush(QColorGroup::Highlight) : cg.brush(crole));
@@ -810,7 +810,7 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 		}
 		return;
 	}
-	QListViewItem::paintCell(p,cg,column,width,align);
+	KviTalListViewItem::paintCell(p,cg,column,width,align);
 }
 
 
@@ -828,14 +828,14 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	QGridLayout * g = new QGridLayout(this,4,3,4,4);
 
 
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 
 	m_pListView->addColumn(__tr2qs("Name"),200);
 	m_pListView->addColumn(__tr2qs("Notify"),130);
 
 	m_pListView->setAllColumnsShowFocus(true);
 
-	m_pListView->setSelectionMode(QListView::Extended);
+	m_pListView->setSelectionMode(KviTalListView::Extended);
 	m_pListView->setRootIsDecorated(TRUE);
 
 #ifdef COMPILE_INFO_TIPS
@@ -846,8 +846,8 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 		"Notify list fine-tuning can be performed by editing the entry properties.</center>"));
 #endif // COMPILE_INFO_TIPS
 
-	connect(m_pListView,SIGNAL(pressed(QListViewItem *,const QPoint &,int)),this,SLOT(itemPressed(QListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(QListViewItem *)),this,SLOT(itemDoubleClicked(QListViewItem *)));
+	connect(m_pListView,SIGNAL(pressed(KviTalListViewItem *,const QPoint &,int)),this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
 
 	g->addMultiCellWidget(m_pListView,0,1,0,1);
 
@@ -938,7 +938,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	g->setRowStretch(1,1);
 
 	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pListView,SIGNAL(rightButtonClicked ( QListViewItem *, const QPoint &, int ) ),this,SLOT(listViewRightButtonClicked ( QListViewItem *, const QPoint &, int )));
+	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalListViewItem *, const QPoint &, int ) ),this,SLOT(listViewRightButtonClicked ( KviTalListViewItem *, const QPoint &, int )));
 
 	fillList();
 
@@ -971,7 +971,7 @@ KviRegisteredUsersDialog::~KviRegisteredUsersDialog()
 	g_pLocalRegisteredUserDataBase = 0;
 }
 
-void KviRegisteredUsersDialog::itemPressed(QListViewItem *it,const QPoint &pnt,int c)
+void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -1017,7 +1017,7 @@ void KviRegisteredUsersDialog::itemPressed(QListViewItem *it,const QPoint &pnt,i
 	}
 }
 
-void KviRegisteredUsersDialog::itemDoubleClicked(QListViewItem *it)
+void KviRegisteredUsersDialog::itemDoubleClicked(KviTalListViewItem *it)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -1071,7 +1071,7 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 	}
 }
 
-void KviRegisteredUsersDialog::listViewRightButtonClicked ( QListViewItem * pItem, const QPoint & point, int )
+void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalListViewItem * pItem, const QPoint & point, int )
 {
 	if(pItem)
 	{
@@ -1102,7 +1102,7 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( QListViewItem * pIte
 void KviRegisteredUsersDialog::moveToGroupMenuClicked(int id)
 {
 	QString szGroup=m_TmpDict.find(id)->name();
-	QListViewItemIterator it( m_pListView,  QListViewItemIterator::Selected );
+	KviTalListViewItemIterator it( m_pListView,  KviTalListViewItemIterator::Selected );
 	while ( it.current() ) {
 		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(it.current());
 		if(b->type()==KviRegisteredUsersDialogItemBase::User)
@@ -1207,7 +1207,7 @@ void KviRegisteredUsersDialog::addWizardClicked()
 
 void KviRegisteredUsersDialog::removeClicked()
 {
-	QListViewItemIterator it( m_pListView,  QListViewItemIterator::Selected );
+	KviTalListViewItemIterator it( m_pListView,  KviTalListViewItemIterator::Selected );
 	while ( it.current() ) {
 		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(it.current());
 		if(b->type()==KviRegisteredUsersDialogItemBase::User)
@@ -1274,7 +1274,7 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 		fillList();
 
 		// select the last edited item
-		QListViewItem * i = m_pListView->firstChild();
+		KviTalListViewItem * i = m_pListView->firstChild();
 		while(i)
 		{
 			QString szTmp = i->text(0);
@@ -1319,7 +1319,7 @@ void KviRegisteredUsersDialog::exportClicked()
 {
 	unsigned int nEntries = 0;
 
-	QListViewItem * it;
+	KviTalListViewItem * it;
 
 	for(it = m_pListView->firstChild();it;it = it->nextSibling())
 	{

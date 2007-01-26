@@ -1,11 +1,12 @@
 #ifndef _KVI_IPC_H_
 #define _KVI_IPC_H_
+//=============================================================================
 //
 //   File : kvi_ipc.h
 //   Creation date : Tue Apr 10 2001 15:04:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 
@@ -36,7 +38,12 @@
 	#include <windows.h>
 #else //!COMPILE_ON_WINDOWS
 	#ifndef COMPILE_NO_X
-		#include <X11/Xlib.h> // for XEvent
+		#ifdef COMPILE_USE_QT4
+			// We need this to be included BEFORE X11/Xlib.h
+			// because of preprocessor constant collisions...
+			#include <qcoreevent.h>
+		#endif
+		#include "kvi_xlib.h" // for XEvent
 	#endif //!COMPILE_NO_X
 #endif //!COMPILE_ON_WINDOWS
 		

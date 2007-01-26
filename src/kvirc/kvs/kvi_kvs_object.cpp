@@ -994,7 +994,10 @@ bool KviKvsObject::function_killTimer(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject::function_killTimers(KviKvsObjectFunctionCall * c)
 {
+	// FIXME: QT4 does not seem to have QObject::killTimers()
+#ifndef COMPILE_USE_QT4
 	killTimers();
+#endif
 	return true;
 }
 
@@ -1016,18 +1019,27 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	kvs_int_t cnt = 0;
 	if(m_pObject)
 	{
-		QMetaObject *o = m_pObject->metaObject();
+		const QMetaObject *o = m_pObject->metaObject();
 		if(!bArray)
 			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Properties for Qt class %s"),o->className());
 		while(o)
 		{
 			kvs_int_t idx = 0;
+#ifdef COMPILE_USE_QT4
+			QMetaProperty prop = o->property(idx);
+			const QMetaProperty *p = &prop;
+#else
 			const QMetaProperty *p = o->property(idx);
+#endif
 			while(p)
 			{
 				QString szOut;
 				QString szName = p->name();
+#ifdef COMPILE_USE_QT4
+				QString szType = p->typeName();
+#else
 				QString szType = p->type();
+#endif
 				if(bArray)
 					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
 				else {
@@ -1037,6 +1049,8 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(p->isEnumType())
 				{
 					szOut += ", enum(";
+#ifndef COMPILE_USE_QT4
+					// FIXME: Qt 4.x needs QMetaEnum for this loop
 					QStrList le = p->enumKeys();
 					int i = 0;
 					for(char *c2 = le.first(); c2; c2 = le.next())
@@ -1047,15 +1061,27 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 							szOut.append(", ");
 						szOut.append(c2);
 					}
+#endif
 					szOut += ")";
 				}
+#ifdef COMPILE_USE_QT4
+				// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
+				//        for me to fix now. Actually I need to get the whole executable working...
+				if(p->isWritable())szOut += ", writable";
+#else
 				if(p->isSetType())szOut += ", set";
 				if(p->writable())szOut += ", writable";
+#endif
 				if(bArray)
 					a->set(cnt,new KviKvsVariant(szOut));
 				else
 					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
+#ifdef COMPILE_USE_QT4
+				prop = o->property(idx);
+				p = &prop;
+#else
 				p = o->property(idx);
+#endif
 				idx++;
 				cnt++;
 			}
@@ -1090,13 +1116,22 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
+#ifdef COMPILE_USE_QT4
+	int idx = m_pObject->metaObject()->indexOfProperty(szName);
+#else
 	int idx = m_pObject->metaObject()->findProperty(szName,true);
+#endif
 	if(idx < 0)
 	{
 		c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
+#ifdef COMPILE_USE_QT4
+	QMetaProperty prop = m_pObject->metaObject()->property(idx);
+	const QMetaProperty * p = &prop;
+#else
 	const QMetaProperty * p = m_pObject->metaObject()->property(idx,true);
+#endif
 	if(!p)
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
@@ -1114,7 +1149,11 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	{
 		QString szKey;
 		v->asString(szKey);
+#ifdef COMPILE_USE_QT4
+		int val = p->enumerator().keyToValue(szKey);
+#else
 		int val = p->keyToValue(szKey);
+#endif
 		QVariant var(val);
 		m_pObject->setProperty(szName,var);
 		return true;
@@ -1198,6 +1237,8 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			m_pObject->setProperty(szName,QVariant(QRect(iX,iY,iW,iH)));
 		}
 		break;
+#ifndef COMPILE_USE_QT4
+		// FIXME: QT4 ????
 		case QVariant::Color:
 		{
 			if(!v->isArray())WRONG_TYPE("array(integer,integer,integer)")
@@ -1276,6 +1317,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			}
 		}
 		break;
+#endif
 		default:
 			c->warning(__tr2qs("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
@@ -1305,7 +1347,11 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
+#ifdef COMPILE_USE_QT4
+	int idx = m_pObject->metaObject()->indexOfProperty(szName);
+#else
 	int idx = m_pObject->metaObject()->findProperty(szName,true);
+#endif
 	if(idx < 0)
 	{
 		if (bNoerror) c->returnValue()->setString("No Qt properties");
@@ -1316,7 +1362,12 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		}
 		return true;
 	}
+#ifdef COMPILE_USE_QT4
+	QMetaProperty prop = m_pObject->metaObject()->property(idx);
+	const QMetaProperty * p = &prop;
+#else
 	const QMetaProperty * p = m_pObject->metaObject()->property(idx,true);
+#endif
 	if(!p)
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
@@ -1334,7 +1385,11 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 
 	if(p->isEnumType())
 	{
+#ifdef COMPILE_USE_QT4
+		c->returnValue()->setString(p->enumerator().valueToKey(v.toInt()));
+#else
 		c->returnValue()->setString(p->valueToKey(v.toInt()));
+#endif
 		return true;
 	}
 
@@ -1384,6 +1439,8 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setArray(a);
 		}
 		break;
+#ifndef COMPILE_USE_QT4
+		// FIXME: QT4 ?
 		case QVariant::Color:
 		{
 			QColor clr = v.toColor();
@@ -1411,6 +1468,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setString(szFlags);
 		}
 		break;
+#endif
 		default:
 			if (bNoerror) c->returnValue()->setString("Unsupported_data_type");
 			else

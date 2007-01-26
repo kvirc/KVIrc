@@ -45,8 +45,8 @@
 #define LVI_MINIMUM_TEXT_WIDTH 300
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviActionDrawerPageListViewItem::KviActionDrawerPageListViewItem(QListView * v,KviAction * a)
-: QListViewItem(v,"")
+KviActionDrawerPageListViewItem::KviActionDrawerPageListViewItem(KviTalListView * v,KviAction * a)
+: KviTalListViewItem(v,"")
 {
 	m_pListView = v;
 	setDragEnabled(true);
@@ -74,7 +74,7 @@ QString KviActionDrawerPageListViewItem::key(int,bool) const
 
 void KviActionDrawerPageListViewItem::setup()
 {
-	QListViewItem::setup();
+	KviTalListViewItem::setup();
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
@@ -86,7 +86,7 @@ void KviActionDrawerPageListViewItem::setup()
 
 void KviActionDrawerPageListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
-	QListViewItem::paintCell(p,cg,column,width,align);
+	KviTalListViewItem::paintCell(p,cg,column,width,align);
 	//p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;

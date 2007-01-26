@@ -110,7 +110,7 @@ UrlDialog::UrlDialog(KviPtrList<KviUrl> *g_pList)
 :KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
-	m_pUrlList = new QListView(this,"list");
+	m_pUrlList = new KviTalListView(this);
 	//m_pUrlList = new KviListView(this,"list");
 	KviConfig cfg(szConfigPath.ptr(),KviConfig::Read);
 
@@ -140,8 +140,8 @@ UrlDialog::UrlDialog(KviPtrList<KviUrl> *g_pList)
 	m_pUrlList->setColumnWidth(2,cfg.readIntEntry("Count",70));
 	m_pUrlList->setColumnWidth(3,cfg.readIntEntry("Timestamp",70));
 
-	connect(m_pUrlList,SIGNAL(doubleClicked(QListViewItem *)),SLOT(dblclk_url(QListViewItem *)));
-	connect(m_pUrlList,SIGNAL(rightButtonPressed(QListViewItem *, const QPoint &, int)),SLOT(popup(QListViewItem *, const QPoint &, int)));
+	connect(m_pUrlList,SIGNAL(doubleClicked(KviTalListViewItem *)),SLOT(dblclk_url(KviTalListViewItem *)));
+	connect(m_pUrlList,SIGNAL(rightButtonPressed(KviTalListViewItem *, const QPoint &, int)),SLOT(popup(KviTalListViewItem *, const QPoint &, int)));
 
 //	setFocusHandlerNoChildren(m_pUrlList);
 	m_pUrlList->setFocusPolicy(QWidget::StrongFocus);
@@ -245,14 +245,14 @@ void UrlDialog::findtext()
 */
 }
 
-void UrlDialog::dblclk_url(QListViewItem *item)
+void UrlDialog::dblclk_url(KviTalListViewItem *item)
 {
 	QString cmd="openurl ";
 	cmd.append(item->text(0));
 	KviKvsScript::run(cmd,this);
 }
 
-void UrlDialog::popup(QListViewItem *item, const QPoint &point, int col)
+void UrlDialog::popup(KviTalListViewItem *item, const QPoint &point, int col)
 {
 	if (col == 0) {
 		m_szUrl = item->text(0);
@@ -295,7 +295,7 @@ QPixmap *UrlDialog::myIconPtr()
 
 void UrlDialog::addUrl(QString url, QString window, QString count, QString timestamp)
 {
-	QListViewItem *UrlItem = new QListViewItem(m_pUrlList);
+	KviTalListViewItem *UrlItem = new KviTalListViewItem(m_pUrlList);
 
 	UrlItem->setText(0, url);
 	UrlItem->setText(1, window);
@@ -417,7 +417,7 @@ BanFrame::BanFrame(QWidget *parent, const char *name, bool banEnabled)
 	m_pEnable->setChecked(banEnabled);
 	g->addMultiCellWidget(m_pEnable,0,0,0,1);
 
-	m_pBanList = new QListBox(this,"listbox");
+	m_pBanList = new KviTalListBox(this);
 	m_pBanList->setMinimumHeight(100);
 	loadBanList();
 	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next()) m_pBanList->insertItem(tmp->ptr()); // load ban list into listbox
@@ -705,7 +705,7 @@ int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurence of 
 
 	for (UrlDlgList *tmpitem=g_pUrlDlgList->first();tmpitem;tmpitem=g_pUrlDlgList->next()) {
 		if (tmpitem->dlg) {
-			QListViewItemIterator lvi(tmpitem->dlg->m_pUrlList);
+			KviTalListViewItemIterator lvi(tmpitem->dlg->m_pUrlList);
 			for(;lvi.current();++lvi)
 			{
 				if (lvi.current()->text(0) == szUrl) {

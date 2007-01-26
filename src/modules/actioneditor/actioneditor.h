@@ -27,7 +27,7 @@
 #include "kvi_window.h"
 
 #include <qwidget.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 class KviActionEditorListViewItem;
 
@@ -71,16 +71,16 @@ class KviStyledCheckBox;
 class QSimpleRichText;
 class QPushButton;
 
-class KviActionEditorListViewItem : public QListViewItem
+class KviActionEditorListViewItem : public KviTalListViewItem
 {
 public:
-	KviActionEditorListViewItem(QListView * v,KviActionData * a);
+	KviActionEditorListViewItem(KviTalListView * v,KviActionData * a);
 	~KviActionEditorListViewItem();
 protected:
 	KviActionData * m_pActionData;
 	QSimpleRichText * m_pText;
 	QPixmap * m_pIcon;
-	QListView * m_pListView;
+	KviTalListView * m_pListView;
 	QString m_szKey;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
@@ -92,7 +92,7 @@ public:
 };
 
 
-class KviActionEditorListView : public QListView
+class KviActionEditorListView : public KviTalListView
 {
 	Q_OBJECT
 public:
@@ -170,7 +170,7 @@ protected:
 	int selectedCount();
 	QString nameForAutomaticAction(const QString &szTemplate);
 protected slots:
-	void currentChanged(QListViewItem * it);
+	void currentChanged(KviTalListViewItem * it);
 	void newAction();
 	void deleteActions();
 	void exportActions();

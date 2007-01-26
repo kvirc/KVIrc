@@ -27,7 +27,7 @@
 #include <qdialog.h> 
 #include <qlineedit.h> 
 #include <qwidget.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qpushbutton.h>
 #include "kvi_list.h"
 
@@ -44,15 +44,15 @@ typedef struct _KviMaskEntry
 	unsigned int uSetAt;
 } KviMaskEntry;
 
-class KviMaskItem: public QListViewItem
+class KviMaskItem: public KviTalListViewItem
 {
 public:
-	KviMaskItem(QListView* parent,KviMaskEntry* entry);
+	KviMaskItem(KviTalListView* parent,KviMaskEntry* entry);
 	~KviMaskItem();
 	
 	KviMaskEntry* mask() { return &m_Mask; };
 	
-	virtual int compare ( QListViewItem * i, int col, bool ascending ) const;
+	virtual int compare ( KviTalListViewItem * i, int col, bool ascending ) const;
 protected:
 	KviMaskEntry m_Mask;
 	
@@ -83,7 +83,7 @@ public:
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
-	QListView           * m_pMaskBox;
+	KviTalListView           * m_pMaskBox;
 	QPushButton         * m_pRemoveMask;
 	QPushButton   	    * m_pAddButton;
 	char                  m_cFlag;
@@ -95,7 +95,7 @@ public:
 protected slots:
 	void removeClicked();
 	void addClicked();
-	void listViewDoubleClicked( QListViewItem * );
+	void listViewDoubleClicked( KviTalListViewItem * );
 signals:
 	void removeMasks(KviMaskEditor *,KviPtrList<KviMaskEntry> *);
 };

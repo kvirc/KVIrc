@@ -27,13 +27,13 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
-#include <qiconview.h>
+#include "kvi_tal_iconview.h"
 
 
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200
 
-class KVIRC_API KviTextIconWindow : public QIconView
+class KVIRC_API KviTextIconWindow : public KviTalIconView
 {
 	Q_OBJECT
 public:
@@ -57,7 +57,7 @@ private:
 public slots:
 	void fill();
 	void ownerDead();
-	void itemSelected(QIconViewItem * item);
+	void itemSelected(KviTalIconViewItem * item);
 };
 
 #endif //_KVI_TEXTICONWIN_H_

@@ -41,6 +41,7 @@ public:
 public:
 #ifdef COMPILE_USE_QT4
 	static void add(QWidget * widget,const QString & text);
+	static void remove(QWidget * widget);
 	virtual void tip(const QRect & rect,const QString & text);
 #endif
 protected:

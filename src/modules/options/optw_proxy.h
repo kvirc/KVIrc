@@ -24,7 +24,7 @@
 //
 
 #include "kvi_optionswidget.h"
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 
 class KviProxy;
@@ -32,10 +32,10 @@ class KviProxyDataBase;
 
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-class KviProxyOptionsListViewItem : public QListViewItem
+class KviProxyOptionsListViewItem : public KviTalListViewItem
 {
 public:
-	KviProxyOptionsListViewItem(QListView *parent,const QPixmap &pm,KviProxy * prx);
+	KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx);
 	~KviProxyOptionsListViewItem();
 public:
 	KviProxy * m_pProxyData;
@@ -61,7 +61,7 @@ public:
 	KviProxyOptionsWidget(QWidget * parent);
 	~KviProxyOptionsWidget();
 protected:
-	QListView    * m_pListView;
+	KviTalListView    * m_pListView;
 	QLabel       * m_pProxyLabel;
 	QLineEdit    * m_pProxyEdit;
 	QLabel       * m_pIpLabel;
@@ -82,8 +82,8 @@ private:
 	void fillProxyList();
 	void saveLastItem();
 protected slots:
-	void listViewItemSelectionChanged(QListViewItem *it);
-	void listViewRightButtonPressed(QListViewItem *it,const QPoint &pnt,int col);
+	void listViewItemSelectionChanged(KviTalListViewItem *it);
+	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
 	void newProxy();
 	void removeCurrent();
 	void ipV6CheckToggled(bool bEnabled);

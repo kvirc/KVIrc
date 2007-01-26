@@ -28,15 +28,15 @@
 
 #include "kvi_heapobject.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 
 class QPainter;
 
-class KVIRC_API KviListView : public QListView
+class KVIRC_API KviListView : public KviTalListView
 {
 	Q_OBJECT
 public:
-	KviListView( QWidget * parent = 0, const char * name = 0, WFlags f = 0 );
+	KviListView( QWidget * parent = 0, const char * name = 0);
 	~KviListView();
 protected:
 	QPixmap      * m_pBackgroundOverlayPixmap;

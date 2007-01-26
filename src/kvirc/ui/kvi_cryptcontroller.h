@@ -30,7 +30,7 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 
 	#include <qwidget.h>
-	#include <qlistbox.h>
+	#include "kvi_tal_listbox.h"
 	#include <qpushbutton.h>
 	#include <qcheckbox.h>
 	#include <qlabel.h>
@@ -53,11 +53,11 @@
 	};
 
 
-	class KVIRC_API KviEngineListBoxItem : public QListBoxText
+	class KVIRC_API KviEngineListBoxItem : public KviTalListBoxText
 	{
 		friend class KviCryptController;
 	public:
-		KviEngineListBoxItem(QListBox * lb,KviCryptEngineDescription * d,const char * modName);
+		KviEngineListBoxItem(KviTalListBox * lb,KviCryptEngineDescription * d,const char * modName);
 		~KviEngineListBoxItem();
 	public:
 		KviStr m_szName;
@@ -76,7 +76,7 @@
 		~KviCryptController();
 	protected:
 		KviWindow            * m_pWindow;
-		QListBox             * m_pListBox;
+		KviTalListBox             * m_pListBox;
 		QPushButton          * m_pOkButton;
 		KviStyledCheckBox            * m_pEnableCheck;
 		QLabel               * m_pDescriptionLabel;
@@ -93,7 +93,7 @@
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:
 		void enableCheckToggled(bool bChecked);
-		void engineHighlighted(QListBoxItem *it);
+		void engineHighlighted(KviTalListBoxItem *it);
 		void okClicked();
 	public:
 		KviCryptSessionInfo * getNewSessionInfo();

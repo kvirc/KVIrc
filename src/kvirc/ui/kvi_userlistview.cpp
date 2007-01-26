@@ -1418,16 +1418,15 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		p.drawTiledPixmap(r.left(),r.top(),r.width(),r.height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
 	} else {
 #endif
-		p.fillRect(r.left(),r.top(),r.width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
+		QPixmap *pix = KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
+		if(pix)
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign)),r,width(),height());
+		else
+			p.fillRect(r.left(),r.top(),r.width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 
-	QPixmap *pix=KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
-	if(pix)
-	{
-		KviPixmapUtils::drawPixmapWithPainter(&p,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign)),r,width(),height());
-	}
 
 	KviUserListEntry * e = m_pListView->m_pTopItem;
 

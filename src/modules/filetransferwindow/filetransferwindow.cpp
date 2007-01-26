@@ -58,8 +58,8 @@
 extern KviFileTransferWindow * g_pFileTransferWindow;
 
 
-KviFileTransferItem::KviFileTransferItem(QListView * v,KviFileTransfer * t)
-: QListViewItem(v)
+KviFileTransferItem::KviFileTransferItem(KviTalListView * v,KviFileTransfer * t)
+: KviTalListViewItem(v)
 {
 	m_pTransfer = t;
 	m_pTransfer->setDisplayItem(this);
@@ -130,7 +130,7 @@ void KviFileTransferItem::paintCell(QPainter * p,const QColorGroup &cg,int colum
 
 void KviFileTransferItem::setHeight(int h)
 {
-	QListViewItem::setHeight(m_pTransfer->displayHeight(g_pFileTransferWindow->lineSpacing()));
+	KviTalListViewItem::setHeight(m_pTransfer->displayHeight(g_pFileTransferWindow->lineSpacing()));
 }
 
 
@@ -153,7 +153,7 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
 	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
 
-	m_pListView  = new QListView(m_pVertSplitter);
+	m_pListView  = new KviTalListView(m_pVertSplitter);
 	//m_pListView->header()->hide();
 	m_pListView->setAllColumnsShowFocus(true);
 	m_pListView->addColumn(__tr2qs_ctx("Type","filetransferwindow"),56);
@@ -166,8 +166,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	//m_pListView->setFocusPolicy(NoFocus);
 	//m_pListView->viewport()->setFocusPolicy(NoFocus);
 
-	//connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-	// this,SLOT(showHostPopup(QListViewItem *,const QPoint &,int)));
+	//connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+	// this,SLOT(showHostPopup(KviTalListViewItem *,const QPoint &,int)));
 
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
@@ -175,8 +175,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
 	m_pListView->installEventFilter(this);
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),this,SLOT(rightButtonPressed(QListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(QListViewItem *,const QPoint &,int)),this,SLOT(doubleClicked(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),this,SLOT(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *,const QPoint &,int)),this,SLOT(doubleClicked(KviTalListViewItem *,const QPoint &,int)));
 	fillTransferView();
 
 	connect(KviFileTransferManager::instance(),SIGNAL(transferRegistered(KviFileTransfer *)),this,SLOT(transferRegistered(KviFileTransfer *)));
@@ -268,13 +268,13 @@ void KviFileTransferWindow::transferUnregistering(KviFileTransfer * t)
     it = 0;
 }
 
-void KviFileTransferWindow::doubleClicked(QListViewItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::doubleClicked(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	if(it)
 		openLocalFile();
 }
 
-void KviFileTransferWindow::rightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
 	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
@@ -410,7 +410,7 @@ void KviFileTransferWindow::rightButtonPressed(QListViewItem *it,const QPoint &p
 
 KviFileTransfer * KviFileTransferWindow::selectedTransfer()
 {
-	QListViewItem * it = m_pListView->selectedItem();
+	KviTalListViewItem * it = m_pListView->selectedItem();
 	if(!it)return 0;
 	KviFileTransferItem * i = (KviFileTransferItem *)it;
 	return i->transfer();
@@ -622,8 +622,8 @@ void KviFileTransferWindow::heartbeat()
 {
 	if(m_pListView->childCount() < 1)return;
 
-	QListViewItem * i1;
-	QListViewItem * i2;
+	KviTalListViewItem * i1;
+	KviTalListViewItem * i2;
 
 	i1 = m_pListView->itemAt(QPoint(1,1));
 	if(!i1)

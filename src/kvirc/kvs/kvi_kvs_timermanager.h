@@ -29,7 +29,7 @@
 #include "kvi_qstring.h"
 
 #include <qobject.h>
-#include <qintdict.h>
+#include "kvi_intdict.h"
 #include "kvi_dict.h"
 #include "kvi_list.h"
 
@@ -92,7 +92,7 @@ protected: // it only can be created and destroyed by KviKvsTimerManager::init()
 	KviKvsTimerManager();
 	~KviKvsTimerManager();
 private:
-	QIntDict<KviKvsTimer>     * m_pTimerDictById;      // stored by id
+	KviIntDict<KviKvsTimer>     * m_pTimerDictById;      // stored by id
 	KviDict<KviKvsTimer>        * m_pTimerDictByName;    // stored by name
 	static KviKvsTimerManager * m_pInstance;           // the one and only timer manager instance
 	KviPtrList<KviKvsTimer>   * m_pKilledTimerList;    // list of timers for that killing has been scheduled

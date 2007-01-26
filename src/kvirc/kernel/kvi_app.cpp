@@ -89,7 +89,10 @@
 #include <qstringlist.h>
 #include "kvi_asciidict.h"
 #include <qmime.h>
-#include <qlistbox.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3mimefactory.h>
+#endif
+#include "kvi_tal_listbox.h"
 #include <qclipboard.h>
 #include <qmessagebox.h>
 #include <qtextcodec.h>
@@ -241,7 +244,11 @@ void KviApp::setup()
 	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpNoIntl);
 	list.append(tmp);
+#ifdef COMPILE_USE_QT4
+	Q3MimeSourceFactory::defaultFactory()->setFilePath(list);
+#else
 	QMimeSourceFactory::defaultFactory()->setFilePath(list);
+#endif
 
 	KVI_SPLASH_SET_PROGRESS(1)
 
@@ -644,6 +651,8 @@ QTextCodec * KviApp::defaultTextCodec()
 
 void KviApp::contextSensitiveHelp()
 {
+	// this stuff doesn't work with Qt 4.x
+#ifndef COMPILE_USE_QT4
 	// the F1 Key has been pressed
 	// try to pass it to the active widget or one of its parents
 	QWidget * w = g_pApp->focusWidget();
@@ -666,6 +675,7 @@ void KviApp::contextSensitiveHelp()
 	// no way
 	// FIXME: just show up simple plain online help
 	//debug("No way: found no focus widget for that...");
+#endif
 }
 
 
@@ -686,7 +696,9 @@ void KviApp::loadDefaultScript()
 #endif
 	KviKvsScript::run(cmd,g_pFrame->firstConsole());
 	// now line up the toolbars (they may get messed while loading the script)
-	g_pFrame->lineUpDockWindows();
+#ifndef COMPILE_USE_QT4
+	g_pFrame->lineUpDockWindows(); // missing on Qt 4.x
+#endif
 }
 
 // 07.01.2005 06:01: Got this curious gcc error while writing
@@ -1938,7 +1950,7 @@ void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 
 
 /*
-void KviApp::fillRecentServersListBox(QListBox * l)
+void KviApp::fillRecentServersListBox(KviTalListBox * l)
 {
 	l->clear();
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)

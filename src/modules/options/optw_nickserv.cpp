@@ -26,7 +26,7 @@
 
 #include <qlayout.h>
 #include <qtooltip.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -249,8 +249,8 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 #endif
 	m_pNickServCheck->setChecked(bNickServEnabled);
 
-	m_pNickServListView = new QListView(this);
-	m_pNickServListView->setSelectionMode(QListView::Single);
+	m_pNickServListView = new KviTalListView(this);
+	m_pNickServListView->setSelectionMode(KviTalListView::Single);
 	m_pNickServListView->setAllColumnsShowFocus(true);
 	m_pNickServListView->addColumn(__tr2qs_ctx("Nickname","options"));
 	m_pNickServListView->addColumn(__tr2qs_ctx("Server mask","options"));
@@ -292,7 +292,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 		KviPtrList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			(void)new QListViewItem(m_pNickServListView,rule->registeredNick(),rule->serverMask(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
+			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->serverMask(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
 		}
 	}
 
@@ -309,7 +309,7 @@ KviNickServOptionsWidget::~KviNickServOptionsWidget()
 
 void KviNickServOptionsWidget::editNickServRule()
 {
-	QListViewItem * it = m_pNickServListView->currentItem();
+	KviTalListViewItem * it = m_pNickServListView->currentItem();
 	if(!it)return;
 	KviNickServRule r(it->text(0),it->text(2),it->text(3),it->text(4),it->text(1));
 	KviNickServRuleEditor ed(this,true);
@@ -328,12 +328,12 @@ void KviNickServOptionsWidget::addNickServRule()
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,true);
 	if(ed.editRule(&r))
-		(void)new QListViewItem(m_pNickServListView,r.registeredNick(),r.serverMask(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
+		(void)new KviTalListViewItem(m_pNickServListView,r.registeredNick(),r.serverMask(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
 }
 
 void KviNickServOptionsWidget::delNickServRule()
 {
-	QListViewItem * it = m_pNickServListView->currentItem();
+	KviTalListViewItem * it = m_pNickServListView->currentItem();
 	if(!it)return;
 	delete it;
 	enableDisableNickServControls();
@@ -355,7 +355,7 @@ void KviNickServOptionsWidget::commit()
 	if(m_pNickServListView->childCount() > 0)
 	{
 		g_pNickServRuleSet->setEnabled(m_pNickServCheck->isChecked());
-		QListViewItem * it = m_pNickServListView->firstChild();
+		KviTalListViewItem * it = m_pNickServListView->firstChild();
 		while(it)
 		{
 			g_pNickServRuleSet->addRule(KviNickServRule::createInstance(it->text(0),it->text(2),it->text(3),it->text(4),it->text(1)));

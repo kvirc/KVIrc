@@ -28,7 +28,7 @@
 
 #include "kvi_app.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
 static KviFileTransferManager * g_pFileTransferManager = 0;

@@ -35,6 +35,10 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_locale.h"
 
+#ifdef COMPILE_USE_QT4
+	#include <q3mimefactory.h>
+#endif
+
 namespace KviKvsCoreSimpleCommands
 {
 	/*
@@ -133,8 +137,12 @@ namespace KviKvsCoreSimpleCommands
 			QString szOriginal = szTopic;
 	
 			QString topik = szTopic;
+#ifdef COMPILE_USE_QT4
+			QStringList pl = Q3MimeSourceFactory::defaultFactory()->filePath();
+#else
 			QStringList pl = QMimeSourceFactory::defaultFactory()->filePath();
-	
+#endif
+
 			bool bLowCaseTried = false;
 			bool bFound = KviFileUtils::fileExists(szTopic);
 	
@@ -402,14 +410,14 @@ try_again:
 		}
 
 		szChans = slChans.join(",");
-		QCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
+		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
 		if(szKeys.isEmpty())
 		{
 			if(!(KVSCSC_pConnection->sendFmtData("JOIN %s",szEncodedChans.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		} else {
-			QCString szEncodedKeys  = KVSCSC_pConnection->encodeText(szKeys);
+			KviQCString szEncodedKeys  = KVSCSC_pConnection->encodeText(szKeys);
 			if(!(KVSCSC_pConnection->sendFmtData("JOIN %s %s",szEncodedChans.data(),szEncodedKeys.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
@@ -456,9 +464,9 @@ try_again:
 			return false;
 		}
 
-		QCString szC = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->target());
-		QCString szU = KVSCSC_pConnection->encodeText(szUser);
-		QCString szR = KVSCSC_pConnection->encodeText(szReason);
+		KviQCString szC = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->target());
+		KviQCString szU = KVSCSC_pConnection->encodeText(szUser);
+		KviQCString szR = KVSCSC_pConnection->encodeText(szReason);
 
 		if(szR.isEmpty())
 		{

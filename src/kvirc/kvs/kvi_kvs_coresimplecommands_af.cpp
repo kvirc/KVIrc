@@ -46,6 +46,14 @@
 #ifndef COMPILE_NO_X_BELL
 	#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
 	#include <unistd.h>   // for usleep();
+
+	#ifdef COMPILE_USE_QT4
+		#include <qx11info_x11.h>
+		#define get_xdisplay QX11Info::display
+	#else
+		#define get_xdisplay qt_xdisplay
+	#endif
+
 #endif
 
 #include "kvi_tal_tooltip.h"
@@ -130,7 +138,7 @@ namespace KviKvsCoreSimpleCommands
 				++it;
 			}
 		} else  {
-			QCString szR = KVSCSC_pConnection->encodeText(szReason);
+			KviQCString szR = KVSCSC_pConnection->encodeText(szReason);
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s",szR.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
@@ -309,10 +317,12 @@ namespace KviKvsCoreSimpleCommands
 #else
 	#ifndef COMPILE_NO_X_BELL
 
+
+
 		XKeyboardState st;
 		XKeyboardControl ctl;
 
-		XGetKeyboardControl(qt_xdisplay(),&st);
+		XGetKeyboardControl(get_xdisplay(),&st);
 
 		unsigned long mask = KBBellPercent;
 		ctl.bell_percent = uVolume;
@@ -326,9 +336,9 @@ namespace KviKvsCoreSimpleCommands
 			ctl.bell_duration = duration;
 			mask             |= KBBellDuration;
 		}
-		XChangeKeyboardControl(qt_xdisplay(),mask,&ctl);
+		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
 
-		XBell(qt_xdisplay(),100);
+		XBell(get_xdisplay(),100);
 
 		if(bSync)
 		{
@@ -340,7 +350,7 @@ namespace KviKvsCoreSimpleCommands
 		ctl.bell_duration = st.bell_duration;
 		ctl.bell_percent = st.bell_percent;
 
-		XChangeKeyboardControl(qt_xdisplay(),mask,&ctl);
+		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
 
 	#endif //COMPILE_NO_X_BELL
 #endif
@@ -509,8 +519,8 @@ namespace KviKvsCoreSimpleCommands
 			KviQString::appendFormatted(szCtcpData," %d.%d",tv.tv_sec,tv.tv_usec);
 		}
 
-		QCString szT = KVSCSC_pConnection->encodeText(szTarget);
-		QCString szD = KVSCSC_pConnection->encodeText(szCtcpData);
+		KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
+		KviQCString szD = KVSCSC_pConnection->encodeText(szCtcpData);
 	
 		if(!(KVSCSC_pConnection->sendFmtData("%s %s :%c%s%c",
 				KVSCSC_pSwitches->find('n',"notice") ? "NOTICE" : "PRIVMSG",szT.data(),0x01,szD.data(),0x01)))

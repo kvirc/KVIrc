@@ -50,7 +50,7 @@ MP_IMPLEMENT_DESCRIPTOR(
 
 
 KviJukInterface::KviJukInterface()
-: KviMediaPlayerDCOPInterface("amarok")
+	: KviDCOPHelper(true, "amarok")
 {
 }
 
@@ -60,27 +60,27 @@ KviJukInterface::~KviJukInterface()
 
 int KviJukInterface::detect(bool bStart){ return detectApp("juk",bStart,90,96); }
 
-bool KviJukInterface::prev(){ return simpleDCOPCall("Player","forward()"); }
-bool KviJukInterface::next(){ return simpleDCOPCall("Player","back()"); }
-bool KviJukInterface::play(){ return simpleDCOPCall("Player","play()"); }
-bool KviJukInterface::stop(){ return simpleDCOPCall("Player","stop()"); }
-bool KviJukInterface::pause(){ return simpleDCOPCall("Player","pause()"); }
-bool KviJukInterface::quit(){ return simpleDCOPCall("MainApplication-Interface","quit()"); }
+bool KviJukInterface::prev(){ return voidRetVoidDCOPCall("Player","forward()"); }
+bool KviJukInterface::next(){ return voidRetVoidDCOPCall("Player","back()"); }
+bool KviJukInterface::play(){ return voidRetVoidDCOPCall("Player","play()"); }
+bool KviJukInterface::stop(){ return voidRetVoidDCOPCall("Player","stop()"); }
+bool KviJukInterface::pause(){ return voidRetVoidDCOPCall("Player","pause()"); }
+bool KviJukInterface::quit(){ return voidRetVoidDCOPCall("MainApplication-Interface","quit()"); }
 
 bool KviJukInterface::setVol(int &iVol)
 {
-	return floatDCOPCall("player","setVolume(float)",(float)(iVol)/255.);
+	return voidRetFloatDCOPCall("player","setVolume(float)",(float)(iVol)/255.);
 }
 
 bool KviJukInterface::jumpTo(int &iPos)
 {
-	return intDCOPCall("player","seek(int)",iPos/1000);
+	return voidRetIntDCOPCall("player","seek(int)",iPos/1000);
 }
 
 bool KviJukInterface::getShuffle()
 {
 	QString szMode;
-	if(!stringRetDCOPCall("player","randomPlayMode()",szMode))return false;
+	if(!stringRetVoidDCOPCall("player","randomPlayMode()",szMode))return false;
 	return (szMode != "NoRandom");
 }
 
@@ -93,7 +93,7 @@ bool KviJukInterface::setShuffle(bool &bVal)
 	} else {
 		szMode = "NoRandom";
 	}
-	if(!stringDCOPCall("player","setRandomPlayMode(QString)",szMode))return false;
+	if(!voidRetStringDCOPCall("player","setRandomPlayMode(QString)",szMode))return false;
 	return true;
 }
 
@@ -102,7 +102,7 @@ bool KviJukInterface::setShuffle(bool &bVal)
 QString KviJukInterface::_fncname() \
 { \
 	QString ret; \
-	if(!stringRetDCOPCall(_iface,_fnc,ret))return false; \
+	if(!stringRetVoidDCOPCall(_iface,_fnc,ret))return false; \
 	return ret; \
 }
 
@@ -121,7 +121,7 @@ MP_DCOP_STRING_CALL(album,"player","album()")
 int KviJukInterface::sampleRate()
 {
 	int ret;
-	if(!intRetDCOPCall("player","sampleRate()",ret))return false;
+	if(!intRetVoidDCOPCall("player","sampleRate()",ret))return false;
 	return ret;
 }
 */
@@ -129,21 +129,21 @@ int KviJukInterface::sampleRate()
 int KviJukInterface::length()
 {
 	int ret;
-	if(!intRetDCOPCall("player","totalTime()",ret))return false;
+	if(!intRetVoidDCOPCall("player","totalTime()",ret))return false;
 	return ret * 1000;
 }
 
 int KviJukInterface::position()
 {
 	int ret;
-	if(!intRetDCOPCall("player","currentTime()",ret))return false;
+	if(!intRetVoidDCOPCall("player","currentTime()",ret))return false;
 	return ret * 1000;
 }
 
 KviMediaPlayerInterface::PlayerStatus KviJukInterface::status()
 {
 	int ret;
-	if(!intRetDCOPCall("player","status()",ret))return KviMediaPlayerInterface::Unknown;
+	if(!intRetVoidDCOPCall("player","status()",ret))return KviMediaPlayerInterface::Unknown;
 	switch(ret)
 	{
 		case 0:

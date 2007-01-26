@@ -26,29 +26,29 @@
 #include "kvi_qstring.h"
 
 #include <qwidget.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qlineedit.h>
 
 class KviScriptEditor;
 
-class KviRawListViewItem : public QListViewItem
+class KviRawListViewItem : public KviTalListViewItem
 {
 public:
 	int m_iIdx;
 	QString m_szName;
 public:
-	KviRawListViewItem(QListView * par,int idx);
+	KviRawListViewItem(KviTalListView * par,int idx);
 	~KviRawListViewItem() {};
 public:
 	virtual QString text(int col) const { return m_szName; };
 	virtual const QPixmap * pixmap(int col) const;
 };
 
-class KviRawHandlerListViewItem : public QListViewItem
+class KviRawHandlerListViewItem : public KviTalListViewItem
 {
 public:
-	KviRawHandlerListViewItem(QListViewItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: QListViewItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) {};
+	KviRawHandlerListViewItem(KviTalListViewItem * par,const QString & name,const QString & buffer,bool bEnabled)
+	: KviTalListViewItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) {};
 	~KviRawHandlerListViewItem() {};
 public:
 	QString m_szName;
@@ -68,7 +68,7 @@ public:
 	~KviRawEditor();
 public:
 	KviScriptEditor * m_pEditor;
-	QListView       * m_pListView;
+	KviTalListView       * m_pListView;
 	QLineEdit       * m_pNameEditor;
 	KviTalPopupMenu      * m_pContextPopup;
 	KviRawHandlerListViewItem * m_pLastEditedItem;
@@ -79,8 +79,8 @@ public:
 	void getUniqueHandlerName(KviRawListViewItem *it,QString &buffer);
 	void getExportEventBuffer(QString &szBuffer,KviRawHandlerListViewItem * it);
 protected slots:
-	void selectionChanged(QListViewItem *it);
-	void itemPressed(QListViewItem *it,const QPoint &pnt,int col);
+	void selectionChanged(KviTalListViewItem *it);
+	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentRaw();

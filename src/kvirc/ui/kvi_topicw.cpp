@@ -50,7 +50,7 @@ static int g_iInputFontCharWidth[256];
 #include <qfontmetrics.h>
 #include "kvi_tal_tooltip.h"
 #include <qlineedit.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qregexp.h>
 #include <qclipboard.h>
 #include "kvi_tal_popupmenu.h"
@@ -65,7 +65,7 @@ static int g_iInputFontCharWidth[256];
 
 extern QStringList  * g_pRecentTopicList;
 
-int KviListBoxTopicItem::width ( const QListBox * lb ) const
+int KviListBoxTopicItem::width ( const KviTalListBox * lb ) const
 {
 	QFontMetrics fm(lb->font());
 	return fm.width(KviMircCntrl::stripControlBytes(text()));
@@ -90,11 +90,15 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pInput = 0;
 	setBackgroundMode(QWidget::NoBackground);
 	reset();
-	m_pCompletionBox=new QListBox(this,"m_pCompletionBox",Qt::WType_Popup);
+#ifdef COMPILE_USE_QT4
+	m_pCompletionBox=new KviTalListBox(this,Qt::Popup);
+#else
+	m_pCompletionBox=new KviTalListBox(this,Qt::WType_Popup);
+#endif
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
-//	m_pCompletionBox->setVScrollBarMode( QListBox::AlwaysOff );
-//	m_pCompletionBox->setHScrollBarMode( QListBox::AlwaysOff );
+//	m_pCompletionBox->setVScrollBarMode( KviTalListBox::AlwaysOff );
+//	m_pCompletionBox->setHScrollBarMode( KviTalListBox::AlwaysOff );
 	m_pCompletionBox->setFrameStyle( QFrame::Box | QFrame::Plain );
 	m_pCompletionBox->setLineWidth( 1 );
 	connect(m_pCompletionBox,SIGNAL(selected(int)),this,SLOT(complete(int)));

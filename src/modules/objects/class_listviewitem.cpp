@@ -147,7 +147,7 @@ bool KviKvsObject_listviewitem::init(KviKvsRunTimeContext * pContext,KviKvsVaria
 		 m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviKvsObject_listviewitem *)parentObject())->m_pListViewItem);
 	} else {
 		if(parentObject()->inherits("KviKvsObject_listview"))
-			m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((QListView *)parentScriptWidget()));
+			m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviTalListView *)parentScriptWidget()));
 		else {
 			pContext->error(__tr2qs("The parent of the listviewitem must be either another listviewitem or a listview"));
 			return false;
@@ -163,13 +163,13 @@ void KviKvsObject_listviewitem::childDestroyed()
 	die();
 }
 
-KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,QListView * par)
-:QListViewItem(par), m_pMasterObject(ob)
+KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par)
+:KviTalListViewItem(par), m_pMasterObject(ob)
 {
 }
 
-KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,QListViewItem * par)
-:QListViewItem(par), m_pMasterObject(ob)
+KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par)
+:KviTalListViewItem(par), m_pMasterObject(ob)
 {
 }
 
@@ -180,13 +180,13 @@ KviKvsMdmStandardListViewItem::~KviKvsMdmStandardListViewItem()
 
 
 
-KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,QListView * par)
-:QCheckListItem(par,QString::null,QCheckListItem::CheckBox), m_pMasterObject(ob)
+KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par)
+:KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
 
-KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,QListViewItem * par)
-:QCheckListItem(par,QString::null,QCheckListItem::CheckBox), m_pMasterObject(ob)
+KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par)
+:KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
 
@@ -196,7 +196,7 @@ KviKvsMdmCheckListViewItem::~KviKvsMdmCheckListViewItem()
 }
 
 
-kvs_hobject_t KviKvsObject_listviewitem::itemToHandle(QListViewItem * it)
+kvs_hobject_t KviKvsObject_listviewitem::itemToHandle(KviTalListViewItem * it)
 {
 	if(!it)return (kvs_hobject_t)0;
 	KviKvsObject_listviewitem * pObject;
@@ -335,10 +335,10 @@ bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *
 	if(bCheckable)
 	{
 		if(m_pListViewItem->rtti() == 1)return true; // a QCheckListItem already
-		QListViewItem * pParent = m_pListViewItem->parent();
-		QListView * pLV = m_pListViewItem->listView();
+		KviTalListViewItem * pParent = m_pListViewItem->parent();
+		KviTalListView * pLV = (KviTalListView *)m_pListViewItem->listView();
 		// swap the items, so we don't die now
-		QListViewItem * pThis = m_pListViewItem;
+		KviTalListViewItem * pThis = m_pListViewItem;
 		m_pListViewItem = 0;
 		delete pThis;
 		if(pParent)
@@ -347,10 +347,10 @@ bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *
 			m_pListViewItem = new KviKvsMdmCheckListViewItem(this,pLV);
 	} else {
 		if(m_pListViewItem->rtti() != 1)return true; // not a QCheckListItem yet
-		QListViewItem * pParent = m_pListViewItem->parent();
-		QListView * pLV = m_pListViewItem->listView();
+		KviTalListViewItem * pParent = m_pListViewItem->parent();
+		KviTalListView * pLV = (KviTalListView *)m_pListViewItem->listView();
 		// swap the items, so we don't die now
-		QListViewItem * pThis = m_pListViewItem;
+		KviTalListViewItem * pThis = m_pListViewItem;
 		m_pListViewItem = 0;
 		delete pThis;
 		if(pParent)

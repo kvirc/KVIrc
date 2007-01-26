@@ -949,16 +949,20 @@ void KviIrcConnection::loginToIrcServer()
 		// disconnected :(
 		return;
 	}
+	
 	QString szGenderTag;
-	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty()){
+	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
+	{
 		szGenderTag.append(KVI_TEXT_COLOR);
-		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false))
+		{
 			szGenderTag.append("1");
-		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false))
+		{
 			szGenderTag.append("2");
 		}
 		szGenderTag.append(KVI_TEXT_RESET);
-		szReal.prepend(szGenderTag);
+		szReal.prepend(KviQString::toUtf8(szGenderTag));
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),

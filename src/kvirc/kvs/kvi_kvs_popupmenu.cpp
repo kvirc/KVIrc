@@ -324,7 +324,10 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	}
 	m_pLabel = new QLabel(szText,pMenu);
 	QObject::connect(m_pLabel,SIGNAL(destroyed()),m_pSignalRelay,SLOT(labelDestroyed()));
+#ifndef COMPILE_USE_QT4
+	// FIXME: QT4 Seems to not allow widgets as QMenu items
 	pMenu->insertItem(m_pLabel);
+#endif
 	m_pLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	if(pPix)m_pLabel->setPixmap(*pPix);
 }

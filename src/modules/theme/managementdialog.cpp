@@ -39,7 +39,7 @@
 
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qlineedit.h>
 #include <qtextedit.h>
 #include <qregexp.h>
@@ -78,8 +78,8 @@ extern QRect g_rectManagementDialogGeometry;
 
 
 
-KviThemeListBoxItem::KviThemeListBoxItem(QListBox * box,KviThemeInfo * inf)
-: QListBoxText(box)
+KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
+: KviTalListBoxText(box)
 {
 	m_pThemeInfo = inf;
 	QString t;
@@ -120,7 +120,7 @@ KviThemeListBoxItem::~KviThemeListBoxItem()
 
 void KviThemeListBoxItem::paint(QPainter * p)
 {
-	QListBoxText::paint(p);
+	KviTalListBoxText::paint(p);
 	p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))) );
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = p->window().width() - (afterIcon + LVI_BORDER);
@@ -128,7 +128,7 @@ void KviThemeListBoxItem::paint(QPainter * p)
 	m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
 }
 
-int KviThemeListBoxItem::height(const QListBox * lb) const 
+int KviThemeListBoxItem::height(const KviTalListBox * lb) const 
 {
 	int iHeight = m_pText->height() + (2 * LVI_BORDER);
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
@@ -197,13 +197,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	QWidget *w= new QWidget(hb);
 	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
-	m_pListBox = new QListBox(this);
+	m_pListBox = new KviTalListBox(this);
 	m_pListBox->setMinimumHeight(400);
 	m_pListBox->setMinimumWidth(400);
-	m_pListBox->setSelectionMode(QListBox::Extended);
-	connect(m_pListBox,SIGNAL(doubleClicked(QListBoxItem *)),this,SLOT(applyTheme(QListBoxItem *)));
-	connect(m_pListBox,SIGNAL(contextMenuRequested(QListBoxItem *,const QPoint &)),
-		this,SLOT(contextMenuRequested(QListBoxItem *,const QPoint &)));
+	m_pListBox->setSelectionMode(KviTalListBox::Extended);
+	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(applyTheme(KviTalListBoxItem *)));
+	connect(m_pListBox,SIGNAL(contextMenuRequested(KviTalListBoxItem *,const QPoint &)),
+		this,SLOT(contextMenuRequested(KviTalListBoxItem *,const QPoint &)));
 	connect(m_pListBox,SIGNAL(selectionChanged()),this,SLOT(enableDisableButtons()));
 	g->addMultiCellWidget(m_pListBox,1,1,0,1);
 
@@ -274,7 +274,7 @@ void KviThemeManagementDialog::packTheme()
 
 }
 
-void KviThemeManagementDialog::contextMenuRequested(QListBoxItem * it,const QPoint & pos)
+void KviThemeManagementDialog::contextMenuRequested(KviTalListBoxItem * it,const QPoint & pos)
 {
 	if(it)
 	{
@@ -286,7 +286,7 @@ void KviThemeManagementDialog::contextMenuRequested(QListBoxItem * it,const QPoi
 	}
 }
 
-void KviThemeManagementDialog::applyTheme ( QListBoxItem * it)
+void KviThemeManagementDialog::applyTheme ( KviTalListBoxItem * it)
 {
 	if(it)m_pListBox->setCurrentItem(it);
 	applyCurrentTheme();
@@ -407,7 +407,7 @@ void KviThemeManagementDialog::fillThemeBox()
 
 bool KviThemeManagementDialog::hasSelectedItems()
 {
-	for(QListBoxItem * it = m_pListBox->firstItem();it;it = it->next())
+	for(KviTalListBoxItem * it = m_pListBox->firstItem();it;it = it->next())
 	{
 		if(it->isSelected())return true;
 	}

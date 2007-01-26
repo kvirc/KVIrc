@@ -31,7 +31,7 @@
 #include "kvi_moduleextension.h"
 #include "kvi_sharedfiles.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qdialog.h>
 
 class QGridLayout; 
@@ -41,10 +41,10 @@ class QLineEdit;
 class QPushButton;
 class KviStyledCheckBox;
 
-class KviSharedFilesListViewItem : public QListViewItem
+class KviSharedFilesListViewItem : public KviTalListViewItem
 {
 public:
-	KviSharedFilesListViewItem(QListView * lv,KviSharedFile * f);
+	KviSharedFilesListViewItem(KviTalListView * lv,KviSharedFile * f);
 	~KviSharedFilesListViewItem();
 protected:
 	KviSharedFile * m_pSharedFilePointer; // THIS IS READ ONLY!
@@ -87,7 +87,7 @@ public:
 protected:
 	QSplitter           * m_pVertSplitter;
 
-	QListView           * m_pListView;
+	KviTalListView           * m_pListView;
 
 	QPushButton         * m_pRemoveButton;
 	QPushButton         * m_pEditButton;

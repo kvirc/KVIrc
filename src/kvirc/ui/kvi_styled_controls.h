@@ -30,6 +30,9 @@
 #include <qevent.h>
 #include <qtimer.h>
 #include "kvi_heapobject.h"
+
+class KviTalToolBar;
+
 #define KVI_STYLE_NUM_STEPS  20
 #define KVI_STYLE_COLOR_DIFF  60
 #define KVI_STYLE_TIMER_STEP 18
@@ -85,7 +88,7 @@ private:
 	bool bShowSubmenuIndicator;
 public:
 	KviStyledToolButton ( QWidget * parent, const char * name = 0 );
-	KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, QToolBar * parent, const char * name = 0 );
+	KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name = 0 );
 	~KviStyledToolButton();
 	
 	void setShowSubmenuIndicator(bool bShow);

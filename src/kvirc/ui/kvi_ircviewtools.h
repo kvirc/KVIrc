@@ -28,7 +28,7 @@
 
 #include "kvi_tal_tooltip.h"
 #include <qframe.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qstring.h>
 
 class QLabel;
@@ -59,7 +59,7 @@ class KviIrcViewToolWidget;
 class KviIrcMessageCheckListItem : public QCheckListItem
 {
 public:
-	KviIrcMessageCheckListItem(QListView * par,KviIrcViewToolWidget * w,int id);
+	KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id);
 	~KviIrcMessageCheckListItem();
 private:
 	int m_iId;
@@ -93,7 +93,7 @@ protected:
 
 	QLabel     * m_pFindResult;
 
-	QListView  * m_pFilterView;
+	KviTalListView  * m_pFilterView;
 
 	KviIrcMessageCheckListItem ** m_pFilterItems;
 

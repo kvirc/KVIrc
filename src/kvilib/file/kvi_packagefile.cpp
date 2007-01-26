@@ -46,16 +46,24 @@
 
 // Field               Type       Bytes           Description
 //-------------------------------------------------------------------------------
-    // PackageHeader:
+// Package:
+//   PackageHeader
+//   PackageInfo
+//   PackageData
+
+// PackageHeader:
 //   Magic             Bytes      4               'KVPF': Signature for the Kvirc Package File
 //   Version           uint32     4               0x00000001:  Version of this package file
 //   Flags             uint32     4               0x00000000:  Flags, in version 1 is reserved and must be zero
+// 
+
 // PackageInfo:
 //   InfoFieldCount    uint32     4               Number of package info fields
 //   InfoField         InfoField  Variable        A list of informational name-value pairs
 //   InfoField         InfoField  Variable        A list of informational name-value pairs
 //   InfoField         InfoField  Variable        A list of informational name-value pairs
 //   ....              ....       ....
+
 // PackageData:
 //   DataField         DataField  Variable        A list of data fields with format defined below
 //   DataField         DataField  Variable        A list of data fields with format defined below

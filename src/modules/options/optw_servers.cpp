@@ -270,8 +270,8 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 #endif
 	m_pNickServCheck->setChecked(bNickServEnabled);
 	
-	m_pNickServListView = new QListView(tab);
-	m_pNickServListView->setSelectionMode(QListView::Single);
+	m_pNickServListView = new KviTalListView(tab);
+	m_pNickServListView->setSelectionMode(KviTalListView::Single);
 	m_pNickServListView->setAllColumnsShowFocus(true);
 	m_pNickServListView->addColumn(__tr2qs_ctx("Nickname","options"));
 	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Mask","options"));
@@ -310,7 +310,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 		KviPtrList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			(void)new QListViewItem(m_pNickServListView,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
+			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
 		}
 	}
 	
@@ -348,7 +348,7 @@ KviNetworkDetailsWidget::~KviNetworkDetailsWidget()
 
 void KviNetworkDetailsWidget::editNickServRule()
 {
-	QListViewItem * it = m_pNickServListView->currentItem();
+	KviTalListViewItem * it = m_pNickServListView->currentItem();
 	if(!it)return;
 	KviNickServRule r(it->text(0),it->text(1),it->text(2),it->text(3));
 	KviNickServRuleEditor ed(this,false);
@@ -366,12 +366,12 @@ void KviNetworkDetailsWidget::addNickServRule()
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,false);
 	if(ed.editRule(&r))
-		(void)new QListViewItem(m_pNickServListView,r.registeredNick(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
+		(void)new KviTalListViewItem(m_pNickServListView,r.registeredNick(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
 }
 
 void KviNetworkDetailsWidget::delNickServRule()
 {
-	QListViewItem * it = m_pNickServListView->currentItem();
+	KviTalListViewItem * it = m_pNickServListView->currentItem();
 	if(!it)return;
 	delete it;
 	enableDisableNickServControls();
@@ -411,7 +411,7 @@ void KviNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 		{
 			KviNickServRuleSet * rs = KviNickServRuleSet::createInstance();
 			rs->setEnabled(m_pNickServCheck->isChecked());
-			QListViewItem * it = m_pNickServListView->firstChild();
+			KviTalListViewItem * it = m_pNickServListView->firstChild();
 			while(it)
 			{
 				rs->addRule(KviNickServRule::createInstance(it->text(0),it->text(1),it->text(2),it->text(3)));
@@ -973,8 +973,8 @@ void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 // kvi_app.cpp
 extern KVIRC_API KviIrcServerDataBase * g_pIrcServerDataBase;
 
-KviServerOptionsListViewItem::KviServerOptionsListViewItem(QListView *parent,const QPixmap &pm,const KviIrcNetwork *n)
-    : QListViewItem(parent)
+KviServerOptionsListViewItem::KviServerOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,const KviIrcNetwork *n)
+    : KviTalListViewItem(parent)
 {
 	setPixmap(0,pm);
 	m_pServerData = 0;
@@ -983,8 +983,8 @@ KviServerOptionsListViewItem::KviServerOptionsListViewItem(QListView *parent,con
 	setText(1,n->description());
 }
 
-KviServerOptionsListViewItem::KviServerOptionsListViewItem(QListViewItem *parent,const QPixmap &pm,const KviIrcServer *s)
-    : QListViewItem(parent)
+KviServerOptionsListViewItem::KviServerOptionsListViewItem(KviTalListViewItem *parent,const QPixmap &pm,const KviIrcServer *s)
+    : KviTalListViewItem(parent)
 {
 	setPixmap(0,pm);
 	m_pServerData = new KviIrcServer(*s);
@@ -1036,18 +1036,18 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pNetworkDetailsDialog = 0;
 	m_pImportFilter = 0;
 
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 	addWidgetToLayout(m_pListView,0,0,0,0);
 	m_pListView->addColumn(__tr2qs_ctx("Server","options"));
 	m_pListView->addColumn(__tr2qs_ctx("Description","options"));
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(QListView::Single);
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),
-		this,SLOT(listViewItemSelectionChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(listViewRightButtonPressed(QListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(QListViewItem*, const QPoint&, int )),
+	m_pListView->setSelectionMode(KviTalListView::Single);
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),
+		this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(listViewRightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem*, const QPoint&, int )),
 		this,SLOT(detailsClicked()));
 
 #ifdef COMPILE_INFO_TIPS
@@ -1232,12 +1232,12 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	kvi_u32_t uPort = port.toUInt(&bOk);
 	// we have the port too
 
-	QListViewItem * pFoundNet = 0;
-	QListViewItem * pFoundSrv = 0;
+	KviTalListViewItem * pFoundNet = 0;
+	KviTalListViewItem * pFoundSrv = 0;
 
-	for(QListViewItem * net = m_pListView->firstChild();net;net = net->nextSibling())
+	for(KviTalListViewItem * net = m_pListView->firstChild();net;net = net->nextSibling())
 	{
-		for(QListViewItem * srv = net->firstChild();srv;srv = srv->nextSibling())
+		for(KviTalListViewItem * srv = net->firstChild();srv;srv = srv->nextSibling())
 		{
 			KviStr tmp = ((KviServerOptionsListViewItem *)srv)->m_pServerData->hostName();
 			if(kvi_strEqualCI(tmp.ptr(),data.ptr()))
@@ -1311,7 +1311,7 @@ void KviServerOptionsWidget::fillServerList()
 	if(cur)m_pListView->ensureItemVisible(cur);
 }
 
-void KviServerOptionsWidget::listViewItemSelectionChanged(QListViewItem *it)
+void KviServerOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
 {
 	saveLastItem();
 	m_pLastEditedItem = (KviServerOptionsListViewItem *)it;
@@ -1421,7 +1421,7 @@ void KviServerOptionsWidget::commit()
 	KviOptionsWidget::commit();
 }
 
-void KviServerOptionsWidget::listViewRightButtonPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviServerOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	int id;
 	bool bServer = (it && ((KviServerOptionsListViewItem *)it)->m_pServerData);
@@ -1626,7 +1626,7 @@ void KviServerOptionsWidget::removeCurrent()
 {
 	if(m_pLastEditedItem)
 	{
-		QListViewItem * it = m_pLastEditedItem->itemAbove();
+		KviTalListViewItem * it = m_pLastEditedItem->itemAbove();
 		if(!it)it = m_pLastEditedItem->firstChild() ? m_pLastEditedItem->nextSibling() : m_pLastEditedItem->itemBelow();
 		delete m_pLastEditedItem;
 		m_pLastEditedItem = 0;

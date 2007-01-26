@@ -30,7 +30,7 @@
 
 #include <qdialog.h>
 #include <qsimplerichtext.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qcombobox.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
@@ -48,17 +48,17 @@ class KviDynamicToolTip;
 class KviStyledToolButton;
 
 
-class KviThemeListBoxItem : public QListBoxText
+class KviThemeListBoxItem : public KviTalListBoxText
 {
 public:
-	KviThemeListBoxItem(QListBox * box,KviThemeInfo * inf);
+	KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf);
 	virtual ~KviThemeListBoxItem();
 public:
 	KviThemeInfo * m_pThemeInfo;
 	QSimpleRichText * m_pText;
 public:
 	KviThemeInfo * themeInfo(){ return m_pThemeInfo; };
-	virtual int height ( const QListBox * lb ) const ;
+	virtual int height ( const KviTalListBox * lb ) const ;
 protected:
 	virtual void paint ( QPainter * painter );
 };
@@ -72,7 +72,7 @@ public:
 	virtual ~KviThemeManagementDialog();
 protected:
 	static KviThemeManagementDialog * m_pInstance;
-	QListBox            * m_pListBox;
+	KviTalListBox            * m_pListBox;
 	KviTalPopupMenu          * m_pContextPopup; 
 	KviStyledToolButton * m_pDeleteThemeButton;
 	KviStyledToolButton * m_pPackThemeButton;
@@ -92,10 +92,10 @@ protected slots:
 	void deleteTheme();
 	void closeClicked();
 	void packTheme();
-	void applyTheme(QListBoxItem *);
+	void applyTheme(KviTalListBoxItem *);
 	void applyCurrentTheme();
 	void enableDisableButtons();
-	void contextMenuRequested(QListBoxItem * item, const QPoint & pos);
+	void contextMenuRequested(KviTalListBoxItem * item, const QPoint & pos);
 	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 };
 

@@ -26,7 +26,7 @@
 //
 //=================================================================================
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qdragobject.h>
 #include "class_widget.h"
 #include "class_listviewitem.h"
@@ -41,7 +41,7 @@ public:
 
 public:
 	QWidget * widget() { return (QWidget *)object(); };
-	void fileDropped(QString &,QListViewItem *);
+	void fileDropped(QString &,KviTalListViewItem *);
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
@@ -73,20 +73,20 @@ protected:
 	bool function_setAcceptDrops(KviKvsObjectFunctionCall *c);
 
 protected slots:
-	void slotClicked(QListViewItem *);
-	void slotSelectionChanged(QListViewItem *);
+	void slotClicked(KviTalListViewItem *);
+	void slotSelectionChanged(KviTalListViewItem *);
 	void slotMultipleSelectionChanged();
-	void slotCurrentChanged(QListViewItem *);
-	void slotReturnPressed(QListViewItem *);
-	void slotSpacePressed(QListViewItem *);
-	void slotOnItem(QListViewItem *);
-	void slotItemExpanded(QListViewItem *);
-	void slotItemCollapsed(QListViewItem *);
-	void slotItemRenamed(QListViewItem *,int,const QString &);
-	void slotRightButtonClicked(QListViewItem * i,const QPoint &coor, int col);
+	void slotCurrentChanged(KviTalListViewItem *);
+	void slotReturnPressed(KviTalListViewItem *);
+	void slotSpacePressed(KviTalListViewItem *);
+	void slotOnItem(KviTalListViewItem *);
+	void slotItemExpanded(KviTalListViewItem *);
+	void slotItemCollapsed(KviTalListViewItem *);
+	void slotItemRenamed(KviTalListViewItem *,int,const QString &);
+	void slotRightButtonClicked(KviTalListViewItem * i,const QPoint &coor, int col);
 };
 
-class KviKvsMdmListView :  public QListView
+class KviKvsMdmListView :  public KviTalListView
 {
 	Q_OBJECT
 public:

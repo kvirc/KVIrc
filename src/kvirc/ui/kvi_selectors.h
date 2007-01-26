@@ -37,8 +37,8 @@
 #include <qpushbutton.h>
 #include <qcolor.h>
 #include <qfont.h>
-#include <qlistbox.h>
-#include <qlistview.h>
+#include "kvi_tal_listbox.h"
+#include "kvi_tal_listview.h"
 #include <qspinbox.h>
 #include <qstringlist.h>
 #include <qvalidator.h>
@@ -267,7 +267,7 @@ public:
 	~KviStringListSelector();
 private:
 	QLabel      * m_pLabel;
-	QListBox    * m_pListBox;
+	KviTalListBox    * m_pListBox;
 	QLineEdit   * m_pLineEdit;
 	QPushButton * m_pAddButton;
 	QPushButton * m_pRemoveButton;
@@ -326,12 +326,12 @@ public:
 	virtual void setEnabled(bool bEnabled);
 };
 
-class KVIRC_API KviChanListViewItem : public QListViewItem
+class KVIRC_API KviChanListViewItem : public KviTalListViewItem
 {
 private:
 	QString m_szPass;
 public:
-	KviChanListViewItem(QListView* pList,QString szChan,QString szPass);
+	KviChanListViewItem(KviTalListView* pList,QString szChan,QString szPass);
 	~KviChanListViewItem() {};
 	
 	const QString& pass() { return m_szPass; }
@@ -345,7 +345,7 @@ public:
 	~KviCahnnelListSelector();
 private:
 	QLabel       * m_pLabel;
-	QListView    * m_pListView;
+	KviTalListView    * m_pListView;
 	QLineEdit    * m_pChanLineEdit;
 	QLineEdit    * m_pPassLineEdit;
 	QPushButton  * m_pAddButton;

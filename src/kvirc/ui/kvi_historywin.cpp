@@ -38,7 +38,11 @@
 extern KviInputHistory * g_pInputHistory;
 
 KviHistoryWindow::KviHistoryWindow()
-:QListBox(0,"toplevel_history_window",Qt::WType_Popup)
+#ifdef COMPILE_USE_QT4
+: KviTalListBox(0,Qt::Popup)
+#else
+: KviTalListBox(0,Qt::WType_Popup)
+#endif
 {
 	m_pOwner = 0;
 	setHScrollBarMode(QScrollView::AlwaysOff);
@@ -76,7 +80,7 @@ void KviHistoryWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().y() < 0)goto hideme;
 	if(e->pos().y() > height())goto hideme;
 
-	QListBox::mousePressEvent(e);
+	KviTalListBox::mousePressEvent(e);
 	return;
 
 hideme:
@@ -126,7 +130,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
 		case Qt::Key_Return:
-			QListBox::keyPressEvent(e);
+			KviTalListBox::keyPressEvent(e);
 			return;
 		break;
 		case Qt::Key_Escape:

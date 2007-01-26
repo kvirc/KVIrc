@@ -31,8 +31,8 @@
 #include <qwidget.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
-#include <qlistview.h>
-#include <qlistbox.h>
+#include "kvi_tal_listview.h"
+#include "kvi_tal_listbox.h"
 #include "kvi_dict.h"
 #include <qtabdialog.h>
 #include <qtable.h>
@@ -79,17 +79,17 @@ protected slots:
 	void okClicked();
 };
 
-class KviRegisteredUsersDialogItemBase : public QListViewItem
+class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
 {
 public:
 	enum Types { User,Group };
 protected:
-	KviRegisteredUsersDialogItemBase(Types type,QListView * par)
-	:QListViewItem(par),m_iType(type)
+	KviRegisteredUsersDialogItemBase(Types type,KviTalListView * par)
+	:KviTalListViewItem(par),m_iType(type)
 	{
 	};
-	KviRegisteredUsersDialogItemBase(Types type,QListViewItem * par)
-	:QListViewItem(par),m_iType(type)
+	KviRegisteredUsersDialogItemBase(Types type,KviTalListViewItem * par)
+	:KviTalListViewItem(par),m_iType(type)
 	{
 	};
 	~KviRegisteredUsersDialogItemBase()
@@ -107,7 +107,7 @@ class KviRegisteredUsersGroupItem : public KviRegisteredUsersDialogItemBase
 protected:
 	KviRegisteredUserGroup * m_pGroup;
 public:
-	KviRegisteredUsersGroupItem(QListView * par,KviRegisteredUserGroup * g)
+	KviRegisteredUsersGroupItem(KviTalListView * par,KviRegisteredUserGroup * g)
 	:KviRegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
 	{
 		setText(0,m_pGroup->name());
@@ -123,7 +123,7 @@ class KviRegisteredUsersDialogItem : public KviRegisteredUsersDialogItemBase
 protected:
 	KviRegisteredUser * m_pUser;
 public:
-	KviRegisteredUsersDialogItem(QListViewItem * par,KviRegisteredUser * u);
+	KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u);
 
 public:
 	KviRegisteredUser * user(){ return m_pUser; };
@@ -145,7 +145,7 @@ protected:
 	QLineEdit          * m_pNameEdit;
 	QLineEdit          * m_pCommentEdit;
 
-	QListBox           * m_pMaskListBox;
+	KviTalListBox           * m_pMaskListBox;
 
 	QPushButton        * m_pDelMaskButton;
 	QPushButton        * m_pEditMaskButton;
@@ -181,7 +181,7 @@ protected slots:
 	void delMaskClicked();
 	void editMaskClicked();
 	void editAllPropertiesClicked();
-	void maskCurrentChanged(QListBoxItem *it);
+	void maskCurrentChanged(KviTalListBoxItem *it);
 };
 
 
@@ -192,7 +192,7 @@ public:
 	KviRegisteredUsersDialog(QWidget * par = 0);
 	~KviRegisteredUsersDialog();
 public:
-	QListView   * m_pListView;
+	KviTalListView   * m_pListView;
 	QPushButton * m_pAddButton;
 	QPushButton * m_pWizardAddButton;
 	QPushButton * m_pRemoveButton;
@@ -203,8 +203,8 @@ public:
 	
 	QIntDict<KviRegisteredUserGroup> m_TmpDict;
 protected slots:
-	void itemPressed(QListViewItem *it,const QPoint &pnt,int c);
-	void itemDoubleClicked(QListViewItem *it);
+	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c);
+	void itemDoubleClicked(KviTalListViewItem *it);
 protected:
 	void fillList();
 protected:
@@ -222,7 +222,7 @@ protected slots:
 	void exportClicked();
 	void addWizardClicked();
 	void addGroupClicked();
-	void listViewRightButtonClicked ( QListViewItem *, const QPoint &, int );
+	void listViewRightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
 	void moveToGroupMenuClicked(int);
 };
 

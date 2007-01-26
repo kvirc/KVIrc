@@ -75,8 +75,8 @@ KviGeneralOptionsFrontWidget::~KviGeneralOptionsFrontWidget()
 
 
 
-KviOptionsListViewItem::KviOptionsListViewItem(QListView *parent,KviOptionsWidgetInstanceEntry * e)
-:QListViewItem(parent,e->szName)
+KviOptionsListViewItem::KviOptionsListViewItem(KviTalListView *parent,KviOptionsWidgetInstanceEntry * e)
+:KviTalListViewItem(parent,e->szName)
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
@@ -84,8 +84,8 @@ KviOptionsListViewItem::KviOptionsListViewItem(QListView *parent,KviOptionsWidge
 	setPixmap(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
 }
 
-KviOptionsListViewItem::KviOptionsListViewItem(QListViewItem *parent,KviOptionsWidgetInstanceEntry * e)
-:QListViewItem(parent,e->szName)
+KviOptionsListViewItem::KviOptionsListViewItem(KviTalListViewItem *parent,KviOptionsWidgetInstanceEntry * e)
+:KviTalListViewItem(parent,e->szName)
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
@@ -105,9 +105,9 @@ void KviOptionsListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int c
 		tmp.setColor(QColorGroup::Base,Qt::red);
 		tmp.setColor(QColorGroup::Background,Qt::red);
 		tmp.setColor(QColorGroup::Text,Qt::yellow);
-		QListViewItem::paintCell(p,tmp,column,width,align);
+		KviTalListViewItem::paintCell(p,tmp,column,width,align);
 	} else {
-		QListViewItem::paintCell(p,cg,column,width,align);
+		KviTalListViewItem::paintCell(p,cg,column,width,align);
 	}
 }
 
@@ -189,12 +189,12 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	vbox->setMargin(0);
 
 	// Controlling list view
-	m_pListView = new QListView(vbox);
+	m_pListView = new KviTalListView(vbox);
 	m_pListView->addColumn("");
 	m_pListView->header()->hide();
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setSorting(-1);
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(listViewItemSelectionChanged(QListViewItem *)));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
 	vbox->setSpacing(2);
@@ -460,7 +460,7 @@ void KviOptionsDialog::searchClicked()
 		search(szTxt);
 }
 
-void KviOptionsDialog::fillListView(QListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
+void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
 {
 	if(!l)return;
 
@@ -516,12 +516,12 @@ void KviOptionsDialog::fillListView(QListViewItem * p,KviPtrList<KviOptionsWidge
 	}
 }
 
-void KviOptionsDialog::listViewItemSelectionChanged(QListViewItem *it)
+void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
 {
 	if(it)
 	{
 		QString str = it->text(0);
-		QListViewItem * par = it->parent();
+		KviTalListViewItem * par = it->parent();
 
 		while(par)
 		{

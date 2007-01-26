@@ -26,11 +26,11 @@
 #include "kvi_moduleextension.h"
 
 #include "kvi_tal_vbox.h"
+#include "kvi_tal_listview.h"
 #include <qtabwidget.h>
 
-class QListView;
+class KviTalListView;
 class QStringList;
-class QListViewItem;
 class KviLogViewWidget;
 
 class KviLogViewMDIWindow : public KviWindow , public KviModuleExtension
@@ -40,7 +40,7 @@ public:
 	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
 	~KviLogViewMDIWindow();
 protected:
-	QListView       * m_pListView;
+	KviTalListView       * m_pListView;
 	QStringList     * m_pFileNames;
 	QString           m_szLogDirectory;
 	QTabWidget    * m_pTabWidget;
@@ -57,8 +57,8 @@ protected:
 	virtual void die();
 	virtual QSize sizeHint() const;
 protected slots:
-	void rightButtonClicked ( QListViewItem *, const QPoint &, int );
-	void itemSelected(QListViewItem * it);
+	void rightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
+	void itemSelected(KviTalListViewItem * it);
 	void deleteCurrent();
 };
 

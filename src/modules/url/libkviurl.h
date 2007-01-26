@@ -23,13 +23,13 @@
 
 #include <qdialog.h>
 #include <qlayout.h>
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qstring.h>
 #include <qpushbutton.h>
 #include <qfile.h>
 #include <qtextstream.h>
 #include <qcheckbox.h>
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qmenubar.h>
 #include <qinputdialog.h>
 #include <qtoolbutton.h>
@@ -69,7 +69,7 @@ protected:
 	QPixmap *myIconPtr();
 	void resizeEvent(QResizeEvent *);
 public:
-	QListView *m_pUrlList;
+	KviTalListView *m_pUrlList;
 	void addUrl(QString url, QString window, QString count, QString timestamp);
 //	void saveProperties();
 protected slots:
@@ -81,8 +81,8 @@ protected slots:
 	void close_slot();
 	void remove();
 	void findtext();
-	void dblclk_url(QListViewItem *item);
-	void popup(QListViewItem *item, const QPoint &p, int col);
+	void dblclk_url(KviTalListViewItem *item);
+	void popup(KviTalListViewItem *item, const QPoint &p, int col);
 	void sayToWin(int);
 };
 
@@ -95,7 +95,7 @@ public:
 	void saveBans();
 private:
 	KviStyledCheckBox *m_pEnable;
-	QListBox *m_pBanList;
+	KviTalListBox *m_pBanList;
 	QPushButton *m_pAddBtn;
 	QPushButton *m_pRemoveBtn;
 protected slots:

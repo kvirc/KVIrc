@@ -38,15 +38,19 @@
 #include <ctype.h>
 
 KviTextIconWindow::KviTextIconWindow()
-:QIconView(0,"toplevel_texticon_window",Qt::WType_Popup)
+#ifdef COMPILE_USE_QT4
+: KviTalIconView(0,Qt::Popup)
+#else
+: KviTalIconView(0,Qt::WType_Popup)
+#endif
 {
 	setGridX ( 40 );
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
 	m_pOwner = 0;
 	fill();
 	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
-	connect(this,SIGNAL(doubleClicked( QIconViewItem * )),this,SLOT(itemSelected(QIconViewItem *)));
-	connect(this,SIGNAL(returnPressed ( QIconViewItem * ) ),this,SLOT(itemSelected(QIconViewItem *)));
+	connect(this,SIGNAL(doubleClicked( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
+	connect(this,SIGNAL(returnPressed ( KviTalIconViewItem * ) ),this,SLOT(itemSelected(KviTalIconViewItem *)));
 	m_bAltMode = false;
 	setWordWrapIconText(true);
 }
@@ -65,7 +69,7 @@ void KviTextIconWindow::fill()
 	while(KviTextIcon * i = it.current())
 	{
 		QPixmap *pix = i->pixmap();
-		if(pix)insertItem(new QIconViewItem(this,it.currentKey(),*pix));
+		if(pix)insertItem(new KviTalIconViewItem(this,it.currentKey(),*pix));
 		++it;
 	}
 	sort();
@@ -86,10 +90,10 @@ bool KviTextIconWindow::findTypedSeq()
 {
 	int cnt = count();
 	int max = 0;
-	QIconViewItem *mit = 0;
+	KviTalIconViewItem *mit = 0;
 	bool bFullMax = false;
-	QIconViewItem *item;
-	for ( item = firstItem(); item; item = item->nextItem() )
+	KviTalIconViewItem *item;
+	for ( item = (KviTalIconViewItem *)firstItem(); item; item = (KviTalIconViewItem *)item->nextItem() )
 	{
 		QString szIt = item->text();
 		int j;
@@ -126,7 +130,7 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
 		case Qt::Key_Return:
-			QIconView::keyPressEvent(e);
+			KviTalIconView::keyPressEvent(e);
 			return;
 		break;
 		case Qt::Key_Escape:
@@ -225,7 +229,7 @@ void KviTextIconWindow::doHide()
 	if(m_pOwner)m_pOwner->setFocus();
 }
 
-void KviTextIconWindow::itemSelected(QIconViewItem * item)
+void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
 {
 	if(item)
 	{
@@ -255,7 +259,7 @@ void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().y() < 0)goto hideme;
 	if(e->pos().y() > height())goto hideme;
 
-	QIconView::mousePressEvent(e);
+	KviTalIconView::mousePressEvent(e);
 	return;
 
 hideme:

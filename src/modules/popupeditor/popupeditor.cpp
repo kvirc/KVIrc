@@ -55,15 +55,15 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 
 //KviPopupEntryItem
-KviPopupListViewItem::KviPopupListViewItem(QListView * pListView,KviPopupListViewItem * after,Type t)
-: QListViewItem(pListView,after)
+KviPopupListViewItem::KviPopupListViewItem(KviTalListView * pListView,KviPopupListViewItem * after,Type t)
+: KviTalListViewItem(pListView,after)
 {
 	m_type = t;
 	init();
 }
 
 KviPopupListViewItem::KviPopupListViewItem(KviPopupListViewItem * parent,KviPopupListViewItem * after,Type t)
-: QListViewItem(parent,after)
+: KviTalListViewItem(parent,after)
 {
 	m_type = t;
 	init();
@@ -205,7 +205,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 
 	QSplitter * spl = new QSplitter(QSplitter::Vertical,this);
 
-	m_pListView = new QListView(spl);
+	m_pListView = new KviTalListView(spl);
 	m_pListView->addColumn(__tr2qs("Item"));
 	m_pListView->addColumn(__tr2qs("Type"));
 	m_pListView->setMultiSelection(false);
@@ -215,9 +215,9 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pListView->setSorting(-1);
 
 
-	connect(m_pListView,SIGNAL(selectionChanged(QListViewItem *)),this,SLOT(selectionChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(selectionChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 
 	m_pEditor = KviScriptEditor::createInstance(spl);
 
@@ -366,7 +366,7 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 }
 
 
-void KviSinglePopupEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviSinglePopupEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	m_pContextPopup->clear();
 
@@ -799,7 +799,7 @@ KviKvsPopupMenu * KviSinglePopupEditor::getMenu()
 	return p;
 }
 
-void KviSinglePopupEditor::selectionChanged(QListViewItem * it)
+void KviSinglePopupEditor::selectionChanged(KviTalListViewItem * it)
 {
 	saveLastSelectedItem();
 
@@ -1000,8 +1000,8 @@ void KviSinglePopupEditor::edit(KviMenuListViewItem * it)
 
 
 
-KviMenuListViewItem::KviMenuListViewItem(QListView * par,KviKvsPopupMenu * popup)
-: QListViewItem(par)
+KviMenuListViewItem::KviMenuListViewItem(KviTalListView * par,KviKvsPopupMenu * popup)
+: KviTalListViewItem(par)
 {
 	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)));
 	setText(0,popup->name());
@@ -1030,9 +1030,9 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	
 	KviTalVBox * box = new KviTalVBox(spl);
 
-	m_pListView = new QListView(box);
+	m_pListView = new KviTalListView(box);
 	m_pListView->addColumn(__tr2qs("Popup"));
-	m_pListView->setSelectionMode(QListView::Extended);
+	m_pListView->setSelectionMode(KviTalListView::Extended);
 	m_pListView->setShowSortIndicator(true);
 
 	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),box);
@@ -1075,13 +1075,13 @@ void KviPopupEditor::oneTimeSetup()
 		++it;
 	}
 
-	connect(m_pListView,SIGNAL(currentChanged(QListViewItem *)),this,SLOT(currentItemChanged(QListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(QListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
+		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 
 }
 
-void KviPopupEditor::itemPressed(QListViewItem *it,const QPoint &pnt,int col)
+void KviPopupEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
 	__range_valid(m_bOneTimeSetupDone);
 	m_pContextPopup->clear();
@@ -1154,7 +1154,7 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 	QString out;
 
 	int count=0;
-	QListViewItemIterator itv( m_pListView );
+	KviTalListViewItemIterator itv( m_pListView );
 	while( itv.current() )
 	{
 		if ( (itv.current()->isSelected()) || (bSelectedOnly == true) )
@@ -1221,7 +1221,7 @@ void KviPopupEditor::saveLastEditedItem()
 	m_pLastEditedItem->setText(0,m->popupName());
 }
 
-void KviPopupEditor::currentItemChanged(QListViewItem *it)
+void KviPopupEditor::currentItemChanged(KviTalListViewItem *it)
 {
 	saveLastEditedItem();
 

@@ -466,10 +466,13 @@ void KviIrcContextDisplayAction::setup()
 
 bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *p)
 {
+	// QT4SUX: Widgets can be no longer added to popup menus.. what about labels ?
+#ifndef COMPILE_USE_QT4
 	if(!setupDone())setup();
 	KviIrcContextDisplay * w = new KviIrcContextDisplay(p,"kvirc.irccontextdisplay");
 	registerWidget(w);
 	p->insertItem(w);
+#endif
 	return true;
 }
 

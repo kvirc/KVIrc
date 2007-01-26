@@ -806,7 +806,13 @@ KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION("MeChanUnOwner",__tr_no_lookup("Own chan owner status unset"),KVI_SMALLICON_MECHANUNOWNER,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("ServerError",__tr_no_lookup("Server error"),KVI_SMALLICON_SERVERERROR,KVI_RED,KVI_TRANSPARENT,KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("Help",__tr_no_lookup("Help"),KVI_SMALLICON_HELP,KVI_DARKGREEN,KVI_TRANSPARENT,KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text Encoding Server message"),KVI_SMALLICON_TEXTENCODING,KVI_MSGTYPE_LEVEL_1)
+	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text Encoding Server message"),KVI_SMALLICON_TEXTENCODING,KVI_MSGTYPE_LEVEL_1),
+	// TODO: add icon and check what level means
+	// Pragma: the message level is a warning level that is rendered in the taskbar
+	//         messages with higher level are rendered with more visible color (i.e. red)
+	//         messages with very high level might flash the tray and end up in the notifier
+	//         level 1 or 2 for standard torrent messages is ok
+	MSGTYPE_OPTION("BitTorrent",__tr_no_lookup("BitTorrent message"),KVI_SMALLICON_MULTIMEDIA,KVI_MSGTYPE_LEVEL_2)
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =

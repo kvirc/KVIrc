@@ -37,16 +37,16 @@ class QPixmap;
 class QSimpleRichText;
 class KviAction;
 
-class KVIRC_API KviActionDrawerPageListViewItem : public QListViewItem
+class KVIRC_API KviActionDrawerPageListViewItem : public KviTalListViewItem
 {
 public:
-	KviActionDrawerPageListViewItem(QListView * v,KviAction * a);
+	KviActionDrawerPageListViewItem(KviTalListView * v,KviAction * a);
 	~KviActionDrawerPageListViewItem();
 protected:
 	QString m_szName;
 	QSimpleRichText * m_pText;
 	QPixmap * m_pIcon;
-	QListView * m_pListView;
+	KviTalListView * m_pListView;
 	QString m_szKey;
 public:
 	QPixmap * icon(){ return m_pIcon; };

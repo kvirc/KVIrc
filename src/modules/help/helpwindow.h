@@ -26,7 +26,7 @@
 #include "kvi_string.h"
 #include "kvi_tal_vbox.h"
 #include <qtabwidget.h> 
-#include <qlistbox.h>
+#include "kvi_tal_listbox.h"
 #include <qlineedit.h>
 #include <qprogressdialog.h>
 
@@ -46,11 +46,11 @@ protected:
 	KviTalVBox         * m_pIndexTab;
 	KviTalVBox         * m_pSearchTab;
 	
-	QListBox     * m_pIndexListBox;
+	KviTalListBox     * m_pIndexListBox;
 	QLineEdit    * m_pIndexSearch;
 	QStringList    m_foundDocs;
 	QStringList    m_terms;
-	QListBox     * m_pResultBox;
+	KviTalListBox     * m_pResultBox;
 	QLineEdit    * m_pTermsEdit;
 public:
 	KviHelpWidget * helpWidget(){ return m_pHelpWidget; };

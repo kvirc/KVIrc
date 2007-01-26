@@ -38,10 +38,15 @@
 #include <qlayout.h>
 #include <qlabel.h>
 
-#include <qdragobject.h>
+#ifndef COMPILE_USE_QT4
+	// In Qt.4 we need to use QMimeData ?
+	#include <qdragobject.h>
+#endif
 #include <qcursor.h>
 
-
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
 
 // kvi_app.cpp
 extern QPixmap * g_pUserChanStatePixmap;
@@ -346,7 +351,11 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 };
 
 KviIconWidget::KviIconWidget()
+#ifdef COMPILE_USE_QT4
+: QWidget(0,"global_icon_widget" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize*/)
+#else
 : QWidget(0,"global_icon_widget",WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize)
+#endif
 {
 	init();
 }
@@ -415,11 +424,14 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 				parentWidget()->close();
 				return true;
 			} else {
-				if(QPixmap * pix = ((QLabel *)o)->pixmap())
+				if(const QPixmap * pix = ((QLabel *)o)->pixmap())
 				{
+// FIXME: In Qt 4.x this stuff needs to be ported to a different api.. which one ?
+#ifndef COMPILE_USE_QT4
 					QDragObject * drobj = new QTextDrag(o->name(),this);
 					drobj->setPixmap(*pix,((QLabel *)o)->mapFromGlobal(QCursor::pos()));
 					drobj->dragCopy();
+#endif
 					return true;
 				}
 			}

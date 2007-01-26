@@ -393,7 +393,7 @@ KviStringListSelector::KviStringListSelector(QWidget * par,const QString & txt,Q
 : KviTalVBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
-	m_pListBox = new QListBox(this);
+	m_pListBox = new KviTalListBox(this);
 	m_pLineEdit = new QLineEdit(this);
 	connect(m_pLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
@@ -404,7 +404,7 @@ KviStringListSelector::KviStringListSelector(QWidget * par,const QString & txt,Q
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pOption = pOption;
 	m_pListBox->insertStringList(*pOption);
-	m_pListBox->setSelectionMode(QListBox::Extended);
+	m_pListBox->setSelectionMode(KviTalListBox::Extended);
 	connect(m_pListBox,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
 	setSpacing(4);
 	setStretchFactor(m_pListBox,1);
@@ -719,8 +719,8 @@ void KviSoundSelector::setEnabled(bool bEnabled)
 	m_pPlayButton->setEnabled(bEnabled);
 }
 
-KviChanListViewItem::KviChanListViewItem(QListView* pList,QString szChan,QString szPass)
-:QListViewItem(pList,szChan)
+KviChanListViewItem::KviChanListViewItem(KviTalListView* pList,QString szChan,QString szPass)
+:KviTalListViewItem(pList,szChan)
 {
 	m_szPass=szPass;
 	QString mask;
@@ -732,7 +732,7 @@ KviCahnnelListSelector::KviCahnnelListSelector(QWidget * par,const QString & txt
 : KviTalVBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
-	m_pListView = new QListView(this);
+	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs("Channel name"));
 	m_pListView->addColumn(__tr2qs("Channel password"));
 	
@@ -759,7 +759,7 @@ KviCahnnelListSelector::KviCahnnelListSelector(QWidget * par,const QString & txt
 		new KviChanListViewItem(m_pListView,(*it).section(':',0,0),(*it).section(':',1));
 	}
 
-	m_pListView->setSelectionMode(QListView::Extended);
+	m_pListView->setSelectionMode(KviTalListView::Extended);
 	m_pListView->setAllColumnsShowFocus(TRUE);
 	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
 	setSpacing(4);
@@ -775,7 +775,7 @@ void KviCahnnelListSelector::commit()
 {
 	m_pOption->clear();
 	register KviChanListViewItem* pItem;
-	QListViewItemIterator it( m_pListView);
+	KviTalListViewItemIterator it( m_pListView);
 	while ( it.current() ) {
 		pItem = (KviChanListViewItem*)( it.current() );
 		m_pOption->append(pItem->text(0)+":"+pItem->pass());
@@ -814,10 +814,10 @@ void KviCahnnelListSelector::addClicked()
 
 void KviCahnnelListSelector::removeClicked()
 {
-	QPtrList<QListViewItem> lst;
-	QListViewItemIterator it( m_pListView, QListViewItemIterator::Selected );
+	KviPtrList<KviTalListViewItem> lst;
+	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
 	while ( it.current() ) {
-		lst.append( it.current() );
+		lst.append((KviTalListViewItem *)it.current() );
 		++it;
 	}
 	lst.setAutoDelete(TRUE);

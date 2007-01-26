@@ -326,16 +326,15 @@ void KviInputEditor::drawContents(QPainter *p)
 		pa.drawTiledPixmap(0,0,widgetWidth,widgetHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
 	} else {
 #endif
-		pa.fillRect(0,0,widgetWidth,widgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		QPixmap *pix=KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
+		
+		if(pix)
+			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintInputPixmapAlign)),QRect(0,0,widgetWidth,widgetHeight),widgetWidth,widgetHeight);
+		else
+			pa.fillRect(0,0,widgetWidth,widgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-	QPixmap *pix=KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
-	
-	if(pix)
-	{
-		KviPixmapUtils::drawPixmapWithPainter(&pa,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintInputPixmapAlign)),QRect(0,0,widgetWidth,widgetHeight),widgetWidth,widgetHeight);
-	} 
 
 	
 	

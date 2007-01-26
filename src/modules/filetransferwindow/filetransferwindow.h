@@ -33,7 +33,7 @@
 #include "kvi_filetransfer.h"
 #include "kvi_dynamictooltip.h"
 
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qtimer.h>
@@ -41,10 +41,10 @@
 
 
 
-class KviFileTransferItem : public QListViewItem
+class KviFileTransferItem : public KviTalListViewItem
 {
 public:
-	KviFileTransferItem(QListView * v,KviFileTransfer * t);
+	KviFileTransferItem(KviTalListView * v,KviFileTransfer * t);
 	~KviFileTransferItem();
 protected:
 	KviFileTransfer * m_pTransfer;
@@ -65,7 +65,7 @@ public:
 	~KviFileTransferWindow();
 protected:
 	QSplitter           * m_pVertSplitter;
-	QListView           * m_pListView;
+	KviTalListView           * m_pListView;
 	KviTalPopupMenu          * m_pContextPopup;
 	KviTalPopupMenu          * m_pLocalFilePopup;
 	KviTalPopupMenu          * m_pOpenFilePopup;
@@ -92,8 +92,8 @@ public:
 protected slots:
 	void transferRegistered(KviFileTransfer *t);
 	void transferUnregistering(KviFileTransfer *t);
-	void rightButtonPressed(QListViewItem *it,const QPoint &pnt,int col);
-	void doubleClicked(QListViewItem *it,const QPoint &pnt,int col);
+	void rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void doubleClicked(KviTalListViewItem *it,const QPoint &pnt,int col);
 	void heartbeat();
 	void clearTerminated();
 	void clearAll();

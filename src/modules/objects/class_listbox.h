@@ -26,8 +26,8 @@
 
 #include "class_widget.h"
 
-class QListBox;
-class QListBoxItem;
+class KviTalListBox;
+class KviTalListBoxItem;
 
 #include "object_macros.h"
 
@@ -61,8 +61,8 @@ protected:
 	bool functionitemRect(KviKvsObjectFunctionCall *c);
 protected slots:
 	void selectionChanged();
-	void currentItemChanged(QListBoxItem *);
-	void onItem(QListBoxItem *);
+	void currentItemChanged(KviTalListBoxItem *);
+	void onItem(KviTalListBoxItem *);
 };
 
 

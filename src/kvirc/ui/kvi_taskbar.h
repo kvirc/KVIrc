@@ -31,7 +31,7 @@
 #include "kvi_list.h"
 #include <qframe.h>
 #include "kvi_tal_tooltip.h"
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qpushbutton.h>
 
 
@@ -169,19 +169,19 @@ public:
 	virtual void updateActivityMeter();
 	virtual void applyOptions();
 protected slots:
-	void orientationChangedSlot(Orientation o);
+	void orientationChangedSlot(Qt::Orientation o);
 };
 
 class KviTreeTaskBar;
 class KviTreeTaskBarItemInternal;
 
-class KVIRC_API KviTreeTaskBarItem : public QListViewItem , public KviTaskBarItem
+class KVIRC_API KviTreeTaskBarItem : public KviTalListViewItem , public KviTaskBarItem
 {
 	friend class KviTreeTaskBar;
 	friend class KviTreeTaskBarListView;
 	friend class KviTreeTaskBarItemInternal;
 public:
-	KviTreeTaskBarItem(QListView * par,KviWindow * wnd);
+	KviTreeTaskBarItem(KviTalListView * par,KviWindow * wnd);
 	KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd);
 	~KviTreeTaskBarItem();
 protected:
@@ -195,7 +195,11 @@ protected:
 public:
 	virtual QString key(int column,bool) const;
 	virtual void paintCell(QPainter *p,const QColorGroup &cg,int column,int width,int alignment);
+#ifdef COMPILE_USE_QT4
+	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h);
+#else
 	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h,GUIStyle s);
+#endif
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
@@ -222,7 +226,7 @@ public slots:
 	void timerShot() { m_pItem->timerShot();};	
 };
 
-class KVIRC_API KviTreeTaskBarListView : public QListView
+class KVIRC_API KviTreeTaskBarListView : public KviTalListView
 {
 	friend class KviTreeTaskBarItem;
 	Q_OBJECT
@@ -237,8 +241,8 @@ protected:
 	virtual void contentsMouseMoveEvent ( QMouseEvent * e );
 	virtual void leaveEvent(QEvent *);
 signals:
-	void leftMousePress(QListViewItem * it);
-	void rightMousePress(QListViewItem * it);
+	void leftMousePress(KviTalListViewItem * it);
+	void rightMousePress(KviTalListViewItem * it);
 public slots:
 	void sort();
 	void reverseSort();

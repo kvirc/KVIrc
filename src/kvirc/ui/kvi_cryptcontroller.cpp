@@ -47,8 +47,8 @@
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
 
-	KviEngineListBoxItem::KviEngineListBoxItem(QListBox * lb,KviCryptEngineDescription * d,const char * modName)
-	: QListBoxText(lb,d->szName)
+	KviEngineListBoxItem::KviEngineListBoxItem(KviTalListBox * lb,KviCryptEngineDescription * d,const char * modName)
+	: KviTalListBoxText(lb,d->szName)
 	{
 		m_szName = d->szName;
 		m_szAuthor = d->szAuthor;
@@ -96,8 +96,8 @@
 		g->addMultiCellWidget(m_pEnableCheck,2,2,0,3);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
-		m_pListBox = new QListBox(this);
-		connect(m_pListBox,SIGNAL(highlighted(QListBoxItem *)),this,SLOT(engineHighlighted(QListBoxItem *)));
+		m_pListBox = new KviTalListBox(this);
+		connect(m_pListBox,SIGNAL(highlighted(KviTalListBoxItem *)),this,SLOT(engineHighlighted(KviTalListBoxItem *)));
 		g->addMultiCellWidget(m_pListBox,3,8,0,0);
 
 		m_pDescriptionLabel = new QLabel(this);
@@ -147,7 +147,7 @@
 
 		if(cur)
 		{
-			QListBoxItem * it = m_pListBox->findItem(cur->szEngineName.ptr());
+			KviTalListBoxItem * it = (KviTalListBoxItem *)m_pListBox->findItem(cur->szEngineName.ptr());
 			if(it)
 			{
 				m_pEnableCheck->setChecked(true);
@@ -191,7 +191,7 @@
 		noEnginesAvailable();
 	}
 
-	void KviCryptController::engineHighlighted(QListBoxItem *it)
+	void KviCryptController::engineHighlighted(KviTalListBoxItem *it)
 	{
 		if(it)
 		{

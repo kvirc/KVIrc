@@ -29,9 +29,10 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	#include "mp_dcopinterface.h"
+	#include "kvi_dcophelper.h"
+	#include "mp_interface.h"
 	
-	class KviJukInterface : public KviMediaPlayerDCOPInterface
+	class KviJukInterface : public KviMediaPlayerInterface, private KviDCOPHelper
 	{
 	public:
 		KviJukInterface();

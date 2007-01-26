@@ -24,16 +24,16 @@
 //
 
 #include "kvi_optionswidget.h"
-#include <qlistview.h>
+#include "kvi_tal_listview.h"
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
 #include "kvi_mediatype.h"
 
-class KviMediaTypeListViewItem : public QListViewItem
+class KviMediaTypeListViewItem : public KviTalListViewItem
 {
 public:
-	KviMediaTypeListViewItem(QListView * w,KviMediaType * t);
+	KviMediaTypeListViewItem(KviTalListView * w,KviMediaType * t);
 	~KviMediaTypeListViewItem();
 private:
 	KviMediaType m_data;
@@ -56,7 +56,7 @@ public:
 	KviMediaTypesOptionsWidget(QWidget * parent);
 	~KviMediaTypesOptionsWidget();
 private:
-	QListView   * m_pListView;
+	KviTalListView   * m_pListView;
 	QLineEdit   * m_pDescription;
 	QLineEdit   * m_pIanaType;
 	QLineEdit   * m_pFileMask;
@@ -73,7 +73,7 @@ private:
 	void enableOrDisable();
 	void setLineEdits();
 private slots:
-	void currentItemChanged(QListViewItem *it);
+	void currentItemChanged(KviTalListViewItem *it);
 	void newMediaType();
 	void delMediaType();
 public:

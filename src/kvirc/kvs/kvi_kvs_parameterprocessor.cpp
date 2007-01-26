@@ -77,7 +77,7 @@ namespace KviKvsParameterProcessor
 			break;
 			case KVS_PT_CSTRING:
 			case KVS_PT_NONEMPTYCSTRING:
-				*((QCString *)(pFmtArray->pContainer)) = 0;
+				*((KviQCString *)(pFmtArray->pContainer)) = 0;
 			break;
 			case KVS_PT_STRINGLIST:
 				((QStringList *)(pFmtArray->pContainer))->clear();
@@ -246,14 +246,14 @@ namespace KviKvsParameterProcessor
 						v = pVariantList->next();
 						while(v)
 						{
-							*((QCString *)(pFmtArray->pContainer)) += ' ';
+							*((KviQCString *)(pFmtArray->pContainer)) += ' ';
 							v->appendAsString(tmp);
 							v = pVariantList->next();
 						}
-						*((QCString *)(pFmtArray->pContainer)) = tmp.utf8();
+						*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
 						return true;
 					}
-					*((QCString *)(pFmtArray->pContainer)) = tmp.utf8();
+					*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
 				}
 				break;
 				case KVS_PT_NONEMPTYCSTRING:
@@ -266,15 +266,15 @@ namespace KviKvsParameterProcessor
 						v = pVariantList->next();
 						while(v)
 						{
-							*((QCString *)(pFmtArray->pContainer)) += ' ';
+							*((KviQCString *)(pFmtArray->pContainer)) += ' ';
 							v->appendAsString(tmp);
 							v = pVariantList->next();
 						}
-						*((QCString *)(pFmtArray->pContainer)) = tmp.utf8();
+						*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
 						bDoReturn = true;
 					}
-					*((QCString *)(pFmtArray->pContainer)) = tmp.utf8();
-					if(((QCString *)(pFmtArray->pContainer))->isEmpty())
+					*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
+					if(((KviQCString *)(pFmtArray->pContainer))->isEmpty())
 					{
 						QString szError;
 						KviQString::sprintf(szError,__tr2qs("Invalid data type for parameter \"%s\""),pFmtArray->szName);

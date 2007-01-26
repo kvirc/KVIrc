@@ -36,6 +36,12 @@
 #define KVI_THEME_MEDIUM_SCREENSHOT_NAME "screenshot_medium.png"
 #define KVI_THEME_LARGE_SCREENSHOT_NAME "screenshot.png"
 
+#ifdef COMPILE_USE_QT4
+	#define QIMAGE_SCALE_MIN Qt::KeepAspectRatio
+#else
+	#define QIMAGE_SCALE_MIN QImage::ScaleMin
+#endif
+
 KviThemeInfo::KviThemeInfo()
 : KviHeapObject()
 {
@@ -169,7 +175,7 @@ const QPixmap & KviThemeInfo::smallScreenshot()
 		if(pix.width() > 300 || pix.height() > 225)
 		{
 			QImage sbri = pix.convertToImage();
-			pix.convertFromImage(sbri.smoothScale(300,225,QImage::ScaleMin));
+			pix.convertFromImage(sbri.smoothScale(300,225,QIMAGE_SCALE_MIN));
 		}
 
 		pix.save(szFileName,"PNG");
@@ -203,7 +209,7 @@ const QPixmap & KviThemeInfo::mediumScreenshot()
 		if(pix.width() > 600 || pix.height() > 450)
 		{
 			QImage sbri = pix.convertToImage();
-			pix.convertFromImage(sbri.smoothScale(600,450,QImage::ScaleMin));
+			pix.convertFromImage(sbri.smoothScale(600,450,QIMAGE_SCALE_MIN));
 		}
 
 		pix.save(szFileName,"PNG");
@@ -261,7 +267,7 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 600 || pix.height() > 450)
-			out.convertFromImage(pix.smoothScale(600,450,QImage::ScaleMin));
+			out.convertFromImage(pix.smoothScale(600,450,QIMAGE_SCALE_MIN));
 		else
 			out.convertFromImage(pix);
 
@@ -275,7 +281,7 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 300 || pix.height() > 225)
-			out.convertFromImage(pix.smoothScale(300,225,QImage::ScaleMin));
+			out.convertFromImage(pix.smoothScale(300,225,QIMAGE_SCALE_MIN));
 		else
 			out.convertFromImage(pix);
 

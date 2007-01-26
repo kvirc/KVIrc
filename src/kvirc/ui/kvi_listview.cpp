@@ -27,15 +27,13 @@
 
 #include "kvi_listview.h"
 
-
-#include <qlistview.h>
 #include <qpainter.h>
 #include <qpixmap.h>
 
 #include "kvi_doublebuffer.h"
 
-KviListView::KviListView( QWidget * parent, const char * name, WFlags f)
-:QListView(parent,name,f)
+KviListView::KviListView( QWidget * parent, const char * name)
+:KviTalListView(parent)
 {
 	m_pBackgroundOverlayPixmap=0;
 	m_iBackgroundOverlayAlignment=Qt::AlignAuto;
@@ -62,7 +60,7 @@ void KviListView::drawContentsOffset(QPainter * p,int ox,int oy,int cx,int cy,in
 {
 	if(!m_pBackgroundOverlayPixmap)
 	{
-		QListView::drawContentsOffset(p,ox,oy,cx,cy,cw,ch);
+		KviTalListView::drawContentsOffset(p,ox,oy,cx,cy,cw,ch);
 		return;
 	}
 
@@ -80,7 +78,7 @@ void KviListView::drawContentsOffset(QPainter * p,int ox,int oy,int cx,int cy,in
 
 	pa.fillRect(QRect(xx,yy,cw,ch),viewport()->backgroundColor());
 
-	//QListView::paintEmptyArea(&pa,);
+	//KviTalListView::paintEmptyArea(&pa,);
 
 	// compute the pixmap position
 	int x,y;
@@ -122,12 +120,12 @@ void KviListView::drawContentsOffset(QPainter * p,int ox,int oy,int cx,int cy,in
 	// widget we screw it even more just because our paintEmptyArea()
 	// does nothing and we do double buffering ourselves.
 	
-	QListView::drawContentsOffset(&pa,ox,oy,cx,cy,cw,ch);
+	KviTalListView::drawContentsOffset(&pa,ox,oy,cx,cy,cw,ch);
 
 	p->drawPixmap(xx,yy,*pMemPixmap,xx,yy,cw,ch);
 
 	//p->drawPixmap(cx-ox,cy-oy,*pMemPixmap,0,0,cw,ch);
-	//QListView::drawContentsOffset(p,ox,oy,cx,cy,cw,ch);
+	//KviTalListView::drawContentsOffset(p,ox,oy,cx,cy,cw,ch);
 }
 
 
@@ -135,7 +133,7 @@ void KviListView::paintEmptyArea(QPainter * p,const QRect & rect)
 {
 	if(!m_pBackgroundOverlayPixmap)
 	{
-		QListView::paintEmptyArea(p,rect);
+		KviTalListView::paintEmptyArea(p,rect);
 		return;
 	}
 
@@ -150,7 +148,7 @@ void KviListView::paintEmptyArea(QPainter * p,const QRect & rect)
 
 	pa.fillRect(rect,viewport()->backgroundColor());
 
-	QListView::paintEmptyArea(&pa,rect);
+	KviTalListView::paintEmptyArea(&pa,rect);
 	
 	QPoint realTopLeft = p->xForm(rect.topLeft());
 
@@ -186,7 +184,7 @@ void KviListView::paintEmptyArea(QPainter * p,const QRect & rect)
 
 void KviListView::resizeEvent(QResizeEvent * e)
 {
-	QListView::resizeEvent(e);
+	KviTalListView::resizeEvent(e);
 	if(m_pBackgroundOverlayPixmap)
 	repaintContents(); // force a full repaint (otherwise qt does not honor static background here)
 }
@@ -195,14 +193,14 @@ void KviListView::resizeEvent(QResizeEvent * e)
 
 void KviListView::focusInEvent(QFocusEvent * e)
 {
-	QListView::focusInEvent(e);
+	KviTalListView::focusInEvent(e);
 	if(m_pBackgroundOverlayPixmap)
 		repaintContents(); 
 }
 
 void KviListView::focusOutEvent(QFocusEvent * e)
 {
-	QListView::focusOutEvent(e);
+	KviTalListView::focusOutEvent(e);
 	if(m_pBackgroundOverlayPixmap)
 		repaintContents(); 
 }

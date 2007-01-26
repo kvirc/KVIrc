@@ -41,7 +41,7 @@
 class QLineEdit;
 class QPushButton;
 class KviNickServRule;
-class QListView;
+class KviTalListView;
 class QCheckBox;
 
 class KviNickServRuleEditor : public QDialog
@@ -72,7 +72,7 @@ public:
 	KviNickServOptionsWidget(QWidget * parent);
 	~KviNickServOptionsWidget();
 protected:
-	QListView             * m_pNickServListView;
+	KviTalListView             * m_pNickServListView;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
