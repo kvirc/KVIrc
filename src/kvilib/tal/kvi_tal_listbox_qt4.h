@@ -93,6 +93,10 @@ public:
 	KviTalListBoxItem * next() const { return (KviTalListBoxItem *)Q3ListBoxItem::next(); };
 	KviTalListBoxItem * prev() const { return (KviTalListBoxItem *)Q3ListBoxItem::prev(); };
 	KviTalListBox * listBox() const { return (KviTalListBox *)Q3ListBoxItem::listBox(); };
+	virtual int height(const KviTalListBox *) const { return 0; };
+	int height(const Q3ListBox *lb) const { return height((KviTalListBox *)lb); };
+	virtual int width(const KviTalListBox *) const { return 0; };
+	int width(const Q3ListBox *lb) const { return width((KviTalListBox *)lb); };
 };
 
 
@@ -111,7 +115,7 @@ public:
     enum { RTTI = 1 };
 
 protected:
-    void  paint(QPainter *);
+    virtual void  paint(QPainter *);
 
 private:
     Q_DISABLE_COPY(KviTalListBoxText)
@@ -138,7 +142,7 @@ public:
     enum { RTTI = 2 };
 
 protected:
-    void paint(QPainter *);
+    virtual void paint(QPainter *);
 
 private:
     Q_DISABLE_COPY(KviTalListBoxPixmap)

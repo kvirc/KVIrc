@@ -91,6 +91,10 @@ public:
 	KviTalListBoxItem * next() const { return (KviTalListBoxItem *)QListBoxItem::next(); };
 	KviTalListBoxItem * prev() const { return (KviTalListBoxItem *)QListBoxItem::prev(); };
 	KviTalListBox * listBox() const { return (KviTalListBox *)QListBoxItem::listBox(); };
+	virtual int height(const KviTalListBox *) const { return 0; };
+	int height(const QListBox *lb) const { return height((KviTalListBox *)lb); };
+	virtual int width(const KviTalListBox *) const { return 0; };
+	int width(const QListBox *lb) const { return width((KviTalListBox *)lb); };
 };
 
 class KVILIB_API KviTalListBoxText : public KviTalListBoxItem
@@ -108,7 +112,7 @@ public:
     static int RTTI;
 
 protected:
-    void  paint( QPainter * );
+    virtual void  paint( QPainter * );
 
 private:	// Disabled copy constructor and operator=
 #if defined(Q_DISABLE_COPY)
@@ -138,7 +142,7 @@ public:
     static int RTTI;
 
 protected:
-    void paint( QPainter * );
+    virtual void paint( QPainter * );
 
 private:
     QPixmap pm;
