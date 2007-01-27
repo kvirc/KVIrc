@@ -90,6 +90,13 @@ TORR_IMPLEMENT_DESCRIPTOR(
 		return false; \
 	}
 
+#define CHECK_RANGE_INT \
+	if (i<0 || i>=m_ti.size()) \
+	{ \
+		ERROR_MSG_RANGE \
+		return -1; \
+	}
+
 #define CHECK_RANGE_STRING \
 	if (i<0 || i>=m_ti.size()) \
 	{ \
@@ -311,6 +318,53 @@ QString KviKTorrentDCOPInterface::name(int i)
 	CHECK_RANGE_STRING
 	
 	return m_ti[i].name;
+}
+
+int KviKTorrentDCOPInterface::fileCount(int i)
+{
+	CHECK_RANGE_INT
+
+	int ret;
+	if (!intRetIntDCOPCall("KTorrent", "getFileCount(int)", ret, m_ti[i].num))
+		ERROR_RET_NUM
+
+	return ret;
+}
+
+QString KviKTorrentDCOPInterface::fileName(int i, int file)
+{
+	CHECK_RANGE_STRING
+
+	QCStringList ret;
+	if (!qcstringListRetIntDCOPCall("KTorrent", "getFileNames(int)", ret, m_ti[i].num))
+		ERROR_RET_STRING
+
+	// TODO: check range
+	return ret[file];
+}
+
+int KviKTorrentDCOPInterface::filePriority(int i, int file)
+{
+	CHECK_RANGE_INT
+
+	QValueList<int> ret;
+	if (!qvalueListIntRetIntDCOPCall("KTorrent", "getFilePriorities(int)",ret, m_ti[i].num))
+		ERROR_RET_NUM
+
+	// TODO: check range
+
+	return ret[i];
+}
+
+bool KviKTorrentDCOPInterface::setFilePriority(int i, int file, int prio)
+{
+	CHECK_RANGE_BOOL
+
+	// TODO: check range
+	if (!voidRetIntIntIntDCOPCall("KTorrent", "setFilePriority(int,int,int)", m_ti[i].num, file, prio))
+		ERROR_RET_BOOL
+
+	return true;
 }
 
 bool KviKTorrentDCOPInterface::startAll()

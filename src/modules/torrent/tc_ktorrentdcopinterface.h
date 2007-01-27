@@ -57,6 +57,11 @@ public:
 	virtual QString state(int i);
 	virtual QString name(int i);
 
+	virtual int fileCount(int i);
+	virtual QString fileName(int i, int file);
+	virtual int filePriority(int i, int file);
+	virtual bool setFilePriority(int i, int file, int prio);
+
 	virtual bool startAll();
 	virtual bool stopAll();
 

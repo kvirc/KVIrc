@@ -51,14 +51,16 @@ public:
 
 	// directory where data is downloaded to
 	virtual QCString getTorrentDataDir(int i)=0;
-
-	// number of files in torrent
-	virtual QCString getTorrentFileCount(int i)=0;
-	// name of file in torrent
-	virtual QCString getTorrentFileName(int i)=0;
-	virtual int getTorrentFilePriority(int i)=0;
-	virtual void setTorrentFilePriority(int i, int prio)=0;
 */
+	// number of files in torrent
+	virtual int fileCount(int i)=0;
+	// name of file in torrent
+	virtual QString fileName(int i, int file)=0;
+	// returns file priority
+	virtual int filePriority(int i, int file)=0;
+	// sets file priority
+	virtual bool setFilePriority(int i, int file, int prio)=0;
+
 	virtual bool start(int i)=0;
 	virtual bool stop(int i)=0;
 
@@ -67,8 +69,6 @@ public:
 	virtual bool startAll()=0;
 	virtual bool stopAll()=0;
 /*
-	// manual announce to tracker
-	virtual bool announceTorrent(int i)=0;
 	// remove torrent from client
 	virtual bool removeTorrent(int i)=0;
 	

@@ -107,7 +107,7 @@ static KviTorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 	if(pDBest)
 	{
 		// TODO: what's this?
-//		KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = pDBest->name();
+		KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = pDBest->name();
 		if(pOut)
 			pOut->output(KVI_OUT_TORRENT,
 					   __tr2qs_ctx("Choosing torrent client interface \"%Q\"", "torrent"),
@@ -184,22 +184,42 @@ static bool torrent_test(KviKvsModuleCommandCall *c)
 #define TC_KVS_INT_COMMAND(__name, __ifacecommand, __argname) \
 	TC_KVS_COMMAND(__name) \
 	{ \
-		debug("TC_KVS_INT_COMMAND"); \
 		kvs_int_t arg; \
 		KVSM_PARAMETERS_BEGIN(c) \
 			KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg) \
 		KVSM_PARAMETERS_END(c) \
-		debug("TC_KVS_INT_COMMAND 2"); \
+		\
 		TC_KVS_FAIL_ON_NO_INTERFACE \
 		\
 		if (!g_pTcInterface->__ifacecommand(arg)) \
 		{ \
-			debug("TC_KVS_INT_COMMAND 3"); \
 			TC_KVS_COMMAND_ERROR \
 		} \
-		debug("TC_KVS_INT_COMMAND 4"); \
 		return true; \
 	}
+
+#define TC_KVS_INT_INT_INT_COMMAND(__name, __ifacecommand, __argname1, __argname2, __argname3) \
+	TC_KVS_COMMAND(__name) \
+	{ \
+		kvs_int_t arg1; \
+		kvs_int_t arg2; \
+		kvs_int_t arg3; \
+		KVSM_PARAMETERS_BEGIN(c) \
+			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
+			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
+			KVSM_PARAMETER(__argname3, KVS_PT_INT, 0, arg3) \
+		KVSM_PARAMETERS_END(c) \
+		\
+		TC_KVS_FAIL_ON_NO_INTERFACE \
+		\
+		if (!g_pTcInterface->__ifacecommand(arg1, arg2, arg3)) \
+		{ \
+			TC_KVS_COMMAND_ERROR \
+		} \
+		return true; \
+	}
+
+// TODO: error handling for functions
 
 #define TC_KVS_STRINGRET_FUNCTION(__name, __ifacecommand) \
 	TC_KVS_FUNCTION(__name) \
@@ -228,6 +248,19 @@ static bool torrent_test(KviKvsModuleCommandCall *c)
 		return true; \
 	}
 
+#define TC_KVS_INTRET_INT_FUNCTION(__name, __ifacecommand, __argname) \
+	TC_KVS_FUNCTION(__name) \
+	{ \
+		kvs_int_t arg; \
+		KVSM_PARAMETERS_BEGIN(c) \
+			KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg) \
+		KVSM_PARAMETERS_END(c) \
+		TC_KVS_FAIL_ON_NO_INTERFACE \
+		kvs_int_t ret = g_pTcInterface->__ifacecommand(arg); \
+		c->returnValue()->setInteger(ret); \
+		return true; \
+	}
+
 #define TC_KVS_STRINGRET_INT_FUNCTION(__name, __ifacecommand, __argname) \
 	TC_KVS_FUNCTION(__name) \
 	{ \
@@ -238,6 +271,36 @@ static bool torrent_test(KviKvsModuleCommandCall *c)
 		TC_KVS_FAIL_ON_NO_INTERFACE \
 		QString szRet = g_pTcInterface->__ifacecommand(arg); \
 		c->returnValue()->setString(szRet); \
+		return true; \
+	}
+
+#define TC_KVS_STRINGRET_INT_INT_FUNCTION(__name, __ifacecommand, __argname1, __argname2) \
+	TC_KVS_FUNCTION(__name) \
+	{ \
+		kvs_int_t arg1; \
+		kvs_int_t arg2; \
+		KVSM_PARAMETERS_BEGIN(c) \
+			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
+			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
+		KVSM_PARAMETERS_END(c) \
+		TC_KVS_FAIL_ON_NO_INTERFACE \
+		QString szRet = g_pTcInterface->__ifacecommand(arg1, arg2); \
+		c->returnValue()->setString(szRet); \
+		return true; \
+	}
+
+#define TC_KVS_INTRET_INT_INT_FUNCTION(__name, __ifacecommand, __argname1, __argname2) \
+	TC_KVS_FUNCTION(__name) \
+	{ \
+		kvs_int_t arg1; \
+		kvs_int_t arg2; \
+		KVSM_PARAMETERS_BEGIN(c) \
+			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
+			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
+		KVSM_PARAMETERS_END(c) \
+		TC_KVS_FAIL_ON_NO_INTERFACE \
+		kvs_int_t ret = g_pTcInterface->__ifacecommand(arg1, arg2); \
+		c->returnValue()->setInteger(ret); \
 		return true; \
 	}
 
@@ -383,6 +446,44 @@ TC_KVS_FLOATRET_FUNCTION(speedUp, speedUp)
 TC_KVS_FLOATRET_FUNCTION(speedDown, speedDown)
 
 /*
+	@doc: torrent.trafficUp
+	@type:
+		function
+	@title:
+		$torrent.trafficUp
+	@short:
+		Returns the total number of bytes uploaded
+	@syntax:
+		$torrent.trafficUp()
+	@description:
+		Returns the total number of bytes uploaded
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_FLOATRET_FUNCTION(trafficUp, trafficUp)
+
+/*
+	@doc: torrent.trafficDown
+	@type:
+		function
+	@title:
+		$torrent.trafficDown
+	@short:
+		Returns the total number of bytes download
+	@syntax:
+		$torrent.trafficDown()
+	@description:
+		Returns the total number of bytes download
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_FLOATRET_FUNCTION(trafficDown, trafficDown)
+
+/*
 	@doc: torrent.count
 	@type:
 		function
@@ -480,6 +581,82 @@ TC_KVS_INT_COMMAND(stop, stop, "torrent_number")
 TC_KVS_INT_COMMAND(announce, announce, "torrent_number")
 
 /*
+	@doc: torrent.fileCount
+	@type:
+		function
+	@title:
+		$torrent.fileCount
+	@short:
+		Returns the number of files in a torrent.
+	@syntax:
+		$torrent.fileCount <torrent_number>
+	@description:
+		Returns the number of files in a torrent.
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_INTRET_INT_FUNCTION(fileCount, fileCount, "torrent_number")
+
+/*
+	@doc: torrent.fileName
+	@type:
+		function
+	@title:
+		$torrent.fileName
+	@short:
+		Returns the name of a file in a torrent.
+	@syntax:
+		$torrent.fileName <torrent_number> <file_number>
+	@description:
+		Returns the name of a file in a torrent.
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_STRINGRET_INT_INT_FUNCTION(fileName, fileName, "torrent_number", "file_number")
+
+/*
+	@doc: torrent.filePriority
+	@type:
+		function
+	@title:
+		$torrent.filePriority
+	@short:
+		Returns the priority of a file in a torrent.
+	@syntax:
+		$torrent.filePriority <torrent_number> <file_number>
+	@description:
+		Returns the priority of a file in a torrent.
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_INTRET_INT_INT_FUNCTION(filePriority, filePriority, "torrent_number", "file_number")
+
+/*
+	@doc: torrent.setFilePriority
+	@type:
+		command
+	@title:
+		torrent.setFilePriority
+	@short:
+		Sets the priority of a file in a torrent.
+	@syntax:
+		torrent.setFilePriority <torrent_number> <file_number>
+	@description:
+		Sets the priority of a file in a torrent.
+		Take a look at the [module:torrent]torrent client documentation[/module]
+		for more details about how it works.[br]
+	@seealso:
+		[module:torrent]torrent client documentation[/module],
+*/
+TC_KVS_INT_INT_INT_COMMAND(setFilePriority, setFilePriority, "torrent_number", "file_number", "priority")
+
+/*
 	@doc: torrent.startAll
 	@type:
 		command
@@ -544,27 +721,6 @@ TC_KVS_SIMPLE_COMMAND(stopAll, stopAll)
 //MP_KVS_SIMPLE_COMMAND(list,list)
 
 /*
-	@doc: torrent.status
-	@type:
-		function
-	@title:
-		torrent.status
-	@short:
-		Returns status of a torrent
-	@syntax:
-		$torrent.status(<torrent_number>)
-	@description:
-		Returns the status of torrent <torrent_number>
-		Take a look at the [module:torrent]torrent client documentation[/module]
-		for more details about how it works.[br]
-	@seealso:
-		[module:torrent]torrent client documentation[/module],
-		[fnc]torrent.list[/fnc], [cmd]torrent.start[/cmd], [cmd]torrent.stop[/cmd], [cmd]torrent.startAll[/cmd], [cmd]torrent.stopAll[/cmd]
-*/
-
-//MP_KVS_SIMPLE_COMMAND(list,list)
-
-/*
 	@doc: torrent.setClient
 	@type:
 		command
@@ -584,28 +740,39 @@ TC_KVS_SIMPLE_COMMAND(stopAll, stopAll)
 		[module:torrent]torrent client documentation[/module],
 		[cmd]torrent.detect[/cmd], [fnc]$torrent.client()[/fnc]
 */
-/*
-MP_KVS_COMMAND(setClient)
+
+TC_KVS_COMMAND(setClient)
 {
-	QString szPlayer;
+	QString client;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("player",KVS_PT_STRING,0,szPlayer)
+		KVSM_PARAMETER("client", KVS_PT_STRING, 0, client)
 	KVSM_PARAMETERS_END(c)
 
-	for(KviMediaPlayerInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for (KviTorrentInterfaceDescriptor *d = g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
 	{
-		if(d->name() == szPlayer)
+		if (d->name() == client)
 		{
-			g_pMPInterface = d->instance();
-			KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = szPlayer;
+			g_pTcInterface = d->instance();
+			KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = client;
+
+			if (!c->hasSwitch('q',"quiet"))
+				c->window()->output(KVI_OUT_TORRENT,
+							__tr2qs_ctx("Using client interface \"%Q\".", "torrent"),
+							&client);
 			return true;
 		}
 	}
 
-	return true;
+	if (!c->hasSwitch('q',"quiet"))
+		c->window()->output(KVI_OUT_TORRENT,
+					__tr2qs_ctx("Invalid client interface \"%Q\"!", "torrent"),
+					&client);
+
+	return false;
 }
-*/
+
+
 /*
 	@doc: torrent.client
 	@type:
@@ -624,13 +791,12 @@ MP_KVS_COMMAND(setClient)
 		[module:torrent]torrent client documentation[/module],
 		[cmd]torrent.detect[/cmd], [cmd]torrent.setClient[/cmd]
 */
-
-/*MP_KVS_FUNCTION(client)
+TC_KVS_FUNCTION(client)
 {
-	c->returnValue()->setString(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer));
+	c->returnValue()->setString(KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient));
 	return true;
 }
-*/
+
 /*
 	@doc: torrent.clientList
 	@type:
@@ -682,6 +848,7 @@ static bool torrent_module_init(KviModule *m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "test", torrent_test);
 	TC_KVS_REGCMD(detect, "detect");
+	TC_KVS_REGCMD(setClient, "setClient");
 	TC_KVS_REGCMD(start, "start")
 	TC_KVS_REGCMD(stop, "stop")
 	TC_KVS_REGCMD(announce, "announce")
@@ -689,13 +856,20 @@ static bool torrent_module_init(KviModule *m)
 	TC_KVS_REGCMD(stopAll, "stopAll")
 	TC_KVS_REGCMD(setMaxUploadSpeed, "setMaxUploadSpeed")
 	TC_KVS_REGCMD(setMaxDownloadSpeed, "setMaxDownloadSpeed")
+	TC_KVS_REGCMD(setFilePriority, "setFilePriority")
+	TC_KVS_REGFNC(client, "client")
 	TC_KVS_REGFNC(maxUploadSpeed, "maxUploadSpeed")
 	TC_KVS_REGFNC(maxDownloadSpeed, "maxDownloadSpeed")
 	TC_KVS_REGFNC(speedUp, "speedUp")
 	TC_KVS_REGFNC(speedDown, "speedDown")
+	TC_KVS_REGFNC(trafficUp, "trafficUp")
+	TC_KVS_REGFNC(trafficDown, "trafficDown")
 	TC_KVS_REGFNC(count, "count")
 	TC_KVS_REGFNC(name, "name")
 	TC_KVS_REGFNC(state, "state")
+	TC_KVS_REGFNC(fileCount, "fileCount")
+	TC_KVS_REGFNC(fileName, "fileName")
+	TC_KVS_REGFNC(filePriority, "filePriority")
 
 	g_pDescriptorList = new KviPtrList<KviTorrentInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
@@ -710,84 +884,19 @@ static bool torrent_module_init(KviModule *m)
 		KviTorrentStatusBarApplet::selfRegister(g_pFrame->mainStatusBar());
 	
 
-/*	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
+	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
-		g_pMPInterface = auto_detect_player();
+		g_pTcInterface = auto_detect_torrent_client();
 
 	} else
 	{
-		for (KviMediaPlayerInterfaceDescriptor *d=g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
+		for (KviTorrentInterfaceDescriptor *d=g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
 		{
-			if (d->name() == KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer))
-			{
-				g_pMPInterface = d->instance();
-			}
+			if (d->name() == KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient))
+				g_pTcInterface = d->instance();
 		}
 	}
 
-	// check for "auto" interface too!
-
-
-	#define MP_KVS_REGCMD(__name,__stringname) KVSM_REGISTER_SIMPLE_COMMAND(m,__stringname,mediaplayer_kvs_cmd_ ## __name)
-	#define MP_KVS_REGFNC(__name,__stringname) KVSM_REGISTER_FUNCTION(m,__stringname,mediaplayer_kvs_fnc_ ## __name)
-
-	MP_KVS_REGCMD(play,"play");
-	MP_KVS_REGCMD(stop,"stop");
-	MP_KVS_REGCMD(next,"next");
-	MP_KVS_REGCMD(prev,"prev");
-	MP_KVS_REGCMD(quit,"quit");
-	MP_KVS_REGCMD(pause,"pause");
-	MP_KVS_REGCMD(detect,"detect");
-	MP_KVS_REGCMD(playMrl,"playMrl");
-	MP_KVS_REGCMD(hide,"hide");
-	MP_KVS_REGCMD(show,"show");
-	MP_KVS_REGCMD(minimize,"minimize");
-	MP_KVS_REGCMD(jumpTo,"jumpTo");
-	MP_KVS_REGCMD(setPlayer,"setPlayer");
-	MP_KVS_REGCMD(setVol,"setVol");
-	MP_KVS_REGCMD(mute,"mute");
-	MP_KVS_REGCMD(setRepeat,"setRepeat");
-	MP_KVS_REGCMD(setShuffle,"setShuffle");
-	MP_KVS_REGCMD(setPlayListPos,"setPlayListPos");
-	MP_KVS_REGCMD(setEqData,"setEqData");
-
-	MP_KVS_REGFNC(nowPlaying,"nowPlaying");
-	MP_KVS_REGFNC(mrl,"mrl");
-	MP_KVS_REGFNC(title,"title");
-	MP_KVS_REGFNC(artist,"artist");
-	MP_KVS_REGFNC(genre,"genre");
-	MP_KVS_REGFNC(year,"year");
-	MP_KVS_REGFNC(comment,"comment");
-	MP_KVS_REGFNC(album,"album");
-	MP_KVS_REGFNC(mediaType,"mediaType");
-	MP_KVS_REGFNC(bitRate,"bitRate");
-	MP_KVS_REGFNC(sampleRate,"sampleRate");
-	MP_KVS_REGFNC(length,"length");
-	MP_KVS_REGFNC(position,"position");
-	MP_KVS_REGFNC(status,"status");
-	MP_KVS_REGFNC(player,"player");
-	MP_KVS_REGFNC(playerList,"playerList");
-	MP_KVS_REGFNC(localFile,"localFile");
-	MP_KVS_REGFNC(channels,"channels");
-	MP_KVS_REGFNC(getListLength,"getListLength");
-	MP_KVS_REGFNC(getPlayListPos,"getPlayListPos");
-	MP_KVS_REGFNC(getEqData,"getEqData");
-	MP_KVS_REGFNC(getRepeat,"getRepeat");
-	MP_KVS_REGFNC(getShuffle,"getShuffle");
-	MP_KVS_REGFNC(getVol,"getVol");
-
-*/
-/*
-	// Crissi
-	m->registerFunction( "getmp3tag_date", mediaplayer_fnc_getmp3tag_date );
-	m->registerFunction( "getmp3tag_version", mediaplayer_fnc_getmp3tag_version );
-	m->registerFunction( "getmp3tag_layer", mediaplayer_fnc_getmp3tag_layer );
-	m->registerFunction( "getmp3tag_crc", mediaplayer_fnc_getmp3tag_crc );
-	m->registerFunction( "getmp3tag_copyright", mediaplayer_fnc_getmp3tag_copyright );
-	m->registerFunction( "getmp3tag_original", mediaplayer_fnc_getmp3tag_original );
-	m->registerFunction( "getmp3tag_emphasis", mediaplayer_fnc_getmp3tag_emphasis );
-	m->registerFunction( "getmp3tag_tracknumber", mediaplayer_fnc_getmp3tag_tracknumber );
-*/
 	return true;
 }
 
