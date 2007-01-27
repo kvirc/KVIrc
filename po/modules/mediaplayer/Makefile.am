@@ -9,10 +9,10 @@ THISMODULE = mediaplayer
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = mediaplayer_cs.mo mediaplayer_it.mo mediaplayer_fr.mo mediaplayer_ru.mo mediaplayer_hu.mo
+tmp_DATA  = mediaplayer_cs.mo mediaplayer_de.mo mediaplayer_it.mo mediaplayer_fr.mo mediaplayer_ru.mo mediaplayer_hu.mo
 
 # The *.po files to generate
-POFILES  =  mediaplayer_cs.po mediaplayer_it.po mediaplayer_fr.po mediaplayer_ru.po mediaplayer_hu.po
+POFILES  =  mediaplayer_cs.po mediaplayer_de.po mediaplayer_it.po mediaplayer_fr.po mediaplayer_ru.po mediaplayer_hu.po
 
 
 ###############################################################################

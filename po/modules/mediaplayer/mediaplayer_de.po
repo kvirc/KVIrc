@@ -1,0 +1,125 @@
+# Czech translation of KVIrc.
+# Copyright (C) 2005 THE KVIrc'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# Dušan Hokův <dusan@mirc.cz>, 2005.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 3.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-06-02 17:18+0200\n"
+"PO-Revision-Date: 2005-06-02 18:36+0200\n"
+"Last-Translator: Alexander Stillich <torque at pltn dot org>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit"
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:91
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr "Probiere Schnittstelle \"%Q\": %d Punkte."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"Ergebnis war nicht eindeutig. Versuche einen zweiten, aggressiveren Durchlauf."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:101
+msgid "Choosing media player interface \"%Q\""
+msgstr "Benutze Schnittstelle \"%Q\"."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:104
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Es scheint kein nutzbarer Mediaplayer auf diesem System zu sein."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Keine Mediaplayer Schnittstelle ausgewählt. Probieren Sie /mediaplayer.detect."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:129
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:522
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:558
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1016
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1128
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1167
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1304
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1323
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+"Die ausgewählte Mediaplayer Schnittstelle konnte die Funktion nicht ausführen."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:130
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:523
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:559
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1017
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1129
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1168
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1305
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1324
+msgid "Last interface error: "
+msgstr "Letzter Schnittstellenfehler: "
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:429
+msgid "No such media player interface (try /mediaplayer.detect)"
+msgstr "Mediaplayer Schnittstelle existiert nicht (Versuchen Sie /mediaplayer.detect)."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+msgid "An interface to the AmaroK KDE media player."
+msgstr "Schnittstelle für AmaroK."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+msgid "An interface to the Juk KDE media player."
+msgstr "Schnittstelle für Juk."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:172
+msgid "Can't find a running winamp window"
+msgstr "Keine Winamp Instanz gefunden."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:182
+msgid ""
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+"Eine Schnittstelle für den beliebten Winamp Player.\n"
+"Sie können ihn unter http://www.winamp.com herunterladen.\n"
+"Um alle Funktionen zu nutzen, müssen Sie die Datei gen_kvirc.dll aus dem "
+"KVirc Ordner in den Plugin-Ordner von Winamp kopieren und Winamp neu "
+"starten."
+
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:304
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:336
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr ""
+"Das Winamp Plugin wurde nicht richtig installiert. Bitte schauen Sie sich /help mediaplayer an."
+"nowplaying"
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:36
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
+"Sie können ihn unter http://www.xmms.org herunterladen.\n"
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:77
+msgid "Can't load the xmms library (libxmms.so)"
+msgstr "Kann die xmms Bibliothek nicht laden (libxmms.so)."
+
+#: /home/hunterz/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:84
+#, c-format
+msgid "Can't find symbol %s in libxmms.so"
+msgstr "Kann das Symbol %s nicht in libxmms.so finden."
+
