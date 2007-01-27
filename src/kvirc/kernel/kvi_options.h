@@ -375,8 +375,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringOnMeKickedSound 53				/* sounds */
 #define KviOption_stringOnQueryMessageSound 54				/* sounds */
 #define KviOption_stringIrcViewTimestampFormat 55			
+#define KviOption_stringPreferredTorrentClient 56          /* still missing in options ! */
 
-#define KVI_NUM_STRING_OPTIONS 56
+#define KVI_NUM_STRING_OPTIONS 57
 
 
 
