@@ -56,10 +56,10 @@ public:
 	virtual int fileCount(int i)=0;
 	// name of file in torrent
 	virtual QString fileName(int i, int file)=0;
-	// returns file priority
-	virtual int filePriority(int i, int file)=0;
+	// returns file priority (low, normal, high)
+	virtual QString filePriority(int i, int file)=0;
 	// sets file priority
-	virtual bool setFilePriority(int i, int file, int prio)=0;
+	virtual bool setFilePriority(int i, int file, const QString &prio)=0;
 
 	virtual bool start(int i)=0;
 	virtual bool stop(int i)=0;
@@ -97,10 +97,14 @@ public:
 
 	QString lastError() { return m_lastError; }
 
+	static void select(KviTorrentInterface *i) { m_selected = i; }
+	static KviTorrentInterface *selected() { return m_selected; }
+
 protected:
 
 	QString	m_lastError;
 
+	static KviTorrentInterface *m_selected; 
 };
 
 class KviTorrentInterfaceDescriptor

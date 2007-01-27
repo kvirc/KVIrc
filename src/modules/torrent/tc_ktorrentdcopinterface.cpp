@@ -54,9 +54,9 @@ TORR_IMPLEMENT_DESCRIPTOR(
 	m_lastError = __tr2qs_ctx(QString(msg), "torrent"); \
 	debug("%s (%s:%d): %s", __PRETTY_FUNCTION__, __FILE__, __LINE__, (const char*)msg); \
 
-#define ERROR_MSG_RANGE \
-	KviQString::sprintf(m_lastError, __tr2qs_ctx("Index out of range: %d [0-%d]!", "torrent"), i, (m_ti.size()>0)?(m_ti.size()-1):0); \
-	debug("%s (%s:%d): Index out of range: %d [0-%d]!", __PRETTY_FUNCTION__ , __FILE__, __LINE__, i, (m_ti.size()>0)?(m_ti.size()-1):0);
+#define ERROR_MSG_RANGE(I, SIZE) \
+	KviQString::sprintf(m_lastError, __tr2qs_ctx("Index out of range: %d [0-%d]!", "torrent"), I, (SIZE>0)?(SIZE-1):0); \
+	debug("%s (%s:%d): Index out of range: %d [0-%d]!", __PRETTY_FUNCTION__ , __FILE__, __LINE__, I, (SIZE>0)?(SIZE-1):0);
 
 #define ERROR_RET_BOOL \
 	{ \
@@ -83,27 +83,26 @@ TORR_IMPLEMENT_DESCRIPTOR(
 		return; \
 	}
 
-#define CHECK_RANGE_BOOL \
-	if (i<0 || i>=m_ti.size()) \
+#define CHECK_RANGE_BOOL(I, SIZE) \
+	if (I<0 || I>=SIZE) \
 	{ \
-		ERROR_MSG_RANGE \
+		ERROR_MSG_RANGE(I, SIZE) \
 		return false; \
 	}
 
-#define CHECK_RANGE_INT \
-	if (i<0 || i>=m_ti.size()) \
+#define CHECK_RANGE_INT(I, SIZE) \
+	if (I<0 || I>=SIZE) \
 	{ \
-		ERROR_MSG_RANGE \
+		ERROR_MSG_RANGE(I, SIZE) \
 		return -1; \
 	}
 
-#define CHECK_RANGE_STRING \
-	if (i<0 || i>=m_ti.size()) \
+#define CHECK_RANGE_STRING(I, SIZE) \
+	if (I<0 || I>=SIZE) \
 	{ \
-		ERROR_MSG_RANGE \
+		ERROR_MSG_RANGE(I, SIZE) \
 		return ""; \
 	}
-
 
 KviKTorrentDCOPInterface::KviKTorrentDCOPInterface()
 	: KviDCOPHelper(false, "ktorrent")
@@ -113,6 +112,11 @@ KviKTorrentDCOPInterface::KviKTorrentDCOPInterface()
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(slotTimer()));
 	timer->start(250, FALSE);
+
+	// make sure we have a list of files,
+	// otherwise functions dealing would
+	// fail if called the first time
+	slotTimer();
 }
 
 KviKTorrentDCOPInterface::~KviKTorrentDCOPInterface() 
@@ -124,7 +128,6 @@ void KviKTorrentDCOPInterface::slotTimer()
 {
 	if (!findRunningApp(m_szAppId))
 		return;
-//	debug("timer");
 
 	m_ti.clear();
 
@@ -141,69 +144,21 @@ void KviKTorrentDCOPInterface::slotTimer()
 		if (info.size() == 0)
 			continue;
 
-//		debug("i: %d, %d, %s %s", i, info.size(), (const char *)info[0], (const char*)info[1]);
-
 		TorrentInfo item;
 		if (!makeTorrentInfo(item, info))
 			return;
-//		item.ti.name.sprintf("%s [%d]", (const char*)info[0], ret[i]);
+
 		item.num = ret[i];
 		m_ti.append(item);
 	}
 
 	qHeapSort(m_ti);
-
-
-/*	for (int i=0; i<m_ti.size(); i++)
-	{
-		debug("sorted: %s", (const char *)m_ti[i].name);
-	}
-*/
 }
 
 int KviKTorrentDCOPInterface::detect()
 {
 	if (!findRunningApp(m_szAppId))
 		return 0;
-/*
-	ClientInfo ci;
-	if (getClientInfo(ci))
-	{
-		debug("tup: %f, tdown: %f\n"
-			 "sup: %f, sdown: %f\n",
-			 ci.transferredUp, ci.transferredDown,
-			 ci.speedUp, ci.speedDown);
-	} else
-	{
-		debug("error\n");
-	}
-
-	TorrentInfo ti;
-	if (getTorrentInfo(0, ti))
-	{
-		debug("name: %s\n"
-                "state: %d\n"
-                "size: %f\n"
-			 "tup: %f\n"
-			 "tdown: %f\n"
-			 "sup: %f\n"
-			 "sdown: %f\n"
-			 "perc: %f\n"
-			 "peers: %d\n",
-			 (const char *)ti.name,
-			 ti.state,
-			 ti.size,
-			 ti.transferredUp,
-			 ti.transferredDown,
-			 ti.speedUp,
-			 ti.speedDown,
-			 ti.percent,
-			 ti.peers);
-	} else
-	{
-		debug("error\n");
-	}
-*/
 
 	return 100;
 }
@@ -232,51 +187,9 @@ bool makeSize(float &sz, const QString &s, const QString &u)
 	return true;
 }
 
-/*bool KviKTorrentDCOPInterface::getClientInfo(ClientInfo &ci)
-{
-	KviQCStringList ret;
-	if (!qcstringListRetVoidDCOPCall("KTorrent", "getInfo()", ret))
-  		ERROR_RET_BOOL
-
-	bool ok;
-	QStringList tmp;
-
-	tmp = QStringList::split(" ", ret[1]);
-	if (tmp.size() != 8)
-		ERROR_RET_BOOL
-
-	if (!makeSize(ci.trafficDown, tmp[2], tmp[3]))
-  		ERROR_RET_BOOL
-	if (!makeSize(ci.trafficUp, tmp[6], tmp[7]))
-  		ERROR_RET_BOOL
-
-	tmp = QStringList::split(" ", ret[2]);
-	if (tmp.size() != 8)
-  		ERROR_RET_BOOL
-
-	ci.speedDown = tmp[2].toFloat(&ok);
-	if (!ok)
-  		ERROR_RET_BOOL
-	ci.speedUp = tmp[6].toFloat(&ok);
-	if (!ok)
-  		ERROR_RET_BOOL
-
-	return true;
-}
-
-/*
-bool KviKTorrentDCOPInterface::getTorrentInfo(int i, TorrentInfo &ti)
-{
-	CHECK_RANGE
-
-	ti = m_ti[i];
-	return true;
-}
-*/
-
 bool KviKTorrentDCOPInterface::start(int i)
 {
-	CHECK_RANGE_BOOL
+	CHECK_RANGE_BOOL(i, m_ti.size())
 
 	debug("starting %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 	if (!voidRetIntDCOPCall("KTorrent", "start(int)", m_ti[i].num))
@@ -287,7 +200,7 @@ bool KviKTorrentDCOPInterface::start(int i)
 
 bool KviKTorrentDCOPInterface::stop(int i)
 {
-	CHECK_RANGE_BOOL
+	CHECK_RANGE_BOOL(i, m_ti.size())
 
 	debug("stopping %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 	if (!voidRetIntBoolDCOPCall("KTorrent", "stop(int, bool)", m_ti[i].num, true))
@@ -298,7 +211,7 @@ bool KviKTorrentDCOPInterface::stop(int i)
 
 bool KviKTorrentDCOPInterface::announce(int i)
 {
-	CHECK_RANGE_BOOL
+	CHECK_RANGE_BOOL(i, m_ti.size())
 
 	debug("announcing %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 	if (!voidRetIntDCOPCall("KTorrent", "announce(int)", m_ti[i].num))
@@ -308,21 +221,21 @@ bool KviKTorrentDCOPInterface::announce(int i)
 
 QString KviKTorrentDCOPInterface::state(int i)
 {
-	CHECK_RANGE_STRING
+	CHECK_RANGE_STRING(i, m_ti.size())
 
 	return m_ti[i].state;
 }
 
 QString KviKTorrentDCOPInterface::name(int i)
 {
-	CHECK_RANGE_STRING
+	CHECK_RANGE_STRING(i, m_ti.size())
 	
 	return m_ti[i].name;
 }
 
 int KviKTorrentDCOPInterface::fileCount(int i)
 {
-	CHECK_RANGE_INT
+	CHECK_RANGE_INT(i, m_ti.size())
 
 	int ret;
 	if (!intRetIntDCOPCall("KTorrent", "getFileCount(int)", ret, m_ti[i].num))
@@ -333,35 +246,55 @@ int KviKTorrentDCOPInterface::fileCount(int i)
 
 QString KviKTorrentDCOPInterface::fileName(int i, int file)
 {
-	CHECK_RANGE_STRING
+	CHECK_RANGE_STRING(i, m_ti.size())
 
 	QCStringList ret;
 	if (!qcstringListRetIntDCOPCall("KTorrent", "getFileNames(int)", ret, m_ti[i].num))
 		ERROR_RET_STRING
 
-	// TODO: check range
+	CHECK_RANGE_STRING(file, ret.size())
+
 	return ret[file];
 }
 
-int KviKTorrentDCOPInterface::filePriority(int i, int file)
+QString KviKTorrentDCOPInterface::filePriority(int i, int file)
 {
-	CHECK_RANGE_INT
+	CHECK_RANGE_STRING(i, m_ti.size())
 
 	QValueList<int> ret;
 	if (!qvalueListIntRetIntDCOPCall("KTorrent", "getFilePriorities(int)",ret, m_ti[i].num))
-		ERROR_RET_NUM
+		ERROR_RET_STRING
 
-	// TODO: check range
+	CHECK_RANGE_STRING(file, ret.size())
 
-	return ret[i];
+	debug("prio: %d", ret[file]);
+	switch (ret[file])
+	{
+		case 1: return "low";
+		case 2: return "normal";
+		case 3: return "high";
+	}
+
+	ERROR_RET_STRING
 }
 
-bool KviKTorrentDCOPInterface::setFilePriority(int i, int file, int prio)
+bool KviKTorrentDCOPInterface::setFilePriority(int i, int file, const QString &prio)
 {
-	CHECK_RANGE_BOOL
+	CHECK_RANGE_BOOL(i, m_ti.size())
 
-	// TODO: check range
-	if (!voidRetIntIntIntDCOPCall("KTorrent", "setFilePriority(int,int,int)", m_ti[i].num, file, prio))
+	int prion;
+	if (prio == "low")
+		prion = 1;
+	else
+	if (prio == "normal")
+		prion = 2;
+	else
+	if (prio == "high")
+		prion = 1;
+	else
+		ERROR_RET_BOOL
+
+	if (!voidRetIntIntIntDCOPCall("KTorrent", "setFilePriority(int,int,int)", m_ti[i].num, file, prion))
 		ERROR_RET_BOOL
 
 	return true;

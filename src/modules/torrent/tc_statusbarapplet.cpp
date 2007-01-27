@@ -4,9 +4,6 @@
 #include "tc_interface.h"
 #include "tc_statusbarapplet.h"
 
-// from libkvitorrent.cpp
-extern KviTorrentInterface *g_pTcInterface;
-
 KviTorrentStatusBarApplet::KviTorrentStatusBarApplet(KviStatusBar *parent, KviStatusBarAppletDescriptor *desc)
 	: KviStatusBarApplet(parent, desc)
 {
@@ -52,20 +49,14 @@ QString formatSize(float sz)
 
 void KviTorrentStatusBarApplet::update()
 {
-	if (g_pTcInterface)
+	if (KviTorrentInterface::selected())
 	{
 		QString msg = QString("up: %1 K/s (%2), dn: %3 K/s (%4)")
-					.arg(g_pTcInterface->speedUp(), 2)
-					.arg(formatSize(g_pTcInterface->trafficUp()))
-					.arg(g_pTcInterface->speedDown(), 2)
-					.arg(formatSize(g_pTcInterface->trafficDown()));
+					.arg(KviTorrentInterface::selected()->speedUp(), 2)
+					.arg(formatSize(KviTorrentInterface::selected()->trafficUp()))
+					.arg(KviTorrentInterface::selected()->speedDown(), 2)
+					.arg(formatSize(KviTorrentInterface::selected()->trafficDown()));
 
-//		msg << __tr2qs_ctx("up: ", "torrent") << g_pTcInterface->speedUp()
-//			<< __tr2qs_ctx("dn: ", "torrent") << g_pTcInterface->speedDown();
-//		msg << __tr2qs_ctx("up: ", "torrent") << g_pTcInterface->trafficUp()
-//			<< __tr2qs_ctx("dn: ", "torrent") << g_pTcInterface->trafficDown();
-//		KviQString::sprintf(msg, __tr2qs_ctx("up: %.2f, dn: %.2f", "torrent"), g_pTcInterface->speedUp(), g_pTcInterface->speedDown());
-//		KviQString::sprintf(msg, __tr2qs_ctx("up: %d, dn: %d", "torrent"), g_pTcInterface->trafficUp(), g_pTcInterface->trafficDown());
 		setText(msg);
 
 	} else
