@@ -1911,6 +1911,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	if(msg->connection()->serverInfo()->supportsCodePages())
 	{
 		msg->console()->output(KVI_OUT_TEXTENCODING,__tr2qs("Your encoding is now %Q"),&encoding);
+		msg->console()->setTextEncoding(encoding);
 		msg->connection()->setEncoding(encoding);
 	} else {
 		QString szMe = msg->connection()->decodeText(msg->safeParam(0));
@@ -1918,6 +1919,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 			&& KviLocale::codecForName(encoding.utf8().data()))
 		{
 			msg->console()->output(KVI_OUT_TEXTENCODING,__tr2qs("Your encoding is now %Q"),&encoding);
+			msg->console()->setTextEncoding(encoding);
 			msg->connection()->setEncoding(encoding);
 		} else if(!msg->haltOutput()) // simply unhandled
 		{
