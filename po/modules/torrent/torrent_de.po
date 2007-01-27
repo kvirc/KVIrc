@@ -1,0 +1,66 @@
+# Czech translation of KVIrc.
+# Copyright (C) 2005 THE KVIrc'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# Dušan Hokův <dusan@mirc.cz>, 2005.
+# , fuzzy
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: KVIrc 3.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-27 11:12+0100\n"
+"PO-Revision-Date: 2005-06-02 18:36+0200\n"
+"Last-Translator: Alexander Stillich <torque at pltn dot org>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:72
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Versuche Torrent-Client Schnittstelle \"%Q\": %d Punkte."
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:113
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Benutze Torrent-Client Schnittstelle \"%Q\"."
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:119
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr ""
+"Es scheint kein Benutzbarer Torrent-Client auf diesem System installiert zu "
+"sein."
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:153
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr ""
+"Keine Torrent-Client Schnittstelle ausgewählt. Probieren Sie /torrent.detect "
+"auszuführen."
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:163
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+"Die ausgewählte Torrent-Client Schnittstelle konnte die Funktion nicht "
+"ausführen."
+
+#: /home/torque/devel/kvirc/src/modules/torrent/libkvitorrent.cpp:164
+msgid "Last interface error: "
+msgstr "Letzter Schnittstellen-Fehler: "
+
+#: /home/torque/devel/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr "Eine Schnittstelle für KTorrent.\n"
+"Sie können es von http://www.ktorrent.org herunterladen.\n"
+
+#: /home/torque/devel/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#, c-format
+msgid "Index out of range: %d [0-%d]!"
+msgstr "Index ausserhalb des gültigen Bereichs: %d [0-%d]!"
+
+#: /home/torque/devel/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:73
+msgid "No client selected!"
+msgstr "Keine Schnittstelle ausgewählt!"

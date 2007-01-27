@@ -10,4 +10,5 @@ SUBDIRS = about \
 	perl \
 	perlcore \
 	sharedfileswindow \
-	theme
+	theme \
+	torrent
