@@ -2766,10 +2766,9 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		if(!pix)
 			pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
 	
+		pa.fillRect(rectLeft,rectTop,rectWidth,rectHeight,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign)),r,widgetWidth,widgetHeight);
-		else
-			pa.fillRect(rectLeft,rectTop,rectWidth,rectHeight,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY	
 	}
 #endif
