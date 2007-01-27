@@ -93,6 +93,17 @@ bool KviDCOPHelper::voidRetIntBoolDCOPCall(const QCString &szObj,const QCString 
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
+bool KviDCOPHelper::voidRetIntIntIntDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal1, int iVal2, int iVal3)
+{
+	if(!ensureAppRunning(m_szAppId))return false;
+	QByteArray data;
+	QDataStream arg(data, IO_WriteOnly);
+	arg << iVal1;
+	arg << iVal2;
+	arg << iVal3;
+	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
+}
+
 bool KviDCOPHelper::voidRetFloatDCOPCall(const QCString &szObj,const QCString &szFunc,float fVal)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
@@ -111,7 +122,7 @@ bool KviDCOPHelper::voidRetStringDCOPCall(const QCString &szObj,const QCString &
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviDCOPHelper::stringRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,QString &ret)
+bool KviDCOPHelper::stringRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data, replyData;
@@ -121,7 +132,28 @@ bool KviDCOPHelper::stringRetVoidDCOPCall(const QCString &szObj,const QCString &
 	QDataStream reply( replyData, IO_ReadOnly );
 	if(replyType == "QString")
 	{
-		reply >> ret;
+		reply >> szRet;
+		return true;
+	}
+	return false;
+}
+
+bool KviDCOPHelper::stringRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet,int iVal)
+{
+	if(!ensureAppRunning(m_szAppId))return false;
+	QByteArray data, replyData;
+	QCString replyType;
+
+	QDataStream arg(data, IO_WriteOnly);
+	arg << iVal;
+
+	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
+		return false;
+
+	QDataStream reply( replyData, IO_ReadOnly );
+	if(replyType == "QString")
+	{
+		reply >> szRet;
 		return true;
 	}
 	return false;
@@ -134,6 +166,27 @@ bool KviDCOPHelper::intRetVoidDCOPCall(const QCString &szObj,const QCString &szF
 	QCString replyType;
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
+	QDataStream reply( replyData, IO_ReadOnly );
+	if(replyType == "int")
+	{
+		reply >> ret;
+		return true;
+	}
+	return false;
+}
+
+bool KviDCOPHelper::intRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret, int iVal)
+{
+	if(!ensureAppRunning(m_szAppId))return false;
+	QByteArray data, replyData;
+	QCString replyType;
+
+	QDataStream arg(data, IO_WriteOnly);
+	arg << iVal;
+
+	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
+		return false;
+
 	QDataStream reply( replyData, IO_ReadOnly );
 	if(replyType == "int")
 	{

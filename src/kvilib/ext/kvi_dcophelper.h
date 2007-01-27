@@ -65,7 +65,8 @@ protected:
 	bool 	voidRetBoolDCOPCall(const QCString &szObj,const QCString &szFunc,bool bVal);
 	bool 	voidRetStringDCOPCall(const QCString &szObj,const QCString &szFunc,const QString &szVal);
 	bool 	voidRetFloatDCOPCall(const QCString &szObj,const QCString &szFunc,float fVal);
-	bool 	stringRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,QString &ret);
+	bool 	stringRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet);
+	bool 	stringRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet,int iVal);
 	bool 	intRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret);
 	bool 	intRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret, int iVal);
 	bool 	boolRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,bool &ret);
