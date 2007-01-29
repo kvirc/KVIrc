@@ -212,6 +212,14 @@ void KviIrcViewToolWidget::filterEnableNone()
 	forceRepaint();
 }
 
+void KviIrcViewToolWidget::hideEvent ( QHideEvent * ){
+	m_pIrcView->toggleToolWidget();
+}
+
+void KviIrcViewToolWidget::closeEvent ( QCloseEvent * e ){
+	m_pIrcView->toggleToolWidget();
+}
+
 void KviIrcViewToolWidget::filterLoad()
 {
 	QString szFile;

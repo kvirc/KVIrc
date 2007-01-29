@@ -39,14 +39,38 @@
 
 const QPixmap * KviLogListViewItemType::pixmap(int col) const 
 {
-    if(KviQString::equalCI(m_szTypeName,"channel"))
-        return g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL);
-    else if(KviQString::equalCI(m_szTypeName,"query"))
-        return g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY);
-    else if(KviQString::equalCI(m_szTypeName,"dcc"))
-        return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
-    else 
-        return g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE);
+	
+	switch(m_type)
+	{
+		case KviLogFile::Channel:
+			return g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL);
+		case KviLogFile::Query:
+			return g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY);
+		case KviLogFile::DccChat:
+			return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
+		case KviLogFile::Console:
+			return g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE);
+		default:
+			return g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP);
+	}
 }
+
+QString KviLogListViewItemType::text(int col) const
+{
+	switch(m_type)
+	{
+		case KviLogFile::Channel:
+			return __tr2qs_ctx("Channel","logview");
+		case KviLogFile::Query:
+			return __tr2qs_ctx("Query","logview");
+		case KviLogFile::DccChat:
+			return __tr2qs_ctx("DCC Chat","logview");
+		case KviLogFile::Console:
+			return __tr2qs_ctx("Console","logview");
+		default:
+			return __tr2qs_ctx("Other","logview");
+	}
+};
+
 
 #include "logviewwidget.moc"

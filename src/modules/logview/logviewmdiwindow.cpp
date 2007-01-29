@@ -32,6 +32,7 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 
+#include <qaccel.h>
 #include <qpixmap.h>
 #include <qsplitter.h>
 #include <qtoolbutton.h>
@@ -40,11 +41,18 @@
 #include <qdir.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
+#include <qlayout.h>
+#include <qpushbutton.h>
+#include <qprogressdialog.h> 
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
 #endif
 #include <qtextcodec.h>
+#include "kvi_styled_controls.h"
+#include <qdatetimeedit.h>
+#include <qlineedit.h>
+#include <qlabel.h>
 
 extern KviLogViewMDIWindow * g_pLogViewWindow;
 
@@ -69,8 +77,70 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemSelected(KviTalListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )));
 	
-	//m_pSearchTab  = new KviTalVBox(m_pTabWidget);
-	//m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Search","logview"));
+	m_pSearchTab  = new QWidget(m_pTabWidget);
+	m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Filter","logview"));
+
+	QGridLayout *layout = new QGridLayout(m_pSearchTab,10,2,3,5);
+	
+	m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
+	m_pShowChannelsCheck->setChecked(true);
+	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
+	
+	m_pShowQueryesCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
+	m_pShowQueryesCheck->setChecked(true);
+	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
+	
+	m_pShowConsolesCheck = new KviStyledCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
+	m_pShowConsolesCheck->setChecked(true);
+	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
+
+	m_pShowDccChatCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
+	m_pShowDccChatCheck->setChecked(true);
+	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
+	
+	m_pShowOtherCheck   = new KviStyledCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
+	m_pShowOtherCheck->setChecked(true);
+	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
+	
+	QLabel *l;
+	l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
+	layout->addMultiCellWidget(l,5,5,0,1);
+
+	l = new QLabel(__tr2qs_ctx("Log name mask:","logview"),m_pSearchTab);
+	m_pFileNameMask = new QLineEdit(m_pSearchTab);
+	connect(m_pFileNameMask,SIGNAL(returnPressed()),this,SLOT(applyFilter()));
+	layout->addWidget(l,6,0);
+	layout->addWidget(m_pFileNameMask,6,1);
+
+	l = new QLabel(__tr2qs_ctx("Log contents mask:","logview"),m_pSearchTab);
+	m_pContentsMask = new QLineEdit(m_pSearchTab);
+	connect(m_pContentsMask,SIGNAL(returnPressed()),this,SLOT(applyFilter()));
+	layout->addWidget(l,7,0);
+	layout->addWidget(m_pContentsMask,7,1);
+
+	m_pEnableFromFilter = new KviStyledCheckBox(__tr2qs_ctx("Only older than","logview"),m_pSearchTab);
+	m_pFromDateEdit = new QDateEdit(m_pSearchTab);
+	m_pFromDateEdit->setDate(QDate::currentDate());
+	layout->addWidget(m_pEnableFromFilter,8,0);
+	layout->addWidget(m_pFromDateEdit,8,1);
+	connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
+	m_pFromDateEdit->setEnabled(false);
+
+	m_pEnableToFilter = new KviStyledCheckBox(__tr2qs_ctx("Only newier than","logview"),m_pSearchTab);
+	m_pToDateEdit = new QDateEdit(m_pSearchTab);
+	m_pToDateEdit->setDate(QDate::currentDate());
+	layout->addWidget(m_pEnableToFilter,9,0);
+	layout->addWidget(m_pToDateEdit,9,1);
+	connect(m_pEnableToFilter,SIGNAL(toggled(bool)),m_pToDateEdit,SLOT(setEnabled(bool)));
+	m_pToDateEdit->setEnabled(false);
+
+	QPushButton *pb = new QPushButton(__tr2qs_ctx("Apply filter","logview"),m_pSearchTab);
+	connect(pb,SIGNAL(clicked()),this,SLOT(applyFilter()));
+	layout->addWidget(pb,10,1);
+
+	QWidget *w = new QWidget(m_pSearchTab);
+	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
+	layout->addWidget(w,11,1);
 
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
 	m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
@@ -83,7 +153,13 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
 	
-	oneTimeSetup();
+	cacheFileList();
+	setupItemList();
+
+	QAccel *a = new QAccel( this );
+        a->connectItem( a->insertItem(Key_F+CTRL),
+                        m_pIrcView,
+                        SLOT(toggleToolWidget()) );
 }
 
 
@@ -92,6 +168,12 @@ KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {
     g_pLogViewWindow = 0;
 }
+
+void KviLogViewMDIWindow::applyFilter()
+{
+	setupItemList();
+}
+
 
 QPixmap * KviLogViewMDIWindow::myIconPtr()
 {
@@ -128,90 +210,113 @@ QSize KviLogViewMDIWindow::sizeHint() const
 	return ret;
 }
 
-void KviLogViewMDIWindow::oneTimeSetup()
+void KviLogViewMDIWindow::setupItemList()
 {
-    m_pListView->clear();
-    KviStr tmp, lastTypeToken, lastNameToken;
-    QString szFname;
-    KviStr typeToken, nameToken, dateToken;
-    lastTypeToken = "";
-    lastNameToken = "";
+	m_pListView->clear();
+	KviLogFile *pFile;
+	m_logList.begin();
+	KviLogListViewItem *pLastCategory=0;
+	KviLogListViewItemFolder *pLastGroupItem;
+	QString szLastGroup;
+	QString szCurGroup;
+	const bool bShowChannel=m_pShowChannelsCheck->isChecked();
+	const bool bShowQuery=m_pShowQueryesCheck->isChecked();
+	const bool bShowConsole=m_pShowConsolesCheck->isChecked();
+	const bool bShowOther=m_pShowOtherCheck->isChecked();
+	const bool bShowDccChat=m_pShowDccChatCheck->isChecked();
 
-    KviLogListViewItemType * typeNode;
-    KviLogListViewItemType * lastTypeNode = 0;
-    KviLogListViewItem * nameNode;
-    KviLogListViewItem * lastNameNode = 0;
-    KviLogListViewLog * logNode;
+	const bool filterFromDate=m_pEnableFromFilter->isChecked();
+	const bool filterToDate=m_pEnableToFilter->isChecked();
 
-    QStringList m_pFileNames = getFileNames();
-    m_pFileNames.sort();
+	const QString nameFilterText = m_pFileNameMask->text();
+	const bool enableNameFilter = !nameFilterText.isEmpty();
+
+	const QString contentFilterText = m_pContentsMask->text();
+	const bool enableContentFilter = !contentFilterText.isEmpty();
+
+	QDate fromDate = m_pFromDateEdit->date();
+	QDate toDate   = m_pToDateEdit->date();
+
+	QString textBuffer;
+
+	QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
+		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
+                          this, "progress", TRUE );
+
+	int i=0;
+	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
+	{
+		progress.setProgress( i );
+		i++;
+		g_pApp->processEvents();
+
+		if ( progress.wasCanceled() )
+			break;
+
+		if(pFile->type()==KviLogFile::Channel && !bShowChannel)
+			continue;
+		if(pFile->type()==KviLogFile::Console && !bShowConsole)
+			continue;
+		if(pFile->type()==KviLogFile::DccChat && !bShowDccChat)
+			continue;
+		if(pFile->type()==KviLogFile::Other && !bShowOther)
+			continue;
+		if(pFile->type()==KviLogFile::Query && !bShowQuery)
+			continue;
+
+		if(filterFromDate)
+			if(pFile->date()<fromDate)
+				continue;
+
+		if(filterToDate)
+			if(pFile->date()>toDate)
+				continue;
+
+		if(enableNameFilter)
+			if(!KviQString::matchStringCI(nameFilterText,pFile->name()))
+				continue;
+
+		if(enableContentFilter)
+		{
+			pFile->getText(textBuffer,m_szLogDirectory);
+			if(!KviQString::matchStringCI(contentFilterText,textBuffer))
+				continue;
+		}
+
+		if(pLastCategory)
+		{
+			if(pLastCategory->m_type!=pFile->type())
+				pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
+		} else {
+			pLastCategory = new KviLogListViewItemType(m_pListView,pFile->type());
+		}
+
+		KviQString::sprintf(szCurGroup,__tr2qs_ctx("%Q on %Q","logview"),&(pFile->name()),
+			&(pFile->network())
+			);
+
+		if(szLastGroup!=szCurGroup) {
+			szLastGroup=szCurGroup;
+			pLastGroupItem=new KviLogListViewItemFolder(pLastCategory,szLastGroup);
+		}
+		new KviLogListViewLog(pLastGroupItem,pFile->type(),pFile);
+	}
+	progress.setProgress( m_logList.count() );
+}
+
+void KviLogViewMDIWindow::cacheFileList()
+{
+	QStringList m_pFileNames = getFileNames();
+	m_pFileNames.sort();
+	QString szFname;
 
     for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
     {
         szFname=(*it);
         QFileInfo fi(szFname);
-        if(fi.extension(false)=="tmp")
-        	continue;
-#ifdef COMPILE_ZLIB_SUPPORT
-		if(fi.extension(false)=="gz")
-        	tmp = fi.baseName(true);
-        else
-#endif
-        	tmp = szFname;
-        typeToken = tmp.getToken('_');
-        // Ignore non-logs files, this includes '.' and '..'
-        if( (!kvi_strEqualCI(typeToken.ptr(),"channel")) && (!kvi_strEqualCI(typeToken.ptr(),"console")) && (!kvi_strEqualCI(typeToken.ptr(),"dccchat")) && (!kvi_strEqualCI(typeToken.ptr(),"query")) )
-            continue;
-
-		// <type>_<name>.<network>_<date>.log
-
-		KviStr undecoded = tmp.getToken('.');
-		nameToken.hexDecode(undecoded.ptr());
-		
-		int idx = tmp.findFirstIdx("_2");
-		if(idx != -1)
-		{
-			undecoded = tmp.left(idx);
-			tmp.cutLeft(idx + 1);
-		} else 
-			undecoded = tmp.getToken('_');
-
-		KviStr network;
-		network.hexDecode(undecoded.ptr());
-		nameToken.append("@");
-		nameToken.append(network);
-        dateToken.hexDecode(tmp.ptr());
-        dateToken.cutRight(4); // '.log'
-
-        if(typeToken == "dccchat") // 'ip.add.r_ip.add.r_'
-        {
-            dateToken.getToken('_');dateToken.getToken('_');
-        }
-        if(typeToken == lastTypeToken)
-        {
-            if(nameToken == lastNameToken)
-                logNode = new KviLogListViewLog(lastNameNode, dateToken.ptr(),(*it).ascii(),lastNameToken.ptr());
-            else // New name node (channel-#kvirc, query-Kane,...)
-            {
-                lastNameToken = nameToken;
-                nameNode = new KviLogListViewItem(lastTypeNode,typeToken.ptr(),nameToken.ptr());
-                lastNameNode = nameNode;
-
-                logNode = new KviLogListViewLog(lastNameNode, dateToken.ptr(),(*it).ascii(),lastNameToken.ptr());
-            }
-        }else // New type node (channel, query...)
-        {
-            lastTypeToken = typeToken;
-            typeNode = new KviLogListViewItemType(m_pListView,typeToken.ptr());
-            lastTypeNode = typeNode;
-
-            lastNameToken = nameToken;
-            nameNode = new KviLogListViewItem(lastTypeNode,typeToken.ptr(),nameToken.ptr());
-            lastNameNode = nameNode;
-
-            logNode = new KviLogListViewLog(lastNameNode,dateToken.ptr(),(*it).ascii(),lastNameToken.ptr());
-        }
-    }
+		if(fi.extension(false)=="gz" || fi.extension(false)=="log")
+			m_logList.append(new KviLogFile(szFname));
+	}
 }
 
 void KviLogViewMDIWindow::itemSelected(KviTalListViewItem * it)
@@ -219,53 +324,14 @@ void KviLogViewMDIWindow::itemSelected(KviTalListViewItem * it)
 	bool bCompressed=0;
 	//A parent node
 	m_pIrcView->clearBuffer();
-	if(!it || !it->parent() || (((KviLogListViewItem *)it)->fileName(0).isEmpty()))
+	if(!it || !it->parent() || !(((KviLogListViewItem *)it)->m_pFileData) )
 	{
 		return;
 	}
 	
-	if(((KviLogListViewItem *)it)->fileName(0).isEmpty())return;
-	
-	KviStr logName = m_szLogDirectory;
-	QFile logFile;
 	QString text;
-	logName.append(((KviLogListViewLog *)it)->fileName(0));
-	QFileInfo fi(QString(logName.ptr()));
-#ifdef COMPILE_ZLIB_SUPPORT
-	if(fi.extension(false)=="gz")
-	{
-		gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(logName.ptr()).data(),"rb");
-		if(file)
-		{
-			char buff[1025];
-			int len;
-			QCString data;
-			len=gzread(file,buff,1024);
-			while(len>0)
-			{
-				buff[len]=0;
-				data.append(buff);
-				len=gzread(file,buff,1024);
-			}
-			gzclose(file);
-			text = QString::fromUtf8(data);
-		} else {
-			debug("Cannot open compressed file %s",logName.ptr());
-		}
-	} else {
-#endif
-		logFile.setName(QString::fromUtf8(logName.ptr()));
-		
-		if(!logFile.open(IO_ReadOnly))
-		return;
-	
-		QByteArray bytes;
-		bytes=logFile.readAll();
-		text = QString::fromUtf8(bytes.data(), bytes.size());
-		logFile.close();
-#ifdef COMPILE_ZLIB_SUPPORT
-	}
-#endif
+	((KviLogListViewItem *)it)->m_pFileData->getText(text,m_szLogDirectory);
+
 	QStringList lines=QStringList::split('\n',text);
 	bool bOk;
 	int iMsgType;
@@ -312,6 +378,80 @@ void KviLogViewMDIWindow::deleteCurrent()
 			m_pIrcView->clearBuffer();
 		}
 	}
+}
+
+KviLogFile::KviLogFile(const QString& name)
+{
+	m_szFilename=name;
+	QFileInfo fi(m_szFilename);
+	m_bCompressed=(fi.extension(false)=="gz");
+	QString typeToken = m_szFilename.section('_',0,0);
+    // Ignore non-logs files, this includes '.' and '..'
+	if( KviQString::equalCI(typeToken,"channel") )
+		m_type = Channel;
+	else if( KviQString::equalCI(typeToken,"console") )
+		m_type = Console;
+	else if( KviQString::equalCI(typeToken,"dccchat") )
+		m_type = DccChat;
+	else if( KviQString::equalCI(typeToken,"query") )
+		m_type = Query;
+	else
+		m_type = Other;
+
+	KviStr undecoded = m_szFilename.section('.',0,0).section('_',1,1);
+	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
+
+	undecoded = m_szFilename.section('.',1,1).section('_',0,0);
+	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
+	
+	QString szDate = m_szFilename.section('.',1,3).section('_',1,1);
+	int iYear = szDate.section('.',0,0).toInt();
+	int iMonth = szDate.section('.',1,1).toInt();
+	int iDay = szDate.section('.',2,2).toInt();
+	m_date.setYMD(iYear,iMonth,iDay);
+	
+	//debug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
+}
+
+void KviLogFile::getText(QString & text,const QString& logDir){
+	QString logName = logDir;
+	QFile logFile;
+	logName.append(fileName());
+#ifdef COMPILE_ZLIB_SUPPORT
+	if(m_bCompressed)
+	{
+		gzFile file=gzopen(logName.local8Bit().data(),"rb");
+		if(file)
+		{
+			char buff[1025];
+			int len;
+			QCString data;
+			len=gzread(file,buff,1024);
+			while(len>0)
+			{
+				buff[len]=0;
+				data.append(buff);
+				len=gzread(file,buff,1024);
+			}
+			gzclose(file);
+			text = QString::fromUtf8(data);
+		} else {
+			debug("Cannot open compressed file %s",logName.local8Bit().data());
+		}
+	} else {
+#endif
+		logFile.setName(logName);
+		
+		if(!logFile.open(IO_ReadOnly))
+		return;
+	
+		QByteArray bytes;
+		bytes=logFile.readAll();
+		text = QString::fromUtf8(bytes.data(), bytes.size());
+		logFile.close();
+#ifdef COMPILE_ZLIB_SUPPORT
+	}
+#endif
 }
 
 #include "logviewmdiwindow.moc"

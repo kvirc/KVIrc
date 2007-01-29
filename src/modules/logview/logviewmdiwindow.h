@@ -27,11 +27,47 @@
 
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_listview.h"
+#include "kvi_list.h"
 #include <qtabwidget.h>
+#include <qdatetime.h> 
 
 class KviTalListView;
 class QStringList;
 class KviLogViewWidget;
+class QCheckBox;
+class QLineEdit;
+class QDateEdit;
+
+class KviLogFile {
+
+public:
+	
+	enum KviLogTypes {
+		Channel,
+		Console,
+		Query,
+		DccChat,
+		Other
+	};
+
+	KviLogFile(const QString& name);
+
+	const QString & fileName() { return m_szFilename; };
+	const QString & name() { return m_szName; };
+	const QString & network() { return m_szNetwork; };
+	const QDate   & date() { return m_date; };
+
+	void getText(QString & text,const QString& logDir);
+
+	KviLogTypes type() { return m_type; };
+private:
+	KviLogTypes  m_type;
+	QString      m_szFilename;
+	bool         m_bCompressed;
+	QString      m_szName;
+	QString      m_szNetwork;
+	QDate        m_date;
+};
 
 class KviLogViewMDIWindow : public KviWindow , public KviModuleExtension
 {
@@ -40,16 +76,37 @@ public:
 	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
 	~KviLogViewMDIWindow();
 protected:
-	KviTalListView       * m_pListView;
-	QStringList     * m_pFileNames;
-	QString           m_szLogDirectory;
-	QTabWidget    * m_pTabWidget;
+	KviPtrList<KviLogFile> m_logList;
+
+	KviTalListView     * m_pListView;
+
+	// Type filter
+	QCheckBox          * m_pShowChannelsCheck;
+	QCheckBox          * m_pShowQueryesCheck;
+	QCheckBox          * m_pShowConsolesCheck;
+	QCheckBox          * m_pShowOtherCheck;
+	QCheckBox          * m_pShowDccChatCheck;
+
+	// Content filter
+	QLineEdit          * m_pFileNameMask;
+	QLineEdit          * m_pContentsMask;
+
+	// Date/time mask
+	QCheckBox          * m_pEnableFromFilter;
+	QCheckBox          * m_pEnableToFilter;
+	QDateEdit          * m_pFromDateEdit;
+	QDateEdit          * m_pToDateEdit;
+
+	QStringList        * m_pFileNames;
+	QString              m_szLogDirectory;
+	QTabWidget         * m_pTabWidget;
 	KviTalVBox         * m_pIndexTab;
-	KviTalVBox         * m_pSearchTab;
+	QWidget            * m_pSearchTab;
 protected:
 	QStringList getFileNames();
 	
-	void oneTimeSetup();
+	void setupItemList();
+	void cacheFileList();
 
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
@@ -60,6 +117,8 @@ protected slots:
 	void rightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
 	void itemSelected(KviTalListViewItem * it);
 	void deleteCurrent();
+	void applyFilter();
 };
 
 #endif //_LOGVIEWMDIWINDOW_H_
+

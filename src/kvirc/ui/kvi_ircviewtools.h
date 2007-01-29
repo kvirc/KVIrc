@@ -109,6 +109,8 @@ protected slots:
 	void filterSave();
 	void filterLoad();
 protected:
+	virtual void hideEvent( QHideEvent * );
+	virtual void closeEvent( QCloseEvent * e );
 	virtual void mouseMoveEvent(QMouseEvent *);
 	virtual void mousePressEvent(QMouseEvent *);
 };

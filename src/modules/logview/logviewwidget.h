@@ -25,6 +25,7 @@
 
 #include "kvi_window.h"
 #include "kvi_scripteditor.h"
+#include "logviewmdiwindow.h"
 
 #include "kvi_tal_listview.h"
 
@@ -34,41 +35,49 @@ class KviScriptEditor;
 class KviLogListViewItem : public KviTalListViewItem
 {
 public:
-	KviLogListViewItem(KviTalListViewItem * par, const QString & typeName, const QString & name)
-	: KviTalListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
-	KviLogListViewItem(KviTalListView * par, const QString & typeName, const QString & name)
-	: KviTalListViewItem(par), m_szTypeName(typeName), m_szName(name) {};
+	KviLogListViewItem(KviTalListViewItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	: KviTalListViewItem(par), m_type(type), m_pFileData(fileData) {};
+	KviLogListViewItem(KviTalListView * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	: KviTalListViewItem(par), m_type(type), m_pFileData(fileData) {};
 	~KviLogListViewItem() {};
 public:
-	QString m_szTypeName;
-	QString m_szName;
-	virtual QString fileName(int col) const { return QString::null; };
-	virtual QString text(int col) const { return m_szName; };
+	KviLogFile::KviLogTypes m_type;
+	KviLogFile*             m_pFileData;
+
+	virtual QString fileName(int col) const { return m_pFileData ? m_pFileData->name() : QString::null; };
+	virtual QString text(int col) const { return m_pFileData ? m_pFileData->name() : QString::null; };
 };
 
+class KviLogListViewItemFolder : public KviLogListViewItem
+{
+public:
+	KviLogListViewItemFolder(KviTalListViewItem * par, const QString& label)
+	: KviLogListViewItem(par,KviLogFile::Other,0),m_szLabel(label) {};
+	~KviLogListViewItemFolder() {};
+public:
+	QString m_szLabel;
+	virtual QString text(int col) const { return m_szLabel; };
+};
 
 class KviLogListViewItemType : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemType(KviTalListView * par, const QString & typeName)
-	: KviLogListViewItem(par,typeName,typeName) {};
+	KviLogListViewItemType(KviTalListView * par, KviLogFile::KviLogTypes type)
+	: KviLogListViewItem(par,type,0) {};
 	~KviLogListViewItemType() {};
 public:
 	virtual const QPixmap * pixmap(int col) const;
+	virtual QString text(int col) const;
 };
 
 
 class KviLogListViewLog : public KviLogListViewItem
 {
 public:
-	KviLogListViewLog(KviTalListViewItem * par,const QString & date, const QString & fileName, const QString & owner)
-	: KviLogListViewItem(par,"",date), m_szFileName(fileName), m_szOwner(owner) {};
+	KviLogListViewLog(KviTalListViewItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	: KviLogListViewItem(par,type,fileData){};
 	~KviLogListViewLog() {};
-public:
-	QString m_szFileName;
-	QString m_szOwner;
-	virtual QString fileName(int col) const { return m_szFileName; };
-	virtual QString owner(int col) const { return m_szOwner; };
+	virtual QString text(int col) const { return m_pFileData->date().toString("dd.MM.yyyy"); };
 };
 
 
