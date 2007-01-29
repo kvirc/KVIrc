@@ -424,6 +424,7 @@ void KviIrcServerDataBase::load(const QString & filename)
 			n->m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
 			n->m_pNickServRuleSet = KviNickServRuleSet::load(&cfg,QString::null);
 			n->m_bAutoConnect = cfg.readBoolEntry("AutoConnect",false);
+			n->m_szUserIdentityId = cfg.readQStringEntry("UserIdentityId");
 			if(n->m_bAutoConnect)
 			{
 				if(!m_pAutoConnectOnStartupNetworks)
@@ -500,7 +501,8 @@ void KviIrcServerDataBase::save(const QString &filename)
 		if(n->autoJoinChannelList())
 			cfg.writeEntry("AutoJoinChannels",*(n->autoJoinChannelList()));
 		if(n->m_szName == m_szCurrentNetwork)cfg.writeEntry("Current",true);
-
+		if(!n->m_szUserIdentityId.isEmpty())
+			cfg.writeEntry("UserIdentityId",n->m_szUserIdentityId);
 		int i=0;
 		for(KviIrcServer *s = r->m_pServerList->first();s;s = r->m_pServerList->next())
 		{

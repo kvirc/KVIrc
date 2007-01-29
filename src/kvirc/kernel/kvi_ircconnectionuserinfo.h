@@ -47,12 +47,13 @@ private:
 	bool       m_bAway;               // is the user away ?
 	kvi_time_t m_tAway;               // time at that the user went away
 	QString    m_szNickBeforeAway;    // the nickname that the user had just before going away
-	/*	From bugtrack:
-	On many IRC networks the host is masked or hashed, and if one also is connected through a LAN, it is basically impossible to initiate DCC transfers, as 192.168.0.13 or similar will be sent as IP.
-
-	But IRC servers usually (at least in my experience) send the unmasked host in the 001 raw event with something like ":Welcome to the Internet Relay Chat network, nick!ident@host". I think it'd be a good idea to just grab the IP from that event and use it for DCC transfers by default.
-	*/
-	QString	   m_szUnmaskedHostName;  
+	// From bugtrack:
+	// On many IRC networks the host is masked or hashed, and if one also is connected through a LAN,
+	// it is basically impossible to initiate DCC transfers, as 192.168.0.13 or similar will be sent as IP.
+	// But IRC servers usually (at least in my experience) send the unmasked host in the 001 raw event
+	// with something like ":Welcome to the Internet Relay Chat network, nick!ident@host". I think
+	// it'd be a good idea to just grab the IP from that event and use it for DCC transfers by default.
+	QString    m_szUnmaskedHostName;
 public:
 	const QString & realName(){ return m_szRealName; };
 	const QString & nickName(){ return m_szNickName; };

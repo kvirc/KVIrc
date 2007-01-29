@@ -27,13 +27,14 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_valuelist.h"
 
 #ifdef COMPILE_KDE_SUPPORT
 
 typedef KviValueList<KviQCString> KviQCStringList;
 
-class KviDCOPHelper
+class KVILIB_API KviDCOPHelper
 {
 
 public:
@@ -41,12 +42,12 @@ public:
 	// Constructs a DCOP helper object.
 	// bStartApp: tries to start application when a dcop call is about to be made and the app is not already running
 	// szAppID: application name as seen by DCOP
-	KviDCOPHelper(bool bStartApp, const QCString &szAppId);
+	KviDCOPHelper(bool bStartApp, const KviQCString &szAppId);
 	~KviDCOPHelper();
 
 protected:
 
-	QCString 	m_szAppId;
+	KviQCString 	m_szAppId;
 	bool 	m_bStartApp;
 
 protected:
@@ -58,22 +59,22 @@ protected:
 
 	// naming convention: [return value] Ret [argument type(s)] DCOPCall
 
-	bool 	voidRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc);
-	bool 	voidRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal);
-	bool 	voidRetIntBoolDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal, bool bVal);
-	bool 	voidRetIntIntIntDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal1, int iVal2, int iVal3);
-	bool 	voidRetBoolDCOPCall(const QCString &szObj,const QCString &szFunc,bool bVal);
-	bool 	voidRetStringDCOPCall(const QCString &szObj,const QCString &szFunc,const QString &szVal);
-	bool 	voidRetFloatDCOPCall(const QCString &szObj,const QCString &szFunc,float fVal);
-	bool 	stringRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet);
-	bool 	stringRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,QString &szRet,int iVal);
-	bool 	intRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret);
-	bool 	intRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret, int iVal);
-	bool 	boolRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,bool &ret);
+	bool 	voidRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc);
+	bool 	voidRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int iVal);
+	bool 	voidRetIntBoolDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int iVal, bool bVal);
+	bool 	voidRetIntIntIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int iVal1, int iVal2, int iVal3);
+	bool 	voidRetBoolDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool bVal);
+	bool 	voidRetStringDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,const QString &szVal);
+	bool 	voidRetFloatDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,float fVal);
+	bool 	stringRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString &szRet);
+	bool 	stringRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString &szRet,int iVal);
+	bool 	intRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int &ret);
+	bool 	intRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int &ret, int iVal);
+	bool 	boolRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool &ret);
 
-	bool		qvalueListIntRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,KviValueList<int> &ret, int iVal);
-	bool		qcstringListRetIntDCOPCall(const QCString &szObj,const QCString &szFunc,KviQCStringList &ret, int iVal);
-	bool		qcstringListRetVoidDCOPCall(const QCString &szObj,const QCString &szFunc,KviQCStringList &ret);
+	bool		qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviValueList<int> &ret, int iVal);
+	bool		qcstringListRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviQCStringList &ret, int iVal);
+	bool		qcstringListRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviQCStringList &ret);
 };
 
 #endif //COMPILE_KDE_SUPPORT

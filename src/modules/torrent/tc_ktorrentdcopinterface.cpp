@@ -25,12 +25,15 @@
 //
 //=============================================================================
 
+#ifdef COMPILE_KDE_SUPPORT
+
 #include "kvi_app.h"
-#include "dcopclient.h"
+
+
+#include "dcopclient.h" // <-- this include should be hidden in kvilib
 
 #include "tc_ktorrentdcopinterface.h"
 
-#ifdef COMPILE_KDE_SUPPORT
 
 #include "kvi_locale.h"
 #include <qtimer.h>
@@ -490,6 +493,8 @@ bool KviKTorrentDCOPInterface::setMaxDownloadSpeed(int kbytes_per_sec)
 	return true;
 }
 
-#endif // COMPILE_KDE_SUPPORT
 
 #include "tc_ktorrentdcopinterface.moc"
+
+#endif // COMPILE_KDE_SUPPORT
+

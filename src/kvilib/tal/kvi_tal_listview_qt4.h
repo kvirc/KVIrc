@@ -48,7 +48,7 @@ public:
 	KviTalListViewItem * selectedItem() const { return (KviTalListViewItem *)Q3ListView::selectedItem(); };
 	KviTalListViewItem * currentItem() const { return (KviTalListViewItem *)Q3ListView::currentItem(); };
 	KviTalListViewItem * itemAt(const QPoint &pnt) const { return (KviTalListViewItem *)Q3ListView::itemAt(pnt); };
-ignals:
+signals:
 	void selectionChanged(KviTalListViewItem * pItem);
 	void currentChanged(KviTalListViewItem * pItem);
 	void clicked(KviTalListViewItem * pItem);

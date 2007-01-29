@@ -55,6 +55,9 @@ public:
 	unsigned short int m_uFlags;              // flags
 
 	// Extended data
+	QString            m_szUserIdentityId;    // The user identity to use for this server: if empty
+	                                          // Then use the network identity instead
+	
 	QString            m_szUser;              // special username
 	QString            m_szPass;              // special password
 	QString            m_szNick;              // special nickname
@@ -67,13 +70,13 @@ public:
 	QStringList      * m_pChannelList;        // Channels to auto join
 	bool               m_bAutoConnect;        // autoconnect
 	QString            m_szId;                // the server's may-be-unique id, may be auto-generated
-	int		   m_iProxy;		  // proxy server's id
+	int                m_iProxy;              // proxy server's id
 public:
 	int proxy() { return m_iProxy; };
 	KviProxy* proxyServer(KviProxyDataBase * pDb);
 	
 	kvi_u32_t port() const { return m_uPort; };
-	const QString &ipAddress() const { return m_szIp; };
+	const QString & ipAddress() const { return m_szIp; };
 	const QString & password() const { return m_szPass; };
 	const QString & nickName() const { return m_szNick; };
     const QString & initUMode() const { return m_szInitUMode; };
@@ -87,6 +90,7 @@ public:
 	const QString & description() const { return m_szDescription; };
 	const QString & encoding() const { return m_szEncoding; };
 	const QString & id() const { return m_szId; };
+	const QString & userIdentityId() const { return m_szUserIdentityId; };
 	bool autoConnect() const { return m_bAutoConnect; };
 	QStringList* autoJoinChannelList(){ return m_pChannelList; };
 	bool isIpV6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
@@ -109,7 +113,8 @@ public:
 	void setLinkFilter(const QString &f){ m_szLinkFilter = f; };
 	// the channel list must be allocated with new!
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
-	void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect;};
+	void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect; };
+	void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
 	void setIpV6(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_IPV6;
@@ -152,7 +157,9 @@ protected:
 	QString              m_szOnLoginCommand;          // the command to run after login
     QStringList        * m_pChannelList;              // Channels to auto join
 	KviNickServRuleSet * m_pNickServRuleSet;          // set of nick serv rules
-	bool                 m_bAutoConnect;        // autoconnect
+	bool                 m_bAutoConnect;              // autoconnect
+	QString              m_szUserIdentityId;          // The user identity to use for this server: if empty
+	                                                  // Then use the global primary identity
 public:
 	const QString & name() const { return m_szName; };
 	const QString & encoding() const { return m_szEncoding; };
@@ -162,6 +169,7 @@ public:
 	const QString & userName() const { return m_szUserName; };
 	const QString & onLoginCommand() const { return m_szOnLoginCommand; };
 	const QString & onConnectCommand() const { return m_szOnConnectCommand; };
+	const QString & userIdentityId() const { return m_szUserIdentityId; };
 	bool autoConnect() const { return m_bAutoConnect; };
 	QStringList* autoJoinChannelList(){ return m_pChannelList; };
 	KviNickServRuleSet * nickServRuleSet(){ return m_pNickServRuleSet; };
@@ -177,6 +185,7 @@ public:
 	void setUserName(const QString &u){ m_szUserName = u; };
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
 	void setAutoConnect(bool bAutoConnect){ m_bAutoConnect = bAutoConnect; };
+	void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
 };
 
 

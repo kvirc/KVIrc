@@ -51,6 +51,7 @@
 #include "kvi_netutils.h"
 #include "kvi_ircurl.h"
 #include "kvi_qcstring.h"
+#include "kvi_useridentity.h"
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
@@ -509,6 +510,25 @@ void KviIrcContext::connectToCurrentServer()
 		szBindAddress = m_pAsynchronousConnectionData->szBindAddress;
 	}
 
+	// Find out the identity we'll be using in this connection
+	// First check the server for one
+	
+	const KviUserIdentity * pIdentity = 0;
+	
+	QString szUserIdentityId = srv->userIdentityId();
+	if(!szUserIdentityId.isEmpty())
+		pIdentity = KviUserIdentityManager::instance()->findIdentity(szUserIdentityId);
+
+	// If not found, look in the network instead
+	if(!pIdentity)
+		szUserIdentityId = net->userIdentityId();
+
+	if(!szUserIdentityId.isEmpty())
+		pIdentity = KviUserIdentityManager::instance()->findIdentity(szUserIdentityId);
+	
+	// If not found, get the default identity (this is GRANTED to be never null, eventually filled up with defaults)
+	pIdentity = KviUserIdentityManager::instance()->defaultIdentity();
+
 
 	if(m_pConnection)delete m_pConnection;
 	m_pConnection = new KviIrcConnection(
@@ -518,7 +538,8 @@ void KviIrcContext::connectToCurrentServer()
 					srv,
 					prx,
 					szBindAddress.ptr()
-				)
+				),
+				new KviUserIdentity(*pIdentity)
 			);
 
 	setState(Connecting);

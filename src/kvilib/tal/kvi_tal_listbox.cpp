@@ -30,7 +30,7 @@
 	#include <qstyle.h>
 	#include <qapplication.h>
 	
-	KviTalListBox::KviTalListBox(QWidget * pParent,Qt::WFlags f = 0)
+	KviTalListBox::KviTalListBox(QWidget * pParent,Qt::WFlags f)
 	: Q3ListBox(pParent,0,f)
 	{
 		connect(this,SIGNAL(highlighted(Q3ListBoxItem *)),this,SLOT(redirect_highlighted(Q3ListBoxItem *)));

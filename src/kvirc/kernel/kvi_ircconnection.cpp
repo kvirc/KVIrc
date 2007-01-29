@@ -62,9 +62,9 @@
 #include "kvi_databuffer.h"
 #include "kvi_lagmeter.h"
 #include "kvi_kvs_eventtriggers.h"
-
 #include "kvi_kvs_script.h"
 #include "kvi_mirccntrl.h"
+#include "kvi_useridentity.h"
 
 #include <qtimer.h>
 #include <qtextcodec.h>
@@ -73,13 +73,14 @@ extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
-KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget)
+KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity)
 : QObject()
 {
 	m_pContext = pContext;
 	m_pConsole = pContext->console();
 	m_pFrame = m_pConsole->frame();
 	m_pTarget = pTarget;
+	m_pUserIdentity = pIdentity;
 	m_pChannelList = new KviPtrList<KviChannel>;
 	m_pChannelList->setAutoDelete(false);
 	m_pQueryList = new KviPtrList<KviQuery>;
@@ -142,6 +143,7 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pNetsplitDetectorData;
 	delete m_pAsyncWhoisData;
 	delete m_pStatistics;
+	delete m_pUserIdentity;
 }
 
 void KviIrcConnection::setEncoding(const QString &szEncoding)
@@ -972,7 +974,6 @@ void KviIrcConnection::loginToIrcServer()
 		return;
 	}
 
-
 	// permanent info in the user database
 	m_pConsole->notifyListView()->join(m_pUserInfo->nickName(),"*","*");
 
@@ -999,22 +1000,31 @@ void KviIrcConnection::loginToIrcServer()
 
 	// on connect stuff ?
 
-	KviStr tmp = pNet->onConnectCommand();
+	QString tmp = pNet->onConnectCommand();
 	tmp.stripWhiteSpace();
-	if(tmp.hasData())
+	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled network specific \"on connect\" commands"));
-		KviKvsScript::run(tmp.ptr(),m_pConsole);
+		KviKvsScript::run(tmp,m_pConsole);
 	}
 
 	tmp = pServer->onConnectCommand();
 	tmp.stripWhiteSpace();
-	if(tmp.hasData())
+	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled server specific \"on connect\" commands"));
-		KviKvsScript::run(tmp.ptr(),m_pConsole);
+		KviKvsScript::run(tmp,m_pConsole);
+	}
+
+	tmp = m_pUserIdentity->onConnectCommand();
+	tmp.stripWhiteSpace();
+	if(!tmp.isEmpty())
+	{
+		if(_OUTPUT_VERBOSE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled identity specific \"on connect\" commands"));
+		KviKvsScript::run(tmp,m_pConsole);
 	}
 
 	// and wait for the server to agree...
@@ -1074,22 +1084,31 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	resurrectDeadQueries();
 
 	// on connect stuff ?
-	KviStr tmp = target()->network()->onLoginCommand();
+	QString tmp = target()->network()->onLoginCommand();
 	tmp.stripWhiteSpace();
-	if(tmp.hasData())
+	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled network specific \"on login\" commands"));
-		KviKvsScript::run(tmp.ptr(),m_pConsole);
+		KviKvsScript::run(tmp,m_pConsole);
 	}
 
 	tmp = target()->server()->onLoginCommand();
 	tmp.stripWhiteSpace();
-	if(tmp.hasData())
+	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled server specific \"on login\" commands"));
-		KviKvsScript::run(tmp.ptr(),m_pConsole);
+		KviKvsScript::run(tmp,m_pConsole);
+	}
+
+	tmp = m_pUserIdentity->onLoginCommand();
+	tmp.stripWhiteSpace();
+	if(!tmp.isEmpty())
+	{
+		if(_OUTPUT_VERBOSE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled identity specific \"on login\" commands"));
+		KviKvsScript::run(tmp,m_pConsole);
 	}
 
 	// Set the configured umode

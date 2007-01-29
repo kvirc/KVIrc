@@ -50,6 +50,8 @@ bool KviUserIdentity::load(KviConfig &cfg)
 	m_szLanguages = cfg.readQStringEntry("Languages");
 	m_szOtherInfo = cfg.readQStringEntry("OtherInfo");
 	m_szUserMode = cfg.readQStringEntry("UserMode");
+	m_szOnConnectCommand = cfg.readQStringEntry("OnConnectCommand");
+	m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
 	return !(m_szId.isEmpty() || m_szNickName.isEmpty());
 }
 
@@ -72,6 +74,8 @@ bool KviUserIdentity::save(KviConfig &cfg)
 	cfg.writeEntry("Languages",m_szLanguages);
 	cfg.writeEntry("OtherInfo",m_szOtherInfo);
 	cfg.writeEntry("UserMode",m_szUserMode);
+	cfg.writeEntry("OnConnectCommand",m_szOnConnectCommand);
+	cfg.writeEntry("OnLoginCommand",m_szOnLoginCommand);
 	return true;
 }
 
@@ -106,6 +110,9 @@ void KviUserIdentity::copyFrom(const KviUserIdentity &src)
 	m_szOtherInfo = src.m_szOtherInfo;
 	
 	m_szUserMode = src.m_szUserMode;
+	
+	m_szOnConnectCommand = src.m_szOnConnectCommand;
+	m_szOnLoginCommand = src.m_szOnLoginCommand;
 }
 
 

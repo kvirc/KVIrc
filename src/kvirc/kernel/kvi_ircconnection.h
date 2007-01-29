@@ -54,6 +54,7 @@ class KviIrcConnectionStatistics;
 class KviLagMeter;
 class KviNotifyListManager;
 class KviDns;
+class KviUserIdentity;
 
 class QTimer;
 class QTextCodec;
@@ -70,7 +71,7 @@ public:
 	// only KviConsole can create this
 	// pContext must NOT be null
 	// pTarget must NOT be null and must be allocated with new! this class takes the ownership
-	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget);
+	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
 	~KviIrcConnection();
 public:
 	enum State { Idle, Connecting, Connected };
@@ -85,7 +86,13 @@ private:
 
 	KviIrcLink                           * m_pLink;                 // owned, never null
 	
+	// The initial informations about the user we'll send out to the server
+	// Note that the ACTUAL user informations are in m_pUserInfo instead
+	KviUserIdentity                      * m_pUserIdentity;         // owned, never null
+	
+	// The ACTUAL user informations
 	KviIrcConnectionUserInfo             * m_pUserInfo;             // owned, never null
+	// The ACTUAL server informations
 	KviIrcConnectionServerInfo           * m_pServerInfo;           // owned, never null
 
 	KviIrcConnectionStateData            * m_pStateData;            // owned, never null

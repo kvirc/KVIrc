@@ -66,6 +66,9 @@ protected:
 	QString m_szOtherInfo;
 	
 	QString m_szUserMode;
+	
+	QString m_szOnConnectCommand;
+	QString m_szOnLoginCommand;
 public:
 	const QString & id() const { return m_szId; };
 	const QString & nickName() const { return m_szNickName; };
@@ -83,6 +86,8 @@ public:
 	const QString & languages() const { return m_szLanguages; };
 	const QString & otherInfo() const { return m_szOtherInfo; };
 	const QString & userMode() const { return m_szUserMode; };
+	const QString & onConnectCommand() const { return m_szOnConnectCommand; };
+	const QString & onLoginCommand() const { return m_szOnLoginCommand; };
 	void setId(const QString &szId){ m_szId = szId; };
 	void setNickName(const QString &szNickName){ m_szNickName = szNickName; };
 	void setAltNickName1(const QString &szNickName){ m_szAltNickName1 = szNickName; };
@@ -100,6 +105,8 @@ public:
 	void setLanguages(const QString &szLanguages){ m_szLanguages = szLanguages; };
 	void setOtherInfo(const QString &szOtherInfo){ m_szOtherInfo = szOtherInfo; };
 	void setUserMode(const QString &szUserMode){ m_szUserMode = szUserMode; };
+	void setOnConnectCommand(const QString &szOnConnectCommand){ m_szOnConnectCommand = szOnConnectCommand; };
+	void setOnLoginCommand(const QString &szOnLoginCommand){ m_szOnLoginCommand = szOnLoginCommand; };
 protected:
 	void copyFrom(const KviUserIdentity &src);
 	bool save(KviConfig &cfg);
@@ -121,7 +128,8 @@ public:
 	static KviUserIdentityManager * instance(){ return m_pInstance; };
 
 	KviDict<KviUserIdentity> * identityDict(){ return m_pIdentityDict; };
-	
+	const KviUserIdentity * findIdentity(const QString &szId){ return m_pIdentityDict->find(szId); };
+	// NEVER NULL
 	const KviUserIdentity * defaultIdentity();
 
 	void setDefaultIdentity(const QString &szIdentityId){ m_szDefaultIdentity = szIdentityId; };

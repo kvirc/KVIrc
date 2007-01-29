@@ -40,7 +40,6 @@ public:
 	virtual ~KviTalListBox() {};
 public:
 	KviTalListBoxItem * firstItem() const { return (KviTalListBoxItem *)Q3ListBox::firstItem(); };
-	KviTalListBoxItem * firstItem() const { return (KviTalListBoxItem *)Q3ListBox::firstItem(); };
 	KviTalListBoxItem * selectedItem() const { return (KviTalListBoxItem *)Q3ListBox::selectedItem(); };
 	KviTalListBoxItem * item(int iIndex) const { return (KviTalListBoxItem *)Q3ListBox::item(iIndex); };
 signals:

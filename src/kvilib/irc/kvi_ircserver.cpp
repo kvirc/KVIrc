@@ -85,7 +85,8 @@ KviIrcServer::KviIrcServer(const KviIrcServer &serv)
 	m_szOnLoginCommand   = serv.m_szOnLoginCommand;
 	m_szLinkFilter       = serv.m_szLinkFilter;
 	m_szId               = serv.m_szId;
-	m_iProxy	     = serv.m_iProxy;
+	m_iProxy             = serv.m_iProxy;
+	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	if(serv.m_pChannelList)
 		m_pChannelList = new QStringList(*(serv.m_pChannelList));
 	else m_pChannelList = 0;
@@ -109,6 +110,7 @@ void KviIrcServer::operator=(const KviIrcServer &serv)
 	m_szOnLoginCommand   = serv.m_szOnLoginCommand;
 	m_szLinkFilter       = serv.m_szLinkFilter;
 	m_szId               = serv.m_szId;
+	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	m_iProxy	     = serv.m_iProxy;
 	if(m_pChannelList)delete m_pChannelList;
 	if(serv.m_pChannelList)
@@ -183,6 +185,8 @@ bool KviIrcServer::load(KviConfig * cfg,const QString &prefix)
 	setUseSSL(cfg->readBoolEntry(tmp,false));
 	KviQString::sprintf(tmp,"%QProxy",&prefix);
 	setProxy(cfg->readIntEntry(tmp,-2));
+	KviQString::sprintf(tmp,"%QUserIdentityId",&prefix);
+	m_szUserIdentityId = cfg->readQStringEntry(tmp);
 	return true;
 }
 
@@ -283,6 +287,11 @@ void KviIrcServer::save(KviConfig * cfg,const QString &prefix)
 		KviQString::sprintf(tmp,"%QProxy",&prefix);
 		cfg->writeEntry(tmp,proxy());
 	}
+	if(!m_szUserIdentityId.isEmpty())
+	{
+		KviQString::sprintf(tmp,"%QUserIdentityId",&prefix);
+		cfg->writeEntry(tmp,m_szUserIdentityId);
+	}
 }
 
 
@@ -331,6 +340,7 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 	m_szRealName = src.m_szRealName;
 	m_szUserName = src.m_szUserName;
 	m_bAutoConnect = src.m_bAutoConnect;
+	m_szUserIdentityId = src.m_szUserIdentityId;
 	m_szOnConnectCommand  = src.m_szOnConnectCommand;
 	m_szOnLoginCommand = src.m_szOnLoginCommand;
 	if(m_pChannelList)delete m_pChannelList;
@@ -340,7 +350,4 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else m_pNickServRuleSet = 0;
 }
-
-
-
 

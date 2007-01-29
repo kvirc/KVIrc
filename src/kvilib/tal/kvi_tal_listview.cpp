@@ -31,8 +31,56 @@
 #ifdef COMPILE_USE_QT4
 	#include <qpainter.h>
 	#include <qstyle.h>
-	#include <qheader.h>
+	#include <q3header.h>
 	#include <qapplication.h>
+	#include <qhash.h>
+	#include <qstyleoption.h>
+
+	static QStyleOptionQ3ListView getStyleOption(const Q3ListView *lv, const Q3ListViewItem *item)
+	{
+	    QStyleOptionQ3ListView opt;
+	    opt.init(lv);
+	    opt.subControls = QStyle::SC_None;
+	    opt.activeSubControls = QStyle::SC_None;
+	    QWidget *vp = lv->viewport();
+	    opt.viewportPalette = vp->palette();
+	    opt.viewportBGRole = vp->backgroundRole();
+	    opt.itemMargin = lv->itemMargin();
+	    opt.sortColumn = 0;
+	    opt.treeStepSize = lv->treeStepSize();
+	    opt.rootIsDecorated = lv->rootIsDecorated();
+	    bool firstItem = true;
+	    while (item) {
+	        QStyleOptionQ3ListViewItem lvi;
+	        lvi.height = item->height();
+	        lvi.totalHeight = item->totalHeight();
+	        lvi.itemY = item->itemPos();
+	        lvi.childCount = item->childCount();
+	        lvi.features = QStyleOptionQ3ListViewItem::None;
+	        lvi.state = QStyle::State_None;
+	        if (item->isEnabled())
+	            lvi.state |= QStyle::State_Enabled;
+	        if (item->isOpen())
+	            lvi.state |= QStyle::State_Open;
+	        if (item->isExpandable())
+	            lvi.features |= QStyleOptionQ3ListViewItem::Expandable;
+	        if (item->multiLinesEnabled())
+	            lvi.features |= QStyleOptionQ3ListViewItem::MultiLine;
+	        if (item->isVisible())
+	            lvi.features |= QStyleOptionQ3ListViewItem::Visible;
+	        if (item->parent() && item->parent()->rtti() == 1
+	            && static_cast<Q3CheckListItem *>(item->parent())->type() == Q3CheckListItem::Controller)
+	            lvi.features |= QStyleOptionQ3ListViewItem::ParentControl;
+	        opt.items.append(lvi);
+	        if (!firstItem) {
+	            item = item->nextSibling();
+	        } else {
+	            firstItem = false;
+	            item = item->firstChild();
+	        }
+	    }
+	    return opt;
+	}
 
 	KviTalListView::KviTalListView(QWidget * pParent)
 	: Q3ListView(pParent)
@@ -454,7 +502,7 @@
 	            return;
 	    }
 	    if ((myType == CheckBox) || (myType == CheckBoxController))  {
-	        lv->d->startEdit = FALSE;
+	        //lv->d->startEdit = FALSE;
 	        switch (internalState()) {
 	        case On:
 	            setState(Off);
@@ -680,7 +728,7 @@
 	        if(!parentControl)
 	            x += 3;
 	        if (!pixmap(0)) {
-	            QStyleOptionKviTalListView opt = getStyleOption(lv, this);
+	            QStyleOptionQ3ListView opt = getStyleOption(lv, this);
 	            opt.rect.setRect(x, 0, boxsize, fm.height() + 2 + marg);
 	            opt.palette = cg;
 	            opt.state = styleflags;
@@ -698,7 +746,7 @@
 	        else
 	            y = (fm.height() + 2 + marg - boxsize) / 2;
 	
-	        QStyleOptionKviTalListView opt = getStyleOption(lv, this);
+	        QStyleOptionQ3ListView opt = getStyleOption(lv, this);
 	        opt.rect.setRect(x, y, boxsize, fm.height() + 2 + marg);
 	        opt.palette = cg;
 	        opt.state = styleflags;
