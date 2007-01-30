@@ -81,6 +81,7 @@ private:
 	KviIrcContext                        * m_pContext;              // shallow, never null
 	
 	State                                  m_eState;
+	bool                                   m_bIdentdAttached;
 
 	KviIrcConnectionTarget               * m_pTarget;               // owned, never null
 

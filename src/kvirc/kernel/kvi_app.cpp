@@ -130,7 +130,7 @@ KVIRC_API KviInputHistory              * g_pInputHistory              = 0;
 KVIRC_API KviHistoryWindow             * g_pHistoryWindow             = 0;
 
 
-KVIRC_API bool                           g_bIdentDaemonRunning     = false; // this is eventually set by libkviident
+KVIRC_API int                            g_iIdentDaemonRunningUsers   = 0; // this is eventually set by libkviident
 
 KVIRC_API KviSplashScreen       * g_pSplashScreen           = 0;
 

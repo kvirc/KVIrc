@@ -308,8 +308,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowNetworkNameForConsoleTaskBarEntry 214
 #define KviOption_boolDrawGenderIcons 215
 #define KviOption_boolPrependGenderInfoToRealname 216
+#define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
 
-#define KVI_NUM_BOOL_OPTIONS 217
+#define KVI_NUM_BOOL_OPTIONS 218
 
 
 

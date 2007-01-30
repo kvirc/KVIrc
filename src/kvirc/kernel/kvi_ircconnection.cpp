@@ -76,6 +76,7 @@ extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity)
 : QObject()
 {
+	m_bIdentdAttached = false;
 	m_pContext = pContext;
 	m_pConsole = pContext->console();
 	m_pFrame = m_pConsole->frame();
@@ -104,6 +105,8 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 
 KviIrcConnection::~KviIrcConnection()
 {
+	if(m_bIdentdAttached) g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+	m_bIdentdAttached = false;
 	if(m_pLocalhostDns)
 	{
 		QObject::disconnect(m_pLocalhostDns,SIGNAL(lookupDone(KviDns *)),0,0);
@@ -287,12 +290,22 @@ void KviIrcConnection::linkEstabilished()
 	context()->connectionEstabilished();
 
 	// Ok...we're loggin in now
+	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
+	{
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
+		m_bIdentdAttached=true;
+	}
 	resolveLocalHost();
 	loginToIrcServer();
 }
 
 void KviIrcConnection::linkTerminated()
 {
+	if(m_bIdentdAttached)
+	{
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		m_bIdentdAttached=false;
+	}
 	m_eState = Idle;
 	
 	if(m_pNotifyListManager)
@@ -319,6 +332,11 @@ void KviIrcConnection::linkTerminated()
 
 void KviIrcConnection::linkAttemptFailed(int iError)
 {
+	if(m_bIdentdAttached)
+	{
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		m_bIdentdAttached=false;
+	}
 	m_eState = Idle;
 	context()->connectionFailed(iError);
 }
@@ -1064,6 +1082,12 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	if(context()->state() == KviIrcContext::Connected)return;
 
 	context()->loginComplete();
+
+	if(m_bIdentdAttached)
+	{
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+		m_bIdentdAttached=false;
+	}
 
 	if(szNickName != m_pUserInfo->nickName())
 	{

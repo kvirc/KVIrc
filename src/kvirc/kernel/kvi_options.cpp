@@ -59,7 +59,7 @@
 #include <qstringlist.h>
 
 // kvi_app.cpp
-extern KVIRC_API bool g_bIdentDaemonRunning;
+extern KVIRC_API int g_iIdentDaemonRunningUsers;
 
 
 #define RECT_OPTION(_txt,_val,_flags) KviRectOption(KVI_RECT_OPTIONS_PREFIX _txt, _val , _flags)
@@ -301,7 +301,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("CreateMinimizedChannels",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowNetworkNameForConsoleTaskBarEntry",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection)
+	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -1274,9 +1275,10 @@ void KviApp::optionResetUpdate(int flags)
 
 	if(flags & KviOption_resetRestartIdentd)
 	{
-		if(g_bIdentDaemonRunning)
+		if(g_iIdentDaemonRunningUsers)
 			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
-		if(g_boolOptionsTable[KviOption_boolUseIdentService].option)
+
+		if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && !KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
 			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
 	}
 

@@ -40,6 +40,8 @@
 #include "managementdialog.h"
 #include "themefunctions.h"
 
+#include <qfileinfo.h>
+
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
 
@@ -114,6 +116,8 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 
 	if(szFileName.isEmpty())return true; // done
 	KviFileUtils::adjustFilePath(szFileName);
+	if(QFileInfo(szFileName).extension(false)!="png")
+		szFileName+=".png";
 
 	QString szError;
 	if(!KviThemeFunctions::makeKVIrcScreenshot(szFileName))

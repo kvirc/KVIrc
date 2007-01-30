@@ -211,6 +211,9 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 
 	QGroupBox * gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	
+	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
+	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
 	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
 		KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));

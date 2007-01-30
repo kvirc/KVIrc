@@ -43,7 +43,7 @@
 static KviIdentDaemon * g_pIdentDaemon = 0;
 static KviIdentSentinel * g_pIdentSentinel = 0;
 
-extern KVIRC_API bool g_bIdentDaemonRunning;
+extern KVIRC_API int g_iIdentDaemonRunningUsers;
 
 void startIdentService()
 {
@@ -153,7 +153,6 @@ KviIdentDaemon::KviIdentDaemon()
 	m_bEnableIpV6 = false;
 #endif
 	m_bIpV6ContainsIpV4 = KVI_OPTION_BOOL(KviOption_boolIdentdIpV6ContainsIpV4);
-	g_bIdentDaemonRunning = true;
 //	debug("Thread constructor done");
 }
 
@@ -161,7 +160,7 @@ KviIdentDaemon::~KviIdentDaemon()
 {
 //	debug("Thread destructor");
 	terminate();
-	g_bIdentDaemonRunning = false;
+	g_iIdentDaemonRunningUsers = 0;
 
 	g_pIdentDaemon = 0;
 //	debug("Destructor gone");
@@ -545,7 +544,9 @@ exit_thread:
 
 static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
 { 
-	startIdentService();
+	if(!g_iIdentDaemonRunningUsers)
+		startIdentService();
+	g_iIdentDaemonRunningUsers++;
 	return true;
 }
 
@@ -567,7 +568,8 @@ static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
 
 static bool ident_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 { 
-	stopIdentService();
+	if(g_iIdentDaemonRunningUsers) g_iIdentDaemonRunningUsers--;
+	if(!g_iIdentDaemonRunningUsers) stopIdentService();
 	return true;
 }
 
