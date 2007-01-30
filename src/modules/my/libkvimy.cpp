@@ -119,7 +119,7 @@ static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall * c)
 { 
 	if(!g_pIdle) return true;
 	g_pIdle->stop();
-	delete g_pIdle;
+	//delete g_pIdle;
 	return true;
 }
 
