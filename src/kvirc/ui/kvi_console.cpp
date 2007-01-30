@@ -430,10 +430,6 @@ void KviConsole::saveProperties(KviConfig *cfg)
 
 }
 
-void KviConsole::getBaseLogFileName(KviStr &buffer)
-{
-	buffer.sprintf("CONSOLE%u",ircContextId());
-}
 void KviConsole::getBaseLogFileName(QString &buffer)
 {
 	buffer=QString("CONSOLE%1").arg(ircContextId());

@@ -398,7 +398,8 @@ KviLogFile::KviLogFile(const QString& name)
 	else
 		m_type = Other;
 
-	KviStr undecoded = m_szFilename.section('.',0,0).section('_',1,1);
+	KviStr undecoded = m_szFilename.section('.',0,0);
+	undecoded.cutToFirst('_');
 	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
 	undecoded = m_szFilename.section('.',1,1).section('_',0,0);

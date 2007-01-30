@@ -97,7 +97,6 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void getTaskBarTipText(QString &buffer);
 	virtual void fillContextPopup(KviTalPopupMenu * p);

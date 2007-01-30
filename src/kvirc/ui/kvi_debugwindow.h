@@ -47,7 +47,6 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void loadProperties(KviConfig * cfg);
 	virtual void saveProperties(KviConfig * cfg);
-	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual QSize sizeHint() const;
 };

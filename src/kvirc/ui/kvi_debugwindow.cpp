@@ -68,10 +68,6 @@ KviDebugWindow * KviDebugWindow::getInstance()
 }
 
 
-void KviDebugWindow::getBaseLogFileName(KviStr &buffer)
-{
-	buffer = "debug";
-}
 
 void KviDebugWindow::getBaseLogFileName(QString &buffer)
 {

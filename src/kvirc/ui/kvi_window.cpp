@@ -585,6 +585,7 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	QString base;
 	getBaseLogFileName(base);
 	kvi_encodeFileName(base);
+	base.replace("%%2e","%2e");
 	base=base.lower();
 	QString tmp;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))

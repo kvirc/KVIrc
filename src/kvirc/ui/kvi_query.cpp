@@ -266,14 +266,6 @@ void KviQuery::triggerCreationEvents()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryWindowCreated,this);
 }
 
-void KviQuery::getBaseLogFileName(KviStr &buffer)
-{
-	if(console()->connection())
-		buffer.sprintf("%s.%s",windowName().utf8().data(),console()->currentNetworkName().utf8().data());
-	else
-		buffer.sprintf("%s.%u",windowName().utf8().data(),console()->ircContextId());
-}
-
 void KviQuery::getBaseLogFileName(QString &buffer)
 {
 	if(console()->connection())

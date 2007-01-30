@@ -495,11 +495,11 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			m_pMaskListBox->insertItem(mk);
 		}
 
-		const char * notp = r->getProperty("notify");
-		if(notp)
+		QString szNotifyNicks = r->getProperty("notify");
+		if(!szNotifyNicks.isEmpty())
 		{
 			m_pNotifyCheck->setChecked(true);
-			m_pNotifyNick->setText(notp);
+			m_pNotifyNick->setText(szNotifyNicks);
 			m_pNotifyNick->setEnabled(true);
 		}
 		

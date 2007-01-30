@@ -156,7 +156,6 @@ protected:
 	virtual void saveProperties(KviConfig * cfg);
 	virtual void loadProperties(KviConfig * cfg);
 	virtual void applyOptions();
-	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void triggerCreationEvents();
 	void toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** ppBtn,KviPtrList<KviMaskEntry> *l,char flag,const char *edName);

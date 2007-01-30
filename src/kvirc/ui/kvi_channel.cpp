@@ -244,20 +244,13 @@ void KviChannel::textViewRightClicked()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnChannelPopupRequest,this);
 }
 
-void KviChannel::getBaseLogFileName(KviStr &buffer)
-{
-	if (console()->connection())
-		buffer.sprintf("%s.%s",windowName().utf8().data(),console()->currentNetworkName().utf8().data());
-	else
-		buffer.sprintf("%s.%u",windowName().utf8().data(),console()->ircContextId());
-}
 void KviChannel::getBaseLogFileName(QString &buffer)
 {
 	QString szChan=windowName();
 	szChan.replace(".","%2e");
 	if (console()->connection())
 	{
-		buffer=windowName();
+		buffer=szChan;
 		buffer+=".";
 		buffer+=console()->currentNetworkName();
 	} else {
