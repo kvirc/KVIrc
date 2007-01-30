@@ -1403,6 +1403,12 @@ defpopup(channel)
 				}
 			}
 		}
+		separator
+		
+		item($tr("Configure ban mask..."),20)
+		{
+			options.edit KviChannelAdvancedOptionsWidget
+		}
 	}
 
 	separator
