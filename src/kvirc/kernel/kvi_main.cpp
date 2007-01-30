@@ -238,7 +238,11 @@ int parseArgs(ParseArgs * a)
 					if(kvi_strEqualCI(ri.ptr(),".kvs"))
 					{
 						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
-						a->szExecCommand.append(KviStr::Format,"parse \"%s\"",tmp.ptr());
+						a->szExecCommand.append("parse \"");
+						tmp.replaceAll('$',"\$");
+						tmp.replaceAll('\\',"\\\\");
+						a->szExecCommand.append(tmp);
+						a->szExecCommand.append('"');
 					} else
 						szServer = tmp; // assume a plain server name
 				}
