@@ -57,6 +57,7 @@
 
 #else
 
+	#include <shlwapi.h>
 	#include <windows.h> // at least for GetModuleFileName and *PrivateProfileString
 
 #endif //COMPILE_ON_WINDOWS
@@ -199,6 +200,140 @@ bool KviApp::checkFileAssociations()
 
 }
 
+
+bool KviApp::checkUriAssociations(char * proto)
+{
+#ifdef COMPILE_ON_WINDOWS
+#define QUERY_BUFFER 2048
+	char* buffer;
+	DWORD len = QUERY_BUFFER;
+	DWORD err;
+	buffer = (char*)malloc(len*sizeof(char));
+	HKEY hKey;
+
+	KviStr storedKey = proto;
+
+	KviStr key=storedKey;
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCI(__tr2qs("URL:IRC Protocol").local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if( (err=RegQueryValueEx( hKey,"URL Protocol",0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	}
+
+	key = storedKey+"\\DefaultIcon";
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		QString szIcon = applicationFilePath()+",0";
+		szIcon.replace('/',"\\");
+		if(!kvi_strEqualCI(szIcon.local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	key = storedKey+"\\Shell\\open";
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCI(__tr2qs("Open with KVIrc").local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	key = storedKey+"\\Shell\\open\\command";
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		QString szCmd = applicationFilePath()+" \"%1\"";
+		szCmd.replace('/',"\\");
+		if(!kvi_strEqualCI(szCmd.local8Bit().data(),buffer)) {
+			free(buffer);
+			return false;
+		}
+	}
+
+	free(buffer);
+#endif
+	return true;
+
+}
+
+
+void KviApp::setupUriAssociations(char * proto)
+{
+#ifdef COMPILE_ON_WINDOWS
+	HKEY hKey;
+	DWORD err;
+
+	KviStr storedKey = proto;
+
+	KviStr key=storedKey;
+
+	KviQCString tmp;
+	QString appPath = applicationFilePath();
+	appPath.replace('/',"\\");
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,key);
+	
+	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"URL:IRC Protocol",16);
+	RegSetValueEx( hKey,"URL Protocol",0,REG_SZ,(LPBYTE)"",0);
+
+	key=storedKey+"\\DefaultIcon";
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+",0").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	key=storedKey+"\\Shell\\open";
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=__tr2qs("Open with KVIrc").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	
+	key=storedKey+"\\Shell\\open\\command";
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+" \"%1\"").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+#endif
+}
+
 void KviApp::setupFileAssociations()
 {
 #ifdef COMPILE_ON_WINDOWS
@@ -209,9 +344,13 @@ void KviApp::setupFileAssociations()
 	QString appPath = applicationFilePath();
 	appPath.replace('/',"\\");
 
+	SHDeleteKey(HKEY_CLASSES_ROOT,".kvs");
+
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvs",0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcScript",11);
 	
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcScript");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp = __tr2qs("KVIrc KVS Script").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
@@ -461,6 +600,10 @@ void KviApp::loadDirectories()
 
 	if(m_bFirstTimeRun)setupBegin();
 	if(!checkFileAssociations()) setupFileAssociations();
+	if(!checkUriAssociations("irc"))    setupUriAssociations("irc");
+	if(!checkUriAssociations("ircs"))   setupUriAssociations("ircs");
+	if(!checkUriAssociations("irc6"))   setupUriAssociations("irc6");
+	if(!checkUriAssociations("ircs6"))  setupUriAssociations("ircs6");
 }
 
 static kvi_library_t g_hSetupLibrary = 0;

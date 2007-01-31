@@ -222,14 +222,12 @@ int parseArgs(ParseArgs * a)
 		if(*p != '-')
 		{
 			// no dash
-			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7))
+			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
 				KviStr tmp = QString::fromLocal8Bit(p);
-				if(KviIrcUrl::parse(tmp.ptr(),tmp))
-				{
-					if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
-					a->szExecCommand.append(tmp);
-				} else debug("Invalid irc:// URL \"%s\"",p);
+				if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+				a->szExecCommand.append("openurl ");
+				a->szExecCommand.append(tmp);
 			} else {
 				QString tmp = QString::fromLocal8Bit(p);
 				bool bOk;
