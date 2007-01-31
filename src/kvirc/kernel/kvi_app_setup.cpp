@@ -194,6 +194,63 @@ bool KviApp::checkFileAssociations()
 		}
 	}
 
+	//Config
+
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvc",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCIN("KVIrcConfig",buffer,11)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	//Addon
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kva",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCIN("KVIrcAddon",buffer,11)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+	//Theme
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvt",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCIN("KVIrcTheme",buffer,11)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
 	free(buffer);
 #endif
 	return true;
@@ -364,6 +421,72 @@ void KviApp::setupFileAssociations()
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 	
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+" \"%1\"").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	//Configs
+	SHDeleteKey(HKEY_CLASSES_ROOT,".kvc");
+
+	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvc",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcConfig",11);
+	
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcConfig");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp = __tr2qs("KVIrc Configuration File").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+",2").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	// Themes
+	
+	SHDeleteKey(HKEY_CLASSES_ROOT,".kvt");
+
+	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvt",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcTheme",11);
+	
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcTheme");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp = __tr2qs("KVIrc Theme Package").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+",3").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=__tr2qs("Install Theme Package").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+" \"%1\"").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	//Addons
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,".kva");
+
+	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kva",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcAddon",11);
+	
+
+	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcAddon");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp = __tr2qs("KVIrc Addon Package").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+",4").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=__tr2qs("Install Package").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 

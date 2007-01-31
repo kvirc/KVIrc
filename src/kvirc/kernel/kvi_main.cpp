@@ -243,6 +243,14 @@ int parseArgs(ParseArgs * a)
 						tmp.replace('\\',"\\\\");
 						a->szExecCommand.append(tmp);
 						a->szExecCommand.append('"');
+					} else if(KviQString::equalCI(ri,".kvt"))
+					{
+						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
+						a->szExecCommand.append("theme.install \"");
+						tmp.replace('$',"\\$");
+						tmp.replace('\\',"\\\\");
+						a->szExecCommand.append(tmp);
+						a->szExecCommand.append('"');
 					} else
 						szServer = tmp; // assume a plain server name
 				}

@@ -1754,6 +1754,10 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc"
 			>
+			<File
+				RelativePath="..\..\data\resources\resource.h"
+				>
+			</File>
 			<Filter
 				Name="kvs"
 				>
@@ -3937,7 +3941,27 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
 			<File
+				RelativePath="..\..\data\resources\icon1.ico"
+				>
+			</File>
+			<File
+				RelativePath="..\..\data\resources\kva.ico"
+				>
+			</File>
+			<File
+				RelativePath="..\..\data\resources\kvc.ico"
+				>
+			</File>
+			<File
 				RelativePath="..\..\data\resources\kvirc.rc"
+				>
+			</File>
+			<File
+				RelativePath="..\..\data\resources\kvs.ico"
+				>
+			</File>
+			<File
+				RelativePath="..\..\data\resources\kvt.ico"
 				>
 			</File>
 		</Filter>
