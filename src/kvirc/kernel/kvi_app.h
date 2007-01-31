@@ -303,6 +303,8 @@ private:
 	bool findLocalKvircDirectory();
 	bool checkGlobalKvircDirectory(const QString);
 	bool checkLocalKvircDirectory(const QString);
+	bool checkFileAssociations();
+	void setupFileAssociations();
 	void saveKvircDirectory();
 
 	// kvi_app.cpp : GUI stuff

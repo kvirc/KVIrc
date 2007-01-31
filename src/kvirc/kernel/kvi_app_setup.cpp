@@ -105,6 +105,132 @@ bool KviApp::checkLocalKvircDirectory(const QString szDir)
 	return true;
 }
 
+bool KviApp::checkFileAssociations()
+{
+#ifdef COMPILE_ON_WINDOWS
+#define QUERY_BUFFER 2048
+	char* buffer;
+	DWORD len = QUERY_BUFFER;
+	DWORD err;
+	buffer = (char*)malloc(len*sizeof(char));
+	HKEY hKey;
+
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvs",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCIN("KVIrcScript",buffer,11)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		QString szIcon = applicationFilePath()+",1";
+		szIcon.replace('/',"\\");
+		if(!kvi_strEqualCI(szIcon.local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		if(!kvi_strEqualCI(__tr2qs("Run KVS Script").local8Bit().data(),buffer)){
+			free(buffer);
+			return false;
+		}
+	}
+
+	len = QUERY_BUFFER;
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+		return false;
+
+	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
+	{
+		free(buffer);
+		return false;
+	} else {
+		QString szCmd = applicationFilePath()+" \"%1\"";
+		szCmd.replace('/',"\\");
+		if(!kvi_strEqualCI(szCmd.local8Bit().data(),buffer)) {
+			free(buffer);
+			return false;
+		}
+	}
+
+	free(buffer);
+#endif
+	return true;
+
+}
+
+void KviApp::setupFileAssociations()
+{
+#ifdef COMPILE_ON_WINDOWS
+	HKEY hKey;
+	DWORD err;
+
+	KviQCString tmp;
+	QString appPath = applicationFilePath();
+	appPath.replace('/',"\\");
+
+	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvs",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcScript",11);
+	
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp = __tr2qs("KVIrc KVS Script").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+",1").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=__tr2qs("Run KVS Script").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	
+	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	tmp=QString(appPath+" \"%1\"").local8Bit();
+	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+
+#endif
+}
+
 //#ifdef BRAIN_DAMAGED_AUTHOR_PARANOIA
 //#define I_DO_NOT_WANT_TO_HEAR_IT_ANYMORE_THAT_KVIRC_CAN_NOT_FIND_THE_BASE_PIXMAPS
 
@@ -334,6 +460,7 @@ void KviApp::loadDirectories()
 	m_bFirstTimeRun = !findLocalKvircDirectory();
 
 	if(m_bFirstTimeRun)setupBegin();
+	if(!checkFileAssociations()) setupFileAssociations();
 }
 
 static kvi_library_t g_hSetupLibrary = 0;
