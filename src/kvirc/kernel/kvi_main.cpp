@@ -239,7 +239,7 @@ int parseArgs(ParseArgs * a)
 					{
 						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 						a->szExecCommand.append("parse \"");
-						tmp.replaceAll('$',"\$");
+						tmp.replaceAll('$',"\\$");
 						tmp.replaceAll('\\',"\\\\");
 						a->szExecCommand.append(tmp);
 						a->szExecCommand.append('"');

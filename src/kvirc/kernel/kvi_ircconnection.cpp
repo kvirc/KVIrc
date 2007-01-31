@@ -269,6 +269,11 @@ void KviIrcConnection::abort()
 void KviIrcConnection::start()
 {
 	m_eState = Connecting;
+	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
+	{
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
+		m_bIdentdAttached=true;
+	}
 	m_pLink->start();
 }
 
@@ -290,11 +295,6 @@ void KviIrcConnection::linkEstabilished()
 	context()->connectionEstabilished();
 
 	// Ok...we're loggin in now
-	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
-	{
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
-		m_bIdentdAttached=true;
-	}
 	resolveLocalHost();
 	loginToIrcServer();
 }
