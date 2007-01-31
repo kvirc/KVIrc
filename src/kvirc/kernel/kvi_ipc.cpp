@@ -140,11 +140,12 @@
 		if(hSentinel != NULL)
 		{
 			COPYDATASTRUCT cpd;
-			cpd.cbData = sizeof(cpd);
+			cpd.cbData = strlen(message)+1;
 			cpd.dwData = KVI_WINDOWS_IPC_MESSAGE;
 			cpd.lpData = (void *)message;
 			DWORD dwResult;
-			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_ABORTIFHUNG,1000,&dwResult);
+			debug(message);
+			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult);
 			return true;
 		}
 #else //!COMPILE_ON_WINDOWS
@@ -221,6 +222,7 @@
 			{
 				if(cpd->dwData == KVI_WINDOWS_IPC_MESSAGE)
 				{
+					debug((char *)(cpd->lpData));
 					if(g_pApp)g_pApp->ipcMessage((char *)(cpd->lpData));
 					return true;
 				}

@@ -224,23 +224,25 @@ int parseArgs(ParseArgs * a)
 			// no dash
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7))
 			{
-				KviStr tmp;
-				if(KviIrcUrl::parse(p,tmp))
+				KviStr tmp = QString::fromLocal8Bit(p);
+				if(KviIrcUrl::parse(tmp.ptr(),tmp))
 				{
 					if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 					a->szExecCommand.append(tmp);
 				} else debug("Invalid irc:// URL \"%s\"",p);
 			} else {
-				KviStr tmp(p);
-				if(tmp.isUnsignedNum())szPort = tmp;
+				QString tmp = QString::fromLocal8Bit(p);
+				bool bOk;
+				tmp.toUInt(&bOk);
+				if(bOk)szPort = tmp;
 				else {
-					KviStr ri = tmp.right(4);
-					if(kvi_strEqualCI(ri.ptr(),".kvs"))
+					QString ri = tmp.right(4);
+					if(KviQString::equalCI(ri,".kvs"))
 					{
 						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 						a->szExecCommand.append("parse \"");
-						tmp.replaceAll('$',"\\$");
-						tmp.replaceAll('\\',"\\\\");
+						tmp.replace('$',"\\$");
+						tmp.replace('\\',"\\\\");
 						a->szExecCommand.append(tmp);
 						a->szExecCommand.append('"');
 					} else
