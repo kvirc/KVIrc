@@ -659,7 +659,7 @@ alias(dcc)
 
 alias(dccallow)
 {
-	quote dccallow $0
+	quote dccallow \+$0
 }
 
 #shortcut for commonly called algorithm
