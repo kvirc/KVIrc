@@ -1910,6 +1910,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	QString encoding = msg->connection()->decodeText(msg->safeParam(1));
 	if(msg->connection()->serverInfo()->supportsCodePages())
 	{
+		if(encoding=="NONE") encoding="KOI8-R"; //RusNet default codepage
 		msg->console()->output(KVI_OUT_TEXTENCODING,__tr2qs("Your encoding is now %Q"),&encoding);
 		msg->console()->setTextEncoding(encoding);
 		msg->connection()->setEncoding(encoding);

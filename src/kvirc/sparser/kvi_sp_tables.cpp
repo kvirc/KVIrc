@@ -308,7 +308,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericEndOfStats),                     // 219 RPL_ENDOFSTATS
 	0,                                               // 220
 	PTM(parseNumericUserMode)                      , // 221 RPL_UMODEIS
-	0,                                               // 222
+	PTM(parseNumericCodePageSet),                    // 222 RusNet Codepage set
 	0,                                               // 223
 	0,                                               // 224
 	0,                                               // 225
