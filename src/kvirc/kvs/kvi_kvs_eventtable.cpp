@@ -3109,6 +3109,21 @@ channel
 		@description:
 			Triggered when a message is ignored.
 	*/
-	EVENT("OnIgnoredMessage","$0 = source nick\n$1 = source username\n$2 = source host\n$3 = message target\n$4 = message")
+	EVENT("OnIgnoredMessage","$0 = source nick\n$1 = source username\n$2 = source host\n$3 = message target\n$4 = message"),
+	/*
+		@doc: OnNickServAuth
+		@type:
+			event
+		@title:
+			OnNickServAuth
+		@short:
+			Triggered when ircd sets a registered user mode.
+		@parameters:
+		@window:
+			any
+		@description:
+			Triggered when ircd sets a registered user mode.
+	*/
+	EVENT("OnNickServAuth","")
 };
 

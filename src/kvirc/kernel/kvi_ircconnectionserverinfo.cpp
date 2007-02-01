@@ -189,8 +189,14 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 {
 	if(m_pServInfo) delete m_pServInfo;
-	
-	m_pServInfo = new KviBasicIrcServerInfo(version);
+	if(version.contains("unreal",false))
+		m_pServInfo = new KviUnrealIrcServerInfo(version);
+	else if(version.contains("bahamut",false))
+		m_pServInfo = new KviBahamutIrcServerInfo(version);
+	else if(version.contains("hyperion",false))
+		m_pServInfo = new KviHyperionIrcServerInfo(version);
+	else
+		m_pServInfo = new KviBasicIrcServerInfo(version);
 }
 
 

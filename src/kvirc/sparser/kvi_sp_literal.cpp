@@ -1594,6 +1594,11 @@ void KviServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
 			default:
 				if(msg->connection()->changeUserMode(*modeflptr,bSet))
 				{
+					if(msg->connection()->serverInfo()->registerModeChar()==*modeflptr)
+					{
+						KviKvsVariantList vList;
+						KviKvsEventManager::instance()->trigger(KviEvent_OnNickServAuth,msg->console(),&vList);
+					}
 					// There was a mode change
 					if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnUserMode))
 					{

@@ -44,6 +44,31 @@ private:
 public:
 	const QString & getChannelModeDescription(QChar mode);
 	const QString & getUserModeDescription(QChar mode);
+	virtual char getRegisterModeChar() { return 0; };
+};
+
+class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
+{
+public:
+	KviUnrealIrcServerInfo(const QString & version = KviQString::empty)
+		:KviBasicIrcServerInfo(version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+};
+
+class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
+{
+public:
+	KviBahamutIrcServerInfo(const QString & version = KviQString::empty)
+		:KviBasicIrcServerInfo(version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
+};
+
+class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
+{
+public:
+	KviHyperionIrcServerInfo(const QString & version = KviQString::empty)
+		:KviBasicIrcServerInfo(version) {;};
+	virtual char getRegisterModeChar() { return 'r'; };
 };
 
 class KVIRC_API KviIrcConnectionServerInfo
@@ -72,6 +97,7 @@ private:
 	QString m_szListModes; 
 	QString m_szPlainModes;
 public:
+	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
 	const QString & name(){ return m_szName; };
 	const QString & supportedUserModes(){ return m_szSupportedUserModes; };
 	const QString & supportedChannelModes(){ return m_szSupportedChannelModes; };

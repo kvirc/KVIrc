@@ -201,7 +201,9 @@
 #define KviEvent_OnServerLinkClick 136
 #define KviEvent_OnIgnoredMessage 137
 
-#define KVI_KVS_NUM_APP_EVENTS 138
+#define KviEvent_OnNickServAuth 138
+
+#define KVI_KVS_NUM_APP_EVENTS 139
 // compat
 #define KVI_NUM_SCRIPT_EVENTS KVI_KVS_NUM_APP_EVENTS
 
