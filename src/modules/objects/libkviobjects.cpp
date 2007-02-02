@@ -83,8 +83,6 @@
 #include "class_dockwindow.h"
 #include "class_vbox.h"
 #include "class_hbox.h"
-static int contatore=0;
-static KviPtrDict<KviKvsObject> *objectsdict=new KviPtrDict<KviKvsObject>;
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
 
 static bool objects_module_cleanup(KviModule *m)
@@ -252,7 +250,6 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	obTrg=KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
-	objectsdict->insert(obTrg->handle(),obSrc);
 	if(!obTrg)
 	{
 		c->warning(__tr2qs("Inexisting target object for objects.connect"));
