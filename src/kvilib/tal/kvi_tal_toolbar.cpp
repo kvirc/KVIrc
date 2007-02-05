@@ -55,7 +55,7 @@
 		{
 		}
 		
-		#include "kvi_tal_toolbar_qt.moc"
+	#include "kvi_tal_toolbar_qt3.moc"
 	#endif
 
 	KviTalToolBar::~KviTalToolBar()

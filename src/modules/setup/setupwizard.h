@@ -26,6 +26,7 @@
 #include <qwizard.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_groupbox.h"
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qlineedit.h>

@@ -184,7 +184,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_groupbox)
 
 bool KviKvsObject_groupbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviTalGroupBox(parentScriptWidget(), name()), true);
+	setObject(new KviTalGroupBox(name(),parentScriptWidget()), true);
 	return true;
 }
 

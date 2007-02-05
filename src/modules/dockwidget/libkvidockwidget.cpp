@@ -327,18 +327,18 @@ void KviDockWidget::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
 	for(KviTaskBarItem * b = t->firstItem();b;b = t->nextItem())
 	{
 	
-		if(b->window()->view())
+		if(b->kviWindow()->view())
 		{
-			if(b->window()->view()->haveUnreadedMessages())
+			if(b->kviWindow()->view()->haveUnreadedMessages())
 			{
-				line = b->window()->lastMessageText();
+				line = b->kviWindow()->lastMessageText();
 				if(!line.isEmpty())
 				{
 					line.replace(QChar('&'),"&amp;");
 					line.replace(QChar('<'),"&lt;");
 					line.replace(QChar('>'),"&gt;");
 					tmp += "<b>";
-					tmp += b->window()->plainTextCaption();
+					tmp += b->kviWindow()->plainTextCaption();
 					tmp += "</b><br>";
 					tmp += line;
 					tmp += "<br><br>\n";
@@ -537,7 +537,7 @@ void KviDockWidget::grabActivityInfo()
 		if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 		{
 			int iLevel = b->highlightLevel();
-			switch(b->window()->type())
+			switch(b->kviWindow()->type())
 			{
 				case KVI_WINDOW_TYPE_CONSOLE:
 					if(m_iConsoles < iLevel) m_iConsoles = iLevel;
@@ -554,17 +554,17 @@ void KviDockWidget::grabActivityInfo()
 			}
 		} else {
 			int iLevel=0;
-			if(b->window()->view())
+			if(b->kviWindow()->view())
 			{
-				if(b->window()->view()->haveUnreadedHighlightedMessages())
+				if(b->kviWindow()->view()->haveUnreadedHighlightedMessages())
 				{
 					iLevel=2;
-				} else if(b->window()->view()->haveUnreadedMessages())
+				} else if(b->kviWindow()->view()->haveUnreadedMessages())
 				{
 					iLevel=1;
 				}
 				if(iLevel>0)
-				switch(b->window()->type())
+				switch(b->kviWindow()->type())
 				{
 					case KVI_WINDOW_TYPE_CONSOLE:
 						if(m_iConsoles < iLevel) m_iConsoles = iLevel;
