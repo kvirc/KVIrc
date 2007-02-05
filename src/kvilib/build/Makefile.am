@@ -82,6 +82,7 @@ libkvilib_la_SOURCES = \
 	../tal/kvi_tal_application.cpp \
 	../tal/kvi_tal_filedialog.cpp \
 	../tal/kvi_tal_grid.cpp \
+	../tal/kvi_tal_groupbox.cpp \
 	../tal/kvi_tal_hbox.cpp \
 	../tal/kvi_tal_iconview.cpp \
 	../tal/kvi_tal_listbox.cpp \
@@ -128,11 +129,13 @@ headers_HEADERS = \
 	../core/kvi_string.h \
 	../core/kvi_stringarray.h \
 	../core/kvi_valuelist.h \
+	../ext/kvi_accel.h \
 	../ext/kvi_cmdformatter.h \
 	../ext/kvi_config.h \
 	../ext/kvi_crypt.h \
 	../ext/kvi_databuffer.h \
 	../ext/kvi_doublebuffer.h \
+	../ext/kvi_draganddrop.h \
 	../ext/kvi_osinfo.h \
 	../ext/kvi_garbage.h \
 	../ext/kvi_imagelib.h \
@@ -170,6 +173,7 @@ headers_HEADERS = \
 	../system/kvi_env.h \
 	../system/kvi_library.h \
 	../system/kvi_locale.h \
+	../system/kvi_process.h \
 	../system/kvi_stdarg.h \
 	../system/kvi_thread.h \
 	../system/kvi_time.h \
@@ -183,6 +187,9 @@ headers_HEADERS = \
 	../tal/kvi_tal_grid.h \
 	../tal/kvi_tal_grid_qt3.h \
 	../tal/kvi_tal_grid_qt4.h \
+	../tal/kvi_tal_groupbox.h \
+	../tal/kvi_tal_groupbox_qt3.h \
+	../tal/kvi_tal_groupbox_qt4.h \
 	../tal/kvi_tal_hbox.h \
 	../tal/kvi_tal_hbox_qt3.h \
 	../tal/kvi_tal_hbox_qt4.h \
@@ -197,7 +204,8 @@ headers_HEADERS = \
 	../tal/kvi_tal_listview_qt4.h \
 	../tal/kvi_tal_mainwindow.h \
 	../tal/kvi_tal_mainwindow_kde.h \
-	../tal/kvi_tal_mainwindow_qt.h \
+	../tal/kvi_tal_mainwindow_qt3.h \
+	../tal/kvi_tal_mainwindow_qt4.h \
 	../tal/kvi_tal_menubar.h \
 	../tal/kvi_tal_menubar_kde.h \
 	../tal/kvi_tal_menubar_qt.h \
@@ -209,7 +217,8 @@ headers_HEADERS = \
 	../tal/kvi_tal_scrollview_qt4.h \
 	../tal/kvi_tal_toolbar.h \
 	../tal/kvi_tal_toolbar_kde.h \
-	../tal/kvi_tal_toolbar_qt.h \
+	../tal/kvi_tal_toolbar_qt3.h \
+	../tal/kvi_tal_toolbar_qt4.h \
 	../tal/kvi_tal_toolbardocktype.h \
 	../tal/kvi_tal_tooltip.h \
 	../tal/kvi_tal_vbox.h \
@@ -240,8 +249,6 @@ headers_HEADERS = \
 	$(SS_QT_MOC) $< -o $@
 
 
-
-
 %.moc: %.h
 	$(SS_QT_MOC) $< -o $@
 
@@ -254,16 +261,17 @@ headers_HEADERS = \
 ../tal/kvi_tal_application.cpp: ../tal/kvi_tal_application_kde.moc
 ../tal/kvi_tal_application.cpp: ../tal/kvi_tal_application_qt.moc
 ../tal/kvi_tal_mainwindow.cpp: ../tal/kvi_tal_mainwindow_kde.moc
-../tal/kvi_tal_mainwindow.cpp: ../tal/kvi_tal_mainwindow_qt.moc
+../tal/kvi_tal_mainwindow.cpp: ../tal/kvi_tal_mainwindow_qt3.moc
+../tal/kvi_tal_mainwindow.cpp: ../tal/kvi_tal_mainwindow_qt4.moc
 ../tal/kvi_tal_menubar.cpp: ../tal/kvi_tal_menubar_kde.moc
 ../tal/kvi_tal_menubar.cpp: ../tal/kvi_tal_menubar_qt.moc
-../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_kde.moc
-../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_kde.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt4.moc
 ../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid_qt3.moc
 ../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid_qt4.moc
+../tal/kvi_tal_groupbox.cpp: ../tal/kvi_tal_groupbox_qt3.moc
+../tal/kvi_tal_groupbox.cpp: ../tal/kvi_tal_groupbox_qt4.moc
 ../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox_qt3.moc
 ../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox_qt4.moc
 ../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox_qt3.moc
@@ -280,6 +288,9 @@ headers_HEADERS = \
 ../tal/kvi_tal_iconview.cpp: ../tal/kvi_tal_iconview_qt4.moc
 ../tal/kvi_tal_scrollview.cpp: ../tal/kvi_tal_scrollview_qt3.moc
 ../tal/kvi_tal_scrollview.cpp: ../tal/kvi_tal_scrollview_qt4.moc
+../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt3.moc
+../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt4.moc
+../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_kde.moc
 
 
 #

@@ -36,6 +36,9 @@
 #include <qnamespace.h>
 #include <qlineedit.h>
 #include <ctype.h>
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
 
 KviTextIconWindow::KviTextIconWindow()
 #ifdef COMPILE_USE_QT4
@@ -44,6 +47,7 @@ KviTextIconWindow::KviTextIconWindow()
 : KviTalIconView(0,Qt::WType_Popup)
 #endif
 {
+	m_iTimerId = -1;
 	setGridX ( 40 );
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
 	m_pOwner = 0;
@@ -57,7 +61,12 @@ KviTextIconWindow::KviTextIconWindow()
 
 KviTextIconWindow::~KviTextIconWindow()
 {
-	killTimers();
+	if(m_iTimerId != -1)
+	{
+		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
+//	killTimers();
 //	if(m_pOwner)m_pOwner->setFocus();
 }
 
@@ -213,7 +222,7 @@ void KviTextIconWindow::ownerDead()
 
 void KviTextIconWindow::show()
 {
-	startTimer(50000); //50 sec ...seems enough
+	m_iTimerId = startTimer(50000); //50 sec ...seems enough
 	QWidget::show();
 }
 
@@ -224,7 +233,11 @@ void KviTextIconWindow::timerEvent(QTimerEvent *)
 
 void KviTextIconWindow::doHide()
 {
-	killTimers();
+	if(m_iTimerId != -1)
+	{
+		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
 	hide();
 	if(m_pOwner)m_pOwner->setFocus();
 }

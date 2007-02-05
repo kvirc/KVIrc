@@ -32,6 +32,10 @@
 #include <qcursor.h>
 #include "kvi_tal_popupmenu.h"
 
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
+
 static KviTalPopupMenu * g_pToolBarContextPopup = 0;
 static KviTalPopupMenu * g_pToolBarWindowsPopup = 0;
 static KviTalPopupMenu * g_pToolBarIconSizesPopup = 0;
@@ -58,7 +62,7 @@ KviToolBar::~KviToolBar()
 
 void KviToolBar::mousePressEvent(QMouseEvent *e)
 {
-	if(!(e->button() & RightButton))
+	if(!(e->button() & Qt::RightButton))
 	{
 		KviTalToolBar::mousePressEvent(e);
 		return;

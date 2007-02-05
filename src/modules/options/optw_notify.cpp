@@ -37,7 +37,7 @@ KviNotifyOptionsWidget::KviNotifyOptionsWidget(QWidget * parent)
 	createLayout(5,1);
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use online notify list","options"),KviOption_boolUseNotifyList);
-	QGroupBox *g = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"));
+	KviTalGroupBox *g = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,
@@ -56,7 +56,7 @@ KviNotifyOptionsWidget::KviNotifyOptionsWidget(QWidget * parent)
 				KviOption_boolPopupNotifierOnNotifyOnLine,KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),
 		SLOT(setEnabled(bool)));
 
-	g = addGroupBox(0,2,0,2,1,QGroupBox::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	g = addGroupBox(0,2,0,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
 	connect(b,

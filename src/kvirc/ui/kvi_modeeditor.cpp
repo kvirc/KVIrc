@@ -31,10 +31,10 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_styled_controls.h"
 #include "kvi_toolwindows_container.h"
+#include "kvi_tal_scrollview.h"
 
 #include <qlayout.h>
 #include <qlabel.h>
-#include <qscrollview.h>
 
 
 //////////////////////////////////////////////////////////////////////
@@ -44,7 +44,7 @@
 
 //static char checkable_modes_table[KVI_NUM_CHECKABLE_MODES] = { 'p','s','t','n','m','i'};
 
-// FIXME: This widget should use a QScrollView!
+// FIXME: This widget should use a KviTalScrollView!
 
 KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const char * mode,const char * key,const char * limit)
 : KviWindowToolWidget(par,button)
@@ -68,10 +68,18 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	
 	QGridLayout *pMasterLayout = new QGridLayout(this,2,1,2,2);
 
+#ifdef COMPILE_USE_QT4
+	setFocusPolicy(Qt::ClickFocus);
+#else
 	setFocusPolicy(QWidget::ClickFocus);
+#endif
 	
-	QScrollView *pScrollView = new QScrollView(this);
+	KviTalScrollView *pScrollView = new KviTalScrollView(this);
+#ifdef COMPILE_USE_QT4
+	pScrollView->viewport()->setBackgroundRole(QPalette::Background);
+#else
 	pScrollView->viewport()->setBackgroundMode(QWidget::PaletteBackground);
+#endif
 	
 	pMasterLayout->addWidget(pScrollView,0,0);
 
@@ -117,7 +125,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		KviStyledCheckBox * cb = new KviStyledCheckBox(tmp,pBackground);
 		cb->setEnabled(isEnabled);
 		m_pCheckBoxes->append(cb);
-		cb->setChecked(m_szMode.contains(ccc));
+		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
 		i++;
 		g->addMultiCellWidget(cb,i,i,0,2);
 	}

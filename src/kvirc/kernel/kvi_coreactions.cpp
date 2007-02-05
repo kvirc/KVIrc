@@ -757,7 +757,9 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 			this,SLOT(activate()),t,name());
 	b->setPopup(m_pPopup);
 	b->setPopupDelay(1);
+#ifndef COMPILE_USE_QT4
 	b->setShowSubmenuIndicator(true);
+#endif
 	registerWidget(b);
 	if(!isEnabled())b->setEnabled(false);
 	return b;

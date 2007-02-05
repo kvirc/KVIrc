@@ -48,7 +48,11 @@ KviListView::~KviListView()
 void KviListView::setBackgroundOverlayPixmap(QPixmap * pix,int iAlignmentFlags)
 {
 	setStaticBackground(TRUE);
+#ifdef COMPILE_USE_QT4
+	viewport()->setAutoFillBackground(false);
+#else
 	viewport()->setBackgroundMode(QWidget::NoBackground);
+#endif
 	m_pBackgroundOverlayPixmap=new QPixmap(*pix);
 	m_iBackgroundOverlayAlignment= Qt::AlignRight | Qt::AlignBottom;
 	repaintContents();

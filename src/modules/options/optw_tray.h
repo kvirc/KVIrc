@@ -42,7 +42,7 @@ protected:
 	KviBoolSelector * m_pLevelBasedNotify;
 	KviBoolSelector * m_pMinimizeInTray;
 	KviBoolSelector * m_pCloseInTray;
-	QGroupBox * m_pLevelsGroup;
+	KviTalGroupBox * m_pLevelsGroup;
 protected slots:
 	void setEnabled(bool);
 };

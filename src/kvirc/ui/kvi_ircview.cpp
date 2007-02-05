@@ -104,6 +104,8 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_doublebuffer.h"
 #include "kvi_ircurl.h"
+#include "kvi_draganddrop.h"
+#include "kvi_qcstring.h"
 // FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"
 
 #include <qbitmap.h>
@@ -117,6 +119,7 @@
 #include <qmessagebox.h>
 #include <qtextcodec.h>
 #include <qdatetime.h>
+#include <qevent.h>
 
 //#include <qcolor.h>   // needed 
 
@@ -137,12 +140,16 @@
 
 #include <qclipboard.h>
 #include <qdatetime.h>
-#include <qdragobject.h>
 #include <qmessagebox.h>
 #include <qscrollbar.h>
 #include <qfontdialog.h>
 
 #include <time.h>
+
+#ifdef COMPILE_USE_QT4
+	#include <q3mimefactory.h>
+	#define QMimeSourceFactory Q3MimeSourceFactory
+#endif
 
 
 #ifdef COMPILE_ON_WINDOWS
@@ -338,14 +345,22 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
 
 	// say qt to avoid erasing on repaint
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#else
 	setBackgroundMode(NoBackground);
+#endif
 	
 	m_pFm = new QFontMetrics(font());
 	
 	m_pToolTip = new KviIrcViewToolTip(this);
 
 	// Create the scroll bar
+#ifdef COMPILE_USE_QT4
+	m_pScrollBar               = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
+#else
 	m_pScrollBar               = new QScrollBar(0,0,1,10,0,QScrollBar::Vertical,this,"irc_view_scrollbar");
+#endif
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
@@ -353,7 +368,11 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 	m_pToolsButton = new KviStyledToolButton(this,"btntools");
 #if QT_VERSION >= 300
+#ifdef COMPILE_USE_QT4
+	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
+#else
 	QIconSet is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)),QIconSet::Small);
+#endif
 	m_pToolsButton->setIconSet(is1);
 #else
 	m_pToolsButton->setOnIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
@@ -470,7 +489,7 @@ void KviIrcView::enableDnd(bool bEnable)
 void KviIrcView::dragEnterEvent(QDragEnterEvent *e)
 {
 	if(!m_bAcceptDrops)return;
-	e->accept(QUriDrag::canDecode(e));
+	e->accept(KviUriDrag::canDecode(e));
 	emit dndEntered();
 }
 
@@ -478,7 +497,7 @@ void KviIrcView::dropEvent(QDropEvent *e)
 {
 	if(!m_bAcceptDrops)return;
 	QStringList list;
-	if(QUriDrag::decodeLocalFiles(e,list))
+	if(KviUriDrag::decodeLocalFiles(e,list))
 	{
 		if(!list.isEmpty())
 		{
@@ -611,12 +630,12 @@ const QString & KviIrcView::lastMessageText()
 		}
 		pCur=pCur->pPrev;
 	}
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviIrcView::lastLineOfText()
 {
-	if(!m_pLastLine)return QString::null;
+	if(!m_pLastLine)return KviQString::empty;
 	return m_pLastLine->szText;
 }
 
@@ -702,7 +721,7 @@ bool KviIrcView::startLogging(const char *filename,bool bPrependCurBuffer)
 void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 {
 	QString szToWrite=QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
-	QCString szTmp = szToWrite.utf8();
+	KviQCString szTmp = KviQString::toUtf8(szToWrite);
 	if(m_pLogFile->writeBlock(szTmp.data(),szTmp.length())==-1) debug("WARNING : Can not write to the log file.");
 }
 
@@ -740,7 +759,7 @@ bool KviIrcView::saveBuffer(const char *filename)
 	if(!f.open(IO_WriteOnly|IO_Truncate))return false;
 	QString tmp;
 	getTextBuffer(tmp);
-	QCString tmpx = tmp.utf8();
+	KviQCString tmpx = KviQString::toUtf8(tmp);
 	f.writeBlock(tmpx.data(),tmpx.length());
 	f.close();
 	return true;
@@ -2768,7 +2787,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	
 		pa.fillRect(rectLeft,rectTop,rectWidth,rectHeight,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign)),r,widgetWidth,widgetHeight);
+			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign),r,widgetWidth,widgetHeight);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY	
 	}
 #endif
@@ -3246,9 +3265,17 @@ no_selection_paint:
 		{
 			// paint the cursor line
 			int iH = lineWrapsHeight + m_iFontLineSpacing;
+#ifdef COMPILE_USE_QT4
+			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);
+#else
 			pa.setRasterOp(NotROP);
+#endif
 			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),Qt::black);
+#ifdef COMPILE_USE_QT4
+			pa.setCompositionMode(QPainter::CompositionMode_SourceOver);
+#else
 			pa.setRasterOp(CopyROP);
+#endif
 		}
 
 		if(m_bMouseIsDown)
@@ -3270,7 +3297,11 @@ no_selection_paint:
 				// visible!
 				bLineMarkPainted = true;
 				//pa.setRasterOp(NotROP);
+#ifdef COMPILE_USE_QT4
+				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
+#else
 				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,QPen::DotLine));
+#endif
 				pa.drawLine(0,curBottomCoord,widgetWidth,curBottomCoord);
 				//pa.setRasterOp(CopyROP);
 			} // else was partially visible only
@@ -3312,7 +3343,11 @@ no_selection_paint:
 				// need to mark it!
 				//pa.setRasterOp(NotROP);
 				//pa.setPen(Qt::black);
+#ifdef COMPILE_USE_QT4
+				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
+#else
 				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,QPen::DotLine));
+#endif
 				int x = widgetWidth - 8;
 				int y = KVI_IRCVIEW_VERTICAL_BORDER;
 				pa.drawLine(x,y,x,y);
@@ -3335,7 +3370,13 @@ no_selection_paint:
 	pa.drawLine(widgetWidth,1,widgetWidth,widgetHeight);
 
 	// COPY TO THE DISPLAY
+#ifdef COMPILE_USE_QT4
+	setAttribute(Qt::WA_PaintOutsidePaintEvent);
+	QPainter qt4SucksBecauseItNeedsAnAdditionalQPainter(this);
+	qt4SucksBecauseItNeedsAnAdditionalQPainter.drawPixmap(rectLeft,rectTop,rectWidth,rectHeight,*pDoubleBufferPixmap,rectLeft,rectTop,rectWidth,rectHeight);
+#else
 	bitBlt(this,rectLeft,rectTop,pDoubleBufferPixmap,rectLeft,rectTop,rectWidth,rectHeight,Qt::CopyROP);
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4499,7 +4540,7 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 {
 	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
 	
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		// This is the beginning of a selection...
 		// We just set the mouse to be "down" and
@@ -4516,12 +4557,12 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 
 		m_bMouseIsDown = true;
 
-		m_bShiftPressed = (e->state() & ShiftButton);
+		m_bShiftPressed = (e->state() & Qt::ShiftButton);
 
 		calculateSelectionBounds();
 	}
 	
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		if(m_iMouseTimer) 
 		{
@@ -4554,7 +4595,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	pParams->append(szCmd);
 	
 
-	if(!(e->state() & ControlButton))//(e->button() & RightButton) && (
+	if(!(e->state() & Qt::ControlButton))//(e->button() & Qt::RightButton) && (
 	{
 		if(!linkCmd.isEmpty())
 		{
@@ -4568,9 +4609,9 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 							case KVI_WINDOW_TYPE_CHANNEL:
 								if(((KviChannel *)m_pKviWindow)->isOn(linkText))
 								{
-									if(e->button() & RightButton)
+									if(e->button() & Qt::RightButton)
 										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest,m_pKviWindow,pParams);
-									if(e->button() & LeftButton) {
+									if(e->button() & Qt::LeftButton) {
 										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick,m_pKviWindow,pParams);
 										if(m_pKviWindow)
 										{
@@ -4587,9 +4628,9 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 							case KVI_WINDOW_TYPE_QUERY:
 								if(KviQString::equalCI(((KviQuery *)m_pKviWindow)->windowName(),linkText))
 								{
-									if(e->button() & RightButton)
+									if(e->button() & Qt::RightButton)
 										KVS_TRIGGER_EVENT(KviEvent_OnQueryNickPopupRequest,m_pKviWindow,pParams);
-									if(e->button() & LeftButton)
+									if(e->button() & Qt::LeftButton)
 										KVS_TRIGGER_EVENT(KviEvent_OnQueryNickLinkClick,m_pKviWindow,pParams);
 								} else bTrigger = true;
 							break;
@@ -4601,41 +4642,41 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 						{
 							if(console())
 							{
-								if(e->button() & RightButton)
+								if(e->button() & Qt::RightButton)
 									KVS_TRIGGER_EVENT(KviEvent_OnNickLinkPopupRequest,m_pKviWindow,pParams);
-								if(e->button() & LeftButton)
+								if(e->button() & Qt::LeftButton)
 									KVS_TRIGGER_EVENT(KviEvent_OnConsoleNickLinkClick,m_pKviWindow,pParams);
 							} else emit rightClicked();
 						}
 					}
 				break;
 				case 'h':
-					if(e->button() & RightButton)
+					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkPopupRequest,m_pKviWindow,pParams);
-					if(e->button() & LeftButton)
+					if(e->button() & Qt::LeftButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkClick,m_pKviWindow,pParams);
 				break;
 				case 'u':
-					if(e->button() & RightButton)
+					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkPopupRequest,m_pKviWindow,pParams);
-					if(e->button() & LeftButton)
+					if(e->button() & Qt::LeftButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkClick,m_pKviWindow,pParams);
 				break;
 				case 'c':
-					if(e->button() & RightButton)
+					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkPopupRequest,m_pKviWindow,pParams);
-					if(e->button() & LeftButton)
+					if(e->button() & Qt::LeftButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkClick,m_pKviWindow,pParams);
 				break;
 				case 's':
-					if(e->button() & RightButton)
+					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkPopupRequest,m_pKviWindow,pParams);
-					if(e->button() & LeftButton)
+					if(e->button() & Qt::LeftButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkClick,m_pKviWindow,pParams);
 				break;
 				default:
 				{
-					if(e->button() & RightButton)
+					if(e->button() & Qt::RightButton)
 					{
 						QString tmp;
 						getLinkEscapeCommand(tmp,linkCmd,"[!rbt]");
@@ -4647,9 +4688,9 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 				}
 				break;
 			}
-		} else if(e->button() & RightButton) emit rightClicked();
+		} else if(e->button() & Qt::RightButton) emit rightClicked();
 		
-	} else if((e->button() & MidButton) || ((e->button() & RightButton) && (e->state() & ControlButton)))
+	} else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->state() & Qt::ControlButton)))
 	{
 		QString tmp;
 		getLinkEscapeCommand(tmp,linkCmd,QString("[!mbt]"));
@@ -4701,7 +4742,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *)
 void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 {
 //	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
-	if(m_bMouseIsDown && (e->state() & LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+	if(m_bMouseIsDown && (e->state() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 		
 		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);

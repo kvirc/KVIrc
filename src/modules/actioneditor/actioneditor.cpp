@@ -58,7 +58,7 @@
 #include <qpainter.h>
 #include <qheader.h>
 #include <qtabwidget.h>
-#include <qgroupbox.h>
+#include <kvi_tal_groupbox.h>
 #include <qvaluelist.h>
 #include <qlabel.h>
 

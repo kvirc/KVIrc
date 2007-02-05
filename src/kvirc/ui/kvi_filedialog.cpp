@@ -211,8 +211,7 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 	}
 	
 	#endif
-	KviFileDialog * d = new KviFileDialog(initial ? QString(initial) : QString::null,
-		filter ? QString(filter) : QString::null,0,"open_file_names_dialog",true);
+	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,0,"open_file_names_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::ExistingFiles);
 	//d->setShowHiddenFiles(showHidden);	

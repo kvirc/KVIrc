@@ -35,7 +35,7 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 {
 
 	createLayout(2,1);
-	QGroupBox *gbox = addGroupBox(0,0,0,0,1,QGroupBox::Horizontal,__tr2qs_ctx("On Disconnect","options"));
+	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
 
 	KviBoolSelector *b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
@@ -48,7 +48,7 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after disconnect.</center>","options"));
 #endif
 
-	 gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
+	 gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect,true);
@@ -70,7 +70,7 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>","options"));
 #endif
 
-//	gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
+//	gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Automatically reconnect","options"),KviOption_boolAutoReconnectOnUnexpectedDisconnect);
 #ifdef COMPILE_INFO_TIPS
 	mergeTip(b,__tr2qs_ctx("<center>This option will enable auto-reconnecting after an unexpected disconnect. " \
@@ -119,7 +119,7 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 #ifdef COMPILE_SSL_SUPPORT
 	createLayout(3,1);
 
-	QGroupBox * gbox = addGroupBox(0,0,0,0,1,QGroupBox::Horizontal,__tr2qs_ctx("Certificate","options"));
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Certificate","options"));
 
 	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL certificate (PEM format only)","options"),
 		&(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate)),true);
@@ -130,7 +130,7 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 		&(KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)),KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 
-	gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Private Key","options"));
+	gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Private Key","options"));
 	b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL private key","options"),
 		&(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey)),true);
 	f = addFileSelector(gbox,__tr2qs_ctx("Private key location:","options"),
@@ -161,7 +161,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	createLayout(5,1);
 	KviUIntSelector * u;
 	
-	QGroupBox * g = addGroupBox(0,0,0,0,1,QGroupBox::Horizontal,__tr2qs_ctx("Timeout Values","options"),this);
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Timeout Values","options"),this);
 	u = addUIntSelector(g,__tr2qs_ctx("Connect timeout:","options"),KviOption_uintIrcSocketTimeout,5,6000,60);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Outgoing data queue flush timeout:","options"),KviOption_uintSocketQueueFlushTimeout,100,2000,500);
@@ -175,7 +175,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 #endif
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	g = addGroupBox(0,3,0,3,2,QGroupBox::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
+	g = addGroupBox(0,3,0,3,2,KviTalGroupBox::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
 	
 	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv4 connections to:","options"),KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress);
 	KviStringSelector * s = addStringSelector(g,"",KviOption_stringIpV4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress));
@@ -209,7 +209,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));
 
-	QGroupBox * gbox = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	
 	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
@@ -223,7 +223,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
-	gbox = addGroupBox(0,2,0,2,1,QGroupBox::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	gbox = addGroupBox(0,2,0,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	m_pEnableIpv6 = addBoolSelector(gbox,__tr2qs_ctx("Enable service for IPv6","options"),
 		KviOption_boolIdentdEnableIpV6,
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService));

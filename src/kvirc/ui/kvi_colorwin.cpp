@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_colorwin.cpp
 //   Creation date : Wed Jan 6 1999 04:30:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #define __KVIRC__
 
@@ -30,13 +32,18 @@
 #include <qnamespace.h>
 #include <qpainter.h>
 #include <qstring.h>
+#include <qevent.h>
 
 
 KviColorWindow::KviColorWindow()
 :QWidget(0,"toplevel_color_window",Qt::WType_Popup)
 {
+#ifdef COMPILE_USE_QT4
+	setFocusPolicy(Qt::NoFocus);
+#else
 	setFocusPolicy(QWidget::NoFocus);
-	setBackgroundMode(NoBackground);
+#endif
+	setBackgroundMode(Qt::NoBackground);
 	setFixedSize(146,38);
 	m_pOwner = 0;
 	QFont fnt = QFont();
@@ -44,11 +51,13 @@ KviColorWindow::KviColorWindow()
 	fnt.setPointSize(10);
 	//QFont fnt("fixed",10);
 	setFont(fnt);
+	m_iTimerId = -1;
 }
 
 KviColorWindow::~KviColorWindow()
 {
-	killTimers();
+	if(m_iTimerId != -1)
+		killTimer(m_iTimerId);
 //	if(m_pOwner)m_pOwner->setFocus();
 }
 
@@ -75,7 +84,8 @@ void KviColorWindow::paintEvent(QPaintEvent *)
 
 void KviColorWindow::keyPressEvent(QKeyEvent *e)
 {
-	killTimers();
+	if(m_iTimerId != -1)
+		killTimer(m_iTimerId);
 	hide();
 	if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
 }
@@ -91,18 +101,20 @@ void KviColorWindow::mousePressEvent(QMouseEvent *e)
 	if (e->x()>36 && e->y()>18) 
 		if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,49,Qt::NoButton,"1"));
 	if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,key,ascii,Qt::NoButton,str));
-	killTimers();
+	if(m_iTimerId != -1)
+		killTimer(m_iTimerId);
 	hide();
 }
 void KviColorWindow::show()
 {
-	startTimer(10000); //10 sec ...seems enough
+	m_iTimerId = startTimer(10000); //10 sec ...seems enough
 	QWidget::show();
 }
 
 void KviColorWindow::timerEvent(QTimerEvent *)
 {
-	killTimers();
+	if(m_iTimerId != -1)
+		killTimer(m_iTimerId);
 	hide();
 }
 

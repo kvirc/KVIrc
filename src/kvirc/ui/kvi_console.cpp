@@ -90,6 +90,10 @@
 #include <qmessagebox.h>
 #include <qstringlist.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <q3mimefactory.h>
+#endif
+
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
@@ -135,7 +139,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 
@@ -339,7 +343,11 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 	}
 	if(e->avatar())
 	{
+#ifdef COMPILE_USE_QT4
+		Q3MimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
+#else
 		QMimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
+#endif
 		buffer += "<tr><td><center><img src=\"ulv_avatar\"></center></td></tr>";
 	}
 
@@ -450,10 +458,10 @@ void KviConsole::showNotifyList(bool bShow)
 void KviConsole::loadProperties(KviConfig *cfg)
 {
 	int w = width();
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append((w * 85) / 100);
 	def.append((w * 15) / 100);
-	QValueList<int> cur = cfg->readIntListEntry("Splitter",def);
+	KviValueList<int> cur = cfg->readIntListEntry("Splitter",def);
 	// check the size correctness
 	if(cur.count() != 2)cur = def;
 	else {

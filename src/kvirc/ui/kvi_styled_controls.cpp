@@ -26,6 +26,9 @@
 #define __KVIRC__
 
 #include "kvi_styled_controls.h"
+
+#ifndef COMPILE_USE_QT4
+
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
@@ -366,3 +369,5 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 }
 
 #include "kvi_styled_controls.moc"
+
+#endif

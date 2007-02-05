@@ -49,6 +49,10 @@
 #include "kvi_tal_popupmenu.h"
 #include <qpixmap.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
+
 // This class COULD be derived also from KStatusBar but in fact
 // it adds no graphic functionality and it has only useless methods for us.
 // ... for now let's keep it simple :)
@@ -101,7 +105,11 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 
 	m_pMessageLabel = new QLabel("<b>[x]</b> x",this,"msgstatuslabel");
 	m_pMessageLabel->setMargin(1);
+#ifdef COMPILE_USE_QT4
+	m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+#else
 	m_pMessageLabel->setAlignment(SingleLine | AlignVCenter | AlignLeft);
+#endif
 	m_pMessageLabel->setMinimumWidth(350);
 	
 	m_iLastMinimumHeight = 0;
@@ -333,10 +341,13 @@ void KviStatusBar::contextPopupAboutToShow()
 		QString tmp;
 		KviQString::sprintf(tmp,"<center><b>%Q</b></center>",&app);
 
+#ifndef COMPILE_USE_QT4
+		// FIXME: This is not supported under Qt4.. :(
 		QLabel * l = new QLabel(tmp,m_pContextPopup);
 		l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 		m_pContextPopup->insertItem(l);
-		
+#endif
+
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 		
 		KviQString::sprintf(tmp,__tr2qs("Remove %Q"),&app);
@@ -464,18 +475,22 @@ void KviStatusBar::paintEvent(QPaintEvent * e)
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
 	m_pClickedApplet = 0;
-	if(e->button() & RightButton)
+	if(e->button() & Qt::RightButton)
 	{
 		contextPopup()->popup(QCursor::pos());
 		return;
 	}
-	if((e->button() & LeftButton) && (e->state() & (ShiftButton | ControlButton)))
+	if((e->button() & Qt::LeftButton) && (e->state() & (Qt::ShiftButton | Qt::ControlButton)))
 	{
 		// move!
 		m_pClickedApplet = appletAt(mapToGlobal(e->pos()));
 		if(!m_pClickedApplet)return;
 		m_pClickedApplet->select();
+#ifdef COMPILE_USE_QT4
+		g_pApp->setOverrideCursor(Qt::SizeAllCursor);
+#else
 		g_pApp->setOverrideCursor(sizeAllCursor);
+#endif
 	}
 }
 
@@ -515,7 +530,7 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 
 void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 {
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		if(m_pClickedApplet && appletExists(m_pClickedApplet))
 		{

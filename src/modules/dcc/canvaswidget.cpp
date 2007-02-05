@@ -1099,7 +1099,7 @@ void KviCanvasView::contentsMouseMoveEvent(QMouseEvent *e)
 {
 //	QPoint p = inverseWorldMatrix().map(e->pos());
 	QPoint p = e->pos();
-	if(e->state() & LeftButton)
+	if(e->state() & Qt::LeftButton)
 	{
 		if((m_dragMode != None) && (m_pSelectedItem))
 		{
@@ -1173,7 +1173,7 @@ void KviCanvasView::contentsMouseReleaseEvent(QMouseEvent *e)
 
 void KviCanvasView::contentsMousePressEvent(QMouseEvent *e)
 {
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 //	    QPoint p = inverseWorldMatrix().map(e->pos());
 		QPoint p = e->pos();

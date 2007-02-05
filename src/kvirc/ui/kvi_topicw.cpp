@@ -54,6 +54,7 @@ static int g_iInputFontCharWidth[256];
 #include <qregexp.h>
 #include <qclipboard.h>
 #include "kvi_tal_popupmenu.h"
+#include <qevent.h>
 
 // FIXME: #warning "The combo should disappear when it looses focus!...(how to do it ?)"
 
@@ -88,7 +89,11 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pContextPopup = 0;
 	m_iCursorPosition = 0;
 	m_pInput = 0;
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#else
 	setBackgroundMode(QWidget::NoBackground);
+#endif
 	reset();
 #ifdef COMPILE_USE_QT4
 	m_pCompletionBox=new KviTalListBox(this,Qt::Popup);
@@ -598,7 +603,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 {
 
-	if(!(e->button() & RightButton))return;
+	if(!(e->button() & Qt::RightButton))return;
 	if(!m_pContextPopup)
 	{
 		m_pContextPopup = new KviTalPopupMenu(this);
@@ -649,12 +654,12 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 			break;
 		case QEvent::KeyPress:
 			switch( ((QKeyEvent *)e)->key() ) {
-			case Key_Up:
-			case Key_Down:
-				if ( !(((QKeyEvent *)e)->state() & AltButton) )
+			case Qt::Key_Up:
+			case Qt::Key_Down:
+				if ( !(((QKeyEvent *)e)->state() & Qt::AltButton) )
 				break;
-			case Key_F4:
-			case Key_Escape:
+			case Qt::Key_F4:
+			case Qt::Key_Escape:
 				if ( m_pCompletionBox->isVisible() ) {
 				popDownListBox();
 				return TRUE;

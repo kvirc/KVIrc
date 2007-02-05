@@ -34,12 +34,20 @@
 #include <qlabel.h>
 #include <qpixmap.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+#endif
+
 // kvi_app.cpp
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 KviCtcpPageDialog::KviCtcpPageDialog()
 : QWidget(0,"kvirc_ctcppage_dialog",
+#ifdef COMPILE_USE_QT4
+		Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
+#else
 		  WStyle_StaysOnTop | WStyle_Tool | WType_Dialog | WType_TopLevel)
+#endif
 {
 	QGridLayout * g = new QGridLayout(this,4,1,6,0);
 	m_pWidgetStack = new KviTalWidgetStack(this);
@@ -87,7 +95,11 @@ void KviCtcpPageDialog::tabSelected(int id)
 
 void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,const QString &szHost,const QString &szMsg)
 {
+#ifdef COMPILE_USE_QT4
+	int id = m_pTabBar->addTab(szNick);
+#else
 	int id = m_pTabBar->addTab(new QTab(szNick));
+#endif
 	QLabel * l = new QLabel(this);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	//l->setMaximumWidth(600);

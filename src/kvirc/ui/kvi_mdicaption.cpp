@@ -45,8 +45,15 @@
 #include <qstyle.h>
 #include <qpainter.h>
 #include "kvi_tal_popupmenu.h"
-#include <qsimplerichtext.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3simplerichtext.h>
+	#define QSimpleRichText Q3SimpleRichText
+	#include <qstyleoption.h>
+#else
+	#include <qsimplerichtext.h>
+#endif
 #include <qdrawutil.h>
+#include <qevent.h>
 
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
 : QToolButton(parent,name)
@@ -61,6 +68,14 @@ KviMdiCaptionButton::~KviMdiCaptionButton()
 }
 
 
+#ifdef COMPILE_USE_QT4
+void KviMdiCaptionButton::paintEvent(QPaintEvent *e)
+{
+	QPainter painter(this);
+	drawButton(&painter);
+}
+#endif
+
 void KviMdiCaptionButton::drawButton(QPainter *p)
 {
 	QBrush b(parentWidget()->colorGroup().background());
@@ -69,8 +84,14 @@ void KviMdiCaptionButton::drawButton(QPainter *p)
 		qDrawShadePanel(p,0,0,width(),height(),colorGroup(),true,1,&b);
 	else
 		p->fillRect(0,0,width(),height(),b);
-		
+
+#ifdef COMPILE_USE_QT4
+	QStyleOptionButton opt;
+	opt.initFrom(this);
+	style()->drawControl(QStyle::CE_PushButtonLabel,&opt,p,this);
+#else
 	drawButtonLabel(p);
+#endif
 }
 
 
@@ -145,7 +166,11 @@ void KviMdiCaption::mousePressEvent(QMouseEvent *e)
 	debug("mouse press");
 	m_bMouseGrabbed = true;
 	m_lastMousePos = QCursor::pos();
+#ifdef COMPILE_USE_QT4
+	setCursor(Qt::SizeAllCursor);
+#else
 	setCursor(QCursor::sizeAllCursor);
+#endif
 	//grabMouse(Qt::sizeAllCursor);
 	//e->ignore();
 }
@@ -205,7 +230,11 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
 {
 	m_bMouseGrabbed = false;
+#ifdef COMPILE_USE_QT4
+	setCursor(Qt::arrowCursor);
+#else
 	setCursor(QCursor::arrowCursor);
+#endif
 //	releaseMouse();
 }
 

@@ -45,12 +45,13 @@ class KviConsole;
 class KviTaskBarBase;
 class QSplitter;
 class KviConfig;
-class QAccel;
 class KviMexToolBar;
 class KviIrcContext;
 class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
+
+#include "kvi_accel.h" // we need this :/
 
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPtrList<KviWindow> otherwise
@@ -106,7 +107,7 @@ protected:
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
 	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
-	QAccel                                * m_pAccel;                        // the global accelelrator
+	KviAccel                                * m_pAccel;                        // the global accelelrator
 public:
 	// the mdi manager: handles mdi children
 	KviMdiManager * mdiManager(){ return m_pMdi; };
@@ -216,8 +217,8 @@ protected:
 	virtual void windowActivationChange(bool bOldActive);
 	
 	void updatePseudoTransparency();
-	
-	QAccel * installAccelerators(QWidget * wnd);
+
+	KviAccel * installAccelerators(QWidget * wnd);
 	
 	void switchToNextWindow();
 	void switchToPrevWindow();

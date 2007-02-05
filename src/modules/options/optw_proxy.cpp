@@ -34,7 +34,7 @@
 #include <qlineedit.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
-#include <qgroupbox.h>
+#include <kvi_tal_groupbox.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
 #include <qtooltip.h>
@@ -103,7 +103,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
   vbox->setStretchFactor(lll,100);
 
 
-	QGroupBox * gbox = addGroupBox(0,2,1,2,2,QGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),this);
+	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,2,KviTalGroupBox::Horizontal,__tr2qs_ctx("Configuration","options"),this);
 	//QGridLayout * gl = new QGridLayout(gbox->layout());
 	//gl->setMargin(2);
 	//gl->setSpacing(4);

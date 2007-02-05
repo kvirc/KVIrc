@@ -27,14 +27,15 @@
 
 #include "kvi_settings.h"
 
-#include <qstackedwidget.h>
+//#include <qstackedwidget.h>
+#include <q3widgetstack.h>
 
-class KviTalWidgetStack : public QStackedWidget
+class KviTalWidgetStack : public Q3WidgetStack
 {
 	Q_OBJECT
 public:
 	KviTalWidgetStack(QWidget * pParent)
-	: QStackedWidget(pParent) {};
+	: Q3WidgetStack(pParent) {};
 	virtual ~KviTalWidgetStack() {};
 };
 

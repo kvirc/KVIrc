@@ -42,7 +42,10 @@
 #include <qstyle.h>
 #include <qpainter.h>
 #include "kvi_tal_popupmenu.h"
-#include <qobjectlist.h>
+#ifndef COMPILE_USE_QT4
+	#include <qobjectlist.h>
+#endif
+#include <qevent.h>
 
 #ifdef Q_OS_MACX
 #include "kvi_app.h"  //Needed for g_pApp
@@ -104,11 +107,19 @@ QRect KviMdiChild::restoredGeometry()
 
 }
 
+#ifdef COMPILE_USE_QT4
+void KviMdiChild::setBackgroundRole(QPalette::ColorRole)
+{
+	// hack
+	QFrame::setBackgroundRole(QPalette::Window);
+}
+#else
 void KviMdiChild::setBackgroundMode(QWidget::BackgroundMode)
 {
 	// hack
 	QFrame::setBackgroundMode(QWidget::PaletteBackground);
 }
+#endif
 
 void KviMdiChild::setIcon(const QPixmap &pix)
 {
@@ -328,7 +339,7 @@ QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 
 void KviMdiChild::mouseMoveEvent(QMouseEvent *e)
 {
-	if(e->state() & LeftButton)
+	if(e->state() & Qt::LeftButton)
 	{
 		if(m_iResizeCorner && (m_state != Maximized))resizeWindowOpaque(m_iResizeCorner);
 	} else {

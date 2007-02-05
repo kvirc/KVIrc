@@ -46,6 +46,9 @@
 #include "kvi_tal_popupmenu.h"
 #include <qlayout.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -65,7 +68,11 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * 
 	}
 	
 	g_pToolBarGraphicalAppletList->append(this);
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#else
 	setBackgroundMode(QWidget::NoBackground);
+#endif
 
 	setMouseTracking(true);
 	m_bResizeMode = false;
@@ -113,7 +120,7 @@ toolbar.define(default)
 
 void KviToolBarGraphicalApplet::mouseMoveEvent(QMouseEvent * e)
 {
-	if(e->state() & LeftButton)
+	if(e->state() & Qt::LeftButton)
 	{
 		if(m_bResizeMode)
 		{
@@ -126,15 +133,15 @@ void KviToolBarGraphicalApplet::mouseMoveEvent(QMouseEvent * e)
 		}
 	} else {
 		if(e->pos().x() > width() - 4)
-			setCursor(sizeHorCursor);
+			setCursor(Qt::sizeHorCursor);
 		else
-			setCursor(arrowCursor);
+			setCursor(Qt::arrowCursor);
 	}
 }
 
 void KviToolBarGraphicalApplet::mousePressEvent(QMouseEvent * e)
 {
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		m_bResizeMode = (e->pos().x() > (width() - 4));
 	}
@@ -208,7 +215,12 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
 	pa.drawLine(1,height() - 1,width() - 1,height() - 1);
 	pa.drawLine(width() - 1,1,width() - 1,height());
 
+#ifdef COMPILE_USE_QT4
+	QPainter qt4SucksBecauseItNeedsAnAdditionalQPainter(this);
+	qt4SucksBecauseItNeedsAnAdditionalQPainter.drawPixmap(e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),*g_pIccMemBuffer,e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height());
+#else
 	bitBlt(this,e->rect().left(),e->rect().top(),g_pIccMemBuffer,e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),Qt::CopyROP);
+#endif
 }
 
 void KviToolBarGraphicalApplet::drawContents(QPainter *)

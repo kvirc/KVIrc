@@ -4,7 +4,7 @@
 //   Creation date : Thu Aug 3 2000 01:30:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -49,6 +49,7 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_time.h"
 #include "kvi_lagmeter.h"
+#include "kvi_qcstring.h"
 
 #include <qpixmap.h>
 #include <qdatetime.h>
@@ -396,7 +397,7 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 	// [=|*|@] is the type of the channel:
 	// = --> public  * --> private   @ --> secret
 	// ...but we ignore it
-	//QString szChan = msg->connection()->decodeText(msg->cSafeParam(2)->data()); // <-- QCString::data() is implicitly unsafe: it CAN return 0
+	//QString szChan = msg->connection()->decodeText(msg->cSafeParam(2)->data()); // <-- KviQCString::data() is implicitly unsafe: it CAN return 0
 	QString szChan = msg->connection()->decodeText(msg->safeParam(2));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	// and run to the first nickname
@@ -870,7 +871,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 				&szActual,msg->numeric(),&szWText,&nextNick);
 	}
 
-	QCString d = msg->connection()->encodeText(nextNick);
+	KviQCString d = msg->connection()->encodeText(nextNick);
 	msg->connection()->sendFmtData("NICK %s",d.data());
 }
 
@@ -1636,7 +1637,7 @@ void KviServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 	{
 		if(_OUTPUT_PARANOIC)
 			msg->console()->output(KVI_OUT_AWAY,__tr2qs("Restoring pre-away nickname (%Q)"),&szNickBeforeAway);
-		QCString szDat = msg->connection()->encodeText(szNickBeforeAway);
+		KviQCString szDat = msg->connection()->encodeText(szNickBeforeAway);
 		msg->connection()->sendFmtData("NICK %s",szDat.data());
 	}
 
@@ -1674,7 +1675,7 @@ void KviServerParser::parseNumericAway(KviIrcMessage * msg)
 
 		if(_OUTPUT_PARANOIC)
 			msg->console()->output(KVI_OUT_AWAY,__tr2qs("Setting away nickname (%Q)"),&szNewNick);
-		QCString dat = msg->connection()->encodeText(szNewNick);
+		KviQCString dat = msg->connection()->encodeText(szNewNick);
 		msg->connection()->sendFmtData("NICK %s",dat.data());
 	}
 }

@@ -42,10 +42,15 @@
 #include <qlabel.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qheader.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+#else
+	#include <qheader.h>
+#endif
 #include <qlineedit.h>
 #include <qcursor.h>
-#include <qaccel.h>
+#include "kvi_accel.h"
+#include <qevent.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -55,7 +60,7 @@
 
 
 KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id)
-: QCheckListItem(par,QString::null,QCheckListItem::CheckBox)
+: KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox)
 {
 	m_iId = id;
 	m_pToolWidget = 0;
@@ -70,7 +75,7 @@ KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
 
 void KviIrcMessageCheckListItem::stateChange(bool bOn)
 {
-	QCheckListItem::stateChange(bOn);
+	KviTalCheckListItem::stateChange(bOn);
 	if(!m_pToolWidget)return;
 	m_pToolWidget->forceRepaint();
 }
@@ -90,7 +95,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	l->setBackgroundColor(Qt::black);
 	gl->addWidget(l,0,0);
 
-	QToolButton *tb = new QToolButton(DownArrow,this);
+	QToolButton *tb = new QToolButton(Qt::DownArrow,this,"hum");
 	tb->setFixedSize(14,14);
 	tb->setAutoRepeat(false);
 	connect(tb,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));
@@ -181,8 +186,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	gl->setResizeMode(QGridLayout::Fixed);
 	m_pStringToFind->setFocus();
 	tw->showPage(w);
-	QAccel *a = new QAccel( this );
-        a->connectItem( a->insertItem(Key_Escape), this,SLOT(close()) );
+	KviAccel *a = new KviAccel( this );
+        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()

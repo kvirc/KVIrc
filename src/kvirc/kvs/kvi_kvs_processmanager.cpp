@@ -4,7 +4,7 @@
 //   Created on Wed 07 Apr 2004 03:03:52 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004-2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2007 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -90,19 +90,19 @@ bool KviKvsProcessAsyncOperation::start()
 		args.append(m_pData->szCommandline);
 	}
 	
-	m_pProcess = new QProcess(args);
-	int c = QProcess::Stdin;
+	m_pProcess = new KviProcess(args);
+	int c = KviProcess::Stdin;
 	
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 	{
 		connect(m_pProcess,SIGNAL(readyReadStdout()),this,SLOT(readStdout()));
-		c |= QProcess::Stdout;
+		c |= KviProcess::Stdout;
 	}
 	
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 	{
 		connect(m_pProcess,SIGNAL(readyReadStderr()),this,SLOT(readStderr()));
-		c |= QProcess::Stderr;
+		c |= KviProcess::Stderr;
 	}
 
 	m_pProcess->setCommunication(c);

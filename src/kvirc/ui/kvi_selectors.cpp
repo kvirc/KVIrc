@@ -169,7 +169,7 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 
 
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
-: QScrollView(par)
+: KviTalScrollView(par)
 {
 	m_pPixmap = 0;
 	resizeContents(0,0);
@@ -621,7 +621,11 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	{
 		QPixmap tmp(120,16);
 		tmp.fill(KVI_OPTION_MIRCCOLOR(i));
+#ifdef COMPILE_USE_QT4
+		int id = m_pForePopup->insertItem(tmp,QString("x"));
+#else
 		int id = m_pForePopup->insertItem(tmp);
+#endif
 		m_pForePopup->setItemParameter(id,i);
 	}
 	m_pContextPopup->insertItem(__tr2qs("Foreground"),m_pForePopup);
@@ -634,7 +638,11 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	{
 		QPixmap tmp(120,16);
 		tmp.fill(KVI_OPTION_MIRCCOLOR(i));
+#ifdef COMPILE_USE_QT4
+		int id = m_pForePopup->insertItem(tmp,QString("x"));
+#else
 		int id = m_pBackPopup->insertItem(tmp);
+#endif
 		m_pBackPopup->setItemParameter(id,i);
 	}
 	m_pContextPopup->insertItem(__tr2qs("Background"),m_pBackPopup);

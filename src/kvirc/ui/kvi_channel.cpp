@@ -72,6 +72,7 @@
 #include <qsplitter.h>
 #include <qtoolbutton.h>
 #include <qlabel.h>
+#include <qevent.h>
 
 #include <qpalette.h>
 #include "kvi_tal_popupmenu.h"
@@ -82,6 +83,7 @@
 #ifndef AVERAGE_CHANNEL_USERS
 	#define AVERAGE_CHANNEL_USERS 101
 #endif
+
 
 
 // FIXME: #warning "+a Anonymous channel mode!"
@@ -114,7 +116,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	// Button box
 	m_pButtonBox = new KviTalHBox(this);
 	
-	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,m_pButtonBox,"top_splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,m_pButtonBox);
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
 	
@@ -132,10 +134,9 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	createTextEncodingButton(m_pButtonContainer);
 
 	// Central splitter
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	// Spitted vertially on the left
-	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,
-		"vertical_splitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
@@ -283,7 +284,15 @@ void KviChannel::saveProperties(KviConfig *cfg)
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
+#ifdef COMPILE_USE_QT4
+	QList<int> tmp = m_pVertSplitter->sizes();
+	KviValueList<int> tmp2;
+	for(QList<int>::Iterator it = tmp.begin();it != tmp.end();++it)
+		tmp2.append(*it);
+	cfg->writeEntry("VertSplitter",m_pMessageView ? tmp2 : m_VertSplitterSizesList);
+#else
 	cfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
+#endif
 	cfg->writeEntry("PrivateBackground",m_privateBackground);
 	cfg->writeEntry("DoubleView",m_pMessageView ? true : false);
 	if(m_pUserListView)
@@ -404,7 +413,7 @@ void KviChannel::modeSelectorDone()
 void KviChannel::setMode(const char * mode)
 {
 	if(!connection())return;
-	QCString tmp = connection()->encodeText(m_szName);
+	KviQCString tmp = connection()->encodeText(m_szName);
 	connection()->sendFmtData("MODE %s %s",tmp.data(),mode);
 }
 
@@ -464,7 +473,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		{
 			if(connection())
 			{
-				QCString szName = connection()->encodeText(m_szName);
+				KviQCString szName = connection()->encodeText(m_szName);
 				connection()->sendFmtData("MODE %s %c",szName.data(),flag);
 			}
 		}
@@ -494,7 +503,7 @@ void KviChannel::removeMasks(KviMaskEditor *ed,KviPtrList<KviMaskEntry> *l)
 		{
 			if(connection())
 			{
-				QCString szName = connection()->encodeText(m_szName);
+				KviQCString szName = connection()->encodeText(m_szName);
 				connection()->sendFmtData("MODE %s -%s %s",szName.data(),flags.ptr(),connection()->encodeText(QString(masks)).data());
 			}
 			flags = "";
@@ -506,7 +515,7 @@ void KviChannel::removeMasks(KviMaskEditor *ed,KviPtrList<KviMaskEntry> *l)
 	{
 		if(connection())
 		{
-			QCString szName = connection()->encodeText(m_szName);
+			KviQCString szName = connection()->encodeText(m_szName);
 			connection()->sendFmtData("MODE %s -%s %s",szName.data(),flags.ptr(),connection()->encodeText(QString(masks)).data());
 		}
 	}
@@ -1018,8 +1027,8 @@ void KviChannel::ownMessage(const QString &buffer)
 {
 	if(!connection())return;
 
-	QCString szName = connection()->encodeText(windowName());
-	QCString szData = encodeText(buffer);
+	KviQCString szName = connection()->encodeText(windowName());
+	KviQCString szData = encodeText(buffer);
 	const char * d = szData.data();
 	if(!d)return;
 	
@@ -1081,8 +1090,8 @@ void KviChannel::ownMessage(const QString &buffer)
 void KviChannel::ownAction(const QString &buffer)
 {
 	if(!connection())return;
-	QCString szName = connection()->encodeText(m_szName);
-	QCString szData = encodeText(buffer);
+	KviQCString szName = connection()->encodeText(m_szName);
+	KviQCString szData = encodeText(buffer);
 	const char * d = szData.data();
 	if(!d)return;
 	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",szName.data(),0x01,d,0x01))return;
@@ -1330,8 +1339,8 @@ void KviChannel::userAction(KviIrcMask * user,unsigned int uActionType)
 void KviChannel::topicSelected(const QString & topic)
 {
 	if(!connection())return;
-	QCString szEncoded = encodeText(topic);
-	QCString szName = connection()->encodeText(m_szName);
+	KviQCString szEncoded = encodeText(topic);
+	KviQCString szName = connection()->encodeText(m_szName);
 	connection()->sendFmtData("TOPIC %s :%s",szName.data(),szEncoded.length() ? szEncoded.data() : "");
 }
 
@@ -1353,9 +1362,9 @@ void KviChannel::closeEvent(QCloseEvent *e)
 			
 			if(KviKvsScript::evaluate(tmp,this,0,&vRet))vRet.asString(tmp);
 
-			QCString dat = encodeText(tmp);
+			KviQCString dat = encodeText(tmp);
 			partMessageSent();
-			QCString szName = connection()->encodeText(m_szName);
+			KviQCString szName = connection()->encodeText(m_szName);
 			connection()->sendFmtData("PART %s :%s",szName.data(),dat.data() ? dat.data() : "");
 			// be sure to not reference ourselves here.. we could be disconnected!
 		} else {
@@ -1429,7 +1438,7 @@ void KviChannel::internalMask(const QString &mask,bool bAdd,const QString &setBy
 		}
 		e = new KviMaskEntry;
 		e->szMask = mask;
-		e->szSetBy = setBy ? setBy : __tr2qs("(Unknown)");
+		e->szSetBy = (!setBy.isEmpty()) ? setBy : __tr2qs("(Unknown)");
 		e->uSetAt = setAt;
 		l->append(e);
 		if(*ppEd)(*ppEd)->addMask(e);

@@ -27,10 +27,12 @@
 #include "kvi_options.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
+#include "kvi_qcstring.h"
 
 #include <qframe.h>
 #include <qlineedit.h>
 #include "kvi_tal_hbox.h" 
+#include <qevent.h>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 :QFrame(par,name)
@@ -38,7 +40,11 @@ KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 	m_pChannel=chan;
 	m_pLabel=0;
 	m_pLineEdit=0;
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#else
 	setBackgroundMode(QWidget::NoBackground);
+#endif
 	reset();
 }
 
@@ -147,7 +153,7 @@ void KviModeWidget::editorReturnPressed()
 	if(!szNewModes.isEmpty()) mode+=QString("+"+szNewModes);
 	if(!mode.isEmpty())
 	{
-		QCString chan = m_pChannel->connection()->encodeText(m_pChannel->name());
+		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->name());
 		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.utf8().data());
 	}
 	reset();

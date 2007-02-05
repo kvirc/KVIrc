@@ -49,6 +49,14 @@ public:
 	{
 		return Q3PopupMenu::insertItem(QIcon(pix),szText,-1,-1);
 	}
+	int insertItem(const QString &szText,int id)
+	{
+		return Q3PopupMenu::insertItem(szText,id);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,int id)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,id,-1);
+	}
 	int insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot)
 	{
 		return Q3PopupMenu::insertItem(szText,pReceiver,szSlot);

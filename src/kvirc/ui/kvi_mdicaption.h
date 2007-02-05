@@ -42,6 +42,9 @@ public:
 	~KviMdiCaptionButton();
 protected:
 	virtual void drawButton(QPainter * p);
+#ifdef COMPILE_USE_QT4
+	virtual void paintEvent(QPaintEvent *e);
+#endif
 };
 
 

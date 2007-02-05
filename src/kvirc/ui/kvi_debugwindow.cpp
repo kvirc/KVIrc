@@ -34,6 +34,7 @@
 
 #include "kvi_parameterlist.h"
 #include "kvi_frame.h"
+#include "kvi_valuelist.h"
 
 #include <qpixmap.h>
 #include <qsplitter.h>
@@ -46,7 +47,7 @@ KviDebugWindow::KviDebugWindow()
 : KviWindow(KVI_WINDOW_TYPE_DEBUG,g_pFrame,__tr2qs("Debug Messages"),0)
 {
 	m_pInstance = this;
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
 	m_pInput   = new KviInput(this,0);
 	updateCaption();
@@ -84,7 +85,7 @@ void KviDebugWindow::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append((w * 80) / 100);
 	def.append((w * 20) / 100);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));

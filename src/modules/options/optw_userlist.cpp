@@ -50,7 +50,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontUserListView);
 	
-	QGroupBox * g = addGroupBox(0,1,1,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Nickname Colors","options"));
+	KviTalGroupBox * g = addGroupBox(0,1,1,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Nickname Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewNormalForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorUserListViewSelectionForeground);
 	addColorSelector(g,__tr2qs_ctx("Channel owner:","options"),KviOption_colorUserListViewChanOwnerForeground);
@@ -67,7 +67,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	KviColorSelector * s = addColorSelector(hb,"",KviOption_colorUserListViewOwnForeground,KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 
-	g = addGroupBox(0,3,1,3,1,QGroupBox::Horizontal,__tr2qs_ctx("Nickname Grid","options"));
+	g = addGroupBox(0,3,1,3,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Nickname Grid","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Draw nickname grid","options"),KviOption_boolUserListViewDrawGrid);
 
 	s = addColorSelector(g,__tr2qs_ctx("Grid color:","options"),KviOption_colorUserListViewGrid,KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
@@ -113,7 +113,7 @@ KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(Q
 {
 	createLayout(3,2);
 
-	QGroupBox * g = addGroupBox(0,0,1,0,1,QGroupBox::Horizontal,__tr2qs_ctx("Background Colors","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,1,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewBackground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorUserListViewSelectionBackground);
 

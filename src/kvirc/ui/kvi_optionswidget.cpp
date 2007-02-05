@@ -73,7 +73,11 @@ void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 	static QString begin = "<table width=\"100%\" align=\"center\"><tr><td bgcolor=\"#fefef0\">";
 	static QString mid = "</td></tr><tr><td>";
 	static QString end = "</td></tr></table>";
+#ifdef COMPILE_USE_QT4
+	QString s = w->toolTip();
+#else
 	QString s = KviTalToolTip::textFor(w);
+#endif
 	if(s.isEmpty())KviTalToolTip::add(w,tip);
 	else {
 		QString tmp = begin;
@@ -652,9 +656,13 @@ QFrame * KviOptionsWidget::addSeparator(int x1,int y1,int x2,int y2)
 	return f;
 }
 
-QGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,int nStrips,QGroupBox::Orientation o,const QString &txt,bool bEnabled)
+#ifdef COMPILE_USE_QT4
+KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,int nStrips,Qt::Orientation o,const QString &txt,bool bEnabled)
+#else
+KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,int nStrips,KviTalGroupBox::Orientation o,const QString &txt,bool bEnabled)
+#endif
 {
-	QGroupBox * g = new QGroupBox(nStrips,o,txt,this);
+	KviTalGroupBox * g = new KviTalGroupBox(nStrips,o,txt,this);
 	g->setEnabled(bEnabled);
 	addWidgetToLayout(g,x1,y1,x2,y2);
 	return g;

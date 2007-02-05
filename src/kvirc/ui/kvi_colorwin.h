@@ -33,6 +33,7 @@ public:
 	~KviColorWindow();
 private:
 	QWidget *m_pOwner;
+	int m_iTimerId;
 public:
 	void popup(QWidget *owner);
 private:

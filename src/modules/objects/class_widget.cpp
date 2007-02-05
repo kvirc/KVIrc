@@ -732,27 +732,27 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			}
 			break;
 			case QEvent::MouseButtonPress:
-					if(((QMouseEvent *)e)->button() & LeftButton)aparam = 0;
+					if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
 				else {
-					if(((QMouseEvent *)e)->button() & RightButton)aparam = 1;
+					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
 				if(!callFunction(this,"mousePressEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
 				))) ret = ""; // ignore results of a broken event handler
 		break;
 			case QEvent::MouseButtonRelease:
-				if(((QMouseEvent *)e)->button() & LeftButton)aparam = 0;
+				if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
 				else {
-					if(((QMouseEvent *)e)->button() & RightButton)aparam = 1;
+					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
 				if(!callFunction(this,"mouseReleaseEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
 				))) ret = ""; // ignore results of a broken event handler
 			break;
 			case QEvent::MouseButtonDblClick:
-				if(( (QMouseEvent *)e)->button() & LeftButton)aparam = 0;
+				if(( (QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
 				else {
-					if(((QMouseEvent *)e)->button() & RightButton)aparam = 1;
+					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
 					if(!callFunction(this,"mouseDoubleClickEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
@@ -760,13 +760,13 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 			break;
 			case QEvent::MouseMove:
-				if( (((QMouseEvent *)e)->state()) & LeftButton) aparam = 0;
+				if( (((QMouseEvent *)e)->state()) & Qt::LeftButton) aparam = 0;
 				else
 				{
-					if(((QMouseEvent *)e)->state() & RightButton)aparam = 1;
+					if(((QMouseEvent *)e)->state() & Qt::RightButton)aparam = 1;
 					else
 						{
-							if(((QMouseEvent *)e)->state() & MidButton)aparam = 2;
+							if(((QMouseEvent *)e)->state() & Qt::MidButton)aparam = 2;
 							else aparam = -1;
 						}
 				}

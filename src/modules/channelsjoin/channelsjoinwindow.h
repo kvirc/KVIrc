@@ -29,7 +29,7 @@
 #include <qdialog.h>
 
 class KviConsole;
-class QGroupBox;
+class KviTalGroupBox;
 class QPushButton;
 class KviStyledCheckBox;
 class QLineEdit;
@@ -45,7 +45,7 @@ public:
 protected:
 	QLineEdit   * m_pChannelEdit; 
 	KviTalListView   * m_pListView;
-	QGroupBox   * m_pGroupBox;
+	KviTalGroupBox   * m_pGroupBox;
 	QLineEdit   * m_pPass;
 	KviStyledCheckBox   * m_pShowAtStartupCheck;
 	KviStyledCheckBox   * m_pCloseAfterJoinCheck;

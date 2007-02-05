@@ -55,6 +55,8 @@
 #include <qfontmetrics.h>
 #include <qdatetime.h>
 #include <qmime.h>
+#include "kvi_styled_controls.h"
+#include <qevent.h>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -839,7 +841,7 @@ int KviUserListView::getUserModeLevel(const QString &szNick)
 char KviUserListView::getUserFlag(KviUserListEntry * e)
 {
 	if(!e)return 0;
-	return m_pKviWindow->connection()->serverInfo()->modePrefixChar(e->m_iFlags);
+	return (char)m_pKviWindow->connection()->serverInfo()->modePrefixChar(e->m_iFlags).unicode();
 }
 
 void KviUserListView::prependUserFlag(const QString &nick,QString &buffer)
@@ -1308,8 +1310,16 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * par)
 : QWidget(par)
 {
 	m_pListView = par;
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#else
 	setBackgroundMode(QWidget::NoBackground);
+#endif
+#ifdef COMPILE_USE_QT4
+	m_pScrollBar = new QScrollBar(Qt::Vertical,this,"scrollbar");
+#else
 	m_pScrollBar = new QScrollBar(QScrollBar::Vertical,this,"scrollbar");
+#endif
 	m_pScrollBar->setRange(0,0);
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
@@ -1421,7 +1431,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		QPixmap *pix = KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
 		p.fillRect(r.left(),r.top(),r.width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(&p,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign)),r,width(),height());
+			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign),r,width(),height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
@@ -1510,7 +1520,11 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
 					case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
 						p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid),0,
+#ifdef COMPILE_USE_QT4
+							(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? Qt::DotLine : Qt::SolidLine));
+#else
 							(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? QPen::DotLine : QPen::SolidLine));
+#endif
 						p.drawLine(0,bottom - 1,wdth,bottom - 1);
 						if(bShowState || bShowIcons)
 							p.drawLine(iAvatarAndTextX,bottom - 1,iAvatarAndTextX,theY);
@@ -1671,7 +1685,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					p.drawPixmap(theX,theY,*ico);
 				}
 				theX +=18;
-				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,AlignLeft|AlignVCenter,e->m_szNick);
+				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
 			} else {
 
 				char flag = m_pListView->getUserFlag(e);
@@ -1679,9 +1693,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				{
 					QString ttt = QChar(flag);
 					ttt += e->m_szNick;
-					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,AlignLeft|AlignVCenter,ttt);
+					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,ttt);
 				} else {
-					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,AlignLeft|AlignVCenter,e->m_szNick);
+					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
 				}
 			}
 			if(bColorAllocated) delete pClrFore;
@@ -1698,7 +1712,12 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	p.drawLine(1,height()-1,wdth,height()-1);
 	p.drawLine(wdth - 1,1,wdth - 1,height());
 
+#ifdef COMPILE_USE_QT4
+	QPainter qt4SuxBecauseOfThisAdditionalPainter(this);
+	qt4SuxBecauseOfThisAdditionalPainter.drawPixmap(r.left(),r.top(),r.width(),r.height(),*pMemBuffer,r.left(),r.top(),r.width(),r.height());
+#else
 	bitBlt(this,r.left(),r.top(),pMemBuffer,r.left(),r.top(),r.width(),r.height(),Qt::CopyROP,false);
+#endif
 }
 
 void KviUserListViewArea::resizeEvent(QResizeEvent *)
@@ -1712,19 +1731,19 @@ void KviUserListViewArea::resizeEvent(QResizeEvent *)
 void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
 {
 	setFocus();
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry)
 		{
-			if(e->state() & ShiftButton)
+			if(e->state() & Qt::ShiftButton)
 			{
 				// Multiselect mode
 				if(!entry->m_bSelected)m_pListView->m_iSelectedCount++;
 				entry->m_bSelected = true;
 				if(m_pListView->m_iSelectedCount == 1)g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				update();
-			} else if(e->state() & ControlButton)
+			} else if(e->state() & Qt::ControlButton)
 			{
 				// Invert mode
 				if(!entry->m_bSelected)m_pListView->m_iSelectedCount++;
@@ -1753,7 +1772,7 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
 			}
 		}
 		m_pLastEntryUnderMouse = entry;
-	} else if(e->button() & RightButton)
+	} else if(e->button() & Qt::RightButton)
 	{
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry)
@@ -1817,12 +1836,12 @@ void KviUserListViewArea::mouseDoubleClickEvent(QMouseEvent *e)
 
 void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 {
-	if(e->state() & LeftButton)
+	if(e->state() & Qt::LeftButton)
 	{
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry && (entry != m_pLastEntryUnderMouse))
 		{
-			if(e->state() & ControlButton)
+			if(e->state() & Qt::ControlButton)
 			{
 				if(entry->m_bSelected)m_pListView->m_iSelectedCount--;
 				else m_pListView->m_iSelectedCount++;
@@ -1847,7 +1866,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 					m_pScrollBar->setValue(m_pScrollBar->value() - top->m_iHeight);
 					if(m_pListView->m_pTopItem != top)
 					{
-						if(e->state() & ControlButton)
+						if(e->state() & Qt::ControlButton)
 						{
 							if(m_pListView->m_pTopItem->m_bSelected)m_pListView->m_iSelectedCount--;
 							else m_pListView->m_iSelectedCount++;
@@ -1880,7 +1899,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 						m_pScrollBar->setValue(m_pScrollBar->value() + bottom->m_iHeight);
 						if(bottom != m_pLastEntryUnderMouse)
 						{
-							if(e->state() & ControlButton)
+							if(e->state() & Qt::ControlButton)
 							{
 								if(bottom->m_bSelected)m_pListView->m_iSelectedCount--;
 								else m_pListView->m_iSelectedCount++;

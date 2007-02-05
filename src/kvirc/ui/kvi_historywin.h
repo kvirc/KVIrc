@@ -40,6 +40,7 @@ public:
 	~KviHistoryWindow();
 private:
 	KviInput      * m_pOwner;
+	int             m_iTimerId;
 public:
 	void popup(KviInput *owner);
 //	KviInput * owner(){ return m_pOwner; };

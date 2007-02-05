@@ -35,6 +35,7 @@
 	#include <qapplication.h>
 	#include <qhash.h>
 	#include <qstyleoption.h>
+	#include <qaccessible.h>
 
 	static QStyleOptionQ3ListView getStyleOption(const Q3ListView *lv, const Q3ListViewItem *item)
 	{
@@ -441,12 +442,12 @@
 	    else
 	        on = false;
 	
-	#ifndef QT_NO_ACCESSIBILITY
-	    if (old != d->currentState && listView())
-	        QAccessible::updateAccessibility(listView()->viewport(), indexOfItem(this), QAccessible::StateChanged);
-	#else
-	    Q_UNUSED(old);
-	#endif
+	//#ifndef QT_NO_ACCESSIBILITY
+	//    if (old != d->currentState && listView())
+	//        QAccessible::updateAccessibility(listView()->viewport(), indexOfItem(this), QAccessible::StateChanged);
+	//#else
+	//    Q_UNUSED(old);
+	//#endif
 	}
 	
 	void KviTalCheckListItem::setStoredState(ToggleState newState, KviTalCheckListItem *key)

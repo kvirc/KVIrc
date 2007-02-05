@@ -45,6 +45,7 @@ private:
 	QString         m_szCurFullSeq;
 	bool            m_bAltMode; // in alt mode the itemSelected() string contains
 	                            // also the CTRL+I escape code
+	int             m_iTimerId;
 public:
 	void popup(QWidget *owner,bool bAltMode = false);
 private:

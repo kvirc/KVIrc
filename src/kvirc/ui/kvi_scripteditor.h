@@ -25,8 +25,8 @@
 
 #include "kvi_settings.h"
 #include <qwidget.h>
-#include <qcstring.h>
 #include <qlineedit.h>
+#include "kvi_qcstring.h"
 
 //
 // This is the basic interface of a script editor widget
@@ -49,9 +49,9 @@ protected:
 	QLineEdit * m_pFindLineedit;
 public:
 	virtual void setText(const char * txt);
-	virtual void setText(const QCString &txt);
+	virtual void setText(const KviQCString &txt);
 	virtual void setText(const QString &txt);
-	virtual void getText(QCString &txt);
+	virtual void getText(KviQCString &txt);
 	virtual void getText(QString &txt);
 	virtual void setInfoText(const QString &text);
 	virtual void setFindText(const QString &text);

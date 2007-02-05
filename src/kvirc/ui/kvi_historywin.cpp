@@ -33,6 +33,10 @@
 
 #include <qnamespace.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
+
 #include <ctype.h>
 
 extern KviInputHistory * g_pInputHistory;
@@ -45,13 +49,23 @@ KviHistoryWindow::KviHistoryWindow()
 #endif
 {
 	m_pOwner = 0;
+#ifdef COMPILE_USE_QT4
+	setHScrollBarMode(Q3ScrollView::AlwaysOff);
+#else
 	setHScrollBarMode(QScrollView::AlwaysOff);
+#endif
 	connect(this,SIGNAL(selected(const QString &)),this,SLOT(itemSelected(const QString &)));
+	
+	m_iTimerId = -1;
 }
 
 KviHistoryWindow::~KviHistoryWindow()
 {
-	killTimers();
+	if(m_iTimerId != -1)
+	{
+		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
 }
 
 void KviHistoryWindow::fill()
@@ -198,7 +212,7 @@ void KviHistoryWindow::ownerDead()
 
 void KviHistoryWindow::show()
 {
-	startTimer(100000); //100 sec ...seems enough
+	m_iTimerId = startTimer(100000); //100 sec ...seems enough
 	QWidget::show();
 }
 
@@ -209,7 +223,11 @@ void KviHistoryWindow::timerEvent(QTimerEvent *)
 
 void KviHistoryWindow::doHide()
 {
-	killTimers();
+	if(m_iTimerId != -1)
+	{
+		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
 	hide();
 	if(m_pOwner)m_pOwner->setFocus();
 }

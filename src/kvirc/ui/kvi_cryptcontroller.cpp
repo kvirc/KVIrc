@@ -78,7 +78,11 @@
 
 		m_pWindow = wnd;
 
+#ifdef COMPILE_USE_QT4
+		setFocusPolicy(Qt::ClickFocus);
+#else
 		setFocusPolicy(QWidget::ClickFocus);
+#endif
 
 		QGridLayout *g = new QGridLayout(this,10,4,2,2);
 
@@ -102,7 +106,11 @@
 
 		m_pDescriptionLabel = new QLabel(this);
 		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+#ifdef COMPILE_USE_QT4
+		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+#else
 		m_pDescriptionLabel->setAlignment(AlignTop | AlignLeft);
+#endif
 		g->addMultiCellWidget(m_pDescriptionLabel,3,3,1,3);
 
 		m_pAuthorLabel = new QLabel(this);

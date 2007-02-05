@@ -43,16 +43,16 @@ KviScriptEditor::~KviScriptEditor()
 
 void KviScriptEditor::setText(const char * txt)
 {
-	setText(QCString(txt));
+	setText(KviQCString(txt));
 }
 
-void KviScriptEditor::setText(const QCString &txt)
+void KviScriptEditor::setText(const KviQCString &txt)
 {
 }
 
 void KviScriptEditor::setText(const QString &txt)
 {
-	setText(QCString(txt.utf8()));
+	setText(KviQCString(txt.utf8()));
 }
 
 void KviScriptEditor::setFindText(const QString &text)
@@ -66,7 +66,7 @@ void KviScriptEditor::setFindLineeditReadOnly(bool b)
 {
 }
 
-void KviScriptEditor::getText(QCString &txt)
+void KviScriptEditor::getText(KviQCString &txt)
 {
 }
 
@@ -85,7 +85,7 @@ QPoint KviScriptEditor::getCursor()
 }
 void KviScriptEditor::getText(QString &txt)
 {
-	QCString tmp;
+	KviQCString tmp;
 	getText(tmp);
 	txt = QString::fromUtf8(tmp.data());
 }

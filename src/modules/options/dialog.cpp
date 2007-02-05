@@ -45,7 +45,7 @@
 #include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qcheckbox.h>
-#include <qgroupbox.h>
+#include <kvi_tal_groupbox.h>
 #include <qtooltip.h>
 #include <qobjectlist.h>
 #include <qpainter.h>
@@ -325,7 +325,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 			QString szText;
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
 			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
-			else if(o->inherits("QGroupBox"))szText = ((QGroupBox *)o)->title();
+			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 #ifdef COMPILE_INFO_TIPS
 			if(o->inherits("QWidget"))
 				szText.append(QToolTip::textFor((QWidget*)o));

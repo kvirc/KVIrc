@@ -59,7 +59,7 @@ protected:
 	int         m_iHighlightLevel;
 	int         m_iProgress;
 public:
-	KviWindow * window(){ return m_pWindow; };
+	KviWindow * kviWindow(){ return m_pWindow; };
 	virtual void captionChanged(){};
 	virtual void highlight(int iLevel = 1){};
 	virtual void setProgress(int progress){};

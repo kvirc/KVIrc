@@ -21,7 +21,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qgroupbox.h>
+#include <kvi_tal_groupbox.h>
 #include "class_groupbox.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
@@ -184,7 +184,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_groupbox)
 
 bool KviKvsObject_groupbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QGroupBox(parentScriptWidget(), name()), true);
+	setObject(new KviTalGroupBox(parentScriptWidget(), name()), true);
 	return true;
 }
 
@@ -195,12 +195,12 @@ bool KviKvsObject_groupbox::functionSetTitle(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QGroupBox *)widget())->setTitle(szTitle);
+		((KviTalGroupBox *)widget())->setTitle(szTitle);
 	return true;
 }
 bool KviKvsObject_groupbox::functionTitle(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((QGroupBox *)widget())->title());
+	if (widget()) c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetFlat(KviKvsObjectFunctionCall *c)
@@ -210,12 +210,12 @@ bool KviKvsObject_groupbox::functionSetFlat(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QGroupBox *)widget())->setFlat(bEnabled);
+		((KviTalGroupBox *)widget())->setFlat(bEnabled);
 	return true;
 }
 bool KviKvsObject_groupbox::functionIsFlat(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QGroupBox *)widget())->isFlat());
+	if (widget()) c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isFlat());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetCheckable(KviKvsObjectFunctionCall *c)
@@ -225,12 +225,12 @@ bool KviKvsObject_groupbox::functionSetCheckable(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QGroupBox *)widget())->setCheckable(bEnabled);
+		((KviTalGroupBox *)widget())->setCheckable(bEnabled);
 	return true;
 }
 bool KviKvsObject_groupbox::functionIsCheckable(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QGroupBox *)widget())->isCheckable());
+	if (widget()) c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isCheckable());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetChecked(KviKvsObjectFunctionCall *c)
@@ -240,12 +240,12 @@ bool KviKvsObject_groupbox::functionSetChecked(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QGroupBox *)widget())->setChecked(bEnabled);
+		((KviTalGroupBox *)widget())->setChecked(bEnabled);
 	return true;
 }
 bool KviKvsObject_groupbox::functionIsChecked(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QGroupBox *)widget())->isChecked());
+	if (widget()) c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isChecked());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetInsideMargin(KviKvsObjectFunctionCall *c)
@@ -254,12 +254,12 @@ bool KviKvsObject_groupbox::functionSetInsideMargin(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QGroupBox *)widget())->setInsideMargin(uMargin);
+    if (widget()) ((KviTalGroupBox *)widget())->setInsideMargin(uMargin);
 	return true;
 }
 bool KviKvsObject_groupbox::functionInsideMargin(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QGroupBox *)widget())->insideMargin());
+	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideMargin());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetInsideSpacing(KviKvsObjectFunctionCall *c)
@@ -268,12 +268,12 @@ bool KviKvsObject_groupbox::functionSetInsideSpacing(KviKvsObjectFunctionCall *c
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QGroupBox *)widget())->setInsideSpacing(uSpacing);
+    if (widget()) ((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
 	return true;
 }
 bool KviKvsObject_groupbox::functionInsideSpacing(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QGroupBox *)widget())->insideSpacing());
+	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
 bool KviKvsObject_groupbox::functionSetColumns(KviKvsObjectFunctionCall *c)
@@ -282,12 +282,12 @@ bool KviKvsObject_groupbox::functionSetColumns(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("colums",KVS_PT_UNSIGNEDINTEGER,0,uColums)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QGroupBox *)widget())->setColumns(uColums);
+    if (widget()) ((KviTalGroupBox *)widget())->setColumns(uColums);
 	return true;
 }
 bool KviKvsObject_groupbox::functionColumns(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QGroupBox *)widget())->columns());
+	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->columns());
 	return true;
 }
 bool KviKvsObject_groupbox::functionAddSpace(KviKvsObjectFunctionCall *c)
@@ -296,7 +296,7 @@ bool KviKvsObject_groupbox::functionAddSpace(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("colums",KVS_PT_UNSIGNEDINTEGER,0,iSpace)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) (((QGroupBox *)widget())->addSpace(iSpace));
+	if (widget()) (((KviTalGroupBox *)widget())->addSpace(iSpace));
 	return true;
 }
 
@@ -311,7 +311,7 @@ bool KviKvsObject_groupbox::functionSetAlignment(KviKvsObjectFunctionCall *c)
 	{
 		if(KviQString::equalCI(szAlign, align_tbl[i]))
 		{
-			((QGroupBox *)widget())->setAlignment(align_cod[i]);
+			((KviTalGroupBox *)widget())->setAlignment(align_cod[i]);
 			return true;
 		}
 	}
@@ -320,7 +320,7 @@ bool KviKvsObject_groupbox::functionSetAlignment(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_groupbox::functionAlignment(KviKvsObjectFunctionCall *c)
 {
-	int mode = ((QGroupBox *)widget())->alignment();
+	int mode = ((KviTalGroupBox *)widget())->alignment();
 	QString szAlignment="";
 	for(unsigned int i = 0; i < align_num; i++)
 	{
@@ -342,10 +342,10 @@ bool KviKvsObject_groupbox::functionSetOrientation(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szMode, "Horizontal"))
-		((QGroupBox *)widget())->setOrientation(Qt::Horizontal);
+		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
-		((QGroupBox *)widget())->setOrientation(Qt::Vertical);
+		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
 	else c->warning( __tr2qs("Unknown orientation: "));
 	return true;
 }
@@ -360,10 +360,10 @@ bool KviKvsObject_groupbox::functionSetColumnLayout(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(szMode=="Horizontal")
-		((QGroupBox *)widget())->setColumnLayout(uCol,Qt::Horizontal);
+		((KviTalGroupBox *)widget())->setColumnLayout(uCol,Qt::Horizontal);
 	else
 		if(szMode=="Vertical")
-			((QGroupBox *)widget())->setColumnLayout(uCol,Qt::Vertical);
+			((KviTalGroupBox *)widget())->setColumnLayout(uCol,Qt::Vertical);
 		else c->warning( __tr2qs("Unknown orientation: "));
 	return true;
 }

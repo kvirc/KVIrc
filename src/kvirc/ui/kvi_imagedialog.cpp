@@ -117,7 +117,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 
 	g->addMultiCellWidget(m_pTypeComboBox,0,0,0,2);
 
-	m_pTypeList = new QValueList<int>;
+	m_pTypeList = new KviValueList<int>;
 
 	QString bi = __tr2qs("Builtin images");
 
@@ -281,7 +281,11 @@ void KviImageDialog::heartbeat()
 						QImage i(szPath);
 						if(i.isNull())continue;
 						QPixmap pix;
+#ifdef COMPILE_USE_QT4
+						if((i.width() > 80) || (i.height() > 80))pix = i.scaled(80,80,Qt::KeepAspectRatio);
+#else
 						if((i.width() > 80) || (i.height() > 80))pix = i.scale(80,80,QImage::ScaleMin);
+#endif
 						else pix = i;
 
 						QString tip = szFile;

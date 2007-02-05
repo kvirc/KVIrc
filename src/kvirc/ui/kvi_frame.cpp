@@ -65,14 +65,27 @@
 #include <qlineedit.h>
 #include <qmessagebox.h>
 #include <qcheckbox.h>
-#include <qaccel.h>
+
 #include <qtimer.h>
 #include <qlayout.h>
 
 #if QT_VERSION >= 300
 	#include <qfile.h>
 	#include <qtextstream.h>
-	#include <qdockarea.h>
+	#ifdef COMPILE_USE_QT4
+		#include <q3dockarea.h>
+		#define QDockArea Q3DockArea
+	#else
+		#include <qdockarea.h>
+	#endif
+#endif
+
+
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+	#include <qevent.h>
+#else
+	#include <qaccel.h>
 #endif
 
 #include <time.h>
@@ -106,7 +119,7 @@ KviFrame::KviFrame()
 
 	m_pDockExtension = 0;
 	
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
 //	m_pSplitter->setFrameShape(QFrame::NoFrame);
 	
 	setCentralWidget(m_pSplitter);
@@ -149,7 +162,8 @@ KviFrame::KviFrame()
 
 	applyOptions();
 
-	m_pAccel = new QAccel(this);
+
+	m_pAccel = new KviAccel(this);
 
 	installAccelerators(this);
 
@@ -231,7 +245,7 @@ void KviFrame::restoreModuleExtensionToolBars()
 		{
 			QString szMod = szEntry.left(idx);
 			szEntry.remove(0,idx + 1);
-			g_pModuleExtensionManager->allocateExtension("toolbar",szEntry,firstConsole(),0,0,szMod);
+			g_pModuleExtensionManager->allocateExtension("toolbar",KviStr(szEntry),firstConsole(),0,0,szMod);
 		}
 	}
 }
@@ -322,53 +336,53 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		</example>
 */
 
-QAccel * KviFrame::installAccelerators(QWidget * wnd)
+KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 {
-	QAccel *ac = new QAccel(wnd ? (QWidget *)wnd : (QWidget *)this);
+	KviAccel *ac = new KviAccel(wnd ? (QWidget *)wnd : (QWidget *)this);
 
 	static int accel_table[] = {
-		Key_Left + ALT ,    // prev window
-		Key_Right + ALT ,   // next window
-		Key_Up + CTRL ,      // maximize window
-		Key_Down + CTRL ,    // minimize window
-		Key_Escape +CTRL,         // minimize window
-		Key_Left + ALT + SHIFT ,  // prev window in context
-		Key_Right + ALT + SHIFT,  // next window in context
-		Key_F4 + CTRL ,     // close current window
-		Key_1 + CTRL ,       // script accels...
-		Key_2 + CTRL ,
-		Key_3 + CTRL ,
-		Key_4 + CTRL ,
-		Key_5 + CTRL ,
-		Key_6 + CTRL ,
-		Key_7 + CTRL ,
-		Key_8 + CTRL ,
-		Key_9 + CTRL ,
-		Key_0 + CTRL ,
-		Key_F1 , // reserved for context sensitive help
-		Key_F2 ,
-		Key_F3 ,
-		Key_F4 ,
-		Key_F5 ,
-		Key_F6 ,
-		Key_F7 ,
-		Key_F8 ,
-		Key_F9 ,
-		Key_F10 ,
-		Key_F11 ,
-		Key_F12 ,
-/*		Key_F1 + SHIFT ,       // window select...
-		Key_F2 + SHIFT ,
-		Key_F3 + SHIFT ,
-		Key_F4 + SHIFT ,
-		Key_F5 + SHIFT ,
-		Key_F6 + SHIFT ,
-		Key_F7 + SHIFT ,
-		Key_F8 + SHIFT ,
-		Key_F9 + SHIFT ,
-		Key_F10 + SHIFT ,
-		Key_F11 + SHIFT ,
-		Key_F12 + SHIFT ,*/
+		Qt::Key_Left + Qt::ALT ,    // prev window
+		Qt::Key_Right + Qt::ALT ,   // next window
+		Qt::Key_Up + Qt::CTRL ,      // maximize window
+		Qt::Key_Down + Qt::CTRL ,    // minimize window
+		Qt::Key_Escape +Qt::CTRL,         // minimize window
+		Qt::Key_Left + Qt::ALT + Qt::SHIFT ,  // prev window in context
+		Qt::Key_Right + Qt::ALT + Qt::SHIFT,  // next window in context
+		Qt::Key_F4 + Qt::CTRL ,     // close current window
+		Qt::Key_1 + Qt::CTRL ,       // script accels...
+		Qt::Key_2 + Qt::CTRL ,
+		Qt::Key_3 + Qt::CTRL ,
+		Qt::Key_4 + Qt::CTRL ,
+		Qt::Key_5 + Qt::CTRL ,
+		Qt::Key_6 + Qt::CTRL ,
+		Qt::Key_7 + Qt::CTRL ,
+		Qt::Key_8 + Qt::CTRL ,
+		Qt::Key_9 + Qt::CTRL ,
+		Qt::Key_0 + Qt::CTRL ,
+		Qt::Key_F1 , // reserved for context sensitive help
+		Qt::Key_F2 ,
+		Qt::Key_F3 ,
+		Qt::Key_F4 ,
+		Qt::Key_F5 ,
+		Qt::Key_F6 ,
+		Qt::Key_F7 ,
+		Qt::Key_F8 ,
+		Qt::Key_F9 ,
+		Qt::Key_F10 ,
+		Qt::Key_F11 ,
+		Qt::Key_F12 ,
+/*		Qt::Key_F1 + Qt::SHIFT ,       // window select...
+		Qt::Key_F2 + Qt::SHIFT ,
+		Qt::Key_F3 + Qt::SHIFT ,
+		Qt::Key_F4 + Qt::SHIFT ,
+		Qt::Key_F5 + Qt::SHIFT ,
+		Qt::Key_F6 + Qt::SHIFT ,
+		Qt::Key_F7 + Qt::SHIFT ,
+		Qt::Key_F8 + Qt::SHIFT ,
+		Qt::Key_F9 + Qt::SHIFT ,
+		Qt::Key_F10 + Qt::SHIFT ,
+		Qt::Key_F11 + Qt::SHIFT ,
+		Qt::Key_F12 + Qt::SHIFT ,*/
 		0
 	};
 
@@ -386,21 +400,21 @@ QAccel * KviFrame::installAccelerators(QWidget * wnd)
 
 void KviFrame::accelActivated(int id)
 {
-	QAccel * acc = (QAccel *)sender();
+	KviAccel * acc = (KviAccel *)sender();
 
 	int keys = (int)(acc->key(id));
 	KviTaskBarItem *item = 0;
 	switch(keys)
 	{
-		case (Key_Left+ALT): switchToPrevWindow(); break;
-		case (Key_Right+ALT): switchToNextWindow(); break;
-		case (Key_Up+CTRL): maximizeWindow(); break;
-		case (Key_Escape+CTRL):
-		case (Key_Down+CTRL): minimizeWindow(); break;
-		case (Key_Left+ALT+SHIFT): switchToPrevWindowInContext(); break;
-		case (Key_Right+ALT+SHIFT): switchToNextWindowInContext(); break;
-		case (Key_F4+CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
-		case (Key_F1): g_pApp->contextSensitiveHelp(); break;
+		case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
+		case (Qt::Key_Right+Qt::ALT): switchToNextWindow(); break;
+		case (Qt::Key_Up+Qt::CTRL): maximizeWindow(); break;
+		case (Qt::Key_Escape+Qt::CTRL):
+		case (Qt::Key_Down+Qt::CTRL): minimizeWindow(); break;
+		case (Qt::Key_Left+Qt::ALT+Qt::SHIFT): switchToPrevWindowInContext(); break;
+		case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
+		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
+		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
 /*		case(Key_F1 + SHIFT):
 			item = m_pTaskBar->item(0);
 			if(item) setActiveWindow(item->window());
@@ -1128,7 +1142,11 @@ bool KviFrame::focusNextPrevChild(bool next)
 	QWidget * w = focusWidget();
 	if(w)
 	{
+#ifdef COMPILE_USE_QT4
+		if(w->focusPolicy() == Qt::StrongFocus)return false;
+#else
 		if(w->focusPolicy() == QWidget::StrongFocus)return false;
+#endif
 		//QVariant v = w->property("KviProperty_FocusOwner");
 		//if(v.isValid())return false; // Do NOT change the focus widget!
 		

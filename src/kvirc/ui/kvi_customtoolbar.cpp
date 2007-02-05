@@ -34,13 +34,25 @@
 #include <qcursor.h>
 #include "kvi_tal_popupmenu.h"
 #include <qlayout.h>
-#include <qdragobject.h>
 #include <qpixmap.h>
 #include <qcursor.h>
 #include <qtoolbutton.h>
-#include <qobjectlist.h>
 #include <qpainter.h>
 #include <qstyle.h>
+
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+	#include <q3dragobject.h>
+	
+	#define QDragObject Q3DragObject
+	#define QTextDrag Q3TextDrag
+	#define QIconDrag Q3IconDrag
+	
+	#include <qstyleoption.h>
+#else
+	#include <qobjectlist.h>
+	#include <qdragobject.h>
+#endif
 
 
 
@@ -55,17 +67,29 @@ KviCustomToolBarSeparator::KviCustomToolBarSeparator(KviCustomToolBar *pParent,c
 
 QSize KviCustomToolBarSeparator::sizeHint() const
 {
+#ifdef COMPILE_USE_QT4
+	QStyleOption opt;
+	opt.initFrom(this);
+	int extent = style()->pixelMetric(QStyle::PM_ToolBarSeparatorExtent,&opt,this);
+#else
 	int extent = style().pixelMetric(QStyle::PM_DockWindowSeparatorExtent,this);
-	if(m_pToolBar->orientation() == Horizontal)return QSize(extent,0);
+#endif
+	if(m_pToolBar->orientation() == Qt::Horizontal)return QSize(extent,0);
 	else return QSize(0,extent);
 }
 
 void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
+#ifdef COMPILE_USE_QT4
+	QStyleOption opt;
+	opt.initFrom(this);
+	style()->drawPrimitive(QStyle::PE_Q3DockWindowSeparator,&opt,&p,this);
+#else
 	QStyle::SFlags flags = QStyle::Style_Default;
-	if(m_pToolBar->orientation() == Horizontal)flags |= QStyle::Style_Horizontal;
+	if(m_pToolBar->orientation() == Qt::Horizontal)flags |= QStyle::Style_Horizontal;
 	style().drawPrimitive(QStyle::PE_DockWindowSeparator,&p,rect(),colorGroup(),flags);
+#endif
 }
 
 
@@ -146,6 +170,14 @@ void KviCustomToolBar::beginCustomize()
 	m_pFilteredChildren = new KviPtrDict<bool>;
 	m_pFilteredChildren->setAutoDelete(true);
 	// filter the events for all the children
+#ifdef COMPILE_USE_QT4
+	QList<QObject*> l = children();
+	for(QList<QObject*>::Iterator it = l.begin();it != l.end();++it)
+	{
+		if((*it)->isWidgetType())
+			filterChild(*it);
+	}
+#else
 	const QObjectList * l = children();
 	QObjectListIterator it(*l);
 	while(QObject * o = it.current())
@@ -154,11 +186,20 @@ void KviCustomToolBar::beginCustomize()
 			filterChild(o);
 		++it;
 	}
+#endif
 }
 
 void KviCustomToolBar::endCustomize()
 {
 	// stop filtering events
+#ifdef COMPILE_USE_QT4
+	QList<QObject*> l = children();
+	for(QList<QObject*>::Iterator it = l.begin();it != l.end();++it)
+	{
+		if((*it)->isWidgetType())
+			unfilterChild(*it);
+	}
+#else
 	const QObjectList * l = children();
 	QObjectListIterator it(*l);
 	while(QObject * o = it.current())
@@ -167,6 +208,7 @@ void KviCustomToolBar::endCustomize()
 			unfilterChild(o);
 		++it;
 	}
+#endif
 	// FIXME: We SHOULD MAKE SURE that the children are re-enabled...
 	// this could be done by calling setEnabled(isEnabled()) on each action ?
 	if(m_pFilteredChildren)
@@ -336,7 +378,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 	if(!pMinDistW)
 	{
 		// ops.. not found at all (empty toolbar or really far from any button)
-		if(orientation() == Horizontal)
+		if(orientation() == Qt::Horizontal)
 		{
 			if(pnt.x() < (width() / 2))iMinDistIdx = 0; // insert at position 0
 			else iMinDistIdx = idx;
@@ -353,7 +395,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 		{
 			// would not put it over exclude idx
 			// check if we have to stay on right or left of the widget found
-			if(orientation() == Horizontal)
+			if(orientation() == Qt::Horizontal)
 			{
 				if(pnt.x() > (pMinDistW->x() + (pMinDistW->width() / 2)))
 					iMinDistIdx++; // need to put it on the right
@@ -369,7 +411,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 			// got the exclude idx by the way and wouldn't put exactly over it
 			// check if exclude idx is "before" the current possible insert position
 			// if it is , then lower down the index by one
-			if(orientation() == Horizontal)
+			if(orientation() == Qt::Horizontal)
 			{
 				if(pnt.x() > pntExclude.x())
 					iMinDistIdx--; // removing exclude will move everything one step back
@@ -387,7 +429,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 
 /*
 	
-	if(orientation() == Horizontal)
+	if(orientation() == Qt::Horizontal)
 	{
 		while((i = it.current()))
 		{
@@ -513,7 +555,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 	{
 		KviActionManager::instance()->setCurrentToolBar(this);
 		QMouseEvent * ev = (QMouseEvent *)e;
-		if(ev->button() & LeftButton)
+		if(ev->button() & Qt::LeftButton)
 		{
 			if(o->isWidgetType())
 			{

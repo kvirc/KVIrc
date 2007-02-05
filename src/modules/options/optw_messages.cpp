@@ -76,7 +76,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 	KviBoolSelector * b1;
 	KviBoolSelector * b2;
 
-	QGroupBox * g = addGroupBox(0,0,0,0,1,QGroupBox::Horizontal,__tr2qs_ctx("General","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("General","options"));
 	
 	addBoolSelector(g,__tr2qs_ctx("Show message icons","options"),KviOption_boolIrcViewShowImages);
 	addBoolSelector(g,__tr2qs_ctx("Draw some emoticons (smileys) as pictures","options"),KviOption_boolDrawEmoticons);
@@ -85,7 +85,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 
 
 
-	g = addGroupBox(0,1,0,1,1,QGroupBox::Horizontal,__tr2qs_ctx("Nicknames","options"));
+	g = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Nicknames","options"));
 
 	b1 = addBoolSelector(g,__tr2qs_ctx("\"Smart\" nickname colors","options"),KviOption_boolColorNicks);
 	b2 = addBoolSelector(g,__tr2qs_ctx("Use same colors as in the userlist","options"),KviOption_boolUseUserListColorsAsNickColors,!KVI_OPTION_BOOL(KviOption_boolColorNicks));
@@ -119,7 +119,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 
 
 
-	g = addGroupBox(0,2,0,2,1,QGroupBox::Horizontal,__tr2qs_ctx("Timestamp","options"));
+	g = addGroupBox(0,2,0,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Timestamp","options"));
 
 	m_pUseTimestampSelector = addBoolSelector(g,__tr2qs_ctx("Show timestamp","options"),KviOption_boolIrcViewTimestamp);
 	

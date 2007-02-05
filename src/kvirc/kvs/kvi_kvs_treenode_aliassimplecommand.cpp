@@ -33,6 +33,7 @@
 #include "kvi_irccontext.h"
 #include "kvi_window.h"
 #include "kvi_ircconnection.h"
+#include "kvi_qcstring.h"
 #include "kvi_out.h"
 
 
@@ -80,7 +81,7 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 			if(!szAll.isEmpty())szAll.prepend(" ");
 			szAll.prepend(m_szCmdName);
 
-			QCString szData;
+			KviQCString szData;
 
 			if(!c->window()->context())
 				goto no_way_to_send_as_raw;

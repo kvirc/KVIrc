@@ -51,10 +51,16 @@
 #include <qfontmetrics.h>
 #include <qpainter.h>
 #include <qpixmap.h>
-#include <qheader.h>
 #include <qimage.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
+
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+#else
+	#include <qheader.h>
+#endif
+#include <qevent.h>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -137,13 +143,13 @@ void KviTaskBarBase::switchWindow(bool bNext,bool bInContextOnly)
 		{
 			if(bInContextOnly)
 			{
-				if(it->window()->console() == cons)
+				if(it->kviWindow()->console() == cons)
 				{
-					g_pFrame->setActiveWindow(it->window());
+					g_pFrame->setActiveWindow(it->kviWindow());
 					return;
 				}
 			} else {
-				g_pFrame->setActiveWindow(it->window());
+				g_pFrame->setActiveWindow(it->kviWindow());
 				return;
 			}
 		}
@@ -202,9 +208,9 @@ void KviTaskBarButton::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 
 void KviTaskBarButton::mousePressEvent(QMouseEvent *e)
 {
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
-		if(e->state() & ShiftButton)
+		if(e->state() & Qt::ShiftButton)
 		{
 			m_pWindow->delayedClose();
 		} else {
@@ -349,9 +355,9 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 		QString tmp = QChar('(');
 		tmp += szText;
 		tmp += QChar(')');
-		p.drawText(cRect,AlignLeft | AlignTop,tmp,-1,&bRect);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,-1,&bRect);
 	} else {
-		p.drawText(cRect,AlignLeft | AlignTop,szText,-1,&bRect);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1,&bRect);
 	}
 
 	if(bRect.width() > cRect.width())
@@ -362,12 +368,12 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
 		p.setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		p.drawText(cRect,AlignLeft | AlignVCenter,szText,-1);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1);
 		p.setClipRect(cRect.right(),cRect.y(),5,cRect.height());
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
 		p.setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		p.drawText(cRect,AlignLeft | AlignVCenter,szText,-1);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1);
 	}
 	p.setClipping(FALSE);
 	painter->drawPixmap(0,0,*pMemBuffer,distRect.x(),distRect.y(),iWidth,iHeight);
@@ -454,7 +460,11 @@ KviClassicTaskBar::KviClassicTaskBar()
 	setMinimumHeight(m_iButtonHeight+5);
 	
 	setResizeEnabled( true );
+#ifdef COMPILE_USE_QT4
+	connect(this,SIGNAL(orientationChanged(Qt::Orientation)),this,SLOT(orientationChangedSlot(Qt::Orientation)));
+#else
 	connect(this,SIGNAL(orientationChanged(Orientation)),this,SLOT(orientationChangedSlot(Orientation)));
+#endif
 }
 
 KviClassicTaskBar::~KviClassicTaskBar()
@@ -463,9 +473,9 @@ KviClassicTaskBar::~KviClassicTaskBar()
 	m_pButtonList = 0;
 }
 
-void KviClassicTaskBar::orientationChangedSlot(Orientation o)
+void KviClassicTaskBar::orientationChangedSlot(Qt::Orientation o)
 {
-	if (orientation() == Horizontal) m_pBase->setMinimumHeight(m_iButtonHeight);
+	if (orientation() == Qt::Horizontal) m_pBase->setMinimumHeight(m_iButtonHeight);
 	doLayout();
 }
 
@@ -504,23 +514,23 @@ void KviClassicTaskBar::insertButton(KviTaskBarButton * b)
 		// first sort by irc context
 		for(KviTaskBarButton * btn = m_pButtonList->first();btn;btn = m_pButtonList->next())
 		{
-			if(btn->window()->console() == b->window()->console())
+			if(btn->kviWindow()->console() == b->kviWindow()->console())
 			{
 				// same irc context (or none)
 				// sort by type now
 				for(;btn;btn = m_pButtonList->next())
 				{
-					if((btn->window()->type() > b->window()->type()) ||
-						(btn->window()->console() != b->window()->console()))
+					if((btn->kviWindow()->type() > b->kviWindow()->type()) ||
+						(btn->kviWindow()->console() != b->kviWindow()->console()))
 					{
 						// greater type or another irc context
 						m_pButtonList->insert(idx,b);
 						return;
-					} else if(btn->window()->type() == b->window()->type())
+					} else if(btn->kviWindow()->type() == b->kviWindow()->type())
 					{
 						// same type!
 						// sort by name
-						if(!KVI_OPTION_BOOL(KviOption_boolSortTaskBarItemsByName) || (KviQString::cmpCI(btn->window()->windowName(),b->window()->windowName()) > 0))
+						if(!KVI_OPTION_BOOL(KviOption_boolSortTaskBarItemsByName) || (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
 						{
 							// got a "higher one"
 							m_pButtonList->insert(idx,b);
@@ -533,10 +543,10 @@ void KviClassicTaskBar::insertButton(KviTaskBarButton * b)
 				m_pButtonList->append(b);
 				return;
 			} else {
-				if(!(btn->window()->console()) && b->window()->console())
+				if(!(btn->kviWindow()->console()) && b->kviWindow()->console())
 				{
 					// this must be a new console...insert before the contextless windows
-					__range_valid(b->window()->console() == b->window());
+					__range_valid(b->kviWindow()->console() == b->kviWindow());
 					m_pButtonList->insert(idx,b);
 					return;
 				} else idx++; // wrong irc contet...go on searching
@@ -608,7 +618,7 @@ void KviClassicTaskBar::doLayout()
 		totCount -= btnsInRow;
 	}
 	
-	if ((orientation() == Horizontal) &&
+	if ((orientation() == Qt::Horizontal) &&
 		(((unsigned int)rows) > m_pBase->height() / m_iButtonHeight ))
 	{
 		rows = m_pBase->height() / m_iButtonHeight;
@@ -638,7 +648,7 @@ void KviClassicTaskBar::doLayout()
 			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
 		}
 		
-		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) && (orientation() == Horizontal))
+		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) && (orientation() == Qt::Horizontal))
 				theWidth = KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth);
 
 		b->setGeometry(theX,theY,theWidth,m_iButtonHeight);
@@ -664,7 +674,7 @@ void KviClassicTaskBar::applyOptions()
 
 void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 {
-	if(orientation() == Horizontal)
+	if(orientation() == Qt::Horizontal)
 	{
 		int iRows = height()/m_iButtonHeight;
 		if(!iRows) iRows=1;
@@ -840,7 +850,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 				//p.drawTiledPixmap(0,0,width,height(),*pix,pnt.x(),pnt.y());
 //				debug("%i %i",pnt.x(),pnt.y());
 				p.translate(-pnt.x(),-pnt.y());
-				KviPixmapUtils::drawPixmapWithPainter(&p,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign)),QRect(pnt.x(),pnt.y(),width,height()),listView()->width(),listView()->height());
+				KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),QRect(pnt.x(),pnt.y(),width,height()),listView()->width(),listView()->height());
 				p.translate(pnt.x(),pnt.y());
 			}
 		} else {
@@ -968,9 +978,9 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 		QString tmp = QChar('(');
 		tmp += szText;
 		tmp += QChar(')');
-		p.drawText(cRect,AlignLeft | AlignVCenter,tmp,-1,0);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,tmp,-1,0);
 	} else {
-		p.drawText(cRect,AlignLeft | AlignVCenter,szText,-1,0);
+		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1,0);
 	}
 	
 	painter->drawPixmap(0,0,*pMemBuffer,0,0,width,height());
@@ -1035,7 +1045,7 @@ KviTreeTaskBarListView::KviTreeTaskBarListView(QWidget * par)
 	setFrameShape(NoFrame);
 	viewport()->setMouseTracking(TRUE);
 	m_pPrevItem=0;
-	setHScrollBarMode(QScrollView::AlwaysOff);
+	setHScrollBarMode(KviTalListView::AlwaysOff);
 }
 
 KviTreeTaskBarListView::~KviTreeTaskBarListView()
@@ -1069,10 +1079,10 @@ void KviTreeTaskBarListView::contentsMousePressEvent(QMouseEvent *e)
 	KviTalListViewItem * it = (KviTalListViewItem *)itemAt(contentsToViewport(e->pos()));
 	if(it)
 	{
-		if(e->button() & LeftButton)emit leftMousePress(it);
-		else if(e->button() & RightButton)emit rightMousePress(it);
+		if(e->button() & Qt::LeftButton)emit leftMousePress(it);
+		else if(e->button() & Qt::RightButton)emit rightMousePress(it);
 	} else {
-		if(e->button() & RightButton)
+		if(e->button() & Qt::RightButton)
 		{
 			KviTalPopupMenu* pPopup=new KviTalPopupMenu();
 			pPopup->insertItem(__tr2qs("Sort"),this,SLOT(sort()));
@@ -1123,7 +1133,7 @@ void KviTreeTaskBarListView::paintEmptyArea(QPainter * p,const QRect &rct)
 	{
 		QPoint pnt = viewportToContents(QPoint(rct.x() + int(p->worldMatrix().dx()),rct.y() + int(p->worldMatrix().dy())));
 		//p->drawTiledPixmap(rct.x(),rct.y(),rct.width(),rct.height(),*pix,pnt.x(),pnt.y());
-		KviPixmapUtils::drawPixmapWithPainter(p,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign)),rct,viewport()->width(),viewport()->height(),pnt.x(),pnt.y());
+		KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),rct,viewport()->width(),viewport()->height(),pnt.x(),pnt.y());
 	}
 }
 
@@ -1157,9 +1167,17 @@ KviTreeTaskBar::KviTreeTaskBar()
 	//setMaximumWidth(KVI_OPTION_UINT(KviOption_uintTreeTaskBarMaximumWidth));
 	//m_pListView->setMinimumWidth(KVI_OPTION_UINT(KviOption_uintTreeTaskBarMinimumWidth));
     //m_pListView->setMaximumWidth(KVI_OPTION_UINT(KviOption_uintTreeTaskBarMaximumWidth));
+#ifdef COMPILE_USE_QT4
+	m_pListView->setFocusPolicy(Qt::NoFocus);
+#else
 	m_pListView->setFocusPolicy(QWidget::NoFocus);
+#endif
 	m_pListView->setStaticBackground(true);
+#ifdef COMPILE_USE_QT4
+	m_pListView->viewport()->setAutoFillBackground(false);
+#else
 	m_pListView->viewport()->setBackgroundMode(QWidget::NoBackground);
+#endif
 	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeTaskbarHeader))
 	{
 		m_pListView->header()->hide();
@@ -1220,12 +1238,12 @@ bool KviTreeTaskBar::eventFilter(QObject * o,QEvent *e)
 			QMouseEvent * ev = (QMouseEvent *)e;
 			KviTreeTaskBarItem * it = (KviTreeTaskBarItem *)m_pListView->itemAt(ev->pos());
 			if(!it)return false;
-			KviWindow * wnd = it->window();
+			KviWindow * wnd = it->kviWindow();
 			if(wnd)
 			{
-				if(ev->button() & LeftButton)
+				if(ev->button() & Qt::LeftButton)
 				{
-					if(ev->state() & ShiftButton)
+					if(ev->state() & Qt::ShiftButton)
 					{
 						wnd->delayedClose();
 					} else {

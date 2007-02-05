@@ -57,6 +57,7 @@
 #include "kvi_lagmeter.h"
 #include "kvi_ircserver.h"
 #include "kvi_kvs_eventtriggers.h"
+#include "kvi_qcstring.h"
 
 #include "kvi_settings.h"
 
@@ -182,13 +183,13 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 	// nick!user@host JOIN :#channel\x07[o|v]
 	const QChar * pExt = KviQString::nullTerminatedArray(channel);
 	char  chExtMode = 0;
-	while(*pExt && (pExt->unicode() != 0x07))pExt++;
-	if(*pExt)
+	while(pExt->unicode() && (pExt->unicode() != 0x07))pExt++;
+	if(pExt->unicode())
 	{
 		++pExt;
-		if(*pExt)
+		if(pExt->unicode())
 		{
-			chExtMode = (*pExt);
+			chExtMode = (char)pExt->unicode();
 			channel.remove(channel.length() - 2,2); // assuming that we're at the end (we should be)
 		} // else { senseless 0x07 in channel name ?
 	}
@@ -633,10 +634,10 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 		{
 			if(_OUTPUT_VERBOSE)
 				console->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Attempting to rejoin \r!c\r%Q\r..."),&szChan);
-			QCString szC = msg->connection()->encodeText(szChan);
+			KviQCString szC = msg->connection()->encodeText(szChan);
 			if(!szPass.isEmpty())
 			{
-				QCString szP = msg->connection()->encodeText(szChan);
+				KviQCString szP = msg->connection()->encodeText(szChan);
 				msg->connection()->sendFmtData("JOIN %s %s",szC.data(),szP.data());
 			} else msg->connection()->sendFmtData("JOIN %s",szC.data());
 		}

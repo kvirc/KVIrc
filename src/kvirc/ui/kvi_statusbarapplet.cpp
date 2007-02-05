@@ -47,6 +47,9 @@
 #include <qcursor.h>
 #include "kvi_tal_popupmenu.h"
 #include <qpixmap.h>
+#ifdef COMPILE_USE_QT4
+	#include <qevent.h>
+#endif
 
 // This class COULD be derived also from KStatusBar but in fact
 // it adds no graphic functionality and it has only useless methods for us.
@@ -135,9 +138,15 @@ void KviStatusBarApplet::paintEvent(QPaintEvent * e)
 	if(m_bSelected)
 	{
 		QPainter p(this);
+#ifdef COMPILE_USE_QT4
+		p.setCompositionMode(QPainter::CompositionMode_SourceOut);
+		p.fillRect(rect(),Qt::black);
+		p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+#else
 		p.setRasterOp(Qt::NotROP);
 		p.fillRect(rect(),Qt::black);
 		p.setRasterOp(Qt::CopyROP);
+#endif
 	}
 }
 
@@ -222,7 +231,7 @@ void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
 // FIXME: Away on all context should know where user is not away/back before toggling status
 void KviStatusBarAwayIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	if(!(e->button() & LeftButton))return;
+	if(!(e->button() & Qt::LeftButton))return;
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
 	if(!c)return;
 	if(c->state() != KviIrcConnection::Connected)return;
@@ -286,7 +295,7 @@ KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
 
 void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent *e)
 {
-	if(!(e->button() & LeftButton))return;
+	if(!(e->button() & Qt::LeftButton))return;
 
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
 	if(!c)return;

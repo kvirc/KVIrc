@@ -136,8 +136,12 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 		}
 	w = w->parent();
 	}
-	
+
+#ifdef COMPILE_USE_QT4
+	setFocusPolicy(Qt::ClickFocus);
+#else
 	setFocusPolicy(QWidget::ClickFocus);
+#endif
 
 	QGridLayout *g = new QGridLayout(this,3,3,2,2);
 
@@ -176,7 +180,11 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	g->addMultiCellWidget(l,1,1,0,1);
 	
 	m_pMaskBox = new KviTalListView(this);
+#ifdef COMPILE_USE_QT4
+	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
+#else
 	m_pMaskBox->setFocusPolicy(QWidget::ClickFocus);
+#endif
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pMaskBox->addColumn(__tr2qs("Mask"));
@@ -191,7 +199,11 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 	m_pRemoveMask->setEnabled(isEnabled);
+#ifdef COMPILE_USE_QT4
+	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
+#else
 	m_pRemoveMask->setFocusPolicy(QWidget::ClickFocus);
+#endif
 	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,3,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
@@ -199,7 +211,11 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	
 	m_pAddButton = new QPushButton(__tr2qs("Add"),this);
 	m_pAddButton->setEnabled(isEnabled);
+#ifdef COMPILE_USE_QT4
+	m_pAddButton->setFocusPolicy(Qt::ClickFocus);
+#else
 	m_pAddButton->setFocusPolicy(QWidget::ClickFocus);
+#endif
 	m_pAddButton->setFocusProxy(this);
 	g->addWidget(m_pAddButton,3,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));

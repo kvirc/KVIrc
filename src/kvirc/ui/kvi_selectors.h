@@ -33,7 +33,7 @@
 #include "kvi_tal_vbox.h"
 #include <qlineedit.h>
 #include <qlabel.h>
-#include <qscrollview.h>
+#include "kvi_tal_scrollview.h"
 #include <qpushbutton.h>
 #include <qcolor.h>
 #include <qfont.h>
@@ -117,7 +117,7 @@ public:
 	~KviPasswordSelector(){};
 };
 
-class KVIRC_API KviPixmapPreview : public QScrollView
+class KVIRC_API KviPixmapPreview : public KviTalScrollView
 {
 	Q_OBJECT
 public:

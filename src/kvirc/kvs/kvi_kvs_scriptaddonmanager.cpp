@@ -118,13 +118,13 @@ const QString & KviKvsScriptAddon::uninstallCallbackCode()
 const QString & KviKvsScriptAddon::configureCallbackCode()
 {
 	if(m_pConfigureCallback)return m_pConfigureCallback->code();
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviKvsScriptAddon::helpCallbackCode()
 {
 	if(m_pHelpCallback)return m_pHelpCallback->code();
-	return QString::null;
+	return KviQString::empty;
 }
 
 bool KviKvsScriptAddon::load(KviConfig * cfg,const QString &szName)

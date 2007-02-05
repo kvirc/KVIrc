@@ -34,7 +34,11 @@
 
 class KviActionDrawerPage;
 class QPixmap;
-class QSimpleRichText;
+#ifdef COMPILE_USE_QT4
+	class Q3SimpleRichText;
+#else
+	class QSimpleRichText;
+#endif
 class KviAction;
 
 class KVIRC_API KviActionDrawerPageListViewItem : public KviTalListViewItem
@@ -44,7 +48,11 @@ public:
 	~KviActionDrawerPageListViewItem();
 protected:
 	QString m_szName;
+#ifdef COMPILE_USE_QT4
+	Q3SimpleRichText * m_pText;
+#else
 	QSimpleRichText * m_pText;
+#endif
 	QPixmap * m_pIcon;
 	KviTalListView * m_pListView;
 	QString m_szKey;

@@ -41,23 +41,26 @@
 
 #else
 
-	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-#ifdef COMPILE_USE_QT4
-	: QToolBar(label,w)
-#else
-	: QToolBar(label,w,dock,bNewLine,nam)
-#endif
-	{
-#ifdef COMPILE_USE_QT4
-		if(bNewLine)w->addToolBarBreak(dock);
-		w->addToolBar(dock,this);
-#endif
-	}
+	#ifdef COMPILE_USE_QT4
+		KviTalToolBar::KviTalToolBar(const QString &label,Q3MainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
+		: Q3ToolBar(label,w,dock,bNewLine,nam)
+		{
+		}
+
+		#include "kvi_tal_toolbar_qt4.moc"
+
+	#else
+		KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
+		: QToolBar(label,w,dock,bNewLine,nam)
+		{
+		}
+		
+		#include "kvi_tal_toolbar_qt.moc"
+	#endif
 
 	KviTalToolBar::~KviTalToolBar()
 	{
 	}
 
-	#include "kvi_tal_toolbar_qt.moc"
 
 #endif

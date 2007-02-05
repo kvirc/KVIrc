@@ -53,6 +53,7 @@
 #include "kvi_doublebuffer.h"
 #include "kvi_styled_controls.h"
 #include "kvi_texticonmanager.h"
+#include "kvi_draganddrop.h"
 
 #include <qlabel.h>
 #include <ctype.h>
@@ -61,7 +62,6 @@
 #include "kvi_tal_popupmenu.h"
 #include <qpainter.h>
 #include <qclipboard.h>
-#include <qdragobject.h>
 #include <qstringlist.h>
 #include "kvi_list.h"
 #include <qapplication.h>
@@ -70,6 +70,8 @@
 #include "kvi_tal_hbox.h"
 #include <qlayout.h> 
 #include <qstyle.h>
+#include <qevent.h>
+
 
 #ifndef ACCEL_KEY
 #define ACCEL_KEY(k) "\t" + QString(QKeySequence( Qt::CTRL | Qt::Key_ ## k ))
@@ -201,8 +203,12 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_bReadOnly = FALSE;
 	
 	setInputMethodEnabled(true);
-	setBackgroundMode(NoBackground);
-	setFocusPolicy(StrongFocus);
+	setBackgroundMode(Qt::NoBackground);
+#ifdef COMPILE_USE_QT4
+	setFocusPolicy(Qt::StrongFocus);
+#else
+	setFocusPolicy(QWidget::StrongFocus);
+#endif
 	setAcceptDrops(true);
 	setFrameStyle( LineEditPanel );
 	setFrameShadow( Plain );
@@ -211,7 +217,11 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_pIconMenu = new KviTalPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
 
-	setCursor( IbeamCursor );
+#ifdef COMPILE_USE_QT4
+	setCursor(Qt::IBeamCursor);
+#else
+	setCursor(IbeamCursor);
+#endif
 }
 
 KviInputEditor::~KviInputEditor()
@@ -247,7 +257,7 @@ void KviInputEditor::applyOptions()
 
 void KviInputEditor::dragEnterEvent(QDragEnterEvent *e)
 {
-	if(QUriDrag::canDecode(e))
+	if(KviUriDrag::canDecode(e))
 	{
 		e->accept(true);
 // FIXME: #warning "FIX THIS COMMENTED STUFF"
@@ -260,7 +270,7 @@ void KviInputEditor::dragEnterEvent(QDragEnterEvent *e)
 void KviInputEditor::dropEvent(QDropEvent *e)
 {
 	QStringList list;
-	if(QUriDrag::decodeLocalFiles(e,list))
+	if(KviUriDrag::decodeLocalFiles(e,list))
 	{
 		//debug("Local files decoded");
 		if(!list.isEmpty())
@@ -298,9 +308,17 @@ QSize KviInputEditor::sizeHint() const
 	int h = QMAX(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
 	int w = fm.width( 'x' ) * 17; // "some"
 	int m = frameWidth() * 2;
+#ifdef COMPILE_USE_QT4
+	QStyleOption opt;
+	opt.initFrom(this);
+	return (style()->sizeFromContents(QStyle::CT_LineEdit,&opt,
+				     QSize( w + m, h + m ).
+				     expandedTo(QApplication::globalStrut()),this));
+#else
 	return (style().sizeFromContents(QStyle::CT_LineEdit, this,
 				     QSize( w + m, h + m ).
 				     expandedTo(QApplication::globalStrut())));
+#endif
 }
 
 #define KVI_INPUT_DEF_BACK 100
@@ -330,7 +348,7 @@ void KviInputEditor::drawContents(QPainter *p)
 		
 		pa.fillRect(0,0,widgetWidth,widgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,(Qt::AlignmentFlags)(KVI_OPTION_UINT(KviOption_uintInputPixmapAlign)),rect,widgetWidth,widgetHeight);
+			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintInputPixmapAlign),rect,widgetWidth,widgetHeight);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
@@ -721,7 +739,7 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 
 void KviInputEditor::mousePressEvent(QMouseEvent *e)
 {
-	if(e->button() & LeftButton)
+	if(e->button() & Qt::LeftButton)
 	{
 		m_iCursorPosition = charIndexFromXPosition(e->pos().x());
 		//move the cursor to
@@ -734,7 +752,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		killDragTimer();
 		m_iDragTimer = startTimer(KVI_INPUT_DRAG_TIMEOUT);
 
-	} else if(e->button() & RightButton)
+	} else if(e->button() & Qt::RightButton)
 	{
         int type = g_pActiveWindow->type();
 
@@ -747,8 +765,12 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		if(c)
 		{
 			szClip = c->text(QClipboard::Clipboard);
-	
+			
+#ifdef COMPILE_USE_QT4
+			int occ = szClip.count(QChar('\n'));
+#else
 			int occ = szClip.contains(QChar('\n'));
+#endif
 	
 			if(!szClip.isEmpty())
 			{
@@ -779,8 +801,12 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 				QLabel * l = new QLabel(label,g_pInputPopup);
 				l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 				l->setMargin(5);
-	
+				// FIXME: This does NOT work under Qt 4.x (they seem to consider it as bad UI design)
+#ifndef COMPILE_USE_QT4
 				g_pInputPopup->insertItem(l);
+#else
+				delete l;
+#endif
 			}
 		}
 		
@@ -1185,7 +1211,10 @@ void KviInputEditor::focusInEvent(QFocusEvent *)
 		update();
 	}
 	// XIM handling...
+#ifndef COMPILE_USE_QT4
+	// THIS SEEMS TO BE GONE IN Qt4.x ? (even if the documentation states that it *should* be there)
 	setMicroFocusHint(1,1,width() - 2,height() - 2,true,0);
+#endif
 }
 
 void KviInputEditor::focusOutEvent(QFocusEvent *)
@@ -1250,12 +1279,24 @@ void KviInputEditor::imComposeEvent(QIMEvent *e)
 {
 	// replace the old pre-edit string with e->text()
 	m_bUpdatesEnabled = false;
+#ifdef COMPILE_USE_QT4
+	// Qt 4.x ??????????
+	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+
+	// update selection inside the pre-edit
+	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
+	m_iIMSelectionLength = e->replacementLength();
+	moveCursorTo(m_iIMSelectionBegin);
+
+#else
 	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->text());
 
 	// update selection inside the pre-edit
 	m_iIMSelectionBegin = m_iIMStart + e->cursorPos();
 	m_iIMSelectionLength = e->selectionLength();
 	moveCursorTo(m_iIMSelectionBegin);
+#endif
+
 
 	// repaint
 	m_bUpdatesEnabled = true;
@@ -1269,7 +1310,12 @@ void KviInputEditor::imEndEvent(QIMEvent *e)
 {
 	// replace the preedit area with the IM result text
 	m_bUpdatesEnabled = false;
+#ifdef COMPILE_USE_QT4
+	// Qt 4.x ??????????
+	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+#else
 	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->text());
+#endif
 
 	// move cursor to after the IM result text
 	moveCursorTo(m_iIMStart + m_iIMLength);
@@ -1299,7 +1345,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 	{
 		if((e->key() == Qt::Key_Tab) || (e->key() == Qt::Key_BackTab))
 		{
-			completion(e->state() & ShiftButton);
+			completion(e->state() & Qt::ShiftButton);
 			return;
 		} else {
 			m_bLastCompletionFinished=1;
@@ -1315,9 +1361,9 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 //Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
 //This way typical X11 and Apple shortcuts can be used simultanously within the input line.
 #ifndef Q_OS_MACX
-	if(e->state() & ControlButton)
+	if(e->state() & Qt::ControlButton)
 #else
-	if((e->state() & ControlButton) || (e->state() & MetaButton))
+	if((e->state() & Qt::ControlButton) || (e->state() & MetaButton))
 #endif
 	{
 		switch(e->key())
@@ -1329,13 +1375,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 					{
 						if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->state() & ShiftButton);
+						internalCursorRight(e->state() & Qt::ShiftButton);
 					}
 					// skip nonwhitespace
 					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 					{
 						if(m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->state() & ShiftButton);
+						internalCursorRight(e->state() & Qt::ShiftButton);
 					}
 					repaintWithCursorOn();
 				}
@@ -1347,13 +1393,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					while(m_iCursorPosition > 0)
 					{
 						if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->state() & ShiftButton);
+						internalCursorLeft(e->state() & Qt::ShiftButton);
 					}
 					// skip nonwhitespace
 					while(m_iCursorPosition > 0)
 					{
 						if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->state() & ShiftButton);
+						internalCursorLeft(e->state() & Qt::ShiftButton);
 					}
 					repaintWithCursorOn();
 				}
@@ -1469,7 +1515,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
-	if((e->state() & AltButton) && (e->state() & Keypad))
+	if((e->state() & Qt::AltButton) && (e->state() & Qt::Keypad))
 	{
 		// Qt::Key_Meta seems to substitute Key_Alt on some keyboards
 		if((e->key() == Qt::Key_Alt) || (e->key() == Qt::Key_Meta))
@@ -1487,7 +1533,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
-	if(e->state() & ShiftButton)
+	if(e->state() & Qt::ShiftButton)
 	{
 		switch(e->key())
 		{
@@ -1507,7 +1553,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			break;
 		}
 	}
-	if(e->state() & AltButton)
+	if(e->state() & Qt::AltButton)
 	{
 		switch(e->key())
 		{
@@ -1526,14 +1572,14 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 			if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 			{
-				internalCursorRight(e->state() & ShiftButton);
+				internalCursorRight(e->state() & Qt::ShiftButton);
 				repaintWithCursorOn();
 			}
 			break;
 		case Qt::Key_Left:
 			if(m_iCursorPosition > 0)
 			{
-				internalCursorLeft(e->state() & ShiftButton);
+				internalCursorLeft(e->state() & Qt::ShiftButton);
 				repaintWithCursorOn();
 			}
 			break;
@@ -1570,7 +1616,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Home:
 			if(m_iCursorPosition > 0)
 			{
-				if(e->state() & ShiftButton)
+				if(e->state() & Qt::ShiftButton)
 				{
 					if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionEnd = m_iCursorPosition - 1;
 					m_iSelectionBegin = 0;
@@ -1581,7 +1627,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			}
 			break;
 		case Qt::Key_End://we should call it even the cursor is at the end for deselecting
-			if(e->state() & ShiftButton)
+			if(e->state() & Qt::ShiftButton)
 			{
 				if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionBegin = m_iCursorPosition;
 				m_iSelectionEnd = m_szTextBuffer.length()-1;
@@ -2301,7 +2347,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 {
 	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().utf8().data());
 
-	if(e->state() & ControlButton)
+	if(e->state() & Qt::ControlButton)
 	{
 		switch(e->key())
 		{
@@ -2312,7 +2358,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 		}
 	}
 
-	if(e->state() & ControlButton)
+	if(e->state() & Qt::ControlButton)
 	{
 		switch(e->key())
 		{
@@ -2330,7 +2376,11 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 						{
 							if(szText[0] != '/')
 							{
+#ifdef COMPILE_USE_QT4
+								int nLines = szText.count('\n') + 1;
+#else
 								int nLines = szText.contains('\n') + 1;
+#endif
 								if(nLines > 15)
 								{
 									int nRet = QMessageBox::question(

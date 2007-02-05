@@ -23,7 +23,7 @@
 #include "optw_ssl.h"
 
 #include <qlayout.h>
-#include <qgroupbox.h>
+#include <kvi_tal_groupbox.h>
 
 #include "kvi_options.h"
 #include "kvi_locale.h"

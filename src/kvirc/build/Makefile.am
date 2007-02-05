@@ -238,6 +238,7 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../ui/kvi_mdimanager.cpp \
 ../ui/kvi_menubar.cpp \
 ../ui/kvi_modeeditor.cpp \
+../ui/kvi_modew.cpp \
 ../ui/kvi_msgbox.cpp \
 ../ui/kvi_optionswidget.cpp \
 ../ui/kvi_query.cpp \
@@ -251,12 +252,11 @@ kvirc_SOURCES = ../kernel/kvi_action.cpp \
 ../ui/kvi_texticonwin.cpp \
 ../ui/kvi_themedlabel.cpp \
 ../ui/kvi_toolbar.cpp \
+../ui/kvi_toolwindows_container.cpp \
 ../ui/kvi_topicw.cpp \
-../ui/kvi_modew.cpp \
 ../ui/kvi_styled_controls.cpp \
 ../ui/kvi_userlistview.cpp \
-../ui/kvi_window.cpp \
-../ui/kvi_toolwindows_container.cpp
+../ui/kvi_window.cpp
 
 #
 # Command useful to find out all the headers

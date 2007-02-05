@@ -38,7 +38,8 @@
 	#undef Unsorted
 #endif
 
-#include <qprocess.h>
+#include "kvi_process.h"
+
 #include <qtimer.h>
 
 #define KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT 1
@@ -78,14 +79,14 @@ public:
 protected:
 	enum CallbackEvent { EventStarted,EventTerminated,EventStdout,EventStderr,EventPing };
 private:
-	QProcess                 * m_pProcess;
-	KviKvsExtendedRunTimeData * m_pExtendedRunTimeData;
-	QString                    m_szStdoutBuffer;
-	QString                    m_szStderrBuffer;
+	KviProcess                  * m_pProcess;
+	KviKvsExtendedRunTimeData   * m_pExtendedRunTimeData;
+	QString                       m_szStdoutBuffer;
+	QString                       m_szStderrBuffer;
 	KviKvsProcessDescriptorData * m_pData;
-	QTimer                   * m_pPingTimer;
-	QTimer                   * m_pRunTimeTimer;
-	bool                       m_bDeletePending;
+	QTimer                      * m_pPingTimer;
+	QTimer                      * m_pRunTimeTimer;
+	bool                          m_bDeletePending;
 public:
 	bool start();
 private slots:

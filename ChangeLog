@@ -1,3 +1,19 @@
+05 Feb 2007
+   [Pragma]
+   - The KVIrc executable now compiles and starts with Qt4. With Qt3 everythin
+     should work just like it did before.
+
+     No modules are ported yet so a lot of functionality is not available...
+     ... but it CAN connect to a server :)
+     It tends to crash once in a while, has nasty problems with
+     graphics and size of certain widgets: will need some hours of debugging.
+
+     When testing the Qt4 port make sure you (re)move your old binary
+     modules from /usr/local/share/kvirc/3.2/. KVIrc will attempt to load
+     some modules from there and since they're linked to Qt3 the runtime
+     (loader) is likely to go nuts with two Qt versions in memory.
+     You have been warned... :)
+
 30 Jan 2007
    [Alexey]
    - Introduced option "using identd only on connect"

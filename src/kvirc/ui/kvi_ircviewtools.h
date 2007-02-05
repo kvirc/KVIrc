@@ -32,7 +32,8 @@
 #include <qstring.h>
 
 class QLabel;
-class KviStyledCheckBox;
+//class KviStyledCheckBox;
+#include "kvi_styled_controls.h"
 class QLineEdit;
 
 class KviIrcView;
@@ -56,7 +57,7 @@ public:
 
 class KviIrcViewToolWidget;
 
-class KviIrcMessageCheckListItem : public QCheckListItem
+class KviIrcMessageCheckListItem : public KviTalCheckListItem
 {
 public:
 	KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id);

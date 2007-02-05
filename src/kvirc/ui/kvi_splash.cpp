@@ -31,6 +31,10 @@
 #include "kvi_fileutils.h"
 #include <qsplashscreen.h> 
 
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+#endif
+
 #include <qpixmap.h>
 #include <qpainter.h>
 #include <qlayout.h>
@@ -132,10 +136,19 @@ void KviSplashScreen::hideEvent(QHideEvent *e)
 
 void KviSplashScreen::setProgress(int progress)
 {
+#ifdef COMPILE_USE_QT4
+	QPixmap slowQt4Copy = pixmap();
+	QPainter painter(&slowQt4Copy);
+	QSize size = slowQt4Copy.size();
+	painter.drawPixmap(0,size.height() - m_pOverlay->height(),*m_pOverlay,0,0,(m_pOverlay->width() * progress) / 100,m_pOverlay->height());
+	painter.end();
+	setPixmap(slowQt4Copy);
+#else
 	QPainter painter(pixmap());
 	QSize size = pixmap()->size();
 	painter.drawPixmap(0,size.height() - m_pOverlay->height(),*m_pOverlay,0,0,(m_pOverlay->width() * progress) / 100,m_pOverlay->height());
 	painter.end();
+#endif
 	//raise();
 	repaint();
 	g_pApp->processEvents(); //damn...

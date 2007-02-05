@@ -25,6 +25,17 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "kvi_settings.h"
+
+#ifdef COMPILE_USE_QT4
+	// we use internal Qt4 styles for now
+	#include <qcheckbox.h>
+	#include <qtoolbutton.h>
+	
+	#define KviStyledCheckBox QCheckBox
+	#define KviStyledToolButton QToolButton
+#else
+
 #include <qcheckbox.h>
 #include <qtoolbutton.h>
 #include <qevent.h>
@@ -96,5 +107,7 @@ protected:
 	virtual void paintEvent ( QPaintEvent * );
 	virtual void resizeEvent ( QResizeEvent * ) ;
 };
+
+#endif
 
 #endif

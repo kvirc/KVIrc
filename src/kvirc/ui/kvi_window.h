@@ -52,13 +52,13 @@ class KviTalPopupMenu;
 class QPixmap;
 class QSplitter;
 class KviTalHBox;
-class QAccel;
 class QToolButton;
 class QTextCodec;
 class KviTalWidgetStack;
 
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_widgetstack.h"
+#include "kvi_accel.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptController;
@@ -167,7 +167,7 @@ protected: // almost private: don't touch :D
 	QToolButton                         * m_pTextEncodingButton;
 	QToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
-	QAccel                              * m_pAccel;
+	KviAccel                            * m_pAccel;
 	static const char                   * m_typeTable[KVI_WINDOW_NUM_TYPES + 1];
 	// text encoding and decoding
 	//unsigned int                          m_uTextEncoding;

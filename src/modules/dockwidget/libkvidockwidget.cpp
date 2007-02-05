@@ -370,8 +370,8 @@ void KviDockWidget::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
 
 void KviDockWidget::mousePressEvent(QMouseEvent *e)
 {
-	if(e->button() & LeftButton)toggleParentFrame();
-	else if(e->button() & RightButton)
+	if(e->button() & Qt::LeftButton)toggleParentFrame();
+	else if(e->button() & Qt::RightButton)
 		m_pContextPopup->popup(mapToGlobal(e->pos()));
 }
 

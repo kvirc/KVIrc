@@ -43,6 +43,7 @@
 #include <math.h>
 #include <qcursor.h>
 #include <qdrawutil.h>
+#include <qevent.h>
 
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -77,12 +78,21 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
+#ifdef COMPILE_USE_QT4
+	viewport()->setAutoFillBackground(false);
+#else
 	viewport()->setBackgroundMode(QWidget::NoBackground);
+#endif
 	setStaticBackground(true);
 	resizeContents(width(),height());
 
+#ifdef COMPILE_USE_QT4
+	setFocusPolicy(Qt::NoFocus);
+	viewport()->setFocusPolicy(Qt::NoFocus);
+#else
 	setFocusPolicy(QWidget::NoFocus);
 	viewport()->setFocusPolicy(QWidget::NoFocus);
+#endif
 	
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
@@ -281,7 +291,7 @@ QPoint KviMdiManager::getCascadePoint(int indexOfWindow)
 void KviMdiManager::mousePressEvent(QMouseEvent *e)
 {
 	//Popup the window menu
-	if(e->button() & RightButton)m_pWindowPopup->popup(mapToGlobal(e->pos()));
+	if(e->button() & Qt::RightButton)m_pWindowPopup->popup(mapToGlobal(e->pos()));
 }
 
 void KviMdiManager::childMoved(KviMdiChild *)
@@ -324,7 +334,7 @@ void KviMdiManager::maximizeChild(KviMdiChild * lpC)
 void KviMdiManager::resizeEvent(QResizeEvent *e)
 {
 	//If we have a maximized children at the top , adjust its size
-	QScrollView::resizeEvent(e);
+	KviTalScrollView::resizeEvent(e);
 	KviMdiChild *lpC=m_pZ->last();
 	if(lpC)
 	{
@@ -470,18 +480,18 @@ void KviMdiManager::updateContentsSize()
 
 void KviMdiManager::updateSDIMode()
 {
-	__range_valid(m_pSdiCloseButton);
 
 	KviMdiChild * lpC = m_pZ->last();
 
-	m_pSdiCloseButton->setEnabled(lpC ? lpC->closeEnabled() : false);
+	if(m_pSdiCloseButton)
+		m_pSdiCloseButton->setEnabled(lpC ? lpC->closeEnabled() : false);
 
-
-	
 // This would result in an addictional main menu bar entry on MacOSX which would trigger a popup menu and not
 // a submenu. Due to the optical reasons it is removed here.
 // The same popup is triggered by right clicking on the window name in the channel window list.
 #ifndef Q_OS_MACX
+#ifndef COMPILE_USE_QT4
+// FIXME: Adding widgets to menus is not supported
 	KviMenuBar * b = m_pFrm->mainMenuBar();
 
 	const QPixmap * pix = lpC ? lpC->icon() : 0;
@@ -497,6 +507,7 @@ void KviMdiManager::updateSDIMode()
 	} else {
 		m_pSdiIconButton->setPixmap(*pix);
 	}
+#endif
 #endif //Q_OS_MACX
 }
 
@@ -524,6 +535,8 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 {
 	KviMenuBar * b = m_pFrm->mainMenuBar();
 
+#ifndef COMPILE_USE_QT4
+	// FIXME: This is NOT supported under QT4.. it sux
 	if(!m_pSdiCloseButton)
 	{
 		m_pSdiMinimizeButton = new KviMenuBarToolButton(b,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),"btnminimize");
@@ -547,10 +560,10 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 
 		emit enteredSdiMode();
 		
-		setVScrollBarMode(QScrollView::AlwaysOff);
-		setHScrollBarMode(QScrollView::AlwaysOff);
+		setVScrollBarMode(KviTalScrollView::AlwaysOff);
+		setHScrollBarMode(KviTalScrollView::AlwaysOff);
 	}
-
+#endif
 	updateSDIMode();
 }
 
@@ -587,8 +600,8 @@ void KviMdiManager::leaveSDIMode()
 	if(m_iSdiRestoreItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiRestoreItemId);
 	if(m_iSdiMinimizeItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiMinimizeItemId);
 
-	setVScrollBarMode(QScrollView::Auto);
-	setHScrollBarMode(QScrollView::Auto);
+	setVScrollBarMode(KviTalScrollView::Auto);
+	setHScrollBarMode(KviTalScrollView::Auto);
 
 	emit leftSdiMode();
 }

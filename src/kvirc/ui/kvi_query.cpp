@@ -46,6 +46,7 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_toolwindows_container.h"
+#include "kvi_qcstring.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -58,8 +59,8 @@
 #include <qsplitter.h>
 #include "kvi_tal_hbox.h"
 #include <qtoolbutton.h>
-#include <qdragobject.h>
-#include <qgrid.h> 
+#include "kvi_draganddrop.h"
+#include "kvi_valuelist.h"
 
 KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 : KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,nick,lpConsole)
@@ -85,7 +86,11 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	createTextEncodingButton(m_pButtonGrid);
 
+#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+#else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+#endif
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
@@ -302,7 +307,7 @@ void KviQuery::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append((w * 80) / 100);
 	def.append((w * 20) / 100);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
@@ -577,8 +582,8 @@ void KviQuery::ownMessage(const QString &buffer)
 		return;
 	}
 	
-	QCString szName = connection()->encodeText(windowName());
-	QCString szData = encodeText(buffer);
+	KviQCString szName = connection()->encodeText(windowName());
+	KviQCString szData = encodeText(buffer);
 
 	const char * d = szData.data();
 	if(!d)return;
@@ -642,9 +647,9 @@ void KviQuery::ownAction(const QString &buffer)
 	{
 		outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This query has no active targets, no message sent"));
 	} else {
-		QCString szBuffer = encodeText(buffer);
+		KviQCString szBuffer = encodeText(buffer);
 		if(!szBuffer.data())return;
-		QCString sz = connection()->encodeText(windowName());
+		KviQCString sz = connection()->encodeText(windowName());
 		if(sz.isEmpty())return;
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
 			sz.data(),0x01,szBuffer.data(),0x01))return;

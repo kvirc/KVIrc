@@ -1761,13 +1761,15 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 	
 	bool bNeedToUpdateUserlist = false;
 	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
-	if(e){
+	if(e)
+	{
 		int pos = decoded.find("Gender=",0,false);	
 		
 		if(pos>=0)
 		{
 			QChar c = decoded[pos+7];
-			switch(c) {
+			switch(c.unicode())
+			{
 				case 'F':
 				case 'f':
 					bNeedToUpdateUserlist = true;
@@ -1782,7 +1784,8 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 		}
 	}
 
-	if(bNeedToUpdateUserlist) {
+	if(bNeedToUpdateUserlist)
+	{
 		if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
 		{
 			((KviChannel*)g_pActiveWindow)->userListView()->updateArea();

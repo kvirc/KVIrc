@@ -93,7 +93,11 @@ public slots:
 signals:
 	void systemPopupRequest(const QPoint & pnt);
 protected:
+#ifdef COMPILE_USE_QT4
+	virtual void setBackgroundRole(QPalette::ColorRole);
+#else
 	virtual void setBackgroundMode(QWidget::BackgroundMode bgmd);
+#endif
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void mouseMoveEvent(QMouseEvent *e);

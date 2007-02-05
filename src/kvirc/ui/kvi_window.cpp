@@ -61,15 +61,22 @@
 #include <qmetaobject.h>
 #include <qdatetime.h>
 #include <qtextcodec.h>
+#include <qevent.h>
 
+// it looks they can't decide :D
+#ifndef COMPILE_USE_QT4
 #if QT_VERSION >= 0x030005
         #include <qobjectlist.h>
 #else
         #include <qobjcoll.h>
 #endif
+#endif
+
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+#endif
 
 #include <qvariant.h>
-#include <qaccel.h>
 #include <qtoolbutton.h>
 #include "kvi_tal_tooltip.h"
 #include <qmessagebox.h>
@@ -141,8 +148,13 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pTaskBarItem = 0;
 
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+	setFocusPolicy(Qt::StrongFocus);
+#else
 	setBackgroundMode(NoBackground);
 	setFocusPolicy(StrongFocus);
+#endif
 	
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
@@ -281,13 +293,21 @@ bool KviWindow::focusNextPrevChild(bool next)
 	QWidget * w = focusWidget();
 	if(w)
 	{
+#ifdef COMPILE_USE_QT4
+		if(w->focusPolicy() == Qt::StrongFocus)return false;
+#else
 		if(w->focusPolicy() == QWidget::StrongFocus)return false;
+#endif
 		//QVariant v = w->property("KviProperty_FocusOwner");
 		//if(v.isValid())return false; // Do NOT change the focus widget!
 		
 		if(w->parent())
 		{
+#ifdef COMPILE_USE_QT4
+			if(w->parent()->metaObject()->indexOfProperty("KviProperty_ChildFocusOwner") == -1)
+#else
 			if(w->parent()->metaObject()->findProperty("KviProperty_ChildFocusOwner") == -1)
+#endif
 				return false; // Do NOT change the focus widget!
 		}
 	}
@@ -462,14 +482,14 @@ const QString & KviWindow::lastLineOfText()
 {
 	if(m_pIrcView)
 		return m_pIrcView->lastLineOfText();
-	return QString::null;
+	return KviQString::empty;
 }
 
 const QString & KviWindow::lastMessageText()
 {
 	if(m_pIrcView)
 		return m_pIrcView->lastMessageText();
-	return QString::null;
+	return KviQString::empty;
 }
 
 // The following three have to be here even if the crypt support is disabled...moc does not support conditional compilations
@@ -612,7 +632,13 @@ void KviWindow::saveProperties(KviConfig *cfg)
 	QString szCodec = m_szTextEncoding;
 	QTextCodec * c = defaultTextCodec();
 	if(c && m_pTextCodec)
-		if(KviQString::equalCI(szCodec,c->name()))szCodec = QString::null; // store "default"
+	{
+#ifdef COMPILE_USE_QT4
+		if(KviQString::equalCI(szCodec,c->name().data()))szCodec = KviQString::empty; // store "default"
+#else
+		if(KviQString::equalCI(szCodec,c->name()))szCodec = KviQString::empty; // store "default"
+#endif
+	}
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
 	cfg->writeEntry(szKey,szCodec);
@@ -626,7 +652,7 @@ void KviWindow::loadProperties(KviConfig *cfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	setTextEncoding(cfg->readQStringEntry(szKey,QString::null).utf8().data());
+	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::empty).utf8().data());
 	if(m_pInput) m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
 /*	if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
 	{
@@ -981,8 +1007,21 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	{
 		// must find one NOW
 		// we probably have no KviInput since it would have been grabbed anyway
+		
 		if(m_pIrcView)m_pFocusHandler = m_pIrcView;
 		else {
+#ifdef COMPILE_USE_QT4
+			QList<QObject *> list = children();
+			for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+			{
+				QObject * c = *it;
+				if(c->isWidgetType())
+				{
+					m_pFocusHandler = (QWidget *)c;
+					break;
+				}
+			}
+#else
 			QObjectList *list = (QObjectList *)(children());
 			if(list)
 			{
@@ -995,6 +1034,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 					}
 				}
 			}
+#endif
 		}
 		if(m_pFocusHandler)m_pFocusHandler->setFocus();
 		else {
@@ -1029,8 +1069,13 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 			QApplication::restoreOverrideCursor();
 		break;
 	case QEvent::MouseButtonPress:
+#ifdef COMPILE_USE_QT4
+		if( (((QWidget *)o)->focusPolicy() == Qt::NoFocus) ||
+		        (((QWidget *)o)->focusPolicy() == Qt::TabFocus))
+#else
 		if( (((QWidget *)o)->focusPolicy() == QWidget::NoFocus) ||
 		        (((QWidget *)o)->focusPolicy() == QWidget::TabFocus))
+#endif
 		{
 			// this will not focus our window
 			// set the focus to the focus handler
@@ -1072,12 +1117,27 @@ void KviWindow::childInserted(QWidget * o)
 		m_pFocusHandler = o;
 	else
 	{
+#ifdef COMPILE_USE_QT4
+		if(!m_pFocusHandler && (o->focusPolicy() == Qt::StrongFocus))
+#else
 		if(!m_pFocusHandler && (o->focusPolicy() == QWidget::StrongFocus))
+#endif
 		{
 			m_pFocusHandler = o;
 		}
 	}
 
+#ifdef COMPILE_USE_QT4
+	QList<QObject *> list = o->children();
+	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+	{
+		QObject * c = *it;
+		if(c->isWidgetType())
+		{
+			childInserted((QWidget *)c);
+		}
+	}
+#else
 	QObjectList *list = (QObjectList *)(o->children());
 	if(list)
 	{
@@ -1087,6 +1147,7 @@ void KviWindow::childInserted(QWidget * o)
 				childInserted((QWidget *)c);
 		}
 	}
+#endif
 }
 
 void KviWindow::childDestroyed()
@@ -1104,6 +1165,17 @@ void KviWindow::childRemoved(QWidget * o)
 	if(o == m_pLastFocusedChild)
 		m_pLastFocusedChild = 0;
 
+#ifdef COMPILE_USE_QT4
+	QList<QObject *> list = o->children();
+	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+	{
+		QObject * c = *it;
+		if(c->isWidgetType())
+		{
+			childRemoved((QWidget *)c);
+		}
+	}
+#else
 	QObjectList *list = (QObjectList *)(o->children());
 	if(list)
 	{
@@ -1113,7 +1185,7 @@ void KviWindow::childRemoved(QWidget * o)
 				childRemoved((QWidget *)c);
 		}
 	} //else debug("The removed object has no children");
-
+#endif
 }
 
 void KviWindow::childEvent(QChildEvent *e)
@@ -1148,6 +1220,15 @@ void KviWindow::updateBackgrounds(QObject * obj)
 {
 	if(!obj)
 		obj = this;
+#ifdef COMPILE_USE_QT4
+	QList<QObject *> list = obj->children();
+	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
+	{
+		QObject * child = *it;
+		if(child->metaObject()->indexOfProperty("TransparencyCapable") != -1)
+			((QWidget *)child)->update();
+	}
+#else
 	QObjectList * list = (QObjectList *)(obj->children());
 	if(list)
 	{
@@ -1168,6 +1249,7 @@ void KviWindow::updateBackgrounds(QObject * obj)
 			updateBackgrounds(child);
 		}
 	}
+#endif
 }
 
 void KviWindow::moveEvent(QMoveEvent *e)
@@ -1397,7 +1479,12 @@ void KviWindow::unhighlight()
 
 void KviWindow::preprocessMessage(QString & szMessage)
 {
+	// slow
+#ifdef COMPILE_USE_QT4
+	QStringList strings = szMessage.split(" ");
+#else
 	QStringList strings = QStringList::split(" ",szMessage, TRUE);
+#endif
 	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it ) {
 		QString tmp(*it);
 		if(tmp.contains('\r')) continue;

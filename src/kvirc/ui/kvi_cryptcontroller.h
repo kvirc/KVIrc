@@ -1,6 +1,6 @@
 #ifndef _KVI_CRYPTCONTROLLER_H_
 #define _KVI_CRYPTCONTROLLER_H_
-
+//=============================================================================
 //
 //   File : kvi_cryptcontroller.h
 //   Creation date : Fri Nov 03 2000 14:11:03 CEST by Szymon Stefanek
@@ -22,13 +22,15 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 
 
 
-#ifdef COMPILE_CRYPT_SUPPORT
+// Qt4 moc bails out on this ??????
 
+#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 	#include <qwidget.h>
 	#include "kvi_tal_listbox.h"
 	#include <qpushbutton.h>
@@ -51,7 +53,6 @@
 		bool             bDoEncrypt;
 		bool             bDoDecrypt;
 	};
-
 
 	class KVIRC_API KviEngineListBoxItem : public KviTalListBoxText
 	{

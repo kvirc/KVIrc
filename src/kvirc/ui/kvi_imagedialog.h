@@ -30,7 +30,7 @@
 #include <qdialog.h>
 #include <qcombobox.h>
 #include "kvi_tal_listbox.h"
-#include <qvaluelist.h>
+#include "kvi_valuelist.h"
 #include <qtimer.h>
 #include <qstringlist.h>
 
@@ -74,7 +74,7 @@ public:
 	virtual ~KviImageDialog();
 protected:
 	QComboBox       * m_pTypeComboBox;
-	QValueList<int> * m_pTypeList;
+	KviValueList<int> * m_pTypeList;
 	KviTalListBox        * m_pListBox;
 	QTimer          * m_pTimer;
 	int               m_iJobType;
