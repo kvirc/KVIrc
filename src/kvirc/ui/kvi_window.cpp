@@ -340,7 +340,7 @@ bool KviWindow::setTextEncoding(const QString &szTextEncoding)
 		// and we couldn't find a codec for this
 	} // else it is empty : this means : guess from locale
 	// either empty or not found...
-	m_pTextCodec = defaultTextCodec();
+	m_pTextCodec = 0;
 	m_szTextEncoding = ""; // empty: we're using the default
 	return false;
 }
@@ -358,13 +358,13 @@ QTextCodec * KviWindow::defaultTextCodec()
 
 KviQCString KviWindow::encodeText(const QString &szText)
 {
-	if(!m_pTextCodec)return KviQString::toUtf8(szText);
+	if(!m_pTextCodec)return defaultTextCodec()->fromUnicode(szText);
 	return m_pTextCodec->fromUnicode(szText);
 }
 
 QString KviWindow::decodeText(const char * szText)
 {
-	if(!m_pTextCodec)return QString(szText);
+	if(!m_pTextCodec)return defaultTextCodec()->toUnicode(szText);
 	return m_pTextCodec->toUnicode(szText);
 }
 

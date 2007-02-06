@@ -191,7 +191,7 @@ public:
 	// by THIS implementation is "unknown"
 	virtual const char * typeString();
 
-	QTextCodec * textCodec(){ return m_pTextCodec; };
+	QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
 	void forceTextCodec(QTextCodec * c);
 
 	// The frame that this window belongs to
