@@ -502,14 +502,7 @@ namespace KviKvsCoreFunctions
 			$time(<unixtime>)
 			$time
 		@description:
-			Returns the string representation of <unixtime> or
-			of the current time if <unixtime> is not given.[br]
-		@examples:
-			[example]
-				[cmd]echo[/cmd] $time
-			[/example]
-		@seealso:
-			[fnc]$unixtime[/fnc], [fnc]$date[/fnc], [fnc]$hptimestamp[/fnc]
+			DEPRECATED: use [fnc]$date[/fnc]
 	*/
 
 	KVSCF(timeCFUNCTIONWORKAROUND)

@@ -409,7 +409,7 @@ namespace KviKvsCoreFunctions
 		@title:
 			$isAnyConsoleConnected
 		@short:
-			DEPRECATED: use $firstConnectedConsole
+			DEPRECATED: use [fnc]$firstConnectedConsole[/fnc]
 		@syntax:
 			<bool> $isAnyConsoleConnected()
 		@description:
