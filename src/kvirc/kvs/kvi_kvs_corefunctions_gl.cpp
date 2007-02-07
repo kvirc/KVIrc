@@ -246,8 +246,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			$ic[(<server>,<nickname>)]
 		@description:
-			This identifier is equivalent to [fnc]$context[/fnc].
-			See the related documentation.
+			DEPRECATED: use [fnc]$context[/fnc]
 	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -413,7 +412,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<bool> $isAnyConsoleConnected()
 		@description:
-			DEPRECATED: use $firstConnectedConsole
+			DEPRECATED: use [fnc]$firstConnectedConsole[/fnc]
 	*/
 
 	KVSCF(isAnyConsoleConnected)
@@ -565,26 +564,12 @@ namespace KviKvsCoreFunctions
 		@title:
 			$isMeHalfOp
 		@short:
-			Returns 1 if the current user has halfop status
+			DEPRECATED: use [fnc]$chan.isMeHalfOp[/fnc]
 		@syntax:
 			$ismehalfop
 			$ismehalfop(<window id>)
 		@description:
-			The form with the <window id> parameter returns '1' if the current
-			user has half-operator status on channel designated by <window id>.
-			The form without parameters is equivalent to $ismehalfop([fnc]$window[/fnc])
-			WARNING: This function is DEPRECATED: use [fnc]$chan.ismehalfop[/fnc]()
-		@seealso:
-			[fnc]$ismevoice[/fnc],
-			[fnc]$isvoice[/fnc],
-			[fnc]$isop[/fnc],
-			[fnc]$ismeop[/fnc],
-			[fnc]$ishalfop[/fnc],
-			[fnc]$isuserop[/fnc],
-			[fnc]$ismeuserop[/fnc],
-			[fnc]$window[/fnc],
-			[fnc]$channel[/fnc],
-			[doc:window_naming_conventions]Window naming conventions[/doc]
+			DEPRECATED: use [fnc]$chan.ismehalfop[/fnc]()
 	*/
 
 	KVSCF(isMeHalfOp)
@@ -623,13 +608,12 @@ namespace KviKvsCoreFunctions
 		@title:
 			$isMeOp
 		@short:
-			Returns 1 if the current user has operator status
+			DEPRECATED: use [fnc]$chan.isMeOp[/fnc]
 		@syntax:
 			$ismeop
 			$ismeop(<window id>)
 		@description:
-			NOTE: This function is DEPRECATED: use [fnc]$chan.ismeop[/fnc]()
-		@seealso:
+			DEPRECATED: use [fnc]$chan.ismeop[/fnc]()
 	*/
 
 	KVSCF(isMeOp)
@@ -668,20 +652,12 @@ namespace KviKvsCoreFunctions
 		@title:
 			$isMeUserOp
 		@short:
-			Returns 1 if the current user has userop status
+			DEPRECATED: use [fnc]$chan.isMeUserOp[/fnc]
 		@syntax:
 			<bool> $ismeuserop
 			<bool> $ismeuserop(<window id:uint>)
 		@description:
-			The form with the <window id> parameter returns '1' if the current
-			user has user-operator status on channel designated by <window id>.
-			The form without parameters is equivalent to $ismeuserop([fnc]$window[/fnc])
-			WARNING: This function is DEPRECATED: use [fnc]$chan.ismeuserop[/fnc]()
-		@seealso:
-			[fnc]$ismevoice[/fnc], [fnc]$isvoice[/fnc], [fnc]$isop[/fnc],
-			[fnc]$ismeop[/fnc], [fnc]$ishalfop[/fnc], [fnc]$ismehalfop[/fnc],
-			[fnc]$isuserop[/fnc], [fnc]$window[/fnc], [fnc]$channel[/fnc],
-			[doc:window_naming_conventions]Window naming conventions[/doc]
+			DEPRECATED: use [fnc]$chan.ismeuserop[/fnc]()
 	*/
 
 	KVSCF(isMeUserOp)
@@ -720,25 +696,12 @@ namespace KviKvsCoreFunctions
 		@title:
 			$isMeVoice
 		@short:
-			Returns 1 if the current user has voice status
+			DEPRECATED: use [fnc]$chan.isMeVoice[/fnc]
 		@syntax:
 			$ismevoice
 			$ismevoice(<window id>)
 		@description:
-			The form with the <window id> parameter returns '1' if the current
-			user has voice status on channel designated by <window id>.
-			The form without parameters is equivalent to $ismevoice([fnc]$window[/fnc])
-		@seealso:
-			[fnc]$isvoice[/fnc],
-			[fnc]$isop[/fnc],
-			[fnc]$ismeop[/fnc],
-			[fnc]$ishalfop[/fnc],
-			[fnc]$ismehalfop[/fnc],
-			[fnc]$isuserop[/fnc],
-			[fnc]$ismeuserop[/fnc],
-			[fnc]$window[/fnc],
-			[fnc]$channel[/fnc],
-			[doc:window_naming_conventions]Window naming conventions[/doc]
+			DEPRECATED: use [fnc]$chan.isMeVoice()[/fnc]
 	*/
 
 	KVSCF(isMeVoice)
