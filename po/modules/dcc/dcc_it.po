@@ -13,13 +13,13 @@ msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-02-07 15:36+0100\n"
-"PO-Revision-Date: 2006-06-24 20:55+0200\n"
-"Last-Translator: Nate Grey <nate@entropica.info>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2007-02-07 16:12+0100\n"
+"Last-Translator: \n"
+"Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.2\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/descriptor.cpp:70
@@ -75,8 +75,7 @@ msgstr "Sarai il lato passivo della connessione.<br>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:282
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr ""
-"Il target della connessione sarà l'host <b>%1</b> sulla porta <b>%2</b><br>"
+msgstr "Il target della connessione sarà l'host <b>%1</b> sulla porta <b>%2</b><br>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:287
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:534
@@ -148,13 +147,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:548
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr ""
-"Accetto in automatico la richiesta di DCC %Q da %Q!%Q@%Q per il file %Q"
+msgstr "Accetto in automatico la richiesta di DCC %Q da %Q!%Q@%Q per il file %Q"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:609
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "Scegli i Files da Inviare - KVIrc"
+msgstr "Scegli i Files da Salvare - KVIrc"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:622
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
@@ -218,21 +215,18 @@ msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %s"
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
-msgstr ""
-"L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
+msgstr "L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:211
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'indirizzo IP locale è privato, non c'è nessun server IRC da cui "
 "determinarlo"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:233
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
+msgstr "Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:236
 msgid "DCC %Q request not sent, awaiting manual connection"
@@ -259,12 +253,11 @@ msgid "Cannot send data: No active connection"
 msgstr "Impossibile inviare dati: nessuna connessione attiva"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:343
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"Il motore di codifica non riesce a criptare il messaggio corrente (%Q): %s, "
+"Il motore di cifratura non riesce a criptare il messaggio corrente (%Q): %Q, "
 "nessun dato inviato all'utente remoto"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:402
@@ -273,13 +266,12 @@ msgid "ERROR: %Q"
 msgstr "ERRORE: %Q"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:446
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"Il seguente messaggio sembra essere criptato, ma il motore di codifica non "
-"riesce a decriptarlo: %s"
+"Il seguente messaggio sembra essere crittato, ma il motore di cifratura non "
+"riesce a decrittarlo: %Q"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:492
 msgid "DCC %Q failed: %Q"
@@ -441,8 +433,7 @@ msgstr "Supporto DCC VOICE non abilitato durante la compilazione"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr ""
-"Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
+msgstr "Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
@@ -460,7 +451,7 @@ msgstr "Il parametro specificato non è un identificativo valido per una DCC"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Questa sessione DCC non è una sessione di trasferimento DCC"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:2554
 msgid "The specified window identifier is not valid"
@@ -492,8 +483,7 @@ msgstr "Trasferimento dei dati terminato 30 secondi fa, chiudo la connessione"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"ATTENZIONE: ricevuti dati in una DCC TSEND, non esiste alcun riconoscimento"
+msgstr "ATTENZIONE: ricevuti dati in una DCC TSEND, non esiste alcun riconoscimento"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:727
 #, c-format
@@ -590,8 +580,7 @@ msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %1"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1556
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
+msgstr "Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1558
 msgid "DCC %1 request not sent, awaiting manual connection"
@@ -637,8 +626,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1793
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
-"Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
+msgstr "Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1825
 msgid "Configure bandwidth for DCC transfer %1"
@@ -670,8 +658,7 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS passiva"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:95
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC CANVAS a %Q, aspetto la connessione dal client "
 "remoto..."
@@ -835,8 +822,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Impossibile procedere con DCC RECV: trasferimento non inizializzato per il "
 "file %s sulla porta %s"
@@ -1021,5 +1007,3 @@ msgstr ""
 "nella finestra delle opzioni, disabilitando l'opzione stessa (la prossima "
 "DCC sarà in grado di funzionare)"
 
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "Scegli una Posizione in cui Salvare - KVIrc"
