@@ -254,13 +254,11 @@ namespace KviKvsCoreFunctions
 		@title:
 			$avatar
 		@short:
-			Obsolete: use $avatar.name
+			DEPRECATED: use [fnc]$avatar.name[/fnc]
 		@syntax:
 			<string> $avatar[([<nickname:string>])]
 		@description:
-			This function is obsolete and has been replaced by [fnc]$avatar.name[/fnc]
-			and [fnc]$avatar.path[/fnc]. It is provided only for backward compatibility
-			and will be removed in a future version.
+			DEPRECATED: use [fnc]$avatar.name[/fnc]
 	*/
 
 	KVSCF(avatar)
