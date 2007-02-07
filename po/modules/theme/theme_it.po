@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-10 02:46+0100\n"
+"POT-Creation-Date: 2007-02-07 15:36+0100\n"
 "PO-Revision-Date: 2007-01-10 03:22+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
@@ -16,285 +16,397 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/libkvitheme.cpp:69
-msgid "Error installing theme package: %Q"
-msgstr "Errore durante l'installazione del tema: %Q"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:45
+msgid "The selected file does not seem to be a valid KVIrc theme package"
+msgstr ""
+"Il file selezionato non sembra essere un valido pacchetto tema per KVIrc"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:96
-msgid "by"
-msgstr "da"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:65
+msgid "The selected file does not seem to be a valid KVIrc package: %Q"
+msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:142
-msgid "Manage Themes - KVIrc"
-msgstr "Gestione Temi - KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:113
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:311
+msgid "Author"
+msgstr "Autore"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:160
-msgid "Save Current Theme..."
-msgstr "Salva Tema Corrente..."
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:114
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:312
+msgid "Created at"
+msgstr "Creato il"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:170
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Esporta Temi Selezionati in Pacchetti Distribuibili"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:115
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:313
+msgid "Created with"
+msgstr "Creato con"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:176
-msgid "Delete Selected Themes"
-msgstr "Cancella Temi Selezionati"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:195
+msgid "Warning: The theme might be incompatible with this version of KVIrc"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:186
-msgid "Install Theme Package From Disk"
-msgstr "Installa Tema Da Disco"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:204
+msgid "Go Back to Package Data"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:192
-msgid "Get More Themes..."
-msgstr "Scarica Nuovi Temi..."
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:211
+msgid ""
+"Warning: Some of the theme contained in this package might be either "
+"corrupted or incompatible with this version of KVIrc"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:279
-msgid "&Remove Theme"
-msgstr "Elimina Tema"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:215
+msgid "Show Details"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:280
-msgid "&Apply Theme"
-msgstr "Applica Tema"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:267
+msgid "Install Theme Pack - KVIrc"
+msgstr "Installa Pacchetto Tema - KVIrc"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:296
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:309
-msgid "Apply theme - KVIrc"
-msgstr "Applica tema - KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:268
+msgid "You're about to install the following theme package"
+msgstr "Stai per installare il sequente pacchetto tema"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:297
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Vuoi applicare il tema \"%Q\" (versione %Q)?"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:269
+msgid "Do you want to proceed with the installation ?"
+msgstr "Vuoi procedere con l'installazione?"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:308
-msgid "Failed to apply the specified theme: %Q"
-msgstr "Applicazione del tema specificato fallita: %Q"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:270
+msgid "Do Not Install"
+msgstr "Non Installare"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:322
-msgid "Delete Theme - KVIrc"
-msgstr "Cancella Tema - KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:271
+msgid "Yes, Proceed"
+msgstr "Sì, Procedi"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:323
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Sei sicuro di voler cancellare il tema \"%Q\" (versione %Q)?"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:288
+msgid "Failed to unpack the selected file: %Q"
+msgstr "Impossibile decomprimere il file selezionato: %Q"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/managementdialog.cpp:339
-msgid "Open Theme - KVIrc"
-msgstr "Apri Tema - KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:314
+msgid "Theme Engine Version"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:73
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/themefunctions.cpp:315
+msgid "Subdirectory"
+msgstr "Sottodirectory"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:82
 msgid "Your name here"
 msgstr "Tuo nome"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:75
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:84
 msgid "Put a package description here..."
 msgstr "Inserisci una descrizione del tema"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:88
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:328
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:364
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:423
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:443
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:451
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:116
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:338
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:374
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:443
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:455
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:463
 msgid "Export Theme - KVIrc"
 msgstr "Esporta Tema - KVIrc"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:97
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:125
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
-msgstr "Questa procedura ti permette di esportare i temi selezionati in un singolo pacchetto. E' comodo quando vuoi distribuire i tuoi temi al pubblico."
+msgstr ""
+"Questa procedura ti permette di esportare i temi selezionati in un singolo "
+"pacchetto. E' comodo quando vuoi distribuire i tuoi temi al pubblico."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:99
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:127
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
-msgstr "Ti verrà chiesto di inserire un nome del pacchetto, una descrizione e, se vuoi, un'icona/screenshot."
+msgstr ""
+"Ti verrà chiesto di inserire un nome del pacchetto, una descrizione e, se "
+"vuoi, un'icona/screenshot."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:101
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:129
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Premi il bottone \"Avanti\" per iniziare."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:108
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:136
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Benvenuto"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:120
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:148
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
-msgstr "Questa è la lista di informazioni per i temi che stai pacchettizzando. Se ti sembra a posto premi \"Avanti\" per continuare, altrimenti premi \"Annulla\" e ricontrolla i temi."
+msgstr ""
+"Questa è la lista di informazioni per i temi che stai pacchettizzando. Se ti "
+"sembra a posto premi \"Avanti\" per continuare, altrimenti premi \"Annulla\" "
+"e ricontrolla i temi."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:124
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:112
-msgid "Author"
-msgstr "Autore"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:125
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:113
-msgid "Created at"
-msgstr "Creato il"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:126
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:114
-msgid "Created with"
-msgstr "Creato con"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:127
-msgid "Minimum KVIrc version"
-msgstr "Versione minima di KVIrc"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:128
-msgid "Subdirectory"
-msgstr "Sottodirectory"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:184
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:198
 msgid "Theme Data"
 msgstr "Dati Tema"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:196
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:210
 msgid ""
 "Here you need to provide informations about you (the packager) and a short "
 "description of the package you're creating."
-msgstr "Qui devi inserire informazioni su di te (il pacchettizzatore) e una piccola descrizione del pacchetto che stai creando."
+msgstr ""
+"Qui devi inserire informazioni su di te (il pacchettizzatore) e una piccola "
+"descrizione del pacchetto che stai creando."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:201
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:215
 msgid "Package Name:"
 msgstr "Nome Pacchetto:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:209
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:76
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:223
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:110
 msgid "Version:"
 msgstr "Versione:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:217
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:89
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:231
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:118
 msgid "Description:"
 msgstr "Descrizione:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:225
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:239
 msgid "Package Author:"
 msgstr "Autore Pacchetto:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:236
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:250
 msgid "Package Informations"
 msgstr "Informazioni Pacchetto"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:248
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:262
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
 "should be not larger than 300x225. If you don't provide an image a simple "
 "default icon will be used at installation stage."
-msgstr "Qui puoi scegliere l'immagine che apparirà nel dialog di installazione per il tuo tema. Può essere un'icona, un logo o uno screenshot e non dev'essere più grande di 300x225. Se non inserisci un'immagine verrà usata una semplice immagine di default durante l'installazione."
+msgstr ""
+"Qui puoi scegliere l'immagine che apparirà nel dialog di installazione per "
+"il tuo tema. Può essere un'icona, un logo o uno screenshot e non dev'essere "
+"più grande di 300x225. Se non inserisci un'immagine verrà usata una semplice "
+"immagine di default durante l'installazione."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:265
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:279
 msgid "Icon/Screenshot"
 msgstr "Icona/Screenshot"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:277
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:291
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *."
 "%1 extension."
-msgstr "Qui devi scegliere il nome del file per il tema. Dovrebbe avere un'estensione *.%1."
+msgstr ""
+"Qui devi scegliere il nome del file per il tema. Dovrebbe avere "
+"un'estensione *.%1."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:296
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:301
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr "Infine premi il bottone \"Termina\" per completare la pacchettizzazione."
+msgstr ""
+"Infine premi il bottone \"Termina\" per completare la pacchettizzazione."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:302
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:307
 msgid "Package Path"
 msgstr "Percorso Pacchetto"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:328
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:338
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:197
 msgid "Failed to load the selected image"
 msgstr "Impossibile caricare l'immagine selezionata"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:364
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:374
 msgid "Failed to load the selected image: please fix it"
 msgstr "Impossibile caricare l'immagine selezionata: sistemala"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:420
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:440
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:440
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/packthemedialog.cpp:452
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:62
-msgid "Save Current Theme"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/libkvitheme.cpp:73
+msgid "Error installing theme package: %Q"
+msgstr "Errore durante l'installazione del tema: %Q"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/libkvitheme.cpp:110
+msgid "Choose a file to save the screenshot to"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/libkvitheme.cpp:125
+msgid "Error making screenshot"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:98
+msgid "by"
+msgstr "da"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:144
+msgid "Manage Themes - KVIrc"
+msgstr "Gestione Temi - KVIrc"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:162
+msgid "Save Current Theme..."
+msgstr "Salva Tema Corrente..."
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:172
+msgid "Export Selected Themes to a Distributable Package"
+msgstr "Esporta Temi Selezionati in Pacchetti Distribuibili"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:178
+msgid "Delete Selected Themes"
+msgstr "Cancella Temi Selezionati"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:188
+msgid "Install Theme Package From Disk"
+msgstr "Installa Tema Da Disco"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:194
+msgid "Get More Themes..."
+msgstr "Scarica Nuovi Temi..."
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:283
+msgid "&Remove Theme"
+msgstr "Elimina Tema"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:284
+msgid "&Apply Theme"
+msgstr "Applica Tema"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:300
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:313
+msgid "Apply theme - KVIrc"
+msgstr "Applica tema - KVIrc"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:301
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr "Vuoi applicare il tema \"%Q\" (versione %Q)?"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:312
+msgid "Failed to apply the specified theme: %Q"
+msgstr "Applicazione del tema specificato fallita: %Q"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:326
+msgid "Delete Theme - KVIrc"
+msgstr "Cancella Tema - KVIrc"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:327
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr "Sei sicuro di voler cancellare il tema \"%Q\" (versione %Q)?"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/managementdialog.cpp:343
+msgid "Open Theme - KVIrc"
+msgstr "Apri Tema - KVIrc"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:65
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:197
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:234
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:255
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:267
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:277
+#, fuzzy
+msgid "Save Current Theme - KVIrc"
 msgstr "Salva Tema Corrente"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:68
-msgid "Theme name:"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:74
+msgid ""
+"This procedure allows you to save the current theme settings to a single "
+"directory. It is useful if you want to apply other themes or play with the "
+"theme settings and later come back to this theme with a single click. It "
+"will also allow you to manually modify the theme settings and later export "
+"them to a distributable package."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:76
+#, fuzzy
+msgid ""
+"You will be asked to provide a theme name, a description and, if you want, a "
+"screenshot."
+msgstr ""
+"Ti verrà chiesto di inserire un nome del pacchetto, una descrizione e, se "
+"vuoi, un'icona/screenshot."
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:97
+#, fuzzy
+msgid ""
+"Here you need to provide informations about you (the author) and a short "
+"description of the theme you're creating."
+msgstr ""
+"Qui devi inserire informazioni su di te (il pacchettizzatore) e una piccola "
+"descrizione del pacchetto che stai creando."
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:102
+#, fuzzy
+msgid "Theme Name:"
 msgstr "Nome Tema:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:83
-msgid "Author:"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:126
+#, fuzzy
+msgid "Theme Author:"
 msgstr "Autore:"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:98
-msgid "OK"
-msgstr "OK"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:137
+#, fuzzy
+msgid "Theme Informations"
+msgstr "Informazioni Pacchetto"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:103
-msgid "Cancel"
-msgstr "Annulla"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:149
+msgid ""
+"Here you can either choose a screenshot image from disk or make one now. The "
+"screenshot will be displayed in the tooltips of the theme management dialog "
+"and will be also visible in the package installation dialog if you will "
+"export the theme to a distributable package."
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:126
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:147
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:159
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:168
-msgid "Save Theme - KVIrc"
-msgstr "Salva Tema - KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:165
+msgid "Make Screenshot Now"
+msgstr ""
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:126
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:172
+#, fuzzy
+msgid "Screenshot"
+msgstr "Icona/Screenshot"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:218
+msgid "Acquire Screenshot - KVIrc"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:218
+msgid "Failed to make screenshot"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:234
 msgid "You must choose a theme name!"
 msgstr "Devi scegliere un nome per il tema!"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:147
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:255
 msgid "Unable to create theme directory."
 msgstr "Impossibile creare la directory del tema."
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:158
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:266
 msgid "Unable to save theme: %Q"
 msgstr "Impossibile salvare il tema: %Q"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:165
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:277
+#, fuzzy
+msgid "Failed to load the selected screenshot image: please fix it"
+msgstr "Impossibile caricare l'immagine selezionata: sistemala"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:284
 msgid "Theme saved successfully to "
 msgstr "Tema salvato con successo in"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:43
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "Il file selezionato non sembra essere un valido pacchetto tema per KVIrc"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/theme/savethemedialog.cpp:287
+msgid "Save Theme - KVIrc"
+msgstr "Salva Tema - KVIrc"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:63
-msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
+#~ msgid "Minimum KVIrc version"
+#~ msgstr "Versione minima di KVIrc"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:126
-msgid "The selected theme package requires at least KVIrc %Q"
-msgstr "Il pacchetto tema selezionato richiede almeno KVIrc %Q"
+#~ msgid "OK"
+#~ msgstr "OK"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:209
-msgid "Install Theme Pack - KVIrc"
-msgstr "Installa Pacchetto Tema - KVIrc"
+#~ msgid "Cancel"
+#~ msgstr "Annulla"
 
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:210
-msgid "You're about to install the following theme package"
-msgstr "Stai per installare il sequente pacchetto tema"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:211
-msgid "Do you want to proceed with the installation ?"
-msgstr "Vuoi procedere con l'installazione?"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:212
-msgid "Do Not Install"
-msgstr "Non Installare"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:213
-msgid "Yes, Proceed"
-msgstr "Sì, Procedi"
-
-#: /usr/build/svn.kvirc.de/svn/trunk/kvirc/src/modules/theme/themefunctions.cpp:230
-msgid "Failed to unpack the selected file: %Q"
-msgstr "Impossibile decomprimere il file selezionato: %Q"
-
+#~ msgid "The selected theme package requires at least KVIrc %Q"
+#~ msgstr "Il pacchetto tema selezionato richiede almeno KVIrc %Q"

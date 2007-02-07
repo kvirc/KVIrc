@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-27 21:24+0200\n"
+"POT-Creation-Date: 2007-02-07 15:36+0100\n"
 "PO-Revision-Date: 2006-02-11 14:40+0200\n"
 "Last-Translator: Etherea <cle at virg0 dot org>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -18,61 +18,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:63
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:89
-msgid "Trying Media Player interface \"%Q\": score %d"
-msgstr "Interfaccia Media Player \"%Q\": punteggio %d"
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:71
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr "I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:99
-msgid "Choosing Media Player interface \"%Q\""
-msgstr "Interfaccia Media Player scelta: \"%Q\""
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
-msgid "Seems that there is no usable Media Player on this machine"
-msgstr "Sembra non esserci un Media Player utilizzabile su questa macchina"
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:112
-msgid "No Media Player interface selected. Try /mediaplayer.detect"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
+msgid "Can't find a running winamp window"
 msgstr ""
-"Non è stata selezionata alcuna interfaccia Media Player. Prova /mediaplayer.detect"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:127
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:227
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
-"The selected Media Player interface failed to execute the requested function"
-msgstr "L'interfaccia Media Player scelta non è riuscita ad eseguire la funzione richiesta"
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:128
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:228
-msgid "Last interface error: "
-msgstr "Ultimo errore dell'interfaccia: "
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:194
-msgid "No such Media Player interface (try /mediaplayer.detect)"
-msgstr "Nessuna interfaccia Media Player (prova /mediaplayer.detect)"
-
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:36
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
-"An interface to the popular UNIX xmms Media Player.\n"
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#, fuzzy
+msgid "An interface to the Juk KDE media player."
+msgstr "Interfaccia per AmaroK Media Player in ambiente KDE"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#, fuzzy
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
 "Download it from http://www.xmms.org\n"
 msgstr ""
 "Interfaccia per il popolare Media Player xmms per sistemi UNIX.\n"
 "Scaricalo da http://www.xmms.org\n"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:77
-msgid "Can't load the xmms library (libxmms.so)"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#, fuzzy
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Interfaccia per il popolare Media Player xmms per sistemi UNIX.\n"
+"Scaricalo da http://www.xmms.org\n"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
+#, fuzzy
+msgid "Can't load the player library (%Q)"
 msgstr "Impossibile caricare la libreria di xmms (libxmms.so)"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:84
-#, c-format
-msgid "Can't find symbol %s in libxmms.so"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
+#, fuzzy
+msgid "Can't find symbol %s in %Q"
 msgstr "Impossibile trovare il simbolo %s nella libreria libxmms.so"
 
-#: /usr/build/kvirccvs/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
-msgid "An interface to the AmaroK KDE Media Player."
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#, fuzzy
+msgid "An interface to the AmaroK KDE media player."
 msgstr "Interfaccia per AmaroK Media Player in ambiente KDE"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#, fuzzy
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr "Interfaccia Media Player \"%Q\": punteggio %d"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#, fuzzy
+msgid "Choosing media player interface \"%Q\""
+msgstr "Interfaccia Media Player scelta: \"%Q\""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:104
+#, fuzzy
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Sembra non esserci un Media Player utilizzabile su questa macchina"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:114
+#, fuzzy
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr ""
+"Non è stata selezionata alcuna interfaccia Media Player. Prova /mediaplayer."
+"detect"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:535
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:576
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:615
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1108
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1245
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1289
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1460
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1503
+#, fuzzy
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr ""
+"L'interfaccia Media Player scelta non è riuscita ad eseguire la funzione "
+"richiesta"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:536
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:577
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:616
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1109
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1246
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1290
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1461
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1504
+msgid "Last interface error: "
+msgstr "Ultimo errore dell'interfaccia: "
+
+#~ msgid "No such Media Player interface (try /mediaplayer.detect)"
+#~ msgstr "Nessuna interfaccia Media Player (prova /mediaplayer.detect)"

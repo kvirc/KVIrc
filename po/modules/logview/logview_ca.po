@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-06 19:39+0300\n"
+"POT-Creation-Date: 2007-02-07 15:36+0100\n"
 "PO-Revision-Date: 2005-02-24 23:41+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -17,22 +17,102 @@ msgstr ""
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 "X-Generator: KBabel 1.2\n"
 
-#: /home/alexey/kvirc/src/modules/logview/logviewmdiwindow.cpp:61
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/libkvilogview.cpp:136
+msgid "Browse &Log Files"
+msgstr "&Navegar pels Arxius de Registre"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:69
 msgid "Index"
 msgstr ""
 
-#: /home/alexey/kvirc/src/modules/logview/logviewmdiwindow.cpp:63
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:71
 msgid "Log File"
 msgstr "Arxiu de Registre"
 
-#: /home/alexey/kvirc/src/modules/logview/logviewmdiwindow.cpp:109
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:81
+msgid "Filter"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:85
+msgid "Show channel logs"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:89
+msgid "Show query logs"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:93
+msgid "Show console logs"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:97
+msgid "Show DCC chat logs"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:101
+msgid "Show other logs"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:106
+msgid "Contents filter"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:109
+msgid "Log name mask:"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:115
+msgid "Log contents mask:"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:121
+msgid "Only older than"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:129
+msgid "Only newier than"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:137
+msgid "Apply filter"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:191
 msgid "Log Viewer"
 msgstr "Visor del Registre"
 
-#: /home/alexey/kvirc/src/modules/logview/logviewmdiwindow.cpp:297
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:242
+msgid "Filtering files..."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:243
+msgid "Abort filtering"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:294
+msgid "%Q on %Q"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewmdiwindow.cpp:363
 msgid "Remove file"
 msgstr ""
 
-#: /home/alexey/kvirc/src/modules/logview/libkvilogview.cpp:136
-msgid "Browse &Log Files"
-msgstr "&Navegar pels Arxius de Registre"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewwidget.cpp:63
+msgid "Channel"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewwidget.cpp:65
+msgid "Query"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewwidget.cpp:67
+msgid "DCC Chat"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewwidget.cpp:69
+msgid "Console"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/logview/logviewwidget.cpp:71
+msgid "Other"
+msgstr ""
