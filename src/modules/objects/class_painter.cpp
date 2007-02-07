@@ -24,7 +24,6 @@
 #include "class_painter.h"
 #include "class_pixmap.h"
 #include "class_widget.h"
-#include "class_image.h"
 #include "kvi_debug.h"
 
 #include "kvi_locale.h"
