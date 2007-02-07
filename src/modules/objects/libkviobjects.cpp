@@ -79,7 +79,6 @@
 #include "class_wrapper.h"
 #include "class_dialog.h"
 #include "class_xmlreader.h"
-#include "class_image.h"
 #include "class_dockwindow.h"
 #include "class_vbox.h"
 #include "class_hbox.h"
@@ -89,7 +88,6 @@ static bool objects_module_cleanup(KviModule *m)
 {
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_socket::unregisterSelf();
-	KviKvsObject_image::unregisterSelf();
 	KviKvsObject_xmlreader::unregisterSelf();
 	KviKvsObject_wrapper::unregisterSelf();
 	KviKvsObject_file::unregisterSelf();
@@ -613,32 +611,30 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	QImage * imgSource=0;
-	QPaintDevice * pdSource = 0;
-	if (obSrc->inherits("KviKvsObject_image")) 
-		imgSource=((KviKvsObject_image *)obSrc)->image();
-	else{
-
-	if(obSrc->inherits("KviKvsObject_pixmap")) pdSource = ((KviKvsObject_pixmap *)obSrc)->pixmap();
+	QImage  * imgSource=0;
+	QPaintDevice  * pdSource = 0;
+	
+	if(obSrc->inherits("KviKvsObject_pixmap")) pdSource =((KviKvsObject_pixmap *)obSrc)->getPixmap();
 	else if (obSrc->inherits("KviKvsObject_widget")) pdSource=((KviKvsObject_widget *)obSrc)->widget();
 	if (!pdSource)
 	{
 		c->warning(__tr2qs("Widget, Image or Pixmap required "));
 		return true;
 	}
+	QPaintDevice  * pdDest = 0;
+	if(obDst->inherits("KviKvsObject_pixmap")){
+		pdDest= ((KviKvsObject_pixmap *)obDst)->getPixmap();
 	}
-	QPaintDevice * pdDest = 0;
-	if(obDst->inherits("KviKvsObject_pixmap")) pdDest= ((KviKvsObject_pixmap *)obDst)->pixmap();
 	else if (obDst->inherits("KviKvsObject_widget")) pdDest=((KviKvsObject_widget *)obDst)->widget();
 	if (!pdDest)
 	{
 		c->warning(__tr2qs("Widget or Pixmap required"));
 		return true;
 	}
-	if (obSrc->inherits("KviKvsObject_image")) 
-	bitBlt(pdDest,iXdst,iYdst,imgSource,iXsrc,iYsrc,uW,uH);
-	else
-		bitBlt(pdDest,iXdst,iYdst,pdSource,iXsrc,iYsrc,uW,uH);
+	if(obDst->inherits("KviKvsObject_pixmap")){
+		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
+	}
+	bitBlt(pdDest,iXdst,iYdst,pdSource,iXsrc,iYsrc,uW,uH);
 	return true;
 }
 	/*
@@ -671,25 +667,25 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	kvs_int_t iBkX,iBkY;
 	kvs_int_t iFoX,iFoY;
 	kvs_int_t iDesX,iDesY,uW,uH;
-    kvs_real_t iBlend;
+    kvs_real_t dBlend;
 
 	kvs_hobject_t hBk,hFo,hDest;
 
 	KVSO_PARAMETERS_BEGIN(c)
-	
+		KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hDest)
+		KVSO_PARAMETER("x_offset_dest",KVS_PT_INT,0,iDesX)
+		KVSO_PARAMETER("y_offset_dest",KVS_PT_INT,0,iDesY)
+
 		KVSO_PARAMETER("image_background",KVS_PT_HOBJECT,0,hBk)
 		KVSO_PARAMETER("x_offset_background",KVS_PT_UNSIGNEDINTEGER,0,iBkX)
 		KVSO_PARAMETER("y_offset_background",KVS_PT_UNSIGNEDINTEGER,0,iBkY)
 		KVSO_PARAMETER("image_foreground",KVS_PT_HOBJECT,0,hFo)
 		KVSO_PARAMETER("x_offset_foreground",KVS_PT_UNSIGNEDINTEGER,0,iFoX)
 		KVSO_PARAMETER("y_offset_foreground",KVS_PT_UNSIGNEDINTEGER,0,iFoY)
-		KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hDest)
-		KVSO_PARAMETER("x_offset_dest",KVS_PT_INT,0,iDesX)
-		KVSO_PARAMETER("y_offset_dest",KVS_PT_INT,0,iDesY)
 		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,0,uW)
 		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,0,uH)
 
-		KVSO_PARAMETER("blend_value",KVS_PT_REAL,0,iBlend)
+		KVSO_PARAMETER("blend_value",KVS_PT_REAL,0,dBlend)
 
 	
 
@@ -706,14 +702,14 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	if (!obBck->inherits("KviKvsObject_image") || !obFor->inherits("KviKvsObject_image"))
+	if (!obBck->inherits("KviKvsObject_pixmap") || !obFor->inherits("KviKvsObject_pixmap"))
 	{
-		c->warning(__tr2qs("Image objects required"));
+		c->warning(__tr2qs("Pixmap objects required"));
 		return true;
 	}
 
-	QPaintDevice * pdDest = 0;
-	if(obDest->inherits("KviKvsObject_pixmap")) pdDest = ((KviKvsObject_pixmap *)obDest)->pixmap();
+	QPaintDevice  * pdDest = 0;
+	if(obDest->inherits("KviKvsObject_pixmap")) pdDest = ((KviKvsObject_pixmap *)obDest)->getPixmap();
 	else if (obDest->inherits("KviKvsObject_widget")) pdDest=((KviKvsObject_widget *)obDest)->widget();
 	
 	if (!pdDest)
@@ -722,10 +718,11 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
+	if(obDest->inherits("KviKvsObject_pixmap")) ((KviKvsObject_pixmap *)obDest)->pixmapChanged();
 
 
-	QImage *img_back=((KviKvsObject_image *)obBck)->image();
-	QImage *img_fore=((KviKvsObject_image *)obFor)->image();
+	QImage  *img_back=((KviKvsObject_pixmap *)obBck)->getImage();
+	QImage *img_fore=((KviKvsObject_pixmap *)obFor)->getImage();
 
 	// check size
 	if ((iBkX+uW>img_back->width())||(iBkY+uH>img_back->height()))
@@ -749,17 +746,17 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		bkg += iBkX;
 		QRgb * fgn = (QRgb *)img_fore->scanLine(y+iFoY);
 		fgn += iFoX;
-		double dRemaining = 1.0 - iBlend;
+		double dRemaining = 1.0 - dBlend;
 		int a=0;
 		while(dst < end)
 		{
 			
 	
 		*dst = qRgba(
-						(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * iBlend)),
-						(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * iBlend)),
-						(int)((qBlue(*bkg) * dRemaining) + (qBlue(*fgn) * iBlend)),
-						(int)((qAlpha(*bkg) * dRemaining) + (qAlpha(*fgn) * iBlend))
+						(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dBlend)),
+						(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dBlend)),
+						(int)((qBlue(*bkg) * dRemaining) + (qBlue(*fgn) * dBlend)),
+						(int)((qAlpha(*bkg) * dRemaining) + (qAlpha(*fgn) * dBlend))
 						);
 
 			dst++;
@@ -960,7 +957,6 @@ static bool objects_module_can_unload(KviModule *m)
 	KviKvsObject_file::registerSelf();
 	KviKvsObject_wrapper::registerSelf();
 	KviKvsObject_xmlreader::registerSelf();
-	KviKvsObject_image::registerSelf();
 	KviKvsObject_socket::registerSelf();
 	KviKvsObject_process::registerSelf();
 

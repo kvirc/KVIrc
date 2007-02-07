@@ -118,8 +118,6 @@
 		[/pre]
 		!fn: $drawPixmap(<x:integer>,<y:integer>,<pixmap:hobject>,<sx:integer>,<sy:integer>,<ex:integer>,<ey:integer>)
 		Draws a pixmap at x,y coordinates[br]
-		!fn: $drawImage(<x:integer>,<y:integer>,<image hobject>,<sx:integer>,<sy:enteger>,<ex:integer>,<ey:integer>)
-		Draws a image at x,y coordinates[br]
 		!fn: $setFont(<size:unsigned integer>,<family:string>,<style:enum>)[br]
 		Set the font's size, family and stile, valid flag for style are:[br]
 		[pre]
@@ -148,8 +146,6 @@
 		Shears the coordinate system by <dh>, <dv>.
 		!fn: $scale(<dh:real>,<dw:real>)
 		Scales the coordinate system by <dh>, <dv>.
-		!fn: $setNewWorld()
-		Update the world transformation.
 		!fn: $setBackgroundMode(<bgMode:enum>)
 		Sets the background mode of the painter to <bgMode>: valid values are:[br]
 		- Transparent	(that is the default value);[br]
@@ -355,7 +351,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	// Text & Pixmap
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawText",functiondrawText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawPixmap",functiondrawPixmap)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawImage",functiondrawImage)
 
 
 	// MAtrix Operation
@@ -773,14 +768,16 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Pixmap or Widget parameter is not an object"));
 		return true;
 	}
+
 	QPaintDevice * pd = 0;
-	if(pObject->inherits("KviKvsObject_pixmap"))pd = ((KviKvsObject_pixmap *)pObject)->pixmap();
+	if(pObject->inherits("KviKvsObject_pixmap"))pd =((KviKvsObject_pixmap *)pObject)->getPixmap();
 	else if (pObject->inherits("KviKvsObject_widget")) pd=((KviKvsObject_widget *)pObject)->widget();
 	
 	if (!pd)
 		c->warning(__tr2qs("Widget or Pixmap required "));
 	else {
 		attachDevice(pObject,pd);
+		if (pObject->inherits("KviKvsObject_pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
 	}
 	return true;
 }
@@ -852,57 +849,16 @@ bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Pixmap parameter is not an object"));
 		return true;
 	}
-/*
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-*/
 	if (!obj->inherits("KviKvsObject_pixmap"))
 	{
 		c->warning(__tr2qs("Pixmap object required"));
 		return true;
 	}
-	m_pPainter->drawPixmap(iX,iY,*((KviKvsObject_pixmap *)obj)->pixmap(),iStartx,iStarty,iEndx,iEndy);
+	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
+	m_pPainter->drawPixmap(iX,iY,*((KviKvsObject_pixmap *)obj)->getPixmap(),iStartx,iStarty,iEndx,iEndy);
 	return true;
 }
-bool KviKvsObject_painter::functiondrawImage(KviKvsObjectFunctionCall *c)
-{
-	kvs_int_t iX,iY,iStartx,iStarty,iEndx,iEndy;
-	KviKvsObject *obj;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
-		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
-		KVSO_PARAMETER("image",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("start_x",KVS_PT_INT,0,iStartx)
-		KVSO_PARAMETER("start_y",KVS_PT_INT,0,iStarty)
-		KVSO_PARAMETER("end_x",KVS_PT_INT,0,iEndx)
-		KVSO_PARAMETER("end_y",KVS_PT_INT,0,iEndy)
-	KVSO_PARAMETERS_END(c)
-	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!m_pPainter)return true;
-	if (!obj)
-	{
-		c->warning(__tr2qs("Image parameter is not an object"));
-		return true;
-	}
-/*
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-*/
-	if (!obj->inherits("KviKvsObject_image"))
-	{
-		c->warning(__tr2qs("Image object required"));
-		return true;
-	}
-	m_pPainter->drawImage(iX,iY,*((KviKvsObject_image *)obj)->image(),iStartx,iStarty,iEndx,iEndy);
-	return true;
-}
+
 bool KviKvsObject_painter::functionrotateMatrix(KviKvsObjectFunctionCall *c)
 {
 	kvs_real_t dAngle;

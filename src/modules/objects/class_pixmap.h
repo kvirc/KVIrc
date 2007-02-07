@@ -25,6 +25,7 @@
 
 
 #include <qpixmap.h>
+#include <qimage.h>
 #include "kvi_string.h"
 
 
@@ -34,14 +35,20 @@
 class KviKvsObject_pixmap : public KviKvsObject
 {
 	Q_OBJECT
-	Q_PROPERTY(QPixmap pixmap READ getPixmap)
+//	Q_PROPERTY(QPixmap pixmap READ getPixmap)
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_pixmap);
-	;
-	QPixmap getPixmap() const;
+	QPixmap  * getPixmap();
+	QImage * getImage();
+	void pixmapChanged(){bPixmapModified=true;}
+	void imageChanged(){bImageModified=true;}
+
 	QPixmap * pixmap(){ return m_pPixmap; }
 protected:
 	QPixmap * m_pPixmap;
+	QImage * m_pImage;
+	bool bImageModified;
+	bool bPixmapModified;
 signals:
 	void aboutToDie();
 
@@ -51,6 +58,7 @@ protected:
 	bool functionload(KviKvsObjectFunctionCall *c);
 	bool functionheight(KviKvsObjectFunctionCall *c);
 	bool functionwidth(KviKvsObjectFunctionCall *c);
+	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
 
   };
 

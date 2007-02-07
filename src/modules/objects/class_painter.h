@@ -63,8 +63,7 @@ public:
 
 	bool functiondrawText(KviKvsObjectFunctionCall *c);
 	bool functiondrawPixmap(KviKvsObjectFunctionCall *c);
-	bool functiondrawImage(KviKvsObjectFunctionCall *c);
-
+	
 
 	bool functionbegin(KviKvsObjectFunctionCall *c);
 	bool functionend(KviKvsObjectFunctionCall *c);

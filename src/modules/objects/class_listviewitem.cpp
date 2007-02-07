@@ -403,7 +403,7 @@ bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 			c->warning(__tr2qs("Pixmap object or image Id required"));
 			return true;
 		}
-		pix=((KviKvsObject_pixmap *)obPixmap)->pixmap();
+		pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
 	} else {
 		QString szPix;
 		vPixmap->asString(szPix);

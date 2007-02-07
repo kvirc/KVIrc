@@ -65,14 +65,16 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"load",functionload)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"height",functionheight)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"width",functionwidth)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
 
-KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_pixmap,KviKvsObject)
-
-	m_pPixmap = new QPixmap();
-
+KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_pixmap,KviKvsObject)	
+	m_pPixmap=new QPixmap();
+	m_pImage=new QImage();
+	bPixmapModified=false;
+	bImageModified=false;
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
@@ -80,7 +82,8 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_pixmap)
 	
 	emit aboutToDie();
 	delete m_pPixmap;
-
+	if (m_pImage) delete m_pImage;
+	
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
@@ -96,7 +99,6 @@ bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!m_pPixmap)return true;
 	if (!ob)
 	{
 		c->warning(__tr2qs("Widget parameter is not an object"));
@@ -104,9 +106,10 @@ bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
 	}
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't fill non-widget object"));
+		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
+	bPixmapModified=true;
 	m_pPixmap->fill(((QWidget *)(ob->object())),iXoffset,iYoffset);
 	return true;
 }
@@ -118,8 +121,8 @@ bool KviKvsObject_pixmap::functionresize(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,0,uWidth)
 		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,0,uHeight)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPixmap)return true;
 	m_pPixmap->resize(uWidth,uHeight);
+	bPixmapModified=true;
 	return true;
 }
 
@@ -131,34 +134,95 @@ bool KviKvsObject_pixmap::functionload(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
 	KVSO_PARAMETERS_END(c)
 	
-	if(!m_pPixmap)return true; 
 	if(!QFile::exists(szFile))
 	{
 		c->warning(__tr2qs("I can't find the specified file %Q."),&szFile);
         return true;
 	}
-
-	m_pPixmap->load( szFile );
-	
+	m_pPixmap->load(szFile);
+	bPixmapModified=true;
 	return true;
 }
 bool KviKvsObject_pixmap::functionheight(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPixmap)return true; 
 	c->returnValue()->setInteger(m_pPixmap->height());	
 	return true;
 }
 bool KviKvsObject_pixmap::functionwidth(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPixmap)return true; 
 	c->returnValue()->setInteger(m_pPixmap->width());	
 	return true;
 }
-
-QPixmap KviKvsObject_pixmap::getPixmap() const
+bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 {
-	QPixmap ret(*m_pPixmap);
-	return ret;
+	if(!m_pPixmap)return true; 
+	kvs_real_t dOpacity;
+	KviKvsObject * pObDest;
+	kvs_hobject_t hObject;
+		
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
+			KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	pObDest=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+
+	if (!pObDest)
+	{
+		c->warning(__tr2qs("Destination  parameter is not an object"));
+		return true;
+	}
+
+	if(!pObDest->inherits("KviKvsObject_pixmap"))
+	{
+		c->warning(__tr2qs("Destination must be a pixmap object"));
+		return true;
+	}
+	QImage *buffer=((KviKvsObject_pixmap *)pObDest)->getImage();
+	((KviKvsObject_pixmap *)pObDest)->imageChanged();
+	if (bPixmapModified) {
+		*m_pImage=m_pPixmap->convertToImage();
+	}
+	buffer->setAlphaBuffer(true);
+	
+	for(int y = 0;y < m_pImage->height();y++)
+	{
+		QRgb * dst = (QRgb *)buffer->scanLine(y);
+		QRgb * src = (QRgb *)m_pImage->scanLine(y);
+		QRgb * end = src + m_pImage->width();
+		while(src < end)
+		{
+			*dst = qRgba(
+						(int)(qRed(*src)),
+						(int)(qGreen(*src)),
+						(int)(qBlue(*src)),
+						(int)(qAlpha(*src)*dOpacity)
+						);
+			src++;
+			dst++;
+		}
+	}
+	return true;
+}
+
+
+QPixmap * KviKvsObject_pixmap::getPixmap() 
+{
+	if (bImageModified) {
+		m_pPixmap->convertFromImage(*m_pImage);
+		bImageModified=false;
+	}
+	return m_pPixmap;
+}
+QImage * KviKvsObject_pixmap::getImage()
+{
+	if (bPixmapModified) {
+		*m_pImage=m_pPixmap->convertToImage();
+		//debug ("image info2  %d and %d",test.width(),test.height());
+		
+		bPixmapModified=false;
+	}
+	
+	return m_pImage;
 }
 
 #include "m_class_pixmap.moc"

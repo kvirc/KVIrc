@@ -246,10 +246,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\class_image.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\class_label.cpp"
 				>
 			</File>
@@ -557,28 +553,6 @@
 			<File
 				RelativePath=".\class_hbox.h"
 				>
-			</File>
-			<File
-				RelativePath=".\class_image.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\class_label.h"

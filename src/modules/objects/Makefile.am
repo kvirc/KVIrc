@@ -18,8 +18,7 @@ libkviobjects_la_SOURCES =  libkviobjects.cpp \
 			    class_dockwindow.cpp \
 			    class_file.cpp \
 			    class_groupbox.cpp \
-			    class_image.cpp \
-			    class_label.cpp \
+			   class_label.cpp \
 			    class_layout.cpp \
 			    class_lcd.cpp \
 			    class_lineedit.cpp \
@@ -64,7 +63,6 @@ noinst_HEADERS=	class_button.h \
 		class_dockwindow.h \
 		class_file.h \
 		class_groupbox.h \
-		class_image.h \
 		class_label.h \
 		class_layout.h \
 		class_lcd.h \
@@ -110,7 +108,6 @@ class_dialog.cpp: m_class_dialog.moc
 class_dockwindow.cpp: m_class_dockwindow.moc
 class_file.cpp: m_class_file.moc
 class_groupbox.cpp: m_class_groupbox.moc
-class_image.cpp: m_class_image.moc
 class_label.cpp: m_class_label.moc
 class_layout.cpp: m_class_layout.moc
 class_lcd.cpp: m_class_lcd.moc
