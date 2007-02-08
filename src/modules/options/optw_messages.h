@@ -61,6 +61,21 @@ class KviPrivmsgOptionsWidget : public KviOptionsWidget
 public:
 	KviPrivmsgOptionsWidget(QWidget * parent);
 	~KviPrivmsgOptionsWidget();
+};
+
+#define KVI_OPTIONS_WIDGET_ICON_KviTimestampOptionsWidget KVI_SMALLICON_TIME
+#define KVI_OPTIONS_WIDGET_NAME_KviTimestampOptionsWidget __tr2qs_no_lookup("Timestamp")
+#define KVI_OPTIONS_WIDGET_PARENT_KviTimestampOptionsWidget KviMessageOptionsWidget
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget 20
+#define KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget __tr2qs_no_lookup("time,timestamp")
+
+class KviTimestampOptionsWidget : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	KviTimestampOptionsWidget(QWidget * parent);
+	~KviTimestampOptionsWidget();
 public:
 	KviBoolSelector * m_pUseTimestampSelector;
 	KviBoolSelector * m_pSpecialTimestampColorSelector;

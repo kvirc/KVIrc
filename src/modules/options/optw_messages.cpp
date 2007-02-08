@@ -103,32 +103,40 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 		l,
 		SLOT(setEnabled(bool)));
 
-	KviTalHBox * hb = new KviTalHBox(g);
+	KviTalVBox * vb = new KviTalVBox(g);
+	vb->setSpacing(5);
 
 	connect(
 		b,
 		SIGNAL(toggled(bool)),
-		addStringSelector(hb,__tr2qs_ctx("Prefix:","options"),KviOption_stringExtendedPrivmsgPrefix,KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
+		addStringSelector(vb,__tr2qs_ctx("Prefix:","options"),KviOption_stringExtendedPrivmsgPrefix,KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
 		SLOT(setEnabled(bool)));
 	connect(
 		b,
 		SIGNAL(toggled(bool)),
-		addStringSelector(hb,__tr2qs_ctx("Postfix:","options"),KviOption_stringExtendedPrivmsgPostfix,KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
+		addStringSelector(vb,__tr2qs_ctx("Postfix:","options"),KviOption_stringExtendedPrivmsgPostfix,KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
 		SLOT(setEnabled(bool)));
+	addRowSpacer(0,3,0,3);
+}
 
+KviPrivmsgOptionsWidget::~KviPrivmsgOptionsWidget()
+{
 
+}
 
-
-	g = addGroupBox(0,2,0,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Timestamp","options"));
-
-	m_pUseTimestampSelector = addBoolSelector(g,__tr2qs_ctx("Show timestamp","options"),KviOption_boolIrcViewTimestamp);
+KviTimestampOptionsWidget::KviTimestampOptionsWidget(QWidget * pParent)
+: KviOptionsWidget(pParent)
+{
+	createLayout(5,1);
+	m_pUseTimestampSelector = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show timestamp","options"),KviOption_boolIrcViewTimestamp);
 	
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
-	b = addBoolSelector(g,__tr2qs_ctx("Use UTC time for timestamp","options"),KviOption_boolIrcViewTimestampUTC,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
+	KviBoolSelector* b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Use UTC time for timestamp","options"),KviOption_boolIrcViewTimestampUTC,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
 	
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 	
-	hb = new KviTalHBox(g);
+	KviTalHBox *hb = new KviTalHBox(this);
+	addWidgetToLayout(hb,0,2,0,2);
 	
 	m_pSpecialTimestampColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use special color for timestamps","options"),KviOption_boolUseSpecialColorForTimestamp,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
 	connect(m_pSpecialTimestampColorSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
@@ -136,20 +144,18 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 	
 	m_pTimestampColorSelector = addMircTextColorSelector(hb,"",KviOption_uintTimeStampForeground,KviOption_uintTimeStampBackground,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp) && KVI_OPTION_BOOL(KviOption_boolUseSpecialColorForTimestamp));
 
-	KviStringSelector * st=addStringSelector(g,__tr2qs_ctx("Timestamp format:","options"),KviOption_stringIrcViewTimestampFormat);
+	KviStringSelector * st=addStringSelector(0,3,0,3,__tr2qs_ctx("Timestamp format:","options"),KviOption_stringIrcViewTimestampFormat);
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),st,SLOT(setEnabled(bool)));
 
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),m_pSpecialTimestampColorSelector,SLOT(setEnabled(bool)));
-
-	
-	addRowSpacer(0,3,0,3);
+	addRowSpacer(0,4,0,4);
 }
 
-KviPrivmsgOptionsWidget::~KviPrivmsgOptionsWidget()
+KviTimestampOptionsWidget::~KviTimestampOptionsWidget()
 {
 }
 
-void KviPrivmsgOptionsWidget::enableDisableTimestampSelector(bool)
+void KviTimestampOptionsWidget::enableDisableTimestampSelector(bool)
 {
 	m_pTimestampColorSelector->setEnabled(m_pUseTimestampSelector->isChecked() && m_pSpecialTimestampColorSelector->isChecked());
 }
