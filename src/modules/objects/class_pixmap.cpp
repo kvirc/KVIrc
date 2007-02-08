@@ -65,7 +65,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"load",functionload)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"height",functionheight)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"width",functionwidth)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
+	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
@@ -157,12 +157,20 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pPixmap)return true; 
 	kvs_real_t dOpacity;
+	kvs_uint_t uXoffset,uYoffset;
+	kvs_uint_t uWidth,uHeight;
+
 	KviKvsObject * pObDest;
 	kvs_hobject_t hObject;
 		
 	KVSO_PARAMETERS_BEGIN(c)
 			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
 			KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
+
+			KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
+			KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
+			KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uWidth)
+			KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uHeight)
 	KVSO_PARAMETERS_END(c)
 	pObDest=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 
@@ -182,13 +190,51 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	if (bPixmapModified) {
 		*m_pImage=m_pPixmap->convertToImage();
 	}
+	if (uWidth>buffer->width() || uHeight>buffer->height())
+	{
+			c->warning(__tr2qs("Area dimensions are out of destination size "));
+			return true;
+	}
+	if (!uWidth){
+		if(m_pImage->width()>buffer->width())
+		{
+			c->warning(__tr2qs("Pixmap dimensions are out of destination size "));
+			return true;
+		}
+	}
+
+	if (!uHeight)
+	{
+		if(m_pImage->height()>buffer->height())
+		{
+			c->warning(__tr2qs("Pixmap dimensions are out of destination size "));
+			return true;
+		}
+	}
+
+
+if(uXoffset+uWidth>m_pImage->width())
+	{
+		c->warning(__tr2qs("Offset width area is out of pixmap size "));
+		return true;
+	}
+	if( uYoffset+uHeight>m_pImage->height())
+	{
+		c->warning(__tr2qs("Offset height area is out of pixmap size "));
+		return true;
+	}
+
 	buffer->setAlphaBuffer(true);
-	
-	for(int y = 0;y < m_pImage->height();y++)
+	int iHedge=uHeight?uHeight:m_pImage->height();
+	int iWedge=uWidth?uWidth:m_pImage->width();
+		
+	for(int y = uYoffset;y<iHedge;y++)
 	{
 		QRgb * dst = (QRgb *)buffer->scanLine(y);
 		QRgb * src = (QRgb *)m_pImage->scanLine(y);
-		QRgb * end = src + m_pImage->width();
+		src += uXoffset;
+		QRgb * end;
+		end  = src + iWedge;
 		while(src < end)
 		{
 			*dst = qRgba(
