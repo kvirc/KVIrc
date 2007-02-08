@@ -326,6 +326,11 @@ KviOptionsWidget * classKviPrivmsgOptionsWidget_createInstanceProc(QWidget * par
 	return new KviPrivmsgOptionsWidget(parent);
 }
 
+KviOptionsWidget * classKviTimestampOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviTimestampOptionsWidget(parent);
+}
+
 KviOptionsWidget * classKviMessageColorsOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviMessageColorsOptionsWidget(parent);
@@ -573,6 +578,8 @@ static const char * g_szName_KviMessageOptionsWidget = KVI_OPTIONS_WIDGET_NAME_K
 static const char * g_szClassName_KviMessageOptionsWidget = "KviMessageOptionsWidget";
 static const char * g_szName_KviPrivmsgOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviPrivmsgOptionsWidget;
 static const char * g_szClassName_KviPrivmsgOptionsWidget = "KviPrivmsgOptionsWidget";
+static const char * g_szName_KviTimestampOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTimestampOptionsWidget;
+static const char * g_szClassName_KviTimestampOptionsWidget = "KviTimestampOptionsWidget";
 static const char * g_szName_KviMessageColorsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviMessageColorsOptionsWidget;
 static const char * g_szClassName_KviMessageColorsOptionsWidget = "KviMessageColorsOptionsWidget";
 static const char * g_szName_KviStandardColorsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviStandardColorsOptionsWidget;
@@ -2883,6 +2890,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		e1->szNameNoLocale = g_szName_KviPrivmsgOptionsWidget;
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviPrivmsgOptionsWidget,"options");
+		e0->pChildList->append(e1);
+		e1->pChildList = 0;
+
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviTimestampOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviTimestampOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTimestampOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTimestampOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTimestampOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTimestampOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTimestampOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTimestampOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviTimestampOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTimestampOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 
