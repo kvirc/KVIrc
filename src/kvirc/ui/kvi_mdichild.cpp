@@ -515,7 +515,7 @@ void KviMdiChild::unsetClient()
 	//Kewl...the reparent function has a small prob now..
 	//the new toplelvel widgets gets not reenabled for dnd
 #ifndef Q_OS_MACX
-	m_pClient->reparent(0,QPoint(0,0),true);
+	m_pClient->reparent(0,m_pClient->mapToGlobal(QPoint(0,0)),true);
 #else
 	QRect r = g_pApp->desktop()->availableGeometry(m_pClient); 
 	r.moveBy(0, 22);
