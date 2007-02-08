@@ -75,6 +75,22 @@ class KviUserListLookForegroundOptionsWidget : public KviOptionsWidget
 public:
 	KviUserListLookForegroundOptionsWidget(QWidget * parent);
 	~KviUserListLookForegroundOptionsWidget();
+};
+
+#define KVI_OPTIONS_WIDGET_ICON_KviUserListGridOptionsWidget KVI_SMALLICON_GUI
+#define KVI_OPTIONS_WIDGET_NAME_KviUserListGridOptionsWidget __tr2qs_no_lookup("Nickname Grid")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget __tr2qs_no_lookup("theme,userlist,channel,grid")
+#define KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_PARENT_KviUserListGridOptionsWidget KviUserListLookOptionsWidget
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviUserListGridOptionsWidget 30
+
+
+class KviUserListGridOptionsWidget : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	KviUserListGridOptionsWidget(QWidget * parent);
+	~KviUserListGridOptionsWidget();
 protected:
 	QComboBox * m_pGridTypeCombo;
 public:

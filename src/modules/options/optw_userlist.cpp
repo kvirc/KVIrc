@@ -46,7 +46,7 @@ KviUserListLookOptionsWidget::~KviUserListLookOptionsWidget()
 KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_foreground_options_widget")
 {
-	createLayout(5,2);
+	createLayout(2,2);
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontUserListView);
 	
@@ -67,13 +67,24 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	KviColorSelector * s = addColorSelector(hb,"",KviOption_colorUserListViewOwnForeground,KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 
-	g = addGroupBox(0,3,1,3,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Nickname Grid","options"));
-	b = addBoolSelector(g,__tr2qs_ctx("Draw nickname grid","options"),KviOption_boolUserListViewDrawGrid);
+	addRowSpacer(0,3,0,3);
+}
 
-	s = addColorSelector(g,__tr2qs_ctx("Grid color:","options"),KviOption_colorUserListViewGrid,KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
+KviUserListLookForegroundOptionsWidget::~KviUserListLookForegroundOptionsWidget()
+{
+}
+
+KviUserListGridOptionsWidget::KviUserListGridOptionsWidget(QWidget * parent)
+: KviOptionsWidget(parent)
+{
+	createLayout(5,1);
+	KviBoolSelector* b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Draw nickname grid","options"),KviOption_boolUserListViewDrawGrid);
+
+	KviColorSelector* s = addColorSelector(0,1,0,1,__tr2qs_ctx("Grid color:","options"),KviOption_colorUserListViewGrid,KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 
-	hb = new KviTalHBox(g);
+	KviTalHBox* hb = new KviTalHBox(this);
+	addWidgetToLayout(hb,0,2,0,2);
 	hb->setSpacing(4);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Grid type:","options"),hb);
@@ -87,17 +98,14 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	m_pGridTypeCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintUserListViewGridType));
 	m_pGridTypeCombo->setEnabled(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
 	connect(b,SIGNAL(toggled(bool)),m_pGridTypeCombo,SLOT(setEnabled(bool)));
-
-	addRowSpacer(0,4,0,4);
+	addRowSpacer(0,3,0,3);
 }
 
-KviUserListLookForegroundOptionsWidget::~KviUserListLookForegroundOptionsWidget()
+KviUserListGridOptionsWidget::~KviUserListGridOptionsWidget()
 {
 }
 
-
-
-void KviUserListLookForegroundOptionsWidget::commit()
+void KviUserListGridOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
 	KVI_OPTION_UINT(KviOption_uintUserListViewGridType) = m_pGridTypeCombo->currentItem();
