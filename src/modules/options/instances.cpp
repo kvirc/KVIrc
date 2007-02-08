@@ -471,6 +471,11 @@ KviOptionsWidget * classKviUserListLookForegroundOptionsWidget_createInstancePro
 	return new KviUserListLookForegroundOptionsWidget(parent);
 }
 
+KviOptionsWidget * classKviUserListGridOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviUserListGridOptionsWidget(parent);
+}
+
 KviOptionsWidget * classKviUserListFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviUserListFeaturesOptionsWidget(parent);
@@ -636,6 +641,8 @@ static const char * g_szName_KviUserListLookBackgroundOptionsWidget = KVI_OPTION
 static const char * g_szClassName_KviUserListLookBackgroundOptionsWidget = "KviUserListLookBackgroundOptionsWidget";
 static const char * g_szName_KviUserListLookForegroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListLookForegroundOptionsWidget;
 static const char * g_szClassName_KviUserListLookForegroundOptionsWidget = "KviUserListLookForegroundOptionsWidget";
+static const char * g_szName_KviUserListGridOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListGridOptionsWidget;
+static const char * g_szClassName_KviUserListGridOptionsWidget = "KviUserListGridOptionsWidget";
 static const char * g_szName_KviUserListFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListFeaturesOptionsWidget;
 static const char * g_szClassName_KviUserListFeaturesOptionsWidget = "KviUserListFeaturesOptionsWidget";
 
@@ -3372,6 +3379,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		e1->szNameNoLocale = g_szName_KviUserListLookForegroundOptionsWidget;
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListLookForegroundOptionsWidget,"options");
+		e0->pChildList->append(e1);
+		e1->pChildList = 0;
+
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviUserListGridOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviUserListGridOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviUserListGridOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviUserListGridOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviUserListGridOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviUserListGridOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviUserListGridOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListGridOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviUserListGridOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviUserListGridOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListGridOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 
