@@ -30,10 +30,12 @@
 #include <qdir.h>
 #include <qmessagebox.h>
 
+QString g_szPrevSettedLocale;
+
 KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"textencoding_options_widget")
 {
-	createLayout(4,2);
+	createLayout(5,2);
 
 	addLabel(0,0,0,0,__tr2qs_ctx("Default text encoding:","options"));
 
@@ -60,17 +62,21 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 	
 	addWidgetToLayout(m_pForcedLocaleCombo,1,1,1,1);
 	
-	QLabel * l = new QLabel(__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("<b>Note:</b> You need to restart KVirc to apply a language changing","options"),this);
 	addWidgetToLayout(l,0,2,1,2);
 	
 	m_pForcedLocaleCombo->insertItem(__tr2qs_ctx("Automatic detection","options"));
 	m_pForcedLocaleCombo->insertItem(__tr2qs_ctx("en","options"));
 	
 	QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homeDirPath());
-	if(KviFileUtils::fileExists(szLangFile))
+
+	bool bIsDefaultLocale = !KviFileUtils::fileExists(szLangFile);
+	//We Have setted locale, but not restarted kvirc
+	if(!g_szPrevSettedLocale.isEmpty())
 	{
-		KviFileUtils::readFile(szLangFile,m_szLanguage);
-		m_szLanguage=m_szLanguage.stripWhiteSpace();
+		m_szLanguage=g_szPrevSettedLocale;
+	} else {
+		m_szLanguage=KviLocale::localeName();
 	}
 	
 	QString szLocaleDir;
@@ -86,17 +92,17 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 		szTmp.replace("kvirc_","");
 		szTmp.replace(".mo","");
 		m_pForcedLocaleCombo->insertItem(szTmp);
-//		debug("|%s|%s|",m_szLanguage.utf8().data(),szTmp.utf8().data());
-		//debug(m_szLanguage);
 		if(KviQString::equalCI(szTmp,m_szLanguage))
 			iMatch = i + 2;
 		i++;
 	}
-	if(KviQString::equalCI(m_szLanguage,"en"))
+	if(bIsDefaultLocale)
+		m_pForcedLocaleCombo->setCurrentItem(0);
+	else if(KviQString::equalCI(m_szLanguage,"en"))
 		m_pForcedLocaleCombo->setCurrentItem(1);
 	else
 		m_pForcedLocaleCombo->setCurrentItem(iMatch);
-//	addRowSpacer(0,5,1,5);
+	addRowSpacer(0,3,1,3);
 }
 
 KviTextEncodingOptionsWidget::~KviTextEncodingOptionsWidget()
@@ -110,9 +116,9 @@ void KviTextEncodingOptionsWidget::commit()
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = "";
-		return;
+	} else {
+		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = m_pTextEncodingCombo->text(idx);
 	}
-	KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = m_pTextEncodingCombo->text(idx);
 	
 	idx=m_pForcedLocaleCombo->currentItem();
 	QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homeDirPath());
@@ -120,7 +126,11 @@ void KviTextEncodingOptionsWidget::commit()
 		if(KviFileUtils::fileExists(szLangFile))
 			KviFileUtils::removeFile(szLangFile);
 	} else {
-		KviFileUtils::writeFile(szLangFile,m_pForcedLocaleCombo->text(idx));
+		g_szPrevSettedLocale=m_pForcedLocaleCombo->text(idx);
+		if(!KviFileUtils::writeFile(szLangFile,m_pForcedLocaleCombo->text(idx)))
+		{
+			QMessageBox::critical(this,"KVIrc",__tr2qs_ctx("Unable to write language information to","options")+"\n"+szLangFile,__tr2qs_ctx("Ok","options"));
+		}
 	}
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))
 		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),QMessageBox::Ok);*/
