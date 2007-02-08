@@ -77,6 +77,7 @@ public:
 	KviLogListViewLog(KviTalListViewItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 	: KviLogListViewItem(par,type,fileData){};
 	~KviLogListViewLog() {};
+	virtual QString key ( int column, bool ascending ) const { return m_pFileData->date().toString("yyyy.MM.dd"); };
 	virtual QString text(int col) const { return m_pFileData->date().toString("dd.MM.yyyy"); };
 };
 
