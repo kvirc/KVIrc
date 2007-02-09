@@ -202,9 +202,10 @@ private:
 	void parseNumericCannotSendColor(KviIrcMessage *msg);
 	void parseNumericEndOfStats(KviIrcMessage *msg);
 	void otherChannelError(KviIrcMessage *msg);
-	void commandSyntaxHelp(KviIrcMessage *msg);
-	void commandHelp(KviIrcMessage *msg);
-	void commandEndOfHelp(KviIrcMessage *msg);
+	void parseCommandSyntaxHelp(KviIrcMessage *msg);
+	void parseCommandHelp(KviIrcMessage *msg);
+	void parseCommandEndOfHelp(KviIrcMessage *msg);
+	void parseChannelHelp(KviIrcMessage *msg);
 	
 	void parseLiteralPing(KviIrcMessage *msg);
 	void parseLiteralJoin(KviIrcMessage *msg);

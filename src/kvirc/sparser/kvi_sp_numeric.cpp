@@ -931,9 +931,7 @@ void KviServerParser::otherChannelError(KviIrcMessage *msg)
 	}
 }
 
-// Keep the source ordered: this should be named "parseCommandSyntaxHelp"
-
-void KviServerParser::commandSyntaxHelp(KviIrcMessage *msg)
+void KviServerParser::parseCommandSyntaxHelp(KviIrcMessage *msg)
 {
 	// 704 RPL_COMMANDSYNTAX
 	// :prefix 704 <target> <command> :text
@@ -943,14 +941,11 @@ void KviServerParser::commandSyntaxHelp(KviIrcMessage *msg)
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_HELP,
-			"Синатксис команды %Q: %Q",&szCommand,&szWText); // Pragma: wheee..... that should be in english :D
+			__tr2qs("Command syntax %Q: %Q"),&szCommand,&szWText); // Pragma: wheee..... that should be in english :D
 	}
 }
 
-// Keep the source ordered: this should be named "parseCommandHelp"
-
-
-void KviServerParser::commandHelp(KviIrcMessage *msg)
+void KviServerParser::parseCommandHelp(KviIrcMessage *msg)
 {
 	// 705 RPL_COMMANDHELP
 	// :prefix 705 <target> <command> :text
@@ -959,15 +954,32 @@ void KviServerParser::commandHelp(KviIrcMessage *msg)
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_HELP,
-			"%Q",&szWText);
+		pOut->outputNoFmt(KVI_OUT_HELP,szWText);
 	}
 }
 
-// Keep the source ordered: this should be named "parseCommandEndOfHelp"
+void KviServerParser::parseChannelHelp(KviIrcMessage *msg)
+{
+	// 477 RPL_CHANNELHELP (freenode)
+	// :prefix 477 <target> <channel> :text
+	if(!msg->haltOutput())
+	{
+		QString szChan  = msg->connection()->decodeText(msg->safeParam(1));
+		QString szText = msg->connection()->decodeText(msg->safeTrailing());
+		KviWindow * pOut = msg->connection()->findChannel(szChan);
+		if(pOut)
+		{
+			pOut->output(KVI_OUT_HELP,__tr2qs("Tip: %Q"),&szText);
+		} else {
+			pOut = (KviWindow *)(msg->console());
+			pOut->output(KVI_OUT_HELP,__tr2qs("Tip for %Q: %Q"),&szChan,&szText);
+		}
+		
+	}
+}
 
 
-void KviServerParser::commandEndOfHelp(KviIrcMessage *msg)
+void KviServerParser::parseCommandEndOfHelp(KviIrcMessage *msg)
 {
 	// 704 RPL_COMMANDSYNTAX
 	// 705 RPL_COMMANDHELP
@@ -977,7 +989,7 @@ void KviServerParser::commandEndOfHelp(KviIrcMessage *msg)
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		pOut->output(KVI_OUT_HELP,
-			"Конец справки по команде %Q",&szCommand);
+			__tr2qs("End of help about %Q"),&szCommand);
 	}
 }
 

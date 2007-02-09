@@ -285,8 +285,15 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 
 	delete m_pProxyDns;
 	m_pProxyDns = 0;
-	if(m_pTarget->proxy()->protocol() != KviProxy::Http) lookupServerHostname();
-	else	terminate(Success,KviError_success);
+	if(m_pTarget->proxy())
+	{
+		if(m_pTarget->proxy()->protocol() == KviProxy::Http) 
+		{
+			terminate(Success,KviError_success);
+			return;
+		}
+	}
+	lookupServerHostname();
 }
 
 void KviIrcConnectionTargetResolver::lookupServerHostname()

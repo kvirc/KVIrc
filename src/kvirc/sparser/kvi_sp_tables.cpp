@@ -563,7 +563,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericCantJoinChannel)               , // 474 ERR_BANNEDFROMCHAN
 	PTM(parseNumericCantJoinChannel)               , // 475 ERR_BADCHANNELKEY
 	0,                                               // 476
-	0,                                               // 477
+	PTM(parseChannelHelp),                           // 477 RPL_CHANNELHELP
 	0,                                               // 478
 	0,                                               // 479
 	0,                                               // 480
@@ -789,10 +789,10 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericCodePageSet)                   , // 700 RPL_CODEPAGESET
 	0,                                               // 701
 	0,                                               // 702
-	PTM(parseNumericCodePageScheme)                   , // 703 RPL_WHOISSCHEME
-	PTM(commandSyntaxHelp),                          // 704 RPL_COMMANDSYNTAX
-	PTM(commandHelp),                                // 705 RPL_COMMANDHELP
-	PTM(commandEndOfHelp),                           // 706 RPL_ENDOFCOMMANDHELP
+	PTM(parseNumericCodePageScheme)                , // 703 RPL_WHOISSCHEME
+	PTM(parseCommandSyntaxHelp),                     // 704 RPL_COMMANDSYNTAX
+	PTM(parseCommandHelp),                           // 705 RPL_COMMANDHELP
+	PTM(parseCommandEndOfHelp),                      // 706 RPL_ENDOFCOMMANDHELP
 	0,                                               // 707
 	0,                                               // 708
 	0,                                               // 709
