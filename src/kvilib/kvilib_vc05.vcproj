@@ -427,6 +427,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_tabdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit.cpp"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_toolbar.cpp"
 				>
 			</File>
@@ -440,6 +448,10 @@
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_widgetstack.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_wizard.cpp"
 				>
 			</File>
 			<File
@@ -1032,7 +1044,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1141,7 +1153,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1232,6 +1244,48 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_tabdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tabdialog_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tabdialog_qt4.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit_qt4.h"
+				>
+			</File>
+			<File
 				RelativePath="tal\kvi_tal_toolbar.h"
 				>
 			</File>
@@ -1247,7 +1301,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1308,6 +1362,36 @@
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_windowstate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_wizard.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine=""
+						Outputs=""
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_wizard_qt3.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_wizard_qt4.h"
 				>
 			</File>
 			<File
