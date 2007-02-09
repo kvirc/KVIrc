@@ -213,7 +213,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	{
 		QLabel * il = new QLabel(this);
 		il->setPixmap(*pix);
-		il->setAlignment(AlignCenter);
+		il->setAlignment(Qt::AlignCenter);
 		g->addWidget(il,0,0);
 		QLabel * tl = new QLabel(szLabel,this);
 		g->addWidget(tl,0,1);

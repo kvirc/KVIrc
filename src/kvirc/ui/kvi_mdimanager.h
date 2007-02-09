@@ -50,7 +50,7 @@
 class KviFrame;
 
 class KviTalPopupMenu;
-
+class KviTalHBox;
 class KviSdiButtonBox;
 class KviMenuBarToolButton;
 
@@ -81,6 +81,9 @@ protected:
 	KviMenuBarToolButton     * m_pSdiCloseButton;
 	KviMenuBarToolButton     * m_pSdiIconButton;
 
+#ifdef COMPILE_USE_QT4
+	KviTalHBox               * m_pSdiControls;
+#endif
 	int                        m_iSdiIconItemId;
 	int                        m_iSdiRestoreItemId;
 	int                        m_iSdiMinimizeItemId;
@@ -101,6 +104,7 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void drawContents(QPainter * p,int x,int y,int w,int h);
 	virtual bool focusNextPrevChild(bool pNext);
+	virtual void showEvent(QShowEvent *e);
 public slots:
 	void cascadeWindows();
 	void cascadeMaximized();

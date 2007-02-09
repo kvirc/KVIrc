@@ -203,10 +203,12 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_bReadOnly = FALSE;
 	
 	setInputMethodEnabled(true);
-	setBackgroundMode(Qt::NoBackground);
+
 #ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
 #else
+	setBackgroundMode(Qt::NoBackground);
 	setFocusPolicy(QWidget::StrongFocus);
 #endif
 	setAcceptDrops(true);
@@ -324,6 +326,15 @@ QSize KviInputEditor::sizeHint() const
 #define KVI_INPUT_DEF_BACK 100
 #define KVI_INPUT_DEF_FORE 101
 
+#ifdef COMPILE_USE_QT4
+void KviInputEditor::paintEvent(QPaintEvent *e)
+{
+	QPainter p(this);
+	drawFrame(&p);
+	drawContents(&p);
+}
+#endif
+
 void KviInputEditor::drawContents(QPainter *p)
 {
 	if(!isVisible())return;
@@ -353,8 +364,6 @@ void KviInputEditor::drawContents(QPainter *p)
 	}
 #endif
 
-	
-	
 	pa.setFont(KVI_OPTION_FONT(KviOption_fontInput));
 
 	QFontMetrics fm(pa.fontMetrics());
@@ -506,7 +515,11 @@ void KviInputEditor::drawContents(QPainter *p)
 	while(m_iBlockLen < m_iCursorPosition)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
+#ifdef COMPILE_USE_QT4
+		m_iLastCursorXPosition+= fm.width(c);
+#else
 		m_iLastCursorXPosition+= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
 		m_iBlockLen++;
 	}
 
@@ -520,8 +533,12 @@ void KviInputEditor::drawContents(QPainter *p)
 		pa.setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));
 	}
 
+#ifdef COMPILE_USE_QT4
+	// The other version of drawPixmap seems to be buggy
+	p->drawPixmap(rect.x(),rect.y(),rect.width(),rect.height(),*pDoubleBufferPixmap,0,0,widgetWidth,widgetHeight);
+#else
 	p->drawPixmap(rect.x(),rect.y(),*pDoubleBufferPixmap,0,0,widgetWidth,widgetHeight);
-
+#endif
 }
 
 void KviInputEditor::drawTextBlock(QPainter * pa,QFontMetrics & fm,int curXPos,int textBaseline,int charIdx,int len,bool bSelected)
@@ -620,7 +637,11 @@ void KviInputEditor::extractNextBlock(int idx,QFontMetrics & fm,int curXPos,int 
 				(c != QChar(KVI_TEXT_ICON))))
 			{
 				m_iBlockLen++;
+#ifdef COMPILE_USE_QT4
+				int xxx = fm.width(c);
+#else
 				int xxx = (c.unicode() < 256 ? g_iInputFontCharWidth[c.unicode()] : fm.width(c));
+#endif
 				m_iBlockWidth +=xxx;
 				curXPos       +=xxx;
 				idx++;
@@ -1517,7 +1538,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 
 	if((e->state() & Qt::AltButton) && (e->state() & Qt::Keypad))
 	{
-		// Qt::Key_Meta seems to substitute Key_Alt on some keyboards
+		// Qt::Key_Meta seems to substitute Qt::Key_Alt on some keyboards
 		if((e->key() == Qt::Key_Alt) || (e->key() == Qt::Key_Meta))
 		{
 			m_szAltKeyCode = "";
@@ -2041,11 +2062,19 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
+#ifdef COMPILE_USE_QT4
+	m_iLastCursorXPosition += fm.width(c);
+#else
 	m_iLastCursorXPosition += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
+#ifdef COMPILE_USE_QT4
+		m_iLastCursorXPosition -= fm.width(c);
+#else
 		m_iLastCursorXPosition -= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
 		m_iFirstVisibleChar++;
 	}
 }
@@ -2076,7 +2105,11 @@ int KviInputEditor::charIndexFromXPosition(int xPos)
 	while(curChar < bufLen)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
+#ifdef COMPILE_USE_QT4
+		int widthCh = fm.width(c);
+#else
 		int widthCh = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
 		if(xPos < (curXPos+(widthCh/2)))return curChar;
 		else if(xPos < (curXPos+widthCh))return (curChar+1);
 		{
@@ -2096,7 +2129,11 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 	while(curChar < chIdx)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
+#ifdef COMPILE_USE_QT4
+		curXPos += fm.width(c);
+#else
 		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
 		curChar++;
 	}
 	return curXPos;
@@ -2234,10 +2271,13 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 KviInput::KviInput(KviWindow *par,KviUserListView * view)
 : QWidget(par,"input")
 {
-
 	QBoxLayout* pLayout=new QHBoxLayout(this);
-	pLayout->setAutoAdd( TRUE );
+	pLayout->setAutoAdd(true);
 	pLayout->setDirection(QBoxLayout::RightToLeft);
+
+	pLayout->setMargin(0);
+	pLayout->setSpacing(0);
+
 	m_pWindow = par;
 	m_pMultiLineEditor = 0;
 	
@@ -2252,7 +2292,14 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 	
 	m_pButtonContainer=new KviTalHBox(this);
-	
+	m_pButtonContainer->setSpacing(0);
+
+#ifdef COMPILE_USE_QT4
+	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Preferred));
+//	if(m_pButtonContainer->layout())
+//		m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
+#endif
+
 	m_pHistoryButton = new KviStyledToolButton(m_pButtonContainer,"historybutton");
 	m_pHistoryButton->setUsesBigPixmap(false);
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
@@ -2306,7 +2353,15 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	
 	m_pInputEditor = new KviInputEditor(this,par,view);
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
+#ifdef COMPILE_USE_QT4
+	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
+#else
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored));
+#endif
+	
+	pLayout->setStretchFactor(m_pInputEditor,100000);
+	pLayout->setStretchFactor(m_pButtonContainer,0);
+	pLayout->setStretchFactor(m_pHideToolsButton,0);
 }
 
 KviInput::~KviInput()

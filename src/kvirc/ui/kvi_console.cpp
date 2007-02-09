@@ -122,7 +122,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	}
 
 	m_pButtonBox = new KviTalHBox(this);
-	m_pButtonBox->setSpacing(5);
+	m_pButtonBox->setSpacing(0);
+	m_pButtonBox->setMargin(0);
 	new QLabel(__tr2qs("Address:"),m_pButtonBox,"url_label");
 	m_pAddressEdit = new QComboBox(m_pButtonBox,"url_editor");
 	m_pAddressEdit->setAutoCompletion(true);

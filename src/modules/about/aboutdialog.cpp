@@ -33,9 +33,10 @@
 
 #include <qwidget.h>
 #include <qlayout.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qlabel.h>
 #include <qpixmap.h>
+#include <qevent.h>
 
 extern KviAboutDialog * g_pAboutDialog;
 /*
@@ -69,7 +70,7 @@ extern KviAboutDialog * g_pAboutDialog;
 #include "abouttext.inc"
 
 KviAboutDialog::KviAboutDialog()
-: QTabDialog(0)
+: KviTalTabDialog(0)
 {
 	setCaption(__tr2qs_ctx("About KVIrc...","about"));
 	setOkButton(__tr2qs_ctx("Close","about"));
@@ -98,7 +99,7 @@ KviAboutDialog::KviAboutDialog()
 	aboutString += KVI_SOURCES_DATE;
 
 	l = new QLabel(aboutString,w);
-	l->setAlignment(AlignCenter);
+	l->setAlignment(Qt::AlignCenter);
 	g->addWidget(l,1,0);
 
 	addTab(w,__tr2qs_ctx("About","about"));
@@ -108,7 +109,7 @@ KviAboutDialog::KviAboutDialog()
 	w = new QWidget(this);
 	g = new QGridLayout(w,1,1,4,8);
 
-	QTextEdit * v = new QTextEdit(w);
+	KviTalTextEdit * v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
 	g->addWidget(v,0,0);
 
@@ -121,9 +122,9 @@ KviAboutDialog::KviAboutDialog()
 	w = new QWidget(this);
 	g = new QGridLayout(w,1,1,4,8);
 
-	v = new QTextEdit(w);
+	v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
-	v->setWordWrap(QTextEdit::NoWrap);
+	v->setWordWrap(KviTalTextEdit::NoWrap);
 	g->addWidget(v,0,0);
 
 	QString szLicense;

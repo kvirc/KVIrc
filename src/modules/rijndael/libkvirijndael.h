@@ -153,7 +153,7 @@
 		KviStr m_szDecryptKey;
 		bool m_bDecryptCBC;
 	public:
-		virtual bool isCryptographicEngine(){ return false; }; // we need to return false since it doesn't use the CTRL+P escape
+		virtual bool isCryptographicEngine(){ return false; }; // we need to return false since it doesn't use the Qt::CTRL+P escape
 		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
 		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
 		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviStr &plainText);

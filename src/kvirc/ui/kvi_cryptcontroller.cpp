@@ -109,7 +109,7 @@
 #ifdef COMPILE_USE_QT4
 		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 #else
-		m_pDescriptionLabel->setAlignment(AlignTop | AlignLeft);
+		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 #endif
 		g->addMultiCellWidget(m_pDescriptionLabel,3,3,1,3);
 

@@ -108,7 +108,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 #ifdef COMPILE_USE_QT4
 	m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 #else
-	m_pMessageLabel->setAlignment(SingleLine | AlignVCenter | AlignLeft);
+	m_pMessageLabel->setAlignment(SingleLine | Qt::AlignVCenter | Qt::AlignLeft);
 #endif
 	m_pMessageLabel->setMinimumWidth(350);
 	

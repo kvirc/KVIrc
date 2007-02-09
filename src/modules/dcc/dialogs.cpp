@@ -55,7 +55,7 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	QLabel * l = new QLabel(text,this);
 	vb->addWidget(l);
 	QHBoxLayout *hb = new QHBoxLayout(4);
-	vb->addLayout(hb,AlignCenter);
+	vb->addLayout(hb,Qt::AlignCenter);
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Accept","dcc"),this);
 	btn->setDefault(true);
 	//btn->setFocus();
@@ -113,7 +113,7 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	vb->addWidget(l);
 
 	QHBoxLayout *hb = new QHBoxLayout(4);
-	vb->addLayout(hb,AlignCenter);	
+	vb->addLayout(hb,Qt::AlignCenter);	
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename","dcc"),this);
 	hb->addWidget(btn);

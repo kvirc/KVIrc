@@ -24,7 +24,7 @@
 
 #include "kvi_string.h"
 
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 
 class KviPixmap;
 class KviPixmapSelector;
@@ -37,7 +37,7 @@ class QLineEdit;
 class QWidget;
 class KviRegisteredUserDataBase;
 
-class KviRegistrationWizard : public QWizard
+class KviRegistrationWizard : public KviTalWizard
 { 
     Q_OBJECT
 public:

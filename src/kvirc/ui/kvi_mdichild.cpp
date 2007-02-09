@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : kvi_mdichild.cpp
 //   Creation date : Wed Jun 21 2000 17:35:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 #define __KVIRC__
 
 #define _KVI_DEBUG_CHECK_RANGE_
@@ -86,6 +88,10 @@ KviMdiChild::KviMdiChild(KviMdiManager * par,const char * name)
 
 	setMouseTracking(true);
 	setMinimumSize(KVI_MDICHILD_MIN_WIDTH,KVI_MDICHILD_MIN_HEIGHT);
+
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(true);
+#endif
 	
 }
 
@@ -308,11 +314,12 @@ void KviMdiChild::mouseReleaseEvent(QMouseEvent *)
 		releaseMouse();
 	}
 
-	if(QApplication::overrideCursor())QApplication::restoreOverrideCursor();
+	//if(QApplication::overrideCursor())QApplication::restoreOverrideCursor();
 }
 
 QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 {
+	debug("GET RESIZE CURSOR");
 	switch (resizeCorner)
 	{ 
 		case KVI_MDI_RESIZE_LEFT: 
@@ -332,6 +339,7 @@ QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 			return Qt::sizeBDiagCursor;
 			break; 
 		default:
+			debug("RETURNING DEFAULT");
 			return Qt::arrowCursor;
 			break;
 	}
@@ -343,20 +351,27 @@ void KviMdiChild::mouseMoveEvent(QMouseEvent *e)
 	{
 		if(m_iResizeCorner && (m_state != Maximized))resizeWindowOpaque(m_iResizeCorner);
 	} else {
+		debug("MOVE EVENT");
 		setResizeCursor(getResizeCorner(e->pos().x(), e->pos().y()));
 	}
 }
 
 void KviMdiChild::setResizeCursor(int resizeCorner)
 {
-	if(resizeCorner == m_iLastCursorCorner)return; //Don't do it twice
+	debug("SET RESIZE CORNER %d",resizeCorner);
+	if(resizeCorner == m_iLastCursorCorner)
+		return; //Don't do it twice
 	m_iLastCursorCorner = resizeCorner;
 	if(resizeCorner == KVI_MDI_NORESIZE)
 	{
-		if(QApplication::overrideCursor())QApplication::restoreOverrideCursor(); 
+		setCursor(getResizeCursor(resizeCorner));
+		//if(QApplication::overrideCursor())QApplication::restoreOverrideCursor(); 
 	} else {
 		if(m_state != Maximized)
-			QApplication::setOverrideCursor(getResizeCursor(resizeCorner),true);
+		{
+			setCursor(getResizeCursor(resizeCorner));
+			//QApplication::setOverrideCursor(getResizeCursor(resizeCorner),true);
+		}
 	}
 }
 
@@ -366,7 +381,7 @@ void KviMdiChild::leaveEvent(QEvent *)
 	{
 		m_iResizeCorner=KVI_MDI_NORESIZE;
 		m_iLastCursorCorner=KVI_MDI_NORESIZE;
-		if(QApplication::overrideCursor())QApplication::restoreOverrideCursor();
+		//if(QApplication::overrideCursor())QApplication::restoreOverrideCursor();
 	} else {
 		if(m_iResizeCorner != KVI_MDI_NORESIZE)resizeWindowOpaque(m_iResizeCorner);
 	}
@@ -529,6 +544,7 @@ void KviMdiChild::unsetClient()
 
 void KviMdiChild::activate(bool bSetFocus)
 {
+	debug("CHILD ACTIVATING...");
 	if(!m_pCaption->active())m_pCaption->setActive(true);
 	if(m_pManager->topChild() != this)
 		m_pManager->setTopChild(this,bSetFocus);
@@ -537,6 +553,7 @@ void KviMdiChild::activate(bool bSetFocus)
 
 void KviMdiChild::focusInEvent(QFocusEvent *)
 {
+	debug("FOCUS IN EVENT FOR THE CHILD");
 	// We gained focus by click , tab or from the caption label
 	// Bring this child to top
 	m_pCaption->setActive(true);

@@ -23,7 +23,7 @@
 //
 
 
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"
@@ -59,7 +59,7 @@ public:
 #define THEME_APPLY_HIRES 1
 #define THEME_APPLY_LORES 2
 
-class KviSetupWizard : public QWizard
+class KviSetupWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:

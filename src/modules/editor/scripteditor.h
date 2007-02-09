@@ -29,7 +29,7 @@
 
 #include <qlabel.h>
 #include <qcstring.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qsyntaxhighlighter.h>
 #include <qdialog.h>
 #include <qcheckbox.h>
@@ -52,7 +52,7 @@ protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 };
 
-class KviScriptEditorWidget : public QTextEdit
+class KviScriptEditorWidget : public KviTalTextEdit
 {
 	Q_OBJECT
 	Q_PROPERTY(bool contextSensitiveHelp READ contextSensitiveHelp)

@@ -75,12 +75,13 @@ protected:
 	KviMdiCaptionButton * m_pMinimizeButton;
 	KviMdiCaptionButton * m_pMaximizeButton;
 	KviMdiCaptionButton * m_pCloseButton;
+	QPixmap               m_pixSystemIcon;
 public:
 	int heightHint();
 	void setActive(bool bActive);
 	bool active(){ return m_bActive; };
-	void setSystemIcon(const QPixmap &pix){ m_pSystemButton->setPixmap(pix); };
-	const QPixmap * systemIcon(){ return m_pSystemButton->pixmap(); };
+	void setSystemIcon(const QPixmap &pix){ m_pSystemButton->setPixmap(pix); m_pixSystemIcon = pix; };
+	const QPixmap * systemIcon(){ return &m_pixSystemIcon; };
 	void enableClose(bool bEnable){ m_pCloseButton->setEnabled(bEnable); };
 	bool closeEnabled(){ return m_pCloseButton->isEnabled(); };
 	virtual void setFocusProxy(QWidget * w);

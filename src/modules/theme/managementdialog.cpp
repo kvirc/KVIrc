@@ -41,7 +41,7 @@
 #include <qpushbutton.h>
 #include "kvi_tal_listbox.h"
 #include <qlineedit.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qregexp.h>
 #include <qmessagebox.h>
 #include <qdir.h>
@@ -53,7 +53,7 @@
 #include <qpainter.h>
 #include <qtooltip.h>
 #include <qimage.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qmultilineedit.h>
 #include <qbuffer.h>
 

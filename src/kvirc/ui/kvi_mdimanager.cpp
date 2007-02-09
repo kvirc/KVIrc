@@ -45,6 +45,9 @@
 #include <qdrawutil.h>
 #include <qevent.h>
 
+#ifdef COMPILE_USE_QT4
+	#include "kvi_tal_hbox.h"
+#endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <qpixmap.h>
@@ -71,6 +74,9 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	m_pSdiCloseButton = 0;
 	m_pSdiRestoreButton = 0;
 	m_pSdiMinimizeButton = 0;
+#ifdef COMPILE_USE_QT4
+	m_pSdiControls = 0;
+#endif
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
@@ -120,6 +126,7 @@ bool KviMdiManager::focusNextPrevChild(bool bNext)
 
 void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
 {
+	//debug("MY DRAW CONTENTS (%d,%d,%d,%d)",x,y,w,h);
 	QRect r(x,y,w,h);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -490,8 +497,6 @@ void KviMdiManager::updateSDIMode()
 // a submenu. Due to the optical reasons it is removed here.
 // The same popup is triggered by right clicking on the window name in the channel window list.
 #ifndef Q_OS_MACX
-#ifndef COMPILE_USE_QT4
-// FIXME: Adding widgets to menus is not supported
 	KviMenuBar * b = m_pFrm->mainMenuBar();
 
 	const QPixmap * pix = lpC ? lpC->icon() : 0;
@@ -502,12 +507,18 @@ void KviMdiManager::updateSDIMode()
 	{
 		m_pSdiIconButton = new KviMenuBarToolButton(b,*pix,"nonne");
 		connect(m_pSdiIconButton,SIGNAL(clicked()),this,SLOT(activeChildSystemPopup()));
+#ifdef COMPILE_USE_QT4
+		// This is an obscure, undocumented and internal function in QT4 QMenuBar
+		// I won't be surprised if this disappears....
+		b->setCornerWidget(m_pSdiIconButton,Qt::TopLeftCorner);
+		m_pSdiIconButton->show();
+#else
 		m_iSdiIconItemId = b->insertItem(m_pSdiIconButton,-1,0);
+#endif
 		connect(m_pSdiIconButton,SIGNAL(destroyed()),this,SLOT(sdiIconButtonDestroyed()));
 	} else {
 		m_pSdiIconButton->setPixmap(*pix);
 	}
-#endif
 #endif //Q_OS_MACX
 }
 
@@ -533,39 +544,83 @@ bool KviMdiManager::isInSDIMode()
 
 void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 {
-	KviMenuBar * b = m_pFrm->mainMenuBar();
-
-#ifndef COMPILE_USE_QT4
-	// FIXME: This is NOT supported under QT4.. it sux
 	if(!m_pSdiCloseButton)
 	{
-		m_pSdiMinimizeButton = new KviMenuBarToolButton(b,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),"btnminimize");
+		KviMenuBar * b = m_pFrm->mainMenuBar();
+	
+		QWidget * pButtonParent;
+	
+#ifdef COMPILE_USE_QT4
+		m_pSdiControls = new KviTalHBox(b);
+		m_pSdiControls->setMargin(0);
+		m_pSdiControls->setSpacing(2);
+		m_pSdiControls->setAutoFillBackground(false);
+		pButtonParent = m_pSdiControls;
+#else
+		pButtonParent = b;
+#endif
+		m_pSdiMinimizeButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),"btnminimize");
 		connect(m_pSdiMinimizeButton,SIGNAL(clicked()),this,SLOT(minimizeActiveChild()));
+#ifndef COMPILE_USE_QT4
 		m_iSdiMinimizeItemId = b->insertItem(m_pSdiMinimizeButton,-1,b->count());
+#endif
 		connect(m_pSdiMinimizeButton,SIGNAL(destroyed()),this,SLOT(sdiMinimizeButtonDestroyed()));
 
-		m_pSdiRestoreButton = new KviMenuBarToolButton(b,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),"btnrestore");
+		m_pSdiRestoreButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),"btnrestore");
 		connect(m_pSdiRestoreButton,SIGNAL(clicked()),this,SLOT(restoreActiveChild()));
+#ifndef COMPILE_USE_QT4
 		m_iSdiRestoreItemId = b->insertItem(m_pSdiRestoreButton,-1,b->count());
+#endif
 		connect(m_pSdiRestoreButton,SIGNAL(destroyed()),this,SLOT(sdiRestoreButtonDestroyed()));
 
-		m_pSdiCloseButton = new KviMenuBarToolButton(b,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),"btnclose");
+		m_pSdiCloseButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),"btnclose");
 		connect(m_pSdiCloseButton,SIGNAL(clicked()),this,SLOT(closeActiveChild()));
+#ifndef COMPILE_USE_QT4
 		m_iSdiCloseItemId = b->insertItem(m_pSdiCloseButton,-1,b->count());
+#endif
 		connect(m_pSdiCloseButton,SIGNAL(destroyed()),this,SLOT(sdiCloseButtonDestroyed()));
 
+#ifdef COMPILE_USE_QT4
+		// This is an obscure, undocumented and internal function in QT4 QMenuBar
+		// I won't be surprised if this disappears....
+		b->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
+		// The show below SHOULD force a re-layout of the menubar..
+		// but it doesn't work when the KviFrame is still hidden (at startup)
+		// We handle this BUG in showEvent()
+		m_pSdiControls->show();
+#else
 		m_pSdiRestoreButton->show();
 		m_pSdiMinimizeButton->show();
 		m_pSdiCloseButton->show();
-
+#endif
 		emit enteredSdiMode();
 		
 		setVScrollBarMode(KviTalScrollView::AlwaysOff);
 		setHScrollBarMode(KviTalScrollView::AlwaysOff);
 	}
-#endif
+
 	updateSDIMode();
 }
+
+void KviMdiManager::showEvent(QShowEvent *e)
+{
+#ifdef COMPILE_USE_QT4
+	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
+	// by resetting the corner widget
+	if(m_pSdiControls)
+	{
+		debug("SHOW EVENT BEGIN");
+		m_pFrm->mainMenuBar()->setCornerWidget(0,Qt::TopRightCorner);
+		m_pFrm->mainMenuBar()->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
+		debug("SHOW EVENT END");
+	}
+	// also force an activation of the top MdiChild since it probably didn't get it yet
+	KviMdiChild * c = topChild();
+	if(c)
+		c->activate(false);
+#endif
+}
+
 
 void KviMdiManager::sdiIconButtonDestroyed()
 {
@@ -595,10 +650,24 @@ void KviMdiManager::leaveSDIMode()
 {
 	__range_valid(m_pSdiCloseButton);
 
+#ifdef COMPILE_USE_QT4
+	if(m_pSdiControls)
+	{
+		delete m_pSdiControls;
+		m_pSdiControls = 0;
+	}
+	if(m_pSdiIconButton)
+	{
+		m_pSdiIconButton->hide(); // this will force a QMenuBar relayout
+		delete m_pSdiIconButton;
+		m_pSdiIconButton = 0;
+	}
+#else
 	if(m_iSdiIconItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiIconItemId);
 	if(m_iSdiCloseItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiCloseItemId);
 	if(m_iSdiRestoreItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiRestoreItemId);
 	if(m_iSdiMinimizeItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiMinimizeItemId);
+#endif
 
 	setVScrollBarMode(KviTalScrollView::Auto);
 	setHScrollBarMode(KviTalScrollView::Auto);

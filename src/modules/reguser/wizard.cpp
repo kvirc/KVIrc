@@ -46,7 +46,7 @@ extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 extern KviPtrList<KviRegistrationWizard> * g_pRegistrationWizardList;
 
 KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegisteredUserDataBase * db,QWidget * par,bool bModal)
-: QWizard(par,"regusers_wizard",bModal)
+: KviTalWizard(par,"regusers_wizard",bModal)
 {
 	m_pDb = db;
 	
@@ -269,7 +269,7 @@ KviRegistrationWizard::~KviRegistrationWizard()
 
 void KviRegistrationWizard::reject()
 {
-	QWizard::reject();
+	KviTalWizard::reject();
 	if(!m_bModal)delete this;
 //	hide();
 //	g_pApp->collectGarbage(this);
@@ -277,7 +277,7 @@ void KviRegistrationWizard::reject()
 
 void KviRegistrationWizard::accept()
 {
-	QWizard::accept();
+	KviTalWizard::accept();
 	bool bLocalDb = true;
 	if(!m_pDb)
 	{
@@ -387,7 +387,7 @@ void KviRegistrationWizard::showEvent(QShowEvent *e)
 {
 	if(height() < 420)resize(width(),420);
 	move((g_pApp->desktop()->width() - width())/2,(g_pApp->desktop()->height() - height())/2);
-	QWizard::showEvent(e);
+	KviTalWizard::showEvent(e);
 }
 
 void KviRegistrationWizard::maskChanged(const QString &)

@@ -26,7 +26,7 @@
 #include "kvi_string.h"
 #include "kvi_http.h"
 
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 #include <qlineedit.h>
 #include <qlabel.h>
 
@@ -57,7 +57,7 @@ public:
 	virtual void die();
 };
 
-class KviRemoteMircServerImportWizard : public QWizard
+class KviRemoteMircServerImportWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:

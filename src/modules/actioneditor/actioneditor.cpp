@@ -23,7 +23,6 @@
 //=============================================================================
 #include "actioneditor.h"
 
-#include "kvi_styled_controls.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
@@ -54,12 +53,15 @@
 #include <qtoolbutton.h>
 #include <qcheckbox.h>
 #include <qtooltip.h>
-#include <qsimplerichtext.h>
 #include <qpainter.h>
-#include <qheader.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+#else
+	#include <qheader.h>
+#endif
 #include <qtabwidget.h>
 #include <kvi_tal_groupbox.h>
-#include <qvaluelist.h>
+#include "kvi_valuelist.h"
 #include <qlabel.h>
 
 extern KviActionEditorWindow * g_pActionEditorWindow;
@@ -652,7 +654,11 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
 
+#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+#else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this);
+#endif
 
 	l->addWidget(m_pSplitter,0,0);
 	
@@ -661,7 +667,11 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	m_pListView = new KviActionEditorListView(box);
 	//m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);
+#ifdef COMPILE_USE_QT4
+	m_pListView->setFocusPolicy(Qt::StrongFocus);
+#else
 	m_pListView->setFocusPolicy(QWidget::StrongFocus);
+#endif
 	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
 
 
@@ -990,7 +1000,7 @@ void KviActionEditorWindow::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append((w * 25) / 100);
 	def.append((w * 75) / 100);
 	m_pEditor->m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));

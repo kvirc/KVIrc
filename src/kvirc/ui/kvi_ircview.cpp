@@ -351,7 +351,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setBackgroundMode(NoBackground);
 #endif
 	
-	m_pFm = new QFontMetrics(font());
+	m_pFm = 0; // will be updated in the first paint event
 	
 	m_pToolTip = new KviIrcViewToolTip(this);
 
@@ -438,7 +438,7 @@ KviIrcView::~KviIrcView()
 		delete_text_line(l);
 	}
 	delete m_pMessagesStoppedWhileSelecting;
-	delete m_pFm;
+	if(m_pFm)delete m_pFm;
 	delete m_pToolTip;
 	delete m_pWrappedBlockSelectionInfo;
 }
@@ -451,15 +451,20 @@ KviIrcView::~KviIrcView()
 
 void KviIrcView::setFont(const QFont &f)
 {
-	QWidget::setFont(f);
-	recalcFontVariables(f);
+	if(m_pFm)
+	{
+		// force an update to the font variables
+		delete m_pFm;
+		m_pFm = 0;
+	}
 	KviIrcViewLine * l = m_pFirstLine;
 	while(l)
 	{
 		l->iMaxLineWidth = -1;
 		l = l->pNext;
 	}
-	paintEvent(0);
+	QWidget::setFont(f);
+	paintEvent(0); // will force an update to the font variables
 }
 
 void KviIrcView::applyOptions()
@@ -469,7 +474,7 @@ void KviIrcView::applyOptions()
 	if(m_iFlushTimer) killTimer(m_iFlushTimer);
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs))
 	{
-		m_iFlushTimer= startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
+		m_iFlushTimer = startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
 	}
 }
 
@@ -2758,7 +2763,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	} else {
 		// A self triggered event
 		m_iUnprocessedPaintEventRequests = 0; // only full repaints reset
-		r = rect();	
+		r = rect();
 	}
 
 	int rectLeft   = r.x();
@@ -2772,6 +2777,15 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 	
 	QPainter pa(pDoubleBufferPixmap);
+
+	pa.setFont(font());
+	if(!m_pFm)
+	{
+		// note that QFontMetrics(pa.font()) may be not the same as QFontMetrics(font())
+		// because the painter might effectively use an approximation of the QFont specified
+		// by font().
+		recalcFontVariables(QFontMetrics(pa.font()),pa.fontInfo());
+	}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
@@ -2792,9 +2806,6 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	}
 #endif
 	
-
-	pa.setFont(font());
-
 	//Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth   = widgetWidth;
@@ -2887,10 +2898,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		// (May correspond to more physical lines on the display if the text is wrapped)
 		//
 
-
 		for(int i=0;i < pCurTextLine->iBlockCount;i++)
 		{
-
 			register KviIrcViewWrappedBlock * block = &(pCurTextLine->pBlocks[i]);
 
 			// Play with the attributes
@@ -3756,11 +3765,11 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int left,int bottom,i
 
 //============ recalcFontVariables ==============//
 
-void KviIrcView::recalcFontVariables(const QFont &fnt)
+void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 {
 	// FIXME: #warning "OPTIMIZE THIS: GLOBAL VARIABLES"
-	delete m_pFm;
-	m_pFm = new QFontMetrics(fnt);
+	if(m_pFm)delete m_pFm;
+	m_pFm = new QFontMetrics(fm);
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 	if(m_iFontLineSpacing < KVI_IRCVIEW_PIXMAP_SIZE && KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
@@ -3769,7 +3778,10 @@ void KviIrcView::recalcFontVariables(const QFont &fnt)
 	m_iFontDescent     =m_pFm->descent();
 	m_iFontLineWidth   =m_pFm->lineWidth();
 	// cache the first 256 characters
-	for(unsigned short i=0;i<256;i++)m_iFontCharacterWidth[i]=m_pFm->width(QChar(i));
+	for(unsigned short i=0;i<256;i++)
+	{
+		m_iFontCharacterWidth[i]=m_pFm->width(QChar(i));
+	}
 	if(m_iFontLineWidth==0)m_iFontLineWidth=1;
 	m_iWrapMargin = m_pFm->width("wwww");
 	//for(int i=0;i<256;i++)m_iFontCharacterWidth[i]=fm.width((char)i);
@@ -3777,7 +3789,6 @@ void KviIrcView::recalcFontVariables(const QFont &fnt)
 	m_iRelativePixmapY = (m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
 	m_iIconWidth = m_pFm->width("w");
 
-	QFontInfo fi(fnt);
 	if(fi.fixedPitch() && (m_iIconWidth > 0))
 	{
 		while(m_iIconWidth < 18)m_iIconWidth += m_iIconWidth;

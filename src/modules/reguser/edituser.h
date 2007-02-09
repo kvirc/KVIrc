@@ -34,7 +34,7 @@
 #include "kvi_tal_listview.h"
 #include "kvi_tal_listbox.h"
 #include "kvi_dict.h"
-#include <qtabdialog.h>
+#include <kvi_tal_tabdialog.h>
 #include <qtable.h>
 #include "kvi_tal_popupmenu.h"
 
@@ -133,7 +133,7 @@ public:
 };
 
 
-class KviRegisteredUserEntryDialog : public QTabDialog
+class KviRegisteredUserEntryDialog : public KviTalTabDialog
 {
 	Q_OBJECT
 public:

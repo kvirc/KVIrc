@@ -36,7 +36,7 @@
 #include "kvi_options.h"
 #include "kvi_config.h"
 
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qmessagebox.h>
 #include <qdir.h>
 #include <qpushbutton.h>
@@ -70,12 +70,12 @@ extern QString szUrl;
 KviSetupPage::KviSetupPage(KviSetupWizard * w)
 : KviTalHBox(w)
 {
-	// we need this to set localized text on buttons (see QT doc/ QWizard class)
-	w->QWizard::backButton()->setText(__tr2qs("< &Back"));
-	w->QWizard::nextButton()->setText(__tr2qs("&Next >"));
-	w->QWizard::finishButton()->setText(__tr2qs("Finish"));
-	w->QWizard::cancelButton()->setText(__tr2qs("Cancel"));
-	//w->QWizard::helpButton()->setText(__tr2qs("Help"));
+	// we need this to set localized text on buttons (see QT doc/ KviTalWizard class)
+	w->KviTalWizard::backButton()->setText(__tr2qs("< &Back"));
+	w->KviTalWizard::nextButton()->setText(__tr2qs("&Next >"));
+	w->KviTalWizard::finishButton()->setText(__tr2qs("Finish"));
+	w->KviTalWizard::cancelButton()->setText(__tr2qs("Cancel"));
+	//w->KviTalWizard::helpButton()->setText(__tr2qs("Help"));
      
 	setSpacing(8);
 
@@ -107,7 +107,7 @@ KviSetupPage::~KviSetupPage()
 
 
 KviSetupWizard::KviSetupWizard()
-: QWizard(0,0,true)
+: KviTalWizard(0,0,true)
 {
 	QString szLabelText;
 
@@ -167,9 +167,9 @@ KviSetupWizard::KviSetupWizard()
 			"</ul></p>" \
 			"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
 
-	QTextEdit * ed = new QTextEdit(m_pLicense->m_pVBox);
+	KviTalTextEdit * ed = new KviTalTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
-	ed->setWordWrap(QTextEdit::NoWrap);
+	ed->setWordWrap(KviTalTextEdit::NoWrap);
 	QString szLicense;
 	QString szLicensePath;
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApp::License,"COPYING");
@@ -784,7 +784,7 @@ void KviSetupWizard::reject()
 		__tr2qs("You have chosen to abort the setup.<br>KVIrc cannot run until you complete this procedure.<br><br>Do you really wish to abort?"),
 		QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return;
 
-	QWizard::reject();
+	KviTalWizard::reject();
 }
 
 void KviSetupWizard::accept()
@@ -969,7 +969,7 @@ void KviSetupWizard::accept()
 #ifdef COMPILE_ON_WINDOWS
 	}
 #endif
-	QWizard::accept();
+	KviTalWizard::accept();
 }
 
 #include "setupwizard.moc"

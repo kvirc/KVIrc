@@ -138,7 +138,7 @@ void KviMircServersIniImport::die()
 
 
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
-: QWizard(0)
+: KviTalWizard(0)
 {
 	QString capt = __tr2qs("Remote mIRC servers.ini Import Wizard");
 	setCaption(capt);

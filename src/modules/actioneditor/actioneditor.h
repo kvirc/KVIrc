@@ -28,6 +28,7 @@
 
 #include <qwidget.h>
 #include "kvi_tal_listview.h"
+#include "kvi_styled_controls.h"
 
 class KviActionEditorListViewItem;
 
@@ -67,9 +68,17 @@ class QLineEdit;
 class QComboBox;
 class KviScriptEditor;
 class QToolButton;
-class KviStyledCheckBox;
 class QSimpleRichText;
 class QPushButton;
+
+#ifdef COMPILE_USE_QT4
+	#include <q3simplerichtext.h>
+	#define QSimpleRichText Q3SimpleRichText
+#else
+	#include <qsimplerichtext.h>
+#endif
+
+
 
 class KviActionEditorListViewItem : public KviTalListViewItem
 {

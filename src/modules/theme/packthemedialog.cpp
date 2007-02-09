@@ -35,7 +35,7 @@
 #include <qpainter.h>
 #include <qtooltip.h>
 #include <qimage.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qmultilineedit.h>
 #include <qbuffer.h>
 #include <qlabel.h>
@@ -61,7 +61,7 @@
 
 
 KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo> * pThemeInfoList)
-: QWizard(pParent)
+: KviTalWizard(pParent)
 {
 	m_pThemeInfoList = pThemeInfoList;
 
@@ -188,7 +188,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	
 	szThemesDescription += "</body></html>";
 
-	QTextEdit * pTextEdit = new QTextEdit(pPage);
+	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
 	pTextEdit->setPaper(QBrush(QColor(255,255,255)));
 	pTextEdit->setReadOnly(true);
 	pTextEdit->setText(szThemesDescription);
@@ -231,7 +231,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 	
-	m_pPackageDescriptionEdit = new QTextEdit(pPage);
+	m_pPackageDescriptionEdit = new KviTalTextEdit(pPage);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
@@ -346,7 +346,7 @@ void KviPackThemeDialog::imageSelectionChanged(const QString &szImagePath)
 void KviPackThemeDialog::accept()
 {
 	if(!packTheme())return;
-	QWizard::accept();
+	KviTalWizard::accept();
 }
 
 

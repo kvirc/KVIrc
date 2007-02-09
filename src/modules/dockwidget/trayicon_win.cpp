@@ -153,16 +153,16 @@ public:
 				QPoint gpos = QCursor::pos();
 				switch (m->lParam) {
 					case WM_MOUSEMOVE: e = new QMouseEvent( QEvent::MouseMove, mapFromGlobal( gpos ), gpos, 0, 0 );	break;
-					case WM_LBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, LeftButton, LeftButton ); break;
-					case WM_LBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, LeftButton, LeftButton ); break;
-					case WM_LBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, LeftButton, LeftButton );	break;
-					case WM_RBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, RightButton, RightButton ); break;
-					case WM_RBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, RightButton, RightButton ); break;
-					case WM_RBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, RightButton, RightButton ); break;
-					case WM_MBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, MidButton, MidButton ); break;
-					case WM_MBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, MidButton, MidButton ); break;
-					case WM_MBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, MidButton, MidButton ); break;
-					case WM_CONTEXTMENU: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, RightButton, RightButton ); break;
+					case WM_LBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, Qt::LeftButton, Qt::LeftButton ); break;
+					case WM_LBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, Qt::LeftButton, Qt::LeftButton ); break;
+					case WM_LBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, Qt::LeftButton, Qt::LeftButton );	break;
+					case WM_RBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, Qt::RightButton, Qt::RightButton ); break;
+					case WM_RBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, Qt::RightButton, Qt::RightButton ); break;
+					case WM_RBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, Qt::RightButton, Qt::RightButton ); break;
+					case WM_MBUTTONDOWN: e = new QMouseEvent( QEvent::MouseButtonPress, mapFromGlobal( gpos ), gpos, Qt::MidButton, Qt::MidButton ); break;
+					case WM_MBUTTONUP: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, Qt::MidButton, Qt::MidButton ); break;
+					case WM_MBUTTONDBLCLK: e = new QMouseEvent( QEvent::MouseButtonDblClick, mapFromGlobal( gpos ), gpos, Qt::MidButton, Qt::MidButton ); break;
+					case WM_CONTEXTMENU: e = new QMouseEvent( QEvent::MouseButtonRelease, mapFromGlobal( gpos ), gpos, Qt::RightButton, Qt::RightButton ); break;
 				}
 				if ( e ) {
 					bool res = QApplication::sendEvent( iconObject, e );

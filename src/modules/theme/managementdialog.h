@@ -34,11 +34,11 @@
 #include <qcombobox.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 
 
 class QLineEdit;
-class QTextEdit;
+class KviTalTextEdit;
 class QPushButton;
 class QLabel;
 class QCheckBox;

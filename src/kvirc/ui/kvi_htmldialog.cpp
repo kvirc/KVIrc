@@ -25,9 +25,9 @@
 
 #include "kvi_htmldialog.h"
 #include "kvi_locale.h"
+#include "kvi_tal_textedit.h"
 
 #include <qlabel.h>
-#include <qtextbrowser.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
 
@@ -47,7 +47,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	QGridLayout * g = new QGridLayout(this,4,3,7,7);
 	
 	QLabel * l;
-	QTextEdit * te;
+	KviTalTextEdit * te;
 	QPushButton * pb;
 	
 	int iUp = 0;
@@ -69,7 +69,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		iDown = 1;
 	}
 
-	te = new QTextBrowser(this);
+	te = new KviTalTextEdit(this);
 	te->setText(pData->szHtmlText);
 
 	if(pData->iFlags & KviHtmlDialogData::ForceMinimumSize)

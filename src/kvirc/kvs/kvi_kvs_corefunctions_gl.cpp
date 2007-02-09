@@ -888,7 +888,7 @@ namespace KviKvsCoreFunctions
 			<string> $k(<foreground:integer>[,<background:integer>])
 			<string> $k
 		@description:
-			Returns the COLOR mIRC control character (CTRL+K).[br]
+			Returns the COLOR mIRC control character (Qt::CTRL+K).[br]
 			If <foreground> and <background> are passed, a standard mIRC
 			color escape is returned.[br]
 		@seealso:

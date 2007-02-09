@@ -205,7 +205,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	QGridLayout * g = new QGridLayout(this,3,2,4,4);
 
 	QLabel * l = new QLabel(__tr2qs("Insert a mask for this user.<br>It can contain the wildcard characters '*' and '?'."),this);
-	//l->setAlignment(AlignCenter);
+	//l->setAlignment(Qt::AlignCenter);
 	g->addMultiCellWidget(l,0,0,0,1);
 
 	KviTalHBox * b = new KviTalHBox(this);
@@ -213,29 +213,29 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 
 	m_pNickEdit = new QLineEdit(b);
 	//m_pNickEdit->setMinimumWidth(120);
-	m_pNickEdit->setAlignment(AlignRight);
+	m_pNickEdit->setAlignment(Qt::AlignRight);
 #ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pNickEdit,__tr2qs("<center>This the <b>nickname</b> that will match this user, default value is the registered name.</center>"));
 #endif
 
 	l = new QLabel("<center><b>!</b></center>",b);
-	l->setAlignment(AlignCenter);
+	l->setAlignment(Qt::AlignCenter);
 	//l->setMinimumWidth(40);
 
 	m_pUserEdit = new QLineEdit(b);
 	//m_pUserEdit->setMinimumWidth(120);
-	m_pUserEdit->setAlignment(AlignCenter);
+	m_pUserEdit->setAlignment(Qt::AlignCenter);
 #ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pUserEdit,__tr2qs("<center>This the <b>username</b> that will match this user. <b>*</b> will match any username.</center>"));
 #endif
 
 	l = new QLabel("<center><b>@</b></center>",b);
-	l->setAlignment(AlignCenter);
+	l->setAlignment(Qt::AlignCenter);
 	//l->setMinimumWidth(40);
 
 	m_pHostEdit = new QLineEdit(b);
 	//m_pHostEdit->setMinimumWidth(120);
-	m_pHostEdit->setAlignment(AlignLeft);
+	m_pHostEdit->setAlignment(Qt::AlignLeft);
 #ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pHostEdit,__tr2qs("<center>This the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>"));
 #endif
@@ -301,7 +301,7 @@ void KviReguserMaskDialog::okClicked()
 
 
 KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegisteredUser * r,bool bModal)
-: QTabDialog(p,"reguser_entry_editor",bModal)
+: KviTalTabDialog(p,"reguser_entry_editor",bModal)
 {
 	m_pUser = r;
 	m_pCustomColor = new QColor();

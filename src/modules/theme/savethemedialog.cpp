@@ -35,7 +35,7 @@
 #include <qpainter.h>
 #include <qtooltip.h>
 #include <qimage.h>
-#include <qtextedit.h>
+#include <kvi_tal_textedit.h>
 #include <qmultilineedit.h>
 #include <qbuffer.h>
 #include <qlabel.h>
@@ -60,7 +60,7 @@
 
 
 KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
-: QWizard(pParent)
+: KviTalWizard(pParent)
 {
 	setCaption(__tr2qs_ctx("Save Current Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
@@ -118,7 +118,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 	
-	m_pThemeDescriptionEdit = new QTextEdit(pPage);
+	m_pThemeDescriptionEdit = new KviTalTextEdit(pPage);
 	//m_pThemeDescriptionEdit->setText(szThemeDescription);
 	pLayout->addWidget(m_pThemeDescriptionEdit,3,1);
 
@@ -205,7 +205,7 @@ void KviSaveThemeDialog::imageSelectionChanged(const QString &szImagePath)
 void KviSaveThemeDialog::accept()
 {
 	if(!saveTheme())return;
-	QWizard::accept();
+	KviTalWizard::accept();
 }
 
 

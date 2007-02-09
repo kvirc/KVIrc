@@ -713,11 +713,11 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 
 	m_pntClick = e->pos();
 
-	if(e->button() == RightButton)
+	if(e->button() == Qt::RightButton)
 	{
 		contextPopup(e->pos());
 		return;
-	} else if(e->button() == LeftButton) {
+	} else if(e->button() == Qt::LeftButton) {
 		m_bLeftButtonIsPressed = true;
 	}
 

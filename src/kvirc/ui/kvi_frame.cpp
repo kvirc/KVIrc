@@ -415,51 +415,51 @@ void KviFrame::accelActivated(int id)
 		case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
 		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
 		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
-/*		case(Key_F1 + SHIFT):
+/*		case(Qt::Key_F1 + SHIFT):
 			item = m_pTaskBar->item(0);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F2 + SHIFT):
+		case(Qt::Key_F2 + SHIFT):
 			item = m_pTaskBar->item(1);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F3 + SHIFT):
+		case(Qt::Key_F3 + SHIFT):
 			item = m_pTaskBar->item(2);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F4 + SHIFT):
+		case(Qt::Key_F4 + SHIFT):
 			item = m_pTaskBar->item(3);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F5 + SHIFT):
+		case(Qt::Key_F5 + SHIFT):
 			item = m_pTaskBar->item(4);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F6 + SHIFT):
+		case(Qt::Key_F6 + SHIFT):
 			item = m_pTaskBar->item(5);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F7 + SHIFT):
+		case(Qt::Key_F7 + SHIFT):
 			item = m_pTaskBar->item(6);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F8 + SHIFT):
+		case(Qt::Key_F8 + SHIFT):
 			item = m_pTaskBar->item(7);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F9 + SHIFT):
+		case(Qt::Key_F9 + SHIFT):
 			item = m_pTaskBar->item(8);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F10 + SHIFT):
+		case(Qt::Key_F10 + SHIFT):
 			item = m_pTaskBar->item(9);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F11 + SHIFT):
+		case(Qt::Key_F11 + SHIFT):
 			item = m_pTaskBar->item(10);
 			if(item) setActiveWindow(item->window());
 			break;
-		case(Key_F12 + SHIFT):
+		case(Qt::Key_F12 + SHIFT):
 			item = m_pTaskBar->item(11);
 			if(item) setActiveWindow(item->window());
 			break;*/

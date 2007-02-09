@@ -21,7 +21,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 #include <qpushbutton.h>
 #include "class_wizard.h"
 #include "kvi_error.h"
@@ -147,7 +147,7 @@ bool KviKvsObject_wizard::functionaddPage(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QWizard *)widget())->addPage(((QWidget *)(ob->object())),szLabel);
+	((KviTalWizard *)widget())->addPage(((QWidget *)(ob->object())),szLabel);
 	return true;
 }
 bool KviKvsObject_wizard::functioninsertPage(KviKvsObjectFunctionCall *c)
@@ -168,7 +168,7 @@ bool KviKvsObject_wizard::functioninsertPage(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QWizard *)widget())->insertPage(((QWidget *)(ob->object())),szLabel,uIndex);
+	((KviTalWizard *)widget())->insertPage(((QWidget *)(ob->object())),szLabel,uIndex);
 	return true;
 }
 
@@ -186,7 +186,7 @@ bool KviKvsObject_wizard::functionremovePage(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Not a widget object"));
 		return true;
 	}
-	((QWizard *)widget())->removePage(((QWidget *)(ob->object())));
+	((KviTalWizard *)widget())->removePage(((QWidget *)(ob->object())));
 	return true;
 }
 bool KviKvsObject_wizard::functionsetTitle(KviKvsObjectFunctionCall *c)
@@ -205,7 +205,7 @@ bool KviKvsObject_wizard::functionsetTitle(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((QWizard *)widget())->setTitle(((QWidget *)(ob->object())),szTitle);
+	((KviTalWizard *)widget())->setTitle(((QWidget *)(ob->object())),szTitle);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetBackEnabled(KviKvsObjectFunctionCall *c)
@@ -224,7 +224,7 @@ bool KviKvsObject_wizard::functionsetBackEnabled(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((QWizard *)widget())->setBackEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setBackEnabled(((QWidget *)(ob->object())),bEnabled);
 	return true;
 }
 
@@ -244,7 +244,7 @@ bool KviKvsObject_wizard::functionsetNextEnabled(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((QWizard *)widget())->setNextEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setNextEnabled(((QWidget *)(ob->object())),bEnabled);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetFinishEnabled(KviKvsObjectFunctionCall *c)
@@ -263,7 +263,7 @@ bool KviKvsObject_wizard::functionsetFinishEnabled(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((QWizard *)widget())->setFinishEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setFinishEnabled(((QWidget *)(ob->object())),bEnabled);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetHelpEnabled(KviKvsObjectFunctionCall *c)
@@ -282,7 +282,7 @@ bool KviKvsObject_wizard::functionsetHelpEnabled(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((QWizard *)widget())->setHelpEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setHelpEnabled(((QWidget *)(ob->object())),bEnabled);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetBackBtnText(KviKvsObjectFunctionCall *c)
@@ -292,7 +292,7 @@ bool KviKvsObject_wizard::functionsetBackBtnText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QWizard *)widget())->QWizard::backButton()->setText(szText);
+		((KviTalWizard *)widget())->KviTalWizard::backButton()->setText(szText);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetNextBtnText(KviKvsObjectFunctionCall *c)
@@ -302,7 +302,7 @@ bool KviKvsObject_wizard::functionsetNextBtnText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QWizard *)widget())->QWizard::nextButton()->setText(szText);
+		((KviTalWizard *)widget())->KviTalWizard::nextButton()->setText(szText);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetHelpBtnText(KviKvsObjectFunctionCall *c)
@@ -312,7 +312,7 @@ bool KviKvsObject_wizard::functionsetHelpBtnText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QWizard *)widget())->QWizard::helpButton()->setText(szText);
+		((KviTalWizard *)widget())->KviTalWizard::helpButton()->setText(szText);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetFinishBtnText(KviKvsObjectFunctionCall *c)
@@ -322,7 +322,7 @@ bool KviKvsObject_wizard::functionsetFinishBtnText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QWizard *)widget())->QWizard::finishButton()->setText(szText);
+		((KviTalWizard *)widget())->KviTalWizard::finishButton()->setText(szText);
 	return true;
 }
 bool KviKvsObject_wizard::accept()
@@ -360,7 +360,7 @@ void KviKvsObject_wizard::backClicked()
 	callFunction(this,"backClickedEvent",params);
 }
 KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par,const char * name,KviKvsObject_wizard * parent)
-:QWizard( par,name)
+:KviTalWizard( par,name)
 {
 	m_pParentScript=parent;
 	connect (this->backButton(),SIGNAL(clicked()),this,SLOT(slotBackClicked()));
@@ -368,12 +368,12 @@ KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par,const char * name,KviKvsObject_wi
 }
 void KviKvsMdmWizard::accept()
 {
-	if(m_pParentScript->accept())QWizard::accept();
+	if(m_pParentScript->accept())KviTalWizard::accept();
 
 }
 void KviKvsMdmWizard::reject()
 {
-	if(m_pParentScript->reject())QWizard::reject();
+	if(m_pParentScript->reject())KviTalWizard::reject();
 
 }
 void KviKvsMdmWizard::slotNextClicked()

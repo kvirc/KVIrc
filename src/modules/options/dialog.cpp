@@ -34,7 +34,7 @@
 #include "kvi_ptrdict.h"
 
 #include <qlayout.h>
-#include <qaccel.h>
+#include "kvi_accel.h"
 #include <qlabel.h>
 #include "kvi_tal_vbox.h"
 #include <qsplitter.h>
@@ -50,6 +50,7 @@
 #include <qobjectlist.h>
 #include <qpainter.h>
 #include <qfont.h>
+#include <qevent.h>
 
 
 //extern KviModule * g_pOptionsModule;
@@ -64,7 +65,7 @@ KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const
 	createLayout(1,1);
 	QLabel * l = new QLabel(szText,this);
 	
-	l->setAlignment(AlignTop);
+	l->setAlignment(Qt::AlignTop);
 	layout()->addWidget(l,0,0);
 }
 
@@ -281,8 +282,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y());
 	}
 
-	QAccel *a = new QAccel( this );
-        a->connectItem( a->insertItem(Key_Escape), this,SLOT(close()) );        
+	KviAccel *a = new KviAccel( this );
+        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );        
 }
 
 KviOptionsDialog::~KviOptionsDialog()

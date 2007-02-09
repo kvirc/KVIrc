@@ -59,7 +59,7 @@ KviTrashcanLabel::KviTrashcanLabel(QWidget * p)
 	QToolTip::add(this,__tr2qs("Drop here the icons from the toolbars to remove them"));
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 	setAcceptDrops(true);
-	setAlignment(AlignCenter);
+	setAlignment(Qt::AlignCenter);
 	setMinimumSize(40,40);
 	m_uFlashCount = 0;
 	m_pFlashTimer = 0;

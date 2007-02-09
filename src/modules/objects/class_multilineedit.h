@@ -27,7 +27,6 @@
 
 
 #include "class_widget.h"
-#include <qmultilineedit.h>
 #include "object_macros.h"
 
 class KviKvsObject_mledit : public KviKvsObject_widget

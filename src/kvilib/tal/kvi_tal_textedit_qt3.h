@@ -1,11 +1,13 @@
-#ifndef _ABOUTDIALOG_H_
-#define _ABOUTDIALOG_H_
+#ifndef _KVI_TAL_TEXTEDIT_QT3_H_
+#define _KVI_TAL_TEXTEDIT_QT3_H_
+
+//=============================================================================
 //
-//   File : aboutdialog.h
-//   Creation date : Sun Jun 23 17:59:13 2002 GMT by Szymon Stefanek
+//   File : kvi_tal_textedit_qt3.h
+//   Creation date : Tue Feb 06 2007 14:35:08 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,19 +23,17 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
-#include <kvi_tal_tabdialog.h>
+#include <qtextedit.h>
 
-class KviAboutDialog : public KviTalTabDialog
+class KVILIB_API KviTalTextEdit : public QTextEdit
 {
 	Q_OBJECT
 public:
-	KviAboutDialog();
-	~KviAboutDialog();
-protected:
-	virtual void closeEvent(QCloseEvent *e);
-protected slots:
-	void closeButtonPressed();
+	KviTalTextEdit(QWidget * pParent = 0,const char * name = 0)
+	: QTextEdit(pParent,name) {};
+	~KviTalTextEdit() {};
 };
 
-#endif //_ABOUTDIALOG_H_
+#endif // _KVI_TAL_TEXTEDIT_QT3_H_

@@ -140,7 +140,8 @@ void KviSplashScreen::setProgress(int progress)
 	QPixmap slowQt4Copy = pixmap();
 	QPainter painter(&slowQt4Copy);
 	QSize size = slowQt4Copy.size();
-	painter.drawPixmap(0,size.height() - m_pOverlay->height(),*m_pOverlay,0,0,(m_pOverlay->width() * progress) / 100,m_pOverlay->height());
+	int w = (m_pOverlay->width() * progress) / 100;
+	painter.drawPixmap(0,size.height() - m_pOverlay->height(),w,m_pOverlay->height(),*m_pOverlay,0,0,w,m_pOverlay->height());
 	painter.end();
 	setPixmap(slowQt4Copy);
 #else

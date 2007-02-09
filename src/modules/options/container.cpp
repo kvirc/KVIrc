@@ -30,6 +30,11 @@
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qtooltip.h>
+#include <qevent.h>
+
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+#endif
 
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 

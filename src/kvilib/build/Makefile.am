@@ -91,10 +91,13 @@ libkvilib_la_SOURCES = \
 	../tal/kvi_tal_menubar.cpp \
 	../tal/kvi_tal_popupmenu.cpp \
 	../tal/kvi_tal_scrollview.cpp \
+	../tal/kvi_tal_tabdialog.cpp \
+	../tal/kvi_tal_textedit.cpp \
 	../tal/kvi_tal_toolbar.cpp \
 	../tal/kvi_tal_tooltip.cpp \
 	../tal/kvi_tal_vbox.cpp \
-	../tal/kvi_tal_widgetstack.cpp
+	../tal/kvi_tal_widgetstack.cpp \
+	../tal/kvi_tal_wizard.cpp
 
 #
 # Command useful to find out all the headers
@@ -215,6 +218,12 @@ headers_HEADERS = \
 	../tal/kvi_tal_scrollview.h \
 	../tal/kvi_tal_scrollview_qt3.h \
 	../tal/kvi_tal_scrollview_qt4.h \
+	../tal/kvi_tal_tabdialog.h \
+	../tal/kvi_tal_tabdialog_qt3.h \
+	../tal/kvi_tal_tabdialog_qt4.h \
+	../tal/kvi_tal_textedit.h \
+	../tal/kvi_tal_textedit_qt3.h \
+	../tal/kvi_tal_textedit_qt4.h \
 	../tal/kvi_tal_toolbar.h \
 	../tal/kvi_tal_toolbar_kde.h \
 	../tal/kvi_tal_toolbar_qt3.h \
@@ -227,6 +236,9 @@ headers_HEADERS = \
 	../tal/kvi_tal_widgetstack.h \
 	../tal/kvi_tal_widgetstack_qt3.h \
 	../tal/kvi_tal_widgetstack_qt4.h \
+	../tal/kvi_tal_wizard.h \
+	../tal/kvi_tal_wizard_qt3.h \
+	../tal/kvi_tal_wizard_qt4.h \
 	../tal/kvi_tal_windowstate.h
 
 
@@ -276,8 +288,6 @@ headers_HEADERS = \
 ../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox_qt4.moc
 ../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox_qt3.moc
 ../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox_qt4.moc
-../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt3.moc
-../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
 ../tal/kvi_tal_popupmenu.cpp: ../tal/kvi_tal_popupmenu_qt3.moc
 ../tal/kvi_tal_popupmenu.cpp: ../tal/kvi_tal_popupmenu_qt4.moc
 ../tal/kvi_tal_listview.cpp: ../tal/kvi_tal_listview_qt3.moc
@@ -288,9 +298,17 @@ headers_HEADERS = \
 ../tal/kvi_tal_iconview.cpp: ../tal/kvi_tal_iconview_qt4.moc
 ../tal/kvi_tal_scrollview.cpp: ../tal/kvi_tal_scrollview_qt3.moc
 ../tal/kvi_tal_scrollview.cpp: ../tal/kvi_tal_scrollview_qt4.moc
+../tal/kvi_tal_tabdialog.cpp: ../tal/kvi_tal_tabdialog_qt3.moc
+../tal/kvi_tal_tabdialog.cpp: ../tal/kvi_tal_tabdialog_qt4.moc
+../tal/kvi_tal_textedit.cpp: ../tal/kvi_tal_textedit_qt3.moc
+../tal/kvi_tal_textedit.cpp: ../tal/kvi_tal_textedit_qt4.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt3.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt4.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_kde.moc
+../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt3.moc
+../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
+../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt3.moc
+../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt4.moc
 
 
 #

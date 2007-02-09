@@ -1,3 +1,21 @@
+08 Feb 2007
+   [Pragma]
+   - More Qt 4.x port.
+     Solved the most disturbing problems: it looks a lot better now.
+     - Font metric cache values can no longer be computed directly from a
+       widget's font. We must use the painter idea of the font instead.
+       This complicates caching a bit.
+     - Some of the QPainter functions seem to behave in a bit different way
+     - QFrame::drawContents() is gone... we need to reimplement paintEvent()
+     - The setAutoFillBackground(false) setting seems to be propagated to children
+       in some way (?) (as opposed to backgroundMode(NoBackground) in Qt3)
+     - QToolButton::drawButton() is gone, need to directly drawPixmaps instead...
+     - ...
+     Ported also the first couple of modules.
+
+     Qt 4 causes a lot of problems in porting but I'm starting to feel
+     like the new library is very cool :)
+
 05 Feb 2007
    [Pragma]
    - The KVIrc executable now compiles and starts with Qt4. With Qt3 everythin

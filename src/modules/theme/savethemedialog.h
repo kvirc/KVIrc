@@ -29,11 +29,11 @@
 #include "kvi_theme.h"
 
 #include <qdialog.h>
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 
 
 class QLineEdit;
-class QTextEdit;
+class KviTalTextEdit;
 class QPushButton;
 class QCheckBox;
 class QLabel;
@@ -41,7 +41,7 @@ class QMultiLineEdit;
 class KviFileSelector;
 
 
-class KviSaveThemeDialog : public QWizard
+class KviSaveThemeDialog : public KviTalWizard
 {
 	Q_OBJECT
 public:
@@ -52,7 +52,7 @@ protected:
 	KviFileSelector * m_pImageSelector;
 	QLabel * m_pImageLabel;
 	QLineEdit * m_pThemeNameEdit;
-	QTextEdit * m_pThemeDescriptionEdit;
+	KviTalTextEdit * m_pThemeDescriptionEdit;
 	QLineEdit * m_pThemeVersionEdit;
 	QLineEdit * m_pAuthorNameEdit;
 	QWidget * m_pImageSelectionPage;

@@ -1213,7 +1213,7 @@ void KviCanvasView::contentsMousePressEvent(QMouseEvent *e)
 							beginDragLine(((KviCanvasLine *)hit),p);
 						break;
 						case KVI_CANVAS_RTTI_CONTROL_TYPE_POLYGON:
-							beginDragPolygon(((KviCanvasPolygon *)hit),p,e->state() & ShiftButton,e->state() & ControlButton);
+							beginDragPolygon(((KviCanvasPolygon *)hit),p,e->state() & Qt::ShiftButton,e->state() & Qt::ControlButton);
 						break;
 					}
 				} else {

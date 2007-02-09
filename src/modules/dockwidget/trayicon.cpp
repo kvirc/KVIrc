@@ -200,14 +200,14 @@ void TrayIcon::mousePressEvent( QMouseEvent *e )
 // This is for X11, menus appear on mouse press
 // I'm not sure whether Mac should be here or below.. Somebody check?
 	switch ( e->button() ) {
-		case RightButton:
+		case Qt::RightButton:
 			if ( pop ) {
 				pop->popup( e->globalPos() );
 				e->accept();
 			}
 			break;
-		case LeftButton:
-		case MidButton:
+		case Qt::LeftButton:
+		case Qt::MidButton:
 			emit clicked( e->globalPos(), e->button() );
 			break;
 		default:
@@ -232,7 +232,7 @@ void TrayIcon::mouseReleaseEvent( QMouseEvent *e )
 #ifdef Q_WS_WIN
 // This is for Windows, where menus appear on mouse release
 	switch ( e->button() ) {
-		case RightButton:
+		case Qt::RightButton:
 			if ( pop ) {
 				// Necessary to make keyboard focus
 				// and menu closing work on Windows.
@@ -242,8 +242,8 @@ void TrayIcon::mouseReleaseEvent( QMouseEvent *e )
 				e->accept();
 			}
 			break;
-		case LeftButton:
-		case MidButton:
+		case Qt::LeftButton:
+		case Qt::MidButton:
 			emit clicked( e->globalPos(), e->button() );
 			break;
 		default:
@@ -265,7 +265,7 @@ void TrayIcon::mouseReleaseEvent( QMouseEvent *e )
 */
 void TrayIcon::mouseDoubleClickEvent( QMouseEvent *e )
 {
-	if ( e->button() == LeftButton )
+	if ( e->button() == Qt::LeftButton )
 		emit doubleClicked( e->globalPos() );
 	e->accept();
 }

@@ -207,6 +207,9 @@ protected:
 	virtual void imStartEvent(QIMEvent *e);
 	virtual void imComposeEvent(QIMEvent *e);
 	virtual void imEndEvent(QIMEvent *e);
+#ifdef COMPILE_USE_QT4
+	virtual void paintEvent(QPaintEvent *e);
+#endif
 };
 
 class KviScriptEditor;

@@ -78,7 +78,11 @@ void KviMdiCaptionButton::paintEvent(QPaintEvent *e)
 
 void KviMdiCaptionButton::drawButton(QPainter *p)
 {
+#ifdef COMPILE_USE_QT4
+	QBrush b(parentWidget()->palette().window());
+#else
 	QBrush b(parentWidget()->colorGroup().background());
+#endif
 	
 	if(isDown())
 		qDrawShadePanel(p,0,0,width(),height(),colorGroup(),true,1,&b);
@@ -86,9 +90,9 @@ void KviMdiCaptionButton::drawButton(QPainter *p)
 		p->fillRect(0,0,width(),height(),b);
 
 #ifdef COMPILE_USE_QT4
-	QStyleOptionButton opt;
-	opt.initFrom(this);
-	style()->drawControl(QStyle::CE_PushButtonLabel,&opt,p,this);
+	int x = (width() - 16) / 2;
+	int y = (width() - 16) / 2;
+	p->drawPixmap(x,y,16,16,icon().pixmap(16,16),0,0,16,16);
 #else
 	drawButtonLabel(p);
 #endif
@@ -116,6 +120,9 @@ KviMdiCaption::KviMdiCaption(KviMdiChild * parent,const char * name)
 	m_bMouseGrabbed = true;
 	m_bActive = false;
 	calcLineSpacing();
+#ifdef COMPILE_USE_QT4
+	setAutoFillBackground(false);
+#endif
 }
 
 KviMdiCaption::~KviMdiCaption()
@@ -163,7 +170,6 @@ void KviMdiCaption::fontChange(const QFont &old)
 
 void KviMdiCaption::mousePressEvent(QMouseEvent *e)
 {
-	debug("mouse press");
 	m_bMouseGrabbed = true;
 	m_lastMousePos = QCursor::pos();
 #ifdef COMPILE_USE_QT4
@@ -171,8 +177,7 @@ void KviMdiCaption::mousePressEvent(QMouseEvent *e)
 #else
 	setCursor(QCursor::sizeAllCursor);
 #endif
-	//grabMouse(Qt::sizeAllCursor);
-	//e->ignore();
+	((KviMdiChild *)parent())->activate(true);
 }
 
 void KviMdiCaption::mouseMoveEvent(QMouseEvent *)

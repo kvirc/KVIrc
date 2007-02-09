@@ -216,9 +216,9 @@ void KviScriptEditorWidgetColorOptions::okClicked()
 
 
 KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
-: QTextEdit(pParent)
+: KviTalTextEdit(pParent)
 {
-	setWordWrap(QTextEdit::NoWrap);
+	setWordWrap(KviTalTextEdit::NoWrap);
 	m_pParent=pParent;
 	m_szHelp="Nothing";
 	updateOptions();
@@ -234,9 +234,9 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 
 QPopupMenu * KviScriptEditorWidget::createPopupMenu( const QPoint& pos )
 {
-	QPopupMenu *pop=QTextEdit::createPopupMenu(pos);
-	pop->insertItem(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),CTRL+Key_H);
-	pop->insertItem(__tr2qs("&Replace"),this,SLOT(slotReplace()),CTRL+Key_R);
+	QPopupMenu *pop=KviTalTextEdit::createPopupMenu(pos);
+	pop->insertItem(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pop->insertItem(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	return pop;
 }
 
@@ -271,7 +271,7 @@ void KviScriptEditorWidget::updateOptions()
 	p.setColor(QColorGroup::Text,g_clrNormalText);
 	setPalette(p);
 	
-	setTextFormat(QTextEdit::PlainText);
+	setTextFormat(KviTalTextEdit::PlainText);
 	
 	// this will rehighlight everything
 	setText(text()); // an "hack" to ensure Update all in the editor
@@ -340,7 +340,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 			}
 			break;
 		case Qt::Key_Return:
-			QTextEdit::keyPressEvent(e);
+			KviTalTextEdit::keyPressEvent(e);
 			int para,pos;
 			getCursorPosition(&para,&pos);
 			if(para > 0)
@@ -370,7 +370,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 			setFocus();
 			break;
 	}
-	QTextEdit::keyPressEvent(e);
+	KviTalTextEdit::keyPressEvent(e);
 	emit keyPressed();
 	if(completelistbox->isVisible()) 
 		completition(0);
@@ -405,7 +405,7 @@ void KviScriptEditorWidget::contentsMousePressEvent(QMouseEvent *e)
 	//debug (buffer);
 	m_szHelp=buffer;
 	}
-	QTextEdit::contentsMousePressEvent(e);
+	KviTalTextEdit::contentsMousePressEvent(e);
 
 }
 
@@ -979,8 +979,8 @@ void KviScriptEditorImplementation::saveToFile()
 void KviScriptEditorImplementation::setText(const QCString &txt)
 {
 	m_pEditor->setText(txt.data());
-	m_pEditor->setTextFormat(QTextEdit::PlainText);
-	m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
+	m_pEditor->setTextFormat(KviTalTextEdit::PlainText);
+	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->setModified(false);
 	updateRowColLabel();
 }
@@ -996,8 +996,8 @@ QLineEdit * KviScriptEditorImplementation::getFindlineedit()
 void KviScriptEditorImplementation::setText(const QString &txt)
 {
 	m_pEditor->setText(txt);
-	m_pEditor->setTextFormat(QTextEdit::PlainText);
-	m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
+	m_pEditor->setTextFormat(KviTalTextEdit::PlainText);
+	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->setModified(false);
 	updateRowColLabel();
 }
@@ -1061,7 +1061,7 @@ void KviScriptEditorImplementation::loadFromFile()
 		if(KviFileUtils::loadFile(fName,buffer))
 		{
 			m_pEditor->setText(buffer);
-			m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
+			m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 			updateRowColLabel();
 		} else {
 			QString tmp;

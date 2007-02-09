@@ -102,7 +102,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	QLabel * l = new QLabel(szTmp,this);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-	l->setAlignment(AlignCenter);
+	l->setAlignment(Qt::AlignCenter);
 	l->setMargin(10);
 	g->addMultiCellWidget(l,0,0,0,3);
 	l->setMinimumWidth(200);
@@ -451,7 +451,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later
 	m_pHeaderLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
-	m_pHeaderLabel->setAlignment(AlignCenter);
+	m_pHeaderLabel->setAlignment(Qt::AlignCenter);
 	m_pHeaderLabel->setMargin(10);
 	g->addMultiCellWidget(m_pHeaderLabel,0,0,0,3);
 	m_pHeaderLabel->setMinimumWidth(200);

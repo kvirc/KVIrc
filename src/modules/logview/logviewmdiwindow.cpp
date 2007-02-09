@@ -157,7 +157,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	setupItemList();
 
 	QAccel *a = new QAccel( this );
-        a->connectItem( a->insertItem(Key_F+CTRL),
+        a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
                         m_pIrcView,
                         SLOT(toggleToolWidget()) );
 }

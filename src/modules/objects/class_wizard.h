@@ -22,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-#include <qwizard.h>
+#include <kvi_tal_wizard.h>
 #include "class_widget.h"
 
 
@@ -61,7 +61,7 @@ protected:
 	bool functionbackClickedEvent(KviKvsObjectFunctionCall *c);
 
 };
-class KviKvsMdmWizard :  public QWizard
+class KviKvsMdmWizard :  public KviTalWizard
 
 {
 	Q_OBJECT

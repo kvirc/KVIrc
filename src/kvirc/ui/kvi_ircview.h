@@ -118,7 +118,7 @@ private:
 
 	bool                        m_bSkipScrollBarRepaint;
 	int                         m_iSelectTimer;
-	int			    m_iMouseTimer;
+	int                         m_iMouseTimer;
 	//int                         m_iTipTimer;
 	QString                     m_szLastSelection;
 	QString                     m_szLastSelectionLine;
@@ -131,9 +131,9 @@ private:
 	bool                        m_bPostedPaintEventPending;
 	KviPtrList<KviIrcViewLine> * m_pMessagesStoppedWhileSelecting;
 	KviIrcView                * m_pMasterView;
-	QFontMetrics              * m_pFm;
+	QFontMetrics              * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
 	
-	QMouseEvent		  *  m_pLastEvent;
+	QMouseEvent              *  m_pLastEvent;
 	
 	KviIrcViewToolTip         * m_pToolTip;
 	bool m_bHaveUnreadedHighlightedMessages;
@@ -205,14 +205,13 @@ signals:
 private:
 	void setCursorLine(KviIrcViewLine * l);
 	KviIrcViewLine * getVisibleLineAt(int xPos,int yPos);
-//	void findClosestPositionInText(int xCursorPos,int yCursorPos,KviIrcViewPositionInText &pos);
 	void getLinkEscapeCommand(QString &buffer,const QString &escape_cmd,const QString &escape_label);
 	void appendLine(KviIrcViewLine *ptr,bool bRepaint);
 	void postUpdateEvent();
 	void fastScroll(int lines = 1);
 	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true);
 	void calculateLineWraps(KviIrcViewLine *ptr,int maxWidth);
-	void recalcFontVariables(const QFont &font);
+	void recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi);
 	bool checkSelectionBlock(KviIrcViewLine * line,int left,int bottom,int bufIndex);
 	void calculateSelectionBounds();
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
