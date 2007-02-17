@@ -421,7 +421,7 @@ KviChannel * KviIrcConnection::createChannel(const QString &szName)
 		}
 	} else {
 		c = new KviChannel(m_pFrame,m_pConsole,szName);
-		m_pFrame->addWindow(c);
+		m_pFrame->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
 		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels)) c->minimize();
 	}
 	return c;

@@ -61,8 +61,11 @@ protected:
 	KviAvatar * m_pAvatar;
 
 	int         m_nRefs;
+	bool        m_bBot;
 public:
 	Gender gender() { return m_eGender; };
+	void setBot(bool bIsBot) { m_bBot = bIsBot; };
+	bool isBot() { return m_bBot; };
 	void setGender(Gender g) { m_eGender=g; };
 	void setUser(const QString &user)   { m_szUser = user; };
 	bool hasUser()                      { return (!m_szUser.isEmpty()); };

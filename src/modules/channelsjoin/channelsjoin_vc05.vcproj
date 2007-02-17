@@ -81,6 +81,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				EmbedManifest="true"
 				VerboseOutput="true"
 			/>

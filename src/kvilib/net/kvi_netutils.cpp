@@ -963,15 +963,17 @@ namespace KviNetUtils
 			bool ok = TRUE;
 			while(ok && i < 4) {
 				uint byteValue = ipv4[i].toUInt(&ok);
-				if (byteValue > 255)
-				ok = FALSE;
+				if ( (byteValue > 255) && ok )
+					ok = FALSE;
 				if (ok)
-				iAddr = (iAddr << 8) + byteValue;
+					iAddr = (iAddr << 8) + byteValue;
 				++i;
 			}
 			if (ok)
+			{
 				if(address)address->s_addr = htonl(iAddr);
 				return true;
+			}
 		}
 		return FALSE;
 #else //HAVE_INET_ATON

@@ -79,6 +79,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				EmbedManifest="true"
 				VerboseOutput="true"
 			/>
@@ -126,22 +127,12 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="1"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="true"
-				EnableFiberSafeOptimizations="true"
-				WholeProgramOptimization="true"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;WINAMP_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
-				StringPooling="true"
-				MinimalRebuild="true"
-				ExceptionHandling="1"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -154,12 +145,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt-$(QTTAG).lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib kvirc.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib"
+				AdditionalDependencies="kernel32.lib user32.lib winspool.lib comdlg32.lib"
 				OutputFile="$(OutDir)/gen_kvirc.dll"
-				LinkIncremental="1"
+				LinkIncremental="0"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
-				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"

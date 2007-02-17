@@ -1043,10 +1043,12 @@ bool KviUserListView::nickChange(const QString &oldNick,const QString &newNick)
 		bool bSelect      = it->m_bSelected;
 		KviAvatar * av    = it->m_pGlobalData->forgetAvatar();
 		KviIrcUserEntry::Gender gender = it->m_pGlobalData->gender();
+		bool bBot = it->m_pGlobalData->isBot();
 		part(oldNick);
 		__range_invalid(m_pEntryDict->find(oldNick));
 		it = join(newNick,user,host,iFlags);
 		it->m_pGlobalData->setGender(gender);
+		it->m_pGlobalData->setBot(bBot);
 		it->m_joinTime = joint;
 		it->m_lastActionTime = kvi_unixTime();
 		it->m_bSelected = bSelect;
@@ -1585,6 +1587,11 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				if(e->globalData()->gender()!=KviIrcUserEntry::Unknown)
 				{
 					QPixmap * ico = g_pIconManager->getBigIcon((e->globalData()->gender()==KviIrcUserEntry::Male) ? "kvi_icon_male.png" : "kvi_icon_female.png");
+					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-11)/2,*ico);
+				}
+				if(e->globalData()->isBot())
+				{
+					QPixmap * ico = g_pIconManager->getBigIcon("kvi_icon_bot.png");
 					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-11)/2,*ico);
 				}
 				theX +=11;

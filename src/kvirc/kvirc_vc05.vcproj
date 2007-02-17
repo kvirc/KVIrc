@@ -81,6 +81,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				VerboseOutput="true"
 			/>
 			<Tool
@@ -3090,6 +3091,15 @@
 				<File
 					RelativePath=".\ui\kvi_htmldialog.h"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+							Outputs="$(InputDir)\moc_$(InputName).cpp"
+						/>
+					</FileConfiguration>
 					<FileConfiguration
 						Name="Release|Win32"
 						>

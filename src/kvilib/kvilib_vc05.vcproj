@@ -81,6 +81,7 @@
 			/>
 			<Tool
 				Name="VCManifestTool"
+				AdditionalManifestFiles="$(SolutionDir)/data/manifests/commctrl.manifest"
 				VerboseOutput="true"
 			/>
 			<Tool
@@ -618,30 +619,142 @@
 			<File
 				RelativePath=".\ext\kvi_accel.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_avatar.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_avatarcache.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_bswap.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_cmdformatter.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_config.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="config\kvi_confignames.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_crypt.h"
@@ -651,6 +764,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -660,6 +774,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -668,18 +783,82 @@
 			<File
 				RelativePath="ext\kvi_databuffer.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ext\kvi_dcophelper.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="config\kvi_debug.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="config\kvi_defaults.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_dns.h"
@@ -689,6 +868,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -698,6 +878,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -706,26 +887,122 @@
 			<File
 				RelativePath=".\ext\kvi_doublebuffer.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ext\kvi_draganddrop.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="system\kvi_env.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_error.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="file\kvi_file.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="file\kvi_fileutils.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_garbage.h"
@@ -735,6 +1012,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -744,6 +1022,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -752,6 +1031,22 @@
 			<File
 				RelativePath=".\core\kvi_heapobject.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_http.h"
@@ -761,6 +1056,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -770,6 +1066,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -778,34 +1075,162 @@
 			<File
 				RelativePath="ext\kvi_imagelib.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_inttypes.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_ircmask.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_ircserver.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_ircserverdb.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_ircuserdb.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="system\kvi_library.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_list.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="system\kvi_locale.h"
@@ -815,6 +1240,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -824,6 +1250,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -832,78 +1259,382 @@
 			<File
 				RelativePath="core\kvi_malloc.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_md5.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_mediatype.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_memmove.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_mirccntrl.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ext\kvi_miscutils.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_msgtype.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_netutils.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="irc\kvi_nickserv.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\ext\kvi_osinfo.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\file\kvi_packagefile.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_parameterlist.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_pixmap.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\system\kvi_process.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_proxydb.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_qstring.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_regchan.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_regusersdb.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="config\kvi_settings.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_sharedfiles.h"
@@ -913,6 +1644,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -922,6 +1654,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -930,38 +1663,182 @@
 			<File
 				RelativePath="net\kvi_socket.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_sockettype.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_ssl.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_strasm.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_string.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\kvi_stringarray.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_stringconversion.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_application.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_application_kde.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_application_qt.h"
@@ -971,6 +1848,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -980,6 +1858,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -988,10 +1867,42 @@
 			<File
 				RelativePath="tal\kvi_tal_filedialog.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_filedialog_kde.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_filedialog_qt.h"
@@ -1001,6 +1912,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1010,6 +1922,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1018,15 +1931,42 @@
 			<File
 				RelativePath=".\tal\kvi_tal_grid.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_grid_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_grid_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1035,15 +1975,42 @@
 			<File
 				RelativePath=".\tal\kvi_tal_grid_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_groupbox_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_groupbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1052,19 +2019,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_groupbox_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_hbox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_hbox_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_hbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1073,19 +2083,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_hbox_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_iconview.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_iconview_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_iconview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_iconview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1094,19 +2147,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_iconview_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listbox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listbox_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1115,19 +2211,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_listbox_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listview.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listview_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1136,23 +2275,82 @@
 			<File
 				RelativePath=".\tal\kvi_tal_listview_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath="tal\kvi_tal_mainwindow.h"
-				>
-			</File>
-			<File
-				RelativePath="tal\kvi_tal_mainwindow_kde.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_mainwindow_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tal\kvi_tal_mainwindow.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tal\kvi_tal_mainwindow_kde.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_mainwindow_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1161,14 +2359,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_mainwindow_qt4.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_menubar.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_menubar_kde.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="tal\kvi_tal_menubar_qt.h"
@@ -1178,6 +2424,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1187,6 +2434,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1196,10 +2444,19 @@
 				RelativePath=".\tal\kvi_tal_popupmenu.h"
 				>
 				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine=""
 						Outputs=""
 					/>
@@ -1209,10 +2466,21 @@
 				RelativePath=".\tal\kvi_tal_popupmenu_qt3.h"
 				>
 				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1221,19 +2489,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_popupmenu_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_scrollview.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_scrollview_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_scrollview_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1242,20 +2553,63 @@
 			<File
 				RelativePath=".\tal\kvi_tal_scrollview_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_tabdialog.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_tabdialog_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tabdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tabdialog_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1263,20 +2617,63 @@
 			<File
 				RelativePath=".\tal\kvi_tal_tabdialog_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_textedit.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_textedit_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_textedit_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1284,23 +2681,82 @@
 			<File
 				RelativePath=".\tal\kvi_tal_textedit_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath="tal\kvi_tal_toolbar.h"
-				>
-			</File>
-			<File
-				RelativePath="tal\kvi_tal_toolbar_kde.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_toolbar_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tal\kvi_tal_toolbar.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tal\kvi_tal_toolbar_kde.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_toolbar_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1309,27 +2765,102 @@
 			<File
 				RelativePath=".\tal\kvi_tal_toolbar_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath="tal\kvi_tal_toolbardocktype.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_tooltip.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_vbox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_vbox_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="tal\kvi_tal_toolbardocktype.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tooltip.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_vbox_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1338,19 +2869,62 @@
 			<File
 				RelativePath=".\tal\kvi_tal_vbox_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_widgetstack.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_widgetstack_qt3.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_widgetstack_qt3.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -1359,19 +2933,60 @@
 			<File
 				RelativePath=".\tal\kvi_tal_widgetstack_qt4.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_windowstate.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_wizard.h"
-				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_windowstate.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_wizard.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine=""
 						Outputs=""
 					/>
@@ -1381,11 +2996,22 @@
 				RelativePath=".\tal\kvi_tal_wizard_qt3.h"
 				>
 				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1393,10 +3019,42 @@
 			<File
 				RelativePath=".\tal\kvi_tal_wizard_qt4.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="core\wstring\kvi_textencoding.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="system\kvi_thread.h"
@@ -1406,6 +3064,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -1415,6 +3074,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
@@ -1423,22 +3083,102 @@
 			<File
 				RelativePath="system\kvi_time.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\kvi_url.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\irc\kvi_useridentity.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="config\kvi_wincfg.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ext\kvi_xlib.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter
