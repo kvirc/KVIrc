@@ -65,33 +65,40 @@ alias(clearobjects)
 alias(nickserv)
 {
 	# Silent
-	msg -q NickServ $0-
+	raw -q NickServ $0-
 }
 
 alias(chanserv)
 {
 	# Silent
-	msg -q ChanServ $0-
+	raw -q ChanServ $0-
 }
 
 alias(memoserv)
 {
 	# Silent
-	msg -q MemoServ $0-
+	raw -q MemoServ $0-
 }
 
 alias(ns)
 {
 	# Silent
-	quote ns $0-
+	raw -q nickserv $0-
 }
 
 
 alias(cs)
 {
 	# Silent
-	quote cs $0-
+	raw -q chanserv $0-
 }
+
+alias(ms)
+{
+	# Silent
+	raw -q memoserv $0-
+}
+
 alias(gnotice)
 {
 	# Global notice
