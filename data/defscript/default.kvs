@@ -738,8 +738,10 @@ alias(hs)
 alias(hop)
 {
 	%chan=$0
+	%key=
 	if(!%chan){
 		%chan=$chan.name($active)
+		%key=$chan.key
 		if($channel(%chan))
 			part --keep %chan $option(stringPartMessage)
 	} else {
@@ -747,8 +749,8 @@ alias(hop)
 			part --keep %chan $option(stringPartMessage)
 	}
 	
-	join %chan
-}
+	join %chan %key
+	}
 
 # The toolbars that previously were in the core :)
 
@@ -1458,8 +1460,7 @@ defpopup(channelpopup)
 {
 	item($tr("&Join") $0,145)
 	{
-		if($channel($0)) part --keep $0 $option(stringPartMessage)
-		join $0
+		hop $0
 	}
 
 	item($tr("&Part") $0,40)
