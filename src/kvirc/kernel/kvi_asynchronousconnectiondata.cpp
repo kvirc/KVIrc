@@ -29,6 +29,7 @@
 KviAsynchronousConnectionData::KviAsynchronousConnectionData()
 : KviHeapObject()
 {
+	m_pReconnectInfo=0;
 	bUseLastServerInContext = false;
 }
 

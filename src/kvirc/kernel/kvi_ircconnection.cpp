@@ -886,7 +886,13 @@ void KviIrcConnection::loginToIrcServer()
 
 	// Nick stuff
 	pServer->m_szNick.stripWhiteSpace();
-	if(!pServer->m_szNick.isEmpty())
+	if(pServer->m_pReconnectInfo)
+	{
+		if(!_OUTPUT_MUTE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using reconnect specific nickname (%Q)"),&(pServer->m_pReconnectInfo->m_szNick));
+		m_pUserInfo->setNickName(pServer->m_pReconnectInfo->m_szNick);
+		m_pStateData->setLoginNickIndex(0);
+	}else if(!pServer->m_szNick.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific nickname (%Q)"),&(pServer->m_szNick));
@@ -963,6 +969,7 @@ void KviIrcConnection::loginToIrcServer()
 			return;
 		}
 	}
+	
 	
 	if(!sendFmtData("NICK %s",szNick.data()))
 	{
@@ -1163,84 +1170,119 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 		KviKvsScript::run(tmp.ptr(),m_pConsole);
 	}
 	
-	if(target()->network()->autoJoinChannelList())
+	if(target()->server()->m_pReconnectInfo)
 	{
-		if(_OUTPUT_VERBOSE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining network specific channels"));
+		if(!target()->server()->m_pReconnectInfo->m_szJoinChannels.isEmpty())
+			sendFmtData("JOIN %s",encodeText(target()->server()->m_pReconnectInfo->m_szJoinChannels).data());
 
-		QStringList * l = target()->network()->autoJoinChannelList();
-		if(l->count()!=0)
+		KviQuery * query;
+		
+		for(QStringList::Iterator it = target()->server()->m_pReconnectInfo->m_szOpenQueryes.begin();
+			it != target()->server()->m_pReconnectInfo->m_szOpenQueryes.end();it++)
 		{
-			for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
-				
-				szCurPass=(*it).section(':',1);
-				if(szCurPass.isEmpty())
+			QString szNick = *it;
+			query = findQuery(szNick);
+			if(!query) {
+				query = createQuery(szNick);
+				QString user;
+				QString host;
+				KviIrcUserDataBase * db = userDataBase();
+				if(db)
 				{
-					if(!szChannels.isEmpty())
-						szChannels.append(",");
-					szCurChan = (*it).section(':',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend('#');
-					szChannels.append(szCurChan);
-				} else {
-					if(!szProtectedChannels.isEmpty())
-						szProtectedChannels.append(",");
-					szCurChan = (*it).section(':',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend('#');
-					szProtectedChannels.append(szCurChan);
-					if(!szPasswords.isEmpty())
-						szPasswords.append(",");
-					szPasswords.append(szCurPass);
+					KviIrcUserEntry * e = db->find(szNick);
+					if(e)
+					{
+						user = e->user();
+						host = e->host();
+					}
 				}
+				query->setTarget(szNick,user,host);
 			}
-		}	
-	}
-
-	if(server()->autoJoinChannelList())
-	{
-		if(_OUTPUT_VERBOSE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining server specific channels"));
-
-		QStringList * l = server()->autoJoinChannelList();
-		if(l->count()!=0)
+			query->autoRaise();
+			query->setFocus();
+		}
+		delete target()->server()->m_pReconnectInfo;
+		target()->server()->m_pReconnectInfo=0;
+	}else {
+		if(target()->network()->autoJoinChannelList())
 		{
-			for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
-				szCurPass=(*it).section(':',1);
-				if(szCurPass.isEmpty())
-				{
-					if(!szChannels.isEmpty())
-						szChannels.append(",");
-					szCurChan = (*it).section(':',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-						szCurChan.prepend(':');
-					szChannels.append(szCurChan);
-				} else {
-					if(!szProtectedChannels.isEmpty())
-						szProtectedChannels.append(",");
-					szCurChan = (*it).section(':',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend('#');
-					szProtectedChannels.append(szCurChan);
-					if(!szPasswords.isEmpty())
-						szPasswords.append(",");
-					szPasswords.append(szCurPass);
+			if(_OUTPUT_VERBOSE)
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining network specific channels"));
+
+			QStringList * l = target()->network()->autoJoinChannelList();
+			if(l->count()!=0)
+			{
+				for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
+					
+					szCurPass=(*it).section(':',1);
+					if(szCurPass.isEmpty())
+					{
+						if(!szChannels.isEmpty())
+							szChannels.append(",");
+						szCurChan = (*it).section(':',0,0);
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+								szCurChan.prepend('#');
+						szChannels.append(szCurChan);
+					} else {
+						if(!szProtectedChannels.isEmpty())
+							szProtectedChannels.append(",");
+						szCurChan = (*it).section(':',0,0);
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+								szCurChan.prepend('#');
+						szProtectedChannels.append(szCurChan);
+						if(!szPasswords.isEmpty())
+							szPasswords.append(",");
+						szPasswords.append(szCurPass);
+					}
+				}
+			}	
+		}
+
+		if(server()->autoJoinChannelList())
+		{
+			if(_OUTPUT_VERBOSE)
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining server specific channels"));
+
+			QStringList * l = server()->autoJoinChannelList();
+			if(l->count()!=0)
+			{
+				for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
+					szCurPass=(*it).section(':',1);
+					if(szCurPass.isEmpty())
+					{
+						if(!szChannels.isEmpty())
+							szChannels.append(",");
+						szCurChan = (*it).section(':',0,0);
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+							szCurChan.prepend(':');
+						szChannels.append(szCurChan);
+					} else {
+						if(!szProtectedChannels.isEmpty())
+							szProtectedChannels.append(",");
+						szCurChan = (*it).section(':',0,0);
+						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
+								szCurChan.prepend('#');
+						szProtectedChannels.append(szCurChan);
+						if(!szPasswords.isEmpty())
+							szPasswords.append(",");
+						szPasswords.append(szCurPass);
+					}
 				}
 			}
 		}
-	}
-	
-	QString szCommand;
-	if( (!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()) )
-	{
-		szCommand.append(szProtectedChannels);
-		if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
-			szCommand.append(',');
-		szCommand.append(szChannels);
-		szCommand.append(" ");
-		szCommand.append(szPasswords);
 		
-		sendFmtData("JOIN %s",encodeText(szCommand).data());
+		QString szCommand;
+		if( (!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()) )
+		{
+			szCommand.append(szProtectedChannels);
+			if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
+				szCommand.append(',');
+			szCommand.append(szChannels);
+			szCommand.append(" ");
+			szCommand.append(szPasswords);
+			
+			sendFmtData("JOIN %s",encodeText(szCommand).data());
+		}
 	}
 	// minimize after connect
 	if(KVI_OPTION_BOOL(KviOption_boolMinimizeConsoleAfterConnect))

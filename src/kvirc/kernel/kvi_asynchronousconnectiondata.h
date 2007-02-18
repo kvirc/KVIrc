@@ -28,6 +28,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_heapobject.h"
+#include "kvi_ircserver.h"
 
 class KviAsynchronousConnectionData : public KviHeapObject
 {
@@ -47,6 +48,7 @@ public:
 	QString            szPass;
 	QString            szNick;
     QString            szInitUMode;
+	KviIrcServerReconnectInfo * m_pReconnectInfo;
 };
 
 #endif //!_KVI_ASYNCHRONOUSCONNECTIONDATA_H_

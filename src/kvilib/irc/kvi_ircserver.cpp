@@ -45,9 +45,9 @@
 //extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 // FIXME: This should be renamed to KviServer or sth like that
-
 KviIrcServer::KviIrcServer()
 {
+	m_pReconnectInfo=0;
 	m_uFlags = 0;
 	m_uPort  = 6667;
 	m_pChannelList = 0;
@@ -70,6 +70,7 @@ KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 
 KviIrcServer::KviIrcServer(const KviIrcServer &serv)
 {
+	m_pReconnectInfo     = 0;
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
 	m_szDescription      = serv.m_szDescription;
@@ -80,7 +81,7 @@ KviIrcServer::KviIrcServer(const KviIrcServer &serv)
 	m_szRealName         = serv.m_szRealName;
 	m_szEncoding         = serv.m_szEncoding;
 	m_uFlags             = serv.m_uFlags;
-	m_szInitUMode = serv.m_szInitUMode;
+	m_szInitUMode        = serv.m_szInitUMode;
 	m_szOnConnectCommand = serv.m_szOnConnectCommand;
 	m_szOnLoginCommand   = serv.m_szOnLoginCommand;
 	m_szLinkFilter       = serv.m_szLinkFilter;
@@ -123,6 +124,7 @@ void KviIrcServer::operator=(const KviIrcServer &serv)
 KviIrcServer::~KviIrcServer()
 {
 	if(m_pChannelList)delete m_pChannelList;
+	if(m_pReconnectInfo) delete m_pReconnectInfo;
 }
 
 void KviIrcServer::generateUniqueId()

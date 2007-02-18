@@ -36,10 +36,20 @@ class KviConfig;
 class KviNickServRuleSet;
 class KviProxy;
 class KviProxyDataBase;
+class KviIrcServer;
 
 #define KVI_IRCSERVER_FLAG_IPV6 1
 #define KVI_IRCSERVER_FLAG_CACHEIP 2
 #define KVI_IRCSERVER_FLAG_SSL 4
+
+class KVILIB_API KviIrcServerReconnectInfo {
+public:
+	QString               m_szNick;
+	QString               m_szAwayReason;
+	QString               m_szJoinChannels;
+	QStringList           m_szOpenQueryes;
+	bool                  m_bIsAway;
+};
 
 class KVILIB_API KviIrcServer : public KviHeapObject
 {
@@ -48,6 +58,7 @@ public:
 	KviIrcServer(const KviIrcServer &serv);
 	~KviIrcServer();
 public:
+	KviIrcServerReconnectInfo *m_pReconnectInfo;
 	QString            m_szHostname;          // the server hostname (or ip eventually)
 	QString            m_szIp;                // the server's cached ip (if we're caching)
 	QString            m_szDescription;       // the server description
