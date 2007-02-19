@@ -38,9 +38,13 @@
 
 #include "kvi_list.h"
 #include "kvi_dict.h"
-
+#include <qobject.h>
 
 class KviRegisteredUserDataBase;
+
+#ifndef _KVI_REGUSERDB_CPP_
+	extern KVILIB_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
+#endif //!_KVI_REGUSERDB_CPP_
 
 //=================================================================================================
 //
@@ -51,12 +55,23 @@ class KVILIB_API KviRegisteredUser : public KviHeapObject
 {
 	friend class KviRegisteredUserDataBase;
 public:
+	enum IgnoreFlags {
+		Channel=1,
+		Query=2,
+		Notice=4,
+		Ctcp=8,
+		Invite=16,
+		Dcc=32
+	};
+
 	KviRegisteredUser(const QString &name);
 	~KviRegisteredUser();
 private:
-	QString                      m_szName;
-	QString			     m_szGroup;
-	KviDict<QString>             * m_pPropertyDict;   // owned properties
+	int                        m_iIgnoreFlags;
+	bool                       m_bIgnoreEnabled;
+	QString                    m_szName;
+	QString					   m_szGroup;
+	KviDict<QString>           * m_pPropertyDict;   // owned properties
 	KviPtrList<KviIrcMask>     * m_pMaskList;       // owned masks
 protected:
 	// mask ownership is transferred! (always!) returns false if the mask was already there
@@ -64,6 +79,12 @@ protected:
 	bool removeMask(KviIrcMask * mask);
 	KviIrcMask * findMask(const KviIrcMask &mask);
 public:
+	int  ignoreFlags()                  { return m_iIgnoreFlags; };
+	void setIgnoreFlags(int flags)      {m_iIgnoreFlags=flags; };
+	bool ignoreEnagled()                { return m_bIgnoreEnabled; };
+	void setIgnoreEnabled(bool enabled) {m_bIgnoreEnabled=enabled;};
+	bool isIgnoreEnabledFor(IgnoreFlags flag);
+
 	const QString &name(){ return m_szName; };
 	bool matches(const KviIrcMask &mask);
 	bool matchesFixed(const KviIrcMask &mask);
@@ -133,15 +154,16 @@ typedef KviPtrList<KviRegisteredMask> KviRegisteredMaskList;
 //    m_pWildMaskList is a list of wild-nick KviRegisteredMask that point to users
 //
 
-class KVILIB_API KviRegisteredUserDataBase
+class KVILIB_API KviRegisteredUserDataBase : public QObject
 {
+	Q_OBJECT
 public:
 	KviRegisteredUserDataBase();
 	~KviRegisteredUserDataBase();
 private:
 	KviDict<KviRegisteredUser>     * m_pUserDict; // unique namespace, owns the objects, does not copy keys
 	KviDict<KviRegisteredMaskList> * m_pMaskDict; // owns the objects, copies the keys
-	KviRegisteredMaskList        * m_pWildMaskList; // owns the objects
+	KviRegisteredMaskList          * m_pWildMaskList; // owns the objects
 	KviDict<KviRegisteredUserGroup>* m_pGroupDict;
 public:
 	void copyFrom(KviRegisteredUserDataBase * db);
@@ -168,6 +190,11 @@ public:
 	KviDict<KviRegisteredUserGroup>* groupDict() { return m_pGroupDict; };
 	
 	KviRegisteredUserGroup* addGroup(const QString &name);
+signals:
+	void userRemoved(const QString&);
+	void userChanged(const QString&);
+	void userAdded  (const QString&);
+	void databaseCleared();
 };
 
 

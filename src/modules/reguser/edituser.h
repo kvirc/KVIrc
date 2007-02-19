@@ -165,14 +165,12 @@ protected:
 
 	//Ignore TAB
 	QCheckBox          * m_pIgnoreEnabled;
-	QCheckBox          * m_pIgnoreSilent;
 	QCheckBox          * m_pIgnoreQuery;
 	QCheckBox          * m_pIgnoreChannel;
 	QCheckBox          * m_pIgnoreNotice;
 	QCheckBox          * m_pIgnoreCtcp;
 	QCheckBox          * m_pIgnoreInvite;
 	QCheckBox          * m_pIgnoreDcc;
-	QCheckBox          * m_pIgnoreAll;
 
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

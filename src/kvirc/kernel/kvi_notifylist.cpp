@@ -150,9 +150,6 @@ bool KviNotifyListManager::handleWatchReply(KviIrcMessage *)
 	return false;
 }
 
-// kvi_app.cpp
-extern KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
-
 void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,const QString &host,const QString &szReason,bool bJoin)
 {
 	if(bJoin)

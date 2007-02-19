@@ -691,8 +691,8 @@ void KviIrcContext::connectionTerminated()
 {
 	if(!m_pConnection)return; // this may happen in the destructor!
 
-	KviIrcServer* pServer=connection()->server();
-	if(pServer->m_pReconnectInfo) delete pServer->m_pReconnectInfo;
+	KviIrcServer oldServer(*(connection()->server()));
+	if(oldServer.m_pReconnectInfo) delete oldServer.m_pReconnectInfo;
 	KviIrcServerReconnectInfo* pInfo = new KviIrcServerReconnectInfo();
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 	pInfo->m_bIsAway=connection()->userInfo()->isAway();
@@ -777,9 +777,9 @@ void KviIrcContext::connectionTerminated()
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Connection terminated [%s (%s:%u)]"),
-				pServer->hostName().utf8().data(),
-				pServer->ip().utf8().data(),
-				pServer->port());
+				oldServer.hostName().utf8().data(),
+				oldServer.ip().utf8().data(),
+				oldServer.port());
 	}
 
 	// do reconnect
@@ -790,13 +790,13 @@ void KviIrcContext::connectionTerminated()
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
 		KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
-		d->szServer = pServer->m_szHostname;
-		d->uPort = pServer->port();
+		d->szServer = oldServer.m_szHostname;
+		d->uPort = oldServer.port();
 		d->bPortIsOk = true;
-		d->bUseIpV6 = pServer->isIpV6();
-		d->bUseSSL = pServer->useSSL();
-		d->szPass = pServer->password();
-		d->szInitUMode = pServer->m_szInitUMode;
+		d->bUseIpV6 = oldServer.isIpV6();
+		d->bUseSSL = oldServer.useSSL();
+		d->szPass = oldServer.password();
+		d->szInitUMode = oldServer.m_szInitUMode;
 		d->m_pReconnectInfo = pInfo;
 		setAsynchronousConnectionData(d);
 

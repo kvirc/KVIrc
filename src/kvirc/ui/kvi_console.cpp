@@ -100,7 +100,6 @@
 
 extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-extern KVIRC_API KviRegisteredUserDataBase      * g_pRegisteredUserDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
 // %tmp[] = $str.grep("test",%array[])
@@ -668,7 +667,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		// FIXME: this is for userhighlighing
 		//        maybe mark the users as highlighted in the console user database
 		//        and then lookup them there ? this would be potentially a lot faster
-		KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(nick,user,host);
+		KviRegisteredUser * u = connection()->userDataBase()->registeredUser(nick,user,host);
 	
 		// note that we're highlighting users only in channels since
 		// in a query (or DCC) highlighting the remote end is senseless.
@@ -900,7 +899,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 		// Don't even try to do it for myself
 		if(!KviQString::equalCI(nick,connection()->userInfo()->nickName()))
 		{
-			KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(nick,user,host);
+			KviRegisteredUser * u = connection()->userDataBase()->registeredUser(nick,user,host);
 			if(u)
 			{
 				if(avatar)u->setProperty("avatar",avatar->identificationString());
@@ -944,7 +943,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 	}
 
 	// registered ?
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(nick,user,host);
+	KviRegisteredUser * u = connection()->userDataBase()->registeredUser(nick,user,host);
 	if(u)
 	{
 		// the user is registered...

@@ -419,6 +419,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	g->addMultiCellWidget(f,4,4,0,2);
 
 	m_pCustomColorCheck = new KviStyledCheckBox(__tr2qs("Use custom color in userlist"),p2);
+	m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
 	g->addMultiCellWidget(m_pCustomColorCheck,5,5,0,1);
 
 	m_pCustomColorSelector = new KviColorSelector(p2,QString::null,m_pCustomColor,1);
@@ -434,47 +435,30 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	addTab(p2,__tr2qs("Properties"));
 
 	// Ignore TAB
-	QWidget * p3 = new QWidget(this);
+	QVBox * vb = new QVBox(this);
+	vb->setMargin(10);
 
-	g = new QGridLayout(p3,9,2,5,2);
+	m_pIgnoreEnabled = new KviStyledCheckBox(__tr2qs("Enable ignore for this user"),vb);
 
-	m_pIgnoreEnabled = new KviStyledCheckBox(__tr2qs("Enable ignore for this user"),p3);
-	g->addMultiCellWidget(m_pIgnoreEnabled,0,0,0,1);
-
-	m_pIgnoreSilent = new KviStyledCheckBox(__tr2qs("Hide ignore-messages (incomplete)"),p3);
-	m_pIgnoreSilent->setEnabled(FALSE);
-	g->addMultiCellWidget(m_pIgnoreSilent,1,1,0,1);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreSilent,SLOT(setEnabled(bool)));
-
-	m_pIgnoreAll = new KviStyledCheckBox(__tr2qs("Ignore everything"),p3);
-	g->addMultiCellWidget(m_pIgnoreAll,2,2,0,1);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreAll,SLOT(setEnabled(bool)));
-
-	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),p3);
-	g->addMultiCellWidget(m_pIgnoreQuery,3,3,1,1);
+	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreQuery,SLOT(setEnabled(bool)));
 
-	m_pIgnoreChannel = new KviStyledCheckBox(__tr2qs("Ignore channel-messages"),p3);
-	g->addMultiCellWidget(m_pIgnoreChannel,4,4,1,1);
+	m_pIgnoreChannel = new KviStyledCheckBox(__tr2qs("Ignore channel-messages"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreChannel,SLOT(setEnabled(bool)));
 
-	m_pIgnoreNotice = new KviStyledCheckBox(__tr2qs("Ignore notice-messages"),p3);
-	g->addMultiCellWidget(m_pIgnoreNotice,5,5,1,1);
+	m_pIgnoreNotice = new KviStyledCheckBox(__tr2qs("Ignore notice-messages"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreNotice,SLOT(setEnabled(bool)));
 
-	m_pIgnoreCtcp = new KviStyledCheckBox(__tr2qs("Ignore ctcp-messages"),p3);
-	g->addMultiCellWidget(m_pIgnoreCtcp,6,6,1,1);
+	m_pIgnoreCtcp = new KviStyledCheckBox(__tr2qs("Ignore ctcp-messages"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreCtcp,SLOT(setEnabled(bool)));
 
-	m_pIgnoreInvite = new KviStyledCheckBox(__tr2qs("Ignore invites"),p3);
-	g->addMultiCellWidget(m_pIgnoreInvite,7,7,1,1);
+	m_pIgnoreInvite = new KviStyledCheckBox(__tr2qs("Ignore invites"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreInvite,SLOT(setEnabled(bool)));
 
-	m_pIgnoreDcc = new KviStyledCheckBox(__tr2qs("Ignore DCCs"),p3);
-	g->addMultiCellWidget(m_pIgnoreDcc,8,8,1,1);
+	m_pIgnoreDcc = new KviStyledCheckBox(__tr2qs("Ignore DCCs"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreDcc,SLOT(setEnabled(bool)));
 
-	addTab(p3,__tr2qs("Ignore"));
+	addTab(vb,__tr2qs("Ignore"));
 
 	setCancelButton(__tr2qs("Cancel"));
 	setOkButton(__tr2qs("&OK"));
@@ -503,11 +487,6 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			m_pNotifyNick->setEnabled(true);
 		}
 		
-		if( r->getBoolProperty("useCustomColor"))
-		{
-			m_pCustomColorCheck->setChecked(1);
-		}
-
 		if(r->propertyDict())
 		{
 			KviDictIterator<QString> it(*(r->propertyDict()));
@@ -518,19 +497,13 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			}
 		}
 
-		m_pIgnoreEnabled->setChecked(r->getBoolProperty("IgnoreEnabled"));
-/*		if(r->propertyDict()->find("IgnoreSilent")) {
-			m_pIgnoreSilent->setChecked(r->getBoolProperty("IgnoreSilent"));
-		} else {
-			m_pIgnoreSilent->setState(QButton::NoChange);
-		}*/
-		m_pIgnoreAll->setChecked(r->getBoolProperty("IgnoreAll"));
-		m_pIgnoreQuery->setChecked(r->getBoolProperty("IgnoreQuery"));
-		m_pIgnoreChannel->setChecked(r->getBoolProperty("IgnoreChannel"));
-		m_pIgnoreNotice->setChecked(r->getBoolProperty("IgnoreNotice"));
-		m_pIgnoreCtcp->setChecked(r->getBoolProperty("IgnoreCtcp"));
-		m_pIgnoreInvite->setChecked(r->getBoolProperty("IgnoreInvite"));
-		m_pIgnoreDcc->setChecked(r->getBoolProperty("IgnoreDcc"));
+		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
+		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
+		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
+		m_pIgnoreNotice->setChecked(r->ignoreFlags() & KviRegisteredUser::Notice);
+		m_pIgnoreCtcp->setChecked(r->ignoreFlags() & KviRegisteredUser::Ctcp);
+		m_pIgnoreInvite->setChecked(r->ignoreFlags() & KviRegisteredUser::Invite);
+		m_pIgnoreDcc->setChecked(r->ignoreFlags() & KviRegisteredUser::Dcc);
 	}
 }
 
@@ -636,34 +609,29 @@ void KviRegisteredUserEntryDialog::okClicked()
 		++it;
 	}
 
-	if(m_pCustomColorCheck->isChecked())
-	{
-		u->setProperty("useCustomColor","1");
-	} else {
-		u->setProperty("useCustomColor","0");
-	}
+	u->setProperty("useCustomColor",m_pCustomColorCheck->isChecked());
 	
 	QString col;
 	KviStringConversion::toString(m_pCustomColorSelector->getColor(),col);
-//	debug(col);
 	u->setProperty("customColor",col);
 
 	
-	if(m_pIgnoreSilent->state()==QButton::NoChange)
-	{
-		u->propertyDict()->remove("IgnoreSilent");
-	} else {
-		u->setProperty("IgnoreSilent",m_pIgnoreSilent->isOn());
-	}
+	int iIgnoreFlags=0;
+	u->setIgnoreEnabled(m_pIgnoreEnabled->isChecked());
+	if(m_pIgnoreQuery->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Query;
+	if(m_pIgnoreChannel->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Channel;
+	if(m_pIgnoreNotice->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Notice;
+	if(m_pIgnoreCtcp->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Ctcp;
+	if(m_pIgnoreInvite->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Invite;
+	if(m_pIgnoreDcc->isChecked())
+		iIgnoreFlags |= KviRegisteredUser::Dcc;
 
-	u->setProperty("IgnoreEnabled",m_pIgnoreEnabled->isChecked());
-	u->setProperty("IgnoreQuery",m_pIgnoreQuery->isChecked());
-	u->setProperty("IgnoreChannel",m_pIgnoreChannel->isChecked());
-	u->setProperty("IgnoreNotice",m_pIgnoreNotice->isChecked());
-	u->setProperty("IgnoreCtcp",m_pIgnoreCtcp->isChecked());
-	u->setProperty("IgnoreInvite",m_pIgnoreInvite->isChecked());
-	u->setProperty("IgnoreDcc",m_pIgnoreDcc->isChecked());
-
+	u->setIgnoreFlags(iIgnoreFlags);
 	accept();
 	g_pApp->optionResetUpdate(KviOption_resetUpdateGui);
 }

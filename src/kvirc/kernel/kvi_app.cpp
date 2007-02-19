@@ -114,12 +114,12 @@ KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
 
 KVIRC_API KviColorWindow               * g_pColorWindow               = 0;
 KVIRC_API KviTextIconWindow            * g_pTextIconWindow            = 0;
-KVIRC_API KviTalPopupMenu                   * g_pInputPopup                = 0;
+KVIRC_API KviTalPopupMenu              * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
-//KVIRC_API QStringList                  * g_pBookmarkList              = 0;
-KVIRC_API KviAsciiDict<KviWindow>        * g_pGlobalWindowDict          = 0;
+//KVIRC_API QStringList                  * g_pBookmarkList            = 0;
+KVIRC_API KviAsciiDict<KviWindow>      * g_pGlobalWindowDict          = 0;
 KVIRC_API KviMediaManager              * g_pMediaManager              = 0;
-KVIRC_API KviRegisteredUserDataBase    * g_pRegisteredUserDataBase    = 0;
+//KVIRC_API KviRegisteredUserDataBase    * g_pRegisteredUserDataBase    = 0;
 KVIRC_API KviSharedFilesManager        * g_pSharedFilesManager        = 0;
 KVIRC_API KviNickServRuleSet           * g_pNickServRuleSet           = 0;
 //KVIRC_API KviTimerManager              * g_pTimerManager              = 0;

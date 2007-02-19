@@ -72,9 +72,6 @@
 //#include "kvi_iconmanager.h"
 #include <qdatetime.h>
 
-// kvi_app.cpp
-extern KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
-
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -736,7 +733,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 	QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 
 	KviConsole * console = msg->console();
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(szNick,szUser,szHost);
+	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
     //Highlight it?
 
 	// FIXME: 	#warning "DEDICATED CTCP WINDOW ?"
@@ -768,15 +765,18 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 	if(IS_ME(msg,szTarget))
 	{
 		//Ignore it?
-		if (u) if ((u->getBoolProperty("IgnoreQuery") || u->getBoolProperty("IgnoreAll") ) && u->getBoolProperty("IgnoreEnabled"))
+		if (u)
 		{
-			if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg)) return;
-
-			if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)))
+			if (u->isIgnoreEnabledFor(KviRegisteredUser::Query))
 			{
-				console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg)) return;
+
+				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+				{
+					console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+				}
+				return;
 			}
-			return;
 		}
 		// FIXME: 	#warning "PROCESS MULTIMEDIA FILE REQUESTS"
 
@@ -973,21 +973,19 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 		//Ignore it?
 		if(u) 
-			if((u->getBoolProperty("IgnoreChannel") || u->getBoolProperty("IgnoreAll") ) && u->getBoolProperty("IgnoreEnabled"))
+		{
+			if(u->isIgnoreEnabledFor(KviRegisteredUser::Channel))
 			{
-				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg)) return;
-
-				if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)))
-				{
-					if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg)) return;
-		
-					if (!u->getBoolProperty("IgnoreSilent"))
-					{
-						console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
-					}
+				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnIgnoredMessage,msg->console(),szNick,szUser,szHost,szTarget,szMsg))
 					return;
+
+				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+				{
+					console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
 				}
+				return;
 			}
+		}
 
 		if(!chan)
 		{
@@ -1096,16 +1094,19 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(szNick,szUser,szHost);
+	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
 	//Ignore it?
-	if(u) if( (u->getBoolProperty("IgnoreNotice") || u->getBoolProperty("IgnoreAll") ) && u->getBoolProperty("IgnoreEnabled"))
+	if(u)
 	{
-		if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)))
+		if(u->isIgnoreEnabledFor(KviRegisteredUser::Notice))
 		{
-			QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
-			console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+			if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+			{
+				QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
+				console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),&szNick,&szUser,&szHost,&szMsg);
+			}
+			return;
 		}
-		return;
 	}
 
 	// Normal NOTICE
@@ -1528,15 +1529,18 @@ void KviServerParser::parseLiteralInvite(KviIrcMessage *msg)
 	QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 
 	KviConsole * console = msg->console();
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(szNick,szUser,szHost);
+	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
 	//Ignore it?
-	if(u) if((u->getBoolProperty("IgnoreInvite") || u->getBoolProperty("IgnoreAll") ) && u->getBoolProperty("IgnoreEnabled"))
+	if(u)
 	{
-		if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)))
+		if(u->isIgnoreEnabledFor(KviRegisteredUser::Invite))
 		{
-			console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"),&szNick,&szUser,&szHost);
+			if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+			{
+				console->output(KVI_OUT_IGNORE,__tr2qs("Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"),&szNick,&szUser,&szHost);
+			}
+			return;
 		}
-		return;
 	}
 
 	if(IS_ME(msg,szTarget))

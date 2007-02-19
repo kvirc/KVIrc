@@ -25,7 +25,7 @@
 #include "kvi_module.h"
 
 #include "kvi_regusersdb.h"
-
+#include "kvi_ircuserdb.h"
 #include "kvi_out.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_window.h"
@@ -36,6 +36,7 @@
 
 #include "edituser.h"
 #include "wizard.h"
+#include "kvi_ircconnection.h"
 
 #include "kvi_list.h"
 #include <qsplitter.h> // FIXME: REmove this!
@@ -411,6 +412,237 @@ static bool reguser_kvs_cmd_delmask(KviKvsModuleCommandCall * c)
 }
 
 /*
+	@doc: reguser.setIgnoreEnabled
+	@type:
+		command
+	@title:
+		reguser.setIgnoreEnabled
+	@keyterms:
+		enable/disable ignoring of this user
+	@short:
+		Enable/disable ignoring of this user
+	@syntax:
+		reguser.setIgnoreEnabled [-q] <name:string> <isEnabled:bool>
+	@description:
+		
+	@examples:
+		[example]
+			reguser.setproperty "Alexey" $true
+		[/example]
+	@seealso:
+		[module:reguser]Registered users database interface[/module],
+		[doc:registered_users]Registered users database[/doc],
+		[fnc]$reguser.matchProperty[/fnc],
+		[fnc]$reguser.property[/fnc]
+*/
+
+static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
+{
+	QString szName;
+	bool bEnabled;
+	KVSM_PARAMETERS_BEGIN(c) 
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
+		KVSM_PARAMETER("isEnabled",KVS_PT_BOOL,0,bEnabled) 
+	KVSM_PARAMETERS_END(c) 
+	
+	if(szName.isEmpty())
+	{
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		return true;
+	}
+
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
+	if(!u)
+	{
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User %Q not found"),&szName);
+	} else {
+		u->setIgnoreEnabled(bEnabled);
+	}
+	return true;
+}
+
+
+/*
+	@doc: reguser.setIgnoreFlags
+	@type:
+		command
+	@title:
+		reguser.setIgnoreFlags
+	@keyterms:
+		Sets ignore flags for registered user
+	@short:
+		Sets ignore flags for registered user
+	@syntax:
+		reguser.setIgnoreFlags [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-q] <name:string>
+	@switches:
+		!sw: -q | --quiet
+		Don't warn if the specified user doesn't exist. Just continue silently.
+		!sw: -p | --query
+		Sets ignore for query messages and actions
+		!sw: -c | --channel
+		Sets ignore for channel messages and actions
+		!sw: -n | --notice
+		Sets ignore for notices
+		!sw: -t | --ctcp
+		Sets ignore for CTCP's
+		!sw: -i | --invite
+		Sets ignore for invites
+		!sw: -d | --dcc
+		Sets ignore for DCC's
+
+	@description:
+		Sets ignore flags for registered user
+	@examples:
+		[example]
+			reguser.setproperty "Alexey" $true
+		[/example]
+	@seealso:
+		[module:reguser]Registered users database interface[/module],
+		[doc:registered_users]Registered users database[/doc],
+		[fnc]$reguser.matchProperty[/fnc],
+		[fnc]$reguser.property[/fnc]
+*/
+
+static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
+{
+	QString szName;
+	KVSM_PARAMETERS_BEGIN(c) 
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
+	KVSM_PARAMETERS_END(c) 
+	
+	if(szName.isEmpty())
+	{
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		return true;
+	}
+
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
+	if(!u)
+	{
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User %Q not found"),&szName);
+	} else {
+		int iIgnoreFlags=0;
+		if(c->hasSwitch('p',"query"))
+			iIgnoreFlags |= KviRegisteredUser::Query;
+		if(c->hasSwitch('c',"channel"))
+			iIgnoreFlags |= KviRegisteredUser::Channel;
+		if(c->hasSwitch('n',"notice"))
+			iIgnoreFlags |= KviRegisteredUser::Notice;
+		if(c->hasSwitch('t',"ctcp"))
+			iIgnoreFlags |= KviRegisteredUser::Ctcp;
+		if(c->hasSwitch('i',"invite"))
+			iIgnoreFlags |= KviRegisteredUser::Invite;
+		if(c->hasSwitch('d',"dcc"))
+			iIgnoreFlags |= KviRegisteredUser::Dcc;
+
+	}
+	return true;
+}
+
+/*
+	@doc: reguser.getIgnoreFlags
+	@type:
+		function
+	@title:
+		$reguser.getIgnoreFlags
+	@short:
+		Returns ignore flags for registered user
+	@syntax:
+		$reguser.getIgnoreFlags(<name:string>)
+	@description:
+		Returns the ignore flags for registered user. Flags are string of letters:[br]
+		p - query ignore[br]
+		c - channel ignore[br]
+		t - ctcp ignore[br]
+		n - notice ignore[br]
+		d - dcc ignore[br]
+		i - invite ignore[br]
+	@seealso:
+		[module:reguser]Registered users database interface[/module],
+		[doc:registered_users]Registered users database[/doc],
+		[cmd]reguser.add[cmd],
+		[cmd]reguser.remove[/cmd],
+		[cmd]reguser.addmask[/cmd],
+		[cmd]reguser.delmask[/cmd],
+		[fnc]$reguser.list[/fnc],
+		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.matchProperty[/fnc]
+*/
+
+static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
+{ 
+	QString szName;
+	QString szFlags;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+	KVSM_PARAMETERS_END(c)
+	
+	KviKvsArray* pArray = new KviKvsArray();
+	int aid=0;
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
+	if(u)
+	{
+		if(u->ignoreFlags() & KviRegisteredUser::Query)
+			szFlags+='q';
+		if(u->ignoreFlags() & KviRegisteredUser::Channel)
+			szFlags+='c';
+		if(u->ignoreFlags() & KviRegisteredUser::Notice)
+			szFlags+='n';
+		if(u->ignoreFlags() & KviRegisteredUser::Ctcp)
+			szFlags+='t';
+		if(u->ignoreFlags() & KviRegisteredUser::Invite)
+			szFlags+='i';
+		if(u->ignoreFlags() & KviRegisteredUser::Dcc)
+			szFlags+='d';
+		c->returnValue()->setString(szFlags);
+		
+	}
+	return true;
+}
+
+/*
+	@doc: reguser.isIgnoreEnabled
+	@type:
+		function
+	@title:
+		$reguser.isIgnoreEnabled
+	@short:
+		Returns if ignore enabled registered user
+	@syntax:
+		$reguser.isIgnoreEnabled(<name:string>)
+	@description:
+		Returns if ignore enabled registered user
+	@seealso:
+		[module:reguser]Registered users database interface[/module],
+		[doc:registered_users]Registered users database[/doc],
+		[cmd]reguser.add[cmd],
+		[cmd]reguser.remove[/cmd],
+		[cmd]reguser.addmask[/cmd],
+		[cmd]reguser.delmask[/cmd],
+		[fnc]$reguser.list[/fnc],
+		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.matchProperty[/fnc]
+*/
+
+static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
+{ 
+	QString szName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+	KVSM_PARAMETERS_END(c)
+	
+	KviKvsArray* pArray = new KviKvsArray();
+	int aid=0;
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
+	if(u)
+	{
+		c->returnValue()->setBoolean(u->ignoreEnagled());
+		
+	}
+	return true;
+}
+
+/*
 	@doc: reguser.setproperty
 	@type:
 		command
@@ -647,7 +879,7 @@ static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mask(szMask);
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
+	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
 	if(u) c->returnValue()->setString(u->name());
 	return true;
 }
@@ -901,7 +1133,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	
 	KviIrcMask mask(szName);
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
+	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
 	if(u)
 	{
 		QString tmp;
@@ -957,6 +1189,8 @@ static bool reguser_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"showlist",reguser_kvs_cmd_showlist);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setproperty",reguser_kvs_cmd_setproperty);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"wizard",reguser_kvs_cmd_wizard);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setIgnoreEnabled",reguser_kvs_cmd_setIgnoreEnabled);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setIgnoreFlags",reguser_kvs_cmd_setIgnoreFlags);
 	
 	KVSM_REGISTER_FUNCTION(m,"match",reguser_kvs_fnc_match);
 	KVSM_REGISTER_FUNCTION(m,"list",reguser_kvs_fnc_list);
@@ -964,6 +1198,8 @@ static bool reguser_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"mask",reguser_kvs_fnc_mask);
 	KVSM_REGISTER_FUNCTION(m,"property",reguser_kvs_fnc_property);
 	KVSM_REGISTER_FUNCTION(m,"matchProperty",reguser_kvs_fnc_matchProperty);
+	KVSM_REGISTER_FUNCTION(m,"getIgnoreFlags",reguser_kvs_fnc_getIgnoreFlags);
+	KVSM_REGISTER_FUNCTION(m,"isIgnoreEnabled",reguser_kvs_fnc_isIgnoreEnabled);
 
 	return true;
 }

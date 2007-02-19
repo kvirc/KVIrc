@@ -65,7 +65,6 @@
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
-extern KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
 /*
 	@doc: ctcp_handling
@@ -819,17 +818,29 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 		bDCCRequest = true;
 	}
 
+	bool bAction = (msg->szTag == "ACTION");
+
+	
+
 	if (bDCCRequest != true) // <-- horror :D
 	{
-		KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
+		KviRegisteredUser * u = msg->msg->connection()->userDataBase()->registeredUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 		//Ignore it?
-		if(u) if( (u->getBoolProperty("IgnoreCtcp") || u->getBoolProperty("IgnoreAll") ) && u->getBoolProperty("IgnoreEnabled") )
+		if(u) 
 		{
-			if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)))
+			if( (!bAction && u->isIgnoreEnabledFor(KviRegisteredUser::Ctcp)) ||
+				(bAction && u->isIgnoreEnabledFor(IS_ME(msg->msg,msg->szTarget) ? KviRegisteredUser::Query : KviRegisteredUser::Channel)) )
 			{
-				msg->msg->console()->output(KVI_OUT_IGNORE,__tr2qs("Ignoring CTCP from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"),&(msg->pSource->nick()),&(msg->pSource->user()),&(msg->pSource->host()));
+				if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+				{
+					msg->msg->console()->output(KVI_OUT_IGNORE,__tr2qs("Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"),
+						KviQString::toUtf8(msg->pSource->nick()).data(),
+						KviQString::toUtf8(msg->pSource->user()).data(),
+						KviQString::toUtf8(msg->pSource->host()).data()
+						);
+				}
+				return;
 			}
-			return;
 		}
 	}
 
@@ -1677,19 +1688,22 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 	p.bIpV6       = msg->msg->console()->isIpV6Connection();
 	p.pConsole    = msg->msg->console();
 
-	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
+	KviRegisteredUser * u = msg->msg->connection()->userDataBase()->registeredUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 
-	if (u) if ((u->getBoolProperty("IgnoreDCC") || u->getBoolProperty("IgnoreAll")) && u->getBoolProperty("IgnoreEnabled"))
+	if (u)
 	{
-		if (!u->getBoolProperty("IgnoreSilent",KVI_OPTION_BOOL(KviOption_boolVerboseIgnore)) && !msg->msg->haltOutput())
+		if (u->isIgnoreEnabledFor(KviRegisteredUser::Dcc))
 		{
-			msg->msg->console()->output(KVI_OUT_DCCREQUEST,
-				__tr2qs("Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"),
-				&p.szType,&(msg->pSource->nick()),
-				&(msg->pSource->user()),&(msg->pSource->host()),
-				&msg->szTag,&aux);
+			if (KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
+			{
+				msg->msg->console()->output(KVI_OUT_DCCREQUEST,
+					__tr2qs("Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"),
+					&p.szType,&(msg->pSource->nick()),
+					&(msg->pSource->user()),&(msg->pSource->host()),
+					&msg->szTag,&aux);
+			}
+			return;
 		}
-		return;
 	}
 
 	/*if(KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpDcc))

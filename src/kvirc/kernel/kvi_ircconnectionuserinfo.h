@@ -44,7 +44,7 @@ private:
 	QString    m_szLocalHostIp;       // the local host ip as found by resolveLocalHost() at connection startup
 	QString    m_szHostName;          // the local host name that the server reports
 	QString    m_szHostIp;            // the host name above resolved, if possible
-	QString    m_szAwayReazon;
+	QString    m_szAwayReason;
 	bool       m_bAway;               // is the user away ?
 	kvi_time_t m_tAway;               // time at that the user went away
 	QString    m_szNickBeforeAway;    // the nickname that the user had just before going away
@@ -64,7 +64,7 @@ public:
 	const QString & hostName(){ return m_szHostName; };
 	const QString & unmaskedHostName(){ return m_szUnmaskedHostName; };
 	const QString & hostIp(){ return m_szHostIp; };
-	const QString & awayReason() { return m_szAwayReazon; };
+	const QString & awayReason() { return m_szAwayReason; };
 	bool hasUserMode(const QChar & m);
 	bool isAway(){ return m_bAway; };
 	time_t awayTime(){ return m_tAway; };
@@ -80,7 +80,7 @@ protected:
 	void setLocalHostIp(const QString &szLocalHostIp){ m_szLocalHostIp = szLocalHostIp; };
 	bool addUserMode(const QChar &m); // returns false if the mode was already there
 	bool removeUserMode(const QChar &m); // returns fales if the mode was not there
-	void setAwayReason(const QString& szReazon) { m_szAwayReazon=szReazon; };
+	void setAwayReason(const QString& szReazon) { m_szAwayReason=szReazon; };
 	void setAway();
 	void setBack();
 };

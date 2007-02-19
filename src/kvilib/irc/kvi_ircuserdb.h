@@ -31,6 +31,7 @@
 
 #include "kvi_string.h"
 #include "kvi_avatar.h"
+#include "kvi_regusersdb.h"
 
 class KviIrcUserDataBase;
 
@@ -62,6 +63,13 @@ protected:
 
 	int         m_nRefs;
 	bool        m_bBot;
+
+	bool        m_bNotFoundRegUserLoockup;
+	QString     m_szRegisteredUserName;
+	QString     m_szLastRegisteredMatchNick;
+
+	QColor      m_cachedColor;
+	bool        m_bUseCustomColor;
 public:
 	Gender gender() { return m_eGender; };
 	void setBot(bool bIsBot) { m_bBot = bIsBot; };
@@ -105,8 +113,9 @@ public:
 #define KVI_USERFLAG_MODEMASK KVI_USERFLAG_MASK
 
 
-class KVILIB_API KviIrcUserDataBase
+class KVILIB_API KviIrcUserDataBase : public QObject
 {
+	Q_OBJECT
 public:
 	KviIrcUserDataBase();
 	~KviIrcUserDataBase();
@@ -118,6 +127,19 @@ public:
 	KviIrcUserEntry * find(const QString &nick){ return m_pDict->find(nick); };
 	void removeUser(const QString &nick,KviIrcUserEntry * e);
 	KviDict<KviIrcUserEntry> * dict(){ return m_pDict; };
+
+	KviRegisteredUser* registeredUser(const QString & nick);
+	KviRegisteredUser* registeredUser(const QString & nick,const QString & user,const QString & host);
+
+	bool haveCustomColor(const QString & nick);
+	QColor* customColor(const QString & nick);
+
+	void setupConnectionWithReguserDb();
+protected slots:
+	void registeredUserRemoved(const QString&);
+	void registeredUserChanged(const QString&);
+	void registeredUserAdded  (const QString&);
+	void registeredDatabaseCleared();
 };
 
 #endif //_KVI_IRCUSERDB_H_

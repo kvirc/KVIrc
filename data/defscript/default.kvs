@@ -597,7 +597,8 @@ alias(ignore)
 
 	# And finally set the property (use -n so the notify lists will be restarted)
 
-	reguser.setproperty $0 ignore 1
+	reguser.setIgnoreEnabled $0 true
+	reguser.setIgnoreFlags -pct $0
 }
 
 alias(unignore)
@@ -628,7 +629,7 @@ alias(unignore)
 
 	# And finally set the property (use -n so the notify lists will be restarted)
 
-	reguser.setproperty $0 ignore 0
+	reguser.setIgnoreEnabled $0 false
 }
 
 # Dcc...people commonly use "dcc send" instead of "dcc.send"
@@ -882,11 +883,12 @@ defpopup(ignore)
 {
 	prologue
 	{
+		%:inIgnoreList = 0
 		%:regName = $reguser.match($mask($0))
 		%:ignLabelText = "<p><b>$0</b> "
 		if(%:regName)
 		{
-			%:inIgnoreList = $reguser.property(%:regName,IgnoreEnabled);
+			%:inIgnoreList = $reguser.isIgnoreEnabled(%:regName);
 			if(%:inIgnoreList) {
 				%:ignLabelText << $tr("is being ignored")
 			} else {
@@ -900,164 +902,206 @@ defpopup(ignore)
 	
 	label(%:ignLabelText)
 	
-	popup(Ignore) (!%:regName)
+	item($tr("Enable Ignore"),168) (!%:inIgnoreList && %:regName)
+	{
+		reguser.setIgnoreEnabled %:regName 1
+	}
+	
+	popup($tr("Ignore as..."),44) (!%:inIgnoreList)
 	{
 		item($tr("Ignore as") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
-			reguser.add $0 $mask($0,0);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,0);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,1)")") ("$reguser.exactMatch($mask($0,1))" == "")
 		{
-			reguser.add $0 $mask($0,1);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,1);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,2)")") ("$reguser.exactMatch($mask($0,2))" == "")
 		{
-			reguser.add $0 $mask($0,2);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,2);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
 		{
-			reguser.add $0 $mask($0,3);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,3);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
 		{
-			reguser.add $0 $mask($0,4);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,4);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
 		{
-			reguser.add $0 $mask($0,5);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,5);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,6)")") ("$reguser.exactMatch($mask($0,6))" == "")
 		{
-			reguser.add $0 $mask($0,6);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,6);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,7)")") ("$reguser.exactMatch($mask($0,7))" == "")
 		{
-			reguser.add $0 $mask($0,7);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,7);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,8)")") ("$reguser.exactMatch($mask($0,8))" == "")
 		{
-			reguser.add $0 $mask($0,8);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,8);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,9)")") ("$reguser.exactMatch($mask($0,9))" == "")
 		{
-			reguser.add $0 $mask($0,9);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,9);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,10)")") ("$reguser.exactMatch($mask($0,10))" == "")
 		{
-			reguser.add $0 $mask($0,10);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,10);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
-			reguser.add $0 $mask($0,11);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,11);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
 		{
-			reguser.add $0 $mask($0,12);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,12);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
 		{
-			reguser.add $0 $mask($0,13);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,13);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,14)")") ("$reguser.exactMatch($mask($0,14))" == "")
 		{
-			reguser.add $0 $mask($0,14);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,14);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,15)")") ("$reguser.exactMatch($mask($0,15))" == "")
 		{
-			reguser.add $0 $mask($0,15);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,15);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,16)")") ("$reguser.exactMatch($mask($0,16))" == "")
 		{
-			reguser.add $0 $mask($0,16);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,16);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,17)")") ("$reguser.exactMatch($mask($0,17))" == "")
 		{
-			reguser.add $0 $mask($0,18);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,17);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
+		item($tr("Ignore as") $0 "("$mask($0,18)")") ("$reguser.exactMatch($mask($0,17))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,18);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,19)")") ("$reguser.exactMatch($mask($0,19))" == "")
 		{
-			reguser.add $0 $mask($0,19);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,19);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,20)")") ("$reguser.exactMatch($mask($0,20))" == "")
 		{
-			reguser.add $0 $mask($0,20);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,20);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,21)")") ("$reguser.exactMatch($mask($0,21))" == "")
 		{
-			reguser.add $0 $mask($0,21);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,21);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,22)")") ("$reguser.exactMatch($mask($0,22))" == "")
 		{
-			reguser.add $0 $mask($0,22);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,22);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,23)")") ("$reguser.exactMatch($mask($0,23))" == "")
 		{
-			reguser.add $0 $mask($0,23);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,23);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,24)")") ("$reguser.exactMatch($mask($0,24))" == "")
 		{
-			reguser.add $0 $mask($0,24);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,24);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,25)")") ("$reguser.exactMatch($mask($0,25))" == "")
 		{
-			reguser.add $0 $mask($0,25);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,25);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+		
 		item($tr("Ignore as") $0 "("$mask($0,26)")") ("$reguser.exactMatch($mask($0,26))" == "")
 		{
-			reguser.add $0 $mask($0,26);
-			reguser.setproperty $0 IgnoreEnabled 1;
-			reguser.setproperty $0 IgnoreAll 1;
+			if(!%:regName) reguser.add $0 $mask($0,26);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
 		}
+	}
+	
+	item($tr("Unignore"),217) (%:inIgnoreList)
+	{
+		reguser.setIgnoreEnabled %:regName 0
 	}
 }
 

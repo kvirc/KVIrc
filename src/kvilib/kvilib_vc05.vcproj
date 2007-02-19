@@ -471,146 +471,6 @@
 				RelativePath=".\irc\kvi_useridentity.cpp"
 				>
 			</File>
-			<File
-				RelativePath="ext\moc_kvi_crypt.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="net\moc_kvi_dns.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="ext\moc_kvi_garbage.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="net\moc_kvi_http.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="system\moc_kvi_locale.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="ext\moc_kvi_sharedfiles.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="system\moc_kvi_thread.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions="__KVILIB__"
-					/>
-				</FileConfiguration>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -1180,7 +1040,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
+						Description="Moc&apos;ing kvi_ircuserdb.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe irc\kvi_ircuserdb.h -o tmp\moc\moc_kvi_ircuserdb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;irc\kvi_ircuserdb.h"
+						Outputs="tmp\moc\moc_kvi_ircuserdb.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1188,7 +1051,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
+						Description="Moc&apos;ing kvi_ircuserdb.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe irc\kvi_ircuserdb.h -o tmp\moc\moc_kvi_ircuserdb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;irc\kvi_ircuserdb.h"
+						Outputs="tmp\moc\moc_kvi_ircuserdb.cpp"
 					/>
 				</FileConfiguration>
 			</File>
@@ -1604,7 +1470,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
+						Description="Moc&apos;ing kvi_regusersdb.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe ext\kvi_regusersdb.h -o tmp\moc\moc_kvi_regusersdb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;ext\kvi_regusersdb.h"
+						Outputs="tmp\moc\moc_kvi_regusersdb.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1612,7 +1481,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
+						Description="Moc&apos;ing kvi_regusersdb.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe ext\kvi_regusersdb.h -o tmp\moc\moc_kvi_regusersdb.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;ext\kvi_regusersdb.h"
+						Outputs="tmp\moc\moc_kvi_regusersdb.cpp"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3185,6 +3057,185 @@
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 			>
+		</Filter>
+		<Filter
+			Name="Generated MOC Files"
+			Filter="moc;cpp"
+			UniqueIdentifier="{fe6e9830-be46-497d-995d-44b99b58e215}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath="ext\moc_kvi_crypt.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="net\moc_kvi_dns.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ext\moc_kvi_garbage.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="net\moc_kvi_http.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_kvi_ircuserdb.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="system\moc_kvi_locale.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_kvi_regusersdb.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="ext\moc_kvi_sharedfiles.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="system\moc_kvi_thread.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

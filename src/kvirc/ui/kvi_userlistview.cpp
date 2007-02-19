@@ -62,8 +62,6 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-// kvi_app.cpp
-extern KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
 // kvi_app.cpp (loaded and destroyed by KviIconManager)
 extern QPixmap * g_pUserChanStatePixmap;
@@ -118,13 +116,12 @@ bool KviUserListEntry::color(QColor& color)
 	//
 	// FIXME: Unused ?
 	//
-	KviRegisteredUser* pRegisteredUser=g_pRegisteredUserDataBase->findMatchingUser(m_szNick,m_pGlobalData->user(),m_pGlobalData->host());
+	KviRegisteredUser* pRegisteredUser=m_pListView->m_pKviWindow->connection()->userDataBase()->registeredUser(m_szNick);
 	if(pRegisteredUser)
 	{
-		if(pRegisteredUser->getBoolProperty("useCustomColor"))
+		if(m_pListView->m_pKviWindow->connection()->userDataBase()->haveCustomColor(m_szNick))
 		{
-			QString szTmp=pRegisteredUser->getProperty("customColor");
-			KviStringConversion::fromString(szTmp,color);
+			color=*(m_pListView->m_pKviWindow->connection()->userDataBase()->customColor(m_szNick));
 			return true;
 		}
 	}
@@ -1479,16 +1476,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				// if we REALLY need to use custom colors for regged users then
 				// they should be updated ONCE and stored (cached) in the KviUserListEntry structure
 				//
-				KviRegisteredUser* pRegisteredUser=g_pRegisteredUserDataBase->findMatchingUser(e->m_szNick,e->m_pGlobalData->user(),e->m_pGlobalData->host());
-				if(pRegisteredUser)
+				if(m_pListView->m_pKviWindow->connection()->userDataBase()->haveCustomColor(e->m_szNick))
 				{
-					if(pRegisteredUser->getBoolProperty("useCustomColor"))
-					{
-						pClrFore = new QColor();
-						QString szTmp=pRegisteredUser->getProperty("customColor");
-						KviStringConversion::fromString(szTmp,(*pClrFore));
-						bColorAllocated=1; // bool is true or false
-					}
+					pClrFore = m_pListView->m_pKviWindow->connection()->userDataBase()->customColor(e->m_szNick);
 				}
 				if(!pClrFore)
 				{

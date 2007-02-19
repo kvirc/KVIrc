@@ -25,9 +25,11 @@
 
 #define __KVILIB__
 
-
 #include "kvi_debug.h"
+
+#define _KVI_REGUSERDB_CPP_
 #include "kvi_regusersdb.h"
+
 #include "kvi_config.h"
 #include "kvi_locale.h"
 
@@ -123,6 +125,8 @@
 // KviRegisteredMask
 //
 
+KVILIB_API KviRegisteredUserDataBase* g_pRegisteredUserDataBase = 0;
+
 KviRegisteredMask::KviRegisteredMask(KviRegisteredUser * u,KviIrcMask * m)
 {
 	m_pUser = u;
@@ -138,6 +142,8 @@ KviRegisteredMask::KviRegisteredMask(KviRegisteredUser * u,KviIrcMask * m)
 
 KviRegisteredUser::KviRegisteredUser(const QString & name)
 {
+	m_iIgnoreFlags  =0;
+	m_bIgnoreEnabled=false;
 	m_szName        = name;
 	m_pPropertyDict = 0;
 	m_pMaskList     = new KviPtrList<KviIrcMask>;
@@ -148,6 +154,12 @@ KviRegisteredUser::~KviRegisteredUser()
 {
 	if(m_pPropertyDict)delete m_pPropertyDict;
 	delete m_pMaskList;
+}
+
+bool KviRegisteredUser::isIgnoreEnabledFor(IgnoreFlags flag)
+{
+	if(!m_bIgnoreEnabled) return false;
+	return m_iIgnoreFlags & flag;
 }
 
 KviIrcMask * KviRegisteredUser::findMask(const KviIrcMask &mask)
@@ -309,6 +321,7 @@ KviRegisteredUserDataBase::KviRegisteredUserDataBase()
 
 KviRegisteredUserDataBase::~KviRegisteredUserDataBase()
 {
+	emit(databaseCleared());
 	delete m_pUserDict;
 	delete m_pWildMaskList;
 	delete m_pMaskDict;
@@ -321,6 +334,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addUser(const QString & name)
 	if(m_pUserDict->find(name))return 0;
 	KviRegisteredUser * u = new KviRegisteredUser(name);
 	m_pUserDict->replace(u->name(),u); //u->name() because we're NOT copying keys!
+	emit(userAdded(name));
 	return u;
 }
 
@@ -429,6 +443,7 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 	m_pWildMaskList->clear();
 	m_pMaskDict->clear();
 	m_pGroupDict->clear();
+	emit(databaseCleared());
 
 	KviDictIterator<KviRegisteredUser> it(*(db->m_pUserDict));
 
@@ -453,6 +468,8 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 				++pdi;
 			}
 		}
+		u->m_iIgnoreFlags=theCur->m_iIgnoreFlags;
+		u->m_bIgnoreEnabled=theCur->m_bIgnoreEnabled;
 		u->setGroup(theCur->group());
 		++it;
 	}
@@ -476,6 +493,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 		if(!removeMaskByPointer(mask))
 			debug("Ops... removeMaskByPointer(%s) failed ?",KviQString::toUtf8(name).data());
 	}
+	emit(userRemoved(name));
 	m_pUserDict->remove(name);
 	return true;
 }
@@ -491,7 +509,12 @@ bool KviRegisteredUserDataBase::removeMask(const KviIrcMask &mask)
 	// find the mask pointer
 	KviRegisteredMask * m = findExactMask(mask);
 	// and remove it
-	if(m)return removeMaskByPointer(m->mask());
+	if(m){
+		if(removeMaskByPointer(m->mask()))
+		{
+			return true;
+		}
+	}
 	return 0;
 }
 
@@ -506,6 +529,7 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 			if(m->mask() == mask)
 			{
 				// ok..got it, remove from the list and from the user struct (user struct deletes it!)
+				emit(userChanged(mask->nick()));
 				m->user()->removeMask(mask);    // this one deletes m->mask()
 				m_pWildMaskList->removeRef(m);  // this one deletes m
 				return true;
@@ -522,6 +546,7 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 				if(m->mask() == mask)
 				{
 					QString nick = mask->nick();
+					emit(userChanged(nick));
 					m->user()->removeMask(mask); // this one deletes m->mask() (or mask)
 					l->removeRef(m);             // this one deletes m
 					if(l->count() == 0)m_pMaskDict->remove(nick);
@@ -626,6 +651,7 @@ void KviRegisteredUserDataBase::load(const QString & filename)
 	KviConfigIterator it(*cfg.dict());
 	while(it.current())
 	{
+		cfg.setGroup(it.currentKey());
 		szCurrent=it.currentKey();
 		if(KviQString::equalCSN("#Group ",szCurrent,7))
 		{
@@ -636,6 +662,8 @@ void KviRegisteredUserDataBase::load(const QString & filename)
 			
 			if(u)
 			{
+				u->setIgnoreEnabled(cfg.readBoolEntry("IgnoreEnabled",false));
+				u->setIgnoreFlags(cfg.readIntEntry("IgnoreFlags",0));
 				KviConfigGroupIterator sdi(*(it.current()));
 				while(sdi.current())
 				{
@@ -675,6 +703,8 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 	{
 		cfg.setGroup(it.current()->name());
 		// Write properties
+		cfg.writeEntry("IgnoreEnabled",it.current()->ignoreEnagled());
+		cfg.writeEntry("IgnoreFlags",it.current()->ignoreFlags());
 		if(it.current()->propertyDict())
 		{
 			KviDictIterator<QString> pit(*(it.current()->propertyDict()));
