@@ -419,7 +419,8 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	g->addMultiCellWidget(f,4,4,0,2);
 
 	m_pCustomColorCheck = new KviStyledCheckBox(__tr2qs("Use custom color in userlist"),p2);
-	m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
+	if(r)
+		m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
 	g->addMultiCellWidget(m_pCustomColorCheck,5,5,0,1);
 
 	m_pCustomColorSelector = new KviColorSelector(p2,QString::null,m_pCustomColor,1);
