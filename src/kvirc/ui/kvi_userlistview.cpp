@@ -1925,7 +1925,15 @@ void KviUserListViewArea::mouseReleaseEvent(QMouseEvent *)
 
 void KviUserListViewArea::wheelEvent(QWheelEvent *e)
 {
+#ifdef COMPILE_USE_QT4
+	static bool bHere = false; // Qt4(<= 4.2.2) has a nasty bug that makes the re-sent wheelEvent to cause infinite recursion
+	if(bHere)return;
+	bHere = true;
+#endif
 	g_pApp->sendEvent(m_pScrollBar,e);
+#ifdef COMPILE_USE_QT4
+	bHere = false;
+#endif
 }
 
 #include "kvi_userlistview.moc"

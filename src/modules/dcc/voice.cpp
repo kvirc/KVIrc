@@ -652,7 +652,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
 
 	m_pHBox = new KviTalHBox(this);
@@ -767,7 +767,7 @@ void KviDccVoice::connectionInProgress()
 		if(m_pDescriptor->bSendRequest)
 		{
 			KviStr ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
-			KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort.utf8().data() : m_pMarshal->localPort();
+			KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 //#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 			struct in_addr a;
 			if(kvi_stringIpToBinaryIp(ip.ptr(),&a))ip.setNum(htonl(a.s_addr));

@@ -39,6 +39,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_cmdformatter.h"
 #include "kvi_module.h"
+#include "kvi_valuelist.h"
 
 #include <qsplitter.h>
 #include <qlayout.h>
@@ -209,7 +210,11 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
 
+#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+#else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this);
+#endif
 
 	l->addWidget(m_pSplitter,0,0);
 	
@@ -698,7 +703,7 @@ void KviAliasEditor::saveProperties(KviConfig *cfg)
 
 void KviAliasEditor::loadProperties(KviConfig *cfg)
 {
-	QValueList<int> def;
+	KviValueList<int> def;
 	def.append(20);
 	def.append(80);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Sizes",def));

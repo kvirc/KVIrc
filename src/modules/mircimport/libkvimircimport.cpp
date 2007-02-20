@@ -232,7 +232,7 @@ void KviRemoteMircServerImportWizard::start()
 
 void KviRemoteMircServerImportWizard::getListMessage(const QString &message)
 {
-	if(message)m_pOutput->setText(message);
+	if(!message.isEmpty())m_pOutput->setText(message);
 }
 
 

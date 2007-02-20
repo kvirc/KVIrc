@@ -501,6 +501,8 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 
 	KviKvsTreeNodeExpression * left = parseExpressionOperand(terminator);
 	if(!left)return 0;
+	QString sz;
+	left->contextDescription(sz);
 
 	skipSpaces();
 
@@ -518,12 +520,11 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 		delete left;
 		return 0; // error
 	}
+	curTopOperator->contextDescription(sz);
 
 	curTopOperator->setLeft(left);
 
 	// ok.. parse the right side
-	
-
 
 	// Now curTopOperator has the left subtree (one node) set
 	// and it points to the TOP (=ROOT) node
@@ -543,6 +544,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 			delete curTopOperator;
 			return 0;
 		}
+		operand->contextDescription(sz);
 		
 		skipSpaces();
 		
@@ -561,13 +563,18 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 			return 0;
 		}
 
+		auxOperator->contextDescription(sz);
+
+
 		//now compare operators...
-		if(incompleteOperator->precedence() >= auxOperator->precedence())
+		if(incompleteOperator->precedence() > auxOperator->precedence())
 		{
+			// This in fact means that incomplete has LOWER precedence than
+			// aux and thus aux should be done first.
 			incompleteOperator->setRight(auxOperator);
 			auxOperator->setLeft(operand);
 		} else {
-			// precedence of operators...
+			// incomplete has GREATER precedence than aux and thus aux should be done first
 			incompleteOperator->setRight(operand); //right tree complete
 			// go up until we find an operator with lower precedence than auxOperator (>=)
 			KviKvsTreeNodeExpression * tempOperator = incompleteOperator->parentWithPrecedenceLowerThan(auxOperator->precedence());

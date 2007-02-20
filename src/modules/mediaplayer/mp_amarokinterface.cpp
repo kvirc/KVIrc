@@ -177,7 +177,7 @@ bool KviAmarokInterface::playMrl(const QString &mrl)
 {
 	QString title;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	QDataStream arg(data,IO_WriteOnly);
 	arg << KURL(mrl);
 	if(!g_pApp->dcopClient()->call(m_szAppId,"playlist","playMedia(KURL)",data,replyType,replyData))

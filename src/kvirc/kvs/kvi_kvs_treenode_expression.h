@@ -33,31 +33,37 @@
 #define PREC_MAXIMUM -10
 
 
-#define PREC_OP_LOGICALNOT -3          /* !  */
-#define PREC_OP_BITWISENOT -2          /* ~  */
-#define PREC_OP_NEGATE -1              /* -  */
+#define PREC_OP_LOGICALNOT -3           /* !  */
+#define PREC_OP_BITWISENOT -2           /* ~  */
+#define PREC_OP_NEGATE -1               /* -  */
 // high precedence
-#define PREC_OP_BITWISEAND 0           /* &  */
-#define PREC_OP_BITWISEOR 1            /* |  */
-#define PREC_OP_BITWISEXOR 2           /* ^  */
-#define PREC_OP_SHIFTRIGHT 3           /* >> */
-#define PREC_OP_SHIFTLEFT 4            /* << */
-#define PREC_OP_MULTIPLICATION 5       /* *  */
-#define PREC_OP_DIVISION 6             /* /  */
-#define PREC_OP_MODULUS 7              /* %  */
-#define PREC_OP_SUM 8                  /* +  */
-#define PREC_OP_SUBTRACTION 9          /* -  */
+#define PREC_OP_BITWISEAND 0            /* &  */
+#define PREC_OP_BITWISEOR 1             /* |  */
+#define PREC_OP_BITWISEXOR 2            /* ^  */
 
-#define PREC_OP_GREATERTHAN 10         /* >  */ /* Case sensitive (normal for numbers) */
-#define PREC_OP_LOWERTHAN 11           /* <  */ /* Case sensitive (normal for numbers) */
-#define PREC_OP_EQUALTO 12             /* == */ /* Case sensitive comparison for strings or normal comp.fr numbers */
-#define PREC_OP_GREATEROREQUALTO 13    /* >= */ /* Case sensitive (normal for numbers) */
-#define PREC_OP_LOWEROREQUALTO 14      /* <= */ /* Case sensitive (normal for numbers) */
-#define PREC_OP_NOTEQUALTO 15          /* != */ /* Case sensitive (normal for numbers) */
+#define PREC_OP_SHIFTRIGHT 3            /* >> */
+#define PREC_OP_SHIFTLEFT 3             /* << */
 
-#define PREC_OP_AND 16                 /* && */
-#define PREC_OP_OR 17                  /* || */
-#define PREC_OP_XOR 18                 /* ^^ */
+#define PREC_OP_MULTIPLICATION 5        /* *  */
+#define PREC_OP_DIVISION 5              /* /  */
+#define PREC_OP_MODULUS 5               /* %  */
+
+#define PREC_OP_SUM 8                   /* +  */
+#define PREC_OP_SUBTRACTION 8           /* -  */
+
+#define PREC_OP_GREATERTHAN 11          /* >  */ /* Case sensitive (normal for numbers) */
+#define PREC_OP_LOWERTHAN 11            /* <  */ /* Case sensitive (normal for numbers) */
+
+#define PREC_OP_EQUALTO 12              /* == */ /* Case sensitive comparison for strings or normal comp.fr numbers */
+
+#define PREC_OP_GREATEROREQUALTO 14     /* >= */ /* Case sensitive (normal for numbers) */
+#define PREC_OP_LOWEROREQUALTO 14       /* <= */ /* Case sensitive (normal for numbers) */
+
+#define PREC_OP_NOTEQUALTO 15           /* != */ /* Case sensitive (normal for numbers) */
+
+#define PREC_OP_AND 16                  /* && */
+#define PREC_OP_OR 17                   /* || */
+#define PREC_OP_XOR 18                  /* ^^ */
 // low precedence
 
 

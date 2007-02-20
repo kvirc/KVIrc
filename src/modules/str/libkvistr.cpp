@@ -1988,7 +1988,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 			if(reallen == allocsize)INCREMENT_MEM
 	
 			//copy up to a '?'
-			if(*fmt != '?')
+			if(fmt->unicode() != '?')
 			{
 				*p++ = *fmt;
 				reallen++;
@@ -1996,7 +1996,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 			}
 	
 			++fmt; //skip this '?'
-			switch(*fmt)
+			switch(fmt->unicode())
 			{
 				case 's':
 				{
@@ -2139,7 +2139,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 				}
 				case '?':
 				{
-					if(*fmt)
+					if(fmt->unicode())
 					{
 						if(reallen == allocsize)INCREMENT_MEM
 						*p++ = *fmt;
@@ -2202,7 +2202,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 							fmt = save;
 							*p++ = '?';  //write it
 							reallen++;
-							if(*fmt)
+							if(fmt->unicode())
 							{
 								if(reallen == allocsize)INCREMENT_MEM
 								*p++ = *fmt;
@@ -2218,7 +2218,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 				{
 					*p++ = '?';  //write it
 					reallen++;
-					if(*fmt)
+					if(fmt->unicode())
 					{
 						if(reallen == allocsize)INCREMENT_MEM
 						*p++ = *fmt;

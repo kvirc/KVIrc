@@ -22,6 +22,10 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "broker.h"
+
+#ifdef COMPILE_DCC_CANVAS
+
 
 #include <qcanvas.h>
 
@@ -313,5 +317,6 @@ protected:
 };
 
 
+#endif
 
 #endif //_CANVAS_WIDGET_H_

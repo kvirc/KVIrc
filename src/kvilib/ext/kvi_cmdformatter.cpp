@@ -174,7 +174,7 @@ namespace KviCommandFormatter
 		{
 			buffer.remove(0,1);
 			buffer.remove(buffer.length() - 1,1);
-			while((buffer.at(0) == QChar('\n')) || (buffer.at(0) == QChar('\r')))
+			while((buffer.length() > 0) && ((buffer.at(0) == QChar('\n')) || (buffer.at(0) == QChar('\r'))))
 				buffer.remove(0,1);
 		}
 

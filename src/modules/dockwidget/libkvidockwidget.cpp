@@ -54,7 +54,7 @@
 #include <qpixmap.h>
 #include <qpainter.h>
 #include <qtimer.h>
-
+#include <qevent.h>
 #include <qregexp.h>
 
 #include <stdlib.h>
@@ -122,7 +122,9 @@ KviDockWidget::KviDockWidget(KviFrame * frm,const char * name)
 	createTaskbarIcon();
 #else //!COMPILE_ON_WINDOWS
 	setMinimumSize(22,22);
-	setBackgroundMode(X11ParentRelative);
+	#ifndef COMPILE_USE_QT4
+		setBackgroundMode(X11ParentRelative);
+	#endif
 	#ifdef COMPILE_KDE_SUPPORT
 		KWin::setSystemTrayWindowFor(winId(),frm->winId());
 	#endif
@@ -138,9 +140,11 @@ KviDockWidget::KviDockWidget(KviFrame * frm,const char * name)
 	m_pContextPopup->insertTitle(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("KVIrc"));
 #else
 	m_pContextPopup = new KviTalPopupMenu(this);
+#ifndef COMPILE_USE_QT4
 	QLabel * l = new QLabel(__tr2qs("KVIrc"),m_pContextPopup);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pContextPopup->insertItem(l);
+#endif
 #endif
 	m_pContextPopup->setCaption(__tr2qs("Context"));
 	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);
@@ -605,6 +609,19 @@ void KviDockWidget::grabActivityInfo()
 
 void KviDockWidget::paintEvent(QPaintEvent * event)
 {
+#ifdef COMPILE_USE_QT4
+	QPainter thisRestrictionOfQt4IsNotNice(this);
+	if(m_bFlashed)
+	{
+		erase();
+		thisRestrictionOfQt4IsNotNice.drawPixmap(4,4,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
+	} else {
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,12,12,m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,0,12,12);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,12,12,12,m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,12,12,12);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(12,0,12,12,m_iQueries ? ((m_iQueries == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,12,0,12,12);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(12,12,12,12,m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,12,12,12,12);
+	}
+#else
 	if(m_bFlashed)
 	{
 		erase();
@@ -615,6 +632,7 @@ void KviDockWidget::paintEvent(QPaintEvent * event)
 		bitBlt(this,12,0,m_iQueries ? ((m_iQueries == 2) ? g_pDock3 : g_pDock2) : g_pDock1,12,0,12,12,Qt::CopyROP,false);
 		bitBlt(this,12,12,m_iChannels ? ((m_iChannels == 2) ? g_pDock3 : g_pDock2) : g_pDock1,12,12,12,12,Qt::CopyROP,false);
 	}
+#endif
 }
 
 

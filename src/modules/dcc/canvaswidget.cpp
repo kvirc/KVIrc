@@ -22,6 +22,9 @@
 
 #include "canvaswidget.h"
 
+#ifdef COMPILE_DCC_CANVAS
+
+
 #include <qcursor.h>
 #include <qpainter.h>
 #include <qsimplerichtext.h>
@@ -1594,3 +1597,5 @@ void KviCanvasWidget::resizeEvent(QResizeEvent *)
 
 
 #include "m_canvaswidget.moc"
+
+#endif

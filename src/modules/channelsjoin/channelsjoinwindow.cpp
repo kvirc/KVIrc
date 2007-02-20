@@ -42,7 +42,12 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qheader.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+#else
+	#include <qheader.h>
+#endif
+#include <qevent.h>
 
 extern KviChannelsJoinWindow * g_pChannelsWindow;
 extern QRect                   g_rectChannelsJoinGeometry;
@@ -69,7 +74,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
 
 
-	m_pGroupBox = new KviTalGroupBox(2,KviTalGroupBox::Horizontal,__tr2qs("Channel" ),this);
+	m_pGroupBox = new KviTalGroupBox(2,Qt::Horizontal,__tr2qs("Channel" ),this);
 	QString szMsg = __tr2qs("Name");
 	szMsg.append(":");
 	QLabel * l = new QLabel(szMsg,m_pGroupBox);
@@ -93,7 +98,11 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
+#ifdef COMPILE_USE_QT4
+	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
+#else
 	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,AlignHCenter);
+#endif
 
 
 	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);

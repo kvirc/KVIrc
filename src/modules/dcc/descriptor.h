@@ -27,7 +27,7 @@
 #include "kvi_string.h"
 #include "kvi_console.h"
 
-#include <qintdict.h>
+#include "kvi_intdict.h"
 
 
 class KviDccWindow;
@@ -71,7 +71,7 @@ public:
 	unsigned int id() const { return m_uId; };
 	const QString & idString() const { return m_szId; };
 	static KviDccDescriptor * find(unsigned int uId);
-	static QIntDict<KviDccDescriptor> * descriptorDict();
+	static KviIntDict<KviDccDescriptor> * descriptorDict();
 
 	void triggerCreationEvent(); // this MUST be called by the creator of the descriptor!
 //private:

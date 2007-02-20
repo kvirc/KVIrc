@@ -3,6 +3,18 @@
    - Completely reworked ignore system
    - Implemented reguser match caching
    - Implemented custom color for registered user caching
+   [Pragma]
+   - Yet more Qt4 port.
+     - We now require Qt >= 4.2.2 for Qt4 support to work. Older 4.x versions
+       have bugs that can't be worked around and tend to crash kvirc
+       in various circumstances (including displaying tooltips).
+       Qt 4.2 also re-adds the possibility to add QWidget objects to popup menus.
+     - Yet more modules ported.
+   - A fix for the KVS expression operator precedence.
+   - A couple of general fixes that I can't remember but have been reported on
+     the list.
+   - I'm thinking about qmake support (as suggested by Matteo Catanese some time ago)
+     ... will require some work ... what do you think about it ?
    
 18 Feb 2007
    [Alexey]

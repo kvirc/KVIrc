@@ -21,6 +21,8 @@
 #ifndef CS_TRAYICON_H
 #define CS_TRAYICON_H
 
+#if 0
+
 #include "kvi_settings.h"
 
 #include <qobject.h>
@@ -92,5 +94,7 @@ private:
 
 	friend class TrayIconPrivate;
 };
+
+#endif
 
 #endif // CS_TRAYICON_H

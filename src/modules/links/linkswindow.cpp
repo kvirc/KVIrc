@@ -45,7 +45,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 {
 	g_pLinksWindowList->append(this);
 
-	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
 
 	// The button box on the left
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
@@ -63,8 +63,8 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	connect(lpConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
-	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
 
 	m_pListView  = new KviTalListView(m_pVertSplitter);
 	m_pListView->addColumn(__tr2qs("Link"));

@@ -286,11 +286,18 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * pt
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
-:QWidget(parent,"irc_view") 
+: QWidget(parent,"irc_view") 
 {
 	// Ok...here we go
-	
 	// initialize the initializable
+
+#ifdef COMPILE_USE_QT4
+	setAttribute(Qt::WA_NoSystemBackground); // This disables automatic qt double buffering
+	setAttribute(Qt::WA_PaintOutsidePaintEvent);
+	setAttribute(Qt::WA_OpaquePaintEvent);
+	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
+#endif
+
 	m_iFlushTimer = 0;
 	m_pToolsPopup = 0;
 	m_pFirstLine               = 0;
@@ -309,7 +316,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	{
 		m_iMaxLines = 32;
 		KVI_OPTION_UINT(KviOption_uintIrcViewMaxBufferSize) = 32;
-	}
+	} 
 
 	m_bMouseIsDown               = false;
 
@@ -909,7 +916,15 @@ bool KviIrcView::event(QEvent *e)
 
 void KviIrcView::wheelEvent(QWheelEvent *e)
 {
+#ifdef COMPILE_USE_QT4
+	static bool bHere = false;
+	if(bHere)return;
+	bHere = true; // Qt4 tends to jump into infinite recursion here
+#endif
 	g_pApp->sendEvent(m_pScrollBar,e);
+#ifdef COMPILE_USE_QT4
+	bHere = false;
+#endif
 }
 
 

@@ -2394,7 +2394,13 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	if test "$SS_USE_QT4" = "no"; then
 		SS_LIBLINK="-l$SS_QTLIB_NAME"
 	else
-		SS_LIBLINK="-lQtCore -lQtGui -lQt3Support"
+		#if test -n "SS_LOCAL_ADD_DEBUG_SYMBOLS"; then
+		#	SS_LIBLINK="-lQtCore_debug -lQtGui_debug -lQt3Support_debug"
+		#else
+		
+			SS_LIBLINK="-lQtCore -lQtGui -lQt3Support"
+			
+		#fi
 	fi
 	
 	if test -n "$SS_X_LIBLINK"; then

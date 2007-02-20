@@ -9,13 +9,13 @@ pluglib_LTLIBRARIES      = libkvidockwidget.la
 
 libkvidockwidget_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
-libkvidockwidget_la_SOURCES = libkvidockwidget.cpp trayicon_x11.cpp trayicon.cpp trayicon_mac.cpp
+libkvidockwidget_la_SOURCES = libkvidockwidget.cpp
 
-nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
+#nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
 
 libkvidockwidget_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
-noinst_HEADERS= libkvidockwidget.h trayicon.h
+noinst_HEADERS= libkvidockwidget.h
 
 tmpdir = $(picsdir)
 

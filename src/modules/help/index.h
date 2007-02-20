@@ -31,6 +31,8 @@
 
 #include <qstringlist.h>
 #include "kvi_dict.h"
+#include "kvi_list.h"
+#include "kvi_valuelist.h"
 #include <qdatastream.h>
 #include <qobject.h>
 
@@ -62,12 +64,12 @@ class Index : public QObject
 public:
     struct Entry {
 	Entry( int d ) { documents.append( Document( d, 1 ) ); }
-	Entry( QValueList<Document> l ) : documents( l ) {}
-	QValueList<Document> documents;
+	Entry( KviValueList<Document> l ) : documents( l ) {}
+	KviValueList<Document> documents;
     };
     struct PosEntry {
 	PosEntry( int p ) { positions.append( p ); }
-	QValueList<uint> positions;
+	KviValueList<uint> positions;
     };
     Index( const QString &dp, const QString &hp );
     Index( const QStringList &dl, const QString &hp );
@@ -92,7 +94,7 @@ private:
     void insertInDict( const QString&, int );
     QStringList getWildcardTerms( const QString& );
     QStringList split( const QString& );
-    QValueList<Document> setupDummyTerm( const QStringList& );
+    KviValueList<Document> setupDummyTerm( const QStringList& );
     bool searchForPattern( const QStringList&, const QStringList&, const QString& );
     void buildMiniDict( const QString& );
     QStringList docList;
@@ -107,18 +109,20 @@ private:
 };
 
 struct Term {
-    Term( const QString &t, int f, QValueList<Document> l )
+    Term( const QString &t, int f, KviValueList<Document> l )
 	: term( t ), frequency( f ), documents( l ) {}
     QString term;
     int frequency;
-    QValueList<Document>documents;
+    KviValueList<Document>documents;
 };
 
-class TermList : public QPtrList<Term>
+class TermList : public KviPtrList<Term>
 {
 public:
-    TermList() : QPtrList<Term>() {}
+    TermList() : KviPtrList<Term>() {}
+#ifndef COMPILE_USE_QT4
     int compareItems( QPtrCollection::Item i1, QPtrCollection::Item i2 );
+#endif
 };
 
 #endif

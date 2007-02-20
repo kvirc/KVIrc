@@ -47,6 +47,7 @@
 #include "kvi_tal_popupmenu.h"
 #include <qtooltip.h>
 #include <qpushbutton.h>
+#include <qevent.h>
 
 extern KviEventEditorWindow * g_pEventEditorWindow;
 
@@ -69,7 +70,7 @@ KviEventEditor::KviEventEditor(QWidget * par)
 {
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
 
-	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
+	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 
 	l->addWidget(spl,0,0);
 

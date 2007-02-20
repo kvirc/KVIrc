@@ -29,6 +29,7 @@
 #include "kvi_qstring.h"
 
 #include <q3popupmenu.h>
+#include <qwidgetaction.h>
 
 class KVILIB_API KviTalPopupMenu : public Q3PopupMenu
 {
@@ -72,6 +73,13 @@ public:
 	int insertItem(const QString &szText,QMenu *pMenu)
 	{
 		return Q3PopupMenu::insertItem(szText,pMenu,-1,-1);
+	}
+	int insertItem(QWidget * pWidget)
+	{
+		// needs Qt 4.2
+		QWidgetAction * pAct = new QWidgetAction(this);
+		pAct->setDefaultWidget(pWidget);
+		addAction(pAct);
 	}
 
 

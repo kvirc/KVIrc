@@ -37,6 +37,10 @@ int IdlePlatform::secondsIdle() { return 0; }
 #include<X11/Xutil.h>
 #include<X11/extensions/scrnsaver.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <qdesktopwidget.h>
+#endif
+
 static XErrorHandler old_handler = 0;
 extern "C" int xerrhandler(Display* dpy, XErrorEvent* err)
 {

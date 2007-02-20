@@ -36,8 +36,14 @@
 
 class QPushButton;
 class QPixmap;
-class QSimpleRichText;
 class KviKvsScriptAddon;
+
+#ifdef COMPILE_USE_QT4
+	#include <q3simplerichtext.h>
+	#define QSimpleRichText Q3SimpleRichText
+#else
+	#include <qsimplerichtext.h>
+#endif
 
 class KviScriptAddonListViewItem : public KviTalListViewItem
 {

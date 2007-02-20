@@ -1,3 +1,5 @@
+#if 0
+
 /*
  * trayicon_win.cpp - Windows trayicon, adapted from Qt example
  * Copyright (C) 2003  Justin Karneges
@@ -257,3 +259,5 @@ void TrayIcon::sysUpdateToolTip()
     if ( d )
 		d->trayMessage( NIM_MODIFY );
 }
+
+#endif

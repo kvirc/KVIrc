@@ -39,7 +39,11 @@
 #include <qsplitter.h>
 #include <qtooltip.h>
 #include "kvi_tal_hbox.h"
-#include <qheader.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+#else
+	#include <qheader.h>
+#endif
 #include <qpainter.h>
 #include <qmessagebox.h>
 #include <qclipboard.h>
@@ -47,6 +51,7 @@
 #include <qfile.h>
 #include <qlabel.h>
 #include <qfontmetrics.h>
+#include <qevent.h>
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <kurl.h>
@@ -150,8 +155,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 
 	m_pInput   = new KviInput(this,0);
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
-	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
 
 	m_pListView  = new KviTalListView(m_pVertSplitter);
 	//m_pListView->header()->hide();
@@ -574,10 +579,14 @@ void KviFileTransferWindow::copyLocalFileToClipboard()
 	if(!t)return;
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
+#ifdef COMPILE_USE_QT4
+	QApplication::clipboard()->setText(tmp);
+#else
 	QApplication::clipboard()->setSelectionMode(false);
 	QApplication::clipboard()->setText(tmp);
 	QApplication::clipboard()->setSelectionMode(true);
 	QApplication::clipboard()->setText(tmp);
+#endif
 }
 
 void KviFileTransferWindow::openLocalFileFolder()

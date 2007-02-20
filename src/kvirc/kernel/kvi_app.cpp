@@ -164,7 +164,7 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0; // global crypt engine manager
 #endif
 
-KviApp::KviApp(int argc,char ** argv)
+KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
 {
 	// Ok...everything begins here
@@ -176,6 +176,7 @@ KviApp::KviApp(int argc,char ** argv)
 	m_pPendingAvatarChanges = 0;
 	m_pRecentChannelsDict   = 0;
 	m_pIpcSentinel          = 0;
+	m_iHeartbeatTimerId     = -1;
 	// next step is setup()
 	m_bSetupDone = false;
 }

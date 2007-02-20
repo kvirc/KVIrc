@@ -34,7 +34,7 @@
 #include "kvi_app.h"
 #include "kvi_thread.h"
 
-KviMediaPlayerDCOPInterface::KviMediaPlayerDCOPInterface(const QCString &szAppId)
+KviMediaPlayerDCOPInterface::KviMediaPlayerDCOPInterface(const KviQCString &szAppId)
 : KviMediaPlayerInterface()
 {
 	m_szAppId = szAppId;
@@ -51,14 +51,14 @@ bool KviMediaPlayerDCOPInterface::ensureAppRunning(const QString &szApp)
 }
 
 
-bool KviMediaPlayerDCOPInterface::simpleDCOPCall(const QCString &szObj,const QCString &szFunc)
+bool KviMediaPlayerDCOPInterface::simpleDCOPCall(const KviQCString &szObj,const KviQCString &szFunc)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data;
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviMediaPlayerDCOPInterface::boolDCOPCall(const QCString &szObj,const QCString &szFunc,bool bVal)
+bool KviMediaPlayerDCOPInterface::boolDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool bVal)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data;
@@ -67,7 +67,7 @@ bool KviMediaPlayerDCOPInterface::boolDCOPCall(const QCString &szObj,const QCStr
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviMediaPlayerDCOPInterface::intDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal)
+bool KviMediaPlayerDCOPInterface::intDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int iVal)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data;
@@ -76,7 +76,7 @@ bool KviMediaPlayerDCOPInterface::intDCOPCall(const QCString &szObj,const QCStri
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviMediaPlayerDCOPInterface::floatDCOPCall(const QCString &szObj,const QCString &szFunc,float fVal)
+bool KviMediaPlayerDCOPInterface::floatDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,float fVal)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data;
@@ -85,7 +85,7 @@ bool KviMediaPlayerDCOPInterface::floatDCOPCall(const QCString &szObj,const QCSt
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviMediaPlayerDCOPInterface::stringDCOPCall(const QCString &szObj,const QCString &szFunc,QString szVal)
+bool KviMediaPlayerDCOPInterface::stringDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString szVal)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QByteArray data;
@@ -94,12 +94,12 @@ bool KviMediaPlayerDCOPInterface::stringDCOPCall(const QCString &szObj,const QCS
 	return g_pApp->dcopClient()->send(m_szAppId,szObj,szFunc,data);
 }
 
-bool KviMediaPlayerDCOPInterface::stringRetDCOPCall(const QCString &szObj,const QCString &szFunc,QString &ret)
+bool KviMediaPlayerDCOPInterface::stringRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString &ret)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QString title;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
 	QDataStream reply( replyData, IO_ReadOnly );
@@ -111,12 +111,12 @@ bool KviMediaPlayerDCOPInterface::stringRetDCOPCall(const QCString &szObj,const 
 	return false;
 }
 
-bool KviMediaPlayerDCOPInterface::intRetDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret)
+bool KviMediaPlayerDCOPInterface::intRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int &ret)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QString title;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
 	QDataStream reply( replyData, IO_ReadOnly );
@@ -128,12 +128,12 @@ bool KviMediaPlayerDCOPInterface::intRetDCOPCall(const QCString &szObj,const QCS
 	return false;
 }
 
-bool KviMediaPlayerDCOPInterface::boolRetDCOPCall(const QCString &szObj,const QCString &szFunc,bool &ret)
+bool KviMediaPlayerDCOPInterface::boolRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool &ret)
 {
 	if(!ensureAppRunning(m_szAppId))return false;
 	QString title;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
 	QDataStream reply( replyData, IO_ReadOnly );
@@ -148,9 +148,9 @@ bool KviMediaPlayerDCOPInterface::boolRetDCOPCall(const QCString &szObj,const QC
 
 bool KviMediaPlayerDCOPInterface::findRunningApp(const QString &szApp)
 {
-	QValueList<QCString> allApps = g_pApp->dcopClient() ->registeredApplications();
-	QValueList<QCString>::iterator iterator;
-	QCString sz = szApp.local8Bit();
+	QValueList<KviQCString> allApps = g_pApp->dcopClient() ->registeredApplications();
+	QValueList<KviQCString>::iterator iterator;
+	KviQCString sz = szApp.local8Bit();
 	for(iterator = allApps.begin();iterator != allApps.end();iterator++)
 	{
 		if(*iterator == sz)return true;
@@ -182,7 +182,7 @@ bool KviMediaPlayerDCOPInterface::startApp(const QString &szApp,int iWaitMSecs)
 	// but we want to be able to wait a defined amount of time
 	QStringList tmp;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	QDataStream arg(data, IO_WriteOnly);
 	arg << szApp << tmp;
 	if(!g_pApp->dcopClient()->call(
@@ -198,7 +198,7 @@ bool KviMediaPlayerDCOPInterface::startApp(const QString &szApp,int iWaitMSecs)
 		QDataStream reply(replyData, IO_ReadOnly);
 		if(replyType != "serviceResult")return false;
 		int result;
-		QCString dcopName;
+		KviQCString dcopName;
 		QString error;
 		reply >> result >> dcopName >> error;
 		if(result != 0)return false;

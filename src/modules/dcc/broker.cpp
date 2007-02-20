@@ -24,7 +24,9 @@
 #include "dialogs.h"
 #include "chat.h"
 #include "send.h"
+#ifdef COMPILE_DCC_CANVAS
 #include "canvas.h"
+#endif
 #include "voice.h"
 
 #include "kvi_app.h"
@@ -398,6 +400,8 @@ void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 // ACTIVE CANVAS
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifdef COMPILE_DCC_CANVAS
+
 void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 {
 	if(!dcc->bAutoAccept)
@@ -423,8 +427,11 @@ void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 	}
 }
 
+#endif
+
 void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 {
+#ifdef COMPILE_DCC_CANVAS
 	if(box)box->forgetDescriptor();
 
 	if(!g_pApp->windowExists(dcc->console()))
@@ -445,12 +452,13 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 	if(bMinimized)cnv->minimize();
 
 	m_pDccWindowList->append(cnv);
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // PASSIVE CANVAS
 ///////////////////////////////////////////////////////////////////////////////
-
+#ifdef COMPILE_DCC_CANVAS
 void KviDccBroker::passiveCanvasExecute(KviDccDescriptor * dcc)
 {
 	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
@@ -462,6 +470,7 @@ void KviDccBroker::passiveCanvasExecute(KviDccDescriptor * dcc)
 	m_pDccWindowList->append(cnv);
 }
 
+#endif
 
 ///////////////////////////////////////////////////////////////////////////////
 // SEND

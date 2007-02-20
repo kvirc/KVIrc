@@ -639,10 +639,10 @@ static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
 	KVSM_PARAMETERS_END(c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
-	if (ch)
+	if(ch)
 	{
 		QString szFlag = QChar(ch->userListView()->getUserFlag(szNick));
-		if (szFlag) c->returnValue()->setString(szFlag);
+		c->returnValue()->setString(szFlag);
 	}
 	return true;
 }

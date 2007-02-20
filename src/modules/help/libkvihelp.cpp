@@ -32,6 +32,11 @@
 
 #include "kvi_frame.h"
 
+#ifdef COMPILE_USE_QT4
+	#include <q3mimefactory.h>
+#endif
+
+
 #include <qsplitter.h>
 Index        * g_pDocIndex = 0;
 KviPtrList<KviHelpWidget> * g_pHelpWidgetList = 0;
@@ -140,7 +145,11 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
 	KVSM_PARAMETERS_END(c)
 	if(doc.isEmpty())doc = "index.html";
+#ifdef COMPILE_USE_QT4
+	Q3MimeSourceFactory * f = Q3MimeSourceFactory::defaultFactory();
+#else
 	QMimeSourceFactory * f = QMimeSourceFactory::defaultFactory();
+#endif
 	if(f)
 	{
 		if(!f->data(doc))

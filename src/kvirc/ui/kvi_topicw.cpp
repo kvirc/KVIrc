@@ -157,7 +157,7 @@ QString convertToHtml(const QString &text)
 
 		unsigned int start = idx;
 
-		while((idx < text.length()) &&
+		while(
 				(c != KVI_TEXT_COLOR) &&
 				(c != KVI_TEXT_BOLD) &&
 				(c != KVI_TEXT_UNDERLINE) &&
@@ -167,7 +167,8 @@ QString convertToHtml(const QString &text)
 			)
 		{
 			idx++;
-			c = text[(int)idx].unicode();
+			if(idx >= text.length())break;
+			else c = text[(int)idx].unicode();
 		}
 		
 		int len = idx - start;
@@ -409,6 +410,15 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QColorGrou
 		}
 	}
 }
+
+#ifdef COMPILE_USE_QT4
+void KviTopicWidget::paintEvent(QPaintEvent * e)
+{
+	QPainter pa(this);
+	drawFrame(&pa);
+	drawContents(&pa);
+}
+#endif
 
 void KviTopicWidget::drawContents(QPainter *p)
 {

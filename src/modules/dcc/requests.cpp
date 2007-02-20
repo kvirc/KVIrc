@@ -427,7 +427,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 	}
 
 	// First of all we check the transfer limits
-	dcc->szParam1=dcc->pConsole->decodeText(dcc->szParam1).data();
+	dcc->szParam1=dcc->pConsole->decodeText(dcc->szParam1);
 	if(!dcc_module_check_limits(dcc))return;
 	if(!dcc_module_check_concurrent_transfers_limit(dcc))return;
 
@@ -716,7 +716,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 	//
 	//      DCC [ST]RSEND <filename> <filesize>
 	//
-	dcc->szParam1 = dcc->pConsole->decodeText(dcc->szParam1).data();
+	dcc->szParam1 = dcc->pConsole->decodeText(dcc->szParam1);
 	if(!dcc_module_check_limits(dcc))return;
 	if(!dcc_module_check_concurrent_transfers_limit(dcc))return;
 
@@ -1057,7 +1057,7 @@ static void dccModuleParseDccCanvas(KviDccRequest *dcc)
 //				__tr("The above request is broken: the second parameter is '%s' and shoud be 'chat'; trying to continue"),dcc->szParam1.ptr());
 //		}
 //	}
-
+#ifdef COMPILE_DCC_CANVAS
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szUser            = dcc->ctcpMsg->pSource->username();
@@ -1075,6 +1075,7 @@ static void dccModuleParseDccCanvas(KviDccRequest *dcc)
 	dcc_module_set_dcc_type(d,"CANVAS");
 	d->triggerCreationEvent();
 	g_pDccBroker->activeCanvasManage(d);
+#endif
 }
 
 

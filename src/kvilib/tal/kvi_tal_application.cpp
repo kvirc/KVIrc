@@ -39,7 +39,7 @@
 	// The other constructors are not "old" and "stable" enough
 	// to be safely used at this time. We'll rethink this when KDE 4 is out.
 
-	KviTalApplication::KviTalApplication(int argc,char ** argv)
+	KviTalApplication::KviTalApplication(int &argc,char ** argv)
 	: KApplication(argc,argv,"kvirc")
 	{
 	
@@ -55,7 +55,7 @@
 
 #else
 
-	KviTalApplication::KviTalApplication(int argc,char ** argv)
+	KviTalApplication::KviTalApplication(int &argc,char ** argv)
 	: QApplication(argc,argv)
 	{
 	}

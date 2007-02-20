@@ -44,6 +44,7 @@
 #include "kvi_sharedfiles.h"
 #include "kvi_out.h"
 #include "kvi_ircmask.h"
+#include "kvi_qcstring.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -401,11 +402,11 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	if(!c->switches()->find('q',"quiet"))
 		c->window()->output(KVI_OUT_AVATAR,__tr2qs("Notifying avatar '%Q' to %Q"),&avatar,&szTarget);
 
-	QCString encodedTarget = c->window()->connection()->encodeText(szTarget);
+	KviQCString encodedTarget = c->window()->connection()->encodeText(szTarget);
 
 	if(!avatar.isEmpty())
 	{
-		QCString encodedAvatar = c->window()->connection()->encodeText(avatar);
+		KviQCString encodedAvatar = c->window()->connection()->encodeText(avatar);
 		
 		if(o)
 		{
@@ -537,7 +538,7 @@ static bool avatar_kvs_cmd_query(KviKvsModuleCommandCall * c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
-	QCString target = c->window()->connection()->encodeText(szName);
+	KviQCString target = c->window()->connection()->encodeText(szName);
 	c->window()->connection()->sendFmtData("PRIVMSG %s :%cAVATAR%c",target.data(),0x01,0x01);
 
 	return true;

@@ -55,7 +55,7 @@ bool KviFile::openForReading()
 bool KviFile::openForWriting(bool bAppend)
 {
 #ifdef COMPILE_USE_QT4
-	return open(QFile::ReadOnly | (bAppend ? QFile::Append : QFile::Truncate));
+	return open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate));
 #else
 	return open(IO_WriteOnly | (bAppend ? IO_Append : IO_Truncate));
 #endif

@@ -36,24 +36,6 @@ public:
 protected:
 	KviKvsTreeNode * m_pParent;
 	const QChar    * m_pLocation;
-	// 09.10.2003
-	// the function below SHOULD be protected
-	// but gcc 3.2 (20020903) spits out this:
-	// 
-	// ../kvs/kvi_kvs_treenode_base.h: In member function `void
-	//   KviKvsTreeNodeCommand::setSwitchList(KviKvsTreeNodeSwitchList*)':
-	// ../kvs/kvi_kvs_treenode_base.h:37: `void
-	//   KviKvsTreeNode::setParent(KviKvsTreeNode*)' is protected
-	// ../kvs/kvi_kvs_treenode_command.cpp:61: within this context
-	//
-	// It is triggered by m_pSwitches->setParent(this);
-	// where m_pSwitches is KviKvsTreeNodeSwitchList
-	// and this context is KviKvsTreeNodeCommand
-	// The error comes out also if I use
-	// ((KviKvsTreeNode *)m_pSwitches)->setParent(this);
-	// so gcc REALLY thinks that a protected member of
-	// an ancestor class is inaccessible by a descendant.
-	// well...
 public:
 	void setParent(KviKvsTreeNode * p){ m_pParent = p; };
 protected:

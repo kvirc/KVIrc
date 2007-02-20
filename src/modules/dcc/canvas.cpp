@@ -23,6 +23,9 @@
 #define QT_MODULE_CANVAS
 
 #include "canvas.h"
+
+#ifdef COMPILE_DCC_CANVAS
+
 #include "dialogs.h"
 #include "marshal.h"
 #include "canvaswidget.h"
@@ -294,3 +297,5 @@ void KviDccCanvas::connected()
 
 
 #include "m_canvas.moc"
+
+#endif

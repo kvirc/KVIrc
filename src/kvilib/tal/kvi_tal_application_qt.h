@@ -30,7 +30,7 @@ class KVILIB_API KviTalApplication : public QApplication
 {
 	Q_OBJECT
 public:
-	KviTalApplication(int argc,char ** argv);
+	KviTalApplication(int &argc,char ** argv);
 	~KviTalApplication();
 };
 

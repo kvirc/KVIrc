@@ -29,6 +29,8 @@
 #include <qpushbutton.h>
 #include <qlabel.h>
 #include <qstringlist.h>
+#include <qevent.h>
+#include <qdesktopwidget.h>
 
 KviDccBox::KviDccBox(KviDccBroker * br,KviDccDescriptor * dcc)
 {

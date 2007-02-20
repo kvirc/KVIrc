@@ -40,17 +40,22 @@
 #include <qlayout.h>
 #include <qapplication.h>
 #include <qtooltip.h>
-#include <qdragobject.h>
 #include <qlineedit.h>
 #include <qlabel.h>
 #include <qmessagebox.h>
 #include <qframe.h>
-#include <qscrollview.h>
-#include <qheader.h>
+#include "kvi_tal_scrollview.h"
+#ifdef COMPILE_USE_QT4
+	#include <q3header.h>
+
+#else
+	#include <qheader.h>
+#endif
+#include "kvi_draganddrop.h"
 #include <qpainter.h>
 #include <qpixmap.h>
-#include <qsimplerichtext.h>
 #include <qmessagebox.h>
+#include <qevent.h>
 
 KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;

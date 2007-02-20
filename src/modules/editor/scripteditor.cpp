@@ -29,9 +29,14 @@
 #include <qtoolbutton.h>
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_popupmenu.h"
+#include "kvi_tal_scrollview.h"
 #include <qmessagebox.h>
 #include <qtimer.h>
-#include <qobjectlist.h>
+#ifdef COMPILE_USE_QT4
+	//#define QSyntaxHighlighter Q3SyntaxHighlighter
+#else
+	#include <qobjectlist.h>
+#endif
 #include <qcursor.h>
 #include <qfont.h>
 #include <qrect.h>
@@ -74,7 +79,11 @@ KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
 {
 	setPaletteForegroundColor(QColor(0,0,0));
 	setPaletteBackgroundColor(QColor(255,255,255));
+#ifdef COMPILE_USE_QT4
+	setHScrollBarMode(KviTalListBox::AlwaysOff);
+#else
 	setHScrollBarMode(QScrollView::AlwaysOff);
+#endif
 	QFont listfont=font();
 	listfont.setPointSize(8);
 	setFont(listfont);
@@ -166,7 +175,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	KviFontSelector * f = new KviFontSelector(this,__tr2qs_ctx("Font:","editor"),&g_fntNormal,true);
 	g->addMultiCellWidget(f,0,0,0,2);
 	m_pSelectorInterfaceList->append(f);
-	KviTalGroupBox * gbox = new KviTalGroupBox(1,KviTalGroupBox::Horizontal,__tr2qs("Colors" ),this);
+	KviTalGroupBox * gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Colors" ),this);
 	g->addMultiCellWidget(gbox,1,1,0,2);
 	KviColorSelector * s = addColorSelector(gbox,__tr2qs_ctx("Background:","editor"),&g_clrBackground,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Normal text:","editor"),&g_clrNormalText,true);
@@ -232,9 +241,17 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 
 }
 
+#ifdef COMPILE_USE_QT4
+Q3PopupMenu * KviScriptEditorWidget::createPopupMenu( const QPoint& pos )
+#else
 QPopupMenu * KviScriptEditorWidget::createPopupMenu( const QPoint& pos )
+#endif
 {
+#ifdef COMPILE_USE_QT4
+	Q3PopupMenu *pop=KviTalTextEdit::createPopupMenu(pos);
+#else
 	QPopupMenu *pop=KviTalTextEdit::createPopupMenu(pos);
+#endif
 	pop->insertItem(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
 	pop->insertItem(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	return pop;
@@ -271,7 +288,11 @@ void KviScriptEditorWidget::updateOptions()
 	p.setColor(QColorGroup::Text,g_clrNormalText);
 	setPalette(p);
 	
+#ifdef COMPILE_USE_QT4
+	setTextFormat(Qt::PlainText);
+#else
 	setTextFormat(KviTalTextEdit::PlainText);
+#endif
 	
 	// this will rehighlight everything
 	setText(text()); // an "hack" to ensure Update all in the editor
@@ -826,7 +847,9 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	QGridLayout * g = new QGridLayout(this,2,3,0,0);
 
 	m_pFindLineedit = new QLineEdit(" ",this);
+#ifndef COMPILE_USE_QT4
 	m_pFindLineedit->setFrameStyle(QFrame::Sunken | QFrame::Panel);
+#endif
 	m_pFindLineedit->setText("");
 	m_pFindLineedit->setPaletteForegroundColor(g_clrFind);
 
@@ -834,7 +857,11 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	g->addMultiCellWidget(m_pEditor,0,0,0,3);
 	g->setRowStretch(0,1);
 
+#ifdef COMPILE_USE_QT4
+	QToolButton * b = new QToolButton(Qt::DownArrow,this,"dsa2");
+#else
 	QToolButton * b = new QToolButton(DownArrow,this);
+#endif
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);
 
@@ -976,16 +1003,20 @@ void KviScriptEditorImplementation::saveToFile()
 	}
 }
 
-void KviScriptEditorImplementation::setText(const QCString &txt)
+void KviScriptEditorImplementation::setText(const KviQCString &txt)
 {
 	m_pEditor->setText(txt.data());
+#ifdef COMPILE_USE_QT4
+	m_pEditor->setTextFormat(Qt::PlainText);
+#else
 	m_pEditor->setTextFormat(KviTalTextEdit::PlainText);
+#endif
 	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->setModified(false);
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::getText(QCString &txt)
+void KviScriptEditorImplementation::getText(KviQCString &txt)
 {
 	txt = m_pEditor->text();
 }
@@ -996,7 +1027,11 @@ QLineEdit * KviScriptEditorImplementation::getFindlineedit()
 void KviScriptEditorImplementation::setText(const QString &txt)
 {
 	m_pEditor->setText(txt);
+#ifdef COMPILE_USE_QT4
+	m_pEditor->setTextFormat(Qt::PlainText);
+#else
 	m_pEditor->setTextFormat(KviTalTextEdit::PlainText);
+#endif
 	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->setModified(false);
 	updateRowColLabel();
@@ -1092,30 +1127,36 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
  
 	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
+#ifndef COMPILE_USE_QT4
 	m_pFindlineedit->setSizePolicy( QSizePolicy( (QSizePolicy::SizeType)7, (QSizePolicy::SizeType)0, 0, 0, m_pFindlineedit->sizePolicy().hasHeightForWidth() ) );
 	m_pFindlineedit->setFrameShape( QLineEdit::LineEditPanel );
 	m_pFindlineedit->setFrameShadow( QLineEdit::Sunken );
+#endif
 
 	layout->addMultiCellWidget( m_pFindlineedit, 2, 2, 1, 2 );
 
 	m_pReplacelineedit = new QLineEdit( this, "replacelineedit" );
+#ifndef COMPILE_USE_QT4
 	m_pReplacelineedit->setFrameShape( QLineEdit::LineEditPanel );
 	m_pReplacelineedit->setFrameShadow( QLineEdit::Sunken );
-
+#endif
 	layout->addMultiCellWidget( m_pReplacelineedit, 3, 3, 1, 2 );
 
    	m_pFindlineedit->setFocus();
 
     QLabel *findlabel = new QLabel( this, "findlabel" );
 	findlabel->setText(tr("Word to Find"));
+#ifndef COMPILE_USE_QT4
 	findlabel->setAutoResize(true);
+#endif
 
 	layout->addWidget( findlabel, 2, 0 );
 
     QLabel *replacelabel = new QLabel( this, "replacelabel" );
 	replacelabel->setText(tr("Replace with"));
+#ifndef COMPILE_USE_QT4
 	replacelabel->setAutoResize(true);
-
+#endif
 	layout->addWidget( replacelabel, 3, 0 );
 
     QPushButton *cancelbutton = new QPushButton( this, "cancelButton" );
@@ -1141,9 +1182,10 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	layout->addWidget( replace, 3, 3 );
 	replace->setEnabled(false);
 
+#ifndef COMPILE_USE_QT4
     clearWState( WState_Polished );
-
 	setTabOrder(m_pFindlineedit,m_pReplacelineedit);
+#endif
 	// signals and slots connections
 	connect( replacebutton, SIGNAL( clicked() ), this, SLOT( slotReplace() ) );
 	connect( findNext, SIGNAL( clicked() ),this,SLOT( slotNextFind()));

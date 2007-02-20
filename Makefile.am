@@ -14,7 +14,7 @@ AUTOMAKE_OPTIONS = foreign
 
 delmoc:
 	rm -f $(topdir)/src/*/*/*.moc
-	rm -f $(topdir)/src/modules/*/*.moc
+	rm -f $(topdir)/src/*/*/moc_*.cpp
 
 ###############################################################################
 # Main make command

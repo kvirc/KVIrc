@@ -82,7 +82,7 @@ class KVIRC_API KviApp : public KviTalApplication
 	friend class KviSetupWizard; // this resides in a module!
 	Q_OBJECT
 public:
-	KviApp(int argc,char ** argv);
+	KviApp(int &argc,char ** argv);
 	~KviApp();
 
 protected:

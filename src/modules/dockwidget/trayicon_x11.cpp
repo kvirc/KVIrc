@@ -1,3 +1,5 @@
+#if 0
+
 /*
  * trayicon_x11.cpp - X11 trayicon (for use with KDE and GNOME)
  * Copyright (C) 2003  Justin Karneges
@@ -409,5 +411,6 @@ void TrayIcon::sysUpdateToolTip()
 		QToolTip::add(d, tip);
 }
 
+#endif
 #endif
 #endif

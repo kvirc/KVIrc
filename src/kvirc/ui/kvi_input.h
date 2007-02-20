@@ -7,7 +7,7 @@
 //   Creation date : Sun Jan 3 1999 23:04:10 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -42,6 +42,7 @@ class KviUserListView;
 class KviWindow;
 class KviInput;
 class KviTalHBox;
+class QFontMetrics;
 
 // Default maximum buffer size.
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
@@ -173,7 +174,7 @@ private:
 	void returnPressed(bool bRepaint = true);
 	void completion(bool bShift);
 	void standardNickCompletion(bool bAddMask,QString &word,bool bFirstWordInLine);
-	void recalcFontMetrics();
+	void recalcFontMetrics(QFontMetrics * pFm);
 	void internalCursorRight(bool bShift);
 	void internalCursorLeft(bool bShift);
 public slots:

@@ -33,23 +33,23 @@
 class KviMediaPlayerDCOPInterface : public KviMediaPlayerInterface
 {
 public:
-	KviMediaPlayerDCOPInterface(const QCString &szAppId);
+	KviMediaPlayerDCOPInterface(const KviQCString &szAppId);
 	~KviMediaPlayerDCOPInterface();
 protected:
-	QCString m_szAppId;
+	KviQCString m_szAppId;
 protected:
 	bool ensureAppRunning(const QString &szApp);
 	bool findRunningApp(const QString &szApp);
 	bool startApp(const QString &szApp,int iWaitMSecs = 0);
 	int detectApp(const QString &szApp,bool bStart,int iScoreWhenFound,int iScoreWhenStarted);
-	bool simpleDCOPCall(const QCString &szObj,const QCString &szFunc);
-	bool intDCOPCall(const QCString &szObj,const QCString &szFunc,int iVal);
-	bool boolDCOPCall(const QCString &szObj,const QCString &szFunc,bool bVal);
-	bool stringDCOPCall(const QCString &szObj,const QCString &szFunc,QString szVal);
-	bool floatDCOPCall(const QCString &szObj,const QCString &szFunc,float fVal);
-	bool stringRetDCOPCall(const QCString &szObj,const QCString &szFunc,QString &ret);
-	bool intRetDCOPCall(const QCString &szObj,const QCString &szFunc,int &ret);
-	bool boolRetDCOPCall(const QCString &szObj,const QCString &szFunc,bool &ret);
+	bool simpleDCOPCall(const KviQCString &szObj,const KviQCString &szFunc);
+	bool intDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int iVal);
+	bool boolDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool bVal);
+	bool stringDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString szVal);
+	bool floatDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,float fVal);
+	bool stringRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QString &ret);
+	bool intRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int &ret);
+	bool boolRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool &ret);
 };
 
 #endif //COMPILE_KDE_SUPPORT

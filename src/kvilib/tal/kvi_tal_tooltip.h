@@ -28,16 +28,41 @@
 #include "kvi_settings.h"
 
 #include <qtooltip.h>
+#include <qobject.h>
 
-#ifdef COMPILE_USE_QT4
+class KviTalToolTip;
+
+// This is useful only with Qt4, but we put it here anyway
+// to have both a consistent API and make moc happy
+class KviTalToolTipHelper : public QObject
+{
+	friend class KviTalToolTip;
+	Q_OBJECT
+public:
+	KviTalToolTipHelper(KviTalToolTip * pToolTip,QWidget * pWidget);
+	~KviTalToolTipHelper();
+protected:
+	KviTalToolTip * m_pToolTip;
+protected:
+	virtual bool eventFilter(QObject * pObject,QEvent * pEvent);
+	void toolTipDying();
+};
+
+
 class KVILIB_API KviTalToolTip
-#else
-class KVILIB_API KviTalToolTip : public QToolTip
+#ifndef COMPILE_USE_QT4
+ : public QToolTip
 #endif
 {
+	friend class KviTalToolTipHelper;
 public:
 	KviTalToolTip(QWidget * pParent);
 	virtual ~KviTalToolTip();
+protected:
+#ifdef COMPILE_USE_QT4
+	KviTalToolTipHelper * m_pHelper;
+	QWidget * m_pParent;
+#endif
 public:
 #ifdef COMPILE_USE_QT4
 	static void add(QWidget * widget,const QString & text);
@@ -46,6 +71,9 @@ public:
 #endif
 protected:
 	virtual void maybeTip(const QPoint & p);
+#ifdef COMPILE_USE_QT4
+	void helperDying();
+#endif
 };
 
 #endif // _KVI_TAL_TOOLTIP_H_

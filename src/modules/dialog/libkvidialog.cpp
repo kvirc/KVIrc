@@ -29,7 +29,14 @@
 #include <qlayout.h>
 #include "kvi_tal_hbox.h"
 #include <qlineedit.h>
-#include <qmultilineedit.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3multilineedit.h>
+	#define QMultiLineEdit Q3MultiLineEdit
+	#include <qdesktopwidget.h>
+#else
+	#include <qmultilineedit.h>
+#endif
+#include <qevent.h>
 #include <qlabel.h>
 #include <qpushbutton.h>
 
@@ -67,7 +74,9 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
+#ifndef COMPILE_USE_QT4
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+#endif
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 

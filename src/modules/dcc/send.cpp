@@ -1513,7 +1513,7 @@ void KviDccFileTransfer::connectionInProgress()
 			}
 		}
 
-		KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort.utf8().data() : m_pMarshal->localPort();
+		KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 		//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 		struct in_addr a;
 		if(KviNetUtils::stringIpToBinaryIp(ip,&a))ip.setNum(htonl(a.s_addr));

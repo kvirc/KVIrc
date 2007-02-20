@@ -21,7 +21,9 @@ libkvilib_la_LIBADD  = $(SS_LIBLINK)
 nodist_libkvilib_la_SOURCES = \
 	../ext/moc_kvi_crypt.cpp \
 	../ext/moc_kvi_garbage.cpp \
+	../ext/moc_kvi_regusersdb.cpp \
 	../ext/moc_kvi_sharedfiles.cpp \
+	../irc/moc_kvi_ircuserdb.cpp \
 	../net/moc_kvi_dns.cpp \
 	../net/moc_kvi_http.cpp \
 	../system/moc_kvi_locale.cpp \
@@ -309,7 +311,7 @@ headers_HEADERS = \
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
 ../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt3.moc
 ../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt4.moc
-
+../tal/kvi_tal_tooltip.cpp: ../tal/kvi_tal_tooltip.moc
 
 #
 # All the cpp files depend on symlinks beging up-to-date

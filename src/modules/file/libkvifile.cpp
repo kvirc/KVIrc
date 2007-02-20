@@ -28,11 +28,12 @@
 #include "kvi_malloc.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
+#include "kvi_qcstring.h"
 
 #include "kvi_kvs_arraycast.h"
 
 #include <qfileinfo.h>
-#include <qfile.h>
+#include "kvi_file.h"
 #include <qdir.h>
 
 /*
@@ -481,9 +482,8 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	int iFlags = QDir::Files;
 	QStringList sl;
-	sl = d.entryList(iFlags);
+	sl = d.entryList(QDir::Files);
 
 	KviKvsArray * a = new KviKvsArray();
 	QString szFile;
@@ -628,7 +628,11 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
+#ifdef COMPILE_USE_QT4
+	QFlags<QDir::Filter> iFlags = 0;
+#else
 	int iFlags = 0;
+#endif
 	if(szFlags.isEmpty())iFlags = QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Writable | QDir::Executable | QDir::Hidden | QDir::System;
 	else {
 		if(szFlags.find('d',false) != -1)iFlags |= QDir::Dirs;
@@ -640,7 +644,11 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		if(szFlags.find('h',false) != -1)iFlags |= QDir::Hidden;
 		if(szFlags.find('s',false) != -1)iFlags |= QDir::System;
 	}
+#ifdef COMPILE_USE_QT4
+	QFlags<QDir::SortFlag> iSort = 0;
+#else
 	int iSort = 0;
+#endif
 	if(szFlags.isEmpty())iSort = QDir::Unsorted;
 	else {
 		if(szFlags.find('n',false) != -1)iSort |= QDir::Name;
@@ -911,11 +919,10 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 
 	KviFileUtils::adjustFilePath(szFile);
 
-	QFile f(szFile);
+	KviFile f(szFile);
 	int iFlags = IO_WriteOnly;
-	if(c->switches()->find('a',"append"))iFlags |= IO_Append;
 
-	if(!f.open(iFlags))
+	if(!f.openForWriting(c->switches()->find('a',"append")))
 	{
 		if(!c->switches()->find('q',"quiet"))
 			c->warning(__tr2qs("Can't open the file \"%Q\" for writing"),&szFile);
@@ -930,12 +937,12 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	while(u < a.array()->size())
 	{
 		KviKvsVariant * v = a.array()->at(u);
-		QCString dat;
+		KviQCString dat;
 		if(v)
 		{
 			QString szDat;
 			v->asString(szDat);
-			QCString dat = bLocal8Bit ? szDat.local8Bit() : szDat.utf8();
+			KviQCString dat = bLocal8Bit ? szDat.local8Bit() : szDat.utf8();
 		}
 		if(!bNoSeparator)
 		{

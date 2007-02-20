@@ -55,6 +55,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_kvs_eventtriggers.h"
+#include "kvi_qcstring.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -88,7 +89,7 @@ extern KviDccBroker * g_pDccBroker;
 KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCCHAT,pFrm,name,dcc)
 {
-	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
 	KviThemedLabel * dummy;
 	dummy = new KviThemedLabel(m_pTopSplitter,"dummy_label");
 	KviTalVBox * box = new KviTalVBox(m_pTopSplitter);
@@ -97,7 +98,7 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 	createCryptControllerButton(box);
 #endif
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
 	m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	m_pInput    = new KviInput(this);
@@ -302,7 +303,7 @@ void KviDccChat::ownMessage(const QString &text)
 		return;
 	}
 	
-	QCString szData = encodeText(text);
+	KviQCString szData = encodeText(text);
 	const char * d = szData.data();
 	if(!d)return;
 	
@@ -377,7 +378,7 @@ void KviDccChat::ownAction(const QString &text)
 {
 	if(m_pSlaveThread)
 	{
-		QCString szData = encodeText(text);
+		KviQCString szData = encodeText(text);
 		const char * d = szData.data();
 		if(!d)return;
 		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",0x01,d,0x01);

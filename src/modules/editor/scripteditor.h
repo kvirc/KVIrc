@@ -28,13 +28,15 @@
 #include "kvi_scripteditor.h"
 
 #include <qlabel.h>
-#include <qcstring.h>
 #include <kvi_tal_textedit.h>
 #include <qsyntaxhighlighter.h>
 #include <qdialog.h>
 #include <qcheckbox.h>
 #include "kvi_tal_listbox.h"
 #include <qevent.h> 
+#include "kvi_qcstring.h"
+
+#include "kvi_tal_popupmenu.h"
 
 #include "kvi_list.h"
 #include "kvi_selectors.h"
@@ -79,13 +81,22 @@ signals:
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 	void contentsMousePressEvent(QMouseEvent *);
+#ifdef COMPILE_USE_QT4
+	Q3PopupMenu *createPopupMenu( const QPoint& pos );
+#else
 	QPopupMenu *createPopupMenu( const QPoint& pos );
+#endif
 	QWidget *m_pParent;
 	QString m_szHelp;
 
 };
 
-
+#ifdef COMPILE_USE_QT4
+	#include <q3syntaxhighlighter.h>
+	#define QSyntaxHighlighter Q3SyntaxHighlighter
+#else
+	#include <qobjectlist.h>
+#endif
 class KviScriptSyntaxHighlighter : public QSyntaxHighlighter
 {
 public:
@@ -125,8 +136,8 @@ protected:
 public:
 	virtual void setText(const QString &txt);
 	virtual void getText(QString &txt);
-	virtual void setText(const QCString &txt);
-	virtual void getText(QCString &txt);
+	virtual void setText(const KviQCString &txt);
+	virtual void getText(KviQCString &txt);
 	virtual void setFindText(const QString & text);
 	virtual void setEnabled(bool bEnabled);
 	virtual void setFocus();

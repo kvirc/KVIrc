@@ -69,7 +69,7 @@
 #include <ctype.h>
 
 
-
+#ifndef COMPILE_USE_QT4
 int TermList::compareItems( QPtrCollection::Item i1, QPtrCollection::Item i2 )
 
 {
@@ -85,7 +85,7 @@ int TermList::compareItems( QPtrCollection::Item i1, QPtrCollection::Item i2 )
     return 1;
 
 }
-
+#endif
 
 
 QDataStream &operator>>( QDataStream &s, Document &l )
@@ -394,7 +394,7 @@ void Index::readDict()
     dict.clear();
     QDataStream s( &f );
     QString key;
-    QValueList<Document> docs;
+    KviValueList<Document> docs;
     while ( !s.atEnd() ) {
 	s >> key;
 	s >> docs;
@@ -442,7 +442,7 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 
 	if ( (*it).contains( '*' ) ) {
 
-	    QValueList<Document> wcts = setupDummyTerm( getWildcardTerms( *it ) );
+	    KviValueList<Document> wcts = setupDummyTerm( getWildcardTerms( *it ) );
 
 	    termList.append( new Term( "dummy", wcts.count(), wcts ) );
 
@@ -474,17 +474,17 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 
 
 
-    QValueList<Document> minDocs = minTerm->documents;
+    KviValueList<Document> minDocs = minTerm->documents;
 
-    QValueList<Document>::iterator C;
+    KviValueList<Document>::iterator C;
 
-    QValueList<Document>::ConstIterator It;
+    KviValueList<Document>::ConstIterator It;
 
     Term *t = termList.first();
 
     for ( ; t; t = termList.next() ) {
 
-	QValueList<Document> docs = t->documents;
+	KviValueList<Document> docs = t->documents;
 
 	C = minDocs.begin();
 
@@ -596,7 +596,7 @@ QStringList Index::getWildcardTerms( const QString &term )
 
     QStringList terms = split( term );
 
-    QValueList<QString>::iterator iter;
+    KviValueList<QString>::iterator iter;
 
 
 
@@ -720,7 +720,7 @@ QStringList Index::split( const QString &str )
 
 
 
-QValueList<Document> Index::setupDummyTerm( const QStringList &terms )
+KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 
 {
 
@@ -746,7 +746,7 @@ QValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 
 
 
-    QValueList<Document> maxList;
+    KviValueList<Document> maxList;
 
 
 
@@ -760,13 +760,13 @@ QValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 
 
 
-    QValueList<Document>::iterator docIt;
+    KviValueList<Document>::iterator docIt;
 
     Term *t = termList.first();
 
     while ( t ) {
 
-	QValueList<Document> docs = t->documents;
+	KviValueList<Document> docs = t->documents;
 
 	for ( docIt = docs.begin(); docIt != docs.end(); ++docIt ) {
 
@@ -912,9 +912,9 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 
     QStringList wordLst;
 
-    QValueList<uint> a, b;
+    KviValueList<uint> a, b;
 
-    QValueList<uint>::iterator aIt;
+    KviValueList<uint>::iterator aIt;
 
     for ( ; patIt != patterns.end(); ++patIt ) {
 

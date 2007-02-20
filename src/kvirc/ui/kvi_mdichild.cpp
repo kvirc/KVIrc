@@ -319,7 +319,6 @@ void KviMdiChild::mouseReleaseEvent(QMouseEvent *)
 
 QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 {
-	debug("GET RESIZE CURSOR");
 	switch (resizeCorner)
 	{ 
 		case KVI_MDI_RESIZE_LEFT: 
@@ -339,7 +338,6 @@ QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 			return Qt::sizeBDiagCursor;
 			break; 
 		default:
-			debug("RETURNING DEFAULT");
 			return Qt::arrowCursor;
 			break;
 	}
@@ -351,14 +349,12 @@ void KviMdiChild::mouseMoveEvent(QMouseEvent *e)
 	{
 		if(m_iResizeCorner && (m_state != Maximized))resizeWindowOpaque(m_iResizeCorner);
 	} else {
-		debug("MOVE EVENT");
 		setResizeCursor(getResizeCorner(e->pos().x(), e->pos().y()));
 	}
 }
 
 void KviMdiChild::setResizeCursor(int resizeCorner)
 {
-	debug("SET RESIZE CORNER %d",resizeCorner);
 	if(resizeCorner == m_iLastCursorCorner)
 		return; //Don't do it twice
 	m_iLastCursorCorner = resizeCorner;
@@ -544,7 +540,6 @@ void KviMdiChild::unsetClient()
 
 void KviMdiChild::activate(bool bSetFocus)
 {
-	debug("CHILD ACTIVATING...");
 	if(!m_pCaption->active())m_pCaption->setActive(true);
 	if(m_pManager->topChild() != this)
 		m_pManager->setTopChild(this,bSetFocus);
@@ -553,7 +548,6 @@ void KviMdiChild::activate(bool bSetFocus)
 
 void KviMdiChild::focusInEvent(QFocusEvent *)
 {
-	debug("FOCUS IN EVENT FOR THE CHILD");
 	// We gained focus by click , tab or from the caption label
 	// Bring this child to top
 	m_pCaption->setActive(true);

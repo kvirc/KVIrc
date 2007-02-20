@@ -143,9 +143,10 @@ protected:
 };
 
 class KviDccFileTransfer;
-class KviStyledCheckBox;
 class QSpinBox;
 class QTimer;
+
+#include "kvi_styled_controls.h"
 
 class KviDccFileTransferBandwidthDialog : public QDialog
 {

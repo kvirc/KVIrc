@@ -18,6 +18,8 @@
  *
  */
 
+#if 0
+
 #include "trayicon.h"
 #include "kvi_tal_popupmenu.h"
 
@@ -290,3 +292,5 @@ void TrayIcon::gotCloseEvent()
 {
 	closed();
 }
+
+#endif

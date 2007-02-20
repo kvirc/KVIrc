@@ -31,9 +31,9 @@
 class KviConsole;
 class KviTalGroupBox;
 class QPushButton;
-class KviStyledCheckBox;
 class QLineEdit;
 
+#include "kvi_styled_controls.h"
 #include "kvi_tal_listview.h"
 
 class KviChannelsJoinWindow : public QDialog

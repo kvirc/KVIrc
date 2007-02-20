@@ -173,7 +173,7 @@ bool KviJukInterface::playMrl(const QString &mrl)
 {
 	QString title;
 	QByteArray data, replyData;
-	QCString replyType;
+	KviQCString replyType;
 	QDataStream arg(data,IO_WriteOnly);
 	arg << mrl;
 	if(!g_pApp->dcopClient()->call(m_szAppId,"playlist","play(QString)",data,replyType,replyData))

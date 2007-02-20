@@ -4,7 +4,7 @@
 //   Creation date : Sun Jan 3 1999 23:11:50 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -170,6 +170,7 @@ void KviInputHistory::save(const char * filename)
 //=============== KviInputEditor ==============//
 
 static int g_iInputFontCharWidth[256];
+static bool g_bInputFontMetricsDirty = true;
 
 
 KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * view)
@@ -214,7 +215,6 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	setAcceptDrops(true);
 	setFrameStyle( LineEditPanel );
 	setFrameShadow( Plain );
-	recalcFontMetrics();
 	
 	m_pIconMenu = new KviTalPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
@@ -234,9 +234,8 @@ KviInputEditor::~KviInputEditor()
 	killDragTimer();
 }
 
-void KviInputEditor::recalcFontMetrics()
+void KviInputEditor::recalcFontMetrics(QFontMetrics * pFm)
 {
-	// FIXME: this should be shared between all input widgets and calculated only once per "apply options" session
 	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
 	unsigned short i;
 	for(i=1;i<32;i++)
@@ -249,12 +248,13 @@ void KviInputEditor::recalcFontMetrics()
 	{
 		g_iInputFontCharWidth[i] = fm.width(QChar(i));
 	}
+	g_bInputFontMetricsDirty = false;
 }
 
 void KviInputEditor::applyOptions()
 {
+	g_bInputFontMetricsDirty = true;
 	update();
-	recalcFontMetrics();
 }
 
 void KviInputEditor::dragEnterEvent(QDragEnterEvent *e)
@@ -348,6 +348,13 @@ void KviInputEditor::drawContents(QPainter *p)
 
 	QPainter pa(pDoubleBufferPixmap);
 
+	pa.setFont(KVI_OPTION_FONT(KviOption_fontInput));
+
+	QFontMetrics fm(pa.fontMetrics());
+	if(g_bInputFontMetricsDirty)
+		recalcFontMetrics(&fm);
+
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -364,9 +371,6 @@ void KviInputEditor::drawContents(QPainter *p)
 	}
 #endif
 
-	pa.setFont(KVI_OPTION_FONT(KviOption_fontInput));
-
-	QFontMetrics fm(pa.fontMetrics());
 
 	int curXPos      = KVI_INPUT_MARGIN;
 	int maxXPos      = widgetWidth-2*KVI_INPUT_MARGIN;
@@ -952,8 +956,7 @@ void KviInputEditor::moveCursorTo(int idx,bool bRepaint)
 
 void KviInputEditor::removeSelected()
 {
-	if(!hasSelection()) return;
-//	debug("%s %s %i %s",__FILE__,__FUNCTION__,__LINE__,m_szTextBuffer.utf8().data());
+	if(!hasSelection())return;
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
 	selectOneChar(-1);

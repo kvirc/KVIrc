@@ -25,6 +25,13 @@
 //=======================================================================================
 
 #include "kvi_settings.h"
+
+#ifdef COMPILE_USE_QT4
+	// #define COMPILE_DCC_CANVAS
+#else
+	#define COMPILE_DCC_CANVAS
+#endif
+
 #include "kvi_string.h"
 #include "kvi_list.h"
 #include "kvi_sparser.h"
@@ -75,9 +82,10 @@ public:
 
 	void handleChatRequest(KviDccDescriptor * dcc);
 
-
+#ifdef COMPILE_DCC_CANVAS
 	void activeCanvasManage(KviDccDescriptor * dcc);
 	void passiveCanvasExecute(KviDccDescriptor * dcc);
+#endif
 
 	void activeVoiceManage(KviDccDescriptor * dcc);
 	void passiveVoiceExecute(KviDccDescriptor * dcc);
