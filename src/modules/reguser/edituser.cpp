@@ -1288,12 +1288,13 @@ void KviRegisteredUsersDialog::exportClicked()
 {
 	unsigned int nEntries = 0;
 
-	KviTalListViewItem * it;
-
-	for(it = m_pListView->firstChild();it;it = it->nextSibling())
-	{
-		if(it->isSelected())nEntries++;
-	}
+	KviTalListViewItemIterator it( m_pListView, QListViewItemIterator::Selected );
+	KviTalListViewItemIterator cit( m_pListView, QListViewItemIterator::Selected );
+    while ( cit.current() ) {
+		if(((KviRegisteredUsersDialogItemBase *)(cit.current()))->type() == KviRegisteredUsersDialogItemBase::User)
+			nEntries++;
+        ++cit;
+    }
 
 	if(nEntries < 1)
 	{
@@ -1321,70 +1322,69 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	if(f.writeBlock((const char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto write_error;
 
-	for(it = m_pListView->firstChild();it;it = it->nextSibling())
-	{
-		if(it->isSelected())
+    while ( it.current() ) {
+		KviRegisteredUsersDialogItemBase *pBase = (KviRegisteredUsersDialogItemBase *)(it.current());
+		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User) continue;
+		QString szName = it.current()->text(0);
+		KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)(it.current()))->user();
+		if(u)
 		{
-			QString szName = it->text(0);
-			KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)(it))->user();
-			if(u)
+			if(!f.save(szName))goto write_error;
+			KviDict<QString> * pd = u->propertyDict();
+			if(pd)
 			{
-				if(!f.save(szName))goto write_error;
-				KviDict<QString> * pd = u->propertyDict();
-				if(pd)
+				if(!f.save(pd->count()))goto write_error;
+				KviDictIterator<QString> it(*pd);
+				while(it.current())
 				{
-					if(!f.save(pd->count()))goto write_error;
-					KviDictIterator<QString> it(*pd);
-					while(it.current())
-					{
-						QString key = it.currentKey();
-						if(!f.save(key))goto write_error;
-						if(!f.save(*(it.current())))goto write_error;
-						++it;
-					}
-				} else {
-					if(!f.save(0))goto write_error;
+					QString key = it.currentKey();
+					if(!f.save(key))goto write_error;
+					if(!f.save(*(it.current())))goto write_error;
+					++it;
 				}
+			} else {
+				if(!f.save(0))goto write_error;
+			}
 
-				KviPtrList<KviIrcMask> * ml = u->maskList();
-				if(ml)
+			KviPtrList<KviIrcMask> * ml = u->maskList();
+			if(ml)
+			{
+				if(!f.save(ml->count()))goto write_error;
+				for(KviIrcMask * m = ml->first();m;m = ml->next())
 				{
-					if(!f.save(ml->count()))goto write_error;
-					for(KviIrcMask * m = ml->first();m;m = ml->next())
-					{
-						QString fullMask;
-						m->mask(fullMask,KviIrcMask::NickUserHost);
-						if(!f.save(fullMask))goto write_error;
-					}
-				} else {
-					if(!f.save(0))goto write_error;
+					QString fullMask;
+					m->mask(fullMask,KviIrcMask::NickUserHost);
+					if(!f.save(fullMask))goto write_error;
 				}
+			} else {
+				if(!f.save(0))goto write_error;
+			}
 
-				QString avatar;
-				if(u->getProperty("avatar",avatar))
+			QString avatar;
+			if(u->getProperty("avatar",avatar))
+			{
+				KviAvatar * av = g_pIconManager->getAvatar(QString::null,avatar);
+				if(av)
 				{
-					KviAvatar * av = g_pIconManager->getAvatar(QString::null,avatar);
-					if(av)
+					if(!av->pixmap()->isNull())
 					{
-						if(!av->pixmap()->isNull())
-						{
-							if(!f.save(1))goto write_error;
-							QImageIO io;
-							io.setImage(av->pixmap()->convertToImage());
-							io.setIODevice(&f);
-							io.setFormat("PNG");
-							if(!io.write())goto write_error;
-						} else {
-							if(!f.save(0))goto write_error;
-						}
+						if(!f.save(1))goto write_error;
+						QImageIO io;
+						io.setImage(av->pixmap()->convertToImage());
+						io.setIODevice(&f);
+						io.setFormat("PNG");
+						if(!io.write())goto write_error;
 					} else {
 						if(!f.save(0))goto write_error;
 					}
 				} else {
 					if(!f.save(0))goto write_error;
 				}
+			} else {
+				if(!f.save(0))goto write_error;
 			}
 		}
+		++it;
 	}
 
 	goto succesfull_export;

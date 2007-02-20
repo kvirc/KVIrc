@@ -2682,7 +2682,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
+						Description="Moc&apos;ing kvi_tal_tooltip.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\tal\kvi_tal_tooltip.h -o tmp\moc\moc_kvi_tal_tooltip.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\tal\kvi_tal_tooltip.h"
+						Outputs="tmp\moc\moc_kvi_tal_tooltip.cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2690,7 +2693,10 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
+						Description="Moc&apos;ing kvi_tal_tooltip.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\tal\kvi_tal_tooltip.h -o tmp\moc\moc_kvi_tal_tooltip.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\tal\kvi_tal_tooltip.h"
+						Outputs="tmp\moc\moc_kvi_tal_tooltip.cpp"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3155,6 +3161,14 @@
 						PreprocessorDefinitions="__KVILIB__"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="system\moc_kvi_locale.cpp"
@@ -3198,6 +3212,26 @@
 			</File>
 			<File
 				RelativePath="ext\moc_kvi_sharedfiles.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_kvi_tal_tooltip.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
