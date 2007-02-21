@@ -1,4 +1,3 @@
-# translation of dcc_pt.po to Português
 # translation of dcc_pt.po to
 # translation of dcc_pt(vai a meio).po to
 # translation of dcc_pt(vai a meio).po to
@@ -15,9 +14,9 @@ msgstr ""
 "Project-Id-Version: dcc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-02-07 15:36+0100\n"
-"PO-Revision-Date: 09-01-2007 17:29\n"
+"PO-Revision-Date: 2007-02-21 05:24+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
-"Language-Team: Português <pt@li.org>\n"
+"Language-Team:  <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,8 +50,7 @@ msgstr "Escolher Ficheiros para Enviar - KVIrc"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:187
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr ""
-"Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
+msgstr "Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:197
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:812
@@ -222,8 +220,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:211
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "O endereço IP local é privado, mas não tem nenhum servidor de IRC para o "
 "determinar"
@@ -257,13 +254,12 @@ msgid "Cannot send data: No active connection"
 msgstr "Não é possível enviar dados: Não há uma conexão activa"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:343
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"O motor de encriptação não é capaz de desencriptar a mensagem actual (%Q): %"
-"s, nenhuns dados enviados para o extremo remoto"
+"O motor de encriptação não é capaz de desencriptar a mensagem actual (%Q): "
+"%Q, nenhuns dados enviados para o extremo remoto"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:402
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:827
@@ -271,13 +267,12 @@ msgid "ERROR: %Q"
 msgstr "ERRO: %Q"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:446
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
 "A seguinte mensagem parece estar encriptada, mas o motor de encriptação "
-"falhou ao descodificar: %s"
+"falhou ao descodifica-la: %Q"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:492
 msgid "DCC %Q failed: %Q"
@@ -323,8 +318,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:271
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-"Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
+msgstr "Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:662
 msgid "Input buffer"
@@ -449,7 +443,7 @@ msgstr "O parâmetro indicado não é um identificador DCC válido"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Esta sessão DCC não é uma sessão de transferência DCC"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/libkvidcc.cpp:2554
 msgid "The specified window identifier is not valid"
@@ -457,8 +451,7 @@ msgstr "O identificador de janelas indicado não é válido"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:258
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr ""
-"AVISO: A máquina remota está a enviar lixo depois do fim do envio do ficheiro"
+msgstr "AVISO: A máquina remota está a enviar lixo após o fim do envio do ficheiro"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:259
 msgid ""
@@ -476,12 +469,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:365
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr "Transferência de dados terminada à 30 segundos, a fechar a conexão"
+msgstr "A transferência de dados terminou à 30 segundos, a fechar a conexão"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
+msgstr "AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:727
 #, c-format
@@ -490,7 +482,7 @@ msgstr "TRANSFERÊNCIA %d"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:750
 msgid "Setting up the connection"
-msgstr "A configurar conexão"
+msgstr "A configurar a conexão"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:809
 msgid "Attempting a passive DCC %1 connection"
@@ -502,7 +494,7 @@ msgstr "A tentar uma conexão DCC %1 activa"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:839
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
-msgstr "Enviado um DCC RESUME pedido por %1, a esperar que aceite"
+msgstr "Enviado um DCC RESUME pedido por %1, a esperar por ACCEPT"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:909
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:920
@@ -562,15 +554,15 @@ msgstr "Média:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1344
 msgid "Transfer Log"
-msgstr "Registo de Transferências"
+msgstr "Registo de Transferência"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1475
 msgid "Contacting host %1 on port %2"
-msgstr "A contactar o endereço %1 na porta %2"
+msgstr "A contactar o endereço %1 no porto %2"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1482
 msgid "Listening on interface %1 port %2"
-msgstr "A escutar no interface %1 porta %2"
+msgstr "A escutar no interface %1 porto %2"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1505
 msgid "The local IP address is private, determining from IRC server: %1"
@@ -582,7 +574,7 @@ msgstr "Enviado DCC %1 a %2, à espera que o cliente remoto conecte..."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1558
 msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr "DCC %1 não enviadoa, a esperar conexão manual"
+msgstr "Pedido DCC %1 não enviado, a esperar conexão manual"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1577
 msgid "[SSL ERROR]: %1"
@@ -630,11 +622,11 @@ msgstr "Configurar largura de banda para a transferência DCC %1"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1828
 msgid "Limit upload bandwidth to"
-msgstr "Limitar largura de banda dos envios"
+msgstr "Limitar largura de banda de envio para"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1828
 msgid "Limit download bandwidth to"
-msgstr "Limitar largura de banda para transferências"
+msgstr "Limitar largura de banda de transferência para"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1841
 msgid "bytes/sec"
@@ -654,10 +646,8 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "A tentar uma conexão passiva DCC CANVAS"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:95
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr "Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:97
 msgid "DCC CANVAS request not sent: awaiting manual connections"
@@ -821,8 +811,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Não é possível com DCC REVC: transferência não iniciada do ficheiro %s na "
 "porta %s"
@@ -1003,3 +992,4 @@ msgid ""
 msgstr ""
 "Não é possível escutar no interface predefinido '%s': corrija-o no diálogo "
 "de opções, a desactivar a opção (para que o próximo dcc funcione)"
+
