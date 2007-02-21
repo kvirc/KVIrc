@@ -494,7 +494,6 @@ void KviIrcContext::connectToCurrentServer()
 	}
 	
 
-	srv->m_pReconnectInfo=m_pAsynchronousConnectionData->m_pReconnectInfo;
 	prx = srv->proxyServer(g_pProxyDataBase);
 	
 	if(!prx && (srv->proxy()!=-1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))
@@ -511,6 +510,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(m_pAsynchronousConnectionData)
 	{
 		szBindAddress = m_pAsynchronousConnectionData->szBindAddress;
+		srv->m_pReconnectInfo=m_pAsynchronousConnectionData->m_pReconnectInfo;
 	}
 
 	// Find out the identity we'll be using in this connection
