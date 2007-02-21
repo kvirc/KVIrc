@@ -3,19 +3,19 @@
 # translation of kvirc_pt.po to
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007.
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-02-07 15:36+0100\n"
-"PO-Revision-Date: 11-01-2007 03:49\n"
+"PO-Revision-Date: 2007-02-21 04:47+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -266,8 +266,7 @@ msgstr "O campo do Apelido não pode conter espaços!"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr "A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -375,8 +374,7 @@ msgstr "Activar piscar de ícone na barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
+msgstr "Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -1187,10 +1185,8 @@ msgid "Server:"
 msgstr "Servidor:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
-msgstr ""
-"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
+msgstr "<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1153
 msgid "Advanced..."
@@ -1205,8 +1201,7 @@ msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Prima este botão para conectar ao actual servidor seleccionado.</"
 "center>"
@@ -1440,10 +1435,8 @@ msgstr ""
 "umas citações ou frases quaisquer.</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
-"este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:356
 msgid "Profile"
@@ -2359,8 +2352,7 @@ msgstr "dentro de:"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -2616,8 +2608,7 @@ msgid "Minimum alert level:"
 msgstr "Nível de alerta mínimo:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Esta opção define o nível de alerta mínimo para a barra de tarefas.</"
 "center>"
@@ -2865,8 +2856,7 @@ msgstr "Atraso entre tentativas:"
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_connection.cpp:122
 msgid "Certificate"
@@ -2954,7 +2944,7 @@ msgstr "Activar serviço de identificação (não recomendado em UNIX)"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_connection.cpp:214
 msgid "Enable ident service only while connecting to server"
-msgstr ""
+msgstr "Activar serviço de identidade apenas ao conectar no servidor"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_connection.cpp:217
 msgid "Ident username:"
@@ -3549,8 +3539,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_dcc.cpp:254
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr ""
-"Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
+msgstr "Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_dcc.cpp:257
 msgid ""
@@ -4370,3 +4359,4 @@ msgstr "Privado"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "conversar"
+
