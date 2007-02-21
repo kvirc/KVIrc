@@ -2534,8 +2534,10 @@ got_url:
 	// Question : What characters are NOT allowed in an URL ?
 	// I assume [] () {} 'and chars below 33 (space too , and negative chars too! (for signed char systems))
 	// [] and () are used in ed2k links often
-	while((*p > 32) && /*(*p != '[') &&*/ (*p != '{') && (*p != '\'') && /*(*p != ')')  && (*p != '(') &&*/
-			/*(*p != ']')  &&*/ (*p != '}') && (*p != '<') && (*p != '"'))p++;
+
+	// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
+	while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '\'') && (*p != '>') &&
+			(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))p++;
 
 	if(m_pKviWindow)
 	{
