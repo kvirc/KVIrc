@@ -35,20 +35,52 @@
 KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"urlhandlers_options_widget")
 {
-	createLayout(7,1);
+#ifdef COMPILE_ON_WINDOWS
+	#define START_ROW 1
+#else
+	#define START_ROW 0
+#endif
 
-	addStringSelector(0,0,0,0,__tr2qs_ctx("<b>http://</b> handler command:","options"),KviOption_stringUrlHttpCommand);
-	addStringSelector(0,1,0,1,__tr2qs_ctx("<b>https://</b> handler command:","options"),KviOption_stringUrlHttpsCommand);
-	addStringSelector(0,2,0,2,__tr2qs_ctx("<b>ftp://</b> handler command:","options"),KviOption_stringUrlFtpCommand);
-	addStringSelector(0,3,0,3,__tr2qs_ctx("<b>mailto:</b> handler command:","options"),KviOption_stringUrlMailtoCommand);
-	addStringSelector(0,4,0,4,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
-	addStringSelector(0,5,0,5,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
+	createLayout(START_ROW+7,1);
 
-	addRowSpacer(0,6,0,6);
+#ifdef COMPILE_ON_WINDOWS
+	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);
+#endif
+
+	m_pHttpHandler=addStringSelector(0,START_ROW+0,0,START_ROW+0,__tr2qs_ctx("<b>http://</b> handler command:","options"),KviOption_stringUrlHttpCommand);
+	m_pHttpsHandler=addStringSelector(0,START_ROW+1,0,START_ROW+1,__tr2qs_ctx("<b>https://</b> handler command:","options"),KviOption_stringUrlHttpsCommand);
+	m_pFtpHandler=addStringSelector(0,START_ROW+2,0,START_ROW+2,__tr2qs_ctx("<b>ftp://</b> handler command:","options"),KviOption_stringUrlFtpCommand);
+	m_pMailtoHandler=addStringSelector(0,START_ROW+3,0,START_ROW+3,__tr2qs_ctx("<b>mailto:</b> handler command:","options"),KviOption_stringUrlMailtoCommand);
+	m_pFileHandler=addStringSelector(0,START_ROW+4,0,START_ROW+4,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
+	m_pOtherHandler=addStringSelector(0,START_ROW+5,0,START_ROW+5,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
+
+#ifdef COMPILE_ON_WINDOWS
+	m_pHttpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+	m_pHttpsHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+	m_pFtpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+	m_pFileHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+	m_pMailtoHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+	m_pOtherHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
+
+	connect(b,SIGNAL(toggled(bool)),this,SLOT(toggleEditors(bool)));
+
+#endif
+
+	addRowSpacer(0,START_ROW+6,0,START_ROW+6);
 }
 
 KviUrlHandlersOptionsWidget::~KviUrlHandlersOptionsWidget()
 {
+}
+
+void KviUrlHandlersOptionsWidget::toggleEditors(bool bToggled)
+{
+	m_pHttpHandler->setEnabled(!bToggled);
+	m_pHttpsHandler->setEnabled(!bToggled);
+	m_pFtpHandler->setEnabled(!bToggled);
+	m_pFileHandler->setEnabled(!bToggled);
+	m_pMailtoHandler->setEnabled(!bToggled);
+	m_pOtherHandler->setEnabled(!bToggled);
 }
 
 void KviUrlHandlersOptionsWidget::commit()

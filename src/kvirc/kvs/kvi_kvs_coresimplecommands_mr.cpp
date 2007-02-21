@@ -389,21 +389,30 @@ namespace KviKvsCoreSimpleCommands
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand);
 		}
-	
-		if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
-	
-		if(!szCommand.isEmpty())
+#ifdef COMPILE_ON_WINDOWS
+		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			KviKvsVariantList vList;
-			vList.append(new KviKvsVariant(szUrl));
+			ShellExecute(NULL, "open", szUrl.local8Bit().data(),
+                NULL, NULL, SW_SHOWNORMAL);
+		} else {
+#endif
+			if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
+		
+			if(!szCommand.isEmpty())
+			{
+				KviKvsVariantList vList;
+				vList.append(new KviKvsVariant(szUrl));
 
-			QString szName = "openurl::handler";
-			KviKvsScript script(szName,szCommand);
+				QString szName = "openurl::handler";
+				KviKvsScript script(szName,szCommand);
 
-			if(!script.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams))
-				KVSCSC_pContext->warning(__tr2qs("The commandline for this url type seems to be broken (%Q)"),&szUrl);
-	
-		} else KVSCSC_pContext->warning(__tr2qs("No commandline specified for this type of url (%Q)"),&szUrl);
+				if(!script.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams))
+					KVSCSC_pContext->warning(__tr2qs("The commandline for this url type seems to be broken (%Q)"),&szUrl);
+		
+			} else KVSCSC_pContext->warning(__tr2qs("No commandline specified for this type of url (%Q)"),&szUrl);
+#ifdef COMPILE_ON_WINDOWS
+		}
+#endif
 
 		return true;
 	}

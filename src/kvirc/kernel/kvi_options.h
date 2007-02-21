@@ -309,8 +309,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolDrawGenderIcons 215
 #define KviOption_boolPrependGenderInfoToRealname 216
 #define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
+#define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
 
-#define KVI_NUM_BOOL_OPTIONS 218
+#define KVI_NUM_BOOL_OPTIONS 219
 
 
 

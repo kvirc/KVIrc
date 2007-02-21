@@ -499,6 +499,14 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		}
 
 		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
+
+		m_pIgnoreQuery->setEnabled(r->ignoreEnagled());
+		m_pIgnoreChannel->setEnabled(r->ignoreEnagled());
+		m_pIgnoreNotice->setEnabled(r->ignoreEnagled());
+		m_pIgnoreCtcp->setEnabled(r->ignoreEnagled());
+		m_pIgnoreInvite->setEnabled(r->ignoreEnagled());
+		m_pIgnoreDcc->setEnabled(r->ignoreEnagled());
+		
 		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
 		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
 		m_pIgnoreNotice->setChecked(r->ignoreFlags() & KviRegisteredUser::Notice);

@@ -36,8 +36,17 @@ class KviUrlHandlersOptionsWidget : public KviOptionsWidget
 public:
 	KviUrlHandlersOptionsWidget(QWidget * parent);
 	~KviUrlHandlersOptionsWidget();
+private:
+	KviStringSelector*   m_pHttpHandler;
+	KviStringSelector*   m_pHttpsHandler;
+	KviStringSelector*   m_pFtpHandler;
+	KviStringSelector*   m_pMailtoHandler;
+	KviStringSelector*   m_pFileHandler;
+	KviStringSelector*   m_pOtherHandler;
 public:
 	virtual void commit();
+public slots:
+	void toggleEditors(bool);
 };
 
 #endif //_OPTW_URLHANDLERS_H_
