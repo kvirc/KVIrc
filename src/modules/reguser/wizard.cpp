@@ -277,7 +277,6 @@ void KviRegistrationWizard::reject()
 
 void KviRegistrationWizard::accept()
 {
-	KviTalWizard::accept();
 	bool bLocalDb = true;
 	if(!m_pDb)
 	{
@@ -285,32 +284,32 @@ void KviRegistrationWizard::accept()
 		m_pDb = g_pRegisteredUserDataBase;
 	}
 
-	KviStr name = m_pEditRealName->text();
+	QString szName = m_pEditRealName->text();
 	KviRegisteredUser * u;
 
 
 	if(bLocalDb)
 	{
-		if(name.isEmpty())name = "user";
+		if(szName.isEmpty()) szName = "user";
 
-		KviStr szNameOk = name;
+		QString szNameOk = szName;
 
 		int idx = 1;
 
 		do {
-			u = m_pDb->findUserByName(szNameOk.ptr());
+			u = m_pDb->findUserByName(szNameOk);
 			if(u)
 			{
-				szNameOk.sprintf("%s%d",name.ptr(),idx);
+				KviQString::sprintf(szNameOk,"%Q%d",&szNameOk,idx);
 				idx++;
 			}
 		} while(u);
 
-		u = m_pDb->addUser(szNameOk.ptr());
+		u = m_pDb->addUser(szNameOk);
 
 	} else {
-		u = m_pDb->findUserByName(name.ptr());
-		if(!u)u = m_pDb->addUser(name.ptr());
+		u = m_pDb->findUserByName(szName);
+		if(!u)u = m_pDb->addUser(szName);
 	}
 
 	if(!u)
@@ -318,15 +317,14 @@ void KviRegistrationWizard::accept()
 		// ops... no way
 		// FIXME: spit an error message ?
 		debug("Ops.. something wrong with the regusers db");
-		delete this;
+		//delete this;
 		return;
 	}
 
-	KviStr m1 = m_pNicknameEdit1->text();
-	KviStr m2 = m_pUsernameEdit1->text();
-	KviStr m3 = m_pHostEdit1->text();
-	KviStr mask(KviStr::Format,"%s!%s@%s",m1.ptr(),m2.ptr(),m3.ptr());
-	KviIrcMask * mk = new KviIrcMask(mask.ptr());
+	QString m1 = m_pNicknameEdit1->text();
+	QString m2 = m_pUsernameEdit1->text();
+	QString m3 = m_pHostEdit1->text();
+	KviIrcMask * mk = new KviIrcMask(m1,m2,m3);
 	m_pDb->removeMask(*mk);
 	m_pDb->addMask(u,mk);
 
@@ -336,24 +334,19 @@ void KviRegistrationWizard::accept()
 	if(m2.isEmpty())m2 = "*";
 	if(m3.isEmpty())m3 = "*";
 	m3 = m_pHostEdit2->text();
-	KviStr mask2(KviStr::Format,"%s!%s@%s",m1.ptr(),m2.ptr(),m3.ptr());
-	mk = new KviIrcMask(mask2.ptr());
-	if(mk->nick() != "*")
-	{
-		m_pDb->removeMask(*mk);
-		m_pDb->addMask(u,mk);
-	} else {
-		delete mk;
-	}
-
+	mk = new KviIrcMask(m1,m2,m3);
+	
+	m_pDb->removeMask(*mk);
+	m_pDb->addMask(u,mk);
+	
 	m_pAvatarSelector->commit();
 
 	bool bSetAvatar = false;
 
 	if(!m_pAvatar->isNull())
 	{
-		KviStr szPath = m_pAvatar->path();
-		u->setProperty("avatar",szPath.ptr());
+		QString szPath = m_pAvatar->path();
+		u->setProperty("avatar",szPath);
 		bSetAvatar = true;
 	}
 
@@ -361,23 +354,26 @@ void KviRegistrationWizard::accept()
 	{
 		m1 = m_pNotifyNickEdit1->text();
 		m2 = m_pNotifyNickEdit2->text();
-		if(m2.hasData())
+		if(!m2.isEmpty())
 		{
-			if(m1.hasData())m1.append(' ');
+			if(!m1.isEmpty())
+				m1.append(' ');
 			m1.append(m2);
 		}
 	
-		if(m1.hasData())
+		if(!m1.isEmpty())
 		{
-			u->setProperty("notify",m1.ptr());
+			u->setProperty("notify",m1);
 			if(!bLocalDb)g_pApp->restartNotifyLists();
 		}
 	}
 
-	if(bSetAvatar && !bLocalDb)g_pApp->resetAvatarForMatchingUsers(u);
+	if(bSetAvatar && !bLocalDb)
+		g_pApp->resetAvatarForMatchingUsers(u);
 
+	KviTalWizard::accept();
 
-	if(!m_bModal)delete this;
+//	if(!m_bModal)delete this;
 //	hide();
 //	g_pApp->collectGarbage(this);
 }
