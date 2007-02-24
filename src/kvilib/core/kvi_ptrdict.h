@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#if COMPILE_USE_QT4
+#ifdef COMPILE_USE_QT4
 	#include <q3ptrdict.h>
 	#define KviPtrDict Q3PtrDict
 	#define KviPtrDictIterator Q3PtrDictIterator

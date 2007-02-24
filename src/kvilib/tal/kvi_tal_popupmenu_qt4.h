@@ -80,6 +80,7 @@ public:
 		QWidgetAction * pAct = new QWidgetAction(this);
 		pAct->setDefaultWidget(pWidget);
 		addAction(pAct);
+		return 0;
 	}
 
 

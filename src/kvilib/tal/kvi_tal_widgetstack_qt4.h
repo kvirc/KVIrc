@@ -30,7 +30,7 @@
 //#include <qstackedwidget.h>
 #include <q3widgetstack.h>
 
-class KviTalWidgetStack : public Q3WidgetStack
+class KVILIB_API KviTalWidgetStack : public Q3WidgetStack
 {
 	Q_OBJECT
 public:

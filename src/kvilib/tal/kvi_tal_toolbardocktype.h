@@ -23,8 +23,9 @@
 //
 
 #include "kvi_settings.h"
-
+#define COMPILE_USE_QT4
 #ifdef COMPILE_USE_QT4
+
 	#define QT_TOOLBARDOCK_TYPE Qt::Dock
 	#define QT_DOCK_TOP Qt::DockTop
 	#define QT_DOCK_LEFT Qt::DockLeft

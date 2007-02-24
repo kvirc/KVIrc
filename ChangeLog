@@ -1,3 +1,9 @@
+24 Feb 2007
+   [Noldor]
+   - New QT4 win compiling projects: still unusable... kvilib and kvirc compile but only in release;
+     you need to compile qt libraries by yourself then try to compile kvilib and kvirc (use COMPILE_USE_QT4 in kvi_wincfg.h).
+     Some module compile without problem... others need to be ported. 
+
 20 Feb 2007
    [Alexey]
    - Completely reworked ignore system
