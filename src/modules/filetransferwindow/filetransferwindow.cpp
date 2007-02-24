@@ -369,16 +369,16 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("MS-DOS Prompt at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
 				m_pLocalFilePopup->insertSeparator();
-#endif //COMPILE_ON_WINDOWS			
-// G&N end			
+#endif //COMPILE_ON_WINDOWS
+// G&N end
 
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("&Copy Path to Clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
-				
+
 				id = m_pLocalFilePopup->insertItem(__tr2qs_ctx("&Delete file","filetransferwindow"),this,SLOT(deleteLocalFile()));
 				m_pLocalFilePopup->setItemEnabled(id,i->transfer()->terminated());
 				m_pContextPopup->insertItem(__tr2qs_ctx("Local &File","filetransferwindow"),m_pLocalFilePopup);
 
-			
+
 			}
 
 			i->transfer()->fillContextPopup(m_pContextPopup,col);
@@ -401,7 +401,7 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 
 	id = m_pContextPopup->insertItem(__tr2qs_ctx("&Clear Terminated","filetransferwindow"),this,SLOT(clearTerminated()));
 	m_pContextPopup->setItemEnabled(id,bHaveTerminated);
-	
+
 	bool bAreTransfersActive = false;
 	if(m_pListView->childCount() >= 1)
 		bAreTransfersActive = true;
@@ -475,14 +475,14 @@ void KviFileTransferWindow::openLocalFileTerminal()
 		if(!t)return;
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
-	
+
 		int idx = tmp.findRev("/");
 		if(idx == -1)return;
 		tmp = tmp.left(idx);
-	
+
 		tmp.prepend("konsole --workdir=\"");
 		tmp.append("\"");
-	
+
 		KRun::runCommand(tmp);
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
@@ -527,7 +527,7 @@ void KviFileTransferWindow::openLocalFile()
 		if(!t)return;
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
-	
+
 		QString mimetype = KMimeType::findByPath(tmp)->name();  //KMimeType
 		KService::Ptr offer = KServiceTypeProfile::preferredService(mimetype,"Application");
 		if(!offer)
@@ -535,7 +535,7 @@ void KviFileTransferWindow::openLocalFile()
 			openLocalFileWith();
 			return;
 		}
-	
+
 		KURL::List lst;
 		KURL url;
 		url.setPath(tmp);
@@ -547,11 +547,11 @@ void KviFileTransferWindow::openLocalFile()
 
 void KviFileTransferWindow::openLocalFileWith()
 {
-//-| Grifisx & Noldor |-  
+//-| Grifisx & Noldor |-
 #ifdef COMPILE_ON_WINDOWS
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
-	QString tmp = t->localFileName();	
+	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
 	tmp.replace("/","\\");
 	tmp.prepend("rundll32.exe shell32.dll,OpenAs_RunDLL "); // this if to show the 'open with...' window
@@ -563,7 +563,7 @@ void KviFileTransferWindow::openLocalFileWith()
 		if(!t)return;
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
-	
+
 		KURL::List lst;
 		KURL url;
 		url.setPath(tmp);
@@ -608,15 +608,15 @@ void KviFileTransferWindow::openLocalFileFolder()
 		if(!t)return;
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
-	
+
 		int idx = tmp.findRev("/");
 		if(idx == -1)return;
 		tmp = tmp.left(idx);
-	
+
 		QString mimetype = KMimeType::findByPath(tmp)->name(); // inode/directory
 		KService::Ptr offer = KServiceTypeProfile::preferredService(mimetype,"Application");
 		if(!offer)return;
-	
+
 		KURL::List lst;
 		KURL url;
 		url.setPath(tmp);
@@ -657,11 +657,25 @@ void KviFileTransferWindow::clearAll()
 {
 	QString tmp;
 
+	bool bHaveAllTerminated = true;
+	KviFileTransferItem * item = (KviFileTransferItem *)m_pListView->firstChild();
+	while(item)
+	{
+		if(!item->transfer()->terminated())
+		{
+			bHaveAllTerminated = false;
+			break;
+		}
+		item = (KviFileTransferItem *)item->nextSibling();
+	}
+
 	KviQString::sprintf(tmp,__tr2qs_ctx("Clear all transfers, including any in progress?","filetransferwindow"));
 
-	if(QMessageBox::warning(this,__tr2qs_ctx("Clear All Transfers? - KVIrc","filetransferwindow"),
-			tmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
-		return;
+	// If any transfer is active asks for confirm
+	if(!bHaveAllTerminated)
+		if(QMessageBox::warning(this,__tr2qs_ctx("Clear All Transfers? - KVIrc","filetransferwindow"), tmp,__tr2qs_ctx("Yes","filetransferwindow"),__tr2qs_ctx("No","filetransferwindow")) != 0)
+			return;
+
 	KviFileTransferManager::instance()->killAllTransfers();
 }
 
