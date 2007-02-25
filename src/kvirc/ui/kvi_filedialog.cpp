@@ -70,17 +70,17 @@ void KviFileDialog::goHome()
 
 
 
-bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,const QString &initial,const QString &filter,bool showHidden, bool showNative)
+bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,const QString &initial,const QString &filter,bool showHidden, bool showNative,QWidget* parent)
 {
 #ifdef COMPILE_ON_WINDOWS
 	if(showNative)
 	{
-		buffer=QFileDialog::getOpenFileName(initial,filter,0,"open_file_name_dialog",caption);
+		buffer=QFileDialog::getOpenFileName(initial,filter,parent,"open_file_name_dialog",caption);
 		KviFileUtils::adjustFilePath(buffer);
 		return !buffer.isEmpty();
 	}
 #endif
-	KviFileDialog * d = new KviFileDialog(initial,filter,0,"open_file_name_dialog",true);
+	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"open_file_name_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::ExistingFile);
 	//d->setShowHiddenFiles(showHidden);
@@ -96,14 +96,14 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 }
 
 
-bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,const QString &initial,const QString &filter,bool showHidden,bool bConfirmOverwrite,bool showNative)
+bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,const QString &initial,const QString &filter,bool showHidden,bool bConfirmOverwrite,bool showNative,QWidget* parent)
 {
 	#ifdef COMPILE_ON_WINDOWS
 	if (showNative)
 	{
 		while (1)
 		{
-			buffer=QFileDialog::getSaveFileName(initial,filter,0,"save_file_name_dialog",caption);
+			buffer=QFileDialog::getSaveFileName(initial,filter,parent,"save_file_name_dialog",caption);
 			KviFileUtils::adjustFilePath(buffer);
 			//return !buffer.isEmpty();
 			if(buffer.isEmpty()) return false;
@@ -112,7 +112,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 			if(!KviFileUtils::fileExists(buffer)) return true;
 			QString tmp;
 			KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.utf8().data());
-			switch(QMessageBox::information(0,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
+			switch(QMessageBox::information(parent,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 			{
 					case QMessageBox::Cancel: return false; break;
 					case QMessageBox::Yes:    return true;  break;
@@ -125,7 +125,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 	#endif
 
 	
-	KviFileDialog * d = new KviFileDialog(initial,filter,0,"save_file_name_dialog",true);
+	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::AnyFile);
 	//d->setShowHiddenFiles(showHidden);
@@ -167,24 +167,24 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 	
 }
 
-bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative)
+bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
 {
 #ifdef COMPILE_ON_WINDOWS
 	if(showNative)
 	{
-		buffer = QFileDialog::getExistingDirectory(initial,0,"open_file_name_dialog",caption);
+		buffer = QFileDialog::getExistingDirectory(initial,parent,"open_file_name_dialog",caption);
 		return !buffer.isEmpty();
 	}
 #else
 	#ifdef COMPILE_KDE_SUPPORT
 		// the KDE based dir selection dialog is now quite nice
-		buffer = KFileDialog::getExistingDirectory(initial,0,caption);
+		buffer = KFileDialog::getExistingDirectory(initial,parent,caption);
 		return !buffer.isEmpty();
 	#endif
 #endif
 
 	KviFileDialog * d = new KviFileDialog(initial,
-		filter,0,"directory_name_dialog",true);
+		filter,parent,"directory_name_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::Directory);
 	//d->setShowHiddenFiles(showHidden);
@@ -201,17 +201,17 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 }
 
 
-bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative)
+bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
 {
 	#ifdef COMPILE_ON_WINDOWS
 	if (showNative)
 	{
-		buffer=QFileDialog::getOpenFileNames(filter,initial,0,"open_file_name_dialog",caption);
+		buffer=QFileDialog::getOpenFileNames(filter,initial,parent,"open_file_name_dialog",caption);
 		return (buffer.count()>0);
 	}
 	
 	#endif
-	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,0,"open_file_names_dialog",true);
+	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::ExistingFiles);
 	//d->setShowHiddenFiles(showHidden);	

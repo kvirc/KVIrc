@@ -211,6 +211,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\dialog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\edituser.cpp"
 				>
 			</File>
@@ -228,6 +232,32 @@
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\dialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing dialog.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\dialog.h -o tmp\moc\moc_dialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\dialog.h"
+						Outputs="tmp\moc\moc_dialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing dialog.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\dialog.h -o tmp\moc\moc_dialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\dialog.h"
+						Outputs="tmp\moc\moc_dialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
 			<File
 				RelativePath=".\edituser.h"
 				>
@@ -278,6 +308,17 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+		</Filter>
+		<Filter
+			Name="Generated MOC Files"
+			Filter="moc;cpp"
+			UniqueIdentifier="{fe6e9830-be46-497d-995d-44b99b58e215}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath=".\tmp\moc\moc_dialog.cpp"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

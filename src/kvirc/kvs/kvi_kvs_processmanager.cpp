@@ -32,7 +32,7 @@
 #include "kvi_app.h"
 #include "kvi_console.h"
 #include "kvi_kvs_script.h"
-#include <QSysInfo>
+//#include <QSysInfo>
 
 KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptorData * d)
 : KviKvsAsyncOperation(d->pWnd)
@@ -80,7 +80,11 @@ bool KviKvsProcessAsyncOperation::start()
 			//
 			// [02:50:21] <kode54> if ( QApplication::winVersion() & Qt::WV_NT_based )
 			// [02:50:41] <kode54> I see another implementation using that, maybe it is the official way of detecting that :[
+#ifdef COMPILE_USE_QT4
 			szShell = !(QSysInfo::WindowsVersion & QSysInfo::WV_DOS_based) ? "cmd.exe /c" : "command.com /c";
+#else
+			szShell = "command.com /c";
+#endif
 
 			// Thnx kode54 :)
 #else

@@ -358,6 +358,7 @@
 #define KVI_BIGICON_WWW "kvi_bigicon_www.png"
 #define KVI_BIGICON_PACK "kvi_bigicon_pack.png"
 #define KVI_BIGICON_SCREENSHOT "kvi_bigicon_screenshot.png"
+#define KVI_BIGICON_REGUSERS "kvi_bigicon_regusers.png"
 
 #define KVI_SMALLICONS_SUBDIRECTORY "coresmall"
 #define KVI_SMALLICONS_PREFIX "kcs_"

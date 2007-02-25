@@ -43,11 +43,11 @@ public:
 					QWidget *parent=0, const char *name=0, bool modal=false);
 	~KviFileDialog();
 public:
-	static bool askForOpenFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool showNative = true);
-	static bool askForSaveFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool bConfirmOverwrite = false,bool showNative = true);
+	static bool askForOpenFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool showNative = true,QWidget* parent=0);
+	static bool askForSaveFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool bConfirmOverwrite = false,bool showNative = true,QWidget* parent=0);
 
-	static bool askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true);
-	static bool askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true);
+	static bool askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true,QWidget* parent=0);
+	static bool askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true,QWidget* parent=0);
 
 };
 

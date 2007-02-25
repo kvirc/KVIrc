@@ -38,6 +38,10 @@
 #include <qtable.h>
 #include "kvi_tal_popupmenu.h"
 
+#ifndef _EDITUSER_CPP_
+	extern KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase;
+#endif
+
 class KviRegisteredUser;
 
 class KviReguserPropertiesDialog : public QDialog
@@ -77,59 +81,6 @@ protected:
 	virtual void closeEvent(QCloseEvent *);
 protected slots:
 	void okClicked();
-};
-
-class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
-{
-public:
-	enum Types { User,Group };
-protected:
-	KviRegisteredUsersDialogItemBase(Types type,KviTalListView * par)
-	:KviTalListViewItem(par),m_iType(type)
-	{
-	};
-	KviRegisteredUsersDialogItemBase(Types type,KviTalListViewItem * par)
-	:KviTalListViewItem(par),m_iType(type)
-	{
-	};
-	~KviRegisteredUsersDialogItemBase()
-	{
-	};
-	
-private:
-	KviRegisteredUsersDialogItemBase::Types m_iType;
-public:
-	KviRegisteredUsersDialogItemBase::Types type() { return m_iType; };
-};
-
-class KviRegisteredUsersGroupItem : public KviRegisteredUsersDialogItemBase
-{
-protected:
-	KviRegisteredUserGroup * m_pGroup;
-public:
-	KviRegisteredUsersGroupItem(KviTalListView * par,KviRegisteredUserGroup * g)
-	:KviRegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
-	{
-		setText(0,m_pGroup->name());
-	}
-	~KviRegisteredUsersGroupItem()
-	{
-	}
-	KviRegisteredUserGroup * group() { return m_pGroup; };
-};
-
-class KviRegisteredUsersDialogItem : public KviRegisteredUsersDialogItemBase
-{
-protected:
-	KviRegisteredUser * m_pUser;
-public:
-	KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u);
-
-public:
-	KviRegisteredUser * user(){ return m_pUser; };
-	void setUser(KviRegisteredUser * u){ m_pUser = u; };
-	virtual void paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align);
-
 };
 
 
@@ -183,45 +134,5 @@ protected slots:
 };
 
 
-class KviRegisteredUsersDialog : public QWidget
-{
-	Q_OBJECT
-public:
-	KviRegisteredUsersDialog(QWidget * par = 0);
-	~KviRegisteredUsersDialog();
-public:
-	KviTalListView   * m_pListView;
-	QPushButton * m_pAddButton;
-	QPushButton * m_pWizardAddButton;
-	QPushButton * m_pRemoveButton;
-	QPushButton * m_pEditButton;
-	QPushButton * m_pImportButton;
-	QPushButton * m_pExportButton;
-	QPushButton * m_pAddGroupButton;
-	
-	QIntDict<KviRegisteredUserGroup> m_TmpDict;
-protected slots:
-	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c);
-	void itemDoubleClicked(KviTalListViewItem *it);
-protected:
-	void fillList();
-protected:
-	virtual void closeEvent(QCloseEvent *);
-	void editItem(KviRegisteredUsersDialogItem * i);
-	void editGroup(KviRegisteredUserGroup* group);
-protected slots:
-	void cancelClicked();
-	void okClicked();
-	void addClicked();
-	void removeClicked();
-	void editClicked();
-	void selectionChanged();
-	void importClicked();
-	void exportClicked();
-	void addWizardClicked();
-	void addGroupClicked();
-	void listViewRightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
-	void moveToGroupMenuClicked(int);
-};
 
 #endif //_EDITUSER_H_

@@ -37,6 +37,7 @@
 #include "edituser.h"
 #include "wizard.h"
 #include "kvi_ircconnection.h"
+#include "dialog.h"
 
 #include "kvi_list.h"
 #include <qsplitter.h> // FIXME: REmove this!
@@ -47,6 +48,8 @@
 //#warning "THIS MODULE HAS TO BE REVISED (notify list consistency!!!)"
 
 // kvi_app.cpp
+
+
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
 KviPtrList<KviRegistrationWizard> * g_pRegistrationWizardList = 0;
@@ -1178,6 +1181,7 @@ static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 
 static bool reguser_module_init(KviModule * m)
 {
+	g_pLocalRegisteredUserDataBase = 0;
 	g_pRegistrationWizardList = new KviPtrList<KviRegistrationWizard>;
 	g_pRegistrationWizardList->setAutoDelete(true);
 
