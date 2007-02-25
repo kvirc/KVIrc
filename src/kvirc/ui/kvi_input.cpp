@@ -1387,7 +1387,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 #ifndef Q_OS_MACX
 	if(e->state() & Qt::ControlButton)
 #else
-	if((e->state() & Qt::ControlButton) || (e->state() & MetaButton))
+	if((e->state() & Qt::ControlButton) || (e->state() & Qt::MetaButton))
 #endif
 	{
 		switch(e->key())
