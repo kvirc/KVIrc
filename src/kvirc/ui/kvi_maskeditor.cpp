@@ -143,7 +143,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	setFocusPolicy(QWidget::ClickFocus);
 #endif
 
-	QGridLayout *g = new QGridLayout(this,3,3,2,2);
+	QGridLayout *g = new QGridLayout(this,4,2,2,2);
 
 	m_cFlag = flag;
 
@@ -175,9 +175,16 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	l = new QLabel(txt,this);
 	g->addWidget(l,0,1);
 
+	KviTalHBox * hb = new KviTalHBox(this);
+	g->addMultiCellWidget(hb,1,1,0,1);
+
+	new QLabel(__tr2qs("Filter:"),hb);
+	m_pSearch = new QLineEdit(hb);
+	connect(m_pSearch,SIGNAL(textChanged ( const QString & ) ),this,SLOT(searchTextChanged ( const QString & )));
+
 	l = new QLabel(__tr2qs("Use doubleclick to edit item"),this);
-	g->addWidget(l,0,1);
-	g->addMultiCellWidget(l,1,1,0,1);
+	g->addWidget(l,1,1);
+	g->addMultiCellWidget(l,2,2,0,1);
 	
 	m_pMaskBox = new KviTalListView(this);
 #ifdef COMPILE_USE_QT4
@@ -195,7 +202,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	m_pMaskBox->setShowSortIndicator(true);
 	m_pMaskBox->setSorting(2,false);
 	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalListViewItem * )),this,SLOT(listViewDoubleClicked( KviTalListViewItem * )));
-	g->addMultiCellWidget(m_pMaskBox,2,2,0,1);
+	g->addMultiCellWidget(m_pMaskBox,3,3,0,1);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 	m_pRemoveMask->setEnabled(isEnabled);
@@ -205,7 +212,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	m_pRemoveMask->setFocusPolicy(QWidget::ClickFocus);
 #endif
 	m_pRemoveMask->setFocusProxy(this);
-	g->addWidget(m_pRemoveMask,3,1);
+	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 	
@@ -217,11 +224,11 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 	m_pAddButton->setFocusPolicy(QWidget::ClickFocus);
 #endif
 	m_pAddButton->setFocusProxy(this);
-	g->addWidget(m_pAddButton,3,0);
+	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 	
-	g->setColStretch(1,1);
+	g->setColStretch(3,1);
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
 	registerSelf();
@@ -230,6 +237,27 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPt
 KviMaskEditor::~KviMaskEditor()
 {
 
+}
+
+void KviMaskEditor::searchTextChanged ( const QString & text)
+{
+	KviTalListViewItem *pItem=m_pMaskBox->firstChild();
+	KviMaskItem *pMaskItem;
+	bool bEmpty = text.isEmpty();
+	while(pItem)
+	{
+		pMaskItem = (KviMaskItem *)pItem;
+		if(bEmpty)
+		{
+			pMaskItem->setVisible(true);
+		} else {
+			if(pMaskItem->mask()->szMask.contains(text))
+				pMaskItem->setVisible(true);
+			else 
+				pMaskItem->setVisible(false);
+		}
+		pItem=pItem->nextSibling();
+	}
 }
 
 void KviMaskEditor::removeClicked()

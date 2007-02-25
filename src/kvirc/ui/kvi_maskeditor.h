@@ -83,11 +83,12 @@ public:
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
-	KviTalListView           * m_pMaskBox;
+	KviTalListView      * m_pMaskBox;
 	QPushButton         * m_pRemoveMask;
 	QPushButton   	    * m_pAddButton;
+	QLineEdit           * m_pSearch;
 	char                  m_cFlag;
-	int		      m_iIconId;
+	int		              m_iIconId;
 public:
 	char flag(){ return m_cFlag; };
 	void addMask(KviMaskEntry *e);
@@ -96,6 +97,7 @@ protected slots:
 	void removeClicked();
 	void addClicked();
 	void listViewDoubleClicked( KviTalListViewItem * );
+	void searchTextChanged ( const QString & );
 signals:
 	void removeMasks(KviMaskEditor *,KviPtrList<KviMaskEntry> *);
 };
