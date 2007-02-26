@@ -39,6 +39,8 @@
 #include "kvi_ircconnection.h"
 #include "kvi_qstring.h"
 #include "kvi_topicw.h"
+#include "kvi_config.h"
+#include "kvi_filedialog.h"
 
 #include <qtimer.h>
 #include <qpainter.h>
@@ -46,6 +48,7 @@
 #include <qsplitter.h>
 #include <qtooltip.h>
 #include "kvi_tal_hbox.h"
+#include "kvi_msgbox.h"
 
 extern KviPtrList<KviListWindow> * g_pListWindowList;
 
@@ -80,9 +83,13 @@ KviChannelListViewItem::~KviChannelListViewItem()
 {
 	delete m_pData;
 }
-
+#ifdef COMPILE_USE_QT4
 int KviChannelListViewItem::width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const
+#else
+int KviChannelListViewItem::width ( const QFontMetrics & fm, const QListView * lv, int column ) const
+#endif
 {
+	debug("width request");
 	QString szText;
 
 	switch(column)
@@ -172,14 +179,21 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
 
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
+	m_pOpenButton = new KviStyledToolButton(box);
+	m_pOpenButton->setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
+	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));	
 
-	m_pRequestButton = new QToolButton(box,"request_button");
+	m_pSaveButton = new KviStyledToolButton(box);
+	m_pSaveButton->setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
+	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));	
+
+	m_pRequestButton = new KviStyledToolButton(box,"request_button");
 	m_pRequestButton->setUsesBigPixmap(false);
 	m_pRequestButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));	
 	QToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 	
-	m_pStopListDownloadButton = new QToolButton(box,"stoplistdownload_button");
+	m_pStopListDownloadButton = new KviStyledToolButton(box,"stoplistdownload_button");
 	m_pStopListDownloadButton->setUsesBigPixmap(false);
 	m_pStopListDownloadButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM)));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
@@ -199,6 +213,8 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pListView->addColumn(__tr2qs("Users"));
 	m_pListView->addColumn(__tr2qs("Topic"));
 	m_pListView->setAllColumnsShowFocus(TRUE);
+	m_pListView->setColumnWidthMode(2,QListView::Maximum);
+	m_pListView->setColumnWidthMode(3,QListView::Maximum);
 	m_pListView->setSorting(100);
 	
 	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
@@ -310,6 +326,79 @@ void KviListWindow::fillCaptionBuffers()
 void KviListWindow::die()
 {
 	close();
+}
+
+void KviListWindow::exportList()
+{
+	if(!m_pListView->firstChild())
+	{
+		KviMessageBox::warning(__tr2qs("You cannot export an empty list"));
+		return;
+	}
+		
+	QString szFile;
+	if(connection())
+	{
+		KviQString::sprintf(szFile,__tr2qs("Channel list for %Q - %Q"),
+			&(connection()->networkName()),&(QDateTime::currentDateTime().toString("d MMM yyyy hh-mm")));
+	} else {
+		szFile = __tr2qs("Channel list");
+	}
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose filename"),szFile,
+		__tr2qs("Configuration files (*.kvc)"),false,
+		false,true,this))
+	{
+		if(QFileInfo(szFile).extension()!="kvc")
+			szFile.append(".kvc");
+		KviConfig cfg(szFile,KviConfig::Write);
+		cfg.clear();
+		KviTalListViewItemIterator it(m_pListView);
+
+		while(it.current())
+		{
+			KviChannelListViewItemData* pData= ((KviChannelListViewItem*) ( it.current() ))->m_pData;
+			cfg.setGroup(pData->m_szChan);
+			// Write properties
+			cfg.writeEntry("topic",pData->m_szTopic);
+			cfg.writeEntry("users",pData->m_szUsers);
+//			cfg.writeEntry("usersKey",pData->m_szUsersKey);
+			++it;
+		}
+	}
+}
+
+void KviListWindow::importList()
+{
+	
+	QString szFile;
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString::null,
+		__tr2qs("Configuration files (*.kvc)"),false,
+		false,this))
+	{
+		if(m_pConsole->isConnected())
+		{
+			m_pConsole->connection()->sendFmtData("list stoplistdownloadnow");
+			outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Stopping the list download...")); //G&N mar 2005
+		}
+
+		m_pItemList->clear();
+
+		KviConfig cfg(szFile,KviConfig::Read);
+		KviConfigIterator it(*cfg.dict());
+		while(it.current())
+		{
+			cfg.setGroup(it.currentKey());
+			m_pItemList->append( 
+					new KviChannelListViewItemData(
+						it.currentKey(),
+						cfg.readQStringEntry("users","0"),
+						cfg.readQStringEntry("topic","")
+					)
+				);
+			++it;
+		}
+		flush();
+	}
 }
 
 void KviListWindow::control(int message)

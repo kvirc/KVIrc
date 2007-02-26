@@ -42,6 +42,7 @@ class KviThemedLabel;
 class KviChannelListViewItemData
 {
 	friend class KviChannelListViewItem;
+	friend class KviListWindow;
 public:
 	KviChannelListViewItemData(const QString &szChan,const QString &szUsers,const QString &szTopic);
 	~KviChannelListViewItemData();
@@ -54,6 +55,7 @@ protected:
 
 class KviChannelListViewItem : public KviTalListViewItem
 {
+	friend class KviListWindow;
 public:
 	KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData);
 	~KviChannelListViewItem();
@@ -61,7 +63,11 @@ protected:
 	KviChannelListViewItemData * m_pData;
 public:
 	const QString & channel(){ return m_pData->m_szChan; };
-	virtual int width ( const QFontMetrics & fm, const KviTalListView * lv, int c ) const;
+#ifdef COMPILE_USE_QT4
+	int width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const;
+#else
+	int width ( const QFontMetrics & fm, const QListView * lv, int column ) const;
+#endif
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
 	virtual QString key(int col,bool) const;
@@ -78,10 +84,12 @@ public:
 protected:
 	QSplitter                              * m_pVertSplitter;
 	QSplitter                              * m_pTopSplitter;
-	KviTalListView                              * m_pListView;
+	KviTalListView                         * m_pListView;
 	QLineEdit                              * m_pParamsEdit;
 	QToolButton                            * m_pRequestButton;
 	QToolButton							   * m_pStopListDownloadButton;
+	QToolButton							   * m_pOpenButton;
+	QToolButton							   * m_pSaveButton;
 	KviThemedLabel                         * m_pInfoLabel;
 	QTimer                                 * m_pFlushTimer;
 	KviPtrList<KviChannelListViewItemData> * m_pItemList;
@@ -101,6 +109,8 @@ protected slots:
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();
+	void exportList();
+	void importList();
 public:
 	virtual QSize sizeHint() const;
 private:
