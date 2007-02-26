@@ -26,7 +26,7 @@
 // Damn complex class ...but it works :)
 // #include <brain.h>
 //
-// #define HOPE_THAT_IT_WILL_NEWER_NEED_TO_BE_MODIFIED :)
+// #define HOPE_THAT_IT_WILL_NEVER_NEED_TO_BE_MODIFIED :)
 
 // 07 May 1999 ,
 //      Already forgot how this damn thing works ,
