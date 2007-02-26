@@ -827,7 +827,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	if(c->params()->count() < 2)iStartLine = 0;
 	if(c->params()->count() < 3)iCount = -1;
 
-	bool bLocal8Bit = szFlags.find('l',false) != -1;
+	bool bLocal8Bit = szFlags.find('l',0,false) != -1;
 
 	KviKvsArray * a = new KviKvsArray();
 
