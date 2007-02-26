@@ -42,6 +42,7 @@
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
 
+#include "kvi_styled_controls.h"
 #include <qtimer.h>
 #include <qpainter.h>
 #include <qfontmetrics.h>
