@@ -51,6 +51,7 @@
 
 #ifdef Q_OS_MACX
 #include "kvi_app.h"  //Needed for g_pApp
+#include <QDesktopWidget>
 #endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
