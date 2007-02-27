@@ -1774,9 +1774,19 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry)
 		{
-			if(!entry->m_bSelected)m_pListView->m_iSelectedCount++;
-			entry->m_bSelected = true;
-			if(m_pListView->m_iSelectedCount == 1)g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+			if(!entry->m_bSelected){
+				entry->m_bSelected = true;
+				m_pListView->m_iSelectedCount=1;
+				KviDictIterator<KviUserListEntry> it(*(m_pListView->m_pEntryDict));
+				while(it.current())
+				{
+					if(it.current()!=entry)
+						((KviUserListEntry *)it.current())->m_bSelected = false;
+					++it;
+				}
+			}
+			if(m_pListView->m_iSelectedCount == 1)
+				g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 			update();
 		}
 		m_pListView->emitRightClick();
