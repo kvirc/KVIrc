@@ -564,6 +564,7 @@ bool KviKvsObject_painter::functiondrawRect(KviKvsObjectFunctionCall *c)
 	if(m_pPainter)	m_pPainter->drawRect(iX,iY,iW,iH);
 	return true;
 }
+// FIX ME: REMOVE functiondrawWinFocusRect
 bool KviKvsObject_painter::functiondrawWinFocusRect(KviKvsObjectFunctionCall *c)
 {
 	KviKvsVariant * pXOrArray;
@@ -576,7 +577,9 @@ bool KviKvsObject_painter::functiondrawWinFocusRect(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawWinFocusRect";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)	m_pPainter->drawWinFocusRect(iX,iY,iW,iH);
+#ifndef COMPILE_USE_QT4
+		if(m_pPainter)	m_pPainter->drawWinFocusRect(iX,iY,iW,iH);
+#endif
 	return true;
 }
 bool KviKvsObject_painter::functiondrawEllipse(KviKvsObjectFunctionCall *c)
@@ -820,10 +823,24 @@ bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
+#ifdef COMPILE_USE_QT4
+	if (!szMode.isEmpty()){
+		if(KviQString::equalCI(szMode,"RTL"))m_pPainter->setLayoutDirection(Qt::RightToLeft);
+		else if(KviQString::equalCI(szMode,"LTR"))m_pPainter->setLayoutDirection(Qt::LeftToRight);
+		else
+		{
+				c->warning(__tr2qs("Invalid mode '%Q'"),&szMode);
+				return true;
+		}
+	}
+	 m_pPainter->drawText(iX,iY,szText);
+#else
 	if(KviQString::equalCI(szMode,"Auto")) m_pPainter->drawText(iX,iY,szText,iLen,QPainter::Auto);
 	else if(KviQString::equalCI(szMode,"RTL")) m_pPainter->drawText(iX,iY,szText,iLen,QPainter::RTL);
 	else if(KviQString::equalCI(szMode,"LTR"))m_pPainter->drawText(iX,iY,szText,iLen,QPainter::LTR);
 	else c->warning(__tr2qs("Invalid mode '%Q'"),&szMode);
+
+#endif
 	return true;
 }
 

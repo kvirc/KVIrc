@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#include <qwidgetlist.h>
-#include <qobjectlist.h>
 #include "kvi_tal_listview.h"
 #include <qimage.h>
 #include "kvi_iconmanager.h"
@@ -41,6 +39,10 @@
 #include "kvi_out.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
+#ifndef COMPILE_USE_QT4
+	#include <qwidgetlist.h>
+	#include <qobjectlist.h>
+#endif
 
 #include "class_button.h"
 #include "class_checkbox.h"
@@ -634,7 +636,16 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	if(obDst->inherits("KviKvsObject_pixmap")){
 		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
 	}
+#ifdef COMPILE_USE_QT4
+	/*QPainter p(pdDest);
+	QRect rectdest(iXdst,iYdst,uW,uH);
+	QRect rectsrc(iXsrc,iYsrc,uW,uH);
+
+	p.drawPixmap(rectdest,pdSource,rectsrc);
+*/
+	#else
 	bitBlt(pdDest,iXdst,iYdst,pdSource,iXsrc,iYsrc,uW,uH);
+#endif
 	return true;
 }
 	/*
@@ -766,8 +777,13 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		
 
 	}
-
+#ifdef COMPILE_USE_QT4
+	QPainter p(pdDest);
+	QRect rect(iDesX,iDesY,buffer.width(),buffer.height());
+	p.drawImage(rect,buffer);
+#else
 	bitBlt(pdDest,iDesX,iDesY,&buffer,0,0,buffer.width(),buffer.height());
+#endif
 	return true;
 
 }
@@ -808,7 +824,48 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 		KVSO_PARAMETER("flag on video",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(cmd)
 	if (bFlag) cmd->window()->output(80, "Objects dump:");
-    QWidgetList *l = g_pApp->topLevelWidgets();
+	#ifdef COMPILE_USE_QT4
+	QWidgetList list = g_pApp->topLevelWidgets();
+	
+	KviStr spacing = ">";
+	QString  szTemp;
+	KviKvsArray * n = new KviKvsArray();
+	int idx=0;
+    for(int i=0;i<list.count();i++)
+	{
+		if( list.at(i)->isWidgetType())
+        {
+			if (bFlag)
+			{
+				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
+                list.at(i),
+                KVI_TEXT_BOLD, list.at(i)->name(), KVI_TEXT_BOLD,
+                list.at(i)->className(),
+                list.at(i)->isVisible() ? "visible" : "hidden",
+                list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
+			}
+			QString  szClass=list.at(i)->className();
+			QString szObj=list.at(i)->name();
+			QString szTemp;
+			szTemp = szClass + "::" + szObj;
+			KviKvsVariant v;
+			v.setString(szTemp);
+			n->set(i,new KviKvsVariant(v));
+			debug ("string %s",szTemp.latin1());
+			debug ("class %s",szClass.latin1());
+			debug ("Obj %s",szObj.latin1());
+	
+			//idx++;
+	
+			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
+		
+	
+        }
+        //++it;
+	}
+
+#else
+	QWidgetList *l = g_pApp->topLevelWidgets();
 	l->setAutoDelete(false);
     QWidgetListIt it(*l);
     KviStr spacing = ">";
@@ -847,14 +904,46 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
         }
         ++it;
 	}
+
+#endif
     cmd->returnValue()->setArray(n);
-    delete l;
     return true;
                 
 }
 
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bFlag, KviKvsArray *n, int &idx)
 {
+#ifdef COMPILE_USE_QT4
+        const QObjectList list = parent->children();
+    	if( !list.count() ) return;
+        QString sp(spacing);
+        sp.append(">");
+ 		for(int i=0;i<list.count();i++)         
+		{
+                
+                if( list.at(i)->isWidgetType() ) 
+				{
+					if (bFlag)
+					{
+                        pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
+                        spacing, list.at(i), KVI_TEXT_BOLD,
+                        list.at(i)->name(), KVI_TEXT_BOLD, list.at(i)->className()
+                        );
+					}
+				QString szClass=list.at(i)->className();
+                QString szObj=list.at(i)->name();
+				QString szTemp;
+				szTemp=spacing+szClass+"::"+szObj;
+				KviKvsVariant v;
+				v.setString(szTemp);
+				n->set(idx,new KviKvsVariant(v));
+				debug ("string %s",szTemp.latin1());
+				idx++;
+                dumpChildObjects(pWnd, list.at(i), sp, bFlag, n, idx );
+                }
+         }
+
+#else
 
         const QObjectList *l = parent->children();
     	if( !l ) return;
@@ -887,6 +976,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
                 }
           ++it;
         }
+#endif
 }
 
 static bool objects_module_can_unload(KviModule *m)

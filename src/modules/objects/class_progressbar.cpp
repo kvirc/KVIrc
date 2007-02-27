@@ -21,13 +21,19 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qprogressbar.h>
 #include "class_progressbar.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
 
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+#ifdef COMPILE_USE_QT4
+#include <Q3ProgressBar>
+#define KVI_PROGRESS_BAR Q3ProgressBar
+#else
+#include <qprogressbar.h>
+#define KVI_PROGRESS_BAR QProgressBar
+#endif
 
 /*
 	@doc:	progressbar
@@ -88,9 +94,15 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_progressbar)
 KVSO_END_CONSTRUCTOR(KviKvsObject_progressbar)
 
 bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
-{
-	setObject(new QProgressBar(parentScriptWidget(), name()), true);
-	return true;
+{	
+	#ifdef COMPILE_USE_QT4
+		Q3ProgressBar *pbar=new Q3ProgressBar(parentScriptWidget());
+		pbar->setObjectName(name());
+		setObject(pbar,true);
+	#else
+		setObject(new QProgressBar(parentScriptWidget(), name()), true);
+	#endif	
+return true;
 }
 
 bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)
@@ -99,7 +111,7 @@ bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("step_value",KVS_PT_UNSIGNEDINTEGER,0,iProgress)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QProgressBar *)widget())->setProgress(iProgress);
+	if (widget()) ((KVI_PROGRESS_BAR *)widget())->setProgress(iProgress);
     return true;
 }
 bool KviKvsObject_progressbar::functionSetTotalSteps(KviKvsObjectFunctionCall *c)
@@ -108,13 +120,13 @@ bool KviKvsObject_progressbar::functionSetTotalSteps(KviKvsObjectFunctionCall *c
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("total_steps",KVS_PT_UNSIGNEDINTEGER,0,iSteps)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QProgressBar *)widget())->setTotalSteps(iSteps);
+	if (widget()) ((KVI_PROGRESS_BAR *)widget())->setTotalSteps(iSteps);
     return true;
 }
 
 bool KviKvsObject_progressbar::functionReset(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) ((QProgressBar *)widget())->reset();
+	if (widget()) ((KVI_PROGRESS_BAR *)widget())->reset();
 	return true;
 }
 
@@ -124,12 +136,12 @@ bool KviKvsObject_progressbar::functionSetCenterIndicator(KviKvsObjectFunctionCa
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((QProgressBar *)widget())->setCenterIndicator(bFlag);
+	if(widget()) ((KVI_PROGRESS_BAR *)widget())->setCenterIndicator(bFlag);
 	return true;
 }
 bool KviKvsObject_progressbar::functionCenterIndicator(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QProgressBar *)widget())->centerIndicator());
+	if (widget()) c->returnValue()->setBoolean(((KVI_PROGRESS_BAR *)widget())->centerIndicator());
 	return true;
 }
 
@@ -140,11 +152,11 @@ bool KviKvsObject_progressbar::functionSetPercentageVisible(KviKvsObjectFunction
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QProgressBar *)widget())->setPercentageVisible(bEnabled);
+		((KVI_PROGRESS_BAR *)widget())->setPercentageVisible(bEnabled);
 	return true;
 }
 bool KviKvsObject_progressbar::functionPercentageVisible(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QProgressBar *)widget())->percentageVisible());
+	if (widget()) c->returnValue()->setBoolean(((KVI_PROGRESS_BAR *)widget())->percentageVisible());
 	return true;
 }

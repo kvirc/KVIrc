@@ -45,16 +45,36 @@ const char * const align_tbl[] = {
 			"Bottom",
 			"WordBreak"
 			   };
+#ifdef COMPILE_USE_QT4
+	#define QT_LABEL_ALIGNLEFT Qt::AlignLeft
+	#define	QT_LABEL_ALIGNRIGHT Qt::AlignRight
+	#define QT_LABEL_ALIGNHCENTER Qt::AlignHCenter
+	#define QT_LABEL_ALIGNVCENTER Qt::AlignVCenter
+	#define QT_LABEL_ALIGNCENTER Qt::AlignCenter
+	#define	QT_LABEL_ALIGNTOP Qt::AlignTop
+	#define QT_LABEL_ALIGNBOTTOM Qt::AlignBottom
+	#define QT_LABEL_JUSTIFY Qt::AlignJustify
+#else
+	#define QT_LABEL_ALIGNLEFT QLabel::AlignLeft
+	#define	QT_LABEL_ALIGNRIGHT QLabel::AlignRight
+	#define QT_LABEL_ALIGNHCENTER QLabel::AlignHCenter
+	#define QT_LABEL_ALIGNVCENTER QLabel::AlignVCenter
+	#define QT_LABEL_ALIGNCENTER QLabel::AlignCenter
+	#define	QT_LABEL_ALIGNTOP QLabel::AlignTop
+	#define QT_LABEL_ALIGNBOTTOM QLabel::AlignBottom
+	#define QT_LABEL_JUSTIFY QLabel::WordBreak
+#endif
+
 const int align_cod[] = {
-		QLabel::AlignLeft,
-		QLabel::AlignRight,
-		QLabel::AlignHCenter,
-		QLabel::AlignVCenter,
-		QLabel::AlignCenter,
-		QLabel::AlignTop,
-		QLabel::AlignBottom,
-		QLabel::WordBreak
-			};
+		QT_LABEL_ALIGNLEFT,
+		QT_LABEL_ALIGNRIGHT,
+	    QT_LABEL_ALIGNHCENTER,
+	    QT_LABEL_ALIGNVCENTER,
+	    QT_LABEL_ALIGNCENTER,
+	 	QT_LABEL_ALIGNTOP,
+	    QT_LABEL_ALIGNBOTTOM,
+	    QT_LABEL_JUSTIFY,
+	};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 		  
@@ -250,22 +270,31 @@ bool KviKvsObject_label::functionMargin(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
+// FIX ME
 bool KviKvsObject_label::functionSetAutoResize(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
+	#ifdef COMPILE_USE_QT4
+	 return true;
+	#else
 	if(widget())
 		((QLabel *)widget())->setAutoResize(bEnabled);
 	return true;
+	#endif
 }
 bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QLabel *)widget())->autoResize());
+	#ifdef COMPILE_USE_QT4
+		if (widget()) c->returnValue()->setBoolean(true);
+	#else
+		if (widget()) c->returnValue()->setBoolean(((QLabel *)widget())->autoResize());
+	#endif
 	return true;
 }
-
+//
 bool KviKvsObject_label::functionSetAlignment(KviKvsObjectFunctionCall *c)
 {
 	QStringList alignment;

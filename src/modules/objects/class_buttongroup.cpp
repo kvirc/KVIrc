@@ -69,10 +69,18 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_buttongroup)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_buttongroup)
 
+// CHECK ME
 bool KviKvsObject_buttongroup::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	QButtonGroup *group=new QButtonGroup(parentScriptWidget(),name());
-	setObject(group, true);
+	#ifdef COMPILE_USE_QT4
+		QButtonGroup *group=new QButtonGroup(parentScriptWidget());
+		group->setObjectName(name());
+		setObject(group,true);
+	#else
+		setObject(new QButtonGroup(name(),parentScriptWidget()), true);
+	#endif	
+
+
 	return true;
 }
 

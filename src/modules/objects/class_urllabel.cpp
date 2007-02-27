@@ -32,6 +32,12 @@
 
 #include "kvi_window.h"
 #include "kvi_kvs_script.h"
+#ifdef COMPILE_USE_QT4
+#include <QMouseEvent>
+#define QT_LEFT_BUTTON Qt::LeftButton
+#else
+#define QT_LEFT_BUTTON QEvent::LeftButton
+#endif
 //#warning "Functions to change colors for different states"
 //#warning "$setUnderline(), $underline()"
 
@@ -197,7 +203,7 @@ bool KviKvsObject_urlabel::eventFilter(QObject * o, QEvent * e)
 			break;
 		case QEvent::Leave:
 			// this doesn't work...
-			if(((QMouseEvent *)e)->state() & QEvent::LeftButton)
+			if(((QMouseEvent *)e)->state() & QT_LEFT_BUTTON)
 				pal.setColor(QColorGroup::Foreground, \
 					m_activeClr);
 			else
@@ -222,7 +228,7 @@ bool KviKvsObject_urlabel::eventFilter(QObject * o, QEvent * e)
 		case QEvent::MouseButtonPress:
 			m_lastClickWasDbl = false;
 			if(!((QMouseEvent * )e)->button() & \
-			  QEvent::LeftButton || !m_useSingleClick)
+			  QT_LEFT_BUTTON || !m_useSingleClick)
 				break;
 			pal.setColor(QColorGroup::Foreground, m_activeClr);
 			break;

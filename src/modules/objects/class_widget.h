@@ -21,7 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-
+#include <kvi_tal_tooltip.h>
 #include "kvi_string.h"
 #include "qtooltip.h"
 #include "object_macros.h"
@@ -104,14 +104,15 @@ protected:
 signals:
 	void aboutToDie();
 };
-class KviKvsTip : public QToolTip
+class KviKvsTip : public KviTalToolTip
 {
 public:
 	KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget);
 	~KviKvsTip();
 public:
 	void maybeTip(const QPoint &pnt);
-	void doTip(const QRect &rct,const QString &str){ tip(rct,str); };
+	void doTip(const QRect &rct,const QString &str){// tip(rct,str); //
+	};
 protected:
 	KviKvsObject_widget * m_pParent;
 };

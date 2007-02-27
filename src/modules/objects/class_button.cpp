@@ -108,14 +108,17 @@ bool KviKvsObject_button::functionSetOn(KviKvsObjectFunctionCall *c)
 		((QPushButton *)widget())->setOn(bEnabled);
 	return true;
 }
+// FIX ME
 bool KviKvsObject_button::functionSetIsMenuButton(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
+	/*if(widget())
 		((QPushButton *)widget())->setIsMenuButton(bEnabled);
+		*/
+
 	return true;
 }
 bool KviKvsObject_button::functionIsMenuButton(KviKvsObjectFunctionCall *c)
@@ -123,6 +126,7 @@ bool KviKvsObject_button::functionIsMenuButton(KviKvsObjectFunctionCall *c)
 	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isMenuButton());
 	return true;
 }
+//
 bool KviKvsObject_button::functionIsOn(KviKvsObjectFunctionCall *c)
 {
 	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isOn());
@@ -133,6 +137,7 @@ bool KviKvsObject_button::functionToggle(KviKvsObjectFunctionCall *c)
 	if(widget()) ((QPushButton *)widget())->toggle();
 	return true;
 }
+// FIX ME
 bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
 {
 	QString icon;
@@ -141,10 +146,20 @@ bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)
+	if(pix){
+		#ifdef COMPILE_USE_QT4	
+		((QPushButton *)widget())->setIconSet(*pix);
+		#else
 		((QPushButton *)widget())->setIconSet(QIconSet(*pix,QIconSet::Small));
-	else
+		#endif
+	}
+	else{
+		#ifdef COMPILE_USE_QT4	
+		((QPushButton *)widget())->setIcon(QIconSet());
+		#else
 		((QPushButton *)widget())->setIconSet(QIconSet());
+		#endif
+	}
 	return true;
 }
 bool KviKvsObject_button::functionclickEvent(KviKvsObjectFunctionCall *c)

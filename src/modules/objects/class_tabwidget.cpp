@@ -215,7 +215,13 @@ bool KviKvsObject_tabwidget::functionaddTab(KviKvsObjectFunctionCall *c)
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 
-	if(pix)((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel);
+	if(pix){
+#ifdef COMPILE_USE_QT4
+		((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),QIconSet(*pix),szLabel);
+#else
+		((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel);
+#endif	
+	}
 	else((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),szLabel);	
 	return true;
 }
@@ -250,7 +256,13 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix) ((QTabWidget *)widget())->insertTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel,uIndex);
+	if(pix){
+		#ifdef COMPILE_USE_QT4
+			((QTabWidget *)widget())->insertTab( ((QWidget *)(ob->object())),QIconSet(*pix),szLabel,uIndex);
+		#else
+			((QTabWidget *)widget())->insertTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel,uIndex);
+		#endif
+	}
 	else ((QTabWidget *)widget())->insertTab(((QWidget *)(ob->object())),szLabel,uIndex);	
 	return true;
 }
@@ -486,7 +498,13 @@ bool KviKvsObject_tabwidget::functionchangeTab(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix) ((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel);
+	if(pix){
+		#ifdef COMPILE_USE_QT4
+			((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIconSet(*pix),szLabel);
+		#else
+			((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIconSet(*pix,QIconSet::Small),szLabel);
+		#endif
+	}
 	else ((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),szLabel);	
 	return true;
 }

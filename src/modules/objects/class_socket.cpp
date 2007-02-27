@@ -35,6 +35,7 @@
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 #include "kvi_databuffer.h"
+#include "kvi_qcstring.h"
 
 #include "class_socket.h"
 
@@ -531,7 +532,7 @@ bool  KviKvsObject_socket::functionWriteHex(KviKvsObjectFunctionCall *c)
 		szTmp=m_szHex.setNum(m_szHex.toInt(&bOk,16),16);
 		if(szTmp.length()>0)
 		{
-			QCString szData8 = szTmp.utf8();
+			KviQCString szData8 = szTmp.utf8();
 			m_pOutBuffer->append((const unsigned char *)(szData8.data()),szData8.length());
 			delayedFlush(0);
 			c->returnValue()->setInteger(szData8.length());
@@ -1300,7 +1301,7 @@ bool KviKvsObject_socket::functionWrite(KviKvsObjectFunctionCall *c)
   KVSO_PARAMETER("szData",KVS_PT_STRING,0,szData)
  KVSO_PARAMETERS_END(c)
 
-QCString szData8 = szData.utf8();
+KviQCString szData8 = szData.utf8();
  if(szData8.length() > 0)
  {
   m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());

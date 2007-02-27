@@ -22,12 +22,17 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-#include <qprocess.h>
+
 #include <qtimer.h>
 #include "class_widget.h"
 
 
 #include "object_macros.h"
+#ifdef COMPILE_USE_QT4
+#include <Q3Process>
+#else
+#include <qprocess.h>
+#endif
 
 
 class KviKvsObject_process : public KviKvsObject
@@ -36,7 +41,13 @@ class KviKvsObject_process : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_process)
 protected:
+
+#ifdef COMPILE_USE_QT4
+	Q3Process * m_pProcess;
+#else
 	QProcess * m_pProcess;
+#endif
+
 public:
 
 	bool functionaddArgument(KviKvsObjectFunctionCall *c);

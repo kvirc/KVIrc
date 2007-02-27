@@ -23,10 +23,14 @@
 #include "class_process.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
+#include "kvi_settings.h"
 #include "kvi_locale.h"
 #include <qtimer.h>
-
+#ifdef COMPILE_USE_QT4
+#include <Q3Process>
+#else 
+#include <qprocess.h>
+#endif
 
 /*
 	@doc:	process
@@ -180,7 +184,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_process,"process","object")
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_process,KviKvsObject)
 
+#ifdef COMPILE_USE_QT4
+	m_pProcess = new Q3Process();
+#else
 	m_pProcess = new QProcess();
+#endif
 	connect(m_pProcess,SIGNAL(readyReadStdout()),this,SLOT(slotReadStdout()));
 	connect(m_pProcess,SIGNAL(readyReadStderr()),this,SLOT(slotReadStderr()));
 

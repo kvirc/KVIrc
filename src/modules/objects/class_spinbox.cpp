@@ -196,7 +196,15 @@ bool KviKvsObject_spinbox::functionmaxValue(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_spinbox::functionlineStep(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->lineStep());
+	if (widget())
+	{
+		#ifdef COMPILE_USE_QT4
+			c->returnValue()->setInteger(((QSpinBox *)widget())->singleStep());
+		#else
+			c->returnValue()->setInteger(((QSpinBox *)widget())->lineStep());
+		#endif
+	}
+	
 	return true;
 }
 

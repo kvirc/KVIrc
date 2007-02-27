@@ -40,12 +40,20 @@
 #include <qmetaobject.h>
 #include "class_widget.h"
 #include "class_pixmap.h"
+
+#ifdef COMPILE_USE_QT4
+	#include <QKeyEvent>
+	#include <QDesktopWidget>
+#else
+	#include <qwidgetlist.h>
+#endif
+
 #include <qwidget.h>
 #include <qtooltip.h>
 #include <qfont.h>
 #include <qvariant.h>
-#include <qwidgetlist.h>
 
+// FIX ME: WFLAGS
 const char * const widgettypes_tbl[] = {
 			"TopLevel",
 			"Dialog",
@@ -59,7 +67,11 @@ const char * const widgettypes_tbl[] = {
 			"Maximize",
 			"NoAutoErase"
 			   };
+#ifdef COMPILE_USE_QT4
+const Qt::WindowType widgettypes_cod[] = {
+#else 
 const int widgettypes_cod[] = {
+#endif
 		Qt::WType_TopLevel,
 		Qt::WType_Dialog,
 		Qt::WType_Popup,
@@ -72,6 +84,22 @@ const int widgettypes_cod[] = {
 		Qt::WStyle_Maximize,
 		Qt::WNoAutoErase
 };
+
+
+
+
+#ifdef COMPILE_USE_QT4
+	#define QT_WIDGET_TABFOCUS Qt::TabFocus
+	#define	QT_WIDGET_CLICKFOCUS Qt::ClickFocus
+	#define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
+	#define QT_WIDGET_NOFOCUS Qt::NoFocus
+#else
+	#define QT_WIDGET_TABFOCUS QWidget::TabFocus
+	#define	QT_WIDGET_CLICKFOCUS QWidget::ClickFocus
+	#define QT_WIDGET_STRONGFOCUS QWidget::StrongFocus
+	#define QT_WIDGET_NOFOCUS QWidget::NoFocus
+#endif
+
 
 #define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
 
@@ -455,7 +483,7 @@ const int widgettypes_cod[] = {
 
 */
 KviKvsTip::KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget)
-: QToolTip(pWidget,0)
+: KviTalToolTip(pWidget)
 {
 	m_pParent=pParent;
 }
@@ -1456,16 +1484,16 @@ bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szMode, "TabFocus"))
-		widget()->setFocusPolicy(QWidget::TabFocus);
+		widget()->setFocusPolicy(QT_WIDGET_TABFOCUS);
 	else
 	if(KviQString::equalCI(szMode, "ClickFocus"))
-		widget()->setFocusPolicy(QWidget::ClickFocus);
+		widget()->setFocusPolicy(QT_WIDGET_CLICKFOCUS);
 	else
 	if(KviQString::equalCI(szMode, "StrongFocus"))
-		widget()->setFocusPolicy(QWidget::StrongFocus);
+		widget()->setFocusPolicy(QT_WIDGET_STRONGFOCUS);
 	else
 	if(KviQString::equalCI(szMode, "NoFocus"))
-		widget()->setFocusPolicy(QWidget::NoFocus);
+		widget()->setFocusPolicy(QT_WIDGET_NOFOCUS);
 	else c->warning(__tr2qs("Invalid parameters"));
 	return true;
 }
@@ -1473,14 +1501,20 @@ bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 {
 	QStringList wflags;
+	//Qt::WindowType sum;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget_flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,wflags)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
-	int flag,sum=0;
+	#ifdef COMPILE_USE_QT4
+		Qt::WindowFlags flag,sum=0;
+	#else
+		int flag,sum=0;
+	#endif
 	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
 	{
-			flag = 0;
+			
+				flag=0;
 			for(unsigned int j = 0; j < widgettypes_num; j++)
 			{
 				if(KviQString::equalCI((*it), widgettypes_tbl[j]))
@@ -1495,8 +1529,13 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("Unknown widget flag '%Q'"),&(*it));
 
 		}
-	widget()->reparent(widget()->parentWidget(),sum,QPoint(widget()->x(),widget()->y()));
-	return true;
+	
+#ifdef COMPILE_USE_QT4
+	widget()->setWindowFlags(sum);
+#else
+	 widget()->reparent(widget()->parentWidget(),sum,QPoint(widget()->x(),widget()->y()));
+#endif
+	 return true;
 }
 
 bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)

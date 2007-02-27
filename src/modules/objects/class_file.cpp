@@ -40,400 +40,36 @@ const char * const mod_tbl[] =	{
 					"Append",
 					"Truncate"
 				  };
-
+#ifdef COMPILE_USE_QT4
+#define	IO_RAW QIODevice::Unbuffered
+#define IO_READONLY QIODevice::ReadOnly
+#define IO_WRITEONLY QIODevice::WriteOnly
+#define IO_READWRITE QIODevice::ReadWrite
+#define IO_APPEND QIODevice::Append
+#define IO_TRUNCATE QIODevice::Truncate
+//#define IO_TRANSLATE QIODevice::Text
+#else
+#define	IO_RAW IO_Raw
+#define IO_READONLY IO_ReadOnly
+#define IO_WRITEONLY IO_WriteOnly
+#define IO_READWRITE IO_ReadWrite
+#define IO_APPEND IO_Append
+#define IO_TRUNCATE IO_Truncate
+#endif
+#ifdef COMPILE_USE_QT4
+const QIODevice::OpenMode mod_cod[] = {
+#else
 const int mod_cod[] =	{
-				IO_Raw,
-				IO_ReadOnly,
-				IO_WriteOnly,
-				IO_ReadWrite,
-				IO_Append,
-				IO_Truncate
+#endif
+				IO_RAW,
+				IO_READONLY,
+				IO_WRITEONLY,
+				IO_READWRITE,
+				IO_APPEND,
+				IO_TRUNCATE
 			};
 
 #define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
-
-/*
-
-static KviScriptObjectClass * g_pFileClass = 0;
-
-static KviScriptObject * fileClassCreateInstance(KviScriptObjectClass * c,
-	KviScriptObject * p, const char * n)
-{
-	return new KviScriptFileObject(c, p, n);
-}
-
-KviScriptFileObject::KviScriptFileObject(KviScriptObjectClass * c, KviScriptObject * p,
-	const char * n) : KviScriptObject(c, p, n)
-{
-	m_pFile = new QFile();
-}
-
-KviScriptFileObject::~KviScriptFileObject()
-{
-	delete m_pFile;
-}
-
-
-
-#define fileFuncReg(__nam, __func) \
-	g_pFileClass->registerFunctionHandler(__nam, \
-	(KviScriptObjectFunctionHandlerProc)(KVI_PTR2MEMBER(KviScriptFileObject::__func)), \
-	0, true);
-
-void KviScriptFileObject::registerSelf()
-{
-	KviScriptObjectClass * base = g_pScriptObjectController-> \
-		lookupClass("object");
-	__range_valid(base);
-
-	g_pFileClass = new KviScriptObjectClass(base, "file", \
-		fileClassCreateInstance, true);
-
-	fileFuncReg("setName", functionSetName);
-	fileFuncReg("name", functionName);
-	fileFuncReg("open", functionOpen);
-	fileFuncReg("isOpen", functionIsOpen);
-	fileFuncReg("close", functionClose);
-	fileFuncReg("flush", functionFlush);
-	fileFuncReg("size", functionSize);
-	fileFuncReg("atEnd", functionAtEnd);
-	fileFuncReg("where", functionWhere);
-	fileFuncReg("seek", functionSeek);
-	fileFuncReg("putch", functionPutch);
-	fileFuncReg("getch", functionGetch);
-	fileFuncReg("ungetch", functionUngetch);
-	fileFuncReg("readBlock", functionReadBlock);
-	fileFuncReg("writeBlock", functionWriteBlock);
-	fileFuncReg("readLine", functionReadLine);
-	fileFuncReg("writeLine", functionWriteLine);
-	fileFuncReg("hexWrite", functionHexWrite);
-	fileFuncReg("hexRead", functionHexRead);
-}
-
-void KviScriptFileObject::unregisterSelf()
-{
-	delete g_pFileClass;
-    g_pFileClass = 0;
-}
-
-bool KviScriptFileObject::functionSetName(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::setName");
-	KviStr * pS = p->safeFirst();
-	if(pS->isEmpty())
-		return c->error(KviError_invalidParameter,__tr("Empty string"));
-	m_pFile->setName(QString::fromUtf8(pS->ptr()));
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionName(KviCommand *, KviParameterList *, KviStr & b)
-{
-	b.append(m_pFile->name().utf8().data());
-	return true;
-}
-
-bool KviScriptFileObject::functionOpen(KviCommand * c, KviParameterList * p, KviStr &)
-{
-	ENTER_STACK_FRAME(c, "file::open");
-	if(kvi_strEqualCI(m_pFile->name().utf8().data(), ""))
-		return c->error(KviError_noSuchFile, \
-			__tr("Empty filename string"));
-
-	int mod, sum = 0;
-	if(!p->count())	// if no parameters given, default to ReadWrite | Append
-		sum = IO_ReadOnly;
-	else
-	{
-		for(unsigned int i = 0; i < p->count(); i++)
-		{
-			mod = 0;
-			for(unsigned int j = 0; j < mod_num; j++)
-			{
-				if(kvi_strEqualCI(p->at(i)->ptr(), mod_tbl[j]))
-				{
-					mod = mod_cod[j];
-					break;
-				}
-			}
-
-			if(mod)
-				sum = sum | mod;
-			else
-				c->warning(__tr("No such open mode: %s"), \
-						p->at(i)->ptr());
-		}
-	}
-
-	if(!m_pFile->open(sum))
-		return c->error(KviError_unknownError);	// signalise with other
-							// error ?
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionIsOpen(KviCommand *, KviParameterList *, KviStr & b)
-{
-	b.append(m_pFile->isOpen() ? '1' : '0');
-	return true;
-}
-
-bool KviScriptFileObject::functionClose(KviCommand * c, KviParameterList *, KviStr &)
-{
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	m_pFile->close();
-	return true;
-}
-
-bool KviScriptFileObject::functionFlush(KviCommand * c, KviParameterList *, KviStr &)
-{
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	m_pFile->flush();
-	return true;
-}
-
-bool KviScriptFileObject::functionSize(KviCommand *, KviParameterList *, KviStr & b)
-{
-	b.append(KviStr::Format, "%d", m_pFile->size());
-	return true;
-}
-
-bool KviScriptFileObject::functionAtEnd(KviCommand * c, KviParameterList *,KviStr & b)
-{
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	b.append(m_pFile->atEnd() ? '1' : '0');
-	return true;
-}
-
-bool KviScriptFileObject::functionWhere(KviCommand * c, KviParameterList *,KviStr & b)
-{
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	b.append(KviStr::Format, "%d", m_pFile->at());
-	return true;
-}
-
-bool KviScriptFileObject::functionSeek(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::seek");
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	bool bOk;
-	int val = p->getInt(&bOk);
-	if(!bOk)
-		return c->error(KviError_integerParameterExpected);
-
-	if(val < 0)
-		c->warning(__tr("Negative file index supplied !"));
-
-	m_pFile->at(val);
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionPutch(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::putch");
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	if(p->first()->len() > 1)
-		c->warning(__tr("Argument to long, using only first char"));
-	else
-		if(p->first()->len() == 0)
-			c->warning(__tr("Argument length is 0 - empty string"));
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	char ch = p->first()->at(0);
-	if(m_pFile->putch(ch) < 0)
-		c->warning(__tr("Write error occured !"));	// c->error ?
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionGetch(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	int chInt = m_pFile->getch();
-	if(chInt < 0)
-		c->warning(__tr("Read error occured !"));	// c->error ?
-	else
-	{
-		char ch = chInt;
-		b.append(ch);
-	}
-
-	return true;
-}
-
-bool KviScriptFileObject::functionUngetch(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::ungetch");
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	if(p->first()->len() > 1)
-		c->warning(__tr("Argument to long, using only first char"));
-	else
-		if(p->first()->len() == 0)
-			c->warning(__tr("Argument length is 0 - empty string"));
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	char ch = p->first()->at(0);
-	if(m_pFile->ungetch(ch) < 0)
-		c->warning(__tr("An error occured !"));		// c->error ?
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionReadBlock(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::readBlock");
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	bool ok;
-	int len = p->getInt(&ok);
-	if(!ok)
-		return c->error(KviError_integerParameterExpected);
-	if(len < 0)
-		c->warning(__tr("Length is a negative number !"));
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	char * buff = new char[len + 1];
-	m_pFile->flush(); // advice from QFile man page (to avoid trash)
-	int rlen = m_pFile->readBlock(buff, len);
-	buff[rlen] = '\0';
-	b.append(buff);
-	delete[] buff;
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionWriteBlock(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::writeBlock");
-
-	if(p->count() < 2)
-		return c->error(KviError_notEnoughParameters);
-
-	bool ok;
-	int len = p->getInt(&ok);
-//	KviStr * pS = p->safeNext();
-	KviStr * pS = p->at(1);
-	if(!ok)
-		return c->error(KviError_integerParameterExpected);
-	if(len < 0)
-		c->warning(__tr("Length is a negative number !"));
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	int rlen = m_pFile->writeBlock(pS->ptr(), len);
-	b.append(KviStr::Format, "%d", rlen);
-	m_pFile->flush();
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionReadLine(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-//	ENTER_STACK_FRAME(c, "file::readLine");
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	KviStr tmp;
-	kvi_readLine(m_pFile,tmp);
-	b.append(tmp);
-
-	return true;
-
-//	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionWriteLine(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::writeLine");
-
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	QTextStream ts(m_pFile);
-	ts << p->first()->ptr();
-
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionHexWrite(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
-	ENTER_STACK_FRAME(c, "file::hexWrite");
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	char * val = 0;
-	int len = p->first()->hexToBuffer(&val,false);
-
-	if(len < 1)
-	{
-		c->warning(__tr("Nothing to write"));
-		return c->leaveStackFrame();
-	}
-
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	if(m_pFile->putch(*val) < 0)
-		c->warning(__tr("Write error occured !"));	// c->error ?
-
-	KviStr::freeBuffer(val);
-
-	return c->leaveStackFrame();
-}
-
-bool KviScriptFileObject::functionHexRead(KviCommand * c, KviParameterList * p,
-	KviStr & b)
-{
- 	if(!m_pFile->isOpen())
- 		c->warning(__tr("File is not open !"));
-
-	char ch = m_pFile->getch();
-
-	KviStr tmp;
- 	tmp.bufferToHex(&ch, 1);
- 	b.append(tmp);
-
- 	return true;
-}
-
-*/
-
-
 
 /*
 	@doc:	file
@@ -590,8 +226,31 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Empty filename string"));
 		return true;
 	}
-	int mod,sum = 0;
-	if (!modes.first()) sum = IO_ReadOnly; // if no parameters given, default to ReadWrite | Append
+	#ifdef COMPILE_USE_QT4
+	QIODevice::OpenMode mod,sum;
+	if (modes.empty()) sum = IO_READONLY; // if no parameters given, default to ReadWrite | Append
+	else
+	{
+		for ( int idx=0;idx<modes.count();idx++)
+		{
+			mod = IO_ReadOnly;
+			for(unsigned int j = 0; j < mod_num; j++)
+			{
+				if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
+				{
+					mod=mod_cod[j];
+					break;
+				}
+			}
+			if(mod!=IO_ReadOnly)
+				sum = sum | mod;
+			else
+				c->warning(__tr2qs("No such open mode: '%Q'"),&modes.at(idx));
+		}
+	}
+#else
+	int mod,sum=0;
+if (!modes.first()) sum = IO_READONLY; // if no parameters given, default to ReadWrite | Append
 	else
 	{
 		for ( QStringList::Iterator it = modes.begin(); it != modes.end(); ++it )
@@ -612,6 +271,7 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("No such open mode: '%Q'"),&(*it));
 		}
 	}
+#endif
 	m_pFile->open(sum);
 	return true;
 }

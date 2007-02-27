@@ -26,7 +26,12 @@
 
 
 #include "kvi_tal_listview.h"
+#ifdef COMPILE_USE_QT4
+#include <Q3Header>
+#include <QDragEnterEvent>
+#else
 #include <qheader.h>
+#endif
 #include "class_listview.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
@@ -351,12 +356,12 @@ bool KviKvsObject_listview::function_setAllColumnsShowFocus(KviKvsObjectFunction
 
 bool KviKvsObject_listview::function_hideListViewHeader(KviKvsObjectFunctionCall *c)
 {
-	((KviTalListView *)widget())->header()->hide();
+//	((KviTalListView *)widget())->header()->hide();
 	return true;
 }
 bool KviKvsObject_listview::function_showListViewHeader(KviKvsObjectFunctionCall *c)
 {
-	((KviTalListView *)widget())->header()->show();
+//	((KviTalListView *)widget())->header()->show();
 	return true;
 }
 bool KviKvsObject_listview::function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c)
@@ -519,12 +524,11 @@ KviKvsMdmListView::~KviKvsMdmListView()
 
 void KviKvsMdmListView::contentsDragEnterEvent( QDragEnterEvent *e )
 {
-	debug ("DragEnterEvent");
-    if ( !QUriDrag::canDecode(e) )
-	{
-		e->ignore();
-		return;
-    }
+		if ( !KviUriDrag::canDecode(e))
+		{
+			e->ignore();
+			return;
+		}
 
 }
 
@@ -532,7 +536,7 @@ void KviKvsMdmListView::contentsDragEnterEvent( QDragEnterEvent *e )
 void KviKvsMdmListView::contentsDropEvent(QDropEvent *e)
 {
 	QStringList list;
-	if(QUriDrag::decodeLocalFiles(e,list))
+	if(KviUriDrag::decodeLocalFiles(e,list))
 	{
 		if(!list.isEmpty())
 		{

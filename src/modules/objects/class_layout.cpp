@@ -26,6 +26,19 @@
 
 #include "class_layout.h"
 
+#ifdef COMPILE_USE_QT4
+#define QLAYOUT_AUTO_CONSTRAINT QLayout::SetDefaultConstraint
+#define QLAYOUT_FIXED QLayout::SetFixedSize
+#define QLAYOUT_FREE_RESIZE QLayout::SetNoConstraint
+#define QLAYOUT_MINIMUM QLayout::SetMinimumSize
+#else
+#define QLAYOUT_AUTO_CONSTRAINT QLayout::Auto
+#define QLAYOUT_FIXED QLayout::Fixed
+#define QLAYOUT_FREE_RESIZE QLayout::FreeResize
+#define QLAYOUT_MINIMUM QLayout::Minimum
+#endif 
+
+
 /*
 	@doc: layout
 	@keyterms:
@@ -245,12 +258,17 @@ bool KviKvsObject_layout::functionSetResizeMode(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("resize_mode",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	QLayout::ResizeMode r = QLayout::Auto;
-	if(KviQString::equalCI(szMode,"FreeResize")) r = QLayout::FreeResize;
-	else if(KviQString::equalCI(szMode,"Minimum")) r = QLayout::Minimum;
-	else if(KviQString::equalCI(szMode,"Fixed"))r = QLayout::Fixed;
+#ifdef COMPILE_USE_QT4
+	QLayout::SizeConstraint r = QLAYOUT_AUTO_CONSTRAINT;
+#else
+	QLayout::ResizeMode r = QLAYOUT_AUTO_CONSTRAINT;
+#endif
+	if(KviQString::equalCI(szMode,"FreeResize")) r = QLAYOUT_FREE_RESIZE;
+	else if(KviQString::equalCI(szMode,"Minimum")) r = QLAYOUT_MINIMUM;
+	else if(KviQString::equalCI(szMode,"Fixed"))r = QLAYOUT_FIXED;
 	else c->warning(__tr2qs("Invalid resize mode defaulting to Auto"));
 	((QGridLayout *)object())->setResizeMode(r);
 	return true;
+
 }
 

@@ -184,7 +184,13 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_groupbox)
 
 bool KviKvsObject_groupbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
+#ifdef COMPILE_USE_QT4
+	KviTalGroupBox *groupbox=new KviTalGroupBox(name(),parentScriptWidget());
+	groupbox->setObjectName(name());
+	setObject(groupbox,true);
+#else
 	setObject(new KviTalGroupBox(name(),parentScriptWidget()), true);
+#endif	
 	return true;
 }
 

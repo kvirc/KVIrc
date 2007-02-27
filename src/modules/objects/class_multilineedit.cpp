@@ -26,17 +26,28 @@
 
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_malloc.h"
 #include <qfile.h>
-
 #ifdef COMPILE_USE_QT4
 	#include <q3multilineedit.h>
-	#define KviTalMultiLineEdit Q3MultiLineEdit
+#include <QTextStream>
+
+#include <Q3StyleSheet>
+#define KviTalMultiLineEdit Q3MultiLineEdit
+#define QTEXTEDIT_AUTO_ALL Q3TextEdit::AutoAll
+#define QTEXTEDIT_AUTO_NONE Q3TextEdit::AutoNone
+#define QTEXTEDIT_AUTO_BULLET_LIST Q3TextEdit::AutoBulletList
+
 #else
+	#include <qtextstream.h>
+
 	#include <qmultilineedit.h>
 	#define KviTalMultiLineEdit QMultiLineEdit
+	#define QTEXTEDIT_AUTO_ALL QTextEdit::AutoAll
+	#define QTEXTEDIT_AUTO_NONE QTextEdit::AutoNone
+	#define QTEXTEDIT_AUTO_BULLET_LIST QTextEdit::AutoBulletList
+
 #endif
 
 
@@ -1070,9 +1081,15 @@ bool KviKvsObject_mledit::functionloadFile(KviKvsObjectFunctionCall *c)
 
 	QTextStream ts( &file );
     QString txt = ts.read();
+#ifdef COMPILE_USE_QT4
+	if ( !Q3StyleSheet::mightBeRichText( txt ) )
+	txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
+#else
 	if ( !QStyleSheet::mightBeRichText( txt ) )
 	txt = QStyleSheet::convertFromPlainText( txt, QStyleSheetItem::WhiteSpacePre );
+#endif
 	((KviTalMultiLineEdit *)widget())->setText( txt );
+
 	file.close();
 	return true;
 }
@@ -1106,11 +1123,11 @@ bool KviKvsObject_mledit::functionsetAutoFormatting(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	if(KviQString::equalCI(szAutoformatting,"AutoNone"))
-		((KviTalMultiLineEdit *)widget())->setAlignment(KviTalMultiLineEdit::AutoNone);
+		((KviTalMultiLineEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_NONE);
 	else if(KviQString::equalCI(szAutoformatting,"BulletList"))
-		((KviTalMultiLineEdit *)widget())->setAlignment(KviTalMultiLineEdit::AutoBulletList);
+		((KviTalMultiLineEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_BULLET_LIST);
 	else if(KviQString::equalCI(szAutoformatting,"AutoAll"))
-		((KviTalMultiLineEdit *)widget())->setAlignment(KviTalMultiLineEdit::AutoAll);
+		((KviTalMultiLineEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_ALL);
 	else c->warning(__tr2qs("Unknown auto formatting mode '%Q'"),&szAutoformatting);
 	return true;
 }

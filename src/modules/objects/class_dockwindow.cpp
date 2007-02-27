@@ -27,8 +27,13 @@
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
-
-#include <qdockwindow.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3dockwindow.h>
+	#define QT_DOCK_WINDOW Q3DockWindow
+#else
+	#include <qdockwindow.h>
+	#define QT_DOCK_WINDOW QDockWindow
+#endif
 #include <qlayout.h>
 
 /*
@@ -87,11 +92,12 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_dockwindow)
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_dockwindow)
 KVSO_END_DESTRUCTOR(KviKvsObject_dockwindow)
 
-#define _pDockWindow ((QDockWindow *)widget())
+#define _pDockWindow ((QT_DOCK_WINDOW *)widget())
 
 bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	setObject(new QDockWindow(g_pFrame,getName()),true);
+	
+	setObject(new QT_DOCK_WINDOW(g_pFrame,getName()),true);
 	return true;
 }
 

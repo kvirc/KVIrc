@@ -30,8 +30,10 @@
 
 #include "class_widget.h"
 #include <qwidget.h>
-#include <qobjectlist.h>
-#include <qwidgetlist.h>
+#ifndef COMPILE_USE_QT4
+	#include <qobjectlist.h>
+	#include <qwidgetlist.h>
+#endif
 #include "kvi_app.h"
 #include "kvi_frame.h"
 
@@ -128,7 +130,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		QString szName;
 		QString s=0;
 		pParams->at(i)->asString(s);
-		if (s)
+		if (!s.isEmpty())
 		{
 		int idx = s.find("::");
 		if( idx != -1 ) {
@@ -180,7 +182,29 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 }
 QWidget *KviKvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, const QString szName)
 {
-
+#ifdef COMPILE_USE_QT4
+	QWidgetList list = g_pApp->topLevelWidgets();
+	if( !list.count() ) return 0;
+	for(int idx=0;idx<list.count();idx++)
+	{
+		bool bNameMatch  = false;
+		bool bClassMatch = false;
+		if( !szName.isEmpty() )
+			bNameMatch = KviQString::equalCI(list.at(idx)->name(), szName);
+		else
+			bNameMatch = true;
+		if( !szClass.isEmpty())
+			bClassMatch = KviQString::equalCI(list.at(idx)->className(), szClass);
+		else
+			bClassMatch = true;
+		if( bNameMatch && bClassMatch ) {
+			QWidget *w = list.at(idx);
+			return w;
+		}
+	}
+	return 0;
+#else
+	
 	QWidgetList *list = g_pApp->topLevelWidgets();
 	if( !list ) return 0;
 
@@ -206,10 +230,24 @@ QWidget *KviKvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, c
 	delete list;
 
 	return 0;
+#endif
 }
 
 QWidget *KviKvsObject_wrapper::findWidgetToWrap(const char *szClass, const char *szName, QWidget *childOf)
 {
+#ifdef COMPILE_USE_QT4
+	QObjectList list = childOf->queryList(szClass ? szClass : 0, szName ? szName : 0, false, true);
+	if( !list.count() ) return 0;
+	for(int idx=0;idx<list.count();idx++)
+	{
+		if( list.at(idx)->isWidgetType() ) {
+			QWidget *w = (QWidget *)list.at(idx);
+			return w;
+		}
+		
+	}
+	return 0;
+#else
 
 	QObjectList *list = childOf->queryList(szClass ? szClass : 0, szName ? szName : 0, false, true);
 	if( !list ) return 0;
@@ -225,7 +263,7 @@ QWidget *KviKvsObject_wrapper::findWidgetToWrap(const char *szClass, const char 
 	}
 	delete list;
 	return 0;
-
+#endif
 }
 
 #include "m_class_wrapper.moc"
