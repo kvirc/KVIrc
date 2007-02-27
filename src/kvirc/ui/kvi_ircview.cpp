@@ -5104,4 +5104,13 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 	else m_pLastLinkUnderMouse = 0; //
 }
 
+void KviIrcView::leaveEvent ( QEvent * )
+{
+	if(m_pLastLinkUnderMouse) 
+	{
+		m_pLastLinkUnderMouse=0;
+		update();
+	}
+}
+
 #include "kvi_ircview.moc"

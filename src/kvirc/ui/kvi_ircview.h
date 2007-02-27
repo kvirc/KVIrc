@@ -231,6 +231,7 @@ protected:
 	virtual void wheelEvent(QWheelEvent *e);
 	virtual void keyPressEvent(QKeyEvent *e);
 	void maybeTip(const QPoint &pnt);
+	virtual void leaveEvent ( QEvent * );
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
 	void masterDead();
