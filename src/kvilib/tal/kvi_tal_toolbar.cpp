@@ -46,12 +46,19 @@
 		: Q3ToolBar(label,w,dock,bNewLine,nam)
 		{
 		}
-
+		KviTalToolBar::KviTalToolBar(Q3MainWindow *w,const char * name)
+		: Q3ToolBar(w,name)
+		{
+		}
 		#include "kvi_tal_toolbar_qt4.moc"
 
 	#else
 		KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
 		: QToolBar(label,w,dock,bNewLine,nam)
+		{
+		}
+		KviTalToolBar::KviTalToolBar(QMainWindow *w,const char * name)
+		: QToolBar(w,name)
 		{
 		}
 		
