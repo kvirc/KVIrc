@@ -26,7 +26,7 @@
 // Damn complex class ...but it works :)
 // #include <brain.h>
 //
-// #define HOPE_THAT_IT_WILL_NEVER_NEED_TO_BE_MODIFIED :)
+// #define HOPE_THAT_IT_WILL_NEWER_NEED_TO_BE_MODIFIED :)
 
 // 07 May 1999 ,
 //      Already forgot how this damn thing works ,
@@ -471,7 +471,11 @@ void KviIrcView::setFont(const QFont &f)
 		l = l->pNext;
 	}
 	QWidget::setFont(f);
+#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint(0);
+#else
 	paintEvent(0); // will force an update to the font variables
+#endif
 }
 
 void KviIrcView::applyOptions()
@@ -790,20 +794,41 @@ void KviIrcView::setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint)
 		m_pPrivateBackgroundPixmap=0;
 	}
 	if(!pixmap.isNull())m_pPrivateBackgroundPixmap = new QPixmap(pixmap);
-	if(bRepaint)paintEvent(0);
+
+	if(bRepaint){
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+		#else
+		paintEvent(0);
+		#endif
+	}
 }
 
 void KviIrcView::emptyBuffer(bool bRepaint)
 {
 	while(m_pLastLine != 0)removeHeadLine();
-	if(bRepaint)paintEvent(0);
+	if(bRepaint)
+	{
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+		#else
+		paintEvent(0);
+		#endif
+	}
 }
 
 void KviIrcView::clearLineMark(bool bRepaint)
 {
 	m_uLineMarkLineIndex = KVI_IRCVIEW_INVALID_LINE_MARK_INDEX;
 	clearUnreaded();
-	if(bRepaint)paintEvent(0);
+	if(bRepaint)
+	{
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+		#else
+		paintEvent(0);
+		#endif
+	}
 }
 void KviIrcView::clearUnreaded()
 {
@@ -821,7 +846,14 @@ void KviIrcView::setMaxBufferSize(int maxBufSize,bool bRepaint)
 	m_iMaxLines = maxBufSize;
 	while(m_iNumLines > m_iMaxLines)removeHeadLine();
 	m_pScrollBar->setRange(0,m_iNumLines);
-	if(bRepaint)paintEvent(0);
+	if(bRepaint)
+	{
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint(0);
+		#else
+		paintEvent(0);
+		#endif
+	}
 }
 
 /*
@@ -897,7 +929,14 @@ void KviIrcView::scrollBarPositionChanged(int newValue)
 			m_iLastScrollBarValue--;
 		}
 	}
-	if(!m_bSkipScrollBarRepaint)paintEvent(0);
+	if(!m_bSkipScrollBarRepaint)
+	{
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+		#else
+		paintEvent(0);
+		#endif
+	}
 //	if(!m_bSkipScrollBarRepaint)postUpdateEvent();
 }
 
@@ -906,7 +945,14 @@ bool KviIrcView::event(QEvent *e)
 	if(e->type() == QEvent::User)
 	{
 		__range_valid(m_bPostedPaintEventPending);
-		if(m_iUnprocessedPaintEventRequests)paintEvent(0);
+		if(m_iUnprocessedPaintEventRequests)
+		{
+			#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+			repaint();
+			#else
+			paintEvent(0);
+			#endif
+		}
 		// else we just had a pointEvent that did the job
 		m_bPostedPaintEventPending = false;
 		return true;
@@ -948,7 +994,14 @@ void KviIrcView::postUpdateEvent()
 #else
 		if(! ((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap))fastScroll(3);
 #endif
-		else paintEvent(0);
+		else
+		{
+			#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+			repaint(0);
+			#else
+			paintEvent(0);
+			#endif
+		}
 	}
 }
 
@@ -1054,7 +1107,14 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 		m_iNumLines    = 1;
 		m_pScrollBar->setRange(0,1);
 		m_pScrollBar->addLine();
-		if(bRepaint)paintEvent(0);
+		if(bRepaint)
+		{
+			#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+			repaint();
+			#else
+			paintEvent(0);
+			#endif
+		}
 	}
 }
 
@@ -1081,7 +1141,14 @@ void KviIrcView::removeHeadLine(bool bRepaint)
 		m_iNumLines  = 0;
 		m_pLastLine  = 0;
 	}
-	if(bRepaint)paintEvent(0);
+	if(bRepaint)
+	{
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+		#else
+		paintEvent(0);
+		#endif
+	}		
 }
 
 void KviIrcView::splitMessagesTo(KviIrcView *v)
@@ -1137,12 +1204,22 @@ void KviIrcView::splitMessagesTo(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
+	
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint();
+	#else
 	paintEvent(0);
+	#endif
 
 	v->m_iLastScrollBarValue = v->m_iNumLines;
 	v->m_pScrollBar->setRange(0,v->m_iNumLines);
 	v->m_pScrollBar->setValue(v->m_iNumLines);
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	v->repaint();
+	#else
 	v->paintEvent(0);
+	#endif
+
 }
 
 void KviIrcView::appendMessagesFrom(KviIrcView *v)
@@ -1168,7 +1245,12 @@ void KviIrcView::appendMessagesFrom(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
+	
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint(0);
+	#else
 	paintEvent(0);
+	#endif
 }
 
 void KviIrcView::joinMessagesFrom(KviIrcView *v)
@@ -1227,7 +1309,12 @@ void KviIrcView::joinMessagesFrom(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
+	
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint(0);
+	#else
 	paintEvent(0);
+	#endif
 }
 
 void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
@@ -2722,7 +2809,11 @@ void KviIrcView::fastScroll(int lines)
 			widgetWidth,heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER);
 
 	QPaintEvent * e = new QPaintEvent(r);
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint(e);
+	#else
 	paintEvent(e);
+	#endif
 	delete e;
 
 	if(m_iLastLinkRectHeight > -1)
@@ -3917,7 +4008,12 @@ void KviIrcView::toggleToolWidget()
 		delete m_pToolWidget;
 		m_pToolWidget = 0;
 		m_pCursorLine = 0;
-		paintEvent(0);
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint();
+	#else
+	paintEvent(0);
+	#endif
+
 	} else {
 		m_pToolWidget = new KviIrcViewToolWidget(this);
 		int w = m_pToolWidget->sizeHint().width();
@@ -3939,7 +4035,13 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 	m_pCursorLine = l;
 	if(m_pCursorLine == m_pCurLine)
 	{
+	
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	repaint(0);
+	#else
 		paintEvent(0); // repaint everything so the line is shown
+	#endif
+
 		return;
 	}
 	int sc = m_pScrollBar->value();
@@ -3958,7 +4060,13 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 			m_pCurLine = m_pCursorLine;
 			m_iLastScrollBarValue = sc;
 			m_pScrollBar->setValue(sc);
-		} else paintEvent(0);
+		} else{
+				#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+				repaint(0);
+				#else
+				paintEvent(0);
+			#endif
+		}
 	} else {
 		// The cursor line is over the current line
 		// Here we're in trouble :D
@@ -3990,7 +4098,13 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 			m_pCurLine = curLine;
 			m_iLastScrollBarValue = sc;
 			m_pScrollBar->setValue(sc);
-		} else paintEvent(0);
+		} else{
+				#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+				repaint(0);
+				#else
+				paintEvent(0);
+			#endif
+		}
 	}
 }
 
@@ -4045,7 +4159,11 @@ do_pNext:
 		} while(l != start);
 	}
 	m_pCursorLine = 0;
-	paintEvent(0);
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+				repaint(0);
+				#else
+				paintEvent(0);
+			#endif
 	if(m_pToolWidget)m_pToolWidget->setFindResult(__tr2qs("Not found"));
 }
 
@@ -4102,8 +4220,13 @@ do_pPrev:
 		} while(l != start);
 	}
 	m_pCursorLine = 0;
-	paintEvent(0);
-	if(m_pToolWidget)m_pToolWidget->setFindResult(__tr2qs("Not found"));
+
+				#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+				repaint(0);
+				#else
+				paintEvent(0);
+			#endif
+			if(m_pToolWidget)m_pToolWidget->setFindResult(__tr2qs("Not found"));
 }
 
 /*
@@ -4577,7 +4700,12 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 		if(m_pToolWidget)
 		{
 			m_pCursorLine = getVisibleLineAt(e->pos().x(),e->pos().y());
+
+			#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+			repaint(0);
+			#else
 			paintEvent(0);
+			#endif
 		}
 
 		m_mousePressPos   = e->pos();
@@ -4761,7 +4889,13 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *)
 			appendLine(l,false);
 		}
 
-		paintEvent(0);
+				#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+				repaint(0);
+				#else
+				paintEvent(0);
+			#endif
+		
+
 	}
 }
 
@@ -4818,13 +4952,21 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 					int thisBottom = rectTop + rectHeight;
 					QRect r(0,top,width(),((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
 					QPaintEvent * pev = new QPaintEvent(r);
+					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+					repaint(pev);
+					#else
 					paintEvent(pev);
+					#endif
 					delete pev;
 				} else {
 					// no prev link
 					QRect r(0,rectTop,width(),rectHeight);
 					QPaintEvent * pev = new QPaintEvent(r);
+					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+					repaint(pev);
+					#else
 					paintEvent(pev);
+					#endif
 					delete pev;
 				}
 				m_iLastLinkRectTop = rectTop;
@@ -4836,7 +4978,11 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 					// There was a previous bottom rect
 					QRect r(0,m_iLastLinkRectTop,width(),m_iLastLinkRectHeight);
 					QPaintEvent * pev = new QPaintEvent(r);
+					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+					repaint(pev);
+					#else
 					paintEvent(pev);
+					#endif
 					delete pev;
 					m_iLastLinkRectTop = -1;
 					m_iLastLinkRectHeight = -1;
@@ -5050,7 +5196,14 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 
 	m_pToolTip->doTip(rct,tip);
 }
-
+void KviIrcView::leaveEvent ( QEvent * ) 
+{ 
+	if(m_pLastLinkUnderMouse)  
+    {
+		 m_pLastLinkUnderMouse=0;
+		 update(); 
+	}  
+}
 void KviIrcView::timerEvent(QTimerEvent *e)
 {
 	m_mouseCurrentPos = mapFromGlobal(QCursor::pos());
@@ -5058,7 +5211,12 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 	if(e->timerId() == m_iSelectTimer)
 	{
 		calculateSelectionBounds();
+		
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint(0);
+		#else
 		paintEvent(0);
+		#endif
 	}
 	if(e->timerId() == m_iMouseTimer)
 	{
@@ -5102,15 +5260,6 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
 	else m_pLastLinkUnderMouse = 0; //
-}
-
-void KviIrcView::leaveEvent ( QEvent * )
-{
-	if(m_pLastLinkUnderMouse) 
-	{
-		m_pLastLinkUnderMouse=0;
-		update();
-	}
 }
 
 #include "kvi_ircview.moc"
