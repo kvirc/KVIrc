@@ -107,7 +107,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 {
 	createLayout(5,1);
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
 
  	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
 #ifdef COMPILE_INFO_TIPS
@@ -124,7 +124,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 			"\"Rejoin channel\" option.</center>","options"));
 #endif 
 
-	g = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Channel Part","options"));
+	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnPart);
 #ifdef COMPILE_INFO_TIPS
@@ -185,7 +185,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	}
 	m_pBanTypeCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
-	KviTalGroupBox * g = addGroupBox(0,2,4,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	KviTalGroupBox * g = addGroupBox(0,2,4,2,1,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
@@ -199,7 +199,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 			"your IRC bandwidth.</center>","options"));
 #endif
 
-	g = addGroupBox(0,4,4,4,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	g = addGroupBox(0,4,4,4,1,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Echo channel topic","options"),KviOption_boolEchoNumericTopic);
 	addBoolSelector(g,__tr2qs_ctx("Show channel sync time","options"),KviOption_boolShowChannelSyncTime);
 

@@ -77,7 +77,7 @@ KviTreeTaskBarForegroundOptionsWidget::KviTreeTaskBarForegroundOptionsWidget(QWi
 {
 	createLayout(3,1);
 	
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,2,KviTalGroupBox::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,2,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeTaskBarForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeTaskBarActiveForeground);
@@ -107,7 +107,7 @@ KviTreeTaskBarBackgroundOptionsWidget::KviTreeTaskBarBackgroundOptionsWidget(QWi
 {
 	createLayout(4,2);
 	
-	KviTalGroupBox * g = addGroupBox(0,0,1,0,2,KviTalGroupBox::Horizontal,__tr2qs_ctx("Background Colors","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,1,0,2,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeTaskBarBackground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeTaskBarActiveBackground);
 
@@ -230,7 +230,7 @@ KviClassicTaskBarOptionsWidget::KviClassicTaskBarOptionsWidget(QWidget * parent)
 {
 	createLayout(8,1);
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTaskbar);
-	KviTalGroupBox *g = addGroupBox(0,1,0,1,2,KviTalGroupBox::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
+	KviTalGroupBox *g = addGroupBox(0,1,0,1,2,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTaskBarNormalText);
 	addColorSelector(g,__tr2qs_ctx("Minimized:","options"), KviOption_colorTaskBarMinimizedText);
 	addColorSelector(g,__tr2qs_ctx("Alert Level 1:","options"),KviOption_colorTaskBarHighlight1Text);

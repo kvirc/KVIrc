@@ -56,7 +56,7 @@ KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)
 		KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = KVI_VERBOSITY_LEVEL_NORMAL;
 	m_pVerbosityCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
 
-	KviTalGroupBox * g = addGroupBox(0,1,1,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Show in active window","options"));
+	KviTalGroupBox * g = addGroupBox(0,1,1,1,1,Qt::Horizontal,__tr2qs_ctx("Show in active window","options"));
 	addBoolSelector(g,__tr2qs_ctx("External messages","options"),KviOption_boolExternalMessagesToActiveWindow);
 	addBoolSelector(g,__tr2qs_ctx("External CTCP replies","options"),KviOption_boolCtcpRepliesToActiveWindow);
 	addBoolSelector(g,__tr2qs_ctx("Whois replies","options"),KviOption_boolWhoisRepliesToActiveWindow);

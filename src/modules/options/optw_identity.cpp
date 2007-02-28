@@ -314,7 +314,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	createLayout(3,1);
 	layout()->setMargin(10);
 
-	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Basic Properties","options"));
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Basic Properties","options"));
 	KviTalHBox * hb = new KviTalHBox(gbox);
 	hb->setSpacing(3);
 
@@ -354,7 +354,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	QString szCenterEnd("</center>");
 	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
 
-	gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Profile","options"));
+	gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Profile","options"));
 
 	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
@@ -681,12 +681,12 @@ KviIdentityAdvancedOptionsWidget::KviIdentityAdvancedOptionsWidget(QWidget * par
 	createLayout(2,1);
 	layout()->setMargin(10);
 
-	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("User Mode","options"));
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("User Mode","options"));
 	m_pISelector = addBoolSelector(gbox,__tr2qs_ctx("Invisible (+i)","options"),&m_bI);
 	m_pSSelector = addBoolSelector(gbox,__tr2qs_ctx("Server notices (+s)","options"),&m_bS);
 	m_pWSelector = addBoolSelector(gbox,__tr2qs_ctx("Wallops (+w)","options"),&m_bW);
 
-   	gbox = addGroupBox(0,1,0,1,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Default Messages","options"));
+   	gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Default Messages","options"));
 
 
 	KviStringSelector * sel = addStringSelector(gbox, __tr2qs_ctx("Part message:","options"),KviOption_stringPartMessage);

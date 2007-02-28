@@ -40,7 +40,7 @@ KviAwayOptionsWidget::KviAwayOptionsWidget(QWidget * parent)
 
 	addBoolSelector(0,1,0,1, __tr2qs_ctx("User input exits away mode","options"), KviOption_boolExitAwayOnInput);
 
-	KviTalGroupBox *g = addGroupBox(0,2,0,2,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Away Nickname","options"));
+	KviTalGroupBox *g = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("Away Nickname","options"));
 	m_pEnableAwayNick = addBoolSelector(g,__tr2qs_ctx("Change nickname on away","options"),KviOption_boolChangeNickAway);	
 	connect(m_pEnableAwayNick,SIGNAL(toggled(bool)),this,SLOT(enableCustomAwayText(bool)));
 	

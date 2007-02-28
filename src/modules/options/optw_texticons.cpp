@@ -95,8 +95,8 @@ void KviTextIconEditor::updateIcon()
 	}
 }
 
-KviTextIconTableItem::KviTextIconTableItem(QTable * t,KviTextIcon * icon)
-: QTableItem(t,QTableItem::WhenCurrent,QString::null)
+KviTextIconTableItem::KviTextIconTableItem(KviTalTable * t,KviTextIcon * icon)
+: KviTalTableItem(t,KviTalTableItem::WhenCurrent,QString::null)
 {
 	if(icon)
 		m_pIcon=icon;
@@ -143,7 +143,7 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 
 	KviDictIterator<KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 
-	m_pTable = new QTable(g_pTextIconManager->textIconDict()->count(),2,this);
+	m_pTable = new KviTalTable(g_pTextIconManager->textIconDict()->count(),2,this);
 
 #ifdef COMPILE_INFO_TIPS
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \

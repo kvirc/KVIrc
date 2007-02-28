@@ -44,7 +44,7 @@ KviTrayOptionsWidget::KviTrayOptionsWidget(QWidget * parent)
 	m_pEnableFlashing = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable tray icon flashing","options"),KviOption_boolEnableTrayIconFlashing);
 	m_pLevelBasedNotify = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable level-based message notification (not a message-type based)","options"),KviOption_boolUseLevelBasedTrayNotification);
 	
-	m_pLevelsGroup = addGroupBox(0,5,0,5,1,KviTalGroupBox::Horizontal,__tr2qs_ctx("Select message levels to notify","options"));
+	m_pLevelsGroup = addGroupBox(0,5,0,5,1,Qt::Horizontal,__tr2qs_ctx("Select message levels to notify","options"));
 	
 	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages","options"),
 				KviOption_uintMinTrayLowLevelMessage,

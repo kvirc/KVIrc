@@ -31,10 +31,20 @@
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget __tr2qs_no_lookup("smileys,emoticons")
 
 
-#include <qtable.h>
+
 #include <qtoolbutton.h>
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h" 
+
+#ifdef COMPILE_USE_QT4
+#include <Q3Table>
+#define KviTalTable Q3Table
+#define KviTalTableItem Q3TableItem
+#else
+#include <qtable.h>
+#define KviTalTable QTable
+#define KviTalTableItem QTableItem
+#endif
 
 class KviTextIconTableItem;
 
@@ -59,11 +69,11 @@ protected slots:
 	void chooseFromFile();
 };
 
-class KviTextIconTableItem : public QTableItem
+class KviTextIconTableItem : public KviTalTableItem
 {
 	friend class KviTextIconsOptionsWidget;
 public:
-	KviTextIconTableItem(QTable * t,KviTextIcon * icon);
+	KviTextIconTableItem(KviTalTable * t,KviTextIcon * icon);
 	~KviTextIconTableItem();
 protected:
 	KviTextIcon * m_pIcon;
@@ -81,7 +91,7 @@ public:
 	KviTextIconsOptionsWidget(QWidget * parent);
 	~KviTextIconsOptionsWidget();
 protected:
-	QTable      * m_pTable;
+	KviTalTable     * m_pTable;
 	QPushButton * m_pAdd;
 	QPushButton * m_pDel;
 public:
