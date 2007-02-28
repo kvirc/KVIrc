@@ -711,16 +711,20 @@ alias(hs)
 
 alias(hop)
 {
+    // Retrieve channel
     %chan=$0
     if(!%chan) %chan=$chan.name($active)
 
-    %key=$chan.key(%chan)
+    // Retrieve channel key
+    %key=$chan.key($channel(%chan))
 
-    if($window.type(%chan)=="channel")
+    // Exit channel
+    if($window.type($channel(%chan))=="channel")
 	part --keep %chan $option(stringPartMessage)
     
-    if(!%key) join %chan
-    else join %chan %key
+        // Rejoin channel
+	if(!%key) join %chan
+        else join %chan %key
 }
 
 # The toolbars that previously were in the core :)
