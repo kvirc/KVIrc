@@ -32,7 +32,17 @@
 #include "kvi_fileutils.h"
 
 #include <qpushbutton.h>
+
+#ifdef COMPILE_USE_QT4
+#include <Q3SimpleRichText>
+#include <QDesktopWidget>
+#include <QCloseEvent>
+#define KviTalSimpleRichText Q3SimpleRichText
+#else
 #include <qsimplerichtext.h>
+#define KviTalSimpleRichText QSimpleRichText
+#endif
+
 #include <qfont.h>
 #include <qtextcodec.h>
 #include <qpainter.h>
@@ -54,7 +64,11 @@ KviTipFrame::KviTipFrame(QWidget * par)
 	KviStr buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
 	m_pTipPixmap = new QPixmap(buffer.ptr());
+#ifdef COMPILE_USE_QT4
+	setBackgroundMode(Qt::NoBackground);
+#else
 	setBackgroundMode(QWidget::NoBackground);
+#endif
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 }
 
@@ -79,7 +93,8 @@ void KviTipFrame::drawContents(QPainter *p)
 	QFont f = QFont();
 	f.setStyleHint(QFont::SansSerif);
 	f.setPointSize(12);
-	QSimpleRichText doc(m_szText,f);
+
+	KviTalSimpleRichText doc(m_szText,f);
 	doc.setWidth(width() - 80);
 
 	QRegion reg(0,0,1000,20000);

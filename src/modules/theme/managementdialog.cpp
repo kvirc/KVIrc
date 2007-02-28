@@ -54,7 +54,10 @@
 #include <qtooltip.h>
 #include <qimage.h>
 #include <kvi_tal_textedit.h>
-#include <qmultilineedit.h>
+//#include <qmultilineedit.h>
+#ifdef COMPILE_USE_QT4
+#include <QCloseEvent>
+#endif
 #include <qbuffer.h>
 
 #include "kvi_options.h"
@@ -105,7 +108,7 @@ KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
 	t += "<br><nobr><font size=\"-1\">";
 	t += inf->description();
 	t += "</font></nobr>";
-	m_pText = new QSimpleRichText(t,box->font());
+	m_pText = new KviTalSimpleRichText(t,box->font());
 	int iWidth = box->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;

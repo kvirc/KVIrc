@@ -32,7 +32,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_userinput.h"
-
+#include "kvi_qcstring.h"
 #include "kvi_dict.h"
 
 #ifdef DEBUG
@@ -227,7 +227,7 @@ bool KviPerlInterpreter::execute(
 	
 	g_lWarningList.clear();
 
-	QCString szUtf8 = szCode.utf8();
+	KviQCString szUtf8 = szCode.utf8();
 	PERL_SET_CONTEXT(m_pInterpreter);
 	
 	// clear the _ array

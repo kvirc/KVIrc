@@ -202,8 +202,11 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pMenuButton = new QPushButton(__tr2qs("Test"),this);
 	g->addWidget(m_pMenuButton,0,2);
 	connect(m_pMenuButton,SIGNAL(clicked()),this,SLOT(testPopup()));
-
+#ifdef COMPILE_USE_QT4
+	QSplitter * spl = new QSplitter(Qt::Vertical,this,"popupeditor");
+#else
 	QSplitter * spl = new QSplitter(QSplitter::Vertical,this);
+#endif
 
 	m_pListView = new KviTalListView(spl);
 	m_pListView->addColumn(__tr2qs("Item"));
@@ -1024,8 +1027,11 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 : QWidget(par)
 {
 	QGridLayout * l = new QGridLayout(this,1,1,0,2);
-
+#ifdef COMPILE_USE_QT4
+	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"popupeditor");
+#else
 	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
+#endif
 	l->addWidget(spl,0,0);
 	
 	KviTalVBox * box = new KviTalVBox(spl);

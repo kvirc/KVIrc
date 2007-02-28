@@ -27,7 +27,11 @@
 #include <qstring.h>
 #include <qpushbutton.h>
 #include <qfile.h>
+#ifdef COMPILE_USE_QT4
+#include <Q3TextStream>
+#else
 #include <qtextstream.h>
+#endif
 #include <qcheckbox.h>
 #include "kvi_tal_listbox.h"
 #include <qmenubar.h>

@@ -27,7 +27,7 @@
 #include "kvi_string.h"
 
 #include "kvi_locale.h"
-
+#include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_env.h"
 #include "kvi_osinfo.h"
@@ -196,11 +196,11 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("variable",KVS_PT_NONEMPTYSTRING,0,szVariable)
 	KVSM_PARAMETERS_END(c)
 
-	QCString szVar = szVariable.local8Bit();
+	KviQCString szVar = szVariable.local8Bit();
 #ifdef COMPILE_ON_WINDOWS
 	QString env = getenv(szVar.data());
 	QString def = __tr2qs("No environment variable found, please don't use the %% in the request");
-	c->returnValue()->setString(env ? QString::fromLocal8Bit(env) : QString::fromLocal8Bit(def));
+	c->returnValue()->setString(env.isEmpty() ? QString::fromLocal8Bit(env) : QString::fromLocal8Bit(def));
 #else
 	char * b = kvi_getenv(szVar.data());
 	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString::null);
@@ -442,7 +442,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 {
 	bool bTestMode = false;
 
-	QCString szApp,szObj,szFun;
+	KviQCString szApp,szObj,szFun;
 	QStringList parms;
 	
 	KVSM_PARAMETERS_BEGIN(c)
@@ -624,8 +624,8 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,KVS_PF_OPTIONAL,szValue)
 	KVSM_PARAMETERS_END(c)
 
-	QCString szVar = szVariable.local8Bit();
-	QCString szVal = szValue.local8Bit();
+	KviQCString szVar = szVariable.local8Bit();
+	KviQCString szVal = szValue.local8Bit();
 
 	if(szVal.isEmpty())kvi_unsetenv(szVar.data());
 	else

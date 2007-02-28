@@ -74,9 +74,11 @@ KviRawEditor::KviRawEditor(QWidget * par)
 : QWidget(par,"raw_event_editor")
 {
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
-
+#ifdef COMPILE_USE_QT4
+	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"raweditorv");
+#else
 	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
-
+#endif
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * boxi = new KviTalVBox(spl);

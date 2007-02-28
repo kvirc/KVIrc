@@ -206,8 +206,11 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0) , KviModuleExtension(d)
 {
 	g_pSharedFilesWindow = this;
-
+#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+#else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
+#endif
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 

@@ -211,7 +211,7 @@ KviSetupWizard::KviSetupWizard()
 
 	QString tmp;
 
-	m_pDirButtonGroup = new QVButtonGroup(__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
+	m_pDirButtonGroup = new KviTalVButtonGroup(__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
 	m_pDirUsePrev = new QRadioButton(__tr2qs("Use settings folder from previous installation"),m_pDirButtonGroup);
 	connect(m_pDirUsePrev,SIGNAL(clicked()),this,SLOT(oldDirClicked()));
 	
@@ -311,7 +311,7 @@ KviSetupWizard::KviSetupWizard()
 	if(nick.isEmpty())nick = "newbie";
 	if(nick == "root")nick = "newbie";
 //m_pIdentity->m_pVBox
-	KviTalGroupBox * gbox = new KviTalGroupBox(1,KviTalGroupBox::Horizontal,__tr2qs("Basic Properties"),m_pIdentity->m_pVBox);
+	KviTalGroupBox * gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Basic Properties"),m_pIdentity->m_pVBox);
 
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
@@ -328,7 +328,7 @@ KviSetupWizard::KviSetupWizard()
 	QString szCenterEnd("</center>");
 	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
 
-	gbox = new KviTalGroupBox(1,KviTalGroupBox::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
+	gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
 
 	KviTalHBox* hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
@@ -405,7 +405,7 @@ KviSetupWizard::KviSetupWizard()
 		"in order to preserve your current visual settings.<br><br>" \
 		"If you don't know what to choose, just use the default.</p>"));
 
-	m_pThemeButtonGroup = new QVButtonGroup(m_pTheme->m_pVBox);
+	m_pThemeButtonGroup = new KviTalVButtonGroup(m_pTheme->m_pVBox);
 	
 	KviTalHBox* pThemesHb = new KviTalHBox(m_pThemeButtonGroup);
 
@@ -465,7 +465,7 @@ KviSetupWizard::KviSetupWizard()
 			"Now you should specify an IRC server, to be connected to it"));
 
 
-	m_pServersButtonGroup = new QVButtonGroup(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
+	m_pServersButtonGroup = new KviTalVButtonGroup(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
 	
 	m_pServersChooseFromList = new QRadioButton(__tr2qs("Choose from built-in server list"),m_pServersButtonGroup);
 	

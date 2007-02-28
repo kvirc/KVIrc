@@ -34,7 +34,12 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_theme.h"
 #include "kvi_frame.h"
-
+#ifdef COMPILE_USE_QT4
+#define KviTalMimeSourceFactory Q3MimeSourceFactory
+#include <Q3MimeSourceFactory>
+#else
+#define KviTalMimeSourceFactory QMimeSourceFactory
+#endif
 #include <qmime.h>
 
 namespace KviThemeFunctions
@@ -257,9 +262,9 @@ namespace KviThemeFunctions
 
 		
 
-		QMimeSourceFactory::defaultFactory()->setPixmap("theme_dialog_pack_image",pix);
-		QMimeSourceFactory::defaultFactory()->setText("theme_dialog_details",szDetails);
-		QMimeSourceFactory::defaultFactory()->setText("theme_dialog_main",hd.szHtmlText);
+		KviTalMimeSourceFactory::defaultFactory()->setPixmap("theme_dialog_pack_image",pix);
+		KviTalMimeSourceFactory::defaultFactory()->setText("theme_dialog_details",szDetails);
+		KviTalMimeSourceFactory::defaultFactory()->setText("theme_dialog_main",hd.szHtmlText);
 	
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
@@ -320,7 +325,7 @@ namespace KviThemeFunctions
 			KviQString::sprintf(szScreenshot,"<p><center><img src=\"theme_shot%d\"></center></p>",iUniqueIndexInDocument);
 			QString szTmp;
 			KviQString::sprintf(szTmp,"theme_shot%d",iUniqueIndexInDocument);
-			QMimeSourceFactory::defaultFactory()->setPixmap(szTmp,pixScreenshot);
+			KviTalMimeSourceFactory::defaultFactory()->setPixmap(szTmp,pixScreenshot);
 		} else {
 			szScreenshot = "";
 		}

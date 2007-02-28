@@ -30,7 +30,13 @@
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qlineedit.h>
-#include <qvbuttongroup.h>
+#ifdef COMPILE_USE_QT4
+#include <Q3VButtonGroup>
+#define KviTalVButtonGroup Q3VButtonGroup
+#else
+ #include <qvbuttongroup.h>
+#define KviTalVButtonGroup QVButtonGroup
+#endif
 #include <qradiobutton.h>
 #include <qcombobox.h>
 #include <qcheckbox.h>
@@ -76,7 +82,10 @@ public:
 	KviSetupPage  * m_pServers;
 	
 	// Theme
-	QVButtonGroup * m_pThemeButtonGroup;
+
+
+	KviTalVButtonGroup * m_pThemeButtonGroup;
+
 	QRadioButton  * m_pThemeHiRes;
 	QRadioButton  * m_pThemeLoRes;
 	QRadioButton  * m_pThemeNone;
@@ -88,7 +97,7 @@ public:
 	//Dir
 	QLineEdit     * m_pDataPathEdit;
 	QLineEdit     * m_pIncomingPathEdit;
-	QVButtonGroup * m_pDirButtonGroup;
+	KviTalVButtonGroup * m_pDirButtonGroup;
 	QRadioButton  * m_pDirUsePrev;
 	QRadioButton  * m_pDirUseNew;
 #ifdef COMPILE_ON_WINDOWS
@@ -111,7 +120,7 @@ public:
 	KviStringSelector * m_pOtherInfoSelector;
 	
 	//Servers
-	QVButtonGroup * m_pServersButtonGroup;
+	KviTalVButtonGroup * m_pServersButtonGroup;
 	QRadioButton  * m_pServersChooseFromList;
 	QRadioButton  * m_pServersSpecifyManually;
 	QRadioButton  * m_pServersOpenIrcUrl;
