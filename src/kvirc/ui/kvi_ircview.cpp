@@ -26,7 +26,7 @@
 // Damn complex class ...but it works :)
 // #include <brain.h>
 //
-// #define HOPE_THAT_IT_WILL_NEWER_NEED_TO_BE_MODIFIED :)
+// #define HOPE_THAT_IT_WILL_NEVER_NEED_TO_BE_MODIFIED :)
 
 // 07 May 1999 ,
 //      Already forgot how this damn thing works ,
@@ -2810,7 +2810,7 @@ void KviIrcView::fastScroll(int lines)
 
 	QPaintEvent * e = new QPaintEvent(r);
 	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-	repaint(e);
+	repaint(r);
 	#else
 	paintEvent(e);
 	#endif
@@ -4953,7 +4953,7 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 					QRect r(0,top,width(),((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
 					QPaintEvent * pev = new QPaintEvent(r);
 					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-					repaint(pev);
+					repaint(r);
 					#else
 					paintEvent(pev);
 					#endif
@@ -4963,7 +4963,7 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 					QRect r(0,rectTop,width(),rectHeight);
 					QPaintEvent * pev = new QPaintEvent(r);
 					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-					repaint(pev);
+					repaint(r);
 					#else
 					paintEvent(pev);
 					#endif
@@ -4979,7 +4979,7 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 					QRect r(0,m_iLastLinkRectTop,width(),m_iLastLinkRectHeight);
 					QPaintEvent * pev = new QPaintEvent(r);
 					#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-					repaint(pev);
+					repaint(r);
 					#else
 					paintEvent(pev);
 					#endif
