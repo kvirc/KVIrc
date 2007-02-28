@@ -68,7 +68,7 @@
 	
 	void KviTalFileDialog::setDirectory(const QString &szDirectory)
 	{
-		setDirectory(szDirectory);
+		QFileDialog::setDirectory(szDirectory);
 	}
 
 
