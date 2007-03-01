@@ -86,7 +86,7 @@ bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	}
 	if(parentObject()->inherits("KviKvsObject_mainwindow"))
 	{ 
-		setObject(new KviTalToolBar(((KviTalMainWindow *)parentScriptWidget()), name()), true);
+		setObject(new KviTalToolBar(name(), ((KviTalMainWindow *)parentScriptWidget())), true);
 	}
 	else
 	{
