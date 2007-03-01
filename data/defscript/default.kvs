@@ -115,17 +115,17 @@ alias(gnotice)
 		halt
 	}
 
-	# Check null switches
-	if((!$sw(w))&&(!$sw(a))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
-		notice $chan.name($active) $0-
-		halt
-	}
-
 	# Check for quiet notice
 	if($sw(q))
 		%cmd="notice -q"
 	else
 		%cmd="notice"
+
+	# Check null switches
+	if((!$sw(w))&&(!$sw(a))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
+		eval %cmd $chan.name($active) $0-
+		halt
+	}
 
 	# Check switches passed
 	if($sw(w))
