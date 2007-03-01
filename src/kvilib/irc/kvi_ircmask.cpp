@@ -268,7 +268,13 @@ KviIrcMask::KviIrcMask(const QString &szMask)
 		p++;
 		b=p;
 		while(p->unicode())p++;
-		m_szHost.setUnicode(b,p-b);
+		if(p != b)
+		{
+			m_szHost.setUnicode(b,p-b);
+		} else {
+			m_szHost = szWild; // ???
+		}
+		
 	} else {
 		m_szUser = szWild;
 		m_szHost = szWild;
@@ -725,17 +731,21 @@ int KviIrcMask::nonWildChars()
 	const QChar * aux = KviQString::nullTerminatedArray(m_szNick);
 	if(!aux)return 0;
 	unsigned short uc;
+
 	while((uc = aux->unicode()))
 	{
 		if((uc != '*') && (uc != '?'))iCnt++;
 		aux++;
 	}
+
 	aux = KviQString::nullTerminatedArray(m_szUser);
 	while((uc = aux->unicode()))
 	{
 		if((uc != '*') && (uc != '?'))iCnt++;
 		aux++;
 	}
+
+
 	aux = KviQString::nullTerminatedArray(m_szHost);
 	while((uc = aux->unicode()))
 	{
