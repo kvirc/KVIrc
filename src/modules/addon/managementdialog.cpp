@@ -122,7 +122,7 @@ void KviScriptAddonListViewItem::setup()
 	int iHeight = m_pText->textHeight() + (2 * LVI_BORDER);
 	#endif
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight);
+	setHeight(iHeight+2);
 }
 
 void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
@@ -145,7 +145,7 @@ void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,i
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setTextWidth(www);
+	m_pText->setWidth(www);
 	if(isSelected())
 	{
 		QColorGroup cg2(cg);
