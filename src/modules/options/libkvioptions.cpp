@@ -123,6 +123,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		g_pOptionsDialogDict->insert(szGroup,d);
 	}
 	d->raise();
+	d->show();
 	d->setFocus();
 	return true;
 }

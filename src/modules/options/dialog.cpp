@@ -70,7 +70,7 @@ KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const
 {
 	createLayout(1,1);
 	QLabel * l = new QLabel(szText,this);
-	
+	l->setWordWrap(true);
 	l->setAlignment(Qt::AlignTop);
 	layout()->addWidget(l,0,0);
 }
