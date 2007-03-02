@@ -70,7 +70,9 @@ KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const
 {
 	createLayout(1,1);
 	QLabel * l = new QLabel(szText,this);
+#ifdef COMPILE_USE_QT4
 	l->setWordWrap(true);
+#endif
 	l->setAlignment(Qt::AlignTop);
 	layout()->addWidget(l,0,0);
 }
@@ -138,7 +140,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 		szDialogTitle = __tr2qs_ctx("KVIrc Preferences","options");
 	}
 
-	QString szDialog = __tr2qs_ctx("This dialog contains a set of KVIrc settings. Use the icons " \
+	QString szDialog = __tr2qs_ctx("This dialog contains a set of KVIrc settings.<br> Use the icons " \
 							"on the left to navigate through the option pages. The text box in the " \
 							"bottom left corner is a small search engine. It will highlight the " \
 							"pages that contain options related to the search term you have entered.","options");
