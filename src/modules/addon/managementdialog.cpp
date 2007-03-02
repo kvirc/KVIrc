@@ -84,7 +84,14 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListView * v,KviKvs
 	t += a->description();
 	t += "</font></nobr>";
 	m_szKey = a->visibleName().upper();
+#ifdef COMPILE_USE_QT4
+	m_pText = new QTextDocument();
+	m_pText->setHtml(t);
+	m_pText->setDefaultFont(v->font());
+#else
 	m_pText = new QSimpleRichText(t,v->font());
+#endif
+
 	QPixmap * p = a->icon();
 	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
 }
@@ -107,28 +114,48 @@ void KviScriptAddonListViewItem::setup()
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
+	
+	#ifdef COMPILE_USE_QT4 
+	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
+	#else
 	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->height() + (2 * LVI_BORDER);
+	int iHeight = m_pText->textHeight() + (2 * LVI_BORDER);
+	#endif
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
 	setHeight(iHeight);
 }
 
 void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
-	KviTalListViewItem::paintCell(p,cg,column,width,align);
-//	p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
+	#ifdef COMPILE_USE_QT4
+	if (isSelected())
+	{
+		QColor col(m_pListView->palette().highlight());
+		col.setAlpha(127);
+		p->setBrush(col);
+		p->drawRect(0, 0, m_pListView->visibleWidth(), height());
+	}
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setWidth(www);
+	m_pText->setTextWidth(www);
+	p->translate(afterIcon,LVI_BORDER);
+	m_pText->drawContents(p);
+	#else
+	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
+	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
+	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
+	m_pText->setTextWidth(www);
 	if(isSelected())
 	{
 		QColorGroup cg2(cg);
 		cg2.setColor(QColorGroup::HighlightedText,cg.text());
+	
 		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg2);
 	} else {
 		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
 	}
+	#endif
 }
 
 
