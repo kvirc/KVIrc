@@ -24,7 +24,7 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 #include "kvi_options.h"
 #include "kvi_locale.h"

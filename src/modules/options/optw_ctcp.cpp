@@ -27,7 +27,7 @@
 #include "kvi_options.h"
 
 //#ifdef COMPILE_INFO_TIPS
-//	#include <qtooltip.h>
+//	#include "kvi_tal_tooltip.h"
 //#endif
 
 KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)

@@ -25,7 +25,7 @@
 #include "optw_nickserv.h"
 
 #include <qlayout.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include "kvi_tal_listview.h"
 #include <qlineedit.h>
 #include <qpushbutton.h>
@@ -57,7 +57,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	
 	m_pRegisteredNickEdit = new QLineEdit(this);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pRegisteredNickEdit,html_center_begin + __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options") + html_center_end);
+	KviTalToolTip::add(m_pRegisteredNickEdit,html_center_begin + __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options") + html_center_end);
 #endif
 	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 	
@@ -66,7 +66,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	
 	m_pNickServMaskEdit = new QLineEdit(this);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickServMaskEdit,
+	KviTalToolTip::add(m_pNickServMaskEdit,
 		html_center_begin + __tr2qs_ctx("This is the mask that NickServ must match to be correctly identified as the NickServ service. "  \
 			"This usually will be something like <b>NickServ!service@services.dalnet</b>.<br>" \
 			"You can use wildcards for this field, but generally it is a security flaw. " \
@@ -82,7 +82,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	gl->addMultiCellWidget(m_pMessageRegexpEdit,2,2,1,3);
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pMessageRegexpEdit,
+	KviTalToolTip::add(m_pMessageRegexpEdit,
 		html_center_begin + __tr2qs_ctx("This is the simple regular expression that the identification request message "  \
 			"from NickServ must match in order to be correctly recognized.<br>" \
 			"The message is usually something like \"To identify yourself please use /ns IDENTIFY password\" " \
@@ -94,7 +94,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 
 	m_pIdentifyCommandEdit = new QLineEdit(this);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pIdentifyCommandEdit,
+	KviTalToolTip::add(m_pIdentifyCommandEdit,
 		html_center_begin + __tr2qs_ctx("This is the command that will be executed when NickServ requests authentication " \
 			"for the nickname described in this rule (if the both server and NickServ mask are matched). " \
 			"This usually will be something like <b>msg NickServ identify &lt;yourpassword&gt;</b>.<br>" \
@@ -113,7 +113,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 		
 		m_pServerMaskEdit = new QLineEdit(this);
 #ifdef COMPILE_INFO_TIPS
-		QToolTip::add(m_pServerMaskEdit,
+		KviTalToolTip::add(m_pServerMaskEdit,
 			html_center_begin + __tr2qs_ctx("This is the mask that the current server must match in order " \
 			"for this rule to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" here...","options") + html_center_end);
 #endif
@@ -244,7 +244,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
 	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickServCheck,
+	KviTalToolTip::add(m_pNickServCheck,
 			__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 #endif
 	m_pNickServCheck->setChecked(bNickServEnabled);
@@ -261,7 +261,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 
 	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickServListView,
+	KviTalToolTip::add(m_pNickServListView,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 			"KVIrc will use them to model its automatic interaction with NickServ on all the networks.<br>" \
 			"Please be aware that this feature can cause your NickServ passwords to be stolen " \

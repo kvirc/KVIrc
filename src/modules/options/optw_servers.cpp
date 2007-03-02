@@ -56,7 +56,7 @@
 #include <qcheckbox.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qvalidator.h>
 #include <qmessagebox.h>
 #include "kvi_asciidict.h"
@@ -113,7 +113,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
 	m_pDescEditor->setText(n->description());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>Put here a brief description of the network.</center>","options"));
+	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>Put here a brief description of the network.</center>","options"));
 #endif
 
 	// Identity tab
@@ -131,7 +131,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pUserEditor = new QLineEdit(gbox);
 	m_pUserEditor->setText(n->userName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
+	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
 										"If this field is left empty (most common case), KVIrc will use the default username " \
 										"specified in the \"Identity\" options tab.</center>","options"));
 #endif
@@ -142,7 +142,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(n->nickName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
+	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
 									"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 #endif
 
@@ -150,7 +150,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(n->realName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
+	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
 									"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 #endif
 
@@ -161,7 +161,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
 									"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
 									"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 #endif
@@ -186,7 +186,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
 	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
+	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
 #endif
 
 
@@ -208,7 +208,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pChannelListSelector = new KviCahnnelListSelector(tab,
 		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
 #ifdef COMPILE_INFO_TIPS
-  QToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
+  KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to a server in this network has been established. To add a channel, type its name in the " \
 		"text input below and click \"<b>Add</b>\".</center>","options"));
 #endif
@@ -225,7 +225,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pOnConnectEditor->setText(n->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection to a server in this network has been established.<br>" \
+	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection to a server in this network has been established.<br>" \
 				"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
 				"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
 				"command sequence.</center>","options"));
@@ -245,7 +245,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pOnLoginEditor->setMinimumHeight(150);
 	
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pOnLoginEditor,
+	KviTalToolTip::add(m_pOnLoginEditor,
 				__tr2qs_ctx("<center>The following commands will be executed after a successful login to a server in this network.<br>" \
 						"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>"
 						"This is useful for automatically opening queries, setting variables, etc.</center>","options"));
@@ -265,7 +265,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
 	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickServCheck,
+	KviTalToolTip::add(m_pNickServCheck,
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 #endif
 	m_pNickServCheck->setChecked(bNickServEnabled);
@@ -281,7 +281,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	
 	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickServListView,
+	KviTalToolTip::add(m_pNickServListView,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 				"KVIrc will use them to model its automatic interaction with NickServ on this network.<br>" \
 				"Please be aware that this feature can cause your NickServ passwords to be stolen " \
@@ -462,7 +462,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
 	m_pDescEditor->setText(s->description());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
+	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
 								"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
 #endif
 
@@ -481,7 +481,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUserEditor = new QLineEdit(gbox);
 	m_pUserEditor->setText(s->userName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to this server.\n" \
+	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to this server.\n" \
 										"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
 										"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
 										"specified in the \"Identity\" options tab.</center>","options"));
@@ -492,7 +492,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pPassEditor->setEchoMode(QLineEdit::Password);
 	m_pPassEditor->setText(s->password());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>","options"));
+	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 #endif
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
@@ -501,7 +501,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(s->nickName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
+	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
 									"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
 									"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 #endif
@@ -510,7 +510,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(s->realName());
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
+	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
 									"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
 									"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 #endif
@@ -519,7 +519,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	
 	m_pUseDefaultInitUMode = new KviStyledCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
+	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
 					" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 #endif
 	bool bHasUmode = !(s->initUMode().isEmpty());
@@ -562,7 +562,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	tmpz.setNum(s->port());
 	m_pPortEditor->setText(tmpz);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pPortEditor,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
+	KviTalToolTip::add(m_pPortEditor,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
 #endif
 	connect(m_pPortEditor,SIGNAL(textChanged(const QString &)),this,SLOT(portEditorTextChanged(const QString &)));
 
@@ -573,7 +573,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IpV4);
 	gl->addWidget(m_pIpEditor,1,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pIpEditor,__tr2qs_ctx("<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
+	KviTalToolTip::add(m_pIpEditor,__tr2qs_ctx("<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
 										"If you leave this field empty, KVIrc will fill it in the first time it connects to the server. " \
 										"If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" " \
 										"and avoid looking it up again.</center>","options"));
@@ -596,7 +596,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pCacheIpCheck = new KviStyledCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
+	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
 												"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 												"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
 												"Advanced: you can also use this option to force a certain server name to resolve " \
@@ -616,7 +616,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	connect(m_pUseIPV6Check,SIGNAL(toggled(bool)),this,SLOT(useIPV6CheckToggled(bool)));
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
+	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 						"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 #endif
 
@@ -624,7 +624,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseSSLCheck = new KviStyledCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
+	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
 						"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
 #endif
 #ifndef COMPILE_SSL_SUPPORT
@@ -638,7 +638,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	
 	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
+	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 #endif
 	
 	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
@@ -647,7 +647,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,6,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this sever. " \
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this sever. " \
 									"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
 									"network that this server belongs to.</center>","options"));
 #endif
@@ -698,7 +698,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
+	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
 		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
 #endif
 
@@ -710,7 +710,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(m_pIdEditor,8,1);
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
+	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 #endif
@@ -721,7 +721,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,9,1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to thos server.\n" \
+	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to thos server.\n" \
 										"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
 										"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 #endif	
@@ -755,7 +755,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pChannelListSelector = new KviCahnnelListSelector(tab,
 		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
 #ifdef COMPILE_INFO_TIPS
-  QToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
+  KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
 		"after a connection to this server has been established. To add a channel, type its name in the " \
 		"text input below and click \"<b>Add</b>\".</center>","options"));
 #endif
@@ -773,7 +773,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pOnConnectEditor->setText(s->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection has been established.<br>" \
+	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection has been established.<br>" \
 			"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
 			"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
 			"command sequence.<br>This is particularly useful for IRC bouncers that require login commands.</center>","options"));
@@ -792,7 +792,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pOnLoginEditor->setMinimumHeight(150);
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pOnLoginEditor,
+	KviTalToolTip::add(m_pOnLoginEditor,
 			__tr2qs_ctx("<center>The following commands will be executed after a successful login to this server.<br>" \
 					"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>"
 					"This is useful for automatically opening queries, setting variables, etc.</center>","options"));
@@ -1054,8 +1054,8 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QString tiptxt = __tr2qs_ctx("<center>This is the list of available IRC servers.<br>" \
 							"Right-click on the list to add or remove servers and perform other actions.<br>"\
 							"Double-click on a item for advanced options.</center>","options");
-	QToolTip::add(m_pListView,tiptxt);
-	QToolTip::add(m_pListView->viewport(),tiptxt);
+	KviTalToolTip::add(m_pListView,tiptxt);
+	KviTalToolTip::add(m_pListView->viewport(),tiptxt);
 #endif
 
 	KviTalVBox * vbox = new KviTalVBox(this);
@@ -1066,7 +1066,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
+	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
 #endif
 
 	m_pNewServerButton = new KviStyledToolButton(vbox);
@@ -1074,7 +1074,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
+	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
 #endif
 
 	m_pRemoveButton = new KviStyledToolButton(vbox);
@@ -1083,7 +1083,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove Network/Server","options"));
+	KviTalToolTip::add(m_pRemoveButton,__tr2qs_ctx("Remove Network/Server","options"));
 #endif
 
 	QFrame * f = new QFrame(vbox);
@@ -1095,7 +1095,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
+	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
 #endif
 
 	m_pPasteServerButton = new KviStyledToolButton(vbox);
@@ -1104,7 +1104,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pPasteServerButton->setAutoRaise(true);
 	connect(m_pPasteServerButton,SIGNAL(clicked()),this,SLOT(pasteServer()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste Server","options"));
+	KviTalToolTip::add(m_pPasteServerButton,__tr2qs_ctx("Paste Server","options"));
 #endif
 
 	f = new QFrame(vbox);
@@ -1116,7 +1116,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pImportButton->setPopup(m_pImportPopup);
 	m_pImportButton->setPopupDelay(1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
+	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
 #endif
 
 	QFrame * lll = new QFrame(vbox);
@@ -1127,7 +1127,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
+	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 #endif
 
 /*
@@ -1138,7 +1138,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 #endif
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pIpV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
+	KviTalToolTip::add(m_pIpV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 						"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 #endif
 
@@ -1146,14 +1146,14 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 
 	m_pPortEdit = new QLineEdit(gbox);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pPortEdit,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
+	KviTalToolTip::add(m_pPortEdit,__tr2qs_ctx("<center>This is the default <b>port</b> that this server will be contacted on.<br>Usually <b>6667</b> is OK.</center>","options"));
 #endif
 */
 
 	m_pDetailsButton = new QPushButton(__tr2qs_ctx("Advanced...","options"),gbox);
 	connect(m_pDetailsButton,SIGNAL(clicked()),this,SLOT(detailsClicked()));
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
+	KviTalToolTip::add(m_pDetailsButton,__tr2qs_ctx("<center>Click here to edit advanced options for this entry</center>","options"));
 #endif
 
 	m_pConnectCurrent = new QPushButton(__tr2qs_ctx("Connect &Now","options"),this);
@@ -1161,7 +1161,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	connect(m_pConnectCurrent,SIGNAL(clicked()),this,SLOT(connectCurrentClicked()));
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
+	KviTalToolTip::add(m_pConnectCurrent,__tr2qs_ctx("<center>Hit this button to connect to the currently selected server.</center>","options"));
 #endif
 
 	m_pRecentPopup = new KviTalPopupMenu(this);
@@ -1174,14 +1174,14 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	tb->setPopup(m_pRecentPopup);
 	tb->setPopupDelay(1);
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 #endif
 
 
 	KviBoolSelector * b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
 
 #ifdef COMPILE_INFO_TIPS
-	QToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
+	KviTalToolTip::add(b,__tr2qs_ctx("<center>If this option is enabled, the Servers dialog will appear every time you start KVIrc</center>","options"));
 #endif
 
 	// KviBoolSelector * c = addBoolSelector(0,6,2,6,__tr("Close after connection","options"),KviOption_boolCloseServerWidgetAfterConnect);

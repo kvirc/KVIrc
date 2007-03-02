@@ -31,6 +31,9 @@
 #include "kvi_pixmap.h"
 #include "kvi_regusersdb.h"
 #include "kvi_iconmanager.h"
+#ifdef COMPILE_USE_QT4
+#include <QDesktopWidget>
+#endif
 
 #include <qcheckbox.h>
 #include <qlabel.h>
@@ -115,13 +118,13 @@ KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegistere
 	//KviIrcMask masktempl(szMask.ptr());
 
     m_pNicknameEdit1 = new QLineEdit(m_pPage2);
-    m_pNicknameEdit1->setAlignment(int(QLineEdit::AlignRight));
+    m_pNicknameEdit1->setAlignment(Qt::AlignRight);
 	if(mask.nick() != "*")m_pNicknameEdit1->setText(mask.nick());
 	connect(m_pNicknameEdit1,SIGNAL(textChanged(const QString &)),this,SLOT(maskChanged(const QString &)));
     m_pPage2Layout->addWidget( m_pNicknameEdit1, 1, 0 );
 
     m_pUsernameEdit1 = new QLineEdit(m_pPage2);
-    m_pUsernameEdit1->setAlignment(int(QLineEdit::AlignHCenter));
+    m_pUsernameEdit1->setAlignment(Qt::AlignHCenter);
 	if(mask.hasUser())m_pUsernameEdit1->setText(mask.user());
 	connect(m_pUsernameEdit1,SIGNAL(textChanged(const QString &)),this,SLOT(maskChanged(const QString &)));
     m_pPage2Layout->addWidget(m_pUsernameEdit1,1,2);
@@ -132,11 +135,11 @@ KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegistere
 	m_pPage2Layout->addWidget(m_pHostEdit1,1,4);
 
     m_pNicknameEdit2 = new QLineEdit(m_pPage2);
-    m_pNicknameEdit2->setAlignment(int(QLineEdit::AlignRight));
+    m_pNicknameEdit2->setAlignment(Qt::AlignRight);
     m_pPage2Layout->addWidget(m_pNicknameEdit2,2,0);
 
     m_pUsernameEdit2 = new QLineEdit(m_pPage2);
-    m_pUsernameEdit2->setAlignment(int(QLineEdit::AlignHCenter));
+    m_pUsernameEdit2->setAlignment(Qt::AlignHCenter);
     m_pPage2Layout->addWidget(m_pUsernameEdit2,2,2);
 
     m_pHostEdit2 = new QLineEdit(m_pPage2);
@@ -144,22 +147,22 @@ KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegistere
 
     TextLabel10_2 = new QLabel(m_pPage2);
     TextLabel10_2->setText("<center><b>!</b></center>");
-    TextLabel10_2->setAlignment(int(QLabel::AlignCenter));
+    TextLabel10_2->setAlignment(int(Qt::AlignCenter));
     m_pPage2Layout->addWidget(TextLabel10_2,2,1);
 
     TextLabel10 = new QLabel(m_pPage2);
     TextLabel10->setText("<center><b>!</b></center>");
-    TextLabel10->setAlignment(int(QLabel::AlignCenter));
+    TextLabel10->setAlignment(int(Qt::AlignCenter));
     m_pPage2Layout->addWidget(TextLabel10,1,1);
 
     TextLabel10_3 = new QLabel(m_pPage2);
     TextLabel10_3->setText("<center><b>@</b></center>");
-    TextLabel10_3->setAlignment(int(QLabel::AlignCenter));
+    TextLabel10_3->setAlignment(int(Qt::AlignCenter));
     m_pPage2Layout->addWidget(TextLabel10_3,1,3);
 
     TextLabel10_3_2 = new QLabel(m_pPage2);
     TextLabel10_3_2->setText("<center><b>@</b></center>");
-    TextLabel10_3_2->setAlignment(int(QLabel::AlignCenter));
+    TextLabel10_3_2->setAlignment(int(Qt::AlignCenter));
     m_pPage2Layout->addWidget(TextLabel10_3_2,2,3);
 
     addPage(m_pPage2,__tr2qs("Step 2: Mask Selection"));

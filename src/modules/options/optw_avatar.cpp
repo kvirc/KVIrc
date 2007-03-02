@@ -28,7 +28,7 @@
 #include "kvi_selectors.h"
 #include "kvi_options.h"
 
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"avatar_advanced_options_widget")
@@ -40,7 +40,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling","options"));
 	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images (recommended)","options"),KviOption_boolScaleAvatars);
 #ifdef COMPILE_INFO_TIPS	
-	QToolTip::add(b,__tr2qs_ctx("<center>This option will force KVIrc to scale avatars" \
+	KviTalToolTip::add(b,__tr2qs_ctx("<center>This option will force KVIrc to scale avatars" \
 			" shown in the userlist.<br>" \
 			"Avatars will be scaled to fit the " \
 			"constraints set below. Better keep this option on. :)</center>","options"));

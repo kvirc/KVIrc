@@ -28,12 +28,11 @@
 #include <qcheckbox.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qtabwidget.h>
 #include <qcombobox.h>
 #include <qmessagebox.h>
 #include <qtimer.h>
-#include <qtooltip.h>
 #include <qvalidator.h>
 
 #include "kvi_defaults.h"
@@ -365,8 +364,8 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	m_pAgeCombo = new QComboBox(hb);
 #ifdef COMPILE_INFO_TIPS
 	QString szTip1 = szCenterBegin + __tr2qs_ctx("Here you can specify your age.","options") + szTrailing;
-	QToolTip::add(l,szTip1);
-	QToolTip::add(m_pAgeCombo,szTip1);
+	KviTalToolTip::add(l,szTip1);
+	KviTalToolTip::add(m_pAgeCombo,szTip1);
 #endif
 	m_pAgeCombo->insertItem(__tr2qs_ctx("Unspecified","options"));
 	unsigned int i;
@@ -395,8 +394,8 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	m_pGenderCombo = new QComboBox(hb);
 #ifdef COMPILE_INFO_TIPS
 	QString szTip2 =  szCenterBegin + __tr2qs_ctx("Here you can specify your gender.","options") + szTrailing;
-	QToolTip::add(l,szTip2);
-	QToolTip::add(m_pGenderCombo,szTip2);
+	KviTalToolTip::add(l,szTip2);
+	KviTalToolTip::add(m_pGenderCombo,szTip2);
 #endif
 
 	m_pGenderCombo->insertItem(__tr2qs_ctx("Unspecified","options"));

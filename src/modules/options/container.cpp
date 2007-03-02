@@ -29,7 +29,7 @@
 
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qevent.h>
 
 #ifdef COMPILE_USE_QT4
@@ -58,7 +58,7 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
-	QToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
+	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	//b->setMinimumWidth(m_pCancel->sizeHint().width());
 	g->addWidget(b,1,1);
 	b->setDefault(true);
@@ -66,7 +66,7 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 
 	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
-	QToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
+	KviTalToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
 	g->addWidget(m_pCancel,1,2);
 	connect(m_pCancel,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	m_pCancel->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));

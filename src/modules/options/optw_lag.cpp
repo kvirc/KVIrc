@@ -24,7 +24,7 @@
 #include "optw_lag.h"
 
 #include <qlayout.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 
 #include "kvi_options.h"
 #include "kvi_locale.h"

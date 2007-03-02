@@ -37,7 +37,7 @@
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_popupmenu.h"
 #include <qcursor.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
 #include <qtoolbutton.h>
 
 

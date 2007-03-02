@@ -36,7 +36,7 @@
 #include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_INFO_TIPS
-	#include <qtooltip.h>
+	#include "kvi_tal_tooltip.h"
 #endif
 
 // FIXME: This module doesn't Cancel properly when auto-detection is performed!
@@ -63,7 +63,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 #endif
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Sound System","options"),true);
 
-	QToolTip::add(g,__tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.","options"));
+	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.","options"));
 
 	KviTalHBox * h = new KviTalHBox(g);
 
@@ -78,7 +78,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Media Player","options"),true);
 
-	QToolTip::add(g,__tr2qs_ctx("This allows you to select the preferred media player to be used with " \
+	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select the preferred media player to be used with " \
 		"the mediaplayer.* module commands and functions.","options"));
 
 	h = new KviTalHBox(g);
@@ -101,7 +101,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	g = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("ID3 tags' encoding","options"),true);
 
-	QToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
+	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
 
 	h = new KviTalHBox(g);
 
@@ -124,7 +124,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 #ifdef COMPILE_ON_WINDOWS
 	g = addGroupBox(0,3,0,3,1,Qt::Horizontal,__tr2qs_ctx("Winamp messages ecoding","options"),true);
 
-	QToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
+	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
 
 	h = new KviTalHBox(g);
 

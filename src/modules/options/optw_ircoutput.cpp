@@ -32,7 +32,7 @@
 #include <qlabel.h>
 
 #ifdef COMPILE_INFO_TIPS
-	#include <qtooltip.h>
+	#include "kvi_tal_tooltip.h"
 #endif
 
 KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)

@@ -32,7 +32,6 @@
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
 #include "kvi_ptrdict.h"
-//FIX ME //szText.append(QToolTip::textFor((QWidget*)o));
 #include <qlayout.h>
 #include "kvi_accel.h"
 #include <qlabel.h>
@@ -40,7 +39,8 @@
 #include <qsplitter.h>
 #include "kvi_tal_widgetstack.h"
 #include <qpushbutton.h>
-#include <qtooltip.h>
+#include "kvi_tal_tooltip.h"
+
 #ifdef COMPILE_USE_QT4
 #include <Q3Header>
 #else
@@ -50,7 +50,6 @@
 #include <qtoolbutton.h>
 #include <qcheckbox.h>
 #include <kvi_tal_groupbox.h>
-#include <qtooltip.h>
 #ifndef COMPILE_USE_QT4
 #include <qobjectlist.h>
 
@@ -227,8 +226,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 								"The pages that contain some options related to the " \
 								"search term will be highlighted and you will be able " \
 								"to quickly find them.</p><p>Try \"nickname\" for example.</p>","options");
-	QToolTip::add(m_pSearchLineEdit,szTip);
-	QToolTip::add(m_pSearchButton,szTip);
+	KviTalToolTip::add(m_pSearchLineEdit,szTip);
+	KviTalToolTip::add(m_pSearchButton,szTip);
 #endif
 
 	vbox = new KviTalVBox(spl);
@@ -253,20 +252,20 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 //  Ok,Cancel,Help
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this,"btnok");
-	QToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
+	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	//b->setMinimumWidth(whatIsThisWidth);
 	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g1->addWidget(b,1,2);	
 
 	b = new QPushButton(__tr2qs_ctx("&Apply","options"),this,"btnapply");
-	QToolTip::add(b,__tr2qs_ctx("Commit all changes immediately.","options"));
+	KviTalToolTip::add(b,__tr2qs_ctx("Commit all changes immediately.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g1->addWidget(b,1,3);
 
 	b = new QPushButton(__tr2qs_ctx("Cancel","options"),this,"btncancel");
-	QToolTip::add(b,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
+	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
 	b->setDefault(true);
 	//b->setMinimumWidth(whatIsThisWidth);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
@@ -294,7 +293,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	}
 
 	KviAccel *a = new KviAccel( this );
-        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );        
+        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );
+	
 }
 
 KviOptionsDialog::~KviOptionsDialog()
@@ -340,7 +340,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 		while((o = it.current())/* && (!bFoundSomethingHere)*/)
 		{
 #else
-		for(int i;i<ol.count();i++)
+		for(int i=0;i<ol.count();i++)
 		{
 			o=ol.at(i);
 #endif
@@ -350,9 +350,8 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 #ifdef COMPILE_INFO_TIPS
-			// FIX ME
 			if(o->inherits("QWidget")){
-				//szText.append(QToolTip::textFor((QWidget*)o));
+				szText.append(KviTalToolTip::textFor((QWidget*)o));
 			}
 #endif
 #ifdef COMPILE_USE_QT4

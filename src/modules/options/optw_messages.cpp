@@ -34,7 +34,7 @@
 #include "kvi_styled_controls.h"
 
 #include "kvi_settings.h"
-//FIX ME: p->drawWinFocusRect
+
 #ifndef COMPILE_ON_WINDOWS
 	#include <unistd.h> // symlink()
 #endif
@@ -297,8 +297,17 @@ void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int 
 	p->drawText(24,listView()->itemMargin(),w - 24,height() - (listView()->itemMargin() * 2),Qt::AlignLeft | Qt::AlignVCenter,txt);
 	if(isSelected())
 	{
-//		p->drawWinFocusRect(0,0,w,height(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
-	//	p->drawWinFocusRect(1,1,w - 2,height() - 2,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+#ifdef COMPILE_USE_QT4
+		QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+		pen.setStyle(Qt::DashLine);
+		p->setPen( pen);
+		p->drawRect(0,0,w,height());
+		p->drawRect(1,1,w - 2,height() - 2);
+#else
+	
+		p->drawWinFocusRect(0,0,w,height(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+		p->drawWinFocusRect(1,1,w - 2,height() - 2,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+#endif
 	}
 }
 
@@ -335,11 +344,18 @@ void KviMessageColorListBoxItem::paint(QPainter * p)
 	if(selected())
 #endif
 	{
-		/*
-		p->drawWinFocusRect(0,0,width(lb),height(lb),clr);
-		p->drawWinFocusRect(1,1,width(lb) - 2,height(lb) - 2,clr);
-		p->drawWinFocusRect(2,2,width(lb) - 4,height(lb) - 4,clr);
-		*/
+#ifdef COMPILE_USE_QT4
+	QPen pen(clr);
+	pen.setStyle(Qt::DashLine);
+	p->setPen( pen);
+	p->drawRect(0,0,width(lb),height(lb));
+	p->drawRect(1,1,width(lb) - 2,height(lb) - 2);
+	p->drawRect(2,2,width(lb) - 4,height(lb) - 4);
+#else
+	p->drawWinFocusRect(0,0,width(lb),height(lb),clr);
+	p->drawWinFocusRect(1,1,width(lb) - 2,height(lb) - 2,clr);
+	p->drawWinFocusRect(2,2,width(lb) - 4,height(lb) - 4,clr);
+#endif
 	}
 }
 /*

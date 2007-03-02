@@ -43,7 +43,13 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
+#ifdef COMPILE_USE_QT4
+#include <QCloseEvent>
+#include <Q3Header>
+#include <Q3Vbox>
+#else
 #include <qheader.h>
+#endif
 #include "kvi_asciidict.h"
 #include <qimage.h>
 #include <qstring.h>
@@ -81,11 +87,15 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviDict<QStri
 
 	QGridLayout * g = new QGridLayout(this,3,3,4,4);
 
+#ifdef COMPILE_USE_QT4
+	m_pTable = new Q3Table(this);
+#else
 	m_pTable = new QTable(this);
+#endif
 	g->addMultiCellWidget(m_pTable,0,1,0,1);
 
 	m_pTable->setNumCols(2);
-	m_pTable->setSelectionMode(QTable::NoSelection);
+	m_pTable->setSelectionMode(Kvi_Tal_Table::NoSelection);
 
 	m_pTable->horizontalHeader()->setLabel(0,__tr2qs("Property"));
 	m_pTable->horizontalHeader()->setLabel(1,__tr2qs("Value"));
@@ -141,8 +151,8 @@ void KviReguserPropertiesDialog::fillData()
 	int row = 0;
 	while(it.current())
 	{
-		m_pTable->setItem(row,0,new QTableItem(m_pTable,QTableItem::OnTyping,it.currentKey()));
-		m_pTable->setItem(row,1,new QTableItem(m_pTable,QTableItem::OnTyping,*(it.current())));
+		m_pTable->setItem(row,0,new Kvi_Tal_TableItem(m_pTable,Kvi_Tal_TableItem::OnTyping,it.currentKey()));
+		m_pTable->setItem(row,1,new Kvi_Tal_TableItem(m_pTable,Kvi_Tal_TableItem::OnTyping,*(it.current())));
 		++row;
 		++it;
 	}
@@ -171,8 +181,8 @@ void KviReguserPropertiesDialog::okClicked()
 void KviReguserPropertiesDialog::addClicked()
 {
 	m_pTable->setNumRows(m_pTable->numRows() + 1);
-	m_pTable->setItem(m_pTable->numRows() - 1,0,new QTableItem(m_pTable,QTableItem::OnTyping,""));
-	m_pTable->setItem(m_pTable->numRows() - 1,1,new QTableItem(m_pTable,QTableItem::OnTyping,""));
+	m_pTable->setItem(m_pTable->numRows() - 1,0,new Kvi_Tal_TableItem(m_pTable,Kvi_Tal_TableItem::OnTyping,""));
+	m_pTable->setItem(m_pTable->numRows() - 1,1,new Kvi_Tal_TableItem(m_pTable,Kvi_Tal_TableItem::OnTyping,""));
 	m_pDelButton->setEnabled(true);
 }
 
@@ -437,7 +447,11 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	addTab(p2,__tr2qs("Properties"));
 
 	// Ignore TAB
+#ifdef COMPILE_USE_QT4
+	Q3VBox * vb = new Q3VBox(this);
+#else
 	QVBox * vb = new QVBox(this);
+#endif
 	vb->setMargin(10);
 
 	m_pIgnoreEnabled = new KviStyledCheckBox(__tr2qs("Enable ignore for this user"),vb);

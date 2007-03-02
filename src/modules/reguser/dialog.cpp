@@ -42,7 +42,15 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
+#ifdef COMPILE_USE_QT4
+#include <Q3Header>
+#include <QCloseEvent>
+#include <QImageWriter>
+#include <QImageReader>
+
+#else
 #include <qheader.h>
+#endif
 #include "kvi_asciidict.h"
 #include <qimage.h>
 #include <qstring.h>
@@ -329,7 +337,7 @@ void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &
 		if((c == 1) && (ppp.x() < (r.height() + 5 + daw)))
 		{
 			// notify list toggle
-			if(i->user()->getProperty("notify"))
+			if(i->user()->getProperty("notify").isEmpty())
 			{
 				i->user()->setProperty("notify",""); // kill that
 			} else {
@@ -660,8 +668,8 @@ void KviRegisteredUsersDialog::exportClicked()
 {
 	unsigned int nEntries = 0;
 
-	KviTalListViewItemIterator it( m_pListView, QListViewItemIterator::Selected );
-	KviTalListViewItemIterator cit( m_pListView, QListViewItemIterator::Selected );
+	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
+	KviTalListViewItemIterator cit( m_pListView, KviTalListViewItemIterator::Selected );
     while ( cit.current() ) {
 		if(((KviRegisteredUsersDialogItemBase *)(cit.current()))->type() == KviRegisteredUsersDialogItemBase::User)
 			nEntries++;
@@ -741,11 +749,18 @@ void KviRegisteredUsersDialog::exportClicked()
 					if(!av->pixmap()->isNull())
 					{
 						if(!f.save(1))goto write_error;
+#ifdef COMPILE_USE_QT4
+						QImageWriter io;
+						io.setDevice(&f);
+						io.setFormat("PNG");						
+						if(!io.write(av->pixmap()->convertToImage()))goto write_error;
+#else
 						QImageIO io;
 						io.setImage(av->pixmap()->convertToImage());
 						io.setIODevice(&f);
 						io.setFormat("PNG");
 						if(!io.write())goto write_error;
+#endif	
 					} else {
 						if(!f.save(0))goto write_error;
 					}
@@ -838,8 +853,16 @@ void KviRegisteredUsersDialog::importClicked()
 		if(count)
 		{
 			// there is an avatar
-			QImageIO io;
 			QImage img;
+#ifdef COMPILE_USE_QT4
+			QImageReader io;
+			io.setDevice(&f);
+			io.setFormat("PNG");
+			img=io.read();
+//			if(io.read())goto read_error;
+
+#else
+			QImageIO io;
 			io.setImage(img);
 			io.setIODevice(&f);
 			io.setFormat("PNG");
@@ -847,7 +870,7 @@ void KviRegisteredUsersDialog::importClicked()
 			if(!io.read())goto read_error;
 
 			img = io.image();
-
+#endif
 			if(img.isNull())debug("Ops.. readed a null image ?");
 
 			KviStr fName = u->name();
@@ -884,3 +907,4 @@ succesfull_import:
 	f.close();
 	fillList();
 }
+#include "dialog.moc"
