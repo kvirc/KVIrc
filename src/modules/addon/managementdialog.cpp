@@ -119,7 +119,7 @@ void KviScriptAddonListViewItem::setup()
 	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
 	#else
 	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->textHeight() + (2 * LVI_BORDER);
+	int iHeight = m_pText->height() + (2 * LVI_BORDER);
 	#endif
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
 	setHeight(iHeight+2);
