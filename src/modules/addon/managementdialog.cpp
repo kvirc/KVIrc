@@ -138,8 +138,8 @@ void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,i
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setTextWidth(www);
 	p->translate(afterIcon,LVI_BORDER);
+	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
 	m_pText->drawContents(p);
 	#else
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
