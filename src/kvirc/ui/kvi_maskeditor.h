@@ -51,8 +51,11 @@ public:
 	~KviMaskItem();
 	
 	KviMaskEntry* mask() { return &m_Mask; };
-	
+#ifdef COMPILE_QT4_SUPPORT
 	virtual int compare ( KviTalListViewItem * i, int col, bool ascending ) const;
+#else
+	virtual int compare ( QListViewItem * i, int col, bool ascending ) const;
+#endif
 protected:
 	KviMaskEntry m_Mask;
 	

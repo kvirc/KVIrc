@@ -303,7 +303,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
-	BOOL_OPTION("UseSystemUrlHandlers ",true,KviOption_sectFlagUrl)
+	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl)
 
 };
 
