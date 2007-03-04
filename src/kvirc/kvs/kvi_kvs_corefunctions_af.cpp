@@ -951,9 +951,6 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_SSL_SUPPORT
 			"SSL",
 	#endif
-	#ifdef COMPILE_LOCALE_STUFF
-			"Locale",
-	#endif
 	#ifdef COMPILE_GET_INTERFACE_ADDRESS
 			"IfAddr",
 	#endif
@@ -984,13 +981,14 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_SCRIPTTOOLBAR
 			"ScriptToolBar",
 	#endif // COMPILE_SCRIPTTOOLBAR
-	#if QT_VERSION >= 300
+	#ifdef COMPILE_USE_QT4
+			"Qt4",
+	#else
 			"Qt3",
 	#endif
 	#ifdef COMPILE_NEW_KVS
 			"KVS",
 	#endif
-			"WizPathset",
 			0
 		};
 
