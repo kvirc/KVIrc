@@ -77,6 +77,8 @@ namespace KviFileUtils
 	extern KVILIB_API bool readFile(const char* path,QString &szBuffer,unsigned int uMaxSize = 65535);
 	// extracts the filename from a complete path (strips leading path)
 	extern KVILIB_API QString extractFileName(const QString &szFileNameWithPath);
+
+	extern KVILIB_API QString extractFilePath(const QString &szFileNameWithPath);
 	// cp -f
 	extern KVILIB_API bool copyFile(const QString &szSrc,const QString &szDst);
 	extern KVILIB_API bool copyFile(const char* src,const char* dst);

@@ -377,6 +377,11 @@ namespace KviFileUtils
 	
 	QString extractFileName(const QString &szFileNameWithPath)
 	{
+		return QFileInfo(szFileNameWithPath).fileName();
+	}
+
+	QString extractFilePath(const QString &szFileNameWithPath)
+	{
 #ifdef COMPILE_USE_QT4
 		return QFileInfo(szFileNameWithPath).absoluteFilePath();
 #else

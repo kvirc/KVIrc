@@ -1207,7 +1207,7 @@ static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filepath",KVS_PT_NONEMPTYSTRING,0,szName)
 	KVSM_PARAMETERS_END(c)
-	KviFileUtils::adjustFilePath(szName);
+	KviFileUtils::extractFileName(szName);
 	KviQString::cutToLast(szName,KVI_PATH_SEPARATOR_CHAR);
 	c->returnValue()->setString(szName);
 	return true;
