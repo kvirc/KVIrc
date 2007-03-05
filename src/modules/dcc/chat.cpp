@@ -107,7 +107,7 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 
 	m_pSlaveThread = 0;
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))m_pIrcView->startLogging(0);
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))m_pIrcView->startLogging();
 
 	m_pMarshal = new KviDccMarshal(this);
 	connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));

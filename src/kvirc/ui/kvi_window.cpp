@@ -661,7 +661,7 @@ void KviWindow::loadProperties(KviConfig *cfg)
 		{
 			QString szTmp;
 			getBaseLogFileName(szTmp);
-			m_pIrcView->startLogging(0);
+			m_pIrcView->startLogging();
 		}
 	}*/
 }

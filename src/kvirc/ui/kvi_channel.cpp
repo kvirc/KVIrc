@@ -634,7 +634,7 @@ void KviChannel::setAliveChan()
 	context()->unregisterDeadChannel(this);
 	connection()->registerChannel(this);
 	// Update log file name
-	if(m_pIrcView->isLogging())m_pIrcView->startLogging(0);
+	if(m_pIrcView->isLogging())m_pIrcView->startLogging();
 	updateIcon();
 	updateCaption();
 	m_pTopicWidget->reset(); // reset the topic (fixes bug #20 signaled by Klaus Weidenbach)

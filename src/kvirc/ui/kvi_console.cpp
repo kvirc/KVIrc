@@ -154,7 +154,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging(0);
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging();
 
 }
 

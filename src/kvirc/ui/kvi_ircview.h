@@ -64,7 +64,7 @@ public:
 public:
 	int dummyRead() const { return 0; };
 private:
-	QDate                       m_lastLogDay;
+//	QDate                       m_lastLogDay;
 	int		 	                m_iFlushTimer;
 	KviIrcViewLine            * m_pFirstLine;
 	KviIrcViewLine            * m_pCurLine;    // Bottom line in the view
@@ -167,7 +167,6 @@ public:
 	//==============================================================================================
 	// Logging
 	// Stops previous logging session too...
-	bool startLogging(bool bPrependCurBuffer = false);
 	bool startLogging(const QString& fname = QString::null,bool bPrependCurBuffer = false);
 	void stopLogging();
 	bool isLogging(){ return (m_pLogFile != 0); };

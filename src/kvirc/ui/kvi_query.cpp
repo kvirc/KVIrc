@@ -107,7 +107,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	m_pInput   = new KviInput(this,m_pUserListView);
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries)) m_pIrcView->startLogging(0);
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries)) m_pIrcView->startLogging();
 	// FIXME: #warning "Maybe tell the user all that we know about the remote end(s)....channels..."
 
 	m_pIrcView->enableDnd(TRUE);
@@ -540,7 +540,7 @@ void KviQuery::setAliveQuery()
 	context()->unregisterDeadQuery(this);
 	connection()->registerQuery(this);
 	// Update log file name
-	if(m_pIrcView->isLogging()) m_pIrcView->startLogging(0);
+	if(m_pIrcView->isLogging()) m_pIrcView->startLogging();
 	updateIcon();
 	updateCaption();
 	updateLabelText();
