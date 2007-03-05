@@ -680,18 +680,15 @@ void KviIrcView::masterDead()
 	m_pMasterView = 0;
 }
 
-bool KviIrcView::startLogging(const char *filename,bool bPrependCurBuffer)
+bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 {
 	stopLogging();
-	QString fName;
+	QString szFname = szFname;
 	
-	QString szFname(filename);
-	
-	if(!filename)
+	if(fname.isEmpty())
 	{
 		if(!m_pKviWindow)return false;
-		m_pKviWindow->getDefaultLogFileName(fName);
-		szFname=fName;
+		m_pKviWindow->getDefaultLogFileName(szFname);
 	}
 
 #ifdef COMPILE_ZLIB_SUPPORT
@@ -830,6 +827,12 @@ void KviIrcView::clearLineMark(bool bRepaint)
 		#endif
 	}
 }
+
+void KviIrcView::checkLogDate()
+{
+	QDate::currentDate();
+}
+
 void KviIrcView::clearUnreaded()
 {
 	m_bHaveUnreadedHighlightedMessages = false;

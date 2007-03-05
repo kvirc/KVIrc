@@ -64,7 +64,8 @@ public:
 public:
 	int dummyRead() const { return 0; };
 private:
-	int		 	    m_iFlushTimer;
+	QDate                       m_lastLogDay;
+	int		 	                m_iFlushTimer;
 	KviIrcViewLine            * m_pFirstLine;
 	KviIrcViewLine            * m_pCurLine;    // Bottom line in the view
 	KviIrcViewLine            * m_pLastLine;
@@ -84,7 +85,7 @@ private:
 	QPixmap                   * m_pPrivateBackgroundPixmap;
 	QScrollBar                * m_pScrollBar;
 	QToolButton               * m_pToolsButton;
-	KviTalPopupMenu                * m_pToolsPopup;
+	KviTalPopupMenu           * m_pToolsPopup;
 
 	KviIrcViewToolWidget      * m_pToolWidget;
 
@@ -139,6 +140,7 @@ private:
 	bool m_bHaveUnreadedHighlightedMessages;
 	bool m_bHaveUnreadedMessages;
 public:
+	void checkLogDate();
 	void clearUnreaded();
 	void applyOptions();
 	void enableDnd(bool bEnable);
@@ -165,7 +167,8 @@ public:
 	//==============================================================================================
 	// Logging
 	// Stops previous logging session too...
-	bool startLogging(const char *filename,bool bPrependCurBuffer = false);
+	bool startLogging(bool bPrependCurBuffer = false);
+	bool startLogging(const QString& fname = QString::null,bool bPrependCurBuffer = false);
 	void stopLogging();
 	bool isLogging(){ return (m_pLogFile != 0); };
 	void getLogFileName(KviStr &buffer);

@@ -201,7 +201,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	//setFocusHandler(m_pInput,this);
 	// And turn on the secondary IRC view if needed
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogChannels))m_pIrcView->startLogging(0);
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogChannels))m_pIrcView->startLogging();
 
 	applyOptions();
 	m_joinTime = QDateTime::currentDateTime();
