@@ -38,6 +38,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnection.h"
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_topicw.h"
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
@@ -48,6 +49,7 @@
 #include <qfontmetrics.h>
 #include <qsplitter.h>
 #include <qtooltip.h>
+#include <qdatetime.h>
 #include "kvi_tal_hbox.h"
 #include "kvi_msgbox.h"
 
@@ -120,11 +122,15 @@ void KviChannelListViewItem::paintCell(QPainter * p,const QColorGroup &cg,int co
 	KviTalListView* lv = (KviTalListView *)listView();
 	int marg = lv->itemMargin();
 	int r = marg;
-	
-	const BackgroundMode bgmode = lv->viewport()->backgroundMode();
-	const QColorGroup::ColorRole crole = QPalette::backgroundRoleFromMode( bgmode );
+
+#ifdef COMPILE_USE_QT4
+
+	p->fillRect( 0, 0, width, height(), cg.brush(lv->viewport()->backgroundRole()) );
+#else
+	const QColorGroup::ColorRole crole = QPalette::backgroundRoleFromMode(lv->viewport()->backgroundMode());
 	
 	p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
+#endif
 
 	if ( isSelected() &&
 		(column == 0 || lv->allColumnsShowFocus()) ) {
@@ -175,9 +181,9 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pItemList = new KviPtrList<KviChannelListViewItemData>;
 	m_pItemList->setAutoDelete(false);
 
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
-	m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
-	m_pVertSplitter = new QSplitter(QSplitter::Vertical,m_pSplitter,"vsplitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
 
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 	m_pOpenButton = new KviStyledToolButton(box);
@@ -214,8 +220,8 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pListView->addColumn(__tr2qs("Users"));
 	m_pListView->addColumn(__tr2qs("Topic"));
 	m_pListView->setAllColumnsShowFocus(TRUE);
-	m_pListView->setColumnWidthMode(2,QListView::Maximum);
-	m_pListView->setColumnWidthMode(3,QListView::Maximum);
+	m_pListView->setColumnWidthMode(2,KviTalListView::Maximum);
+	m_pListView->setColumnWidthMode(3,KviTalListView::Maximum);
 	m_pListView->setSorting(100);
 	
 	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
@@ -483,7 +489,7 @@ void KviListWindow::itemDoubleClicked(KviTalListViewItem *it)
 	QString sz = ((KviChannelListViewItem *)it)->channel();
 	if(sz.isEmpty())return;
 	if(!connection())return;
-	QCString dat = connection()->encodeText(sz);
+	KviQCString dat = connection()->encodeText(sz);
 	if(!dat.data())return;
 	m_pConsole->connection()->sendFmtData("join %s",dat.data());
 }

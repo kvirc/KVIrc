@@ -31,6 +31,7 @@
 #include "kvi_app.h"
 #include "kvi_env.h"
 #include "kvi_osinfo.h"
+#include "kvi_qcstring.h"
 
 #include <qclipboard.h>
 
@@ -417,7 +418,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		The parameters MUST be in the form "type=value"
 		where "type" is the C++ type of the parameter and value
 		is the string rappresentation of the parameter data. Currently
-		KVIrc supports only QString,QCString,bool,int and uint data types.[br]
+		KVIrc supports only QString,KviQCString,bool,int and uint data types.[br]
 		The returned value is the string rappresentation of the returned
 		data if the return type is known, otherwise it is the name of the data type returned.
 		[br]
@@ -493,9 +494,9 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 		{
 			QString ddd = tmp.ptr();
 			ds << ddd;
-		} else if(kvi_strEqualCI("QCString",szType.ptr()))
+		} else if(kvi_strEqualCI("KviQCString",szType.ptr()))
 		{
-			QCString qcs = tmp.ptr();
+			KviQCString qcs = tmp.ptr();
 			ds << qcs;
 		} else if(kvi_strEqualCI("bool",szType.ptr()))
 		{
@@ -517,7 +518,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 	}
 
 	QByteArray rba;
-	QCString szRetType;
+	KviQCString szRetType;
 
 	bool bRet = g_pApp->dcopClient()->call(szApp,szObj,szFun,ba,szRetType,rba);
 
@@ -543,7 +544,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 				c->returnValue()->setString(szz);
 			} else if(szRetType == "QCString")
 			{
-				QCString sss;
+				KviQCString sss;
 				ret >> sss;
 				c->returnValue()->setString(sss.data());
 			} else if((szRetType == "uint") || (szRetType == "unsigned int") || (szRetType == "Q_UINT32"))
@@ -558,6 +559,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 				c->returnValue()->setInteger(iii);
 			} else if(szRetType == "QCStringList")
 			{
+#ifndef COMPILE_USE_QT4
 				QCStringList csl;
 				ret >> csl;
 				KviKvsArray * arry = new KviKvsArray();
@@ -568,6 +570,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 					idx++;
 				}
 				c->returnValue()->setArray(arry);
+#endif
 			} else if(szRetType == "QStringList")
 			{
 				QStringList csl;

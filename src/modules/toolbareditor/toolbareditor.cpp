@@ -34,18 +34,20 @@
 #include "kvi_fileutils.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_useraction.h"
+#include "kvi_draganddrop.h"
 
 #include <qpushbutton.h>
 #include <qlayout.h>
 #include <qapplication.h>
 #include <qtooltip.h>
-#include <qdragobject.h>
+
 #include <qlineedit.h>
 #include <qlabel.h>
 #include <qmessagebox.h>
 #include <qframe.h>
 #include <qdir.h>
 #include <qtimer.h>
+#include <qevent.h>
 
 KviCustomizeToolBarsDialog * KviCustomizeToolBarsDialog::m_pInstance = 0;
 extern QRect g_rectToolBarEditorDialogGeometry;
@@ -103,14 +105,14 @@ void KviTrashcanLabel::heartbeat()
 
 void KviTrashcanLabel::dropEvent(QDropEvent * e)
 {
-	if(QTextDrag::canDecode(e))
+	if(KviTextDrag::canDecode(e))
 		e->accept();
 }
 
 void KviTrashcanLabel::dragEnterEvent(QDragEnterEvent * e)
 {
 	QString s;
-	if(QTextDrag::decode(e,s))
+	if(KviTextDrag::decode(e,s))
 		e->accept();
 }
 

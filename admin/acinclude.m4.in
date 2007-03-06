@@ -2555,10 +2555,14 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		iconapps32datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/32x32/apps"
 		iconapps48datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/48x48/apps"
 		iconapps64datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/64x64/apps"
+		iconapps128datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/128x128/apps"
+		iconappsscalabledatadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/scalable/apps"
 		iconmime16datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/16x16/mimetypes"
 		iconmime32datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/32x32/mimetypes"
 		iconmime48datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/48x48/mimetypes"
 		iconmime64datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/64x64/mimetypes"
+		iconmime128datadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/128x128/mimetypes"
+		iconmimescalabledatadir="$SS_KDE_GENERAL_DIR/share/icons/hicolor/scalable/mimetypes"
 		applnkdir="$SS_KDE_GENERAL_DIR/share/applnk/Internet"
 		mimelnkdir="$SS_KDE_GENERAL_DIR/share/mimelnk/text"
 	else
@@ -2566,10 +2570,14 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		iconapps32datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/32x32"
 		iconapps48datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/48x48"
 		iconapps64datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/64x64"
+		iconapps128datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/128x128"
+		iconappsscalabledatadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/scalable"
 		iconmime16datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/16x16"
 		iconmime32datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/32x32"
 		iconmime48datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/48x48"
 		iconmime64datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/64x64"
+		iconapps128datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/128x128"
+		iconappsscalabledatadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/scalable"
 		applnkdir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/applnk"
 		mimelnkdir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/mimelnk"
 	fi
@@ -2577,10 +2585,14 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	AC_SUBST(iconapps32datadir)
 	AC_SUBST(iconapps48datadir)
 	AC_SUBST(iconapps64datadir)
+	AC_SUBST(iconapps128datadir)
+	AC_SUBST(iconappsscalabledatadir)
 	AC_SUBST(iconmime16datadir)
 	AC_SUBST(iconmime32datadir)
 	AC_SUBST(iconmime48datadir)
 	AC_SUBST(iconmime64datadir)
+	AC_SUBST(iconmime128datadir)
+	AC_SUBST(iconmimescalabledatadir)
 	AC_SUBST(applnkdir)
 	AC_SUBST(mimelnkdir)
 

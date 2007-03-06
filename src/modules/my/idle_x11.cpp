@@ -90,11 +90,19 @@ bool IdlePlatform::init()
 	return false;
 }
 
+#ifdef COMPILE_USE_QT4
+	#include <qx11info_x11.h>
+#endif
+
 int IdlePlatform::secondsIdle()
 {
 	if(!d->ss_info)
 		return 0;
+#ifdef COMPILE_USE_QT4
+	if(!XScreenSaverQueryInfo(QApplication::desktop()->screen()->x11Display(), QX11Info::appRootWindow(), d->ss_info))
+#else
 	if(!XScreenSaverQueryInfo(QApplication::desktop()->screen()->x11Display(), qt_xrootwin(), d->ss_info))
+#endif
 		return 0;
 	return d->ss_info->idle / 1000;
 }

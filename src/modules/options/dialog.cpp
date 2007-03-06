@@ -42,18 +42,15 @@
 #include "kvi_tal_tooltip.h"
 
 #ifdef COMPILE_USE_QT4
-#include <Q3Header>
+	#include <q3header.h>
 #else
-#include <qheader.h>
+	#include <qheader.h>
+	#include <qobjectlist.h>
 #endif
 #include "kvi_tal_popupmenu.h"
 #include <qtoolbutton.h>
 #include <qcheckbox.h>
 #include <kvi_tal_groupbox.h>
-#ifndef COMPILE_USE_QT4
-#include <qobjectlist.h>
-
-#endif
 #include <qpainter.h>
 #include <qfont.h>
 #include <qevent.h>
@@ -189,11 +186,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	setCaption(szCaption);
 
 	QGridLayout * g1 = new QGridLayout(this,2,5,8,8);
-	#ifdef COMPILE_USE_QT4
-	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"main_splitter");
-	#else
-	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
-#endif
+	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 
 	g1->addMultiCellWidget(spl,0,0,0,4);
 
@@ -329,105 +322,45 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	KviPtrDict<bool> lOptionWidgetsToMark;
 	lOptionWidgetsToMark.setAutoDelete(true);
 	QTabWidget * pTabWidgetToMark = 0;
+	
+	QObject * o;
 #ifdef COMPILE_USE_QT4
-	QObjectList  ol = pItem->m_pOptionsWidget->queryList();
-	if(!ol.empty())
-#else
-	QObjectList  *ol = pItem->m_pOptionsWidget->queryList();
-	if(ol)
-#endif	
+	QObjectList ol = pItem->m_pOptionsWidget->queryList();
+	if(ol.count() > 0)
 	{
-		QObject * o;
-#ifndef COMPILE_USE_QT4
+		for(QObjectList::Iterator it = ol.begin();it != ol.end();++it)
+		{
+			o = *it;
+#else
+	QObjectList * ol = pItem->m_pOptionsWidget->queryList();
+	if(ol)
+	{
 		QObjectListIt it(*ol);
 		while((o = it.current())/* && (!bFoundSomethingHere)*/)
 		{
-#else
-		for(int i=0;i<ol.count();i++)
-		{
-			o=ol.at(i);
 #endif
-		
 			QString szText;
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
 			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 #ifdef COMPILE_INFO_TIPS
-			if(o->inherits("QWidget")){
-				szText.append(KviTalToolTip::textFor((QWidget*)o));
-			}
-#endif
+			if(o->inherits("QWidget"))
 #ifdef COMPILE_USE_QT4
-
+				szText.append(((QWidget *)o)->toolTip());
+#else
+				szText.append(QToolTip::textFor((QWidget*)o));
+#endif
+#endif
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
-				for(int j=0;j<lKeywords.count();i++)
+				for(int j=0;j<lKeywords.count();j++)
 				{
+#ifdef COMPILE_USE_QT4
 					if(szText.find(lKeywords.at(j),0,false) == -1)
-					{
-						bOk = false;
-						break;
-					}
-				}
-				if(bOk)
-				{
-					bFoundSomethingHere = true;
-				}
-				
-				if(o->inherits("QWidget"))
-				{
-					QWidget* pWidget=(QWidget*)o;
-					QFont font = pWidget->font();
-					font.setBold(bOk);
-					font.setUnderline(bOk);
-					pWidget->setFont(font);
-
-					// if there is a QTabWidget in the parent chain, signal it in the tab text
-					QObject * pParent = pWidget->parent();
-					while(pParent)
-					{
-						if(pParent->inherits("QTabWidget"))
-						{
-							pTabWidgetToMark = (QTabWidget *)pParent;
-							break;
-						}
-						pParent = pParent->parent();
-					}
-
-					if(pTabWidgetToMark)
-					{
-						// lookup the KviOptionsWidget parent
-						pParent = pWidget->parent();
-						while(pParent)
-						{
-							if(pParent->inherits("KviOptionsWidget"))
-							{
-								bool * pExistingBool = lOptionWidgetsToMark.find(pParent);
-								if(pExistingBool)
-								{
-									if(bOk)
-										*pExistingBool = true;
-								} else {
-									lOptionWidgetsToMark.insert(pParent,new bool(bOk));
-								}
-								break;
-							}
-							pParent = pParent->parent();
-						}
-					}
-				}
-			}
-			
-		}
-
 #else
-			if(!szText)
-			{
-				bool bOk = true;
-				for(QStringList::ConstIterator it = lKeywords.begin();it != lKeywords.end();++it)
-				{
-					if(szText.find(*it,0,false) == -1)
+					if(szText.find(*(lKeywords.at(j)),0,false) == -1)
+#endif
 					{
 						bOk = false;
 						break;
@@ -481,11 +414,14 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 					}
 				}
 			}
-			
+
+#ifndef COMPILE_USE_QT4
 			++it;
+#endif
 		}
+#ifndef COMPILE_USE_QT4
 		delete ol;
-	#endif
+#endif
 	}
 
 	if(pTabWidgetToMark)

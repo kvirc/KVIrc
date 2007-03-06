@@ -37,7 +37,7 @@
 #include "kvi_tal_hbox.h" 
 
 #ifdef COMPILE_USE_QT4
-#include <Q3Table>
+#include <q3table.h>
 #define KviTalTable Q3Table
 #define KviTalTableItem Q3TableItem
 #else

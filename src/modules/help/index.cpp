@@ -54,7 +54,7 @@
 
 
 
-#include <qfile.h>
+#include "kvi_file.h"
 
 #include <qdir.h>
 
@@ -64,7 +64,7 @@
 
 #include <qapplication.h>
 
-
+#include <qtextstream.h>
 
 #include <ctype.h>
 
@@ -265,8 +265,8 @@ void Index::insertInDict( const QString &str, int docNum )
 
 void Index::parseDocument( const QString &filename, int docNum )
 {
-    QFile file( filename );
-    if ( !file.open( IO_ReadOnly ) ) {
+    KviFile file( filename );
+    if ( !file.openForReading() ) {
 	qWarning( "can not open file " + filename );
 	return;
     }
@@ -339,9 +339,9 @@ void Index::writeDict()
 
     KviDictIterator<Entry> it( dict );
 
-    QFile f( dictFile );
+    KviFile f( dictFile );
 
-    if ( !f.open( IO_WriteOnly | IO_Truncate ) )
+    if ( !f.openForWriting() )
 
 	return;
 
@@ -368,15 +368,15 @@ void Index::writeDict()
 void Index::writeDocumentList()
 
 {
-    QFile f( docListFile );
-    if ( !f.open( IO_WriteOnly | IO_Truncate ) )
+    KviFile f( docListFile );
+    if ( !f.openForWriting() )
 	return;
     QTextStream s( &f );
     QString docs = docList.join("[#item#]");
     s << docs;
     
-    QFile f1( docListFile+".titles" );
-    if ( !f1.open( IO_WriteOnly | IO_Truncate ) )
+    KviFile f1( docListFile+".titles" );
+    if ( !f1.openForWriting() )
 	return;
     QTextStream s1( &f1 );
     docs = titleList.join("[#item#]");
@@ -388,8 +388,8 @@ void Index::writeDocumentList()
 void Index::readDict()
 
 {
-    QFile f( dictFile );
-    if ( !f.open( IO_ReadOnly ) )
+    KviFile f( dictFile );
+    if ( !f.openForReading() )
 	return;
     dict.clear();
     QDataStream s( &f );
@@ -409,15 +409,15 @@ void Index::readDict()
 void Index::readDocumentList()
 {
     //reading docs
-    QFile f( docListFile );
-    if ( !f.open( IO_ReadOnly ) )
+    KviFile f( docListFile );
+    if ( !f.openForReading() )
 	return;
     QTextStream s( &f );
     docList = QStringList::split("[#item#]",s.read());
     
     //reading titles
-    QFile f1( docListFile+".titles" );
-    if ( !f1.open( IO_ReadOnly ) )
+    KviFile f1( docListFile+".titles" );
+    if ( !f1.openForReading() )
 	return;
     QTextStream s1( &f1 );
     titleList = QStringList::split("[#item#]",s1.read());
@@ -522,8 +522,9 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 
     QStringList results;
 
+#ifndef COMPILE_USE_QT4
     qHeapSort( minDocs );
-
+#endif
     if ( termSeq.isEmpty() ) {
 
 	for ( C = minDocs.begin(); C != minDocs.end(); ++C )
@@ -558,9 +559,9 @@ QString Index::getDocumentTitle( const QString &fileName )
 
 {
 
-    QFile file( fileName );
+    KviFile file( fileName );
 
-    if ( !file.open( IO_ReadOnly ) ) {
+    if ( !file.openForReading() ) {
 
 	qWarning( "cannot open file " + fileName );
 
@@ -596,8 +597,11 @@ QStringList Index::getWildcardTerms( const QString &term )
 
     QStringList terms = split( term );
 
+#ifdef COMPILE_USE_QT4
+	QStringList::Iterator iter;
+#else
     KviValueList<QString>::iterator iter;
-
+#endif
 
 
     KviDictIterator<Entry> it( dict );
@@ -804,9 +808,9 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 
 {
 
-    QFile file( fileName );
+    KviFile file( fileName );
 
-    if ( !file.open( IO_ReadOnly ) ) {
+    if ( !file.openForReading() ) {
 
 	qWarning( "cannot open file " + fileName );
 

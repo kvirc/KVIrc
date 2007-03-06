@@ -49,7 +49,7 @@ KviMaskItem::KviMaskItem(KviTalListView* parent,KviMaskEntry* entry)
 KviMaskItem::~KviMaskItem()
 {
 }
-#ifdef COMPILE_QT4_SUPPORT
+#ifdef COMPILE_USE_QT4
 int KviMaskItem::compare ( KviTalListViewItem * i, int col, bool ascending ) const
 #else
 int KviMaskItem::compare ( QListViewItem * i, int col, bool ascending ) const

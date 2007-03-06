@@ -8,10 +8,10 @@
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Tue Feb 20 03:20:49 UTC 2007"
+#define BUILD_DATE "Tue Mar  6 01:35:06 UTC 2007"
 
 /* these are the build flags */
-#define BUILD_FLAGS "x86_64-cefgikopsAGTZ"
+#define BUILD_FLAGS "x86_64-cfgikopsAGTZ"
 
 /* define if you want to enable the Arts daemon support */
 /* #undef COMPILE_ARTS_SUPPORT */
@@ -26,7 +26,7 @@
 /* #undef COMPILE_DISABLE_DCC_VOICE */
 
 /* define if you want to enable the Esound daemon support */
-#define COMPILE_ESD_SUPPORT 1
+/* #undef COMPILE_ESD_SUPPORT */
 
 /* define if you have the SIOCGIFADDR ioctl and the related headers */
 #define COMPILE_GET_INTERFACE_ADDRESS 1

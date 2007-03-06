@@ -20,8 +20,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+
 #include "libkviiograph.h"
 #include "kvi_module.h"
+
+#if 0
+
 
 #include "kvi_console.h"
 #include "kvi_options.h"
@@ -34,7 +38,6 @@
 #include <qpointarray.h>
 #include <qpainter.h>
 
-#if 0
 
 extern QPixmap                 * g_pIccMemBuffer;
 
