@@ -29,10 +29,17 @@
 #include "kvi_frame.h"
 #include "kvi_ircview.h"
 #include "kvi_qstring.h"
+#include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
-
+#ifdef COMPILE_USE_QT4
+#include <Q3Accel>
+#include <Q3ValueList>
+#include <Q3ProgressDialog>
+#else
 #include <qaccel.h>
+#include <qprogressdialog.h> 
+#endif
 #include <qpixmap.h>
 #include <qsplitter.h>
 #include <qtoolbutton.h>
@@ -43,7 +50,8 @@
 #include <qcursor.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
-#include <qprogressdialog.h> 
+
+
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -61,8 +69,11 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 {
 	g_pLogViewWindow = this;
 //	m_pLogViewWidget = new KviLogViewWidget(this);
+	#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+#else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
-	
+#endif
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 	
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
@@ -143,9 +154,16 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	layout->addWidget(w,11,1);
 
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
-	m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
-	
+#ifdef COMPILE_USE_QT4
+	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
+#else
+		m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
+#endif
+#ifdef COMPILE_USE_QT4
+	Q3ValueList<int> li;
+#else
 	QValueList<int> li;
+#endif
 	li.append(110);
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
@@ -155,8 +173,12 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	cacheFileList();
 	setupItemList();
+#ifdef COMPILE_USE_QT4
 
+	Q3Accel *a = new Q3Accel( this );
+#else
 	QAccel *a = new QAccel( this );
+#endif
         a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
                         m_pIrcView,
                         SLOT(toggleToolWidget()) );
@@ -238,10 +260,16 @@ void KviLogViewMDIWindow::setupItemList()
 	QDate toDate   = m_pToDateEdit->date();
 
 	QString textBuffer;
-
+#ifdef COMPILE_USE_QT4
+	Q3ProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
+		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
+                          this, "progress", TRUE );
+#else
 	QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
 		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
                           this, "progress", TRUE );
+#endif
+
 
 	int i=0;
 	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
@@ -426,7 +454,8 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 		{
 			char buff[1025];
 			int len;
-			QCString data;
+			KviQCString data;
+			//QCString data;
 			len=gzread(file,buff,1024);
 			while(len>0)
 			{
