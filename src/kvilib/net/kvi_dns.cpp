@@ -230,7 +230,6 @@ void KviDnsThread::run()
 	bool bIsIpV6Ip = false;
 #endif
 
-	debug(m_szQuery);
 	bool bIsIpV4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery,(struct in_addr *)&(ipv4Addr.sin_addr));
 
 #ifdef COMPILE_IPV6_SUPPORT
