@@ -105,7 +105,11 @@ namespace KviFileUtils
 		QString createdDir;
 
 #ifdef COMPILE_ON_WINDOWS
+#ifdef COMPILE_USE_QT4
+		int idx = dir.indexOf(':');
+#else
 		int idx = dir.find(':');
+#endif
 		if(idx == 1)
 		{
 			createdDir = dir.left(2);
@@ -209,12 +213,20 @@ namespace KviFileUtils
 	{
 #ifdef COMPILE_ON_WINDOWS
 		szPath.replace('/',"\\");
+#ifdef COMPILE_USE_QT4
+		szPath.replace("\\\\","\\");
+#else
 		while(szPath.find("\\\\") != -1)szPath.replace("\\\\","\\");
+#endif
 		// FIXME: Use the default drive here ?
 		if(szPath.startsWith("\\"))szPath.prepend("C:");
 #else
 		szPath.replace('\\',"/");
+#ifdef COMPILE_USE_QT4
+		szPath.replace("//","/");
+#else
 		while(KviQString::find(szPath,"//") != -1)szPath.replace("//","/");
+#endif
 		// deal with windows paths
 		if((szPath.length() > 2) && (szPath.at(0) != QChar('/')))
 		{
