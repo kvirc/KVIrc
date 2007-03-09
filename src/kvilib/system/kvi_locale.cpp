@@ -56,107 +56,219 @@ static KviAsciiDict<KviMessageCatalogue> * g_pCatalogueDict       = 0;
 static QTextCodec                        * g_pUtf8TextCodec       = 0;
 
 
-// Code point          1st byte    2nd byte    3rd byte    4th byte
-// ----------          --------    --------    --------    --------
-// U+0000..U+007F      00..7F
-// U+0080..U+07FF      C2..DF      80..BF
-// U+0800..U+0FFF      E0          A0..BF      80..BF
-// U+1000..U+FFFF      E1..EF      80..BF      80..BF
-// U+10000..U+3FFFF    F0          90..BF      80..BF      80..BF
-// U+40000..U+FFFFF    F1..F3      80..BF      80..BF      80..BF
-// U+100000..U+10FFFF  F4          80..8F      80..BF      80..BF
- 
-// The definition of UTF-8 in Annex D of ISO/IEC 10646-1:2000 also
-// allows for the use of five- and six-byte sequences to encode
-// characters that are outside the range of the Unicode character
-// set; those five- and six-byte sequences are illegal for the use
-// of UTF-8 as a transformation of Unicode characters. ISO/IEC 10646
-// does not allow mapping of unpaired surrogates, nor U+FFFE and U+FFFF
-// (but it does allow other noncharacters).
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// The following code was extracted and adapted from gutf8.c 
+// from the GNU GLIB2 package.
+//
+// gutf8.c - Operations on UTF-8 strings.
+//
+// Copyright (C) 1999 Tom Tromey
+// Copyright (C) 2000 Red Hat, Inc.
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// At the moment we support only 2 byte unicode and thus 5 and 6 byte
-// sequences are treated as NON valid.
+typedef char gchar;
+typedef unsigned char guchar;
+typedef signed int gssize;
+typedef unsigned int gunichar;
 
-static bool may_be_utf8(const unsigned char * p)
+
+
+#define UNICODE_VALID(Char)                  \
+    ((Char) < 0x110000 &&                    \
+    (((Char) & 0xFFFFF800) != 0xD800) &&     \
+    ((Char) < 0xFDD0 || (Char) > 0xFDEF) &&  \
+    ((Char) & 0xFFFE) != 0xFFFE)
+
+#define CONTINUATION_CHAR                            \
+   if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
+     goto error;                                     \
+     val <<= 6;                                      \
+     val |= (*(guchar *)p) & 0x3f;
+
+
+static const char *
+fast_validate (const char *str)
+
 {
-	while(*p)
-	{
-		if(*p < 0x80)
-		{
-			p++;
-		} else if((*p & 0xe0) == 0xc0)
-		{
-			// 2 bytes encoding
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-		} else if((*p & 0xf0) == 0xe0)
-		{
-			// 3 bytes encoding
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-		} else if((*p & 0xf8) == 0xf0)
-		{
-			// 4 bytes encoding
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-			if(*p < 0x80)return false; // error
-			p++;
-		} else {
-			// treat as non valid
-			return false;
-		}
-	}
-	return true;
+  gunichar val = 0;
+  gunichar min = 0;
+  const gchar *p;
+
+  for (p = str; *p; p++)
+    {
+      if (*(guchar *)p < 128)
+        /* done */;
+      else
+        {
+          const gchar *last;
+
+          last = p;
+          if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+            {
+              if ((*(guchar *)p & 0x1e) == 0)
+                goto error;
+              p++;
+              if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+                goto error;
+            }
+          else
+            {
+              if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+                {
+                  min = (1 << 11);
+                  val = *(guchar *)p & 0x0f;
+                  goto TWO_REMAINING;
+                }
+              else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+                {
+                  min = (1 << 16);
+                  val = *(guchar *)p & 0x07;
+                }
+              else
+                goto error;
+
+              p++;
+              CONTINUATION_CHAR;
+            TWO_REMAINING:
+              p++;
+              CONTINUATION_CHAR;
+              p++;
+              CONTINUATION_CHAR;
+
+              if (val < min)
+                goto error;
+
+              if (!UNICODE_VALID(val))
+                goto error;
+            }
+
+          continue;
+
+        error:
+          return last;
+        }
+    }
+
+  return p;
 }
 
-static bool may_be_utf8(const unsigned char * p,int len)
+static const gchar *
+fast_validate_len (const char *str,
+                   gssize      max_len)
+
 {
-	if(!p)return false;
-	while(*p && (len > 0))
-	{
-		if(*p < 0x80)
-		{
-			p++;
-			len--;
-		} else if((*p & 0xe0) == 0xc0)
-		{
-			// 2 bytes encoding
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-		} else if((*p & 0xf0) == 0xe0)
-		{
-			// 3 bytes encoding
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-		} else if((*p & 0xf8) == 0xf0)
-		{
-			// 4 bytes encoding
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-			if((*p < 0x80) || (!len))return false; // error
-			p++; len--;
-		} else {
-			// treat as non valid
-			return false;
-		}
-	}
-	return true;
+  gunichar val = 0;
+  gunichar min = 0;
+  const gchar *p;
+
+  for (p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
+    {
+      if (*(guchar *)p < 128)
+        /* done */;
+      else
+        {
+          const gchar *last;
+
+          last = p;
+          if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+            {
+              if (max_len >= 0 && max_len - (p - str) < 2)
+                goto error;
+
+              if ((*(guchar *)p & 0x1e) == 0)
+                goto error;
+              p++;
+              if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+                goto error;
+            }
+          else
+            {
+              if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+                {
+                  if (max_len >= 0 && max_len - (p - str) < 3)
+                    goto error;
+
+                  min = (1 << 11);
+                  val = *(guchar *)p & 0x0f;
+                  goto TWO_REMAINING;
+                }
+              else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+                {
+                  if (max_len >= 0 && max_len - (p - str) < 4)
+                    goto error;
+
+                  min = (1 << 16);
+                  val = *(guchar *)p & 0x07;
+                }
+              else
+                goto error;
+
+              p++;
+              CONTINUATION_CHAR;
+            TWO_REMAINING:
+              p++;
+              CONTINUATION_CHAR;
+              p++;
+              CONTINUATION_CHAR;
+
+              if (val < min)
+                goto error;
+              if (!UNICODE_VALID(val))
+                goto error;
+            }
+
+          continue;
+
+        error:
+          return last;
+        }
+    }
+
+  return p;
 }
 
+static bool g_utf8_validate (const char   *str,
+                                gssize        max_len,
+                                const gchar **end)
+
+{
+  const gchar *p;
+
+  if (max_len < 0)
+    p = fast_validate (str);
+  else
+    p = fast_validate_len (str, max_len);
+
+  if (end)
+    *end = p;
+
+  if ((max_len >= 0 && p != str + max_len) ||
+      (max_len < 0 && *p != '\0'))
+    return false;
+  else
+    return true;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+//   End of gutf8.c
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 class KviSmartTextCodec : public QTextCodec
@@ -204,7 +316,7 @@ protected:
 	}
 	virtual QString convertToUnicode(const char * chars,int len,ConverterState * state) const
 	{
-		if(may_be_utf8((const unsigned char *)chars,len))return g_pUtf8TextCodec->toUnicode(chars,len,state);
+		if(g_utf8_validate(chars,len,NULL))return g_pUtf8TextCodec->toUnicode(chars,len,state);
 		return m_pRecvCodec->toUnicode(chars,len,state);
 	}
 #else
@@ -217,32 +329,32 @@ public:
 	virtual QCString fromUnicode (const QString & uc,int & lenInOut) const { return m_pSendCodec->fromUnicode(uc,lenInOut); };
 	QString toUnicode(const char * chars) const
 	{
-		if(may_be_utf8((const unsigned char *)chars))return g_pUtf8TextCodec->toUnicode(chars);
+		if(g_utf8_validate(chars,-1,NULL))return g_pUtf8TextCodec->toUnicode(chars);
 		return m_pRecvCodec->toUnicode(chars);
 	};
 	virtual QString toUnicode(const char * chars,int len) const
 	{
-		if(may_be_utf8((const unsigned char *)chars,len))return g_pUtf8TextCodec->toUnicode(chars,len);
+		if(g_utf8_validate(chars,len,NULL))return g_pUtf8TextCodec->toUnicode(chars,len);
 		return m_pRecvCodec->toUnicode(chars,len);
 	};
 	QString toUnicode(const QByteArray & a,int len) const
 	{
-		if(may_be_utf8((const unsigned char *)(a.data()),len))return g_pUtf8TextCodec->toUnicode(a,len);
+		if(g_utf8_validate(a.data(),len,NULL))return g_pUtf8TextCodec->toUnicode(a,len);
 		return m_pRecvCodec->toUnicode(a,len);
 	};
 	QString toUnicode(const QByteArray & a) const
 	{
-		if(may_be_utf8((const unsigned char *)(a.data()),a.size()))return g_pUtf8TextCodec->toUnicode(a);
+		if(g_utf8_validate(a.data(),a.size(),NULL))return g_pUtf8TextCodec->toUnicode(a);
 		return m_pRecvCodec->toUnicode(a);
 	};
 	QString toUnicode(const QCString & a,int len) const
 	{
-		if(may_be_utf8((const unsigned char *)(a.data()),len))return g_pUtf8TextCodec->toUnicode(a,len);
+		if(g_utf8_validate(a.data(),len,NULL))return g_pUtf8TextCodec->toUnicode(a,len);
 		return m_pRecvCodec->toUnicode(a,len);
 	};
 	QString toUnicode(const QCString & a) const
 	{
-		if(may_be_utf8((const unsigned char *)(a.data())))return g_pUtf8TextCodec->toUnicode(a);
+		if(g_utf8_validate(a.data(),-1,NULL))return g_pUtf8TextCodec->toUnicode(a);
 		return m_pRecvCodec->toUnicode(a);
 	};
 
