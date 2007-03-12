@@ -69,6 +69,9 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG)));
 	setCaption(capt);
+
+	l->setActiveWindow();
+	l->setFocus();
 }
 
 KviDccAcceptBox::~KviDccAcceptBox()
