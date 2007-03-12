@@ -642,8 +642,14 @@ void KviWindow::saveProperties(KviConfig *cfg)
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
 	cfg->writeEntry(szKey,szCodec);
-	if(m_pInput) cfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
-	/*if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
+	if(m_pInput) {
+		cfg->writeEntry("inputToolButtonsHidden",m_pInput->isButtonsHidden());
+		cfg->writeEntry("commandLineIsUserFriendly",m_pInput->isUserFriendly());
+	}
+
+	//
+	
+		/*if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
 		if(m_pIrcView->isLogging())
 			cfg->writeEntry("LoggingEnabled",m_pIrcView->isLogging());*/
 }
@@ -653,7 +659,10 @@ void KviWindow::loadProperties(KviConfig *cfg)
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
 	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::empty).utf8().data());
-	if(m_pInput) m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
+	if(m_pInput) {
+		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
+		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));
+	}
 /*	if(m_pIrcView && m_iType==KVI_WINDOW_TYPE_CHANNEL)
 	{
 		bool bEnableLogs=cfg->readBoolEntry("LoggingEnabled",0);
