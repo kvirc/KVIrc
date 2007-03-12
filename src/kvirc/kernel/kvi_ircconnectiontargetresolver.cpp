@@ -193,7 +193,9 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Using cached proxy IP address (%s)"),
 				m_pTarget->proxy()->m_szIp.ptr());
-		if(m_pTarget->proxy()->protocol() != KviProxy::Http) lookupServerHostname();
+		if(m_pTarget->proxy()->protocol() != KviProxy::Http 
+			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5) 
+				lookupServerHostname();
 		else terminate(Success,KviError_success);
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
@@ -209,7 +211,8 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		if(bValidIp)
 		{
 			m_pTarget->proxy()->m_szIp=m_pTarget->proxy()->m_szHostname;
-			if(m_pTarget->proxy()->protocol() != KviProxy::Http) 
+			if(m_pTarget->proxy()->protocol() != KviProxy::Http &&
+				m_pTarget->proxy()->protocol() != KviProxy::Socks5) 
 			{
 				lookupServerHostname();
 			} else {
@@ -287,7 +290,8 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 	m_pProxyDns = 0;
 	if(m_pTarget->proxy())
 	{
-		if(m_pTarget->proxy()->protocol() == KviProxy::Http) 
+		if(m_pTarget->proxy()->protocol() == KviProxy::Http
+			|| m_pTarget->proxy()->protocol() == KviProxy::Socks5) 
 		{
 			terminate(Success,KviError_success);
 			return;

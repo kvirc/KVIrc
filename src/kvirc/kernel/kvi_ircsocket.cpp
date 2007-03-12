@@ -259,7 +259,9 @@ int KviIrcSocket::startConnection(KviIrcServer *srv,KviProxy * prx,const char * 
 
 	bool bTargetIpV6 = false;
 	bool bNeedServerIp = !prx;
-	if(prx) bNeedServerIp = (prx->protocol() != KviProxy::Http );
+	if(prx) bNeedServerIp = (
+		prx->protocol() != KviProxy::Http && prx->protocol() != KviProxy::Socks5
+		);
 	
 	// We're going to check the addresses now
 
@@ -751,7 +753,7 @@ void KviIrcSocket::proxyLoginV5()
 	//
 
 	if(_OUTPUT_VERBOSE)
-		outputProxyMessage(__tr2qs("Using SOCKSV5 protocol."));
+		outputProxyMessage(__tr2qs("Using SOCKSv5 protocol."));
 
 	m_pProxy->normalizeUserAndPass();
 	// the protocol does not specify the "userid" format...
@@ -874,15 +876,37 @@ void KviIrcSocket::proxySendTargetDataV5()
 	//             o  X'04'
 	//
 	//   The address is a version-6 IP address, with a length of 16 octets.
-	int bufLen = m_pIrcServer->isIpV6() ? 22 : 10;
+	bool bRemoteDns=!(
+		
+		(KviNetUtils::isValidStringIp(m_pIrcServer->ip()) 
+		|| KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip()))
+
+		&& m_pIrcServer->cacheIp()
+		);
+	int bufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().utf8().length() + 2
+		: (m_pIrcServer->isIpV6() ? 22 : 10);
 	char * bufToSend = (char *)kvi_malloc(sizeof(char) * bufLen);
 	bufToSend[0]=(unsigned char)5;           //Proto 5
 	bufToSend[1]=(unsigned char)1;           //CONNECT
 	bufToSend[2]=(unsigned char)0;           //RSV
-	bufToSend[3]=(unsigned char)m_pIrcServer->isIpV6() ? 4 : 1; // IPV6 : IPV4
-
-	if(m_pIrcServer->isIpV6())
+	
+	if(bRemoteDns)
 	{
+		bRemoteDns=true;
+		bufToSend[3]=3;
+		bufToSend[4]=m_pIrcServer->hostName().utf8().length();		
+	} else {
+		bufToSend[3]=(unsigned char)m_pIrcServer->isIpV6() ? 4 : 1; // IPV6 : IPV4
+	}
+
+	if(bRemoteDns)
+	{
+		kvi_memmove((void *)(bufToSend + 5),
+			(void *)(m_pIrcServer->hostName().utf8().data()),
+			m_pIrcServer->hostName().utf8().length());
+		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
+		kvi_memmove((void *)(bufToSend + 4 + 1 + m_pIrcServer->hostName().utf8().length()),(void *)&port,2);
+	} else if(m_pIrcServer->isIpV6()) {
 #ifdef COMPILE_IPV6_SUPPORT
 		struct in6_addr ircInAddr;
 
