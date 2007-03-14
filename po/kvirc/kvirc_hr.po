@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: kvirc_hr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-06 23:51+0100\n"
-"PO-Revision-Date: 2007-03-10 20:19+0100\n"
-"Last-Translator: SpeedyGhost <SpeedyGhost@localhost.localdomain>\n"
+"PO-Revision-Date: 2007-03-13 16:43+0100\n"
+"Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,30 +101,30 @@ msgstr "Greška pri čitanju"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:324
 msgid "Packaging file %Q"
-msgstr ""
+msgstr "Pakiranje datoteke %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:332
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:779
 msgid "Failed to open a source file for reading"
-msgstr ""
+msgstr "Greška pri otvaranju izvor-datoteke za čitanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:383
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:817
 msgid "Compression library initialization error"
-msgstr ""
+msgstr "Inicijalizacijska greška kompresijske biblioteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:394
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:828
 msgid "Compression library error"
-msgstr ""
+msgstr "Greška kompresijske biblioteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:465
 msgid "Compression library internal error"
-msgstr ""
+msgstr "Interna greška kompresijske biblioteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:485
 msgid "Error while compressing a file stream"
-msgstr ""
+msgstr "Greška pri kompresiji niza datoteka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:526
 msgid "Creating package..."
@@ -150,7 +150,7 @@ msgstr "Zapisivanje podataka paketa"
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:620
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Internal error"
-msgstr ""
+msgstr "Interna greška"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:659
 msgid "The file specified is not a valid KVIrc package"
@@ -176,7 +176,7 @@ msgstr "Ne mogu otvoriti datoteku za čitanje"
 msgid ""
 "The package contains compressed data but this executable does not support "
 "compression"
-msgstr ""
+msgstr "Ovaj paket sadrži kompresirane podatke ali ova izvršna datoteka ne podržava kompresiju"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:771
 msgid "Failed to create the target directory"
@@ -188,7 +188,7 @@ msgstr "Raspakiravanje datoteke %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:916
 msgid "Error in compressed file stream"
-msgstr ""
+msgstr "Greška u kompresiji niza datoteka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/file/kvi_packagefile.cpp:990
 msgid "Reading package..."
@@ -383,11 +383,11 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/objects/class_socket.cpp:582
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/objects/class_socket.cpp:617
 msgid "Another connection in progress"
-msgstr ""
+msgstr "Oduga konekcija se obrađuje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:88
 msgid "Invalid IP address"
-msgstr ""
+msgstr "Neispravna IP adresa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:89
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/objects/class_socket.cpp:677
@@ -408,7 +408,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:93
 msgid "Connection refused"
-msgstr ""
+msgstr "Konekcija odbijena"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:94
 msgid "Kernel networking panic"
@@ -416,11 +416,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:95
 msgid "Connection timed out"
-msgstr ""
+msgstr "Konekcija istekla"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:96
 msgid "Network is unreachable"
-msgstr ""
+msgstr "Mreža je nedostupna"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:97
 msgid "Broken pipe"
@@ -428,7 +428,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:98
 msgid "Invalid proxy address"
-msgstr ""
+msgstr "Neispravna proxy adresa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:99
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1075
@@ -438,11 +438,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Invalid irc context id"
-msgstr ""
+msgstr "Neispravan irc kontekstni id"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:101
 msgid "Error in loading module"
-msgstr ""
+msgstr "Greška u učitavanju modula"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:102
 msgid "No such module command"
@@ -478,11 +478,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:110
 msgid "Invalid left operand"
-msgstr ""
+msgstr "Neispravan lijevi operand"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:111
 msgid "Not enough parameters"
-msgstr ""
+msgstr "Nema dovoljno parametara"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:112
 msgid "Integer parameter expected"
@@ -490,11 +490,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:113
 msgid "Invalid parameter"
-msgstr ""
+msgstr "Neispravan parametar"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:114
 msgid "No such file"
-msgstr ""
+msgstr "Nema takve datoteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:115
 msgid "Open parenthesis expected"
@@ -502,7 +502,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:116
 msgid "Open brace expected"
-msgstr ""
+msgstr "Očekivana otvorena zagrada"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:117
 msgid "Can't kill a builtin class"
@@ -514,95 +514,95 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:119
 msgid "Unrecognized proxy reply"
-msgstr ""
+msgstr "Proxy odgovor nije prepoznat"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:120
 msgid "Proxy response: auth failed: access denied"
-msgstr ""
+msgstr "Proxy odgovor: auth neuspješan: pristup odbijen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:121
 msgid "Proxy response: No acceptable auth method: request rejected"
-msgstr ""
+msgstr "Proxy odgovor: Nema prihvatljive auth metode: zahtjev odbijen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:122
 msgid "Proxy response: request failed"
-msgstr ""
+msgstr "Proxy odgovor: zahtjev neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:123
 msgid "Proxy response: ident failed"
-msgstr ""
+msgstr "Proxy odgovor: ident neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:124
 msgid "Proxy response: ident not matching"
-msgstr ""
+msgstr "Proxy odgovor: ident se ne podudara"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:125
 msgid "Proxy response: general SOCKS failure"
-msgstr ""
+msgstr "Proxy odgovor: obična SOCKS greška"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:126
 msgid "Proxy response: connection not allowed"
-msgstr ""
+msgstr "Proxy odgovor: konekcija nije dopuštena"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:127
 msgid "Proxy response: network unreachable"
-msgstr ""
+msgstr "Proxy odgovor: mreža nedostupna"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:128
 msgid "Proxy response: host unreachable"
-msgstr ""
+msgstr "Proxy odgovor: udaljeno računalo nedostupno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:129
 msgid "Proxy response: connection refused"
-msgstr ""
+msgstr "Proxy odgovor: konekcija odbijena"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:130
 msgid "Proxy response: TTL expired"
-msgstr ""
+msgstr "Proxy odgovor: TTL istekao"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:131
 msgid "Proxy response: command not supported"
-msgstr ""
+msgstr "Proxy odgovor: komanda nije podržana"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:132
 msgid "Proxy response: address type not supported"
-msgstr ""
+msgstr "Proxy odgovor: adresna vrsta nije podržana"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:133
 msgid "Proxy response: invalid address"
-msgstr ""
+msgstr "Proxy odgovor: neispravna adresa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:134
 msgid "Invalid port number"
-msgstr ""
+msgstr "Neispravan broj porta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:135
 msgid "Socket not connected"
-msgstr ""
+msgstr "Socket nije spojen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:136
 msgid "Insufficient resources to complete the operation"
-msgstr ""
+msgstr "Nedovoljno resursa za dovršavanje operacije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:137
 msgid "Can't setup a listening socket : bind failed"
-msgstr ""
+msgstr "Ne mogu postaviti slušni socket : bind nesupjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:138
 msgid "Can't resolve the localhost name"
-msgstr ""
+msgstr "Ne mogu riješiti ime localhosta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:139
 msgid "Unsupported image format"
-msgstr ""
+msgstr "Nepodržan format slike"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:140
 msgid "Can't open file for appending"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku za dodavanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:142
 msgid "File I/O error"
-msgstr ""
+msgstr "Datotečna I/O greška"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:143
 msgid "Acknowledge error"
@@ -610,11 +610,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:145
 msgid "Can't send a zero-size file"
-msgstr ""
+msgstr "Ne mogu poslati datoteku 0-te veličine"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:146
 msgid "Missing popup name"
-msgstr ""
+msgstr "Nedostaje ime popup-a"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:147
 msgid "'item', 'popup', 'label' or 'separator' keyword expected"
@@ -626,11 +626,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:149
 msgid "UNUSED"
-msgstr ""
+msgstr "NEKORIŠTENO"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:150
 msgid "Feature not available"
-msgstr ""
+msgstr "Opcija nije dostupna"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:151
 msgid "Unexpected characters in array index"
@@ -638,7 +638,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:152
 msgid "Unexpected end in expression"
-msgstr ""
+msgstr "Neočekivan kraj izraza"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:153
 msgid "Unexpected end in array index"
@@ -654,15 +654,15 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:156
 msgid "Access denied"
-msgstr ""
+msgstr "Pristup odbijen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:157
 msgid "Address already in use"
-msgstr ""
+msgstr "Adresa se već koristi"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:158
 msgid "Can't assign the requested address"
-msgstr ""
+msgstr "Ne mogu dodijeliti zatraženu adresu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:159
 msgid "Connection reset by peer"
@@ -670,11 +670,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:160
 msgid "Host unreachable (no route to host)"
-msgstr ""
+msgstr "Host nedostupan (nema putanje do hosta)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:161
 msgid "Variable expected"
-msgstr ""
+msgstr "Očekivana varijabla"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/core/kvi_error.cpp:162
 msgid "Invalid array index: positive integer expected"
@@ -722,15 +722,15 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_theme.cpp:89
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_topicw.cpp:127
 msgid "Unknown"
-msgstr ""
+msgstr "Nepoznato"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:71
 msgid "Aborted"
-msgstr ""
+msgstr "Prekinuto"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:96
 msgid "No request"
-msgstr ""
+msgstr "Nema zahtjeva"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:141
 msgid "No filename specified for the \"StoreToFile\" processing type"
@@ -738,24 +738,24 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:160
 msgid "Invalid URL: Missing hostname"
-msgstr ""
+msgstr "Neispravan URL: Nedostaje ime hosta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:167
 msgid "Unsupported protocol %1"
-msgstr ""
+msgstr "Nepodržan protokol %1"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:189
 msgid "Unable to start the DNS lookup"
-msgstr ""
+msgstr "Nemoguće pokrenuti DNS potragu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:194
 #, c-format
 msgid "Looking up host %s"
-msgstr ""
+msgstr "Traženje hosta %s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:210
 msgid "Host %s resolved to %Q"
-msgstr ""
+msgstr "Host %s pronađen za %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:246
 msgid "Unable to start the request slave thread"
@@ -763,64 +763,64 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:251
 msgid "Contacting host %Q on port %u"
-msgstr ""
+msgstr "Kontaktiram host %Q na portu %u"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:271
 msgid "Connection established, sending request"
-msgstr ""
+msgstr "Konekcija ostvarena, šaljem zahtjev"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:429
 msgid "Failed to rename the existing file, please rename manually and retry"
-msgstr ""
+msgstr "Neuspjeh pri preimenovanju postojeće datoteke, molim preimenujte ručno i pokušajte ponovno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:447
 msgid "Can't open file \"%Q\" for writing"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku \"%Q\" za zapisivanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:497
 #, c-format
 msgid "Invalid HTTP response: %s"
-msgstr ""
+msgstr "Neispravan HTTP odgovor: %s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:503
 #, c-format
 msgid "Received HTTP response: %s"
-msgstr ""
+msgstr "Primljen HTTP odgovor: %s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:628
 msgid "Stream exceeding maximum length"
-msgstr ""
+msgstr "Niz prekoračio maksimalnu duljinu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:661
 msgid "Header too long: exceeded 4096 bytes"
-msgstr ""
+msgstr "Zaglavlje predugačko: prekoračeno 4096 bajtova"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:710
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:852
 msgid "Stream exceeded expected length"
-msgstr ""
+msgstr "Niz prekoračio očekivanu duljinu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:798
 msgid "Protocol error: invalid chunk size"
-msgstr ""
+msgstr "Greška u protokolu: neispravna veličina bloka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:818
 msgid "Chunk header too long: exceeded 4096 bytes"
-msgstr ""
+msgstr "Zaglavlje bloka preveliko: prekoračeno 4086 bajtova"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:987
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1193
 msgid "Operation timed out"
-msgstr ""
+msgstr "Operacija istekla"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1003
 msgid "Unexpected SSL error"
-msgstr ""
+msgstr "Neočekivana SSL pogreška"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1013
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/objects/class_socket.cpp:892
 msgid "Failed to create the socket"
-msgstr ""
+msgstr "Neuspjeh u kreiranju socketa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1016
 msgid "Failed to enter non blocking mode"
@@ -828,15 +828,15 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1021
 msgid "Invalid target address"
-msgstr ""
+msgstr "Neispravna adresa odredišta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1056
 msgid "Failed to initialize the SSL context"
-msgstr ""
+msgstr "Neuspjelo inicijaliziranje SSL konteksta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1058
 msgid "Failed to initialize the SSL connection"
-msgstr ""
+msgstr "Neuspjelo inicijaliziranje SSL konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1087
 msgid "Unrecoverable SSL error during handshake"
@@ -844,7 +844,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1272
 msgid "Operation timed out (while selecting for read)"
-msgstr ""
+msgstr "Operacija istekla (pri odabiru za čitanje)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/net/kvi_http.cpp:1382
 msgid "This KVIrc executable has no SSL support"
@@ -852,42 +852,42 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:104
 msgid "- d -- h -- m -- s"
-msgstr ""
+msgstr "- d -- h -- m -- s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:111
 #, c-format
 msgid "%u h %u m %u s"
-msgstr ""
+msgstr "%u h %u m %u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:113
 #, c-format
 msgid "%u h %u%u m %u%u s"
-msgstr ""
+msgstr "%u h %u%u m %u%u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:118
 #, c-format
 msgid "%u m %u s"
-msgstr ""
+msgstr "%u m %u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:120
 #, c-format
 msgid "%u m %u%u s"
-msgstr ""
+msgstr "%u m %u%u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:122
 #, c-format
 msgid "%u s"
-msgstr ""
+msgstr "%u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:127
 #, c-format
 msgid "%u d %u h %u m %u s"
-msgstr ""
+msgstr "%u d %u h %u m %u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_time.cpp:129
 #, c-format
 msgid "%u d %u%u h %u%u m %u%u s"
-msgstr ""
+msgstr "%u d %u%u h %u%u m %u%u s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1007
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:173
@@ -990,19 +990,19 @@ msgstr "Novi Direktorij"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1034
 msgid "Bookmarks"
-msgstr ""
+msgstr "Knjižne oznake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1035
 msgid "Add Bookmark"
-msgstr ""
+msgstr "Dodaj Knjižnu Oznaku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Edit Bookmarks"
-msgstr ""
+msgstr "Ure&edi Knjižnu Oznaku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1037
 msgid "New Bookmark Folder..."
-msgstr ""
+msgstr "Nova Mapa Knjižnih Oznaka..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1038
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/addon/managementdialog.cpp:221
@@ -1051,7 +1051,7 @@ msgstr "Prikaži Skrivene Datoteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1049
 msgid "Show Quick Access Navigation Panel"
-msgstr ""
+msgstr "Prikaži brzi pristup Navigacijskom panelu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvilib/system/kvi_locale.cpp:1050
 msgid "Show Preview"
@@ -1161,12 +1161,12 @@ msgstr "Ulazni promet"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/my/libkvimy.cpp:44
 msgid "This window has no associated irc context"
-msgstr ""
+msgstr "Ovaj prozor nema pridruženi irc kontekst"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/my/libkvimy.cpp:49
 #, c-format
 msgid "No such irc context (%d)"
-msgstr ""
+msgstr "Nema takvog irc konteksta (%d)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/my/libkvimy.cpp:146
 msgid "Global idle timer must be started before using $my.globalIdle function"
@@ -1260,7 +1260,7 @@ msgstr "Znate li..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/tip/libkvitip.cpp:220
 msgid "<b>Can't find any tip... :(</b>"
-msgstr ""
+msgstr "<b>Ne mogu pronaći nijedan savjet... :(</b>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:86
 msgid "Raw Event"
@@ -1309,11 +1309,11 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:181
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/popupeditor/popupeditor.cpp:1288
 msgid "unnamed"
-msgstr ""
+msgstr "neimenovan"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:218
 msgid "New Raw Event"
-msgstr ""
+msgstr "Novi Raw Događaj"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:218
 msgid "Enter the numeric code of the message (0-999)"
@@ -1322,7 +1322,7 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:249
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:214
 msgid "default"
-msgstr ""
+msgstr "standardno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:397
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:436
@@ -1336,7 +1336,7 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/reguser/dialog.cpp:687
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/reguser/dialog.cpp:795
 msgid "Choose a Filename - KVIrc"
-msgstr ""
+msgstr "Odaberi ime Datoteke - KVIrc"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:404
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:440
@@ -1381,11 +1381,11 @@ msgstr "Prihv&ati"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/raweditor/raweditor.cpp:511
 msgid "Raw Editor"
-msgstr ""
+msgstr "Raw Editor"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:31
 msgid "Torrent Client"
-msgstr ""
+msgstr "Torrent Klijent"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:74
 msgid "< &Back"
@@ -1410,15 +1410,15 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:142
 msgid "Welcome to KVIrc"
-msgstr ""
+msgstr "Dobrodošli u KVIrc"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:145
 msgid "Make KVIrc default IRC client"
-msgstr ""
+msgstr "Koristi KVIrc kao zadani IRC klijent"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:149
 msgid "Create desktop shortcut"
-msgstr ""
+msgstr "Kreiraj ikonu na desktopu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:162
 msgid ""
@@ -1443,7 +1443,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:190
 msgid "KVIrc Setup"
-msgstr ""
+msgstr "KVIrc Instalacija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:200
 msgid ""
@@ -1458,15 +1458,15 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:210
 msgid "Application Folders"
-msgstr ""
+msgstr "Mape Aplikacije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:214
 msgid "Store configuration in folder"
-msgstr ""
+msgstr "Pohrani konfiguraciju u mapu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:215
 msgid "Use settings folder from previous installation"
-msgstr ""
+msgstr "Koristi mapu s postavkama od prethodne verzije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:222
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:236
@@ -1478,23 +1478,23 @@ msgstr "&Pregledaj..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:227
 msgid "Use new settings folder"
-msgstr ""
+msgstr "Koristi novu mapu s postavkama"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:231
 msgid "Settings folder:"
-msgstr ""
+msgstr "Mapa s postavkama:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:257
 msgid "Download files to folder:"
-msgstr ""
+msgstr "Preuzimanje datoteka u mapu (download mapa):"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:280
 msgid "All settings in  shared program folder (portable)"
-msgstr ""
+msgstr "Sve postavke u dijeljenoj programskoj mapi (za pokretanje na više računala bez instalacije, s istim postavkama)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:283
 msgid "Restore from backup archive"
-msgstr ""
+msgstr "Vrati iz backup arhive"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:300
 msgid ""
@@ -1505,123 +1505,125 @@ msgid ""
 "be able to change it later in the Identity properties, or with the /NICK "
 "command."
 msgstr ""
+"Molim odaberite Nadimak.<br><br>Vaš nadimak je ime prema kojem će vas ostal[i/e] IRC korisnic[i/e] prepoznavati. Ne može sadržavati razmake ili interpunkcijske znakove. Neke IRC.mreže će skratiti vaš nadimak ako je duži od 32 znaka<br><br>Ako se ne možete odlučiti za nadimak, unesite prvi koji vam padne na pamet. Možete ga naknadno promijeniti u Opcijama identiteta, ili s /NICK "
+"naredbom."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:314
 msgid "Basic Properties"
-msgstr ""
+msgstr "Osnovne Opcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:316
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/reguser/wizard.cpp:219
 msgid "Nickname:"
-msgstr ""
+msgstr "Nadimak:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:322
 msgid "Real name:"
-msgstr ""
+msgstr "Stvarno ime:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:326
 msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
+msgstr "Ovo polje je neobavezno i pojavljivati će se kao dio CTCP USERINFO odgovora"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:331
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:336
 msgid "Age:"
-msgstr ""
+msgstr "Dob:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:341
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:367
 msgid "Unspecified"
-msgstr ""
+msgstr "Neodređeno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:362
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:364
 msgid "Gender:"
-msgstr ""
+msgstr "Spol:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:368
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:366
 msgid "Female"
-msgstr ""
+msgstr "Žensko"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:369
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:366
 msgid "Male"
-msgstr ""
+msgstr "Muško"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:380
 msgid "Location:"
-msgstr ""
+msgstr "Lokacija:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:383
 msgid "Languages:"
-msgstr ""
+msgstr "Jezici:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:386
 msgid "Other:"
-msgstr ""
+msgstr "Ostalo:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:389
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/reguser/edituser.cpp:384
 msgid "Identity"
-msgstr ""
+msgstr "Identitet"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:465
 msgid "Now you should specify an IRC server, to be connected to it"
-msgstr ""
+msgstr "Sada biste trebali odrediti IRC server da se spojite na njega"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:468
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:490
 msgid "Choose a server to connect"
-msgstr ""
+msgstr "Izbor servera za spajanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:470
 msgid "Choose from built-in server list"
-msgstr ""
+msgstr "Izbor iz ugrađenog popisa servera"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:472
 msgid "Specify server manually"
-msgstr ""
+msgstr "Ručni izbor servera"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:476
 msgid "Server:"
-msgstr ""
+msgstr "Server:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:477
 msgid "Port:"
-msgstr ""
+msgstr "Port:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:480
 msgid "Open irc:// or irc6:// URL"
-msgstr ""
+msgstr "Otvori irc:// ili irc6:// URL"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:482
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:484
 msgid "Use server config"
-msgstr ""
+msgstr "Koristi server konfiguracijsku datoteku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:486
 msgid "Config file:"
-msgstr ""
+msgstr "Konfiguracijska datoteka:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:577
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
-msgstr ""
+msgstr "Odaberi Staru Konfiguracijsku Mapu - KVIrc Instalacija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:586
 msgid "Do not overwrite folder? - KVIrc"
-msgstr ""
+msgstr "Ne prepisati mapu? - KVIrc"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:587
 msgid ""
 "A folder %1 seems to be not a valid KVIrc settings folder.Do you want to use "
 "it anyway?"
-msgstr ""
+msgstr "Mapa %1 nije ispravna KVIrc mapa s postavkama. Želite li ju ipak koristiti?"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:590
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/addon/managementdialog.cpp:337
@@ -1629,7 +1631,7 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:557
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:590
 msgid "&Yes"
-msgstr ""
+msgstr "&Da"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:590
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/addon/managementdialog.cpp:337
@@ -1637,25 +1639,25 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:558
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:591
 msgid "&No"
-msgstr ""
+msgstr "&Ne"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:603
 msgid "Choose a Configuration Folder - KVIrc Setup"
-msgstr ""
+msgstr "Odaberi Konfiguracijsku Mapu - KVIrc Instalacija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:614
 msgid "Choose a Download Folder - KVIrc Setup"
-msgstr ""
+msgstr "Odaberi Download Mapu - KVIrc Instalacija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:783
 msgid "Abort Setup - KVIrc Setup"
-msgstr ""
+msgstr "Prekini Instalaciju - KVIrc Instalacija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:784
 msgid ""
 "You have chosen to abort the setup.<br>KVIrc cannot run until you complete "
 "this procedure.<br><br>Do you really wish to abort?"
-msgstr ""
+msgstr "Odabrali ste prekid instalacijskog postupka.<br>KVIrc se ne može pokrenuti dok ne dovršite ovaj postupak.<br><br>Želite li stvarno prekinuti?"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:815
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/setup/setupwizard.cpp:846
@@ -1664,23 +1666,23 @@ msgid ""
 "Cannot create directory %s.\n"
 "You may not have write permission for that path. Please go back and choose "
 "another directory."
-msgstr ""
+msgstr "Ne mogu kreirati direktorij %s.<br>Možda nemate prava zapisivanja na to odredište. Molim vratite se natrag i odaberite drugi direktorij."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/theme/packthemedialog.cpp:484
 msgid "Package saved succesfully"
-msgstr ""
+msgstr "Paket uspješno pohranjen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwidget.cpp:59
 msgid "Terminal emulator"
-msgstr ""
+msgstr "Terminal emulator"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwidget.cpp:63
 msgid "Close this window"
-msgstr ""
+msgstr "Zatvori ovaj prozor"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwidget.cpp:91
 msgid "Can't create the terminal emulation part"
-msgstr ""
+msgstr "Ne mogu kreirati terminal emulacijski dio"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwidget.cpp:96
 msgid "Can't retrieve the terminal emulation factory"
@@ -1688,25 +1690,25 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwindow.cpp:70
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwindow.cpp:73
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/term/termwindow.cpp:77
 #, c-format
 msgid "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
-msgstr ""
+msgstr "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/libkvilist.cpp:63
 msgid "List window alread open for this IRC context"
-msgstr ""
+msgstr "Popisni prozor je već otvoren za ovaj IRC kontekst"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:195
 msgid "Request List"
-msgstr ""
+msgstr "Zatraži Popis"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:201
 msgid "Stop list download"
-msgstr ""
+msgstr "Zaustavi preuzimanje popisa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:205
 msgid ""
@@ -1715,7 +1717,7 @@ msgid ""
 "masked channel names (*kvirc*) are accepted as parameters, as well as "
 "strings like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or "
 "maximum of users on the channel.</center>"
-msgstr ""
+msgstr "<center><b>/LIST komandni parametri:</b><br>Mnogi serveri prihvaćaju specijalne parametre koji omogućuju filtriranje vraćenih unosa.<br>Obično maskirani kanali (*kvirc*) su prihvaćeni kao parametri, kao i stringovi poput <b>c&lt;n</b> ili <b>c&gt;n</b> gdje <b>n</b> je minimum ili maksimum korisnika u sobi.</center>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:213
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:69
@@ -1734,35 +1736,35 @@ msgstr "Tema"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:256
 msgid "Sent list request, waiting for reply..."
-msgstr ""
+msgstr "Poslan zahtjev za popisom, čekam odgovor..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:259
 msgid "Cannot request list: No active connection"
-msgstr ""
+msgstr "Ne mogu zatražiti popis: Nema aktivne konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:268
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:382
 msgid "Stopping the list download..."
-msgstr ""
+msgstr "Zaustavljanje preuzimanja popisa..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:270
 msgid "Cannot stop list download, no active connection."
-msgstr ""
+msgstr "Ne mogu zaustaviti preuzimanje popisa, nema aktivne konekcije."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:282
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/links/linkswindow.cpp:125
 #, c-format
 msgid "Connected to %s (%s)"
-msgstr ""
+msgstr "Spojen kao %s (%s)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:287
 msgid "List cannot be requested: Not connected to a server"
-msgstr ""
+msgstr "Popis ne može biti zatražen: Bez spoja na server"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:310
 #, c-format
 msgid "Channel List [IRC Context %u]"
-msgstr ""
+msgstr "Popis Soba [IRC Kontekst %u]"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:313
 #, c-format
@@ -1770,6 +1772,8 @@ msgid ""
 "<nobr><font color=\"%s\"><b>Channel List</b></font> <font color=\"%s\">[IRC "
 "Context %u]</font></nobr>"
 msgstr ""
+"<nobr><font color=\"%s\"><b>Popis Soba</b></font> <font color=\"%s\">[IRC "
+"Kontekst %u]</font></nobr>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:320
 #, c-format
@@ -1777,14 +1781,16 @@ msgid ""
 "<nobr><font color=\"%s\"><b>Channel list</b></font> <font color=\"%s\">[IRC "
 "Context %u]</font></nobr>"
 msgstr ""
+"<nobr><font color=\"%s\"><b>Popis Soba</b></font> <font color=\"%s\">[IRC "
+"Kontekst%u]</font></nobr>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:336
 msgid "You cannot export an empty list"
-msgstr ""
+msgstr "Ne možete izvesti prazan popis"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:343
 msgid "Channel list for %Q - %Q"
-msgstr ""
+msgstr "Popis soba za %Q - %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:346
 msgid "Channel list"
@@ -1798,194 +1804,194 @@ msgstr "Odaberi datoteku"
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:349
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:376
 msgid "Configuration files (*.kvc)"
-msgstr ""
+msgstr "Konfiguracijske datoteke (*.kvc)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:417
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/links/linkswindow.cpp:398
 msgid "Reset"
-msgstr ""
+msgstr "Poništi"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:428
 msgid "Channels list download finished"
-msgstr ""
+msgstr "Preuzimanje popisa soba dovršeno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/list/listwindow.cpp:465
 msgid "Processing list: %Q"
-msgstr ""
+msgstr "Obrada popisa: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:77
 msgid "Destinaion file exists: no copy made"
-msgstr ""
+msgstr "Odredišna datoteka postoji: nije napravljena kopija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:82
 msgid "Failed to copy from %Q to %Q"
-msgstr ""
+msgstr "Greška pri kopiranju iz %Q u %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:83
 msgid "Either the source doesn't exist or the destination can not be created"
-msgstr ""
+msgstr "Izvor ne postoji, ili odredište ne može biti kreirano"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:202
 msgid "Failed to write to file %Q: the destination couldn't be opened"
-msgstr ""
+msgstr "Greška pri zapisivanju datoteke %Q: Odredište nije moguće otvoriti"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:243
 msgid "Destination file exists: file not renamed"
-msgstr ""
+msgstr "Odredišna datoteka postoji: datoteka nije preimenovana"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:246
 msgid "Failed to rename %Q to %Q"
-msgstr ""
+msgstr "Greška pri preimenovanju %Q u %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:280
 msgid "Failed to make the directory %Q"
-msgstr ""
+msgstr "Greška pri kreiranju direktorija %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:321
 msgid "Failed to remove the file %Q"
-msgstr ""
+msgstr "Greška pri uklanjanju datoteke %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:364
 msgid "Failed to remove the directory %Q"
-msgstr ""
+msgstr "Greška pri uklanjanju direktorija %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:481
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:627
 msgid "The specified directory does not exist '%Q'"
-msgstr ""
+msgstr "Navedeni direktorij ne postoji '%Q'"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:729
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:823
 msgid "Can't open the file \"%Q\" for reading"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku \"%Q\" za čitanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:745
 msgid "Read error for file %Q"
-msgstr ""
+msgstr "Greška pri čitanju datoteke %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:753
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
-msgstr ""
+msgstr "Greška pri čitanju datoteke %Q (nije bilo moguće čitati zatraženu veličinu u 1000 pokušaja)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/file/libkvifile.cpp:928
 msgid "Can't open the file \"%Q\" for writing"
-msgstr ""
+msgstr "Ne mogu otvoriti datoteku \"%Q\" za pisanje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:103
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:162
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:215
 msgid "Window %Q not found"
-msgstr ""
+msgstr "Prozor %Q nije pronađen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:108
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:167
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:220
 msgid "Missing window id after the 'w' switch"
-msgstr ""
+msgstr "Nedostaje id prozora nakon 'w' switcha"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:121
 msgid "Can't log to file %Q"
-msgstr ""
+msgstr "Ne mogu evidentirati u datoteku %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:123
 msgid "This window has no logging capabilities"
-msgstr ""
+msgstr "Ovaj prozor nema mogućnost evidentiranja"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/log/libkvilog.cpp:275
 msgid "Window with id '%Q' not found, returning empty string"
-msgstr ""
+msgstr "Prozor id-om '%Q' nije pronađen, vraćen prazan string"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:59
 msgid "Drop here the icons from the toolbars to remove them"
-msgstr ""
+msgstr "Spustite ovdje ikone iz alatne traka da biste ih uklonili"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:126
 msgid "ToolBar Properties"
-msgstr ""
+msgstr "Opcije Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:134
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/popupeditor/popupeditor.cpp:90
 msgid "Label"
-msgstr ""
+msgstr "Oznaka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:142
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:158
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:183
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:273
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_optionswidget.cpp:677
 msgid "Advanced..."
-msgstr ""
+msgstr "Dodatno..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:215
 msgid "Please choose the icon for the ToolBar"
-msgstr ""
+msgstr "Molim odaberite ikonu za Alatnu Traku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:241
 msgid "Invalid ToolBar Label"
-msgstr ""
+msgstr "Neispravna Oznaka Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:241
 msgid "The ToolBar Label can't be empty!"
-msgstr ""
+msgstr "Oznaka Alatne Trake ne može biti prazna!"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:254
 msgid "Duplicate ToolBar Id"
-msgstr ""
+msgstr "Dvostruki Id Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:255
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually ?"
-msgstr ""
+msgstr "Navedeni Id Alatne Trake već postoji.<br>Želite li da ga KVIrc dodijeli automatski (tako da se ne podudara s drugom alatnom trakom) ili želite učiniti to ručno?"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:258
 msgid "Manually"
-msgstr ""
+msgstr "Ručno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:258
 msgid "Automatically"
-msgstr ""
+msgstr "Automatski"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:276
 msgid "Hide Advanced"
-msgstr ""
+msgstr "Sakrij Dodatno"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:285
 msgid "Customize Toolbars"
-msgstr ""
+msgstr "Prilagodi Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:294
 msgid "New ToolBar"
-msgstr ""
+msgstr "Nova Alatna Traka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:298
 msgid "Delete ToolBar"
-msgstr ""
+msgstr "Obriši Alatnu Traku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:302
 msgid "Edit ToolBar"
-msgstr ""
+msgstr "Uredi Alatnu Traku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:310
 msgid "Export ToolBar"
-msgstr ""
+msgstr "Izvezi Alatnu Traku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:371
 msgid "Confirm ToolBar Deletion"
-msgstr ""
+msgstr "Potvrdite Brisanje Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:372
 msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr ""
+msgstr "Stvarno želite obrisati alatnu traku \"%1\" ?"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:373
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:398
@@ -1995,7 +2001,7 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app.cpp:772
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_input.cpp:2455
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:374
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:397
@@ -2005,133 +2011,133 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app.cpp:773
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_input.cpp:2454
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:395
 msgid "ToolBar Export"
-msgstr ""
+msgstr "Izvoz Alatne Trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:396
 msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr ""
+msgstr "Želite li da pripadajuće akcije budu izvezene s alatnom trakom?"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:452
 msgid "Unable to write to the toolbar file."
-msgstr ""
+msgstr "Nemoguće zapisati datoteku alatne trake."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:463
 msgid "Please specify the properties for the toolbar \"%1\""
-msgstr ""
+msgstr "Molim odaberite opcije alatne trake \"%1\""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:489
 msgid "Please specify the properties for the new toolbar"
-msgstr ""
+msgstr "Molim odaberite opcije nove alatne trake"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:490
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/toolbareditor/toolbareditor.cpp:491
 msgid "My ToolBar"
-msgstr ""
+msgstr "Moja Alatna Traka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:62
 msgid "Join Channels"
-msgstr ""
+msgstr "Uđi u Sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:78
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/reguser/dialog.cpp:183
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:86
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:96
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:1479
 msgid "&Join"
-msgstr ""
+msgstr "&Uđi"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:108
 msgid "Show this window after connecting"
-msgstr ""
+msgstr "Pokaži ovaj prozor nakon spajanja"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:163
 msgid "Recent Channels"
-msgstr ""
+msgstr "Nedavne Sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:182
 msgid "Registered Channels"
-msgstr ""
+msgstr "Registrirane Sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:63
 msgid "Window with ID '%Q' not found"
-msgstr ""
+msgstr "Prozor s ID '%Q' nije pronađen"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:67
 msgid "The specified window (%Q) is not a channel/query/DCC chat"
-msgstr ""
+msgstr "Navedeni prozor (%Q) nije soba/razgovor/DCC razgovor"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:108
 msgid "File not found or empty"
-msgstr ""
+msgstr "Datoteka nije pronađena ili je prazna"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
-msgstr ""
+msgstr "Ne mogu otvoriti tu datoteku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:122
 msgid "Could not paste file"
-msgstr ""
+msgstr "Ne mogu zalijepiti datoteku"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:218
 #, c-format
 msgid "The specified window (%s) is not a channel/query/dcc"
-msgstr ""
+msgstr "Navedeni prozor (%s) nije soba/razgovor/dcc"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/spaste/libkvispaste.cpp:272
 #, c-format
 msgid "Slow-paste ID:%d Window:%s"
-msgstr ""
+msgstr "Sporo lijepljenje ID:%d Prozor:%s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:62
 msgid "%cCore action: %Q"
-msgstr ""
+msgstr "%cSržna akcija: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:64
 msgid "%cUser action: %Q"
-msgstr ""
+msgstr "%cKorisnička akcija: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
-msgstr ""
+msgstr "Naziv: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:66
 msgid "Category: %Q"
-msgstr ""
+msgstr "Kategorija: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:67
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/addon/libkviaddon.cpp:146
 msgid "Description: %Q"
-msgstr ""
+msgstr "Opis: %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:112
 msgid "The action \"%1\" is disabled"
-msgstr ""
+msgstr "Akcija \"%1\" je onemogućena"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:115
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:161
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:209
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:259
 msgid "The action \"%1\" does not exist"
-msgstr ""
+msgstr "Akcija \"%1\" ne postoji"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:255
 msgid "The action \"%1\" is a core action and cannot be destroyed"
-msgstr ""
+msgstr "Akcija \"%1\" je sržna akcija i ne može biti uništena"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:377
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/addon/libkviaddon.cpp:527
 msgid "Internal error: call a head-shrinker"
-msgstr ""
+msgstr "Interna greška: pozivanje head-shrinkera"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/action/libkviaction.cpp:392
 msgid "The switch -l requires -c"
@@ -2148,132 +2154,132 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:96
 #, c-format
 msgid "%s (%s) (%s:%u)"
-msgstr ""
+msgstr "%s (%s) (%s:%u)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:98
 #, c-format
 msgid "%s (%s)"
-msgstr ""
+msgstr "%s (%s)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:101
 #, c-format
 msgid "%s (%s:%u)"
-msgstr ""
+msgstr "%s (%s:%u)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:103
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:106
 #, c-format
 msgid "[IDENT]: %s"
-msgstr ""
+msgstr "[IDENT]: %s"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:113
 msgid "Shutting down identd service (spontaneous action)"
-msgstr ""
+msgstr "Gašenje identd servisa (spontana akcija)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:118
 msgid "Shutting down identd service (requesetd action)"
-msgstr ""
+msgstr "Gašenje identd servisa (zatražena akcija)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:219
 msgid "Can't start the ident service : socket() failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis : socket() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:225
 msgid "Can't start the ident service : async setting failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident : async postavke neuspjele"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:231
 msgid "Can't enable the ident service : can't setup the listen address"
-msgstr ""
+msgstr "Ne mogu omogućiti ident servis : ne mogu postaviti slušnu adresu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:237
 msgid "Can't start the ident service : bind() failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis : bind() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:243
 msgid "Can't start the ident service : listen() failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis : listen() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:257
 msgid "Can't start the ident service on IpV6 : socket() failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis na IpV6 : socket() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:263
 msgid "Can't start the ident service on IpV6 : async setting failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis na IpV6 : async postavke neuspjele"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:271
 msgid "Can't enable the ident service on IpV6 : can't setup the listen address"
-msgstr ""
+msgstr "Ne mogu omogućiti ident servis na IpV6 : ne mogu postaviti slušnu adresu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:279
 msgid "Can't start the ident service on IpV6 : bind() failed"
-msgstr ""
+msgstr "Ne mogu pokrenuti ident servis na IpV6 : bind() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:288
 msgid "Can't start the ident service on IpV6 : listen() failed"
-msgstr ""
+msgstr "Ne mogu omogućiti ident servis na IpV6() : listen() neuspjeh"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:304
 msgid "Starting identd service (IpV4/V6 on separate namespaces)"
-msgstr ""
+msgstr "Pokretanje identd servisa (IpV4/V6 na odijeljenim prostornim imenima)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:307
 msgid "Starting identd service (IpV4/V6 in IpV6 namespace)"
-msgstr ""
+msgstr "Pokretanje identd servisa (IpV5/V6 na IpV6 prostornom imenu)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:312
 msgid "Starting identd service (IpV4)"
-msgstr ""
+msgstr "Pokretanje identd servisa (IpV4)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:316
 msgid "Service startup (IpV4)"
-msgstr ""
+msgstr "Podizanje servisa (IpV4)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:386
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:406
 msgid "Identd accepting connection"
-msgstr ""
+msgstr "Identd prihvaćanje konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:429
 msgid "Identd socket error : dropping connection"
-msgstr ""
+msgstr "Identd socket greška : izbacivanje konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:434
 msgid "Identd connection closed by remote host"
-msgstr ""
+msgstr "Identd konekcija zatvorena od udaljenog hosta "
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:455
 msgid "Identd processing request"
-msgstr ""
+msgstr "Identd obrada zahtjeva"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:470
 msgid "Empty request (EOT ?)"
-msgstr ""
+msgstr "Prazan zahtjev (EOT ?)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:481
 msgid "Dropping connection (request too long)"
-msgstr ""
+msgstr "Gašenje konekcije (zahtjev predugačak)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/ident/libkviident.cpp:494
 msgid "Timed out while waiting for the request : dropping connection"
-msgstr ""
+msgstr "Isteklo vrijeme pri čekanju zahtjeva : gašenje konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:79
 msgid "Event"
-msgstr ""
+msgstr "Događaj"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:89
 msgid "Edit the event handler name."
-msgstr ""
+msgstr "Uredi ime handlera"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:313
 msgid "none"
-msgstr ""
+msgstr "ništa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/eventeditor/eventeditor.cpp:317
 #, c-format
@@ -4683,7 +4689,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/help/helpwindow.cpp:310
 msgid "Help Browser"
-msgstr ""
+msgstr "Preglednik Pomoći"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/snd/libkvisnd.cpp:598
 msgid "Sound file '%Q' not found"
@@ -8571,7 +8577,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1125
 msgid "Proxy response: "
-msgstr ""
+msgstr "Proxy odgovor:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1136
 msgid "Proxy said something about: \n"
@@ -8602,41 +8608,41 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:142
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:412
 msgid "KVIrc KVS Script"
-msgstr ""
+msgstr "KVIrc KVS Skripta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:174
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:420
 msgid "Run KVS Script"
-msgstr ""
+msgstr "Pokreni KVS Skriptu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:284
 msgid "URL:IRC Protocol"
-msgstr ""
+msgstr "URL:IRC Protokol"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:325
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:383
 msgid "Open with KVIrc"
-msgstr ""
+msgstr "Otvori s KVIrc-om"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:436
 msgid "KVIrc Configuration File"
-msgstr ""
+msgstr "KVIrc Konfiguracijska Datoteka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:453
 msgid "KVIrc Theme Package"
-msgstr ""
+msgstr "KVIrc Paket Teme"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:461
 msgid "Install Theme Package"
-msgstr ""
+msgstr "Instaliraj KVIrc Paket Teme"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:478
 msgid "KVIrc Addon Package"
-msgstr ""
+msgstr "KVIrc Paket Dodatka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:486
 msgid "Install Package"
-msgstr ""
+msgstr "Instaliraj Paket"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:749
 #, c-format
@@ -8667,7 +8673,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_iconmanager.cpp:371
 msgid "Icon Table"
-msgstr ""
+msgstr "Tablica Ikona"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:143
 msgid "Hostname resolution aborted"
@@ -8944,7 +8950,7 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:582
 #, c-format
 msgid "Connection attempt failed [%s]"
-msgstr ""
+msgstr "Connection attempt failed [%s]"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:600
 #, c-format
@@ -8954,12 +8960,12 @@ msgstr ""
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:604
 #, c-format
 msgid "%d"
-msgstr ""
+msgstr "%d"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:606
 #, c-format
 msgid "%d of %d"
-msgstr ""
+msgstr "%d od %d"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:633
 #, c-format
@@ -9161,19 +9167,19 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1153
 msgid "Setting configured user mode"
-msgstr ""
+msgstr "Postavljanje podešenog korisničkog moda"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1210
 msgid "Auto-joining network specific channels"
-msgstr ""
+msgstr "Automatski pridružene sobe ovisno o mreži"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1244
 msgid "Auto-joining server specific channels"
-msgstr ""
+msgstr "Automatski pridružene sobe ovisno o serveru"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1341
 msgid "Updating away state for channel %Q"
-msgstr ""
+msgstr "Ažuriranje away stanja za sobu %Q"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:117
 msgid "Configure Servers..."
@@ -9181,15 +9187,15 @@ msgstr "Podešavanje Servera..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:118
 msgid "Allows you to configure the servers and eventually to connect to them"
-msgstr ""
+msgstr "Omogućuje vam podešavanje servera i eventualno spajanje na njih"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:128
 msgid "Manage Addons..."
-msgstr ""
+msgstr "Upravljanje Dodacima..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:129
 msgid "Allows you to manage the script-based addons"
-msgstr ""
+msgstr "Omogućuje vam upravljanje skript-baziranih dodataka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:139
 msgid "Configure Registered Users..."
@@ -9197,7 +9203,7 @@ msgstr "Podešavanje Registriranih Korisnika..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:140
 msgid "Shows a dialog that allows editing the registered user entries"
-msgstr ""
+msgstr "Prikazuje dijaloški okvir koji omogučuje uređivanje podataka registriranih korisnika"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:150
 msgid "Configure Identity..."
@@ -9205,31 +9211,31 @@ msgstr "Podešavanje Identiteta..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:151
 msgid "Allows you to configure nickname, username, avatar etc..."
-msgstr ""
+msgstr "Omogućuje vam podešavanje nadimka, korisničkog imena, avatra,..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:161
 msgid "Show SocketSpy..."
-msgstr ""
+msgstr "Prikaži Socket Nadzor..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:162
 msgid "Shows a window that allows monitoring the socket traffic"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućava pregled socket prometa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:172
 msgid "Get Network Links"
-msgstr ""
+msgstr "Dohvati Linkove Mreže"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:173
 msgid "Shows a window that allows viewing the network links"
-msgstr ""
+msgstr "Prikazuje prozor koji omogučava pregled linkova mreže"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:183
 msgid "Get Channel List"
-msgstr ""
+msgstr "Dohvati Popis Soba"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:184
 msgid "Shows a window that allows listing the network channels"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućava popis soba mreže"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:194
 msgid "Configure KVIrc..."
@@ -9237,7 +9243,7 @@ msgstr "Podešavanje KVIrc-a..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:195
 msgid "Shows the general options dialog"
-msgstr ""
+msgstr "Prikazuje dijaloški okvir za glavne opcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:205
 msgid "Configure Theme..."
@@ -9245,7 +9251,7 @@ msgstr "Podešavanje Izgleda..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:206
 msgid "Shows the theme options dialog"
-msgstr ""
+msgstr "Prikazuje dijaloški okvir za uređivanje tema"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:216
 msgid "Manage Themes..."
@@ -9253,7 +9259,7 @@ msgstr "Upravljanje Izgledima..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:217
 msgid "Allows you to manage the themes"
-msgstr ""
+msgstr "Omogućuje vam upravljanje izgledima"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:227
 msgid "Customize Toolbars..."
@@ -9261,7 +9267,7 @@ msgstr "Podešavanje Alatne Trake..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:228
 msgid "Shows a window that allows editing script toolbars"
-msgstr ""
+msgstr "Prikazuje prozor za editiranje skript alatnih traka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:239
 msgid "Join Channels..."
@@ -9269,7 +9275,7 @@ msgstr "Uđi u sobe..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:240
 msgid "Shows a dialog that allows you joing channels"
-msgstr ""
+msgstr "Prikazuje dijaloški okvir za ulazak u sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:251
 msgid "Edit Actions..."
@@ -9277,7 +9283,7 @@ msgstr "Uredi Akcije..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:252
 msgid "Shows a window that allows editing actions"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućuje uređivanje akcija"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:262
 msgid "Edit Aliases..."
@@ -9285,7 +9291,7 @@ msgstr "Uredi Aliase..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:263
 msgid "Shows a window that allows editing aliases"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućuje uređivanje aliasa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:273
 msgid "Edit Events..."
@@ -9293,7 +9299,7 @@ msgstr "Uredi Događaje..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:274
 msgid "Shows a window that allows editing script events"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućuje uređivanje skript događaja"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:284
 msgid "Edit Popups..."
@@ -9301,7 +9307,7 @@ msgstr "Uredi Popup-e..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:285
 msgid "Shows a window that allows editing popup menus"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućuje uređivanje popup izbornika"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:295
 msgid "Edit Raw Events..."
@@ -9309,7 +9315,7 @@ msgstr "Uredi Raw Događaje..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:296
 msgid "Shows a window that allows editing raw scripting events"
-msgstr ""
+msgstr "Prikazuje prozor koji omogućuje uređivanje raw skriptiranih događaja"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:306
 msgid "New Script Tester"
@@ -9317,7 +9323,7 @@ msgstr "Novi Tester Skripti"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:307
 msgid "Creates an embedded editor for long scripts"
-msgstr ""
+msgstr "Kreira ugrađeni editor za duge skripte"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:317
 msgid "Execute Script..."
@@ -9325,40 +9331,40 @@ msgstr "Izvrši Skriptu..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:318
 msgid "Allows executing a KVS script from file"
-msgstr ""
+msgstr "Dopušta izvršavanje KVS skripte iz datoteke"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:328
 msgid "Help Index"
-msgstr ""
+msgstr "Indeks Pomoći"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:329
 msgid "Shows the documentation index"
-msgstr ""
+msgstr "Prikazuje indeks dokumentacije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:339
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:133
 msgid "Subscribe to the Mailing List"
-msgstr ""
+msgstr "Pretplata na Mailing Listu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:340
 msgid "Allows subscribing to the KVIrc mailing list"
-msgstr ""
+msgstr "Dopušta pretplaćivanje na KVIrc mailing listu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:350
 msgid "KVIrc WWW"
-msgstr ""
+msgstr "KVIrc WWW"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:351
 msgid "Opens the KVIrc homepage"
-msgstr ""
+msgstr "Otvara KVIrc glavnu stranicu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:361
 msgid "KVIrc Russian WWW"
-msgstr ""
+msgstr "KVIrc Russian WWW"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:362
 msgid "Opens the KVIrc homepage in russian"
-msgstr ""
+msgstr "Opens the KVIrc homepage in russian"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:372
 msgid "Acquire Screenshot"
@@ -9366,7 +9372,7 @@ msgstr "Napravi Screenshot"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:373
 msgid "Acquires a Screenshot of the KVIrc main window"
-msgstr ""
+msgstr "Daje screenshot KVIrc glavnog prozora"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:385
 msgid "Cascade windows"
@@ -9374,7 +9380,7 @@ msgstr "Kaskadno posloži prozore"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:386
 msgid "Arranges the MDI windows in a maximized-cascade fashion"
-msgstr ""
+msgstr "Sortira MDI prozore u maksimizirano-kaskadnom stilu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:397
 msgid "Tile windows"
@@ -9382,7 +9388,7 @@ msgstr "Poploči prozore"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:398
 msgid "Tiles the MDI windows with the currently selected tile method"
-msgstr ""
+msgstr "Popločava MIDI prozore trenutno odabranom metodom"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:409
 msgid "Minimize all windows"
@@ -9390,7 +9396,7 @@ msgstr "Smanji sve prozore"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:410
 msgid "Minimized all the currently visible MDI windows"
-msgstr ""
+msgstr "Smanjuje sve trenutno vidljive MDI prozore"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:421
 msgid "New IRC Context"
@@ -9406,19 +9412,19 @@ msgstr "Izađi iz KVIrc-a"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:434
 msgid "Quits KVIrc closing all the current connections"
-msgstr ""
+msgstr "Izlazi iz KVIrc-a zatvarajući sve trenutne konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:448
 msgid "IRC Context Display"
-msgstr ""
+msgstr "IRC Kontekst Ekran"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:449
 msgid "Shows a small display with IRC context informations"
-msgstr ""
+msgstr "Prikazuje mali ekran s IRC kontekst informacijama"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:517
 msgid "Acts as a separator for other items: performs no action"
-msgstr ""
+msgstr "Ponaša se kao razdvojnik za elemente: ne obavlja nikakvu akciju"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:548
 msgid "Connect/Disconnect"
@@ -9426,7 +9432,7 @@ msgstr "Spoji/Odspoji"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:549
 msgid "Allows you to connect to a server or to terminate the current connection"
-msgstr ""
+msgstr "Omogućuje vam spajanje ili odspajanje trenutne konekcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:622
 msgid "Connect"
@@ -9447,7 +9453,7 @@ msgstr "Uđi u Sobu"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:778
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
-msgstr ""
+msgstr "Prikazuje popup izbornik za brzi odabir kanala za ulazak"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:794
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:806
@@ -9464,7 +9470,7 @@ msgstr "Promijeni Nadimak"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:822
 msgid "Shows a popup menu that allows quickly changing the nickname"
-msgstr ""
+msgstr "Prikazuje popup izbornik koji omogućuje brzu promjenu nadimka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:870
 msgid "Connect To"
@@ -9472,7 +9478,7 @@ msgstr "Spoji se na"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:871
 msgid "Shows a popup menu that allows quickly connecting to a server"
-msgstr ""
+msgstr "Prikazuje popup izbornik koji omogućuje brzu konekciju na server"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:916
 msgid "User Mode"
@@ -9480,7 +9486,7 @@ msgstr "Korisnički Modovi"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:917
 msgid "Shows a popup menu that allows quickly changing user modes"
-msgstr ""
+msgstr "Prikazuje popup izbornik koji omogućuje brzu izmjenu korisničkih modova"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Wallops (+w)"
@@ -9488,19 +9494,19 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:936
 msgid "Server Notices (+s)"
-msgstr ""
+msgstr "Obavijesti Servera (s)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:938
 msgid "Invisible (+i)"
-msgstr ""
+msgstr "Nevidljiv (+i)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:984
 msgid "Away/Back"
-msgstr ""
+msgstr "Away/Back"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:985
 msgid "Allows entering and leaving away state"
-msgstr ""
+msgstr "Omogućuje ulazak i izlazak iz statusa odsutnosti"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1052
 msgid "Enter Away Mode"
@@ -9516,7 +9522,7 @@ msgstr "Irc Alati"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1120
 msgid "Shows a popup menu with some IRC Tools"
-msgstr ""
+msgstr "Prikazuje popup izbornik s IRC Alatima"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1155
 msgid "Irc Actions"
@@ -9524,7 +9530,7 @@ msgstr "Irc Akcije"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1156
 msgid "Shows a popup menu with some IRC Actions"
-msgstr ""
+msgstr "Prikazuje popup izbornik s IRC Akcijama"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irclink.cpp:100
 msgid "Ops... for some reason the link filter object has been destroyed"
@@ -9548,11 +9554,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irclink.cpp:369
 msgid "proxy host"
-msgstr ""
+msgstr "proxy host"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irclink.cpp:369
 msgid "IRC server"
-msgstr ""
+msgstr "IRC server"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/kernel/kvi_irclink.cpp:375
 #, c-format
@@ -9621,23 +9627,23 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:166
 msgid "Set &All"
-msgstr ""
+msgstr "Od&aberi Sve"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:170
 msgid "Set &None"
-msgstr ""
+msgstr "Odaberi &Ništa"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:174
 msgid "&Load From..."
-msgstr ""
+msgstr "&Učitaj iz..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:178
 msgid "&Save As..."
-msgstr ""
+msgstr "&Snimi kao..."
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:182
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:234
 msgid "Select a Filter File"
@@ -9662,7 +9668,7 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:69
 msgid "Scri&pting"
-msgstr "&Skriptanje"
+msgstr "&Skriptiranje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:74
 msgid "&Tools"
@@ -9678,15 +9684,15 @@ msgstr "&Prozori"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:109
 msgid "&Help Browser (Panel)"
-msgstr ""
+msgstr "Preglednik Pomoći (Panel)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:111
 msgid "Help Browser (&Window)"
-msgstr ""
+msgstr "Preglednik Pomoći (Prozor)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:114
 msgid "&Tip of the Day"
-msgstr "&SavjetDana"
+msgstr "&Savjet Dana"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:117
 msgid "About &KVIrc"
@@ -9694,15 +9700,15 @@ msgstr "O &Kvirc-u"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:120
 msgid "KVIrc Home&page"
-msgstr ""
+msgstr "KVIrc &Početna stranica"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:124
 msgid "KVIrc Russian Home&page"
-msgstr ""
+msgstr "KVIrc Russian Home&page"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:129
 msgid "KVIrc French Home&page"
-msgstr ""
+msgstr "KVIrc French Home&page"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:135
 msgid "Report a Bug"
@@ -9710,23 +9716,23 @@ msgstr "Prijavi Bug"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:138
 msgid "Join KVIrc International Channel on Freenode"
-msgstr ""
+msgstr "Uđi u KVIrc Međunarodnu Sobu na Freenode-u"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:140
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr ""
+msgstr "Uđi u KVIrc Međunarodnu Sobu na IRCNet-u"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
 msgid "Join KVIrc Italian Channel on AzzurraNet"
-msgstr ""
+msgstr "Join KVIrc Italian Channel on AzzurraNet"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:151
 msgid "Join KVIrc French Channel on Freenode"
-msgstr ""
+msgstr "Join KVIrc French Channel on Freenode"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:154
 msgid "Join KVIrc French Channel on EuropNet"
-msgstr ""
+msgstr "Join KVIrc French Channel on EuropNet"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_menubar.cpp:167
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_toolbar.cpp:82
@@ -9815,13 +9821,13 @@ msgstr "IRC Kontekst"
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:365
 #, c-format
 msgid "Lag: %d.%d%d"
-msgstr ""
+msgstr "Lag: %d.%d%d"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_irctoolbar.cpp:321
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_irctoolbar.cpp:393
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:379
 msgid "Lag: ?.??"
-msgstr ""
+msgstr "Lag: ?.??"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_irctoolbar.cpp:326
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_statusbar.cpp:637
@@ -9879,7 +9885,7 @@ msgstr "Pozadina"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_selectors.cpp:711
 msgid "Play"
-msgstr ""
+msgstr "Play"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_selectors.cpp:744
 msgid "Channel name"
@@ -10039,7 +10045,7 @@ msgstr "Koristi server <b>%1</b>"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:407
 msgid "%1 hops"
-msgstr ""
+msgstr "%1 hops"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:417
 msgid "Probably Away"
@@ -10068,7 +10074,7 @@ msgstr "Upravo pokušavate zatvoriti prozor posljednje konzole.\n Jeste li sigur
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:1015
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
-msgstr ""
+msgstr "Neuspjeh pri učitavanju avatara s imenom \"%Q\" i lokalnom putanjom \"%Q\""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_console.cpp:1094
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_statusbar.cpp:624
@@ -10120,11 +10126,11 @@ msgstr "Skripta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ctcppagedialog.cpp:72
 msgid "CTCP Page - KVIrc"
-msgstr ""
+msgstr "CTCP Page - KVIrc"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_ctcppagedialog.cpp:109
 msgid "You have been paged by"
-msgstr ""
+msgstr "You have been paged by"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:203
 msgid "Apply to all IRC Contexts"
@@ -10201,7 +10207,7 @@ msgstr "Puna putanja"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:241
 msgid "Builtin $icon(%Q) [index %d]"
-msgstr ""
+msgstr "Ugrađeno $icon(%Q) [indeks %d]"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:274
 msgid "directory"
@@ -10270,7 +10276,7 @@ msgstr ", koristi server %1"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_query.cpp:249
 msgid " (%1 hops)"
-msgstr ""
+msgstr " (%1 hops)"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_query.cpp:251
 msgid ", probably away"
@@ -10309,7 +10315,7 @@ msgstr "Ovaj razgovor nema aktivnih odredišta, poruka nije poslana"
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
-msgstr ""
+msgstr "Pogon za kriptiranje nije mogao enkriptirati trenutnu poruku (%Q): %s, podaci nisu poslani serveru"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_userlistview.cpp:1284
 msgid "Joined on <b>%1</b>"
@@ -10365,32 +10371,32 @@ msgstr "Popis Prozora"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:92
 msgid "Cryptography/text transformation"
-msgstr ""
+msgstr "Kriptografija/transformacija teksta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:99
 msgid "Use the crypt engine"
-msgstr ""
+msgstr "Koristi pogon za kriptiranje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:120
 msgid "Enable encryption"
-msgstr ""
+msgstr "Omogući enkripciju"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:123
 msgid "Encrypt key:"
-msgstr ""
+msgstr "Ključ za enkripciju:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:129
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:141
 msgid "Hex"
-msgstr ""
+msgstr "Hex"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:132
 msgid "Enable decryption"
-msgstr ""
+msgstr "Omogući dekripciju"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:135
 msgid "Decrypt key:"
-msgstr ""
+msgstr "Ključ za dekripciju:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:211
 msgid ""
@@ -10462,11 +10468,11 @@ msgstr "Kopiraj u Međuspremnik"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:462
 msgid "Crypting"
-msgstr ""
+msgstr "Kriptiranje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:470
 msgid "Private Text Encoding"
-msgstr ""
+msgstr "Kodiranje Privatnog Teksta"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:572
 msgid "Ops...I've accidentally lost the crypting engine..."
@@ -10474,11 +10480,11 @@ msgstr ""
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:588
 msgid "List of window types available in this release of KVIrc:"
-msgstr ""
+msgstr "Popis vrsta prozora dostupnih u ovoj verziji KVIrc-a:"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:760
 msgid "Use Default Encoding"
-msgstr ""
+msgstr "Koristi uobičajeno kodiranje"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_window.cpp:772
 msgid "Standard"
@@ -11044,7 +11050,7 @@ msgstr "Maska"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:202
 msgid "Set at"
-msgstr ""
+msgstr "Pustavljeno u"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:108
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:149
@@ -11058,23 +11064,23 @@ msgstr "poruka"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:109
 msgid "-w: send notice to all channel owners"
-msgstr ""
+msgstr "-w: šalje obavijest svim vlasnicima sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:110
 msgid "-a: send notice to all channel admins"
-msgstr ""
+msgstr "-a: šalje obavijest svim administratorima sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:111
 msgid "-o: send notice to all channel ops"
-msgstr ""
+msgstr "-o: šalje obavijest svim operatorima sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:112
 msgid "-h: send notice to all channel halfops"
-msgstr ""
+msgstr "-h: šalje obavijest svim polu-operatorima sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:113
 msgid "-v: send notice to all channel voices"
-msgstr ""
+msgstr "-v: šalje obavijest svim +v korisnicima sobe"
 
 #: /home/SpeedyGhost/kvirccvs/kvirc/data/defscript/default.kvs:114
 msgid "-q: quiet mode"
