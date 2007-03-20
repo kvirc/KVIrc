@@ -371,7 +371,7 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns a to the power of b
 	@syntax:
-		<real> $math.isinf(<a:real>,<b:real>)
+		<real> $math.pow(<a:real>,<b:real>)
 	@description:
 		Returns a to the power of b
 */
