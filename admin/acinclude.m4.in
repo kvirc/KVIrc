@@ -2576,8 +2576,8 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		iconmime32datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/32x32"
 		iconmime48datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/48x48"
 		iconmime64datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/64x64"
-		iconapps128datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/128x128"
-		iconappsscalabledatadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/scalable"
+		iconmime128datadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/128x128"
+		iconmimescalabledatadir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/icons/scalable"
 		applnkdir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/applnk"
 		mimelnkdir="\${exec_prefix}/share/kvirc/$SS_DIRTAG/mimelnk"
 	fi
