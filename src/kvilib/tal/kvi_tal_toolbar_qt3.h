@@ -32,7 +32,7 @@ class KVILIB_API KviTalToolBar : public QToolBar
 	Q_OBJECT
 public:
 	KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
-	KviTalToolBar::KviTalToolBar(QMainWindow *w,const char * name=0);
+	KviTalToolBar(QMainWindow *w,const char * name=0);
 	~KviTalToolBar();
 };
 
