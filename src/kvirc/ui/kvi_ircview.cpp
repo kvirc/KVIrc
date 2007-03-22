@@ -683,7 +683,7 @@ void KviIrcView::masterDead()
 bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 {
 	stopLogging();
-	QString szFname = szFname;
+	QString szFname(fname);
 	
 	if(fname.isEmpty())
 	{
