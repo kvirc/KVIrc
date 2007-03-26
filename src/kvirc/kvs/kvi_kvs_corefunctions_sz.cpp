@@ -42,6 +42,7 @@
 #include "kvi_modulemanager.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_socket.h"
 
 #include <stdlib.h> // rand & srand
 
@@ -141,6 +142,29 @@ namespace KviKvsCoreFunctions
 		}
 
 		KVSCF_pRetBuffer->setArray(a);
+		return true;
+	}
+
+
+		/*
+		@doc: sentBytes
+		@type:
+			function
+		@title:
+			$sentBytes
+		@short:
+			Returns total sent bytes
+		@syntax:
+			<uint> $sentBytes()
+		@description:
+			Returns total sent bytes
+		@seealso:
+			[fnc]$receivedBytes[/fnc]
+	*/
+
+	KVSCF(sentBytes)
+	{
+		KVSCF_pRetBuffer->setInteger(g_uOutgoingTraffic);
 		return true;
 	}
 

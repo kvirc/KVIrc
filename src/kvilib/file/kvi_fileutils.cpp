@@ -404,10 +404,30 @@ namespace KviFileUtils
 	bool readLine(QFile * f,QString &szBuffer,bool bUtf8)
 	{
 		QTextStream stream(f);
+		stream.setEncoding(bUtf8 ? QTextStream::UnicodeUTF8 : QTextStream::Locale);
 		szBuffer=stream.readLine();
 		return !szBuffer.isNull();
 	}
 	
+	bool readLines(QFile * f,QStringList &buffer,int iStartLine, int iCount, bool bUtf8)
+	{
+		QTextStream stream( f );
+		stream.setEncoding(bUtf8 ? QTextStream::UnicodeUTF8 : QTextStream::Locale);
+		for(int i=0;i<iStartLine;i++)
+			stream.readLine();
+
+		if(iCount>0)
+		{
+			for(; (iCount>0 && !stream.atEnd()) ; iCount-- )
+				buffer.append(stream.readLine());
+		} else {
+			while(!stream.atEnd()) {
+				buffer.append(stream.readLine());
+			}
+		}
+		return buffer.count()!= 0;
+	}
+
 	bool isReadable(const QString &szFname)
 	{
 		QFileInfo f(szFname);

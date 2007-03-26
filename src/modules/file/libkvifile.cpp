@@ -831,37 +831,27 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * a = new KviKvsArray();
 
-	int i = 0;
-	int idx = 0;
-	while(idx < iStartLine)
-	{
-		QString szDummy;
-		KviFileUtils::readLine(&f,szDummy);
-		idx++;
-	}
+	int iIndex=0;
+	QTextStream stream( &f );
 
-	QString szBuf;
+	stream.setEncoding(bLocal8Bit ? QTextStream::Locale : QTextStream::UnicodeUTF8);
+	for(int i=0;i<iStartLine;i++)
+		stream.readLine();
 
-	if(iCount > 0)
+	if(iCount>0)
 	{
-		int iEndLine = iStartLine + iCount;
-		while(idx < iEndLine)
-		{
-			if(KviFileUtils::readLine(&f,szBuf,!bLocal8Bit))
-				a->set(i,new KviKvsVariant(szBuf));
-			else
-				break;
-			i++;
-			idx++;
-		}
+		for(; (iCount>0 && !stream.atEnd()) ; iCount-- )
+			a->set(iIndex,new KviKvsVariant(stream.readLine()));
+			iIndex++;
 	} else {
-		while(KviFileUtils::readLine(&f,szBuf,!bLocal8Bit))
-		{
-			a->set(i,new KviKvsVariant(szBuf));
-			i++;
+		while(!stream.atEnd()) {
+			a->set(iIndex,new KviKvsVariant(stream.readLine()));
+			iIndex++;
 		}
 	}
 
+	f.close();
+	
 	c->returnValue()->setArray(a);
 
 	return true;

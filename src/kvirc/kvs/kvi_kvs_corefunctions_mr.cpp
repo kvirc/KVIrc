@@ -37,6 +37,7 @@
 #include "kvi_console.h"
 #include "kvi_ircuserdb.h"
 #include "kvi_ircmask.h"
+#include "kvi_socket.h"
 #include "kvi_app.h"
 #include "kvi_query.h"
 
@@ -618,6 +619,27 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
+	/*
+		@doc: receivedBytes
+		@type:
+			function
+		@title:
+			$receivedBytes
+		@short:
+			Returns total received bytes
+		@syntax:
+			<uint> $receivedBytes()
+		@description:
+			Returns total received bytes
+		@seealso:
+			[fnc]$sentBytes[/fnc]
+	*/
+
+	KVSCF(receivedBytes)
+	{
+		KVSCF_pRetBuffer->setInteger(g_uIncomingTraffic);
+		return true;
+	}
 
 	/*
 		@doc: rsort

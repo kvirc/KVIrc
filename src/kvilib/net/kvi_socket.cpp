@@ -20,7 +20,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#define _KVI_SOCKET_CPP_
+
 #define __KVILIB__
 
-
 #include "kvi_socket.h"
+#include "kvi_inttypes.h"
+
+KVILIB_API kvi_u64_t g_uOutgoingTraffic;
+KVILIB_API kvi_u64_t g_uIncomingTraffic;

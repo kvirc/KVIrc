@@ -26,6 +26,7 @@
 
 #define _KVI_APP_CPP_
 
+#include "kvi_socket.h"
 #include "kvi_app.h"
 #include "kvi_debug.h"
 #include "kvi_frame.h"
@@ -179,6 +180,7 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_iHeartbeatTimerId     = -1;
 	// next step is setup()
 	m_bSetupDone = false;
+	kvi_socket_flushTrafficCounters();
 }
 
 void KviApp::setup()

@@ -110,9 +110,11 @@ namespace KviKvsCoreFunctions
 		_REGFNC("r",r)
 		_REGFNC("rand",rand)
 		_REGFNC("real",real)
+		_REGFNC("receivedBytes",receivedBytes)
 		_REGFNC("rsort",rsort)
 		// s_z
 		_REGFNC("selected",selected)
+		_REGFNC("sentBytes",sentBytes)
 		_REGFNC("server",server)
 		_REGFNC("sort",sort)
 		_REGFNC("split",split)

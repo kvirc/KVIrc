@@ -90,6 +90,7 @@ namespace KviFileUtils
 	extern KVILIB_API bool makeDir(const char* path);
 	// reads a text line, returns false if EOF is reached
 	extern KVILIB_API bool readLine(QFile * f,QString &szBuffer,bool bUtf8 = true);
+	extern KVILIB_API bool readLines(QFile * f,QStringList &buffer,int iStartLine = 0, int iCount = -1, bool bUtf8 = true);
 	extern KVILIB_API bool isReadable(const QString &szFname);
 	extern KVILIB_API bool isAbsolutePath(const QString &szPath);
 };

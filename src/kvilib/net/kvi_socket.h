@@ -33,6 +33,15 @@
 
 #include <errno.h>
 
+#include "kvi_inttypes.h"
+
+//#ifndef _KVI_SOCKET_CPP_
+	extern KVILIB_API kvi_u64_t g_uOutgoingTraffic;
+	extern KVILIB_API kvi_u64_t g_uIncomingTraffic;
+//#endif //!_KVI_SOCKET_CPP_
+
+
+
 #ifdef COMPILE_ON_WINDOWS
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
@@ -94,6 +103,13 @@ inline kvi_socket_t kvi_socket_create(int pf,int type,int proto)
 //
 //   Check if a socket is valid or not
 //
+
+inline void kvi_socket_flushTrafficCounters()
+{
+	g_uOutgoingTraffic = 0;
+	g_uIncomingTraffic = 0;
+}
+
 inline bool kvi_socket_isValid(kvi_socket_t sock)
 {
 	return (sock != ((kvi_socket_t)(KVI_INVALID_SOCKET)));
@@ -233,6 +249,7 @@ inline int kvi_socket_select(int nhpo,fd_set *r,fd_set *w,fd_set *e,struct timev
 
 inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 {
+	g_uOutgoingTraffic+=size;
 #ifdef COMPILE_ON_WINDOWS
 	return ::send(sock,(const char *)buf,size,0);
 #else
@@ -252,11 +269,14 @@ inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 
 inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
 {
+	int iReceived;
 #ifdef COMPILE_ON_WINDOWS
-	return ::recv(sock,(char *)buf,maxlen,0);
+	iReceived = ::recv(sock,(char *)buf,maxlen,0);
 #else
-	return ::recv(sock,buf,maxlen,MSG_NOSIGNAL);
+	iReceived = ::recv(sock,buf,maxlen,MSG_NOSIGNAL);
 #endif
+	g_uIncomingTraffic+=iReceived;
+	return iReceived;
 };
 
 //================================================================================================

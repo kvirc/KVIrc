@@ -112,9 +112,11 @@ namespace KviKvsCoreFunctions
 	KVSCF(r);
 	KVSCF(rand);
 	KVSCF(real);
+	KVSCF(receivedBytes);
 	KVSCF(rsort);
 	// s_z
 	KVSCF(selected);
+	KVSCF(sentBytes);
 	KVSCF(server);
 	KVSCF(sort);
 	KVSCF(split);
