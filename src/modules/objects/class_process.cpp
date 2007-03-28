@@ -27,7 +27,7 @@
 #include "kvi_locale.h"
 #include <qtimer.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3Process>
+#include <q3process.h>
 #else 
 #include <qprocess.h>
 #endif

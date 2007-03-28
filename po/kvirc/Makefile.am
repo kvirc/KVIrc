@@ -17,7 +17,8 @@ tmp_DATA  = kvirc_bg.mo \
 	kvirc_pt_BR.mo \
 	kvirc_ru.mo \
 	kvirc_sr.mo \
-	kvirc_hu.mo
+	kvirc_hu.mo \
+	kvirc_hr.mo
 
 CLEANFILES = $(tmp_DATA)
 
@@ -34,7 +35,8 @@ POFILES = kvirc_bg.po \
 	kvirc_pt_BR.po \
 	kvirc_ru.po \
 	kvirc_sr.po \
-	kvirc_hu.po
+	kvirc_hu.po \
+	kvirc_hr.po
 
 EXTRA_DIST=$(POFILES)
 

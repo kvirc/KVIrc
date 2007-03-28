@@ -33,7 +33,7 @@
 	#include <q3multilineedit.h>
 #include <QTextStream>
 
-#include <Q3StyleSheet>
+#include <q3stylesheet.h>
 #define KviTalMultiLineEdit Q3MultiLineEdit
 #define QTEXTEDIT_AUTO_ALL Q3TextEdit::AutoAll
 #define QTEXTEDIT_AUTO_NONE Q3TextEdit::AutoNone

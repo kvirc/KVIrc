@@ -30,6 +30,7 @@
 #include "kvi_console.h"
 #include "kvi_moduleextension.h"
 #include "kvi_sharedfiles.h"
+#include "kvi_styled_controls.h"
 
 #include "kvi_tal_listview.h"
 #include <qdialog.h>
@@ -39,7 +40,6 @@ class QDateTimeEdit;
 class QLabel;
 class QLineEdit;
 class QPushButton;
-class KviStyledCheckBox;
 
 class KviSharedFilesListViewItem : public KviTalListViewItem
 {

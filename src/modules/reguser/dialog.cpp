@@ -43,8 +43,8 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3Header>
-#include <QCloseEvent>
+#include <q3header.h>
+#include <qevent.h>
 #include <QImageWriter>
 #include <QImageReader>
 

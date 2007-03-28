@@ -36,7 +36,7 @@
 #include "kvi_frame.h"
 #ifdef COMPILE_USE_QT4
 #define KviTalMimeSourceFactory Q3MimeSourceFactory
-#include <Q3MimeSourceFactory>
+#include <q3mimefactory.h>
 #else
 #define KviTalMimeSourceFactory QMimeSourceFactory
 #endif

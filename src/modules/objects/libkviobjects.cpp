@@ -44,6 +44,8 @@
 	#include <qobjectlist.h>
 #endif
 
+#include <qdir.h>
+
 #include "class_button.h"
 #include "class_checkbox.h"
 #include "class_urllabel.h"

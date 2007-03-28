@@ -86,6 +86,7 @@ bool SPasteController::pasteClipboardInit(void)
 
 void SPasteController::pasteFile(void)
 {
+#ifndef COMPILE_USE_QT4
     QString line;
     if(m_pFile->readLine(line,999) != -1)
     {
@@ -100,6 +101,7 @@ void SPasteController::pasteFile(void)
         m_pFile->close();
         delete this;
     }
+#endif
 }
 
 void SPasteController::pasteClipboard(void)

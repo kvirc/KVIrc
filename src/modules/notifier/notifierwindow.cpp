@@ -115,12 +115,17 @@ KviNotifierWindow::KviNotifierWindow()
 	m_iInputHeight = cfg.readIntEntry("InputHeight",20);
 	if(m_iInputHeight < 10)m_iInputHeight = 10;
 
+#ifdef COMPILE_USE_QT4
+	setAttribute(Qt::WA_NoSystemBackground); // This disables automatic qt double buffering
+	setAutoFillBackground(false);
+	setFocusPolicy(Qt::NoFocus);
+#else
 	setBackgroundMode(QWidget::NoBackground);
 	setFocusPolicy(QWidget::NoFocus);
+#endif
 	setMouseTracking(true);
 	//setCursor(m_cursor);
 	
-	hide();
 	m_pLineEdit = new QLineEdit(this);
 	m_pLineEdit->setGeometry(0,0,0,0);
 	m_pLineEdit->hide();
@@ -173,6 +178,8 @@ KviNotifierWindow::KviNotifierWindow()
 	m_pWndBorder->centerTitle(titleFontMetrics.height());
 	
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
+
+	hide();
 }
 
 KviNotifierWindow::~KviNotifierWindow()
@@ -197,9 +204,12 @@ void KviNotifierWindow::reloadImages()
 	if((p = g_pIconManager->getPixmap("notifier_background.png")))
 		m_pixBckgrnd = *p;
 	
-	if ( p->mask() )
-	setMask( *p->mask() );
-
+#ifdef COMPILE_USE_QT4
+	setMask(p->mask());
+#else
+	if(p->mask())
+		setMask(*(p->mask()));
+#endif
 	m_pixBackground = m_pixBckgrnd;
 	m_pixBackgroundHighlighted = m_pixBckgrnd;
 	m_pWndBorder->resize(m_pixBackground.size());
@@ -1020,7 +1030,11 @@ void KviNotifierWindow::redrawWindow()
 void KviNotifierWindow::setCursor(int cur) {
 	if (m_cursor.shape()!=cur) {
 		if(QApplication::overrideCursor()) QApplication::restoreOverrideCursor();
+#ifdef COMPILE_USE_QT4
+		m_cursor.setShape((Qt::CursorShape)cur);
+#else
 		m_cursor.setShape(cur);
+#endif
 		QApplication::setOverrideCursor(m_cursor);
 	} else if (cur==-1)
 		if(QApplication::overrideCursor()) QApplication::restoreOverrideCursor();

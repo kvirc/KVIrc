@@ -31,7 +31,7 @@
 #include <qpixmap.h>
 #include <qlineedit.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3VButtonGroup>
+#include <q3buttongroup.h>
 #define KviTalVButtonGroup Q3VButtonGroup
 #else
  #include <qvbuttongroup.h>

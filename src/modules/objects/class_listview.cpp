@@ -27,8 +27,8 @@
 
 #include "kvi_tal_listview.h"
 #ifdef COMPILE_USE_QT4
-#include <Q3Header>
-#include <QDragEnterEvent>
+#include <q3header.h>
+#include <qevent.h>
 #else
 #include <qheader.h>
 #endif

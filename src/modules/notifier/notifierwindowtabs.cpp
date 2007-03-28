@@ -329,7 +329,7 @@ void KviNotifierWindowTabs::prev()
 	if(!m_pTabFocused)return;
 
 	KviNotifierWindowTab * tab;
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	tabIterator.atFirst();
@@ -350,7 +350,7 @@ void KviNotifierWindowTabs::next()
 	if(!m_pTabFocused)return;
 	
 	KviNotifierWindowTab * tab;
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	tabIterator.atFirst();
@@ -504,7 +504,7 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 
 	//scrollTabsRight();
 
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 	
 	
 	tabIterator.toFirst();
@@ -520,7 +520,7 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 		++tabIterator;
 	}
 	int iWidth = 0;
-	QPtrListIterator<KviNotifierWindowTab> startIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> startIterator (m_tabPtrList);
 
 	i=0;
 	while(m_iTabToStartFrom!=i) {
@@ -558,7 +558,7 @@ void KviNotifierWindowTabs::contextPopup(KviTalPopupMenu *pPopup,const QPoint& p
 		QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 		for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ ) {
 			if (tab.data()->rect().contains(pos)) {
-				int id = pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),__tr2qs_ctx("Close tab","notifier"),g_pNotifierWindow,SLOT(hideTab(int)),0,0);
+				int id = pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),__tr2qs_ctx("Close tab","notifier"),g_pNotifierWindow,SLOT(hideTab(int)));
 				pPopup->setItemParameter(id,i);
 			}
 			i++;
@@ -593,7 +593,7 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 	
 	int tmpTabsWidth = 0;
 
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 	
 	//m_tabPtrList.findRef(m_tabMap[m_pTabFocused->wnd()]);
 

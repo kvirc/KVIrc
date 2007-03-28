@@ -156,10 +156,10 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		} 		else {
 		if(pWidget) {
     pWidget = findWidgetToWrap(
-     !szClass.isEmpty() ? szClass : 0, !szName.isEmpty() ? szName : 0, pWidget
+     !szClass.isEmpty() ? szClass : KviQString::empty, !szName.isEmpty() ? szName : KviQString::empty, pWidget
     );
    } else {
-    pWidget = findTopLevelWidgetToWrap(szClass.isEmpty() ? szClass : 0, !szName.isEmpty() ? szName : 0);
+    pWidget = findTopLevelWidgetToWrap(szClass.isEmpty() ? szClass : KviQString::empty, !szName.isEmpty() ? szName : KviQString::empty);
    }
 		}
 		if( !pWidget )

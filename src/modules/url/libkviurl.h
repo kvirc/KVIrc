@@ -28,9 +28,9 @@
 #include <qpushbutton.h>
 #include <qfile.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3TextStream>
+	#include <q3textstream.h>
 #else
-#include <qtextstream.h>
+	#include <qtextstream.h>
 #endif
 #include <qcheckbox.h>
 #include "kvi_tal_listbox.h"

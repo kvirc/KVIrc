@@ -2,19 +2,19 @@
 /* src/config.h.in.  Generated from configure.in by autoheader.  */
 
 /* define this to the number of average channel users */
-#define AVERAGE_CHANNEL_USERS 349
+#define AVERAGE_CHANNEL_USERS 101
 
 /* define this if you are on a big endian machine */
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Wed Mar 21 03:48:19 UTC 2007"
+#define BUILD_DATE "Mon Mar 26 14:33:03 UTC 2007"
 
 /* these are the build flags */
-#define BUILD_FLAGS "i686-bcefikoprsAGTZ"
+#define BUILD_FLAGS "x86_64-cfgiopsAGTZ"
 
 /* define if you want to enable the Arts daemon support */
-#define COMPILE_ARTS_SUPPORT 1
+/* #undef COMPILE_ARTS_SUPPORT */
 
 /* define if you want to enable the Audiofile library support */
 #define COMPILE_AUDIOFILE_SUPPORT 1
@@ -26,7 +26,7 @@
 /* #undef COMPILE_DISABLE_DCC_VOICE */
 
 /* define if you want to enable the Esound daemon support */
-#define COMPILE_ESD_SUPPORT 1
+/* #undef COMPILE_ESD_SUPPORT */
 
 /* define if you have the SIOCGIFADDR ioctl and the related headers */
 #define COMPILE_GET_INTERFACE_ADDRESS 1
@@ -41,7 +41,7 @@
 #define COMPILE_IPV6_SUPPORT 1
 
 /* define if you want to compile the KDE 3.x support */
-#define COMPILE_KDE_SUPPORT 1
+/* #undef COMPILE_KDE_SUPPORT */
 
 /* define if you want the memory checks */
 /* #undef COMPILE_MEMORY_CHECKS */
@@ -90,7 +90,7 @@
 #define COMPILE_USE_GSM 1
 
 /* define if you want to compile the Qt 4.x support */
-/* #undef COMPILE_USE_QT4 */
+#define COMPILE_USE_QT4 1
 
 /* define if you trust your memmove() function */
 #define COMPILE_WITH_SYSTEM_MEMMOVE 1
@@ -195,7 +195,7 @@
 #define SIZEOF_INT 4
 
 /* The size of `long int', as computed by sizeof. */
-#define SIZEOF_LONG_INT 4
+#define SIZEOF_LONG_INT 8
 
 /* The size of `long long int', as computed by sizeof. */
 #define SIZEOF_LONG_LONG_INT 8
@@ -207,7 +207,7 @@
 #define SIZEOF_UNSIGNED_INT 4
 
 /* The size of `unsigned long int', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_LONG_INT 4
+#define SIZEOF_UNSIGNED_LONG_INT 8
 
 /* The size of `unsigned long long int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_LONG_LONG_INT 8
@@ -216,7 +216,7 @@
 #define SIZEOF_UNSIGNED_SHORT_INT 2
 
 /* The size of `void *', as computed by sizeof. */
-#define SIZEOF_VOID_P 4
+#define SIZEOF_VOID_P 8
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

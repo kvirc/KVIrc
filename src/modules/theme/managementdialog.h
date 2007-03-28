@@ -30,7 +30,7 @@
 
 #include <qdialog.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3SimpleRichText>
+#include <q3simplerichtext.h>
 #define KviTalSimpleRichText Q3SimpleRichText
 #else
 #include <qsimplerichtext.h>

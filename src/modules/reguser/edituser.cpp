@@ -44,9 +44,9 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #ifdef COMPILE_USE_QT4
-#include <QCloseEvent>
-#include <Q3Header>
-#include <Q3Vbox>
+#include <qevent.h>
+#include <q3header.h>
+#include <q3vbox.h>
 #else
 #include <qheader.h>
 #endif

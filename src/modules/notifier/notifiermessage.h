@@ -33,7 +33,14 @@
 #include <qtimer.h>
 #include <qpixmap.h>
 #include <qimage.h>
-#include <qsimplerichtext.h>
+#ifdef COMPILE_USE_QT4
+	#include <q3simplerichtext.h>
+	#ifndef QSimpleRichText
+		#define QSimpleRichText Q3SimpleRichText
+	#endif
+#else
+	#include <qsimplerichtext.h>
+#endif
 #include <qfont.h>
 #include <qcolor.h>
 #include <qlineedit.h>

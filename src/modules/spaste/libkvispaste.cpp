@@ -215,7 +215,8 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
         {
             if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
             {
-                c->warning(__tr2qs("The specified window (%s) is not a channel/query/dcc"),&c->window()->id());
+				QString szWinId = c->window()->id();
+                c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
                 return false;
             } else 
             {
@@ -269,7 +270,8 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
     while( (item = it.current()) != 0)
     {
         ++it;
-        c->window()->output(KVI_OUT_NONE,__tr2qs("Slow-paste ID:%d Window:%s"),item->getId(),&item->window()->id());
+		QString szWinId = item->window()->id();
+        c->window()->output(KVI_OUT_NONE,__tr2qs("Slow-paste ID:%d Window:%Q"),item->getId(),&szWinId);
     }
 	return true;
 }

@@ -34,7 +34,7 @@
 #include <qpushbutton.h>
 
 #ifdef COMPILE_USE_QT4
-#include <Q3SimpleRichText>
+#include <q3simplerichtext.h>
 #include <QDesktopWidget>
 #include <QCloseEvent>
 #define KviTalSimpleRichText Q3SimpleRichText

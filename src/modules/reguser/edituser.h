@@ -36,7 +36,7 @@
 #include "kvi_dict.h"
 #include <kvi_tal_tabdialog.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3Table>
+#include <q3table.h>
 #define Kvi_Tal_Table Q3Table
 #define Kvi_Tal_TableItem Q3TableItem
 

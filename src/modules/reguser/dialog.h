@@ -35,9 +35,7 @@
 #include "kvi_dict.h"
 #include "kvi_tal_popupmenu.h"
 #ifdef COMPILE_USE_QT4
-	#include <Q3IntDict>
-
-
+	#include <q3intdict.h>
 	#include <q3simplerichtext.h>
 	#define QSimpleRichText Q3SimpleRichText
 #else

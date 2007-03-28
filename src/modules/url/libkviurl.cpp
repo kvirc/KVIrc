@@ -37,6 +37,7 @@
 #include <qfiledialog.h>
 #include <qmessagebox.h>
 #include <qcursor.h>
+#include <qdatetime.h>
 
 
 static QPixmap * g_pUrlIconPixmap = 0;

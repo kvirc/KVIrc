@@ -92,7 +92,7 @@ General notes for the installation of the 3.2.0 release of KVIrc
         you may skip to step 1, otherwise read on.
 
         First of all check your auomake version.
-        You need automake 1.5: older versions will NOT WORK.
+        You need automake >= 1.5: older versions will NOT WORK.
         You can check the automake version with the command
 
         # automake --version
@@ -123,6 +123,23 @@ General notes for the installation of the 3.2.0 release of KVIrc
     ###
     ### Step 1 : Matching the requirements
     ###
+
+        - You NEED a fully working C++ compiler.
+        
+        Most linux distributions have it pre-installed and if you have
+        already compiled other programs before then you're probably ok,
+        so actually skip this check and go ahead. If anything fails
+        in the following steps then this is the very first thing to verify.
+        A broken compiler installation usually manifests itself
+        in failed ./configure tests (dlopen capabilities).
+        Try
+        
+        # gcc -v
+        # g++ -v
+
+        on the commandline. If it says something about "command not found"
+        then you miss some gcc related package. Install it from the distro cd.
+
 
         - You NEED the Qt library.
 
@@ -226,6 +243,7 @@ General notes for the installation of the 3.2.0 release of KVIrc
 
         - (Optional) If you want the secure socket layer support to be compiled
         you need the OpenSSL library and headers. (libssl.so and openssl/ssl.h)
+
 
         - (Optional) If you want perl scripting support to be compiled
         you need a working perl installation. Your libperl.so MUST be compiled

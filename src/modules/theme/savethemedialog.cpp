@@ -37,7 +37,7 @@
 #include <qimage.h>
 #include <kvi_tal_textedit.h>
 #ifdef COMPILE_USE_QT4
-#include <Q3MultiLineEdit>
+#include <q3multilineedit.h>
 #include <QDateTime>
 #else
 #include <qmultilineedit.h>

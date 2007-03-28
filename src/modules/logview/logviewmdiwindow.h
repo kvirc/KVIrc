@@ -5,7 +5,7 @@
 //   Creation date : Tue Apr 23 2002 18:05:59 by Juanjo �varez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "kvi_settings.h"
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
 

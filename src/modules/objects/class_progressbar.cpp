@@ -28,7 +28,7 @@
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 #ifdef COMPILE_USE_QT4
-#include <Q3ProgressBar>
+#include <q3progressbar.h>
 #define KVI_PROGRESS_BAR Q3ProgressBar
 #else
 #include <qprogressbar.h>
