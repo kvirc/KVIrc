@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-07 15:36+0100\n"
+"POT-Creation-Date: 2007-03-31 01:41+0200\n"
 "PO-Revision-Date: 2007-02-07 16:25+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
@@ -36,7 +36,7 @@ msgstr "Colore sfondo:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:49
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:114
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:121
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:129
 msgid "Background image:"
 msgstr "Immagine di sfondo:"
 
@@ -60,8 +60,8 @@ msgstr "Evidenzia Linea:"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:66
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:124
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:129
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:131
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:136
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:139
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:144
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:54
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:59
 msgid "Tile"
@@ -69,14 +69,14 @@ msgstr "Affianca"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:62
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:125
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:132
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:140
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:55
 msgid "Left"
 msgstr "Sinistra"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:63
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:126
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:133
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:141
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:56
 msgid "Right"
 msgstr "Destra"
@@ -85,8 +85,8 @@ msgstr "Destra"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:69
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:127
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:132
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:134
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:139
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:142
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:147
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:57
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:62
 msgid "Center"
@@ -94,14 +94,14 @@ msgstr "Centro"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:67
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:130
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:137
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:145
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:60
 msgid "Top"
 msgstr "Sopra"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.cpp:68
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:131
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:138
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:146
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_input.cpp:61
 msgid "Bottom"
 msgstr "Sotto"
@@ -241,10 +241,10 @@ msgstr "Consiglio: Sposta il cursore sopra i campi per ottenere un aiuto"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:137
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:329
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:809
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:93
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:248
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:256
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:63
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:92
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:247
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:262
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:68
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -268,11 +268,13 @@ msgstr "Il campo NickName non può contenere spazi"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr ""
+"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr ""
+"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -511,14 +513,14 @@ msgstr "Colori Testo/Allerta"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:111
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:234
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:54
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:117
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:125
 msgid "Normal:"
 msgstr "Normale:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:83
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:112
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:55
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:118
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:126
 msgid "Selected:"
 msgstr "Selezione:"
 
@@ -553,7 +555,7 @@ msgid "Progress bar color:"
 msgstr "Colore Barra di Avanzamento:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.cpp:110
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:116
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:124
 msgid "Background Colors"
 msgstr "Colore sfondo"
 
@@ -795,9 +797,9 @@ msgid "NickServ"
 msgstr "NickServ"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:323
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:242
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:243
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:55
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:241
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:249
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:60
 msgid "&OK"
 msgstr "&OK"
 
@@ -873,7 +875,7 @@ msgstr ""
 "predefinito (specificato nella scheda \"Identità\".</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:517
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:680
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:683
 msgid "User Mode"
 msgstr "Modi Utente"
 
@@ -892,17 +894,17 @@ msgstr ""
 "modi utenti iniziali per questo server"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:530
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:681
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:684
 msgid "Invisible (+i)"
 msgstr "Invisibile (+i)"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:534
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:682
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:685
 msgid "Server notices (+s)"
 msgstr "Notice del server (+s)"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:538
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:683
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:686
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
@@ -1183,7 +1185,8 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid "<center>This is the name of the currently selected server or network</center>"
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1153
@@ -1201,8 +1204,10 @@ msgid "Connect &Now"
 msgstr "&Connetti Ora"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid "<center>Hit this button to connect to the currently selected server.</center>"
-msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
+msgstr ""
+"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_servers.cpp:1177
 msgid ""
@@ -1312,11 +1317,11 @@ msgstr "Mostra gli errori e gli avvertimenti nella finestra di debug"
 msgid "Create minimized debug window"
 msgstr "Crea una finestra di debug minimizzata"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:60
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:59
 msgid "Nickname alternatives"
 msgstr "Nickname alternativi"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:63
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:62
 msgid ""
 "<center>Here you can choose up to three nicknames alternative to the primary "
 "one. KVIrc will use the alternatives if the primary nick is already used by "
@@ -1326,50 +1331,51 @@ msgstr ""
 "usa i nickname alternativi se il primo è già usato da qualcun'altro sulla "
 "rete IRC.</center>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:70
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:69
 msgid "Alt. Nickname 1:"
 msgstr "Alt Nickname 1:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:77
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:76
 msgid "Alt. Nickname 2:"
 msgstr "Alt Nickname 2:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:84
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:83
 msgid "Alt. Nickname 3:"
 msgstr "Alt Nickname 3:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:97
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:96
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:132
 msgid "Ok"
 msgstr "Ok"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:131
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:130
 msgid "Avatar Download - KVIrc"
 msgstr "Scarica Avatar - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:137
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:136
 msgid "<center>Please wait while the avatar is being downloaded</center>"
 msgstr ""
 "<center>Attendere fino a che l'avatar è stato scaricato correttamente</"
 "center>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:140
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:139
 msgid "Abort"
 msgstr "Annulla"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:171
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:170
 msgid "Failed to start the download"
 msgstr "Impossibile iniziare lo scaricamento"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:178
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:185
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:177
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:184
 msgid "Download aborted by user"
 msgstr "Scaricamento annullato dall'utente"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:214
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:213
 msgid "Choose Avatar - KVIrc"
 msgstr "Scegli un Avatar - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:220
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:219
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
 "the Web can be used.<br>If you wish to use a local image file, click the "
@@ -1382,11 +1388,11 @@ msgstr ""
 "file.<br>L'URL estesa può essere inserita manualmente (ricordati di "
 "includere <b>http://</b>)."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:238
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:237
 msgid "&Browse..."
 msgstr "&Sfoglia..."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:276
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:275
 msgid "Choose an Image File - KVIrc"
 msgstr "Scegli un Immagine - KVIrc"
 
@@ -1436,7 +1442,8 @@ msgstr ""
 "delle citazioni casuali o delle frasi.</center>"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:351
-msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -1565,11 +1572,11 @@ msgstr "Impossibile scaricare l'immagine avatar.<br><b>%Q</b>"
 msgid "Avatar Download Failed - KVIrc"
 msgstr "Impossibile Scaricare l'Avatar - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:647
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:649
 msgid "Avatar Might Be Too Big - KVIrc"
 msgstr "L'avatar potrebbe essere troppo grosso - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:648
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:650
 msgid ""
 "The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
@@ -1583,15 +1590,15 @@ msgstr ""
 "prestazioni. *Dovresti* scalarla manualmente<br>a una grandezza decente "
 "(tipo 800x600) o scegliere un'altra immagine."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:685
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:688
 msgid "Default Messages"
 msgstr "Messaggi Predefiniti"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:688
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:691
 msgid "Part message:"
 msgstr "Messaggio di uscita da un canale:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:692
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:695
 msgid ""
 "<center>This is the default part message that will be used when you<br>leave "
 "a channel by closing a channel window.</center>"
@@ -1599,11 +1606,11 @@ msgstr ""
 "<center>Questo è il messaggio predefinito che verrà usato quando<br>esci da "
 "un canale chiudendo la finestra di quel canale.</center>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:696
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:699
 msgid "Quit message:"
 msgstr "Messaggio di quit:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:699
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_identity.cpp:702
 msgid ""
 "<center>This is the default quit message that will be used when you<br>quit "
 "your IRC session by closing the console window or disconnecting by pressing "
@@ -2079,31 +2086,36 @@ msgstr "Usa nickname automatico ([prime 5 lettere ]AWAY)"
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr "Nickname (%%nick%% significa nick corrente):"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/libkvioptions.cpp:200
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/libkvioptions.cpp:199
 msgid "No such options page class name %Q"
 msgstr "Non c'è tale nome di classe nella pagina delle opzioni %Q"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:40
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Use system URL handlers"
+msgstr "Gestore URL"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:50
 msgid "<b>http://</b> handler command:"
 msgstr "comando gestore <b>http://</b>:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:41
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:51
 msgid "<b>https://</b> handler command:"
 msgstr "comando gestore <b>https://</b>:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:42
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:52
 msgid "<b>ftp://</b> handler command:"
 msgstr "comando gestore <b>ftp://</b>:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:43
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:53
 msgid "<b>mailto:</b> handler command:"
 msgstr "comando gestore <b>mailto:</b>:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:44
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:54
 msgid "<b>file://</b> handler command:"
 msgstr "comando gestore <b>file://</b>:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:45
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_urlhandlers.cpp:55
 msgid "Unknown protocol handler command:"
 msgstr "Comando gestore del protocollo sconosciuto:"
 
@@ -2253,67 +2265,63 @@ msgstr "Away:"
 msgid "Use different color for own nick:"
 msgstr "Usa colori differenti per i propri nick:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:70
-msgid "Nickname Grid"
-msgstr "Griglia Nickname"
-
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:71
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:81
 msgid "Draw nickname grid"
 msgstr "Disegna griglia dei Nickname"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:73
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:83
 msgid "Grid color:"
 msgstr "Colore Griglia:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:79
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:90
 msgid "Grid type:"
 msgstr "Tipo di Griglia:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:83
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:94
 msgid "3D Grid"
 msgstr "Griglia 3D"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:84
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:95
 msgid "3D Buttons"
 msgstr "Pulsante 3D"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:85
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:96
 msgid "Plain Grid"
 msgstr "Griglia Semplice"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:86
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:97
 msgid "Dotted Grid"
 msgstr "Griglia a puntini"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:123
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:131
 msgid "Horizontal Alignment:"
 msgstr "Allineamento orizzontale:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:127
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:135
 msgid "Vertical Alignment:"
 msgstr "Allineamento verticale:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:223
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:231
 msgid "Show gender icons"
 msgstr "Mostra icone del sesso"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:224
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:232
 msgid "Show user channel icons"
 msgstr "Mostra icone per gli utenti del canale"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:225
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:233
 msgid "Show user channel activity indicator"
 msgstr "Mostra indicatore di attività degli utenti nei canali"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:226
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:234
 msgid "Hide users label"
 msgstr "Nascondi etichette utenti"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:227
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:235
 msgid "Enable user tooltips"
 msgstr "Attiva tooltip utente"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:228
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.cpp:236
 msgid "Hide avatars"
 msgstr "Nascondi gli avatar"
 
@@ -2403,23 +2411,24 @@ msgstr "AVATAR"
 msgid "DCC/TDCC"
 msgstr "DCC/TDCC"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:126
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:132
 msgid "General Preferences"
 msgstr "Impostazioni Generali"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:129
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:135
 msgid "Theme Preferences"
 msgstr "Preferenze Tema"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:131
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:137
 msgid "KVIrc Preferences"
 msgstr "Preferenze KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:134
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:140
+#, fuzzy
 msgid ""
-"This dialog contains a set of KVIrc settings. Use the icons on the left to "
-"navigate through the option pages. The text box in the bottom left corner is "
-"a small search engine. It will highlight the pages that contain options "
+"This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
+"to navigate through the option pages. The text box in the bottom left corner "
+"is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
 "Questo dialog contiene un set di settaggi KVIrc. Usa i pulsanti sulla "
@@ -2427,7 +2436,7 @@ msgstr ""
 "è un piccolo motore di ricerca- Evidenzierà le pagine che contengono le "
 "opzioni relative alle parole che hai cercato."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:142
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:148
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
@@ -2435,7 +2444,7 @@ msgstr ""
 "Molti settaggi hanno dei tooltip che possono essere mostrati tenendo il "
 "cursore del mouse sopra la loro etichetta per qualche secondo."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:147
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:153
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
@@ -2445,7 +2454,7 @@ msgstr ""
 "\"<b>Annulla</b>\" per tralasciarli. Cliccando \"<b>Applica</b>\" salverai i "
 "cambiamenti senza chiudere la finestra."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:212
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:218
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in english and press the "
@@ -2459,21 +2468,21 @@ msgstr ""
 "cercata saranno evidenziate e tu sarai così in grado di trovarle velocemente."
 "</p><p>Per esempio prova ad inserire \"nickname\".</p>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:244
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:56
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:250
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:61
 msgid "Close this dialog, accepting all changes."
 msgstr "Chiudi questa finestra, confermando tutti i cambiamenti."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:250
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:256
 msgid "&Apply"
 msgstr "&Applica"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:251
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:257
 msgid "Commit all changes immediately."
 msgstr "Applica tutti i cambiamenti immediatamente."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:257
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:64
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/dialog.cpp:263
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/container.cpp:69
 msgid "Close this dialog, discarding all changes."
 msgstr "Chiudi questa finestra, scartando tutti i cambiamenti."
 
@@ -2616,7 +2625,8 @@ msgid "Minimum alert level:"
 msgstr "Livello di allerta minimo:"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid ""
+"<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -3226,31 +3236,36 @@ msgstr "Mostra topic del canale"
 msgid "Show channel sync time"
 msgstr "Mostra il tempo di sincronizzazione del canale"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:38
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:40
 msgid "Default text encoding:"
 msgstr "Codifica Testo Predefinita:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:43
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:45
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_sound.cpp:109
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_sound.cpp:133
 msgid "Use Language Encoding"
 msgstr "Usa Codifica Linguaggio"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:57
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:59
 msgid "Force language:"
 msgstr "Forza lingua:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:63
-msgid "You need to restart KVirc to apply a language changing"
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:65
+#, fuzzy
+msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr "La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:66
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
 msgstr "Rilevamento automatico"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:67
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:69
 msgid "en"
 msgstr "en"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_textencoding.cpp:132
+msgid "Unable to write language information to"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
@@ -3880,71 +3895,67 @@ msgstr "Prefisso e suffisso definiti dall'utente"
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr "[PREFISSO]nickname[!user@host][SUFFISSO] messaggio"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:111
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:112
 msgid "Prefix:"
 msgstr "Prefisso:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:116
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:117
 msgid "Postfix:"
 msgstr "Suffisso:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:122
-msgid "Timestamp"
-msgstr "Orario"
-
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:124
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:131
 msgid "Show timestamp"
 msgstr "Mostra orario"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:127
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:134
 msgid "Use UTC time for timestamp"
 msgstr "Stampa orario UTC"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:133
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:141
 msgid "Use special color for timestamps"
 msgstr "Usa colore speciale per i timestamps"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:139
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:147
 msgid "Timestamp format:"
 msgstr "Formato del timestamp"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:305
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:320
 msgid "Transparent"
 msgstr "Trasparente"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:377
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:401
 msgid "Message Type"
 msgstr "Tipo di messaggio"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:389
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:417
 msgid "Background:"
 msgstr "Sfondo:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:398
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:426
 msgid "Foreground:"
 msgstr "Primo piano:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:406
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:434
 msgid "Alert level:"
 msgstr "Livello di allerta:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:426
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:454
 msgid "Log this"
 msgstr "Logga questo:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:430
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:458
 msgid "Load From..."
 msgstr "Carico da...."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:432
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:460
 msgid "Save As..."
 msgstr "Salva Come.."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:561
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:589
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un File - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:618
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.cpp:646
 msgid "Choose a Filename - KVIrc "
 msgstr "Scegli un Nome per il File - KVIrc"
 
@@ -4103,16 +4114,25 @@ msgstr "Stile Messaggio"
 msgid "theme,privmsg,output,format"
 msgstr "tema,privmsg,uscita,formattazione"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:73
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:67
+msgid "Timestamp"
+msgstr "Orario"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:71
+#, fuzzy
+msgid "time,timestamp"
+msgstr "Orario"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:88
 msgid "Message Colors"
 msgstr "Colori Messaggio"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:74
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:154
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:89
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:169
 msgid "theme,colors,messages,output"
 msgstr "temi,colori,messaggi"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:153
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_messages.h:168
 msgid "Color Set"
 msgstr "Set di colori"
 
@@ -4182,7 +4202,7 @@ msgstr "Aspetto"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_ircview.h:68
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_taskbar.h:97
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:85
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:101
 msgid "Features"
 msgstr "Caratteristiche"
 
@@ -4335,7 +4355,16 @@ msgstr "tema,lista utenti,canale,sfondo"
 msgid "theme,userlist,channel,colors"
 msgstr "tema,lista utenti,canale,colori"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:86
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:81
+msgid "Nickname Grid"
+msgstr "Griglia Nickname"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:82
+#, fuzzy
+msgid "theme,userlist,channel,grid"
+msgstr "tema,lista utenti,canale"
+
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_userlist.h:102
 msgid "userlist,channel"
 msgstr "lista utenti,canale"
 
@@ -4382,4 +4411,3 @@ msgstr "Query"
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "chat"
-

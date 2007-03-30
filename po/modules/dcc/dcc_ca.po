@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-07 15:36+0100\n"
+"POT-Creation-Date: 2007-03-31 01:40+0200\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -36,25 +36,25 @@ msgstr ""
 msgid "unknown"
 msgstr "desconegut"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:156
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:774
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:158
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:783
 msgid "Choose Files to Send - KVIrc"
 msgstr "Esculli els Arxius a Enviar - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:187
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:189
 #, fuzzy
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "No he pogut enviar la petició DCC %s a %s: la connexió IRC ha estat "
 "finalitzada"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:197
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:812
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:199
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:821
 #, fuzzy
 msgid "Can't open file %Q for reading"
 msgstr "No he pogut obrir l'arxiu %s per a lectura"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:267
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:269
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
@@ -62,25 +62,25 @@ msgstr ""
 "<b>%1 [%2@%3]</b> demana una <b>Connexió Directa a Client (DCC)</b> en mode "
 "<b>%4</b><br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:272
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:274
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connexió serà assegurada emprant SSL.<br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:278
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:280
 msgid "You will be the passive side of the connection.<br>"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:282
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr ""
 "El destí de la connexió serà la màquina <b>%1</b> en el port <b>%2</b><br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:287
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:534
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:289
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:543
 msgid "DCC %1 Request - KVIrc"
 msgstr "Petició DCC %1 - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:338
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:340
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -90,11 +90,11 @@ msgstr ""
 "modo <b>VOICE</b>.<br>El destí de la connexió serà la màquina <b>%4</b> en "
 "el port <b>%5</b><br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:344
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:346
 msgid "DCC VOICE request"
 msgstr "Petició de DCC VOICE"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:407
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:411
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -104,11 +104,11 @@ msgstr ""
 "mode <b>CANVAS</b>.<br>El destí de la connexió serà la màquina <b>%4</b> en "
 "el port <b>%5</b><br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:413
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:417
 msgid "DCC CANVAS request"
 msgstr "Petició de DCC CANVAS"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:493
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:502
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
 "large.<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
@@ -117,7 +117,7 @@ msgstr ""
 "longitud.<br>El destí de la connexió serà la màquina <b>%6</b> en el port <b>"
 "%7</b><br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:506
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:515
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> bytes "
 "large.<br>You will be the passive side of the connection.<br>"
@@ -125,7 +125,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> vol enviar-li l'arxiu '<b>%4</b>', de <b>%5</b> bytes de "
 "longitud.<br>Seràs el cantó passiu de la connexió.<br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:519
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:528
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -143,23 +143,23 @@ msgstr ""
 "KVIrc que accepti avatars automàticament activant l'opció <tt>Acceptar "
 "automàticament avatars entrants</tt>.<br>"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:548
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:557
 #, fuzzy
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Acceptant automàticament petició DCC %s de %s!%s@%s per l'arxiu %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:609
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:618
 #, fuzzy
 msgid "Choose Files to Save - KVIrc"
 msgstr "Esculli els Arxius a Enviar - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:622
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:631
 #, fuzzy
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr ""
 "Guardant automàticament el DCC %s arxiu %s com a \r![!dbl]play $0\r%s\r"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:656
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:665
 msgid ""
 "The file '<b>%1</b>' already existsand is <b>%2</b> bytes large.<br>Do you "
 "wish to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the "
@@ -170,7 +170,7 @@ msgstr ""
 "automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
 "incompleta?"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:668
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:677
 #, fuzzy
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
@@ -182,41 +182,41 @@ msgstr ""
 "automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
 "incompleta?"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:738
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/broker.cpp:747
 #, fuzzy
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "L'arxiu %s ja existeix, renombrant automàticament a %s.rnm"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:157
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:158
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Intentant una connexió %s DCC pasiva"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:167
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:168
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Intentant una connexió %s DCC activa"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:181
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:182
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:761
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:104
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:107
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactant amb la màquina %s en el port %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:183
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:184
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:764
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:80
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:83
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
 msgstr "Escoltant en la interfície %s port %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:206
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:207
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "L'adreça IP local és privada, determinant des del servidor IRC: %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:208
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:209
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1507
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
@@ -225,7 +225,7 @@ msgstr ""
 "L'adreça IP local és privada, però és impossible determinar-la des del "
 "servidor IRC"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:211
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:212
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1510
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
@@ -233,37 +233,37 @@ msgstr ""
 "L'adreça IP local és privada, però no tinc un servidor IRC des d'on "
 "determinar-la"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:233
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:234
 #, fuzzy
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr "Enviada petició DCC %s a %s, esperant la connexió del client remot..."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:236
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:237
 #, fuzzy
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "La petició DCC %s no ha estat enviada, esperant connexió manual"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:244
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:245
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1569
 msgid "Low-level transport connection established"
 msgstr "Establerta la connexió de transport de baix nivell"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:245
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:246
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1570
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciant negociació del protocol SSL"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:253
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:254
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ERROR SSL]: %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:301
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:387
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:302
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:388
 msgid "Cannot send data: No active connection"
 msgstr "No puc enviar dades: No hi ha una connexió activa"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:343
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:344
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -272,12 +272,12 @@ msgstr ""
 "El motor de xifrat no ha estat capaç de desxifrar el missatge actual (%Q): %"
 "s, no s'han enviat dades a l'extrem remot"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:402
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:403
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:827
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:446
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:447
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -286,21 +286,21 @@ msgstr ""
 "El següent missatge semblar estar xifrat, però el motor de xifrat ha fallat "
 "al descodificar-lo: %s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:492
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:493
 #, fuzzy
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %s ha fallat: %Q"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:520
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:521
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:919
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:279
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:282
 #, fuzzy
 msgid "Connected to %Q:%Q"
 msgstr "Conectat a %s:%s"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:522
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/chat.cpp:523
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:921
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:281
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:284
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extrem final és %s:%s"
@@ -377,7 +377,7 @@ msgid "Output buffer: %d bytes"
 msgstr "Buffer de sortida: %d bytes"
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/voice.cpp:910
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:274
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:277
 msgid "DCC Failed: %Q"
 msgstr "Ha fallat el DCC: %Q"
 
@@ -673,79 +673,79 @@ msgid "OK"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/send.cpp:1850
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:131
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:136
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:75
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:78
 msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Intentant una connexió pasiva DCC CANVAS"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:95
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:98
 #, fuzzy
 msgid ""
 "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Enviada petició DCC CANVAS a %s, esperant la connexió des del client remot..."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:97
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:100
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Petició DCC CANVAS no enviada; esperant connexions manuals"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:101
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvas.cpp:104
 msgid "Attempting an active DCC CANVAS connection"
 msgstr "Intentant una connexió DCC CANVAS activa"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1560
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1563
 msgid "&Line"
 msgstr "&Línia"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1561
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1569
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1564
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1572
 msgid "&Rectangle"
 msgstr "&Rectangle"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1562
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1565
 msgid "&Ellipse"
 msgstr "&Elipse"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1563
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1566
 msgid "&Pie"
 msgstr "Pastís"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1564
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1567
 msgid "&Chord"
 msgstr "A&cord"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1566
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1569
 msgid "&Rich text (html)"
 msgstr "Text en&riquit (html)"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1568
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1571
 msgid "&Triangle"
 msgstr "&Triangle"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1570
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1573
 msgid "&Pentagon"
 msgstr "&Pentagon"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1571
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1574
 msgid "&Hexagon"
 msgstr "&Hexagon"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1573
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1576
 msgid "&Shape"
 msgstr "Figura"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1574
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1577
 msgid "&Item"
 msgstr "Element"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1575
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1578
 msgid "&Polygons"
 msgstr "&Polígons"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1577
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/canvaswidget.cpp:1580
 msgid "&Insert"
 msgstr "&Inserir"
 
@@ -991,32 +991,32 @@ msgstr ""
 "La petició anterior sembla errònia: freqüència de motreig '%s' no vàlida, "
 "posant a 8000 per defecte"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/requests.cpp:1150
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/requests.cpp:1151
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr "Tipus DCC desconegut '%s'"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:59
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:61
 msgid "&Accept"
 msgstr "&Acceptar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:64
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:66
 msgid "&Reject"
 msgstr "&Rebutjar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:118
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:123
 msgid "&Rename"
 msgstr "&Renombrar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:122
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:127
 msgid "Over&write"
 msgstr "Sobreescriure"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:126
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:131
 msgid "Re&sume"
 msgstr "Continuar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:138
+#: /home/hellvis69/kvircsvn/kvirc/src/modules/dcc/dialogs.cpp:143
 msgid "File Already Exists - KVIrc"
 msgstr "L'Arxiu Ja Existeix - KVIrc"
 
