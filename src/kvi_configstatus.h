@@ -8,10 +8,10 @@
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Mon Mar 26 14:33:03 UTC 2007"
+#define BUILD_DATE "Fri Mar 30 07:04:10 UTC 2007"
 
 /* these are the build flags */
-#define BUILD_FLAGS "x86_64-cfgiopsAGTZ"
+#define BUILD_FLAGS "i686-cefgiopsAGTZ"
 
 /* define if you want to enable the Arts daemon support */
 /* #undef COMPILE_ARTS_SUPPORT */
@@ -26,7 +26,7 @@
 /* #undef COMPILE_DISABLE_DCC_VOICE */
 
 /* define if you want to enable the Esound daemon support */
-/* #undef COMPILE_ESD_SUPPORT */
+#define COMPILE_ESD_SUPPORT 1
 
 /* define if you have the SIOCGIFADDR ioctl and the related headers */
 #define COMPILE_GET_INTERFACE_ADDRESS 1
@@ -69,7 +69,7 @@
 #define COMPILE_OSS_SUPPORT 1
 
 /* define if you have perl and want the perl scripting support in kvirc */
-#define COMPILE_PERL_SUPPORT 1
+/* #undef COMPILE_PERL_SUPPORT */
 
 /* define if you have the KDE support and want the pseudo transparency */
 #define COMPILE_PSEUDO_TRANSPARENCY 1
@@ -96,7 +96,7 @@
 #define COMPILE_WITH_SYSTEM_MEMMOVE 1
 
 /* define if you want to enable the ZLib library support */
-#define COMPILE_XSS_SUPPORT 1
+/* #undef COMPILE_XSS_SUPPORT */
 
 /* define if you want to enable the ZLib library support */
 #define COMPILE_ZLIB_SUPPORT 1
@@ -195,7 +195,7 @@
 #define SIZEOF_INT 4
 
 /* The size of `long int', as computed by sizeof. */
-#define SIZEOF_LONG_INT 8
+#define SIZEOF_LONG_INT 4
 
 /* The size of `long long int', as computed by sizeof. */
 #define SIZEOF_LONG_LONG_INT 8
@@ -207,7 +207,7 @@
 #define SIZEOF_UNSIGNED_INT 4
 
 /* The size of `unsigned long int', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_LONG_INT 8
+#define SIZEOF_UNSIGNED_LONG_INT 4
 
 /* The size of `unsigned long long int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_LONG_LONG_INT 8
@@ -216,7 +216,7 @@
 #define SIZEOF_UNSIGNED_SHORT_INT 2
 
 /* The size of `void *', as computed by sizeof. */
-#define SIZEOF_VOID_P 8
+#define SIZEOF_VOID_P 4
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1

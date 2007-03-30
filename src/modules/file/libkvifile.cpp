@@ -35,6 +35,7 @@
 #include <qfileinfo.h>
 #include "kvi_file.h"
 #include <qdir.h>
+#include <qtextstream.h>
 
 /*
 	@doc: file.copy
@@ -832,6 +833,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	KviKvsArray * a = new KviKvsArray();
 
 	int iIndex=0;
+
 	QTextStream stream( &f );
 
 	stream.setEncoding(bLocal8Bit ? QTextStream::Locale : QTextStream::UnicodeUTF8);

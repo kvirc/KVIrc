@@ -45,10 +45,12 @@
 		KviTalToolBar::KviTalToolBar(const QString &label,Q3MainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
 		: Q3ToolBar(label,w,dock,bNewLine,nam)
 		{
+			setFrameStyle(QFrame::NoFrame);
 		}
 		KviTalToolBar::KviTalToolBar(Q3MainWindow *w,const char * name)
 		: Q3ToolBar(w,name)
 		{
+			setFrameStyle(QFrame::NoFrame);
 		}
 		#include "kvi_tal_toolbar_qt4.moc"
 

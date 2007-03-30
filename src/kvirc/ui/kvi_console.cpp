@@ -653,9 +653,13 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).begin();
 				it != KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).end() ; ++it)
 		{
+			if((*it).isEmpty())
+				continue;
 			// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!) !!!!
 			if(szSource.find(QString(" %1 ").arg(*it),0,false) > -1)
+			{
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
+			}
 		}
 	}
 
