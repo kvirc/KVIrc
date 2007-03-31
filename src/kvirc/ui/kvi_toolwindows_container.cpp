@@ -87,6 +87,7 @@ KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const Q
 	setIconSet(is1);
 	setToggleButton(true);
 	setUsesBigPixmap(false);
+	setAutoRaise(true);
 //	setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Ignored));
 }
 

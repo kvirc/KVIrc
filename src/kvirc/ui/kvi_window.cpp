@@ -435,6 +435,9 @@ void KviWindow::destroyTaskBarItem()
 QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
 {
 	QToolButton * b = new KviStyledToolButton(par,nam);
+#ifdef COMPILE_USE_QT4
+	b->setAutoRaise(true);
+#endif
 	b->setToggleButton(true);
 	b->setUsesBigPixmap(false);
 #if QT_VERSION >= 300

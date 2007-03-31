@@ -36,6 +36,7 @@ KviScriptUserButton::KviScriptUserButton(QWidget * par,const char * name)
 	m_pScript = 0;
 //	setAutoRaise(true);
 	connect(this,SIGNAL(clicked()),this,SLOT(btnClicked()));
+	setAutoRaise(true);
 }
 
 KviScriptUserButton::~KviScriptUserButton()

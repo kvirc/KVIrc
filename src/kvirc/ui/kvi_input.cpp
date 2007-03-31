@@ -2362,6 +2362,15 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored));
 #endif
 	
+
+#ifdef COMPILE_USE_QT4
+	m_pMultiEditorButton->setAutoRaise(true);
+	m_pCommandlineModeButton->setAutoRaise(true);
+	m_pIconButton->setAutoRaise(true);
+	m_pHistoryButton->setAutoRaise(true);
+	m_pHideToolsButton->setAutoRaise(true);
+#endif
+
 	pLayout->setStretchFactor(m_pInputEditor,100000);
 	pLayout->setStretchFactor(m_pButtonContainer,0);
 	pLayout->setStretchFactor(m_pHideToolsButton,0);

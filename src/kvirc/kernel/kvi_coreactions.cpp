@@ -756,9 +756,12 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 			visibleName(),
 			this,SLOT(activate()),t,name());
 	b->setPopup(m_pPopup);
-	b->setPopupDelay(1);
-#ifndef COMPILE_USE_QT4
+	
+#ifdef COMPILE_USE_QT4
+	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
+#else
 	b->setShowSubmenuIndicator(true);
+	b->setPopupDelay(1);
 #endif
 	registerWidget(b);
 	if(!isEnabled())b->setEnabled(false);
@@ -912,7 +915,7 @@ void KviConnectToServerAction::popupActivated(int id)
 KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
 : KviSubmenuAction(pParent,
 	QString(KVI_COREACTION_USERMODEMENU),
-	QString("bug :D"),
+	QString(""),
 	__tr2qs("User Mode"),
 	__tr2qs("Shows a popup menu that allows quickly changing user modes"),
 	KviActionManager::categoryIrc(),
@@ -1115,7 +1118,7 @@ QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
 : KviSubmenuAction(pParent,
 	QString(KVI_COREACTION_IRCTOOLS),
-	QString("bug"),
+	QString(""),
 	__tr2qs("Irc Tools"),
 	__tr2qs("Shows a popup menu with some IRC Tools"),
 	KviActionManager::categoryIrc(),
@@ -1151,7 +1154,7 @@ void KviIrcToolsAction::popupActivated(int id)
 KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
 : KviSubmenuAction(pParent,
 	QString(KVI_COREACTION_IRCACTIONS),
-	QString("bug"),
+	QString(""),
 	__tr2qs("Irc Actions"),
 	__tr2qs("Shows a popup menu with some IRC Actions"),
 	KviActionManager::categoryIrc(),

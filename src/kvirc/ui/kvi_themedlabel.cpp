@@ -82,6 +82,38 @@ void KviThemedLabel::applyOptions()
 	update();
 }
 
+#ifdef COMPILE_USE_QT4
+void KviThemedLabel::paintEvent ( QPaintEvent * event )
+{
+	QFrame::paintEvent(event);
+	QPainter p(this);
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(g_pShadedChildGlobalDesktopBackground)
+	{
+		QPoint pnt = mapToGlobal(contentsRect().topLeft());
+		p.drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
+	} else {
+#endif
+
+		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
+		{
+			p.drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
+		} else {
+			p.fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
+		}
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	}
+#endif
+
+	QRect r = contentsRect();
+	r.setLeft(r.left() + 2); // some margin
+
+	p.setPen(KVI_OPTION_COLOR(KviOption_colorLabelForeground));
+	
+	p.drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
+}
+#else
 void KviThemedLabel::drawContents(QPainter *p)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -110,7 +142,7 @@ void KviThemedLabel::drawContents(QPainter *p)
 	
 	p->drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
 }
-
+#endif
 
 void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
 {

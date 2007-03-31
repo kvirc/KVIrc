@@ -207,6 +207,16 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_joinTime = QDateTime::currentDateTime();
 	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toTime_t();
 	
+#ifdef COMPILE_USE_QT4
+	m_pHideToolsButton->setAutoRaise(true);
+	m_pDoubleViewButton->setAutoRaise(true);
+	m_pListViewButton->setAutoRaise(true);
+	if(m_pBanEditorButton) m_pBanEditorButton->setAutoRaise(true);
+	if(m_pBanExceptionEditorButton) m_pBanExceptionEditorButton->setAutoRaise(true);
+	if(m_pInviteEditorButton) m_pInviteEditorButton->setAutoRaise(true);
+	m_pModeEditorButton->setAutoRaise(true);
+#endif
+
 }
 
 KviChannel::~KviChannel()

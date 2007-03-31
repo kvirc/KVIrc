@@ -374,16 +374,14 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 
 	m_pToolsButton = new KviStyledToolButton(this,"btntools");
-#if QT_VERSION >= 300
 #ifdef COMPILE_USE_QT4
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
+	m_pToolsButton->setAutoRaise(true);
 #else
 	QIconSet is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)),QIconSet::Small);
 #endif
 	m_pToolsButton->setIconSet(is1);
-#else
-	m_pToolsButton->setOnIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
-#endif
+
 	KviTalToolTip::add(m_pToolsButton,__tr2qs("Search tools"));
 	m_pToolsButton->setFocusProxy(this);
 
