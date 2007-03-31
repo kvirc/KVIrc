@@ -1,16 +1,16 @@
-# translation of theme_it.po to
+# translation of theme_ru.po to Russian
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Alexey Uzhva <alexey ar kvirc dot ru>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: theme_it\n"
+"Project-Id-Version: theme_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-02-07 16:32+0100\n"
-"Last-Translator: \n"
-"Language-Team:  <it@li.org>\n"
+"PO-Revision-Date: 2007-03-31 09:45+0400\n"
+"Last-Translator: Alexey Uzhva <alexey ar kvirc dot ru>\n"
+"Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,89 +18,84 @@ msgstr ""
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:50
 msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr ""
-"Il file selezionato non sembra essere un valido pacchetto tema per KVIrc"
+msgstr "Выбранные файлы не являются пакетами темы KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:70
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr "Il file selezionato non sembra essere un valido pacchetto KVIrc: %Q"
+msgstr "Выбранный файл не является пакетом темы KVIrc : %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:118
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:316
 msgid "Author"
-msgstr "Autore"
+msgstr "Автор"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:119
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:317
 msgid "Created at"
-msgstr "Creato il"
+msgstr "Дата создания"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:120
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:318
 msgid "Created with"
-msgstr "Creato con"
+msgstr "Создано с помощью"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:200
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr ""
-"Attenzione: il tema potrebbe essere incompatibile con questa versione di "
-"KVIrc"
+msgstr "Предупреждение: тема может быть не совместима с вашей версией KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:209
 msgid "Go Back to Package Data"
-msgstr "Torna ai Dati del Pacchetto"
+msgstr "Вернуться к данным пакета"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:216
 msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
-msgstr ""
-"Attenzione: alcuni temi contenuti in questo pacchetto potrebbero essere "
-"corrotti o incompatibili con questa versione di KVIrc"
+msgstr "Предупреждение: некоторые файлы этого пакета могут быть повреждены или не совместимы с вашей версией KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:220
 msgid "Show Details"
-msgstr "Mostra Dettagli"
+msgstr "Показать подробности"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:272
 msgid "Install Theme Pack - KVIrc"
-msgstr "Installa Pacchetto Tema - KVIrc"
+msgstr "Установить пакет темы - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:273
 msgid "You're about to install the following theme package"
-msgstr "Stai per installare il sequente pacchetto tema"
+msgstr "Вы пытаетесь установить пакет темы"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:274
 msgid "Do you want to proceed with the installation ?"
-msgstr "Vuoi procedere con l'installazione?"
+msgstr "Вы хотите продолжить установку?"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:275
 msgid "Do Not Install"
-msgstr "Non Installare"
+msgstr "Не устанавливать"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:276
 msgid "Yes, Proceed"
-msgstr "Sì, Procedi"
+msgstr "Да, продолжить"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:293
 msgid "Failed to unpack the selected file: %Q"
-msgstr "Impossibile decomprimere il file selezionato: %Q"
+msgstr "Не могу распаковать выбранный файл: %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:319
 msgid "Theme Engine Version"
-msgstr "Versione Motore Temi"
+msgstr "Версия движка темы"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/themefunctions.cpp:320
 msgid "Subdirectory"
-msgstr "Sottodirectory"
+msgstr "Подкаталог"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:87
 msgid "Your name here"
-msgstr "Tuo nome"
+msgstr "Ваше имя"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:89
 msgid "Put a package description here..."
-msgstr "Inserisci una descrizione del tema"
+msgstr "Запишите здесь описание вашего пакета..."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:121
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:347
@@ -109,77 +104,68 @@ msgstr "Inserisci una descrizione del tema"
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:476
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:484
 msgid "Export Theme - KVIrc"
-msgstr "Esporta Tema - KVIrc"
+msgstr "Экспорт темы - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:130
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
-msgstr ""
-"Questa procedura ti permette di esportare i temi selezionati in un singolo "
-"pacchetto. E' comodo quando vuoi distribuire i tuoi temi al pubblico."
+msgstr "Эта процедура позволяет вам экспортировать выделенные темы в один пакет. Это очень удобно, если вы хотите распространять ваши темы в интернете."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:132
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
-msgstr ""
-"Ti verrà chiesto di inserire un nome del pacchetto, una descrizione e, se "
-"vuoi, un'icona/screenshot."
+msgstr "Вам будет предложено заполнить описание вашей темы, и, если вы захотите, приложить скриншот."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:134
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:83
 msgid "Hit the \"Next\" button to begin."
-msgstr "Premi il bottone \"Avanti\" per iniziare."
+msgstr "Нажмите \"Далее\" для продолжения."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:141
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:90
 msgid "Welcome"
-msgstr "Benvenuto"
+msgstr "Добро пожаловать"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:153
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
-msgstr ""
-"Questa è la lista di informazioni per i temi che stai pacchettizzando. Se ti "
-"sembra a posto premi \"Avanti\" per continuare, altrimenti premi \"Annulla\" "
-"e ricontrolla i temi."
+msgstr "Это информация о темах, которые вы хотите запаковать. Если она в порядке, нажмите \"Далее\" для продолжения. Иначе, нажмите \"Отмена\" и измените ее."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:203
 msgid "Theme Data"
-msgstr "Dati Tema"
+msgstr "Данные темы"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:215
 msgid ""
 "Here you need to provide informations about you (the packager) and a short "
 "description of the package you're creating."
-msgstr ""
-"Qui devi inserire informazioni su di te (il pacchettizzatore) e una piccola "
-"descrizione del pacchetto che stai creando."
+msgstr "Здесь вы должны указать информацию о себе и краткое описание пакета."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:220
 msgid "Package Name:"
-msgstr "Nome Pacchetto:"
+msgstr "Имя пакета:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:228
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:115
 msgid "Version:"
-msgstr "Versione:"
+msgstr "Версия:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:236
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:123
 msgid "Description:"
-msgstr "Descrizione:"
+msgstr "Описание:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:244
 msgid "Package Author:"
-msgstr "Autore Pacchetto:"
+msgstr "Автор:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:255
 msgid "Package Informations"
-msgstr "Informazioni Pacchetto"
+msgstr "Информация о пакете"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:267
 msgid ""
@@ -187,119 +173,112 @@ msgid ""
 "for your theme package. It can be an icon, a logo or a screenshot and it "
 "should be not larger than 300x225. If you don't provide an image a simple "
 "default icon will be used at installation stage."
-msgstr ""
-"Qui puoi scegliere l'immagine che apparirà nel dialog di installazione per "
-"il tuo tema. Può essere un'icona, un logo o uno screenshot e non dev'essere "
-"più grande di 300x225. Se non inserisci un'immagine verrà usata una semplice "
-"immagine di default durante l'installazione."
+msgstr "Здесь вы можете выбрать изображение, которое будет видно пользователю во время установки темы. Это может быть иконка или скриншот, но их размер не может превышать 300х225 пикселей. Если вы не укажете изображения, то будет использовано изображение по умолчанию."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:284
 msgid "Icon/Screenshot"
-msgstr "Icona/Screenshot"
+msgstr "Иконка или скриншот"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:296
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *."
 "%1 extension."
-msgstr ""
-"Qui devi scegliere il nome del file per il tema. Dovrebbe avere "
-"un'estensione *.%1."
+msgstr "Здесь вы можете выбрать имя файла вашего пакета темы. оно должно иметь расширение *.%1"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:306
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
-msgstr ""
-"Infine premi il bottone \"Termina\" per completare la pacchettizzazione."
+msgstr "Для завершения операции упаковки нажмите \"Завершить\"."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:312
 msgid "Package Path"
-msgstr "Percorso Pacchetto"
+msgstr "Путь к пакету"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:347
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:206
 msgid "Failed to load the selected image"
-msgstr "Impossibile caricare l'immagine selezionata"
+msgstr "Не могу загрузить выбранное изображение"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:387
 msgid "Failed to load the selected image: please fix it"
-msgstr "Impossibile caricare l'immagine selezionata: sistemala"
+msgstr "Не могу загрузить выбранное изображение: пожалуйста, исправьте его"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:461
 #: /home/oem/kvirc-qt4/src/modules/theme/packthemedialog.cpp:473
 msgid "Packaging failed"
-msgstr "Pacchettizzazione fallita"
+msgstr "Упаковка завершена неудачно"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
-msgstr "Errore durante l'installazione del tema: %Q"
+msgstr "Не могу установить пакет темы: %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/libkvitheme.cpp:110
 msgid "Choose a file to save the screenshot to"
-msgstr "Scegli un file per salvare lo screenshot"
+msgstr "Выберите файл для сохранения скриншота."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/libkvitheme.cpp:125
 msgid "Error making screenshot"
-msgstr "Errore nella creazione dello screenshot"
+msgstr "Не могу сделать скриншот."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:101
 msgid "by"
-msgstr "da"
+msgstr "от"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:147
 msgid "Manage Themes - KVIrc"
-msgstr "Gestione Temi - KVIrc"
+msgstr "Управление темами - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:165
 msgid "Save Current Theme..."
-msgstr "Salva Tema Corrente..."
+msgstr "Сохранить текущую тему..."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:175
 msgid "Export Selected Themes to a Distributable Package"
-msgstr "Esporta Temi Selezionati in Pacchetti Distribuibili"
+msgstr "Экспортировать выбранные темы в пакет для дальнейшего распространения"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:181
 msgid "Delete Selected Themes"
-msgstr "Cancella Temi Selezionati"
+msgstr "Удалить выбранные темы"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:191
 msgid "Install Theme Package From Disk"
-msgstr "Installa Tema Da Disco"
+msgstr "Установить пакет темы с локального диска"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:197
 msgid "Get More Themes..."
-msgstr "Scarica Nuovi Temi..."
+msgstr "Получить больше тем"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:286
 msgid "&Remove Theme"
-msgstr "Elimina Tema"
+msgstr "Удалить тему"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:287
 msgid "&Apply Theme"
-msgstr "Applica Tema"
+msgstr "Применить тему"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:303
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:316
 msgid "Apply theme - KVIrc"
-msgstr "Applica tema - KVIrc"
+msgstr "Применить тему - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:304
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr "Vuoi applicare il tema \"%Q\" (versione %Q)?"
+msgstr "Вы действительно хотите применить тему \"%Q\" (версии %Q)?"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:315
 msgid "Failed to apply the specified theme: %Q"
-msgstr "Applicazione del tema specificato fallita: %Q"
+msgstr "Не могу применить выбранную тему: %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:329
 msgid "Delete Theme - KVIrc"
-msgstr "Cancella Tema - KVIrc"
+msgstr "Удалить тему - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:330
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr "Sei sicuro di voler cancellare il tema \"%Q\" (versione %Q)?"
+msgstr "Вы действительно хотите удалить \"%Q\" (версии %Q)?"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/managementdialog.cpp:346
 msgid "Open Theme - KVIrc"
-msgstr "Apri Tema - KVIrc"
+msgstr "Открыть тему - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:70
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:206
@@ -308,7 +287,7 @@ msgstr "Apri Tema - KVIrc"
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:276
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:286
 msgid "Save Current Theme - KVIrc"
-msgstr "Salva Tema Corrente - KVIrc"
+msgstr "Сохранить текущую тему - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:79
 msgid ""
@@ -317,40 +296,31 @@ msgid ""
 "theme settings and later come back to this theme with a single click. It "
 "will also allow you to manually modify the theme settings and later export "
 "them to a distributable package."
-msgstr ""
-"Questa procedura ti permette di salvare il tema corrente in una sola "
-"directory. E' utile se vuoi applicare altri temi o giocare coi settaggi del "
-"tema e tornare più tardi a questo tema con un singolo click. Ti permette "
-"inoltre di modificare manualmente i settaggi del tema e esportarli poi in un "
-"pacchetto distribuibile"
+msgstr "Эта процедура позволить сохранить все настройки текущей темы в одну папку. Это удобно, если вы хотите применить другую тему и хотите потом вернуться обратно в один клик. Это также удобно, если вы хотите вручную изменить тему (например, изменить или добавить свои изображения или иконки) а потом экспортировать в пакет темы."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:81
 msgid ""
 "You will be asked to provide a theme name, a description and, if you want, a "
 "screenshot."
-msgstr ""
-"Ti verrà chiesto di inserire un nome del pacchetto, una descrizione e, se "
-"vuoi, uno screenshot."
+msgstr "Вам будет предложено указать имя темы, описание и скриншот."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:102
 msgid ""
 "Here you need to provide informations about you (the author) and a short "
 "description of the theme you're creating."
-msgstr ""
-"Qui devi inserire informazioni su di te (l'autore) e una piccola descrizione "
-"del pacchetto che stai creando."
+msgstr "Здесь вы должны указать информацию о себе (авторе) и короткое описание темы, которую вы создаете."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:107
 msgid "Theme Name:"
-msgstr "Nome Tema:"
+msgstr "Имя темы:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:131
 msgid "Theme Author:"
-msgstr "Autore Tema:"
+msgstr "Автор темы:"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:142
 msgid "Theme Informations"
-msgstr "Informazioni Tema"
+msgstr "Информация о теме"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:154
 msgid ""
@@ -358,48 +328,45 @@ msgid ""
 "screenshot will be displayed in the tooltips of the theme management dialog "
 "and will be also visible in the package installation dialog if you will "
 "export the theme to a distributable package."
-msgstr ""
-"Qui puoi scegliere sia uno screenshot dal tuo disco o crearne uno ora. Lo "
-"screenshot sarà visualizzato nelle tooltip del dialog di gestione dei temi e "
-"sarà visibile nel dialog di installazione del pacchetto se esporterai il "
-"tema in un pacchetto distribuibile"
+msgstr "Здесь вы можете выбрать скриншот или изображение для вашей темы. Это изображение будет показано во всплывающих подсказках диалога управления темы, а также будет видно при установке пакеты темы, если вы в дальнейшем захотите его создать."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:170
 msgid "Make Screenshot Now"
-msgstr "Crea uno Screenshot Ora"
+msgstr "Создать скриншот сейчас."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:177
 msgid "Screenshot"
-msgstr "Screenshot"
+msgstr "Скриншот"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:227
 msgid "Acquire Screenshot - KVIrc"
-msgstr "Acquisisci Screenshot - KVIrc"
+msgstr "Сделать скриншот - KVIrc"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:227
 msgid "Failed to make screenshot"
-msgstr "Errore nella creazione dello screenshot"
+msgstr "Не могу сделать скриншот"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:243
 msgid "You must choose a theme name!"
-msgstr "Devi scegliere un nome per il tema!"
+msgstr "Вы должны выбрать имя темы!"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:264
 msgid "Unable to create theme directory."
-msgstr "Impossibile creare la directory del tema."
+msgstr "Не могу создать папку темы"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:275
 msgid "Unable to save theme: %Q"
-msgstr "Impossibile salvare il tema: %Q"
+msgstr "Не могу сохранить тему: %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:286
 msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Impossibile caricare l'immagine selezionata: sistemala"
+msgstr "Не могу загрузить выбранное изображение. Пожалуйста, исправьте его."
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:293
 msgid "Theme saved successfully to "
-msgstr "Tema salvato con successo in"
+msgstr "Тема успешно сохранена в "
 
 #: /home/oem/kvirc-qt4/src/modules/theme/savethemedialog.cpp:296
 msgid "Save Theme - KVIrc"
-msgstr "Salva Tema - KVIrc"
+msgstr "Сохранить тему - KVIrc"
+

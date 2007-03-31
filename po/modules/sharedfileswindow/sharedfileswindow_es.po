@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-31 01:41+0200\n"
+"POT-Creation-Date: 2007-03-31 09:10+0400\n"
 "PO-Revision-Date: 2004-04-05 16:30+0200\n"
 "Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 "Language-Team: español <LL@li.org>\n"
@@ -15,47 +15,47 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
 msgid "Manage S&hared Files"
 msgstr "Gestionar Archivos Compartidos"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr "Editar Archivo Compartido - KVIrc"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
 msgid "Share name:"
 msgstr "Nombre compartido:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
 msgid "File path:"
 msgstr "Ruta del Archivo:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
 msgid "&Browse..."
 msgstr "&Navegar..."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
 msgid "User mask:"
 msgstr "Máscara de usuario:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
 msgid "Expire at:"
 msgstr "Expira el:"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
 msgid "&OK"
 msgstr "&Aceptar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
 msgid "Invalid expire time"
 msgstr "Momento de expiración no válido"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -63,61 +63,61 @@ msgstr ""
 "La fecha/hora de expiración pertenece al pasado: por favor, desactiva la "
 "opción \"comprobar expiración\" o especifica una fecha/hora del futuro"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
 msgid "OK"
 msgstr "Aceptar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
 msgid "Invalid share name"
 msgstr "El nombre de archivo a compartir no es válido"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 "El nombre del archivo compartido no puede estar vacío; por favor, corrígelo"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
 msgid "Can't open the file"
 msgstr "No pude abrir el archivo"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr "El archivo no existe o no se puede leer, por favor, comprueba la ruta"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
 msgid "Never"
 msgstr "Nunca"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
 msgid "Name"
 msgstr "Nombre"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
 msgid "Filename"
 msgstr "Nombre del archivo"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
 msgid "Mask"
 msgstr "Máscara"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
 msgid "Expires"
 msgstr "Expira"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
 msgid "&Add..."
 msgstr "&Añadir..."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
 msgid "Re&move"
 msgstr "Eli&minar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
 msgid "&Edit"
 msgstr "&Editar"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
+#: /home/oem/kvirc-qt4/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
 msgid "Shared Files"
 msgstr "Archivos Compartidos"
