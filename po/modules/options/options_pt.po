@@ -3,19 +3,19 @@
 # translation of kvirc_pt.po to
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
+#: /home/oem/kvirc-qt4/src/modules/options/optw_dcc.cpp:304
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007.
-#: /home/oem/kvirc-qt4/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-02-21 04:47+0000\n"
+"PO-Revision-Date: 2007-03-31 20:30+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -266,8 +266,7 @@ msgstr "O campo do Apelido não pode conter espaços!"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr "A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -375,8 +374,7 @@ msgstr "Activar piscar de ícone na barra de tarefas"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
+msgstr "Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -1187,10 +1185,8 @@ msgid "Server:"
 msgstr "Servidor:"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
-msgstr ""
-"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
+msgstr "<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_servers.cpp:1153
 msgid "Advanced..."
@@ -1205,8 +1201,7 @@ msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Prima este botão para conectar ao actual servidor seleccionado.</"
 "center>"
@@ -1441,10 +1436,8 @@ msgstr ""
 "umas citações ou frases quaisquer.</center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
-"este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_identity.cpp:356
 msgid "Profile"
@@ -2089,9 +2082,8 @@ msgid "No such options page class name %Q"
 msgstr "Nenhum nome de classe nas opções da página %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Use system URL handlers"
-msgstr "Executáveis URL"
+msgstr "Usar executáveis URL do sistema"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_urlhandlers.cpp:50
 msgid "<b>http://</b> handler command:"
@@ -2361,8 +2353,7 @@ msgstr "dentro de:"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -2421,17 +2412,16 @@ msgid "KVIrc Preferences"
 msgstr "Preferências KVirc"
 
 #: /home/oem/kvirc-qt4/src/modules/options/dialog.cpp:140
-#, fuzzy
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner "
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
-"Este diálogo contém um conjunto de definições. Use os ícones à sua esquerda "
-"para navegar atravéz das opções das páginas. A próxima caixa de verificação "
-"no canto esquerdo ao fundo é um pequeno motor de busca. Irá destacar as "
-"páginas que contenham opções relacionadas com a procura que tenha feito."
+"Este diálogo contém um conjunto de definições KVirc.<br>Use os ícones à sua "
+"esquerda para navegar através das páginas de opções. A caixa de texto no "
+"canto esquerdo ao fundo é um pequeno motor de busca. Irá destacar as "
+"páginas que contenham opções relacionadas com a procura que tenha indicado."
 
 #: /home/oem/kvirc-qt4/src/modules/options/dialog.cpp:148
 msgid ""
@@ -2619,8 +2609,7 @@ msgid "Minimum alert level:"
 msgstr "Nível de alerta mínimo:"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Esta opção define o nível de alerta mínimo para a barra de tarefas.</"
 "center>"
@@ -2868,8 +2857,7 @@ msgstr "Atraso entre tentativas:"
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_connection.cpp:122
 msgid "Certificate"
@@ -3244,9 +3232,8 @@ msgid "Force language:"
 msgstr "Forçar linguagem:"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_textencoding.cpp:65
-#, fuzzy
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "Precisa reiniciar o KVirc para aplicar as mudanças de linguagem"
+msgstr "<b>Nota:</b> Precisa reiniciar o KVirc para aplicar a mudança de língua"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -3258,7 +3245,7 @@ msgstr "en"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_textencoding.cpp:132
 msgid "Unable to write language information to"
-msgstr ""
+msgstr "Não é possível escrever informação da língua para"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
@@ -3557,8 +3544,7 @@ msgstr ""
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_dcc.cpp:254
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr ""
-"Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
+msgstr "Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_dcc.cpp:257
 msgid ""
@@ -4100,9 +4086,8 @@ msgid "Timestamp"
 msgstr "Marcação horária"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_messages.h:71
-#, fuzzy
 msgid "time,timestamp"
-msgstr "Marcação horária"
+msgstr "hora,marcação horária"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_messages.h:88
 msgid "Message Colors"
@@ -4341,9 +4326,8 @@ msgid "Nickname Grid"
 msgstr "Grelha do Nick"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_userlist.h:82
-#, fuzzy
 msgid "theme,userlist,channel,grid"
-msgstr "tema,lista de utilizadores,canal"
+msgstr "tema,lista de utilizadores,canal,grelha"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_userlist.h:102
 msgid "userlist,channel"
@@ -4392,3 +4376,4 @@ msgstr "Privado"
 #: /home/oem/kvirc-qt4/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "conversar"
+
