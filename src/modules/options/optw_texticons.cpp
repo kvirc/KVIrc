@@ -216,6 +216,7 @@ void KviTextIconsOptionsWidget::delClicked()
 
 void KviTextIconsOptionsWidget::commit()
 {
+
 	KviOptionsWidget::commit();
 	g_pTextIconManager->clear();
 	int n = m_pTable->numRows();
@@ -233,12 +234,11 @@ void KviTextIconsOptionsWidget::commit()
 	}
 	g_pTextIconManager->checkDefaultAssociations();
 	
-	for(int i=0;i < n;i++)
-	{
-		m_pTable->clearCell(i,0);
-		m_pTable->clearCell(i,1);
-		m_pTable->clearCell(i,2);
-	}
+	for(int i=0; i<n; i++)
+		for (int j=0; j<m_pTable->numCols(); j++)
+			if (m_pTable->item(i,j))
+				m_pTable->clearCell(i,j);
+	
 }
 
 #include "m_optw_texticons.moc"

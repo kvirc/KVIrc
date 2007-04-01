@@ -55,6 +55,7 @@
 #include <qfont.h>
 #include <qevent.h>
 
+#include <iostream>
 
 //extern KviModule * g_pOptionsModule;
 extern KviDict<KviOptionsDialog> * g_pOptionsDialogDict;
@@ -610,6 +611,7 @@ void KviOptionsDialog::applyClicked()
 
 void KviOptionsDialog::apply(bool bDialogAboutToClose)
 {
+
 	KviOptionsListViewItem *it = (KviOptionsListViewItem *)m_pListView->firstChild();
 	while(it)
 	{
@@ -625,6 +627,7 @@ void KviOptionsDialog::apply(bool bDialogAboutToClose)
 	}
 
 	g_pApp->saveConfiguration();
+
 }
 
 void KviOptionsDialog::okClicked()
