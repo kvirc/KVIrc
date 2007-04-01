@@ -55,8 +55,6 @@
 #include <qfont.h>
 #include <qevent.h>
 
-#include <iostream>
-
 //extern KviModule * g_pOptionsModule;
 extern KviDict<KviOptionsDialog> * g_pOptionsDialogDict;
 
