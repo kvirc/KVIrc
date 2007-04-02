@@ -407,13 +407,17 @@ void KviIrcMask::mask(QString &szMask,MaskType eMaskType) const
 			szMask.append(m_szWild);
 			break;
 		default:
-			if(m_szUser[0].unicode() != '*')szMask.append(m_szWild);
-			if((m_szUser[0].unicode() == '~') ||
-				(m_szUser[0].unicode() == '^') ||
-				(m_szUser[0].unicode() == '+') ||
-				(m_szUser[0].unicode() == '-') ||
-				(m_szUser[0].unicode() == '='))szMask.append(m_szUser.right(m_szUser.length() - 1));
-			else szMask.append(m_szUser);
+			if (m_szUser.length() > 0) {
+				if(m_szUser[0].unicode() != '*')
+					szMask.append(m_szWild);
+				if ((m_szUser[0].unicode() == '~') ||
+					(m_szUser[0].unicode() == '^') ||
+					(m_szUser[0].unicode() == '+') ||
+					(m_szUser[0].unicode() == '-') ||
+					(m_szUser[0].unicode() == '='))szMask.append(m_szUser.right(m_szUser.length() - 1));
+				else
+					szMask.append(m_szUser);
+			}
 		break;
 	}
 	szMask.append('@');
