@@ -26,6 +26,11 @@
 
 #include <qpixmap.h>
 #include <qimage.h>
+#ifdef COMPILE_USE_QT4
+	#include <QMatrix>
+#else
+	#include <qwmatrix.h>
+#endif
 #include "kvi_string.h"
 
 
@@ -55,6 +60,8 @@ signals:
 protected:
 	bool functionfill(KviKvsObjectFunctionCall *c);
 	bool functionresize(KviKvsObjectFunctionCall *c);
+	bool functionscale(KviKvsObjectFunctionCall *c);
+	bool functionrotate(KviKvsObjectFunctionCall *c);
 	bool functionload(KviKvsObjectFunctionCall *c);
 	bool functionheight(KviKvsObjectFunctionCall *c);
 	bool functionwidth(KviKvsObjectFunctionCall *c);

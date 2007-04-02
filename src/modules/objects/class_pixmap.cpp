@@ -48,6 +48,10 @@
 		Note that x_offset, y_offest are offsets in the widget.
 		!fn: $resize(<width:integer>,<height:integer>)
 		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
+		!fn: $scale(<sx:real>,<sy:real>)
+		Scales the pixmap by sx horizontally and sy vertically.
+		!fn: $rotate(<a:real>)
+		Rotates the pixmap by a degrees.
 		!fn: $load(<file_name:string>)
 		Load a pixmap from the <file>.
 		!fn: <integer> $height()
@@ -66,6 +70,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"height",functionheight)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"width",functionwidth)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
+	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"scale",functionscale)
+	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"rotate",functionrotate)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
@@ -111,6 +117,43 @@ bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
 	}
 	bPixmapModified=true;
 	m_pPixmap->fill(((QWidget *)(ob->object())),iXoffset,iYoffset);
+	return true;
+}
+
+bool KviKvsObject_pixmap::functionscale(KviKvsObjectFunctionCall *c)
+{
+	kvs_real_t uScaleX,uScaleY;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("sx",KVS_PT_REAL,0,uScaleX)
+		KVSO_PARAMETER("sy",KVS_PT_REAL,0,uScaleY)
+	KVSO_PARAMETERS_END(c)
+	#ifdef COMPILE_USE_QT4
+		*m_pPixmap = m_pPixmap->scaled((m_pPixmap->width() * uScaleX), (m_pPixmap->height() * uScaleX));
+	#else
+		QWMatrix wm;
+		wm.scale(uScaleX, uScaleY);
+		*m_pPixmap = m_pPixmap->xForm(wm);
+	#endif
+	bPixmapModified=true;
+	return true;
+}
+  
+bool KviKvsObject_pixmap::functionrotate(KviKvsObjectFunctionCall *c)
+{
+	kvs_real_t uDegrees;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("a",KVS_PT_REAL,0,uDegrees)
+	KVSO_PARAMETERS_END(c)
+	#ifdef COMPILE_USE_QT4
+		QMatrix m;
+		m.rotate(uDegrees);
+		*m_pPixmap = m_pPixmap->transformed(m);
+	#else
+		QWMatrix wm;
+		wm.rotate(uDegrees);
+		*m_pPixmap = m_pPixmap->xForm(wm);
+	#endif
+	bPixmapModified=true;
 	return true;
 }
 
