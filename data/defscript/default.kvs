@@ -99,6 +99,51 @@ alias(ms)
 	raw -q memoserv $0-
 }
 
+alias(gmsg)
+{
+	# Global message
+
+	#Check null message
+	if(!$0){
+		echo $tr("Usage"): /gmsg [-waohvq] <$tr("message")>
+		echo $tr("-w: send message to all channel owners")
+		echo $tr("-a: send message to all channel admins")
+		echo $tr("-o: send message to all channel ops")
+		echo $tr("-h: send message to all channel halfops")
+		echo $tr("-v: send message to all channel voices")
+		echo $tr("-q: quiet mode")
+		halt
+	}
+				
+	# Check for quiet message
+	if($sw(q))
+		%cmd="message -q"
+	else
+		%cmd="message"
+					
+	# Check null switches
+	if((!$sw(w))&&(!$sw(a))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
+		eval %cmd $chan.name($active) $0-
+		halt
+	}
+						
+	# Check switches passed
+	if($sw(w))
+		eval %cmd \~$chan.name($active) $0-
+						    
+	if($sw(a))
+		eval %cmd \!$chan.name($active) $0-
+							
+	if($sw(o))
+		eval %cmd \@$chan.name($active) $0-
+							    
+	if($sw(h))
+		eval %cmd \%$chan.name($active) $0-
+								
+	if($sw(v))
+		eval %cmd \+$chan.name($active) $0-
+}								    
+
 alias(gnotice)
 {
 	# Global notice
