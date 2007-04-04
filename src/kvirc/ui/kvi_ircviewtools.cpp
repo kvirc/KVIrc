@@ -277,7 +277,12 @@ void KviIrcViewToolWidget::filterSave()
 
 void KviIrcViewToolWidget::forceRepaint()
 {
-	m_pIrcView->paintEvent(0);
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+		repaint();
+	#else
+		m_pIrcView->paintEvent(0);
+	#endif
+
 }
 
 void KviIrcViewToolWidget::setFindResult(const QString & text)
