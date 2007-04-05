@@ -81,41 +81,47 @@ KviIdentSentinel::~KviIdentSentinel()
 
 bool KviIdentSentinel::event(QEvent *e)
 {
+	if(KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)==KviIdentdOutputMode::Quiet || !g_pActiveWindow)
+		return QObject::event(e);
+
+	KviWindow * pTarget = KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)==KviIdentdOutputMode::ToActiveWindow ?
+		(KviWindow *)g_pActiveWindow : (KviWindow *)g_pApp->activeConsole();
+
 	if(e->type() == KVI_THREAD_EVENT)
 	{
 		if(((KviThreadEvent *)e)->id() == KVI_THREAD_EVENT_DATA)
 		{
 			KviIdentMessageData * d = ((KviThreadDataEvent<KviIdentMessageData> *)e)->getData();
-			if(g_pActiveWindow)
+			if(pTarget)
 			{
 				if(d->szHost.hasData())
 				{
 					if(d->szAux.hasData())
 					{
 						if(_OUTPUT_PARANOIC)
-							g_pActiveWindow->output(KVI_OUT_IDENT,__tr("%s (%s) (%s:%u)"),d->szMessage.ptr(),d->szAux.ptr(),d->szHost.ptr(),d->uPort);
+							pTarget->output(KVI_OUT_IDENT,__tr("%s (%s) (%s:%u)"),d->szMessage.ptr(),d->szAux.ptr(),d->szHost.ptr(),d->uPort);
 						else
-							g_pActiveWindow->output(KVI_OUT_IDENT,__tr("%s (%s)"),d->szMessage.ptr(),d->szAux.ptr());
+							pTarget->output(KVI_OUT_IDENT,__tr("%s (%s)"),d->szMessage.ptr(),d->szAux.ptr());
 					} else {
 						if(_OUTPUT_PARANOIC)
-							g_pActiveWindow->output(KVI_OUT_IDENT,__tr("%s (%s:%u)"),d->szMessage.ptr(),d->szHost.ptr(),d->uPort);
+							pTarget->output(KVI_OUT_IDENT,__tr("%s (%s:%u)"),d->szMessage.ptr(),d->szHost.ptr(),d->uPort);
 						else
-							g_pActiveWindow->output(KVI_OUT_IDENT,__tr("%s"),d->szMessage.ptr());
+							pTarget->output(KVI_OUT_IDENT,__tr("%s"),d->szMessage.ptr());
 					}
 				} else {
-						g_pActiveWindow->output(KVI_OUT_IDENT,__tr("[IDENT]: %s"),d->szMessage.ptr());
+						pTarget->output(KVI_OUT_IDENT,__tr("[IDENT]: %s"),d->szMessage.ptr());
 				}
 			}
 			delete d;
 		} else if(((KviThreadEvent *)e)->id() == KVI_IDENT_THREAD_EVENT_EXITING)
 		{
 			if(_OUTPUT_VERBOSE)
-				if(g_pActiveWindow)g_pActiveWindow->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (spontaneous action)"));
+				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (spontaneous action)"));
 			stopIdentService();
 		} else if(((KviThreadEvent *)e)->id() == KVI_IDENT_THREAD_EVENT_EXITING_ON_REQUEST)
 		{
 			if(_OUTPUT_VERBOSE)
-				if(g_pActiveWindow)g_pActiveWindow->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (requesetd action)"));
+				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (requesetd action)"));
 		}
 
 		return true;

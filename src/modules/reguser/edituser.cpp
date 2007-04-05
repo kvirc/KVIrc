@@ -43,6 +43,7 @@
 
 #include <qlayout.h>
 #include <qlabel.h>
+#include <qgroupbox.h>
 #ifdef COMPILE_USE_QT4
 #include <qevent.h>
 #include <q3header.h>
@@ -456,23 +457,31 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	m_pIgnoreEnabled = new KviStyledCheckBox(__tr2qs("Enable ignore for this user"),vb);
 
-	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreQuery,SLOT(setEnabled(bool)));
+	QGroupBox * gb = new QGroupBox(__tr2qs("Ignore features"),vb);
+	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
+	
+	QVBoxLayout * layout = new QVBoxLayout(gb,20,3);
+	
+	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),gb);
+	layout->addWidget(m_pIgnoreQuery);
 
-	m_pIgnoreChannel = new KviStyledCheckBox(__tr2qs("Ignore channel-messages"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreChannel,SLOT(setEnabled(bool)));
+	m_pIgnoreChannel = new KviStyledCheckBox(__tr2qs("Ignore channel-messages"),gb);
+	layout->addWidget(m_pIgnoreChannel);
 
-	m_pIgnoreNotice = new KviStyledCheckBox(__tr2qs("Ignore notice-messages"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreNotice,SLOT(setEnabled(bool)));
+	m_pIgnoreNotice = new KviStyledCheckBox(__tr2qs("Ignore notice-messages"),gb);
+	layout->addWidget(m_pIgnoreNotice);
 
-	m_pIgnoreCtcp = new KviStyledCheckBox(__tr2qs("Ignore ctcp-messages"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreCtcp,SLOT(setEnabled(bool)));
+	m_pIgnoreCtcp = new KviStyledCheckBox(__tr2qs("Ignore ctcp-messages"),gb);
+	layout->addWidget(m_pIgnoreCtcp);
 
-	m_pIgnoreInvite = new KviStyledCheckBox(__tr2qs("Ignore invites"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreInvite,SLOT(setEnabled(bool)));
+	m_pIgnoreInvite = new KviStyledCheckBox(__tr2qs("Ignore invites"),gb);
+	layout->addWidget(m_pIgnoreInvite);
 
-	m_pIgnoreDcc = new KviStyledCheckBox(__tr2qs("Ignore DCCs"),vb);
-	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),m_pIgnoreDcc,SLOT(setEnabled(bool)));
+	m_pIgnoreDcc = new KviStyledCheckBox(__tr2qs("Ignore DCCs"),gb);
+	layout->addWidget(m_pIgnoreDcc);
+
+	QWidget *w = new QWidget(vb);
+	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
 
 	addTab(vb,__tr2qs("Ignore"));
 

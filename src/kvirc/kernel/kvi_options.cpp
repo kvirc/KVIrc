@@ -614,7 +614,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("InputPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("AutoFlushLogs",30,KviOption_sectFlagFrame ),
 	UINT_OPTION("MinTrayLowLevelMessage",1,KviOption_sectFlagFrame ),
-	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame )
+	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame ),
+	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection )
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

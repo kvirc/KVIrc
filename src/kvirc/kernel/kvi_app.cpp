@@ -1903,14 +1903,14 @@ QStringList* KviApp::getRecentChannels(const QString& net)
 
 void KviApp::addRecentServer(const QString& server)
 {
-	merge_to_stringlist_option(server,KviOption_stringlistRecentIrcUrls,KVI_MAX_RECENT_SERVERS);
+	merge_to_stringlist_option(server,KviOption_stringlistRecentServers,KVI_MAX_RECENT_SERVERS);
 }
 
 void KviApp::fillRecentServersPopup(KviTalPopupMenu * m)
 {
 // FIXME: #warning "MAYBE DISABLE THE SERVERS THAT WE ARE ALREADY CONNECTED TO ?"
 	m->clear();
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end(); ++it)
+	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
 	{
 		m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 	}

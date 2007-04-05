@@ -550,9 +550,15 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintAutoFlushLogs 57
 #define KviOption_uintMinTrayLowLevelMessage 58
 #define KviOption_uintMinTrayHighLevelMessage 59
+#define KviOption_uintIdentdOutputMode 60
 
-#define KVI_NUM_UINT_OPTIONS 60
+#define KVI_NUM_UINT_OPTIONS 61
 
+enum KviIdentdOutputMode {
+	Quiet = 0,
+	ToConsole = 1,
+	ToActiveWindow = 2
+};
 
 
 #define KVI_FONT_OPTIONS_PREFIX "font"

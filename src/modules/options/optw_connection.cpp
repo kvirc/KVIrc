@@ -28,6 +28,7 @@
 #include "kvi_locale.h"
 #include "kvi_options.h"
 #include "kvi_iconmanager.h"
+#include <qradiobutton.h>
 
 
 KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
@@ -204,26 +205,47 @@ KviTransportOptionsWidget::~KviTransportOptionsWidget()
 KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ident_options_widget")
 {
-	createLayout(5,1);
+	createLayout(6,1);
 
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));
 
-	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Output verosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
+
+	addLabel(gbox,__tr2qs_ctx("Output identd messages to:","options"));
+
+	m_pActiveRadio = new QRadioButton(__tr2qs_ctx("Active window","options"),gbox);
+	m_pConsoleRadio = new QRadioButton(__tr2qs_ctx("Console","options"),gbox);
+	m_pQuietRadio = new QRadioButton(__tr2qs_ctx("Do not show any identd messages","options"),gbox);
+
+	switch(KVI_OPTION_UINT(KviOption_uintIdentdOutputMode))
+	{
+		case KviIdentdOutputMode::Quiet :
+			m_pQuietRadio->setChecked(true);
+			break;
+		case KviIdentdOutputMode::ToConsole :
+			m_pConsoleRadio->setChecked(true);
+			break;
+		case KviIdentdOutputMode::ToActiveWindow :
+			m_pActiveRadio->setChecked(true);
+			break;
+	}
+
+	gbox = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	
 	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
 	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
 		KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
-	connect(m_pEnableIdent,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 	
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Service port:","options"),
 		KviOption_uintIdentdPort,0,65535,113,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
-	gbox = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	gbox = addGroupBox(0,3,0,3,1,Qt::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	m_pEnableIpv6 = addBoolSelector(gbox,__tr2qs_ctx("Enable service for IPv6","options"),
 		KviOption_boolIdentdEnableIpV6,
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService));
@@ -238,7 +260,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIpV6));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
-	addLabel(0,3,0,3,
+	addLabel(0,4,0,4,
 #ifdef COMPILE_ON_WINDOWS
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
 			"This is a <b>non RFC 1413 compliant</b> ident daemon that implements " \
@@ -254,11 +276,22 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 #endif
 	);
 
-	addRowSpacer(0,4,0,4);
+	addRowSpacer(0,5,0,5);
 }
 
 KviIdentOptionsWidget::~KviIdentOptionsWidget()
 {
+}
+
+void KviIdentOptionsWidget::commit()
+{
+	KviOptionsWidget::commit();
+	if(m_pConsoleRadio->isOn())
+		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::ToConsole;
+	if(m_pActiveRadio->isOn())
+		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::ToActiveWindow;
+	if(m_pQuietRadio->isOn())
+		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::Quiet;
 }
 
 void KviIdentOptionsWidget::enableIpv4InIpv6(bool)

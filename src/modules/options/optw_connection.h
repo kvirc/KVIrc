@@ -88,6 +88,7 @@ public:
 #define KVI_OPTIONS_WIDGET_PARENT_KviIdentOptionsWidget KviConnectionAdvancedOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentOptionsWidget 10
 
+class QRadioButton;
 
 class KviIdentOptionsWidget : public KviOptionsWidget
 {
@@ -95,10 +96,16 @@ class KviIdentOptionsWidget : public KviOptionsWidget
 public:
 	KviIdentOptionsWidget(QWidget * parent);
 	~KviIdentOptionsWidget();
+
+	virtual void commit();
 protected:
 	KviBoolSelector * m_pEnableIdent;
 	KviBoolSelector * m_pEnableIpv6;
 	KviBoolSelector * m_pIpv4InIpv6;
+
+	QRadioButton *m_pConsoleRadio;
+	QRadioButton *m_pActiveRadio;
+	QRadioButton *m_pQuietRadio;
 public slots:
 	void enableIpv4InIpv6(bool);
 };
