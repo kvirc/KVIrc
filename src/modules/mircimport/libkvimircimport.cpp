@@ -24,6 +24,7 @@
 #include "kvi_module.h"
 
 #include "kvi_filedialog.h"
+#include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_config.h"
 #include "kvi_app.h"
@@ -48,42 +49,42 @@ KviMircServersIniImport::~KviMircServersIniImport()
 	g_pMircServersIniImport = 0;
 }
 
-int KviMircServersIniImport::doImport(const char * filename)
+int KviMircServersIniImport::doImport(const QString& filename)
 {
-	KviConfig cfg(filename,KviConfig::Read);
+	KviConfig cfg(filename,KviConfig::Read,true);
 	int iCount = 0;
 	if(cfg.hasGroup("servers"))
 	{
 		cfg.setGroup("servers");
 		int i = 0;
-		KviStr key;
-		KviStr entry;
+		QString key;
+		QString entry;
 		do {
-			key.sprintf("n%d",i);
-			entry = cfg.readEntry(key.ptr(),"");
-			if(entry.hasData())
+			KviQString::sprintf(key,"n%d",i);
+			entry = cfg.readEntry(key,"");
+			if(!entry.isEmpty())
 			{
-				KviStr description;
-				KviStr serv;
-				KviStr port;
+				QString description;
+				QString serv;
+				QString port;
 				kvi_u32_t uPort = 0;
 				// <description>SERVER:<server:port>GROUP:<network>
-				int idx = entry.findFirstIdx("SERVER:");
+				int idx = KviQString::find(entry,"SERVER:");
 				if(idx != -1)
 				{
 					description = entry.left(idx);
-					entry.cutLeft(idx + 7);
-					idx = entry.findFirstIdx("GROUP:");
+					entry.remove(0,idx + 7);
+					idx = KviQString::find(entry,"GROUP:");
 					if(idx != -1)
 					{
 						port = entry.left(idx);
-						entry.cutLeft(idx + 6);
+						entry.remove(0,idx + 6);
 					}
-					idx = port.findFirstIdx(':');
+					idx = KviQString::find(port,':');
 					if(idx != -1)
 					{
 						serv = port.left(idx);
-						port.cutLeft(idx + 1);
+						port.remove(0,idx + 1);
 						bool bOk;
 						uPort = port.toUInt(&bOk);
 						if(!bOk)uPort = 6667;
@@ -93,18 +94,18 @@ int KviMircServersIniImport::doImport(const char * filename)
 					}
 				}
 				if(entry.isEmpty())entry = __tr("Standalone Servers");
-				if(serv.hasData())
+				if(!serv.isEmpty())
 				{
 					KviIrcServer s;
 					s.m_szHostname = serv;
 					s.m_szDescription = description;
 					s.m_uPort = uPort;
 					iCount++;
-					emit server(s,entry.ptr());
+					emit server(s,entry);
 				}
 				++i;
 			}
-		} while(entry.hasData());
+		} while(!entry.isEmpty());
 	} else {
 		KviStr tmp(KviStr::Format,__tr("%s doesn't look like a servers.ini file.\nImport failed."),filename);
 		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs(tmp.ptr()));
@@ -208,7 +209,7 @@ void KviRemoteMircServerImportWizard::done(int r)
 
 void KviRemoteMircServerImportWizard::start()
 {
-	KviStr url = m_pUrlEdit->text();
+	QString url = m_pUrlEdit->text();
 	if(url.isEmpty())url = KVI_WWWMIRCCOUK_SERVERSINI;
 
 	finishButton()->setEnabled(false);
@@ -218,10 +219,8 @@ void KviRemoteMircServerImportWizard::start()
 	connect(m_pRequest,SIGNAL(terminated(bool)),this,SLOT(getListTerminated(bool)));
 	connect(m_pRequest,SIGNAL(status(const QString &)),this,SLOT(getListMessage(const QString &)));
 
-	QString szTmp;
-	g_pApp->getTmpFileName(szTmp,"servers.ini");
-	m_szTmpFileName = szTmp;
-	if(!m_pRequest->get(KviUrl(url.ptr()),KviHttpRequest::StoreToFile,m_szTmpFileName.ptr()))
+	g_pApp->getTmpFileName(m_szTmpFileName,"servers.ini");
+	if(!m_pRequest->get(KviUrl(url),KviHttpRequest::StoreToFile,m_szTmpFileName))
 	{
 		delete m_pRequest;
 		m_pRequest = 0;
@@ -247,7 +246,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 		g_pApp->syncX();
 #endif //!COMPILE_ON_WINDOWS
 
-		int iCount = m_pFilter->doImport(m_szTmpFileName.ptr());
+		int iCount = m_pFilter->doImport(m_szTmpFileName);
 
 		QString tmp;
 		if(iCount > 0)
@@ -257,7 +256,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 		m_pOutput->setText(tmp);
 
 		QDir d;
-		d.remove(QString(m_szTmpFileName.ptr()));
+		d.remove(m_szTmpFileName);
 	} else m_pOutput->setText(m_pRequest->lastError());
 
 	delete m_pRequest;
@@ -308,12 +307,11 @@ static KviModuleExtension * mircimport_remote_filter_alloc(KviModuleExtensionAll
 
 static bool mircimport_module_init(KviModule * m)
 {
-
-	KviStr szPath;
+	QString szPath;
 	QPixmap * pix = 0;
 	if(g_pApp->findImage(szPath,"kvi_mircimport.png"))
 	{
-		pix = new QPixmap(szPath.ptr());
+		pix = new QPixmap(szPath);
 		if(pix->isNull())
 		{
 			delete pix;
@@ -368,6 +366,8 @@ KVIMODULEEXPORTFUNC KviIrcServerImport * mircimport_module_createIrcServerImport
 	return 0;
 }
 */
+
+
 
 KVIRC_MODULE(
 	"File",                                                 // module name

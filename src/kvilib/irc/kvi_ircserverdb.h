@@ -99,6 +99,7 @@ public:
 	KviIrcServerDataBaseRecord * currentRecord();
 	KviIrcServerDataBaseRecord * findRecord(const QString &szNetName);
 	KviIrcNetwork * findNetwork(const QString &name);
+	void loadFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers);
 	void load(const QString & filename);
 	void save(const QString & filename);
 	KviIrcServerDataBaseRecord * insertNetwork(KviIrcNetwork * n);

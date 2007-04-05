@@ -159,6 +159,10 @@ void KviStringSelector::setEnabled(bool bEnabled)
 	m_pLabel->setEnabled(bEnabled);
 }
 
+void KviStringSelector::setText(const QString& text){
+	m_pLineEdit->setText(text);
+}
+
 KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QString *pOption,bool bEnabled)
 : KviStringSelector(par,txt,pOption,bEnabled)
 {

@@ -235,9 +235,6 @@ void KviConsole::triggerCreationEvents()
 
 		if(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup))
 			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TIP_OPEN);
-
-		if(KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart))
-			g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_SERVERSJOIN_OPEN);
 	}
 
 	if(m_iFlags & KVI_CONSOLE_FLAG_FIRSTINFRAME)

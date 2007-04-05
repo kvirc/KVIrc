@@ -50,10 +50,11 @@ class KVILIB_API KviConfig : public KviHeapObject
 public:
 	enum FileMode { Read = 1 , Write = 2 , ReadWrite = 3 };
 public:
-	KviConfig(const QString &filename,FileMode f/* = ReadWrite*/);
-	KviConfig(const char *filename,FileMode f/* = ReadWrite*/);
+	KviConfig(const QString &filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
+	KviConfig(const char *filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
 	~KviConfig();
 private:
+	bool                         m_bLocal8Bit;
 	KviDict<KviConfigGroup>      * m_pDict;
 	QString                      m_szFileName;
 	bool                         m_bDirty;

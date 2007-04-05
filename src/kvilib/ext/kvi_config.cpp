@@ -34,8 +34,9 @@
 #include "kvi_file.h"
 
 
-KviConfig::KviConfig(const QString &filename,FileMode f)
+KviConfig::KviConfig(const QString &filename,FileMode f,bool bLocal8Bit)
 {
+	m_bLocal8Bit           = bLocal8Bit;
 	m_szFileName           = filename;
 	m_bDirty               = false;
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
@@ -46,8 +47,9 @@ KviConfig::KviConfig(const QString &filename,FileMode f)
 	if(f != KviConfig::Write)load();
 }
 
-KviConfig::KviConfig(const char* filename,FileMode f)
+KviConfig::KviConfig(const char* filename,FileMode f,bool bLocal8Bit)
 {
+	m_bLocal8Bit           = bLocal8Bit;
 	m_szFileName           = QString::fromUtf8(filename);
 	m_bDirty               = false;
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
@@ -277,7 +279,9 @@ bool KviConfig::load()
 
 						if(!tmp.isEmpty())
 						{
-							QString szGroup = QString::fromUtf8(tmp.ptr(),tmp.len());
+							QString szGroup = m_bLocal8Bit ?
+								QString::fromLocal8Bit(tmp.ptr(),tmp.len()) :
+								QString::fromUtf8(tmp.ptr(),tmp.len());
 							p_group = m_pDict->find(szGroup);
 							if(!p_group)
 							{
@@ -300,13 +304,18 @@ bool KviConfig::load()
 						tmp.stripRightWhiteSpace(); // No external spaces at all in keys
 						if(!tmp.isEmpty())
 						{
-							QString szKey = QString::fromUtf8(tmp.ptr(),tmp.len());
+							QString szKey =  m_bLocal8Bit ? 
+									QString::fromLocal8Bit(tmp.ptr(),tmp.len()) :
+									QString::fromUtf8(tmp.ptr(),tmp.len());
 							z++;
 							while(*z && ((*z == ' ') || (*z == '\t')))z++;
 							if(*z)
 							{
 								tmp.hexDecode(z);
-								QString * pVal = new QString(QString::fromUtf8(tmp.ptr(),tmp.len()));
+								QString * pVal = new QString( m_bLocal8Bit ? 
+									QString::fromLocal8Bit(tmp.ptr(),tmp.len()) :
+									QString::fromUtf8(tmp.ptr(),tmp.len())
+									);
 								if(!p_group)
 								{
 									// ops...we're missing a group
@@ -493,7 +502,7 @@ bool KviConfig::save()
 	{
 		if((it.current()->count() != 0) || (m_bPreserveEmptyGroups))
 		{
-			KviStr group(KviQString::toUtf8(it.currentKey()));
+			KviStr group(m_bLocal8Bit ? KviQString::toLocal8Bit(it.currentKey()) : KviQString::toUtf8(it.currentKey()));
 			group.hexEncodeWithTable(encode_table);
 
 			if(!f.putChar('['))return false;
@@ -506,8 +515,8 @@ bool KviConfig::save()
 			KviStr szName,szValue;
 			while(QString * p_str = it2.current())
 			{
-				szName = KviQString::toUtf8(it2.currentKey());
-				szValue = KviQString::toUtf8(*p_str);
+				szName = m_bLocal8Bit ? KviQString::toLocal8Bit(it2.currentKey()) : KviQString::toUtf8(it2.currentKey());
+				szValue = m_bLocal8Bit ? KviQString::toLocal8Bit(*p_str) : KviQString::toUtf8(*p_str);
 				szName.hexEncodeWithTable(encode_table);
 				szValue.hexEncodeWhiteSpace();
 				

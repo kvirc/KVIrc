@@ -125,6 +125,10 @@ public:
 	QRadioButton  * m_pServersSpecifyManually;
 	QRadioButton  * m_pServersOpenIrcUrl;
 	QRadioButton  * m_pServersLoadConfig;
+#ifdef COMPILE_ON_WINDOWS
+	QString         m_szMircServerIniFile;
+	QRadioButton  * m_pUseMircServerList;
+#endif
 	
 	QString		    m_szServerConfigFile;
 	QString		    m_szServerUrl;

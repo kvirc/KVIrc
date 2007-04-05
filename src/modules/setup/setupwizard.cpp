@@ -22,6 +22,7 @@
 //
 //==============================================================================
 
+bool g_bFoundMirc;
 
 #include "setupwizard.h"
 
@@ -60,6 +61,8 @@ extern bool bNeedToApplyDefaults;
 extern unsigned int uPort;
 extern QString szHost;
 extern QString szUrl;
+extern QString szMircServers;
+extern QString szMircIni;
 
 #ifdef COMPILE_ON_WINDOWS
 	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME "KVIrc"
@@ -109,6 +112,7 @@ KviSetupPage::~KviSetupPage()
 KviSetupWizard::KviSetupWizard()
 : KviTalWizard(0,0,true)
 {
+	g_bFoundMirc = false;
 	QString szLabelText;
 
 	QString szImagePath;
@@ -480,7 +484,12 @@ KviSetupWizard::KviSetupWizard()
 	m_pServersOpenIrcUrl = new QRadioButton(__tr2qs("Open irc:// or irc6:// URL"),m_pServersButtonGroup);
 	m_szServerUrl="irc://";
 	m_pServerUrlSelector = new KviStringSelector(m_pServersButtonGroup,__tr2qs("URL:"),&m_szServerUrl,true);
-	
+
+#ifdef COMPILE_ON_WINDOWS
+	m_pUseMircServerList = new QRadioButton(__tr2qs("Import server list from mIRC"),m_pServersButtonGroup);
+	m_pUseMircServerList->setEnabled(false);
+#endif
+
 	m_pServersLoadConfig = new QRadioButton(__tr2qs("Use server config"),m_pServersButtonGroup);
 	m_pServersLoadConfig->setEnabled(FALSE);
 	m_pServerConfigSelector = new KviFileSelector(m_pServersButtonGroup,__tr2qs("Config file:"),&m_szServerConfigFile,true);
@@ -521,6 +530,65 @@ KviSetupWizard::KviSetupWizard()
 			}
 		}
 	}
+
+	//mIRC import
+	#define QUERY_BUFFER 2048
+	char* buffer;
+	DWORD len = QUERY_BUFFER;
+	buffer = (char*)malloc(len*sizeof(char));
+	HKEY hKey;
+	QString szMircDir;
+
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"ChatFile\\DefaultIcon",0,KEY_READ,&hKey) == ERROR_SUCCESS )
+	{
+		if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) == ERROR_SUCCESS)
+		{
+			szMircDir = QString::fromLocal8Bit(buffer,len);
+
+			szMircDir.remove('"');
+			QString szMircFile = KviFileUtils::extractFileName(szMircDir);
+			szMircFile = szMircFile.left(szMircFile.length()-4); //cut off ".exe"
+			szMircDir = KviFileUtils::extractFilePath(szMircDir);
+
+			szMircIni = szMircDir + "/" + szMircFile + ".ini";
+
+			if(!KviFileUtils::fileExists(szMircIni))
+				szMircIni = szMircDir + "/mirc.ini";
+
+			if(!KviFileUtils::fileExists(szMircIni))
+				szMircIni = szMircDir + "/pirc.ini";
+
+			if(KviFileUtils::fileExists(szMircIni)){
+				KviConfig cfg(szMircIni,KviConfig::Read,true);
+				if(cfg.hasGroup("mirc"))
+				{
+					g_bFoundMirc = true;
+					cfg.setGroup("mirc");
+					m_pNickSelector->setText(cfg.readQStringEntry("nick",KVI_OPTION_STRING(KviOption_stringNickname1)));
+					m_pRealNameSelector->setText(cfg.readQStringEntry("user",KVI_OPTION_STRING(KviOption_stringRealname)));
+					KVI_OPTION_STRING(KviOption_stringNickname2) = 
+						cfg.readQStringEntry("anick",KVI_OPTION_STRING(KviOption_stringNickname2));
+					KVI_OPTION_STRING(KviOption_stringUsername)  = 
+						cfg.readQStringEntry("email",KVI_OPTION_STRING(KviOption_stringUsername)).section('@',0,0);
+
+					if(cfg.hasGroup("files"))
+					{
+						m_szMircServerIniFile = cfg.readQStringEntry("servers","servers.ini");
+						m_szMircServerIniFile.prepend('/');
+						m_szMircServerIniFile.prepend(szMircDir);
+						if(KviFileUtils::fileExists(m_szMircServerIniFile)){
+							m_pUseMircServerList->setEnabled(true);
+							m_pUseMircServerList->setChecked(true);
+						}
+					}
+					KviMessageBox::information(__tr2qs("Setup found existing mIRC installation. It will try to import "
+						"some of mIRC settings and serverlist. If you don't want to do it, unselect import in setup pages"));
+				}
+			}
+		}
+	}
+	free(buffer);
+	
 #endif
 }
 
@@ -913,7 +981,8 @@ void KviSetupWizard::accept()
 			QString alt = szNickPart;
 			alt.prepend("|"); // <-- this is an erroneous nickname on IrcNet :/
 			alt.append("|");
-			KVI_OPTION_STRING(KviOption_stringNickname2) = alt;
+			if(!g_bFoundMirc)
+				KVI_OPTION_STRING(KviOption_stringNickname2) = alt;
 			alt = szNickPart;
 			alt.prepend("_");
 			alt.append("_");
@@ -958,6 +1027,11 @@ void KviSetupWizard::accept()
 				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = FALSE;
 				szUrl=m_szServerUrl;
 			}
+#ifdef COMPILE_ON_WINDOWS			
+			else if (m_pUseMircServerList->isOn()) {
+				szMircServers = m_szMircServerIniFile;
+			}
+#endif
 		}
 	}
 #ifdef COMPILE_ON_WINDOWS

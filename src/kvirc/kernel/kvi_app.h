@@ -58,6 +58,7 @@ class KviConsole;
 class KviConfig;
 class KviRegisteredUser;
 class KviIrcConnection;
+class KviIrcServerDataBase;
 
 typedef struct _KviPendingAvatarChange
 {
@@ -149,6 +150,7 @@ public:
 	bool firstTimeRun(){ return m_bFirstTimeRun; };
 	void setupBegin();
 	void setupFinish();
+	inline void emitRecentUrlsChanged() { emit(recentUrlsChanged()); };
 
 	// kvi_app.cpp (Saving options)
 	void saveIrcServerDataBase();
@@ -336,6 +338,7 @@ signals:
 
 #ifndef _KVI_APP_CPP_
 	extern KVIRC_API KviApp * g_pApp;
+	extern KVIRC_API KviIrcServerDataBase * g_pIrcServerDataBase;
 #endif
 
 #endif //_KVI_APP_H_

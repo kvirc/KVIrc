@@ -250,6 +250,11 @@ namespace KviQString
 		return s.utf8();
 #endif
 	}
+
+	inline KviQCString toLocal8Bit(const QString &s)
+	{
+		return s.local8Bit();
+	}
 	
 	inline kvi_i64_t toI64(QString &szNumber,bool * bOk)
 	{

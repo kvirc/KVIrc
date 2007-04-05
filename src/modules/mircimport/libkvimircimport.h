@@ -37,7 +37,7 @@ public:
 	KviMircServersIniImport(KviModuleExtensionDescriptor * d);
 	~KviMircServersIniImport();
 public:
-	int doImport(const char * filename);
+	int doImport(const QString& filename);
 	virtual void start();
 	virtual void die();
 };
@@ -68,7 +68,7 @@ protected:
 	QLabel                        * m_pOutput;
 	KviRemoteMircServersIniImport * m_pFilter;
 	KviHttpRequest                * m_pRequest;
-	KviStr                          m_szTmpFileName;
+	QString                         m_szTmpFileName;
 protected:
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void done(int r);

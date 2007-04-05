@@ -106,6 +106,7 @@ public:
 	void setMinimumLabelWidth(unsigned int uWidth){ m_pLabel->setMinimumWidth(uWidth); };
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
+	void setText(const QString& text);
 };
 
 

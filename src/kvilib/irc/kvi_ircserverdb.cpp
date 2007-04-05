@@ -396,7 +396,128 @@ search_finished:
 	
 	return true;
 }
+				
+void parseMircServerRecord(QString entry,QString& szNet,
+						   QString& szDescription,QString& szHost,QString& szPort,bool& bSsl,kvi_u32_t& uPort)
+{
+	bSsl = false;
+	int idx = KviQString::find(entry,"SERVER:");
+	if(idx != -1)
+	{
+		szDescription = entry.left(idx);
+		szNet=szDescription.section(':',0,0);
+		szDescription=szDescription.section(':',1,1);
 
+		entry.remove(0,idx + 7);
+		idx = KviQString::find(entry,"GROUP:");
+		if(idx != -1)
+		{
+			szHost = entry.left(idx);
+		} else {
+			szHost = entry;
+		}
+
+		szPort = szHost.section(':',1,1);
+		if(szPort[0]=='+')
+		{
+			bSsl = true;
+			szPort.remove(0,1);
+		}
+		szHost = szHost.section(':',0,0);
+
+		bool bOk;
+		uPort = szPort.toUInt(&bOk);
+		if(!bOk)uPort = 6667;
+	}
+}
+
+void KviIrcServerDataBase::loadFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers)
+{
+	clear();
+	recentServers.clear();
+	QString szDefaultServer;
+	KviConfig mircCfg(szMircIni,KviConfig::Read,true);
+	if(mircCfg.hasGroup("mirc"))
+	{
+		mircCfg.setGroup("mirc");
+		szDefaultServer = mircCfg.readQStringEntry("host");
+	}
+
+	KviConfig cfg(filename,KviConfig::Read,true);
+	int i = 0;
+
+	QString entry;
+	QString key;
+	if(cfg.hasGroup("recent"))
+	{
+		cfg.setGroup("recent");
+		do {
+			KviQString::sprintf(key,"n%d",i);
+			entry = cfg.readEntry(key);
+			if(!entry.isEmpty())
+			{
+				QString szNet;
+				QString szDescription;
+				QString szHost;
+				QString szPort;
+				bool bSsl = false;
+				kvi_u32_t uPort = 0;
+
+				parseMircServerRecord(entry,szNet,
+						   szDescription,szHost,szPort,bSsl,uPort);
+
+				recentServers << (bSsl ? "ircs://" : "irc://" ) +szHost+":"+szPort;
+			}
+			i++;
+		} while(!entry.isEmpty());
+	}
+
+	i = 0;
+	if(cfg.hasGroup("servers"))
+	{
+		cfg.setGroup("servers");
+		do {
+			KviQString::sprintf(key,"n%d",i);
+			entry = cfg.readEntry(key);
+			if(!entry.isEmpty())
+			{
+				bool bDefault = false;
+				QString szNet;
+				QString szDescription;
+				QString szHost;
+				QString szPort;
+				bool bSsl = false;
+				kvi_u32_t uPort = 0;
+				// <net>:<description>SERVER:<server:port>GROUP:<group???>
+				if(entry==szDefaultServer)
+					bDefault = true;
+				
+				parseMircServerRecord(entry,szNet,
+						   szDescription,szHost,szPort,bSsl,uPort);
+
+				KviIrcServerDataBaseRecord * r = findRecord(szNet);
+
+				if(!r) {
+					KviIrcNetwork * n = new KviIrcNetwork(szNet);
+					r = insertNetwork(n);
+				}
+
+				KviIrcServer *s = new KviIrcServer();
+				s->m_szHostname = szHost;
+				s->m_szDescription = szDescription;
+				s->m_uPort = uPort;
+				
+
+				r->m_pServerList->append(s);
+				if(bDefault)
+				{
+					m_szCurrentNetwork = szNet;
+				}
+			}
+			i++;
+		} while(!entry.isEmpty());
+	}
+}
 
 
 void KviIrcServerDataBase::load(const QString & filename)

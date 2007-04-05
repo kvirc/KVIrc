@@ -36,6 +36,7 @@
 #include "kvi_kvs_variantlist.h"
 #include "kvi_window.h"
 #include "kvi_theme.h"
+#include "kvi_ircserverdb.h"
 
 // this will be choosen during the setup process
 QString g_szChoosenIncomingDirectory;
@@ -44,6 +45,8 @@ bool bNeedToApplyDefaults;
 unsigned int uPort;
 QString szHost;
 QString szUrl;
+QString szMircServers;
+QString szMircIni;
 
 
 
@@ -101,6 +104,14 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		KviThemeInfo out;
 		KviTheme::load(szDir,out);
 		
+		if(!szMircServers.isEmpty())
+		{
+			g_pIrcServerDataBase->loadFromMircIni(szMircServers,szMircIni,
+				KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls));
+			g_pApp->emitRecentUrlsChanged();
+			g_pApp->saveIrcServerDataBase();
+		}
+
 		g_pApp->loadDefaultScript();
 		if(!szUrl.isEmpty())
 		{

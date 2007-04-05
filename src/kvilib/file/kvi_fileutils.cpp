@@ -394,11 +394,7 @@ namespace KviFileUtils
 
 	QString extractFilePath(const QString &szFileNameWithPath)
 	{
-#ifdef COMPILE_USE_QT4
-		return QFileInfo(szFileNameWithPath).absoluteFilePath();
-#else
-		return QFileInfo(szFileNameWithPath).absFilePath();
-#endif
+		return QFileInfo(szFileNameWithPath).dirPath(true);
 	}
 
 	bool readLine(QFile * f,QString &szBuffer,bool bUtf8)
