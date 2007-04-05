@@ -1224,6 +1224,7 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	data.cutToFirst('/');
 	while(data.firstCharIs('/'))data.cutLeft(1);
 	data.cutFromLast(':');
+	data.replaceAll("/","");
 	// we should have a full server name now , with no port
 	
 	KviStr port = m_pRecentPopup->text(id);

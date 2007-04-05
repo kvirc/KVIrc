@@ -9,7 +9,7 @@ pluglib_LTLIBRARIES      = libkvidockwidget.la
 
 libkvidockwidget_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
-libkvidockwidget_la_SOURCES = libkvidockwidget_qt3.cpp libkvidockwidget_qt4.cpp moc_libkvidockwidget_qt3.cpp
+libkvidockwidget_la_SOURCES = libkvidockwidget_qt3.cpp libkvidockwidget_qt4.cpp
 
 #nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
 
