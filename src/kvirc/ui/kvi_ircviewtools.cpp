@@ -278,7 +278,7 @@ void KviIrcViewToolWidget::filterSave()
 void KviIrcViewToolWidget::forceRepaint()
 {
 	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-		repaint();
+		m_pIrcView->repaint();
 	#else
 		m_pIrcView->paintEvent(0);
 	#endif
