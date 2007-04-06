@@ -554,11 +554,13 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 
 #define KVI_NUM_UINT_OPTIONS 61
 
-enum KviIdentdOutputMode {
-	Quiet = 0,
-	ToConsole = 1,
-	ToActiveWindow = 2
-};
+namespace KviIdentdOutputMode {
+	enum Mode {
+		Quiet = 0,
+		ToConsole = 1,
+		ToActiveWindow = 2
+	};
+}
 
 
 #define KVI_FONT_OPTIONS_PREFIX "font"
