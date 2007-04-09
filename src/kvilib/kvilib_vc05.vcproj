@@ -257,6 +257,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\irc\kvi_history_manager.cpp"
+				>
+			</File>
+			<File
 				RelativePath="net\kvi_http.cpp"
 				>
 			</File>
@@ -902,6 +906,32 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step $(InputName)"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\irc\kvi_history_manager.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing kvi_history_manager.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\irc\kvi_history_manager.h -o tmp\moc\moc_kvi_history_manager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\irc\kvi_history_manager.h"
+						Outputs="tmp\moc\moc_kvi_history_manager.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing kvi_history_manager.h..."
+						CommandLine="$(QTDIR)\bin\moc.exe .\irc\kvi_history_manager.h -o tmp\moc\moc_kvi_history_manager.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\irc\kvi_history_manager.h"
+						Outputs="tmp\moc\moc_kvi_history_manager.cpp"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3128,6 +3158,18 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tmp\moc\moc_kvi_history_manager.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

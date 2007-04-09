@@ -1,0 +1,18 @@
+// win32registrar.idl : IDL source for win32registrar
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (win32registrar.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(0C3E343A-F114-45B1-9464-452A321A732F),
+	version(1.0),
+	helpstring("win32registrar 1.0 Type Library")
+]
+library win32registrarLib
+{
+	importlib("stdole2.tlb");
+};
