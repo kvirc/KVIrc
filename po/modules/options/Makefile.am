@@ -16,6 +16,7 @@ tmp_DATA  = options_bg.mo \
 	options_de.mo \
 	options_es.mo \
 	options_fr.mo \
+	options_hu.mo \
 	options_it.mo \
 	options_nl.mo \
 	options_pl.mo \
@@ -31,6 +32,7 @@ POFILES = options_bg.po \
 	options_de.po \
 	options_es.po \
 	options_fr.po \
+	options_hu.po \
 	options_it.po \
 	options_nl.po \
 	options_pl.po \

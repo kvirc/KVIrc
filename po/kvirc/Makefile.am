@@ -10,6 +10,7 @@ tmp_DATA  = kvirc_bg.mo \
 	kvirc_de.mo \
 	kvirc_es.mo \
 	kvirc_fr.mo \
+	kvirc_hu.mo \
 	kvirc_it.mo \
 	kvirc_nl.mo \
 	kvirc_pl.mo \
@@ -28,6 +29,7 @@ POFILES = kvirc_bg.po \
 	kvirc_de.po \
 	kvirc_es.po \
 	kvirc_fr.po \
+	kvirc_hu.po \
 	kvirc_it.po \
 	kvirc_nl.po \
 	kvirc_pl.po \
