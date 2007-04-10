@@ -303,7 +303,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
-	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl)
+	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl),
+	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar)
 
 };
 
@@ -615,7 +616,9 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("AutoFlushLogs",30,KviOption_sectFlagFrame ),
 	UINT_OPTION("MinTrayLowLevelMessage",1,KviOption_sectFlagFrame ),
 	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame ),
-	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection )
+	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection ),
+	UINT_OPTION("ScaleAvatarsOnLoadHeight",600,KviOption_sectFlagAvatar ),
+	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar )
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

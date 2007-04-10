@@ -477,7 +477,7 @@ public:
 	// if szLocalPath is empty then szName can be the identification
 	// string for the avatar
 	// if szName is empty then it is found from szLocalPath
-	KviAvatar * getAvatar(const QString &szLocalPath,const QString &szName,bool bScaleIfReallyTooBig = true);
+	KviAvatar * getAvatar(const QString &szLocalPath,const QString &szName);
 
 	void urlToCachedFileName(KviStr &szFName);
 	void urlToCachedFileName(QString &szFName);

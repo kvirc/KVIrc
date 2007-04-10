@@ -34,6 +34,7 @@
 #include "kvi_qstring.h"
 #include "kvi_string.h"
 #include "kvi_malloc.h"
+#include "kvi_locale.h"
 
 #include <ctype.h> // for tolower()
 #include <stdio.h> // for sprintf()
@@ -158,6 +159,30 @@ namespace KviQString
 			sz2++;
 		}
 		return (c1 == c1e);
+	}
+
+	QString makeSizeReadable(size_t bytes)
+	{
+		double size = bytes;
+		if(size<900)
+			return QString(__tr2qs("%1 bytes")).arg(size,0,'f',3);
+
+		size/=1024;
+		if(size<900)
+			return QString(__tr2qs("%1 KB")).arg(size,0,'f',3);
+
+		size/=1024;
+		if(size<900)
+			return QString(__tr2qs("%1 MB")).arg(size,0,'f',3);
+
+		//Pirated DVD?;)
+		size/=1024;
+		if(size<900)
+			return QString(__tr2qs("%1 GB")).arg(size,0,'f',3);
+
+		//Uhm.. We are downloading a whole internet:)))
+		size/=1024;
+		return QString(__tr2qs("%1 TB")).arg(size,0,'f',3);
 	}
 
 	bool equalCS(const QString &sz1,const QString &sz2)

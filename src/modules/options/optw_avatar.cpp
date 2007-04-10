@@ -33,12 +33,12 @@
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"avatar_advanced_options_widget")
 {
-	createLayout(3,1);
+	createLayout(4,1);
 	// AVATAR
 
 	// 1st Box
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling","options"));
-	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images (recommended)","options"),KviOption_boolScaleAvatars);
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling in userlist","options"));
+	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images in userlist (recommended)","options"),KviOption_boolScaleAvatars);
 #ifdef COMPILE_INFO_TIPS	
 	KviTalToolTip::add(b,__tr2qs_ctx("<center>This option will force KVIrc to scale avatars" \
 			" shown in the userlist.<br>" \
@@ -52,8 +52,17 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintAvatarScaleHeight,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
+	//2nd
+	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and it user tooltips)","options"));
+	b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images on image load","options"),KviOption_boolScaleAvatarsOnLoad);
+	
+	u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintScaleAvatarsOnLoadWidth,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
+	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintScaleAvatarsOnLoadHeight,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
+	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+
 	// 2st Box
-	KviTalGroupBox *gs = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Request CTCP","options"));
+	KviTalGroupBox *gs = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("Request CTCP","options"));
 	KviBoolSelector * bs = addBoolSelector(g,__tr2qs_ctx("Request missing avatars","options"),KviOption_boolRequestMissingAvatars);
 	KviUIntSelector * us = addUIntSelector(g,__tr2qs_ctx("Maximum requested file size:","options"),KviOption_uintMaximumRequestedAvatarSize,0,1048576,102400,KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars));
 
@@ -111,7 +120,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 			"it helps in reducing traffic by not sending a reply that would be empty.","options"));
 #endif
 
-	addRowSpacer(0,2,0,2);
+	addRowSpacer(0,3,0,3);
 }
 
 KviAvatarAdvancedOptionsWidget::~KviAvatarAdvancedOptionsWidget()

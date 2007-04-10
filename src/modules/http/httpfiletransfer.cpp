@@ -211,9 +211,10 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 				//iR = iW - iL;
 				p->fillRect(5,5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
-				txt = QString(__tr2qs_ctx("%1 of %2 bytes (%3 %)","http")).arg(uRecvd).arg(uTotal).arg(dPerc,0,'f',2);
+				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)","http")).arg(KviQString::makeSizeReadable(uRecvd))
+					.arg(KviQString::makeSizeReadable(uTotal)).arg(dPerc,0,'f',2);
 			} else {
-				txt = QString(__tr2qs_ctx("%1 bytes","http")).arg(m_pHttpRequest->receivedSize());
+				txt = KviQString::makeSizeReadable(m_pHttpRequest->receivedSize());
 			}
 
 			p->setPen(Qt::black);

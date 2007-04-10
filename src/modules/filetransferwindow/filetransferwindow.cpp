@@ -313,7 +313,7 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 				if(fi.exists())
 				{
 					tmp += "<nobr>";
-					tmp += __tr2qs_ctx("Size: %1 bytes","filetransferwindow").arg(fi.size());
+					tmp += __tr2qs_ctx("Size: %1","filetransferwindow").arg(KviQString::makeSizeReadable(fi.size()));
 					tmp += "</nobr><br>";
 				}
 

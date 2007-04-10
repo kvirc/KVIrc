@@ -582,7 +582,7 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 	{
 		// this is an url
 		// first check if we have it in the cache
-		KviAvatar * a = g_pIconManager->getAvatar(QString::null,szCurrent,false);
+		KviAvatar * a = g_pIconManager->getAvatar(QString::null,szCurrent);
 		if(!a)
 		{
 			// no cache... try downloading

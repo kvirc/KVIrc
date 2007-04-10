@@ -502,11 +502,11 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"<b>%1 [%2@%3]</b> " \
 						"wants to send you the file " \
 						"'<b>%4</b>', " \
-						"<b>%5</b> bytes large.<br>" \
+						"<b>%5</b> large.<br>" \
 						"The connection target will be host <b>%6</b> on port <b>%7</b><br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-					dcc->szFileName).arg(dcc->szFileSize).arg(
+				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toInt())).arg(
 					dcc->szIp).arg(dcc->szPort);
 
 		} else {
@@ -515,11 +515,11 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"<b>%1 [%2@%3]</b> "
 						"wants to send you the file " \
 						"'<b>%4</b>', " \
-						"<b>%5</b> bytes large.<br>" \
+						"<b>%5</b> large.<br>" \
 						"You will be the passive side of the connection.<br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-					dcc->szFileName).arg(dcc->szFileSize);
+					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toInt()));
 		}
 
 		if(dcc->bIsIncomingAvatar)
@@ -663,13 +663,13 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists" \
-							"and is <b>%2</b> bytes large.<br>" \
+							"and is <b>%2</b> large.<br>" \
 							"Do you wish to<br>" \
 							"<b>overwrite</b> the existing file,<br> " \
 							"<b>auto-rename</b> the new file, or<br>" \
 							"<b>resume</b> an incomplete download?" \
 						,"dcc" \
-					).arg(dcc->szLocalFileName).arg(fi.size());
+					).arg(dcc->szLocalFileName).arg(KviQString::makeSizeReadable(fi.size()));
 			} else {
 				bDisableResume = true;
 				// the file on disk is larger or equal to the remote one

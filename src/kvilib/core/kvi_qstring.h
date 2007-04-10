@@ -40,6 +40,7 @@
 
 namespace KviQString
 {
+	extern KVILIB_API QString makeSizeReadable(size_t size);
 	extern KVILIB_API bool equalCS(const QString &sz1,const QString &sz2);
 	extern KVILIB_API bool equalCI(const QString &sz1,const QString &sz2);
 	extern KVILIB_API bool equalCS(const QString &sz1,const char * sz2);

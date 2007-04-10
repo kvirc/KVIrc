@@ -34,6 +34,7 @@
 #include "kvi_defaults.h"
 #include "kvi_locale.h"
 #include "kvi_fileutils.h"
+#include "kvi_options.h"
 
 #include <qlayout.h>
 #include <qlabel.h>
@@ -783,7 +784,7 @@ void KviIconManager::urlToCachedFileName(QString &szFName)
 	szFName.replace("___",".");
 }
 
-KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &szName,bool bScaleIfReallyTooBig)
+KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &szName)
 {
 	QString szP,szN;
 
@@ -810,7 +811,9 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 	}
 
 	// avatars bigger than 1024x768 just sux: they can't be seen on tooltips anyway
-	KviCachedPixmap * p = bScaleIfReallyTooBig ? getPixmapWithCacheScaleOnLoad(szP,1024,768) : getPixmapWithCache(szP);
+	KviCachedPixmap * p = KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad) ? getPixmapWithCacheScaleOnLoad(szP,
+		KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth)
+		,KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)) : getPixmapWithCache(szP);
 	if(!p)return 0;
 
 	return new KviAvatar(p->path(),szN,new QPixmap(*(p->pixmap())));

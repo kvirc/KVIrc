@@ -310,8 +310,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPrependGenderInfoToRealname 216
 #define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
 #define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
+#define KviOption_boolScaleAvatarsOnLoad 219
 
-#define KVI_NUM_BOOL_OPTIONS 219
+#define KVI_NUM_BOOL_OPTIONS 220
 
 
 
@@ -551,8 +552,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintMinTrayLowLevelMessage 58
 #define KviOption_uintMinTrayHighLevelMessage 59
 #define KviOption_uintIdentdOutputMode 60
+#define KviOption_uintScaleAvatarsOnLoadHeight 61
+#define KviOption_uintScaleAvatarsOnLoadWidth 62
 
-#define KVI_NUM_UINT_OPTIONS 61
+#define KVI_NUM_UINT_OPTIONS 63
 
 namespace KviIdentdOutputMode {
 	enum Mode {
