@@ -852,12 +852,12 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			szTemp = szClass + "::" + szObj;
 			KviKvsVariant v;
 			v.setString(szTemp);
-			n->set(i,new KviKvsVariant(v));
+			n->set(idx,new KviKvsVariant(v));
 			debug ("string %s",szTemp.latin1());
 			debug ("class %s",szClass.latin1());
 			debug ("Obj %s",szObj.latin1());
 	
-			//idx++;
+			idx++;
 	
 			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
 		
@@ -946,7 +946,6 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
          }
 
 #else
-
         const QObjectList *l = parent->children();
     	if( !l ) return;
         if( l->isEmpty() ) return;
