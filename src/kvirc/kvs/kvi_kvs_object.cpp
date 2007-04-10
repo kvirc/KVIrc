@@ -1022,30 +1022,34 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 		const QMetaObject *o = m_pObject->metaObject();
 		if(!bArray)
 			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Properties for Qt class %s"),o->className());
+#ifndef COMPILE_USE_QT4
 		while(o)
 		{
-			kvs_int_t idx = 0;
-#ifdef COMPILE_USE_QT4
-			QMetaProperty prop = o->property(idx);
-			const QMetaProperty *p = &prop;
-#else
-			const QMetaProperty *p = o->property(idx);
 #endif
+			kvs_int_t idx = 0;
+			#ifdef COMPILE_USE_QT4
+				QMetaProperty prop = o->property(idx);
+				const QMetaProperty *p = &prop;
+			#else
+				const QMetaProperty *p = o->property(idx);
+			#endif
+
 			while(p)
 			{
 				QString szOut;
 				QString szName = p->name();
-#ifdef COMPILE_USE_QT4
-				QString szType = p->typeName();
-#else
+				#ifdef COMPILE_USE_QT4
+					QString szType = p->typeName();
+				#else
 				QString szType = p->type();
-#endif
+				#endif
 				if(bArray)
 					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
 				else {
 					KviQString::sprintf(szOut,__tr2qs("Property: %c%Q%c, type %Q"),KVI_TEXT_BOLD,&szName,KVI_TEXT_BOLD,&szType);
 					szOut.prepend(" ");
 				}
+				
 				if(p->isEnumType())
 				{
 					szOut += ", enum(";
@@ -1064,6 +1068,8 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 #endif
 					szOut += ")";
 				}
+				
+
 #ifdef COMPILE_USE_QT4
 				// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
 				//        for me to fix now. Actually I need to get the whole executable working...
@@ -1077,16 +1083,24 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				else
 					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
 #ifdef COMPILE_USE_QT4
-				prop = o->property(idx);
-				p = &prop;
+				idx++;
+				if (idx<o->propertyCount()){
+						prop = o->property(idx);
+						p = &prop;
+				}
+				else p=0;
 #else
 				p = o->property(idx);
-#endif
 				idx++;
+#endif
+				
 				cnt++;
 			}
+#ifndef COMPILE_USE_QT4	
 			o = o->superClass();
 		}
+#endif
+
 	}
 
 	if(bArray)
