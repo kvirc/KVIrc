@@ -990,6 +990,9 @@ void KviIrcView::postUpdateEvent()
 	if(m_iUnprocessedPaintEventRequests == 3)
 	{
 		// Three unprocessed paint events...do it now
+		#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS)
+		repaint(0);
+			#else
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 		if(! ((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap || g_pShadedChildGlobalDesktopBackground))fastScroll(3);
 #else
@@ -997,12 +1000,10 @@ void KviIrcView::postUpdateEvent()
 #endif
 		else
 		{
-			#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-			repaint(0);
-			#else
 			paintEvent(0);
-			#endif
 		}
+			#endif
+	
 	}
 }
 
@@ -2803,8 +2804,15 @@ void KviIrcView::fastScroll(int lines)
 			l = l->pPrev;
 		} else lines = 0;
 	}
+/*#ifdef COMPILE_USE_QT4
+	QPainter p(this);
+	QPixmap pixmap=QPixmap::grabWidget(this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
+	p.drawPixmap(1,1,pixmap,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
+#else
+*/
 
 	bitBlt(this,1,1,this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
+//#endif
 
 	QRect r(0,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER),
 			widgetWidth,heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER);
