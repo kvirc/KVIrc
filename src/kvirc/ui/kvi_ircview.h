@@ -55,6 +55,8 @@ class KVIRC_API KviIrcView : public QWidget
 {
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+	// we cannot #ifdef due to a bug in moc
+	Q_PROPERTY(bool usePaintOnScreen READ getPaintOnScreen WRITE setPaintOnScreen)
 public:
 	friend class KviIrcViewToolTip;
 	friend class KviIrcViewToolWidget;
@@ -63,6 +65,14 @@ public:
 	~KviIrcView();
 public:
 	int dummyRead() const { return 0; };
+#ifdef COMPILE_USE_QT4
+	bool getPaintOnScreen() const { return testAttribute(Qt::WA_PaintOnScreen);};
+	void setPaintOnScreen(bool bFlag){setAttribute(Qt::WA_PaintOnScreen,bFlag);} ;
+#else
+	// hack to fix moc bug on win qt4
+	bool getPaintOnScreen() const { return 0;};
+	void setPaintOnScreen(bool bFlag){} ;
+#endif
 private:
 //	QDate                       m_lastLogDay;
 	int		 	                m_iFlushTimer;
