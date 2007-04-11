@@ -149,6 +149,10 @@
 		Sets the background mode of the painter to <bgMode>: valid values are:[br]
 		- Transparent	(that is the default value);[br]
 		- Opaque.[br]
+		!fn: $setOpacity(<opacity_factor:real>) [QT4 ONLY] 
+		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
+		You must invoke the [classfnc]$begin[/classfnc] before using it.
+
 		Example:[br]
 		[br]
 		class (hello,widget)[br] 
@@ -359,6 +363,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"translate",functiontranslateMatrix)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"reset",functionresetMatrix)
 
+#ifdef COMPILE_USE_QT4
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setOpacity",functionsetOpacity)
+#endif
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"begin",functionbegin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"end",functionend)
@@ -370,6 +377,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_painter)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_painter,KviKvsObject)
 
 	m_pPainter = new QPainter();
+
 	m_pDeviceObject=0;
 	
 KVSO_END_CONSTRUCTOR(KviKvsObject_painter)
@@ -779,6 +787,7 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget or Pixmap required "));
 	else {
 		attachDevice(pObject,pd);
+	//	m_pPainter->setOpacity(0.4);	
 		if (pObject->inherits("KviKvsObject_pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
 	}
 	return true;
@@ -820,7 +829,7 @@ bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETER("length",KVS_PT_INT,0,iLen)
-		KVSO_PARAMETER("mode",KVS_PT_STRING,0,szMode)
+		KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
 #ifdef COMPILE_USE_QT4
@@ -833,6 +842,7 @@ bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 				return true;
 		}
 	}
+
 	 m_pPainter->drawText(iX,iY,szText);
 #else
 	if(KviQString::equalCI(szMode,"Auto")) m_pPainter->drawText(iX,iY,szText,iLen,QPainter::Auto);
@@ -933,4 +943,21 @@ bool KviKvsObject_painter::functionresetMatrix(KviKvsObjectFunctionCall *c)
 	m_pPainter->setWorldMatrix( m_pMatrix );
     return true;
 }
+
+#ifdef COMPILE_USE_QT4
+bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
+{
+	if(!m_pPainter)return true; 
+	kvs_real_t dOpacity;
+		
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
+	KVSO_PARAMETERS_END(c)
+	m_pPainter->setOpacity(dOpacity);
+	return true;
+}
+#endif
+
+
+
 #include "m_class_painter.moc"

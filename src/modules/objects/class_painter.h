@@ -74,6 +74,11 @@ public:
 	bool functionresetMatrix(KviKvsObjectFunctionCall *c);
 	bool functiontranslateMatrix(KviKvsObjectFunctionCall *c);
 
+#ifdef COMPILE_USE_QT4
+	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
+#endif
+
+
 
 protected:
 	void attachDevice(KviKvsObject * o,QPaintDevice * p);
