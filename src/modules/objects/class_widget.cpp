@@ -37,6 +37,7 @@
 #include <qiconset.h>
 #include <qcolor.h>
 #include <qlayout.h>
+#include <qbitmap.h>
 #include <qmetaobject.h>
 #include "class_widget.h"
 #include "class_pixmap.h"
@@ -535,6 +536,7 @@ void KviKvsTip::maybeTip(const QPoint &pnt)
 //=============================================================================================================
 
 
+
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"reparent",function_reparent)
 	// apparence
@@ -594,6 +596,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setDynamicToolTip",function_setDynamicToolTip)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -639,7 +642,6 @@ bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 
 bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 {
-
 	if(o == object())
 	{
 		QString ret;
@@ -788,6 +790,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 			break;
 			case QEvent::MouseMove:
+					debug ("MOVE EVENT");
+
 				if( (((QMouseEvent *)e)->state()) & Qt::LeftButton) aparam = 0;
 				else
 				{
@@ -1675,5 +1679,29 @@ bool KviKvsObject_widget::function_setDynamicToolTip(KviKvsObjectFunctionCall *c
 	m_pTip->doTip(QRect(QPoint(iXstart,iYstart),QSize(uWidth,uHeight)),szTip);
 	return true;
 }
-
+bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
+{
+	KviKvsObject *obj;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!widget())return true;
+	if (!obj)
+	{
+		c->warning(__tr2qs("Pixmap parameter is not an object"));
+		return true;
+	}
+	if (!obj->inherits("KviKvsObject_pixmap"))
+	{
+		c->warning(__tr2qs("Pixmap object required"));
+		return true;
+	}
+	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
+	QBitmap mask(pm->mask());
+	if (mask.isNull()) c->warning(__tr2qs("Null mask"));
+	widget()->setMask(mask);
+	return true;
+}
 #include "m_class_widget.moc"

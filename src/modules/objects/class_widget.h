@@ -100,6 +100,7 @@ protected:
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
 	bool function_setDynamicToolTip(KviKvsObjectFunctionCall *c);
+	bool function_setMask(KviKvsObjectFunctionCall *c);
 
 signals:
 	void aboutToDie();
