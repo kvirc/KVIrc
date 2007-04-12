@@ -204,6 +204,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	connect(m_pMenuButton,SIGNAL(clicked()),this,SLOT(testPopup()));
 #ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Vertical,this,"popupeditor");
+	spl->setOpaqueResize(false);
 #else
 	QSplitter * spl = new QSplitter(QSplitter::Vertical,this);
 #endif
@@ -1029,6 +1030,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	QGridLayout * l = new QGridLayout(this,1,1,0,2);
 #ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"popupeditor");
+	spl->setOpaqueResize(false);
 #else
 	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
 #endif

@@ -656,6 +656,8 @@ KviActionEditor::KviActionEditor(QWidget * par)
 
 #ifdef COMPILE_USE_QT4
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setOpaqueResize(false);
+
 #else
 	m_pSplitter = new QSplitter(QSplitter::Horizontal,this);
 #endif

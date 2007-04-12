@@ -76,6 +76,7 @@ KviRawEditor::KviRawEditor(QWidget * par)
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
 #ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"raweditorv");
+	spl->setOpaqueResize(false);
 #else
 	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
 #endif
