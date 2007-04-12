@@ -25,6 +25,8 @@
 #include "kvi_settings.h"
 #include "kvi_module.h"
 #include "kvi_string.h"
+#include "kvi_library.h"
+#include "kvi_thread.h"
 
 #include "kvi_locale.h"
 #include "kvi_qcstring.h"
@@ -46,6 +48,10 @@
 #endif
 
 #include "kvi_modulemanager.h"
+
+#include "plugin.h"
+
+KviPluginManager * g_pPluginManager;
 
 /*
 	@doc: system.ostype
@@ -646,6 +652,27 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: system.call
+	@keyterms:
+		call plugin
+	@type:
+		function
+	@title:
+		$system.call
+	@short:
+		Allows to call functions of a plugin
+	@syntax:
+		<string> $system.plugin(<plugin:string>, <function:string>[,<parameters:string>,...])
+	@description:
+		To be completed...
+*/
+
+
+static bool system_kvs_fnc_plugin_call(KviKvsModuleFunctionCall *c)
+{
+	return g_pPluginManager->PluginCall(c);
+}
 
 static bool system_module_init(KviModule * m)
 {
@@ -661,16 +688,27 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"clipboard",system_kvs_fnc_clipboard);
 	KVSM_REGISTER_FUNCTION(m,"selection",system_kvs_fnc_selection);
 	KVSM_REGISTER_FUNCTION(m,"checkModule",system_kvs_fnc_checkModule);
+	KVSM_REGISTER_FUNCTION(m,"call",system_kvs_fnc_plugin_call);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setenv",system_kvs_cmd_setenv);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setClipboard",system_kvs_cmd_setClipboard);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setSelection",system_kvs_cmd_setSelection);
 
+	g_pPluginManager = new(KviPluginManager);
+	
 	return true;
 }
 
 static bool system_module_cleanup(KviModule *m)
 {
+	g_pPluginManager->UnloadAll(true);
+	delete g_pPluginManager;
+	return true;
+}
+
+static bool system_module_can_unload(KviModule *m)
+{
+	if(!g_pPluginManager->CheckUnload()) return false;
 	return true;
 }
 
@@ -682,7 +720,7 @@ KVIRC_MODULE(
 	"			(C) 2005 Alessandro Carbone (noldor at barmes dot org)",// author & (C)
 	"System informations module",
 	system_module_init,
-	0,
+	system_module_can_unload,
 	0,
 	system_module_cleanup
 )
