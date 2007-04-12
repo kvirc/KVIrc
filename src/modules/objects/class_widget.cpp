@@ -69,6 +69,22 @@ const char * const widgettypes_tbl[] = {
 			"NoAutoErase"
 			   };
 #ifdef COMPILE_USE_QT4
+const Qt::WidgetAttribute widgetattributes_cod[]= {
+	Qt::WA_OpaquePaintEvent,
+	Qt::WA_NoSystemBackground,
+	Qt::WA_PaintOnScreen,
+	Qt::WA_NoMousePropagation,
+};
+
+const char * const widgetattributes_tbl[] = {
+	"opaquePaintEvent",
+	"noSystemBackground",
+	"paintOnScreen",
+	"noMousePropagation",
+};
+#define widgetattributes_num	(sizeof(widgetattributes_tbl) / sizeof(widgetattributes_tbl[0]))
+
+
 const Qt::WindowType widgettypes_cod[] = {
 #else 
 const int widgettypes_cod[] = {
@@ -87,13 +103,13 @@ const int widgettypes_cod[] = {
 };
 
 
-
-
 #ifdef COMPILE_USE_QT4
+
 	#define QT_WIDGET_TABFOCUS Qt::TabFocus
 	#define	QT_WIDGET_CLICKFOCUS Qt::ClickFocus
 	#define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
 	#define QT_WIDGET_NOFOCUS Qt::NoFocus
+
 #else
 	#define QT_WIDGET_TABFOCUS QWidget::TabFocus
 	#define	QT_WIDGET_CLICKFOCUS QWidget::ClickFocus
@@ -597,6 +613,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setDynamicToolTip",function_setDynamicToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
+
+	// QT4 only
+#ifdef COMPILE_USE_QT4
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setAttribute",function_setAttribute)
+#endif
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -1704,4 +1725,30 @@ bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 	widget()->setMask(mask);
 	return true;
 }
+#ifdef COMPILE_USE_QT4
+bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
+{
+	QString attribute;
+	bool bFlag;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("widget_atribute",KVS_PT_STRING,0,attribute)
+		KVSO_PARAMETER("bool_flag",KVS_PT_BOOLEAN,0,bFlag)
+	KVSO_PARAMETERS_END(c)
+	if (!widget()) return true;
+	bool found=false;
+	unsigned int j = 0;
+	for(; j < widgetattributes_num; j++)
+	{
+		if(KviQString::equalCI(attribute, widgetattributes_tbl[j]))
+		{
+			found=true;
+			break;
+		}
+	}
+	if(found)widget()->setAttribute(widgetattributes_cod[j],bFlag);
+	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);	
+	return true;
+}
+#endif
+
 #include "m_class_widget.moc"

@@ -101,6 +101,11 @@ protected:
 	bool function_y(KviKvsObjectFunctionCall *);
 	bool function_setDynamicToolTip(KviKvsObjectFunctionCall *c);
 	bool function_setMask(KviKvsObjectFunctionCall *c);
+	
+
+#ifdef COMPILE_USE_QT4
+bool function_setAttribute(KviKvsObjectFunctionCall *c);
+#endif
 
 signals:
 	void aboutToDie();
