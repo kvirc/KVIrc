@@ -30,6 +30,7 @@
 #include "kvi_thread.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
+#include "kvi_fileutils.h"
 
 #include <qdir.h>
 #include <qfileinfo.h>
@@ -42,9 +43,9 @@ KviPlugin::~KviPlugin()
 {
 }
 
-bool KviPlugin::load(QString * pszPluginName)
+bool KviPlugin::load(QString& pszPluginName)
 {
-	m_Plugin = kvi_library_open(pszPluginName->ascii());
+	m_Plugin = kvi_library_open(pszPluginName.local8Bit());
 	if (!m_Plugin)
 	{
 		return false;
@@ -55,7 +56,7 @@ bool KviPlugin::load(QString * pszPluginName)
 	function_load = (plugin_unload)kvi_library_symbol(m_Plugin,"_load");
 	if (function_load)
 	{
-		// ADD: THREAD
+		//TODO: THREAD
 		function_load();
 	}
 	return true;
@@ -68,7 +69,7 @@ bool KviPlugin::unload(bool forced)
 	function_unload = (plugin_unload)kvi_library_symbol(m_Plugin,"_unload");
 	if (function_unload)
 	{
-		// ADD: THREAD
+		//TODO: THREAD
 		if(!function_unload()) 
 		{
 			if(!forced) return false;
@@ -83,16 +84,16 @@ bool KviPlugin::unload(bool forced)
 	return true;
 }
 
-int KviPlugin::call(QString * pszFunctionName, int argc, char * argv[], char ** pBuffer)
+int KviPlugin::call(QString& pszFunctionName, int argc, char * argv[], char ** pBuffer)
 {
 	int r;
 	plugin_function function_call;
-	function_call = (plugin_function)kvi_library_symbol(m_Plugin,pszFunctionName->ascii());
+	function_call = (plugin_function)kvi_library_symbol(m_Plugin,pszFunctionName.local8Bit());
 	if (!function_call)
 	{
 		return -1;
 	} else {
-		// ADD: THREAD
+		//TODO: THREAD
 		r = function_call(argc,argv,pBuffer);
 	}
 	if (r < 0) r = 0; // negative numbers are for error handling.
@@ -104,9 +105,9 @@ KviStr KviPlugin::name()
 	return m_szName;
 }
 
-void KviPlugin::setName(QString * Name)
+void KviPlugin::setName(QString& Name)
 {
-	m_szName = Name->ascii();
+	m_szName = Name;
 }
 
 
@@ -123,7 +124,7 @@ KviPluginManager::~KviPluginManager()
 	delete 	m_pPluginDict;
 }
 
-bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
+bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 {
 	QString szPluginName; //contains full path and plugin name like "c:/plugin.dll"
 	QString szSinglePluginName; // contains only the name of the plugin like "plugin.dll"
@@ -135,25 +136,22 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 	KVSM_PARAMETERS_END(c)
 	
 	//Check if there is such a plugin
-	if(!FindPlugin(&szPluginName, &szSinglePluginName))
+	if(!findPlugin(szPluginName, szSinglePluginName))
 	{
 		c->error(__tr2qs("Plugin not found. Please check the plugin-name and path."));
 		return true;
 	}
 	
 	// Check if plugin is already loaded
-	if(!PluginIsLoaded(&szSinglePluginName))
+	if(!pluginIsLoaded(szSinglePluginName))
 	{
-		c->warning("Plugin not loaded yet"); //REMOVE
 		//If not loaded try to load now
-		if(!LoadPlugin(&szPluginName,&szSinglePluginName))
+		if(!loadPlugin(szPluginName,szSinglePluginName))
 		{
 			c->error(__tr2qs("Error while loading plugin."));
 			return true;
 		}
-	} else c->warning("Plugin already loaded"); //REMOVE
-	
-	c->warning(szPluginName); //REMOVE
+	}
 	
 	//Parsing more Parameters
 	int iArgc = 0;
@@ -178,7 +176,6 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 		while (i < (iArgc + 2) )
 		{
 			c->params()->at(i)->asString(tmp);
-			c->warning(tmp);
 			iSize += tmp.length()+1; //+1 for the \0 characters
 			i++;
 		}
@@ -194,7 +191,7 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 		{
 			ppArgv[i-2] = x;
 			c->params()->at(i)->asString(tmp);
-			strcpy(x,tmp.ascii());
+			strcpy(x,tmp.local8Bit());
 			x += tmp.length();
 
 			*x = 0;
@@ -204,8 +201,8 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 
 	} else {
 		//Avoid using unfilled variables
-		ppArgv = (char**)malloc(0);
-		pArgvBuffer = (char*)malloc(0);
+		ppArgv = 0;
+		iArgc = 0;
 	}
 	
 	//Preparing return buffer
@@ -213,8 +210,8 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 	
 	KviPlugin * plugin;
 	
-	plugin = GetPlugin(&szSinglePluginName);
-	int r = plugin->call(&szFunctionName,iArgc,ppArgv,&returnBuffer);
+	plugin = getPlugin(szSinglePluginName);
+	int r = plugin->call(szFunctionName,iArgc,ppArgv,&returnBuffer);
 	
 	if(r == -1)
 	{
@@ -233,7 +230,7 @@ bool KviPluginManager::PluginCall(KviKvsModuleFunctionCall *c)
 	return true;
 }
 
-bool KviPluginManager::CheckUnload()
+bool KviPluginManager::checkUnload()
 {
 	/* 	
 	Always called when system module should be unloaded
@@ -256,7 +253,7 @@ bool KviPluginManager::CheckUnload()
 	return m_bCanUnload;
 }
 
-void KviPluginManager::UnloadAll(bool forced)
+void KviPluginManager::unloadAll(bool forced)
 {
 	KviAsciiDictIterator<KviPlugin> it(*m_pPluginDict);
 	
@@ -267,65 +264,62 @@ void KviPluginManager::UnloadAll(bool forced)
 	}
 }
 
-bool KviPluginManager::FindPlugin(QString * pName, QString * pSingleName)
+bool KviPluginManager::findPlugin(QString& pName, QString& pSingleName)
 {
 	QDir d;
-	QFileInfo fi;
 	QString szPath;	
 	
 	//Trying to find the plugin directly
-	d.setPath(*pName);
+	d.setPath(pName);
 	d.convertToAbs(); // To be sure that path is completly absolute!
 	
-	fi.setFile(d.path());
-	if(!fi.exists())
+	if(!KviFileUtils::fileExists(d.path()))
 	{
 		//Plugin not found in direct way. Looking in kvirc local dir
-		g_pApp->getGlobalKvircDirectory(szPath,KviApp::None,"easyplugins/"+*pName);
+		g_pApp->getGlobalKvircDirectory(szPath,KviApp::None,"easyplugins/"+pName);
 		
 		d.setPath(szPath);
 		d.convertToAbs(); // To be sure that path is completly absolute!
 		
-		fi.setFile(d.path());
-		if(!fi.exists())
+		if(!KviFileUtils::fileExists(d.path()))
 		{
 			//Plugin not found in kvirc local dir. Looking in kvirc global dir
-			g_pApp->getLocalKvircDirectory(szPath,KviApp::None,"easyplugins/"+*pName);
+			g_pApp->getLocalKvircDirectory(szPath,KviApp::None,"easyplugins/"+pName);
 			
 			d.setPath(szPath);
 			d.convertToAbs(); // To be sure that path is completly absolute!
 			
-			fi.setFile(d.path());
-			if(!fi.exists())
+			if(!KviFileUtils::fileExists(d.path()))
 			{
 				return false;
 			}
 		}
 	}
 	
-	*pName  = d.path();
-	*pSingleName = fi.fileName();	
+	pName  = d.path();
+	pSingleName = KviFileUtils::extractFileName(pName);	//TODO
+	
 	
 	return true;
 }
 
-bool KviPluginManager::PluginIsLoaded(QString * pSingleName)
+bool KviPluginManager::pluginIsLoaded(QString& pSingleName)
 {
-	KviPlugin * p = m_pPluginDict->find(pSingleName->ascii());
+	KviPlugin * p = m_pPluginDict->find(pSingleName.local8Bit());
 	if (!p) return false; else return true;
 }
 
-bool KviPluginManager::LoadPlugin(QString * pName, QString * pSingleName)
+bool KviPluginManager::loadPlugin(QString& pName, QString& pSingleName)
 {
 	KviPlugin * plugin = new KviPlugin();
 	if(!plugin->load(pName)) return false;
 	plugin->setName(pSingleName);
-	m_pPluginDict->insert(pSingleName->ascii(),plugin);
+	m_pPluginDict->insert(pSingleName.local8Bit(),plugin);
 	return true;
 }
 
-KviPlugin * KviPluginManager::GetPlugin(QString * pSingleName)
+KviPlugin * KviPluginManager::getPlugin(QString& pSingleName)
 {
-	KviPlugin * p = m_pPluginDict->find(pSingleName->ascii());
+	KviPlugin * p = m_pPluginDict->find(pSingleName.local8Bit());
 	return p;
 }

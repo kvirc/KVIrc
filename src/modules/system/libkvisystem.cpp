@@ -671,7 +671,7 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 
 static bool system_kvs_fnc_plugin_call(KviKvsModuleFunctionCall *c)
 {
-	return g_pPluginManager->PluginCall(c);
+	return g_pPluginManager->pluginCall(c);
 }
 
 static bool system_module_init(KviModule * m)
@@ -701,14 +701,14 @@ static bool system_module_init(KviModule * m)
 
 static bool system_module_cleanup(KviModule *m)
 {
-	g_pPluginManager->UnloadAll(true);
+	g_pPluginManager->unloadAll(true);
 	delete g_pPluginManager;
 	return true;
 }
 
 static bool system_module_can_unload(KviModule *m)
 {
-	if(!g_pPluginManager->CheckUnload()) return false;
+	if(!g_pPluginManager->checkUnload()) return false;
 	return true;
 }
 

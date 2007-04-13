@@ -41,14 +41,14 @@ class KviPlugin
 	private:
 		// shared
 		// internal
-		KviStr m_szName;
+		QString m_szName;
 		kvi_library_t m_Plugin;
 	public:
-		bool load(QString * pszPluginName);
+		bool load(QString& pszPluginName);
 		bool unload(bool forced);
-		int call(QString * pszFunctionName, int argc, char * argv[], char ** pBuffer);
+		int call(QString& pszFunctionName, int argc, char * argv[], char ** pBuffer);
 		KviStr name();
-		void setName(QString * Name);
+		void setName(QString& Name);
 	protected:
 };
 
@@ -63,14 +63,14 @@ class KviPluginManager
 		// internal
 		KviAsciiDict<KviPlugin> * m_pPluginDict;
 	public:
-		bool PluginCall(KviKvsModuleFunctionCall *c);
-		bool CheckUnload();
-		void UnloadAll(bool forced);
+		bool pluginCall(KviKvsModuleFunctionCall *c);
+		bool checkUnload();
+		void unloadAll(bool forced);
 	protected:
-		bool FindPlugin(QString * pName, QString * pSingleName);
-		bool PluginIsLoaded(QString * pSingleName);
-		bool LoadPlugin(QString * pName, QString * pSingleName);
-		KviPlugin * GetPlugin(QString * pSingleName);
+		bool findPlugin(QString& pName, QString& pSingleName);
+		bool pluginIsLoaded(QString& pSingleName);
+		bool loadPlugin(QString& pName, QString& pSingleName);
+		KviPlugin * getPlugin(QString& pSingleName);
 };
 
 #endif //_PLUGIN_H_
