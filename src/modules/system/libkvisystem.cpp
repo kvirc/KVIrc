@@ -663,9 +663,32 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 	@short:
 		Allows to call functions of a plugin
 	@syntax:
-		<string> $system.plugin(<plugin:string>, <function:string>[,<parameters:string>,...])
+		<string> $system.call(<plugin:string>, <function:string>[,<parameters:string>,...])
 	@description:
-		To be completed...
+		This function allows you to call simple functions of "easyplugins" (dll/so) and
+		get the result of this function. The easyplugins have to be coded in a special way.
+		If you want to write your own easyplugins, have a look on the easyplugins documentation.
+		[br]
+		[br]
+		The function needs a minimum of 2 parameters. The others are optional and not limited.[br]
+		The first one is the complete name like "example.dll" or "example.so"
+		If you have a relative path or only the filename KVIrc looks for the easyplugins in the following dirs:[br]
+		In a subdir called "easyplugins" in the local and global KVIrc directory.
+		If you give an absolute path KVIrc will load it directly.
+		[br]
+		[br]
+		You are free to add more parameters, they will be all given to the easyplugin.[br]
+		The easyplugin decides how much parameters you need in addition to the first 2.
+		[br]
+		[br]
+		[b]Warning:  Only use easyplugins of known and trustable sources![/b]
+	@examples:
+		[example]
+			echo $system.call("my.dll","myfunction")
+			echo $system.call("my.dll","myfunction","parameter1","parameter2")
+			echo $system.call("c:/my.dll","myfunction")
+			echo $system.call("my.so","myfunction","parameter1")
+		[/example]
 */
 
 

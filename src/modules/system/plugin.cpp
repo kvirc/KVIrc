@@ -34,6 +34,19 @@
 
 #include <qdir.h>
 #include <qfileinfo.h>
+/*
+	@doc: easyplugins
+	@type:
+		generic
+	@keyterms:
+		easyplugins
+	@title:
+		Easyplugins
+	@short:
+		Small plugins which can be called in scripts
+	@body:
+		TODO
+*/
 
 KviPlugin::KviPlugin()
 {
