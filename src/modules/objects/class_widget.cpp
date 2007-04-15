@@ -1720,7 +1720,7 @@ bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
-	QBitmap mask(pm->mask());
+	QBitmap mask(*pm->mask());
 	if (mask.isNull()) c->warning(__tr2qs("Null mask"));
 	widget()->setMask(mask);
 	return true;

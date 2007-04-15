@@ -964,7 +964,7 @@ namespace KviTheme
 	
 		if(szD.isEmpty())
 		{
-			options.setLastError(__tr2qs("Missing absolute directory for the theme informations"));
+			options.setLastError(__tr2qs("Missing absolute directory for the theme information"));
 			return false;
 		}
 	
