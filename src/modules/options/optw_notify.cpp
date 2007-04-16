@@ -121,7 +121,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	mergeTip(b,tip);
 #endif
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable notifier window flashing","options"),KviOption_boolDisableNotifierFlashing);
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Disable notifier window fadein effect","options"),KviOption_boolDisableNotifierFadein);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Disable notifier window fade effect","options"),KviOption_boolDisableNotifierFadein);
 
 	addRowSpacer(0,3,0,3);
 }
