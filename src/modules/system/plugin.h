@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_asciidict.h"
+#include "kvi_dict.h"
 
 #define MAX_RETURN_BUFFER 512
 
@@ -35,21 +35,24 @@ typedef int (*plugin_load)();
 
 class KviPlugin
 {
-	public:
-		KviPlugin();
-		~KviPlugin();
-	private:
-		// shared
-		// internal
-		QString m_szName;
-		kvi_library_t m_Plugin;
-	public:
-		bool load(QString& pszPluginName);
-		bool unload(bool forced);
-		int call(QString& pszFunctionName, int argc, char * argv[], char ** pBuffer);
-		KviStr name();
-		void setName(QString& Name);
-	protected:
+protected:
+	// You have to create plugin instance by calling KviPlugin::load()
+	KviPlugin(kvi_library_t pLib, const QString& name);
+public:
+	~KviPlugin();
+private:
+	// shared
+	// internal
+	kvi_library_t m_Plugin;
+	QString m_szName;
+public:
+	static KviPlugin* load(const QString& szFileName);
+
+	bool unload(bool forced);
+	int call(const QString& szFunctionName, int argc, char * argv[], char ** pBuffer);
+	QString name();
+	void setName(const QString& szName);
+protected:
 };
 
 class KviPluginManager
@@ -61,16 +64,16 @@ class KviPluginManager
 		// shared
 		bool m_bCanUnload;
 		// internal
-		KviAsciiDict<KviPlugin> * m_pPluginDict;
+		KviDict<KviPlugin> * m_pPluginDict;
 	public:
 		bool pluginCall(KviKvsModuleFunctionCall *c);
 		bool checkUnload();
 		void unloadAll(bool forced);
 	protected:
-		bool findPlugin(QString& pName, QString& pSingleName);
-		bool pluginIsLoaded(QString& pSingleName);
-		bool loadPlugin(QString& pName, QString& pSingleName);
-		KviPlugin * getPlugin(QString& pSingleName);
+		bool findPlugin(QString& szName);
+		bool isPluginLoaded(const QString& szFileNameOrPathToLoad);
+		bool loadPlugin(const QString& szPluginPath);
+		KviPlugin * getPlugin(const QString& szPluginPath);
 };
 
 #endif //_PLUGIN_H_
