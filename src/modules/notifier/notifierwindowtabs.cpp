@@ -58,7 +58,7 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QString label)
 	g_pApp->getReadOnlyConfigPath(buffer,"libkvinotifier.kvc",KviApp::ConfigPlugins,true);
 	KviConfig cfg(buffer.ptr(),KviConfig::Read);
 	cfg.setGroup("NotifierSkin");
-		m_clrHighlightedLabel = cfg.readColorEntry("HighlightedTabLablerColor",QColor(255,0,0));
+		m_clrHighlightedLabel = cfg.readColorEntry("HighlightedTabLablerColor",QColor(200,0,0));
 		m_clrNormalLabel = cfg.readColorEntry("NormalTabLablerColor",QColor(0,0,0));
 		m_clrChangedLabel = cfg.readColorEntry("ChangedTabLablerColor",QColor(0,0,100));
 	
@@ -151,15 +151,22 @@ int KviNotifierWindowTab::width(bool b) {
 	int width = 0;
 	QFont * font;
 
+	QPixmap * sx;
+	QPixmap * dx;
 
 	if (focused()) {
 		font = g_pTabs->fontFocused();
+		sx = g_pTabs->tabFocusedPixSx();
+		dx = g_pTabs->tabFocusedPixSx();
 	} else {
+		sx = g_pTabs->tabUnfocusedPixSx();
+		dx = g_pTabs->tabUnfocusedPixSx();	
 		font = g_pTabs->fontUnfocused();
 	}
 	
 	QFontMetrics fm(*font);
-	width = fm.width(label())+8;
+	width = fm.width(label())+2;
+	if (!b) width += sx->width() + dx->width();
 
 	return width;
 }
@@ -169,8 +176,7 @@ int KviNotifierWindowTab::width(bool b) {
 // ##################################################################################à
 
 
-KviNotifierWindowTabs::KviNotifierWindowTabs(QRect r,KviNotifierWindow * wnd)
-:m_pWindow(wnd)
+KviNotifierWindowTabs::KviNotifierWindowTabs(QRect r)
 {
 	g_pTabs = this;
 	m_pPixmap = new QPixmap();
@@ -184,7 +190,6 @@ KviNotifierWindowTabs::KviNotifierWindowTabs(QRect r,KviNotifierWindow * wnd)
 	loadImages();
 	initConfig();
 	resize(r);
-	m_pLastTab = 0;
 }
 
 KviNotifierWindowTabs::~KviNotifierWindowTabs()
@@ -209,25 +214,60 @@ void KviNotifierWindowTabs::initConfig()
 	cfg.setGroup("NotifierSkin");
 	
 	QString szFamily = cfg.readEntry("TextFontFocusedTab","Arial");
-	m_pFocusedFont = new QFont(szFamily,cfg.readIntEntry("TextFocusedFontSize",9));
-	m_pFocusedFont->setItalic(true);
+	m_pFocusedFont = new QFont(szFamily,cfg.readIntEntry("TextFocusedFontSize",10));
 	m_pFocusedFont->setBold(true);
 	szFamily = cfg.readEntry("TextFontUnfocusedTab","Arial");
 	m_pUnfocusedFont = new QFont(szFamily,cfg.readIntEntry("TextUnfocusedFontSize",9));
-	m_pUnfocusedFont->setItalic(true);
 }
 
 void KviNotifierWindowTabs::loadImages()
 {
 	QPixmap * p;
-	if((p = g_pIconManager->getPixmap("notifier_right.png")))
-		m_pixIconTabNext = *p;
-	
-	if((p = g_pIconManager->getPixmap("notifier_left.png")))
-		m_pixIconTabPrev = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_dx.png")))
+		m_pixDX = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_sx.png")))
+		m_pixSX = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_bkg.png")))
+		m_pixBKG = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_focused_sx.png")))
+		m_pixSXFocused = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_focused_dx.png")))
+		m_pixDXFocused = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_focused_bkg.png")))
+		m_pixBKGFocused = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_unfocused_sx.png")))
+		m_pixSXUnfocused = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_unfocused_dx.png")))
+		m_pixDXUnfocused = *p;
+	if((p = g_pIconManager->getPixmap("notifier_pix_tab_unfocused_bkg.png")))
+		m_pixBKGUnfocused = *p;
 
-	if((p = g_pIconManager->getPixmap("notifier_close.png")))
-		m_pixIconCloseTab = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_next_out.png")))
+		m_pixIconTabNext_out = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_next_over.png")))
+		m_pixIconTabNext_over = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_next_clicked.png")))
+		m_pixIconTabNext_clicked = *p;
+
+	m_pixIconTabNext = m_pixIconTabNext_out;
+	
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_prev_out.png")))
+		m_pixIconTabPrev_out = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_prev_over.png")))
+		m_pixIconTabPrev_over = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_prev_clicked.png")))
+		m_pixIconTabPrev_clicked = *p;
+
+	m_pixIconTabPrev = m_pixIconTabPrev_out;
+
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_close_off.png")))
+		m_pixIconCloseTab_off = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_close_on.png")))
+		m_pixIconCloseTab_on = *p;
+	if((p = g_pIconManager->getPixmap("notifier_icon_tab_close_clicked.png")))
+		m_pixIconCloseTab_clicked = *p;
+
+	m_pixIconCloseTab = m_pixIconCloseTab_off;
 
 	m_closeTabIconState = WDG_ICON_OFF;
 
@@ -253,10 +293,9 @@ void KviNotifierWindowTabs::addMessage(KviWindow * pWnd, KviNotifierMessage * me
 
 	tab->appendMessage(message);
 	
-	setFocusOn(tab);
 	if((g_pNotifierWindow->state()==Hidden) || (!m_pTabFocused))
 	{
-//		setFocusOn(tab);
+		setFocusOn(tab);
 	} else {
 		needToRedraw();
 	}
@@ -284,7 +323,10 @@ void KviNotifierWindowTabs::recalculatePositions()
 	m_rctCloseTabIcon.setWidth(m_pixIconCloseTab.width());
 	m_rctCloseTabIcon.setHeight(m_pixIconCloseTab.height());
 	// The sensible area for the Close Icon
-	m_rctCloseTabIconHotArea = m_rctCloseTabIcon;
+	m_rctCloseTabIconHotArea.setX(m_rctCloseTabIcon.x()+6);
+	m_rctCloseTabIconHotArea.setY(m_rctCloseTabIcon.y()+3);
+	m_rctCloseTabIconHotArea.setWidth(16);
+	m_rctCloseTabIconHotArea.setHeight(16);
 
 	if (m_bIsOverRightBound) {
 		m_rctNextIcon.setX(m_rct.x() + m_rct.width() - m_rctCloseTabIcon.width() - m_pixIconTabNext.width());
@@ -329,10 +371,12 @@ void KviNotifierWindowTabs::prev()
 	if(!m_pTabFocused)return;
 
 	KviNotifierWindowTab * tab;
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
+	
 	tabIterator.atFirst();
+	
 	while ((tabIterator.current()) != tab) {
 		++tabIterator;
 	}
@@ -350,7 +394,7 @@ void KviNotifierWindowTabs::next()
 	if(!m_pTabFocused)return;
 	
 	KviNotifierWindowTab * tab;
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	tabIterator.atFirst();
@@ -381,10 +425,7 @@ void KviNotifierWindowTabs::mousePressEvent(QMouseEvent * e) {
 		QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 		for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ ) {
 			if (tab.data()->rect().contains(e->pos())) {
-				if(g_pNotifierWindow->shiftPressed())
-					closeTab(tab.data());
-				else
-					setFocusOn(tab.data());
+				setFocusOn(tab.data());
 				return;
 			}
 		}
@@ -396,48 +437,15 @@ void KviNotifierWindowTabs::mousePressEvent(QMouseEvent * e) {
 	}
 
 }
-void KviNotifierWindowTabs::leaveEvent()
-{
-	if(m_pLastTab) {
-		g_pNotifierWindow->update();
-		m_bNeedToRedraw = true;
-		m_pLastTab = 0;
-	}
-}
-
 
 void KviNotifierWindowTabs::mouseMoveEvent(QMouseEvent * e)
 {
-	bool bInTab = false;
-	bool bNewTab = false;
-	if(m_rctTabs.contains(e->pos()))
+	if (m_rctCloseTabIconHotArea.contains(e->pos()))
 	{
-		QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
-		for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ ) {
-			if (tab.data()->rect().contains(e->pos())) {
-				if(m_pLastTab != tab.data()) {
-					bNewTab = true;
-					m_pLastTab = tab.data();
-				}
-				bInTab = true;
-				break;
-			}
-		}
-	}
-
-	if(bInTab || m_rctCloseTabIconHotArea.contains(e->pos()))
-	{
-		g_pNotifierWindow->setCursor(Qt::PointingHandCursor);
+		setCloseTabIcon(WDG_ICON_ON);
 	} else {
-		g_pNotifierWindow->setCursor(Qt::ArrowCursor);
-		if(m_pLastTab) {
-			bNewTab = true;
-			m_pLastTab = 0;
-		}
-	}
-	if(bNewTab) {
-		g_pNotifierWindow->update();
-		m_bNeedToRedraw = true;
+		if (closeTabIconState()!=WDG_ICON_OFF)
+			setCloseTabIcon(WDG_ICON_OFF);
 	}
 }
 
@@ -458,7 +466,7 @@ void KviNotifierWindowTabs::mouseReleaseEvent(QMouseEvent * e)
 	{
 		if (rctCloseTabIconHotArea().contains(e->pos()))
 		{
-			g_pNotifierWindow->close();
+			closeCurrentTab();
 			g_pNotifierWindow->update();
 		}
 	}
@@ -483,6 +491,16 @@ void KviNotifierWindowTabs::scrollTabsRight() {
 
 void KviNotifierWindowTabs::setCloseTabIcon(int state)	{
 
+	//if (m_writeIconState==WDG_ICON_OFF && state!=WDG_ICON_OFF)
+	if (m_closeTabIconState!=state) {
+		switch (state) {
+			case WDG_ICON_ON: m_pixIconCloseTab = m_pixIconCloseTab_on; break;
+			case WDG_ICON_OFF: m_pixIconCloseTab = m_pixIconCloseTab_off; break;
+			case WDG_ICON_CLICKED: m_pixIconCloseTab = m_pixIconCloseTab_clicked; break;
+		}
+		needToRedraw();
+		m_closeTabIconState = state;
+	}
 }
 
 void KviNotifierWindowTabs::resetIcons()
@@ -502,79 +520,18 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 	
 	m_lastVisitedTabPtrList.insert(0, tab);
 
-	//scrollTabsRight();
-
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
-	
-	
-	tabIterator.toFirst();
-	
-	int i = 0;
-	while(m_iTabToStartFrom!=i) {
-		if(tabIterator.current()==m_pTabFocused)
-		{
-			m_iTabToStartFrom=i;
-			break;
-		}
-		i++;
-		++tabIterator;
-	}
-	int iWidth = 0;
-	KviPtrListIterator<KviNotifierWindowTab> startIterator (m_tabPtrList);
-
-	i=0;
-	while(m_iTabToStartFrom!=i) {
-		i++;
-		++startIterator;
-	}
-
-	KviNotifierWindowTab * pTab = tabIterator.current();
-	while ( pTab )
-	{
-		iWidth+=pTab->width();
-		while(iWidth>=m_rctTabs.width())
-		{
-			m_iTabToStartFrom++;
-			iWidth-=startIterator.current()->width();
-			++startIterator;
-		}
-		
-		if(pTab == m_pTabFocused ) break;
-
-		++tabIterator;
-		pTab = tabIterator.current();
-	}
-
 	needToRedraw();
 
 	g_pNotifierWindow->update();
-}
-
-void KviNotifierWindowTabs::contextPopup(KviTalPopupMenu *pPopup,const QPoint& pos)
-{
-	if(m_rctTabs.contains(pos))
-	{
-		int i=0;
-		QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
-		for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ ) {
-			if (tab.data()->rect().contains(pos)) {
-				int id = pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),__tr2qs_ctx("Close tab","notifier"),g_pNotifierWindow,SLOT(hideTab(int)));
-				pPopup->setItemParameter(id,i);
-			}
-			i++;
-		}
-	}
 }
 
 void KviNotifierWindowTabs::draw(QPainter * p)
 {
 	if(!m_bNeedToRedraw)return;
 
-
 	m_pPixmap->resize(m_rct.width(), m_rct.height());
 
 	m_pPainter->begin(m_pPixmap);
-	bitBlt(m_pPixmap,0,0,m_pWindow->background(),m_rct.x(), m_rct.y());
 
 	QFont tmpFont;
 	tmpFont = p->font();
@@ -588,12 +545,16 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 	int offset = 0;
 	
 	int closeIcon_X = m_rct.width() - m_rctCloseTabIcon.width();
-	int nextIcon_X = closeIcon_X  - m_pixIconTabNext.width();
+	int nextIcon_X = closeIcon_X  - m_pixIconTabNext_out.width();
 	int prevIcon_X = m_rct.x();
 	
 	int tmpTabsWidth = 0;
 
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	m_pPainter->drawPixmap(0,0,m_pixSX);
+	m_pPainter->drawPixmap(m_rct.width()-m_pixDX.width(),0,m_pixDX);
+	m_pPainter->drawTiledPixmap(m_pixSX.width(),0,m_rct.width()-m_pixSX.width()-m_pixDX.width(),m_rct.height(),m_pixBKG);
+
+	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 	
 	//m_tabPtrList.findRef(m_tabMap[m_pTabFocused->wnd()]);
 
@@ -608,48 +569,21 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 		++tabIterator;
 	}
 	
-	if (m_iTabToStartFrom) {
-		// Draw the left arrow for more tabs
-		m_bIsOverLeftBound = true;
-		m_pPainter->drawPixmap(0, 0, m_pixIconTabPrev);
-		m_rctPrevIcon = QRect(m_rct.x(),m_rct.y(),m_pixIconTabPrev.width(),m_pixIconTabPrev.height());
-		offset = m_pixIconTabPrev.width();
-	} else {
-		m_bIsOverLeftBound = false;
-	}
-
-	while ( (tab = tabIterator.current()) != 0)
+	while ( ((tab = tabIterator.current()) != 0) && !isBigger)
 	{
 		++tabIterator;
 		
-		isBigger = ( offset+4+tab->width() > m_rctTabs.width());
-		if(isBigger) break;
 		if (tab->focused()) {
 
 			m_pPainter->setFont(*m_pFocusedFont);
 
-			tab->setRect(offset + m_rct.y(), m_rct.y(), tab->width(),
-				m_rctTabs.height());
+			tab->setRect(m_rct.x() + offset, m_rctTabs.y(), tab->width(), m_rctTabs.height());
 			
-			QPen tmpP = m_pPainter->pen();
-			
-			m_pPainter->setPen(QColor(143,154,202));
-			
-
-			if(tab == m_pLastTab)
-			{
-				QBrush tmpB = m_pPainter->brush();
-				m_pPainter->setBrush(QColor(212,212,212));
-				m_pPainter->drawRect(offset,0, tab->width(),
-					m_rctTabs.height());
-				m_pPainter->setBrush(tmpB);
-			} else {
-				m_pPainter->drawRoundRect(offset,0, tab->width(),
-					m_rctTabs.height(),10);
-			}
-
-			m_pPainter->setPen(tab->labelColor());
-			m_pPainter->drawText(offset+4,m_rctTabs.height()-2,tab->label());
+			m_pPainter->drawPixmap(offset,0,m_pixSXFocused);
+			m_pPainter->drawTiledPixmap(offset+m_pixSXFocused.width(),0,tab->width(true),m_rctTabs.height(),m_pixBKGFocused);
+			m_pPainter->drawPixmap(offset+m_pixSXFocused.width()+tab->width(true),0,m_pixDXFocused);
+			QPen tmpP = m_pPainter->pen(); m_pPainter->setPen(tab->labelColor());
+			m_pPainter->drawText(offset+m_pixSXFocused.width()+1,m_rctTabs.height()-NTF_TABS_FONT_BASELINE,tab->label());
 			m_pPainter->setPen(tmpP);
 
 			offset += tab->width();
@@ -658,35 +592,32 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 
 			m_pPainter->setFont(*m_pUnfocusedFont);
 
-			tab->setRect(offset + m_rct.y(), m_rct.y(), tab->width(),
-				m_rctTabs.height() );
-			QPen tmpP = m_pPainter->pen();
-			
-			m_pPainter->setPen(QColor(212,212,212));
+			tab->setRect(m_rct.x() + offset, m_rctTabs.y(), tab->width(), m_rctTabs.height());
 
-			if(tab == m_pLastTab)
-			{
-				QBrush tmpB = m_pPainter->brush();
-				m_pPainter->setBrush(QColor(212,212,212));
-				m_pPainter->drawRect(offset,0, tab->width(),
-					m_rctTabs.height());
-				m_pPainter->setBrush(tmpB);
-			} else
-				m_pPainter->drawRoundRect(offset,0, tab->width(),
-					m_rctTabs.height(),10);
-
-			m_pPainter->setPen(tab->labelColor());
-			m_pPainter->drawText(offset+4,m_rctTabs.height()-2,tab->label());
-			
-			offset += tab->width()+2;
+			m_pPainter->drawPixmap(offset, 0, m_pixSXUnfocused);
+			m_pPainter->drawTiledPixmap(offset+m_pixSXUnfocused.width(), 0, tab->width(true), m_rctTabs.height(), m_pixBKGUnfocused);
+			m_pPainter->drawPixmap(offset+m_pixSXUnfocused.width()+tab->width(true), 0, m_pixDXUnfocused);
+			QPen tmpP = m_pPainter->pen(); m_pPainter->setPen(tab->labelColor());
+			m_pPainter->drawText(offset+m_pixSXUnfocused.width()+1,m_rctTabs.height()-NTF_TABS_FONT_BASELINE+1,tab->label());
+			m_pPainter->setPen(tmpP);
+			offset += tab->width();
 		}
+		
+		if (offset > m_rctTabs.width()) isBigger = true; else isBigger = false;
+	}
+
+	if (m_iTabToStartFrom) {
+		// Draw the left arrow for more tabs
+		m_bIsOverLeftBound = true;
+		m_pPainter->drawPixmap(0, 0, m_pixIconTabPrev);
+	} else {
+		m_bIsOverLeftBound = false;
 	}
 
 	if (isBigger) {
 		// Draw the right arrow for more tabs
 		m_bIsOverRightBound = true;
 		m_pPainter->drawPixmap(nextIcon_X, 0, m_pixIconTabNext);
-		m_rctNextIcon = QRect(m_rct.x()+nextIcon_X,m_rct.y(),m_pixIconTabNext.width(),m_pixIconTabNext.height());
 	} else {
 		m_bIsOverRightBound = false;
 	}
@@ -765,8 +696,6 @@ void KviNotifierWindowTabs::closeTab(KviWindow * pWnd, KviNotifierWindowTab * pT
 			
 		m_pTabFocused->setFocused(true);
 	}
-	m_bNeedToRedraw = true;
-	g_pNotifierWindow->update();
 }
 
 #include "m_notifierwindowtabs.moc"

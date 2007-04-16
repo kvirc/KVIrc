@@ -26,26 +26,17 @@
 
 #include "kvi_settings.h"
 
-#include <qwidget.h>
+#include <qbitmap.h>
+#include <qcolor.h>
+#include <qcursor.h>
+#include <qdatetime.h> 
+#include <qfont.h>
+#include <qimage.h>
+#include <qlineedit.h>
+#include <qpixmap.h>
 #include <qrect.h>
 #include <qtimer.h>
-#include <qpixmap.h>
-#include <qimage.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3simplerichtext.h>
-	#ifndef QSimpleRichText
-		#define QSimpleRichText Q3SimpleRichText
-	#endif
-#else
-	#include <qsimplerichtext.h>
-#endif
-
-#include <qfont.h>
-#include <qcolor.h>
-#include <qlineedit.h>
-#include <qcursor.h>
-#include <qbitmap.h>
-#include <qdatetime.h> 
+#include <qwidget.h>
 
 #include "kvi_qstring.h"
 #include "kvi_list.h"
@@ -61,7 +52,8 @@ class KviNotifierWindowBody;
 class KviNotifierWindowBorder;
 class KviNotifierWindowProgressBar;
 
-class KviTalPopupMenu;
+class QPainter;
+class QPopupMenu;
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 
@@ -78,7 +70,6 @@ protected:
 	QTimer * m_pAutoHideTimer;
 	State   m_eState;
 	bool    m_bBlinkOn;
-	bool    m_bKeyAltPressed;
 	double  m_dOpacity;
 	QImage  m_imgDesktop;            // the desktop screenshot
 	QPixmap m_pixBackground;         // our background image
@@ -94,6 +85,7 @@ protected:
 	bool    m_bPrevDown;
 	bool    m_bNextDown;
 	bool    m_bWriteDown;
+	bool m_bCrashShowWorkAround;
 
 	bool	m_bKeyShiftPressed;
 
@@ -123,8 +115,8 @@ protected:
 	int          m_iInputHeight;
 	int          m_iBlinkTimeout;
 	int          m_iBlinkCount;
-	KviTalPopupMenu * m_pContextPopup;
-	KviTalPopupMenu * m_pDisablePopup;
+	QPopupMenu * m_pContextPopup;
+	QPopupMenu * m_pDisablePopup;
 	KviWindow * m_pWindowToRaise;
 	kvi_time_t  m_tAutoHideAt;
 	kvi_time_t  m_tStartedAt;
@@ -139,7 +131,6 @@ protected:
 	KviNotifierWindowBody 		* m_pWndBody;
 	KviNotifierWindowBorder 	* m_pWndBorder;
 public:
-	QPixmap* background() { return &m_pixBckgrnd;};
 	void doShow(bool bDoAnimate);
 	void doHide(bool bDoAnimate);
 	const QFont & defaultFont(){ return *m_pDefaultFont; };
@@ -149,8 +140,6 @@ public:
 	void setDisableHideOnMainWindowGotAttention(bool b){ m_bDisableHideOnMainWindowGotAttention = b; };
 	int countTabs();
 	void showLineEdit(bool bShow);
-	bool shiftPressed() { return m_bKeyShiftPressed; };
-	void setCursor(int);
 protected:
 	virtual void showEvent(QShowEvent *e);
 	virtual void hideEvent(QHideEvent * e);
@@ -164,8 +153,6 @@ protected:
 	virtual bool eventFilter(QObject * pEdit,QEvent * e);
 	virtual void keyPressEvent ( QKeyEvent * e );
 	virtual void keyReleaseEvent ( QKeyEvent * e );
-public slots:
-	void hideTab(int);
 protected slots:
 	void blink();
 	void heartbeat();
@@ -196,6 +183,7 @@ private:
 	void prevButtonClicked();
 	void nextButtonClicked();
 	bool shouldHideIfMainWindowGotAttention();
+	void setCursor(int);
 	void resize(QPoint p, bool = true);
 	void redrawWindow();
 	void redrawText();

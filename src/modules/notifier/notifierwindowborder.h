@@ -55,6 +55,42 @@ private:
 	QRect	m_progressRect;
 
 	// Pictures
+	QPixmap * m_pixSX;
+	QPixmap * m_pixDX;
+	QPixmap * m_pixDWN;
+	QPixmap * m_pixDWNSX;
+	QPixmap * m_pixDWNDX;
+	QPixmap * m_pixCaptionSX;
+	QPixmap * m_pixCaptionDX;
+	QPixmap * m_pixCaptionBKG;
+	QPixmap * m_pixIconClose_out;
+	QPixmap * m_pixIconClose_over;
+	QPixmap * m_pixIconClose_clicked;
+	QPixmap * m_pixIconClose;
+	
+	QPixmap m_pixSX_N;
+	QPixmap m_pixDX_N;
+	QPixmap m_pixDWN_N;
+	QPixmap m_pixDWNSX_N;
+	QPixmap m_pixDWNDX_N;
+	QPixmap m_pixCaptionSX_N;
+	QPixmap m_pixCaptionDX_N;
+	QPixmap m_pixCaptionBKG_N;
+	QPixmap m_pixIconClose_out_N;
+	QPixmap m_pixIconClose_over_N;
+	QPixmap m_pixIconClose_clicked_N;
+	
+	QPixmap m_pixSX_HL;
+	QPixmap m_pixDX_HL;
+	QPixmap m_pixDWN_HL;
+	QPixmap m_pixDWNSX_HL;
+	QPixmap m_pixDWNDX_HL;
+	QPixmap m_pixCaptionSX_HL;
+	QPixmap m_pixCaptionDX_HL;
+	QPixmap m_pixCaptionBKG_HL;
+	QPixmap m_pixIconClose_out_HL;
+	QPixmap m_pixIconClose_over_HL;
+	QPixmap m_pixIconClose_clicked_HL;
 		
 	int m_iTabsHeight;
 	int m_iTitleFontHeight;

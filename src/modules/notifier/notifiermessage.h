@@ -33,27 +33,27 @@
 #include <qtimer.h>
 #include <qpixmap.h>
 #include <qimage.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3simplerichtext.h>
-	#ifndef QSimpleRichText
-		#define QSimpleRichText Q3SimpleRichText
-	#endif
-#else
-	#include <qsimplerichtext.h>
-#endif
 #include <qfont.h>
 #include <qcolor.h>
 #include <qlineedit.h>
-
 
 #include "kvi_qstring.h"
 #include "kvi_list.h"
 #include "kvi_time.h"
 
+#ifdef COMPILE_USE_QT4
+	#define QSimpleRichText Q3SimpleRichText
+	#define QPopupMenu Q3PopupMenu
+	#include <q3popupmenu.h>
+	#include <q3simplerichtext.h>
+#else
+	#include <qsimplerichtext.h>
+#endif
+
 class KviWindow;
 class KviNotifierWindow;
 
-class KviTalPopupMenu;
+class QPopupMenu;
 
 class KviNotifierMessage
 {

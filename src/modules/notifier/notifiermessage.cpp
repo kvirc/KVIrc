@@ -45,13 +45,18 @@
 #endif
 */
 
-#include "kvi_tal_popupmenu.h"
 #include <qapplication.h>
 #include <qpainter.h>
 #include <qimage.h>
 #include <qdesktopwidget.h>
 #include <qtooltip.h>
 
+#ifdef COMPILE_USE_QT4
+	#define QPopupMenu Q3PopupMenu
+	#include <q3popupmenu.h>
+#else
+	#include <qpopupmenu.h>
+#endif
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 

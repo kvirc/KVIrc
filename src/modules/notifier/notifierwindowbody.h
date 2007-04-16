@@ -31,6 +31,14 @@
 
 #include "notifiersettings.h"
 
+/*
+#ifdef QT3_SUPPORT
+	#define QPainter Q3Painter
+#endif
+*/
+
+class QPainter;
+
 class KviNotifierWindowBody
 {
 public:
@@ -52,11 +60,29 @@ private:
 	QRect	m_rctCloseTabIcon;
 
 	// Pictures
+	QPixmap	m_pixDX;
+	QPixmap	m_pixSX;
+	QPixmap	m_pixDWNSX;
+	QPixmap	m_pixDWNDX;
+	QPixmap	m_pixDWN;
+	QPixmap	m_pixKVIrcSX;
+	QPixmap	m_pixKVIrcDWN;
+	QPixmap	m_pixKVIrc;
+	
 	QPixmap m_pixIconPrev;
+	QPixmap m_pixIconPrev_off;
+	QPixmap m_pixIconPrev_on;
+	QPixmap m_pixIconPrev_clicked;
 	
 	QPixmap m_pixIconNext;
+	QPixmap m_pixIconNext_off;
+	QPixmap m_pixIconNext_on;
+	QPixmap m_pixIconNext_clicked;
 	
 	QPixmap m_pixIconWrite;
+	QPixmap m_pixIconWrite_off;
+	QPixmap m_pixIconWrite_on;
+	QPixmap m_pixIconWrite_clicked;
 	
 	bool m_bNeedToRedraw;
 

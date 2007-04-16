@@ -303,7 +303,7 @@ static bool notifier_module_ctrl(KviModule *,const char *operation,void *param)
 			g_pNotifierWindow = new KviNotifierWindow();
 
 		g_pNotifierWindow->addMessage(p->pWindow,p->szIcon,p->szMessage,p->uMessageLifetime);
-		g_pNotifierWindow->doShow(true);
+		g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolDisableNotifierFadein)?false:true);
 
 		return true;
 	}

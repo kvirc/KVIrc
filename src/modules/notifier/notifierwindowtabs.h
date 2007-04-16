@@ -30,13 +30,21 @@
 #include <qpixmap.h>
 #include <qpoint.h>
 #include <qrect.h>
-#include "kvi_tal_popupmenu.h"
-
+#include "kvi_settings.h"
 #include "kvi_list.h"
 #include "notifiersettings.h"
 #include "notifierwindow.h"
 
 #include "notifiermessage.h"
+
+#ifdef COMPILE_USE_QT4
+	#define QPtrList Q3PtrList
+	#define QPtrListIterator Q3PtrListIterator
+	#include <q3ptrlist.h>
+#else
+	#include <qptrlist.h>
+	//#include <qptrlistiterator.h>
+#endif
 
 class QPainter;
 class KviWindow;
@@ -130,21 +138,19 @@ protected:
 class KviNotifierWindowTabs // this class defines the tabs area
 {
 public:
-	KviNotifierWindowTabs(QRect r,KviNotifierWindow * wnd);
+	KviNotifierWindowTabs(QRect r);
 	~KviNotifierWindowTabs();
 
 // ================================
 // Put members declaration below...
 // ================================
 private:
-	KviNotifierWindow * m_pWindow;
-	KviNotifierWindowTab * m_pLastTab;
 	QRect 	m_rct;
 	QPoint	m_pnt;
 
 	QMap<KviWindow *, KviNotifierWindowTab *> m_tabMap;
-	KviPtrList<KviNotifierWindowTab> m_tabPtrList;
-	KviPtrList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
+	QPtrList<KviNotifierWindowTab> m_tabPtrList;
+	QPtrList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
 	
 	QFont * m_pFocusedFont;
 	QFont * m_pUnfocusedFont;
@@ -161,11 +167,30 @@ private:
 	QPainter * m_pPainter;
 	QPixmap * m_pPixmap;
 	
+	QPixmap	m_pixDX;
+	QPixmap	m_pixSX;
+	QPixmap	m_pixBKG;
+	QPixmap m_pixSXFocused;
+	QPixmap m_pixDXFocused;
+	QPixmap m_pixBKGFocused;
+	QPixmap m_pixSXUnfocused;
+	QPixmap m_pixDXUnfocused;
+	QPixmap m_pixBKGUnfocused;
+
 	QPixmap m_pixIconTabPrev;
+	QPixmap m_pixIconTabPrev_out;
+	QPixmap m_pixIconTabPrev_over;
+	QPixmap m_pixIconTabPrev_clicked;
 	
 	QPixmap m_pixIconTabNext;
+	QPixmap m_pixIconTabNext_out;
+	QPixmap m_pixIconTabNext_over;
+	QPixmap m_pixIconTabNext_clicked;
 
 	QPixmap m_pixIconCloseTab;
+	QPixmap m_pixIconCloseTab_off;
+	QPixmap m_pixIconCloseTab_on;
+	QPixmap m_pixIconCloseTab_clicked;
 
 	int m_closeTabIconState;
 	int m_iTabToStartFrom;
@@ -187,8 +212,6 @@ private:
 	void loadImages();
 
 public:
-	QMap<KviWindow *, KviNotifierWindowTab *>* tabs() { return &m_tabMap; };
-	void contextPopup(KviTalPopupMenu *pPopup,const QPoint& pos);
 	void addMessage(KviWindow *, KviNotifierMessage *);
 	void closeCurrentTab();
 	void closeTab(KviWindow * pWnd); // referes to void closeTab(KviWindow * pWnd, KviNotifierWindowTab * pTab);
@@ -200,7 +223,6 @@ public:
 	void mouseMoveEvent(QMouseEvent * e);
 	void mousePressEvent(QMouseEvent * e);
 	void mouseReleaseEvent(QMouseEvent * e);
-	void leaveEvent();
 	void next();
 	void prev();
 	void recalculatePositions();
@@ -225,6 +247,11 @@ public:
 
 	QFont * fontFocused() { return m_pFocusedFont; };
 	QFont * fontUnfocused() { return m_pUnfocusedFont; };
+
+	QPixmap * tabFocusedPixSx() {return &m_pixSXFocused; };
+	QPixmap * tabFocusedPixDx() {return &m_pixDXFocused; };
+	QPixmap * tabUnfocusedPixSx() {return &m_pixSXUnfocused; };
+	QPixmap * tabUnfocusedPixDx() {return &m_pixDXUnfocused; };
 
 	QRect rect() {return m_rct;};
 	QRect rctCloseTabIconHotArea() {return m_rctCloseTabIconHotArea; };
