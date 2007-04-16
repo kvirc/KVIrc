@@ -304,7 +304,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl),
-	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar)
+	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar),
+	BOOL_OPTION("DisableNotifierFadein",false,KviOption_sectFlagFrame)
 
 };
 

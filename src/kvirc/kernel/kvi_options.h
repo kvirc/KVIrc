@@ -311,8 +311,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
 #define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
 #define KviOption_boolScaleAvatarsOnLoad 219
-
-#define KVI_NUM_BOOL_OPTIONS 220
+#define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
+#define KVI_NUM_BOOL_OPTIONS 221
 
 
 
