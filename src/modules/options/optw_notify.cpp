@@ -107,7 +107,7 @@ KviNotifyOptionsWidget::~KviNotifyOptionsWidget()
 KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"notifier_options_widget")
 {
-	createLayout(2,1);
+	createLayout(3,1);
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Forcibly and completely disable the notifier","options"),KviOption_boolForciblyDisableNotifier);
 #ifdef COMPILE_INFO_TIPS
@@ -121,7 +121,9 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	mergeTip(b,tip);
 #endif
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable notifier window flashing","options"),KviOption_boolDisableNotifierFlashing);
-	addRowSpacer(0,2,0,2);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Disable notifier window fadein effect","options"),KviOption_boolDisableNotifierFadein);
+
+	addRowSpacer(0,3,0,3);
 }
 
 KviNotifierOptionsWidget::~KviNotifierOptionsWidget()
