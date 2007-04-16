@@ -624,10 +624,10 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 */
 	redrawWindow();
 	redrawText();
-	QPainter px(this);
 	if(m_dOpacity < 1.0)
 	{
-		
+			QPainter px(this);
+	
 	#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
 		px.drawPixmap(0,0,m_pixForeground);
 	#else
@@ -638,6 +638,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 		px.end();
 	} else {
 #ifdef COMPILE_USE_QT4
+		QPainter px(this);
 		px.drawPixmap(0,0,m_pixForeground);
 #else
 		bitBlt(this,QPoint(0,0),&m_pixForeground);
