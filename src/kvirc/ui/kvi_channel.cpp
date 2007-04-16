@@ -259,17 +259,17 @@ void KviChannel::textViewRightClicked()
 
 void KviChannel::getBaseLogFileName(QString &buffer)
 {
-	QString szChan=windowName();
+	QString szChan(windowName());
 	szChan.replace(".","%2e");
 	if (console()->connection())
 	{
 		buffer=szChan;
-		buffer+=".";
-		buffer+=console()->currentNetworkName();
+		buffer.append(".");
+		buffer.append(console()->currentNetworkName());
 	} else {
 		buffer=szChan;
-		buffer+=".";
-		buffer+=console()->ircContextId();
+		buffer.append(".");
+		buffer.append(console()->ircContextId());
 	}
 }
 
