@@ -665,13 +665,20 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 {
 	if(o == object())
 	{
-		QString ret;
+		bool ret=false;
 		int aparam;
+		bool brokenhandler=false;
+		KviKvsVariant *retv=new KviKvsVariant(ret);
+			
 		switch(e->type())
 		{
-		case QEvent::Paint:
-			callFunction(this,"paintEvent",0,0);
-			break;
+			case QEvent::Paint:
+			{
+				QRect rect=((QPaintEvent *)e)->rect();
+				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)rect.x()),new KviKvsVariant((kvs_int_t)rect.y()),new KviKvsVariant((kvs_int_t)rect.width()),new KviKvsVariant((kvs_int_t)rect.height()));
+				callFunction(this,"paintEvent",retv,&params);
+				break;
+			}
 
 		case QEvent::KeyPress:
 			{
@@ -788,8 +795,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
-				if(!callFunction(this,"mousePressEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) ret = ""; // ignore results of a broken event handler
+				if(!callFunction(this,"mousePressEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
+				))) brokenhandler = true; // ignore results of a broken event handler
 		break;
 			case QEvent::MouseButtonRelease:
 				if(((QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
@@ -797,8 +804,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
-				if(!callFunction(this,"mouseReleaseEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) ret = ""; // ignore results of a broken event handler
+				if(!callFunction(this,"mouseReleaseEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
+				))) brokenhandler = true; // ignore results of a broken event handler
 			break;
 			case QEvent::MouseButtonDblClick:
 				if(( (QMouseEvent *)e)->button() & Qt::LeftButton)aparam = 0;
@@ -806,8 +813,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else aparam = 2;
 				}
-					if(!callFunction(this,"mouseDoubleClickEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) ret = ""; // ignore results of a broken event handler
+					if(!callFunction(this,"mouseDoubleClickEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
+				))) brokenhandler = true; // ignore results of a broken event handler
 
 			break;
 			case QEvent::MouseMove:
@@ -823,45 +830,50 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 							else aparam = -1;
 						}
 				}
-				if(!callFunction(this,"mouseMoveEvent",new KviKvsVariant(ret),new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
-				))) ret = ""; // ignore results of a broken event handler
+				if(!callFunction(this,"mouseMoveEvent",retv,new KviKvsVariantList(new KviKvsVariant((kvs_int_t)aparam),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()),new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y())
+				))) brokenhandler = true; // ignore results of a broken event handler
 			break;
 			case QEvent::FocusIn:
-				if(!callFunction(this,"focusInEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"focusInEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::FocusOut:
-				if(!callFunction(this,"focusOutEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"focusOutEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Resize:
-				if(!callFunction(this,"resizeEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"resizeEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Move:
-				if(!callFunction(this,"moveEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"moveEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Close:
-				if(!callFunction(this,"closeEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"closeEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Enter:
-				if(!callFunction(this,"mouseEnterEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"mouseEnterEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Leave:
-				if(!callFunction(this,"mouseLeaveEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"mouseLeaveEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Show:
-				if(!callFunction(this,"showEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"showEvent",retv,0))brokenhandler = true;
 			break;
 			case QEvent::Hide:
-				if(!callFunction(this,"hideEvent",new KviKvsVariant(ret),0))ret = "";
+				if(!callFunction(this,"hideEvent",retv,0))ret =false;
 			break;
 			default:
 				return KviKvsObject::eventFilter(o,e);
 			break;
 
 		}
+		if (!brokenhandler)	ret=retv->asBoolean();
+		delete retv;
+		return ret;
+		/*
 		if(ret.length() == 1)
 		{
 			if(KviQString::equalCI("1",ret))return true;
 		}
+		*/
 	}
 
 	return KviKvsObject::eventFilter(o,e);
