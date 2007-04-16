@@ -1,3 +1,11 @@
+16 Apr 2007
+   [Noldor] (with the input from Pragma and Iakko)
+   - Iakko's notifier is back. New in this version:
+     1) QT4 compatible (on win and macos it is uses fast setWindowOpacity effect instead internal notifier blend())
+	 2) Added Option to disable fadein/out effect useful on slow machine (need test)
+	 3) Fixed strange crash on QT4 and some minor bug in show/hide event. (it is a trick... need to debug)
+	 This a w.i.p. and need some test on linux.
+	 
 12 Apr 2007
    [TheXception]
    - Added $system.call to call functions of dll/so files via kvs.
