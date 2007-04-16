@@ -830,18 +830,40 @@ namespace KviKvsCoreFunctions
 		QString szFormat;
 		kvs_int_t iTime;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+			KVSCF_PARAMETER("format",KVS_PT_NONEMPTYSTRING,0,szFormat)
 			KVSCF_PARAMETER("unixtime",KVS_PT_INT,KVS_PF_OPTIONAL,iTime)
 		KVSCF_PARAMETERS_END
 
-		QDateTime time;
+		KviStr tmpFormat("");
+		const QChar * c = KviQString::nullTerminatedArray(szFormat);
+		if(c)
+		{
+			while(c->unicode())
+			{
+				if(!c->isLetter())tmpFormat += (char)(c->unicode());
+				else {
+					tmpFormat += '%';
+					tmpFormat += (char)(c->unicode());
+				}
+				c++;
+			}
+		}
 
+		kvi_time_t t;
 		if(KVSCF_pParams->count() > 1)
-			time.setTime_t(iTime);
+			t = (kvi_time_t)iTime;
 		else
-			time = QDateTime::currentDateTime();
+			t = kvi_unixTime();
 
-		KVSCF_pRetBuffer->setString(time.toString(szFormat));
+		char buf[256];
+		if(strftime(buf,255,tmpFormat.ptr(),localtime(&t))> 0)
+		{
+			KviStr tmp = buf;
+			if(tmp.lastCharIs('\n'))tmp.cutRight(1);
+			KVSCF_pRetBuffer->setString(QString(buf));
+		} else {
+			KVSCF_pContext->warning(__tr2qs("The specified format string wasn't accepted by the underlying system time formatting function"));
+		}
 		
 		return true;
 	}

@@ -95,6 +95,7 @@ void KviHistoryWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().y() > height())goto hideme;
 
 	KviTalListBox::mousePressEvent(e);
+	e->accept();
 	return;
 
 hideme:
@@ -229,7 +230,8 @@ void KviHistoryWindow::doHide()
 		m_iTimerId = -1;
 	}
 	hide();
-	if(m_pOwner)m_pOwner->setFocus();
+	if(m_pOwner)
+		m_pOwner->setFocus();
 }
 
 void KviHistoryWindow::itemSelected(const QString &str)
@@ -238,6 +240,15 @@ void KviHistoryWindow::itemSelected(const QString &str)
 	if(m_pOwner)m_pOwner->setText(str);
 }
 
+
+void KviHistoryWindow::hideEvent ( QHideEvent * )
+{
+	if(m_iTimerId != -1)
+	{
+		killTimer(m_iTimerId);
+		m_iTimerId = -1;
+	}
+}
 
 #include "kvi_historywin.moc"
 #endif //_KVI_HISTORYWIN_CPP_

@@ -63,12 +63,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtnetwork4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib shlwapi.lib "
+				AdditionalDependencies="qt3supportD4.lib qtcoreD4.lib qtnetworkD4.lib qtguiD4.lib qtmainD.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib shlwapi.lib"
 				OutputFile="$(OutDir)\kvirc.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE\&quot;;&quot;$(QTDIR)\lib\&quot;;&quot;$(SolutionDir)\win32build\bin\&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
-				IgnoreAllDefaultLibraries="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/kvirc.pdb"
 				SubSystem="2"
@@ -132,7 +131,7 @@
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
 				PreprocessorDefinitions="QT3_SUPPORT;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="2"
 				Detect64BitPortabilityProblems="false"
@@ -148,12 +147,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtnetwork4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib shlwapi.lib "
+				AdditionalDependencies="qt3support4.lib qtcore4.lib qtnetwork4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib shlwapi.lib"
 				OutputFile="$(OutDir)\kvirc.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
-				IgnoreAllDefaultLibraries="true"
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"

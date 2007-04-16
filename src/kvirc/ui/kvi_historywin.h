@@ -51,6 +51,7 @@ private:
 	virtual void keyPressEvent(QKeyEvent *e);
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void timerEvent(QTimerEvent *);
+	virtual void hideEvent ( QHideEvent * );
 	void fill();
 public slots:
 	void ownerDead();

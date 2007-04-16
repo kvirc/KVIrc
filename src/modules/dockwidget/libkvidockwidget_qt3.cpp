@@ -483,7 +483,7 @@ void KviDockWidget::toggleParentFrame()
 		top_widget->show();
 		top_widget->raise();
 		top_widget->setActiveWindow();
-		m_pFrm->setFocus();
+		if(g_pActiveWindow) g_pActiveWindow->setFocus();
 		if(m_pFrm->isMinimized())
 			m_pFrm->showNormal();
 		else

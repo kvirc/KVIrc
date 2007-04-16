@@ -35,7 +35,7 @@
 /* define if you want to use the Qt 4.x support */
 /* #undef COMPILE_USE_QT4 */
 
-#define COMPILE_USE_QT4
+//#define COMPILE_USE_QT4
 
 /* define if you want to use only the new KVS parser */
 #define COMPILE_ONLY_NEW_KVS 1

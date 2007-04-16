@@ -3176,6 +3176,14 @@
 						PreprocessorDefinitions="__KVILIB__"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="net\moc_kvi_http.cpp"
