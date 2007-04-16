@@ -83,7 +83,7 @@ private:
 	unsigned int                m_uLineMarkLineIndex;
 
 	// Highliting of links
-	KviIrcViewWrappedBlock       * m_pLastLinkUnderMouse;
+	KviIrcViewWrappedBlock    * m_pLastLinkUnderMouse;
 	int                         m_iLastLinkRectTop;
 	int                         m_iLastLinkRectHeight;
 

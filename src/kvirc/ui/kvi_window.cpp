@@ -782,7 +782,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	g_pMdiWindowSystemTextEncodingPopup->insertSeparator();
 
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
-	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart"),g_pMdiWindowSystemTextEncodingPopupSmart);
+	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send Local)"),g_pMdiWindowSystemTextEncodingPopupSmart);
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
 	
 	int i = 0;

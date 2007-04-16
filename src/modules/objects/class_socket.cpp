@@ -21,6 +21,7 @@
 //
 
 #include "kvi_settings.h"
+#include "kvi_qstring.h"
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
@@ -278,6 +279,9 @@ void KviScriptSocketObject::reset()
 		Returns the IP address of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
 
+		!fn: $setProtocol(<protocol>)
+		Let KVIrc use TCP jr UDP protocol
+
 		!fn: $remotePort()
 		Returns the port of the remote end of this socket.[br]
 		The return value is meaningful only if the socket is in connected or connecting state.
@@ -375,6 +379,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"readHex",functionReadHex)
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"write",functionWrite)
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"writeHex",functionWriteHex)
+	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"setProtocol",functionSetProtocol)
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"listen",functionListen)
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"accept",functionAccept)
 
@@ -390,7 +395,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_socket)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_socket,KviKvsObject)
 
 
-
+	m_bUdp = false;
 	m_uConnectionId = 0;
 	m_sock = KVI_INVALID_SOCKET;
 	m_iStatus = KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED;
@@ -516,7 +521,16 @@ bool KviKvsObject_socket::functionAccept(KviKvsObjectFunctionCall *c)
 }
 
 
+bool  KviKvsObject_socket::functionSetProtocol(KviKvsObjectFunctionCall *c)
+{
+	QString m_szHex;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("hex_string",KVS_PT_STRING,0,m_szHex)
+	KVSO_PARAMETERS_END(c)
 
+	m_bUdp=KviQString::equalCI(m_szHex,"udp");
+	return false;
+}
 
 bool  KviKvsObject_socket::functionWriteHex(KviKvsObjectFunctionCall *c)
 {
@@ -667,9 +681,9 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 
 #ifdef COMPILE_IPV6_SUPPORT
 	m_sock = kvi_socket_create(m_bIpV6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
-								KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+								m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
-	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #endif
 
 	if(m_sock == KVI_INVALID_SOCKET)
@@ -683,9 +697,9 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 	if(!m_szLocalIp.isEmpty())
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sa(m_szLocalIp,m_uLocalPort,m_bIpV6);
+		KviSockaddr sa(m_szLocalIp,m_uLocalPort,m_bIpV6,m_bUdp);
 #else
-		KviSockaddr sa(m_szLocalIp,m_uLocalPort,false);
+		KviSockaddr sa(m_szLocalIp,m_uLocalPort,false,m_bUdp);
 #endif
 		if(!sa.socketAddress())
 		{
@@ -704,9 +718,9 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 		}
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sa(m_uLocalPort,m_bIpV6);
+		KviSockaddr sa(m_uLocalPort,m_bIpV6,m_bUdp);
 #else
-		KviSockaddr sa(m_uLocalPort,false);
+		KviSockaddr sa(m_uLocalPort,false,m_bUdp);
 #endif
 		if(!sa.socketAddress())
 		{
@@ -738,9 +752,9 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 	// Reread the port in case we're binding to a random one (0)
 
 #ifdef COMPILE_IPV6_SUPPORT
-	KviSockaddr sareal(0,m_bIpV6);
+	KviSockaddr sareal(0,m_bIpV6,m_bUdp);
 #else
-	KviSockaddr sareal(0,false);
+	KviSockaddr sareal(0,false,m_bUdp);
 #endif
 
 	int size = (int)sareal.addressLength();
@@ -819,9 +833,9 @@ void KviKvsObject_socket::acceptConnection(kvi_socket_t s,kvi_u32_t uPort,const 
 	m_uRemotePort = uPort;
 	m_szRemoteIp = szIp;
 #ifdef COMPILE_IPV6_SUPPORT
-	KviSockaddr sareal(0,m_bIpV6);
+	KviSockaddr sareal(0,m_bIpV6,m_bUdp);
 #else
-	KviSockaddr sareal(0,false);
+	KviSockaddr sareal(0,false,m_bUdp);
 #endif
 
 	int size = (int)sareal.addressLength();
@@ -854,7 +868,7 @@ void KviKvsObject_socket::doConnect()
 	m_pDelayTimer = 0;
 
 
-	KviSockaddr sa(m_szRemoteIp,m_uRemotePort,!kvi_isValidStringIp(m_szRemoteIp));
+	KviSockaddr sa(m_szRemoteIp,m_uRemotePort,!kvi_isValidStringIp(m_szRemoteIp),m_bUdp);
 
 	if(!sa.socketAddress())
 	{
@@ -879,10 +893,10 @@ debug ("Socket created");
 	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
 	m_bIpV6 = sa.isIpV6();
-	m_sock = kvi_socket_create(sa.isIpV6() ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+	m_sock = kvi_socket_create(sa.isIpV6() ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_bIpV6 = false;
-	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,m_bUdp ? KVI_SOCKET_TYPE_DGRAM : KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #endif
 
 	if(m_sock == KVI_INVALID_SOCKET)
@@ -1042,9 +1056,9 @@ void KviKvsObject_socket::writeNotifierFired(int)
 		m_pSn->setEnabled(true);
 
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sareal(0,m_bIpV6);
+		KviSockaddr sareal(0,m_bIpV6,m_bUdp);
 #else
-		KviSockaddr sareal(0,false);
+		KviSockaddr sareal(0,false,m_bUdp);
 #endif
 		int size = (int)sareal.addressLength();
 		if(kvi_socket_getsockname(m_sock,sareal.socketAddress(),&size))

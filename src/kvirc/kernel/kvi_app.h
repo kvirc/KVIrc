@@ -121,7 +121,7 @@ public:
 		Avatars,      DefScript,     License,
 		Modules,      ConfigScripts, Filters,
 		Tmp,          Locale,        Themes,
-		Classes,      SmallIcons
+		Classes,      SmallIcons,    EasyPlugins
 	};
 
 public:

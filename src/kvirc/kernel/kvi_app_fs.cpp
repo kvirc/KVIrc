@@ -54,6 +54,7 @@ void KviApp::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QStri
 		case Pics          : szData.append("pics");                                                    break;
 		case Modules       :
 		case Plugins       : szData.append("modules");                                                 break;
+		case EasyPlugins   : szData.append("easyplugins");                                             break;
 		case ConfigPlugins : KviQString::appendFormatted(szData,"config%smodules",KVI_PATH_SEPARATOR); break;
 		case ConfigScripts : KviQString::appendFormatted(szData,"config%sscripts",KVI_PATH_SEPARATOR); break;
 		case Help          :
@@ -109,6 +110,7 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 	{
 		case None          :                                                                     break;
 		case Pics          : szData.append("pics");                                              break;
+		case EasyPlugins   : szData.append("easyplugins");                                             break;
 		case Config        : szData.append("config");                                            break;
 		case ConfigPlugins : szData.append("config"KVI_PATH_SEPARATOR"modules");                 break;
 		case ConfigScripts : szData.append("config"KVI_PATH_SEPARATOR"scripts");                 break;

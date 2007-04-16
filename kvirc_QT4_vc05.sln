@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C++ Express 2005
+# Visual Studio 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kvirc", "src\kvirc\kvirc_QT4_vc05.vcproj", "{92803FDD-DFDB-461D-8AA3-1F201F4EA06C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
@@ -8,148 +8,304 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kvilib", "src\kvilib\kvilib_QT4_vc05.vcproj", "{122A0296-534F-4A77-B55F-5EF4E642ACD0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "setup", "src\modules\setup\setup_QT4_vc05.vcproj", "{24152082-6DE9-4B8B-9409-88016C3B663E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "options", "src\modules\options\options_QT4_vc05.vcproj", "{41A02EFA-6DE5-4A20-894D-B0543F99EDA9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dcc", "src\modules\dcc\dcc_QT4_vc05.vcproj", "{11F496D4-35BB-42BC-8473-3DCEE031CBB9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "filetransferwindow", "src\modules\filetransferwindow\filetransferwindow_QT4_vc05.vcproj", "{ED2B210E-B682-4E95-9A50-739DE23B5FE8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file", "src\modules\file\file_QT4_vc05.vcproj", "{C38D5CA0-973B-4FE0-AEA8-70B53499B87A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "str", "src\modules\str\str_QT4_vc05.vcproj", "{542FE556-EB89-4B2E-BE26-EA4A01ABEF48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "my", "src\modules\my\my_QT4_vc05.vcproj", "{3AB1E78F-B313-44ED-B452-4B492CF06604}"
 	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{736D754E-BF35-4FE8-AA75-6BF903D5A1EC} = {736D754E-BF35-4FE8-AA75-6BF903D5A1EC}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mircimport", "src\modules\mircimport\mircimport_QT4_vc05.vcproj", "{E1B7346F-A039-4C31-8553-986135384741}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "about", "src\modules\about\about_QT4_vc05.vcproj", "{1DEEEFDC-8DF0-4E33-B869-84737C15E64C}"
 	ProjectSection(ProjectDependencies) = postProject
-		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ident", "src\modules\ident\ident_QT4_vc05.vcproj", "{F97729AF-3547-4CC7-8FEF-2DF161469AF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socketspy", "src\modules\socketspy\socketspy_QT4_vc05.vcproj", "{52A4F40D-5AAF-41C7-A8FB-9E0EAD3DB77D}"
 	ProjectSection(ProjectDependencies) = postProject
-		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "http", "src\modules\http\http_QT4_vc05.vcproj", "{F0B24D36-1505-41F5-A6BD-FFCA2BE0A234}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aliaseditor", "src\modules\aliaseditor\aliaseditor_QT4_vc05.vcproj", "{2A24762A-6A8A-4D7D-AF81-5FBABDB6220C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eventeditor", "src\modules\eventeditor\eventeditor_QT4_vc05.vcproj", "{C1531B19-42F1-4589-8CD6-1918CD050642}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tip", "src\modules\tip\tip_QT4_vc05.vcproj", "{EB28029D-5A2E-4BC5-B855-22F460294E57}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "window", "src\modules\window\window_QT4_vc05.vcproj", "{74B66905-5BD2-4639-9955-7AFBFCAD9C19}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dockwidget", "src\modules\dockwidget\dockwidget_QT4_vc05.vcproj", "{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "channelsjoin", "src\modules\channelsjoin\channelsjoin_QT4_vc05.vcproj", "{65809260-63B6-4B84-A3B8-2446B298E647}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mask", "src\modules\mask\mask_QT4_vc05.vcproj", "{7FCEE358-C192-408F-B6FA-3CCF41DF0A69}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "help", "src\modules\help\help_QT4_vc05.vcproj", "{292AD0B1-745C-496E-81D6-175908C79FE2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chan", "src\modules\chan\chan_QT4_vc05.vcproj", "{041C8F48-6631-4E47-9A05-047EB1C9044A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "codetester", "src\modules\codetester\codetester_QT4_vc05.vcproj", "{8D98416D-18B5-45FE-B718-F6C28EED6A7B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "config", "src\modules\config\config_QT4_vc05.vcproj", "{232C53B5-D955-4C15-93CC-2B59F4C8A7BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "src\modules\system\system_QT4_vc05.vcproj", "{561682C7-AA62-4D30-95EC-8EA574180B47}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log", "src\modules\log\log_QT4_vc05.vcproj", "{6E84D5E0-B1D4-4041-B7D8-2D8C09A4F6CB}"
 	ProjectSection(ProjectDependencies) = postProject
-		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor", "src\modules\editor\editor_QT4_vc05.vcproj", "{4D437B7D-2BA6-426C-9E9F-2EA05E51ABD6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "list", "src\modules\list\list_QT4_vc05.vcproj", "{D6F06614-642A-4113-B636-F582417AF154}"
 	ProjectSection(ProjectDependencies) = postProject
-		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "snd", "src\modules\snd\snd_QT4_vc05.vcproj", "{7A897266-3913-48FC-8EC1-9B8F69BD9354}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dialog", "src\modules\dialog\dialog_QT4_vc05.vcproj", "{4FEF7D07-F712-4F26-8E68-C518CF9C17BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lag", "src\modules\lag\lag_QT4_vc05.vcproj", "{D0FA3D9D-5108-46BC-8080-997E768C2169}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lamerizer", "src\modules\lamerizer\lamerizer_QT4_vc05.vcproj", "{1D7DE893-331D-4677-A11B-8F3E7F7F9DC1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "links", "src\modules\links\links_QT4_vc05.vcproj", "{5EC1E257-5796-44C4-B240-8BF359B09669}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logview", "src\modules\logview\logview_QT4_vc05.vcproj", "{0895E8B5-8A1B-4993-8DFE-BADDB5FC1415}"
 	ProjectSection(ProjectDependencies) = postProject
-		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "objects", "src\modules\objects\objects_QT4_vc05.vcproj", "{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "popupeditor", "src\modules\popupeditor\popupeditor_QT4_vc05.vcproj", "{078F074D-5696-47FC-8848-325344C87EB3}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "raweditor", "src\modules\raweditor\raweditor_QT4_vc05.vcproj", "{AA84D9BA-FF60-40AD-9275-541B7D267F8B}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "toolbareditor", "src\modules\toolbareditor\toolbareditor_QT4_vc05.vcproj", "{D05CBD17-50C4-4BA3-95F4-18D844CDF988}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "toolbar", "src\modules\toolbar\toolbar_QT4_vc05.vcproj", "{8C6D2EAA-12B1-4E9A-9BFF-294154CD4599}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "url", "src\modules\url\url_QT4_vc05.vcproj", "{B05EB11E-0324-4621-96CE-0B2F38E95D2E}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tmphighlight", "src\modules\tmphighlight\tmphighlight_QT4_vc05.vcproj", "{0F0A23E8-FBC7-4EAD-BDE1-5ECAA41ECDD8}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spaste", "src\modules\spaste\spaste_QT4_vc05.vcproj", "{D0C33B4E-73F9-4624-BC34-B6C582D0C9C5}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "regchan", "src\modules\regchan\regchan_QT4_vc05.vcproj", "{8D9CCA46-1715-4FF7-8506-BA30113CB5D9}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rijndael", "src\modules\rijndael\rijndael_QT4_vc05.vcproj", "{C0F8DD8B-EF12-40E0-B1CE-AC2BCA71742B}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reguser", "src\modules\reguser\reguser_QT4_vc05.vcproj", "{12DB9879-4F34-4EFC-8415-8714224CDDF4}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfile", "src\modules\sharedfile\sharedfile_QT4_vc05.vcproj", "{AE562D80-79A4-454C-8BE2-632CDB535DBD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfileswindow", "src\modules\sharedfileswindow\sharedfileswindow_QT4_vc05.vcproj", "{0BBE0DA4-4ECB-4515-8497-6EBEB3A51C17}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "notifier", "src\modules\notifier\notifier_QT4_vc05.vcproj", "{2B3B9111-B275-404C-B565-29F08AD0471C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "perl", "src\modules\perl\perl_QT4_vc05.vcproj", "{3A61298B-5747-40CC-9C9C-EB29DE52E84C}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "perlcore", "src\modules\perlcore\perlcore_QT4_vc05.vcproj", "{4C671ABE-F61C-4C58-BA45-D58833EE85EE}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "action", "src\modules\action\action_QT4_vc05.vcproj", "{F89EA8C5-B97C-4916-9345-35A8B51A0B26}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "actioneditor", "src\modules\actioneditor\actioneditor_QT4_vc05.vcproj", "{19556833-0BCA-4E3A-B208-2772D4ABC725}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "avatar", "src\modules\avatar\avatar_QT4_vc05.vcproj", "{7CFC8C10-A49E-49C2-8790-92ECA46CE3D4}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\mediaplayer\winamp_QT4_vc05.vcproj", "{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mediaplayer", "src\modules\mediaplayer\mediaplayer_QT4_vc05.vcproj", "{C441100E-CFF9-4477-9B66-7C955D416D38}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "src\modules\addon\addon_QT4_vc05.vcproj", "{E666CE2F-5F24-407C-86B3-DB55C252FF78}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math", "src\modules\math\math_QT4_vc05.vcproj", "{2B1545D5-14C3-4430-83C5-AA5F2407376B}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idleui", "src\modules\my\win32\idleui_05.vcproj", "{736D754E-BF35-4FE8-AA75-6BF903D5A1EC}"
 	ProjectSection(ProjectDependencies) = postProject
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "popupeditor", "src\modules\popupeditor\popupeditor_QT4_vc05.vcproj", "{078F074D-5696-47FC-8848-325344C87EB3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "raweditor", "src\modules\raweditor\raweditor_QT4_vc05.vcproj", "{AA84D9BA-FF60-40AD-9275-541B7D267F8B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "toolbareditor", "src\modules\toolbareditor\toolbareditor_QT4_vc05.vcproj", "{D05CBD17-50C4-4BA3-95F4-18D844CDF988}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "toolbar", "src\modules\toolbar\toolbar_QT4_vc05.vcproj", "{8C6D2EAA-12B1-4E9A-9BFF-294154CD4599}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "url", "src\modules\url\url_QT4_vc05.vcproj", "{B05EB11E-0324-4621-96CE-0B2F38E95D2E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tmphighlight", "src\modules\tmphighlight\tmphighlight_QT4_vc05.vcproj", "{0F0A23E8-FBC7-4EAD-BDE1-5ECAA41ECDD8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spaste", "src\modules\spaste\spaste_QT4_vc05.vcproj", "{D0C33B4E-73F9-4624-BC34-B6C582D0C9C5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "regchan", "src\modules\regchan\regchan_QT4_vc05.vcproj", "{8D9CCA46-1715-4FF7-8506-BA30113CB5D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rijndael", "src\modules\rijndael\rijndael_QT4_vc05.vcproj", "{C0F8DD8B-EF12-40E0-B1CE-AC2BCA71742B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reguser", "src\modules\reguser\reguser_QT4_vc05.vcproj", "{12DB9879-4F34-4EFC-8415-8714224CDDF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfile", "src\modules\sharedfile\sharedfile_QT4_vc05.vcproj", "{AE562D80-79A4-454C-8BE2-632CDB535DBD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfileswindow", "src\modules\sharedfileswindow\sharedfileswindow_QT4_vc05.vcproj", "{0BBE0DA4-4ECB-4515-8497-6EBEB3A51C17}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "notifier", "src\modules\notifier\notifier_QT4_vc05.vcproj", "{2B3B9111-B275-404C-B565-29F08AD0471C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "perl", "src\modules\perl\perl_QT4_vc05.vcproj", "{3A61298B-5747-40CC-9C9C-EB29DE52E84C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "perlcore", "src\modules\perlcore\perlcore_QT4_vc05.vcproj", "{4C671ABE-F61C-4C58-BA45-D58833EE85EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "action", "src\modules\action\action_QT4_vc05.vcproj", "{F89EA8C5-B97C-4916-9345-35A8B51A0B26}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "actioneditor", "src\modules\actioneditor\actioneditor_QT4_vc05.vcproj", "{19556833-0BCA-4E3A-B208-2772D4ABC725}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "avatar", "src\modules\avatar\avatar_QT4_vc05.vcproj", "{7CFC8C10-A49E-49C2-8790-92ECA46CE3D4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mediaplayer", "src\modules\mediaplayer\mediaplayer_QT4_vc05.vcproj", "{C441100E-CFF9-4477-9B66-7C955D416D38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "src\modules\addon\addon_QT4_vc05.vcproj", "{E666CE2F-5F24-407C-86B3-DB55C252FF78}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math", "src\modules\math\math_QT4_vc05.vcproj", "{2B1545D5-14C3-4430-83C5-AA5F2407376B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idleui", "src\modules\my\win32\idleui_05.vcproj", "{736D754E-BF35-4FE8-AA75-6BF903D5A1EC}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "texticons", "src\modules\texticons\texticon_QT4_vc05.vcproj", "{760323E6-1ADA-46AB-9B36-B2E92ED887D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "theme", "src\modules\theme\theme_QT4_vc05.vcproj", "{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\mediaplayer\winamp_vc05.vcproj", "{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32registrar", "src\win32registrar\win32registrar.vcproj", "{0267933F-26DB-4A5B-BA74-26DD40AFD318}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -373,10 +529,6 @@ Global
 		{7CFC8C10-A49E-49C2-8790-92ECA46CE3D4}.Debug|Win32.Build.0 = Debug|Win32
 		{7CFC8C10-A49E-49C2-8790-92ECA46CE3D4}.Release|Win32.ActiveCfg = Release|Win32
 		{7CFC8C10-A49E-49C2-8790-92ECA46CE3D4}.Release|Win32.Build.0 = Release|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.Build.0 = Debug|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.ActiveCfg = Release|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.Build.0 = Release|Win32
 		{C441100E-CFF9-4477-9B66-7C955D416D38}.Debug|Win32.ActiveCfg = Debug|Win32
 		{C441100E-CFF9-4477-9B66-7C955D416D38}.Debug|Win32.Build.0 = Debug|Win32
 		{C441100E-CFF9-4477-9B66-7C955D416D38}.Release|Win32.ActiveCfg = Release|Win32
@@ -401,6 +553,14 @@ Global
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Debug|Win32.Build.0 = Debug|Win32
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Release|Win32.ActiveCfg = Release|Win32
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Release|Win32.Build.0 = Release|Win32
+		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.Build.0 = Debug|Win32
+		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.ActiveCfg = Release|Win32
+		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.Build.0 = Release|Win32
+		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Debug|Win32.Build.0 = Debug|Win32
+		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Release|Win32.ActiveCfg = Release|Win32
+		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

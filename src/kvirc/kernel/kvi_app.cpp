@@ -103,7 +103,11 @@
 	#include "kvi_ssl.h"
 #endif
 
-
+#ifdef COMPILE_USE_QT4
+#ifdef COMPILE_ON_WINDOWS
+#include <QPluginLoader>
+#endif
+#endif
 
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
 
@@ -213,11 +217,23 @@ void KviApp::setup()
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
+#ifdef COMPILE_USE_QT4
+#ifdef COMPILE_ON_WINDOWS
+	//need to load image plugins:(
+	QString szPluginsDir;
+	getGlobalKvircDirectory(szPluginsDir,None,"qt-plugins/");
+	setLibraryPaths(QStringList(szPluginsDir));
+	//KviMessageBox::information(libraryPaths().join(";"));
+	//debug("%1",loader.isLoaded());
+#endif
+#endif
+
 	// check if we want to permanently disable the splash screen
 	// we do it once for every version: the user should see the new splash screens at least once
 	
 	QString szSplashDisableFile;
 	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash." KVI_VERSION);
+
 	if(KviFileUtils::fileExists(szSplashDisableFile))
 		m_bShowSplashScreen = false;
 

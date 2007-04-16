@@ -62,17 +62,17 @@ extern KviPtrList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
 extern KviModule * g_pEditorModulePointer;
 
 
-static QColor g_clrBackground(0,0,0);
-static QColor g_clrNormalText(100,255,0);
+static QColor g_clrBackground(255,255,255);
+static QColor g_clrNormalText(0,0,0);
 static QColor g_clrBracket(255,0,0);
 static QColor g_clrComment(0,120,0);
-static QColor g_clrFunction(255,255,0);
-static QColor g_clrKeyword(120,120,150);
-static QColor g_clrVariable(200,200,200);
+static QColor g_clrFunction(0,17,255);
+static QColor g_clrKeyword(85,85,255);
+static QColor g_clrVariable(255,0,0);
 static QColor g_clrPunctuation(180,180,0);
-static QColor g_clrFind(187,221,255);
+static QColor g_clrFind(0,0,0);
 
-static QFont g_fntNormal("Fixed",12);
+static QFont g_fntNormal("Courier New",8);
 
 KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
 : KviTalListBox(parent)

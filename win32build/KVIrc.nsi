@@ -108,6 +108,8 @@ Section !$(KVIrc) KVIrc_IDX
 	File package\*.*
 	SetOutPath "$INSTDIR\config"
 	File /r package\config\*.*
+	SetOutPath "$INSTDIR\qt-plugins"
+	File /r package\qt-plugins\*.*
 	SetOutPath "$INSTDIR\defscript"
 	File /r package\defscript\*.*
 	SetOutPath "$INSTDIR\doc"
@@ -144,6 +146,8 @@ Section !$(KVIrc) KVIrc_IDX
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "NoRepair" 1
 
 	WriteUninstaller "uninstall.exe"
+	
+	ExecWait "$INSTDIR\win32registrar.exe"
   
 SectionEnd
 

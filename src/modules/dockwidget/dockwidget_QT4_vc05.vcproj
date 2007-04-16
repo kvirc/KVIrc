@@ -211,19 +211,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\libkvidockwidget.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\libkvidockwidget_qt4.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\trayicon.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\trayicon_win.cpp"
 				>
 			</File>
 		</Filter>
@@ -262,7 +250,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
