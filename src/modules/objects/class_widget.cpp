@@ -438,8 +438,6 @@ const int widgettypes_cod[] = {
 		Return the x coordinate of mouse pointer global position.
 		!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
-		!fn: setDynamicTooltip(<text:string>,<x:integer>,<y:integer>,<width:uinteger>,<height:uinteger>)
-		Immediately pops up a tip saying text and removes the tip once the cursor moves out of rectangle at x,y widget coordinates and with width/height dimension. 
 		See also [classfnc]$mayTipEvent[/classfnc].
 		@examples:
 		[example]
@@ -499,22 +497,6 @@ const int widgettypes_cod[] = {
 		[/example]
 
 */
-KviKvsTip::KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget)
-: KviTalToolTip(pWidget)
-{
-	m_pParent=pParent;
-}
-KviKvsTip::~KviKvsTip()
-{
-}
-
-void KviKvsTip::maybeTip(const QPoint &pnt)
-{
-	KviKvsVariant *x=new KviKvsVariant((kvs_int_t)pnt.x());
-	KviKvsVariant *y=new KviKvsVariant((kvs_int_t)pnt.y());
-	KviKvsVariantList params(x,y);
-	m_pParent->callFunction(m_pParent,"maybeTipEvent",0,&params);			
-}
 
 
 
@@ -611,7 +593,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setBackgroundImage",function_setBackgroundImage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setDynamicToolTip",function_setDynamicToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
 
 	// QT4 only
@@ -642,17 +623,20 @@ KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
-	m_pTip=0;
+#ifndef COMPILE_USE_QT4	
+m_pTip=0;
+#endif
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
 	emit aboutToDie();
+#ifndef COMPILE_USE_QT4
 	if (m_pTip)
 	{
 		delete m_pTip;
 		m_pTip=0;
 	}
-
+#endif
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
@@ -672,6 +656,20 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			
 		switch(e->type())
 		{
+			#ifdef COMPILE_USE_QT4
+			case QEvent::ToolTip:
+			{
+				QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
+				QPoint point=helpEvent->pos();
+				QString szTooltip;
+				KviKvsVariant *tipret=new KviKvsVariant(szTooltip);
+				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)point.x()),new KviKvsVariant((kvs_int_t)point.y()));
+				callFunction(this,"maybeTipEvent",tipret,&params);
+				tipret->asString(szTooltip);
+				QToolTip::showText(helpEvent->globalPos(),szTooltip);
+					break;
+			}
+			#endif
 			case QEvent::Paint:
 			{
 				QRect rect=((QPaintEvent *)e)->rect();
@@ -818,8 +816,6 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 			break;
 			case QEvent::MouseMove:
-					debug ("MOVE EVENT");
-
 				if( (((QMouseEvent *)e)->state()) & Qt::LeftButton) aparam = 0;
 				else
 				{
@@ -1691,25 +1687,6 @@ bool KviKvsObject_widget::function_globalCursorX(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_widget::function_globalCursorY(KviKvsObjectFunctionCall *c)
 {
 	if(widget())c->returnValue()->setInteger(QCursor::pos().y());
-	return true;
-}
-
-bool KviKvsObject_widget::function_setDynamicToolTip(KviKvsObjectFunctionCall *c)
-{
-	if (!m_pTip)m_pTip=new KviKvsTip(this,widget());
-	
-	QString szTip;
-	kvs_int_t iXstart,iYstart;
-	kvs_uint_t uWidth,uHeight;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("tip_text",KVS_PT_STRING,0,szTip)
-		KVSO_PARAMETER("x_start",KVS_PT_INT,0,iXstart)
-		KVSO_PARAMETER("y_start",KVS_PT_INT,0,iYstart)
-		KVSO_PARAMETER("width",KVS_PT_INT,0,uWidth)
-		KVSO_PARAMETER("height",KVS_PT_INT,0,uHeight)
-		KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
-	m_pTip->doTip(QRect(QPoint(iXstart,iYstart),QSize(uWidth,uHeight)),szTip);
 	return true;
 }
 bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)

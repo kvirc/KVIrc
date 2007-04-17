@@ -133,6 +133,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItemChangeEvent",functioncurrentItemChangeEvent);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"onItemEvent",functiononItemEvent);
 
+
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listbox,"selectionChangeEvent")
 
 
@@ -384,7 +385,6 @@ kvs_uint_t uIndex;
 	}
 		return true;
 }
-
 
 
 #include "m_class_listbox.moc"

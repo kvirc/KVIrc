@@ -48,7 +48,7 @@ protected:
 	// so the name of the C++ function matches exactly the name of the KVS function at this point
 	
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
-	KviKvsTip *m_pTip;
+
 	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
 	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
 	bool function_caption(KviKvsObjectFunctionCall *c);
@@ -99,7 +99,6 @@ protected:
 	bool function_width(KviKvsObjectFunctionCall *);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
-	bool function_setDynamicToolTip(KviKvsObjectFunctionCall *c);
 	bool function_setMask(KviKvsObjectFunctionCall *c);
 	
 
@@ -110,18 +109,5 @@ bool function_setAttribute(KviKvsObjectFunctionCall *c);
 signals:
 	void aboutToDie();
 };
-class KviKvsTip : public KviTalToolTip
-{
-public:
-	KviKvsTip(KviKvsObject_widget * pParent,QWidget *pWidget);
-	~KviKvsTip();
-public:
-	void maybeTip(const QPoint &pnt);
-	void doTip(const QRect &rct,const QString &str){// tip(rct,str); //
-	};
-protected:
-	KviKvsObject_widget * m_pParent;
-};
-
 
 #endif	// !_CLASS_WIDGET_H_
