@@ -634,6 +634,7 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 
 void KviNotifierWindowTabs::markAllMessagesAsHistoric()
 {
+/*
 	QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 	// Iterating every tab
 	for (tab = m_tabMap.begin(); tab != m_tabMap.end(); ++tab) {
@@ -649,6 +650,7 @@ void KviNotifierWindowTabs::markAllMessagesAsHistoric()
 			m->setHistoric();
 		}
 	}
+*/
 }
 
 void KviNotifierWindowTabs::closeTab(KviWindow * pWnd)
