@@ -144,16 +144,4 @@ protected:
 
 };
 
-class KviNotifierWindowProgressBar
-{
-public:
-	KviNotifierWindowProgressBar(QRect r);
-	~KviNotifierWindowProgressBar();
-protected:
-	QRect 	m_rect;
-	double	m_dProgress;
-public:
-	void setProgress(double progress) { m_dProgress=progress; };
-	void draw(QPainter *);
-};
 #endif //!_KVINOTIFIERWINDOWBODY_H_

@@ -194,29 +194,27 @@ void KviNotifierWindowBorder::resetIcons() {
 void KviNotifierWindowBorder::draw(QPainter * p, bool b) {
 
 	if (m_bNeedToRedraw) {
-	
 		setPics(b);
 		setCloseIcon(m_eIconState);
-		// Draw the caption
 		
-		p->drawPixmap(m_captionRect.x(),m_captionRect.y(), *m_pixCaptionSX);
-		p->drawTiledPixmap(m_pixCaptionSX->width(), 0, m_captionRect.width()-(m_pixCaptionSX->width()+m_pixCaptionDX->width()), m_captionRect.height(), *m_pixCaptionBKG);
-		p->drawPixmap(m_captionRect.width()-m_pixCaptionDX->width(), 0, *m_pixCaptionDX);
+		// Draw the caption
+		p->drawPixmap(m_captionRect.x(), m_captionRect.y(), *m_pixCaptionSX);
+		p->drawTiledPixmap(m_pixCaptionSX->width(), 0, m_captionRect.width() - (m_pixCaptionSX->width() + m_pixCaptionDX->width()), m_captionRect.height(), *m_pixCaptionBKG);
+		p->drawPixmap(m_captionRect.width() - m_pixCaptionDX->width(), 0, *m_pixCaptionDX);
 	
 		// Draw the tiled borders
-		p->drawTiledPixmap(0,m_captionRect.height(), m_pixSX->width(), m_bodyRect.height()+m_iTabsHeight, *m_pixSX );
-		p->drawTiledPixmap(m_bodyRect.width()+m_bodyRect.x(),m_captionRect.height(), m_pixDX->width(), m_bodyRect.height()+m_iTabsHeight, *m_pixDX );
-		p->drawTiledPixmap(m_pixDWNSX->width(),m_captionRect.height()+m_bodyRect.height()+m_iTabsHeight, m_bodyRect.width(), m_pixDWN->height(), *m_pixDWN );
+		p->drawTiledPixmap(0, m_captionRect.height(), m_pixSX->width(), m_bodyRect.height() + m_iTabsHeight, *m_pixSX);
+		p->drawTiledPixmap(m_bodyRect.width() + m_bodyRect.x(), m_captionRect.height(), m_pixDX->width(), m_bodyRect.height() + m_iTabsHeight, *m_pixDX);
+		p->drawTiledPixmap(m_pixDWNSX->width(), m_captionRect.height() + m_bodyRect.height() + m_iTabsHeight, m_bodyRect.width() + m_progressRect.width() + 1, m_pixDWN->height(), *m_pixDWN);
 	
 		// Draw down corners
-		p->drawPixmap(0,m_captionRect.height()+m_bodyRect.height()+m_iTabsHeight, *m_pixDWNSX);
-		p->drawPixmap(m_bodyRect.width()+m_bodyRect.x(),m_captionRect.height()+m_bodyRect.height()+m_iTabsHeight, *m_pixDWNDX);
+		p->drawPixmap(0, m_captionRect.height() + m_bodyRect.height() + m_iTabsHeight, *m_pixDWNSX);
+		p->drawPixmap(m_bodyRect.width() + m_bodyRect.x(), m_captionRect.height() + m_bodyRect.height() + m_iTabsHeight, *m_pixDWNDX);
 				
 		//Drawing icons
 		p->drawPixmap(m_closeIconRect.x(), m_closeIconRect.y(), *m_pixIconClose);
 
 		m_bNeedToRedraw = false;
-
 	}
 	
 }

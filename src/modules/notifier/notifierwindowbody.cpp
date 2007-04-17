@@ -23,11 +23,11 @@
 //=============================================================================
 
 #include "notifierwindowbody.h"
+
 #include "kvi_iconmanager.h"
 
 #include <qbrush.h>
 #include <qcolor.h>
-
 #include <qpainter.h>
 
 /*
@@ -207,7 +207,7 @@ void KviNotifierWindowBody::draw(QPainter * p) {
 		// KVIrc image
 		p->drawPixmap(m_pnt.x(), m_pnt.y() + m_rct.height() - m_pixKVIrcSX.height() - m_pixDWNSX.height(), m_pixKVIrcSX);
 		p->drawPixmap(m_pnt.x() + m_pixKVIrcSX.width(), m_pnt.y() + m_rct.height() - m_pixKVIrcDWN.height(), m_pixKVIrcDWN);
-		p->drawPixmap(m_pnt.x() + m_pixKVIrcSX.width(), m_pnt.y() + m_rct.height() - m_pixKVIrc.height() - m_pixKVIrcDWN.height(), m_pixKVIrc, 0, 0, m_pixKVIrcSX.width(), m_pixKVIrcSX.height());
+		p->drawPixmap(m_pnt.x() + m_pixKVIrcSX.width(), m_pnt.y() + m_rct.height() - m_pixKVIrc.height() - m_pixKVIrcDWN.height(), m_pixKVIrc, 0, 0, m_pixKVIrc.width(), m_pixKVIrc.height());
 		
 		// Draw Icons
 		p->drawPixmap(m_rctPrevIcon.x(), m_rctPrevIcon.y(), m_pixIconPrev);
@@ -229,30 +229,4 @@ void KviNotifierWindowBody::mousePressEvent(QMouseEvent * e) {
 
 void KviNotifierWindowBody::mouseReleaseEvent(QMouseEvent * e) {
 
-}
-
-KviNotifierWindowProgressBar::KviNotifierWindowProgressBar(QRect r)
-:m_rect(r)
-{
-
-}
-
-KviNotifierWindowProgressBar::~KviNotifierWindowProgressBar()
-{
-	m_dProgress=0;
-}
-
-void KviNotifierWindowProgressBar::draw(QPainter *p)
-{
-	p->fillRect(m_rect,QColor(236,233,216));
-	p->fillRect(
-		QRect(
-			m_rect.x()+1,
-			m_rect.y()+1+m_rect.height()*(1-m_dProgress),
-			m_rect.width()-2,
-			(m_rect.height()-2)*m_dProgress
-			),
-		QColor(175,28,95)
-		);
-	p->drawRect(m_rect);
 }

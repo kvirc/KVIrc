@@ -16,7 +16,8 @@ libkvinotifier_la_SOURCES = libkvinotifier.cpp \
 							notifiermessage.cpp \
 							notifierwindowtabs.cpp \
 							notifierwindowbody.cpp \
-							notifierwindowborder.cpp
+							notifierwindowborder.cpp \
+							notifierwindowprogressbar.cpp
 							
 libkvinotifier_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
@@ -26,7 +27,8 @@ noinst_HEADERS= \
 			notifiermessage.h \
 			notifierwindowtabs.h \
 			notifierwindowbody.h \
-			notifierwindowborder.h
+			notifierwindowborder.h \
+			notifierwindowprogressbar.h
 
 confdir = $(configmodulesdir)
 

@@ -47,10 +47,10 @@
 class KviWindow;
 class KviNotifierMessage;
 
-class KviNotifierWindowTabs;
 class KviNotifierWindowBody;
 class KviNotifierWindowBorder;
 class KviNotifierWindowProgressBar;
+class KviNotifierWindowTabs;
 
 class QPainter;
 class QPopupMenu;

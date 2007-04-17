@@ -59,9 +59,10 @@
 #include <qfontmetrics.h>    
 #include <qregexp.h> 
 
-#include "notifierwindowtabs.h"
 #include "notifierwindowbody.h"
 #include "notifierwindowborder.h"
+#include "notifierwindowprogressbar.h"
+#include "notifierwindowtabs.h"
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -581,6 +582,7 @@ void KviNotifierWindow::blink()
 
 void KviNotifierWindow::markAllMessagesAsHistoric()
 {
+	if (!m_pWndTabs) return;
 	m_pWndTabs->markAllMessagesAsHistoric();
 }
 
@@ -1068,31 +1070,31 @@ void KviNotifierWindow::resize(QPoint p, bool up)
 	//QPoint aux = mapToGlobal(p);
 
 	if (m_whereResizing==WDG_UPSX || m_whereResizing==WDG_SX || m_whereResizing==WDG_DWNSX) {
-		if ( x()+width()-cursor().pos().x()<WDG_MIN_WIDTH )
-			m_wndRect.setLeft(x()+width()-WDG_MIN_WIDTH);
+		if ((x() + width() - cursor().pos().x()) < WDG_MIN_WIDTH)
+			m_wndRect.setLeft(x() + width() - WDG_MIN_WIDTH);
 		else
 			m_wndRect.setLeft(cursor().pos().x());
 	}
 	
-	if (m_whereResizing==WDG_UPSX || m_whereResizing==WDG_UP || m_whereResizing==WDG_UPDX) {
-		if ( y()+height()-cursor().pos().y()<WDG_MIN_HEIGHT )
-			m_wndRect.setTop(y()+height()-WDG_MIN_HEIGHT);
+	if (m_whereResizing == WDG_UPSX || m_whereResizing == WDG_UP || m_whereResizing == WDG_UPDX) {
+		if (y()+height()-cursor().pos().y() < WDG_MIN_HEIGHT)
+			m_wndRect.setTop(y() + height() - WDG_MIN_HEIGHT);
 		else
 			m_wndRect.setTop(cursor().pos().y());
 	}
 
-	if (m_whereResizing==WDG_DX || m_whereResizing==WDG_UPDX || m_whereResizing==WDG_DWNDX) {
-		if ( cursor().pos().x()-x()>WDG_MIN_WIDTH )
+	if (m_whereResizing == WDG_DX || m_whereResizing == WDG_UPDX || m_whereResizing == WDG_DWNDX) {
+		if ((cursor().pos().x() - x()) > WDG_MIN_WIDTH)
 			m_wndRect.setRight(cursor().pos().x());
 		else
-			m_wndRect.setRight(x()+WDG_MIN_WIDTH);
+			m_wndRect.setRight(x() + WDG_MIN_WIDTH);
 	}
 
-	if (m_whereResizing==WDG_DWN || m_whereResizing==WDG_DWNDX || m_whereResizing==WDG_DWNSX) {
-		if ( cursor().pos().y()-y()>WDG_MIN_HEIGHT )
+	if (m_whereResizing == WDG_DWN || m_whereResizing == WDG_DWNDX || m_whereResizing == WDG_DWNSX) {
+		if ((cursor().pos().y() - y()) > WDG_MIN_HEIGHT)
 			m_wndRect.setBottom(cursor().pos().y());
 		else
-			m_wndRect.setBottom(y()+WDG_MIN_HEIGHT);
+			m_wndRect.setBottom(y() + WDG_MIN_HEIGHT);
 	}
 
 	showLineEdit(m_pLineEdit->isVisible());
@@ -1111,6 +1113,7 @@ void KviNotifierWindow::redrawWindow()
 		m_pWndBorder->resize( m_wndRect.size() );
 		m_pWndTabs->setWidth( m_pWndBorder->tabsRect().width() );
 		m_pWndBody->resize( m_pWndBorder->bodyRect() );
+		m_pProgressBar->setHeight(m_pWndBorder->bodyRect().height() + m_pWndBorder->tabsRect().height());
 	}
 	
 	QPainter paint;

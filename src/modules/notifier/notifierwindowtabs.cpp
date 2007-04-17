@@ -636,13 +636,16 @@ void KviNotifierWindowTabs::markAllMessagesAsHistoric()
 {
 	QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 	// Iterating every tab
-	for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ )
-	{
-		// Setting all messages of the current tab as historic
-		// tab.data()->expireMessages();
-		KviPtrList<KviNotifierMessage> * tmpMessageList = tab.data()->messageList();
-		for(KviNotifierMessage * m = tmpMessageList->last();m;m = tmpMessageList->prev()) {
-			if(m->historic())break;
+	for (tab = m_tabMap.begin(); tab != m_tabMap.end(); ++tab) {
+	
+		if (!tab.value()) break;
+		
+		KviPtrList<KviNotifierMessage> * tmpMessageList = tab.value()->messageList();
+		
+		if (!tmpMessageList) break;
+		
+		for(KviNotifierMessage * m = tmpMessageList->last(); m; m = tmpMessageList->prev()) {
+			if(m->historic()) break;;
 			m->setHistoric();
 		}
 	}
