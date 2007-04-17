@@ -710,18 +710,15 @@ void KviChannel::getTaskBarTipText(QString &buffer)
 	static QString p9(")");
 	static QString p10("<br>");
 
-
-
 	static QString end_of_doc = "</table></body></html>";
-	static QString end_of_fontboldrow = "</b></font></td></tr>";
+	static QString end_of_fontboldrow = END_TABLE_BOLD_ROW;
 	static QString start_of_row = "<tr><td>";
 	static QString end_of_row = "</td></tr>";
 
 	buffer = "<html>" \
-				"<body bgcolor=\"#FFFFFF\">" \
-					"<table width=\"100%\">" \
-						"<tr><td bgcolor=\"#303030\">" \
-							"<font color=\"#FFFFFF\"><b>";
+				"<body>" \
+					"<table width=\"100%\">"\
+						START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN)
 	{

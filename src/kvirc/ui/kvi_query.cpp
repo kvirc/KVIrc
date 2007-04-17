@@ -162,11 +162,9 @@ QString KviQuery::getInfoLabelTipText()
 					"<body>" \
 						"<table width=\"100%\">";
 		
-			txt +=          "<tr><td bgcolor=\"#303030\">" \
-								"<font color=\"#FFFFFF\"><b>";
+			txt +=          START_TABLE_BOLD_ROW;
 			txt += __tr2qs("Query target:");
-			txt +=              "</b></font>" \
-							"</td></tr>";
+			txt +=              END_TABLE_BOLD_ROW;
 			txt +=          "<tr><td>";
 		
 			if(e->hasRealName())

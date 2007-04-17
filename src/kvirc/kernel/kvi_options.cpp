@@ -305,8 +305,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl),
 	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar),
-	BOOL_OPTION("DisableNotifierFadein",false,KviOption_sectFlagFrame)
-
+	BOOL_OPTION("DisableNotifierFadein",false,KviOption_sectFlagFrame),
+	BOOL_OPTION("UseAntiAliasing",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

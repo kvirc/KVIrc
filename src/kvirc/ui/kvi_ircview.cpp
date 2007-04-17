@@ -2894,6 +2894,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 	
 	QPainter pa(pDoubleBufferPixmap);
+	SET_ANTI_ALIASING(pa);
 
 	pa.setFont(font());
 	if(!m_pFm)
@@ -3204,7 +3205,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		int theWdth = _text_width; \
 		if(theWdth < 0) \
 			theWdth=width()-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER+scrollbarWidth); \
-		pa.drawLine(curLeftCoord,curBottomCoord,curLeftCoord+theWdth,curBottomCoord); \
+		pa.drawLine(curLeftCoord,curBottomCoord+2,curLeftCoord+theWdth,curBottomCoord+2); \
 	} \
 	curLeftCoord += _text_width;
 
@@ -3380,7 +3381,7 @@ no_selection_paint:
 					if(curUnderline)
 					{ 
 						//Draw a line under the text block....
-						pa.drawLine(curLeftCoord,curBottomCoord,curLeftCoord+wdth,curBottomCoord);
+						pa.drawLine(curLeftCoord,curBottomCoord+2,curLeftCoord+wdth,curBottomCoord+2);
 					}
 					curLeftCoord += block->block_width;
 				}

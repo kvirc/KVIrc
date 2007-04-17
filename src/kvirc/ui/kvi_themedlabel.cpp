@@ -87,6 +87,7 @@ void KviThemedLabel::paintEvent ( QPaintEvent * event )
 {
 	QFrame::paintEvent(event);
 	QPainter p(this);
+	SET_ANTI_ALIASING(p);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{

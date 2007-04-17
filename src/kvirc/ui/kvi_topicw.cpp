@@ -491,11 +491,9 @@ void KviTopicWidget::updateToolTip()
 
 	if(!m_szTopic.isEmpty())
 	{
-		txt +=          "<tr><td bgcolor=\"#303030\">" \
-							"<font color=\"#FFFFFF\"><b>";
+		txt +=          START_TABLE_BOLD_ROW;
 		txt += __tr2qs("Channel topic:");
-		txt +=              "</b></font>" \
-						"</td></tr>";
+		txt +=              END_TABLE_BOLD_ROW;
 
 		txt +=          "<tr><td><center>";
 

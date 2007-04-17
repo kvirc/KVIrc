@@ -1418,6 +1418,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	QPixmap * pMemBuffer = db.pixmap();
 
 	QPainter p(pMemBuffer);
+	SET_ANTI_ALIASING(p);
 	p.setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY

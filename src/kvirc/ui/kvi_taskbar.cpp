@@ -817,6 +817,7 @@ void KviTreeTaskBarItem::paintBranches(QPainter *p,const QColorGroup &,int w,int
 void KviTreeTaskBarItem::paintBranches(QPainter *p,const QColorGroup &,int w,int y,int h,GUIStyle s)
 #endif
 {
+	SET_ANTI_ALIASING(*p);
 	((KviTreeTaskBarListView *)listView())->paintEmptyArea(p,QRect(0,y,w,totalHeight() - height()));
 }
 
@@ -825,6 +826,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 	KviDoubleBuffer db(width,height());
 	QPixmap * pMemBuffer = db.pixmap();
 	QPainter p(pMemBuffer);
+	SET_ANTI_ALIASING(p);
 	
 	if(isSelected())
 	{
@@ -1116,6 +1118,7 @@ void KviTreeTaskBarListView::resizeEvent(QResizeEvent *e)
 
 void KviTreeTaskBarListView::paintEmptyArea(QPainter * p,const QRect &rct)
 {
+	SET_ANTI_ALIASING(*p);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{

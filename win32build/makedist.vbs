@@ -78,6 +78,7 @@ fso.CopyFile PROJECTDIR + "/data/deftheme/silverirc/*.kvc", PACKAGEDIR + "/theme
 fso.CopyFile PROJECTDIR + "/data/deftheme/silverirc/*.png", PACKAGEDIR + "/themes/silverirc/", true
 
 fso.CopyFile PROJECTDIR + "/data/config/*.kvc", PACKAGEDIR + "/config/", True
+fso.CopyFile PROJECTDIR + "/data/config/*.css", PACKAGEDIR + "/config/", True
 fso.CopyFile PROJECTDIR + "/data/config/preinstalled.kvc.win32-example", PACKAGEDIR + "/config/preinstalled.kvc.win32-example", true
 fso.CopyFile PROJECTDIR + "/src/modules/notifier/libkvinotifier.kvc", PACKAGEDIR + "/config/modules/", true
 

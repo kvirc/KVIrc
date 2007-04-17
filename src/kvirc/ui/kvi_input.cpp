@@ -330,6 +330,7 @@ QSize KviInputEditor::sizeHint() const
 void KviInputEditor::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
+	SET_ANTI_ALIASING(p);
 	drawFrame(&p);
 	drawContents(&p);
 }

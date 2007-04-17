@@ -1183,13 +1183,10 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 	static QString html_spaceparopen(" (");
 	static QString html_spaceparclosed(")");
 
-
 	buffer = "<table width=\"100%\">" \
-						"<tr><td bgcolor=\"#303030\">" \
-							"<font color=\"#FFFFFF\"><b>";
+						START_TABLE_BOLD_ROW;
 	buffer += m_szStatusString;
-	buffer += "</b></font></td></tr>";
-
+	buffer += END_TABLE_BOLD_ROW;
 	if((context()->state() == KviIrcContext::Connected) && connection())
 	{
 		QString num;
@@ -1233,7 +1230,7 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 		QDateTime dt;
 		dt.setTime_t(connection()->statistics()->connectionStartTime());
 
-		buffer += "<tr><td bgcolor=\"#F0F0F0\">";
+		buffer += START_TABLE_NORMAL_ROW;
 
 		buffer += __tr2qs("Connected since");
 		buffer += html_space;

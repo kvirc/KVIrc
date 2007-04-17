@@ -312,7 +312,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
 #define KviOption_boolScaleAvatarsOnLoad 219
 #define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
-#define KVI_NUM_BOOL_OPTIONS 221
+#define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
+
+
+#define KVI_NUM_BOOL_OPTIONS 222
 
 
 
@@ -646,6 +649,25 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define _OUTPUT_QUIET (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_QUIET)
 #define _OUTPUT_MUTE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_MUTE)
 
+#ifdef COMPILE_USE_QT4
+	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\">"
+	#define END_TABLE_BOLD_ROW "</td></tr>"
+
+	#define START_TABLE_NORMAL_ROW "<tr><td>"
+
+	#define SET_ANTI_ALIASING(p) \
+	(p).setRenderHint(QPainter::Antialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing)); \
+	(p).setRenderHint(QPainter::TextAntialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing));
+#else
+	#define START_TABLE_BOLD_ROW "<tr><td bgcolor=\"#303030\">" \
+							"<font color=\"#FFFFFF\"><b>"
+	#define END_TABLE_BOLD_ROW "</b></font></td></tr>"
+
+	#define START_TABLE_NORMAL_ROW "<tr><td bgcolor=\"#F0F0F0\">"
+
+	#define SET_ANTI_ALIASING(p)
+#endif
+
 
 #if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
 
@@ -706,9 +728,6 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	
 	//for file pathes
 	#define KviOption_encodePath (1 << 25)
-
-
-
 
 #endif
 

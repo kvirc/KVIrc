@@ -469,6 +469,19 @@ void KviApp::setup()
 
 	KviDoubleBuffer::init();
 
+#ifdef COMPILE_USE_QT4
+	QString szStylesheetFile;
+	getGlobalKvircDirectory(szStylesheetFile,Config,"style.css");
+	if(KviFileUtils::fileExists(szStylesheetFile))
+	{
+		QString szStyleData;
+		KviFileUtils::readFile(szStylesheetFile,szStyleData);
+		szStyleData.replace("global://",m_szGlobalKvircDir);
+		szStyleData.replace("local://",m_szLocalKvircDir);
+		setStyleSheet(szStyleData);
+	}
+#endif
+
 	// create the frame window, we're almost up and running...
 	createFrame();
 
