@@ -46,6 +46,11 @@ private:
 	QTimer         * m_pTimer;
 	QTime            m_creationTime;
 	QPixmap        * m_pOverlay;
+#ifdef COMPILE_USE_QT4
+	bool             m_bIncreasing;
+	qreal            m_rTransparency;
+	QTimer         * m_pFadeTimer;
+#endif
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void hideEvent(QHideEvent * e);
@@ -55,6 +60,7 @@ public:
 	//void message(QString);
 protected slots:
 	void suicide();
+	void fadeTimerShot();
 };
 
 extern KVIRC_API KviSplashScreen * g_pSplashScreen;

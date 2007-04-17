@@ -9,3 +9,9 @@ QToolTip {
     border-radius: 3px;
     opacity: 200;
 }
+
+/* Make text in message boxes selectable. */
+QMessageBox {
+    /* LinksAccessibleByMouse | TextSelectableByMouse */
+    messagebox-text-interaction-flags: 5;
+}

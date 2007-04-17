@@ -33,8 +33,8 @@ class KVILIB_API KviTalHBox : public Q3HBox
 {
 	Q_OBJECT
 public:
-	KviTalHBox(QWidget * pParent)
-	: Q3HBox(pParent) {};
+	KviTalHBox(QWidget * pParent,char* name=0)
+	: Q3HBox(pParent,name) {};
 	virtual ~KviTalHBox() {};
 };
 

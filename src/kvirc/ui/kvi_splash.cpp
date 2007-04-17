@@ -106,6 +106,15 @@ KviSplashScreen::KviSplashScreen()
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(suicide()));
 	delete pix;
+
+#ifdef COMPILE_USE_QT4
+	setWindowOpacity(0);
+	m_bIncreasing=true;
+	m_rTransparency=0;
+	m_pFadeTimer= new QTimer(this);
+	connect(m_pFadeTimer,SIGNAL(timeout()),this,SLOT(fadeTimerShot()));
+	m_pFadeTimer->start(6);
+#endif
 }
 
 // We don't need messages on the splash: they just add work to the translators and nobody can read them anyway :D
@@ -155,15 +164,20 @@ void KviSplashScreen::setProgress(int progress)
 	g_pApp->processEvents(); //damn...
 }
 
-#define KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS 4000
+#define KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS 2000
 
 void KviSplashScreen::die()
 {
+#ifdef COMPILE_USE_QT4
+	m_bIncreasing = false;
+	m_pFadeTimer->start(6);
+#else
 	QTime now = QTime::currentTime();
 	int mSecs = m_creationTime.msecsTo(now);
 	int mRemaining = KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS - mSecs;
 	if(mRemaining < 0)mRemaining = 0;
 	m_pTimer->start(mRemaining,true);
+#endif
 }
 
 
@@ -174,6 +188,34 @@ void KviSplashScreen::suicide()
 	g_pSplashScreen = 0;
 	deleteLater();
 	//delete this;
+}
+
+
+void KviSplashScreen::fadeTimerShot()
+{
+#ifdef COMPILE_USE_QT4
+	if(m_bIncreasing)
+	{
+		m_rTransparency+=0.05;
+		setWindowOpacity(m_rTransparency);
+		if(m_rTransparency>=1)
+		{
+			m_pFadeTimer->stop();
+			m_bIncreasing=false;
+		}
+
+
+	} else {
+		m_rTransparency-=0.02;
+		setWindowOpacity(m_rTransparency);
+		if(m_rTransparency<=0)
+		{
+			m_pFadeTimer->stop();
+			m_bIncreasing=true;
+			suicide();
+		}
+	}
+#endif
 }
 
 

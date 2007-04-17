@@ -215,11 +215,13 @@ protected:
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);
 	virtual void windowActivationChange(bool bOldActive);
-	
+
 	void updatePseudoTransparency();
 
 	KviAccel * installAccelerators(QWidget * wnd);
 	
+	virtual void hideEvent ( QHideEvent * e);
+protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();
 	void switchToNextWindowInContext();
@@ -227,9 +229,7 @@ protected:
 	
 	void maximizeWindow();
 	void minimizeWindow();
-	
-	virtual void hideEvent ( QHideEvent * e);
-protected slots:
+
 	void accelActivated(int id);
 	void enteredSdiMode();
 	void leftSdiMode();

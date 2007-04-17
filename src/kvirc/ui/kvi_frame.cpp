@@ -84,6 +84,7 @@
 #ifdef COMPILE_USE_QT4
 	#include <qdesktopwidget.h>
 	#include <qevent.h>
+	#include <QShortcut>
 #else
 	#include <qaccel.h>
 #endif
@@ -339,7 +340,17 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 
 KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 {
-	KviAccel *ac = new KviAccel(wnd ? (QWidget *)wnd : (QWidget *)this);
+	QWidget * pParent = wnd ? (QWidget *)wnd : (QWidget *)this;
+#ifdef COMPILE_USE_QT4
+	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT),pParent,SLOT(switchToPrevWindow()));
+	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT),pParent,SLOT(switchToNextWindow()));
+	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL),pParent,SLOT(maximizeWindow()));
+	new QShortcut(QKeySequence(Qt::Key_Down + Qt::CTRL),pParent,SLOT(minimizeWindow()));
+	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL),pParent,SLOT(minimizeWindow()));
+	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToPrevWindowInContext()));
+	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToNextWindowInContext()));
+#endif
+	KviAccel *ac = new KviAccel(pParent);
 
 	static int accel_table[] = {
 		Qt::Key_Left + Qt::ALT ,    // prev window
@@ -405,6 +416,7 @@ void KviFrame::accelActivated(int id)
 
 	int keys = (int)(acc->key(id));
 	KviTaskBarItem *item = 0;
+	debug("accel");
 	switch(keys)
 	{
 		case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
