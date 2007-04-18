@@ -104,8 +104,8 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void drawContents(QPainter * p,int x,int y,int w,int h);
 	virtual bool focusNextPrevChild(bool pNext);
-	virtual void showEvent(QShowEvent *e);
 public slots:
+	void relayoutMenuButtons();
 	void cascadeWindows();
 	void cascadeMaximized();
 	void expandVertical();

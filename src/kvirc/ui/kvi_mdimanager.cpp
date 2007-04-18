@@ -601,24 +601,20 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 
 	updateSDIMode();
 }
-
-void KviMdiManager::showEvent(QShowEvent *e)
+void KviMdiManager::relayoutMenuButtons()
 {
-#ifdef COMPILE_USE_QT4
+	debug("mdi show");
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
 	if(m_pSdiControls)
 	{
-		debug("SHOW EVENT BEGIN");
 		m_pFrm->mainMenuBar()->setCornerWidget(0,Qt::TopRightCorner);
 		m_pFrm->mainMenuBar()->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
-		debug("SHOW EVENT END");
 	}
 	// also force an activation of the top MdiChild since it probably didn't get it yet
 	KviMdiChild * c = topChild();
 	if(c)
 		c->activate(false);
-#endif
 }
 
 

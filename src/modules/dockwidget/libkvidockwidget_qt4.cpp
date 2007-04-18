@@ -24,6 +24,12 @@
 
 #ifdef COMPILE_USE_QT4
 
+#ifdef COMPILE_ON_WINDOWS
+	#define ICON_SIZE 16
+#else
+	#define ICON_SIZE 22
+#endif
+
 #include "kvi_app.h"
 #include "kvi_module.h"
 #include "kvi_locale.h"
@@ -66,7 +72,7 @@ static QPixmap * g_pDock2 = 0;
 static QPixmap * g_pDock3 = 0;
 
 KviDockWidget::KviDockWidget(KviFrame * frm)
-: QSystemTrayIcon(frm), m_CurrentPixmap(22,22)
+: QSystemTrayIcon(frm), m_CurrentPixmap(ICON_SIZE,ICON_SIZE)
 {
 	m_pContextPopup = new KviTalPopupMenu(0);
 	setContextMenu(m_pContextPopup);
@@ -308,7 +314,7 @@ void KviDockWidget::toggleParentFrame()
 		top_widget->show();
 		top_widget->raise();
 		top_widget->setActiveWindow();
-		m_pFrm->setFocus();
+		if(g_pActiveWindow) g_pActiveWindow->setFocus(); 
 		if(m_pFrm->isMinimized())
 			m_pFrm->showNormal();
 		else
@@ -335,12 +341,12 @@ void KviDockWidget::refresh()
 
 	if(m_bFlashed)
 	{
-		thisRestrictionOfQt4IsNotNice.drawPixmap(4,4,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
+		thisRestrictionOfQt4IsNotNice.drawPixmap((ICON_SIZE-16)/2,(ICON_SIZE-16)/2,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
 	} else {
-		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,11,11,m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,0,11,11);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(0,11,11,11,m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,11,11,11);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(11,0,11,11,m_iQueries ? ((m_iQueries == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,11,0,11,11);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(11,11,11,11,m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,11,11,11,11);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,ICON_SIZE/2,ICON_SIZE/2,m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,0,ICON_SIZE/2,ICON_SIZE/2);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2,m_iQueries ? ((m_iQueries == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
 	}
 	
 	updateIcon();
@@ -590,15 +596,25 @@ static bool dockwidget_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 static bool dockwidget_module_init(KviModule * m)
 {
 	QString buffer;
+#ifdef COMPILE_ON_WINDOWS
+	g_pApp->findImage(buffer,"kvi_dock_win32-0.png");
+#else
 	g_pApp->findImage(buffer,"kvi_dock_part-0.png");
-
+#endif
 	g_pDock1 = new QPixmap(buffer);
 
+#ifdef COMPILE_ON_WINDOWS
+	g_pApp->findImage(buffer,"kvi_dock_win32-1.png");
+#else
 	g_pApp->findImage(buffer,"kvi_dock_part-1.png");
+#endif
 	g_pDock2 = new QPixmap(buffer);
 
+#ifdef COMPILE_ON_WINDOWS
+	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
+#else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
-	g_pDock3 = new QPixmap(buffer);
+#endif	g_pDock3 = new QPixmap(buffer);
 
 
 	g_pDockWidgetList = new KviPtrList<KviDockWidget>;
