@@ -152,7 +152,15 @@
 		!fn: $setOpacity(<opacity_factor:real>) [QT4 ONLY] 
 		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
 		You must invoke the [classfnc]$begin[/classfnc] before using it.
-
+		!fn: $setTextAntialiasing(<boolean>) [QT4 ONLY] 
+		Enable/disable antialias in text if possible.
+		You must call the [classfnc]$begin[/classfnc] before using it.
+		!fn: $setAntialiasing(<boolean>) [QT4 ONLY] 
+		Enable/disable antialias in edges of primitives if possible.
+		You must call the [classfnc]$begin[/classfnc] before using it.
+		!fn: $setSmoothPixmapTransform(<boolean>) [QT4 ONLY] 
+		Enable/disable smooth bilinear pixmap transformation algorithm (such as bilinear).
+		You must call the [classfnc]$begin[/classfnc] before using it.
 		Example:[br]
 		[br]
 		class (hello,widget)[br] 
@@ -365,6 +373,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 
 #ifdef COMPILE_USE_QT4
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setOpacity",functionsetOpacity)
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setTextAntialiasing",functionsetTextAntialiasing)
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setAntialiasing",functionsetAntialiasing)
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setSmoothPixmapTransform",functionsetSmoothPixmapTransform)
 #endif
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"begin",functionbegin)
@@ -954,6 +965,39 @@ bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
 			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
 	KVSO_PARAMETERS_END(c)
 	m_pPainter->setOpacity(dOpacity);
+	return true;
+}
+bool KviKvsObject_painter::functionsetTextAntialiasing(KviKvsObjectFunctionCall *c)
+{
+	if(!m_pPainter)return true; 
+	
+	bool bEnabled;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETERS_END(c)
+	m_pPainter->setRenderHint(QPainter::TextAntialiasing,bEnabled);
+	return true;
+}
+bool KviKvsObject_painter::functionsetAntialiasing(KviKvsObjectFunctionCall *c)
+{
+	if(!m_pPainter)return true; 
+	
+	bool bEnabled;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETERS_END(c)
+	m_pPainter->setRenderHint(QPainter::Antialiasing,bEnabled);
+	return true;
+}
+bool KviKvsObject_painter::functionsetSmoothPixmapTransform(KviKvsObjectFunctionCall *c)
+{
+	if(!m_pPainter)return true; 
+	
+	bool bEnabled;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETERS_END(c)
+	m_pPainter->setRenderHint(QPainter::SmoothPixmapTransform,bEnabled);
 	return true;
 }
 #endif
