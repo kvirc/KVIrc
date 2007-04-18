@@ -296,6 +296,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setAttribute(Qt::WA_PaintOutsidePaintEvent);
 	setAttribute(Qt::WA_OpaquePaintEvent);
 	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
+	setFocusPolicy(Qt::WheelFocus);
+#else
+	setFocusPolicy(QWidget::WheelFocus);
 #endif
 
 	m_iFlushTimer = 0;
