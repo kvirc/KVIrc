@@ -650,8 +650,8 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define _OUTPUT_MUTE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_MUTE)
 
 #ifdef COMPILE_USE_QT4
-	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\">"
-	#define END_TABLE_BOLD_ROW "</td></tr>"
+	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\"><nobr>"
+	#define END_TABLE_BOLD_ROW "</nobr></td></tr>"
 
 	#define START_TABLE_NORMAL_ROW "<tr><td>"
 
@@ -660,8 +660,8 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	(p).setRenderHint(QPainter::TextAntialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing));
 #else
 	#define START_TABLE_BOLD_ROW "<tr><td bgcolor=\"#303030\">" \
-							"<font color=\"#FFFFFF\"><b>"
-	#define END_TABLE_BOLD_ROW "</b></font></td></tr>"
+							"<font color=\"#FFFFFF\"><nobr><b>"
+	#define END_TABLE_BOLD_ROW "</b></nobr></font></td></tr>"
 
 	#define START_TABLE_NORMAL_ROW "<tr><td bgcolor=\"#F0F0F0\">"
 

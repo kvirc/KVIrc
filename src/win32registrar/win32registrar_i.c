@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 6.00.0366 */
-/* at Mon Apr 16 22:05:31 2007
+/* at Wed Apr 18 20:50:22 2007
  */
 /* Compiler settings for .\win32registrar.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)

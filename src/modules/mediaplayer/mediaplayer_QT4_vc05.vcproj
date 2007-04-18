@@ -62,11 +62,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3supportD4.lib qtcoreD4.lib qtnetworkD4.lib qtguiD4.lib qtmainD.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib kvirc.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib qt3supportd4.lib qtcored4.lib qtnetworkd4.lib"
+				AdditionalDependencies="qt3support4.lib qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
+				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/mediaplayer.pdb"
 				SubSystem="2"
@@ -156,11 +157,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib kvirc.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib qt3support4.lib qtcore4.lib qtnetwork4.lib qtgui4.lib "
+				AdditionalDependencies="qtmain.lib kvilib.lib kvirc.lib qt3support4.lib qtcore4.lib qtgui4.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
+				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"

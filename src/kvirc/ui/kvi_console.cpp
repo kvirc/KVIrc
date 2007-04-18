@@ -134,6 +134,9 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pAddressEdit->setInsertionPolicy(QComboBox::NoInsertion);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);
+#ifdef COMPILE_USE_QT4
+	m_pButtonBox->setObjectName( QLatin1String( "kvi_window_button_box" ) );
+#endif
 	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
