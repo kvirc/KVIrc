@@ -61,7 +61,7 @@
 
 #include "notifierwindowbody.h"
 #include "notifierwindowborder.h"
-#include "notifierwindowprogressbar.h"
+//#include "notifierwindowprogressbar.h"
 #include "notifierwindowtabs.h"
 
 extern KviNotifierWindow * g_pNotifierWindow;

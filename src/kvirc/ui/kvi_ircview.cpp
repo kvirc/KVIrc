@@ -373,6 +373,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 #endif
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
+
 	m_pScrollBar->setFocusProxy(this);
 
 

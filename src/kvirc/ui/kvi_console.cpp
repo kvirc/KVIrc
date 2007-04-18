@@ -345,7 +345,7 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 #else
 		QMimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
 #endif
-		buffer += "<tr><td><center><img src=\"ulv_avatar\"></center></td></tr>";
+		buffer += QString("<tr><td><center><img src=\"ulv_avatar\" width=\"%1\"></center></td></tr>").arg(e->avatar()->pixmap()->width());
 	}
 
 	if(e->hasRealName())
