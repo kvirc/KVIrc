@@ -1,26 +1,9 @@
-// win32registrar.cpp : Implementation of WinMain
+#include <windows.h>
+#include <tchar.h>
+#include <shlwapi.h>
 
-
-#include "stdafx.h"
-#include "resource.h"
-#include "win32registrar.h"
-#include "dlldatax.h"
-
-
-class Cwin32registrarModule : public CAtlExeModuleT< Cwin32registrarModule >
-{
-public :
-	DECLARE_LIBID(LIBID_win32registrarLib)
-	DECLARE_REGISTRY_APPID_RESOURCEID(IDR_WIN32REGISTRAR, "{66EAD07D-9DCB-4B6A-A8D0-8FD3BCF7887E}")
-};
-
-Cwin32registrarModule _AtlModule;
-
-
-
-//
-extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, 
-                                LPTSTR /*lpCmdLine*/, int nShowCmd)
+int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
+                     LPSTR lpszCmdLine,int nCmdShow)
 {
 #define PATH_LEN 2048
 	DWORD dwSize;
@@ -204,6 +187,6 @@ extern "C" int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)szModuleName,wcslen(szModuleName)*2);
 	RegSetValueEx( hKey,_T("Path"),0,REG_SZ,(LPBYTE)szModulePath,wcslen(szModulePath)*2);
 
-    return _AtlModule.WinMain(nShowCmd);
+    return 0;
 }
 

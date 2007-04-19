@@ -305,7 +305,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\media
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32registrar", "src\win32registrar\win32registrar.vcproj", "{0267933F-26DB-4A5B-BA74-26DD40AFD318}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32registrar_winapi", "src\win32registrar\win32registrar_winapi.vcproj", "{5B9C2364-6814-4C7F-B064-FA663F21220D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -557,10 +557,10 @@ Global
 		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.Build.0 = Debug|Win32
 		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.ActiveCfg = Release|Win32
 		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.Build.0 = Release|Win32
-		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Debug|Win32.Build.0 = Debug|Win32
-		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Release|Win32.ActiveCfg = Release|Win32
-		{0267933F-26DB-4A5B-BA74-26DD40AFD318}.Release|Win32.Build.0 = Release|Win32
+		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Debug|Win32.Build.0 = Debug|Win32
+		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Release|Win32.ActiveCfg = Release|Win32
+		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
