@@ -603,6 +603,7 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 }
 void KviMdiManager::relayoutMenuButtons()
 {
+#ifdef COMPILE_USE_QT4
 	debug("mdi show");
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
@@ -615,6 +616,7 @@ void KviMdiManager::relayoutMenuButtons()
 	KviMdiChild * c = topChild();
 	if(c)
 		c->activate(false);
+#endif
 }
 
 
