@@ -132,7 +132,7 @@ void KviDockWidget::die()
 void KviDockWidget::flashingTimerShot()
 {
 	m_bFlashed=!m_bFlashed;
-	updateIcon();
+	refresh();
 }
 
 #define NIDLEMSGS 18
@@ -326,10 +326,10 @@ void KviDockWidget::refresh()
 {
 	grabActivityInfo();
 
-
 	if( (m_iChannels == 2) || (m_iQueries == 2) ) 
 	{
-		if(!m_pFlashingTimer->isActive() && KVI_OPTION_BOOL(KviOption_boolEnableTrayIconFlashing) ) m_pFlashingTimer->start(1000);
+		if(!m_pFlashingTimer->isActive() && KVI_OPTION_BOOL(KviOption_boolEnableTrayIconFlashing) )
+			m_pFlashingTimer->start(1000);
 	} else {
 		if(m_pFlashingTimer->isActive()) m_pFlashingTimer->stop();
 		m_bFlashed=false;
@@ -343,12 +343,29 @@ void KviDockWidget::refresh()
 	{
 		thisRestrictionOfQt4IsNotNice.drawPixmap((ICON_SIZE-16)/2,(ICON_SIZE-16)/2,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
 	} else {
-		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,ICON_SIZE/2,ICON_SIZE/2,m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,0,ICON_SIZE/2,ICON_SIZE/2);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2,m_iQueries ? ((m_iQueries == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2);
-		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) : *g_pDock1,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,ICON_SIZE/2,ICON_SIZE/2,
+			m_iOther ? 
+				((m_iOther == 2) ? *g_pDock3 : *g_pDock2)
+				: *g_pDock1,0,0,ICON_SIZE/2,ICON_SIZE/2);
+
+		thisRestrictionOfQt4IsNotNice.drawPixmap(0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,
+			m_iConsoles ?
+				((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) 
+				: *g_pDock1,0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
+
+		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2,
+			m_iQueries ?
+			((m_iQueries == 2) 
+			? *g_pDock3 : *g_pDock2) 
+			: *g_pDock1,ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2);
+
+		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,
+			m_iChannels ?
+			((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) 
+			: *g_pDock1
+			,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
+
 	}
-	
 	updateIcon();
 }
 
@@ -614,7 +631,9 @@ static bool dockwidget_module_init(KviModule * m)
 	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
-#endif	g_pDock3 = new QPixmap(buffer);
+#endif	
+	
+	g_pDock3 = new QPixmap(buffer);
 
 
 	g_pDockWidgetList = new KviPtrList<KviDockWidget>;

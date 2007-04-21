@@ -660,8 +660,6 @@ void KviApp::notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,u
 	KviModule * m = g_pModuleManager->getModule("notifier");
 	if(!m)return;
 
-	debug("notifier call");
-
 	NotifierMessageSupaDupaParameterStruct s;
 	s.pWindow = pWnd;
 	s.szIcon.sprintf("%d",iIconId);

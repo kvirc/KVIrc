@@ -473,13 +473,13 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 		if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
 		{
 
-			debug ("just hide quickly with notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
+			//debug ("just hide quickly with notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 			// the user asked to not animate or
 			// the window has been moved and the animation would suck anyway
 			// just hide quickly
 			hideNow();
 		} else {
-			debug ("starting hide animation notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
+			//debug ("starting hide animation notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 			m_pShowHideTimer = new QTimer();
 			connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 			m_dOpacity = 1.0 - OPACITY_STEP;

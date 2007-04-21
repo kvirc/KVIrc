@@ -134,7 +134,7 @@ KviModule * KviModuleManager::getModule(const char * modName)
 	KviModule * m = m_pModuleDict->find(modName);
 	if(!m)
 	{
-		loadModule(modName);
+		if(!loadModule(modName)) return 0;
 		m = m_pModuleDict->find(modName);
 	}
 	if(m)m->updateAccessTime();
@@ -175,7 +175,8 @@ bool KviModuleManager::loadModule(const char * modName)
 	{
 		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Plugins,szName);
 	}
-
+	
+	if(!KviFileUtils::fileExists(tmp)) return false;
 	kvi_library_t handle = kvi_library_open(tmp.local8Bit().data());
 	if(!handle)
 	{

@@ -2862,7 +2862,7 @@ KviStr & KviStr::stripRightWhiteSpace()
 	{
 		register char *right=m_ptr+m_len-1;
 		const char *start=right;
-		while((right >= m_ptr) && isspace(*right))right--;
+		while((right >= m_ptr) && isspace( *right ))right--;
 		if(right != start)
 		{
 			m_len = (right - m_ptr) + 1;
