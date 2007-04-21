@@ -46,6 +46,42 @@
 		Small plugins which can be called in scripts
 	@body:
 		TODO
+		[b]Exported functions by dll[/b][br]
+		[br]_free function (needed)[br]
+		[example]
+		int _free(void * p)[br]
+		{[br]
+			// Always free the memory here![br]
+			free(p);[br]
+			return 0;[br]
+		}[br]
+		[/example]
+		
+		[br]_load function (optional)[br]
+		[example]
+		int _load()[br]
+		{[br]
+			return 0;[br]
+		}[br]
+		[/example]		
+		
+		[br]_unload function (optional)[br]
+		[example]
+		int _unload()[br]
+		{[br]
+			return 0;[br]
+		}[br]
+		[/example]	
+		
+		[br]user function[br]
+		[example]	
+		int about(int argc, char * argv[], char ** pBuffer)[br]
+		{[br]
+		    *pBuffer = (char*)malloc(1024);[br]
+		    sprintf((char*)*pBuffer, "Hello World"); [br]
+		    return 1;[br]
+		}[br]
+		[/example]
 */
 
 KviPlugin::KviPlugin(kvi_library_t pLib, const QString& name)
@@ -77,6 +113,20 @@ KviPlugin* KviPlugin::load(const QString& szFileName)
 		function_load();
 	}
 	return pPlugin;
+}
+
+bool KviPlugin::pfree(char * pBuffer)
+{
+	plugin_free function_free;
+	
+	function_free = (plugin_free)kvi_library_symbol(m_Plugin,"_free");
+	if (function_free)
+	{
+		//TODO: THREAD
+		function_free(pBuffer);
+		return true;
+	}
+	return false;
 }
 
 bool KviPlugin::unload(bool forced)
@@ -238,7 +288,10 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	//Clean up
 	free(pArgvBuffer);
 	free(ppArgv);
-	free(returnBuffer);
+	if (!plugin->pfree(returnBuffer))
+	{
+		c->warning(__tr2qs("The plugin has no function to free memory. Can result in Memory Leaks!"));
+	}
 	return true;
 }
 
