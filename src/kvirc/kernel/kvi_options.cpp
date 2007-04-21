@@ -1340,6 +1340,8 @@ bool KviApp::setOptionValue(const char * optName,const QString &value)
 	SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,KVI_FONT_OPTIONS_PREFIX,KVI_FONT_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,KVI_MSGTYPE_OPTIONS_PREFIX,KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
 
+	if(kvi_strEqualCI(optName,"stringlistRecentChannels"))
+		buildRecentChannels();
 	// The pixmap options have special treating
 	if(kvi_strEqualCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
 	{
