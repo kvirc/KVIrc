@@ -123,7 +123,7 @@ bool KviPlugin::pfree(char * pBuffer)
 	if (function_free)
 	{
 		//TODO: THREAD
-		function_free(pBuffer);
+		if(pBuffer) function_free(pBuffer);
 		return true;
 	}
 	return false;
