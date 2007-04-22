@@ -45,10 +45,14 @@ protected:
 	
 };
 
+#ifdef COMPILE_USE_QT4
+	#define TOOL_PAGE_PARENT QPushButton
+#else
+	#define TOOL_PAGE_PARENT KviStyledToolButton
+#endif
 
 
-
-class KVIRC_API KviWindowToolPageButton : public KviStyledToolButton
+class KVIRC_API KviWindowToolPageButton : public TOOL_PAGE_PARENT
 {
 	Q_OBJECT
 public:

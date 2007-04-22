@@ -64,17 +64,13 @@
 #include <qevent.h>
 
 // it looks they can't decide :D
-#ifndef COMPILE_USE_QT4
-#if QT_VERSION >= 0x030005
-        #include <qobjectlist.h>
+#ifdef COMPILE_USE_QT4
+	#include <QPushButton>
+	#include <qdesktopwidget.h>
 #else
-        #include <qobjcoll.h>
-#endif
+        #include <qobjectlist.h>
 #endif
 
-#ifdef COMPILE_USE_QT4
-	#include <qdesktopwidget.h>
-#endif
 
 #include <qvariant.h>
 #include <qtoolbutton.h>
@@ -432,25 +428,23 @@ void KviWindow::destroyTaskBarItem()
 	//	m_pTaskBarItem = 0; // actually the taskBarItem destructor sets it
 }
 
-QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
+BUTTON_CLASS * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
 {
-	QToolButton * b = new KviStyledToolButton(par,nam);
 #ifdef COMPILE_USE_QT4
-	b->setAutoRaise(true);
-#endif
+	BUTTON_CLASS * b = new BUTTON_CLASS(par);
+	b->setObjectName(nam);
+	b->setFlat(true);
+	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
+#else
+	BUTTON_CLASS * b = new BUTTON_CLASS(par,nam);
 	b->setToggleButton(true);
 	b->setUsesBigPixmap(false);
-#if QT_VERSION >= 300
-
 	QIconSet is1;
 	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixon)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixoff)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	b->setIconSet(is1);
-#else
-
-	b->setOnIconSet(*(g_pIconManager->getSmallIcon(pixon)));
-	b->setOffIconSet(*(g_pIconManager->getSmallIcon(pixoff)));
 #endif
+
 
 	KviTalToolTip::add
 		(b,tooltip);

@@ -124,7 +124,12 @@ class KviTalWidgetStack;
 #define KVI_ACTIVITY_VERYHOT 5
 #define KVI_ACTIVITY_FIRE 6
 
-
+#ifdef COMPILE_USE_QT4
+    class QPushButton;
+	#define BUTTON_CLASS QPushButton
+#else
+	#define BUTTON_CLASS QToolButton
+#endif
 
 
 class KVIRC_API KviWindow : public QWidget
@@ -164,7 +169,7 @@ protected: // almost private: don't touch :D
 	KviCryptController                  * m_pCryptController;
 	KviCryptSessionInfo                 * m_pCryptSessionInfo;
 #endif
-	QToolButton                         * m_pTextEncodingButton;
+	BUTTON_CLASS                        * m_pTextEncodingButton;
 	QToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
 	KviAccel                            * m_pAccel;
@@ -366,7 +371,7 @@ protected:
 	void createTextEncodingButton(QWidget * par);
 	void createSystemTextEncodingPopup();
 
-	QToolButton * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
+	BUTTON_CLASS * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * widgetAdded);
 	

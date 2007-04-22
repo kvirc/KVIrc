@@ -180,8 +180,10 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 #endif
 
 	m_pHideToolsButton = new KviStyledToolButton(m_pButtonBox,"hide_container_button");
-	
+
+#ifndef  COMPILE_USE_QT4
 	m_pHideToolsButton->setUsesBigPixmap(false);
+#endif
 	m_pHideToolsButton->setFixedWidth(10);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
@@ -209,15 +211,6 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_joinTime = QDateTime::currentDateTime();
 	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toTime_t();
 	
-#ifdef COMPILE_USE_QT4
-	m_pHideToolsButton->setAutoRaise(true);
-	m_pDoubleViewButton->setAutoRaise(true);
-	m_pListViewButton->setAutoRaise(true);
-	if(m_pBanEditorButton) m_pBanEditorButton->setAutoRaise(true);
-	if(m_pBanExceptionEditorButton) m_pBanExceptionEditorButton->setAutoRaise(true);
-	if(m_pInviteEditorButton) m_pInviteEditorButton->setAutoRaise(true);
-	m_pModeEditorButton->setAutoRaise(true);
-#endif
 
 }
 

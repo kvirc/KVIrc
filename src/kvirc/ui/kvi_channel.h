@@ -115,7 +115,7 @@ public:
 protected:
 	QSplitter                           * m_pTopSplitter;
 	QSplitter                           * m_pVertSplitter;
-	QToolButton                         * m_pDoubleViewButton;
+	BUTTON_CLASS                        * m_pDoubleViewButton;
 	KviWindowToolPageButton             * m_pListViewButton;
 	KviWindowToolPageButton             * m_pBanEditorButton;
 	KviWindowToolPageButton             * m_pBanExceptionEditorButton;

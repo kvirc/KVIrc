@@ -193,6 +193,7 @@ KviPluginManager::~KviPluginManager()
 
 bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 {
+	//   /echo $system.call("traffic.dll",about)
 	QString szPluginPath; //contains full path and plugin name like "c:/plugin.dll"
 	QString szFunctionName;
 	
@@ -225,8 +226,6 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	{
 		iArgc = c->parameterCount() - 2;
 	}
-
-
 		
 	if (iArgc > 0)
 	{	
@@ -264,12 +263,12 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	} else {
 		//Avoid using unfilled variables
 		ppArgv = 0;
+		pArgvBuffer = 0;
 		iArgc = 0;
 	}
 	
 	//Preparing return buffer
 	char * returnBuffer;
-	
 	KviPlugin * plugin;
 	
 	plugin = getPlugin(szPluginPath);
@@ -282,16 +281,23 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	}
 	if (r > 0)
 	{
-		c->returnValue()->setString(returnBuffer);
+		c->returnValue()->setString(QString::fromLocal8Bit(returnBuffer));
 	}
+
 	
 	//Clean up
-	free(pArgvBuffer);
-	free(ppArgv);
-	if (!plugin->pfree(returnBuffer))
+	if(pArgvBuffer) free(pArgvBuffer);
+	if(ppArgv) free(ppArgv);
+	if(returnBuffer)
 	{
-		c->warning(__tr2qs("The plugin has no function to free memory. Can result in Memory Leaks!"));
+		if (!plugin->pfree(returnBuffer))
+		{
+			c->warning(__tr2qs("The plugin has no function to free memory. Can result in Memory Leaks!"));
+		}
 	}
+
+	
+
 	return true;
 }
 
@@ -331,7 +337,8 @@ void KviPluginManager::unloadAll(bool forced)
 
 bool KviPluginManager::findPlugin(QString& szPath)
 {
-	QString szFileName=KviFileUtils::extractFileName(szPath);
+	QString szFileName(KviFileUtils::extractFileName(szPath));
+//	szFileName.detach();
 	if(KviFileUtils::isAbsolutePath(szPath) && KviFileUtils::fileExists(szPath))
 	{
 		// Ok, 

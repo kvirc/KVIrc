@@ -78,16 +78,22 @@ void KviWindowToolWidget::unregisterSelf()
 }*/
 
 KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const QString & text, QWidget * parent,bool bOn, const char * name )
-:KviStyledToolButton(parent,name)
+:TOOL_PAGE_PARENT(parent)
 {
-	setOn(bOn);
+#ifdef COMPILE_USE_QT4
+	setFlat(true);
+	setObjectName("kvi_window_tool_button");
+	setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
+#else
 	QIconSet is1;
 	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixon)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixoff)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	setIconSet(is1);
-	setToggleButton(true);
 	setUsesBigPixmap(false);
-	setAutoRaise(true);
+#endif
+	setToggleButton(true);
+	setOn(bOn);
+
 //	setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Ignored));
 }
 
