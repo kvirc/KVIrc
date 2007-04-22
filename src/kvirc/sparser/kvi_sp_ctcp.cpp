@@ -851,14 +851,18 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
 				QString szData = msg->msg->connection()->decodeText(msg->pData);
-				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpRequest, \
-					msg->msg->console(), \
-					msg->pSource->nick(), \
-					msg->pSource->user(), \
-					msg->pSource->host(), \
-					msg->szTarget, \
-					msg->szTag, \
-					szData))return;
+				//do not allow to make faked version reply
+				if(!(KviQString::equalCI(msg->szTag,"VERSION") && KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpVersion)))
+				{
+					if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpRequest, \
+						msg->msg->console(), \
+						msg->pSource->nick(), \
+						msg->pSource->user(), \
+						msg->pSource->host(), \
+						msg->szTarget, \
+						msg->szTag, \
+						szData))return;
+				}
 			}
 			(this->*(m_ctcpRequestParseProcTable[i].proc))(msg);
 			return;
