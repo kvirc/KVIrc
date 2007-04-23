@@ -47,16 +47,6 @@
 	@body:
 		TODO
 		[b]Exported functions by dll[/b][br]
-		[br]_free function (needed)[br]
-		[example]
-		int _free(void * p)[br]
-		{[br]
-			// Always free the memory here![br]
-			free(p);[br]
-			return 0;[br]
-		}[br]
-		[/example]
-		
 		[br]_load function (optional)[br]
 		[example]
 		int _load()[br]
@@ -113,20 +103,6 @@ KviPlugin* KviPlugin::load(const QString& szFileName)
 		function_load();
 	}
 	return pPlugin;
-}
-
-bool KviPlugin::pfree(char * pBuffer)
-{
-	plugin_free function_free;
-	
-	function_free = (plugin_free)kvi_library_symbol(m_Plugin,"_free");
-	if (function_free)
-	{
-		//TODO: THREAD
-		if(pBuffer) function_free(pBuffer);
-		return true;
-	}
-	return false;
 }
 
 bool KviPlugin::unload(bool forced)
@@ -288,16 +264,7 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	//Clean up
 	if(pArgvBuffer) free(pArgvBuffer);
 	if(ppArgv) free(ppArgv);
-	if(returnBuffer)
-	{
-		if (!plugin->pfree(returnBuffer))
-		{
-			c->warning(__tr2qs("The plugin has no function to free memory. Can result in Memory Leaks!"));
-		}
-	}
-
-	
-
+	if(returnBuffer) free(returnBuffer);
 	return true;
 }
 

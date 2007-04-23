@@ -32,7 +32,6 @@
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
 typedef int (*plugin_unload)();
 typedef int (*plugin_load)();
-typedef int (*plugin_free)(char * pBuffer);
 
 class KviPlugin
 {
@@ -48,7 +47,6 @@ private:
 	QString m_szName;
 public:
 	static KviPlugin* load(const QString& szFileName);
-	bool pfree(char * pBuffer);
 	bool unload(bool forced);
 	int call(const QString& szFunctionName, int argc, char * argv[], char ** pBuffer);
 	QString name();
