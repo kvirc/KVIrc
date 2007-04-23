@@ -26,7 +26,7 @@
 #include "qtooltip.h"
 #include "object_macros.h"
 
-class KviKvsTip;
+
 class KviKvsObject_widget : public KviKvsObject
 {
 	Q_OBJECT
@@ -48,9 +48,7 @@ protected:
 	// so the name of the C++ function matches exactly the name of the KVS function at this point
 	
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
-#ifndef COMPILE_USE_QT4  
-	KviKvsTip *m_pTip;
-#endif
+
 	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
 	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
 	bool function_caption(KviKvsObjectFunctionCall *c);

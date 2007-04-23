@@ -297,48 +297,55 @@ const int widgettypes_cod[] = {
 		Normally you will receive this event only if a mouse button is being pressed
 		while moving. If you want to receive it also when the mouse buttons are not
 		pressed, call [classfnc]$setMouseTracking[/classfnc]().
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd]$true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $focusInEvent()
 		This function is called when this widget gains keyboard focus.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $focusOutEvent()
 		This function is called when this widget looses keyboard focus.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $mouseLeaveEvent()
 		This function is called when the mouse leaves this widget.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $mouseEnterEvent()
 		This function is called when the mouse enters this widget.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $showEvent()
 		This function is called when this widget is being shown.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $hideEvent()
 		This function is called when this widget is being hidden.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $closeEvent()
 		This function is called when this widget is going to be closed.
-		If you call "[cmd]setreturn[/cmd] 1" you will ignore the close event.
+		If you call "[cmd]return[/cmd] $true" you will ignore the close event.
 		The default implementation does nothing.
 		!fn: $resizeEvent()
 		This function is called immediately after this widget has been resized.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
 		!fn: $moveEvent()
 		This function is called immediately after this widget has been moved.
-		If you call "[cmd]setreturn[/cmd] 1" you will stop the internal processing
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
+		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)[QT4 only]
+		This event handler is called when a eventualy tip is going to be show.
+		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
+		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
+		The default implementation does nothing.		
 		!fn: $paintEvent()
 		This event handler can be reimplemented to repaint all or part of the widget.
 		It's needed by the Painter class.
 		It's very useful for drawing flicker free animations or low level special graphic effects.
+		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
+		of this event.
 		The default implementation does nothing.
 		!fn: $setIcon(<image_id>)
 		Sets the icon for this widget. This is meaningful only for toplevel widgets.
@@ -438,7 +445,6 @@ const int widgettypes_cod[] = {
 		Return the x coordinate of mouse pointer global position.
 		!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
-		See also [classfnc]$mayTipEvent[/classfnc].
 		@examples:
 		[example]
 			%Widget = $new(widget)
@@ -616,27 +622,19 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"moveEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"paintEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"keyPressEvent")
+#ifdef COMPILE_USE_QT4
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
+#endif
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
-#ifndef COMPILE_USE_QT4	
-m_pTip=0;
-#endif
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
 	emit aboutToDie();
-#ifndef COMPILE_USE_QT4
-	if (m_pTip)
-	{
-		delete m_pTip;
-		m_pTip=0;
-	}
-#endif
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
@@ -667,7 +665,7 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 				callFunction(this,"maybeTipEvent",tipret,&params);
 				tipret->asString(szTooltip);
 				QToolTip::showText(helpEvent->globalPos(),szTooltip);
-					break;
+				break;
 			}
 			#endif
 			case QEvent::Paint:
