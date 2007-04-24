@@ -100,6 +100,9 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	l->setText(szHeader);
 
 	m_pTextLabel = new QLabel(m_pVBox);
+#ifdef COMPILE_USE_QT4
+	m_pTextLabel->setWordWrap(true);
+#endif
 	m_pTextLabel->setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	m_pVBox->setStretchFactor(m_pTextLabel,1);
 }
@@ -233,7 +236,7 @@ KviSetupWizard::KviSetupWizard()
 	
 	QLabel* l = new QLabel(m_pDirButtonGroup);
 	l->setText(__tr2qs("Settings folder:"));
-	
+
 	m_pNewPathBox = new KviTalHBox(m_pDirButtonGroup);
 	m_pDataPathEdit = new QLineEdit(m_pNewPathBox);
 	

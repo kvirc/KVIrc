@@ -628,6 +628,9 @@ void KviOptionsWidget::addRowSpacer(int x1,int y1,int x2,int y2)
 QLabel * KviOptionsWidget::addLabel(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled)
 {
 	QLabel * l = new QLabel(text,this);
+#ifdef COMPILE_USE_QT4
+	l->setWordWrap(true);
+#endif
 	l->setEnabled(bEnabled);
 	addWidgetToLayout(l,x1,y1,x2,y2);
 	return l;
@@ -636,6 +639,9 @@ QLabel * KviOptionsWidget::addLabel(int x1,int y1,int x2,int y2,const QString & 
 QLabel * KviOptionsWidget::addLabel(QWidget * pParent,const QString & text,bool bEnabled)
 {
 	QLabel * l = new QLabel(text,pParent);
+#ifdef COMPILE_USE_QT4
+	l->setWordWrap(true);
+#endif
 	l->setEnabled(bEnabled);
 	return l;
 }
