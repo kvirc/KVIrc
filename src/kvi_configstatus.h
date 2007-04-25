@@ -2,19 +2,19 @@
 /* src/config.h.in.  Generated from configure.in by autoheader.  */
 
 /* define this to the number of average channel users */
-#define AVERAGE_CHANNEL_USERS 101
+#define AVERAGE_CHANNEL_USERS 349
 
 /* define this if you are on a big endian machine */
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE "Fri Mar 30 07:04:10 UTC 2007"
+#define BUILD_DATE "Mon Apr 16 19:55:25 UTC 2007"
 
 /* these are the build flags */
-#define BUILD_FLAGS "i686-cefgiopsAGTZ"
+#define BUILD_FLAGS "i686-bcefikoprsAGTZ"
 
 /* define if you want to enable the Arts daemon support */
-/* #undef COMPILE_ARTS_SUPPORT */
+#define COMPILE_ARTS_SUPPORT 1
 
 /* define if you want to enable the Audiofile library support */
 #define COMPILE_AUDIOFILE_SUPPORT 1
@@ -41,7 +41,7 @@
 #define COMPILE_IPV6_SUPPORT 1
 
 /* define if you want to compile the KDE 3.x support */
-/* #undef COMPILE_KDE_SUPPORT */
+#define COMPILE_KDE_SUPPORT 1
 
 /* define if you want the memory checks */
 /* #undef COMPILE_MEMORY_CHECKS */
@@ -69,7 +69,7 @@
 #define COMPILE_OSS_SUPPORT 1
 
 /* define if you have perl and want the perl scripting support in kvirc */
-/* #undef COMPILE_PERL_SUPPORT */
+#define COMPILE_PERL_SUPPORT 1
 
 /* define if you have the KDE support and want the pseudo transparency */
 #define COMPILE_PSEUDO_TRANSPARENCY 1
@@ -90,13 +90,13 @@
 #define COMPILE_USE_GSM 1
 
 /* define if you want to compile the Qt 4.x support */
-#define COMPILE_USE_QT4 1
+/* #undef COMPILE_USE_QT4 */
 
 /* define if you trust your memmove() function */
 #define COMPILE_WITH_SYSTEM_MEMMOVE 1
 
 /* define if you want to enable the ZLib library support */
-/* #undef COMPILE_XSS_SUPPORT */
+#define COMPILE_XSS_SUPPORT 1
 
 /* define if you want to enable the ZLib library support */
 #define COMPILE_ZLIB_SUPPORT 1
