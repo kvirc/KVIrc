@@ -135,12 +135,14 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 
 	// Central splitter
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName(name);
 	m_pSplitter->setOpaqueResize(false);
 	// Spitted vertially on the left
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setOpaqueResize(false);
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
+	m_pIrcView->setObjectName(name);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	// And the double view (that may be unused)
 	m_pMessageView = 0;
