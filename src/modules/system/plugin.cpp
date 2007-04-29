@@ -45,15 +45,11 @@
 	@short:
 		Small plugins which can be called in scripts
 	@body:
-		Where to put Easyplugins?
-		localdir + "easyplugins/"[br]
-		globaldir + "easyplugins/"[br][br]
-		How to call functions of easyplugins:[br]
-		See: $system.call()[br]
-		[br]
-		TODO
-		[b]exported functions by plugin[/b][br]
-		[br]_free function (needed)[br]
+		If you want to know how to call easyplugins please have a look at: $system.call()[br]
+		This part of the documentation handles only the way how to write an easyplugin. An easyplugin is simply a dll/so. You can create one like you normally make such so/dll files. The important thing is that these so/dll-files export some of the following functions.
+		[br][br]
+		[b]Exported functions by easyplugin (C/C++-Examples):[/b][br]
+		[br][b]_free function[/b] [i] (needed)[/i][br]
 		This function is important! Since KVIrc can not free directly the memory of the dll, the plugins need the _free function so that the memory can be freed by the plugin to prevent memory-leaks.[br]
 		[example]
 		int _free(void * p)[br]
@@ -64,7 +60,7 @@
 		}[br]
 		[/example]
 		
-		[br]_load function (optional)[br]
+		[br][b]_load function[/b] [i](optional)[/i][br]
 		After the plugin has be loaded, KVIrc will call the _load-function. Here you can prepare your plugin stuff.
 		[example]
 		int _load()[br]
@@ -73,7 +69,7 @@
 		}[br]
 		[/example]		
 		
-		[br]_unload function (optional)[br]
+		[br][b]_unload function[/b] [i]((optional)[/i][br]
 		This function will be called before the plugins is unloaded. In this function you can clean up memory or other things. 
 		After this call there is no guarantee that the plugin will be kept in memory.[br]
 		[example]
@@ -83,18 +79,18 @@
 		}[br]
 		[/example]	
 
-		[br]_canunload function (optional)[br]
+		[br][b]_canunload function[/b] [i](optional)[/i][br]
 		The _canunload-function will be called by KVIrc to check if it may unload the plugin. 
 		If return value is true KVIrc will unload the plugin, false means he will try unloading it at the next check.[br]
 		Important: KVIrc will ignore this if unload of plugins will be forced! So you have to be sure that the _unload function of your plugins cleans up![br]
 		[example]
-		int _canunload(void * p)[br]
+		int _canunload()[br]
 		{[br]
 			return 0; [br]
 		}[br]
 		[/example]
 		
-		[br]user function[br]
+		[br][b]user function[/b][br]
 		This is the general structure of a user function call.[br]
 		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer. Have a look at the example for more details.[br]
 		[example]	

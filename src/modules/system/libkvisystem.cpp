@@ -677,7 +677,7 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 		If you give an absolute path KVIrc will load it directly.
 		[br]
 		[br]
-		You are free to add more parameters, they will be all given to the easyplugin.[br]
+		You are free to add more parameters, they will be given to the easyplugin.[br]
 		The easyplugin decides how much parameters you need in addition to the first 2.
 		[br]
 		[br]
