@@ -45,9 +45,16 @@
 	@short:
 		Small plugins which can be called in scripts
 	@body:
+		Where to put Easyplugins?
+		localdir + "easyplugins/"[br]
+		globaldir + "easyplugins/"[br][br]
+		How to call functions of easyplugins:[br]
+		See: $system.call()[br]
+		[br]
 		TODO
-		[b]Exported functions by dll[/b][br]
+		[b]exported functions by plugin[/b][br]
 		[br]_free function (needed)[br]
+		This function is important! Since KVIrc can not free directly the memory of the dll, the plugins need the _free function so that the memory can be freed by the plugin to prevent memory-leaks.[br]
 		[example]
 		int _free(void * p)[br]
 		{[br]
@@ -58,6 +65,7 @@
 		[/example]
 		
 		[br]_load function (optional)[br]
+		After the plugin has be loaded, KVIrc will call the _load-function. Here you can prepare your plugin stuff.
 		[example]
 		int _load()[br]
 		{[br]
@@ -66,14 +74,29 @@
 		[/example]		
 		
 		[br]_unload function (optional)[br]
+		This function will be called before the plugins is unloaded. In this function you can clean up memory or other things. 
+		After this call there is no guarantee that the plugin will be kept in memory.[br]
 		[example]
 		int _unload()[br]
 		{[br]
 			return 0;[br]
 		}[br]
 		[/example]	
+
+		[br]_canunload function (optional)[br]
+		The _canunload-function will be called by KVIrc to check if it may unload the plugin. 
+		If return value is true KVIrc will unload the plugin, false means he will try unloading it at the next check.[br]
+		Important: KVIrc will ignore this if unload of plugins will be forced! So you have to be sure that the _unload function of your plugins cleans up![br]
+		[example]
+		int _canunload(void * p)[br]
+		{[br]
+			return 0; [br]
+		}[br]
+		[/example]
 		
 		[br]user function[br]
+		This is the general structure of a user function call.[br]
+		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer. Have a look at the example for more details.[br]
 		[example]	
 		int about(int argc, char * argv[], char ** pBuffer)[br]
 		{[br]
@@ -129,7 +152,7 @@ bool KviPlugin::pfree(char * pBuffer)
 	return false;
 }
 
-bool KviPlugin::unload(bool forced)
+bool KviPlugin::unload()
 {
 	plugin_unload function_unload;
 	
@@ -137,10 +160,7 @@ bool KviPlugin::unload(bool forced)
 	if (function_unload)
 	{
 		//TODO: THREAD
-		if(!function_unload()) 
-		{
-			if(!forced) return false;
-		}
+		function_unload();
 	}
 	
 	if(m_Plugin)
@@ -148,6 +168,22 @@ bool KviPlugin::unload(bool forced)
 		kvi_library_close(m_Plugin);
 	}
 	
+	return true;
+}
+
+bool KviPlugin::canunload()
+{
+	plugin_canunload function_canunload;
+
+	function_canunload = (plugin_canunload)kvi_library_symbol(m_Plugin,"_canunload");
+	if (function_canunload)
+	{
+		//TODO: THREAD
+		if(!function_canunload()) 
+		{
+			return false;
+		}
+	}
 	return true;
 }
 
@@ -292,7 +328,7 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	{
 		if (!plugin->pfree(returnBuffer))
 		{
-			c->warning(__tr2qs("The plugin has no function to free memory. Can result in Memory Leaks!"));
+			c->warning(__tr2qs("The plugin has no function to free memory. This can result in Memory Leaks!"));
 		}
 	}
 
@@ -313,10 +349,12 @@ bool KviPluginManager::checkUnload()
 	
 	while(it.current())
 	{
-		if(it.current()->unload(false))
+		if(it.current()->canunload())
 		{
+			it.current()->unload();
 			m_pPluginDict->remove(it.currentKey());
 		} else {
+			m_pPluginDict++;
 			m_bCanUnload = false;
 		}
 	}
@@ -324,14 +362,14 @@ bool KviPluginManager::checkUnload()
 	return m_bCanUnload;
 }
 
-void KviPluginManager::unloadAll(bool forced)
+void KviPluginManager::unloadAll()
 {
 	KviDictIterator<KviPlugin> it(*m_pPluginDict);
 	
 	while(it.current())
 	{
-		it.current()->unload(true);
-		m_pPluginDict->remove(it.currentKey());
+			it.current()->unload();
+			m_pPluginDict->remove(it.currentKey());
 	}
 }
 

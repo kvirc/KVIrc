@@ -724,7 +724,7 @@ static bool system_module_init(KviModule * m)
 
 static bool system_module_cleanup(KviModule *m)
 {
-	g_pPluginManager->unloadAll(true);
+	g_pPluginManager->unloadAll();
 	delete g_pPluginManager;
 	return true;
 }

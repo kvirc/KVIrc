@@ -31,6 +31,7 @@
 
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
 typedef int (*plugin_unload)();
+typedef int (*plugin_canunload)();
 typedef int (*plugin_load)();
 typedef int (*plugin_free)(char * pBuffer);
 
@@ -49,7 +50,8 @@ private:
 public:
 	static KviPlugin* load(const QString& szFileName);
 	bool pfree(char * pBuffer);
-	bool unload(bool forced);
+	bool unload();
+	bool canunload();
 	int call(const QString& szFunctionName, int argc, char * argv[], char ** pBuffer);
 	QString name();
 	void setName(const QString& szName);
@@ -69,7 +71,7 @@ class KviPluginManager
 	public:
 		bool pluginCall(KviKvsModuleFunctionCall *c);
 		bool checkUnload();
-		void unloadAll(bool forced);
+		void unloadAll();
 	protected:
 		bool findPlugin(QString& szName);
 		bool isPluginLoaded(const QString& szFileNameOrPathToLoad);
