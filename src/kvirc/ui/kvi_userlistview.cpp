@@ -153,7 +153,7 @@ void KviUserListEntry::recalcSize()
 {
 	KviAvatar * av = m_pGlobalData->avatar();
 	m_iHeight = m_pListView->m_iFontHeight;
-	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 22))m_iHeight = 22;
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))m_iHeight = 20;
 	
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))//G&N  2005
 	{
@@ -1421,6 +1421,10 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	SET_ANTI_ALIASING(p);
 	p.setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 
+#ifdef COMPILE_USE_QT4
+	QFontMetrics fm(p.fontMetrics());
+#endif
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -1680,10 +1684,18 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP)))) \
 												) \
 										);
-					p.drawPixmap(theX,theY,*ico);
+#ifdef COMPILE_USE_QT4
+					p.drawPixmap(theX,theY+(fm.lineSpacing()-16/*size of small icon*/)/2,*ico);
+#else
+					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-16/*size of small icon*/)/2,*ico);
+#endif
 				}
 				theX +=18;
-				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+#ifdef COMPILE_USE_QT4
+	p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+#else
+	p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+#endif
 			} else {
 
 				char flag = m_pListView->getUserFlag(e);
@@ -1691,9 +1703,17 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				{
 					QString ttt = QChar(flag);
 					ttt += e->m_szNick;
+#ifdef COMPILE_USE_QT4
+					p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,ttt);
+#else
 					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,ttt);
+#endif
 				} else {
+#ifdef COMPILE_USE_QT4
+					p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+#else
 					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+#endif
 				}
 			}
 			if(bColorAllocated) delete pClrFore;
@@ -1703,12 +1723,15 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		e = e->m_pNext;
 	}
 
-	p.setPen(colorGroup().dark());
-	p.drawLine(0,0,wdth,0);
-	p.drawLine(0,0,0,height());
-	p.setPen(colorGroup().light());
-	p.drawLine(1,height()-1,wdth,height()-1);
-	p.drawLine(wdth - 1,1,wdth - 1,height());
+	//we really do not need any self-draw borders. 
+	//if we will need it, we will draw a better one with system style
+
+	//p.setPen(colorGroup().dark());
+	//p.drawLine(0,0,wdth,0);
+	//p.drawLine(0,0,0,height());
+	//p.setPen(colorGroup().light());
+	//p.drawLine(1,height()-1,wdth,height()-1);
+	//p.drawLine(wdth - 1,1,wdth - 1,height());
 
 #ifdef COMPILE_USE_QT4
 	QPainter qt4SuxBecauseOfThisAdditionalPainter(this);

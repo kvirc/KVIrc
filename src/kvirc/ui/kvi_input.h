@@ -164,6 +164,7 @@ private:
 	void repaintWithCursorOn();
 	void selectOneChar(int pos);
 	int  charIndexFromXPosition(int xPos);
+	int  xPositionFromCharIndex(QFontMetrics& fm,int chIdx,bool bContentsCoords=FALSE);
 	int  xPositionFromCharIndex(int chIdx,bool bContentsCoords=FALSE);
 	void killDragTimer();
 	void handleDragSelection();

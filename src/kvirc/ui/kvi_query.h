@@ -52,7 +52,7 @@ protected:
 	KviWindowToolPageButton             * m_pListViewButton;
 	int                                   m_iFlags;
 	KviThemedLabel                      * m_pLabel;
-	KviTalGrid                          * m_pButtonGrid;
+	QFrame                              * m_pButtonGrid;
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();

@@ -193,6 +193,8 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 
 #ifndef  COMPILE_USE_QT4
 	m_pHideToolsButton->setUsesBigPixmap(false);
+#else
+	m_pHideToolsButton->setAutoRaise(true);
 #endif
 	m_pHideToolsButton->setFixedWidth(10);
 
@@ -543,11 +545,19 @@ QPixmap * KviChannel::myIconPtr()
 
 void KviChannel::resizeEvent(QResizeEvent *e)
 {
+#ifdef COMPILE_USE_QT4
+	int hght = m_pInput->heightHint();
+	int hght2 = m_pTopicWidget->sizeHint().height();
+	m_pButtonBox->setGeometry(0,0,width(),hght2);
+	m_pSplitter->setGeometry(0,hght2,width(),height() - (hght + hght2));
+	m_pInput->setGeometry(0,height() - hght,width(),hght);
+#else
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pButtonBox->sizeHint().height();
 	m_pButtonBox->setGeometry(0,0,width(),hght2);
 	m_pSplitter->setGeometry(0,hght2,width(),height() - (hght + hght2));
 	m_pInput->setGeometry(0,height() - hght,width(),hght);
+#endif
 }
 
 QSize KviChannel::sizeHint() const

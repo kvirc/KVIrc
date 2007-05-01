@@ -98,6 +98,8 @@ extern KviTextIconWindow * g_pTextIconWindow;
 extern KviHistoryWindow  * g_pHistoryWindow;
 extern KviTalPopupMenu        * g_pInputPopup;
 
+static QFontMetrics             * g_pLastFontMetrics = 0;
+
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -228,6 +230,8 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 
 KviInputEditor::~KviInputEditor()
 {
+	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
+	g_pLastFontMetrics = 0;
 	if(m_pIconMenu)delete m_pIconMenu;
 	delete m_pHistory;
 	if(m_iCursorTimer)killTimer(m_iCursorTimer);
@@ -348,10 +352,15 @@ void KviInputEditor::drawContents(QPainter *p)
 	QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 
 	QPainter pa(pDoubleBufferPixmap);
+	SET_ANTI_ALIASING(pa);
 
 	pa.setFont(KVI_OPTION_FONT(KviOption_fontInput));
 
 	QFontMetrics fm(pa.fontMetrics());
+	
+	if(!g_pLastFontMetrics) 
+		g_pLastFontMetrics = new QFontMetrics(pa.fontMetrics());
+	
 	if(g_bInputFontMetricsDirty)
 		recalcFontMetrics(&fm);
 
@@ -403,8 +412,8 @@ void KviInputEditor::drawContents(QPainter *p)
 
     // TODO Refactor: write a function to combine this with the code determining iIMStart and iIMSelectionStart
 		if(iSelStart < m_iFirstVisibleChar)iSelStart = m_iFirstVisibleChar;
-		int xLeft = xPositionFromCharIndex(iSelStart,TRUE);
-		int xRight = xPositionFromCharIndex(m_iSelectionEnd + 1,TRUE);
+		int xLeft = xPositionFromCharIndex(fm,iSelStart,TRUE);
+		int xRight = xPositionFromCharIndex(fm,m_iSelectionEnd + 1,TRUE);
 
 //		pa.setRasterOp(Qt::NotROP);
 		pa.fillRect(xLeft,frameWidth(),xRight - xLeft,widgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
@@ -422,8 +431,8 @@ void KviInputEditor::drawContents(QPainter *p)
 		// TODO Write a function to combine IM selection drawing code. maybe the preedit area too.
 		int iIMSelectionStart = m_iIMSelectionBegin;
 		if(iIMSelectionStart < m_iFirstVisibleChar) iIMSelectionStart = m_iFirstVisibleChar;
-		int xIMSelectionLeft = xPositionFromCharIndex(iIMSelectionStart,TRUE);
-		int xIMSelectionRight = xPositionFromCharIndex(iIMSelectionStart + m_iIMSelectionLength,TRUE);
+		int xIMSelectionLeft = xPositionFromCharIndex(fm,iIMSelectionStart,TRUE);
+		int xIMSelectionRight = xPositionFromCharIndex(fm,iIMSelectionStart + m_iIMSelectionLength,TRUE);
 //		pa.setRasterOp(Qt::NotROP);
 		pa.fillRect(xIMSelectionLeft,0,xIMSelectionRight - xIMSelectionLeft, widgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 //		pa.setRasterOp(Qt::CopyROP);
@@ -431,8 +440,8 @@ void KviInputEditor::drawContents(QPainter *p)
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;
 		if(m_iIMStart < m_iFirstVisibleChar) m_iIMStart = m_iFirstVisibleChar;
-		int xIMLeft = xPositionFromCharIndex(iIMStart,TRUE);
-		int xIMRight = xPositionFromCharIndex(iIMStart + m_iIMLength,TRUE);
+		int xIMLeft = xPositionFromCharIndex(fm,iIMStart,TRUE);
+		int xIMRight = xPositionFromCharIndex(fm,iIMStart + m_iIMLength,TRUE);
 
 		// underline the IM preedit
 		// Maybe should be put in drawTextBlock, similar to drawing underlined text
@@ -455,10 +464,7 @@ void KviInputEditor::drawContents(QPainter *p)
 
 			pa.drawText(curXPos + 2,textBaseline,s,1);
 
-			pa.drawLine(curXPos,top,curXPos+m_iBlockWidth-1,top);
-			pa.drawLine(curXPos,top,curXPos,bottom);
-			pa.drawLine(curXPos,bottom,curXPos+m_iBlockWidth,bottom);
-			pa.drawLine(curXPos+m_iBlockWidth-1,top,curXPos+m_iBlockWidth-1,bottom);
+			pa.drawRect(curXPos,top,m_iBlockWidth-1,bottom);
 		} else {
 			if(m_iSelectionBegin!=-1)
 			{
@@ -521,14 +527,14 @@ void KviInputEditor::drawContents(QPainter *p)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
 #ifdef COMPILE_USE_QT4
-		m_iLastCursorXPosition+= fm.width(c);
+		m_iLastCursorXPosition+= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
 #else
 		m_iLastCursorXPosition+= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 #endif
 		m_iBlockLen++;
 	}
 
-//	m_iLastCursorXPosition = xPositionFromCharIndex(m_iCursorPosition);
+	//m_iLastCursorXPosition = cur1XPos;
 
 	if(m_bCursorOn)
 	{
@@ -643,7 +649,7 @@ void KviInputEditor::extractNextBlock(int idx,QFontMetrics & fm,int curXPos,int 
 			{
 				m_iBlockLen++;
 #ifdef COMPILE_USE_QT4
-				int xxx = fm.width(c);
+				int xxx = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
 #else
 				int xxx = (c.unicode() < 256 ? g_iInputFontCharWidth[c.unicode()] : fm.width(c));
 #endif
@@ -2067,7 +2073,7 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
 #ifdef COMPILE_USE_QT4
-	m_iLastCursorXPosition += fm.width(c);
+	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
 #else
 	m_iLastCursorXPosition += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 #endif
@@ -2075,7 +2081,7 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
 #ifdef COMPILE_USE_QT4
-		m_iLastCursorXPosition -= fm.width(c);
+		m_iLastCursorXPosition -= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
 #else
 		m_iLastCursorXPosition -= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 #endif
@@ -2110,7 +2116,7 @@ int KviInputEditor::charIndexFromXPosition(int xPos)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
 #ifdef COMPILE_USE_QT4
-		int widthCh = fm.width(c);
+		int widthCh = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
 #else
 		int widthCh = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 #endif
@@ -2124,19 +2130,38 @@ int KviInputEditor::charIndexFromXPosition(int xPos)
 	return curChar;
 }
 
+int  KviInputEditor::xPositionFromCharIndex(QFontMetrics& fm,int chIdx,bool bContentsCoords)
+{
+	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
+	int curXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
+	int curChar = m_iFirstVisibleChar;
+	while(curChar < chIdx)
+	{
+		QChar c = m_szTextBuffer.at(curChar);
+#ifdef COMPILE_USE_QT4
+		curXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
+#else
+		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+#endif
+		curChar++;
+	}
+	return curXPos;
+}
+
 int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 {
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int curXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int curChar = m_iFirstVisibleChar;
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
+	debug("%i",g_pLastFontMetrics);
+	if(!g_pLastFontMetrics) g_pLastFontMetrics = new QFontMetrics(KVI_OPTION_FONT(KviOption_fontInput));
 	while(curChar < chIdx)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
 #ifdef COMPILE_USE_QT4
-		curXPos += fm.width(c);
+		curXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 3 : g_pLastFontMetrics->width(c);
 #else
-		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : g_pLastFontMetrics->width(c);
 #endif
 		curChar++;
 	}
@@ -2592,6 +2617,9 @@ void KviInput::insertText(const QString& text)
 
 void KviInput::applyOptions()
 {
+	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
+	g_pLastFontMetrics = 0;
+
 	if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
 	{
 		QIconSet is1;

@@ -80,7 +80,7 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupSettingsPopup()));
 	addDefaultItem(__tr2qs("&Settings"),pop);
 
-	//addDefaultItem(__tr2qs("&Window"),par->mdiManager()->windowPopup());
+	addDefaultItem(__tr2qs("&Window"),par->mdiManager()->windowPopup());
 
 	pop = new KviTalPopupMenu(this,"help");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupHelpPopup()));
