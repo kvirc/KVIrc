@@ -95,7 +95,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	l->setBackgroundColor(Qt::black);
 	gl->addWidget(l,0,0);
 
-	QToolButton *tb = new QToolButton(Qt::DownArrow,this,"hum");
+	QToolButton *tb = new QToolButton(Qt::DownArrow,this,"down_arrow");
 	tb->setFixedSize(14,14);
 	tb->setAutoRepeat(false);
 	connect(tb,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));

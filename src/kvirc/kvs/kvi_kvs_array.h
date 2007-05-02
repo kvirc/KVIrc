@@ -52,6 +52,7 @@ public:
 	bool isEmpty(){ return m_uSize == 0; };
 	kvs_uint_t size(){ return m_uSize; };
 	void appendAsString(QString &szBuffer);
+	void serialize(QString& result);
 	void sort();
 	void rsort();
 protected:

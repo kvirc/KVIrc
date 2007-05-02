@@ -57,6 +57,8 @@ public:
 	void appendAsString(QString &szBuffer) const;
 	
 	const KviDict<KviKvsVariant> * dict(){ return m_pDict; };
+
+	void serialize(QString& result);
 };
 
 #endif //!_KVI_KVS_HASH_H_

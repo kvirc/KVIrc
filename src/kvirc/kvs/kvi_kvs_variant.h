@@ -182,6 +182,23 @@ public:
 	int compare(KviKvsVariant * pOther,bool bPreferNumeric = false);
 	
 	void operator = (const KviKvsVariant &v){ copyFrom(v); };
+
+	//JSON serialization
+	void serialize(QString& result);
+	static void serializeString(QString& buffer);
+	static KviKvsVariant* unserialize(const QString& buffer);
+private:
+	static KviKvsVariant* unserialize(const QChar** aux);
+	static KviKvsVariant* unserializeTrue(const QChar** aux);
+	static KviKvsVariant* unserializeFalse(const QChar** aux);
+	static KviKvsVariant* unserializeNull(const QChar** aux);
+	static KviKvsVariant* unserializeArray(const QChar** aux);
+	static KviKvsVariant* unserializeHash(const QChar** aux);
+	static void unserializeString(const QChar** aux,QString& buffer);
+	static KviKvsVariant* unserializeString(const QChar** aux);
+	static KviKvsVariant* unserializeRealOrInteger(const QChar** aux);
+	static KviKvsVariant* unserializeReal(const QChar** aux,QString& data);
+	static KviKvsVariant* unserializeInteger(const QChar** aux,QString& data);
 };
 
 #include "kvi_kvs_array.h"

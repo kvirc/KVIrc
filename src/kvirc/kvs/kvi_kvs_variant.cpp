@@ -29,6 +29,7 @@
 #include "kvi_kvs_hash.h"
 #include "kvi_kvs_array.h"
 
+#include <math.h>
 
 KviKvsVariant::KviKvsVariant()
 {
@@ -928,6 +929,459 @@ public:
 	}
 
 };
+void KviKvsVariant::serializeString(QString& buffer)
+{
+	buffer.replace('\\',"\\\\");
+	buffer.replace('\n',"\\n");
+	buffer.replace('\r',"\\r");
+	buffer.replace('\b',"\\b");
+	buffer.replace('\t',"\\t");
+	buffer.replace('\f',"\\f");
+	buffer.replace('/',"\\/");
+	buffer.replace('"',"\\\"");
+	buffer.prepend('"');
+	buffer.append('"');
+}
+
+void KviKvsVariant::serialize(QString& result)
+{
+	switch(m_pData->m_eType)
+	{
+		case KviKvsVariantData::HObject:
+			//can't serialize objects yet
+		break;
+		case KviKvsVariantData::Integer:
+			result.setNum(m_pData->m_u.iInteger);
+		break;
+		case KviKvsVariantData::Real:
+			result.setNum(*(m_pData->m_u.pReal));
+		break;
+		case KviKvsVariantData::String:
+			result = *(m_pData->m_u.pString);
+			serializeString(result);
+		break;
+		case KviKvsVariantData::Boolean:
+			result = m_pData->m_u.bBoolean ? "true" : "false";
+		break;
+		case KviKvsVariantData::Hash:
+			m_pData->m_u.pHash->serialize(result);
+		break;
+		case KviKvsVariantData::Array:
+			m_pData->m_u.pArray->serialize(result);
+		break;
+		case KviKvsVariantData::Nothing:
+			result="null";
+		break;
+		default: // just make gcc happy
+		break;
+	}
+}
+
+KviKvsVariant* KviKvsVariant::unserializeTrue(const QChar** aux)
+{
+	if(KviQString::equalCIN(QString("true"),*aux,4))
+	{
+		(*aux)+=4;
+		return new KviKvsVariant(true);
+	}
+	return 0;
+}
+
+KviKvsVariant* KviKvsVariant::unserializeFalse(const QChar** aux)
+{
+	if(KviQString::equalCIN(QString("false"),*aux,5))
+	{
+		(*aux)+=5;
+		return new KviKvsVariant(false);
+	}
+	return 0;
+}
+
+KviKvsVariant* KviKvsVariant::unserializeNull(const QChar** aux)
+{
+	if(KviQString::equalCIN(QString("null"),*aux,4))
+	{
+		(*aux)+=4;
+		return new KviKvsVariant();
+	}
+	return 0;
+}
+
+KviKvsVariant* KviKvsVariant::unserializeRealOrInteger(const QChar** aux)
+{
+	QString data;
+	if((*aux)->unicode() == '-')
+	{
+		data.append('-');
+		(*aux)++;
+	}
+	if(!(*aux)->isDigit())
+	{
+		return 0;
+	}
+	while((*aux)->isDigit())
+	{
+		data.append(**aux);
+		(*aux)++;
+	}
+	if((*aux)->unicode()=='.')
+	{
+		return unserializeReal(aux,data);
+	}
+	return unserializeInteger(aux,data);
+}
+
+KviKvsVariant* KviKvsVariant::unserializeReal(const QChar** aux,QString& data)
+{
+	QString exponent;
+	(*aux)++; //skip .
+	data.append('.');
+	while((*aux)->isDigit())
+	{
+		data.append(**aux);
+		(*aux)++;
+	}
+
+	if((*aux)->unicode() == 'e' || (*aux)->unicode() == 'E')
+	{
+		(*aux)++;
+		if((*aux)->unicode() == '-')
+		{
+			exponent.append('-');
+			(*aux)++;
+		} else {
+			if((*aux)->unicode() == '+')
+			{
+				exponent.append('+');
+				(*aux)++;
+			}
+		}
+
+		while((*aux)->isDigit())
+		{
+			exponent.append(**aux);
+			(*aux)++;
+		}
+	}
+
+	
+
+	float value = data.toFloat();
+	if(!exponent.isNull())
+	{
+		value*=pow(10.0,exponent.toInt());
+	}
+	return new KviKvsVariant(value);
+}
+
+KviKvsVariant* KviKvsVariant::unserializeInteger(const QChar** aux,QString& data)
+{
+
+	QString exponent;
+
+	if((*aux)->unicode() == 'e' || (*aux)->unicode() == 'E')
+	{
+		(*aux)++;
+		if((*aux)->unicode() == '-')
+		{
+			exponent.append('-');
+			(*aux)++;
+		} else {
+			if((*aux)->unicode() == '+')
+			{
+				exponent.append('+');
+				(*aux)++;
+			}
+		}
+
+		while((*aux)->isDigit())
+		{
+			exponent.append(**aux);
+			(*aux)++;
+		}
+	}
+
+	kvs_int_t value = data.toInt();
+	if(!exponent.isNull())
+	{
+		value*=pow(10.0,exponent.toInt());
+	}
+	return new KviKvsVariant(value);
+}
+
+KviKvsVariant* KviKvsVariant::unserializeString(const QChar** aux)
+{
+	QString buffer;
+	unserializeString(aux,buffer);
+	return new KviKvsVariant(buffer);
+}
+
+void KviKvsVariant::unserializeString(const QChar** aux,QString& data)
+{
+	data="";
+	QString hex; //temp var
+	//skip leading "
+	(*aux)++;
+	while((*aux)->unicode())
+	{
+		switch((*aux)->unicode())
+		{
+		case '"':
+			//EOF
+			(*aux)++;
+			return;
+			break;
+		case '\\':
+			//Special
+			(*aux)++;
+			switch((*aux)->unicode())
+			{
+			case 't':
+				data.append('\t');
+				break;
+			case '\"':
+				data.append('\"');
+				break;
+			case '/':
+				data.append('/');
+			case 'b':
+				data.append('\b');
+			case 'f':
+				data.append('\f');
+				break;
+			case 'n':
+				data.append('\n');
+				break;
+			case 'r':
+				data.append('\r');
+				break;
+			case 'u':
+				//4 hexadecmical digits pending...
+				hex="";
+				(*aux)++;
+				for(int k=0;k<4 && (*aux)->unicode(); k++)
+				{
+					if((*aux)->isDigit() ||
+						((*aux)->unicode() >='A' && (*aux)->unicode() <='F')|| //ABCDEF
+						((*aux)->unicode() >='a' && (*aux)->unicode() <='f')) //abcdef
+					{
+						hex.append(**aux);
+						(*aux)++;
+					} else {
+						break;
+					}
+				}
+				(*aux)--;
+				data.append(QChar(hex.toUInt(0,16)));
+				break;
+			default:
+				//Fallback; incorrect escape
+				(*aux)--;
+				data.append('\\');
+			}
+			(*aux)++;
+			break;
+		default:
+			data.append(**aux);
+			(*aux)++;
+			break;
+		}
+	}
+}
+
+KviKvsVariant* KviKvsVariant::unserializeHash(const QChar** aux)
+{
+	KviKvsHash* pHash = new KviKvsHash();
+	QString szKey;
+	KviKvsVariant* pElement = 0;
+	//skip leading '{'
+	(*aux)++;
+	int i=0;
+	while(1)
+	{
+		//skip leading space
+		while((*aux)->isSpace())
+				(*aux)++;
+		//waiting for starting of string
+		if((*aux)->unicode()!='\"')
+		{
+			//strange characters
+			delete pHash;
+			return 0;
+		}
+		unserializeString(aux,szKey);
+		if(szKey.isEmpty())
+		{
+			//Strange element name
+			delete pHash;
+			return 0;
+		}
+
+		//skip leading space before ':'
+		while((*aux)->isSpace())
+				(*aux)++;
+		//waiting for name-value delimeter
+		if((*aux)->unicode()!=':')
+		{
+			//strange characters
+			delete pHash;
+			return 0;
+		}
+		(*aux)++;
+		
+
+		//getting element
+		pElement = unserialize(aux);
+		if(pElement)
+		{
+			pHash->set(szKey,pElement);
+			i++;
+			while((*aux)->isSpace())
+				(*aux)++;
+			switch((*aux)->unicode())
+			{
+			case ',':
+				//goto next
+				(*aux)++;
+				break;
+			case '}':
+				//EOF array
+				(*aux)++;
+				return new KviKvsVariant(pHash);
+				break;
+			default:
+				delete pHash;
+				return 0;
+				break;
+			}
+		} else {
+			//error
+			delete pHash;
+			return 0;
+		}
+	}
+	return 0;
+}
+
+KviKvsVariant* KviKvsVariant::unserializeArray(const QChar** aux)
+{
+	KviKvsArray* pArray = new KviKvsArray();
+	KviKvsVariant* pElement = 0;
+	(*aux)++;
+	int i=0;
+	while(1)
+	{
+		pElement = unserialize(aux);
+		if(pElement)
+		{
+			pArray->set(i,pElement);
+			i++;
+			while((*aux)->isSpace())
+				(*aux)++;
+			switch((*aux)->unicode())
+			{
+			case ',':
+				//goto next
+				(*aux)++;
+				break;
+			case ']':
+				//EOF array
+				(*aux)++;
+				return new KviKvsVariant(pArray);
+				break;
+			default:
+				delete pArray;
+				return 0;
+				break;
+			}
+		} else {
+			//error
+			delete pArray;
+			return 0;
+		}
+	}
+	return 0;
+}
+
+KviKvsVariant* KviKvsVariant::unserialize(const QChar** aux)
+{
+	KviKvsVariant* pResult = 0;
+
+	while((*aux)->isSpace())
+		(*aux)++;
+
+	switch((*aux)->unicode())
+	{
+	case 't':
+		//true
+		pResult = unserializeTrue(aux);
+		break;
+	case 'f':
+		//false
+		pResult = unserializeFalse(aux);
+		break;
+	case 'n':
+		//null
+		pResult = unserializeNull(aux);
+		break;
+	case '[':
+		//array
+		pResult = unserializeArray(aux);
+		break;
+	case '{':
+		//hash
+		pResult = unserializeHash(aux);
+		break;
+	case '"':
+		//string
+		pResult = unserializeString(aux);
+		break;
+	case '1':
+	case '2':
+	case '3':
+	case '4':
+	case '5':
+	case '6':
+	case '7':
+	case '8':
+	case '9':
+	case '0':
+	case '-':
+		//real or integer
+		pResult = unserializeRealOrInteger(aux);
+		break;
+	default:
+		//incorrect value
+		return 0;
+	}
+
+	while((*aux)->isSpace())
+		(*aux)++;
+
+	return pResult;
+}
+
+KviKvsVariant* KviKvsVariant::unserialize(const QString& data)
+{
+	KviKvsVariant* pResult = 0;
+
+#ifdef COMPILE_USE_QT4
+	const QChar * aux = (const QChar *)data.constData();
+#else
+	const QChar * aux = (const QChar *)data.ucs2();
+#endif
+	
+	pResult = unserialize(&aux);
+
+	if(aux->unicode())
+	{
+		//strange extra characters?
+		if(pResult) delete pResult;
+		pResult = 0;
+	}
+
+	return pResult;
+}
 
 int KviKvsVariant::compare(KviKvsVariant * pOther,bool bPreferNumeric)
 {

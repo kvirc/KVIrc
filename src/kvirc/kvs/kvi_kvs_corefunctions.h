@@ -117,6 +117,7 @@ namespace KviKvsCoreFunctions
 	// s_z
 	KVSCF(selected);
 	KVSCF(sentBytes);
+	KVSCF(serialize);
 	KVSCF(server);
 	KVSCF(sort);
 	KVSCF(split);
@@ -131,6 +132,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(u);
 	KVSCF(unicode);
 	KVSCF(unixtime);
+	KVSCF(unserialize);
 	KVSCF(username);
 	KVSCF(version);
 	KVSCF(window);

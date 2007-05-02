@@ -62,6 +62,30 @@ void KviKvsHash::appendAsString(QString &szBuffer) const
 	}
 }
 
+void KviKvsHash::serialize(QString& result)
+{
+	QString tmpBuffer;
+	result="{";
+	KviDictIterator<KviKvsVariant> it(*m_pDict);
+	bool bNeedComma = false;
+	while(KviKvsVariant * s = it.current())
+	{
+		if(bNeedComma)result.append(',');
+		else bNeedComma = true;
+		
+		tmpBuffer = it.currentKey();
+		KviKvsVariant::serializeString(tmpBuffer);
+		result.append(tmpBuffer);
+
+		result.append(":");
+		s->serialize(tmpBuffer);
+		result.append(tmpBuffer);
+
+		++it;
+	}
+	result.append('}');
+}
+
 KviKvsVariant * KviKvsHash::get(const QString &szKey)
 {
 	KviKvsVariant * v = m_pDict->find(szKey);

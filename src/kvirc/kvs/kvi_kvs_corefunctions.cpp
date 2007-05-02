@@ -115,6 +115,7 @@ namespace KviKvsCoreFunctions
 		// s_z
 		_REGFNC("selected",selected)
 		_REGFNC("sentBytes",sentBytes)
+		_REGFNC("serialize",serialize)
 		_REGFNC("server",server)
 		_REGFNC("sort",sort)
 		_REGFNC("split",split)
@@ -129,6 +130,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("u",u)
 		_REGFNC("unicode",unicode)
 		_REGFNC("unixtime",unixtime)
+		_REGFNC("unserialize",unserialize)
 		_REGFNC("username",username)
 		_REGFNC("version",version)
 		_REGFNC("window",window)

@@ -191,6 +191,27 @@ KviKvsVariant * KviKvsArray::getAt(kvs_uint_t uIdx)
 	return m_pData[uIdx];
 }
 
+void KviKvsArray::serialize(QString& result)
+{
+	QString tmpBuffer;
+	result="[";
+	kvs_uint_t u = 0;
+	bool bNeedComma = false;
+	while(u < m_uSize)
+	{
+		if(bNeedComma)result.append(',');
+		else bNeedComma = true;
+		if(m_pData[u]) {
+			m_pData[u]->serialize(tmpBuffer);
+			result.append(tmpBuffer);
+		} else {
+			result.append("null");
+		}
+		u++;
+	}
+	result.append(']');
+}
+
 void KviKvsArray::appendAsString(QString &szBuffer)
 {
 	kvs_uint_t u = 0;

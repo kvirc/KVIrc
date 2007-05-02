@@ -168,6 +168,36 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
+	/*
+		@doc: serialize
+		@type:
+			function
+		@title:
+			<string> $serialize(<data:mixed>)
+		@short:
+			Encodes variable to JSON string
+		@syntax:
+			<string> $serialize(<data:mixed>)
+		@description:
+			Decodes JSON-encoded string
+		@seealso:
+			[fnc]$serialize[/fnc]
+	*/
+	KVSCF(serialize)
+	{
+		KviKvsVariant *pVar = 0;
+		QString szBuffer;
+
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,pVar)
+		KVSCF_PARAMETERS_END
+
+		if(!pVar) return false;
+		pVar->serialize(szBuffer);
+		KVSCF_pRetBuffer->setString(szBuffer);
+		return true;
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -924,6 +954,36 @@ namespace KviKvsCoreFunctions
 	KVSCF(unixtime)
 	{
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(time(0)));
+		return true;
+	}
+
+	/*
+		@doc: unserialize
+		@type:
+			function
+		@title:
+			<mixed> $unserialize(<data:string>)
+		@short:
+			Decodes JSON-encoded string
+		@syntax:
+			<mixed> $unserialize(<data:string>)
+		@description:
+			Decodes JSON-encoded string
+		@seealso:
+			[fnc]$serialize[/fnc]
+	*/
+
+	KVSCF(unserialize)
+	{
+		QString szData;
+
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szData)
+		KVSCF_PARAMETERS_END
+
+		KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
+		if(pVar)
+			KVSCF_pRetBuffer->copyFrom(pVar);
 		return true;
 	}
 
