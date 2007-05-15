@@ -90,6 +90,8 @@ public:
 	// the function should return false if the player doesn't support
 	// this function or there is a communication error
 	virtual bool playMrl(const QString &mrl);
+	virtual bool amipExec(const QString &cmd);
+	virtual QString amipEval(const QString &cmd);
 	// this is functions to hide,show and minimize the player interface
 	virtual bool hide();
 	virtual bool show();

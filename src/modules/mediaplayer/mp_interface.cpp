@@ -76,6 +76,11 @@ QString KviMediaPlayerInterface::getLocalFile()
 	return QString::null;
 }
 
+QString KviMediaPlayerInterface::amipEval(const QString &cmd)
+{
+  return QString::null;
+}
+
 #define SCAN_MP3_FILE \
 	QString f = getLocalFile(); \
 	if(f.isEmpty())return QString::null; \
@@ -131,6 +136,11 @@ QString KviMediaPlayerInterface::album()
 bool KviMediaPlayerInterface::playMrl(const QString &mrl)
 {
 	return false;
+}
+
+bool KviMediaPlayerInterface::amipExec(const QString &cmd)
+{
+  return false;
 }
 
 bool KviMediaPlayerInterface::setVol(int &iVol)

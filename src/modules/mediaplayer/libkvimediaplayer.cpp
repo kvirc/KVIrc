@@ -27,6 +27,7 @@
 #include "mp_xmmsinterface.h"
 #include "mp_amarokinterface.h"
 #include "mp_winampinterface.h"
+#include "mp_amipinterface.h"
 #include "mp_jukinterface.h"
 
 #include "kvi_module.h"
@@ -529,6 +530,29 @@ MP_KVS_COMMAND(playMrl)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->playMrl(szMrl))
+	{
+		if(!c->hasSwitch('q',"quiet"))
+		{
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			tmp += g_pMPInterface->lastError();
+			c->warning(tmp);
+		}
+	}
+
+	return true;
+}
+
+MP_KVS_COMMAND(amipExec)
+{
+	QString szMrl;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("player",KVS_PT_STRING,0,szMrl)
+	KVSM_PARAMETERS_END(c)
+
+	MP_KVS_FAIL_ON_NO_INTERFACE
+	if(!g_pMPInterface->amipExec(szMrl))
 	{
 		if(!c->hasSwitch('q',"quiet"))
 		{
@@ -1335,6 +1359,23 @@ MP_KVS_FUNCTION(localFile)
 	return true;
 }
 
+MP_KVS_FUNCTION(amipEval)
+{
+	QString szMrl;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("player",KVS_PT_STRING,0,szMrl)
+	KVSM_PARAMETERS_END(c)
+
+	MP_KVS_FAIL_ON_NO_INTERFACE
+	QString szRet = g_pMPInterface->amipEval(szMrl);
+	if(szRet.isEmpty())return true;
+
+	c->returnValue()->setString(szRet);
+
+	return true;
+}
+
 /*
 	@doc: mediaplayer.status
 	@type:
@@ -1520,6 +1561,7 @@ static bool mediaplayer_module_init( KviModule * m )
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
 
@@ -1557,6 +1599,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	MP_KVS_REGCMD(pause,"pause");
 	MP_KVS_REGCMD(detect,"detect");
 	MP_KVS_REGCMD(playMrl,"playMrl");
+	MP_KVS_REGCMD(amipExec,"amipExec");
 	MP_KVS_REGCMD(hide,"hide");
 	MP_KVS_REGCMD(show,"show");
 	MP_KVS_REGCMD(minimize,"minimize");
@@ -1586,6 +1629,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	MP_KVS_REGFNC(player,"player");
 	MP_KVS_REGFNC(playerList,"playerList");
 	MP_KVS_REGFNC(localFile,"localFile");
+	MP_KVS_REGFNC(amipEval,"amipEval");
 	MP_KVS_REGFNC(channels,"channels");
 	MP_KVS_REGFNC(getListLength,"getListLength");
 	MP_KVS_REGFNC(getPlayListPos,"getPlayListPos");
@@ -1641,13 +1685,14 @@ static bool mediaplayer_module_ctrl(KviModule * m,const char * operation,void * 
 
 
 KVIRC_MODULE(
-	"mpediaplayer",
-	"1.0.0",
-	"Copyright (C) 2001-2005 Szymon Stefanek (pragma at kvirc dot net), " \
+	"mediaplayer",
+	"1.1.0",
+	"Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net), " \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \
-		"Alessandro Carbone (noldor at barmes dot org),", \
-		"Alexey Uzhva (wizard at opendoor dot ru)"
+		"Alessandro Carbone (noldor at barmes dot org)," \
+		"Alexey Uzhva (wizard at opendoor dot ru), " \
+		"Serge Baranov (sbaranov at gmail dot com)",
 	"Interface to various media players",
 	mediaplayer_module_init,
 	mediaplayer_module_can_unload,
