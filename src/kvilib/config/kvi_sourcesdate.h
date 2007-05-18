@@ -28,8 +28,8 @@
 
 #include "kvi_settings.h"
 
-#define KVI_SOURCES_DATE "20070517"
-#define KVI_SOURCES_DATE_NUMERIC 0x20070517
+#define KVI_SOURCES_DATE "20070518"
+#define KVI_SOURCES_DATE_NUMERIC 0x20070518
 
 // this is the date of the sources before that we should force a setup
 // this is usually changed only when a setup is really needed because
