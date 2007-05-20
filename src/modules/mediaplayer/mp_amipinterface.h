@@ -30,9 +30,9 @@
     virtual QString mrl();
     virtual int position();
     virtual int length();
-    virtual bool setVol(int &iVol);
+    virtual bool setVol(kvs_int_t &iVol);
     virtual int getVol();
-    virtual bool jumpTo(int &iPos);
+    virtual bool jumpTo(kvs_int_t &iPos);
     virtual int sampleRate();
     virtual int bitRate();
     virtual int channels();
@@ -40,7 +40,7 @@
     virtual bool show();
     virtual bool minimize();
     virtual int getPlayListPos();
-    virtual bool setPlayListPos(int &iPos);
+    virtual bool setPlayListPos(kvs_int_t &iPos);
     virtual int getListLength();
     virtual bool getRepeat();
     virtual bool getShuffle();

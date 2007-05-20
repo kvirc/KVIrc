@@ -67,7 +67,7 @@ bool KviJukInterface::stop(){ return voidRetVoidDCOPCall("Player","stop()"); }
 bool KviJukInterface::pause(){ return voidRetVoidDCOPCall("Player","pause()"); }
 bool KviJukInterface::quit(){ return voidRetVoidDCOPCall("MainApplication-Interface","quit()"); }
 
-bool KviJukInterface::setVol(int &iVol)
+bool KviJukInterface::setVol(kvs_int_t &iVol)
 {
 	return voidRetFloatDCOPCall("player","setVolume(float)",(float)(iVol)/255.);
 }

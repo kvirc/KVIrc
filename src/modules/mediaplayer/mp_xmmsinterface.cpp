@@ -196,7 +196,7 @@ bool KviXmmsInterface::jumpTo(int &iPos)
 	return true;
 }
 
-bool KviXmmsInterface::setVol(int &iVol)
+bool KviXmmsInterface::setVol(kvs_int_t &iVol)
 {
 	void (*sym)(int,int) = (void (*)(int,int))lookupSymbol("xmms_remote_set_main_volume");
 	if(!sym)return false;

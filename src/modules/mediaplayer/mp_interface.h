@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+#include "kvi_kvs_types.h"
 
 class KviMediaPlayerInterface
 {
@@ -97,7 +98,7 @@ public:
 	virtual bool show();
 	virtual bool minimize();
 	// set the volume of mediaplayer (0-255)
-	virtual bool setVol(int &iVol);
+	virtual bool setVol(kvs_int_t &iVol);
 	// get the pvolume value(0-255)
 	virtual int getVol();
 	//mute the volume

@@ -180,7 +180,20 @@ const char *emphasis_text[] =
 {
   "None", "50/15 Microseconds", "Reserved", "CCITT J 17"
 };
-
+void resetmp3infoStruct(mp3info *i)
+{
+	i->file=0;
+	i->datasize=0;
+	i->header_isvalid=0;
+	memset(&i->header,0,sizeof(i->header));
+	i->id3_isvalid=0;
+	memset(&i->id3,0,sizeof(i->id3));
+	i->vbr=0;
+	i->vbr_average=0;
+	i->seconds=0;
+	i->frames=0;
+	i->badframes=0;
+}
 
 int get_mp3_info(mp3info *mp3)
 {
@@ -190,7 +203,7 @@ int get_mp3_info(mp3info *mp3)
 	int l,vbr_median=-1;
 	int bitrate,lastrate;
 	int counter=0;
-	mp3header header;
+//	mp3header header;
 
 	int sample_pos,data_start=0;
 
@@ -438,8 +451,11 @@ char *unpad(char *string)
 
 bool scan_mp3_file(QString& szFileName,mp3info * i)
 {
-	memset(i,0,sizeof(mp3info));
-	i->filename = szFileName;
+	//memset(i,0,sizeof(mp3info));
+	resetmp3infoStruct(i);
+	
+
+	i->filename = "text";
 	i->file = fopen(QTextCodec::codecForLocale()->fromUnicode(i->filename).data(),"rb");
 	if(!i->file)return false;
 	

@@ -625,7 +625,7 @@ MP_KVS_COMMAND(jumpTo)
 
 MP_KVS_COMMAND(setVol)
 {
-	int iVol;
+	kvs_int_t iVol;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("volume",KVS_PT_INT,0,iVol)

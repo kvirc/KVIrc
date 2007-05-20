@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 
+
 #ifdef COMPILE_KDE_SUPPORT
 
 	#include "kvi_dcophelper.h"
@@ -43,8 +44,8 @@
 		virtual bool play();
 		virtual bool stop();
 		virtual bool pause();
-		virtual bool jumpTo(int &iPos);
-		virtual bool setVol(int &iVol);
+		virtual bool jumpTo(kvs_int_t &iPos);
+		virtual bool setVol(kvs_int_t &iVol);
 		virtual bool mute();
 		virtual int getVol();
 		virtual bool quit();

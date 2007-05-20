@@ -388,7 +388,7 @@ bool KviWinampInterface::playMrl(const QString &mrl)
 	return false;
 }
 
-bool KviWinampInterface::setVol(int &iVol)
+bool KviWinampInterface::setVol(kvs_int_t &iVol)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)

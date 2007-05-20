@@ -143,7 +143,7 @@ bool KviMediaPlayerInterface::amipExec(const QString &cmd)
   return false;
 }
 
-bool KviMediaPlayerInterface::setVol(int &iVol)
+bool KviMediaPlayerInterface::setVol(kvs_int_t &iVol)
 {
 	return false;
 }

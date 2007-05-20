@@ -114,6 +114,7 @@ typedef struct {
 
 bool scan_mp3_file(QString& szFileName,mp3info * i);
 
+void resetmp3infoStruct(mp3info *i);
 
 int header_channels(mp3header *h);
 int header_frequency(mp3header *h);

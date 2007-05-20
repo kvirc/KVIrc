@@ -49,8 +49,8 @@
 		virtual bool stop();
 		virtual bool pause();
 		virtual bool quit();
-		virtual bool jumpTo(int &iPos);
-		virtual bool setVol(int &iVol);
+		virtual bool jumpTo(kvs_int_t &iPos);
+		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
 		virtual QString nowPlaying();

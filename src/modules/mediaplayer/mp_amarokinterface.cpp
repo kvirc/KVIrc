@@ -70,7 +70,7 @@ bool KviAmarokInterface::jumpTo(int &iPos)
 {
 	return voidRetIntDCOPCall("player","seek(int)",iPos/1000);
 }
-bool KviAmarokInterface::setVol(int &iVol)
+bool KviAmarokInterface::setVol(kvs_int_t &iVol)
 {
 	return voidRetIntDCOPCall("player","setVolume(int)",100*iVol/255);
 }

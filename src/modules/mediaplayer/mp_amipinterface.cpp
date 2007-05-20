@@ -267,7 +267,7 @@ QString KviAmipInterface::genre()
   return getAmipString("var_7");
 }
 
-bool KviAmipInterface::setVol(int &iVol)
+bool KviAmipInterface::setVol(kvs_int_t &iVol)
 {
   if(!amip_dll) return false;
   char volcmd[AC_BUFFER_SIZE];
@@ -280,7 +280,7 @@ int KviAmipInterface::getVol()
   return eval_int("var_vol");
 }
 
-bool KviAmipInterface::jumpTo(int &iPos)
+bool KviAmipInterface::jumpTo(kvs_int_t &iPos)
 {
   if(!amip_dll) return false;
   char jmpcmd[AC_BUFFER_SIZE];
@@ -315,7 +315,7 @@ bool KviAmipInterface::minimize()
   return (ac_exec("control mimimize") == AC_ERR_NOERROR);
 }
 
-bool KviAmipInterface::setPlayListPos(int &iPos)
+bool KviAmipInterface::setPlayListPos(kvs_int_t &iPos)
 {
   if(!amip_dll) return false;
   char jmpcmd[AC_BUFFER_SIZE];

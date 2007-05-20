@@ -48,7 +48,7 @@
 		virtual int position();
 		virtual int length();
 		virtual bool playMrl(const QString &mrl);
-		virtual bool setVol(int &iVol);
+		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
 		virtual bool jumpTo(int &iPos);
 		virtual int sampleRate();
