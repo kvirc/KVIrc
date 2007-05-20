@@ -1231,11 +1231,18 @@ void KviWindow::updateBackgrounds(QObject * obj)
 		obj = this;
 #ifdef COMPILE_USE_QT4
 	QList<QObject *> list = obj->children();
+	if (list.count())
+	{
+	
 	for(QList<QObject *>::Iterator it = list.begin();it != list.end();++it)
 	{
 		QObject * child = *it;
-		if(child->metaObject()->indexOfProperty("TransparencyCapable") != -1)
+		if(child->metaObject()->indexOfProperty("TransparencyCapable") != -1){
+		//	if (child->isWidgetType())
 			((QWidget *)child)->update();
+		}
+		updateBackgrounds(child);
+	}
 	}
 #else
 	QObjectList * list = (QObjectList *)(obj->children());
