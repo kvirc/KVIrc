@@ -66,7 +66,7 @@ bool KviAmarokInterface::pause(){ return voidRetVoidDCOPCall("player","pause()")
 bool KviAmarokInterface::mute(){ return voidRetVoidDCOPCall("player","mute()"); }
 bool KviAmarokInterface::quit(){ return voidRetVoidDCOPCall("MainApplication-Interface","quit()"); }
 
-bool KviAmarokInterface::jumpTo(int &iPos)
+bool KviAmarokInterface::jumpTo(kvs_int_t &iPos)
 {
 	return voidRetIntDCOPCall("player","seek(int)",iPos/1000);
 }
