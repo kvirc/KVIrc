@@ -50,7 +50,7 @@
 		virtual bool playMrl(const QString &mrl);
 		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
-		virtual bool jumpTo(int &iPos);
+		virtual bool jumpTo(kvs_int_t &iPos);
 		virtual int sampleRate();
 		virtual int bitRate();
 		virtual int channels();

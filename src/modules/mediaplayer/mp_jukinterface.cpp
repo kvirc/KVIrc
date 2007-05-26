@@ -72,7 +72,7 @@ bool KviJukInterface::setVol(kvs_int_t &iVol)
 	return voidRetFloatDCOPCall("player","setVolume(float)",(float)(iVol)/255.);
 }
 
-bool KviJukInterface::jumpTo(int &iPos)
+bool KviJukInterface::jumpTo(kvs_int_t &iPos)
 {
 	return voidRetIntDCOPCall("player","seek(int)",iPos/1000);
 }

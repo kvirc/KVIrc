@@ -407,7 +407,7 @@ int KviWinampInterface::getVol()
 	return ret;
 }
 
-bool KviWinampInterface::jumpTo(int &iPos)
+bool KviWinampInterface::jumpTo(kvs_int_t &iPos)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
