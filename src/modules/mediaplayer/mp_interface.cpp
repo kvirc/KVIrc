@@ -25,6 +25,7 @@
 #include "mp_interface.h"
 #include "mp_mp3.h"
 #include "kvi_options.h"
+#include "kvi_locale.h"
 #include <qtextcodec.h>
 
 static QTextCodec * mediaplayer_get_codec()
@@ -34,33 +35,46 @@ static QTextCodec * mediaplayer_get_codec()
 	return c;
 
 }
+
+void KviMediaPlayerInterface::notImplemented()
+{
+	setLastError(__tr2qs_ctx("Function not implemented","mediaplayer"));
+}
+
+
 int KviMediaPlayerInterface::position()
 {
+	notImplemented();
 	return -1;
 }
 
 int KviMediaPlayerInterface::length()
 {
+	notImplemented();
 	return -1;
 }
 
 bool KviMediaPlayerInterface::quit()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::hide()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::show()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::minimize()
 {
+	notImplemented();
 	return false;
 }
 
@@ -135,36 +149,43 @@ QString KviMediaPlayerInterface::album()
 
 bool KviMediaPlayerInterface::playMrl(const QString &mrl)
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::amipExec(const QString &cmd)
 {
-  return false;
+	notImplemented();
+	return false;
 }
 
 bool KviMediaPlayerInterface::setVol(kvs_int_t &iVol)
 {
+	notImplemented();
 	return false;
 }
 
 int KviMediaPlayerInterface::getVol()
 {
+	notImplemented();
 	return -1;
 }
 
 bool KviMediaPlayerInterface::mute()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::jumpTo(int &iPos)
 {
+	notImplemented();
 	return false;
 }
 
 KviMediaPlayerInterface::PlayerStatus KviMediaPlayerInterface::status()
 {
+	notImplemented();
 	return KviMediaPlayerInterface::Unknown;
 }
 
@@ -188,47 +209,56 @@ int KviMediaPlayerInterface::channels()
 
 int KviMediaPlayerInterface::getPlayListPos()
 {
+	notImplemented();
 	return -1;
 }
 
 bool KviMediaPlayerInterface::setPlayListPos(int &iPos)
 {
+	notImplemented();
 	return false;
 }
 
 int KviMediaPlayerInterface::getListLength()
 {
+	notImplemented();
 	return -1;
 }
 
 
 int KviMediaPlayerInterface::getEqData(int &ival)
 {
+	notImplemented();
 	return -1;
 }
 
 bool KviMediaPlayerInterface::setEqData(int &iPos, int &iVal)
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::getRepeat()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::getShuffle()
 {
+	notImplemented();
 	return false;
 }
 
 bool KviMediaPlayerInterface::setRepeat(bool &bVal)
 {
+	notImplemented();
 	return false;	
 }
 
 bool KviMediaPlayerInterface::setShuffle(bool &bVal)
 {
+	notImplemented();
 	return false;
 }
 
