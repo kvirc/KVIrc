@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-02-07 16:12+0100\n"
+"PO-Revision-Date: 2007-05-31 20:14+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,12 +50,12 @@ msgstr "Scegli i Files da Inviare - KVIrc"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "Impossibile inviare la richiesta di DCC %Q a %Q: la connessione IRC è "
-"stata :)terminata"
+"stata terminata"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:199
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:821
 msgid "Can't open file %Q for reading"
-msgstr "Impossibile leggere il file %Q"
+msgstr "Impossibile aprire il file %Q in lettura"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:269
 msgid ""
@@ -75,8 +75,7 @@ msgstr "Sarai il lato passivo della connessione.<br>"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr ""
-"Il target della connessione sarà l'host <b>%1</b> sulla porta <b>%2</b><br>"
+msgstr "Il target della connessione sarà l'host <b>%1</b> sulla porta <b>%2</b><br>"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:289
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:543
@@ -148,8 +147,7 @@ msgstr ""
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:557
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr ""
-"Accetto in automatico la richiesta di DCC %Q da %Q!%Q@%Q per il file %Q"
+msgstr "Accetto in automatico la richiesta di DCC %Q da %Q!%Q@%Q per il file %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/broker.cpp:618
 msgid "Choose Files to Save - KVIrc"
@@ -217,21 +215,18 @@ msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %s"
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
-msgstr ""
-"L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
+msgstr "L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/chat.cpp:212
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'indirizzo IP locale è privato, non c'è nessun server IRC da cui "
 "determinarlo"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/chat.cpp:234
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
+msgstr "Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/chat.cpp:237
 msgid "DCC %Q request not sent, awaiting manual connection"
@@ -438,8 +433,7 @@ msgstr "Supporto DCC VOICE non abilitato durante la compilazione"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr ""
-"Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
+msgstr "Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
@@ -489,8 +483,7 @@ msgstr "Trasferimento dei dati terminato 30 secondi fa, chiudo la connessione"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"ATTENZIONE: ricevuti dati in una DCC TSEND, non esiste alcun riconoscimento"
+msgstr "ATTENZIONE: ricevuti dati in una DCC TSEND, non esiste alcun riconoscimento"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:727
 #, c-format
@@ -587,8 +580,7 @@ msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %1"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:1556
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
+msgstr "Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:1558
 msgid "DCC %1 request not sent, awaiting manual connection"
@@ -634,8 +626,7 @@ msgstr ""
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:1793
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
-"Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
+msgstr "Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/send.cpp:1825
 msgid "Configure bandwidth for DCC transfer %1"
@@ -667,8 +658,7 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS passiva"
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC CANVAS a %Q, aspetto la connessione dal client "
 "remoto..."
@@ -832,8 +822,7 @@ msgstr ""
 
 #: /home/oem/kvirc-qt4/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Impossibile procedere con DCC RECV: trasferimento non inizializzato per il "
 "file %s sulla porta %s"
@@ -1017,3 +1006,4 @@ msgstr ""
 "Impossibile attivare l'ascolto sull'interfaccia di default '%s': correggi "
 "nella finestra delle opzioni, disabilitando l'opzione stessa (la prossima "
 "DCC sarà in grado di funzionare)"
+
