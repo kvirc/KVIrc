@@ -882,7 +882,8 @@ static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mask(szMask);
-	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+//FIXME: it crashes kvirc	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
 	if(u) c->returnValue()->setString(u->name());
 	return true;
 }
@@ -1128,15 +1129,16 @@ static bool reguser_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 
 static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 { 
-	QString szName; 
+	QString szMask; 
 	QString szProperty;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("user_name",KVS_PT_STRING,0,szName)
+		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 		KVSM_PARAMETER("property_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szProperty)
 	KVSM_PARAMETERS_END(c)
 	
-	KviIrcMask mask(szName);
-	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+	KviIrcMask mask(szMask);
+//FIXME: it crashes kvirc	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
 	if(u)
 	{
 		QString tmp;
