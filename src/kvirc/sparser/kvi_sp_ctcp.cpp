@@ -1619,7 +1619,9 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 					QString szCommand = "http.get -w=nm ";
 					unsigned int uMaxSize = KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize);
 					if(uMaxSize > 0)KviQString::appendFormatted(szCommand,"-m=%u ",uMaxSize);
-					szCommand += szRemoteFile;
+					szRemoteFile = szRemoteFile.replace(";","%3B");
+					szRemoteFile = szRemoteFile.replace("\"","%22");
+					szCommand += "\""+szRemoteFile+"\"";
 					szCommand += " \"";
 					szCommand += szLocalFilePath.ptr();
 					szCommand += "\"";
