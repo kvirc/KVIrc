@@ -557,8 +557,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintIdentdOutputMode 60
 #define KviOption_uintScaleAvatarsOnLoadHeight 61
 #define KviOption_uintScaleAvatarsOnLoadWidth 62
+#define KviOption_uintNotifierActiveTransparency 63
+#define KviOption_uintNotifierInactiveTransparency 64
 
-#define KVI_NUM_UINT_OPTIONS 63
+#define KVI_NUM_UINT_OPTIONS 65
 
 namespace KviIdentdOutputMode {
 	enum Mode {

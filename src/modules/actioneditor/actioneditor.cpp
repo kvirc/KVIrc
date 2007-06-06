@@ -401,7 +401,7 @@ void KviSingleActionEditor::chooseBigIcon()
 	QString s = d->selectedImage();
 	delete d;
 	if(ret != QDialog::Accepted)return;
-	QPixmap * p = g_pIconManager->getBigIcon(s.utf8().data());
+	QPixmap * p = g_pIconManager->getBigIcon(s);
 	if(!p)return;
 	m_pBigIconEdit->setText(s);
 	m_pBigIconButton->setPixmap(*p);

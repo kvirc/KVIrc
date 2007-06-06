@@ -148,6 +148,8 @@ public:
 	
 	void generateUniqueId();
 	void setId(const QString &szId){ m_szId = szId; if(m_szId.isEmpty())generateUniqueId(); };
+
+	QString ircUri();
 };
 
 class KVILIB_API KviIrcNetwork : public KviHeapObject

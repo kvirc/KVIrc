@@ -1372,6 +1372,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 	// completion thingies
+
 	if(!m_bReadOnly)
 	{
 		if((e->key() == Qt::Key_Tab) || (e->key() == Qt::Key_BackTab))
@@ -1382,6 +1383,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			m_bLastCompletionFinished=1;
 		}
 	}
+
 	
 	if(e->key() == Qt::Key_Escape)
 	{
@@ -1560,7 +1562,9 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		}
 
 		//debug("%c",e->ascii());
-		if(!m_bReadOnly) insertText(e->text());
+		if(!m_bReadOnly) {
+			insertText(e->text());
+		}
 		return;
 	}
 

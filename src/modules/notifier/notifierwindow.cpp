@@ -382,6 +382,8 @@ bool KviNotifierWindow::shouldHideIfMainWindowGotAttention()
 void KviNotifierWindow::heartbeat()
 
 {
+	bool bIncreasing;
+	double targetOpacity = 0; //qt4
 	switch(m_eState)
 	{
 		case Hidden:
@@ -400,9 +402,18 @@ void KviNotifierWindow::heartbeat()
 				m_eState = Hiding;
 			} else {
 				m_dOpacity += OPACITY_STEP;
+#ifdef COMPILE_USE_QT4
+				targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+
+				targetOpacity/=100;
+				if(m_dOpacity >= targetOpacity)
+				{
+					m_dOpacity = targetOpacity;
+#else
 				if(m_dOpacity >= 1.0)
 				{
 					m_dOpacity = 1.0;
+#endif
 					m_eState = Visible;
 					stopShowHideTimer();
 					startBlinking();
@@ -418,6 +429,42 @@ void KviNotifierWindow::heartbeat()
 
 			}
 		break;
+#ifdef COMPILE_USE_QT4
+		case FocusingOn:
+			targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
+			targetOpacity/=100;
+			bIncreasing = targetOpacity>m_dOpacity;
+			m_dOpacity += bIncreasing?
+				OPACITY_STEP : -(OPACITY_STEP);
+			if( (bIncreasing && (m_dOpacity >= targetOpacity) ) ||
+				(!bIncreasing && (m_dOpacity <= targetOpacity) )
+				)
+			{
+				m_dOpacity = targetOpacity;
+				m_eState = Visible;
+				stopShowHideTimer();
+			}
+
+			setWindowOpacity(m_dOpacity);
+			break;
+		case FocusingOff:
+			targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+			targetOpacity/=100;
+			bIncreasing = targetOpacity>m_dOpacity;
+			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
+			debug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
+			if( (bIncreasing && (m_dOpacity >= targetOpacity) ) ||
+				(!bIncreasing && (m_dOpacity <= targetOpacity) )
+				)
+			{
+				m_dOpacity = targetOpacity;
+				m_eState = Visible;
+				stopShowHideTimer();
+			}
+
+			setWindowOpacity(m_dOpacity);
+			break;
+#endif
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
 			#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
@@ -984,7 +1031,7 @@ void KviNotifierWindow::delayedRaiseSlot()
 			m_pWindowToRaise->frame()->show();
 
 		m_pWindowToRaise->frame()->raise();
-		((QWidget *)(m_pWindowToRaise->frame()))->setActiveWindow();
+		//((QWidget *)(m_pWindowToRaise->frame()))->setActiveWindow();
 		m_pWindowToRaise->frame()->setFocus();
 	}
 
@@ -1153,6 +1200,18 @@ inline void KviNotifierWindow::setCursor(int cur) {
 		if(QApplication::overrideCursor()) QApplication::restoreOverrideCursor();
 }
 
+void KviNotifierWindow::enterEvent(QEvent * e)
+{
+#ifdef COMPILE_USE_QT4
+	if(!m_pShowHideTimer) {
+		m_pShowHideTimer = new QTimer();
+		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
+	}
+	m_eState = FocusingOn;
+	m_pShowHideTimer->start(40);
+#endif
+}
+
 void KviNotifierWindow::leaveEvent(QEvent * e)
 {
 	// Leaving the widget area, restore default cursor
@@ -1160,6 +1219,14 @@ void KviNotifierWindow::leaveEvent(QEvent * e)
 	m_pWndTabs->resetIcons();
 	if (!m_bResizing)
 		setCursor(-1);
+#ifdef COMPILE_USE_QT4
+	if(!m_pShowHideTimer) {
+		m_pShowHideTimer = new QTimer();
+		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
+	}
+	m_eState = FocusingOff;
+	m_pShowHideTimer->start(40);
+#endif
 }
 
 void KviNotifierWindow::contextPopup(const QPoint &pos)

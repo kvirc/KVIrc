@@ -619,7 +619,9 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame ),
 	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection ),
 	UINT_OPTION("ScaleAvatarsOnLoadHeight",600,KviOption_sectFlagAvatar ),
-	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar )
+	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar ),
+	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagFrame ),
+	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagFrame )
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

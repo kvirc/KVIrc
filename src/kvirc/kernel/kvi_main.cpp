@@ -30,6 +30,7 @@
 #include "kvi_ircurl.h"
 #include "kvi_defaults.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_msgbox.h"
 
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
@@ -67,58 +68,71 @@ int parseArgs(ParseArgs * a)
 
 	for(idx = 1;idx < a->argc;idx++)
 	{
+		QString szMessage;
 		char * p = a->argv[idx];
 		
 		if((kvi_strLen(p) > 3) && (*p == '-') && (*(p+1) == '-'))p++;
 		
 		if(kvi_strEqualCI("-v",p) || kvi_strEqualCI("-version",p))
 		{
-			debug("KVIrc %s '%s'",KVI_VERSION,KVI_RELEASE_NAME);
-			debug("Sources date: %s",KVI_SOURCES_DATE);
-			debug("Build date: %s",KVI_BUILD_DATE);
-			debug("Home page: http://www.kvirc.net/");
+			KviQString::appendFormatted(szMessage,"KVIrc %s '%s'\n",KVI_VERSION,KVI_RELEASE_NAME);
+			KviQString::appendFormatted(szMessage,"Sources date: %s\n",KVI_SOURCES_DATE);
+			KviQString::appendFormatted(szMessage,"Build date: %s\n",KVI_BUILD_DATE);
+			KviQString::appendFormatted(szMessage,"Home page: http://www.kvirc.net/\n");
+
+#ifdef COMPILE_ON_WINDOWS
+			MessageBox(0,szMessage.local8Bit().data(),"KVIrc",0);
+#else
+			debug(szMessage);
+#endif
+
 			return KVI_ARGS_RETCODE_STOP;
 		}
 		
 		if(kvi_strEqualCI("-h",p) || kvi_strEqualCI("-help",p))
 		{
-			debug("Usage:");
-			debug("  %s [options] [server [port]] [ircurl [ircurl [...]]]",a->argv[0]);
-			debug(" ");
-			debug("Available options:");
-			debug("  -h, --help   : Print this help and exit");
-			debug("  -v, --version: Print version information and exit");
-			debug("  -c <file>    : Use <file> as config file instead of ~/%s",KVI_HOME_CONFIG_FILE_NAME);
-			debug("                 (defaults to $HOME/%s if <file> does not exist)",KVI_HOME_CONFIG_FILE_NAME);
-			debug("  -n <file>    : Use <file> as config file instead of $HOME/%s",KVI_HOME_CONFIG_FILE_NAME);
-			debug("                 (create <file> if it does not exist)");
+			KviQString::appendFormatted(szMessage,"Usage:\n");
+			KviQString::appendFormatted(szMessage,"  %s [options] [server [port]] [ircurl [ircurl [...]]]\n",a->argv[0]);
+			KviQString::appendFormatted(szMessage," \n");
+			KviQString::appendFormatted(szMessage,"Available options:\n");
+			KviQString::appendFormatted(szMessage,"  -h, --help   : Print this help and exit\n");
+			KviQString::appendFormatted(szMessage,"  -v, --version: Print version information and exit\n");
+			KviQString::appendFormatted(szMessage,"  -c <file>    : Use <file> as config file instead of ~/%s\n",KVI_HOME_CONFIG_FILE_NAME);
+			KviQString::appendFormatted(szMessage,"                 (defaults to $HOME/%s if <file> does not exist)\n",KVI_HOME_CONFIG_FILE_NAME);
+			KviQString::appendFormatted(szMessage,"  -n <file>    : Use <file> as config file instead of $HOME/%s\n",KVI_HOME_CONFIG_FILE_NAME);
+			KviQString::appendFormatted(szMessage,"                 (create <file> if it does not exist)\n");
 #ifdef COMPILE_NO_IPC
-			debug("  -f           : Accepted but ignored (for compatibility)");
+			KviQString::appendFormatted(szMessage,"  -f           : Accepted but ignored (for compatibility)\n");
 #else
-			debug("  -f           : Force a new KVIrc session, even if there is already");
-			debug("                 a running one.");
+			KviQString::appendFormatted(szMessage,"  -f           : Force a new KVIrc session, even if there is already\n");
+			KviQString::appendFormatted(szMessage,"                 a running one.\n");
 #endif
-			debug("  -e <commands>: If a KVIrc session is already running, execute");
-			debug("                 the <commands> in that session, otherwise start up");
-			debug("                 normally and execute <commands>");
-			debug("                 <commands> must be a single shell token.");
-			debug("                 You can eventually use this switch more than once");
-			debug("  -x <commands>: If a KVIrc session is already running, execute");
-			debug("                 the <commands> in that session, otherwise exit from application without doing anything/");
-			debug("                 <commands> must be a single shell token.");
-			debug("                 You can eventually use this switch more than once");
-			debug("  -r <commands>: If a KVIrc session is already running, execute the <commands>");
-			debug("                 in that session, otherwise start up normally (do not execute).");
-			debug("                 <commands> must be a single shell token.");
-			debug("                 You can eventually use this switch more than once");
-			debug("  -m           : If a KVIrc session is already running, show an informational");
-			debug("                 popup dialog instead of writing to the console");
-			debug("  --nosplash   : Do not show the splash screen at startup");
-			debug("  [server]     : Connect to this server after startup");
-			debug("  [port]       : Use this port for connection");
-			debug("  [ircurl]     : URL in the following form:");
-			debug("                 irc[6]://<server>[:<port>][/<channel>[?<pass>]]");
+			KviQString::appendFormatted(szMessage,"  -e <commands>: If a KVIrc session is already running, execute\n");
+			KviQString::appendFormatted(szMessage,"                 the <commands> in that session, otherwise start up\n");
+			KviQString::appendFormatted(szMessage,"                 normally and execute <commands>\n");
+			KviQString::appendFormatted(szMessage,"                 <commands> must be a single shell token.\n");
+			KviQString::appendFormatted(szMessage,"                 You can eventually use this switch more than once\n");
+			KviQString::appendFormatted(szMessage,"  -x <commands>: If a KVIrc session is already running, execute\n");
+			KviQString::appendFormatted(szMessage,"                 the <commands> in that session, otherwise exit from application without doing anything/\n");
+			KviQString::appendFormatted(szMessage,"                 <commands> must be a single shell token.\n");
+			KviQString::appendFormatted(szMessage,"                 You can eventually use this switch more than once\n");
+			KviQString::appendFormatted(szMessage,"  -r <commands>: If a KVIrc session is already running, execute the <commands>\n");
+			KviQString::appendFormatted(szMessage,"                 in that session, otherwise start up normally (do not execute).\n");
+			KviQString::appendFormatted(szMessage,"                 <commands> must be a single shell token.\n");
+			KviQString::appendFormatted(szMessage,"                 You can eventually use this switch more than once\n");
+			KviQString::appendFormatted(szMessage,"  -m           : If a KVIrc session is already running, show an informational\n");
+			KviQString::appendFormatted(szMessage,"                 popup dialog instead of writing to the console");
+			KviQString::appendFormatted(szMessage,"  --nosplash   : Do not show the splash screen at startup\n");
+			KviQString::appendFormatted(szMessage,"  [server]     : Connect to this server after startup\n");
+			KviQString::appendFormatted(szMessage,"  [port]       : Use this port for connection\n");
+			KviQString::appendFormatted(szMessage,"  [ircurl]     : URL in the following form:\n");
+			KviQString::appendFormatted(szMessage,"                 irc[6]://<server>[:<port>][/<channel>[?<pass>]]\n");
 
+#ifdef COMPILE_ON_WINDOWS
+			MessageBox(0,szMessage.local8Bit().data(),"KVIrc",0);
+#else
+			debug(szMessage);
+#endif
 			return KVI_ARGS_RETCODE_STOP;
 		}
 

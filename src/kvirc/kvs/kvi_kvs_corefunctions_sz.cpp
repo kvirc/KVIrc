@@ -180,6 +180,7 @@ namespace KviKvsCoreFunctions
 			<string> $serialize(<data:mixed>)
 		@description:
 			Decodes JSON-encoded string
+			$serialize() returns a string containing a byte-stream representation of value that can be stored anywhere.
 		@seealso:
 			[fnc]$serialize[/fnc]
 	*/
@@ -387,7 +388,7 @@ namespace KviKvsCoreFunctions
 		@short:
 			Returns the value of a switch for an alias
 		@syntax:
-			<variant> $sw(<switch_name:string>)
+			<variant> $sw(<switch_name:string>[,<long_switch_name:string>])
 		@description:
 			This function is valid and useful only in aliases.
 			It allows an alias to handle switches just like any other
@@ -401,12 +402,13 @@ namespace KviKvsCoreFunctions
 		@examples:
 			[example]
 				[cmd]alias[/cmd](test){
-					if($sw(a)) [cmd]echo[/cmd] "Switch -a was passed"
+					if($sw(a,append)) [cmd]echo[/cmd] "Switch -a was passed"
 					%x = $sw(x);
 					if(%x) [cmd]echo[/cmd] "Switch -x=%x was passed"
 				}
 				test -a
 				test -x
+				test --append -x
 				test -a -x
 				test -a -x=test
 				test -a=10 -x=test
@@ -416,9 +418,11 @@ namespace KviKvsCoreFunctions
 	KVSCF(sw)
 	{
 		QString szSwitch;
+		QString szLongSwitch;
 
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("switch_name",KVS_PT_STRING,0,szSwitch)
+			KVSCF_PARAMETER("long_name",KVS_PT_STRING | KVS_PF_OPTIONAL ,0,szLongSwitch)
 		KVSCF_PARAMETERS_END
 
 		KviKvsSwitchList * sl = KVSCF_pContext->aliasSwitchList();
@@ -429,9 +433,20 @@ namespace KviKvsCoreFunctions
 		}
 
 		KviKvsVariant * v;
+		
 
-		if(szSwitch.length() > 1)v = sl->find(szSwitch);
-		else v = sl->find(szSwitch[0]);
+		if(szSwitch.length() > 1)
+		{
+			if(szLongSwitch.isEmpty())
+				v = sl->find(szSwitch);
+			else
+				v = sl->find(szSwitch[0].unicode(),szLongSwitch);
+		}else {
+			if(szLongSwitch.isEmpty())
+				v = sl->find(szSwitch[0]);
+			else
+				v = sl->find(szSwitch[0].unicode(),szLongSwitch);
+		}
 
 		if(v)KVSCF_pRetBuffer->copyFrom(*v);
 		else KVSCF_pRetBuffer->setNothing();

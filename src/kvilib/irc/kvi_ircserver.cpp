@@ -134,6 +134,24 @@ void KviIrcServer::generateUniqueId()
 	KviQString::sprintf(m_szId,"myserver%d%d%d",tv.tv_usec,rand() % 1000,rand() % 1000);
 }
 
+QString KviIrcServer::ircUri()
+{
+	QString uri("irc");
+	if(useSSL())uri += "s";
+	if(isIpV6())uri += "6";
+	uri += "://";
+	uri += m_szHostname;
+
+	if(m_uPort!=6667)
+	{
+		uri += ":";
+		QString num;
+		num.setNum(m_uPort);
+		uri += num;
+	}
+	return uri;
+}
+
 void KviIrcServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pChannelList)delete m_pChannelList;

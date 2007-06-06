@@ -68,7 +68,7 @@ class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 public:
 	KviHyperionIrcServerInfo(const QString & version = KviQString::empty)
 		:KviBasicIrcServerInfo(version) {;};
-	virtual char getRegisterModeChar() { return 'r'; };
+	virtual char getRegisterModeChar() { return 'e'; };
 };
 
 class KVIRC_API KviIrcConnectionServerInfo

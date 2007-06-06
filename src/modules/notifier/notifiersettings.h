@@ -60,7 +60,7 @@
 
 #define	m_mac_bkgColor	QColor(236,233,216)		// Light-brown color of notifier background widget
 
-enum State { Hidden, Showing, Visible, Hiding };
+enum State { Hidden, Showing, Visible, Hiding , FocusingOff, FocusingOn };
 enum TabState { Normal, Highlighted, Changed };
 
 #endif	//_NOTIFIER_SETTINGS_H_
