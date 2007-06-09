@@ -3,26 +3,19 @@ WRITE DOCS!!! :P
 This is a list of KVIrc 2.x events that are not present yet on KVIRC 3.
 Please remove as you implement them.
 
-OnAway
 OnCTCPMultimedia
-OnChannelOpNotice
 OnError
 OnEventError
 OnIdleStart
 OnIdleStop
-OnKeyShorcut
 OnLogin?
-OnMeNotice
 OnUnhandedNumeric
 OnUserWindowFileDrop
 OnUserWindowInput
-OnUserWindowSelected
 OnWhoisReply -> kvi_sp_numeric.cpp 851
 
-(15)
+(10)
 
-
-OnAction should also be triggered on DCC Chats actions?
 
 Commands (Pragma please review, maybe remove ircop commands?)
 --------
@@ -32,7 +25,6 @@ CTTPREPLY
 DIR
 FINDTEXT
 GEOMETRY
-KILL
 KILLPROC
 LOCOPS
 MULTIMEDIA
@@ -44,10 +36,9 @@ PROCLIST
 REHASH
 STATSERV
 STATUS
-UMODE
 UNEXCEPT
 
-(19)
+(17)
 
 Functions
 ---------

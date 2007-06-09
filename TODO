@@ -13,7 +13,6 @@ Mantain TODO file as clear as possible
 - Check away status from the /WHO message ? (this would involve requesting WHO often)
 - Handle more uncommon channel modes in the channel mode box ?
   SHould get the available modes from RPL_ISUPPORT and show them in the box
-- Export RAW events
 - On-line charset guessing:
 	KviWindow should have the possibility of setting a KVI_CHARSET_AUTO
 	The KviWindow::decodeText() should contain an algorithm that
@@ -30,10 +29,6 @@ Mantain TODO file as clear as possible
 - Userlist
 	The userlist should be dynamical after how many characters the server lets you use in a nickname, today it's
 	way too wide, this makes it look ugly.
-- IRC Contexts
-	There need to be a way to detect how many different IRC-Contexts there is and what ID each of them have.
-	All commands must also be irc-context aware, so you can "/away -n irc-context1 irc-context3 I am away".
-	I am aware that this can be done by targeting at the console of the IRC-context.
 - Text-hints
 	Text hints doesn't dissapear after changing desktop under KDE, and you have to change back to the
 	desktop where KVIrc is to remove the hint.
@@ -51,11 +46,5 @@ Mantain TODO file as clear as possible
          to both user1, user3, user9 and
          user31, then I would like to add these to a group called "Friends", and then
          just do a "/gquery Friends hi :) what's up?"
-- Nick settings:
-         * A list over nicks where you can add as many nicks as you would want.. 
-		pressing the add button will let you add another
-        	one in the list and so on...
-         * Keep trying to take nicks higher in the list if nick is taken
 
-         Settings for the General Options dialog
 - Add commands for playing PCM WAV files (using the DCC voice code).
