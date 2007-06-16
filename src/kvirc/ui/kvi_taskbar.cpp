@@ -674,6 +674,7 @@ void KviClassicTaskBar::applyOptions()
 
 void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 {
+#ifdef COMPILE_USE_QT4
 	if(orientation() == Qt::Horizontal)
 	{
 		int iRows = height()/m_iButtonHeight;
@@ -681,6 +682,7 @@ void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 		debug("%i %i",height(),iRows);
 		resize(width(),iRows*m_iButtonHeight);
 	}
+#endif
 	KviTaskBarBase::resizeEvent(e);
 	doLayout();
 }
