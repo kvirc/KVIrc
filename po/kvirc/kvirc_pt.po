@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-05-07 22:02+0100\n"
+"PO-Revision-Date: 2007-06-18 07:01+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -5885,11 +5885,11 @@ msgstr "Permite-lhe configurar os servidores e eventualmente conectar a um deles
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_coreactions.cpp:128
 msgid "Manage Addons..."
-msgstr "Gerir Addons..."
+msgstr "Gerir Extras..."
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_coreactions.cpp:129
 msgid "Allows you to manage the script-based addons"
-msgstr "Permite-lhe gerir os addons baseado no script"
+msgstr "Permite-lhe gerir os extras baseado no script"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_coreactions.cpp:139
 msgid "Configure Registered Users..."
@@ -7985,7 +7985,7 @@ msgstr "Total: %d utilizadores que coincidem (com %d na base de dados)"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:197
 msgid "Manage Script-Based Addons"
-msgstr "Gerir Addons Baseados no Script"
+msgstr "Gerir Extras Baseados no Script"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:221
 #: /home/oem/kvirc-qt4/src/kvilib/system/kvi_locale.cpp:1150
@@ -8002,27 +8002,27 @@ msgstr "Desinstalar"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:243
 msgid "Install Addon..."
-msgstr "Instalar Addon..."
+msgstr "Instalar Extra..."
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:247
 msgid "More Addons..."
-msgstr "Mais Addons..."
+msgstr "Mais Extras..."
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:333
 msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr "Deseja realmente desinstalar o addon \"%1\"?"
+msgstr "Deseja realmente desinstalar o extra \"%1\"?"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:337
 msgid "Confirm addon uninstallation"
-msgstr "Confirmar desinstalação do addon"
+msgstr "Confirmar desinstalação do extra"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/managementdialog.cpp:354
 msgid "Please select the addon installation file"
-msgstr "Por favor seleccione o ficheiro de instalação do addon"
+msgstr "Por favor seleccione o ficheiro de instalação do extra"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:144
 msgid "%cAddon id %Q, version %Q%c"
-msgstr "%cAddon id %Q, versão %Q%c"
+msgstr "%cExtra id %Q, versão %Q%c"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:145
 msgid "Name: %Q"
@@ -8036,12 +8036,12 @@ msgstr "Descrição: %Q"
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:152
 #, c-format
 msgid "Total: %d addons installed"
-msgstr "Total: %d addons instalados"
+msgstr "Total: %d extras instalados"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:192
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:571
 msgid "Uninstalling existing addon version %Q"
-msgstr "A desinstalar o addon existente versão%Q"
+msgstr "A desinstalar o extra existente versão%Q"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:198
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:244
@@ -8049,15 +8049,15 @@ msgstr "A desinstalar o addon existente versão%Q"
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:337
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:384
 msgid "The addon \"%1\" does not exist"
-msgstr "O addon \"%1\" não existe"
+msgstr "O extra \"%1\" não existe"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:238
 msgid "The addon \"%1\" has no configure callback set"
-msgstr "O addon \"%1\" não tem nenhuma chamada definida"
+msgstr "O extra \"%1\" não tem nenhuma chamada definida"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:285
 msgid "The addon \"%1\" has no help callback set"
-msgstr "O addon \"%1\" não tem nenhuma ajuda definida"
+msgstr "O extra \"%1\" não tem nenhuma ajuda definida"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:527
 #: /home/oem/kvirc-qt4/src/modules/action/libkviaction.cpp:377
@@ -8077,18 +8077,18 @@ msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
 msgstr ""
-"Este executável KVirc é demasiado antigo para correr este addon (a versão "
+"Este executável KVirc é demasiado antigo para correr este extra (a versão "
 "mínima requerida é %Q)"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:553
 msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr "A tentar registar o addon \"%Q\" com a versão %Q"
+msgstr "A tentar registar o extra \"%Q\" com a versão %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:565
 msgid ""
 "The script addon \"%Q\" already exists with version %Q which is higher than %"
 "Q"
-msgstr "O addon do script \"%Q\" já existe com a versão %Q que é maior que a %Q"
+msgstr "O extra do script \"%Q\" já existe com a versão %Q que é maior que a %Q"
 
 #: /home/oem/kvirc-qt4/src/modules/addon/libkviaddon.cpp:579
 msgid "Script registration failed"
