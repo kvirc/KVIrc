@@ -688,6 +688,9 @@ static char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "bugfixes, german tutorials" \
 "</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"everything is possible, it only needs its time.\"" \
+"</i></font></td></tr>" \
 "</table><br><br>" \
 "<br>" \
 "This list is far from being complete.<br>" \
