@@ -656,6 +656,9 @@ static char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "Artist :)" \
 "</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"Time makes no sense ;)\"" \
+"</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
@@ -690,6 +693,69 @@ static char * g_szAboutText = "" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"everything is possible, it only needs its time.\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Elvio Basello</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"HelLViS69" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"hellvis69 at altervista dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Site (re)creator, Italian translation, scripting," \
+"<br>" \
+"bughunting, Slackware packages, new ideas..." \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"&lt;HelLViS69&gt; Blessed gdb, in the name of ritchie,\"" \
+"<br>" \
+"\"kermingham and rms\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Massimiliano Leone</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"k0sm|k0" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"k0smik0 at logorroici dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Debian packages, moral support" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"One must make one's self superior to humanity, in power,\"" \
+"<br>" \
+"\"in loftiness of soul, in contempt. - Friedrich Nietzsche\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Lorenzo Marcon</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"LoSko" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"http://losko.altervista.org/nglfserv/" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Bug hunting and fixing, doc fixes, scripting (NGL File Server)" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"I don't know what I want, but I know how to get it.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<br>" \
