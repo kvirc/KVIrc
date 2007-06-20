@@ -704,7 +704,7 @@ static char * g_szAboutText = "" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"hellvis69 at altervista dot org" \
+"hellvis69 at netsons dot org" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
