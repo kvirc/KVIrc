@@ -43,6 +43,8 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 {
 	// irc[6]://<server>[:<port>][/<channel>[?<pass>]]
 	KviStr szUrl = url;
+	szUrl.replaceAll("$","\\$");
+	szUrl.replaceAll(";","\\;");
 	bool bIpV6 = false;
 	bool bSSL = false;
 	KviStr szServer;
