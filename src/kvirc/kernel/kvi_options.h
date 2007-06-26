@@ -725,6 +725,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define KviOption_resetRestartIdentd (1 << 22)
 	#define KviOption_resetReloadImages (1 << 23)
 	#define KviOption_resetRestartLagMeter (1 << 24)
+	#define KviOption_resetRecentChannels (1 << 25)
 
 	#define KviOption_resetMask (~(KviOption_sectMask | KviOption_groupMask))
 	

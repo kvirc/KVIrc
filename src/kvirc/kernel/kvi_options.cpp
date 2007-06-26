@@ -1310,6 +1310,11 @@ void KviApp::optionResetUpdate(int flags)
 	{
 		g_pApp->restartLagMeters();
 	}
+	
+	if(flags & KviOption_resetRecentChannels)
+	{
+		g_pApp->buildRecentChannels();
+	}
 }
 
 bool KviApp::setOptionValue(const char * optName,const QString &value)

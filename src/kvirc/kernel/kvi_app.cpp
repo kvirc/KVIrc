@@ -1852,7 +1852,6 @@ void KviApp::addRecentNickname(const char * newNick)
 
 void KviApp::addRecentNickname(const QString& newNick)
 {
-	
 	merge_to_stringlist_option(newNick,KviOption_stringlistRecentNicknames,KVI_MAX_RECENT_NICKNAMES);
 }
 
