@@ -981,7 +981,6 @@ void KviWindow::youAreUndocked()
 
 void KviWindow::activateSelf()
 {
-	debug("ACTIVATING SELF");
 	if(mdiParent())
 		mdiParent()->activate(false);
 
@@ -1000,7 +999,6 @@ void KviWindow::setFocus()
 
 void KviWindow::focusInEvent(QFocusEvent *)
 {
-	debug("FOCUS IN EVENT TO KviWindow");
 	if(m_pLastFocusedChild)
 	{
 		if(m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
@@ -1060,7 +1058,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	// we should be already the active window at this point.
 	// If we're not, then run activateSelf() to fix this.
 	if(g_pActiveWindow != this)activateSelf();
-	else debug("ACTIVE WINDOW IS ALREADY THIS");
+	//else debug("ACTIVE WINDOW IS ALREADY THIS");
 	updateCaption();
 }
 
