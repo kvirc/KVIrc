@@ -4,7 +4,7 @@
 //   Creation date : Tue Jul 6 1999 14:52:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -226,7 +226,6 @@ bool KviWindow::hasAttention()
 		// In this case we assume that the user has the
 		// KVIrc window just below and can see it.
 
-
 		// Handle the special case of the dialogs then
 		QWidget * w = ((QApplication *)g_pApp)->activeWindow();
 		if(w->inherits("QDialog"))
@@ -235,7 +234,7 @@ bool KviWindow::hasAttention()
 			if(!frame()->isVisible())return false;
 			return true;
 		}
-		// any other class is so unfrequent that we 
+		// any other class is so unfrequent that we ignore it
 	} else {
 		// when the window is undocked, instead
 		// it is likely to be covered by KVIrc or other windows...
@@ -372,32 +371,32 @@ bool KviWindow::activityMeter(unsigned int *,unsigned int *)
 
 const char * KviWindow::m_typeTable[KVI_WINDOW_NUM_TYPES + 1]=
 {
-        "console",
-        "channel",
-        "query",
-        "help",
-        "terminal",
-        "editor",
-        "dccchat",
-        "dccsend",
-        "socketspy",
-        "links",
-        "tool",
-        "gnutella",
-        "dirbrowser",
-        "dcccanvas",
-        "dccvoice",
-        "list",
-        "offer",
-        "logview",
-        "deadchannel",
-        "deadquery",
-        "scripteditor",
-        "scriptobject",
-        "userwindow",
-		"debug",
-        // <------ NEW TYPES GO HERE!
-        "unknown"
+	"console",
+	"channel",
+	"query",
+	"help",
+	"terminal",
+	"editor",
+	"dccchat",
+	"dccsend",
+	"socketspy",
+	"links",
+	"tool",
+	"gnutella",
+	"dirbrowser",
+	"dcccanvas",
+	"dccvoice",
+	"list",
+	"offer",
+	"logview",
+	"deadchannel",
+	"deadquery",
+	"scripteditor",
+	"scriptobject",
+	"userwindow",
+	"debug",
+	// <------ NEW TYPES GO HERE!
+	"unknown"
 };
 
 const char * KviWindow::typeString()
@@ -504,9 +503,7 @@ void KviWindow::toggleCryptController()
 			if(m_pCryptControllerButton->isOn())
 				m_pCryptControllerButton->setOn(false);
 		}
-	}
-	else
-	{
+	} else {
 		if(m_pSplitter && m_pInput)
 		{
 			m_pCryptController = new KviCryptController(m_pSplitter,m_pCryptControllerButton,"crypt_controller",this,m_pCryptSessionInfo);

@@ -275,6 +275,10 @@ exception of the first one) but it is highly appreciated.
 
 - INDENT WITH TABS (the only MANDATORY rule)
 
+	Go back to the line above and read it again.
+	
+	INDENT, TABS.
+
 	Tabs can be assigned any number of spaces in any decent source code
 	editor.
 	
@@ -384,7 +388,6 @@ Coding tips
 	This is a workaround for Windows that uses a separate
 	heap for each executable module (*.exe or *.dll). Data allocated on one
 	heap must be freed on the same heap.
-
 
 -------------------------------------------------------------------------------
 The strings
@@ -590,11 +593,6 @@ KviApp * g_pApp;
 	The one and only application object
 	Declared in "kvi_app.h"
 	Always set.
-
-KviUserParser * g_pUserParser;
-	The one and only user parser (will be replaced by the KVS engine soon...)
-	Declared in "kvi_uparser.h"
-	Almost always set (critical phases at early startup and late shutdown)
 
 KviServerParser * g_pServerParser;
 	The one and only server parser
@@ -916,3 +914,22 @@ For the moment, in random order:
 - Do not use the "char * c = KviQString::toUtf8(string).data();" construct.
   It leads to crashes on many compilers since the returned KviQCString
   goes out of scope just at the end of the instruction.
+
+-------------------------------------------------------------------------------
+Code documentation
+-------------------------------------------------------------------------------
+
+KVIrc is LARGE. We need to start documenting the source code if we want
+to understand our own code in a year from now and if we want help from
+others.
+
+Use doxygen.
+
+There is a Doxyfile in the admin subdirectory. You can either
+run doxygen from there or simply type "make devdocs" from the
+top directory of the source tree.
+Then take a look at doc/api/html/annotated.html
+
+Let's also try to document the code we write: the doxygen syntax
+is trivial and you can find a 5 minute tutorial by googling.
+

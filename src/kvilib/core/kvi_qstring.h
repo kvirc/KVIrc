@@ -38,6 +38,14 @@
 
 #include <qstring.h>
 
+///
+/// \namespace KviQString
+///
+/// \brief A namespace for QString helper functions
+///
+/// This namespace contains several helper functions
+/// that are used when dealing with QString.
+///
 namespace KviQString
 {
 	extern KVILIB_API QString makeSizeReadable(size_t size);
@@ -126,6 +134,10 @@ namespace KviQString
 	// a global empty string (note that this is ALSO NULL under Qt 3.x)
 	extern KVILIB_API const QString empty;
 
+	///
+	/// A portability wrapper which with Qt3 and Qt4.
+	/// Returns a lowcase version of the parameter string.
+	///
 	inline QString toLower(const QString &s)
 	{
 #ifdef COMPILE_USE_QT4
