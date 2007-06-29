@@ -2797,10 +2797,30 @@ void KviIrcView::fastScroll(int lines)
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
 		defLeftCoord+=KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 	}
+
+	if(!m_pFm)
+	{
+		// note that QFontMetrics(pa.font()) may be not the same as QFontMetrics(font())
+		// because the painter might effectively use an approximation of the QFont specified
+		// by font()... thus we need to get the double buffer and
+		// create the painter here :/
+		// Well.. this is an one-time operation so it's now expensive in fact.
+		KviDoubleBuffer doublebuffer(width(),height());
+		QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
+		
+		QPainter pa(pDoubleBufferPixmap);
+	
+		pa.setFont(font());
+		recalcFontVariables(QFontMetrics(pa.font()),pa.fontInfo());
+	}
+
+
 	int heightToPaint = 1;
 	KviIrcViewLine * l = m_pCurLine;
-	while(lines > 0){
-		if(l){
+	while(lines > 0)
+	{
+		if(l)
+		{
 			if(maxLineWidth != l->iMaxLineWidth)calculateLineWraps(l,maxLineWidth);
 			heightToPaint += l->uLineWraps * m_iFontLineSpacing;
 			heightToPaint += (m_iFontLineSpacing + m_iFontDescent);
@@ -2808,26 +2828,19 @@ void KviIrcView::fastScroll(int lines)
 			l = l->pPrev;
 		} else lines = 0;
 	}
-/*#ifdef COMPILE_USE_QT4
-	QPainter p(this);
-	QPixmap pixmap=QPixmap::grabWidget(this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
-	p.drawPixmap(1,1,pixmap,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
-#else
-*/
 
 	bitBlt(this,1,1,this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
-//#endif
 
 	QRect r(0,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER),
 			widgetWidth,heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER);
 
-	QPaintEvent * e = new QPaintEvent(r);
-	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
 	repaint(r);
-	#else
+#else
+	QPaintEvent * e = new QPaintEvent(r);
 	paintEvent(e);
-	#endif
 	delete e;
+#endif
 
 	if(m_iLastLinkRectHeight > -1)
 	{
