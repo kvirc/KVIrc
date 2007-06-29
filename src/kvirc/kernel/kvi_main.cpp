@@ -243,8 +243,8 @@ int parseArgs(ParseArgs * a)
 				a->szExecCommand.append("openurl ");
 				tmp.replaceAll("$","\\$");
 				tmp.replaceAll(";","\\;");
-				tmp.replaceAll("%","\\%");
 				a->szExecCommand.append(tmp);
+				debug("EXEC COMMAND NOW IS: %s",a->szExecCommand.ptr());
 			} else {
 				QString tmp = QString::fromLocal8Bit(p);
 				bool bOk;
