@@ -241,6 +241,9 @@ int parseArgs(ParseArgs * a)
 				KviStr tmp = QString::fromLocal8Bit(p);
 				if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 				a->szExecCommand.append("openurl ");
+				tmp.replaceAll("$","\\$");
+				tmp.replaceAll(";","\\;");
+				tmp.replaceAll("%","\\%");
 				a->szExecCommand.append(tmp);
 			} else {
 				QString tmp = QString::fromLocal8Bit(p);
