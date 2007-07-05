@@ -248,50 +248,6 @@ namespace KviKvsCoreFunctions
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
-		@doc: avatar
-		@type:
-			function
-		@title:
-			$avatar
-		@short:
-			DEPRECATED: use [fnc]$avatar.name[/fnc]
-		@syntax:
-			<string> $avatar[([<nickname:string>])]
-		@description:
-			DEPRECATED: use [fnc]$avatar.name[/fnc]
-	*/
-
-	KVSCF(avatar)
-	{
-		QString szNick;
-
-		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("nickname",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
-		KVSCF_PARAMETERS_END
-
-		if(KVSCF_pContext->window()->console())
-		{
-			if(KVSCF_pContext->window()->console()->isConnected())
-			{
-				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick.isEmpty() ? KVSCF_pContext->window()->connection()->currentNickName() : szNick);
-				if(e)
-				{
-					KviAvatar * a = e->avatar();
-					if(a)
-					{
-						KVSCF_pRetBuffer->setString(a->localPath());
-						return true;
-					}
-				}
-			}
-		}
-		KVSCF_pRetBuffer->setNothing();
-		return true;
-	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
 		@doc: away
 		@type:
 			function
@@ -456,30 +412,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setBoolean(iVal);
 		return true;
 	}
-
-	/////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-		@doc: calc
-		@type:
-			function
-		@title:
-			$calc
-		@short:
-			$calc() has been replaced by $() !
-		@syntax:
-			$(<expression>)
-		@description:
-			In KVIrc 3.0.0 , $calc() has been replaced by the $().[br]
-			This is just a shorter and faster form.[br]
-			You can use $() to evaluate any integer expression.[br]
-		@examples:
-			[example]
-				[cmd]echo[/cmd] $(1 + 2)
-				%var = 2
-				[cmd]echo[/cmd] $(10 * %val << 1)
-			[/example]
-	*/
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
