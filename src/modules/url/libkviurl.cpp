@@ -901,4 +901,3 @@ KVIRC_MODULE(
 	url_module_cleanup
 )
 
-#include "libkviurl.moc"

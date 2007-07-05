@@ -48,4 +48,3 @@ KviGeneralOptOptionsWidget::~KviGeneralOptOptionsWidget()
 }
 
 
-#include "m_optw_generalopt.moc"

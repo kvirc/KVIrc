@@ -155,4 +155,3 @@ bool KviKvsObject_window::functionsetCentralWidget(KviKvsObjectFunctionCall *c)
 	((KviKvsScriptWindowWindow *)widget())->setCentralWidget((KviKvsObject_widget *)ob,((KviKvsObject_widget *)ob)->widget());
 	return true;
 }
-#include "m_class_window.moc"

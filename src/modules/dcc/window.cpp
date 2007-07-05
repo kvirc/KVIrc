@@ -50,4 +50,3 @@ const char * KviDccWindow::dccMarshalOutputContextString()
 	return static_context;
 }
 
-#include "m_window.moc"

@@ -726,4 +726,3 @@ void KviIdentityAdvancedOptionsWidget::commit()
 
 
 
-#include "m_optw_identity.moc"

@@ -249,6 +249,4 @@ void KviHistoryWindow::hideEvent ( QHideEvent * )
 		m_iTimerId = -1;
 	}
 }
-
-#include "kvi_historywin.moc"
 #endif //_KVI_HISTORYWIN_CPP_

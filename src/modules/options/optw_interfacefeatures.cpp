@@ -85,4 +85,3 @@ void KviInterfaceFeaturesOptionsWidget::commit()
 	
 }
 
-#include "m_optw_interfacefeatures.moc"

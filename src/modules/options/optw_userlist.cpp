@@ -242,4 +242,3 @@ KviUserListFeaturesOptionsWidget::~KviUserListFeaturesOptionsWidget()
 {
 }
 
-#include "m_optw_userlist.moc"

@@ -324,4 +324,3 @@ void KviHelpWindow::fillCaptionBuffers()
 }
 
 
-#include "helpwindow.moc"

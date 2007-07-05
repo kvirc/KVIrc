@@ -2,6 +2,11 @@
 //
 #include "resource.h"
 
+#ifdef __GNUC__
+	#include "commctrl.rc"
+#endif
+
+#include "afxres.h"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
@@ -10,7 +15,6 @@ IDD_ICON2               ICON    DISCARDABLE     "kvs.ico"
 IDD_ICON3               ICON    DISCARDABLE     "kvc.ico"
 IDD_ICON4               ICON    DISCARDABLE     "kvt.ico"
 IDD_ICON5               ICON    DISCARDABLE     "kva.ico"
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -27,3 +31,36 @@ BEGIN
     "\r\n"
     "\0"
 END 
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,2,6,99
+ PRODUCTVERSION 3,2,6,99
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "KVIrc Development Team"
+            VALUE "FileDescription", "K Visual IRC Client Executable"
+            VALUE "FileVersion", "3, 2, 6, 99"
+            VALUE "InternalName", "KVIrc"
+            VALUE "LegalCopyright", "Copyright (C) 2007"
+            VALUE "OriginalFilename", "kvirc.exe"
+            VALUE "ProductName", "K Visual IRC Client"
+            VALUE "ProductVersion", "3, 2, 6, 99"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END

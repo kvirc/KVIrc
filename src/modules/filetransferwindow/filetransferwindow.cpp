@@ -765,4 +765,3 @@ void KviFileTransferWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
-#include "m_filetransferwindow.moc"

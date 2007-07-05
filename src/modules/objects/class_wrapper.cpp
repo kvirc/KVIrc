@@ -265,5 +265,3 @@ QWidget *KviKvsObject_wrapper::findWidgetToWrap(const char *szClass, const char 
 	return 0;
 #endif
 }
-
-#include "m_class_wrapper.moc"

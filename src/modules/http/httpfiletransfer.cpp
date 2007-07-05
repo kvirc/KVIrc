@@ -486,4 +486,3 @@ bool KviHttpFileTransfer::startDownload()
 	return m_pHttpRequest->start();
 }
 
-#include "m_httpfiletransfer.moc"

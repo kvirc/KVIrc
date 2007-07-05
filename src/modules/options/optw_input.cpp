@@ -153,4 +153,3 @@ KviInputFeaturesOptionsWidget::~KviInputFeaturesOptionsWidget()
 {
 }
 
-#include "m_optw_input.moc"

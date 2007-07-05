@@ -259,4 +259,3 @@ void KviMediaTypesOptionsWidget::commit()
 	g_pMediaManager->unlock();
 }
 
-#include "m_optw_mediatypes.moc"

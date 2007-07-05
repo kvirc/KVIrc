@@ -687,27 +687,27 @@ void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 	doLayout();
 }
 
-inline KviTaskBarItem * KviClassicTaskBar::firstItem()
+KviTaskBarItem * KviClassicTaskBar::firstItem()
 {
 	return m_pButtonList->first();
 }
 
-inline KviTaskBarItem * KviClassicTaskBar::lastItem(void)
+KviTaskBarItem * KviClassicTaskBar::lastItem(void)
 {
 	return m_pButtonList->last();
 }
 
-inline KviTaskBarItem * KviClassicTaskBar::nextItem()
+KviTaskBarItem * KviClassicTaskBar::nextItem()
 {
 	return m_pButtonList->next();
 }
 
-inline KviTaskBarItem * KviClassicTaskBar::prevItem(void)
+KviTaskBarItem * KviClassicTaskBar::prevItem(void)
 {
 	return m_pButtonList->prev();
 }
 
-inline bool KviClassicTaskBar::setIterationPointer(KviTaskBarItem * it)
+bool KviClassicTaskBar::setIterationPointer(KviTaskBarItem * it)
 {
 	return (m_pButtonList->findRef((const KviTaskBarButton *)it) != -1);
 }
@@ -1425,5 +1425,3 @@ void KviTreeTaskBar::applyOptions()
 		m_pListView->header()->show();
 	}
 }
-
-#include "kvi_taskbar.moc"

@@ -531,4 +531,3 @@ void KviListWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
-#include "listwindow.moc"

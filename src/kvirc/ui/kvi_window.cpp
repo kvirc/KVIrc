@@ -1513,6 +1513,3 @@ void KviWindow::preprocessMessage(QString & szMessage)
 	}
 	szMessage=strings.join(" ");
 }
-
-
-#include "kvi_window.moc"

@@ -2054,11 +2054,3 @@ void KviApp::timerEvent(QTimerEvent *e)
 
 	heartbeat(tNow);
 }
-
-// qvariant.h uses this , and it is included by the qt generated moc file for Qt >= 3.0.0
-#ifdef Bool
-	#undef Bool
-#endif
-
-
-#include "kvi_app.moc"

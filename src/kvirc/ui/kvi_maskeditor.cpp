@@ -346,5 +346,3 @@ void KviMaskEditor::listViewDoubleClicked( KviTalListViewItem * pItem)
 		}
 	}
 }
-
-#include "kvi_maskeditor.moc"

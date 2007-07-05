@@ -672,4 +672,3 @@ void  KviOptionsDialog::keyPressEvent( QKeyEvent * e )
 		e->ignore();
 }
 
-#include "m_dialog.moc"

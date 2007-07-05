@@ -151,4 +151,3 @@ bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
 
 
 
-#include "helpwidget.moc"

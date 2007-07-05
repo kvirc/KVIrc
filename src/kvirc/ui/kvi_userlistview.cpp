@@ -1969,5 +1969,3 @@ void KviUserListViewArea::wheelEvent(QWheelEvent *e)
 	bHere = false;
 #endif
 }
-
-#include "kvi_userlistview.moc"

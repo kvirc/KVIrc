@@ -1213,5 +1213,3 @@ bool KviKvsObject_mledit::functionselectAll(KviKvsObjectFunctionCall *c)
 }
 
 
-
-#include "m_class_multilineedit.moc"

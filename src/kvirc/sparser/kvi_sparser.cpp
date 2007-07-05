@@ -143,8 +143,3 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 		}
 	}
 }
-
-
-
-
-#include "kvi_sparser.moc"

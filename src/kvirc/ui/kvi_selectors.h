@@ -251,6 +251,7 @@ private:
 	QLabel      * m_pLabel;
 	QFont       * m_pOption;
 	QPushButton * m_pButton;
+	QFont         m_tmpFont;
 public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);

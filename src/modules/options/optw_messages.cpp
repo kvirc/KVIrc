@@ -690,4 +690,3 @@ void KviMessageColorsOptionsWidget::load()
 	}
 }
 
-#include "m_optw_messages.moc"

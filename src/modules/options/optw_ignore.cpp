@@ -59,4 +59,3 @@ void KviIgnoreOptionsWidget::enableVerbose(bool)
 
 
 
-#include "m_optw_ignore.moc"

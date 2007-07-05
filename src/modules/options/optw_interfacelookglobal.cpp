@@ -212,4 +212,3 @@ KviThemeToolBarAppletsOptionsWidget::~KviThemeToolBarAppletsOptionsWidget()
 }
 
 
-#include "m_optw_interfacelookglobal.moc"

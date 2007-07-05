@@ -227,5 +227,3 @@ bool KviKvsObject_dockwindow::function_dock(KviKvsObjectFunctionCall * c)
 	else c->warning(__tr2qs("Invalid dock area specified"));
 	return true;
 }
-
-#include "m_class_dockwindow.moc"

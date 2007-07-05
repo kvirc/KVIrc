@@ -330,5 +330,3 @@ bool KviKvsObject_xmlreader::function_lastError(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setString(m_szLastError);
 	return true;
 }
-
-#include "m_class_xmlreader.moc"

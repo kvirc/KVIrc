@@ -148,6 +148,7 @@
 
 #ifdef COMPILE_USE_QT4
 	#include <q3mimefactory.h>
+	#include <QTimer>
 	#define QMimeSourceFactory Q3MimeSourceFactory
 #endif
 
@@ -400,7 +401,11 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	// and catch all mouse events
 	setMouseTracking(true);
 	// let's go!
+#ifdef COMPILE_USE_QT4
+	QTimer::singleShot(0, this, SLOT(applyOptions()));
+#else
 	applyOptions();
+#endif
 	
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)) //m_iFlushTimer
 	{
@@ -460,6 +465,7 @@ KviIrcView::~KviIrcView()
 
 void KviIrcView::setFont(const QFont &f)
 {
+	debug("setting a font");
 	if(m_pFm)
 	{
 		// force an update to the font variables
@@ -482,6 +488,7 @@ void KviIrcView::setFont(const QFont &f)
 
 void KviIrcView::applyOptions()
 {
+	debug("apply options");
 	flushLog();
 	setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
 	if(m_iFlushTimer) killTimer(m_iFlushTimer);
@@ -5288,5 +5295,3 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
 	else m_pLastLinkUnderMouse = 0; //
 }
-
-#include "kvi_ircview.moc"

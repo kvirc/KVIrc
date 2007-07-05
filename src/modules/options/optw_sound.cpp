@@ -306,5 +306,3 @@ KviSoundsOptionsWidget::KviSoundsOptionsWidget(QWidget * parent)
 KviSoundsOptionsWidget::~KviSoundsOptionsWidget()
 {
 }
-
-#include "m_optw_sound.moc"

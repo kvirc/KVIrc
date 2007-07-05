@@ -203,4 +203,3 @@ void KviDccRenameBox::cancelClicked()
 
 
 
-#include "m_dialogs.moc"

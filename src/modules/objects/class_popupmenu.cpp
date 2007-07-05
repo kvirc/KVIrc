@@ -357,5 +357,3 @@ bool KviKvsObject_popupmenu::functionactivatedEvent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-
-#include "m_class_popupmenu.moc"

@@ -961,5 +961,3 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 }
 
 
-
-#include "index.moc"

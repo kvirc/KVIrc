@@ -283,5 +283,3 @@ void KviKvsObject_slider::valueChanged(int value)
 	callFunction(this,"valueChangedEvent",&params);
 }
 
-
-#include "m_class_slider.moc"

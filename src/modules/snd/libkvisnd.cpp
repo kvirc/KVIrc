@@ -741,4 +741,3 @@ KVIRC_MODULE(
 	snd_module_cleanup
 )
 
-#include "libkvisnd.moc"

@@ -1416,5 +1416,3 @@ void KviFrame::hideEvent ( QHideEvent * e)
 		
 	}
 }
-
-#include "kvi_frame.moc"

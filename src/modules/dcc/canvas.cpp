@@ -296,6 +296,4 @@ void KviDccCanvas::connected()
 }
 
 
-#include "m_canvas.moc"
-
 #endif

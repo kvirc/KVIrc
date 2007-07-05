@@ -718,5 +718,3 @@ void KviOptionsWidget::switchToAdvancedPage()
 
 	emit wantToSwitchToAdvancedPage(this);
 }
-
-#include "kvi_optionswidget.moc"

@@ -264,6 +264,5 @@
 	#endif //!COMPILE_NO_X
 #endif //!COMPILE_ON_WINDOWS
 
-	#include "kvi_ipc.moc"
 
 #endif

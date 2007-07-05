@@ -217,6 +217,3 @@ void KviSplashScreen::fadeTimerShot()
 	}
 #endif
 }
-
-
-#include "kvi_splash.moc"

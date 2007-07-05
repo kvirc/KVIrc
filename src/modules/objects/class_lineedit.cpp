@@ -457,5 +457,3 @@ void KviKvsObject_lineedit::slottextChanged(const QString &text)
 	callFunction(this,"textChangedEvent",&params);
 }
 
-
-#include "m_class_lineedit.moc"

@@ -82,4 +82,3 @@ KviLagOptionsWidget::~KviLagOptionsWidget()
 }
 
 
-#include "m_optw_lag.moc"

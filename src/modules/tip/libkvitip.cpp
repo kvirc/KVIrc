@@ -306,4 +306,3 @@ KVIRC_MODULE(
 	tip_module_cleanup
 )
 
-#include "libkvitip.moc"

@@ -1596,6 +1596,5 @@ void KviCanvasWidget::resizeEvent(QResizeEvent *)
 }
 
 
-#include "m_canvaswidget.moc"
 
 #endif

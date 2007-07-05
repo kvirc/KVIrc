@@ -1887,4 +1887,3 @@ void KviDccFileTransferBandwidthDialog::closeEvent(QCloseEvent * e)
 
 
 
-#include "m_send.moc"

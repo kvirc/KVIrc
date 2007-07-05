@@ -895,4 +895,3 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 }
 
 
-#include "m_broker.moc"

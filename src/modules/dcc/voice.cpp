@@ -1038,4 +1038,3 @@ void KviDccVoice::focusInEvent(QFocusEvent *e)
 	KviWindow::focusInEvent(e);
 }
 
-#include "m_voice.moc"

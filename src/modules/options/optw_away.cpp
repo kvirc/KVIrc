@@ -68,4 +68,3 @@ void KviAwayOptionsWidget::enableCustomAwayText(bool)
 }
 
 
-#include "m_optw_away.moc"

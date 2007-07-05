@@ -278,6 +278,3 @@ void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 hideme:
 	doHide();
 }
-
-
-#include "kvi_texticonwin.moc"

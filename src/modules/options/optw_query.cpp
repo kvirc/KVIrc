@@ -111,5 +111,3 @@ KviQueryOptionsWidget::~KviQueryOptionsWidget()
 {
 }
 
-
-#include "m_optw_query.moc"

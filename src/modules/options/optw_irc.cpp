@@ -217,4 +217,3 @@ void KviChannelAdvancedOptionsWidget::commit()
 	KviOptionsWidget::commit();
 }
 
-#include "m_optw_irc.moc"

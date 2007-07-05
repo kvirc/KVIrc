@@ -113,4 +113,3 @@ KviCtcpFloodProtectionOptionsWidget::~KviCtcpFloodProtectionOptionsWidget()
 }
 
 
-#include "m_optw_ctcpfloodprotection.moc"

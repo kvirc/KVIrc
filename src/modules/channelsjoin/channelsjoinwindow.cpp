@@ -297,5 +297,3 @@ void KviChannelsJoinWindow::closeEvent(QCloseEvent *e)
 	e->ignore();
 	delete this;
 }
-
-#include "m_channelsjoinwindow.moc"

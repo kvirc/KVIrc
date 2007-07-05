@@ -134,5 +134,3 @@ void KviKvsObject_radiobutton::toggled(bool b)
 	callFunction(this,"toggleEvent",&params);
 }
 
-
-#include "m_class_radiobutton.moc"

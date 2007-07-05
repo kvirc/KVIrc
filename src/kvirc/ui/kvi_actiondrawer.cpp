@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_actiondrawer.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"

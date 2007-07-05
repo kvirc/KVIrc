@@ -363,5 +363,3 @@ void KviProxyOptionsWidget::removeCurrent()
 		}
 	}
 }
-
-#include "m_optw_proxy.moc"

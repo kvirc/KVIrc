@@ -65,5 +65,3 @@ void KviTorrentStatusBarApplet::update()
 	}
 }
 
-#include "tc_statusbarapplet.moc"
-

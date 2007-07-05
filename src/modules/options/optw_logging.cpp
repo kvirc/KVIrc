@@ -61,4 +61,3 @@ KviLoggingOptionsWidget::~KviLoggingOptionsWidget()
 
 
 
-#include "m_optw_logging.moc"

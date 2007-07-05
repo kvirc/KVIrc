@@ -174,6 +174,5 @@ QSize KviTermWidget::sizeHint() const
 	return QSize(wdth + 2,hght + 2);
 }
 
-#include "termwidget.moc"
 
 #endif //COMPILE_KDE_SUPPORT

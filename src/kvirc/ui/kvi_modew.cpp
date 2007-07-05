@@ -171,5 +171,3 @@ void KviModeWidget::editorTextChanged( const QString & text)
 	}	
 	m_pLineEdit->setText(szText);
 }
-
-#include "kvi_modew.moc"

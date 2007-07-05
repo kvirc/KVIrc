@@ -174,5 +174,3 @@ void KviKvsObject_button::slotClicked()
 	callFunction(this,"clickEvent",params);
 }
 
-
-#include "m_class_button.moc"

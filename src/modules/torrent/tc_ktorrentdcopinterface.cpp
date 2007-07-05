@@ -494,7 +494,6 @@ bool KviKTorrentDCOPInterface::setMaxDownloadSpeed(int kbytes_per_sec)
 }
 
 
-#include "tc_ktorrentdcopinterface.moc"
 
 #endif // COMPILE_KDE_SUPPORT
 

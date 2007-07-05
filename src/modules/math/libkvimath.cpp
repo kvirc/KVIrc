@@ -50,7 +50,7 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 	return true; \
 }
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && !defined(__GNUC__)
 // dobbiamo testare meglio, i risultati.
 static double cbrt(double x)
 {

@@ -131,4 +131,3 @@ KviNotifierOptionsWidget::~KviNotifierOptionsWidget()
 }
 
 
-#include "m_optw_notify.moc"

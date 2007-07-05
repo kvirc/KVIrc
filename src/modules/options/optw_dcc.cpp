@@ -390,4 +390,3 @@ KviDccVoiceOptionsWidget::~KviDccVoiceOptionsWidget()
 {
 }
 
-#include "m_optw_dcc.moc"

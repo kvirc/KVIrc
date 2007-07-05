@@ -88,4 +88,3 @@ void KviTrayOptionsWidget::setEnabled(bool bEnabled)
 }
 
 
-#include "m_optw_tray.moc"

@@ -149,6 +149,3 @@ void KviToolBar::setSmallIcons()
 }
 
 
-
-
-#include "kvi_toolbar.moc"

@@ -122,6 +122,5 @@ void KviUrlHandlersOptionsWidget::commit()
 #endif
 }
 
-#include "m_optw_urlhandlers.moc"
 
 #endif //_OPTW_URLHANDLERS_CPP_

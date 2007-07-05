@@ -485,4 +485,3 @@ bool KviScriptFileObject::functionHexRead(KviCommand * c, KviParameterList * p,
 }
 
 */
-#include "m_class_file.moc"

@@ -224,6 +224,3 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 	delete d;
 	return false;
 }
-
-
-#include "kvi_filedialog.moc"

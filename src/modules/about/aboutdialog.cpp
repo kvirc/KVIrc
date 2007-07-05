@@ -162,5 +162,3 @@ void KviAboutDialog::closeButtonPressed()
 {
 	delete this;
 }
-
-#include "aboutdialog.moc"

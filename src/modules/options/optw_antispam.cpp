@@ -61,4 +61,3 @@ void KviAntispamOptionsWidget::reenableStuff(bool)
 }
 
 
-#include "m_optw_antispam.moc"

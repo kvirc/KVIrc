@@ -561,6 +561,7 @@ KviFontSelector::KviFontSelector(QWidget * par,const QString & txt,QFont * pOpti
 	setButtonFont(pOption);
 
 	m_pOption = pOption;
+	m_tmpFont = *pOption;
 
 	setEnabled(bEnabled);
 }
@@ -575,12 +576,15 @@ void KviFontSelector::changeClicked()
 {
 	bool bOk;
 	QFont tmp = QFontDialog::getFont(&bOk,m_pButton->font());
-	if(bOk)setButtonFont(&tmp);
+	if(bOk) {
+		setButtonFont(&tmp);
+		m_tmpFont=tmp;
+	}
 }
 
 void KviFontSelector::commit()
 {
-	*m_pOption = m_pButton->font();
+	*m_pOption = m_tmpFont;
 }
 
 void KviFontSelector::setEnabled(bool bEnabled)
@@ -835,5 +839,3 @@ void KviCahnnelListSelector::removeClicked()
 	lst.setAutoDelete(TRUE);
 	lst.clear();
 }
-
-#include "kvi_selectors.moc"

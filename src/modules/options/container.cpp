@@ -120,4 +120,3 @@ void KviOptionsWidgetContainer::cancelClicked()
 	deleteLater();
 }
 
-#include "m_container.moc"

@@ -337,5 +337,3 @@ void KviKvsObject_toolbutton::slotClicked()
 	callFunction(this,"clickEvent",params);
 }
 
-#include "m_class_toolbutton.moc"
-

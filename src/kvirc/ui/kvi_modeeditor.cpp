@@ -332,5 +332,3 @@ void KviModeEditor::commit()
 
 	emit done();
 }
-
-#include "kvi_modeeditor.moc"

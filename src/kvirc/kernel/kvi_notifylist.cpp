@@ -1273,5 +1273,3 @@ bool KviWatchNotifyListManager::handleWatchReply(KviIrcMessage *msg)
 	return false;
 }
 
-
-#include "kvi_notifylist.moc"

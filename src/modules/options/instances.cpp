@@ -3586,5 +3586,3 @@ KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(con
 }
 
 
-#include "m_instances.moc"
-

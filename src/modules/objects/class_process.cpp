@@ -313,5 +313,3 @@ void KviKvsObject_process::slotReadStderr()
 	KviKvsVariantList *params=0;
 	callFunction(this,"readyReadStderrEvent",params);
 }
-
-#include "m_class_process.moc"
