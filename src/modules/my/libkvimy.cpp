@@ -264,6 +264,34 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
+/*
+	@doc: my.serverIsSSL
+	@type:
+		function
+	@title:
+		$my.serverIsSSL
+	@short:
+		Returns 1 if the current server connection use SSL.
+	@syntax:
+		<boolean> $my.serverIsSSL([irc_context_id:uint])
+	@description:
+		Returns 1 if the server connection use SSL.[br]
+		If the irc context is not connected then an empty string is returned.[br]
+		If <irc_context_id> is specified this function returns acts as it was called
+		in that irc_context.[br]
+*/
+
+static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
+{ 
+	
+	GET_KVS_CONSOLE
+	if(wnd)
+	{
+		if(wnd->connection())
+			c->returnValue()->setBoolean(wnd->connection()->socket()->usingSSL());
+	}
+	return true;
+}
 
 /*
 	@doc: my.server
@@ -330,7 +358,7 @@ static bool my_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"server",my_kvs_fnc_server);
 	KVSM_REGISTER_FUNCTION(m,"network",my_kvs_fnc_network);
 	KVSM_REGISTER_FUNCTION(m,"umode",my_kvs_fnc_umode);
-	KVSM_REGISTER_FUNCTION(m,"globalIdle",my_kvs_fnc_globalIdle);
+	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",my_kvs_fnc_serverIsSSL);
 	
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"stopIdleTimer",my_kvs_cmd_stopIdleTimer);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"startIdleTimer",my_kvs_cmd_startIdleTimer);
