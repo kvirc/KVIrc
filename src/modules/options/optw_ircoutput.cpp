@@ -91,3 +91,4 @@ void KviIrcOutputOptionsWidget::commit()
 	KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = i;
 }
 
+#include "m_optw_ircoutput.moc"

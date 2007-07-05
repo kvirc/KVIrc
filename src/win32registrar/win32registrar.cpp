@@ -2,8 +2,6 @@
 #include <tchar.h>
 #include <shlwapi.h>
 
-#define WINVER 0x0501
-
 int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
                      LPSTR lpszCmdLine,int nCmdShow)
 {

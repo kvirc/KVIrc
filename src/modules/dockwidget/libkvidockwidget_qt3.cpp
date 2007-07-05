@@ -853,4 +853,6 @@ KVIRC_MODULE(
 	dockwidget_module_cleanup
 )
 
+#include "libkvidockwidget_qt3.moc"
+
 #endif

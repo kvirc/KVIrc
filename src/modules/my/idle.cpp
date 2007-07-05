@@ -130,3 +130,4 @@ void Idle::doCheck()
 	secondsIdle(secondsIdle());
 }
 
+#include "idle.moc"

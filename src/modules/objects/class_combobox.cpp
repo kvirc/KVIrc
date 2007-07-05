@@ -362,3 +362,5 @@ void KviKvsObject_combobox::slotActivated(int i)
 	callFunction(this,"activatedEvent",&params);
 }
 
+
+#include "m_class_combobox.moc"

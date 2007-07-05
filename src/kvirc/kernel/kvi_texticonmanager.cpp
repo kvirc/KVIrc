@@ -250,3 +250,5 @@ void KviTextIconManager::save(const QString &filename)
 		++it;
 	}
 }
+
+#include "kvi_texticonmanager.moc"

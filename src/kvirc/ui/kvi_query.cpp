@@ -650,8 +650,9 @@ void KviQuery::ownAction(const QString &buffer)
 		if(sz.isEmpty())return;
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
 			sz.data(),0x01,szBuffer.data(),0x01))return;
-		if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnMeAction,this,QString(szBuffer.data())))return;
 		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&buffer);
 		m_pUserListView->userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
 	}
 }
+
+#include "kvi_query.moc"

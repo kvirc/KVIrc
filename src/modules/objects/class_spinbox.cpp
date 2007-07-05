@@ -261,3 +261,5 @@ void KviKvsObject_spinbox::valueChanged(int value)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)value));
 	callFunction(this,"valueChangedEvent",&params);
 }
+
+#include "m_class_spinbox.moc"

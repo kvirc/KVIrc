@@ -149,3 +149,5 @@ bool KviKvsObject_toolbar::functionclear(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
+#include "m_class_toolbar.moc"
+

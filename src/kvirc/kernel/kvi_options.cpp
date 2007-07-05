@@ -47,7 +47,7 @@
 //#include "kvi_textencoding.h"
 
 //xml parser
-//#include <qdom.h>
+#include <qdom.h>
 //!xml parser
 
 #include <zlib.h>

@@ -20,44 +20,6 @@ bin_PROGRAMS = kvirc
 #
 
 nodist_kvirc_SOURCES = ../kernel/moc_kvi_action.cpp \
-../kernel/moc_kvi_app.cpp
-../kernel/moc_kvi_iconmanager.cpp
-../kernel/moc_kvi_ipc.cpp
-../kernel/moc_kvi_lagmeter.cpp
-../kernel/moc_kvi_notifylist.cpp
-../kernel/moc_kvi_texticonmanager.cpp
-../sparser/moc_kvi_sparser.cpp
-../ui/moc_kvi_channel.cpp
-../ui/moc_kvi_colorwin.cpp
-../ui/moc_kvi_console.cpp
-../ui/moc_kvi_cryptcontroller.cpp
-../ui/moc_kvi_ctcppagedialog.cpp
-../ui/moc_kvi_dynamictooltip.cpp
-../ui/moc_kvi_filedialog.cpp
-../ui/moc_kvi_frame.cpp
-../ui/moc_kvi_historywin.cpp
-../ui/moc_kvi_input.cpp
-../ui/moc_kvi_ipeditor.cpp
-../ui/moc_kvi_irctoolbar.cpp
-../ui/moc_kvi_ircview.cpp
-../ui/moc_kvi_maskeditor.cpp
-../ui/moc_kvi_menubar.cpp
-../ui/moc_kvi_modeeditor.cpp
-../ui/moc_kvi_optionswidget.cpp
-../ui/moc_kvi_query.cpp
-../ui/moc_kvi_scriptbutton.cpp
-../ui/moc_kvi_scripteditor.cpp
-../ui/moc_kvi_selectors.cpp
-../ui/moc_kvi_splash.cpp
-../ui/moc_kvi_taskbar.cpp
-../ui/moc_kvi_texticonwin.cpp
-../ui/moc_kvi_themedlabel.cpp
-../ui/moc_kvi_toolbar.cpp
-../ui/moc_kvi_topicw.cpp
-../ui/moc_kvi_modew.cpp
-../ui/moc_kvi_styled_controls.cpp
-../ui/moc_kvi_userlistview.cpp
-../ui/moc_kvi_window.cpp
 ../kernel/moc_kvi_actionmanager.cpp \
 ../kernel/moc_kvi_coreactions.cpp \
 ../kernel/moc_kvi_filetransfer.cpp \
@@ -499,6 +461,46 @@ headers_HEADERS = ../kernel/kvi_action.h \
 # Command useful to find the moc dependancies
 # DIRS="kernel sparser ui uparser"
 # for dire in $DIRS; do grep "\.moc" ../$dire/*.cpp | sort | sed -e 's/[[:space:]]*#include//' | sed -e s/\\\"/..\\\/$dire\\\// | sed -e 's/\"//'; done
+
+../kernel/kvi_app.cpp: ../kernel/kvi_app.moc
+../kernel/kvi_iconmanager.cpp: ../kernel/kvi_iconmanager.moc
+../kernel/kvi_ipc.cpp: ../kernel/kvi_ipc.moc
+../kernel/kvi_lagmeter.cpp: ../kernel/kvi_lagmeter.moc
+../kernel/kvi_notifylist.cpp: ../kernel/kvi_notifylist.moc
+../kernel/kvi_texticonmanager.cpp: ../kernel/kvi_texticonmanager.moc
+../sparser/kvi_sparser.cpp: ../sparser/kvi_sparser.moc
+../ui/kvi_channel.cpp: ../ui/kvi_channel.moc
+../ui/kvi_colorwin.cpp: ../ui/kvi_colorwin.moc
+../ui/kvi_console.cpp: ../ui/kvi_console.moc
+../ui/kvi_cryptcontroller.cpp: ../ui/kvi_cryptcontroller.moc
+../ui/kvi_ctcppagedialog.cpp: ../ui/kvi_ctcppagedialog.moc
+../ui/kvi_dynamictooltip.cpp: ../ui/kvi_dynamictooltip.moc
+../ui/kvi_filedialog.cpp: ../ui/kvi_filedialog.moc
+../ui/kvi_frame.cpp: ../ui/kvi_frame.moc
+../ui/kvi_historywin.cpp: ../ui/kvi_historywin.moc
+../ui/kvi_input.cpp: ../ui/kvi_input.moc
+../ui/kvi_ipeditor.cpp: ../ui/kvi_ipeditor.moc
+../ui/kvi_irctoolbar.cpp: ../ui/kvi_irctoolbar.moc
+../ui/kvi_ircview.cpp: ../ui/kvi_ircview.moc
+../ui/kvi_maskeditor.cpp: ../ui/kvi_maskeditor.moc
+../ui/kvi_menubar.cpp: ../ui/kvi_menubar.moc
+../ui/kvi_modeeditor.cpp: ../ui/kvi_modeeditor.moc
+../ui/kvi_optionswidget.cpp: ../ui/kvi_optionswidget.moc
+../ui/kvi_query.cpp: ../ui/kvi_query.moc
+../ui/kvi_scriptbutton.cpp: ../ui/kvi_scriptbutton.moc
+../ui/kvi_scripteditor.cpp: ../ui/kvi_scripteditor.moc
+../ui/kvi_selectors.cpp: ../ui/kvi_selectors.moc
+../ui/kvi_splash.cpp: ../ui/kvi_splash.moc
+../ui/kvi_taskbar.cpp: ../ui/kvi_taskbar.moc
+../ui/kvi_texticonwin.cpp: ../ui/kvi_texticonwin.moc
+../ui/kvi_themedlabel.cpp: ../ui/kvi_themedlabel.moc
+../ui/kvi_toolbar.cpp: ../ui/kvi_toolbar.moc
+../ui/kvi_topicw.cpp: ../ui/kvi_topicw.moc
+../ui/kvi_modew.cpp: ../ui/kvi_modew.moc
+../ui/kvi_styled_controls.cpp: ../ui/kvi_styled_controls.moc
+../ui/kvi_userlistview.cpp: ../ui/kvi_userlistview.moc
+../ui/kvi_window.cpp: ../ui/kvi_window.moc
+
 
 ../kvs/moc_%.cpp: ../kvs/%.h
 	$(SS_QT_MOC) $< -o $@

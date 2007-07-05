@@ -293,4 +293,5 @@ KVIRC_MODULE(
 )
 
 #if 0
+#include "libkviiograph.moc"
 #endif

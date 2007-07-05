@@ -386,3 +386,5 @@ kvs_uint_t uIndex;
 		return true;
 }
 
+
+#include "m_class_listbox.moc"

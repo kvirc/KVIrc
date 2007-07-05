@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#define __KVIRC__
+
 #include "kvi_colorwin.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
@@ -115,3 +117,6 @@ void KviColorWindow::timerEvent(QTimerEvent *)
 		killTimer(m_iTimerId);
 	hide();
 }
+
+
+#include "kvi_colorwin.moc"

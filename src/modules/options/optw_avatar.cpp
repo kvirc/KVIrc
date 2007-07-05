@@ -128,3 +128,4 @@ KviAvatarAdvancedOptionsWidget::~KviAvatarAdvancedOptionsWidget()
 }
 
 
+#include "m_optw_avatar.moc"

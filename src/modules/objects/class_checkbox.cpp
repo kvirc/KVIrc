@@ -124,3 +124,5 @@ void KviKvsObject_checkbox::toggled(bool b)
 	callFunction(this,"toggleEvent",&params);
 }
 
+
+#include "m_class_checkbox.moc"

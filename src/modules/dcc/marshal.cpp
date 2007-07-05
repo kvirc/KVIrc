@@ -644,3 +644,4 @@ void KviDccMarshal::connectionTimedOut()
 }
 
 
+#include "m_marshal.moc"

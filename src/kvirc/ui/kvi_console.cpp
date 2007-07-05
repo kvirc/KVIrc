@@ -25,6 +25,8 @@
 
 // FIXME: The TextEncoding should be inherited from network!
 
+#define __KVIRC__
+
 #include "kvi_ircurl.h"
 #include "kvi_app.h"
 #include "kvi_console.h"
@@ -1063,8 +1065,8 @@ void KviConsole::setAvatarFromOptions()
 void KviConsole::applyOptions()
 {
 	m_pNotifyListView->applyOptions();
-	//m_pInput->applyOptions(); will be done by KviWindow
-	//m_pIrcView->applyOptions(); will be done by KviWindow
+	m_pInput->applyOptions();
+	m_pIrcView->applyOptions();
 
 	KviWindow::applyOptions();
 
@@ -1268,3 +1270,5 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 
 	buffer += "</table>";
 }
+
+#include "kvi_console.moc"

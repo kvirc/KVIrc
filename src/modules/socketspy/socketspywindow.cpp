@@ -122,3 +122,4 @@ void KviSocketSpyWindow::applyOptions()
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();
 }
+#include "m_socketspywindow.moc"

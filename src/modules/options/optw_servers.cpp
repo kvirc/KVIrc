@@ -1708,3 +1708,5 @@ void KviServerOptionsWidget::detailsClicked()
 		m_pNetworkDetailsDialog = 0;
 	}
 }
+
+#include "m_optw_servers.moc"

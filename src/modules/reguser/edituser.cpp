@@ -777,3 +777,4 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 
 
 
+#include "edituser.moc"

@@ -118,3 +118,4 @@ void SPasteController::pasteClipboard(void)
 	} else delete this;//Clipboard finished
 }
 
+#include "controller.moc"

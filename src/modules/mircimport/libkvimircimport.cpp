@@ -380,3 +380,4 @@ KVIRC_MODULE(
 	mircimport_module_cleanup
 )
 
+#include "libkvimircimport.moc"

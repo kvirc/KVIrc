@@ -46,18 +46,11 @@
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_popupmanager.h"
-#include "kvi_settings.h"
 
 #include <qcursor.h>
 #include <qprocess.h>
 #include <qtimer.h>
 
-//FIXME: should be #ifdef UNICODE here...
-/*#if defined(__GNUC__) && defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS)
-	#define _UNICODE
-	#include <tchar.h>
-#endif
-*/
 namespace KviKvsCoreSimpleCommands
 {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -399,13 +392,8 @@ namespace KviKvsCoreSimpleCommands
 #ifdef COMPILE_ON_WINDOWS
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-//#if defined(__GNUC__) && defined(COMPILE_USE_QT4) //FIXME: should be #ifdef UNICODE here...
-//			ShellExecute(NULL, _T("open"), (const WCHAR*)(szUrl.utf16()),
-//			                NULL, NULL, SW_SHOWNORMAL);
-//#else
 			ShellExecute(NULL, "open", szUrl.local8Bit().data(),
                 NULL, NULL, SW_SHOWNORMAL);
-//#endif
 		} else {
 #endif
 			if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);

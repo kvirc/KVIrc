@@ -143,3 +143,5 @@ void KviCtcpPageDialog::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 	center();
 }
+
+#include "kvi_ctcppagedialog.moc"

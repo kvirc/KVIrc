@@ -1049,3 +1049,4 @@ void KviSetupWizard::accept()
 	KviTalWizard::accept();
 }
 
+#include "setupwizard.moc"

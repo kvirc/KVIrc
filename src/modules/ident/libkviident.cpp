@@ -611,3 +611,5 @@ KVIRC_MODULE(
 	0,
 	ident_module_cleanup
 )
+
+#include "libkviident.moc"

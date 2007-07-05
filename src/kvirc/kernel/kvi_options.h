@@ -671,7 +671,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #endif
 
 
-#if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_) || defined(CREATING_PCH)
+#if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
 
 	// flag definitions
 

@@ -739,3 +739,4 @@ void KviSharedFilesWindow::die()
 //}
 
 
+#include "m_sharedfileswindow.moc"

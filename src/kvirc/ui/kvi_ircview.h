@@ -152,6 +152,7 @@ private:
 public:
 	void checkLogDate();
 	void clearUnreaded();
+	void applyOptions();
 	void enableDnd(bool bEnable);
 	bool haveUnreadedMessages() { return m_bHaveUnreadedMessages; };
 	bool haveUnreadedHighlightedMessages() { return m_bHaveUnreadedHighlightedMessages; };
@@ -200,7 +201,6 @@ public:
 	const QString & lastMessageText();
 	virtual void setFont(const QFont &f);
 public slots:
-	void applyOptions();
 	void flushLog();
 	void showToolsPopup();
 	void clearBuffer();

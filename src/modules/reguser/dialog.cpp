@@ -907,3 +907,6 @@ succesfull_import:
 	f.close();
 	fillList();
 }
+#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+#include "dialog.moc"
+#endif

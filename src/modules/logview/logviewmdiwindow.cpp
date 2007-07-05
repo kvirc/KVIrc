@@ -474,3 +474,4 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 #endif
 }
 
+#include "logviewmdiwindow.moc"

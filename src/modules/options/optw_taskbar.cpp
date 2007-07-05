@@ -251,3 +251,5 @@ KviClassicTaskBarOptionsWidget::KviClassicTaskBarOptionsWidget(QWidget * parent)
 KviClassicTaskBarOptionsWidget::~KviClassicTaskBarOptionsWidget()
 {
 }
+
+#include "m_optw_taskbar.moc"

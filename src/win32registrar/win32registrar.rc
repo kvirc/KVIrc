@@ -2,20 +2,13 @@
 //
 #include "resource.h"
 
-#ifdef __GNUC__
-1                       24                      "../../data/manifests/damn-uac.manifest"
-#endif
-
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#ifdef __GNUC__
-	#include "winresrc.h"
-#else
-	#include "winres.h"
-#endif
+#include "winres.h"
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 

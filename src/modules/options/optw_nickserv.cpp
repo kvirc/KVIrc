@@ -365,3 +365,4 @@ void KviNickServOptionsWidget::commit()
 	KviOptionsWidget::commit();
 }
 
+#include "m_optw_nickserv.moc"

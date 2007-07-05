@@ -253,4 +253,5 @@ KVIRC_MODULE(
 	clock_module_cleanup
 )
 #if 0
+#include "libkviclock.moc"
 #endif

@@ -240,3 +240,5 @@ void KviTextIconsOptionsWidget::commit()
 				m_pTable->clearCell(i,j);
 	
 }
+
+#include "m_optw_texticons.moc"

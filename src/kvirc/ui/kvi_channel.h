@@ -48,7 +48,6 @@ class KviTopicWidget;
 class KviIrcMask;
 class KviThemedLabel;
 class KviTalHBox;
-class KviModeWidget;
 
 #ifdef COMPILE_ON_WINDOWS
 	// windows compiler wants this instead of the forward decl

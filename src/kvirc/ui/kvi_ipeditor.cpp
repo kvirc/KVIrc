@@ -448,3 +448,6 @@ QSize KviIpEditor::sizeHint()
 		else return QSize((labHint * 7) + (ediHint * 8) + 4,hghHint + 4);
 	} else return QFrame::sizeHint();
 }
+
+
+#include "kvi_ipeditor.moc"

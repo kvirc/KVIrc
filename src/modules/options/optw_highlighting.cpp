@@ -123,5 +123,6 @@ KviAlertOptionsWidget::~KviAlertOptionsWidget()
 }
 
 
+#include "m_optw_highlighting.moc"
 
 #endif //_OPTW_HIGHLIGHTING_CPP_

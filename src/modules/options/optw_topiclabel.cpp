@@ -39,3 +39,5 @@ KviTopicLabelLookOptionsWidget::KviTopicLabelLookOptionsWidget(QWidget *p):KviOp
 KviTopicLabelLookOptionsWidget::~KviTopicLabelLookOptionsWidget()
 {
 }
+
+#include "m_optw_topiclabel.moc"

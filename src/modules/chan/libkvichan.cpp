@@ -25,7 +25,6 @@
 
 #include "kvi_module.h"
 #include "kvi_string.h"
-#include "qapplication.h" //broken mingw compiler?
 #include "kvi_app.h"
 #include "kvi_channel.h"
 #include "kvi_locale.h"

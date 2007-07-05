@@ -367,4 +367,7 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}
 }
+
+#include "kvi_styled_controls.moc"
+
 #endif

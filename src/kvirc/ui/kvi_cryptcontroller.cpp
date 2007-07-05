@@ -384,4 +384,7 @@
 		delete *inf;
 		*inf = 0;
 	}
+
+	#include "kvi_cryptcontroller.moc"
+
 #endif //COMPILE_CRYPT_SUPPORT

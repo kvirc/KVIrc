@@ -57,3 +57,5 @@ void KviDynamicToolTip::tip(const QRect &rct,const QString & text)
 {
 	m_pHelper->tip(rct,text);
 }
+
+#include "kvi_dynamictooltip.moc"

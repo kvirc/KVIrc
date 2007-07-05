@@ -25,7 +25,6 @@
 #define _CHANNELSJOIN_H_
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_tal_groupbox.h"
 
 #include <qdialog.h>
 

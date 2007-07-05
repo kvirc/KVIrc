@@ -1742,3 +1742,4 @@ bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 }
 #endif
 
+#include "m_class_widget.moc"

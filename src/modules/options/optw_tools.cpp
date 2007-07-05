@@ -46,3 +46,5 @@ KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
 KviToolsOptionsWidget::~KviToolsOptionsWidget()
 {
 }
+
+#include "m_optw_tools.moc"

@@ -1003,3 +1003,5 @@ bool KviKvsObject_painter::functionsetSmoothPixmapTransform(KviKvsObjectFunction
 #endif
 
 
+
+#include "m_class_painter.moc"

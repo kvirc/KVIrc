@@ -839,3 +839,4 @@ out_of_the_loop:
 	return bRet;
 }
 
+#include "m_chat.moc"

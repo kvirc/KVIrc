@@ -411,3 +411,5 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 	connect(p,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
 	m_pScriptItemList->append(it);
 }
+
+#include "kvi_menubar.moc"

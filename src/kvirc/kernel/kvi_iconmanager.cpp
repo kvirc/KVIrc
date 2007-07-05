@@ -920,3 +920,5 @@ void KviIconManager::cacheCleanup()
 	if(m_pCachedImages->isEmpty())m_pCleanupTimer->stop();
 */
 }
+
+#include "kvi_iconmanager.moc"

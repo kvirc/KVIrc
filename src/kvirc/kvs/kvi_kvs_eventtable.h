@@ -203,9 +203,7 @@
 
 #define KviEvent_OnNickServAuth 138
 
-#define KviEvent_OnMeAction 139
-
-#define KVI_KVS_NUM_APP_EVENTS 140
+#define KVI_KVS_NUM_APP_EVENTS 139
 // compat
 #define KVI_NUM_SCRIPT_EVENTS KVI_KVS_NUM_APP_EVENTS
 

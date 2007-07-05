@@ -432,3 +432,10 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 	p->drawLine(KVI_APPLETIRCCONTEXTINDICATORWIDTH,2,KVI_APPLETIRCCONTEXTINDICATORWIDTH,height() - 2);
 
 }
+
+
+#ifdef Bool
+	#undef Bool
+#endif
+
+#include "kvi_irctoolbar.moc"

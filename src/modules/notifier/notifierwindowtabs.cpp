@@ -703,3 +703,4 @@ void KviNotifierWindowTabs::closeTab(KviWindow * pWnd, KviNotifierWindowTab * pT
 	}
 }
 
+#include "m_notifierwindowtabs.moc"

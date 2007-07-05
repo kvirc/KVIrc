@@ -537,3 +537,5 @@ void KviKvsObject_tabwidget::slotCurrentChanged(int value)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)value));
 	callFunction(this,"currentChangedEvent",&params);
 }
+
+#include "m_class_tabwidget.moc"

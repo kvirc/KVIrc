@@ -79,5 +79,6 @@ void KviTermWindow::fillCaptionBuffers()
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii());
 }
 
+#include "termwindow.moc"
 
 #endif

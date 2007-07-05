@@ -469,3 +469,4 @@ void KviLinksWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
+#include "m_linkswindow.moc"

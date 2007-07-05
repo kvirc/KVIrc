@@ -2660,3 +2660,5 @@ QString KviInput::text()
 		szText=m_pInputEditor->text();
 	return szText; 
 }
+
+#include "kvi_input.moc"

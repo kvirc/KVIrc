@@ -313,3 +313,5 @@ QImage * KviKvsObject_pixmap::getImage()
 	
 	return m_pImage;
 }
+
+#include "m_class_pixmap.moc"

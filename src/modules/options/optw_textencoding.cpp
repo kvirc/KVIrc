@@ -135,3 +135,5 @@ void KviTextEncodingOptionsWidget::commit()
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))
 		QMessageBox::information(0,"KVIrc",__tr2qs_ctx("You need to restart KVirc to apply a language changing","options"),QMessageBox::Ok);*/
 }
+
+#include "m_optw_textencoding.moc"

@@ -262,3 +262,5 @@ void KviLagMeter::lagCheckAbort(const char * key)
 		if(kvi_strEqualCS(c->szKey.ptr(),key))l.append(c);
 	for(c = l.first();c;c = l.next())m_pCheckList->removeRef(c);
 }
+
+#include "kvi_lagmeter.moc"

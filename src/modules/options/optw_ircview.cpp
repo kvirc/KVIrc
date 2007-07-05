@@ -165,3 +165,4 @@ KviIrcViewFeaturesOptionsWidget::~KviIrcViewFeaturesOptionsWidget()
 
 
 
+#include "m_optw_ircview.moc"

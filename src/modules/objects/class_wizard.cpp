@@ -387,3 +387,4 @@ void KviKvsMdmWizard::slotBackClicked()
 KviKvsMdmWizard::~KviKvsMdmWizard()
 {
 }
+#include "m_class_wizard.moc"

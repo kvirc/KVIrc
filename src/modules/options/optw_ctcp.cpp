@@ -87,3 +87,4 @@ KviCtcpOptionsWidget::~KviCtcpOptionsWidget()
 }
 
 
+#include "m_optw_ctcp.moc"

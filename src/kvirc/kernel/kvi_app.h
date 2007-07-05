@@ -26,11 +26,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-#if defined(COMPILE_ON_WINDOWS) && defined(__GNUC__)
-	#include "qapplication.h"
-#endif
-
 #include "kvi_string.h"
 #include "kvi_qstring.h"
 #include "kvi_tal_application.h"
@@ -53,10 +48,6 @@
 	class KviIpcSentinel;
 #endif // !COMPILE_NO_IPC
 
-#ifdef USING_PCH
-#include <QApplication>
-#endif
-	
 class KviTalPopupMenu;
 class QPixmap;
 class KviTalListBox;
@@ -93,7 +84,7 @@ class KVIRC_API KviApp : public KviTalApplication
 	Q_OBJECT
 public:
 	KviApp(int &argc,char ** argv);
-	virtual ~KviApp(); //mingw wants virtual destructor:/
+	~KviApp();
 
 protected:
 	// directories

@@ -417,3 +417,5 @@ bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 	m_pListViewItem->setPixmap(uCol,*pix);
 	return true;
 }
+
+#include "m_class_listviewitem.moc"

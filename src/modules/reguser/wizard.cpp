@@ -459,3 +459,4 @@ void KviRegistrationWizard::notifyCheckToggled(bool)
 	notifyNickChanged(dummy);
 }
 
+#include "wizard.moc"

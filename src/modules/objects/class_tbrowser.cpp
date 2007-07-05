@@ -139,3 +139,5 @@ bool KviKvsObject_textbrowser::function_linkClickedEvent(KviKvsObjectFunctionCal
 	emitSignal("linkClicked",c,c->params());
 	return true;
 }
+
+#include "m_class_tbrowser.moc"

@@ -318,3 +318,4 @@ KviConnectionAdvancedOptionsWidget::~KviConnectionAdvancedOptionsWidget()
 
 }
 
+#include "m_optw_connection.moc"

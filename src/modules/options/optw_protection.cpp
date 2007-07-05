@@ -47,3 +47,4 @@ KviProtectionOptionsWidget::~KviProtectionOptionsWidget()
 {
 }
 
+#include "m_optw_protection.moc"

@@ -1326,4 +1326,6 @@ KviQCString szData8 = szData.utf8();
 
 
 
-//-------------
+//--------------
+
+#include "m_class_socket.moc"

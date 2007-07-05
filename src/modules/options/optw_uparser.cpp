@@ -59,3 +59,4 @@ KviUParserOptionsWidget::~KviUParserOptionsWidget()
 }
 
 
+#include "m_optw_uparser.moc"

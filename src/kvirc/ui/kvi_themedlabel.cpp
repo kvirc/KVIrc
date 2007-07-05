@@ -149,3 +149,6 @@ void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
 {
 	emit doubleClicked();
 }
+
+
+#include "kvi_themedlabel.moc"
