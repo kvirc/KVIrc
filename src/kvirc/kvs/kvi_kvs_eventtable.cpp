@@ -3124,6 +3124,24 @@ channel
 		@description:
 			Triggered when ircd sets a registered user mode.
 	*/
-	EVENT("OnNickServAuth","")
+        EVENT("OnNickServAuth",""),
+        /*
+                @doc: onmeaction
+                @type:
+                        event
+                @title:
+                        OnMeAction
+                @short:
+                        User issued a CTCP ACTION
+                @parameters:
+                        $0 = action message text
+                @window:
+                        Channels and query windows
+                @description:
+                        This event is triggered when user issues a CTCP ACTION.[br]
+                        (The CTCP ACTION is usually triggered by the /me command).[br]
+        */
+
+        EVENT("OnMeAction","$0 = action message text")
 };
 

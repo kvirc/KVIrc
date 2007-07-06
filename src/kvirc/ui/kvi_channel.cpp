@@ -1117,6 +1117,7 @@ void KviChannel::ownAction(const QString &buffer)
 	const char * d = szData.data();
 	if(!d)return;
 	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",szName.data(),0x01,d,0x01))return;
+	if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnMeAction,this,QString(d)))return;
 	QString szBuffer = "\r!nc\r";
 	szBuffer += connection()->currentNickName();
 	szBuffer += "\r ";
