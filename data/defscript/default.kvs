@@ -130,20 +130,11 @@ alias(gnotice)
 	}
 
 	# Check switches passed
-	if($sw(w))
-		eval %cmd \~$chan.name($active) $0-
-
-	if($sw(a))
-		eval %cmd \!$chan.name($active) $0-
-
-	if($sw(o))
-		eval %cmd \@$chan.name($active) $0-
-
-	if($sw(h))
-		eval %cmd \%$chan.name($active) $0-
-
-	if($sw(v))
-		eval %cmd \+$chan.name($active) $0-
+	if($sw(w)) eval %cmd \~$chan.name($active) $0-
+	if($sw(a)) eval %cmd \!$chan.name($active) $0-
+	if($sw(o)) eval %cmd \@$chan.name($active) $0-
+	if($sw(h)) eval %cmd \%$chan.name($active) $0-
+	if($sw(v)) eval %cmd \+$chan.name($active) $0-
 }
 alias(wallop)
 {
