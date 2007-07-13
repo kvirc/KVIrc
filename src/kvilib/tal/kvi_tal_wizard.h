@@ -28,9 +28,142 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_USE_QT4
-	#include "kvi_tal_wizard_qt4.h"
+	#include <QDialog>
 #else
-	#include "kvi_tal_wizard_qt3.h"
+	#include <qdialog.h>
 #endif
+
+class QShowEvent;
+class QPushButton;
+class KviTalWizardPrivate;
+class KviTalWizardPageData;
+
+///
+/// \class KviTalWizard
+///
+/// \brief Provides a wizard-style dialog with steps
+///
+class KVILIB_API KviTalWizard : public QDialog
+{
+	Q_OBJECT
+public:
+	KviTalWizard(QWidget * pParent);
+	~KviTalWizard();
+protected:
+	KviTalWizardPrivate * m_p;
+public:
+	///
+	/// Adds a page to the wizard with the specified title.
+	/// The pages are displayed in order they're added.
+	/// Adding a page a second time is equivalent to calling
+	/// setPageTitle() and enabling the page.
+	///
+	void addPage(QWidget * pWidget,const QString &szTitle);
+	///
+	/// Adds a page to the wizard with the specified title
+	/// and in the specified position.
+	/// Adding a page a second time is equivalent to calling
+	/// setPageTitle() and enabling the page.
+	///
+	void insertPage(QWidget * pWidget,const QString &szTitle,int iIndex);
+	///
+	/// Enables or disables a page. A disabled page
+	/// is skipped when the user presses "Next" in the
+	/// previous page or "Back" in the page after.
+	/// Disabling the current page has no effect.
+	///
+	/// Returns true on success or false if the pWidget
+	/// does not identify a page that has been added to this wizard.
+	///
+	bool setPageEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Changes a page title.
+	///
+	/// Returns true on success or false if the pWidget
+	/// does not identify a page that has been added to this wizard.
+	///
+	bool setPageTitle(QWidget * pWidget,const QString &szTitle);
+	///
+	/// Switches the wizard to the specified page.
+	/// Please note that this class handles page switching
+	/// automatically so you usually don't need to call this function.
+	///
+	/// Returns true on success or false if the pWidget
+	/// does not identify a page that has been added to this wizard.
+	///
+	bool setCurrentPage(QWidget * pWidget);
+	///
+	/// Returns a pointer to the current page
+	///
+	QWidget * currentPage();
+	///
+	/// Enables or disables the help button for the specified page.
+	/// By default the help button is always disabled.
+	///
+	void setHelpEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Enables or disables the cancel button for the specified page.
+	/// By default the cancel button is always enabled.
+	///
+	void setCancelEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Enables or disables the finish button for the specified page.
+	/// By default the finish button is always disabled.
+	///
+	void setFinishEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Enables or disables the next button for the specified page.
+	/// By default the next button is always enabled.
+	///
+	void setNextEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Enables or disables the prev button for the specified page.
+	/// By default the prev button is always enabled.
+	///
+	void setBackEnabled(QWidget * pWidget,bool bEnabled);
+	///
+	/// Returns a pointer to the cancel button displayed in the dialog.
+	///
+	QPushButton * cancelButton();
+	///
+	/// Returns a pointer to the help button displayed in the dialog.
+	///
+	QPushButton * helpButton();
+	///
+	/// Returns a pointer to the finish button displayed in the dialog.
+	///
+	QPushButton * finishButton();
+	///
+	/// Returns a pointer to the next button displayed in the dialog.
+	///
+	QPushButton * nextButton();
+	///
+	/// Returns a pointer to the back button displayed in the dialog.
+	///
+	QPushButton * backButton();
+signals:
+	///
+	/// Emitted when the help button is clicked.
+	///
+	void helpClicked();
+protected:
+	///
+	/// Displays the first page if no other page is shown yet.
+	///
+	virtual void showEvent(QShowEvent * e);
+	///
+	/// Handles redirects the close button to the "cancel" operation.
+	///
+	virtual void closeEvent(QCloseEvent * e);
+protected:
+	void setCurrentPage(KviTalWizardPageData * pData);
+protected slots:
+	void backButtonClicked();
+	void nextButtonClicked();
+	void helpButtonClicked();
+	void cancelButtonClicked();
+	void finishButtonClicked();
+};
+
 
 #endif // _KVI_TAL_WIZARD_H_

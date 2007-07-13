@@ -386,7 +386,7 @@ bool KviPackThemeDialog::packTheme()
 		{
 			QMessageBox::critical(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected image: please fix it","theme"),
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-			showPage(m_pImageSelectionPage);
+			setCurrentPage(m_pImageSelectionPage);
 			return false;
 		}
 	}

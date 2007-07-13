@@ -49,9 +49,11 @@ extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 extern KviPtrList<KviRegistrationWizard> * g_pRegistrationWizardList;
 
 KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegisteredUserDataBase * db,QWidget * par,bool bModal)
-: KviTalWizard(par,"regusers_wizard",bModal)
+: KviTalWizard(par)
 {
 	m_pDb = db;
+	
+	setModal(bModal);
 	
 	m_bModal = bModal;
 

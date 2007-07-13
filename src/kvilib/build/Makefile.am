@@ -27,9 +27,8 @@ nodist_libkvilib_la_SOURCES = \
 	../net/moc_kvi_dns.cpp \
 	../net/moc_kvi_http.cpp \
 	../system/moc_kvi_locale.cpp \
-	../system/moc_kvi_thread.cpp
-
-
+	../system/moc_kvi_thread.cpp \
+	../tal/moc_kvi_tal_wizard.cpp
 
 libkvilib_la_SOURCES = \
 	../core/kvi_error.cpp \
@@ -239,8 +238,6 @@ headers_HEADERS = \
 	../tal/kvi_tal_widgetstack_qt3.h \
 	../tal/kvi_tal_widgetstack_qt4.h \
 	../tal/kvi_tal_wizard.h \
-	../tal/kvi_tal_wizard_qt3.h \
-	../tal/kvi_tal_wizard_qt4.h \
 	../tal/kvi_tal_windowstate.h
 
 
@@ -307,11 +304,9 @@ headers_HEADERS = \
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt3.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt4.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_kde.moc
+../tal/kvi_tal_tooltip.cpp: ../tal/kvi_tal_tooltip.moc
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt3.moc
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
-../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt3.moc
-../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard_qt4.moc
-../tal/kvi_tal_tooltip.cpp: ../tal/kvi_tal_tooltip.moc
 
 #
 # All the cpp files depend on symlinks beging up-to-date

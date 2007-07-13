@@ -28,6 +28,7 @@
 #include "kvi_locale.h"
 #include "kvi_config.h"
 #include "kvi_app.h"
+#include "kvi_qstring.h"
 
 
 #include <qmessagebox.h>
@@ -107,8 +108,9 @@ int KviMircServersIniImport::doImport(const QString& filename)
 			}
 		} while(!entry.isEmpty());
 	} else {
-		KviStr tmp(KviStr::Format,__tr("%s doesn't look like a servers.ini file.\nImport failed."),filename);
-		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs(tmp.ptr()));
+		QString tmp;
+		KviQString::sprintf(tmp,__tr2qs("%Q doesn't look like a servers.ini file.\nImport failed."),&filename);
+		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),tmp);
 	}
 	return iCount;
 }

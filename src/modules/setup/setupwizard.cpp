@@ -113,8 +113,10 @@ KviSetupPage::~KviSetupPage()
 
 
 KviSetupWizard::KviSetupWizard()
-: KviTalWizard(0,0,true)
+: KviTalWizard(0)
 {
+	setModal(true);
+
 	g_bFoundMirc = false;
 	QString szLabelText;
 
@@ -148,17 +150,8 @@ KviSetupWizard::KviSetupWizard()
 
 	addPage(m_pWelcome,__tr2qs("Welcome to KVIrc"));
 
-#ifdef COMPILE_ON_WINDOWS
-	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pWelcome->m_pVBox);
-	m_pCreateUrlHandlers->setChecked(true);
-#endif
-#ifdef COMPILE_KDE_SUPPORT
-	m_pCreateDesktopShortcut = new QCheckBox(__tr2qs("Create desktop shortcut"),m_pWelcome->m_pVBox);
-	m_pCreateDesktopShortcut->setChecked(true);
-#endif
 	setBackEnabled(m_pWelcome,false);
 	setHelpEnabled(m_pWelcome,false);
-
 
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -465,6 +458,34 @@ KviSetupWizard::KviSetupWizard()
 	setHelpEnabled(m_pTheme,false);*/
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// Desktop integration
+
+	m_pDesktopIntegration = new KviSetupPage(this);
+
+	szText  = __tr2qs( \
+				"<p>" \
+					"Here you can choose how much KVIrc will integrate with " \
+					"your system." \
+					"<br><br>" \
+					"The default settings are fine for most users so if " \
+					"you're in doubt just click \"<b>Next</b>\" and go to the next screen." \
+				"</p>");
+
+	m_pDesktopIntegration->m_pTextLabel->setText(szText);
+
+	addPage(m_pDesktopIntegration,__tr2qs("Desktop Integration"));
+
+#ifdef COMPILE_ON_WINDOWS
+	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
+	m_pCreateUrlHandlers->setChecked(true);
+#endif
+#ifdef COMPILE_KDE_SUPPORT
+	m_pCreateDesktopShortcut = new QCheckBox(__tr2qs("Create desktop shortcut"),m_pDesktopIntegration->m_pVBox);
+	m_pCreateDesktopShortcut->setChecked(true);
+#endif
+	setHelpEnabled(m_pDesktopIntegration,false);
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Server config
 	m_pServers = new KviSetupPage(this);
 
@@ -512,7 +533,7 @@ KviSetupWizard::KviSetupWizard()
 		KviConfig cfg(szTmp,KviConfig::Read);
 		cfg.setGroup("Setup");
 		if(cfg.readBoolEntry("hideServerList",FALSE)) {
-			setAppropriate(m_pServers,false);
+			setPageEnabled(m_pServers,false);
 			setFinishEnabled(m_pIdentity,true);
 			KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc) = false;
 			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
@@ -524,11 +545,11 @@ KviSetupWizard::KviSetupWizard()
 			{
 				case 1:
 					m_pDirUseNew->toggle();
-					setAppropriate(m_pDirectory,false);
+					setPageEnabled(m_pDirectory,false);
 					break;
 				case 2:
 					m_pDirMakePortable->toggle();
-					setAppropriate(m_pDirectory,false);
+					setPageEnabled(m_pDirectory,false);
 					break;
 			}
 		}
@@ -607,9 +628,9 @@ void KviSetupWizard::oldDirClicked()
 	m_pNewPathBox->setEnabled(false);
 	m_pNewIncomingBox->setEnabled(false);
 	
-	if(m_pIdentity) setAppropriate(m_pIdentity,false);
-//	if(m_pTheme) setAppropriate(m_pTheme,false);
-	if(m_pServers) setAppropriate(m_pServers,false);
+	if(m_pIdentity) setPageEnabled(m_pIdentity,false);
+//	if(m_pTheme) setPageEnabled(m_pTheme,false);
+	if(m_pServers) setPageEnabled(m_pServers,false);
 	
 	if(m_pOldDataPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
@@ -636,9 +657,9 @@ void KviSetupWizard::newDirClicked()
 	m_pNewPathBox->setEnabled(true);
 	m_pNewIncomingBox->setEnabled(true);
 	
-	if(m_pIdentity) setAppropriate(m_pIdentity,true);
-//	if(m_pTheme) setAppropriate(m_pTheme,true);
-	if(m_pServers) setAppropriate(m_pServers,true);
+	if(m_pIdentity) setPageEnabled(m_pIdentity,true);
+//	if(m_pTheme) setPageEnabled(m_pTheme,true);
+	if(m_pServers) setPageEnabled(m_pServers,true);
 	
 	if(m_pDataPathEdit->text().isEmpty() || m_pIncomingPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
@@ -886,7 +907,7 @@ void KviSetupWizard::accept()
 				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
-				showPage(m_pDirectory);
+				setCurrentPage(m_pDirectory);
 				return;
 			}
 		} /*else {
@@ -917,7 +938,7 @@ void KviSetupWizard::accept()
 				KviMessageBox::warning(__tr("Cannot create directory %s.\n" \
 					"You may not have write permission " \
 					"for that path. Please go back and choose another directory."));
-				showPage(m_pDirectory);
+				setCurrentPage(m_pDirectory);
 				return;
 			}
 		}
@@ -1038,7 +1059,8 @@ void KviSetupWizard::accept()
 		}
 	}
 #ifdef COMPILE_ON_WINDOWS
-	if(m_pDirMakePortable->isOn()) {
+	if(m_pDirMakePortable->isOn())
+	{
 		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable","true");
 	} else {
 #endif

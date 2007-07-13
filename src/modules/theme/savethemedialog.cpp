@@ -285,7 +285,7 @@ bool KviSaveThemeDialog::saveTheme()
 		{
 			QMessageBox::critical(this,__tr2qs_ctx("Save Current Theme - KVIrc","theme"),__tr2qs_ctx("Failed to load the selected screenshot image: please fix it","theme"),
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
-			showPage(m_pImageSelectionPage);
+			setCurrentPage(m_pImageSelectionPage);
 			return false;
 		}
 	}

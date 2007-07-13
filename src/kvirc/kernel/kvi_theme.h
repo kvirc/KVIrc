@@ -38,35 +38,51 @@
 #define KVI_THEMEINFO_CONFIG_GROUP "ThemeInfo"
 #define KVI_THEMEDATA_CONFIG_GROUP "ThemeData"
 
-// The current theme engine version: bump up if you make INCOMPATIBLE
-// changes in the method of saving the theme.
+///
+/// The current theme engine version: bump up if you make INCOMPATIBLE
+/// changes in the method of saving the theme.
+///
 #define KVI_CURRENT_THEME_ENGINE_VERSION "1.0.0"
 
+///
+/// \class KviThemeInfo
+///
+/// \brief A set of informations about a KVIrc theme
+///
+/// This object contains a set of informations about
+/// a theme that can be read and stored to a standard
+/// KVIrc configuration file (which is usually named
+/// themeinfo.kvc but this is not strictly necessary).
+///
 class KVIRC_API KviThemeInfo : public KviHeapObject
 {
 public:
 	KviThemeInfo();
 	~KviThemeInfo();
 protected:
-	QString m_szName; // name of the theme
-	QString m_szVersion; // version of the theme
-	QString m_szSubdirectory; // subdirectory of $LOCALKVIRCDIR/themes where the theme is saved to (not always used)
-	QString m_szAbsoluteDirectory; // absolute directory where the theme should be saved to (or is loaded from)
-	QString m_szAuthor; // author of the theme
-	QString m_szDescription; // description of the theme
-	QString m_szDate; // theme creation date
-	QString m_szApplication; // theme creation (KVIrc) version
-	QString m_szThemeEngineVersion; // the theme engine version that saved this theme
+	QString m_szName;               //< name of the theme
+	QString m_szVersion;            //< version of the theme
+	QString m_szSubdirectory;       //< subdirectory of $LOCALKVIRCDIR/themes where the theme is saved to (not always used)
+	QString m_szAbsoluteDirectory;  //< absolute directory where the theme should be saved to (or is loaded from)
+	QString m_szAuthor;             //< author of the theme
+	QString m_szDescription;        //< description of the theme
+	QString m_szDate;               //< theme creation date
+	QString m_szApplication;        //< theme creation (KVIrc) version
+	QString m_szThemeEngineVersion; //< the theme engine version that saved this theme
 	
-	QString m_szLastError; // reported when some function fails
+	QString m_szLastError;          //< reported when some function fails
 	
-	QPixmap m_pixScreenshotLarge;
-	QPixmap m_pixScreenshotMedium;
-	QPixmap m_pixScreenshotSmall;
+	QPixmap m_pixScreenshotLarge;   //< the large screenshot pixmap
+	QPixmap m_pixScreenshotMedium;  //< the medium screenshot pixmap
+	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
 public:
-	// load a specified themeinfo file
+	///
+	/// load data from a specified theme config file
+	///
 	bool load(const QString &szThemeFileName);
-	// save the currently defined themeinfo in the specified file
+	///
+	/// save the currently defined theme configuration in the specified file
+	///
 	bool save(const QString &szThemeFileName);
 	
 	const QString & lastError(){ return m_szLastError; };
@@ -90,39 +106,64 @@ public:
 	const QString & themeEngineVersion(){ return m_szThemeEngineVersion; };
 	void setThemeEngineVersion(const QString &szThemeEngineVersion){ m_szThemeEngineVersion = szThemeEngineVersion; };
 
-	// Attempt to load a themeinfo file present in the specified directory
-	// This function will fail if the directory contains a valid themeinfo
-	// file but no themedata file unless bIgnoreThemeData is set to true
+	///
+	/// Attempt to load a themeinfo.kvc file present in the specified directory.
+	/// This function will fail if the directory contains a valid themeinfo.kvc
+	/// file but no themedata.kvc file unless bIgnoreThemeData is set to true
+	///
 	bool loadFromDirectory(const QString &szThemeDirectory,bool bIgnoreThemeData = false);
 
-	// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
-	// These functions will work only if the absoluteDirectory() of the theme
-	// has been set, otherwise the returned pixmaps will be null.
+	///
+	/// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
+	/// This function will work only if the absoluteDirectory() of the theme
+	/// has been set, otherwise the returned pixmap will be null.
+	///
 	const QPixmap & smallScreenshot();
+	///
+	/// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
+	/// This function will work only if the absoluteDirectory() of the theme
+	/// has been set, otherwise the returned pixmap will be null.
+	///
 	const QPixmap & mediumScreenshot();
+	///
+	/// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
+	/// This function will work only if the absoluteDirectory() of the theme
+	/// has been set, otherwise the returned pixmap will be null.
+	///
 	const QPixmap & largeScreenshot();
+	///
+	/// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
+	/// This function will work only if the absoluteDirectory() of the theme
+	/// has been set, otherwise the returned pixmap will be null.
+	///
 	QString smallScreenshotPath();
 };
 
 namespace KviTheme
 {
-	// Attempt to load (apply) a theme in the specified directory
-	// Will return true on success and false on failure.
-	// On success this function will return the theme informations in the buffer.
-	// On failure this function will also set buffer.lastError() to a meaningful value
-	// Note that for convenience this function is implemented in kvi_options.cpp
+	///
+	/// Attempt to load (apply) a theme in the specified directory
+	/// Will return true on success and false on failure.
+	/// On success this function will return the theme informations in the buffer.
+	/// On failure this function will also set buffer.lastError() to a meaningful value
+	/// Note that for convenience this function is implemented in kvi_options.cpp
+	///
 	bool KVIRC_API load(const QString &szThemeDir,KviThemeInfo &buffer);
-	// Save a theme given the specified options.
-	// Will return true on success and false on failure.
-	// On failure this function will also set options.lastError() to a meaningful value
-	// This function requires both absoluteDirectory() and subdirectory() to be
-	// set to the right values. In theory this function could save a theme
-	// in a directory different than $KVIRC_LOCAL_DIR/themes/subdirectory
-	// but this feature is actually unused.
-	// Note that for convenience this function is implemented in kvi_options.cpp
+	///
+	/// Save a theme given the specified options.
+	/// Will return true on success and false on failure.
+	/// On failure this function will also set options.lastError() to a meaningful value
+	/// This function requires both absoluteDirectory() and subdirectory() to be
+	/// set to the right values. In theory this function could save a theme
+	/// in a directory different than $KVIRC_LOCAL_DIR/themes/subdirectory
+	/// but this feature is actually unused.
+	/// Note that for convenience this function is implemented in kvi_options.cpp
+	///
 	bool KVIRC_API save(KviThemeInfo &options);
-	// Save the theme screenshots in the given EXISTING directory and given
-	// an existing screenshot on disk.
+	///
+	/// Save the theme screenshots in the given EXISTING directory and given
+	/// an existing screenshot on disk (usually in the tmp directory).
+	///
 	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
 };
 

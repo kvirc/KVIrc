@@ -51,8 +51,6 @@
 	Add a page with title.<page_widget> must be a widget's object.
 	!fn: $insertPage(<page_widget>,<title:string>,<index:integer>)
 	Inserts a page at the position <index>. If index is -1, page will appended to the end of the wizard's page sequenze.
-	!fn: $removePage(<page_widget:object>)
-	Remove a page from the wizard sequence.
 	!fn: $setTitle(<page>,<title:string>)
 	Sets the title for page page to title text.
 	!fn: $setBackEnabled(<page_widget>,<bEnabled:boolean>)
@@ -95,7 +93,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_wizard,"wizard","widget")
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_wizard,"addPage", functionaddPage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_wizard,"insertPage", functioninsertPage)
-	KVSO_REGISTER_HANDLER(KviKvsObject_wizard,"removePage", functionremovePage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_wizard,"setTitle", functionsetTitle)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_wizard,"setBackEnabled", functionsetBackEnabled);
@@ -172,23 +169,7 @@ bool KviKvsObject_wizard::functioninsertPage(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_wizard::functionremovePage(KviKvsObjectFunctionCall *c)
-{
-	KviKvsObject *ob;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
-	if(!ob->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Not a widget object"));
-		return true;
-	}
-	((KviTalWizard *)widget())->removePage(((QWidget *)(ob->object())));
-	return true;
-}
+
 bool KviKvsObject_wizard::functionsetTitle(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;
@@ -205,7 +186,7 @@ bool KviKvsObject_wizard::functionsetTitle(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget object required"));
 		return true;
 	}
-	((KviTalWizard *)widget())->setTitle(((QWidget *)(ob->object())),szTitle);
+	((KviTalWizard *)widget())->setPageTitle(((QWidget *)(ob->object())),szTitle);
 	return true;
 }
 bool KviKvsObject_wizard::functionsetBackEnabled(KviKvsObjectFunctionCall *c)
@@ -360,7 +341,7 @@ void KviKvsObject_wizard::backClicked()
 	callFunction(this,"backClickedEvent",params);
 }
 KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par,const char * name,KviKvsObject_wizard * parent)
-:KviTalWizard( par,name)
+:KviTalWizard(par)
 {
 	m_pParentScript=parent;
 	connect (this->backButton(),SIGNAL(clicked()),this,SLOT(slotBackClicked()));
