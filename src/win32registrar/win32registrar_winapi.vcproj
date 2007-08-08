@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="windows-1251"?>
+<?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
 	Name="win32registrar_winapi"
-	ProjectGUID="{5B9C2364-6814-4C7F-B064-FA663F21220D}"
+	ProjectGUID="{0267933F-26DB-4A5B-BA74-26DD40AFD318}"
 	RootNamespace="win32registrar_winapi"
 	Keyword="Win32Proj"
 	>
@@ -60,7 +60,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="shlwapi.lib"
+				AdditionalDependencies="shlwapi.lib user32.lib advapi32.lib"
 				OutputFile="$(OutDir)\win32registrar.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
@@ -136,7 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="shlwapi.lib"
+				AdditionalDependencies="shlwapi.lib user32.lib advapi32.lib"
 				OutputFile="$(OutDir)\win32registrar.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"

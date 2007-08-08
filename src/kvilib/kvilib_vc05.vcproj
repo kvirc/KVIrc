@@ -2854,6 +2854,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2862,32 +2864,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step $(InputName)"
-						CommandLine=""
-						Outputs=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_wizard_qt3.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
 				</FileConfiguration>
 			</File>
@@ -3237,6 +3215,26 @@
 			</File>
 			<File
 				RelativePath=".\tmp\moc\moc_kvi_tal_tooltip.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions="__KVILIB__"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\moc_kvi_tal_wizard.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
