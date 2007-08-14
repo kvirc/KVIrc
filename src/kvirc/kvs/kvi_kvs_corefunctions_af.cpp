@@ -767,6 +767,16 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviStr tmpFormat("");
+		
+		QString szAllowedCharacters;
+		#ifdef COMPILE_ON_WINDOWS
+			//windows version of strftime()
+			szAllowedCharacters = "AaBbcdHIjMmpSUWwXxYyZz";
+		#else
+			// other version of strftime()
+			szAllowedCharacters = "AaBbCcDdEeFGgHhIjklMmnprSsTtUVWwXxYyZz";
+		#endif
+		
 		const QChar * c = KviQString::nullTerminatedArray(szFormat);
 		if(c)
 		{
@@ -774,7 +784,9 @@ namespace KviKvsCoreFunctions
 			{
 				if(!c->isLetter())tmpFormat += (char)(c->unicode());
 				else {
-					tmpFormat += '%';
+					//Check for right Characters
+					if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)
+						tmpFormat += '%';
 					tmpFormat += (char)(c->unicode());
 				}
 				c++;
