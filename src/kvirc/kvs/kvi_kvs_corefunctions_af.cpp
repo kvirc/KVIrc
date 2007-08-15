@@ -768,13 +768,11 @@ namespace KviKvsCoreFunctions
 
 		KviStr tmpFormat("");
 		
-		QString szAllowedCharacters;
 		#ifdef COMPILE_ON_WINDOWS
+			QString szAllowedCharacters;
 			//windows version of strftime()
+			//kvirc crashes if other then these characters get an % character in front of them
 			szAllowedCharacters = "AaBbcdHIjMmpSUWwXxYyZz";
-		#else
-			// other version of strftime()
-			szAllowedCharacters = "AaBbCcDdEeFGgHhIjklMmnprSsTtUVWwXxYyZz";
 		#endif
 		
 		const QChar * c = KviQString::nullTerminatedArray(szFormat);
@@ -783,7 +781,11 @@ namespace KviKvsCoreFunctions
 			while(c->unicode())
 			{
 				//Check for right Characters
-				if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)	tmpFormat += '%';
+				#ifdef COMPILE_ON_WINDOWS
+					if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)	tmpFormat += '%';
+				#else
+					if (c->isLetter()) tmpFormat += '%';
+				#endif
 				tmpFormat += (char)(c->unicode());
 				c++;
 			}
