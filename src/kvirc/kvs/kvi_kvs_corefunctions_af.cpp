@@ -782,13 +782,9 @@ namespace KviKvsCoreFunctions
 		{
 			while(c->unicode())
 			{
-				if(!c->isLetter())tmpFormat += (char)(c->unicode());
-				else {
-					//Check for right Characters
-					if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)
-						tmpFormat += '%';
-					tmpFormat += (char)(c->unicode());
-				}
+				//Check for right Characters
+				if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)	tmpFormat += '%';
+				tmpFormat += (char)(c->unicode());
 				c++;
 			}
 		}
