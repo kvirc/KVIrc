@@ -878,8 +878,12 @@ void KviIrcSocket::proxySendTargetDataV5()
 	//   The address is a version-6 IP address, with a length of 16 octets.
 	bool bRemoteDns=!(
 		
-		(KviNetUtils::isValidStringIp(m_pIrcServer->ip()) 
-		|| KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip()))
+		(
+		KviNetUtils::isValidStringIp(m_pIrcServer->ip()) 
+		#ifdef COMPILE_IPV6_SUPPORT
+			|| KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip())
+		#endif
+		)
 
 		&& m_pIrcServer->cacheIp()
 		);
