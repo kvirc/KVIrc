@@ -153,12 +153,15 @@ protected:
 	void getUniqueItemName(KviAliasEditorListViewItem *item,QString &buffer,KviAliasEditorListViewItem::Type eType);
 	void appendSelectedItems(KviPtrList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
 	void appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
+	void appendNamespaceItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
 	bool removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
 	void openParentItems(KviTalListViewItem * it);
 	void activateItem(KviTalListViewItem * it);
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	bool itemExists(KviTalListViewItem *pSearchFor,KviTalListViewItem * pSearchAt);
+	bool namespaceExists(QString &szFullItemName);
+	bool aliasExists(QString &szFullItemName);
 	bool hasSelectedItems(KviTalListViewItem * it);
 	KviAliasNamespaceListViewItem * findNamespaceItem(const QString &szName);
 	KviAliasNamespaceListViewItem * getNamespaceItem(const QString &szName);

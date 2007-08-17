@@ -741,6 +741,32 @@ void KviAliasEditor::appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAl
 	appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
 }
 
+void KviAliasEditor::appendNamespaceItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
+{
+	if(!pStartFrom)return;
+	if(pStartFrom->isNamespace())
+	{
+		if(bSelectedOnly)
+		{
+			if(pStartFrom->isSelected())
+				l->append((KviAliasListViewItem *)pStartFrom);
+		} else {
+			l->append((KviAliasListViewItem *)pStartFrom);
+		}
+	} else {
+		if(bSelectedOnly)
+		{
+			if(pStartFrom->isSelected())
+				appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false); // ALL the items below the selected namespace
+			else
+				appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),true); // only the selected items below
+		} else {
+			appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false);
+		}
+	}
+	appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
+}
+
 void KviAliasEditor::appendSelectedItems(KviPtrList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected)
 {
 	if(!pStartFrom)return;
@@ -1041,6 +1067,37 @@ void KviAliasEditor::newNamespace()
 	activateItem(it);
 }
 
+bool KviAliasEditor::aliasExists(QString &szFullItemName)
+{
+	KviPtrList<KviAliasListViewItem> l;
+	l.setAutoDelete(false);
+
+	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+	for(KviAliasListViewItem * it = l.first();it;it = l.next())
+	{
+		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool KviAliasEditor::namespaceExists(QString &szFullItemName)
+{
+	KviPtrList<KviAliasListViewItem> l;
+	l.setAutoDelete(false);
+	
+	appendNamespaceItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+	for(KviAliasListViewItem * it = l.first();it;it = l.next())
+	{
+		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 void KviAliasEditor::renameItem()
 {
 	if(!m_pLastEditedItem)return;
@@ -1059,6 +1116,33 @@ void KviAliasEditor::renameItem()
 
 	if(szName == szNewName)return;
 
+	// check if there is already an alias with this name
+	if (bAlias)
+	{
+		if (aliasExists(szNewName))
+		{
+			g_pAliasEditorModule->lock();
+			QMessageBox::information(this,
+						__tr2qs("Alias already exists"),
+						__tr2qs("This name is already in use. Please chooose another one."),
+						__tr2qs("Ok, Let me try again..."));
+			g_pAliasEditorModule->unlock();
+			return;
+		}
+	} else {
+	// check if there is already a anmespace with this name
+		if (namespaceExists(szNewName))
+		{
+			g_pAliasEditorModule->lock();
+			QMessageBox::information(this,
+						__tr2qs("Namespace already exists"),
+						__tr2qs("This name is already in use. Please chooose another one."),
+						__tr2qs("Ok, Let me try again..."));
+			g_pAliasEditorModule->unlock();
+			return;
+		}
+	}
+	
 	QString szCode;
 	QPoint pntCursor;
 	if(bAlias)
