@@ -296,9 +296,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setAttribute(Qt::WA_PaintOutsidePaintEvent);
 	setAttribute(Qt::WA_OpaquePaintEvent);
 	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
-	setFocusPolicy(Qt::WheelFocus);
-#else
-	setFocusPolicy(QWidget::WheelFocus);
 #endif
 
 	m_iFlushTimer = 0;
@@ -393,7 +390,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pToolsButton->show();
 
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarPositionChanged(int)));
-	connect(m_pScrollBar,SIGNAL(sliderReleased()),this,SLOT(scrollBarReleaseEvent()));
 	m_iLastScrollBarValue      = 0;
 
 	// set the minimum width
@@ -4713,11 +4709,6 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		KviKvsScript::run(cmd,m_pKviWindow,pParams);
 	}
 	delete pParams;
-}
-
-void KviIrcView::scrollBarReleaseEvent()
-{
-	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
 }
 
 void KviIrcView::mousePressEvent(QMouseEvent *e)
