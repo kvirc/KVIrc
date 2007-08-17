@@ -246,6 +246,7 @@ protected:
 	virtual void leaveEvent ( QEvent * );
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
+	virtual void scrollBarReleaseEvent();
 	void masterDead();
 };
 
