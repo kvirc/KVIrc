@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-05-07 22:04+0100\n"
+"PO-Revision-Date: 2007-08-19 23:41+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3097,7 +3097,7 @@ msgstr "Adicionar informação acerca do género ao nome real"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:110
 msgid "On Channel Kick"
-msgstr "Ao Ser Kickado no Canal"
+msgstr "Ao Ser Expulso do Canal"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:112
 msgid "Rejoin channel"
@@ -3109,7 +3109,7 @@ msgid ""
 "being kicked.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVirc tente reentrar num canal após ter "
-"sido kickado.</center>"
+"sido expulso.</center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:118
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:129
@@ -3123,7 +3123,7 @@ msgid ""
 "\" option.</center>"
 msgstr ""
 "<center>Esta opção faz com que o KVirc mantenha a janela do canal aberta "
-"depois de ter sido kickado.<br>Pode ser também uma boa ideia activar a opção"
+"depois de ter sido expulso.<br>Pode ser também uma boa ideia activar a opção"
 "\"Reentrar no canal\".</br></center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:127
@@ -3172,7 +3172,7 @@ msgstr "Registar histórico de canais"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:170
 msgid "Default ban mask:"
-msgstr "Máscara de ban predefinida:"
+msgstr "Máscara de banimento predefinida:"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:188
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:202
@@ -3185,11 +3185,11 @@ msgstr "Não enviar pedido /WHO"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:190
 msgid "Do not request ban list"
-msgstr "Não pedir lista de ban"
+msgstr "Não pedir lista de banimentos"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:191
 msgid "Do not request ban exception list"
-msgstr "Não pedir lista com excepções de bans"
+msgstr "Não pedir lista com excepções de banimentos"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:192
 msgid "Do not request invite list"
@@ -3207,7 +3207,7 @@ msgid ""
 msgstr ""
 "<center>O KVirc envia uma mensagem /WHO a um canal sempre que necessário "
 "para manter a lista de ausências sincronizada. Use este protocolo para "
-"descativar esta opção (e para poupar a sua largura de banda IRC.</center>"
+"desactivar esta opção (e para poupar a sua largura de banda IRC.</center>"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_irc.cpp:203
 msgid "Echo channel topic"
@@ -3646,7 +3646,7 @@ msgid ""
 "<br>Reasonable values are from 512 to 4096 bytes.</center>"
 msgstr ""
 "<center>Este parâmetro controla o tamanho do pacote usado para DCC SEND. "
-"<br>Com pacotes maiores irá provavelmente enviar dados rápidamente, mas irá "
+"<br>Com pacotes maiores irá provavelmente enviar dados rapidamente, mas irá "
 "também saturar a largura de banda e em alguns casos causar mais actividade "
 "no disco.<br>Os valores razoáveis vão de 512 a 4096 bytes.</center>"
 
@@ -3768,7 +3768,7 @@ msgstr "Mensagem destacada em janela inactiva"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_sound.cpp:299
 msgid "Me have been kicked"
-msgstr "Fui kickado"
+msgstr "Fui expulso"
 
 #: /home/oem/kvirc-qt4/src/modules/options/optw_input.cpp:39
 msgid "Selection background color"
