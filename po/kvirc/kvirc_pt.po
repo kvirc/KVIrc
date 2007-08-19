@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-31 09:10+0400\n"
-"PO-Revision-Date: 2007-06-18 07:07+0100\n"
+"PO-Revision-Date: 2007-08-19 23:35+0100\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -204,11 +204,11 @@ msgstr "Lista de utilizadores"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_channel.cpp:155
 msgid "Ban Editor"
-msgstr "Editor Ban"
+msgstr "Editor de Banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_channel.cpp:160
 msgid "Ban Exception Editor"
-msgstr "Editor de Excepções de Bans"
+msgstr "Editor de Excepções de Banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_channel.cpp:167
 msgid "Invite Exception Editor"
@@ -624,7 +624,7 @@ msgstr "Cancelar"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_maskeditor.cpp:157
 msgid "Active Bans"
-msgstr "Bans Activos"
+msgstr "Banimentos Activos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_maskeditor.cpp:161
 msgid "Active Invite Exceptions"
@@ -632,7 +632,7 @@ msgstr "Excepções Activas de Convites"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_maskeditor.cpp:165
 msgid "Active Ban Exceptions"
-msgstr "Excepções Activas de Bans"
+msgstr "Excepções Activas de Banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/ui/kvi_maskeditor.cpp:184
 msgid "Filter:"
@@ -3591,12 +3591,12 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] saiu do IRC: %Q"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:589
 msgid "Received a kick message for an unknown channel, possible desync"
-msgstr "Mensagem kick recebida para um canal desconhecido, possível desync"
+msgstr "Mensagem de expulsão recebida para um canal desconhecido, possível desync"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:616
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:626
 msgid "You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Foi kickado de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Foi expulso de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:633
 msgid "Attempting to rejoin \r!c\r%Q\r..."
@@ -3607,7 +3607,7 @@ msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] foi kickado de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] foi expulso de \r!c\r%Q\r por \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r]: %Q"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:682
@@ -3615,7 +3615,7 @@ msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser kickado de \r!c\r%Q\r por \r!n\r%Q"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] acabou de ser expulso de \r!c\r%Q\r por \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_literal.cpp:710
@@ -3893,7 +3893,7 @@ msgstr "Fim do canal %Q para \r!c\r%Q\r"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:634
 msgid "ban list"
-msgstr "lista de bans"
+msgstr "lista de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:635
 msgid "invite list"
@@ -3901,7 +3901,7 @@ msgstr "Lista de convites"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:636
 msgid "ban exception list"
-msgstr "lista de excepções de bans"
+msgstr "lista de excepções de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:657
 msgid "%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"
@@ -3909,7 +3909,7 @@ msgstr "%Q para \r!c\r%Q\r: \r!m-%c\r%Q\r (posto por %Q em %Q)"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:664
 msgid "Ban listing"
-msgstr "Listagem de bans"
+msgstr "Listagem de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:667
 msgid "Invite listing"
@@ -3917,7 +3917,7 @@ msgstr "Listagem de convites"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:670
 msgid "Ban exception listing"
-msgstr "Listagem de excepções de bans"
+msgstr "Listagem de excepções de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/sparser/kvi_sp_numeric.cpp:739
 msgid ""
@@ -4950,7 +4950,7 @@ msgstr "Operações de autenticação completas"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:749
 msgid "Kick action"
-msgstr "Acção kick"
+msgstr "Acção de expulsão"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:750
 msgid "Links reply"
@@ -5054,7 +5054,7 @@ msgstr "Noticia da rede"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:775
 msgid "Am kicked"
-msgstr "Fui kickado"
+msgstr "Fui expulso"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:776
 msgid "Am op'd"
@@ -5082,19 +5082,19 @@ msgstr "Tiraram-me de semioperador"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:782
 msgid "Ban matching my mask"
-msgstr "Ban correspondente à minha máscara"
+msgstr "Banimento correspondente à minha máscara"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:783
 msgid "Unban matching my mask"
-msgstr "Remoção de ban correspondente à minha máscara"
+msgstr "Remoção de banimento correspondente à minha máscara"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:784
 msgid "Ban exception matching my mask"
-msgstr "Excepção de ban correspondente à minha máscara"
+msgstr "Excepção de banimento correspondente à minha máscara"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:785
 msgid "Ban unexception matching my mask"
-msgstr "Não excepção de ban correspondente à minha máscara"
+msgstr "Sem excepção de banimento correspondente à minha máscara"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_options.cpp:786
 msgid "Invite exception matching my mask"
@@ -5502,7 +5502,7 @@ msgstr "Semi operadores"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:233
 msgid "Ban masks"
-msgstr "Máscaras de bans"
+msgstr "Máscaras de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:234
 msgid "Color free (no ANSI colors)"
@@ -5510,7 +5510,7 @@ msgstr "Livre de cores (sem cores ANSI)"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:235
 msgid "Ban exception masks"
-msgstr "Máscaras de excepções de bans"
+msgstr "Máscaras de excepções de banimentos"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:236
 msgid "Invite exception masks or forbid /INVITE"
@@ -5578,7 +5578,7 @@ msgstr "Apenas utilizadores registados podem entrar"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
-msgstr "Sem permissão de kicks (a não ser U-Line)"
+msgstr "Sem permissão de expulsão (a não ser U-Line)"
 
 #: /home/oem/kvirc-qt4/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:253
 msgid "IRC-Op only channel"
@@ -6772,11 +6772,11 @@ msgstr "&OK"
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:420
 msgid "Enable URL ban list"
-msgstr "Activar Lista URL de bans"
+msgstr "Activar Lista URL de banimentos"
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:432
 msgid "&Add Ban"
-msgstr "&Adicionar Ban"
+msgstr "&Adicionar Banimento"
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:437
 msgid "&Remove Selected"
@@ -6784,11 +6784,11 @@ msgstr "&Remover Seleccionados"
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:453
 msgid "URL Ban List"
-msgstr "Lista URL de Bans"
+msgstr "Lista URL de Banimentos"
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:465
 msgid "Select a ban."
-msgstr "Seleccionar um ban."
+msgstr "Seleccionar um banimento."
 
 #: /home/oem/kvirc-qt4/src/modules/url/libkviurl.cpp:790
 msgid "View URL list"
@@ -11938,7 +11938,7 @@ msgstr "Utilizador Normal"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1264
 msgid "Ban"
-msgstr "Ban"
+msgstr "Banir"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1268
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1884
@@ -11950,7 +11950,7 @@ msgstr "Utilizadores Múltiplos"
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1274
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1408
 msgid "&Ban"
-msgstr "&Ban"
+msgstr "&Banir"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1298
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1939
@@ -12022,11 +12022,11 @@ msgstr "R&emover Voz"
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1392
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1399
 msgid "&Kick"
-msgstr "&Kick"
+msgstr "&Expulsar"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1397
 msgid "K&ick"
-msgstr "K&ick"
+msgstr "E&xpulsar"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1397
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1423
@@ -12035,32 +12035,32 @@ msgstr "Com..."
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1399
 msgid "Kick Reason"
-msgstr "Razão do Kick"
+msgstr "Razão de expulsão"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1399
 msgid "Enter a kick reason"
-msgstr "Indique a razão do kick"
+msgstr "Indique a razão de expulsão"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1418
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1423
 msgid "Kick/Ban"
-msgstr "Kick/Ban"
+msgstr "Expulsar/Banir"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1425
 msgid "Kick/Ban Reason"
-msgstr "Razão Kick/Ban"
+msgstr "Razão Expulsar/Banir"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1425
 msgid "Enter a kick/ban reason"
-msgstr "Indique a razão do kick/ban"
+msgstr "Indique a razão de expulsão/banimento"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1425
 msgid "&Kick/Ban"
-msgstr "&Kick/Ban"
+msgstr "&Expulsar/Banir"
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1435
 msgid "Configure ban mask..."
-msgstr "Configurar máscara de ban..."
+msgstr "Configurar máscara de banimento..."
 
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:1443
 #: /home/oem/kvirc-qt4/data/defscript/default.kvs:2138
