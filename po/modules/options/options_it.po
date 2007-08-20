@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2007-03-31 01:48+0200\n"
+"PO-Revision-Date: 2007-08-20 02:44+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -268,13 +268,11 @@ msgstr "Il campo NickName non può contenere spazi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -1185,8 +1183,7 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1153
@@ -1204,10 +1201,8 @@ msgid "Connect &Now"
 msgstr "&Connetti Ora"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1177
 msgid ""
@@ -1442,8 +1437,7 @@ msgstr ""
 "delle citazioni casuali o delle frasi.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -1847,10 +1841,9 @@ msgstr "Colore secondario inattivo in primo piano ad alto contrasto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:40
 msgid "Scaling in userlist"
-msgstr ""
+msgstr "Scala nella lista utenti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:41
-#, fuzzy
 msgid "Scale avatar images in userlist (recommended)"
 msgstr "Scala immagine Avatar (raccomandato)"
 
@@ -1880,12 +1873,11 @@ msgstr "Altezza immagine:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and it user tooltips)"
-msgstr ""
+msgstr "Scala al caricamento (e nella tooltip utente)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
-#, fuzzy
 msgid "Scale avatar images on image load"
-msgstr "Scala immagine Avatar (raccomandato)"
+msgstr "Scala immagine Avatar al caricamento"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:65
 msgid "Request CTCP"
@@ -2074,9 +2066,8 @@ msgid "Disable notifier window flashing"
 msgstr "Disabilita il flashing della finestra di notifica"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:124
-#, fuzzy
 msgid "Disable notifier window fade effect"
-msgstr "Disabilita il flashing della finestra di notifica"
+msgstr "Disabilita l'effetto fading della finestra di notifica"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:39
 msgid "Default away message:"
@@ -2108,9 +2099,8 @@ msgid "No such options page class name %Q"
 msgstr "Non c'è tale nome di classe nella pagina delle opzioni %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Use system URL handlers"
-msgstr "Gestore URL"
+msgstr "Usa il gestore URL di sistema"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:50
 msgid "<b>http://</b> handler command:"
@@ -2441,16 +2431,15 @@ msgid "KVIrc Preferences"
 msgstr "Preferenze KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:139
-#, fuzzy
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner "
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
-"Questo dialog contiene un set di settaggi KVIrc. Usa i pulsanti sulla "
+"Questo dialog contiene un set di settaggi KVIrc.<br>Usa i pulsanti sulla "
 "sinistra per navigare attraverso le opzioni. La casella in basso a sinistra "
-"è un piccolo motore di ricerca- Evidenzierà le pagine che contengono le "
+"è un piccolo motore di ricerca. Evidenzierà le pagine che contengono le "
 "opzioni relative alle parole che hai cercato."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:147
@@ -2642,8 +2631,7 @@ msgid "Minimum alert level:"
 msgstr "Livello di allerta minimo:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -2990,14 +2978,12 @@ msgid "Output identd messages to:"
 msgstr "Messaggio di quit:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:218
-#, fuzzy
 msgid "Active window"
-msgstr "Mostra nella finestra attiva"
+msgstr "Finestra attiva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:219
-#, fuzzy
 msgid "Console"
-msgstr "Finestre di Console"
+msgstr "Console"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:220
 #, fuzzy
@@ -3293,9 +3279,8 @@ msgid "Force language:"
 msgstr "Forza lingua:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
-#, fuzzy
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -4402,9 +4387,8 @@ msgid "Nickname Grid"
 msgstr "Griglia Nickname"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:82
-#, fuzzy
 msgid "theme,userlist,channel,grid"
-msgstr "tema,lista utenti,canale"
+msgstr "tema,lista utenti,canale,griglia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:102
 msgid "userlist,channel"
@@ -4454,5 +4438,3 @@ msgstr "Query"
 msgid "chat"
 msgstr "chat"
 
-#~ msgid "Scaling"
-#~ msgstr "Ridimensionamento"

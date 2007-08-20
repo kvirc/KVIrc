@@ -662,7 +662,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 				(iRemoteSize > ((int)(fi.size())))) // or it is larger than the actual size on disk
 			{
 				tmp = __tr2qs_ctx( \
-							"The file '<b>%1</b>' already exists" \
+							"The file '<b>%1</b>' already exists " \
 							"and is <b>%2</b> large.<br>" \
 							"Do you wish to<br>" \
 							"<b>overwrite</b> the existing file,<br> " \

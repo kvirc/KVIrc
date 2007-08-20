@@ -53,7 +53,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	//2nd
-	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and it user tooltips)","options"));
+	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and in user tooltips)","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images on image load","options"),KviOption_boolScaleAvatarsOnLoad);
 	
 	u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintScaleAvatarsOnLoadWidth,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));

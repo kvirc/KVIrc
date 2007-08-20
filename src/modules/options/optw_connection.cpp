@@ -210,7 +210,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));
 
-	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Output verosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	KviTalGroupBox * gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Output verbosity","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
 	addLabel(gbox,__tr2qs_ctx("Output identd messages to:","options"));

@@ -1124,7 +1124,7 @@ void KviAliasEditor::renameItem()
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
 						__tr2qs("Alias already exists"),
-						__tr2qs("This name is already in use. Please chooose another one."),
+						__tr2qs("This name is already in use. Please choose another one."),
 						__tr2qs("Ok, Let me try again..."));
 			g_pAliasEditorModule->unlock();
 			return;
@@ -1136,8 +1136,8 @@ void KviAliasEditor::renameItem()
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
 						__tr2qs("Namespace already exists"),
-						__tr2qs("This name is already in use. Please chooose another one."),
-						__tr2qs("Ok, Let me try again..."));
+						__tr2qs("This name is already in use. Please choose another one."),
+						__tr2qs("Ok, let me try again..."));
 			g_pAliasEditorModule->unlock();
 			return;
 		}

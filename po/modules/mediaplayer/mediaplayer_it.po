@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: mediaplayer_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2007-02-07 16:24+0100\n"
+"PO-Revision-Date: 2007-08-20 02:39+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
 msgid "Function not implemented"
-msgstr ""
+msgstr "Funzione non implementata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
 msgid "An interface to the Juk KDE media player."
@@ -84,6 +84,9 @@ msgid ""
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
+"Interfaccia per il plugin AMIP.\n"
+"Puoi scaricarlo da http://amip.tools-for.net.\n"
+"Per usare questa interfaccia devi installare il plugin AMIP per il tuo player"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
 msgid "An interface to the AmaroK KDE media player."
@@ -95,10 +98,8 @@ msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Provo il media player \"%Q\": punteggio %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgstr "I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
@@ -124,8 +125,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1313
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1501
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1544
-msgid ""
-"The selected media player interface failed to execute the requested function"
+msgid "The selected media player interface failed to execute the requested function"
 msgstr ""
 "L'interfaccia media player scelta non è riuscita ad eseguire la funzione "
 "richiesta"
@@ -142,3 +142,4 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1545
 msgid "Last interface error: "
 msgstr "Ultimo errore dell'interfaccia: "
+
