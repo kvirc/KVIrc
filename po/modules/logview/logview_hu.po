@@ -1,120 +1,120 @@
 # translation of logview_hu.po to hungarian
-# translation of logview.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# �d�m Fibinger <vfiber@interware.hu>, 2006.
 #
+# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: logview_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2006-05-24 04:19+0200\n"
-"Last-Translator: �d�m Fibinger <vfiber@interware.hu>\n"
+"PO-Revision-Date: 2007-08-23 18:47+0200\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/libkvilogview.cpp:136
 msgid "Browse &Log Files"
-msgstr "Napl�f�jlok Ta&ll�z�sa"
+msgstr "Naplófájlok Ta&llózása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:79
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:81
 msgid "Log File"
-msgstr "Napl� F�jl"
+msgstr "Napló Fájl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:91
 msgid "Filter"
-msgstr ""
+msgstr "Szűrő"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:95
 msgid "Show channel logs"
-msgstr ""
+msgstr "Csatorna naplók mutatása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:99
 msgid "Show query logs"
-msgstr ""
+msgstr "Privát naplók mutatása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:103
 msgid "Show console logs"
-msgstr ""
+msgstr "Konzol naplók mutatása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:107
 msgid "Show DCC chat logs"
-msgstr ""
+msgstr "DCC beszélgetésnaplók mutatása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:111
 msgid "Show other logs"
-msgstr ""
+msgstr "Más naplók mutatása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:116
 msgid "Contents filter"
-msgstr ""
+msgstr "Tartalomszűrő"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:119
 msgid "Log name mask:"
-msgstr ""
+msgstr "Napló név maszk:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:125
 msgid "Log contents mask:"
-msgstr ""
+msgstr "Napló tartalom maszk:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:131
 msgid "Only older than"
-msgstr ""
+msgstr "Régebbi, mint"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:139
 msgid "Only newier than"
-msgstr ""
+msgstr "Újabb, mint"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:147
 msgid "Apply filter"
-msgstr ""
+msgstr "Szűrő alkalmazása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:203
 msgid "Log Viewer"
-msgstr "Napl�f�jl B�ng�sz�"
+msgstr "Naplófájl Böngésző"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:254
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:258
 msgid "Filtering files..."
-msgstr ""
+msgstr "Fájlok szűrése..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:255
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:259
 msgid "Abort filtering"
-msgstr ""
+msgstr "Szűrés megszakítása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:312
 msgid "%Q on %Q"
-msgstr ""
+msgstr "%Q on %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:381
 msgid "Remove file"
-msgstr "F�jl Elt�vol�t�sa"
+msgstr "Fájl Eltávolítása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:63
 msgid "Channel"
-msgstr ""
+msgstr "Csatorna"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:65
 msgid "Query"
-msgstr ""
+msgstr "Privát"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:67
 msgid "DCC Chat"
-msgstr ""
+msgstr "DCC beszélgetés"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:69
 msgid "Console"
-msgstr ""
+msgstr "Konzol"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:71
 msgid "Other"
-msgstr ""
+msgstr "Más"
+

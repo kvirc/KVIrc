@@ -1,15 +1,15 @@
 # translation of options_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
 # Ádám Fibinger <vfiber@gmail.com>, 2007.
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2007-04-20 21:37+0200\n"
+"PO-Revision-Date: 2007-08-23 19:00+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -259,13 +259,11 @@ msgstr "A Név mező nem tartalmazhat szóközt!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -1164,8 +1162,7 @@ msgid "Server:"
 msgstr "Szerver: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1153
@@ -1183,8 +1180,7 @@ msgid "Connect &Now"
 msgstr "Kapcsolódás"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Kattints ide, hogy elkezdj csatlakozni a kiválasztott szerverhez.</"
 "center>"
@@ -1419,8 +1415,7 @@ msgstr ""
 "rövid szösszenetet/szólást írnak.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "A mező kitöltése opcionális, ez fog megjelenni, ha valaki CTCP USERINFO-t "
 "kér tőled."
@@ -1822,12 +1817,11 @@ msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:40
 msgid "Scaling in userlist"
-msgstr ""
+msgstr "Átméretezés felhasználólistában"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:41
-#, fuzzy
 msgid "Scale avatar images in userlist (recommended)"
-msgstr "Avatar kép átméretezése (ajánlott)"
+msgstr "Avatar kép átméretezése felhasználólistában (ajánlott)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:43
 msgid ""
@@ -1858,9 +1852,8 @@ msgid "Scaling on load (and it user tooltips)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
-#, fuzzy
 msgid "Scale avatar images on image load"
-msgstr "Avatar kép átméretezése (ajánlott)"
+msgstr "Avatar kép átméretezése betöltéskor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:65
 msgid "Request CTCP"
@@ -2047,9 +2040,8 @@ msgid "Disable notifier window flashing"
 msgstr "Értesítő ablak villogásának kikapcsolása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:124
-#, fuzzy
 msgid "Disable notifier window fade effect"
-msgstr "Értesítő ablak villogásának kikapcsolása"
+msgstr "Értesítő ablak halványulásának tiltása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:39
 msgid "Default away message:"
@@ -2341,8 +2333,7 @@ msgstr "kérés"
 msgid ""
 "<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
 "requests</b></center>"
-msgstr ""
-"<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
+msgstr "<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
@@ -2608,8 +2599,7 @@ msgid "Minimum alert level:"
 msgstr "Minimális figyelmeztetési szint: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr "<center>Minimális figyelmeztetési szint beállítása a tálcára</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
@@ -2944,29 +2934,24 @@ msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Azonosító szolgáltatás engedélyezése (UNIX-on nem túl jó ötlet)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
-#, fuzzy
 msgid "Output verosity"
 msgstr "\"Beszédesség\" a felhasználó felé"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
-#, fuzzy
 msgid "Output identd messages to:"
-msgstr "Kilépő üzenet:"
+msgstr "Identd üzenetek küldése:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:218
-#, fuzzy
 msgid "Active window"
-msgstr "Mutasd az aktív ablakban"
+msgstr "Aktív ablakban"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:219
-#, fuzzy
 msgid "Console"
-msgstr "Konzol ablakok"
+msgstr "Konzol"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:220
-#, fuzzy
 msgid "Do not show any identd messages"
-msgstr "Szinek tiltása üzenetekben"
+msgstr "Ne mutass identd üzeneteket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:237
 msgid "Enable ident service only while connecting to server"
@@ -4191,7 +4176,7 @@ msgstr "Kinézet"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:97
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:101
 msgid "Features"
-msgstr ""
+msgstr "Lehetőségek"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:46
 msgid "Media Types"
@@ -4398,5 +4383,3 @@ msgstr "Privát"
 msgid "chat"
 msgstr "beszélgetés"
 
-#~ msgid "Scaling"
-#~ msgstr "Átméretezés"

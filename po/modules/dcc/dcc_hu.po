@@ -1,20 +1,20 @@
-# translation of dcc.po to hungarian
+# translation of dcc_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# ¡d·m Fibinger <vfiber@interware.hu>, 2006.
 #
+# √Åd√°m Fibinger <vfiber@interware.hu>, 2006, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: dcc\n"
+"Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2006-05-23 14:25+0200\n"
-"Last-Translator: ¡d·m Fibinger <vfiber@interware.hu>\n"
+"PO-Revision-Date: 2007-08-23 18:42+0200\n"
+"Last-Translator: √Åd√°m Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/descriptor.cpp:70
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:111
@@ -38,41 +38,41 @@ msgstr "ismertelen"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:158
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:783
 msgid "Choose Files to Send - KVIrc"
-msgstr "K¸ldendı F·jl Kiv·lasz·s - KVIrc"
+msgstr "K√ºldend≈ë F√°jl Kiv√°lasz√°s - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr "Nem lehet DCC %Q kÈrÈst k¸ldeni %Q: felÈ, IRC kapcsolat megszakadt"
+msgstr "Nem lehet DCC %Q k√©r√©st k√ºldeni %Q: fel√©, IRC kapcsolat megszakadt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:199
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:821
 msgid "Can't open file %Q for reading"
-msgstr "Nem lehet megnyitni %Q f·jlt olvas·sra"
+msgstr "Nem lehet megnyitni %Q f√°jlt olvas√°sra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:269
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> kÈrte <b>Kˆzvetlen Kliens Kapcsolat (DCC) lÈtrehoz·s·t %4 "
-"</b>mÛdban</b><br>"
+"<b>%1 [%2@%3]</b> k√©rte <b>K√∂zvetlen Kliens Kapcsolat (DCC) l√©trehoz√°s√°t %4 "
+"</b>m√≥dban</b><br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:274
 msgid "The connection will be secured using SSL.<br>"
-msgstr "A kapcsolat titkosÌtva SSL segÌtsÈgÈvel.<br>"
+msgstr "A kapcsolat titkos√≠tva SSL seg√≠ts√©g√©vel.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:280
 msgid "You will be the passive side of the connection.<br>"
-msgstr "Te leszel a passzÌv oldal a kapcsolaton bel¸l<br>"
+msgstr "Te leszel a passz√≠v oldal a kapcsolaton bel√ºl<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr "A kapcsolat cÈlja: <b>%1</b> <b>%2</b> porton kereszt¸l <br>"
+msgstr "A kapcsolat c√©lja: <b>%1</b> <b>%2</b> porton kereszt√ºl <br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:289
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:543
 msgid "DCC %1 Request - KVIrc"
-msgstr "DCC %1 KÈrÈs - KVIrc"
+msgstr "DCC %1 K√©r√©s - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:340
 msgid ""
@@ -80,13 +80,13 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> kÈrte <br><b>DCC kapcsolat lÈtrehoz·s·t</b>VOICE "
-"mÛdban<b></b><br>A kapcsolat cÈlja: <b>%4</b> cÌmen <b>%5</b>porton "
-"kereszt¸l tˆrtÈnne.<br>"
+"<b>%1 [%2@%3]</b> k√©rte <br><b>DCC kapcsolat l√©trehoz√°s√°t</b>VOICE "
+"m√≥dban<b></b><br>A kapcsolat c√©lja: <b>%4</b> c√≠men <b>%5</b>porton "
+"kereszt√ºl t√∂rt√©nne.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:346
 msgid "DCC VOICE request"
-msgstr "DCC VOICE (hang) kÈrÈs"
+msgstr "DCC VOICE (hang) k√©r√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:411
 msgid ""
@@ -94,32 +94,29 @@ msgid ""
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> kÈrte <br><b>DCC kapcsolat lÈtrehoz·s·t</b> <b>CANVAS "
-"(v·szon)</b> mÛdban.<br>A kapcsolat cÈlja:<b>%4</b> cÌmen <b>%5</b> porton "
-"kereszt¸l tˆrtÈnne<br>"
+"<b>%1 [%2@%3]</b> k√©rte <br><b>DCC kapcsolat l√©trehoz√°s√°t</b> <b>CANVAS "
+"(v√°szon)</b> m√≥dban.<br>A kapcsolat c√©lja:<b>%4</b> c√≠men <b>%5</b> porton "
+"kereszt√ºl t√∂rt√©nne<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:417
 msgid "DCC CANVAS request"
-msgstr "DCC CANVAS (v·szon) kÈrÈs"
+msgstr "DCC CANVAS (v√°szon) k√©r√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:502
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> k¸ldeni akar egy f·jlt neked: '<b>%4</b>', ami <b>%5</b> "
-"b·jt  hossz˙. <br>A kapcsolat cÈlja<b>%6</b> hoszton kereszt¸l <b>%7</"
-"b>porton tˆrtÈnne<br>"
+"<b>%1 [%2@%3]</b> k√ºldeni akar egy f√°jlt neked:'<b>%4</b>', ami <b>%5</b>."
+"<br>A kapcsolat c√©lja a <b>%6</b> a <b>%7</b> porton.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:515
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> k¸ldeni akar egy f·jlt neked:'<b>%4</b>', ami <b>%5</b> "
-"b·jt hossz˙.<br>Te lennÈl a passzÌv oldal a kapcsolatban.<br>"
+"<b>%1 [%2@%3]</b> k√ºldeni akar egy f√°jlt neked:'<b>%4</b>', ami <b>%5</b>."
+"<br>Te lenn√©l a passz√≠v a kapcsolaton bel√ºl.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:528
 msgid ""
@@ -131,37 +128,35 @@ msgid ""
 "incoming avatars automatically by setting the option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
-"<center><b>MegjegyzÈs:</b></center>A f·jl l·tszÛlag egy avatar, amit te "
-"kÈrtÈl. A f·jl nevÈt nem szabad megv·ltoztatnod. Ments ezt oda, ahol a KVIrc "
-"megtal·lja, mint pÈd·ul az 'avatarok', 'bejˆvı' vagy 'kÈpek' kˆnyvt·rakbaa "
-"saj·t kˆnyvt·radba, vagy mentsd a letˆltÈsek kˆnyvt·rba a bejˆvı f·jlokhoz."
-"Az alapÈrtelmezett mentÈsi kˆnyvt·r valÛszÌn˚leg megfelelı. Tudod utasÌtani "
-"a KVIrcet, hogy elfogadja Ès elhelyezze a bejˆvı avatarokat, automatikusana /"
-"<tt>boolAutoAcceptIncomingAvatars</tt> true -ra ·llÌt·s·val.<br>"
+"<center><b>Megjegyz√©s:</b></center>A f√°jl l√°tsz√≥lag egy avatar, amit te "
+"k√©rt√©l. A f√°jl nev√©t nem szabad megv√°ltoztatnod. Ments ezt oda, ahol a KVIrc "
+"megtal√°lja, mint p√©d√°ul az 'avatarok', 'bej√∂v≈ë' vagy 'k√©pek' k√∂nyvt√°rakbaa "
+"saj√°t k√∂nyvt√°radba, vagy mentsd a let√∂lt√©sek k√∂nyvt√°rba a bej√∂v≈ë f√°jlokhoz."
+"Az alap√©rtelmezett ment√©si k√∂nyvt√°r val√≥sz√≠n≈±leg megfelel≈ë. Tudod utas√≠tani "
+"a KVIrcet, hogy elfogadja √©s elhelyezze a bej√∂v≈ë avatarokat, automatikusana /"
+"<tt>boolAutoAcceptIncomingAvatars</tt> true -ra √°ll√≠t√°s√°val.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:557
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr "Automatikus DCC fogad·s %Q kÈrÈsre %Q!%Q@%Q -tÛl/tıl %Q f·jlra."
+msgstr "Automatikus DCC fogad√°s %Q k√©r√©sre %Q!%Q@%Q -t√≥l/t≈ël %Q f√°jlra."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:618
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "K¸ldendı F·jl Kiv·lasz·s - KVIrc"
+msgstr "F√°jln√©v megad√°sa ment√©shez - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:631
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr "Automatikus DCC mentÈs: F·jl: %Q %Q mint: \r![!dbl]play $0\r%Q\r"
+msgstr "Automatikus DCC ment√©s: F√°jl: %Q %Q mint: \r![!dbl]play $0\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:665
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already existsand is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
-"A f·jl '<b>%1</b>' m·r lÈtezik, Ès <b>%2</b> b·jt hossz˙.<br>SzeretnÈd "
-"<br><b>fel¸lÌrni</b> a lÈtezı f·jlt,<br> <b>automatikusan ·tnevezni</b> az "
-"˙j f·jlt, vagy<br><b>folytatni</b> egy befejezetlen letˆltÈst?"
+"A f√°jl '<b>%1</b>' m√°r l√©tezik, √©s <b>%2</b>.<br>Szeretn√©d "
+"<br><b>fel√ºl√≠rni</b> a l√©tez≈ë f√°jlt,<br> <b>automatikusan √°tnevezni</b> az "
+"√∫j f√°jlt, vagy<br><b>folytatni</b> egy befejezetlen let√∂lt√©st?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:677
 msgid ""
@@ -169,73 +164,72 @@ msgid ""
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
 "the new file ?"
 msgstr ""
-"A f·jl'<b>%1</b>' m·r lÈtezik Ès nagyobb, mint a felaj·nlott.<br>SzeretnÈd "
-"<br><b>fel¸lÌrni</b> a m·r lÈtezıt, vagy<br> <b>automatikusan ·tnevezni</b> "
-"az ˙j f·jlt?"
+"A f√°jl'<b>%1</b>' m√°r l√©tezik √©s nagyobb, mint a felaj√°nlott.<br>Szeretn√©d "
+"<br><b>fel√ºl√≠rni</b> a m√°r l√©tez≈ët, vagy<br> <b>automatikusan √°tnevezni</b> "
+"az √∫j f√°jlt?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:747
 msgid "File %s exists, auto-renaming to %Q"
-msgstr "F·jl: %s lÈtezik, automatikus ·tnevezÈs: %Q"
+msgstr "F√°jl: %s l√©tezik, automatikus √°tnevez√©s: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:158
 #, c-format
 msgid "Attempting a passive DCC %s connection"
-msgstr "PrÛb·lkoz·s passzÌv DCC %s kapcsolat lÈtrehoz·s·ra"
+msgstr "Pr√≥b√°lkoz√°s passz√≠v DCC %s kapcsolat l√©trehoz√°s√°ra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:168
 #, c-format
 msgid "Attempting an active DCC %s connection"
-msgstr "PrÛb·lkoz·s aktÌv DCC %s kapcsolat lÈtrehoz·s·ra"
+msgstr "Pr√≥b√°lkoz√°s akt√≠v DCC %s kapcsolat l√©trehoz√°s√°ra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:182
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:761
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:107
 msgid "Contacting host %Q on port %Q"
-msgstr "KapcsolÛd·s %Q -ra/re %Q porton kereszt¸l"
+msgstr "Kapcsol√≥d√°s %Q -ra/re %Q porton kereszt√ºl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:184
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:764
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:83
 msgid "Listening on interface %Q port %Q"
-msgstr "HallgatÛz·s %Q eszkˆzˆn, %Q porton"
+msgstr "Hallgat√≥z√°s %Q eszk√∂z√∂n, %Q porton"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:207
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
-msgstr "A helyi IP mag·ncÌm, meghat·roz·s az IRC-szerver ·ltal: %s"
+msgstr "A helyi IP mag√°nc√≠m, meghat√°roz√°s az IRC-szerver √°ltal: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:209
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1507
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
-msgstr "A helyi IP priv·t cÌm, de az IRC szerver ·ltal nem lehet meghat·rozni"
+msgstr "A helyi IP priv√°t c√≠m, de az IRC szerver √°ltal nem lehet meghat√°rozni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
-msgstr "A helyi IP cÌm priv·t, de nincs IRC szerver, ami meghat·rozn·"
+msgid "The local IP address is private, but have no IRC server to determine it from"
+msgstr "A helyi IP c√≠m priv√°t, de nincs IRC szerver, ami meghat√°rozn√°"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:234
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
-"DCC %Q kÈrÈs elk¸ldve %Q -nak/nek, v·rakoz·s a t·voli kliens "
-"kapcsolÛd·s·ra..."
+"DCC %Q k√©r√©s elk√ºldve %Q -nak/nek, v√°rakoz√°s a t√°voli kliens "
+"kapcsol√≥d√°s√°ra..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:237
 msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr "DCC %Q kÈrÈs k¸ldÈse sikertelen, manu·lis kapcsolat sz¸ksÈges"
+msgstr "DCC %Q k√©r√©s k√ºld√©se sikertelen, manu√°lis kapcsolat sz√ºks√©ges"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:245
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1569
 msgid "Low-level transport connection established"
-msgstr "Alacsony szint˚ adat·tviteli kapcsolat lÈtrejˆtt"
+msgstr "Alacsony szint≈± adat√°tviteli kapcsolat l√©trej√∂tt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:246
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1570
 msgid "Starting Secure Socket Layer handshake"
-msgstr "SSL kÈzfog·s megkezdÈse"
+msgstr "SSL k√©zfog√°s megkezd√©se"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:254
 #, c-format
@@ -245,16 +239,15 @@ msgstr "[SSL HIBA]: %s"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:302
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:388
 msgid "Cannot send data: No active connection"
-msgstr "Nem lehet adatot k¸ldeni: Nincs aktÌv kapcsolat"
+msgstr "Nem lehet adatot k√ºldeni: Nincs akt√≠v kapcsolat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:344
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"A kÛdolÛ motor nem kÈpes kÛdolni az aktu·lis ¸zenetet (%Q): %s, adat nem "
-"lett elk¸ldve."
+"A k√≥dol√≥ motor nem k√©pes k√≥dolni az aktu√°lis √ºzenetet (%Q): %Q, adat nem "
+"lett elk√ºldve."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:403
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:827
@@ -262,13 +255,12 @@ msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:447
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"A kˆvetkezı ¸zenet valÛszÌn˚leg kÛdolt, de a kÛdolÛ motor nem tudja "
-"visszafejteni: %s"
+"A k√∂vetkez≈ë √ºzenet val√≥sz√≠n≈±leg k√≥dolt, de a k√≥dol√≥ motor nem tudja "
+"visszafejteni: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:493
 msgid "DCC %Q failed: %Q"
@@ -278,7 +270,7 @@ msgstr "DCC %Q sikertelen: %Q"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:919
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:282
 msgid "Connected to %Q:%Q"
-msgstr "KapcsolÛdva %Q:%Q"
+msgstr "Kapcsol√≥dva %Q:%Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:523
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:921
@@ -292,16 +284,16 @@ msgid ""
 "half-duplex soundcard , use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
-"FIGYELMEZTET…S: a hangk·rtya sikertelen ellenırzÈse full-duplex "
-"meghat·roz·sn·l: ha ez a k·rtya half-duplex hangk·rtya, haszn·ld a DCC VOICE "
-"opciÛt kÈnyszerÌtett half-duplex algoritmussal"
+"FIGYELMEZTET√âS: a hangk√°rtya sikertelen ellen≈ërz√©se full-duplex "
+"meghat√°roz√°sn√°l: ha ez a k√°rtya half-duplex hangk√°rtya, haszn√°ld a DCC VOICE "
+"opci√≥t k√©nyszer√≠tett half-duplex algoritmussal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:172
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
 msgstr ""
-"Half duplex hangk·rtya detekt·lva, nem tudsz majd egyidıben beszÈlni Ès "
+"Half duplex hangk√°rtya detekt√°lva, nem tudsz majd egyid≈ëben besz√©lni √©s "
 "hallgatni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:213
@@ -310,14 +302,14 @@ msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
 "closest match (%d)"
 msgstr ""
-"FIGYELMEZTET…S: a kÈrt mintavÈteli-korrekciÛ ÈrvÈnytelen: (%d): a "
-"legkˆzelebbi egyezÈs: %d, ezt haszn·lom"
+"FIGYELMEZTET√âS: a k√©rt mintav√©teli-korrekci√≥ √©rv√©nytelen: (%d): a "
+"legk√∂zelebbi egyez√©s: %d, ezt haszn√°lom"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:271
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
-"Hopp·, hangk·rtya kÈpessÈgeinek tesztelÈse sikertelen... v·rhatÛak "
-"problÈm·k..."
+"Hopp√°, hangk√°rtya k√©pess√©geinek tesztel√©se sikertelen... v√°rhat√≥ak "
+"probl√©m√°k..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:662
 msgid "Input buffer"
@@ -329,33 +321,33 @@ msgstr "Kimeneti puffer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:746
 msgid "Attempting a passive DCC VOICE connection"
-msgstr "PasszÌv DCC VOICE kapcsolat lÈtrehoz·sa"
+msgstr "Passz√≠v DCC VOICE kapcsolat l√©trehoz√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:751
 msgid "Attempting an active DCC VOICE connection"
-msgstr "AktÌv DCC VOICE kapcsolat lÈtrehoz·sa"
+msgstr "Akt√≠v DCC VOICE kapcsolat l√©trehoz√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:779
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"DCC VOICE kÈrÈs (%s) elk¸ldve %Q felÈ, v·rakoz·s a t·voli kliens "
-"kapcsolÛd·s·ra.."
+"DCC VOICE k√©r√©s (%s) elk√ºldve %Q fel√©, v√°rakoz√°s a t√°voli kliens "
+"kapcsol√≥d√°s√°ra.."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:781
 msgid "DCC VOICE request not sent: awaiting manual connections"
-msgstr "DCC VOICE kÈrÈs nem lett elk¸ldve, v·rakoz·s manu·lis kapcsolÛd·sra"
+msgstr "DCC VOICE k√©r√©s nem lett elk√ºldve, v√°rakoz√°s manu√°lis kapcsol√≥d√°sra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:885
 #, c-format
 msgid "Input buffer: %d bytes"
-msgstr "Beviteli puffer: %d b·jt"
+msgstr "Beviteli puffer: %d b√°jt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:887
 #, c-format
 msgid "Output buffer: %d bytes"
-msgstr "Kimeneti puffer: %d b·jt"
+msgstr "Kimeneti puffer: %d b√°jt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:910
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:277
@@ -365,94 +357,94 @@ msgstr "DCC Sikertelen %Q"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:939
 #, c-format
 msgid "Actual codec used is '%s'"
-msgstr "Aktu·lis codec: %s"
+msgstr "Aktu√°lis codec: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:1023
 #, c-format
 msgid "Volume: %i"
-msgstr "Hangerı: %i"
+msgstr "Hanger≈ë: %i"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:91
 msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
 msgstr ""
-"Az ablaknak nincs hozz·rendelt IRC kˆrnyezete (IRC kˆrnyezet sz¸ksÈges, "
-"kivÈve -c vagy -n esetÈn)"
+"Az ablaknak nincs hozz√°rendelt IRC k√∂rnyezete (IRC k√∂rnyezet sz√ºks√©ges, "
+"kiv√©ve -c vagy -n eset√©n)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:104
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
 msgstr ""
-"Nem csatlakozt·l a szerverhez, (aktÌv kapcsolat sz¸ksÈges, vagy legal·bb -c "
-"vagy -n sz¸ksÈges)"
+"Nem csatlakozt√°l a szerverhez, (akt√≠v kapcsolat sz√ºks√©ges, vagy legal√°bb -c "
+"vagy -n sz√ºks√©ges)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
-msgstr "%Q eszkˆz cÌmÈnek meghat·roz·sa sikertleen"
+msgstr "%Q eszk√∂z c√≠m√©nek meghat√°roz√°sa sikertleen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:139
 msgid "No suitable interfaces to listen on, use -i"
-msgstr "Nincs hallgat·sra alkalmas eszkˆz, haszn·ld: -i"
+msgstr "Nincs hallgat√°sra alkalmas eszk√∂z, haszn√°ld: -i"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
-msgstr "Ez a kiad·s SSL t·mogat·s nÈlk¸l lett lefordÌtva, -s kapcsolÛ mellızve"
+msgstr "Ez a kiad√°s SSL t√°mogat√°s n√©lk√ºl lett leford√≠tva, -s kapcsol√≥ mell≈ëzve"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:434
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:657
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1159
 msgid "-c requires -i and -p"
-msgstr "a '-c' igÈnyli '-i' Ès '-p' -t"
+msgstr "a '-c' ig√©nyli '-i' √©s '-p' -t"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:634
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:444
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:730
 msgid "<unknown size>"
-msgstr "<ismeretlen mÈret>"
+msgstr "<ismeretlen m√©ret>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:890
 msgid "This executable has been built without SSL support, -s switch ignored"
-msgstr "Ez a kiad·s SSL t·mogat·s nÈlk¸l lesz lefordÌtva, -s kapcsolÛ mellızve"
+msgstr "Ez a kiad√°s SSL t√°mogat√°s n√©lk√ºl lesz leford√≠tva, -s kapcsol√≥ mell≈ëzve"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:960
 msgid "This executable has no SSL support, -s switch ignored"
-msgstr "Ez SSL t·mogat·s nÈlk¸li kiad·s, '-s' kapcsolÛ mellızve"
+msgstr "Ez SSL t√°mogat√°s n√©lk√ºli kiad√°s, '-s' kapcsol√≥ mell≈ëzve"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1114
 msgid "DCC VOICE support not enabled at compilation time"
-msgstr "DCC VOICE nem volt engedÈlyezve fordÌt·skor"
+msgstr "DCC VOICE nem volt enged√©lyezve ford√≠t√°skor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr "Helytelen meghat·rozott mintavÈteli r·ta, v·lt·s 8000-re"
+msgstr "Helytelen meghat√°rozott mintav√©teli r√°ta, v√°lt√°s 8000-re"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr "Helytelen kodek meghat·roz·sa, v·lt·s 'adpcm'-re"
+msgstr "Helytelen kodek meghat√°roz√°sa, v√°lt√°s 'adpcm'-re"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1577
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2543
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2563
 msgid "The current window has no associated DCC session"
-msgstr "Az aktu·lis ablaknak nincs hozz·rendelt DCC 'session'-ja"
+msgstr "Az aktu√°lis ablaknak nincs hozz√°rendelt DCC 'session'-ja"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1582
 msgid "The specified parameter is not a valid DCC identifier"
-msgstr "A megadott paramÈterek nem ÈrvÈnyes DCC azonosÌtÛk"
+msgstr "A megadott param√©terek nem √©rv√©nyes DCC azonos√≠t√≥k"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Ez a DCC kapcsolat nem DCC √°tviteli kapcsolat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2554
 msgid "The specified window identifier is not valid"
-msgstr "A megadott ablak azonosÌtÛ nem ÈrvÈnyes"
+msgstr "A megadott ablak azonos√≠t√≥ nem √©rv√©nyes"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr "FIGYELMEZTET…S: A peer szemÈt adatot k¸ldˆtt a f·jl vÈgÈn"
+msgstr "FIGYELMEZTET√âS: A peer szem√©t adatot k√ºld√∂tt a f√°jl v√©g√©n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
 msgid ""
@@ -465,88 +457,87 @@ msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr ""
-"Adat·tvitel megsakÌtva, 30 m·sodperc v·rkoz·s a peerre, hogy z·rja a "
+"Adat√°tvitel megsak√≠tva, 30 m√°sodperc v√°rkoz√°s a peerre, hogy z√°rja a "
 "kapcsolatot..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr "Adat·tvitel megszakÌtva 30 m·sodperce, kapcsolat z·r·sa"
+msgstr "Adat√°tvitel megszak√≠tva 30 m√°sodperce, kapcsolat z√°r√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
-"FIGYELMEZTET…S: beÈrkezı adat DCC TSEND-kÈnt, nem kellene elismervÈnynek "
+"FIGYELMEZTET√âS: be√©rkez≈ë adat DCC TSEND-k√©nt, nem kellene elismerv√©nynek "
 "lennie"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:727
 #, c-format
 msgid "TRANSFER %d"
-msgstr "ADAT¡TVITEL: %d"
+msgstr "ADAT√ÅTVITEL: %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:750
 msgid "Setting up the connection"
-msgstr "Kapcsolat be·llÌt·sa"
+msgstr "Kapcsolat be√°ll√≠t√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:809
 msgid "Attempting a passive DCC %1 connection"
-msgstr "PasszÌv DCC %1 kapcsolat lÈtrehoz·sa"
+msgstr "Passz√≠v DCC %1 kapcsolat l√©trehoz√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:813
 msgid "Attempting an active DCC %1 connection"
-msgstr "AktÌv DCC %1 kapcsolat lÈtrehoz·sa"
+msgstr "Akt√≠v DCC %1 kapcsolat l√©trehoz√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:839
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
-msgstr "DCC RESUME elk¸ldve, kÈrÈs %1 felÈ, v·rakoz·s Elfogad·sra"
+msgstr "DCC RESUME elk√ºldve, k√©r√©s %1 fel√©, v√°rakoz√°s Elfogad√°sra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:909
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:920
 msgid "Aborted"
-msgstr "MegszakÌtva"
+msgstr "Megszak√≠tva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:919
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1598
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1673
 msgid "Transfer failed: "
-msgstr "Adat·tvitel megszakadt: "
+msgstr "Adat√°tvitel megszakadt: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:931
 msgid "Configure Bandwidth..."
-msgstr "S·vszÈlessÈg be·llÌt·sa..."
+msgstr "S√°vsz√©less√©g be√°ll√≠t√°sa..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:933
 msgid "Resend DCC"
-msgstr "DCC ˙jrak¸ldÈs"
+msgstr "DCC √∫jrak√ºld√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:934
 msgid "Resend TDCC"
-msgstr "TDCC ˙jrak¸ldÈs"
+msgstr "TDCC √∫jrak√ºld√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:935
 msgid "Resend RevDCC"
-msgstr "RevDCC ˙jrak¸ldÈs"
+msgstr "RevDCC √∫jrak√ºld√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
 msgid "Abort"
-msgstr "MegszakÌt·s"
+msgstr "Megszak√≠t√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1130
 msgid "From: "
-msgstr "FeladÛ: "
+msgstr "Felad√≥: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1131
 msgid "To: "
-msgstr "CÌmzett:"
+msgstr "C√≠mzett:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1234
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1241
-#, fuzzy
 msgid "%1 of %2 (%3%)"
-msgstr "%2 van h·tra %1 b·jtbÛl (%3%)"
+msgstr "%2 van h√°tra %1 b√°jtb√≥l (%3%)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1245
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1258
 msgid "Spd:"
@@ -554,32 +545,31 @@ msgstr "Seb:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1273
 msgid "Avg:"
-msgstr "¡tl:"
+msgstr "√Åtl:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1344
 msgid "Transfer Log"
-msgstr "Adat·tviteli naplÛ"
+msgstr "Adat√°tviteli napl√≥"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1475
 msgid "Contacting host %1 on port %2"
-msgstr "KapcsolÛd·s a %1 hosthoz %2 porton kereszt¸l"
+msgstr "Kapcsol√≥d√°s a %1 hosthoz %2 porton kereszt√ºl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1482
 msgid "Listening on interface %1 port %2"
-msgstr "HallgatÛz·s %1 eszkˆzˆn %2 porton kereszt¸l"
+msgstr "Hallgat√≥z√°s %1 eszk√∂z√∂n %2 porton kereszt√ºl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1505
 msgid "The local IP address is private, determining from IRC server: %1"
-msgstr "A helyi IP mag·ncÌm, meghat·riz·s az IRC szerverrel: %1"
+msgstr "A helyi IP mag√°nc√≠m, meghat√°riz√°s az IRC szerverrel: %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1556
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"DCC %1 kÈrÈs k¸ldÈse %2 felÈ, v·rakoz·s a t·voli kliens kapcsolÛd·s·ra..."
+msgstr "DCC %1 k√©r√©s k√ºld√©se %2 fel√©, v√°rakoz√°s a t√°voli kliens kapcsol√≥d√°s√°ra..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1558
 msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr "DCC %1 kÈrÈs nem lett elk¸ldve, manu·lis kapcsolÛd·s sz¸ksÈges"
+msgstr "DCC %1 k√©r√©s nem lett elk√ºldve, manu√°lis kapcsol√≥d√°s sz√ºks√©ges"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1577
 msgid "[SSL ERROR]: %1"
@@ -587,15 +577,15 @@ msgstr "[SSL HIBA]: %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1620
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
-msgstr "DCC %s adat·tvitel %Q@%Q:%Q felıl, kÈsz: \r![!dbl]play $0\r%s\r"
+msgstr "DCC %s adat√°tvitel %Q@%Q:%Q fel≈ël, k√©sz: \r![!dbl]play $0\r%s\r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1635
 msgid "Transfer completed"
-msgstr "Adat·tvitel kÈsz"
+msgstr "Adat√°tvitel k√©sz"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1682
 msgid "Connected to %1:%2"
-msgstr "KapcsolÛdva %1:%2"
+msgstr "Kapcsol√≥dva %1:%2"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1683
 msgid "Local end is %1:%2"
@@ -603,40 +593,39 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1727
 msgid "Transferring data"
-msgstr "Adat·tvitel"
+msgstr "Adat√°tvitel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1753
 msgid "RESUME accepted, transfer will begin at position %1"
-msgstr "RESUME(folytat·s) elfogadva, az ·tvitel %1 pozÌciÛtÛl kezdıdik"
+msgstr "RESUME(folytat√°s) elfogadva, az √°tvitel %1 poz√≠ci√≥t√≥l kezd≈ëdik"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1784
 msgid "Internal error in RESUME request"
-msgstr "Belsı hiba RESUME (folytat·s) kÈrÈsnÈl"
+msgstr "Bels≈ë hiba RESUME (folytat√°s) k√©r√©sn√©l"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
 msgid "Invalid RESUME request: Position %1 is larger than file size"
-msgstr ""
-"Helytelen RESUME (folytat·s)kÈrÈs, %1 pozÌciÛ nagyobb, mint a f·jl mÈrete"
+msgstr "Helytelen RESUME (folytat√°s)k√©r√©s, %1 poz√≠ci√≥ nagyobb, mint a f√°jl m√©rete"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1793
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr "Elfogadott RESUME (folytat·s), adat·tvitel %1 pozÌciÛtÛl kezdıdik"
+msgstr "Elfogadott RESUME (folytat√°s), adat√°tvitel %1 poz√≠ci√≥t√≥l kezd≈ëdik"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1825
 msgid "Configure bandwidth for DCC transfer %1"
-msgstr "S·vszÈlessÈg be·llÌt·sa DCC %1 ·tvitelhez"
+msgstr "S√°vsz√©less√©g be√°ll√≠t√°sa DCC %1 √°tvitelhez"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
 msgid "Limit upload bandwidth to"
-msgstr "FeltˆltÈsi s·vszÈlessÈg korl·toz·sa "
+msgstr "Felt√∂lt√©si s√°vsz√©less√©g korl√°toz√°sa "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
 msgid "Limit download bandwidth to"
-msgstr "LetˆltÈsi s·vszÈlessÈg korl·toz·sa"
+msgstr "Let√∂lt√©si s√°vsz√©less√©g korl√°toz√°sa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1841
 msgid "bytes/sec"
-msgstr "b·jt/m·sodperc "
+msgstr "b√°jt/m√°sodperc "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1845
 msgid "OK"
@@ -645,27 +634,25 @@ msgstr "OK"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:142
 msgid "Cancel"
-msgstr "MÈgsem"
+msgstr "M√©gsem"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:78
 msgid "Attempting a passive DCC CANVAS connection"
-msgstr "PrÛb·lkoz·s: passzÌv DCC CANAVAS (v·szon) kapcsolat"
+msgstr "Pr√≥b√°lkoz√°s: passz√≠v DCC CANAVAS (v√°szon) kapcsolat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
-"Elk¸ldˆtt DCC CANVAS (v·szon) kÈrÈs -> %Q, v·rakoz·s a t·voli kliens "
-"kapcsolÛd·s·ra..."
+"Elk√ºld√∂tt DCC CANVAS (v√°szon) k√©r√©s -> %Q, v√°rakoz√°s a t√°voli kliens "
+"kapcsol√≥d√°s√°ra..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:100
 msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr ""
-"DCC CANVAS (v·szon) kÈrÈs nem lett elk¸ldve, manu·lis csatlakoz·s sz¸ksÈges"
+msgstr "DCC CANVAS (v√°szon) k√©r√©s nem lett elk√ºldve, manu√°lis csatlakoz√°s sz√ºks√©ges"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:104
 msgid "Attempting an active DCC CANVAS connection"
-msgstr "PrÛb·lkoz·s aktÌv DCC CANAVAS (v·szon) kapcsolat lÈtrehoz·s·ra"
+msgstr "Pr√≥b√°lkoz√°s akt√≠v DCC CANAVAS (v√°szon) kapcsolat l√©trehoz√°s√°ra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1563
 msgid "&Line"
@@ -674,7 +661,7 @@ msgstr "Vona&l"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1564
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1572
 msgid "&Rectangle"
-msgstr "TÈglalap"
+msgstr "T√©glalap"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1565
 msgid "&Ellipse"
@@ -694,19 +681,19 @@ msgstr "&Rich text (html)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1571
 msgid "&Triangle"
-msgstr "H·romszˆg"
+msgstr "H√°romsz√∂g"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1573
 msgid "&Pentagon"
-msgstr "÷tszˆg"
+msgstr "√ñtsz√∂g"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1574
 msgid "&Hexagon"
-msgstr "Hatszˆg"
+msgstr "Hatsz√∂g"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1576
 msgid "&Shape"
-msgstr "Kˆrvonal"
+msgstr "K√∂rvonal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1577
 msgid "&Item"
@@ -718,43 +705,43 @@ msgstr "Poligonok"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1580
 msgid "&Insert"
-msgstr "Besz˙r"
+msgstr "Besz√∫r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:77
 msgid "Unable to process the above request: %Q, %Q"
-msgstr "Az al·bbi folyamat teljesÌtÈse sikertelen: %Q, %Q"
+msgstr "Az al√°bbi folyamat teljes√≠t√©se sikertelen: %Q, %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:79
 msgid "Ignoring and notifying failure"
-msgstr "Mellızı Ès ÈrtesÌtı hiba"
+msgstr "Mell≈ëz≈ë √©s √©rtes√≠t≈ë hiba"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:79
 msgid "Ignoring"
-msgstr "MellızÈs"
+msgstr "Mell≈ëz√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:95
 #, c-format
 msgid "Concurrent transfer limit reached (%u of %u transfers running)"
-msgstr "Konkurens ·tviteli korl·t elÈrve (%u -bÛl/bıl %u ·tvitel fut)"
+msgstr "Konkurens √°tviteli korl√°t el√©rve (%u -b√≥l/b≈ël %u √°tvitel fut)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:111
 #, c-format
 msgid "Slot limit reached (%u slots of %u)"
-msgstr "Slot korl·t elÈrve (%u slot a %u -bÛl/bıl)"
+msgstr "Slot korl√°t el√©rve (%u slot a %u -b√≥l/b≈ël)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:120
 msgid "Too many pending connections"
-msgstr "T˙l sok f¸ggı kapcsolat"
+msgstr "T√∫l sok f√ºgg≈ë kapcsolat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:156
 #, c-format
 msgid "Invalid port number %s"
-msgstr "Helytelen port sz·m %s"
+msgstr "Helytelen port sz√°m %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:172
 #, c-format
 msgid "Invalid IP address in old format %s"
-msgstr "…rvÈnytelen IP cÌm, rÈgi form·tumban %s"
+msgstr "√ârv√©nytelen IP c√≠m, r√©gi form√°tumban %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:191
 #, c-format
@@ -767,16 +754,16 @@ msgid ""
 "The above request is broken: The second parameter is '%s' and should be "
 "'chat', trying to continue"
 msgstr ""
-"Az al·bbi kÈrÈs hib·s. A m·sodik paramÈter %s Ès ennek 'chat'-nek kellene "
-"lennie, megprÛb·lom folytatni"
+"Az al√°bbi k√©r√©s hib√°s. A m√°sodik param√©ter %s √©s ennek 'chat'-nek kellene "
+"lennie, megpr√≥b√°lom folytatni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:270
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC CHAT is not available"
 msgstr ""
-"Ez a verziÛ SSL t·mogat·s nÈlk¸l lett fordÌtva, az SSL kiterjesztÈs DCC CHAT-"
-"re nem elÈrhetı"
+"Ez a verzi√≥ SSL t√°mogat√°s n√©lk√ºl lett ford√≠tva, az SSL kiterjeszt√©s DCC CHAT-"
+"re nem el√©rhet≈ë"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:321
 msgid ""
@@ -786,15 +773,15 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:322
 msgid "It seems that I haven't requested this dcc chat"
-msgstr "L·tszÛlag nem kÈrtem ezt a dcc beszÈlgetÈst"
+msgstr "L√°tsz√≥lag nem k√©rtem ezt a dcc besz√©lget√©st"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:442
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number, trying to continue"
 msgstr ""
-"Az al·bbi kÈrÈs hib·s. A negyedik paramÈternek a f·jl mÈretÈnek kellene "
-"lennie, de ez nem ˙gy nÈz ki, mint egy jelˆletlen sz·m, megprÛb·lom folytatni"
+"Az al√°bbi k√©r√©s hib√°s. A negyedik param√©ternek a f√°jl m√©ret√©nek kellene "
+"lennie, de ez nem √∫gy n√©z ki, mint egy jel√∂letlen sz√°m, megpr√≥b√°lom folytatni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:452
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:600
@@ -803,29 +790,28 @@ msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
 msgstr ""
-"Az al·bbi kÈrÈs hib·s. A f·jlnÈv tartalmaz elÈrÈsi ˙t elemeket, a fı rÈsz "
-"kiv·g·sa, Ès folytat·si prÛb·lkoz·s"
+"Az al√°bbi k√©r√©s hib√°s. A f√°jln√©v tartalmaz el√©r√©si √∫t elemeket, a f≈ë r√©sz "
+"kiv√°g√°sa, √©s folytat√°si pr√≥b√°lkoz√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:466
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
 msgstr ""
-"Ez a verziÛ SSL t·mogat·s nÈlk¸l lett fordÌtva, az SSL kiterjesztÈs DCC SEND-"
-"re nem elÈrhetı"
+"Ez a verzi√≥ SSL t√°mogat√°s n√©lk√ºl lett ford√≠tva, az SSL kiterjeszt√©s DCC SEND-"
+"re nem el√©rhet≈ë"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
-"Sikertelen DCC RECV folyamat: Adat·tvitel nincs inicializ·lva %s f·jlnak, %s "
-"porton kereszt¸l"
+"Sikertelen DCC RECV folyamat: Adat√°tvitel nincs inicializ√°lva %s f√°jlnak, %s "
+"porton kereszt√ºl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:553
 #, c-format
 msgid "Invalid resume position argument '%s'"
-msgstr "Helytelen folytat·si kifejezÈs: '%s'"
+msgstr "Helytelen folytat√°si kifejez√©s: '%s'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:565
 #, c-format
@@ -833,45 +819,44 @@ msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
 "or invalid resume size"
 msgstr ""
-"Sikertelen DCC SEND folyamat: Adat·tvitel nincs inicializ·lva %s f·jlnak, %s "
-"porton kereszt¸l, vagy hib·s a folytat·s mÈrete"
+"Sikertelen DCC SEND folyamat: Adat√°tvitel nincs inicializ√°lva %s f√°jlnak, %s "
+"porton kereszt√ºl, vagy hib√°s a folytat√°s m√©rete"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:590
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
-msgstr ""
-"Az al·bbi folytat·si kÈrÈs mÈrete hi·nyzik, a f·jl 0-tÛl lesz folytatva"
+msgstr "Az al√°bbi folytat√°si k√©r√©s m√©rete hi√°nyzik, a f√°jl 0-t√≥l lesz folytatva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:614
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
 msgstr ""
-"Ez a verziÛ SSL t·mogat·s nÈlk¸l lett fordÌtva, az SSL kiterjesztÈs DCC RECV-"
-"re nem elÈrhetı"
+"Ez a verzi√≥ SSL t√°mogat√°s n√©lk√ºl lett ford√≠tva, az SSL kiterjeszt√©s DCC RECV-"
+"re nem el√©rhet≈ë"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:629
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
-msgstr "Helytelen RECV kÈrÈs, PozÌciÛ: %u nagyobb mint a f·jlmÈret"
+msgstr "Helytelen RECV k√©r√©s, Poz√≠ci√≥: %u nagyobb mint a f√°jlm√©ret"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:683
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
-msgstr "%Q [%Q@%Q] kÈszen ·ll \"%s\" f·jl fogad·s·ra"
+msgstr "%Q [%Q@%Q] k√©szen √°ll \"%s\" f√°jl fogad√°s√°ra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:689
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
-msgstr "A t·voli kliens hallgatÛzik %s eszkˆzˆn, %s porton kereszt¸l"
+msgstr "A t√°voli kliens hallgat√≥zik %s eszk√∂z√∂n, %s porton kereszt√ºl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:696
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
 msgstr ""
-"Haszn·ld %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r"
-"%c f·jlk¸ldÈshez (vagy duplka katt a Socketen)"
+"Haszn√°ld %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r"
+"%c f√°jlk√ºld√©shez (vagy duplka katt a Socketen)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:728
 msgid ""
@@ -886,8 +871,8 @@ msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
 msgstr ""
-"Ez a verziÛ SSL t·mogat·s nÈlk¸l lett fordÌtva, az SSL kiterjesztÈs DCC "
-"RSEND-re nem elÈrhetı"
+"Ez a verzi√≥ SSL t√°mogat√°s n√©lk√ºl lett ford√≠tva, az SSL kiterjeszt√©s DCC "
+"RSEND-re nem el√©rhet≈ë"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:763
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:932
@@ -897,53 +882,53 @@ msgstr "(ismeretlen)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:769
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:918
 msgid "No suitable interface to listen on, trying to continue anyway..."
-msgstr "Nincs megfelelı eszkˆz, amin hallgatÛznÈk, tov·bbi prÛb·lkoz·sok..."
+msgstr "Nincs megfelel≈ë eszk√∂z, amin hallgat√≥zn√©k, tov√°bbi pr√≥b√°lkoz√°sok..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:835
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
 msgstr ""
-"Ez a verziÛ SSL t·mogat·s nÈlk¸l lett fordÌtva, az SSL kiterjesztÈsek DCC "
-"GETre nem elÈrhetıek"
+"Ez a verzi√≥ SSL t√°mogat√°s n√©lk√ºl lett ford√≠tva, az SSL kiterjeszt√©sek DCC "
+"GETre nem el√©rhet≈ëek"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:846
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
-msgstr "Nincs felaj·nlott '%s' f·jl (%s mÈretben) ami elÈrhetı %Q [%Q@%Q]"
+msgstr "Nincs felaj√°nlott '%s' f√°jl (%s m√©retben) ami el√©rhet≈ë %Q [%Q@%Q]"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:847
 msgid "\"any\""
-msgstr "\"b·rmilyen\""
+msgstr "\"b√°rmilyen\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:891
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
 msgstr ""
-"Elfogadott f·jlkÈrÈs %Q [%Q@%Q] felıl, '%s' f·jlra (valÛs f·jl: %Q), "
-"felaj·nl·s DCC %s miÛta nincs engedÈlyezve a bejˆvı kapcsolat (felhaszn·lÛi "
-"be·llÌt·s)"
+"Elfogadott f√°jlk√©r√©s %Q [%Q@%Q] fel≈ël, '%s' f√°jlra (val√≥s f√°jl: %Q), "
+"felaj√°nl√°s DCC %s mi√≥ta nincs enged√©lyezve a bej√∂v≈ë kapcsolat (felhaszn√°l√≥i "
+"be√°ll√≠t√°s)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:948
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
 msgstr ""
-"F·jl kÈrÈse elfogadva %Q [%Q@%Q] felıl  '%s' f·jlra (valÛs f·jl: %Q), "
-"felaj·nl·sDCC %Q"
+"F√°jl k√©r√©se elfogadva %Q [%Q@%Q] fel≈ël  '%s' f√°jlra (val√≥s f√°jl: %Q), "
+"felaj√°nl√°sDCC %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:982
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
 msgstr ""
-"A kˆvetkezı kÈrÈst nem tudom teljesÌteni: DCC VOICE t·mogat·s nem volt "
-"engedÈlyezve fodÌt·skor"
+"A k√∂vetkez≈ë k√©r√©st nem tudom teljes√≠teni: DCC VOICE t√°mogat√°s nem volt "
+"enged√©lyezve fod√≠t√°skor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:992
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
-msgstr "A kˆvetkezı kÈrÈst nem tudom teljesÌteni: Nem t·mogatott codec'%s'"
+msgstr "A k√∂vetkez≈ë k√©r√©st nem tudom teljes√≠teni: Nem t√°mogatott codec'%s'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:1005
 #, c-format
@@ -951,41 +936,41 @@ msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
-"A kˆvetkezı kÈrÈs valÛszÌn˚leg hib·s: Helytelen mintavÈtel-r·ta '%s', "
-"alkalmaz·s alapÈrtelmezÈsre: 8000"
+"A k√∂vetkez≈ë k√©r√©s val√≥sz√≠n≈±leg hib√°s: Helytelen mintav√©tel-r√°ta '%s', "
+"alkalmaz√°s alap√©rtelmez√©sre: 8000"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:1151
 #, c-format
 msgid "Unknown DCC type '%s'"
-msgstr "Ismeretlen DCC tÌpus: %s"
+msgstr "Ismeretlen DCC t√≠pus: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:64
 msgid "&Accept"
-msgstr "Elfogad·s"
+msgstr "Elfogad√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:69
 msgid "&Reject"
-msgstr "ElutasÌt·s"
+msgstr "Elutas√≠t√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:129
 msgid "&Rename"
-msgstr "¡tnevezÈs"
+msgstr "√Åtnevez√©s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:133
 msgid "Over&write"
-msgstr "Fel¸lÌr·s"
+msgstr "Fel√ºl√≠r√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:137
 msgid "Re&sume"
-msgstr "&Folytat·s"
+msgstr "&Folytat√°s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:149
 msgid "File Already Exists - KVIrc"
-msgstr "F·jl M·r LÈtezik - KVirc"
+msgstr "F√°jl M√°r L√©tezik - KVirc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/utils.cpp:122
 msgid "Can't retrieve a suitable local IPV4 address"
-msgstr "Nincs megfelelı helyi IPv4 cÌm"
+msgstr "Nincs megfelel≈ë helyi IPv4 c√≠m"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/utils.cpp:140
 #, c-format
@@ -993,11 +978,6 @@ msgid ""
 "Can't listen on default interface '%s': fix it in the options dialog, "
 "disabling the option (so the next dcc will work)"
 msgstr ""
-"Nem tudok hallgatÛzni az alapÈrtelmezett '%s' eszkˆzˆn, javÌtsd tilt·ssal az "
-"opciÛkban (a kˆvetkezı DCC m·r m˚kˆdni fog)"
+"Nem tudok hallgat√≥zni az alap√©rtelmezett '%s' eszk√∂z√∂n, jav√≠tsd tilt√°ssal az "
+"opci√≥kban (a k√∂vetkez≈ë DCC m√°r m≈±k√∂dni fog)"
 
-#~ msgid "%1 bytes"
-#~ msgstr "%1 b·jt"
-
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "MentÈsi Hely Kiv·laszt·sa - KVIrc"
