@@ -1087,7 +1087,7 @@ defpopup(registration)
 			# We want to display masks here!!!
 			%:inNotifyList = $reguser.property(%:regName,notify);
 			if(%:inNotifyList)%:labelText << "<br><b>$0</b>" $tr("is in the notify list")
-			%:curAvatar = $avatar($0);
+			%:curAvatar = $avatar.name($0);
 			%:defAvatar = $reguser.property(%:regName,avatar);
 			if(%:defAvatar)%:labelText << "<br><b>$0</b>" $tr("has a default avatar")
 			%:labelText << "</p>"
