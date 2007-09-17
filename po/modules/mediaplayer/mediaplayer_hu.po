@@ -1,24 +1,24 @@
-# translation of mediaplayer.po to hungarian
+# translation of mediaplayer_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# ¡d·m Fibinger <vfiber@interware.hu>, 2006.
 #
+# √Åd√°m Fibinger <vfiber@interware.hu>, 2006, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: mediaplayer\n"
+"Project-Id-Version: mediaplayer_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2006-05-23 19:15+0200\n"
-"Last-Translator: ¡d·m Fibinger <vfiber@interware.hu>\n"
+"PO-Revision-Date: 2007-09-09 16:22+0200\n"
+"Last-Translator: √Åd√°m Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
-msgstr "Nem tal·lok Èppen futÛ winampot"
+msgstr "Nem tal√°lok √©ppen fut√≥ winampot"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
@@ -28,11 +28,11 @@ msgid ""
 "plugin found in the KVIrc distribution directory to the Winamp plugins "
 "folder and restart winamp."
 msgstr ""
-"Fel¸let a nÈpszer˚ Winapm mÈdialej·tszÛhoz.\n"
-"Letˆltheted a http://www.winamp.com cÌmrıl.\n"
-"Hogy minden lehetsÈges funkciÛt ki tudj haszn·lni, m·sold a gen_kvirc."
-"dllplugint a KVIrc modulok kˆnyvt·r·bÛl a Winamp pluginok mapp·j·ba Ès "
-"indÌtsd ˙jra a Winampot."
+"Fel√ºlet a n√©pszer≈± Winapm m√©dialej√°tsz√≥hoz.\n"
+"Let√∂ltheted a http://www.winamp.com c√≠mr≈ël.\n"
+"Hogy minden lehets√©ges funkci√≥t ki tudj haszn√°lni, m√°sold a gen_kvirc."
+"dllplugint a KVIrc modulok k√∂nyvt√°r√°b√≥l a Winamp pluginok mapp√°j√°ba √©s "
+"ind√≠tsd √∫jra a Winampot."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
@@ -40,7 +40,7 @@ msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
 msgstr ""
-"A Winamp plugin helytelen¸l lett telepÌtve. L·sd: /help mediaplayer."
+"A Winamp plugin helytelen√ºl lett telep√≠tve. L√°sd: /help mediaplayer."
 "nowplaying "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
@@ -49,15 +49,15 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
 msgid "An interface to the Juk KDE media player."
-msgstr "Eszkˆz a Juk KDE mÈdialej·tszÛhoz."
+msgstr "Eszk√∂z a Juk KDE m√©dialej√°tsz√≥hoz."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://www.xmms.org\n"
 msgstr ""
-"Kezelıfel¸let a nÈpszerı UNIX xmms mÈdialej·tszÛhoz.\n"
-"Letˆlthetı a http://www.xmms.org cÌmrıl\n"
+"Kezel≈ëfel√ºlet a n√©pszer≈ë UNIX xmms m√©dialej√°tsz√≥hoz.\n"
+"Let√∂lthet≈ë a http://www.xmms.org c√≠mr≈ël\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 #, fuzzy
@@ -65,18 +65,18 @@ msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Kezelıfel¸let a nÈpszerı UNIX xmms mÈdialej·tszÛhoz.\n"
-"Letˆlthetı a http://www.xmms.org cÌmrıl\n"
+"Kezel≈ëfel√ºlet a n√©pszer≈ë UNIX xmms m√©dialej√°tsz√≥hoz.\n"
+"Let√∂lthet≈ë a http://www.xmms.org c√≠mr≈ël\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
 #, fuzzy
 msgid "Can't load the player library (%Q)"
-msgstr "Nem tudom betˆlteni az xmms libeket (libxmms.so)"
+msgstr "Nem tudom bet√∂lteni az xmms libeket (libxmms.so)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
 #, fuzzy
 msgid "Can't find symbol %s in %Q"
-msgstr "Nem tal·lhatÛ %s szimbÛlum a libxmms.so -ban."
+msgstr "Nem tal√°lhat√≥ %s szimb√≥lum a libxmms.so -ban."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -84,34 +84,36 @@ msgid ""
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
+"Interf√©sz az AMIP plug-in-hez.\n"
+"Let√∂lthet≈ë a  http://amip.tools-for.net c√≠mr≈ël.\n"
+"Ahhoz, hogy ezt haszn√°lni tudd telep√≠tened kell az AMIP plugint a lej√°tsz√≥dba."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
 msgid "An interface to the AmaroK KDE media player."
-msgstr "Eszkˆz az AmaroK KDE mÈdialje·tszÛhoz."
+msgstr "Eszk√∂z az AmaroK KDE m√©dialje√°tsz√≥hoz."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:66
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%Q\": score %d"
-msgstr "\"%Q\" mÈdialej·tszÛ eszkˆz prÛb·ja, eredmÈny: %d"
+msgstr "\"%Q\" m√©dialej√°tsz√≥ eszk√∂z pr√≥b√°ja, eredm√©ny: %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
-"Nem vagyok biztos az eredmÈnyben, megprÛb·lom m·sodszor, agresszÌvabb "
-"meghat·roz·ssal"
+"Nem vagyok biztos az eredm√©nyben, megpr√≥b√°lom m√°sodszor, agressz√≠vabb "
+"meghat√°roz√°ssal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
-msgstr "MÈdialej·tszÛ eszkˆz kiv·lasztva \"%Q\""
+msgstr "M√©dialej√°tsz√≥ eszk√∂z kiv√°lasztva \"%Q\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
-msgstr "Azt hiszem nincs haszn·lhatÛ mÈdialej·tszÛ ezen a gÈpen"
+msgstr "Azt hiszem nincs haszn√°lhat√≥ m√©dialej√°tsz√≥ ezen a g√©pen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:115
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nincs mÈdialje·tszÛ kiv·lasztva. PrÛb·ld Ìgy: /mediaplayer.detect"
+msgstr "Nincs m√©dialje√°tsz√≥ kiv√°lasztva. Pr√≥b√°ld √≠gy: /mediaplayer.detect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:536
@@ -123,9 +125,8 @@ msgstr "Nincs mÈdialje·tszÛ kiv·lasztva. PrÛb·ld Ìgy: /mediaplayer.detect"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1313
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1501
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1544
-msgid ""
-"The selected media player interface failed to execute the requested function"
-msgstr "A kiv·lasztott lej·tszÛeszkˆz nem tudta lefuttatni a kÈrt f¸ggvÈnyt"
+msgid "The selected media player interface failed to execute the requested function"
+msgstr "A kiv√°lasztott lej√°tsz√≥eszk√∂z nem tudta lefuttatni a k√©rt f√ºggv√©nyt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:135
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:537
@@ -138,4 +139,5 @@ msgstr "A kiv·lasztott lej·tszÛeszkˆz nem tudta lefuttatni a kÈrt f¸ggvÈnyt"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1502
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1545
 msgid "Last interface error: "
-msgstr "UtolsÛ eszkˆzhiba: "
+msgstr "Utols√≥ eszk√∂zhiba: "
+

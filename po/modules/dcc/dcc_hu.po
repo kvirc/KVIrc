@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-20 02:24+0200\n"
-"PO-Revision-Date: 2007-08-23 18:42+0200\n"
+"PO-Revision-Date: 2007-09-09 16:16+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "ismertelen"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:158
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:783
 msgid "Choose Files to Send - KVIrc"
-msgstr "Küldendő Fájl Kiválaszás - KVIrc"
+msgstr "Küldendő Fájl Kiválaszása - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
@@ -63,7 +63,7 @@ msgstr "A kapcsolat titkosítva SSL segítségével.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:280
 msgid "You will be the passive side of the connection.<br>"
-msgstr "Te leszel a passzív oldal a kapcsolaton belül<br>"
+msgstr "Te leszel a passzív oldal a kapcsolatban.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
@@ -133,7 +133,7 @@ msgstr ""
 "megtalálja, mint pédául az 'avatarok', 'bejövő' vagy 'képek' könyvtárakbaa "
 "saját könyvtáradba, vagy mentsd a letöltések könyvtárba a bejövő fájlokhoz."
 "Az alapértelmezett mentési könyvtár valószínűleg megfelelő. Tudod utasítani "
-"a KVIrcet, hogy elfogadja és elhelyezze a bejövő avatarokat, automatikusana /"
+"a KVIrcet, hogy elfogadja és elhelyezze a bejövő avatarokat, automatikusan a /"
 "<tt>boolAutoAcceptIncomingAvatars</tt> true -ra állításával.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:557
@@ -246,7 +246,7 @@ msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"A kódoló motor nem képes kódolni az aktuális üzenetet (%Q): %Q, adat nem "
+"A titkosító motor nem képes titkosítani az aktuális üzenetet (%Q): %Q, adat nem "
 "lett elküldve."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:403
@@ -259,7 +259,7 @@ msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"A következő üzenet valószínűleg kódolt, de a kódoló motor nem tudja "
+"A következő üzenet valószínűleg titkosított, de a titkosító motor nem tudja "
 "visszafejteni: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:493
@@ -451,13 +451,15 @@ msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
+"FIGYELMEZTETÉS: Fájlvég után további bejövő adatok mellőzése, "
+"kapcsolat lezárása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:358
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr ""
-"Adatátvitel megsakítva, 30 másodperc várkozás a peerre, hogy zárja a "
+"Adatátvitel megszakítva, 30 másodperc várkozás a peerre, hogy zárja a "
 "kapcsolatot..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
@@ -863,8 +865,8 @@ msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
 msgstr ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number; trying to continue"
+"A fenti kérés hibás: A negyedik paraméternek a fájlméretnek kellene lennie "
+"de ez nem úgy néz ki, mint egy előjel nélküli szám. Folytatás..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:752
 msgid ""
