@@ -592,7 +592,7 @@ alias(ignore)
 	if(!$sw(r))
 	{
 		reguser.setIgnoreEnabled $0 true
-		reguser.setIgnoreFlags -pct $0
+		reguser.setIgnoreFlags -p -c -t $0
 	} else reguser.setIgnoreEnabled $0 false
 }
 
