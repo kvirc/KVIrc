@@ -274,7 +274,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ScriptErrorsToDebugWindow",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowMinimizedDebugWindow",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowExtendedInfoInQueryLabel",true,KviOption_resetUpdateGui),
-	BOOL_OPTION("UseUserListColorsAsNickColors",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	BOOL_OPTION("UseUserListColorsAsNickColors",true,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("GzipLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("MinimizeInTray",false,KviOption_resetUpdateGui),
 	BOOL_OPTION("DisableNotifierFlashing",false,KviOption_sectFlagFrame),
