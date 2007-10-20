@@ -1389,7 +1389,7 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 		[fnc]$str.word[/fnc]() is an optimized function dedicated to the special case
 		in that <separators> is a string containing all the whitespace characters.[br]
 		Please note that this function is SLOW. You might want to take a look at [fnc]$str.word[/fnc]()
-		or even better to [fnc]$split[/fnc]().[br]
+		or even better to [fnc]$str.split[/fnc]().[br]
 		This function is case sensitive: you need to specify both cases in the <separators> string
 		if you want to do a case insensitive tokenization.[br]
 	@examples:
@@ -1399,7 +1399,7 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 		[/example]
 	@seealso:
 		[fnc]$str.word[/fnc]()[br]
-		[fnc]$split[/fnc]()[br]
+		[fnc]$str.split[/fnc]()[br]
 */
 
 static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
@@ -1659,7 +1659,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 			[comment]# Find all the nicknames starting with the letter A or a[/comment]
 			[cmd]echo[/cmd] $str.grep("^a",[fnc]$chan.users[/fnc],"r")
 			[comment]# Find the current CPU speed (on UNIX like machines only)[/comment]
-			[cmd]echo[/cmd] $str.grep("MHz",[fnc]$split[/fnc]([fnc]$lf[/fnc],[fnc]$file.read[/fnc]("/proc/cpuinfo")))
+			[cmd]echo[/cmd] $str.grep("MHz",[fnc]$str.split[/fnc]([fnc]$lf[/fnc],[fnc]$file.read[/fnc]("/proc/cpuinfo")))
 			[comment]# simply check if the specified string matches a regular expression[/comment]
 			[comment]# (this in fact is a little tricky, but you will probably not notice it :D)[/comment]
 			[cmd]if[/cmd]($str.grep("[st]+","test string","r"))[cmd]echo[/cmd] "Yeah, it matches!"

@@ -811,7 +811,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
                 This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
                 will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br] 
                 ES:
-                %A[]=$split("\|",$objects.dump(0))
+                %A[]=$str.split("\|",$objects.dump(0))
                 %i=0
                 while (%i != %A[]#)
                 {

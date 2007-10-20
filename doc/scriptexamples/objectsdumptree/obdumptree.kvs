@@ -52,7 +52,7 @@ alias(dump)
 			#     @%list_name[%i]->$setRenameEnabled(2)
 			#     %i++;
 			# }
-			%array_property[]=$split("\|",%Wrapper->$listproperty(0))
+			%array_property[]=$str.split("\|",%Wrapper->$listproperty(0))
 			%i=0
 			while(%i !=%array_property[]#)
 			{
@@ -90,7 +90,7 @@ alias(dump)
 		{	
 			%Flag=0
 			@$resize(800,600)
-			@%tree[]=$split("\|",$objects.dump(0))
+			@%tree[]=$str.split("\|",$objects.dump(0))
 			@$setCaption("Kvir Objects Dump")	
 			@%lay=$new(layout,$$)
 			@%dump=$new(mylistview,$$)
