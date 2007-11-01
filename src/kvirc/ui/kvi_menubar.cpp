@@ -142,7 +142,7 @@ void KviMenuBar::setupHelpPopup()
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),__tr2qs("Subscribe to the Mailing List"),m_pFrm,SLOT(executeInternalCommand(int)));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB)),__tr2qs("Report a Bug"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB)),__tr2qs("Report a Bug / Propose enhancements"),m_pFrm,SLOT(executeInternalCommand(int)));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on Freenode"),m_pFrm,SLOT(executeInternalCommand(int)));
