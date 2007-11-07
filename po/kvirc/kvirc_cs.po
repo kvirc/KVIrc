@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:07+0100\n"
 "PO-Revision-Date: 2006-04-16 11:45+0200\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1423,8 +1423,8 @@ msgid "Subscribe to the Mailing List"
 msgstr "Přihlásit se do Mailing listu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
-msgid "Report a Bug"
-msgstr "Nahlásit Chybu"
+msgid "Report a Bug / Propose enhancements"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
 msgid "Join KVIrc International Channel on Freenode"
@@ -7396,7 +7396,6 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:973
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:984
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1128
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
 msgid "Ok, Let me try again..."
 msgstr ""
 
@@ -7470,11 +7469,15 @@ msgstr "Adresa se již používá"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1127
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1139
-msgid "This name is already in use. Please chooose another one."
+msgid "This name is already in use. Please choose another one."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1138
 msgid "Namespace already exists"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
+msgid "Ok, let me try again..."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1227
@@ -12490,6 +12493,9 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Report a Bug"
+#~ msgstr "Nahlásit Chybu"
 
 #~ msgid "Smart"
 #~ msgstr "Smart"

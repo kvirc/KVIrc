@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:07+0100\n"
 "PO-Revision-Date: 2007-10-27 22:52+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -719,7 +719,8 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Titkosítás: Nem tudom inicializálni: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:302
-msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgid ""
+"Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
 "Titkosítás: Engedélyezned vagy tiltanod kell a titkosítást, hogy az "
 "működésbe lépjen"
@@ -823,7 +824,8 @@ msgid "Unable to look it up hostname: Unknown host"
 msgstr "Hosztnév felderítése sikertelen, ismeretlen hoszt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5072
-msgid "Double-click to look up this hostname<br>Right-click to view other options"
+msgid ""
+"Double-click to look up this hostname<br>Right-click to view other options"
 msgstr "Dupla kattintás: felderítés <br>Jobb kattintás: egyéb opciók"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5095
@@ -1406,8 +1408,8 @@ msgid "Subscribe to the Mailing List"
 msgstr "Feliratkozás a levelezőlistára"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
-msgid "Report a Bug"
-msgstr "Bug küldése"
+msgid "Report a Bug / Propose enhancements"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
 msgid "Join KVIrc International Channel on Freenode"
@@ -1745,7 +1747,8 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:866
-msgid "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
+msgid ""
+"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1018
@@ -1890,7 +1893,8 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:865
-msgid "Unexpected end of command in binding operation, at least one slash is missing"
+msgid ""
+"Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:905
@@ -2072,7 +2076,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:262
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:903
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:268
@@ -2122,7 +2127,8 @@ msgstr "%Q -nak nincs kezelője %Q eseményre"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:936
 msgid "The specified ping time is invalid: assuming zero (no ping)"
-msgstr "A meghatározott ping idő érvénytelen: feltételezem, hogy 0 (nincs ping)"
+msgstr ""
+"A meghatározott ping idő érvénytelen: feltételezem, hogy 0 (nincs ping)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:946
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
@@ -2194,7 +2200,8 @@ msgid "Say parse error: Broken command"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:250
-msgid "Couldn't find a suitable IRC context for the connection, try using -n or -u"
+msgid ""
+"Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
 "Nem található megfelelő IRC környezet a kapcsolathoz, próbáld -n vagy -u "
 "kapcsolóval"
@@ -2240,11 +2247,13 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:94
-msgid "The left side of the scope operator didn't evaluate as an object reference"
+msgid ""
+"The left side of the scope operator didn't evaluate as an object reference"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:100
-msgid "The left side of the scope operator evaluated to a null object reference"
+msgid ""
+"The left side of the scope operator evaluated to a null object reference"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:107
@@ -2536,7 +2545,8 @@ msgid "Empty instruction block for command evaluation"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:101
-msgid "Parameter identifiers are forbidden in object scope (after the '->' operator)"
+msgid ""
+"Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:147
@@ -2643,7 +2653,8 @@ msgid "Array index didn't evaluate to an integer"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:79
-msgid "Array index evaluated to a negative integer (non negative integer expected)"
+msgid ""
+"Array index evaluated to a negative integer (non negative integer expected)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:106
@@ -2667,7 +2678,8 @@ msgid "This is not a channel"
 msgstr "Ez nem egy csatorna"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:99
-msgid "Unexpected end of command buffer while looking for the \"perl.end\" statement"
+msgid ""
+"Unexpected end of command buffer while looking for the \"perl.end\" statement"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:147
@@ -2823,7 +2835,8 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1244
-msgid "Found empty 'foreach' execution block: maybe you need to fix your script ?"
+msgid ""
+"Found empty 'foreach' execution block: maybe you need to fix your script ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1365
@@ -2890,7 +2903,8 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
-msgid "Found empty instruction for popup item: maybe you need to fix the script?"
+msgid ""
+"Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1809
@@ -3067,7 +3081,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:91
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:104
-msgid "Internal error: trying to evaluate as read-write a read-only data location"
+msgid ""
+"Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:98
@@ -3151,7 +3166,8 @@ msgid "Inexisting popup \"%Q\""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:694
-msgid "Popup menu self-modification is not allowed (the popup is probably open)"
+msgid ""
+"Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:701
@@ -3162,10 +3178,13 @@ msgstr ""
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window id: using "
 "default"
-msgstr "A -q kapcsolója nem értelmezhető ablak azonosítóként, alapértelmezett használata"
+msgstr ""
+"A -q kapcsolója nem értelmezhető ablak azonosítóként, alapértelmezett "
+"használata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:865
-msgid "The argument of the i switch did not evaluate to a number: using default"
+msgid ""
+"The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:977
@@ -3311,7 +3330,8 @@ msgstr ""
 "s)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1661
-msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ""
+": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 ": Nincs érvényes helyi másolata az avatarnak, árasztási küszöb meghaladva, "
 "mellőzés"
@@ -3335,14 +3355,16 @@ msgstr "DCC válasz: %Q kérés: \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1767
 #, c-format
 msgid "Unable to process the above request: Cannot load DCC module (%s)"
-msgstr "Fenti kérés teljesítése sikertelen. DCC modul (%s) betöltése sikertelen"
+msgstr ""
+"Fenti kérés teljesítése sikertelen. DCC modul (%s) betöltése sikertelen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1773
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr "Fenti kérés teljesítése sikertelen. DCC modul valószínűleg megsérült."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sparser.cpp:132
-msgid "[Server parser]: Encountered problems while parsing the following message:"
+msgid ""
+"[Server parser]: Encountered problems while parsing the following message:"
 msgstr "[Értelmező]: A következő üzenek feldolgozásakor hibák léptek fel:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sparser.cpp:134
@@ -3378,7 +3400,8 @@ msgstr ""
 "szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:305
-msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgid ""
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] csatlakozott: \r!c\r%Q\r [implicit +%c umode "
 "change]"
@@ -3389,11 +3412,13 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] csatlakozott a(z) \r!c\r%Q\r csatornára."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:324
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] épp most csatlakozott \r!c\r%Q\r csatornára."
+msgstr ""
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] épp most csatlakozott \r!c\r%Q\r csatornára."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:355
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr "Ismeretlen csatornáról lelépő üzenetet kaptam, valószínűleg szinkron hiba"
+msgstr ""
+"Ismeretlen csatornáról lelépő üzenetet kaptam, valószínűleg szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:384
 msgid "You have left channel \r!c\r%Q\r"
@@ -3413,7 +3438,8 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] lelépett a(z) \r!c\r%Q\r csatornáról."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:420
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] épp most lépett le \r!c\r%Q\r csatornáról: %Q "
+msgstr ""
+"\r!nc\r%Q\r [%Q@\r!h\r%Q\r] épp most lépett le \r!c\r%Q\r csatornáról: %Q "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:424
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
@@ -3464,15 +3490,18 @@ msgstr ""
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
-msgstr "A következő üzenet titkosított, de a titkosító képtelen volt dekódolni: %Q"
+msgstr ""
+"A következő üzenet titkosított, de a titkosító képtelen volt dekódolni: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:776
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "PRIVMSG mellőzve \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:843
-msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
-msgstr "Privát spam üzenet: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam-szó \"%s\")"
+msgid ""
+"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgstr ""
+"Privát spam üzenet: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam-szó \"%s\")"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:984
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -3497,16 +3526,20 @@ msgstr ""
 "beállításokban"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1213
-msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
-msgstr "Spam éretesítés: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó \"%Q\")"
+msgid ""
+"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgstr ""
+"Spam éretesítés: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó \"%Q\")"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1394
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr "Ismeretlen csatorna topik üzenetét kaptam meg, valószínűleg szinkron hiba"
+msgstr ""
+"Ismeretlen csatorna topik üzenetét kaptam meg, valószínűleg szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1413
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] megváltoztatta a csatorna topicját: \"%Q%c\""
+msgstr ""
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] megváltoztatta a csatorna topicját: \"%Q%c\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1446
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1492
@@ -3646,7 +3679,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:243
 msgid "This server supports the WATCH notify list method, it will be used"
-msgstr "Ez a szerver támogatja a WATCH értesítési metódust, ezt fogom használni"
+msgstr ""
+"Ez a szerver támogatja a WATCH értesítési metódust, ezt fogom használni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:261
 msgid "The current network is %Q"
@@ -4008,7 +4042,8 @@ msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "[Kapcsolat Figyelmeztetető]: Socket üzenet csonkolva 512 bytera."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:640
-msgid "The server seems to support the WATCH notify list method, will try to use it"
+msgid ""
+"The server seems to support the WATCH notify list method, will try to use it"
 msgstr "A szerver támogatja a WATCH értesítési metódust, megpróbálom használni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:688
@@ -4019,7 +4054,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:695
 msgid "Can't resolve local host address, using default 127.0.0.1"
-msgstr "Helyi cím visszafejtése sikertelen, alapértelmezés használata: 127.0.0.1"
+msgstr ""
+"Helyi cím visszafejtése sikertelen, alapértelmezés használata: 127.0.0.1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:701
 msgid "Local host address is %Q"
@@ -4368,7 +4404,8 @@ msgstr "[%s]: [SSL]: %s hitelesítő fájl használata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:116
 #, c-format
-msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgid ""
+"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr "[%s]: [SSL HIBA]: File I/O hiba a %s hitelesítés használatakor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:123
@@ -4384,7 +4421,8 @@ msgstr "[%s]: [SSL]: Privát kulcs használata: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:139
 #, c-format
-msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid ""
+"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr "[%s]: [SSL HIBA]: File I/O hiba magán kulcs használatakor: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:375
@@ -4400,7 +4438,8 @@ msgstr ""
 "alkalmazása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:483
-msgid "No servers available. Check the options dialog or use the /SERVER command"
+msgid ""
+"No servers available. Check the options dialog or use the /SERVER command"
 msgstr ""
 "Nincsenek elérhető szerverek. Ellenőrízd a beállításokban vagy használd a /"
 "SERVER parancsot"
@@ -5084,7 +5123,8 @@ msgstr "Előjel nélküli egész opciók (előjel nélküli egész konstans)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1221
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
-msgstr "Font opciók (family, pontméret,stílus,karakterkészlet,szélesség (biusf))"
+msgstr ""
+"Font opciók (family, pontméret,stílus,karakterkészlet,szélesség (biusf))"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1222
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
@@ -5272,7 +5312,8 @@ msgstr "A megadott kapcsoló cím (%Q) nem érvényes"
 msgid ""
 "The specified bind address (%Q) is not valid (the interface it refers to "
 "might be down)"
-msgstr "A megadott cím (%Q) érvénytelen (a kapcsolódó eszköz valószínűleg nem él)"
+msgstr ""
+"A megadott cím (%Q) érvénytelen (a kapcsolódó eszköz valószínűleg nem él)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:493
 #, c-format
@@ -5284,7 +5325,8 @@ msgstr "Rendszer oldali IPv6 kapcsoló cím (%s) érvénytelen"
 msgid ""
 "The system-wide IPv6 bind address (%s) is not valid (the interface it refers "
 "to might be down)"
-msgstr "A rendszer oldali IPv6 cím (%s) nem érvényes (az eszköz valószínűleg nem él)"
+msgstr ""
+"A rendszer oldali IPv6 cím (%s) nem érvényes (az eszköz valószínűleg nem él)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:522
 #, c-format
@@ -5621,7 +5663,8 @@ msgstr "Azonosítás nem szükséges, nincs azonosítás"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:779
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
-msgstr "Azonosítás nem szükséges, nincs azonosítás vagy 2 (felhasználónév/jelszó)"
+msgstr ""
+"Azonosítás nem szükséges, nincs azonosítás vagy 2 (felhasználónév/jelszó)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:958
 msgid "Proxy response: auth OK: access granted"
@@ -5633,7 +5676,8 @@ msgstr "Proxy válasz: Azonosítás rendben, 0. metódus (nincs azonosítás)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1000
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
-msgstr "Proxy válasz: Azonosítási metódus rendben, 2. metódus (felhasználónév/jelszó)"
+msgstr ""
+"Proxy válasz: Azonosítási metódus rendben, 2. metódus (felhasználónév/jelszó)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1056
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1113
@@ -5717,7 +5761,8 @@ msgstr "Regisztrált felhasználók kezelése..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:140
 msgid "Shows a dialog that allows editing the registered user entries"
-msgstr "Párbeszédablak, mely lehetővé teszi a regisztrált felhasználók szerkesztését"
+msgstr ""
+"Párbeszédablak, mely lehetővé teszi a regisztrált felhasználók szerkesztését"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:150
 msgid "Configure Identity..."
@@ -5940,7 +5985,8 @@ msgid "Connect/Disconnect"
 msgstr "Kapcsolódás / Kapcsolat lezárása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:549
-msgid "Allows you to connect to a server or to terminate the current connection"
+msgid ""
+"Allows you to connect to a server or to terminate the current connection"
 msgstr "Kapcsolódás a szerverhez vagy az aktuális kapcsolat bontása"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:622
@@ -6210,7 +6256,8 @@ msgstr "Értesítési lista: userhost ellenőrzése: %Q"
 msgid ""
 "Notify list: Hey! You've used USERHOST behind my back? (I might be confused "
 "now...)"
-msgstr "Értesítési lista: Hé, USERHOST-ot használtál nélkülem? (összezavarodtam...)"
+msgstr ""
+"Értesítési lista: Hé, USERHOST-ot használtál nélkülem? (összezavarodtam...)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:836
 #, c-format
@@ -6242,7 +6289,8 @@ msgstr "Értesítési lista: %Q ellenőrzése"
 msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
-msgstr "Értesítési lista: Időtúllépés (%d mp) túl rövid, átállítás 5 másodpercre"
+msgstr ""
+"Értesítési lista: Időtúllépés (%d mp) túl rövid, átállítás 5 másodpercre"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1139
@@ -6259,7 +6307,8 @@ msgstr "lehetséges figyelési lista aszinkron"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1185
 msgid "registration mask changed or desync with the watch service"
-msgstr "regisztrációs maszk megváltozott vagy aszinkron a figyelő szolgáltatásban"
+msgstr ""
+"regisztrációs maszk megváltozott vagy aszinkron a figyelő szolgáltatásban"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1190
 msgid ""
@@ -6328,8 +6377,10 @@ msgid "This module has no version informations: refusing to load it"
 msgstr "A megadott modulnak nincs verziószáma, betöltés visszautasítva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/module/kvi_modulemanager.cpp:204
-msgid "This module was compiled for a different KVIrc version and can't be loaded"
-msgstr "Ez a modul más KVIrc verzióhoz lett lefordítva, nem lehetséges a betöltése"
+msgid ""
+"This module was compiled for a different KVIrc version and can't be loaded"
+msgstr ""
+"Ez a modul más KVIrc verzióhoz lett lefordítva, nem lehetséges a betöltése"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/module/kvi_modulemanager.cpp:232
 msgid "Failed to execute the init routine"
@@ -6356,7 +6407,8 @@ msgstr "Nincs ilyen IRC környezet (%d)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/my/libkvimy.cpp:147
 msgid "Global idle timer must be started before using $my.globalIdle function"
-msgstr "Globális tétlenségi stoppert a $my.globalide függvény előtt kell meghívni"
+msgstr ""
+"Globális tétlenségi stoppert a $my.globalide függvény előtt kell meghívni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lag/libkvilag.cpp:68
 msgid "Lag meter was not enabled"
@@ -6420,8 +6472,10 @@ msgid "%Q algorytm is not supported"
 msgstr "%Q algoritmus nem támogatott"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:1556
-msgid "KVIrc is compiled without OpenSSL support. $str.digest function disabled"
-msgstr "KVIrc OpenSSL támogatás nélkül lett lefordítva. $str.digest függvény letiltva"
+msgid ""
+"KVIrc is compiled without OpenSSL support. $str.digest function disabled"
+msgstr ""
+"KVIrc OpenSSL támogatás nélkül lett lefordítva. $str.digest függvény letiltva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2020
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
@@ -7162,7 +7216,6 @@ msgstr "Érvényes nevet kell adnod az Aliasnak"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:973
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:984
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1128
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
 msgid "Ok, Let me try again..."
 msgstr "Oké, próbáljuk újra.."
 
@@ -7195,8 +7248,10 @@ msgstr ""
 "tartalmazhatnak"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:972
-msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr "Elkóborolt ':' karakter a névtér nevében, úgy érted: ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Elkóborolt ':' karakter a névtér nevében, úgy érted: ...<namespace>::<name> ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:983
 msgid "Found an empty namespace in namespace name"
@@ -7232,12 +7287,18 @@ msgstr "Alias már létezik"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1127
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1139
-msgid "This name is already in use. Please chooose another one."
+#, fuzzy
+msgid "This name is already in use. Please choose another one."
 msgstr "A név már használatban van. Kérlek válassz másikat."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1138
 msgid "Namespace already exists"
 msgstr "Névtér már létezik"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
+#, fuzzy
+msgid "Ok, let me try again..."
+msgstr "Oké, próbáljuk újra.."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1227
 msgid "Namespace"
@@ -7583,7 +7644,8 @@ msgstr "%Q nem nyitható meg írásra."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/dialog.cpp:781
 msgid "Can't export the registered users database: Write error."
-msgstr "Nem lehet exportálni a regisztrált felhasználói adatbázist: Írási hiba."
+msgstr ""
+"Nem lehet exportálni a regisztrált felhasználói adatbázist: Írási hiba."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/dialog.cpp:802
 #, c-format
@@ -7602,7 +7664,8 @@ msgstr "A %s fájl érvénytelen felhasználói adatbázis verzió."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/dialog.cpp:901
 msgid "Can't import the registered users database: Read error."
-msgstr "Nem lehet importálni a regisztrált felhasználói adatbázist: Olvasási hiba."
+msgstr ""
+"Nem lehet importálni a regisztrált felhasználói adatbázist: Olvasási hiba."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/wizard.cpp:78
 msgid "User Registration Wizard - KVIrc"
@@ -7891,7 +7954,8 @@ msgstr "A megadott KVIrc verzió \"%Q\" nem érvényes verzió sztring"
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
-msgstr "A KVIrc ezen verziója túl régi az addon futtatásához (szükséges legalább: %Q)"
+msgstr ""
+"A KVIrc ezen verziója túl régi az addon futtatásához (szükséges legalább: %Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:553
 msgid "Attempting to register addon \"%Q\" with version %Q"
@@ -8086,7 +8150,8 @@ msgstr "Kapcsolatok vége jel."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:235
 #, c-format
-msgid "Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
+msgid ""
+"Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
 msgstr "Hibás kapcsolat: hiányzó szülő (%s) %s (%d hop): %s ( /LINKS <mask> ?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:238
@@ -8314,7 +8379,8 @@ msgid "Real name:"
 msgstr "Valós név:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:326
-msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "Ez a mező opcionális és csak a CTCP USERINFO válaszban tűnik fel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:331
@@ -8349,8 +8415,9 @@ msgid ""
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
 "<p>Itt megadhatod, hogy a KVIrc mennyire épüljön be a rendszeredbe."
-"<br><br>Az alapértelmezett beállítások megfelelőek a legtöbb felhasználónak, szóval "
-"ha nem tudod mit tégy, csak kattints a \"<b>Következő</b>\" gombra.</p>"
+"<br><br>Az alapértelmezett beállítások megfelelőek a legtöbb felhasználónak, "
+"szóval ha nem tudod mit tégy, csak kattints a \"<b>Következő</b>\" gombra.</"
+"p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:476
 msgid "Desktop Integration"
@@ -8803,7 +8870,8 @@ msgstr ""
 "\" és \" <b>q</b>\" kombinációjában."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/action/libkviaction.cpp:420
-msgid "The action \"%1\" is already defined as core action and cannot be overridden"
+msgid ""
+"The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr "A(z) \"%1\" akció már definiálva van, mint mag akció, nem felülírható"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/libkvifiletransferwindow.cpp:116
@@ -8842,7 +8910,8 @@ msgstr "Nem lehet beállítani az aktuális avatart, (%Q) http átvitel sikertel
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:249
 msgid "Can't set the current avatar to '%Q': can't load the image"
-msgstr "Nem lehet beállítani az aktuális avatart, (%Q) képet betöltés sikertlen"
+msgstr ""
+"Nem lehet beállítani az aktuális avatart, (%Q) képet betöltés sikertlen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:351
 msgid "Invalid timeout specified, using default"
@@ -8850,7 +8919,8 @@ msgstr "Helytelen megadott időtúllépés, alapértelmezett használata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:389
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-msgstr "Nem tudom felajánlani elküldésre a %Q fájlt (uhh? a fájl nem olvasható?)"
+msgstr ""
+"Nem tudom felajánlani elküldésre a %Q fájlt (uhh? a fájl nem olvasható?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:396
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
@@ -9202,7 +9272,8 @@ msgid "Pixmap object required"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1027
-msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgid ""
+"$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1105
@@ -9530,8 +9601,10 @@ msgid "Can't start the DNS thread"
 msgstr "DNS szál indítása sikertelen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1143
-msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
-msgstr "Túl sok beérkező feldolgozatlan adat (talán a socket nem lett lekezelve?)"
+msgid ""
+"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgstr ""
+"Túl sok beérkező feldolgozatlan adat (talán a socket nem lett lekezelve?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:149
 msgid "Error in KVS class implementation: processing aborted"
@@ -10032,8 +10105,11 @@ msgid "This plugin does not export the desired function."
 msgstr "Ebben a pluginben nem áll rendelkezésre a kívánt funkció."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:327
-msgid "The plugin has no function to free memory. This can result in Memory Leaks!"
-msgstr "A pluginnak nincs memóriafelszabadító funkciója. Ez memória lyukakat eredményezhet!"
+msgid ""
+"The plugin has no function to free memory. This can result in Memory Leaks!"
+msgstr ""
+"A pluginnak nincs memóriafelszabadító funkciója. Ez memória lyukakat "
+"eredményezhet!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/libkvisystem.cpp:209
 #, c-format
@@ -10060,7 +10136,8 @@ msgstr "DCOP hívás sikertelen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/libkvisystem.cpp:599
 msgid "DCOP calls are available only when KDE support is compiled in"
-msgstr "DCOP hívások csak akkor elérhetőek, ha a KDE támogatás be lett fordítva"
+msgstr ""
+"DCOP hívások csak akkor elérhetőek, ha a KDE támogatás be lett fordítva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:78
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1083
@@ -10276,11 +10353,10 @@ msgid ""
 "\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
 "Ctrl+C\" ..."
 msgstr ""
-"Opcionális billentyűleütés, ami aktiválja az akciót.<br>A billentyűsor lehet"
-"egy 4 kulcsú vesszővel elválasztott szöveg kombinálva a módosítókkal "
-"\"Ctrl\",\"Shift\",\"Alt\" és \"Meta"
-"\".<br>Ilyen kombinációk például a \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
-"Ctrl+C\" ..."
+"Opcionális billentyűleütés, ami aktiválja az akciót.<br>A billentyűsor "
+"lehetegy 4 kulcsú vesszővel elválasztott szöveg kombinálva a módosítókkal "
+"\"Ctrl\",\"Shift\",\"Alt\" és \"Meta\".<br>Ilyen kombinációk például a \"Ctrl"
+"+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:240
 msgid "Needs IRC Context"
@@ -10354,7 +10430,8 @@ msgstr "Csak ha van kijelölve felhasználó"
 msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
-msgstr "Engedélyezett, ha több kiválasztott felhasználó is van az aktív ablakban"
+msgstr ""
+"Engedélyezett, ha több kiválasztott felhasználó is van az aktív ablakban"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:282
 msgid "Enable in Channel Windows"
@@ -10901,7 +10978,8 @@ msgstr "Proxy válasza: azonosítás sikertelen, hozzáférés megtagadva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:121
 msgid "Proxy response: No acceptable auth method: request rejected"
-msgstr "Proxy válasza: Nincs elfogadható azonosítási eljárás, kérés visszautasítva"
+msgstr ""
+"Proxy válasza: Nincs elfogadható azonosítási eljárás, kérés visszautasítva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:122
 msgid "Proxy response: request failed"
@@ -12105,3 +12183,5 @@ msgstr ""
 "[Telepítő] Az első argomentumnak \\%installer->\\$includefiles a "
 "célkönyvtárnak kell lennie"
 
+#~ msgid "Report a Bug"
+#~ msgstr "Bug küldése"

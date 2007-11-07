@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:08+0100\n"
 "PO-Revision-Date: 2001-09-11 00:28+0200\n"
 "Last-Translator: Krzysztof Godlewski <kgod@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -1676,8 +1676,9 @@ msgid "Image height:"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
-msgid "Scaling on load (and it user tooltips)"
-msgstr ""
+#, fuzzy
+msgid "Scaling on load (and in user tooltips)"
+msgstr "Obraz Avatar"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
 msgid "Scale avatar images on image load"
@@ -2396,6 +2397,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
 msgid "Output verbosity"
 msgstr ""
 
@@ -2719,11 +2721,6 @@ msgstr "Brak połączenia"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:210
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
-#, fuzzy
-msgid "Output verosity"
-msgstr "Kontrola wyjścia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
 #, fuzzy
@@ -4123,6 +4120,10 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Output verosity"
+#~ msgstr "Kontrola wyjścia"
 
 #, fuzzy
 #~ msgid "Scaling"

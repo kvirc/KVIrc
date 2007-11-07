@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:08+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -1866,8 +1866,9 @@ msgid "Image height:"
 msgstr "Alçada de la imatge:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
-msgid "Scaling on load (and it user tooltips)"
-msgstr ""
+#, fuzzy
+msgid "Scaling on load (and in user tooltips)"
+msgstr "Iniciant la llista de notificació"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
 #, fuzzy
@@ -2628,6 +2629,7 @@ msgstr ""
 "feines.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
 msgid "Output verbosity"
 msgstr "Detall de la sortida"
 
@@ -2959,11 +2961,6 @@ msgstr "Unir connexions IPv6 a:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:210
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Activar servei ident (mala pràctica en UNIX!)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
-#, fuzzy
-msgid "Output verosity"
-msgstr "Detall de la sortida"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
 #, fuzzy
@@ -4462,6 +4459,10 @@ msgstr "Privat"
 #, fuzzy
 msgid "chat"
 msgstr "Xat"
+
+#, fuzzy
+#~ msgid "Output verosity"
+#~ msgstr "Detall de la sortida"
 
 #, fuzzy
 #~ msgid "Scaling"

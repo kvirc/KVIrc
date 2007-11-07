@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:07+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -1433,8 +1433,8 @@ msgid "Subscribe to the Mailing List"
 msgstr "Subscriure's a la Llista de Correu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
-msgid "Report a Bug"
-msgstr "Informar d'un Bug"
+msgid "Report a Bug / Propose enhancements"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
 msgid "Join KVIrc International Channel on Freenode"
@@ -7586,7 +7586,6 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:973
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:984
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1128
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
 msgid "Ok, Let me try again..."
 msgstr ""
 
@@ -7661,11 +7660,15 @@ msgstr "Adre� ja en s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1127
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1139
-msgid "This name is already in use. Please chooose another one."
+msgid "This name is already in use. Please choose another one."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1138
 msgid "Namespace already exists"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
+msgid "Ok, let me try again..."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1227
@@ -12769,6 +12772,9 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Report a Bug"
+#~ msgstr "Informar d'un Bug"
 
 #~ msgid "Smart"
 #~ msgstr "Intelligent"

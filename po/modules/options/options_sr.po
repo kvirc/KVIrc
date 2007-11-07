@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:08+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -1897,8 +1897,9 @@ msgid "Image height:"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
-msgid "Scaling on load (and it user tooltips)"
-msgstr ""
+#, fuzzy
+msgid "Scaling on load (and in user tooltips)"
+msgstr "Pokreæem listu obave¹tenja"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
 msgid "Scale avatar images on image load"
@@ -2697,6 +2698,7 @@ msgstr ""
 "kanal sa koga ste izbaèeni.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
 #, fuzzy
 msgid "Output verbosity"
 msgstr "Izlazni bafer"
@@ -3063,11 +3065,6 @@ msgstr "Pove¾i IRC IPv4 konekcije na prateæi interfejs"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:210
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Omoguæi ident servis (lo¹a praksa na UNIX-u!)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
-#, fuzzy
-msgid "Output verosity"
-msgstr "Izlazni bafer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
 #, fuzzy
@@ -4612,6 +4609,10 @@ msgstr "upit obave¹tenja"
 #, fuzzy
 msgid "chat"
 msgstr "Izmeni"
+
+#, fuzzy
+#~ msgid "Output verosity"
+#~ msgstr "Izlazni bafer"
 
 #, fuzzy
 #~ msgid "Scaling"

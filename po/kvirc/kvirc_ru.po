@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:07+0100\n"
 "PO-Revision-Date: 2007-03-31 10:23+0400\n"
 "Last-Translator: Alexey Uzhva <alexey ar kvirc dot ru>\n"
 "Language-Team: Russian\n"
@@ -1444,8 +1444,8 @@ msgid "Subscribe to the Mailing List"
 msgstr "Подписаться на список рассылки"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
-msgid "Report a Bug"
-msgstr "Сообщить об ошибке"
+msgid "Report a Bug / Propose enhancements"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
 msgid "Join KVIrc International Channel on Freenode"
@@ -7392,7 +7392,6 @@ msgstr "Вы должны указать корректное имя алиас�
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:973
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:984
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1128
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
 msgid "Ok, Let me try again..."
 msgstr "Хорошо, давайте попробую еще раз..."
 
@@ -7466,12 +7465,17 @@ msgstr "Адрес уже используется"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1127
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1139
-msgid "This name is already in use. Please chooose another one."
+msgid "This name is already in use. Please choose another one."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1138
 msgid "Namespace already exists"
 msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
+#, fuzzy
+msgid "Ok, let me try again..."
+msgstr "Хорошо, давайте попробую еще раз..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1227
 msgid "Namespace"
@@ -12435,6 +12439,9 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Report a Bug"
+#~ msgstr "Сообщить об ошибке"
 
 #~ msgid "Smart"
 #~ msgstr "Быстро"

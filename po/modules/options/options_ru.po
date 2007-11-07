@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 02:24+0200\n"
+"POT-Creation-Date: 2007-11-07 21:08+0100\n"
 "PO-Revision-Date: 2007-03-31 10:19+0400\n"
 "Last-Translator: Alexey Uzhva <alexey ar kvirc dot ru>\n"
 "Language-Team: Russian\n"
@@ -1873,7 +1873,7 @@ msgid "Image height:"
 msgstr "Высота картинки:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
-msgid "Scaling on load (and it user tooltips)"
+msgid "Scaling on load (and in user tooltips)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
@@ -2631,6 +2631,7 @@ msgstr ""
 "</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
 msgid "Output verbosity"
 msgstr "Многословность вывода"
 
@@ -2960,11 +2961,6 @@ msgstr "Использовать адрес для IPv6 соединений:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:210
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Включить сервис идентификации (не рекомендуется на UNIX!)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
-#, fuzzy
-msgid "Output verosity"
-msgstr "Многословность вывода"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
 #, fuzzy
@@ -4417,6 +4413,10 @@ msgstr "Приват"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "чат"
+
+#, fuzzy
+#~ msgid "Output verosity"
+#~ msgstr "Многословность вывода"
 
 #~ msgid "Scaling"
 #~ msgstr "Масштабирование"
