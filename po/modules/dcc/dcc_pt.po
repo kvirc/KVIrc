@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: dcc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-07 21:08+0100\n"
-"PO-Revision-Date: 2007-08-21 04:46+0100\n"
+"PO-Revision-Date: 2007-11-09 20:15+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,8 +51,7 @@ msgstr "Escolher Ficheiros para Enviar - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr ""
-"Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
+msgstr "Não é possível enviar o pedido DCC %Q a %Q: a conexão IRC foi terminada"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:199
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:821
@@ -160,7 +159,6 @@ msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Auto-guardar DCC %Q ficheiro %Q como \r![!dbl]play $0\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:665
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
@@ -222,8 +220,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "O endereço IP local é privado, mas não tem nenhum servidor de IRC para o "
 "determinar"
@@ -321,8 +318,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:271
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-"Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
+msgstr "Ops...falha ao testar as capacidades da placa de som...pode ter problemas..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:662
 msgid "Input buffer"
@@ -455,8 +451,7 @@ msgstr "O identificador de janelas indicado não é válido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr ""
-"AVISO: A máquina remota está a enviar lixo após o fim do envio do ficheiro"
+msgstr "AVISO: A máquina remota está a enviar lixo após o fim do envio do ficheiro"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
 msgid ""
@@ -478,8 +473,7 @@ msgstr "A transferência de dados terminou à 30 segundos, a fechar a conexão"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
+msgstr "AVISO: Nos dados recebidos de um DCC TSEND, não deve haver confirmações"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:727
 #, c-format
@@ -652,10 +646,8 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "A tentar uma conexão passiva DCC CANVAS"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr "Pedido DCC CANVAS enviado a %Q, a esperar que o cliente remoto conecte..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:100
 msgid "DCC CANVAS request not sent: awaiting manual connections"
@@ -819,8 +811,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Não é possível com DCC REVC: transferência não iniciada do ficheiro %s na "
 "porta %s"
@@ -1001,3 +992,4 @@ msgid ""
 msgstr ""
 "Não é possível escutar no interface predefinido '%s': corrija-o no diálogo "
 "de opções, a desactivar a opção (para que o próximo dcc funcione)"
+
