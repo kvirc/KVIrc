@@ -164,7 +164,7 @@ bool KviScriptUrlLabelObject::eventFilter(QObject * o, QEvent * e)
 		reacts only on double clicks.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KviKvsObject_urlabel,"urlabel","label")
+KVSO_BEGIN_REGISTERCLASS(KviKvsObject_urlabel,"urllabel","label")
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_urlabel,"setUrl",functionsetUrl)
 	KVSO_REGISTER_HANDLER(KviKvsObject_urlabel,"url",functionurl)
