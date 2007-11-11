@@ -1,4 +1,4 @@
-# translation of kvirc_de.po to German
+# translation of kvirc_de.po to deutsch
 # translation of kvirc_de.po to
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
@@ -6,14 +6,15 @@
 # Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2005.
 # Mihai Moldovan <ionic@root24.de>, 2006, 2007.
+# Markus Rennings <markus@rennings.net>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-07 21:07+0100\n"
-"PO-Revision-Date: 2007-04-06 22:47+0200\n"
-"Last-Translator: Mihai Moldovan <ionic@root24.de>\n"
-"Language-Team: German <de@li.org>\n"
+"PO-Revision-Date: 2007-11-11 20:58+0100\n"
+"Last-Translator: Markus Rennings <markus@rennings.net>\n"
+"Language-Team: deutsch <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -211,19 +212,16 @@ msgid "Ban Editor"
 msgstr "Bann-Editor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:172
-#, fuzzy
 msgid "Ban Exception Editor"
-msgstr "Bannausnahmen-Editor anzeigen"
+msgstr "Bannausnahmen-Editor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:179
-#, fuzzy
 msgid "Invite Exception Editor"
-msgstr "Einladungausnahmen-Editor anzeigen"
+msgstr "Einladungausnahmen-Editor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:184
-#, fuzzy
 msgid "Mode Editor"
-msgstr "Modus-Editor anzeigen"
+msgstr "Modus-Editor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:678
 msgid "said something recently"
@@ -395,13 +393,12 @@ msgid " on "
 msgstr " auf "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1086
-#, fuzzy
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
 msgstr ""
 "Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht (%"
-"Q): %s zu verschlüsseln: keine Daten an Server gesendet"
+"Q): %Q zu verschlüsseln: keine Daten an den Server gesendet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1403
 msgid "Sent part request, waiting for reply..."
@@ -477,12 +474,10 @@ msgid "Re&move"
 msgstr "&Löschen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:602
-#, fuzzy
 msgid "Sample Text"
 msgstr "Beispielstext"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:635
-#, fuzzy
 msgid "Foreground"
 msgstr "Vordergrund"
 
@@ -503,7 +498,6 @@ msgid "Channel name"
 msgstr "Kanalname"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:749
-#, fuzzy
 msgid "Channel password"
 msgstr "Kanalpasswort"
 
@@ -576,9 +570,8 @@ msgid "Channel Modes"
 msgstr "Kanalmodus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_debugwindow.cpp:47
-#, fuzzy
 msgid "Debug Messages"
-msgstr "Standard \"Abwesend\"-Nachricht:"
+msgstr "Meldungen zur Fehlersuche"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ctcppagedialog.cpp:72
 msgid "CTCP Page - KVIrc"
@@ -651,14 +644,12 @@ msgid "Active Ban Exceptions"
 msgstr "Aktive Bann-Ausnahmen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:184
-#, fuzzy
 msgid "Filter:"
-msgstr "&Filter:"
+msgstr "Filter:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:188
-#, fuzzy
 msgid "Use doubleclick to edit item"
-msgstr "Doppelklick zum Bearbeiten..."
+msgstr "Doppelklick zum Bearbeiten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:200
 msgid "Mask"
@@ -686,9 +677,8 @@ msgid "Enable encryption"
 msgstr "Verschlüsselung aktivieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:123
-#, fuzzy
 msgid "Encrypt key:"
-msgstr "Schlüssel"
+msgstr "Schlüssel zum Verschlüsseln:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:129
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:141
@@ -700,9 +690,8 @@ msgid "Enable decryption"
 msgstr "Entschlüsselung aktivieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:135
-#, fuzzy
 msgid "Decrypt key:"
-msgstr "Schlüssel"
+msgstr "Schlüssel zum Entschlüsseln:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:144
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_htmldialog.cpp:86
@@ -739,12 +728,8 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Verschlüsselung: Die Routine kann nicht initialisiert werden: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_cryptcontroller.cpp:302
-#, fuzzy
-msgid ""
-"Crypt: You have to enable encryption and/or decryption for the engine to work"
-msgstr ""
-"Verschlüsselung: Die Verschlüsselung oder die Entschlüsselung muss aktiviert "
-"werden, damit die Routine korrekt funktioniert."
+msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgstr "Verschlüsselung: Die Verschlüsselung oder die Entschlüsselung muss aktiviert werden, damit die Routine korrekt funktioniert."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:386
 msgid "Search tools"
@@ -838,16 +823,14 @@ msgstr "Doppelklick zum Öffnen der Verknüpfung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5069
 msgid "Unable to look it up hostname: Hostname appears to be masked"
-msgstr ""
-"Auflösen des Server-Hostnames fehlgeschlagen: Hostname sieht maskiert aus"
+msgstr "Auflösen des Server-Hostnames fehlgeschlagen: Hostname sieht maskiert aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5070
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Auflösen des Hostnamens fehlgeschlagen: Unbekannter Host"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5072
-msgid ""
-"Double-click to look up this hostname<br>Right-click to view other options"
+msgid "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Doppelklick zum Auflösen des Hostnamens<br>Rechtsklick zum Ansehen weiterer "
 "Optionen"
@@ -862,8 +845,7 @@ msgstr "Unbekannter Server<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5099
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
-msgstr ""
-"Doppelklick zum Lesen der MOTD<br>Rechtsklick zum Ansehen weiterer Optionen"
+msgstr "Doppelklick zum Lesen der MOTD<br>Rechtsklick zum Ansehen weiterer Optionen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5112
 msgid "Double-click to set<br>"
@@ -886,15 +868,16 @@ msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
+"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
+"<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5183
-#, fuzzy
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
 msgstr ""
-"<b>%Q</b>: keine Informationen verfügbar<hr>Doppelklick zum Betreten von %"
-"Q<br>Rechtsklick zum Ansehen weiterer Optionen"
+"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Doppelklick"
+"um %Q beizutreten<br>Rechtsklick, um andere Optionen zu sehen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5203
 msgid "<b>Double-click:</b><br>%Q"
@@ -964,7 +947,6 @@ msgid "In progress..."
 msgstr "In Bearbeitung..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_window.cpp:458
-#, fuzzy
 msgid "Crypting"
 msgstr "Verschlüsselung"
 
@@ -996,7 +978,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_window.cpp:777
 msgid "Smart (Send UTF-8)"
-msgstr ""
+msgstr "geschickt (sende UTF-8)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_window.cpp:810
 msgid "&Undock"
@@ -1031,7 +1013,6 @@ msgid "Taskbar"
 msgstr "Fensterleiste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1092
-#, fuzzy
 msgid "Sort"
 msgstr "Sortieren"
 
@@ -1044,9 +1025,8 @@ msgid "Window List"
 msgstr "Fensterliste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:203
-#, fuzzy
 msgid "Apply to all IRC Contexts"
-msgstr "Kein IRC-Kontext"
+msgstr "Für alle IRC-Kontexte setzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:227
 msgid "Away Indicator"
@@ -1178,18 +1158,15 @@ msgstr "Eingabeverlauf deaktiviert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2359
 msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
-msgstr ""
-"Symbolaufklappmenü anzeigen<br>&lt;Strg+l&gt;<br>Siehe auch /help texticons"
+msgstr "Symbolaufklappmenü anzeigen<br>&lt;Strg+l&gt;<br>Siehe auch /help texticons"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2371
 msgid "User friendly commandline mode<br>See also /help commandline"
-msgstr ""
-"Benutzerfreundlicher Kommandozeilenmodus<br>Siehe auch /help commandline"
+msgstr "Benutzerfreundlicher Kommandozeilenmodus<br>Siehe auch /help commandline"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2383
-#, fuzzy
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
-msgstr "Mehrzeiliger Editor<br>&lt;Strg+Rücktaste&gt;"
+msgstr "Mehrzeileneditor<br>&lt;Alt+Rücktaste&gt;"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2485
 msgid "Confirm Multiline Message"
@@ -1234,20 +1211,16 @@ msgid "No"
 msgstr "Nein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2543
-#, fuzzy
 msgid "<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"
-msgstr ""
-"&lt;Strg+Return&gt; drücken, um den Text abzusenden; &lt;Strg+Rücktaste&gt; "
-"drücken, um den Editor auszublenden/zu schließen"
+msgstr "&lt;Strg+Return&gt; drücken, um den Text abzusenden; &lt;Strg+Rücktaste&gt; drücken, um den Editor auszublenden/zu schließen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:126
-#, fuzzy
 msgid "Address:"
-msgstr "IP-Adresse:"
+msgstr "Adresse:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:140
 msgid "Current IRC URI"
-msgstr ""
+msgstr "Aktuelle IRC-URI"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:153
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:156
@@ -1276,20 +1249,18 @@ msgstr "Hervorhebung aller Anfragen aufheben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:364
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:362
-#, fuzzy
 msgid "Gender:"
-msgstr "Generisch"
+msgstr "Geschlecht:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:366
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:369
-#, fuzzy
 msgid "Male"
-msgstr "Wert"
+msgstr "männlich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:366
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:368
 msgid "Female"
-msgstr ""
+msgstr "weiblich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:375
 msgid "Registered as"
@@ -1320,6 +1291,8 @@ msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
 msgstr ""
+"KVIrc unterstützt nur irc://, irc6://, ircs:// oder irc6s:// -URLs\n"
+"Deine URL ist ungültig. Überprüfe die Schreibweise und versuche es erneut"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:554
 msgid ""
@@ -1439,9 +1412,8 @@ msgid "KVIrc Russian Home&page"
 msgstr "Russische KVIrc Home&page"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:139
-#, fuzzy
 msgid "KVIrc French Home&page"
-msgstr "KVIrc Home&page"
+msgstr "französische KVIrc Home&page"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:143
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:339
@@ -1450,27 +1422,27 @@ msgstr "Mailing-Liste abbonnieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
 msgid "Report a Bug / Propose enhancements"
-msgstr ""
+msgstr "Melde einen Fehler/Schlage Erweiterungen vor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
 msgid "Join KVIrc International Channel on Freenode"
-msgstr ""
+msgstr "Betrete den internationalen KVIrc-Kanal auf Freenode"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:150
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr ""
+msgstr "Betrete den internationalen KVIrc-Kanal im IRCNet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:155
 msgid "Join KVIrc Italian Channel on AzzurraNet"
-msgstr ""
+msgstr "Betrete den italienischen KVIrc-Kanal im AzzuraNet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:161
 msgid "Join KVIrc French Channel on Freenode"
-msgstr ""
+msgstr "Betrete den französischen KVIrc-Kanal auf Freenode"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:164
 msgid "Join KVIrc French Channel on EuropNet"
-msgstr ""
+msgstr "Betrete den französischen KVIrc-Kanal im EuropNet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:179
 msgid "Show StatusBar"
@@ -1616,14 +1588,12 @@ msgid "Select a Name for the Filter File"
 msgstr "Dateiname für Filterdatei auswählen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:272
-#, fuzzy
 msgid "Failed to write the filter file %Q (IO Error)"
-msgstr "Fehler beim Schreiben der Filterdatei: %s (E/A-Fehler)"
+msgstr "Fehler beim Schreiben der Filterdatei: %Q (E/A-Fehler)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:274
-#, fuzzy
 msgid "Can't open the filter file %Q for writing"
-msgstr "Die Filterdatei %s kann nicht zum Schreiben geöffnet werden."
+msgstr "Die Filterdatei %Q kann nicht zum Schreiben geöffnet werden."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:109
 msgid "Choose image ..."
@@ -1695,7 +1665,6 @@ msgstr "Gemeinsame Kanäle mit %1: <b>%2</b>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:213
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:254
-#, fuzzy
 msgid "[Dead Query]"
 msgstr "[Tote Anfrage]"
 
@@ -1720,9 +1689,8 @@ msgid ", probably away"
 msgstr ", wahrscheinlich abwesend"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:252
-#, fuzzy
 msgid "Common channels: %2"
-msgstr "Gemeinsame Kanäle: %2 (Kanäle betreten?)"
+msgstr "Gemeinsame Kanäle: %2"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:320
 msgid ""
@@ -1767,9 +1735,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:157
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
-#, fuzzy
 msgid "DNS Lookup result for query \"%Q\""
-msgstr "DNS-Ergebnis für Anfrage \"%s\""
+msgstr "DNS-Ergebnis für Anfrage \"%Q\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:162
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
@@ -1778,120 +1745,109 @@ msgstr "Fehler: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:167
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
-#, fuzzy
 msgid "Hostname %d: %Q"
-msgstr "Hostname %d: %s"
+msgstr "Hostname %d: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:173
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
-#, fuzzy
 msgid "IP address %d: %Q"
-msgstr "IP-Adresse %d: %s"
+msgstr "IP-Adresse %d: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:848
-#, fuzzy
 msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
 msgstr ""
-"Fehlerhafter Slot '%s' in Zielobjekt '%s' beim Senden des Signals '%s' von "
-"Objekt '%s': trenne"
+"Fehlerhafter Slot '%Q' in Zielobjekt '%Q' beim Senden des Signals '%Q' von "
+"Objekt '%Q::%Q': trenne"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:866
-#, fuzzy
-msgid ""
-"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
-msgstr ""
-"Fehlerhafter Slot '%s' in Zielobjekt '%s' beim Senden des Signals '%s' von "
-"Objekt '%s': trenne"
+msgid "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
+msgstr "Zielobjekt des Slots zerstört während das Signal '%Q' von Objekt '%Q::'%Q' gesendet wurde"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1018
-#, fuzzy
 msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
-msgstr "%c Auflistung der Qt-Eigenschaften fürWidgetobjekt %s (%s)"
+msgstr "Liste Qt-Eigenschaften für Objekt namens \"%Q\" der KVS-Klasse %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1024
-#, fuzzy, c-format
+#, c-format
 msgid "Properties for Qt class %s"
-msgstr "Eigenschaftsklasse: %c%s%c"
+msgstr "Eigenschaften für Qt-Klasse %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1049
-#, fuzzy
 msgid "Property: %c%Q%c, type %Q"
-msgstr "Eigenschaft: %c%s%c, Typ: %s"
+msgstr "Eigenschaft: %c%Q%c, Typ: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1109
 #, c-format
 msgid "%d properties listed"
-msgstr ""
+msgstr "%d Eigenschaften aufgelistet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1129
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1358
 msgid "The object named \"%Q\" of class %Q has no Qt properties"
-msgstr ""
+msgstr "Das Objekt \"%Q\" der Klasse %Q hat keine Qt-Eigenschaften"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1140
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1374
 msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
-msgstr ""
+msgstr "Keine QT-Eigenschaft namens \"%Q\" für das Objekt \"%Q\" der Klasse %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1151
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1387
 msgid ""
 "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 "property is indexed but it doesn't really exist"
-msgstr ""
+msgstr "Kann Eigenschaft \"%Q\" für Objekt \"%Q\" der Klasse %Q nciht finden: Die Eigenschaft ist indiziert, aber existiert nicht"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1158
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1395
 msgid ""
 "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 "property is indexed and defined but the returned variant is not valid"
-msgstr ""
+msgstr "Kann Eigenschaft \"%Q\" für Objekt \"%Q\" der Klasse %Q nicht finden: Die Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante ist ungültig"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1178
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
 "that type (expecting \"%s\")"
-msgstr ""
+msgstr "Die Eigenschaft ist vom Typ %s, aber das übergebene Argument kann nicht in diesen Typ konvertiert werden (Erwartet: \"%s\")"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1309
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
-msgstr ""
+msgstr "Ein Pixmap-Objekt, eine Bild-ID oder ein Bilddateipfad wird für diese Eigenschaft benötigt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1330
-#, fuzzy
 msgid "Can't find the requested image"
-msgstr "Angeforderte Adresse kann nicht zuwiesen werden"
+msgstr "Kann das angeforderte Bild nicht finden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1336
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1490
 msgid ""
 "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data "
 "type"
-msgstr ""
+msgstr "Eigenschaft \"%Q\" für Objekt \"%Q\" der Klasse %Q hat einen nicht unterstützten Datentyp"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1637
 msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
-msgstr ""
+msgstr "Kann Objektfunktion $%Q für Objekt \"%Q\" der Klasse %Q nicht finden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1639
 msgid "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
-msgstr ""
+msgstr "Kann Objektfunktion $%Q::%Q für Objekt \"%Q\" der Klasse %Q nicht finden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1647
 msgid ""
 "Cannot call internal object function $%Q (for object named \"%Q\" of class %"
 "Q) from this context"
-msgstr ""
+msgstr "Kann die interne Objektfunktion $%Q (für Objekt \"%Q\" der Klasse %Q) aus diesem Kontext nicht aufrufen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:69
 msgid "Stray dot ('.') character or invalid following module command name"
-msgstr ""
-"Vereinzelter Punkt ('.') oder ungültiger nachfolgender Modulkommandoname"
+msgstr "Vereinzelter Punkt ('.') oder ungültiger nachfolgender Modulkommandoname"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:70
 msgid "Syntax error: malformed module command identifier"
@@ -1899,25 +1855,21 @@ msgstr "Syntaxfehler: Fehlerhafter Kommandozeilenbezeichner"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:94
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:188
-#, fuzzy
 msgid "Stray '::' sequence or invalid following alias name"
-msgstr ""
-"Vereinzelter Punkt ('.') oder ungültiger nachfolgender Modulkommandoname"
+msgstr "Verirrte '::'-Sequenz oder es folgt ein ungültiger Alias-Name"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:95
-#, fuzzy
 msgid "Syntax error: malformed alias identifier"
-msgstr "Syntaxfehler: Fehlerhafter Kommandozeilenbezeichner"
+msgstr "Syntaxfehler: Fehlerhafter Aliasbezeichner"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:102
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:196
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
-msgstr ""
+msgstr "Verirrtes ':'-Zeichen: Meintest Du '...<namespace>::<alias_name>'?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:103
-#, fuzzy
 msgid "Syntax error: malformed (alias?) command identifier"
-msgstr "Syntaxfehler: Fehlerhafter Kommandozeilenbezeichner"
+msgstr "Syntaxfehler: Fehlerhafter (Alias-?) Kommando-Name"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:280
 msgid "Unknown callback command \"%Q\""
@@ -1944,21 +1896,17 @@ msgstr "Zeitgeber '%Q' kann nicht beendet werden, da er nicht läuft"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:849
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:872
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
-msgstr ""
-"Zeichen '%q' (Unicode %x) gefunden, aber ein Schrägstrich '/' wurde erwartet"
+msgstr "Zeichen '%q' (Unicode %x) gefunden, aber ein Schrägstrich '/' wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:842
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
-msgstr ""
-"Unerwartetes Ende des Kommandos in Bindenoperation, zwei Schrägstriche fehlen"
+msgstr "Unerwartetes Ende des Kommandos in Bindenoperation, zwei Schrägstriche fehlen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:865
-msgid ""
-"Unexpected end of command in binding operation, at least one slash is missing"
-msgstr ""
-"Unerwartetes Ende des Kommandos in Bindenoperation, ein Schrägstrich fehlt"
+msgid "Unexpected end of command in binding operation, at least one slash is missing"
+msgstr "Unerwartetes Ende des Kommandos in Bindenoperation, ein Schrägstrich fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:905
 msgid "Unknown binding operation '%Q'"
@@ -1984,7 +1932,7 @@ msgstr "Nachfolgender Müll nach dem '--'-Operator wird ignoriert"
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after ?"
-msgstr ""
+msgstr "Dies sieht aus wie ein Objekt-Dereferenzierungsoperator '->', aber es ist keiner. Vielleicht hast Du ein '$' direkt danach vergessen?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:994
 msgid "Missing right operand for operator '-='"
@@ -2003,9 +1951,8 @@ msgid "Missing right operand for operator '<,'"
 msgstr "Rechter Operand des '<,'-Operators fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1053
-#, fuzzy
 msgid "Missing right operand for operator '<+'"
-msgstr "Rechter Operand bei '+='-Operator fehlt"
+msgstr "Rechter Operand bei '<+'-Operator fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1075
 msgid "Missing right operand for operator '>>='"
@@ -2036,8 +1983,7 @@ msgstr "Syntaxfehler: Konfus von früheren Fehlern: Aussprung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1160
 msgid "Unexpected end of script after a variable reference: expected operator"
-msgstr ""
-"Unerwartetes Ende des Skripts nach einer Variablenreferenz: Operator erwartet"
+msgstr "Unerwartetes Ende des Skripts nach einer Variablenreferenz: Operator erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1176
 msgid ""
@@ -2053,22 +1999,19 @@ msgstr "Unterwartetes Zeichen '%q' (Unicode %x)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:96
 msgid "/me can be used only in channels, queries and DCC chat windows"
-msgstr ""
+msgstr "/me kann nur in Kanälen, Queries und DCC-Chat-Fenstern verwendet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:385
-#, fuzzy
 msgid "Invalid IRC url (%Q)"
-msgstr "Ungültige IRC-URL (%s)"
+msgstr "Ungültige IRC-URL (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
-#, fuzzy
 msgid "The commandline for this url type seems to be broken (%Q)"
-msgstr "Die Kommandozeile für diesen URL-Typ schein fehlerhaft (%s)"
+msgstr "Die Kommandozeile für diesen URL-Typ schein fehlerhaft (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:412
-#, fuzzy
 msgid "No commandline specified for this type of url (%Q)"
-msgstr "Keine Kommandozeile für diesen Typ der URL (%s) angegeben"
+msgstr "Keine Kommandozeile für diesen URL-Typ (%Q) angegeben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:512
 msgid "Option setting error: Unknown option or invalid value for option type"
@@ -2095,19 +2038,14 @@ msgid "You don't appear to be on channel %s"
 msgstr "Sie scheinen nicht in Kanal %s zu sein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:802
-#, fuzzy
 msgid "Module command call failed: can't load the module 'snd'"
-msgstr ""
-"Modulkommandoaufruf fehlgeschlagen: Modul '%Q' kann nicht geladen werden"
+msgstr "Modulkommandoaufruf fehlgeschlagen: Modul 'snd' kann nicht geladen werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:809
-#, fuzzy
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
-msgstr ""
-"Modulkommandoaufruf fehlgeschlagen: Modul '%Q' exportiert kein Kommando mit "
-"Namen '%Q'"
+msgstr "Modulkommandoaufruf fehlgeschlagen: Das Modul 'snd' exportiert kein Kommando namens 'play'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:864
 msgid "Popup %Q is not defined"
@@ -2119,8 +2057,7 @@ msgstr "Aufklappmenü kann nicht doppelt aufgerufen werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:897
 msgid "Invalid syntax for screen coordinates, using cursor position"
-msgstr ""
-"Ungültige Syntax für Bildschirmkoordinaten, Cursorposition wird benutzt"
+msgstr "Ungültige Syntax für Bildschirmkoordinaten, Cursorposition wird benutzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1011
 msgid "Empty target specified"
@@ -2136,9 +2073,8 @@ msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Fenster mit ID %Q nicht gefunden: kein Neubinden ausgeführt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1330
-#, fuzzy
 msgid "Failed to execute command '%Q'"
-msgstr "Ausführen des Kommandos '%s' fehlgeschlagen"
+msgstr "Ausführen des Kommandos '%Q' fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:242
 msgid "Missing alias name"
@@ -2149,18 +2085,17 @@ msgstr "Aliasname fehlt"
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
-msgstr ""
+msgstr "Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und '::'-Namensraumseparatoren enthalten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:262
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:903
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
+msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr "Verirrtes ':'-Zeichen im Aliasnamen: Meintest Du ...<namespace>::<name>?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:268
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:914
 msgid "Found an empty namespace in alias name"
-msgstr ""
+msgstr "Leerer Namensraum im Aliasnamen gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:277
 msgid "The alias %Q is not existing"
@@ -2172,15 +2107,13 @@ msgid "The specified window has no button containers"
 msgstr "Das angegebene Fenster hat keine Knopfcontainer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:447
-#, fuzzy
 msgid "Window button '%Q' not found"
-msgstr "Fensterknopf '%s' nicht gefunden"
+msgstr "Fensterknopf '%Q' nicht gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:475
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:441
-#, fuzzy
 msgid "Can't find the icon '%Q'"
-msgstr "Symbol '%s' kann nicht gefunden werden"
+msgstr "Symbol '%Q' kann nicht gefunden werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:532
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:540
@@ -2188,24 +2121,21 @@ msgstr "Symbol '%s' kann nicht gefunden werden"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:509
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1185
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1193
-#, fuzzy
 msgid "No such event (%Q)"
-msgstr "Kein solches Ereignis (%s)"
+msgstr "Kein solches Ereignis (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:552
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1205
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1218
-#, fuzzy
 msgid "No handler '%Q' for raw numeric event '%d'"
-msgstr "Kein Handler '%s' für numerisches RAW-Ereignis '%d'"
+msgstr "Kein Handler '%Q' für numerisches RAW-Ereignis '%d'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:558
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1209
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1222
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1244
-#, fuzzy
 msgid "No handler '%Q' for event '%Q'"
-msgstr "Kein Handler '%s' für Ereignis '%s'"
+msgstr "Kein Handler '%Q' für Ereignis '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:936
 msgid "The specified ping time is invalid: assuming zero (no ping)"
@@ -2213,17 +2143,15 @@ msgstr "Angegebene Pingzeit ist ungültig: es wird Null angenommen (kein Ping)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:946
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
-msgstr ""
-"Angegebene Maximallaufzeit ist ungültig: es wird Null angenommen (unendlich)"
+msgstr "Angegebene Maximallaufzeit ist ungültig: es wird Null angenommen (unendlich)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:965
 msgid "Failed to start the process"
 msgstr "Start des Prozesses fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1010
-#, fuzzy
 msgid "The specified object does not exist"
-msgstr "Die angegebene Werkzeugleiste existiert nicht"
+msgstr "Das angegebene Objekt existiert nicht"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1113
 msgid "Missing timer name"
@@ -2247,7 +2175,7 @@ msgstr "Ereignishandler %Q ist fehlerhaft: wird deaktiviert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_moduleinterface.cpp:166
 msgid "Can't unload the module: it has locked itself in memory"
-msgstr ""
+msgstr "Kann das Modul nicht entladen: Es hat sich selbst im Speicher gesperrt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:123
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
@@ -2271,57 +2199,49 @@ msgstr ""
 "gemeint ist, Anführungstriche benutzen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:466
-#, fuzzy
 msgid "Unexpected empty expression operand"
-msgstr "Unerwartetes Ende in Ausdruck"
+msgstr "Unerwarteter leerer Ausdrucksoperand"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:91
+#, fuzzy
 msgid "say: injected commandline"
-msgstr ""
+msgstr "sage: eingefügte Kommandozeile"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:94
 msgid "Say parse error: Broken command"
 msgstr "Say-Parsen fehlgeschlagen: fehlerhaftes Kommando"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:250
-msgid ""
-"Couldn't find a suitable IRC context for the connection, try using -n or -u"
-msgstr ""
+msgid "Couldn't find a suitable IRC context for the connection, try using -n or -u"
+msgstr "Kann keinen geeigneten IRC-Kontext für die Verbindung finden, probiere -n oder -u"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:259
-#, fuzzy
 msgid "Another connection is already in progress in the selected IRC context"
-msgstr "Eine andere Verbindung ist im Aufbau"
+msgstr "Eine andere Verbindung ist im Aufbau im gewählten IRC-Kontext"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:369
-#, fuzzy
 msgid "No menu bar item with text '%Q'"
-msgstr "Kein Menüleistenelement mit Text '%s'"
+msgstr "Kein Menüleistenelement mit Text '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:383
-#, fuzzy
 msgid "Invalid index specified: ignored"
-msgstr "Ungültiger Zeitablauf angegeben, Standard wird benutzt"
+msgstr "Ungültiger Index angegeben: Ignoriert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:392
-#, fuzzy
 msgid "The popup '%Q' is not defined"
-msgstr "Das Popup '%s' ist nicht definiert"
+msgstr "Das Popup '%Q' ist nicht definiert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:604
-#, fuzzy
 msgid "No target channel specified and the current window is not a channel"
-msgstr "Das angegebene Fenster ist kein Kanal"
+msgstr "Kein Zielfenster angegeben und das aktuelle Fenster ist kein Kanal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:705
-#, fuzzy
 msgid "No catalogue %Q for the current language found"
-msgstr "Kein Katalog %s für die aktuelle Sprache gefunden"
+msgstr "Kein Katalog %Q für die aktuelle Sprache gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:744
-#, fuzzy
 msgid "The catalogue %Q was not loaded"
-msgstr "Katalog %s wurde nicht geladen"
+msgstr "Katalog %Q wurde nicht geladen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:80
 msgid ""
@@ -2336,24 +2256,18 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:94
-#, fuzzy
-msgid ""
-"The left side of the scope operator didn't evaluate as an object reference"
-msgstr ""
-"Linke Seite des '&='-Operators kann nicht zu einem Integer ausgewertet werden"
+msgid "The left side of the scope operator didn't evaluate as an object reference"
+msgstr "Linke Seite des Scope-Operators kann nicht zu einer Objektreferenz ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:100
-#, fuzzy
-msgid ""
-"The left side of the scope operator evaluated to a null object reference"
-msgstr ""
-"Linke Seite des '/='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgid "The left side of the scope operator evaluated to a null object reference"
+msgstr "Linke Seite des des Scope-Operators ist als Null-Objekt-Referenz ausgewertet worden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:107
 msgid ""
 "The left side of the scope operator evaluated to an invalid object reference "
 "(object doesn't exist)"
-msgstr ""
+msgstr "Die linke Seite des Scope-Operators ist als ungültige Objektrefernenz ausgewertet worden (Objekt existiert nicht)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:77
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
@@ -2363,8 +2277,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:247
 msgid "Operand of unary operator didn't evaluate to a number"
-msgstr ""
-"Operand des Stufenoperators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Operand des Stufenoperators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:415
 msgid "Left operand didn't evaluate to a number"
@@ -2409,8 +2322,7 @@ msgstr "Parameter fehlt"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:80
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:128
 msgid "Hash key evaluated to empty string: fix the script"
-msgstr ""
-"Hashschlüssel zu leerer Zeichenkette ausgewertet: Bitte Skript reparieren"
+msgstr "Hashschlüssel zu leerer Zeichenkette ausgewertet: Bitte Skript reparieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:99
 msgid ""
@@ -2435,9 +2347,8 @@ msgstr ""
 "ausgewertet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:100
-#, fuzzy
 msgid "Failed to send an unknown command as /raw"
-msgstr "Unbekannte Kommandos als /RAW senden"
+msgstr "Unbekanntes Kommando als /raw senden fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:101
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:104
@@ -2446,46 +2357,41 @@ msgstr "Aufruf des nicht definierten Kommandos '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:116
 msgid "Error in inner alias command call '%Q', called from this context"
-msgstr ""
-"Fehler in innerem Aliaskommandoaufruf '%Q', aufgerufen von diesem Kontext"
+msgstr "Fehler in innerem Aliaskommandoaufruf '%Q', aufgerufen von diesem Kontext"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:56
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:74
 msgid "There are no extended scope variables in this scope"
-msgstr ""
-"Keine erweiterten Gültigkeitsbereichsvariablen in diesem Gültigkeitsbereich"
+msgstr "Keine erweiterten Gültigkeitsbereichsvariablen in diesem Gültigkeitsbereich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:98
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:111
-#, fuzzy
 msgid "Missing class name"
-msgstr "Aliasname fehlt"
+msgstr "Klassenname fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:120
 msgid "A class can't be a subclass of itself"
-msgstr ""
+msgstr "Eine Klasse kann keine Unterklasse von sich selbst sein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:127
 msgid "Couln't find base class named \"%Q\""
-msgstr ""
+msgstr "Kann Basisklasse \"%Q\" nicht finden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:137
 msgid ""
 "Detected a loop in the inheritance tree of the base class \"%Q\": redefine "
 "that class first"
-msgstr ""
+msgstr "Im Vererbungsbaum der Basisklasse \"%Q\" wurde eine Schleife festgestellt: Definiere die Klasse zuerst neu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:146
 #, fuzzy
 msgid "Can't override the builtin class \"%Q\""
-msgstr "Eingebaute Klasse kann nicht getötet werden"
+msgstr "Eingebaute Klasse \"%Q\" kann nicht aufgehoben/überschrieben werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:70
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:71
-#, fuzzy
 msgid "Module command call failed: can't load the module '%Q': %Q"
-msgstr ""
-"Modulkommandoaufruf fehlgeschlagen: Modul '%Q' kann nicht geladen werden"
+msgstr "Modulkommandoaufruf fehlgeschlagen: Modul '%Q':%Q kann nicht geladen werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:77
 msgid ""
@@ -2528,10 +2434,8 @@ msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr "Fehlerhafter Epilog für Aufklappmenü '%Q': wird ignoriert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:70
-#, fuzzy
 msgid "Module function call failed: can't load the module '%Q': %Q"
-msgstr ""
-"Modulfunktionsaufruf fehlgeschlagen: Modul '%Q' kann nicht geladen werden"
+msgstr "Modulfunktionsaufruf fehlgeschlagen: Modul '%Q':%Q kann nicht geladen werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:77
 msgid ""
@@ -2543,14 +2447,12 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_timermanager.cpp:244
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
-msgstr ""
-"Zeitgeber '%Q' hat einen fehlerhaften Rückrufhandler: Zeitgeber wird getötet"
+msgstr "Zeitgeber '%Q' hat einen fehlerhaften Rückrufhandler: Zeitgeber wird getötet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:167
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:229
 msgid "The target variable didn't evaluate to an integer or real value"
-msgstr ""
-"Zielvariable kann nicht zu einem Integer oder realem Wert ausgewertet werden"
+msgstr "Zielvariable kann nicht zu einem Integer oder realem Wert ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:283
 msgid "The right side of operator '&=' didn't evaluate to an integer"
@@ -2560,38 +2462,31 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:294
 msgid "The left side of operator '&=' didn't evaluate to an integer"
-msgstr ""
-"Linke Seite des '&='-Operators kann nicht zu einem Integer ausgewertet werden"
+msgstr "Linke Seite des '&='-Operators kann nicht zu einem Integer ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:353
 msgid "The right side of operator '/=' didn't evaluate to a number"
-msgstr ""
-"Rechte Seite des '/='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Rechte Seite des '/='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:364
 msgid "The left side of operator '/=' didn't evaluate to a number"
-msgstr ""
-"Linke Seite des '/='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Linke Seite des '/='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:446
 msgid "The right side of operator '%=' didn't evaluate to a number"
-msgstr ""
-"Rechte Seite des '%='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Rechte Seite des '%='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:457
 msgid "The left side of operator '%=' didn't evaluate to a number"
-msgstr ""
-"Linke Seite des '%='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Linke Seite des '%='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:541
 msgid "The right side of operator '*=' didn't evaluate to a number"
-msgstr ""
-"Rechte Seite des '*='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Rechte Seite des '*='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:552
 msgid "The left side of operator '*=' didn't evaluate to a number"
-msgstr ""
-"Linke Seite des '*='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Linke Seite des '*='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:620
 msgid "The right side of operator '|=' didn't evaluate to an integer"
@@ -2601,8 +2496,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:631
 msgid "The left side of operator '|=' didn't evaluate to an integer"
-msgstr ""
-"Linke Seite des '|='-Operators kann nicht zu einem Integer ausgewertet werden"
+msgstr "Linke Seite des '|='-Operators kann nicht zu einem Integer ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:691
 msgid "The right side of operator '<<=' didn't evaluate to an integer"
@@ -2630,23 +2524,19 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:840
 msgid "The right side of operator '-=' didn't evaluate to a number"
-msgstr ""
-"Rechte Seite des '-='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Rechte Seite des '-='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:851
 msgid "The left side of operator '-=' didn't evaluate to a number"
-msgstr ""
-"Linke Seite des '-='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Linke Seite des '-='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:923
 msgid "The right side of operator '+=' didn't evaluate to a number"
-msgstr ""
-"Rechte Seite des '+='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Rechte Seite des '+='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:934
 msgid "The left side of operator '+=' didn't evaluate to a number"
-msgstr ""
-"Linke Seite des '+='-Operators kann nicht zu einer Zahl ausgewertet werden"
+msgstr "Linke Seite des '+='-Operators kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1009
 msgid "The right side of operator '^=' didn't evaluate to an integer"
@@ -2656,14 +2546,13 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1020
 msgid "The left side of operator '^=' didn't evaluate to an integer"
-msgstr ""
-"Linke Seite des '^='-Operators kann nicht zu einem Integer ausgewertet werden"
+msgstr "Linke Seite des '^='-Operators kann nicht zu einem Integer ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1462
 msgid ""
 "The regular expression matched a zero-length substring: this is not valid in "
 "the s/// operator, skipping"
-msgstr ""
+msgstr "Der reguläre Ausdruck traf auf eine Teilzeichenkette der Länge 0 zu: Dies ist ungültig für den s///-Operator, überspringe"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:52
 msgid "Unexpected end of script after '$' function call prefix"
@@ -2696,8 +2585,7 @@ msgid "Empty instruction block for command evaluation"
 msgstr "Leerer Anweisungsblock für Kommandoauswertung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:101
-msgid ""
-"Parameter identifiers are forbidden in object scope (after the '->' operator)"
+msgid "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
 "Parameterbezeichner sind im Objektgültigkeitsbereich verboten (nach dem '->'-"
 "Operator)"
@@ -2713,17 +2601,15 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:163
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
-msgstr ""
+msgstr "Syntaxfehler: ungültige $$ ($this) Funktionenaufruf  im Objektbereich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:189
-#, fuzzy
 msgid "Syntax error: malformed alias function call identifier"
-msgstr "Syntaxfehler: Fehlerhafter Kommandozeilenbezeichner"
+msgstr "Syntaxfehler: Fehlerhafter Aliasfunktionen-Aufrufbezeichner"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:197
-#, fuzzy
 msgid "Syntax error: malformed (alias?) function call identifier"
-msgstr "Syntaxfehler: Fehlerhafter Kommandozeilenbezeichner"
+msgstr "Syntaxfehler: Fehlerhafter (Alias?) Funktionenaufrufbezeichner"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:114
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:231
@@ -2777,7 +2663,6 @@ msgstr "Kein solcher IRC-Kontext (%u)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:471
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:586
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:494
-#, fuzzy
 msgid "This window is not associated to an IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 
@@ -2785,7 +2670,7 @@ msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 msgid ""
 "The specified format string wasn't accepted by the underlying system time "
 "formatting function"
-msgstr ""
+msgstr "Die angegebene Formatierungszeichenkette wurde von der zu Grundeliegenden System-Zeitformatierungsfunktion nicht akzeptiert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:70
 msgid "Unterminated c-style multiline comment"
@@ -2809,16 +2694,14 @@ msgstr "Aufruf von nicht definierter Funktion '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:79
 msgid "Error in inner alias function call '%Q', called from this context"
-msgstr ""
-"Fehler in innerem Aliasfunktionsaufruf '%Q', aufgerufen von diesem Kontext"
+msgstr "Fehler in innerem Aliasfunktionsaufruf '%Q', aufgerufen von diesem Kontext"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:73
 msgid "Array index didn't evaluate to an integer"
 msgstr "Arrayindex kann nicht zu einer Zahl ausgewertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:79
-msgid ""
-"Array index evaluated to a negative integer (non negative integer expected)"
+msgid "Array index evaluated to a negative integer (non negative integer expected)"
 msgstr ""
 "Arrayindex zu einer negativem Integer ausgewertet (nicht negativer Integer "
 "erwartet)"
@@ -2840,21 +2723,16 @@ msgstr ""
 "werden: es wird automatische Konvertierung von %Q geliefert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:517
-#, fuzzy
 msgid "No such event handler (%Q) for event %Q"
-msgstr "Kein Handler '%s' für Ereignis '%s'"
+msgstr "Dieser Ereignis-Handler (%Q) für Ereignis %Q existiert nicht"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:152
 msgid "This is not a channel"
 msgstr "Dies ist kein Kanal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:99
-#, fuzzy
-msgid ""
-"Unexpected end of command buffer while looking for the \"perl.end\" statement"
-msgstr ""
-"Unerwartetes Ende des Skripts während des Suchens nach der schliessenden ')' "
-"im for-Kommando"
+msgid "Unexpected end of command buffer while looking for the \"perl.end\" statement"
+msgstr "Unerwartetes Ende des Kommandopuffers während der Suche nach dem \"perl.end\"-Ausdruck"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:147
 msgid "Trailing garbage at the end of the break command: ignored"
@@ -2880,34 +2758,29 @@ msgstr "'global'-Kommando benötigt eine Variablenliste"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:379
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:631
 msgid "Found character %q (unicode %x) where an open parenthesis was expected"
-msgstr ""
-"Zeichen '%q' (Unicode %x) gefunden, aber öffnende Klammer wurde erwartet"
+msgstr "Zeichen '%q' (Unicode %x) gefunden, aber öffnende Klammer wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:439
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:467
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:494
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:538
-#, fuzzy
 msgid "Unexpected end of buffer in class definition"
-msgstr "Unerwartetes Ende des Puffers in einem switch-Bedingungblock gefunden"
+msgstr "Unerwartetes Ende des Puffers in der Klassendefinition"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:446
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:474
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:501
-#, fuzzy
 msgid "Found character %q (unicode %x) where a function name was expected"
-msgstr "Zeichen '%q' (Unicode %x) gefunden, aber Anweisung wurde erwartet"
+msgstr "Zeichen '%q' (Unicode %x) gefunden, aber ein Funktionsname wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:522
 #, fuzzy
 msgid "Unexpected end of buffer in function parameter list reminder"
-msgstr "Unerwartetes Ende der Zeile in Parameterliste"
+msgstr "Unerwartetes Ende des Puffers in der Parameterliste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:630
-#, fuzzy
 msgid "The while command needs an expression enclosed in parenthesis"
-msgstr ""
-"while-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossenen ist"
+msgstr "Das while-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossenen ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:654
 msgid ""
@@ -2926,13 +2799,10 @@ msgstr ""
 "while-Kommando"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:741
-#, fuzzy
 msgid ""
 "Unexpected end of command after the 'do' command block: expected 'while' "
 "keyword"
-msgstr ""
-"Unerwartetes Ende des Kommandos nach dem 'do'-Kommandoblock: 'while'-"
-"Schlüsselwort erwartet"
+msgstr "Unerwartetes Ende des Kommandos nach dem 'do'-Kommandoblock: 'while'-Schlüsselwort erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:743
 msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
@@ -2941,23 +2811,18 @@ msgstr ""
 "erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:759
-#, fuzzy
 msgid ""
 "The 'while' block of the 'do' command needs an expression enclosed in "
 "parenthesis"
-msgstr ""
-"Der 'while'-Block des 'do'-Kommando benötigt einen Ausdruck, der in Klammern "
-"eingeschlossenen ist"
+msgstr "Der 'while'-Block des 'do'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossenen ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:779
 msgid "Garbage string after the expression in 'do' command: ignored"
 msgstr "Müllzeichenkette nach dem Ausdruck im 'do'-Kommando: wird ignoriert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:825
-#, fuzzy
 msgid "The 'if' command needs an expression enclosed in parenthesis"
-msgstr ""
-"'if'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
+msgstr "Das 'if'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:850
 msgid ""
@@ -2984,10 +2849,8 @@ msgstr ""
 "im for-Kommando"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1015
-#, fuzzy
 msgid "The 'for' command needs an expression enclosed in parenthesis"
-msgstr ""
-"'for'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
+msgstr "Das 'for'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1092
 msgid ""
@@ -3002,7 +2865,6 @@ msgid "Empty infinite 'for' loop: fix the script"
 msgstr "Leere Endlos-'for'-Schleife: Skript reparieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1181
-#, fuzzy
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr ""
 "Das 'foreach'-Kommando benötigt einen Ausdruck, der in Klammern "
@@ -3050,16 +2912,12 @@ msgstr ""
 "durch Komma getrennt sind, nach dem ersten Parameter"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1244
-#, fuzzy
-msgid ""
-"Found empty 'foreach' execution block: maybe you need to fix your script ?"
-msgstr "Leerer 'foreach'-Ausführungsblock: Skript reparieren"
+msgid "Found empty 'foreach' execution block: maybe you need to fix your script ?"
+msgstr "Leerer 'foreach'-Ausführungsblock: Vielleicht musst Du Dein Skript reparieren?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1365
-#, fuzzy
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
-msgstr ""
-"'switch'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
+msgstr "Das 'switch'-Kommando benötigt einen Ausdruck, der in Klammern eingeschlossen ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1415
 msgid "Unexpected end of buffer in switch condition block"
@@ -3077,8 +2935,7 @@ msgstr ""
 msgid ""
 "Found 'break' label where a 'case','match','regexp' or 'default' label was "
 "expected"
-msgstr ""
-"'break' gefunden aber 'case', 'match', 'regexp' oder 'default' wurde erwartet"
+msgstr "'break' gefunden aber 'case', 'match', 'regexp' oder 'default' wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1465
 msgid ""
@@ -3106,14 +2963,12 @@ msgstr ""
 "'label','item', 'extpopup' oder 'epilogue'-Label wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1668
-#, fuzzy
 msgid "Found empty prologue block: maybe you need to fix the script?"
-msgstr "Sinnloser leerer prologue-Block: Bitte Skript reparieren"
+msgstr "Leerer prologue-Block gefunden: Vielleicht solltest Du das Skript reparieren?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1670
-#, fuzzy
 msgid "Found empty epilogue block: maybe you need to fix the script?"
-msgstr "Sinnloser leerer epilogue-Block: Bitte Skript reparieren"
+msgstr "Leerer epilogue-Block gefunden: Vielleicht solltest Du das Skript reparieren?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1703
 msgid ""
@@ -3134,10 +2989,8 @@ msgstr ""
 "für Syntax zu Hilfe nehmen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
-#, fuzzy
-msgid ""
-"Found empty instruction for popup item: maybe you need to fix the script?"
-msgstr "Sinnlose leere Anweisung für popup-Element: Bitte Skript reparieren"
+msgid "Found empty instruction for popup item: maybe you need to fix the script?"
+msgstr "Leere Anweisung für popup-Element gefunden: Vielleicht solltest Du das Skript reparieren?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1809
 msgid ""
@@ -3158,7 +3011,6 @@ msgstr ""
 "wurde erwartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1931
-#, fuzzy
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr ""
 "Das 'defpopup'-Kommando benötigt einen Ausdruck, der in Klammern "
@@ -3177,13 +3029,11 @@ msgstr ""
 "Kommandosyntax \"/help %s\" benutzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:124
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
 "the command syntax"
-msgstr ""
-"Zeichen '%q' (Unicode 0x%x) gefunden, aber '%c' wurde erwartet: für "
-"Kommandosyntax \"/help %s\" benutzen"
+msgstr "Ende der Eingabe gefunden, wo Zeichen '%c' erwartet wurde: Siehe \"/help %s\" für die Kommando-Syntax"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:158
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:176
@@ -3200,10 +3050,8 @@ msgstr ""
 "soll, muss dieses entwertet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2667
-#, fuzzy
 msgid "Objects have no extended scope variables"
-msgstr ""
-"Keine erweiterten Gültigkeitsbereichsvariablen in diesem Gültigkeitsbereich"
+msgstr "Objekte haben keine erweiterten Bereichsvariable"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2727
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
@@ -3220,18 +3068,14 @@ msgstr ""
 "fehlt)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2838
-#, fuzzy
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
-msgstr ""
-"Der Bindestrich nach einem Kommando sollte entweder entwertet werden oder "
-"danach ein Buchstabe bzw. Zahl folgen (Schalter)"
+msgstr "Dem Bindestrich nach einem Kommando sollte ein Buchstabe (Schalter) oder eine Ziffer (negative Zahl) folgen, oder er sollte entwertet (escaped) werden."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2842
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
-msgstr ""
-"Unerwartetes Zeichen '%q' (Unicode %x) nach switch-Bindestrich gefunden"
+msgstr "Unerwartetes Zeichen '%q' (Unicode %x) nach switch-Bindestrich gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2844
 msgid "Unexpected end of script after a switch dash"
@@ -3259,12 +3103,11 @@ msgstr "Unerwartetes Ende der Zeile in Parameterliste"
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
-msgstr ""
+msgstr "Verschachteltes Zeichen %q entspricht dem erwarteten Endezeichen, dies kann mich ein wenig verwirren: Es ist eine gute Idee, es in Anführungszeichen einzuschließen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3093
-#, fuzzy
 msgid "Skipping nested terminator character %q"
-msgstr "Zeile %d, bei Zeichen %d"
+msgstr "Überspringe verschachteltes Endezeichen %q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3120
 msgid "Stray backslash at the end of the script"
@@ -3277,8 +3120,7 @@ msgstr "Nicht abgeschlossener Hashschlüssel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3387
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
-msgstr ""
-"Unerwartetes Ende des Skripts in Hashschlüssel (fehlendes '}' Zeichen?)"
+msgstr "Unerwartetes Ende des Skripts in Hashschlüssel (fehlendes '}' Zeichen?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3394
 msgid ""
@@ -3321,23 +3163,19 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:197
 msgid "This window has no associated IRC context and is not a DCC chat"
-msgstr ""
-"Dieses Fenster hat keinen zugeordneten IRC-Kontext und ist kein DCC-Chat"
+msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext und ist kein DCC-Chat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:293
-#, fuzzy
 msgid "Class \"%Q\" is not defined"
-msgstr "Klasse %s ist nicht definiert"
+msgstr "Klasse \"%Q\" ist nicht definiert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:303
-#, fuzzy
 msgid "The specified parent object does not exist"
-msgstr "Die angegebene Werkzeugleiste existiert nicht"
+msgstr "Das angegebene Elternobjekt existiert nicht"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:430
-#, fuzzy
 msgid "There is no option named '%Q'"
-msgstr "Keine Option mit Namen '%s'"
+msgstr "Keine Option mit Namen '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:85
 msgid "Internal error: pure virtual evaluateReadOnly called"
@@ -3345,16 +3183,14 @@ msgstr "Interner Fehler: virtuelles evaluateReadOnly aufgerufen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:91
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:104
-msgid ""
-"Internal error: trying to evaluate as read-write a read-only data location"
+msgid "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
 "Interner Fehler: es wird versucht, ein nur lesbaren Datenort als als "
 "schreibaren Datenort auszuwerten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:98
-#, fuzzy
 msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
-msgstr "Interner Fehler: virtuelles evaluateReadOnly aufgerufen"
+msgstr "Interner Fehler: reinvirtuelles evaluateReadOnlyInObjectScope aufgerufen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:207
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:215
@@ -3370,9 +3206,8 @@ msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:224
-#, fuzzy
 msgid "[KVS]   in script context \"%Q\""
-msgstr "[KVS]   in Skriptkontext \"%Q\", %Q"
+msgstr "[KVS]   in Skriptkontext \"%Q\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:226
 msgid "[KVS]   in script context \"%Q\", %Q"
@@ -3383,14 +3218,13 @@ msgid "[KVS] Code listing:"
 msgstr "[KVS] Code:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:238
-#, fuzzy
 msgid "[KVS] Window:"
-msgstr "Fenster anzeigen"
+msgstr "[KVS] Fenster:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:242
 #, c-format
 msgid "[KVS]   Destroyed window with pointer %x"
-msgstr ""
+msgstr "[KVS]   Fenster mit Zeiger %x zerstört"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:246
 msgid "[KVS] Call stack:"
@@ -3411,44 +3245,36 @@ msgid "The $sw() function can be used only in aliases"
 msgstr "Die $sw()-Funktion kann nur in Aliassen benutzt werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:298
-#, fuzzy
 msgid "Invalid pitch value: using default"
-msgstr "Ungültiger Abstand (%s): benutze Standard"
+msgstr "Ungültiger Abstand: Benutze Standard"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:308
-#, fuzzy
 msgid "Invalid duration value: using default"
-msgstr "Ungültige Dauer (%s): benutze Standard"
+msgstr "Ungültige Dauer: Benutze Standard"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:417
-#, fuzzy
 msgid "No button with type %Q named %Q"
-msgstr "Kein Knopf mit Typ %s mit Namen %s"
+msgstr "Kein Knopf mit Typ %Q namens %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:628
-#, fuzzy
 msgid "Can't delete a null object reference"
-msgstr "Tabobjekt kann nicht gefunden werden "
+msgstr "Kann Null-Referenz-Objekt nicht löschen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:634
-#, fuzzy
 msgid "Can't delete an inexisting object"
-msgstr "Nicht-Widgetobjekt kann nicht gesetzt werden"
+msgstr "Nichtexistierendes Objekt kann nicht gelöscht werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:688
-#, fuzzy
 msgid "Inexisting popup \"%Q\""
-msgstr "Nicht existierendes Aufklappmenü \"%s\""
+msgstr "Nicht existierendes Aufklappmenü \"%Q\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:694
-msgid ""
-"Popup menu self-modification is not allowed (the popup is probably open)"
-msgstr ""
+msgid "Popup menu self-modification is not allowed (the popup is probably open)"
+msgstr "Aufklappmenü-Selbstmodifikation ist nicht erlaubt (Das Aufklappmenü ist wahrscheinlich geöffnet)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:701
-#, fuzzy
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
-msgstr "Das Menüelement \"%s\" existiert nicht in Aufklappmenü \"%s\""
+msgstr "Das Menüelement \"%Q\" existiert nicht in Aufklappmenü \"%Q\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:856
 msgid ""
@@ -3459,16 +3285,14 @@ msgstr ""
 "ausgewertet werden: Standard wird benutzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:865
-msgid ""
-"The argument of the i switch did not evaluate to a number: using default"
+msgid "The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 "Das Argument des -i-Schalters kann nicht zu einer gültigen Fenster-ID "
 "ausgewertet werden: Standard wird benutzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:977
-#, fuzzy
 msgid "Invalid color-set specification, using default"
-msgstr "Ungültige Symbolangabe '%s', benutze Standard"
+msgstr "Ungültige Farbenangabe, benutze Standard"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:988
 #, c-format
@@ -3491,9 +3315,9 @@ msgstr ""
 "erlaubt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:836
-#, fuzzy, c-format
+#, c-format
 msgid "Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"
-msgstr "Ignoriere PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere CTCP von \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:975
 msgid "The following CTCP reply has unrecognized target %Q"
@@ -3506,21 +3330,18 @@ msgid "Channel CTCP"
 msgstr "Kanal-CTCP"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:985
-#, fuzzy
 msgid "%Q %Q reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "%Q %S-Antwort von %Q [%Q@%Q]: %Q"
+msgstr "%Q %Q Antwort von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1015
 msgid "The following CTCP request has unrecognized target %Q"
 msgstr "Folgende CTCP-Antwort hat unerkanntes Ziel %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1029
-#, fuzzy
 msgid ""
 "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit "
 "exceeded)"
-msgstr ""
-"%Q %S-Anfrage von %Q [%Q@%Q] (%Q), ignoriert (Überflutungsgrenze erreicht)"
+msgstr "%Q %Q%c Anfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignoriert (Flutgrenzwert überschritten)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1033
 msgid "ignored (unrecognized)"
@@ -3535,9 +3356,8 @@ msgid "replied"
 msgstr "beantwortet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1038
-#, fuzzy
 msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
-msgstr "%Q %S Anfrage von %Q [%Q@%Q] (%Q): %Q"
+msgstr "%Q %Q%c Anfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1076
 msgid "The following CTCP PING reply has unrecognized target \"%Q\""
@@ -3566,13 +3386,11 @@ msgstr "CTCP ACTION von %Q [%Q@%Q]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1514
 msgid "Unable to add file offer for file %Q (File not readable?)"
-msgstr ""
-"Datei %Q kann nicht zu Dateiangebot hinzugefügt werden (Datei nicht lesbar?)"
+msgstr "Datei %Q kann nicht zu Dateiangebot hinzugefügt werden (Datei nicht lesbar?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1518
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
-msgstr ""
-"%d Sekunden für Dateiangebot von Datei %Q (%Q) und Empfänger %Q hinzugefügt"
+msgstr "%d Sekunden für Dateiangebot von Datei %Q (%Q) und Empfänger %Q hinzugefügt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1575
 msgid "private"
@@ -3587,14 +3405,12 @@ msgid "notification"
 msgstr "Nachrichten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1581
-#, fuzzy
 msgid "%Q unsets avatar"
-msgstr "Avatar benutzen"
+msgstr "%Q entfernt Avatar"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1588
-#, fuzzy
 msgid "%Q changes avatar to %s"
-msgstr "%Q [%Q@%Q] ändert Avatar zu %s (%Q %Q)"
+msgstr "%Q ändert Avatar zu %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1634
 #, c-format
@@ -3619,8 +3435,7 @@ msgstr ""
 "angefragt (DCC GET %s)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1661
-msgid ""
-": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 ": Keine gültige lokale Kopie eines Avatars vorhanden; Flutbegrenzung "
 "erreicht: wird ignoriert"
@@ -3634,14 +3449,12 @@ msgid ": No such nickname in the user database, ignoring the change"
 msgstr ": Kein solcher Spitzname in Benutzerdatenbank; Änderung wird ignoriert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1714
-#, fuzzy
 msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
-msgstr "DDC %S-Anfrage von %Q [%Q@%Q] (%S %S) wird ignoriert"
+msgstr "DCC %S Anfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S) ignoriert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1756
-#, fuzzy
 msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
-msgstr "DCC %S-Anfrage von %Q [%Q@%Q] (%S %S) wird verarbeitet"
+msgstr "DCC %Q Anfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s) wird verarbeitet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1767
 #, c-format
@@ -3657,8 +3470,7 @@ msgstr ""
 "zu sein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sparser.cpp:132
-msgid ""
-"[Server parser]: Encountered problems while parsing the following message:"
+msgid "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
 "[Server-Parser]: Gefundene Probleme während des Parsens der folgenden "
 "Nachricht:"
@@ -3673,9 +3485,8 @@ msgid "[Server parser]: %s"
 msgstr "[Serverparser]: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:98
-#, fuzzy
 msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
-msgstr "Ping von \r!s\r%s\r (PING %s) empfangen: Pong geantwortet"
+msgstr "Ping von \r!s\r%Q\r (PING %Q) empfangen, pong geantwortet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:125
 #, c-format
@@ -3692,31 +3503,25 @@ msgstr "Kanalparameter in join-Nachricht fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:209
 msgid "Received a join message for an unknown channel, possible desync"
-msgstr ""
-"Join-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
+msgstr "Join-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:305
-#, fuzzy
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat \r!c\r%Q\r [implizite +%c "
-"Benutzermodusänderung]  betreten"
+"Benutzermodusänderung] betreten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:310
-#, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat \r!c\r%Q\r betreten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:324
-#, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r betreten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:355
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr ""
-"Part-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
+msgstr "Part-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:384
 msgid "You have left channel \r!c\r%Q\r"
@@ -3735,14 +3540,12 @@ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat \r!c\r%Q\r verlassen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:420
-#, fuzzy
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat jetzt gerade \r!c\r%Q\r verlassen:%Q"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r verlassen: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:424
-#, fuzzy
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat jetzt gerade \r!c\r%Q\r verlassen"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r verlassen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:494
 #, c-format
@@ -3756,8 +3559,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat IRC verlassen: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:589
 msgid "Received a kick message for an unknown channel, possible desync"
-msgstr ""
-"Kick-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
+msgstr "Kick-Nachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:616
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:626
@@ -3785,41 +3587,36 @@ msgstr ""
 "h\r%Q\r] hinausgeworfen: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:710
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
 "Die folgende Nachricht sieht wie eine verschlüsselte aus, aber die "
-"Verschlüsselungsroutine konnte sie nicht dekodieren: %s"
+"Verschlüsselungsroutine konnte sie nicht dekodieren: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:776
-#, fuzzy
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Query-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:843
-msgid ""
-"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
 "Private Spamnachricht von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf Spamwort "
 "\"%s\")"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:984
-#, fuzzy
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Kanal-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1106
 #, fuzzy
 msgid "Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Notice von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1142
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1159
 msgid "NickServ requests authentication, executing scheduled command"
-msgstr ""
-"NickServ fragt nach Authentifizierung: geplantes Kommando wird ausgeführt"
+msgstr "NickServ fragt nach Authentifizierung: geplantes Kommando wird ausgeführt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1145
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1162
@@ -3831,15 +3628,12 @@ msgstr ""
 "Einstellung beheben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1213
-msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
-msgstr ""
-"Spamnotiz von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf Spamwort \"%Q\")"
+msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgstr "Spamnotiz von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf Spamwort \"%Q\")"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1394
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr ""
-"Themanachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
+msgstr "Themanachricht von unbekannten Kanal empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1413
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
@@ -3865,7 +3659,6 @@ msgstr ""
 "\r!h\r%Q\r] seinen Spitznamen in \r!n\r%Q\r geändert hat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1486
-#, fuzzy
 msgid ""
 "The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query "
 "collision: merging output"
@@ -3878,9 +3671,8 @@ msgid "End of merged output"
 msgstr "Ende der zusammengeführten Ausgabe"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1540
-#, fuzzy
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Ignoriere PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Einladung von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1555
 msgid "autojoining"
@@ -3896,8 +3688,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] lädt Sie in Kanal \r!c\r%Q\r (%Q) ein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1564
 msgid "Received an invite message directed to another nick, possible desync"
-msgstr ""
-"Invite-Nachricht an anderen Spitznamen empfangen, Desynchronisation möglich"
+msgstr "Invite-Nachricht an anderen Spitznamen empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1584
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -3910,8 +3701,7 @@ msgstr "Sie haben Benutzermodus %s gesetzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1655
 msgid "Received a mode change for an unknown channel, possible desync"
-msgstr ""
-"Modusänderung von unbekannten Kanal empfangen, Desynchronisation möglich"
+msgstr "Modusänderung von unbekannten Kanal empfangen, Desynchronisation möglich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1731
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
@@ -4009,9 +3799,8 @@ msgid "End of NAMES for \r!c\r%Q\r"
 msgstr "Ende von NAMES für \r!c\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:387
-#, fuzzy
 msgid "%c\r!s\r%s\r%c: %Q"
-msgstr "%c\r!n\r%Q\r%c's Info: %Q"
+msgstr "%c\r!s\r%s\r%c: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:471
 msgid "Names for \r!c\r%Q\r: %Q"
@@ -4038,24 +3827,20 @@ msgid "No topic is set for channel \r!c\r%Q\r"
 msgstr "Kein Thema für Kanal \r!c\r%Q\r gesetzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:559
-#, fuzzy
 msgid "Topic was set by %Q on %Q"
-msgstr "Thema wurde von \r!n\r%Q\r!%Q@\r!h\r%Q\r auf %Q gesetzt"
+msgstr "Thema wurde von %Q auf %Q gesetzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:560
-#, fuzzy
 msgid "Topic was set by %Q"
-msgstr "Thema wurde von \r!n\r%Q\r!%Q@\r!h\r%Q\r gesetzt"
+msgstr "Thema wurde von %Q gesetzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:568
-#, fuzzy
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
-msgstr "Thema für \r!c\r%Q\r wurde von \r!n\r%Q\r!%Q@\r!h\r%Q\r auf %Q gesetzt"
+msgstr "Thema für \r!c\r%Q\r wurde von %Q auf %Q gesetzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:571
-#, fuzzy
 msgid "Topic for \r!c\r%Q\r was set by %Q"
-msgstr "Thema für \r!c\r%Q\r ist: %Q"
+msgstr "Thema für \r!c\r%Q\r wurde gesetzt von %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:591
 msgid "Channel mode for \r!c\r%Q\r is %s"
@@ -4135,22 +3920,19 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:944
 msgid "Command syntax %Q: %Q"
-msgstr ""
+msgstr "Kommandosyntax %Q: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:972
-#, fuzzy
 msgid "Tip: %Q"
-msgstr "Liste: %Q"
+msgstr "Tip: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:975
-#, fuzzy
 msgid "Tip for %Q: %Q"
-msgstr "Thema für \r!c\r%Q\r ist: %Q"
+msgstr "Tip für %Q: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:992
-#, fuzzy
 msgid "End of help about %Q"
-msgstr "Ende der WHO-Liste für %Q"
+msgstr "Ende der Hilfe für %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1036
 msgid "%c\r!n\r%Q\r%c is away: %Q"
@@ -4285,9 +4067,8 @@ msgstr "%c\r!n\r%s\r%cs Kanäle: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1808
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1811
-#, fuzzy
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] lädt Sie in Kanal \r!c\r%Q\r (%Q) ein"
+msgstr "\r!n\r%Q\r hat %Q in den Kanal %Q eingeladen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1833
 #, c-format
@@ -4304,29 +4085,24 @@ msgid "%c\r!s\r%s\r%c's time is %Q"
 msgstr "%c\r!n\r%s\r%cs Info: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1865
-#, fuzzy
 msgid "%Q: no such server"
 msgstr "%Q: kein solcher Server"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1876
-#, fuzzy
 msgid "%Q: no such channel"
 msgstr "%Q: kein solcher Kanal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1890
-#, fuzzy
 msgid "Cannot sent to channel: %Q"
-msgstr "Konnte keinen Text zum Kanal senden: %Q"
+msgstr "Konnte nicht zum Kanal senden: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1893
-#, fuzzy
 msgid "Cannot sent text to channel %Q: %Q"
-msgstr "Konnte keinen Text zum Kanal \r!c\r%Q\r senden: %Q"
+msgstr "Konnte Text nicht zum Kanal %Q senden: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1908
-#, fuzzy
 msgid "Cannot sent to channel"
-msgstr "Akuelles Fenster ist kein Kanal"
+msgstr "Kann nicht zum Kanal senden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1911
 msgid "Cannot sent text to channel %Q"
@@ -4338,9 +4114,8 @@ msgid "Your encoding is now %Q"
 msgstr "Ihr Benutzermodus ist nun %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1966
-#, fuzzy
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
-msgstr "%c\r!n\r%Q\r%cs Codepage ist %Q: %Q"
+msgstr "%c\r!n\r%Q\r%c's Codepage ist %Q: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1990
 #, c-format
@@ -4368,12 +4143,10 @@ msgstr "Verbindung zum Server hergestellt"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:553
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:573
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
-msgstr ""
-"[VERKNÜFUNGSNACHRICHT]: Socketnachricht wurde auf 512 Byte abgeschnitten"
+msgstr "[VERKNÜFUNGSNACHRICHT]: Socketnachricht wurde auf 512 Byte abgeschnitten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:640
-msgid ""
-"The server seems to support the WATCH notify list method, will try to use it"
+msgid "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
 "Dieser Server scheint die WATCH-Benachrichtigungslistenmethode zu "
 "unterstützen: Es wird versucht, dies zu benutzen."
@@ -4396,8 +4169,7 @@ msgstr "Lokale Hostadresse ist %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:749
 msgid "The server seems to have changed the idea about the local hostname"
-msgstr ""
-"Der Server scheint das Wissen über den lokalen Hostnamen geändert zu haben"
+msgstr "Der Server scheint das Wissen über den lokalen Hostnamen geändert zu haben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:750
 msgid ""
@@ -4433,23 +4205,17 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:822
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
-msgstr ""
-"Lokaler Hostname, der vom IRC-Server (%Q) gesehen wird, wird aufgelöst..."
+msgstr "Lokaler Hostname, der vom IRC-Server (%Q) gesehen wird, wird aufgelöst..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:843
-#, fuzzy
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
-msgstr ""
-"Lokaler Hostname, der vom IRC-Server gesehen wird, kann nicht aufgelöst "
-"werden: %Q"
+msgstr "Lokaler Hostname, der vom IRC-Server gesehen wird, kann nicht aufgelöst werden: %Q, benutze vorherigen aufgelösten %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:850
-#, fuzzy
 msgid "Local hostname as seen by the IRC server resolved to %Q"
-msgstr ""
-"Lokaler Hostname, der vom IRC-Server gesehen wird, wurde aufgelöst als %s"
+msgstr "Lokaler Hostname, der vom IRC-Server gesehen wird, wurde aufgelöst zu %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:868
 msgid "Using server specific username (%Q)"
@@ -4460,9 +4226,8 @@ msgid "Using network specific username (%Q)"
 msgstr "Benutze serverspezifischen Benutzernamen (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:892
-#, fuzzy
 msgid "Using reconnect specific nickname (%Q)"
-msgstr "Benutze serverspezifischen Spitznamen (%Q)"
+msgstr "Benutze wiedervervinbungsspezifischen (reconnect specific) Spitznamen (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:898
 msgid "Using server specific nickname (%Q)"
@@ -4498,9 +4263,8 @@ msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "Führe geplante serverspezifische \"bei Verbindung\"-Kommandos aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1051
-#, fuzzy
 msgid "Executing scheduled identity specific \"on connect\" commands"
-msgstr "Führe geplante netzwerkspezifische \"bei Verbindung\"-Kommandos aus"
+msgstr "Führe geplante identitätsspezifische \"bei Verbindung\"-Kommandos aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1101
 #, c-format
@@ -4522,9 +4286,8 @@ msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Führe geplante serverspezifische \"bei Login\"-Kommandos aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1141
-#, fuzzy
 msgid "Executing scheduled identity specific \"on login\" commands"
-msgstr "Führe geplante netzwerkspezifische \"bei Login\"-Kommandos aus"
+msgstr "Führe geplante identitätsspezifische \"bei Login\"-Kommandos aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1153
 msgid "Setting configured user mode"
@@ -4539,9 +4302,8 @@ msgid "Auto-joining server specific channels"
 msgstr "Serverspezifische Kanäle automatisch betreten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:1341
-#, fuzzy
 msgid "Updating away state for channel %Q"
-msgstr "Kein Thema für Kanal \r!c\r%Q\r gesetzt"
+msgstr "Aktualisiere Abwesend-Status für Kanal %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_customtoolbardescriptor.cpp:230
 msgid "Backward compatibility action for toolbar.define"
@@ -4613,7 +4375,6 @@ msgid "File download from %1 failed"
 msgstr "Das Herunterladen der Datei %1 ist fehlgeschlagen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:1044
-#, fuzzy
 msgid "File download successfully complete"
 msgstr "Datei wurde erfolgreich heruntergeladen."
 
@@ -4640,8 +4401,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:2023
 #, c-format
 msgid "No idea on how to play file %s (no media type match)"
-msgstr ""
-"Ich weiß nicht, wie ich die Datei %s abspielen soll. (Kein Medientyp passt.)"
+msgstr "Ich weiß nicht, wie ich die Datei %s abspielen soll. (Kein Medientyp passt.)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:39
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:48
@@ -4759,8 +4519,7 @@ msgstr "[%s]: [SSL] Zertifikatsdatei %s wird benutzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:116
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr ""
 "[%s]: [SSL-FEHLER]: Datei-E/A-Fehler beim Versuch der Benutzung der "
 "Zertifikatsdatei %s"
@@ -4778,8 +4537,7 @@ msgstr "[%s]: [SSL]: Private Schlüsseldatei %s wird benutzt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:139
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr ""
 "[%s]: [SSL-FEHLER]: Datei-E/A-Fehler beim Versuch der Benutzung der privaten "
 "Schlüsseldatei %s"
@@ -4797,8 +4555,7 @@ msgstr ""
 "Servereinstellungen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irccontext.cpp:483
-msgid ""
-"No servers available. Check the options dialog or use the /SERVER command"
+msgid "No servers available. Check the options dialog or use the /SERVER command"
 msgstr ""
 "Keine Server verfügbar. Überprüfen Sie den Optionendialog, oder benutzen Sie "
 "das /SERVER-Kommando."
@@ -5081,9 +4838,8 @@ msgid "+e mode change"
 msgstr "+e Modusänderung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:733
-#, fuzzy
 msgid "-e mode change"
-msgstr "-o Modusänderung"
+msgstr "-e Modusänderung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:734
 msgid "+I mode change"
@@ -5429,39 +5185,33 @@ msgstr "Serverfehler"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:819
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/tal/kvi_tal_wizard.cpp:241
 #: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:742
-#, fuzzy
 msgid "Help"
-msgstr "&Hilfe"
+msgstr "Hilfe"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:820
-#, fuzzy
 msgid "Text Encoding Server message"
-msgstr "Betreten-Fehlernachricht"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:826
-#, fuzzy
 msgid "BitTorrent message"
-msgstr "Ident-Nachricht"
+msgstr "BitTorrent-Meldung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:970
 msgid "Missing absolute directory for the theme information"
-msgstr ""
+msgstr "Absolutes Verzeichnis für Themeninformationen fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:978
-#, fuzzy
 msgid "Failed to create the theme directory"
-msgstr "Erstellen des Thema-Verzeichnisses fehlgeschlagen"
+msgstr "Erstellen des Themenverzeichnisses fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1061
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1096
-#, fuzzy
 msgid "Failed to save one of the theme images"
-msgstr "Laden des ausgewählten Bildes fehlgeschlagen"
+msgstr "Speichern eines Bildes des Themas fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1074
-#, fuzzy
 msgid "Failed to create the theme subdirectory"
-msgstr "Erstellen des Thema-Verzeichnisses fehlgeschlagen"
+msgstr "Erstellen des Themenunterverzeichnisses fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1213
 msgid "Boolean options (1/0)"
@@ -5503,8 +5253,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1222
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
-msgstr ""
-"Nachricht-Farboptionen (Bild_ID, Vordergrund, Hintergrund, logFlag (0/1))"
+msgstr "Nachricht-Farboptionen (Bild_ID, Vordergrund, Hintergrund, logFlag (0/1))"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1223
 msgid "String list options (comma separated list of strings)"
@@ -5565,9 +5314,8 @@ msgid "IRC Channel related actions"
 msgstr "Aktionen bezüglich des IRC-Kanals"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_actionmanager.cpp:71
-#, fuzzy
 msgid "Tools"
-msgstr "&Werkzeuge"
+msgstr "Werkzeuge"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_actionmanager.cpp:71
 msgid "Actions that will appear in the \"Tools\" menu"
@@ -5643,14 +5391,12 @@ msgid "Can't find the proxy IP address: %Q"
 msgstr "IP-Adresse des Proxys kann nicht gefunden werden: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:271
-#, fuzzy
 msgid "Proxy hostname resolved to %Q"
-msgstr "Rechnername des Proxys aufgelöst als %s"
+msgstr "Rechnername des Proxys aufgelöst als %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:284
-#, fuzzy
 msgid "Proxy %Q has a nickname: %Q"
-msgstr "Proxy %s hat Spitzname: %s"
+msgstr "Proxy %Q hat Spitzname: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:322
 #, c-format
@@ -5673,24 +5419,20 @@ msgid "Can't find the server IP address: %Q"
 msgstr "Server-IP-Adresse kann nicht gefunden werden: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:380
-#, fuzzy
 msgid "If this server is an IPv6 one, try /server -i %Q"
-msgstr "Wenn dies ein IPv6-Server ist, <b>/server -i %s</b> versuchen"
+msgstr "Wenn dies ein IPv6-Server ist, probiere /server -i %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:390
-#, fuzzy
 msgid "Server hostname resolved to %Q"
-msgstr "Rechnername des Servers aufgelöst als %s"
+msgstr "Rechnername des Servers aufgelöst zu %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:400
-#, fuzzy
 msgid "Real hostname for %Q is %Q"
-msgstr "Wirklicher Hostname für %s ist %s"
+msgstr "Wirklicher Hostname für %Q ist %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:414
-#, fuzzy
 msgid "Server %Q has a nickname: %Q"
-msgstr "Server %s hat einen Spitznamen: %s"
+msgstr "Server %Q hat einen Spitznamen: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:468
 msgid "The specified bind address (%Q) is not valid"
@@ -5810,11 +5552,11 @@ msgstr "Zensierte Schimpfwörter"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:249
 msgid "Impossible to speak and change nick if not authenticated with NickServ"
-msgstr ""
+msgstr "Das Sprechen und das Änderns des Spitznamens sind nicht möglich, wenn nicht bei NickServ authentifiziert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:250
 msgid "Impossible to change nick if not authenticated with NickServ"
-msgstr ""
+msgstr "Spitznamen ändern ist nicht möglich, wenn nicht bei NickServ authentifiziert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
@@ -5854,11 +5596,11 @@ msgstr "Zuhörerraum: /NAMES und /WHO zeigt nur OP's"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:260
 msgid "Only 7-bit letters in nicknames allowed"
-msgstr ""
+msgstr "Nur 7-bit-Buchstaben in Spitznamen erlaubt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:261
 msgid "Impossible to use both 7-bit and 8-bit letters in nicknames"
-msgstr ""
+msgstr "Es ist nicht möglich 7-bit und 8-bit Buchstaben gleichzeitig im Spitznamen zu verwenden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:270
 msgid "o: IRC operator (OPER)"
@@ -5917,9 +5659,8 @@ msgid "n: Recipient for nick changes"
 msgstr "n: Empfänger für Spitznamenänderungen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irclink.cpp:100
-#, fuzzy
 msgid "Ops... for some reason the link filter object has been destroyed"
-msgstr "Ops... aus einigen Gründen wurde das Verknüpfungsobjekt zerstört"
+msgstr "Ups... aus einigen Gründen wurde das Link-Filterobjekt zerstört"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irclink.cpp:138
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
@@ -5978,8 +5719,7 @@ msgstr "Zielhostdaten wurden gesendet, es wird auf Bestätigung gewartet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irclink.cpp:396
 msgid "Sent auth method request, waiting for acknowledgement"
-msgstr ""
-"Authentifizierungsmethoden-Anfrage wurde gesendet, warte auf Bestätigung..."
+msgstr "Authentifizierungsmethoden-Anfrage wurde gesendet, warte auf Bestätigung..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irclink.cpp:399
 msgid "Sent username and password, waiting for acknowledgement"
@@ -5987,8 +5727,7 @@ msgstr "Benutzername und Passwort wurden gesendet, warte auf Bestätigung..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_irclink.cpp:402
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
-msgstr ""
-"Verbindungsanfrage wurde gesendet, warte auf die \"HTTP 200\"-Bestätigung..."
+msgstr "Verbindungsanfrage wurde gesendet, warte auf die \"HTTP 200\"-Bestätigung..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:176
 msgid "[SSL]: %Q"
@@ -6041,14 +5780,12 @@ msgid "Using SOCKSV4 protocol."
 msgstr "SOCKSV4-Protokoll benutzen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:756
-#, fuzzy
 msgid "Using SOCKSv5 protocol."
-msgstr "SOCKSV5-Protokoll benutzen."
+msgstr "SOCKSv5-Protokoll benutzen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:771
 msgid "We can accept auth method 0 (no auth)"
-msgstr ""
-"Authentifizierungsmethode 0 (keine Authentifizieung) kann akzeptiert werden"
+msgstr "Authentifizierungsmethode 0 (keine Authentifizieung) kann akzeptiert werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:779
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
@@ -6068,8 +5805,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1000
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
-msgstr ""
-"Proxy-Antwort: Authentifizierung OK: benutze Methode 2 (Benutzer/Passwort)"
+msgstr "Proxy-Antwort: Authentifizierung OK: benutze Methode 2 (Benutzer/Passwort)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1056
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircsocket.cpp:1113
@@ -6102,40 +5838,32 @@ msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Partielles Socket-Schreiben: Paket in kleinere Teile aufgeteilt."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:60
-#, fuzzy
 msgid "The theme information file does not exist"
-msgstr "Die Aktion \"%1\" existiert nicht"
+msgstr "Themeninformationsdatei existiert nicht"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:71
-#, fuzzy
 msgid ""
 "This KVIrc executable is too old for this theme (minimum theme engine "
 "version required is %Q while this theme engine has version %s)"
-msgstr ""
-"Dieses KVIrc ist zu alt, um dieses Skript auszuführen (miniale Version ist %"
-"s)"
+msgstr "Dieses KVIrc ist zu alt für dieses Thema (minimale Version der benötigten Themenroutine ist %Q, während dies hier Version %s ist)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:80
-#, fuzzy
 msgid "Theme information file is not valid"
-msgstr "Die angegebene Bindungsadresse (%Q) ist ungültig"
+msgstr "Themeninformationendatei ist nicht gültig"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:248
-#, fuzzy
 msgid "Failed to load the specified screenshot image"
-msgstr "Laden des ausgewählten Bildes fehlgeschlagen"
+msgstr "Laden des ausgewählten Bildschirmabbildes fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:257
-#, fuzzy
 msgid "Invalid option"
-msgstr "Ungültige Ablaufzeit"
+msgstr "Ungültige Option"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:265
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:279
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:293
-#, fuzzy
 msgid "Failed to save the screenshot image"
-msgstr "Laden des ausgewählten Bildes fehlgeschlagen"
+msgstr "Speichern des Bildschirmabbildes fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:117
 msgid "Configure Servers..."
@@ -6143,8 +5871,7 @@ msgstr "Server konfigurieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:118
 msgid "Allows you to configure the servers and eventually to connect to them"
-msgstr ""
-"Erlaubt das Konfigurieren der Server und das eventuelle Verbinden zu ihnen"
+msgstr "Erlaubt das Konfigurieren der Server und das eventuelle Verbinden zu ihnen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:128
 msgid "Manage Addons..."
@@ -6160,8 +5887,7 @@ msgstr "Registrierte Benutzer konfigurieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:140
 msgid "Shows a dialog that allows editing the registered user entries"
-msgstr ""
-"Zeigt ein Fenster zum Bearbeiten von Einträgen der registrierter Benutzer an"
+msgstr "Zeigt ein Fenster zum Bearbeiten von Einträgen der registrierter Benutzer an"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:150
 msgid "Configure Identity..."
@@ -6169,8 +5895,7 @@ msgstr "Identität konfigurieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:151
 msgid "Allows you to configure nickname, username, avatar etc..."
-msgstr ""
-"Erlaubt das Konfigurieren des Spitznamens, Benutzernamens, Avatar, etc..."
+msgstr "Erlaubt das Konfigurieren des Spitznamens, Benutzernamens, Avatar, etc..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:161
 msgid "Show SocketSpy..."
@@ -6205,24 +5930,20 @@ msgid "Shows the general options dialog"
 msgstr "Allgemeine Einstellungen-Dialog anzeigen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:205
-#, fuzzy
 msgid "Configure Theme..."
-msgstr "Server konfigurieren..."
+msgstr "Thema konfigurieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:206
-#, fuzzy
 msgid "Shows the theme options dialog"
-msgstr "Allgemeine Einstellungen-Dialog anzeigen"
+msgstr "Themenoptionen anzeigen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:216
-#, fuzzy
 msgid "Manage Themes..."
-msgstr "Server konfigurieren..."
+msgstr "Themen verwalten..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:217
-#, fuzzy
 msgid "Allows you to manage the themes"
-msgstr "Erlaubt die Verwaltung von skriptbasierten Zusätzen"
+msgstr "Erlaubt die Verwaltung der Themen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:227
 msgid "Customize Toolbars..."
@@ -6317,22 +6038,20 @@ msgid "Opens the KVIrc homepage"
 msgstr "KVIrc Homepage"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:361
-#, fuzzy
 msgid "KVIrc Russian WWW"
-msgstr "KVIrc Home&page"
+msgstr "russische KVIrc Homepage"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:362
-#, fuzzy
 msgid "Opens the KVIrc homepage in russian"
-msgstr "KVIrc Homepage"
+msgstr "Öffnet die russische KVIrc Homepage"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:372
 msgid "Acquire Screenshot"
-msgstr ""
+msgstr "Bildschirmabbild aufnehmen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:373
 msgid "Acquires a Screenshot of the KVIrc main window"
-msgstr ""
+msgstr "Nimmt ein Bildschirmabbild des KVIrc-Hauptfensters auf"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:385
 msgid "Cascade windows"
@@ -6391,8 +6110,7 @@ msgid "Connect/Disconnect"
 msgstr "Verbinden/Trennen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:549
-msgid ""
-"Allows you to connect to a server or to terminate the current connection"
+msgid "Allows you to connect to a server or to terminate the current connection"
 msgstr ""
 "Erlaubt das Verbinden zu einem Server oder das Trennen der aktuellen "
 "Verbindung"
@@ -6493,47 +6211,41 @@ msgstr "Zeigt ein Aufklappmenü mit einigen IRC-Aktionen an"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:142
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:412
 msgid "KVIrc KVS Script"
-msgstr ""
+msgstr "KVIrc KVS Skript"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:174
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:420
-#, fuzzy
 msgid "Run KVS Script"
-msgstr "Skript"
+msgstr "KVS-Skript ausführen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:284
-#, fuzzy
 msgid "URL:IRC Protocol"
-msgstr "Protokoll:"
+msgstr "URL:IRC Protokoll"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:325
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:383
-#, fuzzy
 msgid "Open with KVIrc"
-msgstr "KVIrc Homepage"
+msgstr "Mit KVIrc öffnen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:436
-#, fuzzy
 msgid "KVIrc Configuration File"
-msgstr "Konfiguration"
+msgstr "KVIrc-Konfigurationsdatei"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:453
-#, fuzzy
 msgid "KVIrc Theme Package"
-msgstr "KVIrc Home&page"
+msgstr "KVIrc-Themenpaket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:461
 msgid "Install Theme Package"
-msgstr ""
+msgstr "Installiere Themenpaket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:478
 msgid "KVIrc Addon Package"
-msgstr ""
+msgstr "KVIrc-Erweiterungspaket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:486
-#, fuzzy
 msgid "Install Package"
-msgstr "Installieren (Deinstallieren?)"
+msgstr "Installiere Paket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:749
 #, c-format
@@ -6598,8 +6310,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:428
 msgid "Notify list: Notify list empty, quitting"
-msgstr ""
-"Benachrichtigungsliste: Benachrichtungungsliste ist leer: es wird beendet"
+msgstr "Benachrichtigungsliste: Benachrichtungungsliste ist leer: es wird beendet"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:455
 #, c-format
@@ -6721,8 +6432,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1139
 msgid "Notify list: Adding watch entries for%Q"
-msgstr ""
-"Benachrichtigungsliste: Es werden zu beobachtende Einträge für %Q hinzugefügt"
+msgstr "Benachrichtigungsliste: Es werden zu beobachtende Einträge für %Q hinzugefügt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_notifylist.cpp:1171
 msgid "watch entry listing requested by user"
@@ -6781,14 +6491,12 @@ msgid "unmatched watch list entry"
 msgstr "nicht passender watch-Listeneintrag"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_userinput.cpp:80
-#, fuzzy
 msgid "commandline::userfriendly"
-msgstr "Nein"
+msgstr "Kommandozeile::Benutzerfreundlich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_userinput.cpp:94
-#, fuzzy
 msgid "commandline::kvs"
-msgstr "Nein"
+msgstr "Kommandozeile::kvs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_userinput.cpp:127
 msgid "You are not connected to a server"
@@ -6804,12 +6512,10 @@ msgstr "Nein"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/module/kvi_modulemanager.cpp:196
 msgid "This module has no version informations: refusing to load it"
-msgstr ""
-"Dieses Modul hat keine Versionsinformationen. Es wird abgelehnt, es zu laden."
+msgstr "Dieses Modul hat keine Versionsinformationen. Es wird abgelehnt, es zu laden."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/module/kvi_modulemanager.cpp:204
-msgid ""
-"This module was compiled for a different KVIrc version and can't be loaded"
+msgid "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr ""
 "Dieses Modul wurde für eine andere Version von KVIrc kompiliert und kann "
 "daher nicht geladen werden."
@@ -6839,7 +6545,7 @@ msgstr "Kein solcher Kontext (%d)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/my/libkvimy.cpp:147
 msgid "Global idle timer must be started before using $my.globalIdle function"
-msgstr ""
+msgstr "Globaler Leerlauf-Zeitschalter muss vor dem Benutzen der $my.globalidle -Funktion gestartet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lag/libkvilag.cpp:68
 msgid "Lag meter was not enabled"
@@ -6848,9 +6554,8 @@ msgstr "Lag-Meter wurde nicht aktiviert"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:103
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:162
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:215
-#, fuzzy
 msgid "Window %Q not found"
-msgstr "Fenster %s nicht gefunden"
+msgstr "Fenster %Q nicht gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:108
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:167
@@ -6859,30 +6564,26 @@ msgid "Missing window id after the 'w' switch"
 msgstr "Fenster-ID nach dem 'w'-Schalter fehlt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:121
-#, fuzzy
 msgid "Can't log to file %Q"
-msgstr "Loggen in Datei %s fehlgeschlagen"
+msgstr "Loggen in Datei %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:123
 msgid "This window has no logging capabilities"
 msgstr "Dieses Fenster hat keine Log-Fähigkeiten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:275
-#, fuzzy
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr ""
-"Fenster mit ID '%s' nicht gefunden, es wird leere Zeichenkette "
+"Fenster mit ID '%Q' nicht gefunden, es wird leere Zeichenkette "
 "zurückgeliefert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/snd/libkvisnd.cpp:598
-#, fuzzy
 msgid "Sound file '%Q' not found"
-msgstr "Klandatei '%s' nicht gefunden"
+msgstr "Klangdatei '%Q' nicht gefunden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/snd/libkvisnd.cpp:604
-#, fuzzy
 msgid "Unable to play sound '%Q'"
-msgstr "Klang '%s' konnte nicht abgepielt werden"
+msgstr "Klang '%Q' konnte nicht abgepielt werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/snd/libkvisnd.cpp:615
 msgid "Sorry , I can't find a sound system to use on this machine"
@@ -6907,52 +6608,51 @@ msgstr "<b>Es konnte kein Tipp gefunden werden... :(</b>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:1534
 msgid "%Q algorytm is not supported"
-msgstr ""
+msgstr "%Q -Algorithmus wird nicht unterstützt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:1556
-msgid ""
-"KVIrc is compiled without OpenSSL support. $str.digest function disabled"
-msgstr ""
+msgid "KVIrc is compiled without OpenSSL support. $str.digest function disabled"
+msgstr "KVIrc ist ohne OpenSSL-Unterstützung kompiliert worden. $str.digest Funktion deaktiviert"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2020
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
-msgstr ""
+msgstr "Ungültiges Argument für ?d Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2024
 msgid "Missing argument for ?d escape sequence, 0 assumed"
-msgstr ""
+msgstr "Fehlendes Argument für ?d Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2056
 msgid "Invalid argument for ?u escape sequence, 0 assumed"
-msgstr ""
+msgstr "Ungültiges Argument für ?u Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2060
 msgid "Missing argument for ?u escape sequence, 0 assumed"
-msgstr ""
+msgstr "Fehlendes Argument für ?u Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2087
 msgid "Invalid argument for ?x escape sequence, 0 assumed"
-msgstr ""
+msgstr "Ungültiges Argument für ?x Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2091
 msgid "Missing argument for ?x escape sequence, 0 assumed"
-msgstr ""
+msgstr "Fehlendes Argument für ?x Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2118
 msgid "Invalid argument for ?X escape sequence, 0 assumed"
-msgstr ""
+msgstr "Ungültiges Argument für ?X Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2122
 msgid "Missing argument for ?X escape sequence, 0 assumed"
-msgstr ""
+msgstr "Fehlendes Argument für ?X Escape-Sequenz, 0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2179
 msgid "Invalid argument for a floating point escape sequence, 0.0 assumed"
-msgstr ""
+msgstr "Ungültiges Argument für eine Fließkomma-Escape-Sequenz, 0.0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/str/libkvistr.cpp:2183
 msgid "Missing argument for a floating point escape sequence, 0.0 assumed"
-msgstr ""
+msgstr "Fehlendes Argument für eine Fließkomma-Esacpe-Sequenz, 0.0 wird angenommen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:84
 msgid "Show URL List"
@@ -7066,7 +6766,7 @@ msgstr "&Abbrechen"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:458
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1181
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:420
 msgid "Enable URL ban list"
@@ -7089,125 +6789,110 @@ msgid "Select a ban."
 msgstr "Bann auswählen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:790
-#, fuzzy
 msgid "View URL list"
 msgstr "URL-Liste anzeigen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/chan/libkvichan.cpp:49
-#, fuzzy
 msgid "Can't find the window with id '%Q'"
-msgstr "Kann das Fenster mit IS '%s' nicht finden"
+msgstr "Kann das Fenster mit ID '%Q' nicht finden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/chan/libkvichan.cpp:53
-#, fuzzy
 msgid "The specified window (%Q) is not a channel"
-msgstr "Das angegebene Fenter (%s) ist kein Kanal"
+msgstr "Das angegebene Fenter (%Q) ist kein Kanal"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-#, fuzzy
 msgid "Destinaion file exists: no copy made"
-msgstr "Zieldateidei existiert bereits: keine Kopie"
+msgstr "Zieldatei existiert bereits: keine Kopie erstellt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:83
-#, fuzzy
 msgid "Failed to copy from %Q to %Q"
-msgstr "Kopie von %s nach %s fehlgeschlagen"
+msgstr "Kopieren von %Q nach %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:84
 msgid "Either the source doesn't exist or the destination can not be created"
-msgstr ""
+msgstr "Entweder existiert die Quelle nicht, oder das Ziel kann nicht erstellt werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:203
 msgid "Failed to write to file %Q: the destination couldn't be opened"
-msgstr ""
+msgstr "Schreiben der Datei %Q fehlgeschlagen: Das Ziel konnte nicht geöffnet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:244
 msgid "Destination file exists: file not renamed"
 msgstr "Zieldatei existiert bereits: Datei nicht umbenannt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:247
-#, fuzzy
 msgid "Failed to rename %Q to %Q"
-msgstr "Umbenennen von %s nach %s fehlgeschlagen"
+msgstr "Umbenennen von %Q nach %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:281
-#, fuzzy
 msgid "Failed to make the directory %Q"
-msgstr "Erstellung von Verzeichnis %s fehlgeschlagen"
+msgstr "Erstellen des Verzeichnisses %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:322
-#, fuzzy
 msgid "Failed to remove the file %Q"
-msgstr "Löschen von Datei %s fehlgeschlagen"
+msgstr "Löschen von Datei %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:365
-#, fuzzy
 msgid "Failed to remove the directory %Q"
-msgstr "Löschen des Verzeichnisses %s fehlgeschlagen"
+msgstr "Löschen des Verzeichnisses %Q fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:482
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:628
-#, fuzzy
 msgid "The specified directory does not exist '%Q'"
-msgstr "Das angegebene Verzeichnis existiert nicht '%s'"
+msgstr "Das angegebene Verzeichnis existiert nicht '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:730
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:824
-#, fuzzy
 msgid "Can't open the file \"%Q\" for reading"
-msgstr "Öffnen der Datei \"%s\" zum Lesen fehlgeschlagen"
+msgstr "Kann Datei \"%Q\" nicht zum Lesen öffnen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:746
-#, fuzzy
 msgid "Read error for file %Q"
-msgstr "Lesefehler für Datei %s"
+msgstr "Lesefehler für Datei %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:754
-#, fuzzy
 msgid ""
 "Read error for file %Q (have been unable to read the requested size in 1000 "
 "retries)"
 msgstr ""
-"Lesefehler für Datei %s (unmöglich, die angeforderte Größe in 1000 Versuchen "
+"Lesefehler für Datei %Q (unmöglich, die angeforderte Größe in 1000 Versuchen "
 "zu lesen)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:920
-#, fuzzy
 msgid "Can't open the file \"%Q\" for writing"
-msgstr "Datei \"%s\" kann nicht zum Schreiben geöffnet werden"
+msgstr "Datei \"%Q\" kann nicht zum Schreiben geöffnet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/index.cpp:584
 msgid "Untitled"
-msgstr ""
+msgstr "Unbenannt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:63
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:65
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:150
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:152
 msgid "Indexing help files"
-msgstr ""
+msgstr "Hilfedateien indizieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:85
-#, fuzzy
 msgid "Index"
-msgstr "Hilfeindex"
+msgstr "Index"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:97
 msgid "Refresh index"
-msgstr ""
+msgstr "Index auffrischen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:200
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:209
 msgid "Full Text Search"
-msgstr ""
+msgstr "Volltextsuche"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:201
 msgid "Using a wildcard within phrases is not allowed."
-msgstr ""
+msgstr "Platzhalter innerhalb von Phasen sind nicht erlaubt."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:210
 msgid "The closing quotation mark is missing."
-msgstr ""
+msgstr "Das schließende Anführungszeichen fehlt."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:310
 msgid "Help Browser"
@@ -7296,31 +6981,26 @@ msgstr ""
 "Kontext %u]</font></nobr>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:342
-#, fuzzy
 msgid "You cannot export an empty list"
-msgstr "Bannausnahmenliste nicht anfordern"
+msgstr "Du kannst keine leere Liste exportieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:349
-#, fuzzy
 msgid "Channel list for %Q - %Q"
-msgstr "Kanalmodus für \r!c\r%Q\r ist %s"
+msgstr "Kanalliste für %Q - %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:352
-#, fuzzy
 msgid "Channel list"
-msgstr "Kanäle"
+msgstr "Kanalliste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:354
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:381
-#, fuzzy
 msgid "Choose filename"
-msgstr "Log-Dateiname auswählen"
+msgstr "Dateiname auswählen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:355
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:382
-#, fuzzy
 msgid "Configuration files (*.kvc)"
-msgstr "Konfiguration"
+msgstr "Konfigurationsdateien (*.kvc)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:423
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:398
@@ -7506,73 +7186,66 @@ msgstr "Fenster anzeigen"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt3.cpp:428
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt4.cpp:259
 msgid "Away on all"
-msgstr ""
+msgstr "Abwesend bei allen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt3.cpp:431
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt4.cpp:262
 msgid "Back on all"
-msgstr ""
+msgstr "Zurück bei allen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt3.cpp:450
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt4.cpp:281
 msgid "Back on %1"
-msgstr ""
+msgstr "Zurück bei %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt3.cpp:453
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dockwidget/libkvidockwidget_qt4.cpp:284
 msgid "Away on %1"
-msgstr ""
+msgstr "Abwesend bei %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:224
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1238
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:231
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1217
-#, fuzzy
 msgid "No item selected"
-msgstr "Keine Einträge ausgewählt"
+msgstr "Keinen Eintrag ausgewählt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:232
-#, fuzzy
 msgid "Rename"
-msgstr "Wirklicher Name:"
+msgstr "Umbenennen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:236
-#, fuzzy
 msgid "Edit the alias or namespace name"
-msgstr "Aliasname bearbeiten"
+msgstr "Alias- oder Namensraumnamen editieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:424
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1030
-#, fuzzy
 msgid "Add Alias"
-msgstr "Alias"
+msgstr "Alias hinzufügen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:429
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1055
 msgid "Add Namespace"
-msgstr ""
+msgstr "Namensraum hinzufügen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:440
 msgid "Remove Selected"
 msgstr "Ausgewählte Löschen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:449
-#, fuzzy
 msgid "Export Selected..."
-msgstr "Alle &exportieren nach..."
+msgstr "Ausgewählte exportieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:455
-#, fuzzy
 msgid "Export Selected in singles files..."
-msgstr "Alle &exportieren nach..."
+msgstr "Ausgewählte in einzelne Dateien exportieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:462
-#, fuzzy
 msgid "Export All..."
-msgstr "Alle &exportieren nach..."
+msgstr "Alle exportieren..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:470
 msgid "Find In Aliases..."
@@ -7580,7 +7253,7 @@ msgstr "Aliase bearbeiten..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:476
 msgid "Collapse All Namespaces"
-msgstr ""
+msgstr "Alle Namensräume zuklappen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:508
 msgid "Find In Aliases"
@@ -7722,8 +7395,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:972
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:983
@@ -8462,14 +8134,12 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:536
 msgid "The specified version \"%Q\" is not a valid version string"
-msgstr ""
-"Die angegebene Version \"%Q\" ist eine keine gültige Versionszeichenkette"
+msgstr "Die angegebene Version \"%Q\" ist eine keine gültige Versionszeichenkette"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:542
 #, fuzzy
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
-msgstr ""
-"Die angegebene KVIrc-Version \"%s\" ist keine gültige Versionszeichenkette"
+msgstr "Die angegebene KVIrc-Version \"%s\" ist keine gültige Versionszeichenkette"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:548
 #, fuzzy
@@ -8685,8 +8355,7 @@ msgstr "Ende der Links empfangen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:235
 #, c-format
-msgid ""
-"Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
+msgid "Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
 msgstr ""
 "Fehlerhafte Verknüpfung: fehlendes Elternteil (%s) für %s (%d hops): %s  ( /"
 "LINKS <Maske> benutzt?)"
@@ -8927,8 +8596,7 @@ msgid "Real name:"
 msgstr "Wirklicher Name:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:326
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:331
@@ -9431,12 +9099,10 @@ msgstr "Der -I Schalter erfordert -c"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/action/libkviaction.cpp:409
 msgid "The switch -s requires -w with a combination of flags 'c','x' and 'q'"
-msgstr ""
-"Der -s Schalter erfordert -w mit einer Kombination der Flags 'c', 'x' und 'q'"
+msgstr "Der -s Schalter erfordert -w mit einer Kombination der Flags 'c', 'x' und 'q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/action/libkviaction.cpp:420
-msgid ""
-"The action \"%1\" is already defined as core action and cannot be overridden"
+msgid "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr ""
 "Die Aktion \"%1\" ist bereits als Kernaktion definiert und kann nicht "
 "überschrieben werden"
@@ -9493,14 +9159,12 @@ msgstr "Ungültiger Zeitablauf angegeben, Standard wird benutzt"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:389
 #, fuzzy
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-msgstr ""
-"Datei %s kann nicht zu Dateiangebot hinzugefügt werden (Datei nicht lesbar?)"
+msgstr "Datei %s kann nicht zu Dateiangebot hinzugefügt werden (Datei nicht lesbar?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:396
 #, fuzzy
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
-msgstr ""
-"%d Sekunden für Dateiangebot für Datei %s (%s) und Empfänger %s hinzugefügt"
+msgstr "%d Sekunden für Dateiangebot für Datei %s (%s) und Empfänger %s hinzugefügt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:403
 #, fuzzy
@@ -9875,8 +9539,7 @@ msgid "Pixmap object required"
 msgstr "Pixmapobjekt erforderlich"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1027
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1105
@@ -10238,8 +9901,7 @@ msgid "Can't start the DNS thread"
 msgstr "Der DNS-Thread konnte nicht gestartet werden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1143
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr "Zuviel unverarbeitete ankommende Daten (Socketverwaltung abgebrochen?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:149
@@ -10733,8 +10395,7 @@ msgstr "Werkzeugleisten-Export"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:398
 msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr ""
-"Sollen die zugeordneten Aktionen mit der Werkzeugleiste exportiert werden?"
+msgstr "Sollen die zugeordneten Aktionen mit der Werkzeugleiste exportiert werden?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:454
 msgid "Unable to write to the toolbar file."
@@ -10799,8 +10460,7 @@ msgid "This plugin does not export the desired function."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:327
-msgid ""
-"The plugin has no function to free memory. This can result in Memory Leaks!"
+msgid "The plugin has no function to free memory. This can result in Memory Leaks!"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/libkvisystem.cpp:209
@@ -10828,8 +10488,7 @@ msgstr "DCOP-Aufruf fehlgeschlagen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/libkvisystem.cpp:599
 msgid "DCOP calls are available only when KDE support is compiled in"
-msgstr ""
-"DCOP-Aufrufe sind nur verfügbar, wenn KDE-Unterstützung einkompiliert ist"
+msgstr "DCOP-Aufrufe sind nur verfügbar, wenn KDE-Unterstützung einkompiliert ist"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:78
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1083
@@ -11503,8 +11162,7 @@ msgstr "Linker Operand ist keine Zahl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:65
 msgid "Multiple operations not supported for numeric operators"
-msgstr ""
-"Mehrere Operationen werden bei numerischen Operatoren nicht unterstützt"
+msgstr "Mehrere Operationen werden bei numerischen Operatoren nicht unterstützt"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:67
 msgid "Modulo by zero"
@@ -11925,8 +11583,7 @@ msgstr "Objektgültigkeitsbereich bereits definiert (unerwartetes @)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:171
 msgid "There is no $this pointer in this scope (unexpected @)"
-msgstr ""
-"Es gibt keinen $this-Zeiger in diesem Gültigkeitsbereich (unerwartetes @)"
+msgstr "Es gibt keinen $this-Zeiger in diesem Gültigkeitsbereich (unerwartetes @)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:140
 #, fuzzy
@@ -17015,3 +16672,4 @@ msgstr ""
 
 #~ msgid "Parser"
 #~ msgstr "Parser"
+
