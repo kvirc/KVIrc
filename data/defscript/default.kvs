@@ -248,6 +248,7 @@ alias (kb)
 		echo "	  /kb <nick_list> [" $tr("reason") "]"
 		halt;
 	}
+
 	if(!$channel)
 	{
 		echo "[KB]: " $tr("This is not a channel window")
@@ -277,11 +278,9 @@ alias (kb)
 			if($chan.isOp(%nick))%raw2 = "mode $target -o+b %nick %mask"
 			else %raw2 = "mode $target +b %mask"
 
-			raw -q %raw$cr$lf%raw2
+			raw -q %raw2$cr$lf%raw
 		}
 	}
-
-#	kick $0 %reason
 }
 
 # chanowner
