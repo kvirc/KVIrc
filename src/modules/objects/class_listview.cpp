@@ -317,7 +317,7 @@ bool KviKvsObject_listview::function_setSelectionMode(KviKvsObjectFunctionCall *
 		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Extended);
 	else if(KviQString::equalCI(szMode,"Single"))
 		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Single);
-	else c->warning(__tr2qs("Invalid selection mode 'Q'"),&szMode);
+	else c->warning(__tr2qs("Invalid selection mode '%Q'"),&szMode);
     return true;
 }
 
