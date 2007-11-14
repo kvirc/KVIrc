@@ -145,8 +145,7 @@ Function GenDoc(path)
 	Set fol = fso.GetFolder(path)
 	Set fileList = fol.Files
 	For Each f in fileList
-		If (((Right(f.name, 4) = ".cpp") and (Left(f.name, 7) <> "kvi_kvs")) or (Right(f.name, 9) = ".template") or _
-			((Left(f.name, 7) = "kvi_kvs") and (Right(f.name, 4) = ".cpp"))) Then
+		If (Right(f.name, 4) = ".cpp") or (Right(f.name, 9) = ".template") or (Right(f.name, 2) = ".h") Then
 
 			docFiles = docFiles + " """ + path + "\" + f.name + """"
 
