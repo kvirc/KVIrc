@@ -811,19 +811,22 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 {
 	msg->pData = extractCtcpParameter(msg->pData,msg->szTag);
 
-	bool bDCCRequest = false;
-	//Is the ctcp request a dcc request?
-	if (msg->szTag == "DCC" || msg->szTag == "XDCC" || msg->szTag == "TDCC")
-	{
-		bDCCRequest = true;
-	}
+	bool bDCCRequest = msg->szTag == "DCC" || msg->szTag == "XDCC" || msg->szTag == "TDCC";
 
 	bool bAction = (msg->szTag == "ACTION");
 
-	
-
-	if (bDCCRequest != true) // <-- horror :D
+	if (bDCCRequest)
 	{
+		if (KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpDcc))
+		{
+			msg->msg->console()->output(KVI_OUT_IGNORE,__tr2qs("Ignoring DCC from \r!nc\r%s\r [%s@\r!h\r%s\r]"),
+				KviQString::toUtf8(msg->pSource->nick()).data(),
+				KviQString::toUtf8(msg->pSource->user()).data(),
+				KviQString::toUtf8(msg->pSource->host()).data()
+				);
+			return;
+		}
+	} else {
 		KviRegisteredUser * u = msg->msg->connection()->userDataBase()->registeredUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 		//Ignore it?
 		if(u) 
