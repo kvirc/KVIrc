@@ -1,24 +1,24 @@
-# translation of kvirc_de.po to
-# translation of kvirc_de.po to Deutsch
-# translation of kvirc.po to Deutsch
+# translation of options_de.po to german
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
-# Christoph Thielecke <u15119@hs-harz.de>, 2005.
 #
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
+# Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
+# Christoph Thielecke <u15119@hs-harz.de>, 2005.
+# Markus Rennings <kvirc@mrmx.de>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: kvirc_de\n"
+"Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-07 21:08+0100\n"
-"PO-Revision-Date: 2005-10-15 18:43+0200\n"
-"Last-Translator: Christoph Thielecke <u15119@hs-harz.de>\n"
-"Language-Team:  <de@li.org>\n"
+"PO-Revision-Date: 2007-11-14 13:31+0100\n"
+"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:46
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:232
@@ -39,16 +39,14 @@ msgstr "Hintergrundbild:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:51
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:116
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:46
-#, fuzzy
 msgid "Horizontal align:"
-msgstr "Zertifikatsort:"
+msgstr "Horizontale Ausrichtung:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:55
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:120
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:50
-#, fuzzy
 msgid "Vertical align:"
-msgstr "Zertifikatsort:"
+msgstr "Vertikale Ausrichtung:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:59
 msgid "Mark Line:"
@@ -63,7 +61,7 @@ msgstr "Zeile markieren:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:54
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:59
 msgid "Tile"
-msgstr ""
+msgstr "Anordnung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:62
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:125
@@ -87,9 +85,8 @@ msgstr "Rechts"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:147
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:57
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:62
-#, fuzzy
 msgid "Center"
-msgstr "Allgemein"
+msgstr "Mitte"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:67
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:130
@@ -152,8 +149,7 @@ msgstr "Registrierter NickName"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:60
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:64
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:257
@@ -162,7 +158,7 @@ msgid "NickServ Mask"
 msgstr "NickServ-Maske"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:70
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "This is the mask that NickServ must match to be correctly identified as the "
 "NickServ service. This usually will be something like <b>NickServ!"
@@ -171,13 +167,9 @@ msgid ""
 "network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
 "be safe to use in this field."
 msgstr ""
-"<center>Dies ist die Maske, wo NickServ korrekt als NickServ-Service passen "
-"muss. Das wird gewöhnlich etwas wie <b>Nickserv!service@services.dalnet</"
-"b>sein.<br>Es können Wildcards für dieses Feld benutzt werden, aber "
-"grundsätzlich ist dies ein Sicherheitsloch. Wenn man zu 100% sicher ist, "
-"dass KEIN Benutzer im Netzwerk den Spitznamen \"NickServ\" benutzen kann, "
-"dann wird möglicherweise <b>Nickserv!*@*</b> für dieses Feld sicher sein.</"
-"center>"
+"Dies ist die Maske, wo NickServ korrekt als NickServ-Service passen "
+"muss. Das wird gewöhnlich etwas wie <b>Nickserv!service@services.dalnet</b> sein.<br>Es können Wildcards für dieses Feld benutzt werden, aber grundsätzlich ist dies ein Sicherheitsloch. Wenn man zu 100%% sicher ist, "
+"dass KEIN Benutzer im Netzwerk den Spitznamen \"NickServ\" benutzen kann, dann wird möglicherweise <b>Nickserv!*@*</b> für dieses Feld sicher sein."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:78
 msgid "Message Regexp"
@@ -269,8 +261,7 @@ msgstr "Das Spitznamen-Feld darf keine Leerzeichen enthalten!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -361,65 +352,57 @@ msgid "Background image"
 msgstr "Hintergrundbild"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:40
-#, fuzzy
 msgid "Enable tray icon"
-msgstr "Verschlüsselung aktivieren"
+msgstr "Tray-Icon aktivieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:41
-#, fuzzy
 msgid "Close in tray"
-msgstr "Neue Anfragen minimieren"
+msgstr "In Tray schließen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:42
-#, fuzzy
 msgid "Minimize in tray"
-msgstr "Neue Anfragen minimieren"
+msgstr "In Tray minimieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:44
-#, fuzzy
 msgid "Enable tray icon flashing"
-msgstr "Wort-Hervorhebung aktivieren"
+msgstr "Aktiviere Tray-Icon-Blinken"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
-msgstr ""
+msgstr "Wähle Level zur Benachrichtigung aus"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:49
 msgid "Minimum level for low-priority messages"
-msgstr ""
+msgstr "Minimaler Level für Meldungen niedriger Priorität"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:53
 msgid "Minimum level for high-priority message"
-msgstr ""
+msgstr "Minimaler Level für Meldungen hoher Priorität"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.cpp:40
 msgid ""
 "This section contains irc protection tools<br><p>like<b> flood, ignore, "
 "antispam. </b> </p>"
-msgstr ""
+msgstr "Dieser Abschnitt beinhaltet IRC-Schutz-Werkzeuge (protection tools)<br><p>wie<b> floot, ignore, antispam. </b></p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:40
-#, fuzzy
 msgid ""
 "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
 "Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
 "connection. These messages can request information from clients or negotiate "
 "file transfers.<br><br></p>"
 msgstr ""
-"<center><b>Diese Sektion enthält Einstellungen für CTCP</b></"
-"center><br><br><p>Das <b>Client-To-Client-Protocol</b> (CTCP) wird zum "
+"<center><b>Einstellungen für CTCP.</b></center><p>Das <b>Client-To-Client-Protocol</b> (CTCP) wird zum "
 "Übertragen von speziellen Kontollnachrichten über eine IRC-Verbindung "
-"benutzt. Diese Nachrichten können Informationen von Clients anfragen oder "
-"Dateibertragungen aushandeln.</p>"
+"benutzt. Diese Nachrichten können Informationen von Clients anfragen oder Dateiübertragungen aushandeln.<br><br></p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:47
-#, fuzzy
 msgid "CTCP Replies"
-msgstr "Antworten"
+msgstr "CTCP Antworten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:48
 msgid "Append to VERSION reply:"
@@ -566,9 +549,8 @@ msgid "Background Colors"
 msgstr "Hintergrundfarben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:212
-#, fuzzy
 msgid "Show header"
-msgstr "Bann-Editor anzeigen"
+msgstr "Kopfzeilen (header) anzeigen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:214
 msgid "Minimum width:"
@@ -587,18 +569,16 @@ msgid "Minimum width of buttons:"
 msgstr "Minimale Breite der Knöpfe:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:244
-#, fuzzy
 msgid "Set maximum button width"
-msgstr "Maximale Breite:"
+msgstr "Maximale Schaltflächenbreite:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:245
-#, fuzzy
 msgid "Maximum width of buttons:"
-msgstr "Minimale Breite der Knöpfe:"
+msgstr "Maximale Breite der Knöpfe:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:246
 msgid "Use flat buttons"
-msgstr ""
+msgstr "Flache Schaltflächen benutzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:96
 msgid "Network Details"
@@ -697,18 +677,14 @@ msgid "Use System Encoding"
 msgstr "Systemkodierung benutzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:185
-#, fuzzy
 msgid "Connect to this network at startup"
-msgstr "Zu diesem Server beim Start von KVIrc verbinden"
+msgstr "Zu diesem Netzwerk beim Start von KVIrc verbinden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:189
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to automatically connect to this "
 "network at startup</center>"
-msgstr ""
-"<center>Diese Option veranlasst KVIrc, nach dem Start von KVIrc zu dem IRC-"
-"Server zu verbinden.</center>"
+msgstr "<center>Diese Option veranlasst KVIrc, nach dem Start von KVIrc, sich zu diesem IRC-Netzwerk zu verbinden.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:199
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:79
@@ -1059,9 +1035,8 @@ msgstr ""
 "kompatible Protokolle benutzt.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:705
-#, fuzzy
 msgid "Id:"
-msgstr "ID"
+msgstr "Id:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:713
 msgid ""
@@ -1198,8 +1173,7 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1219,8 +1193,7 @@ msgid "Connect &Now"
 msgstr "Jetzt verbi&nden"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -1459,8 +1432,7 @@ msgstr ""
 "zufällige Zitierungen und Sätze hier einzutragen.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
@@ -2389,8 +2361,7 @@ msgstr "in:"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -2640,8 +2611,7 @@ msgid "Minimum alert level:"
 msgstr "Minimale Alarmstufe:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -13710,3 +13680,4 @@ msgstr "Chat"
 
 #~ msgid "Parser"
 #~ msgstr "Parser"
+
