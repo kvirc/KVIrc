@@ -685,7 +685,7 @@ static char * g_szAboutText = "" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"thex.email@gmail.com" \
+"kvirc@thexception.net" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
