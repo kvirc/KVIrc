@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-07 21:08+0100\n"
-"PO-Revision-Date: 2007-11-09 20:16+0000\n"
+"PO-Revision-Date: 2007-11-16 22:06+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -149,11 +149,11 @@ msgstr "Regra de Autenticação Nickserv"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:55
 msgid "Registered NickName"
-msgstr "Apelido Registado"
+msgstr "Alcunha Registada"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:60
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr "Coloque aqui o apelido que registou no Nickserv"
+msgstr "Indique aqui a alcunha que registou no Nickserv"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:64
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:257
@@ -175,7 +175,7 @@ msgstr ""
 "identificado no serviço NickServ. Normalmente deve ser algo como <b>NickServ!"
 "service@services.dalnet</b>.<br>Pode usar asteriscos neste campo, mas "
 "geralmente provoca falhas na segurança.</br>Se tem a certeza absoluta que "
-"NENHUM utilizador na rede usa o apelido \"NickServ\", a máscara <b>NickServ!"
+"NENHUM utilizador na rede usa a alcunha \"NickServ\", a máscara <b>NickServ!"
 "*@*</b> pode ser usada em segurança neste campo."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:78
@@ -212,7 +212,7 @@ msgid ""
 "no leading slash in this command."
 msgstr ""
 "Este é o comando que irá ser executado quando o NickServ pede autenticação "
-"para o apelido descrito nesta regra (se ambas as máscaras do servidor e do "
+"para a alcunha descrita nesta regra (se ambas as máscaras do servidor e do "
 "NickServ coincidem). Isto normalmente irá ser algo como <b>msg NickServ "
 "identify &lt;senha&gt;</b>. <br>Pode usar <b>msg -q</b> se não quer a senha "
 "mostrada no ecrã. Por favor note que este comando não usa barra no principio."
@@ -258,11 +258,11 @@ msgstr "Regra Nickserv Inválida"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:169
 msgid "The Nickname field can't be empty!"
-msgstr "O campo do Apelido não pode estar vazio!"
+msgstr "O campo da alcunha não pode estar vazio!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:175
 msgid "The Nickname field can't contain spaces!"
-msgstr "O campo do Apelido não pode conter espaços!"
+msgstr "O campo da Alcunha não pode conter espaços!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
@@ -291,7 +291,7 @@ msgstr "Esta caixa activa a identificação automática do Nickserv"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:255
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:276
 msgid "Nickname"
-msgstr "Apelido"
+msgstr "Alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:258
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:278
@@ -631,7 +631,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:498
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:320
 msgid "Nickname:"
-msgstr "Apelido:"
+msgstr "Alcunha:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:145
 msgid ""
@@ -640,10 +640,10 @@ msgid ""
 "common case), the default nickname (specified in the \"Identity\" settings) "
 "will be used.</center>"
 msgstr ""
-"<center>Pode indicar um <b>apelido</b> \"especial\" que será usado para o "
+"<center>Pode indicar um <b>Alcunha</b> \"especial\" que será usado para o "
 "autenticar nos servidores desta rede.<br>Se este campo for deixado vazio "
-"(caso mais comum), o apelido predefinido (indicado nas configurações de "
-"\"Identidade\") será usado.</center>"
+"(caso mais comum), a alcunha predefinida (indicada nas configurações de "
+"\"Identidade\") será usada.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:149
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:509
@@ -851,12 +851,11 @@ msgid ""
 "server belongs to, and if that is empty then the default nickname (specified "
 "in the \"Identity\" settings) will be used.</center>"
 msgstr ""
-"<center>Pode indicar um <b>apelido</b> \"especial\" que será usado para o "
-"autenticar neste servidor.<br>Se este campo for deixado vazio (caso mais "
-"comum), o KVirc irá primeiro procurar se foi definido algum apelido na rede "
-"a que este servidor pertence, e se não estiver definido nenhum apelido então "
-"irá usar o apelido predefinido (indicado nas configurações de \"Identidade"
-"\").</center>"
+"<center>Pode indicar um <b>Alcunha</b> \"especial\" que será usada para "
+"o autenticar neste servidor.<br>Se este campo for deixado vazio (caso mais "
+"comum), o KVirc irá primeiro procurar se foi definida alguma alcunha na rede "
+"a que este servidor pertence, e se não estiver definido nenhuma, então "
+"irá usar a alcunha predefinida (indicada nas configurações de \"Identidade\").</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:513
 msgid ""
@@ -1316,7 +1315,7 @@ msgstr "Criar janela de depuração minimizada"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:59
 msgid "Nickname alternatives"
-msgstr "Apelidos alternativos"
+msgstr "Alcunhas alternativas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:62
 msgid ""
@@ -1324,21 +1323,21 @@ msgid ""
 "one. KVIrc will use the alternatives if the primary nick is already used by "
 "someone else on a particular IRC network.</center>"
 msgstr ""
-"<center>Aqui pode escolher até três apelidos alternativos em relação ao "
-"principal. O KVirc irá usar os apelidos alternativos se o principal já "
-"estiver a ser usado por alguém em particular no IRC.</center>"
+"<center>Aqui pode escolher até três alcunhas alternativas em relação à "
+"principal. O KVirc irá usar as alcunhas alternativas se a primeira já "
+"estiver a ser usada por alguém em particular no IRC.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:69
 msgid "Alt. Nickname 1:"
-msgstr "Apelido Alternativo 1:"
+msgstr "Alcunha Alternativa 1:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:76
 msgid "Alt. Nickname 2:"
-msgstr "Apelido Alternativo 2:"
+msgstr "Alcunha Alternativa 2:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:83
 msgid "Alt. Nickname 3:"
-msgstr "Apelido Alternativo 3:"
+msgstr "Alcunha Alternativa 3:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:96
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
@@ -1378,9 +1377,9 @@ msgid ""
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
 "Por favor escolha uma imagem Avatar. Pode usar uma localização completa para "
-"um ficheiro local ou para uma imagem na Web.<br>Se quiser usar um ficheiro "
+"um ficheiro local ou uma imagem na Web.<br>Se quiser usar um ficheiro "
 "local, clique no botão \"<b>Procurar</b>\" para procurar ficheiros locais."
-"<br>O URL completo para uma imagem (incluindo <b>http://</b>) pode ser "
+"<br>O URL completo de uma imagem (incluindo <b>http://</b>) pode ser "
 "indicado manualmente."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:237
@@ -1402,10 +1401,10 @@ msgid ""
 "(case insensitive), you can provide alternative nicknames to be used in "
 "casethe server refuses to accept the default one.</center>"
 msgstr ""
-"<center>O seu <b>apelido</b> é a sua primeira forma de identificação no IRC. "
-"<br>Já que os servidores não podem aceitar utilizadores múltiplos a usar o "
-"mesmo apelido, pode indicar apelidos alternativos no caso de o servidor não "
-"aceitar o apelido predefinido.</center>"
+"<center>A sua <b>alcunha</b> é a sua primeira forma de identificação no IRC. "
+"<br>Já que os servidores não podem aceitar utilizadores múltiplos a usar a "
+"mesma alcunha, pode indicar alcunhas alternativas no caso de o servidor não "
+"aceitar a que está predefinida.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:331
 msgid "Alternatives..."
@@ -1421,9 +1420,9 @@ msgid ""
 msgstr ""
 "<center>Este é o <b>nome de utilizador</b> que irá usar para se conectar ao "
 "servidor. No passado, usava-se como forma de autenticação, mas agora já não "
-"tem qualquer uso específico.<br>Em relação ao seu apelido, é identificado no "
-"IRC pelo seu<b>username@hostname</b>.</br>Basicamente, aqui pode indicar uma "
-"palavra qualquer. :D</center>"
+"tem qualquer uso específico.<br>Em relação à sua alcunha, é identificado no "
+"IRC pelo seu<b>nome_utilizador@endereço</b>.</br>Basicamente, aqui pode indicar "
+"uma palavra qualquer. :D</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:346
 msgid ""
@@ -2041,7 +2040,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:112
 msgid "Forcibly and completely disable the notifier"
-msgstr "Forçosamente e completamente desactivar o notificador"
+msgstr "Forçar e desactivar totalmente o notificador"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:115
 msgid ""
@@ -2076,20 +2075,20 @@ msgstr "Sair de \"ausente\" ao digitar algo"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:43
 msgid "Away Nickname"
-msgstr "Apelido de Ausência"
+msgstr "Alcunha de Ausência"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:44
 msgid "Change nickname on away"
-msgstr "Mudar apelido ao ficar ausente"
+msgstr "Mudar alcunha ao ficar ausente"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:47
 msgid "Use automatic nickname ([5 letters]AWAY)"
-msgstr "Usar apelido gerado automaticamente ([5 letras] AWAY)"
+msgstr "Usar alcunha gerada automaticamente ([5 letras] AWAY)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:55
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
-msgstr "Apelido personalizado (%%nick%% significa um apelido actual):"
+msgstr "Alcunha personalizada (%%nick%% significa uma alcunha actual):"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/libkvioptions.cpp:199
 msgid "No such options page class name %Q"
@@ -2235,7 +2234,7 @@ msgstr "Novo Tipo de Média"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:53
 msgid "Nickname Colors"
-msgstr "Cores do Apelido"
+msgstr "Cores da Alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:56
 msgid "Channel owner:"
@@ -2267,11 +2266,11 @@ msgstr "Ausente:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:66
 msgid "Use different color for own nick:"
-msgstr "Usar cor diferente para apelido próprio:"
+msgstr "Usar cor diferente para alcunha própria:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:81
 msgid "Draw nickname grid"
-msgstr "Desenhar grelha dos apelidos"
+msgstr "Desenhar grelha das alcunhas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:83
 msgid "Grid color:"
@@ -2521,7 +2520,7 @@ msgstr "Separador de palavras:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:59
 msgid "Highlight messages containing my nickname"
-msgstr "Destacar mensagens que contenham o meu apelido"
+msgstr "Destacar mensagens que contenham a minha alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:61
 msgid ""
@@ -2529,7 +2528,7 @@ msgid ""
 "containing your current nickname</center>"
 msgstr ""
 "<center>Se esta opção estiver activada, o KVirc irá destacar qualquer "
-"mensagem de utilizador que tenha o seu apelido actual</center>"
+"mensagem de utilizador que tenha a sua alcunha actual</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:63
 msgid "Flash the system taskbar entry on highlighted messages"
@@ -2847,18 +2846,17 @@ msgid ""
 "before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; "
 "quit; }</tt></p></center>"
 msgstr ""
-"<center>Esta opção activa a auto-reconexão a seguir a uma desconexão "
-"inesperada. Uma desconexão inesperada é o <b>fim</b> de uma<b> sessão IRC "
-"completa</b>que não foi <b>pedida pelo utilizador</b> através de uma "
-"mensagem QUIT.<p><b>Aviso:</b> se usar /RAW para enviar uma mensagem QUIT "
-"para o servidor, esta opção não será feita correctamente, isto porque não "
-"detecta a saída de uma mensagem QUIT e tenta reconectar após o servidor "
-"fechar a ligação. Por esta razão, use sempre o comando /QUIT para fechar as "
-"suas ligações. Esta opção também pode ter um comportamento incorrecto com "
-"'bouncers' que suportem desanexamento, neste caso a solução pode passar por "
-"preparar uma alias que envie o comando \"detach\" do 'bouncer' imediatamente "
-"antes do comando \"quit\". <br><tt>alias(bncdetach){ raw bouncer detach; "
-"quit; }</tt></p></center>"
+"<center>Esta opção activa a auto-reconexão após uma desconectar inesperada. "
+"Uma desconexão inesperada é o <b>fim</b> de uma<b> sessão IRC activa</b> "
+"que não foi <b>pedida pelo utilizador</b> através de uma mensagem QUIT. "
+"<p><b>Aviso:</b> se usar /RAW para enviar uma mensagem QUIT para o servidor, "
+"esta opção não será feita correctamente, isto porque não detecta a saída de uma "
+"mensagem QUIT e tenta reconectar após o servidor fechar a ligação. Por esta "
+"razão, use sempre o comando /QUIT para fechar as suas ligações. Esta opção "
+"também pode ter um comportamento incorrecto com 'bouncers' que suportem "
+"desanexamento, neste caso a solução pode passar por preparar uma 'alias' que "
+"envie o comando \"detach\" do 'bouncer' imediatamente antes do comando \"quit\". "
+"<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:89
 msgid "Maximum attempts (0: unlimited):"
@@ -3505,7 +3503,7 @@ msgstr "Pasta de Transferências:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:205
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr "Ordenar ficheiros gravados por apelidos (criar subpastas)"
+msgstr "Ordenar ficheiros gravados por alcunhas (criar subpastas)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:206
 msgid "Guess save path from media type"
@@ -3513,15 +3511,15 @@ msgstr "Adivinhar localização de gravação pelo tipo de média"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:209
 msgid "On Download Completion"
-msgstr "Ao Terminar a Transferências"
+msgstr "Ao Terminar a Transferência"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:210
 msgid "Notify completion in console"
-msgstr "Notificar completação na consola"
+msgstr "Notificar finalização na consola"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:211
 msgid "Notify completion in notifier"
-msgstr "Notificar completação no notificador"
+msgstr "Notificar finalização no notificador"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:212
 msgid "Automatically clear transfer"
@@ -3831,23 +3829,23 @@ msgstr "Esconder entrada de botões na barra por predefinição"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:144
 msgid "Nick completion"
-msgstr "Completação de apelido"
+msgstr "Completação da alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:145
 msgid "Use bash-like nick completion"
-msgstr "Usar completação do apelido tipo bash"
+msgstr "Usar completação tipo bash da alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:146
 msgid "Nick completion postfix string"
-msgstr "String de sufixo na completação do apelido"
+msgstr "Testo de sufixo para completar a alcunha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:147
 msgid "Use the completion postfix string for the first word only"
-msgstr "Usar completação de string de sufixo apenas para a primeira palavra"
+msgstr "Usar texto de sufixo para completar apenas para a primeira palavra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:148
 msgid "Commandline in user-friendly mode by default"
-msgstr "Linha de comando em modo amigável por predefinição"
+msgstr "Linha de comandos em modo amigável por predefinição"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:81
 msgid "Show message icons"
@@ -3855,7 +3853,7 @@ msgstr "Mostrar ícones das mensagens"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:82
 msgid "Draw some emoticons (smileys) as pictures"
-msgstr "Desenhar algumas emoções (smileys) como imagens"
+msgstr "Desenhar algumas emoções (sorrisos) como imagens"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:83
 msgid "Don't show colors in user messages"
@@ -3867,7 +3865,7 @@ msgstr "Alcunhas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:90
 msgid "\"Smart\" nickname colors"
-msgstr "Cores de apelidos \"Inteligentes\""
+msgstr "Cores de alcunhas \"Inteligentes\""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:91
 msgid "Use same colors as in the userlist"
@@ -3875,7 +3873,7 @@ msgstr "Usar as mesmas cores como na lista de utilizadores"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:93
 msgid "Show nicknames in bold"
-msgstr "Mostrar apelidos a negrito"
+msgstr "Mostrar alcunhas a negrito"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:94
 msgid "Show user and host"
@@ -3891,7 +3889,7 @@ msgstr "Prefixo e sufixo definidos pelo utilizador"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:98
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
-msgstr "[PREFIXO]apelido[!utilizador@endereço][SUFIXO] mensagem"
+msgstr "[PREFIXO]alcunha[!utilizador@endereço][SUFIXO] mensagem"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:112
 msgid "Prefix:"
