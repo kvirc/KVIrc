@@ -390,7 +390,7 @@ void KviLogViewMDIWindow::deleteCurrent()
 		if(!pItem->fileName(0).isNull())
 		{
 			QString szFname;
-			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->fileName(0));
+			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->m_pFileData->fileName());
 			KviFileUtils::removeFile(szFname);
 			delete pItem;
 			m_pIrcView->clearBuffer();
