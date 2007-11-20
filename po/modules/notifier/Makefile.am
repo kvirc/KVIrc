@@ -9,10 +9,30 @@ THISMODULE = notifier
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = notifier_ca.mo notifier_cs.mo notifier_it.mo notifier_de.mo notifier_pt.mo notifier_es.mo notifier_ru.mo notifier_pt_BR.mo notifier_fr.mo notifier_hu.mo
+tmp_DATA  = notifier_ca.mo \
+	notifier_cs.mo \
+	notifier_it.mo \
+	notifier_de.mo \
+	notifier_pt.mo \
+	notifier_es.mo \
+	notifier_ru.mo \
+	notifier_pt_BR.mo \
+	notifier_fr.mo \
+	notifier_hu.mo \
+	notifier_fi.mo
 
 # The *.po files to generate
-POFILES  =  notifier_ca.po notifier_cs.po notifier_it.po notifier_de.po notifier_pt.po notifier_es.po notifier_ru.po notifier_pt_BR.po notifier_fr.po notifier_hu.po
+POFILES  =  notifier_ca.po \
+	notifier_cs.po \
+	notifier_it.po \
+	notifier_de.po \
+	notifier_pt.po \
+	notifier_es.po \
+	notifier_ru.po \
+	notifier_pt_BR.po \
+	notifier_fr.po \
+	notifier_hu.po \
+	notifier_fi.po
 
 
 ###############################################################################

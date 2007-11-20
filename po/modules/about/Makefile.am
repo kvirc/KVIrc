@@ -9,10 +9,30 @@ THISMODULE = about
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = about_ca.mo about_cs.mo about_de.mo about_es.mo about_it.mo about_pt.mo about_ru.mo about_pt_BR.mo about_fr.mo about_hu.mo
+tmp_DATA  = about_ca.mo \
+	about_cs.mo \
+	about_de.mo \
+	about_es.mo \
+	about_it.mo \
+	about_pt.mo \
+	about_ru.mo \
+	about_pt_BR.mo \
+	about_fr.mo \
+	about_hu.mo \
+	about_fi.mo
 
 # The *.po files to generate
-POFILES  = about_ca.po about_cs.po about_de.po about_es.po about_it.po about_pt.po about_ru.po about_pt_BR.po about_fr.po about_hu.po
+POFILES  = about_ca.po \
+	about_cs.po \
+	about_de.po \
+	about_es.po \
+	about_it.po \
+	about_pt.po \
+	about_ru.po \
+	about_pt_BR.po \
+	about_fr.po \
+	about_hu.po \
+	about_fi.po
 
 
 ###############################################################################

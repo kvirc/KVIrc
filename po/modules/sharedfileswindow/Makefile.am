@@ -9,10 +9,28 @@ THISMODULE = sharedfileswindow
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = sharedfileswindow_ca.mo sharedfileswindow_cs.mo sharedfileswindow_it.mo sharedfileswindow_de.mo sharedfileswindow_es.mo sharedfileswindow_pt.mo sharedfileswindow_ru.mo sharedfileswindow_pt_BR.mo sharedfileswindow_fr.mo
+tmp_DATA  = sharedfileswindow_ca.mo \
+	sharedfileswindow_cs.mo \
+	sharedfileswindow_it.mo \
+	sharedfileswindow_de.mo \
+	sharedfileswindow_es.mo \
+	sharedfileswindow_pt.mo \
+	sharedfileswindow_ru.mo \
+	sharedfileswindow_pt_BR.mo \
+	sharedfileswindow_fr.mo \
+	sharedfileswindow_fi.mo
 
 # The *.po files to generate
-POFILES  = sharedfileswindow_ca.po sharedfileswindow_cs.po sharedfileswindow_it.po sharedfileswindow_de.po sharedfileswindow_es.po sharedfileswindow_pt.po sharedfileswindow_ru.po sharedfileswindow_pt_BR.po sharedfileswindow_fr.po
+POFILES  = sharedfileswindow_ca.po \
+	sharedfileswindow_cs.po \
+	sharedfileswindow_it.po \
+	sharedfileswindow_de.po \
+	sharedfileswindow_es.po \
+	sharedfileswindow_pt.po \
+	sharedfileswindow_ru.po \
+	sharedfileswindow_pt_BR.po \
+	sharedfileswindow_fr.po \
+	sharedfileswindow_fi.po
 
 
 ###############################################################################

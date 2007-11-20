@@ -9,10 +9,30 @@ THISMODULE = logview
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = logview_ca.mo logview_cs.mo logview_it.mo logview_de.mo logview_es.mo logview_pt.mo logview_ru.mo logview_pt_BR.mo logview_fr.mo logview_hu.mo
+tmp_DATA  = logview_ca.mo \
+	logview_cs.mo \
+	logview_it.mo \
+	logview_de.mo \
+	logview_es.mo \
+	logview_pt.mo \
+	logview_ru.mo \
+	logview_pt_BR.mo \
+	logview_fr.mo \
+	logview_hu.mo \
+	logview_fi.mo
 
 # The *.po files to generate
-POFILES  = logview_ca.po logview_cs.po logview_it.po  logview_de.po logview_es.po logview_pt.po logview_ru.po logview_pt_BR.po logview_fr.po logview_hu.po
+POFILES  = logview_ca.po \
+	logview_cs.po \
+	logview_it.po \
+	logview_de.po \
+	logview_es.po \
+	logview_pt.po \
+	logview_ru.po \
+	logview_pt_BR.po \
+	logview_fr.po \
+	logview_hu.po \
+	logview_fi.po
 
 
 ###############################################################################

@@ -9,10 +9,30 @@ THISMODULE = dcc
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = dcc_ca.mo dcc_it.mo dcc_de.mo dcc_es.mo dcc_cs.mo dcc_pt.mo dcc_ru.mo dcc_pt_BR.mo dcc_hu.mo dcc_fr.mo
+tmp_DATA  = dcc_ca.mo \
+	dcc_it.mo \
+	dcc_de.mo \
+	dcc_es.mo \
+	dcc_cs.mo \
+	dcc_pt.mo \
+	dcc_ru.mo \
+	dcc_pt_BR.mo \
+	dcc_hu.mo \
+	dcc_fr.mo \
+	dcc_fi.mo
 
 # The *.po files to generate
-POFILES  = dcc_ca.po dcc_it.po dcc_de.po dcc_es.po dcc_cs.po dcc_pt.po dcc_ru.po dcc_pt_BR.po dcc_hu.po dcc_fr.po
+POFILES  = dcc_ca.po \
+	dcc_it.po \
+	dcc_de.po \
+	dcc_es.po \
+	dcc_cs.po \
+	dcc_pt.po \
+	dcc_ru.po \
+	dcc_pt_BR.po \
+	dcc_hu.po \
+	dcc_fr.po \
+	dcc_fi.po
 
 # The *.po  -> *.mo rules
 dcc_it.mo: dcc_it.po

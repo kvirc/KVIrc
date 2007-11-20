@@ -9,10 +9,26 @@ THISMODULE = perlcore
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = perlcore_ca.mo perlcore_cs.mo perlcore_it.mo perlcore_de.mo perlcore_es.mo perlcore_ru.mo perlcore_pt_BR.mo perlcore_fr.mo
+tmp_DATA  = perlcore_ca.mo \
+	perlcore_cs.mo \
+	perlcore_it.mo \
+	perlcore_de.mo \
+	perlcore_es.mo \
+	perlcore_ru.mo \
+	perlcore_pt_BR.mo \
+	perlcore_fr.mo \
+	perlcore_fi.mo
 
 # The *.po files to generate
-POFILES  =  perlcore_ca.po perlcore_cs.po perlcore_it.po perlcore_de.po perlcore_es.po perlcore_ru.po perlcore_pt_BR.po perlcore_fr.po
+POFILES  =  perlcore_ca.po \
+	perlcore_cs.po \
+	perlcore_it.po \
+	perlcore_de.po \
+	perlcore_es.po \
+	perlcore_ru.po \
+	perlcore_pt_BR.po \
+	perlcore_fr.po \
+	perlcore_fi.po
 
 
 ###############################################################################

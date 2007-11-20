@@ -9,10 +9,30 @@ THISMODULE = editor
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = editor_ca.mo editor_cs.mo editor_it.mo editor_de.mo editor_es.mo editor_pt.mo editor_ru.mo editor_pt_BR.mo editor_fr.mo editor_hu.mo
+tmp_DATA  = editor_ca.mo \
+	editor_cs.mo \
+	editor_it.mo \
+	editor_de.mo \
+	editor_es.mo \
+	editor_pt.mo \
+	editor_ru.mo \
+	editor_pt_BR.mo \
+	editor_fr.mo \
+	editor_hu.mo \
+	editor_fi.mo
 
 # The *.po files to generate
-POFILES  = editor_ca.po editor_cs.po editor_it.po editor_de.po editor_es.po editor_pt.po editor_ru.po editor_pt_BR.po editor_fr.po editor_hu.po
+POFILES  = editor_ca.po \
+	editor_cs.po \
+	editor_it.po \
+	editor_de.po \
+	editor_es.po \
+	editor_pt.po \
+	editor_ru.po \
+	editor_pt_BR.po \
+	editor_fr.po \
+	editor_hu.po \
+	editor_fi.po
 
 ###############################################################################
 # STOP EDITING HERE

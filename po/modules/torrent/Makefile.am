@@ -9,10 +9,18 @@ THISMODULE = torrent
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = torrent_de.mo torrent_it.mo torrent_hu.mo torrent_pt.mo
+tmp_DATA  = torrent_de.mo \
+	torrent_it.mo \
+	torrent_hu.mo \
+	torrent_pt.mo \
+	torrent_fi.mo
 
 # The *.po files to generate
-POFILES  =  torrent_de.po torrent_it.po torrent_hu.po torrent_pt.po
+POFILES  =  torrent_de.po \
+	torrent_it.po \
+	torrent_hu.po \
+	torrent_pt.po \
+	torrent_fi.po
 
 
 ###############################################################################

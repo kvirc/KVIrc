@@ -23,7 +23,8 @@ tmp_DATA  = options_bg.mo \
 	options_pt.mo \
 	options_pt_BR.mo \
 	options_ru.mo \
-	options_sr.mo
+	options_sr.mo \
+	options_fi.mo
 
 # The *.po files to generate
 POFILES = options_bg.po \
@@ -39,7 +40,8 @@ POFILES = options_bg.po \
 	options_pt.po \
 	options_pt_BR.po \
 	options_ru.po \
-	options_sr.po
+	options_sr.po \
+	options_fi.po
 
 ###############################################################################
 # STOP EDITING HERE

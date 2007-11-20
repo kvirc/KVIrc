@@ -9,10 +9,30 @@ THISMODULE = perl
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = perl_ca.mo perl_cs.mo perl_it.mo perl_de.mo perl_pt.mo perl_es.mo perl_ru.mo perl_pt_BR.mo perl_fr.mo perl_hu.mo
+tmp_DATA  = perl_ca.mo \
+	perl_cs.mo \
+	perl_it.mo \
+	perl_de.mo \
+	perl_pt.mo \
+	perl_es.mo \
+	perl_ru.mo \
+	perl_pt_BR.mo \
+	perl_fr.mo \
+	perl_hu.mo \
+	perl_fi.mo
 
 # The *.po files to generate
-POFILES  =  perl_ca.po perl_cs.po perl_it.po perl_de.po perl_pt.po perl_es.po perl_ru.po perl_pt_BR.po perl_fr.po perl_hu.po
+POFILES  =  perl_ca.po \
+	perl_cs.po \
+	perl_it.po \
+	perl_de.po \
+	perl_pt.po \
+	perl_es.po \
+	perl_ru.po \
+	perl_pt_BR.po \
+	perl_fr.po \
+	perl_hu.po \
+	perl_fi.po
 
 
 ###############################################################################

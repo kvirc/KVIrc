@@ -9,10 +9,18 @@ THISMODULE = theme
 tmpdir = $(localedir)
 
 # The *.mo files to generate
-tmp_DATA  = theme_it.mo theme_ru.mo theme_pt.mo theme_de.mo
+tmp_DATA  = theme_it.mo \
+	theme_ru.mo \
+	theme_pt.mo \
+	theme_de.mo \
+	theme_fi.mo
 
 # The *.po files to generate
-POFILES  = theme_it.po theme_ru.po theme_pt.po theme_de.po
+POFILES  = theme_it.po \
+	theme_ru.po \
+	theme_pt.po \
+	theme_de.po \
+	theme_fi.po
 
 
 ###############################################################################
