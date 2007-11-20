@@ -81,7 +81,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel))
 		m_pButtonGrid= (QFrame*) new KviTalGrid(2,Qt::Horizontal,m_pButtonBox);
 	else
-		m_pButtonGrid= (QFrame*) new KviTalGrid(1,Qt::Horizontal,m_pButtonBox);
+		m_pButtonGrid= (QFrame*) new KviTalGrid(4,Qt::Horizontal,m_pButtonBox);
 
 	createTextEncodingButton(m_pButtonGrid);
 
