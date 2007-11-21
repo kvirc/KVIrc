@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-01-27 11:33+0100\n"
+"POT-Creation-Date: 2007-11-21 17:34+0100\n"
 "PO-Revision-Date: 2007-10-27 22:29+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:73
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
 msgid "No client selected!"
 msgstr "Nincs kliens kiválasztva!"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:45
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -28,28 +28,28 @@ msgstr ""
 "Egy kezelőfelület a KDE kitűnő KTorrent klienséhez.\n"
 "Letölthető a http://www.ktorrent.org címről.\n"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:61
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Az index értékhatáron túli: %d [0-%d]!"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:72
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:63
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr " \"%Q\" tesztelése: %d pont"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:113
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:103
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:110
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Úgy néz ki nincs torrent kliens telepítve ezen a számítógépen"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:153
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:119
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Nincs torrent kliens kiválasztva. Próbáld a /torrent.detect parancsot."
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:163
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:129
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
@@ -57,7 +57,16 @@ msgstr ""
 "A kiválasztott torrent kliens interfész nem tudta végrehajtani a kért "
 "műveletet"
 
-#: /home/hellvis69/kvircsvn/kvirc/src/modules/torrent/libkvitorrent.cpp:164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:130
 msgid "Last interface error: "
 msgstr "Utolsó interfész hiba:"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:707
+#, fuzzy
+msgid "Using client interface \"%Q\"."
+msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:715
+#, fuzzy
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
