@@ -121,7 +121,7 @@ bool KviIdentSentinel::event(QEvent *e)
 		} else if(((KviThreadEvent *)e)->id() == KVI_IDENT_THREAD_EVENT_EXITING_ON_REQUEST)
 		{
 			if(_OUTPUT_VERBOSE)
-				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (requesetd action)"));
+				if(pTarget)pTarget->outputNoFmt(KVI_OUT_IDENT,__tr("Shutting down identd service (requested action)"));
 		}
 
 		return true;
