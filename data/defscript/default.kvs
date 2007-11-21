@@ -1774,10 +1774,20 @@ defpopup(dcc)
 	{
 		dcc.send $0
 	}
+	
+	item($tr("Secure send to") $0,79)
+	{
+		dcc.send -s $0
+	}
 
 	item($tr("Reverse Send to") $0,79)
 	{
 		dcc.rsend -z $0
+	}
+	
+	item($tr("Secure Reverse Send to") $0,79)
+	{
+		dcc.rsend -z -s $0
 	}
 
 	separator
