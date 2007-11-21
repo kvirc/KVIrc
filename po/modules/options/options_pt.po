@@ -3,18 +3,18 @@
 # translation of kvirc_pt.po to
 #
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # José Melo <mmodem00@gmail.com>, 2005.
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007.
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-07 21:08+0100\n"
+"POT-Creation-Date: 2007-11-21 17:02+0100\n"
 "PO-Revision-Date: 2007-11-16 22:06+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -266,7 +266,8 @@ msgstr "O campo da Alcunha não pode conter espaços!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr "A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr ""
+"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -374,7 +375,8 @@ msgstr "Activar piscar de ícone na barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr "Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
+msgstr ""
+"Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -851,11 +853,12 @@ msgid ""
 "server belongs to, and if that is empty then the default nickname (specified "
 "in the \"Identity\" settings) will be used.</center>"
 msgstr ""
-"<center>Pode indicar um <b>Alcunha</b> \"especial\" que será usada para "
-"o autenticar neste servidor.<br>Se este campo for deixado vazio (caso mais "
+"<center>Pode indicar um <b>Alcunha</b> \"especial\" que será usada para o "
+"autenticar neste servidor.<br>Se este campo for deixado vazio (caso mais "
 "comum), o KVirc irá primeiro procurar se foi definida alguma alcunha na rede "
-"a que este servidor pertence, e se não estiver definido nenhuma, então "
-"irá usar a alcunha predefinida (indicada nas configurações de \"Identidade\").</center>"
+"a que este servidor pertence, e se não estiver definido nenhuma, então irá "
+"usar a alcunha predefinida (indicada nas configurações de \"Identidade\").</"
+"center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:513
 msgid ""
@@ -1184,8 +1187,10 @@ msgid "Server:"
 msgstr "Servidor:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid "<center>This is the name of the currently selected server or network</center>"
-msgstr "<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
+msgstr ""
+"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1153
 msgid "Advanced..."
@@ -1200,7 +1205,8 @@ msgid "Connect &Now"
 msgstr "Conectar &Agora"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Prima este botão para conectar ao actual servidor seleccionado.</"
 "center>"
@@ -1377,10 +1383,10 @@ msgid ""
 "image (including <b>http://</b>) can be entered manually."
 msgstr ""
 "Por favor escolha uma imagem Avatar. Pode usar uma localização completa para "
-"um ficheiro local ou uma imagem na Web.<br>Se quiser usar um ficheiro "
-"local, clique no botão \"<b>Procurar</b>\" para procurar ficheiros locais."
-"<br>O URL completo de uma imagem (incluindo <b>http://</b>) pode ser "
-"indicado manualmente."
+"um ficheiro local ou uma imagem na Web.<br>Se quiser usar um ficheiro local, "
+"clique no botão \"<b>Procurar</b>\" para procurar ficheiros locais.<br>O URL "
+"completo de uma imagem (incluindo <b>http://</b>) pode ser indicado "
+"manualmente."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:237
 msgid "&Browse..."
@@ -1421,8 +1427,8 @@ msgstr ""
 "<center>Este é o <b>nome de utilizador</b> que irá usar para se conectar ao "
 "servidor. No passado, usava-se como forma de autenticação, mas agora já não "
 "tem qualquer uso específico.<br>Em relação à sua alcunha, é identificado no "
-"IRC pelo seu<b>nome_utilizador@endereço</b>.</br>Basicamente, aqui pode indicar "
-"uma palavra qualquer. :D</center>"
+"IRC pelo seu<b>nome_utilizador@endereço</b>.</br>Basicamente, aqui pode "
+"indicar uma palavra qualquer. :D</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:346
 msgid ""
@@ -1435,8 +1441,10 @@ msgstr ""
 "umas citações ou frases quaisquer.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr ""
+"este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
 msgid "Profile"
@@ -2366,7 +2374,8 @@ msgstr "dentro de:"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr "<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
+msgstr ""
+"<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -2622,7 +2631,8 @@ msgid "Minimum alert level:"
 msgstr "Nível de alerta mínimo:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid ""
+"<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Esta opção define o nível de alerta mínimo para a barra de tarefas.</"
 "center>"
@@ -2847,16 +2857,17 @@ msgid ""
 "quit; }</tt></p></center>"
 msgstr ""
 "<center>Esta opção activa a auto-reconexão após uma desconectar inesperada. "
-"Uma desconexão inesperada é o <b>fim</b> de uma<b> sessão IRC activa</b> "
-"que não foi <b>pedida pelo utilizador</b> através de uma mensagem QUIT. "
+"Uma desconexão inesperada é o <b>fim</b> de uma<b> sessão IRC activa</b> que "
+"não foi <b>pedida pelo utilizador</b> através de uma mensagem QUIT. "
 "<p><b>Aviso:</b> se usar /RAW para enviar uma mensagem QUIT para o servidor, "
-"esta opção não será feita correctamente, isto porque não detecta a saída de uma "
-"mensagem QUIT e tenta reconectar após o servidor fechar a ligação. Por esta "
-"razão, use sempre o comando /QUIT para fechar as suas ligações. Esta opção "
-"também pode ter um comportamento incorrecto com 'bouncers' que suportem "
-"desanexamento, neste caso a solução pode passar por preparar uma 'alias' que "
-"envie o comando \"detach\" do 'bouncer' imediatamente antes do comando \"quit\". "
-"<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>"
+"esta opção não será feita correctamente, isto porque não detecta a saída de "
+"uma mensagem QUIT e tenta reconectar após o servidor fechar a ligação. Por "
+"esta razão, use sempre o comando /QUIT para fechar as suas ligações. Esta "
+"opção também pode ter um comportamento incorrecto com 'bouncers' que "
+"suportem desanexamento, neste caso a solução pode passar por preparar uma "
+"'alias' que envie o comando \"detach\" do 'bouncer' imediatamente antes do "
+"comando \"quit\". <br><tt>alias(bncdetach){ raw bouncer detach; quit; }</"
+"tt></p></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:89
 msgid "Maximum attempts (0: unlimited):"
@@ -2870,7 +2881,8 @@ msgstr "Atraso entre tentativas:"
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
-msgstr "<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
+msgstr ""
+"<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:123
 msgid "Certificate"
@@ -3262,7 +3274,8 @@ msgstr "Forçar linguagem:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "<b>Nota:</b> Precisa reiniciar o KVirc para aplicar a mudança de língua"
+msgstr ""
+"<b>Nota:</b> Precisa reiniciar o KVirc para aplicar a mudança de língua"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -3573,7 +3586,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:254
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr "Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
+msgstr ""
+"Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:257
 msgid ""
@@ -4405,4 +4419,3 @@ msgstr "Privado"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "conversar"
-
