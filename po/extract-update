@@ -3,6 +3,7 @@
 # helper script for KVIrc translators
 # Dusan Hokuv, 2005
 # Modified: Ahinu, 2006
+# Modified: HelLViS69, 2007
 
 modules="about \
 	dcc \
@@ -15,7 +16,8 @@ modules="about \
 	sharedfileswindow \
 	options \
 	theme \
-	torrent"
+	torrent \
+	tip"
 
 cd kvirc
 make messages-extract && make messages-update
