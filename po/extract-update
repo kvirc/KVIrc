@@ -16,8 +16,7 @@ modules="about \
 	sharedfileswindow \
 	options \
 	theme \
-	torrent \
-	tip"
+	torrent"
 
 cd kvirc
 make messages-extract && make messages-update
