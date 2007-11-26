@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: theme_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-21 17:25+0100\n"
-"PO-Revision-Date: 2007-02-06 01:19+0000\n"
+"PO-Revision-Date: 2007-11-26 04:53+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -43,21 +43,23 @@ msgstr "Criado com"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:200
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr ""
+msgstr "Aviso: O tema pode ser incompatível com esta versão do KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:209
 msgid "Go Back to Package Data"
-msgstr ""
+msgstr "Voltar aos Dados do Pacote"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:216
 msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
 msgstr ""
+"Aviso: Alguns dos temas contidos neste pacote podem estar corrompidos "
+"ou podem ser incompatíveis com esta versão do KVirc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:220
 msgid "Show Details"
-msgstr ""
+msgstr "Mostrar Detalhes"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:272
 msgid "Install Theme Pack - KVIrc"
@@ -85,7 +87,7 @@ msgstr "Não é possível desempacotar o ficheiro seleccionado: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:319
 msgid "Theme Engine Version"
-msgstr ""
+msgstr "Versão do Motor do Tema"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:320
 msgid "Subdirectory"
@@ -230,11 +232,11 @@ msgstr "Erro ao instalar o tema: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/libkvitheme.cpp:110
 msgid "Choose a file to save the screenshot to"
-msgstr ""
+msgstr "Escolha um ficheiro para gravar a captura de ecrã"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/libkvitheme.cpp:125
 msgid "Error making screenshot"
-msgstr ""
+msgstr "Erro ao criar a captura de ecrã"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/managementdialog.cpp:101
 msgid "by"
@@ -303,9 +305,8 @@ msgstr "Abrir Tema - KVIrc"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:264
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:276
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:286
-#, fuzzy
 msgid "Save Current Theme - KVIrc"
-msgstr "Gravar Tema Actual"
+msgstr "Gravar Tema Actual - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:79
 msgid ""
@@ -315,39 +316,39 @@ msgid ""
 "will also allow you to manually modify the theme settings and later export "
 "them to a distributable package."
 msgstr ""
+"Este procedimento permite-lhe as definições actuais do tema num único "
+"directório. É útil se quiser aplicar outros temas ou brincar com as definições "
+"do tema e mais tarde voltar a este tema com um simples clique. Permite-lhe "
+"também modificar manualmente as definições do tema e mais tarde "
+"exporta-las para um pacote distribuível."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:81
-#, fuzzy
 msgid ""
 "You will be asked to provide a theme name, a description and, if you want, a "
 "screenshot."
 msgstr ""
-"Será-lhe pedido para indicar um nome ao pacote, uma descrição e, sequiser, "
-"um ícone/captura de ecrã."
+"Será-lhe pedido para indicar um nome ao tema, uma descrição e, e se quiser, "
+"uma captura de ecrã."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:102
-#, fuzzy
 msgid ""
 "Here you need to provide informations about you (the author) and a short "
 "description of the theme you're creating."
 msgstr ""
-"Aqui precisa indicar informação acerca de si (o empacotador) e uma breve "
+"Aqui precisa indicar informação acerca de si (o autor) e uma breve "
 "descrição do pacote que está a criar."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:107
-#, fuzzy
 msgid "Theme Name:"
 msgstr "Nome do Tema:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:131
-#, fuzzy
 msgid "Theme Author:"
-msgstr "Autor:"
+msgstr "Autor do Tema::"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:142
-#, fuzzy
 msgid "Theme Informations"
-msgstr "Informações do Pacote"
+msgstr "Informações do Tema"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:154
 msgid ""
@@ -356,23 +357,26 @@ msgid ""
 "and will be also visible in the package installation dialog if you will "
 "export the theme to a distributable package."
 msgstr ""
+"Aqui pode escolher uma imagem de captura de ecrã do disco ou criar uma agora. "
+"A captura de ecrºa será mostrada nas dicas do diálogo de gestão de temas "
+"e será também visível no diálogo de instalação do pacote se exportar o tema "
+"para um pacote distribuível."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:170
 msgid "Make Screenshot Now"
-msgstr ""
+msgstr "Criar Captura de Ecrã Agora"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:177
-#, fuzzy
 msgid "Screenshot"
-msgstr "Ícone/Captura de ecrã"
+msgstr "Captura de ecrã"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:227
 msgid "Acquire Screenshot - KVIrc"
-msgstr ""
+msgstr "Adquirir Captura de Ecrã - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:227
 msgid "Failed to make screenshot"
-msgstr ""
+msgstr "Falha ao criar captura de ecrã"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:243
 msgid "You must choose a theme name!"
@@ -387,9 +391,8 @@ msgid "Unable to save theme: %Q"
 msgstr "Não é possível gravar o tema: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:286
-#, fuzzy
 msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Não é possível carregar a imagem seleccionada: por favor corrija"
+msgstr "Não é possível carregar a imagem seleccionada: por favor corrija-a"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:293
 msgid "Theme saved successfully to "
@@ -399,14 +402,3 @@ msgstr "Tema gravado com sucesso para"
 msgid "Save Theme - KVIrc"
 msgstr "Gravar Tema - KVIrc"
 
-#~ msgid "Minimum KVIrc version"
-#~ msgstr "Versão KVIrc mínima"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "The selected theme package requires at least KVIrc %Q"
-#~ msgstr "O pacote de tema seleccionado requer pelo menos o KVIrc %Q"
