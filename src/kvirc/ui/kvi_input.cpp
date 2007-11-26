@@ -1491,15 +1491,24 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			break;
 			case Qt::Key_Backspace:
 			case Qt::Key_W:
-				if(!m_bReadOnly && !hasSelection())
+				if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
 				{
-					while(m_iCursorPosition>0 && !m_szTextBuffer[m_iCursorPosition-1].isSpace())
+					// skip whitespace
+					while(m_iCursorPosition > 0)
 					{
+						if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
 						m_szTextBuffer.remove(m_iCursorPosition-1,1);
 						m_iCursorPosition--;
 						if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar--;
 					}
-					selectOneChar(-1);
+					// skip nonwhitespace
+					while(m_iCursorPosition > 0)
+					{
+						if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
+						m_szTextBuffer.remove(m_iCursorPosition-1,1);
+						m_iCursorPosition--;
+						if(m_iFirstVisibleChar > m_iCursorPosition)m_iFirstVisibleChar--;
+					}
 					repaintWithCursorOn();
 				}
 			break;
