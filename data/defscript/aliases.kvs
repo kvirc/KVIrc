@@ -554,30 +554,22 @@ alias(ignore)
 	if(!$0)
 	{
 		echo $tr("Usage:")
-		echo "	  /ignore [-r] <nick> [mask]"
+		echo "	  /ignore [-r] <nick>"
 		halt
 	}
 
-	# Get the mask
-
-	%mask = $1
-
-	# no mask specified ? build it
-
-	if(!%mask)%mask = $0!*@*
-
 	# Now add the user (but do not replace old entries)
 
-	reguser.add -f -q $0 %mask
+	reguser.add $0 $mask($0,15);
 
 	# And finally set the property (use -n so the notify lists will be restarted)
 	# Check if ignore or unignore the user
 
 	if(!$sw(r))
 	{
-		reguser.setIgnoreEnabled $0 true
-		reguser.setIgnoreFlags -p -c -t $0
-	} else reguser.setIgnoreEnabled $0 false
+		reguser.setproperty $0 IgnoreEnabled 1
+		reguser.setproperty $0 IgnoreAll 1
+	} else reguser.setproperty $0 IgnoreEnabled 0
 }
 
 # Dcc...people commonly use "dcc send" instead of "dcc.send"
