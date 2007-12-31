@@ -72,36 +72,82 @@ AC_DEFUN([AC_SS_INIT_VARIABLES],
 dnl # // ##################################################################################################################
 dnl # // ## OUTPUT MACROS
 dnl # // ##################################################################################################################
+AC_DEFUN([AC_CROSS_COLOR],
+[
+
+	TPUT=0
+	PRINTF=0
+	COLOR=0
+	IFS_OLD=$IFS
+	IFS=":"
+
+	for i in $PATH; do
+		if test -x "$i/tput"; then
+			TPUT=1
+		fi
+	done
+
+	type printf >/dev/null 2>&1 && PRINTF=1
+
+	for i in $PATH; do
+		if test -x "$i/printf"; then
+			PRINTF=1
+		fi
+	done
+
+	if test "$TPUT" = "1" -o "$PRINTF" = "1"; then
+		COLOR=1
+	fi
+
+	if test "$COLOR" = 1; then
+		if test "$TPUT" = "1"; then
+			if test "$1" = "1"; then
+				tput bold
+			else
+				tput sgr0
+			fi
+			if test "$2" != ""; then
+				tput setaf $2
+			fi
+		elif test "$PRINTF" = "1"; then
+			if test "$2" != ""; then
+				printf "\033\1330$1;3$2m"
+			fi
+		fi
+	fi
+
+	IFS=$IFS_OLD
+])
 
 AC_DEFUN([AC_SS_HEADER],
 [
-	echo -en "\\033\\01331;32m"
+	AC_CROSS_COLOR([1],[2])
 	echo "################################################################################"
 	echo "### $1"
 	echo "################################################################################"
-	echo -en "\\033\\01330;39m"
+	AC_CROSS_COLOR([0],[9])
 ])
 
 AC_DEFUN([AC_SS_SECTION],
 [
-	echo -en "\\033\\01331;33m"
+	AC_CROSS_COLOR([1],[3])
 	echo "### $1"
-	echo -en "\\033\\01330;39m"
+	AC_CROSS_COLOR([0],[9])
 ])
 
 AC_DEFUN([AC_SS_SET_REDINK],
 [
-	echo -en "\\033\\01331;31m"
+	AC_CROSS_COLOR([1],[1])
 ])
 
 AC_DEFUN([AC_SS_SET_GREENINK],
 [
-	echo -en "\\033\\01331;32m"
+	AC_CROSS_COLOR([1],[2])
 ])
 
 AC_DEFUN([AC_SS_SET_NORMALINK],
 [
-	echo -en "\\033\\01330;39m"
+	AC_CROSS_COLOR([0],[9])
 ])
 
 dnl # // ##################################################################################################################
