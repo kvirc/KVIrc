@@ -621,6 +621,8 @@ namespace KviKvsCoreFunctions
 			It is a good idea to take a look at the
 			[doc:window_naming_conventions]window naming conventions[/doc].
 			This identifier is equivalent to [fnc]$ic[/fnc].[br]
+		@seealso:
+			[fnc]$window.context[/fnc]
 	*/
 
 	KVSCF(context)

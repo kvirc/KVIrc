@@ -9,6 +9,7 @@ SUBDIRS = about \
 		clock \
 		codetester \
 		config \
+		context \
 		dcc \
 		dialog \
 		editor \

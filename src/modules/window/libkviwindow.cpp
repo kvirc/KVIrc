@@ -687,6 +687,34 @@ static bool window_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc: window.context
+	@type:
+		function
+	@title:
+		$window.context
+	@short:
+		Returns the IRC context of a window
+	@syntax:
+		$window.context
+		$window.context(<window_id>)
+	@description:
+		Returns the IRC context of the window with the specified <window_id>.[br]
+		The form with no parameters returns the IRC context of the current window.[br]
+		If the window with the specified id does not exist, an empty string is returned.[br]
+	@seealso:
+*/
+
+static bool window_kvs_fnc_context(KviKvsModuleFunctionCall * c)
+{
+	GET_KVS_FNC_WINDOW_ID
+	if(pWnd)
+	{
+		c->returnValue()->setInteger(pWnd->console() ? pWnd->console()->ircContextId() : 0);
+	}
+	return true;
+}
+
+/*
 	@doc: window.caption
 	@type:
 		function
@@ -1450,6 +1478,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"list",window_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"open",window_kvs_fnc_open);
 	KVSM_REGISTER_FUNCTION(m,"inputText",window_kvs_fnc_inputText);
+	KVSM_REGISTER_FUNCTION(m,"context",window_kvs_fnc_context);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",window_kvs_cmd_close);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearOutput",window_kvs_cmd_clearOutput);
