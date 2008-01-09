@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-21 17:09+0100\n"
+"POT-Creation-Date: 2007-12-07 13:50+0100\n"
 "PO-Revision-Date: 2004-07-12 10:00+0200\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -17,57 +17,57 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1248
-msgid "Hide"
-msgstr "Schovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1251
-msgid "1 Minute"
-msgstr "1 ninuta"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1252
-msgid "5 Minutes"
-msgstr "5 minut"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1253
-msgid "15 Minutes"
-msgstr "15 minut"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1254
-msgid "30 Minutes"
-msgstr "30 minut"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1255
-msgid "1 Hour"
-msgstr "1 hodina"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1257
-msgid "Until KVIrc is Restarted"
-msgstr "Dokud se KVIrc nerestartuje"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1258
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Pemanentně (Dokud je explicitně povolen)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1260
-msgid "Disable"
-msgstr "Vypnout"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1351
-msgid "Write text or commands to window"
-msgstr "Napíše text nebo příkaz do okna"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+#: /home/hunterz/kvirc/src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "Zadané okno neexistuje"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+#: /home/hunterz/kvirc/src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Zadaná prodleva je neplatná, nastavuji 0"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+#: /home/hunterz/kvirc/src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "Přepínač -t očekává prodlevu v sekundách"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1248
+msgid "Hide"
+msgstr "Schovat"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1251
+msgid "1 Minute"
+msgstr "1 ninuta"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1252
+msgid "5 Minutes"
+msgstr "5 minut"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1253
+msgid "15 Minutes"
+msgstr "15 minut"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1254
+msgid "30 Minutes"
+msgstr "30 minut"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1255
+msgid "1 Hour"
+msgstr "1 hodina"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1257
+msgid "Until KVIrc is Restarted"
+msgstr "Dokud se KVIrc nerestartuje"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1258
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Pemanentně (Dokud je explicitně povolen)"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1260
+msgid "Disable"
+msgstr "Vypnout"
+
+#: /home/hunterz/kvirc/src/modules/notifier/notifierwindow.cpp:1351
+msgid "Write text or commands to window"
+msgstr "Napíše text nebo příkaz do okna"
 
 #~ msgid "The command parser raised an error"
 #~ msgstr "Parser příkazu vyvolal chybu"
