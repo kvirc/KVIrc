@@ -3,79 +3,729 @@
 # This file is distributed under the same license as the Kvirc package.
 # Dusan Hokuv <dusan@mirc.cz>, 2004.
 # , fuzzy
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-21 17:09+0100\n"
-"PO-Revision-Date: 2005-02-21 09:46+0100\n"
+"POT-Creation-Date: 2007-12-07 13:50+0100\n"
+"PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/descriptor.cpp:70
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:111
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:408
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:443
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:642
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:666
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:803
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1121
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1171
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/marshal.cpp:484
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/marshal.cpp:514
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/marshal.cpp:519
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:134
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:135
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:136
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1563
+msgid "&Line"
+msgstr "&Line"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1564
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1572
+msgid "&Rectangle"
+msgstr "&Rectangle"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1565
+msgid "&Ellipse"
+msgstr "&Ellipse"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1566
+msgid "&Pie"
+msgstr "&Pie"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1567
+msgid "&Chord"
+msgstr "&Chord"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1569
+msgid "&Rich text (html)"
+msgstr "&Rich text (html)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1571
+msgid "&Triangle"
+msgstr "&Triangle"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1573
+msgid "&Pentagon"
+msgstr "&Pentagon"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1574
+msgid "&Hexagon"
+msgstr "&Hexagon"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1576
+msgid "&Shape"
+msgstr "&Shape"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1577
+msgid "&Item"
+msgstr "&Item"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1578
+msgid "&Polygons"
+msgstr "&Polygons"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvaswidget.cpp:1580
+msgid "&Insert"
+msgstr "&Insert"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:158
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr "Pokouším se o pasivní DCC %s připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:168
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr "Pokouším se o aktivní DCC %s připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:182
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:107
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:761
+msgid "Contacting host %Q on port %Q"
+msgstr "Kontaktuje se hostitel %Q na portu %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:184
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:83
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:764
+msgid "Listening on interface %Q port %Q"
+msgstr "Naslouchám na interfacu %Q port %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:207
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr "Lokální IP adresa je privátní, zjišťuji z IRC serveru: %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:209
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1507
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr "Lokální IP adresa je privátní, ale nemohu ji zjistit z IRC serveru"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:212
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1510
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+"Lokální IP adresa je privátní, ale nemám žádné IRC servery k jejímu zjištění"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:234
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr ""
+"Odeslán DCC %Q požadavek na %Q, čekám na připojení vzdáleného klienta..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:237
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr "DCC %Q požadavek nebyl odeslán, očekává se manuální připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:245
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1569
+msgid "Low-level transport connection established"
+msgstr "Nízkoúrovňové přenosové spojení navázáno"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:246
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1570
+msgid "Starting Secure Socket Layer handshake"
+msgstr "Startuji SSL spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:254
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr "[SSL CHYBA]: %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:302
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:388
+msgid "Cannot send data: No active connection"
+msgstr "Nelze poslat data: Žádné aktivní připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:344
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
+"data was sent to the remote end"
+msgstr ""
+"Šifrovací program nebyl schopen zašifrovat aktuální zprávu (%Q): %Q, žadná "
+"data nebyla odeslána na vzdálený konec"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:403
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:827
+msgid "ERROR: %Q"
+msgstr "CHYBA: %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:447
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %Q"
+msgstr ""
+"Následující zpráva se zdá být zašifrovaná, ale šifrovací program nebyl "
+"schopen ji dešifrovat: %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:493
+msgid "DCC %Q failed: %Q"
+msgstr "DCC %Q selhalo: %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:521
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:282
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:919
+msgid "Connected to %Q:%Q"
+msgstr "Spojeno s %Q:%Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/chat.cpp:523
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:284
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:921
+msgid "Local end is %Q:%Q"
+msgstr "Lokální konec je %Q:%Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:77
+msgid "Unable to process the above request: %Q, %Q"
+msgstr "Nemohu zpracovat předchozí požadavek: %Q, %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:79
+msgid "Ignoring and notifying failure"
+msgstr "Ignoruji a ohlašuji selhání"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:79
+msgid "Ignoring"
+msgstr "Ignoruji"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:95
+#, c-format
+msgid "Concurrent transfer limit reached (%u of %u transfers running)"
+msgstr ""
+"Limit současně probíhajících přenosů dosažen (%u z %u probíhajících přenosů)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:111
+#, c-format
+msgid "Slot limit reached (%u slots of %u)"
+msgstr "Limit slotů dosažen  (%u slotů z %u)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:120
+msgid "Too many pending connections"
+msgstr "Příliš mnoho čekajících spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:134
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:135
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:136
+#: /home/hunterz/kvirc/src/modules/dcc/marshal.cpp:484
+#: /home/hunterz/kvirc/src/modules/dcc/marshal.cpp:514
+#: /home/hunterz/kvirc/src/modules/dcc/marshal.cpp:519
+#: /home/hunterz/kvirc/src/modules/dcc/descriptor.cpp:70
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:111
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:408
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:443
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:642
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:666
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:803
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:805
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1121
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1171
 msgid "unknown"
 msgstr "neznámý"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:158
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:783
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:156
+#, c-format
+msgid "Invalid port number %s"
+msgstr "Nesprávné číslo portu %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:172
+#, c-format
+msgid "Invalid IP address in old format %s"
+msgstr "Nesprávná IP adresa ve starém formátu %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:191
+#, c-format
+msgid "Invalid IP address %s"
+msgstr "Nesprávná IP adresa %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:258
+#, c-format
+msgid ""
+"The above request is broken: The second parameter is '%s' and should be "
+"'chat', trying to continue"
+msgstr ""
+"Předchozí požadavek je přerušený: Druhý parametr je '%s' a měl by být "
+"'chat', pokouším se pokračovat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:270
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC CHAT is not available"
+msgstr ""
+"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
+"DCC CHAT není dostupné"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:321
+msgid ""
+"The above request is broken: it looks like a zero port tag acknowledge but I "
+"have either never seen this tag or it was sent more than 120 seconds ago"
+msgstr ""
+"Výše uvedený požadavek je poškozený; vypadá to na dohodnutý nulový port, ale "
+"nikde není tento požadavek vidět v průběhu předchozích 120 sekund"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:322
+msgid "It seems that I haven't requested this dcc chat"
+msgstr "Vypadá to, že nemám požadavek na tento dcc chat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:442
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number, trying to continue"
+msgstr ""
+"Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
+"souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:444
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:730
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:634
+msgid "<unknown size>"
+msgstr "<neznámá velikost>"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:452
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:600
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:738
+msgid ""
+"The above request is broken: The filename contains path components, "
+"stripping the leading path and trying to continue"
+msgstr ""
+"Předchozí požadavek je přerušený: Název souboru obsahuje cestu, odstraňuji "
+"počáteční cestu a snažím se pokračovat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:466
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC SEND is not available"
+msgstr ""
+"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
+"DCC SEND není dostupné"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:528
+#, c-format
+msgid ""
+"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgstr ""
+"Nemohu pokračovat v DCC RECV: Přenos nebyl zahájen pro soubor %s na portu %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:553
+#, c-format
+msgid "Invalid resume position argument '%s'"
+msgstr "Nesprávný parametr pro pokračování '%s'"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:565
+#, c-format
+msgid ""
+"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
+"or invalid resume size"
+msgstr ""
+"Nemohu pokračovat v DCC SEND: Přenos nebyl zahájen pro soubor %s na portu %"
+"s, nebo je nesprávná velikost pro pokračování"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:590
+msgid ""
+"The above request has resume file size missing, assuming a resume file size "
+"of 0"
+msgstr ""
+"Následujícímu požadavku navázání chybí velikost souboru, předpokládá se "
+"velikost souboru 0"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:614
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RECV is not available"
+msgstr ""
+"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
+"DCC RECV není dostupné"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:629
+#, c-format
+msgid "Invalid RECV request: Position %u is is larger than file size"
+msgstr "Nesprávný RECV požadavek: Pozice %u je větší než velikost souboru"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:683
+msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
+msgstr "%Q [%Q@%Q] je připraven k přijmutí souboru \"%s\""
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:689
+#, c-format
+msgid "The remote client is listening on interface %s and port %s"
+msgstr "Vzdálený klient naslouchá na rozhraní %s a portu %s"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:696
+msgid ""
+"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
+"to send the file (or double-click on the socket)"
+msgstr ""
+"Použijte %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r"
+"%c k poslání souboru (nebo dvojklikem na soket)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:728
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number; trying to continue"
+msgstr ""
+"Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
+"souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:752
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RSEND is not available"
+msgstr ""
+"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
+"DCC RSEND není dostupné"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:763
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:932
+msgid "(unknown)"
+msgstr "(neznámý)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:769
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:918
+msgid "No suitable interface to listen on, trying to continue anyway..."
+msgstr "Žádné vhodné rozhraní pro naslouchání, snažím se pokračovat..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:835
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC GET is not available"
+msgstr ""
+"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
+"DCC GET není dostupné"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:846
+msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
+msgstr ""
+"Žádná nabídka souboru s názvem '%s' (s velikostí %s) není dostupná pro %Q [%"
+"Q@%Q]"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:847
+msgid "\"any\""
+msgstr "\"jakýkoliv\""
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:891
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %s since we can't accept incoming connections (user option)"
+msgstr ""
+"Příjem požadavku souboru od %Q [%Q@%Q] pro '%s' (skutečný soubor: %Q), "
+"nabízí DCC %s, dokud nebude možné přijmout příchozí spojení (uživatelská "
+"možnost)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:948
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %Q"
+msgstr ""
+"Přijímám požadavky na soubor od %Q [%Q@%Q] pro '%Q' (skutečný soubor: %Q), "
+"nabízím DCC %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:982
+msgid ""
+"The above request cannot be accepted: DCC VOICE support not enabled at "
+"compilation time "
+msgstr ""
+"Předchozí požadavek nemůže být přijat: DCC VOICE nebylo povoleno při "
+"kompilaci "
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:992
+#, c-format
+msgid "The above request cannot be accepted: Unsupported codec '%s'"
+msgstr "Předchozí požadavek nemůže být přijat: Kodek není podporován '%s'"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:1005
+#, c-format
+msgid ""
+"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
+"to 8000"
+msgstr ""
+"Předchozí požadavek výpadá jako přerušený: Nesprávná vzorkovací frekvence '%"
+"s', nastavuji výchozí na 8000"
+
+#: /home/hunterz/kvirc/src/modules/dcc/requests.cpp:1151
+#, c-format
+msgid "Unknown DCC type '%s'"
+msgstr "Neznámý DCC typ '%s'"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:258
+msgid "WARNING: The peer is sending garbage data past the end of the file"
+msgstr "VAROVÁNÍ: Za koncem souboru jsou posílána data nepatřící k souboru"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:259
+msgid ""
+"WARNING: Ignoring data past the declared end of file and closing the "
+"connection"
+msgstr ""
+"VAROVÁNÍ: Ignoruji data za deklarovaným koncem souboru a ukončuji spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:358
+msgid ""
+"Data transfer terminated, waiting 30 seconds for the peer to close the "
+"connection..."
+msgstr ""
+"Přenos dat byl stornován, čekám 30 sekund, než druhá strana uzavře spojení..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:365
+msgid "Data transfer was terminated 30 seconds ago, closing the connection"
+msgstr "Přenos dat byl stornován před 30-ti sekundami, uzavírám spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:595
+msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
+msgstr ""
+"VAROVÁNÍ: Přijímaná data v DCC TSEND, tady by neměla být žádná potvrzení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:727
+#, c-format
+msgid "TRANSFER %d"
+msgstr "PŘENOS %d"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:750
+msgid "Setting up the connection"
+msgstr "Nastavuji spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:809
+msgid "Attempting a passive DCC %1 connection"
+msgstr "Pokouším se o pasivní DCC %1 spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:813
+msgid "Attempting an active DCC %1 connection"
+msgstr "Pokouším se o aktivní DCC %1 spojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:839
+msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
+msgstr "Zaslán DCC RESUME požadavek na %1, vyčkávám na ACCEPT"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:909
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:920
+msgid "Aborted"
+msgstr "Přerušeno"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:919
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1598
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1673
+msgid "Transfer failed: "
+msgstr "Přenos selhal: "
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:931
+msgid "Configure Bandwidth..."
+msgstr "Konfigurovat přenosové pásmo..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:933
+msgid "Resend DCC"
+msgstr "Znovu poslat DCC"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:934
+msgid "Resend TDCC"
+msgstr "Znovu poslat TDCC"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:935
+msgid "Resend RevDCC"
+msgstr "Znovu poslat RevDCC"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:939
+msgid "Abort"
+msgstr "Přerušit"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1130
+msgid "From: "
+msgstr "Od:"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1131
+msgid "To: "
+msgstr "k:"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1234
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1241
+msgid "%1 of %2 (%3%)"
+msgstr "%1 z %2 (%3%)"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1245
+msgid "%1"
+msgstr "%1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1258
+msgid "Spd:"
+msgstr "Rych:"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1273
+msgid "Avg:"
+msgstr "Prům:"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1344
+msgid "Transfer Log"
+msgstr "Log Přenosů"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1475
+msgid "Contacting host %1 on port %2"
+msgstr "Kontaktuji hosta %1 na portu %2"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1482
+msgid "Listening on interface %1 port %2"
+msgstr "Naslouchám na rozhraní %1 port %2"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1505
+msgid "The local IP address is private, determining from IRC server: %1"
+msgstr "Lokální IP adresa je privátní, určuji z IRC serveru: %1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1556
+msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
+msgstr ""
+"Zaslán DCC %1 požadavek na %2, očekávám připojení vzdáleného klienta..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1558
+msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr "DCC %1 požadavek nebyl odeslán, očekávám manuální připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1577
+msgid "[SSL ERROR]: %1"
+msgstr "[SSL CHYBA]: %1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1620
+msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
+msgstr "DCC %s přenos s %Q@%Q:%Q kompletní: \r![!dbl]play $0\r%s\r"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1635
+msgid "Transfer completed"
+msgstr "Přenos kompletní"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1682
+msgid "Connected to %1:%2"
+msgstr "Připojen k %1:%2"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1683
+msgid "Local end is %1:%2"
+msgstr "Lokální konec je %1:%2"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1727
+msgid "Transferring data"
+msgstr "Přenáším data"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1753
+msgid "RESUME accepted, transfer will begin at position %1"
+msgstr "RESUME přijato, přenos začne na pozici %1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1784
+msgid "Internal error in RESUME request"
+msgstr "Vnitřní chyba v RESUME požadavku"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1789
+msgid "Invalid RESUME request: Position %1 is larger than file size"
+msgstr "Nesprávný RESUME požadavek: Pozice %1 je větší než velikost souboru"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1793
+msgid "Accepting RESUME request, transfer will begin at position %1"
+msgstr "Přijímám RESUME požadavek, přenos začne na pozici %1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1825
+msgid "Configure bandwidth for DCC transfer %1"
+msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1828
+msgid "Limit upload bandwidth to"
+msgstr "Omezit odchozí šířku pásma na"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1828
+msgid "Limit download bandwidth to"
+msgstr "Omezit příchozí šířku pásma na"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1841
+msgid "bytes/sec"
+msgstr "bajtů/sek"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1845
+msgid "OK"
+msgstr "OK"
+
+#: /home/hunterz/kvirc/src/modules/dcc/send.cpp:1850
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:142
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:64
+msgid "&Accept"
+msgstr "&Přijmout"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:69
+msgid "&Reject"
+msgstr "&Odmítnout"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:129
+msgid "&Rename"
+msgstr "&Přejmenovat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:133
+msgid "Over&write"
+msgstr "Př&epsat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:137
+msgid "Re&sume"
+msgstr "&Navázat"
+
+#: /home/hunterz/kvirc/src/modules/dcc/dialogs.cpp:149
+msgid "File Already Exists - KVIrc"
+msgstr "Soubor již existuje - KVIrc"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:78
+msgid "Attempting a passive DCC CANVAS connection"
+msgstr "Pokouším se o pasivní DCC CANVAS připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:98
+msgid ""
+"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr ""
+"Zaslán DCC CANVAS požadavek na %Q, vyčkávám na připojení vzdáleného "
+"klienta..."
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:100
+msgid "DCC CANVAS request not sent: awaiting manual connections"
+msgstr "DCC CANVAS požadavek nebyl odeslán: očekává se manuální připojeni"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:104
+msgid "Attempting an active DCC CANVAS connection"
+msgstr "Pokouším se o aktivní DCC CANVAS připojení"
+
+#: /home/hunterz/kvirc/src/modules/dcc/canvas.cpp:277
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:910
+msgid "DCC Failed: %Q"
+msgstr "DCC Selhání: %Q"
+
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:158
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:783
 msgid "Choose Files to Send - KVIrc"
 msgstr "Vyberte soubory k odeslání - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:189
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr "Nelze poslat DCC %s požadavek %s: IRC spojení bylo přerušeno"
+msgstr "Nelze poslat DCC %Q požadavek %Q: IRC spojení bylo přerušeno"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:199
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:821
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:199
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:821
 msgid "Can't open file %Q for reading"
-msgstr "Nelze otevřít soubor %s pro čtení"
+msgstr "Nelze otevřít soubor %Q pro čtení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:269
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:269
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
 msgstr "<b>%1 [%2@%3]</b> požadavek <b>DCC</b> v <b>%4</b> módu.<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:274
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:274
 msgid "The connection will be secured using SSL.<br>"
 msgstr "Spojení bude zabezpečeno pužitím SSL.<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:280
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:280
 msgid "You will be the passive side of the connection.<br>"
-msgstr ""
+msgstr "Budete na pasivní straně spojení.<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:284
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr "Cílový hostitel je <b>%1</b> na portu <b>%2</b><br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:289
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:543
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:289
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:543
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 požadavek - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:340
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:340
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -84,11 +734,11 @@ msgstr ""
 "<b>%1 [%2@%3]</b> požadavky<br><b>DCC</b> v <b>VOICE</b> modu.<br>Cílový "
 "hostitel je <b>%4</b> na portu <b>%5</b><br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:346
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:346
 msgid "DCC VOICE request"
 msgstr "DCC VOICE požadavek"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:411
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:411
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -97,12 +747,11 @@ msgstr ""
 "<b>%1 [%2@%3]</b> požadavky<br><b>DCC</b> v <b>CANVAS</b> modu.<br>Cílový "
 "hostitel je <b>%4</b> na portu <b>%5</b><br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:417
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:417
 msgid "DCC CANVAS request"
 msgstr "DCC CANVAS požadavek"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:502
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:502
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
@@ -110,8 +759,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> ti chce poslat soubor '<b>%4</b>', <b>%5</b> bajtů veliký."
 "<br>Cílový hostitel je <b>%6</b> na portu <b>%7</b><br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:515
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:515
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
@@ -119,7 +767,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> ti chce poslat soubor '<b>%4</b>', <b>%5</b> bajtů veliký."
 "<br>Budete pasivní stranou spojení.<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:528
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:528
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -137,23 +785,19 @@ msgstr ""
 "Můžete nastavit KVIrc, aby přijímalo avatary automaticky pomocí "
 "nastavení<tt>boolAutoAcceptIncomingAvatars</tt> jako true.<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:557
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:557
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr "Automatické přijímání DCC %s požadavku od %s!%s@%s pro soubor %s"
+msgstr "Automatické přijímání DCC %Q požadavku od %Q!%Q@%Q pro soubor %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:618
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:618
 msgid "Choose Files to Save - KVIrc"
-msgstr "Vyberte soubory k odeslání - KVIrc"
+msgstr "Vyberte soubory k uložení - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:631
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:631
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr "Automatické ukládání DCC %s souboru %s jako \r![!dbl]play $0\r%s\r"
+msgstr "Automatické ukládání DCC %Q souboru %Q jako \r![!dbl]play $0\r%Q\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:665
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:665
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
@@ -163,7 +807,7 @@ msgstr ""
 "si<br><b>přepsat</b> stávající soubor,<br> <b>automaticky přejmenovat</b> "
 "nový soubor, nebo<br><b>pokračovat</b> v nedokončeném stahování?"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:677
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:677
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
@@ -173,128 +817,24 @@ msgstr ""
 "si<br><b>přepsat</b> stávající soubor, nebo <br> <b>automaticky přejmenovat</"
 "b> nový soubor ?"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:747
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/broker.cpp:747
 msgid "File %s exists, auto-renaming to %Q"
-msgstr "Soubor %s již existuje, automaticky přejmenovávám na %s"
+msgstr "Soubor %s již existuje, automaticky přejmenovávám na %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:158
+#: /home/hunterz/kvirc/src/modules/dcc/utils.cpp:122
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr "Nelze získat použitelnou lokální IPV4 adresu"
+
+#: /home/hunterz/kvirc/src/modules/dcc/utils.cpp:140
 #, c-format
-msgid "Attempting a passive DCC %s connection"
-msgstr "Pokouším se o pasivní DCC %s připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:168
-#, c-format
-msgid "Attempting an active DCC %s connection"
-msgstr "Pokouším se o aktivní DCC %s připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:182
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:761
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:107
-#, fuzzy
-msgid "Contacting host %Q on port %Q"
-msgstr "Kontaktuje se hostitel %s na portu %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:184
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:764
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:83
-#, fuzzy
-msgid "Listening on interface %Q port %Q"
-msgstr "Naslouchám na interface %s port %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:207
-#, c-format
-msgid "The local IP address is private, determining from IRC server: %s"
-msgstr "Lokální IP adresa je privátní, zjišťuji z IRC serveru: %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:209
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1507
 msgid ""
-"The local IP address is private, but unable to determine it from the IRC "
-"server"
-msgstr "Lokální IP adresa je privátní, ale nemohu ji zjistit z IRC serveru"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
 msgstr ""
-"Lokální IP adresa je privátní, ale nemám žádné IRC servery k jejímu zjištění"
+"Nelze naslouchat na výchozím rozhraní '%s': opravte to v dialogu možností, "
+"zakázáním možnosti (pak možná bude dcc fungovat)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:234
-#, fuzzy
-msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Odeslán DCC %s požadavek na %s, čekám na připojení vzdáleného klienta..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:237
-#, fuzzy
-msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr "DCC %s požadavek nebyl odeslán, očekává se manuální připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:245
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1569
-msgid "Low-level transport connection established"
-msgstr "Nízkoúrovňové přenosové spojení navázáno"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:246
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1570
-msgid "Starting Secure Socket Layer handshake"
-msgstr "Startuji SSL spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:254
-#, c-format
-msgid "[SSL ERROR]: %s"
-msgstr "[SSL CHYBA]: %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:302
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:388
-msgid "Cannot send data: No active connection"
-msgstr "Nelze poslat data: Žádné aktivní připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:344
-#, fuzzy
-msgid ""
-"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
-"data was sent to the remote end"
-msgstr ""
-"Šifrovací program nebyl schopen zašifrovat aktuální zprávu (%Q): %s, žadná "
-"data nebyla odeslána na vzdálený konec"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:403
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:827
-msgid "ERROR: %Q"
-msgstr "CHYBA: %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:447
-#, fuzzy
-msgid ""
-"The following message appears to be encrypted, but the crypto engine failed "
-"to decode it: %Q"
-msgstr ""
-"Následující zpráva se zdá být zašifrovaná, ale šifrovací program nebyl "
-"schopen ji dešifrovat: %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:493
-#, fuzzy
-msgid "DCC %Q failed: %Q"
-msgstr "DCC %s selhalo: %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:521
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:919
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:282
-#, fuzzy
-msgid "Connected to %Q:%Q"
-msgstr "Spojeno s %s:%s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:523
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:921
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:284
-#, fuzzy
-msgid "Local end is %Q:%Q"
-msgstr "Lokální konec je %s:%s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:164
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:164
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard , use the DCC VOICE option to force half-duplex "
@@ -304,7 +844,7 @@ msgstr ""
 "poloduplexní zvukovou kartu, použijte DCC VOICE volbu k nastavení polo-"
 "duplexu "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:172
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:172
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -312,7 +852,7 @@ msgstr ""
 "Byla detekována poloduplexní zvuková karta, nebudete moci mluvit a "
 "poslouchat v ten samý moment"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:213
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:213
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -321,65 +861,59 @@ msgstr ""
 "VAROVÁNÍ: selhal pokus o nastavení požadované vzorkovací frekvence (%d): "
 "zařízení použilo nejbližší shodnou frekvenci (%d)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:271
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:271
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr "Ups...selhal test schopností zvukové karty...očekávejte problémy..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:662
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:662
 msgid "Input buffer"
 msgstr "Vstupní buffer"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:664
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:664
 msgid "Output buffer"
 msgstr "Výstupní buffer"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:746
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:746
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Pokouším se o pasivní DCC VOICE spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:751
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:751
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Pokouším se o aktivní DCC VOICE spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:779
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:779
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"Zaslán DCC VOICE (%s) požadavek na %s, čekám na připojení vzdáleného "
+"Zaslán DCC VOICE (%s) požadavek na %Q, čekám na připojení vzdáleného "
 "klienta..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:781
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:781
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "DCC VOICE požadavek nebyl odeslán: očekávám manuální připojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:885
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:885
 #, c-format
 msgid "Input buffer: %d bytes"
 msgstr "Vstupní buffer: %d bajtů"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:887
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:887
 #, c-format
 msgid "Output buffer: %d bytes"
 msgstr "Výstupní buffer: %d bajtů"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:910
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:277
-msgid "DCC Failed: %Q"
-msgstr "DCC Selhání: %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:939
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:939
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Aktuálně použitý kodek je '%s'"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:1023
+#: /home/hunterz/kvirc/src/modules/dcc/voice.cpp:1023
 #, c-format
 msgid "Volume: %i"
 msgstr "Hlasitost: %i"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:91
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:91
 msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
@@ -387,7 +921,7 @@ msgstr ""
 "Toto okno nemá žádnou souvislost s IRC (souvislost s IRC je nutná nejsou-li "
 "zadány -c nebo -n parametry)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:104
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:104
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
@@ -395,624 +929,65 @@ msgstr ""
 "Nejste připojeni k žádnému serveru (aktivní připojení je požadováno, pokud "
 "nejsou zadány -c nebo -n parametry)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:129
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
-msgstr "Nelze získat adresu rozhraní %s"
+msgstr "Nelze získat adresu rozhraní %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:139
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:139
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Žádné vhodné rozhraní k naslouchání, použijte -i"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:172
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
 msgstr ""
 "Tento spustitelný soubor byl zkompilován bez podpory SSL, přepínač -s bude "
 "ignorován"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:434
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:657
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1159
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:434
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:657
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1159
 msgid "-c requires -i and -p"
 msgstr "-c vyžaduje -i a -p"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:634
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:444
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:730
-msgid "<unknown size>"
-msgstr "<neznámá velikost>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:890
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:890
 msgid "This executable has been built without SSL support, -s switch ignored"
 msgstr ""
 "Tento spustitelný soubor byl zkompilován bez podpory SSL, přepínač -s bude "
 "ignorován"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:960
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:960
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Tento spustitelný soubor nemá podporu SSL, přepínač -s ignorován"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1114
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1114
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "DCC VOICE podpora nebyla zapnuta během kompilace"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1132
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr "Nesprávná vzorkovací frekvence '%s', nastavuji výchozí na 8000"
+msgstr "Určena nesprávná vzorkovací frekvence, nastavuji výchozí na 8000"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1148
-#, fuzzy
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr "Nesprávný kodek '%s', nastavuji výchozí na 'adpcm'"
+msgstr "Určen nesprávný kodek, nastavuji výchozí na 'adpcm'"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1577
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2543
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2563
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1577
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:2543
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:2563
 msgid "The current window has no associated DCC session"
 msgstr "Současné okno nemá asociováno DCC sezení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1582
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1582
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "Určený parametr není platným DCC identifikátorem"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1662
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Tato DCC relace není DCC přenosová relace"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2554
+#: /home/hunterz/kvirc/src/modules/dcc/libkvidcc.cpp:2554
 msgid "The specified window identifier is not valid"
 msgstr "Určený identifikátor okna je neplatný"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
-msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr "VAROVÁNÍ: Za koncem souboru jsou posílána data nepatřící k souboru"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
-msgid ""
-"WARNING: Ignoring data past the declared end of file and closing the "
-"connection"
-msgstr ""
-"VAROVÁNÍ: Ignoruji data za deklarovaným koncem souboru a ukončuji spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:358
-msgid ""
-"Data transfer terminated, waiting 30 seconds for the peer to close the "
-"connection..."
-msgstr ""
-"Přenos dat byl stornován, čekám 30 sekund, než druhá strana uzavře spojení..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
-msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr "Přenos dat byl stornován před 30-ti sekundami, uzavírám spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
-msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-msgstr ""
-"VAROVÁNÍ: Přijímaná data v DCC TSEND, tady by neměla být žádná potvrzení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:727
-#, c-format
-msgid "TRANSFER %d"
-msgstr "PŘENOS %d"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:750
-msgid "Setting up the connection"
-msgstr "Nastavuji spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:809
-msgid "Attempting a passive DCC %1 connection"
-msgstr "Pokouším se o pasivní DCC %1 spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:813
-msgid "Attempting an active DCC %1 connection"
-msgstr "Pokouším se o aktivní DCC %1 spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:839
-msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
-msgstr "Zaslán DCC RESUME požadavek na %1, vyčkávám na ACCEPT"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:909
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:920
-msgid "Aborted"
-msgstr "Přerušeno"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:919
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1598
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1673
-msgid "Transfer failed: "
-msgstr "Přenos selhal: "
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:931
-msgid "Configure Bandwidth..."
-msgstr "Konfigurovat přenosové pásmo..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:933
-msgid "Resend DCC"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:934
-msgid "Resend TDCC"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:935
-msgid "Resend RevDCC"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
-msgid "Abort"
-msgstr "Přerušit"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1130
-msgid "From: "
-msgstr "Od:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1131
-msgid "To: "
-msgstr "k:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1234
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1241
-#, fuzzy
-msgid "%1 of %2 (%3%)"
-msgstr "%1 z %2 bajtů (%3%)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1245
-msgid "%1"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1258
-msgid "Spd:"
-msgstr "Rych:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1273
-msgid "Avg:"
-msgstr "Prům:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1344
-msgid "Transfer Log"
-msgstr "Log Přenosů"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1475
-msgid "Contacting host %1 on port %2"
-msgstr "Kontaktuji hosta %1 na portu %2"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1482
-msgid "Listening on interface %1 port %2"
-msgstr "Naslouchám na rozhraní %1 port %2"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1505
-msgid "The local IP address is private, determining from IRC server: %1"
-msgstr "Lokální IP adresa je privátní, určuji z IRC serveru: %1"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1556
-msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"Zaslán DCC %1 požadavek na %2, očekávám připojení vzdáleného klienta..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1558
-msgid "DCC %1 request not sent, awaiting manual connection"
-msgstr "DCC %1 požadavek nebyl odeslán, očekávám manuální připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1577
-msgid "[SSL ERROR]: %1"
-msgstr "[SSL CHYBA]: %1"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1620
-#, fuzzy
-msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
-msgstr "DCC %s přenos s %s@%s:%s kompletní: \r![!dbl]play $0\r%s\r"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1635
-msgid "Transfer completed"
-msgstr "Přenos kompletní"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1682
-msgid "Connected to %1:%2"
-msgstr "Připojen k %1:%2"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1683
-msgid "Local end is %1:%2"
-msgstr "Lokální konec je %1:%2"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1727
-msgid "Transferring data"
-msgstr "Přenáším data"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1753
-msgid "RESUME accepted, transfer will begin at position %1"
-msgstr "RESUME přijato, přenos začne na pozici %1"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1784
-msgid "Internal error in RESUME request"
-msgstr "Vnitřní chyba v RESUME požadavku"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
-msgid "Invalid RESUME request: Position %1 is larger than file size"
-msgstr "Nesprávný RESUME požadavek: Pozice %1 je větší než velikost souboru"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1793
-msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr "Přijímám RESUME požadavek, přenos začne na pozici %1"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1825
-msgid "Configure bandwidth for DCC transfer %1"
-msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
-msgid "Limit upload bandwidth to"
-msgstr "Omezit odchozí šířku pásma na"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
-msgid "Limit download bandwidth to"
-msgstr "Omezit příchozí šířku pásma na"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1841
-msgid "bytes/sec"
-msgstr "bajtů/sek"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1845
-msgid "OK"
-msgstr "OK"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:142
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:78
-msgid "Attempting a passive DCC CANVAS connection"
-msgstr "Pokouším se o pasivní DCC CANVAS připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:98
-#, fuzzy
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Zaslán DCC CANVAS požadavek na %s, vyčkávám na připojení vzdáleného "
-"klienta..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:100
-msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr "DCC CANVAS požadavek nebyl odeslán: očekává se manuální připojeni"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:104
-msgid "Attempting an active DCC CANVAS connection"
-msgstr "Pokouším se o aktivní DCC CANVAS připojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1563
-msgid "&Line"
-msgstr "&Line"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1564
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1572
-msgid "&Rectangle"
-msgstr "&Rectangle"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1565
-msgid "&Ellipse"
-msgstr "&Ellipse"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1566
-msgid "&Pie"
-msgstr "&Pie"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1567
-msgid "&Chord"
-msgstr "&Chord"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1569
-msgid "&Rich text (html)"
-msgstr "&Rich text (html)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1571
-msgid "&Triangle"
-msgstr "&Triangle"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1573
-msgid "&Pentagon"
-msgstr "&Pentagon"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1574
-msgid "&Hexagon"
-msgstr "&Hexagon"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1576
-msgid "&Shape"
-msgstr "&Shape"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1577
-msgid "&Item"
-msgstr "&Item"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1578
-msgid "&Polygons"
-msgstr "&Polygons"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1580
-msgid "&Insert"
-msgstr "&Insert"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:77
-#, fuzzy
-msgid "Unable to process the above request: %Q, %Q"
-msgstr "Nemohu zpracovat předchozí požadavek: %s, %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:79
-msgid "Ignoring and notifying failure"
-msgstr "Ignoruji a ohlašuji selhání"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:79
-msgid "Ignoring"
-msgstr "Ignoruji"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:95
-#, c-format
-msgid "Concurrent transfer limit reached (%u of %u transfers running)"
-msgstr ""
-"Limit současně probíhajících přenosů dosažen (%u z %u probíhajících přenosů)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:111
-#, c-format
-msgid "Slot limit reached (%u slots of %u)"
-msgstr "Limit slotů dosažen  (%u slotů z %u)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:120
-msgid "Too many pending connections"
-msgstr "Příliš mnoho čekajících spojení"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:156
-#, c-format
-msgid "Invalid port number %s"
-msgstr "Nesprávné číslo portu %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:172
-#, c-format
-msgid "Invalid IP address in old format %s"
-msgstr "Nesprávná IP adresa ve starém formátu %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:191
-#, c-format
-msgid "Invalid IP address %s"
-msgstr "Nesprávná IP adresa %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:258
-#, c-format
-msgid ""
-"The above request is broken: The second parameter is '%s' and should be "
-"'chat', trying to continue"
-msgstr ""
-"Předchozí požadavek je přerušený: Druhý parametr je '%s' a měl by být "
-"'chat', pokouším se pokračovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:270
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC CHAT is not available"
-msgstr ""
-"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
-"DCC CHAT není dostupné"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:321
-msgid ""
-"The above request is broken: it looks like a zero port tag acknowledge but I "
-"have either never seen this tag or it was sent more than 120 seconds ago"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:322
-msgid "It seems that I haven't requested this dcc chat"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:442
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-"Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
-"souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:452
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:600
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:738
-msgid ""
-"The above request is broken: The filename contains path components, "
-"stripping the leading path and trying to continue"
-msgstr ""
-"Předchozí požadavek je přerušený: Název souboru obsahuje cestu, odstraňuji "
-"počáteční cestu a snažím se pokračovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:466
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC SEND is not available"
-msgstr ""
-"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
-"DCC SEND není dostupné"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:528
-#, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
-msgstr ""
-"Nemohu pokračovat v DCC RECV: Přenos nebyl zahájen pro soubor %s na portu %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:553
-#, c-format
-msgid "Invalid resume position argument '%s'"
-msgstr "Nesprávný parametr pro pokračování '%s'"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:565
-#, c-format
-msgid ""
-"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
-"or invalid resume size"
-msgstr ""
-"Nemohu pokračovat v DCC SEND: Přenos nebyl zahájen pro soubor %s na portu %"
-"s, nebo je nesprávná velikost pro pokračování"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:590
-msgid ""
-"The above request has resume file size missing, assuming a resume file size "
-"of 0"
-msgstr ""
-"Následujícímu požadavku navázání chybí velikost souboru, předpokládá se "
-"velikost souboru 0"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:614
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC RECV is not available"
-msgstr ""
-"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
-"DCC RECV není dostupné"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:629
-#, c-format
-msgid "Invalid RECV request: Position %u is is larger than file size"
-msgstr "Nesprávný RECV požadavek: Pozice %u je větší než velikost souboru"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:683
-msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
-msgstr "%Q [%Q@%Q] je připraven k přijmutí souboru \"%s\""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:689
-#, c-format
-msgid "The remote client is listening on interface %s and port %s"
-msgstr "Vzdálený klient naslouchá na rozhraní %s a portu %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:696
-msgid ""
-"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
-"to send the file (or double-click on the socket)"
-msgstr ""
-"Použijte %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r"
-"%c k poslání souboru (nebo dvojklikem na soket)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:728
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number; trying to continue"
-msgstr ""
-"Předchozí požadavek je přerušený: Čtvrtý parametr by měl být velikost "
-"souboru, ale nevypadá jako neoznačené číslo, pokouším se pokračovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:752
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC RSEND is not available"
-msgstr ""
-"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
-"DCC RSEND není dostupné"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:763
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:932
-msgid "(unknown)"
-msgstr "(neznámý)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:769
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:918
-msgid "No suitable interface to listen on, trying to continue anyway..."
-msgstr "Žádné vhodné rozhraní pro naslouchání, snažím se pokračovat..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:835
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC GET is not available"
-msgstr ""
-"Tento spustitelný soubor byl zkompilován bez podpory SSL, rozšíření o SSL "
-"DCC GET není dostupné"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:846
-msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
-msgstr ""
-"Žádná nabídka souboru s názvem '%s' (s velikostí %s) není dostupná pro %Q [%"
-"Q@%Q]"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:847
-msgid "\"any\""
-msgstr "\"jakýkoliv\""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:891
-msgid ""
-"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
-"DCC %s since we can't accept incoming connections (user option)"
-msgstr ""
-"Příjem požadavku souboru od %Q [%Q@%Q] pro '%s' (skutečný soubor: %Q), "
-"nabízí DCC %s, dokud nebude možné přijmout příchozí spojení (uživatelská "
-"možnost)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:948
-#, fuzzy
-msgid ""
-"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
-"DCC %Q"
-msgstr ""
-"Přijímám požadavky na soubor od %Q [%Q@%Q] pro '%s' (skutečný soubor: %Q), "
-"nabízím DCC %s"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:982
-msgid ""
-"The above request cannot be accepted: DCC VOICE support not enabled at "
-"compilation time "
-msgstr ""
-"Předchozí požadavek nemůže být přijat: DCC VOICE nebylo povoleno při "
-"kompilaci "
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:992
-#, c-format
-msgid "The above request cannot be accepted: Unsupported codec '%s'"
-msgstr "Předchozí požadavek nemůže být přijat: Kodek není podporován '%s'"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:1005
-#, c-format
-msgid ""
-"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
-"to 8000"
-msgstr ""
-"Předchozí požadavek výpadá jako přerušený: Nesprávná vzorkovací frekvence '%"
-"s', nastavuji výchozí na 8000"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:1151
-#, c-format
-msgid "Unknown DCC type '%s'"
-msgstr "Neznámý DCC typ '%s'"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:64
-msgid "&Accept"
-msgstr "&Přijmout"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:69
-msgid "&Reject"
-msgstr "&Odmítnout"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:129
-msgid "&Rename"
-msgstr "&Přejmenovat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:133
-msgid "Over&write"
-msgstr "Př&epsat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:137
-msgid "Re&sume"
-msgstr "&Navázat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:149
-msgid "File Already Exists - KVIrc"
-msgstr "Soubor již existuje - KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/utils.cpp:122
-msgid "Can't retrieve a suitable local IPV4 address"
-msgstr "Nelze získat použitelnou lokální IPV4 adresu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/utils.cpp:140
-#, c-format
-msgid ""
-"Can't listen on default interface '%s': fix it in the options dialog, "
-"disabling the option (so the next dcc will work)"
-msgstr ""
-"Nelze naslouchat na výchozím rozhraní '%s': opravte to v dialogu možností, "
-"zakázáním možnosti (pak možná bude dcc fungovat)"
 
 #~ msgid "%1 bytes"
 #~ msgstr "%1 bajtů"
