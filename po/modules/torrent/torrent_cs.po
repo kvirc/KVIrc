@@ -1,0 +1,66 @@
+# Czech translation of Kvirc.
+# Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Kvirc package.
+# Dušan Hokův <dusan@mirc.cz>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kvirc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-12-04 17:47+0100\n"
+"PO-Revision-Date: 2007-12-05 18:20+0100\n"
+"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/hunterz/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:45
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr ""
+"Interface ke skvělému KDE KTorrent klientu.\n"
+"Stahujte na http://www.ktorrent.org\n"
+
+#: /home/hunterz/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:61
+#, c-format
+msgid "Index out of range: %d [0-%d]!"
+msgstr "Index mimo rozsah: %d [0-%d]!"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:63
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Zkouším interface torrent klienta \"%Q\": skóre %d"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:103
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Vybírám interface torrent klienta \"%Q\""
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:110
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Vypadá to, že na tomto počítači není použitelný torrent klient"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:119
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nebyl zvolen interface torrent klienta. Zkuste /torrent.detect"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:129
+msgid "The selected torrent client interface failed to execute the requested function"
+msgstr "Zvolený interface torrent klienta selhal ve spuštění požadované funkce"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:130
+msgid "Last interface error: "
+msgstr "POslední chyba interfacu:"
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:707
+msgid "Using client interface \"%Q\"."
+msgstr "Používám interface klienta \"%Q\"."
+
+#: /home/hunterz/kvirc/src/modules/torrent/libkvitorrent.cpp:715
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Neplatný interface klienta \"%Q\"!"
+
+#: /home/hunterz/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
+msgid "No client selected!"
+msgstr "Nebyl zvolen klient!"
+
