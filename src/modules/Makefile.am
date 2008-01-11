@@ -21,7 +21,6 @@ SUBDIRS = about \
 		http \
 		ident \
 		iograph \
-		lag \
 		lamerizer \
 		links \
 		list \

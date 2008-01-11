@@ -455,8 +455,8 @@ void KviIrcContext::connectToCurrentServer()
 			d.bIpV6 = m_pAsynchronousConnectionData->bUseIpV6;
 			d.bSSL = m_pAsynchronousConnectionData->bUseSSL;
 			d.szLinkFilter = m_pAsynchronousConnectionData->szLinkFilter;
-			//d.szPass = m_pAsynchronousConnectionData->szPass;
-			//d.szNick = m_pAsynchronousConnectionData->szNick;
+			d.szPass = m_pAsynchronousConnectionData->szPass;
+			d.szNick = m_pAsynchronousConnectionData->szNick;
 			d.szInitUMode = m_pAsynchronousConnectionData->szInitUMode;
 			QString szError;
 			if(!g_pIrcServerDataBase->makeCurrentServer(&d,szError))
