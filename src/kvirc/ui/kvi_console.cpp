@@ -504,7 +504,7 @@ void KviConsole::updateUri()
 		if(server)
 		{
 			KviIrcUrl::join(uri,server);
-			KviChannel * last =connection()->channelList()->getLast();
+			KviChannel * last =connection()->channelList()->last();
 			for(KviChannel * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
 			{
 				uri.append(c->name());

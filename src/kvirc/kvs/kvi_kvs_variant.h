@@ -179,7 +179,7 @@ public:
 	// returns -1 if this variant is greater than the other, 0 if are equal, 1 if the other is greater
 	// if bPreferNumeric is true then when comparing strings a conversion to a numeric format
 	// is first attempted.
-	int compare(KviKvsVariant * pOther,bool bPreferNumeric = false);
+	int compare(const KviKvsVariant * pOther,bool bPreferNumeric = false) const;
 	
 	void operator = (const KviKvsVariant &v){ copyFrom(v); };
 

@@ -69,23 +69,15 @@
 #include <ctype.h>
 
 
-#ifndef COMPILE_USE_QT4
-int TermList::compareItems( QPtrCollection::Item i1, QPtrCollection::Item i2 )
 
+int kvi_compare(const Term * p1,const Term * p2)
 {
-
-    if( ( (Term*)i1 )->frequency == ( (Term*)i2 )->frequency )
-
-	return 0;
-
-    if( ( (Term*)i1 )->frequency < ( (Term*)i2 )->frequency )
-
-	return -1;
-
-    return 1;
-
+	if(p1->frequency == p2->frequency)
+		return 0;
+	if(p1->frequency < p2->frequency)
+		return -1;
+	return 1;
 }
-#endif
 
 
 QDataStream &operator>>( QDataStream &s, Document &l )

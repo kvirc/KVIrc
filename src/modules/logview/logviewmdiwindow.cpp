@@ -226,7 +226,7 @@ void KviLogViewMDIWindow::setupItemList()
 {
 	m_pListView->clear();
 	KviLogFile *pFile;
-	m_logList.begin();
+	//m_logList.begin();
 	KviLogListViewItem *pLastCategory=0;
 	KviLogListViewItemFolder *pLastGroupItem;
 	QString szLastGroup;

@@ -84,6 +84,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("leave",part)
 		_REGCMD("links",rfc2812wrapper)
 		_REGCMD("list",rfc2812wrapper)
+		_REGCMD("listtimers",listtimers)
 		_REGCMD("lusers",rfc2812wrapper)
 		// m_r
 		_REGCMD("me",me)

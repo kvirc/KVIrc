@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : libkvistr.cpp
+//   File : libkvicontext.cpp
 //   Creation date : Wed Jan 02 2007 03:04:12 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -72,31 +72,61 @@
 		return true; \
 	}
 
-
-
 /*
-	@doc: context.serverName
+	@doc: context.networkName
 	@type:
 		function
 	@title:
-		$context.serverName
+		$context.networkName
 	@short:
-		Returns the IRC server name of an IRC context
+		Returns the IRC network name of an IRC context
 	@syntax:
-		<string> $contex.serverName
-		<string> $contex.serverName(<irc_context_id:uint>)
+		<string> $contex.networkName
+		<string> $contex.networkName(<irc_context_id:uint>)
 	@description:
-		Returns the name of the IRC server for the specified irc context.
+		Returns the name of the network for the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
 		If the irc_context_id specification is not valid then this function
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
+		$context.serverHostName
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_networkName,
+		c->returnValue()->setString(pConnection->target()->network()->name())
+	)
+
+
+/*
+	@doc: context.serverHostName
+	@type:
+		function
+	@title:
+		$context.serverHostName
+	@short:
+		Returns the IRC server name of an IRC context
+	@syntax:
+		<string> $contex.serverHostName
+		<string> $contex.serverHostName(<irc_context_id:uint>)
+	@description:
+		Returns the host name of the IRC server that was used to perform
+		the connection in the specified irc context.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing. If the specified IRC context is not currently connected
+		then this function returns nothing.
+		If the returned value is non empty then it will always be a valid
+		DNS hostname that can be used to perform a real connection.
+		Please note that this is different from $my.server() which might
+		return an invalid DNS entry.
+	@seealso:
 		$context.serverPort, $context.serverIpAddress, $context.serverPassword
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverName,
+		context_kvs_fnc_serverHostName,
 		c->returnValue()->setString(pConnection->target()->server()->hostName())
 	)
 
@@ -118,12 +148,66 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverPort, $context.serverName, $context.serverPassword
+		$context.serverPort, $context.serverHostName, $context.serverPassword
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_serverIpAddress,
 		c->returnValue()->setString(pConnection->target()->server()->ipAddress())
+	)
+
+/*
+	@doc: context.serverIsIPV6
+	@type:
+		function
+	@title:
+		$context.serverIsIPV6
+	@short:
+		Returns the IPV6 state of an IRC context
+	@syntax:
+		<string> $contex.serverIsIPV6
+		<string> $contex.serverIsIPV6(<irc_context_id:uint>)
+	@description:
+		Returns true if the current irc context connection runs over IPV6.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing (that evaluates to false). If the specified IRC context
+		is not currently connected then this function returns nothing (that
+		evaluates to false).
+	@seealso:
+		$context.serverPort, $context.serverHostName, $context.serverPassword
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_serverIsIPV6,
+		c->returnValue()->setBoolean(pConnection->target()->server()->isIpV6())
+	)
+
+/*
+	@doc: context.serverIsSSL
+	@type:
+		function
+	@title:
+		$context.serverIsSSL
+	@short:
+		Returns the SSL state of an IRC context
+	@syntax:
+		<string> $contex.serverIsSSL
+		<string> $contex.serverIsSSL(<irc_context_id:uint>)
+	@description:
+		Returns true if the current irc context connection runs over SSL.
+		If no irc_context_id is specified then the current irc_context is used.
+		If the irc_context_id specification is not valid then this function
+		returns nothing (that evaluates to false). If the specified IRC context
+		is not currently connected then this function returns nothing (that
+		evaluates to false).
+	@seealso:
+		$context.serverPort, $context.serverHostName, $context.serverPassword
+*/
+
+STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
+		context_kvs_fnc_serverIsSSL,
+		c->returnValue()->setBoolean(pConnection->target()->server()->useSSL())
 	)
 
 /*
@@ -144,7 +228,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverName, $context.serverIpAddress, $context.serverPort
+		$context.serverHostName, $context.serverIpAddress, $context.serverPort
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -171,7 +255,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverName, $context.serverIpAddress
+		$context.serverHostName, $context.serverIpAddress
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -198,7 +282,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		If the irc_context_id specification is not valid then this function
 		returns nothing.
 	@seealso:
-		$context.serverName, $context.serverIpAddress
+		$context.serverHostName, $context.serverIpAddress
 */
 
 static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
@@ -250,7 +334,7 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 		Print the names of the currently connected servers
 		[example]
 			foreach(%ic,$context.list)
-				echo "IRC Context" %ic ": " $context.serverName
+				echo "IRC Context" %ic ": " $context.serverHostName
 		[/example]
 */
 
@@ -275,10 +359,13 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 
 static bool context_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"serverName",context_kvs_fnc_serverName);
+	KVSM_REGISTER_FUNCTION(m,"serverHostName",context_kvs_fnc_serverHostName);
 	KVSM_REGISTER_FUNCTION(m,"serverIpAddress",context_kvs_fnc_serverIpAddress);
 	KVSM_REGISTER_FUNCTION(m,"serverPort",context_kvs_fnc_serverPort);
+	KVSM_REGISTER_FUNCTION(m,"serverIsIPV6",context_kvs_fnc_serverIsIPV6);
+	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",context_kvs_fnc_serverIsSSL);
 	KVSM_REGISTER_FUNCTION(m,"serverPassword",context_kvs_fnc_serverPassword);
+	KVSM_REGISTER_FUNCTION(m,"networkName",context_kvs_fnc_networkName);
 	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
 	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
 

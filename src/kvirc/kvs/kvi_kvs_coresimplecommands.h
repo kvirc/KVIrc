@@ -81,6 +81,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(join);
 	KVSCSC(kick);
 	KVSCSC(killtimer);
+	KVSCSC(listtimers);
 	// m_r
 	KVSCSC(me);
 	KVSCSC(mode);

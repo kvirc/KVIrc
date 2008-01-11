@@ -17,7 +17,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-
 #include "kvi_styled_controls.h"
 #include "kvi_module.h"
 #include "libkviurl.h"
@@ -213,11 +212,11 @@ void UrlDialog::remove()
 		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Select an URL."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
+
 	for(KviUrl *tmp=g_pList->first();tmp;tmp=g_pList->next())
 	{
 		if (tmp->url == m_pUrlList->currentItem()->text(0)) {
-			g_pList->find(tmp);
-			g_pList->remove();
+			g_pList->removeRef(tmp);
 			m_pUrlList->takeItem(m_pUrlList->currentItem());
 			return;
 		}
@@ -468,7 +467,11 @@ void BanFrame::removeBan()
 	KviStr item(m_pBanList->text(i).utf8().data());
 	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next())
 	{
-		if (*tmp == item) g_pBanList->remove();
+		if (*tmp == item)
+		{
+			g_pBanList->removeCurrent();
+			return;
+		}
 	}
 
 	m_pBanList->removeItem(i);

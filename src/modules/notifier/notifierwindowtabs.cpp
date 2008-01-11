@@ -371,17 +371,17 @@ void KviNotifierWindowTabs::prev()
 	if(!m_pTabFocused)return;
 
 	KviNotifierWindowTab * tab;
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	
-	tabIterator.atFirst();
+	tabIterator.moveFirst();
 	
 	while ((tabIterator.current()) != tab) {
 		++tabIterator;
 	}
 	
-	if (!tabIterator.atFirst()) {
+	if (!tabIterator.moveFirst()) {
 		--tabIterator;
 		tab = tabIterator.current();
 		setFocusOn(tab);
@@ -394,15 +394,15 @@ void KviNotifierWindowTabs::next()
 	if(!m_pTabFocused)return;
 	
 	KviNotifierWindowTab * tab;
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
-	tabIterator.atFirst();
+	tabIterator.moveFirst();
 	while ((tabIterator.current()) != tab) {
 		++tabIterator;
 	}
 	
-	if (!tabIterator.atLast()) {
+	if (!tabIterator.moveLast()) {
 		++tabIterator;
 		tab = tabIterator.current();
 		setFocusOn(tab);
@@ -514,9 +514,7 @@ void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
 	m_pTabFocused = tab;
 	if(m_pTabFocused)m_pTabFocused->setFocused();
 
-	if (m_lastVisitedTabPtrList.containsRef(tab)) {
-		m_lastVisitedTabPtrList.removeRef(tab);
-	}
+	m_lastVisitedTabPtrList.removeRef(tab);
 	
 	m_lastVisitedTabPtrList.insert(0, tab);
 
@@ -554,14 +552,14 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 	m_pPainter->drawPixmap(m_rct.width()-m_pixDX.width(),0,m_pixDX);
 	m_pPainter->drawTiledPixmap(m_pixSX.width(),0,m_rct.width()-m_pixSX.width()-m_pixDX.width(),m_rct.height(),m_pixBKG);
 
-	QPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 	
 	//m_tabPtrList.findRef(m_tabMap[m_pTabFocused->wnd()]);
 
 //	QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 	KviNotifierWindowTab * tab;
 	//for (tab = m_tabMap.begin(); tab != m_tabMap.end() && !isBigger; tab++ )
-	tabIterator.toFirst();
+	tabIterator.moveFirst();
 	
 	int i = 0;
 	while(m_iTabToStartFrom!=i) {
@@ -694,9 +692,9 @@ void KviNotifierWindowTabs::closeTab(KviWindow * pWnd, KviNotifierWindowTab * pT
 	} else {
 	
 		if (m_lastVisitedTabPtrList.count()) {
-			m_pTabFocused = m_lastVisitedTabPtrList.getFirst();
+			m_pTabFocused = m_lastVisitedTabPtrList.first();
 		} else {
-			m_pTabFocused = m_tabPtrList.getLast();
+			m_pTabFocused = m_tabPtrList.last();
 		}
 			
 		m_pTabFocused->setFocused(true);

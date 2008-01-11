@@ -35,6 +35,8 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_locale.h"
 
+#include "kvi_out.h"
+
 #ifdef COMPILE_USE_QT4
 	#include <q3mimefactory.h>
 #endif
@@ -506,12 +508,11 @@ try_again:
 			in this case the current timer will be scheduled for killing immediately
 			after it has returned control to KVIrc.
 		@seealso:
-			[cmd]timer[/cmd], [fnc]$isTimer[/fnc]
+			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]listtimers[/cmd]
 	*/
 
 	KVSCSC(killtimer)
 	{
-#ifdef COMPILE_NEW_KVS
 		QString szName;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("name",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
@@ -537,7 +538,6 @@ try_again:
 					KVSCSC_pContext->warning(__tr2qs("Can't kill the timer '%Q' since it is not running"),&szName);
 			}
 		}
-#endif
 		return true;
 	}
 
@@ -599,6 +599,75 @@ try_again:
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
+		@doc: listtimers
+		@title:
+			listtimers
+		@type:
+			command
+		@short:
+			Lists the active timers
+		@syntax:
+			listtimers
+		@description:
+			Lists the currently active timers
+		@seealso:
+			[cmd]timer[/cmd], [fnc]$isTimer[/fnc], [cmd]killtimer[/cmd]
+	*/
+
+	KVSCSC(listtimers)
+	{
+		KviDict<KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
+
+		if(!pTimerDict)
+			return true;
+		
+		KviDictIterator<KviKvsTimer> it(*pTimerDict);
+		
+		KVSCSC_pContext->window()->outputNoFmt(KVI_OUT_VERBOSE,__tr2qs("List of active timers"));
+		
+		unsigned int uCnt = 0;
+		
+		while(KviKvsTimer * pTimer = it.current())
+		{
+			QString szName = pTimer->name();
+			QString szLifetime;
+			switch(pTimer->lifetime())
+			{
+				case KviKvsTimer::Persistent:
+					szLifetime = __tr2qs("Persistent");
+				break;
+				case KviKvsTimer::WindowLifetime:
+					szLifetime = __tr2qs("WindowLifetime");
+				break;
+				case KviKvsTimer::SingleShot:
+					szLifetime = __tr2qs("SingleShot");
+				break;
+				default:
+					szLifetime = __tr2qs("Unknown");
+				break;
+			}
+			QString szDelay;
+			szDelay.setNum(pTimer->delay());
+			QString szWindow;
+			szWindow = pTimer->window() ? pTimer->window()->id() : __tr2qs("None");
+
+			KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,
+					"Timer \"%Q\": Lifetime: %Q, Delay: %Q, Window: %Q",
+					&szName,&szLifetime,&szDelay,&szWindow
+				);
+
+			uCnt++;
+			++it;
+		}
+
+		KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,__tr2qs("Total: %u timers running"),uCnt);
+
+		return true;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 		@doc: lusers
 		@type:
 			command
@@ -618,6 +687,7 @@ try_again:
 			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2821 wrapper
+
 
 };
 

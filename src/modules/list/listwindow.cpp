@@ -346,8 +346,9 @@ void KviListWindow::exportList()
 	QString szFile;
 	if(connection())
 	{
+		QString szDate = QDateTime::currentDateTime().toString("d MMM yyyy hh-mm");
 		KviQString::sprintf(szFile,__tr2qs("Channel list for %Q - %Q"),
-			&(connection()->networkName()),&(QDateTime::currentDateTime().toString("d MMM yyyy hh-mm")));
+			&(connection()->networkName()),&(szDate));
 	} else {
 		szFile = __tr2qs("Channel list");
 	}

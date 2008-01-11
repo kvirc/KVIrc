@@ -116,14 +116,9 @@ struct Term {
     KviValueList<Document>documents;
 };
 
-class TermList : public KviPtrList<Term>
-{
-public:
-    TermList() : KviPtrList<Term>() {}
-#ifndef COMPILE_USE_QT4
-    int compareItems( QPtrCollection::Item i1, QPtrCollection::Item i2 );
-#endif
-};
+
+
+#define TermList KviPtrList<Term>
 
 #endif
 

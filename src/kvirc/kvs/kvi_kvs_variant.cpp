@@ -738,7 +738,7 @@ bool KviKvsVariant::isEqualToNothing() const
 class KviKvsVariantComparison
 {
 public:
-	static inline int compare_integer_string(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_string(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0)
 		{
@@ -757,49 +757,49 @@ public:
 		return -1 * KviQString::cmpCI(szString,*(v2->m_pData->m_u.pString));
 	}
 
-	static inline int compare_integer_real(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_real(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(((kvs_real_t)v1->m_pData->m_u.iInteger) == *(v2->m_pData->m_u.pReal))return CMP_EQUAL;
 		if(((kvs_real_t)v1->m_pData->m_u.iInteger) > *(v2->m_pData->m_u.pReal))return CMP_THISGREATER;
 		return CMP_OTHERGREATER;
 	}
 
-	static inline int compare_integer_boolean(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_boolean(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0)
 			return v2->m_pData->m_u.bBoolean ? CMP_OTHERGREATER : CMP_EQUAL;
 		return v2->m_pData->m_u.bBoolean ? CMP_EQUAL : CMP_THISGREATER;
 	}
 	
-	static inline int compare_integer_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0)
 			return v2->m_pData->m_u.pHash->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_integer_array(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_array(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0)
 			return v2->m_pData->m_u.pArray->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_integer_hobject(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_integer_hobject(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0.0)
 			return (v2->m_pData->m_u.hObject == (kvs_hobject_t)0) ? CMP_EQUAL : CMP_THISGREATER;
 		return CMP_OTHERGREATER;
 	}
 
-	static inline int compare_real_hobject(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_real_hobject(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(*(v1->m_pData->m_u.pReal) == 0.0)
 			return (v2->m_pData->m_u.hObject == (kvs_hobject_t)0) ? CMP_EQUAL : CMP_THISGREATER;
 		return CMP_OTHERGREATER;
 	}
 
-	static inline int compare_real_string(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_real_string(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(*(v1->m_pData->m_u.pReal) == 0.0)
 		{
@@ -818,28 +818,28 @@ public:
 		return -1 * KviQString::cmpCI(szString,*(v2->m_pData->m_u.pString));
 	}
 
-	static inline int compare_real_boolean(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_real_boolean(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(*(v1->m_pData->m_u.pReal) == 0.0)
 			return v2->m_pData->m_u.bBoolean ? CMP_OTHERGREATER : CMP_EQUAL;
 		return v2->m_pData->m_u.bBoolean ? CMP_EQUAL : CMP_THISGREATER;
 	}
 
-	static inline int compare_real_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_real_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(*(v1->m_pData->m_u.pReal) == 0)
 			return v2->m_pData->m_u.pHash->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_real_array(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_real_array(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(*(v1->m_pData->m_u.pReal) == 0)
 			return v2->m_pData->m_u.pArray->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_string_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_string_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.pString->isEmpty())
 		{
@@ -848,7 +848,7 @@ public:
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_string_array(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_string_array(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.pString->isEmpty())
 		{
@@ -857,7 +857,7 @@ public:
 		return CMP_THISGREATER;
 	}
 	
-	static inline int compare_string_hobject(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_string_hobject(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v2->m_pData->m_u.hObject == (kvs_hobject_t)0)
 		{
@@ -873,7 +873,7 @@ public:
 		return CMP_THISGREATER;
 	}
 
-	static inline int compare_boolean_string(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_boolean_string(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v2->isEqualToNothing())
 		{
@@ -883,7 +883,7 @@ public:
 		}
 	}
 
-	static inline int compare_boolean_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_boolean_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.bBoolean)
 			return v2->m_pData->m_u.pHash->isEmpty() ? CMP_THISGREATER : CMP_EQUAL;
@@ -891,7 +891,7 @@ public:
 			return v2->m_pData->m_u.pHash->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 	}
 
-	static inline int compare_boolean_array(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_boolean_array(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.bBoolean)
 			return v2->m_pData->m_u.pArray->isEmpty() ? CMP_THISGREATER : CMP_EQUAL;
@@ -899,7 +899,7 @@ public:
 			return v2->m_pData->m_u.pArray->isEmpty() ? CMP_EQUAL : CMP_OTHERGREATER;
 	}
 
-	static inline int compare_boolean_hobject(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_boolean_hobject(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.bBoolean)
 			return v2->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? CMP_THISGREATER : CMP_EQUAL;
@@ -907,21 +907,21 @@ public:
 			return v2->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? CMP_EQUAL : CMP_OTHERGREATER;
 	}
 
-	static inline int compare_array_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_array_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.pArray->size() > v2->m_pData->m_u.pHash->size())return CMP_THISGREATER;
 		if(v1->m_pData->m_u.pArray->size() == v2->m_pData->m_u.pHash->size())return CMP_EQUAL;
 		return CMP_OTHERGREATER;
 	}
 
-	static inline int compare_hobject_hash(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_hobject_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v2->m_pData->m_u.pHash->isEmpty())
 			return v1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? CMP_EQUAL : CMP_OTHERGREATER;
 		return v1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? CMP_THISGREATER : CMP_EQUAL;
 	}
 
-	static inline int compare_hobject_array(KviKvsVariant * v1,KviKvsVariant * v2)
+	static inline int compare_hobject_array(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v2->m_pData->m_u.pArray->isEmpty())
 			return v1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? CMP_EQUAL : CMP_OTHERGREATER;
@@ -1383,7 +1383,7 @@ KviKvsVariant* KviKvsVariant::unserialize(const QString& data)
 	return pResult;
 }
 
-int KviKvsVariant::compare(KviKvsVariant * pOther,bool bPreferNumeric)
+int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) const
 {
 	// returns -1 if this variant is greater than pOther
 	// 0 if they are considered to be equal

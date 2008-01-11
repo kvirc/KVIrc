@@ -261,9 +261,9 @@ bool KviKvsObject_list::function_removeCurrent(KviKvsObjectFunctionCall *c)
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	if(m_pDataList->currentNode())
+	if(m_pDataList->current())
 	{
-		m_pDataList->removeNode(m_pDataList->currentNode());
+		m_pDataList->removeCurrent();
 		c->returnValue()->setBoolean(true);
 	} else {
 		c->returnValue()->setBoolean(false);
@@ -355,6 +355,12 @@ bool KviKvsObject_list::function_clear(KviKvsObjectFunctionCall *c)
 	m_pDataList->clear();
 	return true;
 }
+
+inline int kvi_compare(const KviKvsVariant * p1,const KviKvsVariant * p2)
+{
+	return p1->compare(p2);
+}
+
 bool KviKvsObject_list::function_sort(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pDataList)return true;

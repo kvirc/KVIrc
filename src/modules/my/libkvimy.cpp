@@ -340,6 +340,10 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 		If the irc context is not connected then an empty string is returned.[br]
 		If <irc_context_id> is specified this function returns acts as it was called
 		in that irc_context.[br]
+		Please note that this function returns the name of the server as reported
+		by the server itself. Some servers report a bogus value for this field.
+		You should take a look at $context.serverIpAddress or $context.serverHostName
+		if you want a value that can be used to really reconnect to this server.
 */
 
 static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)

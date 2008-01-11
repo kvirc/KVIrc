@@ -37,14 +37,6 @@
 
 #include "notifiermessage.h"
 
-#ifdef COMPILE_USE_QT4
-	#define QPtrList Q3PtrList
-	#define QPtrListIterator Q3PtrListIterator
-	#include <q3ptrlist.h>
-#else
-	#include <qptrlist.h>
-	//#include <qptrlistiterator.h>
-#endif
 
 class QPainter;
 class KviWindow;
@@ -149,8 +141,8 @@ private:
 	QPoint	m_pnt;
 
 	QMap<KviWindow *, KviNotifierWindowTab *> m_tabMap;
-	QPtrList<KviNotifierWindowTab> m_tabPtrList;
-	QPtrList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
+	KviPtrList<KviNotifierWindowTab> m_tabPtrList;
+	KviPtrList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
 	
 	QFont * m_pFocusedFont;
 	QFont * m_pUnfocusedFont;
