@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-21 17:09+0100\n"
-"PO-Revision-Date: 2007-12-17 11:57+0100\n"
+"PO-Revision-Date: 2008-01-14 11:27+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -767,9 +767,8 @@ msgid "<center>This field allows you to specify a really unique id for this serv
 msgstr "<center>Toto pole umžní určit skutečné unikátní id pro tento server. Budete moci použít /server -x &lt;toto_id&gt; pro navázání spojení. To se hodí především, pokud máte několik serverových záznamů se stejným hostname a portem na různých sítích (bouncery?)</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:719
-#, fuzzy
 msgid "Proxy server:"
-msgstr "Kopírovat Server"
+msgstr "Proxy server:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:724
 msgid ""
@@ -1028,9 +1027,8 @@ msgid "Choose an Image File - KVIrc"
 msgstr "Vyberte soubor obrázku - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:316
-#, fuzzy
 msgid "Basic Properties"
-msgstr "Vlastnosti"
+msgstr "Základní Vlastnosti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:323
 msgid "<center>Your <b>nickname</b> is your primary form of identification on IRC.<br>Since servers cannot accept multiple users sharing the same nickname (case insensitive), you can provide alternative nicknames to be used in casethe server refuses to accept the default one.</center>"
@@ -1053,9 +1051,8 @@ msgid "This field is optional and will appear as part of the CTCP USERINFO reply
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
-#, fuzzy
 msgid "Profile"
-msgstr "Úvod"
+msgstr "Profil"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:361
 msgid "Age:"
@@ -1067,14 +1064,12 @@ msgstr "Zde můžete napsat váš věk."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:370
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:401
-#, fuzzy
 msgid "Unspecified"
-msgstr "Nebylo určeno jméno"
+msgstr "Neurčeno"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:391
-#, fuzzy
 msgid "Gender:"
-msgstr "Hlavní"
+msgstr "Pohlaví:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:396
 msgid "Here you can specify your gender."
@@ -1085,14 +1080,12 @@ msgid "Female"
 msgstr "Žena"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:403
-#, fuzzy
 msgid "Male"
-msgstr "Hodnota"
+msgstr "Muž"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:414
-#, fuzzy
 msgid "Location:"
-msgstr "&Umístění:"
+msgstr "Umístění:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:417
 msgid "You can describe here your approximate physical location. Something like \"Region, Country\" will be ok. Please note that this information will be viewable by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>."
@@ -1107,9 +1100,8 @@ msgid "You can put here the short names of the languages you can speak. An examp
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:429
-#, fuzzy
 msgid "Other:"
-msgstr "Ostatní..."
+msgstr "Ostatní:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:432
 msgid "You can put here some additional personal data. It might be a funny quote or your homepage url... Please note that this information will be viewable by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers)."
@@ -1159,18 +1151,16 @@ msgid "Default Messages"
 msgstr "Výchozí Zprávy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:691
-#, fuzzy
 msgid "Part message:"
-msgstr "Odchodová zpráva"
+msgstr "Odchodová zpráva:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:695
 msgid "<center>This is the default part message that will be used when you<br>leave a channel by closing a channel window.</center>"
 msgstr "<center>Toto je výchozí odcházecí zpráva, která bude použita když<br>opustíte kanál zavřením okna kanálu.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:699
-#, fuzzy
 msgid "Quit message:"
-msgstr "Opouštěcí zpráva"
+msgstr "Opouštěcí zpráva:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:702
 msgid "<center>This is the default quit message that will be used when you<br>quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.</center>"
@@ -1553,9 +1543,8 @@ msgid "No such options page class name %Q"
 msgstr "Neznámý název pro volbu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Use system URL handlers"
-msgstr "URL handlery"
+msgstr "Použít systémové URL handlery"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:50
 msgid "<b>http://</b> handler command:"
@@ -1746,9 +1735,8 @@ msgid "Horizontal Alignment:"
 msgstr "Horizontální zarovnání:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:135
-#, fuzzy
 msgid "Vertical Alignment:"
-msgstr "Umístění certifikátu:"
+msgstr "Vertikální zarovnání:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:231
 msgid "Show gender icons"
@@ -2342,9 +2330,8 @@ msgid "Gzip logs"
 msgstr "Gzipovat logy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:47
-#, fuzzy
 msgid "Strip colors in logs"
-msgstr "Odstranit barvy"
+msgstr "Odstranit barvy v souborech logů"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
 msgid "Auto flush logs every"
@@ -2425,9 +2412,8 @@ msgid "<center>This option will cause KVIrc to automatically join a channel when
 msgstr "<center>Tato volba způsobí, že se KVIrc automaticky přijde do kanálu, když je obdržena zpráva INVITE pro tento kanál.<br><b>Varování:</b> Toto může pomoci spammerům vás obtěžovat. :)</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:144
-#, fuzzy
 msgid "Always open channels as minimized"
-msgstr "Otevřít vše minimalizovaně"
+msgstr "Vždy otevřít kanály minimalizovaně"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:148
 #, fuzzy
@@ -2500,18 +2486,16 @@ msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
-#, fuzzy
 msgid "Automatic detection"
-msgstr "Automaticky znovu spojit"
+msgstr "Automatická detekce"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:69
 msgid "en"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
-#, fuzzy
 msgid "Unable to write language information to"
-msgstr "Nelze zapisovat do souboru akcí."
+msgstr "Nelze zapsat jazykové informace do"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
@@ -2636,18 +2620,16 @@ msgid "Automatically accept"
 msgstr "Automaticky přijmout"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:200
-#, fuzzy
 msgid "Open transfer window as minimized when auto-accepted"
-msgstr "Otevřít minimalizovaně při auto-příjmu"
+msgstr "Otevřít přenosové okno minimalizovaně při auto-příjmu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:201
 msgid "Automatically resume when auto-accepted"
 msgstr "Automaticky navázat při auto-příjmu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:203
-#, fuzzy
 msgid "Save Location"
-msgstr "&Umístění:"
+msgstr "Místo uložení"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:204
 msgid "Download folder:"
@@ -2662,9 +2644,8 @@ msgid "Guess save path from media type"
 msgstr "Odvodit cestu uložení z typu média"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:209
-#, fuzzy
 msgid "On Download Completion"
-msgstr "Download složka:"
+msgstr "Při dokončení downloadu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:210
 msgid "Notify completion in console"
@@ -2675,9 +2656,8 @@ msgid "Notify completion in notifier"
 msgstr "Oznámit dokončení v oznamovači"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:212
-#, fuzzy
 msgid "Automatically clear transfer"
-msgstr "Automaticky přijmout"
+msgstr "Automaticky smazat přenos"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:215
 #, fuzzy
@@ -2785,9 +2765,8 @@ msgid "Open minimized when auto-accepted"
 msgstr "Otevřít minimalizovaně při auto-příjmu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:353
-#, fuzzy
 msgid "Always open as minimized"
-msgstr "Otevřít vše minimalizovaně"
+msgstr "Vždy otevřít minimalizovaně"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:369
 msgid "Open all minimized"
@@ -2879,9 +2858,8 @@ msgid "This allows you to select encoding of winamp messages."
 msgstr "Toto umožňuje výběr zvukového systému použitého s KVIrc."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:290
-#, fuzzy
 msgid "New Query opened"
-msgstr "Nechat query otevřené"
+msgstr "Nové query otevřené"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:293
 msgid "New message in inactive query"
