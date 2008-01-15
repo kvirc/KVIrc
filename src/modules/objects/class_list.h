@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_kvs_variant.h"
 #include "object_macros.h"
 
@@ -36,9 +36,9 @@ class KviKvsObject_list : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_list)
 protected:
-	KviPtrList<KviKvsVariant> * m_pDataList;
+	KviPointerList<KviKvsVariant> * m_pDataList;
 protected:
-	KviPtrList<KviKvsVariant> * dataList() const { return m_pDataList; };
+	KviPointerList<KviKvsVariant> * dataList() const { return m_pDataList; };
 public:
 	bool function_count(KviKvsObjectFunctionCall *c);
 	bool function_isEmpty(KviKvsObjectFunctionCall *c);

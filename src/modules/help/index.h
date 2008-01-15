@@ -30,8 +30,8 @@
 #define INDEX_H
 
 #include <qstringlist.h>
-#include "kvi_dict.h"
-#include "kvi_list.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerlist.h"
 #include "kvi_valuelist.h"
 #include <qdatastream.h>
 #include <qobject.h>
@@ -99,8 +99,8 @@ private:
     void buildMiniDict( const QString& );
     QStringList docList;
     QStringList titleList;
-    KviDict<Entry> dict;
-    KviDict<PosEntry> miniDict;
+    KviPointerHashTable<QString,Entry> dict;
+    KviPointerHashTable<QString,PosEntry> miniDict;
     uint wordNum;
     QString docPath;
     QString dictFile, docListFile;
@@ -118,7 +118,7 @@ struct Term {
 
 
 
-#define TermList KviPtrList<Term>
+#define TermList KviPointerList<Term>
 
 #endif
 

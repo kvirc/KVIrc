@@ -616,12 +616,12 @@ try_again:
 
 	KVSCSC(listtimers)
 	{
-		KviDict<KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
+		KviPointerHashTable<QString,KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
 
 		if(!pTimerDict)
 			return true;
 		
-		KviDictIterator<KviKvsTimer> it(*pTimerDict);
+		KviPointerHashTableIterator<QString,KviKvsTimer> it(*pTimerDict);
 		
 		KVSCSC_pContext->window()->outputNoFmt(KVI_OUT_VERBOSE,__tr2qs("List of active timers"));
 		

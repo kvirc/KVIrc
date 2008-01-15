@@ -505,7 +505,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	emit status(tmp);
 	emit receivedResponse(QString(szResponse.ptr()));
 
-	KviPtrList<KviStr> hlist;
+	KviPointerList<KviStr> hlist;
 	hlist.setAutoDelete(true);
 
 	idx = szHeader.findFirstIdx("\r\n");
@@ -520,7 +520,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	}
 	if(szHeader.hasData())hlist.append(new KviStr(szHeader));
 
-	KviAsciiDict<KviStr> hdr(11,false,true);
+	KviPointerHashTable<const char *,KviStr> hdr(11,false,true);
 	hdr.setAutoDelete(true);
 
 	for(KviStr * s = hlist.first();s;s = hlist.next())

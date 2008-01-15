@@ -53,7 +53,7 @@
 #include "kvi_tal_hbox.h"
 #include "kvi_msgbox.h"
 
-extern KviPtrList<KviListWindow> * g_pListWindowList;
+extern KviPointerList<KviListWindow> * g_pListWindowList;
 
 // kvi_ircview.cpp
 //extern KVIRC_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
@@ -178,7 +178,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pFlushTimer = 0;
 
-	m_pItemList = new KviPtrList<KviChannelListViewItemData>;
+	m_pItemList = new KviPointerList<KviChannelListViewItemData>;
 	m_pItemList->setAutoDelete(false);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");

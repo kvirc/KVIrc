@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_time.h"
 #include <qobject.h>
 
@@ -98,8 +98,8 @@ private:
 
 	KviIrcConnectionStateData            * m_pStateData;            // owned, never null
 
-	KviPtrList<KviChannel>               * m_pChannelList;          // owned, never null, elements shallow
-	KviPtrList<KviQuery>                 * m_pQueryList;            // owned, never null, elements shallow
+	KviPointerList<KviChannel>               * m_pChannelList;          // owned, never null, elements shallow
+	KviPointerList<KviQuery>                 * m_pQueryList;            // owned, never null, elements shallow
 
 	KviIrcUserDataBase                   * m_pUserDataBase;         // owned, never null
 	
@@ -177,7 +177,7 @@ public:
 	//
 	// ----> KviChannelManager ?
 	KviChannel * findChannel(const QString &name);
-	KviPtrList<KviChannel> * channelList(){ return m_pChannelList; };
+	KviPointerList<KviChannel> * channelList(){ return m_pChannelList; };
 	int getCommonChannels(const QString &nick,QString &szChansBuffer,bool bAddEscapeSequences = true);
 	KviChannel * createChannel(const QString &name);
 	void registerChannel(KviChannel *c);
@@ -197,7 +197,7 @@ public:
 	//
 	// ----> KviQueryManager ?
 	KviQuery * findQuery(const QString &nick);
-	KviPtrList<KviQuery> * queryList(){ return m_pQueryList; };
+	KviPointerList<KviQuery> * queryList(){ return m_pQueryList; };
 	KviQuery * createQuery(const QString &nick);
 	void registerQuery(KviQuery *q);
 	void unregisterQuery(KviQuery *q);

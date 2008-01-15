@@ -35,8 +35,8 @@
 #include <time.h>
 #include "kvi_tal_tooltip.h"
 #include <qwidget.h>
-#include "kvi_list.h"
-#include "kvi_dict.h"
+#include "kvi_pointerlist.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_toolwindows_container.h"
 
 class QLabel;
@@ -130,7 +130,7 @@ public:
 	KviUserListView(QWidget * parent,KviWindowToolPageButton* button,KviIrcUserDataBase * db,KviWindow * pWnd,int dictSize = 5,const QString &label_text = QString::null,const char * name = 0);
 	~KviUserListView();
 protected:
-	KviDict<KviUserListEntry>         * m_pEntryDict;
+	KviPointerHashTable<QString,KviUserListEntry>         * m_pEntryDict;
 	KviUserListEntry                * m_pTopItem;
 	KviUserListEntry                * m_pHeadItem;
 	KviUserListEntry                * m_pTailItem;
@@ -166,7 +166,7 @@ public:
 	void updateArea();
 	void select(const QString&);
 	void applyOptions();
-	KviDict<KviUserListEntry> * entryDict(){ return m_pEntryDict; };
+	KviPointerHashTable<QString,KviUserListEntry> * entryDict(){ return m_pEntryDict; };
 	KviUserListEntry * firstItem(){ return m_pHeadItem; };
 	KviUserListEntry * itemAt(const QPoint &pnt,QRect * rct = 0);
 	bool itemVisible(KviUserListEntry * e);
@@ -221,7 +221,7 @@ public:
 	void emitRightClick();
 	void emitDoubleClick();
 	bool completeNickStandard(const QString &begin,const QString &skipAfter,QString &buffer,bool bAppendMask);
-	void completeNickBashLike(const QString &begin,KviPtrList<QString> * l,bool bAppendMask);
+	void completeNickBashLike(const QString &begin,KviPointerList<QString> * l,bool bAppendMask);
 };
 
 class KVIRC_API KviUserListViewArea : public QWidget

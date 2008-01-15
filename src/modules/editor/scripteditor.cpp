@@ -47,7 +47,7 @@
 #include "kvi_qstring.h"
 #include "kvi_config.h"
 #include "kvi_module.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 //
 #include "kvi_app.h"
 #include "kvi_console.h"
@@ -58,7 +58,7 @@
 #include <qlayout.h>
 
 
-extern KviPtrList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
+extern KviPointerList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
 extern KviModule * g_pEditorModulePointer;
 
 
@@ -96,7 +96,7 @@ KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
 void KviCompletionBox::updateContents(QString buffer)
 {
 	buffer=buffer.stripWhiteSpace();
-	KviPtrList<QString> list;
+	KviPointerList<QString> list;
 	clear();
 	
 	QString szModule;
@@ -167,7 +167,7 @@ void KviCompletionBox::keyPressEvent(QKeyEvent * e)
 KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * pParent)
 : QDialog(pParent)
 {
-	m_pSelectorInterfaceList = new KviPtrList<KviSelectorInterface>;
+	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
         m_pSelectorInterfaceList->setAutoDelete(false);
 	setCaption(__tr2qs_ctx("Preferences","editor"));
 	QGridLayout * g = new QGridLayout(this,3,3,4,4);
@@ -409,7 +409,7 @@ void KviScriptEditorWidget::contentsMousePressEvent(QMouseEvent *e)
 	buffer=this->text(para);
 	getWordOnCursor(buffer,index);
 	QString tmp=buffer;
-	KviPtrList<QString> l;
+	KviPointerList<QString> l;
 	if (tmp.left(1) == "$")
 	{	
 		tmp.remove(0,1);
@@ -441,7 +441,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 
 	/*
 	QString tmp=buffer;
-	KviPtrList<QString> * l;
+	KviPointerList<QString> * l;
 	if(tmp.left(1) == "$")
 	{
 		tmp.remove(0,1);

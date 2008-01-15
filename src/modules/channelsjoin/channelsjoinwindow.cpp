@@ -182,10 +182,10 @@ void KviChannelsJoinWindow::fillListView()
 	par = new KviTalListViewItem(m_pListView,__tr2qs("Registered Channels"));
 	par->setOpen(true);
 
-	KviAsciiDict<KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
+	KviPointerHashTable<const char *,KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
 	if(d)
 	{
-		KviAsciiDictIterator<KviRegisteredChannelList> it(*d);
+		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
 			chld = new KviTalListViewItem(par,it.currentKey());

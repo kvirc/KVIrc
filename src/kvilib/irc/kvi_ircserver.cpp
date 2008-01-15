@@ -59,7 +59,7 @@ KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 {
 	int i=0;
 	if(proxy()<0) return 0;
-	KviPtrList<KviProxy> * proxylist = pDb->proxyList();
+	KviPointerList<KviProxy> * proxylist = pDb->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
 		if(i==proxy()) return p;

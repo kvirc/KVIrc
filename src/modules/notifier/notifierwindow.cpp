@@ -704,7 +704,7 @@ void KviNotifierWindow::redrawText()
 	if(!tab)return;
 	
 	// it's message list
-	KviPtrList<KviNotifierMessage> * l = tab->messageList();
+	KviPointerList<KviNotifierMessage> * l = tab->messageList();
 	if(!l)return;
 	if(l->isEmpty())return;
 	

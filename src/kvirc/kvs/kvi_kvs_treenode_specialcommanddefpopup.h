@@ -165,7 +165,7 @@ public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(const QChar * pLocation);
 	~KviKvsTreeNodeSpecialCommandDefpopupLabelPopup();
 protected:
-	KviPtrList<KviKvsTreeNodeSpecialCommandDefpopupLabel> * m_pLabels;
+	KviPointerList<KviKvsTreeNodeSpecialCommandDefpopupLabel> * m_pLabels;
 public:
 	bool isEmpty(){ return m_pLabels->isEmpty(); };
 	void addLabel(KviKvsTreeNodeSpecialCommandDefpopupLabel * pLabel);

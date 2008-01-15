@@ -29,7 +29,7 @@
 #include "kvi_locale.h"
 
 #include <qlabel.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qtooltip.h>
 #include <qtimer.h>
 
@@ -40,8 +40,8 @@
 #include "kparts/factory.h"
 
 extern KviModule            * g_pTermModule;
-extern KviPtrList<KviTermWidget> * g_pTermWidgetList;
-extern KviPtrList<KviTermWindow> * g_pTermWindowList;
+extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
+extern KviPointerList<KviTermWindow> * g_pTermWindowList;
 extern KviStr                 g_szKonsoleLibraryName;
 
 KviTermWidget::KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)

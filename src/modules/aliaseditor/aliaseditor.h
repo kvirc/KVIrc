@@ -26,7 +26,7 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 
 #include <qwidget.h>
@@ -121,7 +121,7 @@ public:
 	//bool modified(){ return m_bModified; };
 	void commit();
 	void exportAliases(bool,bool=false);
-	void exportSelectionInSinglesFiles(KviPtrList<KviAliasListViewItem> *l);
+	void exportSelectionInSinglesFiles(KviPointerList<KviAliasListViewItem> *l);
 
 	void saveProperties(KviConfig *);
 	void loadProperties(KviConfig *);
@@ -151,9 +151,9 @@ protected:
 	void selectOneItem(KviTalListViewItem * it,KviTalListViewItem *pStartFrom);
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorListViewItem *item,QString &buffer,KviAliasEditorListViewItem::Type eType);
-	void appendSelectedItems(KviPtrList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
-	void appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
-	void appendNamespaceItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
+	void appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
+	void appendAliasItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
+	void appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
 	bool removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
 	void openParentItems(KviTalListViewItem * it);
 	void activateItem(KviTalListViewItem * it);

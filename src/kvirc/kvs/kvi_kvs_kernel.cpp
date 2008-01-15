@@ -47,13 +47,13 @@ KviKvsKernel::KviKvsKernel()
 {
 	m_pKvsKernel = this;
 
-	m_pSpecialCommandParsingRoutineDict = new KviDict<KviKvsSpecialCommandParsingRoutine>(17,false);
+	m_pSpecialCommandParsingRoutineDict = new KviPointerHashTable<QString,KviKvsSpecialCommandParsingRoutine>(17,false);
 	m_pSpecialCommandParsingRoutineDict->setAutoDelete(true);
-	m_pCoreSimpleCommandExecRoutineDict = new KviDict<KviKvsCoreSimpleCommandExecRoutine>(51,false);
+	m_pCoreSimpleCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsCoreSimpleCommandExecRoutine>(51,false);
 	m_pCoreSimpleCommandExecRoutineDict->setAutoDelete(true);
-	m_pCoreFunctionExecRoutineDict = new KviDict<KviKvsCoreFunctionExecRoutine>(51,false);
+	m_pCoreFunctionExecRoutineDict = new KviPointerHashTable<QString,KviKvsCoreFunctionExecRoutine>(51,false);
 	m_pCoreFunctionExecRoutineDict->setAutoDelete(true);
-	m_pCoreCallbackCommandExecRoutineDict = new KviDict<KviKvsCoreCallbackCommandExecRoutine>(17,false);
+	m_pCoreCallbackCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsCoreCallbackCommandExecRoutine>(17,false);
 	m_pCoreCallbackCommandExecRoutineDict->setAutoDelete(true);
 
 	m_pGlobalVariables = new KviKvsHash();
@@ -101,7 +101,7 @@ void KviKvsKernel::done()
 
 #define COMPLETE_COMMAND_BY_DICT(__type,__dict) \
 	{ \
-		KviDictIterator<__type> it(*__dict); \
+		KviPointerHashTableIterator<QString,__type> it(*__dict); \
 		int l = szCommandBegin.length(); \
 		while(it.current()) \
 		{ \
@@ -112,7 +112,7 @@ void KviKvsKernel::done()
 	}
 
 
-void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPtrList<QString> * pMatches)
+void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
 	int idx = szCommandBegin.find(QChar('.'));
 	if(idx == -1)
@@ -122,7 +122,7 @@ void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPtrList<QStr
 		COMPLETE_COMMAND_BY_DICT(KviKvsSpecialCommandParsingRoutine,m_pSpecialCommandParsingRoutineDict)
 		COMPLETE_COMMAND_BY_DICT(KviKvsCoreCallbackCommandExecRoutine,m_pCoreCallbackCommandExecRoutineDict)
 
-		KviPtrList<QString> lModules;
+		KviPointerList<QString> lModules;
 		lModules.setAutoDelete(true);
 		g_pModuleManager->completeModuleNames(szCommandBegin,&lModules);
 		QString szEmpty = "";
@@ -138,12 +138,12 @@ void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPtrList<QStr
 	}
 }
 
-void KviKvsKernel::completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPtrList<QString> * pMatches)
+void KviKvsKernel::completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
 	KviModule * pModule = g_pModuleManager->getModule(szModuleName.latin1());
 	if(!pModule)return;
 
-	KviPtrList<QString> lModuleMatches;
+	KviPointerList<QString> lModuleMatches;
 	lModuleMatches.setAutoDelete(true);
 	pModule->completeCommand(szCommandBegin,&lModuleMatches);
 	for(QString * pszModuleMatch = lModuleMatches.first();pszModuleMatch;pszModuleMatch = lModuleMatches.next())
@@ -155,14 +155,14 @@ void KviKvsKernel::completeModuleCommand(const QString &szModuleName,const QStri
 	}
 }
 
-void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPtrList<QString> * pMatches)
+void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches)
 {
 	int idx = szFunctionBegin.find(QChar('.'));
 	if(idx == -1)
 	{
 		// no module name inside
 
-		KviDictIterator<KviKvsCoreFunctionExecRoutine> it(*m_pCoreFunctionExecRoutineDict);
+		KviPointerHashTableIterator<QString,KviKvsCoreFunctionExecRoutine> it(*m_pCoreFunctionExecRoutineDict);
 		int l = szFunctionBegin.length();
 		while(it.current())
 		{
@@ -175,14 +175,14 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPtrList<QS
 			++it;
 		}
 
-		KviPtrList<QString> lModules;
+		KviPointerList<QString> lModules;
 		lModules.setAutoDelete(true);
 		g_pModuleManager->completeModuleNames(szFunctionBegin,&lModules);
 		QString szEmpty = "";
 		for(QString * pszModuleName = lModules.first();pszModuleName;pszModuleName = lModules.next())
 			completeModuleFunction(*pszModuleName,szEmpty,pMatches);
 
-		KviPtrList<QString> lAliases;
+		KviPointerList<QString> lAliases;
 		lAliases.setAutoDelete(true);
 
 		KviKvsAliasManager::instance()->completeCommand(szFunctionBegin,&lAliases);
@@ -202,12 +202,12 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPtrList<QS
 	
 }
 
-void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QString &szCommandBegin,KviPtrList<QString> * pMatches)
+void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
 	KviModule * pModule = g_pModuleManager->getModule(szModuleName.latin1());
 	if(!pModule)return;
 
-	KviPtrList<QString> lModuleMatches;
+	KviPointerList<QString> lModuleMatches;
 	lModuleMatches.setAutoDelete(true);
 	pModule->completeFunction(szCommandBegin,&lModuleMatches);
 	for(QString * pszModuleMatch = lModuleMatches.first();pszModuleMatch;pszModuleMatch = lModuleMatches.next())

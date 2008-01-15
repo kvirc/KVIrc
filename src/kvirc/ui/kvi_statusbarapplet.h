@@ -25,12 +25,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
 #include "kvi_statusbar.h"
 
 #include <qstring.h>
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include <qstatusbar.h>
 #include <qlabel.h>
 #include <qpixmap.h>
@@ -59,7 +59,7 @@ protected:
 	CreateAppletCallback             m_pProc;               // creation callback
 	QPixmap                        * m_pIcon;
 	int                              m_iId;
-	KviPtrList<KviStatusBarApplet> * m_pAppletList;
+	KviPointerList<KviStatusBarApplet> * m_pAppletList;
 public:
 	KviStatusBarAppletDescriptor(const QString &szVisibleName,
 					const QString &szInternalName,

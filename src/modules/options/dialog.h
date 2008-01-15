@@ -79,8 +79,8 @@ private:
 	QToolButton  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsListViewItem *it);
-	void fillListView(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
-	//KviOptionsListViewItem * showHiddenChildren(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l);
+	void fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
+	//KviOptionsListViewItem * showHiddenChildren(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
 	KviOptionsListViewItem * findItemByPage(KviOptionsListViewItem *it,KviOptionsWidget * pPage);
 private slots:
 	void listViewItemSelectionChanged(KviTalListViewItem *it);

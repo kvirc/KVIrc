@@ -72,7 +72,7 @@ void KviFileTransferManager::killTerminatedTransfers()
 {
 	if(!m_pTransferList)return;
 
-	KviPtrList<KviFileTransfer> l;
+	KviPointerList<KviFileTransfer> l;
 	l.setAutoDelete(false);
 
 	for(KviFileTransfer * f = m_pTransferList->first();f;f = m_pTransferList->next())
@@ -88,7 +88,7 @@ void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateM
 {
 	if(!m_pTransferWindow)
 	{
-		KviDict<QVariant> d(7,false);
+		KviPointerHashTable<QString,QVariant> d(7,false);
 		d.setAutoDelete(true);
 		d.replace("bCreateMinimized",new QVariant(bCreateMinimized,0));
 		d.replace("bNoRaise",new QVariant(bNoRaise,0));
@@ -105,7 +105,7 @@ void KviFileTransferManager::registerTransfer(KviFileTransfer * t)
 {
 	if(!m_pTransferList)
 	{
-		m_pTransferList = new KviPtrList<KviFileTransfer>;
+		m_pTransferList = new KviPointerList<KviFileTransfer>;
 		m_pTransferList->setAutoDelete(false);
 	}
 

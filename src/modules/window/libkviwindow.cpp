@@ -41,7 +41,7 @@
 #include "kvi_channel.h"
 #include "userwindow.h"
 
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qtimer.h>
 
 
@@ -54,8 +54,8 @@
 
 
 // kvi_app.cpp
-extern KVIRC_API KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
-KviPtrList<KviUserWindow> * g_pUserWindowList = 0;
+extern KVIRC_API KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
+KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
 // $window.input.text $window.input.cursorpos $window.input.textlen
@@ -858,7 +858,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts but no "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType,"all");
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -882,7 +882,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts and also "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -903,7 +903,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// only "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -948,7 +948,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		}
 
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -1461,7 +1461,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 
 static bool window_module_init(KviModule *m)
 {
-	g_pUserWindowList = new KviPtrList<KviUserWindow>();
+	g_pUserWindowList = new KviPointerList<KviUserWindow>();
 	g_pUserWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_FUNCTION(m,"activityTemperature",window_kvs_fnc_activityTemperature);

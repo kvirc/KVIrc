@@ -29,7 +29,7 @@
 #include "kvi_toolbar.h"
 #include "kvi_console.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qwidget.h>
 #include <qtoolbutton.h>
 #include "kvi_tal_widgetstack.h"

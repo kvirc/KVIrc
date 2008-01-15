@@ -61,7 +61,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 : KviTalScrollView(parent)
 {
 	setFrameShape(NoFrame);
-	m_pZ = new KviPtrList<KviMdiChild>;
+	m_pZ = new KviPointerList<KviMdiChild>;
 	m_pZ->setAutoDelete(true);
 
 	m_pFrm = pFrm;
@@ -799,7 +799,7 @@ void KviMdiManager::cascadeWindows()
 	if(g_pApp->closingDown())return;
 
 	int idx=0;
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -827,7 +827,7 @@ void KviMdiManager::cascadeMaximized()
 	if(g_pApp->closingDown())return;
 	
 	int idx=0;
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
@@ -858,7 +858,7 @@ void KviMdiManager::expandVertical()
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 	
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -884,7 +884,7 @@ void KviMdiManager::expandHorizontal()
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 	
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -902,7 +902,7 @@ void KviMdiManager::expandHorizontal()
 
 void KviMdiManager::minimizeAll()
 {
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
     m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
 	while(!list.isEmpty())
@@ -919,7 +919,7 @@ void KviMdiManager::minimizeAll()
 void KviMdiManager::restoreAll()
 {
 	int idx=0;
-	KviPtrList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{

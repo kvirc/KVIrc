@@ -27,8 +27,8 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include "kvi_intdict.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerhashtable.h"
 
 #include "kvi_kvs_treenode_base.h"
 #include "kvi_kvs_treenode_data.h"
@@ -42,8 +42,8 @@ public:
 	KviKvsTreeNodeSwitchList(const QChar * pLocation);
 	~KviKvsTreeNodeSwitchList();
 public:
-	KviIntDict<KviKvsTreeNodeData> * m_pShortSwitchDict;
-	KviDict<KviKvsTreeNodeData> *m_pLongSwitchDict;
+	KviPointerHashTable<int,KviKvsTreeNodeData> * m_pShortSwitchDict;
+	KviPointerHashTable<QString,KviKvsTreeNodeData> *m_pLongSwitchDict;
 public:
 	void addShort(int iShortKey,KviKvsTreeNodeData * p);
 	void addLong(const QString &szLongKey,KviKvsTreeNodeData * p);

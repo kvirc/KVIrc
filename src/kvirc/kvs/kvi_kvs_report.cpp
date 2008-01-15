@@ -82,7 +82,7 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 
 
 
-void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPtrList<QString> * pListing)
+void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPointerList<QString> * pListing)
 {
 #ifdef COMPILE_NEW_KVS
 	iLine = 1;
@@ -227,7 +227,7 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 	
 	if(pOutput == KviDebugWindow::instance())
 	{
-		KviPtrList<QString> * l;
+		KviPointerList<QString> * l;
 		if(l = r->codeListing())
 		{
 			pOutput->outputNoFmt(out,__tr2qs("[KVS] Code listing:"));

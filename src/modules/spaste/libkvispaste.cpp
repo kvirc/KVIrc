@@ -41,7 +41,7 @@
     #include <unistd.h>
 #endif
 
-KviPtrList<SPasteController> * g_pControllerList = 0;
+KviPointerList<SPasteController> * g_pControllerList = 0;
 int ctrlId = 0;
 
 static SPasteController * spaste_find_controller(KviWindow * w)
@@ -208,7 +208,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
         return true;
     } else 
     {
-        KviPtrListIterator<SPasteController> it(*g_pControllerList);
+        KviPointerListIterator<SPasteController> it(*g_pControllerList);
         SPasteController *item;
         
         if(!iId) //Delete all spaste's from the current window
@@ -264,7 +264,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 { 
-	KviPtrListIterator<SPasteController> it(*g_pControllerList);
+	KviPointerListIterator<SPasteController> it(*g_pControllerList);
     SPasteController *item;
     
     while( (item = it.current()) != 0)
@@ -312,7 +312,7 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 //-------------------------------------------------    
 static bool spaste_module_init(KviModule * m)
 {
-    g_pControllerList = new KviPtrList<SPasteController>;
+    g_pControllerList = new KviPointerList<SPasteController>;
     g_pControllerList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"file",spaste_kvs_cmd_file);

@@ -52,7 +52,7 @@ void KviKvsEvent::addHandler(KviKvsEventHandler * h)
 {
 	if(!m_pHandlers)
 	{
-		m_pHandlers = new KviPtrList<KviKvsEventHandler>();
+		m_pHandlers = new KviPointerList<KviKvsEventHandler>();
 		m_pHandlers->setAutoDelete(true);
 	}
 	m_pHandlers->append(h);
@@ -61,7 +61,7 @@ void KviKvsEvent::addHandler(KviKvsEventHandler * h)
 void KviKvsEvent::clearScriptHandlers()
 {
 	if(!m_pHandlers)return;
-	KviPtrList<KviKvsEventHandler> dl;
+	KviPointerList<KviKvsEventHandler> dl;
 	dl.setAutoDelete(false);
 	KviKvsEventHandler * e;
 	for(e = m_pHandlers->first();e;e = m_pHandlers->next())

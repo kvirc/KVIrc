@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_action.h"
 #include "kvi_kvs_action.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <qtoolbutton.h>
 

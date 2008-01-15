@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_treenode_base.h"
@@ -41,7 +41,7 @@ public:
 	KviKvsTreeNodeDataList(const QChar * pLocation);
 	~KviKvsTreeNodeDataList();
 protected:
-	KviPtrList<KviKvsTreeNodeData> * m_pDataList;
+	KviPointerList<KviKvsTreeNodeData> * m_pDataList;
 protected:
 	void addItem(KviKvsTreeNodeData * p);
 	void prependItem(KviKvsTreeNodeData * p);

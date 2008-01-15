@@ -37,7 +37,7 @@
 #include "kvi_locale.h"
 #include "kvi_out.h"
 
-static KviPtrList<KviMediaPlayerInterfaceDescriptor> * g_pDescriptorList = 0;
+static KviPointerList<KviMediaPlayerInterfaceDescriptor> * g_pDescriptorList = 0;
 
 static KviMediaPlayerInterface * g_pMPInterface = 0;
 
@@ -1552,7 +1552,7 @@ MP_KVS_COMMAND(setShuffle)
 
 static bool mediaplayer_module_init( KviModule * m )
 {
-	g_pDescriptorList = new KviPtrList<KviMediaPlayerInterfaceDescriptor>;
+	g_pDescriptorList = new KviPointerList<KviMediaPlayerInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
 #ifndef COMPILE_ON_WINDOWS

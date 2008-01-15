@@ -17,7 +17,6 @@ libkvilib_la_LIBADD  = $(SS_LIBLINK)
 # echo $SRC
 #
 
-
 nodist_libkvilib_la_SOURCES = \
 	../ext/moc_kvi_crypt.cpp \
 	../ext/moc_kvi_garbage.cpp \
@@ -116,17 +115,14 @@ headers_HEADERS = \
 	../config/kvi_settings.h \
 	../config/kvi_sourcesdate.h \
 	../config/kvi_wincfg.h \
-	../core/kvi_asciidict.h \
 	../core/kvi_bswap.h \
-	../core/kvi_dict.h \
 	../core/kvi_error.h \
 	../core/kvi_heapobject.h \
-	../core/kvi_intdict.h \
 	../core/kvi_inttypes.h \
-	../core/kvi_list.h \
 	../core/kvi_malloc.h \
 	../core/kvi_memmove.h \
-	../core/kvi_ptrdict.h \
+	../core/kvi_pointerlist.h \
+	../core/kvi_pointerhashtable.h \
 	../core/kvi_qcstring.h \
 	../core/kvi_qstring.h \
 	../core/kvi_strasm.h \
@@ -263,6 +259,13 @@ headers_HEADERS = \
 %.moc: %.h
 	$(SS_QT_MOC) $< -o $@
 
+#%.h.gch: %.h
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c $< -o $@
+
+#PRECOMPILED_HDRS = \
+#	../config/kvi_confignames.h.gch \
+#   ...
+
 #
 # Command useful to find the moc dependancies
 # grep "\.moc" ../*/*.cpp | sort | sed -e 's/[[:space:]]*#include//' | sed -e 's/\"//g'
@@ -309,8 +312,10 @@ headers_HEADERS = \
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
 
 #
-# All the cpp files depend on symlinks beging up-to-date
+# All the cpp files depend on the precompiled headers being up-to-date
 #
+
+#../*/*.cpp: symlinks $(PRECOMPILED_HDRS) gchsymlinks
 
 ../*/*.cpp: symlinks
 
@@ -322,8 +327,13 @@ symlinks: ../config/*.h ../core/*.h ../ext/*.h ../file/*.h ../irc/*.h ../net/*.h
 	cd ../include; for i in kvi_*.h; do if [ ! -f $$i ]; then rm -f $$i; fi; done; for i in $(SS_TOPSRCDIR)/src/kvilib/*/kvi_*.h; do $(LN_S) $$i . >/dev/null 2>&1; echo "Created link to $$i"; done;
 	touch symlinks
 
+# gchsymlinks: ../config/*.h ../core/*.h ../ext/*.h ../file/*.h ../irc/*.h ../net/*.h ../system/*.h ../tal/*.h
+#	cd ../include; for i in kvi_*.gch; do if [ ! -f $$i ]; then rm -f $$i; fi; done; for i in $(SS_TOPSRCDIR)/src/kvilib/*/kvi_*.h.gch; do $(LN_S) $$i . >/dev/null 2>&1; echo "Created link to $$i"; done;
+#	touch gchsymlinks
+
 #
-# When cleaning...remove also the symlinks
+# When cleaning...remove also the symlinks, gchsymlinks and gch headers
 #
 
+#CLEANFILES = ../include/*.h ../include/*.gch symlinks gchsymlinks ../*/*.moc ../*/moc_kvi_*.cpp ../*/*.gch
 CLEANFILES = ../include/*.h symlinks ../*/*.moc ../*/moc_kvi_*.cpp

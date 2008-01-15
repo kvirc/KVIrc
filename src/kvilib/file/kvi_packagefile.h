@@ -26,10 +26,10 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_qcstring.h" // QByteArray anyway
 #include <qobject.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviFile;
 class QProgressDialog;
@@ -48,15 +48,15 @@ public:
 	virtual ~KviPackageIOEngine();
 protected:
 	QString m_szLastError;
-	KviDict<QString> * m_pStringInfoFields;
-	KviDict<QByteArray> * m_pBinaryInfoFields;
+	KviPointerHashTable<QString,QString> * m_pStringInfoFields;
+	KviPointerHashTable<QString,QByteArray> * m_pBinaryInfoFields;
 	QProgressDialog * m_pProgressDialog;
 	QLabel * m_pProgressDialogLabel;
 public:
 	const QString & lastError(){ return m_szLastError; };
 	void setLastError(const QString &szLastError){ m_szLastError = szLastError; };
-	KviDict<QString> * stringInfoFields(){ return m_pStringInfoFields; };
-	KviDict<QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
+	KviPointerHashTable<QString,QString> * stringInfoFields(){ return m_pStringInfoFields; };
+	KviPointerHashTable<QString,QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
 protected:
 	void showProgressDialog(const QString &szCaption,int iTotalSteps);
 	void hideProgressDialog();
@@ -91,7 +91,7 @@ protected:
 		QString m_szFileTargetName;
 	};
 
-	KviPtrList<DataField> * m_pDataFields;
+	KviPointerList<DataField> * m_pDataFields;
 	int m_iCurrentProgress;
 public:
 	// Adds a file to the package. The file must be specified as absolute local

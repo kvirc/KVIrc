@@ -105,7 +105,7 @@ public:
 	~KviKvsTreeNodeSpecialCommandSwitch();
 private:
 	KviKvsTreeNodeExpression * m_pExpression; // can't be 0
-	KviPtrList<KviKvsTreeNodeSpecialCommandSwitchLabel> * m_pLabels; //can't be 0
+	KviPointerList<KviKvsTreeNodeSpecialCommandSwitchLabel> * m_pLabels; //can't be 0
 public:
 	void addLabel(KviKvsTreeNodeSpecialCommandSwitchLabel * l);
 	bool isEmpty(){ return m_pLabels->isEmpty(); };

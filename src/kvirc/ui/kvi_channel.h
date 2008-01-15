@@ -38,7 +38,7 @@
 #include "kvi_valuelist.h"
 
 #include <qdatetime.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qstringlist.h>
 
 class KviConsole;
@@ -133,15 +133,15 @@ protected:
 	QString                               m_szChannelMode;
 	QString                               m_szChannelKey;
 	KviStr                                m_szChannelLimit;
-	KviPtrList<KviMaskEntry>            * m_pBanList;
-	KviPtrList<KviMaskEntry>            * m_pBanExceptionList;
-	KviPtrList<KviMaskEntry>            * m_pInviteList;
+	KviPointerList<KviMaskEntry>            * m_pBanList;
+	KviPointerList<KviMaskEntry>            * m_pBanExceptionList;
+	KviPointerList<KviMaskEntry>            * m_pInviteList;
 	KviPixmap                             m_privateBackground;
 	QDateTime                             m_joinTime;
 	QString                               m_szNameWithUserFlag;
-	KviAsciiDict<QString>               * m_pTmpHighLighted;
+	KviPointerHashTable<const char *,QString>               * m_pTmpHighLighted;
 	unsigned int                          m_uActionHistoryHotActionCount;
-	KviPtrList<KviChannelAction>        * m_pActionHistory;
+	KviPointerList<KviChannelAction>        * m_pActionHistory;
 	kvi_time_t                            m_tLastReceivedWhoReply;
 	KviValueList<int>                     m_VertSplitterSizesList;
 	KviTalHBox                          * m_pButtonContainer;
@@ -158,8 +158,8 @@ protected:
 	virtual void applyOptions();
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void triggerCreationEvents();
-	void toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** ppBtn,KviPtrList<KviMaskEntry> *l,char flag,const char *edName);
-	void internalMask(const QString &mask,bool bAdd,const QString &setBy,unsigned int setAt,KviPtrList<KviMaskEntry> *l,KviMaskEditor **ppEd);
+	void toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** ppBtn,KviPointerList<KviMaskEntry> *l,char flag,const char *edName);
+	void internalMask(const QString &mask,bool bAdd,const QString &setBy,unsigned int setAt,KviPointerList<KviMaskEntry> *l,KviMaskEditor **ppEd);
 	void checkChannelSync();
 	void showDoubleView(bool bShow);
 	void fixActionHistory();
@@ -168,9 +168,9 @@ public:
 	void getChannelActivityStats(KviChannelActivityStats * s);
 	//void getChannelActivityStatsDescription(QString &buffer);
 
-	KviPtrList<KviMaskEntry> * banList(){ return m_pBanList; };
-	KviPtrList<KviMaskEntry> * banExceptionList(){ return m_pBanExceptionList; };
-	KviPtrList<KviMaskEntry> * inviteList(){ return m_pInviteList; };
+	KviPointerList<KviMaskEntry> * banList(){ return m_pBanList; };
+	KviPointerList<KviMaskEntry> * banExceptionList(){ return m_pBanExceptionList; };
+	KviPointerList<KviMaskEntry> * inviteList(){ return m_pInviteList; };
 
 	QString * firstSelectedNickname(){ return m_pUserListView->firstSelectedNickname(); };
 	QString * nextSelectedNickname(){ return m_pUserListView->nextSelectedNickname(); };
@@ -304,7 +304,7 @@ private slots:
 	void setMode(const char * mode);
 	void modeSelectorDone();
 	void textViewRightClicked();
-	void removeMasks(KviMaskEditor *ed,KviPtrList<KviMaskEntry> *l);
+	void removeMasks(KviMaskEditor *ed,KviPointerList<KviMaskEntry> *l);
 	void toggleToolButtons();
 protected:
 	virtual void preprocessMessage(QString & szMessage);

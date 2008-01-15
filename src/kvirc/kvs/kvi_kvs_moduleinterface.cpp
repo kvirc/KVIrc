@@ -48,11 +48,11 @@ bool KviKvsModuleCallbackCommandCall::getParameterCode(unsigned int uParamIdx,QS
 
 KviKvsModuleInterface::KviKvsModuleInterface()
 {
-	m_pModuleSimpleCommandExecRoutineDict = new KviDict<KviKvsModuleSimpleCommandExecRoutine>(17,false);
+	m_pModuleSimpleCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleSimpleCommandExecRoutine>(17,false);
 	m_pModuleSimpleCommandExecRoutineDict->setAutoDelete(true);
-	m_pModuleFunctionExecRoutineDict = new KviDict<KviKvsModuleFunctionExecRoutine>(17,false);
+	m_pModuleFunctionExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleFunctionExecRoutine>(17,false);
 	m_pModuleFunctionExecRoutineDict->setAutoDelete(true);
-	m_pModuleCallbackCommandExecRoutineDict = new KviDict<KviKvsModuleCallbackCommandExecRoutine>(17,false);
+	m_pModuleCallbackCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleCallbackCommandExecRoutine>(17,false);
 	m_pModuleCallbackCommandExecRoutineDict->setAutoDelete(true);
 }
 
@@ -66,7 +66,7 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 
 #define COMPLETE_WORD_BY_DICT(__word,__list,__type,__dict) \
 	{ \
-		KviDictIterator<__type> it(*__dict); \
+		KviPointerHashTableIterator<QString,__type> it(*__dict); \
 		int l = __word.length(); \
 		while(it.current()) \
 		{ \
@@ -76,13 +76,13 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 		} \
 	}
 
-void KviKvsModuleInterface::completeCommand(const QString &szCommandBegin,KviPtrList<QString> * pMatches)
+void KviKvsModuleInterface::completeCommand(const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
 	COMPLETE_WORD_BY_DICT(szCommandBegin,pMatches,KviKvsModuleSimpleCommandExecRoutine,m_pModuleSimpleCommandExecRoutineDict)
 	COMPLETE_WORD_BY_DICT(szCommandBegin,pMatches,KviKvsModuleCallbackCommandExecRoutine,m_pModuleCallbackCommandExecRoutineDict)
 }
 
-void KviKvsModuleInterface::completeFunction(const QString &szFunctionBegin,KviPtrList<QString> * pMatches)
+void KviKvsModuleInterface::completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches)
 {
 	COMPLETE_WORD_BY_DICT(szFunctionBegin,pMatches,KviKvsModuleFunctionExecRoutine,m_pModuleFunctionExecRoutineDict)
 }

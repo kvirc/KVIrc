@@ -40,11 +40,11 @@ static KviKvsObject * objectClassCreateInstance(KviKvsObjectClass *pClass,KviKvs
 
 KviKvsObjectController::KviKvsObjectController()
 {
-	m_pTopLevelObjectList = new KviPtrList<KviKvsObject>;
+	m_pTopLevelObjectList = new KviPointerList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
-	m_pObjectDict = new KviPtrDict<KviKvsObject>(101);
+	m_pObjectDict = new KviPointerHashTable<void *,KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
-	m_pClassDict = new KviDict<KviKvsObjectClass>(31,false);
+	m_pClassDict = new KviPointerHashTable<QString,KviKvsObjectClass>(31,false);
 	m_pClassDict->setAutoDelete(false);
 }
 
@@ -91,7 +91,7 @@ void KviKvsObjectController::init()
 void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 {
 	if(!m_pObjectDict)return; // no more objects at all...
-	KviPtrList<KviKvsObject> l;
+	KviPointerList<KviKvsObject> l;
 	l.setAutoDelete(true);
 
 	for(KviKvsObject * o = m_pTopLevelObjectList->first();o;o = m_pTopLevelObjectList->next())
@@ -104,8 +104,8 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 void KviKvsObjectController::clearUserClasses()
 {
 	flushUserClasses();
-	KviDictIterator<KviKvsObjectClass> it(*m_pClassDict);
-	KviPtrList<KviKvsObjectClass> l;
+	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*m_pClassDict);
+	KviPointerList<KviKvsObjectClass> l;
 	l.setAutoDelete(true);
 	while(it.current())
 	{
@@ -122,9 +122,9 @@ void KviKvsObjectController::clearInstances()
 	while(m_pTopLevelObjectList->first())delete m_pTopLevelObjectList->first();
 	delete m_pTopLevelObjectList; // empty list
 	delete m_pObjectDict; // empty dict
-	m_pTopLevelObjectList = new KviPtrList<KviKvsObject>;
+	m_pTopLevelObjectList = new KviPointerList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
-	m_pObjectDict = new KviPtrDict<KviKvsObject>(101);
+	m_pObjectDict = new KviPointerHashTable<void *,KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
 }
 
@@ -156,7 +156,7 @@ void KviKvsObjectController::unregisterObject(KviKvsObject *pObject)
 
 void KviKvsObjectController::flushUserClasses()
 {
-	KviDictIterator<KviKvsObjectClass> it(*m_pClassDict);
+	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*m_pClassDict);
 	while(KviKvsObjectClass * c = it.current())
 	{
 		if(!c->isBuiltin())

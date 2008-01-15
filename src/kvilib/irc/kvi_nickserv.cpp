@@ -141,7 +141,7 @@ bool KviNickServRuleSet::loadPrivate(KviConfig * cfg,const QString &prefix,unsig
 {
 	if(m_pRules)m_pRules->clear();
 	else {
-		m_pRules = new KviPtrList<KviNickServRule>;
+		m_pRules = new KviPointerList<KviNickServRule>;
 		m_pRules->setAutoDelete(true);
 	}
 
@@ -183,7 +183,7 @@ void KviNickServRuleSet::addRule(KviNickServRule * r)
 {
 	if(!m_pRules)
 	{
-		m_pRules = new KviPtrList<KviNickServRule>;
+		m_pRules = new KviPointerList<KviNickServRule>;
 		m_pRules->setAutoDelete(true);
 	}
 	m_pRules->append(r);
@@ -227,7 +227,7 @@ void KviNickServRuleSet::copyFrom(const KviNickServRuleSet &src)
 	{
 		if(m_pRules)m_pRules->clear();
 		else {
-			m_pRules = new KviPtrList<KviNickServRule>;
+			m_pRules = new KviPointerList<KviNickServRule>;
 			m_pRules->setAutoDelete(true);
 		}
 		for(KviNickServRule * r = src.m_pRules->first();r;r = src.m_pRules->next())

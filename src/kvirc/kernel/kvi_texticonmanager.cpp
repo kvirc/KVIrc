@@ -30,7 +30,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_config.h"
 #include "kvi_app.h"
 #include "kvi_confignames.h"
@@ -75,7 +75,7 @@ QPixmap * KviTextIcon::pixmap()
 KviTextIconManager::KviTextIconManager()
 : QObject()
 {
-	m_pTextIconDict = new KviDict<KviTextIcon>(47,false);
+	m_pTextIconDict = new KviPointerHashTable<QString,KviTextIcon>(47,false);
 	m_pTextIconDict->setAutoDelete(true);
 }
 
@@ -177,7 +177,7 @@ int KviTextIconManager::load(const QString &filename,bool bMerge)
 	{
 		KviConfigGroupIterator it(*dict);
 	
-		KviPtrList<QString> names;
+		KviPointerList<QString> names;
 		names.setAutoDelete(true);
 	
 		while(it.current())
@@ -240,7 +240,7 @@ void KviTextIconManager::save(const QString &filename)
 
 	cfg.setGroup("TextIcons");
 
-	KviDictIterator<KviTextIcon> it(*m_pTextIconDict);
+	KviPointerHashTableIterator<QString,KviTextIcon> it(*m_pTextIconDict);
 	while(KviTextIcon * i = it.current())
 	{
 		if(i->id()!=-1)

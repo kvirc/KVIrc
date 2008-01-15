@@ -41,7 +41,7 @@
 	#include "kvi_toolwindows_container.h"
 	
 	#include <qlayout.h>
-	#include "kvi_asciidict.h"
+	#include "kvi_pointerhashtable.h"
 
 	// kvi_app.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
@@ -184,10 +184,10 @@
 
 	void KviCryptController::fillEngineList()
 	{
-		const KviDict<KviCryptEngineDescription> * a = g_pCryptEngineManager->engineDict();
+		const KviPointerHashTable<QString,KviCryptEngineDescription> * a = g_pCryptEngineManager->engineDict();
 		if(a)
 		{
-			KviDictIterator<KviCryptEngineDescription> it(*a);
+			KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*a);
 			while(it.current())
 			{
 				KviStr modName = it.current()->providerHandle ? ((KviModule *)(it.current()->providerHandle))->name() : "";

@@ -531,11 +531,11 @@ KviKvsPopupMenu::KviKvsPopupMenu(const QString &szName)
 :KviTalPopupMenu(0,szName)
 {
 	m_szName = szName;
-	m_pItemList = new KviPtrList<KviKvsPopupMenuItem>;
+	m_pItemList = new KviPointerList<KviKvsPopupMenuItem>;
 	m_pItemList->setAutoDelete(true);
-	m_pPrologues = new KviPtrList<KviKvsScript>;
+	m_pPrologues = new KviPointerList<KviKvsScript>;
 	m_pPrologues->setAutoDelete(true);
-	m_pEpilogues = new KviPtrList<KviKvsScript>;
+	m_pEpilogues = new KviPointerList<KviKvsScript>;
 	m_pEpilogues->setAutoDelete(true);
 	m_pParentPopup = 0;
 	m_pTopLevelData = 0;

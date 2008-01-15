@@ -53,7 +53,7 @@ void KviIrcConnectionAsyncWhoisData::add(KviAsyncWhoisInfo * i)
 {
 	if(!m_pWhoisInfoList)
 	{
-		m_pWhoisInfoList = new KviPtrList<KviAsyncWhoisInfo>;
+		m_pWhoisInfoList = new KviPointerList<KviAsyncWhoisInfo>;
 		m_pWhoisInfoList->setAutoDelete(true);
 	}
 	m_pWhoisInfoList->append(i);

@@ -28,7 +28,7 @@
 #include "kvi_time.h"
 #include "kvi_settings.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qobject.h>
 
 class KviIdentRequest
@@ -75,7 +75,7 @@ private:
 	bool                      m_bIpV6ContainsIpV4;
 	kvi_socket_t              m_sock;
 	kvi_socket_t              m_sock6;
-	KviPtrList<KviIdentRequest> *  m_pRequestList;
+	KviPointerList<KviIdentRequest> *  m_pRequestList;
 public:
 	virtual void run();
 protected:

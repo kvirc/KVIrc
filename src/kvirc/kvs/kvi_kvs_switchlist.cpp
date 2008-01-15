@@ -57,7 +57,7 @@ void KviKvsSwitchList::addShort(unsigned short uShortKey,KviKvsVariant * pVarian
 {
 	if(!m_pShortSwitchDict)
 	{
-		m_pShortSwitchDict = new KviIntDict<KviKvsVariant>(11);
+		m_pShortSwitchDict = new KviPointerHashTable<int,KviKvsVariant>(11);
 		m_pShortSwitchDict->setAutoDelete(true);
 	}
 	m_pShortSwitchDict->replace(uShortKey,pVariant);
@@ -67,7 +67,7 @@ void KviKvsSwitchList::addLong(const QString &szLongKey,KviKvsVariant * pVariant
 {
 	if(!m_pLongSwitchDict)
 	{
-		m_pLongSwitchDict = new KviDict<KviKvsVariant>(11);
+		m_pLongSwitchDict = new KviPointerHashTable<QString,KviKvsVariant>(11);
 		m_pLongSwitchDict->setAutoDelete(true);
 	}
 	m_pLongSwitchDict->replace(szLongKey,pVariant);

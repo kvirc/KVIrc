@@ -31,8 +31,8 @@
 #include "kvi_module.h"
 
 extern KviModule * g_pTermModule;
-extern KviPtrList<KviTermWindow> * g_pTermWindowList;
-extern KviPtrList<KviTermWidget> * g_pTermWidgetList;
+extern KviPointerList<KviTermWindow> * g_pTermWindowList;
+extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
 
 KviTermWindow::KviTermWindow(KviFrame * lpFrm,const char * name)
 : KviWindow(KVI_WINDOW_TYPE_TERM,lpFrm,name)

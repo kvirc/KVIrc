@@ -169,7 +169,7 @@ void KviProxyOptionsWidget::fillProxyList()
 {
 	KviProxyOptionsListViewItem * prx;
 
-	KviPtrList<KviProxy> * l = g_pProxyDataBase->proxyList();
+	KviPointerList<KviProxy> * l = g_pProxyDataBase->proxyList();
 
 	for(KviProxy * p = l->first();p;p = l->next())
 	{

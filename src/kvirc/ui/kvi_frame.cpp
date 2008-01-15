@@ -110,10 +110,10 @@ KviFrame::KviFrame()
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 
-	m_pWinList  = new KviPtrList<KviWindow>;
+	m_pWinList  = new KviPointerList<KviWindow>;
 	m_pWinList->setAutoDelete(false);
 
-	m_pModuleExtensionToolBarList = new KviPtrList<KviMexToolBar>;
+	m_pModuleExtensionToolBarList = new KviPointerList<KviMexToolBar>;
 	m_pModuleExtensionToolBarList->setAutoDelete(false);
 
 	m_pActiveContext = 0;
@@ -1082,7 +1082,7 @@ void KviFrame::fillToolBarsPopup(KviTalPopupMenu * p)
 	}
 
 	// FIXME: Should this display "Hide %1" when the toolbar is already visible ?
-	KviDictIterator<KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it2(*(KviCustomToolBarManager::instance()->descriptors()));
 	if(it2.current())
 	{
 		if(cnt > 0)p->insertSeparator();

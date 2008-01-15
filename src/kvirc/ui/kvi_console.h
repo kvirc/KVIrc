@@ -31,7 +31,7 @@
 #include "kvi_string.h"
 #include "kvi_irccontext.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <time.h>
 #include <qcombobox.h>
@@ -184,8 +184,8 @@ public:
 	const QString & statusString(){ return m_szStatusString; };
 	
 	// forwarders from KviIrcConnection
-	KVI_DEPRECATED KviPtrList<KviChannel> * channelList(){ return connection() ? connection()->channelList() : 0; };
-	KVI_DEPRECATED KviPtrList<KviQuery> * queryList(){ return connection() ? connection()->queryList() : 0; };
+	KVI_DEPRECATED KviPointerList<KviChannel> * channelList(){ return connection() ? connection()->channelList() : 0; };
+	KVI_DEPRECATED KviPointerList<KviQuery> * queryList(){ return connection() ? connection()->queryList() : 0; };
 	KVI_DEPRECATED unsigned int channelCount(){ return (connection() ? connection()->channelList()->count() : 0); };
 	KVI_DEPRECATED unsigned int queryCount(){ return (connection() ? connection()->queryList()->count() : 0); };
 	
@@ -195,8 +195,8 @@ public:
 
 	KviWindow * activeWindow();
 	// User db, connection related
-	void completeChannel(const QString &word,KviPtrList<QString> * matches);
-	void completeServer(const QString &word,KviPtrList<QString> * matches);
+	void completeChannel(const QString &word,KviPointerList<QString> * matches);
+	void completeServer(const QString &word,KviPointerList<QString> * matches);
 	void connectionAttached();
 	void connectionDetached();
 public slots:

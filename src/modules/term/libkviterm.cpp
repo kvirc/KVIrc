@@ -29,7 +29,7 @@
 #include "kvi_frame.h"
 
 #include <qsplitter.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #ifdef COMPILE_KDE_SUPPORT
 
@@ -47,8 +47,8 @@
 KviModule * g_pTermModule = 0;
 
 #ifdef COMPILE_KDE_SUPPORT
-	KviPtrList<KviTermWidget> * g_pTermWidgetList      = 0;
-	KviPtrList<KviTermWindow> * g_pTermWindowList      = 0;
+	KviPointerList<KviTermWidget> * g_pTermWidgetList      = 0;
+	KviPointerList<KviTermWindow> * g_pTermWindowList      = 0;
 	KviStr                 g_szKonsoleLibraryName = "";
 #endif
 
@@ -104,9 +104,9 @@ static bool term_module_init(KviModule * m)
 	g_pTermModule = m;
 
 #ifdef COMPILE_KDE_SUPPORT
-	g_pTermWidgetList = new KviPtrList<KviTermWidget>;
+	g_pTermWidgetList = new KviPointerList<KviTermWidget>;
 	g_pTermWidgetList->setAutoDelete(false);
-	g_pTermWindowList = new KviPtrList<KviTermWindow>;
+	g_pTermWindowList = new KviPointerList<KviTermWindow>;
 	g_pTermWindowList->setAutoDelete(false);
 
 //	KTrader::OfferList offers = KTrader::self()->query("Browser/View","KonsolePart");

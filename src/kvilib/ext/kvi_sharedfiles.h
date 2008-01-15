@@ -28,10 +28,10 @@
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 #include "kvi_ircmask.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_qstring.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #include <time.h>
 #include <qtimer.h>
@@ -68,7 +68,7 @@ public:
 };
 
 
-typedef KviPtrList<KviSharedFile> KviSharedFileList;
+typedef KviPointerList<KviSharedFile> KviSharedFileList;
 
 
 class KVILIB_API KviSharedFilesManager : public QObject
@@ -79,7 +79,7 @@ public:
 	~KviSharedFilesManager();
 private:
 	QTimer                     * m_pCleanupTimer;
-	KviDict<KviSharedFileList>   * m_pSharedListDict;
+	KviPointerHashTable<QString,KviSharedFileList>   * m_pSharedListDict;
 public:
 	void addSharedFile(KviSharedFile * f);
 	KviSharedFile * addSharedFile(const QString &szName,const QString &szAbsPath,const QString &szMask,int timeoutInSecs);
@@ -89,7 +89,7 @@ public:
 	void load(const QString &filename);
 	void save(const QString &filename);
 	void clear();
-	KviDict<KviSharedFileList> * sharedFileListDict(){ return m_pSharedListDict; };
+	KviPointerHashTable<QString,KviSharedFileList> * sharedFileListDict(){ return m_pSharedListDict; };
 private:
 	void doInsert(KviSharedFileList * l, KviSharedFile * o);
 private slots:

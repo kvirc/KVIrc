@@ -28,7 +28,7 @@
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qbitmap.h>
 #include <qtooltip.h>
 #include <qpainter.h>
@@ -85,7 +85,7 @@ extern QPixmap                 * g_pIccMemBuffer;
 //extern HANDLE                      g_hIccMemBuffer;
 
 
-static KviPtrList<KviClockDisplay> * g_pClockWidgetList;
+static KviPointerList<KviClockDisplay> * g_pClockWidgetList;
 
 static QBitmap * g_pClockBitmap = 0;
 
@@ -212,7 +212,7 @@ static bool clock_module_init(KviModule *m)
 	g_pClockBitmap = new QBitmap();
 	QPixmap pix(kvi_clock_digits_xpm);
 	*g_pClockBitmap = pix;
-	g_pClockWidgetList = new KviPtrList<KviClockDisplay>;
+	g_pClockWidgetList = new KviPointerList<KviClockDisplay>;
 	g_pClockWidgetList->setAutoDelete(false);
 	m->registerCommand("add",clock_module_cmd_add);
 #endif

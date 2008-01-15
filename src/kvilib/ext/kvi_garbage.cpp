@@ -45,7 +45,7 @@ void KviGarbageCollector::collect(QObject * g)
 {
 	if(!m_pGarbageList)
 	{
-		m_pGarbageList = new KviPtrList<QObject>;
+		m_pGarbageList = new KviPointerList<QObject>;
 		m_pGarbageList->setAutoDelete(true);
 	}
 	//debug("COLLECTING GARBAGE %s",g->className());
@@ -94,7 +94,7 @@ void KviGarbageCollector::cleanup()
 	if(m_pGarbageList)
 	{
 		//debug("SOME GARBAGE TO DELETE");
-		KviPtrList<QObject> dying;
+		KviPointerList<QObject> dying;
 		dying.setAutoDelete(false);
 		for(QObject * o = m_pGarbageList->first();o;o = m_pGarbageList->next())
 		{

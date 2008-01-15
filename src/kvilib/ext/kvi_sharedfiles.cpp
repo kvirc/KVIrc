@@ -103,7 +103,7 @@ KviSharedFile::~KviSharedFile()
 KviSharedFilesManager::KviSharedFilesManager()
 : QObject()
 {
-	m_pSharedListDict = new KviDict<KviSharedFileList>();
+	m_pSharedListDict = new KviPointerHashTable<QString,KviSharedFileList>();
 	m_pSharedListDict->setAutoDelete(true);
 	m_pCleanupTimer = new QTimer();
 	connect(m_pCleanupTimer,SIGNAL(timeout()),this,SLOT(cleanup()));
@@ -118,7 +118,7 @@ KviSharedFilesManager::~KviSharedFilesManager()
 
 void KviSharedFilesManager::cleanup()
 {
-	KviDictIterator<KviSharedFileList> it(*m_pSharedListDict);
+	KviPointerHashTableIterator<QString,KviSharedFileList> it(*m_pSharedListDict);
 	time_t curTime = time(0);
 
 	bool bOtherStuffToCleanup = false;
@@ -126,7 +126,7 @@ void KviSharedFilesManager::cleanup()
 
 	while(KviSharedFileList * l = it.current())
 	{
-		KviPtrList<KviSharedFile> tmp;
+		KviPointerList<KviSharedFile> tmp;
 		tmp.setAutoDelete(false);
 		for(KviSharedFile * o = l->first();o;o = l->next())
 		{
@@ -361,7 +361,7 @@ void KviSharedFilesManager::save(const QString &filename)
 	cfg.clear();
 	cfg.setGroup("PermanentFileOffers");
 
-	KviDictIterator<KviSharedFileList> it(*m_pSharedListDict);
+	KviPointerHashTableIterator<QString,KviSharedFileList> it(*m_pSharedListDict);
 	int idx = 0;
 	while(KviSharedFileList * l = it.current())
 	{

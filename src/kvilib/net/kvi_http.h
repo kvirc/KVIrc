@@ -34,7 +34,7 @@
 #include "kvi_url.h"
 
 #include <qobject.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_file.h"
 #include <qstringlist.h>
 
@@ -152,7 +152,7 @@ signals:
 	void status(const QString &message);
 	void data(const KviStr &data);
 	void binaryData(const KviDataBuffer &data);
-	void header(KviAsciiDict<KviStr> * hdr);
+	void header(KviPointerHashTable<const char *,KviStr> * hdr);
 	void requestSent(const QStringList &request);
 };
 

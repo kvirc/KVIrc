@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <qobject.h>
 
@@ -54,7 +54,7 @@ protected:
 	unsigned int              m_uLastEmittedLag;     // last emitted lag
 	long                      m_tLastCompleted;      // time when the last lag was completed (gettimeofday!)
 	unsigned int              m_uLastReliability;    // how much reliable was the last completed check ?
-	KviPtrList<KviLagCheck> * m_pCheckList;
+	KviPointerList<KviLagCheck> * m_pCheckList;
 	long                      m_tFirstOwnCheck;      // time when the first ping after a completed check was sent
 	long                      m_tLastOwnCheck;       // time when the last ping was sent
 	bool                      m_bOnAlarm;

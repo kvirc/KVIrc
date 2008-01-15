@@ -290,7 +290,7 @@ void KviSharedFilesWindow::editClicked()
 void KviSharedFilesWindow::fillFileView()
 {
 	m_pListView->clear();
-	KviDictIterator<KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
+	KviPointerHashTableIterator<QString,KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
 
 	KviSharedFilesListViewItem * itm;
 
@@ -343,7 +343,7 @@ void KviSharedFilesWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt)
 /*
 void KviSharedFilesWindow::fillTransferView()
 {
-	KviPtrList<KviSharedFiles> * l = KviSharedFilesManager::instance()->transferList();
+	KviPointerList<KviSharedFiles> * l = KviSharedFilesManager::instance()->transferList();
 	if(!l)return;
 	KviSharedFilesItem * it;
 	for(KviSharedFiles * t = l->first();t;t = l->next())

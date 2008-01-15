@@ -569,7 +569,7 @@ void KviConnectAction::activeContextChanged()
 void KviConnectAction::activeContextStateChanged()
 {
 
-	KviPtrList<QWidget> * bl = widgetList();
+	KviPointerList<QWidget> * bl = widgetList();
 	if(!bl)return;
 
 	QPixmap * p;
@@ -1006,7 +1006,7 @@ void KviGoAwayAction::activeContextChanged()
 
 void KviGoAwayAction::activeContextStateChanged()
 {
-	KviPtrList<QWidget> * bl = widgetList();
+	KviPointerList<QWidget> * bl = widgetList();
 	if(!bl)return;
 
 	QPixmap * p;

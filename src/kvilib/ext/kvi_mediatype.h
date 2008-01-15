@@ -27,7 +27,7 @@
 #include "kvi_string.h"
 #include "kvi_thread.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 
 //
@@ -62,11 +62,11 @@ public:
 	KviMediaManager();
 	~KviMediaManager();
 protected:
-	KviPtrList<KviMediaType> * m_pMediaTypeList;
+	KviPointerList<KviMediaType> * m_pMediaTypeList;
 private:
 	KviMediaType * findMediaTypeForRegularFile(const char * szFullPath,const char * szFileName,bool bCheckMagic);
 public:
-	KviPtrList<KviMediaType> * mediaTypeList(){ return m_pMediaTypeList; };
+	KviPointerList<KviMediaType> * mediaTypeList(){ return m_pMediaTypeList; };
 	KviMediaType * findMediaTypeByFileMask(const char * filemask);
 	KviMediaType * findMediaTypeByIanaType(const char * ianaType);
 	bool removeMediaType(KviMediaType * t){ return m_pMediaTypeList->removeRef(t); };

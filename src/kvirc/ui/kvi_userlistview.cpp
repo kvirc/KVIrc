@@ -189,7 +189,7 @@ KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* butto
 {
 	setAutoDelete(0);
 	m_pKviWindow  = pWnd;
-	m_pEntryDict  = new KviDict<KviUserListEntry>(dictSize,false);
+	m_pEntryDict  = new KviPointerHashTable<QString,KviUserListEntry>(dictSize,false);
 	m_pEntryDict->setAutoDelete(true);
 
 	m_pUsersLabel = new QLabel(this,"userslabel");
@@ -338,7 +338,7 @@ void KviUserListView::setMaskEntries(char type, int num)
 	updateUsersLabel();
 }
 
-void KviUserListView::completeNickBashLike(const QString &begin,KviPtrList<QString> *l,bool bAppendMask)
+void KviUserListView::completeNickBashLike(const QString &begin,KviPointerList<QString> *l,bool bAppendMask)
 {
 	KviUserListEntry * entry = m_pHeadItem;
 
@@ -943,7 +943,7 @@ void KviUserListView::appendSelectedNicknames(QString &buffer)
 }
 
 void KviUserListView::select(const QString& nick){
-	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviPointerHashTableIterator<QString,KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		((KviUserListEntry *)it.current())->m_bSelected = false;
@@ -1085,7 +1085,7 @@ void KviUserListView::updateUsersLabel()
 void KviUserListView::partAllButOne(const QString &whoNot)
 {
 	QStringList ll;
-	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviPointerHashTableIterator<QString,KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		if(!KviQString::equalCI(whoNot,it.currentKey()))
@@ -1100,7 +1100,7 @@ void KviUserListView::partAllButOne(const QString &whoNot)
 
 void KviUserListView::removeAllEntries()
 {
-	KviDictIterator<KviUserListEntry> it(*m_pEntryDict);
+	KviPointerHashTableIterator<QString,KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
 		m_pIrcUserDataBase->removeUser(it.currentKey(),
@@ -1440,7 +1440,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	}
 #endif
 
-
 	KviUserListEntry * e = m_pListView->m_pTopItem;
 
 	int theY = KVI_USERLIST_BORDER_WIDTH - m_iTopItemOffset;
@@ -1692,9 +1691,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				}
 				theX +=18;
 #ifdef COMPILE_USE_QT4
-	p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+				p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
 #else
-	p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
+				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
 #endif
 			} else {
 
@@ -1801,7 +1800,7 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
 			if(!entry->m_bSelected){
 				entry->m_bSelected = true;
 				m_pListView->m_iSelectedCount=1;
-				KviDictIterator<KviUserListEntry> it(*(m_pListView->m_pEntryDict));
+				KviPointerHashTableIterator<QString,KviUserListEntry> it(*(m_pListView->m_pEntryDict));
 				while(it.current())
 				{
 					if(it.current()!=entry)

@@ -29,9 +29,9 @@
 #include "kvi_string.h"
 #include "kvi_qstring.h"
 #include "kvi_tal_application.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_time.h"
-#include "kvi_asciidict.h" // ?
+#include "kvi_pointerhashtable.h" // ?
 
 #define KVI_RECENT_CHANNELS_SEPARATOR ":"
 
@@ -94,9 +94,9 @@ protected:
 	bool                            m_bFirstTimeRun;
 	KviWindow                     * m_pActiveWindow;
 	bool                            m_bUpdateGuiPending;
-	KviPtrList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
+	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
 	bool                            m_bSetupDone;
-	KviAsciiDict<QStringList>     * m_pRecentChannelsDict;
+	KviPointerHashTable<const char *,QStringList>     * m_pRecentChannelsDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool                            m_bUpdatePseudoTransparencyPending;
 #endif
@@ -215,7 +215,7 @@ public:
 	bool mapImageFile(QString &szRetPath,const char * filename);
 
 	//void getDefaultDccSaveFilePath(KviStr &path,const char *filename);
-	void completeDirectory(const QString &word,KviPtrList<QString> * matches);
+	void completeDirectory(const QString &word,KviPointerList<QString> * matches);
 	//
 	// Returns a config path suitable for reading (at least)
 	// First lookups the user local config directory,

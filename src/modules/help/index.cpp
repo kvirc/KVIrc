@@ -1,73 +1,12 @@
-/**********************************************************************
-
-** Copyright (C) 2000-2003 Trolltech AS.  All rights reserved.
-
-**
-
-** This file is part of the Qt Assistant.
-
-**
-
-** This file may be distributed and/or modified under the terms of the
-
-** GNU General Public License version 2 as published by the Free Software
-
-** Foundation and appearing in the file LICENSE.GPL included in the
-
-** packaging of this file.
-
-**
-
-** Licensees holding valid Qt Enterprise Edition or Qt Professional Edition
-
-** licenses may use this file in accordance with the Qt Commercial License
-
-** Agreement provided with the Software.
-
-**
-
-** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-
-** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-
-**
-
-** See http://www.trolltech.com/gpl/ for GPL licensing information.
-
-** See http://www.trolltech.com/pricing.html or email sales@trolltech.com for
-
-**   information about Qt Commercial License Agreements.
-
-**
-
-** Contact info@trolltech.com if any conditions of this licensing are
-
-** not clear to you.
-
-**
-
-**********************************************************************/
-
-
-
 #include "index.h"
 
-
-
 #include "kvi_file.h"
-
 #include <qdir.h>
-
 #include <qstringlist.h>
-
-#include "kvi_dict.h"
-
+#include "kvi_pointerhashtable.h"
 #include <qapplication.h>
-
 #include <qtextstream.h>
-
 #include <ctype.h>
-
 
 
 int kvi_compare(const Term * p1,const Term * p2)
@@ -79,49 +18,29 @@ int kvi_compare(const Term * p1,const Term * p2)
 	return 1;
 }
 
-
 QDataStream &operator>>( QDataStream &s, Document &l )
-
 {
-
     s >> l.docNumber;
-
     s >> l.frequency;
-
     return s;
-
 }
-
-
 
 QDataStream &operator<<( QDataStream &s, const Document &l )
-
 {
-
     s << (Q_INT16)l.docNumber;
-
     s << (Q_INT16)l.frequency;
-
     return s;
-
 }
-
-
 
 Index::Index( const QString &dp, const QString &hp )
 
     : QObject( 0, 0 ), dict( 8999 ), docPath( dp )
 
 {
-
     alreadyHaveDocList = FALSE;
-
     lastWindowClosed = FALSE;
-
     connect( qApp, SIGNAL( lastWindowClosed() ),
-
 	     this, SLOT( setLastWinClosed() ) );
-
 }
 
 
@@ -131,17 +50,11 @@ Index::Index( const QStringList &dl, const QString &hp )
     : QObject( 0, 0 ), dict( 8999 )
 
 {
-
     docList = dl;
-
     alreadyHaveDocList = TRUE;
-
     lastWindowClosed = FALSE;
-
     connect( qApp, SIGNAL( lastWindowClosed() ),
-
 	     this, SLOT( setLastWinClosed() ) );
-
 }
 
 
@@ -220,37 +133,21 @@ void Index::setupDocumentList()
 
 
 void Index::insertInDict( const QString &str, int docNum )
-
 {
-
     if ( strcmp( str, "amp" ) == 0 || strcmp( str, "nbsp" ) == 0 )
-
 	return;
-
     Entry *e = 0;
-
     if ( dict.count() )
-
 	e = dict[ str ];
 
-
-
     if ( e ) {
-
 	if ( e->documents.first().docNumber != docNum )
-
 	    e->documents.prepend( Document( docNum, 1 ) );
-
 	else
-
 	    e->documents.first().frequency++;
-
     } else {
-
 	dict.insert( str, new Entry( docNum ) );
-
     }
-
 }
 
 
@@ -329,7 +226,7 @@ void Index::writeDict()
 
 {
 
-    KviDictIterator<Entry> it( dict );
+    KviPointerHashTableIterator<QString,Entry> it( dict );
 
     KviFile f( dictFile );
 
@@ -596,7 +493,7 @@ QStringList Index::getWildcardTerms( const QString &term )
 #endif
 
 
-    KviDictIterator<Entry> it( dict );
+    KviPointerHashTableIterator<QString,Entry> it( dict );
 
     for( ; it.current(); ++it ) {
 

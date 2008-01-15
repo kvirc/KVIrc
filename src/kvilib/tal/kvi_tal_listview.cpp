@@ -25,7 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_listview.h"
 
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
 
 
 #ifdef COMPILE_USE_QT4
@@ -929,7 +929,7 @@
 	
 	    KviTalCheckListItem *exclusive;
 	    KviTalCheckListItem::ToggleState currentState;
-	    KviPtrDict<KviTalCheckListItem::ToggleState> *statesDict;
+	    KviPointerHashTable<void *,KviTalCheckListItem::ToggleState> *statesDict;
 	    bool tristate;
 	};
 	
@@ -1042,7 +1042,7 @@
 	    d = new KviTalCheckListItemPrivate();
 	    on = FALSE; // ### remove on ver 4
 	    if ( myType == CheckBoxController || myType == CheckBox ) {
-		d->statesDict = new KviPtrDict<ToggleState>(101);
+		d->statesDict = new KviPointerHashTable<void *,ToggleState>(101);
 		d->statesDict->setAutoDelete( TRUE );
 	    }
 	    // CheckBoxControllers by default have tristate set to TRUE

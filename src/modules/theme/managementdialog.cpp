@@ -262,7 +262,7 @@ void KviThemeManagementDialog::cleanup()
 
 void KviThemeManagementDialog::packTheme()
 {
-	KviPtrList<KviThemeInfo> dl;
+	KviPointerList<KviThemeInfo> dl;
 	dl.setAutoDelete(false);
 	for(KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListBox->firstItem();it;it = (KviThemeListBoxItem *)it->next())
 	{

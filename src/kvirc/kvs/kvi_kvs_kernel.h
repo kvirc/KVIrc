@@ -27,10 +27,10 @@
 #include "kvi_settings.h"
 
 #include "kvi_kvs_parser.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_qstring.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 class KviKvsTreeNodeSpecialCommand;
 class KviKvsObjectController;
@@ -76,11 +76,11 @@ public:
 private:
 	static KviKvsKernel * m_pKvsKernel; // global kernel object
 
-	KviDict<KviKvsSpecialCommandParsingRoutine>     * m_pSpecialCommandParsingRoutineDict;
+	KviPointerHashTable<QString,KviKvsSpecialCommandParsingRoutine>     * m_pSpecialCommandParsingRoutineDict;
 	
-	KviDict<KviKvsCoreSimpleCommandExecRoutine>     * m_pCoreSimpleCommandExecRoutineDict;
-	KviDict<KviKvsCoreCallbackCommandExecRoutine>   * m_pCoreCallbackCommandExecRoutineDict;
-	KviDict<KviKvsCoreFunctionExecRoutine>          * m_pCoreFunctionExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsCoreSimpleCommandExecRoutine>     * m_pCoreSimpleCommandExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsCoreCallbackCommandExecRoutine>   * m_pCoreCallbackCommandExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsCoreFunctionExecRoutine>          * m_pCoreFunctionExecRoutineDict;
 	
 	KviKvsHash                                    * m_pGlobalVariables;
 	KviKvsVariantList                             * m_pEmptyParameterList;
@@ -120,14 +120,14 @@ public:
 	KviKvsCoreCallbackCommandExecRoutine * findCoreCallbackCommandExecRoutine(const QString &szCmdName)
 		{ return m_pCoreCallbackCommandExecRoutineDict->find(szCmdName); };
 
-	void completeCommand(const QString &szCommandBegin,KviPtrList<QString> * pMatches);
-	void completeFunction(const QString &szFunctionBegin,KviPtrList<QString> * pMatches);
-	void completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPtrList<QString> * matches);
-	void completeModuleFunction(const QString &szModuleName,const QString &szFunctionBegin,KviPtrList<QString> * matches);
+	void completeCommand(const QString &szCommandBegin,KviPointerList<QString> * pMatches);
+	void completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches);
+	void completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * matches);
+	void completeModuleFunction(const QString &szModuleName,const QString &szFunctionBegin,KviPointerList<QString> * matches);
 /*
-	KviPtrList<QString> * completeCommandAllocateResult(const QString &szCommandBegin);
-	KviPtrList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin);
-	void freeCompletionResult(KviPtrList<QString> * l);
+	KviPointerList<QString> * completeCommandAllocateResult(const QString &szCommandBegin);
+	KviPointerList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin);
+	void freeCompletionResult(KviPointerList<QString> * l);
 */
 };
 

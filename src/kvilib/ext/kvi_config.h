@@ -28,7 +28,7 @@
 #include "kvi_string.h"
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_valuelist.h"
 
 #include <qcolor.h>
@@ -41,9 +41,9 @@
 class KviPixmap;
 class KviMsgType;
 
-typedef KviDict<QString> KviConfigGroup;
-typedef KviDictIterator<QString> KviConfigGroupIterator;
-typedef KviDictIterator<KviConfigGroup> KviConfigIterator;
+typedef KviPointerHashTable<QString,QString> KviConfigGroup;
+typedef KviPointerHashTableIterator<QString,QString> KviConfigGroupIterator;
+typedef KviPointerHashTableIterator<QString,KviConfigGroup> KviConfigIterator;
 
 class KVILIB_API KviConfig : public KviHeapObject
 {
@@ -55,7 +55,7 @@ public:
 	~KviConfig();
 private:
 	bool                         m_bLocal8Bit;
-	KviDict<KviConfigGroup>      * m_pDict;
+	KviPointerHashTable<QString,KviConfigGroup>      * m_pDict;
 	QString                      m_szFileName;
 	bool                         m_bDirty;
 	QString                      m_szStrBuffer;
@@ -89,7 +89,7 @@ public:
 	// as default configuration, alter its settings and save it to the
 	// user local configuration directory
 	void setSavePath(const QString & savePath){ m_szFileName = savePath; };
-	KviDict<KviConfigGroup> *dict(){ return m_pDict; };
+	KviPointerHashTable<QString,KviConfigGroup> *dict(){ return m_pDict; };
 
 	void clearDirtyFlag(){ m_bDirty = false; };
 	void clear();

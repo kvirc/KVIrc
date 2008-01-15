@@ -84,7 +84,7 @@ void KviProxy::normalizeUserAndPass()
 
 KviProxyDataBase::KviProxyDataBase()
 {
-	m_pProxyList = new KviPtrList<KviProxy>;
+	m_pProxyList = new KviPointerList<KviProxy>;
 	m_pProxyList->setAutoDelete(true);
 	m_pCurrentProxy = 0;
 }
@@ -109,7 +109,7 @@ void KviProxyDataBase::updateProxyIp(const char * proxy,const char * ip)
 void KviProxyDataBase::clear()
 {
 	delete m_pProxyList;
-	m_pProxyList = new KviPtrList<KviProxy>;
+	m_pProxyList = new KviPointerList<KviProxy>;
 	m_pProxyList->setAutoDelete(true);
 	m_pCurrentProxy = 0;
 }

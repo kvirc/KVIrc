@@ -174,7 +174,7 @@ protected:
 	QString m_szIp;
 	unsigned short m_uPort;
 	QString m_szNick;
-	KviPtrList<KviVoiceParty> * m_pChildrenTree;
+	KviPointerList<KviVoiceParty> * m_pChildrenTree;
 public:
 	const QString & ip(){ return m_szIp; };
 	unsigned short port(){ return m_uPort; };
@@ -198,7 +198,7 @@ void KviVoiceParty::addChild(KviVoiceParty * pChild)
 {
 	if(!m_pChildrenTree)
 	{
-		m_pChildrenTree = new KviPtrList<KviVoiceParty>;
+		m_pChildrenTree = new KviPointerList<KviVoiceParty>;
 		m_pChildrenTree->setAutoDelete(true);
 	}
 	m_pChildrenTree->append(pChild);
@@ -314,8 +314,8 @@ public:
 	KviVoiceConference();
 	~KviVoiceConference();
 public:
-	KviPtrList<KviVoiceLink> * m_pLinks;
-	KviDict<KviVoiceLink> * 
+	KviPointerList<KviVoiceLink> * m_pLinks;
+	KviPointerHashTable<QString,KviVoiceLink> * 
 	SOCKET m_hUdpSocket;
 	QString m_szLastError;
 	
@@ -332,7 +332,7 @@ protected:
 
 KviVoiceConference::KviVoiceConference()
 {
-	m_pLinks = new KviPtrList<KviVoiceLink>;
+	m_pLinks = new KviPointerList<KviVoiceLink>;
 	m_pLinks->setAutoDelete(true);
 }
 

@@ -193,13 +193,13 @@ void KviActionDrawer::fill()
 {
 	KviActionManager::loadAllAvailableActions();
 
-	KviDict<KviActionDrawerPage> pages;
+	KviPointerHashTable<QString,KviActionDrawerPage> pages;
 	pages.setAutoDelete(false);
 
-	KviDict<KviAction> * d = KviActionManager::instance()->actions();
+	KviPointerHashTable<QString,KviAction> * d = KviActionManager::instance()->actions();
 	if(!d)return; // ooops
 
-	KviDictIterator<KviAction> it(*d);
+	KviPointerHashTableIterator<QString,KviAction> it(*d);
 	while(KviAction * a = it.current())
 	{
 		KviActionCategory * c = a->category();

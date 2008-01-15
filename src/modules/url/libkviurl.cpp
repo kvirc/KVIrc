@@ -32,7 +32,7 @@
 #include "kvi_actionmanager.h"
 #include "kvi_taskbar.h"
 #include "icons.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qfiledialog.h>
 #include <qmessagebox.h>
 #include <qcursor.h>
@@ -51,9 +51,9 @@ typedef struct _UrlDlgList
 const char *g_pUrlListFilename = "/list.kviurl";
 const char *g_pBanListFilename = "/list.kviban";
 
-KviPtrList<KviUrl> *g_pList;
-KviPtrList<UrlDlgList> *g_pUrlDlgList;
-KviPtrList<KviStr> *g_pBanList;
+KviPointerList<KviUrl> *g_pList;
+KviPointerList<UrlDlgList> *g_pUrlDlgList;
+KviPointerList<KviStr> *g_pBanList;
 ConfigDialog *g_pConfigDialog;
 
 KviStr szConfigPath;
@@ -106,7 +106,7 @@ QPixmap * KviUrlAction::smallIcon()
 
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
-UrlDialog::UrlDialog(KviPtrList<KviUrl> *g_pList)
+UrlDialog::UrlDialog(KviPointerList<KviUrl> *g_pList)
 :KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
@@ -794,13 +794,13 @@ static bool url_module_init(KviModule *m)
 							url_extension_alloc);
 	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
 
-	g_pList = new KviPtrList<KviUrl>;
+	g_pList = new KviPointerList<KviUrl>;
 	g_pList->setAutoDelete(true);
 
-	g_pUrlDlgList = new KviPtrList<UrlDlgList>;
+	g_pUrlDlgList = new KviPointerList<UrlDlgList>;
 	g_pUrlDlgList->setAutoDelete(true);
 
-	g_pBanList = new KviPtrList<KviStr>;
+	g_pBanList = new KviPointerList<KviStr>;
 	g_pBanList->setAutoDelete(true);
 
 	g_pUrlIconPixmap = new QPixmap(url_icon_xpm);

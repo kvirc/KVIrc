@@ -121,7 +121,7 @@ KviUserIdentityManager * KviUserIdentityManager::m_pInstance = 0;
 KviUserIdentityManager::KviUserIdentityManager()
 : KviHeapObject()
 {
-	m_pIdentityDict = new KviDict<KviUserIdentity>();
+	m_pIdentityDict = new KviPointerHashTable<QString,KviUserIdentity>();
 	m_pIdentityDict->setAutoDelete(true);
 }
 
@@ -154,7 +154,7 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 
 	// the default identity is borken :/
 	// grab the first one
-	KviDictIterator<KviUserIdentity> it(*m_pIdentityDict);
+	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
 	ret = it.current();
 	if(ret)
 	{
@@ -215,7 +215,7 @@ void KviUserIdentityManager::save(const QString &szFileName)
 
 	cfg.writeEntry("DefaultIdentity",m_szDefaultIdentity);
 	
-	KviDictIterator<KviUserIdentity> it(*m_pIdentityDict);
+	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
 	while(KviUserIdentity * id = it.current())
 	{
 		id->save(cfg);
@@ -227,7 +227,7 @@ void KviUserIdentityManager::copyFrom(KviUserIdentityManager * pWorkingCopy)
 {
 	m_pIdentityDict->clear();
 	m_szDefaultIdentity = pWorkingCopy->m_szDefaultIdentity;
-	KviDictIterator<KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
+	KviPointerHashTableIterator<QString,KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
 	while(KviUserIdentity * id = it.current())
 	{
 		KviUserIdentity * pNew = new KviUserIdentity();

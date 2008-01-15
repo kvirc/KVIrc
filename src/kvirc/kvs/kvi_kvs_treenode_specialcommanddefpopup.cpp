@@ -252,7 +252,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::KviKvsTreeNodeSpecialCommandDefp
 : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation,QString::null,QString::null,QString::null,QString::null)
 {
 #ifdef COMPILE_NEW_KVS
-	m_pLabels = new KviPtrList<KviKvsTreeNodeSpecialCommandDefpopupLabel>;
+	m_pLabels = new KviPointerList<KviKvsTreeNodeSpecialCommandDefpopupLabel>;
 	m_pLabels->setAutoDelete(true);
 #endif
 }

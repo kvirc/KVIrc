@@ -76,7 +76,7 @@
 
 #include <qpalette.h>
 #include "kvi_tal_popupmenu.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include <qmessagebox.h>
 #include "kvi_tal_widgetstack.h" 
 
@@ -97,17 +97,17 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	// Init some member variables
 	m_pInput               = 0;
 	m_iStateFlags          = 0;
-	m_pBanList             = new KviPtrList<KviMaskEntry>;
+	m_pBanList             = new KviPointerList<KviMaskEntry>;
 	m_pBanList->setAutoDelete(true);
-	m_pBanExceptionList    = new KviPtrList<KviMaskEntry>;
+	m_pBanExceptionList    = new KviPointerList<KviMaskEntry>;
 	m_pBanExceptionList->setAutoDelete(true);
-	m_pInviteList = new KviPtrList<KviMaskEntry>;
+	m_pInviteList = new KviPointerList<KviMaskEntry>;
 	m_pInviteList->setAutoDelete(true);
-	m_pActionHistory = new KviPtrList<KviChannelAction>;
+	m_pActionHistory = new KviPointerList<KviChannelAction>;
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
-	m_pTmpHighLighted      = new KviAsciiDict<QString>();
+	m_pTmpHighLighted      = new KviPointerHashTable<const char *,QString>();
 	m_pTmpHighLighted->setAutoDelete(true);
 
 	// Register ourselves
@@ -452,7 +452,7 @@ void KviChannel::toggleInviteEditor()
 			m_pInviteList,'I',"invite_exception_editor");
 }
 
-void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** ppBtn,KviPtrList<KviMaskEntry> *l,char flag,const char *edName)
+void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** ppBtn,KviPointerList<KviMaskEntry> *l,char flag,const char *edName)
 {
 	if(*ppEd)
 	{
@@ -496,8 +496,8 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		}
 
 		*ppEd = new KviMaskEditor(m_pSplitter,*ppBtn,l,flag,edName);
-		connect(*ppEd,SIGNAL(removeMasks(KviMaskEditor *,KviPtrList<KviMaskEntry> *)),
-			this,SLOT(removeMasks(KviMaskEditor *,KviPtrList<KviMaskEntry> *)));
+		connect(*ppEd,SIGNAL(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)),
+			this,SLOT(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)));
 		//setFocusHandler(m_pInput,*ppEd); //socket it!
 		(*ppEd)->show();
 		if(!(*ppBtn))return;
@@ -505,7 +505,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 	}
 }
 
-void KviChannel::removeMasks(KviMaskEditor *ed,KviPtrList<KviMaskEntry> *l)
+void KviChannel::removeMasks(KviMaskEditor *ed,KviPointerList<KviMaskEntry> *l)
 {
 	KviStr masks;
 	KviStr flags;
@@ -1301,7 +1301,7 @@ void KviChannel::getChannelActivityStats(KviChannelActivityStats * s)
 	tTwoMinsAgo-= 120;
 	tNow -= 60;
 
-	KviDict<int> userDict;
+	KviPointerHashTable<QString,int> userDict;
 	userDict.setAutoDelete(false);
 
 	int fake;
@@ -1427,7 +1427,7 @@ int KviChannel::myFlags()
 void KviChannel::setMask(char flag, const QString &mask,bool bAdd,const QString &setBy,unsigned int setAt)
 {
 	if(!connection())return;
-	KviPtrList<KviMaskEntry> * list = m_pBanList;
+	KviPointerList<KviMaskEntry> * list = m_pBanList;
 	KviMaskEditor * editor = m_pBanEditor;
 	switch(flag)
 	{
@@ -1450,7 +1450,7 @@ void KviChannel::setMask(char flag, const QString &mask,bool bAdd,const QString 
 	m_pUserListView->setMaskEntries(flag,(int)list->count());
 }
 
-void KviChannel::internalMask(const QString &mask,bool bAdd,const QString &setBy,unsigned int setAt,KviPtrList<KviMaskEntry> *l,KviMaskEditor **ppEd)
+void KviChannel::internalMask(const QString &mask,bool bAdd,const QString &setBy,unsigned int setAt,KviPointerList<KviMaskEntry> *l,KviMaskEditor **ppEd)
 {
 	KviMaskEntry * e = 0;
 	if(bAdd)

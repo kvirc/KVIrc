@@ -109,7 +109,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	int i = 1;
 	QString tmp;
 
-	m_pCheckBoxes = new KviPtrList<KviStyledCheckBox>;
+	m_pCheckBoxes = new KviPointerList<KviStyledCheckBox>;
 	m_pCheckBoxes->setAutoDelete(false);
 
 	

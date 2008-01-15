@@ -25,9 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_qstring.h"
 
 #include "kvi_kvs_script.h"
@@ -38,7 +38,7 @@ protected: // it only can be created and destroyed by KviKvsAliasManager::init()
 	KviKvsAliasManager();
 	~KviKvsAliasManager();
 protected:
-	KviDict<KviKvsScript>        * m_pAliasDict;
+	KviPointerHashTable<QString,KviKvsScript>        * m_pAliasDict;
 	static KviKvsAliasManager  * m_pAliasManager;
 public:
 	static KviKvsAliasManager * instance()
@@ -46,7 +46,7 @@ public:
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
-	KviDict<KviKvsScript> * aliasDict(){ return m_pAliasDict; };
+	KviPointerHashTable<QString,KviKvsScript> * aliasDict(){ return m_pAliasDict; };
 	const KviKvsScript * lookup(const QString & szName)
 		{ return m_pAliasDict->find(szName); };
 	void add(const QString &szName,KviKvsScript * pAlias)
@@ -59,7 +59,7 @@ public:
 	void save(const QString & filename);
 	void load(const QString & filename);
 
-	void completeCommand(const QString &word,KviPtrList<QString> * matches);
+	void completeCommand(const QString &word,KviPointerList<QString> * matches);
 };
 
 // namespaces are handled completly in the editing!

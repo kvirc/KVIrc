@@ -600,7 +600,7 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 	m_pClass             = pClass;
 
-	m_pChildList         = new KviPtrList<KviKvsObject>;
+	m_pChildList         = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
 	m_pDataContainer     = new KviKvsHash();
@@ -638,7 +638,7 @@ KviKvsObject::~KviKvsObject()
 	// Disconnect all the signals
 	if(m_pSignalDict)
 	{
-		KviDictIterator<KviKvsObjectConnectionList> it(*m_pSignalDict);
+		KviPointerHashTableIterator<QString,KviKvsObjectConnectionList> it(*m_pSignalDict);
 
 		while(it.current())
 		{
@@ -715,7 +715,7 @@ bool KviKvsObject::connectSignal(const QString &sigName,KviKvsObject * pTarget,c
 
 	if(!m_pSignalDict)
 	{
-		m_pSignalDict = new KviDict<KviKvsObjectConnectionList>(7,false);
+		m_pSignalDict = new KviPointerHashTable<QString,KviKvsObjectConnectionList>(7,false);
 		m_pSignalDict->setAutoDelete(true);
 	}
 
@@ -821,7 +821,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 	KviKvsVariant retVal;
 
 	// The objects we're going to disconnect
-	KviPtrList<KviKvsObjectConnection> * pDis = 0;
+	KviPointerList<KviKvsObjectConnection> * pDis = 0;
 
 	kvs_int_t emitted = 0;
 
@@ -855,7 +855,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 
 				if(!pDis)
 				{
-					pDis = new KviPtrList<KviKvsObjectConnection>;
+					pDis = new KviPointerList<KviKvsObjectConnection>;
 					pDis->setAutoDelete(false);
 				}
 				pDis->append(s);
@@ -1497,7 +1497,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 
 void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 {
-	KviPtrList<KviKvsObject> l;
+	KviPointerList<KviKvsObject> l;
 	l.setAutoDelete(true);
 	for(KviKvsObject * o=m_pChildList->first();o;o=m_pChildList->next())
 	{
@@ -1680,7 +1680,7 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 	} else {
 		if(!m_pFunctionHandlers)
 		{
-			m_pFunctionHandlers = new KviDict<KviKvsObjectFunctionHandler>(7,false);
+			m_pFunctionHandlers = new KviPointerHashTable<QString,KviKvsObjectFunctionHandler>(7,false);
 			m_pFunctionHandlers->setAutoDelete(true);
 		}
 

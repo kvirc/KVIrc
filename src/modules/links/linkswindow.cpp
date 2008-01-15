@@ -38,7 +38,7 @@
 #include "kvi_tal_hbox.h"
 #include <qlabel.h>
 
-extern KviPtrList<KviLinksWindow> * g_pLinksWindowList;
+extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 
 KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LINKS,lpFrm,"links",lpConsole) , KviExternalServerDataParser()
@@ -77,7 +77,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
-	m_pLinkList = new KviPtrList<KviLink>;
+	m_pLinkList = new KviPointerList<KviLink>;
 	m_pLinkList->setAutoDelete(true);
 
 	m_pHostPopup = new KviTalPopupMenu();

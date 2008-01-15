@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviWindow;
 
@@ -48,8 +48,8 @@ protected:
 	KviWindow           * m_pWindow;        // the window that the script was attacched to
 
 	// optional
-	KviPtrList<QString> * m_pCodeListing;   // code listing, if present, it is owned
-	KviPtrList<QString> * m_pCallStack;     // call stack, if present, it is owned
+	KviPointerList<QString> * m_pCodeListing;   // code listing, if present, it is owned
+	KviPointerList<QString> * m_pCallStack;     // call stack, if present, it is owned
 public:
 	Type type() const { return m_eType; };
 
@@ -57,17 +57,17 @@ public:
 	const QString & context(){ return m_szContext; };
 	const QString & message(){ return m_szMessage; };
 	const QString & location(){ return m_szLocation; };
-	KviPtrList<QString> * codeListing(){ return m_pCodeListing; };
-	KviPtrList<QString> * callStack(){ return m_pCallStack; };
+	KviPointerList<QString> * codeListing(){ return m_pCodeListing; };
+	KviPointerList<QString> * callStack(){ return m_pCallStack; };
 
 	void setContext(const QString &szContext){ m_szContext = szContext; };
 	void setMessage(const QString &szMessage){ m_szMessage = szMessage; };
 	void setLocation(const QString &szLocation){ m_szLocation = szLocation; };
-	void setCodeListing(KviPtrList<QString> * pListing){ m_pCodeListing = pListing; };
-	void setCallStack(KviPtrList<QString> * pStack){ m_pCallStack = pStack; };
+	void setCodeListing(KviPointerList<QString> * pListing){ m_pCodeListing = pListing; };
+	void setCallStack(KviPointerList<QString> * pStack){ m_pCallStack = pStack; };
 
 	static void findLineAndCol(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol);
-	static void findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPtrList<QString> * pListing);
+	static void findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPointerList<QString> * pListing);
 
 	static void report(KviKvsReport * r,KviWindow * pOutput);
 };

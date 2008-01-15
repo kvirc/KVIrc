@@ -49,7 +49,7 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QString label)
 {
 	m_pWnd = pWnd;
 	m_label = label;
-	m_pMessageList = new KviPtrList<KviNotifierMessage>;
+	m_pMessageList = new KviPointerList<KviNotifierMessage>;
 	m_pMessageList->setAutoDelete(true);
 	m_bFocused = false;
 	m_pCurrentMessage = 0;
@@ -371,7 +371,7 @@ void KviNotifierWindowTabs::prev()
 	if(!m_pTabFocused)return;
 
 	KviNotifierWindowTab * tab;
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPointerListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	
@@ -394,7 +394,7 @@ void KviNotifierWindowTabs::next()
 	if(!m_pTabFocused)return;
 	
 	KviNotifierWindowTab * tab;
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPointerListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 
 	tab = m_tabMap[m_pTabFocused->wnd()];
 	tabIterator.moveFirst();
@@ -552,7 +552,7 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 	m_pPainter->drawPixmap(m_rct.width()-m_pixDX.width(),0,m_pixDX);
 	m_pPainter->drawTiledPixmap(m_pixSX.width(),0,m_rct.width()-m_pixSX.width()-m_pixDX.width(),m_rct.height(),m_pixBKG);
 
-	KviPtrListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
+	KviPointerListIterator<KviNotifierWindowTab> tabIterator (m_tabPtrList);
 	
 	//m_tabPtrList.findRef(m_tabMap[m_pTabFocused->wnd()]);
 
@@ -639,7 +639,7 @@ void KviNotifierWindowTabs::markAllMessagesAsHistoric()
 	
 		if (!tab.value()) break;
 		
-		KviPtrList<KviNotifierMessage> * tmpMessageList = tab.value()->messageList();
+		KviPointerList<KviNotifierMessage> * tmpMessageList = tab.value()->messageList();
 		
 		if (!tmpMessageList) break;
 		

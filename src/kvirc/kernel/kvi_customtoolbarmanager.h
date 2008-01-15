@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	#include "kvi_customtoolbardescriptor.h"
@@ -45,7 +45,7 @@ protected:
 	~KviCustomToolBarManager();
 protected:
 	static KviCustomToolBarManager * m_pInstance;
-	KviDict<KviCustomToolBarDescriptor> * m_pDescriptors;
+	KviPointerHashTable<QString,KviCustomToolBarDescriptor> * m_pDescriptors;
 public:
 	static KviCustomToolBarManager * instance(){ return m_pInstance; };
 	static void init();
@@ -54,7 +54,7 @@ public:
 	int descriptorCount(){ return m_pDescriptors->count(); };
 	int visibleToolBarCount();
 	QString idForNewToolBar(const QString &szTemplate);
-	KviDict<KviCustomToolBarDescriptor> * descriptors(){ return m_pDescriptors; };
+	KviPointerHashTable<QString,KviCustomToolBarDescriptor> * descriptors(){ return m_pDescriptors; };
 	KviCustomToolBar * firstExistingToolBar();
 	KviCustomToolBarDescriptor * create(const QString &szId,const QString &szLabelCode);
 	KviCustomToolBarDescriptor * find(const QString &szId){ return m_pDescriptors->find(szId); };

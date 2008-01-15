@@ -35,9 +35,9 @@
 
 
 static unsigned int g_uNextDescriptorId = 1; // we use 0 as an invalid descriptor id
-static KviIntDict<KviDccDescriptor> * g_pDescriptorDict = 0;
+static KviPointerHashTable<int,KviDccDescriptor> * g_pDescriptorDict = 0;
 
-KviIntDict<KviDccDescriptor> * KviDccDescriptor::descriptorDict()
+KviPointerHashTable<int,KviDccDescriptor> * KviDccDescriptor::descriptorDict()
 {
 	return g_pDescriptorDict;
 }
@@ -62,7 +62,7 @@ KviDccDescriptor::KviDccDescriptor(KviConsole * pConsole)
 	
 	if(!g_pDescriptorDict)
 	{
-		g_pDescriptorDict = new KviIntDict<KviDccDescriptor>;
+		g_pDescriptorDict = new KviPointerHashTable<int,KviDccDescriptor>;
 		g_pDescriptorDict->setAutoDelete(false);
 	}
 	g_pDescriptorDict->replace((long)m_uId,this);

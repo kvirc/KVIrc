@@ -27,11 +27,11 @@
 
 KviModule * g_pEditorModulePointer = 0;
 
-KviPtrList<KviScriptEditorImplementation> * g_pScriptEditorWindowList = 0;
+KviPointerList<KviScriptEditorImplementation> * g_pScriptEditorWindowList = 0;
 
 static bool editor_module_init(KviModule * m)
 {
-	g_pScriptEditorWindowList = new KviPtrList<KviScriptEditorImplementation>;
+	g_pScriptEditorWindowList = new KviPointerList<KviScriptEditorImplementation>;
 	g_pScriptEditorWindowList->setAutoDelete(false);
 
 	g_pEditorModulePointer = m;

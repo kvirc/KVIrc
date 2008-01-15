@@ -82,9 +82,9 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 	m_pFrame = m_pConsole->frame();
 	m_pTarget = pTarget;
 	m_pUserIdentity = pIdentity;
-	m_pChannelList = new KviPtrList<KviChannel>;
+	m_pChannelList = new KviPointerList<KviChannel>;
 	m_pChannelList->setAutoDelete(false);
-	m_pQueryList = new KviPtrList<KviQuery>;
+	m_pQueryList = new KviPointerList<KviQuery>;
 	m_pQueryList->setAutoDelete(false);
 	m_pLink = new KviIrcLink(this);
 	m_pUserDataBase = new KviIrcUserDataBase();
@@ -286,7 +286,7 @@ void KviIrcConnection::linkEstabilished()
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
 	m_pServerInfo->setName(target()->server()->m_szHostname);
 
-	if(KviPtrList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
 			m->connectionInitiated();
@@ -320,7 +320,7 @@ void KviIrcConnection::linkTerminated()
 		m_pLagMeter = 0;
 	}
 	
-	if(KviPtrList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
 			m->connectionTerminated();
@@ -554,7 +554,7 @@ bool KviIrcConnection::sendFmtData(const char *fmt,...)
 	}
 
 	// notify the monitors
-	if(KviPtrList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
 			m->outgoingMessage((const char *)(pData->data()),iLen - 2);
@@ -578,7 +578,7 @@ bool KviIrcConnection::sendData(const char *buffer,int buflen)
 	*(pData->data()+buflen+1)='\n';
 
 	// notify the monitors
-	if(KviPtrList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
 			m->outgoingMessage((const char *)(pData->data()),buflen);
@@ -1293,7 +1293,7 @@ void KviIrcConnection::incomingMessage(const char * message)
 {
 	// A message has arrived from the current server
 	// First of all , notify the monitors
-	if(KviPtrList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
 		{

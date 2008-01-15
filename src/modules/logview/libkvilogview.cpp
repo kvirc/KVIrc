@@ -66,7 +66,7 @@ static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",LOGVIEW_MODULE_EXTENSION_NAME);
 	if(d)
 	{
-		KviDict<QVariant> dict(17,true);
+		KviPointerHashTable<QString,QVariant> dict(17,true);
 		dict.setAutoDelete(true);
 		QString dummy;
 		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));

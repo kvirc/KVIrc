@@ -38,10 +38,10 @@
 #include "dialog.h"
 
 #include <qsplitter.h>
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 
-KviDict<KviOptionsDialog> * g_pOptionsDialogDict = 0;
+KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict = 0;
 
 KviOptionsInstanceManager * g_pOptionsInstanceManager = 0;
 
@@ -159,7 +159,7 @@ static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOption
 }
 static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 {
-	KviPtrList<KviOptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
+	KviPointerList<KviOptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
 
 	for(KviOptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
 	{
@@ -279,7 +279,7 @@ static bool options_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"edit",options_kvs_cmd_edit);
 	KVSM_REGISTER_FUNCTION(m,"isDialog",options_kvs_fnc_isdialog);
 
-	g_pOptionsDialogDict = new KviDict<KviOptionsDialog>;
+	g_pOptionsDialogDict = new KviPointerHashTable<QString,KviOptionsDialog>;
 	g_pOptionsDialogDict->setAutoDelete(false);
 
 	return true;
@@ -287,8 +287,8 @@ static bool options_module_init(KviModule * m)
 
 static bool options_module_cleanup(KviModule *m)
 {
-	KviDictIterator<KviOptionsDialog> it(*g_pOptionsDialogDict);
-	KviPtrList<KviOptionsDialog> l;
+	KviPointerHashTableIterator<QString,KviOptionsDialog> it(*g_pOptionsDialogDict);
+	KviPointerList<KviOptionsDialog> l;
 	l.setAutoDelete(false);
 	KviOptionsDialog * d;
 	while(d = it.current())

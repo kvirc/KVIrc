@@ -32,7 +32,7 @@ KviRegisteredChannel::KviRegisteredChannel(const KviStr &name,const KviStr &netm
 {
 	m_szName = name;
 	m_szNetMask = netmask;
-	m_pPropertyDict = new KviAsciiDict<KviStr>(7,false,true);
+	m_pPropertyDict = new KviPointerHashTable<const char *,KviStr>(7,false,true);
 	m_pPropertyDict->setAutoDelete(true);
 }
 
@@ -45,7 +45,7 @@ KviRegisteredChannel::~KviRegisteredChannel()
 
 KviRegisteredChannelDataBase::KviRegisteredChannelDataBase()
 {
-	m_pChannelDict = new KviAsciiDict<KviRegisteredChannelList>(17,false,true);
+	m_pChannelDict = new KviPointerHashTable<const char *,KviRegisteredChannelList>(17,false,true);
 	m_pChannelDict->setAutoDelete(true);
 }
 
@@ -81,14 +81,14 @@ void KviRegisteredChannelDataBase::save(const char * filename)
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();
 
-	KviAsciiDictIterator<KviRegisteredChannelList> it(*m_pChannelDict);
+	KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*m_pChannelDict);
 	while(KviRegisteredChannelList * l = it.current())
 	{
 		for(KviRegisteredChannel * c = l->first();c;c = l->next())
 		{
 			KviStr szGrp(KviStr::Format,"%s@%s",c->name().ptr(),c->netMask().ptr());
 			cfg.setGroup(szGrp.ptr());
-			KviAsciiDictIterator<KviStr> pit(*(c->propertyDict()));
+			KviPointerHashTableIterator<const char *,KviStr> pit(*(c->propertyDict()));
 			while(KviStr * s = pit.current())
 			{
 				cfg.writeEntry(pit.currentKey(),s->ptr());
@@ -147,7 +147,7 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 	KviRegisteredChannel * old = findExact(c->name().ptr(),c->netMask().ptr());
 	if(old)
 	{
-		KviAsciiDictIterator<KviStr> pit(*(old->propertyDict()));
+		KviPointerHashTableIterator<const char *,KviStr> pit(*(old->propertyDict()));
 		while(KviStr *s = pit.current())
 		{
 			if(!c->property(pit.currentKey()))

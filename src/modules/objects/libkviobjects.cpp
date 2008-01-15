@@ -349,9 +349,9 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 			c->warning(__tr2qs("The class '%Q' does not exist"),&szClassName);
 		return true;
 	}
-	KviPtrDict<KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
+	KviPointerHashTable<void *,KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
 
-	KviPtrDictIterator<KviKvsObject> it(*od);
+	KviPointerHashTableIterator<void *,KviKvsObject> it(*od);
 	kvs_uint_t uIdx = 0;
 	if(szFlags.contains(QChar('s')))
 	{
@@ -404,7 +404,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 		c->warning(__tr2qs("Object does not exists"));
 		return true;
 	}
-	KviDictIterator<KviKvsVariant> it(* ob->dataContainer()->dict());
+	KviPointerHashTableIterator<QString,KviKvsVariant> it(* ob->dataContainer()->dict());
 	KviKvsHash* pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(KviKvsVariant * t = it.current())
@@ -445,7 +445,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviDictIterator<KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
+	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
 	KviKvsHash* pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(KviKvsObjectFunctionHandler * t = it.current())
@@ -481,8 +481,8 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	KviKvsArray * pArry = new KviKvsArray();
 	c->returnValue()->setArray(pArry);
 	int uIdx=0;
-	KviDictIterator<KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	KviDict<bool> *classdict=new KviDict<bool>;
+	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	KviPointerHashTable<QString,bool> *classdict=new KviPointerHashTable<QString,bool>;
 	classdict->setAutoDelete(false);
 	bool bFake=true;
 	while(KviKvsObjectClass * pClass=it.current())
@@ -504,7 +504,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	KviKvsArray* pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 	int idx=0;
-	KviDictIterator<bool>  strIt(*classdict);
+	KviPointerHashTableIterator<QString,bool>  strIt(*classdict);
 	while(strIt.current())
 	{
 		pArray->set(idx,new KviKvsVariant(strIt.currentKey()));

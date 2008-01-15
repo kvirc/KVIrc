@@ -348,7 +348,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pWrappedBlockSelectionInfo  = new KviIrcViewWrappedBlockSelectionInfo;
 	
 
-	m_pMessagesStoppedWhileSelecting = new KviPtrList<KviIrcViewLine>;
+	m_pMessagesStoppedWhileSelecting = new KviPointerList<KviIrcViewLine>;
 	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
 
 	// say qt to avoid erasing on repaint
@@ -2826,14 +2826,14 @@ void KviIrcView::fastScroll(int lines)
 		} else lines = 0;
 	}
 
+#ifdef COMPILE_USE_QT4
+	scroll(0,-(heightToPaint-1));
+#else
 	bitBlt(this,1,1,this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
 
 	QRect r(0,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER),
 			widgetWidth,heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER);
 
-#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-	repaint(r);
-#else
 	QPaintEvent * e = new QPaintEvent(r);
 	paintEvent(e);
 	delete e;

@@ -79,7 +79,7 @@ KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString &szVisi
 	m_szInternalName = szInternalName;
 	m_szPreloadModule = szPreloadModule;
 	m_pProc = pProc;
-	m_pAppletList = new KviPtrList<KviStatusBarApplet>;
+	m_pAppletList = new KviPointerList<KviStatusBarApplet>;
 	m_pAppletList->setAutoDelete(false);
 	if(!pixIcon.isNull())m_pIcon = new QPixmap(pixIcon);
 	else m_pIcon = 0;

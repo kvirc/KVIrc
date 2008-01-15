@@ -159,7 +159,7 @@ bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx,KviKvsEventHandler *
 	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)return false;
 	if(!m_rawEventTable[uRawIdx])
 	{
-		m_rawEventTable[uRawIdx] = new KviPtrList<KviKvsEventHandler>();
+		m_rawEventTable[uRawIdx] = new KviPointerList<KviKvsEventHandler>();
 		m_rawEventTable[uRawIdx]->setAutoDelete(true);
 	}
 	m_rawEventTable[uRawIdx]->append(h);
@@ -268,7 +268,7 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface *pIfac
 	{
 		if(!m_appEventTable[i].handlers())continue;
 	
-		KviPtrList<KviKvsEventHandler> l;
+		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
 		for(h = m_appEventTable[i].handlers()->first();h;h = m_appEventTable[i].handlers()->next())
 		{
@@ -303,7 +303,7 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface *pIfac
 	{
 		if(!m_rawEventTable[i])continue;
 
-		KviPtrList<KviKvsEventHandler> l;
+		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
 		for(h = m_rawEventTable[i]->first();h;h = m_rawEventTable[i]->next())
 		{
@@ -432,7 +432,7 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 	{
 		if(m_rawEventTable[i])
 		{
-			KviPtrList<KviKvsEventHandler> dl;
+			KviPointerList<KviKvsEventHandler> dl;
 			dl.setAutoDelete(false);
 			KviKvsEventHandler * e;
 			for(e = m_rawEventTable[i]->first();e;e = m_rawEventTable[i]->next())
@@ -477,7 +477,7 @@ void KviKvsEventManager::clear()
 	clearAppEvents();
 }
 
-bool KviKvsEventManager::triggerHandlers(KviPtrList<KviKvsEventHandler> * pHandlers,KviWindow *pWnd,KviKvsVariantList *pParams)
+bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pHandlers,KviWindow *pWnd,KviKvsVariantList *pParams)
 {
 	if(!pHandlers)return false;
 
@@ -539,7 +539,7 @@ void KviKvsEventManager::loadRawEvents(const QString &szFileName)
 			unsigned int nHandlers = cfg.readUIntEntry("NHandlers",0);
 			if(nHandlers)
 			{
-				m_rawEventTable[i] = new KviPtrList<KviKvsEventHandler>();
+				m_rawEventTable[i] = new KviPointerList<KviKvsEventHandler>();
 				m_rawEventTable[i]->setAutoDelete(true);
 				for(unsigned int index = 0;index < nHandlers;index++)
 				{

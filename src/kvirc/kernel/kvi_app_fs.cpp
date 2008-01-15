@@ -243,7 +243,7 @@ bool KviApp::trashFile(const char *filename)
 	return KviFileUtils::renameFile(filename,trashFile.ptr());
 }
 
-void KviApp::completeDirectory(const QString &word,KviPtrList<QString> * matches)
+void KviApp::completeDirectory(const QString &word,KviPointerList<QString> * matches)
 {
 	QString szDir = word;
 	QString szFile = word;

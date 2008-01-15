@@ -165,7 +165,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_list)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_list,KviKvsObject)
-	m_pDataList = new KviPtrList<KviKvsVariant>;
+	m_pDataList = new KviPointerList<KviKvsVariant>;
 	m_pDataList->setAutoDelete(true);
 KVSO_END_CONSTRUCTOR(KviKvsObject_list)
 

@@ -51,7 +51,7 @@
 #else
 #include <qheader.h>
 #endif
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qimage.h>
 #include <qstring.h>
 #include <qcombobox.h>
@@ -78,7 +78,7 @@ KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase; // local copy!
 
 
 
-KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviDict<QString> * dict)
+KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHashTable<QString,QString> * dict)
 : QDialog(p,"property_editor",true)
 {
 	m_pPropertyDict = dict;
@@ -148,7 +148,7 @@ void KviReguserPropertiesDialog::closeEvent(QCloseEvent *e)
 void KviReguserPropertiesDialog::fillData()
 {
 	m_pTable->setNumRows(m_pPropertyDict->count());
-	KviDictIterator<QString> it(*m_pPropertyDict);
+	KviPointerHashTableIterator<QString,QString> it(*m_pPropertyDict);
 	int row = 0;
 	while(it.current())
 	{
@@ -324,7 +324,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		KviStringConversion::fromString(col,(*m_pCustomColor));
 	}
 	
-	m_pPropertyDict = new KviDict<QString>(17,false);
+	m_pPropertyDict = new KviPointerHashTable<QString,QString>(17,false);
 	m_pPropertyDict->setAutoDelete(true);
 
 	//setMinimumSize(400,450);
@@ -514,7 +514,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		
 		if(r->propertyDict())
 		{
-			KviDictIterator<QString> it(*(r->propertyDict()));
+			KviPointerHashTableIterator<QString,QString> it(*(r->propertyDict()));
 			while(QString *s = it.current())
 			{
 				m_pPropertyDict->insert(it.currentKey(),new QString(*s));
@@ -636,7 +636,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");
 
-	KviDictIterator<QString> it(*m_pPropertyDict);
+	KviPointerHashTableIterator<QString,QString> it(*m_pPropertyDict);
 	while(QString *s = it.current())
 	{
 		u->setProperty(it.currentKey(),*s);

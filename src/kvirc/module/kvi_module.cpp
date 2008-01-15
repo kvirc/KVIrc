@@ -145,9 +145,9 @@ KviModule::KviModule(kvi_library_t handle,KviModuleInfo * info,const char * name
 	m_szFileName = filename;
 // FIXME: this should become case insensitive and converted toUpper()
 	/*
-	m_pCommandDict = new KviAsciiDict<KviModuleCommandParseProc>(17,false,true);
+	m_pCommandDict = new KviPointerHashTable<const char *,KviModuleCommandParseProc>(17,false,true);
 	m_pCommandDict->setAutoDelete(true);
-	m_pFunctionDict = new KviAsciiDict<KviModuleFunctionParseProc>(17,false,true);
+	m_pFunctionDict = new KviPointerHashTable<const char *,KviModuleFunctionParseProc>(17,false,true);
 	m_pFunctionDict->setAutoDelete(true);
 	*/
 	m_uLock = 0;
@@ -216,9 +216,9 @@ void KviModule::setGenericFunctionParseProc(KviModuleFunctionParseProc proc)
 	}
 }
 
-void KviModule::completeCommand(const QString &cmd,KviPtrList<QString> * matches)
+void KviModule::completeCommand(const QString &cmd,KviPointerList<QString> * matches)
 {
-	KviAsciiDictIterator<KviModuleCommandParseProc> it(*m_pCommandDict);
+	KviPointerHashTableIterator<const char *,KviModuleCommandParseProc> it(*m_pCommandDict);
 
 	while(it.current())
 	{
@@ -232,9 +232,9 @@ void KviModule::completeCommand(const QString &cmd,KviPtrList<QString> * matches
 	}
 }
 
-void KviModule::completeFunction(const QString &cmd,KviPtrList<QString> * matches)
+void KviModule::completeFunction(const QString &cmd,KviPointerList<QString> * matches)
 {
-	KviAsciiDictIterator<KviModuleFunctionParseProc> it(*m_pFunctionDict);
+	KviPointerHashTableIterator<const char *,KviModuleFunctionParseProc> it(*m_pFunctionDict);
 
 	while(it.current())
 	{
@@ -282,7 +282,7 @@ void KviModule::unregisterCommand(const char * cmd)
 void KviModule::unregisterAllCommands()
 {
 	delete m_pCommandDict;
-	m_pCommandDict = new KviAsciiDict<KviModuleCommandParseProc>(17,false,true);
+	m_pCommandDict = new KviPointerHashTable<const char *,KviModuleCommandParseProc>(17,false,true);
 	m_pCommandDict->setAutoDelete(true);
 }
 
@@ -328,7 +328,7 @@ void KviModule::unregisterFunction(const char * fnc)
 void KviModule::unregisterAllFunctions()
 {
 	delete m_pFunctionDict;
-	m_pFunctionDict = new KviAsciiDict<KviModuleFunctionParseProc>(17,false,true);
+	m_pFunctionDict = new KviPointerHashTable<const char *,KviModuleFunctionParseProc>(17,false,true);
 	m_pFunctionDict->setAutoDelete(true);
 }
 */

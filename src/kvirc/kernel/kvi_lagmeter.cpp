@@ -42,7 +42,7 @@ KviLagMeter::KviLagMeter(KviIrcConnection * c)
 : QObject()
 {
 	m_pConnection = c;
-	m_pCheckList = new KviPtrList<KviLagCheck>;
+	m_pCheckList = new KviPointerList<KviLagCheck>;
 	m_pCheckList->setAutoDelete(true);
 	m_uLag = 0;
 	m_uLastEmittedLag = 0;
@@ -251,7 +251,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 
 void KviLagMeter::lagCheckAbort(const char * key)
 {
-	KviPtrList<KviLagCheck> l;
+	KviPointerList<KviLagCheck> l;
 	l.setAutoDelete(false);
 	KviLagCheck * c;
 

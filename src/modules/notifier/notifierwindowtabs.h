@@ -31,7 +31,7 @@
 #include <qpoint.h>
 #include <qrect.h>
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "notifiersettings.h"
 #include "notifierwindow.h"
 
@@ -69,7 +69,7 @@ private:
 
 	QString	m_label;
 
-	KviPtrList<KviNotifierMessage> * m_pMessageList;
+	KviPointerList<KviNotifierMessage> * m_pMessageList;
 	KviWindow * m_pWnd;
 	KviNotifierMessage	* m_pCurrentMessage;
 		
@@ -109,7 +109,7 @@ public:
 	QString label() { return m_label; };
 	
 	KviNotifierMessage * currentMessage() { return m_pCurrentMessage; };
-	KviPtrList<KviNotifierMessage> * messageList() { return m_pMessageList; };
+	KviPointerList<KviNotifierMessage> * messageList() { return m_pMessageList; };
 	KviWindow * window() { return m_pWnd; };
 	KviWindow * wnd() {return m_pWnd; };
 	
@@ -141,8 +141,8 @@ private:
 	QPoint	m_pnt;
 
 	QMap<KviWindow *, KviNotifierWindowTab *> m_tabMap;
-	KviPtrList<KviNotifierWindowTab> m_tabPtrList;
-	KviPtrList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
+	KviPointerList<KviNotifierWindowTab> m_tabPtrList;
+	KviPointerList<KviNotifierWindowTab> m_lastVisitedTabPtrList;
 	
 	QFont * m_pFocusedFont;
 	QFont * m_pUnfocusedFont;

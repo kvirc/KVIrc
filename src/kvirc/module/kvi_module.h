@@ -30,11 +30,11 @@
 //#include "kvi_command.h"
 #include "kvi_parameterlist.h"
 #include "kvi_library.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_moduleextension.h"
 #include "kvi_kvs_moduleinterface.h"
 
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -136,7 +136,7 @@ typedef bool (*KviModuleEventParseProc)(KviModule *,KviWindow *,KviParameterList
 
 class KVIRC_API KviModule : public KviKvsModuleInterface
 {
-	friend class KviAsciiDict<KviModule>;
+	friend class KviPointerHashTable<const char *,KviModule>;
 	friend class KviModuleManager;
 	friend class KviUserParser;
 protected:

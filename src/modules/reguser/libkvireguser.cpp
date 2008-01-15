@@ -39,7 +39,7 @@
 #include "kvi_ircconnection.h"
 #include "dialog.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qsplitter.h> // FIXME: REmove this!
 
 //#warning "$reguser.matches..."
@@ -52,7 +52,7 @@
 
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
-KviPtrList<KviRegistrationWizard> * g_pRegistrationWizardList = 0;
+KviPointerList<KviRegistrationWizard> * g_pRegistrationWizardList = 0;
 
 KviRegisteredUsersDialog * g_pRegisteredUsersDialog = 0;
 
@@ -754,12 +754,12 @@ static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	
 	int cnt = 0;
 
-	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 
 	while(KviRegisteredUser * u = it.current())
 	{
-		KviPtrList<KviIrcMask> * ml = u->maskList();
+		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
 			pArray->set(aid,new KviKvsVariant(u->name()));
@@ -810,11 +810,11 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 
 	int count = 0;
 
-	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
-		KviPtrList<KviIrcMask> * ml = u->maskList();
+		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
 			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs(" User: %c%Q"),KVI_TEXT_BOLD,&(u->name()));
@@ -829,10 +829,10 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 				}
 			}
 
-			KviDict<QString> * pd = u->propertyDict();
+			KviPointerHashTable<QString,QString> * pd = u->propertyDict();
 			if(pd)
 			{
-				KviDictIterator<QString> pdit(*pd);
+				KviPointerHashTableIterator<QString,QString> pdit(*pd);
 				while(pdit.current())
 				{
 					QString key = pdit.currentKey();
@@ -961,8 +961,8 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 //
 //	KviStr list;
 //
-//	const KviAsciiDict<KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
-//	KviAsciiDictIterator<KviRegisteredUserList> it(*d);
+//	const KviPointerHashTable<const char *,KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
+//	KviPointerHashTableIterator<const char *,KviRegisteredUserList> it(*d);
 //	while(KviRegisteredUserList * l = it.current())
 //	{
 //		search_reguser_list(l,c->window(),parms->safeFirstParam(),list);
@@ -1184,7 +1184,7 @@ static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 static bool reguser_module_init(KviModule * m)
 {
 	g_pLocalRegisteredUserDataBase = 0;
-	g_pRegistrationWizardList = new KviPtrList<KviRegistrationWizard>;
+	g_pRegistrationWizardList = new KviPointerList<KviRegistrationWizard>;
 	g_pRegistrationWizardList->setAutoDelete(true);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"add",reguser_kvs_cmd_add);

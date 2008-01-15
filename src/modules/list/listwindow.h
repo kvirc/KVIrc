@@ -27,7 +27,7 @@
 #include "kvi_window.h"
 #include "kvi_string.h"
 #include "kvi_ircsocket.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
@@ -92,7 +92,7 @@ protected:
 	QToolButton							   * m_pSaveButton;
 	KviThemedLabel                         * m_pInfoLabel;
 	QTimer                                 * m_pFlushTimer;
-	KviPtrList<KviChannelListViewItemData> * m_pItemList;
+	KviPointerList<KviChannelListViewItemData> * m_pItemList;
 public: // Methods
 	virtual void control(int msg);
 	virtual void processData(KviIrcMessage * msg);

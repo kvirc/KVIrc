@@ -29,7 +29,7 @@
 
 #include <qframe.h>
 #include <qlayout.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qlineedit.h>
 #include <kvi_tal_groupbox.h>
 #include <qtabwidget.h>
@@ -47,7 +47,7 @@ private:
 	QTabWidget                       * m_pTabWidget;
 	int                                m_iResetFlags;
 	int                                m_iSelectors;
-	KviPtrList<KviSelectorInterface> * m_pSelectorInterfaceList;
+	KviPointerList<KviSelectorInterface> * m_pSelectorInterfaceList;
 	static QString                     m_szBasicTipStart;
 	static QString                     m_szBasicTipEnd;
 public:

@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_window.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_heapobject.h"

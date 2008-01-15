@@ -51,7 +51,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_msgbox.h"
 
-static KviPtrList<QWidget> * g_pDialogModuleDialogList;
+static KviPointerList<QWidget> * g_pDialogModuleDialogList;
 
 KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 		const QString &szCaption,
@@ -878,7 +878,7 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 
 static bool dialog_module_init(KviModule * m)
 {
-	g_pDialogModuleDialogList = new KviPtrList<QWidget>;
+	g_pDialogModuleDialogList = new KviPointerList<QWidget>;
 	g_pDialogModuleDialogList->setAutoDelete(false);
 
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"message",dialog_kvs_cmd_message);

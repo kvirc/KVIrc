@@ -63,7 +63,7 @@
 #include <qpainter.h>
 #include <qclipboard.h>
 #include <qstringlist.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qapplication.h>
 #include <qclipboard.h>
 #include <qmessagebox.h>
@@ -115,7 +115,7 @@ extern KviInputHistory * g_pInputHistory;
 
 KviInputHistory::KviInputHistory()
 {
-	m_pStringList = new KviPtrList<QString>;
+	m_pStringList = new KviPointerList<QString>;
 	m_pStringList->setAutoDelete(true);
 }
 
@@ -201,7 +201,7 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_bUpdatesEnabled      = true;
 	m_pKviWindow           = wnd;
 	m_pUserListView        = view;
-	m_pHistory             = new KviPtrList<QString>;
+	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = FALSE;
 	
@@ -872,8 +872,8 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		g_pInputPopup->insertSeparator();
 		m_pIconMenu->clear();
 		
-		KviDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
-		KviDictIterator<KviTextIcon> it(*d);
+		KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
+		KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
 		QStringList strList;
 		while(KviTextIcon * i = it.current())
 		{
@@ -1814,7 +1814,7 @@ void KviInputEditor::completion(bool bShift)
 			return;
 		}
 	}
-	KviPtrList<QString> tmp;
+	KviPointerList<QString> tmp;
 	tmp.setAutoDelete(true);
 
 	bool bIsCommand = false;

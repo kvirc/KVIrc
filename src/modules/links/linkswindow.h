@@ -55,7 +55,7 @@ protected:
 	QSplitter      * m_pVertSplitter;
 	QSplitter      * m_pTopSplitter;
 	KviTalListView      * m_pListView;
-	KviPtrList<KviLink> * m_pLinkList;
+	KviPointerList<KviLink> * m_pLinkList;
 	KviTalPopupMenu     * m_pHostPopup;
 	QString          m_szRootServer;
 	QToolButton    * m_pRequestButton;

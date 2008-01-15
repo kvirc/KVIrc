@@ -440,7 +440,7 @@ void KviTaskBarToolTip::maybeTip(const QPoint &pnt)
 KviClassicTaskBar::KviClassicTaskBar()
 : KviTaskBarBase()
 {
-	m_pButtonList = new KviPtrList<KviTaskBarButton>;
+	m_pButtonList = new KviPointerList<KviTaskBarButton>;
 	m_pButtonList->setAutoDelete(true);
 
 	calcButtonHeight();

@@ -123,7 +123,7 @@ void KviMaskInputDialog::accept()
 	QDialog::accept();
 }
 
-KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPtrList<KviMaskEntry> * maskList,char flag,const char * nam)
+KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,char flag,const char * nam)
 : KviWindowToolWidget(par,button)
 {
 	bool isEnabled=1;
@@ -265,7 +265,7 @@ void KviMaskEditor::searchTextChanged ( const QString & text)
 
 void KviMaskEditor::removeClicked()
 {
-	KviPtrList<KviMaskEntry>  * l = new KviPtrList<KviMaskEntry>;
+	KviPointerList<KviMaskEntry>  * l = new KviPointerList<KviMaskEntry>;
 	l->setAutoDelete(true);
 	KviMaskItem * it = (KviMaskItem *)(m_pMaskBox->firstChild());
 	while(it)

@@ -157,7 +157,7 @@ void KviMediaTypesOptionsWidget::fillListView()
 {
 	m_pListView->clear();
 	g_pMediaManager->lock();
-	KviPtrList<KviMediaType> * l = g_pMediaManager->mediaTypeList();
+	KviPointerList<KviMediaType> * l = g_pMediaManager->mediaTypeList();
 	KviMediaTypeListViewItem * it;
 	for(KviMediaType * t = l->first();t;t = l->next())
 	{

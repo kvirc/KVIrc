@@ -324,7 +324,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	g->setColStretch(1,1);
 
 
-	KviDictIterator<KviActionCategory> it(*(KviActionManager::instance()->categories()));
+	KviPointerHashTableIterator<QString,KviActionCategory> it(*(KviActionManager::instance()->categories()));
 	while(KviActionCategory * ac = it.current())
 	{
 		m_pCategoryCombo->insertItem(ac->visibleName() + " (" + ac->name() + ")");
@@ -693,7 +693,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	KviActionEditorListViewItem * last = 0;
 	KviActionEditorListViewItem * first = 0;
 
-	KviDictIterator<KviAction> it(*(KviActionManager::instance()->actions()));
+	KviPointerHashTableIterator<QString,KviAction> it(*(KviActionManager::instance()->actions()));
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -776,7 +776,7 @@ void KviActionEditor::exportActions()
 
 void KviActionEditor::deleteActions()
 {
-	KviPtrList<KviActionEditorListViewItem> l;
+	KviPointerList<KviActionEditorListViewItem> l;
 	l.setAutoDelete(false);
 
 	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)m_pListView->firstChild();

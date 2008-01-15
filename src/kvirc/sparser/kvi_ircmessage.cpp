@@ -37,10 +37,10 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 	const char * aux;
 	m_ptr = message;
 
-	m_pParams = new KviPtrList<KviStr>;
+	m_pParams = new KviPointerList<KviStr>;
 	m_pParams->setAutoDelete(true);
 
-	//m_pcParams = new KviPtrList<QCString>;
+	//m_pcParams = new KviPointerList<QCString>;
 	//m_pcParams->setAutoDelete(true);
 	
 	while(*m_ptr == ' ')++m_ptr;

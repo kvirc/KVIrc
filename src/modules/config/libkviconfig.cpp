@@ -29,9 +29,9 @@
 #include "kvi_app.h"
 #include "kvi_locale.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
-static KviDict<KviConfig> * g_pConfigDict = 0;
+static KviPointerHashTable<QString,KviConfig> * g_pConfigDict = 0;
 static int g_iNextConfigId = 0;
 
 /*
@@ -107,7 +107,7 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
 	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
 
-	KviDictIterator<KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
 	while(it.current())
 	{
 		if(KviQString::equalCI(it.current()->fileName(),szAbsFile))
@@ -163,7 +163,7 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
 	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
 
-	KviDictIterator<KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
 	while(it.current())
 	{
 		if(KviQString::equalCI(it.current()->fileName(),szAbsFile))
@@ -489,7 +489,7 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 	KviKvsArray* pArray = new KviKvsArray();
 	int id=0;
 	
-	KviDictIterator<KviConfig> it(*g_pConfigDict);
+	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
 	while(it.current())
 	{
 		pArray->set(id++, new KviKvsVariant(it.currentKey()));
@@ -830,7 +830,7 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 
 static bool config_module_init(KviModule * m)
 {
-	g_pConfigDict = new KviDict<KviConfig>;
+	g_pConfigDict = new KviPointerHashTable<QString,KviConfig>;
 	g_pConfigDict->setAutoDelete(true);
 
 	KVSM_REGISTER_FUNCTION(m,"open",config_kvs_fnc_open);

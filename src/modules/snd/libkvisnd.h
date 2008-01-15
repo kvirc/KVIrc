@@ -30,8 +30,8 @@
 #include "kvi_thread.h"
 #include "kvi_string.h"
 
-#include "kvi_list.h"
-#include "kvi_dict.h"
+#include "kvi_pointerlist.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_options.h"
 
 //class KviWavSoundFileReader
@@ -177,13 +177,13 @@ public:
 	bool play(const QString &szFileName);
 	void detectSoundSystem();
 	bool havePlayingSounds();
-	//void getAvailableSoundSystems(KviPtrList<QString> * l);
+	//void getAvailableSoundSystems(KviPointerList<QString> * l);
 	void getAvailableSoundSystems(QStringList * l);
 	bool isMuted() {return KVI_OPTION_BOOL(KviOption_boolMuteAllSounds); };
 	void setMuted(bool muted) {KVI_OPTION_BOOL(KviOption_boolMuteAllSounds)=muted;};
 protected:
-	KviPtrList<KviSoundThread> * m_pThreadList;
-	KviDict<SoundSystemRoutine> * m_pSoundSystemDict;
+	KviPointerList<KviSoundThread> * m_pThreadList;
+	KviPointerHashTable<QString,SoundSystemRoutine> * m_pSoundSystemDict;
 protected:
 	void registerSoundThread(KviSoundThread * t);
 	void unregisterSoundThread(KviSoundThread * t);

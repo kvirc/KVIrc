@@ -35,7 +35,7 @@
 
 #include "kvi_qstring.h"
 #include "kvi_locale.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 
 #include <qstringlist.h>

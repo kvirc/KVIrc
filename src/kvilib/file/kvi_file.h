@@ -29,7 +29,7 @@
 #include "kvi_heapobject.h"
 #include "kvi_qstring.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_inttypes.h"
 #include "kvi_qcstring.h"
 
@@ -112,8 +112,8 @@ public:
 	bool skipFirst(char t,unsigned int maxdist = 0xffffffff);
 	bool skipFirst(const KviStr &t,unsigned int maxdist = 0xffffffff);
 
-	bool save(KviPtrList<KviStr> * pData);
-	bool load(KviPtrList<KviStr> * pData);
+	bool save(KviPointerList<KviStr> * pData);
+	bool load(KviPointerList<KviStr> * pData);
 };
 
 

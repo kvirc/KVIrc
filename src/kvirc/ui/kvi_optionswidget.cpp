@@ -59,7 +59,7 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool bSunk
 	m_pTabWidget = 0;
 	m_iResetFlags = 0;
 	m_iSelectors = 0;
-	m_pSelectorInterfaceList = new KviPtrList<KviSelectorInterface>;
+	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
 	m_pSelectorInterfaceList->setAutoDelete(false);
 }
 

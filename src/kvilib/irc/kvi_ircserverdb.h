@@ -28,7 +28,7 @@
 #include "kvi_qstring.h"
 #include "kvi_ircserver.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 typedef struct _KviIrcServerDefinition
 {
@@ -53,12 +53,12 @@ public:
 	~KviIrcServerDataBaseRecord();
 protected:
 	KviIrcNetwork            * m_pNetwork;
-	KviPtrList<KviIrcServer> * m_pServerList;
+	KviPointerList<KviIrcServer> * m_pServerList;
 
 	KviIrcServer             * m_pCurrentServer;
 public:
 	KviIrcNetwork * network(){ return m_pNetwork; };
-	KviPtrList<KviIrcServer> * serverList(){ return m_pServerList; };
+	KviPointerList<KviIrcServer> * serverList(){ return m_pServerList; };
 	KviIrcServer * currentServer();
 	void insertServer(KviIrcServer *srv);
 	KviIrcServer * findServer(const KviIrcServer * pServer);
@@ -75,7 +75,7 @@ public:
 	KviIrcServerDataBase();
 	~KviIrcServerDataBase();
 private:
-	KviDict<KviIrcServerDataBaseRecord> * m_pRecords;
+	KviPointerHashTable<QString,KviIrcServerDataBaseRecord> * m_pRecords;
 	QString                             m_szCurrentNetwork;
 	// This list is computed when the data are loaded from disk
 	// during the startup and is used by KviApp to
@@ -85,13 +85,13 @@ private:
 	// because it contains shallow pointers to the servers
 	// really contained in the server/network list
 	// and it is never updated later
-	KviPtrList<KviIrcServer>                * m_pAutoConnectOnStartupServers;
-	KviPtrList<KviIrcServerDataBaseRecord>  * m_pAutoConnectOnStartupNetworks;
+	KviPointerList<KviIrcServer>                * m_pAutoConnectOnStartupServers;
+	KviPointerList<KviIrcServerDataBaseRecord>  * m_pAutoConnectOnStartupNetworks;
 public:
 	void clear();
-	KviDict<KviIrcServerDataBaseRecord> * recordDict(){ return m_pRecords; };
-	KviPtrList<KviIrcServer> * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
-	KviPtrList<KviIrcServerDataBaseRecord> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
+	KviPointerHashTable<QString,KviIrcServerDataBaseRecord> * recordDict(){ return m_pRecords; };
+	KviPointerList<KviIrcServer> * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
+	KviPointerList<KviIrcServerDataBaseRecord> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
 	void clearAutoConnectOnStartupServers();
 	void clearAutoConnectOnStartupNetworks();
 	void setCurrentNetwork(const QString &szNetName){ m_szCurrentNetwork = szNetName; };

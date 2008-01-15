@@ -29,7 +29,7 @@
 #include "kvi_kvs_rwevaluationresult.h"
 #include "kvi_locale.h"
 
-KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation,KviPtrList<KviKvsTreeNodeVariable> * pVariableList)
+KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation,KviPointerList<KviKvsTreeNodeVariable> * pVariableList)
 : KviKvsTreeNodeSpecialCommand(pLocation,"unset")
 {
 	m_pVariableList = pVariableList;

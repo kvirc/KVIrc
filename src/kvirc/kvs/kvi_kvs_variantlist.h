@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_kvs_variant.h"
 
 
@@ -49,7 +49,7 @@ public:
 	KviKvsVariantList(QString * s1,QString * s2,QString * s3,QString * s4,QString * s5,QString * s6);
 	~KviKvsVariantList();
 protected:
-	KviPtrList<KviKvsVariant> * m_pList;
+	KviPointerList<KviKvsVariant> * m_pList;
 public:
 	KviKvsVariant * first(){ return m_pList->first(); };
 	KviKvsVariant * next(){ return m_pList->next(); };

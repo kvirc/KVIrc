@@ -29,7 +29,7 @@
 #include <qnamespace.h>
 #include <qobject.h>
 #include <qsocketnotifier.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qevent.h>
 
 
@@ -181,7 +181,7 @@ private:
 	bool            m_bRunning;
 	bool            m_bStartingUp;
 	KviMutex      * m_pRunningMutex;
-	KviPtrList<QEvent> * m_pLocalEventQueue;
+	KviPointerList<QEvent> * m_pLocalEventQueue;
 public:
 	// public KviThread interface
 	// HANDLE WITH CARE
@@ -307,7 +307,7 @@ public:
 	virtual ~KviSensitiveThread();
 protected:
 	KviMutex              * m_pLocalEventQueueMutex;
-	KviPtrList<KviThreadEvent> * m_pLocalEventQueue;
+	KviPointerList<KviThreadEvent> * m_pLocalEventQueue;
 public:
 	// enqueues an event directed to THIS thread
 	// the event must be allocated with NEW and
@@ -350,10 +350,10 @@ private:
 	QSocketNotifier * m_pSn;
 #endif
 	KviMutex * m_pMutex; // This class performs only atomic operations
-	KviPtrList<KviThread> * m_pThreadList;
+	KviPointerList<KviThread> * m_pThreadList;
 	int m_iWaitingThreads;
 #ifndef COMPILE_ON_WINDOWS
-	KviPtrList<KviThreadPendingEvent> * m_pEventQueue;
+	KviPointerList<KviThreadPendingEvent> * m_pEventQueue;
 	int m_fd[2];
 	int m_iTriggerCount;
 #endif

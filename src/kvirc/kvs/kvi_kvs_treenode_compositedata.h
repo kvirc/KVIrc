@@ -26,17 +26,17 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_kvs_treenode_data.h"
 
 class KVIRC_API KviKvsTreeNodeCompositeData : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPtrList<KviKvsTreeNodeData> * pSubData);
+	KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPointerList<KviKvsTreeNodeData> * pSubData);
 	~KviKvsTreeNodeCompositeData();
 protected:
-	KviPtrList<KviKvsTreeNodeData> * m_pSubData;
+	KviPointerList<KviKvsTreeNodeData> * m_pSubData;
 public:
 	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
 	virtual void contextDescription(QString &szBuffer);

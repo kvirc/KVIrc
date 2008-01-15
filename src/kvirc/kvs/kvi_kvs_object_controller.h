@@ -28,10 +28,10 @@
 #include "kvi_settings.h"
 
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
-#include "kvi_dict.h"
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerhashtable.h"
 
 #include "kvi_kvs_object.h"
 #include "kvi_kvs_object_class.h"
@@ -44,9 +44,9 @@ public:
 	KviKvsObjectController();
 	~KviKvsObjectController();
 protected:
-	KviPtrList<KviKvsObject>      * m_pTopLevelObjectList;
-	KviPtrDict<KviKvsObject>        * m_pObjectDict;
-	KviDict<KviKvsObjectClass>      * m_pClassDict;
+	KviPointerList<KviKvsObject>      * m_pTopLevelObjectList;
+	KviPointerHashTable<void *,KviKvsObject>        * m_pObjectDict;
+	KviPointerHashTable<QString,KviKvsObjectClass>      * m_pClassDict;
 	KviKvsObjectClass             * m_pObjectClass; //base class
 protected:
 	// the classes and the objects register themselves with the controller
@@ -63,8 +63,8 @@ public:
 	void killAllObjectsWithClass(KviKvsObjectClass * pClass);
 	KviKvsObjectClass * lookupClass(const QString &szClass,bool bBuiltinOnly = false);
 	KviKvsObject * lookupObject(kvs_hobject_t hObject){ return m_pObjectDict->find(hObject); };
-	KviPtrDict<KviKvsObject> * objectDict(){ return m_pObjectDict; };
-	KviDict<KviKvsObjectClass> * classDict(){ return m_pClassDict; };
+	KviPointerHashTable<void *,KviKvsObject> * objectDict(){ return m_pObjectDict; };
+	KviPointerHashTable<QString,KviKvsObjectClass> * classDict(){ return m_pClassDict; };
 };
 
 #endif //!_KVI_KVS_OBJECT_CONTROLLER_H_

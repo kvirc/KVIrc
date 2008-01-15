@@ -53,7 +53,7 @@ namespace KviThemeFunctions
 
 	bool installThemePackage(const QString &szThemePackageFileName,QString &szError,QWidget * pDialogParent)
 	{
-		KviDict<QString> * pInfoFields;
+		KviPointerHashTable<QString,QString> * pInfoFields;
 		QString * pValue;
 		bool bInstall;
 		QPixmap pix;

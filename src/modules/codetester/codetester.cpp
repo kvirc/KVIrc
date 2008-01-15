@@ -41,7 +41,7 @@
 #include <qtoolbutton.h>
 #include "kvi_tal_popupmenu.h"
 
-extern KviPtrList<KviCodeTesterWindow> * g_pCodeTesterWindowList;
+extern KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList;
 
 
 

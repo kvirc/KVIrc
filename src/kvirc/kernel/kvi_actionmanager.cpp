@@ -52,10 +52,10 @@ extern void register_core_actions(KviActionManager *);
 KviActionManager::KviActionManager()
 : QObject()
 {
-	m_pActions = new KviDict<KviAction>(101);
+	m_pActions = new KviPointerHashTable<QString,KviAction>(101);
 	m_pActions->setAutoDelete(false);
 
-	m_pCategories = new KviDict<KviActionCategory>(17,false);
+	m_pCategories = new KviPointerHashTable<QString,KviActionCategory>(17,false);
 	m_pCategories->setAutoDelete(true);
 
 #define CATEGORY(__var,__name,__vname,__descr) \
@@ -82,7 +82,7 @@ KviActionManager::~KviActionManager()
 	// killed all the modules at this point...
 	//KviActionDialog::cleanup();
 
-	KviDictIterator<KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		disconnect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
@@ -113,7 +113,7 @@ void KviActionManager::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
 	
-	KviDictIterator<KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -127,10 +127,10 @@ void KviActionManager::save(const QString &szFileName)
 
 void KviActionManager::killAllKvsUserActions()
 {
-	KviPtrList<KviKvsUserAction> dying;
+	KviPointerList<KviKvsUserAction> dying;
 	dying.setAutoDelete(true);
 
-	KviDictIterator<KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -238,7 +238,7 @@ void KviActionManager::done()
 
 void KviActionManager::delayedRegisterAccelerators()
 {
-	KviDictIterator<KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		a->registerAccelerator();
@@ -303,14 +303,14 @@ KviAction * KviActionManager::getAction(const QString &szName)
 	return m_pActions->find(szName);
 }
 
-void KviActionManager::listActionsByCategory(const QString &szCatName,KviPtrList<KviAction> * pBuffer)
+void KviActionManager::listActionsByCategory(const QString &szCatName,KviPointerList<KviAction> * pBuffer)
 {
 	loadAllAvailableActions();
 	KviActionCategory * pCat = category(szCatName);
 	pBuffer->setAutoDelete(false);
 	pBuffer->clear();
 	if(!pCat)return;
-	KviDictIterator<KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->category() == pCat)

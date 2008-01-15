@@ -25,7 +25,7 @@
 
 
 #include "kvi_avatarcache.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_config.h"
 
 // this level triggers a cleanup
@@ -66,7 +66,7 @@ void KviAvatarCache::done()
 
 KviAvatarCache::KviAvatarCache()
 {
-	m_pAvatarDict = new KviDict<KviAvatarCacheEntry>(CACHE_DICT_SIZE,false);
+	m_pAvatarDict = new KviPointerHashTable<QString,KviAvatarCacheEntry>(CACHE_DICT_SIZE,false);
 	m_pAvatarDict->setAutoDelete(true);
 }
 
@@ -163,7 +163,7 @@ void KviAvatarCache::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 //	cfg.clear(); // not needed with KviConfig::Write
 
-	KviDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviPointerHashTableIterator<QString,KviAvatarCacheEntry> it(*m_pAvatarDict);
 
 	while(KviAvatarCacheEntry * e = it.current())
 	{
@@ -180,11 +180,11 @@ void KviAvatarCache::save(const QString &szFileName)
 void KviAvatarCache::cleanup()
 {
 	// first do a quick run deleting the avatars really too old
-	KviDictIterator<KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviPointerHashTableIterator<QString,KviAvatarCacheEntry> it(*m_pAvatarDict);
 	
 	kvi_time_t tNow = kvi_unixTime();
 
-	KviPtrList<QString> l;
+	KviPointerList<QString> l;
 	l.setAutoDelete(false);
 
 	KviAvatarCacheEntry * e;
@@ -206,7 +206,7 @@ void KviAvatarCache::cleanup()
 
 	it.toFirst();
 	
-	KviPtrList<KviAvatarCacheEntry> ll;
+	KviPointerList<KviAvatarCacheEntry> ll;
 	ll.setAutoDelete(true);
 
 	// here we use the cache entries in another way

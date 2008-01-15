@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_kvs_runtimecall.h"
 #include "kvi_kvs_parameterprocessor.h"
 #include "kvi_kvs_object_functionhandler.h"
@@ -45,8 +45,8 @@ typedef struct _KviKvsObjectConnection
 	QString        szSlot;           // target slot function
 } KviKvsObjectConnection;
 
-typedef KviPtrList<KviKvsObjectConnection> KviKvsObjectConnectionList;
-typedef KviPtrListIterator<KviKvsObjectConnection> KviKvsObjectConnectionListIterator;
+typedef KviPointerList<KviKvsObjectConnection> KviKvsObjectConnectionList;
+typedef KviPointerListIterator<KviKvsObjectConnection> KviKvsObjectConnectionListIterator;
 
 class KVIRC_API KviKvsObject : public QObject
 {
@@ -64,11 +64,11 @@ protected:
 
 	KviKvsHash                                 * m_pDataContainer;     // member variables
 
-	KviPtrList<KviKvsObject>                   * m_pChildList;
+	KviPointerList<KviKvsObject>                   * m_pChildList;
 
-	KviDict<KviKvsObjectFunctionHandler>         * m_pFunctionHandlers;  // our function handlers
+	KviPointerHashTable<QString,KviKvsObjectFunctionHandler>         * m_pFunctionHandlers;  // our function handlers
 
-	KviDict<KviKvsObjectConnectionList>          * m_pSignalDict;        // our signals connected to other object functions
+	KviPointerHashTable<QString,KviKvsObjectConnectionList>          * m_pSignalDict;        // our signals connected to other object functions
 
 	KviKvsObjectConnectionList                 * m_pConnectionList;    // signals connected to this object functions
 	
@@ -110,7 +110,7 @@ public:
 	kvs_hobject_t signalSender(){ return m_hSignalSender; };
 	void setSignalName(const QString &szSigName){ m_szSignalName = szSigName; };
 
-	KviDict<KviKvsObjectFunctionHandler> * functionHandlers(){ return m_pFunctionHandlers; };
+	KviPointerHashTable<QString,KviKvsObjectFunctionHandler> * functionHandlers(){ return m_pFunctionHandlers; };
 
 	KviKvsHash * dataContainer(){ return m_pDataContainer; };
 

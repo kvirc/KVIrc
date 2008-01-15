@@ -31,7 +31,7 @@
 #include <time.h>
 
 #include <qobject.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"

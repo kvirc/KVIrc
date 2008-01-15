@@ -26,7 +26,7 @@
 
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <qwidget.h>
 #include <qframe.h>
@@ -74,7 +74,7 @@ public:
 	int getVisibleChildCount();
 	bool isInSDIMode();
 protected:
-	KviPtrList<KviMdiChild>  * m_pZ; // topmost child is the last in the list
+	KviPointerList<KviMdiChild>  * m_pZ; // topmost child is the last in the list
 
 	KviMenuBarToolButton     * m_pSdiRestoreButton;
 	KviMenuBarToolButton     * m_pSdiMinimizeButton;

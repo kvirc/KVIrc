@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_qstring.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 
 class KviConfig;
@@ -108,7 +108,7 @@ protected:
 	// this class implements delayed loading
 	QString                            m_szFileName;  // the file name that we will load from
 	bool                               m_bLoaded;     // have we loaded stuff from disk yet ?
-	KviDict<KviKvsScriptAddon>         * m_pAddonDict;  // all the registered addons
+	KviPointerHashTable<QString,KviKvsScriptAddon>         * m_pAddonDict;  // all the registered addons
 public:
 	static KviKvsScriptAddonManager * instance(){ return m_pInstance; };
 	static void init(); // called by KviKvs::init()
@@ -117,7 +117,7 @@ public:
 	bool registerAddon(KviKvsScriptAddonRegistrationData * d);
 	KviKvsScriptAddon * findAddon(const QString &szName);
 	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true);
-	KviDict<KviKvsScriptAddon> * addonDict();
+	KviPointerHashTable<QString,KviKvsScriptAddon> * addonDict();
 
 	void clear();
 	void load(const QString &szFileName); // called in the KviKvs namespace

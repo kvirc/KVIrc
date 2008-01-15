@@ -166,8 +166,8 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 	else
 		KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
 	
-	KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	QString szNotify;
 	
 	while(KviRegisteredUser * u = it.current())
@@ -226,8 +226,8 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 	
 		QString szMsg;
 		
-		KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-		KviDictIterator<KviRegisteredUser> it(*d);
+		KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+		KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 		QString szNotify;
 		
 		while(KviRegisteredUser * u = it.current())
@@ -319,15 +319,15 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 KviIsOnNotifyListManager::KviIsOnNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pRegUserDict = new KviDict<QString>(17,false); // case insensitive , copy keys
+	m_pRegUserDict = new KviPointerHashTable<QString,QString>(17,false); // case insensitive , copy keys
 	m_pRegUserDict->setAutoDelete(true);
-	m_pNotifyList  = new KviPtrList<QString>;
+	m_pNotifyList  = new KviPointerList<QString>;
 	m_pNotifyList->setAutoDelete(true);
-	m_pIsOnList = new KviPtrList<QString>;
+	m_pIsOnList = new KviPointerList<QString>;
 	m_pIsOnList->setAutoDelete(true);
-	m_pOnlineList = new KviPtrList<QString>;
+	m_pOnlineList = new KviPointerList<QString>;
 	m_pOnlineList->setAutoDelete(true);
-	m_pUserhostList = new KviPtrList<QString>;
+	m_pUserhostList = new KviPointerList<QString>;
 	m_pUserhostList->setAutoDelete(true);
 	m_pDelayedNotifyTimer = new QTimer();
 	connect(m_pDelayedNotifyTimer,SIGNAL(timeout()),this,SLOT(newNotifySession()));
@@ -376,8 +376,8 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 {
 	m_pRegUserDict->clear();
 
-	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	const KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
 		QString notify;
@@ -435,7 +435,7 @@ void KviIsOnNotifyListManager::newNotifySession()
 void KviIsOnNotifyListManager::buildNotifyList()
 {
 	m_pNotifyList->clear();
-	KviDictIterator<QString> it(*m_pRegUserDict);
+	KviPointerHashTableIterator<QString,QString> it(*m_pRegUserDict);
 	while(it.current())
 	{
 		m_pNotifyList->append(new QString(it.currentKey()));
@@ -506,7 +506,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 	// Check if it is our ISON
 	// all the nicks must be on the IsOnList
 
-	KviPtrList<QString> tmplist;
+	KviPointerList<QString> tmplist;
 	tmplist.setAutoDelete(false);
 
 	KviStr nk;
@@ -584,7 +584,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 
 	KviIrcUserDataBase * db = console()->connection()->userDataBase();
 
-	KviPtrList<QString> l;
+	KviPointerList<QString> l;
 	l.setAutoDelete(false);
 
 	for(s = m_pOnlineList->first();s;s = m_pOnlineList->next())
@@ -602,7 +602,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 					// mmmh...we have more than one ref , so the user is at least in one query or channel
 					// look him up on channels , if we find his entry , we can be sure that he is
 					// still the right user
-					KviPtrList<KviChannel> * chlist = m_pConsole->connection()->channelList();
+					KviPointerList<KviChannel> * chlist = m_pConsole->connection()->channelList();
 					for(KviChannel * ch = chlist->first();ch;ch = chlist->next())
 					{
 						if(KviUserListEntry * le = ch->findEntry(*s))
@@ -772,7 +772,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 {
 	if(!m_bExpectingUserhost)return false;
 	// first check for consistency: all the replies must be on the USERHOST list
-	KviPtrList<KviIrcMask> tmplist;
+	KviPointerList<KviIrcMask> tmplist;
 	tmplist.setAutoDelete(true);
 
 	KviStr nk;
@@ -905,7 +905,7 @@ void KviIsOnNotifyListManager::stop()
 KviStupidNotifyListManager::KviStupidNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pNickList = new KviPtrList<QString>;
+	m_pNickList = new KviPointerList<QString>;
 	m_pNickList->setAutoDelete(true);
 	m_iRestartTimer = 0;
 }
@@ -1050,8 +1050,8 @@ void KviStupidNotifyListManager::stop()
 
 void KviStupidNotifyListManager::buildNickList()
 {
-	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	const KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	m_pNickList->clear();
 	while(it.current())
 	{
@@ -1073,7 +1073,7 @@ void KviStupidNotifyListManager::buildNickList()
 KviWatchNotifyListManager::KviWatchNotifyListManager(KviIrcConnection * pConnection)
 : KviNotifyListManager(pConnection)
 {
-	m_pRegUserDict = new KviDict<QString>(17,false);
+	m_pRegUserDict = new KviPointerHashTable<QString,QString>(17,false);
 	m_pRegUserDict->setAutoDelete(true);
 }
 
@@ -1086,8 +1086,8 @@ void KviWatchNotifyListManager::buildRegUserDict()
 {
 	m_pRegUserDict->clear();
 
-	const KviDict<KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	const KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	while(KviRegisteredUser * u = it.current())
 	{
 		QString notify;
@@ -1112,7 +1112,7 @@ void KviWatchNotifyListManager::start()
 
 	QString watchStr;
 
-	KviDictIterator<QString> it(*m_pRegUserDict);
+	KviPointerHashTableIterator<QString,QString> it(*m_pRegUserDict);
 	while(it.current())
 	{
 		QString nk = it.currentKey();

@@ -63,7 +63,7 @@ class UrlDialog : public KviWindow
 {
 	Q_OBJECT
 public:
-	UrlDialog(KviPtrList<KviUrl> *g_pList);
+	UrlDialog(KviPointerList<KviUrl> *g_pList);
 	~UrlDialog();
 private:
 	KviTalMenuBar *m_pMenuBar;

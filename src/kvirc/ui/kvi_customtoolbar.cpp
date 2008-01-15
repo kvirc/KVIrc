@@ -167,7 +167,7 @@ void KviCustomToolBar::unfilterChild(QObject * o)
 void KviCustomToolBar::beginCustomize()
 {
 	if(m_pFilteredChildren)delete m_pFilteredChildren;
-	m_pFilteredChildren = new KviPtrDict<bool>;
+	m_pFilteredChildren = new KviPointerHashTable<void *,bool>;
 	m_pFilteredChildren->setAutoDelete(true);
 	// filter the events for all the children
 #ifdef COMPILE_USE_QT4

@@ -29,9 +29,9 @@
 #include "kvi_qstring.h"
 
 #include <qobject.h>
-#include "kvi_intdict.h"
-#include "kvi_dict.h"
-#include "kvi_list.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerlist.h"
 
 class KviKvsTimerManager;
 class KviKvsScript;
@@ -92,10 +92,10 @@ protected: // it only can be created and destroyed by KviKvsTimerManager::init()
 	KviKvsTimerManager();
 	~KviKvsTimerManager();
 private:
-	KviIntDict<KviKvsTimer>     * m_pTimerDictById;      // stored by id
-	KviDict<KviKvsTimer>        * m_pTimerDictByName;    // stored by name
+	KviPointerHashTable<int,KviKvsTimer>     * m_pTimerDictById;      // stored by id
+	KviPointerHashTable<QString,KviKvsTimer>        * m_pTimerDictByName;    // stored by name
 	static KviKvsTimerManager   * m_pInstance;             // the one and only timer manager instance
-	KviPtrList<KviKvsTimer>     * m_pKilledTimerList;      // list of timers for that killing has been scheduled
+	KviPointerList<KviKvsTimer>     * m_pKilledTimerList;      // list of timers for that killing has been scheduled
 	int                           m_iAssassinTimer;        // assassin timer id
 	int                           m_iCurrentTimer;         // the timer currently executed
 public:
@@ -112,7 +112,7 @@ public:
 	bool deleteCurrentTimer();
 	void deleteAllTimers();
 	bool timerExists(const QString &szName){ return m_pTimerDictByName->find(szName); };
-	KviDict<KviKvsTimer> * timerDict()
+	KviPointerHashTable<QString,KviKvsTimer> * timerDict()
 		{ return m_pTimerDictByName; };
 protected:
 	void scheduleKill(KviKvsTimer * t);

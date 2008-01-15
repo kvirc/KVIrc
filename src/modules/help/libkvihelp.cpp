@@ -39,8 +39,8 @@
 
 #include <qsplitter.h>
 Index        * g_pDocIndex = 0;
-KviPtrList<KviHelpWidget> * g_pHelpWidgetList = 0;
-KviPtrList<KviHelpWindow> * g_pHelpWindowList = 0;
+KviPointerList<KviHelpWidget> * g_pHelpWidgetList = 0;
+KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
 
 /*
 	@doc: help.search
@@ -197,9 +197,9 @@ static bool help_module_init(KviModule * m)
 	
 
 	
-	g_pHelpWidgetList = new KviPtrList<KviHelpWidget>;
+	g_pHelpWidgetList = new KviPointerList<KviHelpWidget>;
 	g_pHelpWidgetList->setAutoDelete(false);
-	g_pHelpWindowList = new KviPtrList<KviHelpWindow>;
+	g_pHelpWindowList = new KviPointerList<KviHelpWindow>;
 	g_pHelpWindowList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",help_kvs_cmd_open);

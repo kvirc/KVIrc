@@ -39,7 +39,7 @@
 KviIrcServerDataBaseRecord::KviIrcServerDataBaseRecord(KviIrcNetwork * n)
 {
 	m_pNetwork = n;
-	m_pServerList = new KviPtrList<KviIrcServer>;
+	m_pServerList = new KviPointerList<KviIrcServer>;
 	m_pServerList->setAutoDelete(true);
 	m_pCurrentServer = 0;
 }
@@ -90,7 +90,7 @@ KviIrcServer * KviIrcServerDataBaseRecord::currentServer()
 
 KviIrcServerDataBase::KviIrcServerDataBase()
 {
-	m_pRecords = new KviDict<KviIrcServerDataBaseRecord>(17,false);
+	m_pRecords = new KviPointerHashTable<QString,KviIrcServerDataBaseRecord>(17,false);
 	m_pRecords->setAutoDelete(true);
 	m_pAutoConnectOnStartupServers = 0;
 	m_pAutoConnectOnStartupNetworks = 0;
@@ -149,7 +149,7 @@ KviIrcServerDataBaseRecord * KviIrcServerDataBase::currentRecord()
 	if(!m_szCurrentNetwork.isEmpty())r = m_pRecords->find(m_szCurrentNetwork);
 	if(r)return r;
 
-	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*m_pRecords);
 	r = it.current();
 	if(!r)return 0;
 	m_szCurrentNetwork = r->network()->name();
@@ -158,7 +158,7 @@ KviIrcServerDataBaseRecord * KviIrcServerDataBase::currentRecord()
 
 void KviIrcServerDataBase::updateServerIp(KviIrcServer * pServer,const QString & ip)
 {
-	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*m_pRecords);
 	while(KviIrcServerDataBaseRecord * r = it.current())
 	{
 		KviIrcServer * srv = r->findServer(pServer);
@@ -225,7 +225,7 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 {
 	KviIrcServer * pServer = 0;
 
-	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*m_pRecords);
 	KviIrcServerDataBaseRecord * r = 0;
 	KviIrcServer * srv;
 
@@ -550,7 +550,7 @@ void KviIrcServerDataBase::load(const QString & filename)
 			{
 				if(!m_pAutoConnectOnStartupNetworks)
 				{
-					m_pAutoConnectOnStartupNetworks = new KviPtrList<KviIrcServerDataBaseRecord>;
+					m_pAutoConnectOnStartupNetworks = new KviPointerList<KviIrcServerDataBaseRecord>;
 					m_pAutoConnectOnStartupNetworks->setAutoDelete(false);
 				}
 				m_pAutoConnectOnStartupNetworks->append(r);
@@ -574,7 +574,7 @@ void KviIrcServerDataBase::load(const QString & filename)
 					{
 						if(!m_pAutoConnectOnStartupServers)
 						{
-							m_pAutoConnectOnStartupServers = new KviPtrList<KviIrcServer>;
+							m_pAutoConnectOnStartupServers = new KviPointerList<KviIrcServer>;
 							m_pAutoConnectOnStartupServers->setAutoDelete(false);
 						}
 						m_pAutoConnectOnStartupServers->append(s);
@@ -593,7 +593,7 @@ void KviIrcServerDataBase::save(const QString &filename)
 
 	cfg.clear(); // clear any old entry
 
-	KviDictIterator<KviIrcServerDataBaseRecord> it(*m_pRecords);
+	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*m_pRecords);
 
 	QString tmp;
 

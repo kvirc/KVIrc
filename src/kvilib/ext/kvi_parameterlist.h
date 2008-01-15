@@ -27,12 +27,12 @@
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qrect.h>
 #include <qpoint.h>
 #include <qsize.h>
 
-class KVILIB_API KviParameterList : public KviPtrList<KviStr>, public KviHeapObject
+class KVILIB_API KviParameterList : public KviPointerList<KviStr>, public KviHeapObject
 {
 public:
 	KviParameterList();

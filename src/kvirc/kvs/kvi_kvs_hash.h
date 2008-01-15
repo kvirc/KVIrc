@@ -26,13 +26,13 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include "kvi_qstring.h"
 
 #include "kvi_kvs_variant.h"
 #include "kvi_heapobject.h"
 
-typedef KVIRC_API KviDictIterator<KviKvsVariant> KviKvsHashIterator;
+typedef KVIRC_API KviPointerHashTableIterator<QString,KviKvsVariant> KviKvsHashIterator;
 
 // This class must not have virtual funcitons nor destructor
 // Otherwise it will happily crash on windows when it is
@@ -44,7 +44,7 @@ public:
 	KviKvsHash(const KviKvsHash &h);
 	~KviKvsHash();
 protected:
-	KviDict<KviKvsVariant> * m_pDict;
+	KviPointerHashTable<QString,KviKvsVariant> * m_pDict;
 public:
 	void unset(const QString &szKey){ m_pDict->remove(szKey); };
 	void set(const QString &szKey,KviKvsVariant * pVal){ m_pDict->replace(szKey,pVal); };
@@ -56,7 +56,7 @@ public:
 
 	void appendAsString(QString &szBuffer) const;
 	
-	const KviDict<KviKvsVariant> * dict(){ return m_pDict; };
+	const KviPointerHashTable<QString,KviKvsVariant> * dict(){ return m_pDict; };
 
 	void serialize(QString& result);
 };

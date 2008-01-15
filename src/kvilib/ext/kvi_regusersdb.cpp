@@ -146,7 +146,7 @@ KviRegisteredUser::KviRegisteredUser(const QString & name)
 	m_bIgnoreEnabled=false;
 	m_szName        = name;
 	m_pPropertyDict = 0;
-	m_pMaskList     = new KviPtrList<KviIrcMask>;
+	m_pMaskList     = new KviPointerList<KviIrcMask>;
 	m_pMaskList->setAutoDelete(true);
 }
 
@@ -227,7 +227,7 @@ void KviRegisteredUser::setProperty(const QString & name,const QString & value)
 	{
 		if(!m_pPropertyDict)
 		{
-			m_pPropertyDict = new KviDict<QString>(7,false);
+			m_pPropertyDict = new KviPointerHashTable<QString,QString>(7,false);
 			m_pPropertyDict->setAutoDelete(true);
 		}
 #ifdef COMPILE_USE_QT4
@@ -306,16 +306,16 @@ KviRegisteredUserGroup::~KviRegisteredUserGroup()
 
 KviRegisteredUserDataBase::KviRegisteredUserDataBase()
 {
-	m_pUserDict = new KviDict<KviRegisteredUser>(31,false); // do not copy keys
+	m_pUserDict = new KviPointerHashTable<QString,KviRegisteredUser>(31,false); // do not copy keys
 	m_pUserDict->setAutoDelete(true);
 
 	m_pWildMaskList = new KviRegisteredMaskList;
 	m_pWildMaskList->setAutoDelete(true);
 
-	m_pMaskDict = new KviDict<KviRegisteredMaskList>(49,false); // copy keys here!
+	m_pMaskDict = new KviPointerHashTable<QString,KviRegisteredMaskList>(49,false); // copy keys here!
 	m_pMaskDict->setAutoDelete(true);
 	
-	m_pGroupDict = new  KviDict<KviRegisteredUserGroup>(5,false); // copy keys here!
+	m_pGroupDict = new  KviPointerHashTable<QString,KviRegisteredUserGroup>(5,false); // copy keys here!
 	m_pGroupDict->setAutoDelete(true);
 }
 
@@ -445,23 +445,23 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 	m_pGroupDict->clear();
 	emit(databaseCleared());
 
-	KviDictIterator<KviRegisteredUser> it(*(db->m_pUserDict));
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*(db->m_pUserDict));
 
 	while(KviRegisteredUser * theCur = it.current())
 	{
 		KviRegisteredUser * u = getUser(theCur->name());
 		// copy masks
-		KviPtrList<KviIrcMask> * l = theCur->maskList();
+		KviPointerList<KviIrcMask> * l = theCur->maskList();
 		for(KviIrcMask * m=l->first();m;m = l->next())
 		{
 			KviIrcMask * m2 = new KviIrcMask(*m);
 			addMask(u,m2);
 		}
 		// copy properties
-		KviDict<QString> * pd = theCur->propertyDict();
+		KviPointerHashTable<QString,QString> * pd = theCur->propertyDict();
 		if(pd)
 		{
-			KviDictIterator<QString> pdi(*pd);
+			KviPointerHashTableIterator<QString,QString> pdi(*pd);
 			while(pdi.current())
 			{
 				u->setProperty(pdi.currentKey(),*(pdi.current()));
@@ -474,7 +474,7 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 		++it;
 	}
 	
-	KviDictIterator<KviRegisteredUserGroup> git(*db->m_pGroupDict);
+	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*db->m_pGroupDict);
 	while(git.current())
 	{
 		addGroup(git.currentKey());	
@@ -697,7 +697,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 	cfg.clear();
 	cfg.preserveEmptyGroups(true);
 
-	KviDictIterator<KviRegisteredUser> it(*m_pUserDict);
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*m_pUserDict);
 
 	while(it.current())
 	{
@@ -707,7 +707,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		cfg.writeEntry("IgnoreFlags",it.current()->ignoreFlags());
 		if(it.current()->propertyDict())
 		{
-			KviDictIterator<QString> pit(*(it.current()->propertyDict()));
+			KviPointerHashTableIterator<QString,QString> pit(*(it.current()->propertyDict()));
 			while(pit.current())
 			{
 				QString tmp = "prop_";
@@ -731,7 +731,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		++it;
 	}
 	
-	KviDictIterator<KviRegisteredUserGroup> git(*m_pGroupDict);
+	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*m_pGroupDict);
 	QString szTmp;
 	while(git.current())
 	{

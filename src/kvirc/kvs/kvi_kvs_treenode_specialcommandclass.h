@@ -58,7 +58,7 @@ public:
 	virtual ~KviKvsTreeNodeSpecialCommandClass();
 protected:
 	KviKvsTreeNodeDataList * m_pParams;
-	KviPtrList<KviKvsTreeNodeSpecialCommandClassFunctionDefinition> * m_pFunctions;
+	KviPointerList<KviKvsTreeNodeSpecialCommandClassFunctionDefinition> * m_pFunctions;
 public:
 	void addFunctionDefinition(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * pDef);
 	virtual void contextDescription(QString &szBuffer);

@@ -52,7 +52,7 @@ KVILIB_API KviMessageCatalogue           * g_pMainCatalogue       = 0;
 
 static KviStr                              g_szLang;
 static KviTranslator                     * g_pTranslator          = 0;
-static KviAsciiDict<KviMessageCatalogue> * g_pCatalogueDict       = 0;
+static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict       = 0;
 static QTextCodec                        * g_pUtf8TextCodec       = 0;
 
 
@@ -370,7 +370,7 @@ public:
 #endif
 };
 
-static KviAsciiDict<KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
+static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
 
 
 
@@ -476,13 +476,15 @@ KviMessageCatalogue::KviMessageCatalogue()
 	//m_uEncoding = 0;
 	m_pTextCodec = QTextCodec::codecForLocale();
 
-	m_pMessages = new KviAsciiDict<KviTranslationEntry>(1123,true,false); // dictSize, case sensitive , don't copy keys
+	//m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(1123,true,false); // dictSize, case sensitive , don't copy keys
+	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(32,true,false); // dictSize, case sensitive , don't copy keys
 	m_pMessages->setAutoDelete(true);
 }
 
 KviMessageCatalogue::~KviMessageCatalogue()
 {
-	delete m_pMessages;
+	if(m_pMessages)
+		delete m_pMessages;
 }
 
 bool KviMessageCatalogue::load(const QString& name)
@@ -585,7 +587,10 @@ bool KviMessageCatalogue::load(const QString& name)
 	// Ok...we can run now
 
 	int dictSize = kvi_getFirstBiggerPrime(numberOfStrings);
-	m_pMessages->resize(dictSize);
+	if(m_pMessages)
+		delete m_pMessages;
+	m_pMessages = new KviPointerHashTable<const char *,KviTranslationEntry>(dictSize,true,false); // dictSize, case sensitive , don't copy keys
+	m_pMessages->setAutoDelete(true);
 
 	KviStr szHeader;
 
@@ -976,11 +981,11 @@ namespace KviLocale
 		// the main catalogue is supposed to be kvirc_<language>.mo
 		g_pMainCatalogue = new KviMessageCatalogue();
 		// the catalogue dict
-		g_pCatalogueDict = new KviAsciiDict<KviMessageCatalogue>;
+		g_pCatalogueDict = new KviPointerHashTable<const char *,KviMessageCatalogue>;
 		g_pCatalogueDict->setAutoDelete(true);
 
 		// the smart codec dict
-		g_pSmartCodecDict = new KviAsciiDict<KviSmartTextCodec>;
+		g_pSmartCodecDict = new KviPointerHashTable<const char *,KviSmartTextCodec>;
 		// the Qt docs explicitly state that we shouldn't delete
 		// the codecs by ourselves...
 		g_pSmartCodecDict->setAutoDelete(false);

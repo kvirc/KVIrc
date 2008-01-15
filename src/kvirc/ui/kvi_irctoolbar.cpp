@@ -35,7 +35,7 @@
 #include "kvi_dynamictooltip.h"
 #include "kvi_ircurl.h"
 #include "kvi_internalcmd.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_irccontext.h"
@@ -55,14 +55,14 @@
 #endif
 
 static QPixmap                                  * g_pIccMemBuffer               = 0;
-static KviPtrList<KviToolBarGraphicalApplet>    * g_pToolBarGraphicalAppletList = 0;
+static KviPointerList<KviToolBarGraphicalApplet>    * g_pToolBarGraphicalAppletList = 0;
 
 KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * name)
 : QToolButton(par,name)
 {
 	if(!g_pToolBarGraphicalAppletList)
 	{
-		g_pToolBarGraphicalAppletList = new KviPtrList<KviToolBarGraphicalApplet>();
+		g_pToolBarGraphicalAppletList = new KviPointerList<KviToolBarGraphicalApplet>();
 		g_pToolBarGraphicalAppletList->setAutoDelete(false);
 		g_pIccMemBuffer = new QPixmap(1,1);
 	}

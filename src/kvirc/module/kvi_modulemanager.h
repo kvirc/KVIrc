@@ -28,9 +28,9 @@
 #include "kvi_settings.h"
 
 #include <qobject.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qtimer.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_module.h"
 
@@ -41,7 +41,7 @@ public:
 	KviModuleManager();
 	~KviModuleManager();
 private:
-	KviAsciiDict<KviModule>                        * m_pModuleDict;
+	KviPointerHashTable<const char *,KviModule>                        * m_pModuleDict;
 	QTimer                                       * m_pCleanupTimer;
 	KviStr                                         m_szLastError;
 public:
@@ -56,9 +56,9 @@ public:
 	void loadModulesByCaps(const char * caps,const char * dir);
 	void loadModulesByCaps(const char * caps);
 	bool hasLockedModules();
-	void completeModuleNames(const QString &word,KviPtrList<QString> * matches);
+	void completeModuleNames(const QString &word,KviPointerList<QString> * matches);
 protected:
-	void completeModuleNames(const QString &path,const QString &work,KviPtrList<QString> * matches);
+	void completeModuleNames(const QString &path,const QString &work,KviPointerList<QString> * matches);
 public slots:
 	void cleanupUnusedModules();
 signals:

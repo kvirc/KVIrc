@@ -29,7 +29,7 @@
 
 #include <qobject.h>
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_tal_listview.h"
 
 class KviFileTransfer;
@@ -51,7 +51,7 @@ public:
 	KviFileTransferManager();
 	~KviFileTransferManager();
 protected:
-	KviPtrList<KviFileTransfer> * m_pTransferList;
+	KviPointerList<KviFileTransfer> * m_pTransferList;
 	KviWindow                   * m_pTransferWindow;
 protected:
 	static void cleanup();
@@ -62,7 +62,7 @@ public:
 	// might be zero!
 	KviWindow * transferWindow(){ return m_pTransferWindow; };
 	static KviFileTransferManager * instance();
-	KviPtrList<KviFileTransfer> * transferList(){ return m_pTransferList; };
+	KviPointerList<KviFileTransfer> * transferList(){ return m_pTransferList; };
 	void invokeTransferWindow(KviWindow * pWnd = 0,bool bCreateMinimized = false,bool bNoRaise = false);
 	void killAllTransfers();
 	void killTerminatedTransfers();

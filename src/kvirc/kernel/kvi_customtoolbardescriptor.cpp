@@ -38,7 +38,7 @@ KviCustomToolBarDescriptor::KviCustomToolBarDescriptor(const QString &szId,const
 {
 	m_iInternalId = g_pApp->getGloballyUniqueId();
 	m_szId = szId;
-	m_pActions = new KviPtrList<QString>;
+	m_pActions = new KviPointerList<QString>;
 	m_pActions->setAutoDelete(true);
 	m_pToolBar = 0;
 	m_bVisibleAtStartup = false;
@@ -130,7 +130,7 @@ void KviCustomToolBarDescriptor::fillToolBar()
 		// force layout of the toolbar
 		QApplication::postEvent(m_pToolBar,new QEvent(QEvent::LayoutHint));
 	} else {
-		KviPtrList<QString> dying;
+		KviPointerList<QString> dying;
 		dying.setAutoDelete(false);
 		for(QString *p = m_pActions->first();p;p = m_pActions->next())
 		{

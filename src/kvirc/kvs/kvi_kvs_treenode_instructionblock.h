@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_kvs_treenode_instruction.h"
 
@@ -39,7 +39,7 @@ public:
 	KviKvsTreeNodeInstructionBlock(const QChar * pLocation);
 	~KviKvsTreeNodeInstructionBlock();
 protected:
-	KviPtrList<KviKvsTreeNodeInstruction> * m_pInstructionList;
+	KviPointerList<KviKvsTreeNodeInstruction> * m_pInstructionList;
 public:
 	unsigned int instructionCount(){ return m_pInstructionList->count(); };
 	void addInstruction(KviKvsTreeNodeInstruction * i);

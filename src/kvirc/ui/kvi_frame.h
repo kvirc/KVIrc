@@ -35,7 +35,7 @@
 
 #include "kvi_tal_mainwindow.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviMenuBar;
 class KviMdiManager;
@@ -54,7 +54,7 @@ class KviTalPopupMenu;
 #include "kvi_accel.h" // we need this :/
 
 #ifdef COMPILE_ON_WINDOWS
-	// MSCV has problems with KviPtrList<KviWindow> otherwise
+	// MSCV has problems with KviPointerList<KviWindow> otherwise
 	#include "kvi_window.h"
 #endif
 
@@ -99,11 +99,11 @@ protected:
 	QSplitter                             * m_pSplitter;                     // the frame is splitted vertically and thus can host widgets
 	KviMenuBar                            * m_pMenuBar;                      // the main menu bar
 	KviMdiManager                         * m_pMdi;                          // the mdi manager widget (child of the splitter)
-	KviPtrList<KviMexToolBar>             * m_pModuleExtensionToolBarList;   // the module extension toolbars
+	KviPointerList<KviMexToolBar>             * m_pModuleExtensionToolBarList;   // the module extension toolbars
 	KviTaskBarBase                        * m_pTaskBar;                      // the taskbar
 	KviStatusBar                          * m_pStatusBar;
 	// the mdi workspace child windows
-	KviPtrList<KviWindow>                 * m_pWinList;                      // the main list of windows
+	KviPointerList<KviWindow>                 * m_pWinList;                      // the main list of windows
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
 	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
@@ -124,7 +124,7 @@ public:
 	KviIrcConnection * activeConnection();
 	// The list of the windows belonging to this frame
 	// Note that the windows may be also undocked, but they are still owned by the frame
-	KviPtrList<KviWindow> * windowList() { return m_pWinList; };
+	KviPointerList<KviWindow> * windowList() { return m_pWinList; };
 	// Sets the specified window to be the active one
 	// Raises it and focuses it
 	void setActiveWindow(KviWindow *wnd);

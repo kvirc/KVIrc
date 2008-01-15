@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviCustomToolBar;
 class KviConfig;
@@ -48,7 +48,7 @@ protected:
 	QString               m_szId;
 	QString               m_szIconId;
 	QString               m_szParsedLabel;
-	KviPtrList<QString> * m_pActions;
+	KviPointerList<QString> * m_pActions;
 	KviCustomToolBar    * m_pToolBar;
 	int                   m_iInternalId;
 	bool                  m_bVisibleAtStartup;
@@ -67,7 +67,7 @@ public:
 	bool removeAction(unsigned int iAction);
 	void clear();
 	void rename(const QString &szNewName);
-	KviPtrList<QString> * actions(){ return m_pActions; };
+	KviPointerList<QString> * actions(){ return m_pActions; };
 	void updateToolBar();
 protected:
 	void createLabelScript(const QString &szNewLabelCode);

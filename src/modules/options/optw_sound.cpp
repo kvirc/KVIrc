@@ -28,7 +28,7 @@
 #include "kvi_locale.h"
 #include "kvi_options.h"
 #include "kvi_modulemanager.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_string.h"
 
 #include <qlabel.h>

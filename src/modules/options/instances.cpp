@@ -652,7 +652,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 
 	//debug("Instantiating");
 	// Create the global widget dict : case sensitive , do not copy keys
-	m_pInstanceTree = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	m_pInstanceTree = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
 
 
@@ -690,7 +690,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviConnectionOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		KviOptionsWidgetInstanceEntry * e1;
@@ -727,7 +727,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviConnectionAdvancedOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			KviOptionsWidgetInstanceEntry * e2;
@@ -900,7 +900,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -1004,7 +1004,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviDccSendOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -1176,7 +1176,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviGeneralOptOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -1246,7 +1246,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviSoundOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -1452,7 +1452,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -1624,7 +1624,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviInterfaceFeaturesOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -1932,7 +1932,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -2036,7 +2036,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviChannelOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -2174,7 +2174,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviProtectionOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -2346,7 +2346,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviToolsOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -2484,7 +2484,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviAlertHighlightingOptionsWidget,"options");
 			e1->pChildList->append(e2);
 
-			e2->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+			e2->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 			e2->pChildList->setAutoDelete(true);
 
 				KviOptionsWidgetInstanceEntry * e3;
@@ -2759,7 +2759,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewThemeOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -2863,7 +2863,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviMessageOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -3069,7 +3069,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTaskBarOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -3105,7 +3105,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeTaskBarOptionsWidget,"options");
 		e0->pChildList->append(e1);
 
-		e1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 		e1->pChildList->setAutoDelete(true);
 
 			e2 = new KviOptionsWidgetInstanceEntry;
@@ -3311,7 +3311,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListLookOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 
-	e0->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	e0->pChildList->setAutoDelete(true);
 
 		e1 = new KviOptionsWidgetInstanceEntry;
@@ -3452,7 +3452,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 
 }
 
-void KviOptionsInstanceManager::deleteInstanceTree(KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{
@@ -3516,7 +3516,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 		e->pWidget->createTabbedPage();
 		if(e->pChildList)
 		{
-			KviPtrList<KviOptionsWidgetInstanceEntry> tmp;
+			KviPointerList<KviOptionsWidgetInstanceEntry> tmp;
 			tmp.setAutoDelete(false);
 
 			for(KviOptionsWidgetInstanceEntry * e2 = e->pChildList->first();e2;e2 = e->pChildList->next())
@@ -3546,7 +3546,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 	return e->pWidget;
 }
 
-KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const QObject * ptr,KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const QObject * ptr,KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{
@@ -3563,7 +3563,7 @@ KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(con
 	return 0;
 }
 
-KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const char * clName,KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const char * clName,KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{

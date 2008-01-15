@@ -51,7 +51,7 @@
 #else
 #include <qheader.h>
 #endif
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qimage.h>
 #include <qstring.h>
 #include <qcombobox.h>
@@ -406,8 +406,8 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 		group->setName(text);
 		g_pLocalRegisteredUserDataBase->groupDict()->insert(text,group);
 		
-		KviDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-		KviDictIterator<KviRegisteredUser> it(*d);
+		KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
+		KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	
 		while(KviRegisteredUser * u = it.current())
 		{
@@ -430,8 +430,8 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalListViewItem *
 		{
 			KviTalPopupMenu *groups = new KviTalPopupMenu;
 			
-			KviDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-			KviDictIterator<KviRegisteredUserGroup> git(*pGroups);
+			KviPointerHashTable<QString,KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
+			KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*pGroups);
 			m_TmpDict.clear();
 			while(KviRegisteredUserGroup * g = git.current())
 			{
@@ -467,10 +467,10 @@ void KviRegisteredUsersDialog::moveToGroupMenuClicked(int id)
 void KviRegisteredUsersDialog::fillList()
 {
 	m_pListView->clear();
-	KviDict<KviRegisteredUsersGroupItem> groupItems(5,false);
+	KviPointerHashTable<QString,KviRegisteredUsersGroupItem> groupItems(5,false);
 	
-	KviDict<KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-	KviDictIterator<KviRegisteredUserGroup> git(*pGroups);
+	KviPointerHashTable<QString,KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*pGroups);
 	while(KviRegisteredUserGroup * g = git.current())
 	{
 		KviRegisteredUsersGroupItem* pCur = new KviRegisteredUsersGroupItem(m_pListView,g);
@@ -479,8 +479,8 @@ void KviRegisteredUsersDialog::fillList()
 		++git;
 	}
 	
-	KviDict<KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-	KviDictIterator<KviRegisteredUser> it(*d);
+	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
+	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	KviRegisteredUsersDialogItem * item;
 
 	while(KviRegisteredUser * u = it.current())
@@ -572,7 +572,7 @@ void KviRegisteredUsersDialog::removeClicked()
 // 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
 // 	if(b->type()==KviRegisteredUsersDialogItemBase::User)
 // 	{
-// 		KviPtrList<KviRegisteredUsersDialogItem> l;
+// 		KviPointerList<KviRegisteredUsersDialogItem> l;
 // 		l.setAutoDelete(false);
 // 		while(it)
 // 		{
@@ -710,11 +710,11 @@ void KviRegisteredUsersDialog::exportClicked()
 		if(u)
 		{
 			if(!f.save(szName))goto write_error;
-			KviDict<QString> * pd = u->propertyDict();
+			KviPointerHashTable<QString,QString> * pd = u->propertyDict();
 			if(pd)
 			{
 				if(!f.save(pd->count()))goto write_error;
-				KviDictIterator<QString> it(*pd);
+				KviPointerHashTableIterator<QString,QString> it(*pd);
 				while(it.current())
 				{
 					QString key = it.currentKey();
@@ -726,7 +726,7 @@ void KviRegisteredUsersDialog::exportClicked()
 				if(!f.save(0))goto write_error;
 			}
 
-			KviPtrList<KviIrcMask> * ml = u->maskList();
+			KviPointerList<KviIrcMask> * ml = u->maskList();
 			if(ml)
 			{
 				if(!f.save(ml->count()))goto write_error;

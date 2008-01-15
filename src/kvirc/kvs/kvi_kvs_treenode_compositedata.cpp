@@ -30,7 +30,7 @@
 
 #define DEBUGME
 
-KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPtrList<KviKvsTreeNodeData> * pSubData)
+KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPointerList<KviKvsTreeNodeData> * pSubData)
 : KviKvsTreeNodeData(pLocation)
 {
 #ifdef DEBUGME
@@ -57,7 +57,7 @@ bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 	KviKvsVariant res;
 
 	// we need to use an iterator to accomodate recursion
-	KviPtrListIterator<KviKvsTreeNodeData> it(*m_pSubData);
+	KviPointerListIterator<KviKvsTreeNodeData> it(*m_pSubData);
 	
 	while(KviKvsTreeNodeData * d = it.current())
 	{

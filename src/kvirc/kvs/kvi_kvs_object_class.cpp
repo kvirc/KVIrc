@@ -49,16 +49,16 @@ KviKvsObjectClass::KviKvsObjectClass(
 	m_szName        = szName;
 	m_bBuiltin      = bBuiltin;
 	m_bDirty        = !bBuiltin;
-	m_pFunctionHandlers = new KviDict<KviKvsObjectFunctionHandler>(17,false);
+	m_pFunctionHandlers = new KviPointerHashTable<QString,KviKvsObjectFunctionHandler>(17,false);
 	m_pFunctionHandlers->setAutoDelete(true);
-	m_pChildClasses = new KviPtrList<KviKvsObjectClass>;
+	m_pChildClasses = new KviPointerList<KviKvsObjectClass>;
 	m_pChildClasses->setAutoDelete(false);
 	m_allocProc     = pProc ? pProc : pParent->m_allocProc;
 
 	// inherit everything from the class above
 	if(pParent)
 	{
-		KviDictIterator<KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
+		KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
 		while(KviKvsObjectFunctionHandler * fh = it.current())
 		{
 			m_pFunctionHandlers->insert(it.currentKey(),fh->clone());
@@ -185,7 +185,7 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 					"{\n",
 					&m_szName,&szParentName);
 		
-	KviDictIterator<KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
+	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
 	
 	while(KviKvsObjectFunctionHandler * h = it.current())
 	{

@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <qobject.h>
 #include <qstring.h>
@@ -74,7 +74,7 @@ protected:
 	KviActionCategory * m_pCategory;                // may be 0, not owned!
 	QString m_szBigIcon;
 	int     m_iSmallIconId;
-	KviPtrList<QWidget> * m_pWidgetList;
+	KviPointerList<QWidget> * m_pWidgetList;
 	unsigned short int m_uInternalFlags;
 	unsigned int m_uFlags;
 	QString m_szKeySequence;
@@ -135,7 +135,7 @@ protected:
 	// called once before the FIRST button or menu item is created
 	bool setupDone() const { return (m_uInternalFlags & KVI_ACTION_FLAG_SETUPDONE); };
 	virtual void setup();
-	KviPtrList<QWidget> * widgetList(){ return m_pWidgetList; };
+	KviPointerList<QWidget> * widgetList(){ return m_pWidgetList; };
 	void registerAccelerator();
 	void unregisterAccelerator();
 	void registerWidget(QWidget * b);

@@ -271,7 +271,7 @@
 
 KviKvsTreeNodeData * KviKvsParser::parseOperationRightSide(bool bPreferNumeric)
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>();
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -744,7 +744,7 @@ end_of_the_param:
 
 KviKvsTreeNodeData * KviKvsParser::parseBindingOperationParameter()
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>;
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>;
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;

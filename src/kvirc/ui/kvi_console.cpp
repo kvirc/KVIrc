@@ -277,7 +277,7 @@ void KviConsole::fillContextPopup(KviTalPopupMenu * p)
 	}
 }
 
-void KviConsole::completeChannel(const QString &word,KviPtrList<QString> * matches)
+void KviConsole::completeChannel(const QString &word,KviPointerList<QString> * matches)
 {
 	// FIXME: first look in our context ?
 	/*
@@ -297,7 +297,7 @@ void KviConsole::completeChannel(const QString &word,KviPtrList<QString> * match
 	}
 }
 
-void KviConsole::completeServer(const QString &word, KviPtrList<QString> * matches)
+void KviConsole::completeServer(const QString &word, KviPointerList<QString> * matches)
 {
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
 	{
@@ -973,7 +973,7 @@ void KviConsole::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 	QString szAvatar;
 	if(!u->getProperty("avatar",szAvatar))return;
 
-	KviDictIterator<KviIrcUserEntry> it(*(connection()->userDataBase()->dict()));
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*(connection()->userDataBase()->dict()));
 	while(KviIrcUserEntry * e = it.current())
 	{
 		if(e->hasHost())

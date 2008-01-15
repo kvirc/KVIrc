@@ -33,7 +33,7 @@ KviCustomToolBarManager * KviCustomToolBarManager::m_pInstance = 0;
 
 KviCustomToolBarManager::KviCustomToolBarManager()
 {
-	m_pDescriptors = new KviDict<KviCustomToolBarDescriptor>(17,false);
+	m_pDescriptors = new KviPointerHashTable<QString,KviCustomToolBarDescriptor>(17,false);
 	m_pDescriptors->setAutoDelete(true);
 }
 
@@ -44,7 +44,7 @@ KviCustomToolBarManager::~KviCustomToolBarManager()
 
 KviCustomToolBar * KviCustomToolBarManager::firstExistingToolBar()
 {
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->toolBar())return d->toolBar();
@@ -94,7 +94,7 @@ QString KviCustomToolBarManager::idForNewToolBar(const QString &szTemplate)
 
 KviCustomToolBarDescriptor * KviCustomToolBarManager::findDescriptorByInternalId(int id)
 {
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->internalId() == id)return d;
@@ -140,7 +140,7 @@ KviCustomToolBarDescriptor * KviCustomToolBarManager::create(const QString &szId
 
 void KviCustomToolBarManager::storeVisibilityState()
 {
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		d->m_bVisibleAtStartup = d->toolBar() != 0;
@@ -152,7 +152,7 @@ void KviCustomToolBarManager::storeVisibilityState()
 int KviCustomToolBarManager::visibleToolBarCount()
 {
 	int cnt = 0;
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->toolBar() != 0)cnt++;
@@ -163,7 +163,7 @@ int KviCustomToolBarManager::visibleToolBarCount()
 
 void KviCustomToolBarManager::createToolBarsVisibleAtStartup()
 {
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->m_bVisibleAtStartup && (!d->toolBar()))
@@ -174,7 +174,7 @@ void KviCustomToolBarManager::createToolBarsVisibleAtStartup()
 
 void KviCustomToolBarManager::updateVisibleToolBars()
 {
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->toolBar())d->updateToolBar();
@@ -201,7 +201,7 @@ void KviCustomToolBarManager::load(const QString &szFileName)
 void KviCustomToolBarManager::save(const QString &szFileName)
 {
 	KviConfig cfg(szFileName,KviConfig::Write);
-	KviDictIterator<KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		cfg.setGroup(d->id());

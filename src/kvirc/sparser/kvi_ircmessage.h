@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
 #include "kvi_console.h"
@@ -55,7 +55,7 @@ private:
 	const char          * m_ptr;                // shallow! never null
 	KviStr                m_szPrefix;           // the extracted prefix string
 	KviStr                m_szCommand;          // the extracted command (may be numeric)
-	KviPtrList<KviStr>  * m_pParams;            // the list of parameters
+	KviPointerList<KviStr>  * m_pParams;            // the list of parameters
 	KviConsole          * m_pConsole;           // the console we're attacched to
 	KviIrcConnection    * m_pConnection;        // the connection we're attacched to
 	int                   m_iNumericCommand;    // the numeric of the command (0 if non numeric)

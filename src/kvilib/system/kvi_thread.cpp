@@ -175,7 +175,7 @@ KviThreadManager::KviThreadManager()
 
 
 	m_pMutex = new KviMutex();
-	m_pThreadList = new KviPtrList<KviThread>;
+	m_pThreadList = new KviPointerList<KviThread>;
 	m_pThreadList->setAutoDelete(false);
 
 	m_iWaitingThreads = 0;
@@ -184,7 +184,7 @@ KviThreadManager::KviThreadManager()
 
 	m_iTriggerCount = 0;
 
-	m_pEventQueue = new KviPtrList<KviThreadPendingEvent>;
+	m_pEventQueue = new KviPointerList<KviThreadPendingEvent>;
 	m_pEventQueue->setAutoDelete(true);
 
 	if(pipe(m_fd) != 0)
@@ -268,7 +268,7 @@ void KviThreadManager::killPendingEvents(QObject * receiver)
 void KviThreadManager::killPendingEventsByReceiver(QObject * receiver)
 {
 #ifndef COMPILE_ON_WINDOWS
-	KviPtrList<KviThreadPendingEvent> l;
+	KviPointerList<KviThreadPendingEvent> l;
 	l.setAutoDelete(false);
 	m_pMutex->lock();
 	for(KviThreadPendingEvent * ev = m_pEventQueue->first();ev;ev = m_pEventQueue->next())
@@ -586,7 +586,7 @@ KviSensitiveThread::KviSensitiveThread()
 : KviThread()
 {
 	m_pLocalEventQueueMutex = new KviMutex();
-	m_pLocalEventQueue = new KviPtrList<KviThreadEvent>;
+	m_pLocalEventQueue = new KviPointerList<KviThreadEvent>;
 	m_pLocalEventQueue->setAutoDelete(false);
 }
 

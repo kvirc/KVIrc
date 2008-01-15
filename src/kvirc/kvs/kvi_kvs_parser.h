@@ -26,9 +26,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 class KviKvsTreeNode;
 
@@ -64,7 +64,7 @@ private:
 	const QChar              * m_pBuffer;        // the local pointer to the beginning of the buffer
 	const QChar              * m_ptr;            // the parsing pointer
 	// parsing state
-	KviDict<QString>           * m_pGlobals;       // the dict of the vars declared with global in this script
+	KviPointerHashTable<QString,QString>           * m_pGlobals;       // the dict of the vars declared with global in this script
 	int                        m_iFlags;         // the current parsing flags
 	bool                       m_bError;         // error(..) was called ?
 	// this stuff is used only for reporting errors and warnings
@@ -121,7 +121,7 @@ private:
 	// if started in the middle of the list returns only the remaining
 	// parameters.
 	KviKvsTreeNodeDataList                   * parseCommaSeparatedParameterList();
-	KviPtrList<QString>                      * parseCommaSeparatedParameterListNoTree();
+	KviPointerList<QString>                      * parseCommaSeparatedParameterListNoTree();
 	// returns 0 in case of error or if it starts on a terminating character (null parameter)
 	// check error() to see if there was an error condition (unless you already know that
 	// there was a valid first character)

@@ -34,7 +34,7 @@
 #include "kvi_out.h"
 
 
-static KviPtrList<KviTorrentInterfaceDescriptor> * g_pDescriptorList = 0;
+static KviPointerList<KviTorrentInterfaceDescriptor> * g_pDescriptorList = 0;
 
 static KviTorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 {
@@ -822,7 +822,7 @@ static bool torrent_module_init(KviModule *m)
 	TC_KVS_REGFNC(fileName, "fileName")
 	TC_KVS_REGFNC(filePriority, "filePriority")
 
-	g_pDescriptorList = new KviPtrList<KviTorrentInterfaceDescriptor>;
+	g_pDescriptorList = new KviPointerList<KviTorrentInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
 #ifdef COMPILE_KDE_SUPPORT

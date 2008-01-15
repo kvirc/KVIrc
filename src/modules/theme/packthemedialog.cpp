@@ -65,7 +65,7 @@
 
 
 
-KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo> * pThemeInfoList)
+KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList)
 : KviTalWizard(pParent)
 {
 	m_pThemeInfoList = pThemeInfoList;

@@ -32,7 +32,7 @@
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_variant.h"
 
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
 
 #ifdef Unsorted
 	#undef Unsorted

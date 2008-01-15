@@ -73,8 +73,8 @@ KviTextIconWindow::~KviTextIconWindow()
 void KviTextIconWindow::fill()
 {
 	clear();
-	KviDict<KviTextIcon> * d = g_pTextIconManager->textIconDict();
-	KviDictIterator<KviTextIcon> it(*d);
+	KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
+	KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
 	while(KviTextIcon * i = it.current())
 	{
 		QPixmap *pix = i->pixmap();

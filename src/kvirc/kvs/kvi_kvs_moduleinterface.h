@@ -27,13 +27,13 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #include "kvi_kvs_runtimecall.h"
 #include "kvi_kvs_parameterprocessor.h"
 #include "kvi_kvs_switchlist.h"
 #include "kvi_kvs_script.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_qstring.h"
 
 class KviModule;
@@ -137,9 +137,9 @@ public:
 	KviKvsModuleInterface();
 	~KviKvsModuleInterface();
 protected:
-	KviDict<KviKvsModuleSimpleCommandExecRoutine>         * m_pModuleSimpleCommandExecRoutineDict;
-	KviDict<KviKvsModuleFunctionExecRoutine>              * m_pModuleFunctionExecRoutineDict;
-	KviDict<KviKvsModuleCallbackCommandExecRoutine>       * m_pModuleCallbackCommandExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsModuleSimpleCommandExecRoutine>         * m_pModuleSimpleCommandExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsModuleFunctionExecRoutine>              * m_pModuleFunctionExecRoutineDict;
+	KviPointerHashTable<QString,KviKvsModuleCallbackCommandExecRoutine>       * m_pModuleCallbackCommandExecRoutineDict;
 public:
 	void kvsRegisterSimpleCommand(const QString &szCommand,KviKvsModuleSimpleCommandExecRoutine r);
 	void kvsRegisterCallbackCommand(const QString &szCommand,KviKvsModuleCallbackCommandExecRoutine r);
@@ -173,8 +173,8 @@ public:
 	KviKvsModuleFunctionExecRoutine * kvsFindFunction(const QString &szFunction)
 		{ return m_pModuleFunctionExecRoutineDict->find(szFunction); };
 
-	void completeCommand(const QString &cmd,KviPtrList<QString> * matches);
-	void completeFunction(const QString &cmd,KviPtrList<QString> * matches);
+	void completeCommand(const QString &cmd,KviPointerList<QString> * matches);
+	void completeFunction(const QString &cmd,KviPointerList<QString> * matches);
 protected:
 	void registerDefaultCommands();
 };

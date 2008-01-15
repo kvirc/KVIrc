@@ -31,7 +31,7 @@
 #include <qwidget.h>
 #include "kvi_tal_hbox.h"
 #include <qpixmap.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_string.h"
 
@@ -63,10 +63,10 @@ public:
 	KviInputHistory();
 	~KviInputHistory();
 protected:
-	KviPtrList<QString> * m_pStringList;
+	KviPointerList<QString> * m_pStringList;
 public:
 	void add(QString * s);
-	KviPtrList<QString> * list(){ return m_pStringList; };
+	KviPointerList<QString> * list(){ return m_pStringList; };
 	void save(const char * filename);
 	void load(const char * filename);
 };
@@ -121,7 +121,7 @@ protected:
 	int                      m_iSelectionAnchorChar;
 
 	// History stuff
-	KviPtrList<QString>    * m_pHistory;
+	KviPointerList<QString>    * m_pHistory;
 	int                      m_iCurHistoryIdx;
 
 	KviStr                   m_szSaveTextBuffer;

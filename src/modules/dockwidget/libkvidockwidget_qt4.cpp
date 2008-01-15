@@ -64,8 +64,8 @@
 #include <time.h>
 
 
-extern KVIRC_API KviAsciiDict<KviWindow> * g_pGlobalWindowDict;
-static KviPtrList<KviDockWidget> * g_pDockWidgetList = 0;
+extern KVIRC_API KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
+static KviPointerList<KviDockWidget> * g_pDockWidgetList = 0;
 
 static QPixmap * g_pDock1 = 0;
 static QPixmap * g_pDock2 = 0;
@@ -219,7 +219,7 @@ void KviDockWidget::doAway(int id)
 {
 	if(id<0)
 	{
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 		while(KviWindow * wnd = it.current())
 		{
 			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -264,7 +264,7 @@ void KviDockWidget::fillContextPopup()
 		
 		int iSeparator=m_pAwayPopup->insertSeparator();
 		
-		KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 		bool bAllAway=1;
 		bool bAllUnaway=1;
 		int iNetCount=0;
@@ -636,7 +636,7 @@ static bool dockwidget_module_init(KviModule * m)
 	g_pDock3 = new QPixmap(buffer);
 
 
-	g_pDockWidgetList = new KviPtrList<KviDockWidget>;
+	g_pDockWidgetList = new KviPointerList<KviDockWidget>;
 	g_pDockWidgetList->setAutoDelete(false);
 
 

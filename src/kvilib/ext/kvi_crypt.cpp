@@ -189,7 +189,7 @@
 
 	KviCryptEngineManager::KviCryptEngineManager()
 	{
-		m_pEngineDict = new KviDict<KviCryptEngineDescription>;
+		m_pEngineDict = new KviPointerHashTable<QString,KviCryptEngineDescription>;
 		m_pEngineDict->setAutoDelete(true);
 	}
 
@@ -210,7 +210,7 @@
 
 	void KviCryptEngineManager::unregisterEngines(void * providerHandle)
 	{
-		KviDictIterator<KviCryptEngineDescription> it(*m_pEngineDict);
+		KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*m_pEngineDict);
 		while(it.current())
 		{
 			if(it.current()->providerHandle == providerHandle)

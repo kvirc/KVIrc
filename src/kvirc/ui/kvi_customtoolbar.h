@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_toolbar.h"
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	#include "kvi_customtoolbardescriptor.h"
@@ -59,7 +59,7 @@ protected:
 	KviCustomToolBarDescriptor * m_pDescriptor;
 	QWidget * m_pMovedChild;
 	QWidget * m_pDraggedChild;
-	KviPtrDict<bool> * m_pFilteredChildren;
+	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
 public:
 	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
 protected:

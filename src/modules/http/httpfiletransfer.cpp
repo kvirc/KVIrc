@@ -37,7 +37,7 @@
 #include "kvi_tal_popupmenu.h"
 #include <qpainter.h>
 
-static KviPtrList<KviHttpFileTransfer> * g_pHttpFileTransfers = 0;
+static KviPointerList<KviHttpFileTransfer> * g_pHttpFileTransfers = 0;
 static QPixmap * g_pHttpIcon = 0;
 
 
@@ -60,7 +60,7 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 
 	connect(m_pHttpRequest,SIGNAL(status(const QString &)),this,SLOT(statusMessage(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(transferTerminated(bool)));
-	connect(m_pHttpRequest,SIGNAL(header(KviAsciiDict<KviStr> *)),this,SLOT(headersReceived(KviAsciiDict<KviStr> *)));
+	connect(m_pHttpRequest,SIGNAL(header(KviPointerHashTable<const char *,KviStr> *)),this,SLOT(headersReceived(KviPointerHashTable<const char *,KviStr> *)));
 	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
 	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
@@ -337,7 +337,7 @@ QString KviHttpFileTransfer::tipText()
 void KviHttpFileTransfer::init()
 {
 	if(g_pHttpFileTransfers)return;
-	g_pHttpFileTransfers = new KviPtrList<KviHttpFileTransfer>;
+	g_pHttpFileTransfers = new KviPointerList<KviHttpFileTransfer>;
 	g_pHttpFileTransfers->setAutoDelete(false);
 
 	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png");
@@ -462,13 +462,13 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 	}
 }
 
-void KviHttpFileTransfer::headersReceived(KviAsciiDict<KviStr> *h)
+void KviHttpFileTransfer::headersReceived(KviPointerHashTable<const char *,KviStr> *h)
 {
 	if(!h)return;
 	KviWindow * out = transferWindow();
 
 	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: Response headers:","http"),id());
-	KviAsciiDictIterator<KviStr> it(*h);
+	KviPointerHashTableIterator<const char *,KviStr> it(*h);
 	while(KviStr * s = it.current())
 	{
 		QString szHeader = it.currentKey();

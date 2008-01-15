@@ -29,7 +29,7 @@
 #include <qwidget.h>
 #include "kvi_tal_listview.h"
 #include <qpushbutton.h>
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_string.h"
 #include "kvi_toolwindows_container.h"
@@ -82,7 +82,7 @@ class KVIRC_API KviMaskEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPtrList<KviMaskEntry> * maskList,
+	KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
@@ -102,7 +102,7 @@ protected slots:
 	void listViewDoubleClicked( KviTalListViewItem * );
 	void searchTextChanged ( const QString & );
 signals:
-	void removeMasks(KviMaskEditor *,KviPtrList<KviMaskEntry> *);
+	void removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *);
 };
 
 #endif //_KVI_MASKEDITOR_H_

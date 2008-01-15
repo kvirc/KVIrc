@@ -38,9 +38,9 @@
 
 #include "kvi_tal_popupmenu.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
-typedef KviPtrList<int> ColumnList;
+typedef KviPointerList<int> ColumnList;
 
 class KviCompletionBox: public KviTalListBox
 {
@@ -113,7 +113,7 @@ public:
 	KviScriptEditorWidgetColorOptions(QWidget * pParent);
 	~KviScriptEditorWidgetColorOptions();
 private:
-	KviPtrList<KviSelectorInterface> * m_pSelectorInterfaceList;
+	KviPointerList<KviSelectorInterface> * m_pSelectorInterfaceList;
 protected:
 	KviColorSelector * addColorSelector(QWidget * pParent,const QString & txt,QColor * pOption,bool bEnabled);
 

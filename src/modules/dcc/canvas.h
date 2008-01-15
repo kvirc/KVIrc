@@ -33,7 +33,7 @@
 #include "window.h"
 #include "thread.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 
 

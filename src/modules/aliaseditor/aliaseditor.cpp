@@ -371,10 +371,10 @@ KviAliasNamespaceListViewItem * KviAliasEditor::createFullNamespaceItem(const QS
 
 void KviAliasEditor::oneTimeSetup()
 {
-	KviDict<KviKvsScript> * a = KviKvsAliasManager::instance()->aliasDict();
+	KviPointerHashTable<QString,KviKvsScript> * a = KviKvsAliasManager::instance()->aliasDict();
 	if(!a)return;
 
-	KviDictIterator<KviKvsScript> it(*a);
+	KviPointerHashTableIterator<QString,KviKvsScript> it(*a);
 
 	KviAliasListViewItem * item;
 	while(it.current())
@@ -577,7 +577,7 @@ void KviAliasEditor::exportSelected()
 	exportAliases(true);
 }
 
-void KviAliasEditor::exportSelectionInSinglesFiles(KviPtrList<KviAliasListViewItem> *l)
+void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasListViewItem> *l)
 {
 	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
 	debug ("dir %s",m_szDir.latin1());
@@ -631,7 +631,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 {
 	saveLastEditedItem();
 	
-	KviPtrList<KviAliasListViewItem> l;
+	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 
 	QString out;
@@ -715,7 +715,7 @@ void KviAliasEditor::loadProperties(KviConfig *cfg)
 	if(it)activateItem(it);
 }
 
-void KviAliasEditor::appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
+void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
 {
 	if(!pStartFrom)return;
 	if(pStartFrom->isAlias())
@@ -741,7 +741,7 @@ void KviAliasEditor::appendAliasItems(KviPtrList<KviAliasListViewItem> * l,KviAl
 	appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
 }
 
-void KviAliasEditor::appendNamespaceItems(KviPtrList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
+void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
 {
 	if(!pStartFrom)return;
 	if(pStartFrom->isNamespace())
@@ -767,7 +767,7 @@ void KviAliasEditor::appendNamespaceItems(KviPtrList<KviAliasListViewItem> * l,K
 	appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
 }
 
-void KviAliasEditor::appendSelectedItems(KviPtrList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected)
+void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected)
 {
 	if(!pStartFrom)return;
 	if(pStartFrom->isSelected())
@@ -840,7 +840,7 @@ bool KviAliasEditor::removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll
 
 void KviAliasEditor::removeSelectedItems()
 {
-	KviPtrList<KviAliasEditorListViewItem> l;
+	KviPointerList<KviAliasEditorListViewItem> l;
 	l.setAutoDelete(false);
 	appendSelectedItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
 
@@ -1069,7 +1069,7 @@ void KviAliasEditor::newNamespace()
 
 bool KviAliasEditor::aliasExists(QString &szFullItemName)
 {
-	KviPtrList<KviAliasListViewItem> l;
+	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 
 	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
@@ -1085,7 +1085,7 @@ bool KviAliasEditor::aliasExists(QString &szFullItemName)
 
 bool KviAliasEditor::namespaceExists(QString &szFullItemName)
 {
-	KviPtrList<KviAliasListViewItem> l;
+	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 	
 	appendNamespaceItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
@@ -1152,7 +1152,7 @@ void KviAliasEditor::renameItem()
 	}
 
 	// take child items, if any
-	KviPtrList<KviTalListViewItem> lChildren;
+	KviPointerList<KviTalListViewItem> lChildren;
 	lChildren.setAutoDelete(false);
 	KviTalListViewItem * it = m_pLastEditedItem->firstChild();
 	while(it)

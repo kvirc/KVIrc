@@ -39,8 +39,8 @@
 #include <qclipboard.h>
 
 extern Index        * g_pDocIndex;
-extern KviPtrList<KviHelpWindow> * g_pHelpWindowList;
-extern KviPtrList<KviHelpWidget> * g_pHelpWidgetList;
+extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
+extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
 KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 : QWidget(par,"help_widget")

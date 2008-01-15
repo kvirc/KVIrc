@@ -27,9 +27,9 @@
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 
 class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {
@@ -40,9 +40,9 @@ public:
 protected:
 	KviStr               m_szName;
 	KviStr               m_szNetMask;
-	KviAsciiDict<KviStr> * m_pPropertyDict;
+	KviPointerHashTable<const char *,KviStr> * m_pPropertyDict;
 public:
-	KviAsciiDict<KviStr> * propertyDict(){ return m_pPropertyDict; };
+	KviPointerHashTable<const char *,KviStr> * propertyDict(){ return m_pPropertyDict; };
 	const KviStr & name(){ return m_szName; };
 	const KviStr & netMask(){ return m_szNetMask; };
 	KviStr * property(const char * name){ return m_pPropertyDict->find(name); };
@@ -51,7 +51,7 @@ public:
 	void removeProperty(const char * name){ m_pPropertyDict->remove(name); };
 };
 
-typedef KVILIB_API KviPtrList<KviRegisteredChannel> KviRegisteredChannelList;
+typedef KVILIB_API KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;
 
 class KVILIB_API KviRegisteredChannelDataBase
 {
@@ -59,9 +59,9 @@ public:
 	KviRegisteredChannelDataBase();
 	~KviRegisteredChannelDataBase();
 protected:
-	KviAsciiDict<KviRegisteredChannelList> * m_pChannelDict;
+	KviPointerHashTable<const char *,KviRegisteredChannelList> * m_pChannelDict;
 public:
-	KviAsciiDict<KviRegisteredChannelList> * channelDict(){ return m_pChannelDict; };
+	KviPointerHashTable<const char *,KviRegisteredChannelList> * channelDict(){ return m_pChannelDict; };
 	KviRegisteredChannel * find(const char * name,const char * net);
 	KviRegisteredChannel * findExact(const char * name,const char * netmask);
 	void remove(KviRegisteredChannel * c);

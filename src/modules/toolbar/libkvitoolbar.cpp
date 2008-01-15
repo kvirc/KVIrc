@@ -359,7 +359,7 @@ static bool toolbar_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 { 
 	KviKvsArray * a = new KviKvsArray();
 
-	KviDictIterator<KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
 
 	kvs_uint_t id = 0;
 
@@ -550,7 +550,7 @@ static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * a = new KviKvsArray();
 
-	KviDictIterator<KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
 
 	kvs_uint_t id = 0;
 

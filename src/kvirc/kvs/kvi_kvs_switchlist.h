@@ -28,8 +28,8 @@
 #include "kvi_qstring.h"
 #include "kvi_kvs_variant.h"
 
-#include "kvi_intdict.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerhashtable.h"
 
 class KVIRC_API KviKvsSwitchList
 {
@@ -37,8 +37,8 @@ public:
 	KviKvsSwitchList();
 	~KviKvsSwitchList();
 protected:
-	KviIntDict<KviKvsVariant> * m_pShortSwitchDict;
-	KviDict<KviKvsVariant>    * m_pLongSwitchDict;
+	KviPointerHashTable<int,KviKvsVariant> * m_pShortSwitchDict;
+	KviPointerHashTable<QString,KviKvsVariant>    * m_pLongSwitchDict;
 public:
 	void clear();
 	void addShort(unsigned short uShortKey,KviKvsVariant * pVariant);

@@ -28,7 +28,7 @@
 #include "kvi_action.h"
 
 #include <qobject.h>
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 class KviActionDrawer;
 class KviCustomToolBar;
@@ -45,8 +45,8 @@ public:
 	~KviActionManager();
 protected:
 	static KviActionManager * m_pInstance;
-	KviDict<KviAction> * m_pActions;
-	KviDict<KviActionCategory> * m_pCategories;
+	KviPointerHashTable<QString,KviAction> * m_pActions;
+	KviPointerHashTable<QString,KviActionCategory> * m_pCategories;
 	static bool m_bCustomizingToolBars;
 	
 	// action categories
@@ -74,15 +74,15 @@ public:
 	static KviActionCategory * categoryChannel(){ return m_pCategoryChannel; };
 	static KviActionCategory * categoryTools(){ return m_pCategoryTools; };
 	
-	KviDict<KviAction> * actions(){ return m_pActions; };
+	KviPointerHashTable<QString,KviAction> * actions(){ return m_pActions; };
 	KviActionCategory * category(const QString &szName);
-	KviDict<KviActionCategory> * categories(){ return m_pCategories; };
+	KviPointerHashTable<QString,KviActionCategory> * categories(){ return m_pCategories; };
 	
 	void killAllKvsUserActions();
 
 	static KviCustomToolBar * currentToolBar(){ return m_pCurrentToolBar; };
 	KviAction * getAction(const QString &szName);
-	void listActionsByCategory(const QString &szCatName,KviPtrList<KviAction> * pBuffer);
+	void listActionsByCategory(const QString &szCatName,KviPointerList<KviAction> * pBuffer);
 	QString nameForAutomaticAction(const QString &szTemplate);
 	bool coreActionExists(const QString &szName);
 

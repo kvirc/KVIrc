@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviWindow;
 class KviKvsScript;
@@ -62,7 +62,7 @@ public:
 	KviIrcConnectionAsyncWhoisData();
 	~KviIrcConnectionAsyncWhoisData();
 protected:
-	KviPtrList<KviAsyncWhoisInfo> * m_pWhoisInfoList; // awhois pending stuff
+	KviPointerList<KviAsyncWhoisInfo> * m_pWhoisInfoList; // awhois pending stuff
 public:
 	void add(KviAsyncWhoisInfo * i);
 	KviAsyncWhoisInfo * lookup(const QString &nick);

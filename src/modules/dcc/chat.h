@@ -32,7 +32,7 @@
 #include "descriptor.h"
 #include "thread.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	class KviSSL;
@@ -44,7 +44,7 @@ public:
 	KviDccChatThread(KviWindow * wnd,kvi_socket_t fd);
 	~KviDccChatThread();
 protected:
-	KviPtrList<KviDataBuffer>    * m_pOutBuffers;
+	KviPointerList<KviDataBuffer>    * m_pOutBuffers;
 protected:
 	virtual void run();
 	bool tryFlushOutBuffers();

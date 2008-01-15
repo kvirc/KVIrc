@@ -88,7 +88,7 @@
 #include "kvi_tal_popupmenu.h"
 #include <qsplitter.h>
 #include <qstringlist.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qmime.h>
 #ifdef COMPILE_USE_QT4
 	#include <q3mimefactory.h>
@@ -122,7 +122,7 @@ KVIRC_API KviTextIconWindow            * g_pTextIconWindow            = 0;
 KVIRC_API KviTalPopupMenu              * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
 //KVIRC_API QStringList                  * g_pBookmarkList            = 0;
-KVIRC_API KviAsciiDict<KviWindow>      * g_pGlobalWindowDict          = 0;
+KVIRC_API KviPointerHashTable<const char *,KviWindow>      * g_pGlobalWindowDict          = 0;
 KVIRC_API KviMediaManager              * g_pMediaManager              = 0;
 //KVIRC_API KviRegisteredUserDataBase    * g_pRegisteredUserDataBase    = 0;
 KVIRC_API KviSharedFilesManager        * g_pSharedFilesManager        = 0;
@@ -460,7 +460,7 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(91)
 
 	// Global window dictionary
-	g_pGlobalWindowDict = new KviAsciiDict<KviWindow>(41);
+	g_pGlobalWindowDict = new KviPointerHashTable<const char *,KviWindow>(41);
 	g_pGlobalWindowDict->setAutoDelete(false);
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
@@ -951,7 +951,7 @@ void KviApp::setClipboardText(const KviStr &str)
 
 void KviApp::setAvatarFromOptions()
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -968,7 +968,7 @@ void KviApp::setAvatarOnFileReceived(KviConsole * pConsole,const QString &szRemo
 {
 	if(!m_pPendingAvatarChanges)
 	{
-		m_pPendingAvatarChanges = new KviPtrList<KviPendingAvatarChange>;
+		m_pPendingAvatarChanges = new KviPointerList<KviPendingAvatarChange>;
 		m_pPendingAvatarChanges->setAutoDelete(true);
 	}
 
@@ -1541,7 +1541,7 @@ void KviApp::saveConfiguration()
 
 void KviApp::autoConnectToServers()
 {
-	KviPtrList<KviIrcServer> * l = g_pIrcServerDataBase->autoConnectOnStartupServers();
+	KviPointerList<KviIrcServer> * l = g_pIrcServerDataBase->autoConnectOnStartupServers();
 	if(l)
 	{
 		for(KviIrcServer * s = l->first();s;s = l->next())
@@ -1555,7 +1555,7 @@ void KviApp::autoConnectToServers()
 		g_pIrcServerDataBase->clearAutoConnectOnStartupServers();
 	}
 	
-	KviPtrList<KviIrcServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
+	KviPointerList<KviIrcServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
 	if(lr)
 	{
 		for(KviIrcServerDataBaseRecord * r = lr->first();r;r = lr->next())
@@ -1614,7 +1614,7 @@ void KviApp::destroyFrame()
 
 bool KviApp::connectionExists(KviIrcConnection *cnn)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1627,7 +1627,7 @@ bool KviApp::connectionExists(KviIrcConnection *cnn)
 
 bool KviApp::windowExists(KviWindow *wnd)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1644,7 +1644,7 @@ unsigned int KviApp::windowCount()
 
 KviConsole * KviApp::findConsole(QString &server,QString &nick)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1689,7 +1689,7 @@ KviConsole * KviApp::findConsole(KviStr &server,KviStr &nick)
 
 void KviApp::restartLagMeters()
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1704,7 +1704,7 @@ void KviApp::restartLagMeters()
 
 void KviApp::restartNotifyLists()
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1719,7 +1719,7 @@ void KviApp::restartNotifyLists()
 
 void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1733,7 +1733,7 @@ void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 
 KviConsole * KviApp::findConsole(unsigned int ircContextId)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1759,7 +1759,7 @@ KviConsole * KviApp::topmostConnectedConsole()
 
 	// try ANY connected console
 
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1780,7 +1780,7 @@ KviWindow * KviApp::findWindow(const char * windowId)
 
 KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContextId)
 {
-	KviAsciiDictIterator<KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1875,7 +1875,7 @@ void KviApp::buildRecentChannels()
 {
 	if(m_pRecentChannelsDict)
 		delete m_pRecentChannelsDict;
-	m_pRecentChannelsDict = new KviAsciiDict<QStringList>;
+	m_pRecentChannelsDict = new KviPointerHashTable<const char *,QStringList>;
 	m_pRecentChannelsDict->setAutoDelete(TRUE);
 	QString szChan,szNet;
 	for ( 
@@ -1910,7 +1910,7 @@ void KviApp::saveRecentChannels()
 	if(!m_pRecentChannelsDict) return;
 	QString szTmp;
 	KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).clear();
-	KviAsciiDictIterator<QStringList> it( *m_pRecentChannelsDict );
+	KviPointerHashTableIterator<const char *,QStringList> it( *m_pRecentChannelsDict );
 	for( ; it.current(); ++it )
 	{
 		for ( QStringList::Iterator it_str = it.current()->begin(); it_str != it.current()->end(); ++it_str ) {

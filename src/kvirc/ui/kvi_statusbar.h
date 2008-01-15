@@ -25,11 +25,11 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
 
 #include <qstring.h>
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include <qstatusbar.h>
 
 class KviFrame;
@@ -71,11 +71,11 @@ public:
 	~KviStatusBar();
 protected:
 	KviFrame                                 * m_pFrame;
-	KviPtrList<KviStatusBarMessage>          * m_pMessageQueue;
+	KviPointerList<KviStatusBarMessage>          * m_pMessageQueue;
 	QTimer                                   * m_pMessageTimer;
 	QLabel                                   * m_pMessageLabel;
-	KviPtrList<KviStatusBarApplet>           * m_pAppletList;
-	KviDict<KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
+	KviPointerList<KviStatusBarApplet>           * m_pAppletList;
+	KviPointerHashTable<QString,KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
 	KviTalPopupMenu                               * m_pContextPopup;
 	KviTalPopupMenu                               * m_pAppletsPopup;
 	KviStatusBarApplet                       * m_pClickedApplet;

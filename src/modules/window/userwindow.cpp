@@ -30,7 +30,7 @@
 #include "kvi_frame.h"
 #include "kvi_console.h"
 
-extern KviPtrList<KviUserWindow> * g_pUserWindowList;
+extern KviPointerList<KviUserWindow> * g_pUserWindowList;
 
 
 KviUserWindow::KviUserWindow(KviFrame * pFrm,const char * name,int iIcon,KviConsole * pConsole,int iCreationFlags)

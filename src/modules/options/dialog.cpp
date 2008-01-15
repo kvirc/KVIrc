@@ -31,7 +31,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
 #include <qlayout.h>
 #include "kvi_accel.h"
 #include <qlabel.h>
@@ -56,7 +56,7 @@
 #include <qevent.h>
 
 //extern KviModule * g_pOptionsModule;
-extern KviDict<KviOptionsDialog> * g_pOptionsDialogDict;
+extern KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict;
 
 extern KVIRC_API KviApp * g_pApp;
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
@@ -318,7 +318,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	}
 
 	bool bFoundSomethingHere = false;
-	KviPtrDict<bool> lOptionWidgetsToMark;
+	KviPointerHashTable<void *,bool> lOptionWidgetsToMark;
 	lOptionWidgetsToMark.setAutoDelete(true);
 	QTabWidget * pTabWidgetToMark = 0;
 	
@@ -425,7 +425,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 
 	if(pTabWidgetToMark)
 	{
-		KviPtrDictIterator<bool> it(lOptionWidgetsToMark);
+		KviPointerHashTableIterator<void *,bool> it(lOptionWidgetsToMark);
 		while(bool * pBool = it.current())
 		{
 			KviOptionsWidget * pOptionsWidget = (KviOptionsWidget *)it.currentKey();
@@ -488,14 +488,14 @@ void KviOptionsDialog::searchClicked()
 		search(szTxt);
 }
 
-void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPtrList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
+void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
 {
 	if(!l)return;
 
 	KviOptionsListViewItem * it;
 	KviOptionsWidgetInstanceEntry * e;
 
-	KviPtrList<KviOptionsWidgetInstanceEntry> tmp;
+	KviPointerList<KviOptionsWidgetInstanceEntry> tmp;
 	tmp.setAutoDelete(false);
 
 

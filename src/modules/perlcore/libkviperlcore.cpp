@@ -33,7 +33,7 @@
 #include "kvi_kvs_variant.h"
 #include "kvi_userinput.h"
 #include "kvi_qcstring.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #ifdef DEBUG
 	#undef DEBUG
@@ -295,7 +295,7 @@ bool KviPerlInterpreter::execute(
 	return true;
 }
 
-static KviDict<KviPerlInterpreter> * g_pInterpreters = 0;
+static KviPointerHashTable<QString,KviPerlInterpreter> * g_pInterpreters = 0;
 
 static KviPerlInterpreter * perlcore_get_interpreter(const QString &szContextName)
 {
@@ -322,7 +322,7 @@ static void perlcore_destroy_interpreter(const QString &szContextName)
 
 static void perlcore_destroy_all_interpreters()
 {
-	KviDictIterator<KviPerlInterpreter> it(*g_pInterpreters);
+	KviPointerHashTableIterator<QString,KviPerlInterpreter> it(*g_pInterpreters);
 	
 	while(it.current())
 	{
@@ -376,7 +376,7 @@ static bool perlcore_module_ctrl(KviModule * m,const char * cmd,void * param)
 static bool perlcore_module_init(KviModule * m)
 {
 #ifdef COMPILE_PERL_SUPPORT
-	g_pInterpreters = new KviDict<KviPerlInterpreter>(17,false);
+	g_pInterpreters = new KviPointerHashTable<QString,KviPerlInterpreter>(17,false);
 	g_pInterpreters->setAutoDelete(false);
 	return true;
 #else // !COMPILE_PERL_SUPPORT

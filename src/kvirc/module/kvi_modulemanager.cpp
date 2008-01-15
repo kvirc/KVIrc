@@ -43,7 +43,7 @@ KviModuleManager * g_pModuleManager = 0;
 
 KviModuleManager::KviModuleManager()
 {
-	m_pModuleDict = new KviAsciiDict<KviModule>(17,false);
+	m_pModuleDict = new KviPointerHashTable<const char *,KviModule>(17,false);
 	m_pModuleDict->setAutoDelete(false);
 
 	m_pCleanupTimer = new QTimer(this);
@@ -85,7 +85,7 @@ void KviModuleManager::loadModulesByCaps(const char * caps)
 	loadModulesByCaps(caps,szDir.ptr());
 }
 
-void KviModuleManager::completeModuleNames(const QString &path,const QString &word,KviPtrList<QString> * matches)
+void KviModuleManager::completeModuleNames(const QString &path,const QString &word,KviPointerList<QString> * matches)
 {
 	QDir d(path);
 #ifdef COMPILE_ON_WINDOWS
@@ -112,7 +112,7 @@ void KviModuleManager::completeModuleNames(const QString &path,const QString &wo
 	}
 }
 
-void KviModuleManager::completeModuleNames(const QString &word,KviPtrList<QString> * matches)
+void KviModuleManager::completeModuleNames(const QString &word,KviPointerList<QString> * matches)
 {
 	QString szDir;
 	// FIXME: Should check for duplicate names here!
@@ -310,7 +310,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 
 bool KviModuleManager::hasLockedModules()
 {
-	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
 	while(KviModule * m = it.current())
 	{
 		if(m->isLocked())return true;
@@ -322,7 +322,7 @@ bool KviModuleManager::hasLockedModules()
 
 void KviModuleManager::cleanupUnusedModules()
 {
-	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
 	while(it.current())
 	{
 		if(it.current()->secondsSinceLastAccess() > KVI_OPTION_UINT(KviOption_uintModuleCleanupTimeout))
@@ -352,6 +352,6 @@ void KviModuleManager::cleanupUnusedModules()
 
 void KviModuleManager::unloadAllModules()
 {
-	KviAsciiDictIterator<KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
 	while(it.current())unloadModule(it.current());
 }

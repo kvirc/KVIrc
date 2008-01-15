@@ -28,7 +28,7 @@
 
 #include "kvi_toolbar.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qframe.h>
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_listview.h"
@@ -147,7 +147,7 @@ public:
 	KviClassicTaskBar();
 	~KviClassicTaskBar();
 protected:
-	KviPtrList<KviTaskBarButton> * m_pButtonList;
+	KviPointerList<KviTaskBarButton> * m_pButtonList;
 	int                       m_iButtonHeight;
 	QWidget                 * m_pBase;
 protected:

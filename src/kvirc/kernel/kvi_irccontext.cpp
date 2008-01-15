@@ -134,7 +134,7 @@ void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
 {
 	if(!m_pMonitorList)
 	{
-		m_pMonitorList = new KviPtrList<KviIrcDataStreamMonitor>;
+		m_pMonitorList = new KviPointerList<KviIrcDataStreamMonitor>;
 		m_pMonitorList->setAutoDelete(false);
 	}
 	m_pMonitorList->append(m);
@@ -226,7 +226,7 @@ void KviIrcContext::registerContextWindow(KviWindow * pWnd)
 {
 	if(!m_pContextWindows)
 	{
-		m_pContextWindows = new KviPtrList<KviWindow>;
+		m_pContextWindows = new KviPointerList<KviWindow>;
 		m_pContextWindows->setAutoDelete(false);
 	}
 	m_pContextWindows->append(pWnd);
@@ -236,7 +236,7 @@ void KviIrcContext::registerDeadChannel(KviChannel * c)
 {
 	if(!m_pDeadChannels)
 	{
-		m_pDeadChannels = new KviPtrList<KviChannel>;
+		m_pDeadChannels = new KviPointerList<KviChannel>;
 		m_pDeadChannels->setAutoDelete(false);
 	}
 	m_pDeadChannels->append(c);
@@ -246,7 +246,7 @@ void KviIrcContext::registerDeadQuery(KviQuery * q)
 {
 	if(!m_pDeadQueries)
 	{
-		m_pDeadQueries = new KviPtrList<KviQuery>;
+		m_pDeadQueries = new KviPointerList<KviQuery>;
 		m_pDeadQueries->setAutoDelete(false);
 	}
 	m_pDeadQueries->append(q);

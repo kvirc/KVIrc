@@ -33,7 +33,7 @@
 
 #include "kvi_sockettype.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qlabel.h>
 #include <qprogressbar.h>
 #include "kvi_tal_popupmenu.h"

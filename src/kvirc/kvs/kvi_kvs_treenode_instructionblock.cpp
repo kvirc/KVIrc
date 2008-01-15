@@ -31,7 +31,7 @@
 KviKvsTreeNodeInstructionBlock::KviKvsTreeNodeInstructionBlock(const QChar * pLocation)
 : KviKvsTreeNodeInstruction(pLocation)
 {
-	m_pInstructionList = new KviPtrList<KviKvsTreeNodeInstruction>;
+	m_pInstructionList = new KviPointerList<KviKvsTreeNodeInstruction>;
 	m_pInstructionList->setAutoDelete(true);
 }
 
@@ -78,7 +78,7 @@ void KviKvsTreeNodeInstructionBlock::addInstruction(KviKvsTreeNodeInstruction * 
 bool KviKvsTreeNodeInstructionBlock::execute(KviKvsRunTimeContext * c)
 {
 	// to accomodate recursion we need to use an iterator here
-	KviPtrListIterator<KviKvsTreeNodeInstruction> it(*m_pInstructionList);
+	KviPointerListIterator<KviKvsTreeNodeInstruction> it(*m_pInstructionList);
 	while(KviKvsTreeNodeInstruction * i = it.current())
 	{
 		if(!i->execute(c))return false;

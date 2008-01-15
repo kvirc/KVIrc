@@ -33,7 +33,7 @@ KviKvsPopupManager * KviKvsPopupManager::m_pInstance = 0;
 KviKvsPopupManager::KviKvsPopupManager()
 {
 	m_pInstance = this;
-	m_pPopupDict = new KviDict<KviKvsPopupMenu>(17,false);
+	m_pPopupDict = new KviPointerHashTable<QString,KviKvsPopupMenu>(17,false);
 	m_pPopupDict->setAutoDelete(true);
 }
 
@@ -80,7 +80,7 @@ void KviKvsPopupManager::load(const QString &szFileName)
 
 	KviConfigIterator it(*(cfg.dict()));
 
-	KviPtrList<QString> l;
+	KviPointerList<QString> l;
 	l.setAutoDelete(true);
 
 	while(it.current())
@@ -104,7 +104,7 @@ void KviKvsPopupManager::save(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
 
-	KviDictIterator<KviKvsPopupMenu> it(*m_pPopupDict);
+	KviPointerHashTableIterator<QString,KviKvsPopupMenu> it(*m_pPopupDict);
 	while(it.current())
 	{
 		cfg.setGroup(it.current()->popupName());

@@ -25,7 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_hbox.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_locale.h"
 
 #ifdef COMPILE_USE_QT4
@@ -69,7 +69,7 @@ public:
 class KviTalWizardPrivate
 {
 public:
-	KviPtrList<KviTalWizardPageData> * pPageList;
+	KviPointerList<KviTalWizardPageData> * pPageList;
 	int                                iEnabledPageCount;
 	KviTalWizardPageData             * pCurrentPage;
 	QGridLayout                      * pLayout;
@@ -170,7 +170,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 : QDialog(pParent)
 {
 	m_p = new KviTalWizardPrivate;
-	m_p->pPageList = new KviPtrList<KviTalWizardPageData>;
+	m_p->pPageList = new KviPointerList<KviTalWizardPageData>;
 	m_p->pPageList->setAutoDelete(true);
 	m_p->pCurrentPage = NULL;
 	m_p->iEnabledPageCount = 0;

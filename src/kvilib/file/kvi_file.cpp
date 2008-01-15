@@ -194,7 +194,7 @@ bool KviFile::load(kvi_u8_t &t)
 }
 
 
-bool KviFile::save(KviPtrList<KviStr> * pData)
+bool KviFile::save(KviPointerList<KviStr> * pData)
 {
 	if(!save((int)(pData->count())))return false;
 	for(KviStr * s = pData->first();s;s = pData->next())
@@ -204,7 +204,7 @@ bool KviFile::save(KviPtrList<KviStr> * pData)
 	return true;
 }
 
-bool KviFile::load(KviPtrList<KviStr> * pData)
+bool KviFile::load(KviPointerList<KviStr> * pData)
 {
 	pData->clear();
 	int iCount;

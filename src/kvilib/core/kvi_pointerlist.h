@@ -1,8 +1,8 @@
-#ifndef _KVI_LIST_H_
-#define _KVI_LIST_H_
+#ifndef _KVI_POINTERLIST_H_
+#define _KVI_POINTERLIST_H_
 //=================================================================================================
 //
-//   File : kvi_list.h
+//   File : kvi_pointerlist.h
 //   Creation date : Tue Jul 6 1999 14:52:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -43,8 +43,8 @@
 
 #include "kvi_settings.h"
 
-template<typename T> class KviPtrList;
-template<typename T> class KviPtrListIterator;
+template<typename T> class KviPointerList;
+template<typename T> class KviPointerListIterator;
 
 #ifndef NULL
 	#define NULL 0
@@ -53,17 +53,17 @@ template<typename T> class KviPtrListIterator;
 ///
 /// \internal
 ///
-class KviPtrListNode
+class KviPointerListNode
 {
 public:
-	KviPtrListNode * m_pPrev;
+	KviPointerListNode * m_pPrev;
 	void               * m_pData;
-	KviPtrListNode * m_pNext;
+	KviPointerListNode * m_pNext;
 };
 
 ///
-/// \class KviPtrListIterator
-/// \brief A fast KviPtrList iterator.
+/// \class KviPointerListIterator
+/// \brief A fast KviPointerList iterator.
 ///
 /// This class allows traversing the list sequentially.
 /// Multilpe iterators can traverse the list at the same time.
@@ -71,7 +71,7 @@ public:
 /// Iteration example 1:
 ///
 /// \verbatim
-/// KviPtrListIterator<T> it(list);
+/// KviPointerListIterator<T> it(list);
 /// for(bool b = it.moveFirst();b;b = it.moveNext())
 /// {
 ///     T * pData = it.data();
@@ -82,7 +82,7 @@ public:
 /// Iteration example 2:
 ///
 /// \verbatim
-/// KviPtrListIterator<T> it(list);
+/// KviPointerListIterator<T> it(list);
 /// if(it.moveFirst())
 /// {
 ///     do {
@@ -95,7 +95,7 @@ public:
 /// Iteration example 3:
 ///
 /// \verbatim
-/// KviPtrListIterator<T> it(list.iteratorAt(10));
+/// KviPointerListIterator<T> it(list.iteratorAt(10));
 /// if(it.isValid())
 /// {
 ///    do {
@@ -111,10 +111,10 @@ public:
 /// The following code will NOT work (and crash):
 ///
 /// \verbatim
-/// KviPtrList<T> l;
+/// KviPointerList<T> l;
 /// l.append(new KviStr("x"));
 /// l.append(new KviStr("y"));
-/// KviPtrListIterator<T> it(l);
+/// KviPointerListIterator<T> it(l);
 /// it.moveFirst();
 /// l.removeFirst();
 /// KviStr * tmp = it.data(); <-- this will crash
@@ -131,17 +131,17 @@ public:
 ///
 /// \warning This class is not thread safe by itself.
 ///
-template<typename T> class KviPtrListIterator
+template<typename T> class KviPointerListIterator
 {
 protected:
-	KviPtrList<T>                 * m_pList;
-	KviPtrListNode                * m_pNode;
+	KviPointerList<T>                 * m_pList;
+	KviPointerListNode                * m_pNode;
 public:
 	///
 	/// Creates an iterator copy.
 	/// The new iterator points exactly to the item pointed by src.
 	///
-	KviPtrListIterator(const KviPtrListIterator<T> &src)
+	KviPointerListIterator(const KviPointerListIterator<T> &src)
 	{
 		m_pList = src.m_pList;
 		m_pNode = src.m_pNode;
@@ -151,9 +151,9 @@ public:
 	/// Creates an iterator for the list l.
 	/// The iterator points to the first list item, if any.
 	///
-	KviPtrListIterator(KviPtrList<T> &l)
+	KviPointerListIterator(KviPointerList<T> &l)
 	{
-		m_pList = (KviPtrList<T> *)&l;
+		m_pList = (KviPointerList<T> *)&l;
 		m_pNode = m_pList->m_pHead;
 	}
 
@@ -161,9 +161,9 @@ public:
 	/// Creates an iterator for the list l.
 	/// The iterator points to the specified list node.
 	///
-	KviPtrListIterator(KviPtrList<T> &l,KviPtrListNode * pNode)
+	KviPointerListIterator(KviPointerList<T> &l,KviPointerListNode * pNode)
 	{
-		m_pList = (KviPtrList<T> *)&l;
+		m_pList = (KviPointerList<T> *)&l;
 		m_pNode = pNode;
 	}
 
@@ -171,7 +171,7 @@ public:
 	/// Creates an iterator copy.
 	/// The new iterator points exactly to the item pointed by src.
 	///
-	void operator = (const KviPtrListIterator<T> &src)
+	void operator = (const KviPointerListIterator<T> &src)
 	{
 		m_pList = src.m_pList;
 		m_pNode = src.m_pNode;
@@ -277,7 +277,7 @@ public:
 };
 
 ///
-/// \class KviPtrList
+/// \class KviPointerList
 /// \brief A template double linked list of pointers.
 ///
 /// The main advantage of this type of list is speed.
@@ -310,7 +310,7 @@ public:
 /// Typcal usage:
 ///
 /// \verbatim
-///   KviPtrList<MyClass> list();
+///   KviPointerList<MyClass> list();
 ///   list.append(new MyClass());
 ///   list.append(new MyClass());
 ///   ...
@@ -322,15 +322,15 @@ public:
 /// protect concurrent access from multiple threads by
 /// using an external synchronization tool (such as KviMutex).
 ///
-template<typename T> class KviPtrList
+template<typename T> class KviPointerList
 {
-	friend class KviPtrListIterator<T>;
+	friend class KviPointerListIterator<T>;
 protected:
 	bool   m_bAutoDelete;   //< do we automatically delete items when they are removed ?
 
-	KviPtrListNode * m_pHead;         //< our list head pointer (NULL if there are no items in the list)
-	KviPtrListNode * m_pTail;         //< our list tail
-	KviPtrListNode * m_pAux;          //< our iteration pointer
+	KviPointerListNode * m_pHead;         //< our list head pointer (NULL if there are no items in the list)
+	KviPointerListNode * m_pTail;         //< our list tail
+	KviPointerListNode * m_pAux;          //< our iteration pointer
 
 	unsigned int m_uCount;  //< the count of items in the list
 protected:
@@ -341,10 +341,10 @@ protected:
 	/// if ref is not found in the list
 	/// also sets the current iteration pointer to the newly inserted item
 	///
-	void insertBeforeSafe(KviPtrListNode * ref,const T * d)
+	void insertBeforeSafe(KviPointerListNode * ref,const T * d)
 	{
 		m_pAux = ref;
-		KviPtrListNode * n = new KviPtrListNode;
+		KviPointerListNode * n = new KviPointerListNode;
 		n->m_pPrev = m_pAux->m_pPrev;
 		n->m_pNext = m_pAux;
 		if(m_pAux->m_pPrev)
@@ -364,9 +364,9 @@ protected:
 	/// Grabs the first element from the list src
 	/// and puts it as the first element of this list.
 	///
-	void grabFirstAndPrepend(KviPtrList<T> * src)
+	void grabFirstAndPrepend(KviPointerList<T> * src)
 	{
-		KviPtrListNode * pNewHead = src->m_pHead;
+		KviPointerListNode * pNewHead = src->m_pHead;
 		if(!pNewHead)
 			return;
 
@@ -421,17 +421,17 @@ public:
 	/// by respecting the sort order.
 	/// The src list elements are removed.
 	///
-	void merge(KviPtrList<T> * src)
+	void merge(KviPointerList<T> * src)
 	{
 		m_pAux = m_pHead;
-		KviPtrListNode * n = src->m_pHead;
+		KviPointerListNode * n = src->m_pHead;
 		m_uCount += src->m_uCount;
 		while(m_pAux && n)
 		{
 			if(kvi_compare((const T *)(m_pAux->m_pData),(const T *)(n->m_pData)) > 0)
 			{
 				// our element is greater, n->m_pData goes first
-				KviPtrListNode * pNext = n->m_pNext;
+				KviPointerListNode * pNext = n->m_pNext;
 				n->m_pPrev = m_pAux->m_pPrev; // his prev becomes 
 				n->m_pNext = m_pAux;
 				if(m_pAux->m_pPrev)
@@ -465,9 +465,9 @@ public:
 		src->m_uCount = 0;
 	}
 	
-	void swap(KviPtrList<T> * src)
+	void swap(KviPointerList<T> * src)
 	{
-		KviPtrListNode * n = m_pHead;
+		KviPointerListNode * n = m_pHead;
 		m_pHead = src->m_pHead;
 		src->m_pHead = n;
 		n = m_pTail;
@@ -490,10 +490,10 @@ public:
 	{
 		if(m_uCount < 2)return;
 
-		KviPtrList<T> carry;
-		KviPtrList<T> tmp[64];
-		KviPtrList * fill = &tmp[0];
-		KviPtrList * counter;
+		KviPointerList<T> carry;
+		KviPointerList<T> tmp[64];
+		KviPointerList * fill = &tmp[0];
+		KviPointerList * counter;
 
 		do {
 			carry.grabFirstAndPrepend(this);
@@ -523,7 +523,7 @@ public:
 	///
 	void inSort(T * t)
 	{
-		KviPtrListNode * x = m_pHead;
+		KviPointerListNode * x = m_pHead;
 		while(x && (kvi_compare(((T *)x->m_pData),t) > 0))x = x->m_pNext;
 		if(!x)append(t);
 		else insertBeforeSafe(x,t);
@@ -582,9 +582,9 @@ public:
 	///
 	/// Returns an iterator pointing to the first item of the list.
 	///
-	KviPtrListIterator<T> iteratorAtFirst()
+	KviPointerListIterator<T> iteratorAtFirst()
 	{
-		return KviPtrListIterator<T>(*this,m_pHead);
+		return KviPointerListIterator<T>(*this,m_pHead);
 	}
 
 	///
@@ -601,9 +601,9 @@ public:
 	///
 	/// Returns an iterator pointing to the first item of the list.
 	///
-	KviPtrListIterator<T> iteratorAtLast()
+	KviPointerListIterator<T> iteratorAtLast()
 	{
-		return KviPtrListIterator<T>(*this,m_pTail);
+		return KviPointerListIterator<T>(*this,m_pTail);
 	}
 
 	///
@@ -634,9 +634,9 @@ public:
 	/// A call to this function MUST be preceded by a call to
 	/// first(),last(),at() or findRef()
 	///
-	KviPtrListIterator<T> iteratorAtCurrent()
+	KviPointerListIterator<T> iteratorAtCurrent()
 	{
-		return KviPtrListIterator<T>(*this,m_pAux);
+		return KviPointerListIterator<T>(*this,m_pAux);
 	}
 
 	///
@@ -685,18 +685,18 @@ public:
 	///
 	/// Returns an iterator pointing to the item at the specified index.
 	///
-	KviPtrListIterator<T> iteratorAt(int idx)
+	KviPointerListIterator<T> iteratorAt(int idx)
 	{
-		KviPtrListNode * n = m_pHead;
+		KviPointerListNode * n = m_pHead;
 		int cnt = 0;
 		while(n)
 		{
 			if(idx == cnt)
-				return KviPtrListIterator<T>(*this,n);
+				return KviPointerListIterator<T>(*this,n);
 			n = n->m_pNext;
 			cnt++;
 		}
-		return KviPtrListIterator<T>(*this,NULL);
+		return KviPointerListIterator<T>(*this,NULL);
 	}
 
 	///
@@ -718,16 +718,16 @@ public:
 	///
 	/// Returns an iterator pointing to the item with pointer d.
 	///
-	KviPtrListIterator<T> iteratorAtRef(const T * d)
+	KviPointerListIterator<T> iteratorAtRef(const T * d)
 	{
-		KviPtrListNode * n = m_pHead;
+		KviPointerListNode * n = m_pHead;
 		while(n)
 		{
 			if(n->m_pData == d)
-				return KviPtrListIterator<T>(*this,n);
+				return KviPointerListIterator<T>(*this,n);
 			n = n->m_pNext;
 		}
-		return KviPtrListIterator<T>(*this,NULL);
+		return KviPointerListIterator<T>(*this,NULL);
 	}
 
 	///
@@ -737,13 +737,13 @@ public:
 	{
 		if(!m_pHead)
 		{
-			m_pHead = new KviPtrListNode;
+			m_pHead = new KviPointerListNode;
 			m_pHead->m_pPrev = NULL;
 			m_pHead->m_pNext = NULL;
 			m_pHead->m_pData = (void *)d;
 			m_pTail = m_pHead;
 		} else {
-			m_pTail->m_pNext = new KviPtrListNode;
+			m_pTail->m_pNext = new KviPointerListNode;
 			m_pTail->m_pNext->m_pPrev = m_pTail;
 			m_pTail->m_pNext->m_pNext = NULL;
 			m_pTail->m_pNext->m_pData = (void *)d;
@@ -755,7 +755,7 @@ public:
 	///
 	/// Appends all the items from the list l to this list
 	///
-	void append(KviPtrList<T> * l)
+	void append(KviPointerList<T> * l)
 	{
 		for(T * t = l->first();t;t = l->next())append(t);
 	}
@@ -764,7 +764,7 @@ public:
 	/// Prepends (inserts in head position) all the items from
 	/// the list l to this list
 	///
-	void prepend(KviPtrList<T> * l)
+	void prepend(KviPointerList<T> * l)
 	{
 		for(T * t = l->last();t;t = l->prev())prepend(t);
 	}
@@ -776,13 +776,13 @@ public:
 	{
 		if(!m_pHead)
 		{
-			m_pHead = new KviPtrListNode;
+			m_pHead = new KviPointerListNode;
 			m_pHead->m_pPrev = NULL;
 			m_pHead->m_pNext = NULL;
 			m_pHead->m_pData = (void *)d;
 			m_pTail = m_pHead;
 		} else {
-			m_pHead->m_pPrev = new KviPtrListNode;
+			m_pHead->m_pPrev = new KviPointerListNode;
 			m_pHead->m_pPrev->m_pNext = m_pHead;
 			m_pHead->m_pPrev->m_pPrev = NULL;
 			m_pHead->m_pPrev->m_pData = (void *)d;
@@ -949,7 +949,7 @@ public:
 			append(d);
 			return;
 		}
-		KviPtrListNode * n = new KviPtrListNode;
+		KviPointerListNode * n = new KviPointerListNode;
 		n->m_pPrev = m_pAux;
 		n->m_pNext = m_pAux->m_pNext;
 		if(m_pAux->m_pNext)
@@ -973,7 +973,7 @@ public:
 			prepend(d);
 			return;
 		}
-		KviPtrListNode * n = new KviPtrListNode;
+		KviPointerListNode * n = new KviPointerListNode;
 		n->m_pPrev = m_pAux->m_pPrev;
 		n->m_pNext = m_pAux;
 		if(m_pAux->m_pPrev)
@@ -991,12 +991,12 @@ public:
 	void invert()
 	{
 		if(!m_pHead)return;
-		KviPtrListNode * oldHead = m_pHead;
-		KviPtrListNode * oldTail = m_pTail;
-		KviPtrListNode * n = m_pHead;
+		KviPointerListNode * oldHead = m_pHead;
+		KviPointerListNode * oldTail = m_pTail;
+		KviPointerListNode * n = m_pHead;
 		while(n)
 		{
-			KviPtrListNode * next = n->m_pNext;
+			KviPointerListNode * next = n->m_pNext;
 			n->m_pNext = n->m_pPrev;
 			n->m_pPrev = next;
 			n = next;
@@ -1008,7 +1008,7 @@ public:
 	///
 	/// clears the list and inserts all the items from the list l
 	///
-	void copyFrom(KviPtrList<T> * l)
+	void copyFrom(KviPointerList<T> * l)
 	{
 		clear();
 		for(T * t = l->first();t;t = l->next())append(t);
@@ -1017,7 +1017,7 @@ public:
 	///
 	/// equivalent to copyFrom(l)
 	///
-	KviPtrList<T> & operator = (KviPtrList<T> &l)
+	KviPointerList<T> & operator = (KviPointerList<T> &l)
 	{
 		copyFrom(&l);
 		return *this;
@@ -1026,7 +1026,7 @@ public:
 	///
 	/// creates a template list
 	///
-	KviPtrList<T>(bool bAutoDelete = true)
+	KviPointerList<T>(bool bAutoDelete = true)
 	{
 		m_bAutoDelete = bAutoDelete;
 		m_pHead = NULL;
@@ -1039,18 +1039,18 @@ public:
 	/// destroys the list
 	/// if autoDelete() is set to true, all the items are deleted
 	///
-	virtual ~KviPtrList<T>()
+	virtual ~KviPointerList<T>()
 	{
 		clear();
 	};
 };
 
-#define KviPtrListBase KviPtrList
+#define KviPointerListBase KviPointerList
 
 // BROKEN MSVC LINKER
 #ifdef COMPILE_ON_WINDOWS
 	#include "kvi_string.h"
-	template class KVILIB_API KviPtrList<KviStr>;
+	template class KVILIB_API KviPointerList<KviStr>;
 #endif
 
-#endif //_KVI_LIST_H_
+#endif //_KVI_POINTERLIST_H_

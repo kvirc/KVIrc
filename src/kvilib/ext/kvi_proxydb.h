@@ -27,7 +27,7 @@
 
 #include "kvi_string.h"
 #include "kvi_inttypes.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qstringlist.h>
 
 class KVILIB_API KviProxy
@@ -70,11 +70,11 @@ public:
 	KviProxyDataBase();
 	~KviProxyDataBase();
 private:
-	KviPtrList<KviProxy> * m_pProxyList;
+	KviPointerList<KviProxy> * m_pProxyList;
 	KviProxy        * m_pCurrentProxy;
 public:
 	void clear();
-	KviPtrList<KviProxy> * proxyList(){ return m_pProxyList; };
+	KviPointerList<KviProxy> * proxyList(){ return m_pProxyList; };
 	KviProxy * currentProxy(){ return m_pCurrentProxy; };
 	void updateProxyIp(const char * proxy,const char * ip);
 	void setCurrentProxy(KviProxy * prx){ m_pCurrentProxy = prx; };

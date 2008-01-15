@@ -43,7 +43,7 @@ KviKvsAsyncOperation::~KviKvsAsyncOperation()
 
 KviKvsAsyncOperationManager::KviKvsAsyncOperationManager()
 {
-	m_pOperationList = new KviPtrList<KviKvsAsyncOperation>;
+	m_pOperationList = new KviPointerList<KviKvsAsyncOperation>;
 	m_pOperationList->setAutoDelete(false);
 }
 

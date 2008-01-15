@@ -26,7 +26,7 @@
 #include "kvi_thread.h"
 #include "kvi_sockettype.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include <qobject.h>
 

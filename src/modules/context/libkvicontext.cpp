@@ -342,7 +342,7 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArray * pArray = new KviKvsArray();
 
-	KviPtrList<KviWindow> * pWinList = g_pFrame->windowList();
+	KviPointerList<KviWindow> * pWinList = g_pFrame->windowList();
 	int idx = 0;
 	for(KviWindow * pWnd = pWinList->first();pWnd;pWnd = pWinList->next())
 	{

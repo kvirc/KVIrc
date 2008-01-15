@@ -294,7 +294,7 @@ KviKvsTreeNodeSpecialCommandSwitch::KviKvsTreeNodeSpecialCommandSwitch(const QCh
 {
 	m_pExpression = e;
 	m_pExpression->setParent(this);
-	m_pLabels = new KviPtrList<KviKvsTreeNodeSpecialCommandSwitchLabel>;
+	m_pLabels = new KviPointerList<KviKvsTreeNodeSpecialCommandSwitchLabel>;
 	m_pLabels->setAutoDelete(true);
 }
 

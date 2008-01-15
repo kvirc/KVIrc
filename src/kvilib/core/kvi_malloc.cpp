@@ -44,7 +44,7 @@
 	// Used to find memory leaks etc...
 	//
 
-	#include "kvi_list.h"
+	#include "kvi_pointerlist.h"
 
 	typedef struct _KviMallocEntry {
 		struct _KviMallocEntry * prev;

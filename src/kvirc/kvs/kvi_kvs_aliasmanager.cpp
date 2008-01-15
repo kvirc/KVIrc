@@ -32,7 +32,7 @@ KviKvsAliasManager * KviKvsAliasManager::m_pAliasManager = 0;
 KviKvsAliasManager::KviKvsAliasManager()
 {
 	m_pAliasManager = this;
-	m_pAliasDict = new KviDict<KviKvsScript>(51,false);
+	m_pAliasDict = new KviPointerHashTable<QString,KviKvsScript>(51,false);
 	m_pAliasDict->setAutoDelete(true);
 }
 
@@ -61,9 +61,9 @@ void KviKvsAliasManager::done()
 	delete KviKvsAliasManager::instance();
 }
 
-void KviKvsAliasManager::completeCommand(const QString &word,KviPtrList<QString> * matches)
+void KviKvsAliasManager::completeCommand(const QString &word,KviPointerList<QString> * matches)
 {
-	KviDictIterator<KviKvsScript> it(*m_pAliasDict);
+	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
 	while(it.current())
 	{
 		if(KviQString::equalCIN(word,it.current()->name(),word.length()))
@@ -79,7 +79,7 @@ void KviKvsAliasManager::save(const QString & filename)
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();
 
-	KviDictIterator<KviKvsScript> it(*m_pAliasDict);
+	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
 
 	while(it.current())
 	{
@@ -96,7 +96,7 @@ void KviKvsAliasManager::load(const QString & filename)
 
 	KviConfigIterator it(*(cfg.dict()));
 
-	KviPtrList<QString> l;
+	KviPointerList<QString> l;
 	l.setAutoDelete(true);
 
 	while(it.current())

@@ -92,12 +92,12 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 	QString szMsg;
 	KviQString::vsprintf(szMsg,szMsgFmt,va);
 
-	KviPtrList<QString> * pCodeListing = 0;
+	KviPointerList<QString> * pCodeListing = 0;
 	QString szLocation;
 
 	if(pLocation)
 	{
-		pCodeListing = new KviPtrList<QString>;
+		pCodeListing = new KviPointerList<QString>;
 		pCodeListing->setAutoDelete(true);
 
 		int iLine,iCol;
@@ -2932,9 +2932,9 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommandParameterList()
 }
 
 
-KviPtrList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
+KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 {
-	KviPtrList<QString> * l = new KviPtrList<QString>;
+	KviPointerList<QString> * l = new KviPointerList<QString>;
 	l->setAutoDelete(true);
 
 	KVSP_skipChar;
@@ -3261,7 +3261,7 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 /*
 KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>();
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -3370,7 +3370,7 @@ end_of_the_array_index:
 
 KviKvsTreeNodeData * KviKvsParser::parseHashKey()
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>();
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -3478,7 +3478,7 @@ PARENTHESIS_PARAMETER_PARSING_FUNCTION_END()
 
 KviKvsTreeNodeData * KviKvsParser::parseCommaSeparatedParameter()
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>;
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>;
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -3565,7 +3565,7 @@ end_of_function_parameter:
 
 KviKvsTreeNodeData * KviKvsParser::parseSingleParameterInParenthesis()
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>;
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>;
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -3656,7 +3656,7 @@ KviKvsTreeNodeData * KviKvsParser::parseStringParameter()
 {
 	KVSP_ASSERT(KVSP_curCharUnicode == '"');
 
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>();
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
@@ -3737,7 +3737,7 @@ end_of_the_string:
 
 KviKvsTreeNodeData * KviKvsParser::parseCommandParameter(bool bPreferNumeric)
 {
-	KviPtrList<KviKvsTreeNodeData> * l = new KviPtrList<KviKvsTreeNodeData>;
+	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>;
 	l->setAutoDelete(true);
 
 	bool bGotLiteral = false;

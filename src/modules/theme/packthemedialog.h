@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_theme.h"
 
 #include <qdialog.h>
@@ -42,7 +42,7 @@ class KviPackThemeDialog : public KviTalWizard
 {
 	Q_OBJECT
 public:
-	KviPackThemeDialog(QWidget * pParent,KviPtrList<KviThemeInfo> * pThemeInfoList);
+	KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList);
 	virtual ~KviPackThemeDialog();
 protected:
 	QString m_szImagePath;
@@ -50,7 +50,7 @@ protected:
 	QString m_szPackagePath;
 	KviFileSelector * m_pPathSelector;
 	QLabel * m_pImageLabel;
-	KviPtrList<KviThemeInfo> * m_pThemeInfoList;
+	KviPointerList<KviThemeInfo> * m_pThemeInfoList;
 	QLineEdit * m_pPackageNameEdit;
 	KviTalTextEdit * m_pPackageDescriptionEdit;
 	QLineEdit * m_pPackageVersionEdit;

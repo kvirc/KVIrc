@@ -243,7 +243,7 @@ KviKvsScriptAddonManager::KviKvsScriptAddonManager()
 {
 	m_pInstance = this;
 	m_bLoaded = false;
-	m_pAddonDict = new KviDict<KviKvsScriptAddon>(17,false);
+	m_pAddonDict = new KviPointerHashTable<QString,KviKvsScriptAddon>(17,false);
 	m_pAddonDict->setAutoDelete(true);
 }
 
@@ -294,7 +294,7 @@ void KviKvsScriptAddonManager::save(const QString &szFileName)
 
 	cfg.clear();
 
-	KviDictIterator<KviKvsScriptAddon> it(*m_pAddonDict);
+	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*m_pAddonDict);
 	
 	while(KviKvsScriptAddon * a = it.current())
 	{
@@ -315,10 +315,10 @@ void KviKvsScriptAddonManager::delayedLoad()
 
 	KviConfig cfg(m_szFileName,KviConfig::Read);
 
-	KviDict<KviConfigGroup> * d = cfg.dict();
+	KviPointerHashTable<QString,KviConfigGroup> * d = cfg.dict();
 	if(!d)return;
 	
-	KviDictIterator<KviConfigGroup> it(*d);
+	KviPointerHashTableIterator<QString,KviConfigGroup> it(*d);
 	while(it.current())
 	{
 		QString szName = it.currentKey();
@@ -331,7 +331,7 @@ void KviKvsScriptAddonManager::delayedLoad()
 	}
 }
 
-KviDict<KviKvsScriptAddon> * KviKvsScriptAddonManager::addonDict()
+KviPointerHashTable<QString,KviKvsScriptAddon> * KviKvsScriptAddonManager::addonDict()
 {
 	if(!m_bLoaded)delayedLoad();
 	return m_pAddonDict;

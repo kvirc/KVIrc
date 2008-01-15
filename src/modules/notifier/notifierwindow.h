@@ -39,7 +39,7 @@
 #include <qwidget.h>
 
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_time.h"
 
 #include "notifiersettings.h"

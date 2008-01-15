@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 #include "kvi_kvs_eventhandler.h"
 
@@ -35,7 +35,7 @@ class KVIRC_API KviKvsEvent
 protected:
 	QString                          m_szName;
 	QString                          m_szParameterDescription;
-	KviPtrList<KviKvsEventHandler> * m_pHandlers;
+	KviPointerList<KviKvsEventHandler> * m_pHandlers;
 public:
 	// the event name and the parameter description are NOT translated
 	KviKvsEvent(const char * szEventName,const char * szParameterDescription)
@@ -44,7 +44,7 @@ public:
 	void clear();
 	void clearScriptHandlers();
 	bool hasHandlers(){ return m_pHandlers != 0; };
-	KviPtrList<KviKvsEventHandler> * handlers(){ return m_pHandlers; };
+	KviPointerList<KviKvsEventHandler> * handlers(){ return m_pHandlers; };
 	void addHandler(KviKvsEventHandler * h);
 	void removeHandler(KviKvsEventHandler * h);
 	const QString & name(){ return m_szName; };

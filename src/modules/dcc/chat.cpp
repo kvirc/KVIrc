@@ -539,7 +539,7 @@ void KviDccChat::connected()
 KviDccChatThread::KviDccChatThread(KviWindow *wnd,kvi_socket_t fd)
 : KviDccThread(wnd,fd)
 {
-	m_pOutBuffers = new KviPtrList<KviDataBuffer>;
+	m_pOutBuffers = new KviPointerList<KviDataBuffer>;
 	m_pOutBuffers->setAutoDelete(true);
 }
 

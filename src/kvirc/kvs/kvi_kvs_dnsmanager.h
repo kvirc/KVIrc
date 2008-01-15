@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include <qobject.h>
-#include "kvi_ptrdict.h"
+#include "kvi_pointerhashtable.h"
 #include <qstring.h>
 
 class KviDns;
@@ -70,7 +70,7 @@ public:
 	~KviKvsDnsManager();
 protected:
 	static KviKvsDnsManager   * m_pInstance;
-	KviPtrDict<KviKvsDnsObject> * m_pDnsObjects;
+	KviPointerHashTable<void *,KviKvsDnsObject> * m_pDnsObjects;
 public:
 	static KviKvsDnsManager * instance(){ return m_pInstance; };
 	static void init();

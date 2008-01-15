@@ -141,7 +141,7 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 {
 	createLayout(2,2);
 
-	KviDictIterator<KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
+	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 
 	m_pTable = new KviTalTable(g_pTextIconManager->textIconDict()->count(),2,this);
 

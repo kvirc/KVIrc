@@ -406,7 +406,7 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 
 	if(bExportActions)
 	{
-		KviPtrList<QString> * a = t->descriptor()->actions();
+		KviPointerList<QString> * a = t->descriptor()->actions();
 		if(a)
 		{
 			for(QString * s = a->first();s;s = a->next())
@@ -432,7 +432,7 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 	szCode += t->descriptor()->iconId();
 	szCode += "\n";
 
-	KviPtrList<QString> * aa = t->descriptor()->actions();
+	KviPointerList<QString> * aa = t->descriptor()->actions();
 	if(aa)
 	{
 		for(QString * ss = aa->first();ss;ss = aa->next())

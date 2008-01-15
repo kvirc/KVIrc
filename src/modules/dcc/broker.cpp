@@ -54,13 +54,13 @@ KviDccBroker::KviDccBroker()
 {
 	KviDccFileTransfer::init();
 
-	m_pBoxList = new KviPtrList<KviDccBox>;
+	m_pBoxList = new KviPointerList<KviDccBox>;
 	m_pBoxList->setAutoDelete(false);
 
-	m_pDccWindowList = new KviPtrList<KviWindow>;
+	m_pDccWindowList = new KviPointerList<KviWindow>;
 	m_pDccWindowList->setAutoDelete(false);
 
-	m_pZeroPortTags = new KviDict<KviDccZeroPortTag>(17);
+	m_pZeroPortTags = new KviPointerHashTable<QString,KviDccZeroPortTag>(17);
 	m_pZeroPortTags->setAutoDelete(true);
 }
 

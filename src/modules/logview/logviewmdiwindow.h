@@ -28,7 +28,7 @@
 
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_listview.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qtabwidget.h>
 #include <qdatetime.h> 
 
@@ -77,7 +77,7 @@ public:
 	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
 	~KviLogViewMDIWindow();
 protected:
-	KviPtrList<KviLogFile> m_logList;
+	KviPointerList<KviLogFile> m_logList;
 
 	KviTalListView     * m_pListView;
 

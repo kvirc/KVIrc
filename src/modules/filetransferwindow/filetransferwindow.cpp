@@ -238,7 +238,7 @@ void KviFileTransferWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt
 
 void KviFileTransferWindow::fillTransferView()
 {
-	KviPtrList<KviFileTransfer> * l = KviFileTransferManager::instance()->transferList();
+	KviPointerList<KviFileTransfer> * l = KviFileTransferManager::instance()->transferList();
 	if(!l)return;
 	KviFileTransferItem * it;
 	for(KviFileTransfer * t = l->first();t;t = l->next())

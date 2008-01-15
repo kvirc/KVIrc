@@ -44,15 +44,15 @@ public:
 	~KviDnsResult();
 protected:
 	int             m_iError;
-	KviPtrList<QString> * m_pHostnameList;
-	KviPtrList<QString> * m_pIpAddressList;
+	KviPointerList<QString> * m_pHostnameList;
+	KviPointerList<QString> * m_pIpAddressList;
 	QString               m_szQuery;
 public:
 	int error(){ return m_iError; };
 	// never store nor delete these pointers!
 	// (these are NEVER 0)
-	KviPtrList<QString> * hostnameList(){ return m_pHostnameList; };
-	KviPtrList<QString> * ipAddressList(){ return m_pIpAddressList; };
+	KviPointerList<QString> * hostnameList(){ return m_pHostnameList; };
+	KviPointerList<QString> * ipAddressList(){ return m_pIpAddressList; };
 	const QString &query(){ return m_szQuery; };
 protected:
 	void setError(int iError){ m_iError = iError; };
@@ -96,8 +96,8 @@ public:
 	const QString & firstIpAddress();
 	int hostnameCount();
 	int ipAddressCount();
-	KviPtrList<QString> * hostnameList();
-	KviPtrList<QString> * ipAddressList();
+	KviPointerList<QString> * hostnameList();
+	KviPointerList<QString> * ipAddressList();
 	const QString & query();
 	bool isRunning() const;
 

@@ -92,15 +92,15 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 	QString szMsg;
 	KviQString::vsprintf(szMsg,szMsgFmt,va);
 
-	KviPtrList<QString> * pCodeListing = 0;
-	KviPtrList<QString> * pCallStack = 0;
+	KviPointerList<QString> * pCodeListing = 0;
+	KviPointerList<QString> * pCallStack = 0;
 	QString szLocation;
 
 	if(pNode)
 	{
 		if(pNode->location() && m_pScript)
 		{
-			pCodeListing = new KviPtrList<QString>;
+			pCodeListing = new KviPointerList<QString>;
 			pCodeListing->setAutoDelete(true);
 	
 			int iLine,iCol;
@@ -113,7 +113,7 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 		// create the call stack
 		int iFrame = 0;
 		
-		pCallStack = new KviPtrList<QString>;
+		pCallStack = new KviPointerList<QString>;
 		pCallStack->setAutoDelete(true);
 
 		while(pNode && (iFrame < 12))

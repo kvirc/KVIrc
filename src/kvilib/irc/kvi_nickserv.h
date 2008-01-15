@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_heapobject.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 
 class KviConfig;
 class KviIrcMask;
@@ -87,7 +87,7 @@ public:
 	KviNickServRuleSet(const KviNickServRuleSet &s);
 	~KviNickServRuleSet();
 protected:
-	KviPtrList<KviNickServRule> * m_pRules; // FIXME: Replace with KviDict<KviPtrList>
+	KviPointerList<KviNickServRule> * m_pRules; // FIXME: Replace with KviPointerHashTable<QString,KviPointerList>
 	bool                          m_bEnabled;
 public:
 	// avoid crashes under windows
@@ -102,7 +102,7 @@ public:
 	void load(const QString &szConfigFile);
 	void save(const QString &szConfigFile);
 	void save(KviConfig * cfg,const QString &prefix);
-	KviPtrList<KviNickServRule> * rules(){ return m_pRules; };
+	KviPointerList<KviNickServRule> * rules(){ return m_pRules; };
 	static KviNickServRuleSet * load(KviConfig * cfg,const QString &prefix);
 protected:
 	bool loadPrivate(KviConfig * cfg,const QString &prefix,unsigned int nEntries);

@@ -78,7 +78,7 @@
 KviMediaManager::KviMediaManager()
 : KviMutex()
 {
-	m_pMediaTypeList = new KviPtrList<KviMediaType>;
+	m_pMediaTypeList = new KviPointerList<KviMediaType>;
 	m_pMediaTypeList->setAutoDelete(true);
 }
 

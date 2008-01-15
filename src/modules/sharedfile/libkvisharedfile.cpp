@@ -36,7 +36,7 @@
 
 
 #include <time.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
@@ -210,7 +210,7 @@ static bool sharedfile_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 
 static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 {
-	KviDictIterator<KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
+	KviPointerHashTableIterator<QString,KviSharedFileList> it(*(g_pSharedFilesManager->sharedFileListDict()));
 
 	int idx = 0;
 

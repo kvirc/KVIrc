@@ -40,7 +40,7 @@
 #include "kvi_qstring.h"
 #include "kvi_string.h"
 #include "kvi_heapobject.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #include <qobject.h>
 
@@ -139,9 +139,9 @@
 		KviCryptEngineManager();
 		virtual ~KviCryptEngineManager();
 	private:
-		KviDict<KviCryptEngineDescription> * m_pEngineDict;
+		KviPointerHashTable<QString,KviCryptEngineDescription> * m_pEngineDict;
 	public:
-		const KviDict<KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
+		const KviPointerHashTable<QString,KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
 		void registerEngine(KviCryptEngineDescription * d);
 		void unregisterEngine(const QString &szName);
 		void unregisterEngines(void * providerHandle);

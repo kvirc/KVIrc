@@ -198,10 +198,10 @@ void KviIdentDaemon::run()
 	m_sock6 = KVI_INVALID_SOCKET;
 	bool bEventPosted = false;
 
-	m_pRequestList = new KviPtrList<KviIdentRequest>;
+	m_pRequestList = new KviPointerList<KviIdentRequest>;
 	m_pRequestList->setAutoDelete(true);
 
-	KviPtrList<KviIdentRequest> dying;
+	KviPointerList<KviIdentRequest> dying;
 	dying.setAutoDelete(false);
 
 #ifdef COMPILE_IPV6_SUPPORT

@@ -212,7 +212,7 @@ void KviPlugin::setName(const QString& Name)
 
 KviPluginManager::KviPluginManager()
 {
-	m_pPluginDict = new KviDict<KviPlugin>(5,false);
+	m_pPluginDict = new KviPointerHashTable<QString,KviPlugin>(5,false);
 	m_pPluginDict->setAutoDelete(false);
 	
 	m_bCanUnload = true;
@@ -339,7 +339,7 @@ bool KviPluginManager::checkUnload()
 	Always called when system module should be unloaded
 	Checking here if all small "modules" can be unloaded	
 	*/
-	KviDictIterator<KviPlugin> it(*m_pPluginDict);
+	KviPointerHashTableIterator<QString,KviPlugin> it(*m_pPluginDict);
 	
 	m_bCanUnload = true;
 	
@@ -360,7 +360,7 @@ bool KviPluginManager::checkUnload()
 
 void KviPluginManager::unloadAll()
 {
-	KviDictIterator<KviPlugin> it(*m_pPluginDict);
+	KviPointerHashTableIterator<QString,KviPlugin> it(*m_pPluginDict);
 	
 	while(it.current())
 	{

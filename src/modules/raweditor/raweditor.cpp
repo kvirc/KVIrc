@@ -116,7 +116,7 @@ void KviRawEditor::oneTimeSetup()
 
 	for(unsigned int i = 0;i < 999;i++)
 	{
-		KviPtrList<KviKvsEventHandler> * l = KviKvsEventManager::instance()->rawHandlers(i);
+		KviPointerList<KviKvsEventHandler> * l = KviKvsEventManager::instance()->rawHandlers(i);
 		if(l)
 		{
 			it = new KviRawListViewItem(m_pListView,i);

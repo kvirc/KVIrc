@@ -29,8 +29,8 @@
 #include "kvi_settings.h"
 
 #include <qobject.h>
-#include "kvi_list.h"
-#include "kvi_dict.h"
+#include "kvi_pointerlist.h"
+#include "kvi_pointerhashtable.h"
 #include <qtimer.h>
 
 #include "kvi_qstring.h"
@@ -75,12 +75,12 @@ protected:
 	KviIsOnNotifyListManager(KviIrcConnection * pConnection);
 	~KviIsOnNotifyListManager();
 private:
-	KviDict<QString>      * m_pRegUserDict;            // dict notifystring->reguser name
-	KviPtrList<QString> * m_pNotifyList;                  // list of notifystring (total)
-	KviPtrList<QString> * m_pIsOnList;                    // list of notifystring (one session)
+	KviPointerHashTable<QString,QString>      * m_pRegUserDict;            // dict notifystring->reguser name
+	KviPointerList<QString> * m_pNotifyList;                  // list of notifystring (total)
+	KviPointerList<QString> * m_pIsOnList;                    // list of notifystring (one session)
 	QString               m_szIsOnString;                 // m_pIsOnList in form of a string
-	KviPtrList<QString> * m_pOnlineList;                  //
-	KviPtrList<QString> * m_pUserhostList;
+	KviPointerList<QString> * m_pOnlineList;                  //
+	KviPointerList<QString> * m_pUserhostList;
 	QString               m_szUserhostString;
 	bool                  m_bExpectingIsOn;
 	bool                  m_bExpectingUserhost;
@@ -123,7 +123,7 @@ protected:
 	KviStupidNotifyListManager(KviIrcConnection * pConnection);
 	~KviStupidNotifyListManager();
 protected:
-	KviPtrList<QString> * m_pNickList;
+	KviPointerList<QString> * m_pNickList;
 	QString m_szLastIsOnMsg;
 	int m_iNextNickToCheck;
 	int m_iRestartTimer;
@@ -148,7 +148,7 @@ public:
 	KviWatchNotifyListManager(KviIrcConnection * pConnection);
 	~KviWatchNotifyListManager();
 protected:
-	KviDict<QString> * m_pRegUserDict;            // dict notifystring->reguser name
+	KviPointerHashTable<QString,QString> * m_pRegUserDict;            // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
 	virtual void start();

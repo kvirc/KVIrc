@@ -59,7 +59,7 @@
 #include "kvi_tal_tooltip.h"
 #include <qvalidator.h>
 #include <qmessagebox.h>
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 #include <qcombobox.h>
 #include <qbuttongroup.h>
 #include <qmessagebox.h>
@@ -307,7 +307,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	
 	if(rs && rs->rules())
 	{
-		KviPtrList<KviNickServRule> * ll = rs->rules();
+		KviPointerList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
 			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
@@ -729,7 +729,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pProxyEditor->insertItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->insertItem(__tr2qs_ctx("Direct connection","options"));	
 	
-	KviPtrList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
+	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
 		m_pProxyEditor->insertItem(QString("%1:%2").arg(p->hostname()).arg(p->port()));
@@ -1289,12 +1289,12 @@ void KviServerOptionsWidget::fillServerList()
 	KviServerOptionsListViewItem * srv;
 	KviServerOptionsListViewItem * cur = 0;
 
-	KviDictIterator<KviIrcServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
+	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
 
 	while(KviIrcServerDataBaseRecord * r = it.current())
 	{
 		net = new KviServerOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
-		KviPtrList<KviIrcServer> * sl = r->serverList();
+		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->network()->name() == g_pIrcServerDataBase->currentNetworkName().utf8().data();
 		net->setOpen(bCurrent);
 		for(KviIrcServer * s = sl->first();s;s = sl->next())

@@ -26,20 +26,20 @@
 #include "kvi_parameterlist.h"
 
 KviParameterList::KviParameterList()
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 }
 
 KviParameterList::KviParameterList(KviStr *p1)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
 }
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -47,7 +47,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2)
 }
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -56,7 +56,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3)
 }
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -66,7 +66,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4)
 }
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,KviStr *p5)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -77,7 +77,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,K
 }
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,KviStr *p5,KviStr *p6)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -90,7 +90,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,K
 
 
 KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,KviStr *p5,KviStr *p6,KviStr *p7)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -103,7 +103,7 @@ KviParameterList::KviParameterList(KviStr *p1,KviStr *p2,KviStr *p3,KviStr *p4,K
 }
 
 KviParameterList::KviParameterList(const char *paramBuffer)
-: KviPtrList<KviStr>()
+: KviPointerList<KviStr>()
 {
 	setAutoDelete(true);
 	while(*paramBuffer)

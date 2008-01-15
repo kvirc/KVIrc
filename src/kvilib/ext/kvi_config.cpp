@@ -42,7 +42,7 @@ KviConfig::KviConfig(const QString &filename,FileMode f,bool bLocal8Bit)
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
 	m_bPreserveEmptyGroups = false;
 	m_bReadOnly            = (f == KviConfig::Read);
-	m_pDict                = new KviDict<KviConfigGroup>(17,false);
+	m_pDict                = new KviPointerHashTable<QString,KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	if(f != KviConfig::Write)load();
 }
@@ -55,7 +55,7 @@ KviConfig::KviConfig(const char* filename,FileMode f,bool bLocal8Bit)
 	m_szGroup              = KVI_CONFIG_DEFAULT_GROUP;
 	m_bPreserveEmptyGroups = false;
 	m_bReadOnly            = (f == KviConfig::Read);
-	m_pDict                = new KviDict<KviConfigGroup>(17,false);
+	m_pDict                = new KviPointerHashTable<QString,KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	if(f != KviConfig::Write)load();
 }
@@ -70,7 +70,7 @@ KviConfig::~KviConfig()
 void KviConfig::clear()
 {
 	delete m_pDict;
-	m_pDict      = new KviDict<KviConfigGroup>(17,false);
+	m_pDict      = new KviPointerHashTable<QString,KviConfigGroup>(17,false);
 	m_pDict->setAutoDelete(true);
 	m_bDirty     = false;
 	m_szGroup    = KVI_CONFIG_DEFAULT_GROUP;
@@ -99,13 +99,13 @@ void KviConfig::getContentsString(KviStr &buffer)
 	buffer.append('\n');
 	int sections = 0;
 	int keys     = 0;
-	KviDictIterator<KviStrDict> it(*m_pDict);
+	KviPointerHashTableIterator<QString,KviStrDict> it(*m_pDict);
 	while(it.current()){
 		buffer.append(" Section [");
 		buffer.append(it.currentKey());
 		buffer.append("]\n");
 		int sectionKeys = 0;
-		KviDictIterator<KviStr> it2(*it.current());
+		KviPointerHashTableIterator<QString,KviStr> it2(*it.current());
 		while(it2.current()){
 			buffer.append("  Key [");
 			buffer.append(it2.currentKey());
@@ -497,7 +497,7 @@ bool KviConfig::save()
 	if(!f.openForWriting())return false;
 	if(f.writeBlock("# KVIrc configuration file\n",27) != 27)return false;
 
-	KviDictIterator<KviConfigGroup> it(*m_pDict);
+	KviPointerHashTableIterator<QString,KviConfigGroup> it(*m_pDict);
 	while (it.current())
 	{
 		if((it.current()->count() != 0) || (m_bPreserveEmptyGroups))

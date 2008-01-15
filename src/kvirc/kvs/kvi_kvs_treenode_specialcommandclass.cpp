@@ -55,7 +55,7 @@ KviKvsTreeNodeSpecialCommandClass::KviKvsTreeNodeSpecialCommandClass(const QChar
 {
 	m_pParams = pParams;
 	m_pParams->setParent(this);
-	m_pFunctions = new KviPtrList<KviKvsTreeNodeSpecialCommandClassFunctionDefinition>;
+	m_pFunctions = new KviPointerList<KviKvsTreeNodeSpecialCommandClassFunctionDefinition>;
 	m_pFunctions->setAutoDelete(true);
 }
 

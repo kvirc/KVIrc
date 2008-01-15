@@ -41,8 +41,8 @@
 #include "kvi_valuelist.h"
 
 extern Index        * g_pDocIndex;
-extern KviPtrList<KviHelpWindow> * g_pHelpWindowList;
-extern KviPtrList<KviHelpWidget> * g_pHelpWidgetList;
+extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
+extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
 bool g_bIndexingDone = FALSE;
 KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)

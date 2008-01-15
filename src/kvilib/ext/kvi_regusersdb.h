@@ -36,8 +36,8 @@
 #include "kvi_ircmask.h"
 #include "kvi_debug.h"
 
-#include "kvi_list.h"
-#include "kvi_dict.h"
+#include "kvi_pointerlist.h"
+#include "kvi_pointerhashtable.h"
 #include <qobject.h>
 
 class KviRegisteredUserDataBase;
@@ -71,8 +71,8 @@ private:
 	bool                       m_bIgnoreEnabled;
 	QString                    m_szName;
 	QString					   m_szGroup;
-	KviDict<QString>           * m_pPropertyDict;   // owned properties
-	KviPtrList<KviIrcMask>     * m_pMaskList;       // owned masks
+	KviPointerHashTable<QString,QString>           * m_pPropertyDict;   // owned properties
+	KviPointerList<KviIrcMask>     * m_pMaskList;       // owned masks
 protected:
 	// mask ownership is transferred! (always!) returns false if the mask was already there
 	bool addMask(KviIrcMask * mask);
@@ -100,9 +100,9 @@ public:
 	bool getProperty(const QString &name,QString &value); // returns false if the property is not there
 	bool getBoolProperty(const QString &name,bool def=FALSE);           // returns true if the property is there and is true
 	// the propertyDict may be 0!
-	KviDict<QString> * propertyDict(){ return m_pPropertyDict; };
+	KviPointerHashTable<QString,QString> * propertyDict(){ return m_pPropertyDict; };
 	// this is never zero (but may contain no masks)
-	KviPtrList<KviIrcMask> * maskList(){ return m_pMaskList; };
+	KviPointerList<KviIrcMask> * maskList(){ return m_pMaskList; };
 };
 
 //============================================================================================================
@@ -142,7 +142,7 @@ public:
 	KviIrcMask        * mask(){ return m_pMask; };
 };
 
-typedef KviPtrList<KviRegisteredMask> KviRegisteredMaskList;
+typedef KviPointerList<KviRegisteredMask> KviRegisteredMaskList;
 
 //=================================================================================================
 //
@@ -161,10 +161,10 @@ public:
 	KviRegisteredUserDataBase();
 	~KviRegisteredUserDataBase();
 private:
-	KviDict<KviRegisteredUser>     * m_pUserDict; // unique namespace, owns the objects, does not copy keys
-	KviDict<KviRegisteredMaskList> * m_pMaskDict; // owns the objects, copies the keys
+	KviPointerHashTable<QString,KviRegisteredUser>     * m_pUserDict; // unique namespace, owns the objects, does not copy keys
+	KviPointerHashTable<QString,KviRegisteredMaskList> * m_pMaskDict; // owns the objects, copies the keys
 	KviRegisteredMaskList          * m_pWildMaskList; // owns the objects
-	KviDict<KviRegisteredUserGroup>* m_pGroupDict;
+	KviPointerHashTable<QString,KviRegisteredUserGroup>* m_pGroupDict;
 public:
 	void copyFrom(KviRegisteredUserDataBase * db);
 	KviRegisteredUser * addUser(const QString &name); // returns 0 if already there
@@ -186,8 +186,8 @@ public:
 	void load(const QString &filename);
 	void save(const QString &filename);
 
-	KviDict<KviRegisteredUser> * userDict(){ return m_pUserDict; };
-	KviDict<KviRegisteredUserGroup>* groupDict() { return m_pGroupDict; };
+	KviPointerHashTable<QString,KviRegisteredUser> * userDict(){ return m_pUserDict; };
+	KviPointerHashTable<QString,KviRegisteredUserGroup>* groupDict() { return m_pGroupDict; };
 	
 	KviRegisteredUserGroup* addGroup(const QString &name);
 signals:

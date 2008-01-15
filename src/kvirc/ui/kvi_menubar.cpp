@@ -310,7 +310,7 @@ void KviMenuBar::setupToolsPopup()
 #endif
 
 	
-	KviPtrList<KviAction> list;
+	KviPointerList<KviAction> list;
 	KviActionManager::instance()->listActionsByCategory("tools",&list);
 	if(!list.isEmpty())
 	{
@@ -398,7 +398,7 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 {
 	if(!m_pScriptItemList)
 	{
-		m_pScriptItemList = new KviPtrList<KviScriptMenuBarItem>;
+		m_pScriptItemList = new KviPointerList<KviScriptMenuBarItem>;
 		m_pScriptItemList->setAutoDelete(true);
 	}/* else {
    		removeMenu(text);

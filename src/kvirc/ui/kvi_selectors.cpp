@@ -826,7 +826,7 @@ void KviCahnnelListSelector::addClicked()
 
 void KviCahnnelListSelector::removeClicked()
 {
-	KviPtrList<KviTalListViewItem> lst;
+	KviPointerList<KviTalListViewItem> lst;
 	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
 	while ( it.current() ) {
 		lst.append((KviTalListViewItem *)it.current() );

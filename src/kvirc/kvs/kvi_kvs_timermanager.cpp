@@ -70,9 +70,9 @@ KviKvsTimerManager * KviKvsTimerManager::m_pInstance = 0;
 KviKvsTimerManager::KviKvsTimerManager()
 : QObject()
 {
-	m_pTimerDictById = new KviIntDict<KviKvsTimer>(17);
+	m_pTimerDictById = new KviPointerHashTable<int,KviKvsTimer>(17);
 	m_pTimerDictById->setAutoDelete(false);
-	m_pTimerDictByName = new KviDict<KviKvsTimer>(17,false);
+	m_pTimerDictByName = new KviPointerHashTable<QString,KviKvsTimer>(17,false);
 	m_pTimerDictByName->setAutoDelete(false);
 	m_pKilledTimerList = 0;
 	m_iAssassinTimer = 0;
@@ -162,8 +162,8 @@ bool KviKvsTimerManager::deleteCurrentTimer()
 void KviKvsTimerManager::deleteAllTimers()
 {
 	if(m_pTimerDictById->isEmpty())return;
-	KviIntDictIterator<KviKvsTimer> it(*m_pTimerDictById);
-	KviPtrList<KviKvsTimer> tl;
+	KviPointerHashTableIterator<int,KviKvsTimer> it(*m_pTimerDictById);
+	KviPointerList<KviKvsTimer> tl;
 	tl.setAutoDelete(false);
 	while(KviKvsTimer * t = it.current())
 	{
@@ -180,7 +180,7 @@ void KviKvsTimerManager::scheduleKill(KviKvsTimer *t)
 {
 	if(!m_pKilledTimerList)
 	{
-		m_pKilledTimerList = new KviPtrList<KviKvsTimer>;
+		m_pKilledTimerList = new KviPointerList<KviKvsTimer>;
 		m_pKilledTimerList->setAutoDelete(true);
 	}
 	m_pKilledTimerList->append(t);

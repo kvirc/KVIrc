@@ -32,7 +32,7 @@
 KviKvsTreeNodeDataList::KviKvsTreeNodeDataList(const QChar * pLocation)
 : KviKvsTreeNode(pLocation)
 {
-	m_pDataList = new KviPtrList<KviKvsTreeNodeData>();
+	m_pDataList = new KviPointerList<KviKvsTreeNodeData>();
 	m_pDataList->setAutoDelete(true);
 }
 
@@ -81,7 +81,7 @@ bool KviKvsTreeNodeDataList::evaluate(KviKvsRunTimeContext * c,KviKvsVariantList
 	pBuffer->clear();
 
 	// we use an iterator to accomodate recursion
-	KviPtrListIterator<KviKvsTreeNodeData> it(*m_pDataList);
+	KviPointerListIterator<KviKvsTreeNodeData> it(*m_pDataList);
 	while(KviKvsTreeNodeData * t = it.current())
 	{
 		KviKvsVariant * v = new KviKvsVariant();

@@ -87,7 +87,7 @@ extern KviDccBroker * g_pDccBroker;
 extern KVIRC_API KviMediaManager * g_pMediaManager; // kvi_app.cpp
 
 
-static KviPtrList<KviDccFileTransfer> * g_pDccFileTransfers = 0;
+static KviPointerList<KviDccFileTransfer> * g_pDccFileTransfers = 0;
 static QPixmap * g_pDccFileTransferIcon = 0;
 
 //#warning "The events that have a KviStr data pointer should become real classes, that take care of deleting the data pointer!"
@@ -1354,7 +1354,7 @@ QString KviDccFileTransfer::tipText()
 void KviDccFileTransfer::init()
 {
 	if(g_pDccFileTransfers)return;
-	g_pDccFileTransfers = new KviPtrList<KviDccFileTransfer>;
+	g_pDccFileTransfers = new KviPointerList<KviDccFileTransfer>;
 	g_pDccFileTransfers->setAutoDelete(false);
 
 	QPixmap * pix = g_pIconManager->getImage("kvi_dccfiletransfericons.png");

@@ -352,7 +352,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 
 KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char terminator)
 {
-	KviPtrList<KviKvsTreeNodeData> * pDataList = new KviPtrList<KviKvsTreeNodeData>;
+	KviPointerList<KviKvsTreeNodeData> * pDataList = new KviPointerList<KviKvsTreeNodeData>;
 	pDataList->setAutoDelete(true);
 
 	static QString szStaticSingleSpace(" ");

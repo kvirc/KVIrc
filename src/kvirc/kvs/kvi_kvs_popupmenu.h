@@ -245,12 +245,12 @@ public:
 	KviKvsPopupMenu(const QString &szName);
 	~KviKvsPopupMenu();
 protected:
-	KviPtrList<KviKvsPopupMenuItem>  * m_pItemList;
+	KviPointerList<KviKvsPopupMenuItem>  * m_pItemList;
 private:
 	QString                            m_szName;
 	KviKvsPopupMenu                  * m_pParentPopup;
-	KviPtrList<KviKvsScript>         * m_pPrologues;
-	KviPtrList<KviKvsScript>         * m_pEpilogues;
+	KviPointerList<KviKvsScript>         * m_pPrologues;
+	KviPointerList<KviKvsScript>         * m_pEpilogues;
 	KviKvsPopupMenuTopLevelData      * m_pTopLevelData;
 	// this is a temporary used to hack-in the activation from KviMenuBar
 	KviKvsPopupMenuTopLevelData      * m_pTempTopLevelData;
@@ -274,8 +274,8 @@ public:
 	void addPrologue(const QString &szItemName,const QString &szCode);
 	void addEpilogue(const QString &szItemName,const QString &szCode);
 	bool removeItemByName(const QString &szItemName,bool bRecursive);
-	KviPtrList<KviKvsScript> * epilogues(){ return m_pEpilogues; };
-	KviPtrList<KviKvsScript> * prologues(){ return m_pPrologues; };
+	KviPointerList<KviKvsScript> * epilogues(){ return m_pEpilogues; };
+	KviPointerList<KviKvsScript> * prologues(){ return m_pPrologues; };
 	KviKvsPopupMenu * parentPopup(){ return m_pParentPopup; };
 	void generateDefPopup(QString &buffer);
 	void setParentPopup(KviKvsPopupMenu * par){ m_pParentPopup = par; };

@@ -33,10 +33,10 @@
 #endif
 
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_sparser.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include <qdatetime.h>
 #include <qobject.h>
 
@@ -63,9 +63,9 @@ public:
 	KviDccBroker();
 	~KviDccBroker();
 protected:
-	KviPtrList<KviDccBox>         * m_pBoxList;
-	KviPtrList<KviWindow>         * m_pDccWindowList;
-	KviDict<KviDccZeroPortTag>      * m_pZeroPortTags;
+	KviPointerList<KviDccBox>         * m_pBoxList;
+	KviPointerList<KviWindow>         * m_pDccWindowList;
+	KviPointerHashTable<QString,KviDccZeroPortTag>      * m_pZeroPortTags;
 public:
 	KviDccZeroPortTag * addZeroPortTag();
 	KviDccZeroPortTag * findZeroPortTag(const QString &szTag);

@@ -33,7 +33,7 @@
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include <qtooltip.h>
 #include <qpointarray.h>
 #include <qpainter.h>
@@ -42,7 +42,7 @@
 extern QPixmap                 * g_pIccMemBuffer;
 
 
-static KviPtrList<KviIOGraphDisplay> * g_pIOGraphWidgetList;
+static KviPointerList<KviIOGraphDisplay> * g_pIOGraphWidgetList;
 
 KviIOGraphDisplay::KviIOGraphDisplay(KviIrcContextController * pController,bool sentGraph,bool recvGraph)
 : KviIrcContextGraphicalApplet(pController,"iograph_display")
@@ -252,7 +252,7 @@ static bool iograph_module_cmd_add(KviModule *m,KviCommand *c)
 static bool iograph_module_init(KviModule *m)
 {
 #if 0
-	g_pIOGraphWidgetList = new KviPtrList<KviIOGraphDisplay>;
+	g_pIOGraphWidgetList = new KviPointerList<KviIOGraphDisplay>;
 	g_pIOGraphWidgetList->setAutoDelete(false);
 	m->registerCommand("add",iograph_module_cmd_add);
 #endif

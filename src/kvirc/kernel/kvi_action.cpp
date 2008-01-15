@@ -403,7 +403,7 @@ void KviAction::registerWidget(QWidget * b)
 	connect(b,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 	if(!m_pWidgetList)
 	{
-		m_pWidgetList = new KviPtrList<QWidget>;
+		m_pWidgetList = new KviPointerList<QWidget>;
 		m_pWidgetList->setAutoDelete(false);
 	}
 	m_pWidgetList->append(b);

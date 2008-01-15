@@ -86,7 +86,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	
 	m_pClickedApplet = 0;
 
-	m_pAppletDescriptors = new KviDict<KviStatusBarAppletDescriptor>;
+	m_pAppletDescriptors = new KviPointerHashTable<QString,KviStatusBarAppletDescriptor>;
 	m_pAppletDescriptors->setAutoDelete(true);
 
 	KviStatusBarClock::selfRegister(this);
@@ -95,10 +95,10 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	KviStatusBarConnectionTimer::selfRegister(this);
 	KviStatusBarSeparator::selfRegister(this);
 
-	m_pAppletList = new KviPtrList<KviStatusBarApplet>;
+	m_pAppletList = new KviPointerList<KviStatusBarApplet>;
 	m_pAppletList->setAutoDelete(false);
 
-	m_pMessageQueue = new KviPtrList<KviStatusBarMessage>;
+	m_pMessageQueue = new KviPointerList<KviStatusBarMessage>;
 	m_pMessageQueue->setAutoDelete(true);
 
 	m_pMessageTimer = 0;
@@ -380,7 +380,7 @@ void KviStatusBar::appletsPopupAboutToShow()
 	// FIXME: could we cache the module results in some way ?
 	g_pModuleManager->loadModulesByCaps("statusbarapplet");
 	
-	KviDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
+	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
 		int id;
@@ -412,7 +412,7 @@ void KviStatusBar::appletsPopupActivated(int id)
 
 	if(!m_pAppletsPopup)return;
 	int par = m_pAppletsPopup->itemParameter(id);
-	KviDictIterator<KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
+	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
 		if(par == d->id())

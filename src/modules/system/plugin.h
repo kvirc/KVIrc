@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_module.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
 typedef int (*plugin_unload)();
@@ -65,7 +65,7 @@ class KviPluginManager
 		// shared
 		bool m_bCanUnload;
 		// internal
-		KviDict<KviPlugin> * m_pPluginDict;
+		KviPointerHashTable<QString,KviPlugin> * m_pPluginDict;
 	public:
 		bool pluginCall(KviKvsModuleFunctionCall *c);
 		bool checkUnload();

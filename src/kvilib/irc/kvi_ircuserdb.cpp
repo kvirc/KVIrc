@@ -102,7 +102,7 @@ KviIrcUserDataBase::KviIrcUserDataBase()
 	// the performance increase since kvirc versions < 3.0.0
 	// is really big anyway (there was a linear list instead of a hash!!!)
 
-	m_pDict = new KviDict<KviIrcUserEntry>(4001,false);
+	m_pDict = new KviPointerHashTable<QString,KviIrcUserEntry>(4001,false);
 	m_pDict->setAutoDelete(true);
 	setupConnectionWithReguserDb();
 }
@@ -197,7 +197,7 @@ KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick)
 void KviIrcUserDataBase::clear()
 {
 	delete m_pDict;
-	m_pDict = new KviDict<KviIrcUserEntry>(4001,false);
+	m_pDict = new KviPointerHashTable<QString,KviIrcUserEntry>(4001,false);
 	m_pDict->setAutoDelete(true);
 }
 
@@ -237,7 +237,7 @@ void KviIrcUserDataBase::setupConnectionWithReguserDb()
 
 void KviIrcUserDataBase::registeredUserRemoved(const QString& user)
 {
-	KviDictIterator<KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
     for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName==user)
@@ -251,7 +251,7 @@ void KviIrcUserDataBase::registeredUserRemoved(const QString& user)
 void KviIrcUserDataBase::registeredUserChanged(const QString& user)
 {
 	//the same as above
-	KviDictIterator<KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
     for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName==user)
@@ -264,7 +264,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString& user)
 
 void KviIrcUserDataBase::registeredUserAdded(const QString& user)
 {
-	KviDictIterator<KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
     for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName.isEmpty())
@@ -276,7 +276,7 @@ void KviIrcUserDataBase::registeredUserAdded(const QString& user)
 
 void KviIrcUserDataBase::registeredDatabaseCleared()
 {
-	KviDictIterator<KviIrcUserEntry> it( *m_pDict );
+	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
     for( ; it.current(); ++it )
 	{
 		it.current()->m_szRegisteredUserName="";

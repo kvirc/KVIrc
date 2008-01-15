@@ -29,7 +29,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_string.h"
-#include "kvi_asciidict.h"
+#include "kvi_pointerhashtable.h"
 
 #include <qapplication.h>
 
@@ -94,8 +94,9 @@ public:
 	KviMessageCatalogue();
 	~KviMessageCatalogue();
 protected:
-	KviAsciiDict<KviTranslationEntry> * m_pMessages;
-	QTextCodec                        * m_pTextCodec;
+	//KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
+	KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
+	QTextCodec                                            * m_pTextCodec;
 public:
 	bool load(const QString& name);
 	const char * translate(const char * text);

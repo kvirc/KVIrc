@@ -30,7 +30,7 @@
 #include <qstringlist.h>
 #include <qclipboard.h>
 
-extern KviPtrList<SPasteController> * g_pControllerList;
+extern KviPointerList<SPasteController> * g_pControllerList;
 
 SPasteController::SPasteController(KviWindow * w,int id)
 	: m_pClipBuff(NULL),m_pFile(NULL),m_pId(id),m_pWindow(w)

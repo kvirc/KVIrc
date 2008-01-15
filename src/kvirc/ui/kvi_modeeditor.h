@@ -32,7 +32,7 @@
 #include <qlabel.h>
 
 #include "kvi_string.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_styled_controls.h"
 #include "kvi_toolwindows_container.h"
 
@@ -53,7 +53,7 @@ protected: // fields
 	KviStr m_szMode;
 	KviStr m_szKey;
 	KviStr m_szLimit;
-	KviPtrList<KviStyledCheckBox> * m_pCheckBoxes;
+	KviPointerList<KviStyledCheckBox> * m_pCheckBoxes;
 	KviStyledCheckBox * m_pLimitBox;
 	QLineEdit * m_pLimitEdit;
 	KviStyledCheckBox * m_pKeyBox;

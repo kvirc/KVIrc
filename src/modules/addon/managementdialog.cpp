@@ -282,9 +282,9 @@ KviScriptManagementDialog::~KviScriptManagementDialog()
 void KviScriptManagementDialog::fillListView()
 {
 	m_pListView->clear();
-	KviDict<KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
+	KviPointerHashTable<QString,KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
 	if(!d)return;
-	KviDictIterator<KviKvsScriptAddon> it(*d);
+	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*d);
 	KviScriptAddonListViewItem * item;
 	while(KviKvsScriptAddon * a = it.current())
 	{

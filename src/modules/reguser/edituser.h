@@ -33,7 +33,7 @@
 #include <qpushbutton.h>
 #include "kvi_tal_listview.h"
 #include "kvi_tal_listbox.h"
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 #include <kvi_tal_tabdialog.h>
 #ifdef COMPILE_USE_QT4
 #include <q3table.h>
@@ -58,7 +58,7 @@ class KviReguserPropertiesDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviReguserPropertiesDialog(QWidget *p,KviDict<QString> * dict);
+	KviReguserPropertiesDialog(QWidget *p,KviPointerHashTable<QString,QString> * dict);
 	~KviReguserPropertiesDialog();
 protected:
 #ifdef COMPILE_USE_QT4
@@ -66,7 +66,7 @@ protected:
 #else
 	QTable             * m_pTable;
 #endif
-	KviDict<QString>     * m_pPropertyDict;
+	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	QPushButton        * m_pDelButton;
 	QPushButton        * m_pAddButton;
 protected:
@@ -122,7 +122,7 @@ protected:
 	KviPixmap          * m_pAvatar;
 	KviPixmapSelector  * m_pAvatarSelector;
 
-	KviDict<QString>     * m_pPropertyDict;
+	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	
 	QCheckBox          * m_pCustomColorCheck;
 	QColor		   * m_pCustomColor;

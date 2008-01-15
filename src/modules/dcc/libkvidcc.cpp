@@ -2601,10 +2601,10 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 	KviKvsArray * a = new KviKvsArray();
 	c->returnValue()->setArray(a);
 
-	KviIntDict<KviDccDescriptor> * dict = KviDccDescriptor::descriptorDict();
+	KviPointerHashTable<int,KviDccDescriptor> * dict = KviDccDescriptor::descriptorDict();
 	if(!dict)return true;
 
-	KviIntDictIterator<KviDccDescriptor> it(*dict);
+	KviPointerHashTableIterator<int,KviDccDescriptor> it(*dict);
 
 	int idx = 0;
 	

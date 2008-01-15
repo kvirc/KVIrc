@@ -185,7 +185,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 
 	const QChar * pCmdBegin = KVSP_curCharPointer;
 
-	KviPtrList<KviKvsTreeNodeVariable> * pVarList = new KviPtrList<KviKvsTreeNodeVariable>;
+	KviPointerList<KviKvsTreeNodeVariable> * pVarList = new KviPointerList<KviKvsTreeNodeVariable>;
 	pVarList->setAutoDelete(true);
 	
 	while(KVSP_curCharUnicode == '%')
@@ -260,7 +260,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 
 		if(!m_pGlobals)
 		{
-			m_pGlobals = new KviDict<QString>(17,false);
+			m_pGlobals = new KviPointerHashTable<QString,QString>(17,false);
 			m_pGlobals->setAutoDelete(true);
 		}
 		m_pGlobals->replace(szIdentifier,new QString());
@@ -1574,7 +1574,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
 		QString szLabelLow = szLabel.lower();
 
-		KviPtrList<QString> * pParameters = 0;
+		KviPointerList<QString> * pParameters = 0;
 		
 		QString szCondition;
 

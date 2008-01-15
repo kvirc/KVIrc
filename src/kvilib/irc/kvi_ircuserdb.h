@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_dict.h"
+#include "kvi_pointerhashtable.h"
 
 #include "kvi_string.h"
 #include "kvi_avatar.h"
@@ -120,13 +120,13 @@ public:
 	KviIrcUserDataBase();
 	~KviIrcUserDataBase();
 private:
-	KviDict<KviIrcUserEntry> * m_pDict;
+	KviPointerHashTable<QString,KviIrcUserEntry> * m_pDict;
 public:
 	void clear();
 	KviIrcUserEntry * insertUser(const QString &nick,const QString &user,const QString &hostname);
 	KviIrcUserEntry * find(const QString &nick){ return m_pDict->find(nick); };
 	void removeUser(const QString &nick,KviIrcUserEntry * e);
-	KviDict<KviIrcUserEntry> * dict(){ return m_pDict; };
+	KviPointerHashTable<QString,KviIrcUserEntry> * dict(){ return m_pDict; };
 
 	KviRegisteredUser* registeredUser(const QString & nick);
 	KviRegisteredUser* registeredUser(const QString & nick,const QString & user,const QString & host);

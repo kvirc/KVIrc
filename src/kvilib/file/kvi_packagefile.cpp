@@ -111,9 +111,9 @@
 KviPackageIOEngine::KviPackageIOEngine()
 {
 	m_pProgressDialog = 0;
-	m_pStringInfoFields = new KviDict<QString>();
+	m_pStringInfoFields = new KviPointerHashTable<QString,QString>();
 	m_pStringInfoFields->setAutoDelete(true);
-	m_pBinaryInfoFields = new KviDict<QByteArray>();
+	m_pBinaryInfoFields = new KviPointerHashTable<QString,QByteArray>();
 	m_pBinaryInfoFields->setAutoDelete(true);
 }
 
@@ -185,7 +185,7 @@ bool KviPackageIOEngine::readError()
 KviPackageWriter::KviPackageWriter()
 : KviPackageIOEngine()
 {
-	m_pDataFields = new KviPtrList<DataField>();
+	m_pDataFields = new KviPointerList<DataField>();
 	m_pDataFields->setAutoDelete(true);
 }
 
@@ -572,7 +572,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 		return false; // aborted
 	
 	// InfoFields (string)
-	KviDictIterator<QString> it(*m_pStringInfoFields);
+	KviPointerHashTableIterator<QString,QString> it(*m_pStringInfoFields);
 	while(QString * s = it.current())
 	{
 		if(!f.save(it.currentKey()))return writeError();
@@ -583,7 +583,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFla
 	}
 	
 	// InfoFields (binary)
-	KviDictIterator<QByteArray> it2(*m_pBinaryInfoFields);
+	KviPointerHashTableIterator<QString,QByteArray> it2(*m_pBinaryInfoFields);
 	while(QByteArray * b = it2.current())
 	{
 		if(!f.save(it2.currentKey()))return writeError();
