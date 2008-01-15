@@ -19,7 +19,8 @@ tmp_DATA  = notifier_ca.mo \
 	notifier_pt_BR.mo \
 	notifier_fr.mo \
 	notifier_hu.mo \
-	notifier_fi.mo
+	notifier_fi.mo \
+	notifier_hr.mo
 
 # The *.po files to generate
 POFILES  =  notifier_ca.po \
@@ -32,7 +33,8 @@ POFILES  =  notifier_ca.po \
 	notifier_pt_BR.po \
 	notifier_fr.po \
 	notifier_hu.po \
-	notifier_fi.po
+	notifier_fi.po \
+	notifier_hr.po
 
 
 ###############################################################################
