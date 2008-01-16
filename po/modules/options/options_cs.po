@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-21 17:09+0100\n"
-"PO-Revision-Date: 2008-01-14 11:27+0100\n"
+"PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,16 +37,14 @@ msgstr "Obrázek na pozadí:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:51
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:116
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:46
-#, fuzzy
 msgid "Horizontal align:"
-msgstr "Umístění certifikátu:"
+msgstr "Horizontální zarovnání:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:55
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:120
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:50
-#, fuzzy
 msgid "Vertical align:"
-msgstr "Umístění certifikátu:"
+msgstr "Vertikální zarovnání:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:59
 msgid "Mark Line:"
@@ -61,7 +59,7 @@ msgstr "Označ řádek:"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:54
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:59
 msgid "Tile"
-msgstr ""
+msgstr "Dlaždice"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:62
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:125
@@ -85,9 +83,8 @@ msgstr "Vpravo"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:147
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:57
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:62
-#, fuzzy
 msgid "Center"
-msgstr "Hlavní"
+msgstr "Centrovat"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:67
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:130
@@ -331,9 +328,8 @@ msgid "This section contains irc protection tools<br><p>like<b> flood, ignore, a
 msgstr "Tato sekce obsahuje irc ochranné nástroje<br><p>jako<b> flood, ignore, antispam. </b> </p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:40
-#, fuzzy
 msgid "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client Protocol</b> (CTCP) is used to transmit special control messages over an IRC connection. These messages can request information from clients or negotiate file transfers.<br><br></p>"
-msgstr "<center><b>Tato sekce obsahuje nastavení pro CTCP</b></center><br><br><p><b>Client-To-Client Protocol</b> (CTCP) slouží pro přenos speciálních řídících zpráv přes IRC spojení. Tyto zprávy mohou požadovat informace od klientů nebo vyjednat přenosy souborů.</p>"
+msgstr "<center><b>Nastavení pro CTCP</b></center><p><b>Client-To-Client Protocol</b> (CTCP) slouží pro přenos speciálních řídících zpráv přes IRC spojení. Tyto zprávy mohou požadovat informace od klientů nebo vyjednat přenosy souborů.<br><br></p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
@@ -455,9 +451,8 @@ msgid "Background Colors"
 msgstr "Barvy pozadí"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:212
-#, fuzzy
 msgid "Show header"
-msgstr "Zobrazit Ban editor"
+msgstr "Zobrazit hlavičku"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:214
 msgid "Minimum width:"
@@ -476,18 +471,16 @@ msgid "Minimum width of buttons:"
 msgstr "Minimální šířka tlačítek:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:244
-#, fuzzy
 msgid "Set maximum button width"
-msgstr "Maximální šířka:"
+msgstr "Nastavit maximální šířku tlačítek"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:245
-#, fuzzy
 msgid "Maximum width of buttons:"
-msgstr "Minimální šířka tlačítek:"
+msgstr "Maximální šířka tlačítek:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:246
 msgid "Use flat buttons"
-msgstr ""
+msgstr "Použít plochá tlačítka"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:96
 msgid "Network Details"
@@ -781,9 +774,8 @@ msgid "Default"
 msgstr "Výchozí"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:730
-#, fuzzy
 msgid "Direct connection"
-msgstr "zabezpečené spojení"
+msgstr "Přímé spojení"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:746
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:28
@@ -843,9 +835,8 @@ msgid "Import List"
 msgstr "Importovat seznam"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1125
-#, fuzzy
 msgid "Active Configuration"
-msgstr "&Uložit konfiguraci"
+msgstr "Aktivní konfigurace"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1126
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1332
@@ -1138,9 +1129,8 @@ msgid "Avatar Download Failed - KVIrc"
 msgstr "Stažení Avataru selhalo - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:649
-#, fuzzy
 msgid "Avatar Might Be Too Big - KVIrc"
-msgstr "Stažení Avataru - KVIrc"
+msgstr "Avatar je možná příliš velký - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:650
 msgid "The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big image will not be seen on all the user monitors<br>and will probably be scaled by the remote clients with poor quality<br>algorithms to improve performance. You *should* scale it manually<br>to a sane size (like 800x600) or choose a different image."
@@ -1189,9 +1179,8 @@ msgid "<center>This option enables query window creation when a private notice (
 msgstr "<center>Tato volba umožňuje automatické vytvoření okna query, když je přijato soukromé ohlášení (NOTICE).<br>Pokud ji vypnete, soukromé ohlášení se budou zobrazovat v aktivním okně, nebo na běžném kanále.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:62
-#, fuzzy
 msgid "Always open queries as minimized"
-msgstr "Otevřít vše minimalizovaně"
+msgstr "Vždy otevřít query minimalizovaně"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:66
 msgid "<center>This option causes newly created query windows to be immediately minimized.<br>Enable this if you don't like queries popping up while you're typing something in a channel. :D</center>"
@@ -1700,7 +1689,7 @@ msgstr "Pryč:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:66
 msgid "Use different color for own nick:"
-msgstr ""
+msgstr "Použít odlišnou barvu pro vlastní přezdívku:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:81
 msgid "Draw nickname grid"
@@ -1906,7 +1895,7 @@ msgstr "Zvýrazňovat slova:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:57
 msgid "Word splitters:"
-msgstr ""
+msgstr "Rozdělovače slov:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:59
 msgid "Highlight messages containing my nickname"
@@ -2252,9 +2241,8 @@ msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Povolit ident službu (špatné na UNIXu!)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
-#, fuzzy
 msgid "Output identd messages to:"
-msgstr "Opouštěcí zpráva"
+msgstr "Výstup identd zpráv do:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:218
 msgid "Active window"
@@ -2265,13 +2253,12 @@ msgid "Console"
 msgstr "Konzole"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:220
-#, fuzzy
 msgid "Do not show any identd messages"
-msgstr "Nezobrazovat barvy ve zprávách uživatelů"
+msgstr "Nezobrazovat žádné identd zprávy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:237
 msgid "Enable ident service only while connecting to server"
-msgstr ""
+msgstr "Povolit ident službu pouze během připojování k serveru"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:240
 msgid "Ident username:"
@@ -2335,7 +2322,7 @@ msgstr "Odstranit barvy v souborech logů"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
 msgid "Auto flush logs every"
-msgstr ""
+msgstr "Auto flush logů každý"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
 msgid " min"
@@ -2354,9 +2341,8 @@ msgid "<center>This option will cause KVIrc to minimize the console window after
 msgstr "<center>Tato volba způsobí, že KVIrc minimalizuje konzolové okno po úspěšném přihlášení na server.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:55
-#, fuzzy
 msgid "Show network name in console taskbar entry"
-msgstr "Zobrazit ikony oken v liště"
+msgstr "Zobrazit název sítě v taskbaru konzole"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:57
 msgid "<center>This option will cause KVIrc to show the network name as the console taskbar entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>"
@@ -2421,14 +2407,12 @@ msgid "<center>This option causes newly created channel windows to be immediatel
 msgstr "<center>Tato volba způsobí, že se nově vytvořená query okna okamžitě minimalizují.<br>Zapněte, pokud nemáte rádi vyskakující query, zrovna když píšete někomu na kanálu. :D</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:168
-#, fuzzy
 msgid "Log joined channels history"
-msgstr "Seznam registrovaných kanálů:"
+msgstr "Logovat historii příchodů do kanálů"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:170
-#, fuzzy
 msgid "Default ban mask:"
-msgstr "Výchozí pryč(away) zpráva:"
+msgstr "Výchozí maska banu:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:188
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:202
@@ -2491,7 +2475,7 @@ msgstr "Automatická detekce"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:69
 msgid "en"
-msgstr ""
+msgstr "en"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
 msgid "Unable to write language information to"
@@ -2660,9 +2644,8 @@ msgid "Automatically clear transfer"
 msgstr "Automaticky smazat přenos"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:215
-#, fuzzy
 msgid "<center>This option will cause succesfully terminated transfers to be automatically removed from the transfer window.</center>"
-msgstr "<center>Tato volba způsobí, že se KVIrc po spuštění  automaticky připojí do této sítě</center>"
+msgstr "<center>Tato volba způsobí, že úspěšně dokončené přenosy budou automaticky odebrány z okna přenosů.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
@@ -2723,9 +2706,8 @@ msgid "<center>This is the maximum number of concurrent DCC transfers. KVIrc wil
 msgstr "<center>Toto je maximální počet současně probíhajících DCC přenosů. KVIrc odmítne další požadavky po dosažení tohoto limitu.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:283
-#, fuzzy
 msgid "Tweaks"
-msgstr "Testovat"
+msgstr "Vylepšení"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:285
 msgid "Use fast send (send ahead)"
@@ -2863,17 +2845,15 @@ msgstr "Nové query otevřené"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:293
 msgid "New message in inactive query"
-msgstr ""
+msgstr "Nové zprávy v neaktivním query"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:296
-#, fuzzy
 msgid "Highlighted message in inactive window"
-msgstr "Zvýrazňovat zprávy obsahující vlastní přezdívku"
+msgstr "Zvýrazněné zprávy v neaktivním okně"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:299
-#, fuzzy
 msgid "Me have been kicked"
-msgstr "Máte vzkaz od"
+msgstr "Byl(a) jsem vykopnut(a)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:39
 msgid "Selection background color"
@@ -2945,7 +2925,7 @@ msgstr "\"Smart\" barvy přezdívek"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:91
 msgid "Use same colors as in the userlist"
-msgstr ""
+msgstr "Použít stejné barvy jako v seznamu přezdívek"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:93
 msgid "Show nicknames in bold"
@@ -3114,7 +3094,7 @@ msgstr "čas,ping"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.h:37
 msgid "authentication,identify"
-msgstr ""
+msgstr "autentifikace,identifikace"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.h:31
 msgid "Language"
@@ -3122,7 +3102,7 @@ msgstr "Jazyk"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.h:34
 msgid "language,encoding,charset,codepage"
-msgstr ""
+msgstr "jazyk,kódování,znaková sada,kódová stránka"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:28
 msgid "Contacts"
@@ -3130,7 +3110,7 @@ msgstr "Kontakty"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:30
 msgid "notify,buddy,buddies,friends"
-msgstr ""
+msgstr "oznámení,přítel,přátelé,kamarádi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:42
 msgid "Notifier"
@@ -3148,40 +3128,36 @@ msgstr "Text"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:35
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:49
 msgid "theme,colors,output"
-msgstr ""
+msgstr "motiv,barvy,výstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:52
-#, fuzzy
 msgid "Message Style"
-msgstr "Typ zprávy"
+msgstr "Styl zprávy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:56
 msgid "theme,privmsg,output,format"
-msgstr ""
+msgstr "motiv,soukromé zprávy,výstup,formát"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:67
 msgid "Timestamp"
 msgstr "Měření času"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:71
-#, fuzzy
 msgid "time,timestamp"
-msgstr "Měření času"
+msgstr "čas, měření času"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:88
-#, fuzzy
 msgid "Message Colors"
-msgstr "Barvy přezdívek"
+msgstr "Barvy zpráv"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:89
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:169
 msgid "theme,colors,messages,output"
-msgstr ""
+msgstr "motiv,barvy,zprávy,výstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:168
-#, fuzzy
 msgid "Color Set"
-msgstr "Barvy"
+msgstr "Sada barev"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.h:32
 msgid "Avatars"
@@ -3193,7 +3169,7 @@ msgstr "Zvuk"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:48
 msgid "sound,xmms,audio,play,amarok"
-msgstr ""
+msgstr "zvuk,xmms,audio,přehrávání,amarok"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:81
 msgid "Sounds"
@@ -3201,7 +3177,7 @@ msgstr "Zvuky"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:83
 msgid "sound,events"
-msgstr ""
+msgstr "zvuk,události"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.h:28
 msgid "URL handlers"
@@ -3209,7 +3185,7 @@ msgstr "URL handlery"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.h:31
 msgid "url,programs"
-msgstr ""
+msgstr "url,programy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.h:29
 msgid "Tray icon"
@@ -3217,7 +3193,7 @@ msgstr "Ikona panelu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.h:31
 msgid "tray,dockwidget"
-msgstr ""
+msgstr "lišta,dokovací widget"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tools.h:33
 msgid "Tools"
@@ -3236,9 +3212,8 @@ msgid "Text icons"
 msgstr "Textové ikony"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.h:31
-#, fuzzy
 msgid "smileys,emoticons"
-msgstr "milisekund"
+msgstr "smajlíky,emotikony"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:34
 msgid "Output"
@@ -3246,13 +3221,13 @@ msgstr "Výstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:48
 msgid "Look"
-msgstr ""
+msgstr "Vzhled"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:68
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:97
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:101
 msgid "Features"
-msgstr ""
+msgstr "Vlastnosti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:46
 msgid "Media Types"
@@ -3260,7 +3235,7 @@ msgstr "Typy médií"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:48
 msgid "file,audio,video,programs"
-msgstr ""
+msgstr "soubor,audio,video,programy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:33
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:35
@@ -3277,23 +3252,21 @@ msgid "Transparency"
 msgstr "Průhlednost"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:48
-#, fuzzy
 msgid "theme,background"
-msgstr "Pozadí"
+msgstr "motiv,pozadí"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:74
-#, fuzzy
 msgid "Window Captions"
-msgstr "Operace s okny"
+msgstr "Popisky oken"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:75
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:88
 msgid "theme,mdi"
-msgstr ""
+msgstr "motiv,mdi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:87
 msgid "Workspace"
-msgstr ""
+msgstr "Pracovní plocha"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:100
 msgid "ToolBar Applets"
@@ -3301,7 +3274,7 @@ msgstr "Aplety Nástrojové lišty"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:101
 msgid "theme,toolbar"
-msgstr ""
+msgstr "motiv,nástrojová lišta"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.h:150
 msgid "connection"
@@ -3313,7 +3286,7 @@ msgstr "Ochrana"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.h:36
 msgid "ctcp,flood"
-msgstr ""
+msgstr "ctcp,zahlcení"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:144
 msgid "Avatar"
@@ -3325,11 +3298,11 @@ msgstr "Anti-spam"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:32
 msgid "Verbosity And Output"
-msgstr ""
+msgstr "Upovídanost a Výstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:34
 msgid "debug"
-msgstr ""
+msgstr "ladění"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.h:28
 msgid "Logging"
@@ -3337,7 +3310,7 @@ msgstr "Logování"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.h:29
 msgid "save,output"
-msgstr ""
+msgstr "ukládání,výstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:32
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:50
@@ -3346,7 +3319,7 @@ msgstr "Vstup"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:33
 msgid "theme,colors,text"
-msgstr ""
+msgstr "motiv,barvy,text"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:33
 msgid "Taskbar"
@@ -3370,9 +3343,8 @@ msgid "Proxy Hosts"
 msgstr "Proxy hostitelé"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.h:54
-#, fuzzy
 msgid "connection,servers"
-msgstr "Spojení se serverem ztraceno"
+msgstr "připojení,servery"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.h:28
 msgid "Alert/Highlight"
@@ -3396,26 +3368,23 @@ msgstr "Uživatelé"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:31
 msgid "theme,userlist,channel"
-msgstr ""
+msgstr "motiv,seznam přezdívek,kanál"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:45
-#, fuzzy
 msgid "theme,userlist,channel,background"
-msgstr "Pozadí"
+msgstr "motiv,seznam přezdívek,kanál,pozadí"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:66
-#, fuzzy
 msgid "theme,userlist,channel,colors"
-msgstr "kanál"
+msgstr "motiv,seznam přezdívek,kanál,barvy"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:81
 msgid "Nickname Grid"
 msgstr "Mřížka přezdívky"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:82
-#, fuzzy
 msgid "theme,userlist,channel,grid"
-msgstr "Pozadí"
+msgstr "motiv,seznam přezdívek,kanál,mřížka"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:102
 msgid "userlist,channel"
@@ -3427,7 +3396,7 @@ msgstr "Návěstí"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.h:30
 msgid "theme,topic"
-msgstr ""
+msgstr "motiv,téma"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.h:28
 msgid "Scripting Engine"
@@ -3435,7 +3404,7 @@ msgstr "Skriptovací nástroj"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.h:29
 msgid "scripting,kvs,debug"
-msgstr ""
+msgstr "skriptování,kvs,ladění"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:55
 msgid "SSL"
