@@ -101,11 +101,17 @@ void KviToolBar::mousePressEvent(QMouseEvent *e)
 
 void KviToolBar::moveTo(QT_TOOLBARDOCK_TYPE dock)
 {
+	// FIXME: this should be hidden in Tal
+#ifdef COMPILE_USE_QT4
+	g_pFrame->removeToolBar(this);
+	g_pFrame->addToolBar(dock,this);
+#else //!COMPILE_USE_QT4
 #if QT_VERSION >= 300
 	g_pFrame->moveDockWindow(this,dock);
 #else
 	g_pFrame->moveToolBar(this,dock);
 #endif
+#endif //!COMPILE_USE_QT4
 }
 
 void KviToolBar::moveToTop()

@@ -456,7 +456,7 @@ headers_HEADERS = ../kernel/kvi_action.h \
 ../ui/kvi_toolwindows_container.h
 
 %.moc: %.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 # Command useful to find the moc dependancies
 # DIRS="kernel sparser ui uparser"
@@ -503,16 +503,16 @@ headers_HEADERS = ../kernel/kvi_action.h \
 
 
 ../kvs/moc_%.cpp: ../kvs/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../kernel/moc_%.cpp: ../kernel/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../module/moc_%.cpp: ../module/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../ui/moc_%.cpp: ../ui/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 
 #

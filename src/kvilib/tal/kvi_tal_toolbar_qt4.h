@@ -21,20 +21,27 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-#include "kvi_settings.h"
-#include <q3toolbar.h>
-#include <q3mainwindow.h>
 
+#include "kvi_settings.h"
 #include "kvi_tal_toolbardocktype.h"
 
-class KVILIB_API KviTalToolBar : public Q3ToolBar
+#include <QToolBar>
+#include <QMainWindow>
+#include <QBoxLayout>
+
+
+class KVILIB_API KviTalToolBar : public QToolBar
 {
 	Q_OBJECT
 public:
-	KviTalToolBar(const QString &label,Q3MainWindow *w,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
-	KviTalToolBar(Q3MainWindow *w,const char * name=0);
-		
+	KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
+	KviTalToolBar(QMainWindow *w,const char * name=0);
 	~KviTalToolBar();
+public:
+	QBoxLayout * boxLayout();
+	void setBoxLayout(QBoxLayout *l);
+	bool usesBigPixmaps();
+	void setUsesBigPixmaps(bool b);
 };
 
 #endif //_KVI_TAL_TOOLBAR_QT_H_

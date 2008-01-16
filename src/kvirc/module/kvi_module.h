@@ -141,7 +141,8 @@ class KVIRC_API KviModule : public KviKvsModuleInterface
 	friend class KviUserParser;
 protected:
 	KviModule(kvi_library_t handle,KviModuleInfo * info,const char * name,const char * filename);
-	~KviModule();
+public:
+	~KviModule(); // must be public for KviPointerList
 private:
 	KviStr                                     m_szName;
 	KviStr                                     m_szFileName;

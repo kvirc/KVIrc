@@ -480,6 +480,9 @@ QWidget * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
 	KviIrcContextDisplay * w = new KviIrcContextDisplay(t,"kvirc.irccontextdisplay");
+#ifdef COMPILE_USE_QT4
+	t->addWidget(w);
+#endif
 	registerWidget(w);
 	return w;
 }
@@ -535,6 +538,9 @@ QWidget * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar *t)
 	if(!setupDone())setup();
 	QWidget * w = new KviCustomToolBarSeparator(t,"kvirc.separator");
 	registerWidget(w);
+#ifdef COMPILE_USE_QT4
+	t->addWidget(w);
+#endif
 	return w;
 }
 
@@ -683,6 +689,9 @@ QWidget * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
 			m_szConnectString,
 			this,SLOT(activate()),t,name());
 	registerWidget(b);
+#ifdef COMPILE_USE_QT4
+	t->addWidget(b);
+#endif
 	activeContextStateChanged();
 	return b;
 }
@@ -759,6 +768,7 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 	
 #ifdef COMPILE_USE_QT4
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
+	t->addWidget(b);
 #else
 	b->setShowSubmenuIndicator(true);
 	b->setPopupDelay(1);
@@ -1101,6 +1111,9 @@ QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 			m_szAwayString,
 			this,SLOT(activate()),t,name());
 	registerWidget(b);
+#ifdef COMPILE_USE_QT4
+	t->addWidget(b);
+#endif
 	activeContextStateChanged();
 	return b;
 }

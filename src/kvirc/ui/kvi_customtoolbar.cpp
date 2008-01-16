@@ -272,11 +272,29 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent *e)
 				e->accept(true);
 				int idx = dropIndexAt(mapFromGlobal(QCursor::pos()),0,0);
 				m_pDraggedChild = a->addToCustomToolBar(this);
+#ifdef COMPILE_USE_QT4
+				QWidget * pWidgetToMove = widgetAt(idx);
+				bool bDone = false;
+				QAction * a;
+				if(pWidgetToMove)
+				{
+					a = actionForWidget(pWidgetToMove);
+					if(a)
+					{
+						bDone = true;
+						a = insertWidget(a,m_pDraggedChild);
+					}
+				}
+				if(!bDone)
+					a = addWidget(m_pDraggedChild);
+				a->setVisible(true);
+#else
 				boxLayout()->remove(m_pDraggedChild); // in case it was already added
 				boxLayout()->insertWidget(idx,m_pDraggedChild);
 #ifdef COMPILE_KDE_SUPPORT
 				// bleah ://///
 				insertWidget(-1,m_pDraggedChild->sizeHint().width(),m_pDraggedChild,idx);
+#endif
 #endif
 				QEvent ev(QEvent::LayoutHint);
 				QApplication::sendEvent(this,&ev);
@@ -315,7 +333,11 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 	// find the widget at the current poisition
 	// treating exclude as if it was going to be removed
 	// find also the exclude index if needed
+#ifdef COMPILE_USE_QT4
+	QLayout * l = layout();
+#else
 	QBoxLayout * l = boxLayout();
+#endif
 	QLayoutItem * i = 0;
 	if(excludeIdx)*excludeIdx = -1;
 	int idx = 0;
@@ -390,7 +412,6 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 		}
 	} else {
 		// got it, check for the exclude idx
-		
 		if((iExcludeIdx == -1) || (iExcludeIdx != iMinDistIdx))
 		{
 			// would not put it over exclude idx
@@ -427,107 +448,68 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 
 	return iMinDistIdx;
 
-/*
-	
-	if(orientation() == Qt::Horizontal)
-	{
-		while((i = it.current()))
-		{
-			if(QWidget * w = i->widget())
-			{
-				if((pnt.x() >= w->x()) && (pnt.x() <= (w->x() + w->width())))
-				{
-					if(w == exclude)
-					{
-						if(excludeIdx)*excludeIdx = idx; // found exclude
-						return idx;
-					}
-					// not exclude
-					if(pnt.x() > (w->x() + (w->width() / 2)))idx++; // need to put it on the right!
-					goto jump_outta_here;
-				} else {
-					if(w == exclude)
-					{
-						if(excludeIdx)*excludeIdx = idx; // found exclude
-						idx--; // removing exclude will decrease the index by one
-					}
-				}
-			}
-			idx++;
-			++it;
-		}
-		// either empty toolbar or not added at all, yet
-		if(idx > 0)
-		{
-			// not added yet
-			// ran too far
-			idx--;
-		}
-		if((!i) && (idx > 0))idx--; // ran too far
-	} else {
-		while((i = it.current()))
-		{
-			if(QWidget * w = i->widget())
-			{
-				if((pnt.y() >= w->y()) && (pnt.y() < (w->y() + w->height())))
-				{
-					if(w == exclude)
-					{
-						if(excludeIdx)*excludeIdx = idx; // found exclude
-						return idx;
-					}
-					// not exclude
-					if(pnt.y() > (w->y() + (w->height() / 2)))idx++; // need to put it below!
-					goto jump_outta_here;
-				} else {
-					if(w == exclude)
-					{
-						if(excludeIdx)*excludeIdx = idx; // found exclude
-						idx--; // removing exclude will decrease the index by one
-					}
-				}
-			}
-			idx++;
-			++it;
-		}
-		if((!i) && (idx > 0))idx--; // ran too far
-	}
-
-jump_outta_here:
-
-	if(exclude && excludeIdx)
-	{
-		if(*excludeIdx == -1)
-		{
-			// need to find myself
-			it = l->iterator();
-			*excludeIdx = 0;
-			while((i = it.current()))
-			{
-				if(i->widget() == exclude)break;
-				(*excludeIdx)++;
-				++it;
-			}
-		}
-	}
-
-	return idx;
-*/
 }
+
+#ifdef COMPILE_USE_QT4
+QWidget * KviCustomToolBar::widgetAt(int index)
+{
+	QLayout * l = layout();
+	if(!l)
+		return NULL;
+	QLayoutItem * it = l->itemAt(index);
+	if(!it)
+		return NULL;
+	return it->widget();
+}
+
+QAction * KviCustomToolBar::actionForWidget(QWidget * pWidget)
+{
+	return actionAt(pWidget->x() + 1,pWidget->y() + 1);
+}
+
+#endif
 
 void KviCustomToolBar::drag(QWidget * child,const QPoint &pnt)
 {
 	int me = -1;
 	int idx = dropIndexAt(pnt,child,&me);
+	debug("DROP INDEX IS %d, ME IS %d",idx,me);
 	if(idx == me)
-	{
 		return; // would move over itself
+#ifdef COMPILE_USE_QT4
+	QWidget * pWidgetToMove = widgetAt(idx > me ? idx-1 : idx);
+	debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",idx > me ? idx-1 : idx,pWidgetToMove,child);
+	if(pWidgetToMove == child)
+		return; // hmmm
+	bool bDone = false;
+	QAction * pMyOwnAction = actionForWidget(child);
+	if(!pMyOwnAction)
+		return;
+	QAction * a;
+	removeAction(pMyOwnAction);
+	if(pWidgetToMove)
+	{
+		a = actionForWidget(pWidgetToMove);
+		if(a)
+		{
+			debug("AND GOT ACTION FOR THAT WIDGET");
+
+			bDone = true;
+			a = insertWidget(a,child);
+		}
+	} else {
+		addAction(a);
 	}
+	if(!bDone)
+		a = addWidget(child);
+	a->setVisible(true);
+#else
 	boxLayout()->remove(child);
 	boxLayout()->insertWidget(idx,child);
 #ifdef COMPILE_KDE_SUPPORT
 	// bleah ://///
 	insertWidget(-1,child->width(),child,idx);
+#endif
 #endif
 	QEvent ev(QEvent::LayoutHint);
 	QApplication::sendEvent(this,&ev);
@@ -605,33 +587,68 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 			if((pnt.y() < 0) || (pnt.y() > height()) || (pnt.x() < 0) || (pnt.x() > width()))
 			{
 				// drag out!
+// FIXME: This is screwed up in Qt4.... :/
+#ifdef COMPILE_USE_QT4
+				QDrag * d = new QDrag(this);
+				QMimeData * m = new QMimeData();
+				m->setText(m_pMovedChild->name());
+				d->setMimeData(m);
+#else
 				QDragObject * d = new QTextDrag(m_pMovedChild->name(),this);
+#endif
 				KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->name());
 				if(act)
 				{
 					QPixmap * pixie = act->bigIcon();
+#ifdef COMPILE_USE_QT4
+					if(pixie)
+					{
+						d->setPixmap(*pixie);
+						d->setHotSpot(QPoint(3,3));
+					}
+#else
 					if(pixie)d->setPixmap(*pixie,QPoint(3,3));
+#endif
 				}
 				//d->setPixmap(QPixmap::grabWidget(m_pMovedChild),QPoint(m_pMovedChild->width() / 2,m_pMovedChild->height() / 2));
 				// throw it somewhere else for now
 				if(m_pFilteredChildren)
 					unfilterChild(m_pMovedChild);
+#ifdef COMPILE_USE_QT4
+				QAction * pActionForMovedChild = actionForWidget(m_pMovedChild);
+				if(pActionForMovedChild)
+					pActionForMovedChild->setVisible(false);
+				m_pMovedChild->hide();
+#else
 				m_pMovedChild->hide();
 				m_pMovedChild->reparent(g_pFrame,QPoint(-1000,-1000),false);
+#endif
 				QEvent ev(QEvent::LayoutHint);
 				QApplication::sendEvent(this,&ev);
+#ifdef COMPILE_USE_QT4
+				if(!d->exec(Qt::MoveAction) != Qt::MoveAction)
+#else
 				if(!d->dragMove())
+#endif
 				{
 					// the user has probably failed to remove the action from the toolbar
 					// flash the trashcan in the customize toolbars dialog
 					KviActionManager::instance()->emitRemoveActionsHintRequest();
 					// will filter it as ChildInserted
+#ifndef COMPILE_USE_QT4
 					m_pMovedChild->reparent(this,QPoint(0,0),false);
+#endif
+#ifdef COMPILE_USE_QT4
+					QAction * pActionForMovedChild = actionForWidget(m_pMovedChild);
+					if(pActionForMovedChild)
+						pActionForMovedChild->setVisible(false);
+#else
 					boxLayout()->insertWidget(0,m_pMovedChild);
 					m_pMovedChild->show();
 #ifdef COMPILE_KDE_SUPPORT
 					// bleah ://///
 					insertWidget(-1,m_pMovedChild->width(),m_pMovedChild,0);
+#endif
 #endif
 					QEvent ev(QEvent::LayoutHint);
 					QApplication::sendEvent(this,&ev);

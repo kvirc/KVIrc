@@ -38,6 +38,10 @@
 #include <qcursor.h>
 #include <qdatetime.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <q3textstream.h>
+	#include <QTextStream>
+#endif
 
 static QPixmap * g_pUrlIconPixmap = 0;
 static KviUrlAction * g_pUrlAction = 0;

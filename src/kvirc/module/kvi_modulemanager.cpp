@@ -323,6 +323,10 @@ bool KviModuleManager::hasLockedModules()
 void KviModuleManager::cleanupUnusedModules()
 {
 	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
+
+	KviPointerList<KviModule> lModulesToUnload;
+	lModulesToUnload.setAutoDelete(false);
+
 	while(it.current())
 	{
 		if(it.current()->secondsSinceLastAccess() > KVI_OPTION_UINT(KviOption_uintModuleCleanupTimeout))
@@ -330,28 +334,36 @@ void KviModuleManager::cleanupUnusedModules()
 			if(it.current()->moduleInfo()->can_unload)
 			{
 				if((it.current()->moduleInfo()->can_unload)(it.current()))
-				{
-					unloadModule(it.current());
-					continue;
-				} else {
+					lModulesToUnload.append(it.current());
+				else {
 					// the module don't want to be unloaded
 					// keep it memory for a while
 					it.current()->updateAccessTime();
 				}
 			} else {
 				if(!(it.current()->isLocked()))
-				{
-					unloadModule(it.current());
-					continue;
-				}
+					lModulesToUnload.append(it.current());
 			}
 		}
 		++it;
 	}
+	
+	for(KviModule * pModule = lModulesToUnload.first();pModule;pModule = lModulesToUnload.next())
+		unloadModule(pModule);
 }
 
 void KviModuleManager::unloadAllModules()
 {
 	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
-	while(it.current())unloadModule(it.current());
+
+	KviPointerList<KviModule> lModulesToUnload;
+	lModulesToUnload.setAutoDelete(false);
+	while(KviModule * pModule = it.current())
+	{
+		lModulesToUnload.append(pModule);
+		++it;
+	}
+
+	for(KviModule * pModule = lModulesToUnload.first();pModule;pModule = lModulesToUnload.next())
+		unloadModule(pModule);
 }

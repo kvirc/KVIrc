@@ -26,8 +26,6 @@
 
 #include "kvi_settings.h"
 
-#include "kvi_toolbar.h"
-
 #include "kvi_pointerlist.h"
 #include <qframe.h>
 #include "kvi_tal_tooltip.h"
@@ -76,9 +74,38 @@ public:
 // This is the basic interface that all the external classes should see
 //
 
+// Please note that Qt3 moc skips the  *_SKIP_BEGIN -> *_SKIP_END blocks
+// while the Qt4 moc skips the Q_MOC_RUN ifdef block.. so...
+
+// Qt4 version
+
+// If you get failures (undefined references) in some non-autotools based
+// build system that uses Qt4 then you must add the -DCOMPILE_USE_QT4
+// commandline parameter to moc (at leat) when parsing this file.
+
+// MOC_SKIP_BEGIN
+#ifdef COMPILE_USE_QT4
+
+#include <QDockWidget>
+
+class KVIRC_API KviTaskBarBase : public QDockWidget
+{
+	Q_OBJECT
+#endif //COMPILE_USE_QT4
+// MOC_SKIP_END
+
+// Qt3 version
+#ifndef Q_MOC_RUN
+#ifndef COMPILE_USE_QT4
+
+#include "kvi_toolbar.h"
+
 class KVIRC_API KviTaskBarBase : public KviToolBar
 {
 	Q_OBJECT
+#endif
+#endif
+
 public:
 	KviTaskBarBase();
 	virtual ~KviTaskBarBase();
@@ -126,7 +153,10 @@ protected:
 #if QT_VERSION >= 300
 	virtual void contextMenuEvent(QContextMenuEvent *e);
 #endif
-	virtual void drawButtonLabel ( QPainter * );
+	virtual void drawButtonLabel(QPainter *p);
+#ifdef COMPILE_USE_QT4
+	virtual void paintEvent(QPaintEvent * e);
+#endif
 public:
 	virtual bool active(){ return m_bActive; };
 	virtual void highlight(int iLevel = 1);

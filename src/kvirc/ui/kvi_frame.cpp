@@ -133,10 +133,16 @@ KviFrame::KviFrame()
 
 	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
-	
+#ifdef COMPILE_USE_QT4
+	setMenuWidget(m_pMenuBar);
+#endif
+
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
 		m_pStatusBar = new KviStatusBar(this);
+#ifdef COMPILE_USE_QT4
+		setStatusBar(m_pStatusBar);
+#endif
 		// torque: moved out of status bar constructor
 		// because module init functions exectued in load()
 		// couldn't access the status bar via g_pFrame->mainStatusBar()
@@ -1052,8 +1058,13 @@ void KviFrame::toggleStatusBar()
 
 		m_pStatusBar = new KviStatusBar(this);
 		m_pStatusBar->load();
+#ifdef COMPILE_USE_QT4
+		setStatusBar(m_pStatusBar);
+#endif
 		m_pStatusBar->show();
+#ifndef COMPILE_USE_QT4
 		setUpLayout();
+#endif //!COMPILE_USE_QT4
 	}
 }
 
@@ -1182,6 +1193,7 @@ bool KviFrame::focusNextPrevChild(bool next)
 // Toolbar positioning stuff
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 void KviFrame::saveToolBarPositions()
 {
 	QString szTemp;
@@ -1190,12 +1202,15 @@ void KviFrame::saveToolBarPositions()
 	QFile f(szTemp);
 	if(f.open(IO_WriteOnly | IO_Truncate))
 	{
+#ifdef COMPILE_USE_QT4
+		f.write(saveState(1));
+#else //!COMPILE_USE_QT4
 		QTextStream ts(&f);
 		ts << *this;
 		f.close();
+#endif //!COMPILE_USE_QT4
 	}
 }
-
 
 void KviFrame::restoreToolBarPositions()
 {
@@ -1208,15 +1223,26 @@ void KviFrame::restoreToolBarPositions()
 	
 	if(f.open(IO_ReadOnly))
 	{
+#ifdef COMPILE_USE_QT4
+		if(!restoreState(f.readAll(),1))
+			debug("Error while restoring toolbars position");
+#else //!COMPILE_USE_QT4
 		QTextStream ts(&f);
 		ts >> *this;
 		f.close();
+#endif //!COMPILE_USE_QT4
 	} else {
 		bNeedDefaults = true;
 	}
 
 	if(m_pTaskBar->inherits("KviTreeTaskBar"))
 	{
+#ifdef COMPILE_USE_QT4
+		// ensure that it is not too wide
+		m_pTaskBar->setMaximumWidth(600);
+		if(m_pTaskBar->width() > 600)
+			m_pTaskBar->setFixedWidth(250);
+#else //!COMPILE_USE_QT4
 		QDockArea * a = m_pTaskBar->area();
 		if((a == topDock()) || (a == bottomDock()))
 		{
@@ -1231,24 +1257,7 @@ void KviFrame::restoreToolBarPositions()
 		// ensure that it is not too wide
 		if(m_pTaskBar->width() > 600)
 			m_pTaskBar->setFixedExtentWidth(250);
-		/*
-		if(m_pTaskBar->width() > 500)
-		{
-			a = m_pTaskBar->area();
-			QRect r = a->rect();
-			a->resize(500,a->height());
-			QPoint p = m_pTaskBar->mapToGlobal(QPoint(0,0));
-			QRect r = m_pTaskBar->rect();
-			r.setWidth(180);
-			bool bSwapOrientation = false;
-			if(m_pTaskBar->orientation() != Vertical)bSwapOrientation = true;
-			debug("MOVING TO POINT %d,%d RECT %d,%d,%d,%d",
-				p.x(),p.y(),r.x(),r.y(),r.width(),r.height());
-			a->removeDockWindow(m_pTaskBar,true,false);
-			a->moveDockWindow(m_pTaskBar,p,r,bSwapOrientation);
-		}
-		*/
-
+#endif //!COMPILE_USE_QT4
 	} /*else if(m_pTaskBar->inherits("KviClassicTaskBar"))
 	{
 		QDockArea * a = m_pTaskBar->area();
@@ -1260,9 +1269,11 @@ void KviFrame::restoreToolBarPositions()
 			bottomDock()->lineUp(true);
 		}
 	}*/
-	
+
+#ifndef COMPILE_USE_QT4
 	if(bNeedDefaults)
 		lineUpDockWindows(false);
+#endif //!COMPILE_USE_QT4
 }
 
 
@@ -1271,15 +1282,27 @@ void KviFrame::createTaskBar()
 	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListTaskBar))
 	{
 		m_pTaskBar = new KviTreeTaskBar();
+#ifdef COMPILE_USE_QT4
+		m_pTaskBar->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+		addDockWidget(Qt::LeftDockWidgetArea,m_pTaskBar);
+#else //!COMPILE_USE_QT4
 		setDockEnabled(m_pTaskBar,Qt::DockTop,false);
 		setDockEnabled(m_pTaskBar,Qt::DockBottom,false);
+#endif //!COMPILE_USE_QT4
 	} else {
 		m_pTaskBar = new KviClassicTaskBar();
+#ifdef COMPILE_USE_QT4
+		m_pTaskBar->setAllowedAreas(Qt::AllDockWidgetAreas);
+		addDockWidget(Qt::BottomDockWidgetArea,m_pTaskBar);
+#else //!COMPILE_USE_QT4
 		setDockEnabled(m_pTaskBar,Qt::DockTop,true);
 		setDockEnabled(m_pTaskBar,Qt::DockBottom,true);
+#endif //!COMPILE_USE_QT4
 	}
+#ifndef COMPILE_USE_QT4
 	setDockEnabled(m_pTaskBar,Qt::DockLeft,true);
 	setDockEnabled(m_pTaskBar,Qt::DockRight,true);
+#endif //!COMPILE_USE_QT4
 }
 
 void KviFrame::recreateTaskBar()
@@ -1292,7 +1315,9 @@ void KviFrame::recreateTaskBar()
 	{
 		w->destroyTaskBarItem();
 	}
+#ifndef COMPILE_USE_QT4
 	removeDockWindow(m_pTaskBar);
+#endif //!COMPILE_USE_QT4
 	delete m_pTaskBar;
 	createTaskBar();
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
@@ -1300,7 +1325,8 @@ void KviFrame::recreateTaskBar()
 		w->createTaskBarItem();
 	}
 	restoreToolBarPositions();
-	
+
+
 	/*
 	QString szNewClass = m_pTaskBar->className();
 	if(szOldClass != szNewClass)

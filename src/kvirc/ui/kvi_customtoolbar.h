@@ -71,6 +71,10 @@ protected:
 	virtual void childEvent(QChildEvent *e);
 	virtual bool eventFilter(QObject *o,QEvent *e);
 	int dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excludeIdx);
+#ifdef COMPILE_USE_QT4
+	QWidget * widgetAt(int index);
+	QAction * actionForWidget(QWidget * pWidget);
+#endif
 	void drag(QWidget * child,const QPoint &pnt);
 	void filterChild(QObject * o);
 	void unfilterChild(QObject * o);

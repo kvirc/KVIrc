@@ -25,7 +25,7 @@
 #include "kvi_settings.h"
 //#define COMPILE_USE_QT4
 #ifdef COMPILE_USE_QT4
-
+/*
 	#define QT_TOOLBARDOCK_TYPE Qt::Dock
 	#define QT_DOCK_TOP Qt::DockTop
 	#define QT_DOCK_LEFT Qt::DockLeft
@@ -34,7 +34,7 @@
 	#define QT_DOCK_MINIMIZED Qt::DockMinimized
 	#define QT_DOCK_TORNOFF Qt::DockTornOff
 	#define QT_DOCK_UNMANAGED Qt::DockUnmanaged
-	/*
+*/
 	// We will need these when we'll use the real QToolBar in Qt 4.x
 	#define QT_TOOLBARDOCK_TYPE Qt::ToolBarArea
 	#define QT_DOCK_TOP Qt::TopToolBarArea
@@ -45,7 +45,7 @@
 	#define QT_DOCK_MINIMIZED Qt::TopToolBarArea
 	#define QT_DOCK_TORNOFF Qt::TopToolBarArea
 	#define QT_DOCK_UNMANAGED Qt::TopToolBarArea
-	*/
+
 #else
 	#if QT_VERSION >= 300
 		#define QT_TOOLBARDOCK_TYPE Qt::Dock

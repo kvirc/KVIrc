@@ -238,26 +238,26 @@ headers_HEADERS = \
 
 
 ../ext/moc_%.cpp: ../ext/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../file/moc_%.cpp: ../file/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../irc/moc_%.cpp: ../irc/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../net/moc_%.cpp: ../net/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../system/moc_%.cpp: ../system/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 ../tal/moc_%.cpp: ../tal/%.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 
 %.moc: %.h
-	$(SS_QT_MOC) $< -o $@
+	$(SS_QT_MOC) $(SS_QT_MOC_FLAGS) $< -o $@
 
 #%.h.gch: %.h
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c $< -o $@

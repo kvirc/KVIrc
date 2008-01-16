@@ -2517,11 +2517,14 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	
 	if test "$SS_USE_QT4" = "no"; then
 		SS_QT_MOC=$SS_QT3_MOC
+		SS_QT_MOC_FLAGS=""
 	else
 		SS_QT_MOC=$SS_QT4_MOC
+		SS_QT_MOC_FLAGS="-DCOMPILE_USE_QT4"
 	fi
 	
 	AC_SUBST(SS_QT_MOC)
+	AC_SUBST(SS_QT_MOC_FLAGS)
 
  	build_date=`date -u`
 

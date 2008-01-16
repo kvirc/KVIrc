@@ -62,21 +62,35 @@
 #endif
 #include <qevent.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <QPaintEvent>
+#endif
+
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern QPixmap * g_pActivityMeterPixmap;
 
+// FIXME: This should be renamed to "Window List"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviTaskBarBase
 //
 
 KviTaskBarBase::KviTaskBarBase()
+#ifdef COMPILE_USE_QT4
+: QDockWidget(__tr2qs("Taskbar"),g_pFrame)
+#else
 : KviToolBar(__tr2qs("Taskbar"),QT_DOCK_BOTTOM,false,"taskbar")
+#endif
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseTaskBarActivityMeter)
+#ifdef COMPILE_USE_QT4
+	setObjectName(__tr2qs("taskbar"));
+	setFeatures(QDockWidget::DockWidgetMovable);
+#endif //COMPILE_USE_QT4
 	m_pActivityMeterTimer = new QTimer();
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
 	m_pActivityMeterTimer->start(5000);
@@ -246,17 +260,35 @@ void KviTaskBarButton::setActive(bool bActive)
 	update();
 }
 
-void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
+#ifdef COMPILE_USE_QT4
+void KviTaskBarButton::paintEvent(QPaintEvent * e)
+{
+	QPainter p(this);
+	QStyleOption opt;
+	opt.initFrom(this);
+	if(isOn())
+		opt.state = QStyle::State_On | QStyle::State_Active;
+	style()->drawPrimitive(QStyle::PE_PanelButtonTool,&opt,&p,this);
+	drawButtonLabel(&p);
+}
+#endif
+
+void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 {
 	QRect distRect = painter->window();
 	int iHeight = distRect.height();
 	int iWidth = distRect.width();
 
+	QPainter * pPainter;
+#ifdef COMPILE_USE_QT4
+	pPainter = painter;
+#else //!COMPILE_USE_QT4
 	KviDoubleBuffer db(iWidth,iHeight);
 	QPixmap * pMemBuffer = db.pixmap();
 	QPainter p(pMemBuffer);
 	bitBlt(pMemBuffer,0,0,painter->device(),distRect.x(),distRect.y(),iWidth,iHeight);
-
+	pPainter = &p;
+#endif //!COMPILE_USE_QT4
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIrcContextIndicator))
 	{
 		iHeight -= KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT;
@@ -266,9 +298,9 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 			QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
 			base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 				(base.blue() + cntx.blue()) >> 1);
-			p.fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,base);
+			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,base);
 		} else {
-			p.fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,colorGroup().brush(QColorGroup::Background));
+			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,colorGroup().brush(QColorGroup::Background));
 		}
 	}
 
@@ -276,7 +308,7 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
 	{
-		p.drawPixmap(3,3,*(m_pWindow->myIconPtr()));
+		pPainter->drawPixmap(3,3,*(m_pWindow->myIconPtr()));
 		daX = 20;
 	}
 
@@ -286,7 +318,7 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 		unsigned int uActivityTemperature;
 		if(m_pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
 		{
-			p.drawPixmap(daX,3,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			pPainter->drawPixmap(daX,3,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
 			daX = 27;
 		}
 	}
@@ -297,9 +329,9 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 	{
 		// paint the progress bar
 		int wdth = (m_iProgress * cRect.width()) / 100;
-		p.setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarProgressBar));
-		p.drawRect(cRect);
-		p.fillRect(daX,3,wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTaskBarProgressBar));
+		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarProgressBar));
+		pPainter->drawRect(cRect);
+		pPainter->fillRect(daX,3,wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTaskBarProgressBar));
 	}
 
 	QRect bRect;
@@ -309,7 +341,7 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 
 	if(m_bActive)
 	{
-		p.setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarNormalText));
+		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarNormalText));
 	} else {
 		int iLevel;
 	
@@ -322,10 +354,10 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 			case 4: iLevel = KviOption_colorTaskBarHighlight4Text; break;
 			default: iLevel = KviOption_colorTaskBarHighlight5Text; break;
 		}
-		p.setPen(KVI_OPTION_COLOR(iLevel));
+		pPainter->setPen(KVI_OPTION_COLOR(iLevel));
 	}
 
-	p.setFont(KVI_OPTION_FONT(KviOption_fontTaskbar));
+	pPainter->setFont(KVI_OPTION_FONT(KviOption_fontTaskbar));
 
 	switch(m_pWindow->type())
 	{
@@ -333,7 +365,7 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 		{
 			QFont f = QFont(KVI_OPTION_FONT(KviOption_fontTaskbar));
 			f.setBold(true);
-			p.setFont(f);
+			pPainter->setFont(f);
 			KviTaskBarBase::getTextForConsole(szText,(KviConsole *)m_pWindow);
 		}
 		break;
@@ -355,28 +387,30 @@ void KviTaskBarButton::drawButtonLabel ( QPainter * painter)
 		QString tmp = QChar('(');
 		tmp += szText;
 		tmp += QChar(')');
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,-1,&bRect);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,-1,&bRect);
 	} else {
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1,&bRect);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1,&bRect);
 	}
 
 	if(bRect.width() > cRect.width())
 	{
-		p.setClipRect(cRect.right(),cRect.y(),10,cRect.height());
-		QColor base = p.pen().color();
+		pPainter->setClipRect(cRect.right(),cRect.y(),10,cRect.height());
+		QColor base = pPainter->pen().color();
 		QColor bg   = colorGroup().color(QColorGroup::Background);
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
-		p.setPen(base);
+		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1);
-		p.setClipRect(cRect.right(),cRect.y(),5,cRect.height());
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1);
+		pPainter->setClipRect(cRect.right(),cRect.y(),5,cRect.height());
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
-		p.setPen(base);
+		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1);
 	}
-	p.setClipping(FALSE);
+#ifndef COMPILE_USE_QT4
+	pPainter->setClipping(FALSE);
 	painter->drawPixmap(0,0,*pMemBuffer,distRect.x(),distRect.y(),iWidth,iHeight);
+#endif
 }
 
 
@@ -447,22 +481,25 @@ KviClassicTaskBar::KviClassicTaskBar()
 
 	m_pBase = new QWidget(this);
 //	m_pBase->setBackgroundMode(NoBackground);
+#ifdef COMPILE_USE_QT4
+	setWidget(m_pBase);
 
+	m_pBase->setMinimumWidth(KVI_TASKBAR_MIN_WIDTH);
+	setMinimumWidth(KVI_TASKBAR_MIN_WIDTH);
+#else //!COMPILE_USE_QT4
 	setStretchableWidget(m_pBase);
 
 	setVerticalStretchable(true);
 	setHorizontalStretchable(true);
-
+#endif //!COMPILE_USE_QT4
 	//m_pBase->setMinimumWidth(KVI_TASKBAR_MIN_WIDTH);
 	//setMinimumWidth(KVI_TASKBAR_MIN_WIDTH);
 
 	m_pBase->setMinimumHeight(m_iButtonHeight+5);
 	setMinimumHeight(m_iButtonHeight+5);
 	
+#ifndef COMPILE_USE_QT4
 	setResizeEnabled( true );
-#ifdef COMPILE_USE_QT4
-	connect(this,SIGNAL(orientationChanged(Qt::Orientation)),this,SLOT(orientationChangedSlot(Qt::Orientation)));
-#else
 	connect(this,SIGNAL(orientationChanged(Orientation)),this,SLOT(orientationChangedSlot(Orientation)));
 #endif
 }
@@ -475,7 +512,9 @@ KviClassicTaskBar::~KviClassicTaskBar()
 
 void KviClassicTaskBar::orientationChangedSlot(Qt::Orientation o)
 {
+#ifndef COMPILE_USE_QT4
 	if (orientation() == Qt::Horizontal) m_pBase->setMinimumHeight(m_iButtonHeight);
+#endif
 	doLayout();
 }
 
@@ -617,8 +656,31 @@ void KviClassicTaskBar::doLayout()
 		rows++;
 		totCount -= btnsInRow;
 	}
-	
+
+#ifdef COMPILE_USE_QT4
+	if(isFloating() || ((g_pFrame->dockWidgetArea(this) != Qt::BottomDockWidgetArea) && (g_pFrame->dockWidgetArea(this) != Qt::TopDockWidgetArea)))
+	{
+		QDockWidget::DockWidgetFeatures f = features();
+		if(f & QDockWidget::DockWidgetVerticalTitleBar)
+		{
+			f &= ~QDockWidget::DockWidgetVerticalTitleBar;
+			setFeatures(f);
+		}
+	} else {
+		QDockWidget::DockWidgetFeatures f = features();
+		if(!(f & QDockWidget::DockWidgetVerticalTitleBar))
+		{
+			f |= QDockWidget::DockWidgetVerticalTitleBar;
+			setFeatures(f);
+		}
+	}
+#endif
+
+#ifdef COMPILE_USE_QT4
+	if ((width() > height()) && 
+#else
 	if ((orientation() == Qt::Horizontal) &&
+#endif
 		(((unsigned int)rows) > m_pBase->height() / m_iButtonHeight ))
 	{
 		rows = m_pBase->height() / m_iButtonHeight;
@@ -648,7 +710,13 @@ void KviClassicTaskBar::doLayout()
 			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
 		}
 		
-		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) && (orientation() == Qt::Horizontal))
+		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) &&
+#ifdef COMPILE_USE_QT4
+				(width() > height())
+#else
+				(orientation() == Qt::Horizontal)
+#endif
+			)
 				theWidth = KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth);
 
 		b->setGeometry(theX,theY,theWidth,m_iButtonHeight);
@@ -674,6 +742,7 @@ void KviClassicTaskBar::applyOptions()
 
 void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 {
+/*
 #ifdef COMPILE_USE_QT4
 	if(orientation() == Qt::Horizontal)
 	{
@@ -683,6 +752,7 @@ void KviClassicTaskBar::resizeEvent(QResizeEvent *e)
 		resize(width(),iRows*m_iButtonHeight);
 	}
 #endif
+*/
 	KviTaskBarBase::resizeEvent(e);
 	doLayout();
 }
@@ -1153,10 +1223,16 @@ KviTreeTaskBar::KviTreeTaskBar()
 	m_pListView->addColumn(__tr2qs("Window List"),135);
 	m_pListView->setAllColumnsShowFocus(true);
 	m_pListView->setMultiSelection(false);
+
+#ifdef COMPILE_USE_QT4
+	setWidget(m_pListView);
+#else //!COMPILE_USE_QT4
 	setStretchableWidget(m_pListView);
 
 	setVerticalStretchable(true);
 	setHorizontalStretchable(true);
+#endif //!COMPILE_USE_QT4
+
 
 	// FIXME: this code is useless ?
 	if(KVI_OPTION_UINT(KviOption_uintTreeTaskBarMinimumWidth) < 48)
@@ -1190,12 +1266,16 @@ KviTreeTaskBar::KviTreeTaskBar()
 	
 	m_pListView->header()->setResizeEnabled(true);
 
-	//setMaximumWidth(600);
+#ifdef COMPILE_USE_QT4
+	setMaximumWidth(600);
+#endif
 
 	m_pListView->viewport()->installEventFilter(this);
 
 #if QT_VERSION >= 300
+#ifndef COMPILE_USE_QT4
     setResizeEnabled(true);
+#endif
 #endif
 
 	m_pToolTip = new KviDynamicToolTip(m_pListView->viewport(),"tree_taskbar_tooltip");

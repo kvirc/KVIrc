@@ -418,6 +418,9 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 			visibleName(),
 			visibleName(),
 			this,SLOT(activate()),pParentToolBar,m_szName);
+#ifdef COMPILE_USE_QT4
+	pParentToolBar->addWidget(b);
+#endif
 	if(!isEnabled())b->setEnabled(false);
 	registerWidget(b);
 	return b;
