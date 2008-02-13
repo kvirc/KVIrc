@@ -88,6 +88,10 @@ fso.CopyFile PROJECTDIR + "/data/manifests/Microsoft.VC80.CRT.modules.manifest",
 fso.CopyFile PROJECTDIR + "/data/defscript/default.kvs", PACKAGEDIR + "/defscript/", true
 fso.CopyFile PROJECTDIR + "/data/defscript/theme-install.kvs", PACKAGEDIR + "/defscript/", true
 fso.CopyFile PROJECTDIR + "/data/defscript/installer.kvs", PACKAGEDIR + "/defscript/", true
+fso.CopyFile PROJECTDIR + "/data/defscript/aliases.kvs", PACKAGEDIR + "/defscript/", true
+fso.CopyFile PROJECTDIR + "/data/defscript/events.kvs", PACKAGEDIR + "/defscript/", true
+fso.CopyFile PROJECTDIR + "/data/defscript/popups.kvs", PACKAGEDIR + "/defscript/", true
+fso.CopyFile PROJECTDIR + "/data/defscript/toolbars.kvs", PACKAGEDIR + "/defscript/", true
 
 Function CopyAllPNGRecursive(path,target)
 	On Error Resume Next
