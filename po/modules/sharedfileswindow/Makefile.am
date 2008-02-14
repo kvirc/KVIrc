@@ -18,7 +18,8 @@ tmp_DATA  = sharedfileswindow_ca.mo \
 	sharedfileswindow_ru.mo \
 	sharedfileswindow_pt_BR.mo \
 	sharedfileswindow_fr.mo \
-	sharedfileswindow_fi.mo
+	sharedfileswindow_fi.mo \
+	sharedfileswindow_hr.mo
 
 # The *.po files to generate
 POFILES  = sharedfileswindow_ca.po \
@@ -30,7 +31,8 @@ POFILES  = sharedfileswindow_ca.po \
 	sharedfileswindow_ru.po \
 	sharedfileswindow_pt_BR.po \
 	sharedfileswindow_fr.po \
-	sharedfileswindow_fi.po
+	sharedfileswindow_fi.po \
+	sharedfileswindow_hr.po
 
 
 ###############################################################################
