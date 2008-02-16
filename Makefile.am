@@ -61,7 +61,8 @@ docs:
 	$(mkinstalldirs) $(DESTDIR)$(helpdir)
 	perl admin/gendoc.pl -v $(VERSION) $(DESTDIR)$(helpdir) \
           data/doctemplates/*.template \
-          `find ./ -name "*.cpp" -print`
+          `find ./ -name "*.cpp" -print` \
+		  `find ./ -name "*.h" -print`
 
 ###############################################################################
 # Rule for developer documentation
