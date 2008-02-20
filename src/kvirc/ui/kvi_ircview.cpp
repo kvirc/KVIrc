@@ -1159,7 +1159,8 @@ void KviIrcView::splitMessagesTo(KviIrcView *v)
 	v->m_iLastScrollBarValue = v->m_iNumLines;
 	v->m_pScrollBar->setRange(0,v->m_iNumLines);
 	v->m_pScrollBar->setValue(v->m_iNumLines);
-	v->repaint();
+	v->repaint();
+
 }
 
 void KviIrcView::appendMessagesFrom(KviIrcView *v)
@@ -3440,7 +3441,8 @@ no_selection_paint:
 	// COPY TO THE DISPLAY
 #ifndef COMPILE_USE_QT4
 	bitBlt(this,rectLeft,rectTop,pDoubleBufferPixmap,rectLeft,rectTop,rectWidth,rectHeight,Qt::CopyROP);
-#endif// else we use the Qt4 native double buffering
+#endif
+// else we use the Qt4 native double buffering
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3955,7 +3957,8 @@ void KviIrcView::toggleToolWidget()
 		delete m_pToolWidget;
 		m_pToolWidget = 0;
 		m_pCursorLine = 0;
-		repaint();
+		repaint();
+
 	} else {
 		m_pToolWidget = new KviIrcViewToolWidget(this);
 		int w = m_pToolWidget->sizeHint().width();
@@ -3977,7 +3980,9 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 	m_pCursorLine = l;
 	if(m_pCursorLine == m_pCurLine)
 	{
-		repaint();
+	
+	repaint();
+
 		return;
 	}
 	int sc = m_pScrollBar->value();
