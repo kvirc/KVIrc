@@ -2815,6 +2815,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	if(p)
 	{
 		r=p->rect(); // app triggered , or self triggered from fastScroll (in that case m_iUnprocessedPaintEventRequests is set to 0 there)
+		if(r == rect())
+			m_iUnprocessedPaintEventRequests = 0; // only full repaints reset
 	} else {
 		// A self triggered event
 		m_iUnprocessedPaintEventRequests = 0; // only full repaints reset
