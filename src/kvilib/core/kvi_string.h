@@ -544,4 +544,9 @@ __KVI_EXTERN KVILIB_API inline KviStr operator+(const KviStr &left,char right)
 __KVI_EXTERN KVILIB_API inline KviStr operator+(char left,const KviStr &right)
 { KviStr ret(left); ret += right; return ret; }
 
+inline int kvi_compare(KviStr * p1,KviStr * p2)
+{
+	return kvi_strcmpCI(p1->ptr(),p2->ptr());
+}
+
 #endif //_KVI_STRING_H_
