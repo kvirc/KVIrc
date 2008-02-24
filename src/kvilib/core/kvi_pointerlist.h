@@ -642,7 +642,7 @@ public:
 	///
 	/// Sets the iteration pointer to the next item in the list
 	/// and returns that item (or 0 if the end of the list has been reached)
-	/// A call to this function MUST be preceded by a call to
+	/// A call to this function MUST be preceded by a _succesfull_ call to
 	/// first(),last(),at() or findRef()
 	///
 	T * next()
@@ -653,9 +653,22 @@ public:
 	}
 
 	///
+	/// Sets the iteration pointer to the next item in the list
+	/// and returns that item (or 0 if the end of the list has been reached)
+	/// Calls to this function are safer than next(): you can call safeNext()
+	/// even if first(),last(),at() or a previous call of next() has failed.
+	///
+	T * safeNext()
+	{
+		if(!m_pAux)return NULL;
+		return next();
+	}
+
+
+	///
 	/// Sets the iteration pointer to the previous item in the list
 	/// and returns that item (or 0 if the beginning of the list has been reached)
-	/// A call to this function MUST be preceded by a call to
+	/// A call to this function MUST be preceded by a _succesfull_ call to
 	/// first(),last(),at() or findRef()
 	///
 	T * prev()
@@ -663,6 +676,18 @@ public:
 		m_pAux = m_pAux->m_pPrev;
 		if(m_pAux)return (T *)(m_pAux->m_pData);
 		return NULL;
+	}
+
+	///
+	/// Sets the iteration pointer to the previous item in the list
+	/// and returns that item (or 0 if the beginning of the list has been reached)
+	/// Calls to this function are safer than next(): you can call safeNext()
+	/// even if first(),last(),at() or a previous call of next() has failed.
+	///
+	T * safePrev()
+	{
+		if(!m_pAux)return NULL;
+		return prev();
 	}
 
 	///

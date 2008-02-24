@@ -77,7 +77,7 @@ KviNotifierWindowTab::~KviNotifierWindowTab()
 void KviNotifierWindowTab::setNextMessageAsCurrent()
 {
 	if(!m_pCurrentMessage)return;
-	m_pMessageList->findRef(m_pCurrentMessage);
+	if(m_pMessageList->findRef(m_pCurrentMessage) == -1)return;
 	m_pCurrentMessage = m_pMessageList->next();
 	if(!m_pCurrentMessage)m_pCurrentMessage = m_pMessageList->last();
 }
@@ -85,7 +85,7 @@ void KviNotifierWindowTab::setNextMessageAsCurrent()
 void KviNotifierWindowTab::setPrevMessageAsCurrent()
 {
 	if(!m_pCurrentMessage)return;
-	m_pMessageList->findRef(m_pCurrentMessage);
+	if(!m_pMessageList->findRef(m_pCurrentMessage) == -1)return;
 	m_pCurrentMessage = m_pMessageList->prev();
 	if(!m_pCurrentMessage)m_pCurrentMessage = m_pMessageList->first();
 }
@@ -185,7 +185,8 @@ KviNotifierWindowTabs::KviNotifierWindowTabs(QRect r)
 	m_pWndTabFocused = 0;
 	m_iTabToStartFrom = 0;
 
-	m_tabPtrList.clear();
+	m_tabPtrList.setAutoDelete(false); // FIXME: should take a closer look at this
+	m_lastVisitedTabPtrList.setAutoDelete(false);
 
 	loadImages();
 	initConfig();
