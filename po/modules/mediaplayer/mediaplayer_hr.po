@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-21 17:09+0100\n"
+"POT-Creation-Date: 2008-02-25 22:04+0100\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -30,14 +30,18 @@ msgid ""
 msgstr ""
 "Sučelje za popularni Winamp media player.\n"
 "Možete ga preuzeti sa http://www.winamp.com.\n"
-"Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i restartati Winamp."
+"Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se "
+"nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
+"restartati Winamp."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
-msgstr "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer.nowplaying"
+msgstr ""
+"Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
+"nowplaying"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
 msgid "Function not implemented"
@@ -91,7 +95,8 @@ msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Pokušavam media player \"%Q\": score %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
 msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
@@ -104,9 +109,7 @@ msgstr "Čini se da nema korisnih media playera na ovom računalu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:115
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr ""
-"Nema odabranog media playera. "
-"Pokušajte /mediaplayer.detect"
+msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:536
@@ -118,7 +121,8 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1313
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1501
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1544
-msgid "The selected media player interface failed to execute the requested function"
+msgid ""
+"The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:135
@@ -133,4 +137,3 @@ msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1545
 msgid "Last interface error: "
 msgstr "Posljednja greška sucelja:"
-

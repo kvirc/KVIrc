@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-21 17:09+0100\n"
+"POT-Creation-Date: 2008-02-25 22:01+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -80,6 +80,7 @@ msgid "Script"
 msgstr "Script"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:127
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:646
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_theme.cpp:89
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/net/kvi_ssl.cpp:581
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/net/kvi_ssl.cpp:611
@@ -133,21 +134,21 @@ msgstr "Descartar Canvis"
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapers"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:981
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:987
 msgid "There are active connections, are you sure you wish to "
 msgstr "Existeixen connexions actives, est�segur que dessitja "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:982
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:988
 msgid "quit KVIrc?"
 msgstr "sortir de KVIrc?"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:991
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:553
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:587
 msgid "Confirmation - KVIrc"
 msgstr "Confirmaci�- KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:991
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:557
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:590
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/managementdialog.cpp:337
@@ -155,13 +156,13 @@ msgstr "Confirmaci�- KVIrc"
 msgid "&Yes"
 msgstr "&S"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:991
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:556
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:589
 msgid "&Always"
 msgstr "Sempre"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:991
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:558
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:591
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/managementdialog.cpp:337
@@ -169,12 +170,12 @@ msgstr "Sempre"
 msgid "&No"
 msgstr "&No"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1075
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1091
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1086
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1102
 msgid "Show %1"
 msgstr "Mostrar %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1130
 msgid "Customize..."
 msgstr "Personalitzar..."
 
@@ -594,7 +595,7 @@ msgid "New mask must match an *!*@* expression"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:85
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4017
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3944
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:161
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:587
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:661
@@ -628,9 +629,9 @@ msgstr "Acceptar"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/tal/kvi_tal_wizard.cpp:229
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:149
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:153
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1120
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1389
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1415
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1125
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:568
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:594
 msgid "Cancel"
 msgstr "Cancellar"
 
@@ -665,7 +666,7 @@ msgid "Set at"
 msgstr "Posat el"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:222
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:453
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:456
 msgid "Add"
 msgstr "Afegir"
 
@@ -705,7 +706,7 @@ msgstr "Clau de desxifrat"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:454
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:773
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:932
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1124
 msgid "OK"
 msgstr "Acceptar"
 
@@ -734,165 +735,165 @@ msgid ""
 msgstr ""
 "Xifrat: Ha d'activar el xifrat i/o desxifrat per a que el motor funcioni"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:386
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:385
 msgid "Search tools"
 msgstr "Eines de cerca"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:544
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:539
 #, c-format
 msgid "### Log session terminated at %s ###"
 msgstr "### Sessi�de registre acabada a les %s ###"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:718
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:713
 #, c-format
 msgid "### Log session started at %s ###"
 msgstr "### Sessi�de registre iniciada a les %s ###"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:722
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:717
 msgid "### Existing data buffer:"
 msgstr "### Buffer de dades existent:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:726
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:721
 msgid "### End of existing data buffer."
 msgstr "### Fi del buffer de dades existent."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3967
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3894
 msgid "Hide Find Window"
 msgstr "Amagar Finestra de Cerca"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3969
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3896
 msgid "Show Find Window"
 msgstr "Mostrar Finestra de Cerca"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3971
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3898
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3972
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3899
 msgid "Zoom Out"
 msgstr "Reduir"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3973
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3900
 msgid "Choose Temporary Font..."
 msgstr "Triar Font Temporal..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3974
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3901
 msgid "Choose Temporary Background..."
 msgstr "Triar Fons Temporal..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3975
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3902
 #, fuzzy
 msgid "Reset Temporary Background"
 msgstr "Triar Fons Temporal..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3978
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1580
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1687
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1904
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1995
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3905
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:738
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:841
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1057
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1145
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1289
 msgid "Clear Buffer"
 msgstr "Netejar Buffer"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4012
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3939
 msgid "Choose the background image..."
 msgstr "Triar la imatge de fons..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4017
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3944
 msgid "Invalid image"
 msgstr "Imatge no v�ida"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4017
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:3944
 msgid "Failed to load the selected image"
 msgstr "Ha fallat la c�rega de l'arxiu d'imatge triat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4172
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4233
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4083
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4140
 #, c-format
 msgid "Pos %d"
 msgstr "Pos %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4191
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4253
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4098
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4156
 msgid "Not found"
 msgstr "No trobat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4656
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4559
 msgid "Looking up host %Q..."
 msgstr "Buscant m�uina %Q..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5049
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4922
 msgid "Double-click to open this link"
 msgstr "Doble click per a obrir aquest enlla"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5069
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4942
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr ""
 "Incapa�d'extreure el nom de m�uina: sembla que el nom de la m�uina "
 "est�emmascarat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5070
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4943
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Incapa�d'extreure el nom de la m�uina: m�uina desconeguda"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5072
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4945
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Faci doble click per a buscar aquesta m�uina<br>Click dret per a veure "
 "altres opcions"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5095
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4968
 msgid "Server appears to be a network hub<br>"
 msgstr "El servidor semblar ser un concentrador de xarxa<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5096
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4969
 msgid "Unknown server<br>"
 msgstr "Servidor desconegut<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5099
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4972
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr ""
 "Doble click per a llegir el MOTD<br>Bot�dret per a veure altres opcions"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5112
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:4985
 msgid "Double-click to set<br>"
 msgstr "Doble click per a posar<br>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5134
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5007
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Vost�no � operador: No pot canviar els modes de canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5151
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5024
 msgid "Nothing known about %Q"
 msgstr "No s�res sobre %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5152
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5025
 msgid "Nothing known about %Q (no connection)"
 msgstr "No s�res sobre %Q (no hi ha connexi�"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5050
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5183
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5056
 #, fuzzy
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
 msgstr "Doble click per a unir-se a %Q<br>Bot�dret per a veure altres opcions"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5203
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5076
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Doble click:</b><br>%Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5208
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5081
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Bot�central:</b><br>%Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5213
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:5086
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Bot�dret:</b><br>%Q"
 
@@ -910,7 +911,7 @@ msgid "No connection"
 msgstr "Sense connexi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_irctoolbar.cpp:304
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:722
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/toolbars.kvs:3
 msgid "IRC Context"
 msgstr "Context d'IRC"
 
@@ -1012,21 +1013,27 @@ msgstr "Codificaci�de Text"
 msgid "Sa&ve Window Properties"
 msgstr "Guardar Propietats de Finestra"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:77
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:84
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:86
 msgid "Taskbar"
 msgstr "Barra de Tasques"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1092
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:91
+#, fuzzy
+msgid "taskbar"
+msgstr "Barra de Tasques"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1162
 #, fuzzy
 msgid "Sort"
 msgstr "Ordenaci"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1093
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1163
 #, fuzzy
 msgid "Reverse Sort"
 msgstr "Enviament Invers a"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1153
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_taskbar.cpp:1223
 msgid "Window List"
 msgstr "Llista de Finestres"
 
@@ -1090,7 +1097,7 @@ msgid "Connection Timer"
 msgstr "Cron�etre de Connexi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:560
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:516
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:519
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:87
 msgid "Separator"
 msgstr "Separador"
@@ -1148,44 +1155,44 @@ msgstr "Seleccionar Tot"
 msgid "Insert Icon"
 msgstr "Acci�d'usuari"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:1915
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:1924
 msgid "%d matches: %Q"
 msgstr "%d coincid�cies: %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:1919
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:1928
 msgid "No matches"
 msgstr "Sense coincid�cies"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2344
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2641
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2353
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2650
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Mostrar Hist�ia<br>&lt;Ctrl+PagArr&gt;"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2351
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2632
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2360
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2641
 msgid "Input History Disabled"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2359
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2368
 msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
 msgstr ""
 "Mostrar Men Emergent d'Icones<br>&lt;Ctrl+I&gt;<br>Veure tamb�/help texticons"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2371
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2380
 msgid "User friendly commandline mode<br>See also /help commandline"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2383
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2392
 #, fuzzy
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr "Editor Multil�ia<br>&lt;Ctrl+Borrar&gt;"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2485
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2494
 #, fuzzy
 msgid "Confirm Multiline Message"
 msgstr "Missatge multim�ia"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2486
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2495
 msgid ""
 "You're about to send a message with %1 lines of text.<br><br>There is "
 "nothing wrong with it, this warning is<br>here to prevent you from "
@@ -1194,11 +1201,11 @@ msgid ""
 "message to be sent?"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2492
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2501
 msgid "Yes, always"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2493
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2502
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:736
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:807
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:616
@@ -1208,7 +1215,7 @@ msgstr ""
 msgid "Yes"
 msgstr "S"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2494
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2503
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:736
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:806
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:616
@@ -1218,7 +1225,7 @@ msgstr "S"
 msgid "No"
 msgstr "No"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2543
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:2552
 #, fuzzy
 msgid "<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"
 msgstr ""
@@ -1393,7 +1400,7 @@ msgid "&Window"
 msgstr "Finestra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:87
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:122
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:125
 msgid "&Help"
 msgstr "Ajuda"
 
@@ -1433,7 +1440,7 @@ msgid "Subscribe to the Mailing List"
 msgstr "Subscriure's a la Llista de Correu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:145
-msgid "Report a Bug / Propose enhancements"
+msgid "Report a Bug / Propose Improvements"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:148
@@ -1469,7 +1476,7 @@ msgid "Restore &Default Script"
 msgstr "Restaurar Script per &Defecte"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_menubar.cpp:225
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:624
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:630
 msgid "Disconnect"
 msgstr "Desconnectar"
 
@@ -1911,12 +1918,12 @@ msgstr "Error de sintaxis: identificador de comanda del m�ul mal format"
 msgid "Unknown callback command \"%Q\""
 msgstr "Comanda callback \"%Q\" desconeguda"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:463
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:465
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/chan/libkvichan.cpp:44
 msgid "The current window is not a channel"
 msgstr "La finestra actual no � un canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:531
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
@@ -1924,9 +1931,37 @@ msgstr ""
 "Nom de cron�etre om�, per�no hi ha un cron�etre actual (aquesta no � la "
 "callback d'un cron�etre)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:537
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:538
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "No puc parar el cron�etre '%Q' perqu�no est�funcionant"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:626
+#, fuzzy
+msgid "List of active timers"
+msgstr "usuaris actius"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
+msgid "Persistent"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
+#, fuzzy
+msgid "WindowLifetime"
+msgstr "Llista de Finestres"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:643
+msgid "SingleShot"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:652
+#, fuzzy
+msgid "None"
+msgstr "(Cap)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:663
+#, c-format
+msgid "Total: %u timers running"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:831
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:849
@@ -2731,7 +2766,7 @@ msgstr "No existeix el context d'IRC (%u)"
 msgid "This window is not associated to an IRC context"
 msgstr "Aquesta finestra no t�context d'IRC associat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:807
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:809
 msgid ""
 "The specified format string wasn't accepted by the underlying system time "
 "formatting function"
@@ -2793,7 +2828,7 @@ msgstr ""
 msgid "No such event handler (%Q) for event %Q"
 msgstr "No hi ha manipulador '%s' per a l'event '%s'"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:152
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:153
 msgid "This is not a channel"
 msgstr "Aix�no � un canal"
 
@@ -5335,7 +5370,7 @@ msgstr "Error de l'analitzador"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:819
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/tal/kvi_tal_wizard.cpp:241
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:741
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/toolbars.kvs:22
 #, fuzzy
 msgid "Help"
 msgstr "Ajuda"
@@ -5441,7 +5476,7 @@ msgid "Actions related to settings"
 msgstr "Accions relacionades amb la configuraci"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_actionmanager.cpp:68
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:749
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/toolbars.kvs:30
 msgid "Scripting"
 msgstr "Scripting"
 
@@ -6293,111 +6328,111 @@ msgstr "Finestra de Context d'IRC"
 msgid "Shows a small display with IRC context informations"
 msgstr "Mostra una petita finestra amb les informacions de context d'iRC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:517
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:520
 msgid "Acts as a separator for other items: performs no action"
 msgstr "Actua com un separador per a altres elements: no realitza cap acci"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:548
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:554
 msgid "Connect/Disconnect"
 msgstr "Connectar/Desconnectar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:549
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:555
 msgid ""
 "Allows you to connect to a server or to terminate the current connection"
 msgstr "Permet connectar-se a un servidor o finalitzar la connexi�actual"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:622
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:628
 msgid "Connect"
 msgstr "Connectar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:623
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:629
 msgid "Abort Connection"
 msgstr "Cancellar Connexi"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:780
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:790
 msgid "Join Channel"
 msgstr "Unir-se a un Canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:781
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:791
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr ""
 "Mostra un men emergent que permet seleccionar r�idament un canal per unir-se"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:797
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:809
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:841
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:853
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:886
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:897
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:807
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:819
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:851
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:863
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:896
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:907
 msgid "Other..."
 msgstr "Altres..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:824
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:834
 msgid "Change Nickname"
 msgstr "Canviar Nick"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:825
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:835
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Mostra un men emergent que permet canviar r�idament el nick"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:873
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:883
 msgid "Connect To"
 msgstr "Connectar a"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:874
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:884
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Mostra un men emergent que permet connectar-se r�idament a un servidor"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:919
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:929
 msgid "User Mode"
 msgstr "Mode d'usuari"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:920
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Mostra un men emergent que permet canviar r�idament els modes d'usuari"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:937
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:947
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:939
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:949
 msgid "Server Notices (+s)"
 msgstr "Not�ies del Servidor (+s)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:941
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:951
 msgid "Invisible (+i)"
 msgstr "Invisible (+i)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:987
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:997
 msgid "Away/Back"
 msgstr "Absentar-se/Tornar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:988
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:998
 #, fuzzy
 msgid "Allows entering and leaving away state"
 msgstr "Permet entrar i sortir del estat absent"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1055
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1065
 msgid "Enter Away Mode"
 msgstr "Entrar en Mode Absent"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1056
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1066
 msgid "Leave Away Mode"
 msgstr "Abandonar el Mode Absent"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1122
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1135
 msgid "Irc Tools"
 msgstr "Eines d'IRC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1123
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1136
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Mostra un men emergent amb algunes eines d'IRC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1158
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1171
 msgid "Irc Actions"
 msgstr "Accions IRC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1159
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_coreactions.cpp:1172
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Mostra un men emergent amb algunes accions IRC"
 
@@ -6741,10 +6776,6 @@ msgstr "No existeix el context irc (%d)"
 msgid "Global idle timer must be started before using $my.globalIdle function"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lag/libkvilag.cpp:68
-msgid "Lag meter was not enabled"
-msgstr "El mesurador de retr� no s'ha habilitat"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:103
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:162
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:215
@@ -6853,105 +6884,105 @@ msgstr ""
 msgid "Missing argument for a floating point escape sequence, 0.0 assumed"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:84
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:87
 msgid "Show URL List"
 msgstr "Mostrar Llista d'URL"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:85
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:88
 msgid "Shows the URL list window"
 msgstr "Mostra la finestra de llista d'URL"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:121
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:124
 msgid "&Configure"
 msgstr "&Configurar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:123
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:126
 msgid "Clo&se"
 msgstr "Tancar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:124
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:127
 msgid "&Module"
 msgstr "&M�ul"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:127
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:130
 msgid "&Load"
 msgstr "Carregar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:128
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:131
 msgid "&Save"
 msgstr "Guardar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:129
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:132
 msgid "&Clear"
 msgstr "Netejar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:133
 msgid "&List"
 msgstr "&Llista"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:133
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:136
 msgid "URL"
 msgstr "URL"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:134
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:137
 msgid "Window"
 msgstr "Finestra"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:138
 msgid "Count"
 msgstr "Contador"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:136
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:139
 msgid "Timestamp"
 msgstr "Marca de temps"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:213
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:291
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:465
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:216
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:294
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:468
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mircimport/libkvimircimport.cpp:113
 msgid "Warning - KVIrc"
 msgstr "Advert�cia - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:213
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:216
 msgid "Select an URL."
 msgstr "Seleccioni una URL."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:265
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:268
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/edituser.cpp:115
 msgid "&Remove"
 msgstr "Elimina&r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:266
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:269
 msgid "&Find Text"
 msgstr "Buscar Text"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:277
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:280
 msgid "&Say to Window"
 msgstr "&Dir en Finestra"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:294
 msgid "Window not found."
 msgstr "Finestra no trobada"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:346
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:349
 msgid "URL Module Configuration"
 msgstr "Configuraci�del m�ul URL"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:353
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:356
 msgid "Save URL list on module unload"
 msgstr "Guardar llista d'URL al descarregar el m�ul"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:357
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:360
 msgid "Save columns width on URL list close"
 msgstr "Guardar l'amplada de les columnes al tancar la llista d'URL"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:369
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:372
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1163
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1182
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1187
 msgid "&Cancel"
 msgstr "&Cancellar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:373
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:376
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1339
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/edituser.cpp:123
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/edituser.cpp:267
@@ -6963,31 +6994,31 @@ msgstr "&Cancellar"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:94
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:405
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:458
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1181
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1186
 msgid "&OK"
 msgstr "&Acceptar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:420
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:423
 msgid "Enable URL ban list"
 msgstr "Activar la llista d'URL prohibides"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:432
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:435
 msgid "&Add Ban"
 msgstr "&Afegir Prohibici"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:437
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:440
 msgid "&Remove Selected"
 msgstr "Elimina&r Seleccionades"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:453
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:456
 msgid "URL Ban List"
 msgstr "Llista d'URL Prohibides"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:465
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:468
 msgid "Select a ban."
 msgstr "Seleccioni una prohibici�"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:790
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/url/libkviurl.cpp:797
 #, fuzzy
 msgid "View URL list"
 msgstr "Mostrar Llista d'URL"
@@ -7075,7 +7106,7 @@ msgstr ""
 msgid "Can't open the file \"%Q\" for writing"
 msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/index.cpp:584
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/index.cpp:473
 msgid "Untitled"
 msgstr ""
 
@@ -7151,7 +7182,7 @@ msgid "Cannot request list: No active connection"
 msgstr "No puc demanar la llista: No hi ha una connexi�activa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:274
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:388
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:389
 msgid "Stopping the list download..."
 msgstr ""
 
@@ -7198,38 +7229,38 @@ msgstr ""
 msgid "You cannot export an empty list"
 msgstr "No demanar llista d'expiraci�de prohibici"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:349
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:350
 #, fuzzy
 msgid "Channel list for %Q - %Q"
 msgstr "El mode de canal per a \r!c\r%Q\r � %s"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:352
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:353
 #, fuzzy
 msgid "Channel list"
 msgstr "Canals"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:354
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:381
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:355
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:382
 #, fuzzy
 msgid "Choose filename"
 msgstr "Escull un Nom d'Arxiu de Registre"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:355
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:382
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:356
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:383
 #, fuzzy
 msgid "Configuration files (*.kvc)"
 msgstr "Configuraci"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:423
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:424
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:398
 msgid "Reset"
 msgstr "Reiniciar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:434
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:435
 msgid "Channels list download finished"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:471
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/list/listwindow.cpp:472
 msgid "Processing list: %Q"
 msgstr "Processant llista: %Q"
 
@@ -7699,7 +7730,7 @@ msgid "Password"
 msgstr "Clau"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:96
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1469
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:641
 msgid "&Join"
 msgstr "Unir-se"
 
@@ -7841,7 +7872,7 @@ msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr "<center>Pot entrar una llista de nicks separats per espais.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/reguser/edituser.cpp:426
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1160
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:383
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -8024,7 +8055,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/ext/kvi_regusersdb.cpp:689
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/ext/kvi_regusersdb.cpp:690
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/irc/kvi_useridentity.cpp:167
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1809
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:962
 msgid "Default"
 msgstr "Per defecte"
 
@@ -8268,7 +8299,7 @@ msgid "Manage Script-Based Addons"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/managementdialog.cpp:221
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1150
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1155
 msgid "Configure"
 msgstr "Configurar"
 
@@ -8415,8 +8446,9 @@ msgid "Shutting down identd service (spontaneous action)"
 msgstr "Continuant connexi�directa al servidor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/ident/libkviident.cpp:124
-msgid "Shutting down identd service (requesetd action)"
-msgstr ""
+#, fuzzy
+msgid "Shutting down identd service (requested action)"
+msgstr "Continuant connexi�directa al servidor"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/ident/libkviident.cpp:225
 #, fuzzy
@@ -8646,7 +8678,7 @@ msgid "Incomplete LINKS result, no stats available"
 msgstr "Resultat parcial per a LINKS, no hi ha estad�tiques disponibles"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/links/linkswindow.cpp:391
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1593
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:747
 msgid "You're not connected to a server"
 msgstr "No est�connectat a un servidor"
 
@@ -9633,8 +9665,8 @@ msgstr "La finestra especificada no � un canal"
 msgid "Widget object required"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:125
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:148
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:126
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:151
 #, fuzzy
 msgid "Unknown dock area '%Q'"
 msgstr "Operador desconegut"
@@ -10238,30 +10270,31 @@ msgstr "Adre� no v�ida per a aquest motor"
 msgid "I can't find the specified file '%Q'."
 msgstr "No es pot trobar l'arxiu multim�ia %s"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:116
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:121
 #, fuzzy
 msgid "Can't add a null object"
 msgstr "No puc afegir un objecte no-widget"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:123
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:128
 msgid ""
 "Invalid object handle passed as parameter (the object is no longer "
 "existing ?)"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:129
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:134
 msgid "Object in invalid state"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:140
 msgid "Can't set a non-widget object to be the main widget of a dock window"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:141
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:146
 msgid "The added widget is not a child of this dock window"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:227
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:262
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:271
 #, fuzzy
 msgid "Invalid dock area specified"
 msgstr "S'ha especificat una adre� IP no v�ida (%s)"
@@ -10704,70 +10737,70 @@ msgid "DCOP calls are available only when KDE support is compiled in"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:78
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1083
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1129
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1174
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1246
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1379
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1111
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1157
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1202
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1274
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1407
 #, c-format
 msgid "The window with id '%s' does not exist"
 msgstr "La finestra amb id '%s' no existeix"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:823
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:851
 msgid "Window type or 'all' expected as first parameter"
 msgstr "Tipus de finestra o 'tot' s'esperava com a primer par�etre"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:910
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:938
 #, fuzzy
 msgid "Invalid IRC context id '%Q'"
 msgstr "Id '%s' de context d'IRC no v�id"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1017
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1045
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr ""
 "El contex d'IRC especificat no � v�id: creant una finestra lliure de context"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1091
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1119
 msgid "The specified window is not of type \"userwnd\""
 msgstr "La finestra especificada no � del tipus \"userwnd\""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1135
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1180
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1163
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1208
 msgid "Window doesn't have input widget"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1334
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1362
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1348
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1376
 msgid "The decrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1385
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1413
 msgid "Both -n and -m switchess specified, -n takes precedence"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1395
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1423
 msgid "No encrypt key specified: can't allocate engine"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1417
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1445
 #, fuzzy
 msgid "Unknown engine error"
 msgstr "Error desconegut"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1420
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1448
 #, fuzzy
 msgid "Failed to initialize the specified crypt engine: %Q"
 msgstr "Ha fallat la c�rega de l'arxiu d'imatge triat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1424
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1452
 #, fuzzy
 msgid "The crypt engine \"%Q\" does not exist"
 msgstr "L'acci�\"%1\" no existeix"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1429
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/window/libkviwindow.cpp:1457
 #, fuzzy
 msgid "This executable has been compiled without crypt support"
 msgstr "Aquest executable s'ha compilat sense suport SSL"
@@ -11277,7 +11310,7 @@ msgid "This KVIrc executable has no SSL support"
 msgstr "Aquest executable de KVirc no t�suport IPv6"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/tal/kvi_tal_wizard.cpp:255
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1147
 msgid "Back"
 msgstr "Enrere"
 
@@ -11883,223 +11916,223 @@ msgstr "Dades de clau erronies"
 msgid "Invalid data field: the package is probably corrupt"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1122
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1127
 msgid "Select color"
 msgstr "Seleccionar color"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1123
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1128
 msgid "&Basic colors"
 msgstr "Colors &b�ics"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1124
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1129
 msgid "&Custom colors"
 msgstr "&Colors personalitzats"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1125
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1130
 msgid "&Red"
 msgstr "&Vermell"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1126
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1131
 msgid "&Green"
 msgstr "&Verd"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1127
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1132
 msgid "Bl&ue"
 msgstr "Bla&u"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1128
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1133
 msgid "&Define Custom Colors >>"
 msgstr "&Definir Colors Personalitzats >>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1129
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1134
 msgid "&Add to Custom Colors"
 msgstr "&Afegir Colors Personalitzats"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1136
 msgid "Select Font"
 msgstr "Seleccionar Font"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1132
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1137
 msgid "&Font"
 msgstr "&Font"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1133
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1138
 msgid "Font st&yle"
 msgstr "Est&il de font"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1134
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1139
 msgid "&Size"
 msgstr "&Mida"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1140
 msgid "Sample"
 msgstr "Exemple"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1136
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1141
 msgid "Effects"
 msgstr "Efectes"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1137
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1142
 msgid "Stri&keout"
 msgstr "Taxada"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1138
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1143
 msgid "&Underline"
 msgstr "S&ubratllada"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1139
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1144
 msgid "Scr&ipt"
 msgstr "Scr&ipt"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1141
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1146
 msgid "Parent Directory"
 msgstr "Directori Pare"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1143
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1148
 msgid "Forward"
 msgstr "Endavant"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1144
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1149
 msgid "Reload"
 msgstr "Recarregar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1145
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1150
 msgid "New Directory"
 msgstr "Nou Directori"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1151
 msgid "Bookmarks"
 msgstr "Marcadors"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1147
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1152
 msgid "Add Bookmark"
 msgstr "Afegir Marcador"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1148
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1153
 msgid "&Edit Bookmarks"
 msgstr "&Editar Marcadors"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1149
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1154
 msgid "New Bookmark Folder..."
 msgstr "Nou Directori de Marcadors..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1151
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1156
 msgid "Sorting"
 msgstr "Ordenaci"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1152
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1157
 msgid "By Name"
 msgstr "Per Nom"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1153
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1158
 msgid "By Date"
 msgstr "Per Data"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1154
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1159
 msgid "By Size"
 msgstr "Per Mida"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1155
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1160
 msgid "Reverse"
 msgstr "Al rev�"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1156
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1161
 msgid "Directories First"
 msgstr "Directoris Primer"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1157
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1162
 msgid "Case Insensitive"
 msgstr "No distingeix majs/mins"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1158
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1163
 msgid "Short View"
 msgstr "Vista Breu"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1159
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1164
 msgid "Detailed View"
 msgstr "Vista Detallada"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1160
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1165
 msgid "Show Hidden Files"
 msgstr "Mostrar Arxius Amagats"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1161
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1166
 msgid "Show Quick Access Navigation Panel"
 msgstr "Mostrar Acc� a Panell de Navegaci�R�id"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1162
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1167
 msgid "Show Preview"
 msgstr "Mostrar Previsualitzaci"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1163
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1168
 msgid "Separate Directories"
 msgstr "Separar Directoris"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1169
 msgid "Often used directories"
 msgstr "Directoris usats m� freqentment"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1165
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1170
 msgid "Desktop"
 msgstr "Escritori"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1166
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1171
 msgid "Home Directory"
 msgstr "Directori Personal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1172
 msgid "Floppy"
 msgstr "Disquetera"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1168
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1173
 msgid "Temporary Files"
 msgstr "Arxius Temporals"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1169
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1174
 msgid "Network"
 msgstr "Xarxa"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1170
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1175
 msgid "New Directory..."
 msgstr "Nou Directori..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1171
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1176
 msgid "Delete"
 msgstr "Esborrar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1172
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1177
 msgid "Thumbnail Previews"
 msgstr "Previsualitzar Diapositives"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1173
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1178
 msgid "Large Icons"
 msgstr "Icones Grans"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1174
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1179
 msgid "Small Icons"
 msgstr "Icones Petites"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1175
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1180
 msgid "Properties..."
 msgstr "Propietats..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1176
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1181
 msgid "&Automatic Preview"
 msgstr "Previsualitzaci�&Autom�ica"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1182
 msgid "&Preview"
 msgstr "&Previsualitzar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1178
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1183
 msgid "&Location:"
 msgstr "&Localitzaci�"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1179
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1184
 msgid "&Filter:"
 msgstr "&Filtre:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1180
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/system/kvi_locale.cpp:1185
 msgid "All Files"
 msgstr "Tots els arxius"
 
@@ -12142,610 +12175,162 @@ msgstr "%u d %u h %u m %u s"
 msgid "%u d %u%u h %u%u m %u%u s"
 msgstr "%u d %u%u h %u%u m %u%u s"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:108
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:93
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:127
 #, fuzzy
 msgid "Usage"
 msgstr "Mode d'us"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:108
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:93
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:127
 #, fuzzy
 msgid "message"
 msgstr "Tipus de missatge"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:109
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:94
 msgid "-m: send a message instead of a notice"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:110
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:95
 #, fuzzy
 msgid "-w: send notice to all channel owners"
 msgstr "No s'ha posat tema per al canal \r!c\r%Q\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:111
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:96
 #, fuzzy
 msgid "-a: send notice to all channel admins"
 msgstr "No s'ha posat tema per al canal \r!c\r%Q\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:112
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:97
 #, fuzzy
 msgid "-o: send notice to all channel ops"
 msgstr "No s'ha posat tema per al canal \r!c\r%Q\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:113
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:98
 msgid "-h: send notice to all channel halfops"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:114
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:99
 msgid "-v: send notice to all channel voices"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:115
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:100
 msgid "-q: quiet mode"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:147
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:132
 msgid "Sending wallop to"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:179
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:192
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:205
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:232
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:247
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:292
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:317
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:342
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:367
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:392
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:417
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:442
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:467
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:529
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:571
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:665
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1207
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:190
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:217
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:232
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:277
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:302
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:327
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:352
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:377
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:402
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:427
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:452
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:514
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:556
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:615
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:676
 msgid "Usage:"
 msgstr "Mode d'us"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:218
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:659
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:203
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:670
 msgid "You must be connected to a server"
 msgstr "Ha d'estar connectat a un servidor"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:221
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:206
 msgid "Lag is"
 msgstr "El retr� �"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:221
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:206
 msgid "milliseconds"
 msgstr "milisegons"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:248
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:233
 msgid "reason"
 msgstr "ra"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:254
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:298
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:323
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:348
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:373
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:398
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:423
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:448
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:473
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1213
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:239
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:283
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:308
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:333
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:358
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:383
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:408
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:433
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:458
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:621
 msgid "This is not a channel window"
 msgstr "Aix�no � una finestra del canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:626
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:603
 msgid "Unsupported type: $0"
 msgstr "Tipus no suportat: $0"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:653
-msgid "You must use DNS in an IRC context"
-msgstr "Has d'emprar DNS en un context IRC"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:676
-msgid "No such user: $0"
-msgstr "No existeix l'usuari: $0"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:734
-msgid "Options"
-msgstr "Opcions"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:759
-msgid "Window operations"
-msgstr "Operacions amb Finestres"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:791
-msgid "Stop Highlighting (Local)"
-msgstr "Parar Ressaltat (Local)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:796
-msgid "Start Highlighting (Local)"
-msgstr "Iniciar Ressaltat (Local)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:801
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:834
-msgid "Always Highlight"
-msgstr "Sempre Ressaltat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:803
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:808
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:813
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:818
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:823
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:828
-msgid "Highlight as"
-msgstr "Ressaltar com a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:839
-msgid "Stop Highlighting"
-msgstr "Parar Ressaltat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:857
-msgid "is being ignored"
-msgstr "est�sent ignorat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:859
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:863
-msgid "is not being ignored"
-msgstr "no est�sent ignorat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:869
-#, fuzzy
-msgid "Enable Ignore"
-msgstr "Activar Manipulador"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:874
-#, fuzzy
-msgid "Ignore as..."
-msgstr "Ignorar com a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:876
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:883
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:890
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:897
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:904
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:911
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:918
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:925
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:932
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:939
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:946
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:953
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:960
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:967
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:974
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:981
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:988
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:995
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1002
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1009
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1016
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1023
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1030
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1037
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1044
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1051
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1058
-msgid "Ignore as"
-msgstr "Ignorar com a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1066
-msgid "Unignore"
-msgstr "Treure ignorar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1085
-msgid "is registered as"
-msgstr "est�ignorat com a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1088
-msgid "is in the notify list"
-msgstr "est�a la llista de notificaci"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1091
-msgid "has a default avatar"
-msgstr "t�un avatar per defecte"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1094
-msgid "is not registered"
-msgstr "no est�registrat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1100
-msgid "Register"
-msgstr "Registrar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1105
-msgid "Quick Registration"
-msgstr "Registre R�id"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1107
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1112
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1117
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1122
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1127
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1132
-msgid "Register as"
-msgstr "Registrar com a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1138
-msgid "Edit Registration"
-msgstr "Editar Registre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1143
-msgid "Unregister"
-msgstr "Treure Registre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1150
-msgid "Add to Notify"
-msgstr "Afegir per a Notificar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1155
-msgid "Remove from Notify"
-msgstr "Treure de Notificar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1162
-msgid "Choose"
-msgstr "Escollir"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1164
-msgid "Choose Avatar Image File"
-msgstr "Esculli un Arxiu d'Imatge d'Avatar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1173
-msgid "Set as Default"
-msgstr "Posar per Defecte"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1178
-msgid "Clear Default"
-msgstr "Netejar per Defecte"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1189
-#, fuzzy
-msgid "Copy To Clipboard"
-msgstr "Copiar al portapapers"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1218
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:626
 msgid "Channel Owner"
 msgstr "Propietari del Canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1220
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:628
 msgid "Channel Administrator"
 msgstr "Administrador del Canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1222
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:630
 msgid "Channel Operator"
 msgstr "Operador del Canal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1224
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:632
 msgid "Half Operator"
 msgstr "Semioperador"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1226
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:634
 msgid "Voice"
 msgstr "Veu"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1228
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:636
 msgid "User Operator"
 msgstr "Usuari Operador"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1230
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:638
 msgid "Normal User"
 msgstr "Usuari Normal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1254
-msgid "Ban"
-msgstr "Prohibit"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1258
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1884
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1934
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2099
-msgid "Multiple Users"
-msgstr "Mltiples usuaris"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1264
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1398
-msgid "&Ban"
-msgstr "Prohi&bici"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1288
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1939
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2104
-msgid "idle time"
-msgstr "temps oci�"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1296
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1604
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1946
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2111
-msgid "&Information"
-msgstr "&Informaci"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1315
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1965
-msgid "DNS for"
-msgstr "DNS per a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1320
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1970
-msgid "Mask for"
-msgstr "M�cara per a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1326
-msgid "&Control"
-msgstr "&Control"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1330
-msgid "O&wner"
-msgstr "Propietari"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1335
-msgid "&Deowner"
-msgstr "Treure propietari"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1340
-msgid "&Administrator"
-msgstr "&Administrador"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1345
-msgid "&Deadministrator"
-msgstr "Treure administrador"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1350
-msgid "&Op"
-msgstr "&Op"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1355
-msgid "&Deop"
-msgstr "Treure Op"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1360
-msgid "&Halfop"
-msgstr "Semioperador"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1365
-msgid "&Dehalfop"
-msgstr "Treure semioperador"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1370
-msgid "&Voice"
-msgstr "&Veu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1375
-msgid "D&evoice"
-msgstr "Treure Veu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1382
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1389
-msgid "&Kick"
-msgstr "&Kick"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1387
-msgid "K&ick"
-msgstr "Kickejar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1387
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1413
-msgid "With..."
-msgstr "Amb..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1389
-msgid "Kick Reason"
-msgstr "Ra�del Kick"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1389
-msgid "Enter a kick reason"
-msgstr "Introdueixi la ra�del kick"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1408
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1413
-msgid "Kick/Ban"
-msgstr "Kick/Ban"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1415
-msgid "Kick/Ban Reason"
-msgstr "Ra�del Kick/Ban"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1415
-msgid "Enter a kick/ban reason"
-msgstr "Introdueixi la ra�del kick/ban"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1415
-msgid "&Kick/Ban"
-msgstr "&Kick/Ban"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1425
-#, fuzzy
-msgid "Configure ban mask..."
-msgstr "Configurar Servidors"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1433
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2138
-msgid "&Query"
-msgstr "Privat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1446
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1986
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2151
-msgid "&Registration"
-msgstr "&Registrar-se"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1448
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2153
-msgid "&Highlight"
-msgstr "Ressaltat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1450
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2155
-msgid "Ig&nore"
-msgstr "Ig&norar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1452
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1568
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1897
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1988
-msgid "Notify Avatar"
-msgstr "Notificar Avatar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1474
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1547
-msgid "&Part"
-msgstr "&Partir"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1492
-#, fuzzy
-msgid "Copy Channel Address"
-msgstr "Modes de Canal"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1533
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1595
-msgid "Channels"
-msgstr "Canals"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1535
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1599
-msgid "&Join Channels..."
-msgstr "Unir-se a Canals..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1542
-msgid "&Hop"
-msgstr "Saltar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1575
-#, fuzzy
-msgid "Copy Channel URL to Clipboard"
-msgstr "Copiar al portapapers"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1628
-msgid "l (Connections)"
-msgstr "l (Connexions)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1633
-msgid "m (Command Usage)"
-msgstr "m (Mode d'us de les Comandes)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1638
-msgid "o (Operators)"
-msgstr "o (Operadors)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1643
-msgid "t (Connection stats ?)"
-msgstr "t (Estad�tiques de la connexi�?)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1648
-msgid "u (Uptime)"
-msgstr "u (Temps de Funcionament)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1653
-msgid "y (y-Lines)"
-msgstr "y (L�ies-y)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1658
-msgid "z (Debug Stats?)"
-msgstr "z (Estad�tiques de Depuraci�)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1756
-msgid "Chat with"
-msgstr "Xat amb"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1761
-#, fuzzy
-msgid "Reverse Chat with"
-msgstr "Xat segur amb"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1766
-msgid "Secure Chat with"
-msgstr "Xat segur amb"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1773
-msgid "Send to"
-msgstr "Enviat a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1778
-#, fuzzy
-msgid "Secure send to"
-msgstr "Enviament Invers a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1783
-msgid "Reverse Send to"
-msgstr "Enviament Invers a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1788
-#, fuzzy
-msgid "Secure Reverse Send to"
-msgstr "Enviament Invers a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1795
-msgid "TDCC Send to"
-msgstr "TDCC Enviat a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1800
-msgid "TDCC Reverse Send to"
-msgstr "TDCC Enviament Invers a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1807
-msgid "Voice Chat"
-msgstr "Xat de Veu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:1984
-msgid "&Ignore"
-msgstr "&Ignorar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2026
-msgid "Logging to"
-msgstr "Registrar a"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2028
-msgid "Flush Log File"
-msgstr "Volcar l'Arxiu de Registre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2035
-msgid "Stop Logging"
-msgstr "Aturar el Registre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2040
-msgid "Not Logging"
-msgstr "Sense Registrar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2042
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2047
-msgid "Log To Default File"
-msgstr "Registrar l'Arxiu per Defecte"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2047
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2060
-msgid "Include Existing Buffer"
-msgstr "Incloure el Buffer Existent"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2052
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2060
-msgid "Log To..."
-msgstr "Registrar a..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2054
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2062
-msgid "Choose Log Filename"
-msgstr "Escull un Nom d'Arxiu de Registre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2157
-msgid "Notify avatar"
-msgstr "Notificar Avatar"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2264
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:664
+msgid "You must use DNS in an IRC context"
+msgstr "Has d'emprar DNS en un context IRC"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/aliases.kvs:687
+msgid "No such user: $0"
+msgstr "No existeix l'usuari: $0"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:33
 msgid "The default script has been successfully installed."
 msgstr "L'script per defecte ha estat installat satisfactoriament."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2265
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:34
 msgid "To connect to a server, type /server <server name>"
 msgstr "Per a connectar a un servidor, escrigui /server <nom_de_servidor>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:2267
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/default.kvs:36
 msgid "Happy ircing :)"
 msgstr "Feli�IRCeig :)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/toolbars.kvs:15
+msgid "Options"
+msgstr "Opcions"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/toolbars.kvs:40
+msgid "Window operations"
+msgstr "Operacions amb Finestres"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/theme-install.kvs:1
 msgid "@THEMENAME@"
@@ -12754,6 +12339,454 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/theme-install.kvs:1
 msgid "@THEMEDESCRIPTION@"
 msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:18
+msgid "Stop Highlighting (Local)"
+msgstr "Parar Ressaltat (Local)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:23
+msgid "Start Highlighting (Local)"
+msgstr "Iniciar Ressaltat (Local)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:28
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:61
+msgid "Always Highlight"
+msgstr "Sempre Ressaltat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:30
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:35
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:40
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:50
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:55
+msgid "Highlight as"
+msgstr "Ressaltar com a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:66
+msgid "Stop Highlighting"
+msgstr "Parar Ressaltat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:82
+msgid "is being ignored"
+msgstr "est�sent ignorat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:83
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:87
+msgid "is not being ignored"
+msgstr "no est�sent ignorat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:93
+#, fuzzy
+msgid "Enable Ignore"
+msgstr "Activar Manipulador"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:98
+#, fuzzy
+msgid "Ignore as..."
+msgstr "Ignorar com a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:100
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:107
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:114
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:121
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:128
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:149
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:156
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:163
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:170
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:184
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:191
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:198
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:205
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:212
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:219
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:226
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:233
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:240
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:247
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:261
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:268
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:275
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:282
+msgid "Ignore as"
+msgstr "Ignorar com a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:290
+msgid "Unignore"
+msgstr "Treure ignorar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:308
+msgid "is registered as"
+msgstr "est�ignorat com a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:311
+msgid "is in the notify list"
+msgstr "est�a la llista de notificaci"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:314
+msgid "has a default avatar"
+msgstr "t�un avatar per defecte"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:317
+msgid "is not registered"
+msgstr "no est�registrat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:323
+msgid "Register"
+msgstr "Registrar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:328
+msgid "Quick Registration"
+msgstr "Registre R�id"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:330
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:335
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:340
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:345
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:350
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:355
+msgid "Register as"
+msgstr "Registrar com a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:361
+msgid "Edit Registration"
+msgstr "Editar Registre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:366
+msgid "Unregister"
+msgstr "Treure Registre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:373
+msgid "Add to Notify"
+msgstr "Afegir per a Notificar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:378
+msgid "Remove from Notify"
+msgstr "Treure de Notificar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:385
+msgid "Choose"
+msgstr "Escollir"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:387
+msgid "Choose Avatar Image File"
+msgstr "Esculli un Arxiu d'Imatge d'Avatar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:396
+msgid "Set as Default"
+msgstr "Posar per Defecte"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:401
+msgid "Clear Default"
+msgstr "Netejar per Defecte"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:412
+#, fuzzy
+msgid "Copy To Clipboard"
+msgstr "Copiar al portapapers"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:433
+msgid "Ban"
+msgstr "Prohibit"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:437
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1037
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1084
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1224
+msgid "Multiple Users"
+msgstr "Mltiples usuaris"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:443
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:577
+msgid "&Ban"
+msgstr "Prohi&bici"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:467
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1089
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1229
+msgid "idle time"
+msgstr "temps oci�"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:475
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:758
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1096
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1236
+msgid "&Information"
+msgstr "&Informaci"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:494
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1115
+msgid "DNS for"
+msgstr "DNS per a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:499
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1120
+msgid "Mask for"
+msgstr "M�cara per a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:505
+msgid "&Control"
+msgstr "&Control"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:509
+msgid "O&wner"
+msgstr "Propietari"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:514
+msgid "&Deowner"
+msgstr "Treure propietari"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:519
+msgid "&Administrator"
+msgstr "&Administrador"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:524
+msgid "&Deadministrator"
+msgstr "Treure administrador"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:529
+msgid "&Op"
+msgstr "&Op"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:534
+msgid "&Deop"
+msgstr "Treure Op"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:539
+msgid "&Halfop"
+msgstr "Semioperador"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:544
+msgid "&Dehalfop"
+msgstr "Treure semioperador"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:549
+msgid "&Voice"
+msgstr "&Veu"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:554
+msgid "D&evoice"
+msgstr "Treure Veu"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:561
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:568
+msgid "&Kick"
+msgstr "&Kick"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:566
+msgid "K&ick"
+msgstr "Kickejar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:566
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:592
+msgid "With..."
+msgstr "Amb..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:568
+msgid "Kick Reason"
+msgstr "Ra�del Kick"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:568
+msgid "Enter a kick reason"
+msgstr "Introdueixi la ra�del kick"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:587
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:592
+msgid "Kick/Ban"
+msgstr "Kick/Ban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:594
+msgid "Kick/Ban Reason"
+msgstr "Ra�del Kick/Ban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:594
+msgid "Enter a kick/ban reason"
+msgstr "Introdueixi la ra�del kick/ban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:594
+msgid "&Kick/Ban"
+msgstr "&Kick/Ban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:604
+#, fuzzy
+msgid "Configure ban mask..."
+msgstr "Configurar Servidors"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:612
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1263
+msgid "&Query"
+msgstr "Privat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:625
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1136
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1276
+msgid "&Registration"
+msgstr "&Registrar-se"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:627
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1278
+msgid "&Highlight"
+msgstr "Ressaltat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:629
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1280
+msgid "Ig&nore"
+msgstr "Ig&norar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:631
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:726
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1050
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1138
+msgid "Notify Avatar"
+msgstr "Notificar Avatar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:646
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:705
+msgid "&Part"
+msgstr "&Partir"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:664
+#, fuzzy
+msgid "Copy Channel Address"
+msgstr "Modes de Canal"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:691
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:749
+msgid "Channels"
+msgstr "Canals"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:693
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:753
+msgid "&Join Channels..."
+msgstr "Unir-se a Canals..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:700
+msgid "&Hop"
+msgstr "Saltar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:733
+#, fuzzy
+msgid "Copy Channel URL to Clipboard"
+msgstr "Copiar al portapapers"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:782
+msgid "l (Connections)"
+msgstr "l (Connexions)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:787
+msgid "m (Command Usage)"
+msgstr "m (Mode d'us de les Comandes)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:792
+msgid "o (Operators)"
+msgstr "o (Operadors)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:797
+msgid "t (Connection stats ?)"
+msgstr "t (Estad�tiques de la connexi�?)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:802
+msgid "u (Uptime)"
+msgstr "u (Temps de Funcionament)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:807
+msgid "y (y-Lines)"
+msgstr "y (L�ies-y)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:812
+msgid "z (Debug Stats?)"
+msgstr "z (Estad�tiques de Depuraci�)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:909
+msgid "Chat with"
+msgstr "Xat amb"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:914
+#, fuzzy
+msgid "Reverse Chat with"
+msgstr "Xat segur amb"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:919
+msgid "Secure Chat with"
+msgstr "Xat segur amb"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:926
+msgid "Send to"
+msgstr "Enviat a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:931
+#, fuzzy
+msgid "Secure send to"
+msgstr "Enviament Invers a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:936
+msgid "Reverse Send to"
+msgstr "Enviament Invers a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:941
+#, fuzzy
+msgid "Secure Reverse Send to"
+msgstr "Enviament Invers a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:948
+msgid "TDCC Send to"
+msgstr "TDCC Enviat a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:953
+msgid "TDCC Reverse Send to"
+msgstr "TDCC Enviament Invers a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:960
+msgid "Voice Chat"
+msgstr "Xat de Veu"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1134
+msgid "&Ignore"
+msgstr "&Ignorar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1165
+msgid "Logging to"
+msgstr "Registrar a"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1167
+msgid "Flush Log File"
+msgstr "Volcar l'Arxiu de Registre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1174
+msgid "Stop Logging"
+msgstr "Aturar el Registre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1179
+msgid "Not Logging"
+msgstr "Sense Registrar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1181
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1186
+msgid "Log To Default File"
+msgstr "Registrar l'Arxiu per Defecte"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1186
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1199
+msgid "Include Existing Buffer"
+msgstr "Incloure el Buffer Existent"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1191
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1199
+msgid "Log To..."
+msgstr "Registrar a..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1193
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1201
+msgid "Choose Log Filename"
+msgstr "Escull un Nom d'Arxiu de Registre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/popups.kvs:1282
+msgid "Notify avatar"
+msgstr "Notificar Avatar"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/data/defscript/installer.kvs:50
 #, c-format
@@ -12787,6 +12820,9 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Lag meter was not enabled"
+#~ msgstr "El mesurador de retr� no s'ha habilitat"
 
 #~ msgid "Report a Bug"
 #~ msgstr "Informar d'un Bug"
