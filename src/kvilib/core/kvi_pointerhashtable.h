@@ -207,6 +207,7 @@ inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
 	const QChar * p = KviQString::nullTerminatedArray(szKey);
+	if(!p)return 0;
 	if(bCaseSensitive)
 	{
 		while(p->unicode())
