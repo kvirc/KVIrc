@@ -48,7 +48,7 @@ cat >> instances.h <<EOF
 
 #include "kvi_optionswidget.h"
 #include "kvi_module.h"
-#include "kvi_list.h"
+#include "kvi_pointerlist.h"
 #include "kvi_qstring.h"
 
 typedef struct _KviOptionsWidgetInstanceEntry KviOptionsWidgetInstanceEntry;
@@ -68,7 +68,7 @@ typedef struct _KviOptionsWidgetInstanceEntry
 	QString                                     szGroup;
 	bool                                        bIsContainer;
 	bool                                        bIsNotContained;
-	KviPtrList<KviOptionsWidgetInstanceEntry> * pChildList;
+	KviPointerList<KviOptionsWidgetInstanceEntry> * pChildList;
 	bool                                        bDoInsert; // a helper for KviOptionsDialog::fillListView()
 } KviOptionsWidgetInstanceEntry;
 
@@ -80,16 +80,16 @@ public:
 	KviOptionsInstanceManager();
 	virtual ~KviOptionsInstanceManager();
 protected:
-	KviPtrList<KviOptionsWidgetInstanceEntry> *  m_pInstanceTree;
+	KviPointerList<KviOptionsWidgetInstanceEntry> *  m_pInstanceTree;
 public:
-	KviPtrList<KviOptionsWidgetInstanceEntry> * instanceEntryTree(){ return m_pInstanceTree; };
+	KviPointerList<KviOptionsWidgetInstanceEntry> * instanceEntryTree(){ return m_pInstanceTree; };
 	KviOptionsWidget * getInstance(KviOptionsWidgetInstanceEntry * e,QWidget * par);
 	KviOptionsWidgetInstanceEntry * findInstanceEntry(const char * clName);
 	void cleanup(KviModule * m);
 protected:
-	KviOptionsWidgetInstanceEntry * findInstanceEntry(const char * clName,KviPtrList<KviOptionsWidgetInstanceEntry> * l);
-	KviOptionsWidgetInstanceEntry * findInstanceEntry(const QObject * ptr,KviPtrList<KviOptionsWidgetInstanceEntry> * l);
-	void deleteInstanceTree(KviPtrList<KviOptionsWidgetInstanceEntry> * l);
+	KviOptionsWidgetInstanceEntry * findInstanceEntry(const char * clName,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
+	KviOptionsWidgetInstanceEntry * findInstanceEntry(const QObject * ptr,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
+	void deleteInstanceTree(KviPointerList<KviOptionsWidgetInstanceEntry> * l);
 protected slots:
 	void widgetDestroyed();
 };
@@ -188,7 +188,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 
 	//debug("Instantiating");
 	// Create the global widget dict : case sensitive , do not copy keys
-	m_pInstanceTree = new KviPtrList<KviOptionsWidgetInstanceEntry>;
+	m_pInstanceTree = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
 
 EOF
@@ -279,7 +279,7 @@ addchildren()
 			printclass $1 $achild "$3"
 			if [ -f "$CLASSDIR/$achild" ]; then
 				echo "" >> $TARGET
-				echo "$3	e$1->pChildList = new KviPtrList<KviOptionsWidgetInstanceEntry>;" >> $TARGET
+				echo "$3	e$1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;" >> $TARGET
 				echo "$3	e$1->pChildList->setAutoDelete(true);" >> $TARGET
 				NEXTLEVEL=`expr $1 + 1`
 				addchildren $NEXTLEVEL $achild "$3	"
@@ -300,7 +300,7 @@ cat >> $TARGET <<EOF
 
 }
 
-void KviOptionsInstanceManager::deleteInstanceTree(KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{
@@ -364,7 +364,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 		e->pWidget->createTabbedPage();
 		if(e->pChildList)
 		{
-			KviPtrList<KviOptionsWidgetInstanceEntry> tmp;
+			KviPointerList<KviOptionsWidgetInstanceEntry> tmp;
 			tmp.setAutoDelete(false);
 
 			for(KviOptionsWidgetInstanceEntry * e2 = e->pChildList->first();e2;e2 = e->pChildList->next())
@@ -394,7 +394,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 	return e->pWidget;
 }
 
-KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const QObject * ptr,KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const QObject * ptr,KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{
@@ -411,7 +411,7 @@ KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(con
 	return 0;
 }
 
-KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const char * clName,KviPtrList<KviOptionsWidgetInstanceEntry> * l)
+KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(const char * clName,KviPointerList<KviOptionsWidgetInstanceEntry> * l)
 {
 	if(l)
 	{
