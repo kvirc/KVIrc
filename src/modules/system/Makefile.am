@@ -12,7 +12,7 @@ libkvisystem_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 libkvisystem_la_SOURCES = libkvisystem.cpp plugin.cpp
 libkvisystem_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
-# noinst_HEADERS=
+noinst_HEADERS = plugin.h
 
 %.moc: %.h
 	$(SS_QT_MOC) $< -o $@
