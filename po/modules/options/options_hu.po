@@ -1,15 +1,15 @@
 # translation of options_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
-# Ádám Fibinger <vfiber@gmail.com>, 2007.
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
+# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2008.
+# Ádám Fibinger <vfiber@gmail.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 22:04+0100\n"
-"PO-Revision-Date: 2007-10-27 22:21+0200\n"
+"POT-Creation-Date: 2007-11-21 17:09+0100\n"
+"PO-Revision-Date: 2008-02-25 02:15+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -259,13 +259,11 @@ msgstr "A Név mező nem tartalmazhat szóközt!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+msgstr "Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -873,6 +871,9 @@ msgid ""
 "from the identity dialog) will be used. If disabled, you can configure an "
 "initial user mode for this server"
 msgstr ""
+"<center>Ha ez engedélyezve van, a globális <b>felhasználói módok</b> "
+"(azonosítóban beállított) lesznek használva. Ha nincs engedélyezve, "
+"beállíthatsz speciális felhasználó módokat a szerverhez"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:530
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:684
@@ -1158,8 +1159,7 @@ msgid "Server:"
 msgstr "Szerver: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1153
@@ -1177,8 +1177,7 @@ msgid "Connect &Now"
 msgstr "Kapcsolódás"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Kattints ide, hogy elkezdj csatlakozni a kiválasztott szerverhez.</"
 "center>"
@@ -1413,8 +1412,7 @@ msgstr ""
 "rövid szösszenetet/szólást írnak.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "A mező kitöltése opcionális, ez fog megjelenni, ha valaki CTCP USERINFO-t "
 "kér tőled."
@@ -1847,7 +1845,6 @@ msgid "Image height:"
 msgstr "Kép magassága:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
-#, fuzzy
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Átméretezés felhasználólistában"
 
@@ -2333,8 +2330,7 @@ msgstr "kérés"
 msgid ""
 "<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
 "requests</b></center>"
-msgstr ""
-"<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
+msgstr "<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
@@ -2600,8 +2596,7 @@ msgid "Minimum alert level:"
 msgstr "Minimális figyelmeztetési szint: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr "<center>Minimális figyelmeztetési szint beállítása a tálcára</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
@@ -4380,5 +4375,3 @@ msgstr "Privát"
 msgid "chat"
 msgstr "beszélgetés"
 
-#~ msgid "Output verosity"
-#~ msgstr "\"Beszédesség\" a felhasználó felé"
