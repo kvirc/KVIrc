@@ -384,7 +384,7 @@ void KviServerParser::parseNumeric020(KviIrcMessage *msg)
 	{
 		QString szWText = msg->console()->decodeText(msg->safeTrailing());
 		msg->console()->output(
-			KVI_OUT_CONNECTION,__tr2qs("%c\r!s\r%s\r%c: %Q"),KVI_TEXT_BOLD,
+			KVI_OUT_CONNECTION,"%c\r!s\r%s\r%c: %Q",KVI_TEXT_BOLD,
 			msg->safePrefix(),KVI_TEXT_BOLD,&szWText);
 	}
 }
