@@ -629,6 +629,7 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 			'+' for voiced users[br]
 			'-' for userops[br]
 		If the user has more than one flag then the highest one is returned.[br]
+		If the user has no flag at all then an empty string is returned.
 */
 
 static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
@@ -641,8 +642,14 @@ static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
 	if(ch)
 	{
-		QString szFlag = QChar(ch->userListView()->getUserFlag(szNick));
-		c->returnValue()->setString(szFlag);
+		QChar cFlag = ch->userListView()->getUserFlag(szNick);
+		if(cFlag != QChar(0))
+		{
+			QString szFlag = cFlag;
+			c->returnValue()->setString(szFlag);
+		} else {
+			c->returnValue()->setNothing();
+		}
 	}
 	return true;
 }

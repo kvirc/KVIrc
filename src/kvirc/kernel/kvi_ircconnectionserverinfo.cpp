@@ -148,22 +148,22 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 
 QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
 {
-	if(!m_pModePrefixTable) return 0;
+	if(!m_pModePrefixTable) return QChar(0);
 	for(int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3+2] & flag) return QChar(m_pModePrefixTable[i*3]);
 	}
-	return 0;
+	return QChar(0);
 }
 
 QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
 {
-	if(!m_pModePrefixTable) return 0;
+	if(!m_pModePrefixTable) return QChar(0);
 	for(int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3+2] & flag ) return QChar(m_pModePrefixTable[i*3+1]);
 	}
-	return 0;
+	return QChar(0);
 }
 
 kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)

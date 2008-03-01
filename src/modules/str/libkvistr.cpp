@@ -588,7 +588,17 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	int pos = 1;
 	if(iOcurence!=0)
 		pos = iOcurence;
-	if (pos<1)
+	if(pos<1)
+	{
+		c->returnValue()->setInteger(-1);
+		return true;
+	}
+	if(szFindIn.isEmpty())
+	{
+		c->returnValue()->setInteger(-1);
+		return true;
+	}
+	if(szToFind.isEmpty())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
