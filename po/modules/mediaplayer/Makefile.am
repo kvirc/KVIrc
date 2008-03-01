@@ -16,7 +16,8 @@ tmp_DATA  = mediaplayer_cs.mo \
 	mediaplayer_ru.mo \
 	mediaplayer_hu.mo \
 	mediaplayer_fi.mo \
-	mediaplayer_hr.mo
+	mediaplayer_hr.mo \
+	mediaplayer_uk.mo
 
 # The *.po files to generate
 POFILES  =  mediaplayer_cs.po \
@@ -26,7 +27,8 @@ POFILES  =  mediaplayer_cs.po \
 	mediaplayer_ru.po \
 	mediaplayer_hu.po \
 	mediaplayer_fi.po \
-	mediaplayer_hr.po
+	mediaplayer_hr.po \
+	mediaplayer_uk.po
 
 
 ###############################################################################

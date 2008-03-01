@@ -16,7 +16,8 @@ tmp_DATA  = torrent_de.mo \
 	torrent_fi.mo \
 	torrent_ru.mo \
 	torrent_cs.mo \
-	torrent_hr.mo
+	torrent_hr.mo \
+	torrent_uk.mo
 
 # The *.po files to generate
 POFILES  =  torrent_de.po \
@@ -26,7 +27,8 @@ POFILES  =  torrent_de.po \
 	torrent_fi.po \
 	torrent_ru.po \
 	torrent_cs.po \
-	torrent_hr.po
+	torrent_hr.po \
+	torrent_uk.po
 
 
 ###############################################################################

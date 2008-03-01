@@ -18,7 +18,8 @@ tmp_DATA  = perlcore_ca.mo \
 	perlcore_pt_BR.mo \
 	perlcore_fr.mo \
 	perlcore_fi.mo \
-	perlcore_hu.mo
+	perlcore_hu.mo \
+	perlcore_uk.mo
 
 # The *.po files to generate
 POFILES  =  perlcore_ca.po \
@@ -30,7 +31,8 @@ POFILES  =  perlcore_ca.po \
 	perlcore_pt_BR.po \
 	perlcore_fr.po \
 	perlcore_fi.po \
-	perlcore_hu.po
+	perlcore_hu.po \
+	perlcore_uk.po
 
 
 ###############################################################################

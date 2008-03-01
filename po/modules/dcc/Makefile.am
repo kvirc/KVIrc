@@ -19,7 +19,8 @@ tmp_DATA  = dcc_ca.mo \
 	dcc_pt_BR.mo \
 	dcc_hu.mo \
 	dcc_fr.mo \
-	dcc_fi.mo
+	dcc_fi.mo \
+	dcc_uk.mo
 
 # The *.po files to generate
 POFILES  = dcc_ca.po \
@@ -32,7 +33,8 @@ POFILES  = dcc_ca.po \
 	dcc_pt_BR.po \
 	dcc_hu.po \
 	dcc_fr.po \
-	dcc_fi.po
+	dcc_fi.po \
+	dcc_uk.po
 
 # The *.po  -> *.mo rules
 dcc_it.mo: dcc_it.po

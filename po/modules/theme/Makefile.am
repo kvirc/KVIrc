@@ -15,7 +15,8 @@ tmp_DATA  = theme_it.mo \
 	theme_de.mo \
 	theme_fi.mo \
 	theme_cs.mo \
-	theme_hu.mo
+	theme_hu.mo \
+	theme_uk.mo
 
 # The *.po files to generate
 POFILES  = theme_it.po \
@@ -24,7 +25,8 @@ POFILES  = theme_it.po \
 	theme_de.po \
 	theme_fi.po \
 	theme_cs.po \
-	theme_hu.po
+	theme_hu.po \
+	theme_uk.po
 
 
 ###############################################################################

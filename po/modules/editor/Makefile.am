@@ -19,7 +19,8 @@ tmp_DATA  = editor_ca.mo \
 	editor_pt_BR.mo \
 	editor_fr.mo \
 	editor_hu.mo \
-	editor_fi.mo
+	editor_fi.mo \
+	editor_uk.mo
 
 # The *.po files to generate
 POFILES  = editor_ca.po \
@@ -32,7 +33,8 @@ POFILES  = editor_ca.po \
 	editor_pt_BR.po \
 	editor_fr.po \
 	editor_hu.po \
-	editor_fi.po
+	editor_fi.po \
+	editor_uk.po
 
 ###############################################################################
 # STOP EDITING HERE

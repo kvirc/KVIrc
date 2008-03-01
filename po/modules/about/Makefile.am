@@ -20,7 +20,8 @@ tmp_DATA  = about_ca.mo \
 	about_fr.mo \
 	about_hu.mo \
 	about_fi.mo \
-	about_hr.mo
+	about_hr.mo \
+	about_uk.mo
 
 # The *.po files to generate
 POFILES  = about_ca.po \
@@ -34,7 +35,8 @@ POFILES  = about_ca.po \
 	about_fr.po \
 	about_hu.po \
 	about_fi.po \
-	about_hr.po
+	about_hr.po \
+	about_uk.po
 
 
 ###############################################################################
