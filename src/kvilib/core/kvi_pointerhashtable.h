@@ -170,6 +170,32 @@ inline const int & kvi_hash_key_default(int *)
 	return static_default;
 }
 
+inline unsigned int kvi_hash_hash(const unsigned short &iKey,bool)
+{
+	return (unsigned int)iKey;
+}
+
+inline bool kvi_hash_key_equal(const unsigned short &iKey1,const unsigned short &iKey2,bool)
+{
+	return iKey1 == iKey2;
+}
+
+inline void kvi_hash_key_copy(const unsigned short &iKeyFrom,unsigned short &iKeyTo,bool)
+{
+	iKeyTo = iKeyFrom;
+}
+
+inline void kvi_hash_key_destroy(unsigned short &iKey,bool)
+{
+}
+
+inline const unsigned short & kvi_hash_key_default(unsigned short *)
+{
+	static unsigned short static_default = 0;
+	return static_default;
+}
+
+
 inline unsigned int kvi_hash_hash(void * pKey,bool)
 {
 	unsigned char * pBytes = (unsigned char *)&(pKey);

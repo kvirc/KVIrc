@@ -57,7 +57,7 @@ void KviKvsSwitchList::addShort(unsigned short uShortKey,KviKvsVariant * pVarian
 {
 	if(!m_pShortSwitchDict)
 	{
-		m_pShortSwitchDict = new KviPointerHashTable<int,KviKvsVariant>(11);
+		m_pShortSwitchDict = new KviPointerHashTable<unsigned short,KviKvsVariant>(11);
 		m_pShortSwitchDict->setAutoDelete(true);
 	}
 	m_pShortSwitchDict->replace(uShortKey,pVariant);

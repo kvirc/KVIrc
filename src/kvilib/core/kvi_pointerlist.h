@@ -408,11 +408,12 @@ protected:
 			m_pAux->m_pNext->m_pPrev = m_pAux->m_pPrev;
 		else
 			m_pTail = m_pAux->m_pPrev;
-		if(m_bAutoDelete)
-			delete ((const T *)(m_pAux->m_pData));
+		const T * pAuxData = (const T *)(m_pAux->m_pData);
 		delete m_pAux;
 		m_pAux = NULL;
 		m_uCount--;
+		if(m_bAutoDelete)
+			delete pAuxData; // this can cause recursion, so do it at the end
 	}
 
 public:
@@ -551,7 +552,11 @@ public:
 	///
 	T * first()
 	{
-		if(!m_pHead)return NULL;
+		if(!m_pHead)
+		{
+			m_pAux = NULL;
+			return NULL;
+		}
 		m_pAux = m_pHead;
 		return (T *)(m_pAux->m_pData);
 	}
@@ -593,7 +598,11 @@ public:
 	///
 	T * last()
 	{
-		if(!m_pTail)return NULL;
+		if(!m_pTail)
+		{
+			m_pAux = NULL;
+			return NULL;
+		}
 		m_pAux = m_pTail;
 		return (T *)(m_pAux->m_pData);
 	}
@@ -822,22 +831,23 @@ public:
 	bool removeFirst()
 	{
 		if(!m_pHead)return false;
+		const T * pAuxData;
 		if(m_pHead->m_pNext)
 		{
 			m_pHead = m_pHead->m_pNext;
-			if(m_bAutoDelete)
-				delete ((const T *)(m_pHead->m_pPrev->m_pData));
+			pAuxData = (const T *)(m_pHead->m_pPrev->m_pData);
 			delete m_pHead->m_pPrev;
 			m_pHead->m_pPrev = NULL;
 		} else {
-			if(m_bAutoDelete)
-				delete ((const T *)(m_pHead->m_pData));
+			pAuxData = (const T *)(m_pHead->m_pData);
 			delete m_pHead;
 			m_pHead = NULL;
 			m_pTail = NULL;
 		}
 		m_pAux = NULL;
 		m_uCount--;
+		if(m_bAutoDelete)
+			delete pAuxData;
 		return true;
 	}
 
@@ -848,22 +858,23 @@ public:
 	bool removeLast()
 	{
 		if(!m_pTail)return false;
+		const T * pAuxData;
 		if(m_pTail->m_pPrev)
 		{
 			m_pTail = m_pTail->m_pPrev;
-			if(m_bAutoDelete)
-				delete ((const T *)(m_pTail->m_pNext->m_pData));
+			pAuxData = (const T *)(m_pTail->m_pNext->m_pData);
 			delete m_pTail->m_pNext;
 			m_pTail->m_pNext = NULL;
 		} else {
-			if(m_bAutoDelete)
-				delete ((const T *)(m_pTail->m_pData));
+			pAuxData = (const T *)(m_pTail->m_pData);
 			delete m_pTail;
 			m_pHead = NULL;
 			m_pTail = NULL;
 		}
 		m_pAux = NULL;
 		m_uCount--;
+		if(m_bAutoDelete)
+			delete pAuxData;
 		return true;
 	}
 

@@ -37,7 +37,7 @@ public:
 	KviKvsSwitchList();
 	~KviKvsSwitchList();
 protected:
-	KviPointerHashTable<int,KviKvsVariant> * m_pShortSwitchDict;
+	KviPointerHashTable<unsigned short,KviKvsVariant> * m_pShortSwitchDict;
 	KviPointerHashTable<QString,KviKvsVariant>    * m_pLongSwitchDict;
 public:
 	void clear();

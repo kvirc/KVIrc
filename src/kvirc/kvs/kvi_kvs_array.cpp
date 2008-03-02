@@ -68,15 +68,15 @@ KviKvsArray::~KviKvsArray()
 
 static int kvs_array_reverse_compare_func(const void * v1,const void * v2)
 {
-	if((KviKvsVariant *)v1)return -((KviKvsVariant *)v1)->compare((KviKvsVariant *)v2);
-	if((KviKvsVariant *)v2)return (((KviKvsVariant *)v2)->compare((KviKvsVariant *)v1));
+	if(*((KviKvsVariant **)v1))return (*((KviKvsVariant **)v1))->compare(*((KviKvsVariant **)v2));
+	if(*((KviKvsVariant **)v2))return -(*((KviKvsVariant **)v2))->compare(*((KviKvsVariant **)v1));
 	return 0;
 }
 
 static int kvs_array_compare_func(const void * v1,const void * v2)
 {
-	if((KviKvsVariant *)v1)return ((KviKvsVariant *)v1)->compare((KviKvsVariant *)v2);
-	if((KviKvsVariant *)v2)return -(((KviKvsVariant *)v2)->compare((KviKvsVariant *)v1));
+	if(*((KviKvsVariant **)v1))return -(*((KviKvsVariant **)v1))->compare(*((KviKvsVariant **)v2));
+	if(*((KviKvsVariant **)v2))return (*((KviKvsVariant **)v2))->compare(*((KviKvsVariant **)v1));
 	return 0;
 }
 

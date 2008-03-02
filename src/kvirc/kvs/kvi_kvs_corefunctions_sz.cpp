@@ -277,7 +277,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(sort)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsArrayCast a;
 
 		KVSCF_PARAMETERS_BEGIN
@@ -292,7 +291,6 @@ namespace KviKvsCoreFunctions
 		} else {
 			KVSCF_pRetBuffer->setArray(new KviKvsArray());
 		}
-#endif
 		return true;
 	}
 

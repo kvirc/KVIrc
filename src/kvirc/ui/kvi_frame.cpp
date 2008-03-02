@@ -214,7 +214,8 @@ KviFrame::~KviFrame()
 	}
 
 	// the really last thing to do : close all the windows
-	while(m_pWinList->first())closeWindow(m_pWinList->first());
+	while(m_pWinList->first())
+		closeWindow(m_pWinList->first());
 	delete m_pWinList;
 	
 	delete m_pAccel;

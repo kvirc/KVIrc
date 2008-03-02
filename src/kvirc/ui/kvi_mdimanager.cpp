@@ -192,7 +192,11 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 	{
 		m_pZ->setAutoDelete(false);
 
-		if(!m_pZ->removeRef(lpC))return; // no such child ?
+		if(!m_pZ->removeRef(lpC))
+		{
+			m_pZ->setAutoDelete(true);
+			return; // no such child ?
+		}
 
 		// disable the labels of all the other children
 		//for(KviMdiChild *pC=m_pZ->first();pC;pC=m_pZ->next())
@@ -427,8 +431,10 @@ void KviMdiManager::focusTopChild()
 	//	if(lpC->state()==KviMdiChild::Minimized)return;
 	//	debug("Focusing top child %s",lpC->name());
 	//disable the labels of all the other children
-	for(KviMdiChild *pC=m_pZ->first();pC;pC=m_pZ->next()){
-		if(pC != lpC)pC->captionLabel()->setActive(false);
+	for(KviMdiChild *pC=m_pZ->first();pC;pC=m_pZ->next())
+	{
+		if(pC != lpC)
+			pC->captionLabel()->setActive(false);
 	}
 	lpC->raise();
 	if(!lpC->hasFocus())lpC->setFocus();
@@ -604,7 +610,6 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 void KviMdiManager::relayoutMenuButtons()
 {
 #ifdef COMPILE_USE_QT4
-	debug("mdi show");
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
 	if(m_pSdiControls)
