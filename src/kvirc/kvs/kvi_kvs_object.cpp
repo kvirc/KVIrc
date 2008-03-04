@@ -635,6 +635,7 @@ KviKvsObject::~KviKvsObject()
 	while(m_pChildList->first())delete m_pChildList->first();
 	delete m_pChildList;
 
+#if 0
 	// Disconnect all the signals
 	if(m_pSignalDict)
 	{
@@ -664,6 +665,27 @@ KviKvsObject::~KviKvsObject()
 			//++cit;// NO!... we point to the next now!
 		}
 	}
+#else
+	// Disconnect all the signals
+	for(;;)
+	{
+		if(!m_pSignalDict)break;
+		KviPointerHashTableEntry<QString,KviKvsObjectConnectionList> * pSignalList = m_pSignalDict->firstEntry();
+		if(!pSignalList)break;
+		KviKvsObjectConnection * pConnection = pSignalList->data()->first();
+		if(!pConnection)break;
+		disconnectSignal(pSignalList->key(),pConnection);
+	}
+
+	// Disconnect all the slots
+	for(;;)
+	{
+		if(!m_pConnectionList)break;
+		KviKvsObjectConnection * pConnection = m_pConnectionList->first();
+		if(!pConnection)break;
+		pConnection->pSourceObject->disconnectSignal(pConnection->szSignal,pConnection);
+	}
+#endif
 
 	KviKvsKernel::instance()->objectController()->unregisterObject(this);
 
@@ -832,7 +854,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 		// save it , since s may be destroyed in the call!
 		KviKvsObject * pTarget = s->pTargetObject;
 
-		emitted ++;
+		emitted++;
 
 		kvs_hobject_t hTarget = pTarget->handle();
 		kvs_hobject_t hOld = pTarget->signalSender();
