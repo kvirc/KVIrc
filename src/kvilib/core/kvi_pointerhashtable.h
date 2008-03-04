@@ -725,8 +725,8 @@ public:
 		m_bAutoDelete = true;
 		m_bDeepCopyKeys = bDeepCopyKeys;
 		m_uSize = uSize > 0 ? uSize : 32;
-		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key,T> > *[uSize];
-		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = 0;
+		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key,T> > *[m_uSize];
+		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = NULL;
 	}
 
 	///
@@ -742,7 +742,7 @@ public:
 		m_bDeepCopyKeys = t.m_bDeepCopyKeys;
 		m_uSize = t.m_uSize;
 		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key,T> > *[m_uSize];
-		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = 0;
+		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = NULL;
 		copyFrom(t);
 	}
 

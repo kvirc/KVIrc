@@ -124,6 +124,9 @@ void KviSharedFilesManager::cleanup()
 	bool bOtherStuffToCleanup = false;
 	//bool bChanged = false;
 
+	KviPointerList<QString> lDying;
+	lDying.setAutoDelete(true);
+
 	while(KviSharedFileList * l = it.current())
 	{
 		KviPointerList<KviSharedFile> tmp;
@@ -147,11 +150,13 @@ void KviSharedFilesManager::cleanup()
 			emit sharedFileRemoved(fo);
 		}
 		if(l->count() == 0)
-		{
-			m_pSharedListDict->remove(it.currentKey());
-		}
+			lDying.append(new QString(it.currentKey()));
+
 		++it;
 	}
+
+	for(QString * pDyingKey = lDying.first();pDyingKey;pDyingKey = lDying.next())
+		m_pSharedListDict->remove(*pDyingKey);
 
 	if(!bOtherStuffToCleanup)m_pCleanupTimer->stop();
 	//if(bChanged)emit sharedFilesChanged();
