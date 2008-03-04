@@ -113,7 +113,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 */
 
 static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szMessage;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("message",KVS_PT_STRING,0,szMessage)
@@ -184,7 +184,7 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 */
 
 static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(g_pNotifierWindow) g_pNotifierWindow->doHide(!(c->hasSwitch('n',"notanimated")));
 	return true;
 }
@@ -214,7 +214,7 @@ static bool notifier_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 */
 
 static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pNotifierWindow)return true;
 	if(!g_pNotifierWindow->countTabs())return true;
 

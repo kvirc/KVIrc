@@ -61,7 +61,7 @@ KviPointerList<KviLinksWindow> * g_pLinksWindowList = 0;
 
 
 static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	
 	// FIND ME
 	if(!c->window()->console())return c->context()->errorNoIrcContext();
@@ -95,7 +95,7 @@ static bool links_module_cleanup(KviModule *m)
 {
 	while(g_pLinksWindowList->first())g_pLinksWindowList->first()->die();
 	delete g_pLinksWindowList;
-    g_pLinksWindowList = 0;
+	g_pLinksWindowList = 0;
 	return true;
 }
 

@@ -371,11 +371,11 @@ void KviSoundThread::run()
 				frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK); 
 				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
-			    
+
 				int audiofd_c = open("/dev/dsp", O_WRONLY | O_EXCL | O_NDELAY);
 				QFile audiofd;
 				audiofd.open(IO_WriteOnly,audiofd_c);
-			    
+
 				if(audiofd_c < 0)
 				{
 					debug("Could not open audio devive /dev/dsp! [OSS]");
@@ -564,21 +564,21 @@ void KviSoundThread::run()
 
 
 /*
-    @doc: snd.play
-    @type:
-        command
-    @title:
-        snd.play
-    @short:
-        Play a sound file from the disk
-    @syntax:
-        snd.play [-q|quiet] <filename:string>
-    @description:
-        Play a file, using the sound system specified by the user in the options.[br]
-        The supported file formats vary from one sound system to another, but the best
-        bet could be Au Law (.au) files. Artsd, EsounD and Linux/OSS with audiofile support also
-        support other formats like .wav files but in OSS without audiofile only .au files are
-        supported.
+	@doc: snd.play
+	@type:
+		command
+	@title:
+		snd.play
+	@short:
+		Play a sound file from the disk
+	@syntax:
+		snd.play [-q|quiet] <filename:string>
+	@description:
+		Play a file, using the sound system specified by the user in the options.[br]
+		The supported file formats vary from one sound system to another, but the best
+		bet could be Au Law (.au) files. Artsd, EsounD and Linux/OSS with audiofile support also
+		support other formats like .wav files but in OSS without audiofile only .au files are
+		supported.
 		On windows the supported file formats are determined by the drivers installed.
 		You should be able to play at least *.wav files.[br]
 		(This is a task where the Windows interface is really well done, I must say that :)
@@ -588,7 +588,7 @@ void KviSoundThread::run()
 */
 
 static bool snd_kvs_cmd_play(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szFile;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("file name",KVS_PT_STRING,0,szFile)
@@ -608,7 +608,7 @@ static bool snd_kvs_cmd_play(KviKvsModuleCommandCall * c)
 }
 
 static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
-{ 
+{
 	g_pSoundPlayer->detectSoundSystem();
 	if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem),"null"))
 	{
@@ -621,21 +621,21 @@ static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 
 
 /*
-    @doc: snd.mute
-    @type:
-        command
-    @title:
-        snd.mute
-    @short:
-        Mute all sounds
-    @syntax:
-        snd.mute 
-    @description:
-        Mute all sounds
+	@doc: snd.mute
+	@type:
+		command
+	@title:
+		snd.mute
+	@short:
+		Mute all sounds
+	@syntax:
+		snd.mute
+	@description:
+		Mute all sounds
 */
 
 static bool snd_kvs_cmd_mute(KviKvsModuleCommandCall * c)
-{ 
+{
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	g_pSoundPlayer->setMuted(TRUE);
@@ -643,21 +643,21 @@ static bool snd_kvs_cmd_mute(KviKvsModuleCommandCall * c)
 }
 
 /*
-    @doc: snd.unmute
-    @type:
-        command
-    @title:
-        snd.unmute
-    @short:
-        UnMute all sounds
-    @syntax:
-        snd.mute 
-    @description:
-        UnMute all sounds
+	@doc: snd.unmute
+	@type:
+		command
+	@title:
+		snd.unmute
+	@short:
+		UnMute all sounds
+	@syntax:
+		snd.mute
+	@description:
+		UnMute all sounds
 */
 
 static bool snd_kvs_cmd_unmute(KviKvsModuleCommandCall * c)
-{ 
+{
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	g_pSoundPlayer->setMuted(FALSE);
@@ -680,7 +680,7 @@ static bool snd_kvs_cmd_unmute(KviKvsModuleCommandCall * c)
 
 
 static bool snd_kvs_fnc_ismuted(KviKvsModuleFunctionCall * c)
-{ 
+{
 	c->returnValue()->setBoolean(g_pSoundPlayer->isMuted());
 	return true;
 }
@@ -702,7 +702,7 @@ static bool snd_module_init(KviModule * m)
 static bool snd_module_cleanup(KviModule *m)
 {
 	delete g_pSoundPlayer;
-    g_pSoundPlayer = 0;
+	g_pSoundPlayer = 0;
 	return true;
 }
 

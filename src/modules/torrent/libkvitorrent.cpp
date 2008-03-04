@@ -483,7 +483,8 @@ TC_KVS_STRINGRET_INT_FUNCTION(name, name, "torrent_number")
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.stop[/cmd], [cmd]torrent.stopAll[/cmd], [cmd]torrent.startAll[/cmd]
+		[cmd]torrent.stop[/cmd], [cmd]torrent.stopAll[/cmd],
+		[cmd]torrent.startAll[/cmd]
 */
 TC_KVS_INT_COMMAND(start, start, "torrent_number")
 
@@ -503,7 +504,8 @@ TC_KVS_INT_COMMAND(start, start, "torrent_number")
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.stopAll[/cmd], [cmd]torrent.startAll[/cmd], [cmd]torrent.start[/cmd]
+		[cmd]torrent.stopAll[/cmd], [cmd]torrent.startAll[/cmd],
+		[cmd]torrent.start[/cmd]
 */
 TC_KVS_INT_COMMAND(stop, stop, "torrent_number")
 
@@ -618,7 +620,8 @@ TC_KVS_INT_INT_STRING_COMMAND(setFilePriority, setFilePriority, "torrent_number"
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.stopAll[/cmd], [cmd]torrent.start[/cmd], [cmd]torrent.stop[/cmd]
+		[cmd]torrent.stopAll[/cmd], [cmd]torrent.start[/cmd],
+		[cmd]torrent.stop[/cmd]
 */
 
 TC_KVS_SIMPLE_COMMAND(startAll, startAll)
@@ -639,7 +642,8 @@ TC_KVS_SIMPLE_COMMAND(startAll, startAll)
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.startAll[/cmd], [cmd]torrent.start[/cmd], [cmd]torrent.stop[/cmd]
+		[cmd]torrent.startAll[/cmd], [cmd]torrent.start[/cmd],
+		[cmd]torrent.stop[/cmd]
 */
 
 TC_KVS_SIMPLE_COMMAND(stopAll, stopAll)
@@ -661,7 +665,8 @@ TC_KVS_SIMPLE_COMMAND(stopAll, stopAll)
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.startAll[/cmd], [cmd]torrent.start[/cmd], [cmd]torrent.stop[/cmd]
+		[cmd]torrent.startAll[/cmd], [cmd]torrent.start[/cmd],
+		[cmd]torrent.stop[/cmd]
 */
 
 //MP_KVS_SIMPLE_COMMAND(list,list)
@@ -684,7 +689,7 @@ TC_KVS_SIMPLE_COMMAND(stopAll, stopAll)
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.detect[/cmd], [fnc]$torrent.client()[/fnc]
+		[cmd]torrent.detect[/cmd], [fnc]$torrent.client[/fnc]
 */
 
 TC_KVS_COMMAND(setClient)
@@ -759,7 +764,8 @@ TC_KVS_FUNCTION(client)
 		for more details about how it works.[br]
 	@seealso:
 		[module:torrent]torrent client documentation[/module],
-		[cmd]torrent.detect[/cmd], [cmd]torrent.setClient[/cmd], [cmd]torrent.client[/cmd]
+		[cmd]torrent.detect[/cmd], [cmd]torrent.setClient[/cmd],
+		[cmd]torrent.client[/cmd]
 */
 TC_KVS_FUNCTION(clientList)
 {

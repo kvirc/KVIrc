@@ -266,7 +266,7 @@ void KviTipWindow::closeEvent(QCloseEvent *e)
 
 
 static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szTipfilename;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szTipfilename)

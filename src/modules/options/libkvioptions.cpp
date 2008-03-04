@@ -87,7 +87,7 @@ static bool options_kvs_cmd_save(KviKvsModuleCommandCall * c)
 		If [options_group] is omitted, the option group "general" is assumed.
 		This command is exported by the "options" module.
 	@seealso:
-		[fnc]$options.isdialog[/fnc]
+		[fnc]$options.isDialog[/fnc]
 */
 
 

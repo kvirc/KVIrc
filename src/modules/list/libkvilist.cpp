@@ -51,7 +51,7 @@ KviPointerList<KviListWindow> * g_pListWindowList = 0;
 */
 
 static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 
 	if(!c->window()->console())return c->context()->errorNoIrcContext();
 

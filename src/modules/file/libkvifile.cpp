@@ -61,7 +61,7 @@
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use UNIX style paths for them.[br]
 	@seealso:
-		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]()
+		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
 */
 
 static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
@@ -181,7 +181,7 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 		The file is saved in utf8 unless the -l switch is specified (in that case the local 8 bit encoding is used).
 		Please note that uf8 is the only character set that preserves ALL the possible characters.
 	@seealso:
-		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]()
+		[cmd]file.rename[/cmd], [fnc]$file.exists[/fnc]
 */
 
 static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
@@ -226,7 +226,7 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed.Just use UNIX style paths for them.[br]
 	@seealso:
-		[cmd]file.copy[/cmd], [fnc]$file.exists[/fnc]()
+		[cmd]file.copy[/cmd], [fnc]$file.exists[/fnc]
 */
 
 static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
@@ -267,7 +267,7 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
-		[fnc]$file.exists[/fnc]()
+		[fnc]$file.exists[/fnc]
 */
 
 static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
@@ -306,7 +306,7 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
-		[fnc]$file.exists[/fnc]()
+		[fnc]$file.exists[/fnc]
 */
 
 static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
@@ -348,7 +348,7 @@ static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		is running on so you don't have to bother about portability: it *should* be automatically
 		guaranteed. Just use an UNIX style path.[br]
 	@seealso:
-		[fnc]$file.exists[/fnc]()
+		[fnc]$file.exists[/fnc]
 		[cmd]file.remove[/cmd]
 */
 
@@ -799,7 +799,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 			echo $file.readLines(/proc/cpuinfo)
 		[/example]
 	@seealso:
-		[fnc]$file.read[/fnc](), [cmd]file.writeLines[/fnc], [fnc]$lf[/fnc]
+		[fnc]$file.read[/fnc], [cmd]file.writeLines[/cmd], [fnc]$lf[/fnc]
 */
 
 
@@ -1160,7 +1160,7 @@ static bool file_kvs_fnc_globaldir(KviKvsModuleFunctionCall * c)
 		For example, if <filepath> is /usr/arch/mp3/Carisma_SuonoDelSilenzio.mp3 then
 		this function will return /usr/arch/mp3 on UNIX and C:\usr\arch\mp3 on Windows.
 	@seealso:
-		[fnc]$file.extractfilename[/fnc]
+		[fnc]$file.extractFileName[/fnc]
 */
 
 static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
@@ -1190,7 +1190,7 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 		For example, if <filepath> is /usr/arch/mp3/Carisma_SuonoDelSilenzio.mp3 then
 		this function will return Carisma_SuonoDelSilenzio.mp3
 	@seealso:
-		[fnc]$file.extractpath[/fnc]
+		[fnc]$file.extractPath[/fnc]
 */
 
 static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)

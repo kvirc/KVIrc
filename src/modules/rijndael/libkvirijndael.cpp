@@ -806,7 +806,7 @@ static bool rijndael_module_init(KviModule * m)
 	m->registerCryptEngine(d);
 
 
-    return true;
+	return true;
 #else
 	return false;
 #endif
@@ -817,7 +817,7 @@ static bool rijndael_module_cleanup(KviModule *m)
 #ifdef COMPILE_CRYPT_SUPPORT
 	while(g_pEngineList->first())delete g_pEngineList->first();
 	delete g_pEngineList;
-    g_pEngineList = 0;
+	g_pEngineList = 0;
 	m->unregisterCryptEngines();
 	return true;
 #else
@@ -838,13 +838,13 @@ static bool rijndael_module_can_unload(KviModule *)
 // plugin definition structure
 // =======================================
 KVIRC_MODULE(
-    "Rijndael crypt engine",
+	"Rijndael crypt engine",
 	"1.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Exports the rijndael crypt engine",
-    rijndael_module_init ,
-    rijndael_module_can_unload,
-    0,
+	rijndael_module_init ,
+	rijndael_module_can_unload,
+	0,
 	rijndael_module_cleanup
 )
 

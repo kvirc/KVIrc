@@ -55,38 +55,38 @@ static SPasteController * spaste_find_controller(KviWindow * w)
 
 static KviWindow * spaste_kvs_find_window(QString &win, KviKvsModuleCommandCall * c)
 {
-    KviWindow * w;
-    if(!win.isEmpty())w = g_pApp->findWindow(win);
-    else w = c->window();
-    if(!w)
-    {
-        c->warning(__tr("Window with ID '%Q' not found"),&win);
-        return 0;
-    }
-    if((w->type() == KVI_WINDOW_TYPE_CHANNEL) || (w->type() == KVI_WINDOW_TYPE_QUERY) || (w->type() == KVI_WINDOW_TYPE_DCCCHAT))return w;
-    c->warning(__tr2qs("The specified window (%Q) is not a channel/query/DCC chat"),&win);
-    return 0;
+	KviWindow * w;
+	if(!win.isEmpty())w = g_pApp->findWindow(win);
+	else w = c->window();
+	if(!w)
+	{
+		c->warning(__tr("Window with ID '%Q' not found"),&win);
+		return 0;
+	}
+	if((w->type() == KVI_WINDOW_TYPE_CHANNEL) || (w->type() == KVI_WINDOW_TYPE_QUERY) || (w->type() == KVI_WINDOW_TYPE_DCCCHAT))return w;
+	c->warning(__tr2qs("The specified window (%Q) is not a channel/query/DCC chat"),&win);
+	return 0;
 }
 //-------------------------------------------------
 /*
-    @doc: spaste.file
-    @type:
-        command
-    @title:
-        spaste.file
-    @short:
-        Sends the contents of a file to a window, with a delay between each line
-    @syntax:
-         spaste.file <filename:string> [window:string]
-    @description:
-        Sends the contents of a file to a conversation window doing a pause between each line. [br]
-        the optional window parameter must be a channel, query or DCC chat window, if [br]
-        no window is specified the text will be send to the current window.
-    @seealso:
-        [cmd]spaste.clipboard[/cmd],
-        [cmd]spaste.stop[/cmd],
-        [cmd]spaste.list[/cmd],
-        [cmd]spaste.setdelay[/cmd]
+	@doc: spaste.file
+	@type:
+		command
+	@title:
+		spaste.file
+	@short:
+		Sends the contents of a file to a window, with a delay between each line
+	@syntax:
+		spaste.file <filename:string> [window:string]
+	@description:
+		Sends the contents of a file to a conversation window doing a pause between each line. [br]
+		the optional window parameter must be a channel, query or DCC chat window, if [br]
+		no window is specified the text will be send to the current window.
+	@seealso:
+		[cmd]spaste.clipboard[/cmd],
+		[cmd]spaste.stop[/cmd],
+		[cmd]spaste.list[/cmd],
+		[cmd]spaste.setdelay[/cmd]
 */
 //-------------------------------------------
 // spaste.file
@@ -101,7 +101,7 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
-    if( (!window) || window->console()->isNotConnected())return false;
+	if( (!window) || window->console()->isNotConnected())return false;
 
 	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.ascii())))
 	{
@@ -109,86 +109,86 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-    QFile tmp(szFile);
-    if(!tmp.open(IO_ReadOnly)) {
-        c->warning(__tr2qs("I can't open that file"));
-        return false;
-    }
-    tmp.close();
+	QFile tmp(szFile);
+	if(!tmp.open(IO_ReadOnly)) {
+		c->warning(__tr2qs("I can't open that file"));
+		return false;
+	}
+	tmp.close();
 
-    SPasteController * controller = spaste_find_controller(window);
+	SPasteController * controller = spaste_find_controller(window);
 	if(!controller)controller = new SPasteController(window,++ctrlId);
-    if(!controller->pasteFileInit(szFile)) {
-        c->warning(__tr2qs("Could not paste file"));
-        return false;
-    }
+	if(!controller->pasteFileInit(szFile)) {
+		c->warning(__tr2qs("Could not paste file"));
+		return false;
+	}
 	return true;
 }
 
 
 /*
-    @doc: spaste.clipboard
-    @type:
-        command
-    @title:
-        spaste.clipboard
-    @short:
-        Sends the contents of the clipboard to a window, pausing between each line
-    @syntax:
-        spaste.clipboard [window:string]
-    @description:
-        Sends the contents of the clipboard to a conversation window, with a delay between each line. [br]
-        the optional window parameter must be a channel, query or DCC chat window. [br]
-        If no window is specified, the text will be sent to the current window.
-    @seealso:
-        [cmd]spaste.file[/cmd],
-        [cmd]spaste.stop[/cmd],
-        [cmd]spaste.list[/cmd],
-        [cmd]spaste.setdelay[/cmd]
+	@doc: spaste.clipboard
+	@type:
+		command
+	@title:
+		spaste.clipboard
+	@short:
+		Sends the contents of the clipboard to a window, pausing between each line
+	@syntax:
+		spaste.clipboard [window:string]
+	@description:
+		Sends the contents of the clipboard to a conversation window, with a delay between each line. [br]
+		the optional window parameter must be a channel, query or DCC chat window. [br]
+		If no window is specified, the text will be sent to the current window.
+	@seealso:
+		[cmd]spaste.file[/cmd],
+		[cmd]spaste.stop[/cmd],
+		[cmd]spaste.list[/cmd],
+		[cmd]spaste.setdelay[/cmd]
 */
 //-------------------------------------------------
 // spaste.clipboard
 //-------------------------------------------------
 
 static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szWindow;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window",KVS_PT_STRING,KVS_PF_OPTIONAL,szWindow)
 	KVSM_PARAMETERS_END(c)
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
-    if( (!window) || window->console()->isNotConnected())return false;
-
-    SPasteController * controller = spaste_find_controller(window);
+	if( (!window) || window->console()->isNotConnected())return false;
+	
+	SPasteController * controller = spaste_find_controller(window);
 	if(!controller)controller = new SPasteController(window,++ctrlId);
-    controller->pasteClipboardInit();
+	controller->pasteClipboardInit();
 	return true;
 }
 
 /*
-    @doc: spaste.stop
-    @type:
-        command
-    @title:
-        spaste.stop
-    @short:
-        Stops one or more slow-paste process.
-    @syntax:
-        spaste.stop [-a] [id:integer]
-    @description:
-        This commands stop one or more slow-paste processes. It can operate in three ways. The first, [br]
-        without any parameter or switch, stops all slow-paste processes running in the same window [br]
-        as the command. The second, using the -a switch, stops all slow paste processes running [br]
-        on all windows. The third form, without the switch and specifying a numerical slow paste process ID [br]
-        (which you can obtain with the [cmd]spaste.list[/cmd] command), stops only that process ID.
-	@switches:
-		!sw: -a | --all
-		Stops all slow paste processes running
-		@seealso:
-        [cmd]spaste.clipboard[/cmd],
-        [cmd]spaste.file[/cmd],
-        [cmd]spaste.list[/cmd],
-        [cmd]spaste.setdelay[/cmd]
+	@doc: spaste.stop
+	@type:
+		command
+	@title:
+		spaste.stop
+	@short:
+		Stops one or more slow-paste process.
+	@syntax:
+		spaste.stop [-a] [id:integer]
+	@description:
+		This commands stop one or more slow-paste processes. It can operate in three ways. The first, [br]
+		without any parameter or switch, stops all slow-paste processes running in the same window [br]
+		as the command. The second, using the -a switch, stops all slow paste processes running [br]
+		on all windows. The third form, without the switch and specifying a numerical slow paste process ID [br]
+		(which you can obtain with the [cmd]spaste.list[/cmd] command), stops only that process ID.
+		@switches:
+			!sw: -a | --all
+			Stops all slow paste processes running
+			@seealso:
+		[cmd]spaste.clipboard[/cmd],
+		[cmd]spaste.file[/cmd],
+		[cmd]spaste.list[/cmd],
+		[cmd]spaste.setdelay[/cmd]
 
 */
 //--------------------------------------------------
@@ -196,67 +196,64 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 //--------------------------------------------------
 
 static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
-{ 
+{
 	kvs_int_t iId=0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("delay",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,iId)
 	KVSM_PARAMETERS_END(c)
 
 	if(c->hasSwitch('a',"all")) //Delete all spaste's
-    {
-        while(g_pControllerList->first()) delete g_pControllerList->first();
-        return true;
-    } else 
-    {
-        KviPointerListIterator<SPasteController> it(*g_pControllerList);
-        SPasteController *item;
+	{
+		while(g_pControllerList->first()) delete g_pControllerList->first();
+		return true;
+	} else {
+		KviPointerListIterator<SPasteController> it(*g_pControllerList);
+		SPasteController *item;
         
-        if(!iId) //Delete all spaste's from the current window
-        {
-            if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
-            {
+		if(!iId) //Delete all spaste's from the current window
+		{
+			if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
+			{
 				QString szWinId = c->window()->id();
-                c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
-                return false;
-            } else 
-            {
-                
-                while( (item = it.current()) != 0)
-                {
-                    ++it;
-                    if(kvi_strEqualCS(item->window()->id(),c->window()->id()))delete item;
-                }
-            }
-        } else //Delete the spaste with the given id
-        { 
-            while( (item = it.current()) != 0) 
-            { 
-                ++it;
-                if(item->getId() == iId)delete item;
-            }
-        }
-        return true;
-    } 
+				c->warning(__tr2qs("The specified window (%Q) is not a channel/query/dcc"),&szWinId);
+				return false;
+			} else {
+				while( (item = it.current()) != 0)
+				{
+					++it;
+					if(kvi_strEqualCS(item->window()->id(),c->window()->id()))delete item;
+				}
+			}
+		} else //Delete the spaste with the given id
+		{
+			while( (item = it.current()) != 0) 
+			{ 
+				++it;
+				if(item->getId() == iId)delete item;
+			}
+		}
+		return true;
+	}
 }
 
 /*
-    @doc: spaste.list
-    @type:
-        command
-    @title:
-        spaste.list
-    @short:
-        Lists all the running spaste processes.
-    @syntax:
-        spaste.list
-    @description:
-        This command will list in the window where it is executed all the current slow-paste [br]
-        processes, their identification numbers, and the windows where they are running. [br]
-    @seealso:
-        [cmd]spaste.clipboard[/cmd],
-        [cmd]spaste.file[/cmd],
-        [cmd]spaste.stop[/cmd],
-        [cmd]spaste.setdelay[/cmd]
+	@doc: spaste.list
+	@type:
+		command
+	@title:
+		spaste.list
+	@short:
+		Lists all the running spaste processes.
+	@syntax:
+		spaste.list
+	@description:
+		This command will list in the window where it is executed all the current slow-paste [br]
+		processes, their identification numbers, and the windows where they are running. [br]
+	@seealso:
+		[cmd]spaste.clipboard[/cmd],
+		[cmd]spaste.file[/cmd],
+		[cmd]spaste.stop[/cmd],
+		[cmd]spaste.setdelay[/cmd]
 */
 //--------------------------------------------------
 // spaste.list
@@ -265,34 +262,34 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 { 
 	KviPointerListIterator<SPasteController> it(*g_pControllerList);
-    SPasteController *item;
-    
-    while( (item = it.current()) != 0)
-    {
-        ++it;
+	SPasteController *item;
+
+	while( (item = it.current()) != 0)
+	{
+		++it;
 		QString szWinId = item->window()->id();
-        c->window()->output(KVI_OUT_NONE,__tr2qs("Slow-paste ID:%d Window:%Q"),item->getId(),&szWinId);
-    }
+		c->window()->output(KVI_OUT_NONE,__tr2qs("Slow-paste ID:%d Window:%Q"),item->getId(),&szWinId);
+	}
 	return true;
 }
 
 /*
-    @doc: spaste.setdelay
-    @type:
-        command
-    @title:
-        spaste.setdelay
-    @short:
-        Sets the delay time in miliseconds for the spaste module command delay
-    @syntax:
-        spaste.setdelay <time_in_msecs:integer>
-    @description:
-        Sets the delay time in milliseconds for the spaste module command delay.
-    @seealso:
-        [cmd]spaste.clipboard[/cmd],
-        [cmd]spaste.file[/cmd],
-        [cmd]spaste.stop[/cmd],
-        [cmd]spaste.list[/cmd]
+	@doc: spaste.setdelay
+	@type:
+		command
+	@title:
+		spaste.setdelay
+	@short:
+		Sets the delay time in miliseconds for the spaste module command delay
+	@syntax:
+		spaste.setdelay <time_in_msecs:integer>
+	@description:
+		Sets the delay time in milliseconds for the spaste module command delay.
+	@seealso:
+		[cmd]spaste.clipboard[/cmd],
+		[cmd]spaste.file[/cmd],
+		[cmd]spaste.stop[/cmd],
+		[cmd]spaste.list[/cmd]
 */
 //-------------------------------------------------
 // spaste.setdelay
@@ -312,8 +309,8 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 //-------------------------------------------------    
 static bool spaste_module_init(KviModule * m)
 {
-    g_pControllerList = new KviPointerList<SPasteController>;
-    g_pControllerList->setAutoDelete(false);
+	g_pControllerList = new KviPointerList<SPasteController>;
+	g_pControllerList->setAutoDelete(false);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"file",spaste_kvs_cmd_file);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clipboard",spaste_kvs_cmd_clipboard);
@@ -325,16 +322,16 @@ static bool spaste_module_init(KviModule * m)
 //-------------------------------------------------
 static bool spaste_module_cleanup(KviModule *m)
 {
-    while(g_pControllerList->first()) delete g_pControllerList->first();
-    delete g_pControllerList;
-    g_pControllerList = 0;
-    
+	while(g_pControllerList->first()) delete g_pControllerList->first();
+	delete g_pControllerList;
+	g_pControllerList = 0;
+
 	return true;
 }
 //-------------------------------------------------
 static bool spaste_module_can_unload(KviModule *m)
 {
-    return (g_pControllerList->isEmpty());
+	return (g_pControllerList->isEmpty());
 }
 //-------------------------------------------------
 KVIRC_MODULE(

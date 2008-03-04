@@ -70,7 +70,7 @@ Idle* g_pIdle;
 
 
 static bool my_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -95,7 +95,7 @@ static bool my_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pIdle)
 		g_pIdle = new Idle();
 	g_pIdle->start();
@@ -117,7 +117,7 @@ static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall * c)
 */
 
 static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pIdle) return true;
 	g_pIdle->stop();
 	//delete g_pIdle;
@@ -167,7 +167,7 @@ static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_umode(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -195,7 +195,7 @@ static bool my_kvs_fnc_umode(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -224,7 +224,7 @@ static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 
 
 static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -256,7 +256,7 @@ static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 
 
 static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -284,7 +284,7 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
-{ 
+{
 	
 	GET_KVS_CONSOLE
 	if(wnd)
@@ -314,7 +314,7 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
-{ 
+{
 	
 	GET_KVS_CONSOLE
 	if(wnd)
@@ -347,7 +347,7 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -375,7 +375,7 @@ static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
 */
 
 static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
-{ 
+{
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -384,6 +384,7 @@ static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
+
 static bool my_module_init(KviModule * m)
 {
 	g_pIdle = 0;

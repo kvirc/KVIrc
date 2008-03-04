@@ -838,18 +838,18 @@ static bool url_module_cleanup(KviModule *m)
 	}
 
 	delete g_pList;
-    g_pList = 0;
+	g_pList = 0;
 	delete g_pBanList;
-    g_pBanList = 0;
+	g_pBanList = 0;
 
 	delete g_pUrlDlgList;
-    g_pUrlDlgList = 0;
+	g_pUrlDlgList = 0;
 	delete g_pUrlAction;
 	g_pUrlAction = 0;
 
 
 	delete g_pUrlIconPixmap;
-    g_pUrlIconPixmap = 0;
+	g_pUrlIconPixmap = 0;
 
 	return true;
 }
@@ -862,7 +862,6 @@ static bool url_module_can_unload(KviModule *m)
 
 void url_module_config()
 {
-
 	if (!g_pConfigDialog) g_pConfigDialog = new ConfigDialog();
 }
 

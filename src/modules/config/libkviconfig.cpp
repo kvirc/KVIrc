@@ -81,7 +81,7 @@ static int g_iNextConfigId = 0;
 
 
 static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szFile; 
 	QString szMode;
 	
@@ -149,8 +149,8 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
-{ 
-	QString szFile; 
+{
+	QString szFile;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("file",KVS_PT_STRING,0,szFile)
@@ -200,8 +200,8 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	QString szKey;
 	QString szDefault;
 	
@@ -240,8 +240,8 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
@@ -278,8 +278,8 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
@@ -316,8 +316,8 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
@@ -351,7 +351,7 @@ static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	QString szSect;
 	
@@ -389,8 +389,8 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
@@ -433,8 +433,8 @@ static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
-{ 
-	QString szId; 
+{
+	QString szId;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
@@ -481,8 +481,7 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 */
 
 static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
-{ 
-	
+{
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
 	
@@ -810,16 +809,16 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 		You write entries by using [cmd]config.write[/cmd] and read them by using [fnc]$config.read[/fnc]().[br]
 		You can change the "current" config section by using [cmd]config.setsection[/cmd].[br]
 		Here comes a complete list of commands and functions exported by this module:[br]
-		[fnc]$config.open[/fnc]()[br]
-		[fnc]$config.read[/fnc]()[br]
-		[fnc]$config.section[/fnc]()[br]
-		[fnc]$config.hassection[/fnc]()[br]
-		[fnc]$config.sectionlist[/fnc]()[br]
-		[fnc]$config.keylist[/fnc]()[br]
-		[fnc]$config.filelist[/fnc]()[br]
-		[fnc]$config.filename[/fnc]()[br]
-		[fnc]$config.id[/fnc]()[br]
-		[fnc]$config.readonly[/fnc]()[br]
+		[fnc]$config.open[/fnc][br]
+		[fnc]$config.read[/fnc][br]
+		[fnc]$config.section[/fnc][br]
+		[fnc]$config.hassection[/fnc][br]
+		[fnc]$config.sectionlist[/fnc][br]
+		[fnc]$config.keylist[/fnc][br]
+		[fnc]$config.filelist[/fnc][br]
+		[fnc]$config.filename[/fnc][br]
+		[fnc]$config.id[/fnc][br]
+		[fnc]$config.readonly[/fnc][br]
 		[cmd]config.close[/cmd][br]
 		[cmd]config.flush[/cmd][br]
 		[cmd]config.clear[/cmd][br]

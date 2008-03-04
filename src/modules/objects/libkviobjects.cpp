@@ -517,7 +517,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 }
 
 static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
-{ 
+{
 	/*
 		@doc: objects.disconnect
 		@title:
@@ -569,7 +569,7 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 
 
 static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
-{ 
+{
 	/*
 		@doc: objects.bitblt
 		@type:
@@ -680,7 +680,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	kvs_int_t iBkX,iBkY;
 	kvs_int_t iFoX,iFoY;
 	kvs_int_t iDesX,iDesY,uW,uH;
-    kvs_real_t dBlend;
+	kvs_real_t dBlend;
 
 	kvs_hobject_t hBk,hFo,hDest;
 
@@ -765,12 +765,12 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		{
 			
 	
-		*dst = qRgba(
-						(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dBlend)),
-						(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dBlend)),
-						(int)((qBlue(*bkg) * dRemaining) + (qBlue(*fgn) * dBlend)),
-						(int)((qAlpha(*bkg) * dRemaining) + (qAlpha(*fgn) * dBlend))
-						);
+			*dst = qRgba(
+				(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dBlend)),
+				(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dBlend)),
+				(int)((qBlue(*bkg) * dRemaining) + (qBlue(*fgn) * dBlend)),
+				(int)((qAlpha(*bkg) * dRemaining) + (qAlpha(*fgn) * dBlend))
+				);
 
 			dst++;
 			bkg++;
@@ -833,18 +833,18 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	QString  szTemp;
 	KviKvsArray * n = new KviKvsArray();
 	int idx=0;
-    for(int i=0;i<list.count();i++)
+	for(int i=0;i<list.count();i++)
 	{
 		if( list.at(i)->isWidgetType())
-        {
+		{
 			if (bFlag)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
-                list.at(i),
-                KVI_TEXT_BOLD, list.at(i)->name(), KVI_TEXT_BOLD,
-                list.at(i)->className(),
-                list.at(i)->isVisible() ? "visible" : "hidden",
-                list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
+				list.at(i),
+				KVI_TEXT_BOLD, list.at(i)->name(), KVI_TEXT_BOLD,
+				list.at(i)->className(),
+				list.at(i)->isVisible() ? "visible" : "hidden",
+				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
 			}
 			QString  szClass=list.at(i)->className();
 			QString szObj=list.at(i)->name();
@@ -860,32 +860,30 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			idx++;
 	
 			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
-		
-	
-        }
-        //++it;
+		}
+	//++it;
 	}
 
 #else
 	QWidgetList *l = g_pApp->topLevelWidgets();
 	l->setAutoDelete(false);
-    QWidgetListIt it(*l);
-    KviStr spacing = ">";
+	QWidgetListIt it(*l);
+	KviStr spacing = ">";
 	QString  szTemp;
 	KviKvsArray * n = new KviKvsArray();
 	int idx=0;
-    while( it.current() )
-    {
+	while( it.current() )
+	{
 		if( it.current()->isWidgetType())
-        {
+		{
 			if (bFlag)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
-                it.current(),
-                KVI_TEXT_BOLD, it.current()->name(), KVI_TEXT_BOLD,
-                it.current()->className(),
-                it.current()->isVisible() ? "visible" : "hidden",
-                it.current()->x(), it.current()->y(), it.current()->width(), it.current()->height());
+				it.current(),
+				KVI_TEXT_BOLD, it.current()->name(), KVI_TEXT_BOLD,
+				it.current()->className(),
+				it.current()->isVisible() ? "visible" : "hidden",
+				it.current()->x(), it.current()->y(), it.current()->width(), it.current()->height());
 			}
 			QString  szClass=it.current()->className();
 			QString szObj=it.current()->name();
@@ -903,80 +901,77 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			dumpChildObjects(cmd->window(), it.current(), spacing.ptr(), bFlag,n,idx);
 		
 	
-        }
-        ++it;
+		}
+	++it;
 	}
 
 #endif
-    cmd->returnValue()->setArray(n);
-    return true;
-                
+	cmd->returnValue()->setArray(n);
+	return true;
 }
 
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bFlag, KviKvsArray *n, int &idx)
 {
 #ifdef COMPILE_USE_QT4
-        const QObjectList list = parent->children();
-    	if( !list.count() ) return;
-        QString sp(spacing);
-        sp.append(">");
- 		for(int i=0;i<list.count();i++)         
+	const QObjectList list = parent->children();
+	if( !list.count() ) return;
+	QString sp(spacing);
+	sp.append(">");
+	for(int i=0;i<list.count();i++)
+	{
+		if( list.at(i)->isWidgetType() )
 		{
-                
-                if( list.at(i)->isWidgetType() ) 
-				{
-					if (bFlag)
-					{
-                        pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
-                        spacing, list.at(i), KVI_TEXT_BOLD,
-                        list.at(i)->name(), KVI_TEXT_BOLD, list.at(i)->className()
-                        );
-					}
-				QString szClass=list.at(i)->className();
-                QString szObj=list.at(i)->name();
-				QString szTemp;
-				szTemp=spacing+szClass+"::"+szObj;
-				KviKvsVariant v;
-				v.setString(szTemp);
-				n->set(idx,new KviKvsVariant(v));
-				debug ("string %s",szTemp.latin1());
-				idx++;
-                dumpChildObjects(pWnd, list.at(i), sp, bFlag, n, idx );
-                }
-         }
+			if (bFlag)
+			{
+				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
+					spacing, list.at(i), KVI_TEXT_BOLD,
+					list.at(i)->name(), KVI_TEXT_BOLD, list.at(i)->className()
+				);
+			}
+			QString szClass=list.at(i)->className();
+			QString szObj=list.at(i)->name();
+			QString szTemp;
+			szTemp=spacing+szClass+"::"+szObj;
+			KviKvsVariant v;
+			v.setString(szTemp);
+			n->set(idx,new KviKvsVariant(v));
+			debug ("string %s",szTemp.latin1());
+			idx++;
+			dumpChildObjects(pWnd, list.at(i), sp, bFlag, n, idx );
+		}
+	}
 
 #else
-        const QObjectList *l = parent->children();
-    	if( !l ) return;
-        if( l->isEmpty() ) return;
-        QObjectListIt it(*l);
-        QString sp(spacing);
-        sp.append(">");
-        while( it.current() ) 
-                {
-                
-                if( it.current()->isWidgetType() ) 
-				{
-					if (bFlag)
-					{
-                        pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
-                        spacing, it.current(), KVI_TEXT_BOLD,
-                        it.current()->name(), KVI_TEXT_BOLD, it.current()->className()
-                        );
-					}
-				QString szClass=it.current()->className();
-                QString szObj=it.current()->name();
-				QString szTemp;
-				szTemp=spacing+szClass+"::"+szObj;
-				KviKvsVariant v;
-				v.setString(szTemp);
-				n->set(idx,new KviKvsVariant(v));
-				debug ("string %s",szTemp.latin1());
-				idx++;
-                dumpChildObjects(pWnd, it.current(), sp, bFlag, n, idx );
+	const QObjectList *l = parent->children();
+	if( !l ) return;
+	if( l->isEmpty() ) return;
+	QObjectListIt it(*l);
+	QString sp(spacing);
+	sp.append(">");
+	while( it.current() )
+	{
+                if( it.current()->isWidgetType() )
+		{
+			if (bFlag)
+			{
+				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
+					spacing, it.current(), KVI_TEXT_BOLD,
+					it.current()->name(), KVI_TEXT_BOLD, it.current()->className()
+				);
+			}
+			QString szClass=it.current()->className();
+			QString szObj=it.current()->name();
+			QString szTemp;
+			szTemp=spacing+szClass+"::"+szObj;
+			KviKvsVariant v;
+			v.setString(szTemp);
+			n->set(idx,new KviKvsVariant(v));
+			debug ("string %s",szTemp.latin1());
+			idx++;
+			dumpChildObjects(pWnd, it.current(), sp, bFlag, n, idx );
                 }
-          ++it;
-        }
+		++it;
+	}
 #endif
 }
 
@@ -986,7 +981,7 @@ static bool objects_module_can_unload(KviModule *m)
 	// FIXME: unlock when no more instances & derived classes!
 	return false;
 }
-    static bool objects_module_init(KviModule * m)
+static bool objects_module_init(KviModule * m)
 {
 	// functions
 	KVSM_REGISTER_FUNCTION(m,"exists",objects_kvs_fnc_exists);

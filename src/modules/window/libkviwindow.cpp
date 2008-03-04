@@ -114,7 +114,7 @@ KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 		If the specified window does not exist a warning is printed (unless the -q switch is used)
 		but the execution continues normally.
 	@seealso:
-		[fnc]$window.hasOutput[/fnc]()
+		[fnc]$window.hasOutput[/fnc]
 */
 
 static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
@@ -234,8 +234,8 @@ static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 		no operation is performed. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 	@seealso:
-		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/cmd],
-		[fnc]$window.isMinimized[/cmd]
+		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/fnc],
+		[fnc]$window.isMinimized[/fnc]
 */
 
 static bool window_kvs_cmd_maximize(KviKvsModuleCommandCall * c)
@@ -264,8 +264,8 @@ static bool window_kvs_cmd_maximize(KviKvsModuleCommandCall * c)
 		no operation is performed. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 	@seealso:
-		[cmd]window.maximize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/cmd],
-		[fnc]$window.isMinimized[/cmd]
+		[cmd]window.maximize[/cmd], [cmd]window.restore[/cmd], [fnc]$window.isMaxmimized[/fnc],
+		[fnc]$window.isMinimized[/fnc]
 */
 
 static bool window_kvs_cmd_minimize(KviKvsModuleCommandCall * c)
@@ -294,8 +294,8 @@ static bool window_kvs_cmd_minimize(KviKvsModuleCommandCall * c)
 		no operation is performed. If the specified window
 		does not exist a warning is printed unless the -q switch is used.
 	@seealso:
-		[cmd]window.maximize[/cmd], [cmd]window.minimize[/cmd], [fnc]$window.isMaxmimized[/cmd],
-		[fnc]$window.isMinimized[/cmd]
+		[cmd]window.maximize[/cmd], [cmd]window.minimize[/cmd], [fnc]$window.isMaxmimized[/fnc],
+		[fnc]$window.isMinimized[/fnc]
 */
 
 static bool window_kvs_cmd_restore(KviKvsModuleCommandCall * c)
@@ -391,7 +391,7 @@ static bool window_kvs_cmd_demandAttention(KviKvsModuleCommandCall * c)
 		The form with no parameters works on the current window. If the specified window
 		doesn't exist then 0 is returned.
 	@seealso:
-		[fnc]$window.isMinimized[/fnc](), [cmd]window.maximize[/cmd],
+		[fnc]$window.isMinimized[/fnc], [cmd]window.maximize[/cmd],
 		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd]
 */
 
@@ -495,7 +495,7 @@ static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 		The form with no parameters works on the current window. If the specified window
 		doesn't exist then 0 is returned.
 	@seealso:
-		[fnc]$window.isMaximized[/fnc](), [cmd]window.maximize[/cmd],
+		[fnc]$window.isMaximized[/fnc], [cmd]window.maximize[/cmd],
 		[cmd]window.minimize[/cmd], [cmd]window.restore[/cmd]
 */
 
@@ -1047,11 +1047,11 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	}
 
 	KviUserWindow * wnd = new KviUserWindow(
-						c->window()->frame(),
-						szCaption,
-						iIcon,
-						pConsole,
-						iFlags);
+		c->window()->frame(),
+		szCaption,
+		iIcon,
+		pConsole,
+		iFlags);
 
 	c->window()->frame()->addWindow(wnd,!szFlags.contains('m'));
 	if(szFlags.contains('m'))wnd->minimize();
@@ -1182,7 +1182,7 @@ static bool window_kvs_cmd_setInputText(KviKvsModuleCommandCall * c)
 	@description:
 		Sets the window input text to <text>
 	@seealso:
-	[cmd]window.setInputText[/cmd] [fnc]$window.inputText[/fnc]
+		[cmd]window.setInputText[/cmd], [fnc]$window.inputText[/fnc]
 */
 
 static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
@@ -1223,7 +1223,8 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 	@description:
 		Returns the window input line text
 	@seealso:
-	[cmd]window.setInputText[/cmd] [cmd]window.insertInInputText[/cmd]
+		[cmd]window.setInputText[/cmd],
+		[cmd]window.insertInInputText[/cmd]
 */
 
 static bool window_kvs_fnc_inputText(KviKvsModuleFunctionCall * c)
@@ -1341,7 +1342,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 		[/example]
 
 	@seealso:
-		[fnc]$asciitohex[/fnc], [fnc]$features[/fnc]
+		[fnc]$asciiToHex[/fnc], [fnc]$features[/fnc]
 */
 
 

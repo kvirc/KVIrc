@@ -64,9 +64,9 @@
 		The toolbar will exist until [cmd]toolbar.destroy[/cmd] is called (you might want to add
 		an "uninstall" feature to your script).[br]
 	@seealso:
-		[fnc]$toolbar.exists[/fnc]()[br]
-		[cmd]toolbar.remove[/cmd][br]
-		[cmd]toolbar.show[/cmd][br]
+		[fnc]$toolbar.exists[/fnc],
+		[cmd]toolbar.remove[/cmd],
+		[cmd]toolbar.show[/cmd],
 		[cmd]toolbar.destroy[/cmd]
 */
 
@@ -119,9 +119,9 @@ static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 		Clears the contents of the toolbar specified by <id>. If the
 		toolbar does not exist then a warning is printed unless the -q switch is used.[br]
 	@seealso:
-		[fnc]$toolbar.exists[/fnc]()[br]
-		[cmd]toolbar.remove[/cmd][br]
-		[cmd]toolbar.show[/cmd][br]
+		[fnc]$toolbar.exists[/fnc],
+		[cmd]toolbar.remove[/cmd],
+		[cmd]toolbar.show[/cmd],
 		[cmd]toolbar.destroy[/cmd]
 */
 
@@ -164,7 +164,7 @@ static bool toolbar_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 		If the -q switch is specified then this command runs in quiet mode and
 		does not warn if the toolbar was not existing.
 	@seealso:
-		[fnc]$toolbar.exists[/fnc]()
+		[fnc]$toolbar.exists[/fnc],
 		[cmd]toolbar.create[/cmd]
 */
 
@@ -208,7 +208,7 @@ static bool toolbar_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		You should execute this command only if you create the toolbar after KVIrc has been
 		started.[br]
 	@seealso:
-		[fnc]$toolbar.exists[/fnc]()
+		[fnc]$toolbar.exists[/fnc],
 		[cmd]toolbar.create[/cmd]
 */
 
@@ -255,8 +255,8 @@ static bool toolbar_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		can be shown again by using [cmd]toolbar.show[/cmd].[br]
 		If you want to completely remove the toolbar definition use [cmd]toolbar.destroy[/cmd].[br]
 	@seealso:
-		[fnc]$toolbar.exists[/fnc]()
-		[cmd]toolbar.create[/cmd]
+		[fnc]$toolbar.exists[/fnc],
+		[cmd]toolbar.create[/cmd],
 		[cmd]toolbar.destroy[/cmd]
 */
 

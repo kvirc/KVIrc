@@ -102,7 +102,7 @@ static bool regchan_kvs_cmd_add(KviKvsModuleCommandCall * c)
 			regchan.remove #kvirc openprojects
 		[/example]
 	@seealso:
-		regchan.add
+		[cmd]regchan.add[/cmd]
 */
 static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 { 
@@ -151,7 +151,7 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 			regchan.setproperty #kvirc openprojects autojoin true
 		[/example]
 	@seealso:
-		regchan.add
+		[cmd]regchan.add[/cmd]
 */
 
 static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
@@ -338,12 +338,12 @@ static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 			echo $regchan.match(#kvirc,$my.network)
 		[/example]
 	@seealso:
-		$regchan.find
+		[fnc]$regchan.find[/fnc]
 */
 
 
 static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szChan,szNetwork;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
@@ -375,7 +375,7 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 			echo $regchan.find(#kvirc,*)
 		[/example]
 	@seealso:
-		$regchan.match
+		[fnc]$regchan.match[/fnc]
 */
 
 static bool regchan_kvs_fnc_find(KviKvsModuleFunctionCall * c)

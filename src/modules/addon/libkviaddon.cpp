@@ -498,7 +498,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		installed files or code.
 		[/p]
 	@seealso:
-		[cmd]addon.uninstall[/cmd], [fnc]$addon.exists()[/fnc],
+		[cmd]addon.uninstall[/cmd], [fnc]$addon.exists[/fnc],
 		[cmd]addon.setconfigurecallback[/cmd], [cmd]addon.configure[/cmd],
 		[cmd]addon.sethelpcallback[/cmd], [cmd]addon.help[/cmd]
 	@examples:

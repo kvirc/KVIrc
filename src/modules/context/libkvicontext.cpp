@@ -90,7 +90,7 @@
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverHostName
+		[fnc]$context.serverHostName[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -122,7 +122,9 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		Please note that this is different from $my.server() which might
 		return an invalid DNS entry.
 	@seealso:
-		$context.serverPort, $context.serverIpAddress, $context.serverPassword
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverIpAddress[/fnc],
+		[fnc]$context.serverPassword[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -148,7 +150,9 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverPort, $context.serverHostName, $context.serverPassword
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverPassword[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -175,7 +179,9 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		is not currently connected then this function returns nothing (that
 		evaluates to false).
 	@seealso:
-		$context.serverPort, $context.serverHostName, $context.serverPassword
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverPassword[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -202,7 +208,9 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		is not currently connected then this function returns nothing (that
 		evaluates to false).
 	@seealso:
-		$context.serverPort, $context.serverHostName, $context.serverPassword
+		[fnc]$context.serverPort[/fnc],
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverPassword[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -228,7 +236,9 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverHostName, $context.serverIpAddress, $context.serverPort
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverIpAddress[/fnc],
+		[fnc]$context.serverPort[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -255,7 +265,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		returns nothing. If the specified IRC context is not currently connected
 		then this function returns nothing.
 	@seealso:
-		$context.serverHostName, $context.serverIpAddress
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverIpAddress[/fnc]
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
@@ -282,7 +293,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		If the irc_context_id specification is not valid then this function
 		returns nothing.
 	@seealso:
-		$context.serverHostName, $context.serverIpAddress
+		[fnc]$context.serverHostName[/fnc],
+		[fnc]$context.serverIpAddress[/fnc]
 */
 
 static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)

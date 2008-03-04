@@ -28,23 +28,22 @@
 
 //-------------------------------------------------
 /*
-    @doc: tmphighlight.add
-    @type:
-        command
-    @title:
-        tmphighlight.add
-    @short:
-        Adds a user to the channel temporary highlight list
-    @syntax:
-        tmphighlight.add <nick:string>
-    @description:
-        This command adds a user to the channel temporary highlight list, so that user messages[br]
-        will be highlighted until you close the channel. This is useful when you are in a very crowded [br]
-        channel with lots of conversations running in parallel and you want to follow one of them.[br]
-        
-    @seealso:
-        [cmd]tmphighlight.remove[/cmd]
-        [cmd]tmphighlight.ishighlighted[/cmd]
+	@doc: tmphighlight.add
+	@type:
+		command
+	@title:
+		tmphighlight.add
+	@short:
+		Adds a user to the channel temporary highlight list
+	@syntax:
+		tmphighlight.add <nick:string>
+	@description:
+		This command adds a user to the channel temporary highlight list, so that user messages[br]
+		will be highlighted until you close the channel. This is useful when you are in a very crowded [br]
+		channel with lots of conversations running in parallel and you want to follow one of them.[br]
+	@seealso:
+		[fnc]$tmphighlight.remove[/fnc]
+		[fnc]$tmphighlight.ishighlighted[/fnc]
 */
 //-------------------------------------------
 // tmphighlight.add
@@ -56,92 +55,89 @@ static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-    if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
-    if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
-    {
-        c->warning(__tr2qs("Current window is not a channel"));
-        return false;
-    }
-
-    ((KviChannel *)c->window())->addHighlightedUser(szNick);
+	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	{
+		c->warning(__tr2qs("Current window is not a channel"));
+		return false;
+	}
+	
+	((KviChannel *)c->window())->addHighlightedUser(szNick);
 
 	return true;
 }
 //-------------------------------------------------
 /*
-    @doc: tmphighlight.remove
-    @type:
-        command
-    @title:
-        tmphighlight.remove
-    @short:
-        Remove a user from the channel temporary highlight list
-    @syntax:
-        tmphighlight.remove <nick:string>
-    @description:
-        This command remove a user from the channel temporary highlight list, so that user messages[br]
-        stop being highlighted.
-        
-    @seealso:
-        [cmd]tmphighlight.add[/cmd]
-        [cmd]tmphighlight.ishighlighted[/cmd]
+	@doc: tmphighlight.remove
+	@type:
+		command
+	@title:
+		tmphighlight.remove
+	@short:
+		Remove a user from the channel temporary highlight list
+	@syntax:
+		tmphighlight.remove <nick:string>
+	@description:
+		This command remove a user from the channel temporary highlight list, so that user messages[br]
+		stop being highlighted.
+	@seealso:
+		[fnc]$tmphighlight.add[/fnc]
+		[fnc]$tmphighlight.ishighlighted[/fnc]
 */
 //-------------------------------------------
 // tmphighlight.remove
 //-------------------------------------------
 
 static bool tmphighlight_kvs_cmd_remove(KviKvsModuleCommandCall * c)
-{ 
-	
+{
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-    if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
-	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
-    {
-        c->warning(__tr2qs("Current window is not a channel"));
-        return false;
-    }
-    
-    ((KviChannel *)c->window())->removeHighlightedUser(szNick);
+	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+		if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	{
+		c->warning(__tr2qs("Current window is not a channel"));
+		return false;
+	}
+
+	((KviChannel *)c->window())->removeHighlightedUser(szNick);
 	return true;
 }
 //-------------------------------------------------
 /*
-    @doc: tmphighlight.ishighlighted
-    @type:
-        function
-    @title:
-        $tmphighlight.ishighlighted
-    @short:
-        Returns 1 if the user is highlighted on this channel, 0 otherwise
-    @syntax:
-        <boolean> $tmphighlight.ishighlighted <nick:string>
-    @description:
-        This command returns 1 if the user is highlighted on this channel and on this session of 0 otherwise.
-        
-    @seealso:
-        [cmd]tmphighlight.add[/cmd]
-        [cmd]tmphighlight.remove[/cmd]
-        
+	@doc: tmphighlight.ishighlighted
+	@type:
+		function
+	@title:
+		$tmphighlight.ishighlighted
+	@short:
+		Returns 1 if the user is highlighted on this channel, 0 otherwise
+	@syntax:
+		<boolean> $tmphighlight.ishighlighted <nick:string>
+	@description:
+		This command returns 1 if the user is highlighted on this channel and on this session of 0 otherwise.
+	@seealso:
+		[fnc]$tmphighlight.add[/fnc]
+		[fnc]$tmphighlight.remove[/fnc]
+
 */
 //-------------------------------------------
 // tmphighlight.ishighlighted
 //-------------------------------------------
 
 static bool tmphighlight_kvs_fnc_ishighlighted(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-    if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
-	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
-    {
-        c->warning(__tr2qs("Current window is not a channel"));
-        return false;
-    }
+	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+		if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	{
+		c->warning(__tr2qs("Current window is not a channel"));
+		return false;
+	}
 	c->returnValue()->setBoolean(((KviChannel *)c->window())->isHighlightedUser(szNick));
 	return true;
 }
@@ -163,7 +159,7 @@ static bool tmphighlight_module_cleanup(KviModule *m)
 //-------------------------------------------------
 static bool tmphighlight_module_can_unload(KviModule *m)
 {
-    return true;
+	return true;
 }
 //-------------------------------------------------
 KVIRC_MODULE(

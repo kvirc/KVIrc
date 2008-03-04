@@ -144,13 +144,13 @@ static bool logview_module_init(KviModule * m)
 static bool logview_module_cleanup(KviModule * m)
 {
 	if(g_pLogViewWindow)delete g_pLogViewWindow;
-    g_pLogViewWindow = 0;
+	g_pLogViewWindow = 0;
 	return true;
 }
 
 static bool logview_module_can_unload(KviModule *m)
 {
-    return (!g_pLogViewWindow);
+	return (!g_pLogViewWindow);
 }
 
 

@@ -549,7 +549,7 @@ exit_thread:
 */
 
 static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_iIdentDaemonRunningUsers)
 		startIdentService();
 	g_iIdentDaemonRunningUsers++;
@@ -573,7 +573,7 @@ static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
 */
 
 static bool ident_kvs_cmd_stop(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(g_iIdentDaemonRunningUsers) g_iIdentDaemonRunningUsers--;
 	if(!g_iIdentDaemonRunningUsers) stopIdentService();
 	return true;
@@ -591,7 +591,7 @@ static bool ident_module_cleanup(KviModule *m)
 {
 	stopIdentService();
 	delete g_pIdentSentinel;
-    g_pIdentSentinel = 0;
+	g_pIdentSentinel = 0;
 
 	return true;
 }

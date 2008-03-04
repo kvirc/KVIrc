@@ -233,7 +233,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 		of "selection" (most notably X11) which is NOT the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
-		[fnc]$system.selection[/fnc](),
+		[fnc]$system.selection[/fnc],
 		[cmd]system.setClipboard[/cmd],
 		[cmd]system.setSelection[/cmd]
 */
@@ -263,8 +263,8 @@ static bool system_kvs_fnc_clipboard(KviKvsModuleFunctionCall *c)
 		of "selection" (most notably X11) which is NOT the same as the clipboard.
 		See [fnc]$system.selection[/fnc]().
 	@seealso:
-		[fnc]$system.selection[/fnc](),
-		[fnc]$system.clipboard[/fnc](),
+		[fnc]$system.selection[/fnc],
+		[fnc]$system.clipboard[/fnc],
 		[cmd]system.setSelection[/cmd]
 */
 
@@ -296,8 +296,8 @@ static bool system_kvs_cmd_setClipboard(KviKvsModuleCommandCall * c)
 		Please note that this command will work only on systems that have the concept
 		of "selection" (most notably X11) which is NOT the same as the clipboard.
 	@seealso:
-		[fnc]$system.selection[/fnc](),
-		[fnc]$system.clipboard[/fnc](),
+		[fnc]$system.selection[/fnc],
+		[fnc]$system.clipboard[/fnc],
 		[cmd]system.setClipboard[/cmd]
 */
 
@@ -330,7 +330,7 @@ static bool system_kvs_cmd_setSelection(KviKvsModuleCommandCall * c)
 		On other systems this function will always return an empty string.
 		See [fnc]$system.clipboard[/fnc]().
 	@seealso:
-		[fnc]$system.clipboard[/fnc](),
+		[fnc]$system.clipboard[/fnc],
 		[cmd]system.setClipboard[/cmd],
 		[cmd]system.setSelection[/cmd]
 */
@@ -620,7 +620,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 		Sets the enviroinement <variable> to the <value> string.[br]
 		If <value> is not given , the <variable> is unset.[br]
 	@seealso:
-		[fnc]$system.getenv[/fnc]()
+		[fnc]$system.getenv[/fnc]
 */
 
 

@@ -253,7 +253,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc]
 */
@@ -315,8 +315,8 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
-		[fnc]reguser.exactMatch[/fnc]
+		[fnc]$reguser.match[/fnc],
+		[fnc]$reguser.exactMatch[/fnc]
 */
 
 static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
@@ -384,12 +384,12 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
-		[fnc]reguser.exactMatch[/fnc]
+		[fnc]$reguser.match[/fnc],
+		[fnc]$reguser.exactMatch[/fnc]
 */
 
 static bool reguser_kvs_cmd_delmask(KviKvsModuleCommandCall * c)
@@ -563,12 +563,12 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.match[/fnc],
 		[fnc]$reguser.matchProperty[/fnc]
 */
 
@@ -618,12 +618,12 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.match[/fnc],
 		[fnc]$reguser.matchProperty[/fnc]
 */
 
@@ -733,7 +733,7 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
@@ -792,10 +792,10 @@ static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
-		[fnc]reguser.match[/fnc],
-		[fnc]reguser.exactMatch[/fnc]
+		[fnc]$reguser.match[/fnc],
+		[fnc]$reguser.exactMatch[/fnc]
 */
 
 static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
@@ -867,11 +867,11 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.exactMatch[/fnc]
+		[fnc]$reguser.exactMatch[/fnc]
 */
 
 static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
@@ -904,11 +904,11 @@ static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc]
+		[fnc]$reguser.match[/fnc]
 */
 
 static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
@@ -1002,12 +1002,12 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[cmd]reguser.delmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.match[/fnc],
 		[fnc]$reguser.matchProperty[/fnc]
 */
 
@@ -1066,11 +1066,11 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
+		[fnc]$reguser.match[/fnc],
 		[fnc]$reguser.matchProperty[/fnc]
 */
 
@@ -1119,12 +1119,12 @@ static bool reguser_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 		[cmd]reguser.remove[/cmd],
 		[cmd]reguser.addmask[/cmd],
 		[fnc]$reguser.list[/fnc],
-		[fnc]reguser.match[/fnc],
-		[fnc]reguser.property[/fnc]
+		[fnc]$reguser.match[/fnc],
+		[fnc]$reguser.property[/fnc]
 */
 
 static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
@@ -1166,7 +1166,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:reguser]Registered users database interface[/module],
 		[doc:registered_users]Registered users database[/doc],
-		[cmd]reguser.add[cmd],
+		[cmd]reguser.add[/cmd],
 */
 
 static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
@@ -1213,11 +1213,11 @@ static bool reguser_module_init(KviModule * m)
 static bool reguser_module_cleanup(KviModule *m)
 {
 	if(g_pRegisteredUsersDialog)delete g_pRegisteredUsersDialog;
-    g_pRegisteredUsersDialog = 0;
+	g_pRegisteredUsersDialog = 0;
 
 	while(KviRegistrationWizard * w = g_pRegistrationWizardList->first())delete w;
 	delete g_pRegistrationWizardList;
-    g_pRegistrationWizardList = 0;
+	g_pRegistrationWizardList = 0;
 
 	// FIXME: UNREGISTER THE METAOBJECTS
 	return true;

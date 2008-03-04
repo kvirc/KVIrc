@@ -343,8 +343,8 @@ static bool mircimport_module_cleanup(KviModule *m)
 {
 	if(g_pMircServersIniImport)delete g_pMircServersIniImport;
 	if(g_pRemoteMircServersIniImport)delete g_pRemoteMircServersIniImport;
-    g_pMircServersIniImport = 0;
-    g_pRemoteMircServersIniImport = 0;
+	g_pMircServersIniImport = 0;
+	g_pRemoteMircServersIniImport = 0;
 
 	return true;
 }

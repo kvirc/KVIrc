@@ -178,16 +178,16 @@ static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 }
 
 /*
-    @doc: str.lowcase
-    @type:
-        function
-    @title:
-        $str.lowcase
-    @short:
-        Returns the given string with all characters turned to lower case
-    @syntax:
-        <string> $str.lowcase(<string_to_convert:string>)
-    @description:
+	@doc: str.lowcase
+	@type:
+		function
+	@title:
+		$str.lowcase
+	@short:
+		Returns the given string with all characters turned to lower case
+	@syntax:
+		<string> $str.lowcase(<string_to_convert:string>)
+	@description:
 		Returns the <string_to_convert> with all characters turned to lower case.
 		Warning: this function uses ISO-8859-1 locale to make the case translation.
 		If you want to use a locale aware translation mapping then please
@@ -284,16 +284,16 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 }
 
 /*
-    @doc: str.isnumber
-    @type:
-        function
-    @title:
-        $str.isnumber
-    @short:
-        Returns 1 if the given string represents a number
-    @syntax:
-        <bool> $str.isnumber(<givenstring:string>)
-    @description:
+	@doc: str.isnumber
+	@type:
+		function
+	@title:
+		$str.isnumber
+	@short:
+		Returns 1 if the given string represents a number
+	@syntax:
+		<bool> $str.isnumber(<givenstring:string>)
+	@description:
 		Returns 1 if the given string represents a number, 0 if not.
 */
 
@@ -310,16 +310,16 @@ static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 
 
 /*
-    @doc: str.isunsignednumber
-    @type:
-        function
-    @title:
-        $str.isunsignednumber
-    @short:
-        Returns 1 if the given string represents an unsigned number
-    @syntax:
-        <bool> $str.isunsignednumber(<givenstring:string>)
-    @description:
+	@doc: str.isunsignednumber
+	@type:
+		function
+	@title:
+		$str.isunsignednumber
+	@short:
+		Returns 1 if the given string represents an unsigned number
+	@syntax:
+		<bool> $str.isunsignednumber(<givenstring:string>)
+	@description:
 		Returns 1 if the given string represents an unsigned number, 0 if not.
 */
 
@@ -438,16 +438,16 @@ static bool str_kvs_fnc_containsnocase(KviKvsModuleFunctionCall * c)
 }
 
 /*
-    @doc: str.equal
-    @type:
-        function
-    @title:
-        $str.equal
-    @short:
-        Returns 1 if the two string parameters are equal
-    @syntax:
-        <bool> $str.equal(<fromcompare:string>,<tocompare:string>)
-    @description:
+	@doc: str.equal
+	@type:
+		function
+	@title:
+		$str.equal
+	@short:
+		Returns 1 if the two string parameters are equal
+	@syntax:
+		<bool> $str.equal(<fromcompare:string>,<tocompare:string>)
+	@description:
 		Returns 1 if the two string parameters are equal. This function is case sensitive.
 	@seealso:
 		[fnc]$str.equalnocase[/fnc]()
@@ -466,16 +466,16 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.equalnocase
-    @type:
-        function
-    @title:
-        $str.equalnocase
-    @short:
-        Returns 1 if the two string parameters are equal, case insensitive
-    @syntax:
-        <bool> $str.equalnocase(<fromcompare:string>,<tocompare:string>)
-    @description:
+	@doc: str.equalnocase
+	@type:
+		function
+	@title:
+		$str.equalnocase
+	@short:
+		Returns 1 if the two string parameters are equal, case insensitive
+	@syntax:
+		<bool> $str.equalnocase(<fromcompare:string>,<tocompare:string>)
+	@description:
 		Returns 1 if the two strngs parameters are equal, without taking the case of the
 		characters in consideration.
 	@seealso:
@@ -527,19 +527,19 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 }
 
 /*
-    @doc: str.cmpnocase
-    @type:
-        function
-    @title:
-        $str.cmpnocase
-    @short:
-        Compare two strings alphabetically, case insensitive.
-    @syntax:
-        <bool> $str.cmpnocase(<fromcompare:string>,<tocompare:string>)
-    @description:
-        This function compares two strings alphabetically. If the first string is 'greater'
-        than the second, it will return a positive number, a negative number is the second is
-        greater and 0 if the two strings are equal. This function is case insensitive.
+	@doc: str.cmpnocase
+	@type:
+		function
+	@title:
+		$str.cmpnocase
+	@short:
+		Compare two strings alphabetically, case insensitive.
+	@syntax:
+		<bool> $str.cmpnocase(<fromcompare:string>,<tocompare:string>)
+	@description:
+		This function compares two strings alphabetically. If the first string is 'greater'
+		than the second, it will return a positive number, a negative number is the second is
+		greater and 0 if the two strings are equal. This function is case insensitive.
 	@seealso:
 		[fnc]$str.cmp[/fnc]()
 */
@@ -650,19 +650,19 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.findfirstnocase
-    @type:
-        function
-    @title:
-        $str.findfirstnocase
-    @short:
-        Find the index of a substring in a string, case insensitive
-    @syntax:
-        <int> $str.findfirstnocase(<findIn:string>,<toFind:string>)
-    @description:
-        This function search in the string given as the first parameter for the string
-        given as his second parameter, and will return the index where is first located or
-        -1 if it's not located. This function is case insensitive.
+	@doc: str.findfirstnocase
+	@type:
+		function
+	@title:
+		$str.findfirstnocase
+	@short:
+		Find the index of a substring in a string, case insensitive
+	@syntax:
+		<int> $str.findfirstnocase(<findIn:string>,<toFind:string>)
+	@description:
+		This function search in the string given as the first parameter for the string
+		given as his second parameter, and will return the index where is first located or
+		-1 if it's not located. This function is case insensitive.
 */
 
 static bool str_kvs_fnc_findfirstnocase(KviKvsModuleFunctionCall * c)
@@ -676,19 +676,19 @@ static bool str_kvs_fnc_findfirstnocase(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.findlast
-    @type:
-        function
-    @title:
-        $str.findlast
-    @short:
-        Find the last index of a substring in a string
-    @syntax:
-        <int> $str.findlast(<findIn:string>,<toFind:string>)
-    @description:
-        This function search in the string given as the first parameter for the string
-        given as his second parameter, and will return the index where is last located or
-        -1 if it's not located.
+	@doc: str.findlast
+	@type:
+		function
+	@title:
+		$str.findlast
+	@short:
+		Find the last index of a substring in a string
+	@syntax:
+		<int> $str.findlast(<findIn:string>,<toFind:string>)
+	@description:
+		This function search in the string given as the first parameter for the string
+		given as his second parameter, and will return the index where is last located or
+		-1 if it's not located.
 */
 
 static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
@@ -702,19 +702,19 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.findlastnocase
-    @type:
-        function
-    @title:
-        $str.findlastnocase
-    @short:
-        Find the last index of a substring in a string, case insensitive
-    @syntax:
-        <int> $str.findlastnocase(<findIn:string>,<toFind:string>)
-    @description:
-        This function search in the string given as the first parameter for the string
-        given as his second parameter, and will return the index where is last located or
-        -1 if it's not located. This function is case insensitive.
+	@doc: str.findlastnocase
+	@type:
+		function
+	@title:
+		$str.findlastnocase
+	@short:
+		Find the last index of a substring in a string, case insensitive
+	@syntax:
+		<int> $str.findlastnocase(<findIn:string>,<toFind:string>)
+	@description:
+		This function search in the string given as the first parameter for the string
+		given as his second parameter, and will return the index where is last located or
+		-1 if it's not located. This function is case insensitive.
 */
 
 static bool str_kvs_fnc_findlastnocase(KviKvsModuleFunctionCall * c)
@@ -728,16 +728,16 @@ static bool str_kvs_fnc_findlastnocase(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.left
-    @type:
-        function
-    @title:
-        $str.left
-    @short:
+	@doc: str.left
+	@type:
+		function
+	@title:
+		$str.left
+	@short:
 		Returns a substring starting from the left until the given index.
-    @syntax:
-        <string> $str.left(<data:string>,<index:int>)
-    @description:
+	@syntax:
+		<string> $str.left(<data:string>,<index:int>)
+	@description:
 		This function returns a substring of the first string parameter which is the
 		string starting from the left until the index specified in the second parameter.
 */
@@ -754,16 +754,16 @@ static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.right
-    @type:
-        function
-    @title:
-        $str.right
-    @short:
+	@doc: str.right
+	@type:
+		function
+	@title:
+		$str.right
+	@short:
 		Returns a substring starting from the right until the given index.
-    @syntax:
-        <string> $str.right(<data:string>,<index:int>)
-    @description:
+	@syntax:
+		<string> $str.right(<data:string>,<index:int>)
+	@description:
 		This function returns a substring of the first string parameter which is the
 		string starting from the right until the index specified in the second parameter.
 		The index start counting at the last character and increase until the first.
@@ -781,16 +781,16 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.mid
-    @type:
-        function
-    @title:
-        $str.mid
-    @short:
+	@doc: str.mid
+	@type:
+		function
+	@title:
+		$str.mid
+	@short:
 		Returns a substring starting from a given index.
-    @syntax:
-        <string> $str.mid(<data:string>,<startidx:int>,<nchars:int>)
-    @description:
+	@syntax:
+		<string> $str.mid(<data:string>,<startidx:int>,<nchars:int>)
+	@description:
 		This function returns a substring of the first string parameter wich is the
 		string starting at the (numeric) index given with startidx and counting nchars
 		forward.
@@ -809,16 +809,16 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.append
-    @type:
-        function
-    @title:
-        $str.append
-    @short:
+	@doc: str.append
+	@type:
+		function
+	@title:
+		$str.append
+	@short:
 		Append one string to another.
-    @syntax:
-        <string> $str.append(<string:string>,<toappend:string>)
-    @description:
+	@syntax:
+		<string> $str.append(<string:string>,<toappend:string>)
+	@description:
 		This function returns a string created appending the second string parameter
 		to the end of the first string parameter.
 */
@@ -834,16 +834,16 @@ static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.prepend
-    @type:
-        function
-    @title:
-        $str.prepend
-    @short:
+	@doc: str.prepend
+	@type:
+		function
+	@title:
+		$str.prepend
+	@short:
 		Prepend one string to another.
-    @syntax:
-        <string> $str.prepend(<string:string>,<toprepend:string>)
-    @description:
+	@syntax:
+		<string> $str.prepend(<string:string>,<toprepend:string>)
+	@description:
 		This function returns a string created prepending the second string parameter
 		to the start of the first string parameter.
 */
@@ -859,16 +859,16 @@ static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.insert
-    @type:
-        function
-    @title:
-        $str.insert
-    @short:
-        Inserts a substring in a string at a given index
-    @syntax:
-        <string> $str.insert(<string:string>,<substring:string>,<index:int>)
-    @description:
+	@doc: str.insert
+	@type:
+		function
+	@title:
+		$str.insert
+	@short:
+		Inserts a substring in a string at a given index
+	@syntax:
+		<string> $str.insert(<string:string>,<substring:string>,<index:int>)
+	@description:
 		Inserts the substring given in the second parameter in the string given in the
 		first parameter at the index given in the third parameter, then returns the
 		resulting string.
@@ -887,16 +887,16 @@ static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.strip
-    @type:
-        function
-    @title:
-        $str.strip
-    @short:
+	@doc: str.strip
+	@type:
+		function
+	@title:
+		$str.strip
+	@short:
 		Returns a whitespace stripped string
-    @syntax:
-        <string> $str.strip(<string:string>)
-    @description:
+	@syntax:
+		<string> $str.strip(<string:string>)
+	@description:
 		Returns a left and right whitespace stripped version of the string given as the
 		first parameter.
 */
@@ -911,16 +911,16 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.stripleft
-    @type:
-        function
-    @title:
-        $str.stripleft
-    @short:
+	@doc: str.stripleft
+	@type:
+		function
+	@title:
+		$str.stripleft
+	@short:
 		Returns a left whitespace stripped string
-    @syntax:
-        <string> $str.stripleft(<string:string>)
-    @description:
+	@syntax:
+		<string> $str.stripleft(<string:string>)
+	@description:
 		Returns a left whitespace stripped version of the string given as the
 		first parameter.
 */
@@ -941,16 +941,16 @@ static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-    @doc: str.stripright
-    @type:
-        function
-    @title:
-        $str.stripright
-    @short:
+	@doc: str.stripright
+	@type:
+		function
+	@title:
+		$str.stripright
+	@short:
 		Returns a right whitespace stripped string
-    @syntax:
-        <string> $str.stripright(<string:string>)
-    @description:
+	@syntax:
+		<string> $str.stripright(<string:string>)
+	@description:
 		Returns a right whitespace stripped version of the string given as the
 		first parameter.
 */
@@ -969,16 +969,16 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 }
 
 /*
-    @doc: str.stripcolors
-    @type:
-        function
-    @title:
-        $str.stripcolors
-    @short:
+	@doc: str.stripcolors
+	@type:
+		function
+	@title:
+		$str.stripcolors
+	@short:
 		Returns a mirc color codes stripped string
-    @syntax:
-        <string> $str.stripcolors(<string:string>)
-    @description:
+	@syntax:
+		<string> $str.stripcolors(<string:string>)
+	@description:
 		Removes all mirc color codes from a string, including also bold, underline, reverse,
 		icon, crypting and ctcp control codes.
 */
@@ -1254,7 +1254,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 			[cmd]if[/cmd]($str.match(H*y*i?K*a,%test))[cmd]echo[/cmd] "Matches H*y*i?K*a"
 		[/example]
 	@seealso:
-		[fnc]$str.matchnocase[/fnc]()
+		[fnc]$str.matchnocase[/fnc]
 */
 
 static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
@@ -1300,7 +1300,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 			[cmd]if[/cmd]($str.match(G*if?sx,%test))[cmd]echo[/cmd] "Matches G*if?sx"
 		[/example]
 	@seealso:
-		[fnc]$str.match[/fnc]()
+		[fnc]$str.match[/fnc]
 */
 
 static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
@@ -1343,7 +1343,7 @@ static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
 			[cmd]echo[/cmd] $str.word(4,%test)
 		[/example]
 	@seealso:
-		[fnc]$str.token[/fnc]()
+		[fnc]$str.token[/fnc]
 */
 
 static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
@@ -1408,8 +1408,8 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 			[cmd]echo[/cmd] $str.token(1," hoursmintecd",%test)
 		[/example]
 	@seealso:
-		[fnc]$str.word[/fnc]()[br]
-		[fnc]$str.split[/fnc]()[br]
+		[fnc]$str.word[/fnc][br]
+		[fnc]$str.split[/fnc][br]
 */
 
 static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
@@ -2320,8 +2320,8 @@ KVIRC_MODULE(
 	"1.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
 	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
-    "          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)" \
-    "          (C) 2005 Alessandro Carbone (noldor at barmes dot org)", // author & (C)
+	"          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)" \
+	"          (C) 2005 Alessandro Carbone (noldor at barmes dot org)", // author & (C)
 	"Interface to the str system",
 	str_module_init,
 	0,

@@ -1663,6 +1663,7 @@ static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
 	}
 	return true;
 }
+
 /*
 	@doc: dcc.protocol
 	@type:
@@ -1913,7 +1914,6 @@ static bool dcc_kvs_fnc_localUser(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: dcc.localHost
 	@type:
@@ -2085,7 +2085,6 @@ static bool dcc_kvs_fnc_localFileSize(KviKvsModuleFunctionCall * c)
 	if(dcc)c->returnValue()->setString(dcc->localFileSize().isEmpty() ? QString("0") : dcc->localFileSize());
 	return true;
 }
-
 
 
 /*
@@ -2569,8 +2568,6 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 }
 
 
-
-
 /*
 	@doc: dcc.sessionList
 	@type:
@@ -2637,7 +2634,6 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 }
 
 
-
 /*
 	@doc: dcc
 	@type:
@@ -2670,29 +2666,29 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		and functions exported by this module and by passing the above session
 		id as parameter.[br]
 		The session related commands and functions are the following:[br]
-		[fnc]$dcc.sessionList[/fnc]()[br]
-		[fnc]$dcc.protocol[/fnc]()[br]
-		[fnc]$dcc.connectionType[/fnc]()[br]
-		[fnc]$dcc.transferStatus[/fnc]()[br]
-		[fnc]$dcc.isFileTransfer[/fnc]()[br]
-		[fnc]$dcc.isFileUpload[/fnc]()[br]
-		[fnc]$dcc.isFileDownload[/fnc]()[br]
-		[fnc]$dcc.localNick[/fnc]()[br]
-		[fnc]$dcc.localUser[/fnc]()[br]
-		[fnc]$dcc.localHost[/fnc]()[br]
-		[fnc]$dcc.localIp[/fnc]()[br]
-		[fnc]$dcc.localPort[/fnc]()[br]
-		[fnc]$dcc.localFileName[/fnc]()[br]
-		[fnc]$dcc.localFileSize[/fnc]()[br]
-		[fnc]$dcc.remoteNick[/fnc]()[br]
-		[fnc]$dcc.remoteUser[/fnc]()[br]
-		[fnc]$dcc.remoteHost[/fnc]()[br]
-		[fnc]$dcc.remoteIp[/fnc]()[br]
-		[fnc]$dcc.remotePort[/fnc]()[br]
-		[fnc]$dcc.remoteFileName[/fnc]()[br]
-		[fnc]$dcc.remoteFileSize[/fnc]()[br]
-		[fnc]$dcc.ircContext[/fnc]()[br]
-		[fnc]$dcc.session[/fnc]()[br]
+		[fnc]$dcc.sessionList[/fnc][br]
+		[fnc]$dcc.protocol[/fnc][br]
+		[fnc]$dcc.connectionType[/fnc][br]
+		[fnc]$dcc.transferStatus[/fnc][br]
+		[fnc]$dcc.isFileTransfer[/fnc][br]
+		[fnc]$dcc.isFileUpload[/fnc][br]
+		[fnc]$dcc.isFileDownload[/fnc][br]
+		[fnc]$dcc.localNick[/fnc][br]
+		[fnc]$dcc.localUser[/fnc][br]
+		[fnc]$dcc.localHost[/fnc][br]
+		[fnc]$dcc.localIp[/fnc][br]
+		[fnc]$dcc.localPort[/fnc][br]
+		[fnc]$dcc.localFileName[/fnc][br]
+		[fnc]$dcc.localFileSize[/fnc][br]
+		[fnc]$dcc.remoteNick[/fnc][br]
+		[fnc]$dcc.remoteUser[/fnc][br]
+		[fnc]$dcc.remoteHost[/fnc][br]
+		[fnc]$dcc.remoteIp[/fnc][br]
+		[fnc]$dcc.remotePort[/fnc][br]
+		[fnc]$dcc.remoteFileName[/fnc][br]
+		[fnc]$dcc.remoteFileSize[/fnc][br]
+		[fnc]$dcc.ircContext[/fnc][br]
+		[fnc]$dcc.session[/fnc][br]
 */
 
 

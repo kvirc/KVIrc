@@ -54,23 +54,23 @@
 static KviPointerList<QWidget> * g_pDialogModuleDialogList;
 
 KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
-		const QString &szCaption,
-		const QString &szText,
-		const QString &szIcon,
-		const QString &szButton0,
-		const QString &szButton1,
-		const QString &szButton2,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow,bool modal)
-	: QMessageBox(
-		szCaption,
-		szText,
-		QMessageBox::NoIcon,
-		szButton0.isEmpty() ? QMessageBox::NoButton : QMessageBox::Ok | QMessageBox::Default,
-		szButton1.isEmpty() ? QMessageBox::NoButton : (szButton2.isEmpty() ? QMessageBox::No | QMessageBox::Escape : QMessageBox::No),
-		szButton2.isEmpty() ? QMessageBox::NoButton : QMessageBox::Cancel | QMessageBox::Escape,
-		0,0,modal) ,
+	const QString &szCaption,
+	const QString &szText,
+	const QString &szIcon,
+	const QString &szButton0,
+	const QString &szButton1,
+	const QString &szButton2,
+	const QString &szCode,
+	KviKvsVariantList * pMagicParams,
+	KviWindow * pWindow,bool modal)
+: QMessageBox(
+	szCaption,
+	szText,
+	QMessageBox::NoIcon,
+	szButton0.isEmpty() ? QMessageBox::NoButton : QMessageBox::Ok | QMessageBox::Default,
+	szButton1.isEmpty() ? QMessageBox::NoButton : (szButton2.isEmpty() ? QMessageBox::No | QMessageBox::Escape : QMessageBox::No),
+	szButton2.isEmpty() ? QMessageBox::NoButton : QMessageBox::Cancel | QMessageBox::Escape,
+	0,0,modal) ,
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
@@ -734,7 +734,7 @@ static bool dialog_kvs_cmd_image(KviKvsModuleCallbackCommandCall * c)
 		KVSM_PARAMETER("maxsize",KVS_PT_UINT,KVS_PF_OPTIONAL,iMaxSize)
 		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
 	KVSM_PARAMETERS_END(c)
-bool modal;
+	bool modal;
 	if(c->hasSwitch('b',"modal")) modal=true;
 	else modal=false;
 	QString szCmd = c->callback()->code();
@@ -773,7 +773,7 @@ bool modal;
 */
 
 static bool dialog_kvs_fnc_yesno(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szCaption;
 	QString szText;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -888,7 +888,7 @@ static bool dialog_module_init(KviModule * m)
 
 	KVSM_REGISTER_FUNCTION(m,"yesno",dialog_kvs_fnc_yesno);
 
-    return true;
+	return true;
 }
 
 static bool dialog_module_cleanup(KviModule *m)
@@ -896,7 +896,7 @@ static bool dialog_module_cleanup(KviModule *m)
 	// Here we get a tragedy if g_iLocalEventLoops > 0!
 	while(g_pDialogModuleDialogList->first())delete g_pDialogModuleDialogList->first();
 	delete g_pDialogModuleDialogList;
-    g_pDialogModuleDialogList = 0;
+	g_pDialogModuleDialogList = 0;
 	return true;
 }
 
@@ -907,13 +907,13 @@ static bool dialog_module_can_unload(KviModule *m)
 
 
 KVIRC_MODULE(
-    "KVIrc script dialogs",
+	"KVIrc script dialogs",
 	"1.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Adds the /dialog.* commands functionality\n",
-    dialog_module_init ,
-    dialog_module_can_unload,
-    0,
+	dialog_module_init ,
+	dialog_module_can_unload,
+	0,
 	dialog_module_cleanup
 )
 

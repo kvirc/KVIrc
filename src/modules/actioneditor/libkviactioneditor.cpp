@@ -70,7 +70,7 @@ static bool actioneditor_module_can_unload(KviModule * m)
 static bool actioneditor_module_cleanup(KviModule *m)
 {
 	if(g_pActionEditorWindow)delete g_pActionEditorWindow;
-    g_pActionEditorWindow = 0;
+	g_pActionEditorWindow = 0;
 	return true;
 }
 

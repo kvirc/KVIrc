@@ -232,7 +232,7 @@ static bool lamerizer_module_init(KviModule * m)
 	d->deallocFunc = deallocLamerizerEngine;
 	m->registerCryptEngine(d);
 
-    return true;
+	return true;
 #else
 	return false;
 #endif
@@ -243,7 +243,7 @@ static bool lamerizer_module_cleanup(KviModule *m)
 #ifdef COMPILE_CRYPT_SUPPORT
 	while(g_pEngineList->first())delete g_pEngineList->first();
 	delete g_pEngineList;
-    g_pEngineList = 0;
+	g_pEngineList = 0;
 	m->unregisterCryptEngines();
 	return true;
 #else
@@ -264,13 +264,13 @@ static bool lamerizer_module_can_unload(KviModule *)
 // plugin definition structure
 // =======================================
 KVIRC_MODULE(
-    "Lamerizer crypt engine",
+	"Lamerizer crypt engine",
 	"1.0.1",
 	"Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>" ,
 	"Exports the lamerizer text transformation engine",
-    lamerizer_module_init ,
-    lamerizer_module_can_unload,
-    0,
+	lamerizer_module_init ,
+	lamerizer_module_can_unload,
+	0,
 	lamerizer_module_cleanup
 )
 

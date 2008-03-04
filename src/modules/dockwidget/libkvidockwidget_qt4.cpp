@@ -129,6 +129,7 @@ void KviDockWidget::die()
 {
 	delete this;
 }
+
 void KviDockWidget::flashingTimerShot()
 {
 	m_bFlashed=!m_bFlashed;
@@ -516,11 +517,11 @@ static KviDockWidget * dockwidget_find(KviFrame *f)
 		The dock widget is currently working in KDE compilation mode only:
 		it relies on the KWin implementation of the Window Manager interaction protocol.
 	@seealso:
-		[cmd]dockwidget.hide[/doc]
+		[cmd]dockwidget.hide[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!(dockwidget_find(c->window()->frame())))
 	{
 		KviDockWidget * w = new KviDockWidget(c->window()->frame());
@@ -542,11 +543,11 @@ static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	@description:
 		Hides the dock widget for the current frame window
 	@seealso:
-		[cmd]dockwidget.show[/doc]
+		[cmd]dockwidget.show[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviDockWidget * w= dockwidget_find(c->window()->frame());
 	if(w)delete w;
 	// show the parent frame.. otherwise there will be no way to get it back
@@ -570,11 +571,11 @@ static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 	@description:
 		Hides the window, assotiated with dockwidget
 	@seealso:
-		[cmd]dockwidget.show[/cmd] [cmd]dockwidget.hide[/cmd]
+		[cmd]dockwidget.show[/cmd], [cmd]dockwidget.hide[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviDockWidget * w= dockwidget_find(c->window()->frame());
 	if(w)
 	{
@@ -584,7 +585,7 @@ static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 }
 
 /*
-	@doc: dockwidget.isvisible
+	@doc: dockwidget.isVisible
 	@type:
 		function
 	@title:
@@ -600,7 +601,7 @@ static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 */
 
 static bool dockwidget_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
-{ 
+{
 	c->returnValue()->setBoolean(dockwidget_find(c->window()->frame()));
 	return true;
 }
@@ -631,7 +632,7 @@ static bool dockwidget_module_init(KviModule * m)
 	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
-#endif	
+#endif
 	
 	g_pDock3 = new QPixmap(buffer);
 
@@ -652,7 +653,7 @@ static bool dockwidget_module_cleanup(KviModule *m)
 {
 	while(g_pDockWidgetList->first())delete g_pDockWidgetList->first();
 	delete g_pDockWidgetList;
-    g_pDockWidgetList = 0;
+	g_pDockWidgetList = 0;
 
 	delete g_pDock1;
 	g_pDock1 = 0;
@@ -675,12 +676,12 @@ static bool dockwidget_module_can_unload(KviModule *)
 // plugin definition structure
 // =======================================
 KVIRC_MODULE(
-    "KVIrc dock widget implementation",
+	"KVIrc dock widget implementation",
 	"2.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net> and Alexey Uzhva <alexey at kvirc dot ru>" ,
 	"exports the /dockwidget.* interface\n",
-    dockwidget_module_init ,
-    dockwidget_module_can_unload,
+	dockwidget_module_init ,
+	dockwidget_module_can_unload,
 	0,
 	dockwidget_module_cleanup
 )

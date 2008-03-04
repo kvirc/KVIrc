@@ -47,7 +47,7 @@ KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList = 0;
 */
 
 static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviCodeTesterWindow * w = new KviCodeTesterWindow(c->window()->frame());
 	c->window()->frame()->addWindow(w);
 	w->setFocus();

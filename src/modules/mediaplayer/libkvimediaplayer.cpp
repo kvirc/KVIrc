@@ -184,8 +184,12 @@ static KviMediaPlayerInterface * auto_detect_player(KviWindow * pOut = 0)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.stop[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(play,play)
@@ -206,7 +210,9 @@ MP_KVS_SIMPLE_COMMAND(play,play)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.quit[/cmd],[cmd]mediaplayer.show[/cmd],[cmd]mediaplayer.minimize[/cmd]
+		[cmd]mediaplayer.quit[/cmd],
+		[cmd]mediaplayer.show[/cmd],
+		[cmd]mediaplayer.minimize[/cmd]
 */
 
 MP_KVS_SIMPLE_COMMAND(hide,hide)
@@ -229,7 +235,9 @@ MP_KVS_SIMPLE_COMMAND(hide,hide)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.quit[/cmd],[cmd]mediaplayer.hide[/cmd],[cmd]mediaplayer.minimize[/cmd]
+		[cmd]mediaplayer.quit[/cmd],
+		[cmd]mediaplayer.hide[/cmd],
+		[cmd]mediaplayer.minimize[/cmd]
 */
 
 MP_KVS_SIMPLE_COMMAND(show,show)
@@ -250,7 +258,9 @@ MP_KVS_SIMPLE_COMMAND(show,show)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.quit[/cmd],[cmd]mediaplayer.hide[/cmd],[cmd]mediaplayer.show[/cmd]
+		[cmd]mediaplayer.quit[/cmd],
+		[cmd]mediaplayer.hide[/cmd],
+		[cmd]mediaplayer.show[/cmd]
 */
 
 MP_KVS_SIMPLE_COMMAND(minimize,minimize)
@@ -271,8 +281,12 @@ MP_KVS_SIMPLE_COMMAND(minimize,minimize)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.play[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.play[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(stop,stop)
@@ -293,8 +307,12 @@ MP_KVS_SIMPLE_COMMAND(stop,stop)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.stop[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.play[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(next,next)
@@ -315,8 +333,12 @@ MP_KVS_SIMPLE_COMMAND(next,next)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.play[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.stop[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.play[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(prev,prev)
@@ -337,8 +359,12 @@ MP_KVS_SIMPLE_COMMAND(prev,prev)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.stop[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(quit,quit)
@@ -359,8 +385,12 @@ MP_KVS_SIMPLE_COMMAND(quit,quit)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.stop[/cmd],
+		[cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(pause,pause)
@@ -387,9 +417,13 @@ MP_KVS_SIMPLE_COMMAND(pause,pause)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc],
-		[cmd]mediaplayer.setPlayer[/cmd], [fnc]$mediaplayer.player()[/fnc]
+		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc],
+		[cmd]mediaplayer.setPlayer[/cmd],
+		[fnc]$mediaplayer.player[/fnc]
 */
 
 MP_KVS_COMMAND(detect)
@@ -416,7 +450,7 @@ MP_KVS_COMMAND(detect)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.detect[/cmd], [fnc]$mediaplayer.player()[/fnc]
+		[cmd]mediaplayer.detect[/cmd], [fnc]$mediaplayer.player[/fnc]
 */
 
 MP_KVS_COMMAND(setPlayer)
@@ -480,7 +514,7 @@ MP_KVS_FUNCTION(player)
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
-		[module:mediaplayer]media player module documentation[/module]m
+		[module:mediaplayer]media player module documentation[/module]
 		[cmd]mediaplayer.detect[/cmd], [cmd]mediaplayer.setPlayer[/cmd],
 		[fnc]$mediaplayer.player[/fnc]
 */
@@ -516,7 +550,8 @@ MP_KVS_FUNCTION(playerList)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [fnc]$mediaplayer.localFile()[/fnc],
+		[fnc]$mediaplayer.mrl[/fnc],
+		[fnc]$mediaplayer.localFile[/fnc],
 		[cmd]mediaplayer.play[/cmd]
 */
 
@@ -581,7 +616,8 @@ MP_KVS_COMMAND(amipExec)
 		Sets the position in seconds of the current song .
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.position()[/fnc], [fnc]$mediaplayer.lenght()[/fnc],
+		[fnc]$mediaplayer.position[/fnc],
+		[fnc]$mediaplayer.lenght[/fnc],
 */
 
 MP_KVS_COMMAND(jumpTo)
@@ -620,7 +656,7 @@ MP_KVS_COMMAND(jumpTo)
 		Set the media player volume to <vol> (the valid range is from 0 to ....)
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.getVol()[/fnc]
+		[fnc]$mediaplayer.getVol[/fnc]
 */
 
 MP_KVS_COMMAND(setVol)
@@ -683,8 +719,11 @@ MP_KVS_SIMPLE_INT_FUNCTION(getVol,getVol)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.play[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.prev[/cmd],
-		[cmd]mediaplayer.next[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc], [fnc]$mediaplayer.status()[/fnc]
+		[cmd]mediaplayer.play[/cmd], [cmd]mediaplayer.pause[/cmd],
+		[cmd]mediaplayer.prev[/cmd],
+		[cmd]mediaplayer.next[/cmd],
+		[fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.status[/fnc]
 */
 
 MP_KVS_SIMPLE_COMMAND(mute,mute)
@@ -713,7 +752,8 @@ MP_KVS_SIMPLE_COMMAND(mute,mute)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]mediaplayer.playMrl[/cmd], [fnc]$mediaplayer.localFile()[/fnc]
+		[cmd]mediaplayer.playMrl[/cmd],
+		[fnc]$mediaplayer.localFile[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
@@ -741,13 +781,15 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.title()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.genre()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.bitRate()[/fnc],
-		[fnc]$mediaplayer.sampleRate()[/fnc],
-		[fnc]$mediaplayer.length()[/fnc], [fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.title[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.genre[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc],
+		[fnc]$mediaplayer.bitRate[/fnc],
+		[fnc]$mediaplayer.sampleRate[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(nowPlaying,nowPlaying)
@@ -772,11 +814,11 @@ MP_KVS_SIMPLE_STRING_FUNCTION(nowPlaying,nowPlaying)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.genre()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.genre[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(title,title)
@@ -801,12 +843,14 @@ MP_KVS_SIMPLE_STRING_FUNCTION(title,title)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.title()[/fnc], [fnc]$mediaplayer.genre()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.album()[/fnc],
-		[fnc]$mediaplayer.length()[/fnc], [fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.title[/fnc], [fnc]$mediaplayer.genre[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc],
+		[fnc]$mediaplayer.album[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(artist,artist)
@@ -831,12 +875,12 @@ MP_KVS_SIMPLE_STRING_FUNCTION(artist,artist)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.album()[/fnc],
-		[fnc]$mediaplayer.length()[/fnc], [fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc], [fnc]$mediaplayer.album[/fnc],
+		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(genre,genre)
@@ -861,12 +905,12 @@ MP_KVS_SIMPLE_STRING_FUNCTION(genre,genre)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.genre()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.album()[/fnc],
-		[fnc]$mediaplayer.length()[/fnc], [fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.genre[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc], [fnc]$mediaplayer.album[/fnc],
+		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(year,year)
@@ -891,12 +935,12 @@ MP_KVS_SIMPLE_STRING_FUNCTION(year,year)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.year()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.album()[/fnc],
-		[fnc]$mediaplayer.length()[/fnc], [fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.year[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc], [fnc]$mediaplayer.album[/fnc],
+		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(comment,comment)
@@ -921,13 +965,15 @@ MP_KVS_SIMPLE_STRING_FUNCTION(comment,comment)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.mediaType()[/fnc], [fnc]$mediaplayer.bitRate()[/fnc],
-		[fnc]$mediaplayer.sampleRate()[/fnc], [fnc]$mediaplayer.length()[/fnc],
-		[fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.mediaType[/fnc],
+		[fnc]$mediaplayer.bitRate[/fnc],
+		[fnc]$mediaplayer.sampleRate[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(album,album)
@@ -950,10 +996,11 @@ MP_KVS_SIMPLE_STRING_FUNCTION(album,album)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc]
 */
 
 MP_KVS_SIMPLE_STRING_FUNCTION(mediaType,mediaType)
@@ -977,12 +1024,13 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mediaType,mediaType)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.sampleRate()[/fnc], [fnc]$mediaplayer.length()[/fnc],
-		[fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.sampleRate[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
@@ -1007,12 +1055,12 @@ MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.bitRate()[/fnc], [fnc]$mediaplayer.length()[/fnc],
-		[fnc]$mediaplayer.position()[/fnc], [fnc]$mediaplayer.channels()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.bitRate[/fnc], [fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.position[/fnc], [fnc]$mediaplayer.channels[/fnc]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(sampleRate,sampleRate)
@@ -1035,12 +1083,14 @@ MP_KVS_SIMPLE_INT_FUNCTION(sampleRate,sampleRate)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.sampleRate()[/fnc], [fnc]$mediaplayer.bitRate()[/fnc],
-		[fnc]$mediaplayer.position()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.sampleRate[/fnc],
+		[fnc]$mediaplayer.bitRate[/fnc],
+		[fnc]$mediaplayer.position[/fnc]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(length,length)
@@ -1063,12 +1113,13 @@ MP_KVS_SIMPLE_INT_FUNCTION(length,length)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module]
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.playMrl[/cmd],
-		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying()[/fnc],
-		[fnc]$mediaplayer.artist()[/fnc], [fnc]$mediaplayer.artist()[/fnc],
-		[fnc]$mediaplayer.year()[/fnc], [fnc]$mediaplayer.comment()[/fnc],
-		[fnc]$mediaplayer.sampleRate()[/fnc], [fnc]$mediaplayer.length()[/fnc],
-		[fnc]$mediaplayer.bitRate()[/fnc], [fnc]$mediaplayer.channels()[/fnc]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.playMrl[/cmd],
+		[cmd]mediaplayer.play[/cmd], [fnc]$mediaplayer.nowPlaying[/fnc],
+		[fnc]$mediaplayer.artist[/fnc], [fnc]$mediaplayer.artist[/fnc],
+		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc],
+		[fnc]$mediaplayer.sampleRate[/fnc],
+		[fnc]$mediaplayer.length[/fnc],
+		[fnc]$mediaplayer.bitRate[/fnc], [fnc]$mediaplayer.channels[/fnc]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(position,position)
@@ -1175,7 +1226,6 @@ MP_KVS_SIMPLE_INT_FUNCTION(getPlayListPos,getPlayListPos)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[cmd]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
@@ -1198,7 +1248,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
 		[cmd]mediaplayer.setRepeat[/cmd], [cmd]mediaplayer.setShuffle[/cmd],
-		[fnc]mediaplayer.getShuffle[/cmd]
+		[fnc]$mediaplayer.getShuffle[/fnc]
 */
 
 MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
@@ -1221,7 +1271,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
 		[cmd]mediaplayer.setShuffle[/cmd], [cmd]mediaplayer.setRepeat[/cmd],
-		[fnc]mediaplayer.getRepeat[/cmd]
+		[fnc]$mediaplayer.getRepeat[/fnc]
 */
 
 MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
@@ -1244,7 +1294,7 @@ MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
 		[cmd]mediaplayer.setShuffle[/cmd], [cmd]mediaplayer.setRepeat[/cmd],
-		[fnc]mediaplayer.getRepeat[/cmd]
+		[fnc]$mediaplayer.getRepeat[/fnc]
 
 */
 
@@ -1339,7 +1389,7 @@ MP_KVS_COMMAND(setEqData)
 		for more details about how it works.[br]
 	@seealso:
 		[module:mediaplayer]media player module documentation[/module],
-		[fnc]$mediaplayer.mrl()[/fnc], [cmd]mediaplayer.play[/cmd]
+		[fnc]$mediaplayer.mrl[/fnc], [cmd]mediaplayer.play[/cmd]
 */
 
 MP_KVS_FUNCTION(localFile)

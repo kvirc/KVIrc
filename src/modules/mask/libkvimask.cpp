@@ -76,7 +76,7 @@ static bool mask_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	*/
 
 static bool mask_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
-{ 
+{
 
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -102,7 +102,7 @@ static bool mask_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 	*/
 
 static bool mask_kvs_fnc_user(KviKvsModuleFunctionCall * c)
-{ 
+{
 
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -129,7 +129,7 @@ static bool mask_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 	*/
 
 static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
@@ -156,7 +156,7 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 
 
 static bool mask_kvs_fnc_hasnumerichost(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
@@ -181,7 +181,7 @@ static bool mask_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"host",mask_kvs_fnc_host);
 	KVSM_REGISTER_FUNCTION(m,"hasnumerichost",mask_kvs_fnc_hasnumerichost);
 
-  return true;
+	return true;
 }
 
 static bool mask_module_cleanup(KviModule *m)

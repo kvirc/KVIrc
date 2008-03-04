@@ -71,7 +71,7 @@ static bool socketspy_module_cleanup(KviModule *m)
 {
 	while(g_pSocketSpyWindowList->first())g_pSocketSpyWindowList->first()->die();
 	delete g_pSocketSpyWindowList;
-    g_pSocketSpyWindowList = 0;
+	g_pSocketSpyWindowList = 0;
 	return true;
 }
 

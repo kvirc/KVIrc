@@ -44,7 +44,7 @@ KviEventEditorWindow * g_pEventEditorWindow = 0;
 */
 
 static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pEventEditorWindow)
 	{
 		g_pEventEditorWindow = new KviEventEditorWindow(c->window()->frame());
@@ -54,8 +54,6 @@ static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	g_pEventEditorWindow->setFocus();
 	return true;
 }
-
-
 
 static bool eventeditor_module_init(KviModule * m)
 {
@@ -74,7 +72,7 @@ static bool eventeditor_module_can_unload(KviModule * m)
 static bool eventeditor_module_cleanup(KviModule *m)
 {
 	if(g_pEventEditorWindow)delete g_pEventEditorWindow;
-    g_pEventEditorWindow = 0;
+	g_pEventEditorWindow = 0;
 	return true;
 }
 

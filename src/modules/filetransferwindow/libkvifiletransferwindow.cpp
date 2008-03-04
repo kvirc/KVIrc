@@ -121,9 +121,9 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 static bool filetransferwindow_module_init(KviModule * m)
 {
 	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-							KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
-							__tr2qs("Manage File &Transfers"),
-							filetransferwindow_extension_alloc);
+		KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME,
+		__tr2qs("Manage File &Transfers"),
+		filetransferwindow_extension_alloc);
 
 	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FILETRANSFER)));
 

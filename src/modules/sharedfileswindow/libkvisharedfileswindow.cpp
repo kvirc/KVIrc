@@ -121,9 +121,9 @@ static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 static bool sharedfileswindow_module_init(KviModule * m)
 {
 	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
-							KVI_SHARED_FILES_WINDOW_EXTENSION_NAME,
-							__tr2qs_ctx("Manage S&hared Files","sharedfileswindow"),
-							sharedfileswindow_extension_alloc);
+		KVI_SHARED_FILES_WINDOW_EXTENSION_NAME,
+		__tr2qs_ctx("Manage S&hared Files","sharedfileswindow"),
+		sharedfileswindow_extension_alloc);
 
 	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SHAREDFILES)));
 

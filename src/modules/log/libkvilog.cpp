@@ -258,7 +258,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 */
 
 static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWindow; 
 	QString buffer;
 	KVSM_PARAMETERS_BEGIN(c)

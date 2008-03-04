@@ -70,10 +70,10 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	
 	QString msg = "<center>";
 	msg += __tr2qs("Please select an avatar image. " \
-				"The full path to a local file or an image on the Web can be used.<br>" \
-				"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
-				"button to browse local folders.<br>" \
-				"The full URL for an image (including <b>http://</b>) can be entered manually.");
+		"The full path to a local file or an image on the Web can be used.<br>" \
+		"If you wish to use a local image file, click the \"<b>Browse</b>\"" \
+		"button to browse local folders.<br>" \
+		"The full URL for an image (including <b>http://</b>) can be entered manually.");
 	msg += "</center><br>";
 
 	QLabel * l = new QLabel(msg,this);
@@ -136,7 +136,7 @@ void KviAsyncAvatarSelectionDialog::cancelClicked()
 void KviAsyncAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
- 	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose an Image File - KVIrc")))
+	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs("Choose an Image File - KVIrc")))
 	{
 		m_pLineEdit->setText(tmp);
 	}
@@ -440,7 +440,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 		is returned. The returned string is empty if the specified user has no
 		avatar set or there is no such user at all.
 	@seealso:
-		[fnc]$avatar.path[/fnc]()
+		[fnc]$avatar.path[/fnc]
 */
 
 static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
@@ -484,7 +484,7 @@ static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 		is returned. The returned string is empty if the specified user has no
 		avatar set or there is no such user at all.
 	@seealso:
-		[fnc]$avatar.name[/fnc]()
+		[fnc]$avatar.name[/fnc]
 */
 
 static bool avatar_kvs_fnc_path(KviKvsModuleFunctionCall * c)

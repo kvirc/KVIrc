@@ -75,7 +75,7 @@ static KviChannel * chan_kvs_find_channel(KviKvsModuleFunctionCall * c,QString &
 */
 
 static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -104,7 +104,7 @@ static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId,url;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -147,7 +147,7 @@ static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -181,7 +181,7 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -215,7 +215,7 @@ static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -249,7 +249,7 @@ static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -280,7 +280,7 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -312,7 +312,7 @@ static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -344,7 +344,7 @@ static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -377,7 +377,7 @@ static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -409,7 +409,7 @@ static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -441,7 +441,7 @@ static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -473,7 +473,7 @@ static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -505,7 +505,7 @@ static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -537,7 +537,7 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -569,7 +569,7 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -596,7 +596,7 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId,szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
@@ -633,7 +633,7 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId,szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
@@ -933,7 +933,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
 */
 
 static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -969,7 +969,7 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -999,7 +999,7 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
@@ -1077,7 +1077,7 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask,szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
@@ -1192,7 +1192,7 @@ next_item:
 */
 
 static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask,szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
@@ -1235,7 +1235,7 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask,szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
@@ -1278,7 +1278,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask,szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
@@ -1323,7 +1323,7 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
@@ -1372,7 +1372,7 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
@@ -1421,7 +1421,7 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szWinId,szMask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
@@ -1478,7 +1478,7 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 */
 
 static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick,szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
@@ -1510,11 +1510,11 @@ static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 		for all the users that were on the channel before the local user has joined it (e.g.
 		you know the join time only for users that YOU see joining).[br]
 	@seealso:
-		[fnc]$unixtime[/fnc], [fnc]$chan.userLastActionTime[/fnc]()
+		[fnc]$unixTime[/fnc], [fnc]$chan.userLastActionTime[/fnc]
 */
 
 static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick,szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
@@ -1547,11 +1547,11 @@ static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 		for all the users that were on the channel before the local user has joined it
 		and have performed no actions since that moment.
 	@seealso:
-		[fnc]$unixtime[/fnc](), [fnc]$chan.userJoinTime[/fnc]()
+		[fnc]$unixTime[/fnc], [fnc]$chan.userJoinTime[/fnc]
 */
 
 static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick,szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
@@ -1567,7 +1567,6 @@ static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
 
 static bool chan_module_init(KviModule * m)
 {
-
 	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);
 	KVSM_REGISTER_FUNCTION(m,"topic",chan_kvs_fnc_topic);
 	KVSM_REGISTER_FUNCTION(m,"topicsetby",chan_kvs_fnc_topicsetby);

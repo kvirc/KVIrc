@@ -88,13 +88,13 @@ static bool about_module_can_unload(KviModule * m)
 // =======================================
 
 KVIRC_MODULE(
-    "KVIrc about dialog",
+	"KVIrc about dialog",
 	"2.0.0",
-    "Till Bush <buti@geocities.com>\n" \
+	"Till Bush <buti@geocities.com>\n" \
 	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Exports the /about.kvirc command\n",
-    about_module_init ,
-    about_module_can_unload,
-    0,
+	about_module_init ,
+	about_module_can_unload,
+	0,
 	about_module_cleanup
 )

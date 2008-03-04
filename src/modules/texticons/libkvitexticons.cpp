@@ -41,7 +41,7 @@
 		if <iconName:string> is setted returns integer icon id or string filename, associciated with <iconName:string>[br]
 		if <iconName:string> isn't set returns hash where keys are the icon names, and values are the icon id's or filenames
 	@seealso:
-		[cmd]texticons.get[/cmd]
+		[fnc]$texticons.get[/fnc]
 */
 
 static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)

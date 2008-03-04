@@ -234,7 +234,7 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 		only script actions that have been defined by the user (or other scripts).
 	@seealso:
 		# this will trigger a warning and NOT work
-		action.destroy connect 
+		action.destroy connect
 */
 
 static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
@@ -436,15 +436,9 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 		debug("action.validate has provided invalid flags: %d fixed to %d",iOldFlags,iFlags);
 
 	KviKvsUserAction * a = KviKvsUserAction::createInstance(KviActionManager::instance(),
-											szName,
-											szCmd,
-											szVisibleText,
-											szDescription,
-											szCategory,
-											szBigIconId,
-											szSmallIconId,
-											iFlags,
-											szKeySequence);
+		szName,szCmd,szVisibleText,
+		szDescription,szCategory,szBigIconId,
+		szSmallIconId,iFlags,szKeySequence);
 
 	KviActionManager::instance()->registerAction(a);
 
@@ -463,7 +457,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 		<boolean> $action.exists(<name:string>)
 	@description:
 		Returns 1 if the action with the specified <name> is currently defined
-		and 0 otherwise. 
+		and 0 otherwise.
 */
 
 static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
