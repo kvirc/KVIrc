@@ -581,7 +581,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
 		@examples:
 			[example]
-			topic #kvirc KVIrc 3.0.0 has been released!
+			topic #kvirc KVIrc 3.4.0 has been released!
 			[/example]
 	*/
 
@@ -775,7 +775,11 @@ namespace KviKvsCoreSimpleCommands
 			unban -r=[fnc]$channel[/fnc](#kvirc,[fnc]$context[/fnc](irc.myirc.net,Pragma)) Maxim,Gizmo!*@*,*!root*@*
 			[/example]
 		@seealso:
-			[cmd]op[/cmd],[cmd]deop[/cmd],[cmd]voice[/cmd],[cmd]devoice[/cmd],[cmd]ban[/cmd]
+			[cmd]op[/cmd],
+			[cmd]deop[/cmd],
+			[cmd]voice[/cmd],
+			[cmd]devoice[/cmd],
+			[cmd]ban[/cmd]
 	*/
 
 	KVSCSC(unban)
@@ -825,7 +829,7 @@ namespace KviKvsCoreSimpleCommands
 			voice Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd],[cmd]deop[/cmd],[cmd]devoice[/cmd]
+			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]devoice[/cmd]
 	*/
 
 	KVSCSC(voice)

@@ -308,7 +308,7 @@ namespace KviKvsCoreSimpleCommands
 			op Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]deop[/cmd],[cmd]voice[/cmd],[cmd]devoice[/cmd]
+			[cmd]deop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
 	*/
 
 	KVSCSC(op)
@@ -492,7 +492,7 @@ namespace KviKvsCoreSimpleCommands
 				option fontIrcView helvetica,24,5,1,50
 			[/example]
 		@seealso:
-			[fnc]$option[/fnc]()
+			[fnc]$option[/fnc]
 	*/
 
 	KVSCSC(option)
@@ -860,7 +860,7 @@ namespace KviKvsCoreSimpleCommands
 		if(!pMenu)
 		{
 			delete pPopupParams;
-            pPopupParams = 0;
+			pPopupParams = 0;
 			KVSCSC_pContext->error(__tr2qs("Popup %Q is not defined"),&szPopupName);
 			return false;
 		}
@@ -868,7 +868,7 @@ namespace KviKvsCoreSimpleCommands
 		if(pMenu->isLocked())
 		{
 			delete pPopupParams;
-            pPopupParams = 0;
+			pPopupParams = 0;
 			KVSCSC_pContext->error(__tr2qs("A popup menu cannot be popped up twice"));
 			return false;
 		}
@@ -1046,7 +1046,7 @@ namespace KviKvsCoreSimpleCommands
 			quit
 		@syntax:
 			quit [-f] [-u] [quit-message:string]
-      		quit -q
+		quit -q
 		@short:
 			Terminates the current IRC connection or the entier application
 		@switches:

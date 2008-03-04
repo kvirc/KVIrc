@@ -361,7 +361,7 @@ namespace KviKvsCoreFunctions
 			Please note that writing $null is semantically equivalent to writing 0
 			or even [fnc]$nothing[/fnc] in place of the handle, but $null increases code readability.
 		@seealso:
-			[fnc]$new()[/fnc], [fnc]$nothing[/fnc]
+			[fnc]$new[/fnc], [fnc]$nothing[/fnc]
 	*/
 
 	KVSCF(nullCKEYWORDWORKAROUND)
@@ -385,7 +385,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the RESET mIRC control character (CTRL+O).[br]
 		@seealso:
-			[fnc]$k[/fnc],[fnc]$b[/fnc],[fnc]$u[/fnc],[fnc]$r[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc]
 	*/
 
 	KVSCF(o)
@@ -518,7 +518,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the REVERSE mIRC control character (CTRL+R).[br]
 		@seealso:
-			[fnc]$k[/fnc],[fnc]$b[/fnc],[fnc]$u[/fnc],[fnc]$o[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$u[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(r)
@@ -598,7 +598,7 @@ namespace KviKvsCoreFunctions
 			Note that since KVIrc does most of the casting work automatically
 			you shouldn't need to use this function.
 		@seealso:
-			[fnc]$int()[/fnc]
+			[fnc]$int[/fnc]
 	*/
 
 	KVSCF(real)

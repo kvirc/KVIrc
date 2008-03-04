@@ -70,7 +70,7 @@ namespace KviKvsCoreFunctions
 			for communicating something REALLY urgent (and maybe
 			unrelated to a specific IRC connection) to the user.
 		@seealso:
-			[fnc]$window[/fnc],
+			[fnc]$window[/fnc]
 	*/
 
 	KVSCF(active)
@@ -111,7 +111,7 @@ namespace KviKvsCoreFunctions
 			This function has been renamed to $unicode and is present
 			only for backward compatibility.
 		@seealso:
-			[fnc]$cr[/fnc],[fnc]$lf[/fnc],[fnc]$char[/fnc]
+			[fnc]$cr[/fnc], [fnc]$lf[/fnc], [fnc]$char[/fnc]
 	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,7 +134,7 @@ namespace KviKvsCoreFunctions
 		@examples:
 			[cmd]echo[/cmd] $asciiToBase64("Hello!")
 		@seealso:
-			[fnc]$base64toascii()[/fnc]
+			[fnc]$base64toascii[/fnc]
 	*/
 
 	KVSCF(asciiToBase64)
@@ -176,7 +176,7 @@ namespace KviKvsCoreFunctions
 		@examples:
 			[cmd]echo[/cmd] $asciiToHex("Hello!")
 		@seealso:
-			[fnc]$hextoascii()[/fnc]
+			[fnc]$hextoascii[/fnc]
 	*/
 
 	KVSCF(asciiToHex)
@@ -315,7 +315,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the BOLD mIRC control character (CTRL+B).[br]
 		@seealso:
-			[fnc]$k[/fnc],[fnc]$u[/fnc]
+			[fnc]$k[/fnc], [fnc]$u[/fnc]
 	*/
 
 	KVSCF(b)
@@ -339,7 +339,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Decodes a base64 encoded string.
 		@seealso:
-			[fnc]$asciiToBase64[/fnc]()
+			[fnc]$asciiToBase64[/fnc]
 	*/
 
 	KVSCF(base64ToAscii)
@@ -379,8 +379,8 @@ namespace KviKvsCoreFunctions
 			Note that since KVIrc does most of the casting work automatically
 			you shouldn't need to use this function.
 		@seealso:
-			[fnc]$real()[/fnc]
-			[fnc]$integer()[/fnc]
+			[fnc]$real[/fnc]
+			[fnc]$integer[/fnc]
 	*/
 
 	/*
@@ -396,8 +396,8 @@ namespace KviKvsCoreFunctions
 		@description:
 			This is an internal alias to [fnc]$boolean[/fnc]().
 		@seealso:
-			[fnc]$real()[/fnc]
-			[fnc]$integer()[/fnc]
+			[fnc]$real[/fnc]
+			[fnc]$integer[/fnc]
 	*/
 
 	KVSCF(boolean)
@@ -438,7 +438,7 @@ namespace KviKvsCoreFunctions
 		@seealso:
 			[fnc]$window[/fnc],
 			[fnc]$query[/fnc],
-			[fnc]$console[/fnc]
+			[fnc]$console[/fnc],
 			[doc:window_naming_conventions]Window naming conventions[/doc]
 	*/
 
@@ -499,7 +499,7 @@ namespace KviKvsCoreFunctions
 			If the <unicode_code> is not a valid UNICODE code (or is 0), this function returns
 			an empty string.[br]
 		@seealso:
-			[fnc]$cr[/fnc],[fnc]$lf[/fnc],[fnc]$unicode[/fnc]
+			[fnc]$cr[/fnc], [fnc]$lf[/fnc], [fnc]$unicode[/fnc]
 	*/
 
 	KVSCF(charCKEYWORDWORKAROUND)
@@ -566,7 +566,7 @@ namespace KviKvsCoreFunctions
 		@seealso:
 			[fnc]$window[/fnc],
 			[fnc]$channel[/fnc],
-			[fnc]$query[/fnc]
+			[fnc]$query[/fnc],
 			[doc:window_naming_conventions]Window naming conventions[/doc]
 	*/
 
@@ -660,7 +660,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns a carriage return character
 		@seealso:
-			[fnc]$lf[/fnc],[fnc]$ascii[/fnc],[fnc]$char[/fnc]
+			[fnc]$lf[/fnc], [fnc]$ascii[/fnc], [fnc]$char[/fnc]
 	*/
 
 	KVSCF(cr)

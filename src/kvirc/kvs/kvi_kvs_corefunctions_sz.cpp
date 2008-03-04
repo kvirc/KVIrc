@@ -321,8 +321,8 @@ namespace KviKvsCoreFunctions
 			Note that since KVIrc does most of the casting work automatically
 			you shouldn't need to use this function.
 		@seealso:
-			[fnc]$real()[/fnc]
-			[fnc]$integer()[/fnc]
+			[fnc]$real[/fnc]
+			[fnc]$integer[/fnc]
 	*/
 
 	KVSCF(string)
@@ -830,7 +830,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the UNDERLINE mIRC control character (CTRL+U).[br]
 		@seealso:
-			[fnc]$k[/fnc],[fnc]$b[/fnc],[fnc]$r[/fnc],[fnc]$o[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(u)
@@ -857,7 +857,7 @@ namespace KviKvsCoreFunctions
 			If <char> is composed of more than one character
 			then an array of UNICODE code points is returned.
 		@seealso:
-			[fnc]$cr[/fnc],[fnc]$lf[/fnc],[fnc]$char[/fnc]
+			[fnc]$cr[/fnc], [fnc]$lf[/fnc], [fnc]$char[/fnc]
 	*/
 
 	KVSCF(unicode)
@@ -895,7 +895,7 @@ namespace KviKvsCoreFunctions
 			Returns the time since the Epoch (00:00:00 UTC, January 1, 1970),
 			measured in seconds.
 		@seealso:
-			[fnc]$time[/fnc], [fnc]$date[/fnc], [fnc]$hptimestamp[/fnc]
+			[fnc]$date[/fnc], [fnc]$hpTimeStamp[/fnc]
 	*/
 
 	KVSCF(unixtime)
@@ -966,7 +966,7 @@ namespace KviKvsCoreFunctions
 			in this interval of time KVIrc knows only the user's nickname.
 			This function will return the string "*" in this case.[br]
 		@seealso:
-			[fnc]$iswellknown[/fnc], [$fnc]$hostname[/fnc], [cmd]awhois[/cmd]
+			[fnc]$isWellKnown[/fnc], [$fnc]$hostname[/fnc], [cmd]awhois[/cmd]
 	*/
 
 	KVSCF(username)

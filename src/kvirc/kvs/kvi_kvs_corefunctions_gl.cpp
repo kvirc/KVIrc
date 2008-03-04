@@ -116,7 +116,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $hexToAscii(6B76697263)
 			[/example]
 		@seealso:
-			[fnc]$asciitohex()[/fnc]
+			[fnc]$asciiToHex[/fnc]
 	*/
 
 	KVSCF(hexToAscii)
@@ -166,7 +166,7 @@ namespace KviKvsCoreFunctions
 			in this interval of time KVIrc knows only the user's nickname.
 			This function will return the string "*" in this case.[br]
 		@seealso:
-			[fnc]$iswellknown[/fnc], [fnc]$username[/fnc], [cmd]awhois[/cmd]
+			[fnc]$isWellKnown[/fnc], [fnc]$username[/fnc], [cmd]awhois[/cmd]
 	*/
 
 	KVSCF(hostname)
@@ -220,7 +220,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $($hptimestamp - %tmp)
 			[/example]
 		@seealso:
-			[fnc]$unixtime[/fnc], [fnc]$date[/fnc], [fnc]$time[/fnc]
+			[fnc]$unixTime[/fnc], [fnc]$date[/fnc]
 	*/
 
 	KVSCF(hptimestamp)
@@ -255,7 +255,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $icon(linux)
 			[/example]
 		@seealso:
-			[fnc]$iconname[/fnc]
+			[fnc]$iconName[/fnc]
 	*/
 
 	KVSCF(icon)
@@ -300,7 +300,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $iconname([fnc]$icon[/fnc](linux))
 			[/example]
 		@seealso:
-			[fnc]$iconname[/fnc]
+			[fnc]$iconName[/fnc]
 	*/
 
 	KVSCF(iconName)
@@ -349,8 +349,8 @@ namespace KviKvsCoreFunctions
 			Note that since KVIrc does most of the casting work automatically
 			you shouldn't need to use this function.
 		@seealso:
-			[fnc]$real()[/fnc]
-			[fnc]$boolean()[/fnc]
+			[fnc]$real[/fnc]
+			[fnc]$boolean[/fnc]
 	*/
 
 	/*
@@ -366,8 +366,8 @@ namespace KviKvsCoreFunctions
 		@description:
 			This is an internal alias to [fnc]$integer[/fnc]().
 		@seealso:
-			[fnc]$real()[/fnc]
-			[fnc]$boolean()[/fnc]
+			[fnc]$real[/fnc]
+			[fnc]$boolean[/fnc]
 	*/
 
 	KVSCF(integer)
@@ -601,7 +601,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns 1 if the timer named <name> is actually running, else 0
 		@seealso:
-			[cmd]timer[/cmd],[cmd]killtimer[/cmd]
+			[cmd]timer[/cmd], [cmd]killtimer[/cmd]
 	*/
 
 	KVSCF(isTimer)
@@ -843,7 +843,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns a line feed character
 		@seealso:
-			[fnc]$cr[/fnc],[fnc]$ascii[/fnc],[fnc]$char[/fnc]
+			[fnc]$cr[/fnc], [fnc]$ascii[/fnc], [fnc]$char[/fnc]
 	*/
 
 	KVSCF(lf)

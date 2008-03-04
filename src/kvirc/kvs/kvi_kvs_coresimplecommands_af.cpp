@@ -223,7 +223,11 @@ namespace KviKvsCoreSimpleCommands
 			ban Maxim,Gizmo!*@*,*!root@*
 			[/example]
 		@seealso:
-			[cmd]op[/cmd],[cmd]deop[/cmd],[cmd]voice[/cmd],[cmd]devoice[/cmd],[cmd]unban[/cmd]
+			[cmd]op[/cmd],
+			[cmd]deop[/cmd],
+			[cmd]voice[/cmd],
+			[cmd]devoice[/cmd],
+			[cmd]unban[/cmd]
 	*/
 
 	KVSCSC(ban)
@@ -668,7 +672,7 @@ namespace KviKvsCoreSimpleCommands
 			about inexisting items or inexisting popup menus.[br]
 			See [cmd]defpopup[/cmd] for more informations.[br]
 		@seealso:
-			[cmd]defpopup[/cmd],[cmd]popup[/cmd]
+			[cmd]defpopup[/cmd], [cmd]popup[/cmd]
 	*/
 	// FIXME: #warning "Separator should have the expression too ?"
 
@@ -728,7 +732,7 @@ namespace KviKvsCoreSimpleCommands
 			deop Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd],[cmd]voice[/cmd],[cmd]devoice[/cmd]
+			[cmd]op[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
 	*/
 
 	KVSCSC(deop)
@@ -760,7 +764,7 @@ namespace KviKvsCoreSimpleCommands
 			devoice Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd],[cmd]deop[/cmd],[cmd]voice[/cmd]
+			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]voice[/cmd]
 	*/
 
 	KVSCSC(devoice)
