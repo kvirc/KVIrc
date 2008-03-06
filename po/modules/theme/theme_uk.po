@@ -1,13 +1,13 @@
 # translation of theme_ua.po to Ukrainian
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-19 15:00+0200\n"
+"POT-Creation-Date: 2008-03-06 18:18+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -52,8 +52,8 @@ msgid ""
 "Warning: Some of the theme contained in this package might be either "
 "corrupted or incompatible with this version of KVIrc"
 msgstr ""
-"Попередження: деякі файли цього пакета можуть бути ушкоджені або не "
-"сумісні з вашою версією KVIrc"
+"Попередження: деякі файли цього пакета можуть бути ушкоджені або не сумісні "
+"з вашою версією KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:220
 msgid "Show Details"
@@ -113,8 +113,8 @@ msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
 msgstr ""
-"Ця процедура дозволяє вам експортувати виділені теми в один пакет. Це "
-"дуже зручно, якщо ви хочете поширювати ваші теми в інтернеті."
+"Ця процедура дозволяє вам експортувати виділені теми в один пакет. Це дуже "
+"зручно, якщо ви хочете поширювати ваші теми в інтернеті."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:132
 msgid ""
@@ -141,7 +141,8 @@ msgid ""
 "themes first."
 msgstr ""
 "Це інформація про теми, які ви хочете запакувати. Якщо вона в порядку, "
-"натисніть \"Далі\" для продовження. Інакше, натисніть \"Скасування\" і зміните її."
+"натисніть \"Далі\" для продовження. Інакше, натисніть \"Скасування\" і "
+"зміните її."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:203
 msgid "Theme Data"
@@ -182,9 +183,9 @@ msgid ""
 "should be not larger than 300x225. If you don't provide an image a simple "
 "default icon will be used at installation stage."
 msgstr ""
-"Тут ви можете вибрати зображення, що буде видно користувачеві в "
-"час установки теми. Це може бути іконка або скріншот, але їхній розмір не "
-"може перевищувати 300х225 пікселей. Якщо ви не вкажете зображення, то буде "
+"Тут ви можете вибрати зображення, що буде видно користувачеві в час "
+"установки теми. Це може бути іконка або скріншот, але їхній розмір не може "
+"перевищувати 300х225 пікселей. Якщо ви не вкажете зображення, то буде "
 "використане зображення за замовчуванням."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:284
@@ -192,9 +193,10 @@ msgid "Icon/Screenshot"
 msgstr "Іконка або скріншот"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:296
+#, fuzzy
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *."
-" %1 extension."
+"%1 extension."
 msgstr ""
 "Тут ви можете вибрати ім'я файлу вашого пакета теми. воно повинне мати "
 "розширення *. %1"
@@ -350,10 +352,9 @@ msgid ""
 "and will be also visible in the package installation dialog if you will "
 "export the theme to a distributable package."
 msgstr ""
-"Тут ви можете вибрати скріншот або зображення для вашої теми. Це "
-"зображення буде показано в спливаючих підказках діалогу керування "
-"теми, а також буде видно при установці пакети теми, якщо ви надалі "
-"захочете його створити."
+"Тут ви можете вибрати скріншот або зображення для вашої теми. Це зображення "
+"буде показано в спливаючих підказках діалогу керування теми, а також буде "
+"видно при установці пакети теми, якщо ви надалі захочете його створити."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:170
 msgid "Make Screenshot Now"
@@ -394,4 +395,3 @@ msgstr "Тема успішно збережена в "
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:296
 msgid "Save Theme - KVIrc"
 msgstr "Зберегти тему - KVIrc"
-
