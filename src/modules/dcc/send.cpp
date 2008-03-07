@@ -135,8 +135,10 @@ void KviDccRecvThread::updateStats()
 	m_pMutex->lock();
 	unsigned long uElapsedTime = uCurTime - m_uStartTime;
 	if(uElapsedTime < 1)uElapsedTime = 1;
+
 	m_iFilePosition = m_pFile->at();
 	m_iAverageSpeed = m_iTotalReceivedBytes / uElapsedTime;
+
 	if(m_uInstantSpeedInterval > INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS)
 	{
 		unsigned int uMSecsOfTheNextInterval = 0;
@@ -332,6 +334,8 @@ void KviDccRecvThread::run()
 						if(!handleInvalidSocketRead(readLen))break;
 					}
 				} else {
+					updateStats();
+
 					// reached the bandwidth limit: slow down a bit
 					if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS - 100))
 						msleep(100);
@@ -373,6 +377,7 @@ void KviDccRecvThread::run()
 			// include the artificial delay if needed
 			if(m_pOpt->iIdleStepLengthInMSec > 0)
 			{
+				debug("LOOP: artificial delay");
 				msleep(m_pOpt->iIdleStepLengthInMSec);
 			}
 		} else {
