@@ -2556,7 +2556,7 @@ got_url:
 	// [] and () are used in ed2k links often
 
 	// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
-	while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '\'') && (*p != '>') &&
+	while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
 			(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))p++;
 
 	if(m_pKviWindow)
@@ -4188,199 +4188,203 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 
 	while(iTop > yPos)
 	{
-		if(l)
-		{
-			iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
-			if(iTop <= yPos)
-			{
-				// got the right KviIrcViewLine
-				int iLeft = KVI_IRCVIEW_HORIZONTAL_BORDER;
-				if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
-				int firstRowTop = iTop;
-				int i = 0;
+		if(!l)return 0;
 
+		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+
+		if(iTop > yPos)
+		{
+			// still below the mouse
+			l = l->pPrev;
+			continue;
+		}
+		
+		// got the right KviIrcViewLine
+		int iLeft = KVI_IRCVIEW_HORIZONTAL_BORDER;
+		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
+		int firstRowTop = iTop;
+		int i = 0;
+
+		for(;;)
+		{
+			if(yPos <= iTop + m_iFontLineSpacing)
+			{
+				// exactly this row of this line
+				if(iTop != firstRowTop)
+					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))iLeft+=m_iWrapMargin;
+				if(xPos < iLeft)return 0;
+				int iBlockWidth = 0;
+				int iLastEscapeBlock = -1;
+				int iLastEscapeBlockTop = -1;
 				for(;;)
 				{
-					if(yPos <= iTop + m_iFontLineSpacing)
+					int iLastLeft = iLeft;
+					if(i >= l->iBlockCount)return 0;
+					if(l->pBlocks[i].pChunk)
+						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
+						{
+						 iLastEscapeBlock=i;
+						 iLastEscapeBlockTop=iTop;
+						}
+					if(l->pBlocks[i].pChunk)
+						if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
+					if(l->pBlocks[i].block_width > 0)
 					{
-						// this row!!!
-						if(iTop != firstRowTop)
-							if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))iLeft+=m_iWrapMargin;
-						if(xPos < iLeft)return 0;
-						int iBlockWidth = 0;
-						int iLastEscapeBlock = -1;
-						int iLastEscapeBlockTop = -1;
-						for(;;)
-						{
-							int iLastLeft = iLeft;
-							if(i >= l->iBlockCount)return 0;
-							if(l->pBlocks[i].pChunk)
-								if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
-								{
-								 iLastEscapeBlock=i;
-								 iLastEscapeBlockTop=iTop;
-								}
-							if(l->pBlocks[i].pChunk)
-								if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
-							if(l->pBlocks[i].block_width > 0)
-							{
-								iBlockWidth = l->pBlocks[i].block_width;
-								iLeft += iBlockWidth;
-							} else {
-								if(i < (l->iBlockCount - 1))
-								{
-									// There is another block...
-									// Check if it is a wrap...
-									if(l->pBlocks[i+1].pChunk == 0)
-									{
-										iBlockWidth = width() - iLastLeft;
-										iLeft = width();
-									}
-									// else simply a zero characters block
-								}
-							}
-							if(xPos < iLeft)
-							{
-								// Got it!
-								// link ?
-								bool bHadWordWraps = false;
-								while(l->pBlocks[i].pChunk == 0)
-								{
-									// word wrap ?
-									if(i >= 0)
-									{
-										i--;
-										bHadWordWraps = true;
-									} else return 0; // all word wraps ?!!!
-								}
-								if(iLastEscapeBlock != -1)
-								{
- 									int iLeftBorder=iLeft;
-									int k;
-									for(k = i ; k>=iLastEscapeBlock ; k--)
-										iLeftBorder-=l->pBlocks[k].block_width;
-									int iRightBorder=0;
-									unsigned int uLineWraps = 0;
-									for(k = iLastEscapeBlock;; k++)
-									{
-										if(l->pBlocks[k].pChunk)
-											if(l->pBlocks[k].pChunk->type != KVI_TEXT_UNESCAPE)
-												iRightBorder+=l->pBlocks[k].block_width;
-											else
-												break;
-										else
-										{
-											uLineWraps++;
-											bHadWordWraps=1;
-										}
-									}
-									if(pRect)
-									{
-										*pRect = QRect(iLeftBorder,
-												bHadWordWraps ? iLastEscapeBlockTop : iTop,
-												iRightBorder,
-												((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
-									}
-									if(linkCmd)
-									{
-										linkCmd->setUnicodeCodes(l->pBlocks[iLastEscapeBlock].pChunk->szPayload,kvi_wstrlen(l->pBlocks[iLastEscapeBlock].pChunk->szPayload));
-										linkCmd->stripWhiteSpace();
-										if((*linkCmd)=="nc") (*linkCmd)="n";
-									}
-									if(linkText)
-									{
-										QString szLink;
-										int iEndOfLInk = iLastEscapeBlock;
-										while(1)
-										{
-											if(l->pBlocks[iEndOfLInk].pChunk)
-												if(l->pBlocks[iEndOfLInk].pChunk->type != KVI_TEXT_UNESCAPE)
-												{
-													switch(l->pBlocks[iEndOfLInk].pChunk->type)
-													{
-														case KVI_TEXT_BOLD:
-														case KVI_TEXT_UNDERLINE:
-														case KVI_TEXT_REVERSE:
-														case KVI_TEXT_RESET:
-															szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
-														break;
-														case KVI_TEXT_COLOR:
-															szLink.append(QChar(KVI_TEXT_COLOR));
-															if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KVI_NOCHANGE)
-															{
-																szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));
-															}
-															if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KVI_NOCHANGE)
-															{
-																szLink.append(QChar(','));
-																szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.back)));
-															}
-														break;
-													}
-													szLink.append(l->szText.mid(l->pBlocks[iEndOfLInk].block_start,l->pBlocks[iEndOfLInk].block_len));
-												} else
-													break;
-											iEndOfLInk++;
-											
-										}
-										*linkText=szLink;
-										// grab the rest of the link visible string
-										// Continue while we do not find a non word wrap block block
-										for(int bufIndex = (i + 1);bufIndex < l->iBlockCount;bufIndex++)
-										{
-											if(l->pBlocks[bufIndex].pChunk ) break; //finished : not a word wrap
-											else {
-												linkText->append(l->szText.mid(l->pBlocks[bufIndex].block_start,l->pBlocks[bufIndex].block_len));
-											}
-										}
-									}
-									return &(l->pBlocks[iLastEscapeBlock]);
-								}
-								if(l->pBlocks[i].pChunk->type == KVI_TEXT_ICON)
-								{
-									if(pRect)
-									{
-										*pRect = QRect(iLastLeft,
-												bHadWordWraps ? firstRowTop : iTop,
-												iBlockWidth,
-												((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
-									}
-									if(linkCmd)
-									{
-										*linkCmd = "[!txt]";
-										QString tmp;
-										tmp.setUnicodeCodes(l->pBlocks[i].pChunk->szPayload,kvi_wstrlen(l->pBlocks[i].pChunk->szPayload));
-										linkCmd->append(tmp);
-										linkCmd->stripWhiteSpace();
-									}
-									if(linkText)
-									{
-										*linkText = "";
-									}
-									return &(l->pBlocks[i]);
-								}
-								return 0;
-							}
-							i++;
-						}
+						iBlockWidth = l->pBlocks[i].block_width;
+						iLeft += iBlockWidth;
 					} else {
-						// run until a word wrap block
-						i++; //at least one block!
-						while(i < l->iBlockCount)
+						if(i < (l->iBlockCount - 1))
 						{
-							// still ok to run right
-							if(l->pBlocks[i].pChunk == 0)
+							// There is another block...
+							// Check if it is a wrap...
+							if(l->pBlocks[i+1].pChunk == 0)
 							{
-//								i++;
-								break;
-							} else i++;
+								iBlockWidth = width() - iLastLeft;
+								iLeft = width();
+							}
+							// else simply a zero characters block
 						}
-						if(i >= l->iBlockCount)return 0;
-						iTop += m_iFontLineSpacing;
 					}
+					if(xPos < iLeft)
+					{
+						// Got it!
+						// link ?
+						bool bHadWordWraps = false;
+						while(l->pBlocks[i].pChunk == 0)
+						{
+							// word wrap ?
+							if(i >= 0)
+							{
+								i--;
+								bHadWordWraps = true;
+							} else return 0; // all word wraps ?!!!
+						}
+						if(iLastEscapeBlock != -1)
+						{
+ 									int iLeftBorder=iLeft;
+							int k;
+							for(k = i ; k>=iLastEscapeBlock ; k--)
+								iLeftBorder-=l->pBlocks[k].block_width;
+							int iRightBorder=0;
+							unsigned int uLineWraps = 0;
+							for(k = iLastEscapeBlock;; k++)
+							{
+								if(l->pBlocks[k].pChunk)
+									if(l->pBlocks[k].pChunk->type != KVI_TEXT_UNESCAPE)
+										iRightBorder+=l->pBlocks[k].block_width;
+									else
+										break;
+								else
+								{
+									uLineWraps++;
+									bHadWordWraps=1;
+								}
+							}
+							if(pRect)
+							{
+								*pRect = QRect(iLeftBorder,
+										bHadWordWraps ? iLastEscapeBlockTop : iTop,
+										iRightBorder,
+										((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+							}
+							if(linkCmd)
+							{
+								linkCmd->setUnicodeCodes(l->pBlocks[iLastEscapeBlock].pChunk->szPayload,kvi_wstrlen(l->pBlocks[iLastEscapeBlock].pChunk->szPayload));
+								linkCmd->stripWhiteSpace();
+								if((*linkCmd)=="nc") (*linkCmd)="n";
+							}
+							if(linkText)
+							{
+								QString szLink;
+								int iEndOfLInk = iLastEscapeBlock;
+								while(1)
+								{
+									if(l->pBlocks[iEndOfLInk].pChunk)
+										if(l->pBlocks[iEndOfLInk].pChunk->type != KVI_TEXT_UNESCAPE)
+										{
+											switch(l->pBlocks[iEndOfLInk].pChunk->type)
+											{
+												case KVI_TEXT_BOLD:
+												case KVI_TEXT_UNDERLINE:
+												case KVI_TEXT_REVERSE:
+												case KVI_TEXT_RESET:
+													szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
+												break;
+												case KVI_TEXT_COLOR:
+													szLink.append(QChar(KVI_TEXT_COLOR));
+													if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KVI_NOCHANGE)
+													{
+														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));
+													}
+													if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KVI_NOCHANGE)
+													{
+														szLink.append(QChar(','));
+														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.back)));
+													}
+												break;
+											}
+											szLink.append(l->szText.mid(l->pBlocks[iEndOfLInk].block_start,l->pBlocks[iEndOfLInk].block_len));
+										} else
+											break;
+									iEndOfLInk++;
+									
+								}
+								*linkText=szLink;
+								// grab the rest of the link visible string
+								// Continue while we do not find a non word wrap block block
+								for(int bufIndex = (i + 1);bufIndex < l->iBlockCount;bufIndex++)
+								{
+									if(l->pBlocks[bufIndex].pChunk ) break; //finished : not a word wrap
+									else {
+										linkText->append(l->szText.mid(l->pBlocks[bufIndex].block_start,l->pBlocks[bufIndex].block_len));
+									}
+								}
+							}
+							return &(l->pBlocks[iLastEscapeBlock]);
+						}
+						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ICON)
+						{
+							if(pRect)
+							{
+								*pRect = QRect(iLastLeft,
+										bHadWordWraps ? firstRowTop : iTop,
+										iBlockWidth,
+										((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+							}
+							if(linkCmd)
+							{
+								*linkCmd = "[!txt]";
+								QString tmp;
+								tmp.setUnicodeCodes(l->pBlocks[i].pChunk->szPayload,kvi_wstrlen(l->pBlocks[i].pChunk->szPayload));
+								linkCmd->append(tmp);
+								linkCmd->stripWhiteSpace();
+							}
+							if(linkText)
+							{
+								*linkText = "";
+							}
+							return &(l->pBlocks[i]);
+						}
+						return 0;
+					}
+					i++;
 				}
-			} else l = l->pPrev;
-		} else return 0;
+			} else {
+				// run until a word wrap block
+				i++; //at least one block!
+				while(i < l->iBlockCount)
+				{
+					// still ok to run right
+					if(l->pBlocks[i].pChunk == 0)
+					{
+//								i++;
+						break;
+					} else i++;
+				}
+				if(i >= l->iBlockCount)return 0;
+				iTop += m_iFontLineSpacing;
+			}
+		}
 	}
 	return 0;
 }
