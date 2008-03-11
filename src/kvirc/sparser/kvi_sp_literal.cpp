@@ -1761,7 +1761,8 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 
 #define CHANUSER_MODE(__modechar,__chanfunc,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modechar: \
-				if(msg->connection()->serverInfo()->isSupportedModeFlag(__modechar)) { \
+				if(msg->connection()->serverInfo()->isSupportedModeFlag(__modechar)) \
+				{ \
 					aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
 					chan->__chanfunc(aParam,bSet); \
 					bIsMe = IS_ME(msg,aParam); \
@@ -1778,7 +1779,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"), \
 							&nickBuffer,&szUser,&hostBuffer,bSet ? '+' : '-',__modechar,&aParam); \
 					} \
-			} else {\
+				} else {\
 					chan->setChannelMode(__modechar,bSet);\
 					if(!(msg->haltOutput() || KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges)))\
 					{\

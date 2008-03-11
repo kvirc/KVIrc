@@ -164,7 +164,11 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 		while(*aux)
 		{
 			tmp = msg->connection()->serverInfo()->getUserModeDescription(*aux);
-			if(tmp.isNull()) tmp = __tr2qs(": Unknown user mode");
+			if(tmp.isEmpty())
+			{
+				QString tmp2 = __tr2qs(": Unknown user mode");
+				KviQString::sprintf(tmp,"%c: %Q",*aux,&tmp2);
+			}
 			
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
 			aux++;
@@ -174,14 +178,11 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 
 		aux = chanmodes.ptr();
 
-		if(!_OUTPUT_MUTE)
+		while(*aux)
 		{
-			while(*aux)
-			{
-				KviQString::sprintf(tmp,"%c: %Q",*aux,&(msg->connection()->serverInfo()->getChannelModeDescription(*aux)));
-				msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
-				aux++;
-			}
+			KviQString::sprintf(tmp,"%c: %Q",*aux,&(msg->connection()->serverInfo()->getChannelModeDescription(*aux)));
+			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
+			aux++;
 		}
 	}
 

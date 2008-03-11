@@ -141,7 +141,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 	if(!m_pModePrefixTable) return false;
 	for(int i=0;i<m_uPrefixes;i++)
 	{
-		if(m_pModePrefixTable[i*3+1]==c.unicode()) return true;
+		if(m_pModePrefixTable[(i*3)+1]==c.unicode()) return true;
 	}
 	return false;
 }
