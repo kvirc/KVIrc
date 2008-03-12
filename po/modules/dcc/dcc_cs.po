@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 22:04+0100\n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -197,14 +197,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "Lokální IP adresa je privátní, zjišťuji z IRC serveru: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:209
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1507
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1512
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "Lokální IP adresa je privátní, ale nemohu ji zjistit z IRC serveru"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1515
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
@@ -220,12 +220,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q požadavek nebyl odeslán, očekává se manuální připojení"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:245
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1569
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1574
 msgid "Low-level transport connection established"
 msgstr "Nízkoúrovňové přenosové spojení navázáno"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:246
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1570
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1575
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Startuji SSL spojení"
 
@@ -425,8 +425,8 @@ msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Určen nesprávný kodek, nastavuji výchozí na 'adpcm'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1577
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2543
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2563
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2542
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2562
 msgid "The current window has no associated DCC session"
 msgstr "Současné okno nemá asociováno DCC sezení"
 
@@ -438,200 +438,200 @@ msgstr "Určený parametr není platným DCC identifikátorem"
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Tato DCC relace není DCC přenosová relace"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2554
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2553
 msgid "The specified window identifier is not valid"
 msgstr "Určený identifikátor okna je neplatný"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "VAROVÁNÍ: Za koncem souboru jsou posílána data nepatřící k souboru"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
 "VAROVÁNÍ: Ignoruji data za deklarovaným koncem souboru a ukončuji spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:358
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:362
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr ""
 "Přenos dat byl stornován, čekám 30 sekund, než druhá strana uzavře spojení..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Přenos dat byl stornován před 30-ti sekundami, uzavírám spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:600
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 "VAROVÁNÍ: Přijímaná data v DCC TSEND, tady by neměla být žádná potvrzení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:727
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:732
 #, c-format
 msgid "TRANSFER %d"
 msgstr "PŘENOS %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:750
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:755
 msgid "Setting up the connection"
 msgstr "Nastavuji spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:809
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:814
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Pokouším se o pasivní DCC %1 spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:813
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:818
 msgid "Attempting an active DCC %1 connection"
 msgstr "Pokouším se o aktivní DCC %1 spojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:839
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:844
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Zaslán DCC RESUME požadavek na %1, vyčkávám na ACCEPT"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:909
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:920
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:914
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:925
 msgid "Aborted"
 msgstr "Přerušeno"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:919
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1598
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1673
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:924
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1603
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1678
 msgid "Transfer failed: "
 msgstr "Přenos selhal: "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:931
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:936
 msgid "Configure Bandwidth..."
 msgstr "Konfigurovat přenosové pásmo..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:933
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:938
 msgid "Resend DCC"
 msgstr "Znovu poslat DCC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:934
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
 msgid "Resend TDCC"
 msgstr "Znovu poslat TDCC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:935
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:940
 msgid "Resend RevDCC"
 msgstr "Znovu poslat RevDCC"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:944
 msgid "Abort"
 msgstr "Přerušit"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1135
 msgid "From: "
 msgstr "Od:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1136
 msgid "To: "
 msgstr "k:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1234
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1241
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1239
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1246
 msgid "%1 of %2 (%3%)"
 msgstr "%1 z %2 (%3%)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1245
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1250
 msgid "%1"
 msgstr "%1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1263
 msgid "Spd:"
 msgstr "Rych:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1273
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1278
 msgid "Avg:"
 msgstr "Prům:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1344
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1349
 msgid "Transfer Log"
 msgstr "Log Přenosů"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1475
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1480
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuji hosta %1 na portu %2"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1482
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1487
 msgid "Listening on interface %1 port %2"
 msgstr "Naslouchám na rozhraní %1 port %2"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1505
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Lokální IP adresa je privátní, určuji z IRC serveru: %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1556
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1561
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "Zaslán DCC %1 požadavek na %2, očekávám připojení vzdáleného klienta..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1558
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1563
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 požadavek nebyl odeslán, očekávám manuální připojení"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1577
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1582
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL CHYBA]: %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1620
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1625
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s přenos s %Q@%Q:%Q kompletní: \r![!dbl]play $0\r%s\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1635
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1640
 msgid "Transfer completed"
 msgstr "Přenos kompletní"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1682
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1687
 msgid "Connected to %1:%2"
 msgstr "Připojen k %1:%2"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1683
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1688
 msgid "Local end is %1:%2"
 msgstr "Lokální konec je %1:%2"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1727
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1732
 msgid "Transferring data"
 msgstr "Přenáším data"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1753
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1758
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME přijato, přenos začne na pozici %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1784
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
 msgid "Internal error in RESUME request"
 msgstr "Vnitřní chyba v RESUME požadavku"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1794
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Nesprávný RESUME požadavek: Pozice %1 je větší než velikost souboru"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1793
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1798
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Přijímám RESUME požadavek, přenos začne na pozici %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1825
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1830
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1833
 msgid "Limit upload bandwidth to"
 msgstr "Omezit odchozí šířku pásma na"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1833
 msgid "Limit download bandwidth to"
 msgstr "Omezit příchozí šířku pásma na"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1841
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1846
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1845
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
 msgid "OK"
 msgstr "OK"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1855
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:142
 msgid "Cancel"
 msgstr "Zrušit"

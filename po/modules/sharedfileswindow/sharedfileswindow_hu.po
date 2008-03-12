@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-03 09:05+0100\n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
 "PO-Revision-Date: 2008-03-03 10:03+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,43 +16,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
+msgid "Manage S&hared Files"
+msgstr "Megosztott fájlok kezelése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
 msgid "Edit Shared File - KVIrc"
 msgstr "Megosztott fájl szerkesztése - KVIrc"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
 msgid "Share name:"
 msgstr "Megosztási név:"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
 msgid "File path:"
 msgstr "Fájl útvonala:"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
 msgid "&Browse..."
 msgstr "&Böngészés..."
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
 msgid "User mask:"
 msgstr "Felhasználó maszk:"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
 msgid "Expire at:"
 msgstr "Lejár:"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
 msgid "&OK"
 msgstr "&OK"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
 msgid "Invalid expire time"
 msgstr "Helytelen lejárati idő"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
 msgid ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
@@ -60,65 +64,61 @@ msgstr ""
 "A lejárati idő/dátum a múltban van, kérlek ne használd a lejárati időt vagy "
 "adj meg helyes, jövőbeli időt/dátumot."
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
 msgid "OK"
 msgstr "OK"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
 msgid "Invalid share name"
 msgstr "Helytelen megosztási név"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
 msgid "The share name can't be empty, please correct it"
 msgstr "A megosztási név nem lehet üres, kérlek javítsd"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
 msgid "Can't open the file"
 msgstr "Fájl nem nyitható meg"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
 msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr "A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
+msgstr ""
+"A fájl nem létezik, vagy nem olvasható: kérlek ellenőrízd az elérési utat"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
 msgid "Never"
 msgstr "Soha"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
 msgid "Name"
 msgstr "Név"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
 msgid "Filename"
 msgstr "Fájlnév"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
 msgid "Mask"
 msgstr "Maszk"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
 msgid "Expires"
 msgstr "Lejárat"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
 msgid "&Add..."
 msgstr "Hozzáadás"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
 msgid "Re&move"
 msgstr "Eltávolítás"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
 msgid "&Edit"
 msgstr "Szerkesztés"
 
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
 msgid "Shared Files"
 msgstr "Megosztott Fájlok"
-
-#: /home/fiber/kvircsvn/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
-msgid "Manage S&hared Files"
-msgstr "Megosztott fájlok kezelése"
-

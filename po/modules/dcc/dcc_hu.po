@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 22:04+0100\n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -200,14 +200,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "A helyi IP magáncím, meghatározás az IRC-szerver által: %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:209
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1507
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1512
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "A helyi IP privát cím, de az IRC szerver által nem lehet meghatározni"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1515
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
@@ -223,12 +223,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q kérés küldése sikertelen, manuális kapcsolat szükséges"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:245
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1569
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1574
 msgid "Low-level transport connection established"
 msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:246
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1570
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1575
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL kézfogás megkezdése"
 
@@ -426,8 +426,8 @@ msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Helytelen kodek meghatározása, váltás 'adpcm'-re"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1577
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2543
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2563
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2542
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2562
 msgid "The current window has no associated DCC session"
 msgstr "Az aktuális ablaknak nincs hozzárendelt DCC 'session'-ja"
 
@@ -439,15 +439,15 @@ msgstr "A megadott paraméterek nem érvényes DCC azonosítók"
 msgid "This DCC session is not a DCC transfer session"
 msgstr "Ez a DCC kapcsolat nem DCC átviteli kapcsolat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2554
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2553
 msgid "The specified window identifier is not valid"
 msgstr "A megadott ablak azonosító nem érvényes"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "FIGYELMEZTETÉS: A peer szemét adatot küldött a fájl végén"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
@@ -455,7 +455,7 @@ msgstr ""
 "FIGYELMEZTETÉS: Fájlvég után további bejövő adatok mellőzése, kapcsolat "
 "lezárása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:358
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:362
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
@@ -463,180 +463,180 @@ msgstr ""
 "Adatátvitel megszakítva, 30 másodperc várkozás a peerre, hogy zárja a "
 "kapcsolatot..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:600
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 "FIGYELMEZTETÉS: beérkező adat DCC TSEND-ként, nem kellene elismervénynek "
 "lennie"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:727
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:732
 #, c-format
 msgid "TRANSFER %d"
 msgstr "ADATÁTVITEL: %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:750
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:755
 msgid "Setting up the connection"
 msgstr "Kapcsolat beállítása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:809
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:814
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Passzív DCC %1 kapcsolat létrehozása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:813
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:818
 msgid "Attempting an active DCC %1 connection"
 msgstr "Aktív DCC %1 kapcsolat létrehozása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:839
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:844
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC RESUME elküldve, kérés %1 felé, várakozás Elfogadásra"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:909
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:920
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:914
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:925
 msgid "Aborted"
 msgstr "Megszakítva"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:919
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1598
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1673
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:924
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1603
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1678
 msgid "Transfer failed: "
 msgstr "Adatátvitel megszakadt: "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:931
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:936
 msgid "Configure Bandwidth..."
 msgstr "Sávszélesség beállítása..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:933
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:938
 msgid "Resend DCC"
 msgstr "DCC újraküldés"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:934
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
 msgid "Resend TDCC"
 msgstr "TDCC újraküldés"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:935
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:940
 msgid "Resend RevDCC"
 msgstr "RevDCC újraküldés"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:939
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:944
 msgid "Abort"
 msgstr "Megszakítás"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1135
 msgid "From: "
 msgstr "Feladó: "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1136
 msgid "To: "
 msgstr "Címzett:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1234
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1241
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1239
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1246
 msgid "%1 of %2 (%3%)"
 msgstr "%2 van hátra %1 bájtból (%3%)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1245
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1250
 msgid "%1"
 msgstr "%1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1263
 msgid "Spd:"
 msgstr "Seb:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1273
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1278
 msgid "Avg:"
 msgstr "Átl:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1344
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1349
 msgid "Transfer Log"
 msgstr "Adatátviteli napló"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1475
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1480
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1482
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1487
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1505
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "A helyi IP magáncím, meghatárizás az IRC szerverrel: %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1556
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1561
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1558
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1563
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 kérés nem lett elküldve, manuális kapcsolódás szükséges"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1577
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1582
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL HIBA]: %1"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1620
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1625
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s adatátvitel %Q@%Q:%Q felől, kész: \r![!dbl]play $0\r%s\r"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1635
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1640
 msgid "Transfer completed"
 msgstr "Adatátvitel kész"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1682
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1687
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1683
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1688
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1727
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1732
 msgid "Transferring data"
 msgstr "Adatátvitel"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1753
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1758
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME(folytatás) elfogadva, az átvitel %1 pozíciótól kezdődik"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1784
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
 msgid "Internal error in RESUME request"
 msgstr "Belső hiba RESUME (folytatás) kérésnél"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1789
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1794
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1793
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1798
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Elfogadott RESUME (folytatás), adatátvitel %1 pozíciótól kezdődik"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1825
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1830
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1833
 msgid "Limit upload bandwidth to"
 msgstr "Feltöltési sávszélesség korlátozása "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1828
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1833
 msgid "Limit download bandwidth to"
 msgstr "Letöltési sávszélesség korlátozása"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1841
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1846
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1845
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
 msgid "OK"
 msgstr "OK"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1850
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1855
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/dialogs.cpp:142
 msgid "Cancel"
 msgstr "Mégsem"

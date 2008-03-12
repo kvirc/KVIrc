@@ -2,16 +2,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ahinu <ahinu@wanadoo.fr>, 2004, 2005.
 # Ahinu <ahinu@wanadoo.net>, 2005.
 # Ahinu <ahinu.laman@gmail.com>, 2006.
 # Elephantman <elephantman@europnet.org>, 2008.
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-25 22:04+0100\n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -264,7 +264,8 @@ msgstr "Le champ du Pseudo ne doit pas contenir d'espaces !"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr "Le masque de NickServ ne peut être vide !<br>Vous devez y mettre au moins *."
+msgstr ""
+"Le masque de NickServ ne peut être vide !<br>Vous devez y mettre au moins *."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -1186,7 +1187,8 @@ msgid "Server:"
 msgstr "Serveur :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid "<center>This is the name of the currently selected server or network</center>"
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Il s'agit du nom du serveur ou réseau actuellement selectionné</"
 "center>"
@@ -1197,14 +1199,16 @@ msgstr "Avancée..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1156
 msgid "<center>Click here to edit advanced options for this entry</center>"
-msgstr "<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
+msgstr ""
+"<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1159
 msgid "Connect &Now"
 msgstr "Se Connecter &Maintenant"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Cliquez sur ce bouton pour vous connecter au serveur actuellement "
 "selectionné.</center>"
@@ -1441,7 +1445,8 @@ msgstr ""
 "aléatoire ou une phrase particulière.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "Ce champ est optionnel et apparaîtra dans la réponse au CTCP USERINFO."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
@@ -1531,12 +1536,13 @@ msgid ""
 "of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
-"Vous pouvez choisir ici votre avatar. Il sera visible<br>par les utilisateurs qui le "
-"réclament. Choisissez une image sympa,<br>si possible en évitant les images "
-"obcènes ou offensantes. C'est une bonne idée<br>de choisir un fichier "
-"relativement petit (par exemple 150Kb max) parce que<br>la plupart des clients "
-"ont une limite sur la taille des avatars téléchargés.<br>L'image doit aussi être "
-"plus petite que 800x600 pixels<br>pour être visible sur tous les écrans."
+"Vous pouvez choisir ici votre avatar. Il sera visible<br>par les "
+"utilisateurs qui le réclament. Choisissez une image sympa,<br>si possible en "
+"évitant les images obcènes ou offensantes. C'est une bonne idée<br>de "
+"choisir un fichier relativement petit (par exemple 150Kb max) parce "
+"que<br>la plupart des clients ont une limite sur la taille des avatars "
+"téléchargés.<br>L'image doit aussi être plus petite que 800x600 "
+"pixels<br>pour être visible sur tous les écrans."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:511
 msgid "Use avatar"
@@ -1582,9 +1588,10 @@ msgid ""
 msgstr ""
 "L'avatar que vous avez choisi est plus grand que 1024x768 pixels.<br>Une si "
 "grande image ne sera pas visible sur tous les écrans<br>et sera probablement "
-"redimensionné part les clients distants avec un algorythme<br>de faible qualité "
-"pour accroitre la performance. Vous *devez* le redimensionner manuellement<br> "
-"à une dimension saine (par exemple 800x600) ou choisir une autre image."
+"redimensionné part les clients distants avec un algorythme<br>de faible "
+"qualité pour accroitre la performance. Vous *devez* le redimensionner "
+"manuellement<br> à une dimension saine (par exemple 800x600) ou choisir une "
+"autre image."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:688
 msgid "Default Messages"
@@ -1847,7 +1854,8 @@ msgstr "Mise à l'échelle dans la liste d'utilisateurs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:41
 msgid "Scale avatar images in userlist (recommended)"
-msgstr "Redimensionner les images d'avatar dans la liste d'utilisateurs (recommandé)"
+msgstr ""
+"Redimensionner les images d'avatar dans la liste d'utilisateurs (recommandé)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:43
 msgid ""
@@ -2440,18 +2448,18 @@ msgid ""
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
-"Cette boîte de dialogue contient une série de réglages de KVIrc.<br>Utiliser les "
-"icônes de gauche pour naviguer dans les options. La boîte de texte en bas à gauche "
-"est un petit moteur de recherche. Il mettra en surbrillance les pages qui contiennent "
-"des options liées à votre recherche."
+"Cette boîte de dialogue contient une série de réglages de KVIrc.<br>Utiliser "
+"les icônes de gauche pour naviguer dans les options. La boîte de texte en "
+"bas à gauche est un petit moteur de recherche. Il mettra en surbrillance les "
+"pages qui contiennent des options liées à votre recherche."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:147
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
-"De nombreux réglages ont des infobulles qui peuvent s'afficher en laissant la souris "
-"dessus pendant quelques secondes."
+"De nombreux réglages ont des infobulles qui peuvent s'afficher en laissant "
+"la souris dessus pendant quelques secondes."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:152
 msgid ""
@@ -2459,9 +2467,9 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
-"Lorsque vous avez fini, cliquez sur \"<b>OK</b>\" pour accepter les changements "
-"ou \"<b>Annuler</b>\" pour ne pas les conserver. Cliquez sur \"<b>Appliquer</b>\" "
-"mettra en place les changements sans fermer la fenêtre."
+"Lorsque vous avez fini, cliquez sur \"<b>OK</b>\" pour accepter les "
+"changements ou \"<b>Annuler</b>\" pour ne pas les conserver. Cliquez sur "
+"\"<b>Appliquer</b>\" mettra en place les changements sans fermer la fenêtre."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:217
 msgid ""
@@ -2471,10 +2479,11 @@ msgid ""
 "search term will be highlighted and you will be able to quickly find them.</"
 "p><p>Try \"nickname\" for example.</p>"
 msgstr ""
-"<p>Ceci est l'outil de recherche pour cette fenêtre d'options.</p><p>Vous pouvez "
-"entrer un mot clé, soit dans votre langue, soit en anglais puis cliquer sur le bouton à droite. "
-"Les pages qui contiennent quelques options liées au mot clé seront alors mises en "
-"surbrillance et vous pourrez les trouver rapidement.</p><p>Essayez par exemple \"Pseudo\".</p>"
+"<p>Ceci est l'outil de recherche pour cette fenêtre d'options.</p><p>Vous "
+"pouvez entrer un mot clé, soit dans votre langue, soit en anglais puis "
+"cliquer sur le bouton à droite. Les pages qui contiennent quelques options "
+"liées au mot clé seront alors mises en surbrillance et vous pourrez les "
+"trouver rapidement.</p><p>Essayez par exemple \"Pseudo\".</p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:249
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:61
@@ -2541,7 +2550,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:63
 msgid "Flash the system taskbar entry on highlighted messages"
-msgstr "Flasher l'entrée dans la barre de tâche système en cas de message surligné"
+msgstr ""
+"Flasher l'entrée dans la barre de tâche système en cas de message surligné"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:65
 msgid ""
@@ -2631,7 +2641,8 @@ msgid "Minimum alert level:"
 msgstr "Niveau d'alerte minimal :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid ""
+"<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Cette option spécifie le niveau d'alerte minimal pour la barre de "
 "tâche.</center>"
@@ -3006,7 +3017,8 @@ msgstr "Activer le service pour IPV6"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:258
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
-msgstr "La pile d'IP considère IPV4 comme une partie de l'espace de noms d'IPV6"
+msgstr ""
+"La pile d'IP considère IPV4 comme une partie de l'espace de noms d'IPV6"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:265
 msgid ""
@@ -3108,10 +3120,10 @@ msgid ""
 "your servers are not organized in networks or you often connect to two "
 "servers of the same network.</center>"
 msgstr ""
-"<center>Cette option fera afficher le nom du réseau sur la barre de tâches de "
-"la console au lieu du nom du serveur. C'est bien de laisser cette option à part "
-"si vos serveurs ne sont pas organisés en réseaux, ou si vous vous connectez "
-"souvent à plusieurs serveurs sur le même réseau.</center>"
+"<center>Cette option fera afficher le nom du réseau sur la barre de tâches "
+"de la console au lieu du nom du serveur. C'est bien de laisser cette option "
+"à part si vos serveurs ne sont pas organisés en réseaux, ou si vous vous "
+"connectez souvent à plusieurs serveurs sur le même réseau.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:75
 msgid "Force immediate quit"
@@ -3200,10 +3212,9 @@ msgid ""
 "minimized.<br>Enable this if you don't like channels popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Cette option entraîne la réductionimmédiate de toutes les fenêtre "
-"de salon.<br>Activez-la si vous n'aimez pas que les "
-"fenêtres surgissent quand vous êtes en train d'ecrire quelque chose sur un "
-"salon. :D</center>"
+"<center>Cette option entraîne la réductionimmédiate de toutes les fenêtre de "
+"salon.<br>Activez-la si vous n'aimez pas que les fenêtres surgissent quand "
+"vous êtes en train d'ecrire quelque chose sur un salon. :D</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:168
 msgid "Log joined channels history"
@@ -3272,7 +3283,9 @@ msgstr "Forcer l'utilisation d'une langue :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "<b>Attention :</b>Vous devez redémarrer KVIrc pour appliquer le changement de langue"
+msgstr ""
+"<b>Attention :</b>Vous devez redémarrer KVIrc pour appliquer le changement "
+"de langue"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -3442,7 +3455,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:144
 msgid "Notify failed DCC handshakes to the remote end"
-msgstr "Signaler au client distant quand une connexion DCC ne peut être acceptée"
+msgstr ""
+"Signaler au client distant quand une connexion DCC ne peut être acceptée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:147
 msgid ""
@@ -3541,7 +3555,9 @@ msgstr "Effacer le transfert automatiquement"
 msgid ""
 "<center>This option will cause succesfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
-msgstr "<center>Cette option retire automatiquement les transferts terminés de la fenêtre de transfert.</center>"
+msgstr ""
+"<center>Cette option retire automatiquement les transferts terminés de la "
+"fenêtre de transfert.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
@@ -3749,7 +3765,8 @@ msgstr "Les notices privées/de salon"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:44
 msgid "Use verbose ignore (show messages in console)"
-msgstr "Utiliser la signalisation des ignores (montrer les messages dans la console)"
+msgstr ""
+"Utiliser la signalisation des ignores (montrer les messages dans la console)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:64
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:46
@@ -4427,4 +4444,3 @@ msgstr "Privés"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "chat"
-

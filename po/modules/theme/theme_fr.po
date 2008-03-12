@@ -2,13 +2,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 # Elephantman <elephantman@europnet.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: theme_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-06 18:30+0100\n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
 "PO-Revision-Date: 2008-03-06 19:12+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -19,11 +18,14 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:50
 msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide"
+msgstr ""
+"Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:70
 msgid "The selected file does not seem to be a valid KVIrc package: %Q"
-msgstr "Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide : %Q"
+msgstr ""
+"Le fichier sélectionné ne semble pas être un paquet de thème KVIrc valide : %"
+"Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:118
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:316
@@ -42,7 +44,9 @@ msgstr "Créé avec"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:200
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
-msgstr "Avertissement : Le thème pourrait être incompatible avec cette version de KVIrc"
+msgstr ""
+"Avertissement : Le thème pourrait être incompatible avec cette version de "
+"KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/themefunctions.cpp:209
 msgid "Go Back to Package Data"
@@ -114,8 +118,8 @@ msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
 msgstr ""
-"Cette procédure permet d'exporter le thème sélectionné dans un packet unique. "
-"C'est utile pour diffuser vos thèmes publiquement."
+"Cette procédure permet d'exporter le thème sélectionné dans un packet "
+"unique. C'est utile pour diffuser vos thèmes publiquement."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:132
 msgid ""
@@ -141,9 +145,9 @@ msgid ""
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
 "themes first."
 msgstr ""
-"Ceci est la liste d'informations pour les thèmes que vous êtes en train d'exporter. "
-"Si tout semble OK, cliquez sur \"Suivant\" pour continuer, sinon cliquez que \"Annuler\" "
-"et révisez vos thèmes."
+"Ceci est la liste d'informations pour les thèmes que vous êtes en train "
+"d'exporter. Si tout semble OK, cliquez sur \"Suivant\" pour continuer, sinon "
+"cliquez que \"Annuler\" et révisez vos thèmes."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:203
 msgid "Theme Data"
@@ -154,8 +158,8 @@ msgid ""
 "Here you need to provide informations about you (the packager) and a short "
 "description of the package you're creating."
 msgstr ""
-"Vous devez fournir ici des informations à propos de vous (le créateur du thème) "
-"et une description courte du paquet que vous créez."
+"Vous devez fournir ici des informations à propos de vous (le créateur du "
+"thème) et une description courte du paquet que vous créez."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:220
 msgid "Package Name:"
@@ -186,10 +190,10 @@ msgid ""
 "should be not larger than 300x225. If you don't provide an image a simple "
 "default icon will be used at installation stage."
 msgstr ""
-"Vous pouvez choisir ici l'image qui apparaîtra dans l'interface d'installation "
-"de votre thème. Il peut s'agir d'une icône, d'un logo ou d'une capture d'écran "
-"et elle ne doit pas dépasser 300x225 pixels. Si vous ne fournissez pas d'image, "
-"une icône par défaut sera utilisée."
+"Vous pouvez choisir ici l'image qui apparaîtra dans l'interface "
+"d'installation de votre thème. Il peut s'agir d'une icône, d'un logo ou "
+"d'une capture d'écran et elle ne doit pas dépasser 300x225 pixels. Si vous "
+"ne fournissez pas d'image, une icône par défaut sera utilisée."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:284
 msgid "Icon/Screenshot"
@@ -200,8 +204,8 @@ msgid ""
 "Here you must choose the file name for the theme package. It should have a *."
 "%1 extension."
 msgstr ""
-"Ivi vous devez choisir le nom du fichier pour le paquet du thème. Il doit avoir une "
-"extension *.%1."
+"Ivi vous devez choisir le nom du fichier pour le paquet du thème. Il doit "
+"avoir une extension *.%1."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:306
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
@@ -218,7 +222,8 @@ msgstr "Echec du chargement de l'image sélectionnée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:387
 msgid "Failed to load the selected image: please fix it"
-msgstr "Echec du chargement de l'image sélectionnée : merci de rectifier le problème"
+msgstr ""
+"Echec du chargement de l'image sélectionnée : merci de rectifier le problème"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:461
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/packthemedialog.cpp:473
@@ -231,7 +236,8 @@ msgstr "Erreur pendant l'installation du thème : %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/libkvitheme.cpp:110
 msgid "Choose a file to save the screenshot to"
-msgstr "Choisir le fichier dans lequel vous souhaitez enregistrer la capture d'écran"
+msgstr ""
+"Choisir le fichier dans lequel vous souhaitez enregistrer la capture d'écran"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/libkvitheme.cpp:125
 msgid "Error making screenshot"
@@ -315,9 +321,9 @@ msgid ""
 "will also allow you to manually modify the theme settings and later export "
 "them to a distributable package."
 msgstr ""
-"Cette procédure vous permet d'enregistrer les réglages du thème actuel "
-"dans un dossier unique. C'est utile si vous voulez appliquer d'autres thèmes "
-"ou jouer avec les réglages puis revenir par la suite au thème actuel d'un "
+"Cette procédure vous permet d'enregistrer les réglages du thème actuel dans "
+"un dossier unique. C'est utile si vous voulez appliquer d'autres thèmes ou "
+"jouer avec les réglages puis revenir par la suite au thème actuel d'un "
 "simple clic. Cela vous permettra aussi de modifier manuellement les réglages "
 "du thème pour les exporter dans un paquet distribuable."
 
@@ -326,8 +332,8 @@ msgid ""
 "You will be asked to provide a theme name, a description and, if you want, a "
 "screenshot."
 msgstr ""
-"Vous devrez fournir un nom de thème, une description, et si vous le souhaitez, "
-"une capture d'écran."
+"Vous devrez fournir un nom de thème, une description, et si vous le "
+"souhaitez, une capture d'écran."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:102
 msgid ""
@@ -356,10 +362,10 @@ msgid ""
 "and will be also visible in the package installation dialog if you will "
 "export the theme to a distributable package."
 msgstr ""
-"Ici vous pouvez soit choisir une capture d'écran depuis le disque dur, ou en faire une "
-"maintenant. La capture d'écran sera affichée dans les info-bulles de l'interface de "
-"gestion des thèmes, et sera aussi visible pendant l'installation du thème si vous "
-"l'exportez dans un paquet."
+"Ici vous pouvez soit choisir une capture d'écran depuis le disque dur, ou en "
+"faire une maintenant. La capture d'écran sera affichée dans les info-bulles "
+"de l'interface de gestion des thèmes, et sera aussi visible pendant "
+"l'installation du thème si vous l'exportez dans un paquet."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:170
 msgid "Make Screenshot Now"
@@ -391,7 +397,9 @@ msgstr "Impossible d'enregistrer le thème : %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:286
 msgid "Failed to load the selected screenshot image: please fix it"
-msgstr "Echec du chargement de la capture d'écran choisie : merci de corriger le problème"
+msgstr ""
+"Echec du chargement de la capture d'écran choisie : merci de corriger le "
+"problème"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:293
 msgid "Theme saved successfully to "
@@ -400,4 +408,3 @@ msgstr "Thème enregistré avec succès vers"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/theme/savethemedialog.cpp:296
 msgid "Save Theme - KVIrc"
 msgstr "Enregistrer thème - KVIrc"
-
