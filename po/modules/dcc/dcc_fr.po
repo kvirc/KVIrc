@@ -1,20 +1,21 @@
 # translation of dcc_fr.po to Français
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Ahinu <ahinu.laman@gmail.com>, 2006.
 #
+# Ahinu <ahinu.laman@gmail.com>, 2006.
+# Elephantman <elephantman@europnet.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-25 22:04+0100\n"
-"PO-Revision-Date: 2006-07-31 14:40+0200\n"
-"Last-Translator: Ahinu <ahinu.laman@gmail.com>\n"
-"Language-Team: Français <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2008-03-06 17:50+0100\n"
+"Last-Translator: Elephantman <elephantman@europnet.org>\n"
+"Language-Team: Français <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/descriptor.cpp:70
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:111
@@ -69,8 +70,7 @@ msgstr "Vous serez l'extrémité passive de la connexion.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:284
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
-msgstr ""
-"La connexion aura pour cible la machine <b>%1</b> sur le port <b>%2</b><br>"
+msgstr "La connexion aura pour cible la machine <b>%1</b> sur le port <b>%2</b><br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:289
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:543
@@ -106,22 +106,20 @@ msgid "DCC CANVAS request"
 msgstr "Requête DCC CANVAS"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:502
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> veut vous envoyer le fichier '<b>%4</b>', de taille <b>%5</"
+"<b>%1 [%2@%3]</b> veut vous envoyer le fichier '<b>%4</b>', de <b>%5</"
 "b> octets.<br>La connexion aura pour cible la machine <b>%6</b> sur le port "
 "<b>%7</b>.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:515
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> veut vous envoyer le fichier '<b>%4</b>', de taille <b>%5</"
+"<b>%1 [%2@%3]</b> veut vous envoyer le fichier '<b>%4</b>', de <b>%5</"
 "b> octets.<br>Vous serez l'extrémité passive de la connexion.<br>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:528
@@ -145,28 +143,24 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:557
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr ""
-"Acceptation automatique de la requête DCC %Q de %Q!%Q@%Q pour le fichier %Q"
+msgstr "Acceptation automatique de la requête DCC %Q de %Q!%Q@%Q pour le fichier %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:618
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "Choisir Fichiers à Envoyer - KVIrc"
+msgstr "Choisir Fichiers à Enregistrer - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:631
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr ""
-"Sauvegarde automatique le fichier de DCC %Q %Q en \r![!dbl]play $0\r%Q\r"
+msgstr "Sauvegarde automatique le fichier de DCC %Q %Q en \r![!dbl]play $0\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/broker.cpp:665
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
 "Le fichier '<b>%1</b>' existe déjà et a une taille de <b>%2</b> octets."
-"<br>Désirez-vous <br><b>écrire par dessus</b> le fichier existant,<br> "
+"<br>Désirez-vous <br><b>écraser</b> le fichier existant,<br> "
 "<b>renommer automatiquement</b> le nouveau fichier, ou<br><b>reprendre</b> "
 "un téléchargement incomplet ?"
 
@@ -222,8 +216,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:212
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1510
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'adresse IP locale est privée, et il n'y a aucun serveur IRC pour la "
 "récupérer"
@@ -234,8 +227,7 @@ msgstr "Requête DCC %Q envoyée à %Q, attente de connexion du client distant"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:237
 msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr ""
-"La requête DCC %Q n'a pas été envoyée, attente d'une connexion manuelle"
+msgstr "La requête DCC %Q n'a pas été envoyée, attente d'une connexion manuelle"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:245
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1569
@@ -258,13 +250,12 @@ msgid "Cannot send data: No active connection"
 msgstr "Impossible d'envoyer les données : aucune connexion active"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:344
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"La machine de chiffrement n'a pas été capable de chiffrer le message courant "
-"(%Q) : %s, aucune donnée n'a été envoyée à l'extrémité distante"
+"La moteur de cryto n'a pas été capable de crypter le message courant "
+"(%Q) : %Q, aucune donnée n'a été envoyée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:403
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:827
@@ -272,13 +263,12 @@ msgid "ERROR: %Q"
 msgstr "ERREUR : %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:447
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
-"Le message suivant semble être chiffré, mais aucune machine de chiffrement "
-"n'a pu le décodé : %s"
+"Le message suivant semble être crypté, mais le moteur de cryptage"
+"n'a pu le décoder : %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/chat.cpp:493
 msgid "DCC %Q failed: %Q"
@@ -355,8 +345,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:781
 msgid "DCC VOICE request not sent: awaiting manual connections"
-msgstr ""
-"La requête DCC VOICE n'a pas été envoyée : attente d'une connexion manuelle"
+msgstr "La requête DCC VOICE n'a pas été envoyée : attente d'une connexion manuelle"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/voice.cpp:885
 #, c-format
@@ -461,7 +450,7 @@ msgstr "Le paramètre spécifié n'est pas un identifiant de DCC valide"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Cette session de DCC n'est pas une session de transfert DCC"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2554
 msgid "The specified window identifier is not valid"
@@ -469,8 +458,7 @@ msgstr "L'identifiant de fenêtre spécifié n'est pas valide"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:258
 msgid "WARNING: The peer is sending garbage data past the end of the file"
-msgstr ""
-"ATTENTION : Réception de données supplémentaires après la fin du fichier"
+msgstr "ATTENTION : Réception de données supplémentaires après la fin du fichier"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:259
 msgid ""
@@ -488,8 +476,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:365
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr ""
-"Le transfert des données a été terminé il y a 30s, on ferme la connexion"
+msgstr "Le transfert des données a été terminé il y a 30s, on ferme la connexion"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:595
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
@@ -559,13 +546,12 @@ msgstr "À :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1234
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1241
-#, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 octets sur %2 (%3%)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1245
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1258
 msgid "Spd:"
@@ -593,8 +579,7 @@ msgstr "L'adresse IP locale est privée, récupération par le serveur IRC : %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1556
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"Requête DCC %1 envoyée à %2, attente de la connexion du client distant..."
+msgstr "Requête DCC %1 envoyée à %2, attente de la connexion du client distant..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1558
 msgid "DCC %1 request not sent, awaiting manual connection"
@@ -640,8 +625,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1793
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
-"Acceptation de la requête de RESUME, le transfert va débuter à la position %1"
+msgstr "Acceptation de la requête de RESUME, le transfert va débuter à la position %1"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/send.cpp:1825
 msgid "Configure bandwidth for DCC transfer %1"
@@ -673,15 +657,12 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Tentative de connexion DCC CANVAS passive"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Requête DCC CANVAS envoyée à %Q, attente de connexion du client distant..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr "Requête DCC CANVAS envoyée à %Q, attente de connexion du client distant..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:100
 msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr ""
-"La requête DCC CANVAS n'a pas été envoyée : attente de connexions manuelles"
+msgstr "La requête DCC CANVAS n'a pas été envoyée : attente de connexions manuelles"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/canvas.cpp:104
 msgid "Attempting an active DCC CANVAS connection"
@@ -842,8 +823,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Impossible de procéder au DCC RECV : transfert non initialisé pour le "
 "fichier %s sur le port %s"
@@ -939,8 +919,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:846
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
-msgstr ""
-"Aucune offre nommée '%s' (de taille %s) n'est disponible pour %Q [%Q@%Q]"
+msgstr "Aucune offre nommée '%s' (de taille %s) n'est disponible pour %Q [%Q@%Q]"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/dcc/requests.cpp:847
 msgid "\"any\""
@@ -1027,8 +1006,3 @@ msgstr ""
 "Écoute de l'interface par défaut '%s' : réglez cela dans fenêtre de réglage "
 "des options, en désactivant cette option (ainsi le prochain dcc fonctionera)"
 
-#~ msgid "%1 bytes"
-#~ msgstr "%1 octets"
-
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "Choisir Emplacement Sauvegarde - KVIrc"

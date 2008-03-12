@@ -1,28 +1,24 @@
 # translation of options_fr.po to Français
-# translation of options_fr.po to Francais
-# translation of kvirc_fr.po to Francais
-# translation of kvirc_fr.po to Français
-# translation of kvirc_fr.po to French
-# translation of kvirc_fr.po to Fr
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
 # Ahinu <ahinu@wanadoo.fr>, 2004, 2005.
 # Ahinu <ahinu@wanadoo.net>, 2005.
 # Ahinu <ahinu.laman@gmail.com>, 2006.
-#
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
+# Elephantman <elephantman@europnet.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-25 22:04+0100\n"
-"PO-Revision-Date: 2006-09-01 16:13+0200\n"
-"Last-Translator: Ahinu <ahinu.laman@gmail.com>\n"
-"Language-Team: Français <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2008-03-06 18:30+0100\n"
+"Last-Translator: Elephantman <elephantman@europnet.org>\n"
+"Language-Team: Français <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:46
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:232
@@ -43,7 +39,6 @@ msgstr "Image de fond :"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:51
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:116
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:46
-#, fuzzy
 msgid "Horizontal align:"
 msgstr "Alignement horizontal :"
 
@@ -269,8 +264,7 @@ msgstr "Le champ du Pseudo ne doit pas contenir d'espaces !"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Le masque de NickServ ne peut être vide !<br>Vous devez y mettre au moins *."
+msgstr "Le masque de NickServ ne peut être vide !<br>Vous devez y mettre au moins *."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -1192,8 +1186,7 @@ msgid "Server:"
 msgstr "Serveur :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Il s'agit du nom du serveur ou réseau actuellement selectionné</"
 "center>"
@@ -1204,16 +1197,14 @@ msgstr "Avancée..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1156
 msgid "<center>Click here to edit advanced options for this entry</center>"
-msgstr ""
-"<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
+msgstr "<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1159
 msgid "Connect &Now"
 msgstr "Se Connecter &Maintenant"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Cliquez sur ce bouton pour vous connecter au serveur actuellement "
 "selectionné.</center>"
@@ -1450,8 +1441,7 @@ msgstr ""
 "aléatoire ou une phrase particulière.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "Ce champ est optionnel et apparaîtra dans la réponse au CTCP USERINFO."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
@@ -1541,6 +1531,12 @@ msgid ""
 "of avatars being downloaded.<br>The image also should be smaller than "
 "800x600 pixels since<br>it will have to be viewable in everyone's monitor."
 msgstr ""
+"Vous pouvez choisir ici votre avatar. Il sera visible<br>par les utilisateurs qui le "
+"réclament. Choisissez une image sympa,<br>si possible en évitant les images "
+"obcènes ou offensantes. C'est une bonne idée<br>de choisir un fichier "
+"relativement petit (par exemple 150Kb max) parce que<br>la plupart des clients "
+"ont une limite sur la taille des avatars téléchargés.<br>L'image doit aussi être "
+"plus petite que 800x600 pixels<br>pour être visible sur tous les écrans."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:511
 msgid "Use avatar"
@@ -1573,9 +1569,8 @@ msgid "Avatar Download Failed - KVIrc"
 msgstr "Échec du téléchargement de l'Avatar - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:649
-#, fuzzy
 msgid "Avatar Might Be Too Big - KVIrc"
-msgstr "Téléchargement d'un Avatar - KVIrc"
+msgstr "L'avatar est peut-être trop grand - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:650
 msgid ""
@@ -1585,6 +1580,11 @@ msgid ""
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
 "or choose a different image."
 msgstr ""
+"L'avatar que vous avez choisi est plus grand que 1024x768 pixels.<br>Une si "
+"grande image ne sera pas visible sur tous les écrans<br>et sera probablement "
+"redimensionné part les clients distants avec un algorythme<br>de faible qualité "
+"pour accroitre la performance. Vous *devez* le redimensionner manuellement<br> "
+"à une dimension saine (par exemple 800x600) ou choisir une autre image."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:688
 msgid "Default Messages"
@@ -1651,9 +1651,8 @@ msgstr ""
 "seront affichées dans la fenêtre active ou sur un salon.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:62
-#, fuzzy
 msgid "Always open queries as minimized"
-msgstr "Réduire systématiquement à l'ouverture"
+msgstr "Réduire les privés à l'ouverture"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:66
 msgid ""
@@ -1844,12 +1843,11 @@ msgstr "Avant-plan inactif à fort contraste (secondaire)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:40
 msgid "Scaling in userlist"
-msgstr ""
+msgstr "Mise à l'échelle dans la liste d'utilisateurs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:41
-#, fuzzy
 msgid "Scale avatar images in userlist (recommended)"
-msgstr "Redimensionner les images d'avatar (recommandé)"
+msgstr "Redimensionner les images d'avatar dans la liste d'utilisateurs (recommandé)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:43
 msgid ""
@@ -1878,12 +1876,11 @@ msgstr "Hauteur de l'image :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
-msgstr ""
+msgstr "Mise à l'échelle au chargement (et dans les boîtes de survol)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
-#, fuzzy
 msgid "Scale avatar images on image load"
-msgstr "Redimensionner les images d'avatar (recommandé)"
+msgstr "Redimensionner les images d'avatar au chargement (recommandé)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:65
 msgid "Request CTCP"
@@ -2072,9 +2069,8 @@ msgid "Disable notifier window flashing"
 msgstr "Désactiver le clignotement de la fenêtre du notifieur"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:124
-#, fuzzy
 msgid "Disable notifier window fade effect"
-msgstr "Désactiver le clignotement de la fenêtre du notifieur"
+msgstr "Désactiver l'effet de fondu de la fenêtre de notification"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:39
 msgid "Default away message:"
@@ -2106,9 +2102,8 @@ msgid "No such options page class name %Q"
 msgstr "Le nom de classe de page d'option %Q est inconnu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Use system URL handlers"
-msgstr "Intercepteurs d'URL"
+msgstr "Utiliser l'intercepteur d'URL du système"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:50
 msgid "<b>http://</b> handler command:"
@@ -2309,19 +2304,16 @@ msgid "Dotted Grid"
 msgstr "Grille en pointillés"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:131
-#, fuzzy
 msgid "Horizontal Alignment:"
 msgstr "Alignement horizontal :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:135
-#, fuzzy
 msgid "Vertical Alignment:"
 msgstr "Alignement vertical :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:231
-#, fuzzy
 msgid "Show gender icons"
-msgstr "Montrer les icônes de message"
+msgstr "Afficher les icône de sexe"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:232
 msgid "Show user channel icons"
@@ -2434,14 +2426,12 @@ msgid "General Preferences"
 msgstr "Préférences Générales"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:134
-#, fuzzy
 msgid "Theme Preferences"
-msgstr "Les préférences"
+msgstr "Préférences du thème"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:136
-#, fuzzy
 msgid "KVIrc Preferences"
-msgstr "Les préférences"
+msgstr "Préférences KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:139
 msgid ""
@@ -2450,12 +2440,18 @@ msgid ""
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
+"Cette boîte de dialogue contient une série de réglages de KVIrc.<br>Utiliser les "
+"icônes de gauche pour naviguer dans les options. La boîte de texte en bas à gauche "
+"est un petit moteur de recherche. Il mettra en surbrillance les pages qui contiennent "
+"des options liées à votre recherche."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:147
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
+"De nombreux réglages ont des infobulles qui peuvent s'afficher en laissant la souris "
+"dessus pendant quelques secondes."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:152
 msgid ""
@@ -2463,6 +2459,9 @@ msgid ""
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
+"Lorsque vous avez fini, cliquez sur \"<b>OK</b>\" pour accepter les changements "
+"ou \"<b>Annuler</b>\" pour ne pas les conserver. Cliquez sur \"<b>Appliquer</b>\" "
+"mettra en place les changements sans fermer la fenêtre."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:217
 msgid ""
@@ -2472,6 +2471,10 @@ msgid ""
 "search term will be highlighted and you will be able to quickly find them.</"
 "p><p>Try \"nickname\" for example.</p>"
 msgstr ""
+"<p>Ceci est l'outil de recherche pour cette fenêtre d'options.</p><p>Vous pouvez "
+"entrer un mot clé, soit dans votre langue, soit en anglais puis cliquer sur le bouton à droite. "
+"Les pages qui contiennent quelques options liées au mot clé seront alors mises en "
+"surbrillance et vous pourrez les trouver rapidement.</p><p>Essayez par exemple \"Pseudo\".</p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:249
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:61
@@ -2538,8 +2541,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:63
 msgid "Flash the system taskbar entry on highlighted messages"
-msgstr ""
-"Flasher l'entrée dans la barre de tâche système en cas de message surligné"
+msgstr "Flasher l'entrée dans la barre de tâche système en cas de message surligné"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:65
 msgid ""
@@ -2567,7 +2569,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:91
 msgid "Alert Restrictions"
-msgstr ""
+msgstr "Restrictions d'alertes"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:92
 msgid "Restrict alert"
@@ -2629,8 +2631,7 @@ msgid "Minimum alert level:"
 msgstr "Niveau d'alerte minimal :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Cette option spécifie le niveau d'alerte minimal pour la barre de "
 "tâche.</center>"
@@ -2968,28 +2969,24 @@ msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Utiliser le service ident (mauvaise pratique sous UNIX !)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
-#, fuzzy
 msgid "Output identd messages to:"
-msgstr "Message de quit :"
+msgstr "Afficher les messages d'identd dans :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:218
-#, fuzzy
 msgid "Active window"
-msgstr "Montrer dans la fenêtre active"
+msgstr "Fenêtre active"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:219
-#, fuzzy
 msgid "Console"
-msgstr "Fenêtres des consoles"
+msgstr "Console"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:220
-#, fuzzy
 msgid "Do not show any identd messages"
-msgstr "Supprimer les couleurs des messages des utilisateurs"
+msgstr "Ne montrer aucun message d'identd"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:237
 msgid "Enable ident service only while connecting to server"
-msgstr ""
+msgstr "Activer le service d'ident pendant la connexion au serveur"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:240
 msgid "Ident username:"
@@ -3009,8 +3006,7 @@ msgstr "Activer le service pour IPV6"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:258
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
-msgstr ""
-"La pile d'IP considère IPV4 comme une partie de l'espace de noms d'IPV6"
+msgstr "La pile d'IP considère IPV4 comme une partie de l'espace de noms d'IPV6"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:265
 msgid ""
@@ -3102,9 +3098,8 @@ msgstr ""
 "une connexion réussie à un serveur.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:55
-#, fuzzy
 msgid "Show network name in console taskbar entry"
-msgstr "Montrer les icônes de fenêtre dans la barre des tâches"
+msgstr "Afficher le nom du réseau dans la barre des tâches de la console"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:57
 msgid ""
@@ -3113,6 +3108,10 @@ msgid ""
 "your servers are not organized in networks or you often connect to two "
 "servers of the same network.</center>"
 msgstr ""
+"<center>Cette option fera afficher le nom du réseau sur la barre de tâches de "
+"la console au lieu du nom du serveur. C'est bien de laisser cette option à part "
+"si vos serveurs ne sont pas organisés en réseaux, ou si vous vous connectez "
+"souvent à plusieurs serveurs sur le même réseau.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:75
 msgid "Force immediate quit"
@@ -3132,7 +3131,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:84
 msgid "Prepend gender info to realname"
-msgstr ""
+msgstr "Mettre le sexe en début de realname"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:110
 msgid "On Channel Kick"
@@ -3192,19 +3191,17 @@ msgstr ""
 "peut inciter les spammeurs à vous harasser. :)</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:144
-#, fuzzy
 msgid "Always open channels as minimized"
-msgstr "Réduire systématiquement à l'ouverture"
+msgstr "Réduire les salons à l'ouverture"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:148
-#, fuzzy
 msgid ""
 "<center>This option causes newly created channel windows to be immediately "
 "minimized.<br>Enable this if you don't like channels popping up while you're "
 "typing something in a channel. :D</center>"
 msgstr ""
-"<center>Cette option entraîne la fermeture immédiate de toutes les fenêtre "
-"de privé nouvellement créée.<br>Activez-la si vous n'aimez pas que les "
+"<center>Cette option entraîne la réductionimmédiate de toutes les fenêtre "
+"de salon.<br>Activez-la si vous n'aimez pas que les "
 "fenêtres surgissent quand vous êtes en train d'ecrire quelque chose sur un "
 "salon. :D</center>"
 
@@ -3274,9 +3271,8 @@ msgid "Force language:"
 msgstr "Forcer l'utilisation d'une langue :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
-#, fuzzy
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "Vous devez redémarrer KVIrc pour appliquer le changement de langue"
+msgstr "<b>Attention :</b>Vous devez redémarrer KVIrc pour appliquer le changement de langue"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -3288,7 +3284,7 @@ msgstr "fr"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
 msgid "Unable to write language information to"
-msgstr ""
+msgstr "Impossible d'écrire les infos sur la langue dans"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
@@ -3446,8 +3442,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:144
 msgid "Notify failed DCC handshakes to the remote end"
-msgstr ""
-"Signaler au client distant quand une connexion DCC ne peut être acceptée"
+msgstr "Signaler au client distant quand une connexion DCC ne peut être acceptée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:147
 msgid ""
@@ -3503,18 +3498,16 @@ msgid "Automatically accept"
 msgstr "Accepter automatiquement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:200
-#, fuzzy
 msgid "Open transfer window as minimized when auto-accepted"
-msgstr "Reduire quand accepté automatiquement"
+msgstr "Reduire la fenêtre de transfert quand accepté automatiquement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:201
 msgid "Automatically resume when auto-accepted"
 msgstr "Reprendre automatiquement quand accepté automatiquement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:203
-#, fuzzy
 msgid "Save Location"
-msgstr "Localisation :"
+msgstr "Sauvegarder l'emplacement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:204
 msgid "Download folder:"
@@ -3529,9 +3522,8 @@ msgid "Guess save path from media type"
 msgstr "Deviner le chemin de sauvegarde en fonction du type de média"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:209
-#, fuzzy
 msgid "On Download Completion"
-msgstr "Répertoire de téléchargement :"
+msgstr "A la fin du téléchargement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:210
 msgid "Notify completion in console"
@@ -3542,22 +3534,18 @@ msgid "Notify completion in notifier"
 msgstr "Signaler la complétion dans le notifieur"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:212
-#, fuzzy
 msgid "Automatically clear transfer"
-msgstr "Accepter automatiquement"
+msgstr "Effacer le transfert automatiquement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:215
-#, fuzzy
 msgid ""
 "<center>This option will cause succesfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
-msgstr ""
-"<center>Cette option va forcer KVIrc à se connecter à ce réseau IRC au "
-"démarrage.</center>"
+msgstr "<center>Cette option retire automatiquement les transferts terminés de la fenêtre de transfert.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:220
 msgid "Always open transfer window as minimized"
-msgstr ""
+msgstr "Toujours ouvrir les fenêtres de transfert minimisées"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:238
 msgid "Bug Compatibility"
@@ -3613,7 +3601,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:262
 msgid "Limits"
-msgstr ""
+msgstr "Limites"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:265
 msgid "Limit upload bandwidth to"
@@ -3641,9 +3629,8 @@ msgstr ""
 "refuser les requêtes quand la limite sera atteinte.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:283
-#, fuzzy
 msgid "Tweaks"
-msgstr "Test"
+msgstr "Bidouillages"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:285
 msgid "Use fast send (send ahead)"
@@ -3717,7 +3704,6 @@ msgid "Open minimized when auto-accepted"
 msgstr "Reduire quand accepté automatiquement"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:353
-#, fuzzy
 msgid "Always open as minimized"
 msgstr "Réduire systématiquement à l'ouverture"
 
@@ -3763,8 +3749,7 @@ msgstr "Les notices privées/de salon"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:44
 msgid "Use verbose ignore (show messages in console)"
-msgstr ""
-"Utiliser la signalisation des ignores (montrer les messages dans la console)"
+msgstr "Utiliser la signalisation des ignores (montrer les messages dans la console)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:64
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:46
@@ -3896,9 +3881,8 @@ msgid "Don't show colors in user messages"
 msgstr "Supprimer les couleurs des messages des utilisateurs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:88
-#, fuzzy
 msgid "Nicknames"
-msgstr "Pseudo"
+msgstr "Pseudos"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:90
 msgid "\"Smart\" nickname colors"
@@ -4091,9 +4075,8 @@ msgid "IRC"
 msgstr "IRC"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:73
-#, fuzzy
 msgid "Channel"
-msgstr "Annuler"
+msgstr "Salon"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.h:28
 msgid "Lag"
@@ -4142,29 +4125,24 @@ msgid "theme,colors,output"
 msgstr "thème,couleurs,sortie"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:52
-#, fuzzy
 msgid "Message Style"
-msgstr "Type de méssage"
+msgstr "Style des messages"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:56
-#, fuzzy
 msgid "theme,privmsg,output,format"
-msgstr "thème,privmsg,privé,format"
+msgstr "thème,privmsg,affichage,format"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:67
-#, fuzzy
 msgid "Timestamp"
-msgstr "Couleur de l'horodateur"
+msgstr "Horodateur"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:71
-#, fuzzy
 msgid "time,timestamp"
-msgstr "Couleur de l'horodateur"
+msgstr "heure,heure"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:88
-#, fuzzy
 msgid "Message Colors"
-msgstr "Couleurs des Pseudos"
+msgstr "Couleurs des messages"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:89
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:169
@@ -4173,22 +4151,19 @@ msgstr "thème,couleurs,messages,sortie"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:168
 msgid "Color Set"
-msgstr ""
+msgstr "Jeu de couleurs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.h:32
-#, fuzzy
 msgid "Avatars"
-msgstr "Avatar"
+msgstr "Avatars"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:32
-#, fuzzy
 msgid "Sound"
-msgstr "Sons"
+msgstr "Son"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:48
-#, fuzzy
 msgid "sound,xmms,audio,play,amarok"
-msgstr "son,xmms,amarok,audio,play,mp3"
+msgstr "son,xmms,audio,play,amarok"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:81
 msgid "Sounds"
@@ -4240,13 +4215,13 @@ msgstr "Sortie"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:48
 msgid "Look"
-msgstr ""
+msgstr "Apparence"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:68
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:97
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:101
 msgid "Features"
-msgstr ""
+msgstr "Fonctionnalités"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:46
 msgid "Media Types"
@@ -4275,7 +4250,6 @@ msgid "theme,background"
 msgstr "thème,arrière-plan"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:74
-#, fuzzy
 msgid "Window Captions"
 msgstr "Titres MDI"
 
@@ -4286,7 +4260,7 @@ msgstr "thème,mdi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:87
 msgid "Workspace"
-msgstr ""
+msgstr "Espace de travail"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:100
 msgid "ToolBar Applets"
@@ -4317,9 +4291,8 @@ msgid "Anti-spam"
 msgstr "Anti-spam"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:32
-#, fuzzy
 msgid "Verbosity And Output"
-msgstr "Verbosité&Output"
+msgstr "Verbosité et affichage des infos"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:34
 msgid "debug"
@@ -4347,20 +4320,17 @@ msgid "Taskbar"
 msgstr "Barre des tâches"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:47
-#, fuzzy
 msgid "Tree Taskbar"
-msgstr "Arborescente"
+msgstr "Arborescence"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:63
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:65
-#, fuzzy
 msgid "Foreground"
-msgstr "Avant plan :"
+msgstr "Premier plan :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:111
-#, fuzzy
 msgid "Classic Taskbar"
-msgstr "Classique"
+msgstr "Barre de tâches classique"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.h:52
 msgid "Proxy Hosts"
@@ -4375,7 +4345,6 @@ msgid "Alert/Highlight"
 msgstr "Alertes/Surlignage"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.h:42
-#, fuzzy
 msgid "Highlight"
 msgstr "Alertes/Surlignage"
 
@@ -4396,23 +4365,20 @@ msgid "theme,userlist,channel"
 msgstr "thème,utilisateurs,salon"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:45
-#, fuzzy
 msgid "theme,userlist,channel,background"
-msgstr "thème,utilisateurs,salon"
+msgstr "thème,utilisateurs,salon,arrière plan"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:66
-#, fuzzy
 msgid "theme,userlist,channel,colors"
-msgstr "thème,utilisateurs,salon"
+msgstr "thème,utilisateurs,salon, couleurs"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:81
 msgid "Nickname Grid"
 msgstr "Grille des Pseudos"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:82
-#, fuzzy
 msgid "theme,userlist,channel,grid"
-msgstr "thème,utilisateurs,salon"
+msgstr "thème,liste d'utilisateurs,salon,grille"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:102
 msgid "userlist,channel"
@@ -4462,194 +4428,3 @@ msgstr "Privés"
 msgid "chat"
 msgstr "chat"
 
-#, fuzzy
-#~ msgid "Output verosity"
-#~ msgstr "Verbosité des sorties"
-
-#~ msgid "Scaling"
-#~ msgstr "Redimensionnement"
-
-#~ msgid "Save Current Theme"
-#~ msgstr "Sauvegarder le Thème Actuel"
-
-#~ msgid "Theme name:"
-#~ msgstr "Nom du thème :"
-
-#~ msgid "Version:"
-#~ msgstr "Version :"
-
-#~ msgid "Author:"
-#~ msgstr "Auteur :"
-
-#~ msgid "Include message colors information"
-#~ msgstr "Inclure la couleur des messages"
-
-#~ msgid "Package format:"
-#~ msgstr "Format d'empaquetage :"
-
-#~ msgid "XML single-file format"
-#~ msgstr "Un fichier XML"
-
-#~ msgid "New multi-file format"
-#~ msgstr "Nouveau format multi-fichiers"
-
-#~ msgid "Old format"
-#~ msgstr "Ancien format"
-
-#~ msgid "Save Theme - KVIrc"
-#~ msgstr "Sauvegarde de Thème - KVIrc"
-
-#~ msgid "Unable to create theme directory."
-#~ msgstr "Impossible de créer le repertoire du thème."
-
-#~ msgid "Theme saved successfully to "
-#~ msgstr "Thème sauvegardé avec succès dans "
-
-#~ msgid "Choose save directory"
-#~ msgstr "Choisir le répertoire de sauvegarde"
-
-#~ msgid "You must select save directory"
-#~ msgstr "Vous devez sélectionner un répertoire de sauvegarde"
-
-#~ msgid "Unable to create theme files directory."
-#~ msgstr "Impossible de créer le répertoire pour les fichiers du thème."
-
-#~ msgid "Unable to create theme utils directory."
-#~ msgstr "Impossible de créer le répertoire pour les utilitaires du thème."
-
-#~ msgid "Cannot find installer.kvs."
-#~ msgstr "Impossible de trouver l'installeur en .kvs."
-
-#~ msgid "Cannot write installer.kvs."
-#~ msgstr "Impossible de créer le fichier installeur .kvs."
-
-#~ msgid "Cannot write install.kvs."
-#~ msgstr "Impossible d'écrire le fichier install.kvs."
-
-#~ msgid "Cannot open install.kvs for reading."
-#~ msgstr "Impossible d'ouvrir le fichier install.kvs en lecture."
-
-#~ msgid "Cannot open install.kvs for writing."
-#~ msgstr "Impossible d'ouvrir le fichier install.kvs en écriture."
-
-#~ msgid "Choose filaname"
-#~ msgstr "Choisissez un nom de fichier"
-
-#~ msgid "You must select filename"
-#~ msgstr "Vous devez choisir un nom de fichier"
-
-#~ msgid "You must choose a theme name!"
-#~ msgstr "Vous devez choisir un nom de thème !"
-
-#~ msgid ""
-#~ "To apply a theme select it and click \"Ok\" or \"Apply\".<br>Your theme "
-#~ "dir is:<br><b>"
-#~ msgstr ""
-#~ "Pour utiliser un thème, sélectionnez-le cliquez sur \"Valider\"ou "
-#~ "\"Annuler\".<br>Votre répertoire de thème est :<br><b>"
-
-#~ msgid "Refresh Theme List"
-#~ msgstr "Rafraîchir la liste des thèmes"
-
-#~ msgid "Install XML theme pack"
-#~ msgstr "Installer le thème du paquet XML"
-
-#~ msgid "Save Current Theme..."
-#~ msgstr "Sauvegarder le thème actuel..."
-
-#~ msgid "Delete Selected Theme"
-#~ msgstr "Supprimez le thème sélectionné"
-
-#~ msgid "Get More Themes..."
-#~ msgstr "Récuperer plus de thèmes..."
-
-#~ msgid "Open Theme - KVIrc"
-#~ msgstr "Ouverture de Thème - KVIrc"
-
-#~ msgid "You must select file"
-#~ msgstr "Vous devez sélectionner un fichier"
-
-#~ msgid "Current Theme"
-#~ msgstr "Thème actuel"
-
-#~ msgid "<p>The active theme settings</p>"
-#~ msgstr "<p>Paramètres du thème actuel</p>"
-
-#~ msgid "<p>Theme: %1</p>"
-#~ msgstr "<p>Thème : %1</p>"
-
-#~ msgid "<p>Version: %1</p>"
-#~ msgstr "<p>Version : %1</p>"
-
-#~ msgid "<p>Date: %1</p>"
-#~ msgstr "<p>Date : %1</p>"
-
-#~ msgid "<p>Author: %1</p>"
-#~ msgstr "<p>Auteur : %1</p>"
-
-#~ msgid "Minimize new queries"
-#~ msgstr "Réduire tous les nouveaux privés"
-
-#~ msgid "Automatically close on completion"
-#~ msgstr "Fermer automatiquement une fois terminé"
-
-#~ msgid "Speed limits"
-#~ msgstr "Limites de vitesse"
-
-#~ msgid "Idle interval:"
-#~ msgstr "Interval d'attente :"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>These sections contain various settings for "
-#~ "KVIrc</b></center><br><br><p>When you have finished, click \"<b>OK</b>\" "
-#~ "to accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing the window.</"
-#~ "td></tr><tr><td>Many settings have tooltips that can be shown by holding "
-#~ "the cursor over their label for a few seconds.</p></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">Préférences Générales</font></h1></center></td></"
-#~ "tr><tr><td><br><br><center><b>Ces sections contiennent divers réglages "
-#~ "pour KVIrc</b></center><br><br><p>Quand vous avez fini, clickez "
-#~ "\"<b>Valider</b>\" pour accepter les changements ou \"<b>Annuler</b>\" "
-#~ "pour les oublier. En clickant \"<b>Appliquer</b>\" vous allez appliquer "
-#~ "les changements sans fermer la fenêtre.</td></tr><tr><td>Beaucoup de "
-#~ "réglages ont des bulles d'aide qui peuvent être montrée en laissant le "
-#~ "curseur sur leur intitulé durant quelques secondes.</p></td></tr></table>"
-
-#~ msgid ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">General Preferences</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Select a category in the list view on the left to view "
-#~ "the related settings. When you have finished, click \"<b>OK</b>\" to "
-#~ "accept your changes or \"<b>Cancel</b>\" to discard them. Clicking "
-#~ "\"<b>Apply</b>\" will commit your changes without closing this window."
-#~ "<br><br></td></tr></table>"
-#~ msgstr ""
-#~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
-#~ "\"#FFFFFF\">Préférences Générales</font></h1></center></td></"
-#~ "tr><tr><td><br><br>Sélectionner une catégorie dans liste, sur la gauche, "
-#~ "pour voir les paramètres relatifs à celle-ci. Quand vous avez terminé, "
-#~ "cliquez sur \"<b>Valider</b>\" pour confirmer les changement ou sur "
-#~ "\"<b>Annuler</b>\" pour les oublier. Cliquez sur \"<b>Appliquez</b>\" "
-#~ "pour les appliquer sans fermer la fenêtre.<br><br></td></tr></table>"
-
-#~ msgid "Preferences - KVIrc"
-#~ msgstr "Préférences - KVIrc"
-
-#~ msgid "Standard Colors"
-#~ msgstr "Couleurs Standards"
-
-#~ msgid "Avatar Handling"
-#~ msgstr "Utilisation des avatars"
-
-#~ msgid "MDI Area"
-#~ msgstr "Zone MDI"
-
-#~ msgid "Load & Save"
-#~ msgstr "Charger & Sauvegarder"
-
-#~ msgid "Output Style"
-#~ msgstr "Style de sortie"

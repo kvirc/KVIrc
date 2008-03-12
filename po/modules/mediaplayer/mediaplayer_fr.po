@@ -1,20 +1,21 @@
 # translation of mediaplayer_fr.po to Français
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# Ahinu <ahinu@wanadoo.fr>, 2005.
 #
+# Ahinu <ahinu@wanadoo.fr>, 2005.
+# Elephantman <elephantman@europnet.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-02-25 22:04+0100\n"
-"PO-Revision-Date: 2005-04-24 10:56+0200\n"
-"Last-Translator: Ahinu <ahinu@wanadoo.fr>\n"
-"Language-Team: Français <kde-francophone@kde.org>\n"
+"PO-Revision-Date: 2008-03-06 17:57+0100\n"
+"Last-Translator: Elephantman <elephantman@europnet.org>\n"
+"Language-Team: Français <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -45,7 +46,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
 msgid "Function not implemented"
-msgstr ""
+msgstr "Fonction non implémentée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
 msgid "An interface to the Juk KDE media player."
@@ -60,23 +61,20 @@ msgstr ""
 "Téléchargez-le depuis http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-#, fuzzy
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Une interface pour xmms, le populaire lecteur multimédia UNIX.\n"
-"Téléchargez-le depuis http://www.xmms.org\n"
+"Une interface pour audacious, le populaire lecteur multimédia UNIX.\n"
+"Téléchargez-le depuis http://audacious-media-player.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
-#, fuzzy
 msgid "Can't load the player library (%Q)"
-msgstr "Impossible de charger la librairie xmms (libxmms.so)"
+msgstr "Impossible de charger la bibliothèque %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
-#, fuzzy
 msgid "Can't find symbol %s in %Q"
-msgstr "Impossible de trouver le symbole %s dans libxmms.so"
+msgstr "Impossible de trouver le symbole %s dans %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -84,6 +82,10 @@ msgid ""
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
+"Une interface pour le plugin AMIP.\n"
+"Vous pouvez le télécharger sur http://amip.tools-for.net.\n"
+"Pour utiliser cette interface, vous devez installer le plugin AMIP pour "
+"votre lecteur."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
 msgid "An interface to the AmaroK KDE media player."
@@ -95,8 +97,7 @@ msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Essai de l'interface de lecture multimédia \"%Q\" : score %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
 "Pas sûr des résultats, essai d'une seconde méthode de détection de mot de "
 "pass plus aggressive"
@@ -127,8 +128,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1313
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1501
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1544
-msgid ""
-"The selected media player interface failed to execute the requested function"
+msgid "The selected media player interface failed to execute the requested function"
 msgstr ""
 "L'interface de lecture multimédia a échoué lors de l'exécution de la "
 "fonction demandée"
@@ -146,6 +146,3 @@ msgstr ""
 msgid "Last interface error: "
 msgstr "Dernière erreur de l'interface : "
 
-#~ msgid "No such media player interface (try /mediaplayer.detect)"
-#~ msgstr ""
-#~ "Aucune interface de lecture multimédia (essayez /mediaplayer.detect)"
