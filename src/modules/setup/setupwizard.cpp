@@ -43,6 +43,7 @@ bool g_bFoundMirc;
 #include <qpushbutton.h>
 #include <qvalidator.h>
 #include <qtextcodec.h>
+#include <qlayout.h>
 #include "kvi_tal_hbox.h" 
 
 #ifdef COMPILE_ON_WINDOWS
@@ -71,39 +72,59 @@ extern QString szMircIni;
 #endif
 
 KviSetupPage::KviSetupPage(KviSetupWizard * w)
-: KviTalHBox(w)
+: QWidget(w)
 {
+	QGridLayout * g = new QGridLayout(this);
+
+	//setBackgroundColor(QColor(255,0,0));
+
 	// we need this to set localized text on buttons (see QT doc/ KviTalWizard class)
 	w->KviTalWizard::backButton()->setText(__tr2qs("< &Back"));
 	w->KviTalWizard::nextButton()->setText(__tr2qs("&Next >"));
 	w->KviTalWizard::finishButton()->setText(__tr2qs("Finish"));
 	w->KviTalWizard::cancelButton()->setText(__tr2qs("Cancel"));
 	//w->KviTalWizard::helpButton()->setText(__tr2qs("Help"));
-     
-	setSpacing(8);
 
 	m_pPixmapLabel = new QLabel(this);
+	g->addWidget(m_pPixmapLabel,0,0);
 
 	m_pPixmapLabel->setPixmap(*(w->m_pLabelPixmap));
 	m_pPixmapLabel->setFixedSize(w->m_pLabelPixmap->size());
 	m_pPixmapLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	m_pPixmapLabel->setMargin(0);
 
+	g->setSpacing(8);
+	g->setMargin(0);
+
 	m_pVBox = new KviTalVBox(this);
-	m_pVBox->setSpacing(8);
+	m_pVBox->setSpacing(4);
+	m_pVBox->setMargin(0);
+	//m_pVBox->setSizePolicy(QSizePolicy(QSizePolicy::Expanding));
+	//m_pVBox->setBackgroundColor(QColor(0,80,0));
+	//m_pVBox->setMaximumHeight(450);
+	g->addWidget(m_pVBox,0,1);
+	
+	g->setColStretch(1,1);
 
 	QLabel * l = new QLabel(m_pVBox);
 	l->setAlignment(Qt::AlignAuto | Qt::AlignTop);
-	QString szHeader = "<table width=\"100%\"><tr><td bgcolor=\"#303030\">" \
+	/*
+	QString szHeader = "<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" style=\"margin:0px;padding:0px;\" width=\"100%\"><tr><td bgcolor=\"#303030\">" \
 			"<h1><font color=\"#FFFFFF\">KVIrc " KVI_VERSION "</font></h1>" \
 			"</td></tr></table>";
+	*/
+	QString szHeader = "<h1><font color=\"#FFFFFF\">&nbsp;KVIrc " KVI_VERSION "</font></h1>";
 	l->setText(szHeader);
+	l->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+	l->setAlignment(Qt::AlignAuto | Qt::AlignVCenter);
+	l->setMargin(0);
+	l->setBackgroundColor(QColor(48,48,48));
 
 	m_pTextLabel = new QLabel(m_pVBox);
 #ifdef COMPILE_USE_QT4
 	m_pTextLabel->setWordWrap(true);
 #endif
-	m_pTextLabel->setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	m_pTextLabel->setAlignment(Qt::AlignJustify | Qt::AlignTop);
 	m_pVBox->setStretchFactor(m_pTextLabel,1);
 }
 
@@ -127,7 +148,7 @@ KviSetupWizard::KviSetupWizard()
 	if(m_pLabelPixmap->isNull())
 	{
 		delete m_pLabelPixmap;
-		m_pLabelPixmap = new QPixmap(180,400);
+		m_pLabelPixmap = new QPixmap(250,450);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,7 +216,6 @@ KviSetupWizard::KviSetupWizard()
 	// Directories
 
 	m_pDirectory = new KviSetupPage(this);
-
 
 	m_pDirectory->m_pTextLabel->setText(__tr2qs("<p>Please choose a folder for " \
 		"KVIrc to store its settings and other data, and another for downloaded files. " \
@@ -280,12 +300,13 @@ KviSetupWizard::KviSetupWizard()
 	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in  shared program folder (portable)")
 			,m_pDirButtonGroup);
 #endif
-	m_pDirRestore = new QRadioButton(__tr2qs("Restore from backup archive"),m_pDirButtonGroup);
-	m_pDirRestore->setEnabled(FALSE);
+	// Pragma: Unused, takes only space.
+	//m_pDirRestore = new QRadioButton(__tr2qs("Restore from backup archive"),m_pDirButtonGroup);
+	//m_pDirRestore->setEnabled(FALSE);
 	
-	l = new QLabel(m_pDirectory->m_pVBox,"<b> </b>");
+	//l = new QLabel(m_pDirectory->m_pVBox,"<b> </b>");
 
-	m_pDirectory->m_pVBox->setStretchFactor(m_pDirectory->m_pTextLabel,1);
+	//m_pDirectory->m_pVBox->setStretchFactor(m_pDirectory->m_pTextLabel,1);
 
 	setHelpEnabled(m_pDirectory,false);
 
@@ -311,17 +332,14 @@ KviSetupWizard::KviSetupWizard()
 	if(nick.isEmpty())nick = "newbie";
 	if(nick == "root")nick = "newbie";
 //m_pIdentity->m_pVBox
-	KviTalGroupBox * gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Basic Properties"),m_pIdentity->m_pVBox);
+//__tr2qs("Basic Properties")
+	KviTalGroupBox * gbox = new KviTalGroupBox(1,Qt::Horizontal,QString(),m_pIdentity->m_pVBox);
 
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
 	
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
 	m_pNickSelector->setValidator(v);
-	
-	m_pRealNameSelector = new KviStringSelector(gbox,__tr2qs("Real name:"),&(KVI_OPTION_STRING(KviOption_stringRealname)),true);
-	m_pRealNameSelector->setMinimumLabelWidth(120);
-
 
 	QString szOptionalCtcpUserInfo = __tr2qs("This field is optional and will appear as part of the CTCP USERINFO reply.");
 	QString szCenterBegin("<center>");
@@ -329,6 +347,9 @@ KviSetupWizard::KviSetupWizard()
 	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
 
 	gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
+
+	m_pRealNameSelector = new KviStringSelector(gbox,__tr2qs("Real name:"),&(KVI_OPTION_STRING(KviOption_stringRealname)),true);
+	m_pRealNameSelector->setMinimumLabelWidth(120);
 
 	KviTalHBox* hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
@@ -383,12 +404,12 @@ KviSetupWizard::KviSetupWizard()
 	m_pLanguagesSelector = new KviStringSelector(gbox,__tr2qs("Languages:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoLanguages)),true);
 	m_pLanguagesSelector->setMinimumLabelWidth(120);
 
-	m_pOtherInfoSelector = new KviStringSelector(gbox,__tr2qs("Other:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoOther)),true);
-	m_pOtherInfoSelector->setMinimumLabelWidth(120);
+	//m_pOtherInfoSelector = new KviStringSelector(gbox,__tr2qs("Other:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoOther)),true);
+	//m_pOtherInfoSelector->setMinimumLabelWidth(120);
 
 	addPage(m_pIdentity,__tr2qs("Identity"));
 
-	l = new QLabel(m_pIdentity->m_pVBox,"<b> </b>");
+	//l = new QLabel(m_pIdentity->m_pVBox,"<b> </b>");
 
 	setHelpEnabled(m_pIdentity,false);
 
@@ -483,8 +504,15 @@ KviSetupWizard::KviSetupWizard()
 	m_pCreateDesktopShortcut = new QCheckBox(__tr2qs("Create desktop shortcut"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateDesktopShortcut->setChecked(true);
 #endif
+
+#ifdef COMPILE_ON_WINDOWS
+	m_pUseMircServerList = new QRadioButton(__tr2qs("Import server list from mIRC"),m_pDesktopIntegration->m_pVBox);
+	m_pUseMircServerList->setEnabled(false);
+#endif
+
 	setHelpEnabled(m_pDesktopIntegration,false);
 
+	/*
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Server config
 	m_pServers = new KviSetupPage(this);
@@ -509,20 +537,19 @@ KviSetupWizard::KviSetupWizard()
 	m_szServerUrl="irc://";
 	m_pServerUrlSelector = new KviStringSelector(m_pServersButtonGroup,__tr2qs("URL:"),&m_szServerUrl,true);
 
-#ifdef COMPILE_ON_WINDOWS
-	m_pUseMircServerList = new QRadioButton(__tr2qs("Import server list from mIRC"),m_pServersButtonGroup);
-	m_pUseMircServerList->setEnabled(false);
-#endif
-
+	*/
+/*
 	m_pServersLoadConfig = new QRadioButton(__tr2qs("Use server config"),m_pServersButtonGroup);
 	m_pServersLoadConfig->setEnabled(FALSE);
 	m_pServerConfigSelector = new KviFileSelector(m_pServersButtonGroup,__tr2qs("Config file:"),&m_szServerConfigFile,true);
 	m_pServerConfigSelector->setEnabled(FALSE);
-
+*/
+	/*
 	m_pServersChooseFromList->toggle();
 	addPage(m_pServers,__tr2qs("Choose a server to connect"));
-	setFinishEnabled(m_pServers,true);
-	setHelpEnabled(m_pServers,false);
+	*/
+	setFinishEnabled(m_pDesktopIntegration,true);
+	setHelpEnabled(m_pDesktopIntegration,false);
 
 	// Preconfigured values
 #ifdef COMPILE_ON_WINDOWS
@@ -532,9 +559,10 @@ KviSetupWizard::KviSetupWizard()
 	{
 		KviConfig cfg(szTmp,KviConfig::Read);
 		cfg.setGroup("Setup");
-		if(cfg.readBoolEntry("hideServerList",FALSE)) {
-			setPageEnabled(m_pServers,false);
-			setFinishEnabled(m_pIdentity,true);
+		if(cfg.readBoolEntry("hideServerList",FALSE))
+		{
+			//setPageEnabled(m_pServers,false);
+			//setFinishEnabled(m_pIdentity,true);
 			KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc) = false;
 			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
 		}
@@ -600,26 +628,52 @@ KviSetupWizard::KviSetupWizard()
 						m_szMircServerIniFile = cfg.readQStringEntry("servers","servers.ini");
 						m_szMircServerIniFile.prepend('/');
 						m_szMircServerIniFile.prepend(szMircDir);
-						if(KviFileUtils::fileExists(m_szMircServerIniFile)){
+						if(KviFileUtils::fileExists(m_szMircServerIniFile))
+						{
 							m_pUseMircServerList->setEnabled(true);
 							m_pUseMircServerList->setChecked(true);
 						}
 					}
-					KviMessageBox::information(__tr2qs("Setup found existing mIRC installation. It will try to import "
-						"some of mIRC settings and serverlist. If you don't want to do it, unselect import in setup pages"));
+					//KviMessageBox::information(__tr2qs("Setup found existing mIRC installation. It will try to import "
+					//	"some of mIRC settings and serverlist. If you don't want to do it, unselect import in setup pages"));
 				}
 			}
 		}
 	}
 	free(buffer);
-	
+
 #endif
+
+	//setMinimumSize(630,450);
 }
 
 
 KviSetupWizard::~KviSetupWizard()
 {
 	delete m_pLabelPixmap;
+}
+
+void KviSetupWizard::showEvent(QShowEvent *e)
+{
+	int w = QApplication::desktop()->width();
+	int h = QApplication::desktop()->height();
+
+	int ww = width();
+	int wh = height();
+
+	if(w < 800)
+	{
+		// 640x480
+		if(ww < 630)ww = 630;
+	} else {
+		if(ww < 770)ww = 770;
+	}
+	
+	//wh = sizeHint().height();
+	
+	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
+
+	KviTalWizard::showEvent(e);
 }
 
 void KviSetupWizard::oldDirClicked()
@@ -981,7 +1035,7 @@ void KviSetupWizard::accept()
 			m_pRealNameSelector->commit();
 			m_pLocationSelector->commit();
 			m_pLanguagesSelector->commit();
-			m_pOtherInfoSelector->commit();
+			//m_pOtherInfoSelector->commit();
 			
 			KVI_OPTION_STRING(KviOption_stringNickname1).stripWhiteSpace();
 			KVI_OPTION_STRING(KviOption_stringNickname1).replace(" ","");
@@ -1035,10 +1089,10 @@ void KviSetupWizard::accept()
 					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
 				break;
 			}
-			
+			/*
 			m_pServerHostSelector->commit();
 			m_pServerUrlSelector->commit();
-			m_pServerConfigSelector->commit();
+			//m_pServerConfigSelector->commit();
 			m_pServerPortSelector->commit();
 			
 			if(m_pServersSpecifyManually->isOn())
@@ -1051,10 +1105,10 @@ void KviSetupWizard::accept()
 				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = FALSE;
 				szUrl=m_szServerUrl;
 			}
-#ifdef COMPILE_ON_WINDOWS			
-			else if (m_pUseMircServerList->isOn()) {
+			*/
+#ifdef COMPILE_ON_WINDOWS
+			if(m_pUseMircServerList->isEnabled() && m_pUseMircServerList->isOn())
 				szMircServers = m_szMircServerIniFile;
-			}
 #endif
 		}
 	}

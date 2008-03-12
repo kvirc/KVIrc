@@ -49,7 +49,7 @@
 
 class KviSetupWizard;
 
-class KviSetupPage : public KviTalHBox
+class KviSetupPage : public QWidget
 {
 	Q_OBJECT
 public:
@@ -104,7 +104,7 @@ public:
 #ifdef COMPILE_ON_WINDOWS
 	QRadioButton  * m_pDirMakePortable;
 #endif
-	QRadioButton  * m_pDirRestore;
+	//QRadioButton  * m_pDirRestore;
 	QLineEdit     * m_pOldDataPathEdit;
 	KviTalHBox         * m_pOldPathBox;
 	KviTalHBox         * m_pNewPathBox;
@@ -118,14 +118,14 @@ public:
 	KviStringSelector * m_pRealNameSelector;
 	KviStringSelector * m_pLocationSelector;
 	KviStringSelector * m_pLanguagesSelector;
-	KviStringSelector * m_pOtherInfoSelector;
+	//KviStringSelector * m_pOtherInfoSelector;
 	
 	//Servers
-	KviTalVButtonGroup * m_pServersButtonGroup;
-	QRadioButton  * m_pServersChooseFromList;
-	QRadioButton  * m_pServersSpecifyManually;
-	QRadioButton  * m_pServersOpenIrcUrl;
-	QRadioButton  * m_pServersLoadConfig;
+	//KviTalVButtonGroup * m_pServersButtonGroup;
+	//QRadioButton  * m_pServersChooseFromList;
+	//QRadioButton  * m_pServersSpecifyManually;
+	//QRadioButton  * m_pServersOpenIrcUrl;
+	//QRadioButton  * m_pServersLoadConfig;
 #ifdef COMPILE_ON_WINDOWS
 	QString         m_szMircServerIniFile;
 	QRadioButton  * m_pUseMircServerList;
@@ -138,12 +138,13 @@ public:
 	
 	KviStringSelector * m_pServerHostSelector;
 	KviStringSelector * m_pServerUrlSelector;
-	KviFileSelector   * m_pServerConfigSelector;
+	//KviFileSelector   * m_pServerConfigSelector;
 	KviUIntSelector   *m_pServerPortSelector;
 	
 protected:
 	void makeLink();
 	void setUrlHandlers();
+	virtual void showEvent(QShowEvent *e);
 public slots:
 	void chooseOldDataPath();
 	void chooseDataPath();
