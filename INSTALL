@@ -574,12 +574,6 @@ General notes for the installation of the 3.4.0 release of KVIrc
             tring to build a performance critical executable and you're
             short both in memory and CPU time :)
 
-        --without-info-tips
-            This will disable some informational tooltips in the option
-            dialogs. It will help in making a smaller executable and
-            modules. Use this option if you're a KVIrc guru
-            and you don't need tips about using the options.
-
         --without-gsm
             Explicitly disable the usage of the GSM library. This will
             disable the DCC VOICE gsm codec but might help when the

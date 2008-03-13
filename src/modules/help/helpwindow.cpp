@@ -40,6 +40,8 @@
 #include <qtooltip.h>
 #include "kvi_valuelist.h"
 
+#include "kvi_sourcesdate.h"
+
 extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
 extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
@@ -53,8 +55,8 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	{
 		QString szDoclist,szDict;
 		
-		g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist");
-		g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict");
+		g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
+		g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
 		
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();

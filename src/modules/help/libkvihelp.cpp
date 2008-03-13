@@ -24,6 +24,7 @@
 
 #include "kvi_module.h"
 
+#include "kvi_sourcesdate.h"
 
 #include "helpwidget.h"
 #include "helpwindow.h"
@@ -186,17 +187,15 @@ static bool help_module_init(KviModule * m)
 {
 	QString szHelpDir,szDocList;
 	
-	g_pApp->getLocalKvircDirectory(szDocList,KviApp::Help,"help.doclist");
+	g_pApp->getLocalKvircDirectory(szDocList,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
 	
 	g_pDocIndex = new Index(szHelpDir,szDocList);
 	g_pDocIndex->setDocListFile(szDocList);
 	
-	g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help,"help.dict");
+	g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
 	g_pDocIndex->setDictionaryFile(szHelpDir);
-	
 
-	
 	g_pHelpWidgetList = new KviPointerList<KviHelpWidget>;
 	g_pHelpWidgetList->setAutoDelete(false);
 	g_pHelpWindowList = new KviPointerList<KviHelpWindow>;

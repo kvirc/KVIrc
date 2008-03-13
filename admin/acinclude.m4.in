@@ -533,15 +533,8 @@ AC_DEFUN([AC_SS_MISC_OPTIONS],
 		SS_BUILD_FLAGS="A$SS_BUILD_FLAGS"
 	fi
 
-	AC_MSG_CHECKING([if you want the info tips to be compiled in])
-	AC_ARG_WITH(info-tips,[  --without-info-tips     Do not compile the info tips code],SS_NO_TIPS="true")
-	if test "$SS_NO_TIPS" = "true"; then
-		AC_MSG_RESULT(no)
-	else
-		AC_MSG_RESULT(yes)
-		SS_BUILD_FLAGS="T$SS_BUILD_FLAGS"
-		AC_DEFINE([COMPILE_INFO_TIPS], 1, [define if you want the info tips to be compiled in])
-	fi
+	SS_BUILD_FLAGS="T$SS_BUILD_FLAGS"
+	AC_DEFINE([COMPILE_INFO_TIPS], 1, [define if you want the info tips to be compiled in])
 
 	AC_MSG_CHECKING([if you want to disable the ipV6 support])
 	AC_ARG_WITH(ipv6-support,[  --without-ipv6-support  Do not compile the IpV6 support],SS_NOIPV6_SUPPORT="true")

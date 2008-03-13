@@ -263,7 +263,6 @@ int KviNotifierWindow::textWidth() {
 void KviNotifierWindow::stopShowHideTimer()
 {
 	if(!m_pShowHideTimer)return;
-	debug ("Deleting show/hide timer");
 	delete m_pShowHideTimer;
 	m_pShowHideTimer = 0;
 }
@@ -452,7 +451,7 @@ void KviNotifierWindow::heartbeat()
 			targetOpacity/=100;
 			bIncreasing = targetOpacity>m_dOpacity;
 			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
-			debug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
+			//debug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
 			if( (bIncreasing && (m_dOpacity >= targetOpacity) ) ||
 				(!bIncreasing && (m_dOpacity <= targetOpacity) )
 				)
@@ -951,7 +950,7 @@ void KviNotifierWindow::mouseReleaseEvent(QMouseEvent * e)
 	if(m_pWndBorder->captionRect().contains(e->pos())) {
 	
 		if(m_pWndBorder->closeRect().contains(e->pos())) {
-			debug ("hide now from release event");
+			//debug ("hide now from release event");
 			hideNow();
 		} else {
 			update();
