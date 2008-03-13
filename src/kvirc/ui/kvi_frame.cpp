@@ -947,10 +947,11 @@ void KviFrame::updateCaption()
 
 void KviFrame::closeEvent(QCloseEvent *e)
 {
-	e->ignore();
 
 	if(KVI_OPTION_BOOL(KviOption_boolCloseInTray))
 	{
+		e->ignore();
+
 		if(!dockExtension())
 		{
 		    executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
@@ -961,52 +962,54 @@ void KviFrame::closeEvent(QCloseEvent *e)
 			dockExtension()->setPrevWindowState(windowState());
 			QTimer::singleShot( 0, this, SLOT(hide()) );
 		}
+		return;
 	}
-	else
+
+	if(KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections))
 	{
-	
-		if(KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections))
-		{
-			// check for running connections
-			
-			bool bGotRunningConnection = false;
-			for(KviWindow * w = m_pWinList->first();w;w = m_pWinList->next())
-			{
-				if(w->type() == KVI_WINDOW_TYPE_CONSOLE)
-				{
-					if(((KviConsole *)w)->connectionInProgress())
-					{
-						bGotRunningConnection = true;
-						break;
-					}
-				}
-			}
-			
-			if(bGotRunningConnection)
-			{
-				QString txt = "<p>";
-				txt += __tr2qs("There are active connections, are you sure you wish to ");
-				txt += __tr2qs("quit KVIrc?");
-				txt += "</p>";
+		// check for running connections
 		
-				switch(QMessageBox::warning(this,__tr2qs("Confirmation - KVIrc"),txt,__tr2qs("&Yes"),__tr2qs("&Always"),__tr2qs("&No"),2,2))
+		bool bGotRunningConnection = false;
+		for(KviWindow * w = m_pWinList->first();w;w = m_pWinList->next())
+		{
+			if(w->type() == KVI_WINDOW_TYPE_CONSOLE)
+			{
+				if(((KviConsole *)w)->connectionInProgress())
 				{
-					case 0:
-						// ok to close
-					break;
-					case 1:
-						// ok to close but don't ask again
-						KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
-					break;
-					case 2:
-						return;
+					bGotRunningConnection = true;
 					break;
 				}
 			}
 		}
-
-	g_pApp->destroyFrame();
+		
+		if(bGotRunningConnection)
+		{
+			QString txt = "<p>";
+			txt += __tr2qs("There are active connections, are you sure you wish to ");
+			txt += __tr2qs("quit KVIrc?");
+			txt += "</p>";
+	
+			switch(QMessageBox::warning(this,__tr2qs("Confirmation - KVIrc"),txt,__tr2qs("&Yes"),__tr2qs("&Always"),__tr2qs("&No"),2,2))
+			{
+				case 0:
+					// ok to close
+				break;
+				case 1:
+					// ok to close but don't ask again
+					KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
+				break;
+				case 2:
+					e->ignore();
+					return;
+				break;
+			}
+		}
 	}
+
+	e->accept();
+
+	if(g_pApp)
+		g_pApp->destroyFrame();
 }
 
 void KviFrame::resizeEvent(QResizeEvent *e)

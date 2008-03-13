@@ -1,3 +1,111 @@
+12.03.2005: Release 3.4.0 "Anomalies"
+###############################################################################
+
+Here we go with another release :)
+
+This one took a very long time but, well, finally it's here.
+
+Notable new features of this release include:
+
+	- improved themeing support
+	- better desktop integration
+	- nicer support for many different IRC servers
+	- a totally revised option layout
+	- basic support for script "addons"
+	- improved help subsystem
+	- new nice statusbar applets
+	- improved scripting engine
+	- improved windows and macosx support
+
+There is also a whole bunch of small new details that you will
+find out by yourself while playing around.
+
+We obviously also have a huge number of bugfixes.
+
+This will be the last stable release of the 3.* series and also the last
+one using Qt3. From now on we'll be working on major version 4 and
+switching completly to Qt4. This release actually contains a preliminary
+Qt4 support and if you feel brave you might test it by passing
+the "hidden" --enable-qt swtich to configure.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+
+
+
+
+###############################################################################
+General notes for the 3.4.0 release of the KVIrc IRC client
+###############################################################################
+
+- Installation
+
+The detailed installation instructions for the unix source distribution
+are in the INSTALL file.
+
+The Windows version needs no installation: you just need to run the
+installer executable and follow the proposed steps.
+
+Other documentation can be found in the doc subdirectory.
+
+- Reporting problems
+
+You are encouraged to "mess" with all the KVIrc options and features,
+and to report bugs and misbehaviours to the author.
+Anyway , before reporting a bug , ask yourself if it can be caused
+by some other part of your system: KVIrc uses many external libraries
+and (as all programs) relies on a correct system behaviour.
+Make sure that the libraries you use are the correct ones (!!!).
+
+When you encounter a problem please read the FAQ that is found
+in the distribution and also take a look at http://www.kvirc.net
+for a more recent version. If nothing helps to solve your problem
+then you might consider issuing a bug report.
+
+The best way to report a bug is to use the bugtrack system at
+http://svn.kvirc.de/kvirc/. Another way is to subscribe
+to the kvirc mailing list (see http://www.kvirc.net for instructions)
+and report the problem there. In both cases your bug report
+should be written in english and should contain most informations
+possible about the problem. If you have encountered a crash
+on an unix platform you should include a gdb backtrace (stack dump).
+The more gdb info you send, the biggest is the possibility for us
+to find the problem and maybe a solution. There is a FAQ entry
+that explains how to produce a suitable gdb backtrace.
+If you can't obtain a gdb backtrace (maybe because you're on
+a platform where gdb is not available) or if the problem
+is not related to a program crash then you should include
+a detailed procedure that leads to the manifestation of your problem.
+You should always include a short description of the platform you
+are running on: the operating system, the cpu (if not an x86),
+the version of the Qt library and the KDE environment (if relevant).
+You should also mention the relevant version of KVIrc and where
+you got it from (cvs, kvirc site, other sites).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################
+# Historic entries : just for the curious
+###############################################################################
+
+
 22.02.2005: Release 3.2.0 "Realia"
 ###############################################################################
 
@@ -88,88 +196,7 @@ decided not to fix :)
 Have fun :)
 Szymon Stefanek and The KVIrc Development Team
 
-###############################################################################
-General notes for the 3.2.0 release of the KVIrc IRC client
-###############################################################################
 
-- Installation
-
-The detailed installation instructions for the unix source distribution
-are in the INSTALL file.
-
-The Windows version needs no installation: you just need to run the
-installer executable and follow the proposed steps.
-
-Other documentation can be found in the doc subdirectory.
-
-- Reporting problems
-
-You are encouraged to "mess" with all the KVIrc options and features,
-and to report bugs and misbehaviours to the author.
-Anyway , before reporting a bug , ask yourself if it can be caused
-by some other part of your system: KVIrc uses many external libraries
-and (as all programs) relies on a correct system behaviour.
-Make sure that the libraries you use are the correct ones (!!!).
-
-When you encounter a problem please read the FAQ that is found
-in the distribution and also take a look at http://www.kvirc.net
-for a more recent version. If nothing helps to solve your problem
-then you might consider issuing a bug report.
-
-The best way to report a bug is to use the bugtrack system at
-http://bugtrack.kvirc.omnikron.net. Another way is to subscribe
-to the kvirc mailing list (see http://www.kvirc.net for instructions)
-and report the problem there. In both cases your bug report
-should be written in english and should contain most informations
-possible about the problem. If you have encountered a crash
-on an unix platform you should include a gdb backtrace (stack dump).
-The more gdb info you send, the biggest is the possibility for us
-to find the problem and maybe a solution. There is a FAQ entry
-that explains how to produce a suitable gdb backtrace.
-If you can't obtain a gdb backtrace (maybe because you're on
-a platform where gdb is not available) or if the problem
-is not related to a program crash then you should include
-a detailed procedure that leads to the manifestation of your problem.
-You should always include a short description of the platform you
-are running on: the operating system, the cpu (if not an x86),
-the version of the Qt library and the KDE environment (if relevant).
-You should also mention the relevant version of KVIrc and where
-you got it from (cvs, kvirc site, other sites).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###############################################################################
-# Historic entries : just for the curious
-###############################################################################
 
 
 31.05.2004: Release 3.0.1 "System Virtue"
