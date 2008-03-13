@@ -1504,7 +1504,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			case Qt::Key_V:
 				if(!m_bReadOnly) pasteClipboardWithConfirmation();
 			break;
-			case Qt::Key_Backspace:
+			//case Qt::Key_Backspace:
 			case Qt::Key_W:
 				if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
 				{

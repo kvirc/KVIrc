@@ -2592,7 +2592,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 {
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("filter",KVS_PT_UINT,KVS_PF_OPTIONAL,szFlags)
+		KVSM_PARAMETER("filter",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * a = new KviKvsArray();
