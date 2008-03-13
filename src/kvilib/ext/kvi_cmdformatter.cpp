@@ -66,7 +66,7 @@ namespace KviCommandFormatter
 #ifdef COMPILE_USE_QT4
 				tmp = tmp.trimmed();
 #else
-				tmp.stripWhiteSpace();
+				tmp = tmp.stripWhiteSpace();
 #endif
 				if(!tmp.isEmpty())return false;
 				*it = ""; // set it to empty also in the main buffer
@@ -165,7 +165,7 @@ namespace KviCommandFormatter
 #ifdef COMPILE_USE_QT4
 		buffer = buffer.trimmed();
 #else
-		buffer.stripWhiteSpace();
+		buffer = buffer.stripWhiteSpace();
 #endif
 
 		if(buffer.isEmpty())return;
@@ -183,7 +183,7 @@ namespace KviCommandFormatter
 #ifdef COMPILE_USE_QT4
 		buffer = buffer.trimmed();
 #else
-		buffer.stripWhiteSpace();
+		buffer = buffer.stripWhiteSpace();
 #endif
 	}
 

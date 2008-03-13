@@ -1391,6 +1391,21 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
+	if((e->state() & Qt::AltButton) || (e->state() & Qt::ControlButton))
+	{
+		switch(e->key())
+		{
+			case Qt::Key_Backspace:
+				if(m_pInputParent->inherits("KviInput"))
+				{
+					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
+					clear();
+					return;
+				}
+				break;
+		}
+	}
+
 //Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
 //This way typical X11 and Apple shortcuts can be used simultanously within the input line.
 #ifndef Q_OS_MACX
@@ -1597,20 +1612,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			break;
 		}
 	}
-	if(e->state() & Qt::AltButton)
-	{
-		switch(e->key())
-		{
-			case Qt::Key_Backspace:
-				if(m_pInputParent->inherits("KviInput"))
-				{
-					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
-					clear();
-					return;
-				}
-				break;
-		}
-	}
+
 	switch(e->key())
 	{
 		case Qt::Key_Right:
@@ -2389,7 +2391,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
 	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
 	m_pMultiEditorButton->setIconSet(is2);
-	KviTalToolTip::add(m_pMultiEditorButton,__tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;"));
+	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;");
+	szTip += " - &lt;Ctrl+Backspace&gt;";
+	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
 	
@@ -2453,13 +2457,13 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 {
 	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().utf8().data());
 
-	if(e->state() & Qt::ControlButton)
+	if((e->state() & Qt::ControlButton) || (e->state() & Qt::AltButton) || (e->state() & Qt::MetaButton))
 	{
 		switch(e->key())
 		{
 			case Qt::Key_Backspace:
-				if(m_pMultiLineEditor)
-					multilineEditorButtonToggled(!m_pMultiLineEditor);
+				//if(m_pMultiLineEditor)
+				multilineEditorButtonToggled(!m_pMultiLineEditor);
 			break;
 		}
 	}
@@ -2549,7 +2553,10 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	} else {
 		if(!bOn)return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
-		m_pMultiLineEditor->setFindText(__tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"));
+		QString szText = __tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor");
+		// compatibility entry to avoid breaking translation just before a release... :)
+		szText.replace("Alt+Backspace","Ctrl+Backspace");
+		m_pMultiLineEditor->setFindText(szText);
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
 		m_pMultiLineEditor->show();

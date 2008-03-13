@@ -308,7 +308,7 @@ void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 
 bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStringList &lKeywords)
 {
-	debug("recursive search:");
+	//debug("recursive search:");
 	if(!pItem)return false;
 
 	if(!pItem->m_pOptionsWidget)
