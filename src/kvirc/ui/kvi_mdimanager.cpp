@@ -134,6 +134,7 @@ void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
 	{
 		QPoint pnt = viewport()->mapToGlobal(contentsToViewport(r.topLeft()));
 		p->drawTiledPixmap(r,*(g_pShadedParentGlobalDesktopBackground),pnt);
+		return;
 	}
 #endif
 

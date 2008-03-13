@@ -781,7 +781,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 	if(bIsChan && KVI_OPTION_BOOL(KviOption_boolShowChannelUserFlagInPrivmsgView))
 		((KviChannel *)wnd)->prependUserFlag(nick,szNick);
 
-	if(KVI_OPTION_BOOL(KviOption_boolColorNicks) && !KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors))
+	if(KVI_OPTION_BOOL(KviOption_boolColorNicks))
 	{
 		int sum = 0;
 		int i = nick.length();

@@ -2274,9 +2274,8 @@ found_command_escape:
 						
 						pUnEscapeAt = term_cr;
 						
-						
 						bool bColorSetted=false;
-						if(line_ptr->pChunks[iCurChunk].szPayload[0]=='n' && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors))
+						if((line_ptr->pChunks[iCurChunk].szPayload[0]=='n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
 						{
 							if(m_pKviWindow->type()==KVI_WINDOW_TYPE_CHANNEL && m_pKviWindow)
 							{
