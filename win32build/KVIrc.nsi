@@ -67,7 +67,7 @@ LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
 LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
 LangString AutostartSection ${LANG_ENGLISH} "Autostart"
 LangString AutostartSectionDescr ${LANG_ENGLISH} "Start program when user login"
-LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous version of KVIrc must to be uninstalled."
+LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc must to be uninstalled."
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
 
 !include ".\translations\*.nsi"
