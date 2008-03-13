@@ -2599,6 +2599,7 @@ check_emoticon_char:
 		case KVI_OUT_CHANNELNOTICECRYPTED:
 		case KVI_OUT_OWNPRIVMSGCRYPTED:
 		case KVI_OUT_HIGHLIGHT:
+		case KVI_OUT_DCCCHATMSG:
 	{
 		// Pragma: 31.05.2002 : I had to kill the 8 prefix
 		// It happens really too often to have an 8 followed by a parenthesis
