@@ -259,7 +259,7 @@ try_again:
 		@switches:
 			!sw: --ipv6 | -i
 			Causes the command to run in IPv6 mode
-			!sw: --any | -i
+			!sw: --any | -a
 			Causes the command to run in unspecified mode and lookup both IPv4 and IPv6 addresses
 		@description:
 			Starts a DNS lookup for the <dnsquery> (hostname) and prints
