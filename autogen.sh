@@ -131,7 +131,7 @@ do
 			if test "$USE_BUNDLED_LIBTOOL" -eq 0; then
 				echo "... Using system libtool"
 				echo "...   Re-run with --bundled-libtool to use"
-				echo "...   the libtool shipped with the KVIrc cvs"
+				echo "...   the libtool shipped with the KVIrc svn"
 				RUN_TOOL libtoolize --copy --force
 			else
 				echo "... Using bundled libtool"
