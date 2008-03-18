@@ -55,6 +55,10 @@ bool g_bFoundMirc;
 	#include <unistd.h>  // for symlink()
 #endif
 
+#ifdef COMPILE_USE_QT4
+	#include <QDesktopWidget>
+#endif
+
 // libkvisetup.cpp
 extern QString g_szChoosenIncomingDirectory;
 //extern int g_iThemeToApply;

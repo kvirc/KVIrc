@@ -407,13 +407,11 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 		g_pLocalRegisteredUserDataBase->groupDict()->insert(text,group);
 		
 		KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-		KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	
-		while(KviRegisteredUser * u = it.current())
+		for(KviRegisteredUser * u = d->first();u;u = d->next())
 		{
 			if(u->group()==szOldGroup)
 				u->setGroup(text);
-			++it;
 		}
 		
 		
@@ -431,13 +429,11 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalListViewItem *
 			KviTalPopupMenu *groups = new KviTalPopupMenu;
 			
 			KviPointerHashTable<QString,KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-			KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*pGroups);
 			m_TmpDict.clear();
-			while(KviRegisteredUserGroup * g = git.current())
+			for(KviPointerHashTableEntry<QString,KviRegisteredUserGroup> * g = pGroups->firstEntry();g;g = pGroups->nextEntry())
 			{
-				int id=groups->insertItem(git.currentKey());
-				m_TmpDict.replace(id,g);
-				++git;
+				int id=groups->insertItem(g->key());
+				m_TmpDict.replace(id,g->data());
 			}
 			
 			connect(groups,SIGNAL(activated ( int )),this,SLOT(moveToGroupMenuClicked(int)));
@@ -468,22 +464,20 @@ void KviRegisteredUsersDialog::fillList()
 {
 	m_pListView->clear();
 	KviPointerHashTable<QString,KviRegisteredUsersGroupItem> groupItems(5,false);
+	groupItems.setAutoDelete(false);
 	
 	KviPointerHashTable<QString,KviRegisteredUserGroup> * pGroups = g_pLocalRegisteredUserDataBase->groupDict();
-	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*pGroups);
-	while(KviRegisteredUserGroup * g = git.current())
+	for(KviRegisteredUserGroup * g = pGroups->first();g;g = pGroups->next())
 	{
 		KviRegisteredUsersGroupItem* pCur = new KviRegisteredUsersGroupItem(m_pListView,g);
 		groupItems.insert(g->name(),pCur);
 		pCur->setOpen(TRUE);
-		++git;
 	}
 	
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	KviRegisteredUsersDialogItem * item;
 
-	while(KviRegisteredUser * u = it.current())
+	for(KviRegisteredUser * u = d->first();u;u = d->next())
 	{
 		if(u->group().isEmpty())
 			u->setGroup(__tr("Default"));
@@ -497,7 +491,6 @@ void KviRegisteredUsersDialog::fillList()
 			groupItems.insert(__tr("Default"),pCur);
 			item = new KviRegisteredUsersDialogItem(pCur,u);
 		}
-		++it;
 	}
 	if(m_pListView->firstChild())
 	{
@@ -714,13 +707,11 @@ void KviRegisteredUsersDialog::exportClicked()
 			if(pd)
 			{
 				if(!f.save(pd->count()))goto write_error;
-				KviPointerHashTableIterator<QString,QString> it(*pd);
-				while(it.current())
+				for(KviPointerHashTableEntry<QString,QString> * pCur = pd->firstEntry();pCur;pCur = pd->nextEntry())
 				{
-					QString key = it.currentKey();
+					QString key = pCur->key();
 					if(!f.save(key))goto write_error;
-					if(!f.save(*(it.current())))goto write_error;
-					++it;
+					if(!f.save(*(pCur->data())))goto write_error;
 				}
 			} else {
 				if(!f.save(0))goto write_error;

@@ -133,7 +133,6 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 			g_pRegisteredUsersDialog = new KviRegisteredUsersDialog(c->window()->frame()->splitter());
 		}
 	}
-
 	g_pRegisteredUsersDialog->show();
 	g_pRegisteredUsersDialog->raise();
 	g_pRegisteredUsersDialog->setFocus();

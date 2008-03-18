@@ -30,6 +30,7 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qlayout.h>
+#include <qtextbrowser.h>
 
 KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 : QDialog(pParent)
@@ -47,7 +48,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	QGridLayout * g = new QGridLayout(this,4,3,7,7);
 	
 	QLabel * l;
-	KviTalTextEdit * te;
+	QTextBrowser * te;
 	QPushButton * pb;
 	
 	int iUp = 0;
@@ -69,8 +70,9 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		iDown = 1;
 	}
 
-	te = new KviTalTextEdit(this);
+	te = new QTextBrowser(this);
 	te->setText(pData->szHtmlText);
+	//te->setReadOnly(true);
 
 	if(pData->iFlags & KviHtmlDialogData::ForceMinimumSize)
 		te->setMinimumSize(pData->iMinimumWidth,pData->iMinimumHeight);

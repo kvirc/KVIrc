@@ -565,7 +565,7 @@ alias(ignore)
 	# And finally set the property (use -n so the notify lists will be restarted)
 	# Check if ignore or unignore the user
 
-	if(!$sw(r))
+	if(!$sw(r,remove))
 	{
 		reguser.setproperty $0 IgnoreEnabled 1
 		reguser.setproperty $0 IgnoreAll 1
