@@ -215,6 +215,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		}
 
 		params.append(new KviKvsVariant(szData));
+		if (m_pData->pMagic) params.append(m_pData->pMagic);
 
 		KviKvsVariant retVal;
 		int iRet = m_pData->pCallback->run(m_pData->pWnd,&params,&retVal,KviKvsScript::PreserveParams,m_pExtendedRunTimeData);

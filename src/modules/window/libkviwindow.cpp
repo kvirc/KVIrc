@@ -1040,7 +1040,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	if(c->parameterList()->count() >= 3)
 	{
 		pConsole = g_pApp->findConsole(uCtx);
-		if(!pConsole)
+		if(!pConsole && !szFlags.contains('q'))
 		{
 			c->warning(__tr2qs("The specified IRC context is not valid: creating a context free window"));
 		}

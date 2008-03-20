@@ -71,10 +71,10 @@
 		If the parameter is ommited, it is assumed to be false.
 		!fn: <boolean> $editable()
 		Returns whether the combobox is editable or not.
-		!fn: $setEditText(<text:string>)
+		!fn: $setEditText(<text:string>,[<quiet:bool>])
 		Sets the text in the embedded line edit to newText without
 		changing the combo's contents. Does nothing if the combo
-		isn't editable.
+		isn't editable. If the optional quiet parameter is true no warning will be print if text will be empty.
 		!fn: $clear()
 		Removes all the items from the combo box
 		!fn: $textAt(<index:uint>)
@@ -274,11 +274,13 @@ bool KviKvsObject_combobox::functioneditable(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_combobox::functionsetEditText(KviKvsObjectFunctionCall *c)
 {
 	QString szText;
+	bool bQuiet=false;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+		KVSO_PARAMETER("quiet",KVS_PT_BOOLEAN,KVS_PF_OPTIONAL,bQuiet)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	if (szText.isEmpty()) c->warning("No string parameter given - using empty string");
+	if (szText.isEmpty() && !bQuiet) c->warning("No string parameter given - using empty string");
 	((QComboBox *)widget())->setEditText(szText);
 	return true;
 }
