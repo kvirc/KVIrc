@@ -27,26 +27,32 @@ alias(avatar)
 	}
 	avatar.notify $0
 }
+
 alias(clear)
 {
 	window.clearOutput
 }
+
 alias(connect)
 {
 	objects.connect $0 $1 $2 $3
 }
+
 alias(disconnect)
 {
 	objects.disconnect $0 $1 $2 $3
 }
+
 alias(killclass)
 {
 	objects.killclass $0
 }
+
 alias(clearobjects)
 {
 	objects.clear $0
 }
+
 alias(nickserv)
 {
 	# Silent
@@ -70,7 +76,6 @@ alias(ns)
 	# Silent
 	raw -q nickserv $0-
 }
-
 
 alias(cs)
 {
@@ -121,6 +126,7 @@ alias(gnotice)
 	if($sw(h)) eval %cmd \%$chan.name($active) $0-
 	if($sw(v)) eval %cmd \+$chan.name($active) $0-
 }
+
 alias(wallop)
 {
 	if(!$0){
@@ -155,7 +161,6 @@ alias(ms)
 }
 
 # j: This is a really common one
-
 alias(j)
 {
 	#first we do a test if a chan is given as parameter
@@ -169,8 +174,7 @@ alias(j)
 }
 
 # s: This too
-
-alias (s)
+alias(s)
 {
 	if(!$0)
 	{
@@ -182,8 +186,7 @@ alias (s)
 }
 
 # q: Ok, I am lazy :P
-
-alias (q)
+alias(q)
 {
 	if(!$0)
 	{
@@ -195,7 +198,6 @@ alias (q)
 }
 
 # Mmmm, this could be improved...
-
 alias (lag)
 {
 	if(!$server)
@@ -207,7 +209,6 @@ alias (lag)
 }
 
 # names: maybe this should be implemented on the core?
-
 alias(names)
 {
 	if(!$0)
@@ -224,8 +225,7 @@ alias(names)
 }
 
 # kickban
-
-alias (kb)
+alias(kb)
 {
 	if(!$0)
 	{
@@ -269,8 +269,7 @@ alias (kb)
 }
 
 # chanowner
-
-alias (chanowner)
+alias(chanowner)
 {
 	if(!$0)
 	{
@@ -294,8 +293,7 @@ alias (chanowner)
 }
 
 # chanadmin
-
-alias (chanadmin)
+alias(chanadmin)
 {
 	if(!$0)
 	{
@@ -319,8 +317,7 @@ alias (chanadmin)
 }
 
 # dechanowner
-
-alias (dechanowner)
+alias(dechanowner)
 {
 	if(!$0)
 	{
@@ -344,8 +341,7 @@ alias (dechanowner)
 }
 
 # dechanadmin
-
-alias (dechanadmin)
+alias(dechanadmin)
 {
 	if(!$0)
 	{
@@ -369,8 +365,7 @@ alias (dechanadmin)
 }
 
 # halfop
-
-alias (halfop)
+alias(halfop)
 {
 	if(!$0)
 	{
@@ -394,8 +389,7 @@ alias (halfop)
 }
 
 # dehalfop
-
-alias (dehalfop)
+alias(dehalfop)
 {
 	if(!$0)
 	{
@@ -419,8 +413,7 @@ alias (dehalfop)
 }
 
 # userop
-
-alias (userop)
+alias(userop)
 {
 	if(!$0)
 	{
@@ -444,8 +437,7 @@ alias (userop)
 }
 
 # deuserop
-
-alias (deuserop)
+alias(deuserop)
 {
 	if(!$0)
 	{
@@ -469,7 +461,6 @@ alias (deuserop)
 }
 
 # ame and amsg
-
 alias(ame)
 {
 	foreach(%i,$window.list(channel))if(%i!="") me -r=%i $0-
@@ -484,7 +475,6 @@ alias(amsgall)
 {
 	foreach(%i,$window.list(channel),$window.list(query))msg $target(%i) $0-
 }
-
 
 alias(ameall)
 {
@@ -501,7 +491,6 @@ alias(awayall)
 # notify: this is a bit more complex
 # We want to add an user to the notify list with a single command
 # The notify lists are handled thru the registered users database
-
 alias(notify)
 {
 	# This one adds a registered users database entry
@@ -567,13 +556,12 @@ alias(ignore)
 
 	if(!$sw(r,remove))
 	{
-		reguser.setproperty $0 IgnoreEnabled 1
-		reguser.setproperty $0 IgnoreAll 1
-	} else reguser.setproperty $0 IgnoreEnabled 0
+		reguser.setIgnoreEnabled $0 1
+		reguser.setIgnoreFlags -p -c -n -t -i -d $0
+	} else reguser.setIgnoreEnabled $0 0
 }
 
 # Dcc...people commonly use "dcc send" instead of "dcc.send"
-
 alias(dcc)
 {
 	switch($0)
@@ -656,7 +644,6 @@ alias(sha1)
 }
 
 # DNS : people like it
-
 alias(dns)
 {
 	if(!$context)
