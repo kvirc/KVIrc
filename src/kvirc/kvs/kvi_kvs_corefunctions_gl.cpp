@@ -200,7 +200,7 @@ namespace KviKvsCoreFunctions
  	    @type:
 			function
  	    @title:
- 	        $lag.lag
+ 	        $lag
  	    @short:
  	        Returns the lag on the current server
  	    @syntax:
