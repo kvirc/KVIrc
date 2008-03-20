@@ -756,6 +756,7 @@ AC_DEFUN([AC_SS_CHECK_DL],
 			echo "###  It looks that your system has no interface to the dynamic linker ?"
 			echo "###  If you're on linux, you either miss libdl , or the linker is not"
 			echo "###  able to find it. Make sure that libdl is in /lib or /usr/lib."
+			echo "###  If you're sure you have libdl, make sure you have also g++ installed
 			echo "###  If you're not on linux, please drop a mail to pragma at kvirc dot net"
 			echo "###  describing your system and I'll try to fix it."
 			echo "################################################################################"
