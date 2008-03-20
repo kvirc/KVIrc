@@ -96,6 +96,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(isWellKnown);
 	KVSCF(k);
 	KVSCF(keys);
+	KVSCF(lag);
 	KVSCF(lang);
 	KVSCF(length);
 	KVSCF(lf);

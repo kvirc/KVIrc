@@ -42,6 +42,7 @@
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_eventhandler.h"
 #include <qregexp.h>
+#include "kvi_lagmeter.h"
 
 namespace KviKvsCoreFunctions
 {
@@ -193,7 +194,34 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
+	//-------------------------------------------------
+	/*
+ 	    @doc: lag
+ 	    @type:
+			function
+ 	    @title:
+ 	        $lag.lag
+ 	    @short:
+ 	        Returns the lag on the current server
+ 	    @syntax:
+ 	        <integer> lag
+ 	    @description:
+ 	        This function returns the lag in the current server, in miliseconds.[br]
+	*/
 
+	KVSCF(lag)
+	{
+	        if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();
+ 	        if(!KVSCF_pContext->window()->console()->connection())  return KVSCF_pContext->warningNoIrcConnection();
+ 	        if(!KVSCF_pContext->window()->console()->connection()->lagMeter())
+ 	        {
+ 	            KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
+ 	            return false;
+ 	        }
+ 	
+ 	       KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
+ 	        return true;
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -777,6 +805,9 @@ namespace KviKvsCoreFunctions
 		else KVSCF_pRetBuffer->setString(szLocale);
 		return true;
 	}
+
+
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 

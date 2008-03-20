@@ -197,16 +197,6 @@ alias(q)
 	}
 }
 
-# Mmmm, this could be improved...
-alias (lag)
-{
-	if(!$server)
-	{
-		echo "[LAG]: " $tr("You must be connected to a server")
-		halt
-	}
-	echo $tr("Lag is") $lag.lag() $tr("milliseconds")
-}
 
 # names: maybe this should be implemented on the core?
 alias(names)

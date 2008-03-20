@@ -88,6 +88,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("isWellKnown",isWellKnown)
 		_REGFNC("k",k)
 		_REGFNC("keys",keys)
+		_REGFNC("lag",lag)
 		_REGFNC("lang",lang)
 		_REGFNC("length",length)
 		_REGFNC("lf",lf)
