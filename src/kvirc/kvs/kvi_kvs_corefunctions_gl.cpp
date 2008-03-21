@@ -194,21 +194,22 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
+	
 	//-------------------------------------------------
 	/*
  	    @doc: lag
  	    @type:
 			function
  	    @title:
- 	        $lag
+ 	    		$lag
  	    @short:
- 	        Returns the lag on the current server
+	 	        Returns the lag on the current server
  	    @syntax:
- 	        <integer> lag
+ 		        <integer> lag
  	    @description:
- 	        This function returns the lag in the current server, in miliseconds.[br]
+ 	    		This function returns the lag in the current server, in milliseconds.[br]
 	*/
-
+	
 	KVSCF(lag)
 	{
 	        if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();
@@ -218,8 +219,8 @@ namespace KviKvsCoreFunctions
  	            KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
  	            return false;
  	        }
- 	
- 	       KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
+ 	        
+ 	        KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
  	        return true;
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////
