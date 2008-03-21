@@ -6,27 +6,33 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: perl_fi\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< .mine
+"POT-Creation-Date: 2007-11-21 17:10+0100\n"
+"PO-Revision-Date: 2007-11-27 18:38+0200\n"
+"Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
+=======
 "POT-Creation-Date: 2008-03-21 01:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+>>>>>>> .r1243
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
 msgid "The perlcore module can't be loaded: perl support not available"
-msgstr ""
+msgstr "Moduulia perlcore ei voitu ladata: perl-tuke ei saatavilla"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:49
 msgid "To see more details about loading failure try /perlcore.load"
-msgstr ""
+msgstr "Saadaksesi lisätietoja latausvirheestä, kokeile /perlcore.load"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:62
 msgid "This KVIrc executable has been compiled without perl scripting support"
-msgstr ""
+msgstr "Tämä KVIrc suoritettava on käännetty ilman perl-skriptaus tukea"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:462
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:536
@@ -34,8 +40,9 @@ msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
 msgstr ""
+"Perlcore -moduuli ei onnistunut ajamaan koodia: jokin on vialla perl-tuessa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:479
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:483
 msgid "Perl execution error:"
-msgstr ""
+msgstr "Perl-ajo virhe:"

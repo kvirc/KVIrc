@@ -6,64 +6,70 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: notifier_fi\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< .mine
+"POT-Creation-Date: 2007-11-21 17:09+0100\n"
+"PO-Revision-Date: 2007-11-21 18:00+0200\n"
+"Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
+=======
 "POT-Creation-Date: 2008-03-21 01:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+>>>>>>> .r1243
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1247
 msgid "Hide"
-msgstr ""
+msgstr "Piilota"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1250
 msgid "1 Minute"
-msgstr ""
+msgstr "Minuutti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1251
 msgid "5 Minutes"
-msgstr ""
+msgstr "Viisi minuuttia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1252
 msgid "15 Minutes"
-msgstr ""
+msgstr "15 minuuttia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1253
 msgid "30 Minutes"
-msgstr ""
+msgstr "Puoli tuntia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1254
 msgid "1 Hour"
-msgstr ""
+msgstr "Tunti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1256
 msgid "Until KVIrc is Restarted"
-msgstr ""
+msgstr "Kunnes KVIrc aloitetaan uudestaan"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1257
 msgid "Permanently (Until Explicitly Enabled)"
-msgstr ""
+msgstr "Vakituisesti (ellei toisin säädetä)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1259
 msgid "Disable"
-msgstr ""
+msgstr "Ota pois päältä"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1350
 msgid "Write text or commands to window"
-msgstr ""
+msgstr "Kirjoita tekstiä tai komentoja ikkunaan"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
-msgstr ""
+msgstr "Tämä ikkuna ei ole olemassa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
-msgstr ""
+msgstr "Asetettu aikakatkaisu ei ole oikein muotoiltu, oletetaan 0:ksi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
-msgstr ""
+msgstr "-t -kytkin olettaa aikakatkaisun sekunneissa"
