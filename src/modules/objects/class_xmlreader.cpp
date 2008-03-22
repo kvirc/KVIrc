@@ -29,6 +29,8 @@
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_hash.h"
 
+#include "kvi_qstring.h"
+
 
 /*
 	@doc: xmlreader
@@ -316,7 +318,13 @@ bool KviKvsObject_xmlreader::function_parse(KviKvsObjectFunctionCall *c)
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
-	source.setData(szString);
+	// We have a problem here.. most kvirc functions already interpret the data
+	// read from files. We should have binary data handling features to get this to work correctly.
+	// The following snippet of code tries to provide a best-effort workaround.
+	KviQCString utf8data = KviQString::toUtf8(szString);
+	QByteArray data = utf8data;
+	data.truncate(utf8data.length()); // don't include the null terminator in data
+	source.setData(data);
 	//debug("PARSING(%s) LEN(%d)",szString.utf8().data(),szString.utf8().length());
 	QXmlSimpleReader reader;
 	reader.setContentHandler(&handler);
