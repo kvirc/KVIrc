@@ -72,11 +72,20 @@ KviKvsObjectClass::KviKvsObjectClass(
 
 KviKvsObjectClass::~KviKvsObjectClass()
 {
-	KviKvsKernel::instance()->objectController()->killAllObjectsWithClass(this);
-	if(m_pParentClass)m_pParentClass->unregisterChildClass(this);
-	KviKvsKernel::instance()->objectController()->unregisterClass(this);
-	delete m_pFunctionHandlers;
+	// order here is critical
+
+	// first of all kill our child classes
 	while(m_pChildClasses->first())delete m_pChildClasses->first();
+	// then kill all objects that belong to our class
+	KviKvsKernel::instance()->objectController()->killAllObjectsWithClass(this);
+	// now we're quite clean: should have no object depending on us alive
+	// unregister from the parent, if any
+	if(m_pParentClass)m_pParentClass->unregisterChildClass(this);
+	// unregister from the object controller
+	KviKvsKernel::instance()->objectController()->unregisterClass(this);
+	// and start effectively dying
+	delete m_pFunctionHandlers;
+	// this is empty now
 	delete m_pChildClasses;
 }
 

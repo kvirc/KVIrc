@@ -683,7 +683,8 @@ KviKvsObject::~KviKvsObject()
 		if(!m_pConnectionList)break;
 		KviKvsObjectConnection * pConnection = m_pConnectionList->first();
 		if(!pConnection)break;
-		pConnection->pSourceObject->disconnectSignal(pConnection->szSignal,pConnection);
+		QString szSignalCopy = pConnection->szSignal; // we need this since pConnection is deleted inside disconnectSignal() and pConnection->szSignal dies too (but is referenced after the connection delete)
+		pConnection->pSourceObject->disconnectSignal(szSignalCopy,pConnection);
 	}
 #endif
 

@@ -316,7 +316,8 @@ bool KviKvsObject_xmlreader::function_parse(KviKvsObjectFunctionCall *c)
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
-	source.setData(szString.utf8());
+	source.setData(szString);
+	//debug("PARSING(%s) LEN(%d)",szString.utf8().data(),szString.utf8().length());
 	QXmlSimpleReader reader;
 	reader.setContentHandler(&handler);
 	reader.setErrorHandler(&handler);

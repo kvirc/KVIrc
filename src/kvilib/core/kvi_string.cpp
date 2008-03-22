@@ -1058,7 +1058,7 @@ KviStr::KviStr(const KviQCString &str)
 KviStr::KviStr(const char *str,int len)
 {
 	__range_valid(str);
-	__range_valid(len <= ((int)strlen(str)));
+	//__range_valid(len <= ((int)strlen(str))); <-- we trust the user here (and a strlen() call may run AFTER len if data is not null terminated)
 	__range_valid(len >= 0);
 	m_len = len;
 	m_ptr = (char *)kvi_malloc(m_len+1);
