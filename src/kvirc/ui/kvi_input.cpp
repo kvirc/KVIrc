@@ -2168,7 +2168,7 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int curXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int curChar = m_iFirstVisibleChar;
-	debug("%i",g_pLastFontMetrics);
+	//debug("%i",g_pLastFontMetrics);
 	if(!g_pLastFontMetrics) g_pLastFontMetrics = new QFontMetrics(KVI_OPTION_FONT(KviOption_fontInput));
 	while(curChar < chIdx)
 	{
