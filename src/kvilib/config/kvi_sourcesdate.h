@@ -35,6 +35,6 @@
 // this is usually changed only when a setup is really needed because
 // of an incompatible change in the configuration files
 // .. so do NOT change it just when you change KVI_SOURCES_DATE_NUMERIC :)
-#define KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP 0x20060305
+#define KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP 0x20080101
 
 #endif //!_KVI_SOURCESDATE_H_
