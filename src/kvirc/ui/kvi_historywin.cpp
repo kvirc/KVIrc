@@ -219,6 +219,7 @@ void KviHistoryWindow::show()
 
 void KviHistoryWindow::timerEvent(QTimerEvent *)
 {
+	m_pOwner = 0; // do not setFocus() to the owner after the timeout
 	doHide();
 }
 
@@ -241,7 +242,7 @@ void KviHistoryWindow::itemSelected(const QString &str)
 }
 
 
-void KviHistoryWindow::hideEvent ( QHideEvent * )
+void KviHistoryWindow::hideEvent(QHideEvent *)
 {
 	if(m_iTimerId != -1)
 	{
