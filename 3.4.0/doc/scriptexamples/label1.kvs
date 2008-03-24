@@ -1,0 +1,39 @@
+# A little label test.
+
+class(myLabel, label)
+{
+	constructor
+	{
+		$$->$setBackgroundColor(dcdc00);
+		$$->$setAutoResize(0);
+		$$->$setGeometry(10, 10, 500, 150);
+		$$->$setAlignment(Center);
+		$$->$setText("Come here !");
+	}
+
+	mouseEnterEvent
+	{
+		$$->$setMargin(10);
+		$$->$setAlignment(Right, Top);
+		%al = "My alignment is $$->$alignment(), and I have margin $$->$margin() pixels wide !";
+		$$->$setText(%al);
+		$$->$setFrameStyle(Panel, Raised);
+		echo "Label frame style: $$->$frameStyle()";
+	}
+
+	mouseLeaveEvent
+	{
+		$$->$setMargin(0);
+		$$->$setAlignment(Left, Bottom);
+		%al = "My alignment is $$->$alignment(), and I have margin $$->$margin() pixels wide !";
+		$$->$setText(%al);
+		$$->$setFrameStyle(Panel, Sunken);
+		echo "Label frame style: $$->$frameStyle()";
+	}
+}
+
+%w = $new(widget, 0);
+%w->$resize(520, 170);
+%w->$move(50, 50);
+%l = $new(myLabel, %w);
+%w->$show();

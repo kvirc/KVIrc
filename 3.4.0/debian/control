@@ -1,0 +1,49 @@
+Source: kvirc
+Build-Depends: cdbs (>= 0.4.12), debhelper (>= 4.1.46), kdelibs4-dev (>= 4:3.1.3), libesd0-dev, libperl-dev
+Section: net
+Priority: optional
+Maintainer: Robin Verduijn <robin@debian.org>
+Standards-Version: 3.7.2.0
+
+Package: kvirc
+Architecture: any
+Depends: kvirc-data (>= 2:3.0.0), ${shlibs:Depends}
+Description:  KDE based next generation IRC client with module support
+ A highly configurable graphical IRC client with an MDI interface,
+ built-in scripting language, support for IRC DCC, drag & drop file
+ browsing, and much more. KVIrc uses the KDE widget set, can be extended
+ using its own scripting language, integrates with KDE, and supports
+ custom plugins.
+ .
+ If you are a developer and you want to write a custom module for KVIrc,
+ you need to install the kvirc-dev package.
+ .
+ The official homepage for KVIrc can be found at http://www.kvirc.net
+
+Package: kvirc-data
+Section: net
+Architecture: all
+Depends: kvirc (>= 2:3.0.0)
+Conflicts: kvirc-doc, kvirc (<< 2:3.0.0)
+Replaces: kvirc-doc
+Description: Data files for KVIrc
+ This package contains the architecture-independent data needed by KVIrc in
+ order to run, such as icons and images, language files, and shell scripts.
+ It also contains complete reference guides on scripting and functions
+ within KVIrc in its internal help format. Unless you want to use KVIrc only
+ as a very simple IRC client you are likely to want to write scripts to
+ tailor KVIrc to your needs.
+ .
+ KVIrc is a graphical IRC client based on the KDE widget set which integrates
+ with the K Desktop Environment.
+
+Package: kvirc-dev
+Section: devel
+Architecture: any
+Depends: kvirc (>= 2:3.0.0)
+Description: Development files for KVIrc
+ This package contains KVIrc libraries and include files you need if you
+ want to develop plugins for KVIrc.
+ .
+ KVIrc is a graphical IRC client based on the KDE widget set which integrates
+ with the K Desktop Environment.

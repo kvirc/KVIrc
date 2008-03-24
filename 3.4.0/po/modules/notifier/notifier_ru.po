@@ -1,0 +1,78 @@
+# translation of notifier_ru.po to russian
+# translation of notifier_ru.po to русский
+# translation of notifier.po to русский
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Valerius <valeragir@mail.ru>, 2004.
+# Valeriy Girchenko <valeragir@mail.ru>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: notifier_ru\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"PO-Revision-Date: 2005-02-16 19:45+0200\n"
+"Last-Translator: Valeriy Girchenko <valeragir@mail.ru>\n"
+"Language-Team: russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1247
+msgid "Hide"
+msgstr "Скрыть"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1250
+msgid "1 Minute"
+msgstr "1 Минута"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1251
+msgid "5 Minutes"
+msgstr "5 Минут"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1252
+msgid "15 Minutes"
+msgstr "15 Минут"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1253
+msgid "30 Minutes"
+msgstr "30 Минут"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1254
+msgid "1 Hour"
+msgstr "1 Час"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1256
+msgid "Until KVIrc is Restarted"
+msgstr "Пока KVIrc не будет перезапущен"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1257
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Навсегда (До явного включения)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1259
+msgid "Disable"
+msgstr "Выключить"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1350
+msgid "Write text or commands to window"
+msgstr "Напишите текст или команду в окне"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "Заданное окно не существует"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Заданный таймаут недействителен, принимается 0"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Используйте ключ -t чтобы задать таймаут в секундах"
+
+#~ msgid "The command parser raised an error"
+#~ msgstr "Синтаксический анализатор обнаружил в команде ошибку"

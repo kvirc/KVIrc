@@ -1,0 +1,115 @@
+# translation of editor_de.po to german
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Christoph Thielecke <crissi99@gmx.de>, 2004.
+# Markus Rennings <kvirc@mrmx.de>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_de\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"PO-Revision-Date: 2007-11-14 01:17+0100\n"
+"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"Language-Team: german <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Font:"
+msgstr "Schriftart:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
+msgid "Background:"
+msgstr "Hintergrund:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "Normal text:"
+msgstr "Normaler Text:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
+msgid "Brackets:"
+msgstr "Klammern:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
+msgid "Comments:"
+msgstr "Kommentare:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
+msgid "Functions:"
+msgstr "Funktionen:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
+msgid "Keywords:"
+msgstr "Schlüsselwörter:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Variables:"
+msgstr "Variablen:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
+msgid "Punctuation:"
+msgstr "Zeichensetzung"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
+msgid "Find:"
+msgstr "Suche:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
+msgid "&OK"
+msgstr "&OK"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
+msgid "&Open..."
+msgstr "&Öffnen..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:870
+msgid "&Save As..."
+msgstr "&Speichern als..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
+msgid "&Configure Editor..."
+msgstr "&Editor einrichten..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
+msgid "Choose a Filename - KVIrc"
+msgstr "Dateiname auswählen - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
+msgid "Save Failed - KVIrc"
+msgstr "Speichern fehlgeschlagen - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1001
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Datei %s kann nicht zum Schreiben geöffnet werden."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1066
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1081
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Zeile: %d Spalte: %d"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
+msgid "Load Script File - KVIrc"
+msgstr "Skriptdatei laden - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
+msgid "Open Failed - KVIrc"
+msgstr "Öffnen fehlgeschlagen - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Datei %s kann nicht zum Lesen geöffnet werden."

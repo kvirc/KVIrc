@@ -1,0 +1,737 @@
+#ifndef _KVI_OPTIONS_H_
+#define _KVI_OPTIONS_H_
+
+//=============================================================================
+//
+//   File : kvi_options.h
+//   Creation date : Tue Jun 20 2000 12:42:07 by Szymon Stefanek
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
+#include "kvi_settings.h"
+#include "kvi_string.h"
+#include "kvi_pixmap.h"
+#include "kvi_msgtype.h"
+
+#include <qrect.h>
+#include <qpixmap.h>
+#include <qcolor.h>
+#include <qfont.h>
+#include <qstringlist.h>
+
+// option structures
+
+
+#define DECLARE_OPTION_STRUCT(_cname,_type) \
+	class _cname \
+	{ \
+	public: \
+		const char * name; \
+		_type        option; \
+		int          flags; \
+	public: \
+		_cname(const char * n,_type o,int f) \
+		: name(n) , option(o) , flags(f) {}; \
+		~_cname() {}; \
+	};
+
+DECLARE_OPTION_STRUCT(KviBoolOption,bool)
+DECLARE_OPTION_STRUCT(KviRectOption,QRect)
+DECLARE_OPTION_STRUCT(KviStringOption,QString)
+DECLARE_OPTION_STRUCT(KviColorOption,QColor)
+DECLARE_OPTION_STRUCT(KviFontOption,QFont)
+DECLARE_OPTION_STRUCT(KviPixmapOption,KviPixmap)
+//DECLARE_OPTION_STRUCT(KviIntOption,int)
+DECLARE_OPTION_STRUCT(KviUIntOption,unsigned int)
+DECLARE_OPTION_STRUCT(KviMsgTypeOption,KviMsgType)
+DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
+
+#define KVI_COLOR_EXT_USER_OP 		50
+#define KVI_COLOR_EXT_USER_HALFOP	51
+#define KVI_COLOR_EXT_USER_ADMIN	52
+#define KVI_COLOR_EXT_USER_OWNER	53
+#define KVI_COLOR_EXT_USER_VOICE	54
+#define KVI_COLOR_EXT_USER_USEROP	55
+#define KVI_COLOR_EXT_USER_NORMAL	56
+#define KVI_COLOR_CUSTOM		255
+#define KVI_COLOR_OWN			254
+
+// option entry indexes
+
+#define KVI_RECT_OPTIONS_PREFIX "rect"
+#define KVI_RECT_OPTIONS_PREFIX_LEN 4
+
+#define KviOption_rectFrameGeometry 0                                /* internal */
+/* FIXME: this should be in the options module (local config) ? */
+#define KviOption_rectGeneralOptionsDialogGeometry 1                 /* internal */
+/* FIXME: this should be in the regusers module (local config) ? */
+#define KviOption_rectRegisteredUsersDialogGeometry 2                /* internal */
+
+#define KVI_NUM_RECT_OPTIONS 3
+
+
+
+#define KVI_BOOL_OPTIONS_PREFIX "bool"
+#define KVI_BOOL_OPTIONS_PREFIX_LEN 4
+
+#define KviOption_boolWindowsRememberProperties 0                    /* interface::features::global */
+#define KviOption_boolIrcViewShowImages 1                            /* interface::features::components::ircview */
+#define KviOption_boolIrcViewTimestamp 2                             /* interface::features::components::ircview */
+#define KviOption_boolIrcViewUrlHighlighting 3                       /* interface::features::components::ircview */
+#define KviOption_boolIrcViewWrapMargin 4                            /* interface::features::components::ircview */
+#define KviOption_boolInputHistoryCursorAtEnd 5                      /* interface::features::components::input */
+#define KviOption_boolAvoidParserWarnings 6                          /* ircengine::uparser */
+#define KviOption_boolUseProxyHost 7                                 /* transport */
+#define KviOption_boolShowGeneralOptionsDialogAsToplevel 8           /* interface::features::global */
+#define KviOption_boolForceBrutalQuit 9                              /* irc */
+#define KviOption_boolShowPingPong 10                                /* ircoutput */
+#define KviOption_boolPopupNotifierOnNewQueryMessages 11             /* query */
+#define KviOption_boolShowExtendedServerInfo 12                      /* ircoutput */
+#define KviOption_boolEchoNumericTopic 13                            /* ircoutput */
+#define KviOption_boolShowOwnParts 14                                /* ircoutput */
+#define KviOption_boolUseAntiSpamOnPrivmsg 15                        /* ircengine::outputcontrol::antispam */
+#define KviOption_boolUseExtendedPrivmsgView 16                      /* ircengine::outputcontrol::privmsg */
+#define KviOption_boolShowUserAndHostInPrivmsgView 17                /* ircengine::outputcontrol::privmsg */
+#define KviOption_boolUseWordHighlighting 18                         /* ircengine::outputcontrol::highlighting */
+#define KviOption_boolUseBigIcons 19                                 /* internal */
+#define KviOption_boolCleanupUnusedModules 20                        /* uparser ? */
+#define KviOption_boolIgnoreCtcpPing 21                              /* ctcp */
+#define KviOption_boolIgnoreCtcpVersion 22                           /* ctcp */
+#define KviOption_boolUseCtcpFloodProtection 23                      /* ctcp */
+#define KviOption_boolDisableBrokenEventHandlers 24                  /* ircengine::uparser */
+#define KviOption_boolIgnoreCtcpClientinfo 25                        /* ctcp */
+#define KviOption_boolIgnoreCtcpUserinfo 26                          /* ctcp */
+#define KviOption_boolIgnoreCtcpFinger 27                            /* ctcp */
+#define KviOption_boolIgnoreCtcpSource 28                            /* ctcp */
+#define KviOption_boolIgnoreCtcpTime 29                              /* ctcp */
+#define KviOption_boolRequestMissingAvatars 30                       /* ctcp::avatar */
+#define KviOption_boolShowCompactModeChanges 31                      /* ircoutput */
+#define KviOption_boolIgnoreCtcpDcc 32                               /* ctcp */
+#define KviOption_boolAutoAcceptDccChat 33                           /* dcc::chat */
+#define KviOption_boolAutoAcceptDccSend 34                           /* dcc::send */
+#define KviOption_boolSendZeroAckInDccRecv 35                        /* dcc::send */
+#define KviOption_boolUseFastDccSend 36                              /* dcc::send */
+#define KviOption_boolObtainGlobalBackgroundFromKde 37               /* interface::look::global */
+#define KviOption_boolUseTaskBarIrcContextIndicator 38               /* interface::features::global */
+#define KviOption_boolUseGlobalApplicationFont 39                    /* interface::look::global */
+#define KviOption_boolAlwaysQuitKVIrcClosingLastConsole 40           /* internal */
+#define KviOption_boolAlwaysDisconnectClosingConnectedConsole 41     /* internal */
+#define KviOption_boolFlashWindowOnHighlightedMessages 42            /* highlighting */
+#define KviOption_boolPopupNotifierOnHighlightedMessages 43          /* highlighting */
+#define KviOption_boolFlashWindowOnNotifyOnLine 44                   /* notify */
+#define KviOption_boolIrcViewTimestampUTC 45                         /* interface::features::components::ircview */
+#define KviOption_boolUseGlobalPseudoTransparency 46                 /* interface::look::global */
+#define KviOption_boolUseNotifyList 47                               /* ircengine::notifylist */
+#define KviOption_boolNotifyListChangesToActiveWindow 48             /* ircengine::notifylist */
+#define KviOption_boolAutoResumeDccSendWhenAutoAccepted 49           /* dcc::send */
+#define KviOption_boolLimitOutgoingTraffic 50                        /* transport */
+#define KviOption_boolSendUnknownCommandsAsRaw 51                    /* ircengine::uparser */
+#define KviOption_boolUserListViewDrawGrid 52                        /* look & feel::interface look::userlist */
+#define KviOption_boolShowChannelSyncTime 53                         /* ircoutput */
+#define KviOption_boolRejoinChannelOnKick 54                         /* irc */
+#define KviOption_boolKeepChannelOpenOnKick 55                       /* irc */
+#define KviOption_boolAutoCloseDccSendOnSuccess 56                   /* dcc::send */
+#define KviOption_boolNotifyDccSendSuccessInConsole 57               /* dcc::send */
+#define KviOption_boolCreateMinimizedDccSend 58                      /* dcc::send */
+#define KviOption_boolCreateMinimizedDccChat 59                      /* dcc::chat */
+#define KviOption_boolAutoAcceptIncomingAvatars 60                   /* irc::ctcp::avatar */
+#define KviOption_boolUseNickCompletionPostfixForFirstWordOnly 61
+#define KviOption_boolUseTaskBarIcons 62                             /* interface::features */
+#define KviOption_boolCreateMinimizedDccSendWhenAutoAccepted 63      /* dcc::send */
+#define KviOption_boolCreateMinimizedDccChatWhenAutoAccepted 64      /* dcc::chat */
+#define KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable 65   /* dcc */
+#define KviOption_boolShowRegisteredUsersDialogAsToplevel 66         /* interface::features::global */
+#define KviOption_boolAutoLogQueries 67                              /* ircengine::logging */
+#define KviOption_boolAutoLogChannels 68                             /* ircendine::logging */
+#define KviOption_boolAutoLogDccChat 69                              /* ircengine::logging */
+#define KviOption_boolAutoLogConsole 70                              /* ircengine::logging */
+#define KviOption_boolSilentAntiSpam 71                              /* ircengine::antispam */
+#define KviOption_boolUseIncomingDccMediaTypeSavePath 72             /* dcc::send */
+#define KviOption_boolNotifyListSendUserhostForOnlineUsers 73        /* ircengine::notifylist */
+#define KviOption_boolUseIntelligentNotifyListManager 74             /* ircengine::notifylist */
+#define KviOption_boolUseWatchListIfAvailable 75                     /* ircengine::notifylist */
+#define KviOption_boolUseTreeWindowListTaskBar 76                    /* interface::features::global */
+#define KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress 77    /* connection::transport */
+#define KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress 78    /* connection::transport */
+#define KviOption_boolUseAntiSpamOnNotice 79                         /* ircengine::antispam */
+#define KviOption_boolSetLastAvatarAsDefaultForRegisteredUsers 80    /* irc::ctcp::avatar */
+#define KviOption_boolCantAcceptIncomingDccConnections 81            /* dcc::general */
+#define KviOption_boolIgnoreCtcpAvatar 82                            /* irc::ctcp::floodprotection */
+#define KviOption_boolCtcpRepliesToActiveWindow 83                   /* ctcp */
+#define KviOption_boolAutoAcceptDccCanvas 84
+#define KviOption_boolNotifyDccSendSuccessInNotifier 85              /* dcc::send */
+#define KviOption_boolKillBrokenTimers 86                            /* ircengine::uparser */
+#define KviOption_boolDccVoiceVolumeSliderControlsPCM 87             /* dcc::voice */
+#define KviOption_boolDccVoiceForceHalfDuplex 88                     /* dcc::voice */
+#define KviOption_boolAutoAcceptDccVoice 89                          /* dcc::voice */
+#define KviOption_boolCreateMinimizedDccVoice 90                     /* dcc::voice */
+#define KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted 91     /* dcc::voice */
+#define KviOption_boolUseIdentService 92                             /* connection::ident */
+#define KviOption_boolShowTipAtStartup 93                            /* internal */
+#define KviOption_boolIdentdEnableIpV6 94                            /* connection::ident */
+#define KviOption_boolIdentdIpV6ContainsIpV4 95                      /* connection::ident */
+#define KviOption_boolScaleAvatars 96                                /* ctcp::avatar */
+#define KviOption_boolColorNicks 97                                  /* interface::features::components::ircview */
+#define KviOption_boolBoldedNicks 98                                 /* interface::features::components::ircview */	
+#define KviOption_boolDccListenOnSpecifiedInterfaceByDefault 99      /* dcc */
+#define KviOption_boolChangeNickAway 100                             /* ircengine::away */
+#define KviOption_boolAutoGeneratedAwayNick 101                      /* ircengine::away */
+#define KviOption_boolExitAwayOnInput 102                            /* ircengine::away */
+#define KviOption_boolAlwaysHighlightNick 103                        /* ircengine::outputcontrol::highlighting */
+#define KviOption_boolShowChannelsJoinOnIrc 104                      /* internal */
+#define KviOption_boolShowChannelsJoinDialogAsToplevel 105           /* FIXME: internal ??? */
+#define KviOption_boolUserDefinedPortRange 106                       /* dcc */
+#define KviOption_boolCreateQueryOnPrivmsg 107                       /* irc::query */
+#define KviOption_boolCreateQueryOnNotice 108                        /* irc::query */
+#define KviOption_boolCreateMinimizedQuery 109                       /* irc::query */
+#define KviOption_boolAutoJoinOnInvite 110                           /* irc */
+#define KviOption_boolShowServersConnectDialogOnStart 111            /* connection::ircservers */
+#define KviOption_boolShowServersConnectDialogAsToplevel 112         /* FIXME: internal ?? */
+#define KviOption_boolAcceptBrokenFileNameDccResumeRequests 113      /* dcc::send */
+#define KviOption_boolAutoReconnectOnUnexpectedDisconnect 114        /* connection */
+#define KviOption_boolRejoinChannelsAfterReconnect 115               /* connection */
+#define KviOption_boolReopenQueriesAfterReconnect 116                /* connection */
+#define KviOption_boolEnableQueryTracing 117                         /* irc::query */
+#define KviOption_boolOperatorMessagesToActiveWindow 118             /* irc::output */
+#define KviOption_boolInvitesToActiveWindow 119                      /* irc::output */
+#define KviOption_boolShowChannelUserFlagInPrivmsgView 120           /* ircengine::outputcontrol::privmsg */
+#define KviOption_boolDccSendFakeAddressByDefault 121                /* dcc::general */
+#define KviOption_boolUseTaskBarActivityMeter 122                    /* irc::output */
+#define KviOption_boolCloseServerWidgetAfterConnect 123 /* IMPLEMENTATION NEEDED !!! */
+#define KviOption_boolShowIdentityDialogAsToplevel 124  /* ??? */
+#define KviOption_boolShowUserChannelIcons 125                       /* look & feel::interface features::userlist */
+#define KviOption_boolShowUserChannelState 126                       /* look & feel::interface features::userlist */
+#define KviOption_boolEnableIgnoreOnPrivMsg 127                      /* irc::ignore */
+#define KviOption_boolVerboseIgnore 128                              /* irc::ignore */
+#define KviOption_boolEnableIgnoreOnNotice 129                       /* irc::ignore */
+#define KviOption_boolNotifyFailedDccHandshakes 130
+#define KviOption_boolAutoTileWindows 131             /* internal ? */
+#define KviOption_boolDrawEmoticons 132                              /* look::interface::features::output */
+#define KviOption_boolIgnoreCtcpPage 133                             /* irc::ctcp::floodprotection */
+#define KviOption_boolShowDialogOnCtcpPage 134
+#define KviOption_boolBashLikeNickCompletion 135
+#define KviOption_boolUseSSLCertificate 136                          /* ssl */
+#define KviOption_boolUseSSLPrivateKey 137                           /* ssl */
+#define KviOption_boolWarnAboutPastingMultipleLines 138              /* internal */
+#define KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect 139     /* connection */
+#define KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect 140      /* connection */
+#define KviOption_boolUseLagMeterEngine 141                          /* irc::lag */
+#define KviOption_boolShowLagOnContextDisplay 142                    /* irc::lag */
+#define KviOption_boolDisableBanListRequestOnJoin 143                /* irc::output */
+#define KviOption_boolDisableBanExceptionListRequestOnJoin 144       /* irc::output */
+#define KviOption_boolDisableInviteListRequestOnJoin 145             /* irc::output */
+#define KviOption_boolDisableWhoRequestOnJoin 146                    /* irc::output */
+#define KviOption_boolShowDockExtension 147                          /* internal ? */
+#define KviOption_boolDccAddressByIrcDns 148                         /* irc::general */
+#define KviOption_boolMinimizeConsoleAfterConnect 149                /* irc::connection */
+#define KviOption_boolHighlightOnlyNormalMsg 150                     /* irc::output::highlight */
+#define KviOption_boolHighlightOnlyNormalMsgQueryToo 151             /* irc::output::highlight */
+#define KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo 152   /* irc::output::highlight */
+#define KviOption_boolHighlightOnlyAtCostumHighlightLevel 153        /* irc::output::highlight */
+#define KviOption_boolMdiManagerInSdiMode 154                        /* internal */
+#define KviOption_boolDccBrokenBouncerHack 155                       /* dcc */
+#define KviOption_boolExternalMessagesToActiveWindow 156             /* irc::output */
+#define KviOption_boolIgnoreChannelAvatarRequestsWhenNoAvatarSet 157 /* ctcp */
+#define KviOption_boolFlashQueryWindowOnNewMessages 158              /* query */
+#define KviOption_boolConfirmCloseWhenThereAreConnections 159        /* interface features */
+#define KviOption_boolUpdateKdeBackgroundOnChange 160                /* themes::general */
+#define KviOption_boolCtcpRequestsToActiveWindow 161                 /* irc::output */
+#define KviOption_boolServerRepliesToActiveWindow 162                /* irc::output */
+#define KviOption_boolServerNoticesToActiveWindow 163                /* irc::output */
+#define KviOption_boolServicesNoticesToActiveWindow 164              /* irc::output */
+#define KviOption_boolSortTaskBarItemsByName 165                     /* interface::features::global */
+#define KviOption_boolShowTaskBarToolTips 166                        /* interface::features::global */
+#define KviOption_boolShowUserListViewToolTips 167                   /* interface::features::global */
+#define KviOption_boolWhoisRepliesToActiveWindow 168                 /* irc::output */
+#define KviOption_boolPopupNotifierOnNotifyOnLine 169                /* notify */
+#define KviOption_boolForciblyDisableNotifier 170                    /* notifier */
+#define KviOption_boolDccSendForceIdleStep 171                       /* dcc */
+#define KviOption_boolStatusBarVisible 172                           /* internal */
+#define KviOption_boolTrackLastReadTextViewLine 173                  /* ircview::features */
+#define KviOption_boolKeepChannelOpenOnPart 174                      /* irc */
+#define KviOption_boolStripMircColorsInUserMessages 175              /* irc::output */
+#define KviOption_boolDoNotSuggestRestoreDefaultScript 176           /* internal */
+#define KviOption_boolLimitDccSendSpeed 177                          /* dcc::file transfers */
+#define KviOption_boolLimitDccRecvSpeed 178                          /* dcc::file transfers */
+#define KviOption_boolIgnoreModuleVersions 179
+#define KviOption_boolDisableInputHistory 180                        /* interface::input */
+#define KviOption_boolUseSpecialColorForTimestamp 181                /* interface::output */
+#define KviOption_boolDisableAwayListUpdates 182                     /* irc::output */
+#define KviOption_boolDisableAvatars 183				 /* interface::userlist */ 
+#define KviOption_boolDisableUserListLabel 184		        	 /* interface::userlist */ 
+#define KviOption_boolDisablePopupIcons 185			     /* themes::general */ 
+#define KviOption_boolScriptErrorsToDebugWindow 186                  /* parser */
+#define KviOption_boolShowMinimizedDebugWindow 187                   /* parser */
+#define KviOption_boolShowExtendedInfoInQueryLabel 188               /* irc::query */
+#define KviOption_boolUseUserListColorsAsNickColors 189              /* irc::usermessages */
+#define KviOption_boolGzipLogs 190                                   /* ircengine::logging */
+#define KviOption_boolMinimizeInTray 191                                   /* interface */
+#define KviOption_boolDisableNotifierFlashing 192                                   /* interface::notifier */
+#define KviOption_boolCommandlineInUserFriendlyModeByDefault 193     /* interface::input */
+#define KviOption_boolEnableVisualEffects 194     /* interface */
+#define KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores 195
+#define KviOption_boolDoNotStretchAvatars 196
+#define KviOption_boolUseDifferentColorForOwnNick 197 /* interface */
+#define KviOption_boolCloseInTray 198                                   /* interface */
+#define KviOption_boolStartupMinimized 199                                   /* interface */
+#define KviOption_boolSortReceivedByDccFilesByNicks 200                                   /* dcc */
+#define KviOption_boolLogChannelHistory 201                                   /* irc */
+#define KviOption_boolClassicTaskBarSetMaximumButtonWidth 202
+#define KviOption_boolKeepChannelsOpenOnDisconnect 203 				/* connection */
+#define KviOption_boolKeepQueriesOpenOnDisconnect 204				/* connection */
+#define KviOption_boolHideWindowToolButtons 205			/* interface */
+#define KviOption_boolHideInputToolButtons 206			/* interface */
+#define KviOption_boolStripControlCodesInLogs 207			/* log */
+#define KviOption_boolEnableTrayIconFlashing 208
+#define KviOption_boolUseFlatClassicTaskbarButtons 209
+#define KviOption_boolShowTreeTaskbarHeader 210
+#define KviOption_boolUseLevelBasedTrayNotification 211
+#define KviOption_boolMuteAllSounds 212
+#define KviOption_boolCreateMinimizedChannels 213
+#define KviOption_boolShowNetworkNameForConsoleTaskBarEntry 214
+#define KviOption_boolDrawGenderIcons 215
+#define KviOption_boolPrependGenderInfoToRealname 216
+#define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
+#define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
+#define KviOption_boolScaleAvatarsOnLoad 219
+#define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
+#define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
+
+
+#define KVI_NUM_BOOL_OPTIONS 222
+
+
+
+#define KVI_STRING_OPTIONS_PREFIX "string"
+#define KVI_STRING_OPTIONS_PREFIX_LEN 6
+
+//UNUSED ! #define KviOption_stringFrameCaption 0                               /* interfacelookglobal */
+#define KviOption_stringNickname1 1                                  /* identity */
+#define KviOption_stringNickname2 2                                  /* identity */
+#define KviOption_stringNickname3 3                                  /* identity */
+#define KviOption_stringNickname4 4                                  /* identity */
+#define KviOption_stringUsername 5                                   /* identity */
+#define KviOption_stringRealname 6                                   /* identity */
+#define KviOption_stringLocalHostIp 7                   /* ?????? This is a fallback one */
+#define KviOption_stringPartMessage 8                                /* ircengine::defaultmessages */
+#define KviOption_stringQuitMessage 9                                /* ircengine::defaultmessages */
+#define KviOption_stringUrlHttpCommand 10                            /* urlhandlers */
+#define KviOption_stringExtendedPrivmsgPrefix 11                     /* ircengine::outputcontrol::privmsg */
+#define KviOption_stringExtendedPrivmsgPostfix 12                    /* ircengine::outputcontrol::privmsg */
+#define KviOption_stringCtcpVersionPostfix 13                        /* ircengine::ctcp::replies */
+#define KviOption_stringCtcpUserInfoOther 14                         /* identity */
+#define KviOption_stringCtcpSourcePostfix 15                         /* ircengine::ctcp::replies */
+#define KviOption_stringUrlFtpCommand 16                             /* urlhandlers */
+#define KviOption_stringUrlHttpsCommand 17                           /* urlhandlers */
+#define KviOption_stringUrlMailtoCommand 18                          /* urlhandlers */
+#define KviOption_stringPreferredMediaPlayer 19          /* still missing in options ! */
+#define KviOption_stringUrlFileCommand 20                            /* urlhandlers */
+#define KviOption_stringNickCompletionPostfix 21
+#define KviOption_stringUrlUnknownCommand 22                         /* urlhandlers */
+#define KviOption_stringIpV4ConnectionBindAddress 23                 /* connection::transport */
+#define KviOption_stringIpV6ConnectionBindAddress 24                 /* connection::transport */
+#define KviOption_stringDccVoiceSoundDevice	25                       /* dcc::voice */
+#define KviOption_stringDccVoiceMixerDevice	26                       /* dcc::voice */
+#define KviOption_stringAwayMessage 27                               /* irc::away */
+#define KviOption_stringIdentdUser 28                                /* connection::ident */
+#define KviOption_stringDccListenDefaultInterface 29                 /* dcc::general */
+#define KviOption_stringCustomAwayNick 30                            /* ircengine::away */
+#define KviOption_stringDefaultDccFakeAddress 31                     /* dcc::general */
+#define KviOption_stringCtcpPageReply 32                             /* ircengine::ctcp::replies */
+#define KviOption_stringSSLCertificatePath 33                        /* ssl */
+#define KviOption_stringSSLCertificatePass 34                        /* ssl */
+#define KviOption_stringSSLPrivateKeyPath 35                         /* ssl */
+#define KviOption_stringSSLPrivateKeyPass 36                         /* ssl */
+#define KviOption_stringSoundSystem 37                               /* sound */
+#define KviOption_stringDefaultUserMode 38
+#define KviOption_stringLastImageDialogPath 39                       /* internal */
+#define KviOption_stringIconThemeSubdir 40
+#define KviOption_stringIncomingPath 41                              /* folders */
+#define KviOption_stringMyAvatar 42
+// empty string means guess from locale
+#define KviOption_stringDefaultTextEncoding 43                       /* text encoding */
+
+#define KviOption_stringWinampTextEncoding 44
+#define KviOption_stringMp3TagsEncoding 45
+
+#define KviOption_stringCtcpUserInfoAge 46                                /* identity */
+#define KviOption_stringCtcpUserInfoGender 47                             /* identity */
+#define KviOption_stringCtcpUserInfoLocation 48                           /* identity */
+#define KviOption_stringCtcpUserInfoLanguages 49                          /* identity */
+#define KviOption_stringWordSplitters 50				/* highlight */
+#define KviOption_stringOnNewQueryOpenedSound 51				/* sounds */
+#define KviOption_stringOnHighlightedMessageSound 52				/* sounds */
+#define KviOption_stringOnMeKickedSound 53				/* sounds */
+#define KviOption_stringOnQueryMessageSound 54				/* sounds */
+#define KviOption_stringIrcViewTimestampFormat 55			
+#define KviOption_stringPreferredTorrentClient 56          /* still missing in options ! */
+
+#define KVI_NUM_STRING_OPTIONS 57
+
+
+
+#define KVI_STRINGLIST_OPTIONS_PREFIX "stringlist"
+#define KVI_STRINGLIST_OPTIONS_PREFIX_LEN 10
+
+#define KviOption_stringlistHighlightWords 0                        /* ircengine::outputcontrol::highlighting */
+#define KviOption_stringlistSpamWords 1                             /* ircengine::outputcontrol::antispam */
+#define KviOption_stringlistRecentChannels 2                        /* internal */
+#define KviOption_stringlistRecentServers 3                         /* internal */
+#define KviOption_stringlistRecentNicknames 4                       /* internal */
+#define KviOption_stringlistModuleExtensionToolbars 5               /* internal */
+#define KviOption_stringlistImageSearchPaths 6                      /* ??? */
+#define KviOption_stringlistRecentIrcUrls 7                      /* internal */
+
+#define KVI_NUM_STRINGLIST_OPTIONS 8
+
+
+
+#define KVI_COLOR_OPTIONS_PREFIX "color"
+#define KVI_COLOR_OPTIONS_PREFIX_LEN 5
+
+#define KviOption_colorMdiBackground 0              /* ?? look & feel : gui elements : mdi manager */
+#define KviOption_colorTaskBarNormalText 1                                        /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarMinimizedText 2                                     /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarHighlight1Text 3                                    /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarHighlight2Text 4                                    /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarProgressBar 5                                       /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorMdiCaptionActive 6                                         /* theme::mdicaptions */
+#define KviOption_colorMdiCaptionInactive 7                                       /* theme::mdicaptions */
+#define KviOption_colorCaptionTextActive 8                                        /* theme::mdicaptions */
+#define KviOption_colorCaptionTextActive2 9                                       /* theme::mdicaptions */
+#define KviOption_colorCaptionTextInactive 10                                     /* theme::mdicaptions */
+#define KviOption_colorCaptionTextInactive2 11                                    /* theme::mdicaptions */
+#define KviOption_colorIrcViewBackground 12                                       /* look & feel::interface look::ircview */
+#define KviOption_colorInputBackground 13                                         /* look & feel::interface look::input */
+#define KviOption_colorInputSelectionBackground 14                                /* look & feel::interface look::input */
+#define KviOption_colorInputSelectionForeground 15                                /* look & feel::interface look::input */
+#define KviOption_colorInputCursor 16                                             /* look & feel::interface look::input */
+#define KviOption_colorInputControl 17                                            /* look & feel::interface look::input */
+#define KviOption_colorInputForeground 18                                         /* look & feel::interface look::input */
+#define KviOption_colorUserListViewBackground 19                                  /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewOpForeground 20                                /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewVoiceForeground 21                             /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewNormalForeground 22                            /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewSelectionBackground 23                         /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewSelectionForeground 24                         /* look & feel::interface look::userlist */
+#define KviOption_colorLabelBackground 25                                         /* look & feel::interface look::topic label */
+#define KviOption_colorLabelForeground 26                                         /* look & feel::interface look::topic label */
+#define KviOption_colorGlobalTransparencyFade 27                                  /* look & feel::interface look */
+#define KviOption_colorIrcToolBarAppletBackground 28                              /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundLowContrast 29                   /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundMidContrast 30                   /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1 31         /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2 32         /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundHighContrastActive1 33           /* theme::tool bar applets */
+#define KviOption_colorIrcToolBarAppletForegroundHighContrastActive2 34           /* theme::tool bar applets */
+#define KviOption_colorTreeTaskBarBackground 35                                   /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarActiveBackground 36                             /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarForeground 37                                   /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarActiveForeground 38                             /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarHighlight1Foreground 39                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarHighlight2Foreground 40                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarProgress 41                                     /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorUserListViewHalfOpForeground 42                            /* look & feel::interface look::userlist */
+#define KviOption_colorTaskBarHighlight3Text 43                                   /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarHighlight4Text 44                                   /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTaskBarHighlight5Text 45                                   /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorTreeTaskBarHighlight3Foreground 46                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarHighlight4Foreground 47                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeTaskBarHighlight5Foreground 48                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorUserListViewChanAdminForeground 49                         /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewUserOpForeground 50                            /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewGrid 51                                        /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewChanOwnerForeground 52                         /* look & feel::interface look::userlist */
+#define KviOption_colorIrcViewMarkLine 53                                         /* look & feel::interface look::ircvew */
+#define KviOption_colorUserListViewAwayForeground 54                              /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewOwnForeground 55                              /* look & feel::interface look::userlist */
+
+#define KVI_NUM_COLOR_OPTIONS 56
+
+
+
+#define KVI_PIXMAP_OPTIONS_PREFIX "pixmap"
+#define KVI_PIXMAP_OPTIONS_PREFIX_LEN 6
+
+#define KviOption_pixmapMdiBackground 0
+#define KviOption_pixmapIrcViewBackground 1                                    /* interface::look::components::ircview */
+#define KviOption_pixmapInputBackground 2                                      /* interface::look::components::input */
+#define KviOption_pixmapUserListViewBackground 3                               /* look & feel::interface look::userlist */
+#define KviOption_pixmapLabelBackground 4                                      /* look & feel::interface look::topic label */
+#define KviOption_pixmapMyAvatar 5                                             /* identity */
+#define KviOption_pixmapIrcToolBarAppletBackground 6                           /* theme::tool bar applets */
+#define KviOption_pixmapTreeTaskBarBackground 7                                /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_pixmapGlobalTransparencyBackground 8                         /* theme::transparency */
+
+#define KVI_NUM_PIXMAP_OPTIONS 9
+
+
+
+
+#define KVI_UINT_OPTIONS_PREFIX "uint"
+#define KVI_UINT_OPTIONS_PREFIX_LEN 4
+
+#define KviOption_uintIrcSocketTimeout 0                             /* connection::transport */
+#define KviOption_uintModuleCleanupTimerInterval 1
+#define KviOption_uintModuleCleanupTimeout 2
+#define KviOption_uintMaxCtcpRequests 3                              /* ircengine::ctcp */
+#define KviOption_uintCtcpFloodCheckInterval 4                       /* ircengine::ctcp */
+#define KviOption_uintTotalConnectionTime 5
+#define KviOption_uintDccSocketTimeout 6                             /* dcc::general */
+#define KviOption_uintDccSendIdleStepInMSec 7                        /* dcc::send */
+#define KviOption_uintDccSendPacketSize 8                            /* dcc::send */
+#define KviOption_uintGlobalTransparencyParentFadeFactor 9           /* interface::look::general */
+#define KviOption_uintGlobalTransparencyChildFadeFactor 10           /* interface::look::general */
+#define KviOption_uintNotifyListCheckTimeInSecs 11                   /* notify */
+#define KviOption_uintSocketQueueFlushTimeout 12                     /* connection::transport */
+#define KviOption_uintOutgoingTrafficLimitUSeconds 13                /* connection::transport */
+#define KviOption_uintNotifyListIsOnDelayTimeInSecs 14               /* notify */
+#define KviOption_uintNotifyListUserhostDelayTimeInSecs 15           /* notify */
+#define KviOption_uintTreeTaskBarMinimumWidth 16           /* ?? interface::general ?? */
+#define KviOption_uintAvatarOfferTimeoutInSecs 17                    /* irc::ctcp::avatar */
+#define KviOption_uintIrcViewMaxBufferSize 18                        /* interface::features::components::ircview */
+#define KviOption_uintIrcViewToolTipTimeoutInMsec 19                 /* interface::features::components::ircview */
+#define KviOption_uintIrcViewToolTipHideTimeoutInMsec 20             /* interface::features::components::ircview */
+#define KviOption_uintDccVoicePreBufferSize	21                       /* dcc::voice */
+#define KviOption_uintIdentdPort 22                                  /* connection::ident */
+#define KviOption_uintAvatarScaleWidth 23                            /* ctcp::avatar */
+#define KviOption_uintAvatarScaleHeight 24                           /* ctcp::avatar */
+#define KviOption_uintDccMinPort 25                                  /* dcc::general */
+#define KviOption_uintDccMaxPort 26                                  /* dcc::general */
+#define KviOption_uintSoundOfferTimeoutInSecs 27
+#define KviOption_uintMaximumRequestedAvatarSize 28                  /* ctcp::avatar */
+// FIXME: THIS IS NO LONGER NEEDED ?
+#define KviOption_uintTreeTaskBarMaximumWidth 29
+#define KviOption_uintPasteDelay 30
+// 0 = unlimited!
+#define KviOption_uintMaxDccSendTransfers 31
+// 0 = unlimited slots = windows
+#define KviOption_uintMaxDccSlots 32
+#define KviOption_uintTileMethod 33        /* internal ? */
+#define KviOption_uintLagMeterHeartbeat 34
+#define KviOption_uintLagAlarmTime 35
+// KVI_TEXT_ENCODING_UNKNOWN = KviLocale::defaultTextEncoding() <-- guessed from locale
+//#define KviOption_uintDefaultTextEncoding 36                          /* textencoding */
+#define KviOption_uintTaskBarButtonMinWidth 37                             /* interface::look::taskbar::classic taskbar */
+// follows the verbosity constants defined below
+#define KviOption_uintOutputVerbosityLevel 38
+#define KviOption_uintIrcContextAppletWidth 39                       /* internal */
+#define KviOption_uintMinHighlightLevel 40                                /* look::interface::features::output */
+#define KviOption_uintUserListViewGridType 41                        /* look&feel::ircview */
+#define KviOption_uintTaskBarMaximumRows 42                          /* interface::look::taskbar::classic taskbar */
+// 0 = unlimited attempts
+#define KviOption_uintMaxAutoReconnectAttempts 43                    /* connection */
+#define KviOption_uintAutoReconnectDelay 44                          /* connection */
+#define KviOption_uintMaxDccSendSpeed 45                             /* dcc::file transfers */
+#define KviOption_uintMaxDccRecvSpeed 46                             /* dcc::file transfers */
+#define KviOption_uintTimeStampForeground 47
+#define KviOption_uintTimeStampBackground 48
+#define KviOption_uintUserExperienceLevel 49
+#define KviOption_uintClassicTaskBarMaximumButtonWidth 50
+#define KviOption_uintDefaultBanType 51
+#define KviOption_uintIrcViewPixmapAlign 52
+#define KviOption_uintUserListPixmapAlign 53
+#define KviOption_uintToolBarAppletPixmapAlign 54
+#define KviOption_uintTreeTaskBarPixmapAlign 55
+#define KviOption_uintInputPixmapAlign 56
+#define KviOption_uintAutoFlushLogs 57
+#define KviOption_uintMinTrayLowLevelMessage 58
+#define KviOption_uintMinTrayHighLevelMessage 59
+#define KviOption_uintIdentdOutputMode 60
+#define KviOption_uintScaleAvatarsOnLoadHeight 61
+#define KviOption_uintScaleAvatarsOnLoadWidth 62
+#define KviOption_uintNotifierActiveTransparency 63
+#define KviOption_uintNotifierInactiveTransparency 64
+
+#define KVI_NUM_UINT_OPTIONS 65
+
+namespace KviIdentdOutputMode {
+	enum Mode {
+		Quiet = 0,
+		ToConsole = 1,
+		ToActiveWindow = 2
+	};
+}
+
+
+#define KVI_FONT_OPTIONS_PREFIX "font"
+#define KVI_FONT_OPTIONS_PREFIX_LEN 4
+
+#define KviOption_fontIrcView 0                                      /* interface::look::components::ircview */
+#define KviOption_fontInput 1                                        /* interface::look::components::input */
+#define KviOption_fontUserListView 2                                 /* look & feel::interface look::userlist */
+#define KviOption_fontLabel 3                                        /* look & feel::interface look::topic label */
+#define KviOption_fontApplication 4                                  /* interface::look::global */
+#define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet */
+#define KviOption_fontTaskbar 6                                      /* interface::look::taskbar::classic taskbar */
+
+/* fixme: taskbar font ? */
+
+#define KVI_NUM_FONT_OPTIONS 7
+
+
+
+
+#define KVI_ICCOLOR_OPTIONS_PREFIX "iccolor"
+#define KVI_ICCOLOR_OPTIONS_PREFIX_LEN 7
+
+#define KVI_NUM_ICCOLOR_OPTIONS 8
+
+
+// indices declared in kvi_out.h
+
+#define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
+#define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
+
+#define KVI_NUM_MSGTYPE_OPTIONS 137
+
+
+
+#define KVI_MIRCCOLOR_OPTIONS_PREFIX "mirccolor"
+#define KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN 9
+
+#define KVI_NUM_MIRCCOLOR_OPTIONS 16
+
+
+// external declaration of the tables
+extern KVIRC_API KviBoolOption       g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS];
+extern KVIRC_API KviRectOption       g_rectOptionsTable[KVI_NUM_RECT_OPTIONS];
+extern KVIRC_API KviStringOption     g_stringOptionsTable[KVI_NUM_STRING_OPTIONS];
+extern KVIRC_API KviColorOption      g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS];
+extern KVIRC_API KviPixmapOption     g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS];
+//	extern KviIntOption        g_intOptionsTable[KVI_NUM_INT_OPTIONS];
+extern KVIRC_API KviUIntOption       g_uintOptionsTable[KVI_NUM_UINT_OPTIONS];
+extern KVIRC_API KviFontOption       g_fontOptionsTable[KVI_NUM_FONT_OPTIONS];
+extern KVIRC_API KviMsgTypeOption    g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS];
+extern KVIRC_API KviColorOption      g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS];
+extern KVIRC_API KviColorOption      g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS];
+extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS];
+
+// __this is how we access the options from outside
+#define KVI_OPTION_BOOL(_idx)        g_boolOptionsTable[_idx].option
+#define KVI_OPTION_RECT(_idx)        g_rectOptionsTable[_idx].option
+#define KVI_OPTION_STRING(_idx)      g_stringOptionsTable[_idx].option
+#define KVI_OPTION_COLOR(_idx)       g_colorOptionsTable[_idx].option
+#define KVI_OPTION_PIXMAP(_idx)      g_pixmapOptionsTable[_idx].option
+#define KVI_OPTION_UINT(_idx)        g_uintOptionsTable[_idx].option
+#define KVI_OPTION_FONT(_idx)        g_fontOptionsTable[_idx].option
+#define KVI_OPTION_MSGTYPE(_idx)     g_msgtypeOptionsTable[_idx].option
+#define KVI_OPTION_MIRCCOLOR(_idx)   g_mirccolorOptionsTable[_idx].option
+#define KVI_OPTION_STRINGLIST(_idx)  g_stringlistOptionsTable[_idx].option
+#define KVI_OPTION_ICCOLOR(_idx)     g_iccolorOptionsTable[_idx].option
+
+
+// Verbosity constants
+
+#define KVI_VERBOSITY_LEVEL_MUTE 0
+#define KVI_VERBOSITY_LEVEL_QUIET 1
+#define KVI_VERBOSITY_LEVEL_NORMAL 2
+#define KVI_VERBOSITY_LEVEL_VERBOSE 3
+#define KVI_VERBOSITY_LEVEL_PARANOIC 4
+
+#define _OUTPUT_PARANOIC (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) >= KVI_VERBOSITY_LEVEL_PARANOIC)
+#define _OUTPUT_VERBOSE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) >= KVI_VERBOSITY_LEVEL_VERBOSE)
+#define _OUTPUT_QUIET (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_QUIET)
+#define _OUTPUT_MUTE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_MUTE)
+
+#ifdef COMPILE_USE_QT4
+	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(0,0,0); font-weight: bold; color: rgb(200,200,255); text-indent: 5px;\"><nobr>"
+	#define END_TABLE_BOLD_ROW "</nobr></td></tr>"
+
+	#define START_TABLE_NORMAL_ROW "<tr><td>"
+
+	#define SET_ANTI_ALIASING(p) \
+	(p).setRenderHint(QPainter::Antialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing)); \
+	(p).setRenderHint(QPainter::TextAntialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing));
+#else
+	#define START_TABLE_BOLD_ROW "<tr><td bgcolor=\"#303030\">" \
+							"<font color=\"#FFFFFF\"><nobr><b>"
+	#define END_TABLE_BOLD_ROW "</b></nobr></font></td></tr>"
+
+	#define START_TABLE_NORMAL_ROW "<tr><td bgcolor=\"#F0F0F0\">"
+
+	#define SET_ANTI_ALIASING(p)
+#endif
+
+
+#if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
+
+	// flag definitions
+
+	// section of the config file (rightmost 8 bits)
+	#define KviOption_sectFlagNone 0
+	#define KviOption_sectFlagFrame 1
+	#define KviOption_sectFlagMdi 2
+	#define KviOption_sectFlagTaskBar 3
+	#define KviOption_sectFlagWindows 4
+	#define KviOption_sectFlagIrcView 5
+	#define KviOption_sectFlagMsgType 6
+	#define KviOption_sectFlagMircColor 7
+	#define KviOption_sectFlagInput 8
+	#define KviOption_sectFlagUserParser 9
+	#define KviOption_sectFlagConnection 10
+	#define KviOption_sectFlagIrcSocket 11
+	#define KviOption_sectFlagUser 12
+	#define KviOption_sectFlagUserListView 13
+	#define KviOption_sectFlagLabel 14
+	#define KviOption_sectFlagModules 15
+	#define KviOption_sectFlagCtcp 16
+	#define KviOption_sectFlagDcc 17
+	#define KviOption_sectFlagGui 18
+	#define KviOption_sectFlagIrcToolBar 19
+	#define KviOption_sectFlagLogging 20
+	#define KviOption_sectFlagAntiSpam 21
+	#define KviOption_sectFlagAvatar 22
+	#define KviOption_sectFlagUrl 23
+	#define KviOption_sectFlagRecent 24
+	#define KviOption_sectFlagGeometry 25
+
+	#define KVI_NUM_OPTION_SECT_FLAGS 26
+
+	#define KviOption_sectMask 255
+
+	// other logical groupings of options
+	#define KviOption_groupTheme (1 << 8)
+
+	#define KviOption_groupMask (255 << 8)
+
+
+
+	// actions to take when an option is set
+	#define KviOption_resetNone 0
+	//#define KviOption_resetUpdateCaption (1 << 16) UNUSED!
+	#define KviOption_resetUpdateGui (1 << 17)
+	#define KviOption_resetUpdateTaskBar (1 << 18)
+	#define KviOption_resetUpdateAppFont (1 << 19)
+	#define KviOption_resetUpdatePseudoTransparency (1 << 20)
+	#define KviOption_resetRestartNotifyList (1 << 21)
+	#define KviOption_resetRestartIdentd (1 << 22)
+	#define KviOption_resetReloadImages (1 << 23)
+	#define KviOption_resetRestartLagMeter (1 << 24)
+	#define KviOption_resetRecentChannels (1 << 25)
+
+	#define KviOption_resetMask (~(KviOption_sectMask | KviOption_groupMask))
+	
+	//for file pathes
+	#define KviOption_encodePath (1 << 25)
+
+#endif
+
+#endif //_KVI_OPTIONS_H_

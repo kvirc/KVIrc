@@ -1,0 +1,17 @@
+--- src/kvirc/kernel/kvi_coreactions.cpp.orig	2006-07-25 13:10:28.000000000 +0000
++++ src/kvirc/kernel/kvi_coreactions.cpp	2006-07-25 13:11:20.000000000 +0000
+@@ -1011,12 +1011,14 @@
+ 			b->setTextLabel(txt);
+ 		}
+ 		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
++		setEnabled(true);
+ 	} else {
+ 		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
+ 		{
+ 			if(b->isEnabled())b->setEnabled(false);
+ 		}
+ 		m_uInternalFlags &= ~KVI_ACTION_FLAG_ENABLED;
++		setEnabled(true);
+ 	}
+ }
+ 

@@ -1,0 +1,128 @@
+# translation of sharedfileswindow_pt_BR.po to 
+# translation of sharedfileswindow_pt_BR.po to
+# translation of sharedfileswindow_pt.po to
+# translation of sharedfileswindow_es.po to Português
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Zé <mmodem00@netvisao.pt>, 2004.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sharedfileswindow_pt_BR\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"PO-Revision-Date: 2004-11-15 02:22+0000\n"
+"Last-Translator: \n"
+"Language-Team:  <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
+msgid "Manage S&hared Files"
+msgstr "&Gerênciar Arquivos Compartilhados"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+msgid "Edit Shared File - KVIrc"
+msgstr "Editar Arquivo Compartilhado - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+msgid "Share name:"
+msgstr "Nome de compartilhamento:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
+msgid "File path:"
+msgstr "Caminho dos Arquivos:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
+msgid "&Browse..."
+msgstr "&Procurar..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
+msgid "User mask:"
+msgstr "Máscara de usuário:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
+msgid "Expire at:"
+msgstr "Expira em:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
+msgid "&OK"
+msgstr "&Aceitar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
+msgid "Invalid expire time"
+msgstr "Tempo de expiração inválido"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
+msgid ""
+"The expire date/time is in the past: please either remove the \"expires"
+"\"check mark or specify a expire date/time in the future"
+msgstr ""
+"A data/hora de expiração foi ultrapassada: por favor, desative a opção "
+"\"verificar expiração\" ou específique uma data/hora de expiração no futuro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
+msgid "OK"
+msgstr "Aceitar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
+msgid "Invalid share name"
+msgstr "Nome de compartilhamento inválido"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
+msgid "The share name can't be empty, please correct it"
+msgstr ""
+"O nome do arquivo compartilhado não pode estar vazio, por favor corrija isto"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
+msgid "Can't open the file"
+msgstr "Não foi possível abrir o arquivo"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
+msgid "The file doesn't exist or it is not readable, please check the path"
+msgstr ""
+"O arquivo não existe ou não esta acessível, por favor verifique o caminho"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
+msgid "Never"
+msgstr "Nunca"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
+msgid "Name"
+msgstr "Nome"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
+msgid "Filename"
+msgstr "Nome de arquivo"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
+msgid "Mask"
+msgstr "Máscara"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+msgid "Expires"
+msgstr "Expira"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
+msgid "&Add..."
+msgstr "&Adicionar..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
+msgid "Re&move"
+msgstr "Re&mover"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
+msgid "&Edit"
+msgstr "&Editar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
+msgid "Shared Files"
+msgstr "Arquivos Compartilhados"

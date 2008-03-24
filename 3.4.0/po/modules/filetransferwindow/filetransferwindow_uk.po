@@ -1,0 +1,128 @@
+# translation of filetransferwindow_ua.po to
+# translation of filetransferwindow_ua.po to ukrainian
+# translation of filetransferwindow_ua.po to українська
+# translation of filetransferwindow.po to українська
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER.
+# Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: about_ua\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-13 00:55+0100\n"
+"PO-Revision-Date: 2007-12-19 15:00+0200\n"
+"Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
+"Language-Team:  Ukrainian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.10\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:164
+msgid "Type"
+msgstr "Тип"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:165
+msgid "Information"
+msgstr "Інформація"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:166
+msgid "Progress"
+msgstr "Прогрес"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:316
+#, fuzzy
+msgid "Size: %1"
+msgstr "Розмір: %1 байт"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:334
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:364
+msgid "&Open"
+msgstr "&Відкрити"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:352
+msgid "&Other..."
+msgstr "&Інше..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:355
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:367
+msgid "Open &With"
+msgstr "Відкрити &як"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:357
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:369
+msgid "Open &Location"
+msgstr "Відкрити &папку"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:358
+msgid "Terminal at Location"
+msgstr "Відкрити термінал у папці файлу"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
+msgid "MS-DOS Prompt at Location"
+msgstr "Відкрити командний рядок у папці файлу"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:375
+msgid "&Copy Path to Clipboard"
+msgstr "&Копіювати шлях у буфер обміну"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:377
+msgid "&Delete file"
+msgstr "&Видалити файл"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:379
+msgid "Local &File"
+msgstr "Локальний &файл"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:402
+msgid "&Clear Terminated"
+msgstr "Очистити &завершені"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:409
+msgid "Clear &All"
+msgstr "Очистити &всі"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:499
+msgid "Do you really want to delete the file %Q?"
+msgstr "Ви дійсно хочете видалити файл %Q ?"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:501
+msgid "Confirm delete"
+msgstr "Підтвердите видалення"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
+msgid "Yes"
+msgstr "Так"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
+msgid "No"
+msgstr "Ні"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:506
+msgid "Delete failed"
+msgstr "Помилка видалення"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:507
+msgid "Failed to remove the file"
+msgstr "Неможливо видалити файл"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:508
+msgid "OK"
+msgstr "Ок"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:672
+msgid "Clear all transfers, including any in progress?"
+msgstr "Очистити всі передачі, включаючи не завершені?"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Очистити всі передачі? - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:711
+msgid "File Transfers"
+msgstr "Передачі файлів"

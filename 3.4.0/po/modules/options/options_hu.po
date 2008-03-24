@@ -1,0 +1,4386 @@
+# translation of options_hu.po to hungarian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2008.
+# Ádám Fibinger <vfiber@gmail.com>, 2007.
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:304
+msgid ""
+msgstr ""
+"Project-Id-Version: options_hu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"PO-Revision-Date: 2008-03-03 08:56+0100\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:46
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:232
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:51
+msgid "Font:"
+msgstr "Betűtípus: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:47
+msgid "Background color:"
+msgstr "Háttér szín: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:49
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:114
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:129
+msgid "Background image:"
+msgstr "Háttér kép: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:51
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:116
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:46
+msgid "Horizontal align:"
+msgstr "Vízszintes elhelyezés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:55
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:120
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:50
+msgid "Vertical align:"
+msgstr "Függőleges elhelyezés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:59
+msgid "Mark Line:"
+msgstr "Sor Jelzése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:61
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:66
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:124
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:129
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:139
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:144
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:54
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:59
+msgid "Tile"
+msgstr "Rendezés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:62
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:125
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:140
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:55
+msgid "Left"
+msgstr "Bal"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:63
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:126
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:141
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:56
+msgid "Right"
+msgstr "Jobb"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:64
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:69
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:127
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:132
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:147
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:57
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:62
+msgid "Center"
+msgstr "Közép"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:67
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:145
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:60
+msgid "Top"
+msgstr "Fent"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:68
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:61
+msgid "Bottom"
+msgstr "Lent"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:149
+msgid "Enable URL highlighting"
+msgstr "URL (webcím) kiemelés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:150
+msgid "Use line wrap margin"
+msgstr "Sortörő margó használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:151
+msgid "Maximum buffer size:"
+msgstr "Maximális pufferméret"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:152
+msgid " lines"
+msgstr " sor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:153
+msgid "Link tooltip show delay:"
+msgstr "Link tipp megjelenésének késleltetése:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:154
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:156
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:169
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:306
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:46
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:59
+msgid " msec"
+msgstr "miliszek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:155
+msgid "Link tooltip hide delay:"
+msgstr "Link tipp elrejtésének késleltetése: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.cpp:157
+msgid "Track last read text line"
+msgstr "Utolsó olvasott sor követése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:48
+msgid "NickServ Authentication Rule"
+msgstr "NickServ Azonosítási Szabály"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:55
+msgid "Registered NickName"
+msgstr "Regisztrált Név"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:60
+msgid "Put here the nickname that you have registered with NickServ"
+msgstr "Itt adhatod meg a Nevedet, amit regisztráltál a NickServvel"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:64
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:257
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:277
+msgid "NickServ Mask"
+msgstr "NickServ Maszkja"
+
+# Another bug: after the % mark msgfmt require the next word's first char, coz it believe its a variable. I've found this bug twice, but here i cant do nothin against this. "100% s-ban" isnt a correct hungarian expression. Till this bug isnt fixed, you cannot translate correctly. - Fiber - first .hu translator
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:70
+#, c-format
+msgid ""
+"This is the mask that NickServ must match to be correctly identified as the "
+"NickServ service. This usually will be something like <b>NickServ!"
+"service@services.dalnet</b>.<br>You can use wildcards for this field, but "
+"generally it is a security flaw. If you're 100%% sure that NO user on the "
+"network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
+"be safe to use in this field."
+msgstr ""
+"Ez a maszk, aminek a NickServ maszkjával egyeznie kell, hogy azonosítani "
+"lehessen. Ez általában ehhez hasonló:<b>NickServ!service@services.dalnet</"
+"b><br> Használhatsz joker karaktereket ennél a mezőnél, de áltaban ez egy "
+"potencionális biztonsági rés. Ha 100%% s-ban biztos vagy abban, hogy a "
+"hálózaton a \"NickServ\" nevet nem használhatja senki, csak akkor használd a "
+"<b>NickServ!*@*</b> maszkot."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:78
+msgid "Message Regexp"
+msgstr "Message Regexp"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:86
+msgid ""
+"This is the simple regular expression that the identification request "
+"message from NickServ must match in order to be correctly recognized.<br>The "
+"message is usually something like \"To identify yourself please use /ns "
+"IDENTIFY password\" and it is sent when the NickServ wants you to "
+"authenticate yourself. You can use the * and ? wildcards."
+msgstr ""
+"Ez az egyszerű kifejezés, amivel a NickServ kéri az azonosítódat.<br>Az "
+"üzenet általában valami ehhez hasonló: \"To identify yourself please use /"
+"NickServ IDENTIFY password\". Ezt az üzenetet a NickServ küldi, az "
+"azonosítódat kérve.Használhatod a * és ? karaktereket jokerkarakterként."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:92
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:259
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:279
+msgid "Identify Command"
+msgstr "Azonosító Parancs"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:98
+msgid ""
+"This is the command that will be executed when NickServ requests "
+"authentication for the nickname described in this rule (if the both server "
+"and NickServ mask are matched). This usually will be something like <b>msg "
+"NickServ identify &lt;yourpassword&gt;</b>.<br>You can use <b>msg -q</b> if "
+"you don't want the password echoed on the screen. Please note that there is "
+"no leading slash in this command."
+msgstr ""
+"Ez a parancs lesz lefuttatva, amikor a NickServ kéri az azonosítókódod a "
+"Neved azonosítására. (természetesen ha a NickServ hosztmaszkja és a szerveré "
+"is megegyezik) Ez általában egy ehhez hasonló parancs:<b>msg NickServ "
+"identify &lt;yourpassword&gt;</b>.<br>Használd az <b>msg -q</b> kapcsolót, "
+"ha nem akarod, hogy a jelszavad látszon a képernyőn. Arra figyelj, hogy itt "
+"Ne használj parancskezdő perjelet."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:111
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:256
+msgid "Server mask"
+msgstr "Szerver maszk"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:117
+msgid ""
+"This is the mask that the current server must match in order for this rule "
+"to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" "
+"here..."
+msgstr ""
+"Ez a maszk aminek egyeznie kell az aktuális szerver maszkjával, hogy az "
+"automatikus azonosítás lefusson. <br>NE Használj simán \"*\"-ot itt..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:128
+msgid "Hint: Move the mouse cursor over the fields to get help"
+msgstr "Tipp: Vidd az egérkurzort a mező felé, hogy segítséget kapj"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:137
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:329
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:809
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:92
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:247
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:261
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:68
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:165
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:803
+msgid "OK"
+msgstr "OK"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:164
+msgid "Invalid NickServ Rule"
+msgstr "Helytelen NickServ Szabály"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:169
+msgid "The Nickname field can't be empty!"
+msgstr "A Név mező nem lehet üres!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:175
+msgid "The Nickname field can't contain spaces!"
+msgstr "A Név mező nem tartalmazhat szóközt!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:183
+msgid "The NickServ mask can't be empty!<br>You must put at least * there."
+msgstr ""
+"A NickServ maszkja nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:191
+msgid "The Message Regexp can't be empty!<br>You must put at least * there."
+msgstr ""
+"Az Üzenet Formája nem lehet üres!<br>Legalább egy *-ot tartalmaznia kell."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:199
+msgid "The Identify Command can't be empty!"
+msgstr "Az Azonosító Parancs nem lehet üres!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:244
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:265
+msgid "Enable NickServ Identification"
+msgstr "NickServ Azonosítás engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:248
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:269
+msgid "This check enables the automatic identification with NickServ"
+msgstr "Ezzel engedélyezheted az automatikus NickServ azonosítást"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:255
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:276
+msgid "Nickname"
+msgstr "Név"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:278
+msgid "NickServ Request Mask"
+msgstr "NickServ maszkja"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:265
+msgid ""
+"<center>This is a list of NickServ identification rules. KVIrc will use them "
+"to model its automatic interaction with NickServ on all the networks."
+"<br>Please be aware that this feature can cause your NickServ passwords to "
+"be stolen if used improperly. Make sure that you fully understand the "
+"NickServ authentication protocol.<br>In other words, be sure to know what "
+"you're doing.<br>Also note that the password that you provide is stored as "
+"<b>PLAIN TEXT</b>.<br>KVIrc supports also per-network NickServ "
+"authentication rules that can be created in the \"Advanced...\" network "
+"options (accessible from the servers dialog).</center>"
+msgstr ""
+"<center>Ez egy lista, a NickServ azonosítási szabályokhoz. A KVIrc ezeket "
+"használja, hogy automatikusan közreműködni tudjon a NickServvel minden "
+"hálózaton.<br> Ennek a helytelen beállítása okozhatja, hogy valaki ellopja a "
+"NickServ jelszavadat! Légy biztos abban, hogy teljesen megértetted a "
+"NickServ azonosítási protokoll lényegét.<br> Más szavakkal: légy biztos "
+"abban, amit csinálsz.<br> A jelszavakat <b>EGYSZERŰ SZÖVEG</b>-ként kerül "
+"mentésre.<br>A KVIrc támogatja a hálózatonkénti azonosítást, amit "
+"megcsinálhatsz a \"Haladó...\" hálózati beállításoknál. (elérhető a Szerver "
+"párbeszédablakból). </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:276
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:293
+msgid "Add Rule"
+msgstr "Szabály Hozzáadása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:280
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:298
+msgid "Edit Rule"
+msgstr "Szabály Szerkesztése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:284
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:302
+msgid "Delete Rule"
+msgstr "Szabály törlése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.cpp:31
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:195
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:36
+msgid "Font"
+msgstr "Betűtípus"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.cpp:32
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:38
+msgid "Foreground color"
+msgstr "Előtér szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.cpp:33
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:37
+msgid "Background color"
+msgstr "Háttér szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.cpp:34
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:44
+msgid "Background image"
+msgstr "Háttér kép"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:40
+msgid "Enable tray icon"
+msgstr "Tálca ikon engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:41
+msgid "Close in tray"
+msgstr "Bezárásnál a KVIrcet tegye a tálcára"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:42
+msgid "Minimize in tray"
+msgstr "Minimalizálás ikonként"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:44
+msgid "Enable tray icon flashing"
+msgstr "Tálca ikon villogásának engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:45
+msgid "Enable level-based message notification (not a message-type based)"
+msgstr "Prioritási szint alapú értesítő engedélyezése (nem üzenet-alapú)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:47
+msgid "Select message levels to notify"
+msgstr "Üzenet szint kiválasztása értesítéshez"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:49
+msgid "Minimum level for low-priority messages"
+msgstr "Minimális szint az alacsony prioritású üzeneteknek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:53
+msgid "Minimum level for high-priority message"
+msgstr "Minimális szint a magas prioritású üzeneteknek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.cpp:40
+msgid ""
+"This section contains irc protection tools<br><p>like<b> flood, ignore, "
+"antispam. </b> </p>"
+msgstr ""
+"Ebben a részben találod a védő eszközöket<br><p> mint például<b> flood, "
+"mellőzés, spamszűrés.</b> </p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:40
+msgid ""
+"<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
+"Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
+"connection. These messages can request information from clients or negotiate "
+"file transfers.<br><br></p>"
+msgstr ""
+"<center><b>CTCP beállítások.</b></center><p>A <b>Client-To-Client Protocol</"
+"b> (CTCP) különleges \"vezérlő\" üzeneteket tesz lehetővé IRC kapcsolaton "
+"keresztül. Ezek az üzenetek tartalmazhatnak információ kéréseket a "
+"klienstől, vagy fájl kapcsolatok egyeztetésében segíthetnek.<br><br></p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:47
+msgid "CTCP Replies"
+msgstr "CTCP Válaszok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:48
+msgid "Append to VERSION reply:"
+msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:52
+msgid ""
+"<center>This text will be appended to the CTCP VERSION reply.<br>For "
+"example, you can place a script name here.</center>"
+msgstr ""
+"<center>Ez a szöveg hozzá lesz rendelve a CTCP VERZIÓ válaszhoz. <br>Például "
+"Szkript nevet is elhelyezhetsz itt.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:55
+msgid "Append to SOURCE reply:"
+msgstr "Hozzáfűzés a SOURCE válaszhoz:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:59
+msgid ""
+"<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
+"you can place the source URL for a script here.</center>"
+msgstr ""
+"<center>Ez a szöveg hozzá lesz rendelve a CTCP SOURCE (forrás) válaszhoz. "
+"<br>Például Szkript URL-t itt elhelyezheted.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:69
+msgid "PAGE reply:"
+msgstr "PAGE válasz:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:73
+msgid ""
+"<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
+"acknowledgement for CTCP PAGE messages.</center>"
+msgstr ""
+"<center>Ez egy CTCP PAGE válasz.<br>Ez tartalmazhat egy rövid értesítőt CTCP "
+"PAGE válaszként.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:76
+msgid "Show the CTCP replies in the active window"
+msgstr "Mutasd a CTCP válaszokat az aktív ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:78
+msgid "Show dialog for CTCP page requests"
+msgstr "Mutasd a CTCP page kéréseket párbeszédablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:36
+msgid "Use tree taskbar"
+msgstr "Fa struktúra használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:37
+msgid "Sort windows by name"
+msgstr "Ablakok rendezése név szerint"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:38
+msgid "Show window icons in taskbar"
+msgstr "Ablak ikonjának mutatása tálcán"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:39
+msgid "Show activity meter in taskbar"
+msgstr "Aktivitás mutatása a tálcán"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:41
+msgid ""
+"<center>This option enables the usage of the taskbar activity meter. Each "
+"window entry will have a small indicator of the activity that is going on in "
+"that window. The indicator is a small square that changes colors, dark "
+"colors mean low activity, while bright colors signal high activity. KVIrc "
+"also uses some heuristics to determine whether the activity is somewhat "
+"\"human\" or it is generated by automated entities (such as bots or IRC "
+"servers). \"Human\" activity causes the indicator to be shaded red while "
+"automated activity causes the indicator to be shaded blue.</center>"
+msgstr ""
+"<center>Ez az opció engedélyezi az aktivitásmérő megjelenítését a tálcán. "
+"Minden ablaknak lesz egy kis kijelzője, ami mutatja mi történik éppen abban "
+"az ablakban. A kijelző egy kis négyzet, ami változtatja a színét, ahol a "
+"sötétebb színek az alacsony aktivitást, míg a világosabbak a magasabbat "
+"jelzik. A KVIrc ezen felül megpróbálja meghatározni, hogy az aktivitás "
+"\"Emberi\" avagy a forgalmat automata elemek okozzák. (mint például botok "
+"vagy IRC szerverek). \"Emberi\" aktivitás esetén a kijelző vörös felé "
+"hajlik, míg automatizált elemeknél a kék felé.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:49
+msgid "Show IRC context indicator in taskbar"
+msgstr "IRC környezet kijelző a tálcán"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:50
+msgid "Enable window tooltips"
+msgstr "Ablak tippek engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:80
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:233
+msgid "Text/Alert Colors"
+msgstr "Szöveg/Figyelmeztető Színek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:82
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:111
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:234
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:54
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:125
+msgid "Normal:"
+msgstr "Normál: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:83
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:112
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:55
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:126
+msgid "Selected:"
+msgstr "Kiválasztott: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:84
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:236
+msgid "Alert Level 1:"
+msgstr "1. figyelmeztetési szint:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:85
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:237
+msgid "Alert Level 2:"
+msgstr "2. figyelmeztetési szint:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:86
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:238
+msgid "Alert Level 3:"
+msgstr "3. figyelmeztetési szint:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:87
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:239
+msgid "Alert Level 4:"
+msgstr "4. figyelmeztetési szint:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:88
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:240
+msgid "Alert Level 5:"
+msgstr "5. figyelmeztetési szint:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:90
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:241
+msgid "Progress bar color:"
+msgstr "Folyamatjelző sáv színe:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:110
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:124
+msgid "Background Colors"
+msgstr "Háttér Színek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:212
+msgid "Show header"
+msgstr "Fejléc mutatása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:214
+msgid "Minimum width:"
+msgstr "Minimális szélesség:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:215
+msgid "Maximum width:"
+msgstr "Maximális szélesség:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:235
+msgid "Minimized:"
+msgstr "Minimalizált: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:242
+msgid "Minimum width of buttons:"
+msgstr "Gombok minimális szélessége: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:244
+msgid "Set maximum button width"
+msgstr "Gombok maximális szélessége"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:245
+msgid "Maximum width of buttons:"
+msgstr "Gombok maximális szélessége"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:246
+msgid "Use flat buttons"
+msgstr "Sima gombok használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:96
+msgid "Network Details"
+msgstr "Hálózat Tulajdonságai"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:110
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:459
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:82
+msgid "Description:"
+msgstr "Meghatározás: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:116
+msgid "<center>Put here a brief description of the network.</center>"
+msgstr "<center>Ide tehetsz néhány szót a hálózatról magadnak. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:127
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:477
+msgid "Properties"
+msgstr "Tulajdonságok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:480
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:334
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:123
+msgid "Username:"
+msgstr "Felhasználónév:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:134
+msgid ""
+"<center>This is the <b>username</b> that KVIrc will use to login to servers "
+"on this network.\n"
+"If this field is left empty (most common case), KVIrc will use the default "
+"username specified in the \"Identity\" options tab.</center>"
+msgstr ""
+"<center>Ez a <b>felhasználónév</b> amivel a KVIrc csatlakozni fog ezen a "
+"hálózaton.\n"
+"Ez a mező a legtöbb esetben üres, a KVIrc az \"Azonosító\"-ban megadott "
+"adatokat használja. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:139
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:498
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:320
+msgid "Nickname:"
+msgstr "Név: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:145
+msgid ""
+"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
+"log in to the servers on this network.<br>If this field is left empty (most "
+"common case), the default nickname (specified in the \"Identity\" settings) "
+"will be used.</center>"
+msgstr ""
+"<center>Megadhatsz \"különleges\" <b>Nevet</b> amivel a KVIrc csatlakozni "
+"fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb esetben), az "
+"alapértelmezett nevet használja. (Az  \"Azonosító\" beállításai alapján ) </"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:149
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:509
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:342
+msgid "Real name:"
+msgstr "Valós név:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:153
+msgid ""
+"<center>You can specify a \"special\" <b>real name</b> that will be used to "
+"login with the servers on this network.<br>If you leave this field empty "
+"(most common case), the default \"real name\" (specified in the \"Identity\" "
+"settings) will be used.</center>"
+msgstr ""
+"<center>Megadhatsz \"különleges\" <b>valós nevet</b> amivel a  KVIrc "
+"csatlakozni fog ezen a hálózaton.<br>Ha üresen marad (mint a legtöbb "
+"esetben), az alapértelmezett valós nevet használja. (Az  \"Azonosító\" "
+"beállításai alapján ) </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:158
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:644
+msgid "Encoding:"
+msgstr "Kódolás:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:164
+msgid ""
+"<center>This box allows you to choose the preferred encoding for the servers "
+"in this network. If you choose \"Use System Encoding\" then the encoding "
+"will be set to the systemwide value that you choose in the \"Encoding\" page "
+"of the options dialog.</center>"
+msgstr ""
+"<center>Ez a beállítás lehetővé teszi, hogy ezeken a szervereken meghatározd "
+"a karakterkódolást. Ha a \"Renszerbeállítások szerint\" opció él, a KVIrc a "
+"\"Kódolás\" résznél megadottat használja.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:173
+msgid "Use System Encoding"
+msgstr "Redszerbeállítások szerinti"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:185
+msgid "Connect to this network at startup"
+msgstr "Kapcsolódás erre a hálózatra indításkor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:189
+msgid ""
+"<center>This option will cause KVIrc to automatically connect to this "
+"network at startup</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc csatlakozni fog automatikusan ehhez a "
+"hálózathoz a KVIrc indításakor.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:199
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:79
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:86
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:89
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:32
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:120
+msgid "General"
+msgstr "Általános"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:209
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:756
+msgid "Channels to join automatically upon connect:"
+msgstr "Csatornák, amire automatikusan fellép kapcsolódáskor:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:211
+msgid ""
+"<center>Here you can set a list of channels to be joined automatically after "
+"a connection to a server in this network has been established. To add a "
+"channel, type its name in the text input below and click \"<b>Add</b>\".</"
+"center>"
+msgstr ""
+"<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután "
+"létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
+"csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:217
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:764
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:62
+msgid "Join Channels"
+msgstr "Csatlakozás csatornákhoz"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:228
+msgid ""
+"<center>The following commands will be executed after a connection to a "
+"server in this network has been established.<br><b>Important:</b> Enter "
+"commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> "
+"instead of <tt>/quote pass secret</tt>).<br>KVIrc will first send the USER "
+"command, then eventually PASS and NICK and then execute this command "
+"sequence.</center>"
+msgstr ""
+"<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a "
+"kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő "
+"perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg "
+"jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja "
+"végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd "
+"mindezek után ez a kódblokk fut le.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:234
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:782
+msgid "On Connect"
+msgstr "Kapcsolódás után"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:249
+msgid ""
+"<center>The following commands will be executed after a successful login to "
+"a server in this network.<br><b>Important:</b> Enter commands <b>without</b> "
+"a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote "
+"privatelog</tt>).<br>This is useful for automatically opening queries, "
+"setting variables, etc.</center>"
+msgstr ""
+"<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett "
+"a hálózatra.<br><b>Fontos:</b> a parancsokat csak parancskezdő perjel "
+"<b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg jelszó "
+"titkos</tt> helyett!)<br> Ezzel például automatikusan megnyithatsz "
+"privátokat, definiálhatsz változókat.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:801
+msgid "On Login"
+msgstr "Belépéskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:285
+msgid ""
+"<center>This is a list of NickServ identification rules. KVIrc will use them "
+"to model its automatic interaction with NickServ on this network.<br>Please "
+"be aware that this feature can cause your NickServ passwords to be stolen if "
+"used improperly. Make sure that you fully understand the NickServ "
+"authentication protocol.<br>In other words, be sure to know what you're "
+"doing.<br>Also note that the password that you provide is stored as <b>PLAIN "
+"TEXT</b>.</center>"
+msgstr ""
+"<center>Ez egy lista a NickServ azonosító szabályokról. A KVIrc használni "
+"fogja ezeket, hogy automatikusan kapcsolatba lépjen a NickServvel.<br> "
+"Figyelmeztetés: helytelen használat esetén a jelszavad véletlenül kiadhatod "
+"mások számára. Legyél benne biztos, hogy teljesen megértetted a NickServ "
+"azonosítási protokoll lényegét.<br>Más szavakkal: tudd mit csinálsz.<br> A "
+"jelszavad <b>EGYSZERŰ SZÖVEG</b>-ként kerül tárolásra.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:321
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.h:35
+msgid "NickServ"
+msgstr "NickServ"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:323
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:241
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:248
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:60
+msgid "&OK"
+msgstr "&Ok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:449
+msgid "Server Details"
+msgstr "Szerver Tulajdonságai"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:465
+msgid ""
+"<center>This is a brief description of this server. This field has no "
+"restrictions but many server lists use it to describe the server's physical "
+"location</center>"
+msgstr ""
+"<center>Ez egy tömör meghatározása a szervernek. Ennek a mezőnek nincsenek "
+"kikötései, de több szerver használatánál meghatározhatod a szerver fizikai "
+"elhelyezkedését is.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:484
+msgid ""
+"<center>This is the <b>username</b> that KVIrc will use to login to this "
+"server.\n"
+"If this field is left empty (most common case), KVIrc will first look if an "
+"username is specified for the network that this server belongs to, and if "
+"that is empty then KVIrc will use the default username specified in the "
+"\"Identity\" options tab.</center>"
+msgstr ""
+"<center>Ez a <b>felhasználónév</b> amivel a KVIrc belép a szerverre. \n"
+"Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, nincs e megadva "
+"felhasználónév azon a hálózaton, amihez ez a szerver tartozik, majd ha az is "
+"üres, a KVIrc az \"Azonosító\" résznél megadott felhasználónevet fogja "
+"használni.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:490
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:127
+msgid "Password:"
+msgstr "Jelszó: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:495
+msgid ""
+"<center>If this server requires a password, put it in this field, otherwise "
+"leave it empty.</center>"
+msgstr ""
+"<center>Ha erre a szerverre jelszó szükséges, ebben a mezőben megadhatod, "
+"egyébként hagyd üresen.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:504
+msgid ""
+"<center>You can specify a \"special\" <b>nickname</b> that will be used to "
+"log in to this server.<br>If this field is left empty (most common case), "
+"KVIrc will first look if a nickname is specified for the network that this "
+"server belongs to, and if that is empty then the default nickname (specified "
+"in the \"Identity\" settings) will be used.</center>"
+msgstr ""
+"<center>Itt megadhatsz \"különleges\"<b>Nevet</b> amivel a KVIrc csatlakozni "
+"fog erre a szerverre. Ha ez a mező üres, akkor elősször a KVIrc ellenőrzi, "
+"nincs e megadva Név azon a hálózaton, amihez ez a szerver tartozik, majd ha "
+"az is üres, a KVIrc az \"Azonosító\" résznél megadott Nevet fogja használni."
+"</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:513
+msgid ""
+"<center>You can specify a \"special\" <b>real name</b> that will be used to "
+"login with this server.<br>If you leave this field empty (most common case), "
+"KVIrc will first look if a real name is specified for the network that this "
+"server belongs to, and if that is empty the default \"real name\" (specified "
+"in the \"Identity\" settings) will be used.</center>"
+msgstr ""
+"<center>Itt megadhatsz \"különleges\"<b>Valós nevet</b> amivel a KVIrc "
+"csatlakozni fog erre a szerverre. Ha ez a mező üres, akkor a KVIrc elősször "
+"ellenőrzi, nincs e megadva Valós név azon a hálózaton, amihez ez a szerver "
+"tartozik, majd ha az is üres, a KVIrc az \"Azonosító\" résznél megadott "
+"Valós nevet fogja használni.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:517
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:683
+msgid "User Mode"
+msgstr "Felhasználói Mód"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:520
+msgid "Use default user mode"
+msgstr "Alapértelmezett felhasználói módok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:522
+msgid ""
+"<center>If this is enabled, the global initial <b>user mode</b> (configured "
+"from the identity dialog) will be used. If disabled, you can configure an "
+"initial user mode for this server"
+msgstr ""
+"<center>Ha ez engedélyezve van, a globális <b>felhasználói módok</b> "
+"(azonosítóban beállított) lesznek használva. Ha nincs engedélyezve, "
+"beállíthatsz speciális felhasználó módokat a szerverhez"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:530
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:684
+msgid "Invisible (+i)"
+msgstr "Láthatatlan (+i)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:534
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:685
+msgid "Server notices (+s)"
+msgstr "Szerver értesítők (+s)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:538
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:686
+msgid "Wallops (+w)"
+msgstr "Wallops (+w)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:548
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:60
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:104
+msgid "Identity"
+msgstr "Azonosító"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:555
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:115
+msgid "Port:"
+msgstr "Port:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:565
+msgid ""
+"<center>This is the default <b>port</b> that this server will be contacted "
+"on.<br>Usually <b>6667</b> is OK.</center>"
+msgstr ""
+"<center>Ez az alapértelmezett <b>port</b> amin keresztül csatlakozol a "
+"szerverhez.<br>Általában ez <b>6667</b>.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:571
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:119
+msgid "IP address:"
+msgstr "IP cím: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:576
+msgid ""
+"<center>This is the <b>IP address</b> of this server, it is here for caching "
+"purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
+"time it connects to the server. If you enable the \"cache IP address\" "
+"option below, KVIrc will use it as a \"cached result\" and avoid looking it "
+"up again.</center>"
+msgstr ""
+"<center>Ez az <b>IP cím</b> tartozik ehhez a szerverhez. <br>Ha ezt üresen "
+"hagyod, a KVIrc első kapcsolódáskor automatikusan kitölti. Ha engedélyezed "
+"az \"IP cím tárolása\" opciót, a KVIrc úgy fogja értelmezni mint \"korábban "
+"tárolt eredmény\" és nem ellenőrzi le.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:596
+msgid "Cache IP address"
+msgstr "Ip cím tárolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:599
+msgid ""
+"<center>This check will enable <b>IP address caching</b> for this server:"
+"<br>DNS lookups can be time-consuming and might be blocking on some "
+"platforms; this option will cause KVIrc to look up the server hostname only "
+"once.<br><br> Advanced: you can also use this option to force a certain "
+"server name to resolve to a fixed ip address when either the dns for that "
+"server is temporairly unreachable or you want to avoid the round-robin "
+"lookups.</center>"
+msgstr ""
+"<center>Ez engedélyezi az <b>IP cím tárolás</b>át ennél a szervernél. <br> "
+"DNS felderítés időt vesz igénybe, és lehet, hogy blokkolva van néhány "
+"platformon, így ezt csak egyszer hajtja végre, első csatlakozáskor.<br><br> "
+"Haladó: megadhatod ennél az opciónál, hogy egyes szerver neveknél "
+"visszafejtse az IP címet, amikor a DNS szerver átmenetileg nem elérhető, "
+"vagy ha el akarod kerülni a felesleges körök futását.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:609
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:140
+msgid "Use IPv6 protocol"
+msgstr "IPv6 Protokoll használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:619
+msgid ""
+"<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
+"attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
+"IPv6 stack and you <b>must</b> have an IPv6 connection).</center>"
+msgstr ""
+"<center>Ezzel IPv6 szerverként azonosítod a szervert.<br>Ha engedélyezve "
+"van, a KVIrc IPv6 protokollal próbál kapcsolódni. (ehhez a rendszerednek ezt "
+"támogatnia<b>kell</b>, illetve létező IPv6 kapcsolatnak <b>kell</b> lennie.)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:624
+msgid "Use SSL protocol"
+msgstr "SSL protokol használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:627
+msgid ""
+"<center>This check will cause the connection to use the <b>Secure Socket "
+"Layer</b> encryption support. Obviously, this server must have support for "
+"this, too. :)</center>"
+msgstr ""
+"<center>Ezzel a kapcsolat <b>Secure Socket Layer</b> titkosítással fog "
+"létrejönni. Nyilván a szervernek is támogatnia kell ezt. :)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:636
+msgid "Connect to this server at startup"
+msgstr "Kapcsolódás indításkor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:641
+msgid ""
+"<center>This option will cause KVIrc to connect to the IRC server when it is "
+"started.</center>"
+msgstr ""
+"<center>A KVIrc indításakor automatikusan kapcsolódik ehhez a szerverhez, ha "
+"engedélyezve van.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:650
+msgid ""
+"<center>This box allows you to choose the preferred encoding for this sever. "
+"If you choose \"Use Network Encoding\" then the encoding will be inherited "
+"from the network that this server belongs to.</center>"
+msgstr ""
+"<center>Ez az opció lehetővé teszi, hogy kiválaszd a megadott kódolást erre "
+"a szererre. Ha \"Hálózati kódolás használata\" opciót választod, akkor a "
+"kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
+"tartozik.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:659
+msgid "Use Network Encoding"
+msgstr "Hálózati kódolás használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:672
+msgid "Link filter:"
+msgstr "Kapcsolat szűrő:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:701
+msgid ""
+"<center>This field specifies the name of a module that exports a link filter "
+"for this type of server.<br>For plain IRC connections, you don't need any "
+"link filters; this is used for incompatible protocols.</center>"
+msgstr ""
+"<center>Ez a mező adja meg a modul nevét, amelyik exportálja a link szűrőt "
+"ehhez a típusú szerverhez.<br> Normál IRC kapcsolatokhoz nincs szükség "
+"linkszűrőkre, ez nem kompatibilis protokollokhoz használt opció.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:705
+msgid "Id:"
+msgstr "Azonosító:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:713
+msgid ""
+"<center>This field allows you to specify a really unique id for this server. "
+"You will then be able to use /server -x &lt;this_id&gt; to make the "
+"connection. This is especially useful when you have multiple server entries "
+"with the same hostname and port in different networks (bouncers?)</center>"
+msgstr ""
+"<center>Ezzel a szerverhez hozzárendelhetsz egy különleges azonosítót, ami "
+"alapján képes leszel a /server -x &lt;megadott_id&gt; paranccsal kapcsolódni "
+"hozzá. Ez különösen akkor hasznos, ha több szerver tartozik ugyanahhoz a "
+"hosztnévhez és porthoz. (pl: BNC)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:719
+msgid "Proxy server:"
+msgstr "Proxy szerver:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:724
+msgid ""
+"<center>This is the <b>proxy</b> that KVIrc will use to connect to thos "
+"server.\n"
+"If this field is set in \"Default\" KVirc will use global proxy settings, if "
+"it is set in \"Direct connection\" KVirc will connect to this server without "
+"proxy. You can define new proxy server in global options' \"Proxy servers\" "
+"menu.</center>"
+msgstr ""
+"<center>Ezzel a <b>proxy</b>val fog a KVIrc kapcsolódni a szerverre.\n"
+"Ha ez a mező \"Alapértelmezett\"-re van állítva, a KVIrc a globálist proxy "
+"beállításokat fogja használni. Ha \"Közvetlen kapcsolat\"van megadva, akkor "
+"a KVIrc közvetlenül a szerverhez fog kapcsolódni proxy nélkül.Új proxy "
+"szervereket a \"Proxy szerverek\" résznél adhatsz meg.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:729
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:730
+msgid "Direct connection"
+msgstr "Közvetlen kapcsolat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:746
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:28
+msgid "Connection"
+msgstr "Kapcsolat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:758
+msgid ""
+"<center>Here you can set a list of channels to be joined automatically after "
+"a connection to this server has been established. To add a channel, type its "
+"name in the text input below and click \"<b>Add</b>\".</center>"
+msgstr ""
+"<center>Itt megadhatod azokat a csatornákat, amire a KVIrc fellépjen, miután "
+"létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
+"csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:776
+msgid ""
+"<center>The following commands will be executed after a connection has been "
+"established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
+"slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</"
+"tt>).<br>KVIrc will first send the USER command, then eventually PASS and "
+"NICK and then execute this command sequence.<br>This is particularly useful "
+"for IRC bouncers that require login commands.</center>"
+msgstr ""
+"<center>Ezek a parancsok fognak lefutni, amikor  a KVIrc létrehozta a "
+"kapcsolatot a szerverrel. <br><b>Fontos:</b> a parancsokat csak parancskezdő "
+"perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> a<tt>/msg "
+"jelszó titkos</tt> helyett!.)<br>A KVIrc elősször a USER parancsot hajtja "
+"végre, majd utána a PASS és a NICK elküldése következik (belépéskor), majd "
+"mindezek után ez a kódblokk fut le.<br> Ez általában olyankor hasznos ha egy "
+"BNC-re való csatlakozáskor szükség van plussz parancsokra.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:796
+msgid ""
+"<center>The following commands will be executed after a successful login to "
+"this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
+"slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>)."
+"<br>This is useful for automatically opening queries, setting variables, etc."
+"</center>"
+msgstr ""
+"<center>A következő parancsok akkor futnak le, ha sikeresen feljelentkezett "
+"a hálózatra.<br><b>Important:<<br><b>Fontos:</b> a parancsokat csak "
+"parancskezdő perjel <b>nélkül</b> használd. (pl.: <tt>msg jelszó titkos</tt> "
+"a<tt>/msg jelszó titkos</tt> helyett!)<br> Ezzel például automatikusan "
+"megnyithatsz privátokat, definiálhatsz változókat.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1041
+msgid "Server"
+msgstr "Szerver"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1042
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:73
+msgid "Description"
+msgstr "Meghatározás "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1054
+msgid ""
+"<center>This is the list of available IRC servers.<br>Right-click on the "
+"list to add or remove servers and perform other actions.<br>Double-click on "
+"a item for advanced options.</center>"
+msgstr ""
+"<center>Lista az elérhető IRC szerverekről.<br>Jobb klikk a listán, hogy új "
+"szervereket adj hozzá, vagy távolíts el, esetleg egyéb műveleteket végezz. "
+"<br>Kattints rá kétszer rá a Haladó beállítások eléréséhez.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1069
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1430
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1554
+msgid "New Network"
+msgstr "Új Hálózat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1077
+msgid "New Server"
+msgstr "Új Szerver"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1086
+msgid "Remove Network/Server"
+msgstr "Hálózat/Szerver eltávolítása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1098
+msgid "Copy Server"
+msgstr "Szerver Másolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1107
+msgid "Paste Server"
+msgstr "Szerver Beillesztése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1446
+msgid "Import List"
+msgstr "Lista Importálása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1125
+msgid "Active Configuration"
+msgstr "Aktív Konfiguráció"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1126
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1332
+msgid "Server:"
+msgstr "Szerver: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1130
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
+msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1153
+msgid "Advanced..."
+msgstr "Haladó..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1156
+msgid "<center>Click here to edit advanced options for this entry</center>"
+msgstr ""
+"<center>Kattints ide, hogy a haladó beállításokat elérd ehhez az elemhez.</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1159
+msgid "Connect &Now"
+msgstr "Kapcsolódás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1164
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
+msgstr ""
+"<center>Kattints ide, hogy elkezdj csatlakozni a kiválasztott szerverhez.</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1177
+msgid ""
+"<center>This button shows a list of recently used servers. It allows you to "
+"quickly find them in the list.</center>"
+msgstr ""
+"<center>Ez egy lista a mostanában használt szerverekről. Így könnyedén "
+"megtalálhatod ezeket a listában.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1181
+msgid "Show this dialog at startup"
+msgstr "Párbeszédablak megjelenítése indításkor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1184
+msgid ""
+"<center>If this option is enabled, the Servers dialog will appear every time "
+"you start KVIrc</center>"
+msgstr ""
+"<center>Engedélyezésnél ez az ablak meg fog jelenni minden indításkor.</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1335
+msgid "Network:"
+msgstr "Hálózat: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1345
+msgid "No selection"
+msgstr "Nincs kijelölt"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1364
+msgid "UnknownNet"
+msgstr "IsmertelenHálózat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1431
+msgid "Remove Network"
+msgstr "Hálózat Eltávolítása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1434
+msgid "&New Server"
+msgstr "Új szerver"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1435
+msgid "Re&move Server"
+msgstr "Szerver eltávolítása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1437
+msgid "&Copy Server"
+msgstr "Szerver másolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1439
+msgid "&Paste Server"
+msgstr "Szerver beillesztése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1444
+msgid "Clear List"
+msgstr "Lista Törlése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1483
+msgid ""
+"Oops... something weird happened:<br>Can't find any module capable of "
+"importing servers."
+msgstr ""
+"Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami importálni "
+"tudna szervereket."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1500
+msgid ""
+"Oops... something weird happened:<br>Can't find the module that was capable "
+"of this import action. :("
+msgstr ""
+"Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami képes lenne "
+"importálni ezeket a dolgokat.... :("
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1574
+msgid "irc.unknown.net"
+msgstr "irc.ismeretlen.net"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:39
+msgid "Disable parser warnings"
+msgstr "Értelmező figyelmeztetéseinek tiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:40
+msgid "Disable broken event handlers"
+msgstr "Hibás eseménykezelők tiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:41
+msgid "Kill broken timers"
+msgstr "Hibás időzítők (timers) kilövése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:42
+msgid "Send unknown commands as /RAW"
+msgstr "Ismeretlen parancs küldése /RAW -ként"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:46
+msgid "Automatically unload unused modules"
+msgstr "Nem használt modulok kilövése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:47
+msgid "Ignore module versions (dangerous)"
+msgstr "Modul verziók figyelmen kívül hagyása (veszélyes)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:51
+msgid "Relay errors and warnings to debug window"
+msgstr "Hibák és figyelmeztetések küldése a Debug ablakba"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.cpp:52
+msgid "Create minimized debug window"
+msgstr "Minimalizált Debug ablak létrehozása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:59
+msgid "Nickname alternatives"
+msgstr "Név alternatívák"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:62
+msgid ""
+"<center>Here you can choose up to three nicknames alternative to the primary "
+"one. KVIrc will use the alternatives if the primary nick is already used by "
+"someone else on a particular IRC network.</center>"
+msgstr ""
+"<center>Itt kiválaszthatsz három alternatív becenevet, az elsődleges után. A "
+"KVIrc ezeket az alternatívákat fogja használni, ha valaki már az elsődleges "
+"neveddel fent van az adott hálózaton.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:69
+msgid "Alt. Nickname 1:"
+msgstr "Alt. Név 1:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:76
+msgid "Alt. Nickname 2:"
+msgstr "Alt. Név 2:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:83
+msgid "Alt. Nickname 3:"
+msgstr "Alt Név 3:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:96
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
+msgid "Ok"
+msgstr "Ok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:130
+msgid "Avatar Download - KVIrc"
+msgstr "Avatar Letöltés - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:136
+msgid "<center>Please wait while the avatar is being downloaded</center>"
+msgstr "<center>Kérlek várj, amíg letöltöm az avatart.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:139
+msgid "Abort"
+msgstr "Megszakít"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:170
+msgid "Failed to start the download"
+msgstr "Letöltés megkezdése sikertelen"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:184
+msgid "Download aborted by user"
+msgstr "Letöltés megszakítva a felhasználó által"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:213
+msgid "Choose Avatar - KVIrc"
+msgstr "Válassz Avatart - KVirc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:219
+msgid ""
+"Please select an avatar image. The full path to a local file or an image on "
+"the Web can be used.<br>If you wish to use a local image file, click the "
+"\"<b>Browse</b>\"button to browse local folders.<br>The full URL for an "
+"image (including <b>http://</b>) can be entered manually."
+msgstr ""
+"Kérlek válassz ki egy avatar képet. A kép teljes elérési útja szükséges, "
+"vagy egy weben lévő képet is használhatsz.<br> Ha szeretnél egy helyi képet "
+"használni kattints a \"<b>Tallózás</b>\" gombra, hogy fájlok közül "
+"választhass. <br>A webcímet, ahol a kép található, manuálisan kell megadnod."
+"<br>(beleértve a<b>http://</b> részt is)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:237
+msgid "&Browse..."
+msgstr "Tallózás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:275
+msgid "Choose an Image File - KVIrc"
+msgstr "Képfájl kiválasztása - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:316
+msgid "Basic Properties"
+msgstr "Alapvető Tulajdonságok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:323
+msgid ""
+"<center>Your <b>nickname</b> is your primary form of identification on IRC."
+"<br>Since servers cannot accept multiple users sharing the same nickname "
+"(case insensitive), you can provide alternative nicknames to be used in "
+"casethe server refuses to accept the default one.</center>"
+msgstr ""
+"<center>A <b>beceneved</b> az elsődleges, ami alapján felismernek IRC-en."
+"<br>Amióta a szervereken nem engedélyezett egy nick két használata (kis-"
+"nagybetű különbséggel) , megadhatsz alternatív Neveket is, amit a KVIrc "
+"használhat, ha a szerver visszautasítaná az alapértelmezett nevet.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:331
+msgid "Alternatives..."
+msgstr "Alternatívák..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:337
+msgid ""
+"<center>This is the <b>username</b> that you will use to connect to the "
+"server.<br>In the past, it was used as a form of authentication, but it "
+"normally has no special use now.<br>In addition to your nickname, you are "
+"identified on IRC by your <b>username@hostname</b>.</br>Basically, you can "
+"enter any word you like here. :D</center>"
+msgstr ""
+"<center>Ez a <b>felhasználónév</b> amit használni fogsz kapcsolódáskor a "
+"szerveren.<br> Régebben ezt használták azonosításra, de már semmilyen "
+"jelentős szerepe nincsen.<br>Emellett a Neveden kívül ezzel azonosítanak IRC-"
+"en :<b>felhasználónév@hosztnév</b>.</br>Alapjában véve ide azt írsz, amit "
+"akarsz. :D</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:346
+msgid ""
+"<center>This text will appear when someone does a /WHOIS on you.<br>It is "
+"intended to be your real name, but people tend to put random quotes and "
+"phrases here too.</center>"
+msgstr ""
+"<center>Ez a szöveg fog megjelenni, ha valaki \"lewhoisol\" a /WHOIS "
+"paranccsal. <br> Ez lehet akár a polgári neved, de sokan ide egy nagyon "
+"rövid szösszenetet/szólást írnak.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:351
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr ""
+"A mező kitöltése opcionális, ez fog megjelenni, ha valaki CTCP USERINFO-t "
+"kér tőled."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:356
+msgid "Profile"
+msgstr "Profil"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:361
+msgid "Age:"
+msgstr "Kor:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:366
+msgid "Here you can specify your age."
+msgstr "Itt megadhatod a korodat."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:370
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:401
+msgid "Unspecified"
+msgstr "Nem meghatározott"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:391
+msgid "Gender:"
+msgstr "Nem:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:396
+msgid "Here you can specify your gender."
+msgstr "Itt megadhatod a nemedet."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:402
+msgid "Female"
+msgstr "Nő"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:403
+msgid "Male"
+msgstr "Férfi"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:414
+msgid "Location:"
+msgstr "Hely:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:417
+msgid ""
+"You can describe here your approximate physical location. Something like "
+"\"Region, Country\" will be ok. Please note that this information will be "
+"viewable by anyone so putting more data (like the exact address), generally, "
+"<b>is not a good idea</b>."
+msgstr ""
+"Itt meghatározhatod a fizikai tartózkodási helyedet. Valami ilyesmi, hogy "
+"\"Ország, Város\" tökéletesen megfelel. Arra ügyelj, hogy ez az információ "
+"látható lesz bárki számára, ezért több adat (pontos cím) általában <b>nem "
+"túl jó ötlet</b>."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:422
+msgid "Languages:"
+msgstr "Beszélt nyelvek:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:425
+msgid ""
+"You can put here the short names of the languages you can speak. An example "
+"might be \"EN,IT\" that would mean that you speak both Italian and English."
+msgstr ""
+"Itt meghatározhatod a rövid neveit az általad beszélt nyelveknek. Például "
+"írhatsz \"HU,GER\"-t is, ami azt jelenti, hogy beszélsz Magyarul és Németül "
+"is egyaránt."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:429
+msgid "Other:"
+msgstr "Egyéb:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:432
+msgid ""
+"You can put here some additional personal data. It might be a funny quote or "
+"your homepage url... Please note that this information will be viewable by "
+"anyone so <b>don't put any sensible data</b> (passwords, telephone or credit "
+"card numbers)."
+msgstr ""
+"Ide tehetsz valami plussz személyes adatot. Ez lehet egy vicc, idézet vagy "
+"akár a weblapod címe is. Arra figyelj, hogy ez az információ mindenki "
+"számára elérhető lesz, így ne tegyél ide semmilyen <b>túlságosan "
+"magánjellegű</b> adatot. (pl.: jelszó, telefonszám, bankkártyaszám)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:502
+msgid ""
+"Here you can choose your avatar image. It will be visible<br>by other people "
+"that request it. Choose a nice image of yourself,<br>possibly avoiding "
+"obscenity and offending images. It is a good idea<br>to choose a relatively "
+"small file (say 150 Kb max) because<br>most clients have a limit on the size "
+"of avatars being downloaded.<br>The image also should be smaller than "
+"800x600 pixels since<br>it will have to be viewable in everyone's monitor."
+msgstr ""
+"Itt tudod kiválasztani az avatar képedet. Ez lesz látható azoknak,<br> akik "
+"lekérik ezt. Válasz egy normál képet magadról (vagy akármi másról),<br> hogy "
+"elkerüld az obszcén és sértő támadásokat a kép ellen. Az igazán jó <br> "
+"avatar egy maximum 150 Kb méretű fájl, mivel a legtöbb kliens limitála a "
+"<br> letölthető avatarok méretét.<br>A jó vatar képnek kisebbnek kell "
+"lennie, mint 800x600 képpont, így más is<br> megtekintheti azt alacsonyabb "
+"felbontású monitoron."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:511
+msgid "Use avatar"
+msgstr "Avatar használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:537
+msgid "Choose..."
+msgstr "Kiválaszás..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:598
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:637
+msgid "Failed to Load Avatar - KVIrc"
+msgstr "Avatar betöltése sikertelen - KVirc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:599
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:638
+msgid ""
+"Failed to load the avatar image.<br>It may be an unaccessible file or an "
+"unsupported image format."
+msgstr ""
+"Avatar betöltése sikertelen. <br>Ez lehet azért, mert a fájl nem elérhető "
+"vagy nem támogatott a formátuma."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:606
+msgid "Failed to download the avatar image.<br><b>%Q</b>"
+msgstr "Avatar letöltése sikertelen. <br><b>%Q</b>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:608
+msgid "Avatar Download Failed - KVIrc"
+msgstr "Avatar letöltése sikertelen - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:649
+msgid "Avatar Might Be Too Big - KVIrc"
+msgstr "Az avatar mérete túl nagy - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:650
+msgid ""
+"The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
+"image will not be seen on all the user monitors<br>and will probably be "
+"scaled by the remote clients with poor quality<br>algorithms to improve "
+"performance. You *should* scale it manually<br>to a sane size (like 800x600) "
+"or choose a different image."
+msgstr ""
+"Az általad kiválasztott avatar mérete nagyobb, mint 1024x768 pixel.<br> "
+"Ekkora képet nem minden felhasználó tud megjeleníteni,<br> és valószínűleg a "
+"kliens átméretezi egy nem túl hatékony <br> algoritmussal a teljesítmény "
+"növelése érdekében.<br> Legjobb, ha átméretezed egy kisebb méretre (kb "
+"800x600)<br> vagy válassz egy más képet helyette."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:688
+msgid "Default Messages"
+msgstr "Alapértelmezett Üzenetek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:691
+msgid "Part message:"
+msgstr "Lelépő üzenet (csat):"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:695
+msgid ""
+"<center>This is the default part message that will be used when you<br>leave "
+"a channel by closing a channel window.</center>"
+msgstr ""
+"<center>Alapértelmezett lelépő üzenet, amit a KVIrc akkor használ, ha <br> "
+"elhagysz egy csatornát, az ablaka bezárásakor.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:699
+msgid "Quit message:"
+msgstr "Kilépő üzenet:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:702
+msgid ""
+"<center>This is the default quit message that will be used when you<br>quit "
+"your IRC session by closing the console window or disconnecting by pressing "
+"the disconnect button.</center>"
+msgstr ""
+"<center>Ez az alapértelmezetten megjelenő kilépő üzenet, amikor <br>kilépsz "
+"az IRC környezetből, a konzol ablakának bezárásával vagy a Lecsatlakozás "
+"gomb megnyomásával.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:42
+msgid "Open Query For"
+msgstr "Privát nyitása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:40
+msgid "Private messages"
+msgstr "Privát üzenetekre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:46
+msgid ""
+"<center>This option enables query window creation when a private message "
+"(PRIVMSG) is received.<br>If you disable this, private messages will be "
+"shown in the active window or a common channel.</center>"
+msgstr ""
+"<center>Az opció engedélyezi, hogy külön ablakot nyison a KVIrc, abeérkező "
+"Privát üzenetnek.<br> Ha letiltod az üzenetek az aktív ablakban vagy egy "
+"közös csatornán jelennek meg.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:52
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:42
+msgid "Private notices"
+msgstr "Privát értesítőkre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:55
+msgid ""
+"<center>This option enables query window creation when a private notice "
+"(NOTICE) is received.<br>If you disable this, private notices will be shown "
+"in the active window or a common channel.</center>"
+msgstr ""
+"<center>Ezzel az opcióval engedélyezed, hogy automatikusan külön ablak "
+"nyíljanak az értesítések. <br>Ha ezt letiltod, az aktív ablakban lesznek "
+"megjelenítve vagy egy közös csatornán.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:62
+msgid "Always open queries as minimized"
+msgstr "Új privátok megnyitása a háttérben"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:66
+msgid ""
+"<center>This option causes newly created query windows to be immediately "
+"minimized.<br>Enable this if you don't like queries popping up while you're "
+"typing something in a channel. :D</center>"
+msgstr ""
+"<center>Ezzel az opcióval automatikusan minimalizálva lesz a Privát üzenet "
+"ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy Privát Ablak amikor "
+"valamit írsz egy csatornára :D. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:74
+msgid "Enable target user tracking"
+msgstr "Felhasználó követése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:77
+msgid ""
+"<center>This option will enable target user tracking.<br>Some actions of the "
+"target user (e.g. joins and parts) will be displayed in the window.<br></"
+"center>"
+msgstr ""
+"<center>Ezzel az opcióval figyelheted, hogy merre jár a felhasználó.<br> "
+"Néhány akció (fel-,lelépések) meg lesz jelenítve az ablakban.<br></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:83
+msgid "Flash system taskbar on new query message"
+msgstr "Rendszer tálca villogjon, ha új Privát üzenet érkezik"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:86
+msgid ""
+"<center>This option causes the system taskbar entry for KVIrc to flash when "
+"a new query message is received and the KVIrc window is not the active.</"
+"center>"
+msgstr ""
+"<center>Ezzel az opcióval a rendszer tálca eleme elkezd villogni, amikor egy "
+"új üzenet érkezik és nem a KVIrc az aktív ablak.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:91
+msgid "Popup notifier on new query message"
+msgstr "Értesítő popup, ha új üzenet érkezik"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:94
+msgid ""
+"<center>This option causes a small notifier window to pop up in the low "
+"right corner of the screen when a new message is received and the KVIrc "
+"window is not active.</center>"
+msgstr ""
+"<center>Ezzel egy kis értesítő ablak bekapcsolását engedélyezed, ami a "
+"képernyő jobb alsó sarokában jelenik meg, amikor új üzenetet kapsz és a "
+"KVIrc ablaka nem aktív.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:98
+msgid "Show information about query target at the top of the query"
+msgstr "Információk mutatása a Privát ablak tetején, a célról"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.cpp:101
+msgid ""
+"<center>This option enables query window information label. It can show you "
+"known information about query target at the top of the window.<br>Uncheck if "
+"you think,that it wastes your query space/</center>"
+msgstr ""
+"<center>Ez az opció engedélyezi a Privát ablak információs sávját. Ez "
+"mutatja számodra az ismert információkat a Privát üzenetek céljáról, az "
+"ablak tetején.<br>Ne engedélyezd, ha úgy gondolod, hogy csak a helyet "
+"foglalja</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:39
+msgid "Use global application font"
+msgstr "Globális alkalmazás betűtípusok használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:40
+msgid "Hide icons in Popup"
+msgstr "Popup ikonok rejtése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:41
+msgid "Global application font:"
+msgstr "Globális alkalmazás betűtípusa:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:67
+msgid "Enable fake transparency"
+msgstr "Hamis átlátszóság engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:71
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use KDE desktop "
+"for transparency\" option.</center>"
+msgstr ""
+"<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell "
+"választanod egy átlátszónak ható hátteret vagy alatta a \"KDE asztal "
+"használata átlátszóságnál\" opciót.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:77
+msgid ""
+"<center>This option makes all KVIrc windows look like transparent.<br>You "
+"must choose a blending background image to below.</center>"
+msgstr ""
+"<center>Ez az opció a KVIrcet úgy állítja be, hogy átlátszónak hasson. "
+"<br>Ehhez ki kell választani egy képet lentebb.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:83
+msgid "Child window opacity:"
+msgstr "Gyermek ablak átlátszósága:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:87
+msgid "Parent window opacity:"
+msgstr "Szülő ablak átlátszósága"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:91
+msgid "Blend color:"
+msgstr "Keverés színe: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:97
+msgid "Use KDE desktop for transparency"
+msgstr "KDE asztal használata átlátszóságnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:102
+msgid "Keep in sync with KDE background changes"
+msgstr "Szinkronizáljon a KDE-vel háttérváltáskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:111
+msgid "Transparency blend image:"
+msgstr "Átlátszóra keverendő kép:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:155
+msgid "Active Background"
+msgstr "Aktív Háttér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:156
+msgid "Inactive Background"
+msgstr "Inaktív Háttér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:157
+msgid "Active Text (Primary)"
+msgstr "Aktív Szöveg (Elsődleges)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:158
+msgid "Active Text (Secondary)"
+msgstr "Aktív Szöveg (Másodlagos)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:159
+msgid "Inactive Text (Primary)"
+msgstr "Inaktív Szöveg (Elsődleges)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:160
+msgid "Inactive Text (Secondary)"
+msgstr "Inaktív szöveg (Másodlagos)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:197
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:78
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:44
+msgid "Background"
+msgstr "Háttér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:178
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:205
+msgid "Background Image"
+msgstr "Háttérkép"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:198
+msgid "Low-Contrast Foreground"
+msgstr "Alacsony kontrasztú Előtér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:199
+msgid "Mid-Contrast Foreground"
+msgstr "Közepes Kontrasztú Előtér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:200
+msgid "Active High-Contrast Foreground (Primary)"
+msgstr "Aktív Magas Kontrasztú Előtér (Elsődleges)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:201
+msgid "Active High-Contrast Foreground (Secondary)"
+msgstr "Aktív Magas Kontrasztú Előtér (Másodlagos)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:202
+msgid "Inactive High-Contrast Foreground (Primary)"
+msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:203
+msgid "Inactive High-Contrast Foreground (Secondary)"
+msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:40
+msgid "Scaling in userlist"
+msgstr "Átméretezés felhasználólistában"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:41
+msgid "Scale avatar images in userlist (recommended)"
+msgstr "Avatar kép átméretezése felhasználólistában (ajánlott)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:43
+msgid ""
+"<center>This option will force KVIrc to scale avatars shown in the userlist."
+"<br>Avatars will be scaled to fit the constraints set below. Better keep "
+"this option on. :)</center>"
+msgstr ""
+"<center>Ez a beállítás utasítja a KVIrcet, hogy az avatarokat mutassa a "
+"felhasználói listában.<br>Az Avatarok automatikusan a megfelelő méretűre "
+"lesznek állítva. Jobb ha ez a beállítás be van kapcsolva :)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:48
+msgid "Do not scale avatar if it is less than required size"
+msgstr "Ne méretezd az avatart, ha az kissebb mint a szükséges méret"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:50
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:59
+msgid "Image width:"
+msgstr "Kép szélessége:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:52
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:61
+msgid "Image height:"
+msgstr "Kép magassága:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:56
+msgid "Scaling on load (and in user tooltips)"
+msgstr "Átméretezés felhasználólistában"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:57
+msgid "Scale avatar images on image load"
+msgstr "Avatar kép átméretezése betöltéskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:65
+msgid "Request CTCP"
+msgstr "CTCP kérés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:66
+msgid "Request missing avatars"
+msgstr "Hiányzó avatarok lekérése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:67
+msgid "Maximum requested file size:"
+msgstr "Maximálisan lekérhető fájl mérete:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:71
+msgid ""
+"<center>This option will cause KVIrc to send a DCC GET request when someone "
+"sets an avatar and there is no cached copy available.</center>"
+msgstr ""
+"<center>Ez a beállítás utasítja a KVIrcet, hogy küldjön DCC GET kérést, "
+"amikor valaki beállít egy avatart, és nincs róla elérhető helyi másolat.</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:74
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:317
+msgid " bytes"
+msgstr " bájt"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:77
+msgid ""
+"<center>This is the maximum size for avatar images that will be "
+"automatically requested.<br>A reasonable value might be 102400 bytes (100 K)."
+"</center>"
+msgstr ""
+"<center>Ez a maximum mérete az avatarnak, ami automatikusan lekérésre kerül. "
+"<br>Ésszerű ennek az értéknek körülbelül 102400 bájtnak lennie (100 K).</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:83
+msgid "Automatically accept incoming avatars"
+msgstr "Bejövő avatarok automatikus elfogadása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:87
+msgid ""
+"<center>This option will cause KVIrc to auto-accept DCC SEND requests for "
+"incoming avatars.<br>If you're using the \"Request missing avatars\" option "
+"above, enabling this may by useful.<br>Avatars will be saved in the local "
+"KVIrc directory.</center>"
+msgstr ""
+"<center> Ezzel az opcióval a KVIRc automatikusan elfogadja a beérkező "
+"avatarokat.<br>Ha használod a \"Hiányzó avatarok lekérése\" lehetőséget "
+"lentebb, ennek az engedélyezése hasznos lehet<br>Az avatarok a helyi KVIrc "
+"könyvtárba lesznek elmentve.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:94
+msgid "Remember avatars for registered users"
+msgstr "Emlékezzen a regisztrált felhasználók avatarjára"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:99
+msgid ""
+"<center>Use a user's last known avatar by default (only for users that are "
+"registered).</center>"
+msgstr ""
+"<center>Használd a felhasználó legutolsó ismert avatarját "
+"alapértelmezettként (csak ha a felhasználó regisztrált)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:103
+msgid "Avatar offer timeout:"
+msgstr "Avatar kérés időtúllépése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:104
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:90
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:97
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:162
+msgid " sec"
+msgstr " mp"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:107
+msgid ""
+"<center>This is the amount of time to make an avatar available for transfer "
+"when requested.<br>When someone sends a CTCP AVATAR request, KVIrc will "
+"reply with a CTCP AVATAR message containing the name and size of your avatar "
+"image.<br>A time-limited file offer is added for the image file to the "
+"requesting user.</center>"
+msgstr ""
+"<center>Az az időtartam, ami alatt az avatar elérhető adatátvitelre, kérés "
+"után. <br>Amikor valaki CTCP AVATAR kérést küld, a KVIrc válaszol egy CTCP "
+"AVATAR üzenettel, ami tartalmazza az avatarod nevét és méretét. "
+"<br>Időkorlátos fájl ajánlat hozzá lesz adva a képfájlhoz, amit a "
+"felhasználó kért.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:115
+msgid "Ignore requests if no avatar is set"
+msgstr "Kérés mellőzése, ha nincs avatar beállítva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.cpp:118
+msgid ""
+"This option will cause KVIrc to ignore channel CTCP AVATAR requests when you "
+"have no avatar set. This is usually a good practice since it helps in "
+"reducing traffic by not sending a reply that would be empty."
+msgstr ""
+"Csatorna CTCP AVATAR kérések mellőzése, ha nincs beállítva avatarod. Jó "
+"módszer a forgalom csökkentésére, ha nincs beállítva avatar."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:39
+msgid "Use online notify list"
+msgstr "Online értesítési lista használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:40
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:106
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:235
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:44
+msgid "Configuration"
+msgstr "Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:45
+msgid "Show notifications in active window"
+msgstr "Értesítések mutatása az aktív ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:50
+msgid "Flash window when users are going online"
+msgstr "Az ablak villogjon, ha egy felhasználó elérhető lesz"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:55
+msgid "Popup notifier when users are going online"
+msgstr "Értesítő Popup, ha egy felhasználó elérhető"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:59
+msgid "Advanced configuration"
+msgstr "Haladó Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:64
+msgid "Check USERHOST for online users"
+msgstr "USERHOST ellenőrzése az elérhetőeknél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:69
+msgid "Use \"smart\" notify list manager"
+msgstr "\"Okos\" értesítési lista kezelő"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:74
+msgid "Use the WATCH method if available"
+msgstr "Használd a WATCH eljárást, ha elérhető"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:79
+msgid "Check interval (in seconds)"
+msgstr "Időtúllépés ellenőrzése (mpben)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:85
+msgid "ISON delay (in seconds)"
+msgstr "ISON késleltetés (mpben)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:91
+msgid "USERHOST delay (in seconds)"
+msgstr "USERHOST késleltetés (mpben)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:96
+msgid ""
+"<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" "
+"settings.</p>"
+msgstr ""
+"<p><b>Figyelem:</b><br>Az értesítési lista a  \"Regisztrált Felhasználók\" "
+"beállításai szerint működik.</p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:112
+msgid "Forcibly and completely disable the notifier"
+msgstr "Az értesítő Popup teljes letiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:115
+msgid ""
+"This is an option for the impatient: it allows to forcibly and permanently "
+"disable the notifier window. Please note that if this option is activated "
+"then the notifier will NOT popup even if all the other options around "
+"specify to use it in response to particular events. Also note that this "
+"option will make all the /notifier.* commands fail silently."
+msgstr ""
+"Ez egy lehetőség a türelmetlenek számára, ami lehetővé teszi, hogy teljesen "
+"letiltsák az értesítő ablakot. Vedd figyelembe, hogy ezzel az opcióval "
+"teljesen letiltod az Értesítőt. Ennek a kikapcsolásakor semmilyen formában "
+"nem fog megjelenni, még ha valamely beállítás kérné, akkor sem. Ennek az "
+"aktiválásakor a /notifier parancs és annak részei is mellőzve lesznek."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:123
+msgid "Disable notifier window flashing"
+msgstr "Értesítő ablak villogásának kikapcsolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.cpp:124
+msgid "Disable notifier window fade effect"
+msgstr "Értesítő ablak halványulásának tiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:39
+msgid "Default away message:"
+msgstr "Alapértelmezett Távol üzenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:41
+msgid "User input exits away mode"
+msgstr "Bevitelnél kilépés Távol üzemmódból"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:43
+msgid "Away Nickname"
+msgstr "Távol üzemmódnál használt Név"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:44
+msgid "Change nickname on away"
+msgstr "Név változtatása Távol üzemmódban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:47
+msgid "Use automatic nickname ([5 letters]AWAY)"
+msgstr "Automatikus Név használata ([5 karakter]AWAY)"
+
+# Nem lehet lefordatani, marha furcsa hiba amikor átírnám a zárójelezett részt kbabel hibának jelenti
+# Cant translate, when i translate a word "means" in the brackets, kbabel  says its an error ~ Fiber
+# its around: %nick% means / valahol a két szó között
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.cpp:55
+#, c-format
+msgid "Custom nickname (%%nick%% means a current nick):"
+msgstr "Választott nicknév (%%nick%%) jelenti az aktuális nevet): "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/libkvioptions.cpp:199
+msgid "No such options page class name %Q"
+msgstr "Nincs ilyen opció lap osztály név%Q"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:47
+msgid "Use system URL handlers"
+msgstr "Rendszer URL kezelőinek használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:50
+msgid "<b>http://</b> handler command:"
+msgstr "<b>http://</b> kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:51
+msgid "<b>https://</b> handler command:"
+msgstr "<b>https://</b> kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:52
+msgid "<b>ftp://</b> handler command:"
+msgstr "<b>ftp://</b> kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:53
+msgid "<b>mailto:</b> handler command:"
+msgstr "<b>mailto:</b> kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:54
+msgid "<b>file://</b> handler command:"
+msgstr "<b>file://</b> kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:55
+msgid "Unknown protocol handler command:"
+msgstr "Ismeretlen protokollt kezelő parancs:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:61
+msgid "Use proxy"
+msgstr "Proxy használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:65
+msgid "Proxy"
+msgstr "Proxy"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:76
+msgid ""
+"<center>This is the list of available proxy servers.<br>Right-click on the "
+"list to add or remove proxies.</center>"
+msgstr ""
+"<center>Ebben a listában vannak az elérhető proxyk<br> Jobb klikkel tudsz "
+"hozzáadni vagy eltávolítani szervereket.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:90
+msgid "New Proxy"
+msgstr "Új Proxy"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:99
+msgid "Remove Proxy"
+msgstr "Proxy Eltávolítása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:111
+msgid "Proxy:"
+msgstr "Proxy: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:131
+msgid "Protocol:"
+msgstr "Protokoll:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:336
+msgid "&New Proxy"
+msgstr "Új Proxy"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.cpp:337
+msgid "Re&move Proxy"
+msgstr "Proxy Eltávolítása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:71
+msgid "Pattern"
+msgstr "Minta"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:72
+msgid "MIME Type"
+msgstr "MIME típus"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:87
+msgid "MIME type:"
+msgstr "MIME típus: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:92
+msgid "File pattern:"
+msgstr "Fájl minta: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:97
+msgid "Magic bytes:"
+msgstr "Mágikus bájtok: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:102
+msgid "Save path:"
+msgstr "Mentés útvonala: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:107
+msgid "Local open command:"
+msgstr "Helyi megnyitás parancsa: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:112
+msgid ""
+"<center>This field contains the command to execute to open a local file."
+"<br><tt>$0</tt> is used in place of the filename</center>"
+msgstr ""
+"<center>Ez a mező tartalmazza a parancsot, ami megnyit egy helyi fájlt."
+"<br><tt>$0</tt> a fájlnév helyét határozza meg</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:116
+msgid "Remote open command:"
+msgstr "Távoli megnyitás parancsa: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:121
+msgid ""
+"<center>This field contains the command to execute when automatically "
+"opening a received file.<br><tt>$0</tt> is used in place of the filename</"
+"center>"
+msgstr ""
+"<center>Ez a mező tartalmazza a parancsot, amivel megnyitod a beérkezett "
+"fájlt.<br><tt>$0</tt> a fájlnév helyét jelöli</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:125
+msgid "Icon"
+msgstr "Ikon"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:134
+msgid "&New"
+msgstr "Új"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:138
+msgid "Re&move"
+msgstr "Eltávolítás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:184
+msgid "[Unknown Media Type]"
+msgstr "[Ismeretlen Médiatípus]"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.cpp:230
+msgid "New Media Type"
+msgstr "Új Médiatípus"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:53
+msgid "Nickname Colors"
+msgstr "Név színek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:56
+msgid "Channel owner:"
+msgstr "Csatorna tulajdonos:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:57
+msgid "Channel admin:"
+msgstr "Csatorna admin:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:58
+msgid "Op:"
+msgstr "Op:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:59
+msgid "Half-op:"
+msgstr "Fél-op:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:60
+msgid "Voice:"
+msgstr "Voice:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:61
+msgid "User-op:"
+msgstr "Felhasználó-Op:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:62
+msgid "Away:"
+msgstr "Távol:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:66
+msgid "Use different color for own nick:"
+msgstr "Saját Névhez eltérő szín használata:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:81
+msgid "Draw nickname grid"
+msgstr "Név Rács rajzolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:83
+msgid "Grid color:"
+msgstr "Rács színe:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:90
+msgid "Grid type:"
+msgstr "Rács típusa: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:94
+msgid "3D Grid"
+msgstr "3D Rács"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:95
+msgid "3D Buttons"
+msgstr "3D Gombok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:96
+msgid "Plain Grid"
+msgstr "Egyszerű Rács"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:97
+msgid "Dotted Grid"
+msgstr "Pontozott Rács"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:131
+msgid "Horizontal Alignment:"
+msgstr "Vízszintes elhelyezés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:135
+msgid "Vertical Alignment:"
+msgstr "Függőleges elhelyezés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:231
+msgid "Show gender icons"
+msgstr "Nemek mutatása ikonkkal"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:232
+msgid "Show user channel icons"
+msgstr "Csatorna ikonok használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:233
+msgid "Show user channel activity indicator"
+msgstr "Csatorna aktivitás-kijelző használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:234
+msgid "Hide users label"
+msgstr "Felhasználók elrejtése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:235
+msgid "Enable user tooltips"
+msgstr "Eszköztippek mutatása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:236
+msgid "Hide avatars"
+msgstr "Avatarok rejtése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:79
+msgid "Use flood protection (recommended)"
+msgstr "Flood védelem használata (ajánlott)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:81
+msgid ""
+"<center>This option makes KVIrc only respond to a limited number of CTCP "
+"requests within a specified time interval, to prevent \"flooding\" CTCP "
+"messages.</center>"
+msgstr ""
+"<center>Ez korlátozza a CTCP kéréseket egy megadott időtartamon belül,ami "
+"így megakadályozza a CTCP floodoló üzeneteket.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:83
+msgid "Allow up to:"
+msgstr "Engedélyezés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:84
+msgid " requests"
+msgstr "kérés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:86
+msgid ""
+"<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
+"requests</b></center>"
+msgstr ""
+"<center>Minimum: <b>0 kérés</b><br>Maximum: <b>10000 kérés</b></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:89
+msgid "within:"
+msgstr "időn belül:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:92
+msgid ""
+"<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
+"center>"
+msgstr "<center>Minimum: <b>1 mp</b><br>Maximum: <b>3600 mp</b></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:96
+msgid "Ignored Requests"
+msgstr "Mellőzött Kérések"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:97
+msgid "PING"
+msgstr "PING"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:98
+msgid "FINGER"
+msgstr "FINGER"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:99
+msgid "CLIENTINFO"
+msgstr "CLIENTINFO"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:100
+msgid "USERINFO"
+msgstr "USERINFO"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:101
+msgid "VERSION"
+msgstr "VERZIÓ"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:102
+msgid "SOURCE"
+msgstr "SOURCE"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:103
+msgid "TIME"
+msgstr "IDŐ"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:104
+msgid "PAGE"
+msgstr "PAGE"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:105
+msgid "AVATAR"
+msgstr "AVATAR"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:106
+msgid "DCC/TDCC"
+msgstr "DCC/TDCC"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:131
+msgid "General Preferences"
+msgstr "Általános Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:134
+msgid "Theme Preferences"
+msgstr "Kinézet beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:136
+msgid "KVIrc Preferences"
+msgstr "KVIrc Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:139
+msgid ""
+"This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
+"to navigate through the option pages. The text box in the bottom left corner "
+"is a small search engine. It will highlight the pages that contain options "
+"related to the search term you have entered."
+msgstr ""
+"Ez a párbeszédablak tartalmazza a KVIrc beállításait.<br> Használd a bal "
+"oldali ikonokat a beállításokon belüli navigáláshoz. A bal lenti sarokban "
+"lévő szövegdoboz egy gyorskereső, amivel könnyebben rátalálhatsz egy "
+"funkcióra, ha beírod a nevét."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:147
+msgid ""
+"Many settings have tooltips that can be shown by holding the cursor over "
+"their label for a few seconds."
+msgstr ""
+"Rengeteg beállításnak van saját segítség opciója, amit pár másodpercig az "
+"egérkurzor felette hagyásával jeleníthetsz meg."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:152
+msgid ""
+"When you have finished, click \"<b>OK</b>\" to accept your changes or "
+"\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
+"your changes without closing the window."
+msgstr ""
+"Ha végeztél, kattints az \"<b>OK</b>\" gombra, hogy beállításd a "
+"változtatásokatvagy a \"<b>Mégsem</b>re\", hogy elvesd őket. Az "
+"\"<b>Alkalmaz</b>\" beállítja a változtatásokat anélkül, hogy bezárná az "
+"ablakot."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:217
+msgid ""
+"<p>This is the search tool for this options dialog.</p><p>You can enter a "
+"search term either in your native language or in english and press the "
+"button on the right. The pages that contain some options related to the "
+"search term will be highlighted and you will be able to quickly find them.</"
+"p><p>Try \"nickname\" for example.</p>"
+msgstr ""
+"<p>Ez egy mini-kereső, hogy könnyen megtaláld a beállításokat.</p> "
+"<p>Megadhatsz szavakat magyarul vagy angolul, és nyomd le a mellette lévő "
+"ikont. Azok az oldalak, amelyek hasonlóságot mutatnak a megadott szavakkal "
+"ki lesznek emelve, hogy könnyedén megtaláld őket.</p><p>Próbáld ki például "
+"az \"avatar\" szóval.</p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:249
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:61
+msgid "Close this dialog, accepting all changes."
+msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:255
+msgid "&Apply"
+msgstr "&Alkalmaz"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:256
+msgid "Commit all changes immediately."
+msgstr "Minden változás alkalmazása azonnal."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/dialog.cpp:262
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/container.cpp:69
+msgid "Close this dialog, discarding all changes."
+msgstr "Párbeszédablak bezárása, összes változás elvetése."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:149
+msgid ""
+"This table contains the text icon associations.<br>KVirc will use them to "
+"display the CTRL+I escape sequences and eventually the emoticons."
+msgstr ""
+"Ez egy tábla, a szöveges ikonok hozzárendeléséről.<br> A KVIrc ezeket "
+"jeleníti meg a \"CTRL+I azonosító\" után."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:165
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:169
+msgid "Delete"
+msgstr "Törlés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:191
+msgid "unnamed"
+msgstr "névtelen"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:53
+msgid "Enable word highlighting"
+msgstr "Szó kiemelés engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:55
+msgid "Words to highlight:"
+msgstr "Kiemelendő szavak:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:57
+msgid "Word splitters:"
+msgstr "Szó elválasztók:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:59
+msgid "Highlight messages containing my nickname"
+msgstr "Üzenetek kiemelése, amik a Nevemet tartalmazzák"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:61
+msgid ""
+"<center>If this option is enabled, KVIrc will highlight any user message "
+"containing your current nickname</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van, a KVirc ki fog emelni minden felhasználói "
+"üzenetet ami tartalmazza az aktuális nevedet</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:63
+msgid "Flash the system taskbar entry on highlighted messages"
+msgstr "A rendszer tálcája villogjon kiemelt üzenetnél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:65
+msgid ""
+"<center>If this option is enabled, KVIrc will (attempt to) flash the system "
+"taskbar entry when a highlighted message is printed and KVIrc is not the "
+"active window</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van a KVIrc megpróbálja a tálcán jelezni "
+"villogással, hogy kiemelt üzenetet észlelt, és az nem az aktív ablakban van. "
+"</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:67
+msgid "Popup the notifier window on highlighted messages"
+msgstr "Értesítő előugrása kiemelt üzeneteknél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:69
+msgid ""
+"<center>If this option is enabled, KVIrc will popup a little notifier window "
+"in the low right corner of your desktop when a highlighted message is "
+"printed and KVIrc is not the active window</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van a KVIrc megjelenít egy kis értesítő ablakot a "
+"jobb alsó sarokban, amikor kiemelt szöveget észlel, és a KVIrc ablaka éppen "
+"nem aktív.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:91
+msgid "Alert Restrictions"
+msgstr "Korlátozási figyelmeztetés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:92
+msgid "Restrict alert"
+msgstr "Szigorú figyelmeztettés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:94
+msgid ""
+"<center>If this option is enabled, KVIrc will alert in the taskbar only if a "
+"normal message is received in a channel.<br>Actions like joins, parts and "
+"mode changes will be ignored.<br> This is useful if you are in channels with "
+"a high rate of traffic and only want to be alerted for messages that are "
+"interesting to you.</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van a KVIrc csak normál csatornára érkező "
+"üzeneteknél értesít <br> A csatlakozás, elhagyás és módváltásokat figyelmen "
+"kívül fogja hagyni.<br> Ez leginkább akkor hasznos, ha olyan csatornán vagy "
+"aminek nagy a forgalma, viszont téged kifejezetten csak néhány kiemelt "
+"üzenet érdekel. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:96
+msgid "Alert for highlighted words"
+msgstr "Értesítés kiemelt szavaknál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:98
+msgid ""
+"<center>If this option is enabled, the taskbar will also alert for messages "
+"which contain a word from the highlighted words list above.</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van, a tálcán csak akkor figyelmeztet ha az "
+"üzenet tartalmazza a kiemelt szavak valamelyikét a fenti listából. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:100
+msgid "Alert for query messages"
+msgstr "Figyelmeztetés Privát üzenetnél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:102
+msgid ""
+"<center>If this option is enabled, the taskbar will also alert for messages "
+"which are shown in queries.</center>"
+msgstr ""
+"<center>Ha ez az üzenet engedélyezve van, a tálcán figyelmeztet a KVIrc, "
+"hogy új Privát üzeneted érkezett.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:107
+msgid "Use custom alert level"
+msgstr "Megadott figyelmeztetési szint használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:109
+msgid ""
+"<center>If this option is enabled, KVIrc will alert in the taskbar only if "
+"the specified alert level is reached.</center>"
+msgstr ""
+"<center>Ha ez engedélyezve van, a KVIrc csak akkor figyelmeztet a tálcán, ha "
+"a megadott szintet elérte az üzenet.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:111
+msgid "Minimum alert level:"
+msgstr "Minimális figyelmeztetési szint: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:114
+msgid ""
+"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgstr "<center>Minimális figyelmeztetési szint beállítása a tálcára</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:213
+msgid "Output verbosity"
+msgstr "\"Beszédesség\" a felhasználó felé"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:49
+msgid "Mute"
+msgstr "Néma"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:50
+msgid "Quiet"
+msgstr "Csöndes"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:51
+msgid "Normal"
+msgstr "Normál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:52
+msgid "Verbose"
+msgstr "Beszédes"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:53
+msgid "Paranoic"
+msgstr "Szófosó"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:59
+msgid "Show in active window"
+msgstr "Mutasd az aktív ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:60
+msgid "External messages"
+msgstr "Külső üzenetek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:61
+msgid "External CTCP replies"
+msgstr "Külső CTCP válaszok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:62
+msgid "Whois replies"
+msgstr "Whois válaszok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:63
+msgid "ChanServ and NickServ notices"
+msgstr "ChanServ és NickServ értesítőket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:64
+msgid "Invite messages"
+msgstr "Meghívó üzeneteket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:65
+msgid "Server replies"
+msgstr "Szerver válaszokat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:66
+msgid "Server notices"
+msgstr "Szerver értesítőket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:67
+msgid "Broadcast and WALLOPS messages"
+msgstr "Közvetítő (BC) és WallOp üzeneteket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:70
+msgid "Show extended server information"
+msgstr "Teljes szerver információ megjelenítése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:71
+msgid "Show server pings"
+msgstr "Szerver pingelésének megjelenítése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:72
+msgid "Show own parts in the console"
+msgstr "Saját lelépés jelzése konzolban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.cpp:73
+msgid "Show compact mode changes"
+msgstr "Kompakt mód váltásokat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:43
+msgid "Minimize on startup"
+msgstr "Minimalizálás indításnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:44
+msgid "Confirm quit with active connections"
+msgstr "Kilépés megerősítése aktív kapcsolatnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:45
+msgid "Remember window properties"
+msgstr "Emlékezzen az ablakbeállításokra"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:50
+msgid "Disable splash screen"
+msgstr "Indítóképernyő tiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:54
+msgid "Enable visual effects"
+msgstr "Látványeffektek engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:55
+msgid "Hide Channel window tool buttons by default"
+msgstr "Csatorna eszközeinek rejtése alapértelmezetten"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:57
+msgid "Open Dialog Window For"
+msgstr "Párbeszédablak megnyitása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:58
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:59
+msgid "Registered Users"
+msgstr "Regisztrált Felhasználók"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.cpp:61
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.h:149
+msgid "Servers"
+msgstr "Szerverek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tools.cpp:40
+msgid ""
+"This section contains irc tools<br><p>like<b> away, lag and logging system. "
+"</b> </p>"
+msgstr ""
+"Ez a szekció tartalmazza az irc eszközöket,<br><p>mint <b> Távollét, lag és "
+"naplózási rendszer.</b></p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:39
+msgid "On Disconnect"
+msgstr "Lecsatlakozáskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:42
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:55
+msgid "Keep channels open"
+msgstr "Csatornák nyitvatartása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:44
+msgid ""
+"<center>This option will cause KVIrc to keep channels open after disconnect."
+"</center>"
+msgstr ""
+"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat "
+"lecsatlakozáskor.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:47
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:60
+msgid "Keep queries open"
+msgstr "Privátok nyitvatartása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:49
+msgid ""
+"<center>This option will cause KVIrc to keep queries open after disconnect.</"
+"center>"
+msgstr ""
+"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat "
+"lecsatlakozáskor.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:52
+msgid "On Unexpected Disconnect"
+msgstr "Váratlan Kapcsolatbontáskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:57
+msgid ""
+"<center>This option will cause KVIrc to keep channels open after an "
+"unexpected disconnect.</center>"
+msgstr ""
+"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a csatornákat váratlan "
+"Kapcsolatbontáskor.<br> Javasolt, ha sűrűn szakadozik az Internetkapcsolat. "
+"</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:62
+msgid ""
+"<center>This option will cause KVIrc to keep queries open after an "
+"unexpected disconnect.</center>"
+msgstr ""
+"<center>Ez ezzel az opcióval a KVIrc nyitva tartja a Privátokat váratlan "
+"lecsatlakozáskor.<br>Javasolt, ha sűrűn szakadozik az Internetkapcsolat.</"
+"center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:65
+msgid "Rejoin channels after reconnect"
+msgstr "Újracsatlakozás csatornákhoz Kapcsolódáskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:67
+msgid ""
+"<center>This option will cause KVIrc to rejoin channels after a successful "
+"reconnect attempt.</center>"
+msgstr ""
+"<center>Ez engedélyezi a KVIrcnek, hogy visszacsatlakozzon a csatornákra, "
+"sikeres újracsatlakozás után.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:69
+msgid "Reopen queries after reconnect"
+msgstr "Privátok újranyitása újrakapcsolódás után"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:71
+msgid ""
+"<center>This option will cause KVIrc to reopen query windows after a "
+"successful reconnect attempt.</center>"
+msgstr ""
+"<center>Ez engedélyezi a KVIrcnek, hogy újra megnyissa a Privátokat, sikeres "
+"újracsatlakozás után.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:75
+msgid "Automatically reconnect"
+msgstr "Automatikus újrakapcsolódás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:77
+msgid ""
+"<center>This option will enable auto-reconnecting after an unexpected "
+"disconnect. An unexpected disconnect is the <b>termination</b> of a <b>fully "
+"connected IRC session</b> that was <b>not requested by the user</b> by the "
+"means of the QUIT message.<p><b>Warning:</b> If you use /RAW to send a QUIT "
+"message to the server, this option will not behave correctly, since does not "
+"detect the outgoing QUIT message and will attempt to reconnect after the "
+"server has closed the connection. For this reason, always use the /QUIT "
+"command to close your connections. This option may also behave incorrectly "
+"with bouncers that support detaching, in this case a solution could be to "
+"prepare an alias that sends the bouncer \"detach\" command immediately "
+"before the \"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; "
+"quit; }</tt></p></center>"
+msgstr ""
+"<center>Ez az opció engedélyezi az automatikus újracsatlakozást egy váratlan "
+"kapcsolatbontás után. A váratlan <b>megszakítás, kapcsolatbontás</b> egy "
+"<b>kapcsolódott IRC környezet megszakadása</b>, amelyet <b>nem a felhasználó "
+"kért</b> egy kilépéssel / kapcsolatbontással.<p><b>Figyelem:</b> Ha a /RAW "
+"paranccsal lépsz ki, ez az opció nem fog tudni helyesen viselkedni mivel nem "
+"érzékeli, hogy szándékos kilépéssel van dolga. Ezért érdemesebb a normál /"
+"QUIT parancsot használni a kapcslatok lezárására. Ez az opció BNCknél "
+"szintén okozhat problémákat. érdemesebb előbb lecsatlakozni a bncről, majd "
+"aztán kilépni, vagy egy egyszerű alias segítségével:<br><tt>alias(bncdetach)"
+"{ raw bouncer detach; quit; }</tt></p></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:89
+msgid "Maximum attempts (0: unlimited):"
+msgstr "Próbálkozások száma (0 végtelen):"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:94
+msgid "Delay between attempts:"
+msgstr "Késleltetés a próbálkozások között: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:100
+msgid ""
+"<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
+"center>"
+msgstr "<center>Minimum: <b>0 mp</b><br>Maximum: <b>86400 mp</b></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:123
+msgid "Certificate"
+msgstr "Hitelesítés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:125
+msgid "Use SSL certificate (PEM format only)"
+msgstr "SSL hitelesítés használata (csak PEM formátum)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:127
+msgid "Certificate location:"
+msgstr "Hitelesítés helye: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:130
+msgid "Certificate password:"
+msgstr "Hitelesítés jelszava: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:134
+msgid "Private Key"
+msgstr "Privát Kulcs"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:135
+msgid "Use SSL private key"
+msgstr "Pirvát kulcsú SSL használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:137
+msgid "Private key location:"
+msgstr "Privát kulcs helye: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:140
+msgid "Private key password:"
+msgstr "Privát kulcs jelszava: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:146
+msgid "This executable has no SSL support."
+msgstr "Ez a verzió nem rendelkezik SSL támogatással"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:165
+msgid "Timeout Values"
+msgstr "Időtúllépés értékek "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:166
+msgid "Connect timeout:"
+msgstr "Kapcsolat időtúllépése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:168
+msgid "Outgoing data queue flush timeout:"
+msgstr "Kimenő adatírási időtúllépés:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:170
+msgid "Limit outgoing traffic"
+msgstr "Kimenő forgalom korlátozása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:171
+msgid "Limit to 1 message every:"
+msgstr "1 üzenet minden: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:173
+msgid " usec"
+msgstr "mikroszek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:175
+msgid ""
+"<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
+"b></center>"
+msgstr ""
+"<center>Minimum: <b>10000 mikroszek</b><br>Maximum: <b>10000000 mikroszek</"
+"b></center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:179
+msgid "Network Interfaces"
+msgstr "Hálózati Eszközök"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:181
+msgid "Bind IPv4 connections to:"
+msgstr "IPv4 kapcsolat hozzárendelése: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:185
+msgid "Bind IPv6 connections to:"
+msgstr "IPv6 kapcsolat hozzárendelése: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:210
+msgid "Enable ident service (bad practice on UNIX!)"
+msgstr "Azonosító szolgáltatás engedélyezése (UNIX-on nem túl jó ötlet)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:216
+msgid "Output identd messages to:"
+msgstr "Identd üzenetek küldése:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:218
+msgid "Active window"
+msgstr "Aktív ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:219
+msgid "Console"
+msgstr "Konzol"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:220
+msgid "Do not show any identd messages"
+msgstr "Ne mutass identd üzeneteket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:237
+msgid "Enable ident service only while connecting to server"
+msgstr "Azonosító szolgáltatás csak szerverhez kapcsolódás közben"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:240
+msgid "Ident username:"
+msgstr "Azonosító felhasználónév: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:243
+msgid "Service port:"
+msgstr "Szervíz portja: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:248
+msgid "IPv6 Settings"
+msgstr "IPv6 Beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:249
+msgid "Enable service for IPv6"
+msgstr "Szolgáltatások engedélyezése IPv6-ra"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:258
+msgid "IP stack treats IPv4 as part of IPv6 namespace"
+msgstr "IP"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:265
+msgid ""
+"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
+"that implements only a limited subset of the Identification Protocol "
+"specifications. If it is possible, install a real ident daemon.</p>"
+msgstr ""
+"<p><b>Figyelmeztetés:</b><br>Ez  <b>nem RFC 1413 kompatibilis</b> azonosító "
+"démon, ami csak korlátozott lehetőséggekkel rendelkezik Azonosítási "
+"Protokollok terén. Amennyiben lehetséges, telepíts egy valós azonosító "
+"démont.</p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:270
+msgid ""
+"<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
+"that implements only a limited subset of the Identification Protocol "
+"specifications.<br>On UNIX, you may also need root privileges to bind to the "
+"auth port (113).<br>It is <b>highly recommended</b> that a <b>real</b> "
+"system-wide ident daemon be used instead, or none at all if ident is not "
+"required.</p>"
+msgstr ""
+"<p><b>Figyelmeztetés:</b><br>Ez <b>nem RFC 1413 kompatibilis</b> azonosító "
+"démon, ami csak néhány részét tartalmazza az azonosítási protokollban "
+"előírtaknak.<br> UNIX rendszereken rendelkezned kell root jogosultságokkal, "
+"hogy ezt hozzárendeld a megfelelő porthoz. (113).<br><b>Erősen ajánlott</b> "
+"egy <b>igazi</b> rendszer-oldali azonosító démon használata, vagy semmilyen, "
+"ha nem szükséges.</p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_generalopt.cpp:39
+msgid ""
+"This section contains the general client options<br><p>like<b> sound, "
+"mediafiles, URL handler </b> etc... </p>"
+msgstr ""
+"Ez a rész tartalmazza az általános kliens beállításokat<br><p>mint<b> "
+"hangok, médiafájlok, URL kezelők</b> stb..</p>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:39
+msgid "Automatically Log"
+msgstr "Automatikus Naplózás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:40
+msgid "Query windows"
+msgstr "Privát ablakok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:41
+msgid "Channel windows"
+msgstr "Csatorna ablakok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:42
+msgid "DCC Chat windows"
+msgstr "DCC Beszélgetés ablakok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:43
+msgid "Console windows"
+msgstr "Konzol ablakok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:45
+msgid "Gzip logs"
+msgstr "Log Gzippelése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:47
+msgid "Strip colors in logs"
+msgstr "Színeket ne logoljon"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
+msgid "Auto flush logs every"
+msgstr "Naplófájlok mentése minden"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
+msgid " min"
+msgstr " perc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.cpp:52
+msgid ""
+"<center>Save logs with the current interval<br>Set to 0 to disable this "
+"feature</center>"
+msgstr ""
+"<center>Naplófájlok mentése az aktuális sűrűséggel.<br> Állítsd 0-ra a "
+"kikapcsoláshoz.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:49
+msgid "Minimize console after successful login"
+msgstr "Konzol minimalizálása sikeres belépés után"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:52
+msgid ""
+"<center>This option will cause KVIrc to minimize the console window after "
+"successfully logging into a server.</center>"
+msgstr ""
+"<center>Ezzel a KVIrc minimalizálja a konzol ablakot, miután sikeresen "
+"belépett a szerverre.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:55
+msgid "Show network name in console taskbar entry"
+msgstr "Hálózat nevének mutatása a konzol eszköztárán"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:57
+msgid ""
+"<center>This option will cause KVIrc to show the network name as the console "
+"taskbar entry instead of the server name. This is nice to keep on unless "
+"your servers are not organized in networks or you often connect to two "
+"servers of the same network.</center>"
+msgstr ""
+"<center> Ezzel az opcióval a KVIrc a hálózat nevét mutatja a konzol "
+"eszköztárán a szerver neve helyett. Ez akkor hasznos, ha a szervereid "
+"hálózatokhoz vannak kapcsolva, és ugyanazon hálózatra nem kapcsolódsz több "
+"szerverrel.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:75
+msgid "Force immediate quit"
+msgstr "Azonnali kilépés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:78
+msgid ""
+"<center>This option causes KVIrc to close the connection immediately after "
+"sending the QUIT message.<br>When this option is disabled, KVIrc will wait "
+"for the server to close the connection.<br>Note that if you use this, your "
+"QUIT message may be not displayed.</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVirc lezárja a kapcsolatot közvetlenül a "
+"kilépésszignál küldése után.<br>Amikor ez az opció le van tiltva a KVIrc "
+"megvárja amíg a szerver lezárja a kapcsolatot.<br>Amennyiben ezt használod, "
+"a kilépő üzeneted nem biztos, hogy megjelenik.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:84
+msgid "Prepend gender info to realname"
+msgstr "Nem beszúrása a valós név elé"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:110
+msgid "On Channel Kick"
+msgstr "Kirúgásnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:112
+msgid "Rejoin channel"
+msgstr "Visszalépés a csatornára"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:115
+msgid ""
+"<center>This option will cause KVIrc to attempt to rejoin a channel after "
+"being kicked.</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc automatikusan újracsatlakozik, ha kirúgtak."
+"</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:118
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:129
+msgid "Keep channel open"
+msgstr "Csatorna maradjon nyitva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:121
+msgid ""
+"<center>This option will cause KVIrc to keep the channel window open after "
+"being kicked.<br>It might be a good idea to also enable the \"Rejoin channel"
+"\" option.</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc nyitva fogja tartani a csatorna ablakát, "
+"miután kirúgtak.<br>Jó ötlet, ha bekapcsolod a \"Visszalépés csatornára\" "
+"opciót.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:127
+msgid "On Channel Part"
+msgstr "Csatornáról lelépéskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:132
+msgid ""
+"<center>This option will cause KVIrc to keep the channel window open after "
+"leaving it.</center>"
+msgstr ""
+"<center>Ezzel az opcióval a Csatorna ablaka nyitva marad, miután elhagytad "
+"azt.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:136
+msgid "Automatically join channel on invite"
+msgstr "Automatikus csatlakozás meghíváskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:139
+msgid ""
+"<center>This option will cause KVIrc to automatically join a channel when an "
+"INVITE message for that channel is received.<br><b>Warning:</b> This may "
+"help spammers harass you. :)</center>"
+msgstr ""
+"<center>Ez az opció lehetővé teszi az automatikus fellépést csatornára, "
+"amikor egy meghívás (INVITE) érkezik. <br><b>Figyelmeztetés:</b> Ezzel az "
+"opcióval könnyen a spammelők áldozata lehetsz.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:144
+msgid "Always open channels as minimized"
+msgstr "Csatornák megnyitása minimalizálva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:148
+msgid ""
+"<center>This option causes newly created channel windows to be immediately "
+"minimized.<br>Enable this if you don't like channels popping up while you're "
+"typing something in a channel. :D</center>"
+msgstr ""
+"<center>Ezzel az opcióval automatikusan minimalizálva lesz az újonnan "
+"megnyitott csatorna ablaka.<br>Engedélyezd, ha már unod, hogy felugrik egy "
+"csatorna ablak amikor éppen valamit írsz másik csatornára :D. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:168
+msgid "Log joined channels history"
+msgstr "Csatornák naplózása, amihez csatlakoztál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:170
+msgid "Default ban mask:"
+msgstr "Alapértelmezett tiltó maszk:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:188
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:202
+msgid "On Channel Join"
+msgstr "Fellépés csatornára"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:189
+msgid "Do not send /WHO request"
+msgstr "Ne küldjön /WHO kérést"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:190
+msgid "Do not request ban list"
+msgstr "Ne küldje a tiltólistát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:191
+msgid "Do not request ban exception list"
+msgstr "Ne kérje le a tiltó-kivétel listát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:192
+msgid "Do not request invite list"
+msgstr "Ne kérje a meghívó listát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:194
+msgid "Do not update the away list"
+msgstr "Ne frissítse a Távollét listát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:197
+msgid ""
+"<center>KVIrc sends out a channel /WHO message every now and then to keep "
+"the channel away list in sync. Use this option to disable this feature (and "
+"to save your IRC bandwidth.</center>"
+msgstr ""
+"<center>A KVIrc minden csatlakozáskor küld egy /WHO üzenetet, aminek a "
+"válasza tartalmazza a Távol listát, később csak frissíti ezt. Ez a "
+"sávszélesség megtakarítására szolgál. (nagyon nagy csatornáknál lehet "
+"lényeges)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:203
+msgid "Echo channel topic"
+msgstr "Csatorna topic kiírása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:204
+msgid "Show channel sync time"
+msgstr "Csatorna Szinkronizálási ideje"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:40
+msgid "Default text encoding:"
+msgstr "Alapértelmezett karakterkódolás:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:109
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:133
+msgid "Use Language Encoding"
+msgstr "Nyelv kódolásának használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:59
+msgid "Force language:"
+msgstr "Megadott nyelv:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
+msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
+msgstr ""
+"<b>Megjegyzés:</b> Újra kell indítanod a KVIrcet, hogy érvényesítsd a nyelvi "
+"beállításokat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:68
+msgid "Automatic detection"
+msgstr "Automatikus felismerés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:69
+msgid "en"
+msgstr "en"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:132
+msgid "Unable to write language information to"
+msgstr "Nyelv információinak írása írása sikertelen: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:39
+msgid "Enable Anti-spam For"
+msgstr "Spamszűrő engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:45
+msgid "Silent anti-spam (no warnings)"
+msgstr "Csöndes spamszűrés (figyelmeztetés nélkül)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:46
+msgid "Words considered spam:"
+msgstr "Spamot tartalmazó szavak: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:51
+msgid "Use workaround for firewall"
+msgstr "KVIrc tűzfal mögül"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:54
+msgid ""
+"<center>Enable this option if you can't accept incoming connections."
+"<br>KVIrc will try to use different methods to send and receive files."
+"<br>Please note that these methods may NOT work when communicating with a "
+"non-KVIrc client.</center>"
+msgstr ""
+"<center>Engedélyezd, ha nem tudsz bejövő kapcsolódásokat fogadni.<br>KVIrc "
+"megpróbál más módon küldeni és fogadni fájlokat.<br>Megjegyzés: a KVIrc "
+"természetesen csak másik KVIrc klienssel tudja ezeket a problémákat kezelni."
+"</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:73
+msgid "Network Properties"
+msgstr "Hálózati Tulajdonságok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:75
+msgid "Use user-defined address or network interface"
+msgstr "Felhasználó által megadott cím vagy hálózat használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:79
+msgid ""
+"<center>Enable this option if you are on a multihost machine and want to "
+"force one of the available IP addresses to be used for outgoing DCCs."
+"<br>This is especially useful when you use IPv6 and IPv4 addresses.<br>You "
+"can force KVIrc to always choose the IPv4 interface.</center>"
+msgstr ""
+"<center>Engedélyezd ezt az opciót, ha egy többcímű gépet használsz és "
+"szeretnéd csak az egyik elérhető IP címet használni a kimenő DCC "
+"kapcsolatokhoz.<br>Különösen hasznos akkor, ha IPv4 és IPv6 címeket is "
+"használsz.<br> Be tudod állítani, hogy a KVIrc kifejezetten az IPv4 címeket "
+"használja.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:84
+msgid "Listen on address/interface:"
+msgstr "Hallgatózás adott címen/eszközön:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:87
+msgid ""
+"<center>This is the IP address or name of the interface to use by default "
+"for outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
+"specify IPv4 interface names (such as <b>ppp0</b>).<br>If you set it to "
+"<b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface</"
+"center>"
+msgstr ""
+"<center>Ez az IP cím vagy név meghatározza az alapértelmezett címet a kimenő "
+"DCC kapcsolatokhoz.<br>UNIX-alapú rendszereken meghatározhatsz eszközneveket "
+"is, mint például <b>ppp0</b>.<br><b>0.0.0.0</b> beállításnál a, KVIrc "
+"megpróbálja az első elérhető IPv4 eszközt használni.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:94
+msgid "Use user-defined port range"
+msgstr "Felhasználó által megadott port tartományok használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:97
+msgid ""
+"<center>Enable this option if you want specify a local port range for DCC.</"
+"center>"
+msgstr ""
+"<center>Engedélyezd ezt, ha szeretnél a DCC kapcsolatokhoz megadott portokat "
+"használni.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:102
+msgid "Lowest port:"
+msgstr "Legkissebb port:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:105
+msgid "Highest port:"
+msgstr "Legnagyobb port:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:108
+msgid "Send a fixed address in requests"
+msgstr "Megadott cím küldése kérésnél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:111
+msgid ""
+"<center>Enable this option if you want to always send a fake IP address in "
+"your DCC requests.<br>This might be useful if you're behind a router with a "
+"static address that does network address translation (NAT) and forwards all "
+"or a range of ports.</center>"
+msgstr ""
+"<center>Engedélyezd ezt az opciót, ha szeretnéd, hogy a KVIrc hamis IP címet "
+"küldjön a DCC kéréseidnél.<br>Ez hasznos lehet, ha router mögött vagy "
+"statikus címmel, amely cím automatikusan továbbít feléd mindent vagy csak "
+"egy port tartományt.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:115
+msgid "Send address/interface:"
+msgstr "Adott cím küldése:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:119
+msgid ""
+"<center>This is the fixed address that will be sent with all DCC requests if "
+"you enable the option above.</center>"
+msgstr ""
+"<center>Ez az a cím, amit a KVIrc elküld minden DCC kérésnél, ha a fenti "
+"opciót engedélyezed.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:123
+msgid "Guess address from IRC server if unroutable"
+msgstr "Cím visszafejtése az IRC szerverrel, ha helyben nem sikerül"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:128
+msgid ""
+"<center>You can enable this option if you are behind a router that forwards "
+"all or a range of ports.<br>KVIrc will try to guess the IP address to use "
+"for DCC by looking up the local hostname as seen by the IRC server you're "
+"connected to.<br>This method is an exclusive alternative to the \"fixed "
+"address\" above.<br>It might guess the correct address automatically if "
+"certain conditions are met (e.g. the IRC server does not mask hostnames).</"
+"center>"
+msgstr ""
+"<center>Engedélyezd ezt az opciót, ha egy router mögött vagy, ami mindent "
+"vagy megadott portokat feléd irányít.<br>A KVIrc megpróbálja azt az IRC "
+"szerver által megadott címet használni a DCC kapcsolatokhoz, amelyik "
+"szerverre kapcsolódsz. <br>Ez egy különleges eljárás ami a \"megadott cím\" "
+"opciót helyettesítheti. <br> Ez visszaadja a megfelelő címet, ha a "
+"feltételek adottak (pl.: a szerver nem maszkolja a hosztneveket)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:134
+msgid "Use \"broken bouncer hack\" to detect address"
+msgstr "\"hibás BNC hack\" használata a cím felderítésére"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:137
+msgid ""
+"<center>When you're behind a dialup router and also tunneling through a "
+"psyBNC bouncer, you can use a bug in the bouncer to force KVIrc to bind the "
+"DCC connections to the dialup router's address.<br>It's an ugly hack - use "
+"it only if nothing else works.</center>"
+msgstr ""
+"<center>Amikor egy router mögött vagy, és emellett psyBNC mögül "
+"csatlakozolki tudsz használni egy hibát a bouncerben úgy, hogy a KVIrc "
+"átirányíttatja a DCC kapcsolatokat a router címére.<br>Ez egy elég csúnya "
+"megoldás, csak akkor használd, ha már nincs más kiút.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:144
+msgid "Notify failed DCC handshakes to the remote end"
+msgstr "Távoli kliens értesítésítése DCC kézfogás sikertelenségéről"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:147
+msgid ""
+"<center>If you enable this option, when a DCC request from a remote user "
+"can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is a nice "
+"feature so it is a good idea to leave it on unless for some reason you have "
+"deactivated the antiflood system: in this case turning off this option might "
+"help if you often get attacked by CTCP floods.</center>"
+msgstr ""
+"<center>Engedélyezd, ha szeretnéd, hogy ha a KVIrc küldjön egy értesítőt, ha "
+"nem tudja a kapcsolatot létrehozni. Ez egy hasznos opció, kivéve ha "
+"valamilyen oknál fogva a floodellenörző rendszer nem lenne bekapcsolva, és "
+"gyakran vagy kitéve CTCP flood támadásoknak. </center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:154
+msgid "Maximum number of DCC sessions"
+msgstr "Maximális DCC kapcsolatok száma"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:156
+msgid ""
+"<center>This is the maximum number of concurrent DCC sessions and it "
+"includes all the DCC types (send,chat,recv...). KVIrc will refuse the "
+"requests when this limit is reached.</center>"
+msgstr ""
+"<center>Ez a maximális száma a lehetséges DCC kapcsolatok számának, "
+"beleértve a beszélgetés, küldést és fogadást. Az ez után beérkező kéréseket "
+"a KVIrc automatikusan visszautasítja.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:161
+msgid "DCC socket timeout:"
+msgstr "DCC socket időtúllépés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:164
+msgid ""
+"<center>This is the amount of time that KVIrc will wait for a response "
+"before assuming that a DCC has failed because the remote client was unable "
+"to connect to our listening socket.</center>"
+msgstr ""
+"<center>Ez az időmennyiség, amíg a KVIrc várakozik a válaszra mielőtt azt "
+"feltételezné, hogy a kapcsolat meghiúsult, mivel a távoli kliens nem tudott "
+"csatlakozni a figyelt socketre.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:198
+msgid "On Incoming File"
+msgstr "Bejövő fájlnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:199
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:350
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:371
+msgid "Automatically accept"
+msgstr "Automatikus fogadás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:200
+msgid "Open transfer window as minimized when auto-accepted"
+msgstr "Átviteli ablak minimalizálása automatikus elfogadásnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:201
+msgid "Automatically resume when auto-accepted"
+msgstr "Automatikus folytatás automatikus fogadásnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:203
+msgid "Save Location"
+msgstr "Hely mentése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:204
+msgid "Download folder:"
+msgstr "Letöltési könyvtár: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:205
+msgid "Sort saved files by nicknames (create subfolders)"
+msgstr "Mentett fájlok rendezése Nevek szerint (alkönyvtárakkal)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:206
+msgid "Guess save path from media type"
+msgstr "Mentési útvonal a fálj típusától függően"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:209
+msgid "On Download Completion"
+msgstr "Letöltés befejezésekor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:210
+msgid "Notify completion in console"
+msgstr "Értesítés befejezéskor a konzolban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:211
+msgid "Notify completion in notifier"
+msgstr "Értesítés befejezéskor az értesítőben"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:212
+msgid "Automatically clear transfer"
+msgstr "Automatikus adatátvitel törlés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:215
+msgid ""
+"<center>This option will cause succesfully terminated transfers to be "
+"automatically removed from the transfer window.</center>"
+msgstr ""
+"<center> Ezzel az opcióval minden megszakított átvitel automatikusan el lesz "
+"távolítva az átvitel ablakból.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:220
+msgid "Always open transfer window as minimized"
+msgstr "Átviteli ablak megnyitása mindig minimalizálva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:238
+msgid "Bug Compatibility"
+msgstr "Hiba Kompatibilitás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:239
+msgid "Send ACK for byte 0"
+msgstr "ACK küldése 0. bájtként"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:242
+msgid ""
+"<center>This option causes KVIrc to send a zero-byte acknowledge to kick-"
+"start the DCC transfer with some buggy IRC clients.<br>Use it only if your "
+"DCC transfers stall just after establishing a connection without sending any "
+"data.</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc egy 'nulla bájt' értesítőt küld, hogy az "
+"adatátvitel-megkezdődhessen néhány hibás kliensnél.<br>Csak akkor használd, "
+"ha a DCC kapcsolat csak áll, miután létrejött, de adatot nem küld.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:247
+msgid "Accept broken RESUME (mIRC file.ext)"
+msgstr "Hibás Folytatás kérés elfogadása (mIRC file.kit)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:250
+msgid ""
+"<center>This option causes KVIrc to accept RESUME requests with invalid "
+"filenames.<br>Use it if KVIrc fails to accept RESUME requests from other "
+"clients (e.g. some versions of mIRC).</center>"
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc elfogadja a folytatási kéréseket, "
+"helytelen fájlnévnél.<br>Használd, ha a KVIrc nem tudja fogadni a folytatási "
+"kéréseket más kliensektől (pl.: néhány mIRC verziónál)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:254
+msgid "Replace spaces with underscores in outgoing filenames"
+msgstr "Szóközök cseréje aláhúzásra a kimenő fájlneveknél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:257
+msgid ""
+"<center>This option causes KVIrc to replace spaces with underscores in "
+"filenames for all the outgoing file transfers. This will fix filename "
+"handling with some buggy clients (e.g. some versions of mIRC)."
+msgstr ""
+"<center>Ezzel az opcióval a KVIrc kicseréli a fájlnevekben szereplő "
+"szóközöket eláhúzásra fájl küldésekor. Ez javítja a fáljnévkezelést néhány "
+"hibás kliensnél. (pl.: néhány mIRC verziónál)."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:262
+msgid "Limits"
+msgstr "Korlát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:265
+msgid "Limit upload bandwidth to"
+msgstr "Feltöltési sebesség korlátozása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:267
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:273
+msgid "bytes/sec"
+msgstr "bájt/mp"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:271
+msgid "Limit download bandwidth to"
+msgstr "Letöltési sebesség korlátozása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:277
+msgid "Maximum number of DCC transfers"
+msgstr "Maximális konkurens DCCk száma"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:279
+msgid ""
+"<center>This is the maximum number of concurrent DCC transfers. KVIrc will "
+"refuse the requests when this limit is reached.</center>"
+msgstr ""
+"<center>Ez a maximális száma a lehetséges DCC adatátviteleknek. A KVIrc "
+"minden ezután beérkező kapcsolódást elutasít.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:283
+msgid "Tweaks"
+msgstr "Tuning"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:285
+msgid "Use fast send (send ahead)"
+msgstr "Gyors küldés (előreküldés) használata"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:288
+msgid ""
+"<center>The \"send ahead\" DCC method allows data to be sent faster by "
+"breaking some of the rules of the original DCC SEND protocol specification."
+"<br>Most clients can handle this kind of optimisation so disable it only if "
+"you have problems.</center>"
+msgstr ""
+"<center>Az \"előreküldéses\" DCC eljárás lehetővé teszi az adatok gyorsabb "
+"küldését, néhány szabály felrúgásával a DCC SEND protokollokban.<br>A "
+"legtöbb kliens kezeli ezt, tehát akkor tiltsd le ha problémáid vannak a DCC "
+"kapcsolatokkal.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:295
+msgid "Force idle step"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:298
+msgid ""
+"<center>Enable this option when the dcc file transfers tend to block your "
+"computer by consuming too much CPU time. When this option is enabled the "
+"idle interval below will be forcibly inserted between each sent/received "
+"data packet.</center>"
+msgstr ""
+"<center>Engedélyezd ezt, ha DCC adatátvitelnél a géped észrevehetően "
+"lelassul, túl nagy processzoridőt lefogva. Az opció engedélyezésekor A KVirc "
+"megadott tétlenségi időt határoz meg minden egyes küldött vagy fogadott "
+"adatcsomag után.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:310
+msgid ""
+"<center>This parameter controls the average delay between two packets sent "
+"or received.<br>A smaller interval will cause you to send data faster but "
+"will also add load to your CPU, disk and network interface.<br>Reasonable "
+"values are from 5 to 50 milliseconds.</center>"
+msgstr ""
+"<center>Ez meghatározza az átlagos késleltetést két küldött vagy fogadott "
+"csomag között.<br>Kissebb intervallumnál gyorsabb adatküldés lehetséges, de "
+"egyúttal a processzort, hálózatot és a lemezt is jobban leterheli."
+"<br>Elfogadható értékek: 5 és 50 milliszekundum között.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:316
+msgid "Packet size:"
+msgstr "Csomag méret: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:320
+msgid ""
+"<center>This parameter controls the packet size used for DCC SEND.<br>With "
+"bigger packets you will be probably send data faster, but you will also "
+"saturate your bandwidth and in some cases cause more disk activity."
+"<br>Reasonable values are from 512 to 4096 bytes.</center>"
+msgstr ""
+"<center>Meghatározza a küldendő csomagok méretét DCC küldésnél.<br> Nagyobb "
+"csomagoknál lehetséges, hogy gyorsabb az átvitel, de egyúttal jobban "
+"leterheli a sávszélességet, és néhány esetben okozhat magas lemez aktivitást "
+"is.<br>Elfogadható értékek 512-től  4096 bájtig.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:349
+msgid "On Chat Request"
+msgstr "Beszélgetés kérésekor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:351
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:373
+msgid "Open minimized when auto-accepted"
+msgstr "Megnyitás a háttérben automatikus fogadásnál"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:353
+msgid "Always open as minimized"
+msgstr "Megnyitás mindig minimalizálva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:369
+msgid "Open all minimized"
+msgstr "Minden kicsinyített megnyitása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:370
+msgid "On Voice Request"
+msgstr "Hangos beszélgetéskor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:376
+msgid "Force half-duplex mode on sound device"
+msgstr "Half-duplex mód kikényszerítése a hangeszközön"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:377
+msgid "Volume slider controls PCM, not Master"
+msgstr "Hangerőszabályozó PCM-et szabályozza, nem a Mastert"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:379
+msgid "Sound device:"
+msgstr "Hangeszköz: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:380
+msgid "Mixer device:"
+msgstr "Keverőeszköz: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:382
+msgid "Pre-buffer size:"
+msgstr "Előpufferelés mérete:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:38
+msgid "Enable Ignore For"
+msgstr "Mellőzés engedélyezése "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:39
+msgid "Private/channel messages"
+msgstr "Privát/Csatorna üzenetekre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:40
+msgid "Private/channel notices"
+msgstr "Privát/Csatorna értesítőkre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.cpp:44
+msgid "Use verbose ignore (show messages in console)"
+msgstr "Hangos mellőzés (üzenetek láthatóak lesznek a konzolban)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:64
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:46
+msgid "Sound System"
+msgstr "Hangrendszer"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:66
+msgid "This allows you to select the sound system to be used with KVIrc."
+msgstr "Ezzel kiválaszhatod a KVIrc által használt hangrendszert"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:72
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:88
+msgid "Auto-detect"
+msgstr "Auto-Felismerés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:75
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:91
+msgid "Test"
+msgstr "Teszt"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:79
+msgid "Media Player"
+msgstr "Médialejátszó"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:81
+msgid ""
+"This allows you to select the preferred media player to be used with the "
+"mediaplayer.* module commands and functions."
+msgstr ""
+"Kiválaszhatod a használt médialejátszódat, így lehetőséged nyílik a "
+"mediaplayer.* modul és függvényei használatára."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:102
+msgid "ID3 tags' encoding"
+msgstr "ID3 tagok kódolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:104
+msgid "This allows you to select encoding of mp3 tags."
+msgstr "Az mp3 tagek karakterkódolását válaszhatod ki"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:125
+msgid "Winamp messages ecoding"
+msgstr "Winamp üzenetek kódolása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:127
+msgid "This allows you to select encoding of winamp messages."
+msgstr "Ezzel kiválaszthatod a Winamp üzeneteinek karakterkódolását."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:290
+msgid "New Query opened"
+msgstr "Új Privát nyílt"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:293
+msgid "New message in inactive query"
+msgstr "Új üzenet inaktív Privát ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:296
+msgid "Highlighted message in inactive window"
+msgstr "Kiemelt üzenet az aktív ablakban"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:299
+msgid "Me have been kicked"
+msgstr "Ki lettél rúgva"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:39
+msgid "Selection background color"
+msgstr "Kijelölt háttér szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:40
+msgid "Selection foreground color"
+msgstr "Kijelölt előtér szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:41
+msgid "Control char color"
+msgstr "Vezérlő karakter szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:42
+msgid "Cursor color"
+msgstr "Kurzor színe"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:141
+msgid "Warp cursor at the end of line when browsing history"
+msgstr "Kurzor a sor végén az előzmények böngészésekor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:142
+msgid "Disable the input history window and it's log memory."
+msgstr "Beviteli történet és a memória tiltása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:143
+msgid "Hide input toolbuttons by default"
+msgstr "Beviteli eszközgombok rejtése alapértelmezettként"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:144
+msgid "Nick completion"
+msgstr "Név kiegészítés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:145
+msgid "Use bash-like nick completion"
+msgstr "Bash-szerű Névkiegészítés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:146
+msgid "Nick completion postfix string"
+msgstr "Névkiegészítés után beszúrandó"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:147
+msgid "Use the completion postfix string for the first word only"
+msgstr "Névkiegészítés utáni szöveg csak az első név után"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.cpp:148
+msgid "Commandline in user-friendly mode by default"
+msgstr "A parancssor felhasználóbarát alapértelmezetten"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:81
+msgid "Show message icons"
+msgstr "Üzenet ikonok mutatása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:82
+msgid "Draw some emoticons (smileys) as pictures"
+msgstr "Hangulatjelek (smiley) rajzolása, mint képek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:83
+msgid "Don't show colors in user messages"
+msgstr "Szinek tiltása üzenetekben"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:88
+msgid "Nicknames"
+msgstr "Nicknevek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:90
+msgid "\"Smart\" nickname colors"
+msgstr "\"Okos\" név szinezés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:91
+msgid "Use same colors as in the userlist"
+msgstr "Használd ugyanazt a színt, mint a felhasználólistában"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:93
+msgid "Show nicknames in bold"
+msgstr "Nevek megjelenítése félkövéren"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:94
+msgid "Show user and host"
+msgstr "Fehasználónév és hoszt mutatása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:95
+msgid "Show channel mode prefix"
+msgstr "Jog mutatása névben"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:96
+msgid "User-defined prefix and postfix"
+msgstr "Felhasználó által megadott elő és utótag"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:98
+msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
+msgstr "[ELŐTAG]név[!felhasználónév@hoszt][UTÓTAG] üzenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:112
+msgid "Prefix:"
+msgstr "Előtag:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:117
+msgid "Postfix:"
+msgstr "Utótag:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:131
+msgid "Show timestamp"
+msgstr "Időbélyegző mutatása"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:134
+msgid "Use UTC time for timestamp"
+msgstr "UTC idő használata időbélyegzőnél"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:141
+msgid "Use special color for timestamps"
+msgstr "Különleges szín időbélyegzőnek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:147
+msgid "Timestamp format:"
+msgstr "Időbélyeg formátum:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:320
+msgid "Transparent"
+msgstr "Átlátszó"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:401
+msgid "Message Type"
+msgstr "Üzenet Típus"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:417
+msgid "Background:"
+msgstr "Háttér: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:426
+msgid "Foreground:"
+msgstr "Előtér: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:434
+msgid "Alert level:"
+msgstr "Figyelmeztetési szint: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:454
+msgid "Log this"
+msgstr "Logold"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:458
+msgid "Load From..."
+msgstr "Betöltés..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:460
+msgid "Save As..."
+msgstr "Mentés mint..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:589
+msgid "Choose a Filename - KVIrc"
+msgstr "Válassz Fájlnevet - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.cpp:646
+msgid "Choose a Filename - KVIrc "
+msgstr "Válassz Fájlnevet - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:40
+msgid "Enable lag meter"
+msgstr "Lagmérő engedélyezése"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:42
+msgid ""
+"<center>This enables the lag meter engine, which checks at regular intervals "
+"how much lag (latency) the server has.</center>"
+msgstr ""
+"<center>Ezzel engedélyezheted a lagmérő motort, ami ellenőrzi az általános "
+"időeltolódást, ami a szerver és közötted van.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:45
+msgid "Lag meter heartbeat:"
+msgstr "Lagmérés időköze:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:49
+msgid ""
+"<center>This option allows you to set the lag meter heartbeat interval."
+"<br>The lower the heartbeat interval the higher will be the accuracy of the "
+"lag check but also higher cpu usage and data traffic to the server."
+"<br>Please note that this is NOT the interval between pings sent to the "
+"server: the pings (if any) will be sent really less often. 5000 is a "
+"reasonable value.</center>"
+msgstr ""
+"<center>Ezzel beállíthatod a lagmérő ellenőrzési időközeit.<br>Alacsony "
+"érték megadása növelheti a pontosságot, de egyúttal magasabb "
+"processzorhasználatot és adatforgalmat eredményez a szerver felé-<br>Vedd "
+"figyelembe, hogy ez NEM a szerver pingelésének időtartama: A pingelés (ha "
+"van) kevésbé gyakori. 5000 megfelelő érték.</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:58
+msgid "Trigger event if lag exceeds:"
+msgstr "Esemény, ha a lag meghaladja: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:61
+msgid ""
+"<center>This option controls the threshold for the OnLagAlarmTimeUp and "
+"OnLagAlarmTimeDown events. When the lag goes above the threshold "
+"OnLagAlarmTimeUp will be triggered and when the lag falls back below the "
+"threshold then OnLagAlarmTimeDown will be triggered</center>"
+msgstr ""
+"<center>Ez az opció irányítja az OnLagAlarmTimeUp és OnLagAlarmTimeDown "
+"eseményt. Amikor a lag meghaladja a megadott értéket az OnLagAlarmTimeUp "
+"lesz végrehajtva, amikor visszaáll az érték alá, akkor az "
+"OnLagAlarmTimeDown</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:68
+msgid "Show lag in IRC context display"
+msgstr "Lag jelzése az IRC környezet megjelenítőjén"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.cpp:70
+msgid ""
+"<center>This makes the IRC context display applet show the current lag after "
+"the user's nickname (in seconds)</center>"
+msgstr ""
+"<center>Ezzel az IRC környezet megjelenítő appletje mutatni fogja az "
+"aktuális lagot a felhasználó neve után (másodpercekben)</center>"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_away.h:28
+msgid "Away"
+msgstr "Távol"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.h:28
+msgid "CTCP"
+msgstr "CTCP"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:28
+msgid "DCC"
+msgstr "DCC"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:56
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:100
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:59
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:101
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:169
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:41
+msgid "Advanced"
+msgstr "Haladó"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:72
+msgid "File Transfer"
+msgstr "Fájl Átvitel"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:113
+msgid "Chat"
+msgstr "Beszélgetés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.h:126
+msgid "Voice"
+msgstr "Hang"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:32
+msgid "IRC"
+msgstr "IRC"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.h:73
+msgid "Channel"
+msgstr "Csatorna"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.h:28
+msgid "Lag"
+msgstr "Lag"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_lag.h:30
+msgid "time,ping"
+msgstr "idő,ping"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.h:37
+msgid "authentication,identify"
+msgstr "azonosítás,auth"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.h:31
+msgid "Language"
+msgstr "Nyelv"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.h:34
+msgid "language,encoding,charset,codepage"
+msgstr "nyelv,kódolás,karakter,karakterkészlet,kódlap"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:28
+msgid "Contacts"
+msgstr "Kapcsolatok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:30
+msgid "notify,buddy,buddies,friends"
+msgstr "értesítés,barát,barátok,haver"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:42
+msgid "Notifier"
+msgstr "Értesítő"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_notify.h:43
+msgid "popup"
+msgstr "popup"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:37
+msgid "Text"
+msgstr "Szöveg"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:38
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:35
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:49
+msgid "theme,colors,output"
+msgstr "megjelenés,színek,kimenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:52
+msgid "Message Style"
+msgstr "Üzenet Stílus"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:56
+msgid "theme,privmsg,output,format"
+msgstr "kinézet, üzenet, kimenet, formátum"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:67
+msgid "Timestamp"
+msgstr "Időbélyeg"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:71
+msgid "time,timestamp"
+msgstr "idő, időbélyeg"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:88
+msgid "Message Colors"
+msgstr "Üzenet Színek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:89
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:169
+msgid "theme,colors,messages,output"
+msgstr "megjelenés,színek,üzenetek,kimenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_messages.h:168
+msgid "Color Set"
+msgstr "Paletta"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_avatar.h:32
+msgid "Avatars"
+msgstr "Avatarok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:32
+msgid "Sound"
+msgstr "Hangok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:48
+msgid "sound,xmms,audio,play,amarok"
+msgstr "hang,xmms,audio,lejátszás,amarok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:81
+msgid "Sounds"
+msgstr "Hangok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.h:83
+msgid "sound,events"
+msgstr "hangok,események"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.h:28
+msgid "URL handlers"
+msgstr "URL kezelők"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.h:31
+msgid "url,programs"
+msgstr "url,programok,cím,webcím,web"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.h:29
+msgid "Tray icon"
+msgstr "Tálca ikon"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.h:31
+msgid "tray,dockwidget"
+msgstr "tálca,dockwidget"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tools.h:33
+msgid "Tools"
+msgstr "Eszközök"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_generalopt.h:28
+msgid "General options"
+msgstr "Általános beállítások"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacefeatures.h:31
+msgid "Interface"
+msgstr "Eszközök"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.h:29
+msgid "Text icons"
+msgstr "Szöveges ikonok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.h:31
+msgid "smileys,emoticons"
+msgstr "mosoly,hangulatjelek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:34
+msgid "Output"
+msgstr "Kimenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:48
+msgid "Look"
+msgstr "Kinézet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircview.h:68
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:97
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:101
+msgid "Features"
+msgstr "Lehetőségek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:46
+msgid "Media Types"
+msgstr "Média Típusok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_mediatypes.h:48
+msgid "file,audio,video,programs"
+msgstr "fájl,audió,videó,programok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:33
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:35
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:49
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:65
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:80
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:99
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:114
+msgid "theme"
+msgstr "megjelenés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:47
+msgid "Transparency"
+msgstr "Átlátszóság"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:48
+msgid "theme,background"
+msgstr "megjelenés,háttér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:74
+msgid "Window Captions"
+msgstr "Ablak feliratok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:75
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:88
+msgid "theme,mdi"
+msgstr "megjelenés,mdi"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:87
+msgid "Workspace"
+msgstr "Munkaterület"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:100
+msgid "ToolBar Applets"
+msgstr "Eszköztár Appletek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.h:101
+msgid "theme,toolbar"
+msgstr "megjelenés,eszköztár"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.h:150
+msgid "connection"
+msgstr "kapcsolat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.h:33
+msgid "Protection"
+msgstr "Védelem"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.h:36
+msgid "ctcp,flood"
+msgstr "ctcp,flood,árasztás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:144
+msgid "Avatar"
+msgstr "Avatar"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.h:28
+msgid "Anti-spam"
+msgstr "Spamszűrés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:32
+msgid "Verbosity And Output"
+msgstr "Beszédesség és Kimenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ircoutput.h:34
+msgid "debug"
+msgstr "debug"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.h:28
+msgid "Logging"
+msgstr "Naplózás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_logging.h:29
+msgid "save,output"
+msgstr "mentés,kimenet"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:32
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:50
+msgid "Input"
+msgstr "Bevitel"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_input.h:33
+msgid "theme,colors,text"
+msgstr "megjelenés,színek,szöveg"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:33
+msgid "Taskbar"
+msgstr "Tálca"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:47
+msgid "Tree Taskbar"
+msgstr "Fa lista"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:63
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:65
+msgid "Foreground"
+msgstr "Előtér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.h:111
+msgid "Classic Taskbar"
+msgstr "Klasszikus lista"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.h:52
+msgid "Proxy Hosts"
+msgstr "Proxy Hosztok"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_proxy.h:54
+msgid "connection,servers"
+msgstr "kapcsolat,szerverek"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.h:28
+msgid "Alert/Highlight"
+msgstr "Figyelmeztetés/Kiemelés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.h:42
+msgid "Highlight"
+msgstr "Figyelmeztetés / Kiemelés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.h:55
+msgid "Taskbar Alert"
+msgstr "Figyelmeztetés a Tálcán"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.h:29
+msgid "Flood Protection"
+msgstr "Flood Védelem"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:30
+msgid "Userlist"
+msgstr "Felhasználólista"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:31
+msgid "theme,userlist,channel"
+msgstr "megjelenés,felhasználólista,csatorna"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:45
+msgid "theme,userlist,channel,background"
+msgstr "kinézet,felhasználólista,csatorna,háttér"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:66
+msgid "theme,userlist,channel,colors"
+msgstr "megjelenés,felhasználólista,csatorna,szín"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:81
+msgid "Nickname Grid"
+msgstr "Név rács"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:82
+msgid "theme,userlist,channel,grid"
+msgstr "megjelenés,felhasználólista,csatorna,rács"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:102
+msgid "userlist,channel"
+msgstr "felhasználólista,csatorna"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.h:29
+msgid "Labels"
+msgstr "Címkék"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.h:30
+msgid "theme,topic"
+msgstr "megjelenés,topic,téma"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.h:28
+msgid "Scripting Engine"
+msgstr "Szkript Motor"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_uparser.h:29
+msgid "scripting,kvs,debug"
+msgstr "szkript,kvs,hibakeresés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:55
+msgid "SSL"
+msgstr "SSL"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:72
+msgid "Socket"
+msgstr "Socket"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.h:87
+msgid "Ident Service"
+msgstr "Azonosító Szolgáltatás"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.h:29
+msgid "Ignore"
+msgstr "Mellőzés"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ignore.h:31
+msgid "protection"
+msgstr "védelem"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:28
+msgid "Query"
+msgstr "Privát"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:30
+msgid "chat"
+msgstr "beszélgetés"

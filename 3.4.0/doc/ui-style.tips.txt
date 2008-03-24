@@ -1,0 +1,40 @@
+************************
+*** KVIrc Style Tips ***
+************************
+
+[Dialog Windows]
+- Title should be like "Choose a Script File", not "Choose a script file".
+- For any non-modal dialogs (config ones, etc.), the name should have " - KVIrc"
+  at the end. This also applies to wizards and file selection dialogs.
+
+[Menubars]
+- Menus have specific locations in menubars, see KDE style guide.
+
+[Menus]
+- Menu item text be like "An Item", not "An item"
+- Common items are:
+  "Cu&t" "&Copy" "&Paste" "Clear" "&Open..." "&Save As..."
+- Items that open a dialog or otherwise require confirmation or additional
+  information should have "..." immediately following their text (no spaces).
+
+[Selector Widgets]
+- bool selector labels should be like "Enable debug output"
+- string/file path/integer selectors should have labels with a colon ":" at the   end, e.g. "Comment:"
+- QGroupBox text should be like "Use Filtering For".
+- Config selector tooltips should have "<center></center>", and end each
+  sentence with a fullstop (period). There should be few <br> except for
+  separating sections.
+
+[Buttons]
+- Button text should be like "A Button", not "A button".
+- Common labels are:
+  "&OK" "&Apply" "Cancel" "&New" "&Add..." "Re&move" "&Close" "&Browse..."
+- Button QToolTips should be a description of its function, and
+ending with a fullstop (period):
+  "Accept all changes, and close this dialog."
+  "Kill the current user." ("Kill", not "Kills")
+- OR if the button has no text, the tooltip should be the *label text*.
+- Buttons are best in a QHBox.
+- Try to keep names short.
+
+* For further reference, see the KDE Style Guide (google for it).

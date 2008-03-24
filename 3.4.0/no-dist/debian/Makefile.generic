@@ -1,0 +1,442 @@
+#
+#	Generic Makefile for building Debian packages
+#
+#	This file contains generic targets and is included by
+#	all of the other Makefiles.
+#
+
+SHELL=/bin/sh -e
+export SHELL
+
+PARSE_FULLVER=2> /dev/null | grep Version: | cut -c 10- | sed "s,[0-9]*:,,"
+PARSE_VER=$(PARSE_FULLVER) | sed "s,-[0-9]\+.*,,"
+
+#
+#	Set the correct variables for Debian uploads
+#
+DEBFULLNAME ?= Robin Verduijn
+DEBEMAIL ?= $(DEBFULLNAME) <robin@debian.org>
+export DEBEMAIL DEBFULLNAME
+
+#
+#	Whether to make an official Debian release
+#
+DEBIAN_RELEASE ?= 0
+export DEBIAN_RELEASE
+
+#
+#	Whether to use the apt-build wrapper for gcc
+#
+ifeq ($(DEBIAN_RELEASE),1)
+	APT_BUILD_WRAPPER ?= 0
+else
+	APT_BUILD_WRAPPER ?= 1
+endif
+export APT_BUILD_WRAPPER
+
+#
+#	Options for dpkg-buildpackage
+#
+ifeq ($(DEBIAN_RELEASE),1)
+	DEB_BUILD_OPTIONS=
+else
+	DEB_BUILD_OPTIONS=-debug -nostrip
+endif
+export DEB_BUILD_OPTIONS
+
+CWD=$(shell pwd)
+#
+#	CVS module for this project
+#
+CVS_MODULE ?= $(NAME)
+#
+#	Directory where the checked-out source sits
+#
+SRC_DIR ?= $(NAME)
+#
+#	Directory in which to build and place .debs
+#
+BUILD_DIR ?= /usr/src/tmp/build-$(NAME)
+#
+#	Directory in which to register the newly built .debs
+#
+REPOSITORY ?= /usr/src/Debian
+#
+#	Where to put the log files
+#
+LOGDIR ?= $(HOME)/tmp/log
+#
+#	Location of the chroot
+#
+CHROOT ?= $(shell grep '^PBUILDER_UML_IMAGE=' $(HOME)/.pbuilderrc | sed "s,PBUILDER_UML_IMAGE=,,")
+
+#
+#	Additional options for cvs
+#
+CVS_OPTIONS ?= 
+export CVS_OPTIONS
+
+#
+#	Where to temporarily copy the debian directory
+#
+TMP_DEBIAN_DIR ?= debian.$(NAME)._PreTarBall_
+
+#
+#	Where to stick the built sources
+#
+UPLOAD_DIR ?= $(CWD)/upload
+
+#
+#	Try to be clever and determine the package version from the correct
+#	changelog file
+#
+ifeq ($(VER),)
+	VER=$(shell dpkg-parsechangelog -lsrc/debian/changelog $(PARSE_VER))
+	FULL_VER=$(shell dpkg-parsechangelog -lsrc/debian/changelog $(PARSE_FULLVER))
+endif
+ifeq ($(VER),)
+	VER=$(shell dpkg-parsechangelog -ldebian/changelog $(PARSE_VER))
+	FULL_VER=$(shell dpkg-parsechangelog -ldebian/changelog $(PARSE_FULLVER))
+endif
+ifeq ($(VER),)
+	VER=$(shell dpkg-parsechangelog -l$(SRC_DIR)/debian/changelog $(PARSE_VER))
+	FULL_VER=$(shell dpkg-parsechangelog -l$(SRC_DIR)/debian/changelog $(PARSE_FULLVER))
+endif
+ifeq ($(FULL_VER),)
+	FULL_VER=$(VER)
+endif
+
+#
+#	DIR should become set to the directory where the source unpacks to
+#
+DIR  ?= $(BUILD_DIR)/$(NAME)-$(VER)
+TGZ  ?= $(NAME)-$(VER).tar.gz
+BZ2  ?= $(NAME)-$(VER).tar.bz2
+FILE ?= $(shell if test -e $(BZ2); then echo $(BZ2); else echo $(TGZ); fi)
+
+#
+#	Options to pass to dpkg-buildpackage
+#
+DPKG_OPTS ?= -us -uc -sa
+
+#
+#	The common targets
+#
+all:: build lintian
+
+.PHONY:: all
+
+################################################################################
+#
+#	pbuilder targets
+#
+################################################################################
+#PBUILDER = pbuilder-user-mode-linux
+PBUILDER = pbuilder
+PBUILDER_OPTS += --bindmounts $(HOME)/src
+PBUILDER_OPTS += --bindmounts $(shell dirname $(BUILD_DIR))
+ifneq ($(NAME),)
+	PBUILDER_OPTS += --buildresult $(BUILD_DIR) 
+endif
+
+ifeq ($(PBUILDER),pbuilder-user-mode-linux)
+	ifneq ($(UML_IMAGE),)
+		PBUILDER_SRC_OPTS = --uml-image $(UML_IMAGE)
+	endif
+endif
+
+$(BUILD_DIR)::
+	mkdir -p $@
+
+chroot-check:: $(BUILD_DIR)
+ifeq ($(PBUILDER),pbuilder-user-mode-linux)
+	if [ -e "$(CHROOT)" ]; then \
+		fsck "$(CHROOT)" || fsck "$(CHROOT)"; \
+	fi
+	if [ -e "$(UML_IMAGE)" ]; then \
+		fsck "$(UML_IMAGE)" || fsck "$(UML_IMAGE)"; \
+	fi
+endif
+
+chroot-login:: chroot-check
+	$(PBUILDER) login $(PBUILDER_OPTS) $(PBUILDER_SRC_OPTS)
+
+chroot-update:: chroot-check
+	$(PBUILDER) update $(PBUILDER_OPTS) $(PBUILDER_SRC_OPTS)
+
+pbuilder:: pbuilder-create-source pbuilder-build
+
+pbuilder-build:: chroot-check
+	cd $(BUILD_DIR); time \
+		$(PBUILDER) build $(PBUILDER_OPTS) --logfile $(LOGDIR)/$(NAME)-$(FULL_VER).build.log $(NAME)_$(FULL_VER).dsc
+	if [ -d "$(HOME)/.gnupg" ]; then \
+		if [ -e "$(BUILD_DIR)/$(NAME)_$(FULL_VER)_i386.changes" ]; then \
+			debsign "$(BUILD_DIR)/$(NAME)_$(FULL_VER)_i386.changes"; \
+		fi; \
+	fi
+
+pbuilder-create-source:: chroot-check
+	SH="tmpsh.XXXXXX"; \
+	trap "rm $$SH" EXIT; \
+	ID=1000; \
+	USR=robin; \
+	echo "cd $(CWD)"                 > $$SH; \
+	echo "useradd -u $$ID $$USR"    >> $$SH; \
+	echo "time make source-package" >> $$SH; \
+	$(PBUILDER) execute \
+		--bindmounts /var/cache/apt/archives \
+		--logfile $(LOGDIR)/$(NAME)-$(FULL_VER).source.log \
+		$(PBUILDER_OPTS) $(PBUILDER_SRC_OPTS) $$SH
+
+source-package:: install-predepends setup
+	cd $(shell dirname $(DIR)); \
+		dpkg-source -b $(shell basename $(DIR))
+	rm -rf $(DIR)
+
+install-predepends:
+	if [ ! -z "$(PREDEPENDS)" ]; then \
+		apt-get --assume-yes install $(PREDEPENDS); \
+	fi
+
+.PHONY:: chroot-check chroot-update chroot-login pbuilder
+.PHONY:: pbuilder-build pbuilder-create-source source-package install-predepends
+
+################################################################################
+#
+#	Setting up the build directories and stuff
+#
+################################################################################
+setup:: source create-tarball apply-patches
+
+source:: source-pre-hook source-main source-post-hook
+source-pre-hook::
+source-post-hook::
+source-main:: clean
+	#
+	#	Safely create target directory
+	#
+	mkdir -p $(BUILD_DIR)
+	if [ -d "$(DIR)" ]; then \
+		echo "Removing $(DIR)"; \
+		rm -rf "$(DIR)"; \
+	fi
+	if [ -d "$(DIR)" ]; then \
+		echo "Directory $(DIR) already exists!"; \
+		exit; \
+	fi
+	#
+	# Copy the source dir so we don't have to touch that
+	#
+	mkdir -p "$(BUILD_DIR)"
+	echo "Creating $(DIR)"
+	if [ -d src ]; then \
+		cp -dR src "$(DIR)"; \
+	elif [ -d "$(SRC_DIR)" ]; then \
+		cp -dR "$(SRC_DIR)" "$(DIR)"; \
+	else \
+		CAT=cat; \
+		NULL=`basename "$(FILE)"`; \
+		BZ2=`basename "$(FILE)" .bz2`; \
+		GZ=`basename "$(FILE)" .gz`; \
+		TGZ=`basename "$(FILE)" .tgz`; \
+		[ "$$BZ2" == "$$NULL" ] || CAT="bunzip2 -dc"; \
+		[ "$$GZ"  == "$$NULL" ] || CAT="gunzip -dc"; \
+		[ "$$TGZ" == "$$NULL" ] || CAT="gunzip -dc"; \
+		if [ ! -e "$(FILE)" ]; then \
+			echo "$(FILE) could not be found!"; \
+			false; \
+		fi; \
+		$$CAT "$(FILE)" | (cd "$(BUILD_DIR)"; tar xf -); \
+	fi
+	#
+	#	Even if we generate a .diff.gz file, make these files executable
+	#
+	for file in configure; do \
+		if [ -e "$(DIR)/$$file" ]; then \
+			touch "$(DIR)/$$file"; \
+			chmod +x "$(DIR)/$$file"; \
+		fi; \
+	done
+	#
+	#	Keep the debian/ directory out of the .orig tarball
+	#	It is copied back later, after the tarball was created.
+	#
+	if [ -d "$(DIR)/debian" ]; then \
+		mv "$(DIR)/debian" $(TMP_DEBIAN_DIR); \
+	fi
+
+create-tarball:: source
+	#
+	#	Create the .orig tarball
+	#
+	if [ -e "$(UPLOAD_DIR)/$(NAME)_$(VER).orig.tar.gz" ]; then \
+		echo "Using $(NAME)_$(VER).orig.tar.gz from the archive"; \
+		cp -dR "$(UPLOAD_DIR)/$(NAME)_$(VER).orig.tar.gz" $(BUILD_DIR); \
+	else \
+		echo "Creating $(NAME)_$(VER).orig.tar.gz"; \
+		cd "$(BUILD_DIR)"; \
+		tar zcf "$(BUILD_DIR)/$(NAME)_$(VER).orig.tar.gz" "$(NAME)-$(VER)"; \
+	fi
+	#
+	#	Copy a sample debian directory if it doesn't exist in the source
+	#
+	if [ ! -d "$(DIR)/debian" ]; then \
+		if [ -d "$(TMP_DEBIAN_DIR)" ]; then \
+			mv "$(TMP_DEBIAN_DIR)" "$(DIR)/debian"; \
+		else \
+			echo "Creating $(DIR)/debian"; \
+			cp -dR debian "$(DIR)/debian"; \
+		fi; \
+	fi
+	#
+	#	Remove CVS directories lying around
+	#
+	if [ "$(DEBIAN_RELEASE)" = "1" ]; then \
+		find "$(DIR)" -type d -name CVS -print0 | xargs -r0 rm -rf; \
+	fi
+
+apply-patches:: create-tarball
+	#
+	#	Find all patches in the top-level directory which are named
+	#	according to a certain convention. Apply all these patches if they
+	#	apply cleanly
+	#
+	for PATCH in patches/$(NAME).{diff,patch} patches/$(NAME).*.{diff,patch} \
+	             patches/[0-9]*$(NAME).{diff,patch} patches/[0-9]*$(NAME).*.{diff,patch}; do \
+		CAT=cat; \
+		PATCH0=`basename "$$PATCH"`; \
+		PATCH1=`basename "$$PATCH" .bz2`; \
+		PATCH2=`basename "$$PATCH" .gz`; \
+		if ! grep "^$$PATCH0$$" patches/DISABLED >& /dev/null; then if [ -f "$$PATCH"  ]; then \
+			[ "$$PATCH0" == "$$PATCH1" ] || CAT="bunzip2 -dc"; \
+			[ "$$PATCH0" == "$$PATCH2" ] || CAT="gunzip -dc"; \
+			success="false"; \
+			for i in 0 1 2; do if [ "$$success" == "false" ]; then \
+				if $$CAT $$PATCH | patch -d "$(DIR)" -E --dry-run -s -p$$i >& /dev/null; then \
+					if $$CAT $$PATCH | patch -d "$(DIR)" -E --dry-run -p$$i | egrep -i 'fuzz|offset'; then \
+						echo "    $$PATCH has fuzz or offsets -- please fix it"; \
+						exit 1; \
+					else \
+						echo "    [patchlevel $$i] applying $$PATCH"; \
+						$$CAT $$PATCH | patch -d "$(DIR)" -p$$i; \
+						success="true"; \
+					fi; \
+				fi; \
+			fi; done; \
+			if [ "$$success" == "false" ]; then \
+				echo " !! $$PATCH does not apply!"; \
+				exit 1; \
+			fi; \
+		fi; fi; \
+	done
+
+.PHONY:: setup source source-pre-hook source-post-hook source-main create-tarball apply-patches
+
+################################################################################
+#
+#	Building
+#
+################################################################################
+build:: setup
+	cd "$(DIR)" && (time dpkg-buildpackage -rfakeroot $(DPKG_OPTS)) 2>&1 | tee "$(LOGDIR)/$(NAME)-$(FULL_VER).build.log"
+
+#
+#	Remove target directory first, then build.
+#	This also creates the original source
+#
+release:: purge build deploy lintian
+
+deploy::
+	#
+	#	Update the local repository
+	#
+	if [ -d "$(REPOSITORY)" ]; then \
+		mkdir -p "$(REPOSITORY)/pool"; \
+		DEBS=`find "$(BUILD_DIR)/" -name '*.deb' -maxdepth 1`; \
+		if [ ! -z "$$DEBS" ]; then \
+			chmod 0644 $$DEBS; \
+			mv $$DEBS "$(REPOSITORY)/pool"; \
+			make -C "$(REPOSITORY)"; \
+		fi; \
+	fi
+
+lintian::
+	#
+	#	Check the packages for lintian-correctness
+	#
+	if [ -r "$(BUILD_DIR)/*.changes" ]; then \
+		lintian "$(BUILD_DIR)/*.changes"; \
+	else \
+		find "$(BUILD_DIR)" -name '*.deb' -maxdepth 1 -print0 | xargs -r0 lintian; \
+	fi
+
+.PHONY:: build release deploy lintian
+
+################################################################################
+#
+#	Cleaning up
+#
+################################################################################
+clean::
+	$(RM) -r $(DIR) $(TMP_DEBIAN_DIR)
+
+#
+#	Remove build directory
+#
+purge:: clean
+	$(RM) -r $(BUILD_DIR)
+
+.PHONY:: clean purge
+
+################################################################################
+#
+#	Targets for retrieving and updating the source from CVS
+#
+################################################################################
+ifneq ($(CVSROOT),)
+checkout::
+	cvs -d $(CVSROOT) -z3 checkout $(CVS_OPTIONS) $(CVS_MODULE) 2>&1 | tee $(LOGDIR)/cvs-CHECKOUT.$(NAME).log
+	find "$(CVS_MODULE)" -type f \
+		-name '*.cpp' -o \
+		-name '*.h' -o \
+		-name 'Makefile.am' -o \
+		-name '*.kvihelp' -o \
+		-name 'configure.in' -o \
+		-name 'acinclude.*' \
+		-print0 \
+		| xargs -r0 chmod 644
+
+update::
+	if [ -d "$(CVS_MODULE).orig" ]; then \
+		echo "$(CVS_MODULE).orig already exists. Please remove it first!"; \
+		exit 1; \
+	fi
+	cp -dR "$(CVS_MODULE)" "$(CVS_MODULE).orig"
+	cvs -d $(CVSROOT) -z3 update $(CVS_OPTIONS) $(CVS_MODULE) 2>&1 | tee $(LOGDIR)/cvs-UPDATE.$(NAME).log
+	if diff -Nur "$(CVS_MODULE).orig" "$(CVS_MODULE)" > "$(CVS_MODULE).$$$$.diff"; then \
+		rm -rf "$(CVS_MODULE).orig"; \
+		rm "$(CVS_MODULE).$$$$.diff"; \
+	else \
+		echo "Source for $(CVS_MODULE) was updated!"; \
+	fi
+
+list::
+	cvs -d $(CVSROOT) checkout -c $(CVS_OPTIONS)
+
+.PHONY:: checkout update list
+endif
+
+################################################################################
+#
+#	Miscellaneous
+#
+################################################################################
+links:
+	cd "$(SRC_DIR)"; \
+		for file in `find -type f -name '*.h' -o -name '*.cpp' -o -name Makefile.am -o -name Makefile.common`; do \
+			name="$(DIR)/$$file"; \
+			mkdir -p `dirname "$$name"`; \
+			ln -f "$$file" "$$name"; \
+	done
+
+.PHONY:: links

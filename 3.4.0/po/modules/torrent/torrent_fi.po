@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Santeri Piippo aleksanteri4028@gmail.com, 2007.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: torrent_fi\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-11-21 17:34+0100\n"
+"PO-Revision-Date: 2007-11-27 18:16+0200\n"
+"Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
+msgid "No client selected!"
+msgstr "Ei asiakasohjelmaa valittu!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:45
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr ""
+"Käyttöliittymä KDEn mainioon KTorrent -asiakasohjelmaan.\n"
+"Lataa se osoitteesta http://www.ktorrent.org\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:61
+#, c-format
+msgid "Index out of range: %d [0-%d]!"
+msgstr "Indeksi ei ole sallittu: %d [0-%d]!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:63
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Yritetään torrenttiasiakasohjelman käyttöliittymää \"%Q\": tulos %d"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:103
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Valitaan torrenttiasiakasohjelman käyttöliittymä \"%Q\""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:110
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Näyttää siltä ettei tällä koneella ole käytettävää torrenttiasiakasohjelmaa"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:119
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Ei torrenttiasiakasohjelman käyttölittymää valittu. Yritä /torrent.detect"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:129
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+"Valittu torrenttiasiakasohjelman käyttöliittymä ei onnistunut ajamaan "
+"pyydettyä tehtävää"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:130
+msgid "Last interface error: "
+msgstr "Viimeisin käyttöliittymävirhe: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:707
+msgid "Using client interface \"%Q\"."
+msgstr "Käytetään asiakasohjelman käyttöliittymää \"%Q\"."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:715
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Viallinen asiakasohjelman käyttöliittymä \"%Q\"!"

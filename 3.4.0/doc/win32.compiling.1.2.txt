@@ -1,0 +1,269 @@
+Win32 KVIrc compiling 1.2 
+a tutorial by <Grifisx>
+updated by <LoSko> on 2007/01/18
+
+english translation by <etherea`> 
+
+Index 
+
+@ Prologue
+@ Ingredients
+@ Providing ingredients
+@ Setting up the ambiency
+@ Setting ambiency variables
+@ Compiling
+@ Creating ambiency for setup
+@ Creating setup
+
+@ Prologue 
+
+This is meant to be a simple guide to KVIrc compiling under Windows ambiency, so 
+that everyone who's willing to try to compile the latest version of this cross platform 
+client can easily do without the need for the latest snapshot/development to be 
+released. 
+
+@ Ingredients 
+
+1) CVS version of KVIrc
+2) Visual C++ 2005 Express
+3) SDK package from Microsoft
+4) Perl.
+5) gettext for Windows
+6) Innosetup or NSIS
+7) Non Commercial QT 3.2.1
+8) OpenSSL
+9) zlib for Win32
+
+@ Providing ingredients 
+
+So, let's see where to find the necessary ingredients to bake up our freshy KVIrc. 
+
+-1) CVS version of KVIrc 
+
+To get this out you will need a CVS client for Windows, then type the following 
+command: 
+
+cvs -z3 -d:pserver:anonymous@cvs.kvirc.net:/cvs co kvirccvs 
+
+
+And just in case you can find instructions here:
+Link: http://www.kvirc.net/?id=cvs
+A suggestion for a tiny and free CVS is Tortoise CVS.
+Link: http://www.tortoisecvs.org/
+
+-2) Visual C++ 2005 Express 
+
+This compiler is free (at least for the moment), you will only need to register in order to
+get it and use it for free, use it!
+Link: http://msdn.microsoft.com/vstudio/express/visualc/
+
+-3) SDK package from Microsoft 
+
+This one too is for free, then download and install it! 
+Link: http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3A93E-40C0EC4F68E5&displaylang=en 
+
+-4) Perl
+Perl is needed to create documentation and make perl module works, you can
+download it from here:
+Link: http://www.activestate.com/Products/ActivePerl/?
+
+-5) gettext for Windows 
+Download and install it, it's needed to create languages localization files: 
+Link: http://sourceforge.net/projects/gettext 
+Note: be sure to install gettext in this directory C:\Program Files\GnuWin32 so that all the 
+executables are located in C:\Program Files\GnuWin32\bin otherwise you'll be forced to 
+change something in the file needed to create the setup ambiency. 
+
+-6) Innosetup 
+
+Another free program, required to create the final setup.
+Link: http://www.jrsoftware.org/isinfo.php
+If you are using NSIS you can have your copy here:
+Link: http://nsis.sourceforge.net/Download
+
+-7) Non Commercial QT 3.2.1 
+
+That's probably the most difficult thing to acquire; you can try find a book on QT that 
+has it enclosed (the non commercial one) or you'll have to figure out how to find it out. 
+You can buy a commercial version too, 3.x.x higher than 3.2.1. 
+
+Book: C++ GUI Programming with QT 3
+Link: http://www.amazon.com/gp/product/0131240722/102-11831924381702?v=glance&n=283155
+If you are pretty acknowledged with compiling you can try these instructions:
+Link: http://qtwin.sourceforge.net/qt3-win32/compile-msvc-2005.php
+Even if this last choice's a bit nasty to make out working =)
+You still can find some precompiled version of this free stand (found on the same site of 
+qtwin even if a bit older) but beware: choosing this last chance will make KVIrc XP
+themes not supported.
+By using a different version of QT you'll need to modify every KVIrc project adapting
+the qt.xxxx.dll and headers and libraries paths.
+For example, assuming you have installed commercial QT 3.3.4 you'll have to modify
+the projects this way:
+a) selecting Properties of each project then ->Linker and ->Input
+b) store the right library in the qt-mtnc321.lib matching the installed version
+requirements, ie qt-3.3.4.lib. To know the exact name of your .lib file to be linked just go
+to the directory where you did installed QT, in the subfolder /lib (like C:\Qt\3.3.4\lib)
+
+-8) OpenSSL 
+That is needed in order to compile SSL support for KVIrc, you can have libraries and 
+everything else from here: 
+Link: http://www.slproweb.com/products/Win32OpenSSL.html 
+
+-9) zlib for win32 
+
+To give KVIrc the ability to save log files in compressed format that's what you need. 
+Link: http://gnuwin32.sourceforge.net/packages/zlib.htm 
+
+That's the main page, but you will need the developers files:
+Link: http://gnuwin32.sourceforge.net/downloadlinks/zlib-lib-zip.php
+Extract them in any folder you may like, my own suggestion is folder C:\lib for your 
+convenience; directory tree will be as follows: 
+
+C:(dir) 
+|__zlib(dir)
+|__include(dir)
+| |__zconf.h
+| |__zlib.h
+|__lib(dir)
+|__zlib.lib
+|__zlib.exp
+
+Remember where did you have this folder extract because you will have to setup paths 
+of the include files (the .h files) and of the libraries (the .lib files) in ambiency variables 
+of your operating system. 
+
+@ Setting up the ambiency 
+
+Install in the following order (theoretically it is not necessary a given order but this 
+“recipe” is fully oriented to non expert users): 
+1-Visual C++ 2005 Express 
+2-SDK ; once you have installed it take the folders Lib, Include and Bin (you will find
+them all in the SDK given path – generally in folder C:\Program Files\Microsoft Platform
+SDK) and copy them in the folder \SDK\v2.0 that is under the installation path of Visual
+C++ (generally in C:\Program Files\Microsoft Visual Studio 8\SDK\v2.0).
+Attention: when copying these files you'll be prompted to overwrite one or more files;
+just answer NO.
+3-QT 3.x.x ; during the installation you'll be prompted to record ambiency variables: 
+answer YES. 
+4-OpenSSL ; during the installation you'll be prompted to record ambiency variables: 
+answer YES. 
+5-Perl ; during the installation you'll be prompted to record ambiency variables: 
+answer YES. 
+6-gettext 
+7-Innosetup or NSIS or both =) (Freedom is the power to choose ;)) 
+8-zlib ; if you did download the install&compile package; otherwise just unpack 
+and/or extract the ready-to-use pakage wherever you may like (generally in folder C:\). 
+
+@ Setting ambiency variables 
+
+Now we need to set up every variable of this ambiency, needed in order the compiler 
+will be able to find every library from which KVIrc depends. 
+Right-button on Resources then Properties -> Advanced -> Ambient Variables and this will 
+engage all QT system variables (QTDIR) set; if that doesn't match you will need to 
+reinstall QT and remember to answer YES once you're prompted for setting all ambiency 
+variables, otherwise you will need to set them manually – that parts from this tutorial. 
+
+In the section dedicated to variables of the actual user add (if you don't have it yet) the 
+following and then give the right paths that are on your own machine (hereby are my 
+own paths): 
+
+Variable: 
+
+PERLDIR 
+Value: 
+C:\perl 
+Meaning: 
+Directory that stores Perl 
+
+Variable: 
+ZLIBLIBDIR 
+Value: 
+C:\zlib\lib 
+Meaning: 
+Directory that stores file .lib of zlib installed library, the file name must be zlib.lib 
+
+Variable: 
+OPENSSL 
+Value: 
+C:\OpenSLL 
+Meaning: 
+Installation folder of OpenSSL 
+
+Variable: 
+SSLINCDIR 
+Value: 
+C:\OpenSSL\include 
+Meaning: 
+Directory that stores OpenSSL .h files 
+
+Variable: 
+SSLLIBDIR 
+Value: 
+C:\OpenSSL\lib\VC 
+Meaning: 
+OpenSSL .lib files storage
+
+Variable: 
+MSGFMT 
+Value: 
+C:\Program Files\GnuWin32\bin\msgfmt.exe
+Meaning: 
+msgfmt executable path
+
+After you've added all the variables with their own values you need to reboot. 
+
+@ Compiling 
+
+Go to folder kvirccvs\kvirc and open the file kvirc_vc05.sln then -for the less 
+experienced-select Build -> Configure Manager -> Release and run the compiling with 
+Build ->Build Solution. 
+You'll need to wait a little before the building ends, mostly that's up to your processor 
+(on a P3 800MHz it takes about 40/45 minutes, on a P4 3000 just 10/15 minutes). 
+Now.. pray everything is going to get the right place and no unexpected to happen; but 
+in case you do have troubles here are 3 different solutions: 
+
+a) read this tutorial once more, hoping you missed some points;
+b) try to find out where the problem is;
+c) step to Azzurranet on channel #kvirc.net and ask for Grifisx or Noldor or Pragma.
+
+@ Creating ambiency for setup 
+
+If you're reading this, thank God, your patience and your mother (yes, yet she didn't 
+managed to kill you death nevertheless you spent 28 hours a day reading lines on a 
+monitor) you're almost done! 
+The latest 2 steps are quite easy. 
+Go to folder kvirccvs\kvirc\win32build and run makedist.vbs file. 
+Then run the process, on which end you'll get a folder named pakage; be sure inside 
+there are kvirc.exe, kvilib.dll, the folder with every KVIrc module and the following dlls: 
+
+ssleay32.dll
+libeay32.dll
+qt-mtnc3321.dll
+perl58.dll
+zlib1.dll
+idleui.dll
+msvcr80.dll
+
+
+If you see something missing just run up a search onto your system and copy them into 
+the pakage directory. 
+Check even the file Microsoft.VC80.CRT.manifest is placed both in root folder and sub folder 
+modules, otherwise copy it into them (files are stored into kvirccvs\kvirc\data\manifests ; 
+in this last case you will only need to rename the given file 
+Microsoft.VC80.CRT.modules.manifest into Microsoft.VC80.CRT.manifest before you put it in 
+the modules folder). 
+
+@ Creating setup 
+
+Easypeasy!
+After installation of Innosetup launch file KVIrc.iss that houses in folder
+kvirccvs\kvirc\win32build and run the script so that at the end of the process you'll find
+a freshy hot setup.exe in folder kvirccvs\kvirc\win32build\package\setup.
+If you did chose NSIS: right click on the KVIrc.nsi installation script that is found in
+folder kvirccvs\kvirc\win32build and run Compile NSIS Script.
+This way you'll have a KVIrc.VERSION-dev-DATE.exe in your actual directory!
+Run.
+If everything went ok then.. EnjoY! =D
+
+Tonino Imbesi 
+<Grifisx> 

@@ -1,0 +1,61 @@
+#ifndef _KVI_CONFIGNAMES_H_
+#define _KVI_CONFIGNAMES_H_
+
+//=============================================================================
+//
+//   File : kvi_confignames.h
+//   Creation date : Wed Oct 18 2000 14:16:22 CEST by Szymon Stefanek
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 1999-2001 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
+#include "kvi_fileextensions.h"
+
+//=============================================================================
+// This file contains the config file names used in KVIrc
+//
+// You can play a bit with these, but be aware that some (bad) scripts
+// may find themselves in trouble
+//=============================================================================
+
+#define KVI_CONFIGFILE_MAIN "main." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_WINPROPERTIES "winproperties." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SERVERDB "serverdb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_PROXYDB "proxydb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_EVENTS "events." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_RAWEVENTS "rawevents." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_POPUPS "popups." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SCRIPTTOOLBARS "toolbars." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_CUSTOMTOOLBARS "customtoolbars." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_MEDIATYPES "mediatypes." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_REGUSERDB "reguserdb." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SHAREDFILES "sharedfiles." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_RECENT "recent." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_TOOLBARS "toolbarpos." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_ALIASES "aliases." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_NICKSERVDATABASE "nickserv." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_TEXTICONS "texticons." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_REGCHANDB "regchan." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_INPUTHISTORY "inputhistory." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_AVATARCACHE "avatarcache." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_USERACTIONS "useractions." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_SCRIPTADDONS "scriptaddons." KVI_FILEEXTENSION_CONFIG
+#define KVI_CONFIGFILE_IDENTITIES "identities." KVI_FILEEXTENSION_CONFIG
+
+#endif //_KVI_CONFIGNAMES_H_

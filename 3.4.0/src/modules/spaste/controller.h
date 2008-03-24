@@ -1,0 +1,59 @@
+//   File : controller.h
+//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002 Szymon Stefanek (kvirc@tin.it)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+#ifndef SPASTE_CONTROLLER_H
+#define SPASTE_CONTROLLER_H
+
+#include "kvi_window.h"
+#include "kvi_string.h"
+
+#include <qobject.h>
+#include <qstringlist.h>
+#include <qfile.h>
+
+class SPasteController : public QObject
+{
+    Q_OBJECT
+public:
+    SPasteController(KviWindow * w,int id);
+    ~SPasteController();
+
+    //bool pasteFileInit(KviStr * fileName);
+    bool pasteFileInit(QString &fileName);
+    bool pasteClipboardInit(void);
+    int getId(void){return m_pId;};
+    KviWindow * window(void){return m_pWindow;};
+    //void stop(void);
+protected slots:
+    void pasteFile(void);
+    void pasteClipboard(void);
+
+private:
+    QStringList *m_pClipBuff;
+    QFile   *m_pFile;
+    int m_pId;
+    KviWindow *m_pWindow;
+    QTimer *m_pTimer;
+    QStringList::Iterator m_clipBuffIterator;
+};
+
+#endif //SPASTE_CONTROLLER_H
+    

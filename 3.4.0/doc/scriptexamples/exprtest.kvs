@@ -1,0 +1,24 @@
+# A stresstest for the expression evaluation engine
+
+alias(exprtest)
+{
+	%txt = "Testing expression:" $0; 
+
+	%ret = ${ eval "return \$(" $0 ")"; }
+	if(%ret != $1)
+	{
+		%txt .= " ... Failed (return value" %ret "!=" $1")";
+		echo %txt
+	} else {
+		%txt .= " ... Success (return value $1)";
+		echo %txt
+	}
+}
+
+exprtest "5 - 0 - 1" 4
+exprtest "5 - (0 - 1)" 6
+exprtest "2+3-5+3+1-2-3-8+5*3-2" 4
+exprtest "2*2 + 2*2 - 2*2" 4
+exprtest "-1" -1
+exprtest "--1--1" 2
+exprtest "-1+1" -2

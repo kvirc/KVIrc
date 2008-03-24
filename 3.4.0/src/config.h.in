@@ -1,0 +1,247 @@
+/* src/config.h.in.  Generated from configure.in by autoheader.  */
+
+/* define this to the number of average channel users */
+#undef AVERAGE_CHANNEL_USERS
+
+/* define this if you are on a big endian machine */
+#undef BIG_ENDIAN_MACHINE_BYTE_ORDER
+
+/* this is the build date (configure date rather) */
+#undef BUILD_DATE
+
+/* these are the build flags */
+#undef BUILD_FLAGS
+
+/* define if you want to enable the Arts daemon support */
+#undef COMPILE_ARTS_SUPPORT
+
+/* define if you want to enable the Audiofile library support */
+#undef COMPILE_AUDIOFILE_SUPPORT
+
+/* define if you want to compile the crypt support */
+#undef COMPILE_CRYPT_SUPPORT
+
+/* define if you want to disable DCC VOICE sound support */
+#undef COMPILE_DISABLE_DCC_VOICE
+
+/* define if you want to enable the Esound daemon support */
+#undef COMPILE_ESD_SUPPORT
+
+/* define if you have the SIOCGIFADDR ioctl and the related headers */
+#undef COMPILE_GET_INTERFACE_ADDRESS
+
+/* define this if you want to ignore the SIGALARM signal */
+#undef COMPILE_IGNORE_SIGALARM
+
+/* define if you want the info tips to be compiled in */
+#undef COMPILE_INFO_TIPS
+
+/* define if you want the IpV6 support */
+#undef COMPILE_IPV6_SUPPORT
+
+/* define if you want to compile the KDE 3.x support */
+#undef COMPILE_KDE_SUPPORT
+
+/* define if you want the memory checks */
+#undef COMPILE_MEMORY_CHECKS
+
+/* define if you want the gcc memory profile */
+#undef COMPILE_MEMORY_PROFILE
+
+/* define if you want to enable the new KVS parser */
+#undef COMPILE_NEW_KVS
+
+/* define this if you want to disable the inter-process communication support
+   */
+#undef COMPILE_NO_IPC
+
+/* define if you want to ignore X Windows completely */
+#undef COMPILE_NO_X
+
+/* define if you want to disable the X bell support */
+#undef COMPILE_NO_X_BELL
+
+/* define if you want to use only the new KVS parser */
+#undef COMPILE_ONLY_NEW_KVS
+
+/* define if you want to enable OSS sound support */
+#undef COMPILE_OSS_SUPPORT
+
+/* define if you have perl and want the perl scripting support in kvirc */
+#undef COMPILE_PERL_SUPPORT
+
+/* define if you have the KDE support and want the pseudo transparency */
+#undef COMPILE_PSEUDO_TRANSPARENCY
+
+/* define if you have openssl and want the ssl support in kvirc */
+#undef COMPILE_SSL_SUPPORT
+
+/* define if you want to use the pthreads library */
+#undef COMPILE_THREADS_USE_POSIX
+
+/* define if you want to use the solaris libthread */
+#undef COMPILE_THREADS_USE_SOLARIS_LIBTHREAD
+
+/* define if your compiler supports gotos do dynamic labels */
+#undef COMPILE_USE_DYNAMIC_LABELS
+
+/* define if you have libgsm and want the GSM code to be compiled */
+#undef COMPILE_USE_GSM
+
+/* define if you want to compile the Qt 4.x support */
+#undef COMPILE_USE_QT4
+
+/* define if you trust your memmove() function */
+#undef COMPILE_WITH_SYSTEM_MEMMOVE
+
+/* define if you want to enable the ZLib library support */
+#undef COMPILE_XSS_SUPPORT
+
+/* define if you want to enable the ZLib library support */
+#undef COMPILE_ZLIB_SUPPORT
+
+/* define if you want the i386 asm code */
+#undef COMPILE_ix86_ASM
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define to 1 if you have the `getenv' function. */
+#undef HAVE_GETENV
+
+/* Define to 1 if you have the `getnameinfo' function. */
+#undef HAVE_GETNAMEINFO
+
+/* Define to 1 if you have the `gmtime_r' function. */
+#undef HAVE_GMTIME_R
+
+/* Define to 1 if you have the `inet_aton' function. */
+#undef HAVE_INET_ATON
+
+/* Define to 1 if you have the `inet_ntoa' function. */
+#undef HAVE_INET_NTOA
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <linux/soundcard.h> header file. */
+#undef HAVE_LINUX_SOUNDCARD_H
+
+/* Define to 1 if you have the `localtime_r' function. */
+#undef HAVE_LOCALTIME_R
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `putenv' function. */
+#undef HAVE_PUTENV
+
+/* Define to 1 if you have the `setenv' function. */
+#undef HAVE_SETENV
+
+/* Define to 1 if you have the <soundcard.h> header file. */
+#undef HAVE_SOUNDCARD_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strerror' function. */
+#undef HAVE_STRERROR
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/soundcard.h> header file. */
+#undef HAVE_SYS_SOUNDCARD_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Define to 1 if you have the `unsetenv' function. */
+#undef HAVE_UNSETENV
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* The size of `int', as computed by sizeof. */
+#undef SIZEOF_INT
+
+/* The size of `long int', as computed by sizeof. */
+#undef SIZEOF_LONG_INT
+
+/* The size of `long long int', as computed by sizeof. */
+#undef SIZEOF_LONG_LONG_INT
+
+/* The size of `short int', as computed by sizeof. */
+#undef SIZEOF_SHORT_INT
+
+/* The size of `unsigned int', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_INT
+
+/* The size of `unsigned long int', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_LONG_INT
+
+/* The size of `unsigned long long int', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_LONG_LONG_INT
+
+/* The size of `unsigned short int', as computed by sizeof. */
+#undef SIZEOF_UNSIGNED_SHORT_INT
+
+/* The size of `void *', as computed by sizeof. */
+#undef SIZEOF_VOID_P
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Version number of package */
+#undef VERSION
+
+/* MAJOR.MINOR part of version */
+#undef VERSION_BRANCH
+
+/* Define to 1 if the X Window System is missing or not being used. */
+#undef X_DISPLAY_MISSING
+
+/* Define to 1 if on AIX 3.
+   System headers sometimes define this.
+   We just want to avoid a redefinition error message.  */
+#ifndef _ALL_SOURCE
+# undef _ALL_SOURCE
+#endif
+
+/* Define to 1 if on MINIX. */
+#undef _MINIX
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+#undef _POSIX_1_SOURCE
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+#undef _POSIX_SOURCE

@@ -1,0 +1,48 @@
+--- admin/acinclude.m4.in.orig	2005-02-23 17:10:48.111742600 -0500
++++ admin/acinclude.m4.in	2005-02-23 17:11:56.567335768 -0500
+@@ -1015,7 +1015,7 @@
+ 			ss_save_LIBS="$LIBS"
+ 			CPPFLAGS="-I$SS_X_INCDIR -I$SS_QT_INCDIR -I$SS_KDE_INCDIR $CPPFLAGS $X_CFLAGS"
+ 			CXXFLAGS="-O2 -Wall $CXXFLAGS"
+-			LIBS="-L$SS_KDE_LIBDIR -L$SS_X_LIBDIR $SS_X_LDFLAGS $SS_X_LIBLINK -L$SS_QT_LIBDIR $LIBS -lsoundserver_idl -lkdecore -l$SS_QTLIB_NAME -Wl,-rpath $SS_KDE_LIBDIR"
++			LIBS="-L$SS_KDE_LIBDIR -L$SS_X_LIBDIR $SS_X_LDFLAGS $SS_X_LIBLINK -L$SS_QT_LIBDIR $LIBS -lsoundserver_idl -lkdecore -l$SS_QTLIB_NAME"
+ 			if test "$SS_LINK_TO_LIBDL" = "yes"; then
+ 				LIBS="$LIBS -ldl";
+ 			fi
+@@ -1864,7 +1864,7 @@
+ 		if test -n "$SS_X_LIBLINK"; then
+ 			LIBS="$LIBS $SS_X_LIBLINK"
+ 		fi
+-		LIBS="-L$SS_KDE_LIBDIR -L$SS_QT_LIBDIR -lkdecore -l$SS_QTLIB_NAME $LIBS -Wl,-rpath $SS_KDE_LIBDIR"
++		LIBS="-L$SS_KDE_LIBDIR -L$SS_QT_LIBDIR -lkdecore -l$SS_QTLIB_NAME $LIBS"
+ 		if test "$SS_LINK_TO_LIBDL" = "yes"; then
+ 			LIBS="$LIBS -ldl";
+ 		fi
+@@ -2016,10 +2016,7 @@
+ 		SS_LDFLAGS=""
+ 	fi
+ 
+-	SS_RPATH="-rpath $SS_QT_LIBDIR -rpath $libdir"
+-	if test -n "$SS_X_LIBDIR"; then
+-		SS_RPATH="$SS_RPATH -rpath $SS_X_LIBDIR"
+-	fi
++	SS_RPATH=
+ 
+ 	SS_LIBDIRS="-L$SS_TOPSRCDIR/src/kvilib/build/ -L$SS_QT_LIBDIR"
+ 	if test -n "$SS_X_LIBDIR"; then
+@@ -2053,7 +2050,6 @@
+ 
+ 	if test "$SS_KDE_REQUESTED" = "yes"; then
+ 		SS_INCDIRS="$SS_INCDIRS -I$SS_KDE_INCDIR"
+-		SS_RPATH="$SS_RPATH -rpath $SS_KDE_LIBDIR"
+ 		SS_LIBDIRS="$SS_LIBDIRS -L$SS_KDE_LIBDIR"
+ 		SS_LIBLINK="-lkdecore -lkdeui -lkparts $SS_LIBLINK"
+ 		AC_DEFINE([COMPILE_KDE_SUPPORT], 1, [define if you want to compile the KDE 2.x support])
+@@ -2067,7 +2063,6 @@
+ 	if test -n "$SS_OTHER_LIBDIRS"; then
+ 		SS_LIBDIRS="$SS_LIBDIRS $SS_OTHER_LIBDIRS"
+ 		$SS_OTHER_LIBDIRS=`echo "$SS_OTHER_LIBDIRS" | sed -e s/-L//g`
+-		SS_RPATH="$SS_RPATH -rpath $SS_OTHER_LIBDIRS"
+ 	fi
+ 
+ 	if test -n "$SS_OTHER_INCDIRS"; then

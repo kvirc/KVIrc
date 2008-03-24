@@ -1,0 +1,94 @@
+#ifndef _OPTW_PROXY_H_
+#define _OPTW_PROXY_H_
+
+//
+//   File : optw_proxy.h
+//   Creation date : Mon Jun 24 2000 21:58:25 by Szymon Stefanek
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+
+#include "kvi_optionswidget.h"
+#include "kvi_tal_listview.h"
+
+
+class KviProxy;
+class KviProxyDataBase;
+
+extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
+
+class KviProxyOptionsListViewItem : public KviTalListViewItem
+{
+public:
+	KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx);
+	~KviProxyOptionsListViewItem();
+public:
+	KviProxy * m_pProxyData;
+};
+
+class QLabel;
+class QLineEdit;
+class KviIpEditor;
+class QCheckBox;
+class KviTalPopupMenu;
+class QComboBox;
+
+#define KVI_OPTIONS_WIDGET_ICON_KviProxyOptionsWidget KVI_SMALLICON_PROXY
+#define KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget __tr2qs_no_lookup("Proxy Hosts")
+#define KVI_OPTIONS_WIDGET_PARENT_KviProxyOptionsWidget KviConnectionOptionsWidget
+#define KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget __tr2qs_no_lookup("connection,servers")
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviProxyOptionsWidget 70000
+
+class KviProxyOptionsWidget : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	KviProxyOptionsWidget(QWidget * parent);
+	~KviProxyOptionsWidget();
+protected:
+	KviTalListView    * m_pListView;
+	QLabel       * m_pProxyLabel;
+	QLineEdit    * m_pProxyEdit;
+	QLabel       * m_pIpLabel;
+	KviIpEditor  * m_pIpEditor;
+	QLabel       * m_pUserLabel;
+	QLineEdit    * m_pUserEdit;
+	QLabel       * m_pPassLabel;
+	QLineEdit    * m_pPassEdit;
+	QLabel       * m_pPortLabel;
+	QLineEdit    * m_pPortEdit;
+	QLabel       * m_pProtocolLabel;
+	QComboBox    * m_pProtocolBox;
+	KviTalPopupMenu   * m_pContextPopup;
+	QCheckBox    * m_pIpV6Check;
+	KviProxyOptionsListViewItem * m_pLastEditedItem;
+private:
+
+	void fillProxyList();
+	void saveLastItem();
+protected slots:
+	void listViewItemSelectionChanged(KviTalListViewItem *it);
+	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void newProxy();
+	void removeCurrent();
+	void ipV6CheckToggled(bool bEnabled);
+public:
+	virtual void commit();
+};
+
+#endif //!_OPTW_PROXY_H_

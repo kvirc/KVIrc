@@ -1,0 +1,387 @@
+23.03.2008: Release 3.4.0 "Virgo"
+###############################################################################
+
+Here we go with another release :)
+
+This one took a very long time but, well, finally it's here.
+
+Notable new features of this release include:
+
+	- improved themeing support
+	- better desktop integration
+	- nicer support for many different IRC servers
+	- a totally revised option layout
+	- basic support for script "addons"
+	- improved help subsystem
+	- new nice statusbar applets
+	- improved scripting engine
+	- improved windows and macosx support
+	- ....
+
+There is also a lot of small new details that you will
+find out by yourself while playing around and finally
+we obviously also have a huge number of bugfixes.
+
+This will be the last stable release of the 3.* series and also the last
+one using Qt3. From now on we'll be working on major version 4 and
+switching completly to Qt4. This release actually contains a preliminary
+Qt4 support and if you feel brave you might test it by passing
+the "hidden" --enable-qt swtich to configure.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+
+
+
+
+###############################################################################
+General notes for the 3.4.0 release of the KVIrc IRC client
+###############################################################################
+
+- Installation
+
+The detailed installation instructions for the unix source distribution
+are in the INSTALL file.
+
+The Windows version needs no installation: you just need to run the
+installer executable and follow the proposed steps.
+
+Other documentation can be found in the doc subdirectory.
+
+- Reporting problems
+
+You are encouraged to "mess" with all the KVIrc options and features,
+and to report bugs and misbehaviours to the author.
+Anyway , before reporting a bug , ask yourself if it can be caused
+by some other part of your system: KVIrc uses many external libraries
+and (as all programs) relies on a correct system behaviour.
+Make sure that the libraries you use are the correct ones (!!!).
+
+When you encounter a problem please read the FAQ that is found
+in the distribution and also take a look at http://www.kvirc.net
+for a more recent version. If nothing helps to solve your problem
+then you might consider issuing a bug report.
+
+The best way to report a bug is to use the bugtrack system at
+http://svn.kvirc.de/kvirc/. Another way is to subscribe
+to the kvirc mailing list (see http://www.kvirc.net for instructions)
+and report the problem there. In both cases your bug report
+should be written in english and should contain most informations
+possible about the problem. If you have encountered a crash
+on an unix platform you should include a gdb backtrace (stack dump).
+The more gdb info you send, the biggest is the possibility for us
+to find the problem and maybe a solution. There is a FAQ entry
+that explains how to produce a suitable gdb backtrace.
+If you can't obtain a gdb backtrace (maybe because you're on
+a platform where gdb is not available) or if the problem
+is not related to a program crash then you should include
+a detailed procedure that leads to the manifestation of your problem.
+You should always include a short description of the platform you
+are running on: the operating system, the cpu (if not an x86),
+the version of the Qt library and the KDE environment (if relevant).
+You should also mention the relevant version of KVIrc and where
+you got it from (cvs, kvirc site, other sites).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################
+# Historic entries : just for the curious
+###############################################################################
+
+
+22.02.2005: Release 3.2.0 "Realia"
+###############################################################################
+
+Here we go again: 3.2.0 is out!
+
+The long road to stability has reached an important milestone. The previous
+releases of the 3.* series were the first ones after a huge codebase rewrite.
+3.2.0 is a result of several months of testing, debugging and improving.
+You will surely find it more stable, fast and user friendly.
+
+The old scripting toolbars have been replaced by the new "action" based
+approach. Besides the scripting flexibility of the actions we have also
+gained "drag & drop" toolbar editing. Just select "Settings -> Toolbars
+-> Customize" from the menu and drag your favorite actions (buttons!) to the
+toolbars you wish. You can obviously create new toolbars on the fly and destroy
+old ones. There is a set of builtin actions and new ones can be added
+by the means of the action editor (another new feature) accessible from
+the Scripting menu. Play with it :)
+
+The UNICODE support has been improved yet more. Now you can set global,
+per-network, per-server and per-window encodings! There is also a new
+set of "smart" encoding engines that first try to decode the text as UTF8
+and in case of failure fallback to your standard encoding.
+
+The translators did a really good (and hard) job: we actually have KVIrc
+translated in 14 languages. I'm really happy about that.
+
+There is a new nice Instant-Messager-like notifier window that pops up when
+a query message arrives and KVIrc is not the active application. Yes,
+you can disable it, but I'm sure you will not. The notifier is also fully
+scriptable and we're working on a simple skinning engine for it.
+
+We also have perl support: now you can use perl from KVS and
+KVS from perl. The engine is still quite essential but with some hacking
+you can obtain really good results from it.
+
+The small IRC-Context-Display has been removed from the toolbar and has been
+replaced by a real status bar that is capable of displaying the same
+informations in a much cleaner way. The IRC-Context-Display is still
+available as an action so you can just drag it back in its place
+and hide the status bar to return to the previous release configuration.
+The statusbar also supports applets that can be added/dragged/removed by the
+means of the mouse: just try the right click.
+
+The scripting engine has been improved and there are several new object
+classes. An interesting new feature here is the $tr() function that allows
+your scripts to be translated with the standard gettext mechanism. The
+widely requested DCOP communication function has been implemented too.
+
+Out-of-the-box mircryption support has been added. The KVIrc's mircryption
+engine supports the standard ECB mode and the new CBC mode
+
+The DCC transfers have been improved and seveal related bugs have been
+fixed. It is also possible to limit the bandwidth for each transfer.
+
+There is a lot of minor new features that will make your IRC sessions funnier
+and more exciting: some of them are described in the ChangeLog file and
+other can be found by exploring the user interface.
+
+The small one-man-project has grown to the level of a small community.
+People from around the world have joined our development efforts and are
+constantly donating their time, eyes and bandwidth in order to make KVIrc
+a really good IRC client. Besides of simply giving you a free (as in freedom!)
+and nice program for chatting, they are giving you the great opportunity to see
+what's behind the scenes: you have the source code for the whole application.
+In practical terms this means more or less 300.000 lines of tested, debugged and
+commented C++ code, several perl scripts, dozens of makefiles and all the means
+that you need to produce a working KVIrc executable on all the supported platforms.
+There is a lot of knowledge (some people call it "technology" because it sells better)
+inside, ready to be acquired by an attentive reader. Don't forget that the freedom of
+building your own executable from the sources gives you the opportunity
+of verifying the source itself: for example you might be interested in verifying
+that KVIrc will not run any malware code on your machine nor will collect
+your private data and sell it to someone while you're happily chatting with a friend.
+We call it freedom, please respect it :)
+
+Our community is contantly growing and this release was possible thanks to the
+contribution of really many people. There are new mighty developers, new addicted
+fans and we have seen a lot of new users. The list of the major contributors
+can be found on the KVIrc site, in the about dialog and all around the sources.
+If you want to meet them please join the #kvirc channel on your favorite
+IRC network or subscribe to our mailing list.
+
+Ah, I was going to forget it: you might have noticed that there is
+a version bump from 3.0.1 to 3.2.0. It's a typo that we arbitrairly
+decided not to fix :)
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+
+
+31.05.2004: Release 3.0.1 "System Virtue"
+###############################################################################
+
+Here we go again: 3.0.1 is out!
+
+3.0.1 is mainly a bugfix release. 3.0.0 was the first public release
+after long time and even if we have tested it for a very long time
+some bugs didn't miss to jump out. 3.0.1 contains the fixes for these
+problems and adds some minor functionality. The detailed list of
+changes is in the ChangeLog file.
+
+The bugs for this release should be reported by using the bugtrack system available
+at http://bugtrack.kvirc.omnikron.net
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+17.04.2004: Release 3.0.0 "Awakening"
+###############################################################################
+
+After a couple of years from the last stable release, here we go again :)
+
+Since the 2.* releases the KVIrc source code has been almost completely
+rewritten. The major differences are summarized in the following list:
+
+	- Multiserver: you can have multiple IRC connections in a single window
+	- IPV6 support, also for DCC transfers
+	- SSL support (also over IPV6)
+	- UNICODE support for the user interface
+	- Better scripting language
+	- A basic Theme Engine
+
+The first major goal of the rewrite was "user-friendliness": you should be
+able to start an IRC session by selecting a server and clicking "Connect Now"
+just after the installation.
+The second major goal was "extreme-flexibility": you can customize the way KVIrc
+looks and the scripting language allows you to implement complex responses
+to IRC generated events.
+
+There is a lot of minor new features that will make your IRC sessions funnier
+and more exciting: some of them are described in the ChangeLog file and
+other can be found by exploring the user interface.
+
+This release was possible thanks to the contribution of many people.
+The list includes but is not limited to: Triskelios, Jan Wagner (spion),
+Juanjo Alvarez (Kane), Andrea Parrella (Yap), Luk De Ketelaere (Balboy),
+Sara D'Alia (Sbrokka), Ted Podgurski (alch3m1st), Ciro Guariglia (d3vah),
+Christoph Thielecke (Crissi), Eva Schaller (Penny), Niklas Luerﬂen (Tequila)
+Olle Hallnas (Crocodile), Francesco Meloni (Princo), Alessandro Rossini (Aronnax),
+Alex Grijalba Martinez (SuD), SuperbepS, Thilo Schulz (Thilo), Dworf,
+Jorma Tuomainen (Wiza), Michele Pinassi (O-Zone), Paolo Sammicheli (XDatap1),
+Ahinu, xevilstar, The Siena Linux Users Group, cyco & samweis,
+The Firenze Linux Users Group, all the subscribers of the KVIrc public mailing
+list and finally all the people from #kvirc on IRCNet and Freenode.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+###############################################################################
+General notes for the 3.0.0 release of the KVIrc IRC client
+###############################################################################
+
+- Installation
+
+The detailed installation instructions for the unix source distribution
+are in the INSTALL file.
+
+The Windows version needs no installation: just unzip the archive in
+a suitable directory (such as C:\Program Files\) and run kvirc.exe from there.
+
+Other documentation can be found in the doc subdirectory.
+
+- Reporting problems
+
+In this release , the changes are so huge that it was not possible
+to test them in all the possible conditions. A 'normal' irc session
+should give you no problems.
+You are encouraged to "mess" with all the KVIrc options and features,
+and to report bugs and misbehaviours to the author.
+Anyway , before reporting a bug , ask yourself if it can be caused
+by some other part of your system: KVIrc uses many external libraries
+and (as all programs) relies on a correct system behaviour.
+Make sure that the libraries you use are the correct ones (!!!).
+
+- Contents of a good bug report:
+
+- A gdb backtrace in case of a segfault.
+	The more gdb info you send , the biggest is the possibility
+	for me to find the problem and maybe a solution.
+- A detailed description (read : procedure) to reproduce the bug
+	Obviously if possible...
+- All informations on your system that you think that may be
+	related to KVIrc and to the problem itself.
+
+To enable the gdb debugging you must compile kvirc with
+the --enable-debug configure option.
+
+
+
+03.01.2003: Release 3.0.0 beta2
+###############################################################################
+
+
+Here we go again!
+Yes , this is still called "beta" , but it should be stable on most machines.
+We're simply still missing some features planned for the final 3.0.0.
+
+Beta2 is being released as a source package.
+Binary packages (for windows and other platforms) might be available soon
+so check out the download section once in a while.
+
+90% of the 2.* branch features have been already re-implemented and there are
+many new things to play with.
+
+There is a preliminary UNICODE port: KVIrc UI starts to "speak" foreign (non Latin1) based languages.
+IRC character set mapping has been implemented (with 8 commonly used codepages for now).
+You should be able to use the Euro sign (ISO-8859-15), write Cyrillic (KOI-8-R , CP-1251 , ISO-8859-5),
+Greek (ISO-8859-7) and even use ideograms with the UTF-8 encoding.
+Character mapping selection is window based thus you should be able to write Cyrillic on #russian,
+Greek on #athens and write plain English on #kvirc in the same IRC session.
+
+Some modules have been removed from the main distribution. This is because the source
+tree has been growing too much: we are removing the non-strictly-necessary features
+and we will release them as separate packages.
+
+On the CVS you can already find the "nap" module that allows chatting (no file sharing yet)
+on OpenNap networks.
+
+The scriptcenter dialog has been splitted in smaller "pieces" and a GUI toolbar editor has been added.
+
+Finally there are tons of bugfixes and improvements: just play with it :)
+
+The bugs for this release should be reported by using the bugtrack system available
+at http://bugtrack.kvirc.omnikron.net.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+###############################################################################
+
+
+
+25.06.2002
+###############################################################################
+
+3.0.0 beta1 (Codename: "Eve's Avatar")
+
+This release is "floating around" since a couple of months...
+Well... finally... here we go :)
+This is not stable yet, but many people use it and we get a really small number of
+critical reports: this means that you probably can use it for your daily chatting.
+
+Beta1 is being released as a source package and a binary distro for the windows platform.
+Binary packages for other platforms might be available soon so check out the download section once in a while.
+
+If you had previous KVIrc installations and you experience problems (missing menus for example)
+try to remove (or better just rename) the old local configuration directory (locaed
+in your home dir probably) and to restart KVIrc.
+
+80% of the 2.* branch features have been already re-implemented and there is a whole
+bunch of new things to play with. One of the greates "ChangeLog" entries is the preliminary
+SSL support that works for IRC and DCC CHAT (both over IPv4 and IPv6).
+CTCP PAGE support has been added and there were some major changes to the variable
+management in the scripting language (added "real" array support and changed the syntax for the dictionaries).
+Those of you that like colors can now enable the icon-like display of emoticons
+and play with icons in the text sent through the server (a new escape code).
+The documentation has been reworked a little bit more, there are some new modules and
+a lot of new options to try.
+
+The windows version is not completely in sync with the linux one thus you might find
+that it lacks some features (mainly advanced scripting language, sound support etc...).
+We hope to have a completely synchronized versions on both platforms for the time
+of 3.0.0 final.
+
+The bugs for this release should be reported by using our new shiny bugtrack system available
+at http://bugtrack.kvirc.omnikron.net.
+
+Well..
+That's all folks!
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+###############################################################################
+

@@ -1,0 +1,112 @@
+#ifndef _MARSHAL_H_
+#define _MARSHAL_H_
+//
+//   File marshal.h
+//   Creation date : Sun Sep 17 2000 10:44:20 by Szymon Stefanek
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+
+#include "kvi_string.h"
+#include "kvi_sockettype.h"
+#include <qobject.h>
+#include <qsocketnotifier.h>
+#include <qtimer.h>
+#include "kvi_inttypes.h"
+
+class KviWindow;
+
+#ifdef COMPILE_SSL_SUPPORT
+	#include "kvi_sslmaster.h"
+#endif
+
+class KviDccMarshal;
+
+class KviDccMarshalOutputContext
+{
+	friend class KviDccMarshal;
+public:
+	KviDccMarshalOutputContext(){};
+	virtual ~KviDccMarshalOutputContext(){};
+protected:
+	virtual KviWindow * dccMarshalOutputWindow() = 0;
+	virtual const char * dccMarshalOutputContextString() = 0;
+};
+
+class KviDccMarshal : public QObject
+{
+	Q_OBJECT
+public:
+	KviDccMarshal(KviDccMarshalOutputContext * ctx);
+	~KviDccMarshal();
+protected:
+	// DCC DESCRIPTOR
+	QString                      m_szIp;                    // Dcc initiator ip address (the one that listens)
+	QString                      m_szPort;                  // Dcc initiator port (the one that listens)
+	// other info
+	bool                         m_bIpV6;                   // Dcc mode
+	kvi_u32_t                    m_uPort;                   // Dcc initiator port
+	bool                         m_bOutgoing;               // true if WE have connected to the remote host (so m_szIp is the remote host ip)
+	QString                      m_szSecondaryIp;           // Ip of the client that has connected to the remote host
+	QString                      m_szSecondaryPort;         // Port of the client that has connected to the remote host
+	// internals
+	kvi_socket_t                 m_fd;        // socket
+	QSocketNotifier            * m_pSn;
+	QTimer                     * m_pTimeoutTimer;
+	bool                         m_bUseTimeout;
+#ifdef COMPILE_SSL_SUPPORT
+	KviSSL                     * m_pSSL;
+	bool                         m_bUseSSL;
+#endif
+	KviDccMarshalOutputContext * m_pOutputContext;
+public:
+	const QString & dccIp() const { return m_szIp; };
+	const QString & dccPort() const { return m_szPort; };
+	const QString & localIp() const { return m_bOutgoing ? m_szSecondaryIp : m_szIp; };
+	const QString & localPort() const { return m_bOutgoing ? m_szSecondaryPort : m_szPort; };
+	const QString & remoteIp() const { return m_bOutgoing ? m_szIp : m_szSecondaryIp; };
+	const QString & remotePort() const { return m_bOutgoing ? m_szPort : m_szSecondaryPort; };
+	int dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL = false);
+	int dccConnect(const char * ip,const char * port,bool bUseTimeout,bool bUseSSL = false);
+	kvi_socket_t releaseSocket();
+#ifdef COMPILE_SSL_SUPPORT
+	KviSSL * releaseSSL();
+#endif
+	void abort();
+private:
+	void reset();
+//#ifdef COMPILE_SSL_SUPPORT
+//	bool trySSLCertificate();
+//#endif
+private slots:
+	void doSSLHandshake(int);
+//	void doListenSSLHandshake();
+	void snActivated(int);
+	void connectionTimedOut();
+	void doListen();
+	void doConnect();
+signals:
+	void startingSSLHandshake();
+	void sslError(const char * msg);
+	void connected();
+	void inProgress();
+	void error(int);
+};
+
+
+#endif //_MARSHAL_H_
