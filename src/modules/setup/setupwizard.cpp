@@ -70,9 +70,9 @@ extern QString szMircServers;
 extern QString szMircIni;
 
 #ifdef COMPILE_ON_WINDOWS
-	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME "KVIrc"
+	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME "KVIrc4"
 #else
-	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME ".kvirc"
+	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME ".kvirc4"
 #endif
 
 KviSetupPage::KviSetupPage(KviSetupWizard * w)

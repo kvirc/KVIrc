@@ -34,9 +34,9 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_ON_WINDOWS
-	#define KVI_HOME_CONFIG_FILE_NAME "kvirc.ini"
+	#define KVI_HOME_CONFIG_FILE_NAME "kvirc4.ini"
 #else
-	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc.rc"
+	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
 #endif
 
 

@@ -8,7 +8,7 @@
 AM_CPPFLAGS = -I$(SS_TOPSRCDIR)/src/kvilib/include/ $(SS_INCDIRS) $(SS_CPPFLAGS)
 
 lib_LTLIBRARIES      = libkvilib.la
-libkvilib_la_LDFLAGS = $(SS_LDFLAGS) -version-info 3:0:0 $(SS_LIBDIRS)
+libkvilib_la_LDFLAGS = $(SS_LDFLAGS) -version-info 4:0:0 $(SS_LIBDIRS)
 libkvilib_la_LIBADD  = $(SS_LIBLINK)
 
 #

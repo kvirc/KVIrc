@@ -8,10 +8,10 @@
 AM_CPPFLAGS = -I$(SS_TOPSRCDIR)/src/kvilib/include/ -I$(SS_TOPSRCDIR)/src/kvirc/include/ \
 $(SS_INCDIRS) $(SS_CPPFLAGS) -DGLOBAL_KVIRC_DIR=\"$(globalkvircdir)\"
 
-kvirc_LDFLAGS = -export-dynamic $(SS_LDFLAGS) $(SS_LIBDIRS) $(SS_RPATH)
-kvirc_LDADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+kvirc4_LDFLAGS = -export-dynamic $(SS_LDFLAGS) $(SS_LIBDIRS) $(SS_RPATH)
+kvirc4_LDADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
-bin_PROGRAMS = kvirc
+bin_PROGRAMS = kvirc4
 
 #
 # Command useful to find out all the sources
@@ -19,7 +19,7 @@ bin_PROGRAMS = kvirc
 # echo $SRC
 #
 
-nodist_kvirc_SOURCES = ../kernel/moc_kvi_action.cpp \
+nodist_kvirc4_SOURCES = ../kernel/moc_kvi_action.cpp \
 ../kernel/moc_kvi_actionmanager.cpp \
 ../kernel/moc_kvi_coreactions.cpp \
 ../kernel/moc_kvi_filetransfer.cpp \
@@ -55,7 +55,7 @@ nodist_kvirc_SOURCES = ../kernel/moc_kvi_action.cpp \
 ../ui/moc_kvi_toolwindows_container.cpp \
 ../ui/moc_kvi_listview.cpp
 
-kvirc_SOURCES = ../kernel/kvi_action.cpp \
+kvirc4_SOURCES = ../kernel/kvi_action.cpp \
 ../kernel/kvi_actionmanager.cpp \
 ../kernel/kvi_app.cpp \
 ../kernel/kvi_coreactions.cpp \

@@ -154,9 +154,9 @@
 #define PACKAGE "kvirc"
 
 /* Version number of package */
-#define VERSION "3.4.0"
+#define VERSION "3.9.0"
 
-#define VERSION_BRANCH "3.4"
+#define VERSION_BRANCH "3.9"
 
 
 /* Define if the system does not provide POSIX.1 features except with this
