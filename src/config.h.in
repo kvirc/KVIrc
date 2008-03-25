@@ -88,7 +88,7 @@
 /* define if you have libgsm and want the GSM code to be compiled */
 #undef COMPILE_USE_GSM
 
-/* define if you want to compile the Qt 4.x support */
+/* actually always defined and will disappear soon */
 #undef COMPILE_USE_QT4
 
 /* define if you trust your memmove() function */

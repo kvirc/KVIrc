@@ -266,7 +266,11 @@ namespace KviQString
 
 	inline KviQCString toLocal8Bit(const QString &s)
 	{
+#ifdef COMPILE_USE_QT4
+		return s.toLocal8Bit();
+#else
 		return s.local8Bit();
+#endif
 	}
 	
 	inline kvi_i64_t toI64(QString &szNumber,bool * bOk)

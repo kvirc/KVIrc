@@ -50,6 +50,7 @@ General notes for the installation of the 3.4.0 release of KVIrc
     (You NEED automake >= 1.5 for autogen.sh to run).
 
     # export QTDIR="your qtlibrary path"
+    You need Qt >= 4.2
 
     eventually:
 
@@ -146,7 +147,7 @@ General notes for the installation of the 3.4.0 release of KVIrc
         You can download the latest version from ftp://ftp.trolltech.com.
         The main Qt www site is http://www.trolltech.com.
         Note for the GPL maniacs: Qt IS GPL.
-        The minimum required version is 3.1.2 (older versions *might* work)
+        The minimum required version is 4.2.0 (older versions *might* work)
         Download and install it by following the rules
         explained in the excellent documentation that comes with the library.
 

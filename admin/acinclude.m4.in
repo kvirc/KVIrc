@@ -16,10 +16,10 @@ AC_DEFUN([AC_SS_INIT_VARIABLES],
 
 	dnl # // Qt Stuff
 
-	SS_QT3_GENERAL_DIR=""
-	SS_QT3_INCDIR=""
-	SS_QT3_LIBDIR=""
-	SS_QT3_MOC=""
+	SS_QT_GENERAL_DIR=""
+	SS_QT_INCDIR=""
+	SS_QT_LIBDIR=""
+	SS_QT_MOC=""
 
 	dnl # // KDE Stuff
 
@@ -567,8 +567,8 @@ AC_DEFUN([AC_SS_MISC_OPTIONS],
 	AC_DEFINE([COMPILE_ONLY_NEW_KVS], 1, [define if you want to use only the new KVS parser])
 
 	AC_MSG_CHECKING([if you want to link to the embedded version of qt])
-	AC_ARG_WITH(qt-embedded,[  --with-qt-embedded      Link to qt-embedded (see INSTALL)],SS_QT3_EMBEDDED="true")
-	if test "$SS_QT3_EMBEDDED" = "true"; then
+	AC_ARG_WITH(qt-embedded,[  --with-qt-embedded      Link to qt-embedded (see INSTALL)],SS_QT_EMBEDDED="true")
+	if test "$SS_QT_EMBEDDED" = "true"; then
 		AC_MSG_RESULT(yes)
 		SS_BUILD_FLAGS="E$SS_BUILD_FLAGS"
 	else
@@ -1103,9 +1103,9 @@ AC_DEFUN([AC_SS_CHECK_ARTS],
 			ss_save_CXXFLAGS="$CXXFLAGS"
 			ss_save_LDFLAGS="$LDFLAGS"
 			ss_save_LIBS="$LIBS"
-			CPPFLAGS="-I$SS_X_INCDIR -I$SS_QT3_INCDIR -I$SS_KDE_INCDIR $CPPFLAGS $X_CFLAGS"
+			CPPFLAGS="-I$SS_X_INCDIR -I$SS_QT_INCDIR -I$SS_KDE_INCDIR $CPPFLAGS $X_CFLAGS"
 			CXXFLAGS="-O2 -Wall $CXXFLAGS"
-			LIBS="-L$SS_KDE_LIBDIR -L$SS_X_LIBDIR $SS_X_LDFLAGS $SS_X_LIBLINK -L$SS_QT3_LIBDIR $LIBS -lsoundserver_idl -lkdecore -l$SS_QTLIB_NAME -Wl,-rpath $SS_KDE_LIBDIR"
+			LIBS="-L$SS_KDE_LIBDIR -L$SS_X_LIBDIR $SS_X_LDFLAGS $SS_X_LIBLINK -L$SS_QT_LIBDIR $LIBS -lsoundserver_idl -lkdecore -l$SS_QTLIB_NAME -Wl,-rpath $SS_KDE_LIBDIR"
 			if test "$SS_LINK_TO_LIBDL" = "yes"; then
 				LIBS="$LIBS -ldl";
 			fi
@@ -1453,90 +1453,22 @@ AC_DEFUN([AC_SS_FIND_QT],
 			AC_HELP_STRING([--disable-qt-check],[Do not check if Qt and X compile]),
 			SS_CHECK_QTX_COMPILE="$withval",SS_CHECK_QTX_COMPILE="NOTGIVEN")
 
-	AC_ARG_ENABLE(qt4,
-			AC_HELP_STRING([--enable-qt4],[Enable WORK IN PROGRESS Qt4 support]),
-			SS_USE_QT4="$withval",SS_USE_QT4="no")
-	
-	if test "$SS_USE_QT4" = "no"; then
+	AC_SS_FIND_QT_GENERAL_DIR
+	AC_SS_FIND_QT_LIBRARY_DIR
+	AC_SS_FIND_QT_INCLUDE_DIR
+	AC_SS_FIND_QT_MOC
 
-		AC_SS_FIND_QT3_NAME
-		AC_SS_FIND_QT3_GENERAL_DIR
-		AC_SS_FIND_QT3_LIBRARY_DIR
-		AC_SS_FIND_QT3_INCLUDE_DIR
-		AC_SS_FIND_QT3_MOC
-		AC_SS_FIND_QT3_MT
-
-	 	if test "$SS_CHECK_QTX_COMPILE" = "NOTGIVEN"; then
-			AC_SS_ENSURE_CAN_COMPILE_X_AND_QT3
-		fi
-	else
-		
-		AC_SS_FIND_QT4_GENERAL_DIR
-		AC_SS_FIND_QT4_LIBRARY_DIR
-		AC_SS_FIND_QT4_INCLUDE_DIR
-		AC_SS_FIND_QT4_MOC
-
-
-	 	if test "$SS_CHECK_QTX_COMPILE" = "NOTGIVEN"; then
-			AC_SS_ENSURE_CAN_COMPILE_X_AND_QT4
-		fi
-
+ 	if test "$SS_CHECK_QTX_COMPILE" = "NOTGIVEN"; then
+		AC_SS_ENSURE_CAN_COMPILE_X_AND_QT
 	fi
 ])
 
-AC_DEFUN([AC_SS_FIND_QT3_NAME],
-[
-	AC_MSG_CHECKING([for the Qt library name])
-	AC_ARG_WITH(qt-name,[  --with-qt-name=NAME     Use NAME instead of \"qt\" as Qt library name],SS_QTLIB_NAME="$withval",SS_QTLIB_NAME="qt")
-	AC_MSG_RESULT("$SS_QTLIB_NAME")
-])
-
-AC_DEFUN([AC_SS_FIND_QT3_GENERAL_DIR],
-[
-	AC_MSG_CHECKING([for the general Qt3.x directory])
-
-	ss_qt_general_test_dirs="/usr/local /usr /usr/X11R6 /usr/lib /opt /opt/kde /kde /usr/kde /usr/build /usr/src /usr/local/lib /"
-	ss_qt_general_test_dirs="$ss_qt_general_test_dirs /usr/local/kde /usr/opt/kde"
-
-	if test -n "$HOME"; then
-		ss_qt_general_test_dirs="$ss_qt_general_test_dirs $HOME $HOME/lib"
-	fi
-
-	if test -n "$QTDIR"; then
-		ss_qt_general_test_dirs="$QTDIR $ss_qt_general_test_dirs"
-	fi
-
-	ss_qt_general_test_path_suffix="qt$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT3_MAJOR_VERSION_REQUIRED$SS_QT3_MINOR_VERSION_REQUIRED$SS_QT3_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT3_MAJOR_VERSION_REQUIRED$SS_QT3_MINOR_VERSION_REQUIRED$SS_QT3_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT3_MAJOR_VERSION_REQUIRED$SS_QT3_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT3_MAJOR_VERSION_REQUIRED$SS_QT3_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT3_MAJOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT3_MAJOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT3_MAJOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix lib"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt ."
-
-	AC_SS_FIND_FILE_PATH_EXT($SS_QT3_GENERAL_FILE_TO_SEARCH,$ss_qt_general_test_dirs,$ss_qt_general_test_path_suffix,SS_QT3_GENERAL_DIR)
-	if test "$SS_QT3_GENERAL_DIR" = "FAILED"; then
-		AC_MSG_RESULT([failed...continuing with normal checks])
-		unset SS_QT3_GENERAL_DIR
-	else
-		AC_MSG_RESULT([Seems to be $SS_QT3_GENERAL_DIR])
-	fi
-])
-
-AC_DEFUN([AC_SS_FIND_QT4_GENERAL_DIR],
+AC_DEFUN([AC_SS_FIND_QT_GENERAL_DIR],
 [
 	AC_MSG_CHECKING([for the general Qt4.x directory])
 
 	ss_qt_general_test_dirs="/usr/local /usr /usr/X11R6 /usr/lib /opt /opt/kde /kde /usr/kde /usr/build /usr/src /usr/local/lib /"
-	ss_qt_general_test_dirs="$ss_qt_general_test_dirs /usr/local/kde /usr/opt/kde /usr/lib/qt4 /usr/local/lib/qt4"
+	ss_qt_general_test_dirs="$ss_qt_general_test_dirs /usr/local/kde /usr/opt/kde /usr/lib/qt4 /usr/local/lib/qt4 /usr/qt/4 /usr/qt4 /usr/qt /opt/qt/4 /opt/qt4 /opt/qt"
 
 	if test -n "$HOME"; then
 		ss_qt_general_test_dirs="$ss_qt_general_test_dirs $HOME $HOME/lib"
@@ -1546,54 +1478,54 @@ AC_DEFUN([AC_SS_FIND_QT4_GENERAL_DIR],
 		ss_qt_general_test_dirs="$QTDIR $ss_qt_general_test_dirs"
 	fi
 
-	ss_qt_general_test_path_suffix="qt$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED.$SS_QT4_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED.$SS_QT4_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT4_MAJOR_VERSION_REQUIRED$SS_QT4_MINOR_VERSION_REQUIRED$SS_QT4_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED.$SS_QT4_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT4_MAJOR_VERSION_REQUIRED$SS_QT4_MINOR_VERSION_REQUIRED$SS_QT4_PATCH_LEVEL_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT4_MAJOR_VERSION_REQUIRED$SS_QT4_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT4_MAJOR_VERSION_REQUIRED$SS_QT4_MINOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT4_MAJOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT4_MAJOR_VERSION_REQUIRED"
-	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT4_MAJOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="qt$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED.$SS_QT_PATCH_LEVEL_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED.$SS_QT_PATCH_LEVEL_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT_MAJOR_VERSION_REQUIRED$SS_QT_MINOR_VERSION_REQUIRED$SS_QT_PATCH_LEVEL_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED.$SS_QT_PATCH_LEVEL_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT_MAJOR_VERSION_REQUIRED$SS_QT_MINOR_VERSION_REQUIRED$SS_QT_PATCH_LEVEL_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT_MAJOR_VERSION_REQUIRED$SS_QT_MINOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT_MAJOR_VERSION_REQUIRED$SS_QT_MINOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt$SS_QT_MAJOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt.$SS_QT_MAJOR_VERSION_REQUIRED"
+	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt-$SS_QT_MAJOR_VERSION_REQUIRED"
 	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix lib"
 	ss_qt_general_test_path_suffix="$ss_qt_general_test_path_suffix qt ."
 
-	AC_SS_FIND_FILE_PATH_EXT($SS_QT4_GENERAL_FILE_TO_SEARCH,$ss_qt_general_test_dirs,$ss_qt_general_test_path_suffix,SS_QT4_GENERAL_DIR)
-	if test "$SS_QT4_GENERAL_DIR" = "FAILED"; then
+	AC_SS_FIND_FILE_PATH_EXT($SS_QT_GENERAL_FILE_TO_SEARCH,$ss_qt_general_test_dirs,$ss_qt_general_test_path_suffix,SS_QT_GENERAL_DIR)
+	if test "$SS_QT_GENERAL_DIR" = "FAILED"; then
 		AC_MSG_RESULT([failed...continuing with normal checks])
-		unset SS_QT4_GENERAL_DIR
+		unset SS_QT_GENERAL_DIR
 	else
-		AC_MSG_RESULT([Seems to be $SS_QT4_GENERAL_DIR])
+		AC_MSG_RESULT([Seems to be $SS_QT_GENERAL_DIR])
 	fi
 ])
 
 
-AC_DEFUN([AC_SS_FIND_QT3_INCLUDE_DIR],
+AC_DEFUN([AC_SS_FIND_QT_INCLUDE_DIR],
 [
-	AC_ARG_WITH(qt-include-dir,[  --with-qt-include-dir   path to the Qt 3.x headers ],SS_QT3_INCDIR="$withval",SS_QT3_INCDIR="NOTGIVEN")
-	if test "$SS_QT3_INCDIR" = "NOTGIVEN"; then
+	AC_ARG_WITH(qt-include-dir,[  --with-qt-include-dir    path to the Qt headers ],SS_QT_INCDIR="$withval",SS_QT_INCDIR="NOTGIVEN")
+	if test "$SS_QT_INCDIR" = "NOTGIVEN"; then
 
-		AC_MSG_CHECKING([for the Qt 3.x header files])
+		AC_MSG_CHECKING([for the Qt 4.x header files])
 
-		ss_qt_include_test_dirs="$SS_QT3_GENERAL_DIR/include /include /usr/include /usr/local/include /usr/qt/include /usr/local/qt/include /usr/X11R6/include /usr/lib/qt/include /usr/lib/qt /usr/include/X11"
+		ss_qt_include_test_dirs="$SS_QT_GENERAL_DIR/include /include /usr/include /usr/local/include /usr/qt/include /usr/include/qt4 /usr/qt4/include /usr/local/qt/include /usr/X11R6/include /usr/lib/qt/include /usr/lib/qt /usr/include/X11"
 		test -n "$QTDIR" && ss_qt_include_test_dirs="$QTDIR/include $QTDIR $ss_qt_include_test_dirs"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt /usr/include/qt3 /usr/local/include/qt /include/qt /usr/X11R6/include/qt /usr/build/qt/include"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt$SS_QT3_MAJOR_VERSION_REQUIRED /usr/include/qt-$SS_QT3_MAJOR_VERSION_REQUIRED /usr/local/include/qt$SS_QT3_MAJOR_VERSION_REQUIRED"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /include/qt$SS_QT3_MAJOR_VERSION_REQUIRED /usr/X11R6/include/qt$SS_QT3_MAJOR_VERSION_REQUIRED"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/X11/qt$SS_QT3_MAJOR_VERSION_REQUIRED /opt/qt /opt/kde/qt"
+		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt /usr/include/qt4 /usr/local/include/qt /include/qt /usr/X11R6/include/qt /usr/build/qt/include"
+		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt$SS_QT_MAJOR_VERSION_REQUIRED /usr/include/qt-$SS_QT_MAJOR_VERSION_REQUIRED /usr/local/include/qt$SS_QT_MAJOR_VERSION_REQUIRED"
+		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /include/qt$SS_QT_MAJOR_VERSION_REQUIRED /usr/X11R6/include/qt$SS_QT_MAJOR_VERSION_REQUIRED"
+		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/X11/qt$SS_QT_MAJOR_VERSION_REQUIRED /opt/qt /opt/kde/qt"
 
-		AC_SS_FIND_FILE_PATH($SS_QT3_INCLUDE_FILE_TO_SEARCH,$ss_qt_include_test_dirs,SS_QT3_INCDIR)
+		AC_SS_FIND_FILE_PATH($SS_QT_INCLUDE_FILE_TO_SEARCH,$ss_qt_include_test_dirs,SS_QT_INCDIR)
 
-		if test "$SS_QT3_INCDIR" = "FAILED"; then
+		if test "$SS_QT_INCDIR" = "FAILED"; then
 			AC_MSG_RESULT([FAILED])
 			AC_SS_SET_REDINK
 			echo "################################################################################"
 			echo "### CONFIGURE ERROR:"
-			echo "### Can not find the qt 3.x header files."
+			echo "### Can not find the qt 4.x header files."
 			echo "### Make sure that qt is correctly installed on your system,"
 			echo "### and the qt version is the one requested by this version of kvirc."
 			echo "### Try to run configure again, this time passing the --with-qt-include-dir"
@@ -1608,99 +1540,46 @@ AC_DEFUN([AC_SS_FIND_QT3_INCLUDE_DIR],
 			AC_SS_SET_NORMALINK
 			AC_MSG_ERROR([This was a fatal one...aborting])
 		else
-			AC_MSG_RESULT([found in $SS_QT3_INCDIR])
+			AC_MSG_RESULT([found in $SS_QT_INCDIR])
 		fi
 
 	else
-		AC_MSG_RESULT([using user supplied path for the Qt 3.x include files $SS_QT3_INCDIR])
-	fi
-])
-
-
-AC_DEFUN([AC_SS_FIND_QT4_INCLUDE_DIR],
-[
-	AC_ARG_WITH(qt4-include-dir,[  --with-qt4-include-dir   path to the Qt 4.x headers ],SS_QT4_INCDIR="$withval",SS_QT4_INCDIR="NOTGIVEN")
-	if test "$SS_QT4_INCDIR" = "NOTGIVEN"; then
-
-		AC_MSG_CHECKING([for the Qt 4.x header files])
-
-		ss_qt_include_test_dirs="$SS_QT4_GENERAL_DIR/include /include /usr/include /usr/local/include /usr/qt/include /usr/include/qt4 /usr/qt4/include /usr/local/qt/include /usr/X11R6/include /usr/lib/qt/include /usr/lib/qt /usr/include/X11"
-		test -n "$QTDIR" && ss_qt_include_test_dirs="$QTDIR/include $QTDIR $ss_qt_include_test_dirs"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt /usr/include/qt4 /usr/local/include/qt /include/qt /usr/X11R6/include/qt /usr/build/qt/include"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/qt$SS_QT4_MAJOR_VERSION_REQUIRED /usr/include/qt-$SS_QT4_MAJOR_VERSION_REQUIRED /usr/local/include/qt$SS_QT4_MAJOR_VERSION_REQUIRED"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /include/qt$SS_QT4_MAJOR_VERSION_REQUIRED /usr/X11R6/include/qt$SS_QT4_MAJOR_VERSION_REQUIRED"
-		ss_qt_include_test_dirs="$ss_qt_include_test_dirs /usr/include/X11/qt$SS_QT4_MAJOR_VERSION_REQUIRED /opt/qt /opt/kde/qt"
-
-		AC_SS_FIND_FILE_PATH($SS_QT4_INCLUDE_FILE_TO_SEARCH,$ss_qt_include_test_dirs,SS_QT4_INCDIR)
-
-		if test "$SS_QT4_INCDIR" = "FAILED"; then
-			AC_MSG_RESULT([FAILED])
-			AC_SS_SET_REDINK
-			echo "################################################################################"
-			echo "### CONFIGURE ERROR:"
-			echo "### Can not find the qt 4.x header files."
-			echo "### Make sure that qt is correctly installed on your system,"
-			echo "### and the qt version is the one requested by this version of kvirc."
-			echo "### Try to run configure again, this time passing the --with-qt4-include-dir"
-			echo "### option (see ./configure --help)."
-			echo "### You may also take a look at the config.log file in this directory,"
-			echo "### that will tell you which check has failed and maybe more about the reason"
-			echo "### of the failure."
-			echo "### If you're feeling that this may be a bug in this configure script"
-			echo "### and want to report this to me , please include your configure script,"
-			echo "### the config.log file as well as the complete configure output."
-			echo "################################################################################"
-			AC_SS_SET_NORMALINK
-			AC_MSG_ERROR([This was a fatal one...aborting])
-		else
-			AC_MSG_RESULT([found in $SS_QT4_INCDIR])
-		fi
-
-	else
-		AC_MSG_RESULT([using user supplied path for the Qt 4.x include files $SS_QT4_INCDIR])
+		AC_MSG_RESULT([using user supplied path for the Qt 4.x include files $SS_QT_INCDIR])
 	fi
 	
-	SS_QT4_INCDIRECTORIES="-I$SS_QT4_INCDIR -I$SS_QT4_INCDIR/Qt/ -I$SS_QT4_INCDIR/QtCore/ -I$SS_QT4_INCDIR/QtGui/";
+	SS_QT_INCDIRECTORIES="-I$SS_QT_INCDIR -I$SS_QT_INCDIR/Qt/ -I$SS_QT_INCDIR/QtCore/ -I$SS_QT_INCDIR/QtGui/";
 ])
 
 
-AC_DEFUN([AC_SS_FIND_QT3_LIBRARY_DIR],
+AC_DEFUN([AC_SS_FIND_QT_LIBRARY_DIR],
 [
-	AC_ARG_WITH(qt-library-dir,[  --with-qt-library-dir   path to the Qt 3.x library ],SS_QT3_LIBDIR="$withval",SS_QT3_LIBDIR="NOTGIVEN")
-	if test "$SS_QT3_LIBDIR" = "NOTGIVEN"; then
-		AC_MSG_CHECKING([for the Qt library])
+	AC_ARG_WITH(qt-library-dir,[  --with-qt-library-dir   path to the Qt libraries ],SS_QT_LIBDIR="$withval",SS_QT_LIBDIR="NOTGIVEN")
+	if test "$SS_QT_LIBDIR" = "NOTGIVEN"; then
+		AC_MSG_CHECKING([for the Qt 4.x libraries])
 
-		ss_qt_library_test_dirs="$SS_QT3_GENERAL_DIR/lib /lib /usr/lib /usr/local/lib /usr/qt/lib /usr/local/qt/lib /usr/X11R6/lib /usr/lib/qt/lib /usr/lib/qt /usr/local/lib/qt/lib"
+		ss_qt_library_test_dirs="$SS_QT_GENERAL_DIR/lib /lib /usr/lib /usr/local/lib /usr/qt/lib /usr/local/qt/lib /usr/X11R6/lib /usr/lib/qt/lib /usr/lib/qt /usr/local/lib/qt/lib"
 		test -n "$QTDIR" && ss_qt_library_test_dirs="$QTDIR/lib $QTDIR $ss_qt_library_test_dirs"
 		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/local/lib/qt /usr/X11R6/lib/qt /usr/build/qt/lib /opt/lib /opt/qt/lib"
+		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/lib/qt4 /usr/local/lib/qt4 /usr/X11R6/lib/qt4"
+		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/build/qt4/lib /opt/qt4/lib"
 
-		ss_qt_libs_to_find="lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.so.$SS_QT3_MAJOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.so"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.$SS_QT3_MAJOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.a"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME.a"
+		ss_qt_libs_to_find="libQtCore.so.$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED.$SS_QT_PATCH_LEVEL_REQUIRED"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT_MAJOR_VERSION_REQUIRED"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT_MAJOR_VERSION_REQUIRED.$SS_QT_MINOR_VERSION_REQUIRED.dylib"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT_MAJOR_VERSION_REQUIRED.dylib"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.dylib"
+		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.a"
 
-		AC_SS_FIND_FILE_PATH($ss_qt_libs_to_find,$ss_qt_library_test_dirs,SS_QT3_LIBDIR)
+		AC_SS_FIND_FILE_PATH($ss_qt_libs_to_find,$ss_qt_library_test_dirs,SS_QT_LIBDIR)
 
-		if test "$SS_QT3_LIBDIR" = "FAILED"; then
+		if test "$SS_QT_LIBDIR" = "FAILED"; then
 			AC_MSG_RESULT([FAILED])
 			AC_SS_SET_REDINK
 			echo "################################################################################"
 			echo "### CONFIGURE ERROR:"
-			echo "### Can not find the qt 3.x library file."
+			echo "### Can not find the qt 4.x library files."
 			echo "### Make sure that qt is correctly installed on your system,"
 			echo "### and the qt version is the one requested by this version of kvirc."
 			echo "### (Usually a greater version is OK too)"
@@ -1716,89 +1595,39 @@ AC_DEFUN([AC_SS_FIND_QT3_LIBRARY_DIR],
 			AC_SS_SET_NORMALINK
 			AC_MSG_ERROR([This was a fatal one...aborting])
 		else
-			AC_MSG_RESULT([found in $SS_QT3_LIBDIR])
+			AC_MSG_RESULT([found in $SS_QT_LIBDIR])
 		fi
 	else
-		AC_MSG_RESULT([using user supplied path for the Qt library $SS_QT3_LIBDIR])
+		AC_MSG_RESULT([using user supplied path for the Qt 4.x library $SS_QT_LIBDIR])
 	fi
 ])
 
 
-AC_DEFUN([AC_SS_FIND_QT4_LIBRARY_DIR],
-[
-	AC_ARG_WITH(qt4-library-dir,[  --with-qt4-library-dir  path to the Qt 4.x library ],SS_QT4_LIBDIR="$withval",SS_QT4_LIBDIR="NOTGIVEN")
-	if test "$SS_QT4_LIBDIR" = "NOTGIVEN"; then
-		AC_MSG_CHECKING([for the Qt 4.x libraries])
-
-		ss_qt_library_test_dirs="$SS_QT4_GENERAL_DIR/lib /lib /usr/lib /usr/local/lib /usr/qt/lib /usr/local/qt/lib /usr/X11R6/lib /usr/lib/qt/lib /usr/lib/qt /usr/local/lib/qt/lib"
-		test -n "$QTDIR" && ss_qt_library_test_dirs="$QTDIR/lib $QTDIR $ss_qt_library_test_dirs"
-		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/local/lib/qt /usr/X11R6/lib/qt /usr/build/qt/lib /opt/lib /opt/qt/lib"
-		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/lib/qt4 /usr/local/lib/qt4 /usr/X11R6/lib/qt4"
-		ss_qt_library_test_dirs="$ss_qt_library_test_dirs /usr/build/qt4/lib /opt/qt4/lib"
-
-		ss_qt_libs_to_find="libQtCore.so.$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED.$SS_QT4_PATCH_LEVEL_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT4_MAJOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT4_MAJOR_VERSION_REQUIRED.$SS_QT4_MINOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.$SS_QT4_MAJOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find libQtCore.so.a"
-
-		AC_SS_FIND_FILE_PATH($ss_qt_libs_to_find,$ss_qt_library_test_dirs,SS_QT4_LIBDIR)
-
-		if test "$SS_QT4_LIBDIR" = "FAILED"; then
-			AC_MSG_RESULT([FAILED])
-			AC_SS_SET_REDINK
-			echo "################################################################################"
-			echo "### CONFIGURE ERROR:"
-			echo "### Can not find the qt 4.x library files."
-			echo "### Make sure that qt is correctly installed on your system,"
-			echo "### and the qt version is the one requested by this version of kvirc."
-			echo "### (Usually a greater version is OK too)"
-			echo "### Try to run configure again, this time passing the --with-qt4-library-dir"
-			echo "### option (see ./configure --help)."
-			echo "### You may also take a look at the config.log file in this directory,"
-			echo "### that will tell you which check has failed and maybe more about the reason"
-			echo "### of the failure."
-			echo "### If you're feeling that this may be a bug in this configure script"
-			echo "### and want to report this to me , please include your configure script,"
-			echo "### the config.log file as well as the complete configure output."
-			echo "################################################################################"
-			AC_SS_SET_NORMALINK
-			AC_MSG_ERROR([This was a fatal one...aborting])
-		else
-			AC_MSG_RESULT([found in $SS_QT4_LIBDIR])
-		fi
-	else
-		AC_MSG_RESULT([using user supplied path for the Qt 4.x library $SS_QT4_LIBDIR])
-	fi
-])
-
-
-AC_DEFUN([AC_SS_FIND_QT3_MOC],
+AC_DEFUN([AC_SS_FIND_QT_MOC],
 [	
-	AC_ARG_WITH(qt-moc,[  --with-qt-moc           filename of the Qt 3.x meta object compiler ],SS_QT3_MOC="$withval",SS_QT3_MOC="NOTGIVEN")
+	AC_ARG_WITH(qt-moc,[  --with-qt-moc           filename of the Qt meta object compiler ],SS_QT_MOC="$withval",SS_QT_MOC="NOTGIVEN")
 
- 	if test "$SS_QT3_MOC" = "NOTGIVEN"; then
-		AC_MSG_CHECKING([for the Qt 3.x moc])
+ 	if test "$SS_QT_MOC" = "NOTGIVEN"; then
+		AC_MSG_CHECKING([for the Qt 4.x moc])
 
- 		unset SS_QT3_MOC
+ 		unset SS_QT_MOC
 		ss_moc_test_dirs="$QTDIR/bin $PATH /usr/bin /bin /usr/local/bin /usr/X11R6/bin /usr/lib/qt/bin /usr/local/qt/bin /usr/X11R6/qt/bin /usr/qt/bin /usr/build/qt/bin"
-		if test -n "$SS_QT3_GENERAL_DIR"; then
-			ss_moc_test_dirs="$SS_QT3_GENERAL_DIR/bin $ss_moc_test_dirs"
+		if test -n "$SS_QT_GENERAL_DIR"; then
+			ss_moc_test_dirs="$SS_QT_GENERAL_DIR/bin $ss_moc_test_dirs"
 		fi
 
-		AC_SS_FIND_FILE_PATH(moc,$ss_moc_test_dirs,SS_QT3_MOC)
+		AC_SS_FIND_FILE_PATH(moc,$ss_moc_test_dirs,SS_QT_MOC)
 
-		if test "$SS_QT3_MOC" = "FAILED"; then
+		if test "$SS_QT_MOC" = "FAILED"; then
 			AC_MSG_RESULT([FAILED])
 			AC_SS_SET_REDINK
 			echo "################################################################################"
 			echo "### CONFIGURE ERROR:"
-			echo "### The Qt meta object compiler can not be found."
+			echo "### The Qt 4.x meta object compiler can not be found."
 			echo "### Make sure that qt is correctly installed on your system, it is on your path,"
 			echo "### and the qt version is the one requested by this version of kvirc."
+			echo "### In particular you should make sure that the moc compiler is NOT the one"
+			echo "### shipped with Qt 3.x."
 			echo "### Try to run configure again, this time passing the --with-qt-moc"
 			echo "### option (see ./configure --help)."
 			echo "### You may also take a look at the config.log file in this directory,"
@@ -1811,94 +1640,18 @@ AC_DEFUN([AC_SS_FIND_QT3_MOC],
 			AC_SS_SET_NORMALINK
 			AC_MSG_ERROR([This was a fatal one...aborting])
 		else
-			SS_QT3_MOC="$SS_QT3_MOC/moc"
-			AC_MSG_RESULT([found as $SS_QT3_MOC])
+			SS_QT_MOC="$SS_QT_MOC/moc"
+			AC_MSG_RESULT([found as $SS_QT_MOC])
 		fi
 	else
-		AC_MSG_RESULT([trusting you: using $SS_QT3_MOC])
+		AC_MSG_RESULT([trusting you: using $SS_QT_MOC])
  	fi
 ])
 
-
-AC_DEFUN([AC_SS_FIND_QT4_MOC],
-[	
-	AC_ARG_WITH(qt4-moc,[  --with-qt4-moc          filename of the Qt 4.x meta object compiler ],SS_QT4_MOC="$withval",SS_QT4_MOC="NOTGIVEN")
-
- 	if test "$SS_QT4_MOC" = "NOTGIVEN"; then
-		AC_MSG_CHECKING([for the Qt 4.x moc])
-
- 		unset SS_QT4_MOC
-		ss_moc_test_dirs="$QTDIR/bin $PATH /usr/bin /bin /usr/local/bin /usr/X11R6/bin /usr/lib/qt/bin /usr/local/qt/bin /usr/X11R6/qt/bin /usr/qt/bin /usr/build/qt/bin"
-		if test -n "$SS_QT4_GENERAL_DIR"; then
-			ss_moc_test_dirs="$SS_QT4_GENERAL_DIR/bin $ss_moc_test_dirs"
-		fi
-
-		AC_SS_FIND_FILE_PATH(moc,$ss_moc_test_dirs,SS_QT4_MOC)
-
-		if test "$SS_QT4_MOC" = "FAILED"; then
-			AC_MSG_RESULT([FAILED])
-			AC_SS_SET_REDINK
-			echo "################################################################################"
-			echo "### CONFIGURE ERROR:"
-			echo "### The Qt 4.x meta object compiler can not be found."
-			echo "### Make sure that qt is correctly installed on your system, it is on your path,"
-			echo "### and the qt version is the one requested by this version of kvirc."
-			echo "### In particular you should make sure that the moc compiler is NOT the one"
-			echo "### shipped with Qt 3.x."
-			echo "### Try to run configure again, this time passing the --with-qt4-moc"
-			echo "### option (see ./configure --help)."
-			echo "### You may also take a look at the config.log file in this directory,"
-			echo "### that will tell you which check has failed and maybe more about the reason"
-			echo "### of the failure."
-			echo "### If you're feeling that this may be a bug in this configure script"
-			echo "### and want to report this to me , please include your configure script,"
-			echo "### the config.log file as well as the complete configure output."
-			echo "################################################################################"
-			AC_SS_SET_NORMALINK
-			AC_MSG_ERROR([This was a fatal one...aborting])
-		else
-			SS_QT4_MOC="$SS_QT4_MOC/moc"
-			AC_MSG_RESULT([found as $SS_QT4_MOC])
-		fi
-	else
-		AC_MSG_RESULT([trusting you: using $SS_QT4_MOC])
- 	fi
-])
-
-
-AC_DEFUN([AC_SS_FIND_QT3_MT],
-[
-	AC_ARG_ENABLE(qt-mt,[  --disable-qt-mt         ignore the threaded version of Qt],SS_QT3_NOMT="$withval",SS_QT3_NOMT="NOTGIVEN")
-
-	AC_MSG_CHECKING([for the multithreaded version of Qt])
-
-	if test "$SS_QT3_NOMT" = "NOTGIVEN"; then
-		ss_qt_libs_to_find="lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so.$SS_QT3_MAJOR_VERSION_REQUIRED"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.so"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.$SS_QT3_PATCH_LEVEL_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.$SS_QT3_MINOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.$SS_QT3_MAJOR_VERSION_REQUIRED.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.dylib"
-		ss_qt_libs_to_find="$ss_qt_libs_to_find lib$SS_QTLIB_NAME-mt.a"
-
-		AC_SS_FIND_FILE_PATH($ss_qt_libs_to_find,$SS_QT3_LIBDIR,SS_QTMTLIBDIR)
-		if test "$SS_QTMTLIBDIR" = "FAILED"; then
-			AC_MSG_RESULT([not found])
-		else
-			AC_MSG_RESULT([seems to be available])
-			SS_QTLIB_NAME="$SS_QTLIB_NAME-mt"
-		fi
-	else
-		AC_MSG_RESULT([disabled by user])
-	fi
-])
-
-AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT3],
+AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT],
 [
 	
-		AC_MSG_CHECKING([if we can compile an X-Qt 3.x application])
+		AC_MSG_CHECKING([if we can compile an X-Qt application])
 		AC_LANG_CPLUSPLUS
 		ss_save_CPPFLAGS="$CPPFLAGS"
 		ss_save_CXXFLAGS="$CXXFLAGS"
@@ -1909,96 +1662,14 @@ AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT3],
 		else
 			CPPFLAGS=""
 		fi
-		CPPFLAGS="$CPPFLAGS -I$SS_QT3_INCDIR"
+		CPPFLAGS="$CPPFLAGS $SS_QT_INCDIRECTORIES"
 		CXXFLAGS="-O2 -Wall $CXXFLAGS"
 		if test -n "$SS_X_LIBDIR"; then
 			LIBS="-L$SS_X_LIBDIR"
 		else
 			LIBS=""
 		fi
-		LIBS="$LIBS -L$SS_QT3_LIBDIR -l$SS_QTLIB_NAME"
-		if test -n "$SS_X_LDFLAGS"; then
-			LIBS="$LIBS $SS_X_LDFLAGS"
-		fi
-		if test -n "$SS_X_LIBLINK"; then
-			LIBS="$LIBS $SS_X_LIBLINK"
-		fi
-		LDFLAGS="-s $LDFLAGS"
-		AC_TRY_LINK([
-			#include <qglobal.h>
-			#if (QT_VERSION < 221)
-				#error "Bad qt version: too old"
-			#endif
-			],[return 0; ],SS_QTX_LINKED_OK="TRUE",SS_QTX_LINKED_OK="FALSE")
-		if test "$SS_QTX_LINKED_OK" = "FALSE"; then
-			AC_MSG_RESULT([FAILED]);
-			AC_SS_SET_REDINK
-			echo "################################################################################"
-			echo "### CONFIGURE ERROR:"
-			echo "### Failed to compile the Qt library test program."
-			echo "### This may be a bad sign :)"
-			echo "### First of all, make sure that qt is correctly installed on your system,"
-			echo "### and the qt version is the one requested by this version of kvirc."
-			echo "### Ensure that you have only one copy of qt visible at a time."
-			echo "### You may also take a look at the config.log file in this directory,"
-			echo "### that will tell you which check has failed and maybe more about the reason"
-			echo "### of the failure."
-			echo "### The CPPFLAGS used were:"
-			for a_flag in $CPPFLAGS ; do
-				echo "###   $a_flag"
-			done
-			echo "### The CXXFLAGS used were:"
-			for a_flag in $CXXFLAGS ; do
-				echo "###   $a_flag"
-			done
-			echo "### The LIBS used were:"
-			for a_flag in $LIBS ; do
-				echo "###   $a_flag"
-			done
-			echo "### The LDFLAGS used were:"
-			for a_flag in $LDFLAGS ; do
-				echo "###   $a_flag"
-			done
-			echo "### If you're sure that qt is correctly installed , you may force configure"
-			echo "### to skip this check and try to compile kvirc anyway."
-			echo "### Try using the --without-qt-check option."
-			echo "### If you're feeling that this may be a bug in this configure script"
-			echo "### and want to report this to me , please include your configure script,"
-			echo "### the config.log file as well as the complete configure output."
-			echo "################################################################################"
-			AC_SS_SET_NORMALINK
-			AC_MSG_ERROR([This was a fatal one...aborting])
-		fi
-		LIBS="$ss_save_LIBS"
-		LDFLAGS="$ss_save_LDFLAGS"
-		CXXFLAGS="$ss_save_CXXFLAGS"
-		CPPFLAGS="$ss_save_CPPFLAGS"
-		AC_MSG_RESULT([success])
-])
-
-
-AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT4],
-[
-	
-		AC_MSG_CHECKING([if we can compile an X-Qt 4.x application])
-		AC_LANG_CPLUSPLUS
-		ss_save_CPPFLAGS="$CPPFLAGS"
-		ss_save_CXXFLAGS="$CXXFLAGS"
-		ss_save_LDFLAGS="$LDFLAGS"
-		ss_save_LIBS="$LIBS"
-		if test -n "$SS_X_INCDIR"; then
-			CPPFLAGS="-I$SS_X_INCDIR"
-		else
-			CPPFLAGS=""
-		fi
-		CPPFLAGS="$CPPFLAGS $SS_QT4_INCDIRECTORIES"
-		CXXFLAGS="-O2 -Wall $CXXFLAGS"
-		if test -n "$SS_X_LIBDIR"; then
-			LIBS="-L$SS_X_LIBDIR"
-		else
-			LIBS=""
-		fi
-		LIBS="$LIBS -L$SS_QT4_LIBDIR -lQtCore"
+		LIBS="$LIBS -L$SS_QT_LIBDIR -lQtCore"
 		if test -n "$SS_X_LDFLAGS"; then
 			LIBS="$LIBS $SS_X_LDFLAGS"
 		fi
@@ -2074,7 +1745,7 @@ AC_DEFUN([AC_SS_FIND_KDE],
 			if test "$SS_KDE_REQUESTED" = "yes"; then
 				AC_SS_FIND_KDE_INCLUDE_DIR
 				if test "$SS_KDE_REQUESTED" = "yes"; then
-					AC_SS_ENSURE_CAN_COMPILE_X_QT3_AND_KDE
+					AC_SS_ENSURE_CAN_COMPILE_X_QT_AND_KDE
 				fi
 			fi
 		fi
@@ -2084,7 +1755,7 @@ AC_DEFUN([AC_SS_FIND_KDE],
 AC_DEFUN([AC_SS_CHECK_IF_KDE_IS_REQUESTED],
 [
  	AC_MSG_CHECKING([if KDE support is requested])
-	if test "$SS_USE_QT4" = "no"; then
+	if test "$SS_USE_QT" = "no"; then
 		SS_KDE_REQUESTED="yes"
 		AC_ARG_WITH(kde-support,[  --without-kde-support      Disable the KDE support even if it is detected ],SS_KDE_REQUESTED="$withval")
 		if test "$SS_KDE_REQUESTED" = "yes"; then
@@ -2224,7 +1895,7 @@ AC_DEFUN([AC_SS_FIND_KDE_LIBRARY_DIR],
 	fi
 ])
 
-AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_QT3_AND_KDE],
+AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_QT_AND_KDE],
 [
 	AC_ARG_WITH(kde-check,[  --without-kde-check     Do not check if Qt,KDE and X compile ],SS_CHECK_QTX_COMPILE="$withval",SS_CHECK_KQTX_COMPILE="yes")
   	if test "$SS_CHECK_KQTX_COMPILE" = "yes"; then
@@ -2239,7 +1910,7 @@ AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_QT3_AND_KDE],
 		else
 			CPPFLAGS=""
 		fi
-		CPPFLAGS="$CPPFLAGS -I$SS_X_INCDIR -I$SS_QT3_INCDIR -I$SS_KDE_INCDIR"
+		CPPFLAGS="$CPPFLAGS -I$SS_X_INCDIR -I$SS_QT_INCDIR -I$SS_KDE_INCDIR"
 		CXXFLAGS="-O2 -Wall $CXXFLAGS"
 		if test -n "$SS_X_LIBDIR"; then
 			LIBS="-L$SS_X_LIBDIR"
@@ -2252,7 +1923,7 @@ AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_QT3_AND_KDE],
 		if test -n "$SS_X_LIBLINK"; then
 			LIBS="$LIBS $SS_X_LIBLINK"
 		fi
-		LIBS="-L$SS_KDE_LIBDIR -L$SS_QT3_LIBDIR -lkdecore -l$SS_QTLIB_NAME $LIBS -Wl,-rpath $SS_KDE_LIBDIR"
+		LIBS="-L$SS_KDE_LIBDIR -L$SS_QT_LIBDIR -lkdecore -l$SS_QTLIB_NAME $LIBS -Wl,-rpath $SS_KDE_LIBDIR"
 		if test "$SS_LINK_TO_LIBDL" = "yes"; then
 			LIBS="$LIBS -ldl";
 		fi
@@ -2393,13 +2064,10 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		SS_CPPFLAGS="$SS_CPPFLAGS $SS_X_CPPFLAGS"
 	fi
 
-	if test "$SS_USE_QT4" = "no"; then
-		SS_INCDIRS="-I$SS_QT3_INCDIR -I$SS_X_INCDIR"
-	else
-		AC_DEFINE([COMPILE_USE_QT4], 1, [define if you want to compile the Qt 4.x support])
-		SS_INCDIRS="$SS_QT4_INCDIRECTORIES -I$SS_X_INCDIR"
-		SS_CPPFLAGS="$SS_CPPFLAGS -DQT3_SUPPORT"
-	fi
+	AC_DEFINE([COMPILE_USE_QT4], 1, [actually always defined and will disappear soon])
+	SS_INCDIRS="$SS_QT_INCDIRECTORIES -I$SS_X_INCDIR"
+	# We actually REQUIRE Qt3 suppport to be compiled in
+	SS_CPPFLAGS="$SS_CPPFLAGS -DQT3_SUPPORT"
 
 	if test -n "$SS_X_INCDIR"; then
 		SS_INCDIRS="$SS_INCDIRS -I$SS_X_INCDIR"
@@ -2411,37 +2079,23 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		SS_LDFLAGS=""
 	fi
 
-	if test "$SS_USE_QT4" = "no"; then
-		SS_RPATH="-rpath $SS_QT3_LIBDIR -rpath $libdir"
-	else
-		SS_RPATH="-rpath $SS_QT4_LIBDIR -rpath $libdir"
-	fi
+	SS_RPATH="-rpath $SS_QT_LIBDIR -rpath $libdir"
 
 	if test -n "$SS_X_LIBDIR"; then
 		SS_RPATH="$SS_RPATH -rpath $SS_X_LIBDIR"
 	fi
 
-	if test "$SS_USE_QT4" = "no"; then
-		SS_LIBDIRS="-L$SS_TOPSRCDIR/src/kvilib/build/ -L$SS_QT3_LIBDIR"
-	else
-		SS_LIBDIRS="-L$SS_TOPSRCDIR/src/kvilib/build/ -L$SS_QT4_LIBDIR"	
-	fi
+	SS_LIBDIRS="-L$SS_TOPSRCDIR/src/kvilib/build/ -L$SS_QT_LIBDIR"	
 
 	if test -n "$SS_X_LIBDIR"; then
 		SS_LIBDIRS="$SS_LIBDIRS -L$SS_X_LIBDIR"
 	fi
 
-	if test "$SS_USE_QT4" = "no"; then
-		SS_LIBLINK="-l$SS_QTLIB_NAME"
-	else
-		#if test -n "SS_LOCAL_ADD_DEBUG_SYMBOLS"; then
-		#	SS_LIBLINK="-lQtCore_debug -lQtGui_debug -lQt3Support_debug"
-		#else
-		
-			SS_LIBLINK="-lQtCore -lQtGui -lQt3Support"
-			
-		#fi
-	fi
+	#if test -n "SS_LOCAL_ADD_DEBUG_SYMBOLS"; then
+	#	SS_LIBLINK="-lQtCore_debug -lQtGui_debug -lQt3Support_debug"
+	#else
+		SS_LIBLINK="-lQtCore -lQtGui -lQt3Support"
+	#fi
 	
 	if test -n "$SS_X_LIBLINK"; then
 		SS_LIBLINK="$SS_LIBLINK $SS_X_LIBLINK"
@@ -2461,10 +2115,10 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	fi
 
 	if test "$SS_LOCAL_8BIT" = "true"; then
-		SS_CPPFLAGS="$SS_CPPFLAGS -DQT3_NO_ASCII_CAST -DQT3_NO_COMPAT"
+		SS_CPPFLAGS="$SS_CPPFLAGS -DQT_NO_ASCII_CAST -DQT_NO_COMPAT"
 	fi
 
-	if test "$SS_QT3_EMBEDDED" = "true"; then
+	if test "$SS_QT_EMBEDDED" = "true"; then
 		SS_CPPFLAGS="$SS_CPPFLAGS -DQWS"
 	fi
 
@@ -2509,13 +2163,7 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	AC_SUBST(SS_LIBDIRS)
 	AC_SUBST(SS_LIBLINK)
 	
-	if test "$SS_USE_QT4" = "no"; then
-		SS_QT_MOC=$SS_QT3_MOC
-		SS_QT_MOC_FLAGS=""
-	else
-		SS_QT_MOC=$SS_QT4_MOC
-		SS_QT_MOC_FLAGS="-DCOMPILE_USE_QT4"
-	fi
+	SS_QT_MOC_FLAGS="-DCOMPILE_USE_QT4"
 	
 	AC_SUBST(SS_QT_MOC)
 	AC_SUBST(SS_QT_MOC_FLAGS)
