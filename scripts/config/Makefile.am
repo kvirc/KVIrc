@@ -1,6 +1,6 @@
 ###############################################################################
 # KVirc Makefile 08.12.98 Szymon Stefanek
 ###############################################################################
-bin_SCRIPTS = kvirc-config4
+bin_SCRIPTS = kvirc4-config
 
-EXTRA_DIST= kvirc-config4.in
+EXTRA_DIST= kvirc4-config.in
