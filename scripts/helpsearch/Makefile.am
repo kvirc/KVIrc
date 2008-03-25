@@ -1,6 +1,6 @@
 ###############################################################################
 # KVirc Makefile 08.12.98 Szymon Stefanek
 ###############################################################################
-bin_SCRIPTS = kvi_search_help
+bin_SCRIPTS = kvi4_search_help
 
 EXTRA_DIST= $(bin_SCRIPTS)
