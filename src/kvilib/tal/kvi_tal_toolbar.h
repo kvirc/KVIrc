@@ -27,11 +27,7 @@
 #ifdef COMPILE_KDE_SUPPORT
 	#include "kvi_tal_toolbar_kde.h"
 #else
-	#ifdef COMPILE_USE_QT4
-		#include "kvi_tal_toolbar_qt4.h"
-	#else
-		#include "kvi_tal_toolbar_qt3.h"
-	#endif
+	#include "kvi_tal_toolbar_qt.h"
 #endif
 
 #endif //_KVI_TAL_TOOLBAR_H_

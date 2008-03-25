@@ -1,11 +1,11 @@
 #ifndef _KVI_TAL_TOOLBAR_QT_H_
 #define _KVI_TAL_TOOLBAR_QT_H_
 //
-//   File : kvi_tal_toolbar_qt.h
-//   Creation date : Mon Aug 13 05:05:50 2001 GMT by Szymon Stefanek
+//   File : kvi_tal_toolbar_qt4.h
+//   Creation date : Wed Feb 1 2007 04:11:11 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,10 +22,13 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qtoolbar.h>
-#include <qmainwindow.h>
-
+#include "kvi_settings.h"
 #include "kvi_tal_toolbardocktype.h"
+
+#include <QToolBar>
+#include <QMainWindow>
+#include <QBoxLayout>
+
 
 class KVILIB_API KviTalToolBar : public QToolBar
 {
@@ -34,6 +37,11 @@ public:
 	KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
 	KviTalToolBar(QMainWindow *w,const char * name=0);
 	~KviTalToolBar();
+public:
+	QBoxLayout * boxLayout();
+	void setBoxLayout(QBoxLayout *l);
+	bool usesBigPixmaps();
+	void setUsesBigPixmaps(bool b);
 };
 
 #endif //_KVI_TAL_TOOLBAR_QT_H_

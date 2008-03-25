@@ -27,11 +27,8 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <QDialog>
-#else
-	#include <qdialog.h>
-#endif
+#include <QDialog>
+
 
 class QShowEvent;
 class QPushButton;

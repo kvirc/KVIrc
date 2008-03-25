@@ -23,7 +23,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qmainwindow.h>
+#include <QMainWindow>
 
 class KVILIB_API KviTalMainWindow : public QMainWindow
 {
@@ -31,6 +31,9 @@ class KVILIB_API KviTalMainWindow : public QMainWindow
 public:
 	KviTalMainWindow(QWidget * par,const char * nam);
 	~KviTalMainWindow();
+public:
+	bool usesBigPixmaps();
+	void setUsesBigPixmaps(bool b);
 };
 
 #endif // _KVI_TAL_MAINWINDOW_QT_H_

@@ -28,11 +28,7 @@
 #ifdef COMPILE_KDE_SUPPORT
 	#include "kvi_tal_mainwindow_kde.h"
 #else
-	#ifdef COMPILE_USE_QT4
-		#include "kvi_tal_mainwindow_qt4.h"
-	#else
-		#include "kvi_tal_mainwindow_qt3.h"
-	#endif
+	#include "kvi_tal_mainwindow_qt.h"
 #endif
 
 #endif // _KVI_TAL_MAINWINDOW_H_

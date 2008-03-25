@@ -35,31 +35,23 @@
 	#include "kvi_tal_mainwindow_kde.moc"
 
 #else
+	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
+	: QMainWindow(par,nam)
+	{
+	}
 
-	#ifdef COMPILE_USE_QT4
-		KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-		: QMainWindow(par,nam)
-		{
-		}
+	bool KviTalMainWindow::usesBigPixmaps()
+	{
+		return (iconSize().width() > 40);
+	}
+	
+	void KviTalMainWindow::setUsesBigPixmaps(bool b)
+	{
+		if(b)setIconSize(QSize(48,48));
+		else setIconSize(QSize(24,24));
+	}
 
-		bool KviTalMainWindow::usesBigPixmaps()
-		{
-			return (iconSize().width() > 40);
-		}
-		
-		void KviTalMainWindow::setUsesBigPixmaps(bool b)
-		{
-			if(b)setIconSize(QSize(48,48));
-			else setIconSize(QSize(24,24));
-		}
-		#include "kvi_tal_mainwindow_qt4.moc"
-	#else
-		KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-		: QMainWindow(par,nam)
-		{
-		}
-		#include "kvi_tal_mainwindow_qt3.moc"
-	#endif
+	#include "kvi_tal_mainwindow_qt.moc"
 
 #endif
 

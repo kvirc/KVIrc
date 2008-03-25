@@ -23,8 +23,7 @@
 //
 
 #include "kvi_settings.h"
-//#define COMPILE_USE_QT4
-#ifdef COMPILE_USE_QT4
+
 /*
 	#define QT_TOOLBARDOCK_TYPE Qt::Dock
 	#define QT_DOCK_TOP Qt::DockTop
@@ -45,27 +44,5 @@
 	#define QT_DOCK_MINIMIZED Qt::TopToolBarArea
 	#define QT_DOCK_TORNOFF Qt::TopToolBarArea
 	#define QT_DOCK_UNMANAGED Qt::TopToolBarArea
-
-#else
-	#if QT_VERSION >= 300
-		#define QT_TOOLBARDOCK_TYPE Qt::Dock
-		#define QT_DOCK_TOP Qt::DockTop
-		#define QT_DOCK_LEFT Qt::DockLeft
-		#define QT_DOCK_RIGHT Qt::DockRight
-		#define QT_DOCK_BOTTOM Qt::DockBottom
-		#define QT_DOCK_MINIMIZED Qt::DockMinimized
-		#define QT_DOCK_TORNOFF Qt::DockTornOff
-		#define QT_DOCK_UNMANAGED Qt::DockUnmanaged
-	#else
-		#define QT_TOOLBARDOCK_TYPE QMainWindow::ToolBarDock
-		#define QT_DOCK_TOP QMainWindow::Top
-		#define QT_DOCK_LEFT QMainWindow::Left
-		#define QT_DOCK_RIGHT QMainWindow::Right
-		#define QT_DOCK_BOTTOM QMainWindow::Bottom
-		#define QT_DOCK_MINIMIZED QMainWindow::Minimized
-		#define QT_DOCK_TORNOFF QMainWindow::TornOff
-		#define QT_DOCK_UNMANAGED QMainWindow::Unmanaged
-	#endif
-#endif
 
 #endif //_KVI_TAL_TOOLBARDOCKTYPE_H_

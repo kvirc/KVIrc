@@ -28,23 +28,13 @@
 #include "kvi_pointerlist.h"
 #include "kvi_locale.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <QShowEvent>
-	#include <QLabel>
-	#include <QPushButton>
-	#include <QGridLayout>
-	#include <QFrame>
-	#include <QStackedWidget>
-	#include <QPalette>
-#else
-	#include <qlabel.h>
-	#include <qpushbutton.h>
-	#include <qlayout.h>
-	#include <qevent.h>
-	#include <qframe.h>
-	#include <qwidgetstack.h>
-	#include <qpalette.h>
-#endif
+#include <QShowEvent>
+#include <QLabel>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QFrame>
+#include <QStackedWidget>
+#include <QPalette>
 
 
 class KviTalWizardPageData
@@ -82,18 +72,13 @@ public:
 	QWidget                          * pNextSpacer;
 	QPushButton                      * pFinishButton;
 	QWidget                          * pFinishSpacer;
-#ifdef COMPILE_USE_QT4
 	QStackedWidget                   * pWidgetStack;
-#else
-	QWidgetStack                     * pWidgetStack;
-#endif
 public:
 	KviTalWizardPageData * findPage(QWidget * pWidget)
 	{
 		for(KviTalWizardPageData * pData = pPageList->first();pData;pData = pPageList->next())
 		{
-			if(pData->pWidget == pWidget)
-				return pData;
+			if(pData->pWidget == pWidget) return pData;
 		}
 		return NULL;
 	}
@@ -103,8 +88,7 @@ public:
 		KviTalWizardPageData * pData;
 		for(pData = pPageList->first();pData;pData = pPageList->next())
 		{
-			if(pData->bEnabled)
-				return pData;
+			if(pData->bEnabled) return pData;
 		}
 		return NULL;
 	}
@@ -114,38 +98,31 @@ public:
 		KviTalWizardPageData * pData;
 		for(pData = pPageList->last();pData;pData = pPageList->prev())
 		{
-			if(pData->bEnabled)
-				return pData;
+			if(pData->bEnabled) return pData;
 		}
 		return NULL;
 	}
 
 	KviTalWizardPageData * findNextEnabledPage(QWidget * pReference)
 	{
-		if(!pReference)
-			return findFirstEnabledPage();
+		if(!pReference) return findFirstEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
-		if(!pData)
-			return NULL;
+		if(!pData) return NULL;
 		for(pData = pPageList->next();pData;pData = pPageList->next())
 		{
-			if(pData->bEnabled)
-				return pData;
+			if(pData->bEnabled) return pData;
 		}
 		return NULL;
 	}
 
 	KviTalWizardPageData * findPrevEnabledPage(QWidget * pReference)
 	{
-		if(!pReference)
-			return findLastEnabledPage();
+		if(!pReference) return findLastEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
-		if(!pData)
-			return NULL;
+		if(!pData) return NULL;
 		for(pData = pPageList->prev();pData;pData = pPageList->prev())
 		{
-			if(pData->bEnabled)
-				return pData;
+			if(pData->bEnabled) return pData;
 		}
 		return NULL;
 	}
@@ -177,50 +154,26 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pLayout = new QGridLayout(this);
 
 	m_p->pTitleLabel = new QLabel(this);
-#ifdef COMPILE_USE_QT4
 	m_p->pLayout->addWidget(m_p->pTitleLabel,0,0,1,3);
-#else
-	m_p->pLayout->addMultiCellWidget(m_p->pTitleLabel,0,0,0,3);
-#endif
+
 	m_p->pStepsLabel = new QLabel(this);
 	m_p->pStepsLabel->setMinimumWidth(80);
 	m_p->pStepsLabel->setAlignment(Qt::AlignRight);
-#ifdef COMPILE_USE_QT4
 	m_p->pLayout->addWidget(m_p->pStepsLabel,0,4,1,3);
-#else
-	m_p->pLayout->addMultiCellWidget(m_p->pStepsLabel,0,0,4,6);
-#endif
 
 	QFrame * f1 = new QFrame(this);
 	f1->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-#ifdef COMPILE_USE_QT4
 	m_p->pLayout->addWidget(f1,1,0,1,7);
-#else
-	m_p->pLayout->addMultiCellWidget(f1,1,1,0,6);
-#endif
 
-#ifdef COMPILE_USE_QT4
 	m_p->pWidgetStack = new QStackedWidget(this);
 	m_p->pLayout->addWidget(m_p->pWidgetStack,2,0,1,7);
-#else
-	m_p->pWidgetStack = new QWidgetStack(this);
-	m_p->pLayout->addMultiCellWidget(m_p->pWidgetStack,2,2,0,6);
-#endif
 
 	QFrame * f2 = new QFrame(this);
 	f2->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-#ifdef COMPILE_USE_QT4
 	m_p->pLayout->addWidget(f2,3,0,1,7);
-#else
-	m_p->pLayout->addMultiCellWidget(f2,3,3,0,6);
-#endif
 
 	KviTalHBox * pButtonBox = new KviTalHBox(this);
-#ifdef COMPILE_USE_QT4
 	m_p->pLayout->addWidget(pButtonBox,4,0,1,7);
-#else
-	m_p->pLayout->addMultiCellWidget(pButtonBox,4,4,0,6);
-#endif
 
 	pButtonBox->setMargin(0);
 	pButtonBox->setSpacing(0);
@@ -388,27 +341,19 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		bCancelEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableCancel);
 		bFinishEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableFinish);
 		bHelpEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableHelp);
-#ifdef COMPILE_USE_QT4
 		m_p->pWidgetStack->setCurrentWidget(pData->pWidget);
-#else
-		m_p->pWidgetStack->raiseWidget(pData->pWidget);
-#endif
+
 		szTitle = "<b>";
 		szTitle += pData->szTitle;
 		szTitle += "</b>";
 		QPalette pal = m_p->pStepsLabel->palette();
-#ifdef COMPILE_USE_QT4
 		QColor clrWin = pal.color(QPalette::Normal,QPalette::Window);
 		QColor clrTxt = pal.color(QPalette::Normal,QPalette::WindowText);
-#else
-		QColor clrWin = pal.color(QPalette::Normal,QColorGroup::Foreground);
-		QColor clrTxt = pal.color(QPalette::Normal,QColorGroup::Background);
-#endif
 		QColor clrMid = qRgb(
-							(clrWin.red() + clrTxt.red()) / 2,
-							(clrWin.green() + clrTxt.green()) / 2,
-							(clrWin.blue() + clrTxt.blue()) / 2
-						);
+				(clrWin.red() + clrTxt.red()) / 2,
+				(clrWin.green() + clrTxt.green()) / 2,
+				(clrWin.blue() + clrTxt.blue()) / 2
+			);
 		
 		szSteps = "<nobr><font color=\"";
 		szSteps += clrMid.name();
@@ -581,4 +526,3 @@ QPushButton * KviTalWizard::backButton()
 {
 	return m_p->pBackButton;
 }
-
