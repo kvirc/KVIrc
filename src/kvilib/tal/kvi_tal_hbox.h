@@ -27,10 +27,22 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_hbox_qt4.h"
-#else
-	#include "kvi_tal_hbox_qt3.h"
-#endif
+#include <QWidget>
+#include <QHBoxLayout>
+
+class KVILIB_API KviTalHBox : public QWidget
+{
+	Q_OBJECT
+public:
+	KviTalHBox(QWidget * pParent,char* name=0);
+	virtual ~KviTalHBox() {};
+	void setStretchFactor(QWidget * child,int stretch);
+	void setSpacing(int spacing);
+	void setMargin(int margin);
+protected:
+	virtual void childEvent(QChildEvent * e);
+private:
+	QHBoxLayout * m_pLayout;
+};
 
 #endif // _KVI_TAL_HBOX_H_

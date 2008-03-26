@@ -4,7 +4,7 @@
 //   Creation date : Sat Oct  6 02:08:24 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,13 +22,9 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-
 #include "setupwizard.h"
 
-#include <qstring.h>
-#include <qfile.h>
-
+#include "kvi_module.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
 #include "kvi_app.h"
@@ -37,6 +33,10 @@
 #include "kvi_window.h"
 #include "kvi_theme.h"
 #include "kvi_ircserverdb.h"
+
+#include <QString>
+#include <QFile>
+
 
 // this will be choosen during the setup process
 QString g_szChoosenIncomingDirectory;
@@ -148,8 +148,8 @@ static bool setup_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Setup wizard",
-	"1.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>" ,
+	"4.0.0",
+	"Szymon Stefanek <pragma at kvirc dot net>",
 	"First-time-run setup wizard",
 	setup_module_init ,
 	setup_module_can_unload,

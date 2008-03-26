@@ -1,12 +1,13 @@
 #ifndef _KVI_TAL_FILEDIALOG_QT_H_
 #define _KVI_TAL_FILEDIALOG_QT_H_
 
+//=============================================================================
 //
-//   File : kvi_tal_filedialog_qt.h
-//   Creation date : Thu Aug 11 2003 04:43:58 by Szymon Stefanek
+//   File : kvi_tal_filedialog_qt4.h
+//   Creation date : Fri 19 Jan 2007 02:17:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,8 +23,9 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
-#include <qfiledialog.h>
+#include <QFileDialog>
 
 class KVILIB_API KviTalFileDialog : public QFileDialog
 {
@@ -38,7 +40,7 @@ public:
 	void setDirectory(const QString &szDirectory);
 
 	static QString getExistingDirectoryPath(const QString &dir = QString::null,const QString &caption = QString::null,QWidget *parent = 0)
-		{ return getExistingDirectory(dir,parent,0 /* name */,caption); };
+		{ return getExistingDirectory(parent,caption,dir); };
 };
 
 #endif // _KVI_TAL_FILEDIALOG_QT_H_

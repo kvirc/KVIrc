@@ -27,14 +27,10 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_filedialog_qt4.h"
+#ifdef COMPILE_KDE_SUPPORT
+	#include "kvi_tal_filedialog_kde.h"
 #else
-	#ifdef COMPILE_KDE_SUPPORT
-		#include "kvi_tal_filedialog_kde.h"
-	#else
-		#include "kvi_tal_filedialog_qt.h"
-	#endif
+	#include "kvi_tal_filedialog_qt.h"
 #endif
 
 #endif // _KVI_TAL_FILEDIALOG_H_

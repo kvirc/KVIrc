@@ -183,22 +183,15 @@ headers_HEADERS = \
 	../tal/kvi_tal_filedialog.h \
 	../tal/kvi_tal_filedialog_kde.h \
 	../tal/kvi_tal_filedialog_qt.h \
-	../tal/kvi_tal_filedialog_qt4.h \
 	../tal/kvi_tal_grid.h \
-	../tal/kvi_tal_grid_qt3.h \
-	../tal/kvi_tal_grid_qt4.h \
 	../tal/kvi_tal_groupbox.h \
 	../tal/kvi_tal_groupbox_qt3.h \
 	../tal/kvi_tal_groupbox_qt4.h \
 	../tal/kvi_tal_hbox.h \
-	../tal/kvi_tal_hbox_qt3.h \
-	../tal/kvi_tal_hbox_qt4.h \
 	../tal/kvi_tal_iconview.h \
 	../tal/kvi_tal_iconview_qt3.h \
 	../tal/kvi_tal_iconview_qt4.h \
 	../tal/kvi_tal_listbox.h \
-	../tal/kvi_tal_listbox_qt3.h \
-	../tal/kvi_tal_listbox_qt4.h \
 	../tal/kvi_tal_listview.h \
 	../tal/kvi_tal_listview_qt3.h \
 	../tal/kvi_tal_listview_qt4.h \
@@ -224,8 +217,6 @@ headers_HEADERS = \
 	../tal/kvi_tal_toolbardocktype.h \
 	../tal/kvi_tal_tooltip.h \
 	../tal/kvi_tal_vbox.h \
-	../tal/kvi_tal_vbox_qt3.h \
-	../tal/kvi_tal_vbox_qt4.h \
 	../tal/kvi_tal_widgetstack.h \
 	../tal/kvi_tal_widgetstack_qt3.h \
 	../tal/kvi_tal_widgetstack_qt4.h \
@@ -276,21 +267,16 @@ headers_HEADERS = \
 ../tal/kvi_tal_menubar.cpp: ../tal/kvi_tal_menubar_qt.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_kde.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt.moc
-../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt4.moc
-../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid_qt3.moc
-../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid_qt4.moc
+../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid.moc
 ../tal/kvi_tal_groupbox.cpp: ../tal/kvi_tal_groupbox_qt3.moc
 ../tal/kvi_tal_groupbox.cpp: ../tal/kvi_tal_groupbox_qt4.moc
-../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox_qt3.moc
-../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox_qt4.moc
-../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox_qt3.moc
-../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox_qt4.moc
+../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox.moc
+../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox.moc
 ../tal/kvi_tal_popupmenu.cpp: ../tal/kvi_tal_popupmenu_qt3.moc
 ../tal/kvi_tal_popupmenu.cpp: ../tal/kvi_tal_popupmenu_qt4.moc
 ../tal/kvi_tal_listview.cpp: ../tal/kvi_tal_listview_qt3.moc
 ../tal/kvi_tal_listview.cpp: ../tal/kvi_tal_listview_qt4.moc
-../tal/kvi_tal_listbox.cpp: ../tal/kvi_tal_listbox_qt3.moc
-../tal/kvi_tal_listbox.cpp: ../tal/kvi_tal_listbox_qt4.moc
+../tal/kvi_tal_listbox.cpp: ../tal/kvi_tal_listbox.moc
 ../tal/kvi_tal_iconview.cpp: ../tal/kvi_tal_iconview_qt3.moc
 ../tal/kvi_tal_iconview.cpp: ../tal/kvi_tal_iconview_qt4.moc
 ../tal/kvi_tal_scrollview.cpp: ../tal/kvi_tal_scrollview.moc

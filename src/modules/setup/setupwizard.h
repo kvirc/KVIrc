@@ -24,28 +24,30 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+#include "kvi_string.h"
+#include "kvi_selectors.h"
 
 #include <kvi_tal_wizard.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qlineedit.h>
-#ifdef COMPILE_USE_QT4
-#include <q3buttongroup.h>
-#define KviTalVButtonGroup Q3VButtonGroup
-#else
- #include <qvbuttongroup.h>
-#define KviTalVButtonGroup QVButtonGroup
-#endif
-#include <qradiobutton.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
 
-#include "kvi_settings.h"
-#include "kvi_string.h"
-#include "kvi_selectors.h"
+#include <QLabel>
+#include <QPixmap>
+#include <QLineEdit>
+#include <QRadioButton>
+#include <QComboBox>
+#include <QCheckBox>
+/*
+#include <Q3ButtonGroup>
+#define KviTalVButtonGroup Q3VButtonGroup
+*/
+/* FIXME: Qt4 */
+#include <QGroupBox>
+#define KviTalVButtonGroup QGroupBox
+
+
 
 class KviSetupWizard;
 
@@ -59,7 +61,6 @@ public:
 	KviTalVBox * m_pVBox;
 	QLabel * m_pPixmapLabel;
 	QLabel * m_pTextLabel;
-   
 };
 
 

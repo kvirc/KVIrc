@@ -27,10 +27,16 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_grid_qt4.h"
-#else
-	#include "kvi_tal_grid_qt3.h"
-#endif
+#include <q3grid.h>
+/* FIXME: #include <Q3Grid> */
+
+class KVILIB_API KviTalGrid : public Q3Grid
+{
+	Q_OBJECT
+public:
+	KviTalGrid(int n,Qt::Orientation orient,QWidget * pParent = 0)
+	: Q3Grid(n,orient,pParent) {};
+	~KviTalGrid() {};
+};
 
 #endif // _KVI_TAL_GRID_H_

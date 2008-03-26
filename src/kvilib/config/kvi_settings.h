@@ -96,7 +96,7 @@
 #define KVI_BUILD_DATE BUILD_DATE
 #define KVI_BUILD_FLAGS BUILD_FLAGS
 
-#define KVI_RELEASE_NAME "Virgo"
+#define KVI_RELEASE_NAME "Insomnia"
 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE

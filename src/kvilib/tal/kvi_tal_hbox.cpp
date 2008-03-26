@@ -25,8 +25,46 @@
 #define __KVILIB__
 #include "kvi_tal_hbox.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_hbox_qt4.moc"
-#else
-	#include "kvi_tal_hbox_qt3.moc"
-#endif
+#include <QChildEvent>
+
+KviTalHBox::KviTalHBox(QWidget * pParent,char* name)
+: QWidget(pParent)
+{
+	this->setObjectName(name);
+
+	m_pLayout = new QHBoxLayout();
+	this->setLayout(m_pLayout);
+}
+
+void KviTalHBox::childEvent(QChildEvent * e)
+{
+	if(!e->child()->isWidgetType()) return;
+	if(e->child()->parent() != this) return;
+
+	switch(e->type())
+	{
+		case QEvent::ChildAdded:
+			m_pLayout->addWidget((QWidget *)(e->child()));
+			break;
+		case QEvent::ChildRemoved:
+			m_pLayout->removeWidget((QWidget *)(e->child()));
+			break;
+	}
+}
+
+void KviTalHBox::setStretchFactor(QWidget * child,int stretch)
+{
+	m_pLayout->setStretchFactor(child,stretch);
+}
+
+void KviTalHBox::setSpacing(int spacing)
+{
+	m_pLayout->setSpacing(spacing);
+}
+
+void KviTalHBox::setMargin(int margin)
+{
+	m_pLayout->setContentsMargins(margin,margin,margin,margin);
+}
+
+#include "kvi_tal_hbox.moc"

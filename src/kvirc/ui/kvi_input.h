@@ -26,14 +26,16 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_pointerlist.h"
+#include "kvi_string.h"
 
+#include "kvi_tal_hbox.h"
 
 #include <qwidget.h>
-#include "kvi_tal_hbox.h"
 #include <qpixmap.h>
-#include "kvi_pointerlist.h"
+#include <QFrame>
 
-#include "kvi_string.h"
+
 
 //#include <qdialog.h>
 #include <qtoolbutton.h>

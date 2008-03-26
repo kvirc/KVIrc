@@ -24,7 +24,7 @@
 //
 
 #include <kfiledialog.h>
-#include <qfiledialog.h>
+#include <QFileDialog>
 
 class KVILIB_API KviTalFileDialog : public KFileDialog
 {

@@ -4,7 +4,7 @@
 //   Creation date : Sat Oct  6 02:06:53 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,13 +38,15 @@ bool g_bFoundMirc;
 #include "kvi_config.h"
 
 #include <kvi_tal_textedit.h>
-#include <qmessagebox.h>
-#include <qdir.h>
-#include <qpushbutton.h>
-#include <qvalidator.h>
-#include <qtextcodec.h>
-#include <qlayout.h>
-#include "kvi_tal_hbox.h" 
+#include "kvi_tal_hbox.h"
+
+#include <QMessageBox>
+#include <QDir>
+#include <QPushButton>
+#include <QValidator>
+#include <QTextCodec>
+#include <QLayout>
+#include <QDesktopWidget>
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <windows.h>
@@ -55,9 +57,6 @@ bool g_bFoundMirc;
 	#include <unistd.h>  // for symlink()
 #endif
 
-#ifdef COMPILE_USE_QT4
-	#include <QDesktopWidget>
-#endif
 
 // libkvisetup.cpp
 extern QString g_szChoosenIncomingDirectory;
@@ -72,7 +71,7 @@ extern QString szMircIni;
 #ifdef COMPILE_ON_WINDOWS
 	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME "KVIrc4"
 #else
-	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME ".kvirc4"
+	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME ".config/KVIrc"
 #endif
 
 KviSetupPage::KviSetupPage(KviSetupWizard * w)
@@ -125,9 +124,7 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	l->setBackgroundColor(QColor(48,48,48));
 
 	m_pTextLabel = new QLabel(m_pVBox);
-#ifdef COMPILE_USE_QT4
 	m_pTextLabel->setWordWrap(true);
-#endif
 	m_pTextLabel->setAlignment(Qt::AlignJustify | Qt::AlignTop);
 	m_pVBox->setStretchFactor(m_pTextLabel,1);
 }
@@ -184,13 +181,13 @@ KviSetupWizard::KviSetupWizard()
 #ifndef COMPILE_ON_WINDOWS //it have been already shown by installer
 	KviSetupPage * m_pLicense = new KviSetupPage(this);
 	m_pLicense->m_pTextLabel->setText(__tr2qs( \
-			"<p>All of the files in this distribution are covered by the GPL. " \
-			"In human terms this can be read as follows:<br>" \
-			"<ul>" \
-			"<li><b>KVIrc is free</b>, use it, have fun! <b>:)</b></li>" \
-			"<li>If you use <b>any</b> part of KVIrc in your own project, you <b>must</b> release that project under the same license.</li>" \
-			"</ul></p>" \
-			"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
+		"<p>All of the files in this distribution are covered by the GPL. " \
+		"In human terms this can be read as follows:<br>" \
+		"<ul>" \
+		"<li><b>KVIrc is free</b>, use it, have fun! <b>:)</b></li>" \
+		"<li>If you use <b>any</b> part of KVIrc in your own project, you <b>must</b> release that project under the same license.</li>" \
+		"</ul></p>" \
+		"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
 
 	KviTalTextEdit * ed = new KviTalTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
@@ -201,8 +198,8 @@ KviSetupWizard::KviSetupWizard()
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
 		szLicense = __tr("Oops... can't find the license file.\n" \
-						"It MUST be included in the distribution...\n" \
-						"Please report to <pragma at kvirc dot net>");
+			"It MUST be included in the distribution...\n" \
+			"Please report to <pragma at kvirc dot net>");
 	}
 	ed->setText(szLicense);
 	
@@ -488,13 +485,13 @@ KviSetupWizard::KviSetupWizard()
 	m_pDesktopIntegration = new KviSetupPage(this);
 
 	szText  = __tr2qs( \
-				"<p>" \
-					"Here you can choose how much KVIrc will integrate with " \
-					"your system." \
-					"<br><br>" \
-					"The default settings are fine for most users so if " \
-					"you're in doubt just click \"<b>Next</b>\" and go to the next screen." \
-				"</p>");
+		"<p>" \
+			"Here you can choose how much KVIrc will integrate with " \
+			"your system." \
+			"<br><br>" \
+			"The default settings are fine for most users so if " \
+			"you're in doubt just click \"<b>Next</b>\" and go to the next screen." \
+		"</p>");
 
 	m_pDesktopIntegration->m_pTextLabel->setText(szText);
 
@@ -646,7 +643,7 @@ KviSetupWizard::KviSetupWizard()
 	}
 	free(buffer);
 
-#endif
+#endif // COMPILE_ON:WINDOWS
 
 	//setMinimumSize(630,450);
 }
@@ -722,6 +719,7 @@ void KviSetupWizard::newDirClicked()
 	if(m_pDataPathEdit->text().isEmpty() || m_pIncomingPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
 }
+
 void KviSetupWizard::chooseOldDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),0);
@@ -789,19 +787,19 @@ void KviSetupWizard::makeLink()
 	// otherwise there would be 150 lines for a stupid symlink!)
 
 	HKEY hCU;
-    DWORD lpType;
-    ULONG ulSize = MAX_PATH;
+	DWORD lpType;
+	ULONG ulSize = MAX_PATH;
 	char szLink[MAX_PATH];
 
 	// Dig in the registry looking up the Desktop path
-    if(RegOpenKeyEx(HKEY_CURRENT_USER,
+	if(RegOpenKeyEx(HKEY_CURRENT_USER,
 		"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", 
 		0,KEY_QUERY_VALUE,&hCU) == ERROR_SUCCESS)
 	{
 		RegQueryValueEx(hCU,"Desktop",NULL,&lpType,
-        (unsigned char *)&szLink,&ulSize);
+		(unsigned char *)&szLink,&ulSize);
 		RegCloseKey(hCU);
-    }
+	}
 
 	// Build our paths
 	QString szLinkTarget = szLink;
@@ -816,8 +814,8 @@ void KviSetupWizard::makeLink()
 	// Fiddle with an obscure shell interface
 	IShellLink* psl;
 
-    // Get a pointer to the IShellLink interface: this is kinda ugly :)
-    if(CoCreateInstance(CLSID_ShellLink,NULL,CLSCTX_INPROC_SERVER,
+	// Get a pointer to the IShellLink interface: this is kinda ugly :)
+	if(CoCreateInstance(CLSID_ShellLink,NULL,CLSCTX_INPROC_SERVER,
 				IID_IShellLink,(void **)&psl) == S_OK)
 	{
 		// just for fun , lookup another shell interface
