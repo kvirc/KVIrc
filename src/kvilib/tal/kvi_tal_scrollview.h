@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 
 // FIXME: Qt4 #include <QScrollArea>
-#include <Q3ScrollView>
+#include <q3scrollview.h>
 
 //class KVILIB_API KviTalScrollView : public QScrollArea
 class KVILIB_API KviTalScrollView : public Q3ScrollView
