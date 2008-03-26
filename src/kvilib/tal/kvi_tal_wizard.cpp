@@ -526,3 +526,4 @@ QPushButton * KviTalWizard::backButton()
 {
 	return m_p->pBackButton;
 }
+#include "kvi_tal_wizard.moc"
