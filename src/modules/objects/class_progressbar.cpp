@@ -27,13 +27,8 @@
 
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
-#ifdef COMPILE_USE_QT4
 #include <q3progressbar.h>
 #define KVI_PROGRESS_BAR Q3ProgressBar
-#else
-#include <qprogressbar.h>
-#define KVI_PROGRESS_BAR QProgressBar
-#endif
 
 /*
 	@doc:	progressbar
@@ -95,14 +90,10 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_progressbar)
 
 bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {	
-	#ifdef COMPILE_USE_QT4
-		Q3ProgressBar *pbar=new Q3ProgressBar(parentScriptWidget());
-		pbar->setObjectName(name());
-		setObject(pbar,true);
-	#else
-		setObject(new QProgressBar(parentScriptWidget(), name()), true);
-	#endif	
-return true;
+	Q3ProgressBar *pbar=new Q3ProgressBar(parentScriptWidget());
+	pbar->setObjectName(name());
+	setObject(pbar,true);
+	return true;
 }
 
 bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)

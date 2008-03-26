@@ -26,11 +26,7 @@
 
 #include <qpixmap.h>
 #include <qimage.h>
-#ifdef COMPILE_USE_QT4
-	#include <QMatrix>
-#else
-	#include <qwmatrix.h>
-#endif
+#include <QMatrix>
 #include "kvi_string.h"
 
 

@@ -39,10 +39,6 @@
 #include "kvi_out.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
-#ifndef COMPILE_USE_QT4
-	#include <qwidgetlist.h>
-	#include <qobjectlist.h>
-#endif
 
 #include <qdir.h>
 
@@ -638,6 +634,8 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	if(obDst->inherits("KviKvsObject_pixmap")){
 		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
 	}
+
+	//FIX ME
 #ifdef COMPILE_USE_QT4
 	/*QPainter p(pdDest);
 	QRect rectdest(iXdst,iYdst,uW,uH);
@@ -779,13 +777,9 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		
 
 	}
-#ifdef COMPILE_USE_QT4
 	QPainter p(pdDest);
 	QRect rect(iDesX,iDesY,buffer.width(),buffer.height());
 	p.drawImage(rect,buffer);
-#else
-	bitBlt(pdDest,iDesX,iDesY,&buffer,0,0,buffer.width(),buffer.height());
-#endif
 	return true;
 
 }
@@ -826,8 +820,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 		KVSO_PARAMETER("flag on video",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(cmd)
 	if (bFlag) cmd->window()->output(80, "Objects dump:");
-	#ifdef COMPILE_USE_QT4
-	QWidgetList list = g_pApp->topLevelWidgets();
+		QWidgetList list = g_pApp->topLevelWidgets();
 	
 	KviStr spacing = ">";
 	QString  szTemp;
@@ -864,55 +857,12 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	//++it;
 	}
 
-#else
-	QWidgetList *l = g_pApp->topLevelWidgets();
-	l->setAutoDelete(false);
-	QWidgetListIt it(*l);
-	KviStr spacing = ">";
-	QString  szTemp;
-	KviKvsArray * n = new KviKvsArray();
-	int idx=0;
-	while( it.current() )
-	{
-		if( it.current()->isWidgetType())
-		{
-			if (bFlag)
-			{
-				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
-				it.current(),
-				KVI_TEXT_BOLD, it.current()->name(), KVI_TEXT_BOLD,
-				it.current()->className(),
-				it.current()->isVisible() ? "visible" : "hidden",
-				it.current()->x(), it.current()->y(), it.current()->width(), it.current()->height());
-			}
-			QString  szClass=it.current()->className();
-			QString szObj=it.current()->name();
-			QString szTemp;
-			szTemp = szClass + "::" + szObj;
-			KviKvsVariant v;
-			v.setString(szTemp);
-			n->set(idx,new KviKvsVariant(v));
-			debug ("string %s",szTemp.latin1());
-			debug ("class %s",szClass.latin1());
-			debug ("Obj %s",szObj.latin1());
-	
-			idx++;
-	
-			dumpChildObjects(cmd->window(), it.current(), spacing.ptr(), bFlag,n,idx);
-		
-	
-		}
-	++it;
-	}
-
-#endif
 	cmd->returnValue()->setArray(n);
 	return true;
 }
 
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bFlag, KviKvsArray *n, int &idx)
 {
-#ifdef COMPILE_USE_QT4
 	const QObjectList list = parent->children();
 	if( !list.count() ) return;
 	QString sp(spacing);
@@ -941,38 +891,6 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 		}
 	}
 
-#else
-	const QObjectList *l = parent->children();
-	if( !l ) return;
-	if( l->isEmpty() ) return;
-	QObjectListIt it(*l);
-	QString sp(spacing);
-	sp.append(">");
-	while( it.current() )
-	{
-                if( it.current()->isWidgetType() )
-		{
-			if (bFlag)
-			{
-				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
-					spacing, it.current(), KVI_TEXT_BOLD,
-					it.current()->name(), KVI_TEXT_BOLD, it.current()->className()
-				);
-			}
-			QString szClass=it.current()->className();
-			QString szObj=it.current()->name();
-			QString szTemp;
-			szTemp=spacing+szClass+"::"+szObj;
-			KviKvsVariant v;
-			v.setString(szTemp);
-			n->set(idx,new KviKvsVariant(v));
-			debug ("string %s",szTemp.latin1());
-			idx++;
-			dumpChildObjects(pWnd, it.current(), sp, bFlag, n, idx );
-                }
-		++it;
-	}
-#endif
 }
 
 static bool objects_module_can_unload(KviModule *m)

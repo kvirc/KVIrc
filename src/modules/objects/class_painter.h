@@ -26,8 +26,7 @@
 #include <qpainter.h>
 #include <qpaintdevice.h>
 #include "kvi_string.h"
-
-
+#include <QPainterPath>
 #include "object_macros.h"
 
 
@@ -39,6 +38,8 @@ public:
 protected:
 	QPainter * m_pPainter;
 	QWMatrix  m_pMatrix;
+	QLinearGradient *m_pGradient;
+	QPainterPath *m_pPainterPath;
 public:
 	bool functionSetFont(KviKvsObjectFunctionCall *c);
 	bool functionSetFontSize(KviKvsObjectFunctionCall *c);
@@ -67,21 +68,42 @@ public:
 
 	bool functionbegin(KviKvsObjectFunctionCall *c);
 	bool functionend(KviKvsObjectFunctionCall *c);
+	bool functionsave(KviKvsObjectFunctionCall *c);
+	bool functionrestore(KviKvsObjectFunctionCall *c);
+
 
 	bool functionscaleMatrix(KviKvsObjectFunctionCall *c);
 	bool functionshearMatrix(KviKvsObjectFunctionCall *c);
 	bool functionrotateMatrix(KviKvsObjectFunctionCall *c);
 	bool functionresetMatrix(KviKvsObjectFunctionCall *c);
 	bool functiontranslateMatrix(KviKvsObjectFunctionCall *c);
+	bool functionsetPenStyle(KviKvsObjectFunctionCall *c);
+	bool functionsetBrushStyle(KviKvsObjectFunctionCall *c);
 
-#ifdef COMPILE_USE_QT4
+// QT4
 	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
 	bool functionsetSmoothPixmapTransform(KviKvsObjectFunctionCall *c);
 	bool functionsetTextAntialiasing(KviKvsObjectFunctionCall *c);
 	bool functionsetAntialiasing(KviKvsObjectFunctionCall *c);
-#endif
+	bool functionsetGradientStart(KviKvsObjectFunctionCall *c);
+	bool functionsetGradientStop(KviKvsObjectFunctionCall *c);
+	bool functionsetGradientColor(KviKvsObjectFunctionCall *c);
+	bool functionsetGradientAsBrush(KviKvsObjectFunctionCall *c);
+	bool functionclearGradient(KviKvsObjectFunctionCall *c);
 
-
+	bool functiondrawIcon(KviKvsObjectFunctionCall *c);
+	bool functiondrawHtmlText(KviKvsObjectFunctionCall *c);
+	bool functionhtmlTextSize(KviKvsObjectFunctionCall *c);
+	bool functionfillRect(KviKvsObjectFunctionCall *c);
+	bool functionsetPenWidth(KviKvsObjectFunctionCall *c);
+	bool functioncolorNames(KviKvsObjectFunctionCall *c);
+	bool functionpathMoveTo(KviKvsObjectFunctionCall *c);
+	bool functionpathLineTo(KviKvsObjectFunctionCall *c);
+	bool functiondrawPath(KviKvsObjectFunctionCall *c);
+	bool functionsetPenJoinStyle(KviKvsObjectFunctionCall *c);
+	bool functionsetPenCapStyle(KviKvsObjectFunctionCall *c);
+	bool functionpathAddText(KviKvsObjectFunctionCall *c);
+	bool functionresetPath(KviKvsObjectFunctionCall *c);
 
 protected:
 	void attachDevice(KviKvsObject * o,QPaintDevice * p);

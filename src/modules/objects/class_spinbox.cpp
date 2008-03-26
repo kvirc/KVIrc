@@ -198,11 +198,7 @@ bool KviKvsObject_spinbox::functionlineStep(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
 	{
-		#ifdef COMPILE_USE_QT4
 			c->returnValue()->setInteger(((QSpinBox *)widget())->singleStep());
-		#else
-			c->returnValue()->setInteger(((QSpinBox *)widget())->lineStep());
-		#endif
 	}
 	
 	return true;

@@ -143,11 +143,7 @@ bool KviKvsObject_toolbutton::functionsetImage(KviKvsObjectFunctionCall *c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix){
-		#ifdef COMPILE_USE_QT4
 			((QToolButton *)widget())->setIconSet(QIconSet(*pix));
-		#else
-			((QToolButton *)widget())->setIconSet(QIconSet(*pix,QIconSet::Small));
-		#endif
 	}
 	else
 		((QToolButton *)widget())->setIconSet(QIconSet());
@@ -237,14 +233,8 @@ bool KviKvsObject_toolbutton::functionsetTextLabel(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("tooltip",KVS_PT_STRING,KVS_PF_OPTIONAL,szTip)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-
-	#ifdef COMPILE_USE_QT4
-		((QToolButton *)widget())->setText(szLabel);
-		if (!szTip.isEmpty()) ((QToolButton *)widget())->setToolTip(szTip);
-	#else
-		if (szTip.isEmpty()) ((QToolButton *)widget())->setTextLabel(szLabel);
-			else ((QToolButton *)widget())->setTextLabel(szLabel,szTip);
-	#endif
+	((QToolButton *)widget())->setText(szLabel);
+	if (!szTip.isEmpty()) ((QToolButton *)widget())->setToolTip(szTip);
 	return true;
 }
 bool KviKvsObject_toolbutton::functiontextLabel(KviKvsObjectFunctionCall *c)

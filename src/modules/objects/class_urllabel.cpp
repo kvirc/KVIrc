@@ -32,12 +32,8 @@
 
 #include "kvi_window.h"
 #include "kvi_kvs_script.h"
-#ifdef COMPILE_USE_QT4
 #include <QMouseEvent>
 #define QT_LEFT_BUTTON Qt::LeftButton
-#else
-#define QT_LEFT_BUTTON QEvent::LeftButton
-#endif
 //#warning "Functions to change colors for different states"
 //#warning "$setUnderline(), $underline()"
 

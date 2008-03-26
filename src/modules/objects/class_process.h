@@ -28,11 +28,7 @@
 
 
 #include "object_macros.h"
-#ifdef COMPILE_USE_QT4
 #include <q3process.h>
-#else
-#include <qprocess.h>
-#endif
 
 
 class KviKvsObject_process : public KviKvsObject
@@ -41,13 +37,7 @@ class KviKvsObject_process : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_process)
 protected:
-
-#ifdef COMPILE_USE_QT4
 	Q3Process * m_pProcess;
-#else
-	QProcess * m_pProcess;
-#endif
-
 public:
 
 	bool functionaddArgument(KviKvsObjectFunctionCall *c);

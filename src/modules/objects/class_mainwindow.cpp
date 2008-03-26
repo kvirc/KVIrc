@@ -98,6 +98,7 @@ bool KviKvsObject_mainwindow::functionsetCentralWidget(KviKvsObjectFunctionCall 
 	if(widget()) ((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
 	return true;	
 }
+//FIX ME
 bool KviKvsObject_mainwindow::functionsetDockEnabled(KviKvsObjectFunctionCall *c)
 {
 	QString szDockarea;
@@ -108,27 +109,13 @@ bool KviKvsObject_mainwindow::functionsetDockEnabled(KviKvsObjectFunctionCall *c
 	KVSO_PARAMETERS_END(c)
 	if(widget())
 	{
-#ifndef COMPILE_USE_QT4
-		if(KviQString::equalCI(szDockarea,"Top"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockTop,bFlag);
-		else if(KviQString::equalCI(szDockarea,"Left"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockLeft,bFlag);
-		else if(KviQString::equalCI(szDockarea,"Right"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockRight,bFlag);
-		else if(KviQString::equalCI(szDockarea,"Bottom"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockBottom,bFlag);
-		else if(KviQString::equalCI(szDockarea,"Minimized"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockMinimized,bFlag);
-		else if(KviQString::equalCI(szDockarea,"TornOff"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockTornOff,bFlag);
-		else if(KviQString::equalCI(szDockarea,"Unmanaged"))
-			((KviTalMainWindow *)widget())->setDockEnabled(Qt::DockUnmanaged,bFlag);
-		else c->warning(__tr2qs("Unknown dock area '%Q'"),&szDockarea);
-#endif
+
 	}
 	return true;
 
 }
+
+//FIX ME
 bool KviKvsObject_mainwindow::functionisDockEnabled(KviKvsObjectFunctionCall *c)
 {
 	
@@ -138,20 +125,6 @@ bool KviKvsObject_mainwindow::functionisDockEnabled(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("dock_area",KVS_PT_STRING,0,szDockarea)
 	KVSO_PARAMETERS_END(c)
     if(!widget()) return true;
-#ifndef COMPILE_USE_QT4
-	if(KviQString::equalCI(szDockarea,"Top")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockTop);
-	else if(KviQString::equalCI(szDockarea,"Left")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockLeft);
-	else if(KviQString::equalCI(szDockarea,"Right")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockRight);
-	else if(KviQString::equalCI(szDockarea,"Bottom"))bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockBottom);
-	else if(KviQString::equalCI(szDockarea,"Minimized")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockMinimized);
-	else if(KviQString::equalCI(szDockarea,"TornOff")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockTornOff);
-	else if(KviQString::equalCI(szDockarea,"Unmanaged")) bFlag=((KviTalMainWindow *)widget())->isDockEnabled(Qt::DockUnmanaged);
-	else
-	{ 
-		c->warning(__tr2qs("Unknown dock area '%Q'"),&szDockarea);
-		return true;
-	}
-#endif
 	c->returnValue()->setBoolean(bFlag);
 	return true;		
 

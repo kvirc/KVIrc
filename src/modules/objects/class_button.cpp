@@ -146,20 +146,8 @@ bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix){
-		#ifdef COMPILE_USE_QT4	
-		((QPushButton *)widget())->setIconSet(*pix);
-		#else
-		((QPushButton *)widget())->setIconSet(QIconSet(*pix,QIconSet::Small));
-		#endif
-	}
-	else{
-		#ifdef COMPILE_USE_QT4	
-		((QPushButton *)widget())->setIcon(QIconSet());
-		#else
-		((QPushButton *)widget())->setIconSet(QIconSet());
-		#endif
-	}
+	if(pix)	((QPushButton *)widget())->setIconSet(*pix);
+	else((QPushButton *)widget())->setIcon(QIconSet());
 	return true;
 }
 bool KviKvsObject_button::functionclickEvent(KviKvsObjectFunctionCall *c)

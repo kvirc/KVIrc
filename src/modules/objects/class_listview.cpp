@@ -26,12 +26,8 @@
 
 
 #include "kvi_tal_listview.h"
-#ifdef COMPILE_USE_QT4
 #include <q3header.h>
 #include <qevent.h>
-#else
-#include <qheader.h>
-#endif
 #include "class_listview.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"

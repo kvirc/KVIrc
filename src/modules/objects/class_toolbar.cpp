@@ -115,6 +115,7 @@ bool KviKvsObject_toolbar::functionlabel(KviKvsObjectFunctionCall *c)
 	if (widget()) c->returnValue()->setString(((KviTalToolBar *)widget())->label());
 	return true;
 }
+//FIX ME
 bool KviKvsObject_toolbar::functionsetStretchableWidget(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;

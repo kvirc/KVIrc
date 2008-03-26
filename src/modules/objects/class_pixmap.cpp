@@ -127,13 +127,7 @@ bool KviKvsObject_pixmap::functionscale(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("sx",KVS_PT_REAL,0,uScaleX)
 		KVSO_PARAMETER("sy",KVS_PT_REAL,0,uScaleY)
 	KVSO_PARAMETERS_END(c)
-	#ifdef COMPILE_USE_QT4
-		*m_pPixmap = m_pPixmap->scaled((m_pPixmap->width() * uScaleX), (m_pPixmap->height() * uScaleX));
-	#else
-		QWMatrix wm;
-		wm.scale(uScaleX, uScaleY);
-		*m_pPixmap = m_pPixmap->xForm(wm);
-	#endif
+	*m_pPixmap = m_pPixmap->scaled((m_pPixmap->width() * uScaleX), (m_pPixmap->height() * uScaleX));
 	bPixmapModified=true;
 	return true;
 }
@@ -144,15 +138,9 @@ bool KviKvsObject_pixmap::functionrotate(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("a",KVS_PT_REAL,0,uDegrees)
 	KVSO_PARAMETERS_END(c)
-	#ifdef COMPILE_USE_QT4
-		QMatrix m;
-		m.rotate(uDegrees);
-		*m_pPixmap = m_pPixmap->transformed(m);
-	#else
-		QWMatrix wm;
-		wm.rotate(uDegrees);
-		*m_pPixmap = m_pPixmap->xForm(wm);
-	#endif
+	QMatrix m;
+	m.rotate(uDegrees);
+	*m_pPixmap = m_pPixmap->transformed(m);
 	bPixmapModified=true;
 	return true;
 }

@@ -42,17 +42,40 @@
 #include "class_widget.h"
 #include "class_pixmap.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <QKeyEvent>
-	#include <QDesktopWidget>
-#else
-	#include <qwidgetlist.h>
-#endif
+#include <QKeyEvent>
+#include <QDesktopWidget>
 
 #include <qwidget.h>
 #include <qtooltip.h>
 #include <qfont.h>
 #include <qvariant.h>
+
+KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
+:QWidget(par), m_pObject(object)
+{
+}
+KviKvsWidget::~KviKvsWidget()
+{
+}
+
+
+QSize KviKvsWidget::sizeHint() const
+{
+	QSize size=QWidget::sizeHint();
+	KviKvsVariant *tipret=new KviKvsVariant();
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)size.width()),new KviKvsVariant((kvs_int_t)size.height()));
+	m_pObject->callFunction(m_pObject,"sizeHintRequestEvent",tipret,&params);
+	if (tipret->isArray())
+	{	
+		if (tipret->array()->size()==2)
+		{
+			kvs_int_t w,h;
+			if (tipret->array()->at(0)->asInteger(w) && tipret->array()->at(1)->asInteger(h))return QSize(w,h);
+		}
+	}
+	return QWidget::sizeHint();
+}
+
 
 // FIX ME: WFLAGS
 const char * const widgettypes_tbl[] = {
@@ -68,7 +91,6 @@ const char * const widgettypes_tbl[] = {
 			"Maximize",
 			"NoAutoErase"
 			   };
-#ifdef COMPILE_USE_QT4
 const Qt::WidgetAttribute widgetattributes_cod[]= {
 	Qt::WA_OpaquePaintEvent,
 	Qt::WA_NoSystemBackground,
@@ -84,11 +106,39 @@ const char * const widgetattributes_tbl[] = {
 };
 #define widgetattributes_num	(sizeof(widgetattributes_tbl) / sizeof(widgetattributes_tbl[0]))
 
+const QPalette::ColorRole colorrole_cod[]= {
+	QPalette::Window,
+	QPalette::Background,
+	QPalette::WindowText,
+	QPalette::Foreground,
+	QPalette::Base,
+	QPalette::AlternateBase,
+	QPalette::Text,
+	QPalette::Button,
+	QPalette::ButtonText,
+	QPalette::BrightText,
+	QPalette::Highlight,
+	QPalette::HighlightedText,
+};
+
+const char * const colorrole_tbl[] = {
+	"Window",
+	"Background",
+	"WindowText",
+	"Foreground",
+	"Base",
+	"AlternateBase",
+	"Text",
+	"Button",
+	"ButtonText",
+	"BrightText",
+	"Highlight",
+	"HighlightedText"
+};
+#define colorrole_num	(sizeof(colorrole_tbl) / sizeof(colorrole_tbl[0]))
+
 
 const Qt::WindowType widgettypes_cod[] = {
-#else 
-const int widgettypes_cod[] = {
-#endif
 		Qt::WType_TopLevel,
 		Qt::WType_Dialog,
 		Qt::WType_Popup,
@@ -103,19 +153,12 @@ const int widgettypes_cod[] = {
 };
 
 
-#ifdef COMPILE_USE_QT4
 
 	#define QT_WIDGET_TABFOCUS Qt::TabFocus
 	#define	QT_WIDGET_CLICKFOCUS Qt::ClickFocus
 	#define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
 	#define QT_WIDGET_NOFOCUS Qt::NoFocus
 
-#else
-	#define QT_WIDGET_TABFOCUS QWidget::TabFocus
-	#define	QT_WIDGET_CLICKFOCUS QWidget::ClickFocus
-	#define QT_WIDGET_STRONGFOCUS QWidget::StrongFocus
-	#define QT_WIDGET_NOFOCUS QWidget::NoFocus
-#endif
 
 
 #define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
@@ -335,11 +378,6 @@ const int widgettypes_cod[] = {
 		This function is called immediately after this widget has been moved.
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
-		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)[QT4 only]
-		This event handler is called when a eventualy tip is going to be show.
-		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
-		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
-		The default implementation does nothing.		
 		!fn: $paintEvent()
 		This event handler can be reimplemented to repaint all or part of the widget.
 		It's needed by the Painter class.
@@ -443,9 +481,42 @@ const int widgettypes_cod[] = {
 		Translates widget coordinates into the global screen coordinate pos.
 		!fn: integer $globalCursorX()
 		Return the x coordinate of mouse pointer global position.
-		!fn: integer $globalCursorY()
+	   	!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
-		@examples:
+		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)[QT4 only]
+		This event handler is called when a eventualy tip is going to be show.
+		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
+		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
+		The default implementation does nothing.		
+
+		!fn: integer $setAttribute(<string>,<bool_flag>)[QT4 only]
+		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.
+		Valid attributes are:
+		OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.
+	    NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
+	    PaintOnScreen - Indicates that the widget wants to draw directly onto the screen. 
+	    NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
+		!fn: $setStyleSheet(<string>)[QT4 only]
+
+		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)[QT4 only]	
+		Returns the color in color_group(disabled, active or inactive), used for color_role.
+		Valid color role are:
+		Window - A general background color.
+		WindowText - A general foreground color.
+		Base - Used as the background color for text.
+		Text - Used as foreground color for the text.
+		Button - The general button background color.
+		ButtonText - A foreground color used with the Button color.
+		Highlight - A color to indicate a selected item or the current item.
+		HighlightedText - A text color that contrasts with Highlight.
+		
+		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)[QT4 only]
+		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
+		!fn: $shortCutEvent(<shortcut_id:integer>)[QT4 only]
+		This function will be called when a shortcut key has been triggered.
+		You must reimplement this event to manage a shortcut system in a custom widget.
+		The default implementation does nothing.
+	@examples:
 		[example]
 			%Widget = $new(widget)
 			# This is the main container for other elements.
@@ -495,11 +566,10 @@ const int widgettypes_cod[] = {
 			# This shows the widget
 
 			privateimpl(%Widget->%button, mousePressEvent) {
-				delete %Widget
+				delete $$->$parent()
 				# This closes the widget automatically
 			}
-			# privateimpl is triggered when user press the button.
-			# To do that, widget must be a global variable.
+			
 		[/example]
 
 */
@@ -546,6 +616,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	// apparence
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"show",function_show)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"hide",function_hide)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"update",function_update)
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"repaint",function_repaint)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isTopLevel",function_isTopLevel)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isVisible",function_isVisible)
@@ -602,9 +674,12 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
 
 	// QT4 only
-#ifdef COMPILE_USE_QT4
+
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setAttribute",function_setAttribute)
-#endif
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"colorPalette",function_colorPalette)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setStyleSheet",function_setStyleSheet)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setKeyShortcut",function_setKeyShortcut)
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -622,9 +697,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"moveEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"paintEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"keyPressEvent")
-#ifdef COMPILE_USE_QT4
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
+// QT4
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
-#endif
+	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
@@ -639,7 +715,12 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	setObject(new QWidget(parentScriptWidget(),getName()),true);
+	//QWidget *pis=new QWidget(parentScriptWidget(),getName()),true);
+	//setObject(new QWidget(parentScriptWidget(),getName()),true);
+	setObject(new KviKvsWidget(this,parentScriptWidget()));
+//		setObject(new QWidget(parentScriptWidget()));
+
+	widget()->setObjectName(getName());
 	return true;
 }
 
@@ -654,20 +735,25 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			
 		switch(e->type())
 		{
-			#ifdef COMPILE_USE_QT4
+		
+			case QEvent::Shortcut:
+			{
+				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));
+				callFunction(this,"shortCutEvent",retv,&params);
+				break;
+			}
 			case QEvent::ToolTip:
 			{
 				QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
 				QPoint point=helpEvent->pos();
-				QString szTooltip;
+				QString szTooltip="";
 				KviKvsVariant *tipret=new KviKvsVariant(szTooltip);
 				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)point.x()),new KviKvsVariant((kvs_int_t)point.y()));
 				callFunction(this,"maybeTipEvent",tipret,&params);
 				tipret->asString(szTooltip);
-				QToolTip::showText(helpEvent->globalPos(),szTooltip);
+				if (!szTooltip.isEmpty()) QToolTip::showText(helpEvent->globalPos(),szTooltip);
 				break;
 			}
-			#endif
 			case QEvent::Paint:
 			{
 				QRect rect=((QPaintEvent *)e)->rect();
@@ -678,6 +764,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 		case QEvent::KeyPress:
 			{
+						
+
 				QString tmp="";
 					switch(((QKeyEvent *)e)->key())
 					{
@@ -878,6 +966,21 @@ bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true; // should we warn here ?
 	widget()->show();
+	return true;
+}
+bool KviKvsObject_widget::function_update(KviKvsObjectFunctionCall *c)
+{
+	kvs_int_t iX,iY,iW,iH;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("x",KVS_PT_INT,KVS_PF_OPTIONAL,iX)
+		KVSO_PARAMETER("y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
+		KVSO_PARAMETER("w",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
+		KVSO_PARAMETER("h",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
+	KVSO_PARAMETERS_END(c)
+	if(!widget())return true; // should we warn here ?
+	if (iW || iH) widget()->update(QRect(iX,iY,iW,iH));
+	else
+	widget()->update();
 	return true;
 }
 
@@ -1081,8 +1184,11 @@ bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall *c)
 {
+
 	KviKvsVariant * pColArray;
+	
 	kvs_int_t iColR,iColG,iColB;
+	
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
@@ -1105,6 +1211,7 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			c->error(__tr2qs("One of the colors array parameters is empty"));
 			return false;
 		}
+
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
 			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
@@ -1157,7 +1264,9 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *c)
 {
 	KviKvsVariant * pColArray;
+
 	kvs_int_t iColR,iColG,iColB;
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
@@ -1335,7 +1444,7 @@ bool KviKvsObject_widget::function_setToolTip(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tooltip",KVS_PT_STRING,0,szTooltip)
 	KVSO_PARAMETERS_END(c)
-	if(widget())QToolTip::add( widget(), szTooltip  );
+	widget()->setToolTip(szTooltip);
 	return true;
 }
 
@@ -1452,8 +1561,10 @@ bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_widget::function_sizeHint(KviKvsObjectFunctionCall *c)
 {
+	debug ("Kvs WIDGET size hint");
 	if(!widget())return true;
-	QSize sizehint = widget()->sizeHint();
+	//QVariant pro=widget()->property("sizeHint");
+	QSize sizehint =widget()->sizeHint();
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)sizehint.width()));
 	a->set(1,new KviKvsVariant((kvs_int_t)sizehint.height()));
@@ -1537,11 +1648,7 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("widget_flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,wflags)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
-	#ifdef COMPILE_USE_QT4
-		Qt::WindowFlags flag,sum=0;
-	#else
-		int flag,sum=0;
-	#endif
+	Qt::WindowFlags flag,sum=0;
 	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
 	{
 			
@@ -1561,12 +1668,8 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 
 		}
 	
-#ifdef COMPILE_USE_QT4
 	widget()->setWindowFlags(sum);
-#else
-	 widget()->reparent(widget()->parentWidget(),sum,QPoint(widget()->x(),widget()->y()));
-#endif
-	 return true;
+	return true;
 }
 
 bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)
@@ -1674,7 +1777,16 @@ bool KviKvsObject_widget::function_setBackgroundImage(KviKvsObjectFunctionCall *
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(image);
-	if(pix)widget()->setPaletteBackgroundPixmap(*pix);
+	if(pix){
+			QPalette palette=widget()->palette();
+			palette.setBrush(widget()->backgroundRole(), QBrush(*pix));
+			widget()->setPalette(palette);
+	}
+	else
+	{
+		c->warning("The pixmap is not valid");
+		return true;
+	}
 	return true;
 }
 bool KviKvsObject_widget::function_globalCursorX(KviKvsObjectFunctionCall *c)
@@ -1707,16 +1819,11 @@ bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
-#ifdef COMPILE_USE_QT4
 	QBitmap mask(pm->mask());
-#else
-	QBitmap mask(*pm->mask());
-#endif
 	if (mask.isNull()) c->warning(__tr2qs("Null mask"));
 	widget()->setMask(mask);
 	return true;
 }
-#ifdef COMPILE_USE_QT4
 bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 {
 	QString attribute;
@@ -1740,6 +1847,64 @@ bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);	
 	return true;
 }
-#endif
+bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
+{
+	QString szColorRole,szColorGroup;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("color_role",KVS_PT_STRING,0,szColorRole)
+		KVSO_PARAMETER("color_group",KVS_PT_STRING,0,szColorGroup)
+	KVSO_PARAMETERS_END(c)
+	if (!widget()) return true;
+	bool found=false;
+	unsigned int j = 0;
+	for(; j < colorrole_num; j++)
+	{
+		if(KviQString::equalCI(szColorRole, colorrole_tbl[j]))
+		{
+			found=true;
+			break;
+		}
+	}
+	if(!found)
+	{
+		c->warning(__tr2qs("Unknown Color Role '%Q'"),&szColorRole);	
+		return true;
+	}
+	QPalette::ColorGroup cg;
+	if (KviQString::equalCI(szColorGroup,"Disabled")) cg=QPalette::Disabled;
+	else if (KviQString::equalCI(szColorGroup,"Active")) cg=QPalette::Active;
+	else if (KviQString::equalCI(szColorGroup,"Inactive")) cg=QPalette::Inactive;
+	else
+	{
+		c->warning(__tr2qs("Unknown Color Group '%Q'"),&szColorGroup);	
+		return true;
+	}
+	QColor col=widget()->palette().color(cg,colorrole_cod[j]);
+	KviKvsArray * a = new KviKvsArray();
+	a->set(0,new KviKvsVariant((kvs_int_t)col.red()));
+	a->set(1,new KviKvsVariant((kvs_int_t)col.green()));
+	a->set(2,new KviKvsVariant((kvs_int_t)col.blue()));
+	c->returnValue()->setArray(a);
+	return true;
+}
+bool KviKvsObject_widget::function_setStyleSheet(KviKvsObjectFunctionCall *c)
+{
+	QString szStyleSheet;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("style_sheet",KVS_PT_STRING,0,szStyleSheet)
+	KVSO_PARAMETERS_END(c)
+	if(widget())widget()->setStyleSheet(szStyleSheet);
+	return true;
+}
+bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
+{
+	QString szKey;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("key",KVS_PT_STRING,0,szKey)
+	KVSO_PARAMETERS_END(c)
+	szKey.prepend("&");
+	if (widget())c->returnValue()->setInteger((kvs_int_t)widget()->grabShortcut(QKeySequence::mnemonic(szKey)));
+	return true;
+}
 
 #include "m_class_widget.moc"

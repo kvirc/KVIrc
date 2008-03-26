@@ -32,8 +32,10 @@ class KviKvsObject_widget : public KviKvsObject
 	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_widget)
+
 public:
 	QWidget * widget() { return (QWidget *)object(); };
+
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
@@ -74,6 +76,8 @@ protected:
 	bool function_parentWidget(KviKvsObjectFunctionCall *c);
 	bool function_raise(KviKvsObjectFunctionCall *);
 	bool function_repaint(KviKvsObjectFunctionCall *c);
+	bool function_update(KviKvsObjectFunctionCall *c);
+	
 	bool function_reparent(KviKvsObjectFunctionCall *c);
 	bool function_resize(KviKvsObjectFunctionCall *c);
 	bool function_screenResolution(KviKvsObjectFunctionCall * c);
@@ -100,14 +104,31 @@ protected:
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
 	bool function_setMask(KviKvsObjectFunctionCall *c);
-	
 
-#ifdef COMPILE_USE_QT4
+
+
+//QT4
 bool function_setAttribute(KviKvsObjectFunctionCall *c);
-#endif
+	bool function_colorPalette(KviKvsObjectFunctionCall *c);
+	bool function_setStyleSheet(KviKvsObjectFunctionCall *c);
+	bool function_setKeyShortcut(KviKvsObjectFunctionCall *c);
 
 signals:
 	void aboutToDie();
 };
 
+class KviKvsWidget : public QWidget
+{
+	Q_OBJECT
+	Q_PROPERTY(QSize sizeHint READ sizeHint)
+public:
+	KviKvsWidget(KviKvsObject_widget * ob,QWidget * par);
+		
+
+	virtual ~KviKvsWidget();
+protected:
+	KviKvsObject_widget * m_pObject;
+public:
+	QSize sizeHint() const;
+};
 #endif	// !_CLASS_WIDGET_H_

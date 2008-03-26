@@ -29,26 +29,13 @@
 #include "kvi_locale.h"
 #include "kvi_malloc.h"
 #include <qfile.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3multilineedit.h>
+#include <q3multilineedit.h>
 #include <QTextStream>
-
 #include <q3stylesheet.h>
 #define KviTalMultiLineEdit Q3MultiLineEdit
 #define QTEXTEDIT_AUTO_ALL Q3TextEdit::AutoAll
 #define QTEXTEDIT_AUTO_NONE Q3TextEdit::AutoNone
 #define QTEXTEDIT_AUTO_BULLET_LIST Q3TextEdit::AutoBulletList
-
-#else
-	#include <qtextstream.h>
-
-	#include <qmultilineedit.h>
-	#define KviTalMultiLineEdit QMultiLineEdit
-	#define QTEXTEDIT_AUTO_ALL QTextEdit::AutoAll
-	#define QTEXTEDIT_AUTO_NONE QTextEdit::AutoNone
-	#define QTEXTEDIT_AUTO_BULLET_LIST QTextEdit::AutoBulletList
-
-#endif
 
 
 #include "class_multilineedit.h"
@@ -1081,13 +1068,8 @@ bool KviKvsObject_mledit::functionloadFile(KviKvsObjectFunctionCall *c)
 
 	QTextStream ts( &file );
     QString txt = ts.read();
-#ifdef COMPILE_USE_QT4
 	if ( !Q3StyleSheet::mightBeRichText( txt ) )
 	txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
-#else
-	if ( !QStyleSheet::mightBeRichText( txt ) )
-	txt = QStyleSheet::convertFromPlainText( txt, QStyleSheetItem::WhiteSpacePre );
-#endif
 	((KviTalMultiLineEdit *)widget())->setText( txt );
 
 	file.close();

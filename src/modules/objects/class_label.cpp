@@ -45,7 +45,6 @@ const char * const align_tbl[] = {
 			"Bottom",
 			"WordBreak"
 			   };
-#ifdef COMPILE_USE_QT4
 	#define QT_LABEL_ALIGNLEFT Qt::AlignLeft
 	#define	QT_LABEL_ALIGNRIGHT Qt::AlignRight
 	#define QT_LABEL_ALIGNHCENTER Qt::AlignHCenter
@@ -54,16 +53,7 @@ const char * const align_tbl[] = {
 	#define	QT_LABEL_ALIGNTOP Qt::AlignTop
 	#define QT_LABEL_ALIGNBOTTOM Qt::AlignBottom
 	#define QT_LABEL_JUSTIFY Qt::AlignJustify
-#else
-	#define QT_LABEL_ALIGNLEFT QLabel::AlignLeft
-	#define	QT_LABEL_ALIGNRIGHT QLabel::AlignRight
-	#define QT_LABEL_ALIGNHCENTER QLabel::AlignHCenter
-	#define QT_LABEL_ALIGNVCENTER QLabel::AlignVCenter
-	#define QT_LABEL_ALIGNCENTER QLabel::AlignCenter
-	#define	QT_LABEL_ALIGNTOP QLabel::AlignTop
-	#define QT_LABEL_ALIGNBOTTOM QLabel::AlignBottom
-	#define QT_LABEL_JUSTIFY QLabel::WordBreak
-#endif
+
 
 const int align_cod[] = {
 		QT_LABEL_ALIGNLEFT,
@@ -277,21 +267,14 @@ bool KviKvsObject_label::functionSetAutoResize(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	#ifdef COMPILE_USE_QT4
 	 return true;
-	#else
-	if(widget())
-		((QLabel *)widget())->setAutoResize(bEnabled);
-	return true;
-	#endif
+	
 }
+
+// FIX ME
 bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
 {
-	#ifdef COMPILE_USE_QT4
 		if (widget()) c->returnValue()->setBoolean(true);
-	#else
-		if (widget()) c->returnValue()->setBoolean(((QLabel *)widget())->autoResize());
-	#endif
 	return true;
 }
 //

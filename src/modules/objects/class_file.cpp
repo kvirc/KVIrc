@@ -40,7 +40,6 @@ const char * const mod_tbl[] =	{
 					"Append",
 					"Truncate"
 				  };
-#ifdef COMPILE_USE_QT4
 #define	IO_RAW QIODevice::Unbuffered
 #define IO_READONLY QIODevice::ReadOnly
 #define IO_WRITEONLY QIODevice::WriteOnly
@@ -48,19 +47,7 @@ const char * const mod_tbl[] =	{
 #define IO_APPEND QIODevice::Append
 #define IO_TRUNCATE QIODevice::Truncate
 //#define IO_TRANSLATE QIODevice::Text
-#else
-#define	IO_RAW IO_Raw
-#define IO_READONLY IO_ReadOnly
-#define IO_WRITEONLY IO_WriteOnly
-#define IO_READWRITE IO_ReadWrite
-#define IO_APPEND IO_Append
-#define IO_TRUNCATE IO_Truncate
-#endif
-#ifdef COMPILE_USE_QT4
 const QIODevice::OpenMode mod_cod[] = {
-#else
-const int mod_cod[] =	{
-#endif
 				IO_RAW,
 				IO_READONLY,
 				IO_WRITEONLY,
@@ -226,7 +213,6 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Empty filename string"));
 		return true;
 	}
-	#ifdef COMPILE_USE_QT4
 	QIODevice::OpenMode mod,sum;
 	if (modes.empty()) sum = IO_READONLY; // if no parameters given, default to ReadWrite | Append
 	else
@@ -248,30 +234,7 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("No such open mode: '%Q'"),&modes.at(idx));
 		}
 	}
-#else
-	int mod,sum=0;
-if (!modes.first()) sum = IO_READONLY; // if no parameters given, default to ReadWrite | Append
-	else
-	{
-		for ( QStringList::Iterator it = modes.begin(); it != modes.end(); ++it )
-		{
 
-			mod = 0;
-			for(unsigned int j = 0; j < mod_num; j++)
-			{
-				if(KviQString::equalCI((*it), mod_tbl[j]))
-				{
-					mod=mod_cod[j];
-					break;
-				}
-			}
-			if(mod)
-				sum = sum | mod;
-			else
-				c->warning(__tr2qs("No such open mode: '%Q'"),&(*it));
-		}
-	}
-#endif
 	m_pFile->open(sum);
 	return true;
 }
