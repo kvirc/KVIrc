@@ -29,23 +29,17 @@
 #include "kvi_actionmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
-
-#include <qlayout.h>
-#include <qlabel.h>
-//#include <qscrollview.h>
-#include <qpainter.h>
-#include <qpixmap.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-	#include <q3simplerichtext.h>
-	#include <qmime.h>
-	#include <qevent.h>
-#else
-	#include <qheader.h>
-	#include <qsimplerichtext.h>
-#endif
-
 #include "kvi_draganddrop.h"
+
+#include <QLayout>
+#include <QLabel>
+//#include <qscrollview.h>
+#include <QPainter>
+#include <QPixmap>
+#include <QHeaderView>
+#include <q3simplerichtext.h>
+#include <QEvent>
+#include <QMouseEvent>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -64,11 +58,9 @@ KviActionDrawerPageListViewItem::KviActionDrawerPageListViewItem(KviTalListView 
 		t += " <font color=\"#a0a0a0\">[" + __tr2qs("Script") + "]</font>";
 	t += "<br><font size=\"-1\">" + a->description()+ "</font>";
 	m_szKey = a->visibleName().upper();
-#ifdef COMPILE_USE_QT4
+
 	m_pText = new Q3SimpleRichText(t,v->font());
-#else
-	m_pText = new QSimpleRichText(t,v->font());
-#endif
+
 	QPixmap * p = a->bigIcon();
 	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
 }
@@ -122,7 +114,7 @@ KviActionDrawerPageListView::KviActionDrawerPageListView(KviActionDrawerPage * p
 
 //	m_pPage = pParent;
 	setSelectionMode(Single);
-	header()->hide();
+	//header()->hide();
 	int iWidth = visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	addColumn("",iWidth);
@@ -139,9 +131,9 @@ void KviActionDrawerPageListView::contentsMousePressEvent(QMouseEvent * e)
 	KviListView::contentsMousePressEvent(e);
 	KviActionDrawerPageListViewItem * i = (KviActionDrawerPageListViewItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
 	if(!i)return;
-	KviTextDrag * dr = new KviTextDrag(i->name(),this); // does this leak memory ?
-	if(i->icon())dr->setPixmap(*(i->icon()),QPoint(3,3));
-	dr->dragCopy();
+	KviTextDrag * dr = new KviTextDrag();
+	dr->setText(i->name());
+	if(i->icon()) dr->setImageData(i->icon());
 }
 
 void KviActionDrawerPageListView::resizeEvent(QResizeEvent * e)
@@ -223,5 +215,3 @@ void KviActionDrawer::fill()
 		if(iii >= 0)setCurrentPage(iii);
 	}
 }
-
-

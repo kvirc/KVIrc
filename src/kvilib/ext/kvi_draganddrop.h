@@ -27,19 +27,10 @@
 
 #include "kvi_settings.h"
 
-
-#ifdef COMPILE_USE_QT4
-	#include <q3dragobject.h>
-	#define KviDragObject Q3DragObject
-	#define KviUriDrag Q3UriDrag
-	#define KviTextDrag Q3TextDrag
-	#define KviImageDrag Q3ImageDrag
-#else
-	#include <qdragobject.h>
-	#define KviDragObject QDragObject
-	#define KviUriDrag QUriDrag
-	#define KviTextDrag QTextDrag
-	#define KviImageDrag QImageDrag
-#endif
+#include <QMimeData>
+#define KviDragObject QMimeData
+#define KviUriDrag QMimeData
+#define KviTextDrag QMimeData
+#define KviImageDrag QMimeData
 
 #endif //!_KVI_DRAGANDDROP_H_

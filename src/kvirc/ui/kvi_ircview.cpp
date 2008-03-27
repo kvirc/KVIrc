@@ -106,50 +106,39 @@
 #include "kvi_ircurl.h"
 #include "kvi_draganddrop.h"
 #include "kvi_qcstring.h"
+#include "kvi_tal_popupmenu.h"
 // FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"
 
-#include <qbitmap.h>
-#include <qpainter.h>
-#include <qregexp.h>
-#include <qfile.h>
-#include <qtoolbutton.h>
-#include <qfontmetrics.h> // needed
-#include <qapplication.h>
-#include "kvi_tal_popupmenu.h"
-#include <qmessagebox.h>
-#include <qtextcodec.h>
-#include <qdatetime.h>
-#include <qevent.h>
+#include <QBitmap>
+#include <QPainter>
+#include <QRegExp>
+#include <QFile>
+#include <QToolButton>
+#include <QFontMetrics> // needed
+#include <QApplication>
+#include <QMessageBox>
+#include <QTextCodec>
+#include <QDateTime>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QUrl>
+#include <QCursor>
+#include <QClipboard>
+#include <QScrollBar>
+#include <QFontDialog>
 
-//#include <qcolor.h>   // needed 
+//#include <qcolor.h>   // needed
 
 // FIXME: #warning "There are problems with the selection and wrapped lines: you can select something on the first line and get the second highlighted"
 // FIXME: #warning "This hack is temporary...later remove it"
 
-#if QT_VERSION >= 300
-	#ifndef QT_CLEAN_NAMESPACE
-		#define QT_CLEAN_NAMESPACE
-		#include <qcursor.h>
-		#undef QT_CLEAN_NAMESPACE
-	#else
-		#include <qcursor.h>
-	#endif
-#else
-	#include <qcursor.h>
-#endif
 
-#include <qclipboard.h>
-#include <qdatetime.h>
-#include <qmessagebox.h>
-#include <qscrollbar.h>
-#include <qfontdialog.h>
 
 #include <time.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <q3mimefactory.h>
-	#define QMimeSourceFactory Q3MimeSourceFactory
-#endif
+
+#include <q3mimefactory.h>
+#define QMimeSourceFactory Q3MimeSourceFactory
 
 
 #ifdef COMPILE_ON_WINDOWS
@@ -291,11 +280,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	// Ok...here we go
 	// initialize the initializable
 
-#ifdef COMPILE_USE_QT4
 	setAttribute(Qt::WA_NoSystemBackground); // This disables automatic qt double buffering
 	setAttribute(Qt::WA_OpaquePaintEvent);
 	//setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
-#endif
 
 	m_iFlushTimer = 0;
 	m_pToolsPopup = 0;
@@ -351,35 +338,22 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
 
 	// say qt to avoid erasing on repaint
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
-#else
-	setBackgroundMode(NoBackground);
-#endif
 	
 	m_pFm = 0; // will be updated in the first paint event
 	
 	m_pToolTip = new KviIrcViewToolTip(this);
 
 	// Create the scroll bar
-#ifdef COMPILE_USE_QT4
-	m_pScrollBar               = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
-#else
-	m_pScrollBar               = new QScrollBar(0,0,1,10,0,QScrollBar::Vertical,this,"irc_view_scrollbar");
-#endif
+	m_pScrollBar = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
-
 	m_pScrollBar->setFocusProxy(this);
 
 
 	m_pToolsButton = new KviStyledToolButton(this,"btntools");
-#ifdef COMPILE_USE_QT4
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
-#else
-	QIconSet is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)),QIconSet::Small);
-#endif
 	m_pToolsButton->setIconSet(is1);
 
 	KviTalToolTip::add(m_pToolsButton,__tr2qs("Search tools"));
@@ -499,26 +473,35 @@ void KviIrcView::enableDnd(bool bEnable)
 void KviIrcView::dragEnterEvent(QDragEnterEvent *e)
 {
 	if(!m_bAcceptDrops)return;
-	e->accept(KviUriDrag::canDecode(e));
+	//e->accept(KviUriDrag::canDecode(e));
+	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
 	emit dndEntered();
 }
 
 void KviIrcView::dropEvent(QDropEvent *e)
 {
 	if(!m_bAcceptDrops)return;
-	QStringList list;
-	if(KviUriDrag::decodeLocalFiles(e,list))
+	//QStringList list;
+	QList<QUrl> list;
+	if(e->mimeData()->hasUrls())
+	//if(KviUriDrag::decodeLocalFiles(e,list))
 	{
+		list = e->mimeData()->urls();
 		if(!list.isEmpty())
 		{
-			QStringList::ConstIterator it = list.begin(); //kewl ! :)
+			QList<QUrl>::Iterator it = list.begin();
+			//QStringList::ConstIterator it = list.begin(); //kewl ! :)
 			for( ; it != list.end(); ++it )
 			{
-				QString tmp = *it; //wow :)
+				QUrl url = *it;
+				QString path = url.path();
+				//QString tmp = *it; //wow :)
 				#ifndef COMPILE_ON_WINDOWS
-					if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
+					//if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
+					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
-				emit fileDropped(tmp);
+				//emit fileDropped(tmp);
+				emit fileDropped(path);
 			}
 		}
 	}
@@ -617,7 +600,7 @@ void KviIrcView::flushLog()
 		} else 
 #endif
 		m_pLogFile->flush();
-	}	
+	}
 	else if(m_pMasterView)m_pMasterView->flushLog();
 }
 
@@ -925,15 +908,11 @@ bool KviIrcView::event(QEvent *e)
 
 void KviIrcView::wheelEvent(QWheelEvent *e)
 {
-#ifdef COMPILE_USE_QT4
 	static bool bHere = false;
 	if(bHere)return;
 	bHere = true; // Qt4 tends to jump into infinite recursion here
-#endif
 	g_pApp->sendEvent(m_pScrollBar,e);
-#ifdef COMPILE_USE_QT4
 	bHere = false;
-#endif
 }
 
 
@@ -2750,18 +2729,7 @@ void KviIrcView::fastScroll(int lines)
 		} else lines = 0;
 	}
 
-#ifdef COMPILE_USE_QT4
 	scroll(0,-(heightToPaint-1),QRect(1,1,widgetWidth-2,widgetHeight-2));
-#else
-	bitBlt(this,1,1,this,1,heightToPaint,widgetWidth -2,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER));
-
-	QRect r(0,widgetHeight - (heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER),
-			widgetWidth,heightToPaint + KVI_IRCVIEW_VERTICAL_BORDER);
-
-	QPaintEvent * e = new QPaintEvent(r);
-	paintEvent(e);
-	delete e;
-#endif
 
 	if(m_iLastLinkRectHeight > -1)
 	{
@@ -2830,14 +2798,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	int rectWidth  = r.width();
 	if(rectWidth > widgetWidth)rectWidth = widgetWidth;
 
-#ifdef COMPILE_USE_QT4
 	QPainter pa(this); // we use qt4 double buffering
-#else
-	KviDoubleBuffer doublebuffer(width(),height());
-	QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
-	
-	QPainter pa(pDoubleBufferPixmap);
-#endif
+
 	SET_ANTI_ALIASING(pa);
 
 	pa.setFont(font());
@@ -3336,17 +3298,9 @@ no_selection_paint:
 		{
 			// paint the cursor line
 			int iH = lineWrapsHeight + m_iFontLineSpacing;
-#ifdef COMPILE_USE_QT4
 			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);
-#else
-			pa.setRasterOp(NotROP);
-#endif
 			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),Qt::black);
-#ifdef COMPILE_USE_QT4
 			pa.setCompositionMode(QPainter::CompositionMode_SourceOver);
-#else
-			pa.setRasterOp(CopyROP);
-#endif
 		}
 
 		if(m_bMouseIsDown)
@@ -3368,11 +3322,7 @@ no_selection_paint:
 				// visible!
 				bLineMarkPainted = true;
 				//pa.setRasterOp(NotROP);
-#ifdef COMPILE_USE_QT4
 				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
-#else
-				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,QPen::DotLine));
-#endif
 				pa.drawLine(0,curBottomCoord,widgetWidth,curBottomCoord);
 				//pa.setRasterOp(CopyROP);
 			} // else was partially visible only
@@ -3414,11 +3364,7 @@ no_selection_paint:
 				// need to mark it!
 				//pa.setRasterOp(NotROP);
 				//pa.setPen(Qt::black);
-#ifdef COMPILE_USE_QT4
 				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
-#else
-				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,QPen::DotLine));
-#endif
 				int x = widgetWidth - 8;
 				int y = KVI_IRCVIEW_VERTICAL_BORDER;
 				pa.drawLine(x,y,x,y);
@@ -3439,12 +3385,6 @@ no_selection_paint:
 	widgetWidth--;
 	pa.drawLine(1,widgetHeight-1,widgetWidth,widgetHeight-1);
 	pa.drawLine(widgetWidth,1,widgetWidth,widgetHeight);
-
-	// COPY TO THE DISPLAY
-#ifndef COMPILE_USE_QT4
-	bitBlt(this,rectLeft,rectTop,pDoubleBufferPixmap,rectLeft,rectTop,rectWidth,rectHeight,Qt::CopyROP);
-#endif
-// else we use the Qt4 native double buffering
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4064,11 +4004,7 @@ void KviIrcView::findNext(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 			if(bRegExp)
 			{
 				QRegExp re(szText,bCaseS,!bExtended);
-#if QT_VERSION >= 300
 				idx = re.search(l->szText,0);
-#else
-				idx = re.find(l->szText,0);
-#endif
 			} else {
 				QString tmp = l->szText;
 				idx = tmp.find(szText,0,bCaseS);
@@ -4121,11 +4057,7 @@ void KviIrcView::findPrev(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 			if(bRegExp)
 			{
 				QRegExp re(szText,bCaseS,!bExtended);
-#if QT_VERSION >= 300
 				idx = re.search(l->szText,0);
-#else
-				idx = re.find(l->szText,0);
-#endif
 			} else {
 				QString tmp = l->szText;
 				idx = tmp.find(szText,0,bCaseS);;

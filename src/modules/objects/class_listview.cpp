@@ -24,18 +24,20 @@
 //
 //=================================================================================
 
-
-#include "kvi_tal_listview.h"
-#include <q3header.h>
-#include <qevent.h>
 #include "class_listview.h"
+
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+#include "kvi_tal_listview.h"
 
-
+// FIXME: Qt4 #include <QHeaderView>
+#include <q3header.h>
+#include <QEvent>
+#include <QDragEnterEvent>
+#include <QDropEvent>
+#include <QUrl>
 
 /*
 	@doc: listview
@@ -520,7 +522,7 @@ KviKvsMdmListView::~KviKvsMdmListView()
 
 void KviKvsMdmListView::contentsDragEnterEvent( QDragEnterEvent *e )
 {
-		if ( !KviUriDrag::canDecode(e))
+		if(!e->mimeData()->hasUrls())
 		{
 			e->ignore();
 			return;
@@ -528,26 +530,29 @@ void KviKvsMdmListView::contentsDragEnterEvent( QDragEnterEvent *e )
 
 }
 
-
 void KviKvsMdmListView::contentsDropEvent(QDropEvent *e)
 {
-	QStringList list;
-	if(KviUriDrag::decodeLocalFiles(e,list))
+	QList<QUrl> list;
+	if(e->mimeData()->hasUrls())
 	{
+		list = e->mimeData()->urls();
+
 		if(!list.isEmpty())
 		{
-			QStringList::ConstIterator it = list.begin(); //kewl ! :)
+			QList<QUrl>::Iterator it = list.begin();
 			for( ; it != list.end(); ++it )
 			{
-				QString tmp = *it; //wow :)
+				QUrl url = *it;
+				QString path = url.path();
 				#ifndef COMPILE_ON_WINDOWS
-					if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
+					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
 				KviTalListViewItem *i = itemAt( contentsToViewport(e->pos()) );
-				m_pParentScript->fileDropped(tmp,i);
+				m_pParentScript->fileDropped(path,i);
 			}
 		}
 	}
 
 }
+
 #include "m_class_listview.moc"

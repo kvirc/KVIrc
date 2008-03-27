@@ -28,8 +28,8 @@
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 
-#include <qwidget.h>
-#include <qpixmap.h>      // needed
+#include <QWidget>
+#include <QPixmap>      // needed
 
 class QScrollBar;
 class QLineEdit;
@@ -65,14 +65,8 @@ public:
 	~KviIrcView();
 public:
 	int dummyRead() const { return 0; };
-#ifdef COMPILE_USE_QT4
 	bool getPaintOnScreen() const { return testAttribute(Qt::WA_PaintOnScreen);};
 	void setPaintOnScreen(bool bFlag){setAttribute(Qt::WA_PaintOnScreen,bFlag);} ;
-#else
-	// hack to fix moc bug on win qt4
-	bool getPaintOnScreen() const { return 0;};
-	void setPaintOnScreen(bool bFlag){} ;
-#endif
 private:
 //	QDate                       m_lastLogDay;
 	int		 	                m_iFlushTimer;

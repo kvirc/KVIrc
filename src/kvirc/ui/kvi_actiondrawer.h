@@ -26,11 +26,10 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-
-#include <qwidget.h>
-#include <qtabwidget.h>
-
 #include "kvi_listview.h"
+
+#include <QWidget>
+#include <QTabWidget>
 
 class KviActionDrawerPage;
 class QPixmap;

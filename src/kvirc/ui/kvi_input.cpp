@@ -35,7 +35,6 @@
 #include "kvi_colorwin.h"
 #include "kvi_texticonwin.h"
 #include "kvi_window.h"
-
 #include "kvi_locale.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_userlistview.h"
@@ -54,30 +53,32 @@
 #include "kvi_styled_controls.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_draganddrop.h"
+#include "kvi_pointerlist.h"
+#include "kvi_tal_popupmenu.h"
+#include "kvi_tal_hbox.h"
 
-#include <qlabel.h>
+#include <QLabel>
+#include <QFileDialog>
+#include <QPainter>
+#include <QClipboard>
+#include <QStringList>
+#include <qapplication.h>
+#include <QMessageBox>
+#include <QLayout>
+#include <QStyle>
+//#include <qevent.h>
+#include <QEvent>
+#include <QMouseEvent>
+#include <QUrl>
+
 #include <ctype.h>
 #include <stdlib.h>
-#include <qfiledialog.h>
-#include "kvi_tal_popupmenu.h"
-#include <qpainter.h>
-#include <qclipboard.h>
-#include <qstringlist.h>
-#include "kvi_pointerlist.h"
-#include <qapplication.h>
-#include <qclipboard.h>
-#include <qmessagebox.h>
-#include "kvi_tal_hbox.h"
-#include <qlayout.h> 
-#include <qstyle.h>
-#include <qevent.h>
-
 
 #ifndef ACCEL_KEY
 #define ACCEL_KEY(k) "\t" + QString(QKeySequence( Qt::CTRL | Qt::Key_ ## k ))
 #endif
 
-// FIXME: #warning "This hack is temporary...later remove it"
+/* FIXME: #warning "This hack is temporary...later remove it"
 #if QT_VERSION >= 300
 	#ifndef QT_CLEAN_NAMESPACE
 		#define QT_CLEAN_NAMESPACE
@@ -89,6 +90,7 @@
 #else
 	#include <qcursor.h>
 #endif
+*/
 
 
 
@@ -96,9 +98,9 @@
 extern KviColorWindow    * g_pColorWindow;
 extern KviTextIconWindow * g_pTextIconWindow;
 extern KviHistoryWindow  * g_pHistoryWindow;
-extern KviTalPopupMenu        * g_pInputPopup;
+extern KviTalPopupMenu   * g_pInputPopup;
 
-static QFontMetrics             * g_pLastFontMetrics = 0;
+static QFontMetrics      * g_pLastFontMetrics = 0;
 
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -207,13 +209,8 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	
 	setInputMethodEnabled(true);
 
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
-#else
-	setBackgroundMode(Qt::NoBackground);
-	setFocusPolicy(QWidget::StrongFocus);
-#endif
 	setAcceptDrops(true);
 	setFrameStyle( LineEditPanel );
 	setFrameShadow( Plain );
@@ -221,11 +218,7 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_pIconMenu = new KviTalPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
 
-#ifdef COMPILE_USE_QT4
 	setCursor(Qt::IBeamCursor);
-#else
-	setCursor(IbeamCursor);
-#endif
 }
 
 KviInputEditor::~KviInputEditor()
@@ -263,39 +256,34 @@ void KviInputEditor::applyOptions()
 
 void KviInputEditor::dragEnterEvent(QDragEnterEvent *e)
 {
-	if(KviUriDrag::canDecode(e))
-	{
-		e->accept(true);
-// FIXME: #warning "FIX THIS COMMENTED STUFF"
-/*
-		m_pKviWindow->m_pFrm->m_pStatusBar->tempText(__tr("Drop the file to /PARSE it"),5000);
-*/
-	} else e->accept(false);
+	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
 }
 
 void KviInputEditor::dropEvent(QDropEvent *e)
 {
-	QStringList list;
-	if(KviUriDrag::decodeLocalFiles(e,list))
+	QList<QUrl> list;
+	if(e->mimeData()->hasUrls())
 	{
+		list = e->mimeData()->urls();
 		//debug("Local files decoded");
 		if(!list.isEmpty())
 		{
 			//debug("List not empty");
-			QStringList::ConstIterator it = list.begin(); //kewl ! :)
-    		for( ; it != list.end(); ++it )
+			QList<QUrl>::Iterator it = list.begin();
+			for( ; it != list.end(); ++it )
 			{
-				QString tmp = *it; //wow :)
+				QUrl url = *it;
+				QString path = url.path();
 #ifndef COMPILE_ON_WINDOWS
-				if(tmp.length() > 0)
+				if(path.length() > 0)
 				{
-					if(tmp[0] != QChar('/'))tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
+					if(path[0] != QChar('/'))path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				}
 #endif
-				tmp.prepend("/PARSE \"");
-				tmp.append("\"");
+				path.prepend("/PARSE \"");
+				path.append("\"");
 				if(m_pKviWindow)
-					KviKvsScript::run(tmp,m_pKviWindow);
+					KviKvsScript::run(path,m_pKviWindow);
 			}
 		}
 	}
@@ -314,23 +302,16 @@ QSize KviInputEditor::sizeHint() const
 	int h = QMAX(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
 	int w = fm.width( 'x' ) * 17; // "some"
 	int m = frameWidth() * 2;
-#ifdef COMPILE_USE_QT4
 	QStyleOption opt;
 	opt.initFrom(this);
 	return (style()->sizeFromContents(QStyle::CT_LineEdit,&opt,
-				     QSize( w + m, h + m ).
-				     expandedTo(QApplication::globalStrut()),this));
-#else
-	return (style().sizeFromContents(QStyle::CT_LineEdit, this,
-				     QSize( w + m, h + m ).
-				     expandedTo(QApplication::globalStrut())));
-#endif
+			QSize( w + m, h + m ).
+			expandedTo(QApplication::globalStrut()),this));
 }
 
 #define KVI_INPUT_DEF_BACK 100
 #define KVI_INPUT_DEF_FORE 101
 
-#ifdef COMPILE_USE_QT4
 void KviInputEditor::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
@@ -338,7 +319,6 @@ void KviInputEditor::paintEvent(QPaintEvent *e)
 	drawFrame(&p);
 	drawContents(&p);
 }
-#endif
 
 void KviInputEditor::drawContents(QPainter *p)
 {
@@ -526,11 +506,7 @@ void KviInputEditor::drawContents(QPainter *p)
 	while(m_iBlockLen < m_iCursorPosition)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
-#ifdef COMPILE_USE_QT4
 		m_iLastCursorXPosition+= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
-#else
-		m_iLastCursorXPosition+= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
-#endif
 		m_iBlockLen++;
 	}
 
@@ -544,12 +520,8 @@ void KviInputEditor::drawContents(QPainter *p)
 		pa.setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));
 	}
 
-#ifdef COMPILE_USE_QT4
 	// The other version of drawPixmap seems to be buggy
 	p->drawPixmap(rect.x(),rect.y(),rect.width(),rect.height(),*pDoubleBufferPixmap,0,0,widgetWidth,widgetHeight);
-#else
-	p->drawPixmap(rect.x(),rect.y(),*pDoubleBufferPixmap,0,0,widgetWidth,widgetHeight);
-#endif
 }
 
 void KviInputEditor::drawTextBlock(QPainter * pa,QFontMetrics & fm,int curXPos,int textBaseline,int charIdx,int len,bool bSelected)
@@ -648,11 +620,7 @@ void KviInputEditor::extractNextBlock(int idx,QFontMetrics & fm,int curXPos,int 
 				(c != QChar(KVI_TEXT_ICON))))
 			{
 				m_iBlockLen++;
-#ifdef COMPILE_USE_QT4
 				int xxx = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
-#else
-				int xxx = (c.unicode() < 256 ? g_iInputFontCharWidth[c.unicode()] : fm.width(c));
-#endif
 				m_iBlockWidth +=xxx;
 				curXPos       +=xxx;
 				idx++;
@@ -798,11 +766,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		{
 			szClip = c->text(QClipboard::Clipboard);
 			
-#ifdef COMPILE_USE_QT4
 			int occ = szClip.count(QChar('\n'));
-#else
-			int occ = szClip.contains(QChar('\n'));
-#endif
 	
 			if(!szClip.isEmpty())
 			{
@@ -834,11 +798,8 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 				l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 				l->setMargin(5);
 				// FIXME: This does NOT work under Qt 4.x (they seem to consider it as bad UI design)
-#ifndef COMPILE_USE_QT4
-				g_pInputPopup->insertItem(l);
-#else
+
 				delete l;
-#endif
 			}
 		}
 		
@@ -851,9 +812,9 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		id = g_pInputPopup->insertItem(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
 		if ((type == KVI_WINDOW_TYPE_CHANNEL) || (type == KVI_WINDOW_TYPE_QUERY) || (type == KVI_WINDOW_TYPE_DCCCHAT))
 			g_pInputPopup->setItemEnabled(id,!szClip.isEmpty() && !m_bReadOnly);
-		else 
+		else
 			g_pInputPopup->setItemEnabled(id,false);
-		id = g_pInputPopup->insertItem(__tr2qs("Paste &File") + ACCEL_KEY(F),this,SLOT(pasteFile()));
+		id = g_pInputPopup->insertItem(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
 		if ((type != KVI_WINDOW_TYPE_CHANNEL) && (type != KVI_WINDOW_TYPE_QUERY) && (type != KVI_WINDOW_TYPE_DCCCHAT))
 			g_pInputPopup->setItemEnabled(id,false);
 		else
@@ -1310,24 +1271,13 @@ void KviInputEditor::imComposeEvent(QIMEvent *e)
 {
 	// replace the old pre-edit string with e->text()
 	m_bUpdatesEnabled = false;
-#ifdef COMPILE_USE_QT4
-	// Qt 4.x ??????????
+
 	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
 
 	// update selection inside the pre-edit
 	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
 	m_iIMSelectionLength = e->replacementLength();
 	moveCursorTo(m_iIMSelectionBegin);
-
-#else
-	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->text());
-
-	// update selection inside the pre-edit
-	m_iIMSelectionBegin = m_iIMStart + e->cursorPos();
-	m_iIMSelectionLength = e->selectionLength();
-	moveCursorTo(m_iIMSelectionBegin);
-#endif
-
 
 	// repaint
 	m_bUpdatesEnabled = true;
@@ -1341,12 +1291,8 @@ void KviInputEditor::imEndEvent(QIMEvent *e)
 {
 	// replace the preedit area with the IM result text
 	m_bUpdatesEnabled = false;
-#ifdef COMPILE_USE_QT4
-	// Qt 4.x ??????????
+
 	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
-#else
-	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->text());
-#endif
 
 	// move cursor to after the IM result text
 	moveCursorTo(m_iIMStart + m_iIMLength);
@@ -2087,19 +2033,14 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
-#ifdef COMPILE_USE_QT4
 	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
-#else
-	m_iLastCursorXPosition += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
-#endif
+
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
-#ifdef COMPILE_USE_QT4
+
 		m_iLastCursorXPosition -= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
-#else
-		m_iLastCursorXPosition -= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
-#endif
+
 		m_iFirstVisibleChar++;
 	}
 }
@@ -2130,11 +2071,9 @@ int KviInputEditor::charIndexFromXPosition(int xPos)
 	while(curChar < bufLen)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
-#ifdef COMPILE_USE_QT4
+
 		int widthCh = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
-#else
-		int widthCh = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
-#endif
+
 		if(xPos < (curXPos+(widthCh/2)))return curChar;
 		else if(xPos < (curXPos+widthCh))return (curChar+1);
 		{
@@ -2153,11 +2092,9 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics& fm,int chIdx,bool bCon
 	while(curChar < chIdx)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
-#ifdef COMPILE_USE_QT4
+
 		curXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
-#else
-		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
-#endif
+
 		curChar++;
 	}
 	return curXPos;
@@ -2173,11 +2110,9 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 	while(curChar < chIdx)
 	{
 		QChar c = m_szTextBuffer.at(curChar);
-#ifdef COMPILE_USE_QT4
+
 		curXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 3 : g_pLastFontMetrics->width(c);
-#else
-		curXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : g_pLastFontMetrics->width(c);
-#endif
+
 		curChar++;
 	}
 	return curXPos;
@@ -2267,6 +2202,7 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)<br>
 		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box<br>
 		Ctrl+A: Select all<br>
+		Ctrl+L: Paste file<br>
 		CursorUp: Moves backward in the command history<br>
 		CursorDown: Moves forward in the command history<br>
 		CursorRight: Moves the cursor to the right<br>
@@ -2338,11 +2274,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pButtonContainer=new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
 
-#ifdef COMPILE_USE_QT4
 	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Preferred));
-//	if(m_pButtonContainer->layout())
-//		m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
-#endif
+	//if(m_pButtonContainer->layout())
+	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
 	m_pHistoryButton = new KviStyledToolButton(m_pButtonContainer,"historybutton");
 	m_pHistoryButton->setUsesBigPixmap(false);
@@ -2399,20 +2333,14 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	
 	m_pInputEditor = new KviInputEditor(this,par,view);
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
-#ifdef COMPILE_USE_QT4
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
-#else
-	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored));
-#endif
-	
 
-#ifdef COMPILE_USE_QT4
+
 	m_pMultiEditorButton->setAutoRaise(true);
 	m_pCommandlineModeButton->setAutoRaise(true);
 	m_pIconButton->setAutoRaise(true);
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
-#endif
 
 	pLayout->setStretchFactor(m_pInputEditor,100000);
 	pLayout->setStretchFactor(m_pButtonContainer,0);
@@ -2486,11 +2414,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 						{
 							if(szText[0] != '/')
 							{
-#ifdef COMPILE_USE_QT4
 								int nLines = szText.count('\n') + 1;
-#else
-								int nLines = szText.contains('\n') + 1;
-#endif
 								if(nLines > 15)
 								{
 									int nRet = QMessageBox::question(
