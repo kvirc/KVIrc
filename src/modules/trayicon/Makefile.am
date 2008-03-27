@@ -5,17 +5,17 @@
 AM_CPPFLAGS = -I$(SS_TOPSRCDIR)/src/kvilib/include/ -I$(SS_TOPSRCDIR)/src/kvirc/include/ \
 $(SS_INCDIRS) $(SS_CPPFLAGS) -DGLOBAL_KVIRC_DIR=\"$(globalkvircdir)\"
 
-pluglib_LTLIBRARIES      = libkvidockwidget.la
+pluglib_LTLIBRARIES      = libkvitrayicon.la
 
-libkvidockwidget_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
+libkvitrayicon_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
-libkvidockwidget_la_SOURCES = libkvidockwidget_qt3.cpp libkvidockwidget_qt4.cpp
+libkvitrayicon_la_SOURCES = libkvitrayicon.cpp
 
 #nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
 
-libkvidockwidget_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitrayicon_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
 
-noinst_HEADERS= libkvidockwidget.h libkvidockwidget_qt4.h libkvidockwidget_qt3.h
+noinst_HEADERS= libkvitrayicon.h
 
 tmpdir = $(picsdir)
 
@@ -29,5 +29,4 @@ EXTRA_DIST = $(tmp_DATA)
 moc_%.cpp: %.h
 	$(SS_QT_MOC) $< -o $@
 
-libkvidockwidget_qt3.cpp: libkvidockwidget_qt3.moc
-libkvidockwidget_qt4.cpp: libkvidockwidget_qt4.moc
+libkvitrayicon.cpp: libkvitrayicon.moc

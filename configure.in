@@ -203,7 +203,6 @@ AC_OUTPUT( \
 	src/modules/context/Makefile \
 	src/modules/dialog/Makefile \
 	src/modules/dcc/Makefile \
-	src/modules/dockwidget/Makefile \
 	src/modules/editor/Makefile \
 	src/modules/eventeditor/Makefile \
 	src/modules/file/Makefile \
@@ -255,6 +254,7 @@ AC_OUTPUT( \
 	src/modules/toolbar/Makefile \
 	src/modules/toolbareditor/Makefile \
 	src/modules/torrent/Makefile \
+	src/modules/trayicon/Makefile \
 	src/modules/url/Makefile \
 	src/modules/url/caps/Makefile \
 	src/modules/window/Makefile \

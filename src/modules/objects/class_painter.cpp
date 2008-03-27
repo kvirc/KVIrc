@@ -32,6 +32,8 @@
 #include "kvi_malloc.h"
 
 #include <QTextDocument>
+#include <QIcon>
+
 const Qt::PenStyle penstyles_cod[]= {
 	Qt::NoPen,
 	Qt::SolidLine,

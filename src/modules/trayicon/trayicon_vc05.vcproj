@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="dockwidget"
+	Name="trayicon"
 	ProjectGUID="{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}"
-	RootNamespace="dockwidget"
+	RootNamespace="trayicon"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -41,14 +41,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\..\kvirc\ui&quot;;&quot;$(ProjectDir)\..\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\..\kvirc\module&quot;;&quot;$(ProjectDir)\..\..\kvilib\config&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\..\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\..\kvirc\uparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\sparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\kernel&quot;;&quot;$(ProjectDir)\..\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\..\kvirc\kvs&quot;;&quot;$(ProjectDir)\..\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\..\kvilib\net&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DOCKWIDGET_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\..\kvirc\ui&quot;;&quot;$(ProjectDir)\..\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\..\kvirc\module&quot;;&quot;$(ProjectDir)\..\..\kvilib\config&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\..\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\..\kvirc\uparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\sparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\kernel&quot;;&quot;$(ProjectDir)\..\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\..\kvirc\kvs&quot;;&quot;$(ProjectDir)\..\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\..\kvilib\net&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;trayicon_EXPORTS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -62,17 +62,16 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt-$(QTTAG).lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib kvirc.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib"
+				AdditionalDependencies="qt3support4.lib qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
-				IgnoreAllDefaultLibraries="true"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/dockwidget.pdb"
+				ProgramDatabaseFile="$(OutDir)/trayicon.pdb"
 				SubSystem="2"
 				TurnOffAssemblyGeneration="true"
-				ImportLibrary="$(OutDir)/dockwidget.lib"
+				ImportLibrary="$(OutDir)/trayicon.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -129,15 +128,22 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="1"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\..\kvirc\ui&quot;;&quot;$(ProjectDir)\..\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\..\kvirc\module&quot;;&quot;$(ProjectDir)\..\..\kvilib\config&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\..\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\..\kvirc\uparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\sparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\kernel&quot;;&quot;$(ProjectDir)\..\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\..\kvirc\kvs&quot;;&quot;$(ProjectDir)\..\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\..\kvilib\net&quot;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DOCKWIDGET_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				InlineFunctionExpansion="2"
+				EnableIntrinsicFunctions="true"
+				FavorSizeOrSpeed="1"
+				OmitFramePointers="true"
+				EnableFiberSafeOptimizations="true"
+				WholeProgramOptimization="true"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\..\kvirc\ui&quot;;&quot;$(ProjectDir)\..\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\..\kvirc\module&quot;;&quot;$(ProjectDir)\..\..\kvilib\config&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\..\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\..\kvirc\uparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\sparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\kernel&quot;;&quot;$(ProjectDir)\..\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\..\kvirc\kvs&quot;;&quot;$(ProjectDir)\..\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\..\kvilib\net&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;trayicon_EXPORTS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
 				StringPooling="true"
-				MinimalRebuild="false"
+				MinimalRebuild="true"
 				ExceptionHandling="1"
-				RuntimeLibrary="0"
+				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -150,19 +156,20 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt-$(QTTAG).lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib kvilib.lib kvirc.lib msvcrt.lib perl58.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib winmm.lib"
+				AdditionalDependencies="kvilib.lib kvirc.lib  qt3support4.lib qtgui4.lib qtcore4.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
 				GenerateManifest="true"
-				IgnoreAllDefaultLibraries="true"
+				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
 				OptimizeForWindows98="1"
+				LinkTimeCodeGeneration="1"
 				TurnOffAssemblyGeneration="true"
-				ImportLibrary="$(OutDir)/dockwidget.lib"
+				ImportLibrary="$(OutDir)/trayicon.lib"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -203,7 +210,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\libkvidockwidget_qt3.cpp"
+				RelativePath=".\libkvitrayicon_qt4.cpp"
 				>
 			</File>
 		</Filter>
@@ -213,7 +220,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\libkvidockwidget.h"
+				RelativePath=".\libkvitrayicon.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -235,43 +242,21 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\libkvidockwidget_qt3.h"
+				RelativePath=".\libkvitrayicon_qt4.h"
 				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing libkvidockwidget_qt3.h..."
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\libkvidockwidget_qt3.h"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing libkvidockwidget_qt3.h..."
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\libkvidockwidget_qt3.h"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\libkvidockwidget_qt3.h"
+				RelativePath=".\trayicon.h"
 				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\moc_$(InputName).cpp"
-					/>
-				</FileConfiguration>
 			</File>
 		</Filter>
 		<Filter

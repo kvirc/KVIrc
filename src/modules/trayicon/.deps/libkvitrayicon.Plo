@@ -1,0 +1,1046 @@
+libkvitrayicon.lo .libs/libkvitrayicon.o: libkvitrayicon.cpp \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h \
+  /usr/lib/qt4/include/Qt/qglobal.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/include/stddef.h \
+  /usr/lib/qt4/include/QtCore/qconfig.h \
+  /usr/lib/qt4/include/QtCore/qfeatures.h ../../../src/config.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_app.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_string.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h \
+  /usr/include/stdio.h /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-32.h /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h /usr/include/libio.h \
+  /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/include/stdarg.h \
+  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+  /usr/include/string.h /usr/include/xlocale.h /usr/include/ctype.h \
+  /usr/include/endian.h /usr/include/bits/endian.h /usr/include/strings.h \
+  /usr/lib/qt4/include/Qt/qstring.h /usr/lib/qt4/include/QtCore/qchar.h \
+  /usr/lib/qt4/include/QtCore/qglobal.h \
+  /usr/lib/qt4/include/QtCore/qbytearray.h \
+  /usr/lib/qt4/include/QtCore/qatomic.h \
+  /usr/lib/qt4/include/QtCore/qatomic_arch.h \
+  /usr/lib/qt4/include/QtCore/qatomic_i386.h \
+  /usr/lib/qt4/include/QtCore/qnamespace.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/string \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++config.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/os_defines.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/cpu_defines.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stringfwd.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/char_traits.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstring \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstddef \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_algobase.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/climits \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/include/limits.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/include/syslimits.h \
+  /usr/include/limits.h /usr/include/bits/posix1_lim.h \
+  /usr/include/bits/local_lim.h /usr/include/linux/limits.h \
+  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdlib \
+  /usr/include/stdlib.h /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
+  /usr/include/time.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/bits/sigset.h \
+  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/iosfwd \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++locale.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdio \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/clocale \
+  /usr/include/locale.h /usr/include/bits/locale.h \
+  /usr/include/langinfo.h /usr/include/nl_types.h /usr/include/iconv.h \
+  /usr/include/libintl.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdarg \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++io.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/gthr.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/gthr-default.h \
+  /usr/include/pthread.h /usr/include/sched.h /usr/include/bits/sched.h \
+  /usr/include/signal.h /usr/include/bits/setjmp.h /usr/include/unistd.h \
+  /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+  /usr/include/bits/confname.h /usr/include/getopt.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cctype \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/postypes.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cwchar \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ctime \
+  /usr/include/bits/wchar.h /usr/include/stdint.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/functexcept.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/exception_defines.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_pair.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/cpp_type_traits.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/type_traits.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/utility \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_relops.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator_base_types.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator_base_funcs.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/concept_check.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/debug/debug.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/memory \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/allocator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++allocator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/new_allocator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/new \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/exception \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_construct.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_uninitialized.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_raw_storage_iter.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/limits \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ostream_insert.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_function.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_string.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/atomicity.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/atomic_word.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/algorithm \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_algo.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_heap.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_tempbuf.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_string.tcc \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qcstring.h \
+  /usr/lib/qt4/include/Qt/q3cstring.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_inttypes.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_heapobject.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_stdarg.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qstring.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_application.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_application_qt.h \
+  /usr/lib/qt4/include/Qt/qapplication.h \
+  /usr/lib/qt4/include/QtCore/qcoreapplication.h \
+  /usr/lib/qt4/include/QtCore/qobject.h \
+  /usr/lib/qt4/include/QtCore/qobjectdefs.h \
+  /usr/lib/qt4/include/QtCore/qstring.h \
+  /usr/lib/qt4/include/QtCore/qlist.h \
+  /usr/lib/qt4/include/QtCore/qiterator.h \
+  /usr/lib/qt4/include/QtCore/qalgorithms.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/iterator \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ostream \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ios \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/localefwd.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ios_base.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_classes.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/streambuf \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/streambuf.tcc \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_ios.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/streambuf_iterator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_facets.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cwctype \
+  /usr/include/wctype.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/ctype_base.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/ctype_inline.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/codecvt.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/time_members.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/messages_members.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_ios.tcc \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ostream.tcc \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/locale \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_facets.tcc \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/typeinfo \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/istream \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/istream.tcc \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stream_iterator.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/list \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_list.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/list.tcc \
+  /usr/lib/qt4/include/QtCore/qcoreevent.h \
+  /usr/lib/qt4/include/QtCore/qeventloop.h \
+  /usr/lib/qt4/include/QtGui/qwindowdefs.h \
+  /usr/lib/qt4/include/QtCore/qpoint.h \
+  /usr/lib/qt4/include/QtCore/qsize.h \
+  /usr/lib/qt4/include/QtGui/qcursor.h \
+  /usr/lib/qt4/include/QtGui/qwidget.h \
+  /usr/lib/qt4/include/QtGui/qpaintdevice.h \
+  /usr/lib/qt4/include/QtCore/qrect.h \
+  /usr/lib/qt4/include/QtGui/qpalette.h \
+  /usr/lib/qt4/include/QtGui/qcolor.h /usr/lib/qt4/include/QtGui/qrgb.h \
+  /usr/lib/qt4/include/QtCore/qstringlist.h \
+  /usr/lib/qt4/include/QtCore/qdatastream.h \
+  /usr/lib/qt4/include/QtCore/qiodevice.h \
+  /usr/lib/qt4/include/QtCore/qregexp.h \
+  /usr/lib/qt4/include/QtCore/qstringmatcher.h \
+  /usr/lib/qt4/include/QtGui/qbrush.h /usr/lib/qt4/include/QtCore/qpair.h \
+  /usr/lib/qt4/include/QtCore/qvector.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/vector \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_vector.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_bvector.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/vector.tcc \
+  /usr/lib/qt4/include/QtGui/qmatrix.h \
+  /usr/lib/qt4/include/QtGui/qpolygon.h \
+  /usr/lib/qt4/include/QtGui/qregion.h \
+  /usr/lib/qt4/include/QtCore/qline.h \
+  /usr/lib/qt4/include/QtGui/qwmatrix.h \
+  /usr/lib/qt4/include/QtGui/qtransform.h \
+  /usr/lib/qt4/include/QtGui/qpainterpath.h \
+  /usr/lib/qt4/include/QtGui/qimage.h \
+  /usr/lib/qt4/include/QtGui/qpixmap.h /usr/lib/qt4/include/QtGui/qfont.h \
+  /usr/lib/qt4/include/QtGui/qfontmetrics.h \
+  /usr/lib/qt4/include/QtGui/qfontinfo.h \
+  /usr/lib/qt4/include/QtGui/qsizepolicy.h \
+  /usr/lib/qt4/include/QtGui/qkeysequence.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerlist.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_time.h \
+  /usr/include/sys/time.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerhashtable.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerlist.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_string.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qstring.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_malloc.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_memmove.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_module.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_parameterlist.h \
+  /usr/lib/qt4/include/Qt/qrect.h /usr/lib/qt4/include/Qt/qpoint.h \
+  /usr/lib/qt4/include/Qt/qsize.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_library.h \
+  /usr/include/dlfcn.h /usr/include/bits/dlfcn.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_moduleextension.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_heapobject.h \
+  /usr/lib/qt4/include/Qt/qpixmap.h /usr/lib/qt4/include/Qt/qvariant.h \
+  /usr/lib/qt4/include/QtCore/qmetatype.h \
+  /usr/lib/qt4/include/QtCore/qmap.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/map \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_tree.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_map.h \
+  /usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_multimap.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_moduleinterface.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_runtimecall.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_runtimecontext.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_window.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qcstring.h \
+  /usr/lib/qt4/include/Qt/qframe.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_hbox.h \
+  /usr/lib/qt4/include/QtGui/QWidget /usr/lib/qt4/include/QtGui/qwidget.h \
+  /usr/lib/qt4/include/QtGui/QHBoxLayout \
+  /usr/lib/qt4/include/QtGui/qboxlayout.h \
+  /usr/lib/qt4/include/QtGui/qlayout.h \
+  /usr/lib/qt4/include/QtGui/qlayoutitem.h \
+  /usr/lib/qt4/include/QtGui/qboxlayout.h \
+  /usr/lib/qt4/include/QtGui/qgridlayout.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_widgetstack.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_widgetstack_qt4.h \
+  /usr/lib/qt4/include/Qt/q3widgetstack.h \
+  /usr/lib/qt4/include/Qt3Support/q3frame.h \
+  /usr/lib/qt4/include/QtGui/qframe.h \
+  /usr/lib/qt4/include/Qt3Support/q3intdict.h \
+  /usr/lib/qt4/include/Qt3Support/q3gdict.h \
+  /usr/lib/qt4/include/Qt3Support/q3ptrcollection.h \
+  /usr/lib/qt4/include/Qt3Support/q3ptrdict.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_accel.h \
+  /usr/lib/qt4/include/Qt/q3accel.h /usr/lib/qt4/include/Qt/qwidget.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_variant.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_types.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_inttypes.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_array.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_hash.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_variantlist.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_switchlist.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_parameterprocessor.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_script.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_crypt.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerhashtable.h \
+  /usr/lib/qt4/include/Qt/qobject.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_locale.h \
+  /usr/lib/qt4/include/Qt/qtranslator.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_memmove.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_taskbar.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_tooltip.h \
+  /usr/lib/qt4/include/Qt/qtooltip.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_listview.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_listview_qt4.h \
+  /usr/lib/qt4/include/Qt/q3listview.h \
+  /usr/lib/qt4/include/Qt3Support/q3scrollview.h \
+  /usr/lib/qt4/include/QtGui/qscrollbar.h \
+  /usr/lib/qt4/include/QtGui/qabstractslider.h \
+  /usr/lib/qt4/include/Qt/qpushbutton.h \
+  /usr/lib/qt4/include/QtGui/qabstractbutton.h \
+  /usr/lib/qt4/include/QtGui/qicon.h \
+  /usr/lib/qt4/include/QtGui/QDockWidget \
+  /usr/lib/qt4/include/QtGui/qdockwidget.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_window.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_dynamictooltip.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_iconmanager.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_avatar.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_internalcmd.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_console.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnection.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircsocket.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_sockettype.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_irccontext.h \
+  /usr/lib/qt4/include/Qt/qcombobox.h \
+  /usr/lib/qt4/include/QtGui/qabstractitemdelegate.h \
+  /usr/lib/qt4/include/QtGui/qstyleoption.h \
+  /usr/lib/qt4/include/QtCore/qvariant.h \
+  /usr/lib/qt4/include/QtGui/qabstractspinbox.h \
+  /usr/lib/qt4/include/QtGui/qvalidator.h \
+  /usr/lib/qt4/include/QtCore/qlocale.h \
+  /usr/lib/qt4/include/QtGui/qslider.h \
+  /usr/lib/qt4/include/QtGui/qstyle.h \
+  /usr/lib/qt4/include/QtGui/qtabbar.h \
+  /usr/lib/qt4/include/QtGui/qtabwidget.h \
+  /usr/lib/qt4/include/QtGui/qrubberband.h \
+  /usr/lib/qt4/include/QtCore/qabstractitemmodel.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnection.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnectionuserinfo.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_imagelib.h \
+  /usr/lib/qt4/include/Qt/qimage.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_options.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pixmap.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_msgtype.h \
+  /usr/lib/qt4/include/Qt/qcolor.h /usr/lib/qt4/include/Qt/qfont.h \
+  /usr/lib/qt4/include/Qt/qstringlist.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircview.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_doublebuffer.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_popupmenu.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_popupmenu_qt4.h \
+  /usr/lib/qt4/include/Qt/q3popupmenu.h \
+  /usr/lib/qt4/include/QtGui/qmenu.h /usr/lib/qt4/include/QtGui/qaction.h \
+  /usr/lib/qt4/include/QtGui/qactiongroup.h \
+  /usr/lib/qt4/include/Qt/qwidgetaction.h libkvitrayicon.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_frame.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_mainwindow.h \
+  /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_mainwindow_qt.h \
+  /usr/lib/qt4/include/QtGui/QMainWindow \
+  /usr/lib/qt4/include/QtGui/qmainwindow.h \
+  /usr/lib/qt4/include/QtGui/QSystemTrayIcon \
+  /usr/lib/qt4/include/QtGui/qsystemtrayicon.h \
+  /usr/lib/qt4/include/QtGui/QLabel /usr/lib/qt4/include/QtGui/qlabel.h \
+  /usr/lib/qt4/include/QtGui/QPixmap /usr/lib/qt4/include/QtGui/qpixmap.h \
+  /usr/lib/qt4/include/QtGui/QPainter \
+  /usr/lib/qt4/include/QtGui/qpainter.h \
+  /usr/lib/qt4/include/QtGui/qtextoption.h \
+  /usr/lib/qt4/include/QtGui/qdrawutil.h \
+  /usr/lib/qt4/include/QtGui/qpen.h /usr/lib/qt4/include/QtCore/QTimer \
+  /usr/lib/qt4/include/QtCore/qtimer.h \
+  /usr/lib/qt4/include/QtCore/qbasictimer.h \
+  /usr/lib/qt4/include/QtCore/QEvent \
+  /usr/lib/qt4/include/QtCore/qcoreevent.h \
+  /usr/lib/qt4/include/QtCore/QRegExp \
+  /usr/lib/qt4/include/QtCore/qregexp.h libkvitrayicon.moc
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h:
+
+/usr/lib/qt4/include/Qt/qglobal.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/include/stddef.h:
+
+/usr/lib/qt4/include/QtCore/qconfig.h:
+
+/usr/lib/qt4/include/QtCore/qfeatures.h:
+
+../../../src/config.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_app.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_string.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_settings.h:
+
+/usr/include/stdio.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/string.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/ctype.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/strings.h:
+
+/usr/lib/qt4/include/Qt/qstring.h:
+
+/usr/lib/qt4/include/QtCore/qchar.h:
+
+/usr/lib/qt4/include/QtCore/qglobal.h:
+
+/usr/lib/qt4/include/QtCore/qbytearray.h:
+
+/usr/lib/qt4/include/QtCore/qatomic.h:
+
+/usr/lib/qt4/include/QtCore/qatomic_arch.h:
+
+/usr/lib/qt4/include/QtCore/qatomic_i386.h:
+
+/usr/lib/qt4/include/QtCore/qnamespace.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/string:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++config.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/os_defines.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/cpu_defines.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stringfwd.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/char_traits.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstring:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstddef:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_algobase.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/climits:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/include/limits.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/include/syslimits.h:
+
+/usr/include/limits.h:
+
+/usr/include/bits/posix1_lim.h:
+
+/usr/include/bits/local_lim.h:
+
+/usr/include/linux/limits.h:
+
+/usr/include/bits/posix2_lim.h:
+
+/usr/include/bits/xopen_lim.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdlib:
+
+/usr/include/stdlib.h:
+
+/usr/include/bits/waitflags.h:
+
+/usr/include/bits/waitstatus.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/iosfwd:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++locale.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdio:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/clocale:
+
+/usr/include/locale.h:
+
+/usr/include/bits/locale.h:
+
+/usr/include/langinfo.h:
+
+/usr/include/nl_types.h:
+
+/usr/include/iconv.h:
+
+/usr/include/libintl.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cstdarg:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++io.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/gthr.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/gthr-default.h:
+
+/usr/include/pthread.h:
+
+/usr/include/sched.h:
+
+/usr/include/bits/sched.h:
+
+/usr/include/signal.h:
+
+/usr/include/bits/setjmp.h:
+
+/usr/include/unistd.h:
+
+/usr/include/bits/posix_opt.h:
+
+/usr/include/bits/environments.h:
+
+/usr/include/bits/confname.h:
+
+/usr/include/getopt.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cctype:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/postypes.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cwchar:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ctime:
+
+/usr/include/bits/wchar.h:
+
+/usr/include/stdint.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/functexcept.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/exception_defines.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_pair.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/cpp_type_traits.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/type_traits.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/utility:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_relops.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator_base_types.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator_base_funcs.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/concept_check.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_iterator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/debug/debug.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/memory:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/allocator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/c++allocator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/new_allocator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/new:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/exception:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_construct.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_uninitialized.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_raw_storage_iter.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/limits:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ostream_insert.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_function.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_string.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ext/atomicity.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/atomic_word.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/algorithm:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_algo.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_heap.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_tempbuf.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_string.tcc:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qcstring.h:
+
+/usr/lib/qt4/include/Qt/q3cstring.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_inttypes.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_heapobject.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_stdarg.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qstring.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_application.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_application_qt.h:
+
+/usr/lib/qt4/include/Qt/qapplication.h:
+
+/usr/lib/qt4/include/QtCore/qcoreapplication.h:
+
+/usr/lib/qt4/include/QtCore/qobject.h:
+
+/usr/lib/qt4/include/QtCore/qobjectdefs.h:
+
+/usr/lib/qt4/include/QtCore/qstring.h:
+
+/usr/lib/qt4/include/QtCore/qlist.h:
+
+/usr/lib/qt4/include/QtCore/qiterator.h:
+
+/usr/lib/qt4/include/QtCore/qalgorithms.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/iterator:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ostream:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/ios:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/localefwd.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ios_base.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_classes.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/streambuf:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/streambuf.tcc:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_ios.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/streambuf_iterator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_facets.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/cwctype:
+
+/usr/include/wctype.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/ctype_base.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/ctype_inline.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/codecvt.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/time_members.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/i486-slackware-linux/bits/messages_members.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/basic_ios.tcc:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/ostream.tcc:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/locale:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/locale_facets.tcc:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/typeinfo:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/istream:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/istream.tcc:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stream_iterator.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/list:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_list.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/list.tcc:
+
+/usr/lib/qt4/include/QtCore/qcoreevent.h:
+
+/usr/lib/qt4/include/QtCore/qeventloop.h:
+
+/usr/lib/qt4/include/QtGui/qwindowdefs.h:
+
+/usr/lib/qt4/include/QtCore/qpoint.h:
+
+/usr/lib/qt4/include/QtCore/qsize.h:
+
+/usr/lib/qt4/include/QtGui/qcursor.h:
+
+/usr/lib/qt4/include/QtGui/qwidget.h:
+
+/usr/lib/qt4/include/QtGui/qpaintdevice.h:
+
+/usr/lib/qt4/include/QtCore/qrect.h:
+
+/usr/lib/qt4/include/QtGui/qpalette.h:
+
+/usr/lib/qt4/include/QtGui/qcolor.h:
+
+/usr/lib/qt4/include/QtGui/qrgb.h:
+
+/usr/lib/qt4/include/QtCore/qstringlist.h:
+
+/usr/lib/qt4/include/QtCore/qdatastream.h:
+
+/usr/lib/qt4/include/QtCore/qiodevice.h:
+
+/usr/lib/qt4/include/QtCore/qregexp.h:
+
+/usr/lib/qt4/include/QtCore/qstringmatcher.h:
+
+/usr/lib/qt4/include/QtGui/qbrush.h:
+
+/usr/lib/qt4/include/QtCore/qpair.h:
+
+/usr/lib/qt4/include/QtCore/qvector.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/vector:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_vector.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_bvector.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/vector.tcc:
+
+/usr/lib/qt4/include/QtGui/qmatrix.h:
+
+/usr/lib/qt4/include/QtGui/qpolygon.h:
+
+/usr/lib/qt4/include/QtGui/qregion.h:
+
+/usr/lib/qt4/include/QtCore/qline.h:
+
+/usr/lib/qt4/include/QtGui/qwmatrix.h:
+
+/usr/lib/qt4/include/QtGui/qtransform.h:
+
+/usr/lib/qt4/include/QtGui/qpainterpath.h:
+
+/usr/lib/qt4/include/QtGui/qimage.h:
+
+/usr/lib/qt4/include/QtGui/qpixmap.h:
+
+/usr/lib/qt4/include/QtGui/qfont.h:
+
+/usr/lib/qt4/include/QtGui/qfontmetrics.h:
+
+/usr/lib/qt4/include/QtGui/qfontinfo.h:
+
+/usr/lib/qt4/include/QtGui/qsizepolicy.h:
+
+/usr/lib/qt4/include/QtGui/qkeysequence.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerlist.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_time.h:
+
+/usr/include/sys/time.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerhashtable.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerlist.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_string.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qstring.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_malloc.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_memmove.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_module.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_parameterlist.h:
+
+/usr/lib/qt4/include/Qt/qrect.h:
+
+/usr/lib/qt4/include/Qt/qpoint.h:
+
+/usr/lib/qt4/include/Qt/qsize.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_library.h:
+
+/usr/include/dlfcn.h:
+
+/usr/include/bits/dlfcn.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_moduleextension.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_heapobject.h:
+
+/usr/lib/qt4/include/Qt/qpixmap.h:
+
+/usr/lib/qt4/include/Qt/qvariant.h:
+
+/usr/lib/qt4/include/QtCore/qmetatype.h:
+
+/usr/lib/qt4/include/QtCore/qmap.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/map:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_tree.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_map.h:
+
+/usr/lib/gcc/i486-slackware-linux/4.2.3/../../../../include/c++/4.2.3/bits/stl_multimap.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_moduleinterface.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_runtimecall.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_runtimecontext.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_window.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_qcstring.h:
+
+/usr/lib/qt4/include/Qt/qframe.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_hbox.h:
+
+/usr/lib/qt4/include/QtGui/QWidget:
+
+/usr/lib/qt4/include/QtGui/qwidget.h:
+
+/usr/lib/qt4/include/QtGui/QHBoxLayout:
+
+/usr/lib/qt4/include/QtGui/qboxlayout.h:
+
+/usr/lib/qt4/include/QtGui/qlayout.h:
+
+/usr/lib/qt4/include/QtGui/qlayoutitem.h:
+
+/usr/lib/qt4/include/QtGui/qboxlayout.h:
+
+/usr/lib/qt4/include/QtGui/qgridlayout.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_widgetstack.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_widgetstack_qt4.h:
+
+/usr/lib/qt4/include/Qt/q3widgetstack.h:
+
+/usr/lib/qt4/include/Qt3Support/q3frame.h:
+
+/usr/lib/qt4/include/QtGui/qframe.h:
+
+/usr/lib/qt4/include/Qt3Support/q3intdict.h:
+
+/usr/lib/qt4/include/Qt3Support/q3gdict.h:
+
+/usr/lib/qt4/include/Qt3Support/q3ptrcollection.h:
+
+/usr/lib/qt4/include/Qt3Support/q3ptrdict.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_accel.h:
+
+/usr/lib/qt4/include/Qt/q3accel.h:
+
+/usr/lib/qt4/include/Qt/qwidget.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_variant.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_types.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_inttypes.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_array.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_hash.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_variantlist.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_switchlist.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_parameterprocessor.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_kvs_script.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_crypt.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pointerhashtable.h:
+
+/usr/lib/qt4/include/Qt/qobject.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_locale.h:
+
+/usr/lib/qt4/include/Qt/qtranslator.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_memmove.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_taskbar.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_tooltip.h:
+
+/usr/lib/qt4/include/Qt/qtooltip.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_listview.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_listview_qt4.h:
+
+/usr/lib/qt4/include/Qt/q3listview.h:
+
+/usr/lib/qt4/include/Qt3Support/q3scrollview.h:
+
+/usr/lib/qt4/include/QtGui/qscrollbar.h:
+
+/usr/lib/qt4/include/QtGui/qabstractslider.h:
+
+/usr/lib/qt4/include/Qt/qpushbutton.h:
+
+/usr/lib/qt4/include/QtGui/qabstractbutton.h:
+
+/usr/lib/qt4/include/QtGui/qicon.h:
+
+/usr/lib/qt4/include/QtGui/QDockWidget:
+
+/usr/lib/qt4/include/QtGui/qdockwidget.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_window.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_dynamictooltip.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_iconmanager.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_avatar.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_internalcmd.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_console.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnection.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircsocket.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_sockettype.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_irccontext.h:
+
+/usr/lib/qt4/include/Qt/qcombobox.h:
+
+/usr/lib/qt4/include/QtGui/qabstractitemdelegate.h:
+
+/usr/lib/qt4/include/QtGui/qstyleoption.h:
+
+/usr/lib/qt4/include/QtCore/qvariant.h:
+
+/usr/lib/qt4/include/QtGui/qabstractspinbox.h:
+
+/usr/lib/qt4/include/QtGui/qvalidator.h:
+
+/usr/lib/qt4/include/QtCore/qlocale.h:
+
+/usr/lib/qt4/include/QtGui/qslider.h:
+
+/usr/lib/qt4/include/QtGui/qstyle.h:
+
+/usr/lib/qt4/include/QtGui/qtabbar.h:
+
+/usr/lib/qt4/include/QtGui/qtabwidget.h:
+
+/usr/lib/qt4/include/QtGui/qrubberband.h:
+
+/usr/lib/qt4/include/QtCore/qabstractitemmodel.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnection.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircconnectionuserinfo.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_imagelib.h:
+
+/usr/lib/qt4/include/Qt/qimage.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_options.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_pixmap.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_msgtype.h:
+
+/usr/lib/qt4/include/Qt/qcolor.h:
+
+/usr/lib/qt4/include/Qt/qfont.h:
+
+/usr/lib/qt4/include/Qt/qstringlist.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_ircview.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_doublebuffer.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_popupmenu.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_popupmenu_qt4.h:
+
+/usr/lib/qt4/include/Qt/q3popupmenu.h:
+
+/usr/lib/qt4/include/QtGui/qmenu.h:
+
+/usr/lib/qt4/include/QtGui/qaction.h:
+
+/usr/lib/qt4/include/QtGui/qactiongroup.h:
+
+/usr/lib/qt4/include/Qt/qwidgetaction.h:
+
+libkvitrayicon.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/include/kvi_frame.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_mainwindow.h:
+
+/home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/include/kvi_tal_mainwindow_qt.h:
+
+/usr/lib/qt4/include/QtGui/QMainWindow:
+
+/usr/lib/qt4/include/QtGui/qmainwindow.h:
+
+/usr/lib/qt4/include/QtGui/QSystemTrayIcon:
+
+/usr/lib/qt4/include/QtGui/qsystemtrayicon.h:
+
+/usr/lib/qt4/include/QtGui/QLabel:
+
+/usr/lib/qt4/include/QtGui/qlabel.h:
+
+/usr/lib/qt4/include/QtGui/QPixmap:
+
+/usr/lib/qt4/include/QtGui/qpixmap.h:
+
+/usr/lib/qt4/include/QtGui/QPainter:
+
+/usr/lib/qt4/include/QtGui/qpainter.h:
+
+/usr/lib/qt4/include/QtGui/qtextoption.h:
+
+/usr/lib/qt4/include/QtGui/qdrawutil.h:
+
+/usr/lib/qt4/include/QtGui/qpen.h:
+
+/usr/lib/qt4/include/QtCore/QTimer:
+
+/usr/lib/qt4/include/QtCore/qtimer.h:
+
+/usr/lib/qt4/include/QtCore/qbasictimer.h:
+
+/usr/lib/qt4/include/QtCore/QEvent:
+
+/usr/lib/qt4/include/QtCore/qcoreevent.h:
+
+/usr/lib/qt4/include/QtCore/QRegExp:
+
+/usr/lib/qt4/include/QtCore/qregexp.h:
+
+libkvitrayicon.moc:

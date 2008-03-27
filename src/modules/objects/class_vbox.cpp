@@ -77,7 +77,7 @@ bool KviKvsObject_vbox::functionsetMargin(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_INT,0,iMargin)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((KviTalVBox *)widget())->setMargin(iMargin);
+	if (widget()) ((KviTalVBox *)widget())->setMargin(iMargin);
 	return true;
 }
 
@@ -87,7 +87,7 @@ bool KviKvsObject_vbox::functionsetSpacing(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_INT,0,iSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((KviTalVBox *)widget())->setSpacing(iSpacing);
+	if (widget()) ((KviTalVBox *)widget())->setSpacing(iSpacing);
 	return true;
 }
 

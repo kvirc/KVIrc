@@ -289,6 +289,7 @@ headers_HEADERS = \
 ../tal/kvi_tal_tooltip.cpp: ../tal/kvi_tal_tooltip.moc
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt3.moc
 ../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
+../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard.moc
 
 #
 # All the cpp files depend on the precompiled headers being up-to-date

@@ -30,10 +30,10 @@
 KviTalHBox::KviTalHBox(QWidget * pParent,char* name)
 : QWidget(pParent)
 {
-	this->setObjectName(name);
+	setObjectName(name);
 
-	m_pLayout = new QHBoxLayout();
-	this->setLayout(m_pLayout);
+	m_pLayout = new QHBoxLayout(this);
+	setLayout(m_pLayout);
 }
 
 void KviTalHBox::childEvent(QChildEvent * e)
@@ -66,5 +66,6 @@ void KviTalHBox::setMargin(int margin)
 {
 	m_pLayout->setContentsMargins(margin,margin,margin,margin);
 }
+
 
 #include "kvi_tal_hbox.moc"
