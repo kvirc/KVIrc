@@ -36,6 +36,10 @@ KviTalHBox::KviTalHBox(QWidget * pParent,char* name)
 	setLayout(m_pLayout);
 }
 
+KviTalHBox::~KviTalHBox()
+{
+}
+
 void KviTalHBox::childEvent(QChildEvent * e)
 {
 	if(!e->child()->isWidgetType()) return;
@@ -48,6 +52,8 @@ void KviTalHBox::childEvent(QChildEvent * e)
 			break;
 		case QEvent::ChildRemoved:
 			m_pLayout->removeWidget((QWidget *)(e->child()));
+			break;
+		default:
 			break;
 	}
 }

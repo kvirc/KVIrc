@@ -35,7 +35,7 @@ class KVILIB_API KviTalVBox : public QWidget
 	Q_OBJECT
 public:
 	KviTalVBox(QWidget * pParent,char* name=0);
-	virtual ~KviTalVBox() {};
+	~KviTalVBox();
 	void setStretchFactor(QWidget * child,int stretch);
 	void setSpacing(int spacing);
 	void setMargin(int margin);

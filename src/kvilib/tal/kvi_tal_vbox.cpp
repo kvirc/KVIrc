@@ -30,10 +30,14 @@
 KviTalVBox::KviTalVBox(QWidget * pParent,char* name)
 : QWidget(pParent)
 {
-	this->setObjectName(name);
+	setObjectName(name);
 
-	m_pLayout = new QVBoxLayout();
-	this->setLayout(m_pLayout);
+	m_pLayout = new QVBoxLayout(this);
+	setLayout(m_pLayout);
+}
+
+KviTalVBox::~KviTalVBox()
+{
 }
 
 void KviTalVBox::childEvent(QChildEvent * e)
@@ -48,6 +52,8 @@ void KviTalVBox::childEvent(QChildEvent * e)
 			break;
 		case QEvent::ChildRemoved:
 			m_pLayout->removeWidget((QWidget *)(e->child()));
+			break;
+		default:
 			break;
 	}
 }
