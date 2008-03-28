@@ -28,8 +28,8 @@
 
 #include "dcopclient.h"
 
-#include <qdatastream.h>
-#include <qvaluelist.h>
+#include <QDataStream>
+#include <QLinkedList>
 
 #include "kvi_app.h"
 #include "kvi_thread.h"
@@ -148,8 +148,8 @@ bool KviMediaPlayerDCOPInterface::boolRetDCOPCall(const KviQCString &szObj,const
 
 bool KviMediaPlayerDCOPInterface::findRunningApp(const QString &szApp)
 {
-	QValueList<KviQCString> allApps = g_pApp->dcopClient() ->registeredApplications();
-	QValueList<KviQCString>::iterator iterator;
+	QLinkedList<KviQCString> allApps = g_pApp->dcopClient()->registeredApplications();
+	QLinkedList<KviQCString>::iterator iterator;
 	KviQCString sz = szApp.local8Bit();
 	for(iterator = allApps.begin();iterator != allApps.end();iterator++)
 	{

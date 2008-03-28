@@ -27,7 +27,7 @@
 
 #ifdef COMPILE_ON_WINDOWS
 
-#include <qtextcodec.h>
+#include <QTextCodec>
 
 #include "kvi_locale.h"
 #include "kvi_module.h"

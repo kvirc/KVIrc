@@ -51,7 +51,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <qstring.h>
+#include <QString>
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <windows.h>

@@ -43,8 +43,8 @@ MP_IMPLEMENT_DESCRIPTOR(
 )
 
 MP_IMPLEMENT_DESCRIPTOR(
-	KviAudaciousInterface,
-	"audacious",
+	KviAudaciousClassicInterface,
+	"audacious classic",
 	__tr2qs_ctx(
 		"An interface to the popular UNIX audacious media player.\n" \
 		"Download it from http://audacious-media-player.org\n"
@@ -80,40 +80,40 @@ static const char *audacious_lib_names[] =
 KviXmmsInterface::KviXmmsInterface()
 : KviMediaPlayerInterface()
 {
-	m_hPlayerLibrary = 0;
+	m_pPlayerLibrary = 0;
 	m_szPlayerLibraryName = "libxmms.so";
 	m_pLibraryPaths = xmms_lib_names;
 }
 
 KviXmmsInterface::~KviXmmsInterface()
 {
-	if(m_hPlayerLibrary)
+	if(m_pPlayerLibrary)
 	{
-		kvi_library_close(m_hPlayerLibrary);
-		m_hPlayerLibrary = 0;
+		kvi_library_close(m_pPlayerLibrary);
+		m_pPlayerLibrary = 0;
 	}
 }
 
-KviAudaciousInterface::KviAudaciousInterface()
+KviAudaciousClassicInterface::KviAudaciousClassicInterface()
 : KviXmmsInterface()
 {
 	m_szPlayerLibraryName = "libaudacious.so";
 	m_pLibraryPaths = audacious_lib_names;
 }
 
-KviAudaciousInterface::~KviAudaciousInterface()
+KviAudaciousClassicInterface::~KviAudaciousClassicInterface()
 {
 }
 
 bool KviXmmsInterface::loadPlayerLibrary()
 {
-	if(m_hPlayerLibrary)return true;
+	if(m_pPlayerLibrary)return true;
 
 	const char **lib_name = m_pLibraryPaths;
 	while(*lib_name)
 	{
-		m_hPlayerLibrary = kvi_library_load(*lib_name);
-		if(m_hPlayerLibrary)
+		m_pPlayerLibrary = kvi_library_load(*lib_name);
+		if(m_pPlayerLibrary)
 		{
 			m_szPlayerLibraryName = *lib_name;
 			break;
@@ -125,7 +125,7 @@ bool KviXmmsInterface::loadPlayerLibrary()
 
 void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 {
-	if(!m_hPlayerLibrary)
+	if(!m_pPlayerLibrary)
 	{
 		if(!loadPlayerLibrary())
 		{
@@ -135,7 +135,7 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 			return 0;
 		}
 	}
-	void * symptr = kvi_library_symbol(m_hPlayerLibrary,szSymbolName);
+	void * symptr = kvi_library_symbol(m_pPlayerLibrary,szSymbolName);
 	if(!symptr)
 	{
 		QString tmp;

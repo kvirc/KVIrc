@@ -1,12 +1,12 @@
-#ifndef _MP_XMMSINTERFACE_H_
-#define _MP_XMMSINTERFACE_H_
+#ifndef _MP_AUDACIOUSINTERFACE_H_
+#define _MP_AUDACIOUSINTERFACE_H_
 //=============================================================================
 //
-//   File : mp_xmmsinterface.h
-//   Created on Fri 25 Mar 2005 20:04:54 by Szymon Stefanek
+//   File : mp_audaciousinterface.h
+//   Created on Thu 06 Dec 2007 14:20:02 by Tomasz Moń
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005-2007 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2007 Tomasz Moń <desowin@gmail.com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,25 +22,19 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//   Thnx to Alexander Stillich <torque at pltn dot org> for Audacious
-//   media player interface hints :)
-//
 //=============================================================================
 
 #include "kvi_settings.h"
 #include "mp_interface.h"
-#include "kvi_library.h"
 
 #ifndef COMPILE_ON_WINDOWS
-	class KviXmmsInterface : public KviMediaPlayerInterface
+#include <QtDBus/QtDBus>
+
+	class KviAudaciousInterface : public KviMediaPlayerInterface
 	{
 	public:
-		KviXmmsInterface();
-		virtual ~KviXmmsInterface();
-	protected:
-		kvi_library_t m_pPlayerLibrary;
-		QString m_szPlayerLibraryName;
-		const char ** m_pLibraryPaths;
+		KviAudaciousInterface();
+		virtual ~KviAudaciousInterface();
 	public:
 		virtual int detect(bool bStart);
 		virtual bool prev();
@@ -49,36 +43,23 @@
 		virtual bool stop();
 		virtual bool pause();
 		virtual bool quit();
-		virtual bool jumpTo(kvs_int_t &iPos);
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual KviMediaPlayerInterface::PlayerStatus status();
 		virtual QString nowPlaying();
-		virtual bool playMrl(const QString &mrl);
 		virtual QString mrl();
-		virtual int getPlayListPos();
-		virtual int position();
+		virtual KviMediaPlayerInterface::PlayerStatus status();
 		virtual int length();
-		virtual bool getRepeat();
-		virtual bool getShuffle();
-		virtual bool setRepeat(bool &bVal);
-		virtual bool setShuffle(bool &bVal);
-	protected:
-		bool loadPlayerLibrary();
-		void * lookupSymbol(const char * szSymbolName);
+		virtual QString title();
+		virtual QString artist();
+		virtual QString genre();
+		virtual QString comment();
+		virtual QString album();
+
+		virtual int getPlayListPos();
+		virtual QString year();
+		virtual QString mediaType();
 	};
 	
-	MP_DECLARE_DESCRIPTOR(KviXmmsInterface)
-	
-	class KviAudaciousClassicInterface : public KviXmmsInterface
-	{
-	public:
-		KviAudaciousClassicInterface();
-		virtual ~KviAudaciousClassicInterface();
-	};
-	
-	MP_DECLARE_DESCRIPTOR(KviAudaciousClassicInterface)
+	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	
 #endif //!COMPILE_ON_WINDOWS
 
-#endif //!_MP_XMMSINTERFACE_H_
+#endif //!_MP_AUDACIOUSINTERFACE_H_

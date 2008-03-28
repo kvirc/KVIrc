@@ -1547,7 +1547,7 @@ AC_DEFUN([AC_SS_FIND_QT_INCLUDE_DIR],
 		AC_MSG_RESULT([using user supplied path for the Qt 4.x include files $SS_QT_INCDIR])
 	fi
 	
-	SS_QT_INCDIRECTORIES="-I$SS_QT_INCDIR -I$SS_QT_INCDIR/Qt/ -I$SS_QT_INCDIR/QtCore/ -I$SS_QT_INCDIR/QtGui/";
+	SS_QT_INCDIRECTORIES="-I$SS_QT_INCDIR -I$SS_QT_INCDIR/Qt/ -I$SS_QT_INCDIR/QtCore/ -I$SS_QT_INCDIR/QtGui/ -I$SS_QT_INCDIR/QtDBus/";
 ])
 
 
@@ -1669,7 +1669,7 @@ AC_DEFUN([AC_SS_ENSURE_CAN_COMPILE_X_AND_QT],
 		else
 			LIBS=""
 		fi
-		LIBS="$LIBS -L$SS_QT_LIBDIR -lQtCore"
+		LIBS="$LIBS -L$SS_QT_LIBDIR -lQtCore -lQtDBus"
 		if test -n "$SS_X_LDFLAGS"; then
 			LIBS="$LIBS $SS_X_LDFLAGS"
 		fi
@@ -2092,9 +2092,9 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 	fi
 
 	#if test -n "SS_LOCAL_ADD_DEBUG_SYMBOLS"; then
-	#	SS_LIBLINK="-lQtCore_debug -lQtGui_debug -lQt3Support_debug"
+	#	SS_LIBLINK="-lQtCore_debug -lQtGui_debug -lQt3Support_debug -lQtDBus"
 	#else
-		SS_LIBLINK="-lQtCore -lQtGui -lQt3Support"
+		SS_LIBLINK="-lQtCore -lQtGui -lQt3Support -lQtDBus"
 	#fi
 	
 	if test -n "$SS_X_LIBLINK"; then

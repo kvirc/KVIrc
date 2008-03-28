@@ -25,6 +25,7 @@
 
 #include "mp_interface.h"
 #include "mp_xmmsinterface.h"
+#include "mp_audaciousinterface.h"
 #include "mp_amarokinterface.h"
 #include "mp_winampinterface.h"
 #include "mp_amipinterface.h"
@@ -32,8 +33,6 @@
 
 #include "kvi_module.h"
 #include "kvi_options.h"
-
-
 #include "kvi_locale.h"
 #include "kvi_out.h"
 
@@ -1242,7 +1241,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 	@syntax:
 		$mediaplayer.getRepeat()
 	@description:
-		Return the value of the Repeat flag for the current track (1 for ON, 0 for OFF.[br]
+		Return the value of the Repeat flag for the current track (1 for ON, 0 for OFF).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1265,7 +1264,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 	@syntax:
 		$mediaplayer.getShuffle()
 	@description:
-		Return the value of the Shuffle flag (1 for ON, 0 for OFF.[br]
+		Return the value of the Shuffle flag (1 for ON, 0 for OFF).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1520,13 +1519,13 @@ MP_KVS_FUNCTION(status)
 	@type:
 		command
 	@title:
-		$mediaplayer.setRepeat
+		mediaplayer.setRepeat
 	@short:
 		Set the repeat flag.
 	@syntax:
-		mediaplayer.getRepeat [-q] <repeat:bool>
+		mediaplayer.setRepeat [-q] <repeat:bool>
 	@description:
-		Set the Repeat flag to "repeat" (1 for ON, 0 for OFF.[br]
+		Set the Repeat flag to "repeat" (1 for ON, 0 for OFF).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1563,13 +1562,13 @@ MP_KVS_COMMAND(setRepeat)
 	@type:
 		command
 	@title:
-		$mediaplayer.setShuffle
+		mediaplayer.setShuffle
 	@short:
 		Set the repeat flag.
 	@syntax:
-		mediaplayer.getShuffle [-q] <shuffle:bool>
+		mediaplayer.setShuffle [-q] <shuffle:bool>
 	@description:
-		Set the Shuffle flag to "shuffle" (1 for ON, 0 for OFF.[br]
+		Set the Shuffle flag to "shuffle" (1 for ON, 0 for OFF).[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1607,6 +1606,7 @@ static bool mediaplayer_module_init( KviModule * m )
 
 #ifndef COMPILE_ON_WINDOWS
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
 #endif
 
@@ -1736,7 +1736,7 @@ static bool mediaplayer_module_ctrl(KviModule * m,const char * operation,void * 
 
 KVIRC_MODULE(
 	"mediaplayer",
-	"1.1.0",
+	"4.0.0",
 	"Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net), " \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \

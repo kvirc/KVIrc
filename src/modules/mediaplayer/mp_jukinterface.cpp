@@ -27,14 +27,13 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 #include "kvi_app.h"
+#include "kvi_locale.h"
 
 #include "dcopclient.h"
 #include "kurl.h"
 
-#include <qdatastream.h>
-#include <qvaluelist.h>
-
-#include "kvi_locale.h"
+#include <QDataStream>
+#include <QLinkedList>
 
 // the dcop interface of this player is incomplete :(
 

@@ -3,28 +3,28 @@
 
 #ifdef COMPILE_ON_WINDOWS
 
-#include <qtextcodec.h>
+#include <QTextCodec>
 
 #include "kvi_locale.h"
 #include "kvi_module.h"
 
 #include <windows.h>
 
-enum ac_StartMode 
+enum ac_StartMode
 {
-  AC_START_ALL = 0,
-  AC_START_CLIENT,
-  AC_START_SERVER,
-  AC_START_NONE
+	AC_START_ALL = 0,
+	AC_START_CLIENT,
+	AC_START_SERVER,
+	AC_START_NONE
 };
 
-enum ac_ErrorCode 
+enum ac_ErrorCode
 {
-  AC_ERR_NOERROR = 0,
-  AC_ERR_CLIENTISNULL,
-  AC_ERR_EXCEPTION,
-  AC_ERR_CONNECTIONFAILED,
-  AC_ERR_SERVERNOTRUNNING
+	AC_ERR_NOERROR = 0,
+	AC_ERR_CLIENTISNULL,
+	AC_ERR_EXCEPTION,
+	AC_ERR_CONNECTIONFAILED,
+	AC_ERR_SERVERNOTRUNNING
 };
 
 #define AC_BUFFER_SIZE 2048

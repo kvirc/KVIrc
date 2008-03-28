@@ -40,8 +40,8 @@
 #include "mp_mp3.h"
 #include "kvi_options.h"
 
-#include <qfileinfo.h>
-#include <qtextcodec.h>
+#include <QFileInfo>
+#include <QTextCodec>
 
 #define MAXGENRE   147
 #define GENREROWS  50

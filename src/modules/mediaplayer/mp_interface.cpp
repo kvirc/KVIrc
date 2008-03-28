@@ -24,9 +24,11 @@
 
 #include "mp_interface.h"
 #include "mp_mp3.h"
+
 #include "kvi_options.h"
 #include "kvi_locale.h"
-#include <qtextcodec.h>
+
+#include <QTextCodec>
 
 static QTextCodec * mediaplayer_get_codec()
 {
