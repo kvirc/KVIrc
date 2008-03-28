@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvitexticons.la
 libkvitexticons_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvitexticons_la_SOURCES = libkvitexticons.cpp
-libkvitexticons_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitexticons_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

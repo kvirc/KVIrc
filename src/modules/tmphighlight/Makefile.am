@@ -13,7 +13,7 @@ pluglib_LTLIBRARIES      = libkvitmphighlight.la
 libkvitmphighlight_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvitmphighlight_la_SOURCES = libkvitmphighlight.cpp
-libkvitmphighlight_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitmphighlight_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 
 #noinst_HEADERS= 

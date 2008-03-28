@@ -14,7 +14,7 @@ libkvitoolbareditor_la_SOURCES = libkvitoolbareditor.cpp toolbareditor.cpp
 nodist_libkvitoolbareditor_la_SOURCES = moc_toolbareditor.cpp
 
 noinst_HEADERS = toolbareditor.h
-libkvitoolbareditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitoolbareditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 moc_toolbareditor.cpp: toolbareditor.h
 	$(SS_QT_MOC) $< -o $@

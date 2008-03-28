@@ -11,7 +11,7 @@ pluglib_LTLIBRARIES      = libkvisnd.la
 libkvisnd_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvisnd_la_SOURCES = libkvisnd.cpp
-libkvisnd_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvisnd_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 
 noinst_HEADERS= libkvisnd.h

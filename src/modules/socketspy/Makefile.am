@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvisocketspy.la
 libkvisocketspy_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvisocketspy_la_SOURCES = libkvisocketspy.cpp socketspywindow.cpp
-libkvisocketspy_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvisocketspy_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= socketspywindow.h
 

@@ -11,7 +11,7 @@ libkviaction_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviaction_la_SOURCES = libkviaction.cpp
 
-libkviaction_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviaction_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 #noinst_HEADERS= actiondialog.h
 

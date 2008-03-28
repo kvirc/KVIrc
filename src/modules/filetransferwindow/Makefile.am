@@ -12,7 +12,7 @@ pluglib_LTLIBRARIES      = libkvifiletransferwindow.la
 libkvifiletransferwindow_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvifiletransferwindow_la_SOURCES = libkvifiletransferwindow.cpp filetransferwindow.cpp
-libkvifiletransferwindow_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvifiletransferwindow_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= filetransferwindow.h
 

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviident.la
 libkviident_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviident_la_SOURCES = libkviident.cpp
-libkviident_la_LIBADD  = $(SS_LIBLINK)  ../../kvilib/build/libkvilib.la
+libkviident_la_LIBADD  = $(SS_LIBLINK)  ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= libkviident.h
 

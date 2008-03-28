@@ -12,7 +12,7 @@ libkviavatar_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 libkviavatar_la_SOURCES = libkviavatar.cpp
 nodist_libkviavatar_la_SOURCES = moc_libkviavatar.cpp
 
-libkviavatar_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviavatar_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS = libkviavatar.h
 

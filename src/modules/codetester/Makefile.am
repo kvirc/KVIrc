@@ -9,7 +9,7 @@ libkvicodetester_la_SOURCES = libkvicodetester.cpp codetester.cpp
 nodist_libkvicodetester_la_SOURCES = moc_codetester.cpp
 
 noinst_HEADERS = codetester.h
-libkvicodetester_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvicodetester_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

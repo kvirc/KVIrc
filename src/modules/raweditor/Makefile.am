@@ -9,7 +9,7 @@ libkviraweditor_la_SOURCES = libkviraweditor.cpp raweditor.cpp
 nodist_libkviraweditor_la_SOURCES = moc_raweditor.cpp
 
 noinst_HEADERS = raweditor.h
-libkviraweditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviraweditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

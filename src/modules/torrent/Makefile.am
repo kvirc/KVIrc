@@ -17,7 +17,7 @@ libkvitorrent_la_SOURCES = libkvitorrent.cpp \
 		tc_ktorrentdcopinterface.cpp \
 		tc_statusbarapplet.cpp
 		
-libkvitorrent_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitorrent_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS = tc_interface.h \
 		tc_ktorrentdcopinterface.h \

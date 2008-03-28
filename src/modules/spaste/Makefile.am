@@ -13,7 +13,7 @@ pluglib_LTLIBRARIES      = libkvispaste.la
 libkvispaste_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvispaste_la_SOURCES = libkvispaste.cpp controller.cpp
-libkvispaste_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvispaste_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 
 noinst_HEADERS= controller.h libkvispaste.h

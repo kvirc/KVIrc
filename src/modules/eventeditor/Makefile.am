@@ -13,7 +13,7 @@ libkvieventeditor_la_SOURCES = libkvieventeditor.cpp eventeditor.cpp
 nodist_libkvieventeditor_la_SOURCES = moc_eventeditor.cpp
 
 noinst_HEADERS = eventeditor.h
-libkvieventeditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvieventeditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

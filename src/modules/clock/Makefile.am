@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviclock.la
 libkviclock_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviclock_la_SOURCES = libkviclock.cpp
-libkviclock_la_LIBADD  = $(SS_LIBLINK)  ../../kvilib/build/libkvilib.la
+libkviclock_la_LIBADD  = $(SS_LIBLINK)  ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= libkviclock.h
 

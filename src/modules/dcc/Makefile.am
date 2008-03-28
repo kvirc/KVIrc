@@ -34,7 +34,7 @@ libkvidcc_la_SOURCES = adpcmcodec.cpp \
 										voice.cpp \
 										window.cpp
 
-libkvidcc_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvidcc_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= adpcmcodec.h \
 								broker.h \

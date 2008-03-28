@@ -11,7 +11,7 @@ libkvieditor_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 nodist_libkvieditor_la_SOURCES = moc_scripteditor.cpp
 libkvieditor_la_SOURCES = libkvieditor.cpp scripteditor.cpp
-libkvieditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvieditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= scripteditor.h
 

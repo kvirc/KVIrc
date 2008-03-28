@@ -13,7 +13,7 @@ nodist_libkviwindow_la_SOURCES = moc_userwindow.cpp
 
 libkviwindow_la_SOURCES = libkviwindow.cpp userwindow.cpp
 
-libkviwindow_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviwindow_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= userwindow.h
 

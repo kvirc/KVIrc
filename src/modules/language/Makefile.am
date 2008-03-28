@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvilanguage.la
 libkvilanguage_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvilanguage_la_SOURCES = libkvilanguage.cpp
-libkvilanguage_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvilanguage_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

@@ -13,7 +13,7 @@ libkvialiaseditor_la_SOURCES = libkvialiaseditor.cpp aliaseditor.cpp
 nodist_libkvialiaseditor_la_SOURCES = moc_aliaseditor.cpp
 
 noinst_HEADERS = aliaseditor.h
-libkvialiaseditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvialiaseditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

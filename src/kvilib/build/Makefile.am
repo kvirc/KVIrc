@@ -7,9 +7,9 @@
 
 AM_CPPFLAGS = -I$(SS_TOPSRCDIR)/src/kvilib/include/ $(SS_INCDIRS) $(SS_CPPFLAGS)
 
-lib_LTLIBRARIES      = libkvilib.la
-libkvilib_la_LDFLAGS = $(SS_LDFLAGS) -version-info 4:0:0 $(SS_LIBDIRS)
-libkvilib_la_LIBADD  = $(SS_LIBLINK)
+lib_LTLIBRARIES      = libkvirclib.la
+libkvirclib_la_LDFLAGS = $(SS_LDFLAGS) -version-info 4:0:0 $(SS_LIBDIRS)
+libkvirclib_la_LIBADD  = $(SS_LIBLINK)
 
 #
 # Command useful to find out all the sources
@@ -17,7 +17,7 @@ libkvilib_la_LIBADD  = $(SS_LIBLINK)
 # echo $SRC
 #
 
-nodist_libkvilib_la_SOURCES = \
+nodist_libkvirclib_la_SOURCES = \
 	../ext/moc_kvi_crypt.cpp \
 	../ext/moc_kvi_garbage.cpp \
 	../ext/moc_kvi_regusersdb.cpp \
@@ -29,7 +29,7 @@ nodist_libkvilib_la_SOURCES = \
 	../system/moc_kvi_thread.cpp \
 	../tal/moc_kvi_tal_wizard.cpp
 
-libkvilib_la_SOURCES = \
+libkvirclib_la_SOURCES = \
 	../core/kvi_error.cpp \
 	../core/kvi_heapobject.cpp \
 	../core/kvi_malloc.cpp \

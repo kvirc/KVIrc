@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviconfig.la
 libkviconfig_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviconfig_la_SOURCES = libkviconfig.cpp
-libkviconfig_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviconfig_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 

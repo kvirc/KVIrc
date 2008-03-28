@@ -19,7 +19,7 @@ libkvinotifier_la_SOURCES = libkvinotifier.cpp \
 							notifierwindowborder.cpp \
 							notifierwindowprogressbar.cpp
 							
-libkvinotifier_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvinotifier_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= \
 			notifiersettings.h \

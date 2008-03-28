@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviiograph.la
 libkviiograph_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviiograph_la_SOURCES = libkviiograph.cpp
-libkviiograph_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkviiograph_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= libkviiograph.h
 

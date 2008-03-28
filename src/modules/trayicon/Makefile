@@ -65,7 +65,7 @@ pluglibLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(pluglib_LTLIBRARIES)
 am__DEPENDENCIES_1 =
 libkvitrayicon_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	../../kvilib/build/libkvilib.la
+	../../kvilib/build/libkvirclib.la
 am_libkvitrayicon_la_OBJECTS = libkvitrayicon.lo
 libkvitrayicon_la_OBJECTS = $(am_libkvitrayicon_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)/src
@@ -246,7 +246,7 @@ libkvitrayicon_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 libkvitrayicon_la_SOURCES = libkvitrayicon.cpp
 
 #nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
-libkvitrayicon_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvitrayicon_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 noinst_HEADERS = libkvitrayicon.h
 tmpdir = $(picsdir)
 tmp_DATA = kvi_dock.png kvi_dock_part-0.png kvi_dock_part-1.png kvi_dock_part-2.png

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvihelp.la
 libkvihelp_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvihelp_la_SOURCES = libkvihelp.cpp helpwidget.cpp helpwindow.cpp index.cpp index.moc
-libkvihelp_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvihelp_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 noinst_HEADERS= helpwidget.h helpwindow.h index.h
 

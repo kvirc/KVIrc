@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvistr.la
 libkvistr_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvistr_la_SOURCES = libkvistr.cpp
-libkvistr_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib.la
+libkvistr_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
 
 # noinst_HEADERS=
 
