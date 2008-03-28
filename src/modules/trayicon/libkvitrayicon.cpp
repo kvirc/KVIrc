@@ -482,17 +482,17 @@ static KviTrayIcon * dockwidget_find(KviFrame *f)
 }
 
 /*
-	@doc: dockwidget.show
+	@doc: trayicon.show
 	@type:
 		command
 	@title:
-		dockwidget.show
+		trayicon.show
 	@short:
 		Shows the dock widget for the current frame window
 	@keyterms:
 		dock widget , system tray
 	@syntax:
-		dockwidget.show
+		trayicon.show
 	@description:
 		Shows the dock widget for the current frame window.[br]
 		The dock widget is a small widget that docks in the KDE panel.[br]
@@ -512,7 +512,7 @@ static KviTrayIcon * dockwidget_find(KviFrame *f)
 		The dock widget is currently working in KDE compilation mode only:
 		it relies on the KWin implementation of the Window Manager interaction protocol.
 	@seealso:
-		[cmd]dockwidget.hide[/cmd]
+		[cmd]trayicon.hide[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
@@ -526,19 +526,19 @@ static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
 }
 
 /*
-	@doc: dockwidget.hide
+	@doc: trayicon.hide
 	@type:
 		command
 	@title:
-		dockwidget.hide
+		trayicon.hide
 	@short:
 		Hides the dock widget for the current frame window
 	@syntax:
-		dockwidget.hide
+		trayicon.hide
 	@description:
 		Hides the dock widget for the current frame window
 	@seealso:
-		[cmd]dockwidget.show[/cmd]
+		[cmd]trayicon.show[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
@@ -554,19 +554,19 @@ static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 }
 
 /*
-	@doc: dockwidget.hidewindow
+	@doc: trayicon.hidewindow
 	@type:
 		command
 	@title:
-		dockwidget.hidewindow
+		trayicon.hidewindow
 	@short:
 		Returns the state of the dock widget
 	@syntax:
-		dockwidget.hidewindow
+		trayicon.hidewindow
 	@description:
 		Hides the window, assotiated with dockwidget
 	@seealso:
-		[cmd]dockwidget.show[/cmd], [cmd]dockwidget.hide[/cmd]
+		[cmd]trayicon.show[/cmd], [cmd]trayicon.hide[/cmd]
 */
 
 static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
@@ -580,11 +580,11 @@ static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 }
 
 /*
-	@doc: dockwidget.isVisible
+	@doc: trayicon.isVisible
 	@type:
 		function
 	@title:
-		$dockwidget.isVisible
+		$trayicon.isVisible
 	@short:
 		Returns the state of the dock widget
 	@syntax:
@@ -592,7 +592,7 @@ static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 	@description:
 		Returns 1 if the dock widget is actually visible , 0 otherwise.
 	@seealso:
-		[cmd]dockwidget.show[/cmd]
+		[cmd]trayicon.show[/cmd]
 */
 
 static bool dockwidget_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
@@ -674,7 +674,7 @@ KVIRC_MODULE(
 	"KVIrc dock widget implementation",
 	"4.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net> and Alexey Uzhva <alexey at kvirc dot ru>",
-	"exports the /dockwidget.* interface\n",
+	"exports the /trayicon.* interface\n",
 	dockwidget_module_init ,
 	dockwidget_module_can_unload,
 	0,
