@@ -120,13 +120,13 @@ Now run make and relax :-)
 
 5) Relinking
 
-KVirc and its modules depend on libkvirclib and libqt which are not in the dynamic linker search path by default. The paths set during the compilation are absolute paths and have to be changed to be realtive to the executable path.
+KVirc and its modules depend on libkvilib and libqt which are not in the dynamic linker search path by default. The paths set during the compilation are absolute paths and have to be changed to be realtive to the executable path.
 
-The following commands do this for libkvirclib:
+The following commands do this for libkvilib:
 
-# install_name_tool -id @executable_path/../Frameworks/libkvirclib.3.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvirclib.3.dylib
-# install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvirclib.3.dylib @executable_path/../Frameworks/libkvirclib.3.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
-# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvirclib.3.dylib @executable_path/../Frameworks/libkvirclib.3.dylib
+# install_name_tool -id @executable_path/../Frameworks/libkvilib.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib
+# install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib @executable_path/../Frameworks/libkvilib.4.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
+# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib @executable_path/../Frameworks/libkvilib.4.dylib
 
 Now you have to decide whether you want to include libqt within the bundle or not. This is useful if you consider to share your bundle with your friends and they don't want to compile QT themselves.
 
@@ -135,7 +135,7 @@ a) You don't want to include libqt within the bundle
 
 Make sure the dynamic linker is able to find libqt. The easiest way is to make symlinks in the /usr/lib directory.
 
-# ln -sf $QTDIR/lib/libqt-mt.3.dylib /usr/lib
+# ln -sf $QTDIR/lib/libqt-mt.4.dylib /usr/lib
 # ln -sf $QTDIR/lib/libqui.1.dylib /usr/lib
 
 
@@ -143,14 +143,14 @@ b) You want to include libqt within the bundle
 
 Copy libqt into the bundle:
 
-# cp $QTDIR/lib/libqt-mt.3.dylib $(pwd)/KVirc.app/Contents/Frameworks/
+# cp $QTDIR/lib/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/
 
 Relinking commands for libqt:
 
-# install_name_tool -id @executable_path/../Frameworks/libqt-mt.3.dylib $(pwd)/KVirc.app/Contents/Frameworks/libqt-mt.3.dylib
-# install_name_tool -change libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
-# install_name_tool -change libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvirclib.3.dylib
-# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change libqt-mt.3.dylib @executable_path/../Frameworks/libqt-mt.3.dylib
+# install_name_tool -id @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libqt-mt.4.dylib
+# install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
+# install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib
+# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib
 
 6) Cleaning up
 
