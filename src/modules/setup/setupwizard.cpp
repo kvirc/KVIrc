@@ -295,7 +295,6 @@ KviSetupWizard::KviSetupWizard()
 	m_pIncomingPathEdit->setText(tmp);
 	
 	m_pDirUseNew->toggle();
-	newDirClicked();
 
 #ifdef COMPILE_ON_WINDOWS
 	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in  shared program folder (portable)")
@@ -644,6 +643,8 @@ KviSetupWizard::KviSetupWizard()
 	free(buffer);
 
 #endif // COMPILE_ON:WINDOWS
+
+	newDirClicked();
 
 	//setMinimumSize(630,450);
 }
