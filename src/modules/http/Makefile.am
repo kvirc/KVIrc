@@ -16,7 +16,7 @@ pluglib_LTLIBRARIES      = libkvihttp.la
 libkvihttp_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvihttp_la_SOURCES = libkvihttp.cpp httpfiletransfer.cpp
-libkvihttp_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvihttp_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= httpfiletransfer.h
 

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvitoolbar.la
 libkvitoolbar_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvitoolbar_la_SOURCES = libkvitoolbar.cpp
-libkvitoolbar_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvitoolbar_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

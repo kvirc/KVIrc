@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvilog.la
 libkvilog_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvilog_la_SOURCES = libkvilog.cpp
-libkvilog_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvilog_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

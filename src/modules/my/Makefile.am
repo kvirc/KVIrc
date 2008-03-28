@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvimy.la
 libkvimy_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvimy_la_SOURCES = libkvimy.cpp idle_x11.cpp idle_mac.cpp idle.cpp
-libkvimy_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvimy_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= idle.h
 

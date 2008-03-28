@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvilamerizer.la
 libkvilamerizer_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvilamerizer_la_SOURCES = libkvilamerizer.cpp
-libkvilamerizer_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvilamerizer_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= libkvilamerizer.h
 

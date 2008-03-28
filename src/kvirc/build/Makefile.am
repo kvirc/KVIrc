@@ -9,7 +9,7 @@ AM_CPPFLAGS = -I$(SS_TOPSRCDIR)/src/kvilib/include/ -I$(SS_TOPSRCDIR)/src/kvirc/
 $(SS_INCDIRS) $(SS_CPPFLAGS) -DGLOBAL_KVIRC_DIR=\"$(globalkvircdir)\"
 
 kvirc4_LDFLAGS = -export-dynamic $(SS_LDFLAGS) $(SS_LIBDIRS) $(SS_RPATH)
-kvirc4_LDADD = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+kvirc4_LDADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 bin_PROGRAMS = kvirc4
 

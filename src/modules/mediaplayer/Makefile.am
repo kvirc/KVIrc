@@ -23,7 +23,7 @@ libkvimediaplayer_la_SOURCES = libkvimediaplayer.cpp \
 		mp_winampinterface.cpp \
 		mp_xmmsinterface.cpp
 		
-libkvimediaplayer_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvimediaplayer_la_LIBADD = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS = mp_amarokinterface.h \
 		mp_amipinterface.h \

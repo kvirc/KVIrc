@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvilinks.la
 libkvilinks_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvilinks_la_SOURCES = libkvilinks.cpp linkswindow.cpp
-libkvilinks_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvilinks_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= linkswindow.h
 

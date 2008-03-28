@@ -13,7 +13,7 @@ libkvitrayicon_la_SOURCES = libkvitrayicon.cpp
 
 #nodist_libkvidockwidget_la_SOURCES = moc_trayicon.cpp
 
-libkvitrayicon_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvitrayicon_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= libkvitrayicon.h
 

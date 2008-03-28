@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvisetup.la
 libkvisetup_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvisetup_la_SOURCES = libkvisetup.cpp setupwizard.cpp
-libkvisetup_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvisetup_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= setupwizard.h
 

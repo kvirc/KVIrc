@@ -12,7 +12,7 @@ pluglib_LTLIBRARIES      = libkvilogview.la
 libkvilogview_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvilogview_la_SOURCES = libkvilogview.cpp logviewwidget.cpp logviewmdiwindow.cpp
-libkvilogview_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvilogview_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= logviewwidget.h logviewmdiwindow.h
 

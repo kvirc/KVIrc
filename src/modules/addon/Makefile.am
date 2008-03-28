@@ -14,7 +14,7 @@ libkviaddon_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 libkviaddon_la_SOURCES = libkviaddon.cpp managementdialog.cpp
 nodist_libkviaddon_la_SOURCES = moc_managementdialog.cpp
 
-libkviaddon_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviaddon_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= managementdialog.h
 

@@ -12,7 +12,7 @@ pluglib_LTLIBRARIES      = libkviurl.la
 libkviurl_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviurl_la_SOURCES = libkviurl.cpp
-libkviurl_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviurl_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 
 noinst_HEADERS= libkviurl.h icons.h

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvireguser.la
 libkvireguser_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvireguser_la_SOURCES = libkvireguser.cpp edituser.cpp wizard.cpp dialog.cpp
-libkvireguser_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvireguser_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= edituser.h wizard.h dialog.h
 nodist_libkvireguser_la_SOURCES = moc_dialog.cpp 

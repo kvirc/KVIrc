@@ -12,7 +12,7 @@ pluglib_LTLIBRARIES      = libkvirijndael.la
 libkvirijndael_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvirijndael_la_SOURCES = libkvirijndael.cpp rijndael.cpp ablowfish.cpp
-libkvirijndael_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvirijndael_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= libkvirijndael.h rijndael.h ablowfish.h
 

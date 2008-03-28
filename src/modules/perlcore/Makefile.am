@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviperlcore.la
 libkviperlcore_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS) $(SS_PERL_LDFLAGS)
 
 libkviperlcore_la_SOURCES = libkviperlcore.cpp
-libkviperlcore_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviperlcore_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS = perlcoreinterface.h
 

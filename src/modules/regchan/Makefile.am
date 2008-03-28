@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviregchan.la
 libkviregchan_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviregchan_la_SOURCES = libkviregchan.cpp
-libkviregchan_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviregchan_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 #noinst_HEADERS= edituser.h
 

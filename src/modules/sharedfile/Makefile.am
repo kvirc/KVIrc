@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvisharedfile.la
 libkvisharedfile_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvisharedfile_la_SOURCES = libkvisharedfile.cpp
-libkvisharedfile_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvisharedfile_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 #noinst_HEADERS= sharedfilewindow.h
 

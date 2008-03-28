@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvichan.la
 libkvichan_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvichan_la_SOURCES = libkvichan.cpp
-libkvichan_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvichan_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvimath.la
 libkvimath_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvimath_la_SOURCES = libkvimath.cpp
-libkvimath_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvimath_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

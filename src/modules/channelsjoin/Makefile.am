@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvichannelsjoin.la
 libkvichannelsjoin_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvichannelsjoin_la_SOURCES = libkvichannelsjoin.cpp channelsjoinwindow.cpp
-libkvichannelsjoin_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvichannelsjoin_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= channelsjoinwindow.h
 

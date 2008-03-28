@@ -53,7 +53,7 @@ libkviobjects_la_SOURCES =  libkviobjects.cpp \
                       class_hbox.cpp
 
 
-libkviobjects_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviobjects_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS=	class_button.h \
             class_buttongroup.h \

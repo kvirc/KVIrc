@@ -11,7 +11,7 @@ libkviabout_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviabout_la_SOURCES = libkviabout.cpp aboutdialog.cpp
 
-libkviabout_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviabout_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= aboutdialog.h
 

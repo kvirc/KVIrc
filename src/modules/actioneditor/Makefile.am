@@ -13,7 +13,7 @@ libkviactioneditor_la_SOURCES = libkviactioneditor.cpp actioneditor.cpp
 nodist_libkviactioneditor_la_SOURCES = moc_actioneditor.cpp
 
 noinst_HEADERS = actioneditor.h
-libkviactioneditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviactioneditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

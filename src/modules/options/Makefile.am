@@ -57,7 +57,7 @@ libkvioptions_la_SOURCES = libkvioptions.cpp \
 				optw_userlist.cpp \
 				optw_tray.cpp
 
-libkvioptions_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvioptions_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= container.h \
 				dialog.h \

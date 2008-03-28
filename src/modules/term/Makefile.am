@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkviterm.la
 libkviterm_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkviterm_la_SOURCES = libkviterm.cpp termwidget.cpp termwindow.cpp
-libkviterm_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkviterm_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= termwidget.h termwindow.h
 

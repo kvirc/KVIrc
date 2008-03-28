@@ -9,7 +9,7 @@ libkvipopupeditor_la_SOURCES = libkvipopupeditor.cpp popupeditor.cpp
 nodist_libkvipopupeditor_la_SOURCES = moc_popupeditor.cpp
 
 noinst_HEADERS = popupeditor.h
-libkvipopupeditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvipopupeditor_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

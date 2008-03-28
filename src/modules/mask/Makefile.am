@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvimask.la
 libkvimask_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvimask_la_SOURCES = libkvimask.cpp
-libkvimask_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvimask_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 # noinst_HEADERS=
 

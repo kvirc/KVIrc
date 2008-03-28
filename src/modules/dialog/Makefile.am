@@ -11,7 +11,7 @@ libkvidialog_la_LDFLAGS = -module -avoid-version $(SS_LDFLAGS) $(SS_LIBDIRS)
 
 libkvidialog_la_SOURCES = libkvidialog.cpp
 
-libkvidialog_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvirclib.la
+libkvidialog_la_LIBADD  = $(SS_LIBLINK) ../../kvilib/build/libkvilib4.la
 
 noinst_HEADERS= libkvidialog.h
 
