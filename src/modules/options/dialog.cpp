@@ -32,28 +32,26 @@
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
 #include "kvi_pointerhashtable.h"
-#include <qlayout.h>
 #include "kvi_accel.h"
-#include <qlabel.h>
 #include "kvi_tal_vbox.h"
-#include <qsplitter.h>
 #include "kvi_tal_widgetstack.h"
-#include <qpushbutton.h>
 #include "kvi_tal_tooltip.h"
-
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-#else
-	#include <qheader.h>
-	#include <qobjectlist.h>
-#endif
 #include "kvi_tal_popupmenu.h"
-#include <qtoolbutton.h>
-#include <qcheckbox.h>
 #include <kvi_tal_groupbox.h>
-#include <qpainter.h>
-#include <qfont.h>
-#include <qevent.h>
+
+#include <QLayout>
+#include <QLabel>
+#include <QSplitter>
+#include <QPushButton>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QPainter>
+#include <QFont>
+#include <QEvent>
+#include <QCloseEvent>
+
+#include <q3header.h>
+// FIXME: #include <QHeaderView>
 
 //extern KviModule * g_pOptionsModule;
 extern KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict;
@@ -66,9 +64,7 @@ KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const
 {
 	createLayout(1,1);
 	QLabel * l = new QLabel(szText,this);
-#ifdef COMPILE_USE_QT4
 	l->setWordWrap(true);
-#endif
 	l->setAlignment(Qt::AlignTop);
 	layout()->addWidget(l,0,0);
 }
@@ -76,8 +72,6 @@ KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const
 KviGeneralOptionsFrontWidget::~KviGeneralOptionsFrontWidget()
 {
 }
-
-
 
 
 KviOptionsListViewItem::KviOptionsListViewItem(KviTalListView *parent,KviOptionsWidgetInstanceEntry * e)
@@ -137,21 +131,21 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	}
 
 	QString szDialog = __tr2qs_ctx("This dialog contains a set of KVIrc settings.<br> Use the icons " \
-							"on the left to navigate through the option pages. The text box in the " \
-							"bottom left corner is a small search engine. It will highlight the " \
-							"pages that contain options related to the search term you have entered.","options");
+			"on the left to navigate through the option pages. The text box in the " \
+			"bottom left corner is a small search engine. It will highlight the " \
+			"pages that contain options related to the search term you have entered.","options");
 
 
 	QString szInfoTips;
 #ifdef COMPILE_INFO_TIPS
 	szInfoTips = __tr2qs_ctx("Many settings have tooltips that can be shown by holding " \
-							"the cursor over their label for a few seconds.","options"); 
+			"the cursor over their label for a few seconds.","options"); 
 #else
 	szInfoTips = "";
 #endif
 	QString szOkCancelButtons = __tr2qs_ctx("When you have finished, click \"<b>OK</b>\" to accept your changes " \
-						"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your " \
-						"changes without closing the window.","options");
+			"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your " \
+			"changes without closing the window.","options");
 
 
 	QString szFrontText = QString(
@@ -215,11 +209,11 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 #ifdef COMPILE_INFO_TIPS
 	QString szTip = __tr2qs_ctx("<p>This is the search tool for this options dialog.</p>" \
-								"<p>You can enter a search term either in your native " \
-								"language or in english and press the button on the right. " \
-								"The pages that contain some options related to the " \
-								"search term will be highlighted and you will be able " \
-								"to quickly find them.</p><p>Try \"nickname\" for example.</p>","options");
+			"<p>You can enter a search term either in your native " \
+			"language or in english and press the button on the right. " \
+			"The pages that contain some options related to the " \
+			"search term will be highlighted and you will be able " \
+			"to quickly find them.</p><p>Try \"nickname\" for example.</p>","options");
 	KviTalToolTip::add(m_pSearchLineEdit,szTip);
 	KviTalToolTip::add(m_pSearchButton,szTip);
 #endif
@@ -240,8 +234,10 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	// First widget visible
 	m_pFrontWidget = new KviGeneralOptionsFrontWidget(m_pWidgetStack,szFrontText);
-	m_pWidgetStack->addWidget(m_pFrontWidget,0);
-	m_pWidgetStack->raiseWidget(m_pFrontWidget);
+	m_pWidgetStack->addWidget(m_pFrontWidget);
+
+	int idx = m_pWidgetStack->indexOf(m_pFrontWidget);
+	m_pWidgetStack->widget(idx)->raise();
 
 //  Ok,Cancel,Help
 
@@ -274,7 +270,6 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	
 	if(!parent())
 	{
-
 		if(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y() < 5)
 		{
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).setY(5);
@@ -314,7 +309,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	if(!pItem->m_pOptionsWidget)
 	{
 		pItem->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(pItem->m_pInstanceEntry,m_pWidgetStack);
-		m_pWidgetStack->addWidget(pItem->m_pOptionsWidget,0);
+		m_pWidgetStack->addWidget(pItem->m_pOptionsWidget);
 	}
 
 	bool bFoundSomethingHere = false;
@@ -323,43 +318,26 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	QTabWidget * pTabWidgetToMark = 0;
 	
 	QObject * o;
-#ifdef COMPILE_USE_QT4
 	QObjectList ol = pItem->m_pOptionsWidget->queryList();
 	if(ol.count() > 0)
 	{
 		for(QObjectList::Iterator it = ol.begin();it != ol.end();++it)
 		{
 			o = *it;
-#else
-	QObjectList * ol = pItem->m_pOptionsWidget->queryList();
-	if(ol)
-	{
-		QObjectListIt it(*ol);
-		while((o = it.current())/* && (!bFoundSomethingHere)*/)
-		{
-#endif
 			QString szText;
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
 			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 #ifdef COMPILE_INFO_TIPS
 			if(o->inherits("QWidget"))
-#ifdef COMPILE_USE_QT4
 				szText.append(((QWidget *)o)->toolTip());
-#else
-				szText.append(QToolTip::textFor((QWidget*)o));
-#endif
 #endif
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
 				for(int j=0;j<lKeywords.count();j++)
 				{
-#ifdef COMPILE_USE_QT4
 					if(szText.find(lKeywords.at(j),0,false) == -1)
-#else
-					if(szText.find(*(lKeywords.at(j)),0,false) == -1)
-#endif
 					{
 						bOk = false;
 						break;
@@ -413,14 +391,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 					}
 				}
 			}
-
-#ifndef COMPILE_USE_QT4
-			++it;
-#endif
 		}
-#ifndef COMPILE_USE_QT4
-		delete ol;
-#endif
 	}
 
 	if(pTabWidgetToMark)
@@ -524,7 +495,7 @@ void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPointerList<KviOpt
 			if(!it->m_pOptionsWidget)
 			{
 				it->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(it->m_pInstanceEntry,m_pWidgetStack);
-				m_pWidgetStack->addWidget(it->m_pOptionsWidget,0);
+				m_pWidgetStack->addWidget(it->m_pOptionsWidget);
 			}
 		} else {
 			it = (KviOptionsListViewItem *)p;
@@ -564,10 +535,11 @@ void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
 		if(!i->m_pOptionsWidget)
 		{
 			i->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(i->m_pInstanceEntry,m_pWidgetStack);
-			m_pWidgetStack->addWidget(i->m_pOptionsWidget,0);
+			m_pWidgetStack->addWidget(i->m_pOptionsWidget);
 		}
 
-		m_pWidgetStack->raiseWidget(i->m_pOptionsWidget);
+		int idx = m_pWidgetStack->indexOf(i->m_pOptionsWidget);
+		m_pWidgetStack->widget(idx)->raise();
 		m_pCategoryLabel->setText(str);
 	}
 }

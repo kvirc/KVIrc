@@ -27,10 +27,15 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_widgetstack_qt4.h"
-#else
-	#include "kvi_tal_widgetstack_qt3.h"
-#endif
+#include <QStackedWidget>
+
+class KVILIB_API KviTalWidgetStack : public QStackedWidget
+{
+	Q_OBJECT
+public:
+	KviTalWidgetStack(QWidget * pParent)
+	: QStackedWidget(pParent) {};
+	virtual ~KviTalWidgetStack() {};
+};
 
 #endif // _KVI_TAL_WIDGETSTACK_H_

@@ -23,13 +23,12 @@
 //
 
 #include "kvi_settings.h"
-
 #include "kvi_string.h"
-
 #include "kvi_tal_widgetstack.h"
-#include <qtabbar.h>
-#include <qwidget.h>
-#include <qpushbutton.h>
+
+#include <QTabBar>
+#include <QWidget>
+#include <QPushButton>
 
 class KVIRC_API KviCtcpPageDialog : public QWidget
 {

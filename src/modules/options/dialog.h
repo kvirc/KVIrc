@@ -25,13 +25,13 @@
 //
 //=============================================================================
 
-
-#include <qdialog.h>
-#include "kvi_tal_listview.h"
-#include <qstringlist.h>
-#include "kvi_optionswidget.h"
-
 #include "instances.h"
+
+#include "kvi_optionswidget.h"
+#include "kvi_tal_listview.h"
+
+#include <QDialog>
+#include <QStringList>
 
 class QLabel;
 class KviTalWidgetStack;

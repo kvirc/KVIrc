@@ -218,8 +218,6 @@ headers_HEADERS = \
 	../tal/kvi_tal_tooltip.h \
 	../tal/kvi_tal_vbox.h \
 	../tal/kvi_tal_widgetstack.h \
-	../tal/kvi_tal_widgetstack_qt3.h \
-	../tal/kvi_tal_widgetstack_qt4.h \
 	../tal/kvi_tal_wizard.h \
 	../tal/kvi_tal_windowstate.h
 
@@ -287,8 +285,7 @@ headers_HEADERS = \
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_qt.moc
 ../tal/kvi_tal_toolbar.cpp: ../tal/kvi_tal_toolbar_kde.moc
 ../tal/kvi_tal_tooltip.cpp: ../tal/kvi_tal_tooltip.moc
-../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt3.moc
-../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack_qt4.moc
+../tal/kvi_tal_widgetstack.cpp: ../tal/kvi_tal_widgetstack.moc
 ../tal/kvi_tal_wizard.cpp: ../tal/kvi_tal_wizard.moc
 
 #
