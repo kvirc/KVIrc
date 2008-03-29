@@ -25,9 +25,4 @@
 #define __KVILIB__
 #include "kvi_tal_popupmenu.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_popupmenu_qt4.moc"
-#else
-	#include "kvi_tal_popupmenu_qt3.moc"
-#endif
-
+#include "kvi_tal_popupmenu.moc"

@@ -26,11 +26,73 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_qstring.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_iconview_qt4.h"
-#else
-	#include "kvi_tal_iconview_qt3.h"
-#endif
+#include <q3iconview.h>
+
+class KviTalIconViewItem;
+
+class KVILIB_API KviTalIconView : public Q3IconView
+{
+	Q_OBJECT
+public:
+	KviTalIconView(QWidget * pParent,Qt::WFlags f = 0);
+	virtual ~KviTalIconView() {};
+signals:
+	void selectionChanged(KviTalIconViewItem * pItem);
+	void currentChanged(KviTalIconViewItem * pItem);
+	void clicked(KviTalIconViewItem * pItem);
+	void clicked(KviTalIconViewItem * pItem,const QPoint &pnt);
+	void pressed(KviTalIconViewItem * pItem);
+	void pressed(KviTalIconViewItem * pItem,const QPoint &pnt);
+	void doubleClicked(KviTalIconViewItem * pItem);
+	void returnPressed(KviTalIconViewItem * pItem);
+	void rightButtonClicked(KviTalIconViewItem * pItem,const QPoint &pnt);
+	void rightButtonPressed(KviTalIconViewItem * pItem,const QPoint &pnt);
+	void mouseButtonClicked(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
+	void mouseButtonPressed(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
+	void contextMenuRequested(KviTalIconViewItem * pItem,const QPoint &pnt);
+	void onItem(KviTalIconViewItem * pItem);
+protected slots:
+	void redirect_selectionChanged(Q3IconViewItem * pItem);
+	void redirect_currentChanged(Q3IconViewItem * pItem);
+	void redirect_clicked(Q3IconViewItem * pItem);
+	void redirect_clicked(Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_pressed(Q3IconViewItem * pItem);
+	void redirect_pressed(Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_doubleClicked(Q3IconViewItem * pItem);
+	void redirect_returnPressed(Q3IconViewItem * pItem);
+	void redirect_rightButtonClicked(Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_rightButtonPressed(Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_mouseButtonClicked(int iButton,Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_mouseButtonPressed(int iButton,Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_contextMenuRequested(Q3IconViewItem * pItem,const QPoint &pnt);
+	void redirect_onItem(Q3IconViewItem * pItem);
+public:
+	KviTalIconViewItem * firstItem() const { return (KviTalIconViewItem *)Q3IconView::firstItem(); };
+	KviTalIconViewItem * lastItem() const { return (KviTalIconViewItem *)Q3IconView::lastItem(); };
+	KviTalIconViewItem * currentItem() const { return (KviTalIconViewItem *)Q3IconView::currentItem(); };
+};
+
+class KVILIB_API KviTalIconViewItem : public Q3IconViewItem
+{
+public:
+	KviTalIconViewItem(KviTalIconView * parent)
+	: Q3IconViewItem(parent) {};
+	KviTalIconViewItem(KviTalIconView * parent,KviTalIconViewItem * after)
+	: Q3IconViewItem(parent,after) {};
+	KviTalIconViewItem(KviTalIconView * parent, const QString & text)
+	: Q3IconViewItem(parent,text) {};
+	KviTalIconViewItem(KviTalIconView * parent, KviTalIconViewItem * after, const QString & text)
+	: Q3IconViewItem(parent,after,text) {};
+	KviTalIconViewItem(KviTalIconView * parent, const QString & text, const QPixmap & icon)
+	: Q3IconViewItem(parent,text,icon) {};
+	KviTalIconViewItem(KviTalIconView * parent, KviTalIconViewItem * after, const QString & text, const QPixmap & icon)
+	: Q3IconViewItem(parent,after,text,icon) {};
+public:
+	KviTalIconView * iconView() const { return (KviTalIconView *)Q3IconViewItem::iconView(); };
+	KviTalIconViewItem * prevItem() const { return (KviTalIconViewItem *)Q3IconViewItem::prevItem(); };
+	KviTalIconViewItem * nextItem() const { return (KviTalIconViewItem *)Q3IconViewItem::nextItem(); };
+};
 
 #endif // _KVI_TAL_ICONVIEW_H_

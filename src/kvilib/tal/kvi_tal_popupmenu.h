@@ -26,11 +26,62 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_qstring.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_popupmenu_qt4.h"
-#else
-	#include "kvi_tal_popupmenu_qt3.h"
-#endif
+#include <q3popupmenu.h>
+#include <qwidgetaction.h>
+
+class KVILIB_API KviTalPopupMenu : public Q3PopupMenu
+{
+	Q_OBJECT
+public:
+	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::empty)
+	: Q3PopupMenu(pParent)
+	{
+		setName(szName);
+	};
+	virtual ~KviTalPopupMenu() {};
+
+	int insertItem(const QString &szText)
+	{
+		return Q3PopupMenu::insertItem(szText);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,-1,-1);
+	}
+	int insertItem(const QString &szText,int id)
+	{
+		return Q3PopupMenu::insertItem(szText,id);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,int id)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,id,-1);
+	}
+	int insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot)
+	{
+		return Q3PopupMenu::insertItem(szText,pReceiver,szSlot);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,const QObject * pReceiver,const char * szSlot)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,pReceiver,szSlot);
+	}
+	int insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
+	{
+		return Q3PopupMenu::insertItem(QIcon(pix),szText,pMenu,-1,-1);
+	}
+	int insertItem(const QString &szText,QMenu *pMenu)
+	{
+		return Q3PopupMenu::insertItem(szText,pMenu,-1,-1);
+	}
+	int insertItem(QWidget * pWidget)
+	{
+		// needs Qt 4.2
+		QWidgetAction * pAct = new QWidgetAction(this);
+		pAct->setDefaultWidget(pWidget);
+		addAction(pAct);
+		return 0;
+	}
+};
 
 #endif // _KVI_TAL_POPUPMENU_H_

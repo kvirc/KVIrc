@@ -27,10 +27,21 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_groupbox_qt4.h"
-#else
-	#include "kvi_tal_groupbox_qt3.h"
-#endif
+#include <q3groupbox.h>
+
+class KVILIB_API KviTalGroupBox : public Q3GroupBox
+{
+	Q_OBJECT
+public:
+	KviTalGroupBox(QWidget * parent = 0)
+	: Q3GroupBox(parent) {};
+	KviTalGroupBox(const QString & title,QWidget * parent = 0)
+	: Q3GroupBox(title,parent) {};
+	KviTalGroupBox(int strips,Qt::Orientation orientation,QWidget * parent = 0)
+	: Q3GroupBox(strips,orientation,parent) {};
+	KviTalGroupBox(int strips,Qt::Orientation orientation,const QString & title,QWidget * parent = 0)
+	: Q3GroupBox(strips,orientation,title,parent) {};
+	~KviTalGroupBox() {};
+};
 
 #endif // _KVI_TAL_GROUPBOX_H_

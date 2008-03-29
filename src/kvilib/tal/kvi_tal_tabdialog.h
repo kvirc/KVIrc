@@ -27,10 +27,15 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_tabdialog_qt4.h"
-#else
-	#include "kvi_tal_tabdialog_qt3.h"
-#endif
+#include <q3tabdialog.h>
+
+class KVILIB_API KviTalTabDialog : public Q3TabDialog
+{
+	Q_OBJECT
+public:
+	KviTalTabDialog(QWidget * pParent = 0,const char * name = 0,bool bModal = false)
+	: Q3TabDialog(pParent,name,bModal) {};
+	~KviTalTabDialog() {};
+};
 
 #endif // _KVI_TAL_TABDIALOG_H_

@@ -41,6 +41,8 @@
 // present in qt 3.3.6 AND in qt 4.1.2.
 //
 
+#include "kvi_settings.h"
+
 #include <q3listbox.h>
 
 class KviTalListBoxItem;
@@ -121,13 +123,15 @@ public:
 	KviTalListBoxText(KviTalListBox* listbox, const QString & text, KviTalListBoxItem *after);
 	~KviTalListBoxText();
 	
-	int         height(const KviTalListBox *) const;
-	int         width(const KviTalListBox *)  const;
+	int height(const KviTalListBox *) const;
+	int width(const KviTalListBox *)  const;
 	
 	int rtti() const;
 	enum { RTTI = 1 };
+
 protected:
 	virtual void  paint(QPainter *);
+
 private:
 	Q_DISABLE_COPY(KviTalListBoxText)
 };
@@ -146,16 +150,17 @@ public:
 	
 	const QPixmap *pixmap() const { return &pm; }
 	
-	int         height(const KviTalListBox *) const;
-	int         width(const KviTalListBox *)  const;
+	int height(const KviTalListBox *) const;
+	int width(const KviTalListBox *)  const;
 	
 	int rtti() const;
 	enum { RTTI = 2 };
+
 protected:
 	virtual void paint(QPainter *);
+
 private:
 	Q_DISABLE_COPY(KviTalListBoxPixmap)
-	
 	QPixmap pm;
 };
 
