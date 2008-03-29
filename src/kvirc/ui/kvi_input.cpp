@@ -68,7 +68,7 @@
 #include <qclipboard.h>
 #include <qmessagebox.h>
 #include "kvi_tal_hbox.h"
-#include <qlayout.h> 
+#include <qlayout.h>
 #include <qstyle.h>
 #include <qevent.h>
 
@@ -204,7 +204,7 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = FALSE;
-	
+
 	setInputMethodEnabled(true);
 
 #ifdef COMPILE_USE_QT4
@@ -217,7 +217,7 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	setAcceptDrops(true);
 	setFrameStyle( LineEditPanel );
 	setFrameShadow( Plain );
-	
+
 	m_pIconMenu = new KviTalPopupMenu();
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
 
@@ -357,10 +357,10 @@ void KviInputEditor::drawContents(QPainter *p)
 	pa.setFont(KVI_OPTION_FONT(KviOption_fontInput));
 
 	QFontMetrics fm(pa.fontMetrics());
-	
-	if(!g_pLastFontMetrics) 
+
+	if(!g_pLastFontMetrics)
 		g_pLastFontMetrics = new QFontMetrics(pa.fontMetrics());
-	
+
 	if(g_bInputFontMetricsDirty)
 		recalcFontMetrics(&fm);
 
@@ -373,7 +373,7 @@ void KviInputEditor::drawContents(QPainter *p)
 	} else {
 #endif
 		QPixmap *pix=KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
-		
+
 		pa.fillRect(0,0,widgetWidth,widgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintInputPixmapAlign),rect,widgetWidth,widgetHeight);
@@ -392,7 +392,7 @@ void KviInputEditor::drawContents(QPainter *p)
 	int bottom       = widgetHeight-(widgetHeight-fm.height())/2;
 	int textBaseline = fm.ascent()+(widgetHeight-fm.height())/2;
 	int top          = (widgetHeight-fm.height())/2;
-	
+
 	runUpToTheFirstVisibleChar();
 
 	int charIdx      = m_iFirstVisibleChar;
@@ -436,7 +436,7 @@ void KviInputEditor::drawContents(QPainter *p)
 //		pa.setRasterOp(Qt::NotROP);
 		pa.fillRect(xIMSelectionLeft,0,xIMSelectionRight - xIMSelectionLeft, widgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 //		pa.setRasterOp(Qt::CopyROP);
- 
+
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;
 		if(m_iIMStart < m_iFirstVisibleChar) m_iIMStart = m_iFirstVisibleChar;
@@ -475,31 +475,31 @@ void KviInputEditor::drawContents(QPainter *p)
 					int iSubStart,iSubLen;
 					//in common it consists of 3 parts: unselected-selected-unselected
 					//some of thst parts can be empty (for example block is fully selected)
-					
+
 					//first part start is always equal to the block start
 					iSubStart=charIdx;
 					iSubLen = m_iSelectionBegin>charIdx ? m_iSelectionBegin-charIdx : 0;
-					
-				
+
+
 					if(iSubLen)
 					{
 						drawTextBlock(&pa,fm,curXPos,textBaseline,iSubStart,iSubLen,FALSE);
 						curXPos += m_iBlockWidth;
 						m_iBlockWidth=0;
 					}
-					
+
 					//second one
 					iSubStart+=iSubLen;
 					iSubLen=m_iSelectionEnd<iBlockEnd ? m_iSelectionEnd-iSubStart+1 : iBlockEnd-iSubStart;
-					
-					
+
+
 					if(iSubLen)
 					{
 						drawTextBlock(&pa,fm,curXPos,textBaseline,iSubStart,iSubLen,TRUE);
 						curXPos += m_iBlockWidth;
 						m_iBlockWidth=0;
 					}
-					
+
 					if( m_iSelectionEnd<(iBlockEnd-1))
 					{
 						iSubStart+=iSubLen;
@@ -517,7 +517,7 @@ void KviInputEditor::drawContents(QPainter *p)
 		curXPos += m_iBlockWidth;
 		charIdx += m_iBlockLen;
 	}
-	
+
 	//Now the cursor
 
 	m_iLastCursorXPosition = KVI_INPUT_MARGIN;
@@ -556,10 +556,10 @@ void KviInputEditor::drawTextBlock(QPainter * pa,QFontMetrics & fm,int curXPos,i
 {
 	QString tmp = m_szTextBuffer.mid(charIdx,len);
 	m_iBlockWidth = fm.width(tmp);
-	
+
 	QRect rect = contentsRect();
 	int widgetHeight      = rect.height();
-	
+
 	if(m_iCurFore == KVI_INPUT_DEF_FORE)
 	{
 		pa->setPen( bSelected ? KVI_OPTION_COLOR(KviOption_colorInputSelectionForeground) : KVI_OPTION_COLOR(KviOption_colorInputForeground));
@@ -589,7 +589,7 @@ void KviInputEditor::drawTextBlock(QPainter * pa,QFontMetrics & fm,int curXPos,i
 	{
 		pa->drawLine(curXPos,textBaseline + fm.descent(),curXPos+m_iBlockWidth,textBaseline + fm.descent());
 	}
-	
+
 }
 
 QChar KviInputEditor::getSubstituteChar(unsigned short control_code)
@@ -790,20 +790,20 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 
 		//Popup menu
 		g_pInputPopup->clear();
-		
+
 		QString szClip;
 
 		QClipboard * c = QApplication::clipboard();
 		if(c)
 		{
 			szClip = c->text(QClipboard::Clipboard);
-			
+
 #ifdef COMPILE_USE_QT4
 			int occ = szClip.count(QChar('\n'));
 #else
 			int occ = szClip.contains(QChar('\n'));
 #endif
-	
+
 			if(!szClip.isEmpty())
 			{
 				if(szClip.length() > 60)
@@ -815,21 +815,21 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 				szClip.replace(QChar('<'),"&lt;");
 				szClip.replace(QChar('>'),"&gt;");
 				szClip.replace(QChar('\n'),"<br>");
-	
+
 				QString label = "<center><b>";
 				label += __tr2qs("Clipboard");
 				label += ":</b><br>";
 				label += szClip;
 				label += "<br><b>";
-	
+
 				QString num;
 				num.setNum(occ);
-	
+
 				label += num;
 				label += QChar(' ');
 				label += (occ == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
 				label += "</b></center>";
-	
+
 				QLabel * l = new QLabel(label,g_pInputPopup);
 				l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 				l->setMargin(5);
@@ -841,7 +841,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 #endif
 			}
 		}
-		
+
 		int id = g_pInputPopup->insertItem(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
 		g_pInputPopup->setItemEnabled(id,hasSelection());
 		id = g_pInputPopup->insertItem(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
@@ -851,7 +851,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		id = g_pInputPopup->insertItem(__tr2qs("Paste (Slowly)"),this,SLOT(pasteSlow()));
 		if ((type == KVI_WINDOW_TYPE_CHANNEL) || (type == KVI_WINDOW_TYPE_QUERY) || (type == KVI_WINDOW_TYPE_DCCCHAT))
 			g_pInputPopup->setItemEnabled(id,!szClip.isEmpty() && !m_bReadOnly);
-		else 
+		else
 			g_pInputPopup->setItemEnabled(id,false);
 		id = g_pInputPopup->insertItem(__tr2qs("Paste &File") + ACCEL_KEY(F),this,SLOT(pasteFile()));
 		if ((type != KVI_WINDOW_TYPE_CHANNEL) && (type != KVI_WINDOW_TYPE_QUERY) && (type != KVI_WINDOW_TYPE_DCCCHAT))
@@ -867,11 +867,11 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		g_pInputPopup->insertSeparator();
 		id = g_pInputPopup->insertItem(__tr2qs("Select All"),this,SLOT(selectAll()));
 		g_pInputPopup->setItemEnabled(id,(!m_szTextBuffer.isEmpty()));
-		
-		
+
+
 		g_pInputPopup->insertSeparator();
 		m_pIconMenu->clear();
-		
+
 		KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
 		KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
 		QStringList strList;
@@ -883,7 +883,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 		strList.sort();
 		KviTextIcon * icon;
 		QPixmap *pix;
-		
+
 		for(QStringList::Iterator iter = strList.begin(); iter != strList.end(); ++iter)
 		{
 			icon=g_pTextIconManager->lookupTextIcon(*iter);
@@ -893,7 +893,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent *e)
 				if(pix) m_pIconMenu->insertItem(*pix,*iter);
 			}
 		}
-		
+
 		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),__tr2qs("Insert Icon"),m_pIconMenu);
 		g_pInputPopup->popup(mapToGlobal(e->pos()));
 	} else {
@@ -1029,7 +1029,7 @@ void KviInputEditor::insertText(const QString &text)
 }
 
 // Replace (length) characters in the buffer from (start) with (text), returns
-// the length of the text inserted (different from text.length() only if the 
+// the length of the text inserted (different from text.length() only if the
 // buffer was truncated.
 int KviInputEditor::replaceSegment(int start, int length, const QString &text)
 {
@@ -1091,7 +1091,8 @@ void KviInputEditor::pasteFile()
 	QString stmp = QFileDialog::getOpenFileName("","",this,"Paste File", "Choose a file" );
 	if(stmp!="")
 	{
-		QString stmp1 = "spaste.file " + stmp ;
+		stmp.replace("\"", "\\\"");
+		QString stmp1 = QString("spaste.file \"%1\"").arg(stmp);
 		KviKvsScript::run(stmp1,g_pActiveWindow);
 		m_bSpSlowFlag = true;
 	}
@@ -1384,7 +1385,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		}
 	}
 
-	
+
 	if(e->key() == Qt::Key_Escape)
 	{
 		emit escapePressed();
@@ -1558,13 +1559,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 						g_pInputHistory->add(new QString(szBuffer));
 						m_pHistory->insert(0,new QString(szBuffer));
 					}
-				
+
 					__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 					if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
-				
+
 					m_iCurHistoryIdx = -1;
 				}
-				break;	
+				break;
 			default:
 				if(!m_bReadOnly) insertText(e->text());
 			break;
@@ -1925,14 +1926,14 @@ void KviInputEditor::completion(bool bShift)
 			if(m_pKviWindow)
 				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("%d matches: %Q"),tmp.count(),&all);
 		}
-	} else 
+	} else
 		if(m_pKviWindow)
 			m_pKviWindow->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("No matches"));
 
 	if(!match.isEmpty())
 	{
 		//if(!bIsDir && !bIsNick)match = match.lower(); <-- why? It is nice to have
-		//						 $module.someFunctionName instad 
+		//						 $module.someFunctionName instad
 		//						 of unreadable $module.somefunctionfame
 		replaceWordBeforeCursor(word,match,false);
 	}
@@ -2324,17 +2325,17 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 
 	m_pWindow = par;
 	m_pMultiLineEditor = 0;
-	
+
 	m_pHideToolsButton = new KviStyledToolButton(this,"hide_container_button");
-	
+
 	m_pHideToolsButton->setUsesBigPixmap(false);
 	m_pHideToolsButton->setFixedWidth(10);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setPixmap(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png")));
-	
+
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
-	
+
 	m_pButtonContainer=new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
 
@@ -2396,7 +2397,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
-	
+
 	m_pInputEditor = new KviInputEditor(this,par,view);
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
 #ifdef COMPILE_USE_QT4
@@ -2404,7 +2405,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 #else
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored));
 #endif
-	
+
 
 #ifdef COMPILE_USE_QT4
 	m_pMultiEditorButton->setAutoRaise(true);
@@ -2434,7 +2435,7 @@ void KviInput::setButtonsHidden(bool bHidden)
 	if(!m_pHideToolsButton || !m_pButtonContainer) return;
 	if(bHidden==m_pButtonContainer->isHidden()) return;
 	m_pButtonContainer->setHidden(bHidden);
-	QPixmap* pix= bHidden ? 
+	QPixmap* pix= bHidden ?
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png") :
 		g_pIconManager->getBigIcon("kvi_horizontal_left.png");
 	if(pix)
@@ -2592,9 +2593,9 @@ void KviInput::historyButtonClicked()
 	m_pInputEditor->setGeometry(0,0,m_pButtonContainer->isVisible() ? width() - (BUTTON_WIDTH * 4)-10 : width() - 10,height());
 	if(m_pMultiLineEditor)m_pMultiLineEditor->setGeometry(0,0,m_pButtonContainer->isVisible() ? width() - (BUTTON_WIDTH * 4)-10 : width() - 10,height());
 	if(m_pButtonContainer->isVisible()) m_pButtonContainer->setGeometry(width() - (BUTTON_WIDTH * 4)-10,0,BUTTON_WIDTH*4,height());
-		
+
 	m_pHideToolsButton->setGeometry(width() - 10,0,10,height());
-	
+
 	QWidget::resizeEvent(e);
 }*/
 
@@ -2674,7 +2675,7 @@ QString KviInput::text()
 		m_pMultiLineEditor->getText(szText);
 	else
 		szText=m_pInputEditor->text();
-	return szText; 
+	return szText;
 }
 
 #include "kvi_input.moc"
