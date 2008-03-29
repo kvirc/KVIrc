@@ -26,11 +26,23 @@
 
 #include "kvi_window.h"
 
-#include <qwidget.h>
 #include "kvi_tal_listview.h"
 #include "kvi_styled_controls.h"
 
+#include <QWidget>
+#include <q3simplerichtext.h>
+#define QSimpleRichText Q3SimpleRichText
+
 class KviActionEditorListViewItem;
+class KviScriptEditor;
+class KviActionEditor;
+class QLineEdit;
+class QComboBox;
+class QToolButton;
+class QSimpleRichText;
+class QPushButton;
+class QSplitter;
+
 
 class KviActionData
 {
@@ -64,22 +76,6 @@ public:
 };
 
 
-class QLineEdit;
-class QComboBox;
-class KviScriptEditor;
-class QToolButton;
-class QSimpleRichText;
-class QPushButton;
-
-#ifdef COMPILE_USE_QT4
-	#include <q3simplerichtext.h>
-	#define QSimpleRichText Q3SimpleRichText
-#else
-	#include <qsimplerichtext.h>
-#endif
-
-
-
 class KviActionEditorListViewItem : public KviTalListViewItem
 {
 public:
@@ -111,7 +107,6 @@ protected:
 	virtual void resizeEvent(QResizeEvent * e);
 };
 
-class KviActionEditor;
 
 class KviSingleActionEditor : public QWidget
 {
@@ -156,7 +151,6 @@ protected slots:
 	void channelQueryOrConsoleWindowCheckToggled(bool);
 };
 
-class QSplitter;
 
 class KviActionEditor : public QWidget
 {

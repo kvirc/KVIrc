@@ -22,11 +22,12 @@
 //
 //=============================================================================
 
+#include "actioneditor.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 
-#include "actioneditor.h"
 KviActionEditorWindow * g_pActionEditorWindow = 0;
 
 
@@ -76,7 +77,7 @@ static bool actioneditor_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"ActionEditor",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script actions",
 	actioneditor_module_init,

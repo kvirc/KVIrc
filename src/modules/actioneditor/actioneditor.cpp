@@ -40,29 +40,26 @@
 #include "kvi_action.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_customtoolbarmanager.h"
-
-#include <qsplitter.h>
-#include <qlayout.h>
-#include "kvi_tal_vbox.h"
-#include <qtooltip.h>
-#include <qpushbutton.h>
-#include <qdir.h>
-#include <qmessagebox.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qtoolbutton.h>
-#include <qcheckbox.h>
-#include <qtooltip.h>
-#include <qpainter.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-#else
-	#include <qheader.h>
-#endif
-#include <qtabwidget.h>
-#include <kvi_tal_groupbox.h>
 #include "kvi_valuelist.h"
-#include <qlabel.h>
+#include "kvi_tal_vbox.h"
+#include <kvi_tal_groupbox.h>
+
+#include <QSplitter>
+#include <QLayout>
+#include <QToolTip>
+#include <QPushButton>
+#include <QDir>
+#include <QMessageBox>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QToolButton>
+#include <QCheckBox>
+#include <QPainter>
+#include <QTabWidget>
+#include <QLabel>
+#include <q3header.h>
+// FIXME: #include <QHeaderView>
+
 
 extern KviActionEditorWindow * g_pActionEditorWindow;
 
@@ -217,9 +214,9 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pKeySequenceEdit = new QLineEdit(tab);
 	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
 	QToolTip::add(m_pKeySequenceEdit,__tr2qs("Optional keyboard sequence that will activate this action.<br>" \
-						"The sequence should be expressed as a string of up to four key codes separated by commas " \
-						"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
-						"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."));
+		"The sequence should be expressed as a string of up to four key codes separated by commas " \
+		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
+		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."));
 
 	l = new QLabel(tab);
 	gl->addMultiCellWidget(l,6,6,0,3);
@@ -613,11 +610,6 @@ void KviSingleActionEditor::commit()
 
 
 
-
-
-
-
-
 KviActionEditorListView::KviActionEditorListView(QWidget * pParent)
 : KviTalListView(pParent)
 {
@@ -643,25 +635,13 @@ void KviActionEditorListView::resizeEvent(QResizeEvent * e)
 
 
 
-
-
-
-
-
 KviActionEditor::KviActionEditor(QWidget * par)
 : QWidget(par)
 {
 	
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
-
-#ifdef COMPILE_USE_QT4
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setOpaqueResize(false);
-
-#else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this);
-#endif
-
 	l->addWidget(m_pSplitter,0,0);
 	
 	
@@ -669,13 +649,8 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	m_pListView = new KviActionEditorListView(box);
 	//m_pListView->setMultiSelection(false);
 	m_pListView->setShowSortIndicator(true);
-#ifdef COMPILE_USE_QT4
 	m_pListView->setFocusPolicy(Qt::StrongFocus);
-#else
-	m_pListView->setFocusPolicy(QWidget::StrongFocus);
-#endif
 	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
-
 
 	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
 	connect(m_pNewActionButton,SIGNAL(clicked()),this,SLOT(newAction()));

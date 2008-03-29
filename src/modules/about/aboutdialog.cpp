@@ -25,18 +25,18 @@
 #include "aboutdialog.h"
 
 #include "kvi_defaults.h"
-
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #include "kvi_sourcesdate.h"
-
-#include <qwidget.h>
-#include <qlayout.h>
 #include <kvi_tal_textedit.h>
-#include <qlabel.h>
-#include <qpixmap.h>
-#include <qevent.h>
+
+#include <QWidget>
+#include <QLayout>
+#include <QLabel>
+#include <QPixmap>
+#include <QEvent>
+#include <QCloseEvent>
 
 extern KviAboutDialog * g_pAboutDialog;
 /*
@@ -135,8 +135,8 @@ KviAboutDialog::KviAboutDialog()
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
 		szLicense = __tr2qs_ctx("Oops... Can't find the license file...\n" \
-						"It MUST be included in the distribution...\n" \
-						"Please report to <pragma at kvirc dot net>","about");
+			"It MUST be included in the distribution...\n" \
+			"Please report to <pragma at kvirc dot net>","about");
 	}
 
 	v->setText(szLicense);
