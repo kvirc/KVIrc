@@ -1,0 +1,45 @@
+# CMakeLists.txt for src/modules/
+
+INCLUDE_DIRECTORIES(
+	../kvilib/tal/
+	../kvilib/config/
+	../kvilib/core/
+	../kvilib/ext/
+	../kvilib/file/
+	../kvilib/irc/
+	../kvilib/net/
+	../kvilib/system/
+	../kvirc/kernel/
+	../kvirc/kvs/
+	../kvirc/module/
+	../kvirc/sparser/
+	../kvirc/ui/
+)
+
+SUBDIRS(
+	about action actioneditor addon aliaseditor avatar
+	chan channelsjoin codetester config context
+	dcc dialog
+	editor eventeditor
+	file filetransferwindow
+	help http
+	ident
+	lamerizer links list log logview
+	mask math mediaplayer mircimport my
+	objects 
+	popupeditor
+	raweditor regchan reguser rijndael
+	setup sharedfile sharedfileswindow snd socketspy spaste str system
+	texticons term theme tip tmphighlight toolbar toolbareditor trayicon
+	url
+	window
+
+	# broken modules
+	# notifier, options, torrent
+
+	# modules to deprecate ?
+	# perl, perlcore
+
+	# forgotten ?
+	# clock iograph
+)
