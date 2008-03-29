@@ -36,11 +36,7 @@
 #include <qfile.h>
 #include <time.h>
 
-#ifdef COMPILE_USE_QT4
-	#define kvi_file_offset_t qlonglong
-#else
-	#define kvi_file_offset_t QFile::Offset
-#endif
+#define kvi_file_offset_t qlonglong
 
 
 class KVILIB_API KviFile : public QFile, public KviHeapObject
@@ -54,20 +50,10 @@ public:
 	bool openForReading();
 	bool openForWriting(bool bAppend = false);
 
-#ifndef COMPILE_USE_QT4
-	// Functions present in Qt 4.x but not Qt 3.x
-	bool putChar(char c){ return putch(c) != -1; };
-	bool ungetChar(char c){ return ungetch(c) != -1; };
-	bool getChar(char * c){ *c = getch(); return *c != -1; };
-	bool seek(kvi_file_offset_t o){ return at(o); };
-	kvi_file_offset_t pos(){ return at(); };
-#endif
 
-#ifdef COMPILE_USE_QT4
 	// Missing functions in Qt 4.x
 	quint64 writeBlock(const char * data,quint64 uLen){ return write(data,uLen); };
 	quint64 readBlock(char * data,quint64 uLen){ return read(data,uLen); };
-#endif
 
 	// This stuff loads and saves LITTLE ENDIAN DATA!
 	bool save(kvi_u64_t t);
@@ -97,11 +83,6 @@ public:
 	bool save(const KviStr &szData);
 	bool load(KviStr &szData);
 
-#ifndef COMPILE_USE_QT4
-	// Under Qt 4.x these collide with QByteArray
-	bool save(const KviQCString &szData);
-	bool load(KviQCString &szData);
-#endif
 
 	bool save(const QByteArray &bData);
 	bool load(QByteArray &bData);

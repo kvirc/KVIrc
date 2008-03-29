@@ -27,12 +27,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3accel.h>
-	#define KviAccel Q3Accel
-#else
-	#include <qaccel.h>
-	#define KviAccel QAccel
-#endif
+#include <q3accel.h>
+#define KviAccel Q3Accel
 
 #endif //!_KVI_ACCEL_H_

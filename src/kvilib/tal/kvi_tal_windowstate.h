@@ -27,16 +27,9 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#define QT_WINDOWSTATE_FLAGS Qt::WindowState
+#define QT_WINDOWSTATE_FLAGS Qt::WindowState
 	
-	#define QT_WINDOWSTATE_MAXIMIZED Qt::WindowMaximized
-	#define QT_WINDOWSTATE_MINIMIZED Qt::WindowMinimized
-#else
-	#define QT_WINDOWSTATE_FLAGS Qt::WidgetState
-
-	#define QT_WINDOWSTATE_MAXIMIZED Qt::WState_Maximized
-	#define QT_WINDOWSTATE_MINIMIZED Qt::WState_Minimized
-#endif
+#define QT_WINDOWSTATE_MAXIMIZED Qt::WindowMaximized
+#define QT_WINDOWSTATE_MINIMIZED Qt::WindowMinimized
 
 #endif // _KVI_TAL_WINDOWSTATE_H_

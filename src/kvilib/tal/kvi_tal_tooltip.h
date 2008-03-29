@@ -50,30 +50,21 @@ protected:
 
 
 class KVILIB_API KviTalToolTip
-#ifndef COMPILE_USE_QT4
- : public QToolTip
-#endif
 {
 	friend class KviTalToolTipHelper;
 public:
 	KviTalToolTip(QWidget * pParent);
 	virtual ~KviTalToolTip();
 protected:
-#ifdef COMPILE_USE_QT4
-	KviTalToolTipHelper * m_pHelper;
-	QWidget * m_pParent;
-#endif
+KviTalToolTipHelper * m_pHelper;
+QWidget * m_pParent;
 public:
-#ifdef COMPILE_USE_QT4
-	static void add(QWidget * widget,const QString & text);
-	static void remove(QWidget * widget);
-	virtual void tip(const QRect & rect,const QString & text);
-#endif
+static void add(QWidget * widget,const QString & text);
+static void remove(QWidget * widget);
+virtual void tip(const QRect & rect,const QString & text);
 protected:
 	virtual void maybeTip(const QPoint & p);
-#ifdef COMPILE_USE_QT4
-	void helperDying();
-#endif
+void helperDying();
 };
 
 #endif // _KVI_TAL_TOOLTIP_H_
