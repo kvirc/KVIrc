@@ -539,7 +539,7 @@ void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
 		}
 
 		int idx = m_pWidgetStack->indexOf(i->m_pOptionsWidget);
-		m_pWidgetStack->widget(idx)->raise();
+		m_pWidgetStack->setCurrentWidget(m_pWidgetStack->widget(idx));
 		m_pCategoryLabel->setText(str);
 	}
 }
