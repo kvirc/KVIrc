@@ -260,7 +260,8 @@ ENDIF(UNIX)
 # CONFIGURE FILES
 ###############################################################################
 
-CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${kvirc_BINARY_DIR}/src/kvilib/config/kvi_sysconfig.h)
+CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${kvirc_BINARY_DIR}/kvi_sysconfig.h)
+INCLUDE_DIRECTORIES(${kvirc_BINARY_DIR})
 
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${kvirc_BINARY_DIR}/kvirc-config @ONLY)
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
