@@ -65,7 +65,8 @@
 		#ifdef HAVE_CONFIG_H
 			#include "config.h"
 		#else
-			#error "You're missing the config.h file: you must run configure before running make!"
+			// assume CMake build system
+			#include "kvi_sysconfig.h"
 		#endif
 	#endif
 
