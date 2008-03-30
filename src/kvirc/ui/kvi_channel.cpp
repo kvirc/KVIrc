@@ -115,7 +115,9 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	// And create the widgets layout
 	// Button box
 	m_pButtonBox = new KviTalHBox(this);
-	
+	m_pButtonBox->setSpacing(0);
+	m_pButtonBox->setMargin(0);
+
 	m_pTopSplitter = new QSplitter(Qt::Horizontal,m_pButtonBox);
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
@@ -146,11 +148,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pVertSplitter->setOpaqueResize(false);
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
-	#ifdef COMPILE_USE_QT4
-		m_pIrcView->setObjectName(name);
-	#else
-		m_pIrcView->setName(name);
-	#endif
+	m_pIrcView->setObjectName(name);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	// And the double view (that may be unused)
 	m_pMessageView = 0;
@@ -191,11 +189,8 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 
 	m_pHideToolsButton = new KviStyledToolButton(m_pButtonBox,"hide_container_button");
 
-#ifndef  COMPILE_USE_QT4
+
 	m_pHideToolsButton->setUsesBigPixmap(false);
-#else
-	m_pHideToolsButton->setAutoRaise(true);
-#endif
 	m_pHideToolsButton->setFixedWidth(10);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
