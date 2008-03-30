@@ -16,13 +16,13 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_menubar_qt.h
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_application.h
-	tal/kvi_tal_filedialog.h
+	tal/kvi_tal_filedialog_qt.h
 	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
-	tal/kvi_tal_mainwindow.h
+	tal/kvi_tal_mainwindow_qt.h
 	tal/kvi_tal_menubar.h
-	tal/kvi_tal_toolbar.h
+	tal/kvi_tal_toolbar_qt.h
 	tal/kvi_tal_toolbardocktype.h
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_windowstate.h
