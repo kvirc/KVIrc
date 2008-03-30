@@ -32,7 +32,9 @@
 	{
 	}
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_kde.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
@@ -51,7 +53,9 @@
 		else setIconSize(QSize(24,24));
 	}
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_qt.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
 

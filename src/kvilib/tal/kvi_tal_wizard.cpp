@@ -528,5 +528,7 @@ QPushButton * KviTalWizard::backButton()
 }
 
 #ifdef COMPILE_ON_WINDOWS 
-	#include "kvi_tal_wizard.moc"
+	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+		#include "kvi_tal_wizard.moc"
+	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif

@@ -35,7 +35,10 @@
 	{
 	}
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_toolbar_kde.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 #else
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
 	//: Q3ToolBar(label,w,dock,bNewLine,nam)
@@ -82,5 +85,8 @@
 	{
 	}
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_toolbar_qt.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 #endif

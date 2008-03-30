@@ -74,7 +74,9 @@
 	}
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_kde.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 
@@ -121,6 +123,8 @@
 	}
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_qt.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif

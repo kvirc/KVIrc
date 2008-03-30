@@ -26,6 +26,15 @@
 
 #include "kvi_settings.h"
 
+// backward compatibility
+#ifndef SYSTEM_SIZE_OF_SHORT_INT
+	#define SYSTEM_SIZE_OF_SHORT_INT SIZE_OF_SHORT_INT
+	#define SYSTEM_SIZE_OF_INT SIZE_OF_INT
+	#define SYSTEM_SIZE_OF_LONG_INT SIZE_OF_LONG_INT
+	#define SYSTEM_SIZE_OF_LONG_LONG_INT SIZE_OF_LONG_LONG_INT
+#endif //!SYSTEM_SIZE_OF_SHORT_INT
+
+
 #ifdef COMPILE_ON_WINDOWS
 	// we don't have a configure script here
 	// so we can't check the size of types
@@ -39,15 +48,15 @@
 	typedef char kvi_i8_t;
 	typedef unsigned char kvi_u8_t;
 #else
-	#if SIZEOF_LONG_INT == 8
+	#if SYSTEM_SIZE_OF_LONG_INT == 8
 		// the most common case on 64 bit machines
 		typedef long int kvi_i64_t;
 		typedef unsigned long int kvi_u64_t;
-	#elif SIZEOF_INT == 8
+	#elif SYSTEM_SIZE_OF_INT == 8
 		// 64 bit ints ?.. a Cray ? :D
 		typedef int kvi_i64_t;
 		typedef unsigned int kvi_u64_t;
-	#elif SIZEOF_LONG_LONG_INT == 8
+	#elif SYSTEM_SIZE_OF_LONG_LONG_INT == 8
 		// the most common case on 32 bit machines
 		typedef long long int kvi_i64_t;
 		typedef unsigned long long int kvi_u64_t;
@@ -58,15 +67,15 @@
 		typedef unsigned long long int kvi_u64_t;
 	#endif
 
-	#if SIZEOF_INT == 4
+	#if SYSTEM_SIZE_OF_INT == 4
 		// the most common case
 		typedef int kvi_i32_t;
 		typedef unsigned int kvi_u32_t;
-	#elif SIZEOF_SHORT_INT == 4
+	#elif SYSTEM_SIZE_OF_SHORT_INT == 4
 		// 32 bit shorts ?.. a Cray ? :D
 		typedef short int kvi_i32_t;
 		typedef short unsigned int kvi_u32_t;
-	#elif SIZEOF_LONG_INT == 4
+	#elif SYSTEM_SIZE_OF_LONG_INT == 4
 		typedef long int kvi_i32_t;
 		typedef unsigned long int kvi_u32_t;
 	#else
@@ -74,11 +83,11 @@
 		#error "Please report to pragma at kvirc dot net"
 	#endif
 
-	#if SIZEOF_SHORT_INT == 2
+	#if SYSTEM_SIZE_OF_SHORT_INT == 2
 		// the most common case
 		typedef short int kvi_i16_t;
 		typedef short unsigned int kvi_u16_t;
-	#elif SIZEOF_INT == 2
+	#elif SYSTEM_SIZE_OF_INT == 2
 		// this isn't going to work anyway, I think..
 		typedef int kvi_i16_t;
 		typedef long int kvi_u16_t;

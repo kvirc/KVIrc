@@ -74,4 +74,6 @@ void KviTalHBox::setMargin(int margin)
 }
 
 
-#include "kvi_tal_hbox.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_hbox.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

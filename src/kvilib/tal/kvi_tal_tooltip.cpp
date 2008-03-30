@@ -121,5 +121,7 @@ void KviTalToolTip::maybeTip(const QPoint & p)
 }
 
 #ifndef COMPILE_ON_WINDOWS
-	#include "kvi_tal_tooltip.moc"
+	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+		#include "kvi_tal_tooltip.moc"
+	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif

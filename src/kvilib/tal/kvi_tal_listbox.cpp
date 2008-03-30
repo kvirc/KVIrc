@@ -262,4 +262,6 @@ int KviTalListBoxPixmap::rtti() const
 }
 
 
-#include "kvi_tal_listbox.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_listbox.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

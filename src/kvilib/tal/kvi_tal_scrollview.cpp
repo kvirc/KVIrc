@@ -25,4 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_scrollview.h"
 
-#include "kvi_tal_scrollview.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_scrollview.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

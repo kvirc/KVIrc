@@ -25,4 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_tabdialog.h"
 
-#include "kvi_tal_tabdialog.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_tabdialog.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

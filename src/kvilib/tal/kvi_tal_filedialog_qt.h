@@ -25,6 +25,8 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+
 #include <QFileDialog>
 
 class KVILIB_API KviTalFileDialog : public QFileDialog

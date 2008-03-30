@@ -25,4 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_grid.h"
 
-#include "kvi_tal_grid.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_grid.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

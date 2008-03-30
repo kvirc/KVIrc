@@ -115,4 +115,6 @@ void KviTalIconView::redirect_onItem(Q3IconViewItem * pItem)
 }
 
 
-#include "kvi_tal_iconview.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_iconview.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

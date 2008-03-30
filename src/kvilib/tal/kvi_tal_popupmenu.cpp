@@ -25,4 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_popupmenu.h"
 
-#include "kvi_tal_popupmenu.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_popupmenu.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

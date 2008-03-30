@@ -26,4 +26,7 @@
 #include "kvi_tal_textedit.h"
 
 
-#include "kvi_tal_textedit.moc"
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_textedit.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
