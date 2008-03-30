@@ -123,7 +123,8 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
 	
 	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
-	
+	m_pButtonContainer->setSpacing(0);
+	m_pButtonContainer->setMargin(0);
 	// Topic widget on the left
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter,"topic_widget");
 
