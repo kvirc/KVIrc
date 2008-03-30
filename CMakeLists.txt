@@ -15,9 +15,20 @@ PROJECT(kvirc)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.6)
 
 # Set conventional loops
-SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+SET(
+	CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS
+	true
+)
 
-SET(CMAKE_MODULE_PATH ${kvirc_SOURCE_DIR}/cmake/modules)
+SET(
+	CMAKE_MODULE_PATH
+	${kvirc_SOURCE_DIR}/cmake/modules
+)
+
+SET(
+	CMAKE_VERBOSE_MAKEFILE
+	ON CACHE BOOL "Generate verbose Makefiles"
+)
 
 # Some vars
 SET(KVI_PACKAGE "kvirc")
