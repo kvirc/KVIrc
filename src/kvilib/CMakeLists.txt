@@ -39,6 +39,7 @@ SET(kvilib_MOC_HDRS
 	net/kvi_socket.h
 	net/kvi_sockettype.h
 	net/kvi_ssl.h
+	net/kvi_url.h
 	irc/kvi_avatar.h
 	irc/kvi_avatarcache.h
 	irc/kvi_ircmask.h
@@ -114,6 +115,7 @@ SET(kvilib_SRCS
 	net/kvi_netutils.cpp
 	net/kvi_socket.cpp
 	net/kvi_ssl.cpp
+	net/kvi_url.cpp
 	irc/kvi_avatar.cpp
 	irc/kvi_avatarcache.cpp
 	irc/kvi_ircmask.cpp
