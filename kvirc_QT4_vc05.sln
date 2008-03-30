@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+# Visual C++ Express 2005
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kvirc", "src\kvirc\kvirc_QT4_vc05.vcproj", "{92803FDD-DFDB-461D-8AA3-1F201F4EA06C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
@@ -39,8 +39,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "str", "src\modules\str\str_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "my", "src\modules\my\my_QT4_vc05.vcproj", "{3AB1E78F-B313-44ED-B452-4B492CF06604}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{736D754E-BF35-4FE8-AA75-6BF903D5A1EC} = {736D754E-BF35-4FE8-AA75-6BF903D5A1EC}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mircimport", "src\modules\mircimport\mircimport_QT4_vc05.vcproj", "{E1B7346F-A039-4C31-8553-986135384741}"
@@ -50,8 +50,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mircimport", "src\modules\m
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "about", "src\modules\about\about_QT4_vc05.vcproj", "{1DEEEFDC-8DF0-4E33-B869-84737C15E64C}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ident", "src\modules\ident\ident_QT4_vc05.vcproj", "{F97729AF-3547-4CC7-8FEF-2DF161469AF4}"
@@ -61,8 +61,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ident", "src\modules\ident\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "socketspy", "src\modules\socketspy\socketspy_QT4_vc05.vcproj", "{52A4F40D-5AAF-41C7-A8FB-9E0EAD3DB77D}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "http", "src\modules\http\http_QT4_vc05.vcproj", "{F0B24D36-1505-41F5-A6BD-FFCA2BE0A234}"
@@ -86,11 +86,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tip", "src\modules\tip\tip_
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "window", "src\modules\window\window_QT4_vc05.vcproj", "{74B66905-5BD2-4639-9955-7AFBFCAD9C19}"
-	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dockwidget", "src\modules\dockwidget\dockwidget_QT4_vc05.vcproj", "{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
@@ -132,8 +127,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "system", "src\modules\syste
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log", "src\modules\log\log_QT4_vc05.vcproj", "{6E84D5E0-B1D4-4041-B7D8-2D8C09A4F6CB}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor", "src\modules\editor\editor_QT4_vc05.vcproj", "{4D437B7D-2BA6-426C-9E9F-2EA05E51ABD6}"
@@ -143,8 +138,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "editor", "src\modules\edito
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "list", "src\modules\list\list_QT4_vc05.vcproj", "{D6F06614-642A-4113-B636-F582417AF154}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "snd", "src\modules\snd\snd_QT4_vc05.vcproj", "{7A897266-3913-48FC-8EC1-9B8F69BD9354}"
@@ -153,11 +148,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "snd", "src\modules\snd\snd_
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dialog", "src\modules\dialog\dialog_QT4_vc05.vcproj", "{4FEF7D07-F712-4F26-8E68-C518CF9C17BD}"
-	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lag", "src\modules\lag\lag_QT4_vc05.vcproj", "{D0FA3D9D-5108-46BC-8080-997E768C2169}"
 	ProjectSection(ProjectDependencies) = postProject
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
@@ -174,8 +164,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "links", "src\modules\links\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logview", "src\modules\logview\logview_QT4_vc05.vcproj", "{0895E8B5-8A1B-4993-8DFE-BADDB5FC1415}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "objects", "src\modules\objects\objects_QT4_vc05.vcproj", "{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}"
@@ -285,8 +275,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "addon", "src\modules\addon\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math", "src\modules\math\math_QT4_vc05.vcproj", "{2B1545D5-14C3-4430-83C5-AA5F2407376B}"
 	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
+		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "idleui", "src\modules\my\win32\idleui_05.vcproj", "{736D754E-BF35-4FE8-AA75-6BF903D5A1EC}"
@@ -301,11 +291,15 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "theme", "src\modules\theme\
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\mediaplayer\winamp_vc05.vcproj", "{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32registrar_winapi", "src\win32registrar\win32registrar_winapi.vcproj", "{5B9C2364-6814-4C7F-B064-FA663F21220D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "trayicon", "src\modules\trayicon\trayicon_QT4_vc05.vcproj", "{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\mediaplayer\winamp_QT4_vc05.vcproj", "{FD8BC188-FFA0-43E4-813A-4C98CAA87802}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "context", "src\modules\context\context_QT4_vc05.vcproj", "{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -385,10 +379,6 @@ Global
 		{74B66905-5BD2-4639-9955-7AFBFCAD9C19}.Debug|Win32.Build.0 = Debug|Win32
 		{74B66905-5BD2-4639-9955-7AFBFCAD9C19}.Release|Win32.ActiveCfg = Release|Win32
 		{74B66905-5BD2-4639-9955-7AFBFCAD9C19}.Release|Win32.Build.0 = Release|Win32
-		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Debug|Win32.ActiveCfg = Debug|Win32
-		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Debug|Win32.Build.0 = Debug|Win32
-		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Release|Win32.ActiveCfg = Release|Win32
-		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Release|Win32.Build.0 = Release|Win32
 		{65809260-63B6-4B84-A3B8-2446B298E647}.Debug|Win32.ActiveCfg = Debug|Win32
 		{65809260-63B6-4B84-A3B8-2446B298E647}.Debug|Win32.Build.0 = Debug|Win32
 		{65809260-63B6-4B84-A3B8-2446B298E647}.Release|Win32.ActiveCfg = Release|Win32
@@ -437,10 +427,6 @@ Global
 		{4FEF7D07-F712-4F26-8E68-C518CF9C17BD}.Debug|Win32.Build.0 = Debug|Win32
 		{4FEF7D07-F712-4F26-8E68-C518CF9C17BD}.Release|Win32.ActiveCfg = Release|Win32
 		{4FEF7D07-F712-4F26-8E68-C518CF9C17BD}.Release|Win32.Build.0 = Release|Win32
-		{D0FA3D9D-5108-46BC-8080-997E768C2169}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D0FA3D9D-5108-46BC-8080-997E768C2169}.Debug|Win32.Build.0 = Debug|Win32
-		{D0FA3D9D-5108-46BC-8080-997E768C2169}.Release|Win32.ActiveCfg = Release|Win32
-		{D0FA3D9D-5108-46BC-8080-997E768C2169}.Release|Win32.Build.0 = Release|Win32
 		{1D7DE893-331D-4677-A11B-8F3E7F7F9DC1}.Debug|Win32.ActiveCfg = Debug|Win32
 		{1D7DE893-331D-4677-A11B-8F3E7F7F9DC1}.Debug|Win32.Build.0 = Debug|Win32
 		{1D7DE893-331D-4677-A11B-8F3E7F7F9DC1}.Release|Win32.ActiveCfg = Release|Win32
@@ -553,14 +539,22 @@ Global
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Debug|Win32.Build.0 = Debug|Win32
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Release|Win32.ActiveCfg = Release|Win32
 		{71BA7AEE-3FE7-4922-A184-BD3ABD64AF94}.Release|Win32.Build.0 = Release|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.ActiveCfg = Debug|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Debug|Win32.Build.0 = Debug|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.ActiveCfg = Release|Win32
-		{EDD7C2E4-F6A4-4CFA-9AB4-57330EBC1B06}.Release|Win32.Build.0 = Release|Win32
 		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Debug|Win32.ActiveCfg = Debug|Win32
 		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Debug|Win32.Build.0 = Debug|Win32
 		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Release|Win32.ActiveCfg = Release|Win32
 		{5B9C2364-6814-4C7F-B064-FA663F21220D}.Release|Win32.Build.0 = Release|Win32
+		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Debug|Win32.Build.0 = Debug|Win32
+		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Release|Win32.ActiveCfg = Release|Win32
+		{4528E26C-195B-4EEE-BEC4-8CD73C564B0D}.Release|Win32.Build.0 = Release|Win32
+		{FD8BC188-FFA0-43E4-813A-4C98CAA87802}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD8BC188-FFA0-43E4-813A-4C98CAA87802}.Debug|Win32.Build.0 = Debug|Win32
+		{FD8BC188-FFA0-43E4-813A-4C98CAA87802}.Release|Win32.ActiveCfg = Release|Win32
+		{FD8BC188-FFA0-43E4-813A-4C98CAA87802}.Release|Win32.Build.0 = Release|Win32
+		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Debug|Win32.Build.0 = Debug|Win32
+		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Release|Win32.ActiveCfg = Release|Win32
+		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
