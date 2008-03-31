@@ -2601,5 +2601,6 @@ QString KviInput::text()
 		szText=m_pInputEditor->text();
 	return szText;
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

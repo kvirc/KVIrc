@@ -66,7 +66,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * 
 		g_pToolBarGraphicalAppletList->setAutoDelete(false);
 		g_pIccMemBuffer = new QPixmap(1,1);
 	}
-	
+
 	g_pToolBarGraphicalAppletList->append(this);
 #ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
@@ -399,7 +399,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 		}
 
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastActive1));
-	
+
 		p->setClipRect(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 2,2,width() - (KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4),height() - 4);
 
 		if(height() < 30)
@@ -413,14 +413,14 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,16,serv,serv.length());
 			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,30,nick,nick.length());
 		}
-	
+
 		p->setClipping(false);
 
 		QColor base = colorGroup().background();
 		QColor cntx = KVI_OPTION_ICCOLOR(c->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
 		base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 			(base.blue() + cntx.blue()) >> 1);
-	
+
 		p->fillRect(2,2, KVI_APPLETIRCCONTEXTINDICATORWIDTH - 2,height() - 4,base);
 	}
 
@@ -437,5 +437,6 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 #ifdef Bool
 	#undef Bool
 #endif
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_irctoolbar.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

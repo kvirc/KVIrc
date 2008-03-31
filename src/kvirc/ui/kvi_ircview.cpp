@@ -275,7 +275,7 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * pt
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
-: QWidget(parent,"irc_view") 
+: QWidget(parent,"irc_view")
 {
 	// Ok...here we go
 	// initialize the initializable
@@ -302,7 +302,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	{
 		m_iMaxLines = 32;
 		KVI_OPTION_UINT(KviOption_uintIrcViewMaxBufferSize) = 32;
-	} 
+	}
 
 	m_bMouseIsDown               = false;
 
@@ -330,18 +330,18 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pMasterView              = 0;
 
 	m_pToolWidget              = 0;
-	
+
 	m_pWrappedBlockSelectionInfo  = new KviIrcViewWrappedBlockSelectionInfo;
-	
+
 
 	m_pMessagesStoppedWhileSelecting = new KviPointerList<KviIrcViewLine>;
 	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
 
 	// say qt to avoid erasing on repaint
 	setAutoFillBackground(false);
-	
+
 	m_pFm = 0; // will be updated in the first paint event
-	
+
 	m_pToolTip = new KviIrcViewToolTip(this);
 
 	// Create the scroll bar
@@ -371,12 +371,12 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setMouseTracking(true);
 	// let's go!
 	applyOptions();
-	
+
 	if(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)) //m_iFlushTimer
 	{
 		m_iFlushTimer = startTimer(KVI_OPTION_UINT(KviOption_uintAutoFlushLogs)*60*1000);
 	}
-	
+
 //	if(pWnd->input()) setFocusProxy(pWnd->input());
 
 }
@@ -464,7 +464,7 @@ void KviIrcView::applyOptions()
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void KviIrcView::enableDnd(bool bEnable) 
+void KviIrcView::enableDnd(bool bEnable)
 {
 	setAcceptDrops(bEnable);
 	m_bAcceptDrops = bEnable;
@@ -520,8 +520,8 @@ void KviIrcView::stopLogging()
 	{
 		QString szLogEnd;
 		szLogEnd.sprintf(__tr2qs("### Log session terminated at %s ###"),QDateTime::currentDateTime().toString().utf8().data());
-		
-		add2Log(szLogEnd);	
+
+		add2Log(szLogEnd);
 		m_pLogFile->close();
 #ifdef COMPILE_ZLIB_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
@@ -597,7 +597,7 @@ void KviIrcView::flushLog()
 				}
 			}
 			m_pLogFile->open(IO_Append|IO_WriteOnly);
-		} else 
+		} else
 #endif
 		m_pLogFile->flush();
 	}
@@ -661,7 +661,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 {
 	stopLogging();
 	QString szFname(fname);
-	
+
 	if(fname.isEmpty())
 	{
 		if(!m_pKviWindow)return false;
@@ -672,7 +672,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
 		szFname+=".tmp";
 #endif
-	
+
 	m_pLogFile = new QFile(szFname);
 
 	if(m_pLogFile->exists())
@@ -797,7 +797,7 @@ void KviIrcView::clearUnreaded()
 {
 	m_bHaveUnreadedHighlightedMessages = false;
 	m_bHaveUnreadedMessages = false;
-	
+
 	if(m_pFrm)
 		if(m_pFrm->dockExtension())
 			m_pFrm->dockExtension()->refresh();
@@ -834,7 +834,7 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 // Lines = 1024 (322425 bytes - 314 KB) (avg 314 bytes per line) , well :)
 // string bytes = 87745 (85 KB)
 // attributes = 3576 (42912 bytes - 41 KB)
-// blocks = 12226 (146712 bytes - 143 KB)     
+// blocks = 12226 (146712 bytes - 143 KB)
 //
 //	unsigned long int nAlloc = 0;
 //	unsigned long int nLines = 0;
@@ -1082,7 +1082,7 @@ void KviIrcView::removeHeadLine(bool bRepaint)
 void KviIrcView::splitMessagesTo(KviIrcView *v)
 {
 	v->emptyBuffer(false);
-	
+
 	KviIrcViewLine * l = m_pFirstLine;
 	KviIrcViewLine * tmp;
 	while(l)
@@ -1132,7 +1132,7 @@ void KviIrcView::splitMessagesTo(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
-	
+
 	repaint();
 
 	v->m_iLastScrollBarValue = v->m_iNumLines;
@@ -1165,7 +1165,7 @@ void KviIrcView::appendMessagesFrom(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
-	
+
 	repaint();
 }
 
@@ -1225,7 +1225,7 @@ void KviIrcView::joinMessagesFrom(KviIrcView *v)
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0,m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
-	
+
 	repaint();
 }
 
@@ -1242,7 +1242,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 		line_ptr->iMsgType=iMsgType;
 		line_ptr->iMaxLineWidth=-1;
 		line_ptr->iBlockCount=0;
-		
+
 		if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 		{
 			QString szBuffer;
@@ -1258,7 +1258,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 				}
 			}
 		}
-	
+
 		data_ptr=getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp));
 		appendLine(line_ptr,!(iFlags & NoRepaint));
 		if(iFlags & SetLineMark)
@@ -1289,7 +1289,7 @@ void KviIrcView::getLinkEscapeCommand(QString &buffer,const QString &szPayload,c
 	int idx = szPayload.find(escape_label);
 	if(idx == -1)return;
 	idx += escape_label.length();
-	
+
 	int idx2 = szPayload.find("[!",idx);
 	int len = idx2 == -1 ? szPayload.length() - idx : idx2 - idx;
 
@@ -1902,16 +1902,16 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	line_ptr->pChunks[0].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 	line_ptr->pChunks[0].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
 	line_ptr->pChunks[0].customFore=QColor();
-	
+
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
 	{
 		QString szTimestamp;
-		szTimestamp=QDateTime::currentDateTime ( 
+		szTimestamp=QDateTime::currentDateTime (
 				KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? Qt::UTC : Qt::LocalTime ).toString(
 					KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat) );
 		szTimestamp.append(' ');
 		int iTimeStampLength=szTimestamp.length();
-		
+
 		if(KVI_OPTION_BOOL(KviOption_boolUseSpecialColorForTimestamp))
 		{
 			// we need three chunks: the first one uses the default colors
@@ -1949,7 +1949,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 		// throw away const: we WANT to set the chars :D
 		register QChar * data_ptr_aux = (QChar *)line_ptr->szText.unicode();
 		register QChar * stamp_ptr_aux = (QChar *)szTimestamp.unicode();
-		
+
 		for(int i=0;i<iTimeStampLength;i++)
 			*data_ptr_aux++  = *stamp_ptr_aux++;
 	} else {
@@ -1986,7 +1986,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	line_ptr->pChunks[iCurChunk].type = _chunk_type; \
 	line_ptr->pChunks[iCurChunk].iTextStart = iTextIdx; \
 	line_ptr->pChunks[iCurChunk].iTextLen = 0; \
-	line_ptr->pChunks[iCurChunk].customFore=iCurChunk ? line_ptr->pChunks[iCurChunk-1].customFore : QColor(); 
+	line_ptr->pChunks[iCurChunk].customFore=iCurChunk ? line_ptr->pChunks[iCurChunk-1].customFore : QColor();
 
 	// EOF Macros
 
@@ -2005,7 +2005,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	// This is again BAD PROGRAMMING(TM) :).... but it is faster than
 	// the version with no dynamic gotos, and really faster
 	// that any version without gotos that comed into my mind...
-	// 
+	//
 	// This code will prolly work only with GCC...(and even needs a "smart" one)
 
 	// Again did two versions... the first was:
@@ -2246,13 +2246,13 @@ found_command_escape:
 						blockLen = (next_cr - p);
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),p,blockLen * sizeof(kvi_wchar_t));
-						
+
 						line_ptr->pChunks[iCurChunk].szPayload[blockLen] = 0;
 
 						++next_cr; //point after the middle \r
-						
+
 						pUnEscapeAt = term_cr;
-						
+
 						bool bColorSetted=false;
 						if((line_ptr->pChunks[iCurChunk].szPayload[0]=='n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
 						{
@@ -2281,7 +2281,7 @@ found_command_escape:
 						{
 							line_ptr->pChunks[iCurChunk].colors.fore=KVI_NOCHANGE;
 						}
-						
+
 						/*APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
 						NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)*/
 
@@ -2333,9 +2333,9 @@ found_icon_escape:
 					kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
 					line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
 					line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
-					
+
 					APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name,datalen)
-					
+
 					data_ptr = p;
 					NEW_LINE_CHUNK(KVI_TEXT_UNICON)
 				}
@@ -2618,7 +2618,7 @@ check_emoticon_char:
 				{
 					// ok! this is an emoticon (sequence) !
 					// We lookup simplified versions of the emoticons...
-	
+
 					// FIXME: this sould become UNICODE!!!
 					QString lookupstring;
 					kvi_wchar_t ng[3];
@@ -2635,18 +2635,18 @@ check_emoticon_char:
 						// the tooltip will carry the original emoticon source text
 						APPEND_LAST_TEXT_BLOCK(data_ptr,begin - data_ptr)
 						NEW_LINE_CHUNK(KVI_TEXT_ICON)
-						
+
 						int emolen = p - begin;
 						int reallen=item2 ? 3 : 2;
-						
+
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((emolen + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
-						
+
 						line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)kvi_malloc((reallen + 1) * sizeof(kvi_wchar_t));
 						kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
-						
+
 						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(begin,emolen)
 						data_ptr = p;
 						// let's also handle thingies like :DDDD
@@ -2657,11 +2657,11 @@ check_emoticon_char:
 							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((emolen + 1) * sizeof(kvi_wchar_t));
 							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
-							
+
 							line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)kvi_malloc((reallen + 1) * sizeof(kvi_wchar_t));
 							kvi_fastmoveodd(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
 							line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
-							
+
 							APPEND_ZERO_LENGTH_BLOCK(data_ptr)
 							count--;
 						}
@@ -2822,14 +2822,14 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 		if(!pix)
 			pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
-	
+
 		pa.fillRect(rectLeft,rectTop,rectWidth,rectHeight,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		if(pix)
 			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign),r,widgetWidth,widgetHeight);
-#ifdef COMPILE_PSEUDO_TRANSPARENCY	
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-	
+
 	//Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth   = widgetWidth;
@@ -2951,7 +2951,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 						// Pragma: optimized: moved the code above (avoided duplicate if())
 						// Pragma(05.03.2003): fixed again: reset ONLY if CTRL+K without numbers
-						// otherwise leave the background unchanged 
+						// otherwise leave the background unchanged
 
 						//if(block->pChunk->colors.fore == KVI_NOCHANGE)
 						//	curFore = defaultFore;
@@ -3126,7 +3126,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 					//Selected in some way
 					//__range_valid(g_pOptions->m_cViewOutSeleFore != KVI_TRANSPARENT);
 					//__range_valid(g_pOptions->m_cViewOutSeleBack != KVI_TRANSPARENT);
-					
+
 					if(m_bShiftPressed && i && block->pChunk &&
 						((m_pWrappedBlockSelectionInfo->selection_type == KVI_IRCVIEW_BLOCK_SELECTION_TOTAL) ||
 						(m_pWrappedBlockSelectionInfo->selection_type == KVI_IRCVIEW_BLOCK_SELECTION_LEFT))
@@ -3260,16 +3260,16 @@ no_selection_paint:
 
 					int wdth = block->block_width;
 					if(wdth < 0)wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
-	
+
 					// FIXME: We could avoid this XSetForeground if the curFore was not changed....
-					
+
 					SET_PEN(curFore,block->pChunk ? block->pChunk->customFore : QColor());
-	
+
 					if(curBack != KVI_TRANSPARENT && curBack < 16 )
 					{
 						pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,wdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
-					
+
 					if(curLink)
 					{
 						SET_PEN(KVI_OPTION_MSGTYPE(KVI_OUT_LINK).fore(),block->pChunk ? block->pChunk->customFore : QColor());
@@ -3285,7 +3285,7 @@ no_selection_paint:
 					}
 
 					if(curUnderline)
-					{ 
+					{
 						//Draw a line under the text block....
 						pa.drawLine(curLeftCoord,curBottomCoord+2,curLeftCoord+wdth,curBottomCoord+2);
 					}
@@ -3330,7 +3330,7 @@ no_selection_paint:
 
 		pCurTextLine    = pCurTextLine->pPrev;
 	}
-	
+
 	if(!bLineMarkPainted && pCurTextLine && (rectTop <= (KVI_IRCVIEW_VERTICAL_BORDER + 5)))
 	{
 		// the line mark hasn't been painted yet
@@ -3376,7 +3376,7 @@ no_selection_paint:
 			}
 		}
 	}
-	
+
 	//Need to draw the sunken rect around the view now...
 	pa.setPen(colorGroup().dark());
 	pa.drawLine(0,0,widgetWidth,0);
@@ -3400,7 +3400,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 	//
 	// Another monster
 	//
-	
+
 	if(maxWidth<=0) return;
 
 	if(ptr->iBlockCount != 0)kvi_free(ptr->pBlocks); // free any previous wrap blocks
@@ -3473,7 +3473,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 			}
 			//Now look for a space
 			while((*p != ' ') && curBlockLen)
-			{ 
+			{
 				p--;
 				curBlockLen--;
 				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
@@ -3642,7 +3642,7 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line,int left,int bottom,i
 				m_pWrappedBlockSelectionInfo->part_2_width += www;
 				p++;
 				m_pWrappedBlockSelectionInfo->part_2_length++;
-			}		
+			}
 			m_pWrappedBlockSelectionInfo->part_3_length = maxLenNow-m_pWrappedBlockSelectionInfo->part_2_length;
 			m_pWrappedBlockSelectionInfo->part_3_width  = maxWidthNow-m_pWrappedBlockSelectionInfo->part_2_width;
 			return true;
@@ -3843,7 +3843,7 @@ void KviIrcView::showToolsPopup()
 	m_pToolsPopup->setItemEnabled(id,m_pPrivateBackgroundPixmap != 0);
 	m_pToolsPopup->insertSeparator();
 	m_pToolsPopup->insertItem(__tr2qs("Clear Buffer"),this,SLOT(clearBuffer()));
-	
+
 	QSize s = m_pToolsPopup->sizeHint();
 
 	m_pToolsPopup->popup(m_pToolsButton->mapToGlobal(QPoint(m_pToolsButton->width() - s.width(),m_pToolsButton->height())));
@@ -3922,7 +3922,7 @@ void KviIrcView::setCursorLine(KviIrcViewLine * l)
 	m_pCursorLine = l;
 	if(m_pCursorLine == m_pCurLine)
 	{
-	
+
 	repaint();
 
 		return;
@@ -4130,7 +4130,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 			l = l->pPrev;
 			continue;
 		}
-		
+
 		// got the right KviIrcViewLine
 		int iLeft = KVI_IRCVIEW_HORIZONTAL_BORDER;
 		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
@@ -4259,7 +4259,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 										} else
 											break;
 									iEndOfLInk++;
-									
+
 								}
 								*linkText=szLink;
 								// grab the rest of the link visible string
@@ -4367,7 +4367,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 		<action_tag> ::= "[!" <action> "]"[br]
 		<action> ::= "rbt" | "mbt" | "dbl" | "txt"[br]
 		<command> ::= any kvirc command (see notes below)[br]
-		
+
 		[big]Builtin links[/big][br]
 		The builtin links have builtin actions performed when the user interact with the link.[br]
 		These links are used internally in KVIrc , but you can use them too.[br]
@@ -4385,7 +4385,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 		[big]A shortcut[/big]
 		You may have a look at the [fnc]$fmtlink[/fnc] function: it does automatically some of the job explained
 		in this document.[br]
-		
+
 */
 
 // FIXME: #warning "Finish the doc above!! Maybe some examples ?!"
@@ -4397,14 +4397,14 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	QString linkCmd;
 	QString linkText;
 
-	if(m_iMouseTimer) 
+	if(m_iMouseTimer)
 	{
 		killTimer(m_iMouseTimer);
 		m_iMouseTimer=0;
 		delete m_pLastEvent;
 		m_pLastEvent = 0;
 	}
-	
+
 	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&linkCmd,&linkText);
 
 	if(linkCmd.isEmpty())
@@ -4412,7 +4412,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked,m_pKviWindow);
 		return;
 	}
-	
+
 	QString szCmd(linkCmd);
 	szCmd.remove(0,1);
 
@@ -4421,7 +4421,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	else pParams->append(linkText);
 	pParams->append(linkText);
 	pParams->append(szCmd);
-	
+
 
 	switch(linkCmd[0].unicode())
 	{
@@ -4553,7 +4553,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 void KviIrcView::mousePressEvent(QMouseEvent *e)
 {
 	if(m_pKviWindow->input()) m_pKviWindow->input()->setFocus();
-	
+
 	if(e->button() & Qt::LeftButton)
 	{
 		// This is the beginning of a selection...
@@ -4575,10 +4575,10 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 
 		calculateSelectionBounds();
 	}
-	
+
 	if(e->button() & Qt::LeftButton)
 	{
-		if(m_iMouseTimer) 
+		if(m_iMouseTimer)
 		{
 			killTimer(m_iMouseTimer);
 			m_iMouseTimer=0;
@@ -4598,7 +4598,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	QString linkCmd;
 	QString linkText;
 	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&linkCmd,&linkText);
-	
+
 	QString szCmd(linkCmd);
 	szCmd.remove(0,1);
 
@@ -4607,7 +4607,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	else pParams->append(linkText);
 	pParams->append(linkText);
 	pParams->append(szCmd);
-	
+
 
 	if(!(e->state() & Qt::ControlButton))//(e->button() & Qt::RightButton) && (
 	{
@@ -4703,7 +4703,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 				break;
 			}
 		} else if(e->button() & Qt::RightButton) emit rightClicked();
-		
+
 	} else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->state() & Qt::ControlButton)))
 	{
 		QString tmp;
@@ -4757,16 +4757,16 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 //	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
 	if(m_bMouseIsDown && (e->state() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
-		
+
 		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
-		
+
 		/*if(m_iMouseTimer)
 		{
 			killTimer(m_iMouseTimer);
 			m_iMouseTimer=0;
 			mouseRealPressEvent(m_pLastEvent);
 			delete m_pLastEvent;
-			m_pLastEvent=0;	
+			m_pLastEvent=0;
 		}*/
 	} else {
 		if(m_iSelectTimer)
@@ -4834,10 +4834,10 @@ KviConsole * KviIrcView::console()
 void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText)
 {
 	if(linkCmd.isEmpty())return;
-	
+
 	QString szCmd(linkCmd);
 	szCmd.remove(0,1);
-	
+
 	QString tip;
 
 	switch(linkCmd[0].unicode())
@@ -4872,7 +4872,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 			QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
-			
+
 			if(linkText.find('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Unable to look it up hostname: Hostname appears to be masked");
@@ -4886,7 +4886,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		case 's': // server link
 		{
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
-			
+
 			tip = "<table width=\"100%\">" \
 				"<tr><td valign=\"center\"><img src=\"server_icon\"> <u><font color=\"blue\"><nowrap>";
 			QMimeSourceFactory::defaultFactory()->setPixmap("server_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)));
@@ -4898,7 +4898,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			
+
 			if(linkText.find('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Server appears to be a network hub<br>");
@@ -4970,7 +4970,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				QString buf;
 				tip = "<img src=\"chan_icon\"> ";
 				QMimeSourceFactory::defaultFactory()->setPixmap("chan_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
-				
+
 				if(szCmd.length()>0) szChan=szCmd;
 				KviChannel * c = console()->connection()->findChannel(szChan);
 				QString szUrl;
@@ -4992,7 +4992,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					KviQString::sprintf(buf,__tr2qs("<b>%Q</b> (<u><font color=\"blue\"><nowrap>"
 						"%Q</nowrap></font></u>)<hr>Double-click to join %Q<br>Right click to view other options"),&szChan,&szUrl,&szChan);
 				}
-				
+
 				tip += buf;
 			}
 		}
@@ -5029,13 +5029,13 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 
 	m_pToolTip->doTip(rct,tip);
 }
-void KviIrcView::leaveEvent ( QEvent * ) 
-{ 
-	if(m_pLastLinkUnderMouse)  
+void KviIrcView::leaveEvent ( QEvent * )
+{
+	if(m_pLastLinkUnderMouse)
     {
 		 m_pLastLinkUnderMouse=0;
-		 update(); 
-	}  
+		 update();
+	}
 }
 void KviIrcView::timerEvent(QTimerEvent *e)
 {
@@ -5052,7 +5052,7 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 		m_iMouseTimer=0;
 		mouseRealPressEvent(m_pLastEvent);
 		delete m_pLastEvent;
-		m_pLastEvent=0;	
+		m_pLastEvent=0;
 	}
 	if(e->timerId() == m_iFlushTimer)
 	{
@@ -5089,5 +5089,6 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
 	else m_pLastLinkUnderMouse = 0; //
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_ircview.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

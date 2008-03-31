@@ -117,14 +117,14 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 					case QMessageBox::Cancel: return false; break;
 					case QMessageBox::Yes:    return true;  break;
 			}
-			
-		} 
-		
-		
+
+		}
+
+
 	}
 	#endif
 
-	
+
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::AnyFile);
@@ -164,7 +164,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 	delete d;
 	return false;
-	
+
 }
 
 bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
@@ -209,12 +209,12 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 		buffer=QFileDialog::getOpenFileNames(filter,initial,parent,"open_file_name_dialog",caption);
 		return (buffer.count()>0);
 	}
-	
+
 	#endif
 	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::ExistingFiles);
-	//d->setShowHiddenFiles(showHidden);	
+	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
 		buffer = d->selectedFiles();
@@ -225,5 +225,6 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 	return false;
 }
 
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_filedialog.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

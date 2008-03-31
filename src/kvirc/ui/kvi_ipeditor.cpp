@@ -58,7 +58,7 @@ KviIpEditor::KviIpEditor(QWidget * parent,AddressType addrType,const QString &ip
 
 KviIpEditor::~KviIpEditor()
 {
-	
+
 }
 
 void KviIpEditor::setEnabled(bool bEnabled)
@@ -449,5 +449,6 @@ QSize KviIpEditor::sizeHint()
 	} else return QFrame::sizeHint();
 }
 
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_ipeditor.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -98,7 +98,7 @@ void KviColorWindow::mousePressEvent(QMouseEvent *e)
 	if (e->x()>36 && e->y()>18) key -=2;
 	int ascii=key+48;
 	str.setNum(key);
-	if (e->x()>36 && e->y()>18) 
+	if (e->x()>36 && e->y()>18)
 		if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,49,Qt::NoButton,"1"));
 	if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,key,ascii,Qt::NoButton,str));
 	if(m_iTimerId != -1)
@@ -118,5 +118,6 @@ void KviColorWindow::timerEvent(QTimerEvent *)
 	hide();
 }
 
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_colorwin.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

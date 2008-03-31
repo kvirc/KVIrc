@@ -57,5 +57,6 @@ void KviDynamicToolTip::tip(const QRect &rct,const QString & text)
 {
 	m_pHelper->tip(rct,text);
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_dynamictooltip.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

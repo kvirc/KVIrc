@@ -119,10 +119,10 @@ KviFrame::KviFrame()
 	m_pActiveContext = 0;
 
 	m_pDockExtension = 0;
-	
+
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
 //	m_pSplitter->setFrameShape(QFrame::NoFrame);
-	
+
 	setCentralWidget(m_pSplitter);
 
 	setUsesBigPixmaps(KVI_OPTION_BOOL(KviOption_boolUseBigIcons));
@@ -217,7 +217,7 @@ KviFrame::~KviFrame()
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
 	delete m_pWinList;
-	
+
 	delete m_pAccel;
 	g_pFrame = 0;
 }
@@ -546,7 +546,7 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const char * szSection)
 //	KviWindow * top = g_pActiveWindow;
 //	if(!top)top = wnd;
 //	g_pWinPropertiesConfig->writeEntry("IsMaximized",top->isMaximized());
-	
+
 	g_pWinPropertiesConfig->writeEntry("WinRect",wnd->externalGeometry());
 
 	wnd->saveProperties(g_pWinPropertiesConfig);
@@ -593,7 +593,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 			pCandidate = m_pWinList->first();
 			if(pCandidate == wnd)pCandidate = 0;
 		}
-		
+
 		if(pCandidate)
 			childWindowActivated(pCandidate);
 		// else { m_pActiveWindow = 0; m_pActiveContext = 0; };
@@ -639,19 +639,19 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 
 	{
 		wnd->loadProperties(g_pWinPropertiesConfig); // load it anyway (will set defaults if windows don't remember properties)
-	
+
 		if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties))
 		{
 			bool bDocked    = g_pWinPropertiesConfig->readBoolEntry("IsDocked",true);
 			//bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
 			bool bMaximized;
-			
+
 			if(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode))
 			{
 				bMaximized = true;
 				//KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode) = false;
 			} else bMaximized = false;
-			
+
 			QRect rect      = g_pWinPropertiesConfig->readRectEntry("WinRect",QRect(10,10,500,380));
 
 			if(bDocked)
@@ -689,7 +689,7 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 			goto docking_done;
 		}
 	}
-	
+
 default_docking:
 	{
 		KviMdiChild * lpC = dockWindow(wnd,false); //cascade it
@@ -882,10 +882,10 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 	m_pTaskBar->setActiveItem(wnd->taskBarItem());
 
 	//wnd->gainedActiveWindowStatus(); // <-- atm unused
-	
+
 	if(g_pActiveWindow->view())
 		g_pActiveWindow->view()->clearUnreaded();
-	
+
 	emit activeWindowChanged();
 	if(bActiveContextChanged)emit activeContextChanged();
 
@@ -968,7 +968,7 @@ void KviFrame::closeEvent(QCloseEvent *e)
 	if(KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections))
 	{
 		// check for running connections
-		
+
 		bool bGotRunningConnection = false;
 		for(KviWindow * w = m_pWinList->first();w;w = m_pWinList->next())
 		{
@@ -981,14 +981,14 @@ void KviFrame::closeEvent(QCloseEvent *e)
 				}
 			}
 		}
-		
+
 		if(bGotRunningConnection)
 		{
 			QString txt = "<p>";
 			txt += __tr2qs("There are active connections, are you sure you wish to ");
 			txt += __tr2qs("quit KVIrc?");
 			txt += "</p>";
-	
+
 			switch(QMessageBox::warning(this,__tr2qs("Confirmation - KVIrc"),txt,__tr2qs("&Yes"),__tr2qs("&Always"),__tr2qs("&No"),2,2))
 			{
 				case 0:
@@ -1047,7 +1047,7 @@ void KviFrame::applyOptions()
 	m_pMdi->update();
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->applyOptions();
 	updateCaption();
-	
+
 	m_pTaskBar->applyOptions();
 }
 
@@ -1146,7 +1146,7 @@ void KviFrame::toolbarsPopupSelected(int id)
 	if(!o->inherits("KviTalPopupMenu"))return;
 	const KviTalPopupMenu * p = (const KviTalPopupMenu *)o;
 	int idext = p->itemParameter(id);
-	
+
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);
 	if(dd)
 	{
@@ -1177,7 +1177,7 @@ bool KviFrame::focusNextPrevChild(bool next)
 #endif
 		//QVariant v = w->property("KviProperty_FocusOwner");
 		//if(v.isValid())return false; // Do NOT change the focus widget!
-		
+
 		if(w->parent())
 		{
 			QVariant v = w->parent()->property("KviProperty_ChildFocusOwner");
@@ -1222,9 +1222,9 @@ void KviFrame::restoreToolBarPositions()
 	g_pApp->getLocalKvircDirectory(szTemp,KviApp::Config,KVI_CONFIGFILE_TOOLBARS);
 
 	QFile f(szTemp);
-	
+
 	bool bNeedDefaults = false;
-	
+
 	if(f.open(IO_ReadOnly))
 	{
 #ifdef COMPILE_USE_QT4
@@ -1252,7 +1252,7 @@ void KviFrame::restoreToolBarPositions()
 		{
 			// nope.... need to move it
 			a->removeDockWindow(m_pTaskBar,true,false);
-			
+
 			//int iMaxWidth = m_pTaskBar->maximumWidth();
 			leftDock()->moveDockWindow(m_pTaskBar);
 			//m_pTaskBar->setMaximumWidth(iMaxWidth);
@@ -1338,7 +1338,7 @@ void KviFrame::recreateTaskBar()
 		// the class changed...
 		// make sure that the tree task bar is in the left or right dock
 		// and the classic one is in the top or bottom on
-		
+
 		Qt::Dock dock;
 		int index;
 		bool nl;
@@ -1372,7 +1372,7 @@ unsigned int KviFrame::windowState()
 			else if(isFullScreen())		GNWState=WindowFullScreen;
 			else GNWState=WindowNoState; */
 
-/*	WindowNoState	=	0x00000000	WindowMinimized		= 0x00000001	
+/*	WindowNoState	=	0x00000000	WindowMinimized		= 0x00000001
 	WindowMaximized	=	0x00000002	WindowFullScreen	= 0x00000004 WindowActive = 0x00000008*/
 			if(isMinimized())		return 0x00000001;
 			else if(isMaximized())		return 0x00000002;
@@ -1436,15 +1436,16 @@ void KviFrame::hideEvent ( QHideEvent * e)
 	{
 		if(e->spontaneous())
 		{
-		
+
 		if(!dockExtension())
 		{
 			executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
 		}
-			 QTimer::singleShot( 0, this, SLOT(hide()) );	
+			 QTimer::singleShot( 0, this, SLOT(hide()) );
 		}
-		
+
 	}
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

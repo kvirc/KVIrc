@@ -55,7 +55,7 @@ KviHistoryWindow::KviHistoryWindow()
 	setHScrollBarMode(QScrollView::AlwaysOff);
 #endif
 	connect(this,SIGNAL(selected(const QString &)),this,SLOT(itemSelected(const QString &)));
-	
+
 	m_iTimerId = -1;
 }
 
@@ -250,6 +250,7 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 		m_iTimerId = -1;
 	}
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_historywin.moc"
 #endif //_KVI_HISTORYWIN_CPP_
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

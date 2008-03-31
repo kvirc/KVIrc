@@ -29,7 +29,7 @@
 
 	#include "kvi_cryptcontroller.h"
 	#include "kvi_styled_controls.h"
-	
+
 	#include "kvi_window.h"
 	#include "kvi_locale.h"
 	#include "kvi_out.h"
@@ -39,7 +39,7 @@
 	#include "kvi_malloc.h"
 	#include "kvi_memmove.h"
 	#include "kvi_toolwindows_container.h"
-	
+
 	#include <qlayout.h>
 	#include "kvi_pointerhashtable.h"
 
@@ -369,7 +369,7 @@
 		m_pSessionInfo = 0;
 		return inf;
 	}
-	
+
 	KviCryptSessionInfo * KviCryptController::allocateCryptSessionInfo()
 	{
 		// this is mainly for modules wanting to alloc this
@@ -384,7 +384,7 @@
 		delete *inf;
 		*inf = 0;
 	}
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_cryptcontroller.moc"
-
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif //COMPILE_CRYPT_SUPPORT
