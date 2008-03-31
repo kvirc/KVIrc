@@ -90,6 +90,7 @@ ENDIF()
 #
 ###############################################################################
 
+# Check for threads
 FIND_PACKAGE(Threads REQUIRED)
 IF(CMAKE_USE_WIN32_THREADS_INIT OR CMAKE_USE_PTHREADS_INIT)
 	IF(CMAKE_USE_WIN32_THREADS_INIT)
@@ -107,13 +108,6 @@ IF(CMAKE_USE_WIN32_THREADS_INIT OR CMAKE_USE_PTHREADS_INIT)
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_THREADS_SUPPORT "Not used")
-ENDIF()
-
-# Check for threads
-FIND_PACKAGE(Threads REQUIRED)
-#IF(Threads_FOUND)
-IF(CMAKE_HAVE_THREADS_LIBRARY)
-	LIST(APPEND LIBS ${CMAKE_THREAD_LIBS_INIT})
 ENDIF()
 
 # Check for ZLib
@@ -161,6 +155,7 @@ IF(QT4_FOUND)
 	LIST(APPEND LIBS ${QT_LIBRARIES})
 ENDIF()
 
+# Check for KDE4
 FIND_PACKAGE(KDE4)
 IF(KDE4_FOUND)
 	IF(WITH_KDE4)
@@ -291,4 +286,3 @@ MESSAGE(STATUS "  KDE4 support   : ${CMAKE_STATUS_KDE4_SUPPORT}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "I'm ready to build kvirc for you: please type 'make' now...")
 MESSAGE(STATUS " ")
-
