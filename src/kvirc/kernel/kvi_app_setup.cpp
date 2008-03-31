@@ -560,7 +560,8 @@ void KviApp::findGlobalKvircDirectory()
 			#ifdef HAVE_GETENV
 				//KDEDIR sanity check...
 				m_szGlobalKvircDir = getenv("KDEDIR");
-				m_szGlobalKvircDir+="/share/apps/kvirc/" KVI_VERSION_BRANCH;
+				#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+				m_szGlobalKvircDir+="/share/apps/kvirc/" 4.0;
 				if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 			#endif
 		}
@@ -573,7 +574,8 @@ void KviApp::findGlobalKvircDirectory()
 	#ifdef Q_OS_MACX
 		m_szGlobalKvircDir = applicationDirPath();
 		m_szGlobalKvircDir+= "/../Resources/kvirc/";
-		m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+		m_szGlobalKvircDir+= 4.0;
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //Q_OS_MACX
 
@@ -582,7 +584,8 @@ void KviApp::findGlobalKvircDirectory()
 		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
 			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
 			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
-			m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+			m_szGlobalKvircDir+= 4.0;
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;	
 		}
 	}
@@ -591,7 +594,8 @@ void KviApp::findGlobalKvircDirectory()
 	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
 		m_szGlobalKvircDir = QDir::homeDirPath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-		m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+		m_szGlobalKvircDir+= 4.0;
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	}
 
@@ -600,7 +604,8 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir = QDir::homeDirPath();
 			m_szGlobalKvircDir+= "/.kde";
 			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-			m_szGlobalKvircDir+= KVI_VERSION_BRANCH;
+			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+			m_szGlobalKvircDir+= 4.0;
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	#endif //COMPILE_KDE_SUPPORT
@@ -814,7 +819,8 @@ void KviApp::saveKvircDirectory()
 {
 /*
 #ifdef COMPILE_ON_WINDOWS
-	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",KVI_VERSION_BRANCH);
+	#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",4.0);
 	WritePrivateProfileString("kvirc",szKey.ptr(),m_szLocalKvircDir.ptr(),KVI_HOME_CONFIG_FILE_NAME);
 #else //!COMPILE_ON_WINDOWS
 */

@@ -251,4 +251,6 @@ void KviTextIconManager::save(const QString &filename)
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_texticonmanager.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

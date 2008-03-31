@@ -28,7 +28,7 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_string.h"
-
+#include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 
 #include <QWidget>
