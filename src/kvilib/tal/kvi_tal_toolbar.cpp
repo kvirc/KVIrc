@@ -26,7 +26,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-	: KToolBar(w,dock,bNewLine,nam)
+	: KToolBar(nam,w,dock,bNewLine)
 	{
 		setLabel(label);
 	}
@@ -64,17 +64,17 @@
 	{
 		return (QBoxLayout*)this->layout();
 	}
-	
+
 	void KviTalToolBar::setBoxLayout(QBoxLayout * l)
 	{
 		this->setLayout(l);
 	}
-	
+
 	bool KviTalToolBar::usesBigPixmaps()
 	{
 		return (iconSize().width() > 40);
 	}
-	
+
 	void KviTalToolBar::setUsesBigPixmaps(bool b)
 	{
 		if(b)setIconSize(QSize(48,48));

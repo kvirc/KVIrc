@@ -25,14 +25,14 @@
 
 #include "kvi_settings.h"
 
-#include <kapp.h>
+#include <KApplication>
 
 
 class KVILIB_API KviTalApplication : public KApplication
 {
 	Q_OBJECT
 public:
-	KviTalApplication(int &argc,char ** argv);
+	KviTalApplication();
 	~KviTalApplication();
 };
 

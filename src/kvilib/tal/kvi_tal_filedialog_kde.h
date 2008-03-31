@@ -25,7 +25,7 @@
 
 #include "kvi_settings.h"
 
-#include <kfiledialog.h>
+#include <KFileDialog>
 
 class KVILIB_API KviTalFileDialog : public KFileDialog
 {
@@ -41,10 +41,10 @@ public:
 
 
 	static QString getExistingDirectoryPath(const QString &dir = QString::null,const QString &caption = QString::null,QWidget *parent = 0)
-	{ 
+	{
 		// QFileDialog allows making new directories...kfiledialog not :/
-		return QFileDialog::getExistingDirectory(dir,parent,0,caption);
-		//return getExistingDirectory(dir,parent,caption); 
+		return KFileDialog::getExistingDirectory(KUrl(dir),parent,caption);
+		//return getExistingDirectory(dir,parent,caption);
 	};
 };
 

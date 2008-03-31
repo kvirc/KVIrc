@@ -28,17 +28,17 @@
 #include "kvi_tal_filedialog.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-	
+
 	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
-	: KFileDialog(dirName,filter,parent,name,modal)
+	: KFileDialog(KUrl(dirName),filter,parent)
 	{
-		clearWFlags(WDestructiveClose);
+	//	clearWFlags(WDestructiveClose);
 	}
 
 	KviTalFileDialog::~KviTalFileDialog()
 	{
 	}
-	
+
 	void KviTalFileDialog::setFileMode(FileMode m)
 	{
 		switch(m)
@@ -67,10 +67,10 @@
 			break;
 		}
 	}
-	
+
 	void KviTalFileDialog::setDirectory(const QString &szDirectory)
 	{
-		setURL(szDirectory);
+		setUrl(KUrl(szDirectory));
 	}
 
 
@@ -116,7 +116,7 @@
 			break;
 		}
 	}
-	
+
 	void KviTalFileDialog::setDirectory(const QString &szDirectory)
 	{
 		QFileDialog::setDirectory(szDirectory);

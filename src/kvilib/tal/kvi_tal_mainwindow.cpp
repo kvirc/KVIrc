@@ -28,8 +28,9 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-	: KMainWindow(par,nam)
+	: KMainWindow(par)
 	{
+		setCaption(nam);
 	}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
@@ -46,7 +47,7 @@
 	{
 		return (iconSize().width() > 40);
 	}
-	
+
 	void KviTalMainWindow::setUsesBigPixmaps(bool b)
 	{
 		if(b)setIconSize(QSize(48,48));

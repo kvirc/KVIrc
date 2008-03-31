@@ -28,8 +28,9 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
-	: KMenuBar(par,nam)
+	: KMenuBar(par)
 	{
+		setCaption(nam);
 	}
 
 	KviTalMenuBar::~KviTalMenuBar()

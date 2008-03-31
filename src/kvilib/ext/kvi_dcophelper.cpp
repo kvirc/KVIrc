@@ -26,7 +26,7 @@
 #define __KVILIB__
 #include "kvi_dcophelper.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 
 #include "dcopclient.h"
 
