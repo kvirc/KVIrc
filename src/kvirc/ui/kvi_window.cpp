@@ -1515,4 +1515,6 @@ void KviWindow::preprocessMessage(QString & szMessage)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_window.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

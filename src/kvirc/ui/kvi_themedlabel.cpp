@@ -151,4 +151,6 @@ void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_themedlabel.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

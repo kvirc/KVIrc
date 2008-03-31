@@ -836,4 +836,6 @@ void KviCahnnelListSelector::removeClicked()
 	lst.clear();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_selectors.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

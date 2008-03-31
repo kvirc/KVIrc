@@ -656,4 +656,6 @@ void KviQuery::ownAction(const QString &buffer)
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_query.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

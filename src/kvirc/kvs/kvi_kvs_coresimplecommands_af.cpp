@@ -43,19 +43,20 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_controller.h"
 
-#ifndef COMPILE_NO_X_BELL
-	#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
-	#include <unistd.h>   // for usleep();
+#ifdef COMPILE_X11_SUPPORT
+	#ifndef COMPILE_NO_X_BELL
+		#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
+		#include <unistd.h>   // for usleep();
 
-	#ifdef COMPILE_USE_QT4
-		#include <qx11info_x11.h>
-		#define get_xdisplay QX11Info::display
-	#else
-		#define get_xdisplay qt_xdisplay
+		#ifdef COMPILE_USE_QT4
+			#include <qx11info_x11.h>
+			#define get_xdisplay QX11Info::display
+		#else
+			#define get_xdisplay qt_xdisplay
+		#endif
+
 	#endif
-
 #endif
-
 #include "kvi_tal_tooltip.h"
 
 // kvi_app.cpp
@@ -319,44 +320,46 @@ namespace KviKvsCoreSimpleCommands
 #ifdef COMPILE_ON_WINDOWS
 		Beep(pitch,duration);
 #else
-	#ifndef COMPILE_NO_X_BELL
+	#ifdef COMPILE_X11_SUPPORT
+		#ifndef COMPILE_NO_X_BELL
 
 
 
-		XKeyboardState st;
-		XKeyboardControl ctl;
+			XKeyboardState st;
+			XKeyboardControl ctl;
 
-		XGetKeyboardControl(get_xdisplay(),&st);
+			XGetKeyboardControl(get_xdisplay(),&st);
 
-		unsigned long mask = KBBellPercent;
-		ctl.bell_percent = uVolume;
-		if(pitch >= 0)
-		{
-			ctl.bell_pitch    = pitch;
-			mask             |= KBBellPitch;
-		}
-		if(duration >= 0)
-		{
-			ctl.bell_duration = duration;
-			mask             |= KBBellDuration;
-		}
-		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
+			unsigned long mask = KBBellPercent;
+			ctl.bell_percent = uVolume;
+			if(pitch >= 0)
+			{
+				ctl.bell_pitch    = pitch;
+				mask             |= KBBellPitch;
+			}
+			if(duration >= 0)
+			{
+				ctl.bell_duration = duration;
+				mask             |= KBBellDuration;
+			}
+			XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
 
-		XBell(get_xdisplay(),100);
+			XBell(get_xdisplay(),100);
 
-		if(bSync)
-		{
-			if(duration >= 0)usleep(duration * 1000);
-			else usleep(st.bell_duration * 1000);
-		}
+			if(bSync)
+			{
+				if(duration >= 0)usleep(duration * 1000);
+				else usleep(st.bell_duration * 1000);
+			}
 
-		ctl.bell_pitch = st.bell_pitch;
-		ctl.bell_duration = st.bell_duration;
-		ctl.bell_percent = st.bell_percent;
+			ctl.bell_pitch = st.bell_pitch;
+			ctl.bell_duration = st.bell_duration;
+			ctl.bell_percent = st.bell_percent;
 
-		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
+			XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
 
-	#endif //COMPILE_NO_X_BELL
+		#endif //COMPILE_NO_X_BELL
+	#endif //COMPILE_X11_SUPPORT
 #endif
 		return true;
 	}

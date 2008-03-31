@@ -333,4 +333,6 @@ void KviModeEditor::commit()
 	emit done();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_modeeditor.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

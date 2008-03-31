@@ -157,4 +157,6 @@ void KviToolBar::setSmallIcons()
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_toolbar.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

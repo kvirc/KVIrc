@@ -2061,4 +2061,6 @@ void KviApp::timerEvent(QTimerEvent *e)
 #endif
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_app.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
