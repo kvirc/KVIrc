@@ -31,7 +31,7 @@
 #include "kvi_string.h"
 #include "kvi_pointerhashtable.h"
 
-#include <qapplication.h>
+#include <QApplication>
 
 class QTextCodec;
 class KviMessageCatalogue;
@@ -121,8 +121,8 @@ public:
 #define __tr2qs_ctx_no_xgettext(__text__,__context__) KviLocale::translateToQString(__text__,__context__)
 #define __tr2qs_no_lookup(__text__) __text__
 
-#include <qtranslator.h>
-#include <qstring.h>
+#include <QTranslator>
+#include <QString>
 
 class KVILIB_API KviTranslator : public QTranslator
 {

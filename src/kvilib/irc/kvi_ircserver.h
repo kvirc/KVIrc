@@ -30,7 +30,7 @@
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 class KviConfig;
 class KviNickServRuleSet;
@@ -90,7 +90,7 @@ public:
 	const QString & ipAddress() const { return m_szIp; };
 	const QString & password() const { return m_szPass; };
 	const QString & nickName() const { return m_szNick; };
-    const QString & initUMode() const { return m_szInitUMode; };
+	const QString & initUMode() const { return m_szInitUMode; };
 	const QString & hostName() const { return m_szHostname; };
 	const QString & ip() const { return m_szIp; };
 	const QString & onLoginCommand() const { return m_szOnLoginCommand; };
@@ -118,7 +118,7 @@ public:
 	void setNickName(const QString &n){ m_szNick = n; };
 	void setRealName(const QString &r){ m_szRealName = r; };
 	void setEncoding(const QString &e){ m_szEncoding = e; };
-    void setInitUMode(const QString &u){ m_szInitUMode = u; };
+	void setInitUMode(const QString &u){ m_szInitUMode = u; };
 	void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
 	void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
 	void setLinkFilter(const QString &f){ m_szLinkFilter = f; };
@@ -168,7 +168,7 @@ protected:
 	QString              m_szRealName;                // preferred real name
 	QString              m_szOnConnectCommand;        // the command to run on connect
 	QString              m_szOnLoginCommand;          // the command to run after login
-    QStringList        * m_pChannelList;              // Channels to auto join
+	QStringList        * m_pChannelList;              // Channels to auto join
 	KviNickServRuleSet * m_pNickServRuleSet;          // set of nick serv rules
 	bool                 m_bAutoConnect;              // autoconnect
 	QString              m_szUserIdentityId;          // The user identity to use for this server: if empty

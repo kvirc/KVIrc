@@ -248,5 +248,3 @@ void KviUserIdentityManager::releaseWorkingCopy(KviUserIdentityManager * pWorkin
 {
 	if(pWorkingCopy)delete pWorkingCopy;
 }
-
-

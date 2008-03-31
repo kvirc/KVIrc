@@ -66,9 +66,6 @@ public:
 };
 
 
-
-
-
 class KVILIB_API KviIrcServerDataBase
 {
 public:
@@ -107,10 +104,5 @@ public:
 	bool makeCurrentServer(KviIrcServerDefinition * d,QString &szError);
 	bool makeCurrentBestServerInNetwork(const QString &szNetName,KviIrcServerDataBaseRecord * d,QString &szError);
 };
-
-
-
-
-
 
 #endif //_KVI_IRCSERVERDB_H_

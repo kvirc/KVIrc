@@ -45,7 +45,6 @@ libkvilib4_la_SOURCES = \
 	../ext/kvi_doublebuffer.cpp \
 	../ext/kvi_garbage.cpp \
 	../ext/kvi_osinfo.cpp \
-	../ext/kvi_imagelib.cpp \
 	../ext/kvi_md5.cpp \
 	../ext/kvi_mediatype.cpp \
 	../ext/kvi_miscutils.cpp \
@@ -138,7 +137,6 @@ headers_HEADERS = \
 	../ext/kvi_draganddrop.h \
 	../ext/kvi_osinfo.h \
 	../ext/kvi_garbage.h \
-	../ext/kvi_imagelib.h \
 	../ext/kvi_md5.h \
 	../ext/kvi_mediatype.h \
 	../ext/kvi_miscutils.h \

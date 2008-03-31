@@ -27,7 +27,7 @@
 #include "kvi_avatar.h"
 #include "kvi_qstring.h"
 
-#include <qimage.h>
+#include <QImage>
 
 
 /*
@@ -153,13 +153,7 @@ QPixmap * KviAvatar::scaledPixmap(unsigned int w,unsigned int h)
 		scaleW = (scaleH * curW) / curH;
 	}
 
-#ifdef COMPILE_USE_QT4
 	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(scaleW,scaleH));
-#else
-	QImage img = m_pPixmap->convertToImage();
 
-	m_pScaledPixmap = new QPixmap();
-	m_pScaledPixmap->convertFromImage(img.smoothScale(scaleW,scaleH));
-#endif
 	return m_pScaledPixmap;
 }

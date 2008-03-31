@@ -347,8 +347,6 @@ void KviDnsThread::run()
 }
 
 
-
-
 KviDns::KviDns()
 : QObject()
 {
@@ -365,7 +363,6 @@ KviDns::~KviDns()
 	if(m_pDnsResult)delete m_pDnsResult;
 	if(m_pAuxData)debug("You're leaking memory man! m_pAuxData is non 0!");
 }
-
 
 bool KviDns::isRunning() const
 {
@@ -447,4 +444,3 @@ bool KviDns::event(QEvent *e)
 	}
 	return QObject::event(e);
 }
-

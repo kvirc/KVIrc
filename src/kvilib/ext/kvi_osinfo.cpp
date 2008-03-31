@@ -507,4 +507,3 @@ namespace KviOsInfo
 			return KviQString::empty;
 	}
 }
-

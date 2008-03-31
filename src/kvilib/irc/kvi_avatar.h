@@ -29,7 +29,7 @@
 #include "kvi_heapobject.h"
 #include "kvi_settings.h"
 
-#include <qpixmap.h>
+#include <QPixmap>
 
 class KVILIB_API KviAvatar : public KviHeapObject
 {

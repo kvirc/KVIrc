@@ -34,7 +34,7 @@
 #include "kvi_pointerhashtable.h"
 
 #include <time.h>
-#include <qtimer.h>
+#include <QTimer>
 
 
 class KVILIB_API KviSharedFile : public KviHeapObject

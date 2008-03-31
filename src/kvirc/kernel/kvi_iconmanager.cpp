@@ -28,7 +28,6 @@
 
 #include "kvi_iconmanager.h"
 
-#include "kvi_imagelib.h"
 #include "kvi_app.h"
 #include "kvi_settings.h"
 #include "kvi_defaults.h"
@@ -36,18 +35,12 @@
 #include "kvi_fileutils.h"
 #include "kvi_options.h"
 
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
+#include <QCursor>
+#include <QEvent>
+#include <QCloseEvent>
 
-#ifndef COMPILE_USE_QT4
-	// In Qt.4 we need to use QMimeData ?
-	#include <qdragobject.h>
-#endif
-#include <qcursor.h>
-
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
 
 // kvi_app.cpp
 extern QPixmap * g_pUserChanStatePixmap;
@@ -352,11 +345,7 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 };
 
 KviIconWidget::KviIconWidget()
-#ifdef COMPILE_USE_QT4
 : QWidget(0,"global_icon_widget" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize*/)
-#else
-: QWidget(0,"global_icon_widget",WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize)
-#endif
 {
 	init();
 }
@@ -840,39 +829,8 @@ QPixmap * KviIconManager::loadSmallIcon(int idx)
 	if(idx >= KVI_NUM_SMALL_ICONS)return 0;
 	if(idx < 0)return 0;
 	
-	
-	// COMPATIBILITY ENTRY: To be removed in some time.
-	// This part loads the old smallicon library format kvi_smallicon_*.png
-	// to preserve backward compatibility with old themes.
-	// We lookup such files ONLY in the themes directories.
-
-	QString szFileName = KVI_SMALLICONS_IMAGELIB_PREFIX;
-
-	int fileidx = idx / 16;
-
-	if(fileidx >= 10)KviQString::appendFormatted(szFileName,"%d.png",fileidx);
-	else KviQString::appendFormatted(szFileName,"0%d.png",fileidx);
-
-	QString buffer;
-	if(g_pApp->findImageThemeOnlyCompat(buffer,szFileName))
-	{
-		KviImageLibrary l1(buffer,16,16);
-	
-		int offset = fileidx * 16;
-	
-		for(int i=0;i<16;i++)
-		{
-			int io = i + offset;
-			if(io >= KVI_NUM_SMALL_ICONS)break;
-			if(m_smallIcons[io])delete m_smallIcons[io];
-			m_smallIcons[io] = new QPixmap(l1.getImage(i));
-		}
-
-		return m_smallIcons[idx];
-	}
-
-	// otherwise we use the NEW method: separate small icons in the "coresmall" subdirectory.
 	QString szPath;
+	QString buffer;
 	KviQString::sprintf(szPath,KVI_SMALLICONS_PREFIX "%s.png",g_szIconNames[idx]);
 	
 	g_pApp->findSmallIcon(buffer,szPath);
@@ -924,4 +882,3 @@ void KviIconManager::cacheCleanup()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_iconmanager.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

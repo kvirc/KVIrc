@@ -36,7 +36,7 @@
 #include <qobject.h>
 #include "kvi_pointerhashtable.h"
 #include "kvi_file.h"
-#include <qstringlist.h>
+#include <QStringList>
 
 class KviDns;
 class KviSSL;

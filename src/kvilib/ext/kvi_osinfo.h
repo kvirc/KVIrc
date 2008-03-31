@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#include <qstring.h>
+#include <QString>
 
 namespace KviOsInfo
 {

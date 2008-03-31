@@ -24,11 +24,11 @@
 //
 
 #include "kvi_settings.h"
-
 #include "kvi_string.h"
 #include "kvi_inttypes.h"
 #include "kvi_pointerlist.h"
-#include <qstringlist.h>
+
+#include <QStringList>
 
 class KVILIB_API KviProxy
 {

@@ -29,7 +29,7 @@
 #include "kvi_config.h"
 #include "kvi_ircmask.h"
 
-#include <qregexp.h>
+#include <QRegExp>
 
 
 
@@ -203,19 +203,11 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString &szNick,const KviI
 		if(!KviQString::matchStringCI(r->registeredNick(),szNick,false,true)) continue;
 		if(!szServer.isEmpty())
 		{
-#ifdef COMPILE_USE_QT4
 			QRegExp res(r->serverMask(),Qt::CaseInsensitive,QRegExp::Wildcard);
-#else
-			QRegExp res(r->serverMask(),false,true);
-#endif
 			if(!res.exactMatch(szServer))continue;
 		}
 		if(!nickServ->matchedBy(KviIrcMask(r->nickServMask())))continue;
-#ifdef COMPILE_USE_QT4
 		QRegExp re(r->messageRegexp(),Qt::CaseInsensitive,QRegExp::Wildcard);
-#else
-		QRegExp re(r->messageRegexp(),false,true);
-#endif
 		if(re.exactMatch(szMsg))return r;
 	}
 	return 0;
@@ -306,7 +298,3 @@ KviNickServRule * KviNickServRule::createInstance(const QString &szRegisteredNic
 {
 	return new KviNickServRule(szRegisteredNick,szNickServMask,szMessageRegexp,szIdentifyCommand,szServerMask);
 }
-
-
-
-

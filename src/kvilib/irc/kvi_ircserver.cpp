@@ -315,7 +315,6 @@ void KviIrcServer::save(KviConfig * cfg,const QString &prefix)
 }
 
 
-
 KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork &src)
 {
 	m_pChannelList = 0;
@@ -350,7 +349,6 @@ void KviIrcNetwork::setNickServRuleSet(KviNickServRuleSet * s)
 	m_pNickServRuleSet = s;
 }
 
-
 void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 {
 	m_szName = src.m_szName;
@@ -370,4 +368,3 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else m_pNickServRuleSet = 0;
 }
-

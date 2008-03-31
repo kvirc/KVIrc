@@ -274,11 +274,7 @@ bool KviHttpRequest::event(QEvent *e)
 			case KVI_HTTP_REQUEST_THREAD_EVENT_REQUESTSENT:
 			{
 				QString * req = ((KviThreadDataEvent<QString> *)e)->getData();
-#ifdef COMPILE_USE_QT4
 				QStringList sl = req->split("\r\n");
-#else
-				QStringList sl = QStringList::split("\r\n",*req);
-#endif
 				emit requestSent(sl);
 				delete req;
 				return true;
@@ -451,9 +447,6 @@ bool KviHttpRequest::openFile()
 
 	return true;
 }
-
-
-
 
 
 bool KviHttpRequest::processHeader(KviStr &szHeader)
@@ -854,21 +847,6 @@ check_stream_length:
 	}
 	return;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 KviHttpRequestThread::KviHttpRequestThread(
 	KviHttpRequest * r,
@@ -1437,4 +1415,3 @@ void KviHttpRequestThread::runInternal()
 		if(!readDataStep())return;
 	}
 }
-

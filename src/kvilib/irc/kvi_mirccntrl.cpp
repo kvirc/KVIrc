@@ -303,5 +303,3 @@ namespace KviMircCntrl
 		return ret;
 	}
 }
-
-

@@ -26,8 +26,8 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
-#include <qfile.h>
-#include <qstringlist.h>
+#include <QFile>
+#include <QStringList>
 
 #include <time.h>
 

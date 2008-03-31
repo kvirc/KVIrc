@@ -33,7 +33,7 @@
 #include "kvi_inttypes.h"
 #include "kvi_qcstring.h"
 
-#include <qfile.h>
+#include <QFile>
 #include <time.h>
 
 #define kvi_file_offset_t qlonglong

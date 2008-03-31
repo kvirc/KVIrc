@@ -158,7 +158,4 @@ private:
 	bool hasMaskedIp() const;
 };
 
-
-
-
 #endif //_KVI_IRCMASK_H_

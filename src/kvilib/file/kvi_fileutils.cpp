@@ -31,11 +31,11 @@
 #include "kvi_file.h"
 #include "kvi_malloc.h"
 
-#include <qdir.h>
-#include <qfileinfo.h>
+#include <QDir>
+#include <QFileInfo>
 #include <qglobal.h>
-#include <qtextcodec.h>
-#include <qtextstream.h>
+#include <QTextCodec>
+#include <QTextStream>
 
 
 namespace KviFileUtils
@@ -105,11 +105,7 @@ namespace KviFileUtils
 		QString createdDir;
 
 #ifdef COMPILE_ON_WINDOWS
-#ifdef COMPILE_USE_QT4
 		int idx = dir.indexOf(':');
-#else
-		int idx = dir.find(':');
-#endif
 		if(idx == 1)
 		{
 			createdDir = dir.left(2);
@@ -213,20 +209,12 @@ namespace KviFileUtils
 	{
 #ifdef COMPILE_ON_WINDOWS
 		szPath.replace('/',"\\");
-#ifdef COMPILE_USE_QT4
 		szPath.replace("\\\\","\\");
-#else
-		while(szPath.find("\\\\") != -1)szPath.replace("\\\\","\\");
-#endif
 		// FIXME: Use the default drive here ?
 		if(szPath.startsWith("\\"))szPath.prepend("C:");
 #else
 		szPath.replace('\\',"/");
-#ifdef COMPILE_USE_QT4
 		szPath.replace("//","/");
-#else
-		while(KviQString::find(szPath,"//") != -1)szPath.replace("//","/");
-#endif
 		// deal with windows paths
 		if((szPath.length() > 2) && (szPath.at(0) != QChar('/')))
 		{
@@ -235,11 +223,7 @@ namespace KviFileUtils
 				szPath.remove(0,2);
 			}
 		}
-#ifdef COMPILE_USE_QT4
 		szPath=QDir::cleanPath(szPath);
-#else
-		szPath=QDir::cleanDirPath(szPath);
-#endif
 #endif
 		
 	}
@@ -386,7 +370,6 @@ namespace KviFileUtils
 		return readFile(szPath,szBuffer,uMaxSize);
 	}
 
-	
 	QString extractFileName(const QString &szFileNameWithPath)
 	{
 		return QFileInfo(szFileNameWithPath).fileName();
@@ -501,5 +484,3 @@ bool kvi_readLine(QFile *f,KviStr &str)
 	str=szBuff;
 	return szBuff.isNull() ? 1 : 0;
 }
-
-

@@ -145,7 +145,7 @@
 //29 (0001 1101) GS (Group separator)
 #define KVI_TEXT_ICON 0x1d
 
-#ifndef _KVI_MIRCCNTRL_CPP_ 
+#ifndef _KVI_MIRCCNTRL_CPP_
 	extern KVILIB_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
 	extern KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
 	extern KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int charIdx,unsigned char *byte_1,unsigned char *byte_2);

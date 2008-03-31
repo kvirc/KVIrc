@@ -45,22 +45,13 @@ KviFile::~KviFile()
 
 bool KviFile::openForReading()
 {
-#ifdef COMPILE_USE_QT4
 	return open(QFile::ReadOnly);
-#else
-	return open(IO_ReadOnly);
-#endif
 }
 
 bool KviFile::openForWriting(bool bAppend)
 {
-#ifdef COMPILE_USE_QT4
 	return open(QFile::WriteOnly | (bAppend ? QFile::Append : QFile::Truncate));
-#else
-	return open(IO_WriteOnly | (bAppend ? IO_Append : IO_Truncate));
-#endif
 }
-
 
 bool KviFile::save(const QByteArray &bData)
 {
@@ -76,27 +67,6 @@ bool KviFile::load(QByteArray &bData)
 	if(readBlock((char *)(bData.data()),iLen) != iLen)return false;
 	return true;
 }
-
-#ifndef COMPILE_USE_QT4
-
-bool KviFile::save(const KviQCString &szData)
-{
-	if(!save((kvi_u32_t)(szData.length())))return false;
-	return (writeBlock(szData.data(),szData.length()) == ((int)(szData.length())));
-}
-
-bool KviFile::load(KviQCString &szData)
-{
-	kvi_u32_t iLen;
-	if(!load(iLen))return false;
-	szData.resize(iLen + 1); // this would allocate one extra byte with Qt 4.x...
-	if(readBlock((char *)(szData.data()),iLen) != iLen)return false;
-	*(szData.data() + iLen) = 0;
-	return true;
-}
-
-#endif
-
 
 bool KviFile::save(const QString &szData)
 {
@@ -165,7 +135,6 @@ bool KviFile::load(kvi_u64_t &t)
 	return true;
 }
 
-
 bool KviFile::save(kvi_u16_t t)
 {
 #ifndef LOCAL_CPU_LITTLE_ENDIAN
@@ -192,7 +161,6 @@ bool KviFile::load(kvi_u8_t &t)
 {
 	return (readBlock((char *)(&t),sizeof(kvi_u8_t)) == sizeof(kvi_u8_t));
 }
-
 
 bool KviFile::save(KviPointerList<KviStr> * pData)
 {
@@ -253,4 +221,3 @@ bool KviFile::skipFirst(const KviStr &t,unsigned int maxdist)
 	}
 	return false;
 }
-

@@ -178,4 +178,3 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 	}
 	l->append(c);
 }
-

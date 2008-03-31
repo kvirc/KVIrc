@@ -28,7 +28,6 @@
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
-
 #include "kvi_pointerhashtable.h"
 
 class KVILIB_API KviRegisteredChannel : public KviHeapObject

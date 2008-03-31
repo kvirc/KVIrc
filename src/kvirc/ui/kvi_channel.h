@@ -25,8 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-
 #include "kvi_console.h"
 #include "kvi_window.h"
 #include "kvi_string.h"
@@ -36,10 +34,10 @@
 #include "kvi_time.h"
 #include "kvi_modew.h"
 #include "kvi_valuelist.h"
-
-#include <qdatetime.h>
 #include "kvi_pointerhashtable.h"
-#include <qstringlist.h>
+
+#include <QDateTime>
+#include <QStringList>
 
 class KviConsole;
 class QSplitter;

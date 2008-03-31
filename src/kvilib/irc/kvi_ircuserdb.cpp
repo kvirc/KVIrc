@@ -49,7 +49,7 @@ KviIrcUserEntry::KviIrcUserEntry(const QString &user,const QString &host)
 }
 
 void KviIrcUserEntry::setRealName(const QString &rn)
-{ 
+{
 	m_szRealName = rn;
 	m_szRealName = KviQString::trimmed(m_szRealName);
 	if(m_szRealName.length()>=3)
@@ -238,7 +238,7 @@ void KviIrcUserDataBase::setupConnectionWithReguserDb()
 void KviIrcUserDataBase::registeredUserRemoved(const QString& user)
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
-    for( ; it.current(); ++it )
+	for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName==user)
 		{
@@ -252,7 +252,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString& user)
 {
 	//the same as above
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
-    for( ; it.current(); ++it )
+	for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName==user)
 		{
@@ -265,7 +265,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString& user)
 void KviIrcUserDataBase::registeredUserAdded(const QString& user)
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
-    for( ; it.current(); ++it )
+	for( ; it.current(); ++it )
 	{
 		if(it.current()->m_szRegisteredUserName.isEmpty())
 		{
@@ -277,7 +277,7 @@ void KviIrcUserDataBase::registeredUserAdded(const QString& user)
 void KviIrcUserDataBase::registeredDatabaseCleared()
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
-    for( ; it.current(); ++it )
+	for( ; it.current(); ++it )
 	{
 		it.current()->m_szRegisteredUserName="";
 		it.current()->m_bNotFoundRegUserLoockup=false;

@@ -26,9 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "kvi_pointerhashtable.h"
-
 #include "kvi_string.h"
 #include "kvi_avatar.h"
 #include "kvi_regusersdb.h"

@@ -34,12 +34,9 @@
 #include "kvi_locale.h"
 
 #include <qglobal.h> //for debug()
-#include <qtextcodec.h>
-#include <qdir.h>
-
-#ifdef COMPILE_USE_QT4
-	#include <qlocale.h>
-#endif
+#include <QTextCodec>
+#include <QDir>
+#include <QLocale>
 
 #include "kvi_string.h"
 #include "kvi_qcstring.h"
@@ -105,165 +102,155 @@ typedef unsigned int gunichar;
 
 static const char *
 fast_validate (const char *str)
-
 {
-  gunichar val = 0;
-  gunichar min = 0;
-  const gchar *p;
+	gunichar val = 0;
+	gunichar min = 0;
+	const gchar *p;
 
-  for (p = str; *p; p++)
-    {
-      if (*(guchar *)p < 128)
-        /* done */;
-      else
-        {
-          const gchar *last;
+	for (p = str; *p; p++)
+	{
+		if (*(guchar *)p < 128)
+			/* done */;
+		else
+		{
+			const gchar *last;
+		
+			last = p;
+			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			{
+				if ((*(guchar *)p & 0x1e) == 0)
+					goto error;
+				p++;
+				if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+					goto error;
+			}
+			else
+			{
+				if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				{
+					min = (1 << 11);
+					val = *(guchar *)p & 0x0f;
+					goto TWO_REMAINING;
+				}
+				else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+				{
+					min = (1 << 16);
+					val = *(guchar *)p & 0x07;
+				}
+				else goto error;
+	
+				p++;
+				CONTINUATION_CHAR;
+				TWO_REMAINING:
+				p++;
+				CONTINUATION_CHAR;
+				p++;
+				CONTINUATION_CHAR;
+			
+				if (val < min) goto error;
+			
+				if (!UNICODE_VALID(val)) goto error;
+			}
+		
+			continue;
 
-          last = p;
-          if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
-            {
-              if ((*(guchar *)p & 0x1e) == 0)
-                goto error;
-              p++;
-              if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
-                goto error;
-            }
-          else
-            {
-              if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
-                {
-                  min = (1 << 11);
-                  val = *(guchar *)p & 0x0f;
-                  goto TWO_REMAINING;
-                }
-              else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
-                {
-                  min = (1 << 16);
-                  val = *(guchar *)p & 0x07;
-                }
-              else
-                goto error;
-
-              p++;
-              CONTINUATION_CHAR;
-            TWO_REMAINING:
-              p++;
-              CONTINUATION_CHAR;
-              p++;
-              CONTINUATION_CHAR;
-
-              if (val < min)
-                goto error;
-
-              if (!UNICODE_VALID(val))
-                goto error;
-            }
-
-          continue;
-
-        error:
-          return last;
-        }
-    }
-
-  return p;
+			error:
+			return last;
+		}
+	}
+	
+	return p;
 }
 
 static const gchar *
-fast_validate_len (const char *str,
-                   gssize      max_len)
-
+fast_validate_len (const char *str, gssize max_len)
 {
-  gunichar val = 0;
-  gunichar min = 0;
-  const gchar *p;
+	gunichar val = 0;
+	gunichar min = 0;
+	const gchar *p;
 
-  for (p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
-    {
-      if (*(guchar *)p < 128)
-        /* done */;
-      else
-        {
-          const gchar *last;
-
-          last = p;
-          if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
-            {
-              if (max_len >= 0 && max_len - (p - str) < 2)
-                goto error;
-
-              if ((*(guchar *)p & 0x1e) == 0)
-                goto error;
-              p++;
-              if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
-                goto error;
-            }
-          else
-            {
-              if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
-                {
-                  if (max_len >= 0 && max_len - (p - str) < 3)
-                    goto error;
-
-                  min = (1 << 11);
-                  val = *(guchar *)p & 0x0f;
-                  goto TWO_REMAINING;
-                }
-              else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
-                {
-                  if (max_len >= 0 && max_len - (p - str) < 4)
-                    goto error;
-
-                  min = (1 << 16);
-                  val = *(guchar *)p & 0x07;
-                }
-              else
-                goto error;
-
-              p++;
-              CONTINUATION_CHAR;
-            TWO_REMAINING:
-              p++;
-              CONTINUATION_CHAR;
-              p++;
-              CONTINUATION_CHAR;
-
-              if (val < min)
-                goto error;
-              if (!UNICODE_VALID(val))
-                goto error;
-            }
-
-          continue;
-
-        error:
-          return last;
-        }
-    }
-
-  return p;
+	for (p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
+	{
+		if (*(guchar *)p < 128)
+			/* done */;
+		else
+		{
+			const gchar *last;
+		
+			last = p;
+			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			{
+			if (max_len >= 0 && max_len - (p - str) < 2)
+				goto error;
+		
+			if ((*(guchar *)p & 0x1e) == 0)
+				goto error;
+			p++;
+			if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */
+				goto error;
+			}
+			else
+			{
+				if ((*(guchar *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				{
+					if (max_len >= 0 && max_len - (p - str) < 3)
+					goto error;
+			
+					min = (1 << 11);
+					val = *(guchar *)p & 0x0f;
+					goto TWO_REMAINING;
+				}
+				else if ((*(guchar *)p & 0xf8) == 0xf0) /* 11110xxx */
+				{
+					if (max_len >= 0 && max_len - (p - str) < 4)
+					goto error;
+			
+					min = (1 << 16);
+					val = *(guchar *)p & 0x07;
+				}
+				else
+					goto error;
+			
+				p++;
+				CONTINUATION_CHAR;
+				TWO_REMAINING:
+				p++;
+				CONTINUATION_CHAR;
+				p++;
+				CONTINUATION_CHAR;
+			
+				if (val < min) goto error;
+				if (!UNICODE_VALID(val)) goto error;
+			}
+		
+			continue;
+		
+			error:
+			return last;
+		}
+	}
+	
+	return p;
 }
 
 static bool g_utf8_validate (const char   *str,
                                 gssize        max_len,
                                 const gchar **end)
-
 {
-  const gchar *p;
-
-  if (max_len < 0)
-    p = fast_validate (str);
-  else
-    p = fast_validate_len (str, max_len);
-
-  if (end)
-    *end = p;
-
-  if ((max_len >= 0 && p != str + max_len) ||
-      (max_len < 0 && *p != '\0'))
-    return false;
-  else
-    return true;
+	const gchar *p;
+	
+	if (max_len < 0)
+		p = fast_validate (str);
+	else
+		p = fast_validate_len (str, max_len);
+	
+	if (end) *end = p;
+	
+	if ((max_len >= 0 && p != str + max_len) ||
+	(max_len < 0 && *p != '\0'))
+		return false;
+	else
+		return true;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -307,7 +294,6 @@ public:
 
 	virtual int mibEnum () const { return 0; };
 
-#ifdef COMPILE_USE_QT4
 	virtual QByteArray name() const { return m_szName; };
 protected:
 	virtual QByteArray convertFromUnicode(const QChar * input,int number,ConverterState * state) const
@@ -319,55 +305,6 @@ protected:
 		if(g_utf8_validate(chars,len,NULL))return g_pUtf8TextCodec->toUnicode(chars,len,state);
 		return m_pRecvCodec->toUnicode(chars,len,state);
 	}
-#else
-public:
-	virtual const char * mimeName () const { return m_pRecvCodec->mimeName(); };
-	virtual const char * name () const { return m_szName.data(); };
-	virtual QTextDecoder * makeDecoder () const { return m_pRecvCodec->makeDecoder(); };
-	virtual QTextEncoder * makeEncoder () const { return m_pSendCodec->makeEncoder(); };
-	QCString fromUnicode (const QString & uc) const { return m_pSendCodec->fromUnicode(uc); };
-	virtual QCString fromUnicode (const QString & uc,int & lenInOut) const { return m_pSendCodec->fromUnicode(uc,lenInOut); };
-	QString toUnicode(const char * chars) const
-	{
-		if(g_utf8_validate(chars,-1,NULL))return g_pUtf8TextCodec->toUnicode(chars);
-		return m_pRecvCodec->toUnicode(chars);
-	};
-	virtual QString toUnicode(const char * chars,int len) const
-	{
-		if(g_utf8_validate(chars,len,NULL))return g_pUtf8TextCodec->toUnicode(chars,len);
-		return m_pRecvCodec->toUnicode(chars,len);
-	};
-	QString toUnicode(const QByteArray & a,int len) const
-	{
-		if(g_utf8_validate(a.data(),len,NULL))return g_pUtf8TextCodec->toUnicode(a,len);
-		return m_pRecvCodec->toUnicode(a,len);
-	};
-	QString toUnicode(const QByteArray & a) const
-	{
-		if(g_utf8_validate(a.data(),a.size(),NULL))return g_pUtf8TextCodec->toUnicode(a);
-		return m_pRecvCodec->toUnicode(a);
-	};
-	QString toUnicode(const QCString & a,int len) const
-	{
-		if(g_utf8_validate(a.data(),len,NULL))return g_pUtf8TextCodec->toUnicode(a,len);
-		return m_pRecvCodec->toUnicode(a,len);
-	};
-	QString toUnicode(const QCString & a) const
-	{
-		if(g_utf8_validate(a.data(),-1,NULL))return g_pUtf8TextCodec->toUnicode(a);
-		return m_pRecvCodec->toUnicode(a);
-	};
-
-	virtual bool canEncode(QChar ch) const { return m_pSendCodec->canEncode(ch); };
-	virtual bool canEncode(const QString &s) const { return m_pSendCodec->canEncode(s); };
-	virtual int heuristicContentMatch(const char * chars,int len) const
-	{
-		int iii = g_pUtf8TextCodec->heuristicContentMatch(chars,len);
-		if(iii < 0)return m_pRecvCodec->heuristicContentMatch(chars,len);
-		return iii;
-	}
-	virtual int heuristicNameMatch(const char * hint) const { return 0; };
-#endif
 };
 
 static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
@@ -574,7 +511,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 	// Check again for broken *.mo files
 	int expectedFileSize = KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[numberOfStrings - 1].offset) +
-							KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[numberOfStrings - 1].length);
+			KVI_SWAP_IF_NEEDED(bMustSwap,transDescriptor[numberOfStrings - 1].length);
 
 	if(fSize < (unsigned int)expectedFileSize)
 	{
@@ -679,9 +616,6 @@ const QString & KviMessageCatalogue::translateToQString(const char *text)
 	return *(aux->m_pQTranslation);
 }
 
-
-
-
 namespace KviLocale
 {
 #ifndef QT_NO_BIG_CODECS
@@ -689,8 +623,6 @@ namespace KviLocale
 #else
 	#define NUM_ENCODINGS 85
 #endif
-
-
 
 	static EncodingDescription supported_encodings[]=
 	{
@@ -956,11 +888,8 @@ namespace KviLocale
 	{
 		// first of all try to find out the current locale
 		g_szLang="";
-#ifdef COMPILE_USE_QT4
 		QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homePath());
-#else
-		QString szLangFile=QString("%1/.kvirc_force_locale").arg(QDir::homeDirPath());
-#endif
+
 		if(KviFileUtils::fileExists(szLangFile))
 		{
 			QString szTmp;
@@ -968,11 +897,7 @@ namespace KviLocale
 			g_szLang=szTmp;
 		}
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("KVIRC_LANG");
-#ifdef COMPILE_USE_QT4
 		if(g_szLang.isEmpty())g_szLang = QLocale::system().name();
-#else
-		if(g_szLang.isEmpty())g_szLang = QTextCodec::locale();
-#endif
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LC_MESSAGES");
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LANG");
 		if(g_szLang.isEmpty())g_szLang = "en";
@@ -1079,11 +1004,7 @@ namespace KviLocale
 };
 
 KviTranslator::KviTranslator(QObject * par,const char * nam)
-#ifdef COMPILE_USE_QT4
 : QTranslator(par)
-#else
-: QTranslator(par,nam)
-#endif
 {
 }
 
@@ -1091,27 +1012,17 @@ KviTranslator::~KviTranslator()
 {
 }
 
-#ifdef COMPILE_USE_QT4
 QString KviTranslator::translate(const char *context,const char * message,const char * comment) const
 {
 	// we ignore contexts and comments for qt translations
 	return g_pMainCatalogue->translateToQString(message);
 }
-#endif
 
 QString KviTranslator::find(const char *context,const char * message) const
 {
 	// we ignore contexts for qt translations
 	return g_pMainCatalogue->translateToQString(message);
 }
-
-#ifndef COMPILE_USE_QT4
-QTranslatorMessage KviTranslator::findMessage(const char * context,const char * sourceText,const char * comment) const
-{
-	// we ignore contexts for qt translations
-	return QTranslatorMessage(context,sourceText,comment,g_pMainCatalogue->translateToQString(sourceText));
-}
-#endif
 
 #if 0
 
@@ -1185,7 +1096,5 @@ static QString fake_translations_table[]=
 	__tr2qs("All Files"),
 	__tr2qs("&OK"),
 	__tr2qs("&Cancel")
-
 }
-
 #endif

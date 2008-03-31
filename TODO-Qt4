@@ -12,72 +12,12 @@ src/kvilib/ext
 	kvi_crypt.h
 	kvi_dcophelper.cpp
 	kvi_dcophelper.h
-
-	kvi_draganddrop.h
 	kvi_garbage.cpp
 	kvi_garbage.h
-	kvi_imagelib.cpp
-	kvi_imagelib.h
-	kvi_md5.cpp
-	kvi_md5.h
-
-	kvi_osinfo.cpp
-	kvi_osinfo.h
-	kvi_parameterlist.cpp
-	kvi_parameterlist.h
-	kvi_pixmap.cpp
-	kvi_pixmap.h
-	kvi_proxydb.cpp
-	kvi_proxydb.h
-	kvi_regchan.cpp
-	kvi_regchan.h
 	kvi_regusersdb.cpp
 	kvi_regusersdb.h
-	kvi_sharedfiles.cpp
-	kvi_sharedfiles.h
-	kvi_stringconversion.cpp
-	kvi_stringconversion.h
-	kvi_xlib.h
-src/kvilib/file
-	kvi_file.cpp
-	kvi_file.h
-	kvi_fileutils.cpp
-	kvi_fileutils.h
-	kvi_packagefile.cpp
-	kvi_packagefile.h
-src/kvilib/irc
-	kvi_avatar.cpp
-	kvi_avatar.h
-	kvi_avatarcache.cpp
-	kvi_avatarcache.h
-	kvi_ircmask.cpp
-	kvi_ircmask.h
-	kvi_ircserver.cpp
-	kvi_ircserver.h
-	kvi_ircserverdb.cpp
-	kvi_ircserverdb.h
-	kvi_ircuserdb.cpp
-	kvi_ircuserdb.h
-	kvi_mirccntrl.cpp
-	kvi_mirccntrl.h
-	kvi_nickserv.cpp
-	kvi_nickserv.h
-	kvi_useridentity.cpp
-	kvi_useridentity.h
 src/kvilib/net
-	kvi_dns.cpp
-	kvi_dns.h
-	kvi_http.cpp
 	kvi_http.h
-	kvi_netutils.cpp
-	kvi_netutils.h
-	kvi_socket.cpp
-	kvi_socket.h
-	kvi_sockettype.h
-	kvi_ssl.cpp
-	kvi_ssl.h
-	kvi_url.cpp
-	kvi_url.h
 src/kvilib/system
 	kvi_byteorder.h
 	kvi_env.cpp
@@ -462,8 +402,6 @@ src/kvirc/ui
 	kvi_dynamictooltip.h
 	kvi_filedialog.cpp
 	kvi_filedialog.h
-	kvi_frame.cpp
-	kvi_frame.h
 	kvi_historywin.cpp
 	kvi_historywin.h
 	kvi_htmldialog.cpp
