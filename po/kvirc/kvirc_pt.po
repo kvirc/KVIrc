@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kvirc_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-21 01:02+0100\n"
-"PO-Revision-Date: 2008-03-24 11:33+0000\n"
+"PO-Revision-Date: 2008-03-31 10:20+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -3394,7 +3394,7 @@ msgid ""
 "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit "
 "exceeded)"
 msgstr ""
-"%Q %Q%c pedido de \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignorado (limite de flood "
+"%Q %Q%c pedido de \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignorado (limite de fluxo "
 "excedido)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1036
@@ -3491,7 +3491,7 @@ msgstr ": Nenhuma cópia local válida do avatar disponível, a pedir um (DCC GE
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1664
 msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
-": Nenhuma cópia local válida do avatar disponível, limite de flood excedido, "
+": Nenhuma cópia local válida do avatar disponível, limite de fluxo excedido, "
 "a ignorar"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1669
@@ -4808,7 +4808,7 @@ msgstr "Pedido CTCP ignorado"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:715
 msgid "CTCP request flood warning"
-msgstr "Aviso de flood com pedidos CTCP"
+msgstr "Aviso de fluxo de pedidos CTCP"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:716
 msgid "CTCP request unknown"
