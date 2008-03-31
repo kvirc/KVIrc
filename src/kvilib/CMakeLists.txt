@@ -17,14 +17,20 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_application.h
 	tal/kvi_tal_filedialog_qt.h
+	tal/kvi_tal_grid.h
+	tal/kvi_tal_groupbox.h
+	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
 	tal/kvi_tal_mainwindow_qt.h
 	tal/kvi_tal_menubar.h
+	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_toolbar_qt.h
 	tal/kvi_tal_toolbardocktype.h
 	tal/kvi_tal_tooltip.h
+	tal/kvi_tal_vbox.h
+	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_windowstate.h
 	system/kvi_byteorder.h
 	system/kvi_env.h
@@ -97,14 +103,20 @@ SET(kvilib_MOC_HDRS
 SET(kvilib_SRCS
 	tal/kvi_tal_application.cpp
 	tal/kvi_tal_filedialog.cpp
+	tal/kvi_tal_hbox.cpp
+	tal/kvi_tal_grid.cpp
+	tal/kvi_tal_groupbox.cpp
 	tal/kvi_tal_iconview.cpp
 	tal/kvi_tal_listbox.cpp
 	tal/kvi_tal_listview.cpp
 	tal/kvi_tal_mainwindow.cpp
 	tal/kvi_tal_menubar.cpp
 	tal/kvi_tal_popupmenu.cpp
+	tal/kvi_tal_scrollview.cpp
 	tal/kvi_tal_toolbar.cpp
 	tal/kvi_tal_tooltip.cpp
+	tal/kvi_tal_vbox.cpp
+	tal/kvi_tal_widgetstack.cpp
 	system/kvi_env.cpp
 	system/kvi_locale.cpp
 	system/kvi_thread.cpp

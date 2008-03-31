@@ -25,11 +25,12 @@
 //============================================================================
 
 #include "kvi_themedlabel.h"
-#include "kvi_channel.h"
 
 #include <qframe.h>
 #include <qlineedit.h>
 #include "kvi_tal_hbox.h" 
+
+class KviChannel;
 
 class KVIRC_API KviModeWidget : public QFrame 
 {
@@ -42,7 +43,7 @@ public:
 	void refreshModes();
 	void applyOptions();
 private:
-	KviChannel   	      *  m_pChannel;
+	KviChannel            *  m_pChannel;
 	KviThemedLabel        *  m_pLabel;
 	QLineEdit             *  m_pLineEdit;
 protected:
