@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-03-21 01:02+0100\n"
-"PO-Revision-Date: 2008-03-30 02:01+0100\n"
+"PO-Revision-Date: 2008-03-31 10:18+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -311,13 +311,13 @@ msgid ""
 "authentication rules that can be created in the \"Advanced...\" network "
 "options (accessible from the servers dialog).</center>"
 msgstr ""
-"<center>Esta é a lista das regras de identificação do NickServ. O KVirc irá "
-"usá-las para modelar a sua interacção automática com o NickServ.<br>Por "
-"favor tenha em atenção que esta opção pode fazer com que a senha do NickServ "
-"seja roubada se usada imprópriamente. Veja se entende bem o protocolo de "
-"autenticação do NickServ. <br>Por outras palavras, tenha a certeza do que "
-"está a fazer. <br>Note também que a senha que forneceu é guardada "
-"como<b>TEXTO SIMPLES</b>.<br>O KVirc também suporta regras de autenticação "
+"<center>Esta é uma lista das regras de identificação do NickServ. O KVirc irá "
+"usá-las para modelar a sua interacção automática com o NickServ.<br>Por favor "
+"lembre-se que ao criar uma regra pode fazer com que a senha do NickServ "
+"seja roubada se usada impropriamente. Veja se percebe bem o protocolo "
+"de autenticação do NickServ. <br>Por outras palavras, certifique-se do que "
+"está a fazer. <br>Note também que a senha que indicou é guardada como "
+"<b>TEXTO SIMPLES</b>.<br>O KVirc também suporta regras de autenticação "
 "do Nickserv por rede que sejam criadas nas opções de rede \"Avançadas..."
 "\" (acessível através das opções do servidor.</center>"
 
@@ -334,7 +334,7 @@ msgstr "Editar Regra"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:284
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:302
 msgid "Delete Rule"
-msgstr "Apagar Regra"
+msgstr "Remover Regra"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_topiclabel.cpp:31
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_interfacelookglobal.cpp:195
@@ -363,15 +363,15 @@ msgstr "Activar ícone na barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:41
 msgid "Close in tray"
-msgstr "Fechar na barra de tarefas"
+msgstr "Fechar no ícone da barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:42
 msgid "Minimize in tray"
-msgstr "Minimizar na barra de tarefas"
+msgstr "Minimizar no ícone da barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:44
 msgid "Enable tray icon flashing"
-msgstr "Activar piscar de ícone na barra de tarefas"
+msgstr "Activar piscar do ícone na barra de tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
@@ -394,7 +394,7 @@ msgid ""
 "This section contains irc protection tools<br><p>like<b> flood, ignore, "
 "antispam. </b> </p>"
 msgstr ""
-"Esta secção contém ferramentas irc <br><p>como<b> flood, ignorar, anti-spam."
+"Esta secção contém ferramentas irc <br><p>como<b> fluxo, ignorar, anti-spam."
 "</b></p>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcp.cpp:40
@@ -2332,7 +2332,7 @@ msgstr "Ocultar avatares"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:79
 msgid "Use flood protection (recommended)"
-msgstr "Usar protecção flood (recomendado)"
+msgstr "Usar protecção de fluxo, conhecido como 'flood' (recomendado)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:81
 msgid ""
@@ -2342,7 +2342,7 @@ msgid ""
 msgstr ""
 "<center>Esta opção faz com que o KVirc apenas responda a número limitado de "
 "pedidos CTCP dentro de um intervalo de tempo especificado, para prevenir o "
-"\"flood\" de mensagens CTCP.</center>"
+"\"fluxo\" (flood) de mensagens CTCP.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.cpp:83
 msgid "Allow up to:"
@@ -3447,8 +3447,8 @@ msgstr ""
 "<center>Se activar esta opção, quando um pedido DCC de um utilizador remoto "
 "não pode ser satisfeito, o KVirc irá notificá-lo por um CTCP ERRMSG. Esta é "
 "uma boa opção, então é bom deixá-la activada, a não ser que por alguma razão "
-"tenha desactivado o sistema anti-flood: nesse caso será melhor desligar a "
-"opção, pois poderá ajudar se costuma ser atacado por floods CTCP.</center>"
+"tenha desactivado o sistema anti-fluxo: nesse caso será melhor desligar a "
+"opção, pois poderá ajudar se costuma ser atacado por fluxo de CTCP.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:154
 msgid "Maximum number of DCC sessions"
@@ -4261,7 +4261,7 @@ msgstr "Protecção"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.h:36
 msgid "ctcp,flood"
-msgstr "ctcp,flood"
+msgstr "ctcp, fluxo"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.h:144
 msgid "Avatar"
@@ -4335,7 +4335,7 @@ msgstr "Alerta da Barra de Tarefas"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_ctcpfloodprotection.h:29
 msgid "Flood Protection"
-msgstr "Protecção Flood"
+msgstr "Protecção de Fluxo"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.h:30
 msgid "Userlist"
