@@ -32,6 +32,7 @@
 #include <qdir.h>
 #include "kvi_tal_tooltip.h"
 #include <qmessagebox.h>
+#include <QFileDialog>
 
 extern KviMediaManager * g_pMediaManager;
 
@@ -82,7 +83,13 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 #endif
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"open_file_name_dialog",true);
 	d->setCaption(caption);
-	d->setMode(QFileDialog::ExistingFile);
+	//190
+	#ifdef COMPILE_KDE_SUPPORT
+	d->setMode(KFile::File | KFile::ExistingOnly);
+	#endif
+	#ifndef COMPILE_KDE_SUPPORT
+	d->setMode(QFileDialog::Directory);
+	#endif
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
@@ -127,7 +134,13 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
 	d->setCaption(caption);
+	// 190
+	#ifdef COMPILE_KDE_SUPPORT
+	d->setMode(KFile::File);
+	#endif
+	#ifndef COMPILE_KDE_SUPPORT
 	d->setMode(QFileDialog::AnyFile);
+	#endif
 	//d->setShowHiddenFiles(showHidden);
 
 	while(d->exec() == QDialog::Accepted)
@@ -186,7 +199,13 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 	KviFileDialog * d = new KviFileDialog(initial,
 		filter,parent,"directory_name_dialog",true);
 	d->setCaption(caption);
+	// Move to tal and settle matters there?
+	#ifdef COMPILE_KDE_SUPPORT
+	d->setMode(KFile::Directory);
+	#endif
+	#ifndef COMPILE_KDE_SUPPORT
 	d->setMode(QFileDialog::Directory);
+	#endif
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
@@ -213,7 +232,13 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 	#endif
 	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
 	d->setCaption(caption);
+	// See line 190
+	#ifdef COMPILE_KDE_SUPPORT
+	d->setMode(KFile::ExistingOnly | KFile::Files);
+	#endif
+	#ifndef COMPILE_KDE_SUPPORT
 	d->setMode(QFileDialog::ExistingFiles);
+	#endif
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{

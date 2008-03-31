@@ -43,11 +43,11 @@
 #ifdef COMPILE_USE_QT4
 	#include <qevent.h>
 	#include <q3dragobject.h>
-	
+
 	#define QDragObject Q3DragObject
 	#define QTextDrag Q3TextDrag
 	#define QIconDrag Q3IconDrag
-	
+
 	#include <qstyleoption.h>
 #else
 	#include <qobjectlist.h>
@@ -222,7 +222,8 @@ void KviCustomToolBar::endCustomize()
 void KviCustomToolBar::syncDescriptor()
 {
 	// store the item order in the descriptor
-	QBoxLayout * lay = boxLayout();
+	// There was boxLayouts
+	QLayout * lay = layout();
 	QLayoutIterator iter = lay->iterator();
 	QLayoutItem * i;
 	m_pDescriptor->actions()->clear();
@@ -245,7 +246,7 @@ void KviCustomToolBar::childEvent(QChildEvent *e)
 				filterChild(e->child());
 			goto done;
 		}
-		
+
 		if(e->type() == QEvent::ChildRemoved)
 		{
 			if(e->child()->isWidgetType())
@@ -344,7 +345,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 
 	if(!l)return 0;
 	QLayoutIterator it = l->iterator();
-	
+
 	// find the children with minimum distance
 	int iMinDistIdx = -1;
 	QWidget * pMinDistW = 0;
@@ -396,7 +397,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 		idx++;
 		++it;
 	}
-	
+
 	if(!pMinDistW)
 	{
 		// ops.. not found at all (empty toolbar or really far from any button)
@@ -425,7 +426,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 					iMinDistIdx++; // need to put it below
 			}
 		}
-		
+
 		// ok , check again (we might have moved exactly over exclude idx now!)
 		if((iExcludeIdx != -1) && (iExcludeIdx != iMinDistIdx))
 		{
