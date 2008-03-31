@@ -195,11 +195,9 @@ bool kvi_qstringEqualCI(const QString &s1,const QString &s2)
 	const QChar * p1 = s1.unicode();
 	const QChar * p2 = s2.unicode();
 	int l = s1.length() < s2.length() ? s1.length() : s2.length();
-#ifdef COMPILE_USE_QT4
+
 	while(l-- && (p1->toLower() == p2->toLower()))p1++,p2++;
-#else
-	while(l-- && (p1->lower() == p2->lower()))p1++,p2++;
-#endif
+
 	if(l==-1)return true;
 	return false;
 }

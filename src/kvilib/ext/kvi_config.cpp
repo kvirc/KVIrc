@@ -627,11 +627,8 @@ QStringList KviConfig::readStringListEntry(const QString & szKey,const QStringLi
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
 	if(!p_str)return list;
-#ifdef COMPILE_USE_QT4
+
 	return p_str->split(g_szConfigStringListSeparator);
-#else
-	return QStringList::split(g_szConfigStringListSeparator,*p_str);
-#endif
 }
 
 void KviConfig::writeEntry(const QString & szKey,const QStringList &list)
@@ -653,11 +650,8 @@ KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviVal
 		//debug("Returning default list for group %s and key %s",m_szGroup.latin1(),szKey.latin1());
 		return list;
 	}
-#ifdef COMPILE_USE_QT4
+
 	QStringList sl = p_str->split(",");
-#else
-	QStringList sl = QStringList::split(",",*p_str);
-#endif
 	KviValueList<int> ret;
 
 	//debug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());

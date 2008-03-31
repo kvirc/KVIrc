@@ -27,13 +27,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3cstring.h> // includes <qbytearray.h>
-	#define KviQCString QByteArray
-#else
-	// this is dead in Qt 4.x
-	#include <qcstring.h>
-	#define KviQCString QCString
-#endif
+#include <q3cstring.h> // includes <qbytearray.h>
+#define KviQCString QByteArray
 
 #endif //!_KVI_QCSTRING_H_

@@ -38,7 +38,7 @@
 
 #include <ctype.h> // for tolower()
 #include <stdio.h> // for sprintf()
-#include <qregexp.h> 
+#include <QRegExp>
 
 // kvi_string.cpp
 extern unsigned char iso88591_toLower_map[256];
@@ -84,11 +84,7 @@ namespace KviQString
 
 		while(c1 < c1e)
 		{
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != c2->toLower().unicode())return false;
-#else
-			if(c1->lower().unicode() != c2->lower().unicode())return false;
-#endif
 			c1++;
 			c2++;
 		}
@@ -126,11 +122,7 @@ namespace KviQString
 
 		while((c1 < c1e) && (*sz2))
 		{
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != tolower(*sz2))return false;
-#else
-			if(c1->lower().unicode() != tolower(*sz2))return false;
-#endif
 			c1++;
 			sz2++;
 		}
@@ -150,11 +142,7 @@ namespace KviQString
 
 		while((c1 < c1e) && (sz2->unicode()))
 		{
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != sz2->toLower().unicode())return false;
-#else
-			if(c1->lower().unicode() != sz2->lower().unicode())return false;
-#endif
 			c1++;
 			sz2++;
 		}
@@ -216,11 +204,7 @@ namespace KviQString
 
 		while(c1 < c1e)
 		{
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != c2->toLower().unicode())return false;
-#else
-			if(c1->lower().unicode() != c2->lower().unicode())return false;
-#endif
 			c1++;
 			c2++;
 		}
@@ -238,11 +222,7 @@ namespace KviQString
 		while(c1 < c1e)
 		{
 			if(!sz2->unicode())return false; // sz1 has at least another character
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != sz2->toLower().unicode())return false;
-#else
-			if(c1->lower().unicode() != sz2->lower().unicode())return false;
-#endif
 			c1++;
 			sz2++;
 		}
@@ -274,11 +254,7 @@ namespace KviQString
 
 		while((c1 < c1e) && (*sz2))
 		{
-#ifdef COMPILE_USE_QT4
 			if(c1->toLower().unicode() != tolower(*sz2))return false;
-#else
-			if(c1->lower().unicode() != tolower(*sz2))return false;
-#endif
 			c1++;
 			sz2++;
 		}
@@ -337,24 +313,14 @@ namespace KviQString
 		{
 			if(c1 >= c1e)
 			{
-#ifdef COMPILE_USE_QT4
 				if(c2 < c2e)return /* 0 */ - (c2->toLower().unicode());
-#else
-				if(c2 < c2e)return /* 0 */ - (c2->lower().unicode());
-#endif
 				return 0;
 			}
-#ifdef COMPILE_USE_QT4
-			if(c2 >= c2e)return c1->toLower().unicode() /* - 0 */;
-#else
-			if(c2 >= c2e)return c1->lower().unicode() /* - 0 */;
-#endif
 
-#ifdef COMPILE_USE_QT4
+			if(c2 >= c2e)return c1->toLower().unicode() /* - 0 */;
+
 			int diff = c1->toLower().unicode() - c2->toLower().unicode();
-#else
-			int diff = c1->lower().unicode() - c2->lower().unicode();
-#endif
+
 			if(diff)return diff;
 
 			c1++;
@@ -383,11 +349,7 @@ namespace KviQString
 
 		int diff = 0;
 
-#ifdef COMPILE_USE_QT4
 		while((c1 < c1e) && !(diff = (c1->toLower().unicode() - c2->toLower().unicode())))
-#else
-		while((c1 < c1e) && !(diff = (c1->lower().unicode() - c2->lower().unicode())))
-#endif
 		{
 			c1++;
 			c2++;
@@ -464,21 +426,13 @@ namespace KviQString
 
 	void detach(QString &sz)
 	{
-#ifdef COMPILE_USE_QT4
 		sz.resize(sz.length());
-#else
-		sz.setLength(sz.length());
-#endif
 	}
 
 	const QChar * nullTerminatedArray(const QString &sz)
 	{
 		//sz.setLength(sz.length()); // detach!
-#ifdef COMPILE_USE_QT4
 		return sz.constData();
-#else
-		return (const QChar *)sz.ucs2(); // MAY BE NULL!
-#endif
 	}
 	
 	void appendNumber(QString &s,double dReal)
@@ -781,13 +735,8 @@ namespace KviQString
 		//      s1
 		//
 
-#ifdef COMPILE_USE_QT4
 		const QChar * m1 = (const QChar *)szM1.constData();
 		const QChar * m2 = (const QChar *)szM2.constData();
-#else
-		const QChar * m1 = (const QChar *)szM1.ucs2();
-		const QChar * m2 = (const QChar *)szM2.ucs2();
-#endif
 
 		if(!(m1 && m2 && (m1->unicode())))return false;
 		const QChar * savePos1 = 0;
@@ -804,11 +753,7 @@ namespace KviQString
 				continue;                   //and return
 			}
 			if(!m2->unicode())return false;         //m2 finished and we had something to match here!
-#ifdef COMPILE_USE_QT4
 			if(m1->toLower()==m2->toLower())
-#else
-			if(m1->lower()==m2->lower())
-#endif
 			{
 				//chars matched
 				m1++;                       //Go ahead in the two strings
@@ -864,11 +809,8 @@ namespace KviQString
 	bool matchStringCI(const QString &szExp,const QString &szStr,bool bIsRegExp,bool bExact)
 	{
 		QString szWildcard;
-#ifdef COMPILE_USE_QT4
 		QChar* ptr=(QChar*)szExp.constData();
-#else
-		QChar* ptr=(QChar*)szExp.ucs2();
-#endif
+
 		if(!ptr) return 0;
 		while(ptr->unicode())
 		{
@@ -882,27 +824,17 @@ namespace KviQString
 			}
 			ptr++;
 		}
-#ifdef COMPILE_USE_QT4
 		QRegExp re(szWildcard,Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
-#else
-		QRegExp re(szWildcard,false,!bIsRegExp);
-#endif
+
 		if(bExact) return re.exactMatch(szStr);
-#ifdef COMPILE_USE_QT4
 		return re.indexIn(szStr) != -1;
-#else
-		return re.search(szStr) != -1;
-#endif
 	}
 
 	bool matchStringCS(const QString &szExp,const QString &szStr,bool bIsRegExp,bool bExact)
 	{
 		QString szWildcard;
-#ifdef COMPILE_USE_QT4
 		QChar* ptr=(QChar*)szExp.constData();
-#else
-		QChar* ptr=(QChar*)szExp.ucs2();
-#endif
+
 		if(!ptr) return 0;
 		while(ptr->unicode())
 		{
@@ -916,48 +848,31 @@ namespace KviQString
 			}
 			ptr++;
 		}
-#ifdef COMPILE_USE_QT4
 		QRegExp re(szWildcard,Qt::CaseSensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
-#else
-		QRegExp re(szWildcard,true,!bIsRegExp);
-#endif
+
 		if(bExact) return re.exactMatch(szStr);
-#ifdef COMPILE_USE_QT4
 		return re.indexIn(szStr) != -1;
-#else
-		return re.search(szStr) != -1;
-#endif
 	}
 
 	void cutFromFirst(QString &s,const QChar &c,bool bIncluded)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.indexOf(c);
-#else
-		int idx = s.find(c);
-#endif
+
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + 1);
 	}
 
 	void cutFromLast(QString &s,const QChar &c,bool bIncluded)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.lastIndexOf(c);
-#else
-		int idx = s.findRev(c);
-#endif
+
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + 1);
 	}
 	
 	void cutToFirst(QString &s,const QChar &c,bool bIncluded,bool bClearIfNotFound)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.indexOf(c);
-#else
-		int idx = s.find(c);
-#endif
 		if(idx == -1)
 		{
 			if(bClearIfNotFound)s = "";
@@ -968,11 +883,7 @@ namespace KviQString
 	
 	void cutToLast(QString &s,const QChar &c,bool bIncluded,bool bClearIfNotFound)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.lastIndexOf(c);
-#else
-		int idx = s.findRev(c);
-#endif
 		if(idx == -1)
 		{
 			if(bClearIfNotFound)s = "";
@@ -983,33 +894,21 @@ namespace KviQString
 
 	void cutFromFirst(QString &s,const QString &c,bool bIncluded)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.indexOf(c);
-#else
-		int idx = s.find(c);
-#endif
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + c.length());
 	}
 
 	void cutFromLast(QString &s,const QString &c,bool bIncluded)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.lastIndexOf(c);
-#else
-		int idx = s.findRev(c);
-#endif
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + c.length());
 	}
 	
 	void cutToFirst(QString &s,const QString &c,bool bIncluded,bool bClearIfNotFound)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.indexOf(c);
-#else
-		int idx = s.find(c);
-#endif
 		if(idx == -1)
 		{
 			if(bClearIfNotFound)s = "";
@@ -1020,11 +919,7 @@ namespace KviQString
 	
 	void cutToLast(QString &s,const QString &c,bool bIncluded,bool bClearIfNotFound)
 	{
-#ifdef COMPILE_USE_QT4
 		int idx = s.lastIndexOf(c);
-#else
-		int idx = s.findRev(c);
-#endif
 		if(idx == -1)
 		{
 			if(bClearIfNotFound)s = "";
@@ -1107,11 +1002,7 @@ namespace KviQString
 	
 	void bufferToHex(QString &szRetBuffer,const unsigned char * buffer,unsigned int len)
 	{
-#ifdef COMPILE_USE_QT4
 		szRetBuffer.resize(len * 2);
-#else
-		szRetBuffer.setLength(len * 2);
-#endif
 		unsigned int i=0;
 		while(i < (len*2))
 		{

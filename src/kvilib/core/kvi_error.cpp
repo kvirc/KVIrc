@@ -32,13 +32,13 @@
 
 
 #ifdef COMPILE_ON_WINDOWS
-#include <winsock2.h> // for the WSAE* error codes
+	#include <winsock2.h> // for the WSAE* error codes
 #endif
 
 #include <errno.h>
 
 #ifdef HAVE_STRERROR
-#include <string.h> // for strerror()
+	#include <string.h> // for strerror()
 #endif
 
 // FIXME: This stuff should basically die and be eventually replaced with some
@@ -234,4 +234,3 @@ namespace KviError
 #endif
 	}
 };
-

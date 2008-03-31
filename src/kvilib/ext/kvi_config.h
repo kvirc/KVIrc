@@ -31,10 +31,10 @@
 #include "kvi_pointerhashtable.h"
 #include "kvi_valuelist.h"
 
-#include <qcolor.h>
-#include <qfont.h>
-#include <qrect.h>
-#include <qstringlist.h>
+#include <QColor>
+#include <QFont>
+#include <QRect>
+#include <QStringList>
 
 #define KVI_CONFIG_DEFAULT_GROUP "KVIrc"
 

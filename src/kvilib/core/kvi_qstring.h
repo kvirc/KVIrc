@@ -36,7 +36,7 @@
 #include "kvi_stdarg.h"
 #include "kvi_qcstring.h"
 
-#include <qstring.h>
+#include <QString>
 
 ///
 /// \namespace KviQString

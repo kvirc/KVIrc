@@ -244,11 +244,7 @@ inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 	} else {
 		while(p->unicode())
 		{
-#ifdef COMPILE_USE_QT4
 			uResult += p->toLower().unicode();
-#else
-			uResult += p->lower().unicode();
-#endif
 			p++;
 		}
 	}
@@ -992,8 +988,5 @@ public:
 			delete m_pIterator;
 	}
 };
-
-
-
 
 #endif //_KVI_POINTERHASHTABLE_H_

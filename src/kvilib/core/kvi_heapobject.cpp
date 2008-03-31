@@ -92,5 +92,3 @@
 		kvi_free(pData);
 	}
 #endif
-
-

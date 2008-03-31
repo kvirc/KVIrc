@@ -57,7 +57,4 @@ inline kvi_u16_t kvi_swap16(kvi_u16_t i)
 	return ((i << 8) | (i >> 8));
 }
 
-
-
-
 #endif // !_KVI_BSWAP_H_

@@ -1620,6 +1620,7 @@ void KviChannel::unhighlight()
 	if(!m_pTaskBarItem)return;
 	m_pTaskBarItem->unhighlight();
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_channel.moc"
+	#include "kvi_channel.moc"
 #endif

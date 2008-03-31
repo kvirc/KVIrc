@@ -180,12 +180,12 @@
 				dst = (char *)dst_ptr + len - 1;
 				src = (const char *)src_ptr + len - 1;
 				while(len--)*dst-- = *src--;
-		    } else { //it is valid even if dst_ptr == src_ptr 
+			} else { //it is valid even if dst_ptr == src_ptr 
 				dst = (char *)dst_ptr;
 				src = (const char *)src_ptr;
 				while(len--)*dst++ = *src++;
-		    }
-		    return dst_ptr;
+			}
+			return dst_ptr;
 		}
 	
 		void *kvi_memmoveodd(void *dst_ptr,const void *src_ptr,int len)
@@ -204,7 +204,7 @@
 					*dst-- = *src--;
 					len -= 2;
 				}
-		    } else { //it is valid even if dst_ptr == src_ptr 
+			} else { //it is valid even if dst_ptr == src_ptr 
 				dst = (short *)dst_ptr;
 				src = (const short *)src_ptr;
 				while(len > 0)
@@ -212,8 +212,8 @@
 					*dst++ = *src++;
 					len -= 2;
 				}
-		    }
-		    return dst_ptr;
+			}
+			return dst_ptr;
 		}
 		
 		void kvi_fastmove(void *dst_ptr,const void *src_ptr,int len)

@@ -29,7 +29,7 @@
 #include "kvi_settings.h"
 
 #include "kvi_qstring.h"
-#include <qstringlist.h>
+#include <QStringList>
 
 namespace KviCommandFormatter
 {

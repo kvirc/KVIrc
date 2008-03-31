@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#include <qpixmap.h>
+#include <QPixmap>
 
 //
 // This class is basically a huge shared memory pixmap meant to be used in double-buffer

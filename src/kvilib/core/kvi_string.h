@@ -35,7 +35,7 @@
 #endif
 
 #include <qglobal.h>
-#include <qstring.h>
+#include <QString>
 
 
 #include "kvi_qcstring.h"

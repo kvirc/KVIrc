@@ -36,8 +36,8 @@
 
 #include "kvi_settings.h"
 
-#include <qregexp.h>
-#include <qdir.h>
+#include <QRegExp>
+#include <QDir>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -241,11 +241,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 	KviStr szFullPath = filename;
 	if(!kvi_isAbsolutePath(szFullPath.ptr()))
 	{
-#ifdef COMPILE_USE_QT4
 		KviStr tmp = QDir::currentPath();
-#else
-		KviStr tmp = QDir::currentDirPath();
-#endif
 		tmp.ensureLastCharIs('/');
 		szFullPath.prepend(tmp);
 	}
@@ -272,7 +268,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 		// If it is a link , stat() the link target
 #ifndef COMPILE_ON_WINDOWS
 		if(S_ISLNK(st.st_mode))
-		{	
+		{
 			if(stat(szFullPath.ptr(),&st) != 0)
 			{
 				debug("Problems while stating() target for link %s",szFullPath.ptr());
@@ -406,15 +402,8 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 				QRegExp re(m->szMagicBytes.ptr());
 				// It looks like they can't decide the name for this function :D
 				// ... well, maybe the latest choice is the best one.
-#ifdef COMPILE_USE_QT4
 				if(re.indexIn(buffer) > -1)return m; // matched!
-#else
-	#if QT_VERSION >= 300
-				if(re.search(buffer) > -1)return m; // matched!
-	#else
-				if(re.find(buffer,0) > -1)return m; // matched!
-	#endif
-#endif
+
 				// else magic failed...not a match
 			} else return m; // matched! (no magic check)
 		}

@@ -3,51 +3,16 @@ Here there is all porting work to do.
 PLEASE KEEP THIS FILE UPDATED!
 
 src/kvilib
-src/kvilib/config
-	kvi_confignames.h
-	kvi_debug.h
-	kvi_defaults.h
-	kvi_fileextensions.h
-	kvi_settings.h
-	kvi_sourcesdate.h
-	kvi_version.h
-	kvi_wincfg.h
 src/kvilib/core
-	kvi_bswap.h
-	kvi_error.cpp
-	kvi_error.h
-	kvi_heapobject.cpp
-	kvi_heapobject.h
-	kvi_inttypes.h
-	kvi_malloc.cpp
-	kvi_malloc.h
-	kvi_memmove.cpp
-	kvi_memmove.h
-	kvi_pointerhashtable.h
-	kvi_pointerlist.h
 	kvi_qcstring.h
-	kvi_qstring.cpp
-	kvi_qstring.h
-	kvi_strasm.h
-	kvi_string.cpp
-	kvi_string.h
-	kvi_stringarray.cpp
-	kvi_stringarray.h
 	kvi_valuelist.h
 src/kvilib/ext
 	kvi_accel.h
-	kvi_cmdformatter.cpp
-	kvi_cmdformatter.h
-	kvi_config.cpp
-	kvi_config.h
 	kvi_crypt.cpp
 	kvi_crypt.h
-	kvi_databuffer.cpp
-	kvi_databuffer.h
 	kvi_dcophelper.cpp
 	kvi_dcophelper.h
-	kvi_doublebuffer.cpp
-	kvi_doublebuffer.h
+
 	kvi_draganddrop.h
 	kvi_garbage.cpp
 	kvi_garbage.h
@@ -55,12 +20,7 @@ src/kvilib/ext
 	kvi_imagelib.h
 	kvi_md5.cpp
 	kvi_md5.h
-	kvi_mediatype.cpp
-	kvi_mediatype.h
-	kvi_miscutils.cpp
-	kvi_miscutils.h
-	kvi_msgtype.cpp
-	kvi_msgtype.h
+
 	kvi_osinfo.cpp
 	kvi_osinfo.h
 	kvi_parameterlist.cpp
@@ -187,7 +147,6 @@ src/kvirc/kernel
 	kvi_filetransfer.h
 	kvi_iconmanager.cpp
 	kvi_iconmanager.h
-	kvi_iconmanager.moc
 	kvi_internalcmd.cpp
 	kvi_internalcmd.h
 	kvi_ipc.cpp
@@ -540,7 +499,6 @@ src/kvirc/ui
 	kvi_optionswidget.h
 	kvi_query.cpp
 	kvi_query.h
-	kvi_query.moc
 	kvi_scriptbutton.cpp
 	kvi_scriptbutton.h
 	kvi_scripteditor.cpp
