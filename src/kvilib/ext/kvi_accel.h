@@ -27,9 +27,7 @@
 
 #include "kvi_settings.h"
 
-//#include <q3accel.h>
-//#define KviAccel Q3Accel
-#include <QShortcut>
-#define KviAccel QShortcut
+#include <q3accel.h>
+#define KviAccel Q3Accel
 
 #endif //!_KVI_ACCEL_H_
