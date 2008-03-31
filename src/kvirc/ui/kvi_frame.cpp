@@ -55,44 +55,27 @@
 #include "kvi_actionmanager.h"
 #include "kvi_defaults.h"
 #include "kvi_ircview.h"
-#include "kvi_tal_popupmenu.h"
-
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
+#include "kvi_tal_popupmenu.h"
 
-#include <qsplitter.h>
-#include <qvariant.h>
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <qcheckbox.h>
-
-#include <qtimer.h>
-#include <qlayout.h>
-
-#if QT_VERSION >= 300
-	#include <qfile.h>
-	#include <qtextstream.h>
-	#ifdef COMPILE_USE_QT4
-		#include <q3dockarea.h>
-		#define QDockArea Q3DockArea
-	#else
-		#include <qdockarea.h>
-	#endif
-#endif
-
-
-#ifdef COMPILE_USE_QT4
-	#include <qdesktopwidget.h>
-	#include <qevent.h>
-	#include <QShortcut>
-#else
-	#include <qaccel.h>
-#endif
+#include <QSplitter>
+#include <QVariant>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QCheckBox>
+#include <QTimer>
+#include <QLayout>
+#include <QDesktopWidget>
+#include <QEvent>
+#include <QCloseEvent>
+#include <QShortcut>
+#include <QFile>
 
 #include <time.h>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#include <qpixmap.h>
+	#include <QPixmap>
 	// kvi_app.h
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -133,16 +116,12 @@ KviFrame::KviFrame()
 
 	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
-#ifdef COMPILE_USE_QT4
 	setMenuWidget(m_pMenuBar);
-#endif
 
 	if(KVI_OPTION_BOOL(KviOption_boolStatusBarVisible))
 	{
 		m_pStatusBar = new KviStatusBar(this);
-#ifdef COMPILE_USE_QT4
 		setStatusBar(m_pStatusBar);
-#endif
 		// torque: moved out of status bar constructor
 		// because module init functions exectued in load()
 		// couldn't access the status bar via g_pFrame->mainStatusBar()
@@ -348,7 +327,6 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 {
 	QWidget * pParent = wnd ? (QWidget *)wnd : (QWidget *)this;
-#ifdef COMPILE_USE_QT4
 	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT),pParent,SLOT(switchToPrevWindow()));
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT),pParent,SLOT(switchToNextWindow()));
 	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL),pParent,SLOT(maximizeWindow()));
@@ -356,7 +334,6 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL),pParent,SLOT(minimizeWindow()));
 	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToPrevWindowInContext()));
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToNextWindowInContext()));
-#endif
 	KviAccel *ac = new KviAccel(pParent);
 
 	static int accel_table[] = {
@@ -1062,13 +1039,8 @@ void KviFrame::toggleStatusBar()
 
 		m_pStatusBar = new KviStatusBar(this);
 		m_pStatusBar->load();
-#ifdef COMPILE_USE_QT4
 		setStatusBar(m_pStatusBar);
-#endif
 		m_pStatusBar->show();
-#ifndef COMPILE_USE_QT4
-		setUpLayout();
-#endif //!COMPILE_USE_QT4
 	}
 }
 
@@ -1170,11 +1142,8 @@ bool KviFrame::focusNextPrevChild(bool next)
 	QWidget * w = focusWidget();
 	if(w)
 	{
-#ifdef COMPILE_USE_QT4
 		if(w->focusPolicy() == Qt::StrongFocus)return false;
-#else
-		if(w->focusPolicy() == QWidget::StrongFocus)return false;
-#endif
+
 		//QVariant v = w->property("KviProperty_FocusOwner");
 		//if(v.isValid())return false; // Do NOT change the focus widget!
 
@@ -1206,13 +1175,7 @@ void KviFrame::saveToolBarPositions()
 	QFile f(szTemp);
 	if(f.open(IO_WriteOnly | IO_Truncate))
 	{
-#ifdef COMPILE_USE_QT4
 		f.write(saveState(1));
-#else //!COMPILE_USE_QT4
-		QTextStream ts(&f);
-		ts << *this;
-		f.close();
-#endif //!COMPILE_USE_QT4
 	}
 }
 
@@ -1227,57 +1190,19 @@ void KviFrame::restoreToolBarPositions()
 
 	if(f.open(IO_ReadOnly))
 	{
-#ifdef COMPILE_USE_QT4
 		if(!restoreState(f.readAll(),1))
 			debug("Error while restoring toolbars position");
-#else //!COMPILE_USE_QT4
-		QTextStream ts(&f);
-		ts >> *this;
-		f.close();
-#endif //!COMPILE_USE_QT4
 	} else {
 		bNeedDefaults = true;
 	}
 
 	if(m_pTaskBar->inherits("KviTreeTaskBar"))
 	{
-#ifdef COMPILE_USE_QT4
 		// ensure that it is not too wide
 		m_pTaskBar->setMaximumWidth(600);
 		if(m_pTaskBar->width() > 600)
 			m_pTaskBar->setFixedWidth(250);
-#else //!COMPILE_USE_QT4
-		QDockArea * a = m_pTaskBar->area();
-		if((a == topDock()) || (a == bottomDock()))
-		{
-			// nope.... need to move it
-			a->removeDockWindow(m_pTaskBar,true,false);
-
-			//int iMaxWidth = m_pTaskBar->maximumWidth();
-			leftDock()->moveDockWindow(m_pTaskBar);
-			//m_pTaskBar->setMaximumWidth(iMaxWidth);
-			//m_pTaskBar->setOrientation(Vertical);
-		}
-		// ensure that it is not too wide
-		if(m_pTaskBar->width() > 600)
-			m_pTaskBar->setFixedExtentWidth(250);
-#endif //!COMPILE_USE_QT4
-	} /*else if(m_pTaskBar->inherits("KviClassicTaskBar"))
-	{
-		QDockArea * a = m_pTaskBar->area();
-		if((a == leftDock()) || (a == rightDock()))
-		{
-			// nope.... need to move it
-			a->removeDockWindow(m_pTaskBar,true,false);
-			bottomDock()->moveDockWindow(m_pTaskBar);
-			bottomDock()->lineUp(true);
-		}
-	}*/
-
-#ifndef COMPILE_USE_QT4
-	if(bNeedDefaults)
-		lineUpDockWindows(false);
-#endif //!COMPILE_USE_QT4
+	}
 }
 
 
@@ -1286,27 +1211,13 @@ void KviFrame::createTaskBar()
 	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListTaskBar))
 	{
 		m_pTaskBar = new KviTreeTaskBar();
-#ifdef COMPILE_USE_QT4
 		m_pTaskBar->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 		addDockWidget(Qt::LeftDockWidgetArea,m_pTaskBar);
-#else //!COMPILE_USE_QT4
-		setDockEnabled(m_pTaskBar,Qt::DockTop,false);
-		setDockEnabled(m_pTaskBar,Qt::DockBottom,false);
-#endif //!COMPILE_USE_QT4
 	} else {
 		m_pTaskBar = new KviClassicTaskBar();
-#ifdef COMPILE_USE_QT4
 		m_pTaskBar->setAllowedAreas(Qt::AllDockWidgetAreas);
 		addDockWidget(Qt::BottomDockWidgetArea,m_pTaskBar);
-#else //!COMPILE_USE_QT4
-		setDockEnabled(m_pTaskBar,Qt::DockTop,true);
-		setDockEnabled(m_pTaskBar,Qt::DockBottom,true);
-#endif //!COMPILE_USE_QT4
 	}
-#ifndef COMPILE_USE_QT4
-	setDockEnabled(m_pTaskBar,Qt::DockLeft,true);
-	setDockEnabled(m_pTaskBar,Qt::DockRight,true);
-#endif //!COMPILE_USE_QT4
 }
 
 void KviFrame::recreateTaskBar()
@@ -1319,9 +1230,6 @@ void KviFrame::recreateTaskBar()
 	{
 		w->destroyTaskBarItem();
 	}
-#ifndef COMPILE_USE_QT4
-	removeDockWindow(m_pTaskBar);
-#endif //!COMPILE_USE_QT4
 	delete m_pTaskBar;
 	createTaskBar();
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
@@ -1358,41 +1266,6 @@ void KviFrame::recreateTaskBar()
 
 	if(g_pActiveWindow)m_pTaskBar->setActiveItem(g_pActiveWindow->taskBarItem());
 }
-
-
-#if QT_VERSION == 0x030201
-unsigned int KviFrame::windowState()
-{
-	/*		enum GNWindowState {	WindowNoState = 0x00000000, WindowMinimized = 0x00000001,
-									WindowMaximized = 0x00000002, WindowFullScreen = 0x00000004, WindowActive = 0x00000008 };
-			GNWindowState GNWState;
-			if(isMinimized())		GNWState=WindowMinimized;
-			else if(isMaximized())		GNWState=WindowMaximized;
-			else if(isActiveWindow())	GNWState=WindowActive;
-			else if(isFullScreen())		GNWState=WindowFullScreen;
-			else GNWState=WindowNoState; */
-
-/*	WindowNoState	=	0x00000000	WindowMinimized		= 0x00000001
-	WindowMaximized	=	0x00000002	WindowFullScreen	= 0x00000004 WindowActive = 0x00000008*/
-			if(isMinimized())		return 0x00000001;
-			else if(isMaximized())		return 0x00000002;
-			else if(isActiveWindow())	return 0x00000008;
-			else if(isFullScreen())		return 0x00000004;
-			else return 0x00000000;
-}
-void KviFrame::setWindowState(unsigned int GNWState)
-{
-	switch(GNWState)
-	{
-	case 0x00000001:
-		showMinimized();
-		break;
-	case 0x00000002:
-		showMaximized();
-		break;
-	} // switch
-}
-#endif
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Some accelerators

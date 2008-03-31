@@ -921,4 +921,7 @@ void KviIconManager::cacheCleanup()
 */
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_iconmanager.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

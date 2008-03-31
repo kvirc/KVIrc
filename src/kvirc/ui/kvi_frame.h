@@ -51,7 +51,7 @@ class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
 
-#include "kvi_accel.h" // we need this :/
+#include "kvi_accel.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPointerList<KviWindow> otherwise
@@ -169,14 +169,6 @@ public:
 	void fillToolBarsPopup(KviTalPopupMenu * p);
 	int registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot);
 	void unregisterAccelerator(int id);
-
-#if QT_VERSION == 0x030201
-
-	unsigned int windowState();
-	void setWindowState(unsigned int GNWState);
-
-#endif
-
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
@@ -234,7 +226,6 @@ protected slots:
 	void enteredSdiMode();
 	void leftSdiMode();
 	void toolbarsPopupSelected(int id);
-
 signals:
 	void activeWindowChanged();       // almost never 0.. but may be
 	void activeContextChanged();      // may be 0!
