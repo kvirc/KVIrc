@@ -27,7 +27,8 @@
 #include "kvi_settings.h"
 #include "kvi_ircserverdb.h"
 #include "kvi_moduleextension.h"
-#include <qobject.h>
+
+#include <QObject>
 
 class KVIRC_API KviMexServerImport : public QObject, public KviModuleExtension
 {

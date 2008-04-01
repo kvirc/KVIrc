@@ -70,7 +70,7 @@
 
 //#include "kvi_regusersdb.h"
 //#include "kvi_iconmanager.h"
-#include <qdatetime.h>
+#include <QDateTime>
 
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
@@ -550,7 +550,7 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 	}
 
 	if(!msg->haltOutput())
-	{	
+	{
 		KviQuery * q = msg->connection()->findQuery(szNick);
 		if(q)
 		{

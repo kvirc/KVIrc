@@ -50,15 +50,14 @@
 #include "kvi_time.h"
 #include "kvi_lagmeter.h"
 #include "kvi_qcstring.h"
-
-#include <qpixmap.h>
-#include <qdatetime.h>
-#include <qtextcodec.h>
-#include <qregexp.h> 
-
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
+
+#include <QPixmap>
+#include <QDateTime>
+#include <QTextCodec>
+#include <QRegExp>
 
 // #define IS_CHANNEL_TYPE_FLAG(_str) ((*(_str) == '#') || (*(_str) == '&') || (*(_str) == '!'))
 #define IS_CHANNEL_TYPE_FLAG(_qchar) (msg->connection()->serverInfo()->supportedChannelTypes().find(_qchar) != -1)

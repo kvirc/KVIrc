@@ -26,11 +26,11 @@
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_pointerhashtable.h"
 
-#include "kvi_pointerhashtable.h"
-#include <qpixmap.h>
-#include <qvariant.h>
-#include "kvi_pointerhashtable.h"
+#include <QPixmap>
+#include <QVariant>
 
 class KviWindow;
 class KviModule;

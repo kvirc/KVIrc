@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_moduleextension.h"
 
-#include <qobject.h>
+#include <QObject>
 
 class KviDataBuffer;
 

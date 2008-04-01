@@ -33,10 +33,6 @@
 
 #include <time.h>
 
-#if QT_VERSION < 300
-	#include <qobjectdict.h>
-#endif
-
 #ifdef COMPILE_CRYPT_SUPPORT
 	extern KviCryptEngineManager * g_pCryptEngineManager;
 #endif
@@ -126,10 +122,6 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		better check the KVIrc behaviour twice before making public any script
 		that uses this command.
 */
-
-
-
-
 
 
 

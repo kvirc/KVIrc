@@ -58,10 +58,7 @@
 
 #include <stdlib.h>
 
-#include <qdatetime.h>
-
-
-
+#include <QDateTime>
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -556,20 +553,20 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviStr &buff
 		} // else it is broken, but let's be flexible
 		buffer.append(c);
 		return msg_ptr;
-	}      
+	}
 
 	if(*msg_ptr == 'r')
 	{
 		buffer.append('\r');
 		return ++msg_ptr;
 	}
-        
+
 	if(*msg_ptr == 'n')
 	{
 		buffer.append('\n');
 		return ++msg_ptr;
 	}
-        
+
 	//
 	// null escape: just append the following
 	// character (thus discarding its semantics)
@@ -609,7 +606,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviQCString 
 		} // else it is broken, but let's be flexible
 		buffer+= (c ? c : ' ') ;
 		return msg_ptr;
-	}      
+	}
 
 	if(*msg_ptr == 'r')
 	{
@@ -643,7 +640,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	// extracted parameter is the last in a positional parameter
 	// based CTCP message.
 	//
-        
+
 	int bInString = 0;
 	if(!msg_ptr) return 0;
 	while(*msg_ptr == ' ')msg_ptr++; // skip leading spaces
@@ -728,7 +725,7 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 	// extracted parameter is the last in a positional parameter
 	// based CTCP message.
 	//
-    
+
 	KviQCString buffer;
 	register const char* msg_ptr=p_msg_ptr;
 	int bInString = 0;
@@ -802,9 +799,6 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 	resultBuffer=buffer;
 	return msg_ptr;
 }
-
-                
-
 
 
 void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
@@ -1143,11 +1137,8 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpVersion))
 		{
 			QString szVersion;
-#ifdef COMPILE_USE_QT4
-	#define QT4_TAG " (QT4) "
-#else
-	#define QT4_TAG
-#endif
+
+#define QT4_TAG " (QT4) "
 
 #ifdef COMPILE_ON_WINDOWS
 			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build " KVI_BUILD_DATE;

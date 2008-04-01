@@ -83,12 +83,6 @@ void KviModuleExtensionDescriptor::unregisterObject(KviModuleExtension * e)
 }
 
 
-
-
-
-
-
-
 KviModuleExtensionManager::KviModuleExtensionManager()
 {
 	m_pExtensionDict = new KviPointerHashTable<const char *,KviModuleExtensionDescriptorList>(17,false);
@@ -233,11 +227,6 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &
 }
 
 
-
-
-
-
-
 KviModuleExtension::KviModuleExtension(KviModuleExtensionDescriptor * d)
 : KviHeapObject()
 {
@@ -249,5 +238,3 @@ KviModuleExtension::~KviModuleExtension()
 {
 	m_pDescriptor->unregisterObject(this);
 }
-
-

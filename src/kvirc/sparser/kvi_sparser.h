@@ -27,17 +27,15 @@
 
 
 #include "kvi_settings.h"
-
-#include <time.h>
-
-#include <qobject.h>
 #include "kvi_pointerlist.h"
-
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
 #include "kvi_console.h"
-
 #include "kvi_ircmessage.h"
+
+#include <QObject>
+
+#include <time.h>
 
 class KviWindow;
 class KviChannel;

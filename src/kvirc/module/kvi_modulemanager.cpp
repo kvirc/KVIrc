@@ -36,7 +36,7 @@
 
 #include "kvi_library.h"
 
-#include <qdir.h>
+#include <QDir>
 
 KviModuleManager * g_pModuleManager = 0;
 
