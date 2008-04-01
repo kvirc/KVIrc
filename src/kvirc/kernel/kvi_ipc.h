@@ -44,7 +44,7 @@
 			#include <qcoreevent.h>
 		#endif
 		#include "kvi_xlib.h" // for XEvent
-	#endif //!COMPILE_NO_X
+	#endif //!COMPILE_X11_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 	//////////////////////////////////////////////////////////////////////
@@ -62,9 +62,9 @@
 #ifdef COMPILE_ON_WINDOWS
 		virtual bool winEvent(MSG * msg);
 #else //!COMPILE_ON_WINDOWS
-	#ifndef COMPILE_NO_X
+	#ifdef COMPILE_X11_SUPPORT
 		virtual bool x11Event(XEvent *e);
-	#endif //!COMPILE_NO_X
+	#endif //!COMPILE_X11_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 	};
 
