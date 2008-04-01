@@ -318,4 +318,3 @@ void KviActionManager::listActionsByCategory(const QString &szCatName,KviPointer
 		++it;
 	}
 }
-

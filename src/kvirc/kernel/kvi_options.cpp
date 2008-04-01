@@ -42,21 +42,20 @@
 #include "kvi_frame.h"
 #include "kvi_internalcmd.h"
 #include "kvi_theme.h"
-#include <qmessagebox.h>
-#include <qregexp.h>
+#include "kvi_fileutils.h"
 //#include "kvi_textencoding.h"
 
+#include <QMessageBox>
+#include <QRegExp>
+#include <QTextCodec>
+#include <QDir>
+#include <QStringList>
+
 //xml parser
-#include <qdom.h>
+//#include <qdom.h>
 //!xml parser
 
 #include <zlib.h>
-#include <qtextcodec.h>
-
-#include "kvi_fileutils.h"
-
-#include <qdir.h>
-#include <qstringlist.h>
 
 // kvi_app.cpp
 extern KVIRC_API int g_iIdentDaemonRunningUsers;
@@ -642,23 +641,13 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("IrcToolBarApplet","Arial",9,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
 	FONT_OPTION("Taskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
 #else
-	#if QT_VERSION >= 300
-		FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
-		FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
-		FONT_OPTION("UserListView","Sans Serif",10,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
-		FONT_OPTION("Label","Sans Serif",10,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
-		FONT_OPTION("Application","Sans Serif",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
-		FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-		FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
-	#else
-		FONT_OPTION("IrcView","Monospace",12,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
-		FONT_OPTION("Input","Sans Serif",16,KviOption_sectFlagInput | KviOption_resetUpdateGui),
-		FONT_OPTION("UserListView","Sans Serif",12,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
-		FONT_OPTION("Label","Sans Serif",12,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
-		FONT_OPTION("Application","Sans Serif",12,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
-		FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-		FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
-	#endif
+	FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
+	FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
+	FONT_OPTION("UserListView","Sans Serif",10,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
+	FONT_OPTION("Label","Sans Serif",10,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
+	FONT_OPTION("Application","Sans Serif",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
+	FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
+	FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
 #endif
 };
 
@@ -879,13 +868,13 @@ void KviApp::loadOptions()
 		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
 		
 		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++) 
-		{ 
+		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
 		} 
 
 		for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++) 
-		{ 
+		{
 			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringlistOptionsTable[i].option);
 		}

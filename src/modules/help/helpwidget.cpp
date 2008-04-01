@@ -151,4 +151,6 @@ bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "helpwidget.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

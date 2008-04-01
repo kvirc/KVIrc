@@ -30,17 +30,14 @@
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 
-#include <qimage.h>
+#include <QImage>
 
 #define KVI_THEME_SMALL_SCREENSHOT_NAME "screenshot_small.png"
 #define KVI_THEME_MEDIUM_SCREENSHOT_NAME "screenshot_medium.png"
 #define KVI_THEME_LARGE_SCREENSHOT_NAME "screenshot.png"
 
-#ifdef COMPILE_USE_QT4
-	#define QIMAGE_SCALE_MIN Qt::KeepAspectRatio
-#else
-	#define QIMAGE_SCALE_MIN QImage::ScaleMin
-#endif
+#define QIMAGE_SCALE_MIN Qt::KeepAspectRatio
+
 
 KviThemeInfo::KviThemeInfo()
 : KviHeapObject()

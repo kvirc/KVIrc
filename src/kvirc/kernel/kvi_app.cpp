@@ -84,29 +84,26 @@
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_sourcesdate.h"
-
-#include "kvi_tal_popupmenu.h"
-#include <qsplitter.h>
-#include <qstringlist.h>
 #include "kvi_pointerhashtable.h"
-#include <qmime.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3mimefactory.h>
-#endif
+#include "kvi_tal_popupmenu.h"
 #include "kvi_tal_listbox.h"
-#include <qclipboard.h>
-#include <qmessagebox.h>
-#include <qtextcodec.h>
-#include <qmetaobject.h>
+
+#include <QSplitter>
+#include <QStringList>
+#include <QClipboard>
+#include <QMessageBox>
+#include <QTextCodec>
+#include <QMetaObject>
+
+// FIXME: Qt4 #include <QMimeData>
+#include <q3mimefactory.h>
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
 #endif
 
-#ifdef COMPILE_USE_QT4
 #ifdef COMPILE_ON_WINDOWS
-#include <QPluginLoader>
-#endif
+	#include <QPluginLoader>
 #endif
 
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
@@ -158,7 +155,7 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 		KSharedPixmap         * g_pKdeDesktopBackground             = 0; // the shared pixmap that we get from KWin
 	#endif
 
-	#include <qimage.h>
+	#include <QImage>
 
 	KVIRC_API QPixmap               * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
 	KVIRC_API QPixmap               * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
@@ -217,7 +214,6 @@ void KviApp::setup()
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
-#ifdef COMPILE_USE_QT4
 #ifdef COMPILE_ON_WINDOWS
 	//need to load image plugins:(
 	QString szPluginsDir;
@@ -225,7 +221,6 @@ void KviApp::setup()
 	setLibraryPaths(QStringList(szPluginsDir));
 	//KviMessageBox::information(libraryPaths().join(";"));
 	//debug("%1",loader.isLoaded());
-#endif
 #endif
 
 	// check if we want to permanently disable the splash screen
@@ -263,11 +258,7 @@ void KviApp::setup()
 	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpNoIntl);
 	list.append(tmp);
-#ifdef COMPILE_USE_QT4
 	Q3MimeSourceFactory::defaultFactory()->setFilePath(list);
-#else
-	QMimeSourceFactory::defaultFactory()->setFilePath(list);
-#endif
 
 	KVI_SPLASH_SET_PROGRESS(1)
 
@@ -469,7 +460,6 @@ void KviApp::setup()
 
 	KviDoubleBuffer::init();
 
-#ifdef COMPILE_USE_QT4
 	QString szStylesheetFile;
 	getGlobalKvircDirectory(szStylesheetFile,Config,"style.css");
 	if(KviFileUtils::fileExists(szStylesheetFile))
@@ -480,7 +470,6 @@ void KviApp::setup()
 		szStyleData.replace("local://",m_szLocalKvircDir);
 		setStyleSheet(szStyleData);
 	}
-#endif
 
 	// create the frame window, we're almost up and running...
 	createFrame();
@@ -528,8 +517,6 @@ void KviApp::frameDestructorCallback()
 		}
 	}
 }
-
-
 
 KviApp::~KviApp()
 {
@@ -1107,12 +1094,12 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 #endif
 			rinfo.activate();
 
-		    QString name = QString("DESKTOP%1").arg(rinfo.currentDesktop());
+			QString name = QString("DESKTOP%1").arg(rinfo.currentDesktop());
 
 			g_pKdeDesktopBackground = new KSharedPixmap();
 			connect(g_pKdeDesktopBackground,SIGNAL(done(bool)),this,SLOT(kdeRootPixmapDownloadComplete(bool)));
 
-		    if(!(g_pKdeDesktopBackground->isAvailable(name)))
+			if(!(g_pKdeDesktopBackground->isAvailable(name)))
 			{
 				// Pixmap not available!!!
 				delete g_pKdeDesktopBackground;
@@ -1293,7 +1280,7 @@ void KviApp::kdeRootPixmapDownloadComplete(bool bSuccess)
 	#ifdef COMPILE_KDE_SUPPORT
 		if(!bSuccess)
 		{
-			debug("Failed to download the KDE root background image...");
+			qDebug("Failed to download the KDE root background image...");
 		} else {
 			// downloaded!
 			// create shaded copies...
@@ -1572,7 +1559,7 @@ void KviApp::autoConnectToServers()
 
 void KviApp::createFrame()
 {
-	if(g_pFrame)debug("WARNING: Creating the main frame twice!");
+	if(g_pFrame)qDebug("WARNING: Creating the main frame twice!");
 	g_pFrame = new KviFrame();
 	g_pFrame->createNewConsole(true);
 

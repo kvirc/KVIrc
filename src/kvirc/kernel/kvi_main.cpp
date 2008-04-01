@@ -38,7 +38,7 @@
 
 #include <qglobal.h> //for debug()
 
-#include <qmessagebox.h>
+#include <QMessageBox>
 
 #define KVI_ARGS_RETCODE_OK 0
 #define KVI_ARGS_RETCODE_ERROR 1
@@ -407,6 +407,6 @@ int main(int argc,char ** argv)
 	// :)
 
 	delete theApp;
-    theApp = 0;
+	theApp = 0;
 	return retVal;
 }

@@ -29,7 +29,7 @@
 #include "kvi_kvs_action.h"
 #include "kvi_pointerlist.h"
 
-#include <qtoolbutton.h>
+#include <QToolButton>
 
 class KviConnectAction : public KviAction
 {

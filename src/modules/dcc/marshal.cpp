@@ -644,4 +644,6 @@ void KviDccMarshal::connectionTimedOut()
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_marshal.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

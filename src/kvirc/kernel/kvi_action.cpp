@@ -36,10 +36,9 @@
 #include "kvi_console.h"
 #include "kvi_query.h"
 #include "kvi_styled_controls.h"
-
-#include <qtoolbutton.h>
 #include "kvi_tal_popupmenu.h"
 
+#include <QToolButton>
 
 KviAction::~KviAction()
 {
@@ -418,9 +417,8 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 			visibleName(),
 			visibleName(),
 			this,SLOT(activate()),pParentToolBar,m_szName);
-#ifdef COMPILE_USE_QT4
+
 	pParentToolBar->addWidget(b);
-#endif
 	if(!isEnabled())b->setEnabled(false);
 	registerWidget(b);
 	return b;
@@ -431,4 +429,3 @@ void KviAction::activate()
 	if(isEnabled())
 		emit activated();
 }
-

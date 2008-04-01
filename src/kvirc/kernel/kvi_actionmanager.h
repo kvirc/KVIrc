@@ -26,9 +26,9 @@
 
 #include "kvi_settings.h"
 #include "kvi_action.h"
-
-#include <qobject.h>
 #include "kvi_pointerhashtable.h"
+
+#include <QObject>
 
 class KviActionDrawer;
 class KviCustomToolBar;

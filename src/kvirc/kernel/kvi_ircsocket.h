@@ -30,7 +30,7 @@
 #include "kvi_time.h"
 #include "kvi_pointerlist.h"
 
-#include <qobject.h>
+#include <QObject>
 
 class KviIrcServer;
 class KviProxy;

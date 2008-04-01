@@ -43,79 +43,13 @@ src/kvilib/tal
 
 src/kvirc
 src/kvirc/kernel
-	kvi_action.cpp
-	kvi_action.h
-	kvi_actionmanager.cpp
-	kvi_actionmanager.h
 	kvi_app.cpp
-	kvi_app.h
-	kvi_app_fs.cpp
-	kvi_app_setup.cpp
-	kvi_asynchronousconnectiondata.cpp
-	kvi_asynchronousconnectiondata.h
-	kvi_coreactionnames.h
-	kvi_coreactions.cpp
-	kvi_coreactions.h
 	kvi_customtoolbardescriptor.cpp
 	kvi_customtoolbardescriptor.h
 	kvi_customtoolbarmanager.cpp
 	kvi_customtoolbarmanager.h
-	kvi_filetransfer.cpp
-	kvi_filetransfer.h
 	kvi_iconmanager.cpp
 	kvi_iconmanager.h
-	kvi_internalcmd.cpp
-	kvi_internalcmd.h
-	kvi_ipc.cpp
-	kvi_ipc.h
-	kvi_ircconnection.cpp
-	kvi_ircconnection.h
-	kvi_ircconnectionantictcpflooddata.cpp
-	kvi_ircconnectionantictcpflooddata.h
-	kvi_ircconnectionasyncwhoisdata.cpp
-	kvi_ircconnectionasyncwhoisdata.h
-	kvi_ircconnectionnetsplitdetectordata.cpp
-	kvi_ircconnectionnetsplitdetectordata.h
-	kvi_ircconnectionserverinfo.cpp
-	kvi_ircconnectionserverinfo.h
-	kvi_ircconnectionstatedata.cpp
-	kvi_ircconnectionstatedata.h
-	kvi_ircconnectionstatistics.cpp
-	kvi_ircconnectionstatistics.h
-	kvi_ircconnectiontarget.cpp
-	kvi_ircconnectiontarget.h
-	kvi_ircconnectiontargetresolver.cpp
-	kvi_ircconnectiontargetresolver.h
-	kvi_ircconnectionuserinfo.cpp
-	kvi_ircconnectionuserinfo.h
-	kvi_irccontext.cpp
-	kvi_irccontext.h
-	kvi_ircdatastreammonitor.cpp
-	kvi_ircdatastreammonitor.h
-	kvi_irclink.cpp
-	kvi_irclink.h
-	kvi_ircsocket.cpp
-	kvi_ircsocket.h
-	kvi_ircurl.cpp
-	kvi_ircurl.h
-	kvi_lagmeter.cpp
-	kvi_lagmeter.h
-	kvi_main.cpp
-	kvi_notifylist.cpp
-	kvi_notifylist.h
-	kvi_options.cpp
-	kvi_options.h
-	kvi_out.h
-	kvi_sslmaster.cpp
-	kvi_sslmaster.h
-	kvi_texticonmanager.cpp
-	kvi_texticonmanager.h
-	kvi_theme.cpp
-	kvi_theme.h
-	kvi_useraction.cpp
-	kvi_useraction.h
-	kvi_userinput.cpp
-	kvi_userinput.h
 src/kvirc/ui
 	kvi_actiondrawer.cpp
 	kvi_actiondrawer.h

@@ -43,11 +43,10 @@
 #include "kvi_coreactionnames.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_styled_controls.h"
-
 #include "kvi_kvs_script.h"
-
 #include "kvi_tal_popupmenu.h"
-#include <qobject.h>
+
+#include <QObject>
 
 
 // Ctrl+Alt+A : KviGoAwayAction
@@ -467,12 +466,6 @@ void KviIrcContextDisplayAction::setup()
 bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *p)
 {
 	// QT4SUX: Widgets can be no longer added to popup menus.. what about labels ?
-#ifndef COMPILE_USE_QT4
-	if(!setupDone())setup();
-	KviIrcContextDisplay * w = new KviIrcContextDisplay(p,"kvirc.irccontextdisplay");
-	registerWidget(w);
-	p->insertItem(w);
-#endif
 	return true;
 }
 
@@ -480,9 +473,7 @@ QWidget * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
 	KviIrcContextDisplay * w = new KviIrcContextDisplay(t,"kvirc.irccontextdisplay");
-#ifdef COMPILE_USE_QT4
 	t->addWidget(w);
-#endif
 	registerWidget(w);
 	return w;
 }
@@ -538,14 +529,9 @@ QWidget * KviSeparatorAction::addToCustomToolBar(KviCustomToolBar *t)
 	if(!setupDone())setup();
 	QWidget * w = new KviCustomToolBarSeparator(t,"kvirc.separator");
 	registerWidget(w);
-#ifdef COMPILE_USE_QT4
 	t->addWidget(w);
-#endif
 	return w;
 }
-
-
-
 
 
 KviConnectAction::KviConnectAction(QObject * pParent)
@@ -689,17 +675,10 @@ QWidget * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
 			m_szConnectString,
 			this,SLOT(activate()),t,name());
 	registerWidget(b);
-#ifdef COMPILE_USE_QT4
 	t->addWidget(b);
-#endif
 	activeContextStateChanged();
 	return b;
 }
-
-
-
-
-
 
 
 KviSubmenuAction::KviSubmenuAction(QObject * pParent,
@@ -766,21 +745,12 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 			this,SLOT(activate()),t,name());
 	b->setPopup(m_pPopup);
 	
-#ifdef COMPILE_USE_QT4
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
 	t->addWidget(b);
-#else
-	b->setShowSubmenuIndicator(true);
-	b->setPopupDelay(1);
-#endif
 	registerWidget(b);
 	if(!isEnabled())b->setEnabled(false);
 	return b;
 }
-
-
-
-
 
 
 KviJoinChannelAction::KviJoinChannelAction(QObject * pParent)
@@ -872,10 +842,6 @@ void KviChangeNickAction::popupActivated(int id)
 }
 
 
-
-
-
-
 KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 : KviSubmenuAction(pParent,
 	QString(KVI_COREACTION_SERVERMENU),
@@ -917,9 +883,6 @@ void KviConnectToServerAction::popupActivated(int id)
 		}
 	}
 }
-
-
-
 
 
 KviChangeUserModeAction::KviChangeUserModeAction(QObject * pParent)
@@ -1111,21 +1074,10 @@ QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 			m_szAwayString,
 			this,SLOT(activate()),t,name());
 	registerWidget(b);
-#ifdef COMPILE_USE_QT4
 	t->addWidget(b);
-#endif
 	activeContextStateChanged();
 	return b;
 }
-
-
-
-
-
-
-
-
-
 
 
 KviIrcToolsAction::KviIrcToolsAction(QObject * pParent)
@@ -1158,10 +1110,6 @@ void KviIrcToolsAction::popupAboutToShow()
 void KviIrcToolsAction::popupActivated(int id)
 {
 }
-
-
-
-
 
 
 KviIrcOperationsAction::KviIrcOperationsAction(QObject * pParent)
@@ -1200,5 +1148,3 @@ void KviIrcOperationsAction::popupAboutToShow()
 void KviIrcOperationsAction::popupActivated(int id)
 {
 }
-
-

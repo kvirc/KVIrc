@@ -27,13 +27,12 @@
 
 
 #include "kvi_settings.h"
-
-#include <qobject.h>
+#include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_pointerhashtable.h"
-#include <qtimer.h>
 
-#include "kvi_qstring.h"
+#include <QObject>
+#include <QTimer>
 
 class KviConsole;
 class KviIrcMessage;

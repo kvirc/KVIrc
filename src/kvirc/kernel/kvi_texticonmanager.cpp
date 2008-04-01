@@ -35,8 +35,8 @@
 #include "kvi_app.h"
 #include "kvi_confignames.h"
 
-#include <qpixmap.h>
-#include <qfile.h>
+#include <QPixmap>
+#include <QFile>
 
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
 
@@ -132,7 +132,7 @@ void KviTextIconManager::checkDefaultAssociations()
 		if(!m_pTextIconDict->find(default_associations[i].name))
 			insert(QString::fromUtf8(default_associations[i].name),default_associations[i].iVal);
 	}
-    emit changed();
+	emit changed();
 }
 
 // this MUST match the ConfigUpdate entry in the configuration
@@ -225,7 +225,7 @@ int KviTextIconManager::load(const QString &filename,bool bMerge)
 	}
 
 	checkDefaultAssociations();
-    emit changed();
+	emit changed();
 
 	return upd;
 }

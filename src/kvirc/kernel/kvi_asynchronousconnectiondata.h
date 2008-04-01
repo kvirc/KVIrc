@@ -47,7 +47,7 @@ public:
 	QString            szLinkFilter;
 	QString            szPass;
 	QString            szNick;
-    QString            szInitUMode;
+	QString            szInitUMode;
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
 };
 

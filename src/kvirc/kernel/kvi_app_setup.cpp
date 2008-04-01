@@ -27,16 +27,11 @@
 //#define _KVI_DEBUG_CHECK_RANGE_
 //#include "kvi_debug.h"
 
-#include <qtextcodec.h>
-
 #include "kvi_settings.h"
 #include "kvi_defaults.h"
-
 #include "kvi_window.h"
 #include "kvi_frame.h"
-
 #include "kvi_app.h"
-
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_msgbox.h"
@@ -62,11 +57,10 @@
 
 #endif //COMPILE_ON_WINDOWS
 
-#include <qfile.h>
-#include <qtextstream.h>
-#include <qdir.h>
-
-
+#include <QTextCodec>
+#include <QFile>
+#include <QTextStream>
+#include <QDir>
 
 
 //
@@ -626,18 +620,18 @@ void KviApp::findGlobalKvircDirectory()
 				"shipped with the kvirc source dirstribution.\n"\
 				"Trying to run anyway...");
 	#elif defined(Q_OS_MACX)
-		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 				"The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"\
 				"Something went wrong during the bundle creation.\n"\
 				"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"\
 				"Trying to run anyway...\n");
 	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(Q_OS_MACX)
-		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
+		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 				"The usual path for this directory is /usr/local/share/kvirc.\n"\
 				"Are you sure that 'make install' worked correctly ?\n"\
 				"Please make sure that you have the read permission to that directory.\n"\
 				"You may also need to rerun 'make install'.\n"\
-				"A detailed explaination of the Kvirc directory system is in the INSTALL document\n"\
+				"A detailed explaination of the KVIrc directory system is in the INSTALL document\n"\
 				"shipped with the kvirc source dirstribution.\n"\
 				"Trying to run anyway...\n");
 	#endif //!Q_OS_MACX

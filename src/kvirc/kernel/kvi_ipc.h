@@ -31,18 +31,14 @@
 
 	#include "kvi_string.h"
 
-	#include <qwidget.h>
+	#include <QWidget>
 
 #ifdef COMPILE_ON_WINDOWS
  #include <winsock2.h>
 	#include <windows.h>
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_X11_SUPPORT
-		#ifdef COMPILE_USE_QT4
-			// We need this to be included BEFORE X11/Xlib.h
-			// because of preprocessor constant collisions...
-			#include <qcoreevent.h>
-		#endif
+		#include <qcoreevent.h>
 		#include "kvi_xlib.h" // for XEvent
 	#endif //!COMPILE_X11_SUPPORT
 #endif //!COMPILE_ON_WINDOWS

@@ -917,4 +917,6 @@ KVIRC_MODULE(
 	dialog_module_cleanup
 )
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvidialog.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

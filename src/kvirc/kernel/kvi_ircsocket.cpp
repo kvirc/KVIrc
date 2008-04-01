@@ -47,8 +47,8 @@
 	#include "kvi_sslmaster.h"
 #endif
 
-#include <qtimer.h>
-#include <qsocketnotifier.h>
+#include <QTimer>
+#include <QSocketNotifier>
 
 #ifndef COMPILE_ON_WINDOWS
 	#include <unistd.h> //for gettimeofday()
@@ -442,7 +442,7 @@ void KviIrcSocket::connectionEstabilished()
 
 void KviIrcSocket::connectedToProxy()
 {
-	if(!m_pProxy)debug("WARNING: connectedToProxy() without a m_pProxy!");
+	if(!m_pProxy)qDebug("WARNING: connectedToProxy() without a m_pProxy!");
 
 	// FIXME: Do we want to support SSL proxies ?
 	//        it would be just a matter of SSL handshaking
@@ -1254,7 +1254,7 @@ void KviIrcSocket::doSSLHandshake(int)
 
 	if(!m_pSSL)
 	{
-		debug("Ops... I've lost the SSL class ?");
+		qDebug("Ops... I've lost the SSL class ?");
 		reset();
 		return; // ops ?
 	}
@@ -1311,7 +1311,7 @@ void KviIrcSocket::doSSLHandshake(int)
 	}
 
 #else  //!COMPILE_SSL_SUPPORT
-	debug("Ops.. ssl handshake without ssl support!...aborting!");
+	qDebug("Ops.. ssl handshake without ssl support!...aborting!");
 	exit(-1);
 #endif //!COMPILE_SSL_SUPPORT
 }

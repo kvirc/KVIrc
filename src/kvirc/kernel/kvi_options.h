@@ -30,11 +30,11 @@
 #include "kvi_pixmap.h"
 #include "kvi_msgtype.h"
 
-#include <qrect.h>
-#include <qpixmap.h>
-#include <qcolor.h>
-#include <qfont.h>
-#include <qstringlist.h>
+#include <QRect>
+#include <QPixmap>
+#include <QColor>
+#include <QFont>
+#include <QStringList>
 
 // option structures
 

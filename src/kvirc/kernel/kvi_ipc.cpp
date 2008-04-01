@@ -54,14 +54,10 @@
 		#include <unistd.h>    // for getuid
 		#include <sys/types.h> // for getuid
 
-		#ifdef COMPILE_USE_QT4
-			#include <qx11info_x11.h>
-			#define kvi_ipc_get_xdisplay QX11Info::display
-			#define kvi_ipc_get_xrootwin QX11Info::appRootWindow
-		#else
-			#define kvi_ipc_get_xdisplay qt_xdisplay
-			#define kvi_ipc_get_xrootwin qt_xrootwin
-		#endif
+		//#include <qx11info_x11.h>
+		#include <QX11Info>
+		#define kvi_ipc_get_xdisplay QX11Info::display
+		#define kvi_ipc_get_xrootwin QX11Info::appRootWindow
 
 		static Atom kvi_atom_ipc_sentinel_window;
 		static Atom kvi_atom_ipc_remote_command;

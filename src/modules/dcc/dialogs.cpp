@@ -203,4 +203,6 @@ void KviDccRenameBox::cancelClicked()
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_dialogs.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

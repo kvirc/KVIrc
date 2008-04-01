@@ -30,7 +30,7 @@
 class KviIrcServer;
 class KviConsole;
 
-#include <qstringlist.h>
+#include <QStringList>
 
 // Create /server -u <server> commands (first free context)
 #define KVI_IRCURL_CONTEXT_FIRSTFREE 0

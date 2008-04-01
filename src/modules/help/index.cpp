@@ -850,5 +850,6 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 }
 
 
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "index.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

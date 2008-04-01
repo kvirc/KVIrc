@@ -35,9 +35,9 @@
 #include "kvi_defaults.h"
 #include "kvi_iconmanager.h"
 
-#include <qdir.h>
-#include <qfileinfo.h>
-#include <qdatetime.h>
+#include <QDir>
+#include <QFileInfo>
+#include <QDateTime>
 
 extern KviMediaManager * g_pMediaManager;
 

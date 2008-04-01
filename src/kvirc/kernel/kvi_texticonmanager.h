@@ -26,10 +26,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-#include <qpixmap.h>
 #include "kvi_pointerhashtable.h"
 
+#include <QPixmap>
 
 class KVIRC_API KviTextIcon
 {

@@ -1894,5 +1894,6 @@ void KviDccFileTransferBandwidthDialog::closeEvent(QCloseEvent * e)
 
 
 
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_send.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

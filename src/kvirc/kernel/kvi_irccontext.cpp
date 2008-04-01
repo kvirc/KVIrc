@@ -56,7 +56,7 @@
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
-#include <qtimer.h>
+#include <QTimer>
 
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;

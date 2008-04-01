@@ -29,13 +29,11 @@
 #include "kvi_string.h"
 #include "kvi_avatar.h"
 #include "kvi_time.h"
-
-#include <qpixmap.h>
-#include <qobject.h>
-#include <qwidget.h>
 #include "kvi_pointerhashtable.h"
 
-
+#include <QPixmap>
+#include <QObject>
+#include <QWidget>
 
 #define KVI_SMALLICON_NONE 0
 #define KVI_SMALLICON_CLOSE 1

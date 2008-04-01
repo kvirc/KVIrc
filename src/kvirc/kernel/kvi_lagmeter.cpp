@@ -66,9 +66,6 @@ KviLagMeter::KviLagMeter(KviIrcConnection * c)
 KviLagMeter::~KviLagMeter()
 {
 	if(m_pDeletionSignal)*m_pDeletionSignal = true;
-#ifndef COMPILE_USE_QT4
-	killTimers();
-#endif
 	delete m_pCheckList;
 }
 

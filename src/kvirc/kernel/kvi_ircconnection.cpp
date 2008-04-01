@@ -66,8 +66,8 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_useridentity.h"
 
-#include <qtimer.h>
-#include <qtextcodec.h>
+#include <QTimer>
+#include <QTextCodec>
 
 extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
@@ -186,7 +186,7 @@ void KviIrcConnection::setupTextCodec()
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
 		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->encoding().latin1());
-		if(!m_pTextCodec)debug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().utf8().data());
+		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().utf8().data());
 	}
 	if(!m_pTextCodec)
 	{
@@ -194,7 +194,7 @@ void KviIrcConnection::setupTextCodec()
 		if(!m_pTarget->network()->encoding().isEmpty())
 		{
 			m_pTextCodec = KviLocale::codecForName(m_pTarget->network()->encoding().latin1());
-			if(!m_pTextCodec)debug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().utf8().data());
+			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().utf8().data());
 		}
 	}
 	if(!m_pTextCodec)
@@ -832,7 +832,7 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *pDns)
 	//
 	if(!m_pLocalhostDns)
 	{
-		debug("Something weird is happening: pDns != 0 but m_pLocalhostDns == 0 :/");
+		qDebug("Something weird is happening: pDns != 0 but m_pLocalhostDns == 0 :/");
 		return;
 	}
 

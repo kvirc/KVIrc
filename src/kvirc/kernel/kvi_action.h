@@ -27,8 +27,8 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 
-#include <qobject.h>
-#include <qstring.h>
+#include <QObject>
+#include <QString>
 
 // The action name is INTERNAL: it should be never shown to the user
 // if it contains a dot then the part before the dot is considered to

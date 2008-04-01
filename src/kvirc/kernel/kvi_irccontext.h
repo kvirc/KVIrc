@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
-#include <qobject.h>
+#include <QObject>
 
 class KviChannel;
 class KviQuery;

@@ -58,32 +58,30 @@
 #include "kvi_sparser.h"
 #include "kvi_modew.h"
 #include "kvi_mirccntrl.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_kvs_script.h"
+#include "kvi_kvs_eventtriggers.h"
+#include "kvi_tal_popupmenu.h"
+#include "kvi_tal_widgetstack.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
-#include "kvi_kvs_script.h"
-#include "kvi_kvs_eventtriggers.h"
-
 #include <time.h>
 
-#include <qsplitter.h>
-#include <qtoolbutton.h>
-#include <qlabel.h>
-#include <qevent.h>
-
-#include <qpalette.h>
-#include "kvi_tal_popupmenu.h"
-#include "kvi_pointerhashtable.h"
-#include <qmessagebox.h>
-#include "kvi_tal_widgetstack.h"
+#include <QSplitter>
+#include <QToolButton>
+#include <QLabel>
+#include <QEvent>
+#include <QPalette>
+#include <QMessageBox>
+#include <QCloseEvent>
 
 #ifndef AVERAGE_CHANNEL_USERS
 	#define AVERAGE_CHANNEL_USERS 101
 #endif
-
 
 
 // FIXME: #warning "+a Anonymous channel mode!"
@@ -138,11 +136,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 
 	// Central splitter
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
-	#ifdef COMPILE_USE_QT4
-		m_pSplitter->setObjectName(name);
-	#else
-		m_pSplitter->setName(name);
-	#endif
+	m_pSplitter->setObjectName(name);
 	m_pSplitter->setOpaqueResize(false);
 	// Spitted vertially on the left
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
@@ -200,7 +194,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
 	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,
-								AVERAGE_CHANNEL_USERS,__tr2qs("User List"),"user_list_view");
+		AVERAGE_CHANNEL_USERS,__tr2qs("User List"),"user_list_view");
 //	m_pEditorsContainer->addWidget(m_pUserListView);
 //	m_pEditorsContainer->raiseWidget(m_pUserListView);
 	// And finally the input line on the bottom
@@ -297,15 +291,11 @@ void KviChannel::saveProperties(KviConfig *cfg)
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
-#ifdef COMPILE_USE_QT4
 	QList<int> tmp = m_pVertSplitter->sizes();
 	KviValueList<int> tmp2;
 	for(QList<int>::Iterator it = tmp.begin();it != tmp.end();++it)
 		tmp2.append(*it);
 	cfg->writeEntry("VertSplitter",m_pMessageView ? tmp2 : m_VertSplitterSizesList);
-#else
-	cfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
-#endif
 	cfg->writeEntry("PrivateBackground",m_privateBackground);
 	cfg->writeEntry("DoubleView",m_pMessageView ? true : false);
 	if(m_pUserListView)
@@ -541,19 +531,11 @@ QPixmap * KviChannel::myIconPtr()
 
 void KviChannel::resizeEvent(QResizeEvent *e)
 {
-#ifdef COMPILE_USE_QT4
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pTopicWidget->sizeHint().height();
 	m_pButtonBox->setGeometry(0,0,width(),hght2);
 	m_pSplitter->setGeometry(0,hght2,width(),height() - (hght + hght2));
 	m_pInput->setGeometry(0,height() - hght,width(),hght);
-#else
-	int hght = m_pInput->heightHint();
-	int hght2 = m_pButtonBox->sizeHint().height();
-	m_pButtonBox->setGeometry(0,0,width(),hght2);
-	m_pSplitter->setGeometry(0,hght2,width(),height() - (hght + hght2));
-	m_pInput->setGeometry(0,height() - hght,width(),hght);
-#endif
 }
 
 QSize KviChannel::sizeHint() const

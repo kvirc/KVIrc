@@ -839,4 +839,6 @@ out_of_the_loop:
 	return bRet;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_chat.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

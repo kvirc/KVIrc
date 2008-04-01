@@ -215,7 +215,7 @@ void KviCustomToolBarManager::save(const QString &szFileName)
 // THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
 #ifdef SCRIPTTOOLBAR_COMPAT
 
-#include <qdir.h>
+#include <QDir>
 void KviCustomToolBarManager::loadScripttoolbarsCompat(const QString &szFileName)
 {
 	KviConfig cfg(szFileName,KviConfig::Read);

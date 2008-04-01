@@ -280,10 +280,10 @@ public:
 	bool hasChannelKey() { return !m_szChannelKey.isEmpty(); };
 	QString & channelKey(){ return m_szChannelKey; };
 
-    void addHighlightedUser(const char * nick);
-    void removeHighlightedUser(const char * nick);
-    bool isHighlightedUser(const char * nick) { return m_pTmpHighLighted->find(nick); };
-    KviIrcView * messageView() const { return m_pMessageView; };
+	void addHighlightedUser(const char * nick);
+	void removeHighlightedUser(const char * nick);
+	bool isHighlightedUser(const char * nick) { return m_pTmpHighLighted->find(nick); };
+	KviIrcView * messageView() const { return m_pMessageView; };
 	virtual void lostUserFocus();
 	virtual void getTaskBarTipText(QString &buffer);
 	QString channelMode() { return m_szChannelMode; };

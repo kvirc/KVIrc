@@ -765,4 +765,6 @@ void KviFileTransferWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_filetransferwindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

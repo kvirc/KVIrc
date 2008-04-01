@@ -50,7 +50,7 @@
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
-#include <qtimer.h>
+#include <QTimer>
 
 extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
