@@ -37,7 +37,7 @@
  #include <winsock2.h>
 	#include <windows.h>
 #else //!COMPILE_ON_WINDOWS
-	#ifndef COMPILE_NO_X
+	#ifdef COMPILE_X11_SUPPORT
 		#ifdef COMPILE_USE_QT4
 			// We need this to be included BEFORE X11/Xlib.h
 			// because of preprocessor constant collisions...
@@ -46,12 +46,12 @@
 		#include "kvi_xlib.h" // for XEvent
 	#endif //!COMPILE_NO_X
 #endif //!COMPILE_ON_WINDOWS
-		
+
 	//////////////////////////////////////////////////////////////////////
 	// class KviIpcSentinel
 	//
 	//////////////////////////////////////////////////////////////////////
-		
+
 	class KVIRC_API KviIpcSentinel : public QWidget
 	{
 		Q_OBJECT
