@@ -30,12 +30,11 @@
 #include "kvi_ircsocket.h"
 #include "kvi_string.h"
 #include "kvi_irccontext.h"
-
 #include "kvi_pointerlist.h"
 
 #include <time.h>
-#include <qcombobox.h>
 
+#include <QComboBox>
 
 class QToolBar;
 class QToolButton;

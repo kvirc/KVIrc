@@ -31,18 +31,17 @@
 // Qt4 moc bails out on this ??????
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
-	#include <qwidget.h>
-	#include "kvi_tal_listbox.h"
-	#include <qpushbutton.h>
-	#include <qcheckbox.h>
-	#include <qlabel.h>
-	#include <qlineedit.h>
 	#include "kvi_styled_controls.h"
-	
 	#include "kvi_crypt.h"
 	#include "kvi_heapobject.h"
 	#include "kvi_toolwindows_container.h"
-	
+	#include "kvi_tal_listbox.h"
+
+	#include <QWidget>
+	#include <QPushButton>
+	#include <QCheckBox>
+	#include <QLabel>
+	#include <QLineEdit>
 	class KviWindow;
 
 	class KVIRC_API KviCryptSessionInfo : public KviHeapObject

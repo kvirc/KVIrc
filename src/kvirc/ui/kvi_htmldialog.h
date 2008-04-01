@@ -27,9 +27,8 @@
 #include "kvi_qstring.h"
 #include "kvi_settings.h"
 
-
-#include <qpixmap.h>
-#include <qdialog.h>
+#include <QPixmap>
+#include <QDialog>
 
 class KviHtmlDialogData
 {

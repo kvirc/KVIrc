@@ -32,9 +32,9 @@
 #include "kvi_toolwindows_container.h"
 #include "kvi_channel.h"
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qvalidator.h> 
+#include <QLayout>
+#include <QLabel>
+#include <QValidator>
 
 KviMaskItem::KviMaskItem(KviTalListView* parent,KviMaskEntry* entry)
 :KviTalListViewItem(parent), m_Mask(*entry)
@@ -49,11 +49,8 @@ KviMaskItem::KviMaskItem(KviTalListView* parent,KviMaskEntry* entry)
 KviMaskItem::~KviMaskItem()
 {
 }
-#ifdef COMPILE_USE_QT4
+
 int KviMaskItem::compare ( KviTalListViewItem * i, int col, bool ascending ) const
-#else
-int KviMaskItem::compare ( QListViewItem * i, int col, bool ascending ) const
-#endif
 {
 	if(col==2)
 	{
@@ -140,11 +137,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	w = w->parent();
 	}
 
-#ifdef COMPILE_USE_QT4
 	setFocusPolicy(Qt::ClickFocus);
-#else
-	setFocusPolicy(QWidget::ClickFocus);
-#endif
 
 	QGridLayout *g = new QGridLayout(this,4,2,2,2);
 
@@ -190,11 +183,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	g->addMultiCellWidget(l,2,2,0,1);
 	
 	m_pMaskBox = new KviTalListView(this);
-#ifdef COMPILE_USE_QT4
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
-#else
-	m_pMaskBox->setFocusPolicy(QWidget::ClickFocus);
-#endif
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pMaskBox->addColumn(__tr2qs("Mask"));
@@ -209,11 +198,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 	m_pRemoveMask->setEnabled(isEnabled);
-#ifdef COMPILE_USE_QT4
 	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
-#else
-	m_pRemoveMask->setFocusPolicy(QWidget::ClickFocus);
-#endif
 	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
@@ -221,11 +206,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	
 	m_pAddButton = new QPushButton(__tr2qs("Add"),this);
 	m_pAddButton->setEnabled(isEnabled);
-#ifdef COMPILE_USE_QT4
 	m_pAddButton->setFocusPolicy(Qt::ClickFocus);
-#else
-	m_pAddButton->setFocusPolicy(QWidget::ClickFocus);
-#endif
 	m_pAddButton->setFocusProxy(this);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));

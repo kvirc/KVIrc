@@ -27,18 +27,15 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
-#include <qframe.h>
-#include <qtoolbutton.h>
-#include <qlabel.h>
-
+#include <QFrame>
+#include <QToolButton>
+#include <QLabel>
 
 class KviMdiManager;
 class KviMdiChild;
 class KviMdiCaption;
 
 class QCursor;
-
-
 
 class KVIRC_API KviMdiChild : public QFrame
 {
@@ -93,11 +90,7 @@ public slots:
 signals:
 	void systemPopupRequest(const QPoint & pnt);
 protected:
-#ifdef COMPILE_USE_QT4
 	virtual void setBackgroundRole(QPalette::ColorRole);
-#else
-	virtual void setBackgroundMode(QWidget::BackgroundMode bgmd);
-#endif
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void mouseMoveEvent(QMouseEvent *e);

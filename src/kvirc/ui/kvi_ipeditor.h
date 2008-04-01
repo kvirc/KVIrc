@@ -25,9 +25,9 @@
 
 #include "kvi_settings.h"
 
-#include <qwidget.h>
-#include <qstring.h>
-#include <qframe.h>
+#include <QWidget>
+#include <QString>
+#include <QFrame>
 
 class QLineEdit;
 class QLabel;

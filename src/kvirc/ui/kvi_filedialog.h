@@ -28,11 +28,9 @@
 #endif
 #include "kvi_settings.h"
 #include "kvi_string.h"
-
-
 #include "kvi_tal_filedialog.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 
 class KVIRC_API KviFileDialog : public KviTalFileDialog

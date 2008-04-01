@@ -25,7 +25,8 @@
 
 #include "kvi_settings.h"
 #include "kvi_tal_tooltip.h"
-#include <qobject.h>
+
+#include <QObject>
 
 class KviDynamicToolTip;
 

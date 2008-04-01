@@ -27,13 +27,12 @@
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
-
-#include <qwidget.h>
-#include <qframe.h>
-#include <qpixmap.h>
-#include <qtoolbutton.h>
-
 #include "kvi_tal_scrollview.h"
+
+#include <QWidget>
+#include <QFrame>
+#include <QPixmap>
+#include <QToolButton>
 
 #define KVI_MDICHILD_BORDER 4
 #define KVI_MDICHILD_SPACING 2
@@ -46,9 +45,9 @@
 #else
 	class KviMdiChild;
 #endif
+
 //class KviMdiCaptionButton;
 class KviFrame;
-
 class KviTalPopupMenu;
 class KviTalHBox;
 class KviSdiButtonBox;
@@ -81,9 +80,7 @@ protected:
 	KviMenuBarToolButton     * m_pSdiCloseButton;
 	KviMenuBarToolButton     * m_pSdiIconButton;
 
-#ifdef COMPILE_USE_QT4
 	KviTalHBox               * m_pSdiControls;
-#endif
 	int                        m_iSdiIconItemId;
 	int                        m_iSdiRestoreItemId;
 	int                        m_iSdiMinimizeItemId;
@@ -111,7 +108,7 @@ public slots:
 	void expandVertical();
 	void expandHorizontal();
 	void minimizeAll();
-//    void restoreAll(); <-- this does nothing
+	// void restoreAll(); <-- this does nothing
 	void tile();
 	void toggleAutoTile();
 

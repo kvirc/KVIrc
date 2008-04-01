@@ -23,13 +23,14 @@
 #include "kvi_ipeditor.h"
 #include "kvi_qcstring.h"
 
-#include <qapplication.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qframe.h>
-#include <ctype.h>
-#include <qevent.h>
+#include <QApplication>
+#include <QLineEdit>
+#include <QLabel>
+#include <QFrame>
+#include <QEvent>
+#include <QKeyEvent>
 
+#include <ctype.h>
 
 // FIXME: #warning "THIS COULD GO INTO libkvioptions ?"
 
@@ -44,15 +45,8 @@ KviIpEditor::KviIpEditor(QWidget * parent,AddressType addrType,const QString &ip
 	}
 	m_pEdit[7] = 0;
 	setFrameStyle(QFrame::Sunken|QFrame::StyledPanel);
-
-#ifdef COMPILE_USE_QT4
 	setBackgroundRole(QPalette::Base);
-#else
-	setBackgroundMode(QWidget::PaletteBase);
-#endif
-
 	setAddressType(addrType);
-
 	setAddress(ipAddr);
 }
 
@@ -70,19 +64,11 @@ void KviIpEditor::setEnabled(bool bEnabled)
 		if(i<7)if(m_pLabel[i])
 		{
 			// Is this the right way ?
-#ifdef COMPILE_USE_QT4
 			m_pLabel[i]->setBackgroundRole(isEnabled() ? QPalette::Base : QPalette::Background);
-#else
-			m_pLabel[i]->setBackgroundMode(isEnabled() ? QWidget::PaletteBase : QWidget::PaletteBackground);
-#endif
 			m_pLabel[i]->setEnabled(bEnabled);
 		}
 	}
-#ifdef COMPILE_USE_QT4
 	setBackgroundRole(isEnabled() ? QPalette::Base : QPalette::Background);
-#else
-	setBackgroundMode(isEnabled() ? QWidget::PaletteBase : QWidget::PaletteBackground);
-#endif
 }
 
 void KviIpEditor::setAddressType(AddressType addrType)
@@ -123,7 +109,7 @@ void KviIpEditor::clear()
 bool KviIpEditor::setAddress(const QString &ipAddr)
 {
 	// FIXME We could check if the addres
-    //       is valid before effectively setting the fields
+	//       is valid before effectively setting the fields
 	clear();
 
 	KviQCString ip = ipAddr.ascii(); // ip addresses are digits & latin letters abcdef (IpV6)
@@ -219,11 +205,7 @@ void KviIpEditor::recreateChildren()
 			m_pLabel[i]->setText(bIpV4 ? "." : ":");
 			m_pLabel[i]->show();
 			// Is this the right way ? setBackgroundMode seems to not work well
-#ifdef COMPILE_USE_QT4
 			m_pLabel[i]->setBackgroundRole(isEnabled() ? QPalette::Base : QPalette::Background);
-#else
-			m_pLabel[i]->setBackgroundMode(isEnabled() ? QWidget::PaletteBase : QWidget::PaletteBackground);
-#endif
 		}
 	}
 	// Kill the unused widgets , if any
@@ -309,11 +291,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 					{
 						if((c >= '0') && (c <= '9'))
 						{
-#if QT_VERSION >= 300
 							if(m_pEdit[edIdx]->hasSelectedText())m_pEdit[edIdx]->cut();
-#else
-							if(m_pEdit[edIdx]->hasMarkedText())m_pEdit[edIdx]->cut();
-#endif
 							cursorPos = m_pEdit[edIdx]->cursorPosition();
 							s = m_pEdit[edIdx]->text();
 							s.insert(cursorPos,c);
@@ -333,19 +311,11 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 									return true;
 								}
 							}
-#if QT_VERSION >= 300
 							m_pEdit[edIdx]->cursorForward(false);
-#else
-							m_pEdit[edIdx]->cursorRight(false);
-#endif
 						} else {
 							if((c == '.') && (edIdx < edMax))
 							{
-#if QT_VERSION >= 300
 								if(!m_pEdit[edIdx]->hasSelectedText())
-#else
-								if(!m_pEdit[edIdx]->hasMarkedText())
-#endif
 								{
 									m_pEdit[++edIdx]->setFocus();
 									m_pEdit[edIdx]->selectAll();
@@ -355,11 +325,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 					} else {
 						if(  ((c >= '0') && (c <= '9')) || ((c >= 'a') && (c <= 'f')) )
 						{
-#if QT_VERSION >= 300
 							if(m_pEdit[edIdx]->hasSelectedText())m_pEdit[edIdx]->cut();
-#else
-							if(m_pEdit[edIdx]->hasMarkedText())m_pEdit[edIdx]->cut();
-#endif
 							cursorPos = m_pEdit[edIdx]->cursorPosition();
 							s = m_pEdit[edIdx]->text();
 
@@ -384,21 +350,13 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 									m_pEdit[edIdx]->selectAll();
 									//m_pEdit[edIdx]->setCursorPosition(0);
 								} else {
-#if QT_VERSION >= 300
 									m_pEdit[edIdx]->cursorForward(false);
-#else
-									m_pEdit[edIdx]->cursorRight(false);
-#endif
 								}
 							}
 						} else {
 							if((c == ':') && (edIdx < edMax))
 							{
-#if QT_VERSION >= 300
 								if(!m_pEdit[edIdx]->hasSelectedText())
-#else
-								if(!m_pEdit[edIdx]->hasMarkedText())
-#endif
 								{
 									m_pEdit[++edIdx]->setFocus();
 									m_pEdit[edIdx]->selectAll();

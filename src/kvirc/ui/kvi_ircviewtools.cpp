@@ -35,22 +35,21 @@
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
 #include "kvi_memmove.h"
-
-#include <qtoolbutton.h>
-#include <qtabwidget.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-#else
-	#include <qheader.h>
-#endif
-#include <qlineedit.h>
-#include <qcursor.h>
 #include "kvi_accel.h"
-#include <qevent.h>
+
+#include <QToolButton>
+#include <QTabWidget>
+#include <QLayout>
+#include <QLabel>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QCursor>
+#include <QEvent>
+#include <QMouseEvent>
+
+// FIXME: Qt4 #include <QHeaderView>
+#include <q3header.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -277,12 +276,18 @@ void KviIrcViewToolWidget::filterSave()
 
 void KviIrcViewToolWidget::forceRepaint()
 {
-	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
+	/*
+	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS)
 		m_pIrcView->repaint();
 	#else
 		m_pIrcView->paintEvent(0);
 	#endif
-
+	*/
+	#ifdef COMPILE_ON_WINDOWS
+		m_pIrcView->repaint();
+	#else
+		m_pIrcView->paintEvent(0);
+	#endif
 }
 
 void KviIrcViewToolWidget::setFindResult(const QString & text)
@@ -345,4 +350,3 @@ void KviIrcViewToolTip::maybeTip(const QPoint &pnt)
 {
 	m_pView->maybeTip(pnt);
 }
-

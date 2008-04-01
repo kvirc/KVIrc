@@ -36,9 +36,9 @@
 #include "kvi_frame.h"
 #include "kvi_valuelist.h"
 
-#include <qpixmap.h>
-#include <qsplitter.h>
-#include <qtoolbutton.h>
+#include <QPixmap>
+#include <QSplitter>
+#include <QToolButton>
 
 KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 
@@ -67,8 +67,6 @@ KviDebugWindow * KviDebugWindow::getInstance()
 		m_pInstance->minimize();
 	return m_pInstance;
 }
-
-
 
 void KviDebugWindow::getBaseLogFileName(QString &buffer)
 {
@@ -129,4 +127,3 @@ QSize KviDebugWindow::sizeHint() const
 	QSize ret(m_pSplitter->sizeHint().width(),m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 	return ret;
 }
-

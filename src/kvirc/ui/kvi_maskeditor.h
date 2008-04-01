@@ -24,15 +24,15 @@
 //
 
 #include "kvi_settings.h"
-#include <qdialog.h> 
-#include <qlineedit.h> 
-#include <qwidget.h>
-#include "kvi_tal_listview.h"
-#include <qpushbutton.h>
 #include "kvi_pointerlist.h"
-
 #include "kvi_string.h"
 #include "kvi_toolwindows_container.h"
+#include "kvi_tal_listview.h"
+
+#include <QPushButton>
+#include <QDialog>
+#include <QLineEdit>
+#include <QWidget>
 
 class KviMaskEditor;
 class KviChannel;
@@ -51,11 +51,7 @@ public:
 	~KviMaskItem();
 	
 	KviMaskEntry* mask() { return &m_Mask; };
-#ifdef COMPILE_USE_QT4
 	virtual int compare ( KviTalListViewItem * i, int col, bool ascending ) const;
-#else
-	virtual int compare ( QListViewItem * i, int col, bool ascending ) const;
-#endif
 protected:
 	KviMaskEntry m_Mask;
 	

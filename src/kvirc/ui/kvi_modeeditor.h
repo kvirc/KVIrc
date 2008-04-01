@@ -24,17 +24,16 @@
 //
 
 #include "kvi_settings.h"
-
-#include <qwidget.h>
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_styled_controls.h"
 #include "kvi_toolwindows_container.h"
+
+#include <QWidget>
+#include <QPushButton>
+#include <QCheckBox>
+#include <QLineEdit>
+#include <QLabel>
 
 class KviConsole;
 

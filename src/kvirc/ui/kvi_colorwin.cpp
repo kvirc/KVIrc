@@ -28,21 +28,15 @@
 #include "kvi_app.h"
 #include "kvi_options.h"
 
-
-#include <qnamespace.h>
-#include <qpainter.h>
-#include <qstring.h>
-#include <qevent.h>
-
+#include <QPainter>
+#include <QString>
+#include <QEvent>
+#include <QMouseEvent>
 
 KviColorWindow::KviColorWindow()
 :QWidget(0,"toplevel_color_window",Qt::WType_Popup)
 {
-#ifdef COMPILE_USE_QT4
 	setFocusPolicy(Qt::NoFocus);
-#else
-	setFocusPolicy(QWidget::NoFocus);
-#endif
 	setBackgroundMode(Qt::NoBackground);
 	setFixedSize(146,38);
 	m_pOwner = 0;

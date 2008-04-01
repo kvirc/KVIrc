@@ -23,7 +23,7 @@
 //
 #include "kvi_settings.h"
 
-#include <qwidget.h>
+#include <QWidget>
 
 class KVIRC_API KviColorWindow : public QWidget
 {

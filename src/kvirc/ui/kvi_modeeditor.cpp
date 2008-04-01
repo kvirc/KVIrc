@@ -33,8 +33,8 @@
 #include "kvi_toolwindows_container.h"
 #include "kvi_tal_scrollview.h"
 
-#include <qlayout.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 
 
 //////////////////////////////////////////////////////////////////////
@@ -68,19 +68,10 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	
 	QGridLayout *pMasterLayout = new QGridLayout(this,2,1,2,2);
 
-#ifdef COMPILE_USE_QT4
 	setFocusPolicy(Qt::ClickFocus);
-#else
-	setFocusPolicy(QWidget::ClickFocus);
-#endif
 	
 	KviTalScrollView *pScrollView = new KviTalScrollView(this);
-#ifdef COMPILE_USE_QT4
 	pScrollView->viewport()->setBackgroundRole(QPalette::Background);
-#else
-	pScrollView->viewport()->setBackgroundMode(QWidget::PaletteBackground);
-#endif
-	
 	pMasterLayout->addWidget(pScrollView,0,0);
 
 	pMasterLayout->setRowStretch(1,1);

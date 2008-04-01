@@ -73,26 +73,24 @@
 #include "kvi_ircdatastreammonitor.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_msgbox.h"
+#include "kvi_kvs_script.h"
+#include "kvi_kvs_eventtriggers.h"
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_popupmenu.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
 #endif
 
-#include "kvi_kvs_script.h"
-#include "kvi_kvs_eventtriggers.h"
+#include <QSplitter>
+#include <QToolBar>
+#include <QToolButton>
+#include <QTimer>
+#include <QMessageBox>
+#include <QStringList>
 
-#include <qsplitter.h>
-#include <qtoolbar.h>
-#include <qtoolbutton.h>
-#include <qtimer.h>
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_popupmenu.h"
-#include <qmessagebox.h>
-#include <qstringlist.h>
-
-#ifdef COMPILE_USE_QT4
-	#include <q3mimefactory.h>
-#endif
+// FIXME: Qt4 #include <QMimeData>
+#include <q3mimefactory.h>
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"

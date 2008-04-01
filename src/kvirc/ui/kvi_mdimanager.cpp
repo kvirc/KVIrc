@@ -35,26 +35,22 @@
 #include "kvi_menubar.h"
 #include "kvi_mdicaption.h"
 #include "kvi_app.h"
-
 #include "kvi_tal_popupmenu.h"
-#include <qmenubar.h>
-#include <qlayout.h>
-#include <qpainter.h>
-#include <math.h>
-#include <qcursor.h>
-#include <qdrawutil.h>
-#include <qevent.h>
+#include "kvi_tal_hbox.h"
 
-#ifdef COMPILE_USE_QT4
-	#include "kvi_tal_hbox.h"
-#endif
+#include <QMenuBar>
+#include <QLayout>
+#include <QPainter>
+#include <QCursor>
+#include <QEvent>
+#include <QMouseEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#include <qpixmap.h>
+	#include <QPixmap>
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 #endif
 
-
+#include <math.h>
 
 
 KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
@@ -74,9 +70,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	m_pSdiCloseButton = 0;
 	m_pSdiRestoreButton = 0;
 	m_pSdiMinimizeButton = 0;
-#ifdef COMPILE_USE_QT4
 	m_pSdiControls = 0;
-#endif
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
@@ -84,22 +78,12 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
-#ifdef COMPILE_USE_QT4
 	viewport()->setAutoFillBackground(false);
-#else
-	viewport()->setBackgroundMode(QWidget::NoBackground);
-#endif
 	setStaticBackground(true);
 	resizeContents(width(),height());
 
-#ifdef COMPILE_USE_QT4
 	setFocusPolicy(Qt::NoFocus);
 	viewport()->setFocusPolicy(Qt::NoFocus);
-#else
-	setFocusPolicy(QWidget::NoFocus);
-	viewport()->setFocusPolicy(QWidget::NoFocus);
-#endif
-	
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
 
@@ -514,14 +498,10 @@ void KviMdiManager::updateSDIMode()
 	{
 		m_pSdiIconButton = new KviMenuBarToolButton(b,*pix,"nonne");
 		connect(m_pSdiIconButton,SIGNAL(clicked()),this,SLOT(activeChildSystemPopup()));
-#ifdef COMPILE_USE_QT4
 		// This is an obscure, undocumented and internal function in QT4 QMenuBar
 		// I won't be surprised if this disappears....
 		b->setCornerWidget(m_pSdiIconButton,Qt::TopLeftCorner);
 		m_pSdiIconButton->show();
-#else
-		m_iSdiIconItemId = b->insertItem(m_pSdiIconButton,-1,0);
-#endif
 		connect(m_pSdiIconButton,SIGNAL(destroyed()),this,SLOT(sdiIconButtonDestroyed()));
 	} else {
 		m_pSdiIconButton->setPixmap(*pix);
@@ -557,37 +537,24 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 	
 		QWidget * pButtonParent;
 	
-#ifdef COMPILE_USE_QT4
 		m_pSdiControls = new KviTalHBox(b);
 		m_pSdiControls->setMargin(0);
 		m_pSdiControls->setSpacing(2);
 		m_pSdiControls->setAutoFillBackground(false);
 		pButtonParent = m_pSdiControls;
-#else
-		pButtonParent = b;
-#endif
+
 		m_pSdiMinimizeButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),"btnminimize");
 		connect(m_pSdiMinimizeButton,SIGNAL(clicked()),this,SLOT(minimizeActiveChild()));
-#ifndef COMPILE_USE_QT4
-		m_iSdiMinimizeItemId = b->insertItem(m_pSdiMinimizeButton,-1,b->count());
-#endif
 		connect(m_pSdiMinimizeButton,SIGNAL(destroyed()),this,SLOT(sdiMinimizeButtonDestroyed()));
 
 		m_pSdiRestoreButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),"btnrestore");
 		connect(m_pSdiRestoreButton,SIGNAL(clicked()),this,SLOT(restoreActiveChild()));
-#ifndef COMPILE_USE_QT4
-		m_iSdiRestoreItemId = b->insertItem(m_pSdiRestoreButton,-1,b->count());
-#endif
 		connect(m_pSdiRestoreButton,SIGNAL(destroyed()),this,SLOT(sdiRestoreButtonDestroyed()));
 
 		m_pSdiCloseButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),"btnclose");
 		connect(m_pSdiCloseButton,SIGNAL(clicked()),this,SLOT(closeActiveChild()));
-#ifndef COMPILE_USE_QT4
-		m_iSdiCloseItemId = b->insertItem(m_pSdiCloseButton,-1,b->count());
-#endif
 		connect(m_pSdiCloseButton,SIGNAL(destroyed()),this,SLOT(sdiCloseButtonDestroyed()));
 
-#ifdef COMPILE_USE_QT4
 		// This is an obscure, undocumented and internal function in QT4 QMenuBar
 		// I won't be surprised if this disappears....
 		b->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
@@ -595,11 +562,6 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 		// but it doesn't work when the KviFrame is still hidden (at startup)
 		// We handle this BUG in showEvent()
 		m_pSdiControls->show();
-#else
-		m_pSdiRestoreButton->show();
-		m_pSdiMinimizeButton->show();
-		m_pSdiCloseButton->show();
-#endif
 		emit enteredSdiMode();
 		
 		setVScrollBarMode(KviTalScrollView::AlwaysOff);
@@ -610,7 +572,6 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 }
 void KviMdiManager::relayoutMenuButtons()
 {
-#ifdef COMPILE_USE_QT4
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
 	if(m_pSdiControls)
@@ -620,9 +581,7 @@ void KviMdiManager::relayoutMenuButtons()
 	}
 	// also force an activation of the top MdiChild since it probably didn't get it yet
 	KviMdiChild * c = topChild();
-	if(c)
-		c->activate(false);
-#endif
+	if(c) c->activate(false);
 }
 
 
@@ -654,7 +613,6 @@ void KviMdiManager::leaveSDIMode()
 {
 	__range_valid(m_pSdiCloseButton);
 
-#ifdef COMPILE_USE_QT4
 	if(m_pSdiControls)
 	{
 		delete m_pSdiControls;
@@ -666,12 +624,6 @@ void KviMdiManager::leaveSDIMode()
 		delete m_pSdiIconButton;
 		m_pSdiIconButton = 0;
 	}
-#else
-	if(m_iSdiIconItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiIconItemId);
-	if(m_iSdiCloseItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiCloseItemId);
-	if(m_iSdiRestoreItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiRestoreItemId);
-	if(m_iSdiMinimizeItemId != 0)m_pFrm->mainMenuBar()->removeItem(m_iSdiMinimizeItemId);
-#endif
 
 	setVScrollBarMode(KviTalScrollView::Auto);
 	setHScrollBarMode(KviTalScrollView::Auto);
@@ -729,7 +681,7 @@ void KviMdiManager::fillWindowPopup()
 	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXVERTICAL)),(__tr2qs("Expand &Vertically")),this,SLOT(expandVertical()));
 	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXHORIZONTAL)),(__tr2qs("Expand &Horizontally")),this,SLOT(expandHorizontal()));
 
-    m_pWindowPopup->insertSeparator();
+	m_pWindowPopup->insertSeparator();
 	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),(__tr2qs("Mi&nimize All")),this,SLOT(minimizeAll()));
 //    m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
 //
@@ -910,7 +862,7 @@ void KviMdiManager::minimizeAll()
 {
 	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
-    m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
+	m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
 	while(!list.isEmpty())
 	{
 		KviMdiChild *lpC=list.first();
@@ -931,7 +883,7 @@ void KviMdiManager::restoreAll()
 	{
 		KviMdiChild *lpC=list.first();
 		if(lpC->state() != KviMdiChild::Normal && (!(lpC->plainCaption()).contains("CONSOLE") ))
-            lpC->restore();
+		lpC->restore();
 		list.removeFirst();
 	}
 	focusTopChild();
@@ -1122,5 +1074,3 @@ void KviMdiManager::tileAnodine()
 	if(lpTop)lpTop->setFocus();
 	updateContentsSize();
 }
-
-

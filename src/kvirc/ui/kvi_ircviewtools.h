@@ -25,18 +25,17 @@
 //=========================================================================================================
 
 #include "kvi_settings.h"
-
+#include "kvi_styled_controls.h"
 #include "kvi_tal_tooltip.h"
-#include <qframe.h>
 #include "kvi_tal_listview.h"
-#include <qstring.h>
+
+#include <QFrame>
+#include <QString>
 
 class QLabel;
-//class KviStyledCheckBox;
-#include "kvi_styled_controls.h"
 class QLineEdit;
-
 class KviIrcView;
+//class KviStyledCheckBox;
 
 class KviIrcViewToolTip : public KviTalToolTip
 {

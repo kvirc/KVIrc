@@ -31,29 +31,18 @@
 #include "kvi_input.h"
 #include "kvi_mirccntrl.h"
 
-#include <qnamespace.h>
-
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
+#include <QEvent>
+#include <QMouseEvent>
 
 #include <ctype.h>
 
 extern KviInputHistory * g_pInputHistory;
 
 KviHistoryWindow::KviHistoryWindow()
-#ifdef COMPILE_USE_QT4
 : KviTalListBox(0,Qt::Popup)
-#else
-: KviTalListBox(0,Qt::WType_Popup)
-#endif
 {
 	m_pOwner = 0;
-#ifdef COMPILE_USE_QT4
 	setHScrollBarMode(Q3ScrollView::AlwaysOff);
-#else
-	setHScrollBarMode(QScrollView::AlwaysOff);
-#endif
 	connect(this,SIGNAL(selected(const QString &)),this,SLOT(itemSelected(const QString &)));
 
 	m_iTimerId = -1;

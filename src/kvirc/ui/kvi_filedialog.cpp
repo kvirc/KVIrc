@@ -28,10 +28,10 @@
 #include "kvi_fileutils.h"
 #include "kvi_frame.h"
 #include "kvi_qstring.h"
-
-#include <qdir.h>
 #include "kvi_tal_tooltip.h"
-#include <qmessagebox.h>
+
+#include <QDir>
+#include <QMessageBox>
 #include <QFileDialog>
 
 extern KviMediaManager * g_pMediaManager;

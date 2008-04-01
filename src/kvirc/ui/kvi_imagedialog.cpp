@@ -22,24 +22,19 @@
 
 #define __KVIRC__
 #include "kvi_imagedialog.h"
-
-#include "kvi_locale.h"
-
-#include <qlayout.h>
-#include <qpushbutton.h>
-
-#include <qimage.h>
-#include <qfileinfo.h>
-#include <qdir.h>
-
-#include <qpainter.h>
-
 #include "kvi_fileutils.h"
-
+#include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
-
 #include "kvi_app.h"
+
+#include <QLayout>
+#include <QPushButton>
+#include <QPainter>
+#include <QImage>
+#include <QFileInfo>
+#include <QDir>
+
 
 int KviImageDialogItem::height(const KviTalListBox *lb) const
 {
@@ -281,11 +276,7 @@ void KviImageDialog::heartbeat()
 						QImage i(szPath);
 						if(i.isNull())continue;
 						QPixmap pix;
-#ifdef COMPILE_USE_QT4
 						if((i.width() > 80) || (i.height() > 80))pix = i.scaled(80,80,Qt::KeepAspectRatio);
-#else
-						if((i.width() > 80) || (i.height() > 80))pix = i.scale(80,80,QImage::ScaleMin);
-#endif
 						else pix = i;
 
 						QString tip = szFile;

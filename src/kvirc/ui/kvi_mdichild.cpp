@@ -34,26 +34,22 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_mdicaption.h"
-
-#include <qcursor.h>
-#include <qnamespace.h>
-#include <qapplication.h>
-#include <qfontmetrics.h>
 #include "kvi_pointerlist.h"
-#include <qpixmap.h>
-#include <qstyle.h>
-#include <qpainter.h>
 #include "kvi_tal_popupmenu.h"
-#ifndef COMPILE_USE_QT4
-	#include <qobjectlist.h>
-#endif
-#include <qevent.h>
+
+#include <QCursor>
+#include <QApplication>
+#include <QFontMetrics>
+#include <QPixmap>
+#include <QStyle>
+#include <QPainter>
+//#include <qobjectlist.h>
+#include <QEvent>
+#include <QMouseEvent>
 
 #ifdef Q_OS_MACX
-#include "kvi_app.h"  //Needed for g_pApp
-#ifdef COMPILE_USE_QT4
+	#include "kvi_app.h"  //Needed for g_pApp
 	#include <QDesktopWidget>
-#endif
 #endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -92,10 +88,7 @@ KviMdiChild::KviMdiChild(KviMdiManager * par,const char * name)
 	setMouseTracking(true);
 	setMinimumSize(KVI_MDICHILD_MIN_WIDTH,KVI_MDICHILD_MIN_HEIGHT);
 
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(true);
-#endif
-	
 }
 
 KviMdiChild::~KviMdiChild()
@@ -116,19 +109,11 @@ QRect KviMdiChild::restoredGeometry()
 
 }
 
-#ifdef COMPILE_USE_QT4
 void KviMdiChild::setBackgroundRole(QPalette::ColorRole)
 {
 	// hack
 	QFrame::setBackgroundRole(QPalette::Window);
 }
-#else
-void KviMdiChild::setBackgroundMode(QWidget::BackgroundMode)
-{
-	// hack
-	QFrame::setBackgroundMode(QWidget::PaletteBackground);
-}
-#endif
 
 void KviMdiChild::setIcon(const QPixmap &pix)
 {
@@ -539,8 +524,6 @@ void KviMdiChild::unsetClient()
 	setName("mdi_child");
 }
 
-
-
 void KviMdiChild::activate(bool bSetFocus)
 {
 	if(!m_pCaption->active())m_pCaption->setActive(true);
@@ -572,5 +555,3 @@ QSize KviMdiChild::sizeHint()
 	}
 	return QFrame::sizeHint();
 }
-
-

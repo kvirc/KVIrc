@@ -89,25 +89,23 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 
 KviMenuBar::~KviMenuBar()
 {
-   if(m_pScriptItemList)delete m_pScriptItemList;
-   if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
+	if(m_pScriptItemList)delete m_pScriptItemList;
+	if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
 }
 
 void KviMenuBar::showEvent(QShowEvent *e)
 {
-#ifdef COMPILE_USE_QT4
-	debug("menubar show");
+	qDebug("menubar show");
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
 	m_pFrm->mdiManager()->relayoutMenuButtons();
-#endif
 }
 
 void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
-   m_iNumDefaultItems++;
-   m_pDefaultItemId = (int *)kvi_realloc((void *)m_pDefaultItemId,sizeof(int) * m_iNumDefaultItems);
-   m_pDefaultItemId[m_iNumDefaultItems - 1] = insertItem(text,pop);
+	m_iNumDefaultItems++;
+	m_pDefaultItemId = (int *)kvi_realloc((void *)m_pDefaultItemId,sizeof(int) * m_iNumDefaultItems);
+	m_pDefaultItemId[m_iNumDefaultItems - 1] = insertItem(text,pop);
 }
 
 void KviMenuBar::setupHelpPopup()
@@ -322,10 +320,10 @@ void KviMenuBar::setupToolsPopup()
 
 void KviMenuBar::toolsPopupSelected(int id)
 {
-   KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
-   if(!m)return;
-   int idext = m->itemParameter(id);
-   g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());
+	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
+	if(!m)return;
+	int idext = m->itemParameter(id);
+	g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());
 }
 
 
@@ -345,53 +343,53 @@ void KviMenuBar::setupToolbarsPopup()
 
 int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
-   if(iDefaultIndex < 0)iDefaultIndex = 0;
-   if(iDefaultIndex >= m_iNumDefaultItems)
-      return indexOf(m_pDefaultItemId[m_iNumDefaultItems - 1]) + 1;
-   return indexOf(m_pDefaultItemId[iDefaultIndex]);
+	if(iDefaultIndex < 0)iDefaultIndex = 0;
+	if(iDefaultIndex >= m_iNumDefaultItems)
+		return indexOf(m_pDefaultItemId[m_iNumDefaultItems - 1]) + 1;
+	return indexOf(m_pDefaultItemId[iDefaultIndex]);
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString &text)
 {
-   if(!m_pScriptItemList)return 0;
-   for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
-   {
-      if(KviQString::equalCI(i->szText,text))return i;
-   }
-   return 0;
+	if(!m_pScriptItemList)return 0;
+	for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
+	{
+		if(KviQString::equalCI(i->szText,text))return i;
+	}
+	return 0;
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(KviKvsPopupMenu * p)
 {
-   if(!m_pScriptItemList)return 0;
-   for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
-   {
-      if(i->pPopup == p)return i;
-   }
-   return 0;
+	if(!m_pScriptItemList)return 0;
+	for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
+	{
+		if(i->pPopup == p)return i;
+	}
+	return 0;
 }
 
 bool KviMenuBar::removeMenu(const QString &text)
 {
-   KviScriptMenuBarItem * i = findMenu(text);
-   if(i)
-   {
-      disconnect(i->pPopup,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
-      removeItem(i->id);
-      m_pScriptItemList->removeRef(i);
-      return true;
-   }
-   return false;
+	KviScriptMenuBarItem * i = findMenu(text);
+	if(i)
+	{
+		disconnect(i->pPopup,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
+		removeItem(i->id);
+		m_pScriptItemList->removeRef(i);
+		return true;
+	}
+	return false;
 }
 
 void KviMenuBar::menuDestroyed()
 {
-   KviScriptMenuBarItem * i = findMenu(((KviKvsPopupMenu *)sender()));
-   if(i)
-   {
-      removeItem(i->id);
-      m_pScriptItemList->removeRef(i);
-   }
+	KviScriptMenuBarItem * i = findMenu(((KviKvsPopupMenu *)sender()));
+	if(i)
+	{
+		removeItem(i->id);
+		m_pScriptItemList->removeRef(i);
+	}
 }
 
 void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)

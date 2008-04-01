@@ -35,25 +35,24 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_mdicaption.h"
-
-#include <qcursor.h>
-#include <qnamespace.h>
-#include <qapplication.h>
-#include <qfontmetrics.h>
 #include "kvi_pointerlist.h"
-#include <qpixmap.h>
-#include <qstyle.h>
-#include <qpainter.h>
 #include "kvi_tal_popupmenu.h"
-#ifdef COMPILE_USE_QT4
-	#include <q3simplerichtext.h>
-	#define QSimpleRichText Q3SimpleRichText
-	#include <qstyleoption.h>
-#else
-	#include <qsimplerichtext.h>
-#endif
-#include <qdrawutil.h>
-#include <qevent.h>
+
+#include <QCursor>
+#include <QApplication>
+#include <QFontMetrics>
+#include <QPixmap>
+#include <QStyle>
+#include <QPainter>
+//#include <QDrawUtil>
+#include <QEvent>
+#include <QPaintEvent>
+#include <QStyleOption>
+
+#include <q3simplerichtext.h>
+#define QSimpleRichText Q3SimpleRichText
+
+
 
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
 : QToolButton(parent,name)
@@ -67,41 +66,25 @@ KviMdiCaptionButton::~KviMdiCaptionButton()
 {
 }
 
-
-#ifdef COMPILE_USE_QT4
 void KviMdiCaptionButton::paintEvent(QPaintEvent *e)
 {
 	QPainter painter(this);
 	drawButton(&painter);
 }
-#endif
 
 void KviMdiCaptionButton::drawButton(QPainter *p)
 {
-#ifdef COMPILE_USE_QT4
 	QBrush b(parentWidget()->palette().window());
-#else
-	QBrush b(parentWidget()->colorGroup().background());
-#endif
 	
 	if(isDown())
 		qDrawShadePanel(p,0,0,width(),height(),colorGroup(),true,1,&b);
 	else
 		p->fillRect(0,0,width(),height(),b);
 
-#ifdef COMPILE_USE_QT4
 	int x = (width() - 16) / 2;
 	int y = (width() - 16) / 2;
 	p->drawPixmap(x,y,16,16,icon().pixmap(16,16),0,0,16,16);
-#else
-	drawButtonLabel(p);
-#endif
 }
-
-
-
-
-
 
 
 KviMdiCaption::KviMdiCaption(KviMdiChild * parent,const char * name)
@@ -120,9 +103,7 @@ KviMdiCaption::KviMdiCaption(KviMdiChild * parent,const char * name)
 	m_bMouseGrabbed = true;
 	m_bActive = false;
 	calcLineSpacing();
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
-#endif
 }
 
 KviMdiCaption::~KviMdiCaption()
@@ -172,11 +153,7 @@ void KviMdiCaption::mousePressEvent(QMouseEvent *e)
 {
 	m_bMouseGrabbed = true;
 	m_lastMousePos = QCursor::pos();
-#ifdef COMPILE_USE_QT4
 	setCursor(Qt::SizeAllCursor);
-#else
-	setCursor(QCursor::sizeAllCursor);
-#endif
 	((KviMdiChild *)parent())->activate(true);
 }
 
@@ -235,11 +212,7 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
 {
 	m_bMouseGrabbed = false;
-#ifdef COMPILE_USE_QT4
 	setCursor(Qt::arrowCursor);
-#else
-	setCursor(QCursor::arrowCursor);
-#endif
 //	releaseMouse();
 }
 
@@ -282,4 +255,3 @@ QSize KviMenuBarToolButton::sizeHint() const
 {
 	return QSize(20,20);
 }
-

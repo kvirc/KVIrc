@@ -26,10 +26,8 @@
 
 
 #ifdef COMPILE_CRYPT_SUPPORT
-
 	#include "kvi_cryptcontroller.h"
 	#include "kvi_styled_controls.h"
-
 	#include "kvi_window.h"
 	#include "kvi_locale.h"
 	#include "kvi_out.h"
@@ -39,10 +37,10 @@
 	#include "kvi_malloc.h"
 	#include "kvi_memmove.h"
 	#include "kvi_toolwindows_container.h"
-
-	#include <qlayout.h>
 	#include "kvi_pointerhashtable.h"
-
+	
+	#include <QLayout>
+	
 	// kvi_app.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
@@ -78,11 +76,7 @@
 
 		m_pWindow = wnd;
 
-#ifdef COMPILE_USE_QT4
 		setFocusPolicy(Qt::ClickFocus);
-#else
-		setFocusPolicy(QWidget::ClickFocus);
-#endif
 
 		QGridLayout *g = new QGridLayout(this,10,4,2,2);
 
@@ -106,11 +100,7 @@
 
 		m_pDescriptionLabel = new QLabel(this);
 		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-#ifdef COMPILE_USE_QT4
 		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-#else
-		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-#endif
 		g->addMultiCellWidget(m_pDescriptionLabel,3,3,1,3);
 
 		m_pAuthorLabel = new QLabel(this);
