@@ -63,4 +63,3 @@ KviKvsHashElement::~KviKvsHashElement()
 	if(m_pVariant->isEmpty())m_pHash->unset(m_szKey);
 	if(m_pParent)delete m_pParent;
 }
-

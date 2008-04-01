@@ -33,47 +33,38 @@
 KviKvsTreeNodeSpecialCommandIf::KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * pIf,KviKvsTreeNodeInstruction * pElse)
 : KviKvsTreeNodeSpecialCommand(pLocation,"if")
 {
-#ifdef COMPILE_NEW_KVS
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pIfInstruction = pIf;
 	if(pIf)m_pIfInstruction->setParent(this);
 	m_pElseInstruction = pElse;
 	if(pElse)m_pElseInstruction->setParent(this);
-#endif
 }
 
 KviKvsTreeNodeSpecialCommandIf::~KviKvsTreeNodeSpecialCommandIf()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pExpression;
 	if(m_pIfInstruction)delete m_pIfInstruction;
 	if(m_pElseInstruction)delete m_pElseInstruction;
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandIf::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Special Command \"if\"";
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandIf::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s SpecialCommandIf",prefix);
+	qDebug("%s SpecialCommandIf",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pExpression->dump(tmp);
 	if(m_pIfInstruction)m_pIfInstruction->dump(tmp);
 	if(m_pElseInstruction)m_pElseInstruction->dump(tmp);
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant v;
 	if(!m_pExpression->evaluateReadOnly(c,&v))return false;
 	
@@ -89,6 +80,5 @@ bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)
 			return m_pElseInstruction->execute(c);
 		}
 	}
-#endif
 	return true;
 }

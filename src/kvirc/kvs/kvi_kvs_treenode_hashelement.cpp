@@ -33,42 +33,33 @@
 KviKvsTreeNodeHashElement::KviKvsTreeNodeHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource,KviKvsTreeNodeData * pKey)
 : KviKvsTreeNodeArrayOrHashElement(pLocation,pSource)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pKey = pKey;
 	m_pKey->setParent(this);
-#endif
 }
 
 
 KviKvsTreeNodeHashElement::~KviKvsTreeNodeHashElement()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pKey;
-#endif
 }
 
 void KviKvsTreeNodeHashElement::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Hash Element Evaluation";
-#endif
 }
 
 void KviKvsTreeNodeHashElement::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s HashElement",prefix);
+	qDebug("%s HashElement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pSource->dump(tmp.utf8().data());
 	m_pKey->dump(tmp.utf8().data());
-#endif
 }
 
 
 bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant key;
 	if(!m_pKey->evaluateReadOnly(c,&key))return false;
 
@@ -110,13 +101,11 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 	}
 
 	pBuffer->copyFrom(v);
-#endif
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant key;
 	if(!m_pKey->evaluateReadOnly(c,&key))return 0;
 
@@ -147,9 +136,6 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 	}
 
 	return new KviKvsHashElement(result,result->result()->hash()->get(szKey),result->result()->hash(),szKey);
-#else
-	return 0;
-#endif
 }
 
 

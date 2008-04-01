@@ -236,9 +236,6 @@ void KviKvsScriptAddon::executeHelpCallback(KviWindow * pWnd)
 }
 
 
-
-
-
 KviKvsScriptAddonManager::KviKvsScriptAddonManager()
 {
 	m_pInstance = this;
@@ -256,7 +253,7 @@ void KviKvsScriptAddonManager::init()
 {
 	if(KviKvsScriptAddonManager::instance())
 	{
-		debug("WARNING: Trying to create the KviKvsScriptAddonManager twice!");
+		qDebug("WARNING: Trying to create the KviKvsScriptAddonManager twice!");
 		return;
 	}
 	(void)new KviKvsScriptAddonManager();
@@ -266,7 +263,7 @@ void KviKvsScriptAddonManager::done()
 {
 	if(!KviKvsScriptAddonManager::instance())
 	{
-		debug("WARNING: Trying to destroy the KviKvsScriptAddonManager twice!");
+		qDebug("WARNING: Trying to destroy the KviKvsScriptAddonManager twice!");
 		return;
 	}
 	delete KviKvsScriptAddonManager::instance();
@@ -336,10 +333,6 @@ KviPointerHashTable<QString,KviKvsScriptAddon> * KviKvsScriptAddonManager::addon
 	if(!m_bLoaded)delayedLoad();
 	return m_pAddonDict;
 }
-
-
-
-
 
 bool KviKvsScriptAddonManager::registerAddon(KviKvsScriptAddonRegistrationData * d)
 {

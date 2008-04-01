@@ -67,7 +67,7 @@ void KviKvsTreeNodeDataList::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeDataList::dump(const char * prefix)
 {
-	debug("%s DataList",prefix);
+	qDebug("%s DataList",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	for(KviKvsTreeNodeData * t = m_pDataList->first();t;t = m_pDataList->next())

@@ -31,35 +31,27 @@
 KviKvsTreeNodeExpressionReturn::KviKvsTreeNodeExpressionReturn(const QChar * pLocation,KviKvsTreeNodeExpression * pExpression)
 : KviKvsTreeNodeInstruction(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pExpression = pExpression;
 	m_pExpression->setParent(this);
-#endif
 }
 
 KviKvsTreeNodeExpressionReturn::~KviKvsTreeNodeExpressionReturn()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pExpression;
-#endif
 }
 
 
 void KviKvsTreeNodeExpressionReturn::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Expression Return Evaluation";
-#endif
 }
 
 void KviKvsTreeNodeExpressionReturn::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ExpressionReturn",prefix);
+	qDebug("%s ExpressionReturn",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pExpression->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeExpressionReturn::execute(KviKvsRunTimeContext * c)

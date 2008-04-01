@@ -46,21 +46,16 @@ bool KviKvsTreeNodeHashReferenceAssert::isReadOnly()
 
 void KviKvsTreeNodeHashReferenceAssert::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Hash Reference Assert";
-#endif
 }
 
 void KviKvsTreeNodeHashReferenceAssert::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s HashReferenceAssert",prefix);
-#endif
+	qDebug("%s HashReferenceAssert",prefix);
 }
 
 bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	if(o)
 	{
 		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,pBuffer))return false;
@@ -78,22 +73,17 @@ bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObje
 			return false;
 		}
 	}
-#endif
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeHashReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsRWEvaluationResult * r;
 	if(o)r = m_pSource->evaluateReadWriteInObjectScope(o,c);
 	else r = m_pSource->evaluateReadWrite(c);
 	if(!r)return false;
 
 	return r;
-#else
-	return 0;
-#endif
 }
 
 bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

@@ -25,79 +25,62 @@
 #define __KVILIB__
 #include "kvi_tal_tooltip.h"
 
-#include <qevent.h>
+#include <QEvent>
+#include <QHelpEvent>
 
 KviTalToolTipHelper::KviTalToolTipHelper(KviTalToolTip * pToolTip,QWidget * pWidget)
 : QObject(pWidget)
 {
-#ifdef COMPILE_USE_QT4
 	m_pToolTip = pToolTip;
 	pWidget->installEventFilter(this);
-#endif
 }
 
 KviTalToolTipHelper::~KviTalToolTipHelper()
 {
-#ifdef COMPILE_USE_QT4
 	if(m_pToolTip)
 	{
 		m_pToolTip->helperDying();
 		delete m_pToolTip;
 	}
-#endif
 }
 
 void KviTalToolTipHelper::toolTipDying()
 {
-#ifdef COMPILE_USE_QT4
 	m_pToolTip = 0;
-#endif
 }
 
 bool KviTalToolTipHelper::eventFilter(QObject * pObject,QEvent * pEvent)
 {
-#ifdef COMPILE_USE_QT4
 	if((pEvent->type() == QEvent::ToolTip) && m_pToolTip)
 	{
 		debug("TOOL TIP EVENT WITH POSITION %d,%d",((QHelpEvent *)pEvent)->pos().x(),((QHelpEvent *)pEvent)->pos().y());
 		m_pToolTip->maybeTip(((QHelpEvent *)pEvent)->pos());
 		return true;
 	}
-#endif
 	return false;
 }
 
 
 KviTalToolTip::KviTalToolTip(QWidget * pParent)
-#ifndef COMPILE_USE_QT4
-: QToolTip(pParent)
-#endif
 {
-#ifdef COMPILE_USE_QT4
 	m_pHelper = new KviTalToolTipHelper(this,pParent);
 	m_pParent = pParent;
-#endif
 }
 
 KviTalToolTip::~KviTalToolTip()
 {
-#ifdef COMPILE_USE_QT4
 	if(m_pHelper)
 	{
 		m_pHelper->toolTipDying();
 		delete m_pHelper;
 	}
-#endif
 }
 
-#ifdef COMPILE_USE_QT4
 void KviTalToolTip::helperDying()
 {
 	m_pHelper = 0;
 }
-#endif
 
-#ifdef COMPILE_USE_QT4
 void KviTalToolTip::add(QWidget * widget,const QString & text)
 {
 	QToolTip::add(widget,text);
@@ -113,7 +96,6 @@ void KviTalToolTip::tip(const QRect & rect,const QString & text)
 	debug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
 	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()),text);
 }
-#endif
 
 void KviTalToolTip::maybeTip(const QPoint & p)
 {

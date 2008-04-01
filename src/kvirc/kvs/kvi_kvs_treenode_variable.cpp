@@ -29,9 +29,7 @@
 KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation,const QString &szIdentifier)
 : KviKvsTreeNodeData(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_szIdentifier = szIdentifier;
-#endif
 }
 
 KviKvsTreeNodeVariable::~KviKvsTreeNodeVariable()

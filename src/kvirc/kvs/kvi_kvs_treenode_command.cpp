@@ -30,51 +30,38 @@
 KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation,const QString &szCmdName)
 : KviKvsTreeNodeInstruction(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_szCmdName = szCmdName;
 	m_pSwitches = 0;
-#endif
 }
 
 KviKvsTreeNodeCommand::~KviKvsTreeNodeCommand()
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pSwitches)delete m_pSwitches;
-#endif
 }
 
 //#warning "All the dump() functions could be killed (or moved to print on the kvirc windows)"
 
 void KviKvsTreeNodeCommand::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviQString::sprintf(szBuffer,"Command \"%s\"",&m_szCmdName);
-#endif
 }
 
 void KviKvsTreeNodeCommand::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s Command(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s Command(%s)",prefix,m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
-#endif
 }
 
 void KviKvsTreeNodeCommand::dumpSwitchList(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	if(!m_pSwitches)return;
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pSwitches->dump(tmp.utf8().data());
-#endif
 }
 
 void KviKvsTreeNodeCommand::setSwitchList(KviKvsTreeNodeSwitchList * sw)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pSwitches = sw;
 	m_pSwitches->setParent(this);
-#endif
 }
-

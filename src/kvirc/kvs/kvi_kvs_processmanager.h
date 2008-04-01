@@ -40,7 +40,7 @@
 
 #include "kvi_process.h"
 
-#include <qtimer.h>
+#include <QTimer>
 
 #define KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT 1
 #define KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR 2

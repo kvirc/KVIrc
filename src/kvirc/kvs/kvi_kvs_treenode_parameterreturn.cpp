@@ -32,40 +32,31 @@
 KviKvsTreeNodeParameterReturn::KviKvsTreeNodeParameterReturn(const QChar * pLocation,KviKvsTreeNodeDataList * pDataList)
 : KviKvsTreeNodeInstruction(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pDataList = pDataList;
 	m_pDataList->setParent(this);
-#endif
 }
 
 KviKvsTreeNodeParameterReturn::~KviKvsTreeNodeParameterReturn()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pDataList;
-#endif
 }
 
 void KviKvsTreeNodeParameterReturn::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Parameter Return Evaluation";
-#endif
 }
 
 
 void KviKvsTreeNodeParameterReturn::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ParameterReturn",prefix);
+	qDebug("%s ParameterReturn",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pDataList->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeParameterReturn::execute(KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariantList lBuffer;
 	if(!m_pDataList->evaluate(c,&lBuffer))return false;
 	if(lBuffer.count() == 0)
@@ -82,7 +73,5 @@ bool KviKvsTreeNodeParameterReturn::execute(KviKvsRunTimeContext * c)
 	QString all;
 	lBuffer.allAsString(all);
 	c->returnValue()->setString(all);
-#endif
 	return true;
 }
-

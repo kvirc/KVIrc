@@ -39,35 +39,25 @@ KviKvsTreeNodeThisObjectFunctionCall::~KviKvsTreeNodeThisObjectFunctionCall()
 
 void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "\"This\" Object Function Call \"";
 	szBuffer += m_szFunctionName;
 	szBuffer += "\"";
-#endif
 }
 
 void KviKvsTreeNodeThisObjectFunctionCall::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ThisObjectFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	qDebug("%s ThisObjectFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());
-#endif
 }
 
 
 bool KviKvsTreeNodeThisObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariantList l;
 	if(!m_pParams->evaluate(c,&l))return false;
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
 	return o->callFunction(c->thisObject(),m_szFunctionName,QString::null,c,pBuffer,&l);
-#else
-	return false;
-#endif
 }
-
-

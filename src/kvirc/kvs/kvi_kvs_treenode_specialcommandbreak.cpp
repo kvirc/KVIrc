@@ -45,7 +45,7 @@ void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandBreak::dump(const char * prefix)
 {
-	debug("%s SpecialCommandBreak",prefix);
+	qDebug("%s SpecialCommandBreak",prefix);
 }
 
 bool KviKvsTreeNodeSpecialCommandBreak::execute(KviKvsRunTimeContext * c)

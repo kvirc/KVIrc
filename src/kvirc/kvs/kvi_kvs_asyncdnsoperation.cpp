@@ -34,7 +34,7 @@
 #include "kvi_error.h"
 #include "kvi_kvs_variantlist.h"
 
-#include <qtimer.h>
+#include <QTimer>
 
 
 KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDns::QueryType eType,KviKvsScript * pCallback,KviKvsVariant * pMagic)

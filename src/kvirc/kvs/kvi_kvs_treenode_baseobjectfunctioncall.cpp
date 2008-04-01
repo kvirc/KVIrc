@@ -32,9 +32,7 @@
 KviKvsTreeNodeBaseObjectFunctionCall::KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation,const QString &szBaseClass,const QString &szFncName,KviKvsTreeNodeDataList * pParams)
 : KviKvsTreeNodeObjectFunctionCall(pLocation,szFncName,pParams)
 {
-#ifdef COMPILE_NEW_KVS
 	m_szBaseClass = szBaseClass;
-#endif
 }
 
 KviKvsTreeNodeBaseObjectFunctionCall::~KviKvsTreeNodeBaseObjectFunctionCall()
@@ -48,25 +46,17 @@ void KviKvsTreeNodeBaseObjectFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeBaseObjectFunctionCall::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s BaseObjectFunctionCall(%s::%s)",prefix,m_szBaseClass.utf8().data(),m_szFunctionName.utf8().data());
+	qDebug("%s BaseObjectFunctionCall(%s::%s)",prefix,m_szBaseClass.utf8().data(),m_szFunctionName.utf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeBaseObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariantList l;
 	if(!m_pParams->evaluate(c,&l))return false;
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
 	return o->callFunction(c->thisObject(),m_szFunctionName,m_szBaseClass,c,pBuffer,&l);
-#else
-	return false;
-#endif
 }
-
-

@@ -54,7 +54,7 @@ void KviKvsTreeNodeRebindingSwitch::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeRebindingSwitch::dump(const char * prefix)
 {
-	debug("%sRebindingSwitch",prefix);
+	qDebug("%sRebindingSwitch",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pTargetWindow->dump(tmp.utf8().data());
@@ -93,4 +93,3 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	c->setWindow(pOldWindow);
 	return bRet;
 }
-

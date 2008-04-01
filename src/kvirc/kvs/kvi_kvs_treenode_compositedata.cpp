@@ -25,7 +25,6 @@
 #define __KVIRC__
 
 #include "kvi_kvs_treenode_compositedata.h"
-
 #include "kvi_qstring.h"
 
 #define DEBUGME
@@ -34,7 +33,7 @@ KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation
 : KviKvsTreeNodeData(pLocation)
 {
 #ifdef DEBUGME
-	if(pSubData->count() < 2)debug("KviKvsTreeNodeCompositeData constructor called with less than two children!");
+	if(pSubData->count() < 2) qDebug("KviKvsTreeNodeCompositeData constructor called with less than two children!");
 #endif
 	m_pSubData = pSubData;
 	m_pSubData->setAutoDelete(true);
@@ -75,7 +74,7 @@ void KviKvsTreeNodeCompositeData::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCompositeData::dump(const char * prefix)
 {
-	debug("%s CompositeData",prefix);
+	qDebug("%s CompositeData",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	for(KviKvsTreeNodeData * p = m_pSubData->first();p;p = m_pSubData->next())

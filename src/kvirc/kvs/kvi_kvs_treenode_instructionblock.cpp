@@ -47,7 +47,7 @@ void KviKvsTreeNodeInstructionBlock::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeInstructionBlock::dump(const char * prefix)
 {
-	debug("%s InstructionBlock",prefix);
+	qDebug("%s InstructionBlock",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	for(KviKvsTreeNodeInstruction * i = m_pInstructionList->first();i;i = m_pInstructionList->next())

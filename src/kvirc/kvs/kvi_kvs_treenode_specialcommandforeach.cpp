@@ -57,7 +57,7 @@ void KviKvsTreeNodeSpecialCommandForeach::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandForeach::dump(const char * prefix)
 {
-	debug("%s SpecialCommandForeach",prefix);
+	qDebug("%s SpecialCommandForeach",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pIterationVariable->dump(tmp.utf8().data());

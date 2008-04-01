@@ -37,14 +37,12 @@
 #include "kvi_locale.h"
 #include "kvi_pointerlist.h"
 
-
-#include <qstringlist.h>
+#include <QStringList>
 
 namespace KviKvsParameterProcessor
 {	
 	void setDefaultValue(KviKvsParameterProcessor::ParameterFormat * pFmtArray)
 	{
-#ifdef COMPILE_NEW_KVS
 		switch(pFmtArray->uType)
 		{
 			case KVS_PT_STRING:
@@ -93,10 +91,9 @@ namespace KviKvsParameterProcessor
 				// ignore :)
 			break;
 			default:
-				debug("Internal error in KviKvsParameterProcessor::setDefaultValue(): unknown parameter type %d",pFmtArray->uType);
+				qDebug("Internal error in KviKvsParameterProcessor::setDefaultValue(): unknown parameter type %d",pFmtArray->uType);
 			break;
 		}
-#endif
 	}
 
 	bool handleParameterTypeError(KviKvsRunTimeContext * pContext,KviKvsParameterProcessor::ParameterFormat * pFmtArray,KviKvsVariant * v,const char * szExpectedType)
@@ -358,7 +355,7 @@ namespace KviKvsParameterProcessor
 					// ignore
 				break;
 				default:
-					debug("Internal error in KviKvsParameterProcessor::processAsParameters(): unknown parameter type %d",pFmtArray->uType);
+					qDebug("Internal error in KviKvsParameterProcessor::processAsParameters(): unknown parameter type %d",pFmtArray->uType);
 					return false;
 				break;
 			}

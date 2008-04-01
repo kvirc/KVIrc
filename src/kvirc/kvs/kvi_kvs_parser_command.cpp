@@ -26,18 +26,12 @@
 
 
 #include "kvi_kvs_parser.h"
-
 #include "kvi_kvs_treenode.h"
-
 #include "kvi_kvs_report.h"
 #include "kvi_kvs_kernel.h"
-
 #include "kvi_kvs_parser_macros.h"
-
 #include "kvi_locale.h"
-
 #include "kvi_kvs_script.h"
-
 #include "kvi_cmdformatter.h"
 
 
@@ -335,5 +329,3 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 	return cmd;
 }
-
-

@@ -27,8 +27,8 @@
 
 #include "kvi_settings.h"
 
-#include <qtooltip.h>
-#include <qobject.h>
+#include <QToolTip>
+#include <QObject>
 
 class KviTalToolTip;
 

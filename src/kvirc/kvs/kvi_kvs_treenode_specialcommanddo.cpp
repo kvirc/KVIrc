@@ -53,7 +53,7 @@ void KviKvsTreeNodeSpecialCommandDo::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandDo::dump(const char * prefix)
 {
-	debug("%s SpecialCommandDo",prefix);
+	qDebug("%s SpecialCommandDo",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pExpression->dump(tmp);

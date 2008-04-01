@@ -25,11 +25,9 @@
 #define __KVIRC__
 
 #include "kvi_kvs_corefunctions.h"
-
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_arraycast.h"
 #include "kvi_kvs_object_controller.h"
-
 #include "kvi_locale.h"
 #include "kvi_ircconnection.h"
 #include "kvi_mirccntrl.h"
@@ -676,4 +674,3 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 };
-

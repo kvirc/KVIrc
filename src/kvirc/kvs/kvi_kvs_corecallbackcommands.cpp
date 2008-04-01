@@ -42,8 +42,9 @@
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
 
-#include <qregexp.h>
 #include "kvi_tal_tooltip.h"
+
+#include <QRegExp>
 
 namespace KviKvsCoreCallbackCommands
 {
@@ -1168,17 +1169,13 @@ namespace KviKvsCoreCallbackCommands
 			pKern->registerCoreCallbackCommandExecRoutine(QString(__cmdName),r); \
 		}
 		
-#ifdef COMPILE_NEW_KVS
 		_REGCMD("ahost",ahost);
 		_REGCMD("awhois",awhois);
-#endif
 		_REGCMD("alias",alias);
-#ifdef COMPILE_NEW_KVS
 		_REGCMD("button",button);
 		_REGCMD("event",event);
 		_REGCMD("exec",exec);
 		_REGCMD("privateimpl",privateimpl);
-#endif
 		_REGCMD("function",alias);
 		_REGCMD("timer",timer);
 

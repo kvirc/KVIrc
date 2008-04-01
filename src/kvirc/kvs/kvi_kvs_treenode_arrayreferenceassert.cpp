@@ -53,14 +53,11 @@ void KviKvsTreeNodeArrayReferenceAssert::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeArrayReferenceAssert::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ArrayReferenceAssert",prefix);
-#endif
+	qDebug("%s ArrayReferenceAssert",prefix);
 }
 
 bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	if(o)
 	{
 		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,pBuffer))return false;
@@ -78,22 +75,17 @@ bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObj
 			return false;
 		}
 	}
-#endif
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsRWEvaluationResult * r;
 	if(o)r = m_pSource->evaluateReadWriteInObjectScope(o,c);
 	else r = m_pSource->evaluateReadWrite(c);
 	if(!r)return false;
 
 	return r;
-#else
-	return 0;
-#endif
 }
 
 bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

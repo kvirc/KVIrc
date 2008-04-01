@@ -55,7 +55,7 @@ void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleCallbackCommand::dump(const char * prefix)
 {
-	debug("%s ModuleCallbackCommand(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szCmdName.utf8().data());
+	qDebug("%s ModuleCallbackCommand(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);

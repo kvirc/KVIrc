@@ -226,4 +226,3 @@ void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 	KviFileUtils::removeFile(szPath);
 	delete pClass;
 }
-

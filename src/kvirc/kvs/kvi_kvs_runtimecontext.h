@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "kvi_window.h"
 
 #include "kvi_kvs_variant.h"

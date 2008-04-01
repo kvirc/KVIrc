@@ -47,14 +47,11 @@ void KviKvsTreeNodeArrayCount::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeArrayCount::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ArrayCount",prefix);
-#endif
+	qDebug("%s ArrayCount",prefix);
 }
 
 bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant val;
 	if(o)
 	{
@@ -76,7 +73,6 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kvi
 	}
 
 	pBuffer->setInteger(val.array()->size());
-#endif
 	return true;
 }
 

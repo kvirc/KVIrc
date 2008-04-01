@@ -41,26 +41,20 @@ KviKvsTreeNodeCommandWithParameters::~KviKvsTreeNodeCommandWithParameters()
 
 void KviKvsTreeNodeCommandWithParameters::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviQString::sprintf(szBuffer,"Command With Parameters \"%s\"",&m_szCmdName);
-#endif
 }
 
 
 void KviKvsTreeNodeCommandWithParameters::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s CommandWithParameters(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s CommandWithParameters(%s)",prefix,m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
-#endif
 }
 
 void KviKvsTreeNodeCommandWithParameters::dumpParameterList(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());
-#endif
 }

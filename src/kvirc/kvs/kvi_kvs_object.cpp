@@ -43,12 +43,12 @@
 #include "kvi_kvs_object_functioncall.h"
 #include "kvi_kvs_object_functionhandlerimpl.h"
 
-#include <qmetaobject.h>
-#include <qtimer.h>
+#include <QMetaObject>
+#include <QMetaProperty>
+#include <QTimer>
+#include <QIcon>
+
 #include <time.h>
-#include <qiconset.h>
-
-
 
 /*
 	@doc: objects

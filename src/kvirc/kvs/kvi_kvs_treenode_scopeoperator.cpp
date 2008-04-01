@@ -59,7 +59,7 @@ void KviKvsTreeNodeScopeOperator::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeScopeOperator::dump(const char * prefix)
 {
-	debug("%s ScopeOperator",prefix);
+	qDebug("%s ScopeOperator",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pObjectReference->dump(tmp.utf8().data());
@@ -145,4 +145,3 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeScopeOperator::evaluateReadWriteInObjec
 	if(!pObject)return 0;
 	return m_pRightSide->evaluateReadWriteInObjectScope(pObject,c);
 }
-

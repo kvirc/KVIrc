@@ -141,4 +141,3 @@ namespace KviKvs
 		KviKvsKernel::instance()->objectController()->flushUserClasses();
 	}
 };
-

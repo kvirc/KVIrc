@@ -26,18 +26,12 @@
 
 
 #include "kvi_kvs_parser.h"
-
 #include "kvi_kvs_treenode.h"
-
 #include "kvi_kvs_report.h"
 #include "kvi_kvs_kernel.h"
-
 #include "kvi_kvs_script.h"
-
 #include "kvi_kvs_parser_macros.h"
-
 #include "kvi_locale.h"
-
 #include "kvi_options.h"
 
 //FIXME: @ == $$-> == $this->
@@ -56,9 +50,6 @@ KviKvsParser::~KviKvsParser()
 {
 	if(m_pGlobals)delete m_pGlobals;
 }
-
-
-
 
 void KviKvsParser::init()
 {
@@ -255,10 +246,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // if there is then take it as the top of the tree, the <variable> or <simple_function_call>
 // go at the left param of the scope operator and re-evaluate the right side <data> or <simple_function_call>
 //
-
-
-
-
 
 
 
@@ -3824,4 +3811,3 @@ jumpout:
 	// never reached
 	return 0;
 }
-

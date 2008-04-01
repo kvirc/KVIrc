@@ -59,17 +59,13 @@
 
 namespace KviKvsCoreCallbackCommands
 {
-#ifdef COMPILE_NEW_KVS
 	KVSCCC(ahost);
 	KVSCCC(awhois);
-#endif
 	KVSCCC(alias);
-#ifdef COMPILE_NEW_KVS
 	KVSCCC(button);
 	KVSCCC(event);
 	KVSCCC(exec);
 	KVSCCC(privateimpl);
-#endif
 	KVSCCC(timer);
 
 	void init();

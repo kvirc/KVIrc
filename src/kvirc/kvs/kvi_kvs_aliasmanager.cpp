@@ -117,5 +117,3 @@ void KviKvsAliasManager::load(const QString & filename)
 		++it;
 	}
 }
-
-

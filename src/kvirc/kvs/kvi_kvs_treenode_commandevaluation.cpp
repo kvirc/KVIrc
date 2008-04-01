@@ -32,29 +32,19 @@
 KviKvsTreeNodeCommandEvaluation::KviKvsTreeNodeCommandEvaluation(const QChar * pLocation,KviKvsTreeNodeInstruction * pInstruction)
 : KviKvsTreeNodeData(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pInstruction = pInstruction;
 	m_pInstruction->setParent(this);
-#endif
 }
 
 KviKvsTreeNodeCommandEvaluation::~KviKvsTreeNodeCommandEvaluation()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pInstruction;
-#endif
 }
-
 
 bool KviKvsTreeNodeCommandEvaluation::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant * pTmp = c->swapReturnValuePointer(pBuffer);
 	bool bRet = m_pInstruction->execute(c);
 	c->swapReturnValuePointer(pTmp);
 	return bRet;
-#else
-	return false;
-#endif
 }
-

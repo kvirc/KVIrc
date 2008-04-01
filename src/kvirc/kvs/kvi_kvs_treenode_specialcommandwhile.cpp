@@ -33,43 +33,34 @@
 KviKvsTreeNodeSpecialCommandWhile::KviKvsTreeNodeSpecialCommandWhile(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * i)
 : KviKvsTreeNodeSpecialCommand(pLocation,"while")
 {
-#ifdef COMPILE_NEW_KVS
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pInstruction = i;
 	if(i)m_pInstruction->setParent(this);
-#endif
 }
 
 KviKvsTreeNodeSpecialCommandWhile::~KviKvsTreeNodeSpecialCommandWhile()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pExpression;
 	if(m_pInstruction)delete m_pInstruction;
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandWhile::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Special Command \"while\"";
-#endif
 }
 
 void KviKvsTreeNodeSpecialCommandWhile::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s SpecialCommandWhile",prefix);
+	qDebug("%s SpecialCommandWhile",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pExpression->dump(tmp);
 	if(m_pInstruction)m_pInstruction->dump(tmp);
-#endif
 }
 
 bool KviKvsTreeNodeSpecialCommandWhile::execute(KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	for(;;)
 	{
 		KviKvsVariant v;
@@ -92,6 +83,5 @@ bool KviKvsTreeNodeSpecialCommandWhile::execute(KviKvsRunTimeContext * c)
 			}
 		}
 	}
-#endif
 	return true;
 }

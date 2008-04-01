@@ -19,18 +19,9 @@ src/kvilib/ext
 src/kvilib/net
 	kvi_http.h
 src/kvilib/system
-	kvi_byteorder.h
-	kvi_env.cpp
-	kvi_env.h
-	kvi_library.h
-	kvi_locale.cpp
-	kvi_locale.h
 	kvi_process.h
-	kvi_stdarg.h
 	kvi_thread.cpp
 	kvi_thread.h
-	kvi_time.cpp
-	kvi_time.h
 src/kvilib/tal
 	kvi_tal_grid.cpp
 	kvi_tal_grid.h
@@ -41,10 +32,6 @@ src/kvilib/tal
 	kvi_tal_listbox.h
 	kvi_tal_listview.cpp
 	kvi_tal_listview.h
-	kvi_tal_menubar.cpp
-	kvi_tal_menubar.h
-	kvi_tal_menubar_kde.h
-	kvi_tal_menubar_qt.h
 	kvi_tal_popupmenu.cpp
 	kvi_tal_popupmenu.h
 	kvi_tal_scrollview.cpp
@@ -53,16 +40,6 @@ src/kvilib/tal
 	kvi_tal_tabdialog.h
 	kvi_tal_textedit.cpp
 	kvi_tal_textedit.h
-	kvi_tal_toolbar.cpp
-	kvi_tal_toolbar.h
-	kvi_tal_toolbar_kde.h
-	kvi_tal_toolbar_qt.h
-	kvi_tal_toolbardocktype.h
-	kvi_tal_tooltip.cpp
-	kvi_tal_tooltip.h
-	kvi_tal_windowstate.h
-	kvi_tal_wizard.cpp
-	kvi_tal_wizard.h
 
 src/kvirc
 src/kvirc/kernel
@@ -139,225 +116,6 @@ src/kvirc/kernel
 	kvi_useraction.h
 	kvi_userinput.cpp
 	kvi_userinput.h
-src/kvirc/kvs
-	kvi_kvs.cpp
-	kvi_kvs.h
-	kvi_kvs_action.cpp
-	kvi_kvs_action.h
-	kvi_kvs_aliasmanager.cpp
-	kvi_kvs_aliasmanager.h
-	kvi_kvs_array.cpp
-	kvi_kvs_array.h
-	kvi_kvs_arraycast.cpp
-	kvi_kvs_arraycast.h
-	kvi_kvs_asyncdnsoperation.cpp
-	kvi_kvs_asyncdnsoperation.h
-	kvi_kvs_asyncoperation.cpp
-	kvi_kvs_asyncoperation.h
-	kvi_kvs_callbackobject.cpp
-	kvi_kvs_callbackobject.h
-	kvi_kvs_corecallbackcommands.cpp
-	kvi_kvs_corecallbackcommands.h
-	kvi_kvs_corefunctions.cpp
-	kvi_kvs_corefunctions.h
-	kvi_kvs_corefunctions_af.cpp
-	kvi_kvs_corefunctions_gl.cpp
-	kvi_kvs_corefunctions_mr.cpp
-	kvi_kvs_corefunctions_sz.cpp
-	kvi_kvs_coresimplecommands.cpp
-	kvi_kvs_coresimplecommands.h
-	kvi_kvs_coresimplecommands_af.cpp
-	kvi_kvs_coresimplecommands_gl.cpp
-	kvi_kvs_coresimplecommands_mr.cpp
-	kvi_kvs_coresimplecommands_sz.cpp
-	kvi_kvs_dnsmanager.cpp
-	kvi_kvs_dnsmanager.h
-	kvi_kvs_event.cpp
-	kvi_kvs_event.h
-	kvi_kvs_eventhandler.cpp
-	kvi_kvs_eventhandler.h
-	kvi_kvs_eventmanager.cpp
-	kvi_kvs_eventmanager.h
-	kvi_kvs_eventtable.cpp
-	kvi_kvs_eventtable.h
-	kvi_kvs_eventtriggers.h
-	kvi_kvs_hash.cpp
-	kvi_kvs_hash.h
-	kvi_kvs_kernel.cpp
-	kvi_kvs_kernel.h
-	kvi_kvs_moduleinterface.cpp
-	kvi_kvs_moduleinterface.h
-	kvi_kvs_object.cpp
-	kvi_kvs_object.h
-	kvi_kvs_object_class.cpp
-	kvi_kvs_object_class.h
-	kvi_kvs_object_controller.cpp
-	kvi_kvs_object_controller.h
-	kvi_kvs_object_functioncall.cpp
-	kvi_kvs_object_functioncall.h
-	kvi_kvs_object_functionhandler.cpp
-	kvi_kvs_object_functionhandler.h
-	kvi_kvs_object_functionhandlerimpl.cpp
-	kvi_kvs_object_functionhandlerimpl.h
-	kvi_kvs_parameterprocessor.cpp
-	kvi_kvs_parameterprocessor.h
-	kvi_kvs_parser.cpp
-	kvi_kvs_parser.h
-	kvi_kvs_parser_command.cpp
-	kvi_kvs_parser_comment.cpp
-	kvi_kvs_parser_dollar.cpp
-	kvi_kvs_parser_expression.cpp
-	kvi_kvs_parser_lside.cpp
-	kvi_kvs_parser_macros.h
-	kvi_kvs_parser_specialcommands.cpp
-	kvi_kvs_popupmanager.cpp
-	kvi_kvs_popupmanager.h
-	kvi_kvs_popupmenu.cpp
-	kvi_kvs_popupmenu.h
-	kvi_kvs_processmanager.cpp
-	kvi_kvs_processmanager.h
-	kvi_kvs_report.cpp
-	kvi_kvs_report.h
-	kvi_kvs_runtimecall.cpp
-	kvi_kvs_runtimecall.h
-	kvi_kvs_runtimecontext.cpp
-	kvi_kvs_runtimecontext.h
-	kvi_kvs_rwevaluationresult.cpp
-	kvi_kvs_rwevaluationresult.h
-	kvi_kvs_script.cpp
-	kvi_kvs_script.h
-	kvi_kvs_scriptaddonmanager.cpp
-	kvi_kvs_scriptaddonmanager.h
-	kvi_kvs_switchlist.cpp
-	kvi_kvs_switchlist.h
-	kvi_kvs_timermanager.cpp
-	kvi_kvs_timermanager.h
-	kvi_kvs_treenode.h
-	kvi_kvs_treenode_aliasfunctioncall.cpp
-	kvi_kvs_treenode_aliasfunctioncall.h
-	kvi_kvs_treenode_aliassimplecommand.cpp
-	kvi_kvs_treenode_aliassimplecommand.h
-	kvi_kvs_treenode_arraycount.cpp
-	kvi_kvs_treenode_arraycount.h
-	kvi_kvs_treenode_arrayelement.cpp
-	kvi_kvs_treenode_arrayelement.h
-	kvi_kvs_treenode_arrayorhashelement.cpp
-	kvi_kvs_treenode_arrayorhashelement.h
-	kvi_kvs_treenode_arrayreferenceassert.cpp
-	kvi_kvs_treenode_arrayreferenceassert.h
-	kvi_kvs_treenode_base.cpp
-	kvi_kvs_treenode_base.h
-	kvi_kvs_treenode_baseobjectfunctioncall.cpp
-	kvi_kvs_treenode_baseobjectfunctioncall.h
-	kvi_kvs_treenode_callbackcommand.cpp
-	kvi_kvs_treenode_callbackcommand.h
-	kvi_kvs_treenode_command.cpp
-	kvi_kvs_treenode_command.h
-	kvi_kvs_treenode_commandevaluation.cpp
-	kvi_kvs_treenode_commandevaluation.h
-	kvi_kvs_treenode_commandwithparameters.cpp
-	kvi_kvs_treenode_commandwithparameters.h
-	kvi_kvs_treenode_compositedata.cpp
-	kvi_kvs_treenode_compositedata.h
-	kvi_kvs_treenode_constantdata.cpp
-	kvi_kvs_treenode_constantdata.h
-	kvi_kvs_treenode_corecallbackcommand.cpp
-	kvi_kvs_treenode_corecallbackcommand.h
-	kvi_kvs_treenode_corefunctioncall.cpp
-	kvi_kvs_treenode_corefunctioncall.h
-	kvi_kvs_treenode_coresimplecommand.cpp
-	kvi_kvs_treenode_coresimplecommand.h
-	kvi_kvs_treenode_data.cpp
-	kvi_kvs_treenode_data.h
-	kvi_kvs_treenode_datalist.cpp
-	kvi_kvs_treenode_datalist.h
-	kvi_kvs_treenode_expression.cpp
-	kvi_kvs_treenode_expression.h
-	kvi_kvs_treenode_expressionreturn.cpp
-	kvi_kvs_treenode_expressionreturn.h
-	kvi_kvs_treenode_extendedscopevariable.cpp
-	kvi_kvs_treenode_extendedscopevariable.h
-	kvi_kvs_treenode_functioncall.cpp
-	kvi_kvs_treenode_functioncall.h
-	kvi_kvs_treenode_globalvariable.cpp
-	kvi_kvs_treenode_globalvariable.h
-	kvi_kvs_treenode_hashcount.cpp
-	kvi_kvs_treenode_hashcount.h
-	kvi_kvs_treenode_hashelement.cpp
-	kvi_kvs_treenode_hashelement.h
-	kvi_kvs_treenode_hashreferenceassert.cpp
-	kvi_kvs_treenode_hashreferenceassert.h
-	kvi_kvs_treenode_indirectdata.cpp
-	kvi_kvs_treenode_indirectdata.h
-	kvi_kvs_treenode_instruction.cpp
-	kvi_kvs_treenode_instruction.h
-	kvi_kvs_treenode_instructionblock.cpp
-	kvi_kvs_treenode_instructionblock.h
-	kvi_kvs_treenode_localvariable.cpp
-	kvi_kvs_treenode_localvariable.h
-	kvi_kvs_treenode_modulecallbackcommand.cpp
-	kvi_kvs_treenode_modulecallbackcommand.h
-	kvi_kvs_treenode_modulefunctioncall.cpp
-	kvi_kvs_treenode_modulefunctioncall.h
-	kvi_kvs_treenode_modulesimplecommand.cpp
-	kvi_kvs_treenode_modulesimplecommand.h
-	kvi_kvs_treenode_multipleparameteridentifier.cpp
-	kvi_kvs_treenode_multipleparameteridentifier.h
-	kvi_kvs_treenode_objectfield.cpp
-	kvi_kvs_treenode_objectfield.h
-	kvi_kvs_treenode_objectfunctioncall.cpp
-	kvi_kvs_treenode_objectfunctioncall.h
-	kvi_kvs_treenode_operation.cpp
-	kvi_kvs_treenode_operation.h
-	kvi_kvs_treenode_parameterreturn.cpp
-	kvi_kvs_treenode_parameterreturn.h
-	kvi_kvs_treenode_rebindingswitch.cpp
-	kvi_kvs_treenode_rebindingswitch.h
-	kvi_kvs_treenode_scopeoperator.cpp
-	kvi_kvs_treenode_scopeoperator.h
-	kvi_kvs_treenode_simplecommand.cpp
-	kvi_kvs_treenode_simplecommand.h
-	kvi_kvs_treenode_singleparameteridentifier.cpp
-	kvi_kvs_treenode_singleparameteridentifier.h
-	kvi_kvs_treenode_specialcommand.cpp
-	kvi_kvs_treenode_specialcommand.h
-	kvi_kvs_treenode_specialcommandbreak.cpp
-	kvi_kvs_treenode_specialcommandbreak.h
-	kvi_kvs_treenode_specialcommandclass.cpp
-	kvi_kvs_treenode_specialcommandclass.h
-	kvi_kvs_treenode_specialcommanddefpopup.cpp
-	kvi_kvs_treenode_specialcommanddefpopup.h
-	kvi_kvs_treenode_specialcommanddo.cpp
-	kvi_kvs_treenode_specialcommanddo.h
-	kvi_kvs_treenode_specialcommandfor.cpp
-	kvi_kvs_treenode_specialcommandfor.h
-	kvi_kvs_treenode_specialcommandforeach.cpp
-	kvi_kvs_treenode_specialcommandforeach.h
-	kvi_kvs_treenode_specialcommandif.cpp
-	kvi_kvs_treenode_specialcommandif.h
-	kvi_kvs_treenode_specialcommandswitch.cpp
-	kvi_kvs_treenode_specialcommandswitch.h
-	kvi_kvs_treenode_specialcommandunset.cpp
-	kvi_kvs_treenode_specialcommandunset.h
-	kvi_kvs_treenode_specialcommandwhile.cpp
-	kvi_kvs_treenode_specialcommandwhile.h
-	kvi_kvs_treenode_stringcast.cpp
-	kvi_kvs_treenode_stringcast.h
-	kvi_kvs_treenode_switchlist.cpp
-	kvi_kvs_treenode_switchlist.h
-	kvi_kvs_treenode_thisobjectfunctioncall.cpp
-	kvi_kvs_treenode_thisobjectfunctioncall.h
-	kvi_kvs_treenode_variable.cpp
-	kvi_kvs_treenode_variable.h
-	kvi_kvs_treenode_voidfunctioncall.cpp
-	kvi_kvs_treenode_voidfunctioncall.h
-	kvi_kvs_types.h
-	kvi_kvs_useraction.cpp
-	kvi_kvs_useraction.h
-	kvi_kvs_variant.cpp
-	kvi_kvs_variant.h
-	kvi_kvs_variantlist.cpp
-	kvi_kvs_variantlist.h
 src/kvirc/module
 	kvi_mexlinkfilter.cpp
 	kvi_mexlinkfilter.h

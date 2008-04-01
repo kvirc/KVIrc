@@ -43,4 +43,3 @@ bool KviKvsTreeNodeIndirectData::canEvaluateInObjectScope()
 {
 	return m_pSource->canEvaluateInObjectScope();
 }
-

@@ -25,9 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "kvi_qstring.h"
-
 #include "kvi_kvs_treenode_data.h"
 
 class KVIRC_API KviKvsTreeNodeConstantData : public KviKvsTreeNodeData

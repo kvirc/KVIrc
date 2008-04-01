@@ -48,7 +48,7 @@ void KviKvsTreeNodeSwitchList::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 {
-	debug("%s SwitchList",prefix);
+	qDebug("%s SwitchList",prefix);
 	if(m_pShortSwitchDict)
 	{
 		KviPointerHashTableIterator<int,KviKvsTreeNodeData> it(*m_pShortSwitchDict);
@@ -167,4 +167,3 @@ KviKvsTreeNodeData * KviKvsTreeNodeSwitchList::getStandardRebindingSwitch()
 	}
 	return 0;
 }
-

@@ -54,7 +54,7 @@ void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleFunctionCall::dump(const char * prefix)
 {
-	debug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szFunctionName.utf8().data());
+	qDebug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szFunctionName.utf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());

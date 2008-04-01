@@ -28,10 +28,11 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <qobject.h>
 #include "kvi_pointerhashtable.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_pointerlist.h"
+
+#include <QObject>
 
 class KviKvsTimerManager;
 class KviKvsScript;

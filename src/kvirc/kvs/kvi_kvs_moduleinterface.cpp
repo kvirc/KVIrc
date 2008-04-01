@@ -176,5 +176,3 @@ void KviKvsModuleInterface::registerDefaultCommands()
 	kvsRegisterSimpleCommand("load",default_module_kvs_cmd_load);
 	kvsRegisterSimpleCommand("unload",default_module_kvs_cmd_unload);
 }
-
-

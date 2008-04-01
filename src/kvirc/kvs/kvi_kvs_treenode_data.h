@@ -59,8 +59,4 @@ public:
 	virtual bool convertStringConstantToNumeric(); // this does nothing by default and is reimplemented only by KviKvsTreeNodeConstantData
 };
 
-
-
-
-
 #endif //!_KVI_KVS_TREENODE_DATA_H_

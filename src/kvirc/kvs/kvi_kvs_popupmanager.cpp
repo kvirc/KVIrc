@@ -112,6 +112,3 @@ void KviKvsPopupManager::save(const QString &szFileName)
 		++it;
 	}
 }
-
-
-

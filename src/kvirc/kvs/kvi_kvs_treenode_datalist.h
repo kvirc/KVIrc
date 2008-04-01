@@ -25,9 +25,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "kvi_pointerlist.h"
-
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_treenode_base.h"
 #include "kvi_kvs_treenode_data.h"

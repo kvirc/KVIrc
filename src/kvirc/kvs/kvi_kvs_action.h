@@ -53,7 +53,4 @@ public:
 	virtual void activate();
 };
 
-
-
-
 #endif //!_KVI_KVSACTION_H_

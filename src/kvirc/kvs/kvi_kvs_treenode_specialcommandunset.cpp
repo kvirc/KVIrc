@@ -51,7 +51,7 @@ void KviKvsTreeNodeSpecialCommandUnset::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandUnset::dump(const char * prefix)
 {
-	debug("%s SpecialCommandUnset",prefix);
+	qDebug("%s SpecialCommandUnset",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first();pVar;pVar = m_pVariableList->next())

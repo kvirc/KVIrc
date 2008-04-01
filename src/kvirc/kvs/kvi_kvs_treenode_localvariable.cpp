@@ -38,23 +38,18 @@ KviKvsTreeNodeLocalVariable::~KviKvsTreeNodeLocalVariable()
 
 void KviKvsTreeNodeLocalVariable::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Local Variable \"";
 	szBuffer += m_szIdentifier;
 	szBuffer += "\"";
-#endif
 }
 
 void KviKvsTreeNodeLocalVariable::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s LocalVariable(%s)",prefix,m_szIdentifier.utf8().data());
-#endif
+	qDebug("%s LocalVariable(%s)",prefix,m_szIdentifier.utf8().data());
 }
 
 bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant * v = c->localVariables()->find(m_szIdentifier);
 	if(v)
 	{
@@ -62,15 +57,10 @@ bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 	} else {
 		pBuffer->setNothing();
 	}
-#endif
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	return new KviKvsHashElement(0,c->localVariables()->get(m_szIdentifier),c->localVariables(),m_szIdentifier);
-#else
-	return 0;
-#endif
 }

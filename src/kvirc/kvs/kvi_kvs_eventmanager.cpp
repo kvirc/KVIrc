@@ -672,7 +672,3 @@ void KviKvsEventManager::saveAppEvents(const QString &szFileName)
 		}
 	}
 }
-
-
-
-

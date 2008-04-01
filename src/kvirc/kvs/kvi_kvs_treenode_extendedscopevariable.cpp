@@ -46,7 +46,7 @@ void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeExtendedScopeVariable::dump(const char * prefix)
 {
-	debug("%s ExtendedScopeVariable(%s)",prefix,m_szIdentifier.utf8().data());
+	qDebug("%s ExtendedScopeVariable(%s)",prefix,m_szIdentifier.utf8().data());
 }
 
 bool KviKvsTreeNodeExtendedScopeVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

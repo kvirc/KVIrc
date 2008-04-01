@@ -118,17 +118,6 @@ public:
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
 class KVIRC_API KviKvsTreeNodeExpressionOperator : public KviKvsTreeNodeExpression
 {
 public:

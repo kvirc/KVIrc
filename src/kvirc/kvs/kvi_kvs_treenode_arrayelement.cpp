@@ -33,18 +33,14 @@
 KviKvsTreeNodeArrayElement::KviKvsTreeNodeArrayElement(const QChar * pLocation,KviKvsTreeNodeData * pSource,KviKvsTreeNodeExpression * pIndex)
 : KviKvsTreeNodeArrayOrHashElement(pLocation,pSource)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pIndex = pIndex;
 	m_pIndex->setParent(this);
-#endif
 }
 
 
 KviKvsTreeNodeArrayElement::~KviKvsTreeNodeArrayElement()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pIndex;
-#endif
 }
 
 void KviKvsTreeNodeArrayElement::contextDescription(QString &szBuffer)
@@ -54,13 +50,11 @@ void KviKvsTreeNodeArrayElement::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeArrayElement::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s ArrayElement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pSource->dump(tmp.utf8().data());
 	m_pIndex->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext *c,kvs_int_t &iVal)
@@ -85,7 +79,6 @@ bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext *c,kvs_int_t
 
 bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	kvs_int_t iVal;
 	if(!evaluateIndex(c,iVal))return false;
 
@@ -117,13 +110,11 @@ bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,
 	}
 
 	pBuffer->copyFrom(v);
-#endif
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
 {
-#ifdef COMPILE_NEW_KVS
 	kvs_int_t iVal;
 	if(!evaluateIndex(c,iVal))return false;
 
@@ -144,9 +135,6 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 		result->result()->setArray(new KviKvsArray());
 	}
 	return new KviKvsArrayElement(result,result->result()->array()->getAt(iVal),result->result()->array(),iVal);
-#else
-	return 0;
-#endif
 }
 
 bool KviKvsTreeNodeArrayElement::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
@@ -158,4 +146,3 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWrite(KviKvsR
 {
 	return evaluateReadWriteInObjectScope(0,c);
 }
-

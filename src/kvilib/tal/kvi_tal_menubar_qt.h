@@ -24,7 +24,7 @@
 
 #include "kvi_settings.h"
 
-#include <qmenubar.h>
+#include <QMenuBar>
 
 class KVILIB_API KviTalMenuBar : public QMenuBar
 {

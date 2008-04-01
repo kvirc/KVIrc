@@ -33,8 +33,9 @@
 #include "kvi_kvs_runtimecontext.h"
 
 #include "kvi_tal_popupmenu.h"
-#include <qlabel.h>
-#include <qpixmap.h>
+
+#include <QLabel>
+#include <QPixmap>
 
 class KviKvsPopupMenu;
 
@@ -224,15 +225,6 @@ public:
 	virtual void clear();
 	virtual KviKvsPopupMenuItem * clone() const;
 };
-
-
-
-
-
-
-
-
-
 
 
 class KVIRC_API KviKvsPopupMenu : public KviTalPopupMenu

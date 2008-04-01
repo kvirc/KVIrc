@@ -59,11 +59,6 @@ KviKvsTimer::~KviKvsTimer()
 }
 
 
-
-
-
-
-
 KviKvsTimerManager * KviKvsTimerManager::m_pInstance = 0;
 
 
@@ -91,7 +86,7 @@ void KviKvsTimerManager::init()
 {
 	if(KviKvsTimerManager::m_pInstance)
 	{
-		debug("Trying to double init() the timer manager!");
+		qDebug("Trying to double init() the timer manager!");
 		return;
 	}
 	KviKvsTimerManager::m_pInstance = new KviKvsTimerManager();
@@ -101,7 +96,7 @@ void KviKvsTimerManager::done()
 {
 	if(!KviKvsTimerManager::m_pInstance)
 	{
-		debug("Trying to call done() on a non existing timer manager!");
+		qDebug("Trying to call done() on a non existing timer manager!");
 		return;
 	}
 	delete KviKvsTimerManager::m_pInstance;
@@ -197,7 +192,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent *e)
 	{
 		if(!m_pKilledTimerList)
 		{
-			debug("ops.. assassing timer with no victims ?");
+			qDebug("ops.. assassing timer with no victims ?");
 		} else {
 			m_pKilledTimerList->clear();
 		}
@@ -209,7 +204,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent *e)
 	KviKvsTimer * t = m_pTimerDictById->find(iId);
 	if(!t)
 	{
-		debug("Internal error: got an nonexistant timer event");
+		qDebug("Internal error: got an nonexistant timer event");
 		return; // HUH ?
 	}
 

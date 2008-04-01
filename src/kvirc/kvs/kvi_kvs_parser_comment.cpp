@@ -26,22 +26,14 @@
 
 
 #include "kvi_kvs_parser.h"
-
 #include "kvi_kvs_treenode.h"
-
 #include "kvi_kvs_report.h"
 #include "kvi_kvs_kernel.h"
-
 #include "kvi_kvs_parser_macros.h"
-
 #include "kvi_locale.h"
-
-
 
 KviKvsTreeNode * KviKvsParser::parseComment()
 {
-#ifdef COMPILE_NEW_KVS
-
 	KVSP_ASSERT((KVSP_curCharUnicode == '#') || (KVSP_curCharUnicode == '/'));
 
 	switch(KVSP_curCharUnicode)
@@ -95,7 +87,6 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 			KVSP_ASSERT(false);
 		break;
 	}
-#endif
-	return 0; 
+	return 0;
 }
 

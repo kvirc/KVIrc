@@ -28,10 +28,8 @@
 
 KviKvsTreeNode::KviKvsTreeNode(const QChar * pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pParent = 0;
 	m_pLocation = pLocation;
-#endif
 }
 
 

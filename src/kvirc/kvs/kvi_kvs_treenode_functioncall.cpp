@@ -47,7 +47,7 @@ void KviKvsTreeNodeFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeFunctionCall::dump(const char * prefix)
 {
-	debug("%s FunctionCall",prefix);
+	qDebug("%s FunctionCall",prefix);
 }
 
 bool KviKvsTreeNodeFunctionCall::canEvaluateToObjectReference()
@@ -59,4 +59,3 @@ bool KviKvsTreeNodeFunctionCall::isFunctionCall()
 {
 	return true;
 }
-

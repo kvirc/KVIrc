@@ -30,33 +30,25 @@
 KviKvsTreeNodeVoidFunctionCall::KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation,KviKvsTreeNodeFunctionCall * r)
 : KviKvsTreeNodeInstruction(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pFunctionCall = r;
-#endif
 }
 
 KviKvsTreeNodeVoidFunctionCall::~KviKvsTreeNodeVoidFunctionCall()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pFunctionCall;
-#endif
 }
 
 void KviKvsTreeNodeVoidFunctionCall::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Void Function Call";
-#endif
 }
 
 void KviKvsTreeNodeVoidFunctionCall::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s VoidFunctionCall",prefix);
+	qDebug("%s VoidFunctionCall",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pFunctionCall->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeVoidFunctionCall::execute(KviKvsRunTimeContext * c)

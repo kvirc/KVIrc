@@ -324,10 +324,7 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	}
 	m_pLabel = new QLabel(szText,pMenu);
 	QObject::connect(m_pLabel,SIGNAL(destroyed()),m_pSignalRelay,SLOT(labelDestroyed()));
-#ifndef COMPILE_USE_QT4
-	// FIXME: QT4 Seems to not allow widgets as QMenu items
-	pMenu->insertItem(m_pLabel);
-#endif
+
 	m_pLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	if(pPix)m_pLabel->setPixmap(*pPix);
 }
@@ -502,10 +499,6 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 }
 
 
-
-
-
-
 KviKvsPopupMenuTopLevelData::KviKvsPopupMenuTopLevelData(KviKvsVariantList * pParameters,KviWindow * pWindow)
 {
 	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),TRUE);
@@ -520,11 +513,6 @@ KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
 	delete m_pExtendedRunTimeData;
 	delete m_pParameters;
 }
-
-
-
-
-
 
 
 KviKvsPopupMenu::KviKvsPopupMenu(const QString &szName)
@@ -812,7 +800,7 @@ void KviKvsPopupMenu::setupMenuContents()
 	KviKvsPopupMenuTopLevelData * d = topLevelData();
 	if(!d)
 	{
-		debug("Ops...menu contents changed behind my back!");
+		qDebug("Ops...menu contents changed behind my back!");
 		return;
 	}
 
@@ -898,13 +886,9 @@ void KviKvsPopupMenu::itemClicked(int itemId)
 				// FIXME: should we print somethng if run() returns false ?
 				lock(false);
 			}
-		} else debug("oops....clicked something that is not an item at position %d",param);
+		} else qDebug("oops....clicked something that is not an item at position %d",param);
 		// FIXME: #warning "Maybe tell that the window has changed"
-	} else debug("oops....no menu item at position %d",param);
-	// UGLY Qt 3.0.0.... we can't clear menu contents here :(
-//#if QT_VERSION < 300
-//	topLevelPopup()->clearMenuContents();
-//#endif
+	} else qDebug("oops....no menu item at position %d",param);
 }
 
 
@@ -1226,9 +1210,3 @@ void KviKvsPopupMenu::generateDefPopup(QString &buffer)
 	KviCommandFormatter::blockFromBuffer(core);
 	buffer.append(core);
 }
-
-
-
-
-
-

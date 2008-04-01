@@ -25,7 +25,6 @@
 #define __KVIRC__
 
 #include "kvi_ircconnectionserverinfo.h"
-
 #include "kvi_kvs_coresimplecommands.h"
 
 #include "kvi_kvs_kernel.h"
@@ -34,8 +33,8 @@
 #include "kvi_locale.h"
 #include "kvi_kvs_treenode_command.h"
 
-#include <qregexp.h>
-#include <qstringlist.h>
+#include <QRegExp>
+#include <QStringList>
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -232,6 +231,4 @@ namespace KviKvsCoreSimpleCommands
 
 		return true;
 	}
-
 };
-

@@ -49,17 +49,14 @@ void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	qDebug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariantList l;
 	if(!m_pParams->evaluate(c,&l))return false;
 	
@@ -79,6 +76,5 @@ bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,
 		c->error(this,__tr2qs("Error in inner alias function call '%Q', called from this context"),&m_szFunctionName);
 		return false;
 	}
-#endif
 	return true;
 }

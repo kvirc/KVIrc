@@ -287,7 +287,7 @@ bool KviKvsVariant::asBoolean() const
 		case KviKvsVariantData::HObject: return m_pData->m_u.hObject; break;
 		default: /* make gcc happy */ break;
 	}
-	debug("WARNING: invalid variant type %d in KviKvsVariant::asBoolean()",m_pData->m_eType);
+	qDebug("WARNING: invalid variant type %d in KviKvsVariant::asBoolean()",m_pData->m_eType);
 	return false;
 }
 
@@ -1365,11 +1365,7 @@ KviKvsVariant* KviKvsVariant::unserialize(const QString& data)
 {
 	KviKvsVariant* pResult = 0;
 
-#ifdef COMPILE_USE_QT4
 	const QChar * aux = (const QChar *)data.constData();
-#else
-	const QChar * aux = (const QChar *)data.ucs2();
-#endif
 	
 	pResult = unserialize(&aux);
 
@@ -1612,4 +1608,3 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 
 	return CMP_THISGREATER; // should never happen
 }
-

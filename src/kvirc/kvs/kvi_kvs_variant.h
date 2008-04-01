@@ -204,5 +204,4 @@ private:
 #include "kvi_kvs_array.h"
 #include "kvi_kvs_hash.h"
 
-
 #endif //!_KVI_KVS_VARIANT_H_

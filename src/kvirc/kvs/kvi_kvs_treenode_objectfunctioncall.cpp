@@ -37,21 +37,17 @@ KviKvsTreeNodeObjectFunctionCall::~KviKvsTreeNodeObjectFunctionCall()
 
 void KviKvsTreeNodeObjectFunctionCall::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Object Function Call \"";
 	szBuffer += m_szFunctionName;
 	szBuffer += "\"";
-#endif
 }
 
 void KviKvsTreeNodeObjectFunctionCall::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s ObjectFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	qDebug("%s ObjectFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.utf8().data());
-#endif
 }
 
 bool KviKvsTreeNodeObjectFunctionCall::canEvaluateInObjectScope()

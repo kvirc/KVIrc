@@ -31,9 +31,7 @@
 KviKvsTreeNodeSingleParameterIdentifier::KviKvsTreeNodeSingleParameterIdentifier(const QChar * pLocation,int iStart)
 : KviKvsTreeNodeData(pLocation)
 {
-#ifdef COMPILE_NEW_KVS
 	m_iStart = iStart;
-#endif
 }
 
 KviKvsTreeNodeSingleParameterIdentifier::~KviKvsTreeNodeSingleParameterIdentifier()
@@ -42,19 +40,15 @@ KviKvsTreeNodeSingleParameterIdentifier::~KviKvsTreeNodeSingleParameterIdentifie
 
 void KviKvsTreeNodeSingleParameterIdentifier::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Single Parameter Identifier \"$";
 	KviQString::appendFormatted(szBuffer,"%d",m_iStart);
 	szBuffer += "\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSingleParameterIdentifier::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s SingleParameterIdentifier(%d)",prefix,m_iStart);
-#endif
+	qDebug("%s SingleParameterIdentifier(%d)",prefix,m_iStart);
 }
 
 bool KviKvsTreeNodeSingleParameterIdentifier::canEvaluateToObjectReference()
@@ -64,11 +58,8 @@ bool KviKvsTreeNodeSingleParameterIdentifier::canEvaluateToObjectReference()
 
 bool KviKvsTreeNodeSingleParameterIdentifier::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	KviKvsVariant * v = c->parameterList()->at(m_iStart);
 	if(!v)pBuffer->setNothing();
 	else pBuffer->copyFrom(v);
-#endif
 	return true;
 }
-

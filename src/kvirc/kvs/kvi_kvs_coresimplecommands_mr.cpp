@@ -47,9 +47,9 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_popupmanager.h"
 
-#include <qcursor.h>
-#include <qprocess.h>
-#include <qtimer.h>
+#include <QCursor>
+#include <QProcess>
+#include <QTimer>
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -1320,16 +1320,9 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("parameters",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,l)
 		KVSCSC_PARAMETERS_END
 
-#ifdef COMPILE_USE_QT4
 		QProcess proc;
 		proc.start(szCommand,l);
 		// FIXME: KVSCSC_pContext->warning(__tr2qs("Failed to execute command '%Q'"),&szCommand);
-#else
-		QProcess proc(szCommand);
-		for ( QStringList::Iterator it = l.begin(); it != l.end(); ++it ) proc.addArgument(*it);
-		if(!proc.start())KVSCSC_pContext->warning(__tr2qs("Failed to execute command '%Q'"),&szCommand);
-#endif
 		return true;
 	}
 };
-

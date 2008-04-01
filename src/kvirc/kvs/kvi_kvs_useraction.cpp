@@ -274,4 +274,3 @@ void KviKvsUserAction::save(KviConfig * cfg)
 	if(m_uFlags != 0)cfg->writeEntry("Flags",m_uFlags);
 	cfg->writeEntry("Code",m_pScript->code());
 }
-

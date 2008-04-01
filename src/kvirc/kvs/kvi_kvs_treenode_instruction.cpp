@@ -28,16 +28,10 @@
 
 void KviKvsTreeNodeInstruction::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Instruction";
-#endif
 }
 
 void KviKvsTreeNodeInstruction::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s Instruction",prefix);
-#endif
+	qDebug("%s Instruction",prefix);
 }
-
-

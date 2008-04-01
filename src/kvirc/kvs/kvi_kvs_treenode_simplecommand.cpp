@@ -38,21 +38,15 @@ KviKvsTreeNodeSimpleCommand::~KviKvsTreeNodeSimpleCommand()
 
 void KviKvsTreeNodeSimpleCommand::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Simple Command \"";
 	szBuffer += m_szCmdName;
 	szBuffer += "\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSimpleCommand::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	debug("%s SimpleCommand(%s)",prefix,m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
-#endif
 }
-
-

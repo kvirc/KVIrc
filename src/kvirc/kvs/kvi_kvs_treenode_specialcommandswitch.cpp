@@ -30,7 +30,7 @@
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_locale.h"
 
-#include <qregexp.h>
+#include <QRegExp>
 
 KviKvsTreeNodeSpecialCommandSwitchLabel::KviKvsTreeNodeSpecialCommandSwitchLabel(const QChar * pLocation)
 : KviKvsTreeNode(pLocation)
@@ -61,9 +61,6 @@ void KviKvsTreeNodeSpecialCommandSwitchLabel::setInstruction(KviKvsTreeNodeInstr
 }
 
 
-
-
-
 KviKvsTreeNodeSpecialCommandSwitchLabelCase::KviKvsTreeNodeSpecialCommandSwitchLabelCase(const QChar * pLocation)
 : KviKvsTreeNodeSpecialCommandSwitchLabel(pLocation)
 {
@@ -80,7 +77,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelCase::contextDescription(QString &sz
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::dump(const char * prefix)
 {
-	debug("%s SpecialCommandSwitchLabelCase",prefix);
+	qDebug("%s SpecialCommandSwitchLabelCase",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
@@ -137,8 +134,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext *
 }
 
 
-
-
 KviKvsTreeNodeSpecialCommandSwitchLabelMatch::KviKvsTreeNodeSpecialCommandSwitchLabelMatch(const QChar * pLocation)
 : KviKvsTreeNodeSpecialCommandSwitchLabel(pLocation)
 {
@@ -156,7 +151,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::contextDescription(QString &s
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
 {
-	debug("%s SpecialCommandSwitchLabelMatch",prefix);
+	qDebug("%s SpecialCommandSwitchLabelMatch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
@@ -191,8 +186,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext 
 }
 
 
-
-
 KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::KviKvsTreeNodeSpecialCommandSwitchLabelRegexp(const QChar * pLocation)
 : KviKvsTreeNodeSpecialCommandSwitchLabel(pLocation)
 {
@@ -210,7 +203,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::contextDescription(QString &
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
 {
-	debug("%s SpecialCommandSwitchLabelRegexp",prefix);
+	qDebug("%s SpecialCommandSwitchLabelRegexp",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
@@ -245,10 +238,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext
 }
 
 
-
-
-
-
 KviKvsTreeNodeSpecialCommandSwitchLabelDefault::KviKvsTreeNodeSpecialCommandSwitchLabelDefault(const QChar * pLocation)
 : KviKvsTreeNodeSpecialCommandSwitchLabel(pLocation)
 {
@@ -266,7 +255,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::contextDescription(QString 
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 {
-	debug("%s SpecialCommandSwitchLabelDefault",prefix);
+	qDebug("%s SpecialCommandSwitchLabelDefault",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
@@ -285,8 +274,6 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContex
 	}
 	return true;
 }
-
-
 
 
 KviKvsTreeNodeSpecialCommandSwitch::KviKvsTreeNodeSpecialCommandSwitch(const QChar * pLocation,KviKvsTreeNodeExpression * e)
@@ -318,7 +305,7 @@ void KviKvsTreeNodeSpecialCommandSwitch::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommandSwitch::dump(const char * prefix)
 {
-	debug("%s SpecialCommandSwitch",prefix);
+	qDebug("%s SpecialCommandSwitch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pExpression->dump(tmp.utf8().data());

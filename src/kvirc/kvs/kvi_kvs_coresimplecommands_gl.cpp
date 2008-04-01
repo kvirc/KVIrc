@@ -37,9 +37,7 @@
 
 #include "kvi_out.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3mimefactory.h>
-#endif
+#include <q3mimefactory.h>
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -65,9 +63,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(halt)
 	{
-#ifdef COMPILE_NEW_KVS
 		KVSCSC_pContext->setHaltCalled();
-#endif
 		return false;
 	}
 
@@ -139,11 +135,7 @@ namespace KviKvsCoreSimpleCommands
 			QString szOriginal = szTopic;
 	
 			QString topik = szTopic;
-#ifdef COMPILE_USE_QT4
 			QStringList pl = Q3MimeSourceFactory::defaultFactory()->filePath();
-#else
-			QStringList pl = QMimeSourceFactory::defaultFactory()->filePath();
-#endif
 
 			bool bLowCaseTried = false;
 			bool bFound = KviFileUtils::fileExists(szTopic);
@@ -687,7 +679,4 @@ try_again:
 			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2821 wrapper
-
-
 };
-

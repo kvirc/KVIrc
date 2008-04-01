@@ -351,6 +351,3 @@ int KviKvsScript::execute(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVar
     pParams = 0; pRetVal = 0;
 	return iRunStatus;
 }
-
-
-

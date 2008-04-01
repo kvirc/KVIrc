@@ -34,17 +34,13 @@
 KviKvsTreeNodeCallbackCommand::KviKvsTreeNodeCallbackCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsScript * pCallback)
 : KviKvsTreeNodeCommandWithParameters(pLocation,szCmdName,params)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pCallback = pCallback;
-#endif
 }
 
 
 KviKvsTreeNodeCallbackCommand::~KviKvsTreeNodeCallbackCommand()
 {
-#ifdef COMPILE_NEW_KVS
 	delete m_pCallback;
-#endif
 }
 
 void KviKvsTreeNodeCallbackCommand::contextDescription(QString &szBuffer)
@@ -54,20 +50,15 @@ void KviKvsTreeNodeCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCallbackCommand::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s CallbackCommand(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s CallbackCommand(%s)",prefix,m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);
-#endif
 }
 
 void KviKvsTreeNodeCallbackCommand::dumpCallback(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pCallback->dump(tmp.utf8().data());
-#endif
 }
-

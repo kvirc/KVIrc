@@ -230,7 +230,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(array)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsArray * a = new KviKvsArray();
 		kvs_int_t idx = 0;
 
@@ -241,7 +240,6 @@ namespace KviKvsCoreFunctions
 		}
 
 		KVSCF_pRetBuffer->setArray(a);
-#endif
 		return true;
 	}
 
@@ -845,9 +843,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(falseCKEYWORDWORKAROUND)
 	{
-#ifdef COMPILE_NEW_KVS
 		KVSCF_pRetBuffer->setBoolean(false);
-#endif
 		return true;
 	}
 
@@ -947,14 +943,8 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_SCRIPTTOOLBAR
 			"ScriptToolBar",
 	#endif // COMPILE_SCRIPTTOOLBAR
-	#ifdef COMPILE_USE_QT4
 			"Qt4",
-	#else
-			"Qt3",
-	#endif
-	#ifdef COMPILE_NEW_KVS
 			"KVS",
-	#endif
 			0
 		};
 
@@ -1128,4 +1118,3 @@ namespace KviKvsCoreFunctions
 	}
 
 };
-

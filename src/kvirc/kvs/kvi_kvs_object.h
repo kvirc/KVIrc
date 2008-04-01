@@ -32,7 +32,7 @@
 #include "kvi_kvs_object_functionhandler.h"
 #include "kvi_kvs_types.h"
 
-#include <qobject.h>
+#include <QObject>
 
 
 class KviKvsObjectFunctionCall;

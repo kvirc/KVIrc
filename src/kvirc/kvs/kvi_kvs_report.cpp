@@ -36,27 +36,21 @@
 KviKvsReport::KviKvsReport(Type t,const QString &szContext,const QString &szMessage,const QString &szLocation,KviWindow * pWindow)
 : m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
 {
-#ifdef COMPILE_NEW_KVS
 	m_pCallStack = 0;
 	m_pCodeListing = 0;
-#endif
 }
 
 KviKvsReport::~KviKvsReport()
 {
-#ifdef COMPILE_NEW_KVS
 	if(m_pCallStack)delete m_pCallStack;
 	if(m_pCodeListing)delete m_pCodeListing;
-#endif
 }
 
 void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol)
 {
-#ifdef COMPILE_NEW_KVS
 	iLine = 1;
 
 	const QChar * pBufferBegin = pBegin;
-
 	const QChar * pPrevLine = 0;
 	const QChar * pLineBegin = pBegin;
 
@@ -77,18 +71,15 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 	}
 	
 	iCol = (pBegin - pLineBegin) + 1;
-#endif
 }
 
 
 
 void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPointerList<QString> * pListing)
 {
-#ifdef COMPILE_NEW_KVS
 	iLine = 1;
 
 	const QChar * pBufferBegin = pBegin;
-
 	const QChar * pPrevLine = 0;
 	const QChar * pLineBegin = pBegin;
 
@@ -176,7 +167,6 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 			pListing->append(pListingStr);
 		}
 	}
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -184,7 +174,6 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 
 void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 {
-#ifdef COMPILE_NEW_KVS
 	if(!pOutput)return; // ?
 	if(!g_pApp->windowExists(pOutput))
 	{
@@ -257,6 +246,4 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 				report(r,KviDebugWindow::getInstance());
 		}
 	}
-#endif
 }
-

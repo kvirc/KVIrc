@@ -37,18 +37,14 @@ KviKvsTreeNodeSpecialCommand::~KviKvsTreeNodeSpecialCommand()
 
 void KviKvsTreeNodeSpecialCommand::contextDescription(QString &szBuffer)
 {
-#ifdef COMPILE_NEW_KVS
 	szBuffer = "Special Command \"";
 	szBuffer += m_szCmdName;
 	szBuffer += "\"";
-#endif
 }
 
 
 void KviKvsTreeNodeSpecialCommand::dump(const char * prefix)
 {
-#ifdef COMPILE_NEW_KVS
-	debug("%s SpecialCommand(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s SpecialCommand(%s)",prefix,m_szCmdName.utf8().data());
 	dumpSwitchList(prefix);
-#endif
 }

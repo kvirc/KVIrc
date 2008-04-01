@@ -25,9 +25,7 @@
 #define __KVIRC__
 
 #include "kvi_kvs_corefunctions.h"
-
 #include "kvi_kvs_kernel.h"
-
 #include "kvi_kvs_timermanager.h"
 #include "kvi_kvs_arraycast.h"
 #include "kvi_locale.h"
@@ -41,8 +39,9 @@
 #include "kvi_time.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_eventhandler.h"
-#include <qregexp.h>
 #include "kvi_lagmeter.h"
+
+#include <QRegExp>
 
 namespace KviKvsCoreFunctions
 {
@@ -81,7 +80,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(hash)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsHash * a = new KviKvsHash();
 
 		for(KviKvsVariant * key = KVSCF_pParams->first();key;key = KVSCF_pParams->next())
@@ -94,7 +92,6 @@ namespace KviKvsCoreFunctions
 		}
 
 		KVSCF_pRetBuffer->setHash(a);
-#endif
 		return true;
 	}
 
@@ -197,17 +194,17 @@ namespace KviKvsCoreFunctions
 	
 	//-------------------------------------------------
 	/*
- 	    @doc: lag
- 	    @type:
+	@doc: lag
+	@type:
 			function
- 	    @title:
- 	    		$lag
- 	    @short:
-	 	        Returns the lag on the current server
- 	    @syntax:
- 		        <integer> lag
- 	    @description:
- 	    		This function returns the lag in the current server, in milliseconds.[br]
+	@title:
+			$lag
+	@short:
+		Returns the lag on the current server
+	@syntax:
+		<integer> lag
+	@description:
+		This function returns the lag in the current server, in milliseconds.[br]
 	*/
 	
 	KVSCF(lag)
@@ -219,7 +216,7 @@ namespace KviKvsCoreFunctions
  	            KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
  	            return false;
  	        }
- 	        
+
  	        KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
  	        return true;
 	}
@@ -479,14 +476,12 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isEmpty)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
 		KVSCF_PARAMETERS_END
 
 		KVSCF_pRetBuffer->setBoolean(v->isEmpty());
-#endif
 		return true;
 	}
 	//FIXME: documentation
@@ -566,7 +561,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isNumeric)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
@@ -574,7 +568,6 @@ namespace KviKvsCoreFunctions
 
 		KviKvsNumber n;
 		KVSCF_pRetBuffer->setBoolean(v->asNumber(n));
-#endif
 		return true;
 	}
 
@@ -604,14 +597,12 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isSet)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
 		KVSCF_PARAMETERS_END
 
 		KVSCF_pRetBuffer->setBoolean(!v->isEmpty());
-#endif
 		return true;
 	}
 
@@ -753,7 +744,6 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(keys)
 	{
-#ifdef COMPILE_NEW_KVS
 		KviKvsHash * pHash;
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("hash",KVS_PT_HASH,0,pHash)
@@ -769,7 +759,6 @@ namespace KviKvsCoreFunctions
 			++it;
 		}
 		KVSCF_pRetBuffer->setArray(a);
-#endif
 		return true;
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -885,4 +874,3 @@ namespace KviKvsCoreFunctions
 	}
 
 };
-

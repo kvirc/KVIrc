@@ -45,7 +45,7 @@ void KviKvsTreeNodeData::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeData::dump(const char * prefix)
 {
-	debug("%s Data",prefix);
+	qDebug("%s Data",prefix);
 }
 
 bool KviKvsTreeNodeData::isReadOnly()
@@ -104,4 +104,3 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWriteInObjectScope(Kv
 	c->error(this,__tr2qs("Internal error: trying to evaluate as read-write a read-only data location"));
 	return 0;
 }
-

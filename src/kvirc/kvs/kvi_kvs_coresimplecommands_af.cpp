@@ -48,13 +48,8 @@
 		#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
 		#include <unistd.h>   // for usleep();
 
-		#ifdef COMPILE_USE_QT4
-			#include <qx11info_x11.h>
-			#define get_xdisplay QX11Info::display
-		#else
-			#define get_xdisplay qt_xdisplay
-		#endif
-
+		#include <QX11Info_x11.h>
+		#define get_xdisplay QX11Info::display
 	#endif
 #endif
 #include "kvi_tal_tooltip.h"
@@ -1046,11 +1041,9 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(error)
 	{
-#ifdef COMPILE_NEW_KVS
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
 		KVSCSC_pContext->error("%Q",&szAll);
-#endif
 		return false;
 	}
 
