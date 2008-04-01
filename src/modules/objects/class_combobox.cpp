@@ -365,4 +365,7 @@ void KviKvsObject_combobox::slotActivated(int i)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_combobox.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -27,7 +27,7 @@
 
 #include "mp_xmmsinterface.h"
 
-#ifndef COMPILE_ON_WINDOWS
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(Q_OS_MACX))
 
 #include "kvi_locale.h"
 

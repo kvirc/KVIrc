@@ -382,4 +382,7 @@ KVIRC_MODULE(
 	mircimport_module_cleanup
 )
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvimircimport.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

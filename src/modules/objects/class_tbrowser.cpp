@@ -140,4 +140,7 @@ bool KviKvsObject_textbrowser::function_linkClickedEvent(KviKvsObjectFunctionCal
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_tbrowser.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -741,4 +741,7 @@ KVIRC_MODULE(
 	snd_module_cleanup
 )
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvisnd.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

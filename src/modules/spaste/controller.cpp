@@ -118,4 +118,7 @@ void SPasteController::pasteClipboard(void)
 	} else delete this;//Clipboard finished
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "controller.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -387,4 +387,7 @@ kvs_uint_t uIndex;
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listbox.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

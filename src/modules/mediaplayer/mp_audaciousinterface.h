@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "mp_interface.h"
 
-#ifndef COMPILE_ON_WINDOWS
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(Q_OS_MACX))
 #include <QtDBus/QtDBus>
 
 	class KviAudaciousInterface : public KviMediaPlayerInterface

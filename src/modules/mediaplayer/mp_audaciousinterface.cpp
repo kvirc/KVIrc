@@ -23,8 +23,7 @@
 //=============================================================================
 
 #include "mp_audaciousinterface.h"
-
-#ifndef COMPILE_ON_WINDOWS
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(Q_OS_MACX))
 #include "kvi_locale.h"
 
 MP_IMPLEMENT_DESCRIPTOR(

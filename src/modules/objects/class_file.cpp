@@ -448,4 +448,8 @@ bool KviScriptFileObject::functionHexRead(KviCommand * c, KviParameterList * p,
 }
 
 */
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_file.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

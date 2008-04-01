@@ -275,5 +275,8 @@ KVIRC_MODULE(
 )
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "libkvilamerizer.moc"
+	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+		#include "libkvilamerizer.moc"
+	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif
+

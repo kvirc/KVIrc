@@ -327,5 +327,8 @@ void KviKvsObject_toolbutton::slotClicked()
 	callFunction(this,"clickEvent",params);
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_toolbutton.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
 

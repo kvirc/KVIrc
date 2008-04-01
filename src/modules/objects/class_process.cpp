@@ -307,4 +307,7 @@ void KviKvsObject_process::slotReadStderr()
 	callFunction(this,"readyReadStderrEvent",params);
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_process.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

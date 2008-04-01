@@ -532,4 +532,7 @@ void KviListWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "listwindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

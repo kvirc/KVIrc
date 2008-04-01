@@ -368,4 +368,8 @@ void KviKvsMdmWizard::slotBackClicked()
 KviKvsMdmWizard::~KviKvsMdmWizard()
 {
 }
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_wizard.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -163,4 +163,7 @@ void KviKvsObject_button::slotClicked()
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_button.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

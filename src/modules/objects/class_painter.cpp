@@ -1596,4 +1596,7 @@ bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *c)
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_painter.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

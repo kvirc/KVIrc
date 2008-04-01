@@ -469,4 +469,7 @@ void KviLinksWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_linkswindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

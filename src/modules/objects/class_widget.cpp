@@ -1907,4 +1907,7 @@ bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_widget.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

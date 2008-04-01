@@ -458,4 +458,7 @@ void KviKvsObject_lineedit::slottextChanged(const QString &text)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_lineedit.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

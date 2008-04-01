@@ -778,4 +778,7 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "edituser.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

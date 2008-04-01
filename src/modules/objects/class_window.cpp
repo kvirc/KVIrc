@@ -151,4 +151,8 @@ bool KviKvsObject_window::functionsetCentralWidget(KviKvsObjectFunctionCall *c)
 	((KviKvsScriptWindowWindow *)widget())->setCentralWidget((KviKvsObject_widget *)ob,((KviKvsObject_widget *)ob)->widget());
 	return true;
 }
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_window.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

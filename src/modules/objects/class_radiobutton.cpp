@@ -135,4 +135,7 @@ void KviKvsObject_radiobutton::toggled(bool b)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_radiobutton.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

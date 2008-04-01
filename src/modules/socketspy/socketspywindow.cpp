@@ -122,4 +122,8 @@ void KviSocketSpyWindow::applyOptions()
 	m_pIrcView->applyOptions();
 	KviWindow::applyOptions();
 }
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_socketspywindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

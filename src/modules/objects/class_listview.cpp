@@ -555,4 +555,7 @@ void KviKvsMdmListView::contentsDropEvent(QDropEvent *e)
 
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listview.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

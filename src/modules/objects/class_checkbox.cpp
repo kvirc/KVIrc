@@ -125,4 +125,7 @@ void KviKvsObject_checkbox::toggled(bool b)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_checkbox.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

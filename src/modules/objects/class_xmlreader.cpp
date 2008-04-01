@@ -340,4 +340,7 @@ bool KviKvsObject_xmlreader::function_lastError(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_xmlreader.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

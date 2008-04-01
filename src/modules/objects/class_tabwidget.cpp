@@ -526,4 +526,7 @@ void KviKvsObject_tabwidget::slotCurrentChanged(int value)
 	callFunction(this,"currentChangedEvent",&params);
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_tabwidget.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

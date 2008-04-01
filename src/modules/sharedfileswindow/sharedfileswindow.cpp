@@ -739,4 +739,7 @@ void KviSharedFilesWindow::die()
 //}
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_sharedfileswindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

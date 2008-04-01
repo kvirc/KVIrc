@@ -73,4 +73,7 @@ QString KviLogListViewItemType::text(int col) const
 };
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "logviewwidget.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

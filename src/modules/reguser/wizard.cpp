@@ -461,4 +461,7 @@ void KviRegistrationWizard::notifyCheckToggled(bool)
 	notifyNickChanged(dummy);
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "wizard.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

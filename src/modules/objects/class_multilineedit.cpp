@@ -1196,4 +1196,7 @@ bool KviKvsObject_mledit::functionselectAll(KviKvsObjectFunctionCall *c)
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_multilineedit.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -284,4 +284,7 @@ void KviKvsObject_slider::valueChanged(int value)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_slider.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

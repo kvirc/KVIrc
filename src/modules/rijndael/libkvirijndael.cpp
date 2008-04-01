@@ -849,5 +849,7 @@ KVIRC_MODULE(
 )
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "libkvirijndael.moc"
+	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+		#include "libkvirijndael.moc"
+	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif

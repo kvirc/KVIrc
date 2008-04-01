@@ -418,4 +418,7 @@ bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listviewitem.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

@@ -228,4 +228,7 @@ bool KviKvsObject_dockwindow::function_dock(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_dockwindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
