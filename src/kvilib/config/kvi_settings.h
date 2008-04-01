@@ -64,11 +64,19 @@
 	#else
 		#ifdef HAVE_CONFIG_H
 			#include "config.h"
+			// temporary fix
+			#ifndef COMPILE_NO_X
+				#ifndef COMPILE_X11_SUPPORT
+					#define COMPILE_X11_SUPPORT
+				#endif
+			#endif
 		#else
 			// assume CMake build system
 			#include "kvi_sysconfig.h"
 		#endif
 	#endif
+	
+	
 
 	#define KVILIB_API
 	#define KVIRC_API

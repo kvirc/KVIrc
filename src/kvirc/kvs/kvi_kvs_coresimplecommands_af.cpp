@@ -48,7 +48,7 @@
 		#include "kvi_xlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
 		#include <unistd.h>   // for usleep();
 
-		#include <QX11Info_x11.h>
+		#include <qx11info_x11.h>
 		#define get_xdisplay QX11Info::display
 	#endif
 #endif
