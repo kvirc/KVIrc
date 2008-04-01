@@ -42,7 +42,6 @@
 #include "kvi_locale.h"
 #include "kvi_config.h"
 #include "kvi_irctoolbar.h"
-#include "kvi_imagelib.h"
 #include "kvi_window.h"
 #include "kvi_tal_menubar.h"
 #include "kvi_mextoolbar.h"

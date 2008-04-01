@@ -40,7 +40,6 @@
 #include "kvi_console.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_imagelib.h"
 #include "kvi_options.h"
 #include "kvi_ircview.h"
 #include "kvi_doublebuffer.h"
