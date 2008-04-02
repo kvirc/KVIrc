@@ -1,6 +1,6 @@
 # CMakeLists.txt for src/modules/
 IF(APPLE)
-	set(CMAKE_MODULE_LINKER_FLAGS "-single_module -undefined dynamic_lookup -multiply_defined suppress")
+	SET(CMAKE_MODULE_LINKER_FLAGS "-single_module -undefined dynamic_lookup -multiply_defined suppress")
 ENDIF()
 
 INCLUDE_DIRECTORIES(
@@ -29,7 +29,7 @@ SUBDIRS(
 	ident
 	lamerizer links list log logview
 	mask math mediaplayer mircimport my
-	objects 
+	objects
 	popupeditor
 	raweditor regchan reguser rijndael
 	setup sharedfile sharedfileswindow snd socketspy spaste str system

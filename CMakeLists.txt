@@ -11,6 +11,14 @@
 # Name of the project
 PROJECT(kvirc)
 
+# Some vars
+SET(PACKAGE "kvirc")
+SET(VERSION_MAJOR "4")
+SET(VERSION_BRANCH "4.0")
+SET(VERSION_RELEASE "4.0.0")
+
+SET(LIBS)
+
 # Minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.6)
 
@@ -29,14 +37,6 @@ SET(
 	CMAKE_VERBOSE_MAKEFILE
 	ON CACHE BOOL "Generate verbose Makefiles"
 )
-
-# Some vars
-SET(PACKAGE "kvirc")
-SET(MAJOR "4")
-SET(VERSION "4.0.0")
-SET(VERSION_BRANCH "4.0")
-
-SET(LIBS)
 
 # Install path
 IF(UNIX)
