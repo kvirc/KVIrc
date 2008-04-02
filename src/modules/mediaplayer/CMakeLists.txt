@@ -31,10 +31,10 @@ QT4_WRAP_CPP(kvimediaplayer_MOC_SRCS ${kvimediaplayer_MOC_HDRS})
 # Create library
 IF(UNIX)
 	IF(APPLE)
-		ADD_LIBRARY(kvimediaplayer MODULE ${kvimediaplayer_SRCS}
+		ADD_LIBRARY(kvimediaplayer MODULE ${kvimediaplayer_SRCS})
 	ELSE()
 		# Assume linux
-		ADD_LIBRARY(kvimediaplayer SHARED ${kvimediaplayer_SRCS}
+		ADD_LIBRARY(kvimediaplayer SHARED ${kvimediaplayer_SRCS})
 	ENDIF()
 ELSE()
 	# Assume windows

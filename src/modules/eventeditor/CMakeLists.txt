@@ -15,10 +15,10 @@ QT4_WRAP_CPP(kvieventeditor_MOC_SRCS ${kvieventeditor_MOC_HDRS})
 # Create library
 IF(UNIX)
 	IF(APPLE)
-		ADD_LIBRARY(kvieventeditor MODULE ${kvieventeditor_SRCS}
+		ADD_LIBRARY(kvieventeditor MODULE ${kvieventeditor_SRCS})
 	ELSE()
 		# Assume linux
-		ADD_LIBRARY(kvieventeditor SHARED ${kvieventeditor_SRCS}
+		ADD_LIBRARY(kvieventeditor SHARED ${kvieventeditor_SRCS})
 	ENDIF()
 ELSE()
 	# Assume windows
