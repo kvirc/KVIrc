@@ -15,9 +15,18 @@ SET(kviterm_SRCS
 QT4_WRAP_CPP(kviterm_MOC_SRCS ${kviterm_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviterm SHARED ${kviterm_SRCS} ${kviterm_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviterm)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviterm MODULE ${kviterm_SRCS} ${kviterm_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviterm SHARED ${kviterm_SRCS} ${kviterm_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviterm ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviterm PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviterm PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviterm LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

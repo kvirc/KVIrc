@@ -1,16 +1,5 @@
 # CMakeLists for src/modules/options
 
-# From qmake
-#PRECOMPILED_HEADER  = pch.h
-#
-#precompile_header:!isEmpty(PRECOMPILED_HEADER) {
-#	DEFINES += USING_PCH
-#}
-#
-#precompile_header:isEmpty(PRECOMPILED_HEADER) {
-#	DEFINES += CREATING_PCH
-#}
-
 SET(kvioptions_MOC_HDRS
 	container.h
 	dialog.h
@@ -110,9 +99,18 @@ SET(kvioptions_SRCS
 QT4_WRAP_CPP(kvioptions_MOC_SRCS ${kvioptions_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvioptions SHARED ${kvioptions_SRCS} ${kvioptions_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviaddon)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvioptions MODULE ${kvioptions_SRCS} ${kvioptions_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvioptions SHARED ${kvioptions_SRCS} ${kvioptions_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvioptions ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvioptions PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvioptions PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvioptions LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

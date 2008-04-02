@@ -15,9 +15,18 @@ SET(kvilogview_SRCS
 QT4_WRAP_CPP(kvilogview_MOC_SRCS ${kvilogview_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvilogview SHARED ${kvilogview_SRCS} ${kvilogview_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvilogview)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvilogview MODULE ${kvilogview_SRCS} ${kvilogview_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvilogview SHARED ${kvilogview_SRCS} ${kvilogview_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvilogview ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvilogview PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvilogview PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvilogview LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

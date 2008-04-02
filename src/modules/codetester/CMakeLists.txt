@@ -13,9 +13,18 @@ SET(kvicodetester_SRCS
 QT4_WRAP_CPP(kvicodetester_MOC_SRCS ${kvicodetester_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvicodetester SHARED ${kvicodetester_SRCS} ${kvicodetester_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvicodetester)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvicodetester MODULE ${kvicodetester_SRCS} ${kvicodetester_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvicodetester SHARED ${kvicodetester_SRCS} ${kvicodetester_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvicodetester ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvicodetester PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvicodetester PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvicodetester LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

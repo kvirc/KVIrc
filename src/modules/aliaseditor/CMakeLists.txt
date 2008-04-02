@@ -13,9 +13,18 @@ SET(kvialiaseditor_SRCS
 QT4_WRAP_CPP(kvialiaseditor_MOC_SRCS ${kvialiaseditor_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvialiaseditor SHARED ${kvialiaseditor_SRCS} ${kvialiaseditor_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvialiaseditor)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviaddon MODULE ${kviaddon_SRCS} ${kviaddon_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviaddon SHARED ${kviaddon_SRCS} ${kviaddon_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviaddon ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvialiaseditor PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvialiaseditor PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvialiaseditor LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

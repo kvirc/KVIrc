@@ -13,9 +13,18 @@ SET(kvilist_SRCS
 QT4_WRAP_CPP(kvilist_MOC_SRCS ${kvilist_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvilist SHARED ${kvilist_SRCS} ${kvilist_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvilist)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvilist MODULE ${kvilist_SRCS} ${kvilist_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvilist SHARED ${kvilist_SRCS} ${kvilist_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvilist ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvilist PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvilist PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvilist LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

@@ -8,9 +8,18 @@ SET(kviconfig_SRCS
 QT4_WRAP_CPP(kviconfig_MOC_SRCS ${kviconfig_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviconfig SHARED ${kviconfig_SRCS} ${kviconfig_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviconfig)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviconfig MODULE ${kviconfig_SRCS} ${kviconfig_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviconfig SHARED ${kviconfig_SRCS} ${kviconfig_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviconfig ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviconfig PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviconfig PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviconfig LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

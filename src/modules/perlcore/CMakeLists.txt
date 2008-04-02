@@ -11,6 +11,15 @@
 #	LIBS += -lperl -L$(PERLDIR)/CORE/
 #}
 
+IF(UNIX)
+	IF(APPLE)
+		LIST(APPEND LIBS -lperl)
+	ENDIF()
+ELSE()
+	# Assume windows
+	LIST(APPEND LIBS -lperl58)
+ENDIF()
+
 SET(kviperlcore_MOC_HDRS
 	perlcoreinterface.h
 )
@@ -23,9 +32,18 @@ SET(kviperlcore_SRCS
 QT4_WRAP_CPP(kviperlcore_MOC_SRCS ${kviperlcore_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviperlcore SHARED ${kviperlcore_SRCS} ${kviperlcore_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviperlcore)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviperlcore MODULE ${kviperlcore_SRCS} ${kviperlcore_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviperlcore SHARED ${kviperlcore_SRCS} ${kviperlcore_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviperlcore ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviperlcore PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviperlcore PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviperlcore LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

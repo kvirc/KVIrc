@@ -13,9 +13,18 @@ SET(kviactioneditor_SRCS
 QT4_WRAP_CPP(kviactioneditor_MOC_SRCS ${kviactioneditor_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviactioneditor SHARED ${kviactioneditor_SRCS} ${kviactioneditor_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviactioneditor)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviactioneditor MODULE ${kviactioneditor_SRCS} ${kviactioneditor_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviactioneditor SHARED ${kviactioneditor_SRCS} ${kviactioneditor_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviactioneditor ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviactioneditor PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviactioneditor PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviactioneditor LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

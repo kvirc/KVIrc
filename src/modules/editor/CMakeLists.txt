@@ -13,9 +13,18 @@ SET(kvieditor_SRCS
 QT4_WRAP_CPP(kvieditor_MOC_SRCS ${kvieditor_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvieditor SHARED ${kvieditor_SRCS} ${kvieditor_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvieditor)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvieditor MODULE ${kvieditor_SRCS} ${kvieditor_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvieditor SHARED ${kvieditor_SRCS} ${kvieditor_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvieditor ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvieditor PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvieditor PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvieditor LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

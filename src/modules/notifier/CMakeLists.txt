@@ -24,9 +24,18 @@ SET(kvinotifier_SRCS
 QT4_WRAP_CPP(kvinotifier_MOC_SRCS ${kvinotifier_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvinotifier SHARED ${kvinotifier_SRCS} ${kvinotifier_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviaddon)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvinotifier MODULE ${kvinotifier_SRCS} ${kvinotifier_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvinotifier SHARED ${kvinotifier_SRCS} ${kvinotifier_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvinotifier ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvinotifier PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvinotifier PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvinotifier LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

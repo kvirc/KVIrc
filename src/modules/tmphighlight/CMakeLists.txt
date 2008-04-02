@@ -8,9 +8,18 @@ SET(kvitmphighlight_SRCS
 QT4_WRAP_CPP(kvitmphighlight_MOC_SRCS ${kvitmphighlight_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvitmphighlight SHARED ${kvitmphighlight_SRCS} ${kvitmphighlight_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvitmphighlight)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvitmphighlight MODULE ${kvitmphighlight_SRCS} ${kvitmphighlight_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvitmphighlight SHARED ${kvitmphighlight_SRCS} ${kvitmphighlight_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvitmphighlight ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvitmphighlight PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvitmphighlight PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvitmphighlight LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

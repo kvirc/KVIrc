@@ -38,17 +38,26 @@ SET(kvidcc_SRCS
 	window.cpp
 )
 
-#IF(WIN32)
-#	SET(LIBS ${LIBS} -lws2_32)
-#ENDIF(WIN32)
+IF(WIN32)
+	LIST(APPEND LIBS -lws2_32)
+ENDIF()
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvidcc_MOC_SRCS ${kvidcc_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvidcc SHARED ${kvidcc_SRCS} ${kvidcc_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvidcc)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvidcc MODULE ${kvidcc_SRCS} ${kvidcc_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvidcc SHARED ${kvidcc_SRCS} ${kvidcc_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvidcc ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvidcc PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvidcc PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvidcc LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

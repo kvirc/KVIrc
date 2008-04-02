@@ -8,9 +8,18 @@ SET(kvisharedfile_SRCS
 QT4_WRAP_CPP(kvisharedfile_MOC_SRCS ${kvisharedfile_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvisharedfile SHARED ${kvisharedfile_SRCS} ${kvisharedfile_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvisharedfile)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvisharedfile MODULE ${kvisharedfile_SRCS} ${kvisharedfile_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvisharedfile SHARED ${kvisharedfile_SRCS} ${kvisharedfile_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvisharedfile ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvisharedfile PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvisharedfile PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvisharedfile LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

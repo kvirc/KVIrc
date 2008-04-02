@@ -13,9 +13,18 @@ SET(kvihttp_SRCS
 QT4_WRAP_CPP(kvihttp_MOC_SRCS ${kvihttp_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvihttp SHARED ${kvihttp_SRCS} ${kvihttp_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvihttp)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvihttp MODULE ${kvihttp_SRCS} ${kvihttp_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvihttp SHARED ${kvihttp_SRCS} ${kvihttp_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvihttp ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvihttp PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvihttp PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvihttp LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

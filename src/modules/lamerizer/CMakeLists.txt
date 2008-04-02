@@ -12,9 +12,18 @@ SET(kvilamerizer_SRCS
 QT4_WRAP_CPP(kvilamerizer_MOC_SRCS ${kvilamerizer_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvilamerizer SHARED ${kvilamerizer_SRCS} ${kvilamerizer_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvilamerizer)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvilamerizer MODULE ${kvilamerizer_SRCS} ${kvilamerizer_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvilamerizer SHARED ${kvilamerizer_SRCS} ${kvilamerizer_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvilamerizer ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvilamerizer PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvilamerizer PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvilamerizer LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

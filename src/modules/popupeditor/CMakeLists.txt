@@ -13,9 +13,18 @@ SET(kvipopupeditor_SRCS
 QT4_WRAP_CPP(kvipopupeditor_MOC_SRCS ${kvipopupeditor_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kvipopupeditor SHARED ${kvipopupeditor_SRCS} ${kvipopupeditor_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kvipopupeditor)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kvipopupeditor MODULE ${kvipopupeditor_SRCS} ${kvipopupeditor_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kvipopupeditor SHARED ${kvipopupeditor_SRCS} ${kvipopupeditor_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kvipopupeditor ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvipopupeditor PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kvipopupeditor PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kvipopupeditor LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

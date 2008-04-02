@@ -12,9 +12,18 @@ SET(kviavatar_SRCS
 QT4_WRAP_CPP(kviavatar_MOC_SRCS ${kviavatar_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviavatar SHARED ${kviavatar_SRCS} ${kviavatar_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviavatar)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviavatar MODULE ${kviavatar_SRCS} ${kviavatar_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviavatar SHARED ${kviavatar_SRCS} ${kviavatar_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviavatar ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviavatar PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviavatar PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviavatar LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)

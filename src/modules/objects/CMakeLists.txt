@@ -2,16 +2,10 @@
 
 # From qmake
 #QT += xml
-#
-#win32 {
-#	LIBS += -lws2_32
-#}
-#
-#PRECOMPILED_HEADER  = pch.h
-#
-#precompile_header:!isEmpty(PRECOMPILED_HEADER) {
-#	DEFINES += USING_PCH
-#}
+
+IF(WIN32)
+	LIST(APPEND LIBS -lws2_32)
+ENDIF()
 
 SET(kviobjects_MOC_HDRS
 	class_button.h
@@ -107,9 +101,18 @@ SET(kviobjects_SRCS
 QT4_WRAP_CPP(kviobjects_MOC_SRCS ${kviobjects_MOC_HDRS})
 
 # Create library
-ADD_LIBRARY(kviobjects SHARED ${kviobjects_SRCS} ${kviobjects_MOC_SRCS})
-#TARGET_LINK_LIBRARIES(kvilib kviaddon)
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY(kviobjects MODULE ${kviobjects_SRCS} ${kviobjects_MOC_SRCS})
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(kviobjects SHARED ${kviobjects_SRCS} ${kviobjects_MOC_SRCS})
+	ENDIF()
+ELSE()
+	# Assume windows
+	#ADD_LIBRARY(kviobjects ???)
+ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kviobjects PROPERTIES VERSION ${KVI_VERSION} SOVERSION ${KVI_MAJOR})
+SET_TARGET_PROPERTIES(kviobjects PROPERTIES VERSION ${VERSION} SOVERSION ${MAJOR})
 INSTALL(TARGETS kviobjects LIBRARY DESTINATION ${KVI_INSTALL_PREFIX}/share/kvirc/${KVI_VERSION_BRANCH}/modules/)
