@@ -31,7 +31,7 @@ class KVILIB_API KviTalApplication : public KApplication
 {
 	Q_OBJECT
 public:
-	KviTalApplication();
+	KviTalApplication(int &argc,char ** argv);
 	~KviTalApplication();
 };
 
