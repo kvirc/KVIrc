@@ -1,4 +1,8 @@
 # CMakeLists for data/config
 
 FILE(GLOB files "*.kvc")
-INSTALL(FILES ${files} DESTINATION ${KVI_INSTALL_PREFIX}/share/${KVI_PACKAGE}/${KVI_VERSION_BRANCH}/config/)
+IF(APPLE)
+	INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/config/)
+ELSE()
+	INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/)
+ENDIF()

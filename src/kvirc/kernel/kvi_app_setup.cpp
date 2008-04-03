@@ -570,10 +570,7 @@ void KviApp::findGlobalKvircDirectory()
 	// Check for MacOS X Bundle compilation
 	#ifdef Q_OS_MACX
 		m_szGlobalKvircDir = applicationDirPath();
-		m_szGlobalKvircDir+= "/../Resources/kvirc/";
-		#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-		//m_szGlobalKvircDir+= VERSION_BRANCH;
-		m_szGlobalKvircDir+= "4.0/";
+		m_szGlobalKvircDir+= "/../Resources/";
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //Q_OS_MACX
 
