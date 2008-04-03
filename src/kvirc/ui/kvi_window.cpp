@@ -76,7 +76,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <kwin.h>
+//	#include <kwin.h>
 	#include <kdeversion.h>
 #endif
 
@@ -276,7 +276,7 @@ bool KviWindow::focusNextPrevChild(bool next)
 		if(w->focusPolicy() == Qt::StrongFocus)return false;
 		//QVariant v = w->property("KviProperty_FocusOwner");
 		//if(v.isValid())return false; // Do NOT change the focus widget!
-		
+
 		if(w->parent())
 		{
 			if(w->parent()->metaObject()->indexOfProperty("KviProperty_ChildFocusOwner") == -1)
@@ -684,7 +684,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	{
 		g_pMdiWindowSystemTextEncodingPopup->clear();
 	}
-	
+
 	if(!g_pMdiWindowSystemTextEncodingPopupStandard)
 		g_pMdiWindowSystemTextEncodingPopupStandard = new KviTalPopupMenu();
 	else
@@ -725,7 +725,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Standard"),g_pMdiWindowSystemTextEncodingPopupStandard);
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send Local)"),g_pMdiWindowSystemTextEncodingPopupSmart);
 	g_pMdiWindowSystemTextEncodingPopup->insertItem(__tr2qs("Smart (Send UTF-8)"),g_pMdiWindowSystemTextEncodingPopupSmartUtf8);
-	
+
 	int i = 0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	while(d->szName)
@@ -959,7 +959,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 	{
 		// must find one NOW
 		// we probably have no KviInput since it would have been grabbed anyway
-		
+
 		if(m_pIrcView)m_pFocusHandler = m_pIrcView;
 		else {
 			QList<QObject *> list = children();
@@ -1017,7 +1017,7 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 					if(m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
 						return false;
 				}
-	
+
 				if(m_pFocusHandler)
 				{
 					m_pFocusHandler->setFocus();
@@ -1374,7 +1374,7 @@ void KviWindow::preprocessMessage(QString & szMessage)
 					else
 					{
 						*it=QString("\r!c%1\r%2\r").arg(tmp).arg(*it);
-					}	
+					}
 	}
 	szMessage=strings.join(" ");
 }

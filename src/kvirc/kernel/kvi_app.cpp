@@ -167,7 +167,7 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 #endif
 
 KviApp::KviApp(int &argc,char ** argv)
-: KviTalApplication(argc,argv)
+: KviTalApplication()
 {
 	// Ok...everything begins here
 	g_pApp                  = this;
@@ -225,7 +225,7 @@ void KviApp::setup()
 
 	// check if we want to permanently disable the splash screen
 	// we do it once for every version: the user should see the new splash screens at least once
-	
+
 	QString szSplashDisableFile;
 	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash." KVI_VERSION);
 
@@ -773,7 +773,7 @@ void KviApp::checkSuggestRestoreDefaultScript()
 	if(score < 100)return;
 
 	bSuggestedOnce = true;
-	
+
 	switch(QMessageBox::question(0,__tr2qs("Installation problems ?"),
 		__tr2qs("<b>Ooops...</b><br><br>" \
 				"<b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>" \
@@ -821,7 +821,7 @@ void KviApp::restoreDefaultScript()
 	KviKvs::clearRawEvents();
 	KviKvs::clearPopups();
 	KviKvs::clearScriptAddons();
-	
+
 	KviActionManager::instance()->killAllKvsUserActions();
 	KviCustomToolBarManager::instance()->clear();
 
@@ -896,7 +896,7 @@ QString KviApp::getClipboardText()
 #endif
 	return buffer;
 	*/
-	
+
 	QString buffer = clipboard()->text(QClipboard::Clipboard);
 	if(buffer.isEmpty())return clipboard()->text(QClipboard::Selection);
 	return buffer;
@@ -1541,7 +1541,7 @@ void KviApp::autoConnectToServers()
 		}
 		g_pIrcServerDataBase->clearAutoConnectOnStartupServers();
 	}
-	
+
 	KviPointerList<KviIrcServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
 	if(lr)
 	{
@@ -1569,7 +1569,7 @@ void KviApp::createFrame()
 		KviKvsScript::run(m_szExecAfterStartup.ptr(),g_pFrame->firstConsole());
 		m_szExecAfterStartup = "";
 	}
-	
+
 	// auto connect to servers if needed
 	if(g_pIrcServerDataBase->autoConnectOnStartupServers() || g_pIrcServerDataBase->autoConnectOnStartupNetworks())
 	{
@@ -1578,7 +1578,7 @@ void KviApp::createFrame()
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
 		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolStartupMinimized))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
@@ -1771,7 +1771,7 @@ KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContex
 
 	while(it.current())
 	{
-		if(KviQString::equalCI(windowCaption,it.current()->plainTextCaption()) && 
+		if(KviQString::equalCI(windowCaption,it.current()->plainTextCaption()) &&
 			(iContextId==-1 || it.current()->context()->id() == iContextId))
 				return it.current();
 		++it;
@@ -1865,11 +1865,11 @@ void KviApp::buildRecentChannels()
 	m_pRecentChannelsDict = new KviPointerHashTable<const char *,QStringList>;
 	m_pRecentChannelsDict->setAutoDelete(TRUE);
 	QString szChan,szNet;
-	for ( 
+	for (
 		QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).begin();
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).end();
 		++it
-	) 
+	)
 	{
 		if(!(*it).isEmpty())
 		{
@@ -2020,7 +2020,7 @@ void KviApp::heartbeat(kvi_time_t tNow)
 		// FIXME: this has huge precision problems...
 		KVI_OPTION_UINT(KviOption_uintTotalConnectionTime)++;
 	}
-	
+
 	// the line below is an approximation of (tNow / 120) == 0
 	// we don't need a really great precision here, so 128 is still ok
 	if(!(tNow & 0x7f))
@@ -2036,7 +2036,7 @@ void KviApp::timerEvent(QTimerEvent *e)
 	}
 
 	// our heartbeat
-	
+
 	kvi_time_t tNow = kvi_unixTime();
 
 	heartbeat(tNow);

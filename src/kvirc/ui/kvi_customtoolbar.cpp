@@ -250,7 +250,8 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent *e)
 				a->setVisible(true);
 #ifdef COMPILE_KDE_SUPPORT
 				// bleah ://///
-				insertWidget(-1,m_pDraggedChild->sizeHint().width(),m_pDraggedChild,idx);
+				//insertWidget(-1,m_pDraggedChild->sizeHint().width(),m_pDraggedChild,idx);
+				addWidget(m_pDraggedChild);
 #endif
 				QEvent ev(QEvent::LayoutHint);
 				QApplication::sendEvent(this,&ev);
@@ -454,7 +455,8 @@ void KviCustomToolBar::drag(QWidget * child,const QPoint &pnt)
 	a->setVisible(true);
 #ifdef COMPILE_KDE_SUPPORT
 	// bleah ://///
-	insertWidget(-1,child->width(),child,idx);
+	// not sure if i'm losing anythig from insertWidget(-1,child->width(),child,idx);
+	addWidget(child);
 #endif
 	QEvent ev(QEvent::LayoutHint);
 	QApplication::sendEvent(this,&ev);
@@ -533,14 +535,11 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 			{
 				// drag out!
 // FIXME: This is screwed up in Qt4.... :/
-#ifdef COMPILE_USE_QT4
 				QDrag * d = new QDrag(this);
 				QMimeData * m = new QMimeData();
 				m->setText(m_pMovedChild->name());
 				d->setMimeData(m);
-#else
-				QDragObject * d = new QTextDrag(m_pMovedChild->name(),this);
-#endif
+
 				KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->name());
 				if(act)
 				{
@@ -574,7 +573,9 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 						pActionForMovedChild->setVisible(false);
 #ifdef COMPILE_KDE_SUPPORT
 					// bleah ://///
-					insertWidget(-1,m_pMovedChild->width(),m_pMovedChild,0);
+					// muarghh
+					//insertWidget(-1,m_pMovedChild->width(),m_pMovedChild,0);
+					addWidget(m_pMovedChild);
 #endif
 					QEvent ev(QEvent::LayoutHint);
 					QApplication::sendEvent(this,&ev);

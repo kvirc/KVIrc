@@ -33,6 +33,9 @@ class KVILIB_API KviTalMainWindow : public KMainWindow
 public:
 	KviTalMainWindow(QWidget * par,const char * nam);
 	~KviTalMainWindow();
+	public:
+	bool usesBigPixmaps();
+	void setUsesBigPixmaps(bool b);
 };
 
 #endif // _KVI_TAL_MAINWINDOW_KDE_H_

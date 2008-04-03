@@ -44,10 +44,11 @@
 
 	#include <stdlib.h> // for getenv()
 	#include <unistd.h> // for symlink() <-- unused ?
-	
+
 	#ifdef COMPILE_KDE_SUPPORT
 		#include <kconfig.h>
-		#include <kstddirs.h>
+		#include <KConfigGroup>
+//		#include <kstddirs.h>
 	#endif
 
 #else
@@ -92,11 +93,11 @@ bool KviApp::checkLocalKvircDirectory(const QString szDir)
 	//First check if the dir exists
 	if(!KviFileUtils::directoryExists(szDir))return false;
 	if(!QFileInfo(szDir).isWritable()) return false;
-	
+
 	QString szBuff;
 	getLocalKvircDirectory(szBuff,Config);
 	if(!KviFileUtils::directoryExists(szBuff)) return false;
-	
+
 	return true;
 }
 
@@ -362,7 +363,7 @@ void KviApp::setupUriAssociations(char * proto)
 	appPath.replace('/',"\\");
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,key);
-	
+
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"URL:IRC Protocol",16);
 	RegSetValueEx( hKey,"URL Protocol",0,REG_SZ,(LPBYTE)"",0);
@@ -376,7 +377,7 @@ void KviApp::setupUriAssociations(char * proto)
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=__tr2qs("Open with KVIrc").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
-	
+
 	key=storedKey+"\\Shell\\open\\command";
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").local8Bit();
@@ -399,7 +400,7 @@ void KviApp::setupFileAssociations()
 
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvs",0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcScript",11);
-	
+
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcScript");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -413,7 +414,7 @@ void KviApp::setupFileAssociations()
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=__tr2qs("Run KVS Script").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
-	
+
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
@@ -423,7 +424,7 @@ void KviApp::setupFileAssociations()
 
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvc",0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcConfig",11);
-	
+
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcConfig");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -435,12 +436,12 @@ void KviApp::setupFileAssociations()
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 	// Themes
-	
+
 	SHDeleteKey(HKEY_CLASSES_ROOT,".kvt");
 
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvt",0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcTheme",11);
-	
+
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcTheme");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -454,7 +455,7 @@ void KviApp::setupFileAssociations()
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=__tr2qs("Install Theme Package").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
-	
+
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
@@ -465,7 +466,7 @@ void KviApp::setupFileAssociations()
 
 	err=RegCreateKeyEx(HKEY_CLASSES_ROOT,".kva",0,0,0,KEY_WRITE,0,&hKey,0);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)"KVIrcAddon",11);
-	
+
 
 	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcAddon");
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,0,0,KEY_WRITE,0,&hKey,0);
@@ -479,7 +480,7 @@ void KviApp::setupFileAssociations()
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=__tr2qs("Install Package").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
-	
+
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
@@ -504,7 +505,7 @@ void KviApp::setupFileAssociations()
 		"/etc/X11",         "/home",          "/home/kvirc",
 		0
 	};
-	
+
 	const char * usualKvircGlobalDir[]=
 	{
 		"/share/kvirc/",            "/share/apps/kvirc/",
@@ -542,6 +543,7 @@ void KviApp::findGlobalKvircDirectory()
 	// Since I had many problems with it
 	// because of strange distributions or KDEDIRS
 	// I do it in that way...
+	/* does not work with kde4...
 	#ifdef COMPILE_KDE_SUPPORT
 		// KDE compilation ...
 		// The things usually go installed into $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
@@ -562,7 +564,7 @@ void KviApp::findGlobalKvircDirectory()
 		}
 		// FAILED ? Check the usual way...
 	#endif //COMPILE_WITH_KDE
-
+*/
 	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 
 	// Check for MacOS X Bundle compilation
@@ -583,7 +585,7 @@ void KviApp::findGlobalKvircDirectory()
 			#warning you must change back hardcoded 4.0 to VERSION_BRANCH
 			//m_szGlobalKvircDir+= VERSION_BRANCH;
 			m_szGlobalKvircDir+= "4.0/";
-			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;	
+			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	}
 
@@ -651,15 +653,15 @@ bool KviApp::findLocalKvircDirectory()
 #ifdef COMPILE_KDE_SUPPORT
 	if(m_szConfigFile.isEmpty())
 	{  // don't do that if user supplied a config file :)
-		KConfig * cfg = config();
+		KConfig * cfg = new KConfig("kvirc");
+		KConfigGroup * cfgMainGroup = new KConfigGroup(cfg, "Main");
 		if(cfg)
 		{
-			if(cfg->getConfigState() == KConfig::ReadWrite)
+			if(cfg->accessMode() == KConfig::ReadWrite)
 			{
-				cfg->setGroup("Main");
-				m_szLocalKvircDir = cfg->readEntry("LocalKvircDirectory","");
-				
-				unsigned int uSourcesDate = cfg->readUnsignedNumEntry("SourcesDate",0);
+				m_szLocalKvircDir = cfgMainGroup->readEntry("LocalKvircDirectory");
+
+				unsigned int uSourcesDate = cfgMainGroup->readEntry("SourcesDate").toInt();
 				if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 					return false; // we force a setup anyway
 
@@ -699,7 +701,7 @@ bool KviApp::findLocalKvircDirectory()
 
 	cfgx.setGroup("Main");
 	m_szLocalKvircDir = cfgx.readEntry("LocalKvircDirectory","");
-	
+
 	unsigned int uSourcesDate = cfgx.readUIntEntry("SourcesDate",0);
 	if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 		return false; // we force a setup anyway
@@ -718,7 +720,7 @@ void KviApp::loadDirectories()
 	szLocalePath.append(KVI_PATH_SEPARATOR);
 	szLocalePath.append("locale");
 	szLocalePath.append(KVI_PATH_SEPARATOR);
-	
+
 	KviLocale::init(this,szLocalePath);
 
 	//__debug_1arg("Global Kvirc directory is %s",m_szGlobalKvircDir.ptr());
@@ -830,14 +832,14 @@ void KviApp::saveKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{
 		// not if user supplied a config file
-		KConfig * cfg = config();
+		KConfig * cfg = new KConfig("kvirc");
+		KConfigGroup * cfgMainGroup = new KConfigGroup(cfg, "Main");
 		if(cfg)
 		{
-			if(cfg->getConfigState() == KConfig::ReadWrite)
+			if(cfg->accessMode() == KConfig::ReadWrite)
 			{
-				cfg->setGroup("Main");
-				cfg->writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
-				cfg->writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
+				cfgMainGroup->writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
+				cfgMainGroup->writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
 				cfg->sync();
 				return;
 			}

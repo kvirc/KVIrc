@@ -24,7 +24,7 @@
 
 #define __KVIRC__
 
-
+#include <qmetatype.h>
 #include "kvi_ipc.h"
 
 
@@ -64,7 +64,7 @@
 		static Atom kvi_atom_ipc_remote_message;
 		static KviStr kvi_sentinel_id;
 		static bool g_bIpcAtomsLoaded = false;
-	
+
 		static void kvi_ipcLoadAtoms()
 		{
 			if(g_bIpcAtomsLoaded)return;
@@ -74,13 +74,13 @@
 			kvi_atom_ipc_remote_command = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_COMMAND",False);
 			kvi_atom_ipc_remote_message = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_MESSAGE",False);
 		}
-	
+
 		static void kvi_ipcSetRemoteCommand(Window w,const char * command)
 		{
 			XChangeProperty(kvi_ipc_get_xdisplay(),w,kvi_atom_ipc_remote_command,
 				XA_STRING,8,PropModeReplace,(const unsigned char *)command,kvi_strLen(command) + 1);
 		}
-	
+
 		static Window kvi_x11_findIpcSentinel(Window win)
 		{
 			Atom type;
@@ -102,28 +102,28 @@
 					}
 				}
 			}
-	
+
 			Window root,parent;
 			Window * children;
 			unsigned int nChildren;
-	
+
 			if(!XQueryTree(kvi_ipc_get_xdisplay(),win,&root,&parent,&children,&nChildren))
 			{
 				if(children)XFree((char *)children);
 				return 0;
 			}
-	
+
 			Window found = 0;
-	
+
 		    for(int i=nChildren-1;(!found) && (i >= 0);i--)
 				found = kvi_x11_findIpcSentinel(children[i]);
-	
+
 	 		if(children)XFree((char *)children);
-	
+
 			return found;
 		}
 	#endif //!COMPILE_NO_X
-	
+
 #endif //!COMPILE_ON_WINDOWS
 
 
@@ -146,7 +146,7 @@
 		}
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_X11_SUPPORT
-	
+
 		kvi_ipcLoadAtoms();
 
 		Window sentinel = kvi_x11_findIpcSentinel(kvi_ipc_get_xrootwin());
@@ -202,7 +202,7 @@
 		hide();
 
 	}
-	
+
 	KviIpcSentinel::~KviIpcSentinel()
 	{
 	}
@@ -250,7 +250,7 @@
 						}
 					}
 					kvi_ipcSetRemoteCommand(winId(),"");
-	
+
 					if(g_pApp)g_pApp->ipcMessage(szData.ptr());
 					return true;
 				}
