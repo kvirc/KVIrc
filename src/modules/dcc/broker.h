@@ -6,7 +6,7 @@
 //   Creation date : Tue Sep 19 09 2000 10:20:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,28 +24,24 @@
 //
 //=======================================================================================
 
+#include "descriptor.h"
+
 #include "kvi_settings.h"
-
-#ifdef COMPILE_USE_QT4
-	// #define COMPILE_DCC_CANVAS
-#else
-	#define COMPILE_DCC_CANVAS
-#endif
-
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_sparser.h"
-
 #include "kvi_pointerhashtable.h"
-#include <qdatetime.h>
-#include <qobject.h>
+
+#include <QDateTime>
+#include <QObject>
 
 class KviConsole;
 class KviDccBroker;
 class KviWindow;
 class KviDccBox;
 
-#include "descriptor.h"
+// #define COMPILE_DCC_CANVAS
+
 
 class KviDccZeroPortTag
 {
@@ -108,7 +104,6 @@ public slots:
 
 	void sendFileExecute(KviDccBox * box,KviDccDescriptor * dcc);
 	void recvFileExecute(KviDccBox * box,KviDccDescriptor * dcc);
-
 
 	void chooseSaveFileName(KviDccBox *box,KviDccDescriptor * dcc);
 	void renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc);

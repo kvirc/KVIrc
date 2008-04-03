@@ -3,8 +3,15 @@
 SUBDIRS(coresmall)
 
 FILE(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
-IF(APPLE)
-	INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/pics/)
+
+IF(UNIX)
+	IF(APPLE)
+		INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/pics/)
+	ELSE()
+		# Assume linux
+		INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	ENDIF()
 ELSE()
-	INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	# Windows
+	#INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/pics/)
 ENDIF()

@@ -24,18 +24,19 @@
 
 #include "kvi_string.h"
 #include "kvi_sockettype.h"
-#include <qobject.h>
-#include <qsocketnotifier.h>
-#include <qtimer.h>
 #include "kvi_inttypes.h"
 
+#include <QObject>
+#include <QSocketNotifier>
+#include <QTimer>
+
 class KviWindow;
+class KviDccMarshal;
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
 #endif
 
-class KviDccMarshal;
 
 class KviDccMarshalOutputContext
 {

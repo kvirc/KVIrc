@@ -30,13 +30,14 @@
 // 16384  32768  | 8192      | ~110        250        290
 //
 
-#include <qstring.h> // fix for qtextstream.h
+#include <QString> // fix for qtextstream.h
+
 #include "codec.h"
 
 typedef struct adpcm_state
 {
-    short valprev; /* Previous output value */
-    char  index;   /* Index into stepsize table */
+	short valprev; /* Previous output value */
+	char  index;   /* Index into stepsize table */
 } ADPCM_state;
 
 

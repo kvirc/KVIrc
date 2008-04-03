@@ -23,16 +23,13 @@
 //=============================================================================
 
 #include "descriptor.h"
-
-#include "kvi_locale.h"
-#include "kvi_kvs_eventtriggers.h"
-
-#include "kvi_window.h"
-#include "kvi_app.h"
-
 #include "send.h"
 #include "window.h"
 
+#include "kvi_locale.h"
+#include "kvi_kvs_eventtriggers.h"
+#include "kvi_window.h"
+#include "kvi_app.h"
 
 static unsigned int g_uNextDescriptorId = 1; // we use 0 as an invalid descriptor id
 static KviPointerHashTable<int,KviDccDescriptor> * g_pDescriptorDict = 0;
@@ -95,7 +92,6 @@ KviDccDescriptor::KviDccDescriptor(KviConsole * pConsole)
 
 	iSampleRate       = 0;
 
-
 	m_bCreationEventTriggered = false;
 }
 
@@ -146,7 +142,6 @@ void KviDccDescriptor::triggerCreationEvent()
 		KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionCreated,pEventWindow,m_szId);
 	}
 }
-
 
 KviDccDescriptor * KviDccDescriptor::find(unsigned int uId)
 {

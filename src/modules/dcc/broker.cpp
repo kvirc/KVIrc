@@ -24,10 +24,11 @@
 #include "dialogs.h"
 #include "chat.h"
 #include "send.h"
-#ifdef COMPILE_DCC_CANVAS
-#include "canvas.h"
-#endif
 #include "voice.h"
+
+#ifdef COMPILE_DCC_CANVAS
+	#include "canvas.h"
+#endif
 
 #include "kvi_app.h"
 #include "kvi_frame.h"
@@ -40,12 +41,12 @@
 #include "kvi_ircconnection.h"
 #include "kvi_sharedfiles.h"
 
+#include <QFileInfo>
+#include <QString>
+
 // kvi_app.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
-
-#include <qfileinfo.h>
-#include <qstring.h>
 
 //#warning "The broker might lookup the remote host name"
 
@@ -124,18 +125,17 @@ void KviDccBroker::unregisterDccBox(KviDccBox * box)
 	m_pBoxList->removeRef(box);
 }
 
-
 void KviDccBroker::cancelDcc(KviDccDescriptor * dcc)
 {
 	delete dcc;
-    dcc = 0;
+	dcc = 0;
 }
 
 void KviDccBroker::cancelDcc(KviDccBox *box,KviDccDescriptor * dcc)
 {
 	if(box)box->forgetDescriptor();
 	delete dcc;
-    dcc = 0;
+	dcc = 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -168,15 +168,15 @@ void KviDccBroker::rsendAskForFileName(KviDccDescriptor * dcc)
 					d->szLocalFileName = *(it);
 					d->szLocalFileName.stripWhiteSpace();
 					++it;
-					if(d->szLocalFileName.isEmpty()) 
+					if(d->szLocalFileName.isEmpty())
 						cancelDcc(d);
-					else 
+					else
 						rsendExecute(d);
 				}
 				delete dcc;
 			}
 	} else {
-			cancelDcc(dcc);
+		cancelDcc(dcc);
 	}
 }
 
@@ -260,7 +260,6 @@ void KviDccBroker::rsendExecute(KviDccBox * box,KviDccDescriptor * dcc)
 
 void KviDccBroker::handleChatRequest(KviDccDescriptor * dcc)
 {
-
 	if(!dcc->bAutoAccept)
 	{
 		// FIXME: better message ? Secure Direct Client Connection...eventually
@@ -388,7 +387,7 @@ void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 {
 	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
-//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
+	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	dcc->console()->frame()->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();
@@ -401,7 +400,6 @@ void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifdef COMPILE_DCC_CANVAS
-
 void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 {
 	if(!dcc->bAutoAccept)
@@ -426,7 +424,6 @@ void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 		activeCanvasExecute(0,dcc);
 	}
 }
-
 #endif
 
 void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
@@ -443,7 +440,7 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
 
-//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
+	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat) || \
 				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChatWhenAutoAccepted)));
@@ -463,13 +460,12 @@ void KviDccBroker::passiveCanvasExecute(KviDccDescriptor * dcc)
 {
 	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
-//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
+	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	dcc->console()->frame()->addWindow(cnv,!bMinimized);
 	if(bMinimized)cnv->minimize();
 	m_pDccWindowList->append(cnv);
 }
-
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -538,7 +534,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 				);
 		}
 
-//#warning "Maybe remove the pending avatar if rejected ?"
+		//#warning "Maybe remove the pending avatar if rejected ?"
 
 		QString title = __tr2qs_ctx("DCC %1 Request - KVIrc","dcc").arg(dcc->szType);
 
@@ -551,7 +547,6 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 		box->show();
 	} else {
 		// auto accept
-
 		if(_OUTPUT_VERBOSE)
 		{
 			dcc->console()->output(KVI_OUT_DCCMSG,__tr2qs_ctx("Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q","dcc"),
@@ -793,15 +788,15 @@ void KviDccBroker::sendFileManage(KviDccDescriptor * dcc)
 					d->szLocalFileName = *(it);
 					d->szLocalFileName.stripWhiteSpace();
 					++it;
-					if(d->szLocalFileName.isEmpty()) 
+					if(d->szLocalFileName.isEmpty())
 						cancelDcc(d);
-					else 
+					else
 						sendFileExecute(0,d);
 				}
 				delete dcc;
 			}
 	} else {
-			cancelDcc(dcc);
+		cancelDcc(dcc);
 	}
 }
 
@@ -893,7 +888,6 @@ bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename
 
 	return KviDccFileTransfer::handleResumeRequest(filename,port,filePos);
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_broker.moc"

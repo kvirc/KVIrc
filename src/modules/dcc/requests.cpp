@@ -23,6 +23,13 @@
 //=============================================================================
 
 #define _KVI_DEBUG_CHECK_RANGE_
+
+#include "gsmcodec.h"
+#include "broker.h"
+#include "voice.h"
+#include "utils.h"
+#include "send.h"
+
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "kvi_string.h"
@@ -34,7 +41,6 @@
 #include "kvi_netutils.h"
 #include "kvi_frame.h"
 #include "kvi_console.h"
-
 #include "kvi_error.h"
 #include "kvi_options.h"
 #include "kvi_defaults.h"
@@ -44,13 +50,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 
-#include "gsmcodec.h"
-#include "broker.h"
-#include "voice.h"
-#include "utils.h"
-#include "send.h"
-
-#include <qfileinfo.h>
+#include <QFileInfo>
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
@@ -145,7 +145,6 @@ static void dcc_module_set_dcc_type(KviDccDescriptor * d,const char * szBaseType
 #endif
 	if(d->bIsTdcc)d->szType.prepend('T');
 }
-
 
 static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,KviStr &port)
 {
@@ -522,7 +521,7 @@ static void dccModuleParseDccAccept(KviDccRequest *dcc)
 	// DCC ACCEPT <filename> 0 <resumesize> <tag>
 	if(!g_pDccBroker->handleResumeAccepted(dcc->szParam1.ptr(),dcc->szParam2.ptr(),dcc->szParam4.ptr()))
 	{
-//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidAccept..."
+		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidAccept..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			KviStr szError(KviStr::Format,__tr2qs_ctx("Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s","dcc"),dcc->szParam1.ptr(),dcc->szParam2.ptr());
@@ -558,7 +557,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 
 	if(!g_pDccBroker->handleResumeRequest(dcc,dcc->szParam1.ptr(),dcc->szParam2.ptr(),filePos,dcc->szParam4.ptr()))
 	{
-//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidResume..."
+		//#warning "IF KviOption_boolReplyCtcpErrmsgOnInvalidResume..."
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			KviStr szError(KviStr::Format,
@@ -754,7 +753,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 	}
 #endif //!COMPILE_SSL_SUPPORT
 
-//#warning "When behind a firewall, we should reply an error message and avoid setting up the listening connection"
+	//#warning "When behind a firewall, we should reply an error message and avoid setting up the listening connection"
 
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
@@ -853,11 +852,11 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 		return;
 	}
 
-//#warning "IF NOT IGNORE DCC GET!"
-
-//#warning "CREATE IT MINIMIZED ETC..."
-//#warning "MAYBE USE A DIALOG TO ACCEPT THE REQUEST ?"
-//#warning "DO NOT ACCEPT /etc/* requests..."
+	//#warning "IF NOT IGNORE DCC GET!"
+	
+	//#warning "CREATE IT MINIMIZED ETC..."
+	//#warning "MAYBE USE A DIALOG TO ACCEPT THE REQUEST ?"
+	//#warning "DO NOT ACCEPT /etc/* requests..."
 
 	if(KVI_OPTION_BOOL(KviOption_boolCantAcceptIncomingDccConnections))
 	{
@@ -919,7 +918,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 		d->szListenIp = "0.0.0.0";
 	} else
 		d->szListenIp=QString(tmp);
-//#warning "DO STH WITH THIS PORT (HOW TO SPECIFY IT ?)"
+	//#warning "DO STH WITH THIS PORT (HOW TO SPECIFY IT ?)"
 	d->szListenPort      = "0"; // any port is ok
 
 	if(KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault))
@@ -1078,14 +1077,11 @@ static void dccModuleParseDccCanvas(KviDccRequest *dcc)
 #endif
 }
 
-
 static void dccModuleParseDccList(KviDccRequest *dcc)
 {
 	// DCC LIST <mask> <ipaddr> <port>
 	// FIXME!
 }
-
-
 
 typedef void (*dccParseProc)(KviDccRequest *);
 typedef struct _dccParseProcEntry

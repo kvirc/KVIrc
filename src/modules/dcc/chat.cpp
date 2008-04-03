@@ -56,6 +56,11 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_qcstring.h"
+#include "kvi_tal_vbox.h"
+
+#include <QSplitter>
+#include <QEvent>
+#include <QResizeEvent>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -63,16 +68,9 @@
 	#include "kvi_mirccntrl.h"
 #endif
 
-#include <qsplitter.h>
-#include <qevent.h>
-#include "kvi_tal_vbox.h"
-
-
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
 #endif
-
-
 
 extern KviDccBroker * g_pDccBroker;
 
@@ -162,7 +160,6 @@ void KviDccChat::startConnection()
 		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
 #endif
 		if(ret != KviError_success)handleMarshalError(ret);
-
 	} else {
 		// ACTIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC %s connection","dcc"),m_pDescriptor->szType.utf8().data());
@@ -185,7 +182,6 @@ void KviDccChat::connectionInProgress()
 
 		if(m_pDescriptor->bSendRequest)
 		{
-		
 			KviStr ip;
 			if(!m_pDescriptor->szFakeIp.isEmpty())
 			{
@@ -288,7 +284,6 @@ QPixmap * KviDccChat::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
 }
-
 
 void KviDccChat::getBaseLogFileName(KviStr &buffer)
 {
@@ -543,12 +538,10 @@ KviDccChatThread::KviDccChatThread(KviWindow *wnd,kvi_socket_t fd)
 	m_pOutBuffers->setAutoDelete(true);
 }
 
-
 KviDccChatThread::~KviDccChatThread()
 {
 	if(m_pOutBuffers)delete m_pOutBuffers;
 }
-
 
 void KviDccChatThread::run()
 {

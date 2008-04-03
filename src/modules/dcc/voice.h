@@ -22,20 +22,22 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_window.h"
-
-#include "kvi_databuffer.h"
-#include "kvi_sockettype.h"
-
 #include "codec.h"
 #include "descriptor.h"
 #include "thread.h"
 #include "window.h"
 
+#include "kvi_window.h"
+#include "kvi_databuffer.h"
+#include "kvi_sockettype.h"
 #include "kvi_tal_hbox.h"
-#include <qlabel.h>
-#include <qtoolbutton.h>
-#include <qtimer.h>
+
+#include <QLabel>
+#include <QToolButton>
+#include <QTimer>
+
+class QSlider;
+class KviDccMarshal;
 
 #ifndef _DCC_VOICE_CPP_
 	extern bool kvi_dcc_voice_is_valid_codec(const char * codecName);
@@ -97,8 +99,6 @@ protected:
 	virtual void run();
 };
 
-class KviDccMarshal;
-class QSlider;
 
 class KviDccVoice : public KviDccWindow
 {

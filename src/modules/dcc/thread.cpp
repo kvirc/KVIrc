@@ -20,8 +20,10 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "thread.h"
 #define _KVI_DEBUG_CHECK_RANGE_
+
+#include "thread.h"
+
 #include "kvi_debug.h"
 #include "kvi_window.h"
 #include "kvi_error.h"
@@ -29,6 +31,7 @@
 #include "kvi_malloc.h"
 #include "kvi_netutils.h"
 #include "kvi_socket.h"
+
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_sslmaster.h"
 #endif

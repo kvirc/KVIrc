@@ -22,11 +22,11 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "broker.h"
 
-#include <qwidget.h>
 #include "kvi_filedialog.h"
 
-#include "broker.h"
+#include <QWidget>
 
 class KviDccBox
 {
@@ -39,7 +39,6 @@ public:
 public:
 	virtual void forgetDescriptor();
 };
-
 
 
 class KviDccAcceptBox : public QWidget , public KviDccBox

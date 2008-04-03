@@ -23,6 +23,8 @@
 #include "voice.h"
 #include "marshal.h"
 #include "broker.h"
+#include "adpcmcodec.h"
+#include "gsmcodec.h"
 
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
@@ -36,15 +38,12 @@
 #include "kvi_malloc.h"
 #include "kvi_socket.h"
 #include "kvi_ircconnection.h"
-
-#include "adpcmcodec.h"
-#include "gsmcodec.h"
-
-#include <qframe.h>
-#include <qsplitter.h>
 #include "kvi_tal_vbox.h"
-#include <qslider.h>
-#include <qtooltip.h>
+
+#include <QFrame>
+#include <QSplitter>
+#include <QSlider>
+#include <QToolTip>
 
 #ifndef COMPILE_ON_WINDOWS
 	#include <sys/time.h>
@@ -52,10 +51,9 @@
 	#include <unistd.h>
 	#include <errno.h>
 	#include <fcntl.h>
-//#include "kvi_error.h"
-
-#include <sys/stat.h>   // for open()
-#include <sys/ioctl.h>  // for ioctl()
+	//#include "kvi_error.h"
+	#include <sys/stat.h>   // for open()
+	#include <sys/ioctl.h>  // for ioctl()
 #endif //!COMPILE_ON_WIDNOWS
 
 extern KviDccBroker * g_pDccBroker;
@@ -141,7 +139,6 @@ KviDccVoiceThread::~KviDccVoiceThread()
 	delete m_pInfoMutex;
 #endif
 }
-
 
 bool KviDccVoiceThread::checkSoundcard()
 {
@@ -280,8 +277,6 @@ bool KviDccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
 		return (m_soundFdMode != failMode);
 	}
 
-
-
 	return true;
 #else
 	return false;
@@ -299,8 +294,6 @@ void KviDccVoiceThread::closeSoundcard()
 	}
 #endif
 }
-
-
 
 bool KviDccVoiceThread::readWriteStep()
 {
@@ -644,8 +637,6 @@ exit_dcc:
 }
 
 
-
-
 KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCVOICE,pFrm,name,dcc)
 {
@@ -682,7 +673,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 //#warning "The volume slider should be enabled only when receiving data"
 	m_pVolumeSlider = new QSlider(-100, 0, 10, 0, Qt::Vertical, m_pHBox, "dcc_voice_volume_slider");
 	m_pVolumeSlider->setValue(getMixerVolume());
-/* Update the tooltip */
+	/* Update the tooltip */
 	setMixerVolume(m_pVolumeSlider->value());
 	m_pVolumeSlider->setMaximumWidth(16);
 	m_pVolumeSlider->setMaximumHeight(2*m_pPlayingLabel->height());
@@ -691,17 +682,11 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pTalkButton = new QToolButton(m_pHBox);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setToggleButton(true);
-#if QT_VERSION >= 300
 	QIconSet iset;
 	iset.setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),QIconSet::Large,QIconSet::Normal,QIconSet::Off);
 	iset.setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)),QIconSet::Large,QIconSet::Normal,QIconSet::On);
 	m_pTalkButton->setIconSet(iset);
-#else
-	m_pTalkButton->setOffIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)));
-	m_pTalkButton->setOnIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)));
-#endif
 	m_pTalkButton->setUsesBigPixmap(true);
-
 	connect(m_pTalkButton,SIGNAL(toggled(bool)),this,SLOT(startOrStopTalking(bool)));
 
 	m_pHBox->setStretchFactor(vbox,1);

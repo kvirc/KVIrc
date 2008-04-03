@@ -26,13 +26,10 @@
 
 #include "kvi_string.h"
 #include "kvi_console.h"
-
 #include "kvi_pointerhashtable.h"
-
 
 class KviDccWindow;
 class KviDccFileTransfer;
-
 class KviDccDescriptor
 {
 public:
@@ -123,18 +120,15 @@ public:
 	QString         szLocalFileSize;   // RECVFILE: local file size (to resume), SENDFILE: file to send size
 
 	bool           bRecvFile;         // do we have to RECEIVE the file or SEND it ?
-
 	bool           bResume;           // do we want to resume ?
 	bool           bNoAcks;           // blind dcc send ? (do not receive nor send acknowledges)
 
 	bool           bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
 
 	// DCC VOICE
-
 	KviStr         szCodec;           // codec name
 	int            iSampleRate;       // Sample rate
 public:
-	// new interface... but should be converted to QString...
 	QString protocol(){ return szType; };
 	bool isActive(){ return bActive; };
 	QString remoteNick(){ return szNick; };
@@ -156,8 +150,5 @@ public:
 	bool isDccChat();
 	bool isFileTransfer(){ return (isFileUpload() || isFileDownload()); };
 };
-
-
-
 
 #endif //_DESCRIPTOR_H_

@@ -22,10 +22,10 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_window.h"
-
 #include "descriptor.h"
 #include "marshal.h"
+
+#include "kvi_window.h"
 
 class KviDccWindow : public KviWindow , public KviDccMarshalOutputContext
 {
@@ -43,7 +43,5 @@ public:
 	virtual KviWindow * dccMarshalOutputWindow();
 	virtual const char * dccMarshalOutputContextString();
 };
-
-
 
 #endif //_WINDOW_H_

@@ -24,19 +24,21 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
-#include "kvi_string.h"
-#include "kvi_databuffer.h"
-
 #include "window.h"
 #include "descriptor.h"
 #include "thread.h"
 
+#include "kvi_window.h"
+#include "kvi_string.h"
+#include "kvi_databuffer.h"
 #include "kvi_pointerlist.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	class KviSSL;
 #endif
+
+class KviDccMarshal;
+class QSplitter;
 
 class KviDccChatThread : public KviDccThread
 {
@@ -60,8 +62,6 @@ public:
 	virtual void sendRawData(const void * buffer,int len); // mutex (m_pOutBuffers usage)
 };
 
-class KviDccMarshal;
-class QSplitter;
 
 class KviDccChat : public KviDccWindow
 {
@@ -96,6 +96,5 @@ protected slots:
 	void startingSSLHandshake();
 	void textViewRightClicked();
 };
-
 
 #endif //_CHAT_H_

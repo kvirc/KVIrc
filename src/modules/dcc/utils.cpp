@@ -99,7 +99,6 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 }
 */
 
-
 bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pConsole,QString &szListenIp)
 {
 	//
@@ -166,4 +165,3 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 
 	return true;
 }
-

@@ -31,10 +31,7 @@
 #include "kvi_socket.h"
 #include "kvi_fileutils.h"
 
-
 #include <stdlib.h> //for exit()
-
-
 
 
 KviDccMarshal::KviDccMarshal(KviDccMarshalOutputContext * ctx)
@@ -159,7 +156,6 @@ void KviDccMarshal::doListen()
 		emit error(KviError_invalidPortNumber);
 		return;
 	}
-
 
 #ifndef COMPILE_IPV6_SUPPORT
 	if(m_bIpV6)
@@ -555,7 +551,6 @@ void KviDccMarshal::snActivated(int)
 
 	emit connected();
 }
-
 
 void KviDccMarshal::doSSLHandshake(int)
 {

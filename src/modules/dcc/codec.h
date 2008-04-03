@@ -52,6 +52,4 @@ public:
 	virtual int decodedFrameSize();
 };
 
-
-
 #endif //_CODEC_H_

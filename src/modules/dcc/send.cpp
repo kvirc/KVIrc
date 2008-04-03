@@ -22,19 +22,14 @@
 //
 //=============================================================================
 
+#define _KVI_DEBUG_CHECK_RANGE_
+
 #include "send.h"
 #include "broker.h"
 #include "marshal.h"
 #include "broker.h"
 #include "window.h"
-#include "kvi_styled_controls.h"
 
-#ifdef COMPILE_ON_WINDOWS
-	// Ugly Windoze compiler...
-	#include "dialogs.h"
-#endif
-
-#define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
@@ -50,7 +45,6 @@
 #include "kvi_memmove.h"
 #include "kvi_thread.h"
 #include "kvi_ircsocket.h"
-
 #include "kvi_mediatype.h"
 #include "kvi_socket.h"
 #include "kvi_kvs_eventtriggers.h"
@@ -59,16 +53,22 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_sparser.h"
 #include "kvi_kvs_script.h"
+#include "kvi_styled_controls.h"
 
-#include <qevent.h>
-#include <qfile.h>
-#include <qpainter.h>
-#include <qdatetime.h>
+#ifdef COMPILE_ON_WINDOWS
+	// Ugly Windoze compiler...
+	#include "dialogs.h"
+#endif
+
+#include <QFile>
+#include <QPainter>
+#include <QDateTime>
 #include <qglobal.h>
-#include <qcheckbox.h>
-#include <qspinbox.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
+#include <QCheckBox>
+#include <QSpinBox>
+#include <QLayout>
+#include <QPushButton>
+#include <QEvent>
 
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS 3000
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS 3
@@ -930,7 +930,6 @@ void KviDccFileTransfer::abort()
 	displayUpdate();
 }
 
-
 void KviDccFileTransfer::fillContextPopup(KviTalPopupMenu * m,int column)
 {
 	m->insertItem(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
@@ -975,6 +974,7 @@ void KviDccFileTransfer::retryTDCC()
 	QString szCommand = "dcc.send -r=$console($dcc.irccontext(" + szId + ")) -t " + szRemoteNick + " " + "\"" + szFileName + "\"";
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
+
 void KviDccFileTransfer::retryRevDCC()
 {
 	abort();
@@ -1340,7 +1340,6 @@ int KviDccFileTransfer::displayHeight(int iLineSpacing)
 
 QString KviDccFileTransfer::tipText()
 {
-
 	QString s;
 
 	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr()).arg(id());
@@ -1403,7 +1402,6 @@ KviDccFileTransfer * KviDccFileTransfer::nonFailedTransferWithLocalFileName(cons
 	return 0;
 }
 
-
 unsigned int KviDccFileTransfer::runningTransfersCount()
 {
 	if(!g_pDccFileTransfers)return 0;
@@ -1462,7 +1460,6 @@ void KviDccFileTransfer::addToTransferLog(const QString &s)
 	m_szTransferLog += ts+s;
 	m_szTransferLog += "<br>";
 }
-
 
 void KviDccFileTransfer::connectionInProgress()
 {
@@ -1582,9 +1579,6 @@ void KviDccFileTransfer::sslError(const char * msg)
 	outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("[SSL ERROR]: %1","dcc").arg(msg));
 #endif
 }
-
-
-
 
 bool KviDccFileTransfer::event(QEvent *e)
 {
@@ -1818,10 +1812,6 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsign
 }
 
 
-
-
-
-
 KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * pParent,KviDccFileTransfer * t)
 : QDialog(pParent)
 {
@@ -1891,7 +1881,6 @@ void KviDccFileTransferBandwidthDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
-
 
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

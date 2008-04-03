@@ -25,50 +25,43 @@
 #include "broker.h"
 
 #ifdef COMPILE_DCC_CANVAS
-
-#include "kvi_window.h"
-#include "kvi_string.h"
-
-#include "descriptor.h"
-#include "window.h"
-#include "thread.h"
-
-#include "kvi_pointerlist.h"
-
-
-
-class KviDccMarshal;
-class KviCanvasWidget;
-
-class QSplitter;
-
-
-class KviDccCanvas : public KviDccWindow
-{
-	Q_OBJECT
-public:
-	KviDccCanvas(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
-	~KviDccCanvas();
-protected:
-//	KviDccCanvasThread     * m_pSlaveThread;
-	KviCanvasWidget        * m_pCanvas;
-//	QSplitter              * m_pTopSplitter;
-	QString                  m_szTarget;
-protected:
-	virtual const QString &target();
-	virtual void fillCaptionBuffers();
-	virtual void getBaseLogFileName(KviStr &buffer);
-	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual QSize sizeHint() const;
-	virtual bool event(QEvent *e);
-	virtual void ownMessage(const char *text);
-	virtual void ownAction(const char *text);
-protected slots:
-	void handleMarshalError(int err);
-	void connected();
-};
-
+	#include "descriptor.h"
+	#include "window.h"
+	#include "thread.h"
+	
+	#include "kvi_window.h"
+	#include "kvi_string.h"
+	#include "kvi_pointerlist.h"
+	
+	class KviDccMarshal;
+	class KviCanvasWidget;
+	class QSplitter;
+	
+	class KviDccCanvas : public KviDccWindow
+	{
+		Q_OBJECT
+	public:
+		KviDccCanvas(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
+		~KviDccCanvas();
+	protected:
+	//	KviDccCanvasThread     * m_pSlaveThread;
+		KviCanvasWidget        * m_pCanvas;
+	//	QSplitter              * m_pTopSplitter;
+		QString                  m_szTarget;
+	protected:
+		virtual const QString &target();
+		virtual void fillCaptionBuffers();
+		virtual void getBaseLogFileName(KviStr &buffer);
+		virtual QPixmap * myIconPtr();
+		virtual void resizeEvent(QResizeEvent *e);
+		virtual QSize sizeHint() const;
+		virtual bool event(QEvent *e);
+		virtual void ownMessage(const char *text);
+		virtual void ownAction(const char *text);
+	protected slots:
+		void handleMarshalError(int err);
+		void connected();
+	};
 #endif
 
 #endif // _CANVAS_H_

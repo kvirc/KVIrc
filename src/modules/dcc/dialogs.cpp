@@ -25,12 +25,14 @@
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include <qlabel.h>
-#include <qstringlist.h>
-#include <qevent.h>
-#include <qdesktopwidget.h>
+#include <QLayout>
+#include <QPushButton>
+#include <QLabel>
+#include <QStringList>
+#include <QDesktopWidget>
+#include <QEvent>
+#include <QCloseEvent>
+#include <QShowEvent>
 
 KviDccBox::KviDccBox(KviDccBroker * br,KviDccDescriptor * dcc)
 {
@@ -55,10 +57,9 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 {
 	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QLabel * l = new QLabel(text,this);
-#ifdef COMPILE_USE_QT4
 	l->setWordWrap(true);
-#endif
 	vb->addWidget(l);
+
 	QHBoxLayout *hb = new QHBoxLayout(4);
 	vb->addLayout(hb,Qt::AlignCenter);
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Accept","dcc"),this);
@@ -111,16 +112,12 @@ void KviDccAcceptBox::showEvent(QShowEvent *e)
 }
 
 
-
-
 KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const QString &text,bool bDisableResume)
 : QWidget(0,"dcc_rename_box") , KviDccBox(br,dcc)
 {
 	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QLabel * l = new QLabel(text,this);
-#ifdef COMPILE_USE_QT4
 	l->setWordWrap(true);
-#endif
 	vb->addWidget(l);
 
 	QHBoxLayout *hb = new QHBoxLayout(4);
@@ -199,9 +196,6 @@ void KviDccRenameBox::cancelClicked()
 	emit cancelSelected(this,m_pDescriptor);
 	g_pApp->collectGarbage(this);
 }
-
-
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_dialogs.moc"

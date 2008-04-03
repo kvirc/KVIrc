@@ -24,27 +24,32 @@
 //
 //=============================================================================
 
-#include "kvi_window.h"
-#include "kvi_string.h"
-
 #include "descriptor.h"
 #include "window.h"
 #include "thread.h"
 
+#include "kvi_window.h"
+#include "kvi_string.h"
 #include "kvi_sockettype.h"
-
 #include "kvi_pointerlist.h"
-#include <qlabel.h>
-#include <qprogressbar.h>
+#include "kvi_filetransfer.h"
+#include "kvi_time.h"
+#include "kvi_styled_controls.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
-#include <qfile.h>
-#include <qdialog.h>
 
-#include "kvi_filetransfer.h"
-#include "kvi_time.h"
+#include <QLabel>
+#include <QProgressBar>
+#include <QFile>
+#include <QDialog>
 
+class QSpinBox;
+class QTimer;
+class QPainter;
+class KviDccFileTransfer;
+class KviDccMarshal;
+class KviTalPopupMenu;
 
 typedef struct _KviDccSendThreadOptions
 {
@@ -142,11 +147,6 @@ protected:
 	virtual void run();
 };
 
-class KviDccFileTransfer;
-class QSpinBox;
-class QTimer;
-
-#include "kvi_styled_controls.h"
 
 class KviDccFileTransferBandwidthDialog : public QDialog
 {
@@ -165,10 +165,6 @@ protected slots:
 	void cancelClicked();
 };
 
-
-class KviDccMarshal;
-class QPainter;
-class KviTalPopupMenu;
 
 class KviDccFileTransfer : public KviFileTransfer, public KviDccMarshalOutputContext
 {

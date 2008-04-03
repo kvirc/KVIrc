@@ -22,6 +22,13 @@
 //
 //=============================================================================
 
+#include "gsmcodec.h"
+#include "broker.h"
+#include "voice.h"
+#include "utils.h"
+#include "send.h"
+#include "window.h"
+
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "kvi_string.h"
@@ -41,14 +48,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 
-#include "gsmcodec.h"
-#include "broker.h"
-#include "voice.h"
-#include "utils.h"
-#include "send.h"
-#include "window.h"
-
-#include <qfileinfo.h>
+#include <QFileInfo>
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
@@ -2754,8 +2754,8 @@ static bool dcc_module_can_unload(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"Dcc",
-	"1.0.0",
+	"DCC",
+	"4.0.0",
 	"Copyright (C) 2000-2004:\n" \
 	"  Szymon Stefanek (pragma at kvirc dot net)\n",
 	"DCC extension for KVIrc\n",
