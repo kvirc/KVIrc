@@ -570,7 +570,6 @@ void KviApp::findGlobalKvircDirectory()
 		m_szGlobalKvircDir+= "/../Resources/kvirc/";
 		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
 		m_szGlobalKvircDir+= "4.0/";
-		KviMessageBox::warning(m_szGlobalKvircDir);
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //Q_OS_MACX
 
