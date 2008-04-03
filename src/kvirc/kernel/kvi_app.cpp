@@ -167,7 +167,7 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 #endif
 
 KviApp::KviApp(int &argc,char ** argv)
-: KviTalApplication()
+: KviTalApplication(int &argc,char ** argv)
 {
 	// Ok...everything begins here
 	g_pApp                  = this;
