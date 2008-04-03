@@ -28,26 +28,25 @@
 #include "kvi_options.h"
 #include "kvi_selectors.h"
 #include "kvi_app.h"
-
 #include "kvi_string.h"
 #include "kvi_iconmanager.h"
 #include "kvi_console.h"
 #include "kvi_regchan.h"
 #include "kvi_kvs_script.h"
-
-#include <qlabel.h>
-#include <qlineedit.h>
 #include "kvi_tal_listview.h"
 #include <kvi_tal_groupbox.h>
-#include <qlayout.h>
-#include <qcheckbox.h>
-#include <qpushbutton.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-#else
-	#include <qheader.h>
-#endif
-#include <qevent.h>
+
+#include <QLabel>
+#include <QLineEdit>
+#include <QLayout>
+#include <QCheckBox>
+#include <QPushButton>
+#include <QEvent>
+#include <QCloseEvent>
+
+// FIXME: Qt4 #include <QHeaderView>
+#include <q3header.h>
+
 
 extern KviChannelsJoinWindow * g_pChannelsWindow;
 extern QRect                   g_rectChannelsJoinGeometry;
@@ -92,18 +91,12 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
-
 	m_pJoinButton = new QPushButton(__tr2qs("&Join"),this);
 	// Join on return pressed
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
-#ifdef COMPILE_USE_QT4
 	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
-#else
-	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,AlignHCenter);
-#endif
-
 
 	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
@@ -193,8 +186,6 @@ void KviChannelsJoinWindow::fillListView()
 			++it;
 		}
 	}
-
-
 }
 
 void KviChannelsJoinWindow::itemClicked(KviTalListViewItem * it) 
@@ -215,7 +206,6 @@ void KviChannelsJoinWindow::itemDoubleClicked(KviTalListViewItem * it)
 	enableJoin();
 	joinClicked();
 }
-
 
 void KviChannelsJoinWindow::editTextChanged(const QString &)
 {
@@ -290,13 +280,14 @@ void KviChannelsJoinWindow::itemDoubleClicked(KviTalListBoxItem * it)
 void KviChannelsJoinWindow::editReturnPressed()
 {
 	joinClicked();
-}	
+}
 
 void KviChannelsJoinWindow::closeEvent(QCloseEvent *e)
 {
 	e->ignore();
 	delete this;
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_channelsjoinwindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

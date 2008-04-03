@@ -47,20 +47,20 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_qcstring.h"
+#include "kvi_kvs_eventtriggers.h"
+#include "kvi_draganddrop.h"
+#include "kvi_valuelist.h"
+#include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
 	#include "kvi_cryptcontroller.h"
 #endif
 
-#include "kvi_kvs_eventtriggers.h"
+#include <QPixmap>
+#include <QSplitter>
+#include <QToolButton>
 
-#include <qpixmap.h>
-#include <qsplitter.h>
-#include "kvi_tal_hbox.h"
-#include <qtoolbutton.h>
-#include "kvi_draganddrop.h"
-#include "kvi_valuelist.h"
 
 KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 : KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,nick,lpConsole)
@@ -85,11 +85,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	createTextEncodingButton(m_pButtonGrid);
 
-#ifdef COMPILE_USE_QT4
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
-#else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
-#endif
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
@@ -337,7 +333,6 @@ void KviQuery::userAction(const QString &nick,const QString &user,const QString 
 	updateLabelText();
 }
 
-
 void KviQuery::userAction(const QString &nick,unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
@@ -394,8 +389,6 @@ void KviQuery::notifyCommonChannels(const QString &nick,const QString &user,cons
 	}
 	updateLabelText();
 }
-
-
 
 
 /*void KviQuery::updateTargets()

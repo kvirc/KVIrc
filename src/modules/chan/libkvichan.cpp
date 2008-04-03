@@ -1593,12 +1593,10 @@ static bool chan_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"ismeowner",chan_kvs_fnc_ismeowner);
 	KVSM_REGISTER_FUNCTION(m,"isdead",chan_kvs_fnc_isdead);
 	KVSM_REGISTER_FUNCTION(m,"getflag",chan_kvs_fnc_getflag);
-
 	KVSM_REGISTER_FUNCTION(m,"usermodelevel",chan_kvs_fnc_usermodelevel);
 	KVSM_REGISTER_FUNCTION(m,"userjointime",chan_kvs_fnc_userjointime);//
 	KVSM_REGISTER_FUNCTION(m,"userlastactiontime",chan_kvs_fnc_userlastactiontime);
 	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
-
 	KVSM_REGISTER_FUNCTION(m,"key",chan_kvs_fnc_key);
 	KVSM_REGISTER_FUNCTION(m,"limit",chan_kvs_fnc_limit);
 	KVSM_REGISTER_FUNCTION(m,"users",chan_kvs_fnc_users);
@@ -1621,10 +1619,9 @@ static bool chan_module_cleanup(KviModule *m)
 	return true;
 }
 
-
 KVIRC_MODULE(
 	"Chan",                                                  // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
 	"          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)",
 	"Scripting interface for the channel management",

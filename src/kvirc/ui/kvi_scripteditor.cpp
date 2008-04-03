@@ -21,12 +21,10 @@
 //
 
 #define __KVIRC__
-
 #define _KVI_SCRIPTEDITOR_CPP_
-
 #define _KVI_DEBUG_CHECK_RANGE_
-#include "kvi_debug.h"
 
+#include "kvi_debug.h"
 #include "kvi_scripteditor.h"
 #include "kvi_modulemanager.h"
 
@@ -35,7 +33,6 @@ KviScriptEditor::KviScriptEditor(QWidget * par)
 : QWidget(par)
 {
 }
-
 
 KviScriptEditor::~KviScriptEditor()
 {
@@ -99,12 +96,11 @@ KviScriptEditor * KviScriptEditor::getDummyEditor(QWidget * par)
 static KviScriptEditor * (*editorModuleCreateScriptEditor)(QWidget *);
 static void (*editorModuleDestroyScriptEditor)(KviScriptEditor *);
 
-
 KviScriptEditor * KviScriptEditor::createInstance(QWidget * par)
 {
 	KviModule * m = g_pModuleManager->getModule("editor");
 	// If the module can't be loaded...return a dummy widget
-// FIXME: #warning "Maybe provide some sort of basic default editable widget ?"
+	// FIXME: #warning "Maybe provide some sort of basic default editable widget ?"
 	if(!m)return KviScriptEditor::getDummyEditor(par); // dummy implementation
 
 
@@ -113,7 +109,6 @@ KviScriptEditor * KviScriptEditor::createInstance(QWidget * par)
 	if(!editorModuleCreateScriptEditor)return KviScriptEditor::getDummyEditor(par);
 
 	return editorModuleCreateScriptEditor(par);
-
 }
 
 void KviScriptEditor::destroyInstance(KviScriptEditor * e)

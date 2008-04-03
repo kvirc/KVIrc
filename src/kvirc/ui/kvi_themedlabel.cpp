@@ -21,12 +21,12 @@
 //
 #define __KVIRC__
 #include "kvi_themedlabel.h"
-
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
-#include <qpainter.h>
+
+#include <QPainter>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -82,7 +82,6 @@ void KviThemedLabel::applyOptions()
 	update();
 }
 
-#ifdef COMPILE_USE_QT4
 void KviThemedLabel::paintEvent ( QPaintEvent * event )
 {
 	QFrame::paintEvent(event);
@@ -114,42 +113,11 @@ void KviThemedLabel::paintEvent ( QPaintEvent * event )
 	
 	p.drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
 }
-#else
-void KviThemedLabel::drawContents(QPainter *p)
-{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
-	{
-		QPoint pnt = mapToGlobal(contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
-	} else {
-#endif
-
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
-		{
-			p->drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
-		} else {
-			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-		}
-
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	}
-#endif
-
-	QRect r = contentsRect();
-	r.setLeft(r.left() + 2); // some margin
-
-	p->setPen(KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-	
-	p->drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
-}
-#endif
 
 void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
 {
 	emit doubleClicked();
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_themedlabel.moc"

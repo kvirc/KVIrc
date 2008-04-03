@@ -26,9 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-
 #include "kvi_tal_iconview.h"
-
 
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200

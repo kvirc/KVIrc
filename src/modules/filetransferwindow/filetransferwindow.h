@@ -32,13 +32,12 @@
 #include "kvi_moduleextension.h"
 #include "kvi_filetransfer.h"
 #include "kvi_dynamictooltip.h"
-
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
-#include <qtoolbutton.h>
-#include <qtimer.h>
-#include <qpixmap.h>
 
+#include <QToolButton>
+#include <QTimer>
+#include <QPixmap>
 
 
 class KviFileTransferItem : public KviTalListViewItem
@@ -98,7 +97,6 @@ protected slots:
 	void clearTerminated();
 	void clearAll();
 	void tipRequest(KviDynamicToolTip * tip,const QPoint &pnt);
-
 	void openLocalFile();
 	void openLocalFileWith();
 	void copyLocalFileToClipboard();

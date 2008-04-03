@@ -22,15 +22,15 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-#include "kvi_module.h"
-
 #include "channelsjoinwindow.h"
+
+#include "kvi_module.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_config.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 KviChannelsJoinWindow * g_pChannelsWindow = 0;
 QRect                   g_rectChannelsJoinGeometry;
@@ -62,8 +62,6 @@ static bool channelsjoin_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	g_pChannelsWindow->setFocus();
 
 	return true;
-
-
 }
 
 static bool channelsjoin_module_init(KviModule * m)
@@ -98,7 +96,7 @@ static bool channelsjoin_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"ChannelsJoin",
-	"0.0.3",
+	"4.0.0",
 	"Copyright (C) 2001-2006 Juan Jos��varez (juanjux@yahoo.es), Alexey (wizard@opendoor.ru)",
 	"Window to join channels in a GUI",
 	channelsjoin_module_init,

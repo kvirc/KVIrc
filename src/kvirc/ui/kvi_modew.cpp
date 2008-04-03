@@ -28,11 +28,12 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_qcstring.h"
+#include "kvi_tal_hbox.h"
 
-#include <qframe.h>
-#include <qlineedit.h>
-#include "kvi_tal_hbox.h" 
-#include <qevent.h>
+#include <QFrame>
+#include <QLineEdit>
+#include <QEvent>
+#include <QResizeEvent>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 :QFrame(par,name)
@@ -40,11 +41,7 @@ KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 	m_pChannel=chan;
 	m_pLabel=0;
 	m_pLineEdit=0;
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
-#else
-	setBackgroundMode(QWidget::NoBackground);
-#endif
 	reset();
 }
 
@@ -67,8 +64,7 @@ void KviModeWidget::reset()
 	QResizeEvent* ev=new QResizeEvent(size(),size());
 	resizeEvent(ev);
 	delete ev;
-	if(m_pChannel->input())
-		m_pChannel->setFocus();
+	if(m_pChannel->input()) m_pChannel->setFocus();
 }
 
 void KviModeWidget::refreshModes()
@@ -78,27 +74,19 @@ void KviModeWidget::refreshModes()
 		szMode+=QString(" k:%1").arg(m_pChannel->channelKey());
 	if(!m_pChannel->channelLimit().isEmpty())
 		szMode+=QString(" l:%1").arg(m_pChannel->channelLimit().ptr());
-	if(m_pLabel)
-		m_pLabel->setText(szMode);
+	if(m_pLabel) m_pLabel->setText(szMode);
 }
 
 void KviModeWidget::applyOptions()
 {
-	if(m_pLabel)
-		m_pLabel->applyOptions();
+	if(m_pLabel) m_pLabel->applyOptions();
 }
 
 void KviModeWidget::resizeEvent(QResizeEvent *e)
 {
 	if(e)QFrame::resizeEvent(e);
-	if(m_pLabel)
-	{
-		m_pLabel->setGeometry(0,0,width(),height());
-	}
-	if(m_pLineEdit)
-	{
-		m_pLineEdit->setGeometry(0,0,width(),height());
-	}
+	if(m_pLabel) m_pLabel->setGeometry(0,0,width(),height());
+	if(m_pLineEdit) m_pLineEdit->setGeometry(0,0,width(),height());
 }
 
 void KviModeWidget::labelDoubleClick()
@@ -168,7 +156,7 @@ void KviModeWidget::editorTextChanged( const QString & text)
 		if( !m_pChannel->connection()->serverInfo()->supportedPlainModes().contains(szText[i]) || 
 			szText.find(szText[i])<i )
 			szText.remove(i,1);
-	}	
+	}
 	m_pLineEdit->setText(szText);
 }
 

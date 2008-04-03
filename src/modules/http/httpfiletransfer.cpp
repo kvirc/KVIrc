@@ -31,11 +31,10 @@
 #include "kvi_netutils.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_console.h"
-
 #include "kvi_kvs_script.h"
-
 #include "kvi_tal_popupmenu.h"
-#include <qpainter.h>
+
+#include <QPainter>
 
 static KviPointerList<KviHttpFileTransfer> * g_pHttpFileTransfers = 0;
 static QPixmap * g_pHttpIcon = 0;
@@ -489,4 +488,3 @@ bool KviHttpFileTransfer::startDownload()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_httpfiletransfer.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

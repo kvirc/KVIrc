@@ -35,23 +35,22 @@
 #include "kvi_themedlabel.h"
 #include "kvi_input.h"
 #include "kvi_qstring.h"
-
-#include <qsplitter.h>
-#include <qtooltip.h>
 #include "kvi_tal_hbox.h"
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-#else
-	#include <qheader.h>
-#endif
-#include <qpainter.h>
-#include <qmessagebox.h>
-#include <qclipboard.h>
-#include <qfileinfo.h>
-#include <qfile.h>
-#include <qlabel.h>
-#include <qfontmetrics.h>
-#include <qevent.h>
+
+#include <QSplitter>
+#include <QToolTip>
+#include <QPainter>
+#include <QMessageBox>
+#include <QClipboard>
+#include <QFileInfo>
+#include <QFile>
+#include <QLabel>
+#include <QFontMetrics>
+#include <QEvent>
+#include <QKeyEvent>
+
+// FIXME: Qt4 #include <QHeaderView>
+#include <q3header.h>
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <kurl.h>
@@ -227,7 +226,6 @@ void KviFileTransferWindow::fontChange(const QFont &oldFont)
 	KviWindow::fontChange(oldFont);
 }
 
-
 void KviFileTransferWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt)
 {
 	KviFileTransferItem * it = (KviFileTransferItem *)m_pListView->itemAt(pnt);
@@ -275,8 +273,7 @@ void KviFileTransferWindow::transferUnregistering(KviFileTransfer * t)
 
 void KviFileTransferWindow::doubleClicked(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
-	if(it)
-		openLocalFile();
+	if(it) openLocalFile();
 }
 
 void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
@@ -292,7 +289,6 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 	m_pContextPopup->clear();
 
 	int id;
-
 
 	if(it)
 	{
@@ -463,9 +459,8 @@ void KviFileTransferWindow::openLocalFileTerminal()
 	int idx = tmp.findRev("/");
 	if(idx == -1)return;
 	tmp = tmp.left(idx);
-    tmp.append("\"");
-/*FIX ME " this is not a solution ...because if the drive isn't system's drive the command
-          'cd' naturaly doesn't work"*/
+	tmp.append("\"");
+	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturaly doesn't work
 	tmp.prepend("cmd.exe /k cd \"");
 	system(tmp.local8Bit().data());
 #else //COMPILE_ON_WINDOWS
@@ -507,7 +502,6 @@ void KviFileTransferWindow::deleteLocalFile()
 			__tr2qs_ctx("Failed to remove the file","filetransferwindow"),
 			__tr2qs_ctx("OK","filetransferwindow"));
 }
-
 
 void KviFileTransferWindow::openLocalFile()
 {
@@ -579,14 +573,7 @@ void KviFileTransferWindow::copyLocalFileToClipboard()
 	if(!t)return;
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
-#ifdef COMPILE_USE_QT4
 	QApplication::clipboard()->setText(tmp);
-#else
-	QApplication::clipboard()->setSelectionMode(false);
-	QApplication::clipboard()->setText(tmp);
-	QApplication::clipboard()->setSelectionMode(true);
-	QApplication::clipboard()->setText(tmp);
-#endif
 }
 
 void KviFileTransferWindow::openLocalFileFolder()
@@ -625,7 +612,6 @@ void KviFileTransferWindow::openLocalFileFolder()
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 }
-
 
 void KviFileTransferWindow::heartbeat()
 {

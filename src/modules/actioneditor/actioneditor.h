@@ -25,23 +25,22 @@
 //=============================================================================
 
 #include "kvi_window.h"
-
-#include "kvi_tal_listview.h"
 #include "kvi_styled_controls.h"
+#include "kvi_tal_listview.h"
 
 #include <QWidget>
 #include <q3simplerichtext.h>
 #define QSimpleRichText Q3SimpleRichText
 
-class KviActionEditorListViewItem;
-class KviScriptEditor;
-class KviActionEditor;
 class QLineEdit;
 class QComboBox;
 class QToolButton;
 class QSimpleRichText;
 class QPushButton;
 class QSplitter;
+class KviActionEditorListViewItem;
+class KviScriptEditor;
+class KviActionEditor;
 
 
 class KviActionData

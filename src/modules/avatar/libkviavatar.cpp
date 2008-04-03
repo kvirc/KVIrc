@@ -34,7 +34,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_avatar.h"
 #include "kvi_ircuserdb.h"
-
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_console.h"
@@ -45,14 +44,14 @@
 #include "kvi_out.h"
 #include "kvi_ircmask.h"
 #include "kvi_qcstring.h"
-
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qmessagebox.h>
-#include <qtimer.h>
-#include <qlabel.h>
 #include "kvi_tal_hbox.h"
-#include <qlayout.h>
+
+#include <QLineEdit>
+#include <QPushButton>
+#include <QMessageBox>
+#include <QTimer>
+#include <QLabel>
+#include <QLayout>
 
 static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
@@ -444,7 +443,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 */
 
 static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
@@ -488,7 +487,7 @@ static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 */
 
 static bool avatar_kvs_fnc_path(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("path",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
@@ -575,7 +574,7 @@ static bool avatar_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Avatar",
-	"1.0.0",
+	"4.0.0",
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)",
 	"Avatar manipulation routines",
 	avatar_module_init,

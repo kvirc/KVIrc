@@ -27,11 +27,10 @@
 #include "kvi_filetransfer.h"
 #include "kvi_http.h"
 #include "kvi_time.h"
-
 #include "kvi_kvs_variant.h"
 
-#include <qstringlist.h>
-#include <qtimer.h>
+#include <QStringList>
+#include <QTimer>
 
 class QPainter;
 class KviTalPopupMenu;
@@ -61,7 +60,6 @@ private:
 	bool             m_bNoOutput;
 	
 	QTimer         * m_pAutoCleanTimer;
-	
 	QString          m_szCompletionCallback;
 public:
 	KviHttpRequest * request(){ return m_pHttpRequest; };
@@ -94,11 +92,8 @@ protected slots:
 	void contactingHost(const QString &ipandport);
 	void receivedResponse(const QString &response);
 	void connectionEstabilished();
-
 	void abort();
-	
 	void autoClean();
 };
-
 
 #endif //!_HTTPFILETRANSFER_H_

@@ -25,16 +25,16 @@
 #define _CHANNELSJOIN_H_
 #include "kvi_window.h"
 #include "kvi_string.h"
-
-#include <qdialog.h>
-
-class KviConsole;
-class KviTalGroupBox;
-class QPushButton;
-class QLineEdit;
-
 #include "kvi_styled_controls.h"
 #include "kvi_tal_listview.h"
+
+#include <QDialog>
+
+class QPushButton;
+class QLineEdit;
+class KviConsole;
+class KviTalGroupBox;
+
 
 class KviChannelsJoinWindow : public QDialog
 {
@@ -66,5 +66,5 @@ protected slots:
 //	void whoClicked();
 //	void namesClicked();
 };
-	
+
 #endif //_CHANNELSJOINSWINDOW_H_

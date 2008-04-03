@@ -46,7 +46,7 @@ KviActionEditorWindow * g_pActionEditorWindow = 0;
 */
 
 static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pActionEditorWindow)
 	{
 		g_pActionEditorWindow = new KviActionEditorWindow(c->window()->frame());
@@ -56,6 +56,7 @@ static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	g_pActionEditorWindow->setFocus();
 	return true;
 }
+
 static bool actioneditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",actioneditor_kvs_cmd_open);

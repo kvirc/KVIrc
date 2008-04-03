@@ -28,15 +28,11 @@
 #include "kvi_parameterlist.h"
 #include "kvi_filedialog.h"
 #include "kvi_imagedialog.h"
-
 #include "kvi_kvs_callbackobject.h"
 
-#include <qmessagebox.h>
-#include <qdialog.h>
+#include <QMessageBox>
+#include <QDialog>
 
-
-
-// New KVS
 class KviKvsCallbackMessageBox : public QMessageBox, public KviKvsCallbackObject
 {
 	Q_OBJECT
@@ -57,9 +53,6 @@ protected slots:
 };
 
 
-
-
-// New KVS
 class KviKvsCallbackTextInput : public QDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT
@@ -93,8 +86,6 @@ protected slots:
 };
 
 
-
-// New KVS
 class KviKvsCallbackFileDialog : public KviFileDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT
@@ -112,7 +103,6 @@ protected:
 };
 
 
-// New KVS
 class KviKvsCallbackImageDialog : public KviImageDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT

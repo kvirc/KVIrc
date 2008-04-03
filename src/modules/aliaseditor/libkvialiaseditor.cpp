@@ -22,11 +22,13 @@
 //
 //==========================================================================================
 
+#include "aliaseditor.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 
-#include "aliaseditor.h"
+
 KviAliasEditorWindow * g_pAliasEditorWindow = 0;
 KviModule * g_pAliasEditorModule = 0;
 
@@ -46,7 +48,7 @@ KviModule * g_pAliasEditorModule = 0;
 */
 
 static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pAliasEditorWindow)
 	{
 		g_pAliasEditorWindow = new KviAliasEditorWindow(c->window()->frame());
@@ -80,7 +82,7 @@ static bool aliaseditor_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"AliasEditor",                                                       // module name
-	"2.0.0",                                                             // module version
+	"4.0.0",                                                             // module version
 	"Copyright (C) 2002-2005 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script aliases",
 	aliaseditor_module_init,

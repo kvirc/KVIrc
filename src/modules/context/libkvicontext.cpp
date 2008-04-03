@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-//#warning: FIXME: Incomplete documentation ('seealso', 'example', etc)
+//#warning: FIXME: Incomplete documentation ('example', etc)
 
 #include "kvi_module.h"
 #include "kvi_locale.h"
@@ -31,7 +31,6 @@
 #include "kvi_frame.h"
 #include "kvi_console.h"
 #include "kvi_app.h"
-
 #include "kvi_ircserver.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
@@ -391,7 +390,7 @@ static bool context_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"context",
-	"1.0.0",
+	"4.0.0",
 	"Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)",
 	"Irc Context Related Functions",
 	context_module_init,

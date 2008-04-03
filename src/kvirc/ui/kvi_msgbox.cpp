@@ -21,18 +21,16 @@
 //
 #define __KVIRC__
 #include "kvi_msgbox.h"
-
-// FIXME: #warning "This should go into TAL as layer ...then maybe a wrapper in KviApp!"
-
-#ifdef COMPILE_KDE_SUPPORT
-	#include <kmessagebox.h>
-#else
-	#include <qmessagebox.h>
-#endif //!COMPILE_WITH_KDE
-
 #include "kvi_malloc.h"
 #include "kvi_string.h"
 #include "kvi_locale.h"
+
+// FIXME: #warning "This should go into TAL as layer ...then maybe a wrapper in KviApp!"
+#ifdef COMPILE_KDE_SUPPORT
+	#include <kmessagebox.h>
+#else
+	#include <QMessageBox>
+#endif //!COMPILE_WITH_KDE
 
 // FIXME: #warning "This could go into KviApp"
 
@@ -84,6 +82,3 @@ namespace KviMessageBox
 		return bRet;
 	}
 };
-
-
-

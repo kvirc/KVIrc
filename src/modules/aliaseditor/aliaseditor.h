@@ -27,16 +27,16 @@
 #include "kvi_window.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
-
-
-#include <qwidget.h>
-#include "kvi_tal_listview.h"
-#include <qlineedit.h>
 #include "kvi_tal_popupmenu.h"
-#include <qstringlist.h>
-#include <qpushbutton.h>
-#include <qlabel.h>
+#include "kvi_tal_listview.h"
 
+#include <QWidget>
+#include <QLineEdit>
+#include <QStringList>
+#include <QPushButton>
+#include <QLabel>
+
+class QSplitter;
 class KviScriptEditor;
 class KviAliasNamespaceListViewItem;
 
@@ -98,7 +98,6 @@ public:
 	void setCursorPosition(const QPoint &cPos){ m_cPos = cPos; };
 };
 
-class QSplitter;
 
 class KviAliasEditor : public QWidget
 {

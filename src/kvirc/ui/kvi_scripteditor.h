@@ -24,9 +24,10 @@
 //
 
 #include "kvi_settings.h"
-#include <qwidget.h>
-#include <qlineedit.h>
 #include "kvi_qcstring.h"
+
+#include <QWidget>
+#include <QLineEdit>
 
 //
 // This is the basic interface of a script editor widget

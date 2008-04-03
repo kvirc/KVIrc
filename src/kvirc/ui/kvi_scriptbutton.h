@@ -26,8 +26,8 @@
 #include "kvi_string.h"
 #include "kvi_styled_controls.h"
 
-#include <qtoolbutton.h>
-#include <qtoolbar.h>
+#include <QToolButton>
+#include <QToolBar>
 
 class KviKvsScript;
 class KviWindow;

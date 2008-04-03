@@ -58,7 +58,7 @@
 #include <QTabWidget>
 #include <QLabel>
 #include <q3header.h>
-// FIXME: #include <QHeaderView>
+// FIXME: Qt4 #include <QHeaderView>
 
 
 extern KviActionEditorWindow * g_pActionEditorWindow;
@@ -303,23 +303,16 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 						"the active window is a dcc chat"));
 	gl->addMultiCellWidget(m_pWindowDccChatCheck,10,10,1,3);
 
-
-
 	l = new QLabel(tab);
 	gl->addMultiCellWidget(l,11,11,0,3);
-
 	gl->setColStretch(3,1);
 	gl->setRowStretch(11,1);
 	
 	tw->addTab(tab,__tr2qs("Flags"));
-
-
-
 	tw->setCurrentPage(0);
 
 	g->setRowStretch(2,1);
 	g->setColStretch(1,1);
-
 
 	KviPointerHashTableIterator<QString,KviActionCategory> it(*(KviActionManager::instance()->categories()));
 	while(KviActionCategory * ac = it.current())
@@ -609,7 +602,6 @@ void KviSingleActionEditor::commit()
 }
 
 
-
 KviActionEditorListView::KviActionEditorListView(QWidget * pParent)
 : KviTalListView(pParent)
 {
@@ -624,7 +616,6 @@ KviActionEditorListView::~KviActionEditorListView()
 {
 }
 
-
 void KviActionEditorListView::resizeEvent(QResizeEvent * e)
 {
 	KviTalListView::resizeEvent(e);
@@ -632,7 +623,6 @@ void KviActionEditorListView::resizeEvent(QResizeEvent * e)
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setColumnWidth(0,iWidth);
 }
-
 
 
 KviActionEditor::KviActionEditor(QWidget * par)
@@ -805,15 +795,15 @@ void KviActionEditor::newAction()
 	szDes.append("\")");
 
 	KviActionData * ad = new KviActionData(szName,
-						QString::null,
-						szVis,
-						szDes,
-						KviActionManager::categoryGeneric()->name(),
-						QString::null,
-						QString::null,
-						0,
-						QString::null,
-						0);
+			QString::null,
+			szVis,
+			szDes,
+			KviActionManager::categoryGeneric()->name(),
+			QString::null,
+			QString::null,
+			0,
+			QString::null,
+			0);
 
 	KviActionEditorListViewItem * lvi = new KviActionEditorListViewItem(m_pListView,ad);
 	ad->m_pItem = lvi;
@@ -892,7 +882,6 @@ void KviActionEditor::commit()
 }
 
 
-
 KviActionEditorWindow::KviActionEditorWindow(KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"actioneditor",0)
 {
@@ -947,7 +936,6 @@ void KviActionEditorWindow::cancelClicked()
 	close();
 }
 
-
 QPixmap * KviActionEditorWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SCRIPTACTION);
@@ -959,7 +947,6 @@ void KviActionEditorWindow::resizeEvent(QResizeEvent *e)
 	m_pEditor->setGeometry(0,0,width(),height()- hght);
 	m_pBase->setGeometry(0,height() - hght,width(),hght);
 }
-
 
 void KviActionEditorWindow::getConfigGroupName(KviStr &szName)
 {

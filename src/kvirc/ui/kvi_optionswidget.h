@@ -26,15 +26,15 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-#include <qframe.h>
-#include <qlayout.h>
-#include "kvi_pointerlist.h"
-#include <qlineedit.h>
-#include <kvi_tal_groupbox.h>
-#include <qtabwidget.h>
-#include "kvi_tal_groupbox.h"
 #include "kvi_selectors.h"
+#include "kvi_pointerlist.h"
+#include <kvi_tal_groupbox.h>
+#include "kvi_tal_groupbox.h"
+
+#include <QFrame>
+#include <QLayout>
+#include <QLineEdit>
+#include <QTabWidget>
 
 class KVIRC_API KviOptionsWidget : public QFrame, public KviSelectorInterface
 {
@@ -134,11 +134,7 @@ public:
 	QLabel * addLabel(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled = true);
 	QLabel * addLabel(QWidget * pParent,const QString & text,bool bEnabled = true);
 	QLineEdit * addLineEdit(int x1,int y1,int x2,int y2,bool bEnabled = true);
-#ifdef COMPILE_USE_QT4
 	KviTalGroupBox * addGroupBox(int x1,int y1,int x2,int y2,int nStrips,Qt::Orientation o,const QString &txt,bool bEnabled = true);
-#else
-	KviTalGroupBox * addGroupBox(int x1,int y1,int x2,int y2,int nStrips,KviTalGroupBox::Orientation o,const QString &txt,bool bEnabled = true);
-#endif
 	QFrame * addSeparator(int x1,int y1,int x2,int y2);
 	void addRowSpacer(int x1,int y1,int x2,int y2);
 

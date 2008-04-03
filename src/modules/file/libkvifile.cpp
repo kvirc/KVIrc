@@ -29,13 +29,12 @@
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_qcstring.h"
-
 #include "kvi_kvs_arraycast.h"
-
-#include <qfileinfo.h>
 #include "kvi_file.h"
-#include <qdir.h>
-#include <qtextstream.h>
+
+#include <QFileInfo>
+#include <QDir>
+#include <QTextStream>
 
 /*
 	@doc: file.copy
@@ -501,9 +500,6 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 	}
 	c->returnValue()->setArray(a);
 
-
-
-
 	return true;
 }
 
@@ -629,11 +625,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-#ifdef COMPILE_USE_QT4
 	QFlags<QDir::Filter> iFlags = 0;
-#else
-	int iFlags = 0;
-#endif
 	if(szFlags.isEmpty())iFlags = QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Writable | QDir::Executable | QDir::Hidden | QDir::System;
 	else {
 		if(szFlags.find('d',false) != -1)iFlags |= QDir::Dirs;
@@ -645,11 +637,8 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		if(szFlags.find('h',false) != -1)iFlags |= QDir::Hidden;
 		if(szFlags.find('s',false) != -1)iFlags |= QDir::System;
 	}
-#ifdef COMPILE_USE_QT4
+
 	QFlags<QDir::SortFlag> iSort = 0;
-#else
-	int iSort = 0;
-#endif
 	if(szFlags.isEmpty())iSort = QDir::Unsorted;
 	else {
 		if(szFlags.find('n',false) != -1)iSort |= QDir::Name;
@@ -802,8 +791,6 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		[fnc]$file.read[/fnc], [cmd]file.writeLines[/cmd], [fnc]$lf[/fnc]
 */
 
-
-
 static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
@@ -897,7 +884,6 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$file.readLines[/fnc]
 */
-
 
 
 static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
@@ -1206,7 +1192,6 @@ static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 }
 
 
-
 static bool file_module_init(KviModule * m)
 {
 
@@ -1223,9 +1208,7 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"exists",file_kvs_fnc_exists);
 	KVSM_REGISTER_FUNCTION(m,"type",file_kvs_fnc_type);
 	KVSM_REGISTER_FUNCTION(m,"size",file_kvs_fnc_size);
-	
 	KVSM_REGISTER_FUNCTION(m,"allsizes",file_kvs_fnc_allSizes);
-	
 	KVSM_REGISTER_FUNCTION(m,"fixpath",file_kvs_fnc_fixpath);
 	KVSM_REGISTER_FUNCTION(m,"ps",file_kvs_fnc_ps);
 	KVSM_REGISTER_FUNCTION(m,"read",file_kvs_fnc_read);
@@ -1239,7 +1222,6 @@ static bool file_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"ls",file_kvs_fnc_ls);
 	KVSM_REGISTER_FUNCTION(m,"readLines",file_kvs_fnc_readLines);
 
-
 	return true;
 }
 
@@ -1250,7 +1232,7 @@ static bool file_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"File",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Interface to the file system",
 	file_module_init,

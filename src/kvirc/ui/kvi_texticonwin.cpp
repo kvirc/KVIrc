@@ -33,19 +33,14 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_iconmanager.h"
 
-#include <qnamespace.h>
-#include <qlineedit.h>
+#include <QLineEdit>
+#include <QEvent>
+#include <QKeyEvent>
+
 #include <ctype.h>
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
 
 KviTextIconWindow::KviTextIconWindow()
-#ifdef COMPILE_USE_QT4
 : KviTalIconView(0,Qt::Popup)
-#else
-: KviTalIconView(0,Qt::WType_Popup)
-#endif
 {
 	m_iTimerId = -1;
 	setGridX ( 40 );

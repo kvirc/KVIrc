@@ -21,18 +21,16 @@
 //
 //==================================================================================
 
-#include "kvi_module.h"
-
-
 #include "filetransferwindow.h"
 
+#include "kvi_module.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 KviFileTransferWindow * g_pFileTransferWindow = 0;
 
@@ -100,7 +98,7 @@ static KviModuleExtension * filetransferwindow_extension_alloc(KviModuleExtensio
 */
 
 static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME);
 
 	if(d)
@@ -130,7 +128,6 @@ static bool filetransferwindow_module_init(KviModule * m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);
 
-
 	return true;
 }
 
@@ -151,7 +148,7 @@ static bool filetransferwindow_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"FileTransferWindow",
-	"1.0.0",
+	"4.0.0",
 	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
 	"Links window extension",
 	filetransferwindow_module_init,

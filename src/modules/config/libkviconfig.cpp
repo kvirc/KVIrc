@@ -28,7 +28,6 @@
 #include "kvi_fileutils.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"
-
 #include "kvi_pointerhashtable.h"
 
 static KviPointerHashTable<QString,KviConfig> * g_pConfigDict = 0;
@@ -856,7 +855,7 @@ static bool config_module_init(KviModule * m)
 static bool config_module_cleanup(KviModule *m)
 {
 	delete g_pConfigDict;
-    g_pConfigDict = 0;
+	g_pConfigDict = 0;
 	return true;
 }
 
@@ -867,7 +866,7 @@ static bool config_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Config",                                               // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Config file system for KVIrc",
 	config_module_init,

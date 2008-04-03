@@ -24,10 +24,9 @@
 //
 
 #include "kvi_settings.h"
-
-#include <qframe.h>
-
 #include "kvi_string.h"
+
+#include <QFrame>
 
 class KVIRC_API KviThemedLabel : public QFrame
 {
@@ -40,11 +39,7 @@ private:
 	QString m_szText;
 	bool    m_bAutoHeight;
 protected:
-#ifdef COMPILE_USE_QT4
 	virtual void paintEvent ( QPaintEvent * event );
-#else
-	virtual void drawContents(QPainter *p);
-#endif
 	virtual void mouseDoubleClickEvent(QMouseEvent *e);
 public:
 	int dummyRead() const { return 0; };

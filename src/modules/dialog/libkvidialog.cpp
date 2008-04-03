@@ -25,21 +25,6 @@
 
 #include "libkvidialog.h"
 
-#include <qmessagebox.h>
-#include <qlayout.h>
-#include "kvi_tal_hbox.h"
-#include <qlineedit.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3multilineedit.h>
-	#define QMultiLineEdit Q3MultiLineEdit
-	#include <qdesktopwidget.h>
-#else
-	#include <qmultilineedit.h>
-#endif
-#include <qevent.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-
 #include "kvi_locale.h"
 #include "kvi_module.h"
 #include "kvi_modulemanager.h"
@@ -50,6 +35,19 @@
 #include "kvi_iconmanager.h"
 #include "kvi_kvs_script.h"
 #include "kvi_msgbox.h"
+#include "kvi_tal_hbox.h"
+
+#include <QMessageBox>
+#include <QLayout>
+#include <QLineEdit>
+#include <QLabel>
+#include <QPushButton>
+#include <QDesktopWidget>
+#include <QEvent>
+#include <QCloseEvent>
+
+#include <q3multilineedit.h>
+#define QMultiLineEdit Q3MultiLineEdit
 
 static KviPointerList<QWidget> * g_pDialogModuleDialogList;
 
@@ -74,9 +72,6 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
-#ifndef COMPILE_USE_QT4
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
-#endif
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 
@@ -192,7 +187,6 @@ static bool dialog_kvs_cmd_message(KviKvsModuleCallbackCommandCall * c)
 
 	return true;
 }
-
 
 
 KviKvsCallbackTextInput::KviKvsCallbackTextInput(
@@ -381,7 +375,6 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 }
 
 
-
 /*
 	@doc: dialog.textinput
 	@type:
@@ -476,10 +469,6 @@ static bool dialog_kvs_cmd_textinput(KviKvsModuleCallbackCommandCall * c)
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// New KVS
 KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
 		const QString &szCaption,
 		const QString &szInitialSelection,
@@ -623,11 +612,6 @@ static bool dialog_kvs_cmd_file(KviKvsModuleCallbackCommandCall * c)
 }
 
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// New KVS
 KviKvsCallbackImageDialog::KviKvsCallbackImageDialog(
 		const QString &szCaption,
 		const QString &szInitialSelection,
@@ -870,12 +854,6 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		That's REAL programming.
 */
 
-
-
-
-
-
-
 static bool dialog_module_init(KviModule * m)
 {
 	g_pDialogModuleDialogList = new KviPointerList<QWidget>;
@@ -908,7 +886,7 @@ static bool dialog_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"KVIrc script dialogs",
-	"1.0.0",
+	"4.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Adds the /dialog.* commands functionality\n",
 	dialog_module_init ,

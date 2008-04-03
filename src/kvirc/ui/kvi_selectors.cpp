@@ -23,7 +23,6 @@
 //=============================================================================
 
 #define __KVIRC__
-
 #define _KVI_SELECTORS_CPP_
 
 #include "kvi_selectors.h"
@@ -32,14 +31,15 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_script.h"
-
-#include <qlabel.h>
-#include <qpainter.h>
-#include <qlayout.h>
-#include <qcolordialog.h>
-#include <qpalette.h>
-#include <qfontdialog.h>
 #include "kvi_tal_popupmenu.h"
+
+#include <QLabel>
+#include <QPainter>
+#include <QLayout>
+#include <QColorDialog>
+#include <QPalette>
+#include <QFontDialog>
+
 
 KviBoolSelector::KviBoolSelector(QWidget * par,const QString & txt,bool *pOption,bool bEnabled)
 : KviStyledCheckBox(txt,par), KviSelectorInterface()
@@ -115,14 +115,12 @@ void KviUIntSelector::commit()
 	else *m_pOption = val;
 }
 
-
 void KviUIntSelector::setEnabled(bool bEnabled)
 {
 	KviTalHBox::setEnabled(bEnabled);
 	m_pLabel->setEnabled(bEnabled);
 	m_pSpinBox->setEnabled(bEnabled);
 }
-
 
 
 KviStringSelector::KviStringSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
@@ -170,15 +168,12 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 }
 
 
-
-
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
 : KviTalScrollView(par)
 {
 	m_pPixmap = 0;
 	resizeContents(0,0);
 }
-
 
 KviPixmapPreview::~KviPixmapPreview()
 {
@@ -302,7 +297,6 @@ void KviPixmapSelector::setEnabled(bool bEnabled)
 }
 
 
-
 // FIXME: #warning "Option for DIR_MUST_EXISTS...(this widget could be turned into a file selector too)"
 KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags,const QString &szFilter)
 : KviTalHBox(par), KviSelectorInterface()
@@ -323,7 +317,6 @@ KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOp
 
 	setEnabled(bEnabled);
 }
-
 
 void KviFileSelector::commit()
 {
@@ -347,7 +340,6 @@ void KviFileSelector::setSelection(const QString &szSelection)
 {
 	m_pLineEdit->setText(szSelection);
 }
-
 
 void KviFileSelector::select()
 {
@@ -385,12 +377,6 @@ void KviDirectorySelector::select()
 	}
 
 }
-
-
-
-
-
-
 
 
 KviStringListSelector::KviStringListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled)
@@ -591,9 +577,6 @@ void KviFontSelector::setEnabled(bool bEnabled)
 }
 
 
-
-
-
 KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &txt,unsigned int * uFore,unsigned int * uBack,bool bEnabled)
 : KviTalHBox(par), KviSelectorInterface()
 {
@@ -625,11 +608,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	{
 		QPixmap tmp(120,16);
 		tmp.fill(KVI_OPTION_MIRCCOLOR(i));
-#ifdef COMPILE_USE_QT4
 		int id = m_pForePopup->insertItem(tmp,QString("x"));
-#else
-		int id = m_pForePopup->insertItem(tmp);
-#endif
 		m_pForePopup->setItemParameter(id,i);
 	}
 	m_pContextPopup->insertItem(__tr2qs("Foreground"),m_pForePopup);
@@ -642,11 +621,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	{
 		QPixmap tmp(120,16);
 		tmp.fill(KVI_OPTION_MIRCCOLOR(i));
-#ifdef COMPILE_USE_QT4
 		int id = m_pForePopup->insertItem(tmp,QString("x"));
-#else
-		int id = m_pBackPopup->insertItem(tmp);
-#endif
 		m_pBackPopup->setItemParameter(id,i);
 	}
 	m_pContextPopup->insertItem(__tr2qs("Background"),m_pBackPopup);
