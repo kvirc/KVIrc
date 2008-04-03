@@ -26,22 +26,21 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
+#include "kvi_pointerlist.h"
+#include "kvi_pointerhashtable.h"
+#include "kvi_toolwindows_container.h"
 #include "kvi_string.h"
 #include "kvi_ircuserdb.h"
 #include "kvi_ircmask.h"
 #include "kvi_time.h"
+#include "kvi_tal_tooltip.h"
 
 #include <time.h>
-#include "kvi_tal_tooltip.h"
-#include <qwidget.h>
-#include "kvi_pointerlist.h"
-#include "kvi_pointerhashtable.h"
-#include "kvi_toolwindows_container.h"
+
+#include <QWidget>
 
 class QLabel;
 class QScrollBar;
-
 class KviUserListView;
 class KviUserListViewArea;
 class KviConsole;
@@ -66,7 +65,6 @@ public:
 	virtual void maybeTip(const QPoint &pnt);
 	void doTip(const QRect &rct,const QString &str){ tip(rct,str); };
 };
-
 
 
 class KVIRC_API KviUserListEntry

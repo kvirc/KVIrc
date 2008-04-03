@@ -39,30 +39,24 @@
 #include "kvi_lagmeter.h"
 #include "kvi_options.h"
 #include "kvi_kvs_script.h"
-
-#include <qpainter.h>
-#include <qstyle.h>
-#include <qlayout.h>
-#include <qtimer.h>
-#include <qcursor.h>
+#include "kvi_time.h"
+#include "kvi_qstring.h"
 #include "kvi_tal_popupmenu.h"
-#include <qpixmap.h>
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
+
+#include <QPainter>
+#include <QStyle>
+#include <QLayout>
+#include <QTimer>
+#include <QCursor>
+#include <QPixmap>
+#include <QFont>
+#include <QEvent>
+#include <QMouseEvent>
 
 // This class COULD be derived also from KStatusBar but in fact
 // it adds no graphic functionality and it has only useless methods for us.
 // ... for now let's keep it simple :)
-
-
 // FIXME: Applets in modules SHOULD be unregistered automatically on unload!
-
-#include "kvi_time.h"
-#include "kvi_qstring.h"
-
-#include <qfont.h>
-
 /*
 	IDEAS:
 		- Lag meter
@@ -108,10 +102,6 @@ void KviStatusBarAppletDescriptor::unregisterApplet(KviStatusBarApplet * a)
 }
 
 
-
-
-
-
 KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
 {
@@ -138,15 +128,9 @@ void KviStatusBarApplet::paintEvent(QPaintEvent * e)
 	if(m_bSelected)
 	{
 		QPainter p(this);
-#ifdef COMPILE_USE_QT4
 		p.setCompositionMode(QPainter::CompositionMode_SourceOut);
 		p.fillRect(rect(),Qt::black);
 		p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-#else
-		p.setRasterOp(Qt::NotROP);
-		p.fillRect(rect(),Qt::black);
-		p.setRasterOp(Qt::CopyROP);
-#endif
 	}
 }
 
@@ -156,8 +140,6 @@ void KviStatusBarApplet::select(bool bSelect)
 	m_bSelected = bSelect;
 	update();
 }
-
-
 
 
 KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
@@ -384,14 +366,12 @@ KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar,KviStatusBa
 	return new KviStatusBarLagIndicator(pBar,pDescriptor);
 }
 
-
 void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
 		__tr2qs("Lag Indicator"),"lagindicator",CreateStatusBarLagIndicator,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVERPING)));
 	pBar->registerAppletDescriptor(d);
 }
-
 
 
 KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
@@ -538,7 +518,6 @@ void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
 }
 
 
-
 KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -560,4 +539,3 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 		__tr2qs("Separator"),"separator",CreateStatusBarSeparator);
 	pBar->registerAppletDescriptor(d);
 }
-

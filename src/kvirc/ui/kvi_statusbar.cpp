@@ -26,9 +26,6 @@
 
 #include "kvi_statusbar.h"
 #include "kvi_frame.h"
-
-#include <qlabel.h>
-
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_irccontext.h"
@@ -37,45 +34,35 @@
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_config.h"
+#include "kvi_time.h"
+#include "kvi_qstring.h"
 #include "kvi_modulemanager.h"
 #include "kvi_statusbarapplet.h"
 #include "kvi_dynamictooltip.h"
-
-#include <qpainter.h>
-#include <qstyle.h>
-#include <qlayout.h>
-#include <qtimer.h>
-#include <qcursor.h>
 #include "kvi_tal_popupmenu.h"
-#include <qpixmap.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
+#include <QPainter>
+#include <QStyle>
+#include <QLayout>
+#include <QTimer>
+#include <QCursor>
+#include <QPixmap>
+#include <QLabel>
+#include <QFont>
+#include <QEvent>
+#include <QMouseEvent>
 
 // This class COULD be derived also from KStatusBar but in fact
 // it adds no graphic functionality and it has only useless methods for us.
 // ... for now let's keep it simple :)
 
-
-#include "kvi_time.h"
-#include "kvi_qstring.h"
-
-#include <qfont.h>
-
 /*
 	IDEAS:
 		- Countdown timer
 */
-
-
-
-
-
 KviStatusBar::KviStatusBar(KviFrame * pFrame)
 : QStatusBar(pFrame)
 {
-
 	setProperty("name","statusbar");
 	m_pFrame = pFrame;
 	// ugh :D
@@ -105,11 +92,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 
 	m_pMessageLabel = new QLabel("<b>[x]</b> x",this,"msgstatuslabel");
 	m_pMessageLabel->setMargin(1);
-#ifdef COMPILE_USE_QT4
 	m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
-#else
-	m_pMessageLabel->setAlignment(SingleLine | Qt::AlignVCenter | Qt::AlignLeft);
-#endif
 	m_pMessageLabel->setMinimumWidth(350);
 	
 	m_iLastMinimumHeight = 0;
@@ -486,11 +469,7 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 		m_pClickedApplet = appletAt(mapToGlobal(e->pos()));
 		if(!m_pClickedApplet)return;
 		m_pClickedApplet->select();
-#ifdef COMPILE_USE_QT4
 		g_pApp->setOverrideCursor(Qt::SizeAllCursor);
-#else
-		g_pApp->setOverrideCursor(sizeAllCursor);
-#endif
 	}
 }
 
@@ -594,7 +573,6 @@ void KviStatusBar::showFirstMessageInQueue()
 	m_pMessageLabel->setText("<nobr>" + pMsg->text() + "</nobr>");
 	m_pMessageTimer->start(pMsg->timeout());
 }
-
 
 void KviStatusBar::setPermanentMessage()
 {

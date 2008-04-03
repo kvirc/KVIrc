@@ -28,17 +28,16 @@
 #include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
 #include "kvi_statusbar.h"
-
-#include <qstring.h>
 #include "kvi_pointerhashtable.h"
-#include <qstatusbar.h>
-#include <qlabel.h>
-#include <qpixmap.h>
+
+#include <QString>
+#include <QStatusBar>
+#include <QLabel>
+#include <QPixmap>
 
 class QTimer;
 class QLabel;
 class KviTalPopupMenu;
-
 class KviConfig;
 class KviFrame;
 class KviIrcContext;
@@ -106,7 +105,6 @@ protected:
 };
 
 
-
 class KviStatusBarClock : public KviStatusBarApplet
 {
 	Q_OBJECT
@@ -125,6 +123,7 @@ protected:
 protected slots:
 	void toggleUtc();
 };
+
 
 class KviStatusBarConnectionTimer : public KviStatusBarApplet
 {
@@ -145,6 +144,7 @@ protected slots:
 	void toggleTotal();
 };
 
+
 class KviStatusBarSeparator : public KviStatusBarApplet
 {
 	Q_OBJECT
@@ -154,6 +154,7 @@ public:
 public:
 	static void selfRegister(KviStatusBar * pBar);
 };
+
 
 class KviStatusBarAwayIndicator : public KviStatusBarApplet
 {
@@ -175,6 +176,7 @@ protected slots:
 	void updateDisplay();
 	void toggleContext();
 };
+
 
 class KviStatusBarLagIndicator : public KviStatusBarApplet
 {

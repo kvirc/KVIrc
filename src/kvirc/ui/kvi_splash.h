@@ -26,15 +26,13 @@
 
 #include "kvi_settings.h"
 
-
-#include <qframe.h>
-
-#include <qprogressbar.h>
-#include <qlabel.h>
-#include <qtimer.h>
-#include <qdatetime.h>
-#include <qsplashscreen.h> 
-#include <qpixmap.h>
+#include <QFrame>
+#include <QProgressBar>
+#include <QLabel>
+#include <QTimer>
+#include <QDateTime>
+#include <QSplashScreen>
+#include <QPixmap>
 
 class KVIRC_API KviSplashScreen : public QSplashScreen
 {
@@ -46,11 +44,9 @@ private:
 	QTimer         * m_pTimer;
 	QTime            m_creationTime;
 	QPixmap        * m_pOverlay;
-#ifdef COMPILE_USE_QT4
 	bool             m_bIncreasing;
 	qreal            m_rTransparency;
 	QTimer         * m_pFadeTimer;
-#endif
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void hideEvent(QHideEvent * e);

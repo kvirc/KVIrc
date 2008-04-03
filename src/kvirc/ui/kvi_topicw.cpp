@@ -41,26 +41,27 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_mirccntrl.h"
+#include "kvi_tal_tooltip.h"
+#include "kvi_tal_listbox.h"
+#include "kvi_tal_popupmenu.h"
+
+#include <QLineEdit>
+#include <QPainter>
+#include <QFontMetrics>
+#include <QRegExp>
+#include <QClipboard>
+#include <QEvent>
+#include <QMouseEvent>
 
 extern KviTextIconWindow * g_pTextIconWindow;
 extern KviColorWindow * g_pColorWindow;
 static int g_iInputFontCharWidth[256];
 
-#include <qpainter.h>
-#include <qfontmetrics.h>
-#include "kvi_tal_tooltip.h"
-#include <qlineedit.h>
-#include "kvi_tal_listbox.h"
-#include <qregexp.h>
-#include <qclipboard.h>
-#include "kvi_tal_popupmenu.h"
-#include <qevent.h>
 
 // FIXME: #warning "The combo should disappear when it looses focus!...(how to do it ?)"
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
-
 #endif
 
 
@@ -89,17 +90,9 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pContextPopup = 0;
 	m_iCursorPosition = 0;
 	m_pInput = 0;
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
-#else
-	setBackgroundMode(QWidget::NoBackground);
-#endif
 	reset();
-#ifdef COMPILE_USE_QT4
 	m_pCompletionBox=new KviTalListBox(this,Qt::Popup);
-#else
-	m_pCompletionBox=new KviTalListBox(this,Qt::WType_Popup);
-#endif
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
 //	m_pCompletionBox->setVScrollBarMode( KviTalListBox::AlwaysOff );
@@ -411,14 +404,12 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QColorGrou
 	}
 }
 
-#ifdef COMPILE_USE_QT4
 void KviTopicWidget::paintEvent(QPaintEvent * e)
 {
 	QPainter pa(this);
 	drawFrame(&pa);
 	drawContents(&pa);
 }
-#endif
 
 void KviTopicWidget::drawContents(QPainter *p)
 {

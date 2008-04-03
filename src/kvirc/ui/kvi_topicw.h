@@ -26,14 +26,13 @@
 //============================================================================
 
 #include "kvi_settings.h"
-
-#include <qframe.h>
-#include <qpushbutton.h>
-#include "kvi_tal_listbox.h" 
-
 #include "kvi_string.h"
 #include "kvi_app.h"
 #include "kvi_input.h"
+#include "kvi_tal_listbox.h"
+
+#include <QFrame>
+#include <QPushButton>
 
 class QComboBox;
 class KviChannel;
@@ -80,9 +79,8 @@ protected:
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void keyPressEvent(QKeyEvent *e);
 	virtual void resizeEvent(QResizeEvent *e);
-#ifdef COMPILE_USE_QT4
+
 	virtual void paintEvent(QPaintEvent * e);
-#endif
 	void updateToolTip();
 	void deactivate();
 	void iconButtonClicked();

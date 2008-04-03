@@ -1,16 +1,39 @@
+//=============================================================================
+//
+//   File : kvi_toolwindows_container.cpp
+//   Creation date : Tue Aug 1 2000 21:05:22 by Szymon Stefanek
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+
 #define __KVIRC__
-
-
-#include <qlayout.h> 
-#include <qtoolbutton.h> 
-#include <qobjectcleanuphandler.h> 
-#include <qpushbutton.h> 
-#include "kvi_tal_vbox.h"
-#include <qpainter.h>
-#include <qapplication.h>
 
 #include "kvi_toolwindows_container.h"
 #include "kvi_iconmanager.h"
+#include "kvi_tal_vbox.h"
+
+#include <QPainter>
+#include <QApplication>
+#include <QLayout>
+#include <QToolButton>
+#include <QObjectCleanupHandler>
+#include <QPushButton>
 
 
 KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButton* button/*, const char * name, WFlags f*/ )
@@ -80,17 +103,9 @@ void KviWindowToolWidget::unregisterSelf()
 KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const QString & text, QWidget * parent,bool bOn, const char * name )
 :TOOL_PAGE_PARENT(parent)
 {
-#ifdef COMPILE_USE_QT4
 	setFlat(true);
 	setObjectName("kvi_window_tool_button");
 	setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
-#else
-	QIconSet is1;
-	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixon)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
-	is1.setPixmap(*(g_pIconManager->getSmallIcon(pixoff)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
-	setIconSet(is1);
-	setUsesBigPixmap(false);
-#endif
 	setToggleButton(true);
 	setOn(bOn);
 
@@ -99,7 +114,6 @@ KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const Q
 
 KviWindowToolPageButton::~KviWindowToolPageButton()
 {
-
 }
 
 /*void KviWindowToolPageButton::drawButton ( QPainter * p)
@@ -108,9 +122,9 @@ KviWindowToolPageButton::~KviWindowToolPageButton()
 	if(isOn())
 		pixmap.fill(colorGroup().mid());
 	else
-    		pixmap.fill(colorGroup().button()); 
-    	QPainter painter( &pixmap );
-    	
+		pixmap.fill(colorGroup().button()); 
+	QPainter painter( &pixmap );
+
 	QPixmap icon;
 	if(isOn())
 		icon=iconSet()->pixmap(QIconSet::Small,QIconSet::Normal,QIconSet::On);

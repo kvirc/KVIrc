@@ -29,15 +29,12 @@
 #include "kvi_splash.h"
 #include "kvi_locale.h"
 #include "kvi_fileutils.h"
-#include <qsplashscreen.h> 
 
-#ifdef COMPILE_USE_QT4
-	#include <qdesktopwidget.h>
-#endif
-
-#include <qpixmap.h>
-#include <qpainter.h>
-#include <qlayout.h>
+#include <QSplashScreen>
+#include <QDesktopWidget>
+#include <QPixmap>
+#include <QPainter>
+#include <QLayout>
 
 #include <stdio.h>
 
@@ -107,14 +104,12 @@ KviSplashScreen::KviSplashScreen()
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(suicide()));
 	delete pix;
 
-#ifdef COMPILE_USE_QT4
 	setWindowOpacity(0);
 	m_bIncreasing=true;
 	m_rTransparency=0;
 	m_pFadeTimer= new QTimer(this);
 	connect(m_pFadeTimer,SIGNAL(timeout()),this,SLOT(fadeTimerShot()));
 	m_pFadeTimer->start(6);
-#endif
 }
 
 // We don't need messages on the splash: they just add work to the translators and nobody can read them anyway :D
@@ -130,7 +125,6 @@ KviSplashScreen::~KviSplashScreen()
 	delete m_pOverlay;
 }
 
-
 void KviSplashScreen::showEvent(QShowEvent *e)
 {
 	move((g_pApp->desktop()->width() - width())/2,
@@ -145,7 +139,6 @@ void KviSplashScreen::hideEvent(QHideEvent *e)
 
 void KviSplashScreen::setProgress(int progress)
 {
-#ifdef COMPILE_USE_QT4
 	QPixmap slowQt4Copy = pixmap();
 	QPainter painter(&slowQt4Copy);
 	QSize size = slowQt4Copy.size();
@@ -153,12 +146,7 @@ void KviSplashScreen::setProgress(int progress)
 	painter.drawPixmap(0,size.height() - m_pOverlay->height(),w,m_pOverlay->height(),*m_pOverlay,0,0,w,m_pOverlay->height());
 	painter.end();
 	setPixmap(slowQt4Copy);
-#else
-	QPainter painter(pixmap());
-	QSize size = pixmap()->size();
-	painter.drawPixmap(0,size.height() - m_pOverlay->height(),*m_pOverlay,0,0,(m_pOverlay->width() * progress) / 100,m_pOverlay->height());
-	painter.end();
-#endif
+
 	//raise();
 	repaint();
 	g_pApp->processEvents(); //damn...
@@ -168,18 +156,9 @@ void KviSplashScreen::setProgress(int progress)
 
 void KviSplashScreen::die()
 {
-#ifdef COMPILE_USE_QT4
 	m_bIncreasing = false;
 	m_pFadeTimer->start(6);
-#else
-	QTime now = QTime::currentTime();
-	int mSecs = m_creationTime.msecsTo(now);
-	int mRemaining = KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS - mSecs;
-	if(mRemaining < 0)mRemaining = 0;
-	m_pTimer->start(mRemaining,true);
-#endif
 }
-
 
 void KviSplashScreen::suicide()
 {
@@ -190,10 +169,8 @@ void KviSplashScreen::suicide()
 	//delete this;
 }
 
-
 void KviSplashScreen::fadeTimerShot()
 {
-#ifdef COMPILE_USE_QT4
 	if(m_bIncreasing)
 	{
 		m_rTransparency+=0.05;
@@ -203,8 +180,6 @@ void KviSplashScreen::fadeTimerShot()
 			m_pFadeTimer->stop();
 			m_bIncreasing=false;
 		}
-
-
 	} else {
 		m_rTransparency-=0.02;
 		setWindowOpacity(m_rTransparency);
@@ -215,7 +190,6 @@ void KviSplashScreen::fadeTimerShot()
 			suicide();
 		}
 	}
-#endif
 }
 
 

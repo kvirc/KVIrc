@@ -47,16 +47,17 @@
 #include "kvi_stringconversion.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
-
-#include <qlabel.h>
-#include <qscrollbar.h>
-#include <qpainter.h>
-#include <qpixmap.h>
-#include <qfontmetrics.h>
-#include <qdatetime.h>
-#include <qmime.h>
 #include "kvi_styled_controls.h"
-#include <qevent.h>
+
+#include <QLabel>
+#include <QScrollBar>
+#include <QPainter>
+#include <QPixmap>
+#include <QFontMetrics>
+#include <QDateTime>
+//#include <qmime.h>
+#include <QEvent>
+#include <QPaintEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -87,8 +88,6 @@ void KviUserListToolTip::maybeTip(const QPoint &pnt)
 {
 	m_pListView->maybeTip(this,pnt);
 }
-
-
 
 
 KviUserListEntry::KviUserListEntry(KviUserListView * parent,const QString &nick,
@@ -1146,7 +1145,7 @@ void KviUserListView::resizeEvent(QResizeEvent *)
 		m_pUsersLabel->setGeometry(0,0,width(),hght);
 	}
 	else
-	{ 
+	{
 		hght =0;
 	}
 
@@ -1309,16 +1308,9 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * par)
 : QWidget(par)
 {
 	m_pListView = par;
-#ifdef COMPILE_USE_QT4
 	setAutoFillBackground(false);
-#else
-	setBackgroundMode(QWidget::NoBackground);
-#endif
-#ifdef COMPILE_USE_QT4
+
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this,"scrollbar");
-#else
-	m_pScrollBar = new QScrollBar(QScrollBar::Vertical,this,"scrollbar");
-#endif
 	m_pScrollBar->setRange(0,0);
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
@@ -1421,9 +1413,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	SET_ANTI_ALIASING(p);
 	p.setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 
-#ifdef COMPILE_USE_QT4
 	QFontMetrics fm(p.fontMetrics());
-#endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
@@ -1516,11 +1506,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
 					case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
 						p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid),0,
-#ifdef COMPILE_USE_QT4
 							(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? Qt::DotLine : Qt::SolidLine));
-#else
-							(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? QPen::DotLine : QPen::SolidLine));
-#endif
 						p.drawLine(0,bottom - 1,wdth,bottom - 1);
 						if(bShowState || bShowIcons)
 							p.drawLine(iAvatarAndTextX,bottom - 1,iAvatarAndTextX,theY);
@@ -1683,18 +1669,10 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP)))) \
 												) \
 										);
-#ifdef COMPILE_USE_QT4
 					p.drawPixmap(theX,theY+(fm.lineSpacing()-16/*size of small icon*/)/2,*ico);
-#else
-					p.drawPixmap(theX,theY+(m_pListView->m_iFontHeight-16/*size of small icon*/)/2,*ico);
-#endif
 				}
 				theX +=18;
-#ifdef COMPILE_USE_QT4
 				p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
-#else
-				p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
-#endif
 			} else {
 
 				char flag = m_pListView->getUserFlag(e);
@@ -1702,17 +1680,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				{
 					QString ttt = QChar(flag);
 					ttt += e->m_szNick;
-#ifdef COMPILE_USE_QT4
 					p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,ttt);
-#else
-					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,ttt);
-#endif
 				} else {
-#ifdef COMPILE_USE_QT4
 					p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
-#else
-					p.drawText(iAvatarAndTextX,theY,wdth - theX,m_pListView->m_iFontHeight,Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
-#endif
 				}
 			}
 			if(bColorAllocated) delete pClrFore;
@@ -1732,12 +1702,8 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	//p.drawLine(1,height()-1,wdth,height()-1);
 	//p.drawLine(wdth - 1,1,wdth - 1,height());
 
-#ifdef COMPILE_USE_QT4
 	QPainter qt4SuxBecauseOfThisAdditionalPainter(this);
 	qt4SuxBecauseOfThisAdditionalPainter.drawPixmap(r.left(),r.top(),r.width(),r.height(),*pMemBuffer,r.left(),r.top(),r.width(),r.height());
-#else
-	bitBlt(this,r.left(),r.top(),pMemBuffer,r.left(),r.top(),r.width(),r.height(),Qt::CopyROP,false);
-#endif
 }
 
 void KviUserListViewArea::resizeEvent(QResizeEvent *)
@@ -1958,15 +1924,11 @@ void KviUserListViewArea::mouseReleaseEvent(QMouseEvent *)
 
 void KviUserListViewArea::wheelEvent(QWheelEvent *e)
 {
-#ifdef COMPILE_USE_QT4
 	static bool bHere = false; // Qt4(<= 4.2.2) has a nasty bug that makes the re-sent wheelEvent to cause infinite recursion
 	if(bHere)return;
 	bHere = true;
-#endif
 	g_pApp->sendEvent(m_pScrollBar,e);
-#ifdef COMPILE_USE_QT4
 	bHere = false;
-#endif
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

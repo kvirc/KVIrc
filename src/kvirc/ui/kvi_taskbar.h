@@ -25,18 +25,17 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
 #include "kvi_pointerlist.h"
-#include <qframe.h>
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_listview.h"
-#include <qpushbutton.h>
 
+#include <QPushButton>
+#include <QFrame>
+#include <QDockWidget>
 
-
+class QPixmap;
 class KviWindow;
 class KviFrame;
-class QPixmap;
 class KviDynamicToolTip;
 class KviConsole;
 
@@ -83,29 +82,9 @@ public:
 // build system that uses Qt4 then you must add the -DCOMPILE_USE_QT4
 // commandline parameter to moc (at leat) when parsing this file.
 
-// MOC_SKIP_BEGIN
-#ifdef COMPILE_USE_QT4
-
-#include <QDockWidget>
-
 class KVIRC_API KviTaskBarBase : public QDockWidget
 {
 	Q_OBJECT
-#endif //COMPILE_USE_QT4
-// MOC_SKIP_END
-
-// Qt3 version
-#ifndef Q_MOC_RUN
-#ifndef COMPILE_USE_QT4
-
-#include "kvi_toolbar.h"
-
-class KVIRC_API KviTaskBarBase : public KviToolBar
-{
-	Q_OBJECT
-#endif
-#endif
-
 public:
 	KviTaskBarBase();
 	virtual ~KviTaskBarBase();
@@ -150,13 +129,9 @@ protected:
 	KviDynamicToolTip * m_pTip;
 protected:
 	virtual void mousePressEvent(QMouseEvent *e);
-#if QT_VERSION >= 300
 	virtual void contextMenuEvent(QContextMenuEvent *e);
-#endif
 	virtual void drawButtonLabel(QPainter *p);
-#ifdef COMPILE_USE_QT4
 	virtual void paintEvent(QPaintEvent * e);
-#endif
 public:
 	virtual bool active(){ return m_bActive; };
 	virtual void highlight(int iLevel = 1);
@@ -225,11 +200,7 @@ protected:
 public:
 	virtual QString key(int column,bool) const;
 	virtual void paintCell(QPainter *p,const QColorGroup &cg,int column,int width,int alignment);
-#ifdef COMPILE_USE_QT4
 	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h);
-#else
-	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h,GUIStyle s);
-#endif
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();

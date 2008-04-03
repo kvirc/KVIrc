@@ -27,16 +27,19 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
-
-#include <qstring.h>
 #include "kvi_pointerhashtable.h"
-#include <qstatusbar.h>
 
-class KviFrame;
+#include <QString>
+#include <QStatusBar>
 
 class QTimer;
 class QLabel;
+class KviFrame;
 class KviTalPopupMenu;
+class KviStatusBarApplet;
+class KviStatusBarAppletDescriptor;
+class KviIrcContext;
+class KviDynamicToolTip;
 
 class KVIRC_API KviStatusBarMessage : public KviHeapObject
 {
@@ -54,12 +57,6 @@ public:
 	unsigned int timeout(){ return m_uTimeout; };
 	unsigned int priority(){ return m_uPriority; };
 };
-
-
-class KviStatusBarApplet;
-class KviStatusBarAppletDescriptor;
-class KviIrcContext;
-class KviDynamicToolTip;
 
 class KVIRC_API KviStatusBar : public QStatusBar
 {

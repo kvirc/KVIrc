@@ -28,13 +28,11 @@
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
-
-#include <qcursor.h>
 #include "kvi_tal_popupmenu.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <qevent.h>
-#endif
+#include <QCursor>
+#include <QEvent>
+#include <QMouseEvent>
 
 static KviTalPopupMenu * g_pToolBarContextPopup = 0;
 static KviTalPopupMenu * g_pToolBarWindowsPopup = 0;
@@ -102,16 +100,8 @@ void KviToolBar::mousePressEvent(QMouseEvent *e)
 void KviToolBar::moveTo(QT_TOOLBARDOCK_TYPE dock)
 {
 	// FIXME: this should be hidden in Tal
-#ifdef COMPILE_USE_QT4
 	g_pFrame->removeToolBar(this);
 	g_pFrame->addToolBar(dock,this);
-#else //!COMPILE_USE_QT4
-#if QT_VERSION >= 300
-	g_pFrame->moveDockWindow(this,dock);
-#else
-	g_pFrame->moveToolBar(this,dock);
-#endif
-#endif //!COMPILE_USE_QT4
 }
 
 void KviToolBar::moveToTop()
@@ -153,9 +143,6 @@ void KviToolBar::setSmallIcons()
 {
 	g_pFrame->setUsesBigPixmaps(false);
 }
-
-
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_toolbar.moc"

@@ -544,7 +544,7 @@ void KviApp::findGlobalKvircDirectory()
 	// I do it in that way...
 	#ifdef COMPILE_KDE_SUPPORT
 		// KDE compilation ...
-		// The things usually go installed into $KDEDIR/share/apps/kvirc/$KVI_VERSION_BRANCH
+		// The things usually go installed into $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 		// Look in the main KDE directory
 		KStandardDirs * d = dirs();
 		if(d)
@@ -554,7 +554,8 @@ void KviApp::findGlobalKvircDirectory()
 			#ifdef HAVE_GETENV
 				//KDEDIR sanity check...
 				m_szGlobalKvircDir = getenv("KDEDIR");
-				#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+				#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+				//m_szGlobalKvircDir+="/share/apps/kvirc/" VERSION_BRANCH;
 				m_szGlobalKvircDir+="/share/apps/kvirc/4.0/";
 				if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 			#endif
@@ -562,13 +563,14 @@ void KviApp::findGlobalKvircDirectory()
 		// FAILED ? Check the usual way...
 	#endif //COMPILE_WITH_KDE
 
-	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$KVI_VERSION_BRANCH
+	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 
 	// Check for MacOS X Bundle compilation
 	#ifdef Q_OS_MACX
 		m_szGlobalKvircDir = applicationDirPath();
 		m_szGlobalKvircDir+= "/../Resources/kvirc/";
-		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+		#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+		//m_szGlobalKvircDir+= VERSION_BRANCH;
 		m_szGlobalKvircDir+= "4.0/";
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //Q_OS_MACX
@@ -578,7 +580,8 @@ void KviApp::findGlobalKvircDirectory()
 		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
 			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
 			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
-			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+			#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+			//m_szGlobalKvircDir+= VERSION_BRANCH;
 			m_szGlobalKvircDir+= "4.0/";
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;	
 		}
@@ -588,7 +591,8 @@ void KviApp::findGlobalKvircDirectory()
 	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
 		m_szGlobalKvircDir = QDir::homeDirPath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+		#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+		//m_szGlobalKvircDir+= VERSION_BRANCH;
 		m_szGlobalKvircDir+= "4.0/";
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	}
@@ -598,7 +602,8 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir = QDir::homeDirPath();
 			m_szGlobalKvircDir+= "/.kde";
 			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+			#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+			//m_szGlobalKvircDir+= VERSION_BRANCH;
 			m_szGlobalKvircDir+= "4.0/";
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
@@ -813,7 +818,8 @@ void KviApp::saveKvircDirectory()
 {
 /*
 #ifdef COMPILE_ON_WINDOWS
-	#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
+	#warning you must change back hardcoded 4.0 to VERSION_BRANCH
+	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",VERSION_BRANCH);
 	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",4.0);
 	WritePrivateProfileString("kvirc",szKey.ptr(),m_szLocalKvircDir.ptr(),KVI_HOME_CONFIG_FILE_NAME);
 #else //!COMPILE_ON_WINDOWS
@@ -822,7 +828,8 @@ void KviApp::saveKvircDirectory()
 #ifdef COMPILE_KDE_SUPPORT
 	// In KDE we use the application config file
 	if(m_szConfigFile.isEmpty())
-	{	// not if user supplied a config file
+	{
+		// not if user supplied a config file
 		KConfig * cfg = config();
 		if(cfg)
 		{
@@ -838,10 +845,10 @@ void KviApp::saveKvircDirectory()
 	}
 #endif //COMPILE_KDE_SUPPORT
 	// In NON-KDE we use $HOME/.kvirc.rc or $HOME/kvirc.ini
-
 	QString szF = QDir::homeDirPath();
 	if(!m_szConfigFile.isEmpty())
-	{//Must be changed from QString::fromLocal8Bit to QTextCodec::codecForLocale()
+	{
+		//Must be changed from QString::fromLocal8Bit to QTextCodec::codecForLocale()
 		QString szConfig = m_szConfigFile;
 		if(QDir::isRelativePath(szConfig))
 		{
