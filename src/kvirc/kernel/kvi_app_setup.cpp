@@ -555,7 +555,7 @@ void KviApp::findGlobalKvircDirectory()
 				//KDEDIR sanity check...
 				m_szGlobalKvircDir = getenv("KDEDIR");
 				#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
-				m_szGlobalKvircDir+="/share/apps/kvirc/" 4.0;
+				m_szGlobalKvircDir+="/share/apps/kvirc/4.0/";
 				if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 			#endif
 		}
@@ -569,7 +569,8 @@ void KviApp::findGlobalKvircDirectory()
 		m_szGlobalKvircDir = applicationDirPath();
 		m_szGlobalKvircDir+= "/../Resources/kvirc/";
 		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
-		m_szGlobalKvircDir+= 4.0;
+		m_szGlobalKvircDir+= "4.0/";
+		KviMessageBox::warning(m_szGlobalKvircDir);
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //Q_OS_MACX
 
@@ -579,7 +580,7 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
 			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
 			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
-			m_szGlobalKvircDir+= 4.0;
+			m_szGlobalKvircDir+= "4.0/";
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;	
 		}
 	}
@@ -589,7 +590,7 @@ void KviApp::findGlobalKvircDirectory()
 		m_szGlobalKvircDir = QDir::homeDirPath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
 		#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
-		m_szGlobalKvircDir+= 4.0;
+		m_szGlobalKvircDir+= "4.0/";
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	}
 
@@ -599,7 +600,7 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir+= "/.kde";
 			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
 			#warning you must change back hardcoded 4.0 to KVI_VERSION_BRANCH
-			m_szGlobalKvircDir+= 4.0;
+			m_szGlobalKvircDir+= "4.0/";
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	#endif //COMPILE_KDE_SUPPORT
