@@ -34,7 +34,6 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #include "kvi_valuelist.h"
-#include "kvi_accel.h"
 #include "kvi_styled_controls.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
@@ -52,6 +51,7 @@
 #include <QDateTimeEdit>
 #include <QLineEdit>
 #include <QLabel>
+#include <QShortcut>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -159,10 +159,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	cacheFileList();
 	setupItemList();
-	KviAccel *a = new KviAccel( this );
-        a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
-				m_pIrcView,
-				SLOT(toggleToolWidget()) );
+	connect(new QShortcut(Qt::Key_F+Qt::CTRL,this),SIGNAL(activated()),m_pIrcView,SLOT(toggleToolWidget()));
 }
 
 
