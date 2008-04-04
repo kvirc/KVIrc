@@ -19,17 +19,14 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-
-#include "kvi_module.h"
-
-
 #include "listwindow.h"
 
+#include "kvi_module.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
 #include "kvi_locale.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 KviPointerList<KviListWindow> * g_pListWindowList = 0;
 
@@ -65,8 +62,6 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
-
 static bool list_module_init(KviModule * m)
 {
 	g_pListWindowList = new KviPointerList<KviListWindow>;
@@ -80,7 +75,7 @@ static bool list_module_cleanup(KviModule *m)
 {
 	while(g_pListWindowList->first())g_pListWindowList->first()->die();
 	delete g_pListWindowList;
-    g_pListWindowList = 0;
+	g_pListWindowList = 0;
 	return true;
 }
 
@@ -91,7 +86,7 @@ static bool list_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"List",                                             // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000-2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"List window extension",
 	list_module_init,

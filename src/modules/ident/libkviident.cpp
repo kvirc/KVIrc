@@ -20,17 +20,15 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_module.h"
-
 #include "libkviident.h"
 
+#include "kvi_module.h"
 #include "kvi_socket.h"
 #include "kvi_app.h"
 #include "kvi_out.h"
 #include "kvi_netutils.h"
 #include "kvi_locale.h"
 #include "kvi_window.h"
-
 #include "kvi_options.h"
 #include "kvi_defaults.h"
 
@@ -58,15 +56,15 @@ void startIdentService()
 		usleep(100);
 #endif
 	}
-//	debug("Service started");
+//	qDebug("Service started");
 }
 
 void stopIdentService()
 {
-//	debug("Stopping");
+//	qDebug("Stopping");
 	if(g_pIdentDaemon)delete g_pIdentDaemon;
-    g_pIdentDaemon = 0;
-//	debug("Stopped");
+	g_pIdentDaemon = 0;
+//	qDebug("Stopped");
 }
 
 KviIdentSentinel::KviIdentSentinel()
@@ -143,7 +141,6 @@ KviIdentRequest::~KviIdentRequest()
 {
 	kvi_socket_close(m_sock);
 }
-
 
 
 KviIdentDaemon::KviIdentDaemon()
@@ -325,7 +322,6 @@ ipv6_failure:
 
 	for(;;)
 	{
-
 		if(KviThreadEvent * e = dequeueEvent())
 		{
 			// This can be ONLY a terminate event
@@ -509,8 +505,6 @@ ipv6_failure:
 
 	}
 
-
-
 exit_on_request:
 
 	postEvent(g_pIdentSentinel,new KviThreadEvent(KVI_IDENT_THREAD_EVENT_EXITING_ON_REQUEST));
@@ -525,7 +519,7 @@ exit_thread:
 	if(m_sock != KVI_INVALID_SOCKET)kvi_socket_close(m_sock);
 	if(m_sock6 != KVI_INVALID_SOCKET)kvi_socket_close(m_sock6);
 	delete m_pRequestList;
-    m_pRequestList = 0;
+	m_pRequestList = 0;
 
 //	debug("RUN EXITING");
 }
@@ -603,7 +597,7 @@ static bool ident_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Ident",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Ident service",
 	ident_module_init,
@@ -615,4 +609,3 @@ KVIRC_MODULE(
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkviident.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

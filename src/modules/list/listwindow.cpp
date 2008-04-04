@@ -42,16 +42,16 @@
 #include "kvi_topicw.h"
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
-
 #include "kvi_styled_controls.h"
-#include <qtimer.h>
-#include <qpainter.h>
-#include <qfontmetrics.h>
-#include <qsplitter.h>
-#include <qtooltip.h>
-#include <qdatetime.h>
-#include "kvi_tal_hbox.h"
 #include "kvi_msgbox.h"
+#include "kvi_tal_hbox.h"
+
+#include <QTimer>
+#include <QPainter>
+#include <QFontMetrics>
+#include <QSplitter>
+#include <QToolTip>
+#include <QDateTime>
 
 extern KviPointerList<KviListWindow> * g_pListWindowList;
 
@@ -74,7 +74,6 @@ KviChannelListViewItemData::~KviChannelListViewItemData()
 }
 
 
-
 KviChannelListViewItem::KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData)
 : KviTalListViewItem(v)
 {
@@ -86,11 +85,8 @@ KviChannelListViewItem::~KviChannelListViewItem()
 {
 	delete m_pData;
 }
-#ifdef COMPILE_USE_QT4
+
 int KviChannelListViewItem::width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const
-#else
-int KviChannelListViewItem::width ( const QFontMetrics & fm, const QListView * lv, int column ) const
-#endif
 {
 	debug("width request");
 	QString szText;
@@ -123,14 +119,7 @@ void KviChannelListViewItem::paintCell(QPainter * p,const QColorGroup &cg,int co
 	int marg = lv->itemMargin();
 	int r = marg;
 
-#ifdef COMPILE_USE_QT4
-
 	p->fillRect( 0, 0, width, height(), cg.brush(lv->viewport()->backgroundRole()) );
-#else
-	const QColorGroup::ColorRole crole = QPalette::backgroundRoleFromMode(lv->viewport()->backgroundMode());
-	
-	p->fillRect( 0, 0, width, height(), cg.brush( crole ) );
-#endif
 
 	if ( isSelected() &&
 		(column == 0 || lv->allColumnsShowFocus()) ) {
@@ -150,7 +139,7 @@ void KviChannelListViewItem::paintCell(QPainter * p,const QColorGroup &cg,int co
 	
 	KviTopicWidget::paintColoredText(p,szText,cg,height(),width);
 }
-	
+
 QString KviChannelListViewItem::key(int col,bool) const
 {
 	switch(col)
@@ -168,7 +157,6 @@ QString KviChannelListViewItem::key(int col,bool) const
 	QString ret;
 	return ret;
 }
-
 
 
 KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
@@ -250,7 +238,6 @@ void KviListWindow::getBaseLogFileName(KviStr &buffer)
 {
 	buffer.sprintf("LIST_%d",console()->ircContextId());
 }
-
 
 void KviListWindow::requestList()
 {
@@ -465,7 +452,7 @@ void KviListWindow::processData(KviIrcMessage *msg)
 			msg->connection()->decodeText(msg->safeParam(2)),
 			msg->connection()->decodeText(msg->safeTrailing()))
 	);
-       
+
 	if(_OUTPUT_VERBOSE)
 	{
 		QString zzz = msg->connection()->decodeText(msg->allParams());
@@ -535,4 +522,3 @@ void KviListWindow::applyOptions()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "listwindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

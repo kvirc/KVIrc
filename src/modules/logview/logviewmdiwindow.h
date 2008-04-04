@@ -25,19 +25,20 @@
 #include "kvi_settings.h"
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
-
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_listview.h"
 #include "kvi_pointerlist.h"
-#include <qtabwidget.h>
-#include <qdatetime.h> 
 
-class KviTalListView;
+#include <QTabWidget>
+#include <QDateTime>
+
 class QStringList;
-class KviLogViewWidget;
 class QCheckBox;
 class QLineEdit;
 class QDateEdit;
+class KviTalListView;
+class KviLogViewWidget;
+
 
 class KviLogFile {
 
@@ -122,4 +123,3 @@ protected slots:
 };
 
 #endif //_LOGVIEWMDIWINDOW_H_
-

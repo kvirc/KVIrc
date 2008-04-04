@@ -26,7 +26,6 @@
 #include "kvi_app.h"
 
 
-
 static bool language_module_init(KviModule * m)
 {
 	/*
@@ -46,10 +45,9 @@ static bool language_module_cleanup(KviModule *m)
 	return true;
 }
 
-
 KVIRC_MODULE(
 	"Language",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"A simple statistical language/encoding detector",
 	language_module_init,

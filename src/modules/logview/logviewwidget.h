@@ -23,12 +23,11 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_window.h"
-#include "kvi_scripteditor.h"
 #include "logviewmdiwindow.h"
 
+#include "kvi_window.h"
+#include "kvi_scripteditor.h"
 #include "kvi_tal_listview.h"
-
 
 class KviScriptEditor;
 
@@ -81,6 +80,4 @@ public:
 	virtual QString text(int col) const { return m_pFileData->date().toString("dd.MM.yyyy"); };
 };
 
-
 #endif
-

@@ -26,20 +26,24 @@
 //=============================================================================
 
 #include "kvi_scripteditor.h"
-
-#include <qlabel.h>
-#include <kvi_tal_textedit.h>
-#include <qsyntaxhighlighter.h>
-#include <qdialog.h>
-#include <qcheckbox.h>
-#include "kvi_tal_listbox.h"
-#include <qevent.h> 
-#include "kvi_qcstring.h"
-
-#include "kvi_tal_popupmenu.h"
-
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
+#include "kvi_qcstring.h"
+#include <kvi_tal_textedit.h>
+#include "kvi_tal_popupmenu.h"
+#include "kvi_tal_listbox.h"
+
+#include <QLabel>
+#include <QDialog>
+#include <QCheckBox>
+#include <QEvent>
+
+// FIXME: Qt4 #include <QSyntaxHighlighter>
+#include <q3syntaxhighlighter.h>
+#define QSyntaxHighlighter Q3SyntaxHighlighter
+
+class QTimer;
+
 typedef KviPointerList<int> ColumnList;
 
 class KviCompletionBox: public KviTalListBox
@@ -81,22 +85,11 @@ signals:
 protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 	void contentsMousePressEvent(QMouseEvent *);
-#ifdef COMPILE_USE_QT4
 	Q3PopupMenu *createPopupMenu( const QPoint& pos );
-#else
-	QPopupMenu *createPopupMenu( const QPoint& pos );
-#endif
 	QWidget *m_pParent;
 	QString m_szHelp;
-
 };
 
-#ifdef COMPILE_USE_QT4
-	#include <q3syntaxhighlighter.h>
-	#define QSyntaxHighlighter Q3SyntaxHighlighter
-#else
-	#include <qobjectlist.h>
-#endif
 class KviScriptSyntaxHighlighter : public QSyntaxHighlighter
 {
 public:
@@ -120,8 +113,6 @@ protected:
 protected slots:
 	void okClicked();
 };
-
-class QTimer;
 
 class KviScriptEditorImplementation : public KviScriptEditor
 {

@@ -32,11 +32,11 @@
 #include "kvi_themedlabel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
-
-#include <qsplitter.h>
-#include <qtooltip.h>
 #include "kvi_tal_hbox.h"
-#include <qlabel.h>
+
+#include <QSplitter>
+#include <QToolTip>
+#include <QLabel>
 
 extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 
@@ -102,7 +102,6 @@ void KviLinksWindow::getBaseLogFileName(KviStr &buffer)
 {
 	buffer.sprintf("LINKS_%d",console()->ircContextId());
 }
-
 
 void KviLinksWindow::requestLinks()
 {
@@ -472,4 +471,3 @@ void KviLinksWindow::applyOptions()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_linkswindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

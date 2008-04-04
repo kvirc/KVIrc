@@ -31,11 +31,11 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
-#include <qtoolbutton.h>
-#include <qlineedit.h>
+
+#include <QToolButton>
+#include <QLineEdit>
 
 class KviThemedLabel;
 
@@ -63,16 +63,11 @@ protected:
 	KviChannelListViewItemData * m_pData;
 public:
 	const QString & channel(){ return m_pData->m_szChan; };
-#ifdef COMPILE_USE_QT4
 	int width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const;
-#else
-	int width ( const QFontMetrics & fm, const QListView * lv, int column ) const;
-#endif
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
 	virtual QString key(int col,bool) const;
 };
-
 
 
 class KviListWindow : public KviWindow, public KviExternalServerDataParser

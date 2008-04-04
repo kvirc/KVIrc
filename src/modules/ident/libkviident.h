@@ -27,9 +27,9 @@
 #include "kvi_string.h"
 #include "kvi_time.h"
 #include "kvi_settings.h"
-
 #include "kvi_pointerlist.h"
-#include <qobject.h>
+
+#include <QObject>
 
 class KviIdentRequest
 {

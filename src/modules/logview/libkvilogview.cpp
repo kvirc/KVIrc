@@ -24,9 +24,7 @@
 #include "logviewmdiwindow.h"
 
 #include "kvi_config.h"
-
 #include "kvi_module.h"
-
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
@@ -62,7 +60,7 @@ KviLogViewMDIWindow        * g_pLogViewWindow = 0;
 // ============================================
 
 static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",LOGVIEW_MODULE_EXTENSION_NAME);
 	if(d)
 	{
@@ -122,7 +120,6 @@ static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruc
 	return g_pLogViewWindow;
 }
 
-
 static bool logview_module_init(KviModule * m)
 {
 	g_pLogViewWindow = 0;
@@ -160,7 +157,7 @@ static bool logview_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"KVIrc Log Viewer Widget",
-	"1.0.0",
+	"4.0.0",
 	"Juanjo Alvarez <juanjux@yahoo.es>",
 	"An structured log file viewer",
 	logview_module_init,

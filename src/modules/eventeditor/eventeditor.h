@@ -24,12 +24,13 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-
-#include <qwidget.h>
 #include "kvi_tal_listview.h"
-#include <qlineedit.h>
+
+#include <QWidget>
+#include <QLineEdit>
 
 class KviScriptEditor;
+class KviTalPopupMenu;
 
 class KviEventListViewItem : public KviTalListViewItem
 {
@@ -60,8 +61,6 @@ public:
 	virtual QString text(int col) const { return m_szName; };
 	virtual const QPixmap * pixmap(int col) const;
 };
-
-class KviTalPopupMenu;
 
 class KviEventEditor : public QWidget
 {

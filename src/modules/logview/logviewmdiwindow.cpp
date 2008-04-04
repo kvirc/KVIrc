@@ -22,6 +22,7 @@
 
 #include "logviewmdiwindow.h"
 #include "logviewwidget.h"
+
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
 #include "kvi_module.h"
@@ -32,34 +33,30 @@
 #include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
-#ifdef COMPILE_USE_QT4
-	#include <q3progressdialog.h>
-#else
-	#include <qprogressdialog.h> 
-#endif
 #include "kvi_valuelist.h"
 #include "kvi_accel.h"
-#include <qpixmap.h>
-#include <qsplitter.h>
-#include <qtoolbutton.h>
+#include "kvi_styled_controls.h"
 #include "kvi_tal_listview.h"
-#include <qfileinfo.h>
-#include <qdir.h>
 #include "kvi_tal_popupmenu.h"
-#include <qcursor.h>
-#include <qlayout.h>
-#include <qpushbutton.h>
 
-
+#include <q3progressdialog.h>
+#include <QPixmap>
+#include <QSplitter>
+#include <QToolButton>
+#include <QFileInfo>
+#include <QDir>
+#include <QCursor>
+#include <QLayout>
+#include <QPushButton>
+#include <QTextCodec>
+#include <QDateTimeEdit>
+#include <QLineEdit>
+#include <QLabel>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
 #endif
-#include <qtextcodec.h>
-#include "kvi_styled_controls.h"
-#include <qdatetimeedit.h>
-#include <qlineedit.h>
-#include <qlabel.h>
+
 
 extern KviLogViewMDIWindow * g_pLogViewWindow;
 
@@ -68,11 +65,8 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 {
 	g_pLogViewWindow = this;
 //	m_pLogViewWidget = new KviLogViewWidget(this);
-	#ifdef COMPILE_USE_QT4
+
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
-#else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
-#endif
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 	
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
@@ -153,11 +147,8 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	layout->addWidget(w,11,1);
 
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
-#ifdef COMPILE_USE_QT4
 	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
-#else
-		m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
-#endif
+
 	KviValueList<int> li;
 	li.append(110);
 	li.append(width()-110);
@@ -170,15 +161,14 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	setupItemList();
 	KviAccel *a = new KviAccel( this );
         a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
-                        m_pIrcView,
-                        SLOT(toggleToolWidget()) );
+				m_pIrcView,
+				SLOT(toggleToolWidget()) );
 }
-
 
 
 KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {
-    g_pLogViewWindow = 0;
+	g_pLogViewWindow = 0;
 }
 
 void KviLogViewMDIWindow::applyFilter()
@@ -186,12 +176,10 @@ void KviLogViewMDIWindow::applyFilter()
 	setupItemList();
 }
 
-
 QPixmap * KviLogViewMDIWindow::myIconPtr()
 {
-    return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
+	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
 }
-
 
 void KviLogViewMDIWindow::resizeEvent(QResizeEvent *e)
 {
@@ -250,16 +238,9 @@ void KviLogViewMDIWindow::setupItemList()
 	QDate toDate   = m_pToDateEdit->date();
 
 	QString textBuffer;
-#ifdef COMPILE_USE_QT4
 	Q3ProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
 		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
-                          this, "progress", TRUE );
-#else
-	QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
-		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
-                          this, "progress", TRUE );
-#endif
-
+				this, "progress", TRUE );
 
 	int i=0;
 	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
@@ -328,10 +309,10 @@ void KviLogViewMDIWindow::cacheFileList()
 	m_pFileNames.sort();
 	QString szFname;
 
-    for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
-    {
-        szFname=(*it);
-        QFileInfo fi(szFname);
+	for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
+	{
+		szFname=(*it);
+		QFileInfo fi(szFname);
 		if(fi.extension(false)=="gz" || fi.extension(false)=="log")
 			m_logList.append(new KviLogFile(szFname));
 	}
@@ -366,11 +347,11 @@ void KviLogViewMDIWindow::itemSelected(KviTalListViewItem * it)
 
 QStringList KviLogViewMDIWindow::getFileNames()
 {
-    QString logPath;
-    g_pApp->getLocalKvircDirectory(logPath,KviApp::Log);
-    QString qPath(logPath);
-    QDir logDir(qPath);
-    return logDir.entryList();
+	QString logPath;
+	g_pApp->getLocalKvircDirectory(logPath,KviApp::Log);
+	QString qPath(logPath);
+	QDir logDir(qPath);
+	return logDir.entryList();
 }
 
 void KviLogViewMDIWindow::rightButtonClicked ( KviTalListViewItem * it, const QPoint &, int )
@@ -477,4 +458,3 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "logviewmdiwindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

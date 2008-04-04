@@ -28,10 +28,10 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
-#include <qtoolbutton.h>
+
+#include <QToolButton>
 
 class KviThemedLabel;
 

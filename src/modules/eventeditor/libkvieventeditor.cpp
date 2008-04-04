@@ -20,11 +20,11 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "eventeditor.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
-
-#include "eventeditor.h"
 
 KviEventEditorWindow * g_pEventEditorWindow = 0;
 
@@ -78,7 +78,7 @@ static bool eventeditor_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"EventEditor",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script events",
 	eventeditor_module_init,

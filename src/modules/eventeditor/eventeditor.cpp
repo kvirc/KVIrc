@@ -36,21 +36,18 @@
 //#include "kvi_eventhandler.h"
 #include "kvi_qstring.h"
 #include "kvi_filedialog.h"
-
 #include "kvi_kvs_eventmanager.h"
-
-#include <qmessagebox.h>
-
-#include <qsplitter.h>
-#include <qlayout.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_popupmenu.h"
-#include <qtooltip.h>
-#include <qpushbutton.h>
-#include <qevent.h>
+
+#include <QMessageBox>
+#include <QSplitter>
+#include <QLayout>
+#include <QToolTip>
+#include <QPushButton>
+#include <QEvent>
 
 extern KviEventEditorWindow * g_pEventEditorWindow;
-
 
 
 const QPixmap * KviEventListViewItem::pixmap(int col) const
@@ -62,7 +59,6 @@ const QPixmap * KviEventHandlerListViewItem::pixmap(int col) const
 {
 	return g_pIconManager->getSmallIcon(m_bEnabled ? KVI_SMALLICON_HANDLER : KVI_SMALLICON_HANDLERDISABLED);
 }
-
 
 
 KviEventEditor::KviEventEditor(QWidget * par)
@@ -327,7 +323,6 @@ void KviEventEditor::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 }
 
-
 void KviEventEditor::getExportEventBuffer(QString &buffer,KviEventHandlerListViewItem * it)
 {
 	if(!it->parent())return;
@@ -417,8 +412,6 @@ void KviEventEditor::exportAllEvents()
 }
 
 
-
-
 KviEventEditorWindow::KviEventEditorWindow(KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"eventeditor",0)
 {
@@ -502,12 +495,10 @@ void KviEventEditorWindow::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += p3;
 }
 
-
 void KviEventEditorWindow::getConfigGroupName(KviStr &szName)
 {
 	szName = "eventeditor";
 }
-
 
 void KviEventEditorWindow::saveProperties(KviConfig *cfg)
 {

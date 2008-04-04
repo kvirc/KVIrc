@@ -149,7 +149,6 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 
 static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
-	
 	KviWindow * pWnd = c->window();
 	if(c->hasSwitch('w',"window"))
 	{
@@ -169,8 +168,7 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		}
 	}
 
-	if(pWnd->view())
-		pWnd->view()->stopLogging();
+	if(pWnd->view()) pWnd->view()->stopLogging();
 	return true;
 }
 
@@ -202,7 +200,6 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 
 static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 {
-	
 	KviWindow * pWnd = c->window();
 	if(c->hasSwitch('w',"window"))
 	{
@@ -222,8 +219,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 		}
 	}
 
-	if(pWnd->view())
-		pWnd->view()->flushLog();
+	if(pWnd->view()) pWnd->view()->flushLog();
 	return true;
 }
 
@@ -259,7 +255,7 @@ static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 
 static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 {
-	QString szWindow; 
+	QString szWindow;
 	QString buffer;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWindow)
@@ -299,7 +295,7 @@ static bool log_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Log",                                                  // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"User interface to the logging system for KVIrc",
 	log_module_init,
