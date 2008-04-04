@@ -35,7 +35,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
 #include "kvi_memmove.h"
-#include "kvi_accel.h"
+
 
 #include <QToolButton>
 #include <QTabWidget>
@@ -47,6 +47,7 @@
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QShortcut>
 
 // FIXME: Qt4 #include <QHeaderView>
 #include <q3header.h>
@@ -185,8 +186,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	gl->setResizeMode(QGridLayout::Fixed);
 	m_pStringToFind->setFocus();
 	tw->showPage(w);
-	KviAccel *a = new KviAccel( this );
-        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );
+	connect(new QShortcut(Qt::Key_Escape,this),SIGNAL(activated()),this,SLOT(close()));
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
