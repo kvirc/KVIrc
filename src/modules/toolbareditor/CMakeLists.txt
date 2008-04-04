@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/toolbareditor
 
-SET(kvieventeditor_MOC_HDRS
+SET(kvitoolbareditor_MOC_HDRS
 	toolbareditor.h
 )
 
@@ -26,9 +26,18 @@ ELSE()
 ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvitoolbareditor PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-IF(APPLE)
-        INSTALL(TARGETS kvitoolbareditor LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+IF(UNIX)
+	IF(APPLE)
+		TARGET_LINK_LIBRARIES(kvitoolbareditor kvilib ${LIBS})
+		SET_TARGET_PROPERTIES(kvitoolbareditor PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
+		INSTALL(TARGETS kvitoolbareditor LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+	ELSE()
+		# Assume linux
+		SET_TARGET_PROPERTIES(kvitoolbareditor PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+		INSTALL(TARGETS kvitoolbareditor LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	ENDIF()
 ELSE()
-        INSTALL(TARGETS kvitoolbareditor LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	# Windows
+	SET_TARGET_PROPERTIES(kvitoolbareditor PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+	#INSTALL(TARGETS kvitoolbareditor LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
 ENDIF()

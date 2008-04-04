@@ -123,6 +123,8 @@ KviAlertOptionsWidget::~KviAlertOptionsWidget()
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_highlighting.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //_OPTW_HIGHLIGHTING_CPP_

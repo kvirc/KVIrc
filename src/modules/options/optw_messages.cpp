@@ -690,4 +690,6 @@ void KviMessageColorsOptionsWidget::load()
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_messages.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

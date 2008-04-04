@@ -35,9 +35,11 @@
 #include <qpushbutton.h>
 #include "kvi_tal_hbox.h"
 
-#ifdef COMPILE_INFO_TIPS
+#warning BIG FAT WARNING, i deleted the IFDEF to let this stuff compile on OSX
+#warning PLEASE do a more portable FIX
+//#ifdef COMPILE_INFO_TIPS
 	#include "kvi_tal_tooltip.h"
-#endif
+//#endif
 
 // FIXME: This module doesn't Cancel properly when auto-detection is performed!
 
@@ -307,4 +309,6 @@ KviSoundsOptionsWidget::~KviSoundsOptionsWidget()
 {
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_sound.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

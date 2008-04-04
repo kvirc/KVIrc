@@ -68,7 +68,7 @@ public:
 #define THEME_APPLY_HIRES 1
 #define THEME_APPLY_LORES 2
 
-class KviSetupWizard : public KviTalWizard
+class KviSetupWizard : public  KviTalWizard
 {
 	Q_OBJECT
 public:

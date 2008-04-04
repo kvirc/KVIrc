@@ -22,5 +22,8 @@
 //
 //=============================================================================
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 
-#include "m_optw_theme.moc"
+#warning this is a test
+// #include "m_optw_theme.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

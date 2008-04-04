@@ -88,4 +88,6 @@ void KviTrayOptionsWidget::setEnabled(bool bEnabled)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_tray.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

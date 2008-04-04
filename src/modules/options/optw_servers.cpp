@@ -1709,4 +1709,6 @@ void KviServerOptionsWidget::detailsClicked()
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_servers.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

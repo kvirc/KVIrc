@@ -23,7 +23,6 @@
 //
 
 #include <kvi_tal_tabdialog.h>
-
 class KviAboutDialog : public KviTalTabDialog
 {
 	Q_OBJECT

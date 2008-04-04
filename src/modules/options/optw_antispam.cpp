@@ -61,4 +61,6 @@ void KviAntispamOptionsWidget::reenableStuff(bool)
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_antispam.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

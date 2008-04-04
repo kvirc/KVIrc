@@ -120,4 +120,6 @@ void KviOptionsWidgetContainer::cancelClicked()
 	deleteLater();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_container.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

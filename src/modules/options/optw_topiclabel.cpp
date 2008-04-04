@@ -40,4 +40,6 @@ KviTopicLabelLookOptionsWidget::~KviTopicLabelLookOptionsWidget()
 {
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_topiclabel.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

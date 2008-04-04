@@ -702,4 +702,7 @@ void KviNotifierWindowTabs::closeTab(KviWindow * pWnd, KviNotifierWindowTab * pT
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_notifierwindowtabs.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

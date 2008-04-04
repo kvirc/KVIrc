@@ -112,4 +112,6 @@ KviQueryOptionsWidget::~KviQueryOptionsWidget()
 }
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_query.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

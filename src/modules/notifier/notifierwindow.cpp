@@ -1423,5 +1423,7 @@ void KviNotifierWindow::progressUpdate()
 	QPainter p(this);
 	m_pProgressBar->draw(&p);
 }
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_notifierwindow.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

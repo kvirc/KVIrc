@@ -726,4 +726,6 @@ void KviIdentityAdvancedOptionsWidget::commit()
 
 
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_identity.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

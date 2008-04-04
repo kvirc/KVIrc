@@ -21,15 +21,17 @@ INCLUDE_DIRECTORIES(
 
 SUBDIRS(
 	about action actioneditor addon aliaseditor avatar
-	chan channelsjoin codetester config context
+	chan channelsjoin clock codetester config context 
 	dcc dialog
 	editor eventeditor
 	file filetransferwindow
 	help http
-	ident
+	ident iograph
 	lamerizer links list log logview
 	mask math mediaplayer mircimport my
+	notifier
 	objects
+	options
 	popupeditor
 	raweditor regchan reguser rijndael
 	setup sharedfile sharedfileswindow snd socketspy spaste str system

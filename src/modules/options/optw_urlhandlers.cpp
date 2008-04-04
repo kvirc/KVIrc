@@ -122,6 +122,8 @@ void KviUrlHandlersOptionsWidget::commit()
 #endif
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_urlhandlers.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //_OPTW_URLHANDLERS_CPP_

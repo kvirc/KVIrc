@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/sharedfilewindow
 
-SET(kvieditor_MOC_HDRS
+SET(kvisharedfilewindow_MOC_HDRS
 	sharedfileswindow.h
 )
 
@@ -26,9 +26,18 @@ ELSE()
 ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvisharedfilewindow PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-IF(APPLE)
-        INSTALL(TARGETS kvisharedfilewindow LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+IF(UNIX)
+	IF(APPLE)
+		TARGET_LINK_LIBRARIES(kvisharedfilewindow kvilib ${LIBS})
+		SET_TARGET_PROPERTIES(kvisharedfilewindow PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
+		INSTALL(TARGETS kvisharedfilewindow LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+	ELSE()
+		# Assume linux
+		SET_TARGET_PROPERTIES(kvisharedfilewindow PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+		INSTALL(TARGETS kvisharedfilewindow LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	ENDIF()
 ELSE()
-        INSTALL(TARGETS kvisharedfilewindow LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	# Windows
+	SET_TARGET_PROPERTIES(kvisharedfilewindow PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+	#INSTALL(TARGETS kvisharedfilewindow LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
 ENDIF()

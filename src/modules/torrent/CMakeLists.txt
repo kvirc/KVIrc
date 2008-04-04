@@ -1,6 +1,6 @@
 # CMakeLists for src/modules/torrent
 
-SET(kvieventeditor_MOC_HDRS
+SET(kvitorrent_MOC_HDRS
 	tc_statusbarapplet.h
 	tc_ktorrentdcopinterface.h
 	tc_interface.h
@@ -30,9 +30,18 @@ ELSE()
 ENDIF()
 
 # Install target
-SET_TARGET_PROPERTIES(kvitorrent PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-IF(APPLE)
-        INSTALL(TARGETS kvitorrent LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+IF(UNIX)
+	IF(APPLE)
+		TARGET_LINK_LIBRARIES(kvitorrent kvilib ${LIBS})
+		SET_TARGET_PROPERTIES(kvitorrent PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
+		INSTALL(TARGETS kvitorrent LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+	ELSE()
+		# Assume linux
+		SET_TARGET_PROPERTIES(kvitorrent PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+		INSTALL(TARGETS kvitorrent LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	ENDIF()
 ELSE()
-        INSTALL(TARGETS kvitorrent LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	# Windows
+	SET_TARGET_PROPERTIES(kvitorrent PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+	#INSTALL(TARGETS kvitorrent LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
 ENDIF()

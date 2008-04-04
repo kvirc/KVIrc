@@ -643,4 +643,6 @@ void  KviOptionsDialog::keyPressEvent( QKeyEvent * e )
 		e->ignore();
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_dialog.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

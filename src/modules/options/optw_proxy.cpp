@@ -364,4 +364,6 @@ void KviProxyOptionsWidget::removeCurrent()
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_proxy.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
