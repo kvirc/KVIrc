@@ -49,6 +49,7 @@
 #include <QFont>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QShortcut>
 
 #include <q3header.h>
 // FIXME: #include <QHeaderView>
@@ -281,9 +282,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y());
 	}
 
-	KviAccel *a = new KviAccel( this );
-        a->connectItem( a->insertItem(Qt::Key_Escape), this,SLOT(close()) );
-	
+	connect(new QShortcut(Qt::Key_Escape,this),SIGNAL(activated()),this,SLOT(close()));
 }
 
 KviOptionsDialog::~KviOptionsDialog()
