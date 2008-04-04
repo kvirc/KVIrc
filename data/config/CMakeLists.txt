@@ -9,7 +9,6 @@ IF(UNIX)
 		# Assume linux
 		INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/config/)
 	ENDIF()
-ELSE()
-	# Windows
+ELSEIF(WIN32)
 	#INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/ ???  /config/)
 ENDIF()
