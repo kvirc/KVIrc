@@ -150,7 +150,7 @@ KviFrame::KviFrame()
 	applyOptions();
 
 
-	m_pAccel = new KviAccel(this);
+	//m_pAccel = new KviAccel(this);
 
 	installAccelerators(this);
 
@@ -197,20 +197,25 @@ KviFrame::~KviFrame()
 		closeWindow(m_pWinList->first());
 	delete m_pWinList;
 
-	delete m_pAccel;
+//	delete m_pAccel;
 	g_pFrame = 0;
 }
 
 int KviFrame::registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot)
 {
-	int id = m_pAccel->insertItem(szKeySequence);
-	m_pAccel->connectItem(id,recv,slot);
-	return id;
+	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
+	debug ("Registing accel %s",szKeySequence.utf8().data());
+	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));
+	return sc->id();
+	//int id = m_pAccel->insertItem(szKeySequence);
+	//m_pAccel->connectItem(id,recv,slot);
+	//return id;
 }
 
 void KviFrame::unregisterAccelerator(int id)
 {
-	m_pAccel->removeItem(id);
+	//m_pAccel->removeItem(id);
+	releaseShortcut(id);
 }
 
 void KviFrame::registerModuleExtensionToolBar(KviMexToolBar * t)
@@ -326,6 +331,8 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 
 KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 {
+
+
 	QWidget * pParent = wnd ? (QWidget *)wnd : (QWidget *)this;
 	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT),pParent,SLOT(switchToPrevWindow()));
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT),pParent,SLOT(switchToNextWindow()));
@@ -334,16 +341,17 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL),pParent,SLOT(minimizeWindow()));
 	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToPrevWindowInContext()));
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToNextWindowInContext()));
-	KviAccel *ac = new KviAccel(pParent);
 
+	KviAccel *ac = new KviAccel(pParent);
 	static int accel_table[] = {
-		Qt::Key_Left + Qt::ALT ,    // prev window
+	/*	Qt::Key_Left + Qt::ALT ,    // prev window
 		Qt::Key_Right + Qt::ALT ,   // next window
 		Qt::Key_Up + Qt::CTRL ,      // maximize window
 		Qt::Key_Down + Qt::CTRL ,    // minimize window
 		Qt::Key_Escape +Qt::CTRL,         // minimize window
 		Qt::Key_Left + Qt::ALT + Qt::SHIFT ,  // prev window in context
 		Qt::Key_Right + Qt::ALT + Qt::SHIFT,  // next window in context
+*/	
 		Qt::Key_F4 + Qt::CTRL ,     // close current window
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
 		Qt::Key_2 + Qt::CTRL ,
@@ -386,30 +394,31 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 	int keys;
 	while((keys = accel_table[i]))
 	{
-		ac->insertItem(keys);
+		new QShortcut(keys,pParent,SLOT(accelActivated()));
+	//	ac->insertItem(keys);
 		i++;
 	}
 
-	connect(ac,SIGNAL(activated(int)),this,SLOT(accelActivated(int)));
+//	connect(ac,SIGNAL(activated(int)),this,SLOT(accelActivated(int)));
 	return ac;
 }
 
-void KviFrame::accelActivated(int id)
+void KviFrame::accelActivated()
 {
-	KviAccel * acc = (KviAccel *)sender();
+	//KviAccel * acc = (KviAccel *)sender();
 
-	int keys = (int)(acc->key(id));
+	int keys = (int)(((QShortcut *)sender())->key());
 	KviTaskBarItem *item = 0;
 	debug("accel");
 	switch(keys)
 	{
-		case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
-		case (Qt::Key_Right+Qt::ALT): switchToNextWindow(); break;
-		case (Qt::Key_Up+Qt::CTRL): maximizeWindow(); break;
-		case (Qt::Key_Escape+Qt::CTRL):
-		case (Qt::Key_Down+Qt::CTRL): minimizeWindow(); break;
-		case (Qt::Key_Left+Qt::ALT+Qt::SHIFT): switchToPrevWindowInContext(); break;
-		case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
+		//case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
+		//case (Qt::Key_Right+Qt::ALT): switchToNextWindow(); break;
+		//case (Qt::Key_Up+Qt::CTRL): maximizeWindow(); break;
+		//case (Qt::Key_Escape+Qt::CTRL):
+		//case (Qt::Key_Down+Qt::CTRL): minimizeWindow(); break;
+		//case (Qt::Key_Left+Qt::ALT+Qt::SHIFT): switchToPrevWindowInContext(); break;
+		//case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
 		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
 		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
 /*		case(Qt::Key_F1 + SHIFT):
@@ -462,7 +471,7 @@ void KviFrame::accelActivated(int id)
 			break;*/
 		default:
 		{
-			KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(acc->key(id)));
+			KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
 		}
 		break;
 	};
@@ -712,6 +721,21 @@ void KviFrame::undockWindow(KviWindow *wnd)
 	wnd->setFocus();
 }
 
+bool KviFrame::event(QEvent *e)
+{
+
+		switch(e->type())
+		{
+		
+			case QEvent::Shortcut:
+				{
+						debug ("Shortcut");
+						return true;
+				}
+		}
+		return false;
+
+}
 
 void KviFrame::newConsole()
 {

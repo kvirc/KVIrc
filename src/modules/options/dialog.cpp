@@ -282,7 +282,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y());
 	}
 
-	connect(new QShortcut(Qt::Key_Escape,this),SIGNAL(activated()),this,SLOT(close()));
+	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
 }
 
 KviOptionsDialog::~KviOptionsDialog()

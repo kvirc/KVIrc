@@ -186,7 +186,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	gl->setResizeMode(QGridLayout::Fixed);
 	m_pStringToFind->setFocus();
 	tw->showPage(w);
-	connect(new QShortcut(Qt::Key_Escape,this),SIGNAL(activated()),this,SLOT(close()));
+	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()

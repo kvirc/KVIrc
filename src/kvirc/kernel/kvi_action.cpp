@@ -426,6 +426,7 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 
 void KviAction::activate()
 {
+	debug ("emits activated in action");
 	if(isEnabled())
 		emit activated();
 }
