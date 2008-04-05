@@ -9,9 +9,9 @@ SET(kvishellscripts
 # Install target
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(TARGETS ${kvishellscripts} RUNTIME DESTINATION ${INSTALL_PREFIX}/Contents/MacOS)
+		INSTALL(FILES ${kvishellscripts} DESTINATION ${INSTALL_PREFIX}/Contents/MacOS)
 	ELSE()
 		# Assume linux
-		INSTALL(TARGETS ${kvishellscripts} RUNTIME DESTINATION ${INSTALL_PREFIX}/bin)
+		INSTALL(FILES ${kvishellscripts} DESTINATION ${INSTALL_PREFIX}/bin)
 	ENDIF()
 ENDIF()
