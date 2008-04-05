@@ -1,3 +1,5 @@
+#ifndef _IDLE_H_
+#define _IDLE_H_
 /*
  * idle.h - detect desktop idle time
  * Copyright (C) 2003  Justin Karneges
@@ -18,14 +20,13 @@
  *
  */
 
-#ifndef IDLE_H
-#define IDLE_H
 
 #include "kvi_settings.h"
-#include<qobject.h>
-#include<qcursor.h>
-#include<qdatetime.h>
-#include<qtimer.h>
+
+#include <QObject>
+#include <QCursor>
+#include <QDateTime>
+#include <QTimer>
 
 class IdlePlatform;
 

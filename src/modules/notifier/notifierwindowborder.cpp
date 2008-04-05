@@ -24,9 +24,10 @@
 
 #include "notifierwindowborder.h"
 #include "notifierwindowtabs.h"
+
 #include "kvi_iconmanager.h"
 
-#include <qpainter.h>
+#include <QPainter>
 
 KviNotifierWindowBorder::KviNotifierWindowBorder(QSize s)
 {
@@ -38,8 +39,8 @@ KviNotifierWindowBorder::~KviNotifierWindowBorder()
 {
 }
 
-void KviNotifierWindowBorder::loadImages() {
-
+void KviNotifierWindowBorder::loadImages()
+{
 	// Normal Border
 
 	QPixmap * p;
@@ -139,12 +140,14 @@ void KviNotifierWindowBorder::setPics(bool b)
 	}
 }
 
-void KviNotifierWindowBorder::setWidth(int w) {
+void KviNotifierWindowBorder::setWidth(int w)
+{
 	m_iRctWidth = w;
 	recalculatePositions();
 }
 
-void KviNotifierWindowBorder::setHeight(int h) {
+void KviNotifierWindowBorder::setHeight(int h)
+{
 	m_iRctHeight = h;
 	recalculatePositions();
 }
@@ -178,7 +181,8 @@ void KviNotifierWindowBorder::recalculatePositions()
 	m_bNeedToRedraw = true;
 }
 
-void KviNotifierWindowBorder::setCloseIcon(int state) { 
+void KviNotifierWindowBorder::setCloseIcon(int state)
+{
 	m_bNeedToRedraw = true; m_eIconState = state;
 	switch (m_eIconState) {
 			case WDG_ICON_OUT: m_pixIconClose = m_pixIconClose_out; break;
@@ -187,12 +191,13 @@ void KviNotifierWindowBorder::setCloseIcon(int state) {
 	};
 }
 
-void KviNotifierWindowBorder::resetIcons() {
+void KviNotifierWindowBorder::resetIcons()
+{
 	setCloseIcon(WDG_ICON_OUT);
 }
 
-void KviNotifierWindowBorder::draw(QPainter * p, bool b) {
-
+void KviNotifierWindowBorder::draw(QPainter * p, bool b)
+{
 	if (m_bNeedToRedraw) {
 		setPics(b);
 		setCloseIcon(m_eIconState);
@@ -216,5 +221,4 @@ void KviNotifierWindowBorder::draw(QPainter * p, bool b) {
 
 		m_bNeedToRedraw = false;
 	}
-	
 }

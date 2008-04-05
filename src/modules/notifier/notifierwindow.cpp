@@ -23,46 +23,36 @@
 //==================================================================================
 #include "kvi_settings.h"
 
-#ifdef COMPILE_USE_QT4
-	#define QPopupMenu Q3PopupMenu
-	#define QSimpleRichText Q3SimpleRichText
-
-	#include <q3popupmenu.h>
-	#include <q3simplerichtext.h>
-#else
-	#include <qpopupmenu.h>
-	#include <qsimplerichtext.h>
-#endif
-
-	#include <qpainter.h>
-
 #include "notifiermessage.h"
 #include "notifierwindow.h"
+#include "notifierwindowbody.h"
+#include "notifierwindowborder.h"
+#include "notifierwindowprogressbar.h"
+#include "notifierwindowtabs.h"
 
 #include "kvi_iconmanager.h"
 #include "kvi_config.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
-
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_options.h"
 #include "kvi_userinput.h"
 
-#include <qapplication.h>
-#include <qimage.h>
-#include <qdesktopwidget.h>
-#include <qtooltip.h>
-#include <qevent.h>
-#include <qpen.h>
-#include <qfontmetrics.h>    
-#include <qregexp.h> 
-
-#include "notifierwindowbody.h"
-#include "notifierwindowborder.h"
-#include "notifierwindowprogressbar.h"
-#include "notifierwindowtabs.h"
+#include <QApplication>
+#include <QImage>
+#include <QDesktopWidget>
+#include <QToolTip>
+#include <QEvent>
+#include <QPen>
+#include <QFontMetrics>
+#include <QRegExp>
+#include <QPainter>
+#include <q3popupmenu.h>
+#include <q3simplerichtext.h>
+#define QPopupMenu Q3PopupMenu
+#define QSimpleRichText Q3SimpleRichText
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -83,7 +73,6 @@ KviNotifierWindow::KviNotifierWindow()
 			Qt::WStyle_StaysOnTop)
 #endif
 {
-
 	g_pNotifierWindow = this;
 
 	m_eState = Hidden;
@@ -127,11 +116,7 @@ KviNotifierWindow::KviNotifierWindow()
 	if(m_iInputHeight < 10)m_iInputHeight = 10;
 
 	setBackgroundMode(Qt::NoBackground);
-#ifdef COMPILE_USE_QT4
 	setFocusPolicy(Qt::NoFocus);
-#else
-	setFocusPolicy(QWidget::NoFocus);
-#endif
 	setMouseTracking(true);
 	//setCursor(m_cursor);
 	
@@ -201,7 +186,8 @@ KviNotifierWindow::~KviNotifierWindow()
 	delete m_pWndBody;
 }
 
-int KviNotifierWindow::countTabs() {
+int KviNotifierWindow::countTabs()
+{
 	return m_pWndTabs->count();
 }
 
@@ -214,7 +200,6 @@ void KviNotifierWindow::reloadImages()
 
 	m_pWndBorder->resize(m_pixBackground.size());
 }
-
 
 void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime)
 {
@@ -256,9 +241,10 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 }
 	
 
-int KviNotifierWindow::textWidth() {
+int KviNotifierWindow::textWidth()
+{
 	return m_pWndBody->textRect().width() - 20;
-};
+}
 
 void KviNotifierWindow::stopShowHideTimer()
 {
@@ -344,14 +330,14 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 				m_dOpacity = OPACITY_STEP;
 				m_eState = Showing;
 				m_bCrashShowWorkAround=true;
-				#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
+				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
 				setWindowOpacity(m_dOpacity);
-				#endif	
+				#endif
 				show();
-				#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
-				m_pShowHideTimer->start(40);
+				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+					m_pShowHideTimer->start(40);
 				#else
-				m_pShowHideTimer->start(100);
+					m_pShowHideTimer->start(100);
 				#endif
 				computeRect();
 				m_bCrashShowWorkAround=false;
@@ -377,9 +363,7 @@ bool KviNotifierWindow::shouldHideIfMainWindowGotAttention()
 	return t->window()->hasAttention();
 }
 
-
 void KviNotifierWindow::heartbeat()
-
 {
 	bool bIncreasing;
 	double targetOpacity = 0; //qt4
@@ -401,18 +385,12 @@ void KviNotifierWindow::heartbeat()
 				m_eState = Hiding;
 			} else {
 				m_dOpacity += OPACITY_STEP;
-#ifdef COMPILE_USE_QT4
 				targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
 
 				targetOpacity/=100;
 				if(m_dOpacity >= targetOpacity)
 				{
 					m_dOpacity = targetOpacity;
-#else
-				if(m_dOpacity >= 1.0)
-				{
-					m_dOpacity = 1.0;
-#endif
 					m_eState = Visible;
 					stopShowHideTimer();
 					startBlinking();
@@ -421,14 +399,13 @@ void KviNotifierWindow::heartbeat()
 
 				if(!isVisible())show(); //!!!
 				if(m_pLineEdit->isVisible())m_pLineEdit->hide();
-				#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
-				setWindowOpacity(m_dOpacity);
+				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+					setWindowOpacity(m_dOpacity);
 				#endif
 				update();
 
 			}
 		break;
-#ifdef COMPILE_USE_QT4
 		case FocusingOn:
 			targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
 			targetOpacity/=100;
@@ -463,10 +440,9 @@ void KviNotifierWindow::heartbeat()
 
 			setWindowOpacity(m_dOpacity);
 			break;
-#endif
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
-			#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
+			#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
 				setWindowOpacity(m_dOpacity);
 			#endif
 			if(m_pLineEdit->isVisible())m_pLineEdit->hide();
@@ -530,16 +506,14 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 			connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 			m_dOpacity = 1.0 - OPACITY_STEP;
 			m_eState = Hiding;
-			#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)) 
-			setWindowOpacity(m_dOpacity);
-			update();
-			m_pShowHideTimer->start(40);
+			#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+				setWindowOpacity(m_dOpacity);
+				update();
+				m_pShowHideTimer->start(40);
 			#else
-			update();		
-			m_pShowHideTimer->start(100);
+				update();
+				m_pShowHideTimer->start(100);
 			#endif
-			
-
 		}
 		break;
 	}
@@ -549,7 +523,6 @@ void KviNotifierWindow::showEvent(QShowEvent *e)
 {
 	computeRect();
 	setGeometry(m_wndRect); // w_win = w_wndRect
-	
 }
 
 void KviNotifierWindow::hideEvent(QHideEvent * e)
@@ -568,7 +541,6 @@ void KviNotifierWindow::startBlinking()
 {
 	stopBlinkTimer();
 	m_bBlinkOn = false;
-	
 
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableNotifierFlashing))
 	{
@@ -623,7 +595,7 @@ void KviNotifierWindow::blink()
 			return;
 		}
 	}
-	update(); 
+	update();
 }
 
 void KviNotifierWindow::markAllMessagesAsHistoric()
@@ -631,7 +603,6 @@ void KviNotifierWindow::markAllMessagesAsHistoric()
 	if (!m_pWndTabs) return;
 	m_pWndTabs->markAllMessagesAsHistoric();
 }
-
 
 static void blend_images(QImage &buffer,QImage &background,QImage &foreground,double dValue)
 {
@@ -676,7 +647,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 	{
 			QPainter px(this);
 	
-	#if defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+	#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
 		px.drawPixmap(0,0,m_pixForeground);
 	#else
 		QImage temp_image = m_pixForeground.convertToImage();
@@ -685,12 +656,8 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 	#endif
 		px.end();
 	} else {
-#ifdef COMPILE_USE_QT4
 		QPainter px(this);
 		px.drawPixmap(0,0,m_pixForeground);
-#else
-		bitBlt(this,QPoint(0,0),&m_pixForeground);
-#endif
 	}
 }
 
@@ -778,7 +745,6 @@ void KviNotifierWindow::redrawText()
 
 void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)
 {
-
 	//debug ("move on x,y: %d,%d", e->pos().x(), e->pos().y());
 
 	if (!m_bLeftButtonIsPressed) {
@@ -816,8 +782,7 @@ void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)
 		/* ### END ### */
 		
 sartelo:
-		
-		update();
+	update();
 	
 	}
 
@@ -844,7 +809,6 @@ sartelo:
 
 void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 {
-
 	// stop blinking first of all :)
 	bool bWasBlinkOn = m_bBlinkOn;
 	m_bBlinkOn = false;
@@ -1008,9 +972,7 @@ void KviNotifierWindow::keyPressEvent(QKeyEvent * e)
 
 void KviNotifierWindow::keyReleaseEvent(QKeyEvent * e)
 {
-	if (e->key()==Qt::Key_Shift) {
-		m_bKeyShiftPressed = false;
-	}
+	if (e->key()==Qt::Key_Shift) m_bKeyShiftPressed = false;
 }
 
 void KviNotifierWindow::delayedRaise(KviWindow * pWnd)
@@ -1107,9 +1069,7 @@ bool KviNotifierWindow::checkResizing(QPoint e)
 		}
 	}
 	return m_bResizing;
-};
-
-
+}
 
 void KviNotifierWindow::resize(QPoint p, bool up)
 {
@@ -1190,7 +1150,8 @@ void KviNotifierWindow::redrawWindow()
 	
 }
 
-inline void KviNotifierWindow::setCursor(int cur) {
+inline void KviNotifierWindow::setCursor(int cur)
+{
 	if (m_cursor.shape() != cur) {
 		if(QApplication::overrideCursor()) QApplication::restoreOverrideCursor();
 		m_cursor.setShape((Qt::CursorShape)cur);
@@ -1201,14 +1162,12 @@ inline void KviNotifierWindow::setCursor(int cur) {
 
 void KviNotifierWindow::enterEvent(QEvent * e)
 {
-#ifdef COMPILE_USE_QT4
 	if(!m_pShowHideTimer) {
 		m_pShowHideTimer = new QTimer();
 		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 	}
 	m_eState = FocusingOn;
 	m_pShowHideTimer->start(40);
-#endif
 }
 
 void KviNotifierWindow::leaveEvent(QEvent * e)
@@ -1216,16 +1175,13 @@ void KviNotifierWindow::leaveEvent(QEvent * e)
 	// Leaving the widget area, restore default cursor
 	m_pWndBorder->resetIcons();
 	m_pWndTabs->resetIcons();
-	if (!m_bResizing)
-		setCursor(-1);
-#ifdef COMPILE_USE_QT4
+	if (!m_bResizing) setCursor(-1);
 	if(!m_pShowHideTimer) {
 		m_pShowHideTimer = new QTimer();
 		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 	}
 	m_eState = FocusingOff;
 	m_pShowHideTimer->start(40);
-#endif
 }
 
 void KviNotifierWindow::contextPopup(const QPoint &pos)
@@ -1321,7 +1277,6 @@ void KviNotifierWindow::wheelEvent(QWheelEvent * e)
 	if(e->delta() > 0)prevButtonClicked();
 	else nextButtonClicked();
 }
-
 
 void KviNotifierWindow::prevButtonClicked()
 {
@@ -1423,7 +1378,7 @@ void KviNotifierWindow::progressUpdate()
 	QPainter p(this);
 	m_pProgressBar->draw(&p);
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_notifierwindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

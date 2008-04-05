@@ -24,19 +24,19 @@
 //
 //=============================================================================
 
-#include <qfont.h>
-#include <qmap.h>
-#include <qobject.h>
-#include <qpixmap.h>
-#include <qpoint.h>
-#include <qrect.h>
-#include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "notifiermessage.h"
 #include "notifiersettings.h"
 #include "notifierwindow.h"
 
-#include "notifiermessage.h"
+#include "kvi_settings.h"
+#include "kvi_pointerlist.h"
 
+#include <QFont>
+#include <QMap>
+#include <QObject>
+#include <QPixmap>
+#include <QPoint>
+#include <QRect>
 
 class QPainter;
 class KviWindow;

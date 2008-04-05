@@ -21,18 +21,16 @@
 //
 //==================================================================================
 
-#include "kvi_module.h"
-
-
 #include "sharedfileswindow.h"
 
+#include "kvi_module.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 #define KVI_SHARED_FILES_WINDOW_EXTENSION_NAME "Shared files window extension"
 
@@ -102,7 +100,7 @@ static KviModuleExtension * sharedfileswindow_extension_alloc(KviModuleExtension
 */
 
 static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",KVI_SHARED_FILES_WINDOW_EXTENSION_NAME);
 	if(d)
 	{
@@ -148,7 +146,7 @@ static bool sharedfileswindow_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"SharedFilesWindow",
-	"1.0.0",
+	"4.0.0",
 	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
 	"Shared files window extension",
 	sharedfileswindow_module_init,

@@ -26,9 +26,9 @@
 
 #include "kvi_iconmanager.h"
 
-#include <qbrush.h>
-#include <qcolor.h>
-#include <qpainter.h>
+#include <QBrush>
+#include <QColor>
+#include <QPainter>
 
 /*
 #ifdef QT3_SUPPORT
@@ -51,7 +51,6 @@ KviNotifierWindowBody::KviNotifierWindowBody(QRect r)
 KviNotifierWindowBody::~KviNotifierWindowBody()
 {
 }
-
 
 void KviNotifierWindowBody::loadImages()
 {
@@ -158,10 +157,10 @@ void KviNotifierWindowBody::setPrevIcon(int state)
 			m_prevIconState=state;
 			needToRedraw();
 		}
-};
+}
 
-void KviNotifierWindowBody::setNextIcon(int state)	{
-
+void KviNotifierWindowBody::setNextIcon(int state)
+{
 	//if (m_nextIconState==WDG_ICON_OFF && state!=WDG_ICON_OFF)
 		if (m_nextIconState!=state) {
 			switch (state) {
@@ -173,10 +172,10 @@ void KviNotifierWindowBody::setNextIcon(int state)	{
 			needToRedraw();
 			m_nextIconState=state;
 		}
-};
-									
-void KviNotifierWindowBody::setWriteIcon(int state)	{
+}
 
+void KviNotifierWindowBody::setWriteIcon(int state)
+{
 	//if (m_writeIconState==WDG_ICON_OFF && state!=WDG_ICON_OFF)
 		if (m_writeIconState!=state) {
 			switch (state) {
@@ -187,10 +186,10 @@ void KviNotifierWindowBody::setWriteIcon(int state)	{
 			needToRedraw();
 			m_writeIconState=state;
 		}
-};
+}
 
-void KviNotifierWindowBody::draw(QPainter * p) {
-	
+void KviNotifierWindowBody::draw(QPainter * p)
+{
 	if (m_bNeedToRedraw) {
 	
 		p->fillRect(QRect(m_pnt,m_rct.size()),m_mac_bkgColor);
@@ -215,18 +214,20 @@ void KviNotifierWindowBody::draw(QPainter * p) {
 		p->drawPixmap(m_rctWriteIcon.x(), m_rctWriteIcon.y(), m_pixIconWrite);
 
 		m_bNeedToRedraw = false;
-		
 	}
 }
 
-void KviNotifierWindowBody::mouseMoveEvent(QMouseEvent * e) {
+void KviNotifierWindowBody::mouseMoveEvent(QMouseEvent * e)
+{
 
 }
 
-void KviNotifierWindowBody::mousePressEvent(QMouseEvent * e) {
+void KviNotifierWindowBody::mousePressEvent(QMouseEvent * e)
+{
 
 }
 
-void KviNotifierWindowBody::mouseReleaseEvent(QMouseEvent * e) {
+void KviNotifierWindowBody::mouseReleaseEvent(QMouseEvent * e)
+{
 
 }

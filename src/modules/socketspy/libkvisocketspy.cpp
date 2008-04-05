@@ -19,17 +19,14 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-
-#include "kvi_module.h"
-
-
 #include "socketspywindow.h"
 
+#include "kvi_module.h"
 #include "kvi_frame.h"
 #include "kvi_window.h"
 #include "kvi_locale.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList = 0;
 
@@ -51,7 +48,7 @@ KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList = 0;
 */
 
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!c->window()->console())return c->context()->errorNoIrcContext();	
 	KviSocketSpyWindow *w = new KviSocketSpyWindow(c->window()->frame(),c->window()->console());
 	c->window()->frame()->addWindow(w);
@@ -82,7 +79,7 @@ static bool socketspy_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"SocketSpy",                                             // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"SocketSpy irc socket traffic monitor",
 	socketspy_module_init,

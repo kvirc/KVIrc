@@ -24,12 +24,15 @@
 //
 //=============================================================================
 
-#include <qevent.h>
-#include <qrect.h>
-#include <qpoint.h>
-#include <qpixmap.h>
-
 #include "notifiersettings.h"
+
+#include <QRect>
+#include <QPoint>
+#include <QPixmap>
+#include <QEvent>
+#include <QMouseEvent>
+
+class QPainter;
 
 /*
 #ifdef QT3_SUPPORT
@@ -37,7 +40,6 @@
 #endif
 */
 
-class QPainter;
 
 class KviNotifierWindowBody
 {
@@ -137,8 +139,6 @@ public:
 	void mouseMoveEvent(QMouseEvent * e);
 	void mousePressEvent(QMouseEvent * e);
 	void mouseReleaseEvent(QMouseEvent * e);
-	
-	
 
 protected:
 

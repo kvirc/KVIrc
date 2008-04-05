@@ -22,26 +22,6 @@
 //
 //=============================================================================
 
-#include "kvi_tal_listview.h"
-#include <qimage.h>
-#include "kvi_iconmanager.h"
-#include "kvi_window.h"
-#include "kvi_out.h"
-#include "kvi_mirccntrl.h"
-
-#include "kvi_app.h"
-
-#include "kvi_module.h"
-
-#include "kvi_locale.h"
-#include "kvi_error.h"
-#include "kvi_cmdformatter.h"
-#include "kvi_out.h"
-#include "kvi_app.h"
-#include "kvi_fileutils.h"
-
-#include <qdir.h>
-
 #include "class_button.h"
 #include "class_checkbox.h"
 #include "class_urllabel.h"
@@ -82,6 +62,25 @@
 #include "class_dockwindow.h"
 #include "class_vbox.h"
 #include "class_hbox.h"
+
+#include "kvi_iconmanager.h"
+#include "kvi_window.h"
+#include "kvi_out.h"
+#include "kvi_mirccntrl.h"
+#include "kvi_app.h"
+#include "kvi_module.h"
+#include "kvi_locale.h"
+#include "kvi_error.h"
+#include "kvi_cmdformatter.h"
+#include "kvi_out.h"
+#include "kvi_app.h"
+#include "kvi_fileutils.h"
+#include "kvi_tal_listview.h"
+
+#include <QDir>
+#include <QImage>
+
+
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
 
 static bool objects_module_cleanup(KviModule *m)
@@ -131,9 +130,8 @@ static bool objects_module_cleanup(KviModule *m)
 	return true;
 }
 
-
 static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
-{ 
+{
 	/*
 		@doc: objects.killclass
 		@title:
@@ -178,9 +176,8 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
-{ 
+{
 	/*
 		@doc: objects.clear
 		@title:
@@ -209,9 +206,8 @@ static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
-{ 
+{
 
 	/*
 		@doc: objects.connect
@@ -262,9 +258,8 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
-{ 
+{
 	/*
 		@doc: objects.exists
 		@title:
@@ -292,7 +287,7 @@ static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 }
 
 static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
-{ 
+{
 	/*
 		@doc: objects.instances
 		@title:
@@ -373,21 +368,22 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
+
 /*
-		@doc: objects.variables
-		@title:
-			objects.variables
-		@type:
-			command
-		@short:
-			List object's variables.
-		@syntax:
-			<hash> objects.variables(<hobject>)
-		@description:
-			Returns an hash with the object's variables(useful only for debugging).			
-		@seealso:
-			[doc:objects]objects documentation[/doc]
-	*/
+	@doc: objects.variables
+	@title:
+		objects.variables
+	@type:
+		command
+	@short:
+		List object's variables.
+	@syntax:
+		<hash> objects.variables(<hobject>)
+	@description:
+		Returns an hash with the object's variables(useful only for debugging).			
+	@seealso:
+		[doc:objects]objects documentation[/doc]
+*/
 static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 {
 	kvs_hobject_t hObj;
@@ -414,20 +410,21 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 
 }
 /*
-		@doc: objects.classAllHandlers
-		@title:
-			objects.classAllHandlers
-		@type:
-			function
-		@short:
-			List all the functions .
-		@syntax:
-			<hash> objects.classAllHandlers(<class name:string>)
-		@description:
-			Returns an hash with the class's functions(useful only for debugging).			
-		@seealso:
-			[doc:objects]objects documentation[/doc]
-	*/
+	@doc: objects.classAllHandlers
+	@title:
+		objects.classAllHandlers
+	@type:
+		function
+	@short:
+		List all the functions .
+	@syntax:
+		<hash> objects.classAllHandlers(<class name:string>)
+	@description:
+		Returns an hash with the class's functions(useful only for debugging).			
+	@seealso:
+		[doc:objects]objects documentation[/doc]
+*/
+
 static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 {
 	QString szClassName;
@@ -455,8 +452,9 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 
 	return true;
 }
+
 static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
-{ 
+{
 	
 	/*
 		@doc: objects.classes
@@ -635,17 +633,13 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
 	}
 
-	//FIX ME
-#ifdef COMPILE_USE_QT4
-	/*QPainter p(pdDest);
+	/*FIXME
+	QPainter p(pdDest);
 	QRect rectdest(iXdst,iYdst,uW,uH);
 	QRect rectsrc(iXsrc,iYsrc,uW,uH);
 
 	p.drawPixmap(rectdest,pdSource,rectsrc);
-*/
-	#else
-	bitBlt(pdDest,iXdst,iYdst,pdSource,iXsrc,iYsrc,uW,uH);
-#endif
+	*/
 	return true;
 }
 	/*
@@ -670,7 +664,6 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 
 static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 {
-	
 	KviKvsObject *obFor;
 	KviKvsObject *obBck;
 	KviKvsObject *obDest;
@@ -784,34 +777,34 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 
 }
 
-// ASSASSINI! LA DOVETE INDENTARE PER BENE :D
+// ASSASSINS! YOU MUST INDENT IT WELL :D
 
 
 static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
-{ 
+{
 /*
-        @doc: objects.dump
-        @type:
-            function
-        @title:
+	@doc: objects.dump
+	@type:
+		function
+	@title:
 			$objects.dump
-        @keyterms:
-                dump objects 
-        @short:
-                Dump the kvirc widgets.
-        @syntax:
-                $objects.dump(<flag b>)
-        @description:
-                This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
-                will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br] 
-                ES:
-                %A[]=$str.split("\|",$objects.dump(0))
-                %i=0
-                while (%i != %A[]#)
-                {
-                        echo %A[%i]
-                        %i++
-                }        
+	@keyterms:
+		dump objects 
+	@short:
+		Dump the kvirc widgets.
+	@syntax:
+		$objects.dump(<flag b>)
+	@description:
+		This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
+		will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br] 
+		ES:
+		%A[]=$str.split("\|",$objects.dump(0))
+		%i=0
+		while (%i != %A[]#)
+		{
+			echo %A[%i]
+			%i++
+		}
 */
 
 
@@ -899,6 +892,7 @@ static bool objects_module_can_unload(KviModule *m)
 	// FIXME: unlock when no more instances & derived classes!
 	return false;
 }
+
 static bool objects_module_init(KviModule * m)
 {
 	// functions
@@ -970,7 +964,7 @@ static bool objects_module_init(KviModule * m)
 
 KVIRC_MODULE(
 	"Objects",
-	"2.0.0",
+	"4.0.0",
 	"Copyright (C) 2000-2006:\n" \
 		"  Szymon Stefanek (pragma at kvirc dot net)\n" \
 		"  Krzysztof Godlewski (kristoff at poczta dot wprost dot pl)\n" \

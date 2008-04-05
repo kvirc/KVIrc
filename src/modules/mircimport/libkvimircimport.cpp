@@ -21,20 +21,20 @@
 //
 
 #include "libkvimircimport.h"
-#include "kvi_module.h"
 
+#include "kvi_module.h"
 #include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_config.h"
 #include "kvi_app.h"
 #include "kvi_qstring.h"
-
-
-#include <qmessagebox.h>
-#include <qdir.h>
-#include <qpushbutton.h>
 #include "kvi_tal_vbox.h"
+
+#include <QMessageBox>
+#include <QDir>
+#include <QPushButton>
+
 
 KviMircServersIniImport * g_pMircServersIniImport = 0;
 KviRemoteMircServersIniImport * g_pRemoteMircServersIniImport = 0;
@@ -132,13 +132,7 @@ void KviMircServersIniImport::die()
 
 
 
-
-
-
-
 #define KVI_WWWMIRCCOUK_SERVERSINI "http://www.mirc.co.uk/servers.ini"
-
-
 
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
 : KviTalWizard(0)
@@ -163,7 +157,6 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	vb->setStretchFactor(l,1);
 
 	m_pUrlEdit = new QLineEdit(vb);
-
 	m_pUrlEdit->setText(KVI_WWWMIRCCOUK_SERVERSINI);
 
 	addPage(vb,__tr2qs("URL Selection"));
@@ -208,7 +201,6 @@ void KviRemoteMircServerImportWizard::done(int r)
 	m_pFilter->die();
 }
 
-
 void KviRemoteMircServerImportWizard::start()
 {
 	QString url = m_pUrlEdit->text();
@@ -235,7 +227,6 @@ void KviRemoteMircServerImportWizard::getListMessage(const QString &message)
 {
 	if(!message.isEmpty())m_pOutput->setText(message);
 }
-
 
 void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 {
@@ -291,7 +282,6 @@ void KviRemoteMircServersIniImport::die()
 {
 	delete this;
 }
-
 
 static KviModuleExtension * mircimport_local_filter_alloc(KviModuleExtensionAllocStruct * s)
 {
@@ -372,8 +362,8 @@ KVIMODULEEXPORTFUNC KviIrcServerImport * mircimport_module_createIrcServerImport
 
 
 KVIRC_MODULE(
-	"File",                                                 // module name
-	"1.0.0",                                                // module version
+	"mIRCimport",                                                 // module name
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"mIRC servers.ini importer",
 	mircimport_module_init,
@@ -385,4 +375,3 @@ KVIRC_MODULE(
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvimircimport.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

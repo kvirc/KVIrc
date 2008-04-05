@@ -21,13 +21,11 @@
 //
 
 #include "libkvirijndael.h"
-
 #include "rijndael.h"
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
 #include "kvi_locale.h"
-
 #include "kvi_mirccntrl.h"
 #include "kvi_time.h"
 
@@ -61,15 +59,11 @@
 
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	
 	#include "kvi_memmove.h"
 	#include "kvi_malloc.h"
-
 	#include "kvi_pointerlist.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
-
-
 
 
 	KviRijndaelEngine::KviRijndaelEngine()
@@ -347,9 +341,6 @@
 	{
 		delete e;
 	}
-
-
-
 
 
 	// Mircryption stuff
@@ -839,7 +830,7 @@ static bool rijndael_module_can_unload(KviModule *)
 // =======================================
 KVIRC_MODULE(
 	"Rijndael crypt engine",
-	"1.0.0",
+	"4.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Exports the rijndael crypt engine",
 	rijndael_module_init ,

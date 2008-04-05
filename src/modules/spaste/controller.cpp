@@ -20,24 +20,26 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 #include "controller.h"
+
 #include "kvi_window.h"
 #include "kvi_console.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
 
-#include <qtimer.h>
-#include <qstringlist.h>
-#include <qclipboard.h>
+#include <QTimer>
+#include <QString>
+#include <QStringList>
+#include <QClipboard>
 
 extern KviPointerList<SPasteController> * g_pControllerList;
 
 SPasteController::SPasteController(KviWindow * w,int id)
-	: m_pClipBuff(NULL),m_pFile(NULL),m_pId(id),m_pWindow(w)
+: m_pClipBuff(NULL),m_pFile(NULL),m_pId(id),m_pWindow(w)
 {
-    g_pControllerList->append(this);
-    //m_pWindow = w;
-    m_pTimer = new QTimer(this);
+	g_pControllerList->append(this);
+	//m_pWindow = w;
+	m_pTimer = new QTimer(this);
 }
 
 SPasteController::~SPasteController()
@@ -86,22 +88,7 @@ bool SPasteController::pasteClipboardInit(void)
 
 void SPasteController::pasteFile(void)
 {
-#ifndef COMPILE_USE_QT4
-    QString line;
-    if(m_pFile->readLine(line,999) != -1)
-    {
-	if(line.isEmpty())
-		line = QChar(KVI_TEXT_RESET);
-        if( (!g_pApp->windowExists(m_pWindow)) || m_pWindow->console()->isNotConnected() )
-        { 
-            m_pFile->close();
-            delete this;
-        } else m_pWindow->ownMessage(line.ascii());
-    } else { //File finished
-        m_pFile->close();
-        delete this;
-    }
-#endif
+
 }
 
 void SPasteController::pasteClipboard(void)
@@ -121,4 +108,3 @@ void SPasteController::pasteClipboard(void)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "controller.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

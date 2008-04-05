@@ -24,7 +24,6 @@
 
 #include "kvi_settings.h"
 #include "kvi_module.h"
-
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
@@ -442,7 +441,6 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	KVS_CHECK_MODULE_STATE(m,c)
 
 #ifdef COMPILE_PERL_SUPPORT
-	
 	KviPerlCoreCtrlCommand_execute ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_execute);
 	ex.pKvsContext = c->context();
@@ -590,7 +588,7 @@ static bool perl_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Perl",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Perl scripting engine",
 	perl_module_init,

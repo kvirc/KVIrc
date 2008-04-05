@@ -25,10 +25,12 @@
 #include "kvi_mexserverimport.h"
 #include "kvi_string.h"
 #include "kvi_http.h"
-
 #include <kvi_tal_wizard.h>
-#include <qlineedit.h>
-#include <qlabel.h>
+
+#include <QLineEdit>
+#include <QLabel>
+
+class KviRemoteMircServerImportWizard;
 
 class KviMircServersIniImport : public KviMexServerImport
 {
@@ -41,8 +43,6 @@ public:
 	virtual void start();
 	virtual void die();
 };
-
-class KviRemoteMircServerImportWizard;
 
 class KviRemoteMircServersIniImport : public KviMircServersIniImport
 {

@@ -51,7 +51,7 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 }
 
 #ifdef COMPILE_ON_WINDOWS
-// dobbiamo testare meglio, i risultati.
+// we have to test better the results
 static double cbrt(double x)
 {
 	if (x > 0.0) return pow(x, 1.0/3.0);
@@ -69,6 +69,7 @@ static int isinf (double d) {
 		return 0;
 	}
 }
+
 static int isnan (double d) {
 	int expon = 0;
 	double val = frexp (d, &expon);
@@ -332,27 +333,21 @@ static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 	@description:
 		Checks if the specified value is the infinity.
 */
+static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
+{
+	kvs_real_t dReal;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
+	KVSM_PARAMETERS_END(c)
 #ifdef COMPILE_ON_WINDOWS
-static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
-{
-	kvs_real_t dReal;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
-	KVSM_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(sinf(dReal));
-	return true;
-}
 #else
-static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
-{
-	kvs_real_t dReal;
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
-	KVSM_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(isinf(dReal));
+#endif //COMPILE_ON_WINDOWS
 	return true;
 }
-#endif //COMPILE_ON_WINDOWS
+
+
 /*
 	@doc: math.pow
 	@type:
@@ -431,6 +426,7 @@ static bool math_kvs_fnc_e(KviKvsModuleFunctionCall * c)
 	return true;
 }
 #endif
+
 static bool math_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"sin",math_kvs_fnc_sin);
@@ -455,7 +451,6 @@ static bool math_module_init(KviModule * m)
 	return true;
 }
 
-
 static bool math_module_cleanup(KviModule *m)
 {
 	return true;
@@ -463,7 +458,7 @@ static bool math_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Math",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"\
 	"Tonino Imbesi (grifisx at barmes dot org)," \
 	"Alessandro Carbone (noldor at barmes dot org)",

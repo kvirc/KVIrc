@@ -29,7 +29,6 @@
 #include "kvi_config.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
-
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_mirccntrl.h"
@@ -45,18 +44,14 @@
 #endif
 */
 
-#include <qapplication.h>
-#include <qpainter.h>
-#include <qimage.h>
-#include <qdesktopwidget.h>
-#include <qtooltip.h>
+#include <QApplication>
+#include <QPainter>
+#include <QImage>
+#include <QDesktopWidget>
+#include <QToolTip>
+#include <q3popupmenu.h>
+#define QPopupMenu Q3PopupMenu
 
-#ifdef COMPILE_USE_QT4
-	#define QPopupMenu Q3PopupMenu
-	#include <q3popupmenu.h>
-#else
-	#include <qpopupmenu.h>
-#endif
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 
@@ -104,4 +99,3 @@ void KviNotifierMessage::setHistoric()
 	increase_transparency(tmp,out,2);
 	m_pImage->convertFromImage(tmp);
 }
-

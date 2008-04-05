@@ -23,91 +23,74 @@
 #include"idle.h"
 
 #ifndef COMPILE_XSS_SUPPORT
-
-IdlePlatform::IdlePlatform() {}
-IdlePlatform::~IdlePlatform() {}
-bool IdlePlatform::init() { return false; }
-int IdlePlatform::secondsIdle() { return 0; }
-
+	IdlePlatform::IdlePlatform() {}
+	IdlePlatform::~IdlePlatform() {}
+	bool IdlePlatform::init() { return false; }
+	int IdlePlatform::secondsIdle() { return 0; }
 #else
-
-#include<qapplication.h>
-
-#include<X11/Xlib.h>
-#include<X11/Xutil.h>
-#include<X11/extensions/scrnsaver.h>
-
-#ifdef COMPILE_USE_QT4
-	#include <qdesktopwidget.h>
-#endif
-
-static XErrorHandler old_handler = 0;
-extern "C" int xerrhandler(Display* dpy, XErrorEvent* err)
-{
-	if(err->error_code == BadDrawable)
-		return 0;
-
-	return (*old_handler)(dpy, err);
-}
-
-class IdlePlatform::Private
-{
-public:
-	Private() {}
-
-	XScreenSaverInfo *ss_info;
-};
-
-IdlePlatform::IdlePlatform()
-{
-	d = new Private;
-	d->ss_info = 0;
-}
-
-IdlePlatform::~IdlePlatform()
-{
-	if(d->ss_info)
-		XFree(d->ss_info);
-	if(old_handler) {
-		XSetErrorHandler(old_handler);
-		old_handler = 0;
+	#include <QApplication>
+	#include <QDesktopWidget>
+	#include <QX11Info>
+	
+	#include <X11/Xlib.h>
+	#include <X11/Xutil.h>
+	#include <X11/extensions/scrnsaver.h>
+	
+	static XErrorHandler old_handler = 0;
+	extern "C" int xerrhandler(Display* dpy, XErrorEvent* err)
+	{
+		if(err->error_code == BadDrawable)
+			return 0;
+	
+		return (*old_handler)(dpy, err);
 	}
-	delete d;
-}
-
-bool IdlePlatform::init()
-{
-	if(d->ss_info)
-		return true;
-
-	old_handler = XSetErrorHandler(xerrhandler);
-
-	int event_base, error_base;
-	if(XScreenSaverQueryExtension(QApplication::desktop()->screen()->x11Display(), &event_base, &error_base)) {
-		d->ss_info = XScreenSaverAllocInfo();
-		return true;
+	
+	class IdlePlatform::Private
+	{
+	public:
+		Private() {}
+	
+		XScreenSaverInfo *ss_info;
+	};
+	
+	IdlePlatform::IdlePlatform()
+	{
+		d = new Private;
+		d->ss_info = 0;
 	}
-	return false;
-}
-
-#ifdef COMPILE_USE_QT4
-	#include <qx11info_x11.h>
+	
+	IdlePlatform::~IdlePlatform()
+	{
+		if(d->ss_info)
+			XFree(d->ss_info);
+		if(old_handler) {
+			XSetErrorHandler(old_handler);
+			old_handler = 0;
+		}
+		delete d;
+	}
+	
+	bool IdlePlatform::init()
+	{
+		if(d->ss_info)
+			return true;
+	
+		old_handler = XSetErrorHandler(xerrhandler);
+	
+		int event_base, error_base;
+		if(XScreenSaverQueryExtension(QApplication::desktop()->screen()->x11Display(), &event_base, &error_base)) {
+			d->ss_info = XScreenSaverAllocInfo();
+			return true;
+		}
+		return false;
+	}
+	
+	int IdlePlatform::secondsIdle()
+	{
+		if(!d->ss_info) return 0;
+		if(!XScreenSaverQueryInfo(QApplication::desktop()->screen()->x11Display(), QX11Info::appRootWindow(), d->ss_info)) return 0;
+		return d->ss_info->idle / 1000;
+	}
 #endif
-
-int IdlePlatform::secondsIdle()
-{
-	if(!d->ss_info)
-		return 0;
-#ifdef COMPILE_USE_QT4
-	if(!XScreenSaverQueryInfo(QApplication::desktop()->screen()->x11Display(), QX11Info::appRootWindow(), d->ss_info))
-#else
-	if(!XScreenSaverQueryInfo(QApplication::desktop()->screen()->x11Display(), qt_xrootwin(), d->ss_info))
-#endif
-		return 0;
-	return d->ss_info->idle / 1000;
-}
-
-#endif
-
 #endif
 #endif

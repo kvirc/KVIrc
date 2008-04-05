@@ -207,7 +207,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	} else {
 		KviPointerListIterator<SPasteController> it(*g_pControllerList);
 		SPasteController *item;
-        
+
 		if(!iId) //Delete all spaste's from the current window
 		{
 			if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
@@ -222,10 +222,10 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 					if(kvi_strEqualCS(item->window()->id(),c->window()->id()))delete item;
 				}
 			}
-		} else //Delete the spaste with the given id
-		{
+		} else {
+			//Delete the spaste with the given id
 			while( (item = it.current()) != 0) 
-			{ 
+			{
 				++it;
 				if(item->getId() == iId)delete item;
 			}
@@ -258,7 +258,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 //--------------------------------------------------
 
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
-{ 
+{
 	KviPointerListIterator<SPasteController> it(*g_pControllerList);
 	SPasteController *item;
 
@@ -295,7 +295,7 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 
 
 static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
-{ 
+{
 	kvs_int_t delay;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("delay",KVS_PT_INTEGER,0,delay)
@@ -334,7 +334,7 @@ static bool spaste_module_can_unload(KviModule *m)
 //-------------------------------------------------
 KVIRC_MODULE(
 	"SPaste",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
 	"Delayed paste commands",
 	spaste_module_init,

@@ -21,17 +21,17 @@
 //
 
 #include "kvi_module.h"
-
 #include "kvi_console.h"
-
 #include "kvi_app.h"
 #include "kvi_locale.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircserver.h"
+
 #include "idle.h"
 Idle* g_pIdle;
+
 #define GET_KVS_CONSOLE \
 	kvs_uint_t  uiWnd; \
 	KviConsole *wnd =0; \
@@ -416,7 +416,7 @@ static bool my_module_can_unload(KviModule *)
 
 KVIRC_MODULE(
 	"My",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)" \
 	"		   (C) 2005 Tonino Imbesi (grifisx at barmes dot net)" \
 	"          (C) 2005 Alessandro Carbone (noldor at barmes dot net)", // author & (C)

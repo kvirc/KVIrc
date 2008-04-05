@@ -35,18 +35,17 @@
 #include "kvi_cmdformatter.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_kvs_eventhandler.h"
-
-#include <qmessagebox.h>
-#include <qsplitter.h>
-#include <qlayout.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_popupmenu.h"
-#include <qtooltip.h>
-#include <qinputdialog.h>
-#include <qpushbutton.h>
+
+#include <QMessageBox>
+#include <QSplitter>
+#include <QLayout>
+#include <QToolTip>
+#include <QInputDialog>
+#include <QPushButton>
 
 extern KviRawEditorWindow * g_pRawEditorWindow;
-
 
 
 KviRawListViewItem::KviRawListViewItem(KviTalListView *par,int idx)
@@ -69,17 +68,12 @@ const QPixmap * KviRawHandlerListViewItem::pixmap(int col) const
 }
 
 
-
 KviRawEditor::KviRawEditor(QWidget * par)
 : QWidget(par,"raw_event_editor")
 {
 	QGridLayout * l = new QGridLayout(this,1,1,2,2);
-#ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"raweditorv");
 	spl->setOpaqueResize(false);
-#else
-	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
-#endif
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * boxi = new KviTalVBox(spl);
@@ -443,8 +437,6 @@ void KviRawEditor::exportAllEvents()
 }
 
 
-
-
 KviRawEditorWindow::KviRawEditorWindow(KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"raweditor",0)
 {
@@ -494,7 +486,6 @@ void KviRawEditorWindow::cancelClicked()
 	close();
 }
 
-
 QPixmap * KviRawEditorWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT);
@@ -529,35 +520,33 @@ void KviRawEditorWindow::fillCaptionBuffers()
 
 }
 
-
 void KviRawEditorWindow::getConfigGroupName(KviStr &szName)
 {
 	szName = "raweditor";
 }
 
-
 void KviRawEditorWindow::saveProperties(KviConfig *cfg)
 {
-/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	cfg->writeEntry("Sizes",m_pEditor->sizes());
-	cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
-	//debug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
+	/*
+	#ifdef COMPILE_SCRIPTTOOLBAR
+		cfg->writeEntry("Sizes",m_pEditor->sizes());
+		cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
+		//debug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
+	#endif // COMPILE_SCRIPTTOOLBAR
+	*/
 }
 
 void KviRawEditorWindow::loadProperties(KviConfig *cfg)
 {
-/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	QValueList<int> def;
-	def.append(20);
-	def.append(80);
-	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviStr tmp = cfg->readEntry("LastRaw","");
-	m_pEditor->editRaw(tmp);
-	//debug("LAST EDITED WAS %s",tmp.ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
+	/*
+	#ifdef COMPILE_SCRIPTTOOLBAR
+		QValueList<int> def;
+		def.append(20);
+		def.append(80);
+		m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
+		KviStr tmp = cfg->readEntry("LastRaw","");
+		m_pEditor->editRaw(tmp);
+		//debug("LAST EDITED WAS %s",tmp.ptr());
+	#endif // COMPILE_SCRIPTTOOLBAR
+	*/
 }

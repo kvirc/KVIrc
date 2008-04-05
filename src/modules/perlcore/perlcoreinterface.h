@@ -29,7 +29,7 @@
 #include "kvi_qstring.h"
 #include "kvi_kvs_runtimecontext.h"
 
-#include <qstringlist.h>
+#include <QStringList>
 
 
 #define KVI_PERLCORECTRLCOMMAND_EXECUTE "execute"

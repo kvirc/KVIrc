@@ -20,13 +20,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "popupeditor.h"
+
 #include "kvi_module.h"
-
 #include "kvi_locale.h"
-
 #include "kvi_frame.h"
 
-#include "popupeditor.h"
 
 KviPopupEditorWindow * g_pPopupEditorWindow = 0;
 
@@ -46,7 +45,7 @@ KviPopupEditorWindow * g_pPopupEditorWindow = 0;
 */
 
 static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pPopupEditorWindow)
 	{
 		g_pPopupEditorWindow = new KviPopupEditorWindow(c->window()->frame());
@@ -72,13 +71,13 @@ static bool popupeditor_module_can_unload(KviModule * m)
 static bool popupeditor_module_cleanup(KviModule *m)
 {
 	if(g_pPopupEditorWindow)delete g_pPopupEditorWindow;
-    g_pPopupEditorWindow = 0;
+	g_pPopupEditorWindow = 0;
 	return true;
 }
 
 KVIRC_MODULE(
 	"PopupEditor",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script popups",
 	popupeditor_module_init,

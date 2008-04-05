@@ -20,9 +20,9 @@
 
 #include"idle.h"
 
-#include<qcursor.h>
-#include<qdatetime.h>
-#include<qtimer.h>
+#include <QCursor>
+#include <QDateTime>
+#include <QTimer>
 
 static IdlePlatform *platform = 0;
 static int platform_ref = 0;
@@ -133,4 +133,3 @@ void Idle::doCheck()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "idle.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

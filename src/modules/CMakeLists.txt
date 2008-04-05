@@ -21,7 +21,7 @@ INCLUDE_DIRECTORIES(
 
 SUBDIRS(
 	about action actioneditor addon aliaseditor avatar
-	chan channelsjoin clock codetester config context 
+	chan channelsjoin clock codetester config context
 	dcc dialog
 	editor eventeditor
 	file filetransferwindow
@@ -30,8 +30,7 @@ SUBDIRS(
 	lamerizer links list log logview
 	mask math mediaplayer mircimport my
 	notifier
-	objects
-	options
+	objects options
 	popupeditor
 	raweditor regchan reguser rijndael
 	setup sharedfile sharedfileswindow snd socketspy spaste str system

@@ -26,9 +26,9 @@
 
 #include "notifiersettings.h"
 
-#include <qsize.h>
-#include <qrect.h>
-#include <qpixmap.h>
+#include <QSize>
+#include <QRect>
+#include <QPixmap>
 
 class QPainter;
 

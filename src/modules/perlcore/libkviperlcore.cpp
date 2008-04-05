@@ -28,7 +28,6 @@
 #include "kvi_out.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
-
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_userinput.h"
@@ -404,7 +403,7 @@ static bool perlcore_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Perl",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Perl scripting engine core",
 	perlcore_module_init,

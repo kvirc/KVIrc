@@ -27,9 +27,10 @@
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_console.h"
-
-#include <qsplitter.h>
 //#include "kvi_module.h"
+
+#include <QSplitter>
+
 
 extern KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList;
 
@@ -37,11 +38,7 @@ KviSocketSpyWindow::KviSocketSpyWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole) , KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
-	#ifdef COMPILE_USE_QT4
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-	#else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
-#endif
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	// Ensure proper focusing
 	//setFocusHandler(m_pIrcView,this);
@@ -126,4 +123,3 @@ void KviSocketSpyWindow::applyOptions()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_socketspywindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

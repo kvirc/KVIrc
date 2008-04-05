@@ -24,36 +24,34 @@
 //
 //==================================================================================
 
+#include "notifiersettings.h"
+
 #include "kvi_settings.h"
-
-#include <qbitmap.h>
-#include <qcolor.h>
-#include <qcursor.h>
-#include <qdatetime.h> 
-#include <qfont.h>
-#include <qimage.h>
-#include <qlineedit.h>
-#include <qpixmap.h>
-#include <qrect.h>
-#include <qtimer.h>
-#include <qwidget.h>
-
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
 
-#include "notifiersettings.h"
+#include <QBitmap>
+#include <QColor>
+#include <QCursor>
+#include <QDateTime>
+#include <QFont>
+#include <QImage>
+#include <QLineEdit>
+#include <QPixmap>
+#include <QRect>
+#include <QTimer>
+#include <QWidget>
 
+class QPainter;
+class QPopupMenu;
 class KviWindow;
 class KviNotifierMessage;
-
 class KviNotifierWindowBody;
 class KviNotifierWindowBorder;
 class KviNotifierWindowProgressBar;
 class KviNotifierWindowTabs;
 
-class QPainter;
-class QPopupMenu;
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 

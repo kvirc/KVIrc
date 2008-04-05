@@ -6,7 +6,7 @@
 //   Creation date : Sun Nov 5 2000 15:42:14 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -103,7 +103,7 @@ typedef unsigned short UINT16;
 #define RIJNDAEL_CORRUPTED_DATA -7
 
 class Rijndael
-{	
+{
 public:
 	enum Direction { Encrypt , Decrypt };
 	enum Mode { ECB , CBC , CFB1 };
@@ -119,7 +119,7 @@ protected:
 	Direction m_direction;
 	UINT8     m_initVector[MAX_IV_SIZE];
 	UINT32    m_uRounds;
-    UINT8     m_expandedKey[_MAX_ROUNDS+1][4][4];
+	UINT8     m_expandedKey[_MAX_ROUNDS+1][4][4];
 public:
 	// Initializes the crypt session
 	// Returns RIJNDAEL_SUCCESS or an error code

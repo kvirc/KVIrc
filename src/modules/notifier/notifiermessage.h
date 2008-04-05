@@ -27,33 +27,26 @@
 
 
 #include "kvi_settings.h"
-
-#include <qwidget.h>
-#include <qrect.h>
-#include <qtimer.h>
-#include <qpixmap.h>
-#include <qimage.h>
-#include <qfont.h>
-#include <qcolor.h>
-#include <qlineedit.h>
-
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
 
-#ifdef COMPILE_USE_QT4
-	#define QSimpleRichText Q3SimpleRichText
-	#define QPopupMenu Q3PopupMenu
-	#include <q3popupmenu.h>
-	#include <q3simplerichtext.h>
-#else
-	#include <qsimplerichtext.h>
-#endif
-
-class KviWindow;
-class KviNotifierWindow;
+#include <QWidget>
+#include <QRect>
+#include <QTimer>
+#include <QPixmap>
+#include <QImage>
+#include <QFont>
+#include <QColor>
+#include <QLineEdit>
+#include <q3popupmenu.h>
+#include <q3simplerichtext.h>
+#define QSimpleRichText Q3SimpleRichText
+#define QPopupMenu Q3PopupMenu
 
 class QPopupMenu;
+class KviWindow;
+class KviNotifierWindow;
 
 class KviNotifierMessage
 {

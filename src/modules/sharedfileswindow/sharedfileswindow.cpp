@@ -36,18 +36,18 @@
 #include "kvi_input.h"
 #include "kvi_filedialog.h"
 #include "kvi_styled_controls.h"
-
-#include <qdatetimeedit.h>
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
-#include <qsplitter.h>
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
-#include <qlayout.h>
-#include <qcheckbox.h>
-#include <qmessagebox.h>
-#include <qfileinfo.h>
+
+#include <QDateTimeEdit>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSplitter>
+#include <QLayout>
+#include <QCheckBox>
+#include <QMessageBox>
+#include <QFileInfo>
 
 extern KviSharedFilesWindow * g_pSharedFilesWindow;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
@@ -206,11 +206,7 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0) , KviModuleExtension(d)
 {
 	g_pSharedFilesWindow = this;
-#ifdef COMPILE_USE_QT4
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-#else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"splitter");
-#endif
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 
@@ -742,4 +738,3 @@ void KviSharedFilesWindow::die()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_sharedfileswindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

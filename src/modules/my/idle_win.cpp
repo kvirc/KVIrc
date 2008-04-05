@@ -19,91 +19,91 @@
  */
 #ifdef COMPILE_ON_WINDOWS
 
-#include"idle.h"
-
-#include<qlibrary.h>
-#include<windows.h>
-
-typedef struct tagLASTINPUTINFO {
-	UINT cbSize;
-	DWORD dwTime;
-} LASTINPUTINFO, *PLASTINPUTINFO;
-
-class IdlePlatform::Private
-{
-public:
-	Private()
+	#include "idle.h"
+	
+	#include <QLibrary>
+	#include< windows.h>
+	
+	typedef struct tagLASTINPUTINFO {
+		UINT cbSize;
+		DWORD dwTime;
+	} LASTINPUTINFO, *PLASTINPUTINFO;
+	
+	class IdlePlatform::Private
 	{
-		GetLastInputInfo = 0;
-		IdleUIGetLastInputTime = 0;
-		lib = 0;
+	public:
+		Private()
+		{
+			GetLastInputInfo = 0;
+			IdleUIGetLastInputTime = 0;
+			lib = 0;
+		}
+	
+		BOOL (__stdcall * GetLastInputInfo)(PLASTINPUTINFO);
+		DWORD (__stdcall * IdleUIGetLastInputTime)(void);
+		QLibrary *lib;
+	};
+	
+	IdlePlatform::IdlePlatform()
+	{
+		d = new Private;
 	}
-
-	BOOL (__stdcall * GetLastInputInfo)(PLASTINPUTINFO);
-	DWORD (__stdcall * IdleUIGetLastInputTime)(void);
-	QLibrary *lib;
-};
-
-IdlePlatform::IdlePlatform()
-{
-	d = new Private;
-}
-
-IdlePlatform::~IdlePlatform()
-{
-	delete d->lib;
-	delete d;
-}
-
-bool IdlePlatform::init()
-{
-	if(d->lib)
-		return true;
-	void *p;
-
-	// try to find the built-in Windows 2000 function
-	d->lib = new QLibrary("user32");
-	if(d->lib->load() && (p = d->lib->resolve("GetLastInputInfo"))) {
-		d->GetLastInputInfo = (BOOL (__stdcall *)(PLASTINPUTINFO))p;
-		return true;
-	}
-	else {
+	
+	IdlePlatform::~IdlePlatform()
+	{
 		delete d->lib;
-		d->lib = 0;
+		delete d;
 	}
-
-	// fall back on idleui
-	d->lib = new QLibrary("idleui");
-	if(d->lib->load() && (p = d->lib->resolve("IdleUIGetLastInputTime"))) {
-		d->IdleUIGetLastInputTime = (DWORD (__stdcall *)(void))p;
-		return true;
+	
+	bool IdlePlatform::init()
+	{
+		if(d->lib)
+			return true;
+		void *p;
+	
+		// try to find the built-in Windows 2000 function
+		d->lib = new QLibrary("user32");
+		if(d->lib->load() && (p = d->lib->resolve("GetLastInputInfo"))) {
+			d->GetLastInputInfo = (BOOL (__stdcall *)(PLASTINPUTINFO))p;
+			return true;
+		}
+		else {
+			delete d->lib;
+			d->lib = 0;
+		}
+	
+		// fall back on idleui
+		d->lib = new QLibrary("idleui");
+		if(d->lib->load() && (p = d->lib->resolve("IdleUIGetLastInputTime"))) {
+			d->IdleUIGetLastInputTime = (DWORD (__stdcall *)(void))p;
+			return true;
+		}
+		else {
+			delete d->lib;
+			d->lib = 0;
+		}
+	
+		return false;
 	}
-	else {
-		delete d->lib;
-		d->lib = 0;
-	}
-
-	return false;
-}
-
-int IdlePlatform::secondsIdle()
-{
-	int i;
-	if(d->GetLastInputInfo) {
-		LASTINPUTINFO li;
-		li.cbSize = sizeof(LASTINPUTINFO);
-		bool ok = d->GetLastInputInfo(&li);
-		if(!ok)
+	
+	int IdlePlatform::secondsIdle()
+	{
+		int i;
+		if(d->GetLastInputInfo) {
+			LASTINPUTINFO li;
+			li.cbSize = sizeof(LASTINPUTINFO);
+			bool ok = d->GetLastInputInfo(&li);
+			if(!ok)
+				return 0;
+			i = li.dwTime;
+		}
+		else if(d->IdleUIGetLastInputTime) {
+			i = d->IdleUIGetLastInputTime();
+		}
+		else
 			return 0;
-		i = li.dwTime;
+	
+		return (GetTickCount() - i) / 1000;
 	}
-	else if(d->IdleUIGetLastInputTime) {
-		i = d->IdleUIGetLastInputTime();
-	}
-	else
-		return 0;
-
-	return (GetTickCount() - i) / 1000;
-}
 
 #endif

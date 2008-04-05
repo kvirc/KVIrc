@@ -22,6 +22,9 @@
 //
 //=============================================================================
 
+#include "notifiermessage.h"
+#include "notifierwindowtabs.h"
+
 #include "kvi_app.h"
 #include "kvi_config.h"
 #include "kvi_qstring.h"
@@ -30,14 +33,12 @@
 #include "kvi_options.h"
 #include "kvi_window.h"
 
-#include <qevent.h>
-#include <qpainter.h>
-#include <qbrush.h>
-#include <qcolor.h>
-#include <qfontmetrics.h>
-
-#include "notifiermessage.h"
-#include "notifierwindowtabs.h"
+#include <QPainter>
+#include <QBrush>
+#include <QColor>
+#include <QFontMetrics>
+#include <QEvent>
+#include <QMouseEvent>
 
 extern KviNotifierWindow * g_pNotifierWindow;
 KviNotifierWindowTabs * g_pTabs;
@@ -171,9 +172,9 @@ int KviNotifierWindowTab::width(bool b) {
 	return width;
 }
 
-// ##################################################################################à
+// #################################################################################
 // ### end of tab object definition class
-// ##################################################################################à
+// #################################################################################
 
 
 KviNotifierWindowTabs::KviNotifierWindowTabs(QRect r)
@@ -273,8 +274,6 @@ void KviNotifierWindowTabs::loadImages()
 	m_closeTabIconState = WDG_ICON_OFF;
 
 }
-
-
 
 void KviNotifierWindowTabs::addMessage(KviWindow * pWnd, KviNotifierMessage * message)
 {
@@ -411,7 +410,8 @@ void KviNotifierWindowTabs::next()
 
 }
 
-void KviNotifierWindowTabs::mousePressEvent(QMouseEvent * e) {
+void KviNotifierWindowTabs::mousePressEvent(QMouseEvent * e)
+{
 
 	if (m_bIsOverRightBound && m_rctNextIcon.contains(e->pos())) {
 		return;
@@ -452,7 +452,6 @@ void KviNotifierWindowTabs::mouseMoveEvent(QMouseEvent * e)
 
 void KviNotifierWindowTabs::mouseReleaseEvent(QMouseEvent * e)
 {
-
 	if (m_bIsOverRightBound && m_rctNextIcon.contains(e->pos())) {
 		scrollTabsLeft();
 		return;
@@ -474,21 +473,23 @@ void KviNotifierWindowTabs::mouseReleaseEvent(QMouseEvent * e)
 		
 }
 
-void KviNotifierWindowTabs::scrollTabsLeft() {
+void KviNotifierWindowTabs::scrollTabsLeft()
+{
 	if (m_bIsOverRightBound) {
 		m_iTabToStartFrom++;
 	}
 	needToRedraw();
 	g_pNotifierWindow->update();
-};
+}
 
-void KviNotifierWindowTabs::scrollTabsRight() {
+void KviNotifierWindowTabs::scrollTabsRight()
+{
 	if (m_bIsOverLeftBound) {
 		m_iTabToStartFrom--;
 	}
 	needToRedraw();
 	g_pNotifierWindow->update();
-};
+}
 
 void KviNotifierWindowTabs::setCloseTabIcon(int state)	{
 
@@ -510,7 +511,7 @@ void KviNotifierWindowTabs::resetIcons()
 }
 
 void KviNotifierWindowTabs::setFocusOn(KviNotifierWindowTab * tab)
-{	
+{
 	if(m_pTabFocused)m_pTabFocused->setFocused(false);
 	m_pTabFocused = tab;
 	if(m_pTabFocused)m_pTabFocused->setFocused();
@@ -628,7 +629,6 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 	p->drawPixmap(m_rct.x(), m_rct.y(), *m_pPixmap, 0, 0, m_pPixmap->width(), m_pPixmap->height());
 
 	m_bNeedToRedraw = false;
-	
 }
 
 void KviNotifierWindowTabs::markAllMessagesAsHistoric()
@@ -705,4 +705,3 @@ void KviNotifierWindowTabs::closeTab(KviWindow * pWnd, KviNotifierWindowTab * pT
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_notifierwindowtabs.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

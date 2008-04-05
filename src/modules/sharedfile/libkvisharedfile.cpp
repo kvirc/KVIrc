@@ -23,20 +23,18 @@
 //=============================================================================
 
 #include "kvi_module.h"
-
 #include "kvi_sharedfiles.h"
 #include "kvi_ircmask.h"
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
-
 #include "kvi_out.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
-
+#include "kvi_pointerhashtable.h"
 
 #include <time.h>
-#include "kvi_pointerhashtable.h"
+
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
@@ -239,14 +237,13 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		++it;
 	}
 
-//#warning "FIND A BETTER KVI_OUT_*"
+	//#warning "FIND A BETTER KVI_OUT_*"
 
 	if(idx == 0)c->window()->outputNoFmt(KVI_OUT_NONE,__tr2qs_ctx("No active file sharedfile","sharedfile"));
 	else c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("Total: %d sharedfile","sharedfile"),idx);
 
 	return true;
 }
-
 
 static bool sharedfile_module_init(KviModule * m)
 {
@@ -270,8 +267,8 @@ static bool sharedfile_module_cleanup(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"Offer",                                                // module name
-	"1.0.0",                                                // module version
+	"SharedFiles",                                                // module name
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000-2003 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"User interface to the file sharing system",
 	sharedfile_module_init,

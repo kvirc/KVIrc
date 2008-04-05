@@ -31,9 +31,9 @@
 #include "kvi_moduleextension.h"
 #include "kvi_sharedfiles.h"
 #include "kvi_styled_controls.h"
-
 #include "kvi_tal_listview.h"
-#include <qdialog.h>
+
+#include <QDialog>
 
 class QGridLayout; 
 class QDateTimeEdit;
@@ -53,9 +53,8 @@ public:
 };
 
 
-
 class KviSharedFileEditDialog : public QDialog
-{ 
+{
 	Q_OBJECT
 public:
 	KviSharedFileEditDialog(QWidget* par,KviSharedFile * f = 0);
@@ -73,8 +72,6 @@ protected slots:
 	void okClicked();
 	void browse();
 };
-
-
 
 
 class KviSharedFilesWindow : public KviWindow , public KviModuleExtension

@@ -22,34 +22,32 @@
 
 
 #include "kvi_module.h"
-
 #include "kvi_locale.h"
 #include "kvi_string.h"
 #include "kvi_ircmask.h"
 
-	/*
-		@doc: mask.match
-		@type:
-			function
-		@title:
-			$mask.match
-		@short:
-			Matches a mask agains a wildcarded one
-		@syntax:
-			<boolean> $mask.match(<wildcard_mask:string>,<fixed_mask:string>)
-		@description:
-			Returns 1 if the <wildcard_mask> matches <fixed_mask> and 0 otherwise.
-			<wildcard_mask> can obviously contain wildcards ('*' and '?').
-		@example:
-			[example]
-			[cmd]if[/cmd]($mask.match(*!*@*.linux.it,$0))
-				[cmd]op[/cmd] [fnc]$mask.nick[/fnc]($0)
-			[/example]
-	*/
+/*
+	@doc: mask.match
+	@type:
+		function
+	@title:
+		$mask.match
+	@short:
+		Matches a mask agains a wildcarded one
+	@syntax:
+		<boolean> $mask.match(<wildcard_mask:string>,<fixed_mask:string>)
+	@description:
+		Returns 1 if the <wildcard_mask> matches <fixed_mask> and 0 otherwise.
+		<wildcard_mask> can obviously contain wildcards ('*' and '?').
+	@example:
+		[example]
+		[cmd]if[/cmd]($mask.match(*!*@*.linux.it,$0))
+			[cmd]op[/cmd] [fnc]$mask.nick[/fnc]($0)
+		[/example]
+*/
 
 static bool mask_kvs_fnc_match(KviKvsModuleFunctionCall * c)
-{ 
-
+{
 	QString wildmask,fixedmask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("wildcard mask",KVS_PT_STRING,0,wildmask)
@@ -61,23 +59,22 @@ static bool mask_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-	/*
-		@doc: mask.nick
-		@type:
-			function
-		@title:
-			$mask.nick
-		@short:
-			Returns the nick part of an IRC mask
-		@syntax:
-			<string> $mask.nick(<mask:string>)
-		@description:
-			Returns the nickname part of an IRC mask.
-	*/
+/*
+	@doc: mask.nick
+	@type:
+		function
+	@title:
+		$mask.nick
+	@short:
+		Returns the nick part of an IRC mask
+	@syntax:
+		<string> $mask.nick(<mask:string>)
+	@description:
+		Returns the nickname part of an IRC mask.
+*/
 
 static bool mask_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 {
-
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
@@ -87,23 +84,22 @@ static bool mask_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-	/*
-		@doc: mask.user
-		@type:
-			function
-		@title:
-			$mask.user
-		@short:
-			Returns the username part of an IRC mask
-		@syntax:
-			<string> $mask.user(<mask:string>)
-		@description:
-			Returns the username part of an IRC mask.
-	*/
+/*
+	@doc: mask.user
+	@type:
+		function
+	@title:
+		$mask.user
+	@short:
+		Returns the username part of an IRC mask
+	@syntax:
+		<string> $mask.user(<mask:string>)
+	@description:
+		Returns the username part of an IRC mask.
+*/
 
 static bool mask_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 {
-
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
@@ -114,19 +110,19 @@ static bool mask_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 }
 
 
-	/*
-		@doc: mask.host
-		@type:
-			function
-		@title:
-			$mask.host
-		@short:
-			Returns the hostname part of an IRC mask
-		@syntax:
-			<string> $mask.host(<mask:string>)
-		@description:
-			Returns the hostname part of an IRC mask.
-	*/
+/*
+	@doc: mask.host
+	@type:
+		function
+	@title:
+		$mask.host
+	@short:
+		Returns the hostname part of an IRC mask
+	@syntax:
+		<string> $mask.host(<mask:string>)
+	@description:
+		Returns the hostname part of an IRC mask.
+*/
 
 static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 {
@@ -140,19 +136,19 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 }
 
 
-	/*
-		@doc: mask.hasnumerichost
-		@type:
-			function
-		@title:
-			$mask.hasNumericHost
-		@short:
-			Checks if a host part of a mask is numeric
-		@syntax:
-			<boolean> $mask.hasNumericHost(<mask: string>)
-		@description:
-			Returns 1 if the hostname part of the mask is numeric (e.g : unresolved IPV4 or IPV6 address)
-	*/
+/*
+	@doc: mask.hasnumerichost
+	@type:
+		function
+	@title:
+		$mask.hasNumericHost
+	@short:
+		Checks if a host part of a mask is numeric
+	@syntax:
+		<boolean> $mask.hasNumericHost(<mask: string>)
+	@description:
+		Returns 1 if the hostname part of the mask is numeric (e.g : unresolved IPV4 or IPV6 address)
+*/
 
 
 static bool mask_kvs_fnc_hasnumerichost(KviKvsModuleFunctionCall * c)
@@ -191,7 +187,7 @@ static bool mask_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"File",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)",
 	"Mask manipulation functions",
 	mask_module_init,

@@ -21,12 +21,10 @@
 //
 //==================================================================================
 
-#include "kvi_module.h"
-
-
 #include "notifierwindow.h"
 #include "notifiermessage.h"
 
+#include "kvi_module.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
@@ -36,7 +34,7 @@
 #include "kvi_time.h"
 #include "kvi_options.h"
 
-#include <qsplitter.h>
+#include <QSplitter>
 
 KviNotifierWindow * g_pNotifierWindow = 0;
 kvi_time_t g_tNotifierDisabledUntil = 0;
@@ -312,9 +310,9 @@ static bool notifier_module_ctrl(KviModule *,const char *operation,void *param)
 
 KVIRC_MODULE(
 	"Notifier",
-	"2.0.0",
+	"4.0.0",
 	"Copyright (C) 2005:\n" \
-	"  Iacopo Palazzi (iakko at siena dot linux dot it)",
+	"	Iacopo Palazzi (iakko at siena dot linux dot it)",
 	"KVIrc Client - Taskbar Notifier",
 	notifier_module_init,
 	notifier_module_can_unload,

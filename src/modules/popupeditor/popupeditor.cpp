@@ -39,16 +39,17 @@
 #include "kvi_kvs_popupmenu.h"
 #include "kvi_kvs_variantlist.h"
 //#include "kvi_parameterlist.h"
-
-#include <qmessagebox.h>
-#include <qdir.h>
-#include <qsplitter.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qtooltip.h>
 #include "kvi_pointerhashtable.h"
-#include <qpushbutton.h>
 #include "kvi_tal_vbox.h"
+
+#include <QMessageBox>
+#include <QDir>
+#include <QSplitter>
+#include <QLayout>
+#include <QLabel>
+#include <QToolTip>
+#include <QPushButton>
+
 
 extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
@@ -174,16 +175,6 @@ void KviPopupListViewItem::setIcon(const QString & szIcon)
 }
 
 
-
-
-
-
-
-
-
-
-
-
 KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 : QWidget(par)
 {
@@ -202,12 +193,8 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pMenuButton = new QPushButton(__tr2qs("Test"),this);
 	g->addWidget(m_pMenuButton,0,2);
 	connect(m_pMenuButton,SIGNAL(clicked()),this,SLOT(testPopup()));
-#ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Vertical,this,"popupeditor");
 	spl->setOpaqueResize(false);
-#else
-	QSplitter * spl = new QSplitter(QSplitter::Vertical,this);
-#endif
 
 	m_pListView = new KviTalListView(spl);
 	m_pListView->addColumn(__tr2qs("Item"));
@@ -217,8 +204,6 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setShowSortIndicator(false);
 	m_pListView->setSorting(-1);
-
-
 	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(selectionChanged(KviTalListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
 		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
@@ -272,11 +257,8 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	QToolTip::add(m_pIdEditor,
 		__tr2qs("<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>"));
 	g->addMultiCellWidget(m_pIdEditor,6,6,1,2);
-
-
 	g->setColStretch(1,1);
 	g->setRowStretch(1,1);
-
 }
 
 KviSinglePopupEditor::~KviSinglePopupEditor()
@@ -368,7 +350,6 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 	}
 
 }
-
 
 void KviSinglePopupEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 {
@@ -648,7 +629,6 @@ void KviSinglePopupEditor::contextCut()
 	delete it;
 	if(!m_pLastSelectedItem)selectionChanged(0);
 }
-
 
 void KviSinglePopupEditor::contextPasteBelow()
 {
@@ -949,8 +929,6 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewIt
 	}
 }
 
-
-
 void KviSinglePopupEditor::edit(KviMenuListViewItem * it)
 {
 	saveLastSelectedItem();
@@ -989,21 +967,6 @@ void KviSinglePopupEditor::edit(KviMenuListViewItem * it)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 KviMenuListViewItem::KviMenuListViewItem(KviTalListView * par,KviKvsPopupMenu * popup)
 : KviTalListViewItem(par)
 {
@@ -1023,17 +986,12 @@ void KviMenuListViewItem::replacePopup(KviKvsPopupMenu * popup)
 	m_pPopup = popup;
 }
 
-
 KviPopupEditor::KviPopupEditor(QWidget * par)
 : QWidget(par)
 {
 	QGridLayout * l = new QGridLayout(this,1,1,0,2);
-#ifdef COMPILE_USE_QT4
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"popupeditor");
 	spl->setOpaqueResize(false);
-#else
-	QSplitter * spl = new QSplitter(QSplitter::Horizontal,this);
-#endif
 	l->addWidget(spl,0,0);
 	
 	KviTalVBox * box = new KviTalVBox(spl);
@@ -1086,7 +1044,6 @@ void KviPopupEditor::oneTimeSetup()
 	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
 		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
-
 }
 
 void KviPopupEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
@@ -1115,7 +1072,6 @@ void KviPopupEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int co
 
 	m_pContextPopup->popup(pnt);
 }
-
 
 void KviPopupEditor::exportCurrentPopup()
 {
@@ -1191,7 +1147,6 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the alias file."),__tr2qs("Ok"));
 	}
 }
-
 
 void KviPopupEditor::removeCurrentPopup()
 {
@@ -1282,7 +1237,6 @@ void KviPopupEditor::commit()
 	g_pApp->savePopups();
 }
 
-
 void KviPopupEditor::getUniquePopupName(KviMenuListViewItem *item,QString &buffer)
 {
 	__range_valid(m_bOneTimeSetupDone);
@@ -1312,7 +1266,6 @@ void KviPopupEditor::getUniquePopupName(KviMenuListViewItem *item,QString &buffe
 
 	buffer = newName;
 }
-
 
 
 KviPopupEditorWindow::KviPopupEditorWindow(KviFrame * lpFrm)
@@ -1364,7 +1317,6 @@ void KviPopupEditorWindow::cancelClicked()
 	close();
 }
 
-
 QPixmap * KviPopupEditorWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP);
@@ -1396,7 +1348,6 @@ void KviPopupEditorWindow::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += p2;
 	m_szHtmlInactiveCaption += m_szPlainTextCaption;
 	m_szHtmlInactiveCaption += p3;
-
 }
 
 
@@ -1404,7 +1355,6 @@ void KviPopupEditorWindow::getConfigGroupName(KviStr &szName)
 {
 	szName = "popupeditor";
 }
-
 
 void KviPopupEditorWindow::saveProperties(KviConfig *cfg)
 {

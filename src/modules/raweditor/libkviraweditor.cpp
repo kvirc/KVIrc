@@ -20,11 +20,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "raweditor.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 
-#include "raweditor.h"
 
 KviRawEditorWindow * g_pRawEditorWindow = 0;
 
@@ -44,7 +45,7 @@ KviRawEditorWindow * g_pRawEditorWindow = 0;
 */
 
 static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	if(!g_pRawEditorWindow)
 	{
 		g_pRawEditorWindow = new KviRawEditorWindow(c->window()->frame());
@@ -54,10 +55,8 @@ static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool raweditor_module_init(KviModule * m)
 {
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",raweditor_kvs_cmd_open);
 	g_pRawEditorWindow = 0;
 	return true;
@@ -71,13 +70,13 @@ static bool raweditor_module_can_unload(KviModule * m)
 static bool raweditor_module_cleanup(KviModule *m)
 {
 	if(g_pRawEditorWindow)delete g_pRawEditorWindow;
-    g_pRawEditorWindow = 0;
+	g_pRawEditorWindow = 0;
 	return true;
 }
 
 KVIRC_MODULE(
 	"RawEditor",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Editor for the script raw events",
 	raweditor_module_init,

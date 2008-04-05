@@ -24,8 +24,8 @@
 //
 //=============================================================================
 
-#include <qrect.h>
-#include <qpainter.h>
+#include <QRect>
+#include <QPainter>
 
 class KviNotifierWindowProgressBar
 {
@@ -60,8 +60,6 @@ public:
 	void draw(QPainter *);
 	
 protected:
-
-
 };
 
 #endif //!_NOTIFIERWINDOWPROGRESSBAR_H_
