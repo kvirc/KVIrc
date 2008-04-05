@@ -32,8 +32,8 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 
-#include <qdir.h>
-#include <qfileinfo.h>
+#include <QDir>
+#include <QFileInfo>
 /*
 	@doc: easyplugins
 	@type:
@@ -209,7 +209,6 @@ void KviPlugin::setName(const QString& Name)
 	m_szName = Name;
 }
 
-
 KviPluginManager::KviPluginManager()
 {
 	m_pPluginDict = new KviPointerHashTable<QString,KviPlugin>(5,false);
@@ -327,8 +326,6 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 			c->warning(__tr2qs("The plugin has no function to free memory. This can result in Memory Leaks!"));
 		}
 	}
-
-	
 
 	return true;
 }

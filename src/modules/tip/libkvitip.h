@@ -23,14 +23,15 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qwidget.h>
-#include <qframe.h>
-#include <qpixmap.h>
-#include <qcheckbox.h>
-
 #include "kvi_styled_controls.h"
 #include "kvi_string.h"
 #include "kvi_config.h"
+
+#include <QWidget>
+#include <QFrame>
+#include <QPixmap>
+#include <QCheckBox>
+
 
 class KviTipFrame : public QFrame
 {

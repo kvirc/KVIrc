@@ -21,27 +21,21 @@
 //
 
 #include "kvi_settings.h"
-
 #include "kvi_module.h"
-
 #include "kvi_window.h"
-
 #include "kvi_frame.h"
-
-#include <qsplitter.h>
 #include "kvi_pointerlist.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#include <QSplitter>
 
+#ifdef COMPILE_KDE_SUPPORT
 	#include "termwidget.h"
 	#include "termwindow.h"
 
 	#include "ktrader.h"
-
 //	#include "kparts/part.h"
 //	#include "kparts/factory.h"
 //	#include "klibloader.h"
-
 #endif
 
 KviModule * g_pTermModule = 0;
@@ -136,9 +130,7 @@ static bool term_module_init(KviModule * m)
 #endif
 
 //	m->registerCommand("open",term_module_cmd_open);
-#ifdef COMPILE_NEW_KVS
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",term_kvs_cmd_open);
-#endif
 	return true;
 }
 
@@ -157,7 +149,7 @@ static bool term_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Term",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Terminal emulator extension based on the KonsolePart KDE class",
 	term_module_init,

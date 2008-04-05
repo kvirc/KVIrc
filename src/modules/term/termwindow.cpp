@@ -23,62 +23,59 @@
 #include "termwidget.h"
 
 #ifdef COMPILE_KDE_SUPPORT
+	#include "kvi_iconmanager.h"
+	#include "kvi_options.h"
+	#include "kvi_locale.h"
+	#include "kvi_module.h"
+	
+	extern KviModule * g_pTermModule;
+	extern KviPointerList<KviTermWindow> * g_pTermWindowList;
+	extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
+	
+	KviTermWindow::KviTermWindow(KviFrame * lpFrm,const char * name)
+	: KviWindow(KVI_WINDOW_TYPE_TERM,lpFrm,name)
+	{
+		g_pTermWindowList->append(this);
+		m_pTermWidget = 0;
+		m_pTermWidget = new KviTermWidget(this,lpFrm);
+		// Ensure proper focusing
+	//	setFocusHandler(m_pTermWidget->konsoleWidget(),this);
+	}
+	
+	KviTermWindow::~KviTermWindow()
+	{
+		g_pTermWindowList->removeRef(this);
+		if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())g_pTermModule->unlock();
+	}
+	
+	QPixmap * KviTermWindow::myIconPtr()
+	{
+		return g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW);
+	}
+	
+	void KviTermWindow::resizeEvent(QResizeEvent *e)
+	{
+		if(m_pTermWidget)m_pTermWidget->setGeometry(0,0,width(),height());
+	}
+	
+	QSize KviTermWindow::sizeHint() const
+	{
+		return m_pTermWidget ? m_pTermWidget->sizeHint() : KviWindow::sizeHint();
+	}
+	
+	void KviTermWindow::fillCaptionBuffers()
+	{
+		m_szPlainTextCaption.sprintf(__tr("Terminal"));
+	
+		m_szHtmlActiveCaption.sprintf(
+			__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
+			KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
+			KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii());
+		m_szHtmlInactiveCaption.sprintf(
+			__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
+			KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
+			KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii());
+	}
 
-
-#include "kvi_iconmanager.h"
-#include "kvi_options.h"
-#include "kvi_locale.h"
-#include "kvi_module.h"
-
-extern KviModule * g_pTermModule;
-extern KviPointerList<KviTermWindow> * g_pTermWindowList;
-extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
-
-KviTermWindow::KviTermWindow(KviFrame * lpFrm,const char * name)
-: KviWindow(KVI_WINDOW_TYPE_TERM,lpFrm,name)
-{
-	g_pTermWindowList->append(this);
-	m_pTermWidget = 0;
-	m_pTermWidget = new KviTermWidget(this,lpFrm);
-	// Ensure proper focusing
-//	setFocusHandler(m_pTermWidget->konsoleWidget(),this);
-}
-
-KviTermWindow::~KviTermWindow()
-{
-	g_pTermWindowList->removeRef(this);
-	if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())g_pTermModule->unlock();
-}
-
-QPixmap * KviTermWindow::myIconPtr()
-{
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW);
-}
-
-void KviTermWindow::resizeEvent(QResizeEvent *e)
-{
-	if(m_pTermWidget)m_pTermWidget->setGeometry(0,0,width(),height());
-}
-
-QSize KviTermWindow::sizeHint() const
-{
-	return m_pTermWidget ? m_pTermWidget->sizeHint() : KviWindow::sizeHint();
-}
-
-void KviTermWindow::fillCaptionBuffers()
-{
-	m_szPlainTextCaption.sprintf(__tr("Terminal"));
-
-	m_szHtmlActiveCaption.sprintf(
-		__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii());
-	m_szHtmlInactiveCaption.sprintf(
-		__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii());
-}
-
-#include "termwindow.moc"
-
+	#include "termwindow.moc"
 #endif

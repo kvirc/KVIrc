@@ -25,48 +25,44 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-
-#include <qframe.h>
-#include <qlabel.h>
-#include <qpushbutton.h>
-#include "kvi_tal_hbox.h"
-
-#include "kparts/part.h"
-
-
-class KviFrame;
-
-class KviTermWidget : public QFrame
-{
-	Q_OBJECT
-	Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
-public:
-	KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone = false);
-	~KviTermWidget();
-private:
-	KviTalHBox        * m_pHBox;
-	QLabel       * m_pTitleLabel;
-	QPushButton  * m_pCloseButton;
-	KParts::Part * m_pKonsolePart;
-	bool           m_bIsStandalone;
-	QWidget      * m_pKonsoleWidget;
-protected:
-	virtual void resizeEvent(QResizeEvent *e);
-protected slots:
-	void closeClicked();
-	void changeTitle(int i,const QString& str);
-	void notifySize(int,int);
-	void changeColumns(int);
-public:
-	QWidget * konsoleWidget(){ return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
-	virtual QSize sizeHint() const;
-	int dummy() const { return 0; };
-protected slots:
-	void konsoleDestroyed();
-	void autoClose();
-};
-
+	#include <QFrame>
+	#include <QLabel>
+	#include <QPushButton>
+	#include "kvi_tal_hbox.h"
+	
+	#include "kparts/part.h"
+	
+	class KviFrame;
+	
+	class KviTermWidget : public QFrame
+	{
+		Q_OBJECT
+		Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
+	public:
+		KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone = false);
+		~KviTermWidget();
+	private:
+		KviTalHBox        * m_pHBox;
+		QLabel       * m_pTitleLabel;
+		QPushButton  * m_pCloseButton;
+		KParts::Part * m_pKonsolePart;
+		bool           m_bIsStandalone;
+		QWidget      * m_pKonsoleWidget;
+	protected:
+		virtual void resizeEvent(QResizeEvent *e);
+	protected slots:
+		void closeClicked();
+		void changeTitle(int i,const QString& str);
+		void notifySize(int,int);
+		void changeColumns(int);
+	public:
+		QWidget * konsoleWidget(){ return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
+		virtual QSize sizeHint() const;
+		int dummy() const { return 0; };
+	protected slots:
+		void konsoleDestroyed();
+		void autoClose();
+	};
 #endif
-
 
 #endif //_HELPWIDGET_H_

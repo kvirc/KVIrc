@@ -22,20 +22,22 @@
 //
 //=============================================================================
 
+#include "plugin.h"
+
 #include "kvi_settings.h"
 #include "kvi_module.h"
 #include "kvi_string.h"
 #include "kvi_library.h"
 #include "kvi_thread.h"
-
 #include "kvi_locale.h"
 #include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_env.h"
 #include "kvi_osinfo.h"
 #include "kvi_qcstring.h"
+#include "kvi_modulemanager.h"
 
-#include <qclipboard.h>
+#include <QClipboard>
 
 #ifndef COMPILE_ON_WINDOWS
 	#include <sys/utsname.h>
@@ -46,10 +48,6 @@
 #ifdef COMPILE_KDE_SUPPORT
 	#include <dcopclient.h>
 #endif
-
-#include "kvi_modulemanager.h"
-
-#include "plugin.h"
 
 KviPluginManager * g_pPluginManager;
 
@@ -565,18 +563,6 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 				c->returnValue()->setInteger(iii);
 			} else if(szRetType == "QCStringList")
 			{
-#ifndef COMPILE_USE_QT4
-				QCStringList csl;
-				ret >> csl;
-				KviKvsArray * arry = new KviKvsArray();
-				int idx = 0;
-				for(QCStringList::Iterator iter = csl.begin();iter != csl.end();++iter)
-				{
-					arry->set(idx,new KviKvsVariant(QString(*iter)));
-					idx++;
-				}
-				c->returnValue()->setArray(arry);
-#endif
 			} else if(szRetType == "QStringList")
 			{
 				QStringList csl;
@@ -737,7 +723,7 @@ static bool system_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"System",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)" \
 	"			(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"\
 	"			(C) 2005 Alessandro Carbone (noldor at barmes dot org)",// author & (C)

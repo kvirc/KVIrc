@@ -25,30 +25,26 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-
-
-#include "kvi_window.h"
-#include "kvi_string.h"
-
-class KviTermWidget;
-
-class KviTermWindow : public KviWindow
-{
-	Q_OBJECT
-public:
-	KviTermWindow(KviFrame * lpFrm,const char * name);
-	~KviTermWindow();
-protected:
-	KviTermWidget * m_pTermWidget;
-protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
-public:
-	virtual QSize sizeHint() const;
-};
-
-
+	#include "kvi_window.h"
+	#include "kvi_string.h"
+	
+	class KviTermWidget;
+	
+	class KviTermWindow : public KviWindow
+	{
+		Q_OBJECT
+	public:
+		KviTermWindow(KviFrame * lpFrm,const char * name);
+		~KviTermWindow();
+	protected:
+		KviTermWidget * m_pTermWidget;
+	protected:
+		virtual QPixmap * myIconPtr();
+		virtual void fillCaptionBuffers();
+		virtual void resizeEvent(QResizeEvent *e);
+	public:
+		virtual QSize sizeHint() const;
+	};
 #endif
 
 #endif //_KVI_HELPWINDOW_H_

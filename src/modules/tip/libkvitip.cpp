@@ -21,31 +21,24 @@
 //
 
 #include "libkvitip.h"
+
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
-
 #include "kvi_locale.h"
 #include "kvi_app.h"
-
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_fileutils.h"
 
-#include <qpushbutton.h>
-
-#ifdef COMPILE_USE_QT4
-#include <q3simplerichtext.h>
+#include <QPushButton>
+#include <QFont>
+#include <QTextCodec>
+#include <QPainter>
 #include <QDesktopWidget>
 #include <QCloseEvent>
+#include <q3simplerichtext.h>
 #define KviTalSimpleRichText Q3SimpleRichText
-#else
-#include <qsimplerichtext.h>
-#define KviTalSimpleRichText QSimpleRichText
-#endif
 
-#include <qfont.h>
-#include <qtextcodec.h>
-#include <qpainter.h>
 
 KviTipWindow * g_pTipWindow = 0;
 
@@ -64,11 +57,7 @@ KviTipFrame::KviTipFrame(QWidget * par)
 	KviStr buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
 	m_pTipPixmap = new QPixmap(buffer.ptr());
-#ifdef COMPILE_USE_QT4
 	setBackgroundMode(Qt::NoBackground);
-#else
-	setBackgroundMode(QWidget::NoBackground);
-#endif
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 }
 
@@ -99,18 +88,13 @@ void KviTipFrame::drawContents(QPainter *p)
 
 	QRegion reg(0,0,1000,20000);
 
-#if QT_VERSION >= 300
 	doc.draw(p,70,10,reg,colorGroup());
-#else
-	doc.draw(p,70,10,reg,palette());
-#endif
 }
 
 KviTipWindow::KviTipWindow()
 : QWidget(0,"kvirc_tip_window" /*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/ )
 {
 	m_pConfig = 0;
-
 
 	m_pTipFrame = new KviTipFrame(this);
 	m_pTipFrame->setGeometry(
@@ -264,7 +248,6 @@ void KviTipWindow::closeEvent(QCloseEvent *e)
 		This command works even if the tip window is already opened.<br>
 */
 
-
 static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString szTipfilename;
@@ -297,7 +280,7 @@ static bool tip_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Tip",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"\"Did you know...\" tip",
 	tip_module_init,
@@ -309,4 +292,3 @@ KVIRC_MODULE(
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvitip.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
