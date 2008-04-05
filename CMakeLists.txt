@@ -195,7 +195,7 @@ ENDIF()
 #CheckLibraryExists.cmake
 
 # Search for subdirectories
-SUBDIRS(src data)
+SUBDIRS(src data po scripts)
 
 ###############################################################################
 #
