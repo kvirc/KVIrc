@@ -28,21 +28,26 @@ SET(
 	true
 )
 
+# Check modules first in local dir
 SET(
 	CMAKE_MODULE_PATH
-	${kvirc_SOURCE_DIR}/cmake/modules
+	${PROJECT_SOURCE_DIR}/cmake/modules
 )
 
+# Set verbose makefiles
 SET(
 	CMAKE_VERBOSE_MAKEFILE
 	ON CACHE BOOL "Generate verbose Makefiles"
 )
 
 # Make MacOS X universal binaries
-IF(APPLE)
-	SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
-	SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
-	SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+SET(COMPILE_UNIVERSAL false)
+IF(COMPILE_UNIVERSAL)
+	IF(APPLE)
+		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
+		SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
+		SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+	ENDIF()
 ENDIF()
 
 # Use DBus
@@ -199,11 +204,14 @@ IF(OPENSSL_FOUND)
 	ADD_DEFINITIONS(-DCOMPILE_CRYPT_SUPPORT)
 ENDIF()
 
+# Check for gettext
+# FindGettext.cmake - atm implemented in ./cmake/modules/
+# Use system-provided module from CMake 2.4.8
+FIND_PACKAGE(GetText)
 
 #Unused by now
 #CMakeUnixFindMake.cmake
 #FindDoxygen.cmake
-#FindGettext.cmake
 #FindCygwin.cmake
 #CMakeFindXCode.cmake
 #CheckLibraryExists.cmake
@@ -225,8 +233,8 @@ ADD_CUSTOM_TARGET(
 ADD_CUSTOM_COMMAND(
 	COMMENT "generate the api documentation"
 	COMMAND doxygen -u
-	COMMAND mkdir -p ${kvirc_BINARY_DIR}/doc/api
-	COMMAND doxygen ${kvirc_BINARY_DIR}/admin/Doxyfile
+	COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
+	COMMAND doxygen ${PROJECT_SOURCE_DIR}/admin/Doxyfile
 	TARGET docs
 )
 
@@ -243,7 +251,7 @@ IF(UNIX)
 	)
 	ADD_CUSTOM_TARGET(
 		uninstall
-		"${CMAKE_COMMAND}" -P "${kvirc_BINARY_DIR}/cmake_uninstall.cmake"
+		"${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/cmake_uninstall.cmake"
 	)
 	SET(
 		DISTCLEANED
@@ -272,16 +280,16 @@ ENDIF()
 # CONFIGURE FILES
 ###############################################################################
 
-CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${kvirc_BINARY_DIR}/kvi_sysconfig.h)
-INCLUDE_DIRECTORIES(${kvirc_BINARY_DIR})
+CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
+INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
 
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${kvirc_BINARY_DIR}/kvirc-config @ONLY)
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/Doxyfile.cmake ${kvirc_BINARY_DIR}/Doxyfile @ONLY)
 
 CONFIGURE_FILE(
-	${kvirc_SOURCE_DIR}/cmake/UninstallTarget.cmake.in
-	${kvirc_BINARY_DIR}/cmake_uninstall.cmake
+	${PROJECT_SOURCE_DIR}/cmake/UninstallTarget.cmake.in
+	${PROJECT_BINARY_DIR}/cmake_uninstall.cmake
 	IMMEDIATE @ONLY
 )
 
