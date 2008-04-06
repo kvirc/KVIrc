@@ -38,6 +38,18 @@ SET(
 	ON CACHE BOOL "Generate verbose Makefiles"
 )
 
+# Make MacOS X universal binaries
+IF(APPLE)
+	SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
+	SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
+	SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+ENDIF()
+
+# Use DBus
+IF(UNIX)
+	LIST(APPEND LIBS -lQtDBus)
+ENDIF()
+
 # Install path
 IF(UNIX)
 	IF(APPLE)
@@ -81,7 +93,7 @@ IF(WANT_PCH)
 		SET(CMAKE_STATUS_PCH_SUPPORT "not available")
 	ENDIF()
 ELSE()
-	ADD_DEFINITIONS( -DUSE_PCH=0 )
+	ADD_DEFINITIONS(-DUSE_PCH=0)
 	SET(CMAKE_STATUS_PCH_SUPPORT "user disabled")
 ENDIF()
 
@@ -191,6 +203,7 @@ ENDIF()
 #Unused by now
 #CMakeUnixFindMake.cmake
 #FindDoxygen.cmake
+#FindGettext.cmake
 #FindCygwin.cmake
 #CMakeFindXCode.cmake
 #CheckLibraryExists.cmake
