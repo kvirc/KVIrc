@@ -27,30 +27,23 @@
 #include "kvi_optionswidget.h"
 #include "kvi_pointerlist.h"
 #include "kvi_theme.h"
-
-#include <qdialog.h>
-#ifdef COMPILE_USE_QT4
-#include <q3simplerichtext.h>
-#define KviTalSimpleRichText Q3SimpleRichText
-#else
-#include <qsimplerichtext.h>
-#define KviTalSimpleRichText QSimpleRichText
-#endif
 #include "kvi_tal_listbox.h"
-#include <qcombobox.h>
 #include "kvi_tal_popupmenu.h"
-#include <qcursor.h>
 #include <kvi_tal_wizard.h>
 
+#include <QDialog>
+#include <QComboBox>
+#include <QCursor>
+
+#include <q3simplerichtext.h>
+#define KviTalSimpleRichText Q3SimpleRichText
 
 class QLineEdit;
-class KviTalTextEdit;
 class QPushButton;
 class QLabel;
 class QCheckBox;
-
-//class QMultiLineEdit;
-
+//class Q3MultiLineEdit;
+class KviTalTextEdit;
 class KviDynamicToolTip;
 class KviStyledToolButton;
 

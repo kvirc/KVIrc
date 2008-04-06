@@ -24,15 +24,15 @@
 //
 
 #include "kvi_settings.h"
-
-#include <qobject.h>
-
-#include "kvi_thread.h"
-#include "kvi_string.h"
-
 #include "kvi_pointerlist.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_options.h"
+#include "kvi_thread.h"
+#include "kvi_string.h"
+
+#include <QObject>
+
+class KviSoundPlayer;
 
 //class KviWavSoundFileReader
 //{
@@ -162,7 +162,6 @@ protected:
 	#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
-class KviSoundPlayer;
 
 typedef bool (KviSoundPlayer::*SoundSystemRoutine)(const QString &szFileName);
 

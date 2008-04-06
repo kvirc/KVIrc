@@ -24,9 +24,9 @@
 //=============================================================================
 
 #include "libkvisnd.h"
+
 #include "kvi_module.h"
 #include "kvi_debug.h"
-
 #include "kvi_fileutils.h"
 #include "kvi_malloc.h"
 #include "kvi_window.h"
@@ -34,13 +34,13 @@
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
 
-#include <qsound.h>
+#include <QSound>
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <mmsystem.h>
 #else //!COMPILE_ON_WINDOWS
 
-	#include <qfile.h>
+	#include <QFile>
 	#include <unistd.h>
 	#include <errno.h>
 
@@ -103,16 +103,10 @@ KviSoundPlayer::KviSoundPlayer()
 	#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
-#if QT_VERSION >= 0x030100
 	if(QSound::isAvailable())
 		m_pSoundSystemDict->insert("qt",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playQt)));
-#else
-	if(QSound::available())
-		m_pSoundSystemDict->insert("qt",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playQt)));
-#endif
 
 	m_pSoundSystemDict->insert("null",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playNull)));
-
 }
 
 KviSoundPlayer::~KviSoundPlayer()
@@ -142,7 +136,6 @@ void KviSoundPlayer::getAvailableSoundSystems(QStringList *l)
 	}
 }
 
-
 bool KviSoundPlayer::havePlayingSounds()
 {
 	return (m_pThreadList->count() > 0);
@@ -169,7 +162,6 @@ bool KviSoundPlayer::event(QEvent * e)
 	}
 	return QObject::event(e);
 }
-
 
 void KviSoundPlayer::detectSoundSystem()
 {
@@ -206,11 +198,7 @@ void KviSoundPlayer::detectSoundSystem()
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "oss";
 	#endif
 
-#if QT_VERSION >= 0x030100
 	if(QSound::isAvailable())
-#else
-	if(QSound::available())
-#endif
 	{
 		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "qt";
 		return;
@@ -295,7 +283,6 @@ bool KviSoundPlayer::playNull(const QString &szFileName)
 	return true;
 }
 
-
 bool KviSoundPlayer::play(const QString &szFileName)
 {
 	if(isMuted()) return true;
@@ -315,8 +302,6 @@ bool KviSoundPlayer::play(const QString &szFileName)
 
 	return (this->*(*r))(szFileName);
 }
-
-
 
 
 KviSoundThread::KviSoundThread(const QString &szFileName)
@@ -616,7 +601,7 @@ static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 	} else {
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sound system detected to: %s"),KVI_OPTION_STRING(KviOption_stringSoundSystem).utf8().data());
 	}
-    return true;
+	return true;
 }
 
 
@@ -731,7 +716,7 @@ static bool snd_module_ctrl(KviModule * m,const char * operation,void * param)
 
 KVIRC_MODULE(
 	"Sound",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"(C) 2002 Szymon Stefanek (pragma at kvirc dot net)," \
 	"Juanjo Alvarez (juanjux at yahoo dot es)", // author & (C)
 	"Sound playing commands",
@@ -744,4 +729,3 @@ KVIRC_MODULE(
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkvisnd.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

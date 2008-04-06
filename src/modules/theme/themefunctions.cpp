@@ -34,13 +34,10 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_theme.h"
 #include "kvi_frame.h"
-#ifdef COMPILE_USE_QT4
-#define KviTalMimeSourceFactory Q3MimeSourceFactory
-#include <q3mimefactory.h>
-#else
-#define KviTalMimeSourceFactory QMimeSourceFactory
-#endif
+
 #include <qmime.h>
+#include <q3mimefactory.h>
+#define KviTalMimeSourceFactory Q3MimeSourceFactory
 
 namespace KviThemeFunctions
 {

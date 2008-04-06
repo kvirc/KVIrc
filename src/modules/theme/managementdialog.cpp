@@ -33,33 +33,6 @@
 #include "savethemedialog.h"
 #include "themefunctions.h"
 
-#include "kvi_iconmanager.h"
-#include "kvi_msgbox.h"
-
-
-#include <qlayout.h>
-#include <qpushbutton.h>
-#include "kvi_tal_listbox.h"
-#include <qlineedit.h>
-#include <kvi_tal_textedit.h>
-#include <qregexp.h>
-#include <qmessagebox.h>
-#include <qdir.h>
-#include <qstringlist.h>
-#include <qdatetime.h>
-#include <qfiledialog.h>
-#include "kvi_tal_popupmenu.h"
-#include <qcombobox.h>
-#include <qpainter.h>
-#include <qtooltip.h>
-#include <qimage.h>
-#include <kvi_tal_textedit.h>
-//#include <qmultilineedit.h>
-#ifdef COMPILE_USE_QT4
-#include <QCloseEvent>
-#endif
-#include <qbuffer.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_config.h"
@@ -74,11 +47,33 @@
 #include "kvi_fileextensions.h"
 #include "kvi_filedialog.h"
 #include "kvi_dynamictooltip.h"
+#include "kvi_iconmanager.h"
+#include "kvi_msgbox.h"
+#include "kvi_tal_listbox.h"
+#include "kvi_tal_popupmenu.h"
+#include <kvi_tal_textedit.h>
+#include <kvi_tal_textedit.h>
+
+#include <QLayout>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QRegExp>
+#include <QMessageBox>
+#include <QDir>
+#include <QStringList>
+#include <QDateTime>
+#include <QFileDialog>
+#include <QComboBox>
+#include <QPainter>
+#include <QToolTip>
+#include <QImage>
+#include <QBuffer>
+#include <QCloseEvent>
+//#include <q3multilineedit.h>
 
 #include <stdlib.h> // rand & srand
 
 extern QRect g_rectManagementDialogGeometry;
-
 
 
 KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
@@ -244,7 +239,6 @@ void KviThemeManagementDialog::closeClicked()
 	delete this;
 	m_pInstance = 0;
 }
-
 
 void KviThemeManagementDialog::display()
 {

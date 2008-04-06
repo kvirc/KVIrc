@@ -143,7 +143,6 @@ static bool texticons_module_init(KviModule * m)
 	return true;
 }
 
-
 static bool texticons_module_cleanup(KviModule *m)
 {
 	return true;
@@ -151,7 +150,7 @@ static bool texticons_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"Texticons",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2006 Alexey Uzhva (wizard at opendoor dot ru)",
 	"Texticons handling functions module",
 	texticons_module_init,

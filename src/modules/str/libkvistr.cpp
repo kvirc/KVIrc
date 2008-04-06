@@ -25,17 +25,16 @@
 //#warning: FIXME: Incomplete documentation ('seealso', 'example', etc)
 
 #include "kvi_module.h"
-
 #include "kvi_locale.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_qstring.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "kvi_malloc.h"
-
 #include "kvi_kvs_arraycast.h"
-#include <qregexp.h>
-#include <qclipboard.h>
+
+#include <QRegExp>
+#include <QClipboard>
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include <openssl/evp.h>
@@ -334,14 +333,8 @@ static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 	if(!v->asNumber(nNum))  bRet = false;
 	else
 	{
-	if(nNum.isInteger())
-	{
-		bRet = nNum.integer() >= 0;
-	}
-	else
-	{
-		bRet = nNum.real() >= 0.0;
-	}
+		if(nNum.isInteger()) bRet = nNum.integer() >= 0;
+		else bRet = nNum.real() >= 0.0;
 	}
 	c->returnValue()->setBoolean(bRet);
 	return true;
@@ -586,8 +579,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("ocurrence",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iOcurence)
 	KVSM_PARAMETERS_END(c)
 	int pos = 1;
-	if(iOcurence!=0)
-		pos = iOcurence;
+	if(iOcurence!=0) pos = iOcurence;
 	if(pos<1)
 	{
 		c->returnValue()->setInteger(-1);
@@ -1080,26 +1072,33 @@ static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
 
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szNewstr;
+	QString szString,szNewString;
+	int idx=0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
 	
-	char * toReplace[]={" ", "#", "$",  "&", "/", ":", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "`", "{", "|", "}", "~"};
-	char * newStr[]={"%20", "%23", "%24", "&amp;", "%2F", "%3A", "&lt;", "%3D", "&gt;", "%3F", "%40", "%5B", "%5C", "%5D", "%5E", "%60", "%7B", "%7C", "%7D", "%7E"};
+	const char * const toReplace[]={
+		" ", "#", "$", "/", ":",
+		"<", "=", ">", "?", "@",
+		"[", "\\", "]", "^", "`",
+		"{", "|", "}"
+	};
 
-	/*
-	for(int idx=0,idx<22,idx++)
-		szNewstr=szString.replace(toReplace[idx],newStr[idx],false);
-	*/
+	const char * const newStr[]={
+		"%20", "%23", "%24", "%2F", "%3A",
+		"%3C", "%3D", "%3E", "%3F", "%40",
+		"%5B", "%5C", "%5D", "%5E", "%60",
+		"%7B", "%7C", "%7D"
+	};
 
-	int idx=0;
-	while(idx<20){
-		szNewstr=szString.replace(toReplace[idx],newStr[idx],false);
+	while(idx<sizeof(toReplace))
+	{
+		szNewString=szString.replace(toReplace[idx],newStr[idx],false);
 		idx++;
 	}
 
-	c->returnValue()->setString(szNewstr);
+	c->returnValue()->setString(szNewString);
 	return true;
 }
 

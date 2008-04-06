@@ -22,6 +22,9 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "managementdialog.h"
+#include "themefunctions.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
@@ -37,10 +40,7 @@
 #include "kvi_fileutils.h"
 #include "kvi_filedialog.h"
 
-#include "managementdialog.h"
-#include "themefunctions.h"
-
-#include <qfileinfo.h>
+#include <QFileInfo>
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
@@ -182,8 +182,8 @@ static bool theme_module_can_unload(KviModule * m)
 
 
 KVIRC_MODULE(
-	"theme",                                                      // module name
-	"1.0.0",                                                        // module version
+	"Theme",                                                      // module name
+	"4.0.0",                                                        // module version
 	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Theme management functions",
 	theme_module_init,

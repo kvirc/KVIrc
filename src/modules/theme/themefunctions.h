@@ -27,8 +27,8 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <qwidget.h>
-#include <qpixmap.h>
+#include <QWidget>
+#include <QPixmap>
 
 namespace KviThemeFunctions
 {
