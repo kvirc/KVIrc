@@ -104,6 +104,7 @@ KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const Q
 :TOOL_PAGE_PARENT(parent)
 {
 	setFlat(true);
+	setToolTip(text);
 	setObjectName("kvi_window_tool_button");
 	setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
 	setToggleButton(true);
