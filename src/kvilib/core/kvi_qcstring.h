@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#include <q3cstring.h> // includes <qbytearray.h>
+#include <QByteArray> // includes <qbytearray.h>
 #define KviQCString QByteArray
 
 #endif //!_KVI_QCSTRING_H_

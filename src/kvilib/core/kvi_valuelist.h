@@ -26,8 +26,8 @@
 
 #include "kvi_settings.h"
 
-#include <q3valuelist.h>
-#define KviValueList Q3ValueList
+#include <QList>
+#define KviValueList QList
 
 
 #endif //_KVI_VALUELIST_H_

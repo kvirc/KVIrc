@@ -181,10 +181,10 @@ void KviImageDialog::jobTypeSelected(int index)
 	if(index < 0)return;
 	if(index >= (int)(m_pTypeList->count()))index = (int)m_pTypeList->count();
 	if(m_szInitialPath.isEmpty())
-		startJob(*(m_pTypeList->at(index)),KVI_OPTION_STRING(KviOption_stringLastImageDialogPath));
+		startJob((m_pTypeList->at(index)),KVI_OPTION_STRING(KviOption_stringLastImageDialogPath));
 	else {
-		startJob(*(m_pTypeList->at(index)),m_szInitialPath);
-		m_szInitialPath = ""; // clear it so we will use the last path 
+		startJob((m_pTypeList->at(index)),m_szInitialPath);
+		m_szInitialPath = ""; // clear it so we will use the last path
 	}
 }
 
