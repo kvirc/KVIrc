@@ -78,11 +78,8 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	// The button box on the right
 	//KviTalHBox * box = new KviTalHBox(m_pTopSplitter,"button_box");
-	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel))
-		m_pButtonGrid= (QFrame*) new KviTalGrid(2,Qt::Horizontal,m_pButtonBox);
-	else
-		m_pButtonGrid= (QFrame*) new KviTalGrid(4,Qt::Horizontal,m_pButtonBox);
-
+	m_pButtonGrid= (QFrame*) new KviTalGrid(4,Qt::Horizontal,m_pButtonBox);
+	
 	createTextEncodingButton(m_pButtonGrid);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
