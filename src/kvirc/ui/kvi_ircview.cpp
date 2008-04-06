@@ -3298,9 +3298,15 @@ no_selection_paint:
 		{
 			// paint the cursor line
 			int iH = lineWrapsHeight + m_iFontLineSpacing;
+
+			// workaround to fix "Warning:QPainter::setCompositionMode: PorterDuff modes not supported on device on win"
+			#ifdef COMPILE_ON_WINDOWS
+			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),QBrush(QColor(0,0,0,200)));
+			#else
 			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);
-			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),Qt::black);
+			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),QBrush(QColor(0,0,0,127)));
 			pa.setCompositionMode(QPainter::CompositionMode_SourceOver);
+			#endif
 		}
 
 		if(m_bMouseIsDown)
