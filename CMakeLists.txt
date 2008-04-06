@@ -17,28 +17,20 @@ SET(VERSION_MAJOR "4")
 SET(VERSION_BRANCH "4.0")
 SET(VERSION_RELEASE "4.0.0")
 
+# Set var to link with, for later use
 SET(LIBS)
 
 # Minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.6)
 
 # Set conventional loops
-SET(
-	CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS
-	true
-)
+SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Check modules first in local dir
-SET(
-	CMAKE_MODULE_PATH
-	${PROJECT_SOURCE_DIR}/cmake/modules
-)
+SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 # Set verbose makefiles
-SET(
-	CMAKE_VERBOSE_MAKEFILE
-	ON CACHE BOOL "Generate verbose Makefiles"
-)
+SET(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "Generate verbose Makefiles")
 
 # Make MacOS X universal binaries
 SET(COMPILE_UNIVERSAL false)
@@ -52,7 +44,9 @@ ENDIF()
 
 # Use DBus
 IF(UNIX)
-	LIST(APPEND LIBS -lQtDBus)
+	IF(NOT APPLE)
+		LIST(APPEND LIBS -lQtDBus)
+	ENDIF()
 ENDIF()
 
 # Install path
