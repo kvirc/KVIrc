@@ -36,26 +36,22 @@
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 
-#include <qpushbutton.h>
-#include <qlayout.h>
-#include <qapplication.h>
-#include <qtooltip.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <qmessagebox.h>
-#include <qframe.h>
 #include "kvi_tal_scrollview.h"
-#ifdef COMPILE_USE_QT4
-	#include <q3header.h>
-
-#else
-	#include <qheader.h>
-#endif
 #include "kvi_draganddrop.h"
-#include <qpainter.h>
-#include <qpixmap.h>
-#include <qmessagebox.h>
-#include <qevent.h>
+
+#include <Q3header>
+#include <QPainter>
+#include <QPixmap>
+#include <QMessageBox>
+#include <QEvent>
+#include <QCloseEvent>
+#include <QPushButton>
+#include <QLayout>
+#include <QApplication>
+#include <QToolTip>
+#include <QLineEdit>
+#include <QLabel>
+#include <QFrame>
 
 KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
@@ -84,14 +80,9 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListView * v,KviKvs
 	t += a->description();
 	t += "</font></nobr>";
 	m_szKey = a->visibleName().upper();
-#ifdef COMPILE_USE_QT4
 	m_pText = new QTextDocument();
 	m_pText->setHtml(t);
 	m_pText->setDefaultFont(v->font());
-#else
-	m_pText = new QSimpleRichText(t,v->font());
-#endif
-
 	QPixmap * p = a->icon();
 	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
 }
@@ -114,20 +105,13 @@ void KviScriptAddonListViewItem::setup()
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	
-	#ifdef COMPILE_USE_QT4 
 	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
-	#else
-	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->height() + (2 * LVI_BORDER);
-	#endif
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
 	setHeight(iHeight+2);
 }
 
 void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
-	#ifdef COMPILE_USE_QT4
 	if (isSelected())
 	{
 		QColor col(m_pListView->palette().highlight());
@@ -141,35 +125,14 @@ void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,i
 	p->translate(afterIcon,LVI_BORDER);
 	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
 	m_pText->drawContents(p);
-	#else
-	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setWidth(www);
-	if(isSelected())
-	{
-		QColorGroup cg2(cg);
-		cg2.setColor(QColorGroup::HighlightedText,cg.text());
 	
-		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg2);
-	} else {
-		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
-	}
-	#endif
 }
-
-
-
-
-
-
 
 KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 : KviListView(pParent)
 {
 	QPixmap * p = g_pIconManager->getImage("kvi_dialog_addons.png");
 	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
-
 	setSelectionMode(Single);
 	header()->hide();
 	int iWidth = visibleWidth();
