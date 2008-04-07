@@ -39,8 +39,8 @@
 // FIXME: Qt4 #include <QMultiHash>
 #include <q3intdict.h>
 
-// FIXME: Qt4 #include <QTextDocument>
-#include <q3simplerichtext.h>
+#include <QTextDocument>
+//#include <q3simplerichtext.h>
 #define QSimpleRichText Q3SimpleRichText
 
 class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
@@ -86,7 +86,7 @@ class KviRegisteredUsersDialogItem : public KviRegisteredUsersDialogItemBase
 {
 protected:
 	KviRegisteredUser * m_pUser;
-	QSimpleRichText * m_pText;
+	QTextDocument * m_pText;
 public:
 	KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u);
 	~KviRegisteredUsersDialogItem();

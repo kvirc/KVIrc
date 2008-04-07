@@ -95,7 +95,10 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalListViewItem * 
 		t += m_pUser->getProperty("comment");
 	}
 	t += "</font></nobr>";
-	m_pText = new QSimpleRichText(t,listView()->font());
+	m_pText = new QTextDocument();
+	m_pText->setHtml(t);
+	m_pText->setDefaultFont(listView()->font());
+	//m_pText = new QSimpleRichText(t,listView()->font());
 	
 	//setText(0,u->name());
 }
@@ -115,10 +118,24 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 	KviTalListViewItem::paintCell(p,cg,column,width,align);
 	if(column==0)
 	{
+		
+		if (isSelected())
+		{
+			QColor col(listView()->palette().highlight());
+			col.setAlpha(127);
+			p->setBrush(col);
+			p->drawRect(0, 0, listView()->visibleWidth(), height());
+		}
 		p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_REGUSERS))) );
 		int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 		int www = listView()->visibleWidth() - (afterIcon + LVI_BORDER);
-		m_pText->setWidth(www);
+	p->translate(afterIcon,LVI_BORDER);
+	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
+	m_pText->drawContents(p);
+	
+
+
+		/*
 		if(isSelected())
 		{
 			QColorGroup cg2(cg);
@@ -127,6 +144,8 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 		} else {
 			m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
 		}
+		*/
+
 	} else {
 		if(m_pUser)
 		{
@@ -144,10 +163,11 @@ void KviRegisteredUsersDialogItem::setup()
 	int iWidth = listView()->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->height() + (2 * LVI_BORDER);
+	//m_pText->setWidth(iWidth);
+	//int iHeight = m_pText->height() + (2 * LVI_BORDER);
+	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight);
+	setHeight(iHeight+2);
 }
 
 
