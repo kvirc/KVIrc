@@ -40,8 +40,6 @@
 #include <q3intdict.h>
 
 #include <QTextDocument>
-//#include <q3simplerichtext.h>
-#define QSimpleRichText Q3SimpleRichText
 
 class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
 {

@@ -98,8 +98,6 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalListViewItem * 
 	m_pText = new QTextDocument();
 	m_pText->setHtml(t);
 	m_pText->setDefaultFont(listView()->font());
-	//m_pText = new QSimpleRichText(t,listView()->font());
-	
 	//setText(0,u->name());
 }
 
@@ -118,11 +116,10 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 	KviTalListViewItem::paintCell(p,cg,column,width,align);
 	if(column==0)
 	{
-		
 		if (isSelected())
 		{
 			QColor col(listView()->palette().highlight());
-			col.setAlpha(127);
+			col.setAlpha(1);
 			p->setBrush(col);
 			p->drawRect(0, 0, listView()->visibleWidth(), height());
 		}
@@ -132,20 +129,6 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 	p->translate(afterIcon,LVI_BORDER);
 	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
 	m_pText->drawContents(p);
-	
-
-
-		/*
-		if(isSelected())
-		{
-			QColorGroup cg2(cg);
-			cg2.setColor(QColorGroup::HighlightedText,cg.text());
-			m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg2);
-		} else {
-			m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
-		}
-		*/
-
 	} else {
 		if(m_pUser)
 		{
