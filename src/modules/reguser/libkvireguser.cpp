@@ -22,8 +22,12 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
+#include "edituser.h"
+#include "wizard.h"
+#include "kvi_ircconnection.h"
+#include "dialog.h"
 
+#include "kvi_module.h"
 #include "kvi_regusersdb.h"
 #include "kvi_ircuserdb.h"
 #include "kvi_out.h"
@@ -33,14 +37,9 @@
 #include "kvi_app.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
-
-#include "edituser.h"
-#include "wizard.h"
-#include "kvi_ircconnection.h"
-#include "dialog.h"
-
 #include "kvi_pointerlist.h"
-#include <qsplitter.h> // FIXME: REmove this!
+
+#include <QSplitter> // FIXME: REmove this!
 
 //#warning "$reguser.matches..."
 //#warning "$reguser.clear"
@@ -572,7 +571,7 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 */
 
 static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szName;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -627,7 +626,7 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 */
 
 static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
@@ -740,7 +739,7 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 */
 
 static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szMask; 
 	
 	KVSM_PARAMETERS_BEGIN(c)
@@ -874,14 +873,15 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 */
 
 static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
-{ 
-	QString szMask; 
+{
+	QString szMask;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mask(szMask);
-//FIXME: it crashes kvirc	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+	//FIXME: it crashes kvirc
+	//KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
 	if(u) c->returnValue()->setString(u->name());
 	return true;
@@ -911,8 +911,8 @@ static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 */
 
 static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
-{ 
-	QString szMask; 
+{
+	QString szMask;
 	
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
@@ -1011,8 +1011,8 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 */
 
 static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
-{ 
-	QString szName; 
+{
+	QString szName;
 	QString szN;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
@@ -1074,8 +1074,8 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 */
 
 static bool reguser_kvs_fnc_property(KviKvsModuleFunctionCall * c)
-{ 
-	QString szName; 
+{
+	QString szName;
 	QString szProperty;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_name",KVS_PT_STRING,0,szName)
@@ -1127,8 +1127,8 @@ static bool reguser_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 */
 
 static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
-{ 
-	QString szMask; 
+{
+	QString szMask;
 	QString szProperty;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
@@ -1136,7 +1136,8 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	
 	KviIrcMask mask(szMask);
-//FIXME: it crashes kvirc	KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
+	//FIXME: it crashes kvirc
+	//KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findMatchingUser(mask.nick(),mask.user(),mask.host());
 	if(u)
 	{
@@ -1229,7 +1230,7 @@ static bool reguser_module_can_unload(KviModule *)
 
 KVIRC_MODULE(
 	"Reguser",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Script interface to the registered users database",
 	reguser_module_init,

@@ -27,32 +27,22 @@
 #include "kvi_string.h"
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
-
-#include <qwidget.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include "kvi_pointerhashtable.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_listbox.h"
-#include "kvi_pointerhashtable.h"
-#include <kvi_tal_tabdialog.h>
-#ifdef COMPILE_USE_QT4
-#include <q3table.h>
-#define Kvi_Tal_Table Q3Table
-#define Kvi_Tal_TableItem Q3TableItem
-
-#else
-#include <qtable.h>
-#define Kvi_Tal_Table QTable
-#define Kvi_Tal_TableItem QTableItem
-
-#endif
 #include "kvi_tal_popupmenu.h"
+#include <kvi_tal_tabdialog.h>
+
+#include <QWidget>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTableWidget>
+
+class KviRegisteredUser;
 
 #ifndef _EDITUSER_CPP_
 	extern KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase;
 #endif
-
-class KviRegisteredUser;
 
 class KviReguserPropertiesDialog : public QDialog
 {
@@ -61,11 +51,8 @@ public:
 	KviReguserPropertiesDialog(QWidget *p,KviPointerHashTable<QString,QString> * dict);
 	~KviReguserPropertiesDialog();
 protected:
-#ifdef COMPILE_USE_QT4
-	Q3Table *m_pTable;
-#else
-	QTable             * m_pTable;
-#endif
+	QTableWidget *m_pTable;
+
 	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	QPushButton        * m_pDelButton;
 	QPushButton        * m_pAddButton;
@@ -110,7 +97,7 @@ protected:
 	QLineEdit          * m_pNameEdit;
 	QLineEdit          * m_pCommentEdit;
 
-	KviTalListBox           * m_pMaskListBox;
+	KviTalListBox      * m_pMaskListBox;
 
 	QPushButton        * m_pDelMaskButton;
 	QPushButton        * m_pEditMaskButton;
@@ -125,7 +112,7 @@ protected:
 	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	
 	QCheckBox          * m_pCustomColorCheck;
-	QColor		   * m_pCustomColor;
+	QColor             * m_pCustomColor;
 	KviColorSelector   * m_pCustomColorSelector;
 
 	//Ignore TAB
@@ -146,7 +133,5 @@ protected slots:
 	void editAllPropertiesClicked();
 	void maskCurrentChanged(KviTalListBoxItem *it);
 };
-
-
 
 #endif //_EDITUSER_H_

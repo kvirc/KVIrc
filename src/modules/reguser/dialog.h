@@ -23,27 +23,25 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
+
 #include "kvi_string.h"
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
-
-#include <qwidget.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include "kvi_pointerhashtable.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_listbox.h"
-#include "kvi_pointerhashtable.h"
 #include "kvi_tal_popupmenu.h"
-#ifdef COMPILE_USE_QT4
-	#include <q3intdict.h>
-	#include <q3simplerichtext.h>
-	#define QSimpleRichText Q3SimpleRichText
-#else
-	#include <qsimplerichtext.h>
-	#include <qintdict.h>
 
+#include <QWidget>
+#include <QLineEdit>
+#include <QPushButton>
 
-#endif
+// FIXME: Qt4 #include <QMultiHash>
+#include <q3intdict.h>
+
+// FIXME: Qt4 #include <QTextDocument>
+#include <q3simplerichtext.h>
+#define QSimpleRichText Q3SimpleRichText
 
 class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
 {
@@ -115,13 +113,8 @@ public:
 	QPushButton * m_pImportButton;
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
-#ifdef COMPILE_USE_QT4
 	Q3IntDict<KviRegisteredUserGroup> m_TmpDict;
-#else
-	QIntDict<KviRegisteredUserGroup> m_TmpDict;
-#endif
-
-	protected slots:
+protected slots:
 	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c);
 	void itemDoubleClicked(KviTalListViewItem *it);
 protected:

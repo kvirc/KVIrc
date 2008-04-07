@@ -24,8 +24,10 @@
 #define _WANT_OPTION_FLAGS_
 
 #include "edituser.h"
-#include "kvi_regusersdb.h"
+#include "wizard.h"
+#include "dialog.h"
 
+#include "kvi_regusersdb.h"
 #include "kvi_locale.h"
 #include "kvi_ircmask.h"
 #include "kvi_debug.h"
@@ -39,38 +41,23 @@
 #include "kvi_settings.h"
 #include "kvi_stringconversion.h"
 #include "kvi_options.h"
-
-#include <qlayout.h>
-#include <qlabel.h>
-#ifdef COMPILE_USE_QT4
-#include <q3header.h>
-#include <qevent.h>
-#include <QImageWriter>
-#include <QImageReader>
-
-#else
-#include <qheader.h>
-#endif
 #include "kvi_pointerhashtable.h"
-#include <qimage.h>
-#include <qstring.h>
-#include <qcombobox.h>
-
-
-#include <qstyle.h>
-#include <qpainter.h>
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
-#include <qinputdialog.h>
 
-#include "wizard.h"
-#include "dialog.h"
-
-
-#ifdef COMPILE_INFO_TIPS
-	#include <qtooltip.h>
-#endif // COMPILE_INFO_TIPS
-
+#include <QLayout>
+#include <QLabel>
+#include <QImageWriter>
+#include <QImageReader>
+#include <QImage>
+#include <QString>
+#include <QComboBox>
+#include <QToolTip>
+#include <QStyle>
+#include <QPainter>
+#include <QInputDialog>
+#include <QEvent>
+#include <QCloseEvent>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -281,9 +268,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	//b->setMinimumWidth(120);
 
-
 	g->addRowSpacing(2,15);
-
 	g->setColStretch(0,1);
 	g->setRowStretch(1,1);
 
@@ -391,6 +376,7 @@ void KviRegisteredUsersDialog::addGroupClicked()
 		fillList();
 	}
 }
+
 void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 {
 	bool ok;
@@ -413,7 +399,6 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 			if(u->group()==szOldGroup)
 				u->setGroup(text);
 		}
-		
 		
 		fillList();
 	}
@@ -636,7 +621,6 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 	m_pListView->update();
 }
 
-
 void KviRegisteredUsersDialog::selectionChanged()
 {
 	bool bHaveSelected = !m_pListView->selectedItem();
@@ -663,11 +647,11 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
 	KviTalListViewItemIterator cit( m_pListView, KviTalListViewItemIterator::Selected );
-    while ( cit.current() ) {
+	while ( cit.current() ) {
 		if(((KviRegisteredUsersDialogItemBase *)(cit.current()))->type() == KviRegisteredUsersDialogItemBase::User)
 			nEntries++;
-        ++cit;
-    }
+		++cit;
+	}
 
 	if(nEntries < 1)
 	{
@@ -695,7 +679,7 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	if(f.writeBlock((const char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto write_error;
 
-    while ( it.current() ) {
+	while ( it.current() ) {
 		KviRegisteredUsersDialogItemBase *pBase = (KviRegisteredUsersDialogItemBase *)(it.current());
 		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User) continue;
 		QString szName = it.current()->text(0);
@@ -740,18 +724,10 @@ void KviRegisteredUsersDialog::exportClicked()
 					if(!av->pixmap()->isNull())
 					{
 						if(!f.save(1))goto write_error;
-#ifdef COMPILE_USE_QT4
 						QImageWriter io;
 						io.setDevice(&f);
 						io.setFormat("PNG");						
 						if(!io.write(av->pixmap()->convertToImage()))goto write_error;
-#else
-						QImageIO io;
-						io.setImage(av->pixmap()->convertToImage());
-						io.setIODevice(&f);
-						io.setFormat("PNG");
-						if(!io.write())goto write_error;
-#endif	
 					} else {
 						if(!f.save(0))goto write_error;
 					}
@@ -813,8 +789,6 @@ void KviRegisteredUsersDialog::importClicked()
 		return;
 	}
 
-
-
 	for(idx = 0;idx < hf.nentries;idx++)
 	{
 		QString szName;
@@ -845,23 +819,12 @@ void KviRegisteredUsersDialog::importClicked()
 		{
 			// there is an avatar
 			QImage img;
-#ifdef COMPILE_USE_QT4
 			QImageReader io;
 			io.setDevice(&f);
 			io.setFormat("PNG");
 			img=io.read();
 //			if(io.read())goto read_error;
 
-#else
-			QImageIO io;
-			io.setImage(img);
-			io.setIODevice(&f);
-			io.setFormat("PNG");
-
-			if(!io.read())goto read_error;
-
-			img = io.image();
-#endif
 			if(img.isNull())debug("Ops.. readed a null image ?");
 
 			KviStr fName = u->name();
@@ -898,6 +861,7 @@ succesfull_import:
 	f.close();
 	fillList();
 }
-#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS) 
-#include "dialog.moc"
+
+#ifdef COMPILE_ON_WINDOWS
+	#include "dialog.moc"
 #endif
