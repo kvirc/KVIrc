@@ -119,7 +119,7 @@ void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,
 		if (isSelected())
 		{
 			QColor col(listView()->palette().highlight());
-			col.setAlpha(1);
+			col.setAlpha(127);
 			p->setBrush(col);
 			p->drawRect(0, 0, listView()->visibleWidth(), height());
 		}
