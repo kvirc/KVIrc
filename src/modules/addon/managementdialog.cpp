@@ -39,7 +39,7 @@
 #include "kvi_tal_scrollview.h"
 #include "kvi_draganddrop.h"
 
-#include <Q3header>
+#include <Q3Header>
 #include <QPainter>
 #include <QPixmap>
 #include <QMessageBox>
