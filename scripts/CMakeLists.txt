@@ -9,7 +9,8 @@ SET(kvishellscripts
 # Install target
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${kvishellscripts} DESTINATION ${INSTALL_PREFIX}/Contents/MacOS)
+		# This files are useless because bundles are movable (TOM)
+		#INSTALL(FILES ${kvishellscripts} DESTINATION ${INSTALL_PREFIX}/Contents/MacOS)
 	ELSE()
 		# Assume linux
 		INSTALL(FILES ${kvishellscripts} DESTINATION ${INSTALL_PREFIX}/bin)
