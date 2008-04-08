@@ -1454,7 +1454,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 			bool bColorAllocated=0; // FIXME: bool is true or false
 			if(e->m_bSelected)
 			{
-				p.fillRect(0,theY,wdth,e->m_iHeight,KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground));
+				QColor col=KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground);
+				col.setAlpha(150);
+				p.fillRect(0,theY,wdth,e->m_iHeight,col);
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{
