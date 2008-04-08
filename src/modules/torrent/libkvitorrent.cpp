@@ -22,17 +22,15 @@
 //
 //=============================================================================
 
-#include "kvi_module.h"
-#include "kvi_options.h"
-#include "kvi_frame.h"
-
 #include "tc_interface.h"
 #include "tc_ktorrentdcopinterface.h"
 #include "tc_statusbarapplet.h"
 
+#include "kvi_module.h"
+#include "kvi_options.h"
+#include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_out.h"
-
 
 static KviPointerList<KviTorrentInterfaceDescriptor> * g_pDescriptorList = 0;
 
@@ -870,7 +868,7 @@ static bool torrent_module_can_unload( KviModule * m )
 
 static bool torrent_module_ctrl(KviModule * m,const char * operation,void * param)
 {
-	debug("torrent module ctrl");
+	qDebug("torrent module ctrl");
 /*	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
 	{
 		// we expect param to be a pointer to QStringList
@@ -890,11 +888,9 @@ static bool torrent_module_ctrl(KviModule * m,const char * operation,void * para
 	return false;
 }
 
-
-
 KVIRC_MODULE(
-	"torrent",
-	"1.0.0",
+	"Torrent",
+	"4.0.0",
 	"Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)",
 	"Interface to various torrent clients",
 	torrent_module_init,

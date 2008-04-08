@@ -22,7 +22,6 @@
 
 
 #include "kvi_module.h"
-
 #include "kvi_locale.h"
 #include "kvi_channel.h"
 
@@ -49,7 +48,7 @@
 // tmphighlight.add
 //-------------------------------------------
 static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
-{ 
+{
 	
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -164,7 +163,7 @@ static bool tmphighlight_module_can_unload(KviModule *m)
 //-------------------------------------------------
 KVIRC_MODULE(
 	"TmpHighlight",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
 	"Temporal Highlightining of channel users",
 	tmphighlight_module_init,

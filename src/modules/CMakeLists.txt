@@ -33,17 +33,18 @@ SUBDIRS(
 	objects options
 	popupeditor
 	raweditor regchan reguser rijndael
-	setup sharedfile sharedfileswindow snd socketspy spaste str system
+	setup sharedfile sharedfileswindow snd
+	socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor trayicon
 	url
 	window
 
 	# broken modules
-	# notifier, options, torrent
+	# torrent
 
 	# modules to deprecate ?
 	# perl, perlcore
 
 	# forgotten ?
-	# clock iograph
+	# language offer
 )

@@ -20,25 +20,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-
-#include <qdialog.h>
-#include <qlayout.h>
-#include "kvi_tal_listview.h"
-#include <qstring.h>
-#include <qpushbutton.h>
-#include <qfile.h>
-#ifdef COMPILE_USE_QT4
-	#include <q3textstream.h>
-#else
-	#include <qtextstream.h>
-#endif
-#include <qcheckbox.h>
-#include "kvi_tal_listbox.h"
-#include <qmenubar.h>
-#include <qinputdialog.h>
-#include <qtoolbutton.h>
-#include <qiconset.h>
-
 #include "kvi_locale.h"
 #include "kvi_config.h"
 #include "kvi_irctoolbar.h"
@@ -46,8 +27,21 @@
 #include "kvi_tal_menubar.h"
 #include "kvi_mextoolbar.h"
 #include "kvi_styled_controls.h"
+#include "kvi_kvs_action.h"
+#include "kvi_tal_listview.h"
+#include "kvi_tal_listbox.h"
 
-#include <qpixmap.h>
+#include <QDialog>
+#include <QLayout>
+#include <QString>
+#include <QPushButton>
+#include <QFile>
+#include <QCheckBox>
+#include <QMenuBar>
+#include <QInputDialog>
+#include <QToolButton>
+#include <QIconSet>
+#include <QPixmap>
 
 typedef struct _KviUrl
 {
@@ -124,7 +118,6 @@ protected slots:
 	void discardbtn();
 };
 
-#include "kvi_kvs_action.h"
 
 class KviUrlAction : public KviKvsAction
 {

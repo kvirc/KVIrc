@@ -25,13 +25,18 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qdialog.h>
-#include <qcolor.h>
 
+#include <QWidget>
+#include <QLabel>
+#include <QDialog>
+#include <QColor>
+
+class QTimer;
+class QLineEdit;
+class QPushButton;
 class QPushButton;
 class KviActionDrawer;
+
 
 class KviCustomizeToolBarsDialog : public QDialog
 {
@@ -62,8 +67,6 @@ protected slots:
 	void currentToolBarChanged();
 };
 
-class QLineEdit;
-class QPushButton;
 
 class KviCustomToolBarPropertiesDialog : public QDialog
 {
@@ -95,7 +98,6 @@ protected:
 	void iconSelected(const QString &szIconId);
 };
 
-class QTimer;
 
 class KviTrashcanLabel : public QLabel
 {

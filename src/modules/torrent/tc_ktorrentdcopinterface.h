@@ -5,7 +5,7 @@
 //
 //	DCOP interface for KTorrent client.
 //
-//   File : torr_ktorrentdcopinterface.h
+//   File : tc_ktorrentdcopinterface.h
 //   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich
 //
 //   This file is part of the KVirc irc client distribution
@@ -32,99 +32,87 @@
 #include "tc_interface.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-
-#include <kvi_dcophelper.h>
-
-// DCOP interface to KTorrent. this has 'DCOP' in its name
-// because in kde4 there will be a D-BUS interface.
-class KviKTorrentDCOPInterface : public KviTorrentInterface,
-                                 private KviDCOPHelper
-{
-	Q_OBJECT
-
-public:
-
-	KviKTorrentDCOPInterface();
-	virtual ~KviKTorrentDCOPInterface();
-
-	virtual int detect();
-
-	virtual int count();
-
-	virtual bool start(int i);
-	virtual bool stop(int i);
-	virtual bool announce(int i);
-	virtual QString state(int i);
-	virtual QString name(int i);
-
-	virtual int fileCount(int i);
-	virtual QString fileName(int i, int file);
-	virtual QString filePriority(int i, int file);
-	virtual bool setFilePriority(int i, int file, const QString &prio);
-
-	virtual bool startAll();
-	virtual bool stopAll();
-
-	virtual int maxUploadSpeed();
-	virtual int maxDownloadSpeed();
-
-	virtual bool setMaxUploadSpeed(int kbytes_per_sec);
-	virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
-
-	virtual float speedUp();
-	virtual float speedDown();
-
-	virtual float trafficUp();
-	virtual float trafficDown();
-
-private slots:
-
-	// polls client and extracts information.
-	// this is done because the order of torrents returned changes
-	// each time a torrent's state changes.
-	// we want to present a consistent list (in terms of indices) to
-	// the user, so we extract the info and sort it by name.
-	// otherwise the user would have a hard time figuring out what's
-	// going on. we could sort each time a function working with
-	// torrents is called, but this would be horribly slow ...
-	void	slotTimer();
-
-private:
-
-	struct TorrentInfo
+	#include <kvi_dcophelper.h>
+	
+	// DCOP interface to KTorrent. this has 'DCOP' in its name
+	// because in kde4 there will be a D-BUS interface.
+	class KviKTorrentDCOPInterface : public KviTorrentInterface,
+					private KviDCOPHelper
 	{
-		// internal number
-		int num;
-		// name displayed in ktorrent
-		QString name;
-		// state of torrent
-		QString state;
-		// bytes
-		float size;
-		// bytes
-		float trafficUp;
-		// bytes
-		float trafficDown;
-		// KB/s
-		float speedUp;
-		// KB/s
-		float speedDown;
-		// percent complete
-		float percent;
-		// number of peers
-		int peers;
-
-		bool operator<(const TorrentInfo &ti) { return name < ti.name; }
+		Q_OBJECT
+	
+	public:
+		KviKTorrentDCOPInterface();
+		virtual ~KviKTorrentDCOPInterface();
+		virtual int detect();
+		virtual int count();
+		virtual bool start(int i);
+		virtual bool stop(int i);
+		virtual bool announce(int i);
+		virtual QString state(int i);
+		virtual QString name(int i);
+		virtual int fileCount(int i);
+		virtual QString fileName(int i, int file);
+		virtual QString filePriority(int i, int file);
+		virtual bool setFilePriority(int i, int file, const QString &prio);
+	
+		virtual bool startAll();
+		virtual bool stopAll();
+	
+		virtual int maxUploadSpeed();
+		virtual int maxDownloadSpeed();
+	
+		virtual bool setMaxUploadSpeed(int kbytes_per_sec);
+		virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
+	
+		virtual float speedUp();
+		virtual float speedDown();
+	
+		virtual float trafficUp();
+		virtual float trafficDown();
+	private slots:
+		// polls client and extracts information.
+		// this is done because the order of torrents returned changes
+		// each time a torrent's state changes.
+		// we want to present a consistent list (in terms of indices) to
+		// the user, so we extract the info and sort it by name.
+		// otherwise the user would have a hard time figuring out what's
+		// going on. we could sort each time a function working with
+		// torrents is called, but this would be horribly slow ...
+		void	slotTimer();
+	private:
+		struct TorrentInfo
+		{
+			// internal number
+			int num;
+			// name displayed in ktorrent
+			QString name;
+			// state of torrent
+			QString state;
+			// bytes
+			float size;
+			// bytes
+			float trafficUp;
+			// bytes
+			float trafficDown;
+			// KB/s
+			float speedUp;
+			// KB/s
+			float speedDown;
+			// percent complete
+			float percent;
+			// number of peers
+			int peers;
+			bool operator<(const TorrentInfo &ti) { return name < ti.name; }
+		};
+	
+		QValueList<TorrentInfo>	m_ti;
+	
+	private:
+		bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
 	};
-
-	QValueList<TorrentInfo>	m_ti;
-
-private:
-
-	bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
-};
-
-TORR_DECLARE_DESCRIPTOR(KviKTorrentDCOPInterface)
+	
+	TORR_DECLARE_DESCRIPTOR(KviKTorrentDCOPInterface)
 
 #endif // COMPILE_KDE_SUPPORT
 

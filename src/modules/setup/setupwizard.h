@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_selectors.h"
-
 #include <kvi_tal_wizard.h>
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
@@ -39,17 +38,11 @@
 #include <QRadioButton>
 #include <QComboBox>
 #include <QCheckBox>
-/*
-#include <Q3ButtonGroup>
-#define KviTalVButtonGroup Q3VButtonGroup
-*/
-/* FIXME: Qt4 */
 #include <QGroupBox>
 #define KviTalVButtonGroup QGroupBox
 
-
-
 class KviSetupWizard;
+
 
 class KviSetupPage : public QWidget
 {

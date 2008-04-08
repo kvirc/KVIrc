@@ -767,7 +767,6 @@ void KviSetupWizard::chooseIncomingPath()
 	}
 }
 
-
 void KviSetupWizard::makeLink()
 {
 #ifdef COMPILE_ON_WINDOWS
@@ -857,7 +856,7 @@ void KviSetupWizard::makeLink()
 		"Exec=kvirc -m %u\n" \
 		"Icon=kvirc\n" \
 		"MapNotify=true\n" \
-		"Name=KVIrc 3\n" \
+		"Name=KVIrc 4\n" \
 		"Terminal=false\n" \
 		"Type=Application\n" \
 		"X-KDE-SubstituteUID=false\n";
@@ -1131,4 +1130,3 @@ void KviSetupWizard::accept()
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "setupwizard.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

@@ -30,13 +30,12 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include <qobject.h>
+
+#include <QObject>
 
 class KviTorrentInterface : public QObject
 {
-
 public:
-
 	KviTorrentInterface() {}
 	virtual ~KviTorrentInterface() {}
 
@@ -101,9 +100,7 @@ public:
 	static KviTorrentInterface *selected() { return m_selected; }
 
 protected:
-
 	QString	m_lastError;
-
 	static KviTorrentInterface *m_selected; 
 };
 
@@ -161,4 +158,3 @@ public:
 	}
 
 #endif // _TC_INTERFACE_H_
-

@@ -17,31 +17,28 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "libkviurl.h"
+#include "icons.h"
+
 #include "kvi_styled_controls.h"
 #include "kvi_module.h"
-#include "libkviurl.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
-#include "kvi_kvs_eventmanager.h"
-#include "kvi_tal_popupmenu.h"
-
 #include "kvi_menubar.h"
 #include "kvi_internalcmd.h"
 #include "kvi_iconmanager.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
 #include "kvi_taskbar.h"
-#include "icons.h"
 #include "kvi_pointerlist.h"
-#include <qfiledialog.h>
-#include <qmessagebox.h>
-#include <qcursor.h>
-#include <qdatetime.h>
+#include "kvi_kvs_eventmanager.h"
+#include "kvi_tal_popupmenu.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3textstream.h>
-	#include <QTextStream>
-#endif
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QCursor>
+#include <QDateTime>
+#include <QTextStream>
 
 static QPixmap * g_pUrlIconPixmap = 0;
 static KviUrlAction * g_pUrlAction = 0;
@@ -148,11 +145,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *g_pList)
 	connect(m_pUrlList,SIGNAL(rightButtonPressed(KviTalListViewItem *, const QPoint &, int)),SLOT(popup(KviTalListViewItem *, const QPoint &, int)));
 
 //	setFocusHandlerNoChildren(m_pUrlList);
-#ifdef COMPILE_USE_QT4
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);
-#else
-	m_pUrlList->setFocusPolicy(QWidget::StrongFocus);
-#endif
 	m_pUrlList->setFocus();
 }
 
@@ -530,12 +523,8 @@ void loadUrlList()
 	QFile file;
 	file.setName(QString::fromUtf8(urllist.ptr()));
 	if (!file.open(IO_ReadOnly))return;
-#ifdef COMPILE_USE_QT4
-	Q3TextStream stream(&file);
-#else
-	QTextStream stream(&file);
-#endif
 
+	QTextStream stream(&file);
 
 	g_pList->clear();
 
@@ -545,7 +534,7 @@ void loadUrlList()
 	KviUrl *tmp;
 	int i=0;
 	int num = stream.readLine().toInt();
-	while ((!stream.eof()) && (i<num)){
+	while ((!stream.atEnd()) && (i<num)){
 		tmp = new KviUrl();
 		tmp->url = stream.readLine();
 		tmp->window = stream.readLine();
@@ -594,16 +583,14 @@ void loadBanList()
 	QFile file;
 	file.setName(QString::fromUtf8(banlist.ptr()));
 	if (!file.open(IO_ReadOnly))return;
-#ifdef COMPILE_USE_QT4
-	Q3TextStream stream(&file);
-#else
+	
 	QTextStream stream(&file);
-#endif
+
 	g_pBanList->clear();
 
 	int i=0;
 	int num = stream.readLine().toInt();
-	while ((!stream.eof()) && (i<num)){
+	while ((!stream.atEnd()) && (i<num)){
 		KviStr *tmp = new KviStr(stream.readLine());
 		g_pBanList->append(tmp);
 		i++;
@@ -642,7 +629,6 @@ static bool url_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	urllist();
 	return true;
 }
-
 
 UrlDlgList *findFrame()
 {
@@ -696,7 +682,7 @@ bool urllist()
 		<blockquote>if the word "ftp" is inserted in the ban list and if in a window there is an output like "ftp.kvirc.net",
 		the url will not be catched.</blockquote></I>
 		<HR>
-  */
+*/
 
 static bool url_kvs_cmd_config(KviKvsModuleCommandCall * c)
 {
@@ -898,8 +884,8 @@ void url_module_config()
 
 KVIRC_MODULE(
 	"URL",
-	"1.0.0" ,
-	"Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>" ,
+	"4.0.0" ,
+	"Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>",
 	"url list module for KVIrc",
 	url_module_init,
 	url_module_can_unload,
@@ -910,4 +896,3 @@ KVIRC_MODULE(
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkviurl.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

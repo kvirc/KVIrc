@@ -115,7 +115,6 @@ void KviTrashcanLabel::dragEnterEvent(QDragEnterEvent * e)
 }
 
 
-
 KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,const QString &szText,const QString &szId,const QString &szLabel,const QString &szIconId)
 : QDialog(p)
 {
@@ -187,8 +186,6 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	
 	g->setRowStretch(0,1);
 	g->setColStretch(2,1);
-
-
 }
 
 KviCustomToolBarPropertiesDialog::~KviCustomToolBarPropertiesDialog()
@@ -223,7 +220,6 @@ void KviCustomToolBarPropertiesDialog::iconButtonClicked()
 	iconSelected(s);
 }
 
-
 void KviCustomToolBarPropertiesDialog::labelTextChanged(const QString &s)
 {
 	if(m_szOriginalId.isEmpty())
@@ -232,7 +228,6 @@ void KviCustomToolBarPropertiesDialog::labelTextChanged(const QString &s)
 		m_pIdEdit->setText(szId);
 	}
 }
-
 
 void KviCustomToolBarPropertiesDialog::okClicked()
 {
@@ -362,7 +357,6 @@ void KviCustomizeToolBarsDialog::showEvent(QShowEvent * e)
 //	move(x,y);
 }
 
-
 void KviCustomizeToolBarsDialog::deleteToolBar()
 {
 	KviCustomToolBar * t = KviActionManager::currentToolBar();
@@ -451,7 +445,6 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 	{
 		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the toolbar file."),__tr2qs("OK"));
 	}
-
 }
 
 void KviCustomizeToolBarsDialog::renameToolBar()
@@ -532,4 +525,3 @@ void KviCustomizeToolBarsDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
-

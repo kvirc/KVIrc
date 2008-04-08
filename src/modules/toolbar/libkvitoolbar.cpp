@@ -23,9 +23,7 @@
 //=============================================================================
 
 #include "kvi_module.h"
-
 #include "kvi_locale.h"
-
 #include "kvi_window.h"
 #include "kvi_app.h"
 #include "kvi_error.h"
@@ -301,7 +299,7 @@ static bool toolbar_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 
 
 static bool toolbar_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
@@ -329,7 +327,7 @@ static bool toolbar_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 */
 
 static bool toolbar_kvs_fnc_isVisible(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
@@ -356,7 +354,7 @@ static bool toolbar_kvs_fnc_isVisible(KviKvsModuleFunctionCall * c)
 */
 
 static bool toolbar_kvs_fnc_list(KviKvsModuleFunctionCall * c)
-{ 
+{
 	KviKvsArray * a = new KviKvsArray();
 
 	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
@@ -534,7 +532,7 @@ static bool toolbar_kvs_cmd_additem(KviKvsModuleCommandCall * c)
 */
 
 static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
@@ -565,8 +563,6 @@ static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
-
 static bool toolbar_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"create",toolbar_kvs_cmd_create)
@@ -591,8 +587,8 @@ static bool toolbar_module_cleanup(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"toolbar",                                                 // module name
-	"1.0.0",                                                // module version
+	"Toolbar",                                                 // module name
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Interface to the scriptable toolbars",
 	toolbar_module_init,

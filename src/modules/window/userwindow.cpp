@@ -104,4 +104,3 @@ void KviUserWindow::setCaptionStrings(const QString &szPlainText,const QString &
 	if(m_szHtmlInactiveCaption.isEmpty())m_szHtmlInactiveCaption = szPlainText;
 	updateCaption();
 }
-

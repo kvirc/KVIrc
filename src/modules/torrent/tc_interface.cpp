@@ -26,6 +26,7 @@
 //=============================================================================
 
 #include "tc_interface.h"
+
 #include "kvi_locale.h"
 
 KviTorrentInterface *KviTorrentInterface::m_selected = 0;
