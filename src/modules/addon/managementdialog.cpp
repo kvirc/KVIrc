@@ -30,16 +30,13 @@
 #include "kvi_iconmanager.h"
 #include "kvi_kvs_scriptaddonmanager.h"
 #include "kvi_window.h"
-
 #include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
-
-#include "kvi_tal_scrollview.h"
 #include "kvi_draganddrop.h"
+#include "kvi_tal_scrollview.h"
 
-#include <Q3Header>
 #include <QPainter>
 #include <QPixmap>
 #include <QMessageBox>
@@ -52,6 +49,9 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QFrame>
+
+// FIXME: Qt4 #include <QHeaderView>
+#include <q3header.h>
 
 KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
@@ -134,7 +134,10 @@ KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 	QPixmap * p = g_pIconManager->getImage("kvi_dialog_addons.png");
 	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
 	setSelectionMode(Single);
+
+	// FIXME: doesn't work in Qt4
 	header()->hide();
+
 	int iWidth = visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	addColumn("",iWidth);
@@ -363,4 +366,3 @@ void KviScriptManagementDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
-

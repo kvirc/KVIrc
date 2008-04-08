@@ -22,6 +22,8 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+#include "managementdialog.h"
+
 #include "kvi_module.h"
 #include "kvi_kvs_scriptaddonmanager.h"
 #include "kvi_locale.h"
@@ -36,10 +38,6 @@
 #include "kvi_config.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_miscutils.h"
-
-#include "managementdialog.h"
-
-
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
@@ -61,7 +59,7 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 */
 
 static bool addon_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	QString szVersion;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -101,7 +99,7 @@ static bool addon_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 */
 
 static bool addon_kvs_fnc_version(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
@@ -648,8 +646,8 @@ static bool addon_module_can_unload(KviModule * m)
 
 
 KVIRC_MODULE(
-	"addon",                                                      // module name
-	"1.0.0",                                                        // module version
+	"Addon",                                                      // module name
+	"4.0.0",                                                        // module version
 	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Script management functions for the KVS engine",
 	addon_module_init,

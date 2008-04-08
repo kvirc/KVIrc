@@ -54,7 +54,7 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_splash.h
 	ui/kvi_statusbar.h
 	ui/kvi_statusbarapplet.h
-	#ui/kvi_styled_controls.h
+	ui/kvi_styled_controls.h
 	ui/kvi_taskbar.h
 	ui/kvi_texticonwin.h
 	ui/kvi_themedlabel.h

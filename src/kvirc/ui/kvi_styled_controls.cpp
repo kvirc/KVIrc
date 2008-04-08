@@ -26,20 +26,18 @@
 #define __KVIRC__
 
 #include "kvi_styled_controls.h"
-
-#ifndef COMPILE_USE_QT4
-
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_doublebuffer.h"
 #include "kvi_tal_toolbar.h"
 
-#include <qcheckbox.h>
-#include <qpainter.h>
-#include <qimage.h>
-#include <qevent.h>
-#include <qtimer.h>
+#include <QCheckBox>
+#include <QPainter>
+#include <QImage>
+#include <QEvent>
+#include <QTimer>
+#include <QPaintEvent>
 
 
 KviStyledControlInternal::KviStyledControlInternal( KviStyledControl* control)
@@ -145,14 +143,14 @@ void KviStyledControl::leaveEvent ( QEvent * )
 KviStyledCheckBox::KviStyledCheckBox ( QWidget * parent, const char * name )
 : QCheckBox(parent,name), KviStyledControl(this)
 {
-	setWFlags(WNoAutoErase);
+	//setWFlags(WNoAutoErase);
 
 }
 
 KviStyledCheckBox::KviStyledCheckBox ( const QString & text, QWidget * parent, const char * name )
 : QCheckBox(text,parent,name), KviStyledControl(this)
 {
-	setWFlags(WNoAutoErase);
+	//setWFlags(WNoAutoErase);
 }
 
 KviStyledCheckBox::~KviStyledCheckBox()
@@ -160,7 +158,6 @@ KviStyledCheckBox::~KviStyledCheckBox()
 
 }
 
-	
 void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 {
 	//debug("%s %s %i %i %i",__FILE__,__FUNCTION__,__LINE__,m_bMouseEnter,m_iStepNumber);
@@ -170,9 +167,11 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 		QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 		
 		QRect rect=event->rect();
-		pDoubleBufferPixmap->fill(this, rect.topLeft()); 
+		//pDoubleBufferPixmap->fill(this, rect.topLeft()); 
 		
-		QPainter p(pDoubleBufferPixmap, this); 
+		QPainter p( this); 
+		//p.drawRect(rect.topLeft()); 
+		//pDoubleBufferPixmap,
 		p.translate(-rect.x(), -rect.y()); 
 		
 		QPixmap*  pStoredPix = 0;
@@ -225,7 +224,7 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 			QString szText=text();
 			szText=szText.remove("&");
 			p.drawText(pix.width()+3,0,width(),height(),0,szText);
-			bitBlt(this, rect.x(), rect.y(), pDoubleBufferPixmap, 0, 0, rect.width(), rect.height());
+	//		bitBlt(this, rect.x(), rect.y(), pDoubleBufferPixmap, 0, 0, rect.width(), rect.height());
 			//debug("%s %s %i %i %i",__FILE__,__FUNCTION__,__LINE__,m_bMouseEnter,m_iStepNumber);
 		} else	{
 			QCheckBox::paintEvent(event);
@@ -237,14 +236,14 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 KviStyledToolButton::KviStyledToolButton( QWidget * parent, const char * name )
 : QToolButton(parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
-	setWFlags(WNoAutoErase);
+	//setWFlags(WNoAutoErase);
 	resizeEvent(0);
 }
 
 KviStyledToolButton::KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name )
 : QToolButton(iconSet,textLabel,grouptext,receiver,slot,parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
-	setWFlags(WNoAutoErase);
+//	setWFlags(WNoAutoErase);
 	resizeEvent(0);
 }
 
@@ -272,26 +271,32 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 				iPixWidth=pArrowPix->width();
 		}
 		bool bActive= isOn() || m_bMouseEnter;
-		KviDoubleBuffer doublebuffer(event->rect().width(),event->rect().height());
-		QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
+		//KviDoubleBuffer doublebuffer(event->rect().width(),event->rect().height());
+		//QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 
 		QRect rect=event->rect();
 		
-		pDoubleBufferPixmap->fill(
+		/*pDoubleBufferPixmap->fill(
 			bActive ? QColor(206,215,223) :
 			colorGroup().background()
 			);
-		
-		
-		QPainter p(pDoubleBufferPixmap, this); 
-		p.translate(-rect.x(), -rect.y());
-		
+		*/
+		QPainter p(this); 
+			p.setPen(bActive ? QColor(206,215,223) :
+			colorGroup().background()
+			);
+			p.setBrush(bActive ? QColor(206,215,223) :
+			colorGroup().background()
+			);
+
+		p.drawRect(event->rect());
 		if(bActive)
 		{
 			p.setPen(QColor(185,190,195));
 			p.drawRect(0,0,iWidth,height());
 		}
-		
+
+		p.translate(-rect.x(), -rect.y());
 		QPixmap pix=iconSet().pixmap(
                                 usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
                                 isEnabled() ? QIconSet::Normal :
@@ -345,7 +350,7 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 			p.drawPixmap(pos,*pArrowPix);
 		}
 
-		bitBlt(this, rect.x(), rect.y(), pDoubleBufferPixmap, 0, 0, rect.width(), rect.height());
+	//	bitBlt(this, rect.x(), rect.y(), pDoubleBufferPixmap, 0, 0, rect.width(), rect.height());
 		
 	} else {
 		QToolButton::paintEvent(event);
@@ -368,6 +373,6 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_styled_controls.moc"
-
-#endif
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

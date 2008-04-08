@@ -23,8 +23,6 @@
 //======================================================================================
 // incomplete
 #include "kvi_module.h"
-
-
 #include "kvi_regchan.h"
 #include "kvi_locale.h"
 #include "kvi_out.h"
@@ -66,7 +64,7 @@ extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 */
 
 static bool regchan_kvs_cmd_add(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szChan,szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_NONEMPTYSTRING,0,szChan)
@@ -105,7 +103,7 @@ static bool regchan_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		[cmd]regchan.add[/cmd]
 */
 static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szChan,szNetwork;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_NONEMPTYSTRING,0,szChan)
@@ -155,7 +153,7 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 */
 
 static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString szChan,szNetwork,szProperty,szValue;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_NONEMPTYSTRING,0,szChan)
@@ -194,7 +192,7 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 */
 
 static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
-{ 
+{
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Registered channel list:"));
 
 	int tot = 0;
@@ -243,7 +241,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 */
 
 static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szChan,szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,KVS_PF_OPTIONAL,szChan)
@@ -304,7 +302,7 @@ static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 */
 
 static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szChan,szNetwork,szPropertyName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
@@ -379,7 +377,7 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 */
 
 static bool regchan_kvs_fnc_find(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szChan,szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
@@ -416,7 +414,7 @@ static bool regchan_module_can_unload(KviModule *)
 
 KVIRC_MODULE(
 	"RegChan",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Script interface to the registered channels database",
 	regchan_module_init,

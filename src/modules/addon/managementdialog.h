@@ -24,25 +24,20 @@
 //
 //=============================================================================
 
-#include <qdialog.h>
-
 #include "kvi_listview.h"
 #include "kvi_settings.h"
-#include <qwidget.h>
-#include <qlabel.h>
-#include <qdialog.h>
-#include <qcolor.h>
 #include "kvi_tal_listview.h"
+
+#include <QWidget>
+#include <QLabel>
+#include <QDialog>
+#include <QColor>
+#include <QTextDocument>
 
 class QPushButton;
 class QPixmap;
 class KviKvsScriptAddon;
 
-#ifdef COMPILE_USE_QT4
-	#include <QTextDocument>
-#else
-	#include <qsimplerichtext.h>
-#endif
 
 class KviScriptAddonListViewItem : public KviTalListViewItem
 {
@@ -51,11 +46,7 @@ public:
 	~KviScriptAddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
-#ifdef COMPILE_USE_QT4
 	QTextDocument * m_pText;
-#else
-	QSimpleRichText * m_pText;
-#endif	
 	QPixmap * m_pIcon;
 	KviTalListView * m_pListView;
 	QString m_szKey;

@@ -26,29 +26,20 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "kvi_settings.h"
-
-#ifdef COMPILE_USE_QT4
-	// we use internal Qt4 styles for now
-	#include <qcheckbox.h>
-	#include <qtoolbutton.h>
-	
-	#define KviStyledCheckBox QCheckBox
-	#define KviStyledToolButton QToolButton
-#else
-
-#include <qcheckbox.h>
-#include <qtoolbutton.h>
-#include <qevent.h>
-#include <qtimer.h>
 #include "kvi_heapobject.h"
 
+#include <QCheckBox>
+#include <QToolButton>
+#include <QEvent>
+#include <QTimer>
+
+class KviStyledControl;
 class KviTalToolBar;
 
 #define KVI_STYLE_NUM_STEPS  20
 #define KVI_STYLE_COLOR_DIFF  60
 #define KVI_STYLE_TIMER_STEP 18
 
-class KviStyledControl;
 
 class KVIRC_API KviStyledControlInternal : public QObject
 {
@@ -107,7 +98,5 @@ protected:
 	virtual void paintEvent ( QPaintEvent * );
 	virtual void resizeEvent ( QResizeEvent * ) ;
 };
-
-#endif
 
 #endif
