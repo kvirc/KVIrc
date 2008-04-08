@@ -28,7 +28,7 @@
 #include "kvi_options.h"
 #include "kvi_ircmask.h"
 
-#include <qcombobox.h>
+#include <QComboBox>
 
 
 KviIrcOptionsWidget::KviIrcOptionsWidget(QWidget * parent)
@@ -48,15 +48,10 @@ KviIrcGeneralOptionsWidget::KviIrcGeneralOptionsWidget(QWidget * parent)
 	createLayout(3,1);
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
 
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to minimize the console window after successfully logging into a server.</center>","options"));
-#endif
 
 	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console taskbar entry","options"),KviOption_boolShowNetworkNameForConsoleTaskBarEntry);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to show the network name as the console taskbar entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>","options"));
-#endif
-
 
 	addRowSpacer(0,2,0,2);
 }
@@ -67,29 +62,23 @@ KviIrcGeneralOptionsWidget::~KviIrcGeneralOptionsWidget()
 }
 
 
-
 KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irc_advanced_options_widget")
 {
 	createLayout(3,1);
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to close " \
 		"the connection immediately after sending the QUIT message.<br>" \
 		"When this option is disabled, KVIrc will wait for the server " \
 		"to close the connection.<br>" \
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
-#endif
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);    
 }
 
 KviIrcAdvancedOptionsWidget::~KviIrcAdvancedOptionsWidget()
 {
 }
-
-
-
 
 
 KviChannelOptionsWidget::KviChannelOptionsWidget(QWidget * pParent)
@@ -110,47 +99,35 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
 
  	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will cause KVIrc to attempt " \
 		"to rejoin a channel after being kicked.</center>","options"));
-#endif
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnKick);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will cause KVIrc to keep " \
 			"the channel window open after being kicked.<br>" \
 			"It might be a good idea to also enable the " \
 			"\"Rejoin channel\" option.</center>","options"));
-#endif 
 
 	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnPart);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will cause KVIrc to keep " \
 			"the channel window open after leaving it.</center>","options"));
-#endif 
 
 	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Automatically join channel on invite","options"),KviOption_boolAutoJoinOnInvite);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will cause KVIrc to automatically " \
 			"join a channel when an INVITE message for that channel is received.<br>" \
 			"<b>Warning:</b> This may help spammers harass you. :)</center>","options"));
-#endif
 
 	b = addBoolSelector(0,3,0,3, __tr2qs_ctx("Always open channels as minimized","options"),KviOption_boolCreateMinimizedChannels);
-    
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes newly created " \
 			"channel windows to be immediately minimized.<br>" \
 			"Enable this if you don't like channels " \
 			"popping up while you're typing something in a channel. :D</center>","options"));
-#endif
-
 
 	addRowSpacer(0,4,0,4);
 }
@@ -192,12 +169,10 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
  	addBoolSelector(g,__tr2qs_ctx("Do not request invite list","options"),KviOption_boolDisableInviteListRequestOnJoin);
 
  	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Do not update the away list","options"),KviOption_boolDisableAwayListUpdates);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>KVIrc sends out a channel /WHO message every now and then to keep " \
 			"the channel away list in sync. Use this option to disable this feature (and to save " \
 			"your IRC bandwidth.</center>","options"));
-#endif
 
 	g = addGroupBox(0,4,4,4,1,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Echo channel topic","options"),KviOption_boolEchoNumericTopic);

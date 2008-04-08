@@ -25,7 +25,7 @@
 
 #include "kvi_optionswidget.h"
 
-#include <qcombobox.h>
+#include <QComboBox>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviTextEncodingOptionsWidget KVI_SMALLICON_TEXTENCODING
 #define KVI_OPTIONS_WIDGET_NAME_KviTextEncodingOptionsWidget __tr2qs_no_lookup("Language")

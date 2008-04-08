@@ -26,7 +26,12 @@
 #include "kvi_optionswidget.h"
 #include "kvi_tal_listview.h"
 
-
+class QLabel;
+class QLineEdit;
+class QCheckBox;
+class QComboBox;
+class KviIpEditor;
+class KviTalPopupMenu;
 class KviProxy;
 class KviProxyDataBase;
 
@@ -41,12 +46,6 @@ public:
 	KviProxy * m_pProxyData;
 };
 
-class QLabel;
-class QLineEdit;
-class KviIpEditor;
-class QCheckBox;
-class KviTalPopupMenu;
-class QComboBox;
 
 #define KVI_OPTIONS_WIDGET_ICON_KviProxyOptionsWidget KVI_SMALLICON_PROXY
 #define KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget __tr2qs_no_lookup("Proxy Hosts")

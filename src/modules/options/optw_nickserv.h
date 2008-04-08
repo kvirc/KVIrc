@@ -29,7 +29,13 @@
 #include "kvi_settings.h"
 #include "kvi_optionswidget.h"
 
-#include <qdialog.h>
+#include <QDialog>
+
+class QLineEdit;
+class QPushButton;
+class QCheckBox;
+class KviNickServRule;
+class KviTalListView;
 
 #define KVI_OPTIONS_WIDGET_ICON_KviNickServOptionsWidget KVI_SMALLICON_NICKSERV
 #define KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget __tr2qs_no_lookup("NickServ")
@@ -37,12 +43,6 @@
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget __tr2qs_no_lookup("authentication,identify")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviNickServOptionsWidget 10000
 //#define KVI_OPTIONS_WIDGET_HIDDEN_KviNickServOptionsWidget true
-
-class QLineEdit;
-class QPushButton;
-class KviNickServRule;
-class KviTalListView;
-class QCheckBox;
 
 class KviNickServRuleEditor : public QDialog
 {

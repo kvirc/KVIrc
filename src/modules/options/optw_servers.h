@@ -27,15 +27,27 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_tal_listview.h"
-#include <qdialog.h>
-#include <qbuttongroup.h>
-#include <qtabwidget.h>
 
+#include <QDialog>
+#include <QButtonGroup>
+#include <QTabWidget>
+
+class QLabel;
+class QLineEdit;
+class QCheckBox;
+class QComboBox;
+class QPushButton;
+class QToolButton;
+class KviIpEditor;
+class KviIrcServer;
+class KviTalPopupMenu;
+class KviScriptEditor;
+class KviNickServRule;
+class KviNickServRuleEditor;
 class KviIrcServer;
 class KviIrcNetwork;
 class KviIrcNetworkData;
 class KviMexServerImport;
-
 
 
 class KviServerOptionsListViewItem : public KviTalListViewItem
@@ -50,19 +62,6 @@ public:
 public:
 	void updateVisibleStrings();
 };
-
-class QLabel;
-class QLineEdit;
-class KviIpEditor;
-class KviIrcServer;
-class QCheckBox;
-class KviTalPopupMenu;
-class KviScriptEditor;
-class QComboBox;
-class QPushButton;
-class QToolButton;
-class KviNickServRule;
-class KviNickServRuleEditor;
 
 
 class KviNetworkDetailsWidget : public QDialog
@@ -85,7 +84,7 @@ protected:
 	
 	QCheckBox             * m_pAutoConnectCheck;
 	
-	KviTalListView             * m_pNickServListView;
+	KviTalListView        * m_pNickServListView;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;

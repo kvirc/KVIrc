@@ -24,6 +24,8 @@
 
 #include "kvi_optionswidget.h"
 
+class QRadioButton;
+
 #define KVI_OPTIONS_WIDGET_ICON_KviConnectionOptionsWidget KVI_SMALLICON_WORLD
 #define KVI_OPTIONS_WIDGET_NAME_KviConnectionOptionsWidget __tr2qs_no_lookup("Connection")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviConnectionOptionsWidget 98000
@@ -88,7 +90,6 @@ public:
 #define KVI_OPTIONS_WIDGET_PARENT_KviIdentOptionsWidget KviConnectionAdvancedOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentOptionsWidget 10
 
-class QRadioButton;
 
 class KviIdentOptionsWidget : public KviOptionsWidget
 {
@@ -109,8 +110,6 @@ protected:
 public slots:
 	void enableIpv4InIpv6(bool);
 };
-
-
 
 
 #endif //_OPTW_CONNECTION_H_

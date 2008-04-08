@@ -27,7 +27,8 @@
 
 
 #include "kvi_optionswidget.h"
-#include <qcombobox.h>
+
+#include <QComboBox>
 
 
 #define KVI_OPTIONS_WIDGET_ICON_KviIrcViewThemeOptionsWidget KVI_SMALLICON_IRCVIEW

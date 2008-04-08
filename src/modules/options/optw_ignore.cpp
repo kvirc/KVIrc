@@ -22,12 +22,10 @@
 
 #include "optw_ignore.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 
 KviIgnoreOptionsWidget::KviIgnoreOptionsWidget(QWidget * parent)

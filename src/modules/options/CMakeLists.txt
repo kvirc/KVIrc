@@ -12,7 +12,6 @@ SET(kvioptions_MOC_HDRS
 	optw_dcc.h
 	optw_generalopt.h
 	optw_highlighting.h
-	optw_ident.h
 	optw_identity.h
 	optw_ignore.h
 	optw_input.h
@@ -32,13 +31,10 @@ SET(kvioptions_MOC_HDRS
 	optw_query.h
 	optw_servers.h
 	optw_sound.h
-	optw_ssl.h
 	optw_taskbar.h
 	optw_textencoding.h
 	optw_texticons.h
-	optw_theme.h
 	optw_tools.h
-	optw_transport.h
 	optw_topiclabel.h
 	optw_away.h
 	optw_uparser.h
@@ -60,7 +56,6 @@ SET(kvioptions_SRCS
 	optw_dcc.cpp
 	optw_generalopt.cpp
 	optw_highlighting.cpp
-	optw_ident.cpp
 	optw_identity.cpp
 	optw_ignore.cpp
 	optw_input.cpp
@@ -80,13 +75,10 @@ SET(kvioptions_SRCS
 	optw_query.cpp
 	optw_servers.cpp
 	optw_sound.cpp
-	optw_ssl.cpp
 	optw_taskbar.cpp
 	optw_textencoding.cpp
 	optw_texticons.cpp
-	optw_theme.cpp
 	optw_tools.cpp
-	optw_transport.cpp
 	optw_topiclabel.cpp
 	optw_away.cpp
 	optw_uparser.cpp

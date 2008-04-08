@@ -21,11 +21,10 @@
 //
 #include "optw_ircview.h"
 
-#include <qlayout.h>
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 KviIrcViewThemeOptionsWidget::KviIrcViewThemeOptionsWidget(QWidget * pParent)
 : KviOptionsWidget(pParent)

@@ -24,11 +24,11 @@
 
 #include "optw_tools.h"
 
-#include <qlayout.h>
-
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
+
+#include <QLayout>
 
 KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"tools_options_widget")

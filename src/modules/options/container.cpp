@@ -26,15 +26,14 @@
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
-
-#include <qlayout.h>
-#include <qpushbutton.h>
 #include "kvi_tal_tooltip.h"
-#include <qevent.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <qdesktopwidget.h>
-#endif
+#include <QLayout>
+#include <QPushButton>
+#include <QDesktopWidget>
+#include <QEvent>
+#include <QCloseEvent>
+
 
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 

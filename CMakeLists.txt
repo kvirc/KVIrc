@@ -53,12 +53,12 @@ ENDIF()
 # Install path
 IF(UNIX)
 	IF(APPLE)
-	# MacOS X
+		# MacOS X
 		IF(NOT DEFINED INSTALL_PREFIX)
 			SET(INSTALL_PREFIX ${CMAKE_BINARY_DIR}/KVirc.app)
 		ENDIF()
 	ELSE()
-	# Linux
+		# Linux
 		SET(INSTALL_PREFIX /usr/local)
 	ENDIF()
 ELSEIF(WIN32)

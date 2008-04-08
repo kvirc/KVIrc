@@ -21,6 +21,7 @@
 //
 
 #include "optw_proxy.h"
+
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_proxydb.h"
@@ -29,16 +30,16 @@
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_styled_controls.h"
-
-#include <qlabel.h>
-#include <qlineedit.h>
-#include <qcombobox.h>
-#include <qcheckbox.h>
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_popupmenu.h"
-#include <qcursor.h>
 #include "kvi_tal_tooltip.h"
-#include <qtoolbutton.h>
+
+#include <QLabel>
+#include <QLineEdit>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QCursor>
+#include <QToolButton>
 
 
 KviProxyOptionsListViewItem::KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx)
@@ -72,35 +73,29 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
 		this,SLOT(listViewRightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
 
-#ifdef COMPILE_INFO_TIPS
-  QString tiptxt = __tr2qs_ctx("<center>This is the list of available proxy servers.<br>" \
-                           "Right-click on the list to add or remove proxies.</center>","options");
-  mergeTip(m_pListView,tiptxt);
-  mergeTip(m_pListView->viewport(),tiptxt);
-#endif
+	QString tiptxt = __tr2qs_ctx("<center>This is the list of available proxy servers.<br>" \
+				"Right-click on the list to add or remove proxies.</center>","options");
+	mergeTip(m_pListView,tiptxt);
+	mergeTip(m_pListView->viewport(),tiptxt);
 
-  KviTalVBox * vbox = new KviTalVBox(this);
-  addWidgetToLayout(vbox,1,1,1,1);
+	KviTalVBox * vbox = new KviTalVBox(this);
+	addWidgetToLayout(vbox,1,1,1,1);
+	
+	QToolButton * tb = new KviStyledToolButton(vbox);
+	tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)));
+	tb->setAutoRaise(true);
+	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
+	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
 
-  QToolButton * tb = new KviStyledToolButton(vbox);
-  tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)));
-  tb->setAutoRaise(true);
-  connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
-#ifdef COMPILE_INFO_TIPS
-  mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
-#endif
-
-  tb = new KviStyledToolButton(vbox);
-  tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)));
-  //tb->setEnabled(false);
-  tb->setAutoRaise(true);
-  connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
-#ifdef COMPILE_INFO_TIPS
-  mergeTip(tb,__tr2qs_ctx("Remove Proxy","options"));
-#endif
-
-  QFrame * lll = new QFrame(vbox);
-  vbox->setStretchFactor(lll,100);
+	tb = new KviStyledToolButton(vbox);
+	tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)));
+	//tb->setEnabled(false);
+	tb->setAutoRaise(true);
+	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
+	mergeTip(tb,__tr2qs_ctx("Remove Proxy","options"));
+	
+	QFrame * lll = new QFrame(vbox);
+	vbox->setStretchFactor(lll,100);
 
 
 	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),this);
@@ -109,27 +104,16 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	//gl->setSpacing(4);
 
 	m_pProxyLabel = new QLabel(__tr2qs_ctx("Proxy:","options"),gbox);
-
 	m_pProxyEdit = new QLineEdit(gbox);
-
 	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:","options"),gbox);
-
 	m_pPortEdit = new QLineEdit(gbox);
-
 	m_pIpLabel = new QLabel(__tr2qs_ctx("IP address:","options"),gbox);
-
 	m_pIpEditor = new KviIpEditor(gbox,KviIpEditor::IpV4);
-
 	m_pUserLabel = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
-
 	m_pUserEdit = new QLineEdit(gbox);
-
 	m_pPassLabel = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
-
 	m_pPassEdit = new QLineEdit(gbox);
-
 	m_pProtocolLabel = new QLabel(__tr2qs_ctx("Protocol:","options"),gbox);
-
 	m_pProtocolBox = new QComboBox(false,gbox);
 
 	QStringList l;
@@ -151,14 +135,11 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	layout()->setColStretch(0,1);
 
 	m_pContextPopup = new KviTalPopupMenu(this);
-
-
 }
 
 KviProxyOptionsWidget::~KviProxyOptionsWidget()
 {
 }
-
 
 void KviProxyOptionsWidget::ipV6CheckToggled(bool bEnabled)
 {
@@ -252,7 +233,6 @@ void KviProxyOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
 	}
 }
 
-
 void KviProxyOptionsWidget::saveLastItem()
 {
 	if(m_pLastEditedItem)
@@ -345,7 +325,6 @@ void KviProxyOptionsWidget::newProxy()
 	m_pListView->setSelected(it,true);
 	m_pListView->ensureItemVisible(it);
 }
-
 
 void KviProxyOptionsWidget::removeCurrent()
 {

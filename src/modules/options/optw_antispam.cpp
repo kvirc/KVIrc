@@ -22,14 +22,11 @@
 
 #include "optw_antispam.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-#include <qlabel.h>
-
-
+#include <QLayout>
+#include <QLabel>
 
 KviAntispamOptionsWidget::KviAntispamOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"antispam_options_widget")

@@ -28,64 +28,51 @@
 #include "kvi_locale.h"
 #include "kvi_options.h"
 #include "kvi_iconmanager.h"
-#include <qradiobutton.h>
+
+#include <QRadioButton>
 
 
 KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"connection_options_widget")
 {
-
 	createLayout(2,1);
 	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
-
 	KviBoolSelector *b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep channels open after disconnect.</center>","options"));
-#endif
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnDisconnect,true);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after disconnect.</center>","options"));
-#endif
 
-	 gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
+	gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect,true);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep channels open after an unexpected disconnect.</center>","options"));
-#endif
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect,true);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep queries open after an unexpected disconnect.</center>","options"));
-#endif
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Rejoin channels after reconnect","options"),KviOption_boolRejoinChannelsAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to rejoin channels after a successful reconnect attempt.</center>","options"));
-#endif
+	
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>","options"));
-#endif
 
 //	gbox = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Automatically reconnect","options"),KviOption_boolAutoReconnectOnUnexpectedDisconnect);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,__tr2qs_ctx("<center>This option will enable auto-reconnecting after an unexpected disconnect. " \
-						"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> " \
-						"that was <b>not requested by the user</b> by the means of the QUIT message." \
-						"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, " \
-						"this option will not behave correctly, since does not detect the outgoing " \
-						"QUIT message and will attempt to reconnect after the server has closed the connection. " \
-						"For this reason, always use the /QUIT command to close your connections. " \
-						"This option may also behave incorrectly with bouncers that support " \
-						"detaching, in this case a solution could be to prepare an alias that sends the " \
-						"bouncer \"detach\" command immediately before the \"quit\" command.<br>" \
-						"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>","options"));
-#endif
+		"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> " \
+		"that was <b>not requested by the user</b> by the means of the QUIT message." \
+		"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, " \
+		"this option will not behave correctly, since does not detect the outgoing " \
+		"QUIT message and will attempt to reconnect after the server has closed the connection. " \
+		"For this reason, always use the /QUIT command to close your connections. " \
+		"This option may also behave incorrectly with bouncers that support " \
+		"detaching, in this case a solution could be to prepare an alias that sends the " \
+		"bouncer \"detach\" command immediately before the \"quit\" command.<br>" \
+		"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p></center>","options"));
+
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Maximum attempts (0: unlimited):","options"),
 			KviOption_uintMaxAutoReconnectAttempts,0,100,5,
 			KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
@@ -96,12 +83,7 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 			KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></center>","options"));
-#endif
-
-
-
 
 	addRowSpacer(0,2,4,2);
 }
@@ -110,8 +92,6 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 KviConnectionOptionsWidget::~KviConnectionOptionsWidget()
 {
 }
-
-
 
 
 KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
@@ -152,10 +132,6 @@ KviSSLOptionsWidget::~KviSSLOptionsWidget()
 }
 
 
-
-
-
-
 KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"transport_options_widget")
 {
@@ -171,9 +147,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	u = addUIntSelector(0,2,0,2,__tr2qs_ctx("Limit to 1 message every:","options"),
 			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000000,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec","options"));
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b></center>","options"));
-#endif
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	g = addGroupBox(0,3,0,3,2,Qt::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
@@ -193,13 +167,6 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 KviTransportOptionsWidget::~KviTransportOptionsWidget()
 {
 }
-
-
-
-
-
-
-
 
 
 KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
@@ -300,11 +267,6 @@ void KviIdentOptionsWidget::enableIpv4InIpv6(bool)
 	m_pIpv4InIpv6->setEnabled(m_pEnableIdent->isChecked() && m_pEnableIpv6->isChecked());
 #endif
 }
-
-
-
-
-
 
 
 KviConnectionAdvancedOptionsWidget::KviConnectionAdvancedOptionsWidget(QWidget * parent)

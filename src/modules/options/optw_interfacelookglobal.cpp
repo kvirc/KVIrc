@@ -22,12 +22,11 @@
 
 #include "optw_interfacelookglobal.h"
 
-#include <qlayout.h>
-
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
+#include <QLayout>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -39,7 +38,7 @@ KviThemeGeneralOptionsWidget::KviThemeGeneralOptionsWidget(QWidget * parent)
 	KviBoolSelector * b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Use global application font","options"),KviOption_boolUseGlobalApplicationFont);
 	KviBoolSelector * g = addBoolSelector(0,0,1,0,__tr2qs_ctx("Hide icons in Popup","options"),KviOption_boolDisablePopupIcons);
 	KviFontSelector * f = addFontSelector(0,2,1,2,__tr2qs_ctx("Global application font:","options"),KviOption_fontApplication,
-							KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
 
 	connect(b,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
 
@@ -65,7 +64,6 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 	#endif
 
 	m_pUseTransparencyBoolSelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Enable fake transparency","options"),KviOption_boolUseGlobalPseudoTransparency);
-#ifdef COMPILE_INFO_TIPS
 	#ifdef COMPILE_KDE_SUPPORT
 		mergeTip(m_pUseTransparencyBoolSelector,
 			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
@@ -78,38 +76,37 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 				"like transparent.<br>You must choose a blending " \
 				"background image to below.</center>","options"));
 	#endif
-#endif
 
 	KviUIntSelector * u = addUIntSelector(0,1,1,1,__tr2qs_ctx("Child window opacity:","options"),KviOption_uintGlobalTransparencyChildFadeFactor,
-							0,100,35,KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+			0,100,35,KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(0,2,1,2,__tr2qs_ctx("Parent window opacity:","options"),KviOption_uintGlobalTransparencyParentFadeFactor,
-							0,100,10,KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+			0,100,10,KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	KviColorSelector * c = addColorSelector(0,3,1,3,__tr2qs_ctx("Blend color:","options"),KviOption_colorGlobalTransparencyFade,
-						KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),c,SLOT(setEnabled(bool)));
 
 //	addRowSpacer(0,13,0,13);
 #ifdef COMPILE_KDE_SUPPORT
 	m_pObtainBackgroundFromKdeBoolSelector = addBoolSelector(0,4,1,4,__tr2qs_ctx("Use KDE desktop for transparency","options"),KviOption_boolObtainGlobalBackgroundFromKde,
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pObtainBackgroundFromKdeBoolSelector,SLOT(setEnabled(bool)));
 	connect(m_pObtainBackgroundFromKdeBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableUpdateKdeBackgroundBoolSelector(bool)));
 
 	m_pUpdateKdeBackgroundOnChangeBoolSelector = addBoolSelector(0,5,1,5,__tr2qs_ctx("Keep in sync with KDE background changes","options"),KviOption_boolUpdateKdeBackgroundOnChange,
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde));
 
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,6,1,6,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground,
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde));
 	layout()->setRowStretch(6,1);
 	connect(m_pObtainBackgroundFromKdeBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 
 #else //!COMPILE_KDE_SUPPORT
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,4,1,4,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground,
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	layout()->setRowStretch(4,1);
 #endif //!COMPILE_KDE_SUPPORT
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));

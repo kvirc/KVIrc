@@ -25,8 +25,9 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include <qcombobox.h>
-#include <qpushbutton.h>
+
+#include <QComboBox>
+#include <QPushButton>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviSoundOptionsWidget KVI_SMALLICON_SOUND
 #define KVI_OPTIONS_WIDGET_NAME_KviSoundOptionsWidget __tr2qs_no_lookup("Sound")

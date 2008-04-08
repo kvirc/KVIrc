@@ -20,9 +20,11 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "optw_topiclabel.h"
+
 #include "kvi_options.h"
 #include "kvi_locale.h"
-#include "optw_topiclabel.h"
+
 
 KviTopicLabelLookOptionsWidget::KviTopicLabelLookOptionsWidget(QWidget *p):KviOptionsWidget(p, "topic_label_look_options_widget")
 {

@@ -34,10 +34,10 @@
 #include <QStringList>
 
 class QLabel;
-class KviTalWidgetStack;
 class QPushButton;
 class QLineEdit;
 class QToolButton;
+class KviTalWidgetStack;
 
 class KviGeneralOptionsFrontWidget : public KviOptionsWidget
 {

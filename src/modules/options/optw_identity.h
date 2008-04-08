@@ -29,15 +29,15 @@
 #include "kvi_optionswidget.h"
 #include "kvi_settings.h"
 #include "kvi_selectors.h"
-
-#include <qdialog.h>
 #include "kvi_pixmap.h"
 
+#include <QDialog>
 
 class QLineEdit;
 class QCheckBox;
 class QPushButton;
 class QComboBox;
+class KviHttpRequest;
 
 class KviNickAlternativesDialog : public QDialog
 {
@@ -73,7 +73,6 @@ protected slots:
 	void chooseFileClicked();
 };
 
-class KviHttpRequest;
 
 class KviAvatarDownloadDialog : public QDialog
 {

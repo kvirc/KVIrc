@@ -37,8 +37,8 @@ KviGeneralOptOptionsWidget::KviGeneralOptOptionsWidget(QWidget * parent)
 
 	QLabel * l;
 	l = addLabel(0,0,4,0,__tr2qs_ctx("This section contains the general client options<br>"\
-					"<p>like<b> sound, mediafiles, URL handler </b> etc... " \
-					"</p>","options"));
+		"<p>like<b> sound, mediafiles, URL handler </b> etc... " \
+		"</p>","options"));
 	addAdvancedButton(4,1,4,1);
 }
 

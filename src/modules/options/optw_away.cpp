@@ -23,13 +23,10 @@
 
 #include "optw_away.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-//#warning "Info tips"
-
+#include <QLayout>
 
 KviAwayOptionsWidget::KviAwayOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"away_options_widget")

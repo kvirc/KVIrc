@@ -26,38 +26,30 @@
 #include "kvi_locale.h"
 #include "kvi_options.h"
 
-//#ifdef COMPILE_INFO_TIPS
-//	#include "kvi_tal_tooltip.h"
-//#endif
 
 KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ctcp_options_widget")
 {
-
 	createLayout(4,1);
 
 	QLabel * l;
 	l = addLabel(0,0,0,0,__tr2qs_ctx("<center><b>Settings for CTCP.</b></center>"\
-					"<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
-					"is used to transmit special control messages over an IRC connection. " \
-					"These messages can request information from clients or negotiate file transfers." \
-					"<br><br></p>","options"));
+		"<p>The <b>Client-To-Client Protocol</b> (CTCP) " \
+		"is used to transmit special control messages over an IRC connection. " \
+		"These messages can request information from clients or negotiate file transfers." \
+		"<br><br></p>","options"));
 
 
 	KviTalGroupBox *gs = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("CTCP Replies","options"));
 	KviStringSelector * s = addStringSelector(gs, __tr2qs_ctx("Append to VERSION reply:","options"),KviOption_stringCtcpVersionPostfix);
 
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(s,
 		__tr2qs_ctx("<center>This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.</center>","options"));
-#endif
 
 	s = addStringSelector(gs, __tr2qs_ctx("Append to SOURCE reply:","options"),KviOption_stringCtcpSourcePostfix);
 
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(s,
 		__tr2qs_ctx("<center>This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.</center>","options"));
-#endif
 
 //	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
 
@@ -68,10 +60,8 @@ KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
 
 	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:","options"),KviOption_stringCtcpPageReply);
 
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(s,
 		__tr2qs_ctx("<center>This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgement for CTCP PAGE messages.</center>","options"));
-#endif
 
 	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
 

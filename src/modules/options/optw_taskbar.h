@@ -27,7 +27,8 @@
 
 
 #include "kvi_optionswidget.h"
-#include <qcombobox.h>
+
+#include <QComboBox>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviTaskBarOptionsWidget KVI_SMALLICON_CLASSICTASKBAR
 #define KVI_OPTIONS_WIDGET_NAME_KviTaskBarOptionsWidget __tr2qs_no_lookup("Taskbar")

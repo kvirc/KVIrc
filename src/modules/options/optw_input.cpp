@@ -21,12 +21,10 @@
 //
 #include "optw_input.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircviewlook_options_widget")

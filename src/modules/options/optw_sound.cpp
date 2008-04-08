@@ -30,16 +30,12 @@
 #include "kvi_modulemanager.h"
 #include "kvi_pointerlist.h"
 #include "kvi_string.h"
-
-#include <qlabel.h>
-#include <qpushbutton.h>
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_tooltip.h"
 
-#warning BIG FAT WARNING, i deleted the IFDEF to let this stuff compile on OSX
-#warning PLEASE do a more portable FIX
-//#ifdef COMPILE_INFO_TIPS
-	#include "kvi_tal_tooltip.h"
-//#endif
+#include <QLabel>
+#include <QPushButton>
+
 
 // FIXME: This module doesn't Cancel properly when auto-detection is performed!
 
@@ -76,7 +72,6 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	m_pSoundTestButton = new QPushButton(__tr2qs_ctx("Test","options"),h);
 	connect(m_pSoundTestButton,SIGNAL(clicked()),this,SLOT(soundTest()));
-
 
 	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Media Player","options"),true);
 
@@ -161,7 +156,6 @@ void KviSoundGeneralOptionsWidget::mediaTest()
 {
 }
 
-
 void KviSoundGeneralOptionsWidget::soundAutoDetect()
 {
 	KviModule * m = g_pModuleManager->getModule("snd");
@@ -178,10 +172,8 @@ void KviSoundGeneralOptionsWidget::mediaAutoDetect()
 	mediaFillBox();
 }
 
-
 void KviSoundGeneralOptionsWidget::soundFillBox()
 {
-
 	QStringList l;
 	QStringList::Iterator it;
 	int cnt;
@@ -255,7 +247,6 @@ disable:
 	m_pMediaTestButton->setEnabled(false);
 	m_pMediaAutoDetectButton->setEnabled(false);
 }
-
 
 void KviSoundGeneralOptionsWidget::commit()
 {

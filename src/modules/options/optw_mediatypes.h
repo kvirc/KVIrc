@@ -24,11 +24,12 @@
 //
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_listview.h"
-#include <qlineedit.h>
-#include <qpushbutton.h>
-
 #include "kvi_mediatype.h"
+#include "kvi_tal_listview.h"
+
+#include <QLineEdit>
+#include <QPushButton>
+
 
 class KviMediaTypeListViewItem : public KviTalListViewItem
 {

@@ -22,6 +22,10 @@
 //
 //============================================================================================
 
+#include "container.h"
+#include "instances.h"
+#include "dialog.h"
+
 #include "kvi_module.h"
 #include "kvi_options.h"
 #include "kvi_app.h"
@@ -31,15 +35,9 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_out.h"
 #include "kvi_splash.h"
-
-#include "container.h"
-#include "instances.h"
-
-#include "dialog.h"
-
-#include <qsplitter.h>
 #include "kvi_pointerhashtable.h"
 
+#include <QSplitter>
 
 KviPointerHashTable<QString,KviOptionsDialog> * g_pOptionsDialogDict = 0;
 
@@ -157,6 +155,7 @@ static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,KviOption
 		}
 	}
 }
+
 static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 {
 	KviPointerList<KviOptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
@@ -258,7 +257,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 */
 
 static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
@@ -267,7 +266,6 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setBoolean(g_pOptionsDialogDict->find(szGroup));
 	return true;
 }
-
 
 static bool options_module_init(KviModule * m)
 {
@@ -299,10 +297,10 @@ static bool options_module_cleanup(KviModule *m)
 	for(d = l.first();d;d = l.next())delete d;
 	delete g_pOptionsDialogDict;
 	g_pOptionsDialogDict = 0;
-    
+
 	g_pOptionsInstanceManager->cleanup(m);
 	delete g_pOptionsInstanceManager;
-    g_pOptionsInstanceManager = 0;
+	g_pOptionsInstanceManager = 0;
 
 	return true;
 }
@@ -314,7 +312,7 @@ static bool options_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Options",                                              // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Options Dialog",
 	options_module_init,

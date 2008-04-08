@@ -23,12 +23,11 @@
 
 #include "optw_uparser.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 
 
 KviUParserOptionsWidget::KviUParserOptionsWidget(QWidget * parent)

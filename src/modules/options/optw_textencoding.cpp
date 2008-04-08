@@ -27,8 +27,8 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 
-#include <qdir.h>
-#include <qmessagebox.h>
+#include <QDir>
+#include <QMessageBox>
 
 QString g_szPrevSettedLocale;
 

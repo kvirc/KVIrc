@@ -24,7 +24,8 @@
 
 
 #include "kvi_optionswidget.h"
-#include <qdialog.h>
+
+#include <QDialog>
 
 class QPushButton;
 
@@ -47,7 +48,5 @@ protected slots:
 	void okClicked();
 	void cancelClicked();
 };
-
-
 
 #endif //_CONTAINER_H_

@@ -24,21 +24,21 @@
 
 #include "optw_interfacefeatures.h"
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include <string.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 
+#include <QLayout>
+#include <QLabel>
+
+#include <string.h>
+
+
 KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"interfacefeatures_options_widget")
 {
 	createLayout(8,1);
-
-
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize on startup","options"),KviOption_boolStartupMinimized);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Confirm quit with active connections","options"),KviOption_boolConfirmCloseWhenThereAreConnections);

@@ -23,12 +23,10 @@
 
 #include "optw_logging.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 
 KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
@@ -47,11 +45,9 @@ KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Strip colors in logs","options"),KviOption_boolStripControlCodesInLogs); 
 	KviUIntSelector* us = addUIntSelector(0,3,0,3,__tr2qs_ctx("Auto flush logs every","options"),KviOption_uintAutoFlushLogs,0,99999,0);
 	us->setSuffix(__tr2qs_ctx(" min","options"));
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(us,
 		__tr2qs_ctx("<center>Save logs with the current interval<br>" \
 			"Set to 0 to disable this feature</center>","options"));
-#endif
 	addRowSpacer(0,4,0,4);
 }
 

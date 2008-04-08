@@ -21,13 +21,11 @@
 //
 #include "optw_userlist.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_userlistview.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 KviUserListLookOptionsWidget::KviUserListLookOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_options_widget")
@@ -185,7 +183,6 @@ KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(Q
 KviUserListLookBackgroundOptionsWidget::~KviUserListLookBackgroundOptionsWidget()
 {
 }
-
 
 void KviUserListLookBackgroundOptionsWidget::commit()
 {

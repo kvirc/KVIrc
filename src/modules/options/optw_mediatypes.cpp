@@ -22,12 +22,12 @@
 
 #include "optw_mediatypes.h"
 
-#include <qlayout.h>
-#include <qlabel.h>
-#include "kvi_tal_tooltip.h"
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
+#include "kvi_tal_tooltip.h"
+
+#include <QLayout>
+#include <QLabel>
 
 // kvi_app.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
@@ -73,8 +73,6 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 	m_pListView->addColumn(__tr2qs_ctx("Description","options"));
 	m_pListView->setAllColumnsShowFocus(true);
 
-
-
 	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
 
 	layout()->addMultiCellWidget(m_pListView,0,0,0,2);
@@ -108,19 +106,15 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 	layout()->addWidget(l,6,0);
 	m_pCommandline = new QLineEdit(this);
 	layout()->addMultiCellWidget(m_pCommandline,6,6,1,2);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(m_pCommandline,__tr2qs_ctx("<center>This field contains the command to execute to open a local file.<br>" \
 		"<tt>$0</tt> is used in place of the filename</center>","options"));
-#endif
 
 	l = new QLabel(__tr2qs_ctx("Remote open command:","options"),this);
 	layout()->addWidget(l,7,0);
 	m_pRemoteExecCommandline = new QLineEdit(this);
 	layout()->addMultiCellWidget(m_pRemoteExecCommandline,7,7,1,2);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(m_pRemoteExecCommandline,__tr2qs_ctx("<center>This field contains the command to execute when automatically opening a received file.<br>" \
 		"<tt>$0</tt> is used in place of the filename</center>","options"));
-#endif
 
 	l = new QLabel(__tr2qs_ctx("Icon","options"),this);
 	layout()->addWidget(l,8,0);
@@ -138,7 +132,6 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 	m_pDelete = new QPushButton(__tr2qs_ctx("Re&move","options"),this);
 	connect(m_pDelete,SIGNAL(clicked()),this,SLOT(delMediaType()));
 	layout()->addWidget(m_pDelete,10,2);
-	
 
 	layout()->setColStretch(1,1);
 	layout()->setColStretch(2,1);

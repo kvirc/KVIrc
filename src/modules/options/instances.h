@@ -1,5 +1,3 @@
-
-
 #ifndef __OPTIONS_INSTANCES_H__
 #define __OPTIONS_INSTANCES_H__
 
@@ -37,7 +35,6 @@
 #include "kvi_qstring.h"
 
 typedef struct _KviOptionsWidgetInstanceEntry KviOptionsWidgetInstanceEntry;
-
 
 typedef struct _KviOptionsWidgetInstanceEntry
 {

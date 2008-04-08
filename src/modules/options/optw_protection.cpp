@@ -24,11 +24,11 @@
 
 #include "optw_protection.h"
 
-#include <qlayout.h>
-
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
+
+#include <QLayout>
 
 KviProtectionOptionsWidget::KviProtectionOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"protection_options_widget")

@@ -24,12 +24,11 @@
 
 #include "optw_urlhandlers.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-#include <qlabel.h>
+#include <QLayout>
+#include <QLabel>
 
 
 KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
@@ -61,9 +60,7 @@ KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 	m_pFileHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
 	m_pMailtoHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
 	m_pOtherHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
-
 	connect(b,SIGNAL(toggled(bool)),this,SLOT(toggleEditors(bool)));
-
 #endif
 
 	addRowSpacer(0,START_ROW+6,0,START_ROW+6);

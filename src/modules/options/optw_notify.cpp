@@ -22,14 +22,11 @@
 
 #include "optw_notify.h"
 
-#include <qlayout.h>
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
 
-
-//#warning "Info tips"
-
+#include <QLayout>
 
 KviNotifyOptionsWidget::KviNotifyOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"notify_options_widget")
@@ -102,15 +99,12 @@ KviNotifyOptionsWidget::~KviNotifyOptionsWidget()
 }
 
 
-
-
 KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"notifier_options_widget")
 {
 	createLayout(3,1);
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Forcibly and completely disable the notifier","options"),KviOption_boolForciblyDisableNotifier);
-#ifdef COMPILE_INFO_TIPS
 	QString tip = "<center>";
 	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
 					"the notifier window. Please note that if this option is activated then " \
@@ -119,7 +113,6 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 					"will make all the /notifier.* commands fail silently.","options");
 	tip += "</center>";
 	mergeTip(b,tip);
-#endif
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable notifier window flashing","options"),KviOption_boolDisableNotifierFlashing);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Disable notifier window fade effect","options"),KviOption_boolDisableNotifierFadein);
 

@@ -23,7 +23,8 @@
 //
 
 #include "kvi_optionswidget.h"
-#include <qcombobox.h>
+
+#include <QComboBox>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviTrayOptionsWidget KVI_SMALLICON_TRAYICON
 #define KVI_OPTIONS_WIDGET_NAME_KviTrayOptionsWidget __tr2qs_no_lookup("Tray icon")

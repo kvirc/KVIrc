@@ -22,18 +22,15 @@
 
 #include "optw_ircoutput.h"
 
-#include <qlayout.h>
-
 #include "kvi_settings.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
+#include "kvi_tal_tooltip.h"
 
-#include <qcombobox.h>
-#include <qlabel.h>
+#include <QLayout>
+#include <QComboBox>
+#include <QLabel>
 
-#ifdef COMPILE_INFO_TIPS
-	#include "kvi_tal_tooltip.h"
-#endif
 
 KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircoutput_options_widget")

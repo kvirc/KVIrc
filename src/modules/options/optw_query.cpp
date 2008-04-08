@@ -23,16 +23,12 @@
 
 #include "optw_query.h"
 
-#include <qlayout.h>
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_settings.h"
 
+#include <QLayout>
 
-#ifdef COMPILE_KDE_SUPPORT
-	#include <kdeversion.h>
-#endif
 
 KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"query_options_widget")
@@ -41,68 +37,53 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
 	KviBoolSelector *b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window creation " \
 			"when a private message (PRIVMSG) is received.<br>" \
 			"If you disable this, private messages will " \
 			"be shown in the active window or a common channel.</center>","options"));
-#endif
-    
+
 	b = addBoolSelector(g, __tr2qs_ctx("Private notices","options"),KviOption_boolCreateQueryOnNotice);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window creation " \
 			"when a private notice (NOTICE) is received.<br>" \
 			"If you disable this, private notices will " \
 			"be shown in the active window or a common channel.</center>","options"));
-#endif
 
 
 	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Always open queries as minimized","options"),KviOption_boolCreateMinimizedQuery);
-   
-#ifdef COMPILE_INFO_TIPS
+
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes newly created " \
 			"query windows to be immediately minimized.<br>" \
 			"Enable this if you don't like queries " \
 			"popping up while you're typing something in a channel. :D</center>","options"));
-#endif
-
 
 
 	b = addBoolSelector(0,2,0,2, __tr2qs_ctx("Enable target user tracking","options"),KviOption_boolEnableQueryTracing);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will enable target user tracking.<br>" \
 			"Some actions of the target user (e.g. joins and parts) " \
 			"will be displayed in the window.<br></center>","options"));
-#endif
 
-#if defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_KDE_SUPPORT) && (KDE_VERSION_MAJOR >= 3) && (KDE_VERSION_MINOR >= 2))
+#if defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_KDE_SUPPORT))
 	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Flash system taskbar on new query message","options"),KviOption_boolFlashQueryWindowOnNewMessages);
-	#ifdef COMPILE_INFO_TIPS
 		mergeTip(b,
 			__tr2qs_ctx("<center>This option causes the system taskbar entry for KVIrc to flash when a new query message " \
 				"is received and the KVIrc window is not the active.</center>","options"));
-	#endif
 #endif
 
 	b = addBoolSelector(0,4,0,4, __tr2qs_ctx("Popup notifier on new query message","options"),KviOption_boolPopupNotifierOnNewQueryMessages);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
 			"in the low right corner of the screen when a new message is received " \
 			"and the KVIrc window is not active.</center>","options"));
-#endif
 	b = addBoolSelector(0,5,0,5, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
-#ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window information " \
 			"label. It can show you known information about query target at the top of the window.<br>" \
 			"Uncheck if you think,that it wastes your query space/" \
 			"</center>","options"));
-#endif
 
 	addRowSpacer(0,6,0,6);
 }

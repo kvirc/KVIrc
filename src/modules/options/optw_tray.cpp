@@ -23,13 +23,11 @@
 
 #include "optw_tray.h"
 
-#include <qlayout.h>
-#include "kvi_tal_tooltip.h"
-
 #include "kvi_options.h"
 #include "kvi_locale.h"
+#include "kvi_tal_tooltip.h"
 
-//#warning "Info tips"
+#include <QLayout>
 
 
 KviTrayOptionsWidget::KviTrayOptionsWidget(QWidget * parent)
