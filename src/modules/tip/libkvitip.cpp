@@ -53,11 +53,10 @@ KviTipWindow * g_pTipWindow = 0;
 KviTipFrame::KviTipFrame(QWidget * par)
 : QFrame(par)
 {
-		m_pText=0;
-	KviStr buffer;
+	m_pText=0;
+	QString buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
-	m_pTipPixmap = new QPixmap(buffer.ptr());
-	setBackgroundMode(Qt::NoBackground);
+	m_pTipPixmap = new QPixmap(buffer);
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 }
 
@@ -74,9 +73,9 @@ void KviTipFrame::setText(const QString &text)
 	szText += "</font></center>";
 	if (m_pText) delete m_pText;
 	m_pText = new QTextDocument();
-	QFont f = QFont();
+	QFont f = font();
 	f.setStyleHint(QFont::SansSerif);
-	f.setPointSize(11);
+	f.setPointSize(12);
 	m_pText->setHtml(szText);
 	m_pText->setDefaultFont(f);
 	update();
