@@ -24,8 +24,17 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
 			DEPENDS ${_absPotFile} ${_absFile}
 		)
-
-		INSTALL(FILES ${_gmoFile} DESTINATION share/locale/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
+		IF(UNIX)
+			IF(APPLE)
+				INSTALL(FILES ${_gmoFile} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
+			ELSE()
+				# Assume linux
+				INSTALL(FILES ${_gmoFile} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale RENAME ${_lang}.mo)
+			ENDIF()
+		ELSEIF(WIN32)
+			# FIXME: Use proper path
+			#INSTALL(FILES ${_gmoFile} DESTINATION share/locale/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
+		ENDIF()
 		SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
 	ENDFOREACH (_currentPoFile )
 
