@@ -121,7 +121,13 @@ void KviActionEditorListViewItem::setup()
 
 void KviActionEditorListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
-	p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
+	if (isSelected())
+	{
+		QColor col(m_pListView->palette().highlight());
+		col.setAlpha(200);
+		p->setBrush(col);
+		p->drawRect(0, 0, m_pListView->visibleWidth(), height());
+	}
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
