@@ -57,8 +57,6 @@
 #include <QPainter>
 #include <QTabWidget>
 #include <QLabel>
-#include <q3header.h>
-// FIXME: Qt4 #include <QHeaderView>
 
 
 extern KviActionEditorWindow * g_pActionEditorWindow;
@@ -91,7 +89,10 @@ void KviActionEditorListViewItem::setupForActionData()
 	QString t = "<b>" + m_pActionData->m_szName + "</b>";
 	t += "<br><font color=\"#808080\" size=\"-1\">" + m_pActionData->m_szVisibleName + "</font>";
 	m_szKey = m_pActionData->m_szName.upper();
-	m_pText = new QSimpleRichText(t,m_pListView->font());
+	//m_pText = new QSimpleRichText(t,m_pListView->font());
+	m_pText = new QTextDocument();
+	m_pText->setHtml(t);
+	m_pText->setDefaultFont(m_pListView->font());
 	if(m_pIcon)delete m_pIcon;
 	QPixmap * p = g_pIconManager->getBigIcon(m_pActionData->m_szBigIcon);
 	if(p)m_pIcon = new QPixmap(*p);
@@ -114,8 +115,9 @@ void KviActionEditorListViewItem::setup()
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->height() + (2 * LVI_BORDER);
+	m_pText->setTextWidth(iWidth);
+
+	int iHeight = m_pText->pageSize().height() + (2 * LVI_BORDER);
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
 	setHeight(iHeight);
 }
@@ -126,8 +128,8 @@ void KviActionEditorListViewItem::paintCell(QPainter * p,const QColorGroup & cg,
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setWidth(www);
-	m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
+	m_pText->setTextWidth(www);
+	m_pText->drawContents(p,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)));
 }
 
 

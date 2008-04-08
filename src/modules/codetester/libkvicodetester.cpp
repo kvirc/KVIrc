@@ -22,12 +22,13 @@
 //
 //===============================================================================
 
+#include "codetester.h"
+
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_pointerlist.h"
 
-#include "codetester.h"
 
 KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList = 0;
 
@@ -79,7 +80,7 @@ static bool codetester_module_cleanup(KviModule *m)
 
 KVIRC_MODULE(
 	"CodeTester",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Code tester window",
 	codetester_module_init,

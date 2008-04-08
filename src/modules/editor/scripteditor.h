@@ -38,6 +38,8 @@
 #include <QCheckBox>
 #include <QEvent>
 
+// Q3PopupMenu
+
 // FIXME: Qt4 #include <QSyntaxHighlighter>
 #include <q3syntaxhighlighter.h>
 #define QSyntaxHighlighter Q3SyntaxHighlighter
@@ -163,7 +165,7 @@ class KviScriptEditorReplaceDialog: public QDialog
 	Q_OBJECT
 public:
 	KviScriptEditorReplaceDialog( QWidget* parent = 0, const char* name = 0);
-    ~KviScriptEditorReplaceDialog();
+	~KviScriptEditorReplaceDialog();
 	QLineEdit *m_pFindlineedit;
 	QLineEdit *m_pReplacelineedit;
 protected:
@@ -184,7 +186,6 @@ signals:
 	void replaceAll( const QString &,const QString &);
 	void initFind();
 	void nextFind(const QString &);
-	
 };
 
 

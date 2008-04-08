@@ -70,14 +70,12 @@ src/kvirc/ui
 	kvi_toolwindows_container.h
 
 src/modules
-	actioneditor
 	addon
-	clock
-	codetester
-	editor
+	clock - all excluded by #if
+	editor - q3support
 	help
-	iograph
-	language
+	iograph - all excluded by #if
+	language - doesn't export anything
 	notifier
 	objects
 	options

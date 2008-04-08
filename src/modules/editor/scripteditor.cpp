@@ -313,7 +313,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 		}
 	}
 	switch(e->key())
-	{	
+	{
 		case Qt::Key_Period:
 		case Qt::Key_Left:
 		case Qt::Key_Right:
@@ -386,7 +386,7 @@ void KviScriptEditorWidget::contentsMousePressEvent(QMouseEvent *e)
 	QString tmp=buffer;
 	KviPointerList<QString> l;
 	if (tmp.left(1) == "$")
-	{	
+	{
 		tmp.remove(0,1);
 		KviKvsKernel::instance()->completeFunction(tmp,&l);
 		if (l.count() != 1) buffer="";
@@ -554,7 +554,6 @@ KviScriptSyntaxHighlighter::~KviScriptSyntaxHighlighter()
 #define IN_STRING 4
 
 int KviScriptSyntaxHighlighter::highlightParagraph(const QString &text,int endStateOfLastPara)
-
 {
 	const QChar * pBuf = (const QChar *)text.ucs2();
 	const QChar * c = pBuf;
@@ -567,7 +566,6 @@ int KviScriptSyntaxHighlighter::highlightParagraph(const QString &text,int endSt
 	bool bInString = endStateOfLastPara & IN_STRING;
 	
 	const QChar * pBegin;
-
 
 	while(c->unicode())
 	{
@@ -607,7 +605,6 @@ int KviScriptSyntaxHighlighter::highlightParagraph(const QString &text,int endSt
 			setFormat(pBegin - pBuf,1,g_fntNormal,g_clrBracket);
 			continue;
 		}
-
 
 		if(bNewCommand)
 		{
@@ -872,7 +869,6 @@ void KviScriptEditorImplementation::loadOptions()
 	g_pEditorModulePointer->getDefaultConfigFileName(tmp);
 
 	KviConfig cfg(tmp,KviConfig::Read);
-	
 	g_clrBackground = cfg.readColorEntry("Background",QColor(0,0,0));;
 	g_clrNormalText = cfg.readColorEntry("NormalText",QColor(100,255,0));
 	g_clrBracket = cfg.readColorEntry("Bracket",QColor(255,0,0));
@@ -882,7 +878,6 @@ void KviScriptEditorImplementation::loadOptions()
 	g_clrVariable = cfg.readColorEntry("Variable",QColor(200,200,200));
 	g_clrPunctuation = cfg.readColorEntry("Punctuation",QColor(180,180,0));
 	g_clrFind = cfg.readColorEntry("Find",QColor(255,0,0));
-
 	g_fntNormal = cfg.readFontEntry("Font",QFont("Fixed",12));
 }
 
@@ -918,7 +913,6 @@ void KviScriptEditorImplementation::saveOptions()
 	g_pEditorModulePointer->getDefaultConfigFileName(tmp);
 
 	KviConfig cfg(tmp,KviConfig::Write);
-	
 	cfg.writeEntry("Background",g_clrBackground);;
 	cfg.writeEntry("NormalText",g_clrNormalText);
 	cfg.writeEntry("Bracket",g_clrBracket);

@@ -29,8 +29,7 @@
 #include "kvi_tal_listview.h"
 
 #include <QWidget>
-#include <q3simplerichtext.h>
-#define QSimpleRichText Q3SimpleRichText
+#include <QTextDocument>
 
 class QLineEdit;
 class QComboBox;
@@ -82,7 +81,8 @@ public:
 	~KviActionEditorListViewItem();
 protected:
 	KviActionData * m_pActionData;
-	QSimpleRichText * m_pText;
+	//QSimpleRichText * m_pText;
+	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
 	KviTalListView * m_pListView;
 	QString m_szKey;

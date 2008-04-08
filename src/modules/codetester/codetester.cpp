@@ -28,22 +28,20 @@
 #include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_scripteditor.h"
-
 #include "kvi_app.h"
 #include "kvi_console.h"
 #include "kvi_parameterlist.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
-
-#include <qpushbutton.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qtoolbutton.h>
 #include "kvi_tal_popupmenu.h"
 
+#include <QPushButton>
+#include <QLayout>
+#include <QLabel>
+#include <QToolButton>
+
+
 extern KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList;
-
-
 
 
 KviCodeTester::KviCodeTester(QWidget * par)
@@ -123,12 +121,10 @@ void KviCodeTesterWindow::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += p3;
 }
 
-
 void KviCodeTesterWindow::getConfigGroupName(KviStr &szName)
 {
 	szName = "codetester";
 }
-
 
 void KviCodeTesterWindow::saveProperties(KviConfig *cfg)
 {

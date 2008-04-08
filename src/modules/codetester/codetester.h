@@ -25,12 +25,12 @@
 #include "kvi_window.h"
 #include "kvi_string.h"
 
-#include <qlineedit.h>
+#include <QLineEdit>
 
 class QPushButton;
 class QLabel;
-
 class KviScriptEditor;
+
 
 class KviCodeTester : public QWidget
 {
