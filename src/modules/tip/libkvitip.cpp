@@ -53,6 +53,7 @@ KviTipWindow * g_pTipWindow = 0;
 KviTipFrame::KviTipFrame(QWidget * par)
 : QFrame(par)
 {
+		m_pText=0;
 	KviStr buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
 	m_pTipPixmap = new QPixmap(buffer.ptr());
@@ -62,30 +63,39 @@ KviTipFrame::KviTipFrame(QWidget * par)
 
 KviTipFrame::~KviTipFrame()
 {
+	if (m_pText) delete m_pText;
 	delete m_pTipPixmap;
 }
 
 void KviTipFrame::setText(const QString &text)
 {
-	m_szText = "<center><font color=\"#FFFFFF\">";
-	m_szText += text;
-	m_szText += "</font></center>";
-	update();
-}
-
-void KviTipFrame::drawContents(QPainter *p)
-{
-	p->fillRect(contentsRect(),QColor(0,0,0));
-	p->drawPixmap(5,(height() - m_pTipPixmap->height()) / 2,*m_pTipPixmap);
-
+	QString szText= "<center><font color=\"#FFFFFF\">";
+	szText += text;
+	szText += "</font></center>";
+	if (m_pText) delete m_pText;
+	m_pText = new QTextDocument();
 	QFont f = QFont();
 	f.setStyleHint(QFont::SansSerif);
 	f.setPointSize(12);
 
-	QTextDocument doc(m_szText);
-	doc.setDefaultFont(f);
-	doc.setTextWidth(width() - 80);
-	doc.drawContents(p,contentsRect());
+	m_pText->setHtml(szText);
+	m_pText->setDefaultFont(f);
+
+	update();
+}
+
+void KviTipFrame::paintEvent(QPaintEvent *e)
+{
+	QPainter p(this);
+	SET_ANTI_ALIASING(p);
+	p.fillRect(contentsRect(),QColor(0,0,0));
+	p.drawPixmap(5,(height() - m_pTipPixmap->height()) / 2,*m_pTipPixmap);
+
+	int www = width() -  m_pTipPixmap->width();
+	p.translate(m_pTipPixmap->width(),5);
+	m_pText->setPageSize(QSizeF(www,height() /2));
+	m_pText->drawContents(&p);
+
 }
 
 KviTipWindow::KviTipWindow()
@@ -144,31 +154,31 @@ KviTipWindow::~KviTipWindow()
 	if(m_pConfig)closeConfig();
 }
 
-bool KviTipWindow::openConfig(const char * filename,bool bEnsureExists)
+bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 {
 	if(m_pConfig)closeConfig();
 
 	m_szConfigFileName = filename;
 //	m_szConfigFileName.cutToLast('/');
 
-	KviStr buffer;
-	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName.ptr(),KviApp::ConfigPlugins,true);
-
+	QString buffer;
+	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName,KviApp::ConfigPlugins,true);
+	debug("Check path %s and file %s",buffer.utf8().data(),m_szConfigFileName.utf8().data());
 	if(bEnsureExists)
 	{
-		if(!KviFileUtils::fileExists(buffer.ptr()))return false;
+		if(!KviFileUtils::fileExists(buffer))return false;
 	}
 
-	m_pConfig = new KviConfig(buffer.ptr(),KviConfig::Read);
+	m_pConfig = new KviConfig(buffer,KviConfig::Read);
 	
 	return true;
 }
 
 void KviTipWindow::closeConfig()
 {
-	KviStr buffer;
-	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,m_szConfigFileName.ptr());
-	m_pConfig->setSavePath(buffer.ptr());
+	QString buffer;
+	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,m_szConfigFileName);
+	m_pConfig->setSavePath(buffer);
 	delete m_pConfig;
 	m_pConfig = 0;
 }
@@ -251,8 +261,15 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szTipfilename)
 	KVSM_PARAMETERS_END(c)
+
 	if(!g_pTipWindow)g_pTipWindow = new KviTipWindow();
-	if (!szTipfilename.isEmpty()) g_pTipWindow->openConfig(szTipfilename);
+	bool error=false;
+	if (!szTipfilename.isEmpty()){
+		debug("Loading config tip");
+		error=g_pTipWindow->openConfig(szTipfilename);
+		if (!error) debug ("Not opened");
+		else debug("Opened");
+	}
 	g_pTipWindow->nextTip();
 	g_pTipWindow->show();
 	return true;

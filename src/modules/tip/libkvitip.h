@@ -31,6 +31,7 @@
 #include <QFrame>
 #include <QPixmap>
 #include <QCheckBox>
+#include <QTextDocument>
 
 
 class KviTipFrame : public QFrame
@@ -40,10 +41,10 @@ public:
 	KviTipFrame(QWidget * par);
 	~KviTipFrame();
 protected:
-	QString   m_szText;
+	QTextDocument *m_pText;
 	QPixmap * m_pTipPixmap;
 protected:
-	virtual void drawContents(QPainter *p);
+	virtual void paintEvent(QPaintEvent * );
 public:
 	void setText(const QString &text);
 };
@@ -58,12 +59,12 @@ protected:
 	KviTipFrame * m_pTipFrame;
 	KviStyledCheckBox   * m_pShowAtStartupCheck;
 	KviConfig   * m_pConfig;
-	KviStr        m_szConfigFileName; // no path!
+	QString        m_szConfigFileName; // no path!
 protected:
 	virtual void showEvent(QShowEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
 public:
-	bool openConfig(const char * filename,bool bEnsureExists = true);
+	bool openConfig(QString  filename,bool bEnsureExists = true);
 	void closeConfig();
 public slots:
 	void nextTip();
