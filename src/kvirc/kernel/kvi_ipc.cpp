@@ -38,11 +38,11 @@
 
 	static HWND kvi_win_findIpcSentinel()
 	{
-		HWND hWnd = ::FindWindow("QWidget","[Non-Commercial] - kvirc_ipc_sentinel");
+		HWND hWnd = ::FindWindow("QWidget","[Non-Commercial] - kvirc4_ipc_sentinel");
 		if(hWnd)return hWnd;
-		hWnd = ::FindWindow("QWidget","[Freeware] - kvirc_ipc_sentinel");
+		hWnd = ::FindWindow("QWidget","[Freeware] - kvirc4_ipc_sentinel");
 		if(hWnd)return hWnd;
-		hWnd = ::FindWindow("QWidget","kvirc_ipc_sentinel");
+		hWnd = ::FindWindow("QWidget","kvirc4_ipc_sentinel");
 		return hWnd;
 	}
 
@@ -69,10 +69,10 @@
 		{
 			if(g_bIpcAtomsLoaded)return;
 			g_bIpcAtomsLoaded = true;
-			kvi_sentinel_id.sprintf("tonno e mistero - %d",getuid());
-			kvi_atom_ipc_sentinel_window = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_SENTINEL_WINDOW",False);
-			kvi_atom_ipc_remote_command = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_COMMAND",False);
-			kvi_atom_ipc_remote_message = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI_IPC_REMOTE_MESSAGE",False);
+			kvi_sentinel_id.sprintf("pane tonno e mistero - %d",getuid());
+			kvi_atom_ipc_sentinel_window = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI4_IPC_SENTINEL_WINDOW",False);
+			kvi_atom_ipc_remote_command = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI4_IPC_REMOTE_COMMAND",False);
+			kvi_atom_ipc_remote_message = XInternAtom(kvi_ipc_get_xdisplay(),"XA_KVI4_IPC_REMOTE_MESSAGE",False);
 		}
 
 		static void kvi_ipcSetRemoteCommand(Window w,const char * command)
@@ -182,10 +182,10 @@
 	//////////////////////////////////////////////////////////////////////
 
 	KviIpcSentinel::KviIpcSentinel()
-	: QWidget(0,"kvirc_ipc_sentinel")
+	: QWidget(0,"kvirc4_ipc_sentinel")
 	{
 #ifdef COMPILE_ON_WINDOWS
-		setCaption("kvirc_ipc_sentinel");
+		setCaption("kvirc4_ipc_sentinel");
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_X11_SUPPORT
 		kvi_ipcLoadAtoms();
@@ -260,7 +260,7 @@
 	#endif //!COMPILE_NO_X
 #endif //!COMPILE_ON_WINDOWS
 	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_ipc.moc"
+		#include "kvi_ipc.moc"
 	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
