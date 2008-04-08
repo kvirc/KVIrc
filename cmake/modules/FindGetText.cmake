@@ -20,7 +20,8 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 
 		ADD_CUSTOM_COMMAND(
 			OUTPUT ${_gmoFile}
-			COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+			# do not update *.po during the standard build
+			#COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
 			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
 			DEPENDS ${_absPotFile} ${_absFile}
 		)
