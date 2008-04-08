@@ -40,7 +40,7 @@ public:
 	KviTipFrame(QWidget * par);
 	~KviTipFrame();
 protected:
-	QString m_szText;
+	QString   m_szText;
 	QPixmap * m_pTipPixmap;
 protected:
 	virtual void drawContents(QPainter *p);

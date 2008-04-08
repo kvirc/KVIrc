@@ -25,9 +25,9 @@
 
 #include <QSystemTrayIcon>
 
-class KviTalPopupMenu;
 class QPixmap;
 class QTimer;
+class KviTalPopupMenu;
 class KviDynamicToolTip;
 //class KviFrame;
 
@@ -69,7 +69,6 @@ protected slots:
 	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
 	void doAway(int);
 	void flashingTimerShot();
-
 	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
 };
 

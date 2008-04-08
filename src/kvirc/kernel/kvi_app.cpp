@@ -1577,7 +1577,7 @@ void KviApp::createFrame()
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
-		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 
 	if(KVI_OPTION_BOOL(KviOption_boolStartupMinimized))
 	{

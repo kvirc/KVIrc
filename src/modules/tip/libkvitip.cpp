@@ -36,8 +36,7 @@
 #include <QPainter>
 #include <QDesktopWidget>
 #include <QCloseEvent>
-#include <q3simplerichtext.h>
-#define KviTalSimpleRichText Q3SimpleRichText
+#include <QTextDocument>
 
 
 KviTipWindow * g_pTipWindow = 0;
@@ -83,12 +82,10 @@ void KviTipFrame::drawContents(QPainter *p)
 	f.setStyleHint(QFont::SansSerif);
 	f.setPointSize(12);
 
-	KviTalSimpleRichText doc(m_szText,f);
-	doc.setWidth(width() - 80);
-
-	QRegion reg(0,0,1000,20000);
-
-	doc.draw(p,70,10,reg,colorGroup());
+	QTextDocument doc(m_szText);
+	doc.setDefaultFont(f);
+	doc.setTextWidth(width() - 80);
+	doc.drawContents(p,contentsRect());
 }
 
 KviTipWindow::KviTipWindow()
@@ -173,7 +170,7 @@ void KviTipWindow::closeConfig()
 	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,m_szConfigFileName.ptr());
 	m_pConfig->setSavePath(buffer.ptr());
 	delete m_pConfig;
-    m_pConfig = 0;
+	m_pConfig = 0;
 }
 
 void KviTipWindow::nextTip()
@@ -203,7 +200,7 @@ void KviTipWindow::nextTip()
 	KviStr tmp(KviStr::Format,"%u",uNextTip);
 	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
 
-	//debug("REDECODED=%s",szTip.utf8().data());
+	//qDebug("REDECODED=%s",szTip.utf8().data());
 
 	uNextTip++;
 	if(uNextTip >= uNumTips)uNextTip = 0;

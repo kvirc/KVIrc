@@ -955,7 +955,7 @@ void KviFrame::closeEvent(QCloseEvent *e)
 
 		if(!dockExtension())
 		{
-		    executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
+		    executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 		}
 		if(dockExtension())
 		{
@@ -1229,7 +1229,6 @@ void KviFrame::restoreToolBarPositions()
 	}
 }
 
-
 void KviFrame::createTaskBar()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListTaskBar))
@@ -1336,7 +1335,7 @@ void KviFrame::hideEvent ( QHideEvent * e)
 
 		if(!dockExtension())
 		{
-			executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
+			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 		}
 			 QTimer::singleShot( 0, this, SLOT(hide()) );
 		}

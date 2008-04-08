@@ -20,14 +20,9 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
+#include "libkvitrayicon.h"
+
 #include "kvi_settings.h"
-
-#ifdef COMPILE_ON_WINDOWS
-	#define ICON_SIZE 16
-#else
-	#define ICON_SIZE 22
-#endif
-
 #include "kvi_app.h"
 #include "kvi_module.h"
 #include "kvi_locale.h"
@@ -45,8 +40,6 @@
 #include "kvi_doublebuffer.h"
 #include "kvi_tal_popupmenu.h"
 
-#include "libkvitrayicon.h"
-
 #include <QLabel>
 #include <QPixmap>
 #include <QPainter>
@@ -57,9 +50,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+#ifdef COMPILE_ON_WINDOWS
+	#define ICON_SIZE 16
+#else
+	#define ICON_SIZE 22
+#endif
 
 extern KVIRC_API KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
-static KviPointerList<KviTrayIcon> * g_pDockWidgetList = 0;
+static KviPointerList<KviTrayIcon> * g_pTrayIconList = 0;
 
 static QPixmap * g_pDock1 = 0;
 static QPixmap * g_pDock2 = 0;
@@ -79,7 +77,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pFlashingTimer = new QTimer(this,"flashing_timer");
 	connect( m_pFlashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()) );
 	m_bFlashed=0;
-	g_pDockWidgetList->append(this);
+	g_pTrayIconList->append(this);
 	m_pFrm = frm;
 	m_pFrm->setDockExtension(this);
 
@@ -100,8 +98,8 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pContextPopup->insertSeparator();
 	m_iToggleFrame = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW)),QString(""),this,SLOT(toggleParentFrame()));
 	m_pContextPopup->insertSeparator();
-	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DOCKWIDGET)),__tr2qs("Un&dock"),m_pFrm,SLOT(executeInternalCommand(int)));
-	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_DOCKWIDGET_HIDE);
+	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Un&dock"),m_pFrm,SLOT(executeInternalCommand(int)));
+	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pApp,SLOT(quit()));
 	m_pContextPopup->setAccel(__tr2qs("Ctrl+Q"),id);
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
@@ -116,7 +114,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 KviTrayIcon::~KviTrayIcon()
 {
 	m_pFrm->setDockExtension(0);
-	g_pDockWidgetList->removeRef(this);
+	g_pTrayIconList->removeRef(this);
 }
 
 void KviTrayIcon::die()
@@ -469,11 +467,10 @@ void KviTrayIcon::updateIcon()
 	setIcon(QIcon(m_CurrentPixmap));
 }
 
-
-static KviTrayIcon * dockwidget_find(KviFrame *f)
+static KviTrayIcon * trayicon_find(KviFrame *f)
 {
-	if(!g_pDockWidgetList)return 0;
-	for(KviTrayIcon * w = g_pDockWidgetList->first();w;w = g_pDockWidgetList->next())
+	if(!g_pTrayIconList)return 0;
+	for(KviTrayIcon * w = g_pTrayIconList->first();w;w = g_pTrayIconList->next())
 	{
 		if(w->frame() == f)return w;
 	}
@@ -514,9 +511,9 @@ static KviTrayIcon * dockwidget_find(KviFrame *f)
 		[cmd]trayicon.hide[/cmd]
 */
 
-static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
-	if(!(dockwidget_find(c->window()->frame())))
+	if(!(trayicon_find(c->window()->frame())))
 	{
 		KviTrayIcon * w = new KviTrayIcon(c->window()->frame());
 		w->show();
@@ -540,9 +537,9 @@ static bool dockwidget_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		[cmd]trayicon.show[/cmd]
 */
 
-static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 {
-	KviTrayIcon * w= dockwidget_find(c->window()->frame());
+	KviTrayIcon * w= trayicon_find(c->window()->frame());
 	if(w)delete w;
 	// show the parent frame.. otherwise there will be no way to get it back
 	if(!c->window()->frame()->isVisible())
@@ -563,14 +560,14 @@ static bool dockwidget_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 	@syntax:
 		trayicon.hidewindow
 	@description:
-		Hides the window, assotiated with dockwidget
+		Hides the window, assotiated with trayicon
 	@seealso:
 		[cmd]trayicon.show[/cmd], [cmd]trayicon.hide[/cmd]
 */
 
-static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
+static bool trayicon_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 {
-	KviTrayIcon * w= dockwidget_find(c->window()->frame());
+	KviTrayIcon * w= trayicon_find(c->window()->frame());
 	if(w)
 	{
 		c->window()->frame()->hide();
@@ -594,18 +591,16 @@ static bool dockwidget_kvs_cmd_hidewindow(KviKvsModuleCommandCall * c)
 		[cmd]trayicon.show[/cmd]
 */
 
-static bool dockwidget_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
+static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 {
-	c->returnValue()->setBoolean(dockwidget_find(c->window()->frame()));
+	c->returnValue()->setBoolean(trayicon_find(c->window()->frame()));
 	return true;
 }
-
-
 
 // =======================================
 // init routine
 // =======================================
-static bool dockwidget_module_init(KviModule * m)
+static bool trayicon_module_init(KviModule * m)
 {
 	QString buffer;
 #ifdef COMPILE_ON_WINDOWS
@@ -627,27 +622,25 @@ static bool dockwidget_module_init(KviModule * m)
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");
 #endif
-	
 	g_pDock3 = new QPixmap(buffer);
 
+	g_pTrayIconList = new KviPointerList<KviTrayIcon>;
+	g_pTrayIconList->setAutoDelete(false);
 
-	g_pDockWidgetList = new KviPointerList<KviTrayIcon>;
-	g_pDockWidgetList->setAutoDelete(false);
 
-
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",dockwidget_kvs_cmd_hide);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"hidewindow",dockwidget_kvs_cmd_hidewindow);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",dockwidget_kvs_cmd_show);
-	KVSM_REGISTER_FUNCTION(m,"isVisible",dockwidget_kvs_fnc_isvisible);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",trayicon_kvs_cmd_hide);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"hidewindow",trayicon_kvs_cmd_hidewindow);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",trayicon_kvs_cmd_show);
+	KVSM_REGISTER_FUNCTION(m,"isVisible",trayicon_kvs_fnc_isvisible);
 
 	return true;
 }
 
-static bool dockwidget_module_cleanup(KviModule *m)
+static bool trayicon_module_cleanup(KviModule *m)
 {
-	while(g_pDockWidgetList->first())delete g_pDockWidgetList->first();
-	delete g_pDockWidgetList;
-	g_pDockWidgetList = 0;
+	while(g_pTrayIconList->first())delete g_pTrayIconList->first();
+	delete g_pTrayIconList;
+	g_pTrayIconList = 0;
 
 	delete g_pDock1;
 	g_pDock1 = 0;
@@ -661,23 +654,23 @@ static bool dockwidget_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool dockwidget_module_can_unload(KviModule *)
+static bool trayicon_module_can_unload(KviModule *)
 {
-	return g_pDockWidgetList->isEmpty();
+	return g_pTrayIconList->isEmpty();
 }
 
 // =======================================
 // plugin definition structure
 // =======================================
 KVIRC_MODULE(
-	"KVIrc dock widget implementation",
+	"KVIrc Tray Icon Implementation",
 	"4.0.0",
 	"Szymon Stefanek <pragma at kvirc dot net> and Alexey Uzhva <alexey at kvirc dot ru>",
 	"exports the /trayicon.* interface\n",
-	dockwidget_module_init ,
-	dockwidget_module_can_unload,
+	trayicon_module_init ,
+	trayicon_module_can_unload,
 	0,
-	dockwidget_module_cleanup
+	trayicon_module_cleanup
 )
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
