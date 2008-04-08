@@ -1,9 +1,7 @@
 # CMakeLists for scripts/
 
 SET(kvishellscripts
-	browser/kvi4_run_netscape
 	config/kvirc4-config
-	helpsearch/kvi4_search_help
 )
 
 # Install target

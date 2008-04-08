@@ -2,4 +2,4 @@
 # KVirc IRC client Makefile - 16.12.98 Szymon Stefanek <stefanek@tin.it>
 ###############################################################################
 
-SUBDIRS          = browser config helpsearch
+SUBDIRS          = config
