@@ -76,11 +76,9 @@ void KviTipFrame::setText(const QString &text)
 	m_pText = new QTextDocument();
 	QFont f = QFont();
 	f.setStyleHint(QFont::SansSerif);
-	f.setPointSize(12);
-
+	f.setPointSize(11);
 	m_pText->setHtml(szText);
 	m_pText->setDefaultFont(f);
-
 	update();
 }
 
@@ -99,8 +97,11 @@ void KviTipFrame::paintEvent(QPaintEvent *e)
 }
 
 KviTipWindow::KviTipWindow()
-: QWidget(0,"kvirc_tip_window" /*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/ )
+
 {
+//	: QWidget(0)
+	setObjectName("kvirc_tip_window");
+		/*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/
 	m_pConfig = 0;
 
 	m_pTipFrame = new KviTipFrame(this);
