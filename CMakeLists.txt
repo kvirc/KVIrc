@@ -212,7 +212,7 @@ FIND_PACKAGE(GetText)
 #CheckLibraryExists.cmake
 
 # Search for subdirectories
-SUBDIRS(src data po scripts)
+SUBDIRS(src data po scripts doc)
 
 ###############################################################################
 #
