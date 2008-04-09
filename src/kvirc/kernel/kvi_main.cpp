@@ -289,42 +289,8 @@ int parseArgs(ParseArgs * a)
 	return KVI_ARGS_RETCODE_OK;
 }
 
-#if defined(Q_OS_MACX) && (__GNUC__ == 3 && __GNUC_MINOR__ == 3)
-// Repair broken colour definitions due to "lazy" static object initialization
-void repair_colors(void)
-{
-	if(Qt::white.red() == 0)
-	{
-		Qt::color0 = (qRgb(255,255,255 ),0);
-		Qt::color1 = (qRgb(0,0,0),1);
-		Qt::black.setRgb(0,0,0);
-		Qt::white.setRgb(255,255,255);
-		Qt::darkGray.setRgb(128,128,128);
-		Qt::gray.setRgb(160,160,164);
-		Qt::lightGray.setRgb(192,192,192);
-		Qt::red.setRgb(255,0,0);
-		Qt::green.setRgb(0,255,0);
-		Qt::blue.setRgb(0,0,255);
-		Qt::cyan.setRgb(0,255,255);
-		Qt::magenta.setRgb(255,0,255);
-		Qt::yellow.setRgb(255,255,0);
-		Qt::darkRed.setRgb(128,0,0);
-		Qt::darkGreen.setRgb(0,128,0);
-		Qt::darkBlue.setRgb(0,0,128);
-		Qt::darkCyan.setRgb(0,128,128);
-		Qt::darkMagenta.setRgb(128,0,128);
-		Qt::darkYellow.setRgb(128,128,0);
-	}
-}
-#endif //Q_OS_MACX
-
 int main(int argc,char ** argv)
 {
-
-#if defined(Q_OS_MACX) && (__GNUC__ == 3 && __GNUC_MINOR__ == 3)
-	repair_colors();
-#endif //Q_OS_MACX
-
 	ParseArgs a;
 	a.argc = argc;
 	a.argv = argv;
