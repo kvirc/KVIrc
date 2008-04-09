@@ -24,12 +24,11 @@
 #include "kvi_error.h"
 #include "kvi_locale.h"
 #include "kvi_debug.h"
-
-
 #include "class_list.h"
 #include "class_combobox.h"
-#include <qlineedit.h>
-#include <qstring.h>
+
+#include <QLineEdit>
+#include <QString>
 
 /*
 	@doc:	combobox

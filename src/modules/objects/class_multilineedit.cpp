@@ -28,10 +28,11 @@
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "kvi_malloc.h"
-#include <qfile.h>
-#include <q3multilineedit.h>
+
+#include <QFile>
+#include <Q3multiLineedit>
 #include <QTextStream>
-#include <q3stylesheet.h>
+#include <Q3styleSheet>
 #define KviTalMultiLineEdit Q3MultiLineEdit
 #define QTEXTEDIT_AUTO_ALL Q3TextEdit::AutoAll
 #define QTEXTEDIT_AUTO_NONE Q3TextEdit::AutoNone

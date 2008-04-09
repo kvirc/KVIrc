@@ -24,11 +24,11 @@
 
 #include "class_file.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_fileutils.h"
-#include  <qstringlist.h>
+
+#include  <QStringlist>
 
 
 // needed for $open()

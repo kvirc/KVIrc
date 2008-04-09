@@ -21,16 +21,16 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qfont.h>
-#include <qpixmap.h>
-#include <qmessagebox.h>
-#include "class_label.h"
-//#include "kvi_fileutils.h"
+
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
+#include "class_label.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+
+#include <QFont>
+#include <QPixmap>
+#include <QMessageBox.h>
 
 
 
@@ -225,7 +225,9 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 
 bool KviKvsObject_label::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QLabel(parentScriptWidget(), name()), true);
+	QLabel *label=new QLabel(parentScriptWidget());
+	label->setObjectName(name());
+	setObject(label,true);
 	return true;
 }
 

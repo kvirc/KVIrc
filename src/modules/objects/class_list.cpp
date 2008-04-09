@@ -23,12 +23,9 @@
 //============================================================================
 
 #include "kvi_debug.h"
-
 #include "kvi_malloc.h"
 #include "kvi_locale.h"
-
 #include "class_list.h"
-
 #include <stdlib.h>
 
 

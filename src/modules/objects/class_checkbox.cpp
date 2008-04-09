@@ -23,10 +23,8 @@
 
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_styled_controls.h"
-
 #include "class_checkbox.h"
 
 /*

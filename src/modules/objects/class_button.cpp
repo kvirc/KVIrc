@@ -21,13 +21,11 @@
 //
 
 #include "kvi_debug.h"
-
-
 #include "kvi_error.h"
-#include <qiconset.h>
 #include "kvi_iconmanager.h"
-
 #include "class_button.h"
+
+#include <QIconSet>
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 

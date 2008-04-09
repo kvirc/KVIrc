@@ -21,15 +21,13 @@
 //
 
 #include "class_dialog.h"
-
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_app.h"
 
-#include <qdialog.h>
+#include <QDialog>
 
 
 /*

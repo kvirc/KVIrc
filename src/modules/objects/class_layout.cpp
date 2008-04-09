@@ -175,7 +175,7 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QGridLayout *)object())->addMultiCellWidget(((QWidget *)(pObject->object())),uStartRow,uEndRow,uStartCol,uEndCol);
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow,uStartCol,uEndRow,uEndCol);
 	return true;
 }
 bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
@@ -197,7 +197,7 @@ bool KviKvsObject_layout::functionSetColStretch(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	((QGridLayout *)object())->setColStretch(uCol,uStretch);
+	((QGridLayout *)object())->setColumnStretch(uCol,uStretch);
 	return true;
 }
 
@@ -229,7 +229,8 @@ bool KviKvsObject_layout::functionAddRowSpacing(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QGridLayout *)object())->addRowSpacing(uRow,uSpacing);
+    if (widget()) //((QGridLayout *)object())->addRowSpacing(uRow,uSpacing);
+	     ((QGridLayout *)object())->addItem(new QSpacerItem(0, uSpacing), uRow, 0);
 	return true;
 }
 
@@ -256,7 +257,7 @@ bool KviKvsObject_layout::functionSetResizeMode(KviKvsObjectFunctionCall *c)
 	else if(KviQString::equalCI(szMode,"Minimum")) r = QLAYOUT_MINIMUM;
 	else if(KviQString::equalCI(szMode,"Fixed"))r = QLAYOUT_FIXED;
 	else c->warning(__tr2qs("Invalid resize mode defaulting to Auto"));
-	((QGridLayout *)object())->setResizeMode(r);
+	((QGridLayout *)object())->setSizeConstraint(r);
 	return true;
 
 }

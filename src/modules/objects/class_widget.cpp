@@ -965,7 +965,8 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true; // should we warn here ?
-	widget()->show();
+	QWidget *wid=widget();
+	wid->show();
 	return true;
 }
 bool KviKvsObject_widget::function_update(KviKvsObjectFunctionCall *c)
