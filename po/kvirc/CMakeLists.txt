@@ -83,14 +83,4 @@ FILE(GLOB mofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.mo")
 
 
 # Install target
-IF(UNIX)
-	IF(APPLE)
-		GETTEXT_CREATE_TRANSLATIONS(kvirc.pot ALL ${pofiles})
-	ELSE()
-		# Assume linux
-		#GETTEXT_CREATE_TRANSLATIONS(kvirc.pot ALL ${pofiles})
-		INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale)
-	ENDIF()
-ELSEIF(WIN32)
-	#INSTALL(FILES ${files} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/locale)
-ENDIF()
+GETTEXT_CREATE_TRANSLATIONS(kvirc.pot ALL ${pofiles})
