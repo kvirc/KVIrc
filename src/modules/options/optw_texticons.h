@@ -29,10 +29,8 @@
 #include "kvi_tal_hbox.h"
 
 #include <QToolButton>
-
-#include <q3table.h>
-#define KviTalTable Q3Table
-#define KviTalTableItem Q3TableItem
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 class KviTextIconTableItem;
 
@@ -63,11 +61,11 @@ protected slots:
 	void chooseFromFile();
 };
 
-class KviTextIconTableItem : public KviTalTableItem
+class KviTextIconTableItem : public QTableWidgetItem
 {
 	friend class KviTextIconsOptionsWidget;
 public:
-	KviTextIconTableItem(KviTalTable * t,KviTextIcon * icon);
+	KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon);
 	~KviTextIconTableItem();
 protected:
 	KviTextIcon * m_pIcon;
@@ -85,9 +83,9 @@ public:
 	KviTextIconsOptionsWidget(QWidget * parent);
 	~KviTextIconsOptionsWidget();
 protected:
-	KviTalTable * m_pTable;
-	QPushButton * m_pAdd;
-	QPushButton * m_pDel;
+	QTableWidget * m_pTable;
+	QPushButton  * m_pAdd;
+	QPushButton  * m_pDel;
 public:
 	virtual void commit();
 protected slots:
