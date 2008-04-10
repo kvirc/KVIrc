@@ -301,6 +301,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "winamp", "src\modules\media
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "context", "src\modules\context\context_QT4_vc05.vcproj", "{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "torrent", "src\modules\torrent\torrent_QT4_vc05.vcproj", "{3A215B90-64EF-4A95-859E-F5CD38016258}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -555,6 +557,10 @@ Global
 		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Debug|Win32.Build.0 = Debug|Win32
 		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Release|Win32.ActiveCfg = Release|Win32
 		{BE75388C-806A-4CCC-8EB6-B2FF4EA0FB79}.Release|Win32.Build.0 = Release|Win32
+		{3A215B90-64EF-4A95-859E-F5CD38016258}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A215B90-64EF-4A95-859E-F5CD38016258}.Debug|Win32.Build.0 = Debug|Win32
+		{3A215B90-64EF-4A95-859E-F5CD38016258}.Release|Win32.ActiveCfg = Release|Win32
+		{3A215B90-64EF-4A95-859E-F5CD38016258}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
