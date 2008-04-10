@@ -134,8 +134,9 @@ void KviTextIconTableItem::setContentFromEditor(QWidget * w)
 }
 
 KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"texticons_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("texticons_options_widget");
 	createLayout(2,2);
 
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
@@ -149,7 +150,10 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	int idx = 0;
 	while(KviTextIcon * i = it.current())
 	{
-		m_pTable->item(idx,0)->setText(it.currentKey());
+		if(!m_pTable->item(idx,0)){
+			m_pTable->setItem(idx,0,new QTableWidgetItem(it.currentKey()));
+		}
+
 		m_pTable->setItem(idx,1,new KviTextIconTableItem(m_pTable,new KviTextIcon(i)));
 		++idx;
 		++it;
@@ -167,6 +171,7 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 
 	m_pDel->setEnabled(false);
 
+	// FIXME: this does not work
 	connect(m_pTable,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
 }
 
