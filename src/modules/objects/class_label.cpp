@@ -30,7 +30,7 @@
 
 #include <QFont>
 #include <QPixmap>
-#include <QMessageBox.h>
+#include <QMessageBox>
 
 
 

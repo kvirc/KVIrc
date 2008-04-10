@@ -28,7 +28,7 @@
 #include "kvi_error.h"
 #include "kvi_fileutils.h"
 
-#include  <QStringlist>
+#include  <QStringList>
 
 
 // needed for $open()
