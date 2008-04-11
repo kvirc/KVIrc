@@ -1,0 +1,18 @@
+# Template rules for modules
+IF(UNIX)
+	IF(APPLE)
+		ADD_LIBRARY( ${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
+		TARGET_LINK_LIBRARIES(${kvi_module_name} kvilib ${LIBS})
+		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
+		INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
+	ELSE()
+		# Assume linux
+		ADD_LIBRARY(${kvi_module_name} SHARED ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
+		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+		INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
+	ENDIF()
+ELSEIF(WIN32)
+	#ADD_LIBRARY(${kvi_module_name} ???)
+	SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
+	#INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
+ENDIF()
