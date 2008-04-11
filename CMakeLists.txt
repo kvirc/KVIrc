@@ -81,8 +81,9 @@ INCLUDE(CheckIncludeFiles)
 CHECK_INCLUDE_FILES(sys/types.h SYSTEM_HAS_SYS_TYPES_H)
 CHECK_INCLUDE_FILES(strings.h SYSTEM_HAS_STRINGS_H)
 
-INCLUDE(TestBigEndian)
-TEST_BIG_ENDIAN(SYSTEM_IS_BIG_ENDIAN)
+# No longer rely on this test for endianness (otherwise cross-compilation might fail)
+#INCLUDE(TestBigEndian)
+#TEST_BIG_ENDIAN(SYSTEM_IS_BIG_ENDIAN)
 
 OPTION(WANT_PCH "Whether to use pre-compiled headers" ON)
 IF(WANT_PCH)

@@ -38,6 +38,8 @@
 //   Perverse Middle Endian             0xbb 0xaa 0xdd 0xcc or another braindamaged combination (unsupported)
 //   Network Byte Order is Big Endian
 //   Intel Stuff uses Little Endian
+//   PPC is Big Endian
+//   Universal binaries on MacOSX use both Big and Little Endian
 //   
 
 #ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER

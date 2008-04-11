@@ -22,6 +22,4 @@
 
 #cmakedefine COMPILE_X11_SUPPORT 1
 
-#cmakedefine SYSTEM_IS_BIG_ENDIAN 1
-
 #endif //!_kvi_sysconfig_h_

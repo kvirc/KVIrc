@@ -148,4 +148,13 @@
 #define debug qDebug
 
 
+// Trust Qt about the current target processor endianness
+#if Q_BYTE_ORDER == Q_BIG_ENDIAN
+	#define BIG_ENDIAN_MACHINE_BYTE_ORDER
+#else
+	#ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER
+		#undef BIG_ENDIAN_MACHINE_BYTE_ORDER
+	#endif
+#endif
+
 #endif //_KVI_SETTINGS_H_
