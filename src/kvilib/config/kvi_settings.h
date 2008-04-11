@@ -34,6 +34,7 @@
 
 #include <qglobal.h>
 
+// FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)
 
 	#define FEEL_LIKE_I_AM_COMPILING_UNDER_WINDOZE
@@ -70,28 +71,32 @@
 					#define COMPILE_X11_SUPPORT
 				#endif
 			#endif
+
+			#ifndef VERSION
+				#define VERSION "?.?.?"
+			#endif
+			
+			#ifndef BUILD_DATE
+				#define BUILD_DATE "?"
+			#endif
+			
+			#ifndef BUILD_FLAGS
+				#define BUILD_FLAGS "?"
+			#endif
+
 		#else
 			// assume CMake build system
 			#include "kvi_sysconfig.h"
+
+			#define VERSION KVIRC_VERSION_RELEASE
+			#define VERSION_BRANCH KVIRC_VERSION_BRANCH
+			#define BUILD_DATE KVIRC_BUILD_DATE
+			#define BUILD_FLAGS KVIRC_BUILD_FLAGS
 		#endif
 	#endif
-	
-	
 
 	#define KVILIB_API
 	#define KVIRC_API
-
-	#ifndef VERSION
-		#define VERSION "?.?.?"
-	#endif
-	
-	#ifndef BUILD_DATE
-		#define BUILD_DATE "?"
-	#endif
-	
-	#ifndef BUILD_FLAGS
-		#define BUILD_FLAGS "?"
-	#endif
 
 #endif
 
