@@ -262,10 +262,6 @@
 				>
 			</File>
 			<File
-				RelativePath="optw_ident.cpp"
-				>
-			</File>
-			<File
 				RelativePath="optw_identity.cpp"
 				>
 			</File>
@@ -342,10 +338,6 @@
 				>
 			</File>
 			<File
-				RelativePath="optw_ssl.cpp"
-				>
-			</File>
-			<File
 				RelativePath="optw_taskbar.cpp"
 				>
 			</File>
@@ -358,19 +350,11 @@
 				>
 			</File>
 			<File
-				RelativePath="optw_theme.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\optw_tools.cpp"
 				>
 			</File>
 			<File
 				RelativePath="optw_topiclabel.cpp"
-				>
-			</File>
-			<File
-				RelativePath="optw_transport.cpp"
 				>
 			</File>
 			<File
@@ -638,28 +622,6 @@
 			</File>
 			<File
 				RelativePath="optw_highlighting.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="optw_ident.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1099,28 +1061,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="optw_ssl.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="optw_taskbar.h"
 				>
 				<FileConfiguration
@@ -1187,28 +1127,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="optw_theme.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\optw_tools.h"
 				>
 				<FileConfiguration
@@ -1232,28 +1150,6 @@
 			</File>
 			<File
 				RelativePath="optw_topiclabel.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="optw_transport.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"

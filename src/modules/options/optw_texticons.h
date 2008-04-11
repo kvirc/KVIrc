@@ -89,7 +89,7 @@ protected:
 public:
 	virtual void commit();
 protected slots:
-	void selectionChanged();
+	void itemSelectionChanged();
 	void addClicked();
 	void delClicked();
 };

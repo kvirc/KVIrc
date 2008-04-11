@@ -172,14 +172,14 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	m_pDel->setEnabled(false);
 
 	// FIXME: this does not work
-	connect(m_pTable,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
+	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
 }
 
 KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
 {
 }
 
-void KviTextIconsOptionsWidget::selectionChanged()
+void KviTextIconsOptionsWidget::itemSelectionChanged()
 {
 	int i = m_pTable->currentRow();
 	m_pDel->setEnabled(i >= 0 && i < m_pTable->rowCount());
