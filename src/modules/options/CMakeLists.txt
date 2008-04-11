@@ -90,31 +90,5 @@ SET(kvioptions_SRCS
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvioptions_MOC_SRCS ${kvioptions_MOC_HDRS})
 
-# Create library
-IF(UNIX)
-	IF(APPLE)
-		ADD_LIBRARY(kvioptions MODULE ${kvioptions_SRCS} ${kvioptions_MOC_SRCS})
-	ELSE()
-		# Assume linux
-		ADD_LIBRARY(kvioptions SHARED ${kvioptions_SRCS} ${kvioptions_MOC_SRCS})
-	ENDIF()
-ELSE()
-	# Assume windows
-	#ADD_LIBRARY(kvioptions ???)
-ENDIF()
-
-# Install target
-IF(UNIX)
-	IF(APPLE)
-		TARGET_LINK_LIBRARIES(kvioptions kvilib ${LIBS})
-		SET_TARGET_PROPERTIES(kvioptions PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
-		INSTALL(TARGETS kvioptions LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
-	ELSE()
-		# Assume linux
-		SET_TARGET_PROPERTIES(kvioptions PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-		INSTALL(TARGETS kvioptions LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
-	ENDIF()
-ELSEIF(WIN32)
-	SET_TARGET_PROPERTIES(kvioptions PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-	#INSTALL(TARGETS kvioptions LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
-ENDIF()
+SET(kvi_module_name kvioptions)
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

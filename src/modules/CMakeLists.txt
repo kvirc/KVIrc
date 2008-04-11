@@ -1,6 +1,6 @@
 # CMakeLists.txt for src/modules/
 IF(APPLE)
-	SET(CMAKE_MODULE_LINKER_FLAGS "-single_module -undefined dynamic_lookup -multiply_defined suppress")
+	SET(CMAKE_MODULE_LINKER_FLAGS "-undefined dynamic_lookup")
 ENDIF()
 
 INCLUDE_DIRECTORIES(

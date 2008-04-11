@@ -261,7 +261,6 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 
 	m_pDel->setEnabled(false);
 
-	// FIXME: this does not work
 	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
 }
 

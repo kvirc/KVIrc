@@ -12,32 +12,5 @@ SET(kviaddon_SRCS
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kviaddon_MOC_SRCS ${kviaddon_MOC_HDRS})
 
-# Create library
-IF(UNIX)
-	IF(APPLE)
-		ADD_LIBRARY(kviaddon MODULE ${kviaddon_SRCS} ${kviaddon_MOC_SRCS})
-	ELSE()
-		# Assume linux
-		ADD_LIBRARY(kviaddon SHARED ${kviaddon_SRCS} ${kviaddon_MOC_SRCS})
-	ENDIF()
-ELSE()
-	# Assume windows
-	#ADD_LIBRARY(kviaddon ???)
-ENDIF()
-
-# Install target
-IF(UNIX)
-	IF(APPLE)
-		TARGET_LINK_LIBRARIES(kviaddon kvilib ${LIBS})
-		SET_TARGET_PROPERTIES(kviaddon PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
-		INSTALL(TARGETS kviaddon LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
-	ELSE()
-		# Assume linux
-		SET_TARGET_PROPERTIES(kviaddon PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-		INSTALL(TARGETS kviaddon LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
-	ENDIF()
-ELSEIF(WIN32)
-	# Windows
-	SET_TARGET_PROPERTIES(kviaddon PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-	#INSTALL(TARGETS kviaddon LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
-ENDIF()
+SET(kvi_module_name kviaddon)
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

@@ -43,58 +43,58 @@ print_syntax()
 	echo "    --libraryflags    : The library directories above with -L prepended "
 	echo "                        and the libraries above with -l prepended."
 	echo "    --definitions     : The compiler definitions you should use to compile stuff with HuMoR."
-    exit 0
+	exit 0
 }
 
 if test $# -eq 0; then
-    print_syntax 1 1>&2
+	print_syntax 1 1>&2
 fi
 
 HUMOR_STUFF_TO_ECHO=""
 
 while test $# -gt 0; do
-    case "$1" in
+	case "$1" in
 		-*=*) optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
 		*) optarg= ;;
-    esac
+	esac
 
-    case $1 in
-	--version)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_VERSION@"
-	    ;;
-	--prefix)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_PREFIX@"
-	    ;;
-	--includedirs)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_INCLUDEDIRS@"
-	    ;;
-	--includeflags)
-	    for d in @HUMOR_CONFIG_INCLUDEDIRS@; do
-	        HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -I$d"
-	    done
-	    ;;
-	--librarydirs)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_LIBRARYDIRS@"
-	    ;;
-	--libraries)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_LIBRARIES@"
-	    ;;
-	--libraryflags)
-	    for d in @HUMOR_CONFIG_LIBRARYDIRS@; do
-	        HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -L$d"
-	    done
-	    for d in @HUMOR_CONFIG_LIBRARIES@; do
-	        HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -l$d"
-	    done
-	    ;;
-	--definitions)
-	    HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_DEFINITIONS@"
-	    ;;
-	*)
-	    print_syntax 1 1>&2
-	    ;;
-    esac
-  shift
+	case $1 in
+		--version)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_VERSION@"
+		;;
+		--prefix)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_PREFIX@"
+		;;
+		--includedirs)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_INCLUDEDIRS@"
+		;;
+		--includeflags)
+		for d in @HUMOR_CONFIG_INCLUDEDIRS@; do
+			HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -I$d"
+		done
+		;;
+		--librarydirs)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_LIBRARYDIRS@"
+		;;
+		--libraries)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_LIBRARIES@"
+		;;
+		--libraryflags)
+		for d in @HUMOR_CONFIG_LIBRARYDIRS@; do
+			HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -L$d"
+		done
+		for d in @HUMOR_CONFIG_LIBRARIES@; do
+			HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO -l$d"
+		done
+		;;
+		--definitions)
+		HUMOR_STUFF_TO_ECHO="$HUMOR_STUFF_TO_ECHO @HUMOR_CONFIG_DEFINITIONS@"
+		;;
+		*)
+		print_syntax 1 1>&2
+		;;
+	esac
+	shift
 done
 
 if test -n "$HUMOR_STUFF_TO_ECHO"; then

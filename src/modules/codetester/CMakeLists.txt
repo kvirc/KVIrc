@@ -12,31 +12,5 @@ SET(kvicodetester_SRCS
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvicodetester_MOC_SRCS ${kvicodetester_MOC_HDRS})
 
-# Create library
-IF(UNIX)
-	IF(APPLE)
-		ADD_LIBRARY(kvicodetester MODULE ${kvicodetester_SRCS} ${kvicodetester_MOC_SRCS})
-	ELSE()
-		# Assume linux
-		ADD_LIBRARY(kvicodetester SHARED ${kvicodetester_SRCS} ${kvicodetester_MOC_SRCS})
-	ENDIF()
-ELSE()
-	# Assume windows
-	#ADD_LIBRARY(kvicodetester ???)
-ENDIF()
-
-# Install target
-IF(UNIX)
-	IF(APPLE)
-		TARGET_LINK_LIBRARIES(kvicodetester kvilib ${LIBS})
-		SET_TARGET_PROPERTIES(kvicodetester PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
-		INSTALL(TARGETS kvicodetester LIBRARY DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/)
-	ELSE()
-		# Assume linux
-		SET_TARGET_PROPERTIES(kvicodetester PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-		INSTALL(TARGETS kvicodetester LIBRARY DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/)
-	ENDIF()
-ELSEIF(WIN32)
-	SET_TARGET_PROPERTIES(kvicodetester PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
-	#INSTALL(TARGETS kvicodetester LIBRARY DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
-ENDIF()
+SET(kvi_module_name kvicodetester)
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
