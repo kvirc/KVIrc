@@ -34,18 +34,104 @@
 #include <QTableWidgetItem>
 
 
-KviTextIconEditor::KviTextIconEditor(QWidget * par,KviTextIcon * icon,KviTextIconTableItem* item)
-: KviTalHBox(par),m_pTableItem(item)
+
+QWidget * KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::createEditor(QWidget * parent,const QStyleOptionViewItem & option,const QModelIndex & index) const
+{
+	if(index.column() != 1)
+		return QItemDelegate::createEditor(parent,option,index);
+	return new KviTextIconEditor(parent);
+}
+
+void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::setEditorData(QWidget * editor,const QModelIndex & index) const
+{
+	if(index.column() != 1)
+	{
+		QItemDelegate::setEditorData(editor,index);
+		return;
+	}
+
+	if(!editor)
+		return;
+	if(!editor->inherits("KviTextIconEditor"))
+		return;
+
+	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
+
+
+	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
+	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
+	if(!pItem)
+		return;
+
+	pEditor->setIcon(pItem->icon());
+	pEditor->updateIcon();
+}
+
+void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::setModelData(QWidget * editor,QAbstractItemModel * model,const QModelIndex & index) const
+{
+	if(index.column() != 1)
+	{
+		QItemDelegate::setModelData(editor,model,index);
+		return;
+	}
+
+	if(!editor)
+		return;
+	if(!editor->inherits("KviTextIconEditor"))
+		return;
+
+	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
+
+	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
+	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
+	if(!pItem)
+		return;
+		
+	pItem->setContentFromEditor(pEditor);
+}
+
+void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::updateEditorGeometry(QWidget * editor,const QStyleOptionViewItem & option,const QModelIndex & index) const
+{
+	if(index.column() != 1)
+	{
+		QItemDelegate::updateEditorGeometry(editor,option,index);
+		return;
+	}
+
+	if(!editor)
+		return;
+	if(!editor->inherits("KviTextIconEditor"))
+		return;
+
+	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
+
+	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
+	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
+	if(!pItem)
+		return;
+
+	pEditor->setGeometry(m_pTableWidget->visualItemRect(pItem));
+}
+
+KviTextIconEditor::KviTextIconEditor(QWidget * par)
+: KviTalHBox(par)
 {
 	m_pIconButton=new QToolButton(this);
 	m_pBrowseButton=new QToolButton(this);
 	m_pBrowseButton->setSizePolicy(QSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum));
 	m_pBrowseButton->setText("...");
-	m_pIcon = icon;
+	m_pIcon = NULL;
 	m_pPopup = 0;
 	updateIcon();
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 	connect(m_pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+	setMargin(0);
+	setSpacing(0);
+
+	// I've spend more than 1 hour to find out the following line.
+	// Without this the editor disappears on the first click and no clicked() events are forwarded to the buttons.
+	// It's very ugly.
+	setFocusPolicy(Qt::ClickFocus);
 }
 
 
@@ -68,6 +154,8 @@ void KviTextIconEditor::doPopup()
 
 void KviTextIconEditor::iconSelected(int id)
 {
+	if(!m_pIcon)
+		return;
 	m_pIcon->setId(id);
 	updateIcon();
 }
@@ -89,11 +177,10 @@ void KviTextIconEditor::chooseFromFile()
 
 void KviTextIconEditor::updateIcon()
 {
-	if(m_pIcon)
-	{
-		QPixmap* pix=m_pIcon->pixmap();
-		if(pix) m_pIconButton->setPixmap(*pix);
-	}
+	if(!m_pIcon)
+		return;
+	QPixmap* pix=m_pIcon->pixmap();
+	if(pix) m_pIconButton->setPixmap(*pix);
 }
 
 KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
@@ -119,10 +206,10 @@ void KviTextIconTableItem::setId(int id)
 	if(pix) setIcon(QIcon(*pix));
 }
 
-QWidget * KviTextIconTableItem::createEditor() const
+/*QWidget * KviTextIconTableItem::createEditor() const
 {
 	return new KviTextIconEditor(tableWidget()->viewport(),m_pIcon,(KviTextIconTableItem*)this);
-}
+}*/
 
 void KviTextIconTableItem::setContentFromEditor(QWidget * w)
 {
@@ -146,6 +233,9 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
 			"emoticons.","options"));
+
+
+	m_pTable->setItemDelegateForColumn(1,new KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate(m_pTable));
 
 	int idx = 0;
 	while(KviTextIcon * i = it.current())
@@ -188,7 +278,8 @@ void KviTextIconsOptionsWidget::itemSelectionChanged()
 void KviTextIconsOptionsWidget::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
-	m_pTable->item(m_pTable->rowCount() - 1,0)->setText(__tr2qs_ctx("unnamed","options"));
+	//m_pTable->item(m_pTable->rowCount() - 1,0)->setText(__tr2qs_ctx("unnamed","options"));
+	m_pTable->setItem(m_pTable->rowCount() - 1,0,new QTableWidgetItem(__tr2qs_ctx("unnamed","options")));
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,new KviTextIconTableItem(m_pTable,0));
 	m_pDel->setEnabled(true);
 }
