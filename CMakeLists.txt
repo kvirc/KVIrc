@@ -48,14 +48,16 @@ SET(LIBS)
 SET(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "Generate verbose Makefiles")
 
 # Make MacOS X universal binaries
-SET(COMPILE_UNIVERSAL false)
 IF(COMPILE_UNIVERSAL)
 	IF(APPLE)
 		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
+		SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "yes")
 		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
 		#SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
 		#SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
 	ENDIF()
+ELSE()
+	SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "not available")
 ENDIF()
 
 # Use DBus
@@ -217,7 +219,7 @@ ENDIF()
 
 # Check for gettext
 # FindGettext.cmake - atm implemented in ./cmake/modules/
-# Use system-provided module from CMake 2.4.8
+# Use system-provided module from CMake 2.5
 FIND_PACKAGE(GetText)
 
 #Unused by now
@@ -312,12 +314,13 @@ CONFIGURE_FILE(
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "Ok, this is the configuration I've worked out:")
 MESSAGE(STATUS " ")
-MESSAGE(STATUS "  Threading      : ${CMAKE_STATUS_THREADS_SUPPORT}")
-MESSAGE(STATUS "  X11 support    : ${CMAKE_STATUS_X11_SUPPORT}")
-MESSAGE(STATUS "  PCH support    : ${CMAKE_STATUS_PCH_SUPPORT}")
-MESSAGE(STATUS "  KDE4 support   : ${CMAKE_STATUS_KDE4_SUPPORT}")
+MESSAGE(STATUS "  Threading           : ${CMAKE_STATUS_THREADS_SUPPORT}")
+MESSAGE(STATUS "  X11 support         : ${CMAKE_STATUS_X11_SUPPORT}")
+MESSAGE(STATUS "  PCH support         : ${CMAKE_STATUS_PCH_SUPPORT}")
+MESSAGE(STATUS "  KDE4 support        : ${CMAKE_STATUS_KDE4_SUPPORT}")
+MESSAGE(STATUS "  Universal support   : ${CMAKE_STATUS_UNIVERSAL_SUPPORT}")
 MESSAGE(STATUS " ")
-MESSAGE(STATUS "  Build date     : ${CMAKE_KVIRC_BUILD_DATE}")
+MESSAGE(STATUS "  Build date          : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "I'm ready to build kvirc for you: please type 'make' now...")
 MESSAGE(STATUS " ")

@@ -68,7 +68,7 @@ static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 static bool about_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"kvirc",about_kvs_command_kvirc)
-    return true;
+	return true;
 }
 
 static bool about_module_cleanup(KviModule *m)

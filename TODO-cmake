@@ -7,13 +7,9 @@ transition autotools -> cmake.
 * Missing or broken rules
 - doc/*
 - header creation
+- scripts/kvirc-config
 
 * Translation
 - create a make target for updating *.pot/*.po files
 - Cleanup: move the install target from cmake/modules/FileGetText
         to a better place
-
-* Code
-- several #defines are undefined
--- src/kvilib/config/kvi_settings.h : VERSION, BUILD_DATE, BUILD_FLAGS
-
