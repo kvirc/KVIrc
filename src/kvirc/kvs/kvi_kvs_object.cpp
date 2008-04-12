@@ -29,7 +29,6 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
-
 #include "kvi_modulemanager.h"
 #include "kvi_console.h"
 #include "kvi_locale.h"
@@ -38,7 +37,6 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_iconmanager.h"
 #include "kvi_malloc.h"
-
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_object_functioncall.h"
 #include "kvi_kvs_object_functionhandlerimpl.h"
@@ -1050,22 +1048,14 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 		{
 #endif
 			kvs_int_t idx = 0;
-			#ifdef COMPILE_USE_QT4
-				QMetaProperty prop = o->property(idx);
-				const QMetaProperty *p = &prop;
-			#else
-				const QMetaProperty *p = o->property(idx);
-			#endif
+			QMetaProperty prop = o->property(idx);
+			const QMetaProperty *p = &prop;
 
 			while(p)
 			{
 				QString szOut;
 				QString szName = p->name();
-				#ifdef COMPILE_USE_QT4
-					QString szType = p->typeName();
-				#else
-				QString szType = p->type();
-				#endif
+				QString szType = p->typeName();
 				if(bArray)
 					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
 				else {
@@ -1105,21 +1095,16 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 					a->set(cnt,new KviKvsVariant(szOut));
 				else
 					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
-#ifdef COMPILE_USE_QT4
+
 				idx++;
 				if (idx<o->propertyCount()){
-						prop = o->property(idx);
-						p = &prop;
+					prop = o->property(idx);
+					p = &prop;
 				}
 				else p=0;
-#else
-				p = o->property(idx);
-				idx++;
-#endif
-				
 				cnt++;
 			}
-#ifndef COMPILE_USE_QT4	
+#ifndef COMPILE_USE_QT4
 			o = o->superClass();
 		}
 #endif
@@ -1153,22 +1138,15 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-#ifdef COMPILE_USE_QT4
 	int idx = m_pObject->metaObject()->indexOfProperty(szName);
-#else
-	int idx = m_pObject->metaObject()->findProperty(szName,true);
-#endif
 	if(idx < 0)
 	{
 		c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
-#ifdef COMPILE_USE_QT4
+
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-#else
-	const QMetaProperty * p = m_pObject->metaObject()->property(idx,true);
-#endif
 	if(!p)
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
@@ -1186,11 +1164,8 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	{
 		QString szKey;
 		v->asString(szKey);
-#ifdef COMPILE_USE_QT4
+
 		int val = p->enumerator().keyToValue(szKey);
-#else
-		int val = p->keyToValue(szKey);
-#endif
 		QVariant var(val);
 		m_pObject->setProperty(szName,var);
 		return true;
@@ -1384,11 +1359,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-#ifdef COMPILE_USE_QT4
 	int idx = m_pObject->metaObject()->indexOfProperty(szName);
-#else
-	int idx = m_pObject->metaObject()->findProperty(szName,true);
-#endif
 	if(idx < 0)
 	{
 		if (bNoerror) c->returnValue()->setString("No Qt properties");
@@ -1399,12 +1370,9 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		}
 		return true;
 	}
-#ifdef COMPILE_USE_QT4
+
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
-#else
-	const QMetaProperty * p = m_pObject->metaObject()->property(idx,true);
-#endif
 	if(!p)
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
@@ -1422,11 +1390,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 
 	if(p->isEnumType())
 	{
-#ifdef COMPILE_USE_QT4
 		c->returnValue()->setString(p->enumerator().valueToKey(v.toInt()));
-#else
-		c->returnValue()->setString(p->valueToKey(v.toInt()));
-#endif
 		return true;
 	}
 
@@ -1577,7 +1541,6 @@ KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString 
 	return h;
 }
 
-
 bool KviKvsObject::die()
 {
 	if(m_bInDelayedDeath)return false;
@@ -1637,7 +1600,6 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,Kv
 	return callFunction(pCaller,fncName,QString::null,&ctx,pRetVal,pParams);
 }
 
-
 bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariantList * pParams)
 {
 	KviKvsVariant fakeRetVal;
@@ -1684,8 +1646,6 @@ bool KviKvsObject::callFunction(
 	//    Please choose the Technical Support command on the Visual C++
 	//    Help menu, or open the Technical Support help file for more information
 }
-
-
 
 void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,const QString &szCode)
 {
@@ -1739,5 +1699,3 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 	}
 	return 0;
 }
-
-

@@ -23,7 +23,6 @@
 //=============================================================================
 
 #define __KVIRC__
-
 #define _KVI_APP_CPP_
 
 #include "kvi_socket.h"
@@ -808,8 +807,6 @@ void KviApp::checkSuggestRestoreDefaultScript()
 	}
 }
 
-
-
 void KviApp::restoreDefaultScript()
 {
 	if(QMessageBox::warning(0,__tr2qs("Restore Default Script - KVIrc"),
@@ -860,9 +857,7 @@ void KviApp::ipcMessage(char * message)
 	}
 	KviKvsScript::run(message,cns);
 }
-
 #endif // COMPILE_NO_IPC
-
 
 void KviApp::createSplashScreen()
 {
@@ -902,7 +897,6 @@ QString KviApp::getClipboardText()
 	return buffer;
 }
 
-
 void KviApp::getClipboardText(KviStr &buffer)
 {
 	buffer = getClipboardText();
@@ -932,7 +926,7 @@ void KviApp::setClipboardText(const QString &str)
 
 void KviApp::setClipboardText(const KviStr &str)
 {
-	debug("WARNING : KviApp::setClipboardText(const KviStr &) is deprecated!");
+	qDebug("WARNING: KviApp::setClipboardText(const KviStr &) is deprecated!");
 	setClipboardText(QString(str.ptr()));
 }
 
@@ -1070,14 +1064,14 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 
 	#ifdef COMPILE_KDE_SUPPORT
 
-        #include <netwm.h>
+	#include <netwm.h>
 
 		void KviApp::downloadKdeRootPixmap()
 		{
 			if(g_pKdeDesktopBackground)
 			{
 				delete g_pKdeDesktopBackground;
-                g_pKdeDesktopBackground = 0;
+				g_pKdeDesktopBackground = 0;
 				// this signal shouldn't be connected ,but well.. let's make sure
 				disconnect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
 			}
@@ -1326,7 +1320,6 @@ void KviApp::updatePseudoTransparency()
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 }
 
-
 void KviApp::triggerUpdateGui()
 {
 	if(m_bUpdateGuiPending)return;
@@ -1358,6 +1351,7 @@ void KviApp::loadRecentEntries()
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
 	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
+
 void KviApp::saveRecentEntries()
 {
 	QString tmp;
@@ -1373,7 +1367,6 @@ void KviApp::saveAvatarCache()
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_AVATARCACHE);
 	KviAvatarCache::instance()->save(tmp);
 }
-
 
 void KviApp::saveToolBars()
 {
@@ -1398,7 +1391,6 @@ void KviApp::saveInputHistory()
 		g_pInputHistory->save(tmp);
 	}
 }
-
 
 void KviApp::saveAliases()
 {
@@ -1556,7 +1548,6 @@ void KviApp::autoConnectToServers()
 	}
 }
 
-
 void KviApp::createFrame()
 {
 	if(g_pFrame)qDebug("WARNING: Creating the main frame twice!");
@@ -1610,7 +1601,6 @@ bool KviApp::connectionExists(KviIrcConnection *cnn)
 	}
 	return false;
 }
-
 
 bool KviApp::windowExists(KviWindow *wnd)
 {
@@ -1733,7 +1723,6 @@ KviConsole * KviApp::findConsole(unsigned int ircContextId)
 	}
 	return 0;
 }
-
 
 
 KviConsole * KviApp::topmostConnectedConsole()
@@ -1915,7 +1904,6 @@ QStringList* KviApp::getRecentChannels(const QString& net)
 	return m_pRecentChannelsDict->find(net.utf8().data());
 }
 
-
 void KviApp::addRecentServer(const QString& server)
 {
 	merge_to_stringlist_option(server,KviOption_stringlistRecentServers,KVI_MAX_RECENT_SERVERS);
@@ -1978,9 +1966,6 @@ void KviApp::fillRecentServersListBox(KviTalListBox * l)
 		l->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 }
 */
-
-
-
 
 bool KviApp::playFile(const char * filename,KviStr &error,KviWindow * w)
 {

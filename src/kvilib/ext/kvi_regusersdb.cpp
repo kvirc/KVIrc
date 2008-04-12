@@ -24,12 +24,10 @@
 
 
 #define __KVILIB__
+#define _KVI_REGUSERDB_CPP_
 
 #include "kvi_debug.h"
-
-#define _KVI_REGUSERDB_CPP_
 #include "kvi_regusersdb.h"
-
 #include "kvi_config.h"
 #include "kvi_locale.h"
 
@@ -230,17 +228,14 @@ void KviRegisteredUser::setProperty(const QString & name,const QString & value)
 			m_pPropertyDict = new KviPointerHashTable<QString,QString>(7,false);
 			m_pPropertyDict->setAutoDelete(true);
 		}
-#ifdef COMPILE_USE_QT4
+
 		QString * val = new QString(value.trimmed());
-#else
-		QString * val = new QString(value.stripWhiteSpace());
-#endif
 		if(!val->isEmpty())
 		{
 			m_pPropertyDict->replace(name,val);
 		} else {
 			delete val;
-            val = 0;
+			val = 0;
 		}
 	} else {
 		if(m_pPropertyDict)m_pPropertyDict->remove(name);
@@ -482,7 +477,6 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 	}
 }
 
-
 bool KviRegisteredUserDataBase::removeUser(const QString & name)
 {
 	if(name.isEmpty()) return false;
@@ -497,6 +491,7 @@ bool KviRegisteredUserDataBase::removeUser(const QString & name)
 	m_pUserDict->remove(name);
 	return true;
 }
+
 bool KviRegisteredUserDataBase::removeGroup(const QString & name)
 {
 	if(name.isEmpty()) return false;
@@ -690,7 +685,6 @@ void KviRegisteredUserDataBase::load(const QString & filename)
 		addGroup(__tr("Default"));
 }
 
-
 void KviRegisteredUserDataBase::save(const QString & filename)
 {
 	KviConfig cfg(filename,KviConfig::Write);
@@ -739,5 +733,4 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		cfg.setGroup(szTmp);
 		++git;
 	}
-	
 }

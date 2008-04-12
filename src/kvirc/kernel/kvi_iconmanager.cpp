@@ -23,11 +23,9 @@
 //================================================================================
 
 #define __KVIRC__
-
 #define _KVI_ICONMANAGER_CPP_
 
 #include "kvi_iconmanager.h"
-
 #include "kvi_app.h"
 #include "kvi_settings.h"
 #include "kvi_defaults.h"
@@ -345,14 +343,16 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 };
 
 KviIconWidget::KviIconWidget()
-: QWidget(0,"global_icon_widget" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize*/)
+: QWidget(0 /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder | WStyle_SysMenu | WStyle_Minimize*/)
 {
+	setObjectName("global_icon_widget");
 	init();
 }
 
 KviIconWidget::KviIconWidget(QWidget * par)
-: QWidget(par,"global_icon_widget")
+: QWidget(par)
 {
+	setObjectName("global_icon_widget");
 	init();
 }
 
@@ -435,7 +435,6 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 }
 
 
-
 KviCachedPixmap::KviCachedPixmap(QPixmap * ptr,const QString &szPath)
 {
 	m_szPath = szPath;
@@ -453,8 +452,6 @@ void KviCachedPixmap::updateLastAccessTime()
 {
 	m_tLastAccess = kvi_unixTime();
 }
-
-
 
 
 KviIconManager::KviIconManager()
@@ -543,7 +540,6 @@ int KviIconManager::getSmallIconIdFromName(const QString &szName)
 	if(!pInt)return 0;
 	return *pInt;
 }
-
 
 void KviIconManager::showIconWidget()
 {
@@ -680,7 +676,6 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString &s
 	return p;
 }
 
-
 void KviIconManager::addToCache(const QString &szName,KviCachedPixmap * p)
 {
 	if((m_uCacheTotalSize + p->size()) >= m_uCacheMaxSize)cacheCleanup();
@@ -709,7 +704,6 @@ QPixmap * KviIconManager::getImage(const char * id,bool bCanBeNumber,QString* pR
 	if(pRetPath)*pRetPath = p->path();
 	return p->pixmap();
 }
-
 
 
 QPixmap * KviIconManager::getBigIcon(const QString &szName)
