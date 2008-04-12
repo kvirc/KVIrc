@@ -8,13 +8,13 @@
     <primarylanguage>C++</primarylanguage>
     <ignoreparts/>
     <projectdirectory>./</projectdirectory>
-    <absoluteprojectpath>true</absoluteprojectpath>
+    <absoluteprojectpath>false</absoluteprojectpath>
     <secondaryLanguages>
       <language>C</language>
     </secondaryLanguages>
     <projectname>kvirc</projectname>
-    <description></description>
-    <defaultencoding></defaultencoding>
+    <description/>
+    <defaultencoding/>
     <versioncontrol>kdevsubversion</versioncontrol>
   </general>
   <kdevcustomproject>
@@ -23,11 +23,11 @@
       <mainprogram>/usr/local/bin/kvirc4</mainprogram>
       <directoryradio>custom</directoryradio>
       <customdirectory>./</customdirectory>
-      <programargs></programargs>
+      <programargs/>
       <terminal>false</terminal>
       <autocompile>true</autocompile>
       <envvars/>
-      <globaldebugarguments></globaldebugarguments>
+      <globaldebugarguments/>
       <globalcwd>/usr/local/</globalcwd>
       <useglobalprogram>false</useglobalprogram>
       <autoinstall>true</autoinstall>
@@ -41,14 +41,14 @@
       <abortonerror>false</abortonerror>
       <numberofjobs>1</numberofjobs>
       <dontact>false</dontact>
-      <makebin></makebin>
+      <makebin/>
       <selectedenvironment>default</selectedenvironment>
       <environments>
         <default/>
       </environments>
       <prio>0</prio>
-      <defaulttarget></defaulttarget>
-      <makeoptions></makeoptions>
+      <defaulttarget/>
+      <makeoptions/>
     </make>
     <filetypes>
       <filetype>*.java</filetype>
@@ -69,9 +69,9 @@
     <blacklist/>
     <other>
       <prio>0</prio>
-      <otherbin></otherbin>
-      <defaulttarget></defaulttarget>
-      <otheroptions></otheroptions>
+      <otherbin/>
+      <defaulttarget/>
+      <otheroptions/>
       <selectedenvironment>default</selectedenvironment>
       <environments>
         <default/>
@@ -143,7 +143,7 @@
       <designerpluginpaths/>
     </qt>
     <creategettersetter>
-      <prefixGet></prefixGet>
+      <prefixGet/>
       <prefixSet>set</prefixSet>
       <prefixVariable>m_,_</prefixVariable>
       <parameterName>theValue</parameterName>
@@ -172,11 +172,11 @@
   </kdevfileview>
   <kdevdebugger>
     <general>
-      <gdbpath></gdbpath>
+      <gdbpath/>
       <dbgshell>../libtool</dbgshell>
-      <configGdbScript></configGdbScript>
-      <runShellScript></runShellScript>
-      <runGdbScript></runGdbScript>
+      <configGdbScript/>
+      <runShellScript/>
+      <runGdbScript/>
       <breakonloadinglibs>true</breakonloadinglibs>
       <separatetty>false</separatetty>
       <floatingtoolbar>false</floatingtoolbar>
@@ -190,13 +190,13 @@
   </kdevdebugger>
   <kdevdocumentation>
     <projectdoc>
-      <docsystem></docsystem>
-      <docurl></docurl>
+      <docsystem/>
+      <docurl/>
       <usermanualurl>./data/man/kvirc.1</usermanualurl>
     </projectdoc>
   </kdevdocumentation>
   <ctagspart>
-    <customArguments></customArguments>
+    <customArguments/>
     <customTagfilePath>./tags</customTagfilePath>
     <activeTagsFiles/>
   </ctagspart>
