@@ -111,17 +111,23 @@ KviAboutDialog::KviAboutDialog()
 	g->addWidget(v,0,0);
 
 	// Get info
-	QString infoString = __tr2qs_ctx("Sources date","about");
-	infoString += ": ";
-	infoString += KVI_SOURCES_DATE;
-	infoString += "<br>";
-	infoString += __tr2qs_ctx("Build date","about");
-	infoString += ": ";
-	infoString += KVI_BUILD_DATE;
-	infoString += "<br>";
-	infoString += __tr2qs_ctx("Build flags","about");
-	infoString += ": ";
-	infoString += KVI_BUILD_FLAGS;
+	QString infoString = "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
+	infoString += __tr2qs_ctx("System Name","about");
+	infoString += ": " KVI_BUILD_SYSTEM "<br>";
+	infoString += __tr2qs_ctx("CPU Name","about");
+	infoString += ": " KVI_BUILD_CPU "<br>";
+	infoString += __tr2qs_ctx("Sources Date","about");
+	infoString += ": " KVI_SOURCES_DATE "<br>";
+	infoString += __tr2qs_ctx("Build Date","about");
+	infoString += ": " KVI_BUILD_DATE "<br>";
+	infoString += __tr2qs_ctx("Build Command","about");
+	infoString += ": " KVI_BUILD_COMMAND "<br>";
+	infoString += __tr2qs_ctx("Build Flags","about");
+	infoString += ": " KVI_BUILD_FLAGS;
+	infoString += __tr2qs_ctx("Compiler Name","about");
+	infoString += ": " KVI_BUILD_COMPILER "<br>";
+	infoString += __tr2qs_ctx("Compiler Flags","about");
+	infoString += ": " KVI_BUILD_COMPILER_FLAGS;
 
 	v->setText(infoString);
 
