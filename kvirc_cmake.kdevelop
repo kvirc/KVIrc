@@ -12,7 +12,7 @@
     <secondaryLanguages>
       <language>C</language>
     </secondaryLanguages>
-    <projectname>kvirc</projectname>
+    <projectname>kvirc_cmake</projectname>
     <description/>
     <defaultencoding/>
     <versioncontrol>kdevsubversion</versioncontrol>
@@ -35,7 +35,7 @@
     </run>
     <build>
       <buildtool>make</buildtool>
-      <builddir>./bundle</builddir>
+      <builddir>./</builddir>
     </build>
     <make>
       <abortonerror>false</abortonerror>
@@ -168,6 +168,7 @@
     <tree>
       <hidepatterns>*.o,*.lo,CVS,*~,cmake*</hidepatterns>
       <hidenonprojectfiles>true</hidenonprojectfiles>
+      <showvcsfields>false</showvcsfields>
     </tree>
   </kdevfileview>
   <kdevdebugger>
