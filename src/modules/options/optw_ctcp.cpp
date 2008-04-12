@@ -53,10 +53,8 @@ KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
 
 //	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
 
-//#ifdef COMPILE_INFO_TIPS
 //	mergeTip(s,
 //		__tr2qs_ctx("<center>This is the CTCP USERINFO reply.<br>It can contain some information about yourself.</center>","options"));
-//#endif
 
 	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:","options"),KviOption_stringCtcpPageReply);
 

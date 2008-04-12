@@ -47,7 +47,7 @@
 /* #undef COMPILE_USE_GSM */
 
 /* define if you want the info tips to be compiled in */
-#define COMPILE_INFO_TIPS 1
+/* #define COMPILE_INFO_TIPS 1 */
 
 /* define if you want to compile the KDE 2.x support */
 /* #undef COMPILE_KDE_SUPPORT */

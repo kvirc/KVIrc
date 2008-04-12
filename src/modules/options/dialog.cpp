@@ -139,16 +139,12 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 
 	QString szInfoTips;
-#ifdef COMPILE_INFO_TIPS
 	szInfoTips = __tr2qs_ctx("Many settings have tooltips that can be shown by holding " \
 			"the cursor over their label for a few seconds.","options"); 
-#else
-	szInfoTips = "";
-#endif
+
 	QString szOkCancelButtons = __tr2qs_ctx("When you have finished, click \"<b>OK</b>\" to accept your changes " \
 			"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your " \
 			"changes without closing the window.","options");
-
 
 	QString szFrontText = QString(
 			"<table width=\"100%\" height=\"100%\" valign=\"top\" align=\"center\" cellpadding=\"4\">" \
@@ -210,7 +206,6 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	connect(m_pSearchButton,SIGNAL(clicked()),this,SLOT(searchClicked()));
 	connect(m_pSearchLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(searchLineEditTextChanged(const QString &)));
 
-#ifdef COMPILE_INFO_TIPS
 	QString szTip = __tr2qs_ctx("<p>This is the search tool for this options dialog.</p>" \
 			"<p>You can enter a search term either in your native " \
 			"language or in english and press the button on the right. " \
@@ -219,7 +214,6 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 			"to quickly find them.</p><p>Try \"nickname\" for example.</p>","options");
 	KviTalToolTip::add(m_pSearchLineEdit,szTip);
 	KviTalToolTip::add(m_pSearchButton,szTip);
-#endif
 
 	vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
@@ -242,8 +236,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	int idx = m_pWidgetStack->indexOf(m_pFrontWidget);
 	m_pWidgetStack->widget(idx)->raise();
 
-//  Ok,Cancel,Help
-
+	//  Ok,Cancel,Help
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this,"btnok");
 	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
@@ -329,10 +322,9 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
 			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
-#ifdef COMPILE_INFO_TIPS
+
 			if(o->inherits("QWidget"))
 				szText.append(((QWidget *)o)->toolTip());
-#endif
 			if(!szText.isEmpty())
 			{
 				bool bOk = true;
@@ -569,7 +561,6 @@ KviOptionsListViewItem * KviOptionsDialog::findItemByPage(KviOptionsListViewItem
 	return 0;
 }
 
-
 void KviOptionsDialog::pageWantsToSwitchToAdvancedPage(KviOptionsWidget * pPage)
 {
 	// unused
@@ -637,6 +628,7 @@ void KviOptionsDialog::recursiveCommit(KviOptionsListViewItem *it)
 	}
 	//refreshListView(); // <-- this tends to jump into infinite recursion
 }
+
 void  KviOptionsDialog::keyPressEvent( QKeyEvent * e )
 {
 	if(e->key()==Qt::Key_Return)

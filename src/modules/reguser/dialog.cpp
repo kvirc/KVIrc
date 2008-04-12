@@ -178,13 +178,11 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pListView->setSelectionMode(KviTalListView::Extended);
 	m_pListView->setRootIsDecorated(TRUE);
 
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pListView,__tr2qs("<center>This is the list of registered users. " \
 		"KVIrc can automatically recognize and associate properties to them.<br>" \
 		"Use the buttons on the right to add, edit and remove entries. " \
 		"The \"notify\" column allows you to quickly add users to the notify list. " \
 		"Notify list fine-tuning can be performed by editing the entry properties.</center>"));
-#endif // COMPILE_INFO_TIPS
 
 	connect(m_pListView,SIGNAL(pressed(KviTalListViewItem *,const QPoint &,int)),this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
@@ -197,41 +195,31 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	m_pWizardAddButton = new QPushButton(__tr2qs("Add (Wizard)..."),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pWizardAddButton,__tr2qs("Add a registered user by means of a user-friendly wizard."));
-#endif // COMPILE_INFO_TIPS
 	m_pWizardAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
 
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add..."),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pAddButton,__tr2qs("Open the edit dialog to create a new user entry."));
-#endif // COMPILE_INFO_TIPS
 	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 	
 	m_pAddGroupButton = new QPushButton(__tr2qs("&Add Group..."),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pAddGroupButton,__tr2qs("Adds a new group"));
-#endif // COMPILE_INFO_TIPS
 	m_pAddGroupButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pRemoveButton,__tr2qs("Remove the currently selected entries."));
-#endif // COMPILE_INFO_TIPS
 	m_pRemoveButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 
 	m_pEditButton = new QPushButton(__tr2qs("&Edit..."),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pEditButton,__tr2qs("Edit the first selected entry."));
-#endif // COMPILE_INFO_TIPS
 	m_pEditButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	QFrame * f = new QFrame(vbox);
@@ -240,17 +228,13 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pExportButton = new QPushButton(__tr("Export To..."),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pExportButton,__tr2qs("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button."));
-#endif // COMPILE_INFO_TIPS
 	m_pExportButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
 
 
 	m_pImportButton = new QPushButton(__tr("Import From..."),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pImportButton,__tr2qs("Import entries from a file exported earlier by the \"export\" function of this dialog."));
-#endif // COMPILE_INFO_TIPS
 	m_pImportButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
 
@@ -297,8 +281,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 KviRegisteredUsersDialog::~KviRegisteredUsersDialog()
 {
 #ifndef Q_OS_MACX
-	if(!parent())KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = QRect(pos().x(),pos().y(),
-			size().width(),size().height());
+	if(!parent())KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = QRect(pos().x(),pos().y(),size().width(),size().height());
 #else
 	if(!parent())KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = geometry();
 #endif

@@ -235,9 +235,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pNickEdit = new QLineEdit(b);
 	//m_pNickEdit->setMinimumWidth(120);
 	m_pNickEdit->setAlignment(Qt::AlignRight);
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pNickEdit,__tr2qs("<center>This the <b>nickname</b> that will match this user, default value is the registered name.</center>"));
-#endif
 
 	l = new QLabel("<center><b>!</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
@@ -246,9 +244,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pUserEdit = new QLineEdit(b);
 	//m_pUserEdit->setMinimumWidth(120);
 	m_pUserEdit->setAlignment(Qt::AlignCenter);
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pUserEdit,__tr2qs("<center>This the <b>username</b> that will match this user. <b>*</b> will match any username.</center>"));
-#endif
 
 	l = new QLabel("<center><b>@</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
@@ -257,9 +253,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pHostEdit = new QLineEdit(b);
 	//m_pHostEdit->setMinimumWidth(120);
 	m_pHostEdit->setAlignment(Qt::AlignLeft);
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pHostEdit,__tr2qs("<center>This the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>"));
-#endif
 
 	// just a spacer
 //	l = new QLabel("<nobr>&nbsp;<nobr>",this);
@@ -400,9 +394,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	l->setEnabled(m_pNotifyCheck->isChecked());
 	g->addWidget(l,1,0);
 	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),l,SLOT(setEnabled(bool)));
-#ifdef COMPILE_INFO_TIPS
 	QToolTip::add(m_pNotifyCheck,__tr2qs("<center>You can enter a space separated list of nicknames.</center>"));
-#endif
 
 
 	m_pNotifyNick = new QLineEdit(p2);
