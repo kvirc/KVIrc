@@ -1140,11 +1140,11 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 
 #define QT4_TAG " (QT4) "
 
-#ifdef COMPILE_ON_WINDOWS
+
 			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build " KVI_BUILD_DATE;
+#ifdef COMPILE_ON_WINDOWS
 			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));
 #else
-			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build " KVI_BUILD_DATE " - " KVI_BUILD_FLAGS;
 			szVersion.append(QString(" - %1 (%2)").arg(KviOsInfo::name()).arg(KviOsInfo::release()));
 #endif
 			//szVersion.append(QString(" - QT Version: %1 - %2").arg(qVersion()).arg(__tr2qs("http://www.kvirc.net/")));

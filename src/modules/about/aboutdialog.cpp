@@ -123,7 +123,7 @@ KviAboutDialog::KviAboutDialog()
 	infoString += __tr2qs_ctx("Build Command","about");
 	infoString += ": " KVI_BUILD_COMMAND "<br>";
 	infoString += __tr2qs_ctx("Build Flags","about");
-	infoString += ": " KVI_BUILD_FLAGS;
+	infoString += ": " KVI_BUILD_FLAGS "<br>";
 	infoString += __tr2qs_ctx("Compiler Name","about");
 	infoString += ": " KVI_BUILD_COMPILER "<br>";
 	infoString += __tr2qs_ctx("Compiler Flags","about");
