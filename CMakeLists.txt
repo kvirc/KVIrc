@@ -43,22 +43,8 @@ ENDIF()
 # Set var to link with, for later use
 SET(LIBS)
 
-
 # Set verbose makefiles
 SET(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "Generate verbose Makefiles")
-
-# Make MacOS X universal binaries
-IF(COMPILE_UNIVERSAL)
-	IF(APPLE)
-		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
-		SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "yes")
-		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
-		#SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
-		#SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
-	ENDIF()
-ELSE()
-	SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "not available")
-ENDIF()
 
 # Use DBus
 IF(UNIX)
@@ -199,6 +185,19 @@ IF(WITH_KDE4)
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_KDE4_SUPPORT "not requested")
+ENDIF()
+
+# Check for MacOS X universal binary
+IF(COMPILE_UNIVERSAL)
+	IF(APPLE)
+		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
+		SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "yes")
+		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
+		#SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
+		#SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+	ENDIF()
+ELSE()
+	SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "not available")
 ENDIF()
 
 # Check for Perl

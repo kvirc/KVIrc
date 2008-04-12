@@ -75,6 +75,7 @@ KviAboutDialog::KviAboutDialog()
 	setCaption(__tr2qs_ctx("About KVIrc...","about"));
 	setOkButton(__tr2qs_ctx("Close","about"));
 
+	// About tab
 	KviStr buffer;
 	g_pApp->findImage(buffer,"kvi_splash.png");
 
@@ -93,23 +94,45 @@ KviAboutDialog::KviAboutDialog()
 
 	QString aboutString= "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br>";
 	aboutString += __tr2qs_ctx("Forged by the <b>KVIrc Development Team</b>","about");
-	aboutString += "<br>";
-	aboutString += __tr2qs_ctx("Sources date","about");
-	aboutString += ": ";
-	aboutString += KVI_SOURCES_DATE;
 
 	l = new QLabel(aboutString,w);
 	l->setAlignment(Qt::AlignCenter);
 	g->addWidget(l,1,0);
 
 	addTab(w,__tr2qs_ctx("About","about"));
-	
 
 
+	// Info tab
 	w = new QWidget(this);
 	g = new QGridLayout(w,1,1,4,8);
 
 	KviTalTextEdit * v = new KviTalTextEdit(w);
+	v->setReadOnly(true);
+	g->addWidget(v,0,0);
+
+	// Get info
+	QString infoString = __tr2qs_ctx("Sources date","about");
+	infoString += ": ";
+	infoString += KVI_SOURCES_DATE;
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Build date","about");
+	infoString += ": ";
+	infoString += KVI_BUILD_DATE;
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Build flags","about");
+	infoString += ": ";
+	infoString += KVI_BUILD_FLAGS;
+
+	v->setText(infoString);
+
+	addTab(w,__tr2qs_ctx("Executable Informations","about"));
+
+
+	// Honor & Glory tab
+	w = new QWidget(this);
+	g = new QGridLayout(w,1,1,4,8);
+
+	v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
 	g->addWidget(v,0,0);
 
@@ -118,7 +141,7 @@ KviAboutDialog::KviAboutDialog()
 	addTab(w,__tr2qs_ctx("Honor && Glory","about"));
 
 
-
+	// License tab
 	w = new QWidget(this);
 	g = new QGridLayout(w,1,1,4,8);
 
