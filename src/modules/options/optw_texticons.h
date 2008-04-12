@@ -31,7 +31,6 @@
 #include <QToolButton>
 #include <QTableWidget>
 #include <QTableWidgetItem>
-#include <QItemDelegate>
 
 class KviTextIconTableItem;
 
@@ -39,30 +38,6 @@ class KviTextIconTableItem;
 #define KVI_OPTIONS_WIDGET_NAME_KviTextIconsOptionsWidget __tr2qs_no_lookup("Text icons")
 #define KVI_OPTIONS_WIDGET_PARENT_KviTextIconsOptionsWidget KviToolsOptionsWidget
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget __tr2qs_no_lookup("smileys,emoticons")
-
-
-class KviTextIconEditor : public KviTalHBox
-{
-	Q_OBJECT
-public:
-	KviTextIconEditor(QWidget * par);
-	~KviTextIconEditor();
-protected:
-	KviTextIcon     *m_pIcon;
-	KviTalPopupMenu *m_pPopup;
-	QToolButton     *m_pIconButton;
-	QToolButton     *m_pBrowseButton;
-public:
-	void updateIcon();
-	void setIcon(KviTextIcon * icon)
-		{ m_pIcon = icon; };
-	KviTextIcon* icon()
-		{ return m_pIcon; };
-protected slots:
-	void iconSelected(int);
-	void doPopup();
-	void chooseFromFile();
-};
 
 class KviTextIconTableItem : public QTableWidgetItem
 {
@@ -75,31 +50,7 @@ protected:
 public:
 	KviTextIcon * icon() { return m_pIcon; };
 	void setId(int id);
-	//virtual QWidget * createEditor() const;
-	void setContentFromEditor(QWidget * w);
-};
-
-//
-// Yes. It's true. You spend more time to find the function to reimplement in order to get the
-// desired behaviour than to think out your REAL algorithm.
-// Usually the function to reimplement is somewhere in a very abstract class that you're
-// forced to understand and then inherit. IMHO the Qt3 item views were *really* better.
-// Let's hope that Trolls improve this.
-// 
-class KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate : public QItemDelegate
-{
-protected:
-	QTableWidget * m_pTableWidget;
-public:
-	KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate(QTableWidget * pTableWidget)
-		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget) {};
-	~KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate()
-		{};
-protected:
-	virtual QWidget * createEditor(QWidget * parent,const QStyleOptionViewItem & option,const QModelIndex & index) const;
-	virtual void setEditorData(QWidget * editor,const QModelIndex & index) const;
-	virtual void setModelData(QWidget * editor,QAbstractItemModel * model,const QModelIndex & index) const;
-	virtual void updateEditorGeometry(QWidget * editor,const QStyleOptionViewItem & option,const QModelIndex & index) const;
+	
 };
 
 class KviTextIconsOptionsWidget : public KviOptionsWidget
@@ -110,14 +61,23 @@ public:
 	~KviTextIconsOptionsWidget();
 protected:
 	QTableWidget * m_pTable;
+	int m_iLastEditedRow;
+	KviTextIconTableItem *m_pItem;
 	QPushButton  * m_pAdd;
 	QPushButton  * m_pDel;
+	KviTalPopupMenu *m_pPopup;
+	KviTalHBox *m_pBox;
 public:
 	virtual void commit();
 protected slots:
 	void itemSelectionChanged();
+	void itemClicked(QTableWidgetItem *i);
 	void addClicked();
 	void delClicked();
+
+	void iconSelected(int);
+	void doPopup();
+	void chooseFromFile();
 };
 
 #endif //!_OPTW_TEXTICONS_H_

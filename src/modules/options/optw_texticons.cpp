@@ -35,154 +35,6 @@
 
 
 
-QWidget * KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::createEditor(QWidget * parent,const QStyleOptionViewItem & option,const QModelIndex & index) const
-{
-	if(index.column() != 1)
-		return QItemDelegate::createEditor(parent,option,index);
-	return new KviTextIconEditor(parent);
-}
-
-void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::setEditorData(QWidget * editor,const QModelIndex & index) const
-{
-	if(index.column() != 1)
-	{
-		QItemDelegate::setEditorData(editor,index);
-		return;
-	}
-
-	if(!editor)
-		return;
-	if(!editor->inherits("KviTextIconEditor"))
-		return;
-
-	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
-
-
-	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
-	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
-	if(!pItem)
-		return;
-
-	pEditor->setIcon(pItem->icon());
-	pEditor->updateIcon();
-}
-
-void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::setModelData(QWidget * editor,QAbstractItemModel * model,const QModelIndex & index) const
-{
-	if(index.column() != 1)
-	{
-		QItemDelegate::setModelData(editor,model,index);
-		return;
-	}
-
-	if(!editor)
-		return;
-	if(!editor->inherits("KviTextIconEditor"))
-		return;
-
-	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
-
-	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
-	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
-	if(!pItem)
-		return;
-		
-	pItem->setContentFromEditor(pEditor);
-}
-
-void KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate::updateEditorGeometry(QWidget * editor,const QStyleOptionViewItem & option,const QModelIndex & index) const
-{
-	if(index.column() != 1)
-	{
-		QItemDelegate::updateEditorGeometry(editor,option,index);
-		return;
-	}
-
-	if(!editor)
-		return;
-	if(!editor->inherits("KviTextIconEditor"))
-		return;
-
-	KviTextIconEditor * pEditor = (KviTextIconEditor *)editor;
-
-	// FIXME: Should use dynamic_cast<> here (once we know it's really safe to use it on all the platforms)
-	KviTextIconTableItem * pItem = static_cast<KviTextIconTableItem *>(m_pTableWidget->item(index.row(),index.column()));
-	if(!pItem)
-		return;
-
-	pEditor->setGeometry(m_pTableWidget->visualItemRect(pItem));
-}
-
-KviTextIconEditor::KviTextIconEditor(QWidget * par)
-: KviTalHBox(par)
-{
-	m_pIconButton=new QToolButton(this);
-	m_pBrowseButton=new QToolButton(this);
-	m_pBrowseButton->setSizePolicy(QSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum));
-	m_pBrowseButton->setText("...");
-	m_pIcon = NULL;
-	m_pPopup = 0;
-	updateIcon();
-	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
-	connect(m_pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
-	setMargin(0);
-	setSpacing(0);
-
-	// I've spend more than 1 hour to find out the following line.
-	// Without this the editor disappears on the first click and no clicked() events are forwarded to the buttons.
-	// It's very ugly.
-	setFocusPolicy(Qt::ClickFocus);
-}
-
-
-KviTextIconEditor::~KviTextIconEditor()
-{
-	
-}
-
-void KviTextIconEditor::doPopup()
-{
-	if(!m_pPopup)
-	{
-		m_pPopup = new KviTalPopupMenu(this);
-		KviIconWidget * iw = new KviIconWidget(m_pPopup);
-		connect(iw,SIGNAL(selected(int)),this,SLOT(iconSelected(int)));
-		m_pPopup->insertItem(iw);
-	}
-	m_pPopup->popup(QCursor::pos());
-}
-
-void KviTextIconEditor::iconSelected(int id)
-{
-	if(!m_pIcon)
-		return;
-	m_pIcon->setId(id);
-	updateIcon();
-}
-
-void KviTextIconEditor::chooseFromFile()
-{
-	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString::null,"*.png","options");
-	if(!szFile.isEmpty())
-	{
-		if(g_pIconManager->getPixmap(szFile))
-		{
-			m_pIcon->setFilename(szFile);
-//			qDebug("%s %s %i |%s| %p",__FILE__,__FUNCTION__,__LINE__,m_pIcon->filename().utf8().data(),m_pIcon);
-			updateIcon();
-		}
-	}
-}
-
-void KviTextIconEditor::updateIcon()
-{
-	if(!m_pIcon)
-		return;
-	QPixmap* pix=m_pIcon->pixmap();
-	if(pix) m_pIconButton->setPixmap(*pix);
-}
-
 KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
 : QTableWidgetItem(QString::null,Qt::ItemIsEditable)
 {
@@ -206,23 +58,14 @@ void KviTextIconTableItem::setId(int id)
 	if(pix) setIcon(QIcon(*pix));
 }
 
-/*QWidget * KviTextIconTableItem::createEditor() const
-{
-	return new KviTextIconEditor(tableWidget()->viewport(),m_pIcon,(KviTextIconTableItem*)this);
-}*/
-
-void KviTextIconTableItem::setContentFromEditor(QWidget * w)
-{
-	if(w->inherits("KviTextIconEditor"))
-	{
-		QPixmap* pix=m_pIcon->pixmap();
-		if(pix) setIcon(QIcon(*pix));
-	}
-}
 
 KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
+	m_pBox=0;
+	m_pPopup=0;
+	m_iLastEditedRow=-1;
+	
 	setObjectName("texticons_options_widget");
 	createLayout(2,2);
 
@@ -233,9 +76,6 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
 			"emoticons.","options"));
-
-
-	m_pTable->setItemDelegateForColumn(1,new KviTextIconQt4ModelViewParadigmIsRidiculouslyComplexAndUglyTableItemDelegate(m_pTable));
 
 	int idx = 0;
 	while(KviTextIcon * i = it.current())
@@ -262,23 +102,75 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	m_pDel->setEnabled(false);
 
 	connect(m_pTable,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
+	connect(m_pTable,SIGNAL(itemClicked(QTableWidgetItem *)),this,SLOT(itemClicked(QTableWidgetItem *)));
 }
 
 KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
 {
 }
 
+
+void KviTextIconsOptionsWidget::doPopup()
+{
+	if(!m_pPopup)
+	{
+		m_pPopup = new KviTalPopupMenu(this);
+		KviIconWidget * iw = new KviIconWidget(m_pPopup);
+		connect(iw,SIGNAL(selected(int)),this,SLOT(iconSelected(int)));
+		m_pPopup->insertItem(iw);
+	}
+	m_pPopup->popup(QCursor::pos());
+}
+
+void KviTextIconsOptionsWidget::iconSelected(int id)
+{
+	m_pItem->icon()->setId(id);
+	m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+}
+
+void KviTextIconsOptionsWidget::chooseFromFile()
+{
+	QString szFile;
+	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString::null,"*.png","options");
+	if(!szFile.isEmpty())
+	{
+		if(g_pIconManager->getPixmap(szFile))
+		{
+			m_pItem->icon()->setFilename(szFile);
+			m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+		}
+	}
+}
 void KviTextIconsOptionsWidget::itemSelectionChanged()
 {
 	int i = m_pTable->currentRow();
 	m_pDel->setEnabled(i >= 0 && i < m_pTable->rowCount());
 }
+void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
+{
+	if (i->column()!=1) return;
+	if (m_iLastEditedRow==i->row()) return;
+	if (m_pBox) 
+		delete m_pBox;
+	m_pBox=new KviTalHBox(0);
+	m_pItem=(KviTextIconTableItem *)i;
+	QToolButton *iconButton=new QToolButton(m_pBox);
+	QToolButton *browseButton=new QToolButton(m_pBox);
+	browseButton->setText("...");
+	m_pBox->setSpacing(0);
+	m_pBox->setMargin(0);
+	iconButton->setIcon(QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
+	m_pTable->setCellWidget(i->row(),1,m_pBox);
+	connect(iconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+	connect(browseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+	m_iLastEditedRow=i->row();
+	
 
+}
 void KviTextIconsOptionsWidget::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
-	//m_pTable->item(m_pTable->rowCount() - 1,0)->setText(__tr2qs_ctx("unnamed","options"));
-	m_pTable->setItem(m_pTable->rowCount() - 1,0,new QTableWidgetItem(__tr2qs_ctx("unnamed","options")));
+	m_pTable->item(m_pTable->rowCount() - 1,0)->setText(__tr2qs_ctx("unnamed","options"));
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,new KviTextIconTableItem(m_pTable,0));
 	m_pDel->setEnabled(true);
 }
