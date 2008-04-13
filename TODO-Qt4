@@ -70,7 +70,7 @@ src/kvirc/ui
 	kvi_toolwindows_container.h
 
 src/modules
-	addon
+	addon -  q3support in dialog.*
 	clock - all excluded by #if
 	editor - q3support
 	help

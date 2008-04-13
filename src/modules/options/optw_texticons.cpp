@@ -49,6 +49,7 @@ KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
 KviTextIconTableItem::~KviTextIconTableItem()
 {
 	delete m_pIcon;
+	
 }
 
 void KviTextIconTableItem::setId(int id)
@@ -72,6 +73,12 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 
 	m_pTable = new QTableWidget(g_pTextIconManager->textIconDict()->count(),2,this);
+
+	QStringList header;
+	header.append(__tr2qs("Text"));
+	header.append(__tr2qs("Emoticon"));
+
+	m_pTable->setHorizontalHeaderLabels(header);
 
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
@@ -107,6 +114,7 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 
 KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
 {
+	if (m_pBox) delete m_pBox;
 }
 
 
@@ -164,8 +172,6 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 	connect(iconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
 	connect(browseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
 	m_iLastEditedRow=i->row();
-	
-
 }
 void KviTextIconsOptionsWidget::addClicked()
 {
