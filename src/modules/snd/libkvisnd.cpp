@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2002 Juanjo �varez (juanjux at yahoo dot es)
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net) 
+//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,6 +35,11 @@
 #include "kvi_qstring.h"
 
 #include <QSound>
+
+#ifdef COMPILE_PHONON_SUPPORT
+#include <Phonon>
+Phonon::MediaObject * g_pPhononPlayer=0;
+#endif //!COMPILE_PHONON_SUPPORT
 
 #ifdef COMPILE_ON_WINDOWS
 	#include <mmsystem.h>
@@ -85,7 +90,9 @@ KviSoundPlayer::KviSoundPlayer()
 
 	m_pSoundSystemDict = new KviPointerHashTable<QString,SoundSystemRoutine>(17,false);
 	m_pSoundSystemDict->setAutoDelete(true);
-
+#ifdef COMPILE_PHONON_SUPPORT
+	m_pSoundSystemDict->insert("phonon",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon)));
+#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_ON_WINDOWS
 	m_pSoundSystemDict->insert("winmm",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playWinmm)));
 #else //!COMPILE_ON_WINDOWS
@@ -165,6 +172,11 @@ bool KviSoundPlayer::event(QEvent * e)
 
 void KviSoundPlayer::detectSoundSystem()
 {
+#ifdef COMPILE_PHONON_SUPPORT
+	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::NotificationCategory);
+	if(g_pPhononPlayer->state!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
+	return;
+#endif
 #ifdef COMPILE_ON_WINDOWS
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
 #else
@@ -207,13 +219,27 @@ void KviSoundPlayer::detectSoundSystem()
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "null";
 #endif
 }
-	
+
+#ifdef COMPILE_PHONON_SUPPORT
+bool KviSoundPlayer::playPhonon(const QString &szFileName)
+{
+	if(isMuted()) return true;
+	g_pPhononPlayer->setCurrentSource(szFileName);
+	g_pPhononPlayer->play();
+	return true;
+}
+#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_ON_WINDOWS
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
 		if(isMuted()) return true;
-		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
-		return true;
+			KviArtsSoundThread * t = new KviArtsSoundThread(szFileName);
+			if(!t->start())
+			{
+				delete t;
+				return false;
+			}
+			return true;
 	}
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
@@ -350,11 +376,11 @@ void KviSoundThread::run()
 				int sampleFormat, sampleWidth, channelCount, format, freq;
 				float frameSize;
 				void * buffer;
-			
+
 				file = afOpenFile(m_szFileName.toUtf8().data(),"r",NULL);
 				afGetVirtualSampleFormat(file, AF_DEFAULT_TRACK, &sampleFormat, &sampleWidth);
 				frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
-				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK); 
+				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
 				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
 
 				int audiofd_c = open("/dev/dsp", O_WRONLY | O_EXCL | O_NDELAY);
@@ -367,37 +393,37 @@ void KviSoundThread::run()
 					debug("(the device is probably busy)");
 					goto exit_thread;
 				}
-				
+
 				if (sampleWidth == 8) format = AFMT_U8;
 				else if (sampleWidth == 16)format = AFMT_S16_NE;
-			
+
 				if (ioctl(audiofd.handle(),SNDCTL_DSP_SETFMT, &format) == -1)
 				{
 					debug("Could not set format width to DSP! [OSS]");
 					goto exit_thread;
 				}
-			
+
 				if (ioctl(audiofd.handle(), SNDCTL_DSP_CHANNELS, &channelCount) == -1)
 				{
 					debug("Could not set DSP channels! [OSS]");
 					goto exit_thread;
 				}
-			
+
 				freq = (int) afGetRate(file, AF_DEFAULT_TRACK);
 				if (ioctl(audiofd.handle(), SNDCTL_DSP_SPEED, &freq) == -1)
 				{
 					debug("Could not set DSP speed %d! [OSS]",freq);
 					goto exit_thread;
 				}
-			
+
 				framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer, BUFFER_FRAMES);
-			
+
 				while(framesRead > 0)
 				{
 					audiofd.writeBlock((char *)buffer,(int)(framesRead * frameSize));
-					framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer,BUFFER_FRAMES); 
+					framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer,BUFFER_FRAMES);
 				}
-			
+
 			exit_thread:
 				audiofd.close();
 				if(audiofd_c >= 0)close(audiofd_c);
@@ -419,35 +445,35 @@ void KviSoundThread::run()
 		void KviOssSoundThread::play()
 		{
 			#define OSS_BUFFER_SIZE 16384
-		
+
 			QFile f(m_szFileName);
 			int fd = -1;
 			char buf[OSS_BUFFER_SIZE];
 			int iDataLen = 0;
 			int iSize = 0;
-		
+
 			if(!f.open(IO_ReadOnly))
 			{
 				debug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
 				return;
 			}
-		
+
 			iSize = f.size();
-		
+
 			if(iSize < 24)
 			{
 				debug("Could not play sound, file %s too small! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
-		
+
 			if(f.readBlock(buf,24) < 24)
 			{
 				debug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
-		
+
 			iSize -= 24;
-		
+
 			fd = open("/dev/audio",  O_WRONLY | O_EXCL | O_NDELAY);
 			if(fd < 0)
 			{
@@ -455,8 +481,8 @@ void KviSoundThread::run()
 				debug("Maybe other program is using the device? Hint: fuser -uv /dev/audio");
 				goto exit_thread;
 			}
-		
-		
+
+
 			while(iSize > 0)
 			{
 				int iCanRead = OSS_BUFFER_SIZE - iDataLen;
@@ -489,7 +515,7 @@ void KviSoundThread::run()
 					goto exit_thread;
 				}
 			}
-		
+
 		exit_thread:
 			f.close();
 			if(fd > 0)close(fd);
@@ -532,7 +558,7 @@ void KviSoundThread::run()
 		void KviArtsSoundThread::play()
 		{
 			if(!g_pArtsDispatcher)g_pArtsDispatcher = new Arts::Dispatcher;
-		
+
 			Arts::SimpleSoundServer *server = new Arts::SimpleSoundServer(Arts::Reference("global:Arts_SimpleSoundServer"));
 			if(server->isNull())
 			{
@@ -544,6 +570,24 @@ void KviSoundThread::run()
 		}
 	#endif
 
+		#ifdef COMPILE_PHONON_SUPPORT
+
+		KviPhononSoundThread::KviPhononSoundThread(const QString &szFileName)
+		: KviSoundThread(szFileName)
+		{
+			if(!g_pPhononPlayer) g_pPhononPlayer = Phonon::createPlayer(szFileName);
+			else g_pPhononPlayer->setCurrentSource(szFileName);
+		}
+
+		KviPhononSoundThread::~KviPhononSoundThread()
+		{
+		}
+
+		void KviPhononSoundThread::play()
+		{
+			g_pPhononPlayer->play();
+		}
+	#endif //!COMPILE_PHONON_SUPPORT
 
 #endif //!COMPILE_ON_WINDOWS
 

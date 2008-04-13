@@ -3,7 +3,7 @@
 
 //
 //   File : libkvisnd.h
-//   Creation date : Apr 21 2002 12:30:25 CEST by Juan Jos��varez 
+//   Creation date : Apr 21 2002 12:30:25 CEST by Juan Jos��varez
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
@@ -51,13 +51,13 @@ class KviSoundPlayer;
 //{
 //	kvi_u32_t tag;
 //	if(!f->load(tag))return false;
-//	
+//
 //	f->at(0);
 //}
 
 //bool KviWavSoundFileReader::readHeader()
 //{
-//    
+//
 //
 //    tag = get_le32(pb);
 //
@@ -67,11 +67,11 @@ class KviSoundPlayer;
 //    tag = get_le32(pb);
 //    if (tag != MKTAG('W', 'A', 'V', 'E'))
 //        return -1;
-//    
+//
 //    size = find_tag(pb, MKTAG('f', 'm', 't', ' '));
 //    if (size < 0)
 //        return -1;
-//    id = get_le16(pb); 
+//    id = get_le16(pb);
 //    channels = get_le16(pb);
 //    rate = get_le32(pb);
 //    bit_rate = get_le32(pb) * 8;
@@ -79,7 +79,7 @@ class KviSoundPlayer;
 //    get_le16(pb); /* bits per sample */
 //    if (size >= 18) {
 //        /* wav_extra_size */
-//        extra_size = get_le16(pb); 
+//        extra_size = get_le16(pb);
 //        /* skip unused data */
 //        url_fseek(pb, size - 18, SEEK_CUR);
 //    }
@@ -87,7 +87,7 @@ class KviSoundPlayer;
 //    size = find_tag(pb, MKTAG('d', 'a', 't', 'a'));
 //    if (size < 0)
 //        return -1;
-//    
+//
 //    /* now we are ready: build format streams */
 //    st = malloc(sizeof(AVStream));
 //    if (!st)
@@ -96,7 +96,7 @@ class KviSoundPlayer;
 //    s->streams[0] = st;
 //
 //    st->id = 0;
-//    
+//
 //    st->codec.codec_type = CODEC_TYPE_AUDIO;
 //    st->codec.codec_tag = id;
 //    st->codec.codec_id = codec_get_id(codec_wav_tags, id);
@@ -116,6 +116,17 @@ protected:
 	virtual void run();
 };
 
+#ifdef COMPILE_PHONON_SUPPORT
+class KviArtsSoundThread : public KviSoundThread
+{
+	public:
+		KviPhononSoundThread(const QString &szFileName);
+		virtual ~KviPhononSoundThread();
+	protected:
+		virtual void play();
+};
+#endif
+
 #ifndef COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
 		class KviOssSoundThread : public KviSoundThread
@@ -126,7 +137,7 @@ protected:
 		protected:
 			virtual void play();
 		};
-	
+
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			class KviOssAudiofileSoundThread : public KviSoundThread
 			{
@@ -138,7 +149,7 @@ protected:
 			};
 		#endif //COMPILE_AUDIOFILE_SUPPORT
 	#endif //COMPILE_OSS_SUPPORT
-	
+
 	#ifdef COMPILE_ESD_SUPPORT
 		class KviEsdSoundThread : public KviSoundThread
 		{
