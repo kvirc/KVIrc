@@ -48,7 +48,7 @@ void KviKvsTreeNodeVoidFunctionCall::dump(const char * prefix)
 	qDebug("%s VoidFunctionCall",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pFunctionCall->dump(tmp.utf8().data());
+	m_pFunctionCall->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeVoidFunctionCall::execute(KviKvsRunTimeContext * c)

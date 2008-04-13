@@ -60,9 +60,9 @@ void KviKvsTreeNodeSpecialCommandForeach::dump(const char * prefix)
 	qDebug("%s SpecialCommandForeach",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pIterationVariable->dump(tmp.utf8().data());
-	m_pIterationData->dump(tmp.utf8().data());
-	m_pLoop->dump(tmp.utf8().data());
+	m_pIterationVariable->dump(tmp.toUtf8().data());
+	m_pIterationData->dump(tmp.toUtf8().data());
+	m_pLoop->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)

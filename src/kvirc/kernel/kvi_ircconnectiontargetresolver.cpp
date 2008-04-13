@@ -320,7 +320,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Using cached server IP address (%s)"),
-				m_pTarget->server()->m_szIp.utf8().data());
+				m_pTarget->server()->m_szIp.toUtf8().data());
 		haveServerIp();
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
@@ -357,7 +357,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 						__tr2qs("Looking up the server hostname (%s)..."),
-						m_pTarget->server()->m_szHostname.utf8().data());
+						m_pTarget->server()->m_szHostname.toUtf8().data());
 			}
 		}
 	}
@@ -491,14 +491,14 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv6 bind address (%s) is not valid"),
-									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).utf8().data());
+									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).toUtf8().data());
 								KVI_OPTION_BOOL(KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress) = false;
 						} else {
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv6 bind address (%s) is not valid (the interface it refers to might be down)"),
-									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).utf8().data());
+									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				} else {
@@ -520,14 +520,14 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv4 bind address (%s) is not valid"),
-									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).utf8().data());
+									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).toUtf8().data());
 									KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress) = false;
 						} else {
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv4 bind address (%s) is not valid (the interface it refers to might be down)"),
-									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).utf8().data());
+									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				} else {

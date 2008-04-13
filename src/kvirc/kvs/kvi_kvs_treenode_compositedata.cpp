@@ -79,7 +79,7 @@ void KviKvsTreeNodeCompositeData::dump(const char * prefix)
 	tmp.append("  ");
 	for(KviKvsTreeNodeData * p = m_pSubData->first();p;p = m_pSubData->next())
 	{
-		p->dump(tmp.utf8().data());
+		p->dump(tmp.toUtf8().data());
 	}
 }
 

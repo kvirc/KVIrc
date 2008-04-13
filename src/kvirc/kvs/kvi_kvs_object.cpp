@@ -1186,7 +1186,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		{
 			QString s;
 			v->asString(s);
-			m_pObject->setProperty(szName,QVariant(s.utf8()));
+			m_pObject->setProperty(szName,QVariant(s.toUtf8()));
 		}
 		break;
 		case QVariant::Point:

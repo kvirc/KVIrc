@@ -580,7 +580,7 @@ void KviIrcContext::connectionFailed(int iError)
 
 	m_pConsole->output(KVI_OUT_SYSTEMERROR,
 		__tr2qs("Connection attempt failed [%s]"),
-		m_pConnection->target()->server()->m_szHostname.utf8().data());
+		m_pConnection->target()->server()->m_szHostname.toUtf8().data());
 
 	// if the connection has been aborted by the user then just go idle
 	if(iError == KviError_operationAborted)
@@ -672,8 +672,8 @@ void KviIrcContext::connectionEstabilished()
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
 			connection()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
-			connection()->server()->m_szHostname.utf8().data(),
-			connection()->server()->m_szIp.utf8().data(),
+			connection()->server()->m_szHostname.toUtf8().data(),
+			connection()->server()->m_szIp.toUtf8().data(),
 			connection()->server()->m_uPort);
 	}
 
@@ -777,8 +777,8 @@ void KviIrcContext::connectionTerminated()
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Connection terminated [%s (%s:%u)]"),
-				oldServer.hostName().utf8().data(),
-				oldServer.ip().utf8().data(),
+				oldServer.hostName().toUtf8().data(),
+				oldServer.ip().toUtf8().data(),
 				oldServer.port());
 	}
 

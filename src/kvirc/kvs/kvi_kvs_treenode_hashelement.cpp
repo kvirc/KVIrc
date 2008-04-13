@@ -53,8 +53,8 @@ void KviKvsTreeNodeHashElement::dump(const char * prefix)
 	qDebug("%s HashElement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pSource->dump(tmp.utf8().data());
-	m_pKey->dump(tmp.utf8().data());
+	m_pSource->dump(tmp.toUtf8().data());
+	m_pKey->dump(tmp.toUtf8().data());
 }
 
 

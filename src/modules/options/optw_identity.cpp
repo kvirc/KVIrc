@@ -152,7 +152,7 @@ void KviAvatarDownloadDialog::startDownload()
 	g_pApp->getLocalKvircDirectory(m_szLocalFileName,KviApp::Avatars,tmp);
 
 	m_pRequest->setExistingFileAction(KviHttpRequest::RenameExisting);
-	if(!m_pRequest->get(KviUrl(m_szUrl),KviHttpRequest::StoreToFile,m_szLocalFileName.utf8().data()))
+	if(!m_pRequest->get(KviUrl(m_szUrl),KviHttpRequest::StoreToFile,m_szLocalFileName.toUtf8().data()))
 	{
 		m_szErrorMessage = __tr2qs_ctx("Failed to start the download","options");
 		reject();

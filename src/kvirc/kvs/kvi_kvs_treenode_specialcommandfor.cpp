@@ -61,10 +61,10 @@ void KviKvsTreeNodeSpecialCommandFor::dump(const char * prefix)
 	qDebug("%s SpecialCommandFor",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pInitialization)m_pInitialization->dump(tmp.utf8().data());
-	if(m_pCondition)m_pCondition->dump(tmp.utf8().data());
-	if(m_pUpdate)m_pUpdate->dump(tmp.utf8().data());
-	if(m_pLoop)m_pLoop->dump(tmp.utf8().data());
+	if(m_pInitialization)m_pInitialization->dump(tmp.toUtf8().data());
+	if(m_pCondition)m_pCondition->dump(tmp.toUtf8().data());
+	if(m_pUpdate)m_pUpdate->dump(tmp.toUtf8().data());
+	if(m_pLoop)m_pLoop->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)

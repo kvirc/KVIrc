@@ -273,8 +273,8 @@ void KviListWindow::connectionStateChange()
 		QString tmp;
 		KviQString::sprintf(tmp,
 				__tr2qs("Connected to %s (%s)"),
-				m_pConsole->connection()->currentServerName().utf8().data(),
-				m_pConsole->currentNetworkName().utf8().data());
+				m_pConsole->connection()->currentServerName().toUtf8().data(),
+				m_pConsole->currentNetworkName().toUtf8().data());
 		m_pInfoLabel->setText(tmp);
 	} else {
 		m_pInfoLabel->setText(__tr2qs("List cannot be requested: Not connected to a server"));

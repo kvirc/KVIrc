@@ -51,7 +51,7 @@ void KviKvsTreeNodeExpressionReturn::dump(const char * prefix)
 	qDebug("%s ExpressionReturn",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
-	m_pExpression->dump(tmp.utf8().data());
+	m_pExpression->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeExpressionReturn::execute(KviKvsRunTimeContext * c)

@@ -86,12 +86,12 @@
 				if(dcc->bSendRequest)
 				{
 					QString ip     = !dcc->szFakeIp.isEmpty() ? dcc->szFakeIp : dcc->szListenIp;
-					QString port   = !dcc->szFakePort.isEmpty() ? dcc->szFakePort.utf8().data() : m_pMarshal->localPort();
+					QString port   = !dcc->szFakePort.isEmpty() ? dcc->szFakePort.toUtf8().data() : m_pMarshal->localPort();
 					//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned number)"
 					struct in_addr a;
-					if(kvi_stringIpToBinaryIp(ip.utf8().data(),&a))ip.setNum(htonl(a.s_addr));
+					if(kvi_stringIpToBinaryIp(ip.toUtf8().data(),&a))ip.setNum(htonl(a.s_addr));
 					dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC CANVAS chat %Q %Q%c",
-						dcc->console()->connection()->encodeText( dcc->szNick.utf8().data() ).data(),
+						dcc->console()->connection()->encodeText( dcc->szNick.toUtf8().data() ).data(),
 						0x01,&ip,
 						&port,
 						0x01);
@@ -102,7 +102,7 @@
 		} else {
 			// ACTIVE CONNECTION
 			outputNoFmt(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC CANVAS connection","dcc"));
-			int ret = m_pMarshal->dccConnect(dcc->szIp.utf8().data(),dcc->szPort.utf8().data(),m_pDescriptor->bDoTimeout);
+			int ret = m_pMarshal->dccConnect(dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 			if(ret != KviError_success)handleMarshalError(ret);
 			else output(KVI_OUT_DCCMSG,__tr2qs_ctx("Contacting host %Q on port %Q","dcc"),&(dcc->szIp),&(dcc->szPort));
 		}
@@ -128,14 +128,14 @@
 	{
 		// This may change on the fly...
 		m_szTarget.sprintf("%s@%s:%s",
-			m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data());
+			m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 		return m_szTarget;
 	}
 	
 	void KviDccCanvas::fillCaptionBuffers()
 	{
 		KviStr tmp(KviStr::Format,"DCC Canvas %s@%s:%s",
-			m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data());
+			m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	
 		m_szPlainTextCaption = tmp;
 	
@@ -152,7 +152,7 @@
 
 	void KviDccCanvas::getBaseLogFileName(KviStr &buffer)
 	{
-		buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data());
+		buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	}
 
 	void KviDccCanvas::ownMessage(const char * text)
@@ -160,8 +160,8 @@
 		KviStr buf(KviStr::Format,"%s\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-			m_pDescriptor->szLocalNick.utf8().data(),m_pDescriptor->szLocalUser.utf8().data(),
-			m_pDescriptor->szLocalHost.utf8().data(),text);
+			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
+			m_pDescriptor->szLocalHost.toUtf8().data(),text);
 	}
 	
 	void KviDccCanvas::ownAction(const char * text)

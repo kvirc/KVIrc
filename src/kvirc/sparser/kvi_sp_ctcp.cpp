@@ -1157,7 +1157,7 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 					szVersion.append(sz);
 				}
 			}
-			replyCtcp(msg,szVersion.utf8().data());
+			replyCtcp(msg,szVersion.toUtf8().data());
 		} else msg->bIgnored = true;
 	}
 
@@ -1200,7 +1200,7 @@ void KviServerParser::parseCtcpRequestUserinfo(KviCtcpMessage *msg)
 				szReply += KVI_OPTION_STRING(KviOption_stringCtcpUserInfoOther);
 			}
 			if(szReply.isEmpty())szReply = KVI_DEFAULT_CTCP_USERINFO_REPLY;
-			replyCtcp(msg,szReply.utf8().data());
+			replyCtcp(msg,szReply.toUtf8().data());
 		} else msg->bIgnored = true;
 	}
 
@@ -1304,7 +1304,7 @@ void KviServerParser::parseCtcpRequestSource(KviCtcpMessage *msg)
 				version+=" :";
 				version+= KVI_OPTION_STRING(KviOption_stringCtcpSourcePostfix);
 			}
-			replyCtcp(msg,version.utf8().data());
+			replyCtcp(msg,version.toUtf8().data());
 		} else msg->bIgnored = true;
 	}
 
@@ -1517,7 +1517,7 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 				}
 				
 				szReply.append(szGenderTag);
-				replyCtcp(msg,szReply.utf8().data());
+				replyCtcp(msg,szReply.toUtf8().data());
 			}
 		} else {
 			// no avatar set.. ignore channel requests if the user wishes
@@ -1540,8 +1540,8 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 	QString szGender;
 	QString decoded=msg->msg->console()->decodeText(msg->pData);
 
-	decoded = extractCtcpParameter(decoded.utf8().data(),szRemoteFile,true);
-	decoded = extractCtcpParameter(decoded.utf8().data(),szGender,true);
+	decoded = extractCtcpParameter(decoded.toUtf8().data(),szRemoteFile,true);
+	decoded = extractCtcpParameter(decoded.toUtf8().data(),szGender,true);
 	szRemoteFile.stripWhiteSpace();
 
 	bool bPrivate = IS_ME(msg->msg,msg->szTarget);
@@ -1580,7 +1580,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 		
 		// FIXME: #warning "The avatar should be the one with the requested size!!"
 		KviQString::sprintf(textLine,__tr2qs("%Q changes avatar to %s"),
-			&nickLink,szRemoteFile.utf8().data(),&szWhere,&szWhat);
+			&nickLink,szRemoteFile.toUtf8().data(),&szWhere,&szWhat);
 		if(_OUTPUT_VERBOSE)
 			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
 
@@ -1626,7 +1626,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 						{
 							KviQString::appendFormatted(textLine,
 								__tr2qs(": No valid local copy of avatar available, requesting one (HTTP GET %s)"),
-								szRemoteFile.utf8().data());
+								szRemoteFile.toUtf8().data());
 						}
 						g_pApp->setAvatarOnFileReceived(msg->msg->console(),
 							szRemoteFile,msg->pSource->nick(),msg->pSource->username(),msg->pSource->host());
@@ -1641,13 +1641,13 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 						{
 							KviQString::appendFormatted(textLine,
 								__tr2qs(": No valid local copy of avatar available, requesting one (DCC GET %s)"),
-								szRemoteFile.utf8().data());
+								szRemoteFile.toUtf8().data());
 						}
 
 						QString szFName;
-						encodeCtcpParameter(szRemoteFile.utf8().data(),szFName);
+						encodeCtcpParameter(szRemoteFile.toUtf8().data(),szFName);
 						msg->msg->connection()->sendFmtData("PRIVMSG %s :%cDCC GET %s%c",
-								msg->msg->connection()->encodeText(msg->pSource->nick()).data(),0x01,msg->msg->connection()->encodeText(szFName.utf8().data()).data(),0x01);
+								msg->msg->connection()->encodeText(msg->pSource->nick()).data(),0x01,msg->msg->connection()->encodeText(szFName.toUtf8().data()).data(),0x01);
 						g_pApp->setAvatarOnFileReceived(msg->msg->console(),
 							szRemoteFile,msg->pSource->nick(),msg->pSource->username(),msg->pSource->host());
 					} else {

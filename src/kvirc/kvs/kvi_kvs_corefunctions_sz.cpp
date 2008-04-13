@@ -114,10 +114,10 @@ namespace KviKvsCoreFunctions
 		KviWindow * wnd;
 		if(KVSCF_pParams->count() > 0)
 		{
-			wnd = g_pApp->findWindow(winId.utf8().data());
+			wnd = g_pApp->findWindow(winId.toUtf8().data());
 			if(!wnd)
 			{
-				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.utf8().data());
+				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.toUtf8().data());
 				KVSCF_pRetBuffer->setNothing();
 				return true;
 			}
@@ -458,10 +458,10 @@ namespace KviKvsCoreFunctions
 		KviWindow * wnd;
 		if(KVSCF_pParams->count() > 0)
 		{
-			wnd = g_pApp->findWindow(winId.utf8().data());
+			wnd = g_pApp->findWindow(winId.toUtf8().data());
 			if(!wnd)
 			{
-				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.utf8().data());
+				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.toUtf8().data());
 				KVSCF_pRetBuffer->setNothing();
 				return true;
 			}

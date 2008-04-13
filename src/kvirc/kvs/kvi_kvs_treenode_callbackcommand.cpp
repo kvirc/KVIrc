@@ -50,7 +50,7 @@ void KviKvsTreeNodeCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCallbackCommand::dump(const char * prefix)
 {
-	qDebug("%s CallbackCommand(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s CallbackCommand(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);
@@ -60,5 +60,5 @@ void KviKvsTreeNodeCallbackCommand::dumpCallback(const char * prefix)
 {
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pCallback->dump(tmp.utf8().data());
+	m_pCallback->dump(tmp.toUtf8().data());
 }

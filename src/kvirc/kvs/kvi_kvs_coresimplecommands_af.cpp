@@ -852,7 +852,7 @@ namespace KviKvsCoreSimpleCommands
 				QString szWnd;
 				v->asString(szWnd);
 	//#warning "FIXME: the window database is not unicode! (we even could keep integer window id's at this point!)"
-				pWnd = g_pApp->findWindow(szWnd.utf8().data());
+				pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 				if(!pWnd)
 				{
 					KVSCSC_pContext->warning(__tr2qs("The argument of the -w switch did not evaluate to a valid window id: using default"));

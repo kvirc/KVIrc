@@ -247,10 +247,10 @@ namespace KviKvsParameterProcessor
 							v->appendAsString(tmp);
 							v = pVariantList->next();
 						}
-						*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
+						*((KviQCString *)(pFmtArray->pContainer)) = tmp.toUtf8();
 						return true;
 					}
-					*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
+					*((KviQCString *)(pFmtArray->pContainer)) = tmp.toUtf8();
 				}
 				break;
 				case KVS_PT_NONEMPTYCSTRING:
@@ -267,10 +267,10 @@ namespace KviKvsParameterProcessor
 							v->appendAsString(tmp);
 							v = pVariantList->next();
 						}
-						*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
+						*((KviQCString *)(pFmtArray->pContainer)) = tmp.toUtf8();
 						bDoReturn = true;
 					}
-					*((KviQCString *)(pFmtArray->pContainer)) = tmp.utf8();
+					*((KviQCString *)(pFmtArray->pContainer)) = tmp.toUtf8();
 					if(((KviQCString *)(pFmtArray->pContainer))->isEmpty())
 					{
 						QString szError;

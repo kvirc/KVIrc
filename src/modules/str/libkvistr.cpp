@@ -1538,7 +1538,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	char buff[3];
 	OpenSSL_add_all_digests();
 
-	md = EVP_get_digestbyname(szType.utf8().data());
+	md = EVP_get_digestbyname(szType.toUtf8().data());
 	if(!md) {
 		c->warning(__tr2qs("%Q algorytm is not supported"),&szType);
 		return true;
@@ -1546,7 +1546,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	EVP_MD_CTX_init(&mdctx);
 	EVP_DigestInit_ex(&mdctx, md, NULL);
-	EVP_DigestUpdate(&mdctx, szString.utf8().data(), szString.utf8().length());
+	EVP_DigestUpdate(&mdctx, szString.toUtf8().data(), szString.toUtf8().length());
 	EVP_DigestFinal_ex(&mdctx, md_value, &md_len);
 	EVP_MD_CTX_cleanup(&mdctx);
 

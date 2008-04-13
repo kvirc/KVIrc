@@ -452,7 +452,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 void KviScriptEditorWidget::getWordOnCursor(QString &buffer,int index) const
 {
 	QRegExp re("[ \t=,\\(\\)\"}{\\[\\]\r\n+-*><;@!]");
-	//debug("BUFFER IS %s",buffer.utf8().data());
+	//debug("BUFFER IS %s",buffer.toUtf8().data());
 	int start = buffer.findRev(re,index);
 	int end = buffer.find(re,index);
 
@@ -465,7 +465,7 @@ void KviScriptEditorWidget::getWordOnCursor(QString &buffer,int index) const
 		tmp = buffer.mid(start,end-start);
 	}
 	buffer = tmp;
-	//debug("BUFFER NOW IS %s",buffer.utf8().data());
+	//debug("BUFFER NOW IS %s",buffer.toUtf8().data());
 }
 
 void KviScriptEditorWidget::completition(bool bCanComplete)
@@ -953,7 +953,7 @@ void KviScriptEditorImplementation::saveToFile()
 		QString buffer = m_pEditor->text();
 
 		//if(tmp.isEmpty())tmp = "";
-		//KviStr buffer = tmp.utf8().data();
+		//KviStr buffer = tmp.toUtf8().data();
 		if(!KviFileUtils::writeFile(fName,buffer))
 		{
 			QString tmp;

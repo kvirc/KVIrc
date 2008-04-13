@@ -788,7 +788,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 	d->bNoAcks           = d->bIsTdcc;
 	d->bOverrideMinimize = false;
 	d->bAutoAccept       = KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend);
-	d->bIsIncomingAvatar = g_pApp->findPendingAvatarChange(dcc->pConsole,d->szNick.utf8().data(),d->szFileName.utf8().data());
+	d->bIsIncomingAvatar = g_pApp->findPendingAvatarChange(dcc->pConsole,d->szNick.toUtf8().data(),d->szFileName.toUtf8().data());
 
 	if(KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault))
 	{

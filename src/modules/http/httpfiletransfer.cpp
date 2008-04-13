@@ -375,7 +375,7 @@ void KviHttpFileTransfer::requestSent(const QStringList &requestHeaders)
 	for(QStringList::ConstIterator it = requestHeaders.begin();it != requestHeaders.end();++it)
 	{
 		if(!m_bNoOutput)
-			out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]:   %s",id(),(*it).utf8().data());
+			out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]:   %s",id(),(*it).toUtf8().data());
 	}
 
 	m_lRequest = requestHeaders;

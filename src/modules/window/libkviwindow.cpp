@@ -70,11 +70,11 @@ KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 	{ \
 		pWnd = c->window(); \
 	} else { \
-		pWnd = g_pApp->findWindow(szWnd.utf8().data()); \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
 		if(!pWnd) \
 		{ \
 			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data()); \
+				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data()); \
 			return true; \
 		} \
 	}
@@ -89,7 +89,7 @@ KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 	{ \
 		pWnd = c->window(); \
 	} else { \
-		pWnd = g_pApp->findWindow(szWnd.utf8().data()); \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
 		if(!pWnd) \
 			return true; \
 	}
@@ -1103,11 +1103,11 @@ static bool window_kvs_cmd_setCaption(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("html_active_caption",KVS_PT_STRING,KVS_PF_OPTIONAL,szActive)
 	KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.utf8().data());
+	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data());
+			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
 		return true;
 	}
 
@@ -1149,11 +1149,11 @@ static bool window_kvs_cmd_setInputText(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("text",KVS_PT_STRING,0, szText)
 	KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.utf8().data());
+	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data());
+			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
@@ -1194,11 +1194,11 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("text",KVS_PT_STRING,0, szText)
 	KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.utf8().data());
+	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data());
+			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
@@ -1267,11 +1267,11 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("plain_text_caption",KVS_PT_STRING,0, szBackground)
 	KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.utf8().data());
+	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data());
+			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
 		return true;
 	}
 
@@ -1400,11 +1400,11 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szDecryptKey.isEmpty())szDecryptKey = szEncryptKey;
 #ifdef COMPILE_CRYPT_SUPPORT
-	pWnd = g_pApp->findWindow(szWnd.utf8().data());
+	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.utf8().data());
+			c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
 		return true;
 	}
 	if(c->hasSwitch('n',"onlydecrypt") && c->hasSwitch('m',"onlyencrypt"))
@@ -1426,11 +1426,11 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 
 		(void)g_pModuleManager->loadModulesByCaps("crypt");
 
-		KviCryptEngine * e = g_pCryptEngineManager->allocateEngine(szEngine.utf8().data());
+		KviCryptEngine * e = g_pCryptEngineManager->allocateEngine(szEngine.toUtf8().data());
 		if(e)
 		{
-			KviStr enc = KviStr(szEncryptKey.utf8().data());
-			KviStr dec = KviStr(szDecryptKey.utf8().data());
+			KviStr enc = KviStr(szEncryptKey.toUtf8().data());
+			KviStr dec = KviStr(szDecryptKey.toUtf8().data());
 			QString szError;
 			if(initializeCryptEngine(e,enc,dec,szError))
 			{

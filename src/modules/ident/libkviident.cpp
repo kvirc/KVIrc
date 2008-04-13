@@ -383,7 +383,7 @@ ipv6_failure:
 					{
 						QString szHost;
 						if(!satmp.getStringAddress(szHost))szHost = "unknown";
-						KviIdentRequest * r = new KviIdentRequest(t,szHost.utf8().data(),satmp.port());
+						KviIdentRequest * r = new KviIdentRequest(t,szHost.toUtf8().data(),satmp.port());
 						m_pRequestList->append(r);
 						postMessage(__tr("Identd accepting connection"),r);
 					}
@@ -403,7 +403,7 @@ ipv6_failure:
 					{
 						QString szHost;
 						if(!satmp.getStringAddress(szHost))szHost = "unknown";
-						KviIdentRequest * r = new KviIdentRequest(t,szHost.utf8().data(),satmp.port());
+						KviIdentRequest * r = new KviIdentRequest(t,szHost.toUtf8().data(),satmp.port());
 						m_pRequestList->append(r);
 						postMessage(__tr("Identd accepting connection"),r);
 					}

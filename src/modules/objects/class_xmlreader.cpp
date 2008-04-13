@@ -325,7 +325,7 @@ bool KviKvsObject_xmlreader::function_parse(KviKvsObjectFunctionCall *c)
 	QByteArray data = utf8data;
 	data.truncate(utf8data.length()); // don't include the null terminator in data
 	source.setData(data);
-	//debug("PARSING(%s) LEN(%d)",szString.utf8().data(),szString.utf8().length());
+	//debug("PARSING(%s) LEN(%d)",szString.toUtf8().data(),szString.toUtf8().length());
 	QXmlSimpleReader reader;
 	reader.setContentHandler(&handler);
 	reader.setErrorHandler(&handler);

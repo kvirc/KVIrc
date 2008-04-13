@@ -823,23 +823,23 @@ void KviDccFileTransfer::startConnection()
 	if(m_pDescriptor->bResume && m_pDescriptor->bRecvFile)
 	{
 		QString fName;
-		KviServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.utf8().data(),fName);
+		KviServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.toUtf8().data(),fName);
 		if(m_pDescriptor->isZeroPortRequest())
 		{
 		m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s %s%c",
 			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 			0x01,
 			m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			m_pDescriptor->szPort.utf8().data(),
-			m_pDescriptor->szLocalFileSize.utf8().data(),
+			m_pDescriptor->szPort.toUtf8().data(),
+			m_pDescriptor->szLocalFileSize.toUtf8().data(),
 			m_pDescriptor->zeroPortRequestTag(),0x01);
 		} else {
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s%c",
 				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 				0x01,
 				m_pDescriptor->console()->connection()->encodeText(fName).data(),
-				m_pDescriptor->szPort.utf8().data(),
-				m_pDescriptor->szLocalFileSize.utf8().data(),0x01);
+				m_pDescriptor->szPort.toUtf8().data(),
+				m_pDescriptor->szLocalFileSize.toUtf8().data(),0x01);
 		}
 		m_szStatusString = __tr2qs_ctx("Sent DCC RESUME request to %1, waiting for ACCEPT","dcc").arg(m_pDescriptor->szNick);
 		outputAndLog(m_szStatusString);
@@ -867,7 +867,7 @@ void KviDccFileTransfer::listenOrConnect()
 		int ret = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
 		if(ret != KviError_success)handleMarshalError(ret);
 	} else {
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data(),m_pDescriptor->bDoTimeout);
+		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 		if(ret != KviError_success)handleMarshalError(ret);
 	}
 
@@ -891,7 +891,7 @@ KviWindow * KviDccFileTransfer::dccMarshalOutputWindow()
 
 const char * KviDccFileTransfer::dccMarshalOutputContextString()
 {
-	return m_szTransferIdString.utf8().data();
+	return m_szTransferIdString.toUtf8().data();
 }
 
 void KviDccFileTransfer::die()
@@ -911,7 +911,7 @@ void KviDccFileTransfer::abort()
 	if(m_pMarshal)m_pMarshal->abort();
 
 	if(m_pDescriptor->bRecvFile)
-			g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.utf8().data(),m_pDescriptor->szLocalFileName.utf8().data(),m_pDescriptor->szNick.utf8().data(),__tr_ctx("Aborted","dcc"));
+			g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data(),__tr_ctx("Aborted","dcc"));
 
 	KviStr tmp;
 
@@ -1144,15 +1144,15 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 
 			p->setPen(Qt::black);
 
-			KviStr szRemote(KviStr::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data(),
-					m_pDescriptor->szFileName.utf8().data());
+			KviStr szRemote(KviStr::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
+					m_pDescriptor->szFileName.toUtf8().data());
 
 			p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
-					m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.utf8().data());
+					m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
 			iY += iLineSpacing;
 
 			p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
-					m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.utf8().data() : szRemote.ptr());
+					m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
 			iY += iLineSpacing;
 
 
@@ -1531,7 +1531,7 @@ void KviDccFileTransfer::connectionInProgress()
 		if(KVI_OPTION_BOOL(KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores))
 			tmp.replace(" ","_");
 
-		KviServerParser::encodeCtcpParameter(tmp.utf8().data(),fName);
+		KviServerParser::encodeCtcpParameter(tmp.toUtf8().data(),fName);
 		// Zero port requests want DCC SEND as back-request
 		KviStr szReq;
 
@@ -1543,8 +1543,8 @@ void KviDccFileTransfer::connectionInProgress()
 					0x01,
 					m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
 					m_pDescriptor->console()->connection()->encodeText(fName).data(),
-					ip.utf8().data(),port.ptr(),
-					m_pDescriptor->szFileSize.utf8().data(),m_pDescriptor->zeroPortRequestTag(),0x01);
+					ip.toUtf8().data(),port.ptr(),
+					m_pDescriptor->szFileSize.toUtf8().data(),m_pDescriptor->zeroPortRequestTag(),0x01);
 		} else {
 			szReq = m_szDccType;
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %Q%c",
@@ -1552,7 +1552,7 @@ void KviDccFileTransfer::connectionInProgress()
 					0x01,
 					m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
 					m_pDescriptor->console()->connection()->encodeText(fName).data(),
-					ip.utf8().data(),port.ptr(),
+					ip.toUtf8().data(),port.ptr(),
 					&(m_pDescriptor->szLocalFileSize),0x01);
 		}
 		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...","dcc").arg(szReq.ptr()).arg(m_pDescriptor->szNick));
@@ -1592,7 +1592,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 				QString szErrorString = KviError::getDescription(*err);
 				delete err;
 				if(m_pDescriptor->bRecvFile)
-					g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.utf8().data(),m_pDescriptor->szLocalFileName.utf8().data(),m_pDescriptor->szNick.utf8().data(),szErrorString.utf8().data());
+					g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data(),szErrorString.toUtf8().data());
 
 				m_szStatusString = __tr2qs_ctx("Transfer failed: ","dcc");
 				m_szStatusString += szErrorString;
@@ -1633,7 +1633,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,30);
 				}
 				*/
-				if(m_pDescriptor->bRecvFile)g_pApp->fileDownloadTerminated(true,m_pDescriptor->szFileName.utf8().data(),m_pDescriptor->szLocalFileName.utf8().data(),m_pDescriptor->szNick.utf8().data());
+				if(m_pDescriptor->bRecvFile)g_pApp->fileDownloadTerminated(true,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data());
 				m_szStatusString = __tr2qs_ctx("Transfer completed","dcc");
 				outputAndLog(m_szStatusString);
 				m_eGeneralStatus = Success;
@@ -1696,7 +1696,7 @@ void KviDccFileTransfer::connected()
 	if(m_pDescriptor->bRecvFile)
 	{
 		KviDccRecvThreadOptions * o = new KviDccRecvThreadOptions;
-		o->szFileName      = m_pDescriptor->szLocalFileName.utf8().data();
+		o->szFileName      = m_pDescriptor->szLocalFileName.toUtf8().data();
 		bool bOk;
 		o->iTotalFileSize  = m_pDescriptor->szFileSize.toInt(&bOk);
 		if(!bOk)o->iTotalFileSize = -1;
@@ -1710,7 +1710,7 @@ void KviDccFileTransfer::connected()
 		m_pSlaveRecvThread->start();
 	} else {
 		KviDccSendThreadOptions * o = new KviDccSendThreadOptions;
-		o->szFileName      = m_pDescriptor->szLocalFileName.utf8().data();
+		o->szFileName      = m_pDescriptor->szLocalFileName.toUtf8().data();
 		o->bFastSend       = KVI_OPTION_BOOL(KviOption_boolUseFastDccSend);
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		bool bOk;
@@ -1736,10 +1736,10 @@ void KviDccFileTransfer::connected()
 
 bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,const char *szZeroPortTag)
 {
-	if(!(kvi_strEqualCI(filename,m_pDescriptor->szFileName.utf8().data()) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests)))
+	if(!(kvi_strEqualCI(filename,m_pDescriptor->szFileName.toUtf8().data()) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests)))
 		return false;
 
-	if(!(kvi_strEqualCI(port,m_pDescriptor->szPort.utf8().data()) &&
+	if(!(kvi_strEqualCI(port,m_pDescriptor->szPort.toUtf8().data()) &&
 			(!m_pSlaveRecvThread) && m_pDescriptor->bResume && m_pDescriptor->bRecvFile && m_pResumeTimer))
 		return false;
 
@@ -1757,8 +1757,8 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 	listenOrConnect();
 
 	/*
-	int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.utf8().data(),
-					m_pDescriptor->szPort.utf8().data(),m_pDescriptor->bDoTimeout);
+	int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),
+					m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 
 	if(ret != KviError_success)handleMarshalError(ret);
 	else {

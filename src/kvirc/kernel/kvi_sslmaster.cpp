@@ -106,14 +106,14 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 	if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
 	{
 		switch(s->useCertificateFile(
-			KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).utf8().data(),
-			KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).utf8().data()))
+			KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data(),
+			KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8().data()))
 		{
 			case KviSSL::Success:
-				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL]: Using certificate file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).utf8().data());
+				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL]: Using certificate file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
 			break;
 			case KviSSL::FileIoError:
-				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).utf8().data());
+				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
 			break;
 			default:
 			{
@@ -129,14 +129,14 @@ KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,c
 	if(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey))
 	{
 		switch(s->usePrivateKeyFile(
-			KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).utf8().data(),
-			KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass).utf8().data()))
+			KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data(),
+			KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass).toUtf8().data()))
 		{
 			case KviSSL::Success:
-				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL]: Using private key file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).utf8().data());
+				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL]: Using private key file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
 			break;
 			case KviSSL::FileIoError:
-				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).utf8().data());
+				if(wnd)wnd->output(KVI_OUT_SSL,__tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"),contextString,KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
 			break;
 			default:
 			{

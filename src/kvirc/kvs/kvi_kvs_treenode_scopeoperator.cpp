@@ -62,8 +62,8 @@ void KviKvsTreeNodeScopeOperator::dump(const char * prefix)
 	qDebug("%s ScopeOperator",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pObjectReference->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pObjectReference->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeScopeOperator::isReadOnly()

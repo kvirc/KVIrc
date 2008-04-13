@@ -383,7 +383,7 @@ void KviSingleActionEditor::chooseSmallIcon()
 	QString s = d->selectedImage();
 	delete d;
 	if(ret != QDialog::Accepted)return;
-	QPixmap * p = g_pIconManager->getImage(s.utf8().data());
+	QPixmap * p = g_pIconManager->getImage(s.toUtf8().data());
 	if(!p)return;
 	m_pSmallIconEdit->setText(s);
 	m_pSmallIconButton->setPixmap(*p);

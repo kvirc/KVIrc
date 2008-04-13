@@ -62,5 +62,5 @@ void KviKvsTreeNodeStringCast::dump(const char * prefix)
 	qDebug("%s StringCast",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pChildData->dump(tmp.utf8().data());
+	m_pChildData->dump(tmp.toUtf8().data());
 }

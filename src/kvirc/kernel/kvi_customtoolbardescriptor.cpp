@@ -147,7 +147,7 @@ KviCustomToolBar * KviCustomToolBarDescriptor::createToolBar()
 {
 	if(!m_pToolBar)
 	{
-		m_pToolBar = new KviCustomToolBar(this,label(),QT_DOCK_TOP,false,id().utf8().data());
+		m_pToolBar = new KviCustomToolBar(this,label(),QT_DOCK_TOP,false,id().toUtf8().data());
 		fillToolBar();
 	}
 	return m_pToolBar;

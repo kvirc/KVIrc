@@ -377,7 +377,7 @@ bool KviAmipInterface::amipExec(const QString &cmd)
 {
   if(!amip_dll) return false;
   QTextCodec *c=mediaplayer_get_codec();
-  KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.utf8();
+  KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
   return (ac_exec(szCmd) == AC_ERR_NOERROR);
 }
 
@@ -386,7 +386,7 @@ QString KviAmipInterface::amipEval(const QString &cmd)
   QString ret;
   if(!amip_dll) return ret;
   QTextCodec *c=mediaplayer_get_codec();
-  KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.utf8();
+  KviStr szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
   char buff[AC_BUFFER_SIZE];
   if((ac_eval(szCmd, buff) == AC_ERR_NOERROR)) {
     QString s = buff;

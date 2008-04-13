@@ -48,7 +48,7 @@ void KviKvsTreeNodeCoreCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCoreCallbackCommand::dump(const char * prefix)
 {
-	debug("%s CoreCallbackCommand(%s)",prefix,m_szCmdName.utf8().data());
+	debug("%s CoreCallbackCommand(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);

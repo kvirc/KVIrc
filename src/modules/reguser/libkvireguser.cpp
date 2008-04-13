@@ -218,7 +218,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 			u = g_pRegisteredUserDataBase->addMask(u,m);
 			if(u != 0)
 			{
-				if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Mask %Q is already used to identify user %s"),&szMask,u->name().utf8().data());
+				if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Mask %Q is already used to identify user %s"),&szMask,u->name().toUtf8().data());
 			}
 		}
 	}

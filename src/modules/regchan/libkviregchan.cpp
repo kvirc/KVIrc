@@ -168,7 +168,7 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 	{
 		if(!szValue.isEmpty())
 		{
-			ch->setProperty(szProperty.utf8().data(),new KviStr(szValue));
+			ch->setProperty(szProperty.toUtf8().data(),new KviStr(szValue));
 		} else {
 			ch->removeProperty(szProperty);
 		}

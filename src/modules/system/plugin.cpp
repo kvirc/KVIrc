@@ -115,7 +115,7 @@ KviPlugin::~KviPlugin()
 
 KviPlugin* KviPlugin::load(const QString& szFileName)
 {
-	kvi_library_t pLibrary = kvi_library_open(szFileName.local8Bit());
+	kvi_library_t pLibrary = kvi_library_open(szFileName.toLocal8Bit());
 	if (!pLibrary)
 	{
 		return 0;
@@ -187,7 +187,7 @@ int KviPlugin::call(const QString& pszFunctionName, int argc, char * argv[], cha
 {
 	int r;
 	plugin_function function_call;
-	function_call = (plugin_function)kvi_library_symbol(m_Plugin,pszFunctionName.local8Bit());
+	function_call = (plugin_function)kvi_library_symbol(m_Plugin,pszFunctionName.toLocal8Bit());
 	if (!function_call)
 	{
 		return -1;
@@ -283,7 +283,7 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 		{
 			ppArgv[i-2] = x;
 			c->params()->at(i)->asString(tmp);
-			strcpy(x,tmp.local8Bit());
+			strcpy(x,tmp.toLocal8Bit());
 			x += tmp.length();
 
 			*x = 0;

@@ -734,7 +734,7 @@ void KviDccVoice::startConnection()
 	} else {
 		// ACTIVE CONNECTION
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC VOICE connection","dcc"));
-		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data(),m_pDescriptor->bDoTimeout);
+		int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
 		if(ret != KviError_success)handleMarshalError(ret);
 	}
 }
@@ -771,20 +771,20 @@ const QString & KviDccVoice::target()
 {
 	// This may change on the fly...
 	m_szTarget.sprintf("%s@%s:%s",
-		m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data());
+		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }
 
 void KviDccVoice::getBaseLogFileName(KviStr &buffer)
 {
-	buffer.sprintf("dccvoice_%s_%s_%s",m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szLocalFileName.utf8().data(),m_pDescriptor->szPort.utf8().data());
+	buffer.sprintf("dccvoice_%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 }
 
 void KviDccVoice::fillCaptionBuffers()
 {
 	KviStr tmp(KviStr::Format,"DCC Voice %s@%s:%s %s",
-		m_pDescriptor->szNick.utf8().data(),m_pDescriptor->szIp.utf8().data(),m_pDescriptor->szPort.utf8().data(),
-		m_pDescriptor->szLocalFileName.utf8().data());
+		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
+		m_pDescriptor->szLocalFileName.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
 
@@ -926,7 +926,7 @@ void KviDccVoice::connected()
 	opt->bForceHalfDuplex = KVI_OPTION_BOOL(KviOption_boolDccVoiceForceHalfDuplex);
 //	opt->bForceDummyReadTrigger = false;
 	opt->iPreBufferSize = KVI_OPTION_UINT(KviOption_uintDccVoicePreBufferSize);
-	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).utf8().data();
+	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).toUtf8().data();
 	opt->iSampleRate = m_pDescriptor->iSampleRate;
 
 	m_pSlaveThread = new KviDccVoiceThread(this,m_pMarshal->releaseSocket(),opt);
@@ -964,7 +964,7 @@ int KviDccVoice::getMixerVolume(void) const
 	int left; //, right;
 	int req;
 
-	if((fd = ::open(KVI_OPTION_STRING(KviOption_stringDccVoiceMixerDevice).utf8().data(), O_RDONLY)) == -1)
+	if((fd = ::open(KVI_OPTION_STRING(KviOption_stringDccVoiceMixerDevice).toUtf8().data(), O_RDONLY)) == -1)
 	{
 		return 0;
 	}
@@ -995,7 +995,7 @@ void KviDccVoice::setMixerVolume(int vol)
 	int val;
 	int req;
 
-	if((fd = ::open(KVI_OPTION_STRING(KviOption_stringDccVoiceMixerDevice).utf8().data(), O_WRONLY)) == -1)
+	if((fd = ::open(KVI_OPTION_STRING(KviOption_stringDccVoiceMixerDevice).toUtf8().data(), O_WRONLY)) == -1)
 		return;
 
 	req = KVI_OPTION_BOOL(KviOption_boolDccVoiceVolumeSliderControlsPCM) ? SOUND_MIXER_WRITE_PCM : SOUND_MIXER_WRITE_VOLUME;

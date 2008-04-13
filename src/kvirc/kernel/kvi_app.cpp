@@ -1835,7 +1835,7 @@ void KviApp::addRecentChannel(const QString& szChan,const QString& net)
 {
 	if(!m_pRecentChannelsDict)
 		buildRecentChannels();
-	QStringList* pList=m_pRecentChannelsDict->find(net.utf8().data());
+	QStringList* pList=m_pRecentChannelsDict->find(net.toUtf8().data());
 	if(pList)
 	{
 		if(!pList->contains(szChan)) pList->append(szChan);
@@ -1843,7 +1843,7 @@ void KviApp::addRecentChannel(const QString& szChan,const QString& net)
 	else
 	{
 		pList=new QStringList(szChan);
-		m_pRecentChannelsDict->insert(net.utf8().data(),pList);
+		m_pRecentChannelsDict->insert(net.toUtf8().data(),pList);
 	}
 }
 
@@ -1866,7 +1866,7 @@ void KviApp::buildRecentChannels()
 			szNet = (*it).section( KVI_RECENT_CHANNELS_SEPARATOR, 1 );
 			if(!szNet.isEmpty())
 			{
-				QStringList* pList=m_pRecentChannelsDict->find(szNet.utf8().data());
+				QStringList* pList=m_pRecentChannelsDict->find(szNet.toUtf8().data());
 				if(pList)
 				{
 					if(!pList->contains(szChan)) pList->append(szChan);
@@ -1874,7 +1874,7 @@ void KviApp::buildRecentChannels()
 				else
 				{
 					pList=new QStringList(szChan);
-					m_pRecentChannelsDict->insert(szNet.utf8().data(),pList);
+					m_pRecentChannelsDict->insert(szNet.toUtf8().data(),pList);
 				}
 			}
 		}
@@ -1901,7 +1901,7 @@ void KviApp::saveRecentChannels()
 QStringList* KviApp::getRecentChannels(const QString& net)
 {
 	if(!m_pRecentChannelsDict) buildRecentChannels();
-	return m_pRecentChannelsDict->find(net.utf8().data());
+	return m_pRecentChannelsDict->find(net.toUtf8().data());
 }
 
 void KviApp::addRecentServer(const QString& server)

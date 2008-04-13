@@ -417,7 +417,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(m_bCompressed)
 	{
-		gzFile file=gzopen(logName.local8Bit().data(),"rb");
+		gzFile file=gzopen(logName.toLocal8Bit().data(),"rb");
 		if(file)
 		{
 			char buff[1025];
@@ -434,7 +434,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 			gzclose(file);
 			text = QString::fromUtf8(data);
 		} else {
-			debug("Cannot open compressed file %s",logName.local8Bit().data());
+			debug("Cannot open compressed file %s",logName.toLocal8Bit().data());
 		}
 	} else {
 #endif

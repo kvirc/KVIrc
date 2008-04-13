@@ -226,7 +226,7 @@ bool KviKvsObject_listbox::functioncount(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_listbox::functioncurrentText(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((KviTalListBox *)widget())->currentText().local8Bit().data());
+	if (widget()) c->returnValue()->setString(((KviTalListBox *)widget())->currentText().toLocal8Bit().data());
 	return true;
 }
 bool KviKvsObject_listbox::functioncurrentItem(KviKvsObjectFunctionCall *c)

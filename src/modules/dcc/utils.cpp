@@ -43,7 +43,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).stripWhiteSpace();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
-			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data()))
+			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),"0.0.0.0"))
 				{
@@ -51,7 +51,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 					if(!kvi_getLocalHostAddress(szListenIp))
 					{
 						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPV4 address","dcc"),
-								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data());
+								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 						return false;
 					}
 				} else {
@@ -60,16 +60,16 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 				return true;
 			}
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data()))
+			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {
 #endif
-				if(!kvi_getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data(),szListenIp))
+				if(!kvi_getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data(),szListenIp))
 				{
 					KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault) = false;
 					if(c)c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next dcc will work)","dcc"),
-							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data());
+							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 					return false;
 				}
 #ifdef COMPILE_IPV6_SUPPORT
@@ -111,7 +111,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).stripWhiteSpace();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
-			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data()))
+			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),"0.0.0.0"))
 				{
@@ -119,7 +119,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 					if(!kvi_getLocalHostAddress(szListenIp))
 					{
 						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPV4 address","dcc"),
-								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data());
+								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 						return false;
 					}
 				} else {
@@ -128,16 +128,16 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 				return true;
 			}
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data()))
+			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {
 #endif
-				if(!kvi_getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data(),szListenIp))
+				if(!kvi_getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data(),szListenIp))
 				{
 					KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault) = false;
 					if(c)c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next dcc will work)","dcc"),
-							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).utf8().data());
+							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 					return false;
 				}
 #ifdef COMPILE_IPV6_SUPPORT

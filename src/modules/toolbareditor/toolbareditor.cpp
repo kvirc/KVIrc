@@ -194,7 +194,7 @@ KviCustomToolBarPropertiesDialog::~KviCustomToolBarPropertiesDialog()
 
 void KviCustomToolBarPropertiesDialog::iconSelected(const QString &szIconId)
 {
-	QPixmap * p = g_pIconManager->getImage(szIconId.utf8().data());
+	QPixmap * p = g_pIconManager->getImage(szIconId.toUtf8().data());
 	if(p)
 	{
 		m_pIconButton->setPixmap(*p);

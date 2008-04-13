@@ -57,6 +57,7 @@ KviTipFrame::KviTipFrame(QWidget * par)
 	QString buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
 	m_pTipPixmap = new QPixmap(buffer);
+	//setBackgroundMode(Qt::NoBackground);
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 }
 
@@ -96,11 +97,9 @@ void KviTipFrame::paintEvent(QPaintEvent *e)
 }
 
 KviTipWindow::KviTipWindow()
-
 {
-//	: QWidget(0)
 	setObjectName("kvirc_tip_window");
-		/*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/
+	/*,WStyle_Customize | WStyle_Title | WStyle_DialogBorder | WStyle_StaysOnTop*/
 	m_pConfig = 0;
 
 	m_pTipFrame = new KviTipFrame(this);
@@ -163,7 +162,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 
 	QString buffer;
 	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName,KviApp::ConfigPlugins,true);
-	debug("Check path %s and file %s",buffer.utf8().data(),m_szConfigFileName.utf8().data());
+	debug("Check path %s and file %s",buffer.toUtf8().data(),m_szConfigFileName.toUtf8().data());
 	if(bEnsureExists)
 	{
 		if(!KviFileUtils::fileExists(buffer))return false;
@@ -210,7 +209,7 @@ void KviTipWindow::nextTip()
 	KviStr tmp(KviStr::Format,"%u",uNextTip);
 	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
 
-	//qDebug("REDECODED=%s",szTip.utf8().data());
+	//qDebug("REDECODED=%s",szTip.toUtf8().data());
 
 	uNextTip++;
 	if(uNextTip >= uNumTips)uNextTip = 0;

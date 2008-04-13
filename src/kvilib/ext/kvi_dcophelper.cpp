@@ -278,7 +278,7 @@ bool KviDCOPHelper::findRunningApp(const QString &szApp)
 {
 	QValueList<KviQCString> allApps = g_pApp->dcopClient() ->registeredApplications();
 	QValueList<KviQCString>::iterator iterator;
-	KviQCString sz = szApp.local8Bit();
+	KviQCString sz = szApp.toLocal8Bit();
 	for (iterator = allApps.begin();iterator != allApps.end();iterator++)
 	{
 		if(*iterator == sz)

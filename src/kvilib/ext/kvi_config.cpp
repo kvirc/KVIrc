@@ -614,7 +614,7 @@ void KviConfig::writeEntry(const char *szKey,const QString &szValue)
 {
 	m_bDirty = true;
 	KviStrDict * p_group = getCurrentGroup();
-	p_group->replace(szKey,new KviStr(szValue.utf8().data()));
+	p_group->replace(szKey,new KviStr(szValue.toUtf8().data()));
 }
 */
 

@@ -377,7 +377,7 @@ bool KviWinampInterface::playMrl(const QString &mrl)
 	if(hWinamp)
 	{
 		QTextCodec *c=mediaplayer_get_codec();
-		KviStr szMrl = c ? c->fromUnicode(mrl) : mrl.utf8();
+		KviStr szMrl = c ? c->fromUnicode(mrl) : mrl.toUtf8();
 		COPYDATASTRUCT cds;
 		cds.dwData = IPC_PLAYFILE;
 		cds.lpData = (void *)szMrl.ptr();

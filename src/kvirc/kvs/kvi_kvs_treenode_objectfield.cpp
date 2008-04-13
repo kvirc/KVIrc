@@ -47,7 +47,7 @@ void KviKvsTreeNodeObjectField::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeObjectField::dump(const char * prefix)
 {
-	qDebug("%s ObjectField(%s)",prefix,m_szIdentifier.utf8().data());
+	qDebug("%s ObjectField(%s)",prefix,m_szIdentifier.toUtf8().data());
 }
 
 bool KviKvsTreeNodeObjectField::canEvaluateInObjectScope()

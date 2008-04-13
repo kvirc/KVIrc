@@ -52,7 +52,7 @@ void KviKvsTreeNodeInstructionBlock::dump(const char * prefix)
 	tmp.append("  ");
 	for(KviKvsTreeNodeInstruction * i = m_pInstructionList->first();i;i = m_pInstructionList->next())
 	{
-		i->dump(tmp.utf8().data());
+		i->dump(tmp.toUtf8().data());
 	}
 }
 

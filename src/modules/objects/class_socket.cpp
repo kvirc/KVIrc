@@ -546,7 +546,7 @@ bool  KviKvsObject_socket::functionWriteHex(KviKvsObjectFunctionCall *c)
 		szTmp=m_szHex.setNum(m_szHex.toInt(&bOk,16),16);
 		if(szTmp.length()>0)
 		{
-			KviQCString szData8 = szTmp.utf8();
+			KviQCString szData8 = szTmp.toUtf8();
 			m_pOutBuffer->append((const unsigned char *)(szData8.data()),szData8.length());
 			delayedFlush(0);
 			c->returnValue()->setInteger(szData8.length());
@@ -938,12 +938,12 @@ debug ("Socket created");
 			unsigned int uOldConnectionId = m_uConnectionId;
 			QString callBackError=__tr2qs("Connect failure: ");
 
-			callBackError.append((KviError::getDescription(KviError::translateSystemError(sockError)).utf8().data()));
+			callBackError.append((KviError::getDescription(KviError::translateSystemError(sockError)).toUtf8().data()));
 			callFunction(this,"connectFailedEvent",new KviKvsVariantList(
 			new KviKvsVariant(callBackError)));
 
 /*			callEventFunction("connectFailedEvent",0,new KviParameterList(
-				new KviStr(KviStr::Format,__tr("Connect failure: %s"),KviError::getDescription(KviError::translateSystemError(sockError)).utf8().data())));
+				new KviStr(KviStr::Format,__tr("Connect failure: %s"),KviError::getDescription(KviError::translateSystemError(sockError)).toUtf8().data())));
 */			if(m_uConnectionId == uOldConnectionId)reset();
 			// else it has already been called!
 			return;
@@ -1315,7 +1315,7 @@ bool KviKvsObject_socket::functionWrite(KviKvsObjectFunctionCall *c)
   KVSO_PARAMETER("szData",KVS_PT_STRING,0,szData)
  KVSO_PARAMETERS_END(c)
 
-KviQCString szData8 = szData.utf8();
+KviQCString szData8 = szData.toUtf8();
  if(szData8.length() > 0)
  {
   m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());

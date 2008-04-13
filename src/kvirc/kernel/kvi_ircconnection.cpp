@@ -186,7 +186,7 @@ void KviIrcConnection::setupTextCodec()
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
 		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->encoding().latin1());
-		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().utf8().data());
+		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().toUtf8().data());
 	}
 	if(!m_pTextCodec)
 	{
@@ -194,7 +194,7 @@ void KviIrcConnection::setupTextCodec()
 		if(!m_pTarget->network()->encoding().isEmpty())
 		{
 			m_pTextCodec = KviLocale::codecForName(m_pTarget->network()->encoding().latin1());
-			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().utf8().data());
+			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().toUtf8().data());
 		}
 	}
 	if(!m_pTextCodec)
@@ -206,7 +206,7 @@ void KviIrcConnection::setupTextCodec()
 
 KviQCString KviIrcConnection::encodeText(const QString &szText)
 {
-	if(!m_pTextCodec)return szText.utf8();
+	if(!m_pTextCodec)return szText.toUtf8();
 	return m_pTextCodec->fromUnicode(szText);
 }
 
@@ -1099,7 +1099,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	if(szNickName != m_pUserInfo->nickName())
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server refused the suggested nickname (%s) and named you %s instead"),
-			m_pUserInfo->nickName().utf8().data(),szNickName.utf8().data());
+			m_pUserInfo->nickName().toUtf8().data(),szNickName.toUtf8().data());
 		m_pConsole->notifyListView()->nickChange(m_pUserInfo->nickName(),szNickName);
 		m_pUserInfo->setNickName(szNickName);
 	}

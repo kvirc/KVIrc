@@ -306,7 +306,7 @@ int KviIrcSocket::startConnection(KviIrcServer *srv,KviProxy * prx,const char * 
 #endif
 	}
 
-	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip().utf8().data(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIpV6);
+	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip().toUtf8().data(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIpV6);
 
 	if(!sa.socketAddress())return KviError_invalidIpAddress;
 
@@ -637,7 +637,7 @@ void KviIrcSocket::proxyLoginHttp()
 		outputProxyMessage(__tr2qs("Using HTTP protocol."));
 
 	setState(ProxyFinalHttp);
-	KviStr tmp(KviStr::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().utf8().data(),(unsigned int)(m_pIrcServer->port()));
+	KviStr tmp(KviStr::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().toUtf8().data(),(unsigned int)(m_pIrcServer->port()));
 	if(m_pProxy->hasUser())
 	{
 		KviStr auth(KviStr::Format,"%s:%s",m_pProxy->user(),m_pProxy->pass());
@@ -887,7 +887,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 
 		&& m_pIrcServer->cacheIp()
 		);
-	int bufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().utf8().length() + 2
+	int bufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().toUtf8().length() + 2
 		: (m_pIrcServer->isIpV6() ? 22 : 10);
 	char * bufToSend = (char *)kvi_malloc(sizeof(char) * bufLen);
 	bufToSend[0]=(unsigned char)5;           //Proto 5
@@ -898,7 +898,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 	{
 		bRemoteDns=true;
 		bufToSend[3]=3;
-		bufToSend[4]=m_pIrcServer->hostName().utf8().length();		
+		bufToSend[4]=m_pIrcServer->hostName().toUtf8().length();		
 	} else {
 		bufToSend[3]=(unsigned char)m_pIrcServer->isIpV6() ? 4 : 1; // IPV6 : IPV4
 	}
@@ -906,10 +906,10 @@ void KviIrcSocket::proxySendTargetDataV5()
 	if(bRemoteDns)
 	{
 		kvi_memmove((void *)(bufToSend + 5),
-			(void *)(m_pIrcServer->hostName().utf8().data()),
-			m_pIrcServer->hostName().utf8().length());
+			(void *)(m_pIrcServer->hostName().toUtf8().data()),
+			m_pIrcServer->hostName().toUtf8().length());
 		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
-		kvi_memmove((void *)(bufToSend + 4 + 1 + m_pIrcServer->hostName().utf8().length()),(void *)&port,2);
+		kvi_memmove((void *)(bufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()),(void *)&port,2);
 	} else if(m_pIrcServer->isIpV6()) {
 #ifdef COMPILE_IPV6_SUPPORT
 		struct in6_addr ircInAddr;

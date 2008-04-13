@@ -56,7 +56,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 		pIcon=g_pTextIconManager->lookupTextIcon(szIcon);
 		if(!pIcon)
 		{
-			c->warning("Icon '%s' not found",szIcon.utf8().data());
+			c->warning("Icon '%s' not found",szIcon.toUtf8().data());
 		} else {
 			if(pIcon->id()!=-1)
 				c->returnValue()->setInteger(pIcon->id());

@@ -56,7 +56,7 @@ void KviKvsTreeNodeSpecialCommandUnset::dump(const char * prefix)
 	tmp.append("  ");
 	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first();pVar;pVar = m_pVariableList->next())
 	{
-		pVar->dump(tmp.utf8().data());
+		pVar->dump(tmp.toUtf8().data());
 	}
 }
 

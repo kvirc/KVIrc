@@ -392,7 +392,7 @@ namespace KviKvsCoreSimpleCommands
 #ifdef COMPILE_ON_WINDOWS
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			ShellExecute(NULL, "open", szUrl.local8Bit().data(),
+			ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),
                 NULL, NULL, SW_SHOWNORMAL);
 		} else {
 #endif
@@ -603,7 +603,7 @@ namespace KviKvsCoreSimpleCommands
 			QString szTmp;
 			KVSCSC_pContext->enterBlockingSection();
 			
-			bool bResult = KviFileDialog::askForOpenFileName(szTmp,__tr2qs("Choose a file to parse"),szFileName.utf8().data(),"*.kvs");
+			bool bResult = KviFileDialog::askForOpenFileName(szTmp,__tr2qs("Choose a file to parse"),szFileName.toUtf8().data(),"*.kvs");
 
 			if(!KVSCSC_pContext->leaveBlockingSection())return false; // need to stop immediately
 			if(!bResult)return true;
@@ -750,7 +750,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				ch->partMessageSent(!KVSCSC_pSwitches->find('k',"keep"),!KVSCSC_pSwitches->find('s',"silent"));
 			} else {
-				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs("You don't appear to be on channel %s"),(*it).utf8().data());
+				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs("You don't appear to be on channel %s"),(*it).toUtf8().data());
 			}
 		}
 
@@ -1230,7 +1230,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("window_id",KVS_PT_NONEMPTYSTRING,0,szWinId)
 		KVSCSC_PARAMETERS_END
 
-		KviWindow * pAux = g_pApp->findWindow(szWinId.utf8().data());
+		KviWindow * pAux = g_pApp->findWindow(szWinId.toUtf8().data());
 		if(pAux)KVSCSC_pContext->setWindow(pAux);
 		else {
 			if(!KVSCSC_pSwitches->find('q',"quiet"))

@@ -45,10 +45,10 @@ void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCoreFunctionCall::dump(const char * prefix)
 {
-	debug("%s CoreFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	debug("%s CoreFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeCoreFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

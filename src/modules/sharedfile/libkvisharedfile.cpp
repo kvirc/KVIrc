@@ -217,11 +217,11 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		for(KviSharedFile * o = l->first();o;o = l->next())
 		{
 			c->window()->output(KVI_OUT_NONE,"%c%d. %s",
-				KVI_TEXT_BOLD,idx + 1,it.currentKey().utf8().data());
+				KVI_TEXT_BOLD,idx + 1,it.currentKey().toUtf8().data());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    File: %s (%u bytes)","sharedfile"),
-				o->absFilePath().utf8().data(),o->fileSize());
+				o->absFilePath().toUtf8().data(),o->fileSize());
 			c->window()->output(KVI_OUT_NONE,__tr2qs_ctx("    Mask: %s","sharedfile"),
-				o->userMask().utf8().data());
+				o->userMask().toUtf8().data());
 			if(o->expireTime() > 0)
 			{
 				int secs = ((int)(o->expireTime())) - ((int)(time(0)));

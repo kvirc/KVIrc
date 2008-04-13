@@ -53,8 +53,8 @@ void KviKvsTreeNodeArrayElement::dump(const char * prefix)
 	debug("%s ArrayElement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pSource->dump(tmp.utf8().data());
-	m_pIndex->dump(tmp.utf8().data());
+	m_pSource->dump(tmp.toUtf8().data());
+	m_pIndex->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext *c,kvs_int_t &iVal)

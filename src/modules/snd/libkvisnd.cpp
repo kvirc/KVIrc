@@ -212,7 +212,7 @@ void KviSoundPlayer::detectSoundSystem()
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
 		if(isMuted()) return true;
-		sndPlaySound(szFileName.local8Bit().data(),SND_ASYNC | SND_NODEFAULT);
+		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
 		return true;
 	}
 #else //!COMPILE_ON_WINDOWS
@@ -351,7 +351,7 @@ void KviSoundThread::run()
 				float frameSize;
 				void * buffer;
 			
-				file = afOpenFile(m_szFileName.utf8().data(),"r",NULL);
+				file = afOpenFile(m_szFileName.toUtf8().data(),"r",NULL);
 				afGetVirtualSampleFormat(file, AF_DEFAULT_TRACK, &sampleFormat, &sampleWidth);
 				frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK); 
@@ -428,7 +428,7 @@ void KviSoundThread::run()
 		
 			if(!f.open(IO_ReadOnly))
 			{
-				debug("Could not open sound file %s! [OSS]",m_szFileName.utf8().data());
+				debug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
 				return;
 			}
 		
@@ -436,13 +436,13 @@ void KviSoundThread::run()
 		
 			if(iSize < 24)
 			{
-				debug("Could not play sound, file %s too small! [OSS]",m_szFileName.utf8().data());
+				debug("Could not play sound, file %s too small! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
 		
 			if(f.readBlock(buf,24) < 24)
 			{
-				debug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.utf8().data());
+				debug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
 			}
 		
@@ -466,7 +466,7 @@ void KviSoundThread::run()
 					int iReaded = f.readBlock(buf + iDataLen,iToRead);
 					if(iReaded < 1)
 					{
-						debug("Error while reading the file data (%s)! [OSS]",m_szFileName.utf8().data());
+						debug("Error while reading the file data (%s)! [OSS]",m_szFileName.toUtf8().data());
 						goto exit_thread;
 					}
 					iSize -= iReaded;
@@ -479,7 +479,7 @@ void KviSoundThread::run()
 					{
 						if((errno != EINTR) && (errno != EAGAIN))
 						{
-							debug("Error while writing the audio data (%s)! [OSS]",m_szFileName.utf8().data());
+							debug("Error while writing the audio data (%s)! [OSS]",m_szFileName.toUtf8().data());
 							goto exit_thread;
 						}
 					}
@@ -512,8 +512,8 @@ void KviSoundThread::run()
 		void KviEsdSoundThread::play()
 		{
 			// ESD has a really nice API
-			if(!esd_play_file(NULL,m_szFileName.utf8().data(),1))
-				debug("Could not play sound %s! [ESD]",m_szFileName.utf8().data());
+			if(!esd_play_file(NULL,m_szFileName.toUtf8().data(),1))
+				debug("Could not play sound %s! [ESD]",m_szFileName.toUtf8().data());
 		}
 
 	#endif //COMPILE_ESD_SUPPORT
@@ -536,7 +536,7 @@ void KviSoundThread::run()
 			Arts::SimpleSoundServer *server = new Arts::SimpleSoundServer(Arts::Reference("global:Arts_SimpleSoundServer"));
 			if(server->isNull())
 			{
-				debug("Can't connect to sound server to play file %s",m_szFileName.utf8().data());
+				debug("Can't connect to sound server to play file %s",m_szFileName.toUtf8().data());
 			} else {
 				server->play(m_szFileName);
 			}
@@ -599,7 +599,7 @@ static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 	{
 		c->window()->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Sorry , I can't find a sound system to use on this machine"));
 	} else {
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sound system detected to: %s"),KVI_OPTION_STRING(KviOption_stringSoundSystem).utf8().data());
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sound system detected to: %s"),KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 	}
 	return true;
 }

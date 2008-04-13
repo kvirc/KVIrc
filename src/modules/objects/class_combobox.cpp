@@ -224,7 +224,7 @@ bool KviKvsObject_combobox::functioncount(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_combobox::functioncurrent(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((QComboBox *)widget())->currentText().local8Bit().data());
+	if (widget()) c->returnValue()->setString(((QComboBox *)widget())->currentText().toLocal8Bit().data());
 	return true;
 }
 bool KviKvsObject_combobox::functioncurrentItem(KviKvsObjectFunctionCall *c)

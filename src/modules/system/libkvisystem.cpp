@@ -201,7 +201,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("variable",KVS_PT_NONEMPTYSTRING,0,szVariable)
 	KVSM_PARAMETERS_END(c)
 
-	KviQCString szVar = szVariable.local8Bit();
+	KviQCString szVar = szVariable.toLocal8Bit();
 #ifdef COMPILE_ON_WINDOWS
 	QString env = getenv(szVar.data());
 	QString def = __tr2qs("No environment variable found, please don't use the %% in the request");
@@ -368,7 +368,7 @@ static bool system_kvs_fnc_checkModule(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("module_name",KVS_PT_STRING,0,szModuleName)
 	KVSM_PARAMETERS_END(c)
 
-	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName.utf8().data()));
+	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName.toUtf8().data()));
 	return true;
 }
 
@@ -619,8 +619,8 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,KVS_PF_OPTIONAL,szValue)
 	KVSM_PARAMETERS_END(c)
 
-	KviQCString szVar = szVariable.local8Bit();
-	KviQCString szVal = szValue.local8Bit();
+	KviQCString szVar = szVariable.toLocal8Bit();
+	KviQCString szVal = szValue.toLocal8Bit();
 
 	if(szVal.isEmpty())kvi_unsetenv(szVar.data());
 	else

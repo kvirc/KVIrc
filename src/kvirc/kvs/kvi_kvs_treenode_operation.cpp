@@ -61,7 +61,7 @@ void KviKvsTreeNodeOperation::dump(const char * prefix)
 	qDebug("%s Operation",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
 }
 
 
@@ -88,8 +88,8 @@ void KviKvsTreeNodeOperationAssignment::dump(const char * prefix)
 	qDebug("%s OperationAssignment",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationAssignment::execute(KviKvsRunTimeContext * c)
@@ -126,7 +126,7 @@ void KviKvsTreeNodeOperationDecrement::dump(const char * prefix)
 	qDebug("%s OperationDecrement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationDecrement::execute(KviKvsRunTimeContext * c)
@@ -178,7 +178,7 @@ void KviKvsTreeNodeOperationIncrement::dump(const char * prefix)
 	qDebug("%s OperationIncrement",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationIncrement::execute(KviKvsRunTimeContext * c)
@@ -234,8 +234,8 @@ void KviKvsTreeNodeOperationSelfAnd::dump(const char * prefix)
 	qDebug("%s OperationSelfAnd",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfAnd::execute(KviKvsRunTimeContext * c)
@@ -294,8 +294,8 @@ void KviKvsTreeNodeOperationSelfDivision::dump(const char * prefix)
 	qDebug("%s OperationSelfDivision",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfDivision::execute(KviKvsRunTimeContext * c)
@@ -378,8 +378,8 @@ void KviKvsTreeNodeOperationSelfModulus::dump(const char * prefix)
 	qDebug("%s OperationSelfModulus",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfModulus::execute(KviKvsRunTimeContext * c)
@@ -460,8 +460,8 @@ void KviKvsTreeNodeOperationSelfMultiplication::dump(const char * prefix)
 	qDebug("%s OperationSelfMultiplication",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfMultiplication::execute(KviKvsRunTimeContext * c)
@@ -527,8 +527,8 @@ void KviKvsTreeNodeOperationSelfOr::dump(const char * prefix)
 	qDebug("%s OperationSelfOr",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfOr::execute(KviKvsRunTimeContext * c)
@@ -585,8 +585,8 @@ void KviKvsTreeNodeOperationSelfShl::dump(const char * prefix)
 	qDebug("%s OperationSelfShl",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfShl::execute(KviKvsRunTimeContext * c)
@@ -644,8 +644,8 @@ void KviKvsTreeNodeOperationSelfShr::dump(const char * prefix)
 	qDebug("%s OperationSelfShr",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfShr::execute(KviKvsRunTimeContext * c)
@@ -704,8 +704,8 @@ void KviKvsTreeNodeOperationSelfSubtraction::dump(const char * prefix)
 	qDebug("%s OperationSelfSubtraction",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfSubtraction::execute(KviKvsRunTimeContext * c)
@@ -774,8 +774,8 @@ void KviKvsTreeNodeOperationSelfSum::dump(const char * prefix)
 	qDebug("%s OperationSelfSum",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
@@ -844,8 +844,8 @@ void KviKvsTreeNodeOperationSelfXor::dump(const char * prefix)
 	qDebug("%s OperationSelfXor",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationSelfXor::execute(KviKvsRunTimeContext * c)
@@ -903,8 +903,8 @@ void KviKvsTreeNodeOperationStringAppend::dump(const char * prefix)
 	qDebug("%s OperationStringAppend",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationStringAppend::execute(KviKvsRunTimeContext * c)
@@ -945,8 +945,8 @@ void KviKvsTreeNodeOperationArrayAppend::dump(const char * prefix)
 	qDebug("%s OperationArrayAppend",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationArrayAppend::execute(KviKvsRunTimeContext * c)
@@ -1023,8 +1023,8 @@ void KviKvsTreeNodeOperationStringAppendWithComma::dump(const char * prefix)
 	qDebug("%s OperationStringAppendWithComma",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationStringAppendWithComma::execute(KviKvsRunTimeContext * c)
@@ -1074,8 +1074,8 @@ void KviKvsTreeNodeOperationStringAppendWithSpace::dump(const char * prefix)
 	qDebug("%s OperationStringAppendWithSpace",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pTargetData->dump(tmp.utf8().data());
-	m_pRightSide->dump(tmp.utf8().data());
+	m_pTargetData->dump(tmp.toUtf8().data());
+	m_pRightSide->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationStringAppendWithSpace::execute(KviKvsRunTimeContext * c)
@@ -1132,9 +1132,9 @@ void KviKvsTreeNodeOperationStringTransliteration::dump(const char * prefix)
 	qDebug("%s OperationStringTransliteration",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pLeft->dump(tmp.utf8().data());
-	m_pRight->dump(tmp.utf8().data());
-	m_pFlags->dump(tmp.utf8().data());
+	m_pLeft->dump(tmp.toUtf8().data());
+	m_pRight->dump(tmp.toUtf8().data());
+	m_pFlags->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationStringTransliteration::execute(KviKvsRunTimeContext * c)
@@ -1195,9 +1195,9 @@ void KviKvsTreeNodeOperationStringSubstitution::dump(const char * prefix)
 	qDebug("%s OperationStringSubstitution",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pLeft->dump(tmp.utf8().data());
-	m_pRight->dump(tmp.utf8().data());
-	m_pFlags->dump(tmp.utf8().data());
+	m_pLeft->dump(tmp.toUtf8().data());
+	m_pRight->dump(tmp.toUtf8().data());
+	m_pFlags->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c)

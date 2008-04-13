@@ -45,7 +45,7 @@ void KviKvsTreeNodeGlobalVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeGlobalVariable::dump(const char * prefix)
 {
-	debug("%s GlobalVariable(%s)",prefix,m_szIdentifier.utf8().data());
+	debug("%s GlobalVariable(%s)",prefix,m_szIdentifier.toUtf8().data());
 }
 
 

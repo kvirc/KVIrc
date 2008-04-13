@@ -1191,7 +1191,7 @@ void KviServerOptionsWidget::fillServerList()
 	{
 		net = new KviServerOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
 		KviPointerList<KviIrcServer> * sl = r->serverList();
-		bool bCurrent = r->network()->name() == g_pIrcServerDataBase->currentNetworkName().utf8().data();
+		bool bCurrent = r->network()->name() == g_pIrcServerDataBase->currentNetworkName().toUtf8().data();
 		net->setOpen(bCurrent);
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{

@@ -49,10 +49,10 @@ void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	qDebug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

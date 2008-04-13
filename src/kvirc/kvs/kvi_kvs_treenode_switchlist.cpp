@@ -59,7 +59,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 			QChar c((unsigned short)it.currentKey());
 			tmp.append(c);
 			tmp.append("): ");
-			it.current()->dump(tmp.utf8().data());
+			it.current()->dump(tmp.toUtf8().data());
 			++it;
 		}
 	}
@@ -72,7 +72,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 			tmp.append("  Sw(");
 			tmp.append(it.currentKey());
 			tmp.append("): ");
-			it.current()->dump(tmp.utf8().data());
+			it.current()->dump(tmp.toUtf8().data());
 			++it;
 		}
 	}

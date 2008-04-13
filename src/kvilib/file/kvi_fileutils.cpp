@@ -59,7 +59,7 @@ namespace KviFileUtils
 			{
 				if(tmp_buf[255] == '\r')cur_len--; //Ignore CR...
 				int lastlen = szBuffer.length();
-				szBuffer.setLength(lastlen + cur_len);
+				szBuffer.resize(lastlen + cur_len);
 				QChar *p1 = szBuffer.unicode() + lastlen;
 				char * p2 = tmp_buf;
 				for(int i=0;i<cur_len;i++)*p1++ = *p2++;
@@ -75,7 +75,7 @@ namespace KviFileUtils
 		{
 			if(tmp_buf[cur_len - 1] == '\r')cur_len--; //Ignore CR...
 			int lastlen = szBuffer.length();
-			szBuffer.setLength(lastlen + cur_len);
+			szBuffer.resize(lastlen + cur_len);
 			QChar *p1 = szBuffer.unicode() + lastlen;
 			char * p2 = tmp_buf;
 			for(int i=0;i<cur_len;i++)*p1++ = *p2++;

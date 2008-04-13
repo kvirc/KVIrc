@@ -52,7 +52,7 @@ void KviKvsTreeNodeParameterReturn::dump(const char * prefix)
 	qDebug("%s ParameterReturn",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
-	m_pDataList->dump(tmp.utf8().data());
+	m_pDataList->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeParameterReturn::execute(KviKvsRunTimeContext * c)

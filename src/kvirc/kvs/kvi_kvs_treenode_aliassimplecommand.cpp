@@ -54,7 +54,7 @@ void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeAliasSimpleCommand::dump(const char * prefix)
 {
-	debug("%s AliasSimpleCommand(%s)",prefix,m_szCmdName.utf8().data());
+	debug("%s AliasSimpleCommand(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }

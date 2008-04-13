@@ -277,7 +277,7 @@ void UrlDialog::popup(KviTalListViewItem *item, const QPoint &point, int col)
 
 void UrlDialog::sayToWin(int itemID)
 {
-	KviWindow *wnd = g_pApp->findWindowByCaption(m_pListPopup->text(itemID).utf8().data());
+	KviWindow *wnd = g_pApp->findWindowByCaption(m_pListPopup->text(itemID).toUtf8().data());
 	QString say=QString("PRIVMSG %1 %2").arg(wnd->windowName()).arg(m_szUrl.ptr());
 	if (wnd) {
 		KviKvsScript::run(say,wnd);
@@ -461,7 +461,7 @@ void BanFrame::removeBan()
 		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Select a ban."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
-	KviStr item(m_pBanList->text(i).utf8().data());
+	KviStr item(m_pBanList->text(i).toUtf8().data());
 	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next())
 	{
 		if (*tmp == item)

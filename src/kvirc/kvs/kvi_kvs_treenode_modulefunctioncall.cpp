@@ -54,16 +54,16 @@ void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szFunctionName.utf8().data());
+	qDebug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.toUtf8().data(),m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
 //#warning "FIXME: module names should be UNICODE!"
-	KviModule * m = g_pModuleManager->getModule(m_szModuleName.utf8().data());
+	KviModule * m = g_pModuleManager->getModule(m_szModuleName.toUtf8().data());
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError().ptr(); // <-- fixme!

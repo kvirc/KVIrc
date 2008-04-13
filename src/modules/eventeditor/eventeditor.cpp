@@ -312,7 +312,7 @@ void KviEventEditor::selectionChanged(KviTalListViewItem * it)
 		KviCommandFormatter::indent(parms);
 		QString tmp;
 		KviQString::sprintf(tmp,__tr2qs("\n\n	Event:\n		%s\n\n	Parameters:\n%s"),
-			((KviEventListViewItem *)it)->m_szName.utf8().data(),parms.utf8().data());
+			((KviEventListViewItem *)it)->m_szName.toUtf8().data(),parms.toUtf8().data());
 		m_pEditor->setText(tmp);
 	}
 }

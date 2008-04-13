@@ -48,7 +48,7 @@ void KviKvsTreeNodeCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCommand::dump(const char * prefix)
 {
-	qDebug("%s Command(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s Command(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 }
 
@@ -57,7 +57,7 @@ void KviKvsTreeNodeCommand::dumpSwitchList(const char * prefix)
 	if(!m_pSwitches)return;
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pSwitches->dump(tmp.utf8().data());
+	m_pSwitches->dump(tmp.toUtf8().data());
 }
 
 void KviKvsTreeNodeCommand::setSwitchList(KviKvsTreeNodeSwitchList * sw)

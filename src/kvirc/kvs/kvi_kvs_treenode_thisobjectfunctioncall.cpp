@@ -46,10 +46,10 @@ void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeThisObjectFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s ThisObjectFunctionCall(%s)",prefix,m_szFunctionName.utf8().data());
+	qDebug("%s ThisObjectFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 }
 
 

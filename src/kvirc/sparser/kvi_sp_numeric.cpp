@@ -315,7 +315,7 @@ void KviServerParser::parseNumeric005(KviIrcMessage *msg)
 			while(*aux && (*aux != ' '))aux++;
 			while(*aux == ' ')aux++;
 			if(*aux == ':')aux++;
-			if(!msg->haltOutput())msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("This server supports: %s"),msg->connection()->decodeText(aux).utf8().data());
+			if(!msg->haltOutput())msg->console()->output(KVI_OUT_SERVERINFO,__tr2qs("This server supports: %s"),msg->connection()->decodeText(aux).toUtf8().data());
 			if(bNamesx || bUhNames) {
 				msg->connection()->sendFmtData("PROTOCTL %s %s",bNamesx ? "NAMESX" : "", bUhNames ? "UHNAMES" : "");
 			}
@@ -1735,9 +1735,9 @@ void KviServerParser::parseNumericStats(KviIrcMessage * msg)
 				if(szParms.hasData())szParms.append(' ');
 				szParms.append(*p);
 			}
-			pOut->outputNoFmt(KVI_OUT_STATS,msg->connection()->decodeText(szParms).utf8().data());
+			pOut->outputNoFmt(KVI_OUT_STATS,msg->connection()->decodeText(szParms).toUtf8().data());
 		} else {
-			pOut->outputNoFmt(KVI_OUT_STATS,msg->connection()->decodeText(msg->safeTrailing()).utf8().data());
+			pOut->outputNoFmt(KVI_OUT_STATS,msg->connection()->decodeText(msg->safeTrailing()).toUtf8().data());
 		}
 	}
 }
@@ -1748,7 +1748,7 @@ void KviServerParser::parseNumericServerAdminInfoTitle(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).utf8().data());
+			pOut->outputNoFmt(KVI_OUT_SERVERINFO,msg->connection()->decodeText(msg->safeTrailing()).toUtf8().data());
 	}
 }
 void KviServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
@@ -1758,7 +1758,7 @@ void KviServerParser::parseNumericServerAdminInfoServerName(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's server info: %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.utf8().data());
+			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's server info: %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
 	}
 }
 
@@ -1769,7 +1769,7 @@ void KviServerParser::parseNumericServerAdminInfoAdminName(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's administrator is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.utf8().data());
+		pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's administrator is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
 	}
 }
 
@@ -1780,7 +1780,7 @@ void KviServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage * ms
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact adress is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.utf8().data());
+			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact adress is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
 	}
 }
 
@@ -1930,7 +1930,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	} else {
 		QString szMe = msg->connection()->decodeText(msg->safeParam(0));
 		if( (szMe==msg->connection()->currentNickName() || szMe == "*" ) //fix for pre-login codepage message
-			&& KviLocale::codecForName(encoding.utf8().data()))
+			&& KviLocale::codecForName(encoding.toUtf8().data()))
 		{
 			msg->console()->output(KVI_OUT_TEXTENCODING,__tr2qs("Your encoding is now %Q"),&encoding);
 			msg->console()->setTextEncoding(encoding);

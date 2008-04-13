@@ -315,7 +315,7 @@ void KviDccBroker::executeChat(KviDccBox *box,KviDccDescriptor * dcc)
 	szSubProto.toLower();
 
 	QString tmp = QString("dcc: %1 %2@%3:%4").arg(szSubProto.ptr()).arg(dcc->szNick).arg(dcc->szIp).arg(dcc->szPort);
-	KviDccChat * chat = new KviDccChat(dcc->console()->frame(),dcc,tmp.utf8().data());
+	KviDccChat * chat = new KviDccChat(dcc->console()->frame(),dcc,tmp.toUtf8().data());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
 			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat) || \
@@ -365,7 +365,7 @@ void KviDccBroker::activeVoiceExecute(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
+	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
 
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
@@ -385,7 +385,7 @@ void KviDccBroker::activeVoiceExecute(KviDccBox *box,KviDccDescriptor * dcc)
 
 void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 {
-	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
+	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
@@ -437,7 +437,7 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->setConsole(g_pApp->activeConsole());
 	}
 
-	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
+	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
 
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
@@ -458,7 +458,7 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 #ifdef COMPILE_DCC_CANVAS
 void KviDccBroker::passiveCanvasExecute(KviDccDescriptor * dcc)
 {
-	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.utf8().data(),dcc->szIp.utf8().data(),dcc->szPort.utf8().data());
+	KviStr tmp(KviStr::Format,"dcc: canvas %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccCanvas * cnv = new KviDccCanvas(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "This option should be dedicated to Dcc Canvas!....for now we are using the DccChat options"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
@@ -571,7 +571,7 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 		if(KVI_OPTION_BOOL(KviOption_boolUseIncomingDccMediaTypeSavePath))
 		{
 			g_pMediaManager->lock();
-			if(KviMediaType * mt = g_pMediaManager->findMediaType(dcc->szFileName.utf8().data(),false))
+			if(KviMediaType * mt = g_pMediaManager->findMediaType(dcc->szFileName.toUtf8().data(),false))
 			{
 				if(mt->szSavePath.hasData())
 				{
@@ -693,7 +693,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			if(KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
 				(iRemoteSize > -1) && // only if the remote size is really known
 				(iRemoteSize > ((int)(fi.size()))) && // only if the remote size is larger than the local size
-				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.utf8().data()))) // only if there is no transfer with this local file name yet
+				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.toUtf8().data()))) // only if there is no transfer with this local file name yet
 			{
 				// yep, auto resume...
 				dcc->bResume = true;

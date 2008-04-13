@@ -81,7 +81,7 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage,"Home page: http://www.kvirc.net/\n");
 
 #ifdef COMPILE_ON_WINDOWS
-			MessageBox(0,szMessage.local8Bit().data(),"KVIrc",0);
+			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
 			debug(szMessage);
 #endif
@@ -129,7 +129,7 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage,"                 irc[6]://<server>[:<port>][/<channel>[?<pass>]]\n");
 
 #ifdef COMPILE_ON_WINDOWS
-			MessageBox(0,szMessage.local8Bit().data(),"KVIrc",0);
+			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
 			debug(szMessage);
 #endif

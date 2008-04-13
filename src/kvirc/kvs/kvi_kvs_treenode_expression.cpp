@@ -115,7 +115,7 @@ void KviKvsTreeNodeExpressionVariableOperand::dump(const char * prefix)
 	qDebug("%s ExpressionVariableOperand",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pData->dump(tmp.utf8().data());
+	m_pData->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeExpressionVariableOperand::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
@@ -148,7 +148,7 @@ void KviKvsTreeNodeExpressionConstantOperand::dump(const char * prefix)
 	qDebug("%s ExpressionConstantOperand",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pConstant->dump(tmp.utf8().data());
+	m_pConstant->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeExpressionConstantOperand::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
@@ -208,7 +208,7 @@ void KviKvsTreeNodeExpressionUnaryOperator::dump(const char * prefix)
 	qDebug("%s ExpressionUnaryOperator",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pData->dump(tmp.utf8().data());
+	m_pData->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeExpressionUnaryOperator::evaluateOperand(KviKvsRunTimeContext * c)
@@ -248,7 +248,7 @@ void KviKvsTreeNodeExpressionUnaryOperatorNegate::dump(const char * prefix)
 	qDebug("%s ExpressionUnaryOperatorNegate",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pData->dump(tmp.utf8().data());
+	m_pData->dump(tmp.toUtf8().data());
 }
 
 int KviKvsTreeNodeExpressionUnaryOperatorNegate::precedence()
@@ -287,7 +287,7 @@ void KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::dump(const char * prefix)
 	qDebug("%s ExpressionUnaryOperatorBitwiseNot",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pData->dump(tmp.utf8().data());
+	m_pData->dump(tmp.toUtf8().data());
 }
 
 int KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::precedence()
@@ -326,7 +326,7 @@ void KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::dump(const char * prefix)
 	qDebug("%s ExpressionUnaryOperatorLogicalNot",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pData->dump(tmp.utf8().data());
+	m_pData->dump(tmp.toUtf8().data());
 }
 
 int KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::precedence()
@@ -414,8 +414,8 @@ void KviKvsTreeNodeExpressionBinaryOperator::dumpOperands(const char * prefix)
 {
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pLeft)m_pLeft->dump(tmp.utf8().data());
-	if(m_pRight)m_pRight->dump(tmp.utf8().data());
+	if(m_pLeft)m_pLeft->dump(tmp.toUtf8().data());
+	if(m_pRight)m_pRight->dump(tmp.toUtf8().data());
 }
 
 void KviKvsTreeNodeExpressionBinaryOperator::contextDescription(QString &szBuffer)

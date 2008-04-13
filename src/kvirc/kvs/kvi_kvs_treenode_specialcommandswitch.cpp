@@ -80,8 +80,8 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelCase::dump(const char * prefix)
 	qDebug("%s SpecialCommandSwitchLabelCase",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
-	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
+	if(m_pParameter)m_pParameter->dump(tmp.toUtf8().data());
+	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
@@ -154,8 +154,8 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
 	qDebug("%s SpecialCommandSwitchLabelMatch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
-	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
+	if(m_pParameter)m_pParameter->dump(tmp.toUtf8().data());
+	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
@@ -206,8 +206,8 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
 	qDebug("%s SpecialCommandSwitchLabelRegexp",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pParameter)m_pParameter->dump(tmp.utf8().data());
-	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
+	if(m_pParameter)m_pParameter->dump(tmp.toUtf8().data());
+	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
@@ -258,7 +258,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 	qDebug("%s SpecialCommandSwitchLabelDefault",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pInstruction)m_pInstruction->dump(tmp.utf8().data());
+	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
@@ -308,9 +308,9 @@ void KviKvsTreeNodeSpecialCommandSwitch::dump(const char * prefix)
 	qDebug("%s SpecialCommandSwitch",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pExpression->dump(tmp.utf8().data());
+	m_pExpression->dump(tmp.toUtf8().data());
 	for(KviKvsTreeNodeSpecialCommandSwitchLabel * l = m_pLabels->first();l;l = m_pLabels->next())
-		l->dump(tmp.utf8().data());
+		l->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandSwitch::execute(KviKvsRunTimeContext * c)

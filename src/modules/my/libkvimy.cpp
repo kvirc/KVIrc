@@ -378,7 +378,7 @@ static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setString(wnd->currentNetworkName().utf8().data());
+			c->returnValue()->setString(wnd->currentNetworkName().toUtf8().data());
 	}
 	return true;
 }

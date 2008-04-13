@@ -45,7 +45,7 @@ void KviKvsTreeNodeLocalVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeLocalVariable::dump(const char * prefix)
 {
-	qDebug("%s LocalVariable(%s)",prefix,m_szIdentifier.utf8().data());
+	qDebug("%s LocalVariable(%s)",prefix,m_szIdentifier.toUtf8().data());
 }
 
 bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

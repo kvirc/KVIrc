@@ -462,7 +462,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 	tmp.append("\"");
 	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturaly doesn't work
 	tmp.prepend("cmd.exe /k cd \"");
-	system(tmp.local8Bit().data());
+	system(tmp.toLocal8Bit().data());
 #else //COMPILE_ON_WINDOWS
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
@@ -513,7 +513,7 @@ void KviFileTransferWindow::openLocalFile()
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
 	tmp.replace("/","\\");
-	ShellExecute(0,"open",tmp.local8Bit().data(),NULL,NULL,SW_SHOWNORMAL);  //You have to link the shell32.lib
+	ShellExecute(0,"open",tmp.toLocal8Bit().data(),NULL,NULL,SW_SHOWNORMAL);  //You have to link the shell32.lib
 #else //!COMPILE_ON_WINDOWS
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
@@ -549,7 +549,7 @@ void KviFileTransferWindow::openLocalFileWith()
 	if(tmp.isEmpty())return;
 	tmp.replace("/","\\");
 	tmp.prepend("rundll32.exe shell32.dll,OpenAs_RunDLL "); // this if to show the 'open with...' window
-	WinExec(tmp.local8Bit().data(),SW_SHOWNORMAL);
+	WinExec(tmp.toLocal8Bit().data(),SW_SHOWNORMAL);
 #else //!COMPILE_ON_WINDOWS
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
@@ -587,7 +587,7 @@ void KviFileTransferWindow::openLocalFileFolder()
 	tmp=QFileInfo(tmp).dirPath(TRUE);
 	tmp.replace('/','\\');
 	tmp.prepend("explorer.exe ");
-	WinExec(tmp.local8Bit().data(), SW_MAXIMIZE);
+	WinExec(tmp.toLocal8Bit().data(), SW_MAXIMIZE);
 #else //!COMPILE_ON_WINDOWS
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT

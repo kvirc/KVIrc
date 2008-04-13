@@ -70,7 +70,7 @@ void KviKvsTreeNodeConstantData::dump(const char * prefix)
 	debug("%s ConstantData",prefix);
 	QString tmp = prefix;
 	tmp.prepend("  ");
-	m_pValue->dump(tmp.utf8().data());
+	m_pValue->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeConstantData::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)

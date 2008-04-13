@@ -46,19 +46,19 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::dump(const char * prefix
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "NAME: ";
 	x += m_szName;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -82,19 +82,19 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelItem::dump(const char * prefix)
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "INSTRUCTION: ";
 	x += m_szInstruction;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelItem::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -117,15 +117,15 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::dump(const char * prefix)
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	qDebug("%s",x.utf8().data());
+	qDebug("%s",x.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -146,7 +146,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::dump(const char * prefi
 	QString tmp = prefix;
 	tmp.append("  CONDITION:");
 	tmp.append(m_szCondition);
-	debug("%s",tmp.utf8().data());
+	debug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -167,7 +167,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::dump(const char * prefix
 	QString tmp = prefix;
 	tmp.append("  INSTRUCTION: ");
 	tmp += m_szInstruction;
-	debug("%s",tmp.utf8().data());
+	debug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -188,7 +188,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::dump(const char * prefix
 	QString tmp = prefix;
 	tmp.append("  INSTRUCTION: ");
 	tmp += m_szInstruction;
-	debug("%s",tmp.utf8().data());
+	debug("%s",tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
@@ -224,17 +224,17 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::dump(const char * prefix)
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	debug(x.utf8().data());
+	debug(x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	debug(x.utf8().data());
+	debug(x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	debug(x.utf8().data());
+	debug(x.toUtf8().data());
 	for(KviKvsTreeNodeSpecialCommandDefpopupLabel * l = m_pLabels->first();l;l = m_pLabels->next())
-		l->dump(tmp.utf8().data());
+		l->dump(tmp.toUtf8().data());
 }
 
 void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::addLabel(KviKvsTreeNodeSpecialCommandDefpopupLabel * pLabel)
@@ -286,8 +286,8 @@ void KviKvsTreeNodeSpecialCommandDefpopup::dump(const char * prefix)
 	debug("%s SpecialCommandDefpopup",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pPopupName->dump(tmp.utf8().data());
-	m_pMainPopup->dump(tmp.utf8().data());
+	m_pPopupName->dump(tmp.toUtf8().data());
+	m_pMainPopup->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandDefpopup::execute(KviKvsRunTimeContext * c)

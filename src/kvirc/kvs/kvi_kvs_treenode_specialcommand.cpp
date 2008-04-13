@@ -45,6 +45,6 @@ void KviKvsTreeNodeSpecialCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommand::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommand(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s SpecialCommand(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 }

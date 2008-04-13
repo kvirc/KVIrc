@@ -920,7 +920,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		{
 			QString szDat;
 			v->asString(szDat);
-			KviQCString dat = bLocal8Bit ? szDat.local8Bit() : szDat.utf8();
+			KviQCString dat = bLocal8Bit ? szDat.toLocal8Bit() : szDat.toUtf8();
 		}
 		if(!bNoSeparator)
 		{

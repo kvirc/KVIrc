@@ -1438,7 +1438,7 @@
 	
 		for(QMap<QString,QVariant>::ConstIterator iter = m->begin();iter != m->end();++iter)
 		{
-			item = new QTableItem(this,QTableItem::Never,iter.key().utf8().data());
+			item = new QTableItem(this,QTableItem::Never,iter.key().toUtf8().data());
 			setItem(idx,0,item);
 			item = new KviVariantTableItem(this,iter.data());
 			setItem(idx,1,item);

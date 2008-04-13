@@ -431,7 +431,7 @@ namespace KviQString
 
 	const QChar * nullTerminatedArray(const QString &sz)
 	{
-		//sz.setLength(sz.length()); // detach!
+		//sz.resize(sz.length()); // detach!
 		return sz.constData();
 	}
 	
@@ -477,7 +477,7 @@ namespace KviQString
 		int reallen = 0;
 		int allocsize = MEMINCREMENT;
 
-		//s.setLength(allocsize);
+		//s.resize(allocsize);
 
 		const QChar * fmt = nullTerminatedArray(szFmt);
 		if(!fmt)

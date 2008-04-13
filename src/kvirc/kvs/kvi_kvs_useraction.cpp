@@ -210,7 +210,7 @@ const QString & KviKvsUserAction::descriptionCode()
 
 QPixmap * KviKvsUserAction::smallIcon()
 {
-	return g_pIconManager->getImage(m_szSmallIcon.utf8().data());
+	return g_pIconManager->getImage(m_szSmallIcon.toUtf8().data());
 }
 
 bool KviKvsUserAction::isKviUserActionNeverOverrideThis()

@@ -129,7 +129,7 @@ void KviIrcLink::createSocket(const QString &szLinkFilterName)
 	if(KviQString::equalCI(szLinkFilterName,"irc"))return;
 
 	m_pLinkFilter = (KviMexLinkFilter *)g_pModuleExtensionManager->allocateExtension("linkfilter",
-								szLinkFilterName.utf8().data(),m_pConsole,0,this,szLinkFilterName.utf8().data());
+								szLinkFilterName.toUtf8().data(),m_pConsole,0,this,szLinkFilterName.toUtf8().data());
 
 	if(m_pLinkFilter)
 	{
@@ -193,7 +193,7 @@ void KviIrcLink::resolverTerminated()
 	createSocket(m_pTarget->server()->linkFilter());
 
 	int iErr = m_pSocket->startConnection(m_pTarget->server(),m_pTarget->proxy(),
-					m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().utf8().data());
+					m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
 
 	if(iErr != KviError_success)
 	{
@@ -367,14 +367,14 @@ void KviIrcLink::socketStateChange()
 		case KviIrcSocket::Connecting:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Contacting %Q %s (%s) on port %u"),
 				connection()->proxy() ? &(__tr2qs("proxy host")) : &(__tr2qs("IRC server")),
-				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.utf8().data(),
-				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.utf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.toUtf8().data(),
 				connection()->proxy() ? connection()->proxy()->m_uPort : connection()->server()->m_uPort);
 		break;
 		case KviIrcSocket::SSLHandshake:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Low-level transport connection established [%s (%s:%u)]"),
-				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.utf8().data(),
-				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.utf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.toUtf8().data(),
 				connection()->proxy() ? connection()->proxy()->m_uPort : connection()->server()->m_uPort);
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Starting Secure Socket Layer handshake"));
 		break;

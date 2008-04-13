@@ -150,7 +150,7 @@ bool KviMediaPlayerDCOPInterface::findRunningApp(const QString &szApp)
 {
 	QLinkedList<KviQCString> allApps = g_pApp->dcopClient()->registeredApplications();
 	QLinkedList<KviQCString>::iterator iterator;
-	KviQCString sz = szApp.local8Bit();
+	KviQCString sz = szApp.toLocal8Bit();
 	for(iterator = allApps.begin();iterator != allApps.end();iterator++)
 	{
 		if(*iterator == sz)return true;

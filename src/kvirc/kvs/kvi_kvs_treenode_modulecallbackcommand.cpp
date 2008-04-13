@@ -55,7 +55,7 @@ void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleCallbackCommand::dump(const char * prefix)
 {
-	qDebug("%s ModuleCallbackCommand(%s.%s)",prefix,m_szModuleName.utf8().data(),m_szCmdName.utf8().data());
+	qDebug("%s ModuleCallbackCommand(%s.%s)",prefix,m_szModuleName.toUtf8().data(),m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);
@@ -64,7 +64,7 @@ void KviKvsTreeNodeModuleCallbackCommand::dump(const char * prefix)
 bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 {
 //#warning "FIXME: module names should be UNICODE!"
-	KviModule * m = g_pModuleManager->getModule(m_szModuleName.utf8().data());
+	KviModule * m = g_pModuleManager->getModule(m_szModuleName.toUtf8().data());
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError().ptr(); // <-- fixme!

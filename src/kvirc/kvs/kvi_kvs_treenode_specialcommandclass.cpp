@@ -41,7 +41,7 @@ KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialComman
 
 void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandClassFunctionDefinition(%s)",prefix,m_szName.utf8().data());
+	qDebug("%s SpecialCommandClassFunctionDefinition(%s)",prefix,m_szName.toUtf8().data());
 	qDebug("%s    (command buffer with %d characters)",prefix,m_szBuffer.length());
 }
 
@@ -82,9 +82,9 @@ void KviKvsTreeNodeSpecialCommandClass::dump(const char * prefix)
 	qDebug("%s SpecialCommandClass",prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first();d;d = m_pFunctions->next())
-		d->dump(tmp.utf8().data());
+		d->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)

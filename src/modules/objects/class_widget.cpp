@@ -1384,7 +1384,7 @@ bool KviKvsObject_widget::function_setCaption(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_widget::function_caption(KviKvsObjectFunctionCall *c)
 {
-	if(widget()) c->returnValue()->setString(widget()->caption().utf8().data());
+	if(widget()) c->returnValue()->setString(widget()->caption().toUtf8().data());
 	return true;
 }
 

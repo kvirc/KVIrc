@@ -57,8 +57,8 @@ void KviKvsTreeNodeRebindingSwitch::dump(const char * prefix)
 	qDebug("%sRebindingSwitch",prefix);
 	QString tmp = prefix;
 	tmp += "  ";
-	m_pTargetWindow->dump(tmp.utf8().data());
-	m_pChildCommand->dump(tmp.utf8().data());
+	m_pTargetWindow->dump(tmp.toUtf8().data());
+	m_pChildCommand->dump(tmp.toUtf8().data());
 }
 
 const QString & KviKvsTreeNodeRebindingSwitch::commandName()
@@ -80,10 +80,10 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 		c->warning(this,__tr2qs("Empty window identifier specified in the standard rebinding switch: no rebinding performed"));
 		pNewWindow = 0;
 	} else {
-		pNewWindow = g_pApp->findWindow(szWinId.utf8().data());
+		pNewWindow = g_pApp->findWindow(szWinId.toUtf8().data());
 	}
 
-	pNewWindow = g_pApp->findWindow(szWinId.utf8().data());
+	pNewWindow = g_pApp->findWindow(szWinId.toUtf8().data());
 	KviWindow * pOldWindow = c->window();
 	if(pNewWindow)
 		c->setWindow(pNewWindow);

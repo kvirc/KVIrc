@@ -121,7 +121,7 @@ void KviLinksWindow::connectionStateChange()
 	m_pRequestButton->setEnabled(st == KviIrcContext::Connected);
 	if(st == KviIrcContext::Connected)
 	{
-		KviStr tmp(KviStr::Format,__tr2qs("Connected to %s (%s)"),m_pConsole->connection()->currentServerName().utf8().data(),m_pConsole->currentNetworkName().utf8().data());
+		KviStr tmp(KviStr::Format,__tr2qs("Connected to %s (%s)"),m_pConsole->connection()->currentServerName().toUtf8().data(),m_pConsole->currentNetworkName().toUtf8().data());
 		m_pInfoLabel->setText(tmp.ptr());
 	} else {
 		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: Not connected to a server"));

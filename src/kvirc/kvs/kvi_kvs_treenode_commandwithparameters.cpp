@@ -47,7 +47,7 @@ void KviKvsTreeNodeCommandWithParameters::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeCommandWithParameters::dump(const char * prefix)
 {
-	qDebug("%s CommandWithParameters(%s)",prefix,m_szCmdName.utf8().data());
+	qDebug("%s CommandWithParameters(%s)",prefix,m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }
@@ -56,5 +56,5 @@ void KviKvsTreeNodeCommandWithParameters::dumpParameterList(const char * prefix)
 {
 	QString tmp = prefix;
 	tmp.append("  ");
-	m_pParams->dump(tmp.utf8().data());
+	m_pParams->dump(tmp.toUtf8().data());
 }

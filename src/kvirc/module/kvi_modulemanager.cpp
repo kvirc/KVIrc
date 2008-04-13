@@ -177,7 +177,7 @@ bool KviModuleManager::loadModule(const char * modName)
 	}
 	
 	if(!KviFileUtils::fileExists(tmp)) return false;
-	kvi_library_t handle = kvi_library_open(tmp.local8Bit().data());
+	kvi_library_t handle = kvi_library_open(tmp.toLocal8Bit().data());
 	if(!handle)
 	{
 		m_szLastError = kvi_library_error();
@@ -209,7 +209,7 @@ bool KviModuleManager::loadModule(const char * modName)
 			return false;
 		}
 	}
-	KviModule * module = new KviModule(handle,info,modName,szName.utf8().data());
+	KviModule * module = new KviModule(handle,info,modName,szName.toUtf8().data());
 
 	// the module is probably up.. the only thing can fail is the init_routine now
 	// load the message catalogue if any
@@ -258,7 +258,7 @@ bool KviModuleManager::loadModule(const char * modName)
 	if(_OUTPUT_VERBOSE && !g_pApp->closingDown())
 	{
 		if(g_pFrame)g_pFrame->firstConsole()->output(KVI_OUT_VERBOSE,
-			__tr2qs("Loaded module '%s' (%s)"),modName,szName.utf8().data());
+			__tr2qs("Loaded module '%s' (%s)"),modName,szName.toUtf8().data());
 	}
 	return true;
 }

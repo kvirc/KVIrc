@@ -187,7 +187,7 @@ bool KviPerlInterpreter::init()
 		"}\n",
 		&m_szContextName);
 
-	eval_pv(szInitCode.utf8().data(),false);
+	eval_pv(szInitCode.toUtf8().data(),false);
 	return true;
 }
 
@@ -226,7 +226,7 @@ bool KviPerlInterpreter::execute(
 	
 	g_lWarningList.clear();
 
-	KviQCString szUtf8 = szCode.utf8();
+	KviQCString szUtf8 = szCode.toUtf8();
 	PERL_SET_CONTEXT(m_pInterpreter);
 	
 	// clear the _ array
@@ -246,7 +246,7 @@ bool KviPerlInterpreter::execute(
 		for(QStringList::Iterator it = args.begin();it != args.end();++it)
 		{
 			QString tmp = *it;
-			const char * val = tmp.utf8().data();
+			const char * val = tmp.toUtf8().data();
 			if(val)
 			{
 				pArg = newSVpv(val,tmp.length());
