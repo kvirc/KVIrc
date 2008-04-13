@@ -28,7 +28,10 @@
 #include "kvi_error.h"
 #include "kvi_fileutils.h"
 
-#include  <QStringList>
+#include <QStringList>
+#include <QFile>
+#include <QTextStream>
+
 
 
 // needed for $open()

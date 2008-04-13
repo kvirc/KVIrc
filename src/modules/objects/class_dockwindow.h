@@ -26,7 +26,6 @@
 
 #include "kvi_settings.h"
 #include "object_macros.h"
-
 #include "class_widget.h"
 
 class KviKvsObject_dockwindow : public KviKvsObject_widget

@@ -23,11 +23,10 @@
 
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
-
 #include "class_lineedit.h"
 
+#include <QLineEdit>
 static const char * mode_tbl[] = {
 			"Normal",
 			"NoEcho",
@@ -218,7 +217,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_lineedit)
 
 bool KviKvsObject_lineedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	setObject(new QLineEdit(parentScriptWidget(),getName()),true);
+	SET_OBJECT(QLineEdit)
 	connect(widget(),SIGNAL(returnPressed()),this,SLOT(slotreturnPressed()));
 	connect(widget(),SIGNAL(lostFocus()),this,SLOT(slotlostFocus()));
 	connect(widget(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));

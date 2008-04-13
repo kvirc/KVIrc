@@ -31,6 +31,7 @@
 #include <QFont>
 #include <QPixmap>
 #include <QMessageBox>
+#include <QLabel>
 
 
 
@@ -225,9 +226,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 
 bool KviKvsObject_label::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	QLabel *label=new QLabel(parentScriptWidget());
-	label->setObjectName(name());
-	setObject(label,true);
+	SET_OBJECT(QLabel)
 	return true;
 }
 

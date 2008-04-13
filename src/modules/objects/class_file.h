@@ -24,10 +24,9 @@
 
 
 
-#include <qfile.h>
-#include <qtextstream.h>
 #include "kvi_string.h"
 
+#include <QFile>
 
 /*
 //class KviCommand;

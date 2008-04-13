@@ -25,9 +25,10 @@
 #include "class_lcd.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+
+#include <QLCDNumber>
 
 /*
 	@doc: lcdnumber
@@ -89,7 +90,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_lcd)
 
 bool KviKvsObject_lcd::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QLCDNumber(parentScriptWidget(), name()), true);
+	SET_OBJECT(QLCDNumber)
 	return true;
 }
 

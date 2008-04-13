@@ -24,8 +24,6 @@
 //
 #include <kvi_tal_wizard.h>
 #include "class_widget.h"
-
-
 #include "object_macros.h"
 
 class KviKvsObject_wizard : public KviKvsObject_widget

@@ -24,7 +24,6 @@
 
 #include "class_widget.h"
 #include "kvi_window.h"
-
 #include "object_macros.h"
 
 class KviKvsObject_window : public KviKvsObject_widget

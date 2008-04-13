@@ -29,6 +29,7 @@
 
 #include <QLineEdit>
 #include <QString>
+#include <QComboBox>
 
 /*
 	@doc:	combobox
@@ -131,7 +132,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_combobox)
 
 bool KviKvsObject_combobox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QComboBox(parentScriptWidget(), name()), true);
+	SET_OBJECT(QComboBox);
 	connect (((QComboBox *)widget()),SIGNAL(activated( int )),this,SLOT(slotActivated( int )));
 	return true;
 }

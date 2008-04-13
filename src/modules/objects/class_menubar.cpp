@@ -60,7 +60,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_menubar)
 
 bool KviKvsObject_menubar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QMenuBar(parentScriptWidget(), name()));
+	SET_OBJECT(QMenuBar)
 	return true;
 }
 

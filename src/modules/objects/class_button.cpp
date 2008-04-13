@@ -25,7 +25,8 @@
 #include "kvi_iconmanager.h"
 #include "class_button.h"
 
-#include <QIconSet>
+#include <QIcon>
+#include <QPushButton>
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 
@@ -55,7 +56,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_button)
 
 bool KviKvsObject_button::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QPushButton(parentScriptWidget(),name()),true);
+	SET_OBJECT(QPushButton);
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }

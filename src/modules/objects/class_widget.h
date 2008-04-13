@@ -23,7 +23,6 @@
 //
 #include <kvi_tal_tooltip.h>
 #include "kvi_string.h"
-#include "qtooltip.h"
 #include "object_macros.h"
 
 

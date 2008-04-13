@@ -24,8 +24,6 @@
 //
 
 
-#include "kvi_tal_popupmenu.h"
-#include <qcursor.h>
 #include "class_widget.h"
 #include "object_macros.h"
 

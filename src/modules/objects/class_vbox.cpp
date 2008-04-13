@@ -26,6 +26,7 @@
 
 #include "class_vbox.h"
 
+#include "kvi_tal_vbox.h"
 /*
 	@doc: vbox
 	@keyterms:
@@ -67,7 +68,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_vbox)
 
 bool KviKvsObject_vbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviTalVBox(parentScriptWidget()), true);
+	SET_OBJECT(KviTalVBox);
 	return true;
 }
 

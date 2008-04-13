@@ -24,11 +24,13 @@
 
 #include "class_popupmenu.h"
 #include "kvi_error.h"
-
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+#include "kvi_tal_popupmenu.h"
+
+#include <QCursor>
+
 
 
 /*

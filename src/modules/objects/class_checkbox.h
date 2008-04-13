@@ -25,7 +25,6 @@
 
 
 
-#include <qcheckbox.h>
 #include "class_button.h"
 #include "object_macros.h"
 

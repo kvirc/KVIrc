@@ -25,7 +25,6 @@
 
 
 
-#include <qlcdnumber.h>
 #include "class_widget.h"
 
 

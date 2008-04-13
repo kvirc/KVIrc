@@ -36,7 +36,11 @@
 	static void registerSelf(); \
 	static void unregisterSelf();
 	
-
+#define SET_OBJECT(__className) \
+	__className *obj=new __className(parentScriptWidget()); \
+	obj->setObjectName(name()); \
+	setObject(obj,true);
+	
 #define KVSO_REGISTER_HANDLER(__className,__szName,__proc) \
 	g_pKvs##__className##Class->registerFunctionHandler(__szName,(KviKvsObjectFunctionHandlerProc)(KVI_PTR2MEMBER(__className::__proc)));
 

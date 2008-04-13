@@ -23,9 +23,9 @@
 
 #include "class_pixmap.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
-#include <qfile.h>
+
+#include <QFile>
 
 /*
 	@doc:	pixmap

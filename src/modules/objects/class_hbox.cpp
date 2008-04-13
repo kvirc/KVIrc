@@ -23,6 +23,7 @@
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "class_hbox.h"
+#include "kvi_tal_hbox.h"
 
 /*
 	@doc: hbox

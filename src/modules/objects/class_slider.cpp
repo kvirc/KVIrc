@@ -22,11 +22,11 @@
 //
 #include "class_slider.h"
 #include "kvi_error.h"
-
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+
+#include <QSlider>
 
 
 /*
@@ -130,7 +130,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_slider)
 
 bool KviKvsObject_slider::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QSlider(parentScriptWidget(), name()), true);
+	SET_OBJECT(QSlider)
 	connect(widget(),SIGNAL(valueChanged(int)),this,SLOT(valueChanged(int)));
 	return true;
 }

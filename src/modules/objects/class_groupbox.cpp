@@ -29,6 +29,7 @@
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
+
 // Tables used in $setAlignment , $alignment and in $setOrientation & $orientation
 
 const char * const align_tbl[] = {

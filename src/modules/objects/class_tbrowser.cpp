@@ -21,14 +21,15 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qtextbrowser.h>
+
 #include "class_tbrowser.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
+#include <QTextBrowser>
+#include <QFile>
 /*
 	@doc: textbrowser
 	@keyterms:
@@ -82,9 +83,8 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_textbrowser)
 
 bool KviKvsObject_textbrowser::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	QTextBrowser * tb = new QTextBrowser(parentScriptWidget(), name());
-	setObject(tb, true);
-	connect(tb,SIGNAL(anchorClicked(const QString &,const QString &)),this,SLOT(anchorClicked(const QString &,const QString &)));
+	SET_OBJECT(QTextBrowser);
+	connect(obj,SIGNAL(anchorClicked(const QString &,const QString &)),this,SLOT(anchorClicked(const QString &,const QString &)));
 	return true;
 }
 

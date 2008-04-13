@@ -24,7 +24,6 @@
 
 
 
-#include <qlineedit.h>
 #include "class_widget.h"
 
 //#warning "Signals !"

@@ -21,14 +21,13 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include <qspinbox.h>
 #include "class_spinbox.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
+#include <QSpinBox>
 /*
 	@doc:	spinbox
 	@keyterms:
@@ -132,7 +131,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_spinbox)
 
 bool KviKvsObject_spinbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QSpinBox(parentScriptWidget(), name()), true);
+	SET_OBJECT(QSpinBox)
 	connect(widget(),SIGNAL(valueChanged(int)),this,SLOT(valueChanged(int)));
 	return true;
 }

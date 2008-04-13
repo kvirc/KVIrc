@@ -24,13 +24,14 @@
 
 
 
-#include <qworkspace.h>
+
 #include "class_workspace.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+
+#include <QWorkspace>
 
 /*
 	@doc:	workspace
@@ -184,7 +185,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_workspace)
 
 bool KviKvsObject_workspace::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QWorkspace(parentScriptWidget(), name()), true);
+	SET_OBJECT(QWorkspace);
 	return true;
 }
 

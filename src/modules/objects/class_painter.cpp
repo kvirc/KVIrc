@@ -25,7 +25,6 @@
 #include "class_pixmap.h"
 #include "class_widget.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"

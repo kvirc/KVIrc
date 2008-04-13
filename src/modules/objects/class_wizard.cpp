@@ -22,14 +22,14 @@
 //
 
 #include <kvi_tal_wizard.h>
-#include <qpushbutton.h>
+
 #include "class_wizard.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
 
 #include "kvi_locale.h"
 
-
+#include <QPushButton>
 
 /*
 	@doc:	wizard
@@ -344,6 +344,7 @@ KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par,const char * name,KviKvsObject_wi
 :KviTalWizard(par)
 {
 	m_pParentScript=parent;
+	setObjectName(name);
 	connect (this->backButton(),SIGNAL(clicked()),this,SLOT(slotBackClicked()));
 	connect (this->nextButton(),SIGNAL(clicked()),this,SLOT(slotNextClicked()));
 }

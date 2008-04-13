@@ -24,7 +24,6 @@
 
 
 
-#include <qlabel.h>
 #include "class_widget.h"
 #include "object_macros.h"
 

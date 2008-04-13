@@ -27,9 +27,10 @@
 #include "kvi_frame.h"
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
+
 #include <QDockWidget>
 #define QT_DOCK_WINDOW QDockWidget
-#include <qlayout.h>
+#include <QLayout>
 
 /*
 	@doc: dockwindow

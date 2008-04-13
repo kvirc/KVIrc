@@ -21,11 +21,10 @@
 //
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
-
 #include "class_layout.h"
 
+#include <QGridLayout>
 #define QLAYOUT_AUTO_CONSTRAINT QLayout::SetDefaultConstraint
 #define QLAYOUT_FIXED QLayout::SetFixedSize
 #define QLAYOUT_FREE_RESIZE QLayout::SetNoConstraint
@@ -113,6 +112,7 @@ bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 		return false;
 	}
 	setObject(new QGridLayout(w));
+	setObjectName(name());
 	return true;
 }
 

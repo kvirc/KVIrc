@@ -23,9 +23,6 @@
 //
 
 #include "class_widget.h"
-
-class QDialog;
-
 #include "object_macros.h"
 
 class KviKvsObject_dialog : public KviKvsObject_widget

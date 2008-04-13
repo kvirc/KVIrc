@@ -129,7 +129,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_toolbutton)
 
 bool KviKvsObject_toolbutton::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QToolButton(parentScriptWidget(), name()), true);
+	SET_OBJECT(QToolButton);
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }

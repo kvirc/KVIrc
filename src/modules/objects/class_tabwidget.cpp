@@ -23,10 +23,10 @@
 #include "class_tabwidget.h"
 #include "kvi_error.h"
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
+#include <QTabWidget>
 /*
 	@doc:	tabwidget
 	@keyterms:
@@ -182,7 +182,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_tabwidget)
 
 bool KviKvsObject_tabwidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QTabWidget(parentScriptWidget(), name()), true);
+	SET_OBJECT(QTabWidget)
 	connect(widget(),SIGNAL(currentChanged(int)),this,SLOT(slotcurrentChanged(int)));
 	return true;
 }

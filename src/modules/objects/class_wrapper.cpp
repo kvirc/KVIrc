@@ -117,7 +117,6 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 {
 	if( !pParams ) return false;
 
-	debug ("ci sono i parametri");
 	QWidget *pWidget = 0;
 	int i=0;
 	while(i!=pParams->count())
@@ -136,9 +135,9 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 			szClass = s;
 			szName  = "";
 		}
-		debug ("szClass %s",szClass.latin1());
-		debug ("szName %s",szName.latin1());
-		debug ("s %s",s.latin1());
+		debug ("szClass %s",szClass.utf8().data());
+		debug ("szName %s",szName.utf8().data());
+		debug ("s %s",s.data());
 
 		if(KviQString::equalCI(szClass,"WinId"))
 		{

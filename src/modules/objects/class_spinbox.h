@@ -25,9 +25,7 @@
 
 
 
-#include <qspinbox.h>
 #include "class_widget.h"
-
 #include "object_macros.h"
 
 class KviKvsObject_spinbox : public KviKvsObject_widget

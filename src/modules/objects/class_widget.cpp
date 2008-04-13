@@ -24,31 +24,25 @@
 
 #include "kvi_malloc.h"
 #include "kvi_debug.h"
-
 #include "kvi_error.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
-#include "kvi_out.h"
-#include "kvi_mirccntrl.h"
 #include "kvi_app.h"
-#include "kvi_string.h"
-#include <qcursor.h>
-#include <qiconset.h>
-#include <qcolor.h>
-#include <qlayout.h>
-#include <qbitmap.h>
-#include <qmetaobject.h>
 #include "class_widget.h"
 #include "class_pixmap.h"
 
 #include <QKeyEvent>
 #include <QDesktopWidget>
-
-#include <qwidget.h>
-#include <qtooltip.h>
-#include <qfont.h>
-#include <qvariant.h>
+#include <QWidget>
+#include <QTooltip>
+#include <QFont>
+#include <QVariant>
+#include <QCursor>
+#include <QColor>
+#include <QLayout>
+#include <QBitmap>
+#include <QMetaobject>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -715,11 +709,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	//QWidget *pis=new QWidget(parentScriptWidget(),getName()),true);
-	//setObject(new QWidget(parentScriptWidget(),getName()),true);
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
-//		setObject(new QWidget(parentScriptWidget()));
-
 	widget()->setObjectName(getName());
 	return true;
 }
