@@ -29,6 +29,7 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
+
 #include "kvi_modulemanager.h"
 #include "kvi_console.h"
 #include "kvi_locale.h"
@@ -37,6 +38,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_iconmanager.h"
 #include "kvi_malloc.h"
+
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_object_functioncall.h"
 #include "kvi_kvs_object_functionhandlerimpl.h"
@@ -1043,14 +1045,9 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 		const QMetaObject *o = m_pObject->metaObject();
 		if(!bArray)
 			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Properties for Qt class %s"),o->className());
-#ifndef COMPILE_USE_QT4
-		while(o)
-		{
-#endif
 			kvs_int_t idx = 0;
 			QMetaProperty prop = o->property(idx);
 			const QMetaProperty *p = &prop;
-
 			while(p)
 			{
 				QString szOut;
@@ -1066,48 +1063,25 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(p->isEnumType())
 				{
 					szOut += ", enum(";
-#ifndef COMPILE_USE_QT4
-					// FIXME: Qt 4.x needs QMetaEnum for this loop
-					QStrList le = p->enumKeys();
-					int i = 0;
-					for(char *c2 = le.first(); c2; c2 = le.next())
-					{
-						if(i == 0)
-							i++;
-						else
-							szOut.append(", ");
-						szOut.append(c2);
-					}
-#endif
 					szOut += ")";
 				}
 				
 
-#ifdef COMPILE_USE_QT4
 				// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
 				//        for me to fix now. Actually I need to get the whole executable working...
 				if(p->isWritable())szOut += ", writable";
-#else
-				if(p->isSetType())szOut += ", set";
-				if(p->writable())szOut += ", writable";
-#endif
 				if(bArray)
 					a->set(cnt,new KviKvsVariant(szOut));
 				else
 					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
-
 				idx++;
 				if (idx<o->propertyCount()){
-					prop = o->property(idx);
-					p = &prop;
+						prop = o->property(idx);
+						p = &prop;
 				}
 				else p=0;
 				cnt++;
 			}
-#ifndef COMPILE_USE_QT4
-			o = o->superClass();
-		}
-#endif
 
 	}
 
@@ -1144,7 +1118,6 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
-
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
@@ -1164,7 +1137,6 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	{
 		QString szKey;
 		v->asString(szKey);
-
 		int val = p->enumerator().keyToValue(szKey);
 		QVariant var(val);
 		m_pObject->setProperty(szName,var);
@@ -1249,7 +1221,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			m_pObject->setProperty(szName,QVariant(QRect(iX,iY,iW,iH)));
 		}
 		break;
-#ifndef COMPILE_USE_QT4
+
 		// FIXME: QT4 ????
 		case QVariant::Color:
 		{
@@ -1288,7 +1260,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(szFl.find('s') != -1)fnt.setStrikeOut(true);
 			m_pObject->setProperty(szName,QVariant(fnt));
 		}
-		break;
+		break;/*
 		case QVariant::Pixmap:
 		case QVariant::IconSet:
 		{
@@ -1327,9 +1299,10 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				else
 					c->warning(__tr2qs("Can't find the requested image"));
 			}
-		}
+			
+		
 		break;
-#endif
+	*/
 		default:
 			c->warning(__tr2qs("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
@@ -1370,7 +1343,6 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		}
 		return true;
 	}
-
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
@@ -1398,6 +1370,9 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	{
 		case QVariant::Int:
 			c->returnValue()->setInteger((kvs_int_t)v.toInt());
+		break;
+		case QVariant::Double:
+			c->returnValue()->setReal((kvs_int_t)v.toDouble());
 		break;
 		case QVariant::UInt:
 			c->returnValue()->setInteger((kvs_int_t)v.toUInt());
@@ -1440,11 +1415,9 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setArray(a);
 		}
 		break;
-#ifndef COMPILE_USE_QT4
-		// FIXME: QT4 ?
 		case QVariant::Color:
 		{
-			QColor clr = v.toColor();
+			QColor clr = v.value<QColor>();
 			KviKvsArray * a = new KviKvsArray();
 			a->set(0,new KviKvsVariant((kvs_int_t)clr.red()));
 			a->set(1,new KviKvsVariant((kvs_int_t)clr.green()));
@@ -1454,7 +1427,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		break;
 		case QVariant::Font:
 		{
-			QFont f = v.toFont();
+			QFont f = v.value<QFont>();
 			KviKvsArray * a = new KviKvsArray();
 			a->set(0,new KviKvsVariant(f.family()));
 			a->set(1,new KviKvsVariant((kvs_int_t)f.pointSize()));
@@ -1469,7 +1442,6 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setString(szFlags);
 		}
 		break;
-#endif
 		default:
 			if (bNoerror) c->returnValue()->setString("Unsupported_data_type");
 			else
@@ -1541,6 +1513,7 @@ KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString 
 	return h;
 }
 
+
 bool KviKvsObject::die()
 {
 	if(m_bInDelayedDeath)return false;
@@ -1600,6 +1573,7 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,Kv
 	return callFunction(pCaller,fncName,QString::null,&ctx,pRetVal,pParams);
 }
 
+
 bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariantList * pParams)
 {
 	KviKvsVariant fakeRetVal;
@@ -1646,6 +1620,8 @@ bool KviKvsObject::callFunction(
 	//    Please choose the Technical Support command on the Visual C++
 	//    Help menu, or open the Technical Support help file for more information
 }
+
+
 
 void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,const QString &szCode)
 {
@@ -1699,3 +1675,5 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 	}
 	return 0;
 }
+
+
