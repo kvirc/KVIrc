@@ -35,14 +35,14 @@
 #include <QKeyEvent>
 #include <QDesktopWidget>
 #include <QWidget>
-#include <QTooltip>
+#include <QToolTip>
 #include <QFont>
 #include <QVariant>
 #include <QCursor>
 #include <QColor>
 #include <QLayout>
 #include <QBitmap>
-#include <QMetaobject>
+#include <QMetaObject>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -60,7 +60,7 @@ QSize KviKvsWidget::sizeHint() const
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)size.width()),new KviKvsVariant((kvs_int_t)size.height()));
 	m_pObject->callFunction(m_pObject,"sizeHintRequestEvent",tipret,&params);
 	if (tipret->isArray())
-	{	
+	{
 		if (tipret->array()->size()==2)
 		{
 			kvs_int_t w,h;
@@ -481,18 +481,18 @@ const Qt::WindowType widgettypes_cod[] = {
 		This event handler is called when a eventualy tip is going to be show.
 		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
 		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
-		The default implementation does nothing.		
+		The default implementation does nothing.
 
 		!fn: integer $setAttribute(<string>,<bool_flag>)[QT4 only]
 		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.
 		Valid attributes are:
 		OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.
 	    NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
-	    PaintOnScreen - Indicates that the widget wants to draw directly onto the screen. 
+	    PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
 	    NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
 		!fn: $setStyleSheet(<string>)[QT4 only]
 
-		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)[QT4 only]	
+		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)[QT4 only]
 		Returns the color in color_group(disabled, active or inactive), used for color_role.
 		Valid color role are:
 		Window - A general background color.
@@ -503,7 +503,7 @@ const Qt::WindowType widgettypes_cod[] = {
 		ButtonText - A foreground color used with the Button color.
 		Highlight - A color to indicate a selected item or the current item.
 		HighlightedText - A text color that contrasts with Highlight.
-		
+
 		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)[QT4 only]
 		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
 		!fn: $shortCutEvent(<shortcut_id:integer>)[QT4 only]
@@ -563,7 +563,7 @@ const Qt::WindowType widgettypes_cod[] = {
 				delete $$->$parent()
 				# This closes the widget automatically
 			}
-			
+
 		[/example]
 
 */
@@ -669,7 +669,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 
 	// QT4 only
 
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setAttribute",function_setAttribute)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"colorPalette",function_colorPalette)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setStyleSheet",function_setStyleSheet)
@@ -722,10 +722,10 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 		int aparam;
 		bool brokenhandler=false;
 		KviKvsVariant *retv=new KviKvsVariant(ret);
-			
+
 		switch(e->type())
 		{
-		
+
 			case QEvent::Shortcut:
 			{
 				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));
@@ -754,7 +754,7 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 		case QEvent::KeyPress:
 			{
-						
+
 
 				QString tmp="";
 					switch(((QKeyEvent *)e)->key())
@@ -1177,9 +1177,9 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 {
 
 	KviKvsVariant * pColArray;
-	
+
 	kvs_int_t iColR,iColG,iColB;
-	
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
@@ -1642,7 +1642,7 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 	Qt::WindowFlags flag,sum=0;
 	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
 	{
-			
+
 				flag=0;
 			for(unsigned int j = 0; j < widgettypes_num; j++)
 			{
@@ -1658,7 +1658,7 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("Unknown widget flag '%Q'"),&(*it));
 
 		}
-	
+
 	widget()->setWindowFlags(sum);
 	return true;
 }
@@ -1835,7 +1835,7 @@ bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 		}
 	}
 	if(found)widget()->setAttribute(widgetattributes_cod[j],bFlag);
-	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);	
+	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);
 	return true;
 }
 bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
@@ -1858,7 +1858,7 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	}
 	if(!found)
 	{
-		c->warning(__tr2qs("Unknown Color Role '%Q'"),&szColorRole);	
+		c->warning(__tr2qs("Unknown Color Role '%Q'"),&szColorRole);
 		return true;
 	}
 	QPalette::ColorGroup cg;
@@ -1867,7 +1867,7 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	else if (KviQString::equalCI(szColorGroup,"Inactive")) cg=QPalette::Inactive;
 	else
 	{
-		c->warning(__tr2qs("Unknown Color Group '%Q'"),&szColorGroup);	
+		c->warning(__tr2qs("Unknown Color Group '%Q'"),&szColorGroup);
 		return true;
 	}
 	QColor col=widget()->palette().color(cg,colorrole_cod[j]);
