@@ -1165,6 +1165,12 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(i < 0)WRONG_TYPE("unsigned integer")
 			m_pObject->setProperty(szName,QVariant((unsigned int)i));
 		}
+		case QVariant::Double:
+		{
+			kvs_real_t i;
+			if(!v->asReal(i))WRONG_TYPE("real")
+			m_pObject->setProperty(szName,QVariant((double)i));
+		}
 		break;
 		case QVariant::Bool:
 			m_pObject->setProperty(szName,QVariant(v->asBoolean()));
@@ -1176,7 +1182,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			m_pObject->setProperty(szName,QVariant(s));
 		}
 		break;
-		case QVariant::CString:
+		case QVariant::ByteArray:
 		{
 			QString s;
 			v->asString(s);
@@ -1222,7 +1228,6 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		}
 		break;
 
-		// FIXME: QT4 ????
 		case QVariant::Color:
 		{
 			if(!v->isArray())WRONG_TYPE("array(integer,integer,integer)")
@@ -1260,10 +1265,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(szFl.find('s') != -1)fnt.setStrikeOut(true);
 			m_pObject->setProperty(szName,QVariant(fnt));
 		}
-		break;/*
+		break;
 		case QVariant::Pixmap:
-		case QVariant::IconSet:
-		{
+			{
 			if(v->isHObject())
 			{
 				if(v->hobject() == (kvs_hobject_t)0)
@@ -1272,7 +1276,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 					if(vv.type() == QVariant::Pixmap)
 						m_pObject->setProperty(szName,QVariant(QPixmap()));
 					else
-						m_pObject->setProperty(szName,QVariant(QIconSet()));
+						m_pObject->setProperty(szName,QVariant(QIcon()));
 				} else {
 					KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
 					if(!pix->inherits("KviScriptPixmapObject"))
@@ -1280,9 +1284,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 					else {
 						QVariant pixv = pix->property("pixmap");
 						if(vv.type() == QVariant::Pixmap)
-							m_pObject->setProperty(szName,pixv);
+							m_pObject->setProperty(szName,QVariant(pixv.value<QPixmap>()));
 						else
-							m_pObject->setProperty(szName,QVariant(QIconSet(pixv.toPixmap())));
+							m_pObject->setProperty(szName,QVariant(QIcon(pixv.value<QPixmap>())));
 					}
 				}
 			} else {
@@ -1294,15 +1298,15 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 					if(vv.type() == QVariant::Pixmap)
 						m_pObject->setProperty(szName,QVariant(*pPix));
 					else
-						m_pObject->setProperty(szName,QVariant(QIconSet(*pPix)));
+						m_pObject->setProperty(szName,QVariant(QIcon(*pPix)));
 				}
 				else
 					c->warning(__tr2qs("Can't find the requested image"));
 			}
-			
+		}
 		
 		break;
-	*/
+	
 		default:
 			c->warning(__tr2qs("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
@@ -1383,7 +1387,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		case QVariant::String:
 			c->returnValue()->setString(v.toString());
 		break;
-		case QVariant::CString:
+		case QVariant::ByteArray:
 			c->returnValue()->setString(QString::fromUtf8(v.toCString().data()));
 		break;
 		case QVariant::Point:
