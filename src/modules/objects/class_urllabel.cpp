@@ -24,6 +24,7 @@
 
 #include "class_urllabel.h"
 
+#include <QLabel>
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "kvi_error.h"
