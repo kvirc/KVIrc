@@ -86,12 +86,6 @@
 		Sets the current listbox item.
 		!fn: $clear()
 		Removes all the items
-		!fn: <boolean> $isSelected(<index:integer>)
-		Returns 1 if the item at <index> is selected and 0 otherwise
-		!fn: $setSelected(<index:integer>,<bSelected:boolean>)
-		Changes the selection status of the item at <index> to the value
-		specified by <bSelected>. If <bSelected> is 1 the item is selected,
-		if <bSelected> is 0 the item is unselected.
 		!fn: $selectionChangeEvent()
 		This function is called by KVIrc when the selection in the listbox changes.
 		!fn: $currentItemChangeEvent()
@@ -111,7 +105,7 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
-/*	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertItem", functioninsertItem)
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertItem", functioninsertItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"changeItem", functionchangeItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"removeItem", functionremoveItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"clear", functionclear)
@@ -120,15 +114,12 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItem", functioncurrentItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"textAt", functiontextAt);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemAt", functionitemAt);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemRect", functionitemRect);
+//	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemRect", functionitemRect);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setCurrentItem", functionsetCurrentItem);
 
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelectionMode",functionsetSelectionMode);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"selectionMode",functionselectionMode);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelected",functionsetSelected);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"isSelected",functionisSelected);
-	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItemChangeEvent",functioncurrentItemChangeEvent);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"onItemEvent",functiononItemEvent);
 
