@@ -134,6 +134,7 @@ bool KviKvsObject_combobox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 {
 	SET_OBJECT(QComboBox);
 	connect (((QComboBox *)widget()),SIGNAL(activated( int )),this,SLOT(slotActivated( int )));
+	connect (((QComboBox *)widget()),SIGNAL(editTextChanged(const QString & )),this,SLOT(editTextChanged(const QString & )));
 	return true;
 }
 
@@ -147,9 +148,9 @@ bool KviKvsObject_combobox::functioninsertItem(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
 		if(c->paramCount()==1)
-			((QComboBox *)widget())->insertItem(szItem);
+			((QComboBox *)widget())->addItem(szItem);
 		else
-			((QComboBox *)widget())->insertItem(szItem, iIndex);
+			((QComboBox *)widget())->insertItem( iIndex,szItem);
 	return true;
 }
 bool KviKvsObject_combobox::functionclear(KviKvsObjectFunctionCall *c)
@@ -175,7 +176,7 @@ bool KviKvsObject_combobox::functionchangeItem(KviKvsObjectFunctionCall *c)
 		uIndex = cnt - 1;
 	}
 
-	((QComboBox *)widget())->changeItem(szText, uIndex);
+	((QComboBox *)widget())->setItemText( uIndex,szText);
 
 	return true;
 
@@ -224,12 +225,12 @@ bool KviKvsObject_combobox::functioncount(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_combobox::functioncurrent(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((QComboBox *)widget())->currentText().toLocal8Bit().data());
+	if (widget()) c->returnValue()->setString(((QComboBox *)widget())->currentText());
 	return true;
 }
 bool KviKvsObject_combobox::functioncurrentItem(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QComboBox *)widget())->currentItem());
+	if (widget()) c->returnValue()->setInteger(((QComboBox *)widget())->currentIndex());
 	return true;
 }
 bool KviKvsObject_combobox::functiontextLineEdit(KviKvsObjectFunctionCall *c)
@@ -247,9 +248,6 @@ bool KviKvsObject_combobox::functionsetEditable(KviKvsObjectFunctionCall *c)
 	if(widget())
 	{
 		((QComboBox *)widget())->setEditable(bFlag);
-		if (bFlag) connect (((QComboBox *)widget())->lineEdit(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));
-		else
-		disconnect (((QComboBox *)widget())->lineEdit(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));
 	}
 
 	return true;
@@ -268,7 +266,7 @@ bool KviKvsObject_combobox::functionsetTextLineEdit(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_combobox::functioneditable(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setBoolean(((QComboBox *)widget())->editable());
+		c->returnValue()->setBoolean(((QComboBox *)widget())->isEditable());
 	return true;
 }
 bool KviKvsObject_combobox::functionsetEditText(KviKvsObjectFunctionCall *c)
@@ -292,7 +290,7 @@ bool KviKvsObject_combobox::functiontextAt(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		c->returnValue()->setString(((QComboBox *)widget())->text(uIndex));
+		c->returnValue()->setString(((QComboBox *)widget())->itemText(uIndex));
 	return true;
 }
 bool KviKvsObject_combobox::functionsetCurrentItem(KviKvsObjectFunctionCall *c)
@@ -302,13 +300,13 @@ bool KviKvsObject_combobox::functionsetCurrentItem(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QComboBox *)widget())->setCurrentItem(uIndex);
+		((QComboBox *)widget())->setCurrentIndex(uIndex);
 	return true;
 }
 bool KviKvsObject_combobox::functionpopup(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-	   ((QComboBox *)widget())->popup();
+	   ((QComboBox *)widget())->showPopup();
 	return true;
 }
 bool KviKvsObject_combobox::functionsetInsertionPolicy(KviKvsObjectFunctionCall *c)
@@ -319,17 +317,17 @@ bool KviKvsObject_combobox::functionsetInsertionPolicy(KviKvsObjectFunctionCall 
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	if(KviQString::equalCI(szPolicy,"NoInsertion"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::NoInsertion);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::NoInsertion);
 	else if(KviQString::equalCI(szPolicy,"AtTop"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::AtTop);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtTop);
 	else if(KviQString::equalCI(szPolicy,"AtBotton"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::AtBottom);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtBottom);
 	else if(KviQString::equalCI(szPolicy,"AtCurrent"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::AtCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtCurrent);
 	else if(KviQString::equalCI(szPolicy,"AfterCurrent"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::AfterCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::AfterCurrent);
 	else if(KviQString::equalCI(szPolicy,"BeforeCurrent"))
-			((QComboBox *)widget())->setInsertionPolicy(QComboBox::BeforeCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::BeforeCurrent);
 	else c->warning(__tr2qs("Invalid insertion Policy %Q"),&szPolicy);
 	return true;
 }
@@ -344,7 +342,7 @@ bool KviKvsObject_combobox::functiontextChangedEvent(KviKvsObjectFunctionCall *c
 
 }
 
-void KviKvsObject_combobox::slottextChanged(const QString &text)
+void KviKvsObject_combobox::editTextChanged(const QString &text)
 {
 	KviKvsVariantList params(new KviKvsVariant(text));
 	callFunction(this,"textChangedEvent",&params);

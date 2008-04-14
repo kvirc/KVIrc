@@ -82,7 +82,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_radiobutton)
 
 bool KviKvsObject_radiobutton::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new QRadioButton(parentScriptWidget(),name()),true);
+	SET_OBJECT(QRadioButton)
 	connect(widget(),SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
 	return true;
 }

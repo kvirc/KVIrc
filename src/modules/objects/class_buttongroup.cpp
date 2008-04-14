@@ -73,7 +73,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_buttongroup)
 bool KviKvsObject_buttongroup::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	QButtonGroup *group=new QButtonGroup(parentScriptWidget());
-	group->setObjectName(name());
+	group->setObjectName(getName());
 	setObject(group,true);
 	return true;
 }

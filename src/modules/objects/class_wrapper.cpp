@@ -184,11 +184,11 @@ QWidget *KviKvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, c
 		bool bNameMatch  = false;
 		bool bClassMatch = false;
 		if( !szName.isEmpty() )
-			bNameMatch = KviQString::equalCI(list.at(idx)->name(), szName);
+			bNameMatch = KviQString::equalCI(list.at(idx)->objectName(), szName);
 		else
 			bNameMatch = true;
 		if( !szClass.isEmpty())
-			bClassMatch = KviQString::equalCI(list.at(idx)->className(), szClass);
+			bClassMatch = KviQString::equalCI(list.at(idx)->metaObject()->className(), szClass);
 		else
 			bClassMatch = true;
 		if( bNameMatch && bClassMatch ) {

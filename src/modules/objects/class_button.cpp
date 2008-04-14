@@ -37,8 +37,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setOn", functionSetOn)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isOn", functionIsOn)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"toggle", functionToggle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setIsMenuButton", functionSetIsMenuButton)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isMenuButton", functionIsMenuButton)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"clickEvent", functionclickEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setImage", functionSetImage)
 
@@ -94,7 +92,7 @@ bool KviKvsObject_button::functionSetToggleButton(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QPushButton *)widget())->setToggleButton(bEnabled);
+		((QPushButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
 bool KviKvsObject_button::functionSetOn(KviKvsObjectFunctionCall *c)
@@ -104,31 +102,15 @@ bool KviKvsObject_button::functionSetOn(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QPushButton *)widget())->setOn(bEnabled);
+		((QPushButton *)widget())->setChecked(bEnabled);
 	return true;
 }
-// FIX ME
-bool KviKvsObject_button::functionSetIsMenuButton(KviKvsObjectFunctionCall *c)
-{
-	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	/*if(widget())
-		((QPushButton *)widget())->setIsMenuButton(bEnabled);
-		*/
 
-	return true;
-}
-bool KviKvsObject_button::functionIsMenuButton(KviKvsObjectFunctionCall *c)
-{
-	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isMenuButton());
-	return true;
-}
+
 //
 bool KviKvsObject_button::functionIsOn(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isOn());
+	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isChecked());
 	return true;
 }
 bool KviKvsObject_button::functionToggle(KviKvsObjectFunctionCall *c)
@@ -136,7 +118,7 @@ bool KviKvsObject_button::functionToggle(KviKvsObjectFunctionCall *c)
 	if(widget()) ((QPushButton *)widget())->toggle();
 	return true;
 }
-// FIX ME
+
 bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
 {
 	QString icon;
@@ -145,8 +127,8 @@ bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)	((QPushButton *)widget())->setIconSet(*pix);
-	else((QPushButton *)widget())->setIcon(QIconSet());
+	if(pix)	((QPushButton *)widget())->setIcon(*pix);
+	else((QPushButton *)widget())->setIcon(QIcon());
 	return true;
 }
 bool KviKvsObject_button::functionclickEvent(KviKvsObjectFunctionCall *c)

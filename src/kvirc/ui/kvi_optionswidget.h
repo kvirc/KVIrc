@@ -62,7 +62,7 @@ public:
 
 	// tabbed page paradigm
 	void createTabbedPage();
-	void addOptionsWidget(const QString &szText,const QIconSet &iconSet,KviOptionsWidget * pWidget);
+	void addOptionsWidget(const QString &szText,const QIcon &iconSet,KviOptionsWidget * pWidget);
 	QTabWidget * tabWidget(){ return m_pTabWidget; };
 
 	// non tabbed page paradigm

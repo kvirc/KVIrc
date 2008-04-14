@@ -113,7 +113,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 			// Check for the file existence
 			if(!KviFileUtils::fileExists(buffer)) return true;
 			QString tmp;
-			KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.utf8().data());
+			KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.toUtf8().data());
 			switch(QMessageBox::information(parent,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 			{
 					case QMessageBox::Cancel: return false; break;
@@ -149,7 +149,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 			if(KviFileUtils::fileExists(buffer))
 			{
 				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.utf8().data());
+				KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.toUtf8().data());
 				switch(QMessageBox::information(d,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 				{
 					case QMessageBox::Cancel: delete d; return false; break;

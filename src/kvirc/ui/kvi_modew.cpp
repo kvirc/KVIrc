@@ -142,7 +142,7 @@ void KviModeWidget::editorReturnPressed()
 	if(!mode.isEmpty())
 	{
 		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->name());
-		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.utf8().data());
+		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.toUtf8().data());
 	}
 	reset();
 }

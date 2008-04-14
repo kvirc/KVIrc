@@ -38,7 +38,7 @@
 	
 #define SET_OBJECT(__className) \
 	__className *obj=new __className(parentScriptWidget()); \
-	obj->setObjectName(name()); \
+	obj->setObjectName(getName()); \
 	setObject(obj,true);
 	
 #define KVSO_REGISTER_HANDLER(__className,__szName,__proc) \

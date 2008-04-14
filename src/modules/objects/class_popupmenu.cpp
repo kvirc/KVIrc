@@ -186,7 +186,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_popupmenu)
 
 bool KviKvsObject_popupmenu::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviTalPopupMenu(parentScriptWidget(), name()), true);
+	setObject(new KviTalPopupMenu(parentScriptWidget(), getName()), true);
 	connect(widget(),SIGNAL(activated(int)),this,SLOT(slotactivated(int)));
 	connect(widget(),SIGNAL(highlighted(int)),this,SLOT(slothighlighted(int)));
 	return true;

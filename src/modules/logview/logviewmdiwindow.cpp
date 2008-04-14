@@ -398,10 +398,10 @@ KviLogFile::KviLogFile(const QString& name)
 	undecoded.cutToFirst('_');
 	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
-	undecoded = m_szFilename.section('.',1,1).section('_',0,0);
+	undecoded = m_szFilename.section('.',1).section('_',0,0);
 	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
 	
-	QString szDate = m_szFilename.section('.',1,3).section('_',1,1);
+	QString szDate = m_szFilename.section('.',-4,-1).section('_',1,1);
 	int iYear = szDate.section('.',0,0).toInt();
 	int iMonth = szDate.section('.',1,1).toInt();
 	int iDay = szDate.section('.',2,2).toInt();

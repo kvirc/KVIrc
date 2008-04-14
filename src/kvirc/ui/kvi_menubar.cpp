@@ -266,7 +266,7 @@ void KviMenuBar::newConnectionToServer(int id)
 		} else {
 			text.replace(QString("&"),QString(""));
 			KviStr szCommand;
-			if(KviIrcUrl::parse(text.utf8().data(),szCommand,KVI_IRCURL_CONTEXT_NEW))
+			if(KviIrcUrl::parse(text.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_NEW))
 				KviKvsScript::run(szCommand.ptr(),m_pFrm->firstConsole());
 		}
 	}

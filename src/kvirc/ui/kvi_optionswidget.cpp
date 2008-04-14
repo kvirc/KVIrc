@@ -99,7 +99,7 @@ void KviOptionsWidget::createTabbedPage()
 	addWidgetToLayout(m_pTabWidget,0,0,0,0);
 }
 
-void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIconSet &iconSet,KviOptionsWidget * pWidget)
+void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIcon &iconSet,KviOptionsWidget * pWidget)
 {
 	if(pWidget->layout())
 		pWidget->layout()->setMargin(10);

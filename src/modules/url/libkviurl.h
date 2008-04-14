@@ -40,7 +40,7 @@
 #include <QMenuBar>
 #include <QInputDialog>
 #include <QToolButton>
-#include <QIconSet>
+#include <QIcon>
 #include <QPixmap>
 
 typedef struct _KviUrl

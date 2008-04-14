@@ -77,7 +77,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_checkbox)
 
 bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	KviStyledCheckBox  * cb = new KviStyledCheckBox(parentScriptWidget(), name());
+	KviStyledCheckBox  * cb = new KviStyledCheckBox(parentScriptWidget(), getName());
 	setObject(cb, true);
 	connect(cb,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));

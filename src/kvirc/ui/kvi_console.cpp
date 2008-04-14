@@ -915,9 +915,9 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 	{
 		// cache it
 		if(avatar)
-			KviAvatarCache::instance()->replace(avatar->identificationString(),KviIrcMask(nick,user,host),currentNetworkName().utf8().data());
+			KviAvatarCache::instance()->replace(avatar->identificationString(),KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 		else
-			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().utf8().data());
+			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 	}
 
 	avatarChangedUpdateWindows(nick,textLine);
@@ -926,7 +926,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host)
 {
 	// look it up in the cache
-	QString szAvatar = KviAvatarCache::instance()->lookup(KviIrcMask(nick,user,host),currentNetworkName().utf8().data());
+	QString szAvatar = KviAvatarCache::instance()->lookup(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 	if(!szAvatar.isEmpty())
 	{
 		// got a cache hit... is it on disk ?
@@ -940,7 +940,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 		} else {
 			// no cached image on disk.. will need to requery it anyway
 			// remove from cache
-			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().utf8().data());
+			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().toUtf8().data());
 		}
 	}
 

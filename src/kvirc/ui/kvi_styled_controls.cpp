@@ -240,7 +240,7 @@ KviStyledToolButton::KviStyledToolButton( QWidget * parent, const char * name )
 	resizeEvent(0);
 }
 
-KviStyledToolButton::KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name )
+KviStyledToolButton::KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name )
 : QToolButton(iconSet,textLabel,grouptext,receiver,slot,parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
 //	setWFlags(WNoAutoErase);
@@ -299,10 +299,10 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 		p.translate(-rect.x(), -rect.y());
 		QPixmap pix=iconSet().pixmap(
                                 usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
-                                isEnabled() ? QIconSet::Normal :
+                                isEnabled() ? QIcon::Normal :
                                               QIconSet::Disabled,
-                                isOn() ? QIconSet::On :
-                                              QIconSet::Off);
+                                isOn() ? QIcon::On :
+                                              QIcon::Off);
 		QPoint pos((iWidth-iPixWidth-pix.width())/2,(height()-pix.height())/2);
 		if(!pix.isNull())
 		{
@@ -364,10 +364,10 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 	{
 		QPixmap pix=iconSet().pixmap(
                                 usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
-                                isEnabled() ? QIconSet::Normal :
+                                isEnabled() ? QIcon::Normal :
                                               QIconSet::Disabled,
-                                isOn() ? QIconSet::On :
-                                              QIconSet::Off);
+                                isOn() ? QIcon::On :
+                                              QIcon::Off);
 		
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}

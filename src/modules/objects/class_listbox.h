@@ -25,9 +25,10 @@
 
 
 #include "class_widget.h"
+#include <QListWidget>
 
-class KviTalListBox;
-class KviTalListBoxItem;
+//class KviTalListBox;
+//class KviTalListBoxItem;
 
 #include "object_macros.h"
 
@@ -53,17 +54,18 @@ protected:
 	bool functionclear(KviKvsObjectFunctionCall *c);
 	bool functionsetSelectionMode(KviKvsObjectFunctionCall *c);
 	bool functionselectionMode(KviKvsObjectFunctionCall *c);
-	bool functionsetSelected(KviKvsObjectFunctionCall *c);
+	/*bool functionsetSelected(KviKvsObjectFunctionCall *c);
 	bool functionisSelected(KviKvsObjectFunctionCall *c);
+	*/
 	bool functioncurrentItemChangeEvent(KviKvsObjectFunctionCall *c);
 	bool functiononItemEvent(KviKvsObjectFunctionCall *c);
 
 	bool functionitemAt(KviKvsObjectFunctionCall *c);
-	bool functionitemRect(KviKvsObjectFunctionCall *c);
+	//bool functionitemRect(KviKvsObjectFunctionCall *c);
 protected slots:
 	void selectionChanged();
-	void currentItemChanged(KviTalListBoxItem *);
-	void onItem(KviTalListBoxItem *);
+	void currentItemChanged(QListWidgetItem *);
+	void onItem(QListWidgetItem *);
 };
 
 

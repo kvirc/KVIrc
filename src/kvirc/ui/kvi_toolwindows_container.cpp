@@ -128,9 +128,9 @@ KviWindowToolPageButton::~KviWindowToolPageButton()
 
 	QPixmap icon;
 	if(isOn())
-		icon=iconSet()->pixmap(QIconSet::Small,QIconSet::Normal,QIconSet::On);
+		icon=iconSet()->pixmap(QIcon::Normal,QIcon::On);
 	else
-		icon=iconSet()->pixmap(QIconSet::Small,QIconSet::Normal,QIconSet::Off);
+		icon=iconSet()->pixmap(QIcon::Normal,QIcon::Off);
 		
 	// Draw the frame
 	//painter.setPen( colorGroup().mid() );

@@ -45,8 +45,6 @@ protected:
 	bool functionSetOn(KviKvsObjectFunctionCall *c);
 	bool functionIsOn(KviKvsObjectFunctionCall *c);
 	bool functionToggle(KviKvsObjectFunctionCall *c);
-	bool functionSetIsMenuButton(KviKvsObjectFunctionCall *c);
-	bool functionIsMenuButton(KviKvsObjectFunctionCall *c);
 	bool functionSetImage(KviKvsObjectFunctionCall *c);
 	bool functionclickEvent(KviKvsObjectFunctionCall *c);
 

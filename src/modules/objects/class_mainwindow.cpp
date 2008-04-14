@@ -67,7 +67,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_mainwindow)
 
 bool KviKvsObject_mainwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviTalMainWindow(parentScriptWidget(), name()), true);
+	setObject(new KviTalMainWindow(parentScriptWidget(), getName()), true);
 	return true;
 }
 

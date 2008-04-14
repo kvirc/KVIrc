@@ -112,7 +112,7 @@ bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 		return false;
 	}
 	setObject(new QGridLayout(w));
-	setObjectName(name());
+	setObjectName(getName());
 	return true;
 }
 

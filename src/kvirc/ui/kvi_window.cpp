@@ -495,9 +495,9 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 	}
 	if(m_pCryptControllerButton)
 	{
-		QIconSet is;
-		is.setPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKEDOFF : KVI_SMALLICON_UNLOCKEDOFF)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
-		is.setPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKED : KVI_SMALLICON_UNLOCKED)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
+		QIcon is;
+		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKEDOFF : KVI_SMALLICON_UNLOCKEDOFF)),QIcon::Normal,QIcon::Off);
+		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKED : KVI_SMALLICON_UNLOCKED)),QIcon::Normal,QIcon::On);
 		m_pCryptControllerButton->setIconSet(is);
 
 		if(m_pCryptControllerButton->isOn())
@@ -556,9 +556,9 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	base=base.lower();
 	QString tmp;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
-		KviQString::sprintf(tmp,"%s_%s_%s.log.gz",typeString(),base.utf8().data(),date.utf8().data());
+		KviQString::sprintf(tmp,"%s_%s_%s.log.gz",typeString(),base.toUtf8().data(),date.toUtf8().data());
 	else
-		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.utf8().data(),date.utf8().data());
+		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.toUtf8().data(),date.toUtf8().data());
 	g_pApp->getLocalKvircDirectory(buffer,KviApp::Log,tmp);
 }
 
@@ -600,7 +600,7 @@ void KviWindow::loadProperties(KviConfig *cfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::empty).utf8().data());
+	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::empty).toUtf8().data());
 	if(m_pInput) {
 		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
 		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));

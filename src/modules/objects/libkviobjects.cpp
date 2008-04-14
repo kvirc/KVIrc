@@ -827,13 +827,13 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
 				list.at(i),
-				KVI_TEXT_BOLD, list.at(i)->name(), KVI_TEXT_BOLD,
-				list.at(i)->className(),
+				KVI_TEXT_BOLD, list.at(i)->objectName(), KVI_TEXT_BOLD,
+				list.at(i)->metaObject()->className(),
 				list.at(i)->isVisible() ? "visible" : "hidden",
 				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
 			}
-			QString  szClass=list.at(i)->className();
-			QString szObj=list.at(i)->name();
+			QString  szClass=list.at(i)->metaObject()->className();
+			QString szObj=list.at(i)->objectName();
 			QString szTemp;
 			szTemp = szClass + "::" + szObj;
 			KviKvsVariant v;
@@ -868,11 +868,11 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			{
 				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
 					spacing, list.at(i), KVI_TEXT_BOLD,
-					list.at(i)->name(), KVI_TEXT_BOLD, list.at(i)->className()
+					list.at(i)->objectName(), KVI_TEXT_BOLD, list.at(i)->metaObject()->className()
 				);
 			}
-			QString szClass=list.at(i)->className();
-			QString szObj=list.at(i)->name();
+			QString szClass=list.at(i)->metaObject()->className();
+			QString szObj=list.at(i)->objectName();
 			QString szTemp;
 			szTemp=spacing+szClass+"::"+szObj;
 			KviKvsVariant v;

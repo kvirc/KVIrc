@@ -49,7 +49,7 @@ void KviScriptEditor::setText(const KviQCString &txt)
 
 void KviScriptEditor::setText(const QString &txt)
 {
-	setText(KviQCString(txt.utf8()));
+	setText(KviQCString(txt.toUtf8()));
 }
 
 void KviScriptEditor::setFindText(const QString &text)

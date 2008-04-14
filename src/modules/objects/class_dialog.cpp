@@ -68,7 +68,8 @@ bool KviKvsObject_dialog::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 {
 	QWidget * w = g_pApp->activeModalWidget();
 	if(!w)w = g_pFrame;
-	QDialog * d = new QDialog(parentScriptWidget() ? parentScriptWidget() : w,name());
+	QDialog * d = new QDialog(parentScriptWidget() ? parentScriptWidget() : w);
+	d->setObjectName(getName());
 	//d->setModal(true);
 	setObject(d);
 	return true;

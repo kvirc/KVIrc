@@ -232,7 +232,10 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 #ifdef COMPILE_ON_WINDOWS
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
-		if(isMuted()) return true;
+		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT); 
+		return true;
+		// This does not compile on win!
+		/*if(isMuted()) return true;
 			KviArtsSoundThread * t = new KviArtsSoundThread(szFileName);
 			if(!t->start())
 			{
@@ -240,6 +243,7 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 				return false;
 			}
 			return true;
+			*/
 	}
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
@@ -355,7 +359,7 @@ void KviSoundThread::run()
 }
 
 
-#ifndef COMPILE_ON_WINDOWS
+#ifdef COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			KviOssAudiofileSoundThread::KviOssAudiofileSoundThread(const QString &szFileName)

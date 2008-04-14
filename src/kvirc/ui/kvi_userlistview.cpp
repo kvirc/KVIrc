@@ -1797,7 +1797,7 @@ void KviUserListViewArea::keyPressEvent( QKeyEvent * e )
 			KviUserListEntry * aux = m_pListView->m_pHeadItem;
 			while(aux)
 			{
-				//debug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().utf8().data(),aux->nick().find(szKey,0,0));
+				//debug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().toUtf8().data(),aux->nick().find(szKey,0,0));
 				if(aux->nick().find(szKey,0,0)==0) 
 				{
 					nick=aux;

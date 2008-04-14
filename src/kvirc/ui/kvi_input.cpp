@@ -2282,25 +2282,25 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pHistoryButton = new KviStyledToolButton(m_pButtonContainer,"historybutton");
 	m_pHistoryButton->setUsesBigPixmap(false);
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
-	QIconSet is1;
+	QIcon is1;
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
 	{
-		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)),QIconSet::Small);
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistoryButton->setIconSet(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
 	}
 	else
 	{
-		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)),QIconSet::Small);
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)));
 		m_pHistoryButton->setIconSet(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 	}
 
 	m_pIconButton = new KviStyledToolButton(m_pButtonContainer,"iconbutton");
 	m_pIconButton->setUsesBigPixmap(false);
-	QIconSet is3;
-	is3.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),QIconSet::Small);
+	QIcon is3;
+	is3.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)));
 	m_pIconButton->setIconSet(is3);
 	KviTalToolTip::add(m_pIconButton,__tr2qs("Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
 
@@ -2310,9 +2310,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pCommandlineModeButton = new KviStyledToolButton(m_pButtonContainer,"commandlinemodebutton");
 	m_pCommandlineModeButton->setUsesBigPixmap(false);
 	m_pCommandlineModeButton->setToggleButton(true);
-	QIconSet is0;
-	is0.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYSMILE)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
-	is0.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYKVS)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
+	QIcon is0;
+	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYSMILE)),QIcon::Normal,QIcon::On);
+	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYKVS)),QIcon::Normal,QIcon::Off);
 	m_pCommandlineModeButton->setIconSet(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
@@ -2322,9 +2322,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pMultiEditorButton = new KviStyledToolButton(m_pButtonContainer,"multieditorbutton");
 	m_pMultiEditorButton->setToggleButton(true);
 	m_pMultiEditorButton->setUsesBigPixmap(false);
-	QIconSet is2;
-	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::On);
-	is2.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIconSet::Small,QIconSet::Normal,QIconSet::Off);
+	QIcon is2;
+	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::On);
+	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIconSet(is2);
 	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;");
 	szTip += " - &lt;Ctrl+Backspace&gt;";
@@ -2384,7 +2384,7 @@ void KviInput::inputEditorEnterPressed()
 
 void KviInput::keyPressEvent(QKeyEvent *e)
 {
-	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().utf8().data());
+	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
 
 	if((e->state() & Qt::ControlButton) || (e->state() & Qt::AltButton) || (e->state() & Qt::MetaButton))
 	{
@@ -2567,8 +2567,8 @@ void KviInput::applyOptions()
 
 	if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
 	{
-		QIconSet is1;
-		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)),QIconSet::Small);
+		QIcon is1;
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)));
 		m_pHistoryButton->setIconSet(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));
@@ -2576,8 +2576,8 @@ void KviInput::applyOptions()
 
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))
 	{
-		QIconSet is1;
-		is1.setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)),QIconSet::Small);
+		QIcon is1;
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistoryButton->setIconSet(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));

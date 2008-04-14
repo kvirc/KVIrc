@@ -278,7 +278,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 			txt += br;
 		} else {
 			KviStr nickAndMode = ic->userInfo()->nickName();
-			if(!(ic->userInfo()->userMode().isEmpty()))nickAndMode.append(KviStr::Format," (+%s)",ic->userInfo()->userMode().utf8().data());
+			if(!(ic->userInfo()->userMode().isEmpty()))nickAndMode.append(KviStr::Format," (+%s)",ic->userInfo()->userMode().toUtf8().data());
 
 			txt += ic->currentServerName();
 			txt += nb;

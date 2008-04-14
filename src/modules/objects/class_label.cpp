@@ -46,25 +46,18 @@ const char * const align_tbl[] = {
 			"Bottom",
 			"WordBreak"
 			   };
-	#define QT_LABEL_ALIGNLEFT Qt::AlignLeft
-	#define	QT_LABEL_ALIGNRIGHT Qt::AlignRight
-	#define QT_LABEL_ALIGNHCENTER Qt::AlignHCenter
-	#define QT_LABEL_ALIGNVCENTER Qt::AlignVCenter
-	#define QT_LABEL_ALIGNCENTER Qt::AlignCenter
-	#define	QT_LABEL_ALIGNTOP Qt::AlignTop
-	#define QT_LABEL_ALIGNBOTTOM Qt::AlignBottom
-	#define QT_LABEL_JUSTIFY Qt::AlignJustify
+
 
 
 const int align_cod[] = {
-		QT_LABEL_ALIGNLEFT,
-		QT_LABEL_ALIGNRIGHT,
-	    QT_LABEL_ALIGNHCENTER,
-	    QT_LABEL_ALIGNVCENTER,
-	    QT_LABEL_ALIGNCENTER,
-	 	QT_LABEL_ALIGNTOP,
-	    QT_LABEL_ALIGNBOTTOM,
-	    QT_LABEL_JUSTIFY,
+		Qt::AlignLeft,
+		Qt::AlignRight,
+	    Qt::AlignHCenter,
+	    Qt::AlignVCenter,
+	    Qt::AlignCenter,
+	 	Qt::AlignTop,
+	    Qt::AlignBottom,
+	    Qt::AlignJustify,
 	};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
@@ -126,15 +119,6 @@ const int frame_cod[] = {
 		!fn: $setMargin(<margin:uint>)
 		Sets margin width / height to <margin>.
 		See also [classfnc]$margin[/classfnc]().
-		!fn: <boolean> $autoResize()
-		Returns 1, if auto-resize ability of the label is enabled. 
-		See also [classfnc]$setAutoResize[/classfnc]().
-		!fn: $setAutoResize(<benabled:boolean>)
-		Sets auto-resize ability to enabled (if <benabled> is 1) or disabled
-		 (if <benabled> is 0). If auto-resize is enabled, the label will 
-		automagically resize itself accordingly to the 'size' of the
-		text it contains. 
-		See also [classfnc]$autoResize[/classfnc]().
 		!fn: <string> $alignment()
 		Returns a string containing alignment flags that are set for 
 		this label. The flags are separated by commas. An example output
@@ -205,8 +189,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_label,"label","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"text", functionText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"margin", functionMargin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setMargin", functionSetMargin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"autoResize", functionAutoResize)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setAutoResize", functionSetAutoResize)
+//	KVSO_REGISTER_HANDLER(KviKvsObject_label,"autoResize", functionAutoResize)
+//	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setAutoResize", functionSetAutoResize)
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"alignment", functionAlignment)
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setAlignment", functionSetAlignment)
 	KVSO_REGISTER_HANDLER(KviKvsObject_label,"clear", functionClear)
@@ -260,7 +244,7 @@ bool KviKvsObject_label::functionMargin(KviKvsObjectFunctionCall *c)
 	if (widget()) c->returnValue()->setInteger(((QLabel *)widget())->margin());
 	return true;
 }
-
+/*
 // FIX ME
 bool KviKvsObject_label::functionSetAutoResize(KviKvsObjectFunctionCall *c)
 {
@@ -278,7 +262,8 @@ bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
 		if (widget()) c->returnValue()->setBoolean(true);
 	return true;
 }
-//
+*/
+
 bool KviKvsObject_label::functionSetAlignment(KviKvsObjectFunctionCall *c)
 {
 	QStringList alignment;
@@ -305,7 +290,7 @@ bool KviKvsObject_label::functionSetAlignment(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
 			
 		}
-	((QLabel *)widget())->setAlignment(sum);
+	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
 }
 bool KviKvsObject_label::functionAlignment(KviKvsObjectFunctionCall *c)

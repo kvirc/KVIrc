@@ -263,7 +263,7 @@ bool KviKvsObject_lineedit::functionSetMaxLength(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_lineedit::functionFrame(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setBoolean(((QLineEdit *)widget())->frame());
+		c->returnValue()->setBoolean(((QLineEdit *)widget())->hasFrame());
 	return true;
 }
 

@@ -143,14 +143,14 @@ void KviStatusBar::load()
 			tmp.sprintf("%s_PreloadModule",prefix.ptr());
 			QString szPreloadModule = cfg.readEntry(tmp.ptr(),"");
 			if(!szPreloadModule.isEmpty())
-				g_pModuleManager->getModule(szPreloadModule.utf8().data());
+				g_pModuleManager->getModule(szPreloadModule.toUtf8().data());
 
 			KviStatusBarApplet * a = createApplet(szInternalName);
 			if (a)
 				a->loadState(prefix.ptr(),&cfg);
 			else
 				debug("warning: failed to create applet %s (preload: %s)!",
-					szInternalName.utf8().data(), szPreloadModule.utf8().data());
+					szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
 		}
 	}
 }

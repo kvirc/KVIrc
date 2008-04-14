@@ -90,7 +90,7 @@ private:
 	bool bShowSubmenuIndicator;
 public:
 	KviStyledToolButton ( QWidget * parent, const char * name = 0 );
-	KviStyledToolButton ( const QIconSet & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name = 0 );
+	KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name = 0 );
 	~KviStyledToolButton();
 	
 	void setShowSubmenuIndicator(bool bShow);

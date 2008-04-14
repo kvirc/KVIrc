@@ -143,10 +143,10 @@ bool KviKvsObject_toolbutton::functionsetImage(KviKvsObjectFunctionCall *c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix){
-			((QToolButton *)widget())->setIconSet(QIconSet(*pix));
+			((QToolButton *)widget())->setIconSet(QIcon(*pix));
 	}
 	else
-		((QToolButton *)widget())->setIconSet(QIconSet());
+		((QToolButton *)widget())->setIconSet(QIcon());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c)

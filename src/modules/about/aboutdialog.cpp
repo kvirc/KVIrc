@@ -112,6 +112,7 @@ KviAboutDialog::KviAboutDialog()
 
 	// Get info
 	QString infoString = "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
+	#ifndef COMPILE_ON_WINDOWS
 	infoString += __tr2qs_ctx("System Name","about");
 	infoString += ": " KVI_BUILD_SYSTEM "<br>";
 	infoString += __tr2qs_ctx("CPU Name","about");
@@ -128,7 +129,7 @@ KviAboutDialog::KviAboutDialog()
 	infoString += ": " KVI_BUILD_COMPILER "<br>";
 	infoString += __tr2qs_ctx("Compiler Flags","about");
 	infoString += ": " KVI_BUILD_COMPILER_FLAGS;
-
+#endif
 	v->setText(infoString);
 
 	addTab(w,__tr2qs_ctx("Executable Informations","about"));

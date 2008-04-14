@@ -216,7 +216,7 @@ bool KviKvsObject_tabwidget::functionaddTab(KviKvsObjectFunctionCall *c)
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 
 	if(pix){
-		((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),QIconSet(*pix),szLabel);
+		((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),QIcon(*pix),szLabel);
 	}
 	else((QTabWidget *)widget())->addTab(((QWidget *)(ob->object())),szLabel);	
 	return true;
@@ -253,7 +253,7 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix){
-			((QTabWidget *)widget())->insertTab( ((QWidget *)(ob->object())),QIconSet(*pix),szLabel,uIndex);
+			((QTabWidget *)widget())->insertTab( ((QWidget *)(ob->object())),QIcon(*pix),szLabel,uIndex);
 	}
 	else ((QTabWidget *)widget())->insertTab(((QWidget *)(ob->object())),szLabel,uIndex);	
 	return true;
@@ -491,7 +491,7 @@ bool KviKvsObject_tabwidget::functionchangeTab(KviKvsObjectFunctionCall *c)
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix){
-			((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIconSet(*pix),szLabel);
+			((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIcon(*pix),szLabel);
 	}
 	else ((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),szLabel);	
 	return true;

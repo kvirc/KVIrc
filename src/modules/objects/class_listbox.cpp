@@ -28,6 +28,7 @@
 #include "class_list.h"
 #include "class_listbox.h"
 
+#include <QListWidget>
 /*
 	@doc: listbox
 	@keyterms:
@@ -71,7 +72,7 @@
 		not specified the item is appended.
 		!fn: $changeItem(<text:string>, <index:uint>)
 		Changes text of item at <index> to <text>.
-		!fn: $removeItem(<index:uindex>)
+		!fn: $removeItem(<index:iIndex>)
 		Removes item at given index.
 		!fn: $count()
 		Returns number of items in the widget.
@@ -110,7 +111,7 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertItem", functioninsertItem)
+/*	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertItem", functioninsertItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"changeItem", functionchangeItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"removeItem", functionremoveItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"clear", functionclear)
@@ -127,6 +128,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"selectionMode",functionselectionMode);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelected",functionsetSelected);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"isSelected",functionisSelected);
+	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"currentItemChangeEvent",functioncurrentItemChangeEvent);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"onItemEvent",functiononItemEvent);
 
@@ -147,73 +149,77 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_listbox)
 
 bool KviKvsObject_listbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	KviTalListBox * b = new KviTalListBox(parentScriptWidget());
-	b->setSelectionMode(KviTalListBox::Single);
-	connect(b,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
-	connect(b,SIGNAL(currentChanged(KviTalListBoxItem *)),this,SLOT(currentItemChanged(KviTalListBoxItem *)));
-	
-	connect(b,SIGNAL(onItem(KviTalListBoxItem *)),this,SLOT(onItem(KviTalListBoxItem *)));
-
-	setObject(b,true);;
+	//KviTalListBox * b = new KviTalListBox(parentScriptWidget());
+	SET_OBJECT(QListWidget)
+	obj->setSelectionMode(QAbstractItemView::SingleSelection);
+	connect(obj,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
+	connect(obj,SIGNAL(currentItemChanged(QListWidgetItem *)),this,SLOT(currentItemChanged(QListWidgetItem *)));
+//	connect(obj,SIGNAL(onItem(QListWidgetItem *)),this,SLOT(onItem(QListWidgetItem *)));
 	return true;
 }
 
 bool KviKvsObject_listbox::functioninsertItem(KviKvsObjectFunctionCall *c)
 {
-	kvs_int_t iIndex;
-	QString szItem;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szItem)
-		KVSO_PARAMETER("index",KVS_PT_INT,KVS_PF_OPTIONAL,iIndex)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((KviTalListBox *)widget())->insertItem(szItem, iIndex);
-	return true;
-}
-bool KviKvsObject_listbox::functionclear(KviKvsObjectFunctionCall *c)
-{
-	if (widget()) ((KviTalListBox *)widget())->clear();
-	return true;
-}
-bool KviKvsObject_listbox::functionchangeItem(KviKvsObjectFunctionCall *c)
-{
-
-	kvs_uint_t uIndex,cnt;
+	if(!widget()) return true;
+	kvs_int_t iRow;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_INT,KVS_PF_OPTIONAL,iRow)
+	KVSO_PARAMETERS_END(c)
+	if (c->parameterCount()==2) ((QListWidget *)widget())->insertItem(iRow, szText);
+	else ((QListWidget *)widget())->addItem(szText);
+	return true;
+}
+
+bool KviKvsObject_listbox::functionclear(KviKvsObjectFunctionCall *c)
+{
+	if (widget()) ((QListWidget *)widget())->clear();
+	return true;
+}
+
+bool KviKvsObject_listbox::functionchangeItem(KviKvsObjectFunctionCall *c)
+{
+
+	kvs_int_t iIndex,cnt;
+	QString szText;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	if (szText.isEmpty()) c->warning(__tr2qs("No string parameter given - using empty string"));
-	if(uIndex >= (cnt = ((KviTalListBox *)widget())->count()))
+	if(iIndex >= (cnt = ((KviTalListBox *)widget())->count()))
 	{
 		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]"), uIndex, cnt);
-		uIndex = cnt - 1;
+			"$count() - 1 [%d]"), iIndex, cnt);
+		iIndex = cnt - 1;
 	}
 
-	((KviTalListBox *)widget())->changeItem(szText, uIndex);
+	//((QListWidget *)widget())->removeItem(iIndex);
+	((QListWidget *)widget())->item(iIndex)->setText(szText);
 
 	return true;
 
 }
+
+
 bool KviKvsObject_listbox::functionremoveItem(KviKvsObjectFunctionCall *c)
 {
 
-	kvs_uint_t uIndex,cnt;
+	kvs_uint_t iIndex,cnt;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	if(uIndex >= (cnt = ((KviTalListBox *)widget())->count()))
+	if(iIndex >= (cnt = ((KviTalListBox *)widget())->count()))
 	{
 		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]"), uIndex, cnt);
-		uIndex = cnt - 1;
+			"$count() - 1 [%d]"), iIndex, cnt);
+		iIndex = cnt - 1;
 	}
 
-	((KviTalListBox *)widget())->removeItem(uIndex);
+	delete ((QListWidget *)widget())->takeItem(iIndex);
 
 	return true;
 
@@ -221,39 +227,39 @@ bool KviKvsObject_listbox::functionremoveItem(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_listbox::functioncount(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((KviTalListBox *)widget())->count());
+	if (widget()) c->returnValue()->setInteger(((QListWidget *)widget())->count());
 	return true;
 }
 bool KviKvsObject_listbox::functioncurrentText(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((KviTalListBox *)widget())->currentText().toLocal8Bit().data());
+	if (widget()) c->returnValue()->setString(((QListWidget *)widget())->currentItem()->text().toLocal8Bit().data());
 	return true;
 }
 bool KviKvsObject_listbox::functioncurrentItem(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((KviTalListBox *)widget())->currentItem());
+	if (widget()) c->returnValue()->setInteger(((QListWidget *)widget())->currentRow());
 	return true;
 }
 
 bool KviKvsObject_listbox::functiontextAt(KviKvsObjectFunctionCall *c)
 {
 
-	kvs_uint_t uIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		c->returnValue()->setString(((KviTalListBox *)widget())->text(uIndex));
+		c->returnValue()->setString(((QListWidget *)widget())->item(iIndex)->text());
 	return true;
 }
 bool KviKvsObject_listbox::functionsetCurrentItem(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t uIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((KviTalListBox *)widget())->setCurrentItem(uIndex);
+		((QListWidget *)widget())->setCurrentRow(iIndex);
 	return true;
 }
 bool KviKvsObject_listbox::functionsetSelectionMode(KviKvsObjectFunctionCall *c)
@@ -263,18 +269,18 @@ bool KviKvsObject_listbox::functionsetSelectionMode(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("selection_mode",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	KviTalListBox::SelectionMode iMode = KviTalListBox::Single;
+	QAbstractItemView::SelectionMode iMode = QAbstractItemView::SingleSelection;
 
-	if(KviQString::equalCI(szMode,"single")) iMode = KviTalListBox::Single;
+	if(KviQString::equalCI(szMode,"single")) iMode = QAbstractItemView::SingleSelection;
 
-	else if(KviQString::equalCI(szMode,"multi")) iMode = KviTalListBox::Multi;
+	else if(KviQString::equalCI(szMode,"multi")) iMode = QAbstractItemView::MultiSelection;
 
-	else if(KviQString::equalCI(szMode,"extended")) iMode = KviTalListBox::Extended;
+	else if(KviQString::equalCI(szMode,"extended")) iMode = QAbstractItemView::ExtendedSelection;
 
-	else if(KviQString::equalCI(szMode,"none")) iMode = KviTalListBox::NoSelection;
+	else if(KviQString::equalCI(szMode,"none")) iMode = QAbstractItemView::NoSelection;
 
 	else  c->warning(__tr2qs("Invalid selection mode '%Q' assuming single"),&szMode);
-	((KviTalListBox *)widget())->setSelectionMode(iMode);
+	((QListWidget *)widget())->setSelectionMode(iMode);
 
 	return true;
 }
@@ -282,38 +288,40 @@ bool KviKvsObject_listbox::functionselectionMode(KviKvsObjectFunctionCall *c)
 {
 
 	if(!widget()) return true;
-	switch(((KviTalListBox *)widget())->selectionMode())
+	switch(((QListWidget *)widget())->selectionMode())
 	{
-		case KviTalListBox::Single: c->returnValue()->setString("single"); break;
-		case KviTalListBox::Multi: c->returnValue()->setString("multi"); break;
-		case KviTalListBox::Extended: c->returnValue()->setString("extended"); break;
-		case KviTalListBox::NoSelection: c->returnValue()->setString("none"); break;
+		case QAbstractItemView::SingleSelection: c->returnValue()->setString("single"); break;
+		case QAbstractItemView::MultiSelection: c->returnValue()->setString("multi"); break;
+		case QAbstractItemView::ExtendedSelection: c->returnValue()->setString("extended"); break;
+		case QAbstractItemView::NoSelection: c->returnValue()->setString("none"); break;
 		default: c->returnValue()->setString("single"); break;
 	}
 	return true;
 }
-
+/*
 bool KviKvsObject_listbox::functionisSelected(KviKvsObjectFunctionCall *c)
 {
 
-	kvs_uint_t uIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if(widget())c->returnValue()->setBoolean(((KviTalListBox *)widget())->isSelected(uIndex));
+	if(widget())c->returnValue()->setBoolean(((QListWidget *)widget())->isSelected(iIndex));
 	return true;
 }
+
 bool KviKvsObject_listbox::functionsetSelected(KviKvsObjectFunctionCall *c)
 {
 	bool bSel;
-	kvs_uint_t uIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 		KVSO_PARAMETER("benabled",KVS_PT_BOOLEAN,0,bSel)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((KviTalListBox *)widget())->setSelected(uIndex,bSel);
+	if(widget()) ((QListWidget *)widget())->setSelected(iIndex,bSel);
 	return true;
 }
+*/
 bool KviKvsObject_listbox::functionitemAt(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uX,uY;
@@ -322,7 +330,7 @@ bool KviKvsObject_listbox::functionitemAt(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
 	KVSO_PARAMETERS_END(c)
 	if(widget()) 
-		c->returnValue()->setInteger(((KviTalListBox *)widget())->index(((KviTalListBox *)widget())->itemAt(QPoint(uX,uY))));
+		c->returnValue()->setInteger(((QListWidget *)widget())->row(((QListWidget *)widget())->itemAt(QPoint(uX,uY))));
 	return true;
 }
 
@@ -339,7 +347,7 @@ void KviKvsObject_listbox::selectionChanged()
 	callFunction(this,"selectionChangeEvent",0,0);
 }
 
-void KviKvsObject_listbox::currentItemChanged(KviTalListBoxItem *item)
+void KviKvsObject_listbox::currentItemChanged(QListWidgetItem *item)
 {
 	if (!item) callFunction(this,"currentItemChangeEvent",0,0);
 	else
@@ -356,23 +364,24 @@ bool KviKvsObject_listbox::functiononItemEvent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-void KviKvsObject_listbox::onItem(KviTalListBoxItem *item)
+void KviKvsObject_listbox::onItem(QListWidgetItem *item)
 {
-		KviTalListBox *lbx = (KviTalListBox *)(item->listBox());
+		/*QListWidget *lbx = (QListWidget *)(item->listBox());
 		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)lbx->index(item)));
 		callFunction(this,"onItemEvent",0,&params);
+		*/
 }
-
+/*
 
 bool KviKvsObject_listbox::functionitemRect(KviKvsObjectFunctionCall *c)
 {
-kvs_uint_t uIndex;
+kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("uIndex",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("iIndex",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
 	{
-		QRect rect=((KviTalListBox *)widget())->itemRect(((KviTalListBox *)widget())->item(uIndex));
+		QRect rect=((KviTalListBox *)widget())->itemRect(((KviTalListBox *)widget())->item(iIndex));
 		KviKvsArray * a = new KviKvsArray();
 		a->set(0,new KviKvsVariant((kvs_int_t)rect.left()));
 		a->set(1,new KviKvsVariant((kvs_int_t)rect.top()));
@@ -383,7 +392,7 @@ kvs_uint_t uIndex;
 		return true;
 }
 
-
+*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listbox.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

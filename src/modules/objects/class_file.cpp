@@ -195,12 +195,12 @@ bool KviKvsObject_file::functionsetName(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szName)
 	KVSO_PARAMETERS_END(c)
-	if (m_pFile) m_pFile->setName(szName);
+	if (m_pFile) m_pFile->setFileName(szName);
 	return true;
 }
 bool KviKvsObject_file::functionname(KviKvsObjectFunctionCall *c)
 {
-	if (m_pFile) c->returnValue()->setString(m_pFile->name());
+	if (m_pFile) c->returnValue()->setString(m_pFile->fileName());
 	return true;
 }
 
@@ -211,7 +211,7 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("file_mode",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,modes)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
-	if(m_pFile->name().isEmpty())
+	if(m_pFile->fileName().isEmpty())
 	{
 		c->warning(__tr2qs("Empty filename string"));
 		return true;
@@ -268,7 +268,7 @@ bool KviKvsObject_file::functionsize(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_file::functionatEnd(KviKvsObjectFunctionCall *c)
 {
-	if (m_pFile) c->returnValue()->setInteger((kvs_int_t)(m_pFile->size()));
+	if (m_pFile) c->returnValue()->setInteger((kvs_int_t)(m_pFile->atEnd()));
 	return true;
 }
 
@@ -276,7 +276,7 @@ bool KviKvsObject_file::functionatEnd(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_file::functionwhere(KviKvsObjectFunctionCall *c)
 {
 	if (!m_pFile->isOpen()) c->warning(__tr2qs("File is not open!"));
-	else c->returnValue()->setInteger((kvs_int_t)(m_pFile->at()));
+	else c->returnValue()->setInteger((kvs_int_t)(m_pFile->pos()));
 	return true;
 }
 bool KviKvsObject_file::functionseek(KviKvsObjectFunctionCall *c)
@@ -288,7 +288,7 @@ bool KviKvsObject_file::functionseek(KviKvsObjectFunctionCall *c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
 		c->warning(__tr("File is not open !"));
-	else m_pFile->at(uIndex);
+	else m_pFile->seek(uIndex);
 	return true;
 }
 
@@ -302,7 +302,8 @@ bool KviKvsObject_file::functionputch(KviKvsObjectFunctionCall *c)
 	{
 		if (szChar.length()>1)c->warning(__tr2qs("Argument to long, using only first char"));
 		const char *ch=szChar;
-		if (m_pFile->putch(ch[0])<0) c->warning(__tr2qs("Write error occured !"));
+
+		if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs("Write error occured !"));
 	}
 
 	return true;
@@ -314,9 +315,9 @@ bool KviKvsObject_file::functiongetch(KviKvsObjectFunctionCall *c)
 		c->warning(__tr("File is not open !"));
 	else
 	{
-		int chInt=m_pFile->getch();
-		if (chInt<0) 	c->warning(__tr("Read error occured !"));	// c->error ?
-		QString szChar = QChar(chInt);
+		char ch;
+		if (!m_pFile->getChar(&ch)) c->warning(__tr("Read error occured !"));	// c->error ?
+		QString szChar = QChar(ch);
 		c->returnValue()->setString(szChar);
 	}
 	return true;

@@ -204,7 +204,7 @@ KviFrame::~KviFrame()
 int KviFrame::registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot)
 {
 	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
-	debug ("Registing accel %s",szKeySequence.utf8().data());
+	debug ("Registing accel %s",szKeySequence.toUtf8().data());
 	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));
 	return sc->id();
 	//int id = m_pAccel->insertItem(szKeySequence);

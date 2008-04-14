@@ -1460,7 +1460,7 @@ void KviChannel::updateModeLabel()
 {
 	QString tmp = m_szChannelMode;
 	QString tip = __tr2qs("<b>Channel mode:</b>");
-	//const char * aux = m_szChannelMode.utf8().data(); leaks memory and will not work with getChannelModeDescription() (can channel modes be multibyte ?)
+	//const char * aux = m_szChannelMode.toUtf8().data(); leaks memory and will not work with getChannelModeDescription() (can channel modes be multibyte ?)
 	KviStr mod = m_szChannelMode;
 	const char * aux = mod.ptr();
 	while(*aux)
@@ -1472,8 +1472,8 @@ void KviChannel::updateModeLabel()
 	if(!m_szChannelKey.isEmpty())
 	{
 		if(!tmp.isEmpty())tmp.append(' ');
-		KviQString::appendFormatted(tmp,"k:%s",m_szChannelKey.utf8().data());
-		KviQString::appendFormatted(tip,__tr2qs("<br><b>Key:</b> %s"),m_szChannelKey.utf8().data());
+		KviQString::appendFormatted(tmp,"k:%s",m_szChannelKey.toUtf8().data());
+		KviQString::appendFormatted(tip,__tr2qs("<br><b>Key:</b> %s"),m_szChannelKey.toUtf8().data());
 	}
 
 	if(m_szChannelLimit.hasData())

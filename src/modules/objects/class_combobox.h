@@ -64,7 +64,7 @@ protected:
 	bool functiontextChangedEvent(KviKvsObjectFunctionCall *c);
 	bool functionactivatedEvent(KviKvsObjectFunctionCall *c);
 protected slots:
-	void slottextChanged(const QString &);
+	void editTextChanged(const QString &);
 	void slotActivated(int);
 };
 

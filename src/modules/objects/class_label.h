@@ -41,8 +41,6 @@ protected:
 	bool functionText(KviKvsObjectFunctionCall *c);
 	bool functionMargin(KviKvsObjectFunctionCall *c);
 	bool functionSetMargin(KviKvsObjectFunctionCall *c);
-	bool functionAutoResize(KviKvsObjectFunctionCall *c);
-	bool functionSetAutoResize(KviKvsObjectFunctionCall *c);
 	bool functionAlignment(KviKvsObjectFunctionCall *c);
 	bool functionSetAlignment(KviKvsObjectFunctionCall *c);
 	bool functionClear(KviKvsObjectFunctionCall *c);

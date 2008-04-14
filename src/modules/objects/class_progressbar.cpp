@@ -91,7 +91,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_progressbar)
 bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {	
 	Q3ProgressBar *pbar=new Q3ProgressBar(parentScriptWidget());
-	pbar->setObjectName(name());
+	pbar->setObjectName(getName());
 	setObject(pbar,true);
 	return true;
 }
