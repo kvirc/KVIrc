@@ -310,10 +310,25 @@ ENDIF()
 # CONFIGURE FILES
 ###############################################################################
 
-CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
+CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+
+FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h OLD_CONFIG_CONTENTS)
+FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new NEW_CONFIG_CONTENTS)
+STRING(COMPARE EQUAL "${OLD_CONFIG_CONTENTS}" "${NEW_CONFIG_CONTENTS}" CONFIG_IS_UPTODATE)
+IF(${CONFIG_IS_UPTODATE})
+	# we don't overwrite the kvi_sysconfig.h file to gain compilation time
+	FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+ELSE()
+	# let's overwrite the kvi_sysconfig.h file (config has changed)
+	# FIXME: this is tricky, better use ${CMAKE_COMMAND} -E
+	FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+	CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
+ENDIF()
+
+
 INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
 
-#CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${kvirc_BINARY_DIR}/kvirc-config @ONLY)
+CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${kvirc_BINARY_DIR}/kvirc-config @ONLY)
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/Doxyfile.cmake ${kvirc_BINARY_DIR}/Doxyfile @ONLY)
 
@@ -330,6 +345,9 @@ CONFIGURE_FILE(
 
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "Ok, this is the configuration I've worked out:")
+IF(${CONFIG_IS_UPTODATE})
+	MESSAGE(STATUS "(I found an old config that was exactly the same and kept it to save compilation time)")
+ENDIF()
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Threading           : ${CMAKE_STATUS_THREADS_SUPPORT}")
 MESSAGE(STATUS "  X11 support         : ${CMAKE_STATUS_X11_SUPPORT}")
