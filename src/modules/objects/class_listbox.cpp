@@ -106,6 +106,7 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertItem", functioninsertItem)
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"insertWidgetItem", functioninsertWidgetItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"changeItem", functionchangeItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"removeItem", functionremoveItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"clear", functionclear)
@@ -223,7 +224,11 @@ bool KviKvsObject_listbox::functioncount(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_listbox::functioncurrentText(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((QListWidget *)widget())->currentItem()->text().toLocal8Bit().data());
+	QString text;
+	QListWidgetItem *item=((QListWidget *)widget())->currentItem();
+	if (item) text=item->text();
+	else text="";
+	if (widget()) c->returnValue()->setString(text);
 	return true;
 }
 bool KviKvsObject_listbox::functioncurrentItem(KviKvsObjectFunctionCall *c)
@@ -289,18 +294,37 @@ bool KviKvsObject_listbox::functionselectionMode(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-/*
-bool KviKvsObject_listbox::functionisSelected(KviKvsObjectFunctionCall *c)
-{
 
-	kvs_uint_t iIndex;
+bool KviKvsObject_listbox::functioninsertWidgetItem(KviKvsObjectFunctionCall *c)
+{
+	KviKvsObject *pObject;
+	kvs_int_t iIndex;
+	kvs_hobject_t hWid;
+
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hWid)
+		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if(widget())c->returnValue()->setBoolean(((QListWidget *)widget())->isSelected(iIndex));
+
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hWid);
+	if(pObject==this) 
+	{
+		c->warning(__tr2qs("Can't insert the listbox itelf!"));
+		return true;
+	}
+
+	if(!pObject->object()->isWidgetType())
+	{
+		c->warning(__tr2qs("Can't insert a non-widget object"));
+		return true;
+	}
+
+	QWidget *wi=((QWidget *)(pObject->object()));
+	QListWidgetItem *item=((QListWidget *)widget())->item(iIndex);
+	((QListWidget *)widget())->setItemWidget(item,wi);
 	return true;
 }
-
+/*
 bool KviKvsObject_listbox::functionsetSelected(KviKvsObjectFunctionCall *c)
 {
 	bool bSel;

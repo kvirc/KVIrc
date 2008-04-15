@@ -54,8 +54,8 @@ protected:
 	bool functionclear(KviKvsObjectFunctionCall *c);
 	bool functionsetSelectionMode(KviKvsObjectFunctionCall *c);
 	bool functionselectionMode(KviKvsObjectFunctionCall *c);
-	/*bool functionsetSelected(KviKvsObjectFunctionCall *c);
-	bool functionisSelected(KviKvsObjectFunctionCall *c);
+	bool functioninsertWidgetItem(KviKvsObjectFunctionCall *c);
+	/*bool functionisSelected(KviKvsObjectFunctionCall *c);
 	*/
 	bool functioncurrentItemChangeEvent(KviKvsObjectFunctionCall *c);
 	bool functiononItemEvent(KviKvsObjectFunctionCall *c);
