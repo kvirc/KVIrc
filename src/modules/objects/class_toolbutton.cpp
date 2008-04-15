@@ -215,7 +215,7 @@ bool KviKvsObject_toolbutton::functionsetToggleButton(KviKvsObjectFunctionCall *
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setToggleButton(bEnabled);
+		((QToolButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
 bool KviKvsObject_toolbutton::functiontoggle(KviKvsObjectFunctionCall *c)
@@ -240,7 +240,7 @@ bool KviKvsObject_toolbutton::functionsetTextLabel(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_toolbutton::functiontextLabel(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setString(((QToolButton *)widget())->textLabel());
+		c->returnValue()->setString(((QToolButton *)widget())->text());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
@@ -267,13 +267,13 @@ bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
         return TRUE;
     }
 	if(widget())
-		((QToolButton *)widget())->setPopup(((KviTalPopupMenu  *)(ob->object())));
+		((QToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
 	return true;
 }
 bool KviKvsObject_toolbutton::functionopenPopup(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		((QToolButton *)widget())->openPopup();
+		((QToolButton *)widget())->showMenu();
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
@@ -300,9 +300,9 @@ bool KviKvsObject_toolbutton::functionsetTextPosition(KviKvsObjectFunctionCall *
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szPos,"BesideIcon"))
-			((QToolButton *)widget())->setTextPosition(QToolButton::BesideIcon);
+			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	else if(KviQString::equalCI(szPos,"BelowIcon"))
-			((QToolButton *)widget())->setTextPosition(QToolButton::BelowIcon);
+			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 	else c->warning(__tr2qs("Unknown text position '%Q'"),&szPos);
 	return true;
 }
@@ -310,7 +310,7 @@ bool KviKvsObject_toolbutton::functiontextPosition(KviKvsObjectFunctionCall *c)
 {
 	if(!widget()) return true;
 	QString szPos="BelowIcon";
-	if ((((QToolButton *)widget())->textPosition())==(QToolButton::BesideIcon))
+	if ((((QToolButton *)widget())->toolButtonStyle())==(QToolButton::BesideIcon))
 		szPos="BesideIcon";
 	c->returnValue()->setString(szPos);
 	return true;

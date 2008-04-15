@@ -44,8 +44,6 @@ protected:
 	bool functioncurrentPageIndex(KviKvsObjectFunctionCall *c);
 	bool functiontabLabel(KviKvsObjectFunctionCall *c);
 	bool functioncurrentTabLabel(KviKvsObjectFunctionCall *c);
-	bool functionsetMargin(KviKvsObjectFunctionCall *c);
-	bool functionmargin(KviKvsObjectFunctionCall *c);
 	bool functioncount(KviKvsObjectFunctionCall *c);
 	bool functionchangeTab(KviKvsObjectFunctionCall *c);
 	bool functionCurrentChangedEvent(KviKvsObjectFunctionCall *c);

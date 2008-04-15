@@ -68,10 +68,6 @@
 		Retunrs the label to the <index>.
 		!fn: <string> $currentTabLabel()
 		Returns the label of the current tab.
-		!fn: $setMargin(<margin:integer>)
-		Sets the margin in this tab widget to <margin>.
-		!fn: <integer> $margin()
-		Returns the margin in this tab widget.
 		!fn: $removePage(<tab_widget:object>)
 		Remove the page <tab_widget>. 
 		!fn: $setTabPosition(<tab_position:string>)
@@ -158,8 +154,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tabwidget,"tabwidget","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"label", functiontabLabel)
 	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"currentTabLabel", functioncurrentTabLabel)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"setMargin", functionsetMargin);
-	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"margin", functionmargin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"count", functioncount)
 	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"removePage", functionremovePage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_tabwidget,"setTabPosition", functionsetTabPosition)
@@ -226,12 +220,12 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;
 	QString szLabel,szIcon;
-	kvs_uint_t uIndex;
+	kvs_int_t iIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tab_widget",KVS_PT_HOBJECT,0,hObject)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
 	KVSO_PARAMETERS_END(c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
@@ -253,19 +247,19 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix){
-			((QTabWidget *)widget())->insertTab( ((QWidget *)(ob->object())),QIcon(*pix),szLabel,uIndex);
+			((QTabWidget *)widget())->insertTab( (iIndex,(QWidget *)(ob->object())),QIcon(*pix),szLabel);
 	}
-	else ((QTabWidget *)widget())->insertTab(((QWidget *)(ob->object())),szLabel,uIndex);	
+	else ((QTabWidget *)widget())->insertTab(iIndex,((QWidget *)(ob->object())),szLabel);	
 	return true;
 }
 
 bool KviKvsObject_tabwidget::functionsetCurrentPage(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t uIndex;
+	kvs_int_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QTabWidget *)widget())->setCurrentPage(uIndex);
+	if (widget()) ((QTabWidget *)widget())->setCurrentPage(iIndex);
     return true;
 }
 bool KviKvsObject_tabwidget::functionsetTabToolTip(KviKvsObjectFunctionCall *c)
@@ -300,7 +294,7 @@ bool KviKvsObject_tabwidget::functionsetTabToolTip(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't find the tab "));
 		return true;
 	}
-	((QTabWidget *)widget())->setTabToolTip(((QWidget *)(ob->object())),szTooltip);
+	((QTabWidget *)widget())->setTabToolTip(ctrl,szTooltip);
 	return true;
 }
 bool KviKvsObject_tabwidget::functionremoveTabToolTip(KviKvsObjectFunctionCall *c)
@@ -327,12 +321,13 @@ bool KviKvsObject_tabwidget::functionremoveTabToolTip(KviKvsObjectFunctionCall *
 		c->warning(__tr2qs("Not a widget object"));
 		return true;
 	}
-	if (((QTabWidget *)widget())->indexOf (((QWidget *)(ob->object()))) == -1) 
+	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(ob->object()))) ;
+	if (ctrl==-1)
 	{
 		c->warning(__tr2qs("Can't find the tab "));
 		return true;
 	}
-	((QTabWidget *)widget())->removeTabToolTip(((QWidget *)(ob->object())));
+	((QTabWidget *)widget())->setTabToolTip(ctrl,QString());
 	return true;
 }
 
@@ -368,12 +363,12 @@ bool KviKvsObject_tabwidget::functionsetTabLabel(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't find the tab "));
 		return true;
 	}
-	((QTabWidget *)widget())->setTabLabel(((QWidget *)(ob->object())),szLabel);
+	((QTabWidget *)widget())->setTabText(ctrl,szLabel);
 	return true;
 }
 bool KviKvsObject_tabwidget::functioncurrentPageIndex(KviKvsObjectFunctionCall *c)
 {
-	int index=((QTabWidget *)widget())->currentPageIndex();
+	int index=((QTabWidget *)widget())->currentIndex();
 	if (widget()) c->returnValue()->setInteger(index);
 	return true;
 }
@@ -384,25 +379,11 @@ bool KviKvsObject_tabwidget::functiontabLabel(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("index",KVS_PT_INT,0,uIndex)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
-	QString label=((QTabWidget *)widget())->label(uIndex);
+	QString label=((QTabWidget *)widget())->tabText(uIndex);
 	c->returnValue()->setString(label);
     return true;
 }
-bool KviKvsObject_tabwidget::functionsetMargin(KviKvsObjectFunctionCall *c)
-{
-	kvs_int_t iMargin;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_INT,0,iMargin)
-	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QTabWidget *)widget())->setMargin(iMargin);
-    return true;
-}
-bool KviKvsObject_tabwidget::functionmargin(KviKvsObjectFunctionCall *c)
-{
 
-	if (widget()) c->returnValue()->setInteger(((QTabWidget *)widget())->margin());
-	return true;
-}
 
 bool KviKvsObject_tabwidget::functioncount(KviKvsObjectFunctionCall *c)
 {
@@ -416,8 +397,8 @@ bool KviKvsObject_tabwidget::functioncurrentTabLabel(KviKvsObjectFunctionCall *c
 {
 	if (widget())
 	{
-			int i= ((QTabWidget *)widget())->currentPageIndex();
-			QString label=((QTabWidget *)widget())->label(i);
+			int i= ((QTabWidget *)widget())->currentIndex();
+			QString label=((QTabWidget *)widget())->tabText(i);
 			c->returnValue()->setString(label);
 	}
     return true;
@@ -452,7 +433,7 @@ bool KviKvsObject_tabwidget::functionremovePage(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Can't find the tab "));
 		return true;
 	}
-	((QTabWidget *)widget())->removePage(((QWidget *)(ob->object())));
+	((QTabWidget *)widget())->removeTab(ctrl);
 	return true;
 }
 
@@ -490,10 +471,8 @@ bool KviKvsObject_tabwidget::functionchangeTab(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix){
-			((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),QIcon(*pix),szLabel);
-	}
-	else ((QTabWidget *)widget())->changeTab(((QWidget *)(ob->object())),szLabel);	
+	if(pix)((QTabWidget *)widget())->setTabIcon(ctrl,QIcon(*pix));
+	((QTabWidget *)widget())->setTabText(ctrl,szLabel);
 	return true;
 }
 bool KviKvsObject_tabwidget::functionsetTabPosition(KviKvsObjectFunctionCall *c)
