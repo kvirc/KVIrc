@@ -107,12 +107,12 @@ bool KviKvsObject_toolbar::functionsetLabel(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalToolBar *)widget())->setLabel(szLabel);
+	if (widget()) ((KviTalToolBar *)widget())->setWindowTitle(szLabel);
 	return true;
 }
 bool KviKvsObject_toolbar::functionlabel(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setString(((KviTalToolBar *)widget())->label());
+	if (widget()) c->returnValue()->setString(((KviTalToolBar *)widget())->windowTitle());
 	return true;
 }
 //FIX ME
