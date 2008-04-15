@@ -311,18 +311,23 @@ ENDIF()
 # CONFIGURE FILES
 ###############################################################################
 
-CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
-
-FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h OLD_CONFIG_CONTENTS)
-FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new NEW_CONFIG_CONTENTS)
-STRING(COMPARE EQUAL "${OLD_CONFIG_CONTENTS}" "${NEW_CONFIG_CONTENTS}" CONFIG_IS_UPTODATE)
-IF(${CONFIG_IS_UPTODATE})
-	# we don't overwrite the kvi_sysconfig.h file to gain compilation time
-	FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+IF(EXISTS ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
+	# an old config exists; let's check if it's actual:
+	CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+	FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h OLD_CONFIG_CONTENTS)
+	FILE(READ ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new NEW_CONFIG_CONTENTS)
+	STRING(COMPARE EQUAL "${OLD_CONFIG_CONTENTS}" "${NEW_CONFIG_CONTENTS}" CONFIG_IS_UPTODATE)
+	IF(${CONFIG_IS_UPTODATE})
+		# we don't overwrite the kvi_sysconfig.h file to gain compilation time
+		FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+	ELSE()
+		# let's overwrite the kvi_sysconfig.h file (config has changed)
+		# FIXME: this is tricky, better use ${CMAKE_COMMAND} -E
+		FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+		CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
+	ENDIF()
 ELSE()
-	# let's overwrite the kvi_sysconfig.h file (config has changed)
-	# FIXME: this is tricky, better use ${CMAKE_COMMAND} -E
-	FILE(REMOVE ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
+	# no old config
 	CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
 ENDIF()
 
