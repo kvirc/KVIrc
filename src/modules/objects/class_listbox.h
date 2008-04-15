@@ -64,7 +64,7 @@ protected:
 	//bool functionitemRect(KviKvsObjectFunctionCall *c);
 protected slots:
 	void selectionChanged();
-	void currentItemChanged(QListWidgetItem *);
+	void currentItemChanged(QListWidgetItem *,QListWidgetItem *);
 	void onItem(QListWidgetItem *);
 };
 

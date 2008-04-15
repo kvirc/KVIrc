@@ -145,7 +145,7 @@ bool KviKvsObject_listbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	SET_OBJECT(QListWidget)
 	obj->setSelectionMode(QAbstractItemView::SingleSelection);
 	connect(obj,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(obj,SIGNAL(currentItemChanged(QListWidgetItem *)),this,SLOT(currentItemChanged(QListWidgetItem *)));
+	connect(obj,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentItemChanged(QListWidgetItem *,QListWidgetItem *)));
 //	connect(obj,SIGNAL(onItem(QListWidgetItem *)),this,SLOT(onItem(QListWidgetItem *)));
 	return true;
 }
@@ -362,12 +362,12 @@ void KviKvsObject_listbox::selectionChanged()
 	callFunction(this,"selectionChangeEvent",0,0);
 }
 
-void KviKvsObject_listbox::currentItemChanged(QListWidgetItem *item)
+void KviKvsObject_listbox::currentItemChanged(QListWidgetItem *currentItem,QListWidgetItem *previousItem)
 {
-	if (!item) callFunction(this,"currentItemChangeEvent",0,0);
+	if (!currentItem) callFunction(this,"currentItemChangeEvent",0,0);
 	else
 	{
-		KviKvsVariantList params(new KviKvsVariant(item->text()));
+		KviKvsVariantList params(new KviKvsVariant(currentItem->text()));
 		callFunction(this,"currentItemChangeEvent",0,&params);
 	}
 

@@ -1552,9 +1552,7 @@ bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_widget::function_sizeHint(KviKvsObjectFunctionCall *c)
 {
-	debug ("Kvs WIDGET size hint");
 	if(!widget())return true;
-	//QVariant pro=widget()->property("sizeHint");
 	QSize sizehint =widget()->sizeHint();
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)sizehint.width()));
