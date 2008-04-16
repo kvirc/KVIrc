@@ -30,6 +30,8 @@
 #include "kvi_tal_popupmenu.h"
 
 #include <QCursor>
+#include <QMenu>
+#include <QAction>
 
 
 
@@ -162,12 +164,11 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_popupmenu,"popupmenu","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"insertItem", functioninsertItem)
-	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"insertWidget", functioninsertWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"insertHandle", functioninsertHandle)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"insertWidget", functioninsertWidget)
+//	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"setTitle", functionsetTitle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"exec", functionexec)
 	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"insertSeparator", functioninsertSeparator)
 	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"removeItem", functionremoveItem)
-	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"removeItemAt", functionremoveItemAt)
 
 	// events
 	KVSO_REGISTER_HANDLER(KviKvsObject_popupmenu,"highlightedEvent", functionhighlightedEvent)
@@ -186,8 +187,9 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_popupmenu)
 
 bool KviKvsObject_popupmenu::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviTalPopupMenu(parentScriptWidget(), getName()), true);
-	connect(widget(),SIGNAL(activated(int)),this,SLOT(slotactivated(int)));
+	identifier=0;
+	SET_OBJECT(QMenu)
+	connect(widget(),SIGNAL(triggered(QAction *)),this,SLOT(slottriggered(QAction *)));
 	connect(widget(),SIGNAL(highlighted(int)),this,SLOT(slothighlighted(int)));
 	return true;
 }
@@ -202,18 +204,34 @@ bool KviKvsObject_popupmenu::functioninsertItem(KviKvsObjectFunctionCall *c)
 	if(!widget())return true;
 	QPixmap *pix = 0;
 	int id=0;
+	 QAction * action;
     if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
-        if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szItem);
+		if (pix) action=((QMenu *)widget())->addAction(*pix,szItem);
 		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
 
 	}
 	else
-		id=((KviTalPopupMenu *)widget())->insertItem(szItem);
-	c->returnValue()->setInteger(id);
+		action=((QMenu *)widget())->addAction(szItem);
+	actionsDict[identifier]=action;
+	c->returnValue()->setInteger(identifier);
+	identifier++;
 	return true;
 }
+/*
+bool KviKvsObject_popupmenu::functionsetTitle(KviKvsObjectFunctionCall *c)
+{
+	QString szTitle;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
+	KVSO_PARAMETERS_END(c)
+	if(!widget())return true;
+	((QMenu *)widget())->setTitle(szTitle);
+	
+	return true;
+}
+/*
 bool KviKvsObject_popupmenu::functioninsertWidget(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *pObject;
@@ -240,6 +258,8 @@ bool KviKvsObject_popupmenu::functioninsertWidget(KviKvsObjectFunctionCall *c)
 	if (widget()) ((KviTalPopupMenu *)widget())->insertItem(((KviTalPopupMenu  *)(pObject->object())));
 	return true;
 }
+
+
 bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;
@@ -271,11 +291,12 @@ bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
+*/
 bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 {
 	if(!c->params()->count())
 	{
-	 ((KviTalPopupMenu *)widget())->exec(QCursor::pos());
+		((QMenu *)widget())->exec(QCursor::pos());
 	 return true;
 	}
 
@@ -305,7 +326,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 
-	((KviTalPopupMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
+	((QMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
 
 	return true;
 }
@@ -315,26 +336,23 @@ bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item_id",KVS_PT_UNSIGNEDINTEGER,0,uItem)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((KviTalPopupMenu *)widget())->removeItem(uItem);
-	return true;
-}
-bool KviKvsObject_popupmenu::functionremoveItemAt(KviKvsObjectFunctionCall *c)
-{
-	kvs_uint_t uIndex;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
-	KVSO_PARAMETERS_END(c)
-	if(widget())((KviTalPopupMenu *)widget())->removeItemAt(uIndex);
+	QAction * action=actionsDict.value(uItem);
+	if(widget() && action){
+		((QMenu *)widget())->removeAction(action);
+		identifier--;
+	}
 	return true;
 }
 
+
 bool KviKvsObject_popupmenu::functioninsertSeparator(KviKvsObjectFunctionCall *c)
 {
-	kvs_uint_t uIndex;
+	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if(widget())((KviTalPopupMenu *)widget())->insertSeparator(uIndex);
+	QAction * action=actionsDict.value(iIndex);
+	if(widget()&& action)((QMenu *)widget())->insertSeparator(action);
 	return true;
 }
 
@@ -348,9 +366,18 @@ bool KviKvsObject_popupmenu::functionhighlightedEvent(KviKvsObjectFunctionCall *
 	emitSignal("highlighted",c,c->params());
 	return true;
 }
-void KviKvsObject_popupmenu::slotactivated(int i)
+void KviKvsObject_popupmenu::slottriggered(QAction *a)
 {
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
+	QHashIterator<int, QAction *> i(actionsDict);
+	kvs_int_t count=0;
+	bool found=false;
+	while (i.hasNext()) 
+	{
+	     i.next();
+		 if (i.value()!= a) count++;
+		 else break;
+	}
+	KviKvsVariantList params(new KviKvsVariant(count));
 	callFunction(this,"activatedEvent",&params);
 }
 bool KviKvsObject_popupmenu::functionactivatedEvent(KviKvsObjectFunctionCall *c)

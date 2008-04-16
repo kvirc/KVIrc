@@ -26,7 +26,7 @@
 
 #include "class_widget.h"
 #include "object_macros.h"
-
+#include <QHash>
 class KviKvsObject_popupmenu : public KviKvsObject_widget
 {
 	Q_OBJECT
@@ -37,9 +37,12 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
+	QHash<int,QAction *> actionsDict;
+	int identifier;
 	bool functioninsertItem(KviKvsObjectFunctionCall *c);
-	bool functioninsertWidget(KviKvsObjectFunctionCall *c);
-	bool functioninsertHandle(KviKvsObjectFunctionCall *c);
+	//bool functionsetTitle(KviKvsObjectFunctionCall *c);
+	//bool functioninsertWidget(KviKvsObjectFunctionCall *c);
+	//bool functioninsertHandle(KviKvsObjectFunctionCall *c);
 	bool functionexec(KviKvsObjectFunctionCall *c);
 	bool functionremoveItem(KviKvsObjectFunctionCall *c);
 	bool functionremoveItemAt(KviKvsObjectFunctionCall *c);
@@ -48,7 +51,7 @@ protected:
 	bool functionhighlightedEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
-	void slotactivated(int);
+	void slottriggered(QAction *);
 	void slothighlighted(int);
 };
 

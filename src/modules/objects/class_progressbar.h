@@ -41,8 +41,6 @@ protected:
 	bool functionSetTotalSteps(KviKvsObjectFunctionCall *c);
 	bool functionReset(KviKvsObjectFunctionCall *c);
 	bool functionSetPercentageVisible(KviKvsObjectFunctionCall *c);
-	bool functionSetCenterIndicator(KviKvsObjectFunctionCall *c);
-	bool functionCenterIndicator(KviKvsObjectFunctionCall *c);
 	bool functionPercentageVisible(KviKvsObjectFunctionCall *c);
 };
 
