@@ -1141,7 +1141,8 @@ void KviFrame::toolbarsPopupSelected(int id)
 	if(!o)return;
 	if(!o->inherits("KviTalPopupMenu"))return;
 	const KviTalPopupMenu * p = (const KviTalPopupMenu *)o;
-	int idext = p->itemParameter(id);
+	//((KviTalPopupMenu *)o)
+	int idext = ((KviTalPopupMenu *)o)->itemParameter(id);
 
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);
 	if(dd)
