@@ -112,7 +112,7 @@ KviAboutDialog::KviAboutDialog()
 
 	// Get info
 	QString infoString = "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
-	#ifndef COMPILE_ON_WINDOWS
+#ifndef COMPILE_ON_WINDOWS
 	infoString += __tr2qs_ctx("System Name","about");
 	infoString += ": " KVI_BUILD_SYSTEM "<br>";
 	infoString += __tr2qs_ctx("CPU Name","about");
