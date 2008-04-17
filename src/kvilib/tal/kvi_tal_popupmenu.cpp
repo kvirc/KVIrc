@@ -127,7 +127,7 @@ void KviTalPopupMenu::setItemParameter(int id, int param)
 {
 	QAction * action=actionsDict.value(id);
 	QVariant par(param);
-	action->setData(par);
+	if (action) action->setData(par);
 }
 int KviTalPopupMenu::itemParameter(int id)
 {
