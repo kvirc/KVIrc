@@ -38,8 +38,11 @@
 #include "kvi_iconmanager.h"
 #include "kvi_kvs_kernel.h"
 #include <kvi_tal_groupbox.h>
-#include "kvi_tal_popupmenu.h"
 #include "kvi_tal_scrollview.h"
+
+//FIXME
+#include <Q3TextEdit>
+#include <Q3PopupMenu>
 
 #include <QLayout>
 #include <QToolButton>
@@ -50,6 +53,7 @@
 #include <QRect>
 #include <QEvent>
 #include <QKeyEvent>
+
 
 extern KviPointerList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
 extern KviModule * g_pEditorModulePointer;

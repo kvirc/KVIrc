@@ -2008,6 +2008,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration

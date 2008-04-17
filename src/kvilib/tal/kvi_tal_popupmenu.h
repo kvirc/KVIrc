@@ -24,64 +24,42 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <q3popupmenu.h>
-#include <qwidgetaction.h>
+#include <QMenu>
+#include <QHash>
 
-class KVILIB_API KviTalPopupMenu : public Q3PopupMenu
+
+class KVILIB_API KviTalPopupMenu : public QMenu
 {
 	Q_OBJECT
+protected:
+	QHash<int,QAction *> actionsDict;
+	int identifier;
 public:
-	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::empty)
-	: Q3PopupMenu(pParent)
-	{
-		setName(szName);
-	};
-	virtual ~KviTalPopupMenu() {};
-
-	int insertItem(const QString &szText)
-	{
-		return Q3PopupMenu::insertItem(szText);
-	}
-	int insertItem(const QPixmap &pix,const QString &szText)
-	{
-		return Q3PopupMenu::insertItem(QIcon(pix),szText,-1,-1);
-	}
-	int insertItem(const QString &szText,int id)
-	{
-		return Q3PopupMenu::insertItem(szText,id);
-	}
-	int insertItem(const QPixmap &pix,const QString &szText,int id)
-	{
-		return Q3PopupMenu::insertItem(QIcon(pix),szText,id,-1);
-	}
-	int insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot)
-	{
-		return Q3PopupMenu::insertItem(szText,pReceiver,szSlot);
-	}
-	int insertItem(const QPixmap &pix,const QString &szText,const QObject * pReceiver,const char * szSlot)
-	{
-		return Q3PopupMenu::insertItem(QIcon(pix),szText,pReceiver,szSlot);
-	}
-	int insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
-	{
-		return Q3PopupMenu::insertItem(QIcon(pix),szText,pMenu,-1,-1);
-	}
-	int insertItem(const QString &szText,QMenu *pMenu)
-	{
-		return Q3PopupMenu::insertItem(szText,pMenu,-1,-1);
-	}
-	int insertItem(QWidget * pWidget)
-	{
-		// needs Qt 4.2
-		QWidgetAction * pAct = new QWidgetAction(this);
-		pAct->setDefaultWidget(pWidget);
-		addAction(pAct);
-		return 0;
-	}
+	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::empty);
+	virtual ~KviTalPopupMenu() ;
+	int insertItem(const QString &szText);
+	int insertItem(const QPixmap &pix,const QString &szText);
+	int insertItem(const QString &szText,int id);
+	int insertItem(const QPixmap &pix,const QString &szText,int id);
+	int insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot);
+	int insertItem(const QPixmap &pix,const QString &szText,const QObject * pReceiver,const char * szSlot);
+	int insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu);
+	int insertItem(const QString &szText,QMenu *pMenu);
+	int insertItem(QWidget * pWidget);
+	void setItemChecked(int id,bool check);
+	void setItemEnabled(int id,bool bFlag);
+	void setItemParameter(int id, int param);
+	int itemParameter(int id);
+	void clear();
+	QString text(int);
+	int insertSeparator();
+protected slots:
+	void  slottriggered(QAction *);
+signals:
+	void activated(int);
+	
 };
-
 #endif // _KVI_TAL_POPUPMENU_H_
