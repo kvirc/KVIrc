@@ -176,7 +176,9 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_bUpdateGuiPending     = false;
 	m_pPendingAvatarChanges = 0;
 	m_pRecentChannelsDict   = 0;
+#ifndef COMPILE_NO_IPC
 	m_pIpcSentinel          = 0;
+#endif
 	m_iHeartbeatTimerId     = -1;
 	// next step is setup()
 	m_bSetupDone = false;
