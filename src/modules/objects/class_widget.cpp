@@ -1778,7 +1778,7 @@ bool KviKvsObject_widget::function_setWindowIcon(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)widget()->setWindowIcon(*pix);
+	if(pix)widget()->setWindowIcon((QIcon)*pix);
 	return true;
 }
 
