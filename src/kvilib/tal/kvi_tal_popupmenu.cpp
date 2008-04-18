@@ -34,14 +34,14 @@ KviTalPopupMenu::KviTalPopupMenu(QWidget * pParent,const QString &szName)
 : QMenu(pParent)
 {
 	connect(this,SIGNAL(triggered(QAction *)),this,SLOT(slottriggered(QAction *)));
-	setName(szName);
+	setObjectName(szName);
 	identifier=0;
 }
-KviTalPopupMenu::~KviTalPopupMenu() 
+KviTalPopupMenu::~KviTalPopupMenu()
 {
 }
-	
-	
+
+
 int KviTalPopupMenu::insertItem(const QString &szText)
 {
 	QAction *a=addAction(szText);
@@ -58,7 +58,7 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText)
 int KviTalPopupMenu::insertItem(const QString &szText,int id)
 {
 	//return QMenu::insertItem(szText,id);
-	
+
 	QAction *a=addAction(szText);
 	addAction(a);
 	actionsDict[id]=a;
@@ -88,17 +88,17 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const Q
 	actionsDict[identifier++]=a;
 	return identifier-1;
 }
-	
+
 int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
 {
-	
+
 	QAction *a=addMenu(pMenu);
 	a->setText(szText);
 	a->setIcon(QIcon(pix));
 	actionsDict[identifier++]=a;
 	return identifier-1;
 }
-	
+
 int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 {
 	//return QMenu::insertItem(szText,pMenu,-1,-1);
@@ -107,7 +107,7 @@ int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 	actionsDict[identifier++]=a;
 	return identifier-1;
 }
-	
+
 
 int KviTalPopupMenu::insertItem(QWidget * pWidget)
 {
@@ -163,7 +163,7 @@ void KviTalPopupMenu::slottriggered(QAction *a)
 	QHashIterator<int, QAction *> i(actionsDict);
 	int count=0;
 	bool found=false;
-	while (i.hasNext()) 
+	while (i.hasNext())
 	{
 	     i.next();
 		 if (i.value()!= a) count++;
