@@ -1788,6 +1788,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1804,6 +1806,15 @@
 			<File
 				RelativePath=".\tal\kvi_tal_groupbox.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -1823,6 +1834,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1845,6 +1858,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1867,6 +1882,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1889,6 +1906,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1911,6 +1930,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -1925,6 +1946,15 @@
 			<File
 				RelativePath=".\tal\kvi_tal_mainwindow_qt.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -2008,7 +2038,7 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -2032,6 +2062,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2054,6 +2086,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2076,6 +2110,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2134,6 +2170,15 @@
 			<File
 				RelativePath=".\tal\kvi_tal_toolbar_qt.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -2199,6 +2244,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2221,6 +2268,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
@@ -2263,6 +2312,8 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration
