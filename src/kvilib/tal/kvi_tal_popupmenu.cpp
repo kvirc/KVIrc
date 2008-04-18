@@ -91,7 +91,7 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const Q
 	
 int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
 {
-	//return QMenu::insertItem(QIcon(pix),szText,pMenu,-1,-1);
+	
 	QAction *a=addMenu(pMenu);
 	a->setText(szText);
 	a->setIcon(QIcon(pix));
