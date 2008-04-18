@@ -381,6 +381,7 @@ SUBDIRS(src data po scripts doc)
 
 FIND_PACKAGE(Doxygen)
 IF(DOXYGEN_FOUND)
+	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "yes")
 	ADD_CUSTOM_TARGET(
 		devdocs
 		@echo Generating api documentation
@@ -393,6 +394,8 @@ IF(DOXYGEN_FOUND)
 		COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/Doxyfile
 		TARGET docs
 	)
+ELSE()
+	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
 ENDIF()
 
 ###############################################################################
@@ -503,6 +506,7 @@ MESSAGE(STATUS "  Dynamic labels support : ${CMAKE_STATUS_DYN_LABELS_SUPPORT}")
 MESSAGE(STATUS "  ix86 asm support       : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory profile support : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 MESSAGE(STATUS "  Memory checks support  : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
+MESSAGE(STATUS "  Doxygen support        : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Build date             : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")
