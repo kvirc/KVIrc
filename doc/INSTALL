@@ -1,4 +1,4 @@
-Szymon Stefanek                                                 Mon Mar 04 2008
+Szymon Stefanek                                                 Fri Apr 18 2008
 ###############################################################################
 General notes for the installation of the 4.0 release of KVIrc
 ###############################################################################
@@ -45,6 +45,7 @@ General notes for the installation of the 4.0 release of KVIrc
     In order to compile KVIrc 4.0 you need at least these softwares:
     - Qt GUI Toolkit 4.3.4 - http://www.trolltech.com
     - CMake 2.4.6 - http://www.cmake.org
+    - C++ compiler, such as g++ - http://gcc.gnu.org/
 
 ###############################################################################
 # 3. Configuring the environment
@@ -66,25 +67,31 @@ General notes for the installation of the 4.0 release of KVIrc
 
     The CMake rules support some flags. If you don't specify them, CMake will
     try to make a good environment for you :)
+    To use these flags, you have to pass a bool value or a string.
+    For example, to install in /usr instead of /usr/local and enable Phonon
+    support, the command would be:
+
+    # cmake -DINSTALL_PREFIX=/usr -DCOMPILE_PHONON_SUPPORT=1 ..
+
     Here's a list with explainations:
 
     -DINSTALL_PREFIX=/path
         It will install all stuff under /path directory
 
-    -DUSE_PCH=1
+    -DUSE_PCH
         Use pre-compiled headers
 
-    -DCOMPILE_X11_SUPPORT=1
+    -DCOMPILE_X11_SUPPORT
         Compile x11 support on UNIX machines
 
-    -DCOMPILE_PHONON_SUPPORT=1
+    -DCOMPILE_PHONON_SUPPORT
         Compile the new Phonon audio support
 
-    -DCOMPILE_KDE_SUPPORT=1
+    -DCOMPILE_KDE_SUPPORT
         Compile KDE support. It will look for the KDE headers and libraries
         and if found it will enable the KDE support.
 
-    -DCOMPILE_SSL_SUPPORT=1
+    -DCOMPILE_SSL_SUPPORT
         Enables the secure socket layer support. The SSL support is
         automatically enabled if OpenSSL is detected by CMake. It will also
         enable crypt support
@@ -147,17 +154,6 @@ General notes for the installation of the 4.0 release of KVIrc
         Explicitly disable the DCC VOICE sound support. This might help
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus make DCC VOICE not usable).
-
-    -DWITHOUT_X
-        Disables completely the X Windows support.
-        This is useful in environments where X is not needed to compile KVIrc
-        such as Qt-Mac on MacOSX, QtEmbedded or Windows.
-        This switch implies also -DWITHOUT_X_BELL
-
-    -DWITHOUT_X_BELL
-        Disables the usage of the XBell function (needed if you want to
-        compile KVIrc with qt-embedded (no X at all))
-        This is implied by -DWITHOUT_X
 
     -DWITHOUT_DYN_LABELS
         You should not need this option.
@@ -580,31 +576,12 @@ COMPILE_XSS_SUPPORT
             tring to build a performance critical executable and you're
             short both in memory and CPU time :)
 
-        --with-big-channels
-            Minor hash table optimisations: higher memory usage but
-            faster user lookups. Use it if you often stay in channels with
-            a lot of users. (this is not critical anyway)
-
         --enable-profiling
             Asks the compiler/linker to include profiling informations in the
             executable. This is useful only if you want to profile KVIrc by
             using the gprof program. Note that this will generate a bigger
             and slower executable.
 
-        So finally you have to run
-
-        # ./configure <your options>
-
-        For example , my common options are:
-
-        # ./configure --enable-pipes --enable-debug
-
-        On FreeBSD I have found useful this command line:
-
-        # ./configure --with-qt-name=qt2 --with-qt-moc=/<PATH_HERE>/moc2 \
-                         --with-freebsd-pthread
-
-        Once the configure script ran succesfully you can go to the next step.
 
     ###
     ### Step 3 : Compiling (mandatory)
