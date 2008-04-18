@@ -141,7 +141,7 @@ KviTipWindow::KviTipWindow()
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)));
 
-	setCaption(__tr2qs("Did you know..."));
+	setWindowTitle(__tr2qs("Did you know..."));
 
 	pb->setFocus();
 

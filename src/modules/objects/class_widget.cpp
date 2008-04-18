@@ -231,13 +231,13 @@ const Qt::WindowType widgettypes_cod[] = {
 		!fn: $setEnabled(<bool>)
 		Sets the widget state to enabled or disabled if <bool> is 1 or 0 respectively.
 		A disabled widget does not receive keyboard nor mouse input.
-		!fn: $setCaption(<text>)
-		Sets the caption of this widget to <text>.
+		!fn: $setWindowTitle(<text>)
+		Sets the title of this widget to <text>.
 		This is meaningful for toplevel widgets only.
 		!fn: $setToolTip(<tooltip_text>)
 		Set the tooltip of this widget; the text can contain HTML formatting.
-		!fn: $window.caption()
-		Returns the caption text of this widget.
+		!fn: $windowTitle()
+		Returns the title text of this widget.
 		!fn: $isTopLevel()
 		Returns '1' if this widget is a toplevel (parentless) one,
 		'0' otherwise.
@@ -379,7 +379,7 @@ const Qt::WindowType widgettypes_cod[] = {
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event.
 		The default implementation does nothing.
-		!fn: $setIcon(<image_id>)
+		!fn: $setWindowIcon(<image_id>)
 		Sets the icon for this widget. This is meaningful only for toplevel widgets.
 		See the [doc:image_id]image identifier[/doc] documentation for the explaination
 		of the <image_id> parameter.
@@ -515,7 +515,7 @@ const Qt::WindowType widgettypes_cod[] = {
 			%Widget = $new(widget)
 			# This is the main container for other elements.
 
-			%Widget->$setCaption("This is the widget title")
+			%Widget->$setWindowTitle("This is the widget title")
 
 			%Widget->$setGeometry(100,200,170,290)
 			# 100 and 200 are distance (pixel) from the left and the top of father widget (in this case the KVIrc window)
@@ -620,13 +620,15 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setEnabled",function_setEnabled)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isEnabled",function_isEnabled)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMouseTracking",function_setMouseTracking)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setCaption",function_setCaption)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"caption",function_caption)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setCaption",function_setWindowTitle)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWindowTitle",function_setWindowTitle)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"windowTitle",function_windowTitle)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"caption",function_windowTitle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"hasFocus",function_hasFocus)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setFocus",function_setFocus)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setToolTip",function_setToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWFlags",function_setWFlags)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setIcon",function_setIcon)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setIcon",function_setWindowIcon)
 	// fonts
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontDescent",function_fontDescent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontAscent",function_fontAscent)
@@ -1028,7 +1030,6 @@ bool KviKvsObject_widget::function_fontMetricsWidth(KviKvsObjectFunctionCall * c
 		KVSO_PARAMETER("string",KVS_PT_STRING,0,m_szStr)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-//	int fm = widget()->fontMetrics().width(m_szStr);
 	c->returnValue()->setInteger(widget()->fontMetrics().width(m_szStr));
 	return true;
 }
@@ -1209,7 +1210,9 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			return false;
 		}
 
-	} else {
+	} 
+	else 
+	{
 			if (c->params()->count()==1)
 			{
 				bool bOk,bOk1,bOk2;
@@ -1232,8 +1235,13 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 					c->warning(__tr2qs("Not an hex digits"));
 				return true;
 				}
-			if (widget()) widget()->setPaletteForegroundColor(QColor(iColR,iColG,iColB));
-			return true;
+				if (widget())
+				{
+					QPalette p = widget()->palette(); 
+					p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
+					widget()->setPalette(p); 
+					return true;
+				}
 			}
 
 		if(c->params()->count() < 3)
@@ -1248,7 +1256,13 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			return false;
 		}
 	}
-	if (widget()) widget()->setPaletteForegroundColor(QColor(iColR,iColG,iColB));
+
+	if (widget())
+	{
+		QPalette p = widget()->palette(); 
+		p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
+		widget()->setPalette(p); 
+	}
 	return true;
 }
 
@@ -1309,7 +1323,12 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 					c->warning(__tr2qs("Not an hex digits"));
 				return true;
 				}
-			if (widget()) widget()->setBackgroundColor(QColor(iColR,iColG,iColB));
+				if (widget())
+				{
+					QPalette p = widget()->palette(); 
+					p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
+					widget()->setPalette(p); 
+				}
 			return true;
 			}
 
@@ -1325,14 +1344,19 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			return false;
 		}
 	}
-	if (widget()) widget()->setBackgroundColor(QColor(iColR,iColG,iColB));
+	if (widget())
+	{
+		QPalette p = widget()->palette(); 
+		p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
+		widget()->setPalette(p); 
+	}
 	return true;
 }
 
 bool KviKvsObject_widget::function_backgroundColor(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true;
-	QColor col = widget()->backgroundColor();
+	QColor col = widget()->palette().color(widget()->backgroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)col.red()));
 	a->set(1,new KviKvsVariant((kvs_int_t)col.green()));
@@ -1344,7 +1368,7 @@ bool KviKvsObject_widget::function_backgroundColor(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_widget::function_foregroundColor(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true;
-	QColor col = widget()->foregroundColor();
+	QColor col = widget()->palette().color(widget()->foregroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)col.red()));
 	a->set(1,new KviKvsVariant((kvs_int_t)col.green()));
@@ -1372,19 +1396,19 @@ bool KviKvsObject_widget::function_setMouseTracking(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_setCaption(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_setWindowTitle(KviKvsObjectFunctionCall *c)
 {
-	QString szCaption;
+	QString szWindowTitle;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
+		KVSO_PARAMETER("title",KVS_PT_STRING,0,szWindowTitle)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) widget()->setCaption(szCaption);
+	if(widget()) widget()->setWindowTitle(szWindowTitle);
 	return true;
 }
 
-bool KviKvsObject_widget::function_caption(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_windowTitle(KviKvsObjectFunctionCall *c)
 {
-	if(widget()) c->returnValue()->setString(widget()->caption().toUtf8().data());
+	if(widget()) c->returnValue()->setString(widget()->windowTitle().toUtf8().data());
 	return true;
 }
 
@@ -1632,7 +1656,6 @@ bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 {
 	QStringList wflags;
-	//Qt::WindowType sum;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget_flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,wflags)
 	KVSO_PARAMETERS_END(c)
@@ -1719,9 +1742,10 @@ bool KviKvsObject_widget::function_addWidgetToWrappedLayout(KviKvsObjectFunction
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	lay->add(((QWidget *)(ob->object())));
+	lay->addWidget(((QWidget *)(ob->object())));
 	return true;
 }
+//FIXME
 bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *ob;
@@ -1745,7 +1769,7 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
 	return true;
 }
-bool KviKvsObject_widget::function_setIcon(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_setWindowIcon(KviKvsObjectFunctionCall *c)
 {
 
 	QString icon;
@@ -1754,7 +1778,7 @@ bool KviKvsObject_widget::function_setIcon(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)widget()->setIcon(*pix);
+	if(pix)widget()->setWindowIcon(*pix);
 	return true;
 }
 

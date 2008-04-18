@@ -91,7 +91,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	
 	QGridLayout * g = new QGridLayout(this,4,4,10,4);
 
-	setCaption(__tr2qs_ctx("Network Details","options"));
+	setWindowTitle(__tr2qs_ctx("Network Details","options"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)));
 
 	QString szTmp = "<font size=\"+1\"><b>";
@@ -418,7 +418,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_szHostname = s->hostName();
 	QGridLayout * g = new QGridLayout(this,4,4,10,4);
 
-	setCaption(__tr2qs_ctx("Server Details","options"));
+	setWindowTitle(__tr2qs_ctx("Server Details","options"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
 
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later

@@ -36,7 +36,7 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-    bool functionsetCaption(KviKvsObjectFunctionCall *c);
+    bool functionsetWindowTitle(KviKvsObjectFunctionCall *c);
 	bool functionsetCentralWidget(KviKvsObjectFunctionCall *c);
 
 };
@@ -53,7 +53,7 @@ protected:
 	QWidget * m_pCentralWidget;
 public:
 	void setCentralWidget(KviKvsObject_widget *o,QWidget * w);
-	void setCaptionString(const QString &s){ setFixedCaption(s); };
+	void setWindowTitleString(const QString &s){ setFixedCaption(s); };
 	virtual void resizeEvent(QResizeEvent *e);
 protected slots:
 	void centralWidgetObjectDestroyed();

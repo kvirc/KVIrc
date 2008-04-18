@@ -209,7 +209,7 @@ KviSetupWizard::KviSetupWizard()
 
 	setHelpEnabled(m_pLicense,false);
 
-	setCaption(__tr2qs("KVIrc Setup"));
+	setWindowTitle(__tr2qs("KVIrc Setup"));
 #else
 	m_pLicense = 0;
 #endif

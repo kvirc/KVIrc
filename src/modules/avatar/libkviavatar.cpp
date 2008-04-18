@@ -63,7 +63,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 
 	m_pConnection = c;
 
-	setCaption(__tr2qs("Choose Avatar - KVIrc"));
+	setWindowTitle(__tr2qs("Choose Avatar - KVIrc"));
 
 	QGridLayout * g = new QGridLayout(this,3,3,4,8);
 	

@@ -96,7 +96,7 @@ void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_window,"window","widget")
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setCaption", functionsetCaption)
+	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setWindowTitle", functionsetWindowTitle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setCentralWidget", functionsetCentralWidget)
 //	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setIcon", functionsetIcon)
 KVSO_END_REGISTERCLASS(KviKvsObject_window)
@@ -119,14 +119,14 @@ bool KviKvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 
 	return true;
 }
-bool KviKvsObject_window::functionsetCaption(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_window::functionsetWindowTitle(KviKvsObjectFunctionCall *c)
 {
 	QString szCaption;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((KviKvsScriptWindowWindow *)widget())->setCaptionString(szCaption);
+		((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
 	return true;
 }
 bool KviKvsObject_window::functionsetCentralWidget(KviKvsObjectFunctionCall *c)

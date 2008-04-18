@@ -339,7 +339,7 @@ UrlDialog::~UrlDialog()
 ConfigDialog::ConfigDialog()
 :QDialog()
 {
-	setCaption(__tr2qs("URL Module Configuration"));
+	setWindowTitle(__tr2qs("URL Module Configuration"));
 
 	QGridLayout *g = new QGridLayout(this,4,2,10,10);
 

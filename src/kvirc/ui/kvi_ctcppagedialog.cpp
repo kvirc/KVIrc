@@ -61,7 +61,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	setMaximumSize(780,580);
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CTCPREQUESTREPLIED)));
 
-	setCaption(__tr2qs("CTCP Page - KVIrc"));
+	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
 }
 
 KviCtcpPageDialog::~KviCtcpPageDialog()

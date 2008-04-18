@@ -62,7 +62,7 @@
 KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
-	setCaption(__tr2qs_ctx("Save Current Theme - KVIrc","theme"));
+	setWindowTitle(__tr2qs_ctx("Save Current Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
 
 	// welcome page ==================================================================================

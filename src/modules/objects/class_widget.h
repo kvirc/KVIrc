@@ -52,7 +52,7 @@ protected:
 
 	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
 	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
-	bool function_caption(KviKvsObjectFunctionCall *c);
+	bool function_windowTitle(KviKvsObjectFunctionCall *c);
 	bool function_centerToScreen(KviKvsObjectFunctionCall *c);
 	bool function_fontAscent(KviKvsObjectFunctionCall * c);
 	bool function_fontDescent(KviKvsObjectFunctionCall * c);
@@ -82,12 +82,12 @@ protected:
 	bool function_screenResolution(KviKvsObjectFunctionCall * c);
 	bool function_setBackgroundColor(KviKvsObjectFunctionCall *c);
 	bool function_setBackgroundImage(KviKvsObjectFunctionCall *c);
-	bool function_setCaption(KviKvsObjectFunctionCall *c);
+	bool function_setWindowTitle(KviKvsObjectFunctionCall *c);
 	bool function_setEnabled(KviKvsObjectFunctionCall *c);
 	bool function_setFocus(KviKvsObjectFunctionCall *c);
 	bool function_setFocusPolicy(KviKvsObjectFunctionCall *c);
 	bool function_setFont(KviKvsObjectFunctionCall *c);
-	bool function_setIcon(KviKvsObjectFunctionCall *c);
+	bool function_setWindowIcon(KviKvsObjectFunctionCall *c);
 	bool function_setMaximumWidth(KviKvsObjectFunctionCall *c);
 	bool function_setMaximumHeight(KviKvsObjectFunctionCall *c);
 	bool function_setMinimumWidth(KviKvsObjectFunctionCall *c);

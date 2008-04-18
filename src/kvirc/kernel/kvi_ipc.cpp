@@ -185,7 +185,7 @@
 	: QWidget(0,"kvirc4_ipc_sentinel")
 	{
 #ifdef COMPILE_ON_WINDOWS
-		setCaption("kvirc4_ipc_sentinel");
+		setWindowTitle("kvirc4_ipc_sentinel");
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_X11_SUPPORT
 		kvi_ipcLoadAtoms();

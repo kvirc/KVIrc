@@ -53,7 +53,7 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 {
 	QGridLayout * g = new QGridLayout(this,5,3,4,12);
 
-	setCaption(__tr2qs_ctx("Nickname alternatives","options"));
+	setWindowTitle(__tr2qs_ctx("Nickname alternatives","options"));
 
 	QLabel * l = new QLabel(this);
 	l->setText(__tr2qs_ctx("<center>Here you can choose up to three nicknames " \
@@ -114,7 +114,7 @@ void KviNickAlternativesDialog::fill(QString &n1,QString &n2,QString &n3)
 KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &szUrl)
 : QDialog(par)
 {
-	setCaption(__tr2qs_ctx("Avatar Download - KVIrc","options"));
+	setWindowTitle(__tr2qs_ctx("Avatar Download - KVIrc","options"));
 
 	m_szUrl = szUrl;
 
@@ -197,7 +197,7 @@ void KviAvatarDownloadDialog::downloadTerminated(bool bSuccess)
 KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &szInitialPath)
 : QDialog(par)
 {
-	setCaption(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
+	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
 	QGridLayout * g = new QGridLayout(this,3,3,4,8);
 	

@@ -938,11 +938,11 @@ void KviFrame::updateCaption()
 			QString tmp = g_pActiveWindow->plainTextCaption();
 			tmp += QChar(' ');
 			tmp += KVI_DEFAULT_FRAME_CAPTION;
-			setCaption(tmp);
+			setWindowTitle(tmp);
 			return;
 		}
 	}
-	setCaption(KVI_DEFAULT_FRAME_CAPTION);
+	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 }
 
 

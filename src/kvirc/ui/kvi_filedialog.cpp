@@ -82,7 +82,7 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 	}
 #endif
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"open_file_name_dialog",true);
-	d->setCaption(caption);
+	d->setWindowTitle(caption);
 	// i was ignorant
 	d->setFileMode(KviTalFileDialog::Directory);
 	//d->setShowHiddenFiles(showHidden);
@@ -128,7 +128,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
-	d->setCaption(caption);
+	d->setWindowTitle(caption);
 	// 190
 	d->setFileMode(KviTalFileDialog::AnyFile);
 	//d->setShowHiddenFiles(showHidden);
@@ -188,7 +188,7 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 
 	KviFileDialog * d = new KviFileDialog(initial,
 		filter,parent,"directory_name_dialog",true);
-	d->setCaption(caption);
+	d->setWindowTitle(caption);
 	// Move to tal and settle matters there?
 	d->setFileMode(KviTalFileDialog::Directory);
 	//d->setShowHiddenFiles(showHidden);
@@ -216,7 +216,7 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 
 	#endif
 	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
-	d->setCaption(caption);
+	d->setWindowTitle(caption);
 	// See line 190
 	d->setFileMode(KviTalFileDialog::ExistingFiles);
 	//d->setShowHiddenFiles(showHidden);

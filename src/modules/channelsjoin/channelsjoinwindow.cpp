@@ -58,7 +58,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 : QDialog(par,name)
 {
 	m_pConsole=0;
-	setCaption(__tr2qs("Join Channels"));
+	setWindowTitle(__tr2qs("Join Channels"));
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 

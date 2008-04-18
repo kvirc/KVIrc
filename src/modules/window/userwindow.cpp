@@ -95,7 +95,7 @@ void KviUserWindow::fillCaptionBuffers()
 	// nothing here
 }
 
-void KviUserWindow::setCaptionStrings(const QString &szPlainText,const QString &szHtmlInactive,const QString &szHtmlActive)
+void KviUserWindow::setWindowTitleStrings(const QString &szPlainText,const QString &szHtmlInactive,const QString &szHtmlActive)
 {
 	m_szPlainTextCaption = szPlainText;
 	m_szHtmlActiveCaption = szHtmlActive;

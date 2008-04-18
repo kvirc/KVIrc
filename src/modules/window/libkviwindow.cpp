@@ -994,7 +994,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		[b]m[/b]: Creates a window that is initially minimized.[br]
 		[b]q[/b]: Don't print warning messages during the creation.[br]
 		If <caption> is given then the new window will have it as the initial plain text <caption>.
-		You can change the caption later by calling [cmd]window.setCaption[/cmd].[br]
+		You can change the caption later by calling [cmd]window.setWindowTitle[/cmd].[br]
 		If <irc_context> is given then the new window is bound to the specified irc context
 		and will be destroyed when the attacched console closes.
 		If <irc_context> is omitted or is 0 then the window will be context free (not bound
@@ -1060,15 +1060,15 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 }
 
 /*
-	@doc: window.setCaption
+	@doc: window.setWindowTitle
 	@type:
 		command
 	@title:
-		window.setCaption
+		window.setWindowTitle
 	@short:
 		Sets the caption of an user window
 	@syntax:
-		window.setCaption [-q] <window_id> <plain_text_caption> [html_inactive_caption] [html_active_caption]
+		window.setWindowTitle [-q] <window_id> <plain_text_caption> [html_inactive_caption] [html_active_caption]
 	@switches:
 		!sw: -q | --quiet
 		Be quiet
@@ -1089,7 +1089,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@seealso:
 */
 
-static bool window_kvs_cmd_setCaption(KviKvsModuleCommandCall * c)
+static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 {
 	QString szWnd;
 	QString szPlain;
@@ -1113,7 +1113,7 @@ static bool window_kvs_cmd_setCaption(KviKvsModuleCommandCall * c)
 
 	if(pWnd->type() == KVI_WINDOW_TYPE_USERWINDOW)
 	{
-		((KviUserWindow *)pWnd)->setCaptionStrings(szPlain,szInactive,szActive);
+		((KviUserWindow *)pWnd)->setWindowTitleStrings(szPlain,szInactive,szActive);
 	} else {
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("The specified window is not of type \"userwnd\""));
 	}
@@ -1491,7 +1491,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"demandAttention",window_kvs_cmd_demandAttention);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"listtypes",window_kvs_cmd_listtypes);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setBackground",window_kvs_cmd_setBackground);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setCaption",window_kvs_cmd_setCaption);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setWindowTitle",window_kvs_cmd_setWindowTitle);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setCryptEngine",window_kvs_cmd_setCryptEngine);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setInputText",window_kvs_cmd_setInputText);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"insertInInputText",window_kvs_cmd_insertInInputText);

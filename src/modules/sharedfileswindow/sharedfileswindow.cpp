@@ -57,7 +57,7 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 {
 	QGridLayout * g = new QGridLayout(this,1,1,11,6);
 
-	setCaption(__tr2qs_ctx("Edit Shared File - KVIrc","sharedfileswindow"));
+	setWindowTitle(__tr2qs_ctx("Edit Shared File - KVIrc","sharedfileswindow"));
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Share name:","sharedfileswindow"),this);
 	g->addWidget(l, 0, 0 );

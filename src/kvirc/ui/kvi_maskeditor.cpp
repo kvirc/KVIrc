@@ -69,7 +69,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	setModal(1);
 	m_szOldMask=szMask;
 	
-	setCaption(__tr2qs("Mask editor - KVirc"));
+	setWindowTitle(__tr2qs("Mask editor - KVirc"));
 	
 	QGridLayout * g = new QGridLayout(this,2,3,5,5);
 	

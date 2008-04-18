@@ -105,10 +105,10 @@ int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 	return identifier-1;
 }
 	
-
+// FIXME
 int KviTalPopupMenu::insertItem(QWidget * pWidget)
 {
-	// needs Qt 4.2
+
 	QWidgetAction * pAct = new QWidgetAction(this);
 	pAct->setDefaultWidget(pWidget);
 	addAction(pAct);

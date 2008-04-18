@@ -174,7 +174,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 		).arg(szDialogTitle).arg(szDialog).arg(szInfoTips).arg(szOkCancelButtons);
 
 	QString szCaption = szDialogTitle + " - KVIrc";
-	setCaption(szCaption);
+	setWindowTitle(szCaption);
 
 	QGridLayout * g1 = new QGridLayout(this,2,5,8,8);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);

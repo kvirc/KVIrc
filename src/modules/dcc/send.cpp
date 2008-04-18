@@ -1821,7 +1821,7 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 	int iVal = m_pTransfer->bandwidthLimit();
 
 	QString szText = __tr2qs_ctx("Configure bandwidth for DCC transfer %1","dcc").arg(t->id());
-	setCaption(szText);
+	setWindowTitle(szText);
 
 	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to","dcc") : __tr2qs_ctx("Limit download bandwidth to","dcc");
 

@@ -358,7 +358,7 @@ KviIconWidget::KviIconWidget(QWidget * par)
 
 void KviIconWidget::init()
 {
-	setCaption(__tr2qs("Icon Table"));
+	setWindowTitle(__tr2qs("Icon Table"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER)));
 
 	int rows = KVI_NUM_SMALL_ICONS / 10;

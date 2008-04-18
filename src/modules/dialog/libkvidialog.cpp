@@ -206,7 +206,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	g_pDialogModuleDialogList->append(this);
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	setModal(modal);
-	setCaption(szCaption);
+	setWindowTitle(szCaption);
 
 	QGridLayout * g = new QGridLayout(this,2,3,5,5);
 
@@ -479,7 +479,7 @@ KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
 	: KviFileDialog(szInitialSelection,szFilter,0,0,modal), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
-	setCaption(szCaption);
+	setWindowTitle(szCaption);
 }
 
 KviKvsCallbackFileDialog::~KviKvsCallbackFileDialog()

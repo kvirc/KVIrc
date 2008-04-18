@@ -30,7 +30,7 @@
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
 	: KMainWindow(par)
 	{
-		setCaption(nam);
+		setWindowTitle(nam);
 	}
 
 	bool KviTalMainWindow::usesBigPixmaps()

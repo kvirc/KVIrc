@@ -73,7 +73,7 @@ KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegistere
 	QFrame * f;
 
 //    resize( 490, 456 ); 
-	setCaption(__tr2qs("User Registration Wizard - KVIrc"));
+	setWindowTitle(__tr2qs("User Registration Wizard - KVIrc"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
 	setSizeGripEnabled( TRUE );

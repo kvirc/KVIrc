@@ -38,9 +38,9 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	m_pData = pData;
 
 	if(pData->szCaption.isEmpty())
-		setCaption("KVIrc");
+		setWindowTitle("KVIrc");
 	else
-		setCaption(pData->szCaption);
+		setWindowTitle(pData->szCaption);
 		
 	if(!pData->pixIcon.isNull())
 		setIcon(pData->pixIcon);

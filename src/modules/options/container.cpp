@@ -79,7 +79,7 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	{
 		//KviStr caption(KviStr::Format,"%s - KVIrc",e->szName);
 		setIcon(*(g_pIconManager->getSmallIcon(e->iIcon)));
-		setCaption(e->szName);
+		setWindowTitle(e->szName);
 	}
 	m_pOptionsWidget = w;
 

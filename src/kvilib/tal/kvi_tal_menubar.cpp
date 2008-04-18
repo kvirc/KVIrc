@@ -30,7 +30,7 @@
 	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
 	: KMenuBar(par)
 	{
-		setCaption(nam);
+		setWindowTitle(nam);
 	}
 
 	KviTalMenuBar::~KviTalMenuBar()

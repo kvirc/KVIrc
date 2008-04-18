@@ -668,9 +668,9 @@ void KviWindow::updateCaption()
 {
 	fillCaptionBuffers();
 	if(mdiParent())
-		mdiParent()->setCaption(plainTextCaption(),htmlActiveCaption(),htmlInactiveCaption());
+		mdiParent()->setWindowTitle(plainTextCaption(),htmlActiveCaption(),htmlInactiveCaption());
 	else
-		setCaption(plainTextCaption());
+		setWindowTitle(plainTextCaption());
 	if(m_pTaskBarItem)m_pTaskBarItem->captionChanged();
 	if(mdiParent() && isMaximized() && (g_pActiveWindow == this))
 		g_pFrame->updateCaption();

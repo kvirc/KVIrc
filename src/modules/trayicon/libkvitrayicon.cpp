@@ -87,7 +87,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	QLabel * l = new QLabel(__tr2qs("KVIrc"),m_pContextPopup);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pContextPopup->insertItem(l);
-	m_pContextPopup->setCaption(__tr2qs("Context"));
+	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);
 	m_pContextPopup->changeItem(m_iAwayMenuId,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)),__tr2qs("Away"));
 	

@@ -46,7 +46,7 @@ extern KVIRC_API KviNickServRuleSet * g_pNickServRuleSet;
 KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskField)
 : QDialog(par)
 {
-	setCaption(__tr2qs_ctx("NickServ Authentication Rule","options"));
+	setWindowTitle(__tr2qs_ctx("NickServ Authentication Rule","options"));
 
 	QString html_center_begin = "<center>";
 	QString html_center_end = "</center>";

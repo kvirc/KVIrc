@@ -122,7 +122,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_szOriginalId = szId;
 	m_szLabel = szLabel;
 
-	setCaption(__tr2qs("ToolBar Properties"));
+	setWindowTitle(__tr2qs("ToolBar Properties"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 	
 	QGridLayout * g = new QGridLayout(this,5,6,5,3);
@@ -277,7 +277,7 @@ void KviCustomToolBarPropertiesDialog::advancedClicked()
 KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 : QDialog(p,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
-	setCaption(__tr2qs("Customize Toolbars"));
+	setWindowTitle(__tr2qs("Customize Toolbars"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 
 	m_pInstance = this;

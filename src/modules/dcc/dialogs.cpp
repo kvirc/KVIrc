@@ -72,7 +72,7 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	hb->addWidget(btn);
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG)));
-	setCaption(capt);
+	setWindowTitle(capt);
 
 	l->setActiveWindow();
 	l->setFocus();
@@ -143,7 +143,7 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	//btn->setFocus();
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG)));
-	setCaption(__tr2qs_ctx("File Already Exists - KVIrc","dcc"));
+	setWindowTitle(__tr2qs_ctx("File Already Exists - KVIrc","dcc"));
 }
 
 KviDccRenameBox::~KviDccRenameBox()

@@ -132,7 +132,7 @@
 		}[br]
 		%Workspace=$new(workspace)[br]
 		%Workspace->$resize(640,480)[br]
-		%Workspace->$setCaption("Hit the mouse to stop cycling windows....")[br]
+		%Workspace->$setWindowTitle("Hit the mouse to stop cycling windows....")[br]
 		%I=0[br]
 		%Cicle=1[br]
 		while (%I<20)[br]

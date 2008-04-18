@@ -73,7 +73,7 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 {
 	m_pPropertyDict = dict;
 
-	setCaption(__tr2qs("Property Editor"));
+	setWindowTitle(__tr2qs("Property Editor"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
 	QGridLayout * g = new QGridLayout(this,3,3,4,4);
@@ -221,7 +221,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 {
 	m_pMask = m;
 
-	setCaption(__tr2qs("Mask Editor"));
+	setWindowTitle(__tr2qs("Mask Editor"));
 
 	QGridLayout * g = new QGridLayout(this,3,2,4,4);
 
@@ -329,7 +329,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	//setMinimumSize(400,450);
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
-	setCaption(__tr2qs("Registered User Entry"));
+	setWindowTitle(__tr2qs("Registered User Entry"));
 
 	QWidget * p1 = new QWidget(this);
 

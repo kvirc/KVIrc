@@ -160,7 +160,7 @@ void KviScriptAddonListView::resizeEvent(QResizeEvent * e)
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 : QDialog(p,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
-	setCaption(__tr2qs("Manage Script-Based Addons"));
+	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
 	setModal(true);
 

@@ -161,7 +161,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 {
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
         m_pSelectorInterfaceList->setAutoDelete(false);
-	setCaption(__tr2qs_ctx("Preferences","editor"));
+	setWindowTitle(__tr2qs_ctx("Preferences","editor"));
 	QGridLayout * g = new QGridLayout(this,3,3,4,4);
 
 	KviFontSelector * f = new KviFontSelector(this,__tr2qs_ctx("Font:","editor"),&g_fntNormal,true);

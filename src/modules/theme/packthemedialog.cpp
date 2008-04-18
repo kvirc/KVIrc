@@ -112,7 +112,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 		m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
 	}
 
-	setCaption(__tr2qs_ctx("Export Theme - KVIrc","theme"));
+	setWindowTitle(__tr2qs_ctx("Export Theme - KVIrc","theme"));
 	setMinimumSize(400,350);
 
 	// welcome page ==================================================================================
