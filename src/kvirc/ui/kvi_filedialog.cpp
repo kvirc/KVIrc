@@ -84,7 +84,7 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"open_file_name_dialog",true);
 	d->setWindowTitle(caption);
 	// i was ignorant
-	d->setFileMode(KviTalFileDialog::Directory);
+	d->setFileMode(KviTalFileDialog::AnyFile);
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
