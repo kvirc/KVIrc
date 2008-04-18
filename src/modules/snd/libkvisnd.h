@@ -117,7 +117,7 @@ protected:
 };
 
 #ifdef COMPILE_PHONON_SUPPORT
-class KviArtsSoundThread : public KviSoundThread
+class KviPhononSoundThread : public KviSoundThread
 {
 	public:
 		KviPhononSoundThread(const QString &szFileName);
@@ -199,6 +199,9 @@ protected:
 	void unregisterSoundThread(KviSoundThread * t);
 	virtual bool event(QEvent *e);
 protected:
+#ifdef COMPILE_PHONON_SUPPORT
+	bool playPhonon(const QString &szFileName);
+#endif //!COMPILE_PHONON_SUPPORT
 #ifdef COMPILE_ON_WINDOWS
 	bool playWinmm(const QString &szFileName);
 #else //!COMPILE_ON_WINDOWS

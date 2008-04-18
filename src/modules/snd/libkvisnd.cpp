@@ -37,7 +37,13 @@
 #include <QSound>
 
 #ifdef COMPILE_PHONON_SUPPORT
-#include <Phonon>
+	#ifdef COMPILE_KDE_SUPPORT
+		#include <Phonon/MediaObject>
+		#include <Phonon/Path>
+		#include <Phonon/Global>
+	#else //!COMPILE_KDE_SUPPORT
+		#include <Phonon>
+	#endif //!COMPILE_KDE_SUPPORT
 Phonon::MediaObject * g_pPhononPlayer=0;
 #endif //!COMPILE_PHONON_SUPPORT
 
@@ -232,7 +238,7 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 #ifdef COMPILE_ON_WINDOWS
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
-		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT); 
+		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
 		return true;
 		// This does not compile on win!
 		/*if(isMuted()) return true;
