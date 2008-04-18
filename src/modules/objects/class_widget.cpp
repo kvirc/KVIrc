@@ -43,7 +43,7 @@
 #include <QLayout>
 #include <QBitmap>
 #include <QMetaObject>
-
+#include <QIcon>
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
 {
