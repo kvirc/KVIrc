@@ -113,62 +113,69 @@ void KviMenuBar::setupHelpPopup()
 	KviTalPopupMenu * help = (KviTalPopupMenu *)sender();
 	help->clear();
 
-	// FIXME: Convert these to actions!
-	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP)),__tr2qs("&Help Browser (Panel)"),m_pFrm,SLOT(executeInternalCommand(int)));
+	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP)),__tr2qs("&Help Browser (Panel)"));
+	debug ("Item %d named Help Browser (Panel)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP)),__tr2qs("Help Browser (&Window)"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP)),__tr2qs("Help Browser (&Window)"));
+		debug ("Item %d named Help Browser (Window)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWMDIWINDOW);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)),__tr2qs("&Tip of the Day"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)),__tr2qs("&Tip of the Day"));
+	debug ("Item %d named Help Browser (Tip of the Day)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("About &KVIrc"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("About &KVIrc"));
+	debug ("Item %d named Help Browser (About &KVIrc)",id);
+	
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Home&page"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
 	if(kvi_strEqualCIN(KviLocale::localeName(),"ru",2))
 	{
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Russian Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Russian Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);
 	}
 	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
 	{
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc French Home&page"),m_pFrm,SLOT(executeInternalCommand(int)));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc French Home&page"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_FR);
 	}
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),__tr2qs("Subscribe to the Mailing List"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),__tr2qs("Subscribe to the Mailing List"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_MAILINGLIST);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB)),__tr2qs("Report a Bug / Propose Improvements"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB)),__tr2qs("Report a Bug / Propose Improvements"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_BUGTRACK);
 	help->insertSeparator();
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on Freenode"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on Freenode"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_FREENODE);
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on IRCNet"),m_pFrm,SLOT(executeInternalCommand(int)));
+	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc International Channel on IRCNet"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_ON_IRCNET);
 	if(kvi_strEqualCIN(KviLocale::localeName(),"it",2))
 	{
 		// join #kvirc.net on azzurra
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"),m_pFrm,SLOT(executeInternalCommand(int)));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc Italian Channel on AzzurraNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_IT_ON_AZZURRA);
 	}
 	if(kvi_strEqualCIN(KviLocale::localeName(),"fr",2))
 	{
 		// join #kvirc-fr on freenode
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on Freenode"),m_pFrm,SLOT(executeInternalCommand(int)));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on Freenode"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_FREENODE);
 		// join #kvirc on europnet
-		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropNet"),m_pFrm,SLOT(executeInternalCommand(int)));
+		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPNET);
 	}
-	// add your localized #kvirc channels here...
+	connect(help,SIGNAL(activated(int)),this,SLOT(actionTriggered(int)));
 }
-
+void KviMenuBar::actionTriggered(int id)
+{
+	KviTalPopupMenu * help = (KviTalPopupMenu *)sender();
+	m_pFrm->executeInternalCommand(help->itemParameter(id));
+}
 void KviMenuBar::setupSettingsPopup()
 {
-	// FIXME: Move everything to actions!
-
+	
 	KviTalPopupMenu * opt = (KviTalPopupMenu *)sender();
 	opt->clear();
 	

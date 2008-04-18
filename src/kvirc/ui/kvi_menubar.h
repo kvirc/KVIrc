@@ -78,6 +78,7 @@ protected slots:
 	void setupToolbarsPopup();
 	void setupToolsPopup();
 	void toolsPopupSelected(int id);
+	void actionTriggered(int id);
 };
 
 #endif //_KVI_MENUBAR_H_

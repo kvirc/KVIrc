@@ -53,11 +53,16 @@ public:
 	void setItemEnabled(int id,bool bFlag);
 	void setItemParameter(int id, int param);
 	int itemParameter(int id);
+	QAction *getAction(int id){
+		QAction *a=actionsDict.value(id);
+		return a?a:0;
+	};
 	void clear();
 	QString text(int);
 	int insertSeparator();
 protected slots:
-	void  slottriggered(QAction *);
+	void slottriggered(QAction *);
+	void slotActionTriggered(bool);
 signals:
 	void activated(int);
 	
