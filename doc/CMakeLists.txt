@@ -5,6 +5,7 @@ SET(license COPYING)
 SET(howto
 	README
 	FAQ
+	INSTALL
 	INSTALL-MacOS.txt
 	firefox.hack.txt
 	hackers.guide.txt
