@@ -57,7 +57,6 @@ KviTipFrame::KviTipFrame(QWidget * par)
 	QString buffer;
 	g_pApp->findImage(buffer,"kvi_tip.png");
 	m_pTipPixmap = new QPixmap(buffer);
-	//setBackgroundMode(Qt::NoBackground);
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 }
 

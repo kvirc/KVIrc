@@ -379,8 +379,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pListView->setSelectionMode(KviTalListView::Single);
 	m_pListView->setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
 	m_pListView->setStaticBackground(true);
-	m_pListView->viewport()->setBackgroundMode(Qt::NoBackground);
-
+	
 	addWidgetToLayout(m_pListView,0,0,2,0);
 
 	KviTalVBox * box = new KviTalVBox(this);

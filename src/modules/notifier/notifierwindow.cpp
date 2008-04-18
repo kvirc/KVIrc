@@ -115,7 +115,6 @@ KviNotifierWindow::KviNotifierWindow()
 	m_iInputHeight = cfg.readIntEntry("InputHeight",20);
 	if(m_iInputHeight < 10)m_iInputHeight = 10;
 
-	setBackgroundMode(Qt::NoBackground);
 	setFocusPolicy(Qt::NoFocus);
 	setMouseTracking(true);
 	//setCursor(m_cursor);

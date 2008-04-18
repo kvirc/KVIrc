@@ -72,8 +72,11 @@ static QFont g_fntNormal("Courier New",8);
 KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
 : KviTalListBox(parent)
 {
-	setPaletteForegroundColor(QColor(0,0,0));
-	setPaletteBackgroundColor(QColor(255,255,255));
+	QPalette p = palette();
+	p.setColor(foregroundRole(),QColor(0,0,0));
+	p.setColor(backgroundRole(),QColor(255,255,255));
+//	setPaletteBackgroundColor(QColor(255,255,255));
+	setPalette(p);
 	setHScrollBarMode(KviTalListBox::AlwaysOff);
 
 	QFont listfont=font();
@@ -277,7 +280,9 @@ void KviScriptEditorWidget::updateOptions()
 	setText(text()); // an "hack" to ensure Update all in the editor
 	KviScriptSyntaxHighlighter *h = new KviScriptSyntaxHighlighter(this);
 	(void)h;
-	((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->setPaletteForegroundColor(g_clrFind);
+	p = ((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->palette(); 
+	p.setColor(foregroundRole(),g_clrFind); 
+	((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->setPalette(p); 
 }
 
 void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
@@ -823,8 +828,12 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	m_pFindLineedit = new QLineEdit(" ",this);
 	m_pFindLineedit->setText("");
-	m_pFindLineedit->setPaletteForegroundColor(g_clrFind);
 
+	QPalette p = m_pFindLineedit->palette(); 
+	p.setColor(foregroundRole(), g_clrFind); 
+	m_pFindLineedit->setPalette(p);
+
+	
 	m_pEditor = new KviScriptEditorWidget(this);
 	g->addMultiCellWidget(m_pEditor,0,0,0,3);
 	g->setRowStretch(0,1);
@@ -1083,9 +1092,12 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 {
 	m_pParent=parent;
 	emit initFind();
-	setPaletteForegroundColor( QColor( 0, 0, 0 ) );
-	setPaletteBackgroundColor( QColor( 236, 233, 216 ) );
-	QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
+	QPalette p = palette(); 
+	p.setColor(foregroundRole(),QColor( 0, 0, 0 )); 
+	p.setColor(backgroundRole(),QColor( 236, 233, 216 )); 
+	setPalette(p);
+
+QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
  
 	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
 	layout->addMultiCellWidget( m_pFindlineedit, 2, 2, 1, 2 );

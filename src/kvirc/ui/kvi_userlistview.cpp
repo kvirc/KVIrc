@@ -211,7 +211,6 @@ KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* butto
 	m_ieEntries   = 0;
 	m_iIEntries   = 0;
 	m_iSelectedCount = 0;
-//	setBackgroundMode(QWidget::NoBackground);
 	applyOptions();
 	registerSelf();
 }

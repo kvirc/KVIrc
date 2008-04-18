@@ -188,7 +188,6 @@ KviTaskBarButton::KviTaskBarButton(QWidget * par,KviWindow * wnd,const char * na
 	m_bActive         = false;
 	m_pTip            = new KviDynamicToolTip(this);
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
-//	setBackgroundMode(QWidget::NoBackground);
 	setToggleButton (true);
 	setFlat ( KVI_OPTION_BOOL(KviOption_boolUseFlatClassicTaskbarButtons) );
 }
@@ -452,7 +451,6 @@ KviClassicTaskBar::KviClassicTaskBar()
 	calcButtonHeight();
 
 	m_pBase = new QWidget(this);
-//	m_pBase->setBackgroundMode(NoBackground);
 	setWidget(m_pBase);
 
 	m_pBase->setMinimumWidth(KVI_TASKBAR_MIN_WIDTH);
