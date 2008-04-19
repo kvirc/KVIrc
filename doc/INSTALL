@@ -75,6 +75,10 @@ General notes for the installation of the 4.0 release of KVIrc
 
     Here's a list with explainations:
 
+    -DDEBUG
+        Compiles the executable with debug symbols.
+        Useful to report bugs.
+
     -DINSTALL_PREFIX=/path
         It will install all stuff under /path directory
 
@@ -526,8 +530,8 @@ COMPILE_XSS_SUPPORT
 
               Hi,
               I noticed in your readme that you were having problems with sigalarm
-              in your solaris port and you weren't sure why.  I quickly scanned your
-              source code and noticed that you use usleep and threads.  That's the problem,
+              in your solaris port and you weren't sure why. I quickly scanned your
+              source code and noticed that you use usleep and threads. That's the problem,
               if you haven't already figured it out. On Solaris, usleep is implemented with
               SIGALARM. So is threading. So if you the active thread changes while
               a usleep is in progress, bang, the process is dead.
@@ -613,8 +617,8 @@ COMPILE_XSS_SUPPORT
         will be referring to the directory where the old kvirc
         executable was found.
 
-        Make sure that /usr/local/lib is in your /etc/ld.so.conf , 
-        if it isn't there , put it there and run
+        Make sure that /usr/local/lib is in your /etc/ld.so.conf ,
+        if it isn't there, put it there and run
 
         # ldconfig
 

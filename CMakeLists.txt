@@ -73,6 +73,22 @@ ENDIF()
 
 ###############################################################################
 #
+# Release type
+#
+###############################################################################
+
+OPTION(WANT_DEBUG "Compile debug symbols" ON)
+IF(WANT_DEBUG)
+	SET(CMAKE_BUILD_TYPE Debug)
+	SET(CMAKE_STATUS_DEBUG_SUPPORT "yes")
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DDEBUG)
+ELSE()
+	SET(CMAKE_BUILD_TYPE Release)
+	SET(CMAKE_STATUS_DEBUG_SUPPORT "user disabled")
+ENDIF()
+
+###############################################################################
+#
 # System checks
 #
 ###############################################################################
@@ -208,7 +224,7 @@ ENDIF()
 # Check for KDE4
 ############################################################################
 
-OPTION(WANT_KDE4 "Whether to use kde4 support (experimental)" OFF)
+OPTION(WANT_KDE4 "Whether to use KDE4 support (experimental)" OFF)
 IF(WANT_KDE4)
 	FIND_PACKAGE(KDE4)
 	IF(KDE4_FOUND)
@@ -287,10 +303,10 @@ ELSE()
 ENDIF()
 
 ############################################################################
-# IPV6 support
+# IPv6 support
 ############################################################################
 
-OPTION(WANT_IPV6 "Compile IPV6 Support" ON)
+OPTION(WANT_IPV6 "Compile IPv6 Support" ON)
 
 IF(WANT_IPV6)
 	SET(COMPILE_IPV6_SUPPORT 1)
@@ -547,7 +563,7 @@ MESSAGE(STATUS "  Phonon support              : ${CMAKE_STATUS_PHONON_SUPPORT}")
 MESSAGE(STATUS "  KDE4 support                : ${CMAKE_STATUS_KDE4_SUPPORT}")
 MESSAGE(STATUS "  OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
 MESSAGE(STATUS "  Crypt Support and Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
-MESSAGE(STATUS "  IPV6 support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
+MESSAGE(STATUS "  IPv6 support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
 MESSAGE(STATUS "  Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
 MESSAGE(STATUS "  Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 MESSAGE(STATUS "  IPC support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
