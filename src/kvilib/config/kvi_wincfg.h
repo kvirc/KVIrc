@@ -91,7 +91,7 @@
 /* #undef COMPILE_GET_INTERFACE_ADDRESS */
 
 /* this is the build date (configure date rather) */
-#define BUILD_DATE __DATE__" "__TIME__
+#define KVIRC_BUILD_DATE __DATE__" "__TIME__
 
 /* these are the build flags */
 #define BUILD_FLAGS "win32"

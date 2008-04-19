@@ -93,6 +93,7 @@ SET(kvilib_MOC_HDRS
 	core/kvi_strasm.h
 	core/kvi_string.h
 	core/kvi_stringarray.h
+	config/kvi_buildinfo.h
 	config/kvi_confignames.h
 	config/kvi_debug.h
 	config/kvi_defaults.h
@@ -170,6 +171,7 @@ SET(kvilib_SRCS
 	core/kvi_qstring.cpp
 	core/kvi_string.cpp
 	core/kvi_stringarray.cpp
+	config/kvi_buildinfo.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

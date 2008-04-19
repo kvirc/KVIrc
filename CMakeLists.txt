@@ -513,6 +513,14 @@ ENDIF()
 # CONFIGURE FILES
 ###############################################################################
 
+# System configuration is now splitted in 2 files
+# kvi_sysconfig.h contains the "saveable" configuration: stuff that
+# may be preserved between multiple cmake runs (and thus may save compilation time)
+# kvi_sysbuildinfo.h contains the configuration that changes at every
+# cmake run and must be recompiled every time. Extra care is taken
+# inside the sources to include kvi_sysbuildinfo.h in only ONE file (so only
+# linking of kvilib is done if only kvi_sysbuildinfo.h changes.
+
 IF(EXISTS ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
 	# an old config exists; let's check if it's actual:
 	CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h.new)
@@ -532,6 +540,8 @@ ELSE()
 	# no old config
 	CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysconfig.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysconfig.h)
 ENDIF()
+
+CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/cmake/kvi_sysbuildinfo.h.cmake ${PROJECT_BINARY_DIR}/kvi_sysbuildinfo.h)
 
 
 INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})

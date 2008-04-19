@@ -55,6 +55,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_regusersdb.h"
+#include "kvi_buildinfo.h"
 
 #include <stdlib.h>
 
@@ -1141,7 +1142,8 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 #define QT4_TAG " (QT4) "
 
 
-			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build " KVI_BUILD_DATE;
+			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build ";
+			szVersion += KviBuildInfo::buildDate();
 #ifdef COMPILE_ON_WINDOWS
 			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));
 #else

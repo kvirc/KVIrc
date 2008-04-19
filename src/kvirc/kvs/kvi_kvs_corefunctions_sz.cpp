@@ -43,6 +43,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_socket.h"
+#include "kvi_buildinfo.h"
 
 #include <stdlib.h> // rand & srand
 
@@ -1033,7 +1034,7 @@ namespace KviKvsCoreFunctions
 		else {
 			if(szType.find('r') != -1)KVSCF_pRetBuffer->setString(KVI_RELEASE_NAME);
 			else if(szType.find('s') != -1)KVSCF_pRetBuffer->setString(KVI_SOURCES_DATE);
-			else if(szType.find('b') != -1)KVSCF_pRetBuffer->setString(KVI_BUILD_DATE);
+			else if(szType.find('b') != -1)KVSCF_pRetBuffer->setString(KviBuildInfo::buildDate());
 			else KVSCF_pRetBuffer->setString(KVI_VERSION);
 		}
 		return true;

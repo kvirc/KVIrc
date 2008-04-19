@@ -49,6 +49,7 @@ void KviKvsTreeNodeSwitchList::contextDescription(QString &szBuffer)
 void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 {
 	qDebug("%s SwitchList",prefix);
+#if 0
 	if(m_pShortSwitchDict)
 	{
 		KviPointerHashTableIterator<int,KviKvsTreeNodeData> it(*m_pShortSwitchDict);
@@ -76,6 +77,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 			++it;
 		}
 	}
+#endif
 }
 
 void KviKvsTreeNodeSwitchList::addShort(int iShortKey,KviKvsTreeNodeData * p)

@@ -29,6 +29,7 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_buildinfo.h"
 #include <kvi_tal_textedit.h>
 
 #include <QWidget>
@@ -120,7 +121,9 @@ KviAboutDialog::KviAboutDialog()
 	infoString += __tr2qs_ctx("Sources Date","about");
 	infoString += ": " KVI_SOURCES_DATE "<br>";
 	infoString += __tr2qs_ctx("Build Date","about");
-	infoString += ": " KVI_BUILD_DATE "<br>";
+	infoString += ": ";
+	infoString += KviBuildInfo::buildDate();
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("Build Command","about");
 	infoString += ": " KVI_BUILD_COMMAND "<br>";
 	infoString += __tr2qs_ctx("Build Flags","about");

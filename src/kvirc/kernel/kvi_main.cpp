@@ -31,6 +31,7 @@
 #include "kvi_defaults.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_msgbox.h"
+#include "kvi_buildinfo.h"
 
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
@@ -77,7 +78,10 @@ int parseArgs(ParseArgs * a)
 		{
 			KviQString::appendFormatted(szMessage,"KVIrc %s '%s'\n",KVI_VERSION,KVI_RELEASE_NAME);
 			KviQString::appendFormatted(szMessage,"Sources date: %s\n",KVI_SOURCES_DATE);
-			KviQString::appendFormatted(szMessage,"Build date: %s\n",KVI_BUILD_DATE);
+			szMessage += "Build date: ";
+			szMessage += KviBuildInfo::buildDate();
+			szMessage += "\n";
+
 			KviQString::appendFormatted(szMessage,"Home page: http://www.kvirc.net/\n");
 
 #ifdef COMPILE_ON_WINDOWS
