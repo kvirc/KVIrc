@@ -37,12 +37,11 @@
 #include <QDialog>
 #include <QCheckBox>
 #include <QEvent>
+#include <QTextEdit>
 
 // Q3PopupMenu
 
-// FIXME: Qt4 #include <QSyntaxHighlighter>
-#include <q3syntaxhighlighter.h>
-#define QSyntaxHighlighter Q3SyntaxHighlighter
+#include <QSyntaxHighlighter>
 
 class QTimer;
 
@@ -60,7 +59,7 @@ protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 };
 
-class KviScriptEditorWidget : public KviTalTextEdit
+class KviScriptEditorWidget : public QTextEdit
 {
 	Q_OBJECT
 	Q_PROPERTY(bool contextSensitiveHelp READ contextSensitiveHelp)
@@ -85,9 +84,9 @@ public slots:
 signals:
 	void keyPressed();
 protected:
+	void contextMenuEvent(QContextMenuEvent *event);
 	virtual void keyPressEvent(QKeyEvent * e);
 	void contentsMousePressEvent(QMouseEvent *);
-	Q3PopupMenu *createPopupMenu( const QPoint& pos );
 	QWidget *m_pParent;
 	QString m_szHelp;
 };
@@ -98,7 +97,7 @@ public:
 	KviScriptSyntaxHighlighter(KviScriptEditorWidget * pWidget);
 	virtual ~KviScriptSyntaxHighlighter();
 public:
-	virtual int highlightParagraph(const QString & text,int endStateOfLastPara);
+	void highlightBlock(const QString &text);
 };
 
 class KviScriptEditorWidgetColorOptions : public QDialog
