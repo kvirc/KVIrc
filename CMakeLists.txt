@@ -91,19 +91,24 @@ CHECK_INCLUDE_FILES(strings.h SYSTEM_HAS_STRINGS_H)
 #INCLUDE(TestBigEndian)
 #TEST_BIG_ENDIAN(SYSTEM_IS_BIG_ENDIAN)
 
-OPTION(WANT_PCH "Whether to use pre-compiled headers" ON)
-IF(WANT_PCH)
-	FIND_PACKAGE(PCHSupport)
-	IF(PCHSupport_FOUND)
-		SET(CMAKE_STATUS_PCH_SUPPORT "yes")
-		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DUSE_PCH=1)
-	ELSE()
-		SET(CMAKE_STATUS_PCH_SUPPORT "not available")
-	ENDIF()
-ELSE()
-	ADD_DEFINITIONS(-DUSE_PCH=0)
-	SET(CMAKE_STATUS_PCH_SUPPORT "user disabled")
-ENDIF()
+###############################################################################
+# Option for precompiled headers usage (currently broken because of bad gcc support)
+###############################################################################
+#
+#OPTION(WANT_PCH "Whether to use pre-compiled headers" ON)
+#IF(WANT_PCH)
+#	FIND_PACKAGE(PCHSupport)
+#	IF(PCHSupport_FOUND)
+#		SET(CMAKE_STATUS_PCH_SUPPORT "yes")
+#		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DUSE_PCH=1)
+#	ELSE()
+#		SET(CMAKE_STATUS_PCH_SUPPORT "not available")
+#	ENDIF()
+#ELSE()
+#	ADD_DEFINITIONS(-DUSE_PCH=0)
+#	SET(CMAKE_STATUS_PCH_SUPPORT "user disabled")
+#ENDIF()
+#
 
 ###############################################################################
 #
@@ -165,7 +170,10 @@ ELSE()
 	SET(CMAKE_STATUS_X11_SUPPORT "not needed")
 ENDIF()
 
+############################################################################
 # Check for Qt4
+############################################################################
+
 FIND_PACKAGE(Qt4 REQUIRED)
 IF(QT4_FOUND)
 	SET(QT_USE_QT3SUPPORT true)
@@ -190,15 +198,18 @@ IF(QT4_FOUND)
 		SET(CMAKE_STATUS_PHONON_SUPPORT "not available")
 	ENDIF()
 
-	ADD_DEFINITIONS(-DCOMPILE_USE_QT4)
+	SET(COMPILE_USE_QT4 1)
 	INCLUDE(${QT_USE_FILE})
 	INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR} ${QT_INCLUDES})
 	LIST(APPEND LIBS ${QT_LIBRARIES})
 ENDIF()
 
+############################################################################
 # Check for KDE4
-OPTION(WITH_KDE4 "Whether to use kde4 support (experimental)" OFF)
-IF(WITH_KDE4)
+############################################################################
+
+OPTION(WANT_KDE4 "Whether to use kde4 support (experimental)" OFF)
+IF(WANT_KDE4)
 	FIND_PACKAGE(KDE4)
 	IF(KDE4_FOUND)
 		INCLUDE_DIRECTORIES(${KDE4_INCLUDES})
@@ -212,65 +223,98 @@ IF(WITH_KDE4)
 		SET(CMAKE_STATUS_KDE4_SUPPORT "not available")
 	ENDIF()
 ELSE()
-	SET(CMAKE_STATUS_KDE4_SUPPORT "not requested")
+	SET(CMAKE_STATUS_KDE4_SUPPORT "user disabled")
 ENDIF()
 
+############################################################################
 # Check for MacOS X universal binary
-IF(COMPILE_UNIVERSAL)
-	IF(APPLE)
+############################################################################
+
+IF(APPLE)
+	OPTION(WANT_UNIVERSAL_BINARY "Whether to compile an Universal Binary on MacOSX" OFF)
+
+	IF(WANT_UNIVERSAL_BINARY)
 		SET(CMAKE_OSX_ARCHITECTURES ppc;i386)
-		SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "yes")
-		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_UNIVERSAL=1)
+		SET(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "yes")
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_MACOSX_UNIVERSAL_BINARY=1)
 		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
 		#SET(CMAKE_SHARED_LINKER_FLAGS "-mmacosx-version-min=10.4")
 		#SET(CMAKE_EXE_LINKER_FLAGS "-mmacosx-version-min=10.4")
+	ELSE()
+		SET(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "no")
 	ENDIF()
 ELSE()
-	SET(CMAKE_STATUS_UNIVERSAL_SUPPORT "not available")
+	SET(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "not applicable")
 ENDIF()
 
-# Check for OpenSSL
-FIND_PACKAGE(OpenSSL)
-IF(OPENSSL_FOUND)
-	INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-	LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
-	ADD_DEFINITIONS(-DCOMPILE_SSL_SUPPORT)
-	ADD_DEFINITIONS(-DCOMPILE_CRYPT_SUPPORT)
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_SSL_SUPPORT=1)
+############################################################################
+# OpenSSL support (Secure Sockets, Certificates, Digests etc...)
+############################################################################
+
+OPTION(WANT_OPENSSL "Whether to use OpenSSL library, if found" ON)
+
+IF(WANT_OPENSSL)
+	FIND_PACKAGE(OpenSSL)
+	IF(OPENSSL_FOUND)
+		INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
+		LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
+		SET(COMPILE_SSL_SUPPORT 1)
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_SSL_SUPPORT=1)
+		SET(CMAKE_STATUS_SSL_SUPPORT "yes")
+		SET(CMAKE_STATUS_CRYPT_SUPPORT "yes")
+		IF(APPLE)
+			LIST(APPEND LIBS -lcrypto)
+		ENDIF()
+	ELSE()
+		SET(CMAKE_STATUS_SSL_SUPPORT "not available")
+	ENDIF()
+ELSE()
+	SET(CMAKE_STATUS_SSL_SUPPORT "user disabled")
+ENDIF()
+
+############################################################################
+# Crypt engines support
+############################################################################
+
+OPTION(WANT_CRYPT "Compile Cryptographic Support and Engines" ON)
+
+IF(WANT_CRYPT)
+	SET(COMPILE_CRYPT_SUPPORT 1)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_CRYPT_SUPPORT=1)
-	SET(CMAKE_STATUS_SSL_SUPPORT "yes")
 	SET(CMAKE_STATUS_CRYPT_SUPPORT "yes")
-	IF(APPLE)
-		LIST(APPEND LIBS -lcrypto)
-	ENDIF()
 ELSE()
-	SET(CMAKE_STATUS_SSL_SUPPORT "not available")
+	SET(CMAKE_STATUS_CRYPT_SUPPORT "user disabled")
 ENDIF()
 
-# Check for crypt support, enabled per default
-IF(WITHOUT_CRYPT)
-	REMOVE_DEFINITIONS(-DCOMPILE_CRYPT_SUPPORT)
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DWITHOUT_CRYPT)
-	SET(CMAKE_STATUS_CRYPT_SUPPORT "no")
+############################################################################
+# IPV6 support
+############################################################################
+
+OPTION(WANT_IPV6 "Compile IPV6 Support" ON)
+
+IF(WANT_IPV6)
+	SET(COMPILE_IPV6_SUPPORT 1)
+	SET(CMAKE_STATUS_IPV6_SUPPORT "yes")
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_IPV6_SUPPORT)
+ELSE()
+	SET(CMAKE_STATUS_IPV6_SUPPORT "user disabled")
 ENDIF()
 
-# Check for IPv6 support, enabled per default
-ADD_DEFINITIONS(-DCOMPILE_IPV6_SUPPORT)
-SET(CMAKE_STATUS_IPv6_SUPPORT "yes")
-IF(WITHOUT_IPV6)
-	REMOVE_DEFINITIONS(-DCOMPILE_IPV6_SUPPORT)
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DWITHOUT_IPv6)
-	SET(CMAKE_STATUS_IPv6_SUPPORT "no")
+############################################################################
+# Do we want pseudo-transparency ?
+############################################################################
+
+OPTION(WANT_TRANSPARENCY "Compile Pseudo-Transparency Support" ON)
+
+IF(WANT_TRANSPARENCY)
+	SET(CMAKE_STATUS_TRANSPARENCY_SUPPORT "yes")
+	SET(COMPILE_PSEUDO_TRANSPARENCY 1)
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DCOMPILE_PSEUDO_TRANSPARENCY)
+ELSE()
+	SET(CMAKE_STATUS_TRANSPARENCY_SUPPORT "user disabled")
 ENDIF()
 
-# Check for pseudo transparency support
-ADD_DEFINITIONS(-DWITHOUT_TRANSPARENCY)
-SET(CMAKE_STATUS_TRANSPARENCY_SUPPORT "yes")
-IF(WITHOUT_TRANSPARENCY)
-	REMOVE_DEFINITIONS(-DWITHOUT_TRANSPARENCY)
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS -DWITHOUT_TRANSPARENCY)
-	SET(CMAKE_STATUS_TRANSPARENCY_SUPPORT "no")
-ENDIF()
+
 
 # Check for Perl support
 # FIXME: This shouldn't be required (we should be able to live without it)
@@ -474,6 +518,17 @@ CONFIGURE_FILE(
 	IMMEDIATE @ONLY
 )
 
+###############################################################################
+# Mark as advanced some variables we really don't want to see in "simple" mode
+# All of them *should* be auto-detected.
+###############################################################################
+
+MARK_AS_ADVANCED(FORCE QT_QMAKE_EXECUTABLE)
+MARK_AS_ADVANCED(FORCE GETTEXT_MSGFMT_EXECUTABLE)
+MARK_AS_ADVANCED(FORCE GETTEXT_MSGMERGE_EXECUTABLE)
+MARK_AS_ADVANCED(FORCE LIBRARY_OUTPUT_PATH)
+MARK_AS_ADVANCED(FORCE CMAKE_BACKWARDS_COMPATIBILITY)
+MARK_AS_ADVANCED(FORCE EXECUTABLE_OUTPUT_PATH)
 
 ###############################################################################
 # FINAL OUTPUT
@@ -485,30 +540,30 @@ IF(${CONFIG_IS_UPTODATE})
 	MESSAGE(STATUS "(I found an old config that was exactly the same and kept it to save compilation time)")
 ENDIF()
 MESSAGE(STATUS " ")
-MESSAGE(STATUS "  Threading              : ${CMAKE_STATUS_THREADS_SUPPORT}")
-MESSAGE(STATUS "  X11 support            : ${CMAKE_STATUS_X11_SUPPORT}")
-MESSAGE(STATUS "  PCH support            : ${CMAKE_STATUS_PCH_SUPPORT}")
-MESSAGE(STATUS "  Phonon support         : ${CMAKE_STATUS_PHONON_SUPPORT}")
-MESSAGE(STATUS "  KDE4 support           : ${CMAKE_STATUS_KDE4_SUPPORT}")
-MESSAGE(STATUS "  Universal support      : ${CMAKE_STATUS_UNIVERSAL_SUPPORT}")
-MESSAGE(STATUS "  SSL support            : ${CMAKE_STATUS_SSL_SUPPORT}")
-MESSAGE(STATUS "  Crypt support          : ${CMAKE_STATUS_CRYPT_SUPPORT}")
-MESSAGE(STATUS "  IPv6 support           : ${CMAKE_STATUS_IPv6_SUPPORT}")
-MESSAGE(STATUS "  Transparency support   : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
-MESSAGE(STATUS "  Perl support           : ${CMAKE_STATUS_PERL_SUPPORT}")
-MESSAGE(STATUS "  IPC support            : ${CMAKE_STATUS_IPC_SUPPORT}")
-MESSAGE(STATUS "  System memmove support : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
-MESSAGE(STATUS "  GSM support            : ${CMAKE_STATUS_GSM_SUPPORT}")
-MESSAGE(STATUS "  DCC voice support      : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
-MESSAGE(STATUS "  Dynamic labels support : ${CMAKE_STATUS_DYN_LABELS_SUPPORT}")
+MESSAGE(STATUS "  Threading                   : ${CMAKE_STATUS_THREADS_SUPPORT}")
+MESSAGE(STATUS "  X11 support                 : ${CMAKE_STATUS_X11_SUPPORT}")
+#MESSAGE(STATUS "  PCH support                : ${CMAKE_STATUS_PCH_SUPPORT}")
+MESSAGE(STATUS "  Phonon support              : ${CMAKE_STATUS_PHONON_SUPPORT}")
+MESSAGE(STATUS "  KDE4 support                : ${CMAKE_STATUS_KDE4_SUPPORT}")
+MESSAGE(STATUS "  OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
+MESSAGE(STATUS "  Crypt Support and Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
+MESSAGE(STATUS "  IPV6 support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
+MESSAGE(STATUS "  Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
+MESSAGE(STATUS "  Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
+MESSAGE(STATUS "  IPC support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
+MESSAGE(STATUS "  System memmove support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
+MESSAGE(STATUS "  GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
+MESSAGE(STATUS "  DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
+MESSAGE(STATUS "  Dynamic labels support      : ${CMAKE_STATUS_DYN_LABELS_SUPPORT}")
 
+MESSAGE(STATUS "  Build Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 
-MESSAGE(STATUS "  ix86 asm support       : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
-MESSAGE(STATUS "  Memory profile support : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
-MESSAGE(STATUS "  Memory checks support  : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
-MESSAGE(STATUS "  Doxygen support        : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
+MESSAGE(STATUS "  ix86 asm support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
+MESSAGE(STATUS "  Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
+MESSAGE(STATUS "  Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
+MESSAGE(STATUS "  Doxygen support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 MESSAGE(STATUS " ")
-MESSAGE(STATUS "  Build date             : ${CMAKE_KVIRC_BUILD_DATE}")
+MESSAGE(STATUS "  Build date                  : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "I'm ready to build kvirc for you: please type 'make' now...")
 MESSAGE(STATUS " ")
