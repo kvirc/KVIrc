@@ -77,7 +77,7 @@ ENDIF()
 #
 ###############################################################################
 
-OPTION(WANT_DEBUG "Compile debug symbols" ON)
+OPTION(WANT_DEBUG "Compile debug symbols" OFF)
 IF(WANT_DEBUG)
 	SET(CMAKE_BUILD_TYPE Debug)
 	SET(CMAKE_STATUS_DEBUG_SUPPORT "yes")
