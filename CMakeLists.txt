@@ -345,7 +345,7 @@ ENDIF()
 
 
 # Check for Perl support
-# FIXME: This shouldn't be required (we should be able to live without it)
+# FIXME: This shouldn't be required (we should be able to live without it) (note: needed for user documentation generation)
 FIND_PACKAGE(Perl REQUIRED)
 ADD_DEFINITIONS(-DCOMPILE_PERL_SUPPORT)
 SET(CMAKE_STATUS_PERL_SUPPORT "yes")
@@ -464,7 +464,7 @@ IF(DOXYGEN_FOUND)
 		COMMAND ${DOXYGEN_EXECUTABLE} -u
 		COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
 		COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/Doxyfile
-		TARGET docs
+		TARGET devdocs
 	)
 ELSE()
 	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
