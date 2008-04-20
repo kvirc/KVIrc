@@ -78,7 +78,11 @@ namespace KviBuildInfo
 
 	QString buildRevision()
 	{
+		#ifndef COMPILE_ON_WINDOWS
 		QString rev = QString(KVIRC_BUILD_REVISION);
+		#else
+		QString rev="";
+		#endif
 		if(rev.isEmpty()) return "N/A";
 		else return rev;
 	}
