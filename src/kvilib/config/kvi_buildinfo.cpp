@@ -75,4 +75,11 @@ namespace KviBuildInfo
 	{
 		return QString(KVIRC_BUILD_COMPILER_FLAGS);
 	}
+
+	QString buildRevision()
+	{
+		QString rev = QString(KVIRC_BUILD_REVISION);
+		if(rev.isEmpty()) return "N/A";
+		else return rev;
+	}
 };

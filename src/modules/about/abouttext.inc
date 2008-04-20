@@ -1,4 +1,4 @@
-static char * g_szAboutText = "" \
+static const char * g_szAboutText = "" \
 "<html>" \
 "<head>" \
 "<title>Honor and glory</title>" \
@@ -197,7 +197,7 @@ static char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "The 'light' inside the GNU clouds" \
 "<br>" \
-"Generic (??!) official project supporter :)" \
+"Generic (?!?) official project supporter :)" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"Pragma: seems that kvirc with all its plugins is becoming a desktop environment\"" \

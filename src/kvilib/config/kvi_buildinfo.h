@@ -76,6 +76,10 @@ namespace KviBuildInfo
 	/// executable was built with.
 	///
 	extern KVILIB_API QString buildCompilerFlags();
+	///
+	/// Returns the SVN revision number of the local repository
+	///
+	extern KVILIB_API QString buildRevision();
 };
 
 #endif //!_KVI_BUILDINFO_H_

@@ -95,7 +95,7 @@ KviAboutDialog::KviAboutDialog()
 
 	g->addWidget(l,0,0);
 
-	QString aboutString= "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br>";
+	QString aboutString= "<b>KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br>";
 	aboutString += __tr2qs_ctx("Forged by the <b>KVIrc Development Team</b>","about");
 
 	l = new QLabel(aboutString,w);
@@ -144,6 +144,10 @@ KviAboutDialog::KviAboutDialog()
 	infoString += __tr2qs_ctx("Sources Date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildSourcesDate();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Revision Number","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::buildRevision();
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("System Name","about");
 	infoString += ": ";
