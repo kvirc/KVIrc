@@ -147,7 +147,6 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
 
 	if(doc.isEmpty())doc = szHelpDir + "/index.html";
-	else doc = szHelpDir + "/" + doc;
 
 	QFileInfo * f= new QFileInfo(doc);
 	if(f)
