@@ -124,11 +124,32 @@ public:
 	void completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches);
 	void completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * matches);
 	void completeModuleFunction(const QString &szModuleName,const QString &szFunctionBegin,KviPointerList<QString> * matches);
-/*
-	KviPointerList<QString> * completeCommandAllocateResult(const QString &szCommandBegin);
-	KviPointerList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin);
-	void freeCompletionResult(KviPointerList<QString> * l);
-*/
+
+	KviPointerList<QString> * completeCommandAllocateResult(const QString &szCommandBegin)
+	{
+		KviPointerList<QString> *p=new KviPointerList<QString>;
+		completeCommand(szCommandBegin,p);
+
+		return p;
+	}
+		
+	KviPointerList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin)
+	{
+		KviPointerList<QString> *p=new KviPointerList<QString>;
+		completeFunction(szFunctionBegin,p);
+
+		return p;
+	}
+	void freeCompletionResult(KviPointerList<QString> * l)
+	{
+		for (int i=0;i<l->count();i++)
+		{
+			delete l->at(i);
+		}
+		delete l;
+		
+	}
+
 };
 
 #endif //!_KVI_KVS_KERNEL_H_
