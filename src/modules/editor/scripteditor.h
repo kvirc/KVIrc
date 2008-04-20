@@ -38,6 +38,7 @@
 #include <QCheckBox>
 #include <QEvent>
 #include <QTextEdit>
+#include <QListWidget>
 
 // Q3PopupMenu
 
@@ -47,7 +48,7 @@ class QTimer;
 
 typedef KviPointerList<int> ColumnList;
 
-class KviCompletionBox: public KviTalListBox
+class KviCompletionBox: public QListWidget
 {
 	Q_OBJECT
 public:
@@ -79,14 +80,14 @@ public slots:
 	void slotFind();
 	void slotHelp();
 	void slotReplace();
-	void slotComplete(const QString &str);
+	void slotComplete(QListWidgetItem *);
 
 signals:
 	void keyPressed();
 protected:
 	void contextMenuEvent(QContextMenuEvent *event);
 	virtual void keyPressEvent(QKeyEvent * e);
-	void contentsMousePressEvent(QMouseEvent *);
+	void mouseReleaseEvent(QMouseEvent *);
 	QWidget *m_pParent;
 	QString m_szHelp;
 };
