@@ -563,6 +563,7 @@ void KviConsole::closeEvent(QCloseEvent *e)
 						// nothing here
 					break;
 					default: // 2 = no
+						e->ignore();
 						return;
 					break;
 				}
@@ -596,6 +597,7 @@ void KviConsole::closeEvent(QCloseEvent *e)
 				// nothing here
 			break;
 			default: // 2 = no
+				e->ignore();
 				return;
 			break;
 		}

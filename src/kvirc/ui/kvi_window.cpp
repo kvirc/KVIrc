@@ -887,6 +887,7 @@ void KviWindow::delayedClose()
 
 void KviWindow::closeEvent(QCloseEvent *e)
 {
+	debug("GOT CLOSE EVENT");
 	e->ignore();
 	g_pFrame->childWindowCloseRequest(this);
 }

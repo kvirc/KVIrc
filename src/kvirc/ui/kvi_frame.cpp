@@ -723,18 +723,15 @@ void KviFrame::undockWindow(KviWindow *wnd)
 
 bool KviFrame::event(QEvent *e)
 {
-
-		switch(e->type())
+	switch(e->type())
+	{
+		case QEvent::Shortcut:
 		{
-		
-			case QEvent::Shortcut:
-				{
-						debug ("Shortcut");
-						return true;
-				}
+				debug ("Shortcut");
+				return true;
 		}
-		return false;
-
+	}
+	return KviTalMainWindow::event(e);
 }
 
 void KviFrame::newConsole()
@@ -948,7 +945,6 @@ void KviFrame::updateCaption()
 
 void KviFrame::closeEvent(QCloseEvent *e)
 {
-
 	if(KVI_OPTION_BOOL(KviOption_boolCloseInTray))
 	{
 		e->ignore();

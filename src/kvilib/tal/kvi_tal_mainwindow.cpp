@@ -30,7 +30,8 @@
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
 	: KMainWindow(par)
 	{
-		setWindowTitle(nam);
+		//setWindowTitle(nam);
+		setObjectName(nam);
 	}
 
 	bool KviTalMainWindow::usesBigPixmaps()
@@ -50,8 +51,9 @@
 
 #else
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-	: QMainWindow(par,nam)
+	: QMainWindow(par)
 	{
+		setObjectName(nam);
 	}
 
 	bool KviTalMainWindow::usesBigPixmaps()
