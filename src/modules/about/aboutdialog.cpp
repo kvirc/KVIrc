@@ -115,11 +115,9 @@ KviAboutDialog::KviAboutDialog()
 
 	// Get info
 	QString infoString = "<b>KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
-#ifndef COMPILE_ON_WINDOWS
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Runtime Info","about");
 	infoString += ":</b><br>";
-
 	infoString += __tr2qs_ctx("System Name","about");
 	infoString += ": ";
 	infoString += KviOsInfo::name();
@@ -137,6 +135,8 @@ KviAboutDialog::KviAboutDialog()
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Build Info","about");
 	infoString += ":</b><br>";
+// FIXME: Remove this line when win32 compiles using CMake
+#ifndef COMPILE_ON_WINDOWS
 	infoString += __tr2qs_ctx("Build Date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildDate();
