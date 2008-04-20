@@ -32,11 +32,11 @@
 #include "helpwindow.h"
 #include "kvi_fileutils.h"
 
-#include <qtoolbutton.h>
-#include <qlineedit.h>
-#include <qtooltip.h>
-#include <qtimer.h>
-#include <qclipboard.h>
+#include <QToolButton>
+#include <QLineEdit>
+#include <QToolTip>
+#include <QTimer>
+#include <QClipboard>
 
 extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
@@ -49,12 +49,9 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	if(bIsStandalone)g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 
-//#warning "Re enable this when using Qt 3.0 : QProcess "
 	m_pTextBrowser = new QTextBrowser(this,"text_browser");
 	m_pTextBrowser->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
-#ifndef COMPILE_USE_QT4
-	m_pTextBrowser->setFocusPolicy(QWidget::NoFocus);
-#endif
+	m_pTextBrowser->setFocusPolicy(Qt::NoFocus);
 	m_pToolBar = new KviTalHBox(this);
 
 	m_pBtnIndex = new KviStyledToolButton(m_pToolBar);
@@ -99,11 +96,7 @@ KviHelpWidget::~KviHelpWidget()
 
 void KviHelpWidget::showIndex()
 {
-#ifdef COMPILE_USE_QT4
 	m_pTextBrowser->setSource(QUrl("index.html"));
-#else
-	m_pTextBrowser->setSource("index.html");
-#endif
 }
 
 void KviHelpWidget::resizeEvent(QResizeEvent *e)

@@ -33,12 +33,9 @@
 
 #include "kvi_frame.h"
 
-#ifdef COMPILE_USE_QT4
-	#include <q3mimefactory.h>
-#endif
+#include <QFileInfo>
+#include <QSplitter>
 
-
-#include <qsplitter.h>
 Index        * g_pDocIndex = 0;
 KviPointerList<KviHelpWidget> * g_pHelpWidgetList = 0;
 KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
@@ -141,20 +138,22 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 { 
-	QString doc;
+	QString doc, szHelpDir;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
 	KVSM_PARAMETERS_END(c)
-	if(doc.isEmpty())doc = "index.html";
-#ifdef COMPILE_USE_QT4
-	Q3MimeSourceFactory * f = Q3MimeSourceFactory::defaultFactory();
-#else
-	QMimeSourceFactory * f = QMimeSourceFactory::defaultFactory();
-#endif
+
+	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+
+	if(doc.isEmpty())doc = szHelpDir + "/index.html";
+	else doc = szHelpDir + "/" + doc;
+
+	QFileInfo * f= new QFileInfo(doc);
 	if(f)
 	{
-		if(!f->data(doc))
-			doc = "nohelpavailable.html";
+		if(!f->exists())
+			doc = szHelpDir + "/nohelpavailable.html";
 	}
 
 	if(!c->switches()->find('n',"new"))
@@ -162,21 +161,20 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child("help_widget","KviHelpWidget");
 		if(w)
 		{
-			w->textBrowser()->setSource(doc);
+			w->textBrowser()->setSource(QUrl(doc));
 			return true;
 		}
 	}
 	if(c->switches()->find('m',"mdi")) 
 	{
 		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
-		w->textBrowser()->setSource(doc);
+		w->textBrowser()->setSource(QUrl(doc));
 		c->window()->frame()->addWindow(w);
 	} else {
 		KviHelpWidget *w = new KviHelpWidget(c->window()->frame()->splitter(),
 			c->window()->frame(),true);
-		w->textBrowser()->setSource(doc);
+		w->textBrowser()->setSource(QUrl(doc));
 		w->show();
-		//debug ("mostro");
 	}
 	return true;
 }

@@ -32,12 +32,12 @@
 #include "kvi_config.h"
 #include "kvi_styled_controls.h"
 
-#include <qfileinfo.h>
-#include <qsplitter.h>
-#include <qlineedit.h>
-#include <qmessagebox.h>
-#include <qregexp.h>
-#include <qtooltip.h>
+#include <QFileInfo>
+#include <QSplitter>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QRegExp>
+#include <QToolTip>
 #include "kvi_valuelist.h"
 
 #include "kvi_sourcesdate.h"
@@ -61,12 +61,8 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();
 		} else {
-#ifdef COMPILE_USE_QT4
 			QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0,100 );
-#else
-			QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 100 );
-#endif
-			connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setProgress(int)) );
+			connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setValue(int)) );
 			g_pDocIndex->makeIndex();
 			g_pDocIndex->writeDict();
 			g_pDocIndex->writeDocumentList();
@@ -148,12 +144,8 @@ void KviHelpWindow::loadProperties(KviConfig *cfg)
 void KviHelpWindow::refreshIndex()
 {
 	m_pIndexListBox->clear();
-#ifdef COMPILE_USE_QT4
 	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0,100 );
-#else
-	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 100 );
-#endif
-	connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setProgress(int)) );
+	connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setValue(int)) );
 	g_pDocIndex->makeIndex();
 	g_pDocIndex->writeDict();
 	g_pDocIndex->writeDocumentList();
@@ -183,11 +175,7 @@ void KviHelpWindow::startSearch()
 	(*it) = (*it).replace( "\"", "" );
     }
     if ( str.contains( '\"' ) ) {
-#ifdef COMPILE_USE_QT4
 	if ( (str.count( '\"' ))%2 == 0 ) {
-#else
-	if ( (str.contains( '\"' ))%2 == 0 ) {
-#endif
 	    int beg = 0;
 	    int end = 0;
 	    QString s;
@@ -213,11 +201,7 @@ void KviHelpWindow::startSearch()
 	    return;
 	}
     }
-#ifdef COMPILE_USE_QT4
     setCursor( Qt::WaitCursor );
-#else
-    setCursor( waitCursor );
-#endif
     m_foundDocs.clear();
     m_foundDocs = g_pDocIndex->query( m_terms, termSeq, seqWords );
  
@@ -246,11 +230,7 @@ void KviHelpWindow::startSearch()
     if ( !s.isEmpty() )
 	m_terms << s;
 
-#ifdef COMPILE_USE_QT4
     setCursor( Qt::ArrowCursor );
-#else
-    setCursor( arrowCursor );
-#endif
 }
 
 QTextBrowser * KviHelpWindow::textBrowser()
@@ -262,7 +242,7 @@ void KviHelpWindow::showIndexTopic()
 {
 	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListBox->selectedItem()) return;
 	int i=g_pDocIndex->titlesList().findIndex(m_pIndexListBox->selectedItem()->text());
-	textBrowser()->setSource(g_pDocIndex->documentList()[ i ]);
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchInIndex( const QString &s )
@@ -284,13 +264,13 @@ void KviHelpWindow::searchInIndex( const QString &s )
 void KviHelpWindow::indexSelected ( int index )
 {
 	int i=g_pDocIndex->titlesList().findIndex(m_pIndexListBox->text(index));
-	textBrowser()->setSource(g_pDocIndex->documentList()[ i ]);
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchSelected ( int index )
 {
 	int i=g_pDocIndex->titlesList().findIndex(m_pResultBox->text(index));
-	textBrowser()->setSource(g_pDocIndex->documentList()[ i ]);
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 QPixmap * KviHelpWindow::myIconPtr()

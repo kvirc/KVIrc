@@ -1,13 +1,13 @@
 #include "index.h"
 
 #include "kvi_file.h"
-#include <qdir.h>
-#include <qstringlist.h>
 #include "kvi_pointerhashtable.h"
-#include <qapplication.h>
-#include <qtextstream.h>
 #include <ctype.h>
 
+#include <QDir>
+#include <QStringList>
+#include <QApplication>
+#include <QTextStream>
 
 int kvi_compare(const Term * p1,const Term * p2)
 {
@@ -486,11 +486,7 @@ QStringList Index::getWildcardTerms( const QString &term )
 
     QStringList terms = split( term );
 
-#ifdef COMPILE_USE_QT4
-	QStringList::Iterator iter;
-#else
-    KviValueList<QString>::iterator iter;
-#endif
+    QStringList::Iterator iter;
 
 
     KviPointerHashTableIterator<QString,Entry> it( dict );
