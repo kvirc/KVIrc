@@ -121,8 +121,10 @@ KviAboutDialog::KviAboutDialog()
 	infoString += __tr2qs_ctx("System Name","about");
 	infoString += ": ";
 	infoString += KviOsInfo::name();
+#ifndef COMPILE_ON_MAC
 	infoString += " ";
 	infoString += KviOsInfo::release();
+#endif
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("System Version","about");
 	infoString += ": ";
