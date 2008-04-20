@@ -30,16 +30,52 @@
 
 #include <QString>
 
+///
+/// This namespace contains informations gathered at kvirc build time.
+/// This, in fact, is the last time that "cmake" ran and successfully generated the
+/// kvilib Makefile. Since kvilib is generally built with the kvirc
+/// executable, then you can assume that the information returned
+/// from this namespace strictly applies also to kvirc.
+///
 namespace KviBuildInfo
 {
-	QString buildDate();
-	QString buildSourcesDate();
-	QString buildCommand();
-	QString buildFlags();
-	QString buildSystem();
-	QString buildCPU();
-	QString buildCompiler();
-	QString buildCompilerFlags();
+	///
+	/// Retrieve the latest kvilib/kvirc build date.
+	///
+	extern KVILIB_API QString buildDate();
+	///
+	/// Returns the date tag applied to the currently compiled SVN sources.
+	///
+	extern KVILIB_API QString buildSourcesDate();
+	///
+	/// Returns the build command used by cmake to create the current kvirc executable.
+	///
+	extern KVILIB_API QString buildCommand();
+	///
+	/// Returns some of the build flags that were worked out by cmake at
+	/// compilation time.
+	///
+	extern KVILIB_API QString buildFlags();
+	///
+	/// Returns a description of the system that the currently running
+	/// executable was built on.
+	///
+	extern KVILIB_API QString buildSystem();
+	///
+	/// Returns a description of the CPU that the currently running
+	/// executable was built on.
+	///
+	extern KVILIB_API QString buildCPU();
+	///
+	/// Returns a description of the compiler that the currently running
+	/// executable was built with.
+	///
+	extern KVILIB_API QString buildCompiler();
+	///
+	/// Returns a description of the compiler flags that the currently running
+	/// executable was built with.
+	///
+	extern KVILIB_API QString buildCompilerFlags();
 };
 
 #endif //!_KVI_BUILDINFO_H_

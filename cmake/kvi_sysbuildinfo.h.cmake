@@ -8,5 +8,11 @@
 //=============================================================================
 
 #define KVIRC_BUILD_DATE "${CMAKE_KVIRC_BUILD_DATE}"
+#define KVIRC_BUILD_COMMAND "${CMAKE_KVIRC_BUILD_COMMAND}"
+#define KVIRC_BUILD_FLAGS "${CMAKE_KVIRC_BUILD_FLAGS}"
+#define KVIRC_BUILD_SYSTEM "${CMAKE_KVIRC_BUILD_SYSTEM}"
+#define KVIRC_BUILD_CPU "${CMAKE_KVIRC_BUILD_CPU}"
+#define KVIRC_BUILD_COMPILER "${CMAKE_KVIRC_BUILD_COMPILER}"
+#define KVIRC_BUILD_COMPILER_FLAGS "${CMAKE_KVIRC_BUILD_COMPILER_FLAGS}"
 
 #endif //!_kvi_sysbuildinfo_h_

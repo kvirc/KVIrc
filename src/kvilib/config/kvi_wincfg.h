@@ -94,7 +94,12 @@
 #define KVIRC_BUILD_DATE __DATE__" "__TIME__
 
 /* these are the build flags */
-#define BUILD_FLAGS "win32"
+#define KVIRC_BUILD_FLAGS "win32"
+#define KVIRC_BUILD_COMMAND "win32"
+#define KVIRC_BUILD_SYSTEM "win32"
+#define KVIRC_BUILD_CPU "win32"
+#define KVIRC_BUILD_COMPILER "win32"
+#define KVIRC_BUILD_COMPILER_FLAGS "win32"
 
 /* define if you have strings.h */
 /* #undef HAVE_STRINGS_H */

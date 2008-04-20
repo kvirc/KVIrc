@@ -23,7 +23,10 @@
 //
 //=============================================================================
 
+#define __KVILIB__
+
 #include "kvi_buildinfo.h"
+#include "kvi_sourcesdate.h"
 
 #if defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)
 	#include "kvi_wincfg.h"
@@ -45,31 +48,31 @@ namespace KviBuildInfo
 
 	QString buildCommand()
 	{
-		return QString(KVI_BUILD_COMMAND);
+		return QString(KVIRC_BUILD_COMMAND);
 	}
 
 	QString buildFlags()
 	{
-		return QString(KVI_BUILD_FLAGS);
+		return QString(KVIRC_BUILD_FLAGS);
 	}
 
 	QString buildSystem()
 	{
-		return QString(KVI_BUILD_SYSTEM);
+		return QString(KVIRC_BUILD_SYSTEM);
 	}
 
 	QString buildCPU()
 	{
-		return QString(KVI_BUILD_CPU);
+		return QString(KVIRC_BUILD_CPU);
 	}
 
 	QString buildCompiler()
 	{
-		return QString(KVI_BUILD_COMPILER);
+		return QString(KVIRC_BUILD_COMPILER);
 	}
 
 	QString buildCompilerFlags()
 	{
-		return QString(KVI_BUILD_COMPILER_FLAGS);
+		return QString(KVIRC_BUILD_COMPILER_FLAGS);
 	}
 };
