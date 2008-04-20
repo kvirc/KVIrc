@@ -38,6 +38,7 @@
 #include <QLayout>
 #include <QLabel>
 #include <QPixmap>
+#include <QRegExp>
 #include <QEvent>
 #include <QCloseEvent>
 
@@ -164,8 +165,9 @@ KviAboutDialog::KviAboutDialog()
 	infoString += KviBuildInfo::buildCommand();
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Build Flags","about");
-	infoString += ": ";
-	infoString += KviBuildInfo::buildFlags();
+	infoString += ": <br>&nbsp;&nbsp;&nbsp;";
+	QString flags = KviBuildInfo::buildFlags();
+	infoString += flags.replace(QRegExp(";"),"<br>&nbsp;&nbsp;&nbsp;");
 	infoString += "<br>";
 	infoString += __tr2qs_ctx("Compiler Name","about");
 	infoString += ": ";
