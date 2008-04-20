@@ -724,11 +724,10 @@ sub process_file
 			}
 
 			# Ok...we have a document in $parts
-
 			# Process the title
 			if($parts{'title'} eq "")
 			{
-				print "Warning: no title specified for $docfilename\n";
+				print "\n ($_[0]) Warning: no title specified for $docfilename\n";
 				$parts{'title'}="No title specified";
 			}
 

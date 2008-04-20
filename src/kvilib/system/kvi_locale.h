@@ -40,10 +40,10 @@ namespace KviLocale
 {
 	typedef struct _EncodingDescription
 	{
-		char * szName;
+		const char * szName;
 		char   bSmart; // is it a smart codec ?
 		char   bSendUtf8; // does it send utf8 or the local charset ?
-		char * szDescription;
+		const char * szDescription;
 	} EncodingDescription;
 
 	// you MUST start iterating from 0 and terminate when

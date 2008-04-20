@@ -313,7 +313,7 @@ public:
 	KviStr & insert(int idx,const char *data);
 	KviStr & insert(int idx,char c);
 	//Replaces all occurences of char c with the string str
-	KviStr & replaceAll(char c,const char *str);
+	KviStr & replaceAll(const char c,const char *str);
 	//same as above but with a string
 	KviStr & replaceAll(char *toFind,const char *str,bool bCaseS = true);
 	
