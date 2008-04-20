@@ -95,6 +95,9 @@ General notes for the installation of the 4.0 release of KVIrc
         Compile KDE support. It will look for the KDE headers and libraries
         and if found it will enable the KDE support.
 
+    -DCOMPILE_MACOSX_UNIVERSAL_BINARY
+        Compile universal binary for MacOS X platform
+
     -DCOMPILE_SSL_SUPPORT
         Enables the secure socket layer support. The SSL support is
         automatically enabled if OpenSSL is detected by CMake. It will also
