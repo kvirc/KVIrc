@@ -57,6 +57,9 @@
 	#endif
 
 #else
+	#ifdef Q_OS_MACX
+		#define COMPILE_ON_MAC
+	#endif
 
 	#ifdef KVIRC_EXTERNAL_MODULE
 		// when compiling an external module

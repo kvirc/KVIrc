@@ -280,7 +280,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 KviRegisteredUsersDialog::~KviRegisteredUsersDialog()
 {
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	if(!parent())KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = QRect(pos().x(),pos().y(),size().width(),size().height());
 #else
 	if(!parent())KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = geometry();

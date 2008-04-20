@@ -438,7 +438,7 @@ namespace KviOsInfo
 #ifdef COMPILE_ON_WINDOWS
 		return "Windows";
 #else
-	#ifdef Q_OS_MACX
+	#ifdef COMPILE_ON_MAC
 		return "MacOS X";
 	#else
 		struct utsname uts;

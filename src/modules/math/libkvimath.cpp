@@ -30,7 +30,7 @@
 
 // Workaround for lost isnan and isinf definitions after
 // inclusion of iostream.h on some MacOS X systems
-#ifdef Q_OS_MACX
+#ifdef COMPILE_ON_MAC
 	#ifndef isnan
 		extern "C" int isnan (double);
 	#endif

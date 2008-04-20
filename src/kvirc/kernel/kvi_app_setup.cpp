@@ -568,11 +568,11 @@ void KviApp::findGlobalKvircDirectory()
 	// Non KDE compilation , or not found under $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 
 	// Check for MacOS X Bundle compilation
-	#ifdef Q_OS_MACX
+	#ifdef COMPILE_ON_MAC
 		m_szGlobalKvircDir = applicationDirPath();
 		m_szGlobalKvircDir+= "/../Resources/";
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
-	#endif //Q_OS_MACX
+	#endif //COMPILE_ON_MAC
 
 	// Check usual directories...
 	for(int j=0;usualKvircGlobalPrePath[j] != 0;j++){
@@ -623,13 +623,13 @@ void KviApp::findGlobalKvircDirectory()
 				"A detailed explaination of the Kvirc directory system is in the INSTALL document\n"\
 				"shipped with the kvirc source dirstribution.\n"\
 				"Trying to run anyway...");
-	#elif defined(Q_OS_MACX)
+	#elif defined(COMPILE_ON_MAC)
 		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 				"The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"\
 				"Something went wrong during the bundle creation.\n"\
 				"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"\
 				"Trying to run anyway...\n");
-	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(Q_OS_MACX)
+	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
 		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 				"The usual path for this directory is /usr/local/share/kvirc.\n"\
 				"Are you sure that 'make install' worked correctly ?\n"\
@@ -638,7 +638,7 @@ void KviApp::findGlobalKvircDirectory()
 				"A detailed explaination of the KVIrc directory system is in the INSTALL document\n"\
 				"shipped with the kvirc source dirstribution.\n"\
 				"Trying to run anyway...\n");
-	#endif //!Q_OS_MACX
+	#endif //!COMPILE_ON_MAC
 #endif //!COMPILE_ON_WINDOWS
 }
 

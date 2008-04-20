@@ -52,12 +52,12 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 	
 	KviTalPopupMenu * pop = new KviTalPopupMenu(this,"KVIrc");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupMainPopup()));
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	addDefaultItem("&KVIrc",pop);
 #else
 	// Qt/Mac creates already a "KVirc" menu item on its own, and we don't like double entries ;-)
 	addDefaultItem("&IRC",pop);
-#endif //Q_OS_MACX
+#endif //COMPILE_ON_MAC
 	m_pRecentServersPopup = new KviTalPopupMenu(this,"recentservers");
 	connect(m_pRecentServersPopup,SIGNAL(aboutToShow()),this,SLOT(setupRecentServersPopup()));
 	connect(m_pRecentServersPopup,SIGNAL(activated(int)),this,SLOT(newConnectionToServer(int)));
@@ -244,11 +244,11 @@ void KviMenuBar::setupMainPopup()
 	}
 	
 // Qt/Mac creates a Quit item on its own
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	main->insertSeparator();
 
 	main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pApp,SLOT(quit()));
-#endif //Q_OS_MACX
+#endif //COMPILE_ON_MAC
 }
 
 

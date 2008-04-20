@@ -18,7 +18,7 @@
  *
  */
 
-#ifdef Q_OS_MACX
+#ifdef COMPILE_ON_MAC
 
 	#include "idle.h"
 	#include <Carbon/Carbon.h>

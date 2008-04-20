@@ -1355,7 +1355,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 
 //Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
 //This way typical X11 and Apple shortcuts can be used simultanously within the input line.
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	if(e->state() & Qt::ControlButton)
 #else
 	if((e->state() & Qt::ControlButton) || (e->state() & Qt::MetaButton))

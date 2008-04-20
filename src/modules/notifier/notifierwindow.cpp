@@ -66,7 +66,7 @@ KviNotifierWindow::KviNotifierWindow()
 #else
 			Qt::WStyle_Customize |
 			Qt::WStyle_NoBorder |
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 			Qt::WStyle_Tool |
 			Qt::WX11BypassWM |
 #endif
@@ -310,7 +310,7 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 			m_bNextDown = false;
 			m_bWriteDown = false;
 			m_bBlinkOn = false;
-		#if (!defined COMPILE_USE_QT4) || !(defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX)))
+		#if (!defined COMPILE_USE_QT4) || !(defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC)))
 			m_imgDesktop = QPixmap::grabWindow(
 						QApplication::desktop()->winId(),
 						m_wndRect.x(),
@@ -329,11 +329,11 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 				m_dOpacity = OPACITY_STEP;
 				m_eState = Showing;
 				m_bCrashShowWorkAround=true;
-				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 				setWindowOpacity(m_dOpacity);
 				#endif
 				show();
-				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 					m_pShowHideTimer->start(40);
 				#else
 					m_pShowHideTimer->start(100);
@@ -398,7 +398,7 @@ void KviNotifierWindow::heartbeat()
 
 				if(!isVisible())show(); //!!!
 				if(m_pLineEdit->isVisible())m_pLineEdit->hide();
-				#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 					setWindowOpacity(m_dOpacity);
 				#endif
 				update();
@@ -441,7 +441,7 @@ void KviNotifierWindow::heartbeat()
 			break;
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
-			#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+			#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 				setWindowOpacity(m_dOpacity);
 			#endif
 			if(m_pLineEdit->isVisible())m_pLineEdit->hide();
@@ -505,7 +505,7 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 			connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 			m_dOpacity = 1.0 - OPACITY_STEP;
 			m_eState = Hiding;
-			#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+			#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 				setWindowOpacity(m_dOpacity);
 				update();
 				m_pShowHideTimer->start(40);
@@ -646,7 +646,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 	{
 			QPainter px(this);
 	
-	#if (defined(COMPILE_ON_WINDOWS) || defined(Q_OS_MACX))
+	#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC))
 		px.drawPixmap(0,0,m_pixForeground);
 	#else
 		QImage temp_image = m_pixForeground.convertToImage();

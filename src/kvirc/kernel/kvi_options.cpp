@@ -318,7 +318,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	#ifdef COMPILE_KDE_SUPPORT
 		#define RUN_THE_BROWSER "run kfmclient openURL $0"
 	#else
-		#ifdef Q_OS_MACX
+		#ifdef COMPILE_ON_MAC
 			#define RUN_THE_BROWSER "run open $0"
 		#else
 			#define RUN_THE_BROWSER "run kvi_run_netscape $0"

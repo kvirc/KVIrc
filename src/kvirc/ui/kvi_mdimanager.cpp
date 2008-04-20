@@ -487,7 +487,7 @@ void KviMdiManager::updateSDIMode()
 // This would result in an addictional main menu bar entry on MacOSX which would trigger a popup menu and not
 // a submenu. Due to the optical reasons it is removed here.
 // The same popup is triggered by right clicking on the window name in the channel window list.
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	KviMenuBar * b = m_pFrm->mainMenuBar();
 
 	const QPixmap * pix = lpC ? lpC->icon() : 0;
@@ -506,7 +506,7 @@ void KviMdiManager::updateSDIMode()
 	} else {
 		m_pSdiIconButton->setPixmap(*pix);
 	}
-#endif //Q_OS_MACX
+#endif //COMPILE_ON_MAC
 }
 
 void KviMdiManager::activeChildSystemPopup()

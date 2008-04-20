@@ -47,7 +47,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-#ifdef Q_OS_MACX
+#ifdef COMPILE_ON_MAC
 	#include "kvi_app.h"  //Needed for g_pApp
 	#include <QDesktopWidget>
 #endif
@@ -513,7 +513,7 @@ void KviMdiChild::unsetClient()
 	setFocusProxy(0); //remove the focus proxy...
 	//Kewl...the reparent function has a small prob now..
 	//the new toplelvel widgets gets not reenabled for dnd
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 	m_pClient->reparent(0,m_pClient->mapToGlobal(QPoint(0,0)),true);
 #else
 	QRect r = g_pApp->desktop()->availableGeometry(m_pClient); 

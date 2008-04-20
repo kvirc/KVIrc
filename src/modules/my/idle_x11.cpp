@@ -17,7 +17,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
-#ifndef Q_OS_MACX
+#ifndef COMPILE_ON_MAC
 #ifndef COMPILE_ON_WINDOWS
 
 #include"idle.h"

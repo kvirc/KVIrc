@@ -1604,7 +1604,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList = new KviPointerList<KviMediaPlayerInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
-#if (!defined(COMPILE_ON_WINDOWS) && !defined(Q_OS_MACX))
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC))
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
