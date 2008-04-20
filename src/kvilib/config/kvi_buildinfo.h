@@ -7,6 +7,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Szymon Stefanek <s.stefanek at libero dot it>
+//   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,12 +26,20 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+#include "kvi_sourcesdate.h"
 
 #include <QString>
 
 namespace KviBuildInfo
 {
 	QString buildDate();
+	QString buildSourcesDate();
+	QString buildCommand();
+	QString buildFlags();
+	QString buildSystem();
+	QString buildCPU();
+	QString buildCompiler();
+	QString buildCompilerFlags();
 };
 
 #endif //!_KVI_BUILDINFO_H_

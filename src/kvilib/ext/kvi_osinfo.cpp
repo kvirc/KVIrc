@@ -78,7 +78,7 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define PRODUCT_ULTIMATE 0x00000001
 #define PRODUCT_WEB_SERVER 0x00000011
 
-static QString queryWinInfo( QueryInfo info)
+static QString queryWinInfo(QueryInfo info)
 {
 	QString szVersion;
 	OSVERSIONINFOEX osvi;
@@ -429,23 +429,23 @@ namespace KviOsInfo
 #ifdef COMPILE_ON_WINDOWS
 		return queryWinInfo(Os_Type);
 #else
-	#ifdef Q_OS_MACX
-		return "macosx";
-	#else
-		return "unix";
-	#endif
+		return "UNIX";
 #endif
 	}
-		
+
 	QString name()
 	{
 #ifdef COMPILE_ON_WINDOWS
-		return "windows";
+		return "Windows";
 #else
+	#ifdef Q_OS_MACX
+		return "MacOS X";
+	#else
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.sysname);
 		return KviQString::empty;
+	#endif
 #endif
 	}
 	

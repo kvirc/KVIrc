@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,6 +31,7 @@
 #include "kvi_fileutils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_buildinfo.h"
+#include "kvi_osinfo.h"
 #include <kvi_tal_textedit.h>
 
 #include <QWidget>
@@ -112,26 +114,60 @@ KviAboutDialog::KviAboutDialog()
 	g->addWidget(v,0,0);
 
 	// Get info
-	QString infoString = "KVIrc <b>" KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
+	QString infoString = "<b>KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "'</b><br><br>";
 #ifndef COMPILE_ON_WINDOWS
+	infoString += "<b>";
+	infoString += __tr2qs_ctx("Runtime Info","about");
+	infoString += ":</b><br>";
+
 	infoString += __tr2qs_ctx("System Name","about");
-	infoString += ": " KVI_BUILD_SYSTEM "<br>";
-	infoString += __tr2qs_ctx("CPU Name","about");
-	infoString += ": " KVI_BUILD_CPU "<br>";
-	infoString += __tr2qs_ctx("Sources Date","about");
-	infoString += ": " KVI_SOURCES_DATE "<br>";
+	infoString += ": ";
+	infoString += KviOsInfo::name();
+	infoString += " ";
+	infoString += KviOsInfo::release();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("System Version","about");
+	infoString += ": ";
+	infoString += KviOsInfo::version();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("Architecture","about");
+	infoString += ": ";
+	infoString += KviOsInfo::machine();
+	infoString += "<br><br>";
+	infoString += "<b>";
+	infoString += __tr2qs_ctx("Build Info","about");
+	infoString += ":</b><br>";
 	infoString += __tr2qs_ctx("Build Date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildDate();
 	infoString += "<br>";
+	infoString += __tr2qs_ctx("Sources Date","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::buildSourcesDate();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("System Name","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::buildSystem();
+	infoString += "<br>";
+	infoString += __tr2qs_ctx("CPU Name","about");
+	infoString += ": ";
+	infoString += KviBuildInfo::buildCPU();
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("Build Command","about");
-	infoString += ": " KVI_BUILD_COMMAND "<br>";
+	infoString += ": ";
+	infoString += KviBuildInfo::buildCommand();
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("Build Flags","about");
-	infoString += ": " KVI_BUILD_FLAGS "<br>";
+	infoString += ": ";
+	infoString += KviBuildInfo::buildFlags();
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("Compiler Name","about");
-	infoString += ": " KVI_BUILD_COMPILER "<br>";
+	infoString += ": ";
+	infoString += KviBuildInfo::buildCompiler();
+	infoString += "<br>";
 	infoString += __tr2qs_ctx("Compiler Flags","about");
-	infoString += ": " KVI_BUILD_COMPILER_FLAGS;
+	infoString += ": ";
+	infoString += KviBuildInfo::buildCompilerFlags();
 #endif
 	v->setText(infoString);
 

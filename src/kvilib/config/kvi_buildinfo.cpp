@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Szymon Stefanek <s.stefanek at libero dot it>
+//   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -35,5 +36,40 @@ namespace KviBuildInfo
 	QString buildDate()
 	{
 		return QString(KVIRC_BUILD_DATE);
+	}
+
+	QString buildSourcesDate()
+	{
+		return QString(KVI_SOURCES_DATE);
+	}
+
+	QString buildCommand()
+	{
+		return QString(KVI_BUILD_COMMAND);
+	}
+
+	QString buildFlags()
+	{
+		return QString(KVI_BUILD_FLAGS);
+	}
+
+	QString buildSystem()
+	{
+		return QString(KVI_BUILD_SYSTEM);
+	}
+
+	QString buildCPU()
+	{
+		return QString(KVI_BUILD_CPU);
+	}
+
+	QString buildCompiler()
+	{
+		return QString(KVI_BUILD_COMPILER);
+	}
+
+	QString buildCompilerFlags()
+	{
+		return QString(KVI_BUILD_COMPILER_FLAGS);
 	}
 };
