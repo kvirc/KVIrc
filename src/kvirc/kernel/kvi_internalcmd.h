@@ -67,6 +67,6 @@
 
 #define KVI_NUM_INTERNAL_COMMANDS 40
 
-extern KVIRC_API char * kvi_getInternalCommandBuffer(int idx);
+extern KVIRC_API const char * kvi_getInternalCommandBuffer(int idx);
 
 #endif //_KVI_INTERNALCMD_H_

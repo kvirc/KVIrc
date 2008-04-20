@@ -2102,7 +2102,7 @@ KviStr & KviStr::hexDecode(const char * pFrom)
 	return (*this);
 }
 
-KviStr & KviStr::replaceAll(char c,const char *str)
+KviStr & KviStr::replaceAll(const char c,const char *str)
 {
 	int idx = findFirstIdx(c);
 	KviStr tmp;

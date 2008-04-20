@@ -26,7 +26,7 @@
 
 // FIXME: #warning "LOCALIZE THIS!"
 
-static char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
+static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 {
 	"echo INTERNAL COMMAND ERROR: INDEX OUT OF RANGE",
 	"help.open -n -m index.html",
@@ -71,7 +71,7 @@ static char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 };
 
 
-char * kvi_getInternalCommandBuffer(int idx)
+const char * kvi_getInternalCommandBuffer(int idx)
 {
 	if(idx > 0 && idx < KVI_NUM_INTERNAL_COMMANDS)
 	{

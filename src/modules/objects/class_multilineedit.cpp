@@ -43,7 +43,7 @@
 
 
 //->Tables for Text Format
-static char * const mod_tbl[] =	{
+static const char * const mod_tbl[] =	{
 					"PlainText",
 					"RichText",
 					"AutoText",

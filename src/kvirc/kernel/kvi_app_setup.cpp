@@ -253,7 +253,7 @@ bool KviApp::checkFileAssociations()
 }
 
 
-bool KviApp::checkUriAssociations(char * proto)
+bool KviApp::checkUriAssociations(const char * proto)
 {
 #ifdef COMPILE_ON_WINDOWS
 #define QUERY_BUFFER 2048
