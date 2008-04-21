@@ -85,7 +85,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_layout,"layout","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addWidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addMultiCellWidget", functionAddMultiCellWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setRowStretch", functionSetRowStretch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setColStretch", functionSetColStretch)
+	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setColumnStretch", functionSetColStretch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addRowSpacing", functionAddRowSpacing)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addColSpacing", functionAddColSpacing)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setMargin", functionSetMargin)
@@ -146,6 +146,7 @@ bool KviKvsObject_layout::functionAddWidget(KviKvsObjectFunctionCall *c)
 	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uRow,uCol);
 	return true;
 }
+
 bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject * pObject;
@@ -179,6 +180,7 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol,(uEndRow < 0) ? -1 : uEndRow - uStartRow + 1, (uEndCol < 0) ? -1 : uEndCol - uStartCol + 1);
 	return true;
 }
+
 bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uRow,uStretch;
@@ -190,6 +192,7 @@ bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
 	((QGridLayout *)object())->setRowStretch(uRow,uStretch);
 	return true;
 }
+
 bool KviKvsObject_layout::functionSetColumnStretch(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol,uStretch;
@@ -221,7 +224,6 @@ bool KviKvsObject_layout::functionSetSpacing(KviKvsObjectFunctionCall *c)
     if (widget()) ((QGridLayout *)object())->setSpacing(uSpacing);
 	return true;
 }
-
 
 bool KviKvsObject_layout::functionAddRowSpacing(KviKvsObjectFunctionCall *c)
 {
@@ -262,4 +264,3 @@ bool KviKvsObject_layout::functionSetResizeMode(KviKvsObjectFunctionCall *c)
 	return true;
 
 }
-
