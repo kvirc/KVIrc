@@ -9,6 +9,11 @@ static const char * g_szAboutText = "" \
 "contributed in some way to the KVIrc project.<br><br>" \
 "Honor and glory to:<br>" \
 "</h4><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Core developers</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+2\"><b>Szymon Stefanek</b></font>" \
@@ -38,6 +43,253 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Alessandro Carbone</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Noldor" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"noldor at barmes dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Betatesting, bugfixing, exotic scripting, documentation," \
+"<br>" \
+"code improvements, win32 packages... To be continued :-)" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"&lt;Grifisx&gt;...damned brackets  ...there are always too many...\"" \
+"<br>" \
+"\"&lt;Noldor&gt;....or too few..\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Elvio Basello</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"HelLViS69" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"hellvis69 at netsons dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Site (re)creator, Italian translation, scripting," \
+"<br>" \
+"bughunting, Slackware packages, new ideas..." \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"&lt;HelLViS69&gt; Blessed gdb, in the name of ritchie,\"" \
+"<br>" \
+"\"kermingham and rms\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Alexey Uzhva</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Alexey" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"wizard at opendoor dot ru" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Bugfixing, code improvements, localization improvements" \
+"<br>" \
+"To be continued :-)" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Thomas Kalla</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"|Tom|@IrcNet" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"MacOS X porting" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Translators</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Ahinu</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Ahinu" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"ahinu.laman at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"French translation, code fixes, betatesting and heavy bughunting" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>_Otaku</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"_Otaku" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"notakou at tiscali dot fr" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"French translation" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>mren</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"mren" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"kvirc at mrmx dot de" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"German translation" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Ionic</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Ionic" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"ionic at ionic dot de" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"German translation" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Fiber^</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Fiber^" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"vfiber at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Hungarian translation" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>José Melo</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Ze_M" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"mmodem00 at netvisao dot pt" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Portuguese translation, default script patches and Mandriva (MDE) packager." \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Graphics</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Cle'</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"etherea`" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"badgirl at virg0 dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Artist :)" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"Time makes no sense ;)\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Andidas</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Andidas" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"http://www.andidas.com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Splash screen Artist :)" \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Packagers</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Massimiliano Leone</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"k0sm|k0" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"k0smik0 at logorroici dot org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Debian packages, moral support" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"One must make one's self superior to humanity, in power,\"" \
+"<br>" \
+"\"in loftiness of soul, in contempt. - Friedrich Nietzsche\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Services</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+2\"><b>Jan Wagner</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
@@ -52,6 +304,11 @@ static const char * g_szAboutText = "" \
 "<br>" \
 "you KVIrc through IPv6." \
 "</font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Historic project staff</b></font>" \
+"</td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
@@ -472,7 +729,7 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Du&#353;an Hok&#367;v</b></font>" \
+"<font color=\"#000000\" size=\"+2\"><b>Dušan Hokův</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
 "Hunterz" \
@@ -515,32 +772,10 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Thomas Kalla</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"|Tom|@IrcNet" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"MacOSX porting" \
-"</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+2\"><b>Valeriy Girchenko</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "Russian translation" \
-"</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>José Melo</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Ze_M" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Portuguese translation, default script patches and Mandriva (MDE) packager." \
 "</font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
@@ -558,29 +793,6 @@ static const char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
 "Portuguese Brasilian translation" \
 "</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Alessandro Carbone</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Noldor" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"noldor at barmes dot org" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Betatesting, bugfixing, exotic scripting," \
-"<br>" \
-"code improvements, documentation....To be continued :-)" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"&lt;Grifisx&gt;...damned brackets  ...there are always too many...\"" \
-"<br>" \
-"\"&lt;Noldor&gt;....or too few..\"" \
-"</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
@@ -602,79 +814,10 @@ static const char * g_szAboutText = "" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"&lt;Grifisx&gt; The difference between me and you is just that\"" \
 "<br>" \
-"\"&lt;Grifisx&gt; You see things and you say \"Why?\" But I dream things \"" \
+"\"&lt;Grifisx&gt; You see things and you say \"Why?\" But I dream things\"" \
 "<br>" \
 "\"&lt;Grifisx&gt; that never were and I say...\"Why not?\"\"" \
 "</i></font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Alexey Uzhva</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Alexey" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"wizard at opendoor dot ru" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Bugfixing, code improvements, localization improvements" \
-"<br>" \
-"To be continued :-)" \
-"</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Ahinu</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Ahinu" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"ahinu at wanadoo dot fr " \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"French translation, code fixes, betatesting and heavy bughunting" \
-"</font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Cle'</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Etherea" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"badgirl at virg0 dot org" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Artist :)" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"Time makes no sense ;)\"" \
-"</i></font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Andidas</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"Andidas" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"http://www.andidas.com" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Splash screen Artist :)" \
-"</font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
@@ -693,50 +836,6 @@ static const char * g_szAboutText = "" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"everything is possible, it only needs its time.\"" \
-"</i></font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Elvio Basello</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"HelLViS69" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"hellvis69 at netsons dot org" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Site (re)creator, Italian translation, scripting," \
-"<br>" \
-"bughunting, Slackware packages, new ideas..." \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"&lt;HelLViS69&gt; Blessed gdb, in the name of ritchie,\"" \
-"<br>" \
-"\"kermingham and rms\"" \
-"</i></font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>Massimiliano Leone</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"k0sm|k0" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"k0smik0 at logorroici dot org" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"Debian packages, moral support" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"One must make one's self superior to humanity, in power,\"" \
-"<br>" \
-"\"in loftiness of soul, in contempt. - Friedrich Nietzsche\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \

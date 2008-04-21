@@ -10,7 +10,12 @@ while(<TEMPLATE>)
 	$_ =~ s/</&lt;/g;
 	$_ =~ s/>/&gt;/g;
 
-	if(/^NAME:[ 	]*/)
+	if(/^SECTION:[ 	]*/)
+	{
+		$_ =~ s/^SECTION:[ 	]*//;
+		$cnt++;
+		$g_sections[$cnt]=$_;
+	} elsif(/^NAME:[ 	]*/)
 	{
 		$_ =~ s/^NAME:[ 	]*//;
 		$cnt++;
@@ -70,7 +75,7 @@ sub p
 
 open(OUT,">abouttext.inc") or die "Can't open abouttext.inc";
 
-print OUT "static char * g_szAboutText = \"\" \\\n";
+print OUT "static const char * g_szAboutText = \"\" \\\n";
 
 p "<html>";
 p " <head>";
@@ -89,6 +94,16 @@ $i = 0;
 $cnt++;
 while($i < $cnt)
 {
+	if($g_sections[$i] ne "")
+	{
+		p "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">";
+		p "<tr><td align=\"center\">";
+		p "<font color=\"#000000\" size=\"+3\"><b>$g_sections[$i]</b></font>";
+		p "</td></tr>";
+		p "</table><br><br>";
+		$i++;
+	}
+
 	p "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">";
 	p "<tr><td align=\"center\">";
 	p "<font color=\"#000000\" size=\"+2\"><b>$g_names[$i]</b></font>";
@@ -107,7 +122,6 @@ while($i < $cnt)
 			$j++;
 		}
 		p ")</font></td></tr>";
-
 	}
 
 	if($g_mails[$i] ne "")
