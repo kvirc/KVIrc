@@ -190,7 +190,7 @@ bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
 	((QGridLayout *)object())->setRowStretch(uRow,uStretch);
 	return true;
 }
-bool KviKvsObject_layout::functionsetColumnStretch(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_layout::functionSetColumnStretch(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
