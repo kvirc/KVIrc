@@ -194,4 +194,20 @@ protected slots:
 };
 
 
+class KviStatusBarUpdateIndicator : public KviStatusBarApplet
+{
+	Q_OBJECT
+public:
+	KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	virtual ~KviStatusBarUpdateIndicator();
+public:
+	static void selfRegister(KviStatusBar * pBar);
+protected:
+	virtual void mouseDoubleClickEvent(QMouseEvent *e);
+	virtual QString tipText(const QPoint &);
+protected slots:
+	void updateDisplay();
+};
+
+
 #endif //!_KVI_STATUSBARAPPLET_H_

@@ -59,7 +59,6 @@
 // FIXME: Applets in modules SHOULD be unregistered automatically on unload!
 /*
 	IDEAS:
-		- Lag meter
 		- Countdown timer
 */
 
@@ -142,6 +141,7 @@ void KviStatusBarApplet::select(bool bSelect)
 }
 
 
+// Away applet
 KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -254,6 +254,7 @@ not_connected:
 }
 
 
+// Lag indicator applet
 KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -374,6 +375,7 @@ void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 }
 
 
+// Clock applet
 KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -443,6 +445,7 @@ void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
 }
 
 
+// Connection timer applet
 KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -518,6 +521,7 @@ void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
 }
 
 
+// Separator applet
 KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
@@ -538,4 +542,99 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
 		__tr2qs("Separator"),"separator",CreateStatusBarSeparator);
 	pBar->registerAppletDescriptor(d);
+}
+
+
+// Update applet
+KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+: KviStatusBarApplet(pParent,pDescriptor)
+{
+	/*
+	connect(pParent->frame(),SIGNAL(activeContextChanged()),this,SLOT(updateDisplay()));
+	connect(pParent->frame(),SIGNAL(activeContextStateChanged()),this,SLOT(updateDisplay()));
+	connect(pParent->frame(),SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(updateDisplay()));
+	*/
+	updateDisplay();
+
+	if(!pixmap())
+		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+}
+
+KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
+{
+}
+
+void KviStatusBarUpdateIndicator::updateDisplay()
+{
+	/*
+	KviIrcContext * c = statusBar()->frame()->activeContext();
+
+	if(c && c->isConnected())
+	{
+		setPixmap(c->connection()->userInfo()->isAway() ?
+				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
+	} else {
+		// FIXME: We'd like to appear disabled here... but then we
+		//        no longer get mouse events :/
+		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
+	}
+	*/
+}
+
+KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+{
+	return new KviStatusBarUpdateIndicator(pBar,pDescriptor);
+}
+
+void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
+{
+	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
+		__tr2qs("Update Indicator"),"updateindicator",CreateStatusBarUpdateIndicator,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)));
+	pBar->registerAppletDescriptor(d);
+}
+
+void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	if(!(e->button() & Qt::LeftButton))return;
+	/*
+	KviIrcConnection * c = statusBar()->frame()->activeConnection();
+	if(!c)return;
+	if(c->state() != KviIrcConnection::Connected)return;
+	QString command;
+	if(m_bAwayOnAllContexts)
+		command = "if($away)back -a; else away -a";
+	else
+		command = "if($away)back; else away";
+	KviKvsScript::run(command,c->console());
+	*/
+}
+
+QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
+{
+	/*
+	KviIrcConnection * c = statusBar()->frame()->activeConnection();
+	QString ret = "<center><b>";
+	if(!c)goto not_connected;
+	if(c->state() != KviIrcConnection::Connected)goto not_connected;
+	if(c->userInfo()->isAway())
+	{
+		QString tmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
+		ret += __tr2qs("Away since");
+		ret += ' ';
+		ret += tmp;
+		ret += "</b><br>";
+		ret += __tr2qs("Double click to leave away mode");
+	} else {
+		ret += __tr2qs("Not away");
+		ret += "</b><br>";
+		ret += __tr2qs("Double click to enter away mode");
+	}
+	ret += "</center>";
+	return ret;
+	
+not_connected:
+	ret +=  __tr2qs("Not connected");
+	ret += "</b></center>";
+	return ret;
+	*/
 }
