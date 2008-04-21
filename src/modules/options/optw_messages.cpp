@@ -440,7 +440,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	}
 
 	layout()->setRowStretch(0,1);
-	layout()->setColStretch(0,1);
+	layout()->setColumnStretch(0,1);
 
 	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemChanged(KviTalListViewItem *)));
 	connect(m_pForeListBox,SIGNAL(selectionChanged(KviTalListBoxItem *)),this,SLOT(colorChanged(KviTalListBoxItem *)));

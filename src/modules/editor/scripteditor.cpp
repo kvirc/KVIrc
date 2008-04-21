@@ -202,7 +202,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 
 
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 }
 
 KviScriptEditorWidgetColorOptions::~KviScriptEditorWidgetColorOptions()
@@ -623,18 +623,17 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	const QChar * c = pBuf;
 	QTextCharFormat commentFormat;
 	commentFormat.setForeground(g_clrComment);
-	commentFormat.setToolTip("Prova del tooltip");
 	commentFormat.setFont(g_fntNormal);
 
 	QTextCharFormat bracketFormat;
-	 bracketFormat.setForeground(g_clrBracket);
-	 bracketFormat.setFont(g_fntNormal);
+	bracketFormat.setForeground(g_clrBracket);
+	bracketFormat.setFont(g_fntNormal);
 
-	 QTextCharFormat punctuationFormat;
-	 punctuationFormat.setForeground(g_clrPunctuation);
-	 punctuationFormat.setFont(g_fntNormal);
+	QTextCharFormat punctuationFormat;
+	punctuationFormat.setForeground(g_clrPunctuation);
+	punctuationFormat.setFont(g_fntNormal);
 
-	 QTextCharFormat keywordFormat;
+	QTextCharFormat keywordFormat;
 	keywordFormat.setForeground(g_clrKeyword);
 	keywordFormat.setFont(g_fntNormal);
 
@@ -651,7 +650,6 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	functionFormat.setFont(g_fntNormal);
 	
 	
-	//if(!c)return setCurrentBlockState(endStateOfLastPara);
 	int endStateOfLastPara=currentBlockState();
 	if(endStateOfLastPara < 0)endStateOfLastPara = 0;
 	
@@ -922,10 +920,16 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	
 	m_pEditor = new KviScriptEditorWidget(this);
-	g->addMultiCellWidget(m_pEditor,0,0,0,3);
+	g->addWidget(w, 0, 0, 1,4);
+        //{ addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
+
+	//g->addMultiCellWidget(m_pEditor,0,0,0,3);
 	g->setRowStretch(0,1);
 
-	QToolButton * b = new QToolButton(Qt::DownArrow,this,"dsa2");
+	QToolButton * b = new QToolButton(this);
+	b->setArrowType(Qt::DownArrow);
+	b->setObjectName("dsa2");
+
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);
 
@@ -934,11 +938,11 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	pop->insertItem(__tr2qs_ctx("&Save As...","editor"),this,SLOT(saveToFile()));
 	pop->insertSeparator();
 	pop->insertItem(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
-	b->setPopup(pop);
-	b->setPopupDelay(1);
+	b->setMenu(pop);
+//	b->setPopupDelay(1);
 
-	g->setColStretch(1,1);
-	g->setColStretch(2,10);
+	g->setColumnStretch(1,1);
+	g->setColumnStretch2,10);
 	g->addWidget(m_pFindLineedit,1,2);
 	QLabel *lab= new QLabel("find",this);
 	lab->setText(tr("Find"));

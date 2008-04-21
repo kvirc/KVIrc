@@ -176,7 +176,7 @@ KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(Q
 
 
 
-	//layout()->setColStretch(0,1);
+	//layout()->setColumnStretch(0,1);
 	layout()->setRowStretch(1,1);
 }
 

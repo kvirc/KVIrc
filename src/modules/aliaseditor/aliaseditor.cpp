@@ -1332,7 +1332,7 @@ KviAliasEditorWindow::KviAliasEditorWindow(KviFrame * lpFrm)
 	btn->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
 
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 }
 
 KviAliasEditorWindow::~KviAliasEditorWindow()

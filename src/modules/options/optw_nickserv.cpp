@@ -131,7 +131,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okPressed()));
 	gl->addWidget(m_pOkButton,iNextLine,3);
 
-	gl->setColStretch(1,1);
+	gl->setColumnStretch(1,1);
 	gl->setRowStretch(bUseServerMaskField ? 5 : 4,1);
 	
 	setMinimumWidth(250);

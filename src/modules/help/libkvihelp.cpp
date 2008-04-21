@@ -145,10 +145,18 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
-
-	if(doc.isEmpty())doc = szHelpDir + "/index.html";
-
+	if(doc.isEmpty()){
+		
+		doc = szHelpDir + "\\index.html";
+		debug ("No file, use default at path %s",doc.toUtf8().data());
+	}
+	else
+	
+	{
+		debug("Doc set from user to %s",doc.toUtf8().data());
+	}	
 	QFileInfo * f= new QFileInfo(doc);
+	debug ("Path %d",doc.toUtf8().data());
 	if(f)
 	{
 		if(!f->exists())

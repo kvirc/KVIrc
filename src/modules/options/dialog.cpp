@@ -259,7 +259,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	g1->addWidget(b,1,4);
 
 	g1->setRowStretch(0,1);
-	g1->setColStretch(1,1);
+	g1->setColumnStretch(1,1);
 
 
 	fillListView(0,g_pOptionsInstanceManager->instanceEntryTree(),szGroup);

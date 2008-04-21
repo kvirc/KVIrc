@@ -94,7 +94,7 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(accept()));
 	
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	
 	//setMinimumSize(250,120);
 }
@@ -132,7 +132,7 @@ KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &sz
 	QTimer::singleShot(0,this,SLOT(startDownload()));
 
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	setMinimumSize(250,120);
 }
@@ -237,7 +237,7 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	//g->addWidget(b,2,2);
 	
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	//setMinimumSize(250,120);
 }
 

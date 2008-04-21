@@ -133,8 +133,8 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 	connect(m_pDelete,SIGNAL(clicked()),this,SLOT(delMediaType()));
 	layout()->addWidget(m_pDelete,10,2);
 
-	layout()->setColStretch(1,1);
-	layout()->setColStretch(2,1);
+	layout()->setColumnStretch(1,1);
+	layout()->setColumnStretch(2,1);
 	layout()->setRowStretch(0,1);
 
 	m_pLastItem = 0;

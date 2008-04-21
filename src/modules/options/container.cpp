@@ -72,7 +72,7 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 
 
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->className());
 	if(e)

@@ -225,7 +225,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		g->addMultiCellWidget(tl,0,0,0,1);
 	}
 
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	m_bMultiLine = bMultiLine;
 

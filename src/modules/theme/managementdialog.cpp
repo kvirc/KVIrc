@@ -213,7 +213,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	g->addWidget(b,2,1);
 
 	g->setRowStretch(1,0);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	fillThemeBox();
 	m_pContextPopup = new KviTalPopupMenu(this);

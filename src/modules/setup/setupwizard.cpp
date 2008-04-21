@@ -107,7 +107,7 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	//m_pVBox->setMaximumHeight(450);
 	g->addWidget(m_pVBox,0,1);
 	
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	QLabel * l = new QLabel(m_pVBox);
 	l->setAlignment(Qt::AlignAuto | Qt::AlignTop);

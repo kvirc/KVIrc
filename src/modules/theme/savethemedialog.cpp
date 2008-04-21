@@ -132,7 +132,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 
 
 	pLayout->setRowStretch(3,1);
-	pLayout->setColStretch(1,1);
+	pLayout->setColumnStretch(1,1);
 
 	addPage(pPage,__tr2qs_ctx("Theme Informations","theme"));
 	setBackEnabled(pPage,true);

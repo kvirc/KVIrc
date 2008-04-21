@@ -181,7 +181,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	gl->addWidget(l,3,0);
 
 	gl->setRowStretch(3,1);
-	gl->setColStretch(1,1);
+	gl->setColumnStretch(1,1);
 
 	tw->addTab(tab,__tr2qs_ctx("General","options"));
 
@@ -311,7 +311,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	connect(b,SIGNAL(clicked()),this,SLOT(reject()));
 
 	g->setRowStretch(2,1);
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	tw->setMinimumWidth(375);
 }
@@ -503,7 +503,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(l,2,0);
 
 	gl->setRowStretch(2,1);
-	//gl->setColStretch(1,1);
+	//gl->setColumnStretch(1,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WHO)),__tr2qs_ctx("Identity","options"));
 
@@ -745,7 +745,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	connect(b,SIGNAL(clicked()),this,SLOT(reject()));
 
 	g->setRowStretch(2,1);
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	tw->setMinimumWidth(390);
 	
@@ -1091,9 +1091,9 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	fillServerList();
 
 	layout()->setRowStretch(0,1);
-	//layout()->setColStretch(1,5);
-	//layout()->setColStretch(2,2);
-	layout()->setColStretch(0,1);
+	//layout()->setColumnStretch(1,5);
+	//layout()->setColumnStretch(2,2);
+	layout()->setColumnStretch(0,1);
 	setMinimumWidth(320);
 }
 

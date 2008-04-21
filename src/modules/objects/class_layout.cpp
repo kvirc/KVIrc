@@ -175,7 +175,8 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow,uStartCol,uEndRow,uEndCol);
+	// { addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol,(uEndRow < 0) ? -1 : uEndRow - uStartRow + 1, (uEndCol < 0) ? -1 : uEndCol - uStartCol + 1);
 	return true;
 }
 bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
@@ -189,7 +190,7 @@ bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
 	((QGridLayout *)object())->setRowStretch(uRow,uStretch);
 	return true;
 }
-bool KviKvsObject_layout::functionSetColStretch(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_layout::functionsetColumnStretch(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)

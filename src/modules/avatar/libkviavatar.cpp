@@ -100,7 +100,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 }
 
 KviAsyncAvatarSelectionDialog::~KviAsyncAvatarSelectionDialog()

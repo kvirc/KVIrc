@@ -1850,7 +1850,7 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,2,1);
 
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	g->setRowStretch(1,1);
 }
 

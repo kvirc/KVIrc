@@ -101,7 +101,7 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 	g->addWidget(pb,5,3);
 
 	g->setRowStretch(4,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	
 	if(f)
 	{

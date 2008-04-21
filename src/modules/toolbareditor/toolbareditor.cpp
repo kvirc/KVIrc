@@ -185,7 +185,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	g->addMultiCellWidget(m_pAdvancedButton,4,4,0,1);
 	
 	g->setRowStretch(0,1);
-	g->setColStretch(2,1);
+	g->setColumnStretch(2,1);
 }
 
 KviCustomToolBarPropertiesDialog::~KviCustomToolBarPropertiesDialog()
@@ -314,7 +314,7 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 	g->addWidget(b,7,1);
 
 	g->setRowStretch(5,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	
 	m_pDrawer->fill();
 

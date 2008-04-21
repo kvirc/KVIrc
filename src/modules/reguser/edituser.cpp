@@ -117,7 +117,7 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 	pb->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 
 	g->setRowStretch(1,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	fillData();
 }
@@ -275,7 +275,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
 	//pb->setMinimumWidth(120);
 
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 	g->setRowStretch(0,1);
 
 	m_pNickEdit->setText(m->nick());
@@ -379,7 +379,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	m_pEditMaskButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	g->setRowStretch(4,1);
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	addTab(p1,__tr2qs("Identity"));
 
@@ -437,7 +437,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	connect(pb,SIGNAL(clicked()),this,SLOT(editAllPropertiesClicked()));
 	g->addWidget(pb,6,2);
 
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 	g->setRowStretch(3,1);
 
 	addTab(p2,__tr2qs("Properties"));

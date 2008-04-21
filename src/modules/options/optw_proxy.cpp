@@ -132,7 +132,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	fillProxyList();
 
 	layout()->setRowStretch(0,1);
-	layout()->setColStretch(0,1);
+	layout()->setColumnStretch(0,1);
 
 	m_pContextPopup = new KviTalPopupMenu(this);
 }

@@ -121,7 +121,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 */
 
 	g->setRowStretch(0,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	fillListView();
 

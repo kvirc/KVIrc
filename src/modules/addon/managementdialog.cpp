@@ -219,7 +219,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	g->addWidget(b,10,2);
 
 	g->setRowStretch(9,1);
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	fillListView();
 
