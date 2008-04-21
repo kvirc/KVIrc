@@ -60,6 +60,16 @@ while(<TEMPLATE>)
 		}
 		$tmp = "$tmp$_";
 		$g_nicks[$cnt] = $tmp;
+	} elsif(/^FROM:[ 	]*/)
+	{
+		$_ =~ s/^FROM:[ 	]*//;
+		$tmp = $g_contributors[$cnt];
+		if($tmp ne "")
+		{
+			$tmp = "$tmp<!!!>";
+		}
+		$tmp = "$tmp$_";
+		$g_contributors[$cnt] = $tmp;
 	}
 }
 
@@ -166,6 +176,20 @@ while($i < $cnt)
 			$j++;
 		}
 		p "</i></font></td></tr>";
+	}
+
+	if($g_contributors[$i] ne "")
+	{
+		p "<tr><td align=\"center\"><font color=\"#FF0000\">";
+		@n = split(/<!!!>/,$g_contributors[$i]);
+		$j = 0;
+		while($n[$j] ne "")
+		{
+			if($j > 0){ p "<br>" ; }
+			p $n[$j];
+			$j++;
+		}
+		p "</font></td></tr>";
 	}
 
 	p "</table><br><br>";

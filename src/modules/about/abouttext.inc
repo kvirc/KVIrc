@@ -107,6 +107,14 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>CtrlAltCa</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"CtrlAltCa" \
+")</font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+2\"><b>Thomas Kalla</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
@@ -303,6 +311,27 @@ static const char * g_szAboutText = "" \
 "support gay^Wguy :o) and the man that gives" \
 "<br>" \
 "you KVIrc through IPv6." \
+"</font></td></tr>" \
+"</table><br><br>" \
+"<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+3\"><b>Contributors</b></font>" \
+"</td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Tomasz Moń</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"desowin" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"desowin at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#FF0000\">" \
+"Audacious project" \
 "</font></td></tr>" \
 "</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
