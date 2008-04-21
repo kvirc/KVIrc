@@ -920,10 +920,8 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	
 	m_pEditor = new KviScriptEditorWidget(this);
-	g->addWidget(w, 0, 0, 1,4);
-        //{ addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
-
-	//g->addMultiCellWidget(m_pEditor,0,0,0,3);
+	g->addWidget(m_pEditor, 0, 0, 1,4);
+ 
 	g->setRowStretch(0,1);
 
 	QToolButton * b = new QToolButton(this);
@@ -942,7 +940,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 //	b->setPopupDelay(1);
 
 	g->setColumnStretch(1,1);
-	g->setColumnStretch2,10);
+	g->setColumnStretch(2,10);
 	g->addWidget(m_pFindLineedit,1,2);
 	QLabel *lab= new QLabel("find",this);
 	lab->setText(tr("Find"));
@@ -1197,10 +1195,12 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
  
 	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
-	layout->addMultiCellWidget( m_pFindlineedit, 2, 2, 1, 2 );
+	layout->addWidget(m_pFindlineedit,2,2,0,1);
+	//layout->addMultiCellWidget( m_pFindlineedit, 2, 2, 1, 2 );
 
 	m_pReplacelineedit = new QLineEdit( this, "replacelineedit" );
-	layout->addMultiCellWidget( m_pReplacelineedit, 3, 3, 1, 2 );
+	layout->addWidget( m_pReplacelineedit,3,3,0,1);
+		//3, 3, 1, 2 );
 
 	m_pFindlineedit->setFocus();
 
@@ -1258,7 +1258,7 @@ void KviScriptEditorReplaceDialog::slotReplace()
 {
 	QString txt=((KviScriptEditorWidget *)m_pParent)->text();
 	if (checkReplaceAll->isChecked()) emit replaceAll(m_pFindlineedit->text(),m_pReplacelineedit->text());
-	txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),false);
+	txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),Qt::CaseInsensitive);
 	((KviScriptEditorWidget *)m_pParent)->setText(txt);
 	((KviScriptEditorWidget *)m_pParent)->setModified(true);
 	m_pFindlineedit->setText("");
