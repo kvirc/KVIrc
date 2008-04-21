@@ -129,7 +129,6 @@ public:
 	{
 		KviPointerList<QString> *p=new KviPointerList<QString>;
 		completeCommand(szCommandBegin,p);
-
 		return p;
 	}
 		
@@ -137,11 +136,11 @@ public:
 	{
 		KviPointerList<QString> *p=new KviPointerList<QString>;
 		completeFunction(szFunctionBegin,p);
-
 		return p;
 	}
 	void freeCompletionResult(KviPointerList<QString> * l)
 	{
+		if (!l) return;
 		for (int i=0;i<l->count();i++)
 		{
 			delete l->at(i);

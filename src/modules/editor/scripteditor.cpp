@@ -70,10 +70,11 @@ static QColor g_clrPunctuation(180,180,0);
 static QColor g_clrFind(0,0,0);
 static QFont g_fntNormal("Courier New",8);
 
-KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
+KviCompletionBox::KviCompletionBox(QTextEdit * parent = 0)
 : QListWidget(parent)
 {
 	QPalette p = palette();
+	m_pTextEdit=parent;
 	p.setColor(foregroundRole(),QColor(0,0,0));
 	p.setColor(backgroundRole(),QColor(255,255,255));
 //	setPaletteBackgroundColor(QColor(255,255,255));
@@ -91,32 +92,34 @@ KviCompletionBox::KviCompletionBox(QWidget * parent = 0)
 
 void KviCompletionBox::updateContents(QString buffer)
 {
-	buffer=buffer.stripWhiteSpace();
-	KviPointerList<QString> list;
+	//buffer=buffer.stripWhiteSpace();
+	debug("Update Contents");
+	KviPointerList<QString> *list;
 	clear();
 	
-	QString szModule;
-	QChar* pCur = (QChar *)buffer.ucs2();
+	//QString szModule;
+	//QChar* pCur = (QChar *)buffer.ucs2();
 	
-	int pos=buffer.find('.');
+	//int pos=buffer.find('.');
 	
-	if(pos>0)
+/*	if(pos>0)
 	{
 		szModule=buffer.left(pos);
 		if(szModule[0].unicode()=='$')
 			szModule.remove(0,1);
 	}
-	
+*/	
+	QChar* pCur = (QChar *)buffer.ucs2();
 	if(pCur->unicode() == '$')
 	{
 		buffer.remove(0,1);
 		if(!buffer.isEmpty())
 		{
-			if(szModule.isEmpty())
-				KviKvsKernel::instance()->completeFunction(buffer,&list);
-			else
+			//if(szModule.isEmpty())
+				list=KviKvsKernel::instance()->completeFunctionAllocateResult(buffer);
+			//else
 				debug("we need a module completion!");
-			for ( QString* szCurrent = list.first(); szCurrent; szCurrent = list.next() )
+			for ( QString* szCurrent = list->first(); szCurrent; szCurrent = list->next() )
 			{
 				szCurrent->prepend('$');
 				//szCurrent->append('(');
@@ -126,18 +129,23 @@ void KviCompletionBox::updateContents(QString buffer)
 	}
 	else
 	{
-		if(szModule.isEmpty())
-			KviKvsKernel::instance()->completeCommand(buffer,&list);
-		else
-			debug("we need a module completion!");
-		for ( QString* szCurrent = list.first(); szCurrent; szCurrent = list.next() )
+		//if(szModule.isEmpty())
+			list=KviKvsKernel::instance()->completeCommandAllocateResult(buffer);
+//		else
+//			debug("we need a module completion!");
+		for ( QString* szCurrent = list->first(); szCurrent; szCurrent = list->next() )
 		{
+			debug ("Add word %s",(*szCurrent).toUtf8().data());
 			szCurrent->append(' ');
 			addItem(*szCurrent);
 		}
 	}
+	KviKvsKernel::instance()->freeCompletionResult(list);
 //	debug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,count());
 }
+
+
+
 
 void KviCompletionBox::keyPressEvent(QKeyEvent * e)
 {
@@ -299,16 +307,16 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 		switch(e->key())
 		{
 			case Qt::Key_B:
-				insert("$b");
+				insertPlainText("$b");
 				return;
 			case Qt::Key_K:
-				insert("$k");
+				insertPlainText("$k");
 				return;
 			case Qt::Key_O:
-				insert("$o");
+				insertPlainText("$o");
 				return;
 			case Qt::Key_U:
-				insert("$u");
+				insertPlainText("$u");
 				return;
 			case Qt::Key_Enter:
 			case Qt::Key_Return:
@@ -324,6 +332,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	{
 		if (e->key() == Qt::Key_Insert) 
 		{
+			debug("Trigger key INS");
 			completition();
 			return;
 		}
@@ -353,7 +362,8 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 			break;
 		case Qt::Key_Return:
 			QTextEdit::keyPressEvent(e);
-		/*	int para,pos;
+			/*
+			int para,pos;
 			getCursorPosition(&para,&pos);
 			if(para > 0)
 			{
@@ -377,7 +387,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 				}
 //				debug("|%i|",pos);
 			}
-			*/
+		*/	
 			return;
 		default:
 			setFocus();
@@ -406,8 +416,7 @@ void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
 	QTextCursor cur=cursorForPosition(e->pos());
 	cur.select(QTextCursor::WordUnderCursor);
 	buffer=cur.selectedText();
-	debug ("TEXTaaaaaaaa %s",buffer.toUtf8().data());
-
+ debug ("Word selected %s",buffer.toUtf8().data());
 	QString tmp=buffer;
 	KviPointerList<QString> *l;
 	if (tmp.left(1) == "$")
@@ -427,7 +436,7 @@ void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
 		QString str=*(l->at(i));
 		debug ("TEXT %s",str.toUtf8().data());
 	}
-//	KviKvsKernel::instance()->freeCompletionResult(l);
+	KviKvsKernel::instance()->freeCompletionResult(l);
 	debug (buffer);
 	m_szHelp=buffer;
 	}
@@ -509,8 +518,14 @@ void KviScriptEditorWidget::getWordOnCursor(QString &buffer,int index) const
 
 void KviScriptEditorWidget::completition(bool bCanComplete)
 {
-	/*
-	
+	debug("Completition start");
+	//QRect r=cursorRect();
+	QTextCursor cur=textCursor();
+		//ForPosition(QPoint(r.x(),r.y()));
+	cur.select(QTextCursor::WordUnderCursor);
+	QString buffer=cur.selectedText();
+	debug("Buffer %s",buffer.toUtf8().data());
+/*
 	int line,index;
 	QString buffer;
 	QString word;
@@ -518,8 +533,11 @@ void KviScriptEditorWidget::completition(bool bCanComplete)
 	buffer=this->text(line);
 	bool bIsFirstWordInLine;
 	getWordBeforeCursor(buffer,index,&bIsFirstWordInLine);
+	*/
+
 	if(!buffer.isEmpty())
 		completelistbox->updateContents(buffer);
+	/*
 	if (completelistbox->count() == 1) word=completelistbox->text(0);
 	if (!word.isEmpty() && bCanComplete)
 	{
@@ -528,16 +546,18 @@ void KviScriptEditorWidget::completition(bool bCanComplete)
 	}
 	if( completelistbox->count() == 0 )
 		completelistbox->hide();
-	else if(!completelistbox->isVisible())
+			*/
+	//else 
+	if(!completelistbox->isVisible())
 	{
 		if (completelistbox->count() <6) completelistbox->resize(completelistbox->width(),(completelistbox->count()*completelistbox->fontMetrics().height()+20));
 		else completelistbox->resize(completelistbox->width(),6*completelistbox->fontMetrics().height()+20);
-		int posy=paragraphRect(line).bottom();
-		int posx=fontMetrics().width(this->text(line).left(index));
-		completelistbox->move(posx,posy);
+//		int posy=paragraphRect(line).bottom();
+//		int posx=fontMetrics().width(this->text(line).left(index));
+		completelistbox->move(0,0);
 		completelistbox->show();
 	}
-	*/
+
 }
 
 void KviScriptEditorWidget::getWordBeforeCursor(QString &buffer,int index,bool *bIsFirstWordInLine)
