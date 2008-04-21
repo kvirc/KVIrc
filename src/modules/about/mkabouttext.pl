@@ -60,17 +60,18 @@ while(<TEMPLATE>)
 		}
 		$tmp = "$tmp$_";
 		$g_nicks[$cnt] = $tmp;
-	} elsif(/^FROM:[ 	]*/)
-	{
-		$_ =~ s/^FROM:[ 	]*//;
-		$tmp = $g_contributors[$cnt];
-		if($tmp ne "")
-		{
-			$tmp = "$tmp<!!!>";
-		}
-		$tmp = "$tmp$_";
-		$g_contributors[$cnt] = $tmp;
 	}
+	#elsif(/^FROM:[ 	]*/)
+	#{
+	#	$_ =~ s/^FROM:[ 	]*//;
+	#	$tmp = $g_contributors[$cnt];
+	#	if($tmp ne "")
+	#	{
+	#		$tmp = "$tmp<!!!>";
+	#	}
+	#	$tmp = "$tmp$_";
+	#	$g_contributors[$cnt] = $tmp;
+	#}
 }
 
 close(TEMPLATE);

@@ -36,7 +36,7 @@ protected:
 	bool functionAddWidget(KviKvsObjectFunctionCall *c);
 	bool functionAddMultiCellWidget(KviKvsObjectFunctionCall *c);
 	bool functionSetRowStretch(KviKvsObjectFunctionCall *c);
-	bool functionSetColStretch(KviKvsObjectFunctionCall *c);
+	bool functionSetColumnStretch(KviKvsObjectFunctionCall *c);
 	bool functionSetMargin(KviKvsObjectFunctionCall *c);
 	bool functionSetSpacing(KviKvsObjectFunctionCall *c);
 	bool functionAddRowSpacing(KviKvsObjectFunctionCall *c);
