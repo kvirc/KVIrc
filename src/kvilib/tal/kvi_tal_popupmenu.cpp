@@ -82,6 +82,8 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const Q
 {
 	QAction * action = QMenu::addAction(pix,szText);
 	connect(action,SIGNAL(triggered(bool)),pReceiver,szSlot);
+	actionsDict.insert(identifier,action);
+
 	actionsDict[identifier++]=action;
 	return identifier-1;
 }
@@ -98,7 +100,6 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,QMenu *
 	
 int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 {
-	//return QMenu::insertItem(szText,pMenu,-1,-1);
 	QAction *a=addMenu(pMenu);
 	a->setText(szText);
 	actionsDict[identifier++]=a;

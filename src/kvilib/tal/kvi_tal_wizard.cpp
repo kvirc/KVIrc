@@ -244,7 +244,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pLayout->setMargin(8);
 	m_p->pLayout->setSpacing(4);
 	m_p->pLayout->setRowStretch(2,1);
-	m_p->pLayout->setColStretch(0,1);
+	m_p->pLayout->setColumnStretch(0,1);
 }
 
 KviTalWizard::~KviTalWizard()
