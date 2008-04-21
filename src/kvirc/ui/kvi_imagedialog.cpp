@@ -158,7 +158,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	g->addWidget(b,3,2);
 
 	g->setRowStretch(2,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	connect(m_pTypeComboBox,SIGNAL(activated(int)),this,SLOT(jobTypeSelected(int)));
 	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(itemDoubleClicked(KviTalListBoxItem *)));

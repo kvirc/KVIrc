@@ -234,7 +234,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 	connect(m_pChooseButton,SIGNAL(clicked()),this,SLOT(choosePixmap()));
 
 	g->setRowStretch(1,1);
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 	setEnabled(bEnabled);
 }

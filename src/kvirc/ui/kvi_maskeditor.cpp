@@ -212,7 +212,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 	
-	g->setColStretch(3,1);
+	g->setColumnStretch(3,1);
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
 	registerSelf();

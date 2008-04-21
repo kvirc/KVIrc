@@ -136,7 +136,7 @@
 		connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okClicked()));
 
 		g->setRowStretch(3,1);
-		g->setColStretch(2,1);
+		g->setColumnStretch(2,1);
 
 		m_pLastItem = 0;
 		m_pSessionInfo = 0;

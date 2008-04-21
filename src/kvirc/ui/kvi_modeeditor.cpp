@@ -196,7 +196,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	i++;
 
 	g->setRowStretch(i,1);
-	g->setColStretch(2,1);
+	g->setColumnStretch(2,1);
 
 	pScrollView->addChild(pBackground,0,0);
 	registerSelf();
