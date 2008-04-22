@@ -50,18 +50,20 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QRegExp>
+#include <QTreeWidget>
+#include <QMouseEvent>
 
 extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
-KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviTalListView * pListView,Type eType,const QString &szName)
-: KviTalListViewItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
+KviAliasEditorListViewItem::KviAliasEditorListViewItem(QTreeWidget * pListView,Type eType,const QString &szName)
+: QTreeWidgetItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
 {
 	setName(szName);
 }
 
 KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,Type eType,const QString &szName)
-: KviTalListViewItem(pParentNamespaceItem), m_eType(eType), m_pParentNamespaceItem(pParentNamespaceItem)
+: QTreeWidgetItem(pParentNamespaceItem), m_eType(eType), m_pParentNamespaceItem(pParentNamespaceItem)
 {
 	setName(szName);
 }
@@ -84,41 +86,37 @@ void KviAliasEditorListViewItem::setName(const QString &szName)
 KviAliasListViewItem::KviAliasListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,const QString &szName)
 : KviAliasEditorListViewItem(pParentNamespaceItem,KviAliasEditorListViewItem::Alias,szName)
 {
-	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)));
+	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 	m_cPos=QPoint(0,0);
 }
 
-KviAliasListViewItem::KviAliasListViewItem(KviTalListView * pListView,const QString &szName)
+KviAliasListViewItem::KviAliasListViewItem(QTreeWidget * pListView,const QString &szName)
 : KviAliasEditorListViewItem(pListView,KviAliasEditorListViewItem::Alias,szName)
 {
-	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)));
+	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 	m_cPos=QPoint(0,0);
 }
 
 
-KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(KviTalListView * pListView,const QString &szName)
+KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(QTreeWidget * pListView,const QString &szName)
 : KviAliasEditorListViewItem(pListView,KviAliasEditorListViewItem::Namespace,szName)
 {
-	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)));
+	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
 }
 
 KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,const QString &szName)
 : KviAliasEditorListViewItem(pParentNamespaceItem,KviAliasEditorListViewItem::Namespace,szName)
 {
-	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)));
+	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE))));
 }
 
 
 KviAliasNamespaceListViewItem * KviAliasNamespaceListViewItem::findNamespaceItem(const QString &szName)
 {
-	KviAliasEditorListViewItem * it = (KviAliasEditorListViewItem *)firstChild();
-	while(it)
+	for (int i=0;i<childCount();i++)
 	{
-		if(it->isNamespace())
-		{
-			if(KviQString::equalCI(szName,it->name()))return (KviAliasNamespaceListViewItem *)it;
-		}
-		it = (KviAliasEditorListViewItem *)it->nextSibling();
+		if (((KviAliasEditorListViewItem *)child(i))->isNamespace())
+			if(KviQString::equalCI(szName,((KviAliasEditorListViewItem *)child(i))->name()))return (KviAliasNamespaceListViewItem *)child(i);
 	}
 	return 0;
 }
@@ -133,14 +131,10 @@ KviAliasNamespaceListViewItem * KviAliasNamespaceListViewItem::getNamespaceItem(
 
 KviAliasListViewItem * KviAliasNamespaceListViewItem::findAliasItem(const QString &szName)
 {
-	KviAliasEditorListViewItem * it = (KviAliasEditorListViewItem *)firstChild();
-	while(it)
+	for (int i=0;i<childCount();i++)
 	{
-		if(it->isAlias())
-		{
-			if(KviQString::equalCI(szName,it->name()))return (KviAliasListViewItem *)it;
-		}
-		it = (KviAliasEditorListViewItem *)it->nextSibling();
+		if (((KviAliasEditorListViewItem *)child(i))->isAlias())
+			if(KviQString::equalCI(szName,((KviAliasEditorListViewItem *)child(i))->name()))return (KviAliasListViewItem *)child(i);
 	}
 	return 0;
 }
@@ -197,8 +191,28 @@ KviAliasNamespaceListViewItem * KviAliasNamespaceListViewItem::createFullNamespa
 	
 	return nit->getNamespaceItem(szName);
 }
-
-
+KviAliasEditorListView::KviAliasEditorListView(QWidget * par)
+: QTreeWidget(par)
+{
+	setColumnCount (1);
+	setHeaderLabel(__tr2qs("Alias"));
+	setSelectionMode(QAbstractItemView::ExtendedSelection);
+	setSortingEnabled(true);
+	setRootIsDecorated(true);
+	setAnimated(true);
+}
+KviAliasEditorListView::~KviAliasEditorListView()
+{
+}
+void KviAliasEditorListView::mousePressEvent (QMouseEvent *e)
+{
+		if (e->button() == Qt::RightButton)
+		{
+			QTreeWidgetItem *i=itemAt(e->pos());
+			if (i) emit rightButtonPressed(i,QCursor::pos());
+		}
+		QTreeWidget::mousePressEvent(e);
+}
 KviAliasEditor::KviAliasEditor(QWidget * par)
 : QWidget(par)
 {
@@ -213,11 +227,8 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	l->addWidget(m_pSplitter,0,0);
 	
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
-	m_pListView = new KviTalListView(box);
-	m_pListView->addColumn(__tr2qs("Alias"));
-	m_pListView->setSelectionMode(KviTalListView::Extended);
-	m_pListView->setShowSortIndicator(true);
-	m_pListView->setRootIsDecorated(true);
+	m_pListView = new KviAliasEditorListView(box);
+	
 
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
@@ -226,7 +237,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	m_pRenameButton->setEnabled(false);
 	connect(m_pRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
 	hbox->setStretchFactor(m_pNameLabel,2);
-	QToolTip::add(m_pRenameButton,__tr2qs("Edit the alias or namespace name"));
+	m_pRenameButton->setToolTip(__tr2qs("Edit the alias or namespace name"));
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
@@ -236,7 +247,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 
 	oneTimeSetup();
 
-	currentItemChanged(0);
+	currentItemChanged(0,0);
 }
 
 KviAliasEditor::~KviAliasEditor()
@@ -246,11 +257,13 @@ KviAliasEditor::~KviAliasEditor()
 
 KviAliasNamespaceListViewItem * KviAliasEditor::findNamespaceItem(const QString &szName)
 {
-	KviAliasNamespaceListViewItem * it = (KviAliasNamespaceListViewItem *)m_pListView->firstChild();
-	while(it)
+
+	int count=m_pListView->topLevelItemCount();
+	for (int i=0;i<count;i++)
 	{
-		if(KviQString::equalCI(szName,it->name()))return it;
-		it = (KviAliasNamespaceListViewItem *)it->nextSibling();
+		KviAliasNamespaceListViewItem * item=(KviAliasNamespaceListViewItem *)m_pListView->topLevelItem(i);
+		if(KviQString::equalCI(szName,item->name()))
+			return item;
 	}
 	return 0;
 }
@@ -265,6 +278,19 @@ KviAliasNamespaceListViewItem * KviAliasEditor::getNamespaceItem(const QString &
 
 KviAliasListViewItem * KviAliasEditor::findAliasItem(const QString &szName)
 {
+	int count=m_pListView->topLevelItemCount();
+	for (int i=0;i<count;i++)
+	{
+		KviAliasEditorListViewItem* item=(KviAliasEditorListViewItem *)m_pListView->topLevelItem(i);
+			if(item->isAlias())
+			{
+				if(KviQString::equalCI(szName,item->name()))	return (KviAliasListViewItem *)item;
+			}
+	}
+	return 0;
+
+
+/*
 	KviAliasEditorListViewItem * it = (KviAliasEditorListViewItem *)m_pListView->firstChild();
 	while(it)
 	{
@@ -275,6 +301,8 @@ KviAliasListViewItem * KviAliasEditor::findAliasItem(const QString &szName)
 		it = (KviAliasEditorListViewItem *)it->nextSibling();
 	}
 	return 0;
+	*/
+
 }
 
 KviAliasListViewItem * KviAliasEditor::getAliasItem(const QString &szName)
@@ -377,32 +405,44 @@ void KviAliasEditor::oneTimeSetup()
 		++it;
 	}
 		
-	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
+		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
 }
 
-bool KviAliasEditor::hasSelectedItems(KviTalListViewItem * it)
+bool KviAliasEditor::hasSelectedItemsRecursive(QTreeWidgetItem *it)
 {
-	if(!it)return false;
-	if(it->isSelected())return true;
-	if(it->isOpen())
+	for (int i=0;i<it->childCount();i++)
 	{
-		if(hasSelectedItems(it->firstChild()))return true;
+		if (!it->child(i)->isSelected()) recursiveCommit((KviAliasEditorListViewItem *)it->child(i));
+		else return true;
 	}
-	return hasSelectedItems(it->nextSibling());
+	return false;
+}
+bool KviAliasEditor::hasSelectedItems()
+{
+	for (int i=0;i<m_pListView->topLevelItemCount();i++)
+	{
+		if (hasSelectedItemsRecursive(m_pListView->topLevelItem(i))) return true;
+	}
+	return false;
 }
 
-bool KviAliasEditor::itemExists(KviTalListViewItem *pSearchFor,KviTalListViewItem * pSearchAt)
+
+bool KviAliasEditor::itemExists(QTreeWidgetItem *pSearchFor,QTreeWidgetItem * pSearchAt)
 {
+	return true;
+/*
 	if(!pSearchFor)return false;
 	if(!pSearchAt)return false;
 	if(pSearchFor == pSearchAt)return true;
-	if(itemExists(pSearchFor,pSearchAt->firstChild()))return true;
-	return itemExists(pSearchFor,pSearchAt->nextSibling());
+	if(itemExists(pSearchFor,pSearchAt->child(0)))return true;
+	for(int i=0;i<pSearchAt->childCount();i++){
+		itemExists(pSearchFor,pSearchAt->nextSibling());
+		*/
 }
 
-void KviAliasEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
+void KviAliasEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 {
 	m_pContextPopup->clear();
 	
@@ -420,16 +460,16 @@ void KviAliasEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int co
 			__tr2qs("Add Namespace"),
 			this,SLOT(newNamespace()));
 	
-	bool bHasItems = m_pListView->firstChild() != 0;
-	bool bHasSelected = hasSelectedItems(m_pListView->firstChild());
+	//bool bHasItems = m_pListView->firstChild() != 0;
+	bool bHasSelected = hasSelectedItems();
 
 	m_pContextPopup->insertSeparator();
-	
+
 	id = m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
 			__tr2qs("Remove Selected"),
 			this,SLOT(removeSelectedItems()));
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
+//	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertSeparator();
 
@@ -437,20 +477,20 @@ void KviAliasEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int co
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
 			__tr2qs("Export Selected..."),
 			this,SLOT(exportSelected()));
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
+	//m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
 			__tr2qs("Export Selected in singles files..."),
 			this,SLOT(exportSelectedSepFiles()));
 
-	m_pContextPopup->setItemEnabled(id,bHasSelected);
+//	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
 			__tr2qs("Export All..."),
 			this,SLOT(exportAll()));
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+//	m_pContextPopup->setItemEnabled(id,bHasItems);
 
 	m_pContextPopup->insertSeparator();
 
@@ -458,37 +498,40 @@ void KviAliasEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int co
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
 			__tr2qs("Find In Aliases..."),
 			this,SLOT(slotFind()));
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+//	m_pContextPopup->setItemEnabled(id,bHasItems);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
 			__tr2qs("Collapse All Namespaces"),
 			this,SLOT(slotCollapseNamespaces()));
 
-	m_pContextPopup->setItemEnabled(id,bHasItems);
+//	m_pContextPopup->setItemEnabled(id,bHasItems);
 	m_pContextPopup->popup(pnt);
 }
 
 void KviAliasEditor::recursiveSearchReplace(const QString &szSearch,KviAliasEditorListViewItem * it,bool bReplace,const QString &szReplace)
 {
+	/*
 	if(!it)return;
 	if(it->isAlias())
 	{
 		if(((KviAliasListViewItem *)it)->buffer().find(szSearch,0,false) != -1)
 		{
-			it->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED)));
+			it->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
 			if (bReplace) ((QString &)((KviAliasListViewItem *)it)->buffer()).replace(szSearch,szReplace,false);
 			openParentItems(it);
 		} else
-			it->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)));
+			it->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 	} else {
 		recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)(it->firstChild()),bReplace,szReplace);
 	}
 	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)(it->nextSibling()),bReplace,szReplace);
+	*/
 }
 
 void KviAliasEditor::slotFind()
 {
+	/*
 	g_pAliasEditorModule->lock();
 	bool bOk;
 	QString szSearch = QInputDialog::getText(
@@ -504,13 +547,14 @@ void KviAliasEditor::slotFind()
 	m_pEditor->setFindText(szSearch);
 	
 	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
+	*/
 }
 
 void KviAliasEditor::slotFindWord(const QString &szSearch)
 {
 	m_pEditor->setFindText(szSearch);
 	
-	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
+//	recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
 
 }
 
@@ -519,20 +563,20 @@ void KviAliasEditor::recursiveCollapseNamespaces(KviAliasEditorListViewItem * it
 	if(!it)return;
 	if(it->isNamespace())
 	{
-		recursiveCollapseNamespaces((KviAliasEditorListViewItem *)(it->firstChild()));
+	//	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)(it->firstChild()));
 	}
-	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)(it->nextSibling()));
-	it->setOpen(false);
+//	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)(it->nextSibling()));
+	it->setExpanded(false);
 }
 
 void KviAliasEditor::slotCollapseNamespaces()
 {
-	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)m_pListView->firstChild());
+//	recursiveCollapseNamespaces((KviAliasEditorListViewItem *)m_pListView->firstChild());
 }
 
 void KviAliasEditor::slotReplaceAll(const QString &before,const QString &after)
 {
-	recursiveSearchReplace(before,(KviAliasEditorListViewItem *)m_pListView->firstChild(),true,after);
+	//recursiveSearchReplace(before,(KviAliasEditorListViewItem *)m_pListView->firstChild(),true,after);
 }
 
 void KviAliasEditor::getExportAliasBuffer(QString &buffer,KviAliasListViewItem * it)
@@ -623,7 +667,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 
 	QString out;
 
-	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),bSelectedOnly);
+//	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),bSelectedOnly);
 	if (bSingleFiles)
 	{
 			exportSelectionInSinglesFiles(&l);
@@ -717,15 +761,16 @@ void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasListViewItem> * l,K
 	} else {
 		if(bSelectedOnly)
 		{
-			if(pStartFrom->isSelected())
+	/*		if(pStartFrom->isSelected())
 				appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false); // ALL the items below the selected namespace
 			else
 				appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),true); // only the selected items below
 		} else {
 			appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false);
+			*/
 		}
 	}
-	appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
+//	appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
 }
 
 void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
@@ -741,8 +786,9 @@ void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> *
 			l->append((KviAliasListViewItem *)pStartFrom);
 		}
 	} else {
-		if(bSelectedOnly)
+		/*if(bSelectedOnly)
 		{
+			
 			if(pStartFrom->isSelected())
 				appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false); // ALL the items below the selected namespace
 			else
@@ -750,12 +796,14 @@ void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> *
 		} else {
 			appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false);
 		}
+		*/
 	}
-	appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
+	//appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
 }
 
 void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected)
 {
+	/*
 	if(!pStartFrom)return;
 	if(pStartFrom->isSelected())
 	{
@@ -766,6 +814,8 @@ void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewIt
 		appendSelectedItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),bIncludeChildrenOfSelected);
 	}
 	appendSelectedItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bIncludeChildrenOfSelected);
+
+	*/
 }
 
 bool KviAliasEditor::removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree)
@@ -813,8 +863,8 @@ bool KviAliasEditor::removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll
 			delete it;
 			if(par)
 			{
-				if(!par->firstChild())it = par;
-				else it = 0;
+				//if(!par->firstChild())it = par;
+				//else it = 0;
 			} else {
 				it = 0;
 			}
@@ -829,7 +879,7 @@ void KviAliasEditor::removeSelectedItems()
 {
 	KviPointerList<KviAliasEditorListViewItem> l;
 	l.setAutoDelete(false);
-	appendSelectedItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+//	appendSelectedItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
 
 	bool bYesToAll = false;
 	
@@ -977,28 +1027,32 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 	return szNewName;
 }
 
-void KviAliasEditor::openParentItems(KviTalListViewItem * it)
+void KviAliasEditor::openParentItems(QTreeWidgetItem * it)
 {
 	if(it->parent())
 	{
-		it->parent()->setOpen(true);
+		it->parent()->setExpanded(true);
 		openParentItems(it->parent());
 	}
 }
 
-void KviAliasEditor::selectOneItem(KviTalListViewItem * it,KviTalListViewItem *pStartFrom)
+void KviAliasEditor::selectOneItem(QTreeWidgetItem * it,QTreeWidgetItem *pStartFrom)
 {
+	/*
 	if(!pStartFrom)return;
 	if(pStartFrom == it)pStartFrom->setSelected(true);
 	else pStartFrom->setSelected(false);
 	selectOneItem(it,pStartFrom->firstChild());
 	selectOneItem(it,pStartFrom->nextSibling());
+	*/
+
+
 }
 
-void KviAliasEditor::activateItem(KviTalListViewItem * it)
+void KviAliasEditor::activateItem(QTreeWidgetItem * it)
 {
 	openParentItems(it);
-	selectOneItem(it,m_pListView->firstChild());
+	//selectOneItem(it,m_pListView->child(0));
 	m_pListView->setCurrentItem(it);
 }
 
@@ -1006,7 +1060,7 @@ void KviAliasEditor::newAlias()
 {
 	if(m_pLastClickedItem)
 	{
-		if(!itemExists(m_pLastClickedItem,m_pListView->firstChild()))return; // dead ?
+//		if(!itemExists(m_pLastClickedItem,m_pListView->child(0)))return; // dead ?
 		if(m_pLastClickedItem->isAlias())
 			m_pLastClickedItem = m_pLastClickedItem->parentNamespaceItem();
 	}
@@ -1030,7 +1084,7 @@ void KviAliasEditor::newNamespace()
 {
 	if(m_pLastClickedItem)
 	{
-		if(!itemExists(m_pLastClickedItem,m_pListView->firstChild()))return; // dead ?
+//		if(!itemExists(m_pLastClickedItem,m_pListView->child(0)))return; // dead ?
 		if(m_pLastClickedItem->isAlias())
 			m_pLastClickedItem = m_pLastClickedItem->parentNamespaceItem();
 	}
@@ -1056,7 +1110,7 @@ bool KviAliasEditor::aliasExists(QString &szFullItemName)
 	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 
-	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+//	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
 	for(KviAliasListViewItem * it = l.first();it;it = l.next())
 	{
 		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
@@ -1072,7 +1126,7 @@ bool KviAliasEditor::namespaceExists(QString &szFullItemName)
 	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 	
-	appendNamespaceItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+//	appendNamespaceItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
 	for(KviAliasListViewItem * it = l.first();it;it = l.next())
 	{
 		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
@@ -1086,7 +1140,7 @@ bool KviAliasEditor::namespaceExists(QString &szFullItemName)
 void KviAliasEditor::renameItem()
 {
 	if(!m_pLastEditedItem)return;
-	if(!itemExists(m_pLastEditedItem,m_pListView->firstChild()))return; // dead ?
+//	if(!itemExists(m_pLastEditedItem,m_pListView->firstChild()))return; // dead ?
 
 	QString szName = buildFullItemName(m_pLastEditedItem);
 	QString szNewName;
@@ -1137,16 +1191,17 @@ void KviAliasEditor::renameItem()
 	}
 
 	// take child items, if any
-	KviPointerList<KviTalListViewItem> lChildren;
+	KviPointerList<QTreeWidgetItem> lChildren;
 	lChildren.setAutoDelete(false);
-	KviTalListViewItem * it = m_pLastEditedItem->firstChild();
-	while(it)
+//	QTreeWidgetItem * it = m_pLastEditedItem->firstChild();
+	/*while(it)
 	{
 		lChildren.append(it);
 		it = it->nextSibling();
 	}
-	for(it = lChildren.first();it;it = lChildren.next())
-		m_pLastEditedItem->takeItem(it);
+	*/
+//	for(it = lChildren.first();it;it = lChildren.next())
+//		m_pLastEditedItem->takeItem(it);
 
 	bool bYesToAll = true;
 	removeItem(m_pLastEditedItem,&bYesToAll,true);
@@ -1161,17 +1216,18 @@ void KviAliasEditor::renameItem()
 		ait->setCursorPosition(pntCursor);
 		activateItem(ait);
 
-		for(it = lChildren.first();it;it = lChildren.next())
-			ait->insertItem(it);
+//		for(it = lChildren.first();it;it = lChildren.next())
+//			ait->insertItem(it);
 	} else {
 		KviAliasNamespaceListViewItem * nit = createFullNamespaceItem(szNewName);
 		activateItem(nit);
-
+/*
 		for(it = lChildren.first();it;it = lChildren.next())
 		{
 			((KviAliasEditorListViewItem*)it)->setParentNamespaceItem(nit);
 			nit->insertItem(it);
 		}
+		*/
 	}
 }
 
@@ -1181,7 +1237,7 @@ void KviAliasEditor::saveLastEditedItem()
 {
 	if(!m_pLastEditedItem)return;
 	if(!m_pEditor->isModified())return; // nothing to save
-	if(!itemExists(m_pLastEditedItem,m_pListView->firstChild()))return; // dead ?
+//	if(!itemExists(m_pLastEditedItem,m_pListView->firstChild()))return; // dead ?
 
 	if(m_pLastEditedItem->isNamespace())return;
 
@@ -1191,7 +1247,7 @@ void KviAliasEditor::saveLastEditedItem()
 	((KviAliasListViewItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 }
 
-void KviAliasEditor::currentItemChanged(KviTalListViewItem *it)
+void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
 {
 	saveLastEditedItem();
 
@@ -1242,19 +1298,25 @@ void KviAliasEditor::recursiveCommit(KviAliasEditorListViewItem * it)
 		//          KviKvsScript has a non virtual detructor!
 		KviKvsScript * a = new KviKvsScript(szName,((KviAliasListViewItem *)it)->buffer());
 		KviKvsAliasManager::instance()->add(szName,a);
-	} else {
-		recursiveCommit((KviAliasEditorListViewItem *)(it->firstChild()));
+		return;
+	} else 
+	{
+		for (int i=0;i<it->childCount();i++)
+		{
+			recursiveCommit((KviAliasEditorListViewItem *) it->child(i));
+		}
 	}
-	recursiveCommit((KviAliasEditorListViewItem *)(it->nextSibling()));
 }
 
 void KviAliasEditor::commit()
 {
 	saveLastEditedItem();
 	KviKvsAliasManager::instance()->clear();
-
-	recursiveCommit((KviAliasEditorListViewItem *)(m_pListView->firstChild()));
-
+	for(int i=0;i<m_pListView->topLevelItemCount();i++)
+	{
+		KviAliasEditorListViewItem *item=(KviAliasEditorListViewItem *)m_pListView->topLevelItem(i);
+		recursiveCommit(item);
+	}
 	g_pApp->saveAliases();
 }
 
