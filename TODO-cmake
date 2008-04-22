@@ -7,6 +7,8 @@ transition autotools -> cmake.
 * Missing or broken rules
 - header installation (useful?)
 - fix modules capabilities loading
+- docs (help module) shouldn't be generated also at "make" time,
+        only at "make install"
 
 * Translation
 - create a make target for updating *.pot/*.po files

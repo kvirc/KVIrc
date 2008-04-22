@@ -61,6 +61,16 @@ namespace KviBuildInfo
 		return QString(KVIRC_BUILD_SYSTEM);
 	}
 
+	QString buildSystemName()
+	{
+		return QString(KVIRC_BUILD_SYSTEM_NAME);
+	}
+
+	QString buildSystemVersion()
+	{
+		return QString(KVIRC_BUILD_SYSTEM_VERSION);
+	}
+
 	QString buildCPU()
 	{
 		return QString(KVIRC_BUILD_CPU);

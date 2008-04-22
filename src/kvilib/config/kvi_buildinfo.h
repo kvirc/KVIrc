@@ -62,6 +62,16 @@ namespace KviBuildInfo
 	///
 	extern KVILIB_API QString buildSystem();
 	///
+	/// Returns the name part of the system that the currently running
+	/// executable was built on.
+	///
+	extern KVILIB_API QString buildSystemName();
+	///
+	/// Returns the version part of the system that the currently running
+	/// executable was built on.
+	///
+	extern KVILIB_API QString buildSystemVersion();
+	///
 	/// Returns a description of the CPU that the currently running
 	/// executable was built on.
 	///
