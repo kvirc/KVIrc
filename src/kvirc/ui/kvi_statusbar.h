@@ -66,6 +66,21 @@ class KVIRC_API KviStatusBar : public QStatusBar
 public:
 	KviStatusBar(KviFrame * pFrame);
 	~KviStatusBar();
+	KviFrame * frame(){ return m_pFrame; };
+	bool appletExists(KviStatusBarApplet * pApplet);
+	// pnt is global!
+	KviStatusBarApplet * appletAt(const QPoint &pnt,bool bBestMatch = false);
+
+	KviTalPopupMenu * contextPopup();
+	// takes the ownership of pMsg
+	void queueMessage(KviStatusBarMessage * pMsg);
+	// called by KviFrame
+	void activeWindowChanged();
+	
+	void registerAppletDescriptor(KviStatusBarAppletDescriptor * d);
+
+	//void addApplet(KviStatusBarApplet * pApplet);
+	//void removeApplet(KviStatusBarApplet * pApplet);
 protected:
 	KviFrame                                 * m_pFrame;
 	KviPointerList<KviStatusBarMessage>          * m_pMessageQueue;
@@ -79,11 +94,6 @@ protected:
 	int                                        m_iLastMinimumHeight;
 	bool                                       m_bStopLayoutOnAddRemove;
 	KviDynamicToolTip                        * m_pToolTip;
-public:
-	KviFrame * frame(){ return m_pFrame; };
-protected slots:
-	void messageTimerFired();
-protected:
 	void showFirstMessageInQueue();
 	virtual void paintEvent(QPaintEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
@@ -100,22 +110,8 @@ protected:
 	void load();
 	KviStatusBarApplet * createApplet(const QString &szInternalName);
 	void showLayoutHelp();
-public:
-	bool appletExists(KviStatusBarApplet * pApplet);
-	// pnt is global!
-	KviStatusBarApplet * appletAt(const QPoint &pnt,bool bBestMatch = false);
-
-	KviTalPopupMenu * contextPopup();
-	// takes the ownership of pMsg
-	void queueMessage(KviStatusBarMessage * pMsg);
-	// called by KviFrame
-	void activeWindowChanged();
-	
-	void registerAppletDescriptor(KviStatusBarAppletDescriptor * d);
-
-	//void addApplet(KviStatusBarApplet * pApplet);
-	//void removeApplet(KviStatusBarApplet * pApplet);
 protected slots:
+	void messageTimerFired();
 	void contextPopupAboutToShow();
 	void appletsPopupAboutToShow();
 	void appletsPopupActivated(int id);

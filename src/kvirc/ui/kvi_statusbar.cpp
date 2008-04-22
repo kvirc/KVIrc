@@ -70,7 +70,6 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	
 	m_pContextPopup = 0;
 	m_pAppletsPopup = 0;
-	
 	m_pClickedApplet = 0;
 
 	m_pAppletDescriptors = new KviPointerHashTable<QString,KviStatusBarAppletDescriptor>;
@@ -80,6 +79,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	KviStatusBarAwayIndicator::selfRegister(this);
 	KviStatusBarLagIndicator::selfRegister(this);
 	KviStatusBarConnectionTimer::selfRegister(this);
+	KviStatusBarUpdateIndicator::selfRegister(this);
 	KviStatusBarSeparator::selfRegister(this);
 
 	m_pAppletList = new KviPointerList<KviStatusBarApplet>;
@@ -149,7 +149,7 @@ void KviStatusBar::load()
 			if (a)
 				a->loadState(prefix.ptr(),&cfg);
 			else
-				debug("warning: failed to create applet %s (preload: %s)!",
+				qDebug("warning: failed to create applet %s (preload: %s)!",
 					szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
 		}
 	}
@@ -457,9 +457,11 @@ void KviStatusBar::paintEvent(QPaintEvent * e)
 
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
+	qDebug("mouse press event");
 	m_pClickedApplet = 0;
 	if(e->button() & Qt::RightButton)
 	{
+		qDebug("Pressed right button");
 		contextPopup()->popup(QCursor::pos());
 		return;
 	}
