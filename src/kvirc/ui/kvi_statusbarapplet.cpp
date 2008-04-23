@@ -45,6 +45,7 @@
 #include "kvi_http.h"
 #include "kvi_url.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_tal_tooltip.h"
 
 #include <QPainter>
 #include <QStyle>
@@ -53,7 +54,6 @@
 #include <QCursor>
 #include <QPixmap>
 #include <QFont>
-#include <QMessageBox>
 #include <QEvent>
 #include <QMouseEvent>
 
@@ -561,13 +561,6 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 
 	if(!pixmap())
 		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
-
-	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
-	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
-	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));
-	qDebug("Connected signals");
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
@@ -625,6 +618,13 @@ void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 
 	qDebug("Created http object");
 	m_pHttpRequest = new KviHttpRequest();
+	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
+	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
+	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));
+	qDebug("Connected signals");
+
 	qDebug("Making http request");
 	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
 }
@@ -644,7 +644,10 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
 	qDebug("Remote response: %s",response.toUtf8().data());
 
 	if(response != "HTTP/1.1 200 OK")
-		QMessageBox::warning(this,"Update Indicator",response,QMessageBox::Ok);
+		// FIXME: this segfault kvirc due to the eventloop
+		// in QMessageBox. Use KviTalToolTip and change the icon
+		// to KVI_SMALLICON_FAILUPDATE
+		//QMessageBox::warning(this,"Update Indicator",response,QMessageBox::Ok);
 }
 
 void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer)
@@ -689,8 +692,7 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 void KviStatusBarUpdateIndicator::requestCompleted(bool status)
 {
 	qDebug("Data transfer terminated");
-	// this make kvirc segfault
-	if(status) delete m_pHttpRequest;
+	delete m_pHttpRequest;
 	qDebug("Deleted http object");
 }
 
