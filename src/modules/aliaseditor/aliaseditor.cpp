@@ -788,8 +788,17 @@ void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasListViewItem> * l,b
 				l->append(((KviAliasListViewItem *)m_pListView->topLevelItem(i)));
 			}
 		}
-		else{
-			appendAliasItemsRecursive(l,m_pListView->topLevelItem(i),bSelectedOnly);
+		else
+		{
+			if(bSelectedOnly)
+			{
+				if(m_pListView->topLevelItem(i)->isSelected())
+					appendAliasItemsRecursive(l,m_pListView->topLevelItem(i),false);
+				else
+					appendAliasItemsRecursive(l,m_pListView->topLevelItem(i),true);
+			}
+			else
+				appendAliasItemsRecursive(l,m_pListView->topLevelItem(i),false);
 		}
 	}
 
@@ -810,8 +819,17 @@ void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasListViewIt
 				l->append((KviAliasListViewItem *)pStartFrom->child(i));
 			}
 		}
-		else{
-			appendAliasItemsRecursive(l,pStartFrom->child(i),bSelectedOnly);
+		else
+		{
+			if(bSelectedOnly)
+			{
+				if(pStartFrom->isSelected())
+					appendAliasItemsRecursive(l,pStartFrom->child(i),false);
+				else
+					appendAliasItemsRecursive(l,pStartFrom->child(i),true);
+			}
+			else
+				appendAliasItemsRecursive(l,pStartFrom->child(i),false);
 		}
 	}
 
