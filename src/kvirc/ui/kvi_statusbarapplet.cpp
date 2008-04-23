@@ -187,7 +187,7 @@ void KviStatusBarAwayIndicator::toggleContext()
 void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu *p)
 {
 	int id = p->insertItem(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
-	p->setItemChecked(id,m_bAwayOnAllContexts);	
+	p->setItemChecked(id,m_bAwayOnAllContexts);
 }
 
 void KviStatusBarAwayIndicator::loadState(const char * prefix,KviConfig *cfg)
@@ -250,7 +250,7 @@ QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 	}
 	ret += "</center>";
 	return ret;
-	
+
 not_connected:
 	ret +=  __tr2qs("Not connected");
 	ret += "</b></center>";
@@ -326,7 +326,7 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 	}
 	ret += "</center>";
 	return ret;
-	
+
 not_connected:
 	ret +=  __tr2qs("Not connected");
 	ret += "</b></center>";
@@ -483,7 +483,7 @@ void KviStatusBarConnectionTimer::timerEvent(QTimerEvent * e)
 				}
 			}
 		}
-	
+
 		setText(KviTimeUtils::formatTimeInterval(0,KviTimeUtils::FillWithHypens));
 	}
 	return;
@@ -643,7 +643,7 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
 {
 	qDebug("Remote response: %s",response.toUtf8().data());
 
-	if(response != "HTTP/1.1 200 OK")
+	if(response != "HTTP/1.1 200 OK");
 		// FIXME: this segfault kvirc due to the eventloop
 		// in QMessageBox. Use KviTalToolTip and change the icon
 		// to KVI_SMALLICON_FAILUPDATE
@@ -718,7 +718,7 @@ QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 	}
 	ret += "</center>";
 	return ret;
-	
+
 not_connected:
 	ret +=  __tr2qs("Not connected");
 	ret += "</b></center>";
