@@ -802,7 +802,7 @@ void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasListViewIt
 		{
 			if(bSelectedOnly)
 			{
-				if(m_pListView->topLevelItem(i)->isSelected())
+				if(pStartFrom->child(i)->isSelected())
 					l->append((KviAliasListViewItem *)pStartFrom->child(i));
 			}
 			else
@@ -817,33 +817,6 @@ void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasListViewIt
 
 }
 
-
-
-
-/*
-	if(!pStartFrom)return;
-	if(pStartFrom->isAlias())
-	{
-		if(bSelectedOnly)
-		{
-			if(pStartFrom->isSelected())
-				l->append((KviAliasListViewItem *)pStartFrom);
-		} else {
-			l->append((KviAliasListViewItem *)pStartFrom);
-		}
-	} else {
-		if(bSelectedOnly)
-		{
-			if(pStartFrom->isSelected())
-				appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false); // ALL the items below the selected namespace
-			else
-				appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),true); // only the selected items below
-		} else {
-			appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false);
-		}
-	}
-//	appendAliasItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
-*/
 
 void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
 {
