@@ -72,7 +72,7 @@ class KviAliasNamespaceListViewItem : public KviAliasEditorListViewItem
 public:
 	KviAliasNamespaceListViewItem(QTreeWidget * pListView,const QString &szName);
 	KviAliasNamespaceListViewItem(KviAliasNamespaceListViewItem * pParentNamespace,const QString &szName);
-	~KviAliasNamespaceListViewItem(){};
+	~KviAliasNamespaceListViewItem();
 public:
 	KviAliasNamespaceListViewItem * findNamespaceItem(const QString &szName);
 	KviAliasNamespaceListViewItem * getNamespaceItem(const QString &szName);
@@ -88,7 +88,7 @@ class KviAliasEditorListView : public QTreeWidget
 	Q_OBJECT
 public:
 	KviAliasEditorListView(QWidget*);
-	~KviAliasEditorListView();
+	~KviAliasEditorListView(){};
 protected:
 	void mousePressEvent (QMouseEvent *e);
 signals:
@@ -101,7 +101,7 @@ class KviAliasListViewItem : public KviAliasEditorListViewItem
 public:
 	KviAliasListViewItem(KviAliasNamespaceListViewItem * pParentNamespace,const QString &szName);
 	KviAliasListViewItem(QTreeWidget *pListView,const QString &szName);
-	~KviAliasListViewItem(){};
+	~KviAliasListViewItem();
 public:
 	QString m_szBuffer;
 	QPoint  m_cPos;
@@ -164,14 +164,16 @@ protected:
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorListViewItem *item,QString &buffer,KviAliasEditorListViewItem::Type eType);
 	void appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
-	void appendAliasItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
+	void appendAliasItems(KviPointerList<KviAliasListViewItem> * l,bool bSelectedOnly);
+	void appendAliasItemsRecursive(KviPointerList<KviAliasListViewItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
 	void appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
 	bool removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
 	QString askForNamespaceName(const QString &szAction,const QString &szText,const QString &szInitialText);
-	bool itemExists(QTreeWidgetItem *pSearchFor,QTreeWidgetItem * pSearchAt);
+	bool itemExistsRecursive(QTreeWidgetItem *pSearchFor,QTreeWidgetItem * pSearchAt);
+	bool itemExists(QTreeWidgetItem *pSearchFor);
 	bool namespaceExists(QString &szFullItemName);
 	bool aliasExists(QString &szFullItemName);
 	bool hasSelectedItems();
@@ -179,6 +181,7 @@ protected:
 	KviAliasNamespaceListViewItem * findNamespaceItem(const QString &szName);
 	KviAliasNamespaceListViewItem * getNamespaceItem(const QString &szName);
 	KviAliasListViewItem * findAliasItem(const QString &szName);
+	KviAliasListViewItem * findAliasItemRecursive(KviAliasEditorListViewItem *it,const QString &szName);
 	KviAliasListViewItem * getAliasItem(const QString &szName);
 	KviAliasListViewItem * createFullAliasItem(const QString &szFullName);
 	KviAliasNamespaceListViewItem * createFullNamespaceItem(const QString &szFullName);
