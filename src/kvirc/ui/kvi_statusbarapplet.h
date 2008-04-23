@@ -214,7 +214,7 @@ protected slots:
 	void hostResolved(const QString &);
 	void connectionEstabilished();
 	void responseReceived(const QString &);
-	void dataTerminated(bool status);
+	void requestCompleted(bool status);
 	void binaryDataReceived(const KviDataBuffer &);
 private:
 	KviHttpRequest * m_pHttpRequest;

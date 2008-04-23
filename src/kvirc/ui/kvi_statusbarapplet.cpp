@@ -555,11 +555,19 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 {
 	m_bUpdateStatus = false;
 	m_bUpdateOnStartup = false;
+	m_pHttpRequest = 0;
 
 	updateDisplay();
 
 	if(!pixmap())
 		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+
+	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
+	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
+	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));
+	qDebug("Connected signals");
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
@@ -613,19 +621,12 @@ void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 	if(!(e->button() & Qt::LeftButton))return;
 
 	QString szFileName;
-	KviUrl url("http://kvirc.net/checkversion.php");
+	KviUrl url("http://kvirc.net/checkversion.phps");
 
 	qDebug("Created http object");
 	m_pHttpRequest = new KviHttpRequest();
 	qDebug("Making http request");
 	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
-
-	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
-	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
-	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(dataTerminated(bool)));
-	qDebug("Connected signals");
 }
 
 void KviStatusBarUpdateIndicator::hostResolved(const QString &host)
@@ -648,14 +649,9 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
 
 void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer)
 {
-	// got data
-	qDebug("Data received: %s",buffer.data());
-	/*
-	KviBuildInfo::buildSystemName()
-	http://kvirc.net/?id=releases&platform=win32&version=3.4.0&lang=it
-	&platform=unix
-	&platform=macosx
-	*/
+	// Got data
+	KviStr szData((const char *)buffer.data(),buffer.size());
+	qDebug("Data received: %s",szData.ptr());
 
 	QString url = "http://kvirc.net/?id=releases&platform=";
 	QString system = KviBuildInfo::buildSystemName();
@@ -690,11 +686,11 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 	*/
 }
 
-void KviStatusBarUpdateIndicator::dataTerminated(bool status)
+void KviStatusBarUpdateIndicator::requestCompleted(bool status)
 {
 	qDebug("Data transfer terminated");
 	// this make kvirc segfault
-	//if(status) delete m_pHttpRequest;
+	if(status) delete m_pHttpRequest;
 	qDebug("Deleted http object");
 }
 
