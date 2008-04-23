@@ -41,6 +41,9 @@
 #include "kvi_kvs_script.h"
 #include "kvi_time.h"
 #include "kvi_qstring.h"
+#include "kvi_buildinfo.h"
+#include "kvi_http.h"
+#include "kvi_url.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QPainter>
@@ -50,6 +53,7 @@
 #include <QCursor>
 #include <QPixmap>
 #include <QFont>
+#include <QMessageBox>
 #include <QEvent>
 #include <QMouseEvent>
 
@@ -493,7 +497,7 @@ void KviStatusBarConnectionTimer::toggleTotal()
 void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu *p)
 {
 	int id = p->insertItem(__tr2qs("Show total connection time"),this,SLOT(toggleTotal()));
-	p->setItemChecked(id,m_bTotal);	
+	p->setItemChecked(id,m_bTotal);
 }
 
 void KviStatusBarConnectionTimer::loadState(const char * prefix,KviConfig *cfg)
@@ -549,11 +553,9 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
-	/*
-	connect(pParent->frame(),SIGNAL(activeContextChanged()),this,SLOT(updateDisplay()));
-	connect(pParent->frame(),SIGNAL(activeContextStateChanged()),this,SLOT(updateDisplay()));
-	connect(pParent->frame(),SIGNAL(activeConnectionAwayStateChanged()),this,SLOT(updateDisplay()));
-	*/
+	m_bUpdateStatus = false;
+	m_bUpdateOnStartup = false;
+
 	updateDisplay();
 
 	if(!pixmap())
@@ -566,19 +568,31 @@ KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
 
 void KviStatusBarUpdateIndicator::updateDisplay()
 {
-	/*
-	KviIrcContext * c = statusBar()->frame()->activeContext();
+	setPixmap(m_bUpdateStatus ?
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+}
 
-	if(c && c->isConnected())
-	{
-		setPixmap(c->connection()->userInfo()->isAway() ?
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
-	} else {
-		// FIXME: We'd like to appear disabled here... but then we
-		//        no longer get mouse events :/
-		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTAWAY)));
-	}
-	*/
+void KviStatusBarUpdateIndicator::toggleContext()
+{
+	m_bUpdateOnStartup = !m_bUpdateOnStartup;
+}
+
+void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu *p)
+{
+	int id = p->insertItem(__tr2qs("Check on startup"),this,SLOT(toggleContext()));
+	p->setItemChecked(id,m_bUpdateOnStartup);
+}
+
+void KviStatusBarUpdateIndicator::loadState(const char * prefix,KviConfig *cfg)
+{
+	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",prefix);
+	m_bUpdateOnStartup = cfg->readBoolEntry(tmp.ptr(),false);
+}
+
+void KviStatusBarUpdateIndicator::saveState(const char * prefix,KviConfig *cfg)
+{
+	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",prefix);
+	cfg->writeEntry(tmp.ptr(),m_bUpdateOnStartup);
 }
 
 KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
@@ -595,7 +609,74 @@ void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 
 void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
+	qDebug("Update mouse double click event");
 	if(!(e->button() & Qt::LeftButton))return;
+
+	QString szFileName;
+	KviUrl url("http://kvirc.net/checkversion.php");
+
+	qDebug("Created http object");
+	m_pHttpRequest = new KviHttpRequest();
+	qDebug("Making http request");
+	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
+
+	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
+	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
+	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
+	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(dataTerminated(bool)));
+	qDebug("Connected signals");
+}
+
+void KviStatusBarUpdateIndicator::hostResolved(const QString &host)
+{
+	qDebug("Resolved host: %s",host.toUtf8().data());
+}
+
+void KviStatusBarUpdateIndicator::connectionEstabilished()
+{
+	qDebug("Connection established");
+}
+
+void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
+{
+	qDebug("Remote response: %s",response.toUtf8().data());
+
+	if(response != "HTTP/1.1 200 OK")
+		QMessageBox::warning(this,"Update Indicator",response,QMessageBox::Ok);
+}
+
+void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer)
+{
+	// got data
+	qDebug("Data received: %s",buffer.data());
+	/*
+	KviBuildInfo::buildSystemName()
+	http://kvirc.net/?id=releases&platform=win32&version=3.4.0&lang=it
+	&platform=unix
+	&platform=macosx
+	*/
+
+	QString url = "http://kvirc.net/?id=releases&platform=";
+	QString system = KviBuildInfo::buildSystemName();
+	qDebug("System: %s",system.toUtf8().data());
+	if(system == "Windows") system = "win32";
+	else if(system == "Darwin") system = "macosx";
+	else system = "unix";
+	qDebug("System: %s",system.toUtf8().data());
+
+	url += system;
+	//url += "&version=";
+	//url += version;
+	qDebug("URL: %s",url.toUtf8().data());
+
+	// Create command to run
+	QString command = "openurl ";
+	command += url;
+
+	// Open the download page for the platform we're using
+	//KviKvsScript::run(command,
+
 	/*
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
 	if(!c)return;
@@ -607,6 +688,14 @@ void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 		command = "if($away)back; else away";
 	KviKvsScript::run(command,c->console());
 	*/
+}
+
+void KviStatusBarUpdateIndicator::dataTerminated(bool status)
+{
+	qDebug("Data transfer terminated");
+	// this make kvirc segfault
+	//if(status) delete m_pHttpRequest;
+	qDebug("Deleted http object");
 }
 
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
@@ -637,4 +726,5 @@ not_connected:
 	ret += "</b></center>";
 	return ret;
 	*/
+	return QString::null;
 }

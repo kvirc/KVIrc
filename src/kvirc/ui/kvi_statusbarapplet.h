@@ -29,6 +29,7 @@
 #include "kvi_heapobject.h"
 #include "kvi_statusbar.h"
 #include "kvi_pointerhashtable.h"
+#include "kvi_http.h"
 
 #include <QString>
 #include <QStatusBar>
@@ -200,13 +201,25 @@ class KviStatusBarUpdateIndicator : public KviStatusBarApplet
 public:
 	KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
 	virtual ~KviStatusBarUpdateIndicator();
-public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *e);
 	virtual QString tipText(const QPoint &);
+	virtual void fillContextPopup(KviTalPopupMenu *p);
+	virtual void loadState(const char * prefix,KviConfig *cfg);
+	virtual void saveState(const char * prefix,KviConfig *cfg);
 protected slots:
 	void updateDisplay();
+	void toggleContext();
+	void hostResolved(const QString &);
+	void connectionEstabilished();
+	void responseReceived(const QString &);
+	void dataTerminated(bool status);
+	void binaryDataReceived(const KviDataBuffer &);
+private:
+	KviHttpRequest * m_pHttpRequest;
+	bool             m_bUpdateStatus;
+	bool             m_bUpdateOnStartup;
 };
 
 

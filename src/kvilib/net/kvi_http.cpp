@@ -25,8 +25,8 @@
 #define __KVILIB__
 
 
-#include <qdir.h>
-#include <qtimer.h>
+#include <QDir>
+#include <QTimer>
 //#include <zlib.h>
 
 #include "kvi_http.h"
@@ -37,6 +37,7 @@
 #include "kvi_debug.h"
 #include "kvi_socket.h"
 #include "kvi_time.h"
+
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
 #endif
@@ -686,7 +687,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		
 
 		if((!m_bChunkedTransferEncoding) && ((m_eProcessingType == Blocks) || (m_eProcessingType == StoreToFile)))
-		{	
+		{
 			switch(m_eProcessingType)
 			{
 				case Blocks:
@@ -913,7 +914,6 @@ bool KviHttpRequestThread::failure(const char *error)
 	return false;
 }
 
-
 bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 {
 
@@ -1063,7 +1063,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 					{
 						// Declare problems :)
 						return failure(__tr_no_lookup("Unrecoverable SSL error during handshake"));
-					} // else can recover ? (EAGAIN , EINTR ?) ... should select for read or for write 
+					} // else can recover ? (EAGAIN , EINTR ?) ... should select for read or for write
 				}
 				break;
 				default:
@@ -1176,7 +1176,6 @@ handle_system_error:
 	return true;
 }
 
-
 int KviHttpRequestThread::selectForReadStep()
 {
 	// calls select on the main socket
@@ -1221,7 +1220,6 @@ int KviHttpRequestThread::selectForReadStep()
 
 	return 0;
 }
-
 
 bool KviHttpRequestThread::selectForRead(int iTimeoutInSecs)
 {

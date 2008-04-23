@@ -32,10 +32,10 @@
 #include "kvi_databuffer.h"
 #include "kvi_inttypes.h"
 #include "kvi_url.h"
-
-#include <qobject.h>
 #include "kvi_pointerhashtable.h"
 #include "kvi_file.h"
+
+#include <QObject>
 #include <QStringList>
 
 class KviDns;
