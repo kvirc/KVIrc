@@ -39,6 +39,7 @@ SET(CMAKE_KVIRC_BUILD_CPU ${CMAKE_SYSTEM_PROCESSOR})
 SET(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 SET(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 
+
 # Get revision number from SVN
 FIND_PACKAGE(Subversion)
 IF(Subversion_FOUND)
@@ -500,19 +501,37 @@ ELSE()
 	SET(CMAKE_STATUS_MEMORY_PROFILE_SUPPORT "no")
 ENDIF()
 
+
 ############################################################################
 # Memory checks support
 ############################################################################
-OPTION(WANT_MEMORY_CHECKS "Compile Memory Checking Support OFF)
+OPTION(WANT_MEMORY_CHECKS "Compile Memory Checking Support" OFF)
 IF(WITH_MEMORY_CHECKS)
 	SET(WANT_MEMORY_CHECKS ON)
 ENDIF()
+
 IF(WANT_MEMORY_CHECKS)
 	SET(COMPILE_MEMORY_CHECKS 1)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_MEMORY_CHECKS)
 	SET(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "user enabled")
 ELSE()
 	SET(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "no")
+ENDIF()
+
+############################################################################
+# Very important checks
+############################################################################
+OPTION(WANT_PIZZA "Pizza for everyone" OFF)
+IF(WANT_PIZZA)
+	MESSAGE(STATUS "Checking for mozzarella...found")
+	MESSAGE(STATUS "Checking for tomatoes...found")
+	MESSAGE(STATUS "Starting up the oven...done")
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_PIZZA)
+ENDIF()
+
+OPTION(WANT_BEER "Add some PaleALE to the compilation" OFF)
+IF(WANT_BEER)
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_BEER)
 ENDIF()
 
 # Check for gettext
@@ -553,6 +572,7 @@ IF(DOXYGEN_FOUND)
 ELSE()
 	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
 ENDIF()
+
 
 ###############################################################################
 #
