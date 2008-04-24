@@ -163,11 +163,18 @@ protected:
 	void selectOneItem(QTreeWidgetItem * it,QTreeWidgetItem *pStartFrom);
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorListViewItem *item,QString &buffer,KviAliasEditorListViewItem::Type eType);
-	void appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected = false);
+	void appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l);
+	void appendSelectedItemsRecursive(KviPointerList<KviAliasEditorListViewItem> * l,QTreeWidgetItem *it);
+
 	void appendAliasItems(KviPointerList<KviAliasListViewItem> * l,bool bSelectedOnly);
 	void appendAliasItemsRecursive(KviPointerList<KviAliasListViewItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
-	void appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
+	void appendNamespaceItemsRecursive(KviPointerList<KviAliasListViewItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly);
+	void appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,bool bSelectedOnly);
+
+	//void appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly);
 	bool removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll,bool bDeleteEmptyTree);
+	void removeItemChildren(KviAliasEditorListViewItem *it);
+
 	void openParentItems(QTreeWidgetItem * it);
 	void activateItem(QTreeWidgetItem * it);
 	QString askForAliasName(const QString &szAction,const QString &szText,const QString &szInitialText);
