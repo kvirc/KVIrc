@@ -76,20 +76,28 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	msg += "</center><br>";
 
 	QLabel * l = new QLabel(msg,this);
+	l->setWordWrap(true);
 	l->setMinimumWidth(250);
 
-	g->addMultiCellWidget(l,0,0,0,2);
-
-	m_pLineEdit = new QLineEdit(this);
+	//g->addMultiCellWidget(l,0,0,0,2);
+	g->addWidget(l,0,0);
+	
+	KviTalHBox * h1 = new KviTalHBox(this);
+	m_pLineEdit = new QLineEdit(h1);
 	m_pLineEdit->setText(szInitialPath);
 	m_pLineEdit->setMinimumWidth(180);
 
-	g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
-
-	QPushButton * b = new QPushButton(__tr2qs("&Browse..."),this);
+	//g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
+	QPushButton * b = new QPushButton(__tr2qs("&Browse..."),h1);
+	g->addWidget(h1,1,0);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
-	g->addWidget(b,1,2);
-	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
+	//g->addWidget(b,1,2);
+	
+
+	KviTalHBox * h = new KviTalHBox(this);
+	h->setSpacing(8);
+	g->addWidget(h,2,0);
+//	g->addMultiCellWidget(h,2,2,1,2);
 	b = new QPushButton(__tr2qs("&OK"),h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);
@@ -117,7 +125,7 @@ void KviAsyncAvatarSelectionDialog::okClicked()
 	if(!m_szAvatarName.isEmpty())
 	{
 		QString tmp = m_szAvatarName;
-		tmp.replace("\\","\\\\");
+		tmp.replace("\\","\\\\",Qt::CaseInsensitive);
 		QString szBuffer=QString("avatar.set \"%1\"").arg(tmp);
 		KviKvsScript::run(szBuffer,m_pConnection->console());
 	}
@@ -226,7 +234,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			g_pIconManager->urlToCachedFileName(szLocalFile);
 			g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile);
 
-			szLocalFilePath.replace("\\","\\\\");
+			szLocalFilePath.replace("\\","\\\\",Qt::CaseInsensitive);
 
 			QString szCommand = "http.get -w=nm ";
 				szCommand += szAvatar;

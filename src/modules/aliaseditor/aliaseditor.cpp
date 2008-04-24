@@ -899,36 +899,6 @@ void KviAliasEditor::appendNamespaceItemsRecursive(KviPointerList<KviAliasListVi
 
 }
 
-/*
-
-void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bSelectedOnly)
-{
-	if(!pStartFrom)return;
-	if(pStartFrom->isNamespace())
-	{
-		if(bSelectedOnly)
-		{
-			if(pStartFrom->isSelected())
-				l->append((KviAliasListViewItem *)pStartFrom);
-		} else {
-			l->append((KviAliasListViewItem *)pStartFrom);
-		}
-	} else {
-		/*if(bSelectedOnly)
-		{
-			
-			if(pStartFrom->isSelected())
-				appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false); // ALL the items below the selected namespace
-			else
-				appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),true); // only the selected items below
-		} else {
-			appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),false);
-		}
-	
-//	}
-	//appendNamespaceItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bSelectedOnly);
-}
-*/
 void KviAliasEditor::appendSelectedItemsRecursive(KviPointerList<KviAliasEditorListViewItem> * l,QTreeWidgetItem *it)
 
 {
@@ -960,24 +930,7 @@ void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewIt
 		}
 	}
 }
-/*
-void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewItem> * l,KviAliasEditorListViewItem * pStartFrom,bool bIncludeChildrenOfSelected)
-{
 
-	if(!pStartFrom)return;
-	if(pStartFrom->isSelected())
-	{
-		l->append(pStartFrom);
-		if(bIncludeChildrenOfSelected)
-			appendSelectedItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),bIncludeChildrenOfSelected);
-	} else {
-		appendSelectedItems(l,(KviAliasEditorListViewItem *)(pStartFrom->firstChild()),bIncludeChildrenOfSelected);
-	}
-	appendSelectedItems(l,(KviAliasEditorListViewItem *)(pStartFrom->nextSibling()),bIncludeChildrenOfSelected);
-
-	
-}
-*/
 void KviAliasEditor::removeItemChildren(KviAliasEditorListViewItem *it)
 {
 	for (int i=0;i<it->childCount();i++)
@@ -1052,10 +1005,7 @@ void KviAliasEditor::removeSelectedItems()
 {
 	KviPointerList<KviAliasEditorListViewItem> l;
 	l.setAutoDelete(false);
-	//QList<QTreeWidgetItem *> l=m_pListView->selectedItems() ;
-	//debug("Selected item %d",l.count());
 	appendSelectedItems(&l);
-
 	bool bYesToAll = false;
 	
 	for(KviAliasEditorListViewItem *it = l.first();it;it = l.next())
@@ -1287,7 +1237,7 @@ bool KviAliasEditor::aliasExists(QString &szFullItemName)
 	KviPointerList<KviAliasListViewItem> l;
 	l.setAutoDelete(false);
 
-//	appendAliasItems(&l,(KviAliasEditorListViewItem *)(m_pListView->firstChild()),false);
+	appendAliasItems(&l,false);
 	for(KviAliasListViewItem * it = l.first();it;it = l.next())
 	{
 		if (KviQString::equalCI(buildFullItemName(it),szFullItemName))
