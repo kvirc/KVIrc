@@ -1321,7 +1321,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETERS_END
 
 		QProcess proc;
-		proc.start(szCommand,l);
+		proc.startDetached(szCommand,l);
 		// FIXME: KVSCSC_pContext->warning(__tr2qs("Failed to execute command '%Q'"),&szCommand);
 		return true;
 	}
