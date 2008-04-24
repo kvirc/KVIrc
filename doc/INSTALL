@@ -86,20 +86,14 @@ General notes for the installation of the 4.0 release of KVIrc
     -DUSE_PCH
         Use pre-compiled headers
 
-    -DCOMPILE_X11_SUPPORT
-        Compile x11 support on UNIX machines
-
-    -DCOMPILE_PHONON_SUPPORT
-        Compile the new Phonon audio support
-
-    -DCOMPILE_KDE_SUPPORT
-        Compile KDE support. It will look for the KDE headers and libraries
+    -DWITH_KDE4
+        Compile KDE4 support. It will look for the KDE4 headers and libraries
         and if found it will enable the KDE support.
 
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
         Compile universal binary for MacOS X platform
 
-    -DCOMPILE_SSL_SUPPORT
+    -DWITHOUT_SSL
         Enables the secure socket layer support. The SSL support is
         automatically enabled if OpenSSL is detected by CMake. It will also
         enable crypt support
@@ -147,11 +141,13 @@ General notes for the installation of the 4.0 release of KVIrc
         so if you're really short in memory , you might use it,
         otherwise, IPC is a nice feature.
 
+/*
     -DWITHOUT_SYSTEM_MEMMOVE
         This will disable the use of the system memmove() memcpy() and
         memset() functions and enable the bundled implementations. Use
         it if you have undefined references to these functions while
         compiling.
+*/
 
     -DWITHOUT_GSM
         Explicitly disable the usage of the GSM library. This will
@@ -176,11 +172,12 @@ General notes for the installation of the 4.0 release of KVIrc
 
 
 
-
+/*
     -DWITH_ix86_ASM
         KVIrc contains some ix86 assembly routines that *could* performs
         some things faster (this is not always true, depends on the compiler).
         You might want to try it if your kvirc seems to be really slow...
+*/
 
     -DWITH_MEMORY_PROFILE
         Debug stuff...enables memory allocation profiling (don't use it :)
@@ -422,14 +419,6 @@ COMPILE_XSS_SUPPORT
         # ./configure --help
 
         Here's a list with explainations (the most common are at the top):
-
-        --enable-debug
-            This is for debugging and reporting problems.
-            It sets the compiler options in order to leave the debugging
-            informations into the kvirc executable and the libraries.
-            In this way you will be able to produce a gdb backtrace
-            in case of a crash.
-            YOU NEED THIS OPTION IF YOU WANT TO REPORT A PROGRAM CRASH.
 
         --enable-pipes
             Asks the compiler to use pipes instead of files for the
