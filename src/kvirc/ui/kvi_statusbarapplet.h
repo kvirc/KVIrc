@@ -208,7 +208,8 @@ protected:
 	virtual void fillContextPopup(KviTalPopupMenu *p);
 	virtual void loadState(const char * prefix,KviConfig *cfg);
 	virtual void saveState(const char * prefix,KviConfig *cfg);
-	void getNewVersion(const QString &);
+	void checkVersion();
+	void getNewVersion();
 protected slots:
 	void updateDisplay();
 	void toggleContext();
@@ -220,6 +221,7 @@ protected slots:
 private:
 	KviHttpRequest * m_pHttpRequest;
 	QString          m_szHttpResponse;
+	QString          m_szNewVersion;
 	bool             m_bCheckFailed;
 	bool             m_bUpdateStatus;
 	bool             m_bUpdateOnStartup;

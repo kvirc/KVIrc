@@ -594,6 +594,8 @@ void KviStatusBarUpdateIndicator::loadState(const char * prefix,KviConfig *cfg)
 {
 	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",prefix);
 	m_bUpdateOnStartup = cfg->readBoolEntry(tmp.ptr(),false);
+
+	if(m_bUpdateOnStartup) checkVersion();
 }
 
 void KviStatusBarUpdateIndicator::saveState(const char * prefix,KviConfig *cfg)
@@ -614,11 +616,8 @@ void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 	pBar->registerAppletDescriptor(d);
 }
 
-void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
+void KviStatusBarUpdateIndicator::checkVersion()
 {
-	qDebug("Update mouse double click event");
-	if(!(e->button() & Qt::LeftButton))return;
-
 	QString szFileName;
 	KviUrl url("http://kvirc.net/checkversion.php");
 
@@ -633,6 +632,15 @@ void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 
 	qDebug("Making http request");
 	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
+}
+
+void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	qDebug("Update mouse double click event");
+	if(!(e->button() & Qt::LeftButton))return;
+
+	if(m_bUpdateStatus) getNewVersion();
+	else checkVersion();
 }
 
 void KviStatusBarUpdateIndicator::hostResolved(const QString &host)
@@ -666,7 +674,14 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 
 	// The version returned by remote server is newer than ours
 	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
-		getNewVersion(QString(szData.ptr()));
+	{
+		m_szNewVersion = QString(szData.ptr());
+		if(!m_bUpdateOnStartup) getNewVersion();
+		else {
+			m_bUpdateStatus = true;
+			updateDisplay();
+		}
+	}
 }
 
 void KviStatusBarUpdateIndicator::requestCompleted(bool status)
@@ -676,9 +691,9 @@ void KviStatusBarUpdateIndicator::requestCompleted(bool status)
 	qDebug("Deleted http object");
 }
 
-void KviStatusBarUpdateIndicator::getNewVersion(const QString &version)
+void KviStatusBarUpdateIndicator::getNewVersion()
 {
-	QString url = "http://kvirc.net/?id=releases&platform=";
+	// Set build platform
 	QString system = KviBuildInfo::buildSystemName();
 	qDebug("System: %s",system.toUtf8().data());
 	if(system == "Windows") system = "win32";
@@ -686,9 +701,11 @@ void KviStatusBarUpdateIndicator::getNewVersion(const QString &version)
 	else system = "unix";
 	qDebug("System: %s",system.toUtf8().data());
 
+	// Create page to link to
+	QString url = "http://kvirc.net/?id=releases&platform=";
 	url += system;
 	url += "&version=";
-	url += version;
+	url += m_szNewVersion;
 	qDebug("URL: %s",url.toUtf8().data());
 
 	// Create command to run
