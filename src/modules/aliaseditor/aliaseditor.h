@@ -152,6 +152,7 @@ protected slots:
 	void slotCollapseNamespaces();
 	void slotFindWord(const QString &);
 	void slotReplaceAll(const QString &before,const QString &after);
+	void itemRenamed(QTreeWidgetItem *it,int col);
 protected:
 //	QString const & findWord(const QString &txt,bool);
 	void recursiveCollapseNamespaces(KviAliasEditorListViewItem * it);

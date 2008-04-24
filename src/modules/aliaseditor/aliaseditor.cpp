@@ -60,12 +60,14 @@ KviAliasEditorListViewItem::KviAliasEditorListViewItem(QTreeWidget * pListView,T
 : QTreeWidgetItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
 {
 	setName(szName);
+	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 
 KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,Type eType,const QString &szName)
 : QTreeWidgetItem(pParentNamespaceItem), m_eType(eType), m_pParentNamespaceItem(pParentNamespaceItem)
 {
 	setName(szName);
+	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 
 
@@ -90,6 +92,7 @@ KviAliasListViewItem::KviAliasListViewItem(KviAliasNamespaceListViewItem * pPare
 {
 	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 	m_cPos=QPoint(0,0);
+	
 }
 
 
@@ -98,6 +101,7 @@ KviAliasListViewItem::KviAliasListViewItem(QTreeWidget * pListView,const QString
 {
 	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
 	m_cPos=QPoint(0,0);
+
 }
 
 KviAliasListViewItem::~KviAliasListViewItem()
@@ -418,8 +422,27 @@ void KviAliasEditor::oneTimeSetup()
 	connect(m_pListView,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
 		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
+	connect(m_pListView,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(itemRenamed(QTreeWidgetItem *,int)));
+	
+	
 }
 
+
+void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
+{
+	debug("Renamed item with new text %s",it->text(col).toUtf8().data());
+	((KviAliasEditorListViewItem *)it)->setName(it->text(col));
+	QString szNam = buildFullItemName((KviAliasEditorListViewItem *)it);
+	QString szLabelText;
+	if(((KviAliasEditorListViewItem *)it)->isNamespace())
+		szLabelText = __tr2qs("Namespace");
+	else
+		szLabelText = __tr2qs("Alias");
+	szLabelText += ": <b>";
+	szLabelText += szNam;
+	szLabelText += "</b>";
+	m_pNameLabel->setText(szLabelText);
+}
 bool KviAliasEditor::hasSelectedItemsRecursive(QTreeWidgetItem *it)
 {
 	for (int i=0;i<it->childCount();i++)
