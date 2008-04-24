@@ -4,6 +4,7 @@
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dor org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -42,6 +43,8 @@
 #include "kvi_time.h"
 #include "kvi_qstring.h"
 #include "kvi_buildinfo.h"
+#include "kvi_settings.h"
+#include "kvi_miscutils.h"
 #include "kvi_http.h"
 #include "kvi_url.h"
 #include "kvi_tal_popupmenu.h"
@@ -553,6 +556,7 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
+	m_bCheckFailed = false;
 	m_bUpdateStatus = false;
 	m_bUpdateOnStartup = false;
 	m_pHttpRequest = 0;
@@ -569,8 +573,10 @@ KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
 
 void KviStatusBarUpdateIndicator::updateDisplay()
 {
-	setPixmap(m_bUpdateStatus ?
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
+	if(m_bCheckFailed)
+		setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FAILUPDATE)));
+	else
+		setPixmap(m_bUpdateStatus ? *(g_pIconManager->getSmallIcon(KVI_SMALLICON_UPDATE)) : *(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTUPDATE)));
 }
 
 void KviStatusBarUpdateIndicator::toggleContext()
@@ -614,7 +620,7 @@ void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 	if(!(e->button() & Qt::LeftButton))return;
 
 	QString szFileName;
-	KviUrl url("http://kvirc.net/checkversion.phps");
+	KviUrl url("http://kvirc.net/checkversion.php");
 
 	qDebug("Created http object");
 	m_pHttpRequest = new KviHttpRequest();
@@ -643,11 +649,12 @@ void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
 {
 	qDebug("Remote response: %s",response.toUtf8().data());
 
-	if(response != "HTTP/1.1 200 OK");
-		// FIXME: this segfault kvirc due to the eventloop
-		// in QMessageBox. Use KviTalToolTip and change the icon
-		// to KVI_SMALLICON_FAILUPDATE
-		//QMessageBox::warning(this,"Update Indicator",response,QMessageBox::Ok);
+	if(response != "HTTP/1.1 200 OK")
+	{
+		m_szHttpResponse = response;
+		m_bCheckFailed = true;
+		updateDisplay();
+	}
 }
 
 void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer)
@@ -655,38 +662,11 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 	// Got data
 	KviStr szData((const char *)buffer.data(),buffer.size());
 	qDebug("Data received: %s",szData.ptr());
+	qDebug("Version: %s",QString(KVI_VERSION).toUtf8().data());
 
-	QString url = "http://kvirc.net/?id=releases&platform=";
-	QString system = KviBuildInfo::buildSystemName();
-	qDebug("System: %s",system.toUtf8().data());
-	if(system == "Windows") system = "win32";
-	else if(system == "Darwin") system = "macosx";
-	else system = "unix";
-	qDebug("System: %s",system.toUtf8().data());
-
-	url += system;
-	//url += "&version=";
-	//url += version;
-	qDebug("URL: %s",url.toUtf8().data());
-
-	// Create command to run
-	QString command = "openurl ";
-	command += url;
-
-	// Open the download page for the platform we're using
-	//KviKvsScript::run(command,
-
-	/*
-	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	if(!c)return;
-	if(c->state() != KviIrcConnection::Connected)return;
-	QString command;
-	if(m_bAwayOnAllContexts)
-		command = "if($away)back -a; else away -a";
-	else
-		command = "if($away)back; else away";
-	KviKvsScript::run(command,c->console());
-	*/
+	// The version returned by remote server is newer than ours
+	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
+		getNewVersion(QString(szData.ptr()));
 }
 
 void KviStatusBarUpdateIndicator::requestCompleted(bool status)
@@ -696,33 +676,51 @@ void KviStatusBarUpdateIndicator::requestCompleted(bool status)
 	qDebug("Deleted http object");
 }
 
+void KviStatusBarUpdateIndicator::getNewVersion(const QString &version)
+{
+	QString url = "http://kvirc.net/?id=releases&platform=";
+	QString system = KviBuildInfo::buildSystemName();
+	qDebug("System: %s",system.toUtf8().data());
+	if(system == "Windows") system = "win32";
+	else if(system == "Darwin") system = "macosx";
+	else system = "unix";
+	qDebug("System: %s",system.toUtf8().data());
+
+	url += system;
+	url += "&version=";
+	url += version;
+	qDebug("URL: %s",url.toUtf8().data());
+
+	// Create command to run
+	QString command = "openurl ";
+	command += url;
+	qDebug("Command: %s",command.toUtf8().data());
+
+	// Open the download page for the platform we're using
+	int test = KviKvsScript::run(command,g_pActiveWindow);
+	qDebug("KviKvsScript returned: %d",test);
+}
+
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 {
-	/*
-	KviIrcConnection * c = statusBar()->frame()->activeConnection();
 	QString ret = "<center><b>";
-	if(!c)goto not_connected;
-	if(c->state() != KviIrcConnection::Connected)goto not_connected;
-	if(c->userInfo()->isAway())
+	if(m_bCheckFailed)
 	{
-		QString tmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
-		ret += __tr2qs("Away since");
-		ret += ' ';
-		ret += tmp;
+		ret += __tr2qs("Update failed");
 		ret += "</b><br>";
-		ret += __tr2qs("Double click to leave away mode");
-	} else {
-		ret += __tr2qs("Not away");
+		ret += __tr2qs("The remote server replied with ");
+		ret += m_szHttpResponse;
+		ret += "<br>";
+		ret += __tr2qs("Double click to retry");
+	} else if(!m_bUpdateStatus){
+		ret += __tr2qs("No updates found");
 		ret += "</b><br>";
-		ret += __tr2qs("Double click to enter away mode");
+		ret += __tr2qs("Double click to retry");
+	} else if(m_bUpdateStatus){
+		ret += __tr2qs("New updates found");
+		ret += "</b><br>";
+		ret += __tr2qs("Double click to get the lastest version");
 	}
 	ret += "</center>";
 	return ret;
-
-not_connected:
-	ret +=  __tr2qs("Not connected");
-	ret += "</b></center>";
-	return ret;
-	*/
-	return QString::null;
 }
