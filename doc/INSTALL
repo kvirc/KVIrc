@@ -13,13 +13,13 @@ General notes for the installation of the 4.0 release of KVIrc
     1. Introduction
     2. Minimal requirements
     3. Configuring the environment
+    4. Hacker-level installation
+    5. Creating a package
 
-    2. Guru-level installation
-    3. Hacker-level installation
-    4. Human (detailed) installation instructions
-    5. How to compile KVIrc with Qt-embedded
-    6. Compiling KVIrc on Mac OS X
-    7. A note about Windows 95/98/ME
+    5. Human (detailed) installation instructions
+    6. How to compile KVIrc with Qt-embedded
+    7. Compiling KVIrc on Mac OS X
+    8. A note about Windows 95/98/ME
 
 ###############################################################################
 # 1. Introduction
@@ -46,6 +46,7 @@ General notes for the installation of the 4.0 release of KVIrc
     - Qt GUI Toolkit 4.3.4 - http://www.trolltech.com
     - CMake 2.4.6 - http://www.cmake.org
     - C++ compiler, such as g++ - http://gcc.gnu.org/
+    - Perl - http://www.perl.com
 
 ###############################################################################
 # 3. Configuring the environment
@@ -220,7 +221,7 @@ COMPILE_XSS_SUPPORT
     (You NEED automake >= 1.5 for autogen.sh to run).
 
     # export QTDIR="your qtlibrary path"
-    You need Qt >= 4.2
+    You need Qt >= 4.3.4
 
     eventually:
 
@@ -228,10 +229,27 @@ COMPILE_XSS_SUPPORT
 
     We're using GNU tools here.
 
-    # ./configure --help
-    # ./configure [your options]
-    # make
+    # mkdir release
+    # cd release
+    # cmake [your options] ..
     # make install
+
+###############################################################################
+# 5, Creating a KVIrc package
+###############################################################################
+
+    CMake support DESTDIR argument.
+    So, if you want to make a package for your distro, you simply have to pass
+    it at "make install" stage: your install files will go to the choosed path.
+
+    # make install DESTDIR=/tmp/kvirc-4.0
+
+    After this step, just follow your distribution's rules to make a good
+    package for the distro you're running.
+
+
+
+
 
 ###############################################################################
 # 4. Human (detailed) installation:
@@ -251,7 +269,7 @@ COMPILE_XSS_SUPPORT
         so actually skip this check and go ahead. If anything fails
         in the following steps then this is the very first thing to verify.
         A broken compiler installation usually manifests itself
-        in failed ./configure tests (dlopen capabilities).
+        in failed dlopen capabilities.
         Try
 
         # gcc -v
@@ -266,7 +284,7 @@ COMPILE_XSS_SUPPORT
         You can download the latest version from ftp://ftp.trolltech.com.
         The main Qt www site is http://www.trolltech.com.
         Note for the GPL maniacs: Qt IS GPL.
-        The minimum required version is 4.2.0 (older versions *might* work)
+        The minimum required version is 4.3.4 (older versions *might* work)
         Download and install it by following the rules
         explained in the excellent documentation that comes with the library.
 
@@ -281,7 +299,7 @@ COMPILE_XSS_SUPPORT
 
         On my system the output is:
 
-        # /usr/lib/libpthread.so 
+        # /usr/lib/libpthread.so
 
         If you don't have it (the configure script will tell you)
         you can download it from your favorite GNU mirror.

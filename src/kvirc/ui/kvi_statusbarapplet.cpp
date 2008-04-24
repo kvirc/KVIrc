@@ -676,11 +676,10 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
 	{
 		m_szNewVersion = QString(szData.ptr());
+		m_bUpdateStatus = true;
+		updateDisplay();
+
 		if(!m_bUpdateOnStartup) getNewVersion();
-		else {
-			m_bUpdateStatus = true;
-			updateDisplay();
-		}
 	}
 }
 
