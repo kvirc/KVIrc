@@ -39,6 +39,7 @@ public:
 	void setStretchFactor(QWidget * child,int stretch);
 	void setSpacing(int spacing);
 	void setMargin(int margin);
+	void setAlignment(Qt::Alignment);
 protected:
 	virtual void childEvent(QChildEvent * e);
 private:

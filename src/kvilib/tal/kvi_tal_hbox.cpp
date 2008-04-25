@@ -73,6 +73,11 @@ void KviTalHBox::setMargin(int margin)
 	m_pLayout->setContentsMargins(margin,margin,margin,margin);
 }
 
+void KviTalHBox::setAlignment(Qt::Alignment alignment)
+{
+	m_pLayout->setAlignment(alignment);
+}
+
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_hbox.moc"

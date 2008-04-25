@@ -36,9 +36,10 @@ class KVILIB_API KviTalHBox : public QWidget
 public:
 	KviTalHBox(QWidget * pParent,char* name=0);
 	~KviTalHBox();
-	void setStretchFactor(QWidget * child,int stretch);
-	void setSpacing(int spacing);
-	void setMargin(int margin);
+	void setStretchFactor(QWidget *,int);
+	void setSpacing(int);
+	void setMargin(int);
+	void setAlignment(Qt::Alignment);
 protected:
 	virtual void childEvent(QChildEvent * e);
 private:
