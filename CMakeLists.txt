@@ -542,6 +542,8 @@ ENDIF()
 IF(WANT_BEER)
 	MESSAGE(STATUS "Checking for ice...")
 	MESSAGE(STATUS "Checking for ice... - found")
+	MESSAGE(STATUS "Opening the beer...")
+	MESSAGE(STATUS "Opening the beer... -  done")
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_BEER)
 ENDIF()
 
