@@ -27,14 +27,17 @@
 
 #include "kvi_settings.h"
 
-#include <q3textedit.h>
+#include <QTextEdit>
 
-class KVILIB_API KviTalTextEdit : public Q3TextEdit
+class KVILIB_API KviTalTextEdit : public QTextEdit
 {
 	Q_OBJECT
 public:
 	KviTalTextEdit(QWidget * pParent = 0,const char * name = 0)
-	: Q3TextEdit(pParent,name) {};
+	: QTextEdit(pParent)
+	{
+		setObjectName(name);
+	};
 	~KviTalTextEdit() {};
 };
 

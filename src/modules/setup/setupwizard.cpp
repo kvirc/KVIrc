@@ -191,7 +191,7 @@ KviSetupWizard::KviSetupWizard()
 
 	KviTalTextEdit * ed = new KviTalTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
-	ed->setWordWrap(KviTalTextEdit::NoWrap);
+	ed->setWordWrapMode(QTextOption::NoWrap);
 	QString szLicense;
 	QString szLicensePath;
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApp::License,"COPYING");

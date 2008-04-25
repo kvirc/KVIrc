@@ -201,7 +201,7 @@ KviAboutDialog::KviAboutDialog()
 
 	v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
-	v->setWordWrap(KviTalTextEdit::NoWrap);
+	v->setWordWrapMode(QTextOption::NoWrap);
 	g->addWidget(v,0,0);
 
 	QString szLicense;

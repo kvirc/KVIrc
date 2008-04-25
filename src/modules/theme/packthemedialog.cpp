@@ -188,7 +188,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	szThemesDescription += "</body></html>";
 
 	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
-	pTextEdit->setPaper(QBrush(QColor(255,255,255)));
+	pTextEdit->setBackgroundRole(QPalette::Window);
 	pTextEdit->setReadOnly(true);
 	pTextEdit->setText(szThemesDescription);
 	pLayout->addWidget(pTextEdit,1,0);
