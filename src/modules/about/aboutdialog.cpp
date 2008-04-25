@@ -221,7 +221,7 @@ KviAboutDialog::KviAboutDialog()
 	addTab(w,__tr2qs_ctx("License","about"));
 
 
-	connect(this,SIGNAL(applyButtonPressed()),this,SLOT(closeButtonPressed()));
+	//connect(this,SIGNAL(applyButtonPressed()),this,SLOT(closeButtonPressed()));
 }
 
 KviAboutDialog::~KviAboutDialog()

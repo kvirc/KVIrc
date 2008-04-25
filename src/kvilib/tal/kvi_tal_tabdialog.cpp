@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,6 +25,54 @@
 
 #define __KVILIB__
 #include "kvi_tal_tabdialog.h"
+#include "kvi_tal_hbox.h"
+
+#include <QDialog>
+#include <QTabWidget>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QTabWidget>
+#include <QPushButton>
+
+KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal)
+: QDialog(pParent)
+{
+	setObjectName(name);
+	setModal(bModal);
+
+	m_pLayout = new QVBoxLayout(this);
+	setLayout(m_pLayout);
+
+	m_pTabWidget = new QTabWidget(this);
+	m_pLayout->addWidget(m_pTabWidget);
+
+	m_pButtons = new KviTalHBox(this);
+	m_pButtons->setAlignment(Qt::AlignRight);
+	m_pLayout->addWidget(m_pButtons);
+}
+
+KviTalTabDialog::~KviTalTabDialog()
+{
+}
+
+void KviTalTabDialog::addTab(QWidget * name, const QString & label)
+{
+	m_pTabWidget->addTab(name,label);
+}
+
+void KviTalTabDialog::setOkButton(const QString & text)
+{
+	QPushButton * pBtnOk = new QPushButton(text,(QWidget *)m_pButtons);
+	pBtnOk->setFixedSize(100,30);
+	connect(pBtnOk,SIGNAL(released()),this,SLOT(accept()));
+}
+
+void KviTalTabDialog::setCancelButton(const QString & text)
+{
+	QPushButton * pBtnCancel = new QPushButton(text,(QWidget *)m_pButtons);
+	pBtnCancel->setFixedSize(100,30);
+	connect(pBtnCancel,SIGNAL(released()),this,SLOT(reject()));
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_tabdialog.moc"
