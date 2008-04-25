@@ -189,6 +189,12 @@ General notes for the installation of the 4.0 release of KVIrc
         your system went out of memory and it is not a proper kvirc fault.
         Actually you probably have no reason in using it.
 
+    -DWITH_PIZZA
+        Add some pizza for dinner :)
+
+    -DWITH_BEER
+        Add some beers to chat :)
+
 
 
 # To add here and in main CMakeLists.txt
@@ -204,7 +210,6 @@ COMPILE_ON_WINDOWS
 COMPILE_OSS_SUPPORT
 COMPILE_SCRIPTTOOLBAR
 COMPILE_THREADS_USE_POSIX
-COMPILE_THREADS_USE_SOLARIS_LIBTHREAD
 COMPILE_WITH_NO_SOUND
 COMPILE_XSS_SUPPORT
 

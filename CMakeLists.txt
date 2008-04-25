@@ -522,6 +522,9 @@ ENDIF()
 # Very important checks
 ############################################################################
 OPTION(WANT_PIZZA "Pizza for everyone" OFF)
+IF(WITH_PIZZA)
+	SET(WANT_PIZZA ON)
+ENDIF()
 IF(WANT_PIZZA)
 	MESSAGE(STATUS "Checking for mozzarella...found")
 	MESSAGE(STATUS "Checking for tomatoes...found")
@@ -530,7 +533,11 @@ IF(WANT_PIZZA)
 ENDIF()
 
 OPTION(WANT_BEER "Add some PaleALE to the compilation" OFF)
+IF(WITH_BEER)
+	SET(WANT_BEER ON)
+ENDIF()
 IF(WANT_BEER)
+	MESSAGE(STATUS "Checking for ice...found")
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_BEER)
 ENDIF()
 
