@@ -556,6 +556,7 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
+	m_bCheckDone = false;
 	m_bCheckFailed = false;
 	m_bUpdateStatus = false;
 	m_bUpdateOnStartup = false;
@@ -618,6 +619,7 @@ void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 
 void KviStatusBarUpdateIndicator::checkVersion()
 {
+	m_bCheckDone = true;
 	QString szFileName;
 	KviUrl url("http://kvirc.net/checkversion.php");
 
@@ -720,7 +722,15 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 {
 	QString ret = "<center><b>";
-	if(m_bCheckFailed)
+	if(!m_bCheckDone)
+	{
+		ret += __tr2qs("Update missing");
+		ret += "</b><br>";
+		ret += __tr2qs("You didn't checked yet.\n \
+				Should I check it?");
+		ret += "<br>";
+		ret += __tr2qs("Double click to check");
+	} else if(m_bCheckFailed)
 	{
 		ret += __tr2qs("Update failed");
 		ret += "</b><br>";

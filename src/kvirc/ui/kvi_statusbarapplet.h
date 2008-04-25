@@ -222,6 +222,7 @@ private:
 	KviHttpRequest * m_pHttpRequest;
 	QString          m_szHttpResponse;
 	QString          m_szNewVersion;
+	bool             m_bCheckDone;
 	bool             m_bCheckFailed;
 	bool             m_bUpdateStatus;
 	bool             m_bUpdateOnStartup;
