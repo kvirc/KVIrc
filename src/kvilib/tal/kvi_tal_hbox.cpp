@@ -75,7 +75,7 @@ void KviTalHBox::setMargin(int margin)
 
 void KviTalHBox::setAlignment(Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(alignment);
+	m_pLayout->setAlignment(this,alignment);
 }
 
 
