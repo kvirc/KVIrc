@@ -20,17 +20,13 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-//#include "libkvihelp.h"
-
-#include "kvi_module.h"
-
-#include "kvi_sourcesdate.h"
-
 #include "helpwidget.h"
 #include "helpwindow.h"
 #include "index.h"
-#include "kvi_app.h"
 
+#include "kvi_module.h"
+#include "kvi_sourcesdate.h"
+#include "kvi_app.h"
 #include "kvi_frame.h"
 
 #include <QFileInfo>
@@ -137,7 +133,7 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 
 
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
-{ 
+{
 	QString doc, szHelpDir;
 
 	KVSM_PARAMETERS_BEGIN(c)
@@ -146,21 +142,15 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
 	if(doc.isEmpty()){
-		
 		doc = szHelpDir + "\\index.html";
-		debug ("No file, use default at path %s",doc.toUtf8().data());
-	}
-	else
-	
-	{
-		debug("Doc set from user to %s",doc.toUtf8().data());
-	}	
+		qDebug ("No file, use default at path %s",doc.toUtf8().data());
+	} else qDebug("Doc set from user to %s",doc.toUtf8().data());
+
 	QFileInfo * f= new QFileInfo(doc);
-	debug ("Path %d",doc.toUtf8().data());
+	debug("Path %d",doc.toUtf8().data());
 	if(f)
 	{
-		if(!f->exists())
-			doc = szHelpDir + "/nohelpavailable.html";
+		if(!f->exists()) doc = szHelpDir + "/nohelpavailable.html";
 	}
 
 	if(!c->switches()->find('n',"new"))
@@ -185,8 +175,6 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	}
 	return true;
 }
-
-
 
 static bool help_module_init(KviModule * m)
 {
@@ -231,7 +219,7 @@ static bool help_module_can_unload(KviModule *m)
 
 KVIRC_MODULE(
 	"Help",                                                 // module name
-	"1.0.0",                                                // module version
+	"4.0.0",                                                // module version
 	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Help browser extension",
 	help_module_init,

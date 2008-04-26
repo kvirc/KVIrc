@@ -132,9 +132,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pAddressEdit->setInsertionPolicy(QComboBox::NoInsertion);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);
-#ifdef COMPILE_USE_QT4
 	m_pButtonBox->setObjectName( QLatin1String( "kvi_window_button_box" ) );
-#endif
+
 	KviTalToolTip::add(m_pAddressEdit,__tr2qs("Current IRC URI"));
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
@@ -158,7 +157,6 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging();
 
 }
-
 
 int KviConsole::selectedCount()
 {
@@ -190,7 +188,6 @@ bool KviConsole::connectionInProgress()
 	return false;
 }
 
-
 KviConsole::~KviConsole()
 {
 	// FIXME: #warning "WARNING : THIS SHOULD BECOME A COMMAND /QUIT $option() so the idents are parsed!"
@@ -209,7 +206,7 @@ KviConsole::~KviConsole()
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
 
 	delete m_pContext;
-    m_pContext = 0;
+	m_pContext = 0;
 }
 
 KviIrcSocket * KviConsole::socket()
@@ -226,7 +223,6 @@ QString KviConsole::currentNetworkName()
 {
 	return (connection() ? connection()->networkName() : QString::null);
 }
-
 
 void KviConsole::triggerCreationEvents()
 {
@@ -245,7 +241,6 @@ void KviConsole::triggerCreationEvents()
 
 	KVS_TRIGGER_EVENT_0(KviEvent_OnIrcContextCreated,this);
 }
-
 
 void KviConsole::fillContextPopup(KviTalPopupMenu * p)
 {
@@ -309,7 +304,6 @@ void KviConsole::completeServer(const QString &word, KviPointerList<QString> * m
 		{
 			matches->append(new QString(srv));
 		}
-
 	}
 }
 
@@ -318,15 +312,14 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 	KviRegisteredMask *u = g_pRegisteredUserDataBase->findMatchingMask(nick,e->user(),e->host());
 
 	buffer = "<table width=\"100%\">" \
-				"<tr><td bgcolor=\"#303030\">" \
-					"<center><font color=\"#FFFFFF\"><b>";
+			"<tr><td bgcolor=\"#303030\">" \
+			"<center><font color=\"#FFFFFF\"><b>";
 
 	buffer += nick;
 	buffer += "!";
 	buffer += e->user().isEmpty() ? QString("*") : e->user();
 	buffer += "@";
 	buffer += e->host().isEmpty() ? QString("*") : e->host();
-
 
 	buffer += "</b></font></center></td></tr>";
 	if(u)
@@ -339,13 +332,10 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 			buffer += ")</font></center></td></tr>";
 		}
 	}
+
 	if(e->avatar())
 	{
-#ifdef COMPILE_USE_QT4
 		Q3MimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
-#else
-		QMimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
-#endif
 		buffer += QString("<tr><td><center><img src=\"ulv_avatar\" width=\"%1\"></center></td></tr>").arg(e->avatar()->pixmap()->width());
 	}
 
@@ -416,7 +406,6 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 		buffer += "</td></tr>";
 	}
 }
-
 
 void KviConsole::toggleNotifyView()
 {
@@ -708,14 +697,14 @@ static const char * g_nickColors[KVI_NUM_NICK_COLORS]=
 };
 
 void KviConsole::outputPrivmsg(KviWindow *wnd,
-								int type,
-								const QString &daNick,
-								const QString &daUser,
-								const QString &daHost,
-								const QString &msg,
-								int iFlags,
-								const QString &prefix,
-								const QString &suffix)
+	int type,
+	const QString &daNick,
+	const QString &daUser,
+	const QString &daHost,
+	const QString &msg,
+	int iFlags,
+	const QString &prefix,
+	const QString &suffix)
 {
 	// FIXME: #warning "THIS IS USED BY WINDOWS THAT ARE NOT BOUND TO THIS IRC CONTEXT"
 	// FIXME: #warning "REMEMBER IT IN ESCAPE COMMANDS"
@@ -1007,7 +996,6 @@ KviAvatar * KviConsole::setAvatar(const QString &nick,const QString &user,const 
 		}
 
 		// Ok...got it
-
 		KviAvatar * avatar = g_pIconManager->getAvatar(szLocalPath,szName);
 		if(avatar)
 		{
@@ -1094,9 +1082,15 @@ void KviConsole::fillStatusString()
 {
 	switch(context()->state())
 	{
-		case KviIrcContext::Idle:         m_szStatusString = __tr2qs("No connection"); break;
-		case KviIrcContext::Connecting:   m_szStatusString = __tr2qs("Connection in progress..."); break;
-		case KviIrcContext::LoggingIn:    m_szStatusString = __tr2qs("Login in progress..."); break;
+		case KviIrcContext::Idle:
+			m_szStatusString = __tr2qs("No connection");
+		break;
+		case KviIrcContext::Connecting:
+			m_szStatusString = __tr2qs("Connection in progress...");
+		break;
+		case KviIrcContext::LoggingIn:
+			m_szStatusString = __tr2qs("Login in progress...");
+		break;
 		case KviIrcContext::Connected:
 			m_szStatusString = connection()->userInfo()->nickName();
 			if(!connection()->userInfo()->userMode().isEmpty())
@@ -1161,12 +1155,10 @@ void KviConsole::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += end;
 }
 
-
 QPixmap * KviConsole::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(isConnected() ? KVI_SMALLICON_LINKS : KVI_SMALLICON_CONSOLE);
 }
-
 
 void KviConsole::getTaskBarTipText(QString &buffer)
 {
@@ -1247,7 +1239,7 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 		//buffer += html_spaceparopen;
 
 		QString tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->connectionStartTime())),
-							KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Online for");
 		buffer += html_space;
@@ -1259,7 +1251,7 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 		buffer += "</td></tr><tr><td bgcolor=\"#F0F0F0\">";
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
-							KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Server idle for");
 		buffer += html_space;

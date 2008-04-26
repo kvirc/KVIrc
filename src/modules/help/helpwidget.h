@@ -22,14 +22,16 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_tal_hbox.h"
-#include <qtextbrowser.h>
 #include "index.h"
-#include <qprogressbar.h> 
 
-class KviFrame;
+#include "kvi_tal_hbox.h"
+
+#include <QTextBrowser>
+#include <QProgressBar>
+
 class QToolButton;
 class QLineEdit;
+class KviFrame;
 //class KviProcess;
 
 class KviHelpWidget : public QWidget
@@ -42,7 +44,7 @@ private:
 	QToolButton  * m_pBtnIndex;
 	QToolButton  * m_pBtnBackward;
 	QToolButton  * m_pBtnForward;
-	KviTalHBox        * m_pToolBar;
+	KviTalHBox   * m_pToolBar;
 	QTextBrowser * m_pTextBrowser;
 	bool           m_bIsStandalone;
 protected:

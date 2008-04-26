@@ -23,13 +23,15 @@
 
 #include "helpwindow.h"
 #include "helpwidget.h"
-#include "kvi_app.h"
 
+#include "kvi_app.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
 #include "kvi_module.h"
 #include "kvi_config.h"
+#include "kvi_valuelist.h"
+#include "kvi_sourcesdate.h"
 #include "kvi_styled_controls.h"
 
 #include <QFileInfo>
@@ -38,9 +40,6 @@
 #include <QMessageBox>
 #include <QRegExp>
 #include <QToolTip>
-#include "kvi_valuelist.h"
-
-#include "kvi_sourcesdate.h"
 
 extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
@@ -50,7 +49,6 @@ bool g_bIndexingDone = FALSE;
 KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 : KviWindow(KVI_WINDOW_TYPE_HELP,lpFrm,name)
 {
-	
 	if(!g_bIndexingDone)
 	{
 		QString szDoclist,szDict;
@@ -140,7 +138,6 @@ void KviHelpWindow::loadProperties(KviConfig *cfg)
 	KviWindow::loadProperties(cfg);
 }
 
-
 void KviHelpWindow::refreshIndex()
 {
 	m_pIndexListBox->clear();
@@ -159,78 +156,77 @@ void KviHelpWindow::refreshIndex()
 void KviHelpWindow::startSearch()
 {
 
-    QString str = m_pTermsEdit->text();
-    str = str.replace( "\'", "\"" );
-    str = str.replace( "`", "\"" );
-    QString buf = str;
-    str = str.replace( "-", " " );
-    str = str.replace( QRegExp( "\\s[\\S]?\\s" ), " " );
-    m_terms = QStringList::split( " ", str );
-    QStringList termSeq;
-    QStringList seqWords;
-    QStringList::iterator it = m_terms.begin();
-    for ( ; it != m_terms.end(); ++it ) {
-	(*it) = (*it).simplifyWhiteSpace();
-	(*it) = (*it).lower();
-	(*it) = (*it).replace( "\"", "" );
-    }
-    if ( str.contains( '\"' ) ) {
-	if ( (str.count( '\"' ))%2 == 0 ) {
-	    int beg = 0;
-	    int end = 0;
-	    QString s;
-	    beg = str.find( '\"', beg );
-	    while ( beg != -1 ) {
-		beg++;
-		end = str.find( '\"', beg );
-		s = str.mid( beg, end - beg );
-		s = s.lower();
-		s = s.simplifyWhiteSpace();
-		if ( s.contains( '*' ) ) {
-		    QMessageBox::warning( this, tr( "Full Text Search" ),
-			tr( "Using a wildcard within phrases is not allowed." ) );
-		    return;
-		}
-		seqWords += QStringList::split( ' ', s );
-		termSeq << s;
-		beg = str.find( '\"', end + 1);
-	    }
-	} else {
-	    QMessageBox::warning( this, tr( "Full Text Search" ),
-		tr( "The closing quotation mark is missing." ) );
-	    return;
+	QString str = m_pTermsEdit->text();
+	str = str.replace( "\'", "\"" );
+	str = str.replace( "`", "\"" );
+	QString buf = str;
+	str = str.replace( "-", " " );
+	str = str.replace( QRegExp( "\\s[\\S]?\\s" ), " " );
+	m_terms = QStringList::split( " ", str );
+	QStringList termSeq;
+	QStringList seqWords;
+	QStringList::iterator it = m_terms.begin();
+	for ( ; it != m_terms.end(); ++it ) {
+		(*it) = (*it).simplifyWhiteSpace();
+		(*it) = (*it).lower();
+		(*it) = (*it).replace( "\"", "" );
 	}
-    }
-    setCursor( Qt::WaitCursor );
-    m_foundDocs.clear();
-    m_foundDocs = g_pDocIndex->query( m_terms, termSeq, seqWords );
+	if ( str.contains( '\"' ) ) {
+		if ( (str.count( '\"' ))%2 == 0 ) {
+			int beg = 0;
+			int end = 0;
+			QString s;
+			beg = str.find( '\"', beg );
+			while ( beg != -1 ) {
+				beg++;
+				end = str.find( '\"', beg );
+				s = str.mid( beg, end - beg );
+				s = s.lower();
+				s = s.simplifyWhiteSpace();
+				if ( s.contains( '*' ) ) {
+				QMessageBox::warning( this, tr( "Full Text Search" ),
+					tr( "Using a wildcard within phrases is not allowed." ) );
+				return;
+				}
+				seqWords += QStringList::split( ' ', s );
+				termSeq << s;
+				beg = str.find( '\"', end + 1);
+			}
+		} else {
+			QMessageBox::warning( this, tr( "Full Text Search" ),
+				tr( "The closing quotation mark is missing." ) );
+			return;
+		}
+	}
+	setCursor( Qt::WaitCursor );
+	m_foundDocs.clear();
+	m_foundDocs = g_pDocIndex->query( m_terms, termSeq, seqWords );
  
-    m_pResultBox->clear();
-    for ( it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it )
-	m_pResultBox->insertItem( g_pDocIndex->getDocumentTitle( *it ) );
+	m_pResultBox->clear();
+	for ( it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it )
+		m_pResultBox->insertItem( g_pDocIndex->getDocumentTitle( *it ) );
 
-    m_terms.clear();
-    bool isPhrase = FALSE;
-    QString s = "";
-    for ( int i = 0; i < (int)buf.length(); ++i ) {
-	if ( buf[i] == '\"' ) {
-	    isPhrase = !isPhrase;
-	    s = s.simplifyWhiteSpace();
-	    if ( !s.isEmpty() )
-		m_terms << s;
-	    s = "";
-	} else if ( buf[i] == ' ' && !isPhrase ) {
-	    s = s.simplifyWhiteSpace();
-	    if ( !s.isEmpty() )
-		m_terms << s;
-	    s = "";
-	} else
-	    s += buf[i];
-    }
-    if ( !s.isEmpty() )
-	m_terms << s;
+	m_terms.clear();
+	bool isPhrase = FALSE;
+	QString s = "";
+	for ( int i = 0; i < (int)buf.length(); ++i ) {
+		if ( buf[i] == '\"' ) {
+			isPhrase = !isPhrase;
+			s = s.simplifyWhiteSpace();
+			if ( !s.isEmpty() )
+				m_terms << s;
+			s = "";
+		} else if ( buf[i] == ' ' && !isPhrase ) {
+			s = s.simplifyWhiteSpace();
+			if ( !s.isEmpty() )
+				m_terms << s;
+			s = "";
+		} else
+		s += buf[i];
+	}
+	if ( !s.isEmpty() ) m_terms << s;
 
-    setCursor( Qt::ArrowCursor );
+	setCursor( Qt::ArrowCursor );
 }
 
 QTextBrowser * KviHelpWindow::textBrowser()
@@ -247,18 +243,18 @@ void KviHelpWindow::showIndexTopic()
 
 void KviHelpWindow::searchInIndex( const QString &s )
 {
-    KviTalListBoxItem *i = m_pIndexListBox->firstItem();
-    QString sl = s.lower();
-    while ( i ) {
-	QString t = i->text();
-	if ( t.length() >= sl.length() &&
-	     i->text().left(s.length()).lower() == sl ) {
-	    m_pIndexListBox->setCurrentItem( i );
-	    m_pIndexListBox->setTopItem(m_pIndexListBox->index(i));
-	    break;
+	KviTalListBoxItem *i = m_pIndexListBox->firstItem();
+	QString sl = s.lower();
+	while ( i ) {
+		QString t = i->text();
+		if ( t.length() >= sl.length() &&
+		i->text().left(s.length()).lower() == sl ) {
+			m_pIndexListBox->setCurrentItem( i );
+			m_pIndexListBox->setTopItem(m_pIndexListBox->index(i));
+			break;
+		}
+		i = i->next();
 	}
-	i = i->next();
-    }
 }
 
 void KviHelpWindow::indexSelected ( int index )
@@ -287,6 +283,7 @@ QSize KviHelpWindow::sizeHint() const
 {
 	return m_pHelpWidget->sizeHint();
 }
+
 void KviHelpWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs("Help Browser");
@@ -296,7 +293,6 @@ void KviHelpWindow::fillCaptionBuffers()
 	m_szHtmlActiveCaption += "\"><b>";
 	m_szHtmlActiveCaption += m_szPlainTextCaption;
 	m_szHtmlActiveCaption += "</b></font></nobr>";
-
 
 	m_szHtmlInactiveCaption = "<nobr><font color=\"";
 	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();

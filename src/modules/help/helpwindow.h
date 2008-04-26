@@ -25,13 +25,14 @@
 #include "kvi_window.h"
 #include "kvi_string.h"
 #include "kvi_tal_vbox.h"
-#include <qtabwidget.h> 
 #include "kvi_tal_listbox.h"
-#include <qlineedit.h>
-#include <qprogressdialog.h>
 
-class KviHelpWidget;
+#include <QTabWidget>
+#include <QLineEdit>
+#include <QProgressDialog>
+
 class QTextBrowser;
+class KviHelpWidget;
 
 class KviHelpWindow : public KviWindow
 {
@@ -41,17 +42,17 @@ public:
 	~KviHelpWindow();
 protected:
 	KviHelpWidget * m_pHelpWidget;
-	KviTalVBox	      * m_pToolBar;
+	KviTalVBox    * m_pToolBar;
 	QTabWidget    * m_pTabWidget;
-	KviTalVBox         * m_pIndexTab;
-	KviTalVBox         * m_pSearchTab;
+	KviTalVBox    * m_pIndexTab;
+	KviTalVBox    * m_pSearchTab;
 	
-	KviTalListBox     * m_pIndexListBox;
-	QLineEdit    * m_pIndexSearch;
-	QStringList    m_foundDocs;
-	QStringList    m_terms;
-	KviTalListBox     * m_pResultBox;
-	QLineEdit    * m_pTermsEdit;
+	KviTalListBox * m_pIndexListBox;
+	QLineEdit     * m_pIndexSearch;
+	QStringList     m_foundDocs;
+	QStringList     m_terms;
+	KviTalListBox * m_pResultBox;
+	QLineEdit     * m_pTermsEdit;
 public:
 	KviHelpWidget * helpWidget(){ return m_pHelpWidget; };
 protected:

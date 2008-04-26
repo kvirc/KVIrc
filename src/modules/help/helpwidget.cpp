@@ -21,6 +21,7 @@
 //
 
 #include "helpwidget.h"
+#include "helpwindow.h"
 
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
@@ -29,7 +30,6 @@
 #include "kvi_msgbox.h"
 #include "kvi_module.h"
 #include "kvi_styled_controls.h"
-#include "helpwindow.h"
 #include "kvi_fileutils.h"
 
 #include <QToolButton>
@@ -45,7 +45,6 @@ extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 : QWidget(par,"help_widget")
 {
-
 	if(bIsStandalone)g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 
@@ -86,7 +85,6 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	connect(m_pTextBrowser,SIGNAL(forwardAvailable(bool)),m_pBtnForward,SLOT(setEnabled(bool)));
 
 	m_pTextBrowser->viewport()->installEventFilter(this);
-
 }
 
 KviHelpWidget::~KviHelpWidget()
@@ -141,8 +139,6 @@ bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
 
 	return QWidget::eventFilter(o,e);
 }
-
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "helpwidget.moc"
