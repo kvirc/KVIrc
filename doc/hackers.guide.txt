@@ -216,14 +216,6 @@ The source tree
 |   |   |
 |   |   |-- mircimport    A server entry importer from the mirc's servers.ini
 |   |   |
-|   |   |-- mp3player     mp3player.* scripting stuff
-|   |   |                 This is an interface to the xmms program on unix
-|   |   |                 and to winamp on windows. On unix libxmms.so is
-|   |   |                 loaded at runtime. On windows there is also
-|   |   |                 a gen_kvirc.dll plugin for winamp that needs
-|   |   |                 to be loaded by the winamp program in order to make
-|   |   |                 communications with KVIrc possible.
-|   |   |
 |   |   |-- my            my.* scripting stuff
 |   |   |
 |   |   |-- notifier      the notifier module creates a dialog that keeps you
