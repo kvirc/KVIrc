@@ -1,4 +1,5 @@
 KVIrc hackers guide - Szymon Stefanek - 2004.05.26
+last updated on 2008.04.26
 -------------------------------------------------------------------------------
 
 This is an always-work-in-progress guide for KVIrc source code hackers.
@@ -9,10 +10,15 @@ The source tree
 
 /                         Root directory.
 |                         This is almost completely automake and autoconf stuff.
+|                         Here you can also find project files for various IDE:
+|                         by now KDevelop and Visual C++.
 |
 |-- admin                 Administrative files used during the compilation
 |                         automake, autoconf and document generation scripts.
-|                      
+|
+|-- cmake                 Build files using the new cmake system resides in here.
+|                         This is work in progress.
+|
 |-- data                  Data for the KVIrc program. Most of this stuff is
 |   |                     installed in $(prefix)/share/kvirc/$VERSION/
 |   |
@@ -33,6 +39,8 @@ The source tree
 |   |
 |   |-- man               The manual pages
 |   |
+|   |-- manifests         Manifests needed to compile under win32 using VC++
+|   |
 |   |-- mimelnk           *.desktop entries for the *.kvs and *.kvc file types
 |   |                     that are respectively kvirc scripts and kvirc
 |   |                     configuration files. This is all stuff for KDE
@@ -43,10 +51,11 @@ The source tree
 |   |
 |   |-- protocols         irc:// and irc6:// protocol definitions for konqueror
 |   |
-|   `-- resources         Resources for the windows compilation.
+|   |-- resources         Resources for the windows compilation.
+|   |
+|   `-- resources_mac     Resources for the macosx compilation.
 |
 |-- debian                Debian mantainer's stuff
-|-- debian.robin
 |
 |-- doc                   Any kind of documentation
 |   |
@@ -109,10 +118,9 @@ The source tree
 |   |   |                 core management.
 |   |   |
 |   |   |-- kvs           The NEW shiny scripting engine.
-|   |   |                 At the time of writing this two-stage UNICODE
-|   |   |                 KVS interpreter is not finished yet and thus almost
-|   |   |                 nothing here is really hardwired to the rest
-|   |   |                 of the core. 
+|   |   |                 This two-stage UNICODE KVS interpreter replaces the
+|   |   |                 old uparser and is the default scripting engine
+|   |   |                 since kvirc 3.4.
 |   |   |
 |   |   |-- module        The module management stuff: the loader, the module
 |   |   |                 interface definitions etc..
@@ -125,141 +133,171 @@ The source tree
 |   |   |                 KviConsole, KviInput, KviIrcView and KviUserListView
 |   |   |                 which are the most common widgets in kvirc.
 |   |   |
-|   |   `-- uparser       The currently used scripting engine (user parser).
-|   |                     If you want to implement just some simple features
-|   |                     (like new commands or functions) then this is the
-|   |                     place to look at. If you want to make some long
-|   |                     term hacks then it's probably better to look at the
-|   |                     kvs directory instead.
+|   |   `-- uparser       Placeholder for the old scripting engine (user
+|   |                      parser).
 |   |
-|   `-- modules           Yes, the modules :D
-|       |
-|       |-- about         The about dialog
-|       |
-|       |-- aliaseditor   The alias editor window
-|       |
-|       |-- avatar        Avatar manipulation stuff
-|       |
-|       |-- chan          $chan.* scripting stuff
-|       |
-|       |-- channelsjoin  The channelsjoin dialog
-|       |
-|       |-- clock         This was a clock applet but actually it is not
-|       |                 working and thus not compiled.
-|       |
-|       |-- codetester    The codetester window
-|       |
-|       |-- config        config.* scripting stuff
-|       |
-|       |-- dcc           This module implements the whole DCC protocol.
-|       |                 Windows, transfer threads etc: everyting is here.
-|       |
-|       |-- dialog        dialog.* scripting stuff
-|       |
-|       |-- dockwidget    The dock widget for KDE and windows.
-|       |
-|       |-- editor        The scripting editor core widget.
-|       |
-|       |-- eventeditor   The event editor window
-|       |
-|       |-- file          file.* scripting stuff
-|       |
-|       |-- filetransferwindow The file transfers window
-|       |
-|       |-- help          The help browser
-|       |
-|       |-- http          http.* scripting stuff
-|       |
-|       |-- ident         A small ident daemon
-|       |
-|       |-- iograph       Another applet that is not compiled for now.
-|       |
-|       |-- lag           Lag meter
-|       |
-|       |-- lamerizer     A crypt/text-transformation engine
-|       |
-|       |-- links         The links window
-|       |
-|       |-- list          The channel list window
-|       |
-|       |-- log           log.* scripting stuff
-|       |
-|       |-- logview       The logviewer window
-|       |
-|       |-- mask          mask.* scripting stuff
-|       |
-|       |-- mircimport    A server entry importer from the mirc's servers.ini
-|       |
-|       |-- mp3player     mp3player.* scripting stuff
-|       |                 This is an interface to the xmms program on unix
-|       |                 and to winamp on windows. On unix libxmms.so is
-|       |                 loaded at runtime. On windows there is also
-|       |                 a gen_kvirc.dll plugin for winamp that needs
-|       |                 to be loaded by the winamp program in order to make
-|       |                 communications with KVIrc possible.
-|       |
-|       |-- my            my.* scripting stuff
-|       |
-|       |-- objects       All the object oriented scripting stuff
-|       |
-|       |-- options       The options dialog
-|       |
-|       |-- popupeditor   The popup editor window
-|       |
-|       |-- raweditor     The raw events editor window
-|       |
-|       |-- regchan       regchan.* scripting stuff
-|       |
-|       |-- reguser       reguser.* scripting stuff
-|       |
-|       |-- rijndael      A crypting engine
-|       |
-|       |-- setup         The module that is loaded when KVIrc is started
-|       |                 for the first time. It contains the initial
-|       |                 configuration wizard.
-|       |
-|       |-- sharedfile    sharedfile.* scripting stuff
-|       |
-|       |-- sharedfileswindow The shared files window
-|       |
-|       |-- snd           snd.* scripting stuff
-|       |
-|       |-- socketspy     The socketspy window
-|       |
-|       |-- spaste        spaste.* scripting stuff
-|       |
-|       |-- str           str.* scripting stuff
-|       |
-|       |-- system        system.* scripting stuff
-|       |
-|       |-- tb_options    The options toolbar
-|       |
-|       |-- tb_scripting  The scripting toolbar
-|       |
-|       |-- tb_winops     The window operations toolbar
-|       |
-|       |-- term          The embedded terminal emulator (needs KDE)
-|       |
-|       |-- tip           The tip of the day
-|       |
-|       |-- tmphighlight  tmphighlight.* scripting stuff
-|       |
-|       |-- toolbar       toolbar.* scripting stuff
-|       |
-|       |-- toolbareditor The toolbar editor window
-|       |
-|       |-- url           The url window
-|       |
-|       `-- window        window.* scripting stuff
+|   |-- modules           Yes, the modules :D
+|   |   |
+|   |   |-- about         The about dialog
+|   |   |
+|   |   |-- action        The action module
+|   |   |
+|   |   |-- actioneditor  The action editor
+|   |   |
+|   |   |-- addon         The addon module
+|   |   |
+|   |   |-- aliaseditor   The alias editor window
+|   |   |
+|   |   |-- avatar        Avatar manipulation stuff
+|   |   |
+|   |   |-- chan          $chan.* scripting stuff
+|   |   |
+|   |   |-- channelsjoin  The channelsjoin dialog
+|   |   |
+|   |   |-- clock         This was a clock applet but actually it is not
+|   |   |                 working and thus not compiled.
+|   |   |
+|   |   |-- codetester    The codetester window
+|   |   |
+|   |   |-- config        config.* scripting stuff
+|   |   |
+|   |   |-- context       The context module
+|   |   |
+|   |   |-- dcc           This module implements the whole DCC protocol.
+|   |   |                 Windows, transfer threads etc: everyting is here.
+|   |   |
+|   |   |-- dialog        dialog.* scripting stuff
+|   |   |
+|   |   |-- dockwidget    The dock widget for KDE and windows.
+|   |   |
+|   |   |-- editor        The scripting editor core widget.
+|   |   |
+|   |   |-- eventeditor   The event editor window
+|   |   |
+|   |   |-- file          file.* scripting stuff
+|   |   |
+|   |   |-- filetransferwindow The file transfers window
+|   |   |
+|   |   |-- help          The help browser
+|   |   |
+|   |   |-- http          http.* scripting stuff
+|   |   |
+|   |   |-- ident         A small ident daemon
+|   |   |
+|   |   |-- iograph       Another applet that is not compiled for now.
+|   |   |
+|   |   |-- lag           Lag meter
+|   |   |
+|   |   |-- lamerizer     A crypt/text-transformation engine
+|   |   |
+|   |   |-- links         The links window
+|   |   |
+|   |   |-- list          The channel list window
+|   |   |
+|   |   |-- log           log.* scripting stuff
+|   |   |
+|   |   |-- logview       The logviewer window
+|   |   |
+|   |   |-- mask          mask.* scripting stuff
+|   |   |
+|   |   |-- math          the math module
+|   |   |
+|   |   |-- mediaplayer   the media player module
+|   |   |                 This is an interface to some multimedia programs
+|   |   |                 (amarok, audacious, juk, xmms, winamp) and libs
+|   |   |                 (amip, DCOP). This replaces the old mp3player
+|   |   |                 module. You'll need to satisfy some dependencies
+|   |   |                 to enable support for a specific program/library,
+|   |   |                 by example on unix libxmms.so is
+|   |   |                 loaded at runtime. On windows there is also
+|   |   |                 a gen_kvirc.dll plugin for winamp that needs
+|   |   |                 to be loaded by the winamp program in order to make
+|   |   |                 communications with KVIrc possible.
+|   |   |
+|   |   |-- mircimport    A server entry importer from the mirc's servers.ini
+|   |   |
+|   |   |-- mp3player     mp3player.* scripting stuff
+|   |   |                 This is an interface to the xmms program on unix
+|   |   |                 and to winamp on windows. On unix libxmms.so is
+|   |   |                 loaded at runtime. On windows there is also
+|   |   |                 a gen_kvirc.dll plugin for winamp that needs
+|   |   |                 to be loaded by the winamp program in order to make
+|   |   |                 communications with KVIrc possible.
+|   |   |
+|   |   |-- my            my.* scripting stuff
+|   |   |
+|   |   |-- notifier      the notifier module creates a dialog that keeps you
+|   |   |                 informed about new messages when kvirc is minimized
+|   |   |
+|   |   |-- objects       All the object oriented scripting stuff
+|   |   |
+|   |   |-- options       The options dialog
+|   |   |
+|   |   |-- perl          The perl scripting module
+|   |   |
+|   |   |-- perlcore      The perlcore module
+|   |   |
+|   |   |-- popupeditor   The popup editor window
+|   |   |
+|   |   |-- raweditor     The raw events editor window
+|   |   |
+|   |   |-- regchan       regchan.* scripting stuff
+|   |   |
+|   |   |-- reguser       reguser.* scripting stuff
+|   |   |
+|   |   |-- rijndael      A crypting engine
+|   |   |
+|   |   |-- setup         The module that is loaded when KVIrc is started
+|   |   |                 for the first time. It contains the initial
+|   |   |                 configuration wizard.
+|   |   |
+|   |   |-- sharedfile    sharedfile.* scripting stuff
+|   |   |
+|   |   |-- sharedfileswindow The shared files window
+|   |   |
+|   |   |-- snd           snd.* scripting stuff
+|   |   |
+|   |   |-- socketspy     The socketspy window
+|   |   |
+|   |   |-- spaste        spaste.* scripting stuff
+|   |   |
+|   |   |-- str           str.* scripting stuff
+|   |   |
+|   |   |-- system        system.* scripting stuff
+|   |   |
+|   |   |-- term          The embedded terminal emulator (needs KDE)
+|   |   |
+|   |   |-- tip           The tip of the day
+|   |   |
+|   |   |-- tmphighlight  tmphighlight.* scripting stuff
+|   |   |
+|   |   |-- toolbar       toolbar.* scripting stuff
+|   |   |
+|   |   |-- toolbareditor The toolbar editor window
+|   |   |
+|   |   |-- torrent       The torrent module
+|   |   |
+|   |   |-- trayicon      The trayicon module
+|   |   |
+|   |   |-- url           The url window
+|   |   |
+|   |    `-- window       window.* scripting stuff
+|   |
+|    `-- win32registrar   win32 support files. WinMain is here
 |
 `-- win32build            The directory for Windows builds
 
-
+As of 2004.05.26:
 [pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
   60189
 [pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
  164400
 
+As of 2008.04.26:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  49663
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 237020
 
 -------------------------------------------------------------------------------
 The coding style
@@ -644,7 +682,7 @@ a different UNICODE string depending on the window it was "decoded" on.
 
 (Partial) Solution:
 - Each server has an encoding set. If empty then the network encoding is used.
-- Each network han and encoding set. If empty then the default system encoding
+- Each network has and encoding set. If empty then the default system encoding
   is used.
 - The system encoding is set by the user. If empty then the encoding is guessed
   from the user's locale.
@@ -844,19 +882,16 @@ if possible :)
 
 - Putting it all together
 
-At the moment of writing the KVIrc svn tree has version 3.2.6.20070115.
-Today is 15 Jan 2007 and the current svn revision number is 174.
-The latest "semi-official" release was 3.2.6 (where the internal revision number
+At the moment of writing the KVIrc svn tree has version 4.0.0 (but some 3.9.9
+definition is still floating around in the source code).
+Today is 26 Apr 2008 and the current svn revision number is 1594.
+The latest official release was 3.4.0 (where the internal revision number
 was omitted and implicitly assumed to be 0).
-If tomorrow we had to emit a quick fix for the semi-official release we'd either
-use 3.2.7 (increasing the public revision for a large set of bugfixes) or
-(unlikely) 3.2.6.20060116 (expliciting the internal revision number for a small
-set of quick, and probably dirty, bugfixes). The next "semi-official"
-release is likely to be 3.2.7 while the next official stable release
-might be 3.3, 3.4 or even 4.
+If tomorrow we had to emit a quick fix for the official release we'll
+use 3.4.1. The next official is likely to be a qt4-only version 4.
 
 -------------------------------------------------------------------------------
-Porting to Qt 4.x (while mantaining Qt 3.x compatibility) (Work In Progress)
+Porting to Qt 4.x (while mantaining Qt 3.x compatibility) (Old topic)
 -------------------------------------------------------------------------------
 
 For the moment, in random order:
