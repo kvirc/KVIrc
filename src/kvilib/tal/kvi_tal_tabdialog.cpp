@@ -25,12 +25,10 @@
 
 #define __KVILIB__
 #include "kvi_tal_tabdialog.h"
-#include "kvi_tal_hbox.h"
 
 #include <QDialog>
 #include <QTabWidget>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QTabWidget>
 #include <QPushButton>
 
@@ -40,15 +38,11 @@ KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal
 	setObjectName(name);
 	setModal(bModal);
 
-	m_pLayout = new QVBoxLayout(this);
+	m_pLayout = new QGridLayout(this);
 	setLayout(m_pLayout);
 
 	m_pTabWidget = new QTabWidget(this);
-	m_pLayout->addWidget(m_pTabWidget);
-
-	m_pButtons = new KviTalHBox(this);
-	m_pButtons->setAlignment(Qt::AlignRight);
-	m_pLayout->addWidget(m_pButtons);
+	m_pLayout->addWidget(m_pTabWidget,0,0,0,2);
 }
 
 KviTalTabDialog::~KviTalTabDialog()
@@ -62,19 +56,28 @@ void KviTalTabDialog::addTab(QWidget * name, const QString & label)
 
 void KviTalTabDialog::setOkButton(const QString & text)
 {
-	QPushButton * pBtnOk = new QPushButton(text,(QWidget *)m_pButtons);
-	pBtnOk->setFixedSize(100,30);
-	connect(pBtnOk,SIGNAL(released()),this,SLOT(accept()));
+	QPushButton * pBtnOk = new QPushButton(text,this);
+	m_pLayout->addWidget(pBtnOk,1,1);
+	connect(pBtnOk,SIGNAL(pressed()),this,SLOT(okPressed()));
 }
 
 void KviTalTabDialog::setCancelButton(const QString & text)
 {
-	QPushButton * pBtnCancel = new QPushButton(text,(QWidget *)m_pButtons);
-	pBtnCancel->setFixedSize(100,30);
-	connect(pBtnCancel,SIGNAL(released()),this,SLOT(reject()));
+	QPushButton * pBtnCancel = new QPushButton(text,this);
+	m_pLayout->addWidget(pBtnCancel,1,2);
+	connect(pBtnCancel,SIGNAL(pressed()),this,SLOT(cancelPressed()));
+}
+
+void KviTalTabDialog::okPressed()
+{
+	emit applyButtonPressed();
+}
+
+void KviTalTabDialog::cancelPressed()
+{
+	emit cancelButtonPressed();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_tabdialog.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

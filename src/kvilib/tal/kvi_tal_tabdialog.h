@@ -30,9 +30,8 @@
 
 #include <QDialog>
 
-class QVBoxLayout;
+class QGridLayout;
 class QTabWidget;
-class KviTalHBox;
 
 class KVILIB_API KviTalTabDialog : public QDialog
 {
@@ -44,10 +43,15 @@ protected:
 	void setOkButton(const QString &);
 	void setCancelButton(const QString &);
 	void addTab(QWidget *,const QString &);
+protected slots:
+	void okPressed();
+	void cancelPressed();
 private:
-	QVBoxLayout * m_pLayout;
+	QGridLayout * m_pLayout;
 	QTabWidget  * m_pTabWidget;
-	KviTalHBox  * m_pButtons;
+signals:
+	void applyButtonPressed();
+	void cancelButtonPressed();
 };
 
 #endif // _KVI_TAL_TABDIALOG_H_
