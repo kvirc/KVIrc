@@ -17,18 +17,9 @@ SET(howto
 )
 
 # User documentation
-FILE(GLOB help "${CMAKE_CURRENT_BINARY_DIR}/*.html")
-
 IF(PERL_FOUND)
-	ADD_CUSTOM_TARGET(
-		docs ALL
-	)
-	
-	ADD_CUSTOM_COMMAND(
-		COMMENT "generate the user documentation"
-		COMMAND perl ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} ${CMAKE_CURRENT_BINARY_DIR} ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name "*.cpp" -print` `find ./ -name "*.h" -print`
-		TARGET docs
-	)
+	INSTALL(CODE "MESSAGE(\"Generating user documentation..\")")
+	INSTALL(CODE "EXEC_PROGRAM(perl ARGS ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print` )")
 ENDIF()
 
 # Install target
@@ -36,12 +27,10 @@ IF(UNIX)
 	IF(APPLE)
 		INSTALL(FILES ${license} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/license)
 		INSTALL(FILES ${howto} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/doc)
-		#INSTALL(FILES ${help} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/pics/)
 	ELSE()
 		# Assume linux
 		INSTALL(FILES ${license} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/license/)
 		INSTALL(FILES ${howto} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/)
-		INSTALL(FILES ${help} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help/en/)
 	ENDIF()
 ELSEIF(WIN32)
 	#INSTALL(FILES ${license} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/license/)
