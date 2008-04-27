@@ -28,16 +28,23 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <q3iconview.h>
+#include <QTableWidget>
+#include <QItemDelegate>
 
 class KviTalIconViewItem;
 
-class KVILIB_API KviTalIconView : public Q3IconView
+class KVILIB_API KviTalIconView : public QTableWidget
 {
 	Q_OBJECT
 public:
 	KviTalIconView(QWidget * pParent,Qt::WFlags f = 0);
+
 	virtual ~KviTalIconView() {};
+protected:
+	QItemDelegate *m_pDelegate;
+	protected:
+	
+
 signals:
 	void selectionChanged(KviTalIconViewItem * pItem);
 	void currentChanged(KviTalIconViewItem * pItem);
@@ -54,13 +61,16 @@ signals:
 	void contextMenuRequested(KviTalIconViewItem * pItem,const QPoint &pnt);
 	void onItem(KviTalIconViewItem * pItem);
 protected slots:
+	void redirect_doubleClicked(QTableWidgetItem * pItem);
+
+	/*
+protected slots:
 	void redirect_selectionChanged(Q3IconViewItem * pItem);
 	void redirect_currentChanged(Q3IconViewItem * pItem);
 	void redirect_clicked(Q3IconViewItem * pItem);
 	void redirect_clicked(Q3IconViewItem * pItem,const QPoint &pnt);
 	void redirect_pressed(Q3IconViewItem * pItem);
 	void redirect_pressed(Q3IconViewItem * pItem,const QPoint &pnt);
-	void redirect_doubleClicked(Q3IconViewItem * pItem);
 	void redirect_returnPressed(Q3IconViewItem * pItem);
 	void redirect_rightButtonClicked(Q3IconViewItem * pItem,const QPoint &pnt);
 	void redirect_rightButtonPressed(Q3IconViewItem * pItem,const QPoint &pnt);
@@ -72,27 +82,47 @@ public:
 	KviTalIconViewItem * firstItem() const { return (KviTalIconViewItem *)Q3IconView::firstItem(); };
 	KviTalIconViewItem * lastItem() const { return (KviTalIconViewItem *)Q3IconView::lastItem(); };
 	KviTalIconViewItem * currentItem() const { return (KviTalIconViewItem *)Q3IconView::currentItem(); };
+	*/
+
 };
 
-class KVILIB_API KviTalIconViewItem : public Q3IconViewItem
+class KVILIB_API KviTalIconViewItem : public QTableWidgetItem
 {
 public:
-	KviTalIconViewItem(KviTalIconView * parent)
-	: Q3IconViewItem(parent) {};
+	KviTalIconViewItem(QString text,const QIcon & icon)
+	: QTableWidgetItem(icon,text) {setSizeHint(QSize(30,20));};
+
+	/*KviTalIconViewItem(KviTalIconView * parent)
+	: QTableWidgetItem(parent) {};
 	KviTalIconViewItem(KviTalIconView * parent,KviTalIconViewItem * after)
-	: Q3IconViewItem(parent,after) {};
+	: QTableWidgetItem(parent,after) {};
 	KviTalIconViewItem(KviTalIconView * parent, const QString & text)
-	: Q3IconViewItem(parent,text) {};
+	: QTableWidgetItem(parent,text) {};
 	KviTalIconViewItem(KviTalIconView * parent, KviTalIconViewItem * after, const QString & text)
-	: Q3IconViewItem(parent,after,text) {};
+	: QTableWidgetItem(parent,after,text) {};
 	KviTalIconViewItem(KviTalIconView * parent, const QString & text, const QPixmap & icon)
-	: Q3IconViewItem(parent,text,icon) {};
+	: QTableWidgetItem(parent,text,icon) {};
 	KviTalIconViewItem(KviTalIconView * parent, KviTalIconViewItem * after, const QString & text, const QPixmap & icon)
-	: Q3IconViewItem(parent,after,text,icon) {};
+	: QTableWidgetItem(parent,after,text,icon) {};
 public:
 	KviTalIconView * iconView() const { return (KviTalIconView *)Q3IconViewItem::iconView(); };
 	KviTalIconViewItem * prevItem() const { return (KviTalIconViewItem *)Q3IconViewItem::prevItem(); };
 	KviTalIconViewItem * nextItem() const { return (KviTalIconViewItem *)Q3IconViewItem::nextItem(); };
+	
+	*/
+
 };
 
+class KviTalIconViewItemDelegate : public QItemDelegate
+{
+protected:
+	QTableWidget * m_pTableWidget;
+public:
+	KviTalIconViewItemDelegate(QTableWidget * pTableWidget)
+		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget) {};
+	~KviTalIconViewItemDelegate(){};
+	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	 void drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const;
+	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	};
 #endif // _KVI_TAL_ICONVIEW_H_

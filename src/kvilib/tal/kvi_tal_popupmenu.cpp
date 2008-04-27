@@ -73,6 +73,7 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,int id)
 //FIXME
 int KviTalPopupMenu::insertItem(const QString &szText,const QObject * pReceiver,const char * szSlot)
 {
+	debug("Create action object %s",szText.toUtf8().data());
 	QAction * action = QMenu::addAction(szText);
 	connect(action,SIGNAL(triggered(bool)),pReceiver,szSlot);
 	actionsDict[identifier++]=action;

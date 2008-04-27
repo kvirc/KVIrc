@@ -24,13 +24,67 @@
 
 #define __KVILIB__
 #include "kvi_tal_iconview.h"
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QSize>
+#include <QPainter>
+#include <QTextDocument>
+#include <QAbstractTextDocumentLayout>
+void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
+{
+	painter->save();
+	QTextDocument doc;
+	doc.setHtml( text );
+	QAbstractTextDocumentLayout::PaintContext context;
+	// option.rect.size()
+    doc.setPageSize(rect.size());
+    painter->translate(rect.x(),rect.y()+5);
+	//(option.rect.x(), option.rect.y()
+	//	doc.drawContents(painter);//
+	doc.documentLayout()->draw(painter, context);
+    painter->restore();
+}
+
+void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+/*	debug ("INTO DELEGATE col %d",index.column());
+	painter->save();
+	QPixmap pixmap;
+    QRect decorationRect;
+    QVariant value = index.data(Qt::DecorationRole);
+	value.convert(QVariant::Pixmap);
+	QPixmap *pix=(QPixmap*)value.data();
+	painter->drawPixmap(int(1),int(1),*pix);
+	painter->restore();
+	*/
+	QItemDelegate::paint(painter,option,index);
+}
+
+QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+	// FIXME: maybe we need an accurate value?
+	return QSize(70,40);
+	
+}
+
 
 KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
-: Q3IconView(pParent,0,f)
+: QTableWidget(pParent)
 {
+	setWindowFlags(f);
+	horizontalHeader()->hide();
+	verticalHeader()->hide();
+	setShowGrid(false);
+	m_pDelegate=new KviTalIconViewItemDelegate(this);
+	setItemDelegate(m_pDelegate);
+	connect(this,SIGNAL(itemDoubleClicked(QTableWidgetItem *)),this,SLOT(redirect_doubleClicked(QTableWidgetItem *)));
+	
+/*
+	connect(this,SIGNAL(clicked(QListWidgetItem *)),this,SLOT(redirect_clicked(QListWidgetItem *)));
+	
+
 	connect(this,SIGNAL(selectionChanged(Q3IconViewItem *)),this,SLOT(redirect_selectionChanged(Q3IconViewItem *)));
 	connect(this,SIGNAL(currentChanged(Q3IconViewItem *)),this,SLOT(redirect_currentChanged(Q3IconViewItem *)));
-	connect(this,SIGNAL(clicked(Q3IconViewItem *)),this,SLOT(redirect_clicked(Q3IconViewItem *)));
 	connect(this,SIGNAL(clicked(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_clicked(Q3IconViewItem *,const QPoint &)));
 	connect(this,SIGNAL(pressed(Q3IconViewItem *)),this,SLOT(redirect_pressed(Q3IconViewItem *)));
 	connect(this,SIGNAL(pressed(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_pressed(Q3IconViewItem *,const QPoint &)));
@@ -42,8 +96,13 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	connect(this,SIGNAL(mouseButtonPressed(int,Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_mouseButtonPressed(int,Q3IconViewItem *,const QPoint &)));
 	connect(this,SIGNAL(contextMenuRequested(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_contextMenuRequested(Q3IconViewItem *,const QPoint &)));
 	connect(this,SIGNAL(onItem(Q3IconViewItem *)),this,SLOT(redirect_onItem(Q3IconViewItem *)));
+	*/
 }
-
+void KviTalIconView::redirect_doubleClicked(QTableWidgetItem * pItem)
+{
+	emit doubleClicked((KviTalIconViewItem *)pItem);
+}
+/*
 void KviTalIconView::redirect_selectionChanged(Q3IconViewItem * pItem)
 {
 	emit selectionChanged((KviTalIconViewItem *)pItem);
@@ -114,7 +173,7 @@ void KviTalIconView::redirect_onItem(Q3IconViewItem * pItem)
 	emit onItem((KviTalIconViewItem *)pItem);
 }
 
-
+*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_iconview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -36,22 +36,27 @@
 #include <QLineEdit>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QHeaderView>
 
 #include <ctype.h>
 
 KviTextIconWindow::KviTextIconWindow()
 : KviTalIconView(0,Qt::Popup)
 {
-	m_iTimerId = -1;
-	setGridX ( 40 );
+		m_iTimerId = -1;
+//	setGridX ( 40 );
+	setColumnCount(3);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setRowCount(10);
+	setWordWrap(true);
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
 	m_pOwner = 0;
 	fill();
-	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
+	//connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(this,SIGNAL(doubleClicked( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
-	connect(this,SIGNAL(returnPressed ( KviTalIconViewItem * ) ),this,SLOT(itemSelected(KviTalIconViewItem *)));
+	//connect(this,SIGNAL(returnPressed ( KviTalIconViewItem * ) ),this,SLOT(itemSelected(KviTalIconViewItem *)));
 	m_bAltMode = false;
-	setWordWrapIconText(true);
+	
 }
 
 KviTextIconWindow::~KviTextIconWindow()
@@ -67,31 +72,49 @@ KviTextIconWindow::~KviTextIconWindow()
 
 void KviTextIconWindow::fill()
 {
+	//setEditTriggers( QAbstractItemView::NoEditTriggers );
 	clear();
 	KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
+	
+	int col=0;
+	int row=0;
 	while(KviTextIcon * i = it.current())
 	{
 		QPixmap *pix = i->pixmap();
-		if(pix)insertItem(new KviTalIconViewItem(this,it.currentKey(),*pix));
+		if(pix){
+			setItem(row,col,new KviTalIconViewItem(it.currentKey(),*pix));
+			col++;
+			if (col==3){
+				col=0;
+				row++;
+			}
+		}
 		++it;
 	}
-	sort();
+//	horizontalHeader()->setDefaultSectionSize(70);
+//	horizontalHeader()->resizeSections(QHeaderView::Fixed);
+	resizeColumnsToContents();
+	resizeRowsToContents();
+	sortItems ( 0, Qt::AscendingOrder );
 	setCurrentItem(0);
 }
 
 void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
 {
+	debug("Show icon view widget");
 	if(m_pOwner)disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
 	m_pOwner = owner;
 	m_szTypedSeq = "";
 	m_bAltMode = bAltMode;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+//	resizeColumnsToContents();
 	show();
 }
 
 bool KviTextIconWindow::findTypedSeq()
 {
+/*
 	int cnt = count();
 	int max = 0;
 	KviTalIconViewItem *mit = 0;
@@ -121,6 +144,8 @@ got_mit:
 	setCurrentItem(mit);
 	m_szCurFullSeq = mit->text();
 	return bFullMax;
+	*/
+	return true;
 }
 
 void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
@@ -218,11 +243,16 @@ void KviTextIconWindow::ownerDead()
 void KviTextIconWindow::show()
 {
 	m_iTimerId = startTimer(50000); //50 sec ...seems enough
+	debug("Set timer with id %d",m_iTimerId);
+	fill();
 	QWidget::show();
 }
 
-void KviTextIconWindow::timerEvent(QTimerEvent *)
+void KviTextIconWindow::timerEvent(QTimerEvent *e)
 {
+	// FIXME: maybe a QT4 bug? (without this filter below KVIrc will be slow!)
+	if (e->timerId()!=m_iTimerId) {debug ("Timer unknown with %d", e->timerId());killTimer(e->timerId());return;}
+	debug("Timer stop");
 	doHide();
 }
 
@@ -234,16 +264,17 @@ void KviTextIconWindow::doHide()
 		m_iTimerId = -1;
 	}
 	hide();
+	clear();
 	if(m_pOwner)m_pOwner->setFocus();
 }
 
 void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
 {
+	debug("Into item selected");
 	if(item)
 	{
 //		debug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
-		doHide();
- 		QString szItem = item->text();
+		QString szItem = item->text();
 		szItem.append(' ');
 		if(m_bAltMode)szItem.prepend(KVI_TEXT_ICON);
 		if(m_pOwner->inherits("KviInputEditor"))
@@ -257,6 +288,9 @@ void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
 			((QLineEdit *)m_pOwner)->setText(tmp);
 			((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 		}
+		scroll(1,1);
+			doHide();
+ 	
 	}
 }
 
@@ -271,6 +305,7 @@ void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 	return;
 
 hideme:
+	debug("Mouse press");
 	doHide();
 }
 
