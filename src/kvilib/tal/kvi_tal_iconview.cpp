@@ -30,6 +30,8 @@
 #include <QPainter>
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
+
+
 void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
 {
 	painter->save();
@@ -68,7 +70,7 @@ QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option,
 KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 : QTableWidget(pParent)
 {
-	setWindowFlags(f);
+//	setWindowFlags(f);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	horizontalHeader()->hide();
 	verticalHeader()->hide();
