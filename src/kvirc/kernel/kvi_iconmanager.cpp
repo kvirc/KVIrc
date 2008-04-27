@@ -38,7 +38,7 @@
 #include <QCursor>
 #include <QEvent>
 #include <QCloseEvent>
-
+#include <QIcon>
 
 // kvi_app.cpp
 extern QPixmap * g_pUserChanStatePixmap;
