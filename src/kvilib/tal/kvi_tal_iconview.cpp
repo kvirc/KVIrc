@@ -36,11 +36,8 @@ void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleO
 	QTextDocument doc;
 	doc.setHtml( text );
 	QAbstractTextDocumentLayout::PaintContext context;
-	// option.rect.size()
     doc.setPageSize(rect.size());
     painter->translate(rect.x(),rect.y()+5);
-	//(option.rect.x(), option.rect.y()
-	//	doc.drawContents(painter);//
 	doc.documentLayout()->draw(painter, context);
     painter->restore();
 }
@@ -72,12 +69,14 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 : QTableWidget(pParent)
 {
 	setWindowFlags(f);
+	setSelectionMode(QAbstractItemView::SingleSelection);
 	horizontalHeader()->hide();
 	verticalHeader()->hide();
 	setShowGrid(false);
 	m_pDelegate=new KviTalIconViewItemDelegate(this);
 	setItemDelegate(m_pDelegate);
 	connect(this,SIGNAL(itemDoubleClicked(QTableWidgetItem *)),this,SLOT(redirect_doubleClicked(QTableWidgetItem *)));
+	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 	
 /*
 	connect(this,SIGNAL(clicked(QListWidgetItem *)),this,SLOT(redirect_clicked(QListWidgetItem *)));
@@ -101,6 +100,10 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 void KviTalIconView::redirect_doubleClicked(QTableWidgetItem * pItem)
 {
 	emit doubleClicked((KviTalIconViewItem *)pItem);
+}
+void KviTalIconView::redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev)
+{
+	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)prev);
 }
 /*
 void KviTalIconView::redirect_selectionChanged(Q3IconViewItem * pItem)

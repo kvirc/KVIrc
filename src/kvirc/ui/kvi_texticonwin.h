@@ -39,6 +39,7 @@ public:
 	~KviTextIconWindow();
 private:
 	QWidget       * m_pOwner;
+	KviTalIconViewItem * m_pItem;
 	QString         m_szTypedSeq;
 	QString         m_szCurFullSeq;
 	bool            m_bAltMode; // in alt mode the itemSelected() string contains
@@ -51,11 +52,13 @@ private:
 	virtual void show();
 	bool findTypedSeq(); // returns true if it is a complete word
 	virtual void keyPressEvent(QKeyEvent *e);
+	//virtual void mouseMoveEvent ( QMouseEvent * e )
 	virtual void mousePressEvent(QMouseEvent *);
 	virtual void timerEvent(QTimerEvent *);
 public slots:
 	void fill();
 	void ownerDead();
+	void currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev);
 	void itemSelected(KviTalIconViewItem * item);
 };
 

@@ -44,6 +44,7 @@ KviTextIconWindow::KviTextIconWindow()
 : KviTalIconView(0,Qt::Popup)
 {
 		m_iTimerId = -1;
+		m_pItem=0;
 //	setGridX ( 40 );
 	setColumnCount(3);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -54,7 +55,7 @@ KviTextIconWindow::KviTextIconWindow()
 	fill();
 	//connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(this,SIGNAL(doubleClicked( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
-	//connect(this,SIGNAL(returnPressed ( KviTalIconViewItem * ) ),this,SLOT(itemSelected(KviTalIconViewItem *)));
+	connect(this,SIGNAL(currentItemChanged ( KviTalIconViewItem *, KviTalIconViewItem * )),this,SLOT(currentItemChanged( KviTalIconViewItem *, KviTalIconViewItem * )));
 	m_bAltMode = false;
 	
 }
@@ -109,34 +110,40 @@ void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
 	m_bAltMode = bAltMode;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
 //	resizeColumnsToContents();
+//	QString text="QFrame {background-color: rgba(0,0,0,200);}";
+//	setStyleSheet(text);
 	show();
 }
 
 bool KviTextIconWindow::findTypedSeq()
 {
-/*
-	int cnt = count();
+
 	int max = 0;
 	KviTalIconViewItem *mit = 0;
 	bool bFullMax = false;
-	KviTalIconViewItem *item;
-	for ( item = (KviTalIconViewItem *)firstItem(); item; item = (KviTalIconViewItem *)item->nextItem() )
+	int y;
+	for ( y=0;y<rowCount();y++)
 	{
-		QString szIt = item->text();
-		int j;
-		for(j=0;j<((int)(szIt.length()));j++)
+		int x;
+		for(x=0;x<columnCount();x++)
 		{
-			if(szIt[j].lower() != m_szTypedSeq[j].lower())break;
-		}
-		if(j < max)
-		{
-			goto got_mit;
-		} else {
-			if(j >= max)
+			QString szIt = item(y,x)->text();
+
+			int j;
+			for(j=0;j<((int)(szIt.length()));j++)
 			{
-				bFullMax = (j == ((int)(szIt.length())));
-				max = j;
-				mit = item;
+				if(szIt[j].lower() != m_szTypedSeq[j].lower())break;
+			}
+			if(j < max)
+			{
+				goto got_mit;
+			} else {
+				if(j >= max)
+				{
+					bFullMax = (j == ((int)(szIt.length())));
+					max = j;
+					mit = (KviTalIconViewItem *)item(y,x);
+				}
 			}
 		}
 	}
@@ -144,10 +151,14 @@ got_mit:
 	setCurrentItem(mit);
 	m_szCurFullSeq = mit->text();
 	return bFullMax;
-	*/
-	return true;
 }
-
+/*
+void KviTextIconWindow::mouseMoveEvent ( QMouseEvent * e )
+{
+	
+	KviTalIconView::mouseMoveEvent();
+}
+*/
 void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 {
 	switch(e->key())
@@ -158,9 +169,16 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
-		case Qt::Key_Return:
 			KviTalIconView::keyPressEvent(e);
 			return;
+			break;
+		case Qt::Key_Return:
+			{
+				//QTableWidgetItem *item=itemAt(mapFromGlobal(QCursor::pos()));
+				if (m_pItem) itemSelected(m_pItem);
+				else KviTalIconView::keyPressEvent(e);
+				return;
+			}
 		break;
 		case Qt::Key_Escape:
 			doHide();
@@ -242,9 +260,10 @@ void KviTextIconWindow::ownerDead()
 
 void KviTextIconWindow::show()
 {
+	m_pItem=0;
 	m_iTimerId = startTimer(50000); //50 sec ...seems enough
 	debug("Set timer with id %d",m_iTimerId);
-	fill();
+	//fill();
 	QWidget::show();
 }
 
@@ -264,13 +283,14 @@ void KviTextIconWindow::doHide()
 		m_iTimerId = -1;
 	}
 	hide();
-	clear();
 	if(m_pOwner)m_pOwner->setFocus();
 }
-
+void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev)
+{
+	m_pItem=item;
+}
 void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
 {
-	debug("Into item selected");
 	if(item)
 	{
 //		debug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
@@ -300,7 +320,8 @@ void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().x() > width())goto hideme;
 	if(e->pos().y() < 0)goto hideme;
 	if(e->pos().y() > height())goto hideme;
-
+	m_pItem=(KviTalIconViewItem *)itemAt(e->pos());
+	
 	KviTalIconView::mousePressEvent(e);
 	return;
 

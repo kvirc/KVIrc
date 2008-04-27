@@ -46,22 +46,24 @@ protected:
 	
 
 signals:
-	void selectionChanged(KviTalIconViewItem * pItem);
-	void currentChanged(KviTalIconViewItem * pItem);
-	void clicked(KviTalIconViewItem * pItem);
-	void clicked(KviTalIconViewItem * pItem,const QPoint &pnt);
-	void pressed(KviTalIconViewItem * pItem);
-	void pressed(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void selectionChanged(KviTalIconViewItem * pItem);
+	//void currentChanged(KviTalIconViewItem * pItem);
+	//void clicked(KviTalIconViewItem * pItem);
+	//void clicked(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void pressed(KviTalIconViewItem * pItem);
+	//void pressed(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void returnPressed(KviTalIconViewItem * pItem);
+	//void rightButtonClicked(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void rightButtonPressed(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void mouseButtonClicked(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void mouseButtonPressed(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void contextMenuRequested(KviTalIconViewItem * pItem,const QPoint &pnt);
+	//void onItem(KviTalIconViewItem * pItem);
 	void doubleClicked(KviTalIconViewItem * pItem);
-	void returnPressed(KviTalIconViewItem * pItem);
-	void rightButtonClicked(KviTalIconViewItem * pItem,const QPoint &pnt);
-	void rightButtonPressed(KviTalIconViewItem * pItem,const QPoint &pnt);
-	void mouseButtonClicked(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
-	void mouseButtonPressed(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
-	void contextMenuRequested(KviTalIconViewItem * pItem,const QPoint &pnt);
-	void onItem(KviTalIconViewItem * pItem);
+	void currentItemChanged(KviTalIconViewItem *pItem,KviTalIconViewItem *prev);
 protected slots:
 	void redirect_doubleClicked(QTableWidgetItem * pItem);
+	void redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev);
 
 	/*
 protected slots:
