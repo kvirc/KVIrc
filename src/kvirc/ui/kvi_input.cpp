@@ -96,7 +96,7 @@
 
 //This comes from kvi_app.cpp
 extern KviColorWindow    * g_pColorWindow;
-extern KviTextIconWindow * g_pTextIconWindow;
+extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviHistoryWindow  * g_pHistoryWindow;
 extern KviTalPopupMenu   * g_pInputPopup;
 
@@ -1435,7 +1435,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					insertChar(KVI_TEXT_ICON); // THE NEXT WORD IS AN ICON NAME
 					int xPos = xPositionFromCharIndex(m_iCursorPosition);
 					if(xPos > 24)xPos-=24;
-					if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindow();
+					if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindowWidget();
 					if(xPos+g_pTextIconWindow->width() > width())xPos = width()-(g_pTextIconWindow->width()+2);
 					g_pTextIconWindow->move(mapToGlobal(QPoint(xPos,-KVI_TEXTICON_WIN_HEIGHT)));
 					g_pTextIconWindow->popup(this);
@@ -2493,7 +2493,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 
 void KviInput::iconButtonClicked()
 {
-	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindow();
+	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindowWidget();
 	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(),0));
 	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
 	g_pTextIconWindow->popup(this,true);

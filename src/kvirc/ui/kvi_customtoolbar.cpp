@@ -50,8 +50,6 @@ KviCustomToolBarSeparator::KviCustomToolBarSeparator(KviCustomToolBar *pParent,c
 : QWidget(pParent,name)
 {
 	m_pToolBar = pParent;
-//	setBackgroundMode(pParent->backgroundMode());
-//	setBackgroundOrigin(ParentOrigin);
 	setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
 }
 

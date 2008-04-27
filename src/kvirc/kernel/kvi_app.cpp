@@ -114,7 +114,7 @@ KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
 // Global windows
 
 KVIRC_API KviColorWindow               * g_pColorWindow               = 0;
-KVIRC_API KviTextIconWindow            * g_pTextIconWindow            = 0;
+KVIRC_API KviTextIconWindowWidget            * g_pTextIconWindow            = 0;
 KVIRC_API KviTalPopupMenu              * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
 //KVIRC_API QStringList                  * g_pBookmarkList            = 0;

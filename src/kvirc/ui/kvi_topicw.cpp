@@ -53,7 +53,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-extern KviTextIconWindow * g_pTextIconWindow;
+extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviColorWindow * g_pColorWindow;
 static int g_iInputFontCharWidth[256];
 

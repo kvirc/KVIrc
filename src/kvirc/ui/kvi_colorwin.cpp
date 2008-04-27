@@ -34,10 +34,11 @@
 #include <QMouseEvent>
 
 KviColorWindow::KviColorWindow()
-:QWidget(0,"toplevel_color_window",Qt::WType_Popup)
+:QWidget(0)
 {
+	setObjectName("toplevel_color_window");
+	setWindowFlags(Qt::Popup);
 	setFocusPolicy(Qt::NoFocus);
-	setBackgroundMode(Qt::NoBackground);
 	setFixedSize(146,38);
 	m_pOwner = 0;
 	QFont fnt = QFont();

@@ -40,12 +40,13 @@
 
 #include <ctype.h>
 
-KviTextIconWindow::KviTextIconWindow()
-: KviTalIconView(0,Qt::Popup)
+
+KviTextIconWindow::KviTextIconWindow(QWidget *parent)
+: KviTalIconView(parent,Qt::Popup)
 {
-		m_iTimerId = -1;
-		m_pItem=0;
-//	setGridX ( 40 );
+	m_iTimerId = -1;
+	m_pParent=parent;
+	m_pItem=0;
 	setColumnCount(3);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setRowCount(10);
@@ -73,7 +74,7 @@ KviTextIconWindow::~KviTextIconWindow()
 
 void KviTextIconWindow::fill()
 {
-	//setEditTriggers( QAbstractItemView::NoEditTriggers );
+	setEditTriggers( QAbstractItemView::NoEditTriggers );
 	clear();
 	KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
@@ -93,8 +94,6 @@ void KviTextIconWindow::fill()
 		}
 		++it;
 	}
-//	horizontalHeader()->setDefaultSectionSize(70);
-//	horizontalHeader()->resizeSections(QHeaderView::Fixed);
 	resizeColumnsToContents();
 	resizeRowsToContents();
 	sortItems ( 0, Qt::AscendingOrder );
@@ -103,18 +102,20 @@ void KviTextIconWindow::fill()
 
 void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
 {
-	debug("Show icon view widget");
 	if(m_pOwner)disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
 	m_pOwner = owner;
 	m_szTypedSeq = "";
 	m_bAltMode = bAltMode;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
-//	resizeColumnsToContents();
-//	QString text="QFrame {background-color: rgba(0,0,0,200);}";
-//	setStyleSheet(text);
-	show();
+//	show();
 }
-
+// FIXME 
+/*
+void KviTextIconWindow::leaveEvent(QEvent *e)
+{
+	doHide();
+}
+*/
 bool KviTextIconWindow::findTypedSeq()
 {
 
@@ -152,13 +153,7 @@ got_mit:
 	m_szCurFullSeq = mit->text();
 	return bFullMax;
 }
-/*
-void KviTextIconWindow::mouseMoveEvent ( QMouseEvent * e )
-{
-	
-	KviTalIconView::mouseMoveEvent();
-}
-*/
+
 void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 {
 	switch(e->key())
@@ -174,7 +169,6 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 			break;
 		case Qt::Key_Return:
 			{
-				//QTableWidgetItem *item=itemAt(mapFromGlobal(QCursor::pos()));
 				if (m_pItem) itemSelected(m_pItem);
 				else KviTalIconView::keyPressEvent(e);
 				return;
@@ -263,13 +257,12 @@ void KviTextIconWindow::show()
 	m_pItem=0;
 	m_iTimerId = startTimer(50000); //50 sec ...seems enough
 	debug("Set timer with id %d",m_iTimerId);
-	//fill();
 	QWidget::show();
 }
 
 void KviTextIconWindow::timerEvent(QTimerEvent *e)
 {
-	// FIXME: maybe a QT4 bug? (without this filter below KVIrc will be slow!)
+	// FIXME: without this timer filter KVIrc will be slow!
 	if (e->timerId()!=m_iTimerId) {debug ("Timer unknown with %d", e->timerId());killTimer(e->timerId());return;}
 	debug("Timer stop");
 	doHide();
@@ -282,7 +275,7 @@ void KviTextIconWindow::doHide()
 		killTimer(m_iTimerId);
 		m_iTimerId = -1;
 	}
-	hide();
+	m_pParent->hide();
 	if(m_pOwner)m_pOwner->setFocus();
 }
 void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev)
@@ -308,12 +301,12 @@ void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
 			((QLineEdit *)m_pOwner)->setText(tmp);
 			((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 		}
-		scroll(1,1);
-			doHide();
+		doHide();
  	
 	}
 }
 
+// FIXME: this does not work
 void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 {
 	if(e->pos().x() < 0)goto hideme;
@@ -321,13 +314,19 @@ void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().y() < 0)goto hideme;
 	if(e->pos().y() > height())goto hideme;
 	m_pItem=(KviTalIconViewItem *)itemAt(e->pos());
-	
 	KviTalIconView::mousePressEvent(e);
 	return;
-
 hideme:
-	debug("Mouse press");
 	doHide();
+}
+KviTextIconWindowWidget::KviTextIconWindowWidget()
+:QWidget(0)
+{
+	setWindowFlags(Qt::Popup);
+	wid=new KviTextIconWindow(this);
+	//FIXME: hack to prevent first showing at center of the screen ^_^
+	show();
+	hide();
 }
 
 

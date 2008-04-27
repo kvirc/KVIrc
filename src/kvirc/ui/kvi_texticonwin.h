@@ -30,16 +30,21 @@
 
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200
+class KviTextIconWindow;
+
+
+
 
 class KVIRC_API KviTextIconWindow : public KviTalIconView
 {
 	Q_OBJECT
 public:
-	KviTextIconWindow();
+	KviTextIconWindow(QWidget *);
 	~KviTextIconWindow();
 private:
 	QWidget       * m_pOwner;
 	KviTalIconViewItem * m_pItem;
+	QWidget * m_pParent;
 	QString         m_szTypedSeq;
 	QString         m_szCurFullSeq;
 	bool            m_bAltMode; // in alt mode the itemSelected() string contains
@@ -55,11 +60,25 @@ private:
 	//virtual void mouseMoveEvent ( QMouseEvent * e )
 	virtual void mousePressEvent(QMouseEvent *);
 	virtual void timerEvent(QTimerEvent *);
+	//virtual void leaveEvent(QEvent *e);
 public slots:
 	void fill();
 	void ownerDead();
 	void currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev);
 	void itemSelected(KviTalIconViewItem * item);
 };
-
+class KVIRC_API KviTextIconWindowWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviTextIconWindow *wid;
+	KviTextIconWindowWidget();
+	void popup(QWidget *owner,bool bAltMode = false)
+	{
+		wid->popup(owner,bAltMode);
+		//move(QCursor::pos());
+		show();
+	};
+	~KviTextIconWindowWidget(){};
+};
 #endif //_KVI_TEXTICONWIN_H_
