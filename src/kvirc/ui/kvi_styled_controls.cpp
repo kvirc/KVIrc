@@ -155,7 +155,6 @@ KviStyledCheckBox::KviStyledCheckBox ( const QString & text, QWidget * parent, c
 
 KviStyledCheckBox::~KviStyledCheckBox()
 {
-
 }
 
 void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
@@ -249,7 +248,6 @@ KviStyledToolButton::KviStyledToolButton ( const QIcon & iconSet, const QString 
 
 KviStyledToolButton::~KviStyledToolButton()
 {
-
 }
 
 void KviStyledToolButton::setShowSubmenuIndicator(bool bShow)
@@ -359,15 +357,13 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 
 void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 {
-	QPixmap*  pStoredPix = 0;
+	QPixmap* pStoredPix = 0;
 	if(pStoredPix=g_pIconManager->getBigIcon("kvi_toolbutton_menuindicator.png"))
 	{
 		QPixmap pix=iconSet().pixmap(
-                                usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
-                                isEnabled() ? QIcon::Normal :
-                                              QIconSet::Disabled,
-                                isOn() ? QIcon::On :
-                                              QIcon::Off);
+			usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
+			isEnabled() ? QIcon::Normal : QIconSet::Disabled,
+			isOn() ? QIcon::On : QIcon::Off);
 		
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}
