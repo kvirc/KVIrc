@@ -91,12 +91,11 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITH_KDE4
         Compile KDE4 support. It will look for the KDE4 headers and libraries
-        and if found it will enable the KDE support.
+        and if found it will enable the KDE4 support.
 
     -DWITHOUT_SSL
-        Enables the secure socket layer support. The SSL support is
-        automatically enabled if OpenSSL is detected by CMake. It will also
-        enable crypt support
+        Disables the secure socket layer support. The SSL support is
+        automatically enabled if OpenSSL is detected by CMake.
 
     -DWITHOUT_CRYPT
         Disables the cryptographic engines and the whole cryptography/text
