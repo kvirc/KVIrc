@@ -281,7 +281,7 @@ void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int 
 	if(ucFore > 15)ucFore = 0;
 	p->setPen(QPen(KVI_OPTION_MIRCCOLOR(ucFore)));
 	// skip the msgtype prefix
-	QString txt = (g_msgtypeOptionsTable[m_iOptId].name + 7);
+	QString txt = g_msgtypeOptionsTable[m_iOptId].name.remove(0,7);
 	txt += " (";
 	txt += __tr2qs_no_xgettext(QString::fromUtf8(m_pMsgType->type()));
 	txt += ")";

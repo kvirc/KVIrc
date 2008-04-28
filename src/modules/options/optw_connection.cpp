@@ -167,7 +167,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 							"dns lookup. This is harmless and can fix some problems with caching " \
 							"dns servers that do not properly rotate the records as the authoritative " \
 							"ones would do. On the other hand, you might want to disable it if " \
-							"you want to rely on the dns server to provide the best choice.</center>"));
+							"you want to rely on the dns server to provide the best choice.</center>","options"));
 
 	addRowSpacer(0,5,0,5);
 }
