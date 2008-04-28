@@ -110,8 +110,8 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("network",KVS_PT_NONEMPTYSTRING,0,szNetwork)
 	KVSM_PARAMETERS_END(c)
 	KviRegisteredChannel * ch;
-	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan,szNetwork);
-	else ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
+	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	else ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
 	if(ch)
 	{
 		g_pRegisteredChannelDataBase->remove(ch);
@@ -162,15 +162,15 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,0,szValue)
 	KVSM_PARAMETERS_END(c)
 	KviRegisteredChannel * ch;
-	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan,szNetwork);
-	else ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
+	if(c->hasSwitch('e',"exactly"))ch = g_pRegisteredChannelDataBase->findExact(szChan.toUtf8().data(),szNetwork.toUtf8().data());
+	else ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
 	if(ch)
 	{
 		if(!szValue.isEmpty())
 		{
 			ch->setProperty(szProperty.toUtf8().data(),new KviStr(szValue));
 		} else {
-			ch->removeProperty(szProperty);
+			ch->removeProperty(szProperty.toUtf8().data());
 		}
 	} else {
 		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs("No such channel/netmask entry in the database"));
@@ -309,10 +309,10 @@ static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("network",KVS_PT_STRING,0,szNetwork)
 		KVSM_PARAMETER("property name",KVS_PT_NONEMPTYSTRING,0,szPropertyName)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
 	if(ch)
 	{
-		KviStr * p = ch->property(szPropertyName);
+		KviStr * p = ch->property(szPropertyName.toUtf8().data());
 		if(p)c->returnValue()->setString(p->ptr());
 	} //else c->warning(__tr("User %s not found"),parms->safeFirstParam());
 	return true;
@@ -347,7 +347,7 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
 		KVSM_PARAMETER("network",KVS_PT_STRING,0,szNetwork)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetwork);
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetwork.toUtf8().data());
 	c->returnValue()->setBoolean(ch);
 	return true;
 }
@@ -383,7 +383,7 @@ static bool regchan_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("channel name",KVS_PT_STRING,0,szChan)
 		KVSM_PARAMETER("netmask",KVS_PT_STRING,0,szNetmask)
 	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan,szNetmask);
+	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan.toUtf8().data(),szNetmask.toUtf8().data());
 	c->returnValue()->setBoolean(ch);
 	return true;
 }

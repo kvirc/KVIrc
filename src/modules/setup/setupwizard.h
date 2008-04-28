@@ -79,7 +79,7 @@ public:
 	KviSetupPage  * m_pServers;
 	
 	// Theme
-	KviTalVButtonGroup * m_pThemeButtonGroup;
+	//KviTalGroupBox  * m_pThemeButtonGroup;
 
 	QRadioButton  * m_pThemeHiRes;
 	QRadioButton  * m_pThemeLoRes;
@@ -92,7 +92,7 @@ public:
 	//Dir
 	QLineEdit     * m_pDataPathEdit;
 	QLineEdit     * m_pIncomingPathEdit;
-	KviTalVButtonGroup * m_pDirButtonGroup;
+	KviTalGroupBox * m_pDirButtonGroup;
 	QRadioButton  * m_pDirUsePrev;
 	QRadioButton  * m_pDirUseNew;
 #ifdef COMPILE_ON_WINDOWS

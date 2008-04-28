@@ -192,7 +192,7 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("option",KVS_PT_STRING,0,szOption)
 	KVSM_PARAMETERS_END(c)
-	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption);
+	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
 	if(!e)
 	{
 		c->warning(__tr2qs_ctx("No such options page class name %Q","options"),&szOption);

@@ -1534,13 +1534,12 @@ void KviServerOptionsWidget::removeCurrent()
 	}
 }
 
-KviServerOptionsListViewItem * KviServerOptionsWidget::findNetItem(const char * netname)
+KviServerOptionsListViewItem * KviServerOptionsWidget::findNetItem(const QString &netname)
 {
 	KviServerOptionsListViewItem * it = (KviServerOptionsListViewItem *)m_pListView->firstChild();
 	while(it)
 	{
-		KviStr szNetName = it->text(0);
-		if(kvi_strEqualCI(szNetName.ptr(),netname))return it;
+		if(KviQString::equalCI(it->text(0),netname))return it;
 		it = (KviServerOptionsListViewItem *)it->nextSibling();
 	}
 	return 0;

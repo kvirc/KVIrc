@@ -1047,7 +1047,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 
 	KviUserWindow * wnd = new KviUserWindow(
 		c->window()->frame(),
-		szCaption,
+		szCaption.toUtf8().data(),
 		iIcon,
 		pConsole,
 		iFlags);

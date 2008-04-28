@@ -530,8 +530,8 @@ if(__pXOrArray->isArray())\
 	} else {\
 		if(c->params()->count() < 4)\
 		{\
-			QString error=function+" requires either an array as first parameter or four integers";\
-			c->error(__tr2qs(error));\
+			QString error=function+__tr2qs(" requires either an array as first parameter or four integers");\
+			c->error(error);\
 			return false;\
 		}\
 		if(!__pXOrArray->asInteger(iX))\
@@ -564,8 +564,8 @@ if(__pXOrArray->isArray())\
 	} else {\
 		if(c->params()->count() < 2)\
 		{\
-			QString error=function+" requires either an array as first parameter or two integers";\
-			c->error(__tr2qs(error));\
+			QString error=function+__tr2qs(" requires either an array as first parameter or two integers");\
+			c->error(error);\
 			return false;\
 		}\
 		if(!__pXOrArray->asInteger(iX))\
@@ -608,8 +608,8 @@ if(__pCol1OrArray->isArray())\
 	} else {\
 		if(c->params()->count() < 3)\
 		{\
-			QString error=function+" requires either an array as first parameter or 3 integers";\
-			c->error(__tr2qs(error));\
+			QString error=function+__tr2qs(" requires either an array as first parameter or 3 integers");\
+			c->error(error);\
 			return false;\
 		}\
 		if(!__pCol1OrArray->asInteger(iCol1))\

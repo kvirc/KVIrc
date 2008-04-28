@@ -184,7 +184,7 @@ protected:
 private:
 	void fillServerList();
 	void saveLastItem();
-	KviServerOptionsListViewItem * findNetItem(const char * netname);
+	KviServerOptionsListViewItem * findNetItem(const QString &netname);
 protected slots:
 	void importerDead();
 	void importServer(const KviIrcServer & s,const QString &network);

@@ -40,7 +40,7 @@ class KviRegistrationWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:
-	KviRegistrationWizard(const char * startMask,KviRegisteredUserDataBase * db = 0,QWidget * par = 0,bool bModal = false);
+	KviRegistrationWizard(const QString &startMask,KviRegisteredUserDataBase * db = 0,QWidget * par = 0,bool bModal = false);
 	~KviRegistrationWizard();
 
 	KviRegisteredUserDataBase * m_pDb;

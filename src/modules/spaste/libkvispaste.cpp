@@ -26,6 +26,7 @@
 
 #include "kvi_module.h"
 #include "kvi_fileutils.h"
+#include "kvi_qstring.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"
 #include "kvi_console.h"
@@ -219,7 +220,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 				while( (item = it.current()) != 0)
 				{
 					++it;
-					if(kvi_strEqualCS(item->window()->id(),c->window()->id()))delete item;
+					if(KviQString::equalCS(item->window()->id(),c->window()->id()))delete item;
 				}
 			}
 		} else {

@@ -27,24 +27,9 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	// The constructor below triggers a warning
-	// ../tal/kvi_tal_application.cpp: In constructor
-	//   `KviTalApplication::KviTalApplication(int, char**)':
-	// ../tal/kvi_tal_application.cpp:31: warning: `__base_ctor' is deprecated
-	//   (declared at /opt/kde/include/kapplication.h:198)
-	//
-	// The KApplication constructor has been declared as deprecated
-	// in favor of a complexier initialization that uses KCmdLineArgs
-	// and can't be abstracted easily.
-	// The other constructors are not "old" and "stable" enough
-	// to be safely used at this time. We'll rethink this when KDE 4 is out.
-
 	KviTalApplication::KviTalApplication(int &argc,char ** argv)
 	: KApplication()
 	{
-
-
-
 	}
 
 	KviTalApplication::~KviTalApplication()

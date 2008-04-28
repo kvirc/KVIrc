@@ -1335,7 +1335,7 @@ void KviAliasEditor::renameItem()
 			QMessageBox::information(this,
 				__tr2qs("Namespace already exists"),
 				__tr2qs("This name is already in use. Please choose another one."),
-				__tr2qs("Ok, let me try again..."));
+				__tr2qs("Ok, Let me try again..."));
 			g_pAliasEditorModule->unlock();
 			return;
 		}
@@ -1376,6 +1376,7 @@ void KviAliasEditor::renameItem()
 		ait->setBuffer(szCode);
 		ait->setCursorPosition(pntCursor);
 		activateItem(ait);
+
 	} else {
 		KviAliasNamespaceListViewItem * nit = createFullNamespaceItem(szNewName);
 		activateItem(nit);

@@ -410,10 +410,10 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	m_pAvatar = 0;
 	if(r)
 	{
-		const char * av = r->getProperty("avatar");
-		if(av)
+		const QString av = r->getProperty("avatar");
+		if(!av.isEmpty())
 		{
-			m_pAvatar = new KviPixmap(av);
+			m_pAvatar = new KviPixmap(av.toUtf8().data());
 		}
 	}
 	if(!m_pAvatar)m_pAvatar = new KviPixmap();

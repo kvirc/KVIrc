@@ -46,7 +46,7 @@
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 extern KviPointerList<KviRegistrationWizard> * g_pRegistrationWizardList;
 
-KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegisteredUserDataBase * db,QWidget * par,bool bModal)
+KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegisteredUserDataBase * db,QWidget * par,bool bModal)
 : KviTalWizard(par)
 {
 	m_pDb = db;
@@ -55,7 +55,7 @@ KviRegistrationWizard::KviRegistrationWizard(const char * startMask,KviRegistere
 	
 	m_bModal = bModal;
 
-	KviIrcMask mask(startMask ? startMask : "*!*@*");
+	KviIrcMask mask(!startMask.isEmpty() ? startMask.toUtf8().data() : "*!*@*");
 
 	g_pRegistrationWizardList->append(this);
 

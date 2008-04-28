@@ -283,7 +283,7 @@ void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int 
 	// skip the msgtype prefix
 	QString txt = g_msgtypeOptionsTable[m_iOptId].name.remove(0,7);
 	txt += " (";
-	txt += __tr2qs_no_xgettext(QString::fromUtf8(m_pMsgType->type()));
+	txt += __tr2qs_no_xgettext(m_pMsgType->type());
 	txt += ")";
 	p->drawText(24,listView()->itemMargin(),w - 24,height() - (listView()->itemMargin() * 2),Qt::AlignLeft | Qt::AlignVCenter,txt);
 	if(isSelected())
@@ -609,7 +609,7 @@ void KviMessageColorsOptionsWidget::load()
 	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());
 	//qDebug("SYMLINK RETURNS %d (%d)",::symlink(szGlobal.ptr(),szLocal.ptr()));
 	//qDebug("ERRNO (%d)",errno);
-	symlink(szGlobal,szLocal);
+	symlink(szGlobal.toLocal8Bit().data(),szLocal.toLocal8Bit().data());
 	// FIXME: Do it also on windows...
 #endif
 

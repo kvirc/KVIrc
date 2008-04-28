@@ -28,8 +28,6 @@
 // so any change should go in that script
 //
 
-#include "instances.h"
-
 #include "optw_antispam.h"
 #include "optw_avatar.h"
 #include "optw_away.h"
@@ -70,6 +68,7 @@
 
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+#include "instances.h"
 
 int g_iOptionWidgetInstances = 0;
 
@@ -647,7 +646,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 : QObject(0)
 {
 
-	//qDebug("Instantiating");
+	//debug("Instantiating");
 	// Create the global widget dict : case sensitive , do not copy keys
 	m_pInstanceTree = new KviPointerList<KviOptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
@@ -666,7 +665,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviConnectionOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviConnectionOptionsWidget;
@@ -703,7 +702,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionAdvancedOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviConnectionAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviConnectionAdvancedOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviConnectionAdvancedOptionsWidget;
@@ -740,7 +739,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSSLOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSSLOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSSLOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSSLOptionsWidget;
@@ -774,7 +773,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTransportOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTransportOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTransportOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTransportOptionsWidget;
@@ -808,7 +807,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentOptionsWidget;
@@ -842,7 +841,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviProxyOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviProxyOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviProxyOptionsWidget;
@@ -876,7 +875,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccOptionsWidget;
@@ -912,7 +911,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccGeneralOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccGeneralOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccGeneralOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccGeneralOptionsWidget;
@@ -946,7 +945,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccAdvancedOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccAdvancedOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccAdvancedOptionsWidget;
@@ -980,7 +979,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendOptionsWidget;
@@ -1016,7 +1015,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendGeneralOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendGeneralOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendGeneralOptionsWidget;
@@ -1050,7 +1049,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendAdvancedOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccSendAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccSendAdvancedOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccSendAdvancedOptionsWidget;
@@ -1084,7 +1083,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccChatOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccChatOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccChatOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccChatOptionsWidget;
@@ -1118,7 +1117,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviDccVoiceOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviDccVoiceOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviDccVoiceOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviDccVoiceOptionsWidget;
@@ -1152,7 +1151,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviGeneralOptOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviGeneralOptOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviGeneralOptOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviGeneralOptOptionsWidget;
@@ -1188,7 +1187,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMediaTypesOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMediaTypesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMediaTypesOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMediaTypesOptionsWidget;
@@ -1222,7 +1221,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundOptionsWidget;
@@ -1258,7 +1257,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundGeneralOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundGeneralOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundGeneralOptionsWidget;
@@ -1292,7 +1291,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundsOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviSoundsOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviSoundsOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviSoundsOptionsWidget;
@@ -1326,7 +1325,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTextEncodingOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTextEncodingOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTextEncodingOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTextEncodingOptionsWidget;
@@ -1360,7 +1359,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUParserOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUParserOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUParserOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUParserOptionsWidget;
@@ -1394,7 +1393,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUrlHandlersOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUrlHandlersOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUrlHandlersOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUrlHandlersOptionsWidget;
@@ -1428,7 +1427,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityOptionsWidget;
@@ -1464,7 +1463,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityGeneralOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityGeneralOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityGeneralOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityGeneralOptionsWidget;
@@ -1498,7 +1497,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAvatarOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAvatarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityAvatarOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityAvatarOptionsWidget;
@@ -1532,7 +1531,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAdvancedOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityAdvancedOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityAdvancedOptionsWidget;
@@ -1566,7 +1565,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInputLookOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInputLookOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInputLookOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInputLookOptionsWidget;
@@ -1600,7 +1599,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInterfaceFeaturesOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInterfaceFeaturesOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInterfaceFeaturesOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInterfaceFeaturesOptionsWidget;
@@ -1636,7 +1635,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviInputFeaturesOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviInputFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviInputFeaturesOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviInputFeaturesOptionsWidget;
@@ -1670,7 +1669,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifierOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifierOptionsWidget;
@@ -1704,7 +1703,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTrayOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTrayOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTrayOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTrayOptionsWidget;
@@ -1738,7 +1737,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeGeneralOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeGeneralOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeGeneralOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeGeneralOptionsWidget;
@@ -1772,7 +1771,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeTransparencyOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeTransparencyOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeTransparencyOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeTransparencyOptionsWidget;
@@ -1806,7 +1805,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget;
@@ -1840,7 +1839,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiAreaOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiAreaOptionsWidget;
@@ -1874,7 +1873,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeToolBarAppletsOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeToolBarAppletsOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeToolBarAppletsOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeToolBarAppletsOptionsWidget;
@@ -1908,7 +1907,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcOptionsWidget;
@@ -1944,7 +1943,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcGeneralOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcGeneralOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcGeneralOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcGeneralOptionsWidget;
@@ -1978,7 +1977,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcAdvancedOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcAdvancedOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcAdvancedOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcAdvancedOptionsWidget;
@@ -2012,7 +2011,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelOptionsWidget;
@@ -2048,7 +2047,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelGeneralOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelGeneralOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelGeneralOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelGeneralOptionsWidget;
@@ -2082,7 +2081,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelAdvancedOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviChannelAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviChannelAdvancedOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviChannelAdvancedOptionsWidget;
@@ -2116,7 +2115,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOutputOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcOutputOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcOutputOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcOutputOptionsWidget;
@@ -2150,7 +2149,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviProtectionOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviProtectionOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviProtectionOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviProtectionOptionsWidget;
@@ -2186,7 +2185,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAntispamOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAntispamOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAntispamOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAntispamOptionsWidget;
@@ -2220,7 +2219,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpFloodProtectionOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpFloodProtectionOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviCtcpFloodProtectionOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviCtcpFloodProtectionOptionsWidget;
@@ -2254,7 +2253,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIgnoreOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIgnoreOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIgnoreOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIgnoreOptionsWidget;
@@ -2288,7 +2287,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviQueryOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviQueryOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviQueryOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviQueryOptionsWidget;
@@ -2322,7 +2321,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviToolsOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviToolsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviToolsOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviToolsOptionsWidget;
@@ -2358,7 +2357,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAvatarAdvancedOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAvatarAdvancedOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAvatarAdvancedOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAvatarAdvancedOptionsWidget;
@@ -2392,7 +2391,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAwayOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAwayOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAwayOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAwayOptionsWidget;
@@ -2426,7 +2425,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviCtcpOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviCtcpOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviCtcpOptionsWidget;
@@ -2460,7 +2459,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertHighlightingOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertHighlightingOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAlertHighlightingOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAlertHighlightingOptionsWidget;
@@ -2497,7 +2496,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviHighlightingOptionsWidget
 				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviHighlightingOptionsWidget;
-				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale,"options");;
+				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(),"options");;
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_GROUP_KviHighlightingOptionsWidget
 				e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviHighlightingOptionsWidget;
@@ -2531,7 +2530,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertOptionsWidget
 				e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviAlertOptionsWidget;
-				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale,"options");;
+				e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(),"options");;
 				#endif
 				#ifdef KVI_OPTIONS_WIDGET_GROUP_KviAlertOptionsWidget
 				e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviAlertOptionsWidget;
@@ -2565,7 +2564,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviLagOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviLagOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviLagOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviLagOptionsWidget;
@@ -2599,7 +2598,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviLoggingOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviLoggingOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviLoggingOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviLoggingOptionsWidget;
@@ -2633,7 +2632,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNickServOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNickServOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNickServOptionsWidget;
@@ -2667,7 +2666,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifyOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifyOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifyOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifyOptionsWidget;
@@ -2701,7 +2700,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTextIconsOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTextIconsOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTextIconsOptionsWidget;
@@ -2735,7 +2734,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewThemeOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewThemeOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewThemeOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewThemeOptionsWidget;
@@ -2771,7 +2770,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewLookOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewLookOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewLookOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewLookOptionsWidget;
@@ -2805,7 +2804,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewFeaturesOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewFeaturesOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewFeaturesOptionsWidget;
@@ -2839,7 +2838,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMessageOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMessageOptionsWidget;
@@ -2875,7 +2874,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviPrivmsgOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviPrivmsgOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviPrivmsgOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviPrivmsgOptionsWidget;
@@ -2909,7 +2908,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTimestampOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTimestampOptionsWidget;
@@ -2943,7 +2942,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageColorsOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviMessageColorsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviMessageColorsOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviMessageColorsOptionsWidget;
@@ -2977,7 +2976,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviStandardColorsOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviStandardColorsOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviStandardColorsOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviStandardColorsOptionsWidget;
@@ -3011,7 +3010,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviServerOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviServerOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviServerOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviServerOptionsWidget;
@@ -3045,7 +3044,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTaskBarOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTaskBarOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTaskBarOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTaskBarOptionsWidget;
@@ -3081,7 +3080,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarOptionsWidget;
@@ -3117,7 +3116,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarForegroundOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarForegroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarForegroundOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarForegroundOptionsWidget;
@@ -3151,7 +3150,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarBackgroundOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarBackgroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarBackgroundOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarBackgroundOptionsWidget;
@@ -3185,7 +3184,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarFeaturesOptionsWidget
 			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarFeaturesOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale,"options");;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
 			#endif
 			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarFeaturesOptionsWidget
 			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarFeaturesOptionsWidget;
@@ -3219,7 +3218,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicTaskBarOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicTaskBarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviClassicTaskBarOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviClassicTaskBarOptionsWidget;
@@ -3253,7 +3252,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTopicLabelLookOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTopicLabelLookOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTopicLabelLookOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTopicLabelLookOptionsWidget;
@@ -3287,7 +3286,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookOptionsWidget
 	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale,"options");;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
 	#endif
 	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookOptionsWidget
 	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookOptionsWidget;
@@ -3323,7 +3322,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookBackgroundOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookBackgroundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookBackgroundOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookBackgroundOptionsWidget;
@@ -3357,7 +3356,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookForegroundOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListLookForegroundOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListLookForegroundOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListLookForegroundOptionsWidget;
@@ -3391,7 +3390,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListGridOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListGridOptionsWidget;
@@ -3425,7 +3424,7 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListFeaturesOptionsWidget
 		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviUserListFeaturesOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale,"options");;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
 		#endif
 		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviUserListFeaturesOptionsWidget
 		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviUserListFeaturesOptionsWidget;
@@ -3463,9 +3462,9 @@ void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidg
 					delete e->pWidget->parent();
 					e->pWidget =  0;
 				} else {
-					qDebug("Ops...i have deleted the options dialog ?");
+					debug("Ops...i have deleted the options dialog ?");
 				}
-			} //else qDebug("Clas %s has no widget",e->szName);
+			} //else debug("Clas %s has no widget",e->szName);
 			if(e->pChildList)deleteInstanceTree(e->pChildList);
 		}
 		delete l;
@@ -3475,7 +3474,7 @@ void KviOptionsInstanceManager::deleteInstanceTree(KviPointerList<KviOptionsWidg
 
 KviOptionsInstanceManager::~KviOptionsInstanceManager()
 {
-	if(m_pInstanceTree) qDebug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
+	if(m_pInstanceTree)debug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
 }
 
 void KviOptionsInstanceManager::cleanup(KviModule * m)
@@ -3581,9 +3580,4 @@ KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(con
 {
 	return findInstanceEntry(clName,m_pInstanceTree);
 }
-
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_instances.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 

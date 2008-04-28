@@ -37,7 +37,7 @@ bool g_bFoundMirc;
 #include "kvi_options.h"
 #include "kvi_config.h"
 
-#include <kvi_tal_textedit.h>
+#include "kvi_tal_textedit.h"
 #include "kvi_tal_hbox.h"
 
 #include <QMessageBox>
@@ -228,11 +228,10 @@ KviSetupWizard::KviSetupWizard()
 		"will be preserved." \
 		"</p>"));
 
-	addPage(m_pDirectory,__tr2qs("Application Folders"));
 
 	QString tmp;
 
-	m_pDirButtonGroup = new KviTalVButtonGroup(__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
+	m_pDirButtonGroup = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
 	m_pDirUsePrev = new QRadioButton(__tr2qs("Use settings folder from previous installation"),m_pDirButtonGroup);
 	connect(m_pDirUsePrev,SIGNAL(clicked()),this,SLOT(oldDirClicked()));
 	
@@ -308,6 +307,7 @@ KviSetupWizard::KviSetupWizard()
 
 	//m_pDirectory->m_pVBox->setStretchFactor(m_pDirectory->m_pTextLabel,1);
 
+	addPage(m_pDirectory,__tr2qs("Application Folders"));
 	setHelpEnabled(m_pDirectory,false);
 
 	connect(m_pDataPathEdit,SIGNAL(textChanged ( const QString & )),this,SLOT(newDataTextChanged ( const QString & )));

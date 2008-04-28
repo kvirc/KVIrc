@@ -124,7 +124,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_wizard)
 
 bool KviKvsObject_wizard::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviKvsMdmWizard(parentScriptWidget(), getName(),this), true);
+	setObject(new KviKvsMdmWizard(parentScriptWidget(), getName().toUtf8().data(),this), true);
 
 	return true;
 }

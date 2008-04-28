@@ -79,22 +79,17 @@ SET(kvilib_MOC_HDRS
 	system/kvi_stdarg.h
 	system/kvi_thread.h
 	system/kvi_time.h
-	tal/kvi_tal_application_qt.h
-	tal/kvi_tal_menubar_qt.h
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_application.h
-	tal/kvi_tal_filedialog_qt.h
 	tal/kvi_tal_grid.h
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
-	tal/kvi_tal_mainwindow_qt.h
 	tal/kvi_tal_menubar.h
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
-	tal/kvi_tal_toolbar_qt.h
 	tal/kvi_tal_toolbardocktype.h
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_textedit.h
@@ -103,6 +98,27 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_windowstate.h
 	tal/kvi_tal_wizard.h
 )
+
+IF(COMPILE_KDE_SUPPORT)
+	SET(kvilib_MOC_HDRS
+		${kvilib_MOC_HDRS}
+		tal/kvi_tal_application_kde.h
+		tal/kvi_tal_menubar_kde.h
+		tal/kvi_tal_filedialog_kde.h
+		tal/kvi_tal_mainwindow_kde.h
+		tal/kvi_tal_toolbar_kde.h
+	)
+ELSE()
+	SET(kvilib_MOC_HDRS
+		${kvilib_MOC_HDRS}
+		tal/kvi_tal_application_qt.h
+		tal/kvi_tal_menubar_qt.h
+		tal/kvi_tal_filedialog_qt.h
+		tal/kvi_tal_mainwindow_qt.h
+		tal/kvi_tal_toolbar_qt.h
+	)
+ENDIF()
+
 
 SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp

@@ -45,7 +45,7 @@
 	#include <unistd.h>
 #endif
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	#include <dcopclient.h>
 #endif
 
@@ -466,7 +466,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 		}
 	}
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 
 	QByteArray ba;
 	QDataStream ds(ba, IO_WriteOnly);

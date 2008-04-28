@@ -22,7 +22,7 @@
 #include "termwindow.h"
 #include "termwidget.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	#include "kvi_iconmanager.h"
 	#include "kvi_options.h"
 	#include "kvi_locale.h"

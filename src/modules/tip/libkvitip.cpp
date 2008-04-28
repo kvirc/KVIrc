@@ -160,7 +160,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 //	m_szConfigFileName.cutToLast('/');
 
 	QString buffer;
-	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName,KviApp::ConfigPlugins,true);
+	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName.toUtf8().data(),KviApp::ConfigPlugins,true);
 	debug("Check path %s and file %s",buffer.toUtf8().data(),m_szConfigFileName.toUtf8().data());
 	if(bEnsureExists)
 	{

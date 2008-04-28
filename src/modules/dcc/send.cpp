@@ -376,10 +376,7 @@ void KviDccRecvThread::run()
 			}
 			// include the artificial delay if needed
 			if(m_pOpt->iIdleStepLengthInMSec > 0)
-			{
-				debug("LOOP: artificial delay");
 				msleep(m_pOpt->iIdleStepLengthInMSec);
-			}
 		} else {
 			// sleep up to 200 msecs (if data arrives...we want low exit latency here)
 			if(iFailedSelects < 100)iFailedSelects++;

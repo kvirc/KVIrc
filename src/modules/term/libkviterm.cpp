@@ -28,7 +28,7 @@
 
 #include <QSplitter>
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	#include "termwidget.h"
 	#include "termwindow.h"
 
@@ -40,7 +40,7 @@
 
 KviModule * g_pTermModule = 0;
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	KviPointerList<KviTermWidget> * g_pTermWidgetList      = 0;
 	KviPointerList<KviTermWindow> * g_pTermWindowList      = 0;
 	KviStr                 g_szKonsoleLibraryName = "";
@@ -71,7 +71,7 @@ KviModule * g_pTermModule = 0;
 
 static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	if(g_szKonsoleLibraryName.hasData())
 	{
 		c->module()->lock(); // multiple locks are allowed
@@ -97,7 +97,7 @@ static bool term_module_init(KviModule * m)
 {
 	g_pTermModule = m;
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	g_pTermWidgetList = new KviPointerList<KviTermWidget>;
 	g_pTermWidgetList->setAutoDelete(false);
 	g_pTermWindowList = new KviPointerList<KviTermWindow>;
@@ -136,7 +136,7 @@ static bool term_module_init(KviModule * m)
 
 static bool term_module_cleanup(KviModule *m)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	while(g_pTermWidgetList->first())delete g_pTermWidgetList->first();
 	delete g_pTermWidgetList;
 	g_pTermWidgetList = 0;

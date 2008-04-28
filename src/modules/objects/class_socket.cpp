@@ -509,7 +509,7 @@ bool KviKvsObject_socket::functionAccept(KviKvsObjectFunctionCall *c)
 
 	if(m_secondarySock != KVI_INVALID_SOCKET)
 	{
-		((KviKvsObject_socket *)pObject)->acceptConnection(m_secondarySock,m_uSecondaryPort,m_szSecondaryIp);
+		((KviKvsObject_socket *)pObject)->acceptConnection(m_secondarySock,m_uSecondaryPort,m_szSecondaryIp.toUtf8().data());
 
 		m_secondarySock = KVI_INVALID_SOCKET;
 		m_uSecondaryPort = 0;
@@ -600,9 +600,9 @@ bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
 
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(kvi_isValidStringIp(m_szRemoteIp) || kvi_isValidStringIp_V6(m_szRemoteIp))
+	if(kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()) || kvi_isValidStringIp_V6(m_szRemoteIp.toUtf8().data()))
 #else
-	if(kvi_isValidStringIp(m_szRemoteIp))
+	if(kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()))
 #endif
 	{
 		debug ("ok connecting");
@@ -658,10 +658,10 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 	{
 
 		// Check the address type
-		if(kvi_isValidStringIp(m_szLocalIp))bGotIp = true;
+		if(kvi_isValidStringIp(m_szLocalIp.toUtf8().data()))bGotIp = true;
 		else {
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(m_szLocalIp))
+			if(kvi_isValidStringIp_V6(m_szLocalIp.toUtf8().data()))
 			{
 				bGotIp = true;
 				m_bIpV6 = true;
@@ -697,9 +697,9 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 	if(!m_szLocalIp.isEmpty())
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sa(m_szLocalIp,m_uLocalPort,m_bIpV6,m_bUdp);
+		KviSockaddr sa(m_szLocalIp.toUtf8().data(),m_uLocalPort,m_bIpV6,m_bUdp);
 #else
-		KviSockaddr sa(m_szLocalIp,m_uLocalPort,false,m_bUdp);
+		KviSockaddr sa(m_szLocalIp.toUtf8().data(),m_uLocalPort,false,m_bUdp);
 #endif
 		if(!sa.socketAddress())
 		{
@@ -868,7 +868,7 @@ void KviKvsObject_socket::doConnect()
 	m_pDelayTimer = 0;
 
 
-	KviSockaddr sa(m_szRemoteIp,m_uRemotePort,!kvi_isValidStringIp(m_szRemoteIp),m_bUdp);
+	KviSockaddr sa(m_szRemoteIp.toUtf8().data(),m_uRemotePort,!kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()),m_bUdp);
 
 	if(!sa.socketAddress())
 	{
