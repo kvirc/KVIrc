@@ -95,7 +95,6 @@ void KviTextIconWindow::fill()
 		++it;
 	}
 	resizeColumnsToContents();
-	resizeRowsToContents();
 	sortItems ( 0, Qt::AscendingOrder );
 	setCurrentItem(0);
 }
@@ -107,15 +106,8 @@ void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
 	m_szTypedSeq = "";
 	m_bAltMode = bAltMode;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
-//	show();
 }
-// FIXME 
-/*
-void KviTextIconWindow::leaveEvent(QEvent *e)
-{
-	doHide();
-}
-*/
+
 bool KviTextIconWindow::findTypedSeq()
 {
 
@@ -256,15 +248,15 @@ void KviTextIconWindow::show()
 {
 	m_pItem=0;
 	m_iTimerId = startTimer(50000); //50 sec ...seems enough
-	debug("Set timer with id %d",m_iTimerId);
 	QWidget::show();
 }
 
 void KviTextIconWindow::timerEvent(QTimerEvent *e)
 {
-	// FIXME: without this timer filter KVIrc will be slow!
-	if (e->timerId()!=m_iTimerId) {debug ("Timer unknown with %d", e->timerId());killTimer(e->timerId());return;}
-	debug("Timer stop");
+	if (e->timerId()!=m_iTimerId) {
+		QTableWidget::timerEvent(e);
+		return;
+	}
 	doHide();
 }
 
