@@ -36,6 +36,7 @@
 #include "kvi_input.h"
 #include "kvi_qstring.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_frame.h"
 
 #include <QSplitter>
 #include <QToolTip>
@@ -55,8 +56,9 @@
 #ifdef COMPILE_KDE_SUPPORT
 	#include <kurl.h>
 	#include <krun.h>
-	#include <kuserprofile.h>
 	#include <kmimetype.h>
+	#include <kmimetypetrader.h>
+	#include <kiconloader.h>
 #endif //COMPILE_KDE_SUPPORT
 
 extern KviFileTransferWindow * g_pFileTransferWindow;
@@ -325,7 +327,7 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 
 #ifdef COMPILE_KDE_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
-				KServiceTypeProfile::OfferList offers = KServiceTypeProfile::offers(mimetype,"Application");
+				KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
 
 				id = m_pLocalFilePopup->insertItem(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
 				m_pLocalFilePopup->setItemParameter(id,-1);
@@ -335,10 +337,13 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 				int id;
 				int idx = 0;
 
-				for(KServiceTypeProfile::OfferList::Iterator itOffers = offers.begin();
+				for(KService::List::Iterator itOffers = offers.begin();
 	   				itOffers != offers.end(); ++itOffers)
 				{
-					id = m_pOpenFilePopup->insertItem((*itOffers).service()->pixmap(KIcon::Small),(*itOffers).service()->name());
+					id = m_pOpenFilePopup->insertItem(
+							SmallIcon((*itOffers).data()->icon()),
+							(*itOffers).data()->name()
+						);
 					m_pOpenFilePopup->setItemParameter(id,idx);
 					idx++;
 				}
@@ -429,19 +434,20 @@ void KviFileTransferWindow::openFilePopupActivated(int id)
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
 
-	QString mimetype = KMimeType::findByPath(tmp)->name();
-	KServiceTypeProfile::OfferList offers = KServiceTypeProfile::offers(mimetype,"Application");
 
-	for(KServiceTypeProfile::OfferList::Iterator itOffers = offers.begin();
-			itOffers != offers.end(); ++itOffers)
+	QString mimetype = KMimeType::findByPath(tmp)->name();
+	KService::List offers = KMimeTypeTrader::self()->query(mimetype,"Application");
+
+	for(KService::List::Iterator itOffers = offers.begin();
+	   				itOffers != offers.end(); ++itOffers)
 	{
-		if(txt == (*itOffers).service()->name())
+		if(txt == (*itOffers).data()->name())
 		{
-			KURL::List lst;
-			KURL url;
+			KUrl::List lst;
+			KUrl url;
 			url.setPath(tmp);
 			lst.append(url);
-			KRun::run(*((*itOffers).service()), lst);
+			KRun::run(*((*itOffers).data()),lst,g_pFrame);
 			break;
 		}
 	}
@@ -478,7 +484,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 		tmp.prepend("konsole --workdir=\"");
 		tmp.append("\"");
 
-		KRun::runCommand(tmp);
+		KRun::runCommand(tmp,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 }
@@ -523,18 +529,19 @@ void KviFileTransferWindow::openLocalFile()
 		if(tmp.isEmpty())return;
 
 		QString mimetype = KMimeType::findByPath(tmp)->name();  //KMimeType
-		KService::Ptr offer = KServiceTypeProfile::preferredService(mimetype,"Application");
+		KService::Ptr offer = KMimeTypeTrader::self()->preferredService(mimetype,"Application");
 		if(!offer)
 		{
 			openLocalFileWith();
 			return;
 		}
 
-		KURL::List lst;
-		KURL url;
+		KUrl::List lst;
+		KUrl url;
 		url.setPath(tmp);
 		lst.append(url);
-		KRun::run(*offer, lst);
+
+		KRun::run(*offer, lst, g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 }
@@ -558,11 +565,11 @@ void KviFileTransferWindow::openLocalFileWith()
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
 
-		KURL::List lst;
-		KURL url;
+		KUrl::List lst;
+		KUrl url;
 		url.setPath(tmp);
 		lst.append(url);
-		KRun::displayOpenWithDialog(lst);
+		KRun::displayOpenWithDialog(lst,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 }
@@ -601,14 +608,14 @@ void KviFileTransferWindow::openLocalFileFolder()
 		tmp = tmp.left(idx);
 
 		QString mimetype = KMimeType::findByPath(tmp)->name(); // inode/directory
-		KService::Ptr offer = KServiceTypeProfile::preferredService(mimetype,"Application");
+		KService::Ptr offer = KMimeTypeTrader::self()->preferredService(mimetype,"Application");
 		if(!offer)return;
 
-		KURL::List lst;
-		KURL url;
+		KUrl::List lst;
+		KUrl url;
 		url.setPath(tmp);
 		lst.append(url);
-		KRun::run(*offer, lst);
+		KRun::run(*offer,lst,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 }

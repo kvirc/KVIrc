@@ -27,6 +27,7 @@
 #include "kvi_out.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
+#include "kvi_qstring.h"
 #include "kvi_out.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_themedlabel.h"
@@ -121,8 +122,9 @@ void KviLinksWindow::connectionStateChange()
 	m_pRequestButton->setEnabled(st == KviIrcContext::Connected);
 	if(st == KviIrcContext::Connected)
 	{
-		KviStr tmp(KviStr::Format,__tr2qs("Connected to %s (%s)"),m_pConsole->connection()->currentServerName().toUtf8().data(),m_pConsole->currentNetworkName().toUtf8().data());
-		m_pInfoLabel->setText(tmp.ptr());
+		QString tmp;
+		KviQString::sprintf(tmp,__tr2qs("Connected to %s (%s)"),m_pConsole->connection()->currentServerName().toUtf8().data(),m_pConsole->currentNetworkName().toUtf8().data());
+		m_pInfoLabel->setText(tmp);
 	} else {
 		m_pInfoLabel->setText(__tr2qs("Links cannot be requested: Not connected to a server"));
 	}
@@ -234,12 +236,13 @@ void KviLinksWindow::endOfLinks()
 				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
 					l->parent.ptr(),l->host.ptr(),l->hops,l->description.ptr());
 				brokenLinks++;
-				KviStr tmp(KviStr::Format,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
+				QString tmp;
+				KviQString::sprintf(tmp,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
 				KviStr tmp2(KviStr::Format,"%d",l->hops);
-				if(root)it = new KviTalListViewItem(m_pListView,root,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
+				if(root)it = new KviTalListViewItem(m_pListView,root,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
 				else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
-					it = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),QString(tmp.ptr()));
+					it = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
 				}
 			} else {
 				it = it->parent();

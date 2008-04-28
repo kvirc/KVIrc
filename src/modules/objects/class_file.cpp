@@ -296,12 +296,12 @@ bool KviKvsObject_file::functionputch(KviKvsObjectFunctionCall *c)
 {
 	QString szChar;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("char",KVS_PT_STRING,KVS_PF_OPTIONAL,szChar)
+		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
 	KVSO_PARAMETERS_END(c)
 	if (m_pFile)
 	{
 		if (szChar.length()>1)c->warning(__tr2qs("Argument to long, using only first char"));
-		const char *ch=szChar;
+		const char *ch=szChar.toUtf8().data();
 
 		if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs("Write error occured !"));
 	}
@@ -334,7 +334,7 @@ bool KviKvsObject_file::functionunGetch(KviKvsObjectFunctionCall *c)
 	else
 	{
 		if (szChar.length()>1) c->warning(__tr2qs("Argument to long, using only first char"));
-		const char *ch=szChar;
+		const char *ch=szChar.toUtf8().data();
 		if (m_pFile->ungetch(ch[0])<0) c->warning(__tr2qs("An error occured !"));// c->error ?
 	}
 	return true;
@@ -371,7 +371,7 @@ bool KviKvsObject_file::functionwriteBlock(KviKvsObjectFunctionCall *c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
 		c->warning(__tr("File is not open !"));
-	const char *block=szBlock;
+	const char *block=szBlock.toUtf8().data();
 	int rlen = m_pFile->writeBlock(block, uLen);
 	c->returnValue()->setInteger(rlen);
 	m_pFile->flush();

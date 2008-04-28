@@ -93,7 +93,6 @@ KviCompletionBox::KviCompletionBox(QTextEdit * parent = 0)
 void KviCompletionBox::updateContents(QString buffer)
 {
 	//buffer=buffer.stripWhiteSpace();
-	debug("Update Contents");
 	KviPointerList<QString> *list;
 	clear();
 	
@@ -135,7 +134,6 @@ void KviCompletionBox::updateContents(QString buffer)
 //			debug("we need a module completion!");
 		for ( QString* szCurrent = list->first(); szCurrent; szCurrent = list->next() )
 		{
-			debug ("Add word %s",(*szCurrent).toUtf8().data());
 			szCurrent->append(' ');
 			addItem(*szCurrent);
 		}
@@ -267,7 +265,7 @@ void KviScriptEditorWidget::slotFind()
 
 void KviScriptEditorWidget::slotReplace()
 {
-	KviScriptEditorReplaceDialog *dialog=new KviScriptEditorReplaceDialog(this,tr("Find & Repalce"));
+	KviScriptEditorReplaceDialog *dialog=new KviScriptEditorReplaceDialog(this,__tr("Find & Repalce"));
 	connect (dialog,SIGNAL(replaceAll(const QString &,const QString &)),m_pParent,SLOT(slotReplaceAll(const QString &,const QString &)));
 	connect (dialog,SIGNAL(initFind()),m_pParent,SLOT(slotInitFind()));
 	connect (dialog,SIGNAL(nextFind(const QString &)),m_pParent,SLOT(slotNextFind(const QString &)));
@@ -332,7 +330,6 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	{
 		if (e->key() == Qt::Key_Insert) 
 		{
-			debug("Trigger key INS");
 			completition();
 			return;
 		}
@@ -416,7 +413,6 @@ void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
 	QTextCursor cur=cursorForPosition(e->pos());
 	cur.select(QTextCursor::WordUnderCursor);
 	buffer=cur.selectedText();
- debug ("Word selected %s",buffer.toUtf8().data());
 	QString tmp=buffer;
 	KviPointerList<QString> *l;
 	if (tmp.left(1) == "$")
@@ -434,10 +430,8 @@ void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
 	}
 	for (int i=0;i<l->count();i++){
 		QString str=*(l->at(i));
-		debug ("TEXT %s",str.toUtf8().data());
 	}
 	KviKvsKernel::instance()->freeCompletionResult(l);
-	debug (buffer);
 	m_szHelp=buffer;
 	}
 	QTextEdit::mouseReleaseEvent(e);
@@ -460,7 +454,6 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 	QTextCursor cur=cursorForPosition(QPoint(r.x(),r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
 	QString text=cur.selectedText();
-	debug ("TEXT %s",text.toUtf8().data());
 	QString tmp=text;
 	/*KviPointerList<QString> * l;
 	if(tmp.left(1) == "$")
@@ -524,7 +517,6 @@ void KviScriptEditorWidget::completition(bool bCanComplete)
 		//ForPosition(QPoint(r.x(),r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
 	QString buffer=cur.selectedText();
-	debug("Buffer %s",buffer.toUtf8().data());
 /*
 	int line,index;
 	QString buffer;
@@ -1077,7 +1069,7 @@ void KviScriptEditorImplementation::setText(const KviQCString &txt)
 
 void KviScriptEditorImplementation::getText(KviQCString &txt)
 {
-	txt = m_pEditor->text();
+	txt = m_pEditor->text().toUtf8();
 }
 
 QLineEdit * KviScriptEditorImplementation::getFindlineedit()

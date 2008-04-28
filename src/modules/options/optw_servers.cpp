@@ -1395,7 +1395,7 @@ void KviServerOptionsWidget::importPopupActivated(int id)
 		return;
 	}
 
-	connect(m_pImportFilter,SIGNAL(server(const KviIrcServer &,const char *)),this,SLOT(importServer(const KviIrcServer &,const char *)));
+	connect(m_pImportFilter,SIGNAL(server(const KviIrcServer &,const QString&)),this,SLOT(importServer(const KviIrcServer &,const QString&)));
 	connect(m_pImportFilter,SIGNAL(destroyed()),this,SLOT(importerDead()));
 
 	m_pImportFilter->start();
@@ -1406,7 +1406,7 @@ void KviServerOptionsWidget::importerDead()
 	m_pImportFilter = 0;
 }
 
-void KviServerOptionsWidget::importServer(const KviIrcServer &s,const char * network)
+void KviServerOptionsWidget::importServer(const KviIrcServer &s,const QString &network)
 {
 	KviServerOptionsListViewItem * net = findNetItem(network);
 	if(!net)

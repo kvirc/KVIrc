@@ -1615,7 +1615,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmarokInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviJukInterface));
 #endif

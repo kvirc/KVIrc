@@ -880,7 +880,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			n->set(idx,new KviKvsVariant(v));
 			debug ("string %s",szTemp.latin1());
 			idx++;
-			dumpChildObjects(pWnd, list.at(i), sp, bFlag, n, idx );
+			dumpChildObjects(pWnd, list.at(i), sp.toUtf8().data(), bFlag, n, idx );
 		}
 	}
 

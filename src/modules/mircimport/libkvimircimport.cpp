@@ -94,7 +94,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 						uPort = 6667;
 					}
 				}
-				if(entry.isEmpty())entry = __tr("Standalone Servers");
+				if(entry.isEmpty())entry = __tr2qs("Standalone Servers");
 				if(!serv.isEmpty())
 				{
 					KviIrcServer s;

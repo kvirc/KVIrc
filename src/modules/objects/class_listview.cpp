@@ -215,7 +215,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_listview)
 
 bool KviKvsObject_listview::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviKvsMdmListView(parentScriptWidget(),getName(),this),true);
+	setObject(new KviKvsMdmListView(parentScriptWidget(),getName().toUtf8().data(),this),true);
 	connect(widget(),SIGNAL(clicked(KviTalListViewItem *)),this,SLOT(slotClicked(KviTalListViewItem *)));
 	connect(widget(),SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(slotSelectionChanged(KviTalListViewItem *)));
 	connect(widget(),SIGNAL(selectionChanged()),this,SLOT(slotMultipleSelectionChanged()));

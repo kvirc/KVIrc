@@ -187,7 +187,7 @@ private:
 	KviServerOptionsListViewItem * findNetItem(const char * netname);
 protected slots:
 	void importerDead();
-	void importServer(const KviIrcServer & s,const char * network);
+	void importServer(const KviIrcServer & s,const QString &network);
 	void importPopupAboutToShow();
 	void listViewItemSelectionChanged(KviTalListViewItem *it);
 	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);

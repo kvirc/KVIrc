@@ -341,7 +341,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_mledit)
 
 bool KviKvsObject_mledit::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
-	setObject(new KviTalMultiLineEdit(parentScriptWidget(),getName()),true);
+	setObject(new KviTalMultiLineEdit(parentScriptWidget(),getName().toUtf8().data()),true);
 	return true;
 }
 

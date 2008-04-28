@@ -32,7 +32,7 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)); 
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
 	if(!c)c = QTextCodec::codecForLocale(); 
 	return c;
 

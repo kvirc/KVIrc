@@ -161,7 +161,13 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #endif //!COMPILE_IPV6_SUPPORT
 
-	addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick Random IP Address for Round-Robin Servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
+	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick Random IP Address for Round-Robin Servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
+	mergeTip(b,__tr2qs_ctx("<center>This option will cause the KVIrc networking stack to pick up " \
+							"a random entry when multiple IP address are retrieved for a server " \
+							"dns lookup. This is harmless and can fix some problems with caching " \
+							"dns servers that do not properly rotate the records as the authoritative " \
+							"ones would do. On the other hand, you might want to disable it if " \
+							"you want to rely on the dns server to provide the best choice.</center>"));
 
 	addRowSpacer(0,5,0,5);
 }

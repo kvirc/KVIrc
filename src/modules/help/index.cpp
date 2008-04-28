@@ -27,6 +27,7 @@
 #include "index.h"
 
 #include "kvi_file.h"
+#include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
 
 #include <ctype.h>
@@ -127,7 +128,7 @@ void Index::setupDocumentList()
 
 void Index::insertInDict( const QString &str, int docNum )
 {
-	if ( strcmp( str, "amp" ) == 0 || strcmp( str, "nbsp" ) == 0 ) return;
+	if (KviQString::equalCI( str, "amp" ) || KviQString::equalCI( str, "nbsp" ) ) return;
 	Entry *e = 0;
 	if ( dict.count() ) e = dict[ str ];
 	
@@ -145,7 +146,8 @@ void Index::parseDocument( const QString &filename, int docNum )
 {
 	KviFile file( filename );
 	if ( !file.openForReading() ) {
-		qWarning( "can not open file " + filename );
+		QString warn = "cannot open file " + filename;
+		qWarning( warn.toUtf8().data() );
 		return;
 	}
 	QTextStream s( &file );
@@ -332,7 +334,8 @@ QString Index::getDocumentTitle( const QString &fileName )
 {
 	KviFile file( fileName );
 	if ( !file.openForReading() ) {
-		qWarning( "cannot open file " + fileName );
+		QString warn = "cannot open file " + fileName;
+		qWarning( warn.toUtf8().data() );
 		return fileName;
 	}
 	
@@ -470,7 +473,8 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 	KviFile file( fileName );
 	
 	if ( !file.openForReading() ) {
-		qWarning( "cannot open file " + fileName );
+		QString warn = "cannot open file " + fileName;
+		qWarning( warn.toUtf8().data() );
 		return FALSE;
 	}
 	
