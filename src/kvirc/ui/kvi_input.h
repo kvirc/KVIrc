@@ -67,8 +67,8 @@ protected:
 public:
 	void add(QString * s);
 	KviPointerList<QString> * list(){ return m_pStringList; };
-	void save(const char * filename);
-	void load(const char * filename);
+	void save(const QString &filename);
+	void load(const QString &filename);
 };
 
 #define QIMEvent QInputMethodEvent

@@ -75,8 +75,8 @@ public:
 	KviMediaType * findMediaType(const char * filename,bool bCheckMagic = true);
 	static void copyMediaType(KviMediaType * dst,KviMediaType * src);
 
-	void load(const char * filename);
-	void save(const char * filename);
+	void load(const QString &filename);
+	void save(const QString &filename);
 };
 
 

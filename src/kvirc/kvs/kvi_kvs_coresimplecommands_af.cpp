@@ -55,7 +55,7 @@
 #include "kvi_tal_tooltip.h"
 
 // kvi_app.cpp
-extern KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
+extern KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -120,7 +120,7 @@ namespace KviKvsCoreSimpleCommands
 	
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
-			KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -174,7 +174,7 @@ namespace KviKvsCoreSimpleCommands
 		
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
-			KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
 				if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -412,7 +412,7 @@ namespace KviKvsCoreSimpleCommands
 			return true;
 		}
 	
-		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName,"KviWindowScriptButton");
+		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName.toUtf8().data(),"KviWindowScriptButton");
 
 		if(!pButton)
 		{

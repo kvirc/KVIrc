@@ -50,13 +50,8 @@ void KviKvsTreeNodeSpecialCommandWhile::contextDescription(QString &szBuffer)
 	szBuffer = "Special Command \"while\"";
 }
 
-void KviKvsTreeNodeSpecialCommandWhile::dump(const char * prefix)
+void KviKvsTreeNodeSpecialCommandWhile::dump(const char *)
 {
-	qDebug("%s SpecialCommandWhile",prefix);
-	QString tmp = prefix;
-	tmp.append("  ");
-	m_pExpression->dump(tmp);
-	if(m_pInstruction)m_pInstruction->dump(tmp);
 }
 
 bool KviKvsTreeNodeSpecialCommandWhile::execute(KviKvsRunTimeContext * c)

@@ -79,8 +79,8 @@ public:
 	void updateProxyIp(const char * proxy,const char * ip);
 	void setCurrentProxy(KviProxy * prx){ m_pCurrentProxy = prx; };
 	void insertProxy(KviProxy * prx){ m_pProxyList->append(prx); };
-	void load(const char * filename);
-	void save(const char * filename);
+	void load(const QString &filename);
+	void save(const QString &filename);
 };
 
 #endif //_KVI_PROXYDB_H_

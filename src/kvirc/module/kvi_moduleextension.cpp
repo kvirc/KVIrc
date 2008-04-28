@@ -143,9 +143,9 @@ void KviModuleExtensionManager::unregisterExtensionsByModule(KviModule * m)
 	}
 }
 
-KviModuleExtensionDescriptorList * KviModuleExtensionManager::allocateExtensionGetDescriptorList(const KviStr &szType,const char * preloadModule)
+KviModuleExtensionDescriptorList * KviModuleExtensionManager::allocateExtensionGetDescriptorList(const KviStr &szType,const QString &preloadModule)
 {
-	if(preloadModule)
+	if(!preloadModule.isEmpty())
 	{
 		KviModule * m = g_pModuleManager->getModule(preloadModule);
 		(void)m; // get rid of the unused warning :D
@@ -175,7 +175,7 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescripto
 	return 0;
 }
 
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const char * preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const QString &preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
 	if(!l)return 0;
@@ -202,7 +202,7 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &
 }
 
 
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,int id,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const char * preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviStr &szType,int id,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const QString &preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
 	if(!l)return 0;

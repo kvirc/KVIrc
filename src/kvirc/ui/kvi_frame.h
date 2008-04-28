@@ -160,7 +160,7 @@ public:
 	// and the active irc context changes state
 	void updateCaption();
 	// helper for saving the window properties
-	void saveWindowProperties(KviWindow * wnd,const char * szSection);
+	void saveWindowProperties(KviWindow * wnd,const QString &szSection);
 	// finds the module extension toolbar with the specified identifier
 	// see kvi_moduleextension.h and kvi_mextoolbar.h
 	KviMexToolBar * moduleExtensionToolBar(int extensionId);
@@ -241,7 +241,6 @@ protected:
 private:
 	void saveToolBarPositions();
 	void restoreToolBarPositions();
-	bool event(QEvent *e);
 };
 
 #ifndef _KVI_FRAME_CPP_

@@ -67,23 +67,7 @@ void KviScriptUserButton::btnClicked()
 	vList.append((kvs_int_t)pos.y());
 	m_pScript->run(pWnd,&vList,0,KviKvsScript::PreserveParams);
 }
-/*
 
-KviIrcToolBarScriptButton::KviIrcToolBarScriptButton(QToolBar * p,const char * name)
-: KviScriptUserButton(p,name)
-{
-	setAutoRaise(true);
-}
-
-KviIrcToolBarScriptButton::~KviIrcToolBarScriptButton()
-{
-}
-
-KviWindow * KviIrcToolBarScriptButton::window()
-{
-	return g_pActiveWindow;
-}
-*/
 
 KviWindowScriptButton::KviWindowScriptButton(QWidget * p,KviWindow * wnd,const char * name)
 : KviScriptUserButton(p,name)

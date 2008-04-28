@@ -53,7 +53,7 @@
 
 
 // kvi_app.cpp
-extern KVIRC_API KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
 KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
@@ -857,7 +857,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts but no "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType,"all");
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -881,7 +881,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts and also "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -902,7 +902,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// only "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -947,7 +947,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		}
 
 		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{

@@ -140,12 +140,12 @@ class KVIRC_API KviModule : public KviKvsModuleInterface
 	friend class KviModuleManager;
 	friend class KviUserParser;
 protected:
-	KviModule(kvi_library_t handle,KviModuleInfo * info,const char * name,const char * filename);
+	KviModule(kvi_library_t handle,KviModuleInfo * info,const QString &name,const QString &filename);
 public:
 	~KviModule(); // must be public for KviPointerList
 private:
-	KviStr                                     m_szName;
-	KviStr                                     m_szFileName;
+	QString                                    m_szName;
+	QString                                    m_szFileName;
 	KviModuleInfo                            * m_pModuleInfo;
 	kvi_library_t                              m_dlHandle;
 	unsigned int                               m_uLock;
@@ -155,9 +155,9 @@ protected:
 	unsigned int secondsSinceLastAccess();
 public:
 	// name of this module: always low case , single word
-	const char    * name(){ return m_szName.ptr(); };
+	const QString & name(){ return m_szName; };
 	// filename of this module (with NO path): formatted as "libkvi%s.so",name()
-	const char    * filename(){ return m_szFileName.ptr(); };
+	const QString & filename(){ return m_szFileName; };
 	kvi_library_t   handle(){ return m_dlHandle; };
 	KviModuleInfo * moduleInfo(){ return m_pModuleInfo; };
 	

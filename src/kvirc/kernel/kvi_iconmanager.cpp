@@ -687,14 +687,14 @@ void KviIconManager::addToCache(const QString &szName,KviCachedPixmap * p)
 	m_uCacheTotalSize += p->size();
 }
 
-QPixmap * KviIconManager::getImage(const char * id,bool bCanBeNumber,QString* pRetPath)
+QPixmap * KviIconManager::getImage(const QString &id,bool bCanBeNumber,QString* pRetPath)
 {
-	if(!id)return 0;
+	if(id.isEmpty())
+		return 0;
 	if(bCanBeNumber)
 	{
 		bool bOk;
-		QString tmp = id;
-		int idx = tmp.toInt(&bOk);
+		int idx = id.toInt(&bOk);
 		if(bOk)
 		{
 			// was a number : this is not a filename

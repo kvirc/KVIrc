@@ -135,10 +135,10 @@ void KviDccMarshal::doListen()
 	}
 
 	// Check the address type
-	if(!kvi_isValidStringIp(m_szIp))
+	if(!kvi_isValidStringIp(m_szIp.toUtf8().data()))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!kvi_isValidStringIp_V6(m_szIp))
+		if(!kvi_isValidStringIp_V6(m_szIp.toUtf8().data()))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
@@ -182,9 +182,9 @@ void KviDccMarshal::doListen()
 	if((!KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange)) || (m_uPort != 0))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sa(m_szIp,m_uPort,m_bIpV6);
+		KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
 #else
-		KviSockaddr sa(m_szIp,m_uPort,false);
+		KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
 
 		if(!sa.socketAddress())
@@ -207,9 +207,9 @@ void KviDccMarshal::doListen()
 		bool bBindSuccess;
 		do {
 #ifdef COMPILE_IPV6_SUPPORT
-			KviSockaddr sa(m_szIp,m_uPort,m_bIpV6);
+			KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
 #else
-			KviSockaddr sa(m_szIp,m_uPort,false);
+			KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
 			if(!sa.socketAddress())
 			{
@@ -323,10 +323,10 @@ void KviDccMarshal::doConnect()
 	}
 
 	// Check the address type
-	if(!kvi_isValidStringIp(m_szIp))
+	if(!kvi_isValidStringIp(m_szIp.toUtf8().data()))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!kvi_isValidStringIp_V6(m_szIp))
+		if(!kvi_isValidStringIp_V6(m_szIp.toUtf8().data()))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
@@ -372,9 +372,9 @@ void KviDccMarshal::doConnect()
 	// fill the sockaddr structure
 
 #ifdef COMPILE_IPV6_SUPPORT
-	KviSockaddr sa(m_szIp,m_uPort,m_bIpV6);
+	KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
 #else
-	KviSockaddr sa(m_szIp,m_uPort,false);
+	KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
 
 	if(!sa.socketAddress())

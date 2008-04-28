@@ -219,7 +219,7 @@ namespace KviQString
 	
 	inline kvi_i64_t toI64(QString &szNumber,bool * bOk)
 	{
-#if SIZEOF_LONG_INT == 8
+#if SYSTEM_SIZE_OF_LONG_INT == 8
 		return szNumber.toLong(bOk);
 #else
 		return szNumber.toLongLong(bOk);
@@ -228,7 +228,7 @@ namespace KviQString
 	
 	inline kvi_u64_t toU64(QString &szNumber,bool * bOk)
 	{
-#if SIZEOF_LONG_INT == 8
+#if SYSTEM_SIZE_OF_LONG_INT == 8
 		return szNumber.toULong(bOk);
 #else
 		return szNumber.toULongLong(bOk);

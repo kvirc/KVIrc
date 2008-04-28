@@ -87,7 +87,7 @@ int parseArgs(ParseArgs * a)
 #ifdef COMPILE_ON_WINDOWS
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug(szMessage);
+			debug(szMessage.toLocal8Bit().data());
 #endif
 
 			return KVI_ARGS_RETCODE_STOP;
@@ -135,7 +135,7 @@ int parseArgs(ParseArgs * a)
 #ifdef COMPILE_ON_WINDOWS
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug(szMessage);
+			debug(szMessage.toLocal8Bit().data());
 #endif
 			return KVI_ARGS_RETCODE_STOP;
 		}

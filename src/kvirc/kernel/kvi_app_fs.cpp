@@ -424,7 +424,7 @@ bool KviApp::findUserFile(KviStr &szRetPath,const char *filename)
 
 // FIXME: #warning "Check WHEN findImage is used and when findUserFile is used...we have a mess here"
 
-bool KviApp::findImageInImageSearchPath(KviStr &szRetPath,const char * filename)
+bool KviApp::findImageInImageSearchPath(KviStr &szRetPath,const QString &filename)
 {
 	// first lookup the user defined paths
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).begin();
@@ -440,7 +440,7 @@ bool KviApp::findImageInImageSearchPath(KviStr &szRetPath,const char * filename)
 	return false;
 }
 
-bool KviApp::findImageInImageSearchPath(QString &szRetPath,const char * filename)
+bool KviApp::findImageInImageSearchPath(QString &szRetPath,const QString &filename)
 {
 	// first lookup the user defined paths
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).begin();
@@ -459,27 +459,27 @@ bool KviApp::findImageInImageSearchPath(QString &szRetPath,const char * filename
 static KviApp::KvircSubdir pics_localsubdirs[2]={ KviApp::Pics , KviApp::Avatars };
 static KviApp::KvircSubdir pics_globalsubdirs[2]={ KviApp::Pics , KviApp::Avatars };
 
-bool KviApp::mapImageFile(KviStr &szRetPath,const char * filename)
+/*bool KviApp::mapImageFile(KviStr &szRetPath,const char * filename)
 {
 	QString buff;
 	bool ret=mapImageFile(buff,filename);
 	szRetPath=buff;
 	return ret;
-}
+}*/
 
-bool KviApp::mapImageFile(QString &szRetPath,const char * filename)
+bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 {
 	szRetPath = filename;
 	// can't map non absolute paths
-	if(!kvi_isAbsolutePath(filename))return false;
+	if(!KviFileUtils::isAbsolutePath(filename))return false;
 	// can't map non existing paths
 	if(!KviFileUtils::fileExists(filename))return false;
 
-	QFileInfo fi = QFileInfo(QString::fromUtf8(filename));
+	QFileInfo fi = QFileInfo(filename);
 
 	unsigned int size = fi.size();
 
-	KviStr szBestMatch;
+	QString szBestMatch;
 
 	while(szRetPath.find(KVI_PATH_SEPARATOR) != -1)
 	{
@@ -535,7 +535,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const char * filename)
 		}
 	}
 
-	if(szBestMatch.hasData())
+	if(!szBestMatch.isEmpty())
 	{
 		szRetPath = szBestMatch;
 		return true;
@@ -556,10 +556,10 @@ bool KviApp::findImage(KviStr &szRetPath,const char *filename)
 	return ret;
 }
 
-bool KviApp::findImage(QString &szRetPath,const char *filename)
+bool KviApp::findImage(QString &szRetPath,const QString &filename)
 {
 	// Find an user file...
-	if(kvi_isAbsolutePath(filename))
+	if(KviFileUtils::isAbsolutePath(filename))
 	{
 		szRetPath=filename;
 		return KviFileUtils::fileExists(filename);
@@ -606,7 +606,7 @@ bool KviApp::findImage(QString &szRetPath,const char *filename)
 	return false;
 }
 
-bool KviApp::findImageThemeOnlyCompat(QString &szRetPath,const char *filename)
+bool KviApp::findImageThemeOnlyCompat(QString &szRetPath,const QString &filename)
 {
 	// if we have a theme, look it up as first
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
@@ -633,7 +633,7 @@ bool KviApp::findImageThemeOnlyCompat(QString &szRetPath,const char *filename)
 	return false;
 }
 
-bool KviApp::findSmallIcon(QString &szRetPath,const char *filename)
+bool KviApp::findSmallIcon(QString &szRetPath,const QString &filename)
 {
 	// this is a bit optimized for the small builtin icons
 	// looks up less places.
@@ -660,8 +660,6 @@ bool KviApp::findSmallIcon(QString &szRetPath,const char *filename)
 		getGlobalKvircDirectory(szRetPath,KviApp::Themes,szTmp);
 		if(KviFileUtils::fileExists(szRetPath))return true;
 	}
-
-	int i;
 
 	// unlikely
 	getLocalKvircDirectory(szRetPath,KviApp::SmallIcons,filename);

@@ -482,7 +482,7 @@ void KviFrame::executeInternalCommand(int index)
 }
 
 
-void KviFrame::saveWindowProperties(KviWindow * wnd,const char * szSection)
+void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 {
 	g_pWinPropertiesConfig->setGroup(szSection);
 	g_pWinPropertiesConfig->writeEntry("EntryTimestamp",(unsigned int)time(0));
@@ -720,18 +720,6 @@ void KviFrame::undockWindow(KviWindow *wnd)
 	wnd->setFocus();
 }
 
-bool KviFrame::event(QEvent *e)
-{
-	switch(e->type())
-	{
-		case QEvent::Shortcut:
-		{
-				debug ("Shortcut");
-				return true;
-		}
-	}
-	return KviTalMainWindow::event(e);
-}
 
 void KviFrame::newConsole()
 {

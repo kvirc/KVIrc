@@ -544,7 +544,7 @@ void KviMdiChild::focusInEvent(QFocusEvent *)
 #endif
 }
 
-QSize KviMdiChild::sizeHint()
+QSize KviMdiChild::sizeHint() const
 {
 	if(m_pClient)
 	{

@@ -453,7 +453,7 @@ static KviDefaultMediaType g_defMediaTypes[]=
 	{ 0,0,0,0,0 }
 };
 
-void KviMediaManager::load(const char * filename)
+void KviMediaManager::load(const QString &filename)
 {
 	__range_valid(locked());
 
@@ -498,7 +498,7 @@ void KviMediaManager::load(const char * filename)
 
 }
 
-void KviMediaManager::save(const char * filename)
+void KviMediaManager::save(const QString &filename)
 {
 	__range_valid(locked());
 	KviConfig cfg(filename,KviConfig::Write);

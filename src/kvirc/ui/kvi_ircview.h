@@ -207,7 +207,7 @@ public slots:
 signals:
 	void rightClicked();
 	void dndEntered();
-	void fileDropped(const char *);
+	void fileDropped(const QString &);
 private:
 	void setCursorLine(KviIrcViewLine * l);
 	KviIrcViewLine * getVisibleLineAt(int xPos,int yPos);

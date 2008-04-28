@@ -50,6 +50,8 @@
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
+#include <stdlib.h>
+
 #include <QTimer>
 
 extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
@@ -271,7 +273,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
 		
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.ptr(),szFirstIpAddress);
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.ptr(),szFirstIpAddress.toUtf8().data());
 
 		if(m_pProxyDns->hostnameCount() > 1)
 		{
@@ -384,12 +386,38 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 		terminate(Error,m_pServerDns->error());
 		return;
 	}
-	QString szFirstIpAddress = m_pServerDns->firstIpAddress();
+	
+	QString szIpAddress;
+	
+	if(m_pServerDns->ipAddressCount() > 1)
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolPickRandomIpAddressForRoundRobinServers))
+		{
+			if(!_OUTPUT_MUTE)
+				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
+						__tr2qs("Server has %d IP addresses, picking a random one"),
+						m_pServerDns->ipAddressCount()
+					);
+
+			int r = ::rand() % m_pServerDns->ipAddressCount();
+			szIpAddress = *(m_pServerDns->ipAddressList()->at(r));
+		} else {
+			if(!_OUTPUT_MUTE)
+				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
+						__tr2qs("Server has %d IP addresses, using the first one"),
+						m_pServerDns->ipAddressCount()
+					);
+			szIpAddress = m_pServerDns->firstIpAddress();
+		}
+	} else {
+		szIpAddress = m_pServerDns->firstIpAddress();
+	}
+
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 			__tr2qs("Server hostname resolved to %Q"),
-			&szFirstIpAddress);
-	g_pIrcServerDataBase->updateServerIp(m_pTarget->server(),szFirstIpAddress);
+			&szIpAddress);
+	g_pIrcServerDataBase->updateServerIp(m_pTarget->server(),szIpAddress);
 
 	QString szFirstHostname = m_pServerDns->firstHostname();
 
@@ -403,7 +431,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 		m_pTarget->server()->m_szHostname = szFirstHostname;
 	}
 
-	m_pTarget->server()->m_szIp = m_pServerDns->firstIpAddress();
+	m_pTarget->server()->m_szIp = szIpAddress;
 
 	if(m_pServerDns->hostnameCount() > 1)
 	{

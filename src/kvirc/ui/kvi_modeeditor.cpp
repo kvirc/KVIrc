@@ -46,7 +46,7 @@
 
 // FIXME: This widget should use a KviTalScrollView!
 
-KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const char * mode,const char * key,const char * limit)
+KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const QString &mode,const QString &key,const QString &limit)
 : KviWindowToolWidget(par,button)
 {
 	m_szMode = mode;
@@ -131,11 +131,11 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_pLimitEdit->setEnabled(isEnabled);
 	i++;
 	g->addMultiCellWidget(m_pLimitEdit,i,i,1,2);
-	if(m_szLimit.hasData())
+	if(!m_szLimit.isEmpty())
 	{
 		m_pLimitBox->setChecked(true);
 //		m_pLimitEdit->setEnabled(true);
-		m_pLimitEdit->setText(m_szLimit.ptr());
+		m_pLimitEdit->setText(m_szLimit);
 	} else {
 		m_pLimitEdit->setEnabled(false);
 	}
@@ -150,11 +150,11 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_pKeyEdit->setEnabled(isEnabled);
 	i++;
 	g->addMultiCellWidget(m_pKeyEdit,i,i,1,2);
-	if(m_szKey.hasData())
+	if(!m_szKey.isEmpty())
 	{
 		m_pKeyBox->setChecked(true);
 //		m_pLimitEdit->setEnabled(true);
-		m_pKeyEdit->setText(m_szKey.ptr());
+		m_pKeyEdit->setText(m_szKey);
 	} else {
 		m_pKeyEdit->setEnabled(false);
 	}
@@ -222,60 +222,59 @@ void KviModeEditor::commit()
 	KviStr szPlusModes;
 	KviStr szMinusModes;
 
-	if(m_szKey.hasData())
+	if(!m_szKey.isEmpty())
 	{
 		// had a key before
 		if(m_pKeyBox->isChecked())
 		{
 			// still have it
-			KviStr tmp = m_pKeyEdit->text();
-			tmp.stripWhiteSpace();
-			if(tmp.hasData())
+			QString tmp = m_pKeyEdit->text().stripWhiteSpace();
+			if(!tmp.isEmpty())
 			{
-				if(!kvi_strEqualCI(tmp.ptr(),m_szKey.ptr()))
+				if(tmp != m_szKey)
 				{
 					// not the same key!
 					// set the new one
-					KviStr mode(KviStr::Format,"-k %s",m_szKey.ptr());
+					KviStr mode(KviStr::Format,"-k %s",m_szKey.toUtf8().data()); // FIXME: assuming utf8 is wrong here!
 					emit setMode(mode.ptr());
-					mode.sprintf("+k %s",tmp.ptr());
+					mode.sprintf("+k %s",tmp.toUtf8().data());
 					emit setMode(mode.ptr());
 				}
 			}
 		} else {
 			// no key now! reset
-			KviStr mode(KviStr::Format,"-k %s",m_szKey.ptr());
+			KviStr mode(KviStr::Format,"-k %s",m_szKey.toUtf8().data());
 			emit setMode(mode.ptr());
 		}
 	} else {
 		// there was no key before
 		if(m_pKeyBox->isChecked())
 		{
-			KviStr tmp = m_pKeyEdit->text();
-			tmp.stripWhiteSpace();
-			if(tmp.hasData())
+			QString tmp = m_pKeyEdit->text().stripWhiteSpace();
+			if(!tmp.isEmpty())
 			{
 				// new key to be set
-				KviStr mode(KviStr::Format,"+k %s",tmp.ptr());
+				KviStr mode(KviStr::Format,"+k %s",tmp.toUtf8().data());
 				emit setMode(mode.ptr());
 			}
 		}
 	}
 
-	if(m_szLimit.hasData())
+	if(!m_szLimit.isEmpty())
 	{
 		// had a limit before
 		if(m_pLimitBox->isChecked())
 		{
 			// still have it
-			KviStr tmp = m_pLimitEdit->text();
-			tmp.stripWhiteSpace();
-			if(tmp.hasData() && tmp.isUnsignedNum())
+			QString tmp = m_pLimitEdit->text().stripWhiteSpace();
+			bool bOk;
+			unsigned int uLimit = tmp.toUInt(&bOk);
+			if(bOk)
 			{
-				if(!kvi_strEqualCI(tmp.ptr(),m_szLimit.ptr()))
+				if(m_szLimit != tmp)
 				{
 					// not the same limit!
-					KviStr mode(KviStr::Format,"+l %s",tmp.ptr());
+					KviStr mode(KviStr::Format,"+l %u",uLimit);
 					emit setMode(mode.ptr());
 				}
 			}
@@ -287,12 +286,13 @@ void KviModeEditor::commit()
 		// there was no limit before
 		if(m_pLimitBox->isChecked())
 		{
-			KviStr tmp = m_pLimitEdit->text();
-			tmp.stripWhiteSpace();
-			if(tmp.hasData() && tmp.isUnsignedNum())
+			QString tmp = m_pLimitEdit->text().stripWhiteSpace();
+			bool bOk;
+			unsigned int uLimit = tmp.toUInt(&bOk);
+			if(bOk)
 			{
 				// new limit to be set
-				KviStr mode(KviStr::Format,"+l %s",tmp.ptr());
+				KviStr mode(KviStr::Format,"+l %u",uLimit);
 				emit setMode(mode.ptr());
 			}
 		}

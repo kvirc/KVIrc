@@ -128,7 +128,7 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 // FIXME: #warning "Move all the modules to the new locking method ?"
 
 
-KviModule::KviModule(kvi_library_t handle,KviModuleInfo * info,const char * name,const char * filename)
+KviModule::KviModule(kvi_library_t handle,KviModuleInfo * info,const QString &name,const QString &filename)
 : KviKvsModuleInterface()
 {
 	m_dlHandle = handle;
@@ -352,14 +352,16 @@ void * KviModule::getSymbol(const char * symname)
 
 void KviModule::getDefaultConfigFileName(KviStr &buffer)
 {
-	KviStr szName(KviStr::Format,"libkvi%s.kvc",m_szName.ptr());
-	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,szName.ptr());
+	QString tmp = "libkvi";
+	tmp += m_szName;
+	tmp += ".kvc";
+	g_pApp->getLocalKvircDirectory(buffer,KviApp::ConfigPlugins,tmp);
 }
 
 void KviModule::getDefaultConfigFileName(QString &szBuffer)
 {
 	QString tmp = "libkvi";
-	tmp += m_szName.ptr();
+	tmp += m_szName;
 	tmp += ".kvc";
 	g_pApp->getLocalKvircDirectory(szBuffer,KviApp::ConfigPlugins,tmp);
 }

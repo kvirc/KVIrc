@@ -416,7 +416,8 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 			p ? *p : QPixmap(),
 			visibleName(),
 			visibleName(),
-			this,SLOT(activate()),pParentToolBar,m_szName);
+			this,SLOT(activate()),pParentToolBar,
+			m_szName.toUtf8().data());
 
 	pParentToolBar->addWidget(b);
 	if(!isEnabled())b->setEnabled(false);

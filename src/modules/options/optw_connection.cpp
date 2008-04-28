@@ -161,7 +161,9 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #endif //!COMPILE_IPV6_SUPPORT
 
-	addRowSpacer(0,4,0,4);
+	addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick Random IP Address for Round-Robin Servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
+
+	addRowSpacer(0,5,0,5);
 }
 
 KviTransportOptionsWidget::~KviTransportOptionsWidget()

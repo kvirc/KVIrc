@@ -51,13 +51,8 @@ void KviKvsTreeNodeSpecialCommandDo::contextDescription(QString &szBuffer)
 	szBuffer = "Special Command \"do\"";
 }
 
-void KviKvsTreeNodeSpecialCommandDo::dump(const char * prefix)
+void KviKvsTreeNodeSpecialCommandDo::dump(const char *)
 {
-	qDebug("%s SpecialCommandDo",prefix);
-	QString tmp = prefix;
-	tmp.append("  ");
-	m_pExpression->dump(tmp);
-	if(m_pInstruction)m_pInstruction->dump(tmp);
 }
 
 bool KviKvsTreeNodeSpecialCommandDo::execute(KviKvsRunTimeContext * c)

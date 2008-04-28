@@ -40,20 +40,20 @@ public:
 	KviModuleManager();
 	~KviModuleManager();
 private:
-	KviPointerHashTable<const char *,KviModule>                        * m_pModuleDict;
+	KviPointerHashTable<QString,KviModule>       * m_pModuleDict;
 	QTimer                                       * m_pCleanupTimer;
 	KviStr                                         m_szLastError;
 public:
 	KviStr & lastError(){ return m_szLastError; };
-	KviModule * findModule(const char * modName);
-	KviModule * getModule(const char * modName);
-	bool loadModule(const char * modName);
-	bool unloadModule(const char * modName);
+	KviModule * findModule(const QString &modName);
+	KviModule * getModule(const QString &modName);
+	bool loadModule(const QString &modName);
+	bool unloadModule(const QString &modName);
 	bool unloadModule(KviModule * module);
 	void unloadAllModules();
 	//void registerDefaultCommands(KviModule * module);
-	void loadModulesByCaps(const char * caps,const char * dir);
-	void loadModulesByCaps(const char * caps);
+	void loadModulesByCaps(const QString &caps,const QString &dir);
+	void loadModulesByCaps(const QString &caps);
 	bool hasLockedModules();
 	void completeModuleNames(const QString &word,KviPointerList<QString> * matches);
 protected:

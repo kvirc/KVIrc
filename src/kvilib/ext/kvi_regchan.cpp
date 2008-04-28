@@ -54,7 +54,7 @@ KviRegisteredChannelDataBase::~KviRegisteredChannelDataBase()
 	delete m_pChannelDict;
 }
 
-void KviRegisteredChannelDataBase::load(const char * filename)
+void KviRegisteredChannelDataBase::load(const QString &filename)
 {
 	KviConfig cfg(filename,KviConfig::Read);
 	m_pChannelDict->clear();
@@ -76,7 +76,7 @@ void KviRegisteredChannelDataBase::load(const char * filename)
 	}
 }
 
-void KviRegisteredChannelDataBase::save(const char * filename)
+void KviRegisteredChannelDataBase::save(const QString &filename)
 {
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();

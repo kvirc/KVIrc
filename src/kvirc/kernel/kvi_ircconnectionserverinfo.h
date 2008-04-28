@@ -34,7 +34,7 @@ protected:
 	QString m_szServerVersion;
 public:
 	KviBasicIrcServerInfo(const QString & version = KviQString::empty);
-	~KviBasicIrcServerInfo();
+	virtual ~KviBasicIrcServerInfo();
 protected:
 	virtual const QString & getCustomChannelModeDescription(QChar mode) { return KviQString::empty; };
 	virtual const QString & getCustomUserModeDescription(QChar mode) { return KviQString::empty; };

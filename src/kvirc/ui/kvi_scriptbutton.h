@@ -43,25 +43,11 @@ protected:
 public:
 	void setButtonCode(KviKvsScript * pScript);
 	virtual void setButtonPixmap(const QPixmap & pix){ setIconSet(pix); };
-	void setButtonText(const char * text){ setTextLabel(text); };
+	void setButtonText(const QString &text){ setTextLabel(text); };
 	virtual KviWindow * window();
 protected slots:
 	void btnClicked();
 };
-
-/*
-class KVIRC_API KviIrcToolBarScriptButton : public KviScriptUserButton
-{
-	Q_OBJECT
-public:
-	KviIrcToolBarScriptButton(QToolBar * p,const char * name);
-	~KviIrcToolBarScriptButton();
-protected:
-	KviStr m_szCode;
-public:
-	virtual KviWindow * window();
-};
-*/
 
 class KVIRC_API KviWindowScriptButton : public KviScriptUserButton
 {

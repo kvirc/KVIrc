@@ -231,10 +231,11 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("msg_type_color_set_name",KVS_PT_NONEMPTYSTRING,0,szName)
 		KVSCF_PARAMETERS_END
 
-		KviStr tmp(szName);
+		QString tmp = "msgtype";
+		tmp += szName;
 		for(int i=0;i< KVI_NUM_MSGTYPE_OPTIONS;i++)
 		{
-			if(kvi_strEqualCI(tmp.ptr(),(g_msgtypeOptionsTable[i].name + 7)))
+			if(KviQString::equalCI(tmp,g_msgtypeOptionsTable[i].name))
 			{
 				KVSCF_pRetBuffer->setInteger(i);
 				return true;

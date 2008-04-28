@@ -701,7 +701,7 @@ void KviIrcSocket::proxyLoginV4()
 
 	struct in_addr ircInAddr;
 
-	if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))
+	if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))
 		debug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
 
 	Q_UINT32 host=(Q_UINT32)ircInAddr.s_addr;
@@ -914,7 +914,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 #ifdef COMPILE_IPV6_SUPPORT
 		struct in6_addr ircInAddr;
 
-		if(!kvi_stringIpToBinaryIp_V6(m_pIrcServer->ip(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
+		if(!kvi_stringIpToBinaryIp_V6(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
 		kvi_memmove((void *)(bufToSend + 4),(void *)(&ircInAddr),4);
 		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 20),(void *)&port,2);
@@ -922,7 +922,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 	} else {
 		struct in_addr ircInAddr;
 
-		if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
+		if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
 		Q_UINT32 host = (Q_UINT32)ircInAddr.s_addr;
 		kvi_memmove((void *)(bufToSend + 4),(void *)&host,4);
 		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
@@ -1216,7 +1216,7 @@ void KviIrcSocket::printSSLCipherInfo()
 	if(ci)
 	{
 		//m_pConsole->socketEvent(SSLCipherInfo,(void *)ci);
-		KviSSLMaster::printSSLCipherInfo(m_pConsole,__tr2qs("Current transmission cipher"),ci);
+		KviSSLMaster::printSSLCipherInfo(m_pConsole,__tr("Current transmission cipher"),ci);
 		delete ci;
 	} else {
 		if(_OUTPUT_VERBOSE)

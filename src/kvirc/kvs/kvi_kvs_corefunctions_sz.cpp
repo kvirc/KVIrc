@@ -706,7 +706,7 @@ namespace KviKvsCoreFunctions
 			KviMessageCatalogue * pCat = KviLocale::getLoadedCatalogue(szCatalogue);
 			if(pCat)
 			{
-				translation = pCat->translateToQString(szString);
+				translation = pCat->translateToQString(szString.toUtf8().data());
 			} else {
 				// attempt to load it automatically
 				QString szDir;
@@ -723,10 +723,10 @@ namespace KviKvsCoreFunctions
 				// not fail unless /trunload is explicitly used
 				// This will avoid trashing the user's disk too much
 				// when a catalogue for a given language is not available
-				translation = __tr2qs_ctx_no_xgettext(szString,szCatalogue);
+				translation = __tr2qs_ctx_no_xgettext(szString.toUtf8().data(),szCatalogue.toUtf8().data());
 			}
 		} else {
-			translation = __tr2qs_no_xgettext(szString);
+			translation = __tr2qs_no_xgettext(szString.toUtf8().data());
 		}
 
 		// epilogue: set the return value

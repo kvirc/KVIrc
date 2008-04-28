@@ -178,8 +178,8 @@ public:
 	void saveOptions();
 
 	void listAvailableOptions(KviWindow *wnd);
-	bool getOptionString(const char * optName,QString &buffer);
-	bool setOptionValue(const char * optName,const QString &value);
+	bool getOptionString(const QString &optName,QString &buffer);
+	bool setOptionValue(const QString &optName,const QString &value);
 	void optionResetUpdate(int flags);
 
 	void contextSensitiveHelp();
@@ -198,21 +198,21 @@ public:
 	// if the mediatype can be guessed ,it is looked up in the media type save path
 	// if found , true is returned
 	// if not found or the mediatype can't be guessed then false is returned
-	bool findFileByMediaType(KviStr &szRetPath,const char * filename);
+	bool findFileByMediaType(KviStr &szRetPath,const char * filename) KVI_DEPRECATED;
 	
-	bool findImageInImageSearchPath(KviStr &szRetPath,const char * filename);
-	bool findImageInImageSearchPath(QString &szRetPath,const char * filename);
+	bool findImageInImageSearchPath(KviStr &szRetPath,const QString &filename);
+	bool findImageInImageSearchPath(QString &szRetPath,const QString &filename);
 	
-	bool findUserFile(KviStr &szRetPath,const char *filename);
+	bool findUserFile(KviStr &szRetPath,const char *filename) KVI_DEPRECATED;
 	
 	bool findImage(KviStr &szRetPath,const char *filename);
-	bool findImage(QString &szRetPath,const char *filename);
-	bool findImageThemeOnlyCompat(QString &szRetPath,const char *filename); // temporary compat, will be removed soon (do not use)
-	bool findSmallIcon(QString &szRetPath,const char *filename);
+	bool findImage(QString &szRetPath,const QString &filename);
+	bool findImageThemeOnlyCompat(QString &szRetPath,const QString &filename); // temporary compat, will be removed soon (do not use)
+	bool findSmallIcon(QString &szRetPath,const QString &filename);
 	// tries to map the full path filename to one of the KVIrc's mapped directories
 	// if it doesn't succeed it just returns the complete filename in szRetPath
-	bool mapImageFile(KviStr &szRetPath,const char * filename);
-	bool mapImageFile(QString &szRetPath,const char * filename);
+	//bool mapImageFile(KviStr &szRetPath,const char * filename);
+	bool mapImageFile(QString &szRetPath,const QString &filename);
 
 	//void getDefaultDccSaveFilePath(KviStr &path,const char *filename);
 	void completeDirectory(const QString &word,KviPointerList<QString> * matches);
@@ -229,7 +229,7 @@ public:
 	bool getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
 
 	// kvi_app.cpp : Window stuff
-	KviWindow       * findWindow(const char * windowId);
+	KviWindow       * findWindow(const QString &windowId);
 	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);
 	KviConsole      * findConsole(unsigned int ircContextId);
 	KviConsole      * findConsole(KviStr & server,KviStr & nick);
@@ -319,9 +319,9 @@ private:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	void createGlobalBackgrounds(QPixmap * pix);
 	void destroyPseudoTransparency();
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		void downloadKdeRootPixmap();
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE3_SUPPORT
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 private:
 	// kvi_app.cpp : parts of setup()

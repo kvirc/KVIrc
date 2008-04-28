@@ -116,10 +116,10 @@ public:
 	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviStr &szType,const KviStr &szName);
 	static KviModuleExtensionManager * instance(){ return g_pModuleExtensionManager; };
 	KviModuleExtensionDescriptorList * getExtensionList(const KviStr &szType);
-	KviModuleExtension * allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd = 0,KviPointerHashTable<QString,QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
-	KviModuleExtension * allocateExtension(const KviStr &szType,int id,KviWindow * pWnd = 0,KviPointerHashTable<QString,QVariant> * pParams = 0,void * pSpecial = 0,const char * preloadModule = 0);
+	KviModuleExtension * allocateExtension(const KviStr &szType,const KviStr &szName,KviWindow * pWnd = 0,KviPointerHashTable<QString,QVariant> * pParams = 0,void * pSpecial = 0,const QString &preloadModule = QString());
+	KviModuleExtension * allocateExtension(const KviStr &szType,int id,KviWindow * pWnd = 0,KviPointerHashTable<QString,QVariant> * pParams = 0,void * pSpecial = 0,const QString &preloadModule = QString());
 private:
-	KviModuleExtensionDescriptorList * allocateExtensionGetDescriptorList(const KviStr &szType,const char * preloadModule);
+	KviModuleExtensionDescriptorList * allocateExtensionGetDescriptorList(const KviStr &szType,const QString &preloadModule);
 };
 
 

@@ -53,14 +53,8 @@ void KviKvsTreeNodeSpecialCommandIf::contextDescription(QString &szBuffer)
 	szBuffer = "Special Command \"if\"";
 }
 
-void KviKvsTreeNodeSpecialCommandIf::dump(const char * prefix)
+void KviKvsTreeNodeSpecialCommandIf::dump(const char *)
 {
-	qDebug("%s SpecialCommandIf",prefix);
-	QString tmp = prefix;
-	tmp.append("  ");
-	m_pExpression->dump(tmp);
-	if(m_pIfInstruction)m_pIfInstruction->dump(tmp);
-	if(m_pElseInstruction)m_pElseInstruction->dump(tmp);
 }
 
 bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)

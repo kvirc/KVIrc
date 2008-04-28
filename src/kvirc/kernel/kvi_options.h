@@ -43,11 +43,11 @@
 	class _cname \
 	{ \
 	public: \
-		const char * name; \
+		QString      name; \
 		_type        option; \
 		int          flags; \
 	public: \
-		_cname(const char * n,_type o,int f) \
+		_cname(const QString &n,_type o,int f) \
 		: name(n) , option(o) , flags(f) {}; \
 		~_cname() {}; \
 	};
@@ -313,9 +313,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolScaleAvatarsOnLoad 219
 #define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
 #define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
+#define KviOption_boolPickRandomIpAddressForRoundRobinServers 222
 
 
-#define KVI_NUM_BOOL_OPTIONS 222
+#define KVI_NUM_BOOL_OPTIONS 223
 
 
 

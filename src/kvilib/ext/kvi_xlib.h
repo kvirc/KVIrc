@@ -40,6 +40,11 @@
 	// this breaks, enums in Qt, enums in KVIrc and other stuff all around...
 	// Shame on you Xlib.h author :D
 
+	#ifdef Bool
+		// NO!
+		#undef Bool
+	#endif
+
 #endif // !COMPILE_NO_X
 
 #endif //_KVI_XLIB_H_

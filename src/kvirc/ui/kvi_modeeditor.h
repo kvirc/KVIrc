@@ -46,12 +46,12 @@ class KVIRC_API KviModeEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const char * mode,const char * key,const char * limit);
+	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const QString &mode,const QString &key,const QString &limit);
 	~KviModeEditor();
 protected: // fields
-	KviStr m_szMode;
-	KviStr m_szKey;
-	KviStr m_szLimit;
+	QString m_szMode;
+	QString m_szKey;
+	QString m_szLimit;
 	KviPointerList<KviStyledCheckBox> * m_pCheckBoxes;
 	KviStyledCheckBox * m_pLimitBox;
 	QLineEdit * m_pLimitEdit;

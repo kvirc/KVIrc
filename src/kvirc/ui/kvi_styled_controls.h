@@ -40,13 +40,15 @@ class KviTalToolBar;
 #define KVI_STYLE_COLOR_DIFF  60
 #define KVI_STYLE_TIMER_STEP 18
 
+// FIXME: THIS STUFF SHOULD BE REMOVED.
+//        HARDCODING STYLES IS A BAD GUI PRACTICE.
 
 class KVIRC_API KviStyledControlInternal : public QObject
 {
 	Q_OBJECT
 public:
 	KviStyledControlInternal( KviStyledControl* control );
-	~KviStyledControlInternal();
+	virtual ~KviStyledControlInternal();
 public slots:
 	virtual void paintTimerShot();
 protected:
@@ -60,7 +62,7 @@ class KVIRC_API KviStyledControl
 	friend class KviStyledControlInternal;
 public:
 	KviStyledControl(QWidget*);
-	~KviStyledControl();
+	virtual ~KviStyledControl();
 protected:
 	virtual void enterEvent ( QEvent * );
 	virtual void leaveEvent ( QEvent * );
@@ -90,7 +92,7 @@ private:
 	bool bShowSubmenuIndicator;
 public:
 	KviStyledToolButton ( QWidget * parent, const char * name = 0 );
-	KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name = 0 );
+	KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const QString &name=QString() );
 	~KviStyledToolButton();
 	
 	void setShowSubmenuIndicator(bool bShow);

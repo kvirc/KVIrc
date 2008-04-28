@@ -132,7 +132,7 @@ void KviInputHistory::add(QString * s)
 	if(m_pStringList->count() > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)m_pStringList->removeLast();
 }
 
-void KviInputHistory::load(const char * filename)
+void KviInputHistory::load(const QString &filename)
 {
 	KviConfig c(filename,KviConfig::Read);
 
@@ -150,7 +150,7 @@ void KviInputHistory::load(const char * filename)
 	}
 }
 
-void KviInputHistory::save(const char * filename)
+void KviInputHistory::save(const QString &filename)
 {
 	KviConfig c(filename,KviConfig::Write);
 	c.clear();

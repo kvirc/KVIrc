@@ -108,7 +108,7 @@ class KVIRC_API KviChannel : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name);
+	KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const QString &name);
 	~KviChannel();
 protected:
 	QSplitter                           * m_pTopSplitter;
@@ -137,7 +137,7 @@ protected:
 	KviPixmap                             m_privateBackground;
 	QDateTime                             m_joinTime;
 	QString                               m_szNameWithUserFlag;
-	KviPointerHashTable<const char *,QString>               * m_pTmpHighLighted;
+	KviPointerHashTable<QString,QString> * m_pTmpHighLighted;
 	unsigned int                          m_uActionHistoryHotActionCount;
 	KviPointerList<KviChannelAction>        * m_pActionHistory;
 	kvi_time_t                            m_tLastReceivedWhoReply;
@@ -280,9 +280,9 @@ public:
 	bool hasChannelKey() { return !m_szChannelKey.isEmpty(); };
 	QString & channelKey(){ return m_szChannelKey; };
 
-	void addHighlightedUser(const char * nick);
-	void removeHighlightedUser(const char * nick);
-	bool isHighlightedUser(const char * nick) { return m_pTmpHighLighted->find(nick); };
+	void addHighlightedUser(const QString &nick);
+	void removeHighlightedUser(const QString &nick);
+	bool isHighlightedUser(const QString &nick) { return m_pTmpHighLighted->find(nick); };
 	KviIrcView * messageView() const { return m_pMessageView; };
 	virtual void lostUserFocus();
 	virtual void getTaskBarTipText(QString &buffer);

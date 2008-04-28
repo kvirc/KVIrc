@@ -1112,7 +1112,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-	int idx = m_pObject->metaObject()->indexOfProperty(szName);
+	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
 		c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
@@ -1126,7 +1126,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-	QVariant vv = m_pObject->property(szName);
+	QVariant vv = m_pObject->property(szName.toUtf8().data());
 	if(!vv.isValid())
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid"),&szName,&m_szName,&(m_pClass->name()));
@@ -1137,9 +1137,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	{
 		QString szKey;
 		v->asString(szKey);
-		int val = p->enumerator().keyToValue(szKey);
+		int val = p->enumerator().keyToValue(szKey.toUtf8().data());
 		QVariant var(val);
-		m_pObject->setProperty(szName,var);
+		m_pObject->setProperty(szName.toUtf8().data(),var);
 		return true;
 	}
 
@@ -1155,7 +1155,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		{
 			kvs_int_t i;
 			if(!v->asInteger(i))WRONG_TYPE("integer")
-			m_pObject->setProperty(szName,QVariant((int)i));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant((int)i));
 		}
 		break;
 		case QVariant::UInt:
@@ -1163,30 +1163,30 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			kvs_int_t i;
 			if(!v->asInteger(i))WRONG_TYPE("unsigned integer")
 			if(i < 0)WRONG_TYPE("unsigned integer")
-			m_pObject->setProperty(szName,QVariant((unsigned int)i));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant((unsigned int)i));
 		}
 		case QVariant::Double:
 		{
 			kvs_real_t i;
 			if(!v->asReal(i))WRONG_TYPE("real")
-			m_pObject->setProperty(szName,QVariant((double)i));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant((double)i));
 		}
 		break;
 		case QVariant::Bool:
-			m_pObject->setProperty(szName,QVariant(v->asBoolean()));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(v->asBoolean()));
 		break;
 		case QVariant::String:
 		{
 			QString s;
 			v->asString(s);
-			m_pObject->setProperty(szName,QVariant(s));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(s));
 		}
 		break;
 		case QVariant::ByteArray:
 		{
 			QString s;
 			v->asString(s);
-			m_pObject->setProperty(szName,QVariant(s.toUtf8()));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(s.toUtf8()));
 		}
 		break;
 		case QVariant::Point:
@@ -1198,7 +1198,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(!x || !y)WRONG_TYPE("array(integer,integer)")
 			kvs_int_t iX,iY;
 			if(!x->asInteger(iX) || !y->asInteger(iY))WRONG_TYPE("array(integer,integer)")
-			m_pObject->setProperty(szName,QVariant(QPoint(iX,iY)));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QPoint(iX,iY)));
 		}
 		break;
 		case QVariant::Size:
@@ -1210,7 +1210,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(!w || !h)WRONG_TYPE("array(integer,integer)")
 			kvs_int_t iW,iH;
 			if(!w->asInteger(iW) || !h->asInteger(iH))WRONG_TYPE("array(integer,integer)")
-			m_pObject->setProperty(szName,QVariant(QSize(iW,iH)));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QSize(iW,iH)));
 		}
 		break;
 		case QVariant::Rect:
@@ -1224,7 +1224,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(!x || !y || !w || !h)WRONG_TYPE("array(integer,integer,integer,integer)")
 			kvs_int_t iX,iY,iW,iH;
 			if(!x->asInteger(iX) || !y->asInteger(iY) || !w->asInteger(iW) || !h->asInteger(iH))WRONG_TYPE("array(integer,integer,integer,integer)")
-			m_pObject->setProperty(szName,QVariant(QRect(iX,iY,iW,iH)));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QRect(iX,iY,iW,iH)));
 		}
 		break;
 
@@ -1238,7 +1238,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(!r || !g || !b)WRONG_TYPE("array(integer,integer,integer)")
 			kvs_int_t iR,iG,iB;
 			if(!r->asInteger(iR) || !g->asInteger(iG) || !b->asInteger(iB))WRONG_TYPE("array(integer,integer,integer)")
-			m_pObject->setProperty(szName,QVariant(QColor(iR,iG,iB)));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QColor(iR,iG,iB)));
 		}
 		break;
 		case QVariant::Font:
@@ -1263,7 +1263,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			if(szFl.find('o') != -1)fnt.setOverline(true);
 			if(szFl.find('f') != -1)fnt.setFixedPitch(true);
 			if(szFl.find('s') != -1)fnt.setStrikeOut(true);
-			m_pObject->setProperty(szName,QVariant(fnt));
+			m_pObject->setProperty(szName.toUtf8().data(),QVariant(fnt));
 		}
 		break;
 		case QVariant::Pixmap:
@@ -1274,9 +1274,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				{
 					// null pixmap
 					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName,QVariant(QPixmap()));
+						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QPixmap()));
 					else
-						m_pObject->setProperty(szName,QVariant(QIcon()));
+						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon()));
 				} else {
 					KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
 					if(!pix->inherits("KviScriptPixmapObject"))
@@ -1284,9 +1284,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 					else {
 						QVariant pixv = pix->property("pixmap");
 						if(vv.type() == QVariant::Pixmap)
-							m_pObject->setProperty(szName,QVariant(pixv.value<QPixmap>()));
+							m_pObject->setProperty(szName.toUtf8().data(),QVariant(pixv.value<QPixmap>()));
 						else
-							m_pObject->setProperty(szName,QVariant(QIcon(pixv.value<QPixmap>())));
+							m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon(pixv.value<QPixmap>())));
 					}
 				}
 			} else {
@@ -1296,9 +1296,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				if(pPix)
 				{
 					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName,QVariant(*pPix));
+						m_pObject->setProperty(szName.toUtf8().data(),QVariant(*pPix));
 					else
-						m_pObject->setProperty(szName,QVariant(QIcon(*pPix)));
+						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon(*pPix)));
 				}
 				else
 					c->warning(__tr2qs("Can't find the requested image"));
@@ -1336,10 +1336,11 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-	int idx = m_pObject->metaObject()->indexOfProperty(szName);
+	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
-		if (bNoerror) c->returnValue()->setString("No Qt properties");
+		if(bNoerror)
+			c->returnValue()->setString("No Qt properties");
 		else
 		{
 			c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
@@ -1356,7 +1357,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		return true;
 	}
 
-	QVariant v = m_pObject->property(szName);
+	QVariant v = m_pObject->property(szName.toUtf8().data());
 	if(!v.isValid())
 	{
 		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid"),&szName,&m_szName,&(m_pClass->name()));

@@ -65,8 +65,8 @@ public:
 	KviRegisteredChannel * findExact(const char * name,const char * netmask);
 	void remove(KviRegisteredChannel * c);
 	void add(KviRegisteredChannel * c);
-	void load(const char * filename);
-	void save(const char * filename);
+	void load(const QString &filename);
+	void save(const QString &filename);
 };
 
 

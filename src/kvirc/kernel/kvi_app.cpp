@@ -105,6 +105,9 @@
 	#include <QPluginLoader>
 #endif
 
+#include <stdlib.h> // rand & srand
+#include <time.h> // time() in srand()
+
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
 
 KviConfig                              * g_pWinPropertiesConfig    = 0;
@@ -114,16 +117,13 @@ KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
 // Global windows
 
 KVIRC_API KviColorWindow               * g_pColorWindow               = 0;
-KVIRC_API KviTextIconWindowWidget            * g_pTextIconWindow            = 0;
+KVIRC_API KviTextIconWindowWidget      * g_pTextIconWindow            = 0;
 KVIRC_API KviTalPopupMenu              * g_pInputPopup                = 0;
 KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
-//KVIRC_API QStringList                  * g_pBookmarkList            = 0;
-KVIRC_API KviPointerHashTable<const char *,KviWindow>      * g_pGlobalWindowDict          = 0;
+KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict = 0;
 KVIRC_API KviMediaManager              * g_pMediaManager              = 0;
-//KVIRC_API KviRegisteredUserDataBase    * g_pRegisteredUserDataBase    = 0;
 KVIRC_API KviSharedFilesManager        * g_pSharedFilesManager        = 0;
 KVIRC_API KviNickServRuleSet           * g_pNickServRuleSet           = 0;
-//KVIRC_API KviTimerManager              * g_pTimerManager              = 0;
 KVIRC_API KviGarbageCollector          * g_pGarbageCollector          = 0;
 KVIRC_API KviCtcpPageDialog            * g_pCtcpPageDialog            = 0;
 KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase = 0;
@@ -143,7 +143,7 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		#include <ksharedpixmap.h>
 		#include <netwm.h>
 		#include <kimageeffect.h>
@@ -191,6 +191,9 @@ void KviApp::setup()
 	// This is a really critical phase since in general subsystems depend
 	// on each other and we must activate them in the right order.
 	// Don't move stuff around unless you really know what you're doing.
+
+	// Initialize the random number generator
+	::srand(::time(0));
 
 #ifdef COMPILE_ON_WINDOWS
 	// setup winsock.dll
@@ -452,7 +455,7 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(91)
 
 	// Global window dictionary
-	g_pGlobalWindowDict = new KviPointerHashTable<const char *,KviWindow>(41);
+	g_pGlobalWindowDict = new KviPointerHashTable<QString,KviWindow>(41);
 	g_pGlobalWindowDict->setAutoDelete(false);
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
@@ -934,7 +937,7 @@ void KviApp::setClipboardText(const KviStr &str)
 
 void KviApp::setAvatarFromOptions()
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1064,7 +1067,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 
 	#include <netwm.h>
 
@@ -1124,11 +1127,11 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 			//}
 		}
 
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE3_SUPPORT
 
 	void KviApp::destroyPseudoTransparency()
 	{
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		if(g_pKdeDesktopBackground)
 		{
 			delete g_pKdeDesktopBackground;
@@ -1136,7 +1139,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		}
 		// forget the backgroundChanged signal (will do nothing if it is not connected)
 		disconnect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 		if(g_pShadedParentGlobalDesktopBackground)
 		{
 			delete g_pShadedParentGlobalDesktopBackground;
@@ -1156,11 +1159,11 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		QTimer::singleShot(0,this,SLOT(updatePseudoTransparency()));
 	}
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 
 	#define kimageeffect_fade KImageEffect::fade
 
-#else //!COMPILE_KDE_SUPPORT
+#else //!COMPILE_KDE3_SUPPORT
 
 	//
 	// This function is taken from the KDE kimageeffect.cpp
@@ -1225,7 +1228,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		return img;
 	}
 
-#endif //!COMPILE_KDE_SUPPORT
+#endif //!COMPILE_KDE3_SUPPORT
 
 	void KviApp::createGlobalBackgrounds(QPixmap * pix)
 	{
@@ -1260,7 +1263,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 void KviApp::kdeRootPixmapChanged(int iDesktop)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		if(!KVI_OPTION_BOOL(KviOption_boolUpdateKdeBackgroundOnChange))return;
 		NETRootInfo rinfo(qt_xdisplay(),NET::CurrentDesktop);
 		rinfo.activate();
@@ -1273,7 +1276,7 @@ void KviApp::kdeRootPixmapChanged(int iDesktop)
 void KviApp::kdeRootPixmapDownloadComplete(bool bSuccess)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		if(!bSuccess)
 		{
 			qDebug("Failed to download the KDE root background image...");
@@ -1288,7 +1291,7 @@ void KviApp::kdeRootPixmapDownloadComplete(bool bSuccess)
 		}
 		delete g_pKdeDesktopBackground;
 		g_pKdeDesktopBackground = 0;
-	#endif //COMPILE_KDE_SUPPORT
+	#endif //COMPILE_KDE3_SUPPORT
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 }
 
@@ -1299,12 +1302,12 @@ void KviApp::updatePseudoTransparency()
 	m_bUpdatePseudoTransparencyPending = false;
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency))
 	{
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde))
 		{
 			downloadKdeRootPixmap();
 		} else {
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 			if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
 			{
 				createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
@@ -1312,9 +1315,9 @@ void KviApp::updatePseudoTransparency()
 				destroyPseudoTransparency();
 				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
 			}
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		}
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 	} else {
 		destroyPseudoTransparency();
 		if(g_pFrame)g_pFrame->updatePseudoTransparency();
@@ -1594,7 +1597,7 @@ void KviApp::destroyFrame()
 
 bool KviApp::connectionExists(KviIrcConnection *cnn)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1606,7 +1609,7 @@ bool KviApp::connectionExists(KviIrcConnection *cnn)
 
 bool KviApp::windowExists(KviWindow *wnd)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1623,7 +1626,7 @@ unsigned int KviApp::windowCount()
 
 KviConsole * KviApp::findConsole(QString &server,QString &nick)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1668,7 +1671,7 @@ KviConsole * KviApp::findConsole(KviStr &server,KviStr &nick)
 
 void KviApp::restartLagMeters()
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1683,7 +1686,7 @@ void KviApp::restartLagMeters()
 
 void KviApp::restartNotifyLists()
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1698,7 +1701,7 @@ void KviApp::restartNotifyLists()
 
 void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1712,7 +1715,7 @@ void KviApp::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 
 KviConsole * KviApp::findConsole(unsigned int ircContextId)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1737,7 +1740,7 @@ KviConsole * KviApp::topmostConnectedConsole()
 
 	// try ANY connected console
 
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{
@@ -1751,14 +1754,14 @@ KviConsole * KviApp::topmostConnectedConsole()
 	return 0;
 }
 
-KviWindow * KviApp::findWindow(const char * windowId)
+KviWindow * KviApp::findWindow(const QString &windowId)
 {
 	return g_pGlobalWindowDict->find(windowId);
 }
 
 KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContextId)
 {
-	KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 	while(it.current())
 	{

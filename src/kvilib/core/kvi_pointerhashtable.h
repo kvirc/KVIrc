@@ -263,7 +263,7 @@ inline void kvi_hash_key_copy(const QString &szFrom,QString &szTo,bool)
 	szTo = szFrom;
 }
 
-inline void kvi_hash_key_destroy(QString &szKey,bool)
+inline void kvi_hash_key_destroy(QString &,bool)
 {
 }
 

@@ -306,6 +306,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar),
 	BOOL_OPTION("DisableNotifierFadein",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("UseAntiAliasing",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
+	BOOL_OPTION("PickRandomIpAddressForRoundRobinServers",true,KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -1216,15 +1217,15 @@ void KviApp::listAvailableOptions(KviWindow *wnd)
 
 //using namespace KviStringConversion;
 
-bool KviApp::getOptionString(const char * optName,QString &buffer)
+bool KviApp::getOptionString(const QString &optName,QString &buffer)
 {
 
 	#define GET_OPTION_STRING(__numOpt,__table,__prefix,__prefixLen) \
-		if(kvi_strEqualCIN(optName,__prefix,__prefixLen)) \
+		if(KviQString::equalCIN(optName,__prefix,__prefixLen)) \
 		{ \
 			for(int i=0;i < __numOpt;i++) \
 			{ \
-				if(kvi_strEqualCI(optName,__table[i].name)) \
+				if(KviQString::equalCI(optName,__table[i].name)) \
 				{ \
 					KviStringConversion::toString(__table[i].option,buffer); \
 					return true; \
@@ -1306,15 +1307,15 @@ void KviApp::optionResetUpdate(int flags)
 	}
 }
 
-bool KviApp::setOptionValue(const char * optName,const QString &value)
+bool KviApp::setOptionValue(const QString &optName,const QString &value)
 {
 
 	#define SET_OPTION_VALUE(__numOpt,__table,__prefix,__prefixLen) \
-		if(kvi_strEqualCIN(optName,__prefix,__prefixLen)) \
+		if(KviQString::equalCIN(optName,__prefix,__prefixLen)) \
 		{ \
 			for(int i=0;i < __numOpt;i++) \
 			{ \
-				if(kvi_strEqualCI(optName,__table[i].name)) \
+				if(KviQString::equalCI(optName,__table[i].name)) \
 				{ \
 					if(!KviStringConversion::fromString(value,__table[i].option))return false; \
 					optionResetUpdate(__table[i].flags); \
@@ -1336,10 +1337,10 @@ bool KviApp::setOptionValue(const char * optName,const QString &value)
 	SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,KVI_FONT_OPTIONS_PREFIX,KVI_FONT_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,KVI_MSGTYPE_OPTIONS_PREFIX,KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
 
-	if(kvi_strEqualCI(optName,"stringlistRecentChannels"))
+	if(KviQString::equalCI(optName,"stringlistRecentChannels"))
 		buildRecentChannels();
 	// The pixmap options have special treating
-	if(kvi_strEqualCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
+	if(KviQString::equalCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
 	{
 		// We lookup the image path (so we allow also relative paths for this option type)
 		QString szVal = value;
@@ -1354,7 +1355,7 @@ bool KviApp::setOptionValue(const char * optName,const QString &value)
 
 		for(int i=0;i < KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
-			if(kvi_strEqualCI(optName,g_pixmapOptionsTable[i].name))
+			if(KviQString::equalCI(optName,g_pixmapOptionsTable[i].name))
 			{	
 				if(!KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option))return false;
 				optionResetUpdate(g_pixmapOptionsTable[i].flags);

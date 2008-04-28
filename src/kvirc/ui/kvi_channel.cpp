@@ -89,7 +89,7 @@
 // FIXME: #warning "OnChannelFlood event...."
 
 
-KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name)
+KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const QString &name)
 : KviWindow(KVI_WINDOW_TYPE_CHANNEL,lpFrm,name,lpConsole)
 {
 	// Init some member variables
@@ -105,7 +105,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
-	m_pTmpHighLighted      = new KviPointerHashTable<const char *,QString>();
+	m_pTmpHighLighted      = new KviPointerHashTable<QString,QString>();
 	m_pTmpHighLighted->setAutoDelete(true);
 
 	// Register ourselves
@@ -576,14 +576,14 @@ void KviChannel::setChannelLimit(const char * limit)
 	updateCaption();
 }
 
-void KviChannel::addHighlightedUser(const char * nick)
+void KviChannel::addHighlightedUser(const QString &nick)
 {
 	if(!m_pUserListView->findEntry(nick))return;
 	else
    		m_pTmpHighLighted->replace(nick,new QString());
 }
 
-void KviChannel::removeHighlightedUser(const char * nick)
+void KviChannel::removeHighlightedUser(const QString &nick)
 {
 	m_pTmpHighLighted->remove(nick);
 }

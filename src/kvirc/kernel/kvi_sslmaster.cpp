@@ -80,14 +80,14 @@ KVIRC_API void printSSLConnectionInfo(KviWindow * wnd,KviSSL * s)
 	if(sc)
 	{
 		QString tmp(__tr2qs("Peer X509 certificate"));
-		KviSSLMaster::printSSLCertificate(wnd,tmp,sc);
+		KviSSLMaster::printSSLCertificate(wnd,tmp.toLocal8Bit().data(),sc);
 		delete sc;
 	} else wnd->outputNoFmt(KVI_OUT_SSL,__tr2qs("[SSL]: The peer didn't provide a certificate"));
 	KviSSLCipherInfo * ci = s->getCurrentCipherInfo();
 	if(ci)
 	{
 		QString tmp(__tr2qs("Current transmission cipher"));
-		KviSSLMaster::printSSLCipherInfo(wnd,tmp,ci);
+		KviSSLMaster::printSSLCipherInfo(wnd,tmp.toLocal8Bit().data(),ci);
 		delete ci;
 	} else wnd->outputNoFmt(KVI_OUT_SSL,__tr2qs("[SSL]: Can't find out the current cipher info"));
 }

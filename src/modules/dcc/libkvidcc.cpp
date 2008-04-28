@@ -1143,7 +1143,7 @@ static bool dcc_kvs_cmd_voice(KviKvsModuleCommandCall * c)
 		QString szCodec;
 		pCodec->asString(szCodec);
 
-		if(!kvi_dcc_voice_is_valid_codec(szCodec))
+		if(!kvi_dcc_voice_is_valid_codec(szCodec.toUtf8().data()))
 		{
 			c->warning(__tr2qs_ctx("Invalid codec specified, defaulting to 'adpcm'","dcc"));
 			d->szCodec = "adpcm";

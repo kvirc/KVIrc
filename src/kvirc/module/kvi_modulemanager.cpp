@@ -43,7 +43,7 @@ KviModuleManager * g_pModuleManager = 0;
 
 KviModuleManager::KviModuleManager()
 {
-	m_pModuleDict = new KviPointerHashTable<const char *,KviModule>(17,false);
+	m_pModuleDict = new KviPointerHashTable<QString,KviModule>(17,false);
 	m_pModuleDict->setAutoDelete(false);
 
 	m_pCleanupTimer = new QTimer(this);
@@ -58,31 +58,35 @@ KviModuleManager::~KviModuleManager()
 }
 
 
-void KviModuleManager::loadModulesByCaps(const char * caps,const char * dir)
+void KviModuleManager::loadModulesByCaps(const QString &caps,const QString &dir)
 {
-	KviStr szCapsPath(KviStr::Format,"%s%ccaps%c%s%c",dir,KVI_PATH_SEPARATOR_CHAR,
-			KVI_PATH_SEPARATOR_CHAR,caps,KVI_PATH_SEPARATOR_CHAR);
+	QString szCapsPath = dir;
+	szCapsPath += KVI_PATH_SEPARATOR_CHAR;
+	szCapsPath += "caps";
+	szCapsPath += KVI_PATH_SEPARATOR_CHAR;
+	szCapsPath += caps;
+	szCapsPath += KVI_PATH_SEPARATOR_CHAR;
 
-	QDir d(QString(szCapsPath.ptr()));
+	QDir d(szCapsPath);
 
 	// FIXME: maybe check timestamps ? (old modules)
 
 	QStringList sl = d.entryList(QDir::Files | QDir::Readable | QDir::NoSymLinks);
 	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 	{
-		KviStr modname = *it;
-		modname.cutToLast(KVI_PATH_SEPARATOR_CHAR);
-		getModule((*it).ascii());
+		QString modname = *it;
+		KviQString::cutToLast(modname,KVI_PATH_SEPARATOR_CHAR);
+		getModule(modname);
 	}
 }
 
-void KviModuleManager::loadModulesByCaps(const char * caps)
+void KviModuleManager::loadModulesByCaps(const QString &caps)
 {
-	KviStr szDir;
+	QString szDir;
 	g_pApp->getLocalKvircDirectory(szDir,KviApp::Plugins);
-	loadModulesByCaps(caps,szDir.ptr());
+	loadModulesByCaps(caps,szDir);
 	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Plugins);
-	loadModulesByCaps(caps,szDir.ptr());
+	loadModulesByCaps(caps,szDir);
 }
 
 void KviModuleManager::completeModuleNames(const QString &path,const QString &word,KviPointerList<QString> * matches)
@@ -122,14 +126,14 @@ void KviModuleManager::completeModuleNames(const QString &word,KviPointerList<QS
 	completeModuleNames(szDir,word,matches);
 }
 
-KviModule * KviModuleManager::findModule(const char * modName)
+KviModule * KviModuleManager::findModule(const QString &modName)
 {
 	KviModule * m = m_pModuleDict->find(modName);
 	if(m)m->updateAccessTime();
 	return m;
 }
 
-KviModule * KviModuleManager::getModule(const char * modName)
+KviModule * KviModuleManager::getModule(const QString &modName)
 {
 	KviModule * m = m_pModuleDict->find(modName);
 	if(!m)
@@ -154,7 +158,7 @@ static bool default_module_cmd_unload(KviModule *m,KviCommand *)
 }
 */
 
-bool KviModuleManager::loadModule(const char * modName)
+bool KviModuleManager::loadModule(const QString &modName)
 {
 	if(findModule(modName))
 	{
@@ -164,9 +168,9 @@ bool KviModuleManager::loadModule(const char * modName)
 	QString tmp;
 	QString szName;
 #ifdef COMPILE_ON_WINDOWS
-	KviQString::appendFormatted(szName,"kvi%s.dll",modName);
+	KviQString::appendFormatted(szName,"kvi%Q.dll",&modName);
 #else
-	KviQString::appendFormatted(szName,"libkvi%s.so",modName);
+	KviQString::appendFormatted(szName,"libkvi%Q.so",&modName);
 #endif
 	szName=szName.lower();
 
@@ -258,7 +262,7 @@ bool KviModuleManager::loadModule(const char * modName)
 	if(_OUTPUT_VERBOSE && !g_pApp->closingDown())
 	{
 		if(g_pFrame)g_pFrame->firstConsole()->output(KVI_OUT_VERBOSE,
-			__tr2qs("Loaded module '%s' (%s)"),modName,szName.toUtf8().data());
+			__tr2qs("Loaded module '%s' (%s)"),modName.toUtf8().data(),szName.toUtf8().data());
 	}
 	return true;
 }
@@ -271,7 +275,7 @@ void KviModuleManager::registerDefaultCommands(KviModule * module)
 	module->registerCommand("unload",default_module_cmd_unload);
 }
 */
-bool KviModuleManager::unloadModule(const char * modName)
+bool KviModuleManager::unloadModule(const QString &modName)
 {
 	return unloadModule(findModule(modName));
 }
@@ -285,15 +289,15 @@ bool KviModuleManager::unloadModule(KviModule * module)
 	{
 		(module->moduleInfo()->cleanup_routine)(module);
 	}
-	KviStr szModName = module->name();
+	QString szModName = module->name();
 	kvi_library_close(module->handle());
 	//debug("Closing module %s, dlclose returns %d",szModName.ptr(),dlclose(module->handle()));
 
-	m_pModuleDict->remove(szModName.ptr());
+	m_pModuleDict->remove(szModName);
 	delete module;
 
 	// unload the message catalogues, if any
-	KviLocale::unloadCatalogue(szModName.ptr());
+	KviLocale::unloadCatalogue(szModName);
 
 	if(m_pModuleDict->isEmpty())
 	{
@@ -303,14 +307,14 @@ bool KviModuleManager::unloadModule(KviModule * module)
 	if(_OUTPUT_VERBOSE && !g_pApp->closingDown())
 	{
 		if(g_pFrame)g_pFrame->firstConsole()->output(KVI_OUT_VERBOSE,
-			__tr2qs("Unloaded module '%s'"),szModName.ptr());
+			__tr2qs("Unloaded module '%s'"),szModName.toUtf8().data());
 	}
 	return true;
 }
 
 bool KviModuleManager::hasLockedModules()
 {
-	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<QString,KviModule> it(*m_pModuleDict);
 	while(KviModule * m = it.current())
 	{
 		if(m->isLocked())return true;
@@ -322,7 +326,7 @@ bool KviModuleManager::hasLockedModules()
 
 void KviModuleManager::cleanupUnusedModules()
 {
-	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<QString,KviModule> it(*m_pModuleDict);
 
 	KviPointerList<KviModule> lModulesToUnload;
 	lModulesToUnload.setAutoDelete(false);
@@ -354,7 +358,7 @@ void KviModuleManager::cleanupUnusedModules()
 
 void KviModuleManager::unloadAllModules()
 {
-	KviPointerHashTableIterator<const char *,KviModule> it(*m_pModuleDict);
+	KviPointerHashTableIterator<QString,KviModule> it(*m_pModuleDict);
 
 	KviPointerList<KviModule> lModulesToUnload;
 	lModulesToUnload.setAutoDelete(false);

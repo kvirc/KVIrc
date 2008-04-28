@@ -240,8 +240,8 @@ KviStyledToolButton::KviStyledToolButton( QWidget * parent, const char * name )
 	resizeEvent(0);
 }
 
-KviStyledToolButton::KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const char * name )
-: QToolButton(iconSet,textLabel,grouptext,receiver,slot,parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
+KviStyledToolButton::KviStyledToolButton ( const QIcon & iconSet, const QString & textLabel, const QString & grouptext, QObject * receiver, const char * slot, KviTalToolBar * parent, const QString &name)
+: QToolButton(iconSet,textLabel,grouptext,receiver,slot,parent,name.toUtf8().data()), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
 //	setWFlags(WNoAutoErase);
 	resizeEvent(0);

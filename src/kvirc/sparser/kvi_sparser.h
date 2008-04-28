@@ -71,7 +71,7 @@ typedef struct _KviCtcpMessage
 	bool            bIsFlood;
 	bool            bUnknown;
 
-	QString          szTag;
+	QString         szTag;
 } KviCtcpMessage;
 
 typedef struct _KviDccRequest
@@ -228,7 +228,7 @@ private:
 	void parseCtcpReply(KviCtcpMessage *msg);
 	void echoCtcpRequest(KviCtcpMessage *msg);
 	void echoCtcpReply(KviCtcpMessage *msg);
-	void replyCtcp(KviCtcpMessage *msg,const char * data);
+	void replyCtcp(KviCtcpMessage *msg,const QString &data);
 	bool checkCtcpFlood(KviCtcpMessage *msg);
 
 	void parseCtcpRequestPing(KviCtcpMessage *msg);

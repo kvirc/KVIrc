@@ -269,15 +269,17 @@ void KviPixmapSelector::choosePixmap()
 	}
 }
 
-void KviPixmapSelector::setImagePath(const char * path)
+void KviPixmapSelector::setImagePath(const QString &path)
 {
 	m_localPixmap.load(path);
 	m_pPreview->setPixmap(&m_localPixmap);
 
 	if(m_localPixmap.isNull())
 	{
-		KviStr tmp2(KviStr::Format,__tr("Unloadable: %s"),path);
-		m_pFileNameLabel->setText(tmp2.ptr());
+		QString tmp = __tr2qs("Unloadable");
+		tmp += ": ";
+		tmp += path;
+		m_pFileNameLabel->setText(tmp);
 		m_pCheckBox->setChecked(false);
 	} else {
 		m_pCheckBox->setChecked(true);

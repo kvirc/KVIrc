@@ -1507,7 +1507,7 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 		{
 			// the target SHOULD have changed his nick here
 			if(!q->nickChange(szNick,szNewNick))
-					debug("Internal error: query %s failed to change nick from %s to s",szNick.toUtf8().data(),szNick.toUtf8().data(),szNewNick.toUtf8().data());
+				debug("Internal error: query %s failed to change nick from %s to %s",szNick.toUtf8().data(),szNick.toUtf8().data(),szNewNick.toUtf8().data());
 			if(!msg->haltOutput())
 				q->output(KVI_OUT_NICK,__tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"),
 					&szNick,&szUser,&szHost,&szNewNick);
@@ -1715,7 +1715,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			case 'k':
 				if(bSet)aParam = msg->safeParam(curParam++);
 				else aParam = "";
-				chan->setChannelKey(aParam);
+				chan->setChannelKey(aParam.toUtf8().data());
 
 				if(bSet) {
 					if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnKeySet,chan,szNick,szUser,szHost,aParam))
@@ -1738,7 +1738,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			case 'l':
 				if(bSet)aParam = msg->safeParam(curParam++);
 				else aParam = "";
-				chan->setChannelLimit(aParam);
+				chan->setChannelLimit(aParam.toUtf8().data());
 				
 				if(bSet) {
 					if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnLimitSet,chan,szNick,szUser,szHost,aParam))

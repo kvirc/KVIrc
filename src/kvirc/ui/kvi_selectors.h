@@ -146,7 +146,7 @@ private:
 	KviPixmap        * m_pOption;
 	KviPixmap          m_localPixmap;
 public:
-	void setImagePath(const char * path);
+	void setImagePath(const QString &path);
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
 protected slots:

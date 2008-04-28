@@ -114,7 +114,7 @@ void KviProxyDataBase::clear()
 	m_pCurrentProxy = 0;
 }
 
-void KviProxyDataBase::load(const char * filename)
+void KviProxyDataBase::load(const QString &filename)
 {
 	clear();
 	KviConfig cfg(filename,KviConfig::Read);
@@ -149,7 +149,7 @@ void KviProxyDataBase::load(const char * filename)
 	if(!m_pCurrentProxy)m_pCurrentProxy = m_pProxyList->first();
 }
 
-void KviProxyDataBase::save(const char * filename)
+void KviProxyDataBase::save(const QString &filename)
 {
 	KviConfig cfg(filename,KviConfig::Write);
 

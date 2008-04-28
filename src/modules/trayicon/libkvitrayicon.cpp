@@ -56,7 +56,7 @@
 	#define ICON_SIZE 22
 #endif
 
-extern KVIRC_API KviPointerHashTable<const char *,KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
 static KviPointerList<KviTrayIcon> * g_pTrayIconList = 0;
 
 static QPixmap * g_pDock1 = 0;
@@ -212,7 +212,7 @@ void KviTrayIcon::doAway(int id)
 {
 	if(id<0)
 	{
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 		while(KviWindow * wnd = it.current())
 		{
 			if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
@@ -257,7 +257,7 @@ void KviTrayIcon::fillContextPopup()
 		
 		int iSeparator=m_pAwayPopup->insertSeparator();
 		
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 		bool bAllAway=1;
 		bool bAllUnaway=1;
 		int iNetCount=0;

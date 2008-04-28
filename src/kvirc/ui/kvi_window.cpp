@@ -101,11 +101,8 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_uId = g_uUniqueWindowId;
 	g_uUniqueWindowId++;
 
-
-	// FIXME: REMOVE THIS
-	setName(name);
-	// END FIXME
 	m_szName = name;
+	setObjectName(name);
 
 	g_pApp->registerWindow(this);
 
@@ -168,6 +165,7 @@ KviWindow::~KviWindow()
 void KviWindow::setWindowName(const QString &szName)
 {
 	m_szName = szName;
+	setObjectName(szName);
 	emit windowNameChanged();
 }
 
@@ -178,12 +176,6 @@ void KviWindow::toggleButtonContainer()
 	{
 		pContainer->setHidden(!pContainer->isHidden());
 	}
-}
-
-void KviWindow::setName(const char * name)
-{
-	m_szName = name;
-	QWidget::setName(name);
 }
 
 KviIrcConnection * KviWindow::connection()
@@ -833,7 +825,7 @@ void KviWindow::savePropertiesAsDefault()
 	QString group;
 	getConfigGroupName(group);
 
-	if(!kvi_strEqualCI(group,typeString()))
+	if(!KviQString::equalCI(group,typeString()))
 	{
 		// save also the settings for THIS specialized window
 		g_pFrame->saveWindowProperties(this,group);

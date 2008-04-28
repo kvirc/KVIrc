@@ -73,7 +73,7 @@ public:
 	const QString & xmlActiveCaption(){ return m_szXmlActiveCaption; };
 	const QString & xmlInactiveCaption(){ return m_szXmlInactiveCaption; };
 	void setWindowTitle(const QString & plain,const QString & xmlActive,const QString & xmlInactive);
-	virtual QSize sizeHint();
+	virtual QSize sizeHint() const;
 	void setIcon(const QPixmap &pix);
 	const QPixmap * icon();
 	void enableClose(bool bEnable);

@@ -173,8 +173,6 @@ public:
 	// THIS is the function that should be used
 	const QString & windowName(){ return m_szName; };
 	void setWindowName(const QString &szName);
-	// force QT to set our UNICODE name too... FIXME: this should be removed later...
-	virtual void setName(const char * szName);
 
 	// Window type management
 	int type() const { return m_iType; };

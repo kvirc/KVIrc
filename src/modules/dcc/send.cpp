@@ -257,8 +257,8 @@ void KviDccRecvThread::run()
 						// Readed something useful...write back
 						if((m_pOpt->iTotalFileSize > -1) && ((readLen + (int)m_pFile->at()) > m_pOpt->iTotalFileSize))
 						{
-							postMessageEvent(__tr2qs_ctx("WARNING: The peer is sending garbage data past the end of the file","dcc"));
-							postMessageEvent(__tr2qs_ctx("WARNING: Ignoring data past the declared end of file and closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: The peer is sending garbage data past the end of the file","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: Ignoring data past the declared end of file and closing the connection","dcc"));
 
 							readLen = m_pOpt->iTotalFileSize - m_pFile->at();
 							if(readLen > 0)
@@ -359,14 +359,14 @@ void KviDccRecvThread::run()
 					{
 						iProbableTerminationTime = (int)kvi_unixTime();
 						m_pFile->flush();
-						postMessageEvent(__tr2qs_ctx("Data transfer terminated, waiting 30 seconds for the peer to close the connection...","dcc"));
+						postMessageEvent(__tr_no_lookup_ctx("Data transfer terminated, waiting 30 seconds for the peer to close the connection...","dcc"));
 						// FIXME: Close the file ?
 					} else {
 						int iDiff = (((int)kvi_unixTime()) - iProbableTerminationTime);
 						if(iDiff > 30)
 						{
 							// success if we got the whole file or if we don't know the file size (we trust the peer)
-							postMessageEvent(__tr2qs_ctx("Data transfer was terminated 30 seconds ago, closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("Data transfer was terminated 30 seconds ago, closing the connection","dcc"));
 							KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
 							postEvent(parent(),e);
 							break;

@@ -438,7 +438,7 @@ namespace KviKvsCoreCallbackCommands
 			return true;
 		}
 
-		pButton = (KviScriptUserButton *)(KVSCCC_pWindow->buttonContainer())->child(szName,"KviWindowScriptButton");
+		pButton = (KviScriptUserButton *)(KVSCCC_pWindow->buttonContainer())->child(szName.toUtf8().data(),"KviWindowScriptButton");
 
 		if(KVSCCC_pCallback->code().isEmpty())
 		{
@@ -452,7 +452,7 @@ namespace KviKvsCoreCallbackCommands
 		
 		if(!pButton)
 		{
-			pButton = new KviWindowScriptButton(KVSCCC_pWindow->buttonContainer(),KVSCCC_pWindow,szName);
+			pButton = new KviWindowScriptButton(KVSCCC_pWindow->buttonContainer(),KVSCCC_pWindow,szName.toUtf8().data());
 			pButton->show();
 		}
 

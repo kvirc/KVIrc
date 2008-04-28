@@ -449,7 +449,7 @@ public:
 	// WARNING: Don't store this pointer!
 	// id == filename | number that indicates an internal pixmap
 	// 0 stands for "any"
-	QPixmap * getImage(const char * id,bool bCanBeNumber = true,QString* pRetPath = 0);
+	QPixmap * getImage(const QString &id,bool bCanBeNumber = true,QString* pRetPath = 0);
 
 	// The returned pointer is owned by the icon manager
 	// and can be deleted at any time : so don't store it
