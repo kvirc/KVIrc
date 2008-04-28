@@ -39,19 +39,20 @@ KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal
 	setModal(bModal);
 
 	m_pLayout = new QGridLayout(this);
+	m_pLayout->setColumnStretch(0,10);
 	setLayout(m_pLayout);
 
 	m_pTabWidget = new QTabWidget(this);
-	m_pLayout->addWidget(m_pTabWidget,0,0,0,2);
+	m_pLayout->addWidget(m_pTabWidget,0,0,1,2);
 }
 
 KviTalTabDialog::~KviTalTabDialog()
 {
 }
 
-void KviTalTabDialog::addTab(QWidget * name, const QString & label)
+void KviTalTabDialog::addTab(QWidget * widget, const QString & label)
 {
-	m_pTabWidget->addTab(name,label);
+	m_pTabWidget->addTab(widget,label);
 }
 
 void KviTalTabDialog::setOkButton(const QString & text)
