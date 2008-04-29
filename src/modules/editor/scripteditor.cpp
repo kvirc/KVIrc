@@ -1141,23 +1141,15 @@ int KviScriptEditorImplementation::getCursor()
 
 void KviScriptEditorImplementation::setCursorPosition(int pos)
 {
-debug("Set cursor position to %d",pos);
-	m_pEditor->textCursor().setPosition(pos,QTextCursor::MoveAnchor);
-	/*
-	m_pEditor->setCursorPosition(pos.x(),pos.y());int
-	m_pEditor->setFocus();
-	m_pEditor->ensureCursorVisible();
-	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs_ctx("Row: %d Col: %d","editor"),pos.x(),pos.y());
-	m_pRowColLabel->setText(tmp);
-	
-	m_lastCursorPos=pos;
-	*/
+	QTextCursor cur=m_pEditor->textCursor();
+	cur.setPosition(pos);
+	m_pEditor->setTextCursor(cur);
+	updateRowColLabel();
 }
 
 void KviScriptEditorImplementation::loadFromFile()
 {
-	/*
+
 	QString fName;
 	if(KviFileDialog::askForOpenFileName(fName,
 		__tr2qs_ctx("Load Script File - KVIrc","editor"),
@@ -1168,8 +1160,9 @@ void KviScriptEditorImplementation::loadFromFile()
 		if(KviFileUtils::loadFile(fName,buffer))
 		{
 			m_pEditor->setText(buffer);
-			m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
-			updateRowColLabel();
+			setCursorPosition(0);
+			//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
+			//updateRowColLabel();
 		} else {
 			QString tmp;
 			QMessageBox::warning(this,
@@ -1177,7 +1170,6 @@ void KviScriptEditorImplementation::loadFromFile()
 				KviQString::sprintf(tmp,__tr2qs_ctx("Can't open the file %s for reading.","editor"),&fName));
 		}
 	}
-	*/
 }
 
 void KviScriptEditorImplementation::configureColors()
@@ -1201,47 +1193,47 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	p.setColor(backgroundRole(),QColor( 236, 233, 216 )); 
 	setPalette(p);
 
-QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
- 
-	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
-	layout->addWidget(m_pFindlineedit,2,2,0,1);
-	//layout->addMultiCellWidget( m_pFindlineedit, 2, 2, 1, 2 );
+	QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
 
-	m_pReplacelineedit = new QLineEdit( this, "replacelineedit" );
-	layout->addWidget( m_pReplacelineedit,3,3,0,1);
-		//3, 3, 1, 2 );
-
-	m_pFindlineedit->setFocus();
 
 	QLabel *findlabel = new QLabel( this, "findlabel" );
 	findlabel->setText(tr("Word to Find"));
-	layout->addWidget( findlabel, 2, 0 );
+	layout->addWidget( findlabel, 0, 0 );
+ 
+	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
+	layout->addWidget(m_pFindlineedit,0,1);
+
 
 	QLabel *replacelabel = new QLabel( this, "replacelabel" );
 	replacelabel->setText(tr("Replace with"));
-	layout->addWidget( replacelabel, 3, 0 );
+	layout->addWidget( replacelabel, 1, 0 );
+
+	m_pReplacelineedit = new QLineEdit( this, "replacelineedit" );
+	layout->addWidget( m_pReplacelineedit,1,1);
+
+	m_pFindlineedit->setFocus();
 
 	QPushButton *cancelbutton = new QPushButton( this, "cancelButton" );
 	cancelbutton->setText(tr("&Cancel"));
-	layout->addWidget( cancelbutton, 5, 2 );
+	layout->addWidget( cancelbutton, 3, 1 );
 
 	replacebutton = new QPushButton( this, "replacebutton" );
 	replacebutton->setText(tr("&Replace"));
 	replacebutton->setEnabled( FALSE );
-	layout->addWidget( replacebutton, 5, 0 );
+	layout->addWidget( replacebutton, 3, 2 );
 
 	checkReplaceAll = new KviStyledCheckBox( this, "replaceAll" );
 	checkReplaceAll->setText(tr("&Replace in all Aliases"));
-	layout->addWidget( checkReplaceAll, 4, 0 );
+	layout->addWidget( checkReplaceAll, 2, 0 );
 	
 	findNext = new QPushButton(this, "findNext(WIP)" );	
 	findNext->setText(tr("&Findnext"));
-	layout->addWidget( findNext, 2, 3 );
+	layout->addWidget( findNext, 0, 2 );
 	findNext->setEnabled(false);
 
 	replace = new QPushButton(this, "replace" );	
 	replace->setText(tr("&Replace(WIP)"));
-	layout->addWidget( replace, 3, 3 );
+	layout->addWidget( replace, 1, 2 );
 	replace->setEnabled(false);
 
 	// signals and slots connections

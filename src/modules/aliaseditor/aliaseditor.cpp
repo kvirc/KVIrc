@@ -1431,6 +1431,7 @@ void KviAliasEditor::saveLastEditedItem()
 {
 	if(!m_pLastEditedItem){debug ("Nothing to save");return;}
 	debug("Check last edit item %s",m_pLastEditedItem->text(0).toUtf8().data());
+	((KviAliasListViewItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	if(!m_pEditor->isModified()){debug ("Alreary saved");return;} // nothing to save
 	if(!itemExists(m_pLastEditedItem)){debug("Item does not exists");return;} // dead ?
 	if(m_pLastEditedItem->isNamespace()){debug("Is namespace");return;}
@@ -1440,7 +1441,6 @@ void KviAliasEditor::saveLastEditedItem()
 	debug("Saving %s",newCode.toUtf8().data());
 
 	((KviAliasListViewItem *)m_pLastEditedItem)->setBuffer(newCode);
-	((KviAliasListViewItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 }
 
 void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
