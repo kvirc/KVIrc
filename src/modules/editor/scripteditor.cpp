@@ -924,7 +924,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	QToolButton * b = new QToolButton(this);
 	b->setArrowType(Qt::DownArrow);
-	b->setObjectName("dsa2");
+	b->setObjectName("ToolButtonEditor");
 
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);
@@ -936,7 +936,6 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	pop->insertItem(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
 	b->setPopupMode(QToolButton::InstantPopup);
-//	b->setPopupDelay(1);
 
 	g->setColumnStretch(1,1);
 	g->setColumnStretch(2,10);
@@ -1113,6 +1112,11 @@ void KviScriptEditorImplementation::setFindLineeditReadOnly(bool b)
 
 void KviScriptEditorImplementation::updateRowColLabel()
 {
+	int iRow=m_pEditor->textCursor().blockNumber();
+	int iCol=m_pEditor->textCursor().columnNumber();
+	QString tmp;
+	KviQString::sprintf(tmp,__tr2qs_ctx("Row: %d Col: %d","editor"),iRow,iCol);
+	m_pRowColLabel->setText(tmp);
 /*
 	int iRow,iCol;
 	m_pEditor->getCursorPosition(&iRow,&iCol);
@@ -1133,6 +1137,7 @@ QPoint KviScriptEditorImplementation::getCursor()
 
 void KviScriptEditorImplementation::setCursorPosition(QPoint pos)
 {
+
 	/*
 	m_pEditor->setCursorPosition(pos.x(),pos.y());
 	m_pEditor->setFocus();
