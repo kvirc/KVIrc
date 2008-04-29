@@ -935,6 +935,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	pop->insertSeparator();
 	pop->insertItem(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
+	b->setPopupMode(QToolButton::InstantPopup);
 //	b->setPopupDelay(1);
 
 	g->setColumnStretch(1,1);

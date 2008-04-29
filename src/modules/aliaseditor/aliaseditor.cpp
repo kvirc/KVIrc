@@ -621,8 +621,6 @@ void KviAliasEditor::slotFind()
 			recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->topLevelItem(i));
 		}
 	}
-		//recursiveSearchReplace(szSearch,(KviAliasEditorListViewItem *)m_pListView->firstChild());
-	//*/
 }
 
 void KviAliasEditor::slotFindWord(const QString &szSearch)
