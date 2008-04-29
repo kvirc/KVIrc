@@ -402,7 +402,6 @@ void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
 	completelistbox->hide();
 	if (e->button() == Qt::RightButton)
 	{
-	bool bIsFirstWordInLine;
 	QString buffer;
 	/*int para = paragraphAt(e->pos());
 	int index=charAt(e->pos(),&para);
@@ -597,7 +596,7 @@ void KviScriptEditorWidget::slotComplete(QListWidgetItem *item)
 }
 
 KviScriptSyntaxHighlighter::KviScriptSyntaxHighlighter(KviScriptEditorWidget * pWidget)
-: QSyntaxHighlighter(pWidget)
+: QSyntaxHighlighter(pWidget),m_pTextEdit(pWidget)
 {
 }
 
@@ -640,6 +639,12 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	QTextCharFormat functionFormat;
 	functionFormat.setForeground(g_clrFunction);
 	functionFormat.setFont(g_fntNormal);
+
+
+	QTextCharFormat findFormat;
+	findFormat.setForeground(g_clrFind);
+	findFormat.setFont(g_fntNormal);
+	
 	
 	
 	int endStateOfLastPara=currentBlockState();
@@ -861,9 +866,10 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 			setFormat(pBegin - pBuf,c - pBegin,punctuationFormat);
 		}
 	}
-/*
+
 	bool i=TRUE;
-	QString szFind=((KviScriptEditorWidget *)textEdit())->m_szFind;
+	KviScriptEditorWidget *editor=((KviScriptEditorWidget *)textEdit());
+	QString szFind=editor->m_szFind;
 	if (!szFind.isEmpty())
 	{
 		int index=0;
@@ -872,13 +878,13 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 			index=text.find(szFind,index,false);
 			if (index != -1)
 			{
-				setFormat(index,szFind.length(),g_clrFind);
+				setFormat(index,szFind.length(),findFormat);
 				index += szFind.length();
 			}
 		else i=false;
 		}
 	}
-	*/
+
 	if(bInString)
 		setCurrentBlockState(IN_LINE | IN_STRING);
 	

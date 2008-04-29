@@ -99,6 +99,8 @@ public:
 	KviScriptSyntaxHighlighter(KviScriptEditorWidget * pWidget);
 	virtual ~KviScriptSyntaxHighlighter();
 public:
+	QTextEdit *m_pTextEdit;
+	QTextEdit *textEdit(){return m_pTextEdit;}
 	void highlightBlock(const QString &text);
 };
 
