@@ -977,7 +977,7 @@ void KviScriptEditorImplementation::loadOptions()
 
 bool KviScriptEditorImplementation::isModified()
 {
-	return m_pEditor->isModified();
+	return m_pEditor->document()->isModified();
 }
 
 void KviScriptEditorImplementation::slotFind()

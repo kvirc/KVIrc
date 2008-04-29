@@ -462,15 +462,18 @@ bool KviAliasEditor::hasSelectedItems()
 }
 bool KviAliasEditor::itemExists(QTreeWidgetItem *pSearchFor)
 {
+	debug("Check if %s exists",pSearchFor->text(0).toUtf8().data());
 	if(!pSearchFor)return false;
+
 	for (int i=0;i<m_pListView->topLevelItemCount();i++)
 	{
-		
+		debug("Check in top level %d",i);	
 		if(m_pListView->topLevelItem(i)==pSearchFor) return true;
 		else
 		{
 			if(!((KviAliasEditorListViewItem *)m_pListView->topLevelItem(i))->isAlias())
 			{
+				debug ("search into name space %s",m_pListView->topLevelItem(i)->text(0).toUtf8().data());
 				if (itemExistsRecursive(pSearchFor,m_pListView->topLevelItem(i))) return true;
 			}
 		}
@@ -479,14 +482,17 @@ bool KviAliasEditor::itemExists(QTreeWidgetItem *pSearchFor)
 }
 bool KviAliasEditor::itemExistsRecursive(QTreeWidgetItem *pSearchFor,QTreeWidgetItem * pSearchAt)
 {
-	
 	for(int i=0;i<pSearchAt->childCount();i++)
 	{
+		debug("Check into child %d with text %s and %s",i,pSearchAt->child(i)->text(0).toUtf8().data(),pSearchFor->text(0).toUtf8().data());
+
 		if(pSearchFor == pSearchAt->child(i))return true;
 		else
 		{
-			if(!((KviAliasEditorListViewItem *)pSearchAt->child(i))->isAlias())
-				itemExistsRecursive(pSearchFor,pSearchAt->child(i));
+			//if(!((KviAliasEditorListViewItem *)pSearchAt->child(i))->isAlias())
+			if (pSearchAt->child(i)->childCount())	{
+				if (itemExistsRecursive(pSearchFor,pSearchAt->child(i))) return true;
+			}
 		}
 	}
 	return false;
@@ -1394,14 +1400,18 @@ void KviAliasEditor::renameItem()
 //          the name is changed explicitly with renameItem(), when needed
 void KviAliasEditor::saveLastEditedItem()
 {
-	if(!m_pLastEditedItem)return;
-	if(!m_pEditor->isModified())return; // nothing to save
-	if(!itemExists(m_pLastEditedItem))return; // dead ?
+	if(!m_pLastEditedItem){debug ("Nothing to save");return;}
+	debug("Check last edit item %s",m_pLastEditedItem->text(0).toUtf8().data());
+	
+	if(!m_pEditor->isModified()){debug ("Alreary saved");return;} // nothing to save
+	if(!itemExists(m_pLastEditedItem)){debug("Item does not exists");return;} // dead ?
 
-	if(m_pLastEditedItem->isNamespace())return;
-
+	if(m_pLastEditedItem->isNamespace()){debug("Is namespace");return;}
+	
 	QString newCode;
 	m_pEditor->getText(newCode);
+	debug("Saving %s",newCode.toUtf8().data());
+
 	((KviAliasListViewItem *)m_pLastEditedItem)->setBuffer(newCode);
 	((KviAliasListViewItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 }
@@ -1452,6 +1462,7 @@ void KviAliasEditor::recursiveCommit(KviAliasEditorListViewItem * it)
 	if(it->isAlias())
 	{
 		QString szName = buildFullItemName(it);
+		debug("Commit alias %s",szName.toUtf8().data());
 		//debug("ADDING %s",szName.latin1());
 		// WARNING: On MSVC operator new here is valid ONLY because
 		//          KviKvsScript has a non virtual detructor!
