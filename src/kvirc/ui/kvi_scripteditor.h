@@ -56,8 +56,8 @@ public:
 	virtual void getText(QString &txt);
 	virtual void setInfoText(const QString &text);
 	virtual void setFindText(const QString &text);
-	virtual void setCursorPosition(QPoint);
-	virtual QPoint getCursor();
+	virtual void setCursorPosition(int);
+	virtual int getCursor();
 	virtual void setFindLineeditReadOnly(bool b);
 	virtual bool isModified();
 

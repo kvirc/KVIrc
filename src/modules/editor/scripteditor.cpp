@@ -906,7 +906,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 {
 	if(g_pScriptEditorWindowList->isEmpty())loadOptions();
 	g_pScriptEditorWindowList->append(this);
-	m_lastCursorPos=QPoint(0,0);
+	m_lastCursorPos=0;
 	QGridLayout * g = new QGridLayout(this,2,3,0,0);
 
 	m_pFindLineedit = new QLineEdit(" ",this);
@@ -954,7 +954,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	connect(m_pEditor,SIGNAL(keyPressed()),this,SLOT(updateRowColLabel()));
 	connect(m_pEditor,SIGNAL(textChanged()),this,SLOT(updateRowColLabel()));
 	connect(m_pEditor,SIGNAL(selectionChanged()),this,SLOT(updateRowColLabel()));
-	m_lastCursorPos = QPoint(-1,-1);
+	m_lastCursorPos = 0;
 }
 
 KviScriptEditorImplementation::~KviScriptEditorImplementation()
@@ -1112,11 +1112,14 @@ void KviScriptEditorImplementation::setFindLineeditReadOnly(bool b)
 
 void KviScriptEditorImplementation::updateRowColLabel()
 {
+	if (m_lastCursorPos==m_pEditor->textCursor().position()) return;
 	int iRow=m_pEditor->textCursor().blockNumber();
 	int iCol=m_pEditor->textCursor().columnNumber();
 	QString tmp;
 	KviQString::sprintf(tmp,__tr2qs_ctx("Row: %d Col: %d","editor"),iRow,iCol);
 	m_pRowColLabel->setText(tmp);
+	m_lastCursorPos=m_pEditor->textCursor().position();
+
 /*
 	int iRow,iCol;
 	m_pEditor->getCursorPosition(&iRow,&iCol);
@@ -1128,18 +1131,20 @@ void KviScriptEditorImplementation::updateRowColLabel()
 		m_pRowColLabel->setText(tmp);
 	}
 	*/
+
 }
 
-QPoint KviScriptEditorImplementation::getCursor()
+int KviScriptEditorImplementation::getCursor()
 {
 	return m_lastCursorPos;
 }
 
-void KviScriptEditorImplementation::setCursorPosition(QPoint pos)
+void KviScriptEditorImplementation::setCursorPosition(int pos)
 {
-
+debug("Set cursor position to %d",pos);
+	m_pEditor->textCursor().setPosition(pos,QTextCursor::MoveAnchor);
 	/*
-	m_pEditor->setCursorPosition(pos.x(),pos.y());
+	m_pEditor->setCursorPosition(pos.x(),pos.y());int
 	m_pEditor->setFocus();
 	m_pEditor->ensureCursorVisible();
 	QString tmp;

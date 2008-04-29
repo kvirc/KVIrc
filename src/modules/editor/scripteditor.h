@@ -128,7 +128,7 @@ public:
 protected:
 	KviScriptEditorWidget * m_pEditor;
 	QLabel                * m_pRowColLabel;
-	QPoint                  m_lastCursorPos;
+	int                  m_lastCursorPos;
 public:
 	virtual void setText(const QString &txt);
 	virtual void getText(QString &txt);
@@ -139,8 +139,8 @@ public:
 	virtual void setFocus();
 	virtual bool isModified();
 	void setFindLineeditReadOnly(bool b);
-	void setCursorPosition(QPoint);
-	QPoint getCursor();
+	void setCursorPosition(int);
+	int getCursor();
 	QLineEdit *m_pFindlineedit;
 	QLineEdit * getFindlineedit();
 protected:

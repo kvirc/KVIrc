@@ -104,12 +104,12 @@ public:
 	~KviAliasListViewItem();
 public:
 	QString m_szBuffer;
-	QPoint  m_cPos;
+	int  m_cPos;
 public:
 	const QString & buffer(){ return m_szBuffer; };
-	const QPoint & cursorPosition(){ return m_cPos; };
+	const int & cursorPosition(){ debug ("Returing cPos %d",m_cPos);return m_cPos; };
 	void setBuffer(const QString &szBuffer){ m_szBuffer = szBuffer; };
-	void setCursorPosition(const QPoint &cPos){ m_cPos = cPos; };
+	void setCursorPosition(const int &cPos){ debug("Saving cpos %d",cPos);m_cPos = cPos; };
 };
 
 class KviAliasEditor : public QWidget

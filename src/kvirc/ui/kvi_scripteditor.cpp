@@ -67,7 +67,7 @@ void KviScriptEditor::getText(KviQCString &txt)
 {
 }
 
-void KviScriptEditor::setCursorPosition(QPoint)
+void KviScriptEditor::setCursorPosition(int)
 {
 }
 
@@ -76,9 +76,9 @@ bool KviScriptEditor::isModified()
 	return false;
 }
 
-QPoint KviScriptEditor::getCursor()
+int KviScriptEditor::getCursor()
 {
-	return QPoint(0,0);
+	return 0;
 }
 void KviScriptEditor::getText(QString &txt)
 {

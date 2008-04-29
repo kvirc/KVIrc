@@ -91,7 +91,7 @@ KviAliasListViewItem::KviAliasListViewItem(KviAliasNamespaceListViewItem * pPare
 : KviAliasEditorListViewItem(pParentNamespaceItem,KviAliasEditorListViewItem::Alias,szName)
 {
 	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-	m_cPos=QPoint(0,0);
+	m_cPos=0;
 	
 }
 
@@ -100,7 +100,7 @@ KviAliasListViewItem::KviAliasListViewItem(QTreeWidget * pListView,const QString
 : KviAliasEditorListViewItem(pListView,KviAliasEditorListViewItem::Alias,szName)
 {
 	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-	m_cPos=QPoint(0,0);
+	m_cPos=0;
 
 }
 
@@ -1377,7 +1377,7 @@ void KviAliasEditor::renameItem()
 	}
 	
 	QString szCode;
-	QPoint pntCursor;
+	int pntCursor;
 	if(bAlias)
 	{
 		m_pEditor->getText(szCode);
@@ -1479,6 +1479,8 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *pre
 	m_pNameLabel->setText(szLabelText);
 	m_pRenameButton->setEnabled(true);
 	m_pEditor->setText(((KviAliasListViewItem *)it)->buffer());
+	
+	m_pEditor->setFocus();
 	m_pEditor->setCursorPosition(((KviAliasListViewItem *)it)->cursorPosition());
 	m_pEditor->setEnabled(true);
 }
@@ -1489,7 +1491,7 @@ void KviAliasEditor::recursiveCommit(KviAliasEditorListViewItem * it)
 	if(it->isAlias())
 	{
 		QString szName = buildFullItemName(it);
-		debug("Commit alias %s",szName.toUtf8().data());
+//		debug("Commit alias %s",szName.toUtf8().data());
 		//debug("ADDING %s",szName.latin1());
 		// WARNING: On MSVC operator new here is valid ONLY because
 		//          KviKvsScript has a non virtual detructor!

@@ -128,6 +128,7 @@ public:
 	KviPointerList<QString> * completeCommandAllocateResult(const QString &szCommandBegin)
 	{
 		KviPointerList<QString> *p=new KviPointerList<QString>;
+		p->setAutoDelete(true);
 		completeCommand(szCommandBegin,p);
 		return p;
 	}
@@ -140,12 +141,13 @@ public:
 	}
 	void freeCompletionResult(KviPointerList<QString> * l)
 	{
-		if (!l) return;
+	/*	if (!l) return;
 		for (int i=0;i<l->count();i++)
 		{
 			delete l->at(i);
 		}
-		delete l;
+	*/
+	delete l;
 		
 	}
 

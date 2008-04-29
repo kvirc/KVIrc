@@ -68,7 +68,7 @@ KviTextIconWindow::~KviTextIconWindow()
 		killTimer(m_iTimerId);
 		m_iTimerId = -1;
 	}
-//	killTimers();
+
 //	if(m_pOwner)m_pOwner->setFocus();
 }
 
