@@ -24,6 +24,39 @@
 
 #define __KVILIB__
 #include "kvi_tal_grid.h"
+ 
+#include <QWidget>
+#include <QLayout>
+#include <QChildEvent>
+
+ 
+KviTalGrid::KviTalGrid(int n,Qt::Orientation orient,QWidget * pParent)
+: QWidget(pParent)
+{
+	if (orient==Qt::Horizontal)
+		m_pLayout=new QHBoxLayout(this);
+	else m_pLayout= new QVBoxLayout(this);
+	m_pLayout->setSpacing(0);
+	m_pLayout->setMargin(0);
+	setLayout(m_pLayout);
+}
+void KviTalGrid::childEvent(QChildEvent * e)
+{
+	if(!e->child()->isWidgetType()) return;
+	if(e->child()->parent() != this) return;
+
+	switch(e->type())
+	{
+		case QEvent::ChildAdded:
+			m_pLayout->addWidget((QWidget *)(e->child()));
+			break;
+		case QEvent::ChildRemoved:
+			m_pLayout->removeWidget((QWidget *)(e->child()));
+			break;
+		default:
+			break;
+	}
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_grid.moc"

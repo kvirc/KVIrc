@@ -26,17 +26,22 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+ 
 
-#include <q3grid.h>
-/* FIXME: #include <Q3Grid> */
+ 
+#include <QWidget>
+#include <QLayout>
 
-class KVILIB_API KviTalGrid : public Q3Grid
+class KVILIB_API KviTalGrid : public QWidget
 {
 	Q_OBJECT
 public:
-	KviTalGrid(int n,Qt::Orientation orient,QWidget * pParent = 0)
-	: Q3Grid(n,orient,pParent) {};
-	~KviTalGrid() {};
+	KviTalGrid(int n,Qt::Orientation orient,QWidget * pParent = 0);
+	~KviTalGrid(){};
+protected:
+virtual void childEvent(QChildEvent * e);
+QLayout *m_pLayout;
 };
-
+ 
 #endif // _KVI_TAL_GRID_H_
+ 
