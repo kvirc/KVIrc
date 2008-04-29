@@ -31,12 +31,10 @@
 #include "kvi_userlistview.h"
 #include "kvi_themedlabel.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_tal_grid.h"
 
 class KviConsole;
 class KviConfig;
 class KviWindowToolPageButton;
-class QSplitter;
 
 #define KVI_QUERY_FLAG_DEAD 1
 

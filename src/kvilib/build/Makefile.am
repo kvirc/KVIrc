@@ -80,7 +80,6 @@ libkvilib4_la_SOURCES = \
 	../system/kvi_time.cpp \
 	../tal/kvi_tal_application.cpp \
 	../tal/kvi_tal_filedialog.cpp \
-	../tal/kvi_tal_grid.cpp \
 	../tal/kvi_tal_groupbox.cpp \
 	../tal/kvi_tal_hbox.cpp \
 	../tal/kvi_tal_iconview.cpp \
@@ -181,7 +180,6 @@ headers_HEADERS = \
 	../tal/kvi_tal_filedialog.h \
 	../tal/kvi_tal_filedialog_kde.h \
 	../tal/kvi_tal_filedialog_qt.h \
-	../tal/kvi_tal_grid.h \
 	../tal/kvi_tal_groupbox.h \
 	../tal/kvi_tal_hbox.h \
 	../tal/kvi_tal_iconview.h \
@@ -251,7 +249,6 @@ headers_HEADERS = \
 ../tal/kvi_tal_menubar.cpp: ../tal/kvi_tal_menubar_qt.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_kde.moc
 ../tal/kvi_tal_filedialog.cpp: ../tal/kvi_tal_filedialog_qt.moc
-../tal/kvi_tal_grid.cpp: ../tal/kvi_tal_grid.moc
 ../tal/kvi_tal_groupbox.cpp: ../tal/kvi_tal_groupbox.moc
 ../tal/kvi_tal_hbox.cpp: ../tal/kvi_tal_hbox.moc
 ../tal/kvi_tal_vbox.cpp: ../tal/kvi_tal_vbox.moc

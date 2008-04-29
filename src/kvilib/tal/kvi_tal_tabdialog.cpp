@@ -29,7 +29,6 @@
 #include <QDialog>
 #include <QTabWidget>
 #include <QGridLayout>
-#include <QTabWidget>
 #include <QPushButton>
 
 KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal)

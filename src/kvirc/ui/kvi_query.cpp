@@ -78,11 +78,12 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	// The button box on the right
 	//KviTalHBox * box = new KviTalHBox(m_pTopSplitter,"button_box");
-	m_pButtonGrid= (QFrame*) new KviTalGrid(4,Qt::Horizontal,m_pButtonBox);
+	m_pButtonGrid= (QFrame*) new KviTalHBox(m_pButtonBox);
 	
 	createTextEncodingButton(m_pButtonGrid);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
@@ -151,8 +152,8 @@ QString KviQuery::getInfoLabelTipText()
 		{
 		
 			txt = "<html>" \
-					"<body>" \
-						"<table width=\"100%\">";
+				"<body>" \
+				"<table width=\"100%\">";
 		
 			txt +=          START_TABLE_BOLD_ROW;
 			txt += __tr2qs("Query target:");
@@ -170,7 +171,7 @@ QString KviQuery::getInfoLabelTipText()
 			
 			txt += tmp;
 			
-			txt +=          "</td></tr>";
+			txt += "</td></tr>";
 			
 			if(e->hasServer())
 			{

@@ -6,11 +6,7 @@ os simply they're still the old unchecked kvirc3 files.
 PLEASE KEEP THIS FILE UPDATED!
 
 src/kvilib
-src/kvilib/core
-	kvi_qcstring.h
-	kvi_valuelist.h
 src/kvilib/ext
-	kvi_accel.h
 	kvi_crypt.cpp
 	kvi_crypt.h
 	kvi_dcophelper.cpp
@@ -26,8 +22,6 @@ src/kvilib/system
 	kvi_thread.cpp
 	kvi_thread.h
 src/kvilib/tal
-	kvi_tal_grid.cpp
-	kvi_tal_grid.h
 	kvi_tal_groupbox.h
 	kvi_tal_iconview.cpp
 	kvi_tal_iconview.h
