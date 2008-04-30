@@ -123,7 +123,7 @@ public:
 	KviTalIconViewItemDelegate(QTableWidget * pTableWidget)
 		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget) {};
 	~KviTalIconViewItemDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+//	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	 void drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const;
 	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 	};

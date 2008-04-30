@@ -30,6 +30,7 @@
 #include <QPainter>
 #include <QTextDocument>
 #include <QAbstractTextDocumentLayout>
+#include <QStyle>
 
 
 void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
@@ -39,38 +40,72 @@ void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleO
 	doc.setHtml( text );
 	QAbstractTextDocumentLayout::PaintContext context;
     doc.setPageSize(rect.size());
-    painter->translate(rect.x(),rect.y()+5);
+    painter->translate(rect.x(),rect.y());
 	doc.documentLayout()->draw(painter, context);
     painter->restore();
 }
 
 void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-/*	debug ("INTO DELEGATE col %d",index.column());
+	QString text="<center>";
+	text+=index.data(Qt::DisplayRole).toString();
+	text +="</center>";
 	painter->save();
 	QPixmap pixmap;
     QRect decorationRect;
     QVariant value = index.data(Qt::DecorationRole);
-	value.convert(QVariant::Pixmap);
-	QPixmap *pix=(QPixmap*)value.data();
-	painter->drawPixmap(int(1),int(1),*pix);
-	painter->restore();
-	*/
-	QItemDelegate::paint(painter,option,index);
-}
+	QStyle::State state=option.state;
+	QRect rect=option.rect;
 
+	
+	int iconx=option.rect.x()+(option.rect.width()/2);
+	iconx-=8;
+	QIcon ico=QIcon(value.value<QIcon>());
+	QRect rect2=QRect(QPoint(iconx,option.rect.y()),QSize(16,16));
+	painter->drawPixmap(rect2,ico.pixmap());
+
+
+	if (option.state & QStyle::State_Selected)
+	{
+		QPalette pal=option.palette;
+		QBrush brush=pal.highlight();
+		QColor col=brush.color();
+		col.setAlpha(127);
+		brush.setColor(col);
+		painter->fillRect(rect2,brush);
+	}
+
+	painter->restore();
+	painter->save();
+	
+	QTextDocument doc;
+	doc.setHtml( text );
+	painter->translate(option.rect.x()+5,option.rect.y()+16);
+	doc.setTextWidth(option.rect.width()-10);
+	doc.drawContents(painter);
+	  
+	if (option.state & QStyle::State_Selected)
+	{
+		QPalette pal=option.palette;
+		QBrush brush=pal.highlight();
+		QColor col=brush.color();
+		col.setAlpha(127);
+		brush.setColor(col);
+		QRect textRect=QRect(QPoint(0,0),QSize(option.rect.width()-10,option.rect.height()-16));
+		painter->fillRect(textRect,brush);
+	}
+	painter->restore();
+}
+/*
 QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	// FIXME: maybe we need an accurate value?
-	return QSize(70,40);
-	
+		
 }
-
+*/
 
 KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 : QTableWidget(pParent)
 {
-//	setWindowFlags(f);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	horizontalHeader()->hide();
 	verticalHeader()->hide();

@@ -47,7 +47,7 @@ KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 	m_iTimerId = -1;
 	m_pParent=parent;
 	m_pItem=0;
-	setColumnCount(3);
+	setColumnCount(4);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setRowCount(10);
 	setWordWrap(true);
@@ -87,14 +87,18 @@ void KviTextIconWindow::fill()
 		if(pix){
 			setItem(row,col,new KviTalIconViewItem(it.currentKey(),*pix));
 			col++;
-			if (col==3){
+			if (col==4){
 				col=0;
 				row++;
 			}
 		}
 		++it;
 	}
-	resizeColumnsToContents();
+	verticalHeader()->setResizeMode(QHeaderView::Fixed);
+	verticalHeader()->setDefaultSectionSize(45);
+	horizontalHeader()->setResizeMode(QHeaderView::Fixed);
+	horizontalHeader()->setDefaultSectionSize(45);
+	//resizeColumnsToContents();
 	sortItems ( 0, Qt::AscendingOrder );
 	setCurrentItem(0);
 }
