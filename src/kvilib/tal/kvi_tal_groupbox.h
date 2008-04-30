@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 
-#include <q3groupbox.h>
+/*
 
 class KVILIB_API KviTalGroupBox : public Q3GroupBox
 {
@@ -43,5 +43,47 @@ public:
 	: Q3GroupBox(strips,orientation,title,parent) {};
 	~KviTalGroupBox() {};
 };
+*/
+#include <QGroupBox>
+#include <QLayout>
 
+class KVILIB_API KviTalGroupBox : public QGroupBox
+{
+	Q_OBJECT
+public:
+	KviTalGroupBox(QWidget * pParent,char* name=0);
+	~KviTalGroupBox();
+	KviTalGroupBox(QWidget * pParent = 0)
+	: QGroupBox (pParent){m_pLayout=0;};
+	KviTalGroupBox(const QString & title,QWidget * pParent = 0)
+	: QGroupBox (title,pParent){m_pLayout=0;};
+	KviTalGroupBox(int strips,Qt::Orientation orientation,QWidget * parent = 0);
+	KviTalGroupBox(int strips,Qt::Orientation orientation,const QString & title,QWidget * parent = 0);
+	void setInsideMargin(int margin){if (m_pLayout) m_pLayout->setMargin(margin);};
+	void setInsideSpacing(int spacing){if (m_pLayout) m_pLayout->setSpacing(spacing);};
+	int insideMargin(){if (m_pLayout)return m_pLayout->margin();return 0;};
+	int insideSpacing(){if (m_pLayout)return m_pLayout->spacing();return 0;};
+	void addSpace(int space)
+	{
+		if (m_pLayout){
+			if (mOrientation==Qt::Vertical)
+				((QHBoxLayout*)m_pLayout)->addSpacing(space);
+			else 
+				((QVBoxLayout*)m_pLayout)->addSpacing(space);
+		}
+	};
+
+	/*
+	void setStretchFactor(QWidget *,int);
+	void setSpacing(int);
+	void setMargin(int);
+	void setAlignment(Qt::Alignment);
+	*/
+
+protected:
+	Qt::Orientation mOrientation;
+	virtual void childEvent(QChildEvent * e);
+private:
+	QLayout * m_pLayout;
+};
 #endif // _KVI_TAL_GROUPBOX_H_

@@ -25,6 +25,56 @@
 #define __KVILIB__
 #include "kvi_tal_groupbox.h"
 
+#include <QChildEvent>
+#include <QGroupBox>
+
+KviTalGroupBox::KviTalGroupBox(QWidget * pParent,char* name)
+: QGroupBox (pParent)
+{
+	setObjectName(name);
+	m_pLayout = new QHBoxLayout(this);
+	setLayout(m_pLayout);
+}
+KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,QWidget * pParent)
+: QGroupBox (pParent)
+{
+	if (orientation==Qt::Vertical)
+	m_pLayout = new QHBoxLayout(this);
+	else m_pLayout = new QVBoxLayout(this);
+	setLayout(m_pLayout);
+}
+KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,const QString & title,QWidget * pParent)
+: QGroupBox (title,pParent)
+{
+	mOrientation=orientation;
+	if (orientation==Qt::Vertical)
+	m_pLayout = new QHBoxLayout(this);
+	else m_pLayout = new QVBoxLayout(this);
+	setLayout(m_pLayout);
+}
+KviTalGroupBox::~KviTalGroupBox()
+{
+}
+
+void KviTalGroupBox::childEvent(QChildEvent * e)
+{
+	if(!e->child()->isWidgetType()) return;
+	if(e->child()->parent() != this) return;
+
+	switch(e->type())
+	{
+		case QEvent::ChildAdded:
+			m_pLayout->addWidget((QWidget *)(e->child()));
+			break;
+		case QEvent::ChildRemoved:
+			m_pLayout->removeWidget((QWidget *)(e->child()));
+			break;
+		default:
+			break;
+	}
+}
+
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_groupbox.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
