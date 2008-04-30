@@ -433,6 +433,10 @@ KviOptionsWidgetInstanceEntry * KviOptionsInstanceManager::findInstanceEntry(con
 	return findInstanceEntry(clName,m_pInstanceTree);
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "m_instances.moc"
+#endif
+
 EOF
 ######################################################################################################
 
