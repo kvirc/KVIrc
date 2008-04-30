@@ -366,7 +366,7 @@ void KviIconWidget::init()
 
 	int rows = KVI_NUM_SMALL_ICONS / 10;
 	if((rows * 10) < KVI_NUM_SMALL_ICONS)rows++;
-	QGridLayout * g = new QGridLayout(this,rows + 1,11,0,2);
+	QGridLayout * g = new QGridLayout(this);
 	int i;
 	for(i = 0;i < 10;i++)
 	{
