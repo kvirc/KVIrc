@@ -84,10 +84,6 @@ const int align_cod[] = {
 		Sets the width of the empty space between each of the items in the group to m pixels.
 		!fn: <integer> $insideSpacing()
 		Returns the width of the empty space between each of the items in the group.
-		!fn: $setColumns(<columns:uint>)
-		Sets the number of columns or rows (depending of the orientation) in the group box.
-		!fn: <integer> $columns()
-		Returns the number of columns or rows in the groupbox.
 		!fn: $addSpace()
 		Adds an empty cell at the next free position.
 		!fn: <string> $alignment()
@@ -96,9 +92,6 @@ const int align_cod[] = {
 		Set the alignment of the groupbox;  Valid values are Left,Right,HCenter.
 		!fn: $setOrientation<orientation:string>
 		Sets the group box's orientation. Valid values are: Horizontal, Vertical.
-		!fn: $setColumnLayout(<columns:integer>,<orientation:string>)
-		Enables the automatic layout management. The children are arranged in n columns with the specified orientation.[br]
-		Valid values for <orientation> are: Horizontal, Vertical.
 	@examples:
 		[example]
 		|-Start:[br]
@@ -163,15 +156,14 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_groupbox,"groupbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"insideMargin", functionInsideMargin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setInsideSpacing", functionSetInsideSpacing)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"insideSpacing", functionInsideSpacing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setColumns", functionSetColumns)
-	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"columns", functionColumns)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"addSpace", functionAddSpace)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"alignment", functionAlignment)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setAlignment", functionSetAlignment)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setOrientation", functionSetOrientation)
+	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setLayoutOrientation", functionSetOrientation)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"isChecked", functionIsChecked)
 	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setChecked", functionSetChecked)
-	KVSO_REGISTER_HANDLER(KviKvsObject_groupbox,"setColumnLayout",functionSetColumnLayout)
+
 KVSO_END_REGISTERCLASS(KviKvsObject_groupbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_groupbox,KviKvsObject_widget)
@@ -279,24 +271,7 @@ bool KviKvsObject_groupbox::functionInsideSpacing(KviKvsObjectFunctionCall *c)
 	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
-// FIXME
 
-bool KviKvsObject_groupbox::functionSetColumns(KviKvsObjectFunctionCall *c)
-{
-	kvs_uint_t uColums;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("colums",KVS_PT_UNSIGNEDINTEGER,0,uColums)
-	KVSO_PARAMETERS_END(c)
-//    if (widget()) ((KviTalGroupBox *)widget())->setColumns(uColums);
-	return true;
-}
-// FIXME
-
-bool KviKvsObject_groupbox::functionColumns(KviKvsObjectFunctionCall *c)
-{
-//	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->columns());
-	return true;
-}
 bool KviKvsObject_groupbox::functionAddSpace(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t iSpace;
@@ -350,32 +325,13 @@ bool KviKvsObject_groupbox::functionSetOrientation(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szMode, "Horizontal"))
-		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
+		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
-		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
+		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
 	else c->warning( __tr2qs("Unknown orientation: "));
 
 	return true;
 }
-// FIXME
 
-bool KviKvsObject_groupbox::functionSetColumnLayout(KviKvsObjectFunctionCall *c)
-{
-	QString szMode;
-	kvs_uint_t uCol;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("columns",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("orientation",KVS_PT_STRING,0,szMode)
-	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
-//	if(szMode=="Horizontal")
-/*		((KviTalGroupBox *)widget())->setColumnLayout(uCol,Qt::Horizontal);
-	else
-		if(szMode=="Vertical")
-			((KviTalGroupBox *)widget())->setColumnLayout(uCol,Qt::Vertical);
-		else c->warning( __tr2qs("Unknown orientation: "));
-*/
-		return true;
-}
 

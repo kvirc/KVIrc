@@ -49,15 +49,12 @@ protected:
 	bool functionInsideMargin(KviKvsObjectFunctionCall *c);
 	bool functionSetInsideSpacing(KviKvsObjectFunctionCall *c);
 	bool functionInsideSpacing(KviKvsObjectFunctionCall *c);
-	bool functionSetColumns(KviKvsObjectFunctionCall *c);
-	bool functionColumns(KviKvsObjectFunctionCall *c);
 	bool functionAddSpace(KviKvsObjectFunctionCall *c);
 	bool functionAlignment(KviKvsObjectFunctionCall *c);
 	bool functionSetAlignment(KviKvsObjectFunctionCall *c);
 	bool functionSetOrientation(KviKvsObjectFunctionCall *c);
 	bool functionIsChecked(KviKvsObjectFunctionCall *c);
 	bool functionSetChecked(KviKvsObjectFunctionCall *c);
-	bool functionSetColumnLayout(KviKvsObjectFunctionCall *c);
 
 };
 #endif	//!_CLASS_GROUPBOX_H_
