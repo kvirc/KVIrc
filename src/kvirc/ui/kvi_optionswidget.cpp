@@ -111,7 +111,7 @@ void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIcon &iconS
 void KviOptionsWidget::addWidgetToLayout(QWidget * w,int x1,int y1,int x2,int y2)
 {
 	if((x1 == x2) && (y1 == y2))layout()->addWidget(w,y1,x1);
-	else layout()->addMultiCellWidget(w,y1,y2,x1,x2);
+	else layout()->addWidget(w, y1, x1, (y2 < 0) ? -1 : y2 - y1 + 1, (x2 < 0) ? -1 : x2 - x1 + 1);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
