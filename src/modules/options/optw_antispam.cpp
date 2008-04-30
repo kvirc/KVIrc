@@ -33,7 +33,7 @@ KviAntispamOptionsWidget::KviAntispamOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam For","options"));
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam For","options"));
 	m_b1 = addBoolSelector(g,__tr2qs_ctx("Private messages","options"),KviOption_boolUseAntiSpamOnPrivmsg);
 	connect(m_b1,SIGNAL(toggled(bool)),this,SLOT(reenableStuff(bool)));
 	m_b2 = addBoolSelector(g,__tr2qs_ctx("Private notices","options"),KviOption_boolUseAntiSpamOnNotice);

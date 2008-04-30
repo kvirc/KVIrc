@@ -98,7 +98,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	vbox->setStretchFactor(lll,100);
 
 
-	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),this);
+	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),this);
 	//QGridLayout * gl = new QGridLayout(gbox->layout());
 	//gl->setMargin(2);
 	//gl->setSpacing(4);

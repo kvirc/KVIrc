@@ -36,7 +36,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	// AVATAR
 
 	// 1st Box
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling in userlist","options"));
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Scaling in userlist","options"));
 	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images in userlist (recommended)","options"),KviOption_boolScaleAvatars);
 	KviTalToolTip::add(b,__tr2qs_ctx("<center>This option will force KVIrc to scale avatars" \
 			" shown in the userlist.<br>" \
@@ -51,7 +51,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	//2nd
-	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and in user tooltips)","options"));
+	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and in user tooltips)","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images on image load","options"),KviOption_boolScaleAvatarsOnLoad);
 	
 	u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintScaleAvatarsOnLoadWidth,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
@@ -60,7 +60,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	// 2st Box
-	KviTalGroupBox *gs = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("Request CTCP","options"));
+	KviTalGroupBox *gs = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Request CTCP","options"));
 	KviBoolSelector * bs = addBoolSelector(g,__tr2qs_ctx("Request missing avatars","options"),KviOption_boolRequestMissingAvatars);
 	KviUIntSelector * us = addUIntSelector(g,__tr2qs_ctx("Maximum requested file size:","options"),KviOption_uintMaximumRequestedAvatarSize,0,1048576,102400,KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars));
 

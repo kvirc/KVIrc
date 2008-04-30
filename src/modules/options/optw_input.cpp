@@ -139,7 +139,7 @@ KviInputFeaturesOptionsWidget::KviInputFeaturesOptionsWidget(QWidget * parent)
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Warp cursor at the end of line when browsing history","options"),KviOption_boolInputHistoryCursorAtEnd);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable the input history window and it's log memory.","options"),KviOption_boolDisableInputHistory); //G&N 2005
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Hide input toolbuttons by default","options"),KviOption_boolHideInputToolButtons);
-	KviTalGroupBox * g = addGroupBox(0,3,0,3,1,Qt::Horizontal,__tr2qs_ctx("Nick completion","options"));
+	KviTalGroupBox * g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Nick completion","options"));
 	addBoolSelector(g,__tr2qs_ctx("Use bash-like nick completion","options"),KviOption_boolBashLikeNickCompletion);
 	addStringSelector(g,__tr2qs_ctx("Nick completion postfix string","options"),KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g,__tr2qs_ctx("Use the completion postfix string for the first word only","options"),KviOption_boolUseNickCompletionPostfixForFirstWordOnly);

@@ -279,6 +279,8 @@ bool KviKvsObject_groupbox::functionInsideSpacing(KviKvsObjectFunctionCall *c)
 	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
+// FIXME
+
 bool KviKvsObject_groupbox::functionSetColumns(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uColums;
@@ -288,6 +290,8 @@ bool KviKvsObject_groupbox::functionSetColumns(KviKvsObjectFunctionCall *c)
 //    if (widget()) ((KviTalGroupBox *)widget())->setColumns(uColums);
 	return true;
 }
+// FIXME
+
 bool KviKvsObject_groupbox::functionColumns(KviKvsObjectFunctionCall *c)
 {
 //	if (widget()) c->returnValue()->setInteger(((KviTalGroupBox *)widget())->columns());
@@ -321,6 +325,7 @@ bool KviKvsObject_groupbox::functionSetAlignment(KviKvsObjectFunctionCall *c)
 	c->warning(__tr2qs("Unknown alignment"));
 	return true;
 }
+
 bool KviKvsObject_groupbox::functionAlignment(KviKvsObjectFunctionCall *c)
 {
 	int mode = ((KviTalGroupBox *)widget())->alignment();
@@ -344,15 +349,16 @@ bool KviKvsObject_groupbox::functionSetOrientation(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("orientation",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-/*	if(KviQString::equalCI(szMode, "Horizontal"))
+	if(KviQString::equalCI(szMode, "Horizontal"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
 	else c->warning( __tr2qs("Unknown orientation: "));
-*/
+
 	return true;
 }
+// FIXME
 
 bool KviKvsObject_groupbox::functionSetColumnLayout(KviKvsObjectFunctionCall *c)
 {
@@ -363,7 +369,7 @@ bool KviKvsObject_groupbox::functionSetColumnLayout(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("orientation",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	if(szMode=="Horizontal")
+//	if(szMode=="Horizontal")
 /*		((KviTalGroupBox *)widget())->setColumnLayout(uCol,Qt::Horizontal);
 	else
 		if(szMode=="Vertical")

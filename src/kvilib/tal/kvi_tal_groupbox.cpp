@@ -35,7 +35,7 @@ KviTalGroupBox::KviTalGroupBox(QWidget * pParent,char* name)
 	m_pLayout = new QHBoxLayout(this);
 	setLayout(m_pLayout);
 }
-KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,QWidget * pParent)
+KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation,QWidget * pParent)
 : QGroupBox (pParent)
 {
 	if (orientation==Qt::Vertical)
@@ -43,7 +43,7 @@ KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,QWidget * 
 	else m_pLayout = new QVBoxLayout(this);
 	setLayout(m_pLayout);
 }
-KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,const QString & title,QWidget * pParent)
+KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation,const QString & title,QWidget * pParent)
 : QGroupBox (title,pParent)
 {
 	mOrientation=orientation;
@@ -52,9 +52,8 @@ KviTalGroupBox::KviTalGroupBox(int strips,Qt::Orientation orientation,const QStr
 	else m_pLayout = new QVBoxLayout(this);
 	setLayout(m_pLayout);
 }
-KviTalGroupBox::~KviTalGroupBox()
-{
-}
+
+
 
 void KviTalGroupBox::childEvent(QChildEvent * e)
 {
@@ -73,7 +72,24 @@ void KviTalGroupBox::childEvent(QChildEvent * e)
 			break;
 	}
 }
-
+void KviTalGroupBox::addSpace(int space)
+{
+	if (m_pLayout){
+		if (mOrientation==Qt::Vertical)
+			((QHBoxLayout*)m_pLayout)->addSpacing(space);
+		else 
+			((QVBoxLayout*)m_pLayout)->addSpacing(space);
+	}
+}
+void KviTalGroupBox::setOrientation(Qt::Orientation orientation)
+{
+	if (m_pLayout) delete m_pLayout;
+	mOrientation=orientation;
+	if (orientation==Qt::Vertical)
+	m_pLayout = new QHBoxLayout(this);
+	else m_pLayout = new QVBoxLayout(this);
+	setLayout(m_pLayout);
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_groupbox.moc"

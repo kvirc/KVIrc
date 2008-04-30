@@ -96,7 +96,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 {
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
 
  	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
 	mergeTip(b,
@@ -109,7 +109,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 			"It might be a good idea to also enable the " \
 			"\"Rejoin channel\" option.</center>","options"));
 
-	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
+	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Keep channel open","options"),KviOption_boolKeepChannelOpenOnPart);
 	mergeTip(b,
@@ -162,7 +162,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	}
 	m_pBanTypeCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
-	KviTalGroupBox * g = addGroupBox(0,2,4,2,1,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban list","options"),KviOption_boolDisableBanListRequestOnJoin);
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
@@ -174,7 +174,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 			"the channel away list in sync. Use this option to disable this feature (and to save " \
 			"your IRC bandwidth.</center>","options"));
 
-	g = addGroupBox(0,4,4,4,1,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	g = addGroupBox(0,4,4,4,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Echo channel topic","options"),KviOption_boolEchoNumericTopic);
 	addBoolSelector(g,__tr2qs_ctx("Show channel sync time","options"),KviOption_boolShowChannelSyncTime);
 

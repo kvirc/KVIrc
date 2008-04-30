@@ -35,7 +35,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
+	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
 	KviBoolSelector *b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window creation " \

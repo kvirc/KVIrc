@@ -231,7 +231,7 @@ KviSetupWizard::KviSetupWizard()
 
 	QString tmp;
 
-	m_pDirButtonGroup = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
+	m_pDirButtonGroup = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
 	m_pDirUsePrev = new QRadioButton(__tr2qs("Use settings folder from previous installation"),m_pDirButtonGroup);
 	connect(m_pDirUsePrev,SIGNAL(clicked()),this,SLOT(oldDirClicked()));
 	
@@ -333,7 +333,7 @@ KviSetupWizard::KviSetupWizard()
 	if(nick == "root")nick = "newbie";
 //m_pIdentity->m_pVBox
 //__tr2qs("Basic Properties")
-	KviTalGroupBox * gbox = new KviTalGroupBox(1,Qt::Horizontal,QString(),m_pIdentity->m_pVBox);
+	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,QString(),m_pIdentity->m_pVBox);
 
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
@@ -346,7 +346,7 @@ KviSetupWizard::KviSetupWizard()
 	QString szCenterEnd("</center>");
 	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo + szCenterEnd;
 
-	gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
+	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Profile"),m_pIdentity->m_pVBox);
 
 	m_pRealNameSelector = new KviStringSelector(gbox,__tr2qs("Real name:"),&(KVI_OPTION_STRING(KviOption_stringRealname)),true);
 	m_pRealNameSelector->setMinimumLabelWidth(120);

@@ -67,7 +67,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
 	
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Use user-defined address or network interface","options"),KviOption_boolDccListenOnSpecifiedInterfaceByDefault);
 
@@ -167,18 +167,18 @@ KviDccSendGeneralOptionsWidget::KviDccSendGeneralOptionsWidget(QWidget * parent)
 
 	KviBoolSelector * b;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Incoming File","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Incoming File","options"));
 	KviBoolSelector * b2 = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccSend);
 	KviBoolSelector * b3 = addBoolSelector(g,__tr2qs_ctx("Open transfer window as minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccSendWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend));
 	KviBoolSelector * b4 = addBoolSelector(g,__tr2qs_ctx("Automatically resume when auto-accepted","options"),KviOption_boolAutoResumeDccSendWhenAutoAccepted,KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend));
 
-	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Save Location","options"));
+	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Save Location","options"));
 	addDirectorySelector(g,__tr2qs_ctx("Download folder:","options"),KviOption_stringIncomingPath);
 	addBoolSelector(g,__tr2qs_ctx("Sort saved files by nicknames (create subfolders)","options"),KviOption_boolSortReceivedByDccFilesByNicks);
 	addBoolSelector(g,__tr2qs_ctx("Guess save path from media type","options"),KviOption_boolUseIncomingDccMediaTypeSavePath);
 
 
-	g = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("On Download Completion","options"));
+	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("On Download Completion","options"));
 	addBoolSelector(g,__tr2qs_ctx("Notify completion in console","options"),KviOption_boolNotifyDccSendSuccessInConsole);
 	addBoolSelector(g,__tr2qs_ctx("Notify completion in notifier","options"),KviOption_boolNotifyDccSendSuccessInNotifier);
 	b = addBoolSelector(g,__tr2qs_ctx("Automatically clear transfer","options"),KviOption_boolAutoCloseDccSendOnSuccess);
@@ -205,7 +205,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 {
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Send ACK for byte 0","options"),KviOption_boolSendZeroAckInDccRecv);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to send a zero-byte acknowledge to kick-start " \
@@ -222,7 +222,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 		__tr2qs_ctx("<center>This option causes KVIrc to replace spaces with underscores in filenames " \
 				"for all the outgoing file transfers. This will fix filename handling with some buggy clients (e.g. some versions of mIRC).","options"));
 
-	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Limits","options"));
+	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Limits","options"));
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to","options"),KviOption_boolLimitDccSendSpeed);
@@ -241,7 +241,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 	mergeTip(u,__tr2qs_ctx("<center>This is the maximum number of concurrent DCC transfers. " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
-	g = addGroupBox(0,2,0,2,1,Qt::Horizontal,__tr2qs_ctx("Tweaks","options"));
+	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Tweaks","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Use fast send (send ahead)","options"),KviOption_boolUseFastDccSend);
 	mergeTip(b,
@@ -298,7 +298,7 @@ KviDccChatOptionsWidget::KviDccChatOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
 	b = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
 
@@ -319,7 +319,7 @@ KviDccVoiceOptionsWidget::KviDccVoiceOptionsWidget(QWidget *p):KviOptionsWidget(
 	createLayout();
 
 	KviBoolSelector * b1 = addBoolSelector(0,0,0,0,__tr2qs_ctx("Open all minimized","options"),KviOption_boolCreateMinimizedDccVoice);
-	KviTalGroupBox * g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));
+	KviTalGroupBox * g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccVoice);
 
 	b = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice));

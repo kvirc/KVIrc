@@ -653,9 +653,9 @@ QFrame * KviOptionsWidget::addSeparator(int x1,int y1,int x2,int y2)
 	return f;
 }
 
-KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,int nStrips,Qt::Orientation o,const QString &txt,bool bEnabled)
+KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1,int y1,int x2,int y2,Qt::Orientation o,const QString &txt,bool bEnabled)
 {
-	KviTalGroupBox * g = new KviTalGroupBox(nStrips,o,txt,this);
+	KviTalGroupBox * g = new KviTalGroupBox(o,txt,this);
 	g->setEnabled(bEnabled);
 	addWidgetToLayout(g,x1,y1,x2,y2);
 	return g;

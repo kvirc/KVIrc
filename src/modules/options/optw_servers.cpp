@@ -120,7 +120,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
 
-	KviTalGroupBox *gbox = new KviTalGroupBox(2,Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
+	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addMultiCellWidget(gbox,0,0,0,1);
 
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
@@ -444,7 +444,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
 
-	KviTalGroupBox *gbox = new KviTalGroupBox(2,Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
+	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addWidget(gbox,0,0);
 
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
@@ -476,7 +476,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
 			"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
 			"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
-	gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
+	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 	
 	m_pUseDefaultInitUMode = new KviStyledCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
@@ -1036,7 +1036,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
 	
-	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,3,Qt::Horizontal,__tr2qs_ctx("Active Configuration","options"));
+	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,Qt::Horizontal,__tr2qs_ctx("Active Configuration","options"));
 	m_pSrvNetLabel = new QLabel(__tr2qs_ctx("Server:","options"),gbox);
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
