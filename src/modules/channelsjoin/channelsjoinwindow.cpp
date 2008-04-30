@@ -62,7 +62,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 
-	QGridLayout * g = new QGridLayout(this,4,2,4,8);
+	QGridLayout * g = new QGridLayout(this);
 	
 	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs("Channel"));

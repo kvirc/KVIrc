@@ -57,7 +57,7 @@ KviProxyOptionsListViewItem::~KviProxyOptionsListViewItem()
 KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"proxy_options_widget")
 {
-	createLayout(3,2);
+	createLayout();
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
 

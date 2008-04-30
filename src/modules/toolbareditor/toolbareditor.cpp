@@ -125,7 +125,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	setWindowTitle(__tr2qs("ToolBar Properties"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 	
-	QGridLayout * g = new QGridLayout(this,5,6,5,3);
+	QGridLayout * g = new QGridLayout(this);
 	
 	QLabel * l = new QLabel(szText,this);
 	g->addMultiCellWidget(l,0,0,0,5);
@@ -152,7 +152,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	iconSelected(szIconId);
 
 	m_pAdvanced = new QWidget(this);
-	QGridLayout * ag = new QGridLayout(m_pAdvanced,1,2,0,3);
+	QGridLayout * ag = new QGridLayout(m_pAdvanced);
 
 	l = new QLabel(__tr2qs("Id") + ":",m_pAdvanced);
 	l->setMinimumWidth(100);
@@ -282,7 +282,7 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 
 	m_pInstance = this;
 
-	QGridLayout * g = new QGridLayout(this,8,2,4,5);
+	QGridLayout * g = new QGridLayout(this);
 	m_pDrawer = new KviActionDrawer(this);
 	g->addMultiCellWidget(m_pDrawer,0,6,0,0);
 

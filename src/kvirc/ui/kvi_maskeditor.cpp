@@ -71,7 +71,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	
 	setWindowTitle(__tr2qs("Mask editor - KVirc"));
 	
-	QGridLayout * g = new QGridLayout(this,2,3,5,5);
+	QGridLayout * g = new QGridLayout(this);
 	
 	QLabel * tl = new QLabel(__tr2qs("New mask must match an *!*@* expression"),this);
 	g->addMultiCellWidget(tl,0,0,0,3);
@@ -139,7 +139,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 
 	setFocusPolicy(Qt::ClickFocus);
 
-	QGridLayout *g = new QGridLayout(this,4,2,2,2);
+	QGridLayout *g = new QGridLayout(this);
 
 	m_cFlag = flag;
 

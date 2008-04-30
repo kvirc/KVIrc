@@ -33,7 +33,7 @@
 KviThemeGeneralOptionsWidget::KviThemeGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(4,2);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Use global application font","options"),KviOption_boolUseGlobalApplicationFont);
 	KviBoolSelector * g = addBoolSelector(0,0,1,0,__tr2qs_ctx("Hide icons in Popup","options"),KviOption_boolDisablePopupIcons);
@@ -58,9 +58,9 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
 	#ifdef COMPILE_KDE_SUPPORT
-		createLayout(7,2);
+		createLayout();
 	#else
-		createLayout(5,2);
+		createLayout();
 	#endif
 
 	m_pUseTransparencyBoolSelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Enable fake transparency","options"),KviOption_boolUseGlobalPseudoTransparency);
@@ -112,7 +112,7 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableUpdateKdeBackgroundBoolSelector(bool)));
 #else
-	createLayout(1,1);
+	createLayout();
 	addRowSpacer(0,0,0,0);
 #endif
 }
@@ -147,7 +147,7 @@ void KviThemeTransparencyOptionsWidget::enableUpdateKdeBackgroundBoolSelector(bo
 KviThemeMdiCaptionsOptionsWidget::KviThemeMdiCaptionsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(7,1);
+	createLayout();
 
 	addColorSelector(0,0,0,0,__tr2qs_ctx("Active Background","options"),KviOption_colorMdiCaptionActive);
 	addColorSelector(0,1,0,1,__tr2qs_ctx("Inactive Background","options"),KviOption_colorMdiCaptionInactive);
@@ -169,7 +169,7 @@ KviThemeMdiCaptionsOptionsWidget::~KviThemeMdiCaptionsOptionsWidget()
 KviThemeMdiAreaOptionsWidget::KviThemeMdiAreaOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(2,1);
+	createLayout();
 
 	addColorSelector(0,0,0,0,__tr2qs_ctx("Background","options"),KviOption_colorMdiBackground);
 	addPixmapSelector(0,1,0,1,__tr2qs_ctx("Background Image","options"),KviOption_pixmapMdiBackground);
@@ -187,7 +187,7 @@ KviThemeMdiAreaOptionsWidget::~KviThemeMdiAreaOptionsWidget()
 KviThemeToolBarAppletsOptionsWidget::KviThemeToolBarAppletsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(9,1);
+	createLayout();
 	
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font","options"),KviOption_fontIrcToolBarApplet);
 	

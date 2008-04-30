@@ -42,7 +42,7 @@ KviAlertHighlightingOptionsWidget::~KviAlertHighlightingOptionsWidget()
 KviHighlightingOptionsWidget::KviHighlightingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"highlighting_options_widget")
 {
-	createLayout(7,1);
+	createLayout();
 
 	KviBoolSelector * b;
 
@@ -71,10 +71,9 @@ KviHighlightingOptionsWidget::~KviHighlightingOptionsWidget()
 KviAlertOptionsWidget::KviAlertOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"highlighting_options_widget")
 {
-	createLayout(2,1);
+	createLayout();
 
-	KviBoolSelector * b;
-
+	
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Alert Restrictions","options"));
 	KviBoolSelector * b3 = addBoolSelector(g,__tr2qs_ctx("Restrict alert","options"),KviOption_boolHighlightOnlyNormalMsg);
 	mergeTip(b3, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the taskbar only if a normal message is received in a channel.<br>Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate of traffic and only want to be alerted for messages that are interesting to you.</center>","options"));

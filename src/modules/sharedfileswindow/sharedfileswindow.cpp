@@ -55,7 +55,7 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f)
 : QDialog(par,"shared_file_editor",true)
 {
-	QGridLayout * g = new QGridLayout(this,1,1,11,6);
+	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Edit Shared File - KVIrc","sharedfileswindow"));
 

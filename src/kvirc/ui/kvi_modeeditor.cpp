@@ -66,7 +66,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	w = w->parent();
 	}
 	
-	QGridLayout *pMasterLayout = new QGridLayout(this,2,1,2,2);
+	QGridLayout *pMasterLayout = new QGridLayout(this);
 
 	setFocusPolicy(Qt::ClickFocus);
 	
@@ -84,7 +84,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 	QWidget * pBackground = new QWidget(pScrollView->viewport());
 
-	QGridLayout *g = new QGridLayout(pBackground,20,3,2,2);
+	QGridLayout *g = new QGridLayout(pBackground);
 
 	QLabel * l = new QLabel("",pBackground);
 	l->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MODE)));

@@ -51,7 +51,7 @@
 KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString &n1,const QString &n2,const QString &n3)
 : QDialog(par)
 {
-	QGridLayout * g = new QGridLayout(this,5,3,4,12);
+	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Nickname alternatives","options"));
 
@@ -118,7 +118,7 @@ KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &sz
 
 	m_szUrl = szUrl;
 
-	QGridLayout * g = new QGridLayout(this,2,2,4,8);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pOutput = new QLabel(__tr2qs_ctx("<center>Please wait while the avatar is being downloaded</center>","options"),this);
 	g->addMultiCellWidget(m_pOutput,0,0,0,1);
@@ -199,7 +199,7 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 {
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
-	QGridLayout * g = new QGridLayout(this,3,3,4,8);
+	QGridLayout * g = new QGridLayout(this);
 	
 
 	QString msg = "<center>";
@@ -291,7 +291,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	m_szAltNicknames[2] = KVI_OPTION_STRING(KviOption_stringNickname4);
 
 
-	createLayout(3,1);
+	createLayout();
 	layout()->setMargin(10);
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Basic Properties","options"));
@@ -454,7 +454,7 @@ void KviIdentityGeneralOptionsWidget::commit()
 KviIdentityAvatarOptionsWidget::KviIdentityAvatarOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(4,1);
+	createLayout();
 	layout()->setMargin(10);
 	
 	m_pLocalAvatar = new KviPixmap(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar));
@@ -626,7 +626,7 @@ KviIdentityAdvancedOptionsWidget::KviIdentityAdvancedOptionsWidget(QWidget * par
 	m_bW = m_sModeStr.contains('w');
 	m_bS = m_sModeStr.contains('s');
 
-	createLayout(2,1);
+	createLayout();
 	layout()->setMargin(10);
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("User Mode","options"));

@@ -45,7 +45,7 @@ KviDccOptionsWidget::~KviDccOptionsWidget()
 KviDccGeneralOptionsWidget::KviDccGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"dccgeneral_options_widget")
 {
-	createLayout(2,1);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use workaround for firewall","options"),KviOption_boolCantAcceptIncomingDccConnections);
 
@@ -65,7 +65,7 @@ KviDccGeneralOptionsWidget::~KviDccGeneralOptionsWidget()
 KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"dccgeneral_options_widget")
 {
-	createLayout(5,1);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
 	
@@ -163,7 +163,7 @@ KviDccSendOptionsWidget::~KviDccSendOptionsWidget()
 KviDccSendGeneralOptionsWidget::KviDccSendGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"dccsend_options_widget")
 {
-	createLayout(5,1);
+	createLayout();
 
 	KviBoolSelector * b;
 
@@ -203,7 +203,7 @@ KviDccSendGeneralOptionsWidget::~KviDccSendGeneralOptionsWidget()
 KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"dccsend_advanced_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Send ACK for byte 0","options"),KviOption_boolSendZeroAckInDccRecv);
@@ -296,7 +296,7 @@ KviDccSendAdvancedOptionsWidget::~KviDccSendAdvancedOptionsWidget()
 KviDccChatOptionsWidget::KviDccChatOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"dccchat_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
@@ -316,7 +316,7 @@ KviDccChatOptionsWidget::~KviDccChatOptionsWidget()
 
 KviDccVoiceOptionsWidget::KviDccVoiceOptionsWidget(QWidget *p):KviOptionsWidget(p)
 {
-	createLayout(8, 1);
+	createLayout();
 
 	KviBoolSelector * b1 = addBoolSelector(0,0,0,0,__tr2qs_ctx("Open all minimized","options"),KviOption_boolCreateMinimizedDccVoice);
 	KviTalGroupBox * g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));

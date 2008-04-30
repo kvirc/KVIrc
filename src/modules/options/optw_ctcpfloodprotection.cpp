@@ -74,7 +74,7 @@
 KviCtcpFloodProtectionOptionsWidget::KviCtcpFloodProtectionOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ctcpfloodprotection_options_widget")
 {
-	createLayout(4,2);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection (recommended)","options"),KviOption_boolUseCtcpFloodProtection);
 	mergeTip(b,__tr2qs_ctx("<center>This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.</center>","options"));

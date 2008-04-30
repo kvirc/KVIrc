@@ -40,7 +40,7 @@ KviIrcViewThemeOptionsWidget::~KviIrcViewThemeOptionsWidget()
 KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircviewlook_options_widget")
 {
-	createLayout(6,2);
+	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcView);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorIrcViewBackground);
@@ -141,7 +141,7 @@ void KviIrcViewLookOptionsWidget::commit()
 KviIrcViewFeaturesOptionsWidget::KviIrcViewFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircviewfeatures_options_widget")
 {
-	createLayout(14,1);
+	createLayout();
 
 	
 

@@ -32,7 +32,7 @@
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"avatar_advanced_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 	// AVATAR
 
 	// 1st Box

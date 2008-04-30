@@ -31,7 +31,7 @@
 KviAntispamOptionsWidget::KviAntispamOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"antispam_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam For","options"));
 	m_b1 = addBoolSelector(g,__tr2qs_ctx("Private messages","options"),KviOption_boolUseAntiSpamOnPrivmsg);

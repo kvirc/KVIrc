@@ -78,7 +78,7 @@
 
 		setFocusPolicy(Qt::ClickFocus);
 
-		QGridLayout *g = new QGridLayout(this,10,4,2,2);
+		QGridLayout *g = new QGridLayout(this);
 
 		QLabel *l = new QLabel(this);
 		l->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LOCKED)));

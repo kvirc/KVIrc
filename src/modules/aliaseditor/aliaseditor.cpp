@@ -231,7 +231,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	m_pLastClickedItem = 0;
 	m_szDir = QDir::homeDirPath();
 
-	QGridLayout * l = new QGridLayout(this,1,1,2,2);
+	QGridLayout * l = new QGridLayout(this);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setOpaqueResize(false);
@@ -1576,7 +1576,7 @@ KviAliasEditorWindow::KviAliasEditorWindow(KviFrame * lpFrm)
 	m_pEditor = new KviAliasEditor(this);
 
 	m_pBase = new QWidget(this);
-	QGridLayout * g = new QGridLayout(m_pBase,1,4,4,4);
+	QGridLayout * g = new QGridLayout(m_pBase);
 
 	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));

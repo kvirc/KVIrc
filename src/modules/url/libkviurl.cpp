@@ -341,7 +341,7 @@ ConfigDialog::ConfigDialog()
 {
 	setWindowTitle(__tr2qs("URL Module Configuration"));
 
-	QGridLayout *g = new QGridLayout(this,4,2,10,10);
+	QGridLayout *g = new QGridLayout(this);
 
 	KviConfig *cfg = new KviConfig(szConfigPath.ptr(),KviConfig::Read);
 	cfg->setGroup("ConfigDialog");
@@ -411,7 +411,7 @@ BanFrame::BanFrame(QWidget *parent, const char *name, bool banEnabled)
 {
 	setFrameStyle(QFrame::Panel | QFrame::Raised);
 
-	QGridLayout *g = new QGridLayout(this,2,2,10,10);
+	QGridLayout *g = new QGridLayout(this);
 
 	m_pEnable = new KviStyledCheckBox(__tr2qs("Enable URL ban list"),this);
 	connect(m_pEnable,SIGNAL(clicked()),this,SLOT(enableClicked()));

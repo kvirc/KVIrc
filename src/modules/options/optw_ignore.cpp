@@ -31,7 +31,7 @@
 KviIgnoreOptionsWidget::KviIgnoreOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ignore_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Enable Ignore For","options"));
 	m_pIgnorePrivmsg = addBoolSelector(g,__tr2qs_ctx("Private/channel messages","options"),KviOption_boolEnableIgnoreOnPrivMsg);

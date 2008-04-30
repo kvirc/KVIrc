@@ -117,7 +117,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
-	QGridLayout * pLayout = new QGridLayout(pPage,2,1,4,4);
+	QGridLayout * pLayout = new QGridLayout(pPage);
 	
 	QLabel * pLabel = new QLabel(pPage);
 	QString szText = "<p>";
@@ -141,7 +141,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	// theme data name ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,2,1,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first.","theme"));
@@ -203,7 +203,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	// packager informations ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,5,2,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","theme"));
@@ -255,7 +255,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	// screenshot/logo/icon ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,3,1,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage.","theme"));
@@ -284,7 +284,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	// save file name ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,4,1,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *.%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));

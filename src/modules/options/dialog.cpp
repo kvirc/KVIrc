@@ -64,7 +64,7 @@ extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const QString &szText)
 :KviOptionsWidget(parent,"general_options_front_widget")
 {
-	createLayout(1,1);
+	createLayout();
 	QLabel * l = new QLabel(szText,this);
 	l->setWordWrap(true);
 	l->setAlignment(Qt::AlignTop);
@@ -176,7 +176,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	QString szCaption = szDialogTitle + " - KVIrc";
 	setWindowTitle(szCaption);
 
-	QGridLayout * g1 = new QGridLayout(this,2,5,8,8);
+	QGridLayout * g1 = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 
 	g1->addMultiCellWidget(spl,0,0,0,4);

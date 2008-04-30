@@ -76,11 +76,11 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 	setWindowTitle(__tr2qs("Property Editor"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
-	QGridLayout * g = new QGridLayout(this,3,3,4,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pTable = new QTableWidget(this);
-	g->addMultiCellWidget(m_pTable,0,1,0,1);
-
+	//g->addMultiCellWidget(m_pTable,0,1,0,1);
+	g->addWidget(m_pTable,0,0);
 	m_pTable->setColumnCount(2);
 	m_pTable->setSelectionMode(QTableWidget::NoSelection);
 
@@ -94,7 +94,7 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 
 	KviTalVBox * vb = new KviTalVBox(this);
 	vb->setSpacing(4);
-	g->addWidget(vb,0,2);
+	g->addWidget(vb,0,1,0,3);
 
 	m_pAddButton = new QPushButton(__tr2qs("&New"),vb);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
@@ -106,15 +106,15 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 
 	KviTalHBox * b = new KviTalHBox(this);
 	b->setSpacing(4);
-	g->addMultiCellWidget(b,2,2,1,2);
-
+	//g->addMultiCellWidget(b,2,2,1,2);
+	g->addWidget(b,1,1);
 	QPushButton * pb = new QPushButton(__tr2qs("&OK"),b);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
-	pb->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 
 	pb = new QPushButton(__tr2qs("Cancel"),b);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
-	pb->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 
 	g->setRowStretch(1,1);
 	g->setColumnStretch(0,1);
@@ -223,7 +223,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 
 	setWindowTitle(__tr2qs("Mask Editor"));
 
-	QGridLayout * g = new QGridLayout(this,3,2,4,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	QLabel * l = new QLabel(__tr2qs("Insert a mask for this user.<br>It can contain the wildcard characters '*' and '?'."),this);
 	//l->setAlignment(Qt::AlignCenter);
@@ -333,7 +333,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	QWidget * p1 = new QWidget(this);
 
-	QGridLayout * g = new QGridLayout(p1,6,2,4,4);
+	QGridLayout * g = new QGridLayout(p1);
 
 	QLabel * l = new QLabel(__tr2qs("Name:"),p1);
 	g->addWidget(l,0,0);
@@ -385,7 +385,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	QWidget * p2 = new QWidget(this);
 
-	g = new QGridLayout(p2,6,3,5,2);
+	g = new QGridLayout(p2);
 
 	m_pNotifyCheck = new KviStyledCheckBox(__tr2qs("Notify when user is online"),p2);
 	g->addMultiCellWidget(m_pNotifyCheck,0,0,0,2);

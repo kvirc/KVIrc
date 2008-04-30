@@ -88,7 +88,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	m_pIrcView = par;
 	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 
-	QGridLayout * gl = new QGridLayout(this,2,2,4,2);
+	QGridLayout * gl = new QGridLayout(this);
 
 	QLabel * l = new QLabel(__tr2qs("<b><font color=\"#EAEAEA\" size=\"-1\">Find Text</font></b>"),this);
 	l->setMaximumHeight(14);
@@ -109,7 +109,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	// Find tab
 	QWidget * w = new QWidget(tw);
 
-	QGridLayout * g = new QGridLayout(w,6,2,2,1);
+	QGridLayout * g = new QGridLayout(w);
 
 	m_pStringToFind = new QLineEdit(w);
 	g->addMultiCellWidget(m_pStringToFind,0,0,0,2);
@@ -146,7 +146,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	// Filter tab
 	QWidget * w1 = new QWidget(tw);
 
-	g = new QGridLayout(w1,5,2,2,1);
+	g = new QGridLayout(w1);
 
 	m_pFilterView = new KviTalListView(w1);
 	m_pFilterView->addColumn(__tr2qs("Type"));

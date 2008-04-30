@@ -166,7 +166,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 
 	m_pInstance = this;
 
-	QGridLayout * g = new QGridLayout(this,11,3,4,5);
+	QGridLayout * g = new QGridLayout(this);
 	
 	/*QLabel * lb = new QLabel(this);
 	lb->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);

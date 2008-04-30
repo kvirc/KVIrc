@@ -34,7 +34,7 @@ KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"tools_options_widget")
 {
 	
-	createLayout(1,1);
+	createLayout();
 
 	QLabel * l;
 	l = addLabel(0,0,0,0,__tr2qs_ctx("This section contains irc tools<br>"\

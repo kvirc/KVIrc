@@ -31,7 +31,7 @@
 KviAwayOptionsWidget::KviAwayOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"away_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	addStringSelector(0,0,0,0, __tr2qs_ctx("Default away message:","options"), KviOption_stringAwayMessage);
 

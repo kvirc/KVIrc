@@ -29,7 +29,7 @@
 KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircviewlook_options_widget")
 {
-	createLayout(10,2);
+	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font","options"),KviOption_fontInput);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color","options"),KviOption_colorInputBackground);
@@ -134,7 +134,7 @@ void KviInputLookOptionsWidget::commit()
 KviInputFeaturesOptionsWidget::KviInputFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ircviewfeatures_options_widget")
 {
-	createLayout(6,1);
+	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Warp cursor at the end of line when browsing history","options"),KviOption_boolInputHistoryCursorAtEnd);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable the input history window and it's log memory.","options"),KviOption_boolDisableInputHistory); //G&N 2005

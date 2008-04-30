@@ -84,7 +84,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pSearchTab  = new QWidget(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Filter","logview"));
 
-	QGridLayout *layout = new QGridLayout(m_pSearchTab,10,2,3,5);
+	QGridLayout *layout = new QGridLayout(m_pSearchTab);
 	
 	m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
 	m_pShowChannelsCheck->setChecked(true);

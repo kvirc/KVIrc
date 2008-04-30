@@ -67,7 +67,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
-	QGridLayout * pLayout = new QGridLayout(pPage,2,1,4,4);
+	QGridLayout * pLayout = new QGridLayout(pPage);
 	
 	QLabel * pLabel = new QLabel(pPage);
 	QString szText = "<p>";
@@ -91,7 +91,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	// packager informations ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,5,2,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the author) and a short description of the theme you're creating.","theme"));
@@ -143,7 +143,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	// screenshot/logo/icon ================================================================================
 
 	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage,4,1,4,4);
+	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package.","theme"));

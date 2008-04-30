@@ -89,7 +89,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	
 	m_pChannelListSelector=0;
 	
-	QGridLayout * g = new QGridLayout(this,4,4,10,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Network Details","options"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)));
@@ -118,7 +118,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
-	QGridLayout * gl = new QGridLayout(tab,4,2,10,4);
+	QGridLayout * gl = new QGridLayout(tab);
 
 	KviTalGroupBox *gbox = new KviTalGroupBox(2,Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addMultiCellWidget(gbox,0,0,0,1);
@@ -188,7 +188,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	// after login join channels
 	tab = new QWidget(tw);
 
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab);
 
 	if(n->autoJoinChannelList())
 		m_lstChannels = *(n->autoJoinChannelList());
@@ -205,7 +205,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	// after connect execute
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab);
 	
 	m_pOnConnectEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pOnConnectEditor,0,0);
@@ -221,7 +221,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	// after login execute
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab);
 
 	m_pOnLoginEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pOnLoginEditor,0,0);
@@ -240,7 +240,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	// nick serv rules
 	
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,3,3,10,5);
+	gl = new QGridLayout(tab);
 	
 	KviNickServRuleSet * rs = n->nickServRuleSet();
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
@@ -416,7 +416,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
     : QDialog(par,"server_details",true)
 {
 	m_szHostname = s->hostName();
-	QGridLayout * g = new QGridLayout(this,4,4,10,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Server Details","options"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
@@ -442,7 +442,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
-	QGridLayout * gl = new QGridLayout(tab,3,1,10,4);
+	QGridLayout * gl = new QGridLayout(tab);
 
 	KviTalGroupBox *gbox = new KviTalGroupBox(2,Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addWidget(gbox,0,0);
@@ -510,7 +510,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	// Connection tab
 	
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,11,1,10,4);
+	gl = new QGridLayout(tab);
 	
 	l = new QLabel(__tr2qs_ctx("Port:","options"),tab);
 	gl->addWidget(l,0,0);
@@ -687,7 +687,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	// after login join channels
 	tab = new QWidget(tw);
 
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab);
 
 	if(s->autoJoinChannelList())
 		m_lstChannels = *(s->autoJoinChannelList());
@@ -702,7 +702,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	// after connect execute
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab);
 
 
 	m_pOnConnectEditor = KviScriptEditor::createInstance(tab);
@@ -718,7 +718,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	// after login execute
 
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,1,1,10,4);
+	gl = new QGridLayout(tab
+		);
 
 	m_pOnLoginEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pOnLoginEditor,0,0);
@@ -951,7 +952,7 @@ void KviServerOptionsListViewItem::updateVisibleStrings()
 KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
     : KviOptionsWidget(parent,"server_options_widget")
 {
-	createLayout(4,2);
+	createLayout();
 
 	m_pContextPopup = new KviTalPopupMenu(this);
 	m_pImportPopup = new KviTalPopupMenu(this);

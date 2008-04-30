@@ -165,7 +165,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_REGUSERS)));
 	setWindowTitle(__tr2qs("Registered Users - KVIrc"));
 
-	QGridLayout * g = new QGridLayout(this,4,3,4,4);
+	QGridLayout * g = new QGridLayout(this);
 
 
 	m_pListView = new KviTalListView(this);

@@ -65,7 +65,7 @@ void KviMediaTypeListViewItem::copyData(KviMediaType * t)
 KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"mediatypes_options_widget")
 {
-	createLayout(11,3);
+	createLayout();
 
 	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs_ctx("Pattern","options"));

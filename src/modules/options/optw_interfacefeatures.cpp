@@ -38,7 +38,7 @@
 KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"interfacefeatures_options_widget")
 {
-	createLayout(8,1);
+	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize on startup","options"),KviOption_boolStartupMinimized);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Confirm quit with active connections","options"),KviOption_boolConfirmCloseWhenThereAreConnections);

@@ -33,7 +33,7 @@
 KviUParserOptionsWidget::KviUParserOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"uparser_options_widget")
 {
-	createLayout(11,1);
+	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Disable parser warnings","options"),KviOption_boolAvoidParserWarnings);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable broken event handlers","options"),KviOption_boolDisableBrokenEventHandlers);

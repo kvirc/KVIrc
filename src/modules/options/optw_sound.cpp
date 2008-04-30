@@ -54,11 +54,8 @@ KviSoundOptionsWidget::~KviSoundOptionsWidget()
 KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"sound_system_options_widget")
 {
-#ifdef COMPILE_ON_WINDOWS
-	createLayout(4,1);
-#else
-	createLayout(3,1);
-#endif
+	createLayout();
+
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Sound System","options"),true);
 
 	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.","options"));
@@ -279,7 +276,7 @@ void KviSoundGeneralOptionsWidget::commit()
 KviSoundsOptionsWidget::KviSoundsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"sound_options_widget")
 {
-	createLayout(5,2);
+	createLayout();
 	addLabel(0,0,0,0,__tr2qs_ctx("New Query opened","options"));
 	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);
 	

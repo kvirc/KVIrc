@@ -68,7 +68,7 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	m_iLastEditedRow=-1;
 	
 	setObjectName("texticons_options_widget");
-	createLayout(2,2);
+	createLayout();
 
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 

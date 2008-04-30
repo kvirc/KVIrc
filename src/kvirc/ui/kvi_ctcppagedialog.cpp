@@ -41,7 +41,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 : QWidget(0,"kvirc_ctcppage_dialog",
 	Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
 {
-	QGridLayout * g = new QGridLayout(this,4,1,6,0);
+	QGridLayout * g = new QGridLayout(this);
 	m_pWidgetStack = new KviTalWidgetStack(this);
 	g->addWidget(m_pWidgetStack,0,0);
 	m_pTabBar = new QTabBar(this);

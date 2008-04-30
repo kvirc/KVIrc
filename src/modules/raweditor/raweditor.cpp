@@ -71,7 +71,7 @@ const QPixmap * KviRawHandlerListViewItem::pixmap(int col) const
 KviRawEditor::KviRawEditor(QWidget * par)
 : QWidget(par,"raw_event_editor")
 {
-	QGridLayout * l = new QGridLayout(this,1,1,2,2);
+	QGridLayout * l = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"raweditorv");
 	spl->setOpaqueResize(false);
 	l->addWidget(spl,0,0);
@@ -445,7 +445,7 @@ KviRawEditorWindow::KviRawEditorWindow(KviFrame * lpFrm)
 	m_pEditor = new KviRawEditor(this);
 
 	m_pBase = new QWidget(this);
-	QGridLayout * g = new QGridLayout(m_pBase,1,4,4,4);
+	QGridLayout * g = new QGridLayout(m_pBase);
 
 	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));

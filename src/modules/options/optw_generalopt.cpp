@@ -33,7 +33,7 @@ KviGeneralOptOptionsWidget::KviGeneralOptOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"generalopt_options_widget")
 {
 
-	createLayout(1,4);
+	createLayout();
 
 	QLabel * l;
 	l = addLabel(0,0,4,0,__tr2qs_ctx("This section contains the general client options<br>"\

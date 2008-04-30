@@ -35,7 +35,7 @@
 KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"connection_options_widget")
 {
-	createLayout(2,1);
+	createLayout();
 	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
 	KviBoolSelector *b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
@@ -98,7 +98,7 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ssl_options_widget")
 {
 #ifdef COMPILE_SSL_SUPPORT
-	createLayout(3,1);
+	createLayout();
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Certificate","options"));
 
@@ -122,7 +122,7 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 	addRowSpacer(0,2,0,2);
 #else
-	createLayout(1,1);
+	createLayout();
 	addLabel(0,0,0,0,__tr2qs_ctx("This executable has no SSL support.","options"));
 #endif
 }
@@ -135,7 +135,7 @@ KviSSLOptionsWidget::~KviSSLOptionsWidget()
 KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"transport_options_widget")
 {
-	createLayout(5,1);
+	createLayout();
 	KviUIntSelector * u;
 	
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"),this);
@@ -180,7 +180,7 @@ KviTransportOptionsWidget::~KviTransportOptionsWidget()
 KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ident_options_widget")
 {
-	createLayout(6,1);
+	createLayout();
 
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),this,SLOT(enableIpv4InIpv6(bool)));

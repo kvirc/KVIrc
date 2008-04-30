@@ -30,7 +30,7 @@
 KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"ctcp_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	QLabel * l;
 	l = addLabel(0,0,0,0,__tr2qs_ctx("<center><b>Settings for CTCP.</b></center>"\

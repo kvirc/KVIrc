@@ -44,7 +44,7 @@ KviUserListLookOptionsWidget::~KviUserListLookOptionsWidget()
 KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_foreground_options_widget")
 {
-	createLayout(2,2);
+	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontUserListView);
 	
@@ -75,7 +75,7 @@ KviUserListLookForegroundOptionsWidget::~KviUserListLookForegroundOptionsWidget(
 KviUserListGridOptionsWidget::KviUserListGridOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout(5,1);
+	createLayout();
 	KviBoolSelector* b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Draw nickname grid","options"),KviOption_boolUserListViewDrawGrid);
 
 	KviColorSelector* s = addColorSelector(0,1,0,1,__tr2qs_ctx("Grid color:","options"),KviOption_colorUserListViewGrid,KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
@@ -117,7 +117,7 @@ void KviUserListGridOptionsWidget::commit()
 KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_background_options_widget")
 {
-	createLayout(3,2);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewBackground);
@@ -223,7 +223,7 @@ void KviUserListLookBackgroundOptionsWidget::commit()
 KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"userlistfeatures_options_widget")
 {
-	createLayout(7,1);
+	createLayout();
 
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
 	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);

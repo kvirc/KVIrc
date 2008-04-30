@@ -65,8 +65,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 
 	setWindowTitle(__tr2qs("Choose Avatar - KVIrc"));
 
-	QGridLayout * g = new QGridLayout(this,3,3,4,8);
-	
+	QGridLayout * g = new QGridLayout(this);
 	QString msg = "<center>";
 	msg += __tr2qs("Please select an avatar image. " \
 		"The full path to a local file or an image on the Web can be used.<br>" \

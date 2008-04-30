@@ -86,7 +86,7 @@ KviAboutDialog::KviAboutDialog()
 	QPixmap pix(buffer.ptr());
 
 	QWidget * w = new QWidget(this);
-	QGridLayout * g = new QGridLayout(w,2,1,4,8);
+	QGridLayout * g = new QGridLayout(w);
 
 	QLabel * l = new QLabel(w);
 	l->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
@@ -108,7 +108,7 @@ KviAboutDialog::KviAboutDialog()
 
 	// Info tab
 	w = new QWidget(this);
-	g = new QGridLayout(w,1,1,4,8);
+	g = new QGridLayout(w);
 
 	KviTalTextEdit * v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
@@ -184,7 +184,7 @@ KviAboutDialog::KviAboutDialog()
 
 	// Honor & Glory tab
 	w = new QWidget(this);
-	g = new QGridLayout(w,1,1,4,8);
+	g = new QGridLayout(w);
 
 	v = new KviTalTextEdit(w);
 	v->setReadOnly(true);
@@ -197,7 +197,7 @@ KviAboutDialog::KviAboutDialog()
 
 	// License tab
 	w = new QWidget(this);
-	g = new QGridLayout(w,1,1,4,8);
+	g = new QGridLayout(w);
 
 	v = new KviTalTextEdit(w);
 	v->setReadOnly(true);

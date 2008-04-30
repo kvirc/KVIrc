@@ -30,7 +30,7 @@
 KviTaskBarOptionsWidget::KviTaskBarOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"taskbar_options_widget")
 {
-	createLayout(7,1);
+	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Use tree taskbar","options"),KviOption_boolUseTreeWindowListTaskBar);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Sort windows by name","options"),KviOption_boolSortTaskBarItemsByName);
@@ -72,7 +72,7 @@ KviTreeTaskBarOptionsWidget::~KviTreeTaskBarOptionsWidget()
 KviTreeTaskBarForegroundOptionsWidget::KviTreeTaskBarForegroundOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"treetaskbar_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 	
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,2,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	
@@ -102,7 +102,7 @@ KviTreeTaskBarForegroundOptionsWidget::~KviTreeTaskBarForegroundOptionsWidget()
 KviTreeTaskBarBackgroundOptionsWidget::KviTreeTaskBarBackgroundOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"treetaskbar_options_widget")
 {
-	createLayout(4,2);
+	createLayout();
 	
 	KviTalGroupBox * g = addGroupBox(0,0,1,0,2,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeTaskBarBackground);
@@ -204,7 +204,7 @@ void KviTreeTaskBarBackgroundOptionsWidget::commit()
 KviTreeTaskBarFeaturesOptionsWidget::KviTreeTaskBarFeaturesOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"treetaskbar_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Show header","options"),KviOption_boolShowTreeTaskbarHeader);
 	
@@ -225,7 +225,7 @@ KviTreeTaskBarFeaturesOptionsWidget::~KviTreeTaskBarFeaturesOptionsWidget()
 KviClassicTaskBarOptionsWidget::KviClassicTaskBarOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"classictaskbar_options_widget")
 {
-	createLayout(8,1);
+	createLayout();
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTaskbar);
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,2,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTaskBarNormalText);

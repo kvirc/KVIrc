@@ -210,7 +210,7 @@ void KviPixmapPreview::drawContents(QPainter * p, int clipx, int clipy, int clip
 KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap * pOption,bool bEnabled)
 : QWidget(par), KviSelectorInterface()
 {
-	QGridLayout * g = new QGridLayout(this,3,2,4,8);
+	QGridLayout * g = new QGridLayout(this);
 	m_pOption = pOption;
 
 	m_localPixmap = *pOption;

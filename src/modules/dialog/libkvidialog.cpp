@@ -208,7 +208,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	setModal(modal);
 	setWindowTitle(szCaption);
 
-	QGridLayout * g = new QGridLayout(this,2,3,5,5);
+	QGridLayout * g = new QGridLayout(this);
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 

@@ -148,7 +148,7 @@ void KviActionDrawerPageListView::resizeEvent(QResizeEvent * e)
 KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent,const QString &szDescription)
 : QWidget(pParent)
 {
-	QGridLayout * g = new QGridLayout(this,2,1,4,4);
+	QGridLayout * g = new QGridLayout(this);
 	
 	QString t = "<b>" + szDescription + "</b>";
 	QLabel * l = new QLabel(t,this);

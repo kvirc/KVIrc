@@ -35,7 +35,7 @@ QString g_szPrevSettedLocale;
 KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"textencoding_options_widget")
 {
-	createLayout(5,2);
+	createLayout();
 
 	addLabel(0,0,0,0,__tr2qs_ctx("Default text encoding:","options"));
 

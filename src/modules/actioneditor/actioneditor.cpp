@@ -143,7 +143,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pActionEditor = ed;
 	m_pActionData = 0;
 
-	QGridLayout * g = new QGridLayout(this,3,2,0,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	QLabel * l = new QLabel(__tr2qs("Name:"),this);
 	g->addWidget(l,0,0);
@@ -162,7 +162,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	// code tab
 	QWidget * tab = new QWidget(tw);
-	QGridLayout * gl = new QGridLayout(tab,1,1,8,4);
+	QGridLayout * gl = new QGridLayout(tab);
 
 	m_pScriptEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pScriptEditor,0,0);
@@ -172,7 +172,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	// properties tab
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,7,4,8,4);
+	gl = new QGridLayout(tab);
 
 	l = new QLabel(__tr2qs("Category:"),tab);
 	gl->addWidget(l,0,0);
@@ -237,7 +237,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	// flags tab
 	tab = new QWidget(tw);
-	gl = new QGridLayout(tab,12,4,8,4);
+	gl = new QGridLayout(tab);
 
 
 	m_pNeedsContextCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Context"),tab);
@@ -635,7 +635,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 : QWidget(par)
 {
 	
-	QGridLayout * l = new QGridLayout(this,1,1,2,2);
+	QGridLayout * l = new QGridLayout(this);
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setOpaqueResize(false);
 	l->addWidget(m_pSplitter,0,0);
@@ -897,7 +897,7 @@ KviActionEditorWindow::KviActionEditorWindow(KviFrame * lpFrm)
 	m_pEditor = new KviActionEditor(this);
 
 	m_pBase = new QWidget(this);
-	QGridLayout * g = new QGridLayout(m_pBase,1,4,4,4);
+	QGridLayout * g = new QGridLayout(m_pBase);
 
 	QPushButton * btn = new QPushButton(__tr2qs("OK"),m_pBase);
 	btn->setMinimumWidth(80);

@@ -183,7 +183,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pClipboard = 0;
 	m_pTestPopup = 0;
 
-	QGridLayout * g = new QGridLayout(this,7,3,2,2);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pNameEditor = new QLineEdit(this);
 	QToolTip::add(m_pNameEditor,__tr2qs("Popup name"));
@@ -989,7 +989,7 @@ void KviMenuListViewItem::replacePopup(KviKvsPopupMenu * popup)
 KviPopupEditor::KviPopupEditor(QWidget * par)
 : QWidget(par)
 {
-	QGridLayout * l = new QGridLayout(this,1,1,0,2);
+	QGridLayout * l = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"popupeditor");
 	spl->setOpaqueResize(false);
 	l->addWidget(spl,0,0);
@@ -1276,7 +1276,7 @@ KviPopupEditorWindow::KviPopupEditorWindow(KviFrame * lpFrm)
 	m_pEditor = new KviPopupEditor(this);
 
 	m_pBase = new QWidget(this);
-	QGridLayout * g = new QGridLayout(m_pBase,1,4,4,4);
+	QGridLayout * g = new QGridLayout(m_pBase);
 
 	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));

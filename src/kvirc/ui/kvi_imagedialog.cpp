@@ -106,7 +106,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 
-	QGridLayout * g = new QGridLayout(this,4,3,5,3);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pTypeComboBox = new QComboBox(this);
 

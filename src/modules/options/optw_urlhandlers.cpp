@@ -40,7 +40,7 @@ KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 	#define START_ROW 0
 #endif
 
-	createLayout(START_ROW+7,1);
+	createLayout();
 
 #ifdef COMPILE_ON_WINDOWS
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);

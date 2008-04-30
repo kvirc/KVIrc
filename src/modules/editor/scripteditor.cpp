@@ -41,8 +41,6 @@
 #include "kvi_tal_scrollview.h"
 
 //FIXME
-#include <Q3TextEdit>
-#include <Q3PopupMenu>
 
 #include <QLayout>
 #include <QToolButton>
@@ -172,7 +170,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
         m_pSelectorInterfaceList->setAutoDelete(false);
 	setWindowTitle(__tr2qs_ctx("Preferences","editor"));
-	QGridLayout * g = new QGridLayout(this,3,3,4,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	KviFontSelector * f = new KviFontSelector(this,__tr2qs_ctx("Font:","editor"),&g_fntNormal,true);
 	g->addMultiCellWidget(f,0,0,0,2);
@@ -907,7 +905,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	if(g_pScriptEditorWindowList->isEmpty())loadOptions();
 	g_pScriptEditorWindowList->append(this);
 	m_lastCursorPos=0;
-	QGridLayout * g = new QGridLayout(this,2,3,0,0);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pFindLineedit = new QLineEdit(" ",this);
 	m_pFindLineedit->setText("");
@@ -1193,7 +1191,8 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	p.setColor(backgroundRole(),QColor( 236, 233, 216 )); 
 	setPalette(p);
 
-	QGridLayout *layout = new QGridLayout( this, 1, 1, 11, 6, "replace layout"); 
+	QGridLayout *layout = new QGridLayout( this);
+		layout->setObjectName("replace layout"); 
 
 
 	QLabel *findlabel = new QLabel( this, "findlabel" );

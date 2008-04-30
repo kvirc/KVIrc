@@ -84,15 +84,15 @@ void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 	}
 }
 
-void KviOptionsWidget::createLayout(int rows,int cols)
+void KviOptionsWidget::createLayout()
 {
 	if(m_pLayout)delete m_pLayout;
-	m_pLayout = new QGridLayout(this,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
+	m_pLayout = new QGridLayout(this);//,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
 }
 
 void KviOptionsWidget::createTabbedPage()
 {
-	createLayout(1,1);
+	createLayout();
 	layout()->setMargin(0);
 	layout()->setSpacing(0);
 	m_pTabWidget = new QTabWidget(this);

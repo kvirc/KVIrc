@@ -45,7 +45,7 @@ KviIrcOptionsWidget::~KviIrcOptionsWidget()
 KviIrcGeneralOptionsWidget::KviIrcGeneralOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irc_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
 
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to minimize the console window after successfully logging into a server.</center>","options"));
@@ -65,7 +65,7 @@ KviIrcGeneralOptionsWidget::~KviIrcGeneralOptionsWidget()
 KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irc_advanced_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to close " \
@@ -94,7 +94,7 @@ KviChannelOptionsWidget::~KviChannelOptionsWidget()
 KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent)
 : KviOptionsWidget(pParent)
 {
-	createLayout(5,1);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
 
@@ -140,7 +140,7 @@ KviChannelGeneralOptionsWidget::~KviChannelGeneralOptionsWidget()
 KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pParent)
 : KviOptionsWidget(pParent)
 {
-	createLayout(6,4);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,4,0,__tr2qs_ctx("Log joined channels history","options"),KviOption_boolLogChannelHistory);
 	

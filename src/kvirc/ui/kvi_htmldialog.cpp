@@ -45,7 +45,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	if(!pData->pixIcon.isNull())
 		setIcon(pData->pixIcon);
 
-	QGridLayout * g = new QGridLayout(this,4,3,7,7);
+	QGridLayout * g = new QGridLayout(this);
 	
 	QLabel * l;
 	QTextBrowser * te;

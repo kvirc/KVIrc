@@ -47,7 +47,7 @@ extern KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList;
 KviCodeTester::KviCodeTester(QWidget * par)
 : QWidget(par,"code_tester")
 {
-	QGridLayout * g = new QGridLayout(this,2,4,2,2);
+	QGridLayout * g = new QGridLayout(this);
 	m_pEditor = KviScriptEditor::createInstance(this);
 	g->addMultiCellWidget(m_pEditor,0,0,0,3);
 	m_pExecuteButton = new QPushButton(__tr2qs("&Execute"),this);

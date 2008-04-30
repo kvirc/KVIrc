@@ -32,7 +32,7 @@
 KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"logging_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,1,Qt::Horizontal,__tr2qs_ctx("Automatically Log","options"));
 	addBoolSelector(g,__tr2qs_ctx("Query windows","options"),KviOption_boolAutoLogQueries);

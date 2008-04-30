@@ -51,7 +51,7 @@ KviOptionsWidgetContainer::~KviOptionsWidgetContainer()
 
 void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 {
-	QGridLayout * g = new QGridLayout(this,2,3,4,8);
+	QGridLayout * g = new QGridLayout(this);
 
 	g->addMultiCellWidget(w,0,0,0,2);
 

@@ -1812,7 +1812,7 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsign
 KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * pParent,KviDccFileTransfer * t)
 : QDialog(pParent)
 {
-	QGridLayout * g = new QGridLayout(this,3,3,4,4);
+	QGridLayout * g = new QGridLayout(this);
 
 	m_pTransfer = t;
 	int iVal = m_pTransfer->bandwidthLimit();

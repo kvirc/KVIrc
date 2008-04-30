@@ -28,7 +28,7 @@
 
 KviTopicLabelLookOptionsWidget::KviTopicLabelLookOptionsWidget(QWidget *p):KviOptionsWidget(p, "topic_label_look_options_widget")
 {
-	createLayout(4, 1);
+	createLayout();
 
 	addFontSelector(0, 0, 0, 0, __tr2qs_ctx("Font","options"), KviOption_fontLabel);
 	addColorSelector(0, 1, 0, 1, __tr2qs_ctx("Foreground color","options"), KviOption_colorLabelForeground);

@@ -33,7 +33,7 @@
 KviTrayOptionsWidget::KviTrayOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"tray_options_widget")
 {
-	createLayout(7,1);
+	createLayout();
 	
 	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);
 	m_pCloseInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Close in tray","options"),KviOption_boolCloseInTray);

@@ -69,7 +69,7 @@ KviMessageOptionsWidget::~KviMessageOptionsWidget()
 KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"privmsg_options_widget")
 {
-	createLayout(4,1);
+	createLayout();
 
 	KviBoolSelector * b1;
 	KviBoolSelector * b2;
@@ -122,7 +122,7 @@ KviPrivmsgOptionsWidget::~KviPrivmsgOptionsWidget()
 KviTimestampOptionsWidget::KviTimestampOptionsWidget(QWidget * pParent)
 : KviOptionsWidget(pParent)
 {
-	createLayout(5,1);
+	createLayout();
 	m_pUseTimestampSelector = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show timestamp","options"),KviOption_boolIrcViewTimestamp);
 	
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
@@ -160,7 +160,7 @@ void KviTimestampOptionsWidget::enableDisableTimestampSelector(bool)
 KviStandardColorsOptionsWidget::KviStandardColorsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"stdcolors")
 {
-	createLayout(5,4);
+	createLayout();
 	
 	addColorSelector(0,0,0,0,"0:",&(KVI_OPTION_MIRCCOLOR(0)));
 	addColorSelector(1,0,1,0,"1:",&(KVI_OPTION_MIRCCOLOR(1)));
@@ -353,7 +353,7 @@ int KviMessageColorListBoxItem::height(const KviTalListBox *) const
 KviIrcColorsOptionsWidget::KviIrcColorsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irccolors","options")
 {
-	createLayout(5,4);
+	createLayout();
 
 	addRowSpacer(0,4,3,4);
 }
@@ -368,7 +368,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 {
 	int i;
 
-	createLayout(2,4);
+	createLayout();
 
 	m_pLastItem = 0;
 

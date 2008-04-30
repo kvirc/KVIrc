@@ -52,7 +52,7 @@ private:
 	static QString                     m_szBasicTipEnd;
 public:
 	void mergeResetFlag(int flag){ m_iResetFlags |= flag; };
-	void createLayout(int rows,int columns);
+	void createLayout();
 	QGridLayout * layout(){ return m_pLayout; };
 protected:
 	void commitSelectors();

@@ -33,7 +33,7 @@
 KviLagOptionsWidget::KviLagOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"lag_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 
 	KviBoolSelector * pUse = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable lag meter","options"), KviOption_boolUseLagMeterEngine);
 	mergeTip(pUse,__tr2qs_ctx("<center>This enables the lag meter engine, which checks at regular intervals how much lag (latency) the server has.</center>","options"));

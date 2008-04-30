@@ -31,7 +31,7 @@
 KviNotifyOptionsWidget::KviNotifyOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"notify_options_widget")
 {
-	createLayout(5,1);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use online notify list","options"),KviOption_boolUseNotifyList);
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("Configuration","options"));
@@ -102,7 +102,7 @@ KviNotifyOptionsWidget::~KviNotifyOptionsWidget()
 KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"notifier_options_widget")
 {
-	createLayout(3,1);
+	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Forcibly and completely disable the notifier","options"),KviOption_boolForciblyDisableNotifier);
 	QString tip = "<center>";
