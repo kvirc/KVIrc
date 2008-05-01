@@ -69,9 +69,9 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	connect(m_pBtnForward,SIGNAL(clicked()),m_pTextBrowser,SLOT(forward()));
 	m_pBtnForward->setEnabled(false);
 	//m_pBtnForward->setUsesBigPixmap(true);
-	
+
 	QWidget* pSpacer=new QWidget(m_pToolBar);
-	
+
 	if(bIsStandalone)
 	{
 		QToolButton * b = new KviStyledToolButton(m_pToolBar);
@@ -130,7 +130,7 @@ QSize KviHelpWidget::sizeHint() const
 bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
 {
 	QClipboard *cb = QApplication::clipboard();
-	
+
 	if(e->type() == QEvent::MouseButtonRelease) {
 		if(m_pTextBrowser->hasSelectedText()) {
 			cb->setText(m_pTextBrowser->selectedText());

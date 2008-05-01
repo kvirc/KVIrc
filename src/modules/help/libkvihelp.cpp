@@ -98,7 +98,7 @@ KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
 /*
 #ifdef COMPILE_NEW_KVS
 static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
-{ 
+{
 }
 #endif
 */
@@ -142,15 +142,26 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
 	if(doc.isEmpty()){
-		doc = szHelpDir + "\\index.html";
+		doc = szHelpDir + "/index.html";
 		qDebug ("No file, use default at path %s",doc.toUtf8().data());
 	} else qDebug("Doc set from user to %s",doc.toUtf8().data());
 
 	QFileInfo * f= new QFileInfo(doc);
-	debug("Path %d",doc.toUtf8().data());
+	qDebug("Path %s",doc.toUtf8().data());
 	if(f)
 	{
-		if(!f->exists()) doc = szHelpDir + "/nohelpavailable.html";
+		if(!f->exists())
+		{
+			doc = szHelpDir + "/" + doc;
+			qDebug("No abs path, trying relative path: %s",doc.toUtf8().data());
+			f->setFile(doc);
+		}
+		if(!f->exists())
+		{
+			doc = szHelpDir + "/nohelpavailable.html";
+			qDebug("No rel path, defaulting to error page: %s",doc.toUtf8().data());
+			f->setFile(doc);
+		}
 	}
 
 	if(!c->switches()->find('n',"new"))
@@ -162,7 +173,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			return true;
 		}
 	}
-	if(c->switches()->find('m',"mdi")) 
+	if(c->switches()->find('m',"mdi"))
 	{
 		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
 		w->textBrowser()->setSource(QUrl(doc));
@@ -173,19 +184,20 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		w->textBrowser()->setSource(QUrl(doc));
 		w->show();
 	}
+
 	return true;
 }
 
 static bool help_module_init(KviModule * m)
 {
 	QString szHelpDir,szDocList;
-	
+
 	g_pApp->getLocalKvircDirectory(szDocList,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
-	
+
 	g_pDocIndex = new Index(szHelpDir,szDocList);
 	g_pDocIndex->setDocListFile(szDocList);
-	
+
 	g_pApp->getLocalKvircDirectory(szHelpDir,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
 	g_pDocIndex->setDictionaryFile(szHelpDir);
 
