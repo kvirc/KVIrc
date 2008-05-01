@@ -100,19 +100,22 @@ bool KviAudaciousInterface::quit()
 	AUDACIOUS_SIMPLE_CALL("Quit")
 }
 
+#define AUDACIOUS_CALL_METHOD(__method, __return_if_fail) \
+	QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
+				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
+	QDBusMessage reply = dbus_iface.call(QDBus::Block, __method); \
+	if (reply.type() == QDBusMessage::ErrorMessage) { \
+		QDBusError err = reply; \
+		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+		return __return_if_fail; \
+	}
+
 QString KviAudaciousInterface::nowPlaying()
 {
 	if (this->status() != KviMediaPlayerInterface::Playing)
 		return "";
 
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player",
-				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, "GetMetadata");
-	if (reply.type() == QDBusMessage::ErrorMessage) {
-		QDBusError err = reply;
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message()));
-		return "";
-	}
+	AUDACIOUS_CALL_METHOD("GetMetadata", "")
 
 	QString artist;
 	QString title;
@@ -138,14 +141,7 @@ QString KviAudaciousInterface::nowPlaying()
 
 QString KviAudaciousInterface::mrl()
 {
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player",
-				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, "GetMetadata");
-	if (reply.type() == QDBusMessage::ErrorMessage) {
-		QDBusError err = reply;
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message()));
-		return "";
-	}
+	AUDACIOUS_CALL_METHOD("GetMetadata", "")
 
 	foreach (QVariant v, reply.arguments()) {
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
@@ -160,6 +156,14 @@ QString KviAudaciousInterface::mrl()
 		}
 	}
 	return "";
+}
+
+int KviAudaciousInterface::getVol()
+{
+	AUDACIOUS_CALL_METHOD("VolumeGet", -1)
+
+	int iVol = reply.arguments().first().toInt();
+	return iVol * 255 /100;
 }
 
 KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
@@ -181,14 +185,7 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 
 int KviAudaciousInterface::length()
 {
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player",
-				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, "GetMetadata");
-	if (reply.type() == QDBusMessage::ErrorMessage) {
-		QDBusError err = reply;
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message()));
-		return -1;
-	}
+	AUDACIOUS_CALL_METHOD("GetMetadata", -1)
 
 	foreach (QVariant v, reply.arguments()) {
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);

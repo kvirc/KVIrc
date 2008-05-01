@@ -45,6 +45,7 @@
 		virtual bool quit();
 		virtual QString nowPlaying();
 		virtual QString mrl();
+		virtual int getVol();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
 		virtual int length();
 		virtual QString title();
