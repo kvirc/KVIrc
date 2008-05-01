@@ -110,6 +110,16 @@ bool KviAudaciousInterface::quit()
 		return __return_if_fail; \
 	}
 
+#define AUDACIOUS_CALL_METHOD_WITH_ARG(__method, __arg, __return_if_fail) \
+        QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
+                                "org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
+        QDBusMessage reply = dbus_iface.call(QDBus::Block, __method, __arg); \
+        if (reply.type() == QDBusMessage::ErrorMessage) { \
+                QDBusError err = reply; \
+                debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
+                return __return_if_fail; \
+        }
+
 QString KviAudaciousInterface::nowPlaying()
 {
 	if (this->status() != KviMediaPlayerInterface::Playing)
@@ -158,6 +168,12 @@ QString KviAudaciousInterface::mrl()
 	return "";
 }
 
+bool KviAudaciousInterface::setVol(kvs_int_t &iVol)
+{
+	AUDACIOUS_CALL_METHOD_WITH_ARG("VolumeSet", QVariant((int)(100*iVol/255)), false);
+	return true;
+}
+
 int KviAudaciousInterface::getVol()
 {
 	AUDACIOUS_CALL_METHOD("VolumeGet", -1)
@@ -183,6 +199,12 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 	}
 }
 
+int KviAudaciousInterface::position()
+{
+	AUDACIOUS_CALL_METHOD("PositionGet", -1)
+	return reply.arguments().first().toInt();
+}
+
 int KviAudaciousInterface::length()
 {
 	AUDACIOUS_CALL_METHOD("GetMetadata", -1)
@@ -200,6 +222,12 @@ int KviAudaciousInterface::length()
 		}
 	}
 	return -1;
+}
+
+bool KviAudaciousInterface::jumpTo(int &iPos)
+{
+	AUDACIOUS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
+	return true;
 }
 
 #define AUDACIOUS_GET_METADATA_FIELD(__field) \

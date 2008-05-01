@@ -45,9 +45,12 @@
 		virtual bool quit();
 		virtual QString nowPlaying();
 		virtual QString mrl();
+		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
+		virtual int position();
 		virtual int length();
+		virtual bool jumpTo(int &iPos);
 		virtual QString title();
 		virtual QString artist();
 		virtual QString genre();
