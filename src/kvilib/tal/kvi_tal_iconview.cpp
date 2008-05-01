@@ -23,6 +23,7 @@
 //=============================================================================
 
 #define __KVILIB__
+
 #include "kvi_tal_iconview.h"
 #include <QTableWidget>
 #include <QHeaderView>
@@ -35,6 +36,7 @@
 
 void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
 {
+	/*
 	painter->save();
 	QTextDocument doc;
 	doc.setHtml( text );
@@ -43,14 +45,18 @@ void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleO
     painter->translate(rect.x(),rect.y());
 	doc.documentLayout()->draw(painter, context);
     painter->restore();
+	*/
 }
 
 void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
+	painter->save();
+	if (m_pPix)
+		painter->drawPixmap(option.rect,*m_pPix,option.rect);
 	QString text="<center>";
 	text+=index.data(Qt::DisplayRole).toString();
 	text +="</center>";
-	painter->save();
+	
 	QPixmap pixmap;
     QRect decorationRect;
     QVariant value = index.data(Qt::DecorationRole);
@@ -77,12 +83,12 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 
 	painter->restore();
 	painter->save();
-	
+	QAbstractTextDocumentLayout::PaintContext context;
 	QTextDocument doc;
 	doc.setHtml( text );
-	painter->translate(option.rect.x()+5,option.rect.y()+16);
+	painter->translate(option.rect.x()+5,option.rect.y()+14);
 	doc.setTextWidth(option.rect.width()-10);
-	doc.drawContents(painter);
+	doc.documentLayout()->draw(painter, context);
 	  
 	if (option.state & QStyle::State_Selected)
 	{
@@ -91,10 +97,14 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 		QColor col=brush.color();
 		col.setAlpha(127);
 		brush.setColor(col);
-		QRect textRect=QRect(QPoint(0,0),QSize(option.rect.width()-10,option.rect.height()-16));
+		QRect textRect=QRect(QPoint(0,2),QSize(doc.documentLayout()->documentSize().width(),doc.documentLayout()->documentSize().height()-4));
 		painter->fillRect(textRect,brush);
 	}
 	painter->restore();
+}
+void KviTalIconViewItemDelegate::setPixmap(QPixmap *pix)
+{
+	m_pPix=pix;
 }
 /*
 QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
@@ -110,8 +120,9 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	horizontalHeader()->hide();
 	verticalHeader()->hide();
 	setShowGrid(false);
+
 	m_pDelegate=new KviTalIconViewItemDelegate(this);
-	setItemDelegate(m_pDelegate);
+		setItemDelegate(m_pDelegate);
 	connect(this,SIGNAL(itemDoubleClicked(QTableWidgetItem *)),this,SLOT(redirect_doubleClicked(QTableWidgetItem *)));
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 	
@@ -133,6 +144,10 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	connect(this,SIGNAL(contextMenuRequested(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_contextMenuRequested(Q3IconViewItem *,const QPoint &)));
 	connect(this,SIGNAL(onItem(Q3IconViewItem *)),this,SLOT(redirect_onItem(Q3IconViewItem *)));
 	*/
+}
+void KviTalIconView::setPixmap(QPixmap *pix)
+{
+	m_pDelegate->setPixmap(pix);
 }
 void KviTalIconView::redirect_doubleClicked(QTableWidgetItem * pItem)
 {

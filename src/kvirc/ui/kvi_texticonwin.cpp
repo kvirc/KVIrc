@@ -39,11 +39,17 @@
 #include <QHeaderView>
 
 #include <ctype.h>
-
+#include <QPalette>
 
 KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 : KviTalIconView(parent,Qt::Popup)
 {
+	//setPixmap(g_pIconManager->getImage("kvi_test.png"));
+
+	 QPalette pal=palette();
+		pal.setBrush(backgroundRole(), QBrush(*g_pIconManager->getImage("kvi_test.png")));
+		setPalette(pal);
+
 	m_iTimerId = -1;
 	m_pParent=parent;
 	m_pItem=0;
