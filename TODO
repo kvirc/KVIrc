@@ -1,6 +1,14 @@
 Update TODO file, if something is implemented, it should be removed in the TODO file.
 Mantain TODO file as clear as possible
 
+20080501
+[17:40:51] <desowin> there's minor problem with setvol/getvol - aud uses 0-100 scale, whilst kvirc 0-255, so the values aren't exact
+[18:01:48] <desowin> if anyone would add vlc or xmms2 media player interface, consider doing mpris interface out of current audacious interface, and then inherit from it
+[18:02:38] <desowin> some controls (next, prev, play, stop) are exactly the same (only the dbus interface name changes)
+[18:04:11] <desowin> http://wiki.xmms2.xmms.se/index.php/MPRIS
+[18:04:41] <desowin> they changed getstatus recently though, so it would have to check what values it return
+
+
 - Pragma should read this file :D
 - Events, events, events. There are lots of them pending (see TODO.Events).
 - Multiple identities (and identity associations for servers)
