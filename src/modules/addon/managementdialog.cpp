@@ -234,7 +234,8 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
 	szPic += "/kvi_dialog_addons.png";
-	QString style("QListWidget {image: url(" + szPic + ");  background-attachment: fixed;}");
+	QString style("QListWidget {background-image: url(" + szPic + ");  background-attachment: fixed;}");
+	debug("pic: %s",szPic.toUtf8().data());
 	debug("style: %s",style.toUtf8().data());
 	m_pListView->setStyleSheet(style);
 	g->addMultiCellWidget(m_pListView,0,10,1,1);
