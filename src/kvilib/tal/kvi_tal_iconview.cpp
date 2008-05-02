@@ -41,10 +41,10 @@ void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleO
 	QTextDocument doc;
 	doc.setHtml( text );
 	QAbstractTextDocumentLayout::PaintContext context;
-    doc.setPageSize(rect.size());
-    painter->translate(rect.x(),rect.y());
+	doc.setPageSize(rect.size());
+	painter->translate(rect.x(),rect.y());
 	doc.documentLayout()->draw(painter, context);
-    painter->restore();
+	painter->restore();
 	*/
 }
 
@@ -58,8 +58,8 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 	text +="</center>";
 	
 	QPixmap pixmap;
-    QRect decorationRect;
-    QVariant value = index.data(Qt::DecorationRole);
+	QRect decorationRect;
+	QVariant value = index.data(Qt::DecorationRole);
 	QStyle::State state=option.state;
 	QRect rect=option.rect;
 
@@ -89,7 +89,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 	painter->translate(option.rect.x()+5,option.rect.y()+14);
 	doc.setTextWidth(option.rect.width()-10);
 	doc.documentLayout()->draw(painter, context);
-	  
+	
 	if (option.state & QStyle::State_Selected)
 	{
 		QPalette pal=option.palette;
@@ -102,6 +102,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 	}
 	painter->restore();
 }
+
 void KviTalIconViewItemDelegate::setPixmap(QPixmap *pix)
 {
 	m_pPix=pix;
@@ -127,18 +128,22 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 	
 }
+
 void KviTalIconView::setPixmap(QPixmap *pix)
 {
 	m_pDelegate->setPixmap(pix);
 }
+
 void KviTalIconView::redirect_cellActivated(int row,int col)
 {
 	emit cellActivated((KviTalIconViewItem *)item(row,col));
 }
+
 void KviTalIconView::redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev)
 {
 	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)prev);
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_iconview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

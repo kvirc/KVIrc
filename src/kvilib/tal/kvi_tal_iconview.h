@@ -38,16 +38,12 @@ class KVILIB_API KviTalIconView : public QTableWidget
 	Q_OBJECT
 public:
 	KviTalIconView(QWidget * pParent,Qt::WFlags f = 0);
-	void KviTalIconView::setPixmap(QPixmap *pix);
+	void setPixmap(QPixmap *pix);
 
 	virtual ~KviTalIconView() {};
 protected:
 	KviTalIconViewItemDelegate *m_pDelegate;
-	protected:
-	
-
 signals:
-
 	void cellActivated(KviTalIconViewItem * pItem);
 	void currentItemChanged(KviTalIconViewItem *pItem,KviTalIconViewItem *prev);
 protected slots:
