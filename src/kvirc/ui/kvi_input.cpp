@@ -97,7 +97,7 @@
 //This comes from kvi_app.cpp
 extern KviColorWindow    * g_pColorWindow;
 extern KviTextIconWindowWidget * g_pTextIconWindow;
-extern KviHistoryWindow  * g_pHistoryWindow;
+extern KviHistoryWindowWidget  * g_pHistoryWindow;
 extern KviTalPopupMenu   * g_pInputPopup;
 
 static QFontMetrics      * g_pLastFontMetrics = 0;
@@ -2501,7 +2501,7 @@ void KviInput::iconButtonClicked()
 
 void KviInput::historyButtonClicked()
 {
-	if(!g_pHistoryWindow)g_pHistoryWindow = new KviHistoryWindow();
+	if(!g_pHistoryWindow)g_pHistoryWindow = new KviHistoryWindowWidget();
 
 	QPoint pnt = mapToGlobal(QPoint(0,0));
 

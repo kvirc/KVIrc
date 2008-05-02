@@ -37,11 +37,12 @@ class KVIRC_API KviHistoryWindow : public QListWidget
 {
 	Q_OBJECT
 public:
-	KviHistoryWindow();
+	KviHistoryWindow(QWidget *parent);
 	~KviHistoryWindow();
 private:
 	KviInput      * m_pOwner;
 	int             m_iTimerId;
+	QWidget * m_pParent;
 public:
 	void popup(KviInput *owner);
 //	KviInput * owner(){ return m_pOwner; };
@@ -57,6 +58,21 @@ private:
 public slots:
 	void ownerDead();
 	void itemSelected(QListWidgetItem *);
+};
+class KVIRC_API KviHistoryWindowWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviHistoryWindow *wid;
+	KviHistoryWindowWidget();
+	void popup(KviInput *owner)
+	{
+		wid->popup(owner);
+		wid->setFixedSize(width(),height());
+		//move(QCursor::pos());
+		show();
+	};
+	~KviHistoryWindowWidget(){};
 };
 
 #endif //_KVI_HISTORYWIN_H_

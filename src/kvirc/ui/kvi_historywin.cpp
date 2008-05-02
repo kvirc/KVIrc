@@ -39,10 +39,10 @@
 
 extern KviInputHistory * g_pInputHistory;
 
-KviHistoryWindow::KviHistoryWindow()
-: QListWidget(0)
+KviHistoryWindow::KviHistoryWindow(QWidget *parent)
+: QListWidget(parent)
 {
-	setWindowFlags(Qt::Popup);
+	m_pParent=parent;
 	m_pOwner = 0;
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -228,7 +228,7 @@ void KviHistoryWindow::doHide()
 		killTimer(m_iTimerId);
 		m_iTimerId = -1;
 	}
-	hide();
+	m_pParent->hide();
 	if(m_pOwner)
 		m_pOwner->setFocus();
 }
@@ -248,6 +248,13 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 		m_iTimerId = -1;
 	}
 }
+KviHistoryWindowWidget::KviHistoryWindowWidget()
+:QWidget(0)
+{
+	setWindowFlags(Qt::Popup);
+	wid=new KviHistoryWindow(this);
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_historywin.moc"
 #endif //_KVI_HISTORYWIN_CPP_

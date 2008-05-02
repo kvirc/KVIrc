@@ -128,7 +128,7 @@ KVIRC_API KviGarbageCollector          * g_pGarbageCollector          = 0;
 KVIRC_API KviCtcpPageDialog            * g_pCtcpPageDialog            = 0;
 KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase = 0;
 KVIRC_API KviInputHistory              * g_pInputHistory              = 0;
-KVIRC_API KviHistoryWindow             * g_pHistoryWindow             = 0;
+KVIRC_API KviHistoryWindowWidget       * g_pHistoryWindow             = 0;
 
 
 KVIRC_API int                            g_iIdentDaemonRunningUsers   = 0; // this is eventually set by libkviident
