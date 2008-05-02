@@ -179,8 +179,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	{
 		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Plugins,szName);
 	}
-	
-	if(!KviFileUtils::fileExists(tmp)) return false;
+
 	kvi_library_t handle = kvi_library_open(tmp.toLocal8Bit().data());
 	if(!handle)
 	{

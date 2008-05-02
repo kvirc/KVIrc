@@ -564,23 +564,32 @@ SUBDIRS(src data po scripts doc)
 #
 ###############################################################################
 
-FIND_PACKAGE(Doxygen)
-IF(DOXYGEN_FOUND)
-	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "yes")
-	ADD_CUSTOM_TARGET(
-		devdocs
-		@echo Generating api documentation
-	)
 
-	ADD_CUSTOM_COMMAND(
-		COMMENT "generate the api documentation"
-		COMMAND ${DOXYGEN_EXECUTABLE} -u
-		COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
-		COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/Doxyfile
-		TARGET devdocs
-	)
+OPTION(WANT_DOXYGEN "Whether to use Doxygen to generate documentation" OFF)
+IF(WITHOUT_DOXYGEN)
+	SET(WANT_DOXYGEN OFF)
+ENDIF()
+IF(WANT_DOXYGEN)
+	FIND_PACKAGE(Doxygen)
+	IF(DOXYGEN_FOUND)
+		SET(CMAKE_STATUS_DOXYGEN_SUPPORT "yes")
+		ADD_CUSTOM_TARGET(
+			devdocs
+			@echo Generating api documentation
+		)
+
+		ADD_CUSTOM_COMMAND(
+			COMMENT "generate the api documentation"
+			COMMAND ${DOXYGEN_EXECUTABLE} -u
+			COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
+			COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/Doxyfile
+			TARGET devdocs
+		)
+	ELSE()
+		SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
+	ENDIF()
 ELSE()
-	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
+	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "user disabled")
 ENDIF()
 
 
