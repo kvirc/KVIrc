@@ -126,7 +126,7 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(redirect_cellActivated(int,int)));
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 	
-
+}
 void KviTalIconView::setPixmap(QPixmap *pix)
 {
 	m_pDelegate->setPixmap(pix);
@@ -139,7 +139,6 @@ void KviTalIconView::redirect_currentItemChanged(QTableWidgetItem * pItem,QTable
 {
 	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)prev);
 }
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_iconview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

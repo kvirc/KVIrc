@@ -44,16 +44,7 @@
 KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 : KviTalIconView(parent,Qt::Popup)
 {
-	//setPixmap(g_pIconManager->getImage("kvi_test.png"));
-/*QPalette p;
-p.setBrush(QPalette::Base, QBrush());
-viewport()->setPalette(p);
-*/
-QPalette pal;//viewport()->palette();
-		//pal.setBrush(QPalette::Base, QBrush(*g_pIconManager->getImage("kvi_test.png")));
-pal.setBrush(QPalette::Base, QBrush(QColor(200,200,200,127)));
-		viewport()->setPalette(pal);
-
+	
 	m_iTimerId = -1;
 	m_pParent=parent;
 	m_pItem=0;
