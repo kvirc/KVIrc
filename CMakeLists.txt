@@ -565,7 +565,7 @@ SUBDIRS(src data po scripts doc)
 ###############################################################################
 
 
-OPTION(WANT_DOXYGEN "Whether to use Doxygen to generate documentation" OFF)
+OPTION(WANT_DOXYGEN "Whether to use Doxygen to generate documentation" ON)
 IF(WITHOUT_DOXYGEN)
 	SET(WANT_DOXYGEN OFF)
 ENDIF()
@@ -587,6 +587,7 @@ IF(WANT_DOXYGEN)
 		)
 	ELSE()
 		SET(CMAKE_STATUS_DOXYGEN_SUPPORT "no")
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DOXYGEN)
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_DOXYGEN_SUPPORT "user disabled")

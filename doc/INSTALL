@@ -140,6 +140,9 @@ General notes for the installation of the 4.0 release of KVIrc
         so if you're really short in memory , you might use it,
         otherwise, IPC is a nice feature.
 
+    -DWITHOUT_DOXYGEN
+        Disables docs generation
+
 /*
     -DWITHOUT_SYSTEM_MEMMOVE
         This will disable the use of the system memmove() memcpy() and
