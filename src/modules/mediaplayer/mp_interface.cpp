@@ -94,7 +94,7 @@ QString KviMediaPlayerInterface::getLocalFile()
 
 QString KviMediaPlayerInterface::amipEval(const QString &cmd)
 {
-  return QString::null;
+	return QString::null;
 }
 
 #define SCAN_MP3_FILE \
@@ -123,7 +123,6 @@ QString KviMediaPlayerInterface::title()
 	SCAN_MP3_FILE
 	return pCodec->toUnicode(KviQCString(mp3.id3.title));
 }
-
 
 QString KviMediaPlayerInterface::genre()
 {
@@ -227,7 +226,6 @@ int KviMediaPlayerInterface::getListLength()
 	return -1;
 }
 
-
 int KviMediaPlayerInterface::getEqData(int &ival)
 {
 	notImplemented();
@@ -276,4 +274,3 @@ QString KviMediaPlayerInterface::mediaType()
 	else ret = QString::null;
 	return ret;
 }
-

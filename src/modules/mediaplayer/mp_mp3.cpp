@@ -128,22 +128,22 @@ const char * get_typegenre(int idx)
 
 int galphagenreindex[MAXGENRE+2] =
 {
-   148,123,74,73,34,99,40,20,26,145,90,
-   116,41,135,85,96,138,89,0,107,132,65,88,
-   104,102,97,136,61,141,1,32,128,112,57,140,
-   2,139,58,125,3,50,22,4,55,127,122,120,
-   98,52,48,124,25,54,84,81,115,80,119,5,
-   30,36,59,126,38,91,49,6,79,129,137,7,
-   35,100,131,19,46,47,33,146,29,8,63,86,
-   71,45,142,9,77,82,64,133,10,66,39,11,
-   103,12,75,134,53,62,13,109,117,23,108,92,
-   93,67,121,43,14,15,68,16,76,87,118,78,
-   17,143,114,110,69,21,111,95,105,42,37,24,
-   56,44,101,83,94,106,147,113,51,18,130,144,
-   60,70,31,72,27,28
+	148,123,74,73,34,99,40,20,26,145,90,
+	116,41,135,85,96,138,89,0,107,132,65,88,
+	104,102,97,136,61,141,1,32,128,112,57,140,
+	2,139,58,125,3,50,22,4,55,127,122,120,
+	98,52,48,124,25,54,84,81,115,80,119,5,
+	30,36,59,126,38,91,49,6,79,129,137,7,
+	35,100,131,19,46,47,33,146,29,8,63,86,
+	71,45,142,9,77,82,64,133,10,66,39,11,
+	103,12,75,134,53,62,13,109,117,23,108,92,
+	93,67,121,43,14,15,68,16,76,87,118,78,
+	17,143,114,110,69,21,111,95,105,42,37,24,
+	56,44,101,83,94,106,147,113,51,18,130,144,
+	60,70,31,72,27,28
 };
 
-int *alphagenreindex=&(galphagenreindex[1]);          
+int *alphagenreindex=&(galphagenreindex[1]);
 
 
 int layer_tab[4]= {0, 3, 2, 1};
@@ -173,13 +173,14 @@ int frame_size_index[] = {24000, 72000, 72000};
 
 const char *mode_text[] =
 {
-   "Stereo", "Joint Stereo", "Dual Channel", "Mono"
+	"Stereo", "Joint Stereo", "Dual Channel", "Mono"
 };
 
 const char *emphasis_text[] =
 {
-  "None", "50/15 Microseconds", "Reserved", "CCITT J 17"
+	"None", "50/15 Microseconds", "Reserved", "CCITT J 17"
 };
+
 void resetmp3infoStruct(mp3info *i)
 {
 	i->file=0;
@@ -243,13 +244,12 @@ int get_mp3_info(mp3info *mp3)
 	return 0;
 }
 
-
 int get_first_header(mp3info *mp3, long startpos) 
 {
 	int k, l=0,c;
 	mp3header h, h2;
 	long valid_start=0;
-  
+	
 	fseek(mp3->file,startpos,SEEK_SET);
 	while(1)
 	{
@@ -273,13 +273,13 @@ int get_first_header(mp3info *mp3, long startpos)
 					memcpy(&(mp3->header), &h2, sizeof(mp3header));
 					mp3->header_isvalid = 1;
 					return 1;
-				} 
+				}
 			}
 		} else {
 			return 0;
 		}
 	}
-	return 0;  
+	return 0;
 }
 
 
@@ -317,13 +317,13 @@ int get_header(FILE *file,mp3header *header)
 	header->copyright=(buffer[3] >> 3) & 0x1;
 	header->original=(buffer[3] >> 2) & 0x1;
 	header->emphasis=(buffer[3]) & 0x3;
-   
+	
 	return ((fl=frame_length(header)) >= MIN_FRAME_SIZE ? fl : 0); 
 }
 
 int frame_length(mp3header *header)
 {
-	return header->sync == 0xFFE ? 
+	return header->sync == 0xFFE ?
 		(frame_size_index[3-header->layer]*((header->version&1)+1)*
 		    header_bitrate(header)/header_frequency(header))+
 		    header->padding : 1;
@@ -371,18 +371,17 @@ int sameConstant(mp3header *h1, mp3header *h2)
 {
 	if((*(uint*)h1) == (*(uint*)h2)) return 1;
 
-    if((h1->version       == h2->version         ) &&
-       (h1->layer         == h2->layer           ) &&
-       (h1->crc           == h2->crc             ) &&
-       (h1->freq          == h2->freq            ) &&
-       (h1->mode          == h2->mode            ) &&
-       (h1->copyright     == h2->copyright       ) &&
-       (h1->original      == h2->original        ) &&
-       (h1->emphasis      == h2->emphasis        )) 
+	if((h1->version       == h2->version         ) &&
+	(h1->layer         == h2->layer           ) &&
+	(h1->crc           == h2->crc             ) &&
+	(h1->freq          == h2->freq            ) &&
+	(h1->mode          == h2->mode            ) &&
+	(h1->copyright     == h2->copyright       ) &&
+	(h1->original      == h2->original        ) &&
+	(h1->emphasis      == h2->emphasis        ))
 		return 1;
-    else return 0;
+	else return 0;
 }
-
 
 int get_id3(mp3info *mp3)
 {
@@ -441,7 +440,6 @@ char *pad(char *string, int length)
 }
 
 // Remove trailing whitespace from the end of a string
-
 char *unpad(char *string)
 {
 	char *pos=string+strlen(string)-1;
@@ -465,4 +463,3 @@ bool scan_mp3_file(QString& szFileName,mp3info * i)
 	
 	return (i->id3_isvalid);
 }
-

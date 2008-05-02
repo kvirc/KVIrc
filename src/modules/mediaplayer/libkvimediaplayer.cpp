@@ -24,12 +24,13 @@
 //=============================================================================
 
 #include "mp_interface.h"
-#include "mp_xmmsinterface.h"
-#include "mp_audaciousinterface.h"
 #include "mp_amarokinterface.h"
-#include "mp_winampinterface.h"
 #include "mp_amipinterface.h"
+#include "mp_audaciousinterface.h"
 #include "mp_jukinterface.h"
+#include "mp_winampinterface.h"
+#include "mp_xmmsinterface.h"
+#include "mp_xmms2interface.h"
 
 #include "kvi_module.h"
 #include "kvi_options.h"
@@ -1605,9 +1606,10 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList->setAutoDelete(true);
 
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC))
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmms2Interface));
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
@@ -1732,16 +1734,14 @@ static bool mediaplayer_module_ctrl(KviModule * m,const char * operation,void * 
 	return false;
 }
 
-
-
 KVIRC_MODULE(
 	"mediaplayer",
 	"4.0.0",
-	"Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net), " \
+	"Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)," \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \
 		"Alessandro Carbone (noldor at barmes dot org)," \
-		"Alexey Uzhva (wizard at opendoor dot ru), " \
+		"Alexey Uzhva (wizard at opendoor dot ru)," \
 		"Serge Baranov (sbaranov at gmail dot com)",
 	"Interface to various media players",
 	mediaplayer_module_init,
