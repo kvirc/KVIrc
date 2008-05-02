@@ -140,7 +140,7 @@ namespace KviThemeFunctions
 			QString szThemeDate;
 			QString szThemeSubdirectory;
 			QString szThemeAuthor;
-			QString szThemeThemeEngineVersion;
+			QString szThemeEngineVersion;
 			QString szThemeApplication;
 
 			KviQString::sprintf(szTmp,"Theme%dName",iIdx);
@@ -158,16 +158,16 @@ namespace KviThemeFunctions
 			KviQString::sprintf(szTmp,"Theme%dAuthor",iIdx);
 			r.getStringInfoField(szTmp,szThemeAuthor);
 			KviQString::sprintf(szTmp,"Theme%dThemeEngineVersion",iIdx);
-			r.getStringInfoField(szTmp,szThemeThemeEngineVersion);
+			r.getStringInfoField(szTmp,szThemeEngineVersion);
 			KviQString::sprintf(szTmp,"Theme%dScreenshot",iIdx);
 			QPixmap pixScreenshot;
 			pByteArray = r.binaryInfoFields()->find(szTmp);
 			if(pByteArray)
 				pixScreenshot.loadFromData(*pByteArray,0,0);
 
-			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeThemeEngineVersion.isEmpty())
+			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeEngineVersion.isEmpty())
 				bValid = false;
-			if(KviMiscUtils::compareVersions(szThemeThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
+			if(KviMiscUtils::compareVersions(szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 				bValid = false;
 
 			QString szDetailsBuffer;
@@ -181,7 +181,7 @@ namespace KviThemeFunctions
 				szThemeApplication,
 				szThemeAuthor,
 				szThemeDate,
-				szThemeThemeEngineVersion,
+				szThemeEngineVersion,
 				pixScreenshot,
 				iIdx
 			);
@@ -305,7 +305,7 @@ namespace KviThemeFunctions
 		const QString &szThemeApplication,
 		const QString &szThemeAuthor,
 		const QString &szThemeDate,
-		const QString &szThemeThemeEngineVersion,
+		const QString &szThemeEngineVersion,
 		const QPixmap &pixScreenshot,
 		int iUniqueIndexInDocument
 	)
@@ -358,7 +358,7 @@ namespace KviThemeFunctions
 			&szCreatedOn,
 			&szThemeApplication,
 			&szThemeEngineVersion,
-			&szThemeThemeEngineVersion,
+			&szThemeEngineVersion,
 			&szSubdirectory,
 			&szThemeSubdirectory
 		);

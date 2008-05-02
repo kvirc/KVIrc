@@ -42,7 +42,7 @@ namespace KviThemeFunctions
 		const QString &szThemeApplication,
 		const QString &szThemeAuthor,
 		const QString &szThemeDate,
-		const QString &szThemeThemeEngineVersion,
+		const QString &szThemeEngineVersion,
 		const QPixmap &pixScreenshot,
 		int iUniqueIndexInDocument = 0
 	);
