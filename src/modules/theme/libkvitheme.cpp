@@ -51,7 +51,7 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 	@title:
 		theme.install
 	@short:
-		Shows the theme theme management editor
+		Shows the theme management editor
 	@syntax:
 		theme.install <package_path:string>
 	@description:
