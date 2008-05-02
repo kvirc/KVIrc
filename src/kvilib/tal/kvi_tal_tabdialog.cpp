@@ -58,14 +58,14 @@ void KviTalTabDialog::setOkButton(const QString & text)
 {
 	QPushButton * pBtnOk = new QPushButton(text,this);
 	m_pLayout->addWidget(pBtnOk,1,1);
-	connect(pBtnOk,SIGNAL(pressed()),this,SLOT(okPressed()));
+	connect(pBtnOk,SIGNAL(clicked()),this,SLOT(okPressed()));
 }
 
 void KviTalTabDialog::setCancelButton(const QString & text)
 {
 	QPushButton * pBtnCancel = new QPushButton(text,this);
 	m_pLayout->addWidget(pBtnCancel,1,2);
-	connect(pBtnCancel,SIGNAL(pressed()),this,SLOT(cancelPressed()));
+	connect(pBtnCancel,SIGNAL(clicked()),this,SLOT(cancelPressed()));
 }
 
 void KviTalTabDialog::okPressed()

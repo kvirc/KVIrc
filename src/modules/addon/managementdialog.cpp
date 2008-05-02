@@ -24,6 +24,7 @@
 
 #include "managementdialog.h"
 
+#include "kvi_app.h"
 #include "kvi_listview.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
@@ -82,8 +83,8 @@ void KviScriptAddonDelegate::paint( QPainter * painter, const QStyleOptionViewIt
 	}
 	QString text=index.data(Qt::DisplayRole).toString();
 	QPixmap pixmap;
-    QRect decorationRect;
-    QVariant value = index.data(Qt::DecorationRole);
+	QRect decorationRect;
+	QVariant value = index.data(Qt::DecorationRole);
 	QStyle::State state=option.state;
 	QRect rect=option.rect;
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
@@ -131,15 +132,17 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 	
 	delete m_pAddon;
 }
+
 /*
 QString KviScriptAddonListViewItem::key(int,bool) const
 {
 	return m_szKey;
 }
 */
+
 void KviScriptAddonListViewItem::setup()
 {
-/*
+	/*
 	KviTalListViewItem::setup();
 	int iWidth = m_pListView->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
@@ -147,8 +150,8 @@ void KviScriptAddonListViewItem::setup()
 	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
 	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
 	setHeight(iHeight+2);
-*/
-	}
+	*/
+}
 
 void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
@@ -167,7 +170,6 @@ void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,i
 	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
 	m_pText->drawContents(p);
 	*/
-	
 }
 
 KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
@@ -181,7 +183,7 @@ KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	
 	// FIXME: doesn't work in Qt4
-/*
+	/*
 	int iWidth = visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	addColumn("",iWidth);
@@ -228,6 +230,13 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	*/
 	m_pListView = new KviScriptAddonListView(this);
 	m_pListView->setItemDelegate(new KviScriptAddonDelegate(m_pListView));
+
+	QString szPic;
+	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
+	szPic += "/kvi_dialog_addons.png";
+	QString style("QListWidget {image: url(" + szPic + ");  background-attachment: fixed;}");
+	debug("style: %s",style.toUtf8().data());
+	m_pListView->setStyleSheet(style);
 	g->addMultiCellWidget(m_pListView,0,10,1,1);
 
 	m_pConfigureButton = new QPushButton(__tr2qs("Configure"),this);

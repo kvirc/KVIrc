@@ -35,6 +35,7 @@
 #include <QTextDocument>
 #include <QListWidget>
 #include <QItemDelegate>
+
 class QPushButton;
 class QPixmap;
 class KviKvsScriptAddon;
@@ -101,6 +102,7 @@ protected slots:
 	void getMoreScripts();
 	void installScript();
 };
+
 class KviScriptAddonDelegate : public QItemDelegate
 {
 public:
@@ -109,6 +111,6 @@ public:
 	~KviScriptAddonDelegate(){};
 	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	};
+};
 
 #endif //!_MANAGEMENTDIALOG_H_
