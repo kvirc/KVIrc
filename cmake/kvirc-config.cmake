@@ -59,6 +59,9 @@ while test $# -gt 0; do
 		*) optarg= ;;
 	esac
 
+	LIBS="@LIBS@"
+	LIBS="${LIBS//;/ }"
+
 	case $1 in
 		--version)
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @VERSION_RELEASE@"
@@ -78,13 +81,13 @@ while test $# -gt 0; do
 		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @KVIRC_CONFIG_LIBRARYDIRS@"
 		;;
 		--libraries)
-		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO @LIBS@"
+		KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO ${LIBS}"
 		;;
 		--libraryflags)
 		for d in @KVIRC_CONFIG_LIBRARYDIRS@; do
 			KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO -L$d"
 		done
-		for d in "@LIBS@"; do
+		for d in ${LIBS}; do
 			KVIRC_STUFF_TO_ECHO="$KVIRC_STUFF_TO_ECHO -l$d"
 		done
 		;;

@@ -13,13 +13,18 @@ General notes for the installation of the 4.0 release of KVIrc
     1. Introduction
     2. Minimal requirements
     3. Configuring the environment
-    4. Hacker-level installation
-    5. Creating a package
+    4. Interactive mode
+    5. Hacker-level installation
+    6. Creating a KVIrc package
 
+
+/*
+    old autotools doc. remove when cmake stuff is complete
     5. Human (detailed) installation instructions
     6. How to compile KVIrc with Qt-embedded
     7. Compiling KVIrc on Mac OS X
     8. A note about Windows 95/98/ME
+*/
 
 ###############################################################################
 # 1. Introduction
@@ -215,10 +220,24 @@ COMPILE_THREADS_USE_POSIX
 COMPILE_WITH_NO_SOUND
 COMPILE_XSS_SUPPORT
 
+###############################################################################
+# 4. Interactive mode
+###############################################################################
 
+    The CMake build system provide also an interactive mode to configure
+    the environment before compiling.
+    Again, we encourage the "out-of-source" building: build all files
+    without dirtying the sources directory.
+
+    # mkdir release
+    # cd release
+    # ccmake ..
+
+    Now you're in interactive mode, just follow the instructions on screen
+    to configure your compilation environment.
 
 ###############################################################################
-# 3. Hacker installation:
+# 5. Hacker installation:
 ###############################################################################
 
     If you're compiling the svn version of KVirc run ./autogen.sh
@@ -239,7 +258,7 @@ COMPILE_XSS_SUPPORT
     # make install
 
 ###############################################################################
-# 5, Creating a KVIrc package
+# 6. Creating a KVIrc package
 ###############################################################################
 
     CMake support DESTDIR argument.
@@ -250,6 +269,10 @@ COMPILE_XSS_SUPPORT
 
     After this step, just follow your distribution's rules to make a good
     package for the distro you're running.
+
+
+
+
 
 
 
