@@ -305,7 +305,7 @@ namespace KviThemeFunctions
 		const QString &szThemeApplication,
 		const QString &szThemeAuthor,
 		const QString &szThemeDate,
-		const QString &szThemeEngineVersion,
+		const QString &szThemeThemeEngineVersion,
 		const QPixmap &pixScreenshot,
 		int iUniqueIndexInDocument
 	)
@@ -358,7 +358,7 @@ namespace KviThemeFunctions
 			&szCreatedOn,
 			&szThemeApplication,
 			&szThemeEngineVersion,
-			&szThemeEngineVersion,
+			&szThemeThemeEngineVersion,
 			&szSubdirectory,
 			&szThemeSubdirectory
 		);
