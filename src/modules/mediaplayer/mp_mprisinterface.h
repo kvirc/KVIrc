@@ -2,11 +2,11 @@
 #define _MP_AUDACIOUSINTERFACE_H_
 //=============================================================================
 //
-//   File : mp_audaciousinterface.h
+//   File : mp_mprisinterface.h
 //   Created on Thu 06 Dec 2007 14:20:02 by Tomasz Moń
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2007 Tomasz Moń <desowin@gmail.com>
+//   Copyright (C) 2007-2008 Tomasz Moń <desowin@gmail.com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

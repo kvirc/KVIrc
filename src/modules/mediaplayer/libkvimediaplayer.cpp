@@ -26,7 +26,7 @@
 #include "mp_interface.h"
 #include "mp_amarokinterface.h"
 #include "mp_amipinterface.h"
-#include "mp_audaciousinterface.h"
+#include "mp_mprisinterface.h"
 #include "mp_jukinterface.h"
 #include "mp_winampinterface.h"
 #include "mp_xmmsinterface.h"
