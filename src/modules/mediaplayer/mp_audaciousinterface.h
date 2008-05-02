@@ -30,21 +30,29 @@
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC))
 #include <QtDBus/QtDBus>
 
-	class KviAudaciousInterface : public KviMediaPlayerInterface
+	class KviMPRISInterface : public KviMediaPlayerInterface
 	{
 	public:
-		KviAudaciousInterface();
-		virtual ~KviAudaciousInterface();
+		KviMPRISInterface();
+		virtual ~KviMPRISInterface();
 	public:
+		QString m_szServiceName;
 		virtual int detect(bool bStart);
 		virtual bool prev();
 		virtual bool next();
 		virtual bool play();
 		virtual bool stop();
 		virtual bool pause();
-		virtual bool quit();
 		virtual QString nowPlaying();
 		virtual QString mrl();
+	};
+
+	class KviAudaciousInterface : public KviMPRISInterface
+	{
+	public:
+		KviAudaciousInterface();
+	public:
+		virtual bool quit();
 		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
@@ -61,8 +69,15 @@
 		virtual QString year();
 		virtual QString mediaType();
 	};
+
+	class KviBmpxInterface : public KviMPRISInterface
+	{
+	public:
+		KviBmpxInterface();
+	};
 	
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
+	MP_DECLARE_DESCRIPTOR(KviBmpxInterface)
 	
 #endif //!COMPILE_ON_WINDOWS
 

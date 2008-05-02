@@ -37,30 +37,53 @@ MP_IMPLEMENT_DESCRIPTOR(
 	)
 )
 
-KviAudaciousInterface::KviAudaciousInterface()
+MP_IMPLEMENT_DESCRIPTOR(
+	KviBmpxInterface,
+	"bmpx",
+	__tr2qs_ctx(
+		"An interface to BMPx.\n" \
+		"Download it from http://bmpx.backtrace.info\n"
+		,
+		"mediaplayer"
+	)
+)
+
+KviMPRISInterface::KviMPRISInterface()
 : KviMediaPlayerInterface()
 {
 }
 
-KviAudaciousInterface::~KviAudaciousInterface()
+KviMPRISInterface::~KviMPRISInterface()
 {
 }
 
-int KviAudaciousInterface::detect(bool bStart)
+KviAudaciousInterface::KviAudaciousInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.audacious";
+}
+
+KviBmpxInterface::KviBmpxInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.bmp";
+}
+
+int KviMPRISInterface::detect(bool bStart)
 {
 	QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
 	if (!reply.isValid())		/* something fishy with dbus, it won't work */
 		return 0;
 
 	foreach (QString name, reply.value())
-		if (name == "org.mpris.audacious")	/* audacious is running */
+		if (name == m_szServiceName)	/* player is running */
 			return 100;
 
-	return 1;	/* dbus works, audacious may be closed */
+	return 1;	/* dbus works, player may be closed */
 }
 
-#define AUDACIOUS_SIMPLE_CALL(__action) \
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
+#define MPRIS_SIMPLE_CALL(__action) \
+	QDBusInterface dbus_iface(m_szServiceName, "/Player", \
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
@@ -70,38 +93,38 @@ int KviAudaciousInterface::detect(bool bStart)
 	} \
 	return TRUE;
 
-bool KviAudaciousInterface::prev()
+bool KviMPRISInterface::prev()
 {
-	AUDACIOUS_SIMPLE_CALL("Prev")
+	MPRIS_SIMPLE_CALL("Prev")
 }
 
-bool KviAudaciousInterface::next()
+bool KviMPRISInterface::next()
 {
-	AUDACIOUS_SIMPLE_CALL("Next")
+	MPRIS_SIMPLE_CALL("Next")
 }
 
-bool KviAudaciousInterface::play()
+bool KviMPRISInterface::play()
 {
-	AUDACIOUS_SIMPLE_CALL("Play")
+	MPRIS_SIMPLE_CALL("Play")
 }
 
-bool KviAudaciousInterface::stop()
+bool KviMPRISInterface::stop()
 {
-	AUDACIOUS_SIMPLE_CALL("Stop")
+	MPRIS_SIMPLE_CALL("Stop")
 }
 
-bool KviAudaciousInterface::pause()
+bool KviMPRISInterface::pause()
 {
-	AUDACIOUS_SIMPLE_CALL("Pause")
+	MPRIS_SIMPLE_CALL("Pause")
 }
 
 bool KviAudaciousInterface::quit()
 {
-	AUDACIOUS_SIMPLE_CALL("Quit")
+	MPRIS_SIMPLE_CALL("Quit")
 }
 
-#define AUDACIOUS_CALL_METHOD(__method, __return_if_fail) \
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
+#define MPRIS_CALL_METHOD(__method, __return_if_fail) \
+	QDBusInterface dbus_iface(m_szServiceName, "/Player", \
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __method); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
@@ -110,8 +133,26 @@ bool KviAudaciousInterface::quit()
 		return __return_if_fail; \
 	}
 
-#define AUDACIOUS_CALL_METHOD_WITH_ARG(__method, __arg, __return_if_fail) \
-        QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
+#define MPRIS_GET_METADATA_FIELD(__field) \
+	if (this->status() != KviMediaPlayerInterface::Playing) \
+		return ""; \
+	MPRIS_CALL_METHOD("GetMetadata", "") \
+	foreach (QVariant v, reply.arguments()) { \
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(v); \
+		QVariant v = qdbus_cast<QVariantMap>(arg); \
+		if (v.userType() == QVariant::Map) { \
+        		const QVariantMap map = v.toMap(); \
+        		QVariantMap::ConstIterator it = map.constBegin(); \
+        		for ( ; it != map.constEnd(); ++it) { \
+				if (it.key() == __field) \
+					return it.value().toString(); \
+			} \
+		} \
+	} \
+	return "";
+
+#define MPRIS_CALL_METHOD_WITH_ARG(__method, __arg, __return_if_fail) \
+        QDBusInterface dbus_iface(m_szServiceName, "/Player", \
                                 "org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
         QDBusMessage reply = dbus_iface.call(QDBus::Block, __method, __arg); \
         if (reply.type() == QDBusMessage::ErrorMessage) { \
@@ -120,12 +161,12 @@ bool KviAudaciousInterface::quit()
                 return __return_if_fail; \
         }
 
-QString KviAudaciousInterface::nowPlaying()
+QString KviMPRISInterface::nowPlaying()
 {
 	if (this->status() != KviMediaPlayerInterface::Playing)
 		return "";
 
-	AUDACIOUS_CALL_METHOD("GetMetadata", "")
+	MPRIS_CALL_METHOD("GetMetadata", "")
 
 	QString artist;
 	QString title;
@@ -149,9 +190,9 @@ QString KviAudaciousInterface::nowPlaying()
 		return "";
 }
 
-QString KviAudaciousInterface::mrl()
+QString KviMPRISInterface::mrl()
 {
-	AUDACIOUS_CALL_METHOD("GetMetadata", "")
+	MPRIS_CALL_METHOD("GetMetadata", "")
 
 	foreach (QVariant v, reply.arguments()) {
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
@@ -170,13 +211,13 @@ QString KviAudaciousInterface::mrl()
 
 bool KviAudaciousInterface::setVol(kvs_int_t &iVol)
 {
-	AUDACIOUS_CALL_METHOD_WITH_ARG("VolumeSet", QVariant((int)(100*iVol/255)), false);
+	MPRIS_CALL_METHOD_WITH_ARG("VolumeSet", QVariant((int)(100*iVol/255)), false);
 	return true;
 }
 
 int KviAudaciousInterface::getVol()
 {
-	AUDACIOUS_CALL_METHOD("VolumeGet", -1)
+	MPRIS_CALL_METHOD("VolumeGet", -1)
 
 	int iVol = reply.arguments().first().toInt();
 	return iVol * 255 /100;
@@ -184,7 +225,7 @@ int KviAudaciousInterface::getVol()
 
 KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 {
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player",
+	QDBusInterface dbus_iface(m_szServiceName, "/Player",
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
 	if (!dbus_iface.isValid())
 		return KviMediaPlayerInterface::Unknown;
@@ -201,13 +242,13 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 
 int KviAudaciousInterface::position()
 {
-	AUDACIOUS_CALL_METHOD("PositionGet", -1)
+	MPRIS_CALL_METHOD("PositionGet", -1)
 	return reply.arguments().first().toInt();
 }
 
 int KviAudaciousInterface::length()
 {
-	AUDACIOUS_CALL_METHOD("GetMetadata", -1)
+	MPRIS_CALL_METHOD("GetMetadata", -1)
 
 	foreach (QVariant v, reply.arguments()) {
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
@@ -226,58 +267,33 @@ int KviAudaciousInterface::length()
 
 bool KviAudaciousInterface::jumpTo(int &iPos)
 {
-	AUDACIOUS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
+	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
 	return true;
 }
 
-#define AUDACIOUS_GET_METADATA_FIELD(__field) \
-	if (this->status() != KviMediaPlayerInterface::Playing) \
-		return ""; \
-	QDBusInterface dbus_iface("org.mpris.audacious", "/Player", \
-				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, "GetMetadata"); \
-	if (reply.type() == QDBusMessage::ErrorMessage) { \
-		QDBusError err = reply; \
-		debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
-		return ""; \
-	} \
-	foreach (QVariant v, reply.arguments()) { \
-		QDBusArgument arg = qvariant_cast<QDBusArgument>(v); \
-		QVariant v = qdbus_cast<QVariantMap>(arg); \
-		if (v.userType() == QVariant::Map) { \
-        		const QVariantMap map = v.toMap(); \
-        		QVariantMap::ConstIterator it = map.constBegin(); \
-        		for ( ; it != map.constEnd(); ++it) { \
-				if (it.key() == __field) \
-					return it.value().toString(); \
-			} \
-		} \
-	} \
-	return "";
-
 QString KviAudaciousInterface::title()
 {
-	AUDACIOUS_GET_METADATA_FIELD("title")
+	MPRIS_GET_METADATA_FIELD("title")
 }
 
 QString KviAudaciousInterface::artist()
 {
-	AUDACIOUS_GET_METADATA_FIELD("artist")
+	MPRIS_GET_METADATA_FIELD("artist")
 }
 
 QString KviAudaciousInterface::genre()
 {
-	AUDACIOUS_GET_METADATA_FIELD("genre")
+	MPRIS_GET_METADATA_FIELD("genre")
 }
 
 QString KviAudaciousInterface::comment()
 {
-	AUDACIOUS_GET_METADATA_FIELD("comment")
+	MPRIS_GET_METADATA_FIELD("comment")
 }
 
 QString KviAudaciousInterface::album()
 {
-	AUDACIOUS_GET_METADATA_FIELD("album")
+	MPRIS_GET_METADATA_FIELD("album")
 }
 
 /* audacious specific interface */

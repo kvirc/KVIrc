@@ -1610,6 +1610,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmms2Interface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviBmpxInterface));
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
