@@ -35,7 +35,7 @@
 #include "kvi_theme.h"
 #include "kvi_frame.h"
 
-#include <qmime.h>
+//#include <qmime.h>
 #include <q3mimefactory.h>
 #define KviTalMimeSourceFactory Q3MimeSourceFactory
 

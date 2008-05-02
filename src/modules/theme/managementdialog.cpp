@@ -138,8 +138,9 @@ KviThemeManagementDialog * KviThemeManagementDialog::m_pInstance = 0;
 
 
 KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
-: QDialog(parent,"theme_options_widget")
+: QDialog(parent)
 {
+	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
 
@@ -411,7 +412,6 @@ bool KviThemeManagementDialog::hasSelectedItems()
 	}
 	return false;
 }
-
 
 void KviThemeManagementDialog::enableDisableButtons()
 {

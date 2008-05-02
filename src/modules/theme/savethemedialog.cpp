@@ -40,7 +40,7 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include <kvi_tal_textedit.h>
+#include "kvi_tal_textedit.h"
 
 #include <QLayout>
 #include <QPushButton>
@@ -56,7 +56,7 @@
 #include <QBuffer>
 #include <QLabel>
 
-#include <q3multilineedit.h>
+//#include <q3multilineedit.h>
 
 
 KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)

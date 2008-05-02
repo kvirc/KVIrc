@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_theme.h"
-#include <kvi_tal_wizard.h>
+#include "kvi_tal_wizard.h"
 
 #include <QDialog>
 
@@ -35,7 +35,7 @@ class QLineEdit;
 class QPushButton;
 class QCheckBox;
 class QLabel;
-class Q3MultiLineEdit;
+//class Q3MultiLineEdit;
 class KviTalTextEdit;
 class KviFileSelector;
 
