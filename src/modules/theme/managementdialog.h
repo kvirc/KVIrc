@@ -29,14 +29,11 @@
 #include "kvi_theme.h"
 #include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
-#include <kvi_tal_wizard.h>
+#include "kvi_tal_wizard.h"
 
 #include <QDialog>
 #include <QComboBox>
 #include <QCursor>
-
-#include <q3simplerichtext.h>
-#define KviTalSimpleRichText Q3SimpleRichText
 
 class QLineEdit;
 class QPushButton;
@@ -54,8 +51,8 @@ public:
 	KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf);
 	virtual ~KviThemeListBoxItem();
 public:
-	KviThemeInfo * m_pThemeInfo;
-	KviTalSimpleRichText * m_pText;
+	KviThemeInfo   * m_pThemeInfo;
+	KviTalTextEdit * m_pText;
 public:
 	KviThemeInfo * themeInfo(){ return m_pThemeInfo; };
 	virtual int height ( const KviTalListBox * lb ) const ;
@@ -72,8 +69,8 @@ public:
 	virtual ~KviThemeManagementDialog();
 protected:
 	static KviThemeManagementDialog * m_pInstance;
-	KviTalListBox            * m_pListBox;
-	KviTalPopupMenu          * m_pContextPopup; 
+	KviTalListBox       * m_pListBox;
+	KviTalPopupMenu     * m_pContextPopup; 
 	KviStyledToolButton * m_pDeleteThemeButton;
 	KviStyledToolButton * m_pPackThemeButton;
 public:

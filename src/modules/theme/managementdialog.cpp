@@ -52,7 +52,6 @@
 #include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 #include <kvi_tal_textedit.h>
-#include <kvi_tal_textedit.h>
 
 #include <QLayout>
 #include <QPushButton>
@@ -103,11 +102,13 @@ KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
 	t += "<br><nobr><font size=\"-1\">";
 	t += inf->description();
 	t += "</font></nobr>";
-	m_pText = new KviTalSimpleRichText(t,box->font());
+	m_pText = new KviTalTextEdit();
+	m_pText->setFont(box->font());
+	m_pText->setText(t);
 	int iWidth = box->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	m_pText->setWidth(iWidth);
+	m_pText->setLineWidth(iWidth);
 }
 
 KviThemeListBoxItem::~KviThemeListBoxItem()
@@ -122,8 +123,8 @@ void KviThemeListBoxItem::paint(QPainter * p)
 	p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))) );
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = p->window().width() - (afterIcon + LVI_BORDER);
-	m_pText->setWidth(www);
-	m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
+	m_pText->setLineWidth(www);
+	//m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
 }
 
 int KviThemeListBoxItem::height(const KviTalListBox * lb) const 
