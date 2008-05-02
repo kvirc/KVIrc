@@ -33,32 +33,33 @@
 #include <QDialog>
 #include <QColor>
 #include <QTextDocument>
-
+#include <QListWidget>
+#include <QItemDelegate>
 class QPushButton;
 class QPixmap;
 class KviKvsScriptAddon;
 
 
-class KviScriptAddonListViewItem : public KviTalListViewItem
+class KviScriptAddonListViewItem : public QListWidgetItem
 {
 public:
-	KviScriptAddonListViewItem(KviTalListView * v,KviKvsScriptAddon * a);
+	KviScriptAddonListViewItem(QListWidget * v,KviKvsScriptAddon * a);
 	~KviScriptAddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
 	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
-	KviTalListView * m_pListView;
+	QListWidget * m_pListView;
 	QString m_szKey;
 public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
 protected:
-	virtual QString key(int,bool) const;
+	//virtual QString key(int,bool) const;
 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 	virtual void setup();
 };
 
-class KviScriptAddonListView : public KviListView
+class KviScriptAddonListView : public QListWidget
 {
 	Q_OBJECT
 public:
@@ -92,7 +93,7 @@ protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent *e);
 protected slots:
-	void currentChanged(KviTalListViewItem *i);
+	void currentChanged(QListWidgetItem *i,QListWidgetItem *);
 	void closeClicked();
 	void showScriptHelp();
 	void configureScript();
@@ -100,6 +101,14 @@ protected slots:
 	void getMoreScripts();
 	void installScript();
 };
-
+class KviScriptAddonDelegate : public QItemDelegate
+{
+public:
+	KviScriptAddonDelegate(QListWidget * pWidget)
+		: QItemDelegate(pWidget){};
+	~KviScriptAddonDelegate(){};
+	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	};
 
 #endif //!_MANAGEMENTDIALOG_H_
