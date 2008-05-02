@@ -56,7 +56,6 @@ class KVILIB_API KviTalIconViewItem : public QTableWidgetItem
 public:
 	KviTalIconViewItem(QString text,const QIcon & icon)
 	: QTableWidgetItem(icon,text) {setSizeHint(QSize(30,20));};
-	void setPixmap(QPixmap *pix);
 protected:
 	QItemDelegate m_pDelegate; 
 };
@@ -65,14 +64,12 @@ class KviTalIconViewItemDelegate : public QItemDelegate
 {
 protected:
 	QTableWidget * m_pTableWidget;
-	QPixmap * m_pPix;
 public:
 	KviTalIconViewItemDelegate(QTableWidget * pTableWidget)
-		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget){m_pPix=0;};
+		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget){};
 	~KviTalIconViewItemDelegate(){};
 //	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	 void drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const;
+//	 void drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const;
 	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	 void setPixmap(QPixmap *pix);
 	};
 #endif // _KVI_TAL_ICONVIEW_H_

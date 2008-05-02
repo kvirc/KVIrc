@@ -33,10 +33,10 @@
 #include <QAbstractTextDocumentLayout>
 #include <QStyle>
 
-
+/*
 void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
 {
-	/*
+
 	painter->save();
 	QTextDocument doc;
 	doc.setHtml( text );
@@ -45,15 +45,12 @@ void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleO
 	painter->translate(rect.x(),rect.y());
 	doc.documentLayout()->draw(painter, context);
 	painter->restore();
-	*/
 }
-
+*/
 void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
 	painter->save();
-	if (m_pPix)
-		painter->drawPixmap(option.rect,*m_pPix,option.rect);
-	QString text="<center>";
+		QString text="<center>";
 	text+=index.data(Qt::DisplayRole).toString();
 	text +="</center>";
 	
@@ -103,10 +100,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 	painter->restore();
 }
 
-void KviTalIconViewItemDelegate::setPixmap(QPixmap *pix)
-{
-	m_pPix=pix;
-}
+
 /*
 QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
@@ -129,10 +123,6 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	
 }
 
-void KviTalIconView::setPixmap(QPixmap *pix)
-{
-	m_pDelegate->setPixmap(pix);
-}
 
 void KviTalIconView::redirect_cellActivated(int row,int col)
 {
