@@ -123,112 +123,23 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 
 	m_pDelegate=new KviTalIconViewItemDelegate(this);
 		setItemDelegate(m_pDelegate);
-	connect(this,SIGNAL(itemDoubleClicked(QTableWidgetItem *)),this,SLOT(redirect_doubleClicked(QTableWidgetItem *)));
+	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(redirect_cellActivated(int,int)));
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 	
-/*
-	connect(this,SIGNAL(clicked(QListWidgetItem *)),this,SLOT(redirect_clicked(QListWidgetItem *)));
-	
 
-	connect(this,SIGNAL(selectionChanged(Q3IconViewItem *)),this,SLOT(redirect_selectionChanged(Q3IconViewItem *)));
-	connect(this,SIGNAL(currentChanged(Q3IconViewItem *)),this,SLOT(redirect_currentChanged(Q3IconViewItem *)));
-	connect(this,SIGNAL(clicked(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_clicked(Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(pressed(Q3IconViewItem *)),this,SLOT(redirect_pressed(Q3IconViewItem *)));
-	connect(this,SIGNAL(pressed(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_pressed(Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(doubleClicked(Q3IconViewItem *)),this,SLOT(redirect_doubleClicked(Q3IconViewItem *)));
-	connect(this,SIGNAL(returnPressed(Q3IconViewItem *)),this,SLOT(redirect_returnPressed(Q3IconViewItem *)));
-	connect(this,SIGNAL(rightButtonClicked(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_rightButtonClicked(Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(rightButtonPressed(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_rightButtonPressed(Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(mouseButtonClicked(int,Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_mouseButtonClicked(int,Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(mouseButtonPressed(int,Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_mouseButtonPressed(int,Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(contextMenuRequested(Q3IconViewItem *,const QPoint &)),this,SLOT(redirect_contextMenuRequested(Q3IconViewItem *,const QPoint &)));
-	connect(this,SIGNAL(onItem(Q3IconViewItem *)),this,SLOT(redirect_onItem(Q3IconViewItem *)));
-	*/
-}
 void KviTalIconView::setPixmap(QPixmap *pix)
 {
 	m_pDelegate->setPixmap(pix);
 }
-void KviTalIconView::redirect_doubleClicked(QTableWidgetItem * pItem)
+void KviTalIconView::redirect_cellActivated(int row,int col)
 {
-	emit doubleClicked((KviTalIconViewItem *)pItem);
+	emit cellActivated((KviTalIconViewItem *)item(row,col));
 }
 void KviTalIconView::redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev)
 {
 	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)prev);
 }
-/*
-void KviTalIconView::redirect_selectionChanged(Q3IconViewItem * pItem)
-{
-	emit selectionChanged((KviTalIconViewItem *)pItem);
-}
 
-void KviTalIconView::redirect_currentChanged(Q3IconViewItem * pItem)
-{
-	emit currentChanged((KviTalIconViewItem *)pItem);
-}
-
-void KviTalIconView::redirect_clicked(Q3IconViewItem * pItem)
-{
-	emit clicked((KviTalIconViewItem *)pItem);
-}
-
-void KviTalIconView::redirect_clicked(Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit clicked((KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_pressed(Q3IconViewItem * pItem)
-{
-	emit pressed((KviTalIconViewItem *)pItem);
-}
-
-void KviTalIconView::redirect_pressed(Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit pressed((KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_doubleClicked(Q3IconViewItem * pItem)
-{
-	emit doubleClicked((KviTalIconViewItem *)pItem);
-}
-
-void KviTalIconView::redirect_returnPressed(Q3IconViewItem * pItem)
-{
-	emit returnPressed((KviTalIconViewItem *)pItem);
-}
-
-void KviTalIconView::redirect_rightButtonClicked(Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit rightButtonClicked((KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_rightButtonPressed(Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit rightButtonPressed((KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_mouseButtonClicked(int iButton,Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit mouseButtonClicked(iButton,(KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_mouseButtonPressed(int iButton,Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit mouseButtonPressed(iButton,(KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_contextMenuRequested(Q3IconViewItem * pItem,const QPoint &pnt)
-{
-	emit contextMenuRequested((KviTalIconViewItem *)pItem,pnt);
-}
-
-void KviTalIconView::redirect_onItem(Q3IconViewItem * pItem)
-{
-	emit onItem((KviTalIconViewItem *)pItem);
-}
-
-*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_iconview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

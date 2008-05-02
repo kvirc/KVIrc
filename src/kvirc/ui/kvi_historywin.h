@@ -27,12 +27,13 @@
 #include "kvi_string.h"
 
 #include "kvi_tal_listbox.h"
+#include <QListWidget>
 
 class KviInput;
 
 #define KVI_HISTORY_WIN_HEIGHT 130
 
-class KVIRC_API KviHistoryWindow : public KviTalListBox
+class KVIRC_API KviHistoryWindow : public QListWidget
 {
 	Q_OBJECT
 public:
@@ -55,7 +56,7 @@ private:
 	void fill();
 public slots:
 	void ownerDead();
-	void itemSelected(const QString &str);
+	void itemSelected(QListWidgetItem *);
 };
 
 #endif //_KVI_HISTORYWIN_H_

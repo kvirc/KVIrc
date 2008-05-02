@@ -45,10 +45,14 @@ KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 : KviTalIconView(parent,Qt::Popup)
 {
 	//setPixmap(g_pIconManager->getImage("kvi_test.png"));
-
-	 QPalette pal=palette();
-		pal.setBrush(backgroundRole(), QBrush(*g_pIconManager->getImage("kvi_test.png")));
-		setPalette(pal);
+/*QPalette p;
+p.setBrush(QPalette::Base, QBrush());
+viewport()->setPalette(p);
+*/
+QPalette pal;//viewport()->palette();
+		//pal.setBrush(QPalette::Base, QBrush(*g_pIconManager->getImage("kvi_test.png")));
+pal.setBrush(QPalette::Base, QBrush(QColor(200,200,200,127)));
+		viewport()->setPalette(pal);
 
 	m_iTimerId = -1;
 	m_pParent=parent;
@@ -61,7 +65,7 @@ KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 	m_pOwner = 0;
 	fill();
 	//connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
-	connect(this,SIGNAL(doubleClicked( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
+	connect(this,SIGNAL(cellActivated( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
 	connect(this,SIGNAL(currentItemChanged ( KviTalIconViewItem *, KviTalIconViewItem * )),this,SLOT(currentItemChanged( KviTalIconViewItem *, KviTalIconViewItem * )));
 	m_bAltMode = false;
 	
@@ -166,16 +170,18 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
+			case Qt::Key_Return:
 			KviTalIconView::keyPressEvent(e);
 			return;
 			break;
-		case Qt::Key_Return:
+	/*	case Qt::Key_Return:
 			{
 				if (m_pItem) itemSelected(m_pItem);
 				else KviTalIconView::keyPressEvent(e);
 				return;
 			}
 		break;
+	*/
 		case Qt::Key_Escape:
 			doHide();
 			return;

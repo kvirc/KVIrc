@@ -60,10 +60,10 @@ signals:
 	//void mouseButtonPressed(int iButton,KviTalIconViewItem * pItem,const QPoint &pnt);
 	//void contextMenuRequested(KviTalIconViewItem * pItem,const QPoint &pnt);
 	//void onItem(KviTalIconViewItem * pItem);
-	void doubleClicked(KviTalIconViewItem * pItem);
+	void cellActivated(KviTalIconViewItem * pItem);
 	void currentItemChanged(KviTalIconViewItem *pItem,KviTalIconViewItem *prev);
 protected slots:
-	void redirect_doubleClicked(QTableWidgetItem * pItem);
+	void redirect_cellActivated(int,int);
 	void redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev);
 
 	/*

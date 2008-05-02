@@ -33,17 +33,20 @@
 
 #include <QEvent>
 #include <QMouseEvent>
+#include <QListWidget>
 
 #include <ctype.h>
 
 extern KviInputHistory * g_pInputHistory;
 
 KviHistoryWindow::KviHistoryWindow()
-: KviTalListBox(0,Qt::Popup)
+: QListWidget(0)
 {
+	setWindowFlags(Qt::Popup);
 	m_pOwner = 0;
-	setHScrollBarMode(Q3ScrollView::AlwaysOff);
-	connect(this,SIGNAL(selected(const QString &)),this,SLOT(itemSelected(const QString &)));
+	setSelectionMode(QAbstractItemView::SingleSelection);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	connect(this,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(itemSelected(QListWidgetItem *)));
 
 	m_iTimerId = -1;
 }
@@ -62,9 +65,9 @@ void KviHistoryWindow::fill()
 	clear();
 	for(QString * s = g_pInputHistory->list()->last();s;s = g_pInputHistory->list()->prev())
 	{
-		insertItem(*s);
+		addItem(*s);
 	}
-	if(count() > 0)setCurrentItem(count() - 1);
+	if(count() > 0)setCurrentItem(item(count()-1));
 }
 
 void KviHistoryWindow::popup(KviInput *owner)
@@ -83,7 +86,7 @@ void KviHistoryWindow::mousePressEvent(QMouseEvent *e)
 	if(e->pos().y() < 0)goto hideme;
 	if(e->pos().y() > height())goto hideme;
 
-	KviTalListBox::mousePressEvent(e);
+	QListWidget::mousePressEvent(e);
 	e->accept();
 	return;
 
@@ -134,7 +137,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
 		case Qt::Key_Return:
-			KviTalListBox::keyPressEvent(e);
+			QListWidget::keyPressEvent(e);
 			return;
 		break;
 		case Qt::Key_Escape:
@@ -206,8 +209,14 @@ void KviHistoryWindow::show()
 	QWidget::show();
 }
 
-void KviHistoryWindow::timerEvent(QTimerEvent *)
+void KviHistoryWindow::timerEvent(QTimerEvent *e)
 {
+	if (e->timerId()!=m_iTimerId)
+	{
+		QListWidget::timerEvent(e);
+		return;
+	}
+
 	m_pOwner = 0; // do not setFocus() to the owner after the timeout
 	doHide();
 }
@@ -224,10 +233,10 @@ void KviHistoryWindow::doHide()
 		m_pOwner->setFocus();
 }
 
-void KviHistoryWindow::itemSelected(const QString &str)
+void KviHistoryWindow::itemSelected(QListWidgetItem *item)
 {
 	doHide();
-	if(m_pOwner)m_pOwner->setText(str);
+	if(m_pOwner && item)m_pOwner->setText(item->text());
 }
 
 
