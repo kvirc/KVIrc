@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_selectors.h"
-#include <kvi_tal_wizard.h>
+#include "kvi_tal_wizard.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"

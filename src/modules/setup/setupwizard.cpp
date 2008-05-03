@@ -36,7 +36,6 @@ bool g_bFoundMirc;
 #include "kvi_env.h"
 #include "kvi_options.h"
 #include "kvi_config.h"
-
 #include "kvi_tal_textedit.h"
 #include "kvi_tal_hbox.h"
 
@@ -947,7 +946,7 @@ void KviSetupWizard::accept()
 		bNeedToApplyDefaults=true;
 		if(m_pDirUseNew->isOn()) {
 			szDir = m_pDataPathEdit->text();
-		} 
+		}
 #ifdef COMPILE_ON_WINDOWS
 		else { //portable
 			szDir = g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Settings";
@@ -979,7 +978,7 @@ void KviSetupWizard::accept()
 
 		if(m_pDirUseNew->isOn()) {
 			szDir = m_pIncomingPathEdit->text();
-		} 
+		}
 #ifdef COMPILE_ON_WINDOWS
 		else { //portable
 			szDir = g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Downloads";
