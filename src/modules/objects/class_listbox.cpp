@@ -24,7 +24,6 @@
 #include "kvi_error.h"
 #include "kvi_locale.h"
 #include "kvi_debug.h"
-#include "kvi_tal_listbox.h"
 #include "class_list.h"
 #include "class_listbox.h"
 
@@ -181,7 +180,7 @@ bool KviKvsObject_listbox::functionchangeItem(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	if (szText.isEmpty()) c->warning(__tr2qs("No string parameter given - using empty string"));
-	if(iIndex >= (cnt = ((KviTalListBox *)widget())->count()))
+	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
 		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
 			"$count() - 1 [%d]"), iIndex, cnt);
@@ -204,7 +203,7 @@ bool KviKvsObject_listbox::functionremoveItem(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	if(iIndex >= (cnt = ((KviTalListBox *)widget())->count()))
+	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
 		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
 			"$count() - 1 [%d]"), iIndex, cnt);

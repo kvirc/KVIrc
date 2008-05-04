@@ -140,37 +140,7 @@ QString KviScriptAddonListViewItem::key(int,bool) const
 }
 */
 
-void KviScriptAddonListViewItem::setup()
-{
-	/*
-	KviTalListViewItem::setup();
-	int iWidth = m_pListView->visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
-	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight+2);
-	*/
-}
 
-void KviScriptAddonListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
-{
-	/*
-	if (isSelected())
-	{
-		QColor col(m_pListView->palette().highlight());
-		col.setAlpha(127);
-		p->setBrush(col);
-		p->drawRect(0, 0, m_pListView->visibleWidth(), height());
-	}
-	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	p->translate(afterIcon,LVI_BORDER);
-	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
-	m_pText->drawContents(p);
-	*/
-}
 
 KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 : QListWidget (pParent)
@@ -181,13 +151,6 @@ KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	int iWidth = width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	
-	// FIXME: doesn't work in Qt4
-	/*
-	int iWidth = visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	addColumn("",iWidth);
-	*/
 	setSortingEnabled(true);
 }
 
@@ -195,46 +158,27 @@ KviScriptAddonListView::~KviScriptAddonListView()
 {
 }
 
-void KviScriptAddonListView::resizeEvent(QResizeEvent * e)
-{
-	QListWidget::resizeEvent(e);
-//	int iWidth = visibleWidth();
-//	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-//	setColumnWidth(0,iWidth);
-}
 
 
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
-: QDialog(p,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
+: QDialog(p/*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
 	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
+	setObjectName("Addon manager");
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
 	setModal(true);
-
 	m_pInstance = this;
-
 	QGridLayout * g = new QGridLayout(this);
 	
-	/*QLabel * lb = new QLabel(this);
-	lb->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-
-	g->addMultiCellWidget(lb,0,10,0,0);
-	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
-	if(pix)
-	{
-		lb->setPixmap(*pix);
-		lb->setFixedWidth(pix->width());
-	}
-	lb->setBackgroundColor(Qt::black);
-	lb->setAlignment(Qt::AlignBottom | Qt::AlignRight);
-	*/
+	//	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
 	m_pListView = new KviScriptAddonListView(this);
 	m_pListView->setItemDelegate(new KviScriptAddonDelegate(m_pListView));
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	szPic += "/kvi_dialog_addons.png";
-	QString style("QListWidget {background-image: url(" + szPic + ");  background-attachment: fixed;}");
+	// FIXME
+	szPic += "\\kvi_dialog_addons.png";
+	QString style("QListWidget {background-image: url(" + szPic + ");}");
 	debug("pic: %s",szPic.toUtf8().data());
 	debug("style: %s",style.toUtf8().data());
 	m_pListView->setStyleSheet(style);
@@ -281,7 +225,6 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	
 	currentChanged(0,0);
 	connect(m_pListView,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
-	//currentToolBarChanged();
 	m_pListView->setCurrentItem(m_pListView->item(0));
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{
@@ -296,8 +239,6 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 KviScriptManagementDialog::~KviScriptManagementDialog()
 {
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
-
-	//KviActionManager::instance()->customizeToolBarsDialogDestroyed();
 	m_pInstance = 0;
 }
 

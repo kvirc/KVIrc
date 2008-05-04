@@ -51,7 +51,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
-#include <kvi_tal_textedit.h>
+
 
 #include <QLayout>
 #include <QPushButton>
@@ -68,6 +68,7 @@
 #include <QImage>
 #include <QBuffer>
 #include <QCloseEvent>
+#include <QTextDocument>
 //#include <q3multilineedit.h>
 
 #include <stdlib.h> // rand & srand
@@ -75,8 +76,47 @@
 extern QRect g_rectManagementDialogGeometry;
 
 
-KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
-: KviTalListBoxText(box)
+void KviThemeDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+	painter->save();
+	if (option.state & QStyle::State_Selected)
+	{
+		QPalette pal=option.palette;
+		QBrush brush=pal.highlight();
+		QColor col=brush.color();
+		col.setAlpha(127);
+		brush.setColor(col);
+		painter->fillRect(option.rect,brush);
+	}
+	QString text=index.data(Qt::DisplayRole).toString();
+	QPixmap pixmap;
+	QRect decorationRect;
+	//QVariant value = index.data(Qt::DecorationRole);
+	QStyle::State state=option.state;
+	QRect rect=option.rect;
+	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
+//	p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))) );
+	
+//	QIcon ico=QIcon(value.value<QIcon>());
+	painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME))));
+	QTextDocument doc;
+	doc.setHtml( text );
+	painter->translate(option.rect.x()+afterIcon,option.rect.y()+LVI_BORDER);
+	doc.setTextWidth(option.rect.width()-10);
+	QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-afterIcon,option.rect.height()-(LVI_BORDER*2)-4));
+	doc.drawContents(painter, cliprect);	
+	painter->restore();
+}
+
+QSize KviThemeDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+	return QSize(300,40);		
+}
+
+
+
+KviThemeListBoxItem::KviThemeListBoxItem(QListWidget * box,KviThemeInfo * inf)
+: QListWidgetItem(box)
 {
 	m_pThemeInfo = inf;
 	QString t;
@@ -102,21 +142,14 @@ KviThemeListBoxItem::KviThemeListBoxItem(KviTalListBox * box,KviThemeInfo * inf)
 	t += "<br><nobr><font size=\"-1\">";
 	t += inf->description();
 	t += "</font></nobr>";
-	m_pText = new KviTalTextEdit();
-	m_pText->setFont(box->font());
-	m_pText->setText(t);
-	int iWidth = box->visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	m_pText->setLineWidth(iWidth);
+	setText(t);
 }
 
 KviThemeListBoxItem::~KviThemeListBoxItem()
 {
 	delete m_pThemeInfo;
-	delete m_pText;
 }
-
+/*
 void KviThemeListBoxItem::paint(QPainter * p)
 {
 	KviTalListBoxText::paint(p);
@@ -124,7 +157,7 @@ void KviThemeListBoxItem::paint(QPainter * p)
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
 	int www = p->window().width() - (afterIcon + LVI_BORDER);
 	m_pText->setLineWidth(www);
-	//m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
+	m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,p->window().height() - (LVI_BORDER * 2)),listBox()->viewport()->colorGroup());
 }
 
 int KviThemeListBoxItem::height(const KviTalListBox * lb) const 
@@ -134,6 +167,7 @@ int KviThemeListBoxItem::height(const KviTalListBox * lb) const
 	return iHeight;
 }
 
+*/
 KviThemeManagementDialog * KviThemeManagementDialog::m_pInstance = 0;
 
 
@@ -157,7 +191,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	QFrame * sep;
 
 	tb = new KviStyledToolButton(hb);
-	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
+	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
 	tb->setUsesBigPixmap(true);
 	QToolTip::add(tb,__tr2qs_ctx("Save Current Theme...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(saveCurrentTheme()));
@@ -197,10 +231,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	QWidget *w= new QWidget(hb);
 	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
-	m_pListBox = new KviTalListBox(this);
+	m_pListBox = new QListWidget(this);
+	m_pListBox->setItemDelegate(new KviThemeDelegate(m_pListBox));
 	m_pListBox->setMinimumHeight(400);
 	m_pListBox->setMinimumWidth(400);
-	m_pListBox->setSelectionMode(KviTalListBox::Extended);
+
+	m_pListBox->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	m_pListBox->setSortingEnabled(true);
 	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(applyTheme(KviTalListBoxItem *)));
 	connect(m_pListBox,SIGNAL(contextMenuRequested(KviTalListBoxItem *,const QPoint &)),
 		this,SLOT(contextMenuRequested(KviTalListBoxItem *,const QPoint &)));
@@ -260,10 +297,12 @@ void KviThemeManagementDialog::packTheme()
 {
 	KviPointerList<KviThemeInfo> dl;
 	dl.setAutoDelete(false);
-	for(KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListBox->firstItem();it;it = (KviThemeListBoxItem *)it->next())
+	QList<QListWidgetItem*> itemsSelected = m_pListBox->selectedItems ();
+	for(int i=0;i<itemsSelected.count();i++)
+//	for(KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListBox->firstItem();it;it = (KviThemeListBoxItem *)it->next())
 	{
-		if(it->isSelected())
-			dl.append(it->themeInfo());
+	//	if(it->isSelected())
+			dl.append(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo());
 	}
 	if(dl.isEmpty())return;
 
@@ -273,7 +312,7 @@ void KviThemeManagementDialog::packTheme()
 
 }
 
-void KviThemeManagementDialog::contextMenuRequested(KviTalListBoxItem * it,const QPoint & pos)
+void KviThemeManagementDialog::contextMenuRequested(QListWidgetItem * it,const QPoint & pos)
 {
 	if(it)
 	{
@@ -285,7 +324,7 @@ void KviThemeManagementDialog::contextMenuRequested(KviTalListBoxItem * it,const
 	}
 }
 
-void KviThemeManagementDialog::applyTheme ( KviTalListBoxItem * it)
+void KviThemeManagementDialog::applyTheme ( QListWidgetItem * it)
 {
 	if(it)m_pListBox->setCurrentItem(it);
 	applyCurrentTheme();
@@ -293,7 +332,7 @@ void KviThemeManagementDialog::applyTheme ( KviTalListBoxItem * it)
 
 void KviThemeManagementDialog::applyCurrentTheme()
 {
-	KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListBox->item(m_pListBox->currentItem());
+	KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListBox->currentItem();
 	if(!it)return;
 
 	if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
@@ -318,16 +357,18 @@ void KviThemeManagementDialog::applyCurrentTheme()
 
 void KviThemeManagementDialog::deleteTheme()
 {
-	for(KviThemeListBoxItem * pItem = (KviThemeListBoxItem *)m_pListBox->firstItem();pItem;pItem = (KviThemeListBoxItem *)pItem->next())
+	QList<QListWidgetItem*> itemsSelected = m_pListBox->selectedItems ();
+	for(int i=0;i<itemsSelected.count();i++)
+//	for(KviThemeListBoxItem * pItem = (KviThemeListBoxItem *)m_pListBox->firstItem();pItem;pItem = (KviThemeListBoxItem *)pItem->next())
 	{
-		if(pItem->isSelected())
-		{
+	//	if(pItem->isSelected())
+	//	{
 			if(!KviMessageBox::yesNo(__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 				__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
-					&(pItem->themeInfo()->name()),&(pItem->themeInfo()->version())))goto jump_out;
+					&(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->name()),&(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
 
-			KviFileUtils::deleteDir(pItem->themeInfo()->absoluteDirectory());
-		}
+			KviFileUtils::deleteDir(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
+	//	}
 	}
 jump_out:
 	fillThemeBox();
@@ -406,11 +447,16 @@ void KviThemeManagementDialog::fillThemeBox()
 
 bool KviThemeManagementDialog::hasSelectedItems()
 {
+QList<QListWidgetItem*> itemsSelected = m_pListBox->selectedItems ();
+return itemsSelected.count()?true:false;
+	/*for(int i=0;i<itemsSelected.count();i++)
+
 	for(KviTalListBoxItem * it = m_pListBox->firstItem();it;it = it->next())
 	{
 		if(it->isSelected())return true;
 	}
 	return false;
+	*/
 }
 
 void KviThemeManagementDialog::enableDisableButtons()
@@ -450,5 +496,5 @@ void KviThemeManagementDialog::tipRequest(KviDynamicToolTip *pTip,const QPoint &
 		0
 	);
 
-	pTip->tip(m_pListBox->itemRect(it),szThemeDescription);
+	pTip->tip(m_pListBox->visualItemRect(it),szThemeDescription);
 }

@@ -26,7 +26,6 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
-#include "kvi_tal_listbox.h"
 #include <QListWidget>
 
 class KviInput;

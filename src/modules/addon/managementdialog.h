@@ -66,8 +66,6 @@ class KviScriptAddonListView : public QListWidget
 public:
 	KviScriptAddonListView(QWidget * pParent);
 	~KviScriptAddonListView();
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
 };
 
 class KviScriptManagementDialog : public QDialog
