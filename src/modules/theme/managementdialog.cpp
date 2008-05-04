@@ -186,14 +186,17 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	QGridLayout * g = new QGridLayout(this);
 
 	KviTalHBox *hb = new KviTalHBox(this);
-	g->addMultiCellWidget(hb,0,0,0,1);
+	hb->setMargin(1);
+	hb->setSpacing(1);
+	g->addWidget(hb,0,0);
+	//g->addMultiCellWidget(hb,0,0,0,1);
 
-	KviStyledToolButton * tb;
+	QToolButton * tb;
 	QFrame * sep;
 
-	tb = new KviStyledToolButton(hb);
+	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
-	tb->setUsesBigPixmap(true);
+	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Save Current Theme...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(saveCurrentTheme()));
 
@@ -201,13 +204,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 	
-	m_pPackThemeButton = new KviStyledToolButton(hb);
+	m_pPackThemeButton = new QToolButton(hb);
 	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pPackThemeButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
 	connect(m_pPackThemeButton,SIGNAL(clicked()),this,SLOT(packTheme()));
 
-	m_pDeleteThemeButton = new KviStyledToolButton(hb);
+	m_pDeleteThemeButton = new QToolButton(hb);
 	m_pDeleteThemeButton->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pDeleteThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pDeleteThemeButton,__tr2qs_ctx("Delete Selected Themes","theme"));
@@ -217,13 +220,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 
-	tb = new KviStyledToolButton(hb);
+	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installFromFile()));
 
-	tb = new KviStyledToolButton(hb);
+	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));
@@ -244,18 +247,22 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	connect(m_pListBox,SIGNAL(customContextMenuRequested(const QPoint &)),
 		this,SLOT(contextMenuRequested(const QPoint &)));
 	connect(m_pListBox,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableButtons()));
-	g->addMultiCellWidget(m_pListBox,1,1,0,1);
+	g->addWidget(m_pListBox,1,0);
+	//g->addMultiCellWidget(m_pListBox,1,1,0,1);
 
 	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListBox); 
 	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &))); 
 
 	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
+	b->setMaximumSize(b->sizeHint().width(),b->sizeHint().height());
 	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
-	g->addWidget(b,2,1);
+	g->addWidget(b,2,0);
 
-	g->setRowStretch(1,0);
-	g->setColumnStretch(0,1);
-
+	g->setRowStretch(2,10);
+//	g->setColumnStretch(0,1);
+	g->setMargin(1);
+	g->setSpacing(1);
+	g->setAlignment(b,Qt::AlignRight);
 	fillThemeBox();
 	m_pContextPopup = new KviTalPopupMenu(this);
 

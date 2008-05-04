@@ -58,7 +58,7 @@ public:
 protected:
 	KviWindow * m_pWnd;
 public:
-	virtual void setButtonPixmap(const QPixmap & pix){ setIconSet(pix); setUsesBigPixmap(false); };
+	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(QIcon(pix)); setUsesBigPixmap(false); };
 	virtual KviWindow * window(){ return m_pWnd; };
 };
 
