@@ -147,6 +147,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package.","theme"));
+		pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 	

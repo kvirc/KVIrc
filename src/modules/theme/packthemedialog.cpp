@@ -127,7 +127,8 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	szText += "</p><p>";
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","theme");
 	szText += "<p>";
-	
+
+	pLabel->setWordWrap(true);
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel,0,0);
 	pLayout->setRowStretch(1,1);
@@ -144,6 +145,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("This is the information list for the themes you're packaging. If it looks OK press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your themes first.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
@@ -206,11 +208,13 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addMultiCellWidget(pLabel,0,0,0,1);
 	
 	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Package Name:","theme"));
 	pLayout->addWidget(pLabel,1,0);
 	
@@ -219,6 +223,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
 	pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Version:","theme"));
 	pLayout->addWidget(pLabel,2,0);
 	
@@ -288,6 +293,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *.%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
+		pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 
@@ -298,6 +304,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Finally hit the \"Finish\" button to complete the packaging operation.","theme"));
+		pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,3,0);
 

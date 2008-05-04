@@ -69,9 +69,7 @@
 #include <QBuffer>
 #include <QCloseEvent>
 #include <QTextDocument>
-//#include <q3multilineedit.h>
-
-#include <stdlib.h> // rand & srand
+#include <QAbstractTextDocumentLayout>
 
 extern QRect g_rectManagementDialogGeometry;
 
@@ -110,7 +108,10 @@ void KviThemeDelegate::paint( QPainter * painter, const QStyleOptionViewItem & o
 
 QSize KviThemeDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	return QSize(300,40);		
+	QString text=index.data(Qt::DisplayRole).toString();
+	QTextDocument doc;
+	doc.setHtml( text );
+	return QSize(((QListWidget*)parent())->viewport()->size().width(),doc.documentLayout()->documentSize().height() + (2 * LVI_BORDER));		
 }
 
 
@@ -201,14 +202,14 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setMinimumWidth(12);
 	
 	m_pPackThemeButton = new KviStyledToolButton(hb);
-	m_pPackThemeButton->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
-	m_pPackThemeButton->setUsesBigPixmap(true);
+	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
+	m_pPackThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pPackThemeButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
 	connect(m_pPackThemeButton,SIGNAL(clicked()),this,SLOT(packTheme()));
 
 	m_pDeleteThemeButton = new KviStyledToolButton(hb);
 	m_pDeleteThemeButton->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
-	m_pDeleteThemeButton->setUsesBigPixmap(true);
+	m_pDeleteThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pDeleteThemeButton,__tr2qs_ctx("Delete Selected Themes","theme"));
 	connect(m_pDeleteThemeButton,SIGNAL(clicked()),this,SLOT(deleteTheme()));
 
@@ -217,14 +218,14 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setMinimumWidth(12);
 
 	tb = new KviStyledToolButton(hb);
-	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
-	tb->setUsesBigPixmap(true);
+	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
+	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installFromFile()));
 
 	tb = new KviStyledToolButton(hb);
-	tb->setIconSet(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
-	tb->setUsesBigPixmap(true);
+	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
+	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreThemes()));
 
