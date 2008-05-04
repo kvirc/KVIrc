@@ -685,7 +685,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	QIcon iset;
 	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),QIcon::Normal,QIcon::Off);
 	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)),QIcon::Normal,QIcon::On);
-	m_pTalkButton->setIconSet(iset);
+	m_pTalkButton->setIcon(iset);
 	m_pTalkButton->setUsesBigPixmap(true);
 	connect(m_pTalkButton,SIGNAL(toggled(bool)),this,SLOT(startOrStopTalking(bool)));
 

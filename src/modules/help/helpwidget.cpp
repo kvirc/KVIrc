@@ -54,18 +54,18 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	m_pToolBar = new KviTalHBox(this);
 
 	m_pBtnIndex = new KviStyledToolButton(m_pToolBar);
-	m_pBtnIndex->setIconSet(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX));
+	m_pBtnIndex->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX));
 	connect(m_pBtnIndex,SIGNAL(clicked()),this,SLOT(showIndex()));
 	//m_pBtnIndex->setUsesBigPixmap(true);
 
 	m_pBtnBackward = new KviStyledToolButton(m_pToolBar);
-	m_pBtnBackward->setIconSet(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
+	m_pBtnBackward->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
 	connect(m_pBtnBackward,SIGNAL(clicked()),m_pTextBrowser,SLOT(backward()));
 	m_pBtnBackward->setEnabled(false);
 	//m_pBtnBackward->setUsesBigPixmap(true);
 
 	m_pBtnForward = new KviStyledToolButton(m_pToolBar);
-	m_pBtnForward->setIconSet(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
+	m_pBtnForward->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
 	connect(m_pBtnForward,SIGNAL(clicked()),m_pTextBrowser,SLOT(forward()));
 	m_pBtnForward->setEnabled(false);
 	//m_pBtnForward->setUsesBigPixmap(true);
@@ -75,7 +75,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	if(bIsStandalone)
 	{
 		QToolButton * b = new KviStyledToolButton(m_pToolBar);
-		b->setIconSet(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
+		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
 		connect(b,SIGNAL(clicked()),this,SLOT(doClose()));
 		//b->setUsesBigPixmap(true);
 	}

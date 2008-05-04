@@ -82,12 +82,12 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	m_pOkButton= new QPushButton(__tr2qs("Ok"),this);
 	connect(m_pOkButton,SIGNAL(clicked()), this, SLOT(accept()));
 	g->addWidget(m_pOkButton,2,1);
-	m_pOkButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	
 	m_pChancelButton= new QPushButton(__tr2qs("Cancel"),this);
 	connect(m_pChancelButton,SIGNAL(clicked()), this, SLOT(reject()));
 	g->addWidget(m_pChancelButton,2,2);
-	m_pChancelButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	m_pChancelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	
 	QRegExp rx( "*!*@*", false,true );
 	QValidator* validator = new QRegExpValidator( rx, this );
@@ -202,7 +202,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
-	m_pRemoveMask->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 	
 	m_pAddButton = new QPushButton(__tr2qs("Add"),this);
 	m_pAddButton->setEnabled(isEnabled);
@@ -210,7 +210,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pAddButton->setFocusProxy(this);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 	
 	g->setColumnStretch(3,1);
 

@@ -112,9 +112,9 @@ KviMdiCaption::~KviMdiCaption()
 
 void KviMdiCaption::reloadImages()
 {
-	m_pMaximizeButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXIMIZE)));
-	m_pMinimizeButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)));
-	m_pCloseButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)));
+	m_pMaximizeButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXIMIZE)));
+	m_pMinimizeButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)));
+	m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)));
 }
 
 void KviMdiCaption::calcLineSpacing()
@@ -243,7 +243,7 @@ KviMenuBarToolButton::KviMenuBarToolButton(QWidget * par,const QPixmap &img, con
 : KviStyledToolButton(par)
 {
 	setProperty("name","name");
-	setIconSet(img);
+	setIcon(img);
 	setAutoRaise(true);
 }
 

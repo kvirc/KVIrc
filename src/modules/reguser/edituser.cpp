@@ -98,11 +98,11 @@ KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHas
 
 	m_pAddButton = new QPushButton(__tr2qs("&New"),vb);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pDelButton = new QPushButton(__tr2qs("&Remove"),vb);
 	connect(m_pDelButton,SIGNAL(clicked()),this,SLOT(delClicked()));
-	m_pDelButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pDelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 	KviTalHBox * b = new KviTalHBox(this);
 	b->setSpacing(4);
@@ -366,17 +366,17 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	m_pAddMaskButton = new QPushButton(__tr2qs("&Add..."),b);
 	connect(m_pAddMaskButton,SIGNAL(clicked()),this,SLOT(addMaskClicked()));
-	m_pAddMaskButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pDelMaskButton = new QPushButton(__tr2qs("Re&move"),b);
 	m_pDelMaskButton->setEnabled(false);
 	connect(m_pDelMaskButton,SIGNAL(clicked()),this,SLOT(delMaskClicked()));
-	m_pDelMaskButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pDelMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 	m_pEditMaskButton = new QPushButton(__tr2qs("&Edit"),b);
 	m_pEditMaskButton->setEnabled(false);
 	connect(m_pEditMaskButton,SIGNAL(clicked()),this,SLOT(editMaskClicked()));
-	m_pEditMaskButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
+	m_pEditMaskButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	g->setRowStretch(4,1);
 	g->setColumnStretch(1,1);

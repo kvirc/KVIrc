@@ -93,11 +93,11 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 
 	pb = new QPushButton(__tr2qs_ctx("&OK","sharedfileswindow"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
-	pb->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(pb,5,2);
 	pb = new QPushButton(__tr2qs_ctx("Cancel","sharedfileswindow"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
-	pb->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	pb->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(pb,5,3);
 
 	g->setRowStretch(4,1);

@@ -62,13 +62,13 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	g->addWidget(b,1,1);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 
 	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
 	KviTalToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
 	g->addWidget(m_pCancel,1,2);
 	connect(m_pCancel,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	m_pCancel->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	m_pCancel->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 
 
 	g->setRowStretch(0,1);

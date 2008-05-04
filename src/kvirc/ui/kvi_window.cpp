@@ -490,7 +490,7 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 		QIcon is;
 		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKEDOFF : KVI_SMALLICON_UNLOCKEDOFF)),QIcon::Normal,QIcon::Off);
 		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKED : KVI_SMALLICON_UNLOCKED)),QIcon::Normal,QIcon::On);
-		m_pCryptControllerButton->setIconSet(is);
+		m_pCryptControllerButton->setIcon(is);
 
 		if(m_pCryptControllerButton->isOn())
 			m_pCryptControllerButton->setOn(false);

@@ -178,7 +178,7 @@ void KviAction::reloadImages()
 	for(QWidget * b = m_pWidgetList->first();b;b = m_pWidgetList->next())
 	{
 		if(b->inherits("QToolButton"))
-			((QToolButton *)b)->setIconSet(p ? *p : QPixmap());
+			((QToolButton *)b)->setIcon(p ? *p : QPixmap());
 	}
 }
 

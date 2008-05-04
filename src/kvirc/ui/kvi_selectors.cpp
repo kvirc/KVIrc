@@ -507,7 +507,7 @@ void KviColorSelector::setButtonPalette(QColor * pOption)
 
 	QPixmap pix(16,16);
 	pix.fill(*pOption);
-	m_pButton->setIconSet(pix);
+	m_pButton->setIcon(pix);
 }
 
 void KviColorSelector::forceColor(QColor clr)

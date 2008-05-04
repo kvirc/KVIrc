@@ -42,7 +42,7 @@ protected:
 	KviKvsScript * m_pScript;
 public:
 	void setButtonCode(KviKvsScript * pScript);
-	virtual void setButtonPixmap(const QPixmap & pix){ setIconSet(pix); };
+	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(pix); };
 	void setButtonText(const QString &text){ setTextLabel(text); };
 	virtual KviWindow * window();
 protected slots:

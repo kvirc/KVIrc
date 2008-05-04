@@ -202,7 +202,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
 	m_pSearchButton = new KviStyledToolButton(hbox);
 	m_pSearchButton->setUsesBigPixmap(false);
-	m_pSearchButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)));
+	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)));
 	connect(m_pSearchButton,SIGNAL(clicked()),this,SLOT(searchClicked()));
 	connect(m_pSearchLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(searchLineEditTextChanged(const QString &)));
 
@@ -241,13 +241,13 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	//b->setMinimumWidth(whatIsThisWidth);
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g1->addWidget(b,1,2);	
 
 	b = new QPushButton(__tr2qs_ctx("&Apply","options"),this,"btnapply");
 	KviTalToolTip::add(b,__tr2qs_ctx("Commit all changes immediately.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g1->addWidget(b,1,3);
 
 	b = new QPushButton(__tr2qs_ctx("Cancel","options"),this,"btncancel");
@@ -255,7 +255,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	b->setDefault(true);
 	//b->setMinimumWidth(whatIsThisWidth);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g1->addWidget(b,1,4);
 
 	g1->setRowStretch(0,1);

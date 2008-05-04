@@ -196,31 +196,31 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pWizardAddButton = new QPushButton(__tr2qs("Add (Wizard)..."),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
 	QToolTip::add(m_pWizardAddButton,__tr2qs("Add a registered user by means of a user-friendly wizard."));
-	m_pWizardAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
+	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
 
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add..."),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	QToolTip::add(m_pAddButton,__tr2qs("Open the edit dialog to create a new user entry."));
-	m_pAddButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 	
 	m_pAddGroupButton = new QPushButton(__tr2qs("&Add Group..."),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
 	QToolTip::add(m_pAddGroupButton,__tr2qs("Adds a new group"));
-	m_pAddGroupButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
+	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
 	QToolTip::add(m_pRemoveButton,__tr2qs("Remove the currently selected entries."));
-	m_pRemoveButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
+	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 
 	m_pEditButton = new QPushButton(__tr2qs("&Edit..."),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
 	QToolTip::add(m_pEditButton,__tr2qs("Edit the first selected entry."));
-	m_pEditButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
+	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
@@ -229,13 +229,13 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
 	QToolTip::add(m_pExportButton,__tr2qs("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button."));
-	m_pExportButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
+	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
 
 
 	m_pImportButton = new QPushButton(__tr("Import From..."),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
 	QToolTip::add(m_pImportButton,__tr2qs("Import entries from a file exported earlier by the \"export\" function of this dialog."));
-	m_pImportButton->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
+	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
 
 	KviTalHBox * hbox = new KviTalHBox(this);
@@ -247,12 +247,12 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	b = new QPushButton(__tr2qs("&OK"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	//b->setMinimumWidth(120);
 
 	b = new QPushButton(__tr2qs("Cancel"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	b->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	//b->setMinimumWidth(120);
 
 	g->addRowSpacing(2,15);

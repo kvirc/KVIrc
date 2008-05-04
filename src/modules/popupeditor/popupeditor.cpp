@@ -1280,17 +1280,17 @@ KviPopupEditorWindow::KviPopupEditorWindow(KviFrame * lpFrm)
 
 	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
-	btn->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,1);
 
 	btn = new QPushButton(__tr2qs("&Apply"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
-	btn->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,2);
 
 	btn = new QPushButton(__tr2qs("Cancel"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	btn->setIconSet(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
 
 	g->setColStretch(0,1);

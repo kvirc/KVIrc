@@ -88,7 +88,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	     this, SLOT( showIndexTopic() ) );
 	
 	KviStyledToolButton* pBtnRefreshIndex = new KviStyledToolButton(pSearchBox);
-	pBtnRefreshIndex->setIconSet(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
+	pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
 	QToolTip::add( pBtnRefreshIndex, __tr2qs("Refresh index") );
 	

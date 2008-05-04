@@ -458,7 +458,7 @@ void KviMessageColorsOptionsWidget::newIconSelected(int iconId)
 	if(!m_pLastItem)return;
 	if(iconId >= KVI_NUM_SMALL_ICONS)return;
 	m_pLastItem->msgType()->setPixId(iconId);
-	m_pIconButton->setIconSet(*(g_pIconManager->getSmallIcon(iconId)));
+	m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(iconId)));
 	m_pListView->repaintItem(m_pLastItem);
 }
 
@@ -517,7 +517,7 @@ void KviMessageColorsOptionsWidget::itemChanged(KviTalListViewItem * it)
 		}
 		m_pLevelListBox->setCurrentItem(((KviMessageListViewItem *)it)->msgType()->level());
 		m_pEnableLogging->setChecked(((KviMessageListViewItem *)it)->msgType()->logEnabled());
-		m_pIconButton->setIconSet(*(g_pIconManager->getSmallIcon(((KviMessageListViewItem *)it)->msgType()->pixId())));
+		m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(((KviMessageListViewItem *)it)->msgType()->pixId())));
 	}
 
 	// Ok...can save from now on
