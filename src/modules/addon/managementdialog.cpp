@@ -153,8 +153,6 @@ KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
 	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
 */
 	setSelectionMode(QAbstractItemView::SingleSelection);
-	int iWidth = width();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setSortingEnabled(true);
 }
 
