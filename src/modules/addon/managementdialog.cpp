@@ -25,7 +25,6 @@
 #include "managementdialog.h"
 
 #include "kvi_app.h"
-#include "kvi_listview.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
@@ -36,7 +35,6 @@
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_draganddrop.h"
-#include "kvi_tal_scrollview.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -51,9 +49,6 @@
 #include <QLabel>
 #include <QFrame>
 #include <QAbstractTextDocumentLayout>
-
-// FIXME: Qt4 #include <QHeaderView>
-#include <q3header.h>
 
 
 
