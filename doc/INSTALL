@@ -88,6 +88,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DINSTALL_PREFIX=/path
         It will install all stuff under /path directory
 
+    -DLIB_INSTALL_PREFIX=/path
+        It will install libkvilib under /path directory. It defaults to
+        ${INSTALL_PREFIX}/lib.
+
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
         Compile universal binary for MacOS X platform
 
