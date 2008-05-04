@@ -54,10 +54,7 @@ protected:
 	QString m_szKey;
 public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
-protected:
-	//virtual QString key(int,bool) const;
-	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
-	virtual void setup();
+
 };
 
 class KviScriptAddonListView : public QListWidget

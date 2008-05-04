@@ -101,7 +101,11 @@ void KviScriptAddonDelegate::paint( QPainter * painter, const QStyleOptionViewIt
 
 QSize KviScriptAddonDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	return QSize(300,40);		
+	QString text=index.data(Qt::DisplayRole).toString();
+	QTextDocument doc;
+	doc.setHtml( text );
+	return QSize(((QListWidget*)parent())->viewport()->size().width(),doc.documentLayout()->documentSize().height() + (2 * LVI_BORDER));		
+
 }
 
 KviScriptAddonListViewItem::KviScriptAddonListViewItem(QListWidget * v,KviKvsScriptAddon * a)
