@@ -232,16 +232,17 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
 	m_pListBox = new QListWidget(this);
+	m_pListBox->setContextMenuPolicy(Qt::CustomContextMenu);
 	m_pListBox->setItemDelegate(new KviThemeDelegate(m_pListBox));
 	m_pListBox->setMinimumHeight(400);
 	m_pListBox->setMinimumWidth(400);
 
 	m_pListBox->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListBox->setSortingEnabled(true);
-	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(applyTheme(KviTalListBoxItem *)));
-	connect(m_pListBox,SIGNAL(contextMenuRequested(KviTalListBoxItem *,const QPoint &)),
-		this,SLOT(contextMenuRequested(KviTalListBoxItem *,const QPoint &)));
-	connect(m_pListBox,SIGNAL(selectionChanged()),this,SLOT(enableDisableButtons()));
+	connect(m_pListBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
+	connect(m_pListBox,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(contextMenuRequested(const QPoint &)));
+	connect(m_pListBox,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableButtons()));
 	g->addMultiCellWidget(m_pListBox,1,1,0,1);
 
 	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListBox); 
@@ -312,15 +313,15 @@ void KviThemeManagementDialog::packTheme()
 
 }
 
-void KviThemeManagementDialog::contextMenuRequested(QListWidgetItem * it,const QPoint & pos)
+void KviThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 {
-	if(it)
+	if(m_pListBox->itemAt(pos)!=0)
 	{
-		m_pListBox->setCurrentItem(it);
+		m_pListBox->setCurrentItem(m_pListBox->itemAt(pos));
 		m_pContextPopup->clear();
 		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINUS)),__tr2qs_ctx("&Remove Theme","theme"),this,SLOT(deleteTheme()));
 		m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)),__tr2qs_ctx("&Apply Theme","theme"),this,SLOT(applyCurrentTheme()));
-		m_pContextPopup->popup(pos);
+		m_pContextPopup->popup(m_pListBox->viewport()->mapToGlobal(pos));
 	}
 }
 

@@ -90,7 +90,7 @@ protected slots:
 	void applyTheme(QListWidgetItem *);
 	void applyCurrentTheme();
 	void enableDisableButtons();
-	void contextMenuRequested(QListWidgetItem * item, const QPoint & pos);
+	void contextMenuRequested(const QPoint & pos);
 	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 };
 class KviThemeDelegate : public QItemDelegate
