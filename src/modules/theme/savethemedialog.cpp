@@ -70,6 +70,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	QGridLayout * pLayout = new QGridLayout(pPage);
 	
 	QLabel * pLabel = new QLabel(pPage);
+	pLabel->setWordWrap(true);
 	QString szText = "<p>";
 	szText += __tr2qs_ctx("This procedure allows you to save the current theme settings to a single directory. It is useful if you want to apply other themes or play with the theme settings and later come back to this theme with a single click. It will also allow you to manually modify the theme settings and later export them to a distributable package.","theme");
 	szText += "</p><p>";
@@ -95,6 +96,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the author) and a short description of the theme you're creating.","theme"));
+	pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addMultiCellWidget(pLabel,0,0,0,1);
 	
@@ -147,7 +149,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Here you can either choose a screenshot image from disk or make one now. The screenshot will be displayed in the tooltips of the theme management dialog and will be also visible in the package installation dialog if you will export the theme to a distributable package.","theme"));
-		pLabel->setWordWrap(true);
+	pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 	

@@ -56,7 +56,6 @@
 #include <QBuffer>
 #include <QLabel>
 
-//#include <q3multilineedit.h>
 
 
 KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList)
