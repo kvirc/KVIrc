@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#include <q3process.h>
-#define KviProcess Q3Process
+#include <QProcess>
+#define KviProcess QProcess
 
 #endif //!_KVI_PROCESS_H_

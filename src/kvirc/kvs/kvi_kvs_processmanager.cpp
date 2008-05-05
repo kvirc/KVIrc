@@ -90,26 +90,27 @@ bool KviKvsProcessAsyncOperation::start()
 		args.append(m_pData->szCommandline);
 	}
 	
-	m_pProcess = new KviProcess(args);
-	int c = KviProcess::Stdin;
+	m_pProcess = new KviProcess();
 	
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 	{
-		connect(m_pProcess,SIGNAL(readyReadStdout()),this,SLOT(readStdout()));
-		c |= KviProcess::Stdout;
+		connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(readStdout()));
+	} else {
+		m_pProcess->closeReadChannel(KviProcess::StandardOutput);
 	}
 	
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 	{
-		connect(m_pProcess,SIGNAL(readyReadStderr()),this,SLOT(readStderr()));
-		c |= KviProcess::Stderr;
+		connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(readStderr()));
+	} else {
+		m_pProcess->closeReadChannel(KviProcess::StandardError);
 	}
+	
+	connect(m_pProcess,SIGNAL(finished(int)),this,SLOT(processExited(int)));
+	
+	m_pProcess->start(args.join(QString(' ')));
 
-	m_pProcess->setCommunication(c);
-	
-	connect(m_pProcess,SIGNAL(processExited()),this,SLOT(processExited()));
-	
-	if(!m_pProcess->start())
+	if(m_pProcess->state()==KviProcess::NotRunning)
 	{
 		return false;
 	}
@@ -117,7 +118,7 @@ bool KviKvsProcessAsyncOperation::start()
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED)
 	{
 		QString szPid; 
-		szPid.setNum((int)(m_pProcess->processIdentifier()));
+		szPid.setNum((int)(m_pProcess->pid()));
 		if(trigger(EventStarted,szPid))
 		{
 			triggerSelfDelete();
@@ -225,7 +226,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		{
 			QString sz;
 			retVal.asString(sz);
-			m_pProcess->writeToStdin(sz);
+			m_pProcess->write(sz.toAscii());
 		}
 	
 		if(iRet & KviKvsScript::HaltEncountered)
@@ -243,11 +244,12 @@ void KviKvsProcessAsyncOperation::readStdout()
 	if(m_bDeletePending)return;
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS)
 	{
-		QByteArray a = m_pProcess->readStdout();
+		QByteArray a = m_pProcess->readAllStandardOutput();
 		if(a.size() > 0)
 			m_szStdoutBuffer += QString(a);
 	} else {
-		QString l = m_pProcess->readLineStdout();
+		m_pProcess->setReadChannel(KviProcess::StandardOutput);
+		QString l = m_pProcess->readLine();
 		bool bBreak = false;
 		while((!l.isNull()) && (!bBreak))
 		{
@@ -260,7 +262,7 @@ void KviKvsProcessAsyncOperation::readStdout()
 				}
 			}
 
-			l = m_pProcess->readLineStdout();
+			l = m_pProcess->readLine();
 		}
 	}
 }
@@ -270,11 +272,12 @@ void KviKvsProcessAsyncOperation::readStderr()
 	if(m_bDeletePending)return;
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS)
 	{
-		QByteArray a = m_pProcess->readStderr();
+		QByteArray a = m_pProcess->readAllStandardError();
 		if(a.size() > 0)
 			m_szStderrBuffer += QString(a);
 	} else {
-		QString l = m_pProcess->readLineStderr();
+		m_pProcess->setReadChannel(KviProcess::StandardError);
+		QString l = m_pProcess->readLine();
 		bool bBreak = false;
 		while((!l.isNull()) && (!bBreak))
 		{
@@ -287,13 +290,13 @@ void KviKvsProcessAsyncOperation::readStderr()
 				}
 			}
 
-			l = m_pProcess->readLineStderr();
+			l = m_pProcess->readLine();
 		}
 	}
 }
 
 
-void KviKvsProcessAsyncOperation::processExited()
+void KviKvsProcessAsyncOperation::processExited(int exitCode)
 {
 	if(m_bDeletePending)return;
 
@@ -325,7 +328,7 @@ void KviKvsProcessAsyncOperation::processExited()
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED)
 	{
 		QString szRetVal;
-		szRetVal.setNum(m_pProcess->exitStatus());
+		szRetVal.setNum(exitCode);
 		trigger(EventTerminated,szRetVal);
 	}
 	

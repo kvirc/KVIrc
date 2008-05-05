@@ -94,7 +94,7 @@ private slots:
 	void ping();
 	void readStdout();
 	void readStderr();
-	void processExited();
+	void processExited(int exitCode);
 	void selfDelete();
 private:
 	bool trigger(CallbackEvent e,const QString &szData);
