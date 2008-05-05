@@ -26,7 +26,7 @@
 
 #include "kvi_listview.h"
 #include "kvi_settings.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_listwidget.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -41,16 +41,17 @@ class QPixmap;
 class KviKvsScriptAddon;
 
 
-class KviScriptAddonListViewItem : public QListWidgetItem
+
+class KviScriptAddonListViewItem : public KviTalListWidgetItem
 {
 public:
-	KviScriptAddonListViewItem(QListWidget * v,KviKvsScriptAddon * a);
+	KviScriptAddonListViewItem(KviTalListWidget * v,KviKvsScriptAddon * a);
 	~KviScriptAddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
 	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
-	QListWidget * m_pListView;
+	QListWidget * m_pListWidget;
 	QString m_szKey;
 public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
@@ -73,7 +74,7 @@ protected:
 public:
 	~KviScriptManagementDialog();
 protected:
-	KviScriptAddonListView * m_pListView;
+	KviTalListWidget * m_pListWidget;
 	static KviScriptManagementDialog * m_pInstance;
 	QPushButton * m_pUninstallButton;
 	QPushButton * m_pConfigureButton;
@@ -96,16 +97,6 @@ protected slots:
 	void uninstallScript();
 	void getMoreScripts();
 	void installScript();
-};
-
-class KviScriptAddonDelegate : public QItemDelegate
-{
-public:
-	KviScriptAddonDelegate(QListWidget * pWidget)
-		: QItemDelegate(pWidget){};
-	~KviScriptAddonDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
 
 #endif //!_MANAGEMENTDIALOG_H_

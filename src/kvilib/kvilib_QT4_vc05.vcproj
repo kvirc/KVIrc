@@ -399,11 +399,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_itemdelegates.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\tal\kvi_tal_listbox.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_listview.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listwidget.cpp"
 				>
 			</File>
 			<File
@@ -1854,6 +1862,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_itemdelegates.h"
+				>
+			</File>
+			<File
 				RelativePath=".\tal\kvi_tal_listbox.h"
 				>
 				<FileConfiguration
@@ -1896,6 +1908,19 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_listwidget.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>

@@ -30,6 +30,7 @@
 #include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_wizard.h"
+#include "kvi_tal_listwidget.h"
 
 #include <QDialog>
 #include <QComboBox>
@@ -47,10 +48,10 @@ class KviDynamicToolTip;
 class KviStyledToolButton;
 
 
-class KviThemeListBoxItem : public QListWidgetItem
+class KviThemeListBoxItem : public KviTalListWidgetItem
 {
 public:
-	KviThemeListBoxItem(QListWidget * box,KviThemeInfo * inf);
+	KviThemeListBoxItem(KviTalListWidget * box,KviThemeInfo * inf);
 	virtual ~KviThemeListBoxItem();
 public:
 	KviThemeInfo   * m_pThemeInfo;
@@ -67,7 +68,8 @@ public:
 	virtual ~KviThemeManagementDialog();
 protected:
 	static KviThemeManagementDialog * m_pInstance;
-	QListWidget       * m_pListBox;
+	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
+	KviTalListWidget       * m_pListWidget;
 	KviTalPopupMenu     * m_pContextPopup; 
 	QToolButton * m_pDeleteThemeButton;
 	QToolButton * m_pPackThemeButton;
@@ -93,6 +95,7 @@ protected slots:
 	void contextMenuRequested(const QPoint & pos);
 	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
 };
+/*
 class KviThemeDelegate : public QItemDelegate
 {
 public:
@@ -102,5 +105,5 @@ public:
 	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
-
+*/
 #endif //!_MANAGEMENTDIALOG_H_

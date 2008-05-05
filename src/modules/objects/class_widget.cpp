@@ -1906,7 +1906,8 @@ bool KviKvsObject_widget::function_setStyleSheet(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("style_sheet",KVS_PT_STRING,0,szStyleSheet)
 	KVSO_PARAMETERS_END(c)
-	if(widget())widget()->setStyleSheet(szStyleSheet);
+	 QString styleSheet = QLatin1String(szStyleSheet);
+	if(widget())widget()->setStyleSheet(styleSheet);
 	return true;
 }
 bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)

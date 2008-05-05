@@ -33,6 +33,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_iconmanager.h"
 
+#include <QPainter>
 #include <QLineEdit>
 #include <QEvent>
 #include <QKeyEvent>
@@ -59,6 +60,7 @@ KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 	connect(this,SIGNAL(cellActivated( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
 	connect(this,SIGNAL(currentItemChanged ( KviTalIconViewItem *, KviTalIconViewItem * )),this,SLOT(currentItemChanged( KviTalIconViewItem *, KviTalIconViewItem * )));
 	m_bAltMode = false;
+
 	
 }
 
@@ -327,7 +329,27 @@ KviTextIconWindowWidget::KviTextIconWindowWidget()
 	show();
 	hide();
 }
+/*
+void KviTextIconWindowWidget::paintEvent(QPaintEvent*e)
+{
+	QPainter p(this);
+	QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
 
+	if (pix) p.drawPixmap(0,0,this->width(),this->height(),*pix);
+	else debug("NO");
+	p.end();
+}
+/*
+void test::paintEvent(QPaintEvent*e)
+{
+	QPainter p(this);
+	QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
+	if (pix) p.drawPixmap(0,0,this->width(),this->height(),*pix);
+	else debug("NO");
+	p.end();
+}
+
+*/
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_texticonwin.moc"

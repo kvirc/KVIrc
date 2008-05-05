@@ -1741,7 +1741,7 @@ KVIRC_MODULE(
 	"Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)," \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \
-		"Alessandro Carbone (noldor at barmes dot org)," \
+		"Alessandro Carbone (elfonol at gmail dot com)," \
 		"Alexey Uzhva (wizard at opendoor dot ru)," \
 		"Serge Baranov (sbaranov at gmail dot com)",
 	"Interface to various media players",

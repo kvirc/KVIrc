@@ -969,7 +969,7 @@ KVIRC_MODULE(
 		"  Szymon Stefanek (pragma at kvirc dot net)\n" \
 		"  Krzysztof Godlewski (kristoff at poczta dot wprost dot pl)\n" \
 		"  Tonino Imbesi (grifisx at barmes dot org)\n" \
-		"  Alessandro Carbone (noldor at barmes dot org)",
+		"  Alessandro Carbone (elfonol at gmail dot com)",
 	"Object classes for KVIrc scripting language\n",
 	objects_module_init,
 	objects_module_can_unload,

@@ -27,10 +27,13 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_tal_iconview.h"
+#include "kvi_iconmanager.h"
+#include <QPainter>
 
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200
 class KviTextIconWindow;
+class test;
 
 
 
@@ -60,13 +63,33 @@ private:
 	//virtual void mouseMoveEvent ( QMouseEvent * e )
 	virtual void mousePressEvent(QMouseEvent *);
 	virtual void timerEvent(QTimerEvent *);
-	//virtual void leaveEvent(QEvent *e);
+	virtual void paintEvent (QPaintEvent* e)
+	{
+		QPainter p(viewport());
+		QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
+		if (pix) p.drawTiledPixmap(0,0,viewport()->width(),viewport()->height(),*pix);
+		QTableWidget::paintEvent (e);
+	}
+
 public slots:
 	void fill();
 	void ownerDead();
 	void currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev);
 	void itemSelected(KviTalIconViewItem * item);
 };
+/*
+class KVIRC_API test : public QWidget
+{
+	Q_OBJECT
+public:
+	test(){};
+	~test(){};
+protected:
+	virtual void paintEvent(QPaintEvent*e);
+
+	
+};
+*/
 class KVIRC_API KviTextIconWindowWidget : public QWidget
 {
 	Q_OBJECT
@@ -76,9 +99,13 @@ public:
 	void popup(QWidget *owner,bool bAltMode = false)
 	{
 		wid->popup(owner,bAltMode);
-		//move(QCursor::pos());
 		show();
 	};
 	~KviTextIconWindowWidget(){};
+protected:
+	
+//	virtual void apaintEvent(QPaintEvent*);
+	
 };
+
 #endif //_KVI_TEXTICONWIN_H_

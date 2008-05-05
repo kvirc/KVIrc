@@ -236,13 +236,18 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setOpaqueResize(false);
 	l->addWidget(m_pSplitter,0,0);
-	
+		
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
+	box->setSpacing(0);
+	box->setMargin(0);
+	
 	m_pListView = new KviAliasEditorListView(box);
 	
 
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
+	hbox->setSpacing(0);
+	hbox->setMargin(0);
 	m_pNameLabel = new QLabel(__tr2qs("No item selected"),hbox);
 	m_pRenameButton = new QPushButton(__tr2qs("Rename"),hbox);
 	m_pRenameButton->setEnabled(false);

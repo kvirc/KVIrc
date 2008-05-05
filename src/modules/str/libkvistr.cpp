@@ -2320,7 +2320,7 @@ KVIRC_MODULE(
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
 	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
 	"          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)" \
-	"          (C) 2005 Alessandro Carbone (noldor at barmes dot org)", // author & (C)
+	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
 	"Interface to the str system",
 	str_module_init,
 	0,

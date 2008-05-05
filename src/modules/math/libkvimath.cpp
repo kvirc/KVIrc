@@ -461,7 +461,7 @@ KVIRC_MODULE(
 	"4.0.0",                                                // module version
 	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"\
 	"Tonino Imbesi (grifisx at barmes dot org)," \
-	"Alessandro Carbone (noldor at barmes dot org)",
+	"Alessandro Carbone (elfonol at gmail dot com)",
 	"Mathematical function module",
 	math_module_init,
 	0,

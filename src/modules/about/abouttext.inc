@@ -50,7 +50,7 @@ static const char * g_szAboutText = "" \
 ")</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
 "[" \
-"noldor at barmes dot org" \
+"elfonol at gmail dot com" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \

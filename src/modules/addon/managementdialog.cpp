@@ -35,6 +35,9 @@
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_draganddrop.h"
+#include "kvi_tal_listwidget.h"
+
+
 
 #include <QPainter>
 #include <QPixmap>
@@ -56,58 +59,11 @@
 KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
 
-
-#define LVI_ICON_SIZE 32
-#define LVI_BORDER 4
-#define LVI_SPACING 8
-#define LVI_MINIMUM_TEXT_WIDTH 300
-#define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
-
-
-void KviScriptAddonDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
-{
-	painter->save();
-	if (option.state & QStyle::State_Selected)
-	{
-		QPalette pal=option.palette;
-		QBrush brush=pal.highlight();
-		QColor col=brush.color();
-		col.setAlpha(127);
-		brush.setColor(col);
-		painter->fillRect(option.rect,brush);
-	}
-	QString text=index.data(Qt::DisplayRole).toString();
-	QPixmap pixmap;
-	QRect decorationRect;
-	QVariant value = index.data(Qt::DecorationRole);
-	QStyle::State state=option.state;
-	QRect rect=option.rect;
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	QIcon ico=QIcon(value.value<QIcon>());
-	painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
-	QTextDocument doc;
-	doc.setHtml( text );
-	painter->translate(option.rect.x()+afterIcon,option.rect.y()+LVI_BORDER);
-	doc.setTextWidth(option.rect.width()-10);
-	QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-afterIcon,option.rect.height()-(LVI_BORDER*2)-4));
-	doc.drawContents(painter, cliprect);	
-	painter->restore();
-}
-
-QSize KviScriptAddonDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
-{
-	QString text=index.data(Qt::DisplayRole).toString();
-	QTextDocument doc;
-	doc.setHtml( text );
-	return QSize(((QListWidget*)parent())->viewport()->size().width(),doc.documentLayout()->documentSize().height() + (2 * LVI_BORDER));		
-
-}
-
-KviScriptAddonListViewItem::KviScriptAddonListViewItem(QListWidget * v,KviKvsScriptAddon * a)
-: QListWidgetItem(v)
+KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
+: KviTalListWidgetItem(v)
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
-	m_pListView = v;
+	m_pListWidget = v;
 	QString t = "<nobr><b>";
 	t += a->visibleName();
 	t += "</b> [";
@@ -123,7 +79,6 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(QListWidget * v,KviKvsScr
 	setText(t);
 	QPixmap * p = a->icon();
 	if (p) setIcon(*p); 
-	else setIcon(QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
 }
 
 KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
@@ -132,28 +87,7 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 	delete m_pAddon;
 }
 
-/*
-QString KviScriptAddonListViewItem::key(int,bool) const
-{
-	return m_szKey;
-}
-*/
 
-
-
-KviScriptAddonListView::KviScriptAddonListView(QWidget * pParent)
-: QListWidget (pParent)
-{
-/*	QPixmap * p = g_pIconManager->getImage("kvi_dialog_addons.png");
-	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
-*/
-	setSelectionMode(QAbstractItemView::SingleSelection);
-	setSortingEnabled(true);
-}
-
-KviScriptAddonListView::~KviScriptAddonListView()
-{
-}
 
 
 
@@ -168,8 +102,14 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QGridLayout * g = new QGridLayout(this);
 	
 	//	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
-	m_pListView = new KviScriptAddonListView(this);
-	m_pListView->setItemDelegate(new KviScriptAddonDelegate(m_pListView));
+	m_pListWidget = new KviTalListWidget(this);
+	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
+
+	m_pListWidget->setItemDelegate(itemDelegate);
+	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pListWidget->setSortingEnabled(true);
+	m_pListWidget->setMinimumHeight(400);
+	m_pListWidget->setMinimumWidth(400);
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
@@ -178,8 +118,8 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QString style("QListWidget {background-image: url(" + szPic + ");}");
 	debug("pic: %s",szPic.toUtf8().data());
 	debug("style: %s",style.toUtf8().data());
-	m_pListView->setStyleSheet(style);
-	g->addMultiCellWidget(m_pListView,0,10,1,1);
+	m_pListWidget->setStyleSheet(style);
+	g->addMultiCellWidget(m_pListWidget,0,10,1,1);
 
 	m_pConfigureButton = new QPushButton(__tr2qs("Configure"),this);
 	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
@@ -221,8 +161,8 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	fillListView();
 	
 	currentChanged(0,0);
-	connect(m_pListView,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
-	m_pListView->setCurrentItem(m_pListView->item(0));
+	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
+	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{
 		g_rectManagementDialogGeometry.setY(5);
@@ -241,14 +181,14 @@ KviScriptManagementDialog::~KviScriptManagementDialog()
 
 void KviScriptManagementDialog::fillListView()
 {
-	m_pListView->clear();
+	m_pListWidget->clear();
 	KviPointerHashTable<QString,KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
 	if(!d)return;
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*d);
 	KviScriptAddonListViewItem * item;
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		item = new KviScriptAddonListViewItem(m_pListView,a);
+		item = new KviScriptAddonListViewItem(m_pListWidget,a);
 		++it;
 	}
 }
@@ -270,7 +210,7 @@ void KviScriptManagementDialog::currentChanged(QListWidgetItem *item,QListWidget
 
 void KviScriptManagementDialog::showScriptHelp()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListView->currentItem();
+	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 	if(it->addon()->helpCallbackCode().isEmpty())return;
 	it->addon()->executeHelpCallback(g_pActiveWindow);
@@ -278,7 +218,7 @@ void KviScriptManagementDialog::showScriptHelp()
 
 void KviScriptManagementDialog::configureScript()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListView->currentItem();
+	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 	if(it->addon()->configureCallbackCode().isEmpty())return;
 	it->addon()->executeConfigureCallback(g_pActiveWindow);
@@ -286,7 +226,7 @@ void KviScriptManagementDialog::configureScript()
 
 void KviScriptManagementDialog::uninstallScript()
 {
-	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListView->currentItem();
+	KviScriptAddonListViewItem * it = (KviScriptAddonListViewItem *)m_pListWidget->currentItem();
 	if(!it)return;
 
 	QString txt = "<p>";
@@ -324,8 +264,8 @@ void KviScriptManagementDialog::installScript()
 	fillListView();
 	currentChanged(0,0);
 
-	//m_pListView->publicUpdateContents();
-	//m_pListView->triggerUpdate();
+	//m_pListWidget->publicUpdateContents();
+	//m_pListWidget->triggerUpdate();
 }
 
 void KviScriptManagementDialog::showEvent(QShowEvent * e)

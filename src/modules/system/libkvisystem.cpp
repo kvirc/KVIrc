@@ -726,7 +726,7 @@ KVIRC_MODULE(
 	"4.0.0",                                                // module version
 	"Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)" \
 	"			(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"\
-	"			(C) 2005 Alessandro Carbone (noldor at barmes dot org)",// author & (C)
+	"			(C) 2005 Alessandro Carbone (elfonol at gmail dot com)",// author & (C)
 	"System informations module",
 	system_module_init,
 	system_module_can_unload,
