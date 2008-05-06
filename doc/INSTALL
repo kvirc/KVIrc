@@ -170,16 +170,6 @@ General notes for the installation of the 4.0 release of KVIrc
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus make DCC VOICE not usable).
 
-    -DWITHOUT_DYN_LABELS
-        You should not need this option.
-        It disables compilation of code that relies on a particular compiler
-        feature (jumping to a dynamic label with a goto).
-        Not all compilers support this , but configure shoud detect it
-        automatically. Anyway , if you get compilation errors on kvi_ircview.cpp,
-        you may try this option...
-        This may also help if the configure script seems to hang when checking
-        for the "compiler dynamic label support".
-
 
 
 

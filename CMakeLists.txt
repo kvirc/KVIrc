@@ -449,22 +449,6 @@ ELSE()
 	SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "user disabled")
 ENDIF()
 
-############################################################################
-# Dynamic labels support
-############################################################################
-OPTION(WANT_DYN_LABELS "Compile Dynamic Labels Support" ON)
-IF(WITHOUT_DYN_LABELS)
-	SET(WANT_DYN_LABELS OFF)
-ENDIF()
-IF(WANT_DYN_LABELS)
-	SET(COMPILE_USE_DYNAMIC_LABELS 1)
-	SET(CMAKE_STATUS_DYN_LABELS_SUPPORT "yes")
-ELSE()
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DYN_LABELS)
-	SET(CMAKE_STATUS_DYN_LABELS_SUPPORT "user disabled")
-ENDIF()
-
-
 
 
 
