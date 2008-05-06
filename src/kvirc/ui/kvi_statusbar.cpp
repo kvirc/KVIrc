@@ -211,7 +211,6 @@ void KviStatusBar::resizeEvent(QResizeEvent * e)
 
 bool KviStatusBar::event(QEvent * e)
 {
-	debug("Trigger events");
 	if(e->type() == QEvent::LayoutHint)
 	{
 		updateLayout();
@@ -282,7 +281,6 @@ void KviStatusBar::tipRequest(QHelpEvent *pTip)
 {
 	KviStatusBarApplet * a = appletAt(mapToGlobal(pTip->pos()));
 	QString szTip;
-	QRect r;
 	if(a)
 	{
 		szTip = "<table width=\"100%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + a->descriptor()->visibleName() + "</b></font></td></tr>";
@@ -298,12 +296,10 @@ void KviStatusBar::tipRequest(QHelpEvent *pTip)
 		szTip += "<tr><td align=\"center\"><font color=\"#808080\" size=\"-1\">";
 		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right click</b> to see the other options");
 		szTip += "</font></td></tr></table>";
-		r = QRect(a->x(),a->y(),a->width(),a->height());
 	} else {
 		szTip = "<center>";
 		szTip += __tr2qs("<b>Right click</b> to add/remove applets");
 		szTip += "</center>";
-		r = QRect(m_pMessageLabel->x(),m_pMessageLabel->y(),m_pMessageLabel->width(),m_pMessageLabel->height());
 	}
 	QToolTip::showText(pTip->globalPos(),szTip);
 }
@@ -318,7 +314,6 @@ void KviStatusBar::contextMenuRequested(const QPoint &pos)
 	
 	m_pClickedApplet = appletAt(QCursor::pos());
 	m_pContextPopup->popup(mapToGlobal(pos));
-//	return m_pContextPopup;
 }
 
 void KviStatusBar::contextPopupAboutToShow()
