@@ -123,13 +123,13 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pPackButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
+	QToolTip::add(m_pPackButton,__tr2qs_ctx("Export Selected Addons to a Distributable Package","addon"));
 	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
 
 	m_pUninstallButton = new QToolButton(hb);
 	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pUninstallButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Themes","theme"));
+	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
 	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
 
 	sep = new QFrame(hb);
@@ -139,13 +139,13 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
+	QToolTip::add(tb,__tr2qs_ctx("Install Addon Package From Disk","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installScript()));
 
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));
+	QToolTip::add(tb,__tr2qs_ctx("Get More Addons...","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
 
 	QWidget *w= new QWidget(hb);
@@ -164,8 +164,8 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
 	szPic += "/kvi_dialog_addons.png";
-	QString style("QListWidget {background-image: url(" + szPic + ");}");
-	m_pListWidget->setStyleSheet(style);
+	QString szStyle("QListWidget {background-image: url(" + szPic + ");}");
+	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
 
 	fillListView();
