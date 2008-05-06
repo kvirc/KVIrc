@@ -115,7 +115,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
 	// FIXME
 	szPic += "/kvi_dialog_addons.png";
-	QString style("QListWidget {background-image: url(file://" + szPic + ");}");
+	QString style("QListWidget {background-image: url(" + szPic + ");}");
 	debug("pic: %s",szPic.toUtf8().data());
 	debug("style: %s",style.toUtf8().data());
 	m_pListWidget->setStyleSheet(style);

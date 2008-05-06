@@ -58,13 +58,6 @@ public:
 
 };
 
-class KviScriptAddonListView : public QListWidget
-{
-	Q_OBJECT
-public:
-	KviScriptAddonListView(QWidget * pParent);
-	~KviScriptAddonListView();
-};
 
 class KviScriptManagementDialog : public QDialog
 {
