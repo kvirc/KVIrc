@@ -84,6 +84,7 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
+	tal/kvi_tal_itemdelegates.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
 	tal/kvi_tal_listwidget.h
@@ -174,6 +175,7 @@ SET(kvilib_SRCS
 	tal/kvi_tal_groupbox.cpp
 	tal/kvi_tal_hbox.cpp
 	tal/kvi_tal_iconview.cpp
+	tal/kvi_tal_itemdelegates.cpp
 	tal/kvi_tal_listbox.cpp
 	tal/kvi_tal_listview.cpp
 	tal/kvi_tal_listwidget.cpp
