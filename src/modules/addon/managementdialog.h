@@ -36,7 +36,7 @@
 #include <QListWidget>
 #include <QItemDelegate>
 
-class QPushButton;
+class QToolButton;
 class QPixmap;
 class KviKvsScriptAddon;
 
@@ -69,11 +69,10 @@ public:
 protected:
 	KviTalListWidget * m_pListWidget;
 	static KviScriptManagementDialog * m_pInstance;
-	QPushButton * m_pUninstallButton;
-	QPushButton * m_pConfigureButton;
-	QPushButton * m_pHelpButton;
-	QPushButton * m_pInstallButton;
-	QPushButton * m_pGetScriptsButton;
+	QToolButton * m_pConfigureButton;
+	QToolButton * m_pHelpButton;
+	QToolButton * m_pPackButton;
+	QToolButton * m_pUninstallButton;
 public:
 	static KviScriptManagementDialog * instance(){ return m_pInstance; };
 	static void display();
@@ -85,8 +84,9 @@ protected:
 protected slots:
 	void currentChanged(QListWidgetItem *i,QListWidgetItem *);
 	void closeClicked();
-	void showScriptHelp();
 	void configureScript();
+	void showScriptHelp();
+	void packScript();
 	void uninstallScript();
 	void getMoreScripts();
 	void installScript();

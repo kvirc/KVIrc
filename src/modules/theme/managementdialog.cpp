@@ -257,7 +257,6 @@ void KviThemeManagementDialog::packTheme()
 	KviPackThemeDialog * pDialog = new KviPackThemeDialog(this,&dl);
 	pDialog->exec();
 	delete pDialog;
-
 }
 
 void KviThemeManagementDialog::contextMenuRequested(const QPoint & pos)

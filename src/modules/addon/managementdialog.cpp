@@ -37,14 +37,13 @@
 #include "kvi_draganddrop.h"
 #include "kvi_tal_listwidget.h"
 
-
-
 #include <QPainter>
 #include <QPixmap>
 #include <QMessageBox>
 #include <QEvent>
 #include <QCloseEvent>
 #include <QPushButton>
+#include <QToolButton>
 #include <QLayout>
 #include <QApplication>
 #include <QToolTip>
@@ -83,17 +82,14 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListWidget *v,KviKv
 
 KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 {
-	
 	delete m_pAddon;
 }
-
-
-
 
 
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 : QDialog(p/*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
+	/* old manager
 	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
 	setObjectName("Addon manager");
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
@@ -121,42 +117,102 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pListWidget->setStyleSheet(style);
 	g->addMultiCellWidget(m_pListWidget,0,10,1,1);
 
-	m_pConfigureButton = new QPushButton(__tr2qs("Configure"),this);
-	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
-	g->addWidget(m_pConfigureButton,0,2);
 
-	m_pHelpButton = new QPushButton(__tr2qs("Show Help"),this);
-	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
-	g->addWidget(m_pHelpButton,1,2);
 
-	g->addRowSpacing(2,40);
-
-	m_pUninstallButton = new QPushButton(__tr2qs("Uninstall"),this);
-	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
-	g->addWidget(m_pUninstallButton,3,2);
-
-	g->addRowSpacing(4,15);
-
-	QFrame *f = new QFrame(this);
-	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-	g->addWidget(f,5,2);
+	fillListView();
 	
-	g->addRowSpacing(6,15);
+	currentChanged(0,0);
+	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
+	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
+	if(g_rectManagementDialogGeometry.y() < 5)
+	{
+		g_rectManagementDialogGeometry.setY(5);
+	}
+	resize(g_rectManagementDialogGeometry.width(),
+		g_rectManagementDialogGeometry.height());
+	move(g_rectManagementDialogGeometry.x(),
+		g_rectManagementDialogGeometry.y());
+	*/
 
-	m_pInstallButton = new QPushButton(__tr2qs("Install Addon..."),this);
-	connect(m_pInstallButton,SIGNAL(clicked()),this,SLOT(installScript()));
-	g->addWidget(m_pInstallButton,7,2);
+	/* new manager */
+	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
+	setObjectName("Addon manager");
+	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
+	setModal(true);
+	m_pInstance = this;
+	QGridLayout * g = new QGridLayout(this);
 
-	m_pGetScriptsButton = new QPushButton(__tr2qs("More Addons..."),this);
-	connect(m_pGetScriptsButton,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
-	g->addWidget(m_pGetScriptsButton,8,2);
+	KviTalHBox *hb = new KviTalHBox(this);
+	hb->setMargin(1);
+	hb->setSpacing(1);
+	g->addWidget(hb,0,0);
 
-	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
-	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
-	g->addWidget(b,10,2);
+	QToolButton * tb;
+	QFrame * sep;
 
-	g->setRowStretch(9,1);
-	g->setColumnStretch(1,1);
+	m_pConfigureButton = new QToolButton(hb);
+	m_pConfigureButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS)));
+	m_pConfigureButton->setIconSize(QSize(32,32));
+	QToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure Addon...","addon"));
+	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
+
+	m_pHelpButton = new QToolButton(hb);
+	m_pHelpButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_HELP)));
+	m_pHelpButton->setIconSize(QSize(32,32));
+	QToolTip::add(m_pHelpButton,__tr2qs_ctx("Show Help","addon"));
+	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
+
+	sep = new QFrame(hb);
+	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
+	sep->setMinimumWidth(12);
+	
+	m_pPackButton = new QToolButton(hb);
+	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
+	m_pPackButton->setIconSize(QSize(32,32));
+	QToolTip::add(m_pPackButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
+	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
+
+	m_pUninstallButton = new QToolButton(hb);
+	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
+	m_pUninstallButton->setIconSize(QSize(32,32));
+	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Themes","theme"));
+	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
+
+	sep = new QFrame(hb);
+	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
+	sep->setMinimumWidth(12);
+
+	tb = new QToolButton(hb);
+	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
+	tb->setIconSize(QSize(32,32));
+	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
+	connect(tb,SIGNAL(clicked()),this,SLOT(installScript()));
+
+	tb = new QToolButton(hb);
+	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
+	tb->setIconSize(QSize(32,32));
+	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));
+	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
+
+	QWidget *w= new QWidget(hb);
+	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+
+	//	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
+	m_pListWidget = new KviTalListWidget(this);
+	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
+
+	m_pListWidget->setItemDelegate(itemDelegate);
+	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pListWidget->setSortingEnabled(true);
+	m_pListWidget->setMinimumHeight(400);
+	m_pListWidget->setMinimumWidth(400);
+
+	QString szPic;
+	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
+	szPic += "/kvi_dialog_addons.png";
+	QString style("QListWidget {background-image: url(" + szPic + ");}");
+	m_pListWidget->setStyleSheet(style);
+	g->addWidget(m_pListWidget,1,0);
 
 	fillListView();
 	
@@ -201,6 +257,7 @@ void KviScriptManagementDialog::currentChanged(QListWidgetItem *item,QListWidget
 		m_pConfigureButton->setEnabled(false);
 		m_pUninstallButton->setEnabled(false);
 		m_pHelpButton->setEnabled(false);
+		m_pPackButton->setEnabled(false);
 	} else {
 		m_pConfigureButton->setEnabled(!(it->addon()->configureCallbackCode().isEmpty()));
 		m_pHelpButton->setEnabled(!(it->addon()->helpCallbackCode().isEmpty()));
@@ -222,6 +279,22 @@ void KviScriptManagementDialog::configureScript()
 	if(!it)return;
 	if(it->addon()->configureCallbackCode().isEmpty())return;
 	it->addon()->executeConfigureCallback(g_pActiveWindow);
+}
+
+void KviScriptManagementDialog::packScript()
+{
+	/*
+	KviPointerList<KviThemeInfo> dl;
+	dl.setAutoDelete(false);
+	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
+	for(int i=0;i<itemsSelected.count();i++)
+		dl.append(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo());
+	if(dl.isEmpty())return;
+
+	KviPackAddonDialog * pDialog = new KviPackAddonDialog(this,&dl);
+	pDialog->exec();
+	delete pDialog;
+	*/
 }
 
 void KviScriptManagementDialog::uninstallScript()
