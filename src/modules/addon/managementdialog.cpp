@@ -159,7 +159,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pListWidget->setSortingEnabled(true);
 	m_pListWidget->setMinimumHeight(400);
-	m_pListWidget->setMinimumWidth(400);
+	m_pListWidget->setMinimumWidth(380);
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
@@ -173,6 +173,16 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	currentChanged(0,0);
 	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
+
+	QPushButton * pCloseBtn = new QPushButton(__tr2qs("Close"),this);
+	pCloseBtn->setMaximumSize(pCloseBtn->sizeHint().width(),pCloseBtn->sizeHint().height());
+	connect(pCloseBtn,SIGNAL(clicked()),this,SLOT(closeClicked()));
+	g->addWidget(pCloseBtn,2,0);
+
+	g->setMargin(5);
+	g->setSpacing(5);
+	g->setAlignment(pCloseBtn,Qt::AlignRight);
+
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{
 		g_rectManagementDialogGeometry.setY(5);
