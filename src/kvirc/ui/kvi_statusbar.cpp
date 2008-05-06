@@ -97,6 +97,9 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	
 	m_iLastMinimumHeight = 0;
 	m_bStopLayoutOnAddRemove = true;
+	setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(this,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(contextMenuRequested(const QPoint &)));
 
 	connect(m_pFrame,SIGNAL(activeContextChanged()),this,SLOT(setPermanentMessage()));
 	connect(m_pFrame,SIGNAL(activeContextStateChanged()),this,SLOT(setPermanentMessage()));
@@ -300,15 +303,17 @@ void KviStatusBar::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
 	pTip->tip(r,szTip);
 }
 
-KviTalPopupMenu * KviStatusBar::contextPopup()
+void KviStatusBar::contextMenuRequested(const QPoint &pos)
 {
 	if(!m_pContextPopup)
 	{
 		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
+	
 	m_pClickedApplet = appletAt(QCursor::pos());
-	return m_pContextPopup;
+	m_pContextPopup->popup(mapToGlobal(pos));
+//	return m_pContextPopup;
 }
 
 void KviStatusBar::contextPopupAboutToShow()
@@ -459,12 +464,13 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
 	qDebug("mouse press event");
 	m_pClickedApplet = 0;
-	if(e->button() & Qt::RightButton)
+	/*if(e->button() & Qt::RightButton)
 	{
 		qDebug("Pressed right button");
 		contextPopup()->popup(QCursor::pos());
 		return;
 	}
+	*/
 	if((e->button() & Qt::LeftButton) && (e->state() & (Qt::ShiftButton | Qt::ControlButton)))
 	{
 		// move!

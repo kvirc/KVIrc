@@ -71,7 +71,7 @@ public:
 	// pnt is global!
 	KviStatusBarApplet * appletAt(const QPoint &pnt,bool bBestMatch = false);
 
-	KviTalPopupMenu * contextPopup();
+	//KviTalPopupMenu * contextPopup();
 	// takes the ownership of pMsg
 	void queueMessage(KviStatusBarMessage * pMsg);
 	// called by KviFrame
@@ -112,6 +112,7 @@ protected:
 	void showLayoutHelp();
 protected slots:
 	void messageTimerFired();
+	void contextMenuRequested(const QPoint &pos);
 	void contextPopupAboutToShow();
 	void appletsPopupAboutToShow();
 	void appletsPopupActivated(int id);
