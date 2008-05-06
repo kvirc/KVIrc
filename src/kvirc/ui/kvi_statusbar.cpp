@@ -109,11 +109,10 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	
 	m_bStopLayoutOnAddRemove = false;
 
-	m_pToolTip = new KviDynamicToolTip(this);
-	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	updateLayout();
 }
+
 
 KviStatusBar::~KviStatusBar()
 {
@@ -212,10 +211,16 @@ void KviStatusBar::resizeEvent(QResizeEvent * e)
 
 bool KviStatusBar::event(QEvent * e)
 {
+	debug("Trigger events");
 	if(e->type() == QEvent::LayoutHint)
 	{
 		updateLayout();
 		return false; // send to parents too!
+	}
+	if (e->type() == QEvent::ToolTip) 
+	{
+	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
+		tipRequest(helpEvent);
 	}
 	return QStatusBar::event(e);
 }
@@ -273,16 +278,16 @@ KviStatusBarApplet * KviStatusBar::appletAt(const QPoint &pnt,bool bBestMatch)
 	return 0;
 }
 
-void KviStatusBar::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
+void KviStatusBar::tipRequest(QHelpEvent *pTip)
 {
-	KviStatusBarApplet * a = appletAt(mapToGlobal(pnt));
+	KviStatusBarApplet * a = appletAt(mapToGlobal(pTip->pos()));
 	QString szTip;
 	QRect r;
 	if(a)
 	{
 		szTip = "<table width=\"100%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + a->descriptor()->visibleName() + "</b></font></td></tr>";
 
-		QString szTipx = a->tipText(a->mapFromGlobal(mapToGlobal(pnt)));
+		QString szTipx = a->tipText(a->mapFromGlobal(mapToGlobal(pTip->pos())));
 		if(!szTipx.isEmpty())
 		{
 			szTip += "<tr><td>";
@@ -300,7 +305,7 @@ void KviStatusBar::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
 		szTip += "</center>";
 		r = QRect(m_pMessageLabel->x(),m_pMessageLabel->y(),m_pMessageLabel->width(),m_pMessageLabel->height());
 	}
-	pTip->tip(r,szTip);
+	QToolTip::showText(pTip->globalPos(),szTip);
 }
 
 void KviStatusBar::contextMenuRequested(const QPoint &pos)

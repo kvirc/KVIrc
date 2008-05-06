@@ -31,6 +31,7 @@
 
 #include <QString>
 #include <QStatusBar>
+#include <QHelpEvent>
 
 class QTimer;
 class QLabel;
@@ -110,6 +111,7 @@ protected:
 	void load();
 	KviStatusBarApplet * createApplet(const QString &szInternalName);
 	void showLayoutHelp();
+		void tipRequest(QHelpEvent *);
 protected slots:
 	void messageTimerFired();
 	void contextMenuRequested(const QPoint &pos);
@@ -118,7 +120,7 @@ protected slots:
 	void appletsPopupActivated(int id);
 	void removeClickedApplet();
 	void setPermanentMessage();
-	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
+
 };
 
 #endif //!_KVI_STATUSBAR_H_
