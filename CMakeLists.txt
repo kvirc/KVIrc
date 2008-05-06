@@ -701,8 +701,6 @@ MESSAGE(STATUS "  IPC support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
 #MESSAGE(STATUS "  System memmove support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
 MESSAGE(STATUS "  GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 MESSAGE(STATUS "  DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
-MESSAGE(STATUS "  Dynamic labels support      : ${CMAKE_STATUS_DYN_LABELS_SUPPORT}")
-
 MESSAGE(STATUS "  Build Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 
 #MESSAGE(STATUS "  ix86 asm support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
