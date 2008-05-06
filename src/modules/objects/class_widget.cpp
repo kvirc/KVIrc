@@ -22,6 +22,9 @@
 //
 //=============================================================================
 
+#include "class_widget.h"
+#include "class_pixmap.h"
+
 #include "kvi_malloc.h"
 #include "kvi_debug.h"
 #include "kvi_error.h"
@@ -29,8 +32,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
-#include "class_widget.h"
-#include "class_pixmap.h"
 
 #include <QKeyEvent>
 #include <QDesktopWidget>
@@ -44,14 +45,15 @@
 #include <QBitmap>
 #include <QMetaObject>
 #include <QIcon>
+
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
 {
 }
+
 KviKvsWidget::~KviKvsWidget()
 {
 }
-
 
 QSize KviKvsWidget::sizeHint() const
 {
@@ -71,36 +73,38 @@ QSize KviKvsWidget::sizeHint() const
 }
 
 
-// FIX ME: WFLAGS
+// FIXME: WFLAGS
 const char * const widgettypes_tbl[] = {
-			"TopLevel",
-			"Dialog",
-			"Popup",
-			"Desktop",
-			"Customize",
-			"Title",
-			"StaysOnTop",
-			"SysMenu",
-			"Minimize",
-			"Maximize",
-			"NoAutoErase"
-			   };
-const Qt::WidgetAttribute widgetattributes_cod[]= {
+	"TopLevel",
+	"Dialog",
+	"Popup",
+	"Desktop",
+	"Customize",
+	"Title",
+	"StaysOnTop",
+	"SysMenu",
+	"Minimize",
+	"Maximize",
+	"NoAutoErase"
+};
+
+const Qt::WidgetAttribute widgetattributes_cod[] = {
 	Qt::WA_OpaquePaintEvent,
 	Qt::WA_NoSystemBackground,
 	Qt::WA_PaintOnScreen,
-	Qt::WA_NoMousePropagation,
+	Qt::WA_NoMousePropagation
 };
 
 const char * const widgetattributes_tbl[] = {
 	"opaquePaintEvent",
 	"noSystemBackground",
 	"paintOnScreen",
-	"noMousePropagation",
+	"noMousePropagation"
 };
+
 #define widgetattributes_num	(sizeof(widgetattributes_tbl) / sizeof(widgetattributes_tbl[0]))
 
-const QPalette::ColorRole colorrole_cod[]= {
+const QPalette::ColorRole colorrole_cod[] = {
 	QPalette::Window,
 	QPalette::Background,
 	QPalette::WindowText,
@@ -112,7 +116,7 @@ const QPalette::ColorRole colorrole_cod[]= {
 	QPalette::ButtonText,
 	QPalette::BrightText,
 	QPalette::Highlight,
-	QPalette::HighlightedText,
+	QPalette::HighlightedText
 };
 
 const char * const colorrole_tbl[] = {
@@ -129,31 +133,28 @@ const char * const colorrole_tbl[] = {
 	"Highlight",
 	"HighlightedText"
 };
+
 #define colorrole_num	(sizeof(colorrole_tbl) / sizeof(colorrole_tbl[0]))
 
 
 const Qt::WindowType widgettypes_cod[] = {
-		Qt::WType_TopLevel,
-		Qt::WType_Dialog,
-		Qt::WType_Popup,
-		Qt::WType_Desktop,
-		Qt::WStyle_Customize,
-		Qt::WStyle_Title,
-		Qt::WStyle_StaysOnTop,
-		Qt::WStyle_SysMenu,
-		Qt::WStyle_Minimize,
-		Qt::WStyle_Maximize,
-		Qt::WNoAutoErase
+	Qt::WType_TopLevel,
+	Qt::WType_Dialog,
+	Qt::WType_Popup,
+	Qt::WType_Desktop,
+	Qt::WStyle_Customize,
+	Qt::WStyle_Title,
+	Qt::WStyle_StaysOnTop,
+	Qt::WStyle_SysMenu,
+	Qt::WStyle_Minimize,
+	Qt::WStyle_Maximize,
+	Qt::WNoAutoErase
 };
 
-
-
-	#define QT_WIDGET_TABFOCUS Qt::TabFocus
-	#define	QT_WIDGET_CLICKFOCUS Qt::ClickFocus
-	#define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
-	#define QT_WIDGET_NOFOCUS Qt::NoFocus
-
-
+#define QT_WIDGET_TABFOCUS Qt::TabFocus
+#define QT_WIDGET_CLICKFOCUS Qt::ClickFocus
+#define QT_WIDGET_STRONGFOCUS Qt::StrongFocus
+#define QT_WIDGET_NOFOCUS Qt::NoFocus
 
 #define widgettypes_num	(sizeof(widgettypes_tbl) / sizeof(widgettypes_tbl[0]))
 
@@ -794,7 +795,6 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 					case Qt::Key_Delete:
 						tmp="Del";
 						break;
-
 					case Qt::Key_Enter:
 						tmp="Enter";
 						break;
@@ -961,6 +961,7 @@ bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *c)
 	wid->show();
 	return true;
 }
+
 bool KviKvsObject_widget::function_update(KviKvsObjectFunctionCall *c)
 {
 	kvs_int_t iX,iY,iW,iH;
@@ -987,28 +988,30 @@ bool KviKvsObject_widget::function_setEnabled(KviKvsObjectFunctionCall *c)
 	widget()->setEnabled(bEnabled);
 	return true;
 }
+
 bool KviKvsObject_widget::function_isEnabled(KviKvsObjectFunctionCall *c)
 {
 	if(!widget()) return true;
 	c->returnValue()->setBoolean(widget()->isEnabled());
 	return true;
 }
+
 bool KviKvsObject_widget::function_fontDescent(KviKvsObjectFunctionCall * c)
 {
 	if(!widget()) return true;
 	QFontMetrics fm = widget()->fontMetrics();
-    int d = fm.descent();
+	int d = fm.descent();
 	c->returnValue()->setInteger(d);
-    return true;
+	return true;
 }
 
 bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
 {
 	if(!widget()) return true;
-    QFontMetrics fm = widget()->fontMetrics();
-    int d = fm.ascent();
+	QFontMetrics fm = widget()->fontMetrics();
+	int d = fm.ascent();
 	c->returnValue()->setInteger(d);
-    return true;
+	return true;
 
 }
 
@@ -1019,7 +1022,7 @@ bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-    widget()->repaint(bEnabled);
+	widget()->repaint(bEnabled);
 	return true;
 }
 
@@ -1037,10 +1040,11 @@ bool KviKvsObject_widget::function_fontMetricsWidth(KviKvsObjectFunctionCall * c
 bool KviKvsObject_widget::function_fontMetricsHeight(KviKvsObjectFunctionCall * c)
 {
 	if(!widget())return true;
-    int fm = widget()->fontMetrics().height();
+	int fm = widget()->fontMetrics().height();
 	c->returnValue()->setInteger(fm);
-    return true;
+	return true;
 }
+
 bool KviKvsObject_widget::function_screenResolution(KviKvsObjectFunctionCall * c)
 {
 	KviKvsArray * a = new KviKvsArray();
@@ -1135,8 +1139,8 @@ bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
 
 	return true;
 }
-bool KviKvsObject_widget::function_mapToGlobal(KviKvsObjectFunctionCall *c)
 
+bool KviKvsObject_widget::function_mapToGlobal(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true;
 	kvs_int_t iX,iY;
@@ -1153,7 +1157,6 @@ bool KviKvsObject_widget::function_mapToGlobal(KviKvsObjectFunctionCall *c)
 }
 
 bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
-
 {
 	if(!widget())return true;
 	kvs_int_t iX,iY;
@@ -1168,6 +1171,7 @@ bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setArray(a);
 	return true;
 }
+
 bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *c)
 {
 	if(widget()) widget()->move((g_pApp->desktop()->width() - widget()->width())/2,(g_pApp->desktop()->height() - widget()->height())/2);
@@ -1176,7 +1180,6 @@ bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall *c)
 {
-
 	KviKvsVariant * pColArray;
 
 	kvs_int_t iColR,iColG,iColB;
@@ -1209,40 +1212,39 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
 			return false;
 		}
-
-	} 
-	else 
+	}
+	else
 	{
-			if (c->params()->count()==1)
+		if (c->params()->count()==1)
+		{
+			bool bOk,bOk1,bOk2;
+			QString value;
+			pColArray->asString(value);
+			int i=0;
+			if (value.length()!=6)
 			{
-				bool bOk,bOk1,bOk2;
-				QString value;
-				pColArray->asString(value);
-				int i=0;
-				if (value.length()!=6)
-				{
-						c->warning(__tr2qs("A string of 6 digits hex is required"));
-						return true;
-				}
-				QString buffer(value.mid(0,2));
-				iColR=buffer.toInt(&bOk,16);
-				buffer=value.mid(2,2);
-				iColG=buffer.toInt(&bOk1,16);
-				buffer=value.mid(4,2);
-				iColB=buffer.toInt(&bOk2,16);
-				if (!bOk || !bOk1 || !bOk2)
-				{
-					c->warning(__tr2qs("Not an hex digits"));
+				c->warning(__tr2qs("A string of 6 digits hex is required"));
 				return true;
-				}
-				if (widget())
-				{
-					QPalette p = widget()->palette(); 
-					p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
-					widget()->setPalette(p); 
-					return true;
-				}
 			}
+			QString buffer(value.mid(0,2));
+			iColR=buffer.toInt(&bOk,16);
+			buffer=value.mid(2,2);
+			iColG=buffer.toInt(&bOk1,16);
+			buffer=value.mid(4,2);
+			iColB=buffer.toInt(&bOk2,16);
+			if (!bOk || !bOk1 || !bOk2)
+			{
+				c->warning(__tr2qs("Not an hex digits"));
+				return true;
+			}
+			if (widget())
+			{
+				QPalette p = widget()->palette(); 
+				p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
+				widget()->setPalette(p); 
+				return true;
+			}
+		}
 
 		if(c->params()->count() < 3)
 		{
@@ -1299,38 +1301,37 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
 			return false;
 		}
-
 	} else {
-			if (c->params()->count()==1)
+		if (c->params()->count()==1)
+		{
+			bool bOk,bOk1,bOk2;
+			QString value;
+			pColArray->asString(value);
+			int i=0;
+			if (value.length()!=6)
 			{
-				bool bOk,bOk1,bOk2;
-				QString value;
-				pColArray->asString(value);
-				int i=0;
-				if (value.length()!=6)
-				{
-						c->warning(__tr2qs("A string of 6 digits hex is required"));
-						return true;
-				}
-				QString buffer(value.mid(0,2));
-				iColR=buffer.toInt(&bOk,16);
-				buffer=value.mid(2,2);
-				iColG=buffer.toInt(&bOk1,16);
-				buffer=value.mid(4,2);
-				iColB=buffer.toInt(&bOk2,16);
-				if (!bOk || !bOk1 || !bOk2)
-				{
-					c->warning(__tr2qs("Not an hex digits"));
+				c->warning(__tr2qs("A string of 6 digits hex is required"));
 				return true;
-				}
-				if (widget())
-				{
-					QPalette p = widget()->palette(); 
-					p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
-					widget()->setPalette(p); 
-				}
-			return true;
 			}
+			QString buffer(value.mid(0,2));
+			iColR=buffer.toInt(&bOk,16);
+			buffer=value.mid(2,2);
+			iColG=buffer.toInt(&bOk1,16);
+			buffer=value.mid(4,2);
+			iColB=buffer.toInt(&bOk2,16);
+			if (!bOk || !bOk1 || !bOk2)
+			{
+				c->warning(__tr2qs("Not an hex digits"));
+				return true;
+			}
+			if (widget())
+			{
+				QPalette p = widget()->palette(); 
+				p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
+				widget()->setPalette(p); 
+			}
+			return true;
+		}
 
 		if(c->params()->count() < 3)
 		{
@@ -1383,9 +1384,10 @@ bool KviKvsObject_widget::function_parentWidget(KviKvsObjectFunctionCall *c)
 	if(parentScriptWidget()) c->returnValue()->setHObject(parentObject()->handle());
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
-    return true;
+	return true;
 
 }
+
 bool KviKvsObject_widget::function_setMouseTracking(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
@@ -1447,6 +1449,7 @@ bool KviKvsObject_widget::function_setFocus(KviKvsObjectFunctionCall *c)
 	if (widget())widget()->setFocus();
 	return true;
 }
+
 bool KviKvsObject_widget::function_hide(KviKvsObjectFunctionCall *)
 {
 	if(widget())widget()->hide();
@@ -1513,7 +1516,7 @@ bool KviKvsObject_widget::function_setMaximumWidth(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) widget()->setMaximumWidth(iW);
+	if (widget()) widget()->setMaximumWidth(iW);
 	return true;
 }
 
@@ -1535,8 +1538,8 @@ bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x_or_array",KVS_PT_VARIANT,0,pXOrArray)
 		KVSO_PARAMETER("y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
-		KVSO_PARAMETERS_END(c)
-		if(pXOrArray->isArray())
+	KVSO_PARAMETERS_END(c)
+	if(pXOrArray->isArray())
 	{
 		if(pXOrArray->array()->size() < 2)
 		{
@@ -1574,6 +1577,7 @@ bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
 	widget()->move(QPoint(iX,iY));
 	return true;
 }
+
 bool KviKvsObject_widget::function_sizeHint(KviKvsObjectFunctionCall *c)
 {
 	if(!widget())return true;
@@ -1592,8 +1596,8 @@ bool KviKvsObject_widget::function_resize(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("width_or_array",KVS_PT_VARIANT,0,pWOrArray)
 		KVSO_PARAMETER("height",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
-		KVSO_PARAMETERS_END(c)
-		if(pWOrArray->isArray())
+	KVSO_PARAMETERS_END(c)
+	if(pWOrArray->isArray())
 	{
 		if(pWOrArray->array()->size() < 2)
 		{
@@ -1631,6 +1635,7 @@ bool KviKvsObject_widget::function_resize(KviKvsObjectFunctionCall *c)
 	widget()->resize(QSize(iW,iH));
 	return true;
 }
+
 bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 {
 	QString szMode;
@@ -1663,22 +1668,20 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 	Qt::WindowFlags flag,sum=0;
 	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
 	{
-
-				flag=0;
-			for(unsigned int j = 0; j < widgettypes_num; j++)
+		flag=0;
+		for(unsigned int j = 0; j < widgettypes_num; j++)
+		{
+			if(KviQString::equalCI((*it), widgettypes_tbl[j]))
 			{
-				if(KviQString::equalCI((*it), widgettypes_tbl[j]))
-				{
-					flag=widgettypes_cod[j];
-					break;
-				}
+				flag=widgettypes_cod[j];
+				break;
 			}
-			if(flag)
-				sum = sum | flag;
-			else
-				c->warning(__tr2qs("Unknown widget flag '%Q'"),&(*it));
-
 		}
+		if(flag)
+			sum = sum | flag;
+		else
+			c->warning(__tr2qs("Unknown widget flag '%Q'"),&(*it));
+	}
 
 	widget()->setWindowFlags(sum);
 	return true;
@@ -1769,6 +1772,7 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
 	return true;
 }
+
 bool KviKvsObject_widget::function_setWindowIcon(KviKvsObjectFunctionCall *c)
 {
 
@@ -1802,16 +1806,19 @@ bool KviKvsObject_widget::function_setBackgroundImage(KviKvsObjectFunctionCall *
 	}
 	return true;
 }
+
 bool KviKvsObject_widget::function_globalCursorX(KviKvsObjectFunctionCall *c)
 {
 	if(widget())c->returnValue()->setInteger(QCursor::pos().x());
 	return true;
 }
+
 bool KviKvsObject_widget::function_globalCursorY(KviKvsObjectFunctionCall *c)
 {
 	if(widget())c->returnValue()->setInteger(QCursor::pos().y());
 	return true;
 }
+
 bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 {
 	KviKvsObject *obj;
@@ -1837,6 +1844,7 @@ bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 	widget()->setMask(mask);
 	return true;
 }
+
 bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 {
 	QString attribute;
@@ -1860,6 +1868,7 @@ bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);
 	return true;
 }
+
 bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 {
 	QString szColorRole,szColorGroup;
@@ -1900,6 +1909,7 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setArray(a);
 	return true;
 }
+
 bool KviKvsObject_widget::function_setStyleSheet(KviKvsObjectFunctionCall *c)
 {
 	QString szStyleSheet;
@@ -1909,6 +1919,7 @@ bool KviKvsObject_widget::function_setStyleSheet(KviKvsObjectFunctionCall *c)
 	if(widget())widget()->setStyleSheet(szStyleSheet);
 	return true;
 }
+
 bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
 {
 	QString szKey;
@@ -1923,4 +1934,3 @@ bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_widget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

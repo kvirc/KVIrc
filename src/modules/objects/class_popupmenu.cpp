@@ -23,6 +23,7 @@
 
 
 #include "class_popupmenu.h"
+
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_locale.h"
@@ -36,7 +37,7 @@
 
 
 /*
-	@doc:	popupmenu
+	@doc:   popupmenu
 	@keyterms:
 		popupmenu object class,
 	@title:
@@ -204,13 +205,12 @@ bool KviKvsObject_popupmenu::functioninsertItem(KviKvsObjectFunctionCall *c)
 	if(!widget())return true;
 	QPixmap *pix = 0;
 	int id=0;
-	 QAction * action;
-    if(!szIcon.isEmpty())
+	QAction * action;
+	if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
 		if (pix) action=((QMenu *)widget())->addAction(*pix,szItem);
 		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
-
 	}
 	else
 		action=((QMenu *)widget())->addAction(szItem);
@@ -251,10 +251,10 @@ bool KviKvsObject_popupmenu::functioninsertWidget(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())
-    {
+	{
 		c->warning(__tr2qs("Can't add a non-widget object"));
-        return TRUE;
-    }
+		return TRUE;
+	}
 	if (widget()) ((KviTalPopupMenu *)widget())->insertItem(((KviTalPopupMenu  *)(pObject->object())));
 	return true;
 }
@@ -272,19 +272,18 @@ bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->inherits("KviKvsObject_popupmenu"))
-    {
+	{
 		c->warning(__tr2qs("Can't add a non - popupmenu  object"));
-        return TRUE;
-    }
+		return TRUE;
+	}
 	if(!widget())return true;
 	QPixmap *pix = 0;
 	int id=0;
-    if(!szIcon.isEmpty())
+	if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
-        if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szLabel,((KviTalPopupMenu  *)(ob->object())));
+		if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szLabel,((KviTalPopupMenu  *)(ob->object())));
 		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
-
 	}
 	else
 		id=((KviTalPopupMenu *)widget())->insertItem(szLabel,((KviTalPopupMenu  *)(ob->object())));
@@ -297,7 +296,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 	if(!c->params()->count())
 	{
 		((QMenu *)widget())->exec(QCursor::pos());
-	 return true;
+		return true;
 	}
 
 	KviKvsObject *pObject;
@@ -330,6 +329,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 
 	return true;
 }
+
 bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uItem;
@@ -343,7 +343,6 @@ bool KviKvsObject_popupmenu::functionremoveItem(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-
 
 bool KviKvsObject_popupmenu::functioninsertSeparator(KviKvsObjectFunctionCall *c)
 {
@@ -361,11 +360,13 @@ void KviKvsObject_popupmenu::slothighlighted(int i)
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
 	callFunction(this,"highlightedEvent",&params);
 }
+
 bool KviKvsObject_popupmenu::functionhighlightedEvent(KviKvsObjectFunctionCall *c)
 {
 	emitSignal("highlighted",c,c->params());
 	return true;
 }
+
 void KviKvsObject_popupmenu::slottriggered(QAction *a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
@@ -373,13 +374,14 @@ void KviKvsObject_popupmenu::slottriggered(QAction *a)
 	bool found=false;
 	while (i.hasNext()) 
 	{
-	     i.next();
-		 if (i.value()!= a) count++;
-		 else break;
+		i.next();
+		if (i.value()!= a) count++;
+		else break;
 	}
 	KviKvsVariantList params(new KviKvsVariant(count));
 	callFunction(this,"activatedEvent",&params);
 }
+
 bool KviKvsObject_popupmenu::functionactivatedEvent(KviKvsObjectFunctionCall *c)
 {
 	emitSignal("activated",c,c->params());
@@ -390,4 +392,3 @@ bool KviKvsObject_popupmenu::functionactivatedEvent(KviKvsObjectFunctionCall *c)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_popupmenu.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
