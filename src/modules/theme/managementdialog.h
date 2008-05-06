@@ -67,12 +67,12 @@ public:
 	KviThemeManagementDialog(QWidget * parent);
 	virtual ~KviThemeManagementDialog();
 protected:
-	static KviThemeManagementDialog * m_pInstance;
+	static KviThemeManagementDialog   * m_pInstance;
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
-	KviTalListWidget       * m_pListWidget;
-	KviTalPopupMenu     * m_pContextPopup; 
-	QToolButton * m_pDeleteThemeButton;
-	QToolButton * m_pPackThemeButton;
+	KviTalListWidget    * m_pListWidget;
+	KviTalPopupMenu     * m_pContextPopup;
+	QToolButton         * m_pDeleteThemeButton;
+	QToolButton         * m_pPackThemeButton;
 public:
 	static KviThemeManagementDialog * instance(){ return m_pInstance; };
 	static void display();

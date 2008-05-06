@@ -347,6 +347,7 @@
 #define KVI_BIGICON_THEME "kvi_bigicon_theme.png"
 #define KVI_BIGICON_ADDONS "kvi_bigicon_addons.png"
 
+#define KVI_BIGICON_HELP "kvi_bigicon_help.png"
 #define KVI_BIGICON_HELPINDEX "kvi_bigicon_helpindex.png"
 #define KVI_BIGICON_HELPBACK "kvi_bigicon_helpback.png"
 #define KVI_BIGICON_HELPFORWARD "kvi_bigicon_helpforward.png"

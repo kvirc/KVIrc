@@ -194,8 +194,8 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	connect(m_pListWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableButtons()));
 	g->addWidget(m_pListWidget,1,0);
 
-	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget); 
-	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &))); 
+	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget);
+	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
 	b->setMaximumSize(b->sizeHint().width(),b->sizeHint().height());
