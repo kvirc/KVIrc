@@ -89,52 +89,6 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 : QDialog(p/*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
-	/* old manager
-	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
-	setObjectName("Addon manager");
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
-	setModal(true);
-	m_pInstance = this;
-	QGridLayout * g = new QGridLayout(this);
-	
-	//	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
-	m_pListWidget = new KviTalListWidget(this);
-	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
-
-	m_pListWidget->setItemDelegate(itemDelegate);
-	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-	m_pListWidget->setSortingEnabled(true);
-	m_pListWidget->setMinimumHeight(400);
-	m_pListWidget->setMinimumWidth(400);
-
-	QString szPic;
-	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	// FIXME
-	szPic += "/kvi_dialog_addons.png";
-	QString style("QListWidget {background-image: url(" + szPic + ");}");
-	debug("pic: %s",szPic.toUtf8().data());
-	debug("style: %s",style.toUtf8().data());
-	m_pListWidget->setStyleSheet(style);
-	g->addMultiCellWidget(m_pListWidget,0,10,1,1);
-
-
-
-	fillListView();
-	
-	currentChanged(0,0);
-	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
-	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
-	if(g_rectManagementDialogGeometry.y() < 5)
-	{
-		g_rectManagementDialogGeometry.setY(5);
-	}
-	resize(g_rectManagementDialogGeometry.width(),
-		g_rectManagementDialogGeometry.height());
-	move(g_rectManagementDialogGeometry.x(),
-		g_rectManagementDialogGeometry.y());
-	*/
-
-	/* new manager */
 	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
 	setObjectName("Addon manager");
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ADDONS)));
