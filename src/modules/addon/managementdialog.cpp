@@ -152,7 +152,6 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QWidget *w= new QWidget(hb);
 	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
 
-	//	QPixmap * pix = g_pIconManager->getImage("kvi_dialog_addons.png");
 	m_pListWidget = new KviTalListWidget(this);
 	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
 
@@ -164,9 +163,12 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	szPic += QDir::separator();
-	szPic += "kvi_dialog_addons.png";
-	QString szStyle("QListWidget {background-image: url(" + szPic + ");}");
+	// we need mandatory unix like path separator 
+	szPic.replace('\\',"/");
+
+	szPic += "/kvi_dialog_addons.png";
+	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
+	debug("path %s",szPic.toUtf8().data());
 	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
 
