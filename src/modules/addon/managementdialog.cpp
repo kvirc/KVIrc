@@ -50,6 +50,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QFrame>
+#include <QDir>
 #include <QAbstractTextDocumentLayout>
 
 
@@ -163,7 +164,8 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	szPic += "/kvi_dialog_addons.png";
+	szPic += QDir::separator();
+	szPic += "kvi_dialog_addons.png";
 	QString szStyle("QListWidget {background-image: url(" + szPic + ");}");
 	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
