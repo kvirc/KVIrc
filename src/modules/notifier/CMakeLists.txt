@@ -25,3 +25,5 @@ QT4_WRAP_CPP(kvinotifier_MOC_SRCS ${kvinotifier_MOC_HDRS})
 
 SET(kvi_module_name kvinotifier)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+
+ADD_SUBDIRECTORY(pics)
