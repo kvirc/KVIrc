@@ -45,6 +45,7 @@
 #include <QBitmap>
 #include <QMetaObject>
 #include <QIcon>
+#include <QStatusBar>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -677,6 +678,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"colorPalette",function_colorPalette)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setStyleSheet",function_setStyleSheet)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setKeyShortcut",function_setKeyShortcut)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"insertIntoStatusBar",function_insertIntoStatusBar)
+
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -695,6 +698,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"paintEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"keyPressEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
+
+
 // QT4
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
@@ -1929,6 +1934,18 @@ bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
 	szKey.prepend("&");
 	if (widget())c->returnValue()->setInteger((kvs_int_t)widget()->grabShortcut(QKeySequence::mnemonic(szKey)));
 	return true;
+}
+
+bool KviKvsObject_widget::function_insertIntoStatusBar(KviKvsObjectFunctionCall *c)
+{
+	kvs_int_t iIndex;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETERS_END(c)
+	if (widget())
+		g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
+	return true;
+
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

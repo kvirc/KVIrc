@@ -104,7 +104,7 @@ protected:
 	bool function_y(KviKvsObjectFunctionCall *);
 	bool function_setMask(KviKvsObjectFunctionCall *c);
 
-
+	bool function_insertIntoStatusBar(KviKvsObjectFunctionCall *c);
 
 //QT4
 bool function_setAttribute(KviKvsObjectFunctionCall *c);
