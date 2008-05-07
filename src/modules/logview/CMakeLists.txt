@@ -14,5 +14,5 @@ SET(kvilogview_SRCS
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvilogview_MOC_SRCS ${kvilogview_MOC_HDRS})
 
-SET(kvi_module_name kvilogview)
+SET(kvi_module_name kvilogviewer)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
