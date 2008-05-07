@@ -28,6 +28,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_heapobject.h"
 #include "kvi_pointerhashtable.h"
+#include "kvi_tal_hbox.h"
 
 #include <QString>
 #include <QStatusBar>
@@ -83,6 +84,7 @@ public:
 	//void addApplet(KviStatusBarApplet * pApplet);
 	//void removeApplet(KviStatusBarApplet * pApplet);
 protected:
+	KviTalHBox * m_pBox;
 	KviFrame                                 * m_pFrame;
 	KviPointerList<KviStatusBarMessage>          * m_pMessageQueue;
 	QTimer                                   * m_pMessageTimer;
@@ -100,13 +102,13 @@ protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void mouseMoveEvent(QMouseEvent * e);
 	virtual void mouseReleaseEvent(QMouseEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
+	//virtual void resizeEvent(QResizeEvent * e);
 	virtual bool event(QEvent * e);
 	void registerApplet(KviStatusBarApplet * a);
 	void unregisterApplet(KviStatusBarApplet * a);
 	void recalcMinimumHeight();
 	void layoutChildren();
-	void updateLayout(){ recalcMinimumHeight(); layoutChildren(); };
+	//void updateLayout(){ recalcMinimumHeight(); layoutChildren(); };
 	void save();
 	void load();
 	KviStatusBarApplet * createApplet(const QString &szInternalName);

@@ -88,6 +88,7 @@ protected:
 	KviStatusBar                 * m_pStatusBar;
 	KviStatusBarAppletDescriptor * m_pDescriptor;
 	bool                           m_bSelected;
+	int mIndex;
 public:
 	KviStatusBarApplet(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
 	virtual ~KviStatusBarApplet();
@@ -95,10 +96,13 @@ public:
 	KviStatusBar * statusBar(){ return m_pStatusBar; };
 	KviFrame * frame(){ return m_pStatusBar->frame(); };
 	KviStatusBarAppletDescriptor * descriptor(){ return m_pDescriptor; };
+	void setIndex(int i){mIndex=i;};
+	int index(){return mIndex;};
 	void select(bool bSelect = true);
 	bool isSelected(){ return m_bSelected; };
 protected:
 	virtual void paintEvent(QPaintEvent *e);
+	
 	virtual void fillContextPopup(KviTalPopupMenu *p){};
 	virtual void loadState(const char * prefix,KviConfig *cfg){};
 	virtual void saveState(const char * prefix,KviConfig *cfg){};
@@ -119,6 +123,7 @@ public:
 protected:
 	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
+	
 	virtual void loadState(const char * prefix,KviConfig *cfg);
 	virtual void saveState(const char * prefix,KviConfig *cfg);
 protected slots:

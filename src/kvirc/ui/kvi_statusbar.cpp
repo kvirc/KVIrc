@@ -74,7 +74,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 
 	m_pAppletDescriptors = new KviPointerHashTable<QString,KviStatusBarAppletDescriptor>;
 	m_pAppletDescriptors->setAutoDelete(true);
-
+	
 	KviStatusBarClock::selfRegister(this);
 	KviStatusBarAwayIndicator::selfRegister(this);
 	KviStatusBarLagIndicator::selfRegister(this);
@@ -92,9 +92,9 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 
 	m_pMessageLabel = new QLabel("<b>[x]</b> x",this,"msgstatuslabel");
 	m_pMessageLabel->setMargin(1);
-	m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
-	m_pMessageLabel->setMinimumWidth(350);
-	
+	//m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+	//m_pMessageLabel->setMinimumWidth(350);
+	insertWidget(0,m_pMessageLabel);
 	m_iLastMinimumHeight = 0;
 	m_bStopLayoutOnAddRemove = true;
 	setContextMenuPolicy(Qt::CustomContextMenu);
@@ -110,7 +110,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	m_bStopLayoutOnAddRemove = false;
 
 
-	updateLayout();
+	//updateLayout();
 }
 
 
@@ -193,27 +193,29 @@ void KviStatusBar::layoutChildren()
 {
 	int x = width() - HMARGIN;
 	int h = height() - (VMARGIN * 2);
-	for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
+	/*for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
 	{
-		int w = a->sizeHint().width();
+		int w = a->KviStatusBarApplet::sizeHint().width();
+		//debug("width %d",w);
 		x -= w;
 		a->setGeometry(x,VMARGIN,w,h);
 		x -= SPACING;
 	}
+	*/
 	// trick to center vertically the rich text label: make it some pixels smaller
-	m_pMessageLabel->setGeometry(HMARGIN,VMARGIN,x - HMARGIN,h - RICHTEXTLABELTRICK);
+//	m_pMessageLabel->setGeometry(HMARGIN,VMARGIN,x - HMARGIN,h - RICHTEXTLABELTRICK);
 }
-
+/*
 void KviStatusBar::resizeEvent(QResizeEvent * e)
 {
 	layoutChildren();
 }
-
+*/
 bool KviStatusBar::event(QEvent * e)
 {
 	if(e->type() == QEvent::LayoutHint)
 	{
-		updateLayout();
+		//updateLayout();
 		return false; // send to parents too!
 	}
 	if (e->type() == QEvent::ToolTip) 
@@ -417,7 +419,7 @@ void KviStatusBar::appletsPopupActivated(int id)
 					m_pAppletList->removeRef(a);
 					m_pAppletList->insert(idx + 1,a);
 					m_bStopLayoutOnAddRemove = bSave;
-					if(!m_bStopLayoutOnAddRemove)updateLayout();
+					//if(!m_bStopLayoutOnAddRemove)updateLayout();
 					showLayoutHelp();
 					return;
 				}
@@ -439,7 +441,7 @@ void KviStatusBar::registerApplet(KviStatusBarApplet * a)
 {
 	m_pAppletList->append(a);
 	if(!a->isVisible())a->show();
-	if(!m_bStopLayoutOnAddRemove)updateLayout();
+	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
 void KviStatusBar::unregisterApplet(KviStatusBarApplet * a)
@@ -447,7 +449,7 @@ void KviStatusBar::unregisterApplet(KviStatusBarApplet * a)
 	if(!a)return;
 	m_pAppletList->removeRef(a);
 	if(a->isVisible())a->hide();
-	if(!m_bStopLayoutOnAddRemove)updateLayout();
+//	if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
 
@@ -462,15 +464,7 @@ void KviStatusBar::paintEvent(QPaintEvent * e)
 
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
-	qDebug("mouse press event");
 	m_pClickedApplet = 0;
-	/*if(e->button() & Qt::RightButton)
-	{
-		qDebug("Pressed right button");
-		contextPopup()->popup(QCursor::pos());
-		return;
-	}
-	*/
 	if((e->button() & Qt::LeftButton) && (e->state() & (Qt::ShiftButton | Qt::ControlButton)))
 	{
 		// move!
@@ -485,9 +479,11 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 {
 	if(!m_pClickedApplet)return;
 	if(!appletExists(m_pClickedApplet))return;
+	debug ("index clicked %d",m_pClickedApplet->index());
 	QPoint g = mapToGlobal(e->pos());
 	KviStatusBarApplet * a = appletAt(g,true);
 	if(a == m_pClickedApplet)return;
+	debug("Moved over index %d",a->index());
 	// move!
 	if(!a)
 	{
@@ -505,6 +501,17 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 	}
 	
 	m_pAppletList->removeRef(m_pClickedApplet);
+	
+	int index=a->index();
+
+	debug ("Move from to index %d",index);
+	removeWidget(m_pClickedApplet);
+	insertPermanentWidget(index,m_pClickedApplet);
+	
+	m_pClickedApplet->setIndex(index);
+	index++;
+	a->setIndex(index);
+	//removeWidget(m_pClickedApplet);
 	int idx = m_pAppletList->findRef(a);
 	if(idx == -1)m_pAppletList->append(m_pClickedApplet); // uhg ?
 	else {
@@ -512,7 +519,8 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 		if(p.x() > (a->width() / 2))idx++; // just after
 		m_pAppletList->insert(idx,m_pClickedApplet);
 	}
-	layoutChildren();
+	update();
+	//layoutChildren();
 }
 
 void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)

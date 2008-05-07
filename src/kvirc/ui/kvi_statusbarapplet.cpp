@@ -134,9 +134,18 @@ void KviStatusBarApplet::paintEvent(QPaintEvent * e)
 	if(m_bSelected)
 	{
 		QPainter p(this);
+	// workaround to fix "Warning:QPainter::setCompositionMode: PorterDuff modes not supported on device on win"
+		#ifdef COMPILE_ON_WINDOWS
+			QPalette pal=palette();
+			QColor col=pal.highlight();
+			col.setAlpha(127);
+			p.fillRect(rect(),QBrush(col));
+		#else
+			
 		p.setCompositionMode(QPainter::CompositionMode_SourceOut);
 		p.fillRect(rect(),Qt::black);
 		p.setCompositionMode(QPainter::CompositionMode_SourceOver);
+#endif
 	}
 }
 
@@ -207,7 +216,10 @@ void KviStatusBarAwayIndicator::saveState(const char * prefix,KviConfig *cfg)
 
 KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarAwayIndicator(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarAwayIndicator(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	
+	return applet;
 }
 
 void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
@@ -371,7 +383,9 @@ void KviStatusBarLagIndicator::updateDisplay()
 
 KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarLagIndicator(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarLagIndicator(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	return applet;
 }
 
 void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
@@ -441,7 +455,9 @@ void KviStatusBarClock::saveState(const char * prefix,KviConfig *cfg)
 
 KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarClock(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarClock(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	return applet;
 }
 
 void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
@@ -449,6 +465,7 @@ void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
 		__tr2qs("Simple Clock"),"clock",CreateStatusBarClock,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 	pBar->registerAppletDescriptor(d);
+	
 }
 
 
@@ -517,7 +534,9 @@ void KviStatusBarConnectionTimer::saveState(const char * prefix,KviConfig *cfg)
 
 KviStatusBarApplet * CreateStatusBarConnectionTimer(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarConnectionTimer(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarConnectionTimer(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	return applet;
 }
 
 void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
@@ -541,7 +560,9 @@ KviStatusBarSeparator::~KviStatusBarSeparator()
 
 KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarSeparator(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarSeparator(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	return applet;
 }
 
 void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
@@ -607,7 +628,10 @@ void KviStatusBarUpdateIndicator::saveState(const char * prefix,KviConfig *cfg)
 
 KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	return new KviStatusBarUpdateIndicator(pBar,pDescriptor);
+//	return new KviStatusBarUpdateIndicator(pBar,pDescriptor);
+	KviStatusBarApplet * applet=new KviStatusBarUpdateIndicator(pBar,pDescriptor);
+	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	return applet;
 }
 
 void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
