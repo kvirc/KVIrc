@@ -95,6 +95,7 @@ private slots:
 	void readStdout();
 	void readStderr();
 	void processExited(int exitCode);
+	void processStarted();
 	void selfDelete();
 private:
 	bool trigger(CallbackEvent e,const QString &szData);

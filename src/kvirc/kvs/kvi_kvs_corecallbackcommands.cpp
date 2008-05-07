@@ -722,9 +722,9 @@ namespace KviKvsCoreCallbackCommands
 			[comment]# Do it another way: enable stderr and filter out stdout[/comment]
 			exec -e ("sed -senseless"){ if($0 == "stderr")echo $1; }
 			[comment]# Now enable all (almost) events and print them[/comment]
-			exec -e -t -s ("cat /proc/cpuinfo && sed -senseless"){ echo [event:$0] $1; }
+			exec -e -t -x ("cat /proc/cpuinfo && sed -senseless"){ echo [event:$0] $1; }
 			[comment]# Now see what happens if -b is used[/comment]
-			exec -b -e -t -s ("cat /proc/cpuinfo && sed -senseless"){ echo [event:$0] $1; }
+			exec -b -e -t -x ("cat /proc/cpuinfo && sed -senseless"){ echo [event:$0] $1; }
 			[comment]# Run an iterative script and kill it after 20 seconds[/comment]
 			exec -k=20000 ("while true; do sleep 1; echo \"Tic\"; done"){ echo [event:$0] $1; }
 			[comment]# Run a blocking process, kill it after 20 seconds[/comment]
