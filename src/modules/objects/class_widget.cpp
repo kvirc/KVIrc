@@ -32,6 +32,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_app.h"
+#include "kvi_frame.h"
 
 #include <QKeyEvent>
 #include <QDesktopWidget>
