@@ -58,13 +58,10 @@
 #include <QString>
 
 
+
 KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
-	QString szPackageName = "MyAddon";
-	QString szPackageAuthor = __tr2qs_ctx("Your name here","addon");
-	QString szPackageDescription = __tr2qs_ctx("Put a package description here...","addon");
-	QString szPackageVersion = "1.0.0";
 
 	m_szPackagePath = QDir::homeDirPath();
 	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
@@ -97,59 +94,20 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	pLayout->setRowStretch(1,1);
 	
 	addPage(pPage,__tr2qs_ctx("Welcome","addon"));
+
+
 	setBackEnabled(pPage,false);
 	setNextEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
 	setFinishEnabled(pPage,false);
 
 	// packager informations
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","addon"));
-	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addWidget(pLabel,0,0,1,2);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Author:","addon"));
-	pLayout->addWidget(pLabel,1,0);
-	
-	m_pPackagerNameEdit = new QLineEdit(pPage);
-	m_pPackagerNameEdit->setText(szPackageAuthor);
-	pLayout->addWidget(m_pPackagerNameEdit,1,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Name:","addon"));
-	pLayout->addWidget(pLabel,2,0);
-	
-	m_pPackageNameEdit = new QLineEdit(pPage);
-	m_pPackageNameEdit->setText(szPackageName);
-	pLayout->addWidget(m_pPackageNameEdit,2,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Version:","addon"));
-	pLayout->addWidget(pLabel,3,0);
-	
-	m_pPackageVersionEdit = new QLineEdit(pPage);
-	m_pPackageVersionEdit->setText(szPackageVersion);
-	pLayout->addWidget(m_pPackageVersionEdit,3,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Description:","addon"));
-	pLayout->addWidget(pLabel,4,0);
-	
-	m_pPackageDescriptionEdit = new KviTalTextEdit(pPage);
-	m_pPackageDescriptionEdit->setBackgroundRole(QPalette::Window);
-	m_pPackageDescriptionEdit->setText(szPackageDescription);
-	pLayout->addWidget(m_pPackageDescriptionEdit,4,1,1,2);
-	pLayout->setRowStretch(1,1);
-
-	addPage(pPage,__tr2qs_ctx("Package Informations","addon"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,true);
-	setFinishEnabled(pPage,false);
+	m_pPackAddonInfoCreateWidget=new KviPackAddonCreateInfoPackageWidget(this);
+	addPage(m_pPackAddonInfoCreateWidget,__tr2qs_ctx("Package Informations","addon"));
+	setBackEnabled(m_pPackAddonInfoCreateWidget,true);
+	setHelpEnabled(m_pPackAddonInfoCreateWidget,false);
+	setNextEnabled(m_pPackAddonInfoCreateWidget,true);
+	setFinishEnabled(m_pPackAddonInfoCreateWidget,false);
 
 	// select script files
 
@@ -162,56 +120,14 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 
 
 	// final results
-	pPage = new QWidget(this);
-	pLayout = new QGridLayout(pPage);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here there are the informations you provided. If they are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
-	pLayout->addWidget(pLabel,0,0,1,2);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Author:","addon"));
-	pLayout->addWidget(pLabel,1,0);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(m_pPackagerNameEdit->text());
-	pLayout->addWidget(pLabel,1,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Name:","addon"));
-	pLayout->addWidget(pLabel,2,0);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(m_pPackageNameEdit->text());
-	pLayout->addWidget(pLabel,2,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Version:","addon"));
-	pLayout->addWidget(pLabel,3,0);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(m_pPackageVersionEdit->text());
-	pLayout->addWidget(pLabel,3,1);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Package Description:","addon"));
-	pLayout->addWidget(pLabel,4,0);
-
-	pLabel = new QLabel(pPage);
-	pLabel->setText(m_pPackageDescriptionEdit->text());
-	pLayout->addWidget(pLabel,4,1,1,2);
-	pLayout->setRowStretch(1,1);
-
-	addPage(pPage,__tr2qs_ctx("Package Path","addon"));
-	setBackEnabled(pPage,true);
-	setHelpEnabled(pPage,false);
-	setNextEnabled(pPage,false);
-	setFinishEnabled(pPage,true);
+	m_pPackAddonInfoWidget=new KviPackAddonInfoWidget(this);
+	addPage(m_pPackAddonInfoWidget,__tr2qs_ctx("Package Path","addon"));
+	setBackEnabled(m_pPackAddonInfoWidget,true);
+	setHelpEnabled(m_pPackAddonInfoWidget,false);
+	setNextEnabled(m_pPackAddonInfoWidget,false);
+	setFinishEnabled(m_pPackAddonInfoWidget,true);
 }
 
-KviPackAddonDialog::~KviPackAddonDialog()
-{
-}
 
 void KviPackAddonDialog::accept()
 {
@@ -223,10 +139,10 @@ bool KviPackAddonDialog::packAddon()
 {
 	//m_pPathSelector->commit();
 
-	QString szPackageAuthor = m_pPackagerNameEdit->text();
-	QString szPackageName = m_pPackageNameEdit->text();
-	QString szPackageDescription = m_pPackageDescriptionEdit->text();
-	QString szPackageVersion = m_pPackageVersionEdit->text();
+	QString szPackageAuthor = m_pPackAddonInfoCreateWidget->packagerName();
+	QString szPackageName = m_pPackAddonInfoCreateWidget->packageName();
+	QString szPackageDescription = m_pPackAddonInfoCreateWidget->packageVersion();
+	QString szPackageVersion = m_pPackAddonInfoCreateWidget->packageDescription();
 
 	QString szTmp = QDateTime::currentDateTime().toString();
 	KviPackageWriter f;
@@ -287,3 +203,107 @@ bool KviPackAddonDialog::packAddon()
 
 	return true;
 }
+
+KviPackAddonInfoWidget::KviPackAddonInfoWidget(KviPackAddonDialog *pParent)
+:QWidget(pParent)
+{
+	m_pParent=pParent;
+	QGridLayout *pLayout = new QGridLayout(this);
+
+	QLabel *pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Here there are the informations you provided. If they are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
+	pLabel->setWordWrap(true);
+	pLayout->addWidget(pLabel,0,0);
+
+	m_pLabelInfo = new QLabel(this);
+	pLayout->addWidget(m_pLabelInfo,1,0);
+/*
+	m_pPackageName = new QLabel(this);
+	pLayout->addWidget(m_pPackageName,2,0);
+
+	m_pPackageVersion = new QLabel(this);
+	pLayout->addWidget(m_pPackageVersion,3,0);
+
+	m_pPackageDescription = new QLabel(this);
+	pLayout->addWidget(m_pPackageDescription,4,0);//,1,2);
+*/
+//pLayout->setRowStretch(0,1);
+}
+void KviPackAddonInfoWidget::showEvent(QShowEvent *)
+{
+	KviPackAddonCreateInfoPackageWidget *createWidget=m_pParent->m_pPackAddonInfoCreateWidget;
+	QString szText=__tr2qs_ctx("Package Author:","addon")+" "+createWidget->packagerName()+"<br>";
+	szText+=__tr2qs_ctx("Package Name:","addon")+" "+createWidget->packageName()+"<br>";
+	szText+=__tr2qs_ctx("Package Version:","addon")+" "+createWidget->packageVersion()+"<br>";
+	szText+=__tr2qs_ctx("Package Description:","addon")+" "+createWidget->packageDescription()+"<br>";
+	m_pLabelInfo->setText(szText);
+/*
+	m_pLabelAuthor->setText(__tr2qs_ctx("Package Author:","addon")+" "+createWidget->packagerName());
+	m_pPackageName->setText(__tr2qs_ctx("Package Name:","addon")+" "+createWidget->packageName());
+	m_pPackageVersion->setText(__tr2qs_ctx("Package Version:","addon")+" "+createWidget->packageVersion());
+	m_pPackageDescription->setText(__tr2qs_ctx("Package Description:","addon")+" "+createWidget->packageDescription());
+*/
+}
+KviPackAddonInfoWidget::~KviPackAddonInfoWidget()
+{
+
+}
+
+KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent)
+:QWidget(pParent)
+{
+	QString szPackageName = "MyAddon";
+	QString szPackageAuthor = __tr2qs_ctx("Your name here","addon");
+	QString szPackageDescription = __tr2qs_ctx("Put a package description here...","addon");
+	QString szPackageVersion = "1.0.0";
+
+	QGridLayout *pLayout = new QGridLayout(this);
+
+	QLabel *pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","addon"));
+	pLabel->setWordWrap(true);
+	pLabel->setTextFormat(Qt::RichText);
+	pLayout->addWidget(pLabel,0,0,1,2);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Author:","addon"));
+	pLayout->addWidget(pLabel,1,0);
+	
+	m_pPackagerNameEdit = new QLineEdit(this);
+	m_pPackagerNameEdit->setText(szPackageAuthor);
+	pLayout->addWidget(m_pPackagerNameEdit,1,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Name:","addon"));
+	pLayout->addWidget(pLabel,2,0);
+	
+	m_pPackageNameEdit = new QLineEdit(this);
+	m_pPackageNameEdit->setText(szPackageName);
+	pLayout->addWidget(m_pPackageNameEdit,2,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Version:","addon"));
+	pLayout->addWidget(pLabel,3,0);
+	
+	m_pPackageVersionEdit = new QLineEdit(this);
+	m_pPackageVersionEdit->setText(szPackageVersion);
+	pLayout->addWidget(m_pPackageVersionEdit,3,1);
+
+	pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Package Description:","addon"));
+	pLayout->addWidget(pLabel,4,0);
+	
+	m_pPackageDescriptionEdit = new KviTalTextEdit(this);
+	m_pPackageDescriptionEdit->setBackgroundRole(QPalette::Window);
+	m_pPackageDescriptionEdit->setText(szPackageDescription);
+	pLayout->addWidget(m_pPackageDescriptionEdit,4,1,1,2);
+	pLayout->setRowStretch(1,1);
+}
+
+
+KviPackAddonCreateInfoPackageWidget::~KviPackAddonCreateInfoPackageWidget()
+{
+
+
+}
+

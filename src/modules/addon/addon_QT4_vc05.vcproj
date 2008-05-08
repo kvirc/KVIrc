@@ -209,6 +209,10 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\addonfunctions.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\libkviaddon.cpp"
 				>
 			</File>
@@ -220,12 +224,24 @@
 				RelativePath=".\moc_managementdialog.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\moc_packaddondialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\packaddondialog.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
+			<File
+				RelativePath=".\addonfunctions.h"
+				>
+			</File>
 			<File
 				RelativePath=".\managementdialog.h"
 				>
@@ -244,6 +260,19 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\packaddondialog.h"
+				>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
 				</FileConfiguration>

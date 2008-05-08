@@ -27,28 +27,66 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_tal_wizard.h"
+#include "kvi_tal_textedit.h"
+#include <QLineEdit>
+#include <QLabel>
+#include <QWidget>
 
-class QString;
-class QLineEdit;
-class KviTalTextEdit;
 class KviFileSelector;
+class KviPackAddonCreateInfoPackageWidget;
+class KviPackAddonInfoWidget;
 
 class KviPackAddonDialog : public KviTalWizard
 {
 	Q_OBJECT
 public:
 	KviPackAddonDialog(QWidget * pParent);
-	virtual ~KviPackAddonDialog();
+	~KviPackAddonDialog(){};
+	KviPackAddonCreateInfoPackageWidget *m_pPackAddonInfoCreateWidget ;
+	KviPackAddonInfoWidget *m_pPackAddonInfoWidget ;
 protected:
 	QString           m_szPackagePath;
 	KviFileSelector * m_pPathSelector;
-	QLineEdit       * m_pPackagerNameEdit;
-	QLineEdit       * m_pPackageNameEdit;
-	QLineEdit       * m_pPackageVersionEdit;
-	KviTalTextEdit  * m_pPackageDescriptionEdit;
 protected:
 	virtual void accept();
 	bool packAddon();
 };
+
+class KviPackAddonCreateInfoPackageWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent);
+	~KviPackAddonCreateInfoPackageWidget();
+	QString packagerName(){return m_pPackagerNameEdit->text();};
+	QString packageName(){return m_pPackageNameEdit->text();};
+	QString packageVersion(){return m_pPackageVersionEdit->text();};
+	QString packageDescription(){return m_pPackageDescriptionEdit->text();};
+protected:
+	QLineEdit *m_pPackagerNameEdit;
+	QLineEdit *m_pPackageNameEdit;
+	QLineEdit *m_pPackageVersionEdit;
+	KviTalTextEdit *m_pPackageDescriptionEdit;
+
+
+};
+
+class KviPackAddonInfoWidget : public QWidget
+{
+public:
+	KviPackAddonInfoWidget(KviPackAddonDialog *);
+	~KviPackAddonInfoWidget();
+protected:
+	KviPackAddonDialog *m_pParent;
+	QLabel *m_pLabelInfo;
+	QLabel *m_pLabelAuthor;
+	QLabel *m_pPackageName;
+	QLabel *m_pPackageVersion;
+	QLabel *m_pPackageDescription;
+	void showEvent(QShowEvent *event);
+};
+
+
+
 
 #endif //!_PACKADDONDIALOG_H_
