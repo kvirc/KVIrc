@@ -101,8 +101,7 @@ SET(kvilib_MOC_HDRS
 )
 
 IF(COMPILE_KDE_SUPPORT)
-	SET(kvilib_MOC_HDRS
-		${kvilib_MOC_HDRS}
+	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_application_kde.h
 		tal/kvi_tal_menubar_kde.h
 		tal/kvi_tal_filedialog_kde.h
@@ -110,8 +109,7 @@ IF(COMPILE_KDE_SUPPORT)
 		tal/kvi_tal_toolbar_kde.h
 	)
 ELSE()
-	SET(kvilib_MOC_HDRS
-		${kvilib_MOC_HDRS}
+	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_application_qt.h
 		tal/kvi_tal_menubar_qt.h
 		tal/kvi_tal_filedialog_qt.h
@@ -120,6 +118,14 @@ ELSE()
 	)
 ENDIF()
 
+IF(COMPILE_DBUS_SUPPORT)
+	LIST(APPEND kvilib_MOC_SRCS
+	ext/kvi_dbusadaptor.cpp
+	)
+	LIST(APPEND kvilib_MOC_HDRS
+	ext/kvi_dbusadaptor.h
+	)
+ENDIF()
 
 SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp

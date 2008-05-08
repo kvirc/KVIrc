@@ -32,6 +32,7 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
+#include "kvi_dbusadaptor.h"
 
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
@@ -75,9 +76,9 @@ int parseArgs(ParseArgs * a)
 	{
 		QString szMessage;
 		char * p = a->argv[idx];
-		
+
 		if((kvi_strLen(p) > 3) && (*p == '-') && (*(p+1) == '-'))p++;
-		
+
 		if(kvi_strEqualCI("-v",p) || kvi_strEqualCI("-version",p))
 		{
 			KviQString::appendFormatted(szMessage,"KVIrc %s '%s'\n",KVI_VERSION,KVI_RELEASE_NAME);
@@ -96,7 +97,7 @@ int parseArgs(ParseArgs * a)
 
 			return KVI_ARGS_RETCODE_STOP;
 		}
-		
+
 		if(kvi_strEqualCI("-h",p) || kvi_strEqualCI("-help",p))
 		{
 			KviQString::appendFormatted(szMessage,"Usage:\n");
@@ -171,7 +172,7 @@ int parseArgs(ParseArgs * a)
 			a->szExecCommand.append(p);
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-x",p))
 		{
 			idx++;
@@ -186,7 +187,7 @@ int parseArgs(ParseArgs * a)
 			a->bExecuteCommandAndClose=true;
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-r",p))
 		{
 			idx++;
@@ -200,7 +201,7 @@ int parseArgs(ParseArgs * a)
 			a->szExecRemoteCommand.append(p);
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-m",p))
 		{
 			a->bShowPopup = true;
@@ -221,19 +222,19 @@ int parseArgs(ParseArgs * a)
 			debug("Using file %s as config",p);
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-nosplash",p))
 		{
 			a->bShowSplashScreen = false;
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-f",p))
 		{
 			a->bForceNewSession = true;
 			continue;
 		}
-		
+
 		if(kvi_strEqualCI("-session",p)||kvi_strEqualCI("-display",p))
 		{
 			// Qt apps are supposed to handle the params to these switches, but we'll skip arg for now
@@ -318,7 +319,10 @@ int main(int argc,char ** argv)
 #endif
 	// Need to have the X socket open before IPC startup
 	KviApp * theApp = new KviApp(argc,argv);
-
+#ifdef COMPILE_DBUS_SUPPORT
+	new KviDbusAdaptor(theApp);
+	QDBusConnection::sessionBus().registerObject("/MainApplication", theApp);
+#endif
 	KviStr szRemoteCommand = a.szExecCommand;
 	if(a.szExecRemoteCommand.hasData())
 	{
@@ -329,11 +333,11 @@ int main(int argc,char ** argv)
 	/*
 		FIXME: There is a race condition in the IPC mechanism.
 			If one starts two instances of kvirc one immediately after another
-			then both instances may run through kvi_sendIpcMessage 
+			then both instances may run through kvi_sendIpcMessage
 			without finding the sentinel window and thus both may decide
 			to start.
 			A weak file locking mechanism should be used too...
-		
+
 #ifdef COMPILE_ON_WINDOWS
 	QString szLock = convertSeparators(cleanDirPath(QDir::homeDirPath() + "/.kvirc.lock"));
 #else
@@ -353,7 +357,7 @@ int main(int argc,char ** argv)
 	{
 		// here we could use CreateMutex on win and semget() on linux
 		// in order to get a shared semaphore to ensure instance unicity.
-	
+
 		if(kvi_sendIpcMessage(szRemoteCommand.ptr()))
 		{
 			if(szRemoteCommand.isEmpty())

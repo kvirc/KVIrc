@@ -106,7 +106,7 @@ protected:
 public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
 	QString	          m_szConfigFile;        // setup
-	bool              m_bCreateConfig;      // setup           
+	bool              m_bCreateConfig;      // setup
 	KviStr            m_szExecAfterStartup;
 	bool              m_bShowSplashScreen;
 public:
@@ -199,12 +199,12 @@ public:
 	// if found , true is returned
 	// if not found or the mediatype can't be guessed then false is returned
 	bool findFileByMediaType(KviStr &szRetPath,const char * filename) KVI_DEPRECATED;
-	
+
 	bool findImageInImageSearchPath(KviStr &szRetPath,const QString &filename);
 	bool findImageInImageSearchPath(QString &szRetPath,const QString &filename);
-	
+
 	bool findUserFile(KviStr &szRetPath,const char *filename) KVI_DEPRECATED;
-	
+
 	bool findImage(KviStr &szRetPath,const char *filename);
 	bool findImage(QString &szRetPath,const QString &filename);
 	bool findImageThemeOnlyCompat(QString &szRetPath,const QString &filename); // temporary compat, will be removed soon (do not use)
@@ -266,16 +266,16 @@ public:
 	void addRecentNickname(const QString& newNick);
 	void addRecentChannel(const QString& chan,const QString& net);
 	QStringList* getRecentChannels(const QString& net);
-	
+
 	void addRecentServer(const QString& server);
 	void fillRecentServersPopup(KviTalPopupMenu * m);
 	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole);
 	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole);
-	
+
 	void autoConnectToServers();
-	
+
 	void checkSuggestRestoreDefaultScript();
-	
+
 	void loadDefaultScript();
 protected:
 	void buildRecentChannels();
