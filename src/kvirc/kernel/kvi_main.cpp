@@ -32,8 +32,9 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
-#include "kvi_dbusadaptor.h"
-
+#ifndef COMPILE_ON_WINDOWS
+	#include "kvi_dbusadaptor.h"
+#endif
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
 #endif
