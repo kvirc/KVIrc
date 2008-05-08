@@ -73,6 +73,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(fmtlink);
 
 	// g_l
+	KVSCF(globals);
 	KVSCF(hash);
 	KVSCF(inputText);
 	KVSCF(hexToAscii);

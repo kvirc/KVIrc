@@ -48,6 +48,33 @@ namespace KviKvsCoreFunctions
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
+		@doc: globals
+		@type:
+			function
+		@title:
+			$globals
+		@short:
+			Dump globals variables
+		@syntax:
+			<hash> $globals()
+		@description:
+			Returns an hashtable of all global variables set.
+		@examples:
+			echo $globals()
+		@seealso:
+			[cmd]global[/cmd]
+			[fnc]$hash[/fnc]
+	*/
+
+	KVSCF(globals)
+	{
+		KVSCF_pRetBuffer->setHash(new KviKvsHash( *(KviKvsKernel::instance()->globalVariables()) ));
+		return true;
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 		@doc: hash
 		@type:
 			function

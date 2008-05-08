@@ -68,6 +68,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("flatten",flatten)
 		_REGFNC("fmtlink",fmtlink)
 		// g_l
+		_REGFNC("globals",globals);
 		_REGFNC("hash",hash);
 //		_REGFNC("inputText",inputText);
 		_REGFNC("hexToAscii",hexToAscii);
@@ -153,4 +154,3 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 };
-

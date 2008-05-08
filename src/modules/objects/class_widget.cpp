@@ -480,22 +480,22 @@ const Qt::WindowType widgettypes_cod[] = {
 		Return the x coordinate of mouse pointer global position.
 	   	!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
-		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)[QT4 only]
+		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)
 		This event handler is called when a eventualy tip is going to be show.
 		You can be reimplement this event and set a dynamic tool tip by using "[cmd]return[/cmd] <tooltip_string>".
 		If a tooltip has setted with [classfnc]$setTooltip[/classfnc] the dynamic tooltip will be ignored.
 		The default implementation does nothing.
 
-		!fn: integer $setAttribute(<string>,<bool_flag>)[QT4 only]
+		!fn: integer $setAttribute(<string>,<bool_flag>)
 		Sets the attribute attribute on this widget if on is true; otherwise clears the attribute.
 		Valid attributes are:
 		OpaquePaintEvent - Indicates that the widget paints all its pixels when it receives a paint event.
-	    NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
-	    PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
-	    NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
+		NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
+		PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
+		NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
 		!fn: $setStyleSheet(<string>)[QT4 only]
 
-		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)[QT4 only]
+		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)
 		Returns the color in color_group(disabled, active or inactive), used for color_role.
 		Valid color role are:
 		Window - A general background color.
@@ -507,12 +507,16 @@ const Qt::WindowType widgettypes_cod[] = {
 		Highlight - A color to indicate a selected item or the current item.
 		HighlightedText - A text color that contrasts with Highlight.
 
-		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)[QT4 only]
+		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)
 		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
 		!fn: $shortCutEvent(<shortcut_id:integer>)[QT4 only]
 		This function will be called when a shortcut key has been triggered.
 		You must reimplement this event to manage a shortcut system in a custom widget.
 		The default implementation does nothing.
+
+		!fn: $insertIntoStatusBar(<index:unsigned integer>)
+		Insert the widget into the statusbar at the given index.
+		If index is out of range, the widget is appended.
 	@examples:
 		[example]
 			%Widget = $new(widget)
@@ -1941,12 +1945,11 @@ bool KviKvsObject_widget::function_insertIntoStatusBar(KviKvsObjectFunctionCall 
 {
 	kvs_int_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
 		g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
 	return true;
-
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
