@@ -23,6 +23,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "managementdialog.h"
+#include "addonfunctions.h"
 
 #include "kvi_module.h"
 #include "kvi_kvs_scriptaddonmanager.h"
@@ -30,7 +31,6 @@
 #include "kvi_qstring.h"
 #include "kvi_parameterlist.h"
 #include "kvi_cmdformatter.h"
-#include "kvi_qstring.h"
 #include "kvi_error.h"
 #include "kvi_out.h"
 #include "kvi_iconmanager.h"
@@ -38,6 +38,10 @@
 #include "kvi_config.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_miscutils.h"
+#include "kvi_fileutils.h"
+#include "kvi_filedialog.h"
+
+#include <QFileInfo>
 
 QRect g_rectManagementDialogGeometry(0,0,0,0);
 
@@ -604,6 +608,38 @@ static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: addon.install
+	@type:
+		command
+	@title:
+		addon.install
+	@short:
+		Shows the addon management editor
+	@syntax:
+		addon.install <package_path:string>
+	@description:
+		Attempts to install the addons in the package specified by <package_path>.
+*/
+
+static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
+{
+	QString szAddonPackFile;
+	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("package_path",KVS_PT_STRING,0,szAddonPackFile)
+	KVSM_PARAMETERS_END(c)
+
+	QString szError;
+	if(!KviAddonFunctions::installAddonPackage(szAddonPackFile,szError))
+	{
+		c->error(__tr2qs_ctx("Error installing addon package: %Q","addon"),&szError);
+		return false;
+	}
+
+	return true;
+}
+
 static bool addon_module_init(KviModule *m)
 {
 	KVSM_REGISTER_FUNCTION(m,"exists",addon_kvs_fnc_exists);
@@ -611,6 +647,7 @@ static bool addon_module_init(KviModule *m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",addon_kvs_cmd_dialog);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"list",addon_kvs_cmd_list);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"install",addon_kvs_cmd_install);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"uninstall",addon_kvs_cmd_uninstall);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"configure",addon_kvs_cmd_configure);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"help",addon_kvs_cmd_help);
@@ -648,7 +685,8 @@ static bool addon_module_can_unload(KviModule * m)
 KVIRC_MODULE(
 	"Addon",                                                      // module name
 	"4.0.0",                                                        // module version
-	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n" \
+	"              2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
 	"Script management functions for the KVS engine",
 	addon_module_init,
 	addon_module_can_unload,

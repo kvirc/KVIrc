@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "managementdialog.h"
+#include "packaddondialog.h"
 
 #include "kvi_app.h"
 #include "kvi_locale.h"
@@ -54,8 +55,6 @@
 #include <QAbstractTextDocumentLayout>
 
 
-
-
 KviScriptManagementDialog * KviScriptManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
 
@@ -85,7 +84,6 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 {
 	delete m_pAddon;
 }
-
 
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 : QDialog(p/*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
@@ -124,7 +122,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pPackButton,__tr2qs_ctx("Export Selected Addons to a Distributable Package","addon"));
+	QToolTip::add(m_pPackButton,__tr2qs_ctx("Create an Addon as a Distributable Package","addon"));
 	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
 
 	m_pUninstallButton = new QToolButton(hb);
@@ -163,12 +161,11 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	// we need mandatory unix like path separator 
+	// we need mandatory unix like path separator
 	szPic.replace('\\',"/");
 
 	szPic += "/kvi_dialog_addons.png";
 	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
-	debug("path %s",szPic.toUtf8().data());
 	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
 
@@ -225,7 +222,6 @@ void KviScriptManagementDialog::currentChanged(QListWidgetItem *item,QListWidget
 		m_pConfigureButton->setEnabled(false);
 		m_pUninstallButton->setEnabled(false);
 		m_pHelpButton->setEnabled(false);
-		m_pPackButton->setEnabled(false);
 	} else {
 		m_pConfigureButton->setEnabled(!(it->addon()->configureCallbackCode().isEmpty()));
 		m_pHelpButton->setEnabled(!(it->addon()->helpCallbackCode().isEmpty()));
@@ -258,11 +254,10 @@ void KviScriptManagementDialog::packScript()
 	for(int i=0;i<itemsSelected.count();i++)
 		dl.append(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo());
 	if(dl.isEmpty())return;
-
-	KviPackAddonDialog * pDialog = new KviPackAddonDialog(this,&dl);
+	*/
+	KviPackAddonDialog * pDialog = new KviPackAddonDialog(this);
 	pDialog->exec();
 	delete pDialog;
-	*/
 }
 
 void KviScriptManagementDialog::uninstallScript()
