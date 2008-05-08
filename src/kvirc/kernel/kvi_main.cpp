@@ -32,7 +32,7 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
-#ifndef COMPILE_DBUS_SUPPORT
+#ifdef COMPILE_DBUS_SUPPORT
 	#include "kvi_dbusadaptor.h"
 #endif
 #ifndef COMPILE_NO_IPC
