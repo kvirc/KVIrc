@@ -147,10 +147,8 @@ public:
 			delete l->at(i);
 		}
 	*/
-	delete l;
-		
+		delete l;
 	}
-
 };
 
 #endif //!_KVI_KVS_KERNEL_H_

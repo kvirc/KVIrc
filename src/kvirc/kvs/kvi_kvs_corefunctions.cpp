@@ -25,10 +25,8 @@
 #define __KVIRC__
 
 #include "kvi_kvs_corefunctions.h"
-
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object.h"
-
 #include "kvi_locale.h"
 
 namespace KviKvsCoreFunctions
@@ -60,6 +58,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("classDefined",classDefined)
 		_REGFNC("console",console)
 		_REGFNC("context",context)
+		_REGFNC("countStatusBarItems",countStatusBarItems)
 		_REGFNC("cr",cr)
 		_REGFNC("date",date)
 		_REGFNC("false",falseCKEYWORDWORKAROUND)

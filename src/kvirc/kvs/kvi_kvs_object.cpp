@@ -967,6 +967,7 @@ bool KviKvsObject::function_children(KviKvsObjectFunctionCall * c)
 	c->returnValue()->setArray(a);
 	return true;
 }
+
 bool KviKvsObject::function_findChild(KviKvsObjectFunctionCall * c)
 {
 	QString szClass,szName;
@@ -1076,8 +1077,8 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
 				idx++;
 				if (idx<o->propertyCount()){
-						prop = o->property(idx);
-						p = &prop;
+					prop = o->property(idx);
+					p = &prop;
 				}
 				else p=0;
 				cnt++;
@@ -1092,8 +1093,6 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-
-// rewritten using the new KVS features :)
 bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 {
 	QString szName;
@@ -1578,7 +1577,6 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,Kv
 	return callFunction(pCaller,fncName,QString::null,&ctx,pRetVal,pParams);
 }
 
-
 bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariantList * pParams)
 {
 	KviKvsVariant fakeRetVal;
@@ -1626,8 +1624,6 @@ bool KviKvsObject::callFunction(
 	//    Help menu, or open the Technical Support help file for more information
 }
 
-
-
 void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,const QString &szCode)
 {
 	if(szCode.isEmpty())
@@ -1656,7 +1652,6 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 	}
 }
 
-
 KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szName)
 {
 	for(KviKvsObject * o = m_pChildList->first();o;o= m_pChildList->next())
@@ -1680,5 +1675,3 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 	}
 	return 0;
 }
-
-

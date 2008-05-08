@@ -64,6 +64,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(classDefined);
 	KVSCF(console);
 	KVSCF(context);
+	KVSCF(countStatusBarItems);
 	KVSCF(cr);
 	KVSCF(date);
 	KVSCF(falseCKEYWORDWORKAROUND);
@@ -71,7 +72,6 @@ namespace KviKvsCoreFunctions
 	KVSCF(firstConnectedConsole);
 	KVSCF(flatten);
 	KVSCF(fmtlink);
-
 	// g_l
 	KVSCF(globals);
 	KVSCF(hash);

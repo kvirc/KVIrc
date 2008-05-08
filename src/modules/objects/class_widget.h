@@ -21,10 +21,10 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-#include <kvi_tal_tooltip.h>
-#include "kvi_string.h"
-#include "object_macros.h"
 
+#include "kvi_string.h"
+#include "kvi_tal_tooltip.h"
+#include "object_macros.h"
 
 class KviKvsObject_widget : public KviKvsObject
 {
@@ -52,8 +52,8 @@ protected:
 
 	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
 	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
-	bool function_windowTitle(KviKvsObjectFunctionCall *c);
 	bool function_centerToScreen(KviKvsObjectFunctionCall *c);
+	bool function_colorPalette(KviKvsObjectFunctionCall *c);
 	bool function_fontAscent(KviKvsObjectFunctionCall * c);
 	bool function_fontDescent(KviKvsObjectFunctionCall * c);
 	bool function_fontMetricsHeight(KviKvsObjectFunctionCall * c);
@@ -75,43 +75,38 @@ protected:
 	bool function_parentWidget(KviKvsObjectFunctionCall *c);
 	bool function_raise(KviKvsObjectFunctionCall *);
 	bool function_repaint(KviKvsObjectFunctionCall *c);
-	bool function_update(KviKvsObjectFunctionCall *c);
-	
+	bool function_insertIntoStatusBar(KviKvsObjectFunctionCall *c);
 	bool function_reparent(KviKvsObjectFunctionCall *c);
 	bool function_resize(KviKvsObjectFunctionCall *c);
 	bool function_screenResolution(KviKvsObjectFunctionCall * c);
+	bool function_setAttribute(KviKvsObjectFunctionCall *c);
 	bool function_setBackgroundColor(KviKvsObjectFunctionCall *c);
 	bool function_setBackgroundImage(KviKvsObjectFunctionCall *c);
-	bool function_setWindowTitle(KviKvsObjectFunctionCall *c);
 	bool function_setEnabled(KviKvsObjectFunctionCall *c);
 	bool function_setFocus(KviKvsObjectFunctionCall *c);
 	bool function_setFocusPolicy(KviKvsObjectFunctionCall *c);
 	bool function_setFont(KviKvsObjectFunctionCall *c);
-	bool function_setWindowIcon(KviKvsObjectFunctionCall *c);
-	bool function_setMaximumWidth(KviKvsObjectFunctionCall *c);
+	bool function_setGeometry(KviKvsObjectFunctionCall *c);
+	bool function_setKeyShortcut(KviKvsObjectFunctionCall *c);
+	bool function_setMask(KviKvsObjectFunctionCall *c);
 	bool function_setMaximumHeight(KviKvsObjectFunctionCall *c);
-	bool function_setMinimumWidth(KviKvsObjectFunctionCall *c);
+	bool function_setMaximumWidth(KviKvsObjectFunctionCall *c);
 	bool function_setMinimumHeight(KviKvsObjectFunctionCall *c);
+	bool function_setMinimumWidth(KviKvsObjectFunctionCall *c);
 	bool function_setMouseTracking(KviKvsObjectFunctionCall *c);
 	bool function_setPaletteForeground(KviKvsObjectFunctionCall *c);
+	bool function_setStyleSheet(KviKvsObjectFunctionCall *c);
 	bool function_setToolTip(KviKvsObjectFunctionCall *);
-	bool function_setGeometry(KviKvsObjectFunctionCall *c);
+	bool function_setWindowIcon(KviKvsObjectFunctionCall *c);
+	bool function_setWindowTitle(KviKvsObjectFunctionCall *c);
 	bool function_setWFlags(KviKvsObjectFunctionCall *c);
 	bool function_show(KviKvsObjectFunctionCall *c);
 	bool function_sizeHint(KviKvsObjectFunctionCall *c);
+	bool function_update(KviKvsObjectFunctionCall *c);
 	bool function_width(KviKvsObjectFunctionCall *);
+	bool function_windowTitle(KviKvsObjectFunctionCall *c);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
-	bool function_setMask(KviKvsObjectFunctionCall *c);
-
-	bool function_insertIntoStatusBar(KviKvsObjectFunctionCall *c);
-
-//QT4
-bool function_setAttribute(KviKvsObjectFunctionCall *c);
-	bool function_colorPalette(KviKvsObjectFunctionCall *c);
-	bool function_setStyleSheet(KviKvsObjectFunctionCall *c);
-	bool function_setKeyShortcut(KviKvsObjectFunctionCall *c);
-
 signals:
 	void aboutToDie();
 };

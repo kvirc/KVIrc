@@ -25,10 +25,8 @@
 #define __KVIRC__
 
 #include "kvi_kvs_corefunctions.h"
-
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_controller.h"
-
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_channel.h"
@@ -39,6 +37,9 @@
 #include "kvi_avatar.h"
 #include "kvi_ircuserdb.h"
 #include "kvi_time.h"
+#include "kvi_frame.h"
+
+#include <QStatusBar>
 
 namespace KviKvsCoreFunctions
 {
@@ -646,6 +647,31 @@ namespace KviKvsCoreFunctions
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
+		@doc: countStatusBarItems
+		@type:
+			function
+		@title:
+			$countStatusBarItems
+		@short:
+			Returns the number of items in the statusbar
+		@syntax:
+			<int> $countStatusBarItems
+		@description:
+			Returns the number of items in the statusbar
+		@seealso:
+			[class]widget class[/class]
+	*/
+
+	KVSCF(countStatusBarItems)
+	{
+		QList<QWidget *> widgets = g_pFrame->statusBar()->findChildren<QWidget *>();
+		KVSCF_pRetBuffer->setInteger(widgets.count());
+		return true;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
 		@doc: cr
 		@type:
 			function
@@ -1116,5 +1142,4 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(szLink);
 		return true;
 	}
-
 };

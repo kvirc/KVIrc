@@ -47,6 +47,7 @@
 #include <QMetaObject>
 #include <QIcon>
 #include <QStatusBar>
+#include <QList>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -675,16 +676,13 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
-
-	// QT4 only
-
-
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setAttribute",function_setAttribute)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"colorPalette",function_colorPalette)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setStyleSheet",function_setStyleSheet)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setKeyShortcut",function_setKeyShortcut)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"insertIntoStatusBar",function_insertIntoStatusBar)
 
+	// statusbar
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"insertIntoStatusBar",function_insertIntoStatusBar)
 
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
@@ -703,9 +701,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"paintEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"keyPressEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
-
-
-// QT4
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
 
@@ -1653,16 +1648,16 @@ bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("focus",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	if(KviQString::equalCI(szMode, "TabFocus"))
+	if(KviQString::equalCI(szMode,"TabFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_TABFOCUS);
 	else
-	if(KviQString::equalCI(szMode, "ClickFocus"))
+	if(KviQString::equalCI(szMode,"ClickFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_CLICKFOCUS);
 	else
-	if(KviQString::equalCI(szMode, "StrongFocus"))
+	if(KviQString::equalCI(szMode,"StrongFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_STRONGFOCUS);
 	else
-	if(KviQString::equalCI(szMode, "NoFocus"))
+	if(KviQString::equalCI(szMode,"NoFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_NOFOCUS);
 	else c->warning(__tr2qs("Invalid parameters"));
 	return true;
@@ -1699,7 +1694,6 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)
 {
-
 	QString szFamily,szStyle;
 	kvs_int_t uSize;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1805,9 +1799,9 @@ bool KviKvsObject_widget::function_setBackgroundImage(KviKvsObjectFunctionCall *
 	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(image);
 	if(pix){
-			QPalette palette=widget()->palette();
-			palette.setBrush(widget()->backgroundRole(), QBrush(*pix));
-			widget()->setPalette(palette);
+		QPalette palette=widget()->palette();
+		palette.setBrush(widget()->backgroundRole(), QBrush(*pix));
+		widget()->setPalette(palette);
 	}
 	else
 	{

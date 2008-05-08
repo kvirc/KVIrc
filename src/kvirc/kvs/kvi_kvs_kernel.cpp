@@ -198,8 +198,6 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerLis
 		QString szRight = szFunctionBegin.right(szFunctionBegin.length() - (idx+1));
 		completeModuleFunction(szModuleName,szRight,pMatches);
 	}
-
-	
 }
 
 void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * pMatches)
