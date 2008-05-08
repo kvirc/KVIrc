@@ -47,7 +47,6 @@
 #include <QMetaObject>
 #include <QIcon>
 #include <QStatusBar>
-#include <QList>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
