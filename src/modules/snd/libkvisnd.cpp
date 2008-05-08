@@ -180,7 +180,7 @@ void KviSoundPlayer::detectSoundSystem()
 {
 #ifdef COMPILE_PHONON_SUPPORT
 	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::NotificationCategory);
-	if(g_pPhononPlayer->state!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
+	if(g_pPhononPlayer->state()!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
 	return;
 #endif
 #ifdef COMPILE_ON_WINDOWS
