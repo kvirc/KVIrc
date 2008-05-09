@@ -368,18 +368,6 @@ QString KviFileSelector::text()
 	return m_pLineEdit->text();
 }
 
-#ifndef COMPILE_ON_WINDOWS
-#warning "This should be fixed: otherwise we have to pass a null pointer to call the class without a predefined file"
-#endif
-/* FIXME: to call the class having a blank line, we have to pass a null value
-          to pOption
-          QString * szOption = new QString();
-          KviDirectorySelector(this,szScriptDir,szOption,true);
-
-          Shouldn't it be better to pass a QString and then create a pointer
-          with the value passed ar argument? Also KviFileSelector constructor
-          should be modified
-*/
 KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
 : KviFileSelector(par,txt,pOption,bEnabled)
 {
