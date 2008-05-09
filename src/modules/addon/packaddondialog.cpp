@@ -301,28 +301,25 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	pLayout->addWidget(pLabel,0,0);
 
 	// select script dir
-	QString * szOption = new QString();
-	/* FIXME: this is an UGLY hack
-                  should be better to fix KviDirectorySelector passing a QString as parameter and then setting the correct ptr to the value of the QString passed?
-	*/
+	QString szOption = "";
 
 	const QString szScriptDir = __tr2qs_ctx("Select scripts directory:","addon");
-	m_pSourcePath = new KviDirectorySelector(this,szScriptDir,szOption,true);
+	m_pSourcePath = new KviDirectorySelector(this,szScriptDir,&szOption,true);
 	pLayout->addWidget(m_pSourcePath,1,0);
 
 	// select image dir
 	const QString szImageDir = __tr2qs_ctx("Select images directory:","addon");
-	m_pImagePath = new KviDirectorySelector(this,szImageDir,szOption,true);
+	m_pImagePath = new KviDirectorySelector(this,szImageDir,&szOption,true);
 	pLayout->addWidget(m_pImagePath,2,0);
 
 	// select help dir
 	const QString szHelpDir = __tr2qs_ctx("Select help directory:","addon");
-	m_pHelpPath = new KviDirectorySelector(this,szHelpDir,szOption,true);
+	m_pHelpPath = new KviDirectorySelector(this,szHelpDir,&szOption,true);
 	pLayout->addWidget(m_pHelpPath,3,0);
 
 	// select sound dir
 	const QString szSoundDir = __tr2qs_ctx("Select sounds directory:","addon");
-	m_pSoundPath = new KviDirectorySelector(this,szSoundDir,szOption,true);
+	m_pSoundPath = new KviDirectorySelector(this,szSoundDir,&szOption,true);
 	pLayout->addWidget(m_pSoundPath,4,0);
 }
 
