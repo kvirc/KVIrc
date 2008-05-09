@@ -247,14 +247,6 @@ void KviScriptManagementDialog::configureScript()
 
 void KviScriptManagementDialog::packScript()
 {
-	/*
-	KviPointerList<KviThemeInfo> dl;
-	dl.setAutoDelete(false);
-	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
-	for(int i=0;i<itemsSelected.count();i++)
-		dl.append(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo());
-	if(dl.isEmpty())return;
-	*/
 	KviPackAddonDialog * pDialog = new KviPackAddonDialog(this);
 	pDialog->exec();
 	delete pDialog;

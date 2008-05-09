@@ -5,6 +5,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>
+//   Copyright (C) 2008 Alessandro Carbone <elfonol at gmail dot com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -62,7 +63,6 @@
 KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
-
 	m_szPackagePath = QDir::homeDirPath();
 	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
 	/*
@@ -269,9 +269,9 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLabel->setText(__tr2qs_ctx("Package Author:","addon"));
 	pLayout->addWidget(pLabel,1,0);
 	
-	m_pPackagerNameEdit = new QLineEdit(this);
-	m_pPackagerNameEdit->setText(szPackageAuthor);
-	pLayout->addWidget(m_pPackagerNameEdit,1,1);
+	m_pAuthorNameEdit = new QLineEdit(this);
+	m_pAuthorNameEdit->setText(szPackageAuthor);
+	pLayout->addWidget(m_pAuthorNameEdit,1,1);
 
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package Name:","addon"));

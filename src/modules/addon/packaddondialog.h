@@ -7,6 +7,7 @@
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>
+//   Copyright (C) 2008 Alessandro Carbone <elfonol at gmail dot com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,6 +29,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_textedit.h"
+
 #include <QLineEdit>
 #include <QLabel>
 #include <QWidget>
@@ -58,17 +60,15 @@ class KviPackAddonCreateInfoPackageWidget : public QWidget
 public:
 	KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent);
 	~KviPackAddonCreateInfoPackageWidget();
-	QString packagerName(){return m_pPackagerNameEdit->text();};
+	QString packagerName(){return m_pAuthorNameEdit->text();};
 	QString packageName(){return m_pPackageNameEdit->text();};
 	QString packageVersion(){return m_pPackageVersionEdit->text();};
 	QString packageDescription(){return m_pPackageDescriptionEdit->text();};
 protected:
-	QLineEdit *m_pPackagerNameEdit;
-	QLineEdit *m_pPackageNameEdit;
-	QLineEdit *m_pPackageVersionEdit;
-	KviTalTextEdit *m_pPackageDescriptionEdit;
-
-
+	QLineEdit      * m_pAuthorNameEdit;
+	QLineEdit      * m_pPackageNameEdit;
+	QLineEdit      * m_pPackageVersionEdit;
+	KviTalTextEdit * m_pPackageDescriptionEdit;
 };
 
 class KviPackAddonInfoWidget : public QWidget
@@ -77,16 +77,14 @@ public:
 	KviPackAddonInfoWidget(KviPackAddonDialog *);
 	~KviPackAddonInfoWidget();
 protected:
-	KviPackAddonDialog *m_pParent;
-	QLabel *m_pLabelInfo;
-	QLabel *m_pLabelAuthor;
-	QLabel *m_pPackageName;
-	QLabel *m_pPackageVersion;
-	QLabel *m_pPackageDescription;
+	KviPackAddonDialog * m_pParent;
+	QLabel * m_pLabelInfo;
+	QLabel * m_pLabelAuthor;
+	QLabel * m_pPackageName;
+	QLabel * m_pPackageVersion;
+	QLabel * m_pPackageDescription;
 	void showEvent(QShowEvent *event);
 };
-
-
 
 
 #endif //!_PACKADDONDIALOG_H_
