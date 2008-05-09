@@ -368,7 +368,9 @@ QString KviFileSelector::text()
 	return m_pLineEdit->text();
 }
 
-//#warning "This should be fixed: otherwise we have to pass a null pointer to call the class"
+#ifndef COMPILE_ON_WINDOWS
+#warning "This should be fixed: otherwise we have to pass a null pointer to call the class"
+#endif
 /* FIXME: to call the class having a blank line, we have to pass a null value
           to pOption
           QString * szOption = new QString();
