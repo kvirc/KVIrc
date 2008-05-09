@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/url
 
+SUBDIRS(caps)
+
 SET(kviurl_MOC_HDRS
 	libkviurl.h
 	icons.h

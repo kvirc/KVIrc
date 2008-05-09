@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/rijndael
 
+SUBDIRS(caps)
+
 SET(kvirijndael__MOC_HDRS
 	libkvirijndael.h
 	rijndael.h

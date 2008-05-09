@@ -1,0 +1,14 @@
+# CMakeLists for ./caps
+
+SET(CAPSFILE url)
+
+IF(UNIX)
+	IF(APPLE)
+		INSTALL(FILES ${CAPSFILE} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/modules/caps/action/)
+	ELSE()
+		# Assume linux
+		INSTALL(FILES ${CAPSFILE} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/action/)
+	ENDIF()
+ELSEIF(WIN32)
+	#INSTALL(FILES ${CAPSFILE} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/caps/action/)
+ENDIF()

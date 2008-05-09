@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/sharedfilewindow
 
+SUBDIRS(caps)
+
 SET(kvisharedfilewindow_MOC_HDRS
 	sharedfileswindow.h
 )

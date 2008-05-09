@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/mircimport
 
+SUBDIRS(caps pics)
+
 SET(kvimircimport_MOC_HDRS
 	libkvimircimport.h
 )
