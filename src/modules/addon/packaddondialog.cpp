@@ -63,16 +63,6 @@
 KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
-	m_szPackagePath = QDir::homeDirPath();
-	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-	/*
-	m_szPackagePath += szPackageName;
-	m_szPackagePath += "-";
-	m_szPackagePath += szPackageVersion;
-	m_szPackagePath += ".";
-	m_szPackagePath += KVI_FILEEXTENSION_ADDONPACKAGE;
-	*/
-
 	setWindowTitle(__tr2qs_ctx("Export Addon - KVIrc","addon"));
 	setMinimumSize(400,350);
 
@@ -95,7 +85,6 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	
 	addPage(pPage,__tr2qs_ctx("Welcome","addon"));
 
-
 	setBackEnabled(pPage,false);
 	setNextEnabled(pPage,true);
 	setHelpEnabled(pPage,false);
@@ -109,15 +98,13 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	setNextEnabled(m_pPackAddonInfoCreateWidget,true);
 	setFinishEnabled(m_pPackAddonInfoCreateWidget,false);
 
-	// select script files
-
-	// select image dir
-
-	// select help dir
-
-	// select sound dir
-
-
+	// file selection
+	m_pPackAddonFileSelectionWidget = new KviPackAddonFileSelectionWidget(this);
+	addPage(m_pPackAddonFileSelectionWidget,__tr2qs_ctx("Package Files","addon"));
+	setBackEnabled(m_pPackAddonFileSelectionWidget,true);
+	setHelpEnabled(m_pPackAddonFileSelectionWidget,false);
+	setNextEnabled(m_pPackAddonFileSelectionWidget,true);
+	setFinishEnabled(m_pPackAddonFileSelectionWidget,false);
 
 	// final results
 	m_pPackAddonInfoWidget=new KviPackAddonInfoWidget(this);
@@ -127,7 +114,6 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	setNextEnabled(m_pPackAddonInfoWidget,false);
 	setFinishEnabled(m_pPackAddonInfoWidget,true);
 }
-
 
 void KviPackAddonDialog::accept()
 {
@@ -139,10 +125,10 @@ bool KviPackAddonDialog::packAddon()
 {
 	//m_pPathSelector->commit();
 
-	QString szPackageAuthor = m_pPackAddonInfoCreateWidget->packagerName();
+	QString szPackageAuthor = m_pPackAddonInfoCreateWidget->authorName();
 	QString szPackageName = m_pPackAddonInfoCreateWidget->packageName();
-	QString szPackageDescription = m_pPackAddonInfoCreateWidget->packageVersion();
-	QString szPackageVersion = m_pPackAddonInfoCreateWidget->packageDescription();
+	QString szPackageVersion = m_pPackAddonInfoCreateWidget->packageVersion();
+	QString szPackageDescription = m_pPackAddonInfoCreateWidget->packageDescription();
 
 	QString szTmp = QDateTime::currentDateTime().toString();
 	KviPackageWriter f;
@@ -154,6 +140,17 @@ bool KviPackAddonDialog::packAddon()
 	f.addInfoField("Description",szPackageDescription);
 	f.addInfoField("Date",szTmp);
 	f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+
+	// create addon name
+	m_szPackagePath = QDir::homeDirPath();
+	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+	m_szPackagePath += szPackageName;
+	m_szPackagePath += "-";
+	m_szPackagePath += szPackageVersion;
+	m_szPackagePath += ".";
+	m_szPackagePath += KVI_FILEEXTENSION_ADDONPACKAGE;
+	qDebug("Addon name: %s",m_szPackagePath.toUtf8().data());
+
 /*
 	szTmp.setNum(m_pThemeInfoList->count());
 	f.addInfoField("AddonCount",szTmp);
@@ -217,36 +214,26 @@ KviPackAddonInfoWidget::KviPackAddonInfoWidget(KviPackAddonDialog *pParent)
 
 	m_pLabelInfo = new QLabel(this);
 	pLayout->addWidget(m_pLabelInfo,1,0);
-/*
-	m_pPackageName = new QLabel(this);
-	pLayout->addWidget(m_pPackageName,2,0);
-
-	m_pPackageVersion = new QLabel(this);
-	pLayout->addWidget(m_pPackageVersion,3,0);
-
-	m_pPackageDescription = new QLabel(this);
-	pLayout->addWidget(m_pPackageDescription,4,0);//,1,2);
-*/
-//pLayout->setRowStretch(0,1);
 }
+
 void KviPackAddonInfoWidget::showEvent(QShowEvent *)
 {
-	KviPackAddonCreateInfoPackageWidget *createWidget=m_pParent->m_pPackAddonInfoCreateWidget;
-	QString szText=__tr2qs_ctx("Package Author:","addon")+" "+createWidget->packagerName()+"<br>";
-	szText+=__tr2qs_ctx("Package Name:","addon")+" "+createWidget->packageName()+"<br>";
-	szText+=__tr2qs_ctx("Package Version:","addon")+" "+createWidget->packageVersion()+"<br>";
-	szText+=__tr2qs_ctx("Package Description:","addon")+" "+createWidget->packageDescription()+"<br>";
+	KviPackAddonCreateInfoPackageWidget * pCreateWidget=m_pParent->m_pPackAddonInfoCreateWidget;
+	KviPackAddonFileSelectionWidget * pFileWidget = m_pParent->m_pPackAddonFileSelectionWidget;
+
+	QString szText = __tr2qs_ctx("Package Author:","addon") + " " + pCreateWidget->authorName() + "<br>";
+	szText += __tr2qs_ctx("Package Name:","addon") + " " + pCreateWidget->packageName() + "<br>";
+	szText += __tr2qs_ctx("Package Version:","addon") + " " + pCreateWidget->packageVersion() + "<br>";
+	szText +=__tr2qs_ctx("Package Description:","addon") + " " + pCreateWidget->packageDescription() + "<br>";
+	szText += __tr2qs_ctx("Source Directory:","addon") + " " + pFileWidget->sourcePath() + "<br>";
+	szText += __tr2qs_ctx("Image Directory:","addon") + " " + pFileWidget->imagePath() + "<br>";
+	szText += __tr2qs_ctx("Help Directory:","addon") + " " + pFileWidget->helpPath() + "<br>";
+	szText += __tr2qs_ctx("Sound Directory:","addon") + " " + pFileWidget->soundPath();
 	m_pLabelInfo->setText(szText);
-/*
-	m_pLabelAuthor->setText(__tr2qs_ctx("Package Author:","addon")+" "+createWidget->packagerName());
-	m_pPackageName->setText(__tr2qs_ctx("Package Name:","addon")+" "+createWidget->packageName());
-	m_pPackageVersion->setText(__tr2qs_ctx("Package Version:","addon")+" "+createWidget->packageVersion());
-	m_pPackageDescription->setText(__tr2qs_ctx("Package Description:","addon")+" "+createWidget->packageDescription());
-*/
 }
+
 KviPackAddonInfoWidget::~KviPackAddonInfoWidget()
 {
-
 }
 
 KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent)
@@ -300,10 +287,45 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLayout->setRowStretch(1,1);
 }
 
-
 KviPackAddonCreateInfoPackageWidget::~KviPackAddonCreateInfoPackageWidget()
 {
-
-
 }
 
+KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent)
+: QWidget(pParent)
+{
+	QGridLayout * pLayout = new QGridLayout(this);
+
+	QLabel * pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Here you need to provide the real informations for the addon.","addon"));
+	pLayout->addWidget(pLabel,0,0);
+
+	// select script dir
+	QString * szOption = new QString();
+	/* FIXME: this is an UGLY hack
+                  should be better to fix KviDirectorySelector passing a QString as parameter and then setting the correct ptr to the value of the QString passed?
+	*/
+
+	const QString szScriptDir = __tr2qs_ctx("Select scripts directory:","addon");
+	m_pSourcePath = new KviDirectorySelector(this,szScriptDir,szOption,true);
+	pLayout->addWidget(m_pSourcePath,1,0);
+
+	// select image dir
+	const QString szImageDir = __tr2qs_ctx("Select images directory:","addon");
+	m_pImagePath = new KviDirectorySelector(this,szImageDir,szOption,true);
+	pLayout->addWidget(m_pImagePath,2,0);
+
+	// select help dir
+	const QString szHelpDir = __tr2qs_ctx("Select help directory:","addon");
+	m_pHelpPath = new KviDirectorySelector(this,szHelpDir,szOption,true);
+	pLayout->addWidget(m_pHelpPath,3,0);
+
+	// select sound dir
+	const QString szSoundDir = __tr2qs_ctx("Select sounds directory:","addon");
+	m_pSoundPath = new KviDirectorySelector(this,szSoundDir,szOption,true);
+	pLayout->addWidget(m_pSoundPath,4,0);
+}
+
+KviPackAddonFileSelectionWidget::~KviPackAddonFileSelectionWidget()
+{
+}

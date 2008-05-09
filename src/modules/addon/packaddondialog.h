@@ -27,6 +27,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
+#include "kvi_selectors.h"
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_textedit.h"
 
@@ -34,8 +35,8 @@
 #include <QLabel>
 #include <QWidget>
 
-class KviFileSelector;
 class KviPackAddonCreateInfoPackageWidget;
+class KviPackAddonFileSelectionWidget;
 class KviPackAddonInfoWidget;
 
 class KviPackAddonDialog : public KviTalWizard
@@ -44,11 +45,11 @@ class KviPackAddonDialog : public KviTalWizard
 public:
 	KviPackAddonDialog(QWidget * pParent);
 	~KviPackAddonDialog(){};
-	KviPackAddonCreateInfoPackageWidget *m_pPackAddonInfoCreateWidget ;
+	KviPackAddonCreateInfoPackageWidget * m_pPackAddonInfoCreateWidget ;
+	KviPackAddonFileSelectionWidget * m_pPackAddonFileSelectionWidget;
 	KviPackAddonInfoWidget *m_pPackAddonInfoWidget ;
 protected:
 	QString           m_szPackagePath;
-	KviFileSelector * m_pPathSelector;
 protected:
 	virtual void accept();
 	bool packAddon();
@@ -60,7 +61,7 @@ class KviPackAddonCreateInfoPackageWidget : public QWidget
 public:
 	KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent);
 	~KviPackAddonCreateInfoPackageWidget();
-	QString packagerName(){return m_pAuthorNameEdit->text();};
+	QString authorName(){return m_pAuthorNameEdit->text();};
 	QString packageName(){return m_pPackageNameEdit->text();};
 	QString packageVersion(){return m_pPackageVersionEdit->text();};
 	QString packageDescription(){return m_pPackageDescriptionEdit->text();};
@@ -69,6 +70,23 @@ protected:
 	QLineEdit      * m_pPackageNameEdit;
 	QLineEdit      * m_pPackageVersionEdit;
 	KviTalTextEdit * m_pPackageDescriptionEdit;
+};
+
+class KviPackAddonFileSelectionWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent);
+	~KviPackAddonFileSelectionWidget();
+	QString sourcePath(){return m_pSourcePath->text();};
+	QString imagePath(){return m_pImagePath->text();};
+	QString helpPath(){return m_pHelpPath->text();};
+	QString soundPath(){return m_pSoundPath->text();};
+protected:
+	KviDirectorySelector * m_pSourcePath;
+	KviDirectorySelector * m_pImagePath;
+	KviDirectorySelector * m_pHelpPath;
+	KviDirectorySelector * m_pSoundPath;
 };
 
 class KviPackAddonInfoWidget : public QWidget

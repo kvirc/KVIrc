@@ -99,7 +99,7 @@ public:
 protected:
 	QLabel    * m_pLabel;
 	QLineEdit * m_pLineEdit;
-	QString    * m_pOption;
+	QString   * m_pOption;
 public:
 	void setValidator(QValidator * v){ m_pLineEdit->setValidator(v); };
 	void setMinimumLabelWidth(unsigned int uWidth){ m_pLabel->setMinimumWidth(uWidth); };
@@ -139,12 +139,12 @@ public:
 	KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap * pOption,bool bEnabled);
 	~KviPixmapSelector();
 private:
-	KviStyledCheckBox        * m_pCheckBox;
-	QLabel           * m_pFileNameLabel;
-	KviPixmapPreview * m_pPreview;
-	QPushButton      * m_pChooseButton;
-	KviPixmap        * m_pOption;
-	KviPixmap          m_localPixmap;
+	KviStyledCheckBox * m_pCheckBox;
+	QLabel            * m_pFileNameLabel;
+	KviPixmapPreview  * m_pPreview;
+	QPushButton       * m_pChooseButton;
+	KviPixmap         * m_pOption;
+	KviPixmap           m_localPixmap;
 public:
 	void setImagePath(const QString &path);
 	virtual void commit();
@@ -162,13 +162,13 @@ public:
 		unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled,bool bShortInt = false);
 	~KviUIntSelector(){};
 private:
-	QLabel    * m_pLabel;
-	QSpinBox  * m_pSpinBox;
+	QLabel       * m_pLabel;
+	QSpinBox     * m_pSpinBox;
 	unsigned int * m_pOption;
-	unsigned int m_uLowBound;
-	unsigned int m_uHighBound;
-	unsigned int m_uDefault;
-	bool         m_bIsShortInt;
+	unsigned int   m_uLowBound;
+	unsigned int   m_uHighBound;
+	unsigned int   m_uDefault;
+	bool           m_bIsShortInt;
 public:
 	virtual void setPrefix(const QString & txt);
 	virtual void setSuffix(const QString & txt);
@@ -199,6 +199,7 @@ public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
 	void setSelection(const QString &szSelection);
+	QString text();
 signals:
 	void selectionChanged(const QString &szNewValue);
 private slots:
@@ -213,6 +214,7 @@ class KVIRC_API KviDirectorySelector : public KviFileSelector
 public:
 	KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
 	~KviDirectorySelector(){};
+	QString text();
 protected:
 	virtual void select();
 };
