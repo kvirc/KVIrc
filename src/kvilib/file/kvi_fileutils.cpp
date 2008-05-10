@@ -33,7 +33,7 @@
 
 #include <QDir>
 #include <QFileInfo>
-#include <qglobal.h>
+#include <QtGlobal>
 #include <QTextCodec>
 #include <QTextStream>
 

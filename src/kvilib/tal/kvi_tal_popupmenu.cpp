@@ -25,7 +25,7 @@
 #define __KVILIB__
 #include "kvi_tal_popupmenu.h"
 
-#include <qwidgetaction.h>
+#include <QWidgetAction>
 #include <QMenu>
 #include <QHash>
 

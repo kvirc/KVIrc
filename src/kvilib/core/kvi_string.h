@@ -34,7 +34,7 @@
 	#include <strings.h> // useless ?
 #endif
 
-#include <qglobal.h>
+#include <QtGlobal>
 #include <QString>
 
 

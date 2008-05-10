@@ -32,7 +32,7 @@
 // Better do not touch this
 //=============================================================================
 
-#include <qglobal.h>
+#include <QtGlobal>
 
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)

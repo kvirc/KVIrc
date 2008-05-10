@@ -28,7 +28,7 @@
 #include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_qcstring.h" // QByteArray anyway
-#include <qobject.h>
+#include <QObject>
 #include "kvi_pointerlist.h"
 
 class KviFile;

@@ -33,7 +33,7 @@
 #define _KVI_LOCALE_CPP_
 #include "kvi_locale.h"
 
-#include <qglobal.h> //for debug()
+#include <QtGlobal>
 #include <QTextCodec>
 #include <QDir>
 #include <QLocale>
