@@ -26,7 +26,7 @@
 #
 #
 # Original copyright notice:
-# © Gertjan van Noord, 1997.
+# Â© Gertjan van Noord, 1997.
 # mailto:vannoord@let.rug.nl
 #
 #
@@ -98,6 +98,8 @@ print OUTPUT "#include <stdlib.h>\n";
 print OUTPUT "#include <stdio.h>\n";
 print OUTPUT "#include <string.h>\n";
 print OUTPUT "#include <ctype.h>\n";
+print OUTPUT "\n";
+print OUTPUT "#include \"detector.h\"\n";
 print OUTPUT "\n";
 print OUTPUT "///////////////////////////////////////////////////////////////////////////////\n";
 print OUTPUT "// CORE DEFS\n";
@@ -283,7 +285,7 @@ foreach $file (@g_files)
 	# since they are characteristic of language (and we thus probably WANT
 	# to include them in the hash
 	# Chars above 191 get yet more
-	
+
 	foreach(@result)
 	{
 		if((ord $_) > 127)
@@ -296,7 +298,7 @@ foreach $file (@g_files)
 		}
 	}
 
-	splice(@result,$g_maxNGrams) if (@result > $g_maxNGrams); 
+	splice(@result,$g_maxNGrams) if (@result > $g_maxNGrams);
 
 	my $results = 0;
 	my $ngrams = 0;
@@ -336,7 +338,7 @@ foreach $file (@g_files)
 	my @strings = ();
 	my @string_names = ();
 	my $string_count = 0;
-	
+
 	for($i=0;$i<256;$i++)
 	{
 		$lists[$i] = "";
@@ -353,7 +355,7 @@ foreach $file (@g_files)
 		my($hash,$j,$len);
 		$len = length($_);
 		$lenstats[$len]++;
-		
+
 		$hash = (ord substr($_,0,1)) * 31;
 		if($len > 1)
 		{
@@ -368,7 +370,7 @@ foreach $file (@g_files)
 					{
 						$hash = $hash + ord substr($_,4,1);
 					}
-				} 
+				}
 			}
 		}
 
@@ -381,7 +383,7 @@ foreach $file (@g_files)
 		my $string_name = "s";
 		for($z = 0;$z < length($_);$z++)
 		{
-			
+
 			if($tmp ne ""){ $tmp .= ","; };
 			my $zzz1 = substr($_,$z,1);
 			my $zzz2 = ord $zzz1;
@@ -395,7 +397,7 @@ foreach $file (@g_files)
 		}
 
 		$tmp .= ",0";
-		
+
 		$tmp =~ s/,32,0/,a/g; # really common sequence
 
 		$strings[$string_count] = $tmp;
@@ -422,7 +424,7 @@ foreach $file (@g_files)
 			print OUTPUT "S ".$string_names[$i]."[]={".$strings[$i]."};\n";
 		}
 	}
-	
+
 	print OUTPUT "\n";
 
 	# now print the lists
@@ -463,12 +465,12 @@ foreach $file (@g_files)
 		} else {
 			$perc = 0.0;
 		}
-		
+
 		if($debug > 0){ print OUTPUT "		"; }
 		else {
 			if(($i % 16) == 0){ print OUTPUT "		"; }
 		}
-		
+
 		if($perc == 0.0){ print OUTPUT "Z"; }
 		elsif($perc == -0.100){ print OUTPUT "W"; }
 		elsif($perc == -0.250){ print OUTPUT "Y"; }
@@ -489,7 +491,7 @@ foreach $file (@g_files)
 	for($i=0;$i<256;$i++)
 	{
 		if(($i % 16) == 0){ print OUTPUT "		"; };
-	
+
 		if($lists[$i] ne "")
 		{
 			print OUTPUT "".$m_tableNamePrefix."n".$i;
@@ -782,23 +784,6 @@ print OUTPUT "\n";
 
 
 print OUTPUT "\n";
-print OUTPUT "typedef struct _LanguageAndEncodingMatch\n";
-print OUTPUT "{\n";
-print OUTPUT "	const char * szLanguage;\n";
-print OUTPUT "	const char * szEncoding;\n";
-print OUTPUT "	double dScore;\n";
-print OUTPUT "} LanguageAndEncodingMatch;\n";
-print OUTPUT "\n";
-print OUTPUT "#define DLE_NUM_BEST_MATCHES 4\n";
-print OUTPUT "\n";
-print OUTPUT "typedef struct _LanguageAndEncodingResult\n";
-print OUTPUT "{\n";
-print OUTPUT "	LanguageAndEncodingMatch match[DLE_NUM_BEST_MATCHES]; // the first best matches\n";
-print OUTPUT "	double dAccuracy; // accuracy score: from 0 to 100\n";
-print OUTPUT "} LanguageAndEncodingResult;\n";
-print OUTPUT "\n";
-print OUTPUT "#define DLE_STRICT_UTF8_CHECKING 1\n";
-print OUTPUT "\n";
 print OUTPUT "static const char * unknown_string = \"?\";\n";
 print OUTPUT "\n";
 print OUTPUT "void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * retBuffer,int iFlags = 0)\n";
@@ -878,7 +863,8 @@ print OUTPUT "	else retBuffer->dAccuracy = 0.0;\n";
 print OUTPUT "}\n";
 print OUTPUT "\n";
 
-
+print OUTPUT "/*\n";
+print OUTPUT " * this file can be compiled also as a standalone app for testing\n";
 print OUTPUT "int main(int argc,char ** argv)\n";
 print OUTPUT "{\n";
 print OUTPUT "	FILE * f = fopen(argv[1],\"r\");\n";
@@ -894,7 +880,8 @@ print OUTPUT "		printf(\"LANGUAGE %s, ENCODING %s, SCORE: %f\\n\",r.match[i].szL
 print OUTPUT "	printf(\"Accuracy: %f\\n\",r.dAccuracy);\n";
 print OUTPUT "	return 0;\n";
 print OUTPUT "}\n";
-
+print OUTPUT "*/\n";
+print OUTPUT "\n";
 
 close(OUTPUT);
 

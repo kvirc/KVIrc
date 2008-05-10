@@ -24,19 +24,64 @@
 
 #include "kvi_module.h"
 #include "kvi_app.h"
+#include "kvi_locale.h"
 
+#include <QFileInfo>
+
+#include "langdetector.h"
+
+/*
+	@doc: language.detect
+	@type:
+		command
+	@title:
+		language.detect
+	@short:
+		(Tries to) detect the language and encoding of a text file
+	@syntax:
+		language.detect [document: string]
+	@description:
+		Tries to detect the language and encoding of the file specified
+		as [document]. The file has to be preferably a simple text file,
+		or the detector can be deceived by the file format (eg. html files
+		contains english words inside html tags).
+		[document] can be an absolute path.
+		This command is exported by the "language" module.
+*/
+
+
+static bool language_kvs_cmd_detect(KviKvsModuleCommandCall * c)
+{
+	QString doc;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
+	KVSM_PARAMETERS_END(c)
+
+	if(doc.isEmpty()){
+		c->warning(__tr2qs("No file given, no detection occured."));
+		return true;
+	}
+
+	QFileInfo * f= new QFileInfo(doc);
+	qDebug("Path %s",doc.toUtf8().data());
+	if(f)
+	{
+		if(!f->exists())
+		{
+			c->warning(__tr2qs("The file you specified doesn't exists, can't detect its language."));
+			return true;
+		}
+	}
+
+	KviLangDetetector *w = new KviLangDetetector(doc);
+
+	return true;
+}
 
 static bool language_module_init(KviModule * m)
 {
-	/*
-	m->registerFunction("nick",my_module_fnc_nick);
-	m->registerFunction("user",my_module_fnc_user);
-	m->registerFunction("host",my_module_fnc_host);
-	m->registerFunction("ip",my_module_fnc_ip);
-	m->registerFunction("server",my_module_fnc_server);
-	m->registerFunction("network",my_module_fnc_network);
-	m->registerFunction("umode",my_module_fnc_umode);
-	*/
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"detect",language_kvs_cmd_detect);
 	return true;
 }
 

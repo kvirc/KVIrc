@@ -27,7 +27,7 @@ SUBDIRS(
 	file filetransferwindow
 	help http
 	ident iograph
-	lamerizer links list log logview
+	lamerizer language links list log logview
 	mask math mediaplayer mircimport my
 	notifier
 	objects options
@@ -46,5 +46,5 @@ SUBDIRS(
 	# perl, perlcore
 
 	# forgotten ?
-	# language offer
+	# offer
 )

@@ -28,6 +28,8 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "detector.h"
+
 ///////////////////////////////////////////////////////////////////////////////
 // CORE DEFS
 ///////////////////////////////////////////////////////////////////////////////
@@ -7396,7 +7398,7 @@ D l13_d =
 
 //
 // Lng: finnish
-// Enc: iso-8859-1
+// Enc: iso-8859-15
 //
 
 
@@ -7779,7 +7781,7 @@ N l14n255[]={{sqyy,.109},H};
 D l14_d =
 {
 	"finnish",
-	"iso-8859-1",
+	"iso-8859-15",
 	{
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
@@ -7822,7 +7824,7 @@ D l14_d =
 
 //
 // Lng: french
-// Enc: iso-8859-1
+// Enc: iso-8859-15
 //
 
 
@@ -8137,7 +8139,7 @@ N l15n255[]={{szi,.235},{sXtt,.149},{ssvx,.130},H};
 D l15_d =
 {
 	"french",
-	"iso-8859-1",
+	"iso-8859-15",
 	{
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
@@ -17780,7 +17782,7 @@ D l36_d =
 
 //
 // Lng: spanish
-// Enc: iso-8859-1
+// Enc: iso-8859-15
 //
 
 
@@ -18048,7 +18050,7 @@ N l37n255[]={{szi,.184},{smsri,.221},H};
 D l37_d =
 {
 	"spanish",
-	"iso-8859-1",
+	"iso-8859-15",
 	{
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
@@ -18091,7 +18093,7 @@ D l37_d =
 
 //
 // Lng: swedish
-// Enc: iso-8859-1
+// Enc: iso-8859-15
 //
 
 
@@ -18370,7 +18372,7 @@ N l38n255[]={{szi,.173},{smsri,.333},{sg2f,.182},H};
 D l38_d =
 {
 	"swedish",
-	"iso-8859-1",
+	"iso-8859-15",
 	{
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
 		W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,W,
@@ -19048,23 +19050,6 @@ static int utf8score(const unsigned char * p)
 }
 
 
-typedef struct _LanguageAndEncodingMatch
-{
-	const char * szLanguage;
-	const char * szEncoding;
-	double dScore;
-} LanguageAndEncodingMatch;
-
-#define DLE_NUM_BEST_MATCHES 4
-
-typedef struct _LanguageAndEncodingResult
-{
-	LanguageAndEncodingMatch match[DLE_NUM_BEST_MATCHES]; // the first best matches
-	double dAccuracy; // accuracy score: from 0 to 100
-} LanguageAndEncodingResult;
-
-#define DLE_STRICT_UTF8_CHECKING 1
-
 static const char * unknown_string = "?";
 
 void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * retBuffer,int iFlags = 0)
@@ -19130,6 +19115,8 @@ void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * 
 	else retBuffer->dAccuracy = 0.0;
 }
 
+/*
+ * this file can be compiled also as a standalone app for testing
 int main(int argc,char ** argv)
 {
 	FILE * f = fopen(argv[1],"r");
@@ -19145,3 +19132,5 @@ int main(int argc,char ** argv)
 	printf("Accuracy: %f\n",r.dAccuracy);
 	return 0;
 }
+*/
+
