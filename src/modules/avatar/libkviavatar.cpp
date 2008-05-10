@@ -52,6 +52,7 @@
 #include <QTimer>
 #include <QLabel>
 #include <QLayout>
+#include <QCloseEvent>
 
 static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
@@ -80,7 +81,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 
 	//g->addMultiCellWidget(l,0,0,0,2);
 	g->addWidget(l,0,0);
-	
+
 	KviTalHBox * h1 = new KviTalHBox(this);
 	m_pLineEdit = new QLineEdit(h1);
 	m_pLineEdit->setText(szInitialPath);
@@ -91,7 +92,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	g->addWidget(h1,1,0);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	//g->addWidget(b,1,2);
-	
+
 
 	KviTalHBox * h = new KviTalHBox(this);
 	h->setSpacing(8);
@@ -105,7 +106,7 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	b = new QPushButton(__tr2qs("Cancel"),h);
 	b->setMinimumWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	
+
 	g->setRowStretch(0,1);
 	g->setColumnStretch(0,1);
 }
@@ -120,7 +121,7 @@ void KviAsyncAvatarSelectionDialog::okClicked()
 	m_szAvatarName = m_pLineEdit->text();
 
 	if(!g_pApp->connectionExists(m_pConnection))return; // the connection no longer exists :/
-	
+
 	if(!m_szAvatarName.isEmpty())
 	{
 		QString tmp = m_szAvatarName;
@@ -128,7 +129,7 @@ void KviAsyncAvatarSelectionDialog::okClicked()
 		QString szBuffer=QString("avatar.set \"%1\"").arg(tmp);
 		KviKvsScript::run(szBuffer,m_pConnection->console());
 	}
-	
+
 	accept();
 	deleteLater();
 }
@@ -202,7 +203,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 		d->show();
 		return true;
 	}
-	
+
 	// new avatar specified...try to load it
 
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
@@ -364,9 +365,9 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("Internal error: I'm not in the user database ?"));
 		return true;
 	}
-	
+
 	QString absPath,avatar;
-	
+
 	if(e->avatar())
 	{
 		absPath = e->avatar()->localPath();
@@ -413,7 +414,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	if(!avatar.isEmpty())
 	{
 		KviQCString encodedAvatar = c->window()->connection()->encodeText(avatar);
-		
+
 		if(o)
 		{
 			c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR %s %u%c",encodedTarget.data(),0x01,
@@ -455,7 +456,7 @@ static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KVSM_REQUIRE_CONNECTION(c)
 
 	if(szNick.isEmpty())szNick = c->window()->connection()->currentNickName();
@@ -499,7 +500,7 @@ static bool avatar_kvs_fnc_path(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("path",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KVSM_REQUIRE_CONNECTION(c)
 
 	if(szNick.isEmpty())szNick = c->window()->connection()->currentNickName();
@@ -559,7 +560,7 @@ static bool avatar_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"set",avatar_kvs_cmd_set);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"unset",avatar_kvs_cmd_set);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"notify",avatar_kvs_cmd_notify);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"name",avatar_kvs_fnc_name);
 	KVSM_REGISTER_FUNCTION(m,"path",avatar_kvs_fnc_path);
 
