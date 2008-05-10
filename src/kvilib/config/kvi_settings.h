@@ -103,12 +103,13 @@
 
 #define KVI_RELEASE_NAME "Insomnia"
 
+#ifndef COMPILE_ON_WINDOWS
 /* HACK: this is an hack to get dynamic labels while porting.
          this line MUST be removed when the new Qt4 implementation
          is working
 */
 #define COMPILE_USE_DYNAMIC_LABELS
-
+#endif 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE
 	#define _GNU_SOURCE
