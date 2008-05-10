@@ -26,11 +26,10 @@
 #include "kvi_heapobject.h"
 #include "kvi_string.h"
 
-#include <qnamespace.h>
-#include <qobject.h>
-#include <qsocketnotifier.h>
+#include <QObject>
+#include <QSocketNotifier>
 #include "kvi_pointerlist.h"
-#include <qevent.h>
+#include <QEvent>
 
 
 //

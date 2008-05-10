@@ -47,7 +47,7 @@
 #include "kvi_error.h"
 
 
-#include <qapplication.h>
+#include <QApplication>
 
 
 static void kvi_threadIgnoreSigalarm()

@@ -43,7 +43,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <q3listview.h>
+#include <QListView>
 
 class KviTalListViewItem;
 
@@ -145,9 +145,9 @@ public:
 		RadioButtonController=Controller,
 		CheckBoxController
 	};
-	
+
 	enum ToggleState { Off, NoChange, On };
-	
+
 	KviTalCheckListItem(KviTalCheckListItem *parent, const QString &text,
 			Type = RadioButtonController);
 	KviTalCheckListItem(KviTalCheckListItem *parent, KviTalListViewItem *after,
@@ -165,25 +165,25 @@ public:
 	KviTalCheckListItem(KviTalListView *parent, const QString &text,
 			const QPixmap &);
 	~KviTalCheckListItem();
-	
+
 	void paintCell(QPainter *, const QColorGroup & cg,
 			int column, int width, int alignment);
 	virtual void paintFocus(QPainter *, const QColorGroup &cg,
 				const QRect & r);
 	int width(const QFontMetrics&, const KviTalListView*, int column) const;
 	void setup();
-	
+
 	virtual void setOn(bool);
 	bool isOn() const { return on; }
 	Type type() const { return myType; }
 	QString text() const { return KviTalListViewItem::text(0); }
 	QString text(int n) const { return KviTalListViewItem::text(n); }
-	
+
 	void setTristate(bool);
 	bool isTristate() const;
 	ToggleState state() const;
 	void setState(ToggleState s);
-	
+
 	int rtti() const;
 	enum { RTTI = 1 };
 
@@ -203,7 +203,7 @@ private:
 	void updateStoredState(KviTalCheckListItem *key);
 	void setState(ToggleState s, bool update, bool store);
 	void setCurrentState(ToggleState s);
-	
+
 	Type myType;
 	bool on;
 	KviTalCheckListItemPrivate *d;
