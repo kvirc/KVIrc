@@ -10,6 +10,7 @@ SET(kvimediaplayer_MOC_HDRS
 	mp_xmmsinterface.h
 	mp_amipinterface.h
 	mp_mprisinterface.h
+	mp_xmms2interface.h
 )
 
 SET(kvimediaplayer_SRCS
@@ -23,6 +24,7 @@ SET(kvimediaplayer_SRCS
 	mp_xmmsinterface.cpp
 	mp_amipinterface.cpp
 	mp_mprisinterface.cpp
+	mp_xmms2interface.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

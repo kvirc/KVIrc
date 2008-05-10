@@ -25,44 +25,19 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "mp_interface.h"
+#include "mp_mprisinterface.h"
 
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC))
 	#include <QtDBus/QtDBus>
 
-	class KviXmms2Interface : public KviMediaPlayerInterface
+	class KviXmms2Interface : public KviMPRISInterface
 	{
 	public:
 		KviXmms2Interface();
-		virtual ~KviXmms2Interface();
-	public:
-		virtual int detect(bool bStart);
-		virtual bool prev();
-		virtual bool next();
-		virtual bool play();
-		virtual bool stop();
-		virtual bool pause();
-		virtual bool quit();
-		virtual QString nowPlaying();
-		virtual QString mrl();
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual KviMediaPlayerInterface::PlayerStatus status();
-		virtual int position();
-		virtual int length();
-		virtual bool jumpTo(int &iPos);
-		virtual QString title();
-		virtual QString artist();
-		virtual QString genre();
-		virtual QString comment();
-		virtual QString album();
-		virtual int getPlayListPos();
-		virtual QString year();
-		virtual QString mediaType();
 	};
-	
+
 	MP_DECLARE_DESCRIPTOR(KviXmms2Interface)
-	
+
 #endif //!COMPILE_ON_WINDOWS
 
 #endif //!_MP_XMMS2INTERFACE_H_
