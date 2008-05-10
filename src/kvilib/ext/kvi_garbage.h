@@ -23,10 +23,10 @@
 //
 
 #include "kvi_settings.h"
-
-#include <qobject.h>
 #include "kvi_pointerlist.h"
-#include <qtimer.h>
+
+#include <QObject>
+#include <QTimer>
 
 
 class KVILIB_API KviGarbageCollector : public QObject

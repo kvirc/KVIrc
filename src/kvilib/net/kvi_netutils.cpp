@@ -127,7 +127,7 @@ bool kvi_stringIpToBinaryIp(const char *szIp,struct in_addr *address)
 
 	switch (n) {
 		case 0: return false; // initial nondigit
-		case 1:	break;        // a -- 32 bits 
+		case 1:	break;        // a -- 32 bits
 		case 2:               // a.b -- 8.24 bits
 			if(val > 0xffffff) return false;
 			val |= parts[0] << 24;
@@ -254,34 +254,34 @@ static unsigned int scan_ip6(const char *s,char ip[16])
 
 		ip[prefixlen++] = (u >> 8);
 		ip[prefixlen++] = (u & 255);
-		
+
 		s += i; len += i;
 
 		if (prefixlen==16) return len;
 	}
 
 	/* part 2, after "::" */
-	
+
 	for (;;) {
 		if (*s == ':') {
 			if (suffixlen==0) break;
 			s++;
 			len++;
 		} else if (suffixlen!=0) break;
-	
+
 		{
 			char *tmp;
 			u=strtol(s,&tmp,16);
 			i=tmp-s;
 		}
-	
+
 		if (!i) {
 			if (*s) len--;
 			break;
 		}
-	
+
 		if (suffixlen+prefixlen<=12 && s[i]=='.') {
-	
+
 			if (kvi_stringIpToBinaryIp(s,(struct in_addr*)(suffix+suffixlen))) {
 				suffixlen+=4;
 				len+=(unsigned int)strlen(s);
@@ -450,7 +450,7 @@ const char* inet_ntop(int AF, const void *CP, char *BUF, size_t LEN)
 bool kvi_stringIpToBinaryIp_V6(const char *szIp,struct in6_addr *address)
 {
 	if(!szIp)return false;
-	return (inet_pton(AF_INET6,szIp,(void *)address) == 1);	
+	return (inet_pton(AF_INET6,szIp,(void *)address) == 1);
 }
 
 bool kvi_isValidStringIp_V6(const char *szIp)
@@ -500,9 +500,9 @@ namespace KviNetUtils
 	bool stringIpToBinaryIp(const QString &szStringIp,struct in_addr * address)
 	{
 #ifndef HAVE_INET_ATON
-		QString szAddr = szStringIp.simplifyWhiteSpace();
-		Q_UINT32 iAddr=0;
-		QStringList ipv4 = QStringList::split(".", szAddr, FALSE);
+		QString szAddr = szStringIp.simplified();
+		quint32 iAddr=0;
+		QStringList ipv4 = szAddr.split(".", QString::KeepEmptyParts, Qt::CaseInsensitive);
 		if (ipv4.count() == 4) {
 			int i = 0;
 			bool ok = TRUE;
@@ -535,7 +535,7 @@ namespace KviNetUtils
 		if(!szIp[0].isNumber())return false;
 		return stringIpToBinaryIp(szIp,&address);
 	}
-	
+
 
 #ifdef COMPILE_IPV6_SUPPORT
 	bool stringIpToBinaryIp_V6(const QString &szStringIp,struct in6_addr * address)

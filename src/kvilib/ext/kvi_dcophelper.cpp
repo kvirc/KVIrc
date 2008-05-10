@@ -30,8 +30,8 @@
 
 #include "dcopclient.h"
 
-#include <qdatastream.h>
-#include <qvaluelist.h>
+#include <QDataStream>
+#include <QList>
 
 // must be included this way, since kvilib is built
 // before kvirc and symlinks to headers aren't set yet
@@ -228,7 +228,7 @@ bool KviDCOPHelper::qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const K
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
 
-	if(replyType != "QValueList<int>")
+	if(replyType != "KviValueList<int>")
 		return false;
 
 	QDataStream replyStream(replyData, IO_ReadOnly);
@@ -276,8 +276,8 @@ bool KviDCOPHelper::qcstringListRetIntDCOPCall(const KviQCString &szObj,const Kv
 
 bool KviDCOPHelper::findRunningApp(const QString &szApp)
 {
-	QValueList<KviQCString> allApps = g_pApp->dcopClient() ->registeredApplications();
-	QValueList<KviQCString>::iterator iterator;
+	QList<KviQCString> allApps = g_pApp->dcopClient() ->registeredApplications();
+	QList<KviQCString>::iterator iterator;
 	KviQCString sz = szApp.toLocal8Bit();
 	for (iterator = allApps.begin();iterator != allApps.end();iterator++)
 	{

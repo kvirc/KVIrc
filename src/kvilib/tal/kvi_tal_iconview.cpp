@@ -53,19 +53,19 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 		QString text="<center>";
 	text+=index.data(Qt::DisplayRole).toString();
 	text +="</center>";
-	
+
 	QPixmap pixmap;
 	QRect decorationRect;
 	QVariant value = index.data(Qt::DecorationRole);
 	QStyle::State state=option.state;
 	QRect rect=option.rect;
 
-	
+
 	int iconx=option.rect.x()+(option.rect.width()/2);
 	iconx-=8;
 	QIcon ico=QIcon(value.value<QIcon>());
 	QRect rect2=QRect(QPoint(iconx,option.rect.y()),QSize(16,16));
-	painter->drawPixmap(rect2,ico.pixmap());
+	painter->drawPixmap(rect2,ico.pixmap(QSize(16,16)));
 
 
 	if (option.state & QStyle::State_Selected)
@@ -86,7 +86,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 	painter->translate(option.rect.x()+5,option.rect.y()+14);
 	doc.setTextWidth(option.rect.width()-10);
 	doc.documentLayout()->draw(painter, context);
-	
+
 	if (option.state & QStyle::State_Selected)
 	{
 		QPalette pal=option.palette;
@@ -104,7 +104,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 /*
 QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-		
+
 }
 */
 
@@ -120,7 +120,7 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 		setItemDelegate(m_pDelegate);
 	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(redirect_cellActivated(int,int)));
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
-	
+
 }
 
 

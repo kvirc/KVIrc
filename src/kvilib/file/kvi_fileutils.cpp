@@ -50,7 +50,7 @@ namespace KviFileUtils
 		//char *cur_ptr = tmp_buf;
 		if(bClearBuffer)szBuffer = "";
 		int ch = f->getch();
-	
+
 		while((ch != -1)&&(ch != '\n')&&(ch != 0))
 		{
 			tmp_buf[cur_len] = ch;
@@ -130,7 +130,7 @@ namespace KviFileUtils
 		}
 		return true;
 	}
-	
+
 	bool makeDir(const char* path)
 	{
 		QString szPath=QString::fromUtf8(path);
@@ -198,13 +198,13 @@ namespace KviFileUtils
 		}
 		return true;
 	}
-	
+
 	bool loadFile(const char* path,QString &szBuffer,bool bUtf8)
 	{
 		QString szPath=QString::fromUtf8(path);
 		return loadFile(szPath,szBuffer,bUtf8);
-	}	
-	
+	}
+
 	void adjustFilePath(QString &szPath)
 	{
 #ifdef COMPILE_ON_WINDOWS
@@ -225,9 +225,9 @@ namespace KviFileUtils
 		}
 		szPath=QDir::cleanPath(szPath);
 #endif
-		
+
 	}
-	
+
 	bool directoryExists(const QString &szPath)
 	{
 		QFileInfo f(szPath);
@@ -235,7 +235,7 @@ namespace KviFileUtils
 	}
 
 	bool directoryExists(const char* path)
-	{	
+	{
 		QString szPath=QString::fromUtf8(path);
 		QFileInfo f(szPath);
 		return (f.exists() && f.isDir());
@@ -246,13 +246,13 @@ namespace KviFileUtils
 		QFileInfo f(szPath);
 		return (f.exists() && f.isFile());
 	}
-	
+
 	bool fileExists(const char* path)
-	{	
+	{
 		QString szPath=QString::fromUtf8(path);
 		return fileExists(szPath);
 	}
-	
+
 	bool removeFile(const QString &szPath)
 	{
 		QDir d;
@@ -270,7 +270,7 @@ namespace KviFileUtils
 		QDir d;
 		return d.rmdir(szPath);
 	}
-	
+
 	bool removeDir(const char* path)
 	{
 		QString szPath=QString::fromUtf8(path);
@@ -307,7 +307,7 @@ namespace KviFileUtils
 
 		return KviFileUtils::removeDir(szPath);
 	}
-	
+
 	bool writeFile(const QString &szPath,const QString &szData,bool bAppend)
 	{
 		KviFile f(szPath);
@@ -333,7 +333,7 @@ namespace KviFileUtils
 		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((int)(szTmp.length())))return false;
 		return true;
 	}
-	
+
 	bool writeFileLocal8Bit(const char* path,const QString &szData,bool bAppend)
 	{
 		QString szPath=QString::fromUtf8(path);
@@ -377,21 +377,31 @@ namespace KviFileUtils
 
 	QString extractFilePath(const QString &szFileNameWithPath)
 	{
-		return QFileInfo(szFileNameWithPath).dirPath(true);
+		return QFileInfo(szFileNameWithPath).absolutePath();
 	}
 
 	bool readLine(QFile * f,QString &szBuffer,bool bUtf8)
 	{
 		QTextStream stream(f);
-		stream.setEncoding(bUtf8 ? QTextStream::UnicodeUTF8 : QTextStream::Locale);
+		// By default, QTextCodec::codecForLocale() is used, and automatic unicode detection is enabled.
+		if(bUtf8)
+			stream.setCodec(QTextCodec::codecForMib(106));
+		/*
+		* Name: UTF-8
+		* MIBenum: 106
+		* from: http://www.iana.org/assignments/character-sets
+		*/
 		szBuffer=stream.readLine();
 		return !szBuffer.isNull();
 	}
-	
+
 	bool readLines(QFile * f,QStringList &buffer,int iStartLine, int iCount, bool bUtf8)
 	{
 		QTextStream stream( f );
-		stream.setEncoding(bUtf8 ? QTextStream::UnicodeUTF8 : QTextStream::Locale);
+		//please read comments in the readLine(...) method
+		if(bUtf8)
+			stream.setCodec(QTextCodec::codecForMib(106));
+
 		for(int i=0;i<iStartLine;i++)
 			stream.readLine();
 
@@ -412,13 +422,13 @@ namespace KviFileUtils
 		QFileInfo f(szFname);
 		return (f.exists() && f.isFile() && f.isReadable());
 	}
-	
+
 	bool isReadable(const char* path)
 	{
 		QString szPath=QString::fromUtf8(path);
 		return isReadable(szPath);
 	}
-	
+
 	bool isAbsolutePath(const QString &szPath)
 	{
 		QFileInfo f(szPath);

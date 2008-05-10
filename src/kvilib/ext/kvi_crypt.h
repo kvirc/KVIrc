@@ -42,7 +42,7 @@
 #include "kvi_heapobject.h"
 #include "kvi_pointerhashtable.h"
 
-#include <qobject.h>
+#include <QObject>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptEngine;
@@ -53,7 +53,7 @@
 
 	// we must include this declaration to make moc happy even
 	// if we're not compiling the crypt support
-	
+
 	class KVILIB_API KviCryptEngine : public QObject, public KviHeapObject
 	{
 		Q_OBJECT
@@ -61,7 +61,7 @@
 	public:
 		KviCryptEngine();
 		virtual ~KviCryptEngine();
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	private:
 		crypt_engine_deallocator_func m_deallocFunc;    // this is accessed by KviCryptEngineManager only

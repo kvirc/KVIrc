@@ -26,7 +26,7 @@
 
 //
 // REGISTERED USERS
-//     
+//
 //     Here we manage users resigered by mask and their (generic!) properties
 //
 
@@ -38,7 +38,7 @@
 
 #include "kvi_pointerlist.h"
 #include "kvi_pointerhashtable.h"
-#include <qobject.h>
+#include <QObject>
 
 class KviRegisteredUserDataBase;
 
@@ -92,7 +92,7 @@ public:
 
 	void setProperty(const QString &name,const QString &value);
 	void setProperty(const QString &name,bool value);
-	
+
 	void setGroup(const QString &name) { m_szGroup=name; };
 	const QString &group(){ return m_szGroup; };
 
@@ -116,7 +116,7 @@ class KVILIB_API KviRegisteredUserGroup : public KviHeapObject
 public:
 	KviRegisteredUserGroup(const QString &name);
 	~KviRegisteredUserGroup();
-	
+
 	void setName(const QString &name) { m_szName=name; };
 	const QString &name(){ return m_szName; };
 private:
@@ -188,7 +188,7 @@ public:
 
 	KviPointerHashTable<QString,KviRegisteredUser> * userDict(){ return m_pUserDict; };
 	KviPointerHashTable<QString,KviRegisteredUserGroup>* groupDict() { return m_pGroupDict; };
-	
+
 	KviRegisteredUserGroup* addGroup(const QString &name);
 signals:
 	void userRemoved(const QString&);
