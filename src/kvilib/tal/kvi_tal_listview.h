@@ -43,7 +43,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <QListView>
+#include <q3listview.h>
 
 class KviTalListViewItem;
 
