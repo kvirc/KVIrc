@@ -2,7 +2,7 @@
 #define	_CLASS_PROCESS_H_
 //mdm:
 //   File : class_process.h
-//   Creation date : Thu Feb 1 14:39:48 CEST 2005 
+//   Creation date : Thu Feb 1 14:39:48 CEST 2005
 //	 by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
@@ -23,12 +23,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 
-#include <qtimer.h>
+#include <QTimer>
 #include "class_widget.h"
 
 
 #include "object_macros.h"
-#include <q3process.h>
+#include "kvi_process.h"
 
 
 class KviKvsObject_process : public KviKvsObject
@@ -37,7 +37,9 @@ class KviKvsObject_process : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_process)
 protected:
-	Q3Process * m_pProcess;
+	KviProcess * m_pProcess;
+private:
+	QStringList args;
 public:
 
 	bool functionaddArgument(KviKvsObjectFunctionCall *c);

@@ -111,10 +111,9 @@ bool KviKvsProcessAsyncOperation::start()
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED)
 	{
-		qDebug("CONNESSO STARTED\n");
 		connect(m_pProcess,SIGNAL(started()),this,SLOT(processStarted()));
 	}
-	
+
 	szcmd = args.takeFirst();
 	m_pProcess->start(szcmd, args);
 
@@ -223,7 +222,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		{
 			QString sz;
 			retVal.asString(sz);
-			m_pProcess->write(sz.toAscii());
+			m_pProcess->write(sz.toUtf8().data());
 		}
 
 		if(iRet & KviKvsScript::HaltEncountered)

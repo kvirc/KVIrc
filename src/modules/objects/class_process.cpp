@@ -25,9 +25,7 @@
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "kvi_locale.h"
-#include <qtimer.h>
-#include <q3process.h>
-
+#include "kvi_process.h"
 
 /*
 	@doc:	process
@@ -181,9 +179,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_process,"process","object")
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_process,KviKvsObject)
 
-	m_pProcess = new Q3Process();
-	connect(m_pProcess,SIGNAL(readyReadStdout()),this,SLOT(slotReadStdout()));
-	connect(m_pProcess,SIGNAL(readyReadStderr()),this,SLOT(slotReadStderr()));
+	m_pProcess = new KviProcess();
+	connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(slotReadStdout()));
+	connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(slotReadStderr()));
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_process)
 
@@ -202,22 +200,28 @@ bool KviKvsObject_process::functionaddArgument(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("argument",KVS_PT_NONEMPTYSTRING,0,szArgument)
 	KVSO_PARAMETERS_END(c)
-	if (m_pProcess) m_pProcess->addArgument(szArgument);
+	args.append(szArgument);
 	return true;
 }
 
 //->Start the process.
 bool KviKvsObject_process::functionstartProcess(KviKvsObjectFunctionCall *c)
 {
+	QString szcmd;
 
-	if(!(m_pProcess->start()))
-		 c->warning( __tr2qs("Process could not be starded."));
+	szcmd = args.takeFirst();
+	m_pProcess->start(szcmd, args);
+
+	if(m_pProcess->state()==KviProcess::NotRunning)
+	{
+		c->warning( __tr2qs("Process could not be starded."));
+	}
 	return true;
 }
 //-->Read the standard output.
 bool KviKvsObject_process::functionreadStderr(KviKvsObjectFunctionCall *c)
 {
-	QString ng_Process =m_pProcess->readStderr();
+	QString ng_Process = m_pProcess->readAllStandardError();
 	c->returnValue()->setString(ng_Process);
 	return true;
 }
@@ -225,7 +229,7 @@ bool KviKvsObject_process::functionreadStderr(KviKvsObjectFunctionCall *c)
 //-->Read the standard error.
 bool KviKvsObject_process::functionreadStdout(KviKvsObjectFunctionCall *c)
 {
-	QString ng_Process =m_pProcess->readStdout();
+	QString ng_Process =m_pProcess->readAllStandardOutput();
 	c->returnValue()->setString(ng_Process);
 	return true;
 }
@@ -252,15 +256,14 @@ bool KviKvsObject_process::functionwriteToStdin(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("command",KVS_PT_STRING,0,szCommand)
 	KVSO_PARAMETERS_END(c)
-	if (m_pProcess) m_pProcess->writeToStdin(szCommand);
-
+	if (m_pProcess) m_pProcess->write(szCommand.toUtf8().data());
 	return true;
 }
 //-->The 3 Closing process functions
 bool KviKvsObject_process::functionclosekill(KviKvsObjectFunctionCall *c)
 {
 	//I try to  to terminate the process the nice way....
-	m_pProcess->tryTerminate();
+	m_pProcess->terminate();
 	//If the process is still running after 5 seconds, I'll terminate the process in the hard way.
 	QTimer::singleShot( 5000, m_pProcess, SLOT( kill() ) );
 	return true;
@@ -272,26 +275,26 @@ bool KviKvsObject_process::functionkill(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_process::functiontryTerminate(KviKvsObjectFunctionCall *c)
 {
-	m_pProcess->tryTerminate();
+	m_pProcess->terminate();
 	return true;
 }
 //-->Close the standard input.
 bool KviKvsObject_process::functioncloseStdin(KviKvsObjectFunctionCall *c)
 {
 
-	m_pProcess->closeStdin();
+	m_pProcess->closeReadChannel(KviProcess::StandardOutput);
 	return true;
 }
 //->Returns if the process still runnig
 bool KviKvsObject_process::functionisRunning(KviKvsObjectFunctionCall *c)
 {
-	c->returnValue()->setBoolean(m_pProcess->isRunning());
+	c->returnValue()->setBoolean(m_pProcess->state()==KviProcess::Running);
 	return true;
 }
 //->Returns if the process exited.
 bool KviKvsObject_process::functionnormalExit(KviKvsObjectFunctionCall *c)
 {
-	c->returnValue()->setBoolean(m_pProcess->normalExit());
+	c->returnValue()->setBoolean(m_pProcess->state()==KviProcess::NotRunning && m_pProcess->exitStatus()==KviProcess::NormalExit);
 	return true;
 }
 
