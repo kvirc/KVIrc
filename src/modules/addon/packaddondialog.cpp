@@ -299,28 +299,33 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	QLabel * pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide the real informations for the addon.","addon"));
 	pLayout->addWidget(pLabel,0,0);
-
+	
+	// per Hellvis: il famoso "option" è il puntatore alla stringa che conterrà il risultato del selettore
+	// che nel nostro caso è la directory scelta. Ma il meccanismo dei selettori è fatto in modo da memorizzare il valore
+	// nel puntatore che gli passiamo solo al momento in cui viene chiamato il metodo commit() del selettore stesso. E' stato pensato così
+	// per dare la possibilità di annullare il tutto nei vari menù di configurazione di kvirc.
+	// Noi lo richiameremo nell'header del packageaddondialog.h al momento di restituire la var richiesta:
+	//  QString sourcePath(){m_pSourcePathSelector->commit();return szSourcePath;}; per esempio :)
+	
 	// select script dir
-	QString szOption = "";
-
 	const QString szScriptDir = __tr2qs_ctx("Select scripts directory:","addon");
-	m_pSourcePath = new KviDirectorySelector(this,szScriptDir,&szOption,true);
-	pLayout->addWidget(m_pSourcePath,1,0);
+	m_pSourcePathSelector=new KviDirectorySelector(this,szScriptDir,&szSourcePath,true);
+	pLayout->addWidget(m_pSourcePathSelector,1,0);
 
 	// select image dir
 	const QString szImageDir = __tr2qs_ctx("Select images directory:","addon");
-	m_pImagePath = new KviDirectorySelector(this,szImageDir,&szOption,true);
-	pLayout->addWidget(m_pImagePath,2,0);
+	m_pImagePathSelector=new KviDirectorySelector(this,szImageDir,&szImagePath,true);
+	pLayout->addWidget(m_pImagePathSelector,2,0);
 
 	// select help dir
 	const QString szHelpDir = __tr2qs_ctx("Select help directory:","addon");
-	m_pHelpPath = new KviDirectorySelector(this,szHelpDir,&szOption,true);
-	pLayout->addWidget(m_pHelpPath,3,0);
+	m_pHelpPathSelector=new KviDirectorySelector(this,szHelpDir,&szHelpPath,true);
+	pLayout->addWidget(m_pHelpPathSelector,3,0);
 
 	// select sound dir
 	const QString szSoundDir = __tr2qs_ctx("Select sounds directory:","addon");
-	m_pSoundPath = new KviDirectorySelector(this,szSoundDir,&szOption,true);
-	pLayout->addWidget(m_pSoundPath,4,0);
+	m_pSoundPathSelector=new KviDirectorySelector(this,szSoundDir,&szSoundPath,true);
+	pLayout->addWidget(m_pSoundPathSelector,4,0);
 }
 
 KviPackAddonFileSelectionWidget::~KviPackAddonFileSelectionWidget()

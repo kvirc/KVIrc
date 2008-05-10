@@ -78,15 +78,20 @@ class KviPackAddonFileSelectionWidget : public QWidget
 public:
 	KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent);
 	~KviPackAddonFileSelectionWidget();
-	QString sourcePath(){return m_pSourcePath->text();};
-	QString imagePath(){return m_pImagePath->text();};
-	QString helpPath(){return m_pHelpPath->text();};
-	QString soundPath(){return m_pSoundPath->text();};
+	QString sourcePath(){m_pSourcePathSelector->commit();return szSourcePath;};
+	QString imagePath(){m_pImagePathSelector->commit();return szImagePath;};
+	QString helpPath(){m_pHelpPathSelector->commit();return szHelpPath;};
+	QString soundPath(){m_pSoundPathSelector->commit();return szSoundPath;};
 protected:
-	KviDirectorySelector * m_pSourcePath;
-	KviDirectorySelector * m_pImagePath;
-	KviDirectorySelector * m_pHelpPath;
-	KviDirectorySelector * m_pSoundPath;
+	KviDirectorySelector * m_pSourcePathSelector;
+	KviDirectorySelector * m_pImagePathSelector;
+	KviDirectorySelector * m_pHelpPathSelector;
+	KviDirectorySelector * m_pSoundPathSelector;
+	QString szSourcePath;//(){return m_pSourcePath->text();};
+	QString szImagePath;//(){return m_pImagePath->text();};
+	QString szHelpPath;//(){return m_pHelpPath->text();};
+	QString szSoundPath;//(){return m_pSoundPath->text();};
+
 };
 
 class KviPackAddonInfoWidget : public QWidget
