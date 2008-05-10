@@ -46,7 +46,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QValidator>
-
+#include <QCloseEvent>
 
 KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString &n1,const QString &n2,const QString &n3)
 : QDialog(par)
@@ -93,9 +93,9 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	pb = new QPushButton(__tr2qs_ctx("Ok","options"),h);
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(accept()));
-	
+
 	g->setColumnStretch(0,1);
-	
+
 	//setMinimumSize(250,120);
 }
 
@@ -128,7 +128,7 @@ KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &sz
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 
 	m_pRequest = new KviHttpRequest();
-	
+
 	QTimer::singleShot(0,this,SLOT(startDownload()));
 
 	g->setRowStretch(0,1);
@@ -200,7 +200,7 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc","options"));
 
 	QGridLayout * g = new QGridLayout(this);
-	
+
 
 	QString msg = "<center>";
 	msg += __tr2qs_ctx("Please select an avatar image. " \
@@ -235,7 +235,7 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	b->setMinimumWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	//g->addWidget(b,2,2);
-	
+
 	g->setRowStretch(0,1);
 	g->setColumnStretch(0,1);
 	//setMinimumSize(250,120);
@@ -307,7 +307,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),hb);
 	sel->setValidator(v);
-	
+
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("Alternatives...","options"),hb);
 	connect(pb,SIGNAL(clicked()),this,SLOT(setNickAlternatives()));
 
@@ -334,10 +334,10 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
-	
+
 	QLabel * l = new QLabel(__tr2qs_ctx("Age:","options"),hb);
 	l->setMinimumWidth(120);
-	
+
 	m_pAgeCombo = new QComboBox(hb);
 	QString szTip1 = szCenterBegin + __tr2qs_ctx("Here you can specify your age.","options") + szTrailing;
 	KviTalToolTip::add(l,szTip1);
@@ -362,7 +362,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
-	
+
 	l = new QLabel(__tr2qs_ctx("Gender:","options"),hb);
 	l->setMinimumWidth(120);
 
@@ -422,7 +422,7 @@ void KviIdentityGeneralOptionsWidget::commit()
 
 	if(KVI_OPTION_STRING(KviOption_stringRealname).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_REALNAME;
 	if(KVI_OPTION_STRING(KviOption_stringUsername).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_USERNAME;
-	
+
 	KVI_OPTION_STRING(KviOption_stringNickname2) = m_szAltNicknames[0];
 	KVI_OPTION_STRING(KviOption_stringNickname3) = m_szAltNicknames[1];
 	KVI_OPTION_STRING(KviOption_stringNickname4) = m_szAltNicknames[2];
@@ -433,7 +433,7 @@ void KviIdentityGeneralOptionsWidget::commit()
 	if(i > 120)i = 120;
 	if(i <= 0)KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 	else KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).setNum(i);
-	
+
 	switch(m_pGenderCombo->currentItem())
 	{
 		case 1:
@@ -456,7 +456,7 @@ KviIdentityAvatarOptionsWidget::KviIdentityAvatarOptionsWidget(QWidget * parent)
 {
 	createLayout();
 	layout()->setMargin(10);
-	
+
 	m_pLocalAvatar = new KviPixmap(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar));
 
 	bool bHaveAvatar = (!KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty()) && m_pLocalAvatar->pixmap();

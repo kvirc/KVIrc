@@ -310,7 +310,7 @@ bool KviKvsObject_toolbutton::functiontextPosition(KviKvsObjectFunctionCall *c)
 {
 	if(!widget()) return true;
 	QString szPos="BelowIcon";
-	if ((((QToolButton *)widget())->toolButtonStyle())==(QToolButton::BesideIcon))
+	if ((((QToolButton *)widget())->toolButtonStyle())==(Qt::ToolButtonTextBesideIcon))
 		szPos="BesideIcon";
 	c->returnValue()->setString(szPos);
 	return true;
