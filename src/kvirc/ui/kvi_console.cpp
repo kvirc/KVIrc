@@ -88,6 +88,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QStringList>
+#include <QCloseEvent>
 
 // FIXME: Qt4 #include <QMimeData>
 #include <q3mimefactory.h>
