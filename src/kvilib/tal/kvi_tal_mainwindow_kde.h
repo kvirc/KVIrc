@@ -26,6 +26,7 @@
 #include "kvi_settings.h"
 
 #include <kmainwindow.h>
+#include <kstatusbar.h> // statusBar() is overridden to return a KStatusBar
 
 class KVILIB_API KviTalMainWindow : public KMainWindow
 {

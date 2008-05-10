@@ -236,16 +236,16 @@ namespace KviKvsCoreFunctions
 	
 	KVSCF(lag)
 	{
-	        if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();
- 	        if(!KVSCF_pContext->window()->console()->connection())  return KVSCF_pContext->warningNoIrcConnection();
- 	        if(!KVSCF_pContext->window()->console()->connection()->lagMeter())
- 	        {
- 	            KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
- 	            return false;
- 	        }
+		if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();
+ 		if(!KVSCF_pContext->window()->console()->connection())  return KVSCF_pContext->warningNoIrcConnection();
+		if(!KVSCF_pContext->window()->console()->connection()->lagMeter())
+		{
+			KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
+			return false;
+		}
 
- 	        KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
- 	        return true;
+		KVSCF_pRetBuffer->setInteger( KVSCF_pContext->window()->console()->connection()->lagMeter()->lag());
+		return true;
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////
 
