@@ -107,11 +107,22 @@ static const char * g_szAboutText = "" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>CtrlAltCa</b></font>" \
+"<font color=\"#000000\" size=\"+2\"><b>Fabio Bas</b></font>" \
 "</td></tr>" \
 "<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
 "CtrlAltCa" \
 ")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"ctrlaltca at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Bugfixing, coding, user support" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"Can i haz KVIrc?\"" \
+"</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
