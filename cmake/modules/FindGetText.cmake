@@ -27,10 +27,10 @@ MACRO(GETTEXT_CREATE_TRANSLATIONS _potFile _firstPoFile)
 		)
 		IF(UNIX)
 			IF(APPLE)
-				INSTALL(FILES ${_gmoFile} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
+				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
 			ELSE()
 				# Assume linux
-				INSTALL(FILES ${_gmoFile} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale RENAME ${_lang}.mo)
+				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale RENAME ${_lang}.mo)
 			ENDIF()
 		ELSEIF(WIN32)
 			# FIXME: Use proper path
