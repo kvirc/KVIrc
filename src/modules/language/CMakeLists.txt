@@ -2,13 +2,11 @@
 
 SET(kvilanguage_MOC_HDRS
 	detector.h
-	langdetector.h
 )
 
 SET(kvilanguage_SRCS
 	libkvilanguage.cpp
 	detector.cpp
-	langdetector.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

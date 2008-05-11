@@ -28,60 +28,85 @@
 
 #include <QFileInfo>
 
-#include "langdetector.h"
+#include "detector.h"
 
 /*
 	@doc: language.detect
 	@type:
-		command
+		function
 	@title:
-		language.detect
+		$language.detect
 	@short:
-		(Tries to) detect the language and encoding of a text file
+		(Tries to) detect the language and encoding of a string
 	@syntax:
-		language.detect [document: string]
+		<hash> language.detect(<text: string>)
 	@description:
-		Tries to detect the language and encoding of the file specified
-		as [document]. The file has to be preferably a simple text file,
-		or the detector can be deceived by the file format (eg. html files
-		contains english words inside html tags).
-		[document] can be an absolute path.
+		Tries to detect the language and encoding of the string specified
+		as [text]. The accuracy of the detection mainly depends on the length
+		of the supplied text. Good results can be achieved with some thousands
+		characters.[br]
 		This command is exported by the "language" module.
+	@examples:
+		[example]
+		%dati = $language.detect("I'm a lord and i speak perfect english.");
+		if(%dati{"error"} != "")echo "Language detection failed: " %dati{"error"};
+		%count = %dati{"matchcount"};
+		for(%i=0;%i<%count;%i++)
+		{
+		echo "LANGUAGE " %i " : " %dati{"matches"}[%i]{"language"};
+		echo "ENCODING " %i " : " %dati{"matches"}[%i]{"encoding"};
+		echo "SCORE " %i " : "%dati{"matches"}[%i]{"score"};
+		}
+		echo "ACCURACY: " %dati{"accuracy"};
+		[/example]
 */
 
 
-static bool language_kvs_cmd_detect(KviKvsModuleCommandCall * c)
+static bool language_kvs_cmd_detect(KviKvsModuleFunctionCall * c)
 {
-	QString doc;
+	QString text, error;
+	KviKvsArray *matches;
+	KviKvsHash *match, *ret;
+	LanguageAndEncodingResult r;
+	int matchcount=DLE_NUM_BEST_MATCHES;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
+		KVSM_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL,text)
 	KVSM_PARAMETERS_END(c)
 
-	if(doc.isEmpty()){
-		c->warning(__tr2qs("No file given, no detection occured."));
-		return true;
-	}
+	//on error we return an empty array
+	matches = new KviKvsArray();
 
-	QFileInfo * f= new QFileInfo(doc);
-	qDebug("Path %s",doc.toUtf8().data());
-	if(f)
-	{
-		if(!f->exists())
+	if(text.isEmpty()){
+		error = "err_notext";
+		matchcount = 0;
+	} else {
+		detect_language_and_encoding(text.utf8().data(),&r,0);
+
+		for(int i=0;i<matchcount;i++)
 		{
-			c->warning(__tr2qs("The file you specified doesn't exists, can't detect its language."));
-			return true;
+			match = new KviKvsHash();
+			match->set("language",new KviKvsVariant(QString(r.match[i].szLanguage)));
+			match->set("encoding",new KviKvsVariant(r.match[i].szEncoding));
+			match->set("score",new KviKvsVariant((kvs_real_t)r.match[i].dScore));
+			matches->set(i, new KviKvsVariant(match));
 		}
 	}
 
-	KviLangDetetector *w = new KviLangDetetector(doc);
+	ret = new KviKvsHash();
+	ret->set("matches",new KviKvsVariant(matches));
+	ret->set("matchcount",new KviKvsVariant((kvs_int_t)matchcount));
+	ret->set("error",new KviKvsVariant(error));
+	ret->set("accuracy",new KviKvsVariant((kvs_real_t)r.dAccuracy));
+
+	c->returnValue()->setHash(ret);
 
 	return true;
 }
 
 static bool language_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"detect",language_kvs_cmd_detect);
+	KVSM_REGISTER_FUNCTION(m,"detect",language_kvs_cmd_detect);
 	return true;
 }
 
