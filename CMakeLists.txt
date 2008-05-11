@@ -277,6 +277,9 @@ IF(WANT_KDE4)
 		# The KDE4 cmake module has a VERY WEIRD behaviour: it adds -Wl,--no-undefined
 		# to the CMAKE_MODULE_LINKER_FLAGS .. which is BAD
 		STRING(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
+		# With certain GCC versions it also adds some insane flags around
+		STRING(REPLACE "-fvisibility=hidden" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
+		STRING(REPLACE "-fvisibility-inlines-hidden" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
 	ELSE()
 		SET(CMAKE_STATUS_KDE4_SUPPORT "not available")
 	ENDIF()
