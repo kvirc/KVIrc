@@ -28,7 +28,7 @@
 
 MP_IMPLEMENT_DESCRIPTOR(
 	KviXmms2Interface,
-	"audacious",
+	"xmms2",
 	__tr2qs_ctx(
 		"An interface to the xmms2 media player.\n" \
 		"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n",
