@@ -16,11 +16,11 @@ SET(waves
 # Install target
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${waves} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples/kvisounds/waves)
+		INSTALL(FILES ${waves} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples/kvisounds/waves)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${waves} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples/kvisounds/waves)
+		INSTALL(FILES ${waves} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples/kvisounds/waves)
 	ENDIF()
 ELSEIF(WIN32)
-	#INSTALL(FILES ${waves} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples/kvisounds/waves)
+	#INSTALL(FILES ${waves} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples/kvisounds/waves)
 ENDIF()

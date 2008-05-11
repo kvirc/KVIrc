@@ -21,11 +21,11 @@ SET(scriptexamples
 # Install target
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${scriptexamples} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples)
+		INSTALL(FILES ${scriptexamples} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${scriptexamples} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples)
+		INSTALL(FILES ${scriptexamples} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples)
 	ENDIF()
 ELSEIF(WIN32)
-	#INSTALL(FILES ${scriptexamples} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples)
+	#INSTALL(FILES ${scriptexamples} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples)
 ENDIF()

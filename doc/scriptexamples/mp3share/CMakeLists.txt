@@ -8,11 +8,11 @@ SET(mp3share
 # Install target
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${mp3share} DESTINATION ${INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples/mp3share)
+		INSTALL(FILES ${mp3share} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc/scriptexamples/mp3share)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${mp3share} DESTINATION ${INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples/mp3share)
+		INSTALL(FILES ${mp3share} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/scriptexamples/mp3share)
 	ENDIF()
 ELSEIF(WIN32)
-	#INSTALL(FILES ${mp3share} DESTINATION ${INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples/mp3share)
+	#INSTALL(FILES ${mp3share} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/doc/scriptexamples/mp3share)
 ENDIF()

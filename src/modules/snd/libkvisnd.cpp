@@ -42,9 +42,9 @@
 		#include <Phonon/Path>
 		#include <Phonon/Global>
 	#else //!COMPILE_KDE_SUPPORT
-		#include <Phonon>
+		#include <phonon>
 	#endif //!COMPILE_KDE_SUPPORT
-Phonon::MediaObject * g_pPhononPlayer=0;
+	Phonon::MediaObject * g_pPhononPlayer=0;
 #endif //!COMPILE_PHONON_SUPPORT
 
 #ifdef COMPILE_ON_WINDOWS
