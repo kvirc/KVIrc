@@ -77,7 +77,7 @@ General notes for the installation of the 4.0 release of KVIrc
     For example, to install in /usr instead of /usr/local and enable Phonon
     support, the command would be:
 
-    # cmake -DINSTALL_PREFIX=/usr -DCOMPILE_PHONON_SUPPORT=1 ..
+    # cmake -DCMAKE_INSTALL_PREFIX=/usr -DCOMPILE_PHONON_SUPPORT=1 ..
 
     Here's a list with explainations:
 
@@ -85,12 +85,12 @@ General notes for the installation of the 4.0 release of KVIrc
         Compiles the executable with debug symbols.
         Useful to report bugs.
 
-    -DINSTALL_PREFIX=/path
+    -DCMAKE_INSTALL_PREFIX=/path
         It will install all stuff under /path directory
 
     -DLIB_INSTALL_PREFIX=/path
         It will install libkvilib under /path directory. It defaults to
-        ${INSTALL_PREFIX}/lib.
+        ${CMAKE_INSTALL_PREFIX}/lib.
 
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
         Compile universal binary for MacOS X platform
