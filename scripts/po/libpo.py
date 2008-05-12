@@ -49,13 +49,13 @@ def copy_canonical(source, to):
 # Input and output.
 
 def read(name):
-	entries = []						# retained entries
-	entry = {}						  # entry being constructed
-	keys = {}						   # msgid to full entry dictionary
-	status = None					   # None, 'msgid' or `msgstr'
-	msgid = ''						  # msgid being accumulated
+	entries = []				# retained entries
+	entry = {}				# entry being constructed
+	keys = {}				# msgid to full entry dictionary
+	status = None				# None, 'msgid' or `msgstr'
+	msgid = ''				# msgid being accumulated
 	msgid_plural = ''
-	msgstr = ''						 # msgstr being accumulated
+	msgstr = ''				# msgstr being accumulated
 
 	if name == '-':
 		file = sys.stdin
@@ -111,8 +111,7 @@ def read(name):
 				else:
 					entry['flags'] = line
 			else:
-				sys.stderr.write(_('%s:%d: Unrecognised line\n%s')
-								 % (name, line_count, line))
+				sys.stderr.write(_('%s:%d: Unrecognised line\n%s') % (name, line_count, line))
 		elif cre.match('msgid_plural', line):
 			msgid_plural = line
 			status = 'msgid_plural'
@@ -153,11 +152,9 @@ def read(name):
 				else:
 					msgstr = msgstr + line
 			else:
-				sys.stderr.write(_('%s:%d: Unrecognised line\n%s')
-								 % (name, line_count, line))
+				sys.stderr.write(_('%s:%d: Unrecognised line\n%s') % (name, line_count, line))
 		else:
-			sys.stderr.write(_('%s:%d: Unrecognised line\n%s')
-							 % (name, line_count, line))
+			sys.stderr.write(_('%s:%d: Unrecognised line\n%s') % (name, line_count, line))
 
 	if name != '-':
 		file.close()
@@ -484,10 +481,10 @@ def set_header(entries, header):
 		copyright = '# %s\n' % header["COPYRIGHT"]
 
 	entry['comment'] = ('# %s\n' % header['TITLE']
-						+ copyright
-						+ '# %s\n' % header['FIRST-AUTHOR']
-						+ header['COMMENTS']
-						+ '#\n')
+			+ copyright
+			+ '# %s\n' % header['FIRST-AUTHOR']
+			+ header['COMMENTS']
+			+ '#\n')
 
 	if header['FLAGS']:
 		entry['flags'] = '#, %s\n' % header['FLAGS']

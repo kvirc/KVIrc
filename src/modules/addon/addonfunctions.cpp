@@ -32,7 +32,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_theme.h"
 #include "kvi_frame.h"
 
 //#include <qmime.h>
