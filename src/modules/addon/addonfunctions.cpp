@@ -38,8 +38,6 @@
 #include <q3mimefactory.h>
 #define KviTalMimeSourceFactory Q3MimeSourceFactory
 
-#define KVI_CURRENT_ADDONS_ENGINE_VERSION "1.0.0"
-
 namespace KviAddonFunctions
 {
 	static bool notAValidAddonPackage(QString &szError)

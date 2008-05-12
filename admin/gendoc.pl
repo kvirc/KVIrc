@@ -1230,10 +1230,10 @@ sub generate_indexes
 # Force flusing of STDOUT
 $|=1;
 
-print "*\n";
-print "* Generating documentation, this may take a while :)\n";
-print "*\n";
-print "* Extracting keyterms\n";
+print "--\n";
+print "-- Generating documentation, this may take a while :)\n";
+print "--\n";
+print "-- Extracting keyterms\n";
 # Extract the keywords to generate the crossreferences
 $i = 0;
 
@@ -1247,7 +1247,7 @@ while($g_filesToProcess[$i] ne "")
 $g_files=$i - 1;
 
 print "\n";
-print "* Extracting documents and generating crossreferences\n";
+print "-- Extracting documents and generating crossreferences\n";
 
 # Sort them
 @g_keytermsSorted = sort {length($b) <=> length($a)} keys(%g_keyterms);
@@ -1263,7 +1263,7 @@ while($g_filesToProcess[$i] ne "")
 }
 
 print "\n";
-print "* Generating indexes\n";
+print "-- Generating indexes\n";
 
 print ".";
 generate_indexes("Commands","command",0);
@@ -1345,6 +1345,6 @@ if(open(NOHELP,">$g_directory/nohelpavailable$g_fileextension"))
 }
 
 print "\n";
-print "*\n";
-print "* Done! (Processed $g_files files)\n";
-print "*\n";
+print "--\n";
+print "-- Done! (Processed $g_files files)\n";
+print "--\n";

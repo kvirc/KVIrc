@@ -123,7 +123,6 @@ KviPackageIOEngine::~KviPackageIOEngine()
 	delete m_pBinaryInfoFields;
 }
 
-
 bool KviPackageIOEngine::updateProgress(int iProgress,const QString &szLabel)
 {
 	if(!m_pProgressDialog)return true;
@@ -672,7 +671,6 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &szLocal
 
 	return true;
 }
-
 
 bool KviPackageReader::readHeader(const QString &szLocalFileName)
 {

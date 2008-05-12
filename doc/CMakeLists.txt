@@ -18,7 +18,7 @@ SET(howto
 
 # User documentation
 IF(PERL_FOUND)
-	INSTALL(CODE "MESSAGE(\"Generating user documentation..\")")
+	INSTALL(CODE "MESSAGE(\"-- Generating user documentation..\")")
 	IF(UNIX)
 		IF(APPLE)
 			INSTALL(CODE "EXEC_PROGRAM(perl ARGS ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '${CMAKE_INSTALL_PREFIX}/Contents/Resources/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print` )")

@@ -28,13 +28,14 @@
 #include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_qcstring.h" // QByteArray anyway
-#include <QObject>
 #include "kvi_pointerlist.h"
 
-class KviFile;
+#include <QObject>
+
 class QProgressDialog;
 class QLabel;
 class QFileInfo;
+class KviFile;
 
 //
 // This class is used for creating KVIrc package files.

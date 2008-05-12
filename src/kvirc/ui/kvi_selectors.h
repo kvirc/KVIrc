@@ -199,7 +199,6 @@ public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
 	void setSelection(const QString &szSelection);
-	QString text();
 signals:
 	void selectionChanged(const QString &szNewValue);
 private slots:
@@ -214,7 +213,6 @@ class KVIRC_API KviDirectorySelector : public KviFileSelector
 public:
 	KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
 	~KviDirectorySelector(){};
-	QString text();
 protected:
 	virtual void select();
 };

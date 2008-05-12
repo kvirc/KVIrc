@@ -45,10 +45,11 @@ class KviPackAddonDialog : public KviTalWizard
 public:
 	KviPackAddonDialog(QWidget * pParent);
 	~KviPackAddonDialog(){};
-	KviPackAddonCreateInfoPackageWidget * m_pPackAddonInfoCreateWidget ;
-	KviPackAddonFileSelectionWidget * m_pPackAddonFileSelectionWidget;
-	KviPackAddonInfoWidget *m_pPackAddonInfoWidget ;
+	KviPackAddonCreateInfoPackageWidget * m_pPackAddonInfoCreateWidget;
+	KviPackAddonFileSelectionWidget     * m_pPackAddonFileSelectionWidget;
+	KviPackAddonInfoWidget              * m_pPackAddonInfoWidget;
 protected:
+	KviFileSelector * m_pSavePathSelector;
 	QString           m_szPackagePath;
 protected:
 	virtual void accept();
@@ -82,16 +83,18 @@ public:
 	QString imagePath(){m_pImagePathSelector->commit();return szImagePath;};
 	QString helpPath(){m_pHelpPathSelector->commit();return szHelpPath;};
 	QString soundPath(){m_pSoundPathSelector->commit();return szSoundPath;};
+	QString installerPath(){m_pInstallPathSelector->commit();return szInstallPath;};
 protected:
 	KviDirectorySelector * m_pSourcePathSelector;
 	KviDirectorySelector * m_pImagePathSelector;
 	KviDirectorySelector * m_pHelpPathSelector;
 	KviDirectorySelector * m_pSoundPathSelector;
-	QString szSourcePath;//(){return m_pSourcePath->text();};
-	QString szImagePath;//(){return m_pImagePath->text();};
-	QString szHelpPath;//(){return m_pHelpPath->text();};
-	QString szSoundPath;//(){return m_pSoundPath->text();};
-
+	KviFileSelector      * m_pInstallPathSelector;
+	QString szSourcePath;
+	QString szImagePath;
+	QString szHelpPath;
+	QString szSoundPath;
+	QString szInstallPath;
 };
 
 class KviPackAddonInfoWidget : public QWidget

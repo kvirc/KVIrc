@@ -262,7 +262,7 @@ void KviPixmapSelector::commit()
 void KviPixmapSelector::choosePixmap()
 {
 //	KviStr tmp;
- 	QString tmp;
+	QString tmp;
 	if(KviFileDialog::askForOpenFileName(tmp,__tr("Choose an Image File - KVIrc")))
 	{
 		setImagePath(tmp);
@@ -363,10 +363,6 @@ void KviFileSelector::select()
 	}
 }
 
-QString KviFileSelector::text()
-{
-	return m_pLineEdit->text();
-}
 
 KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
 : KviFileSelector(par,txt,pOption,bEnabled)
@@ -380,11 +376,6 @@ void KviDirectorySelector::select()
 	{
 		m_pLineEdit->setText(tmp);
 	}
-}
-
-QString KviDirectorySelector::text()
-{
-	return m_pLineEdit->text();
 }
 
 

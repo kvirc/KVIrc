@@ -687,7 +687,7 @@ KVIRC_MODULE(
 	"4.0.0",                                                        // module version
 	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n" \
 	"              2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-	"Script management functions for the KVS engine",
+	"Script/addon management functions for the KVS engine",
 	addon_module_init,
 	addon_module_can_unload,
 	0,
