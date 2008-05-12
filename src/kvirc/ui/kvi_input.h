@@ -222,7 +222,7 @@ public:
 	KviWindow       * m_pWindow;
 	KviInputEditor  * m_pInputEditor;
 	KviScriptEditor * m_pMultiLineEditor;
-	KviTalHBox		* m_pButtonContainer;
+	KviTalHBox	* m_pButtonContainer;
 	QToolButton     * m_pMultiEditorButton;
 	QToolButton     * m_pHistoryButton;
 	QToolButton     * m_pIconButton;

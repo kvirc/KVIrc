@@ -66,7 +66,6 @@
 #include <QMessageBox>
 #include <QLayout>
 #include <QStyle>
-//#include <qevent.h>
 #include <QEvent>
 #include <QMouseEvent>
 #include <QUrl>
@@ -77,22 +76,6 @@
 #ifndef ACCEL_KEY
 #define ACCEL_KEY(k) "\t" + QString(QKeySequence( Qt::CTRL | Qt::Key_ ## k ))
 #endif
-
-/* FIXME: #warning "This hack is temporary...later remove it"
-#if QT_VERSION >= 300
-	#ifndef QT_CLEAN_NAMESPACE
-		#define QT_CLEAN_NAMESPACE
-		#include <qcursor.h>
-		#undef QT_CLEAN_NAMESPACE
-	#else
-		#include <qcursor.h>
-	#endif
-#else
-	#include <qcursor.h>
-#endif
-*/
-
-
 
 //This comes from kvi_app.cpp
 extern KviColorWindow    * g_pColorWindow;
@@ -2274,8 +2257,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 
 	m_pButtonContainer=new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
+	m_pButtonContainer->setMargin(0);
 
-	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Preferred));
+	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
 	//if(m_pButtonContainer->layout())
 	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
@@ -2478,9 +2462,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	} else {
 		if(!bOn)return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
-		QString szText = __tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor");
-		// compatibility entry to avoid breaking translation just before a release... :)
-		szText.replace("Alt+Backspace","Ctrl+Backspace");
+		QString szText = __tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor");
 		m_pMultiLineEditor->setFindText(szText);
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
