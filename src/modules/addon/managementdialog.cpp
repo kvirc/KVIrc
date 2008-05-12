@@ -115,6 +115,12 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	QToolTip::add(m_pHelpButton,__tr2qs_ctx("Show Help","addon"));
 	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
 
+	m_pUninstallButton = new QToolButton(hb);
+	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
+	m_pUninstallButton->setIconSize(QSize(32,32));
+	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
+	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
+
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
@@ -124,12 +130,6 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pPackButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pPackButton,__tr2qs_ctx("Create an Addon as a Distributable Package","addon"));
 	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
-
-	m_pUninstallButton = new QToolButton(hb);
-	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
-	m_pUninstallButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
-	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);

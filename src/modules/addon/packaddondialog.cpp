@@ -105,6 +105,14 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	setNextEnabled(m_pPackAddonFileSelectionWidget,true);
 	setFinishEnabled(m_pPackAddonFileSelectionWidget,false);
 
+	// Save selection
+	m_pPackAddonSaveSelectionWidget = new KviPackAddonSaveSelectionWidget(this);
+	addPage(m_pPackAddonSaveSelectionWidget,__tr2qs_ctx("Save Package","addon"));
+	setBackEnabled(m_pPackAddonFileSelectionWidget,true);
+	setHelpEnabled(m_pPackAddonFileSelectionWidget,false);
+	setNextEnabled(m_pPackAddonFileSelectionWidget,true);
+	setFinishEnabled(m_pPackAddonFileSelectionWidget,false);
+
 	// Final results
 	m_pPackAddonInfoWidget=new KviPackAddonInfoWidget(this);
 	addPage(m_pPackAddonInfoWidget,__tr2qs_ctx("Package Path","addon"));
@@ -132,6 +140,7 @@ bool KviPackAddonDialog::packAddon()
 	QString szHelpPath = m_pPackAddonFileSelectionWidget->helpPath();
 	QString szSoundPath = m_pPackAddonFileSelectionWidget->soundPath();
 	QString szInstallPath = m_pPackAddonFileSelectionWidget->installerPath();
+	QString szPackagePath = m_pPackAddonSaveSelectionWidget->savePath();
 
 	// We need mandatory unix like path separator
 	szSourcePath.replace('\\',"/");
@@ -139,6 +148,7 @@ bool KviPackAddonDialog::packAddon()
 	szHelpPath.replace('\\',"/");
 	szSoundPath.replace('\\',"/");
 	szInstallPath.replace('\\',"/");
+	szPackagePath.replace('\\',"/");
 
 	QString szTmp = QDateTime::currentDateTime().toString();
 
@@ -197,26 +207,19 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
 
-	// Create addon name
-	m_szPackagePath = QDir::homeDirPath();
-	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
-	m_szPackagePath += szPackageName;
-	m_szPackagePath += "-";
-	m_szPackagePath += szPackageVersion;
-	m_szPackagePath += ".";
-	m_szPackagePath += KVI_FILEEXTENSION_ADDONPACKAGE;
-	qDebug("Addon name: %s",m_szPackagePath.toUtf8().data());
-
-	/* FIXME: this now saves only in home directory
-	// Select save path
-	const QString szSaveFile = __tr2qs_ctx("Select installer script:","addon");
-	m_pSavePathSelector = new KviFileSelector(this,szSaveFile,&m_szPackagePath,true,1);
-	//pLayout->addWidget(m_pSavePathSelector,1,0);
-	m_pSavePathSelector->show();
-	m_pSavePathSelector->commit();
-	*/
 	// Create the addon package
-	if(!pw.pack(m_szPackagePath))
+	if(szPackagePath.isEmpty())
+	{
+		szPackagePath = QDir::homeDirPath();
+		KviQString::ensureLastCharIs(szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+		szPackagePath += szPackageName;
+		szPackagePath += "-";
+		szPackagePath += szPackageVersion;
+		szPackagePath += ".";
+		szPackagePath += KVI_FILEEXTENSION_ADDONPACKAGE;
+	}
+
+	if(!pw.pack(szPackagePath))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
@@ -228,42 +231,6 @@ bool KviPackAddonDialog::packAddon()
 	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved succesfully"),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;
-}
-
-KviPackAddonInfoWidget::KviPackAddonInfoWidget(KviPackAddonDialog *pParent)
-:QWidget(pParent)
-{
-	m_pParent=pParent;
-	QGridLayout *pLayout = new QGridLayout(this);
-
-	QLabel *pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Here there are the informations you provided. If they are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
-	pLabel->setWordWrap(true);
-	pLayout->addWidget(pLabel,0,0);
-
-	m_pLabelInfo = new QLabel(this);
-	pLayout->addWidget(m_pLabelInfo,1,0);
-}
-
-void KviPackAddonInfoWidget::showEvent(QShowEvent *)
-{
-	KviPackAddonCreateInfoPackageWidget * pCreateWidget=m_pParent->m_pPackAddonInfoCreateWidget;
-	KviPackAddonFileSelectionWidget * pFileWidget = m_pParent->m_pPackAddonFileSelectionWidget;
-
-	QString szText = __tr2qs_ctx("Package Author:","addon") + " " + pCreateWidget->authorName() + "<br>";
-	szText += __tr2qs_ctx("Package Name:","addon") + " " + pCreateWidget->packageName() + "<br>";
-	szText += __tr2qs_ctx("Package Version:","addon") + " " + pCreateWidget->packageVersion() + "<br>";
-	szText += __tr2qs_ctx("Package Description:","addon") + " " + pCreateWidget->packageDescription() + "<br>";
-	szText += __tr2qs_ctx("Installer Script:","addon") + " " + pFileWidget->installerPath() + "<br>";
-	szText += __tr2qs_ctx("Source Directory:","addon") + " " + pFileWidget->sourcePath() + "<br>";
-	szText += __tr2qs_ctx("Image Directory:","addon") + " " + pFileWidget->imagePath() + "<br>";
-	szText += __tr2qs_ctx("Help Directory:","addon") + " " + pFileWidget->helpPath() + "<br>";
-	szText += __tr2qs_ctx("Sound Directory:","addon") + " " + pFileWidget->soundPath();
-	m_pLabelInfo->setText(szText);
-}
-
-KviPackAddonInfoWidget::~KviPackAddonInfoWidget()
-{
 }
 
 KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent)
@@ -317,10 +284,6 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLayout->setRowStretch(1,1);
 }
 
-KviPackAddonCreateInfoPackageWidget::~KviPackAddonCreateInfoPackageWidget()
-{
-}
-
 KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent)
 : QWidget(pParent)
 {
@@ -331,32 +294,86 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	pLayout->addWidget(pLabel,0,0);
 
 	// Select installer script
-	const QString szInstallFile = __tr2qs_ctx("Select installer script:","addon");
-	const QString szFilter = "*.kvs";
-	m_pInstallPathSelector = new KviFileSelector(this,szInstallFile,&szInstallPath,true,0,szFilter);
+	m_pInstallPathSelector = new KviFileSelector(this,__tr2qs_ctx("Select installer script:","addon"),&szInstallPath,true,0,"*.kvs");
 	pLayout->addWidget(m_pInstallPathSelector,1,0);
 	
 	// Select script dir
-	const QString szScriptDir = __tr2qs_ctx("Select scripts directory:","addon");
-	m_pSourcePathSelector = new KviDirectorySelector(this,szScriptDir,&szSourcePath,true);
+	m_pSourcePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select scripts directory:","addon"),&szSourcePath,true);
 	pLayout->addWidget(m_pSourcePathSelector,2,0);
 
 	// Select image dir
-	const QString szImageDir = __tr2qs_ctx("Select images directory:","addon");
-	m_pImagePathSelector = new KviDirectorySelector(this,szImageDir,&szImagePath,true);
+	m_pImagePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select images directory:","addon"),&szImagePath,true);
 	pLayout->addWidget(m_pImagePathSelector,3,0);
 
 	// Select help dir
-	const QString szHelpDir = __tr2qs_ctx("Select help directory:","addon");
-	m_pHelpPathSelector = new KviDirectorySelector(this,szHelpDir,&szHelpPath,true);
+	m_pHelpPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select help directory:","addon"),&szHelpPath,true);
 	pLayout->addWidget(m_pHelpPathSelector,4,0);
 
 	// Select sound dir
-	const QString szSoundDir = __tr2qs_ctx("Select sounds directory:","addon");
-	m_pSoundPathSelector = new KviDirectorySelector(this,szSoundDir,&szSoundPath,true);
+	m_pSoundPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select sounds directory:","addon"),&szSoundPath,true);
 	pLayout->addWidget(m_pSoundPathSelector,5,0);
 }
 
-KviPackAddonFileSelectionWidget::~KviPackAddonFileSelectionWidget()
+KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDialog *pParent)
+: QWidget(pParent)
 {
+	QGridLayout * pLayout = new QGridLayout(this);
+
+	QLabel * pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Here you need to provide the path where to save the addon package","addon"));
+	pLayout->addWidget(pLabel,0,0);
+
+	// Create addon name
+	KviPackAddonCreateInfoPackageWidget * pCreateWidget=pParent->m_pPackAddonInfoCreateWidget;
+
+	szSavePath = QDir::homeDirPath();
+	KviQString::ensureLastCharIs(szSavePath,QChar(KVI_PATH_SEPARATOR_CHAR));
+	szSavePath += pCreateWidget->packageName();
+	szSavePath += "-";
+	szSavePath += pCreateWidget->packageVersion();
+	szSavePath += ".";
+	szSavePath += KVI_FILEEXTENSION_ADDONPACKAGE;
+	qDebug("Addon name: %s",szSavePath.toUtf8().data());
+
+	// Setting dialog filter
+	QString szFilter = "*.";
+	szFilter += KVI_FILEEXTENSION_ADDONPACKAGE;
+
+	// Select save path
+	m_pSavePathSelector = new KviFileSelector(this,__tr2qs_ctx("Select save path:","addon"),&szSavePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
+	pLayout->addWidget(m_pSavePathSelector,1,0);
+}
+
+KviPackAddonInfoWidget::KviPackAddonInfoWidget(KviPackAddonDialog *pParent)
+:QWidget(pParent)
+{
+	m_pParent=pParent;
+	QGridLayout *pLayout = new QGridLayout(this);
+
+	QLabel *pLabel = new QLabel(this);
+	pLabel->setText(__tr2qs_ctx("Here there are the informations you provided. If they are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
+	pLabel->setWordWrap(true);
+	pLayout->addWidget(pLabel,0,0);
+
+	m_pLabelInfo = new QLabel(this);
+	pLayout->addWidget(m_pLabelInfo,1,0);
+}
+
+void KviPackAddonInfoWidget::showEvent(QShowEvent *)
+{
+	KviPackAddonCreateInfoPackageWidget * pCreateWidget=m_pParent->m_pPackAddonInfoCreateWidget;
+	KviPackAddonFileSelectionWidget * pFileWidget = m_pParent->m_pPackAddonFileSelectionWidget;
+	KviPackAddonSaveSelectionWidget * pSaveWidget = m_pParent->m_pPackAddonSaveSelectionWidget;
+
+	QString szText = "<b>" + __tr2qs_ctx("Package Author","addon") + ":</b> " + pCreateWidget->authorName() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Package Name","addon") + ":</b> " + pCreateWidget->packageName() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Package Version","addon") + ":</b> " + pCreateWidget->packageVersion() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Package Description","addon") + ":</b> " + pCreateWidget->packageDescription() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Installer Script","addon") + ":</b> " + pFileWidget->installerPath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Source Directory","addon") + ":</b> " + pFileWidget->sourcePath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Image Directory","addon") + ":</b> " + pFileWidget->imagePath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Help Directory","addon") + ":</b> " + pFileWidget->helpPath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Sound Directory","addon") + ":</b> " + pFileWidget->soundPath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Save Path","addon") + ":</b> " + pSaveWidget->savePath();
+	m_pLabelInfo->setText(szText);
 }

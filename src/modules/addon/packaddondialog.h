@@ -37,6 +37,7 @@
 
 class KviPackAddonCreateInfoPackageWidget;
 class KviPackAddonFileSelectionWidget;
+class KviPackAddonSaveSelectionWidget;
 class KviPackAddonInfoWidget;
 
 class KviPackAddonDialog : public KviTalWizard
@@ -47,10 +48,10 @@ public:
 	~KviPackAddonDialog(){};
 	KviPackAddonCreateInfoPackageWidget * m_pPackAddonInfoCreateWidget;
 	KviPackAddonFileSelectionWidget     * m_pPackAddonFileSelectionWidget;
+	KviPackAddonSaveSelectionWidget     * m_pPackAddonSaveSelectionWidget;
 	KviPackAddonInfoWidget              * m_pPackAddonInfoWidget;
 protected:
-	KviFileSelector * m_pSavePathSelector;
-	QString           m_szPackagePath;
+	QString m_szPackagePath;
 protected:
 	virtual void accept();
 	bool packAddon();
@@ -61,7 +62,7 @@ class KviPackAddonCreateInfoPackageWidget : public QWidget
 	Q_OBJECT
 public:
 	KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent);
-	~KviPackAddonCreateInfoPackageWidget();
+	~KviPackAddonCreateInfoPackageWidget(){};
 	QString authorName(){return m_pAuthorNameEdit->text();};
 	QString packageName(){return m_pPackageNameEdit->text();};
 	QString packageVersion(){return m_pPackageVersionEdit->text();};
@@ -78,7 +79,7 @@ class KviPackAddonFileSelectionWidget : public QWidget
 	Q_OBJECT
 public:
 	KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent);
-	~KviPackAddonFileSelectionWidget();
+	~KviPackAddonFileSelectionWidget(){};
 	QString sourcePath(){m_pSourcePathSelector->commit();return szSourcePath;};
 	QString imagePath(){m_pImagePathSelector->commit();return szImagePath;};
 	QString helpPath(){m_pHelpPathSelector->commit();return szHelpPath;};
@@ -97,11 +98,23 @@ protected:
 	QString szInstallPath;
 };
 
+class KviPackAddonSaveSelectionWidget : public QWidget
+{
+	Q_OBJECT
+public:
+	KviPackAddonSaveSelectionWidget(KviPackAddonDialog *pParent);
+	~KviPackAddonSaveSelectionWidget(){};
+	QString savePath(){m_pSavePathSelector->commit();return szSavePath;};
+protected:
+	KviFileSelector * m_pSavePathSelector;
+	QString szSavePath;
+};
+
 class KviPackAddonInfoWidget : public QWidget
 {
 public:
 	KviPackAddonInfoWidget(KviPackAddonDialog *);
-	~KviPackAddonInfoWidget();
+	~KviPackAddonInfoWidget(){};
 protected:
 	KviPackAddonDialog * m_pParent;
 	QLabel * m_pLabelInfo;
