@@ -385,7 +385,7 @@ bool KviPackThemeDialog::packTheme()
 	QString szTmp = QDateTime::currentDateTime().toString();
 
 	f.addInfoField("PackageType","ThemePack");
-	f.addInfoField("ThemePackVersion","1");
+	f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
 	f.addInfoField("Name",szPackageName);
 	f.addInfoField("Version",szPackageVersion);
 	f.addInfoField("Author",szPackageAuthor);
