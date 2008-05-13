@@ -1,7 +1,13 @@
 # Template rules for modules
+IF(APPEND_VER_TO_BINARIES)
+	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
+ELSE()
+	SET(KVILIB_BINARYNAME kvilib)
+ENDIF()
+
 IF(UNIX)
 	ADD_LIBRARY(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
-	TARGET_LINK_LIBRARIES(${kvi_module_name} kvilib ${LIBS})
+	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 
 	IF(APPLE)
 		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} INSTALL_NAME_DIR @executable_path/../Frameworks)
@@ -13,7 +19,7 @@ IF(UNIX)
 	ENDIF()
 ELSEIF(WIN32)
 	#ADD_LIBRARY(${kvi_module_name} ???)
-	TARGET_LINK_LIBRARIES(${kvi_module_name} kvilib ${LIBS})
+	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 	SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR})
 	#INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/)
 ENDIF()

@@ -110,6 +110,20 @@ ENDIF()
 
 ###############################################################################
 #
+# Version compatibility switch: appends VERSION_MAJOR to kvirc and kvilib
+#
+###############################################################################
+
+OPTION(APPEND_VER_TO_BINARIES "Append version to binaries to maintain compatibility with older versions" OFF)
+IF(COEXISTENCE_VER)
+	SET(APPEND_VER_TO_BINARIES ON)
+	SET(CMAKE_STATUS_COEXISTENCE_VER "yes")
+ELSE()
+	SET(CMAKE_STATUS_COEXISTENCE_VER "no")
+ENDIF()
+
+###############################################################################
+#
 # System checks
 #
 ###############################################################################
@@ -697,6 +711,7 @@ IF(${CONFIG_IS_UPTODATE})
 ENDIF()
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
+MESSAGE(STATUS "  Coexistence support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
 MESSAGE(STATUS "  Threading                   : ${CMAKE_STATUS_THREADS_SUPPORT}")
 MESSAGE(STATUS "  X11 support                 : ${CMAKE_STATUS_X11_SUPPORT}")
 #MESSAGE(STATUS "  PCH support                : ${CMAKE_STATUS_PCH_SUPPORT}")

@@ -92,6 +92,10 @@ General notes for the installation of the 4.0 release of KVIrc
         It will install libkvilib under /path directory. It defaults to
         ${CMAKE_INSTALL_PREFIX}/lib.
 
+    -DCOEXISTENCE_VER
+        Append version information to kvirc and libkvilib, so that different
+        kvirc versions can cohexist in the same system.
+
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
         Compile universal binary for MacOS X platform
 
