@@ -14,9 +14,10 @@ PROJECT(kvirc)
 # Minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
 
-if(COMMAND cmake_policy)
-      cmake_policy(SET CMP0003 OLD)
-    endif(COMMAND cmake_policy)
+# Compat for cmake 2.6
+IF(COMMAND cmake_policy)
+	CMAKE_POLICY(SET CMP0003 OLD)
+ENDIF()
 
 # Set conventional loops
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
