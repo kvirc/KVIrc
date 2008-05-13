@@ -302,7 +302,7 @@ void register_core_actions(KviActionManager * m)
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
 		"codetester.open",
-		__tr2qs("New Script Tester"),
+		__tr2qs("Script Tester"),
 		__tr2qs("Creates an embedded editor for long scripts"),
 		KviActionManager::categoryScripting(),
 		"kvi_bigicon_codetester.png",

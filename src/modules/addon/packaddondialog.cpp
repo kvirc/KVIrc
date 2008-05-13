@@ -201,7 +201,7 @@ bool KviPackAddonDialog::packAddon()
 	// Add installer script
 	if(!pw.addFile(szInstallPath,"install.kvs"))
 	{
-		szTmp = __tr2qs_ctx("Packagin failed","addon");
+		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
 		szTmp += pw.lastError();
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
@@ -217,6 +217,7 @@ bool KviPackAddonDialog::packAddon()
 		szPackagePath += szPackageVersion;
 		szPackagePath += ".";
 		szPackagePath += KVI_FILEEXTENSION_ADDONPACKAGE;
+		qDebug("Addon name used: %s",szPackagePath.toUtf8().data());
 	}
 
 	if(!pw.pack(szPackagePath))
@@ -228,7 +229,7 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	}
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved succesfully"),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved succesfully in ") + szPackagePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;
 }
@@ -333,7 +334,7 @@ KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDia
 	szSavePath += pCreateWidget->packageVersion();
 	szSavePath += ".";
 	szSavePath += KVI_FILEEXTENSION_ADDONPACKAGE;
-	qDebug("Addon name: %s",szSavePath.toUtf8().data());
+	qDebug("Addon name selected: %s",szSavePath.toUtf8().data());
 
 	// Setting dialog filter
 	QString szFilter = "*.";
