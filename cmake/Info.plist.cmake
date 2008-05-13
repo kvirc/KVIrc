@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleExecutable</key>
-	<string>${KVIRC_BINARYNAME}</string>
+	<string>@KVIRC_BINARYNAME@</string>
 	<key>CFBundleIconFile</key>
 	<string>kvirc.icns</string>
 	<key>CFBundleIdentifier</key>
@@ -31,7 +31,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>>${VERSION_RELEASE}</string>
+	<string>>@VERSION_RELEASE@</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>NSAppleScriptEnabled</key>
