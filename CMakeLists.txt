@@ -11,6 +11,9 @@
 # Name of the project
 PROJECT(kvirc)
 
+# Set conventional loops
+SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+
 # Minimum cmake version
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
 
@@ -18,9 +21,6 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
 IF(COMMAND cmake_policy)
 	CMAKE_POLICY(SET CMP0003 OLD)
 ENDIF()
-
-# Set conventional loops
-SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
