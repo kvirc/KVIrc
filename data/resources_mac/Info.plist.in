@@ -25,6 +25,7 @@
                 <string>pt_BR</string>
                 <string>ru</string>
 		<string>sr</string>
+		<string>uk</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>KVirc</string>
