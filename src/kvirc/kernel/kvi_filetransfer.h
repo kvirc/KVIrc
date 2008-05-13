@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
-#include "kvi_tal_treewidget.h"
+#include "kvi_tal_listview.h"
 
 #include <QObject>
 
@@ -83,10 +83,10 @@ public:
 	~KviFileTransfer();
 protected:
 	int              m_iId;
-	KviTalTreeWidgetItem  * m_pDisplayItem;
+	KviTalListViewItem  * m_pDisplayItem;
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(KviTalTreeWidgetItem * i){ m_pDisplayItem = i; };
+	void setDisplayItem(KviTalListViewItem * i){ m_pDisplayItem = i; };
 	int id(){ return m_iId; };
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();

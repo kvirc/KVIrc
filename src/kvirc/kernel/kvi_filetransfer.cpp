@@ -28,7 +28,7 @@
 
 #include "kvi_app.h"
 
-#include "kvi_tal_treewidget.h"
+#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
 static KviFileTransferManager * g_pFileTransferManager = 0;
@@ -186,5 +186,5 @@ int KviFileTransfer::displayHeight(int iLineSpacing)
 
 void KviFileTransfer::displayUpdate()
 {
-	//if(m_pDisplayItem)m_pDisplayItem->repaint();
+	if(m_pDisplayItem)m_pDisplayItem->repaint();
 }
