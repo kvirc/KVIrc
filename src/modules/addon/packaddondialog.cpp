@@ -62,7 +62,7 @@
 KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 : KviTalWizard(pParent)
 {
-	setWindowTitle(__tr2qs_ctx("Export Addon - KVIrc","addon"));
+	setWindowTitle(__tr2qs_ctx("Create Addon Package - KVIrc","addon"));
 	setMinimumSize(400,350);
 
 	// Welcome page
@@ -115,7 +115,7 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 
 	// Final results
 	m_pPackAddonInfoWidget=new KviPackAddonInfoWidget(this);
-	addPage(m_pPackAddonInfoWidget,__tr2qs_ctx("Package Path","addon"));
+	addPage(m_pPackAddonInfoWidget,__tr2qs_ctx("Final Informations","addon"));
 	setBackEnabled(m_pPackAddonInfoWidget,true);
 	setHelpEnabled(m_pPackAddonInfoWidget,false);
 	setNextEnabled(m_pPackAddonInfoWidget,false);
@@ -210,7 +210,7 @@ bool KviPackAddonDialog::packAddon()
 	// Create the addon package
 	if(szPackagePath.isEmpty())
 	{
-		szPackagePath = QDir::homeDirPath();
+		szPackagePath = QDir::homePath();
 		KviQString::ensureLastCharIs(szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
 		szPackagePath += szPackageName;
 		szPackagePath += "-";
@@ -327,7 +327,7 @@ KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDia
 	// Create addon name
 	KviPackAddonCreateInfoPackageWidget * pCreateWidget=pParent->m_pPackAddonInfoCreateWidget;
 
-	szSavePath = QDir::homeDirPath();
+	szSavePath = QDir::homePath();
 	KviQString::ensureLastCharIs(szSavePath,QChar(KVI_PATH_SEPARATOR_CHAR));
 	szSavePath += pCreateWidget->packageName();
 	szSavePath += "-";
