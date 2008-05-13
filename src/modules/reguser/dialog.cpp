@@ -176,7 +176,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	m_pListView->setAllColumnsShowFocus(true);
 
-	m_pListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	m_pListView->setSelectionMode(Q3ListView::Extended);
 	m_pListView->setRootIsDecorated(TRUE);
 
 	QToolTip::add(m_pListView,__tr2qs("<center>This is the list of registered users. " \

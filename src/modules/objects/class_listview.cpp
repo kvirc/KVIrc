@@ -38,11 +38,6 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QUrl>
-#include <QTreeWidget>
-
-#define KviTalListView QTreeWidget
-
-
 
 /*
 	@doc: listview
@@ -185,7 +180,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listview,"listview","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"setRootIsDecorated",function_setRootIsDecorated)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"setAllColumnsShowFocus",function_setAllColumnsShowFocus)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"clear",function_clear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"selectedItems",function_selectedItems)
+	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"selectedItem",function_selectedItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"currentItem",function_currentItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"setSelectionMode",function_setSelectionMode)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"listViewHeaderIsVisible",function_listViewHeaderIsVisible)
@@ -193,7 +188,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listview,"listview","widget")
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"hideListViewHeader",function_hideListViewHeader)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"showListViewHeader",function_showListViewHeader)
-//	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"firstChild",function_firstChild)
+	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"firstChild",function_firstChild)
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"selectionChangedEvent",function_selectionChangedEvent);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"currentChangedEvent",function_currentChangedEvent);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listview,"returnPressedEvent",function_returnPressedEvent);
@@ -243,12 +238,8 @@ bool KviKvsObject_listview::function_addColumn(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 		KVSO_PARAMETER("width",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
-	int col=((KviTalListView *)widget())->columnCount();
-	col++;
-	((KviTalListView *)widget())->setColumnCount(col);
-	QTreeWidgetItem *item = ((KviTalListView *)widget())->headerItem();
-	item->setText(col-1,szLabel);
-	if (iW>0) ((KviTalListView *)widget())->setColumnWidth(col-1,iW);
+	if (widget())
+		((KviTalListView *)object())->addColumn(szLabel,iW);
     return true;
 }
 /*
@@ -270,19 +261,15 @@ bool KviKvsObject_listview::function_clear(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_listview::function_selectedItems(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_listview::function_selectedItem(KviKvsObjectFunctionCall *c)
 {
-	KviKvsArray * a = new KviKvsArray();
-	QList<QTreeWidgetItem *> selectedItems=((KviTalListView *)widget())->selectedItems();
-	if (!selectedItems.count()) return true;
-	for (int i=0;i<selectedItems.count();i++)
-	{
-			a->set(i,new KviKvsVariant(KviKvsObject_listviewitem::itemToHandle((KviTalListViewItem *)selectedItems.at(i))));
-	}
-	c->returnValue()->setArray(a);
+	if(widget())
+		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((KviTalListView *)widget())->selectedItem()));
+	else
+		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
-/*
+
 bool KviKvsObject_listview::function_firstChild(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
@@ -291,12 +278,11 @@ bool KviKvsObject_listview::function_firstChild(KviKvsObjectFunctionCall *c)
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
-*/
+
 bool KviKvsObject_listview::function_currentItem(KviKvsObjectFunctionCall *c)
 {
-	if(widget()){
-		KviTalListViewItem *
-		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle((KviTalListViewItem *)((KviTalListView *)widget())->currentItem()));
+	if(widget())
+		c->returnValue()->setHObject(KviKvsObject_listviewitem::itemToHandle(((KviTalListView *)widget())->currentItem()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -326,7 +312,7 @@ bool KviKvsObject_listview::function_setSelectionMode(KviKvsObjectFunctionCall *
 	else if(KviQString::equalCI(szMode,"Multi"))
 		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Multi);
 	else if(KviQString::equalCI(szMode,"Extended"))
-		((KviTalListView *)widget())->setSelectionMode(QAbstractItemView::ExtendedSelection);
+		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Extended);
 	else if(KviQString::equalCI(szMode,"Single"))
 		((KviTalListView *)widget())->setSelectionMode(KviTalListView::Single);
 	else c->warning(__tr2qs("Invalid selection mode '%Q'"),&szMode);
