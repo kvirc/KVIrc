@@ -74,11 +74,11 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setWindowTitle(szCaption);
 	setText(szText);
 	setIcon(QMessageBox::NoIcon);
-	QMessageBox::StandardButton buttons;
-	if (!szButton0.isEmpty())  buttons=QMessageBox::StandardButton::Ok | QMessageBox::StandardButton::Default;
-	if (!szButton2.isEmpty()) buttons|=QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Escape;
+	QMessageBox::StandardButtons buttons;
+	if (!szButton0.isEmpty())  buttons=QMessageBox::Ok | QMessageBox::Default;
+	if (!szButton2.isEmpty()) buttons|=QMessageBox::Cancel | QMessageBox::Escape;
 	else if(!szButton1.isEmpty()) buttons|=QMessageBox::No | QMessageBox::Escape;
-	setStandardButtons(buttons)
+	setStandardButtons(buttons);
 	g_pDialogModuleDialogList->append(this);
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
