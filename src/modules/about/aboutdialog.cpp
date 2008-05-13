@@ -90,7 +90,9 @@ KviAboutDialog::KviAboutDialog()
 
 	QLabel * l = new QLabel(w);
 	l->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-	l->setBackgroundColor(Qt::black);
+	QPalette p = l->palette(); 
+	p.setColor(backgroundRole(), Qt::black); 
+	l->setPalette(p); 
 	l->setAlignment(Qt::AlignCenter);
 	l->setPixmap(pix);
 

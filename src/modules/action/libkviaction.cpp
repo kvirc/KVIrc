@@ -396,10 +396,10 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	c->switches()->getAsStringIfExisting('w',"window-types",szWindows);
 	if(!szWindows.isEmpty())
 	{
-		if(szWindows.find('c') != -1)iFlags |= KviAction::WindowChannel;
-		if(szWindows.find('x') != -1)iFlags |= KviAction::WindowConsole;
-		if(szWindows.find('d') != -1)iFlags |= KviAction::WindowDccChat;
-		if(szWindows.find('q') != -1)iFlags |= KviAction::WindowQuery;
+		if(szWindows.indexOf('c',Qt::CaseInsensitive) != -1)iFlags |= KviAction::WindowChannel;
+		if(szWindows.indexOf('x',Qt::CaseInsensitive) != -1)iFlags |= KviAction::WindowConsole;
+		if(szWindows.indexOf('d',Qt::CaseInsensitive) != -1)iFlags |= KviAction::WindowDccChat;
+		if(szWindows.indexOf('q',Qt::CaseInsensitive) != -1)iFlags |= KviAction::WindowQuery;
 	}
 	if(c->switches()->find('s',"enable-on-selected"))
 	{

@@ -34,7 +34,7 @@
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_scrollview.h"
 #include "kvi_tal_listbox.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QCheckBox>
 #include <QLineEdit>
@@ -326,13 +326,13 @@ public:
 	virtual void setEnabled(bool bEnabled);
 };
 
-class KVIRC_API KviChanListViewItem : public KviTalListViewItem
+class KVIRC_API KviChanTreeViewItem : public KviTalTreeWidgetItem
 {
 private:
 	QString m_szPass;
 public:
-	KviChanListViewItem(KviTalListView* pList,QString szChan,QString szPass);
-	~KviChanListViewItem() {};
+	KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass);
+	~KviChanTreeViewItem() {};
 	
 	const QString& pass() { return m_szPass; }
 };
@@ -345,7 +345,7 @@ public:
 	~KviCahnnelListSelector();
 private:
 	QLabel       * m_pLabel;
-	KviTalListView    * m_pListView;
+	KviTalTreeWidget    * m_pListView;
 	QLineEdit    * m_pChanLineEdit;
 	QLineEdit    * m_pPassLineEdit;
 	QPushButton  * m_pAddButton;

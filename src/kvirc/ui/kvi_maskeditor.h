@@ -27,7 +27,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_string.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QPushButton>
 #include <QDialog>
@@ -44,14 +44,14 @@ typedef struct _KviMaskEntry
 	unsigned int uSetAt;
 } KviMaskEntry;
 
-class KviMaskItem: public KviTalListViewItem
+class KviMaskItem: public KviTalTreeWidgetItem
 {
 public:
-	KviMaskItem(KviTalListView* parent,KviMaskEntry* entry);
+	KviMaskItem(KviTalTreeWidget* parent,KviMaskEntry* entry);
 	~KviMaskItem();
 	
 	KviMaskEntry* mask() { return &m_Mask; };
-	virtual int compare ( KviTalListViewItem * i, int col, bool ascending ) const;
+	virtual int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const;
 protected:
 	KviMaskEntry m_Mask;
 	
@@ -82,7 +82,7 @@ public:
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
-	KviTalListView      * m_pMaskBox;
+	KviTalTreeWidget      * m_pMaskBox;
 	QPushButton         * m_pRemoveMask;
 	QPushButton   	    * m_pAddButton;
 	QLineEdit           * m_pSearch;
@@ -95,7 +95,7 @@ public:
 protected slots:
 	void removeClicked();
 	void addClicked();
-	void listViewDoubleClicked( KviTalListViewItem * );
+	void listViewDoubleClicked( KviTalTreeWidgetItem * );
 	void searchTextChanged ( const QString & );
 signals:
 	void removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *);

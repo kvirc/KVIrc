@@ -679,26 +679,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath=".\ui\moc_kvi_listview.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="__KVIRC__"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							PreprocessorDefinitions="__KVIRC__"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="ui\moc_kvi_mdicaption.cpp"
 					>
 					<FileConfiguration
@@ -1132,10 +1112,6 @@
 				</File>
 				<File
 					RelativePath=".\ui\kvi_ircviewtools.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\ui\kvi_listview.cpp"
 					>
 				</File>
 				<File
@@ -3241,28 +3217,6 @@
 				</File>
 				<File
 					RelativePath=".\ui\kvi_ircviewtools.h"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\moc_$(InputName).cpp"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\moc_$(InputName).cpp"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\ui\kvi_listview.h"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"

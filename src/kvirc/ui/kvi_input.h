@@ -242,8 +242,8 @@ public slots:
 public:
 	virtual void setFocus();
 	void multiLinePaste(const QString &text);
-	bool isUserFriendly() { return m_pCommandlineModeButton->isOn(); };
-	void setUserFriendly(bool bSet) { m_pCommandlineModeButton->setOn(bSet); };
+	bool isUserFriendly() { return m_pCommandlineModeButton->isChecked(); };
+	void setUserFriendly(bool bSet) { m_pCommandlineModeButton->setChecked(bSet); };
 	int heightHint() const;
 	void setText(const QString &text);
 	void insertChar(char c);

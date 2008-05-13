@@ -36,8 +36,8 @@
 #include <QLabel>
 #include <QValidator>
 
-KviMaskItem::KviMaskItem(KviTalListView* parent,KviMaskEntry* entry)
-:KviTalListViewItem(parent), m_Mask(*entry)
+KviMaskItem::KviMaskItem(KviTalTreeWidget* parent,KviMaskEntry* entry)
+:KviTalTreeWidgetItem(parent), m_Mask(*entry)
 {
 	QDateTime date;
 	date.setTime_t(mask()->uSetAt);
@@ -50,7 +50,7 @@ KviMaskItem::~KviMaskItem()
 {
 }
 
-int KviMaskItem::compare ( KviTalListViewItem * i, int col, bool ascending ) const
+int KviMaskItem::compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
 {
 	if(col==2)
 	{
@@ -58,7 +58,7 @@ int KviMaskItem::compare ( KviTalListViewItem * i, int col, bool ascending ) con
 		if( ((KviMaskItem*)i)->mask()->uSetAt == m_Mask.uSetAt ) return  0;
 		if( ((KviMaskItem*)i)->mask()->uSetAt < m_Mask.uSetAt )  return  1;
 	}
-	return KviTalListViewItem::compare(i,col,ascending);
+	return KviTalTreeWidgetItem::compare(i,col,ascending);
 }
 
 KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEditor,KviChannel * pChannel)
@@ -182,18 +182,19 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	g->addWidget(l,1,1);
 	g->addMultiCellWidget(l,2,2,0,1);
 	
-	m_pMaskBox = new KviTalListView(this);
+	//FIX ME
+	m_pMaskBox = new KviTalTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pMaskBox->addColumn(__tr2qs("Mask"));
 	m_pMaskBox->addColumn(__tr2qs("Set by"));
 	m_pMaskBox->addColumn(__tr2qs("Set at"));
-	m_pMaskBox->setMultiSelection(true);
+//	m_pMaskBox->setMultiSelection(true);
 	m_pMaskBox->setAllColumnsShowFocus(true);
-	m_pMaskBox->setShowSortIndicator(true);
-	m_pMaskBox->setSorting(2,false);
-	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalListViewItem * )),this,SLOT(listViewDoubleClicked( KviTalListViewItem * )));
+//	m_pMaskBox->setShowSortIndicator(true);
+	m_pMaskBox->setSortingEnabled(true);
+	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalTreeWidgetItem * )),this,SLOT(listViewDoubleClicked( KviTalTreeWidgetItem * )));
 	g->addMultiCellWidget(m_pMaskBox,3,3,0,1);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
@@ -225,22 +226,23 @@ KviMaskEditor::~KviMaskEditor()
 
 void KviMaskEditor::searchTextChanged ( const QString & text)
 {
-	KviTalListViewItem *pItem=m_pMaskBox->firstChild();
+//	KviTalTreeWidgetItem *pItem;//=m_pMaskBox->firstChild();
 	KviMaskItem *pMaskItem;
 	bool bEmpty = text.isEmpty();
-	while(pItem)
+	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
+	//while(pItem)
 	{
-		pMaskItem = (KviMaskItem *)pItem;
+		pMaskItem = (KviMaskItem *)m_pMaskBox->topLevelItem(i);
 		if(bEmpty)
 		{
-			pMaskItem->setVisible(true);
+			pMaskItem->setHidden(false);
 		} else {
 			if(pMaskItem->mask()->szMask.contains(text))
-				pMaskItem->setVisible(true);
+				pMaskItem->setHidden(false);
 			else 
-				pMaskItem->setVisible(false);
+				pMaskItem->setHidden(true);
 		}
-		pItem=pItem->nextSibling();
+		//pItem=pItem->nextSibling();
 	}
 }
 
@@ -248,9 +250,11 @@ void KviMaskEditor::removeClicked()
 {
 	KviPointerList<KviMaskEntry>  * l = new KviPointerList<KviMaskEntry>;
 	l->setAutoDelete(true);
-	KviMaskItem * it = (KviMaskItem *)(m_pMaskBox->firstChild());
-	while(it)
+	KviMaskItem * it;// = (KviMaskItem *)(m_pMaskBox->firstChild());
+	//while(it)
+	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
 	{
+		it=(KviMaskItem *)m_pMaskBox->topLevelItem(i);
 		if(it->isSelected())
 		{
 			KviMaskEntry * e = new KviMaskEntry;
@@ -259,7 +263,7 @@ void KviMaskEditor::removeClicked()
 			e->uSetAt =  it->mask()->uSetAt;
 			l->append(e);
 		}
-		it = (KviMaskItem *)(it->nextSibling());
+	//	it = (KviMaskItem *)(it->nextSibling());
 	}
 	if(l->count() > 0)emit removeMasks(this,l);
 	delete l;
@@ -289,24 +293,27 @@ void KviMaskEditor::addMask(KviMaskEntry *e)
 //	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 	KviMaskItem *it;
 	it = new KviMaskItem(m_pMaskBox,e);
-	it->setPixmap(0,*(g_pIconManager->getSmallIcon(m_iIconId)));
+	it->setIcon(0,*(g_pIconManager->getSmallIcon(m_iIconId)));
 }
 
 void KviMaskEditor::removeMask(KviMaskEntry *e)
 {
-	KviMaskItem * it =(KviMaskItem *)(m_pMaskBox->firstChild());
-	while(it)
+//	KviMaskItem * it =(KviMaskItem *)(m_pMaskBox->firstChild());
+	KviMaskItem * it;
+//	while(it)
+	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
 	{
+		it=(KviMaskItem *)m_pMaskBox->topLevelItem(i);
 		if(KviQString::equalCI(it->mask()->szMask,e->szMask))
 		{
 			delete it;
 			return;
 		}
-		it = (KviMaskItem *)(it->nextSibling());
+	//	it = (KviMaskItem *)(it->nextSibling());
 	}
 }
 
-void KviMaskEditor::listViewDoubleClicked( KviTalListViewItem * pItem)
+void KviMaskEditor::listViewDoubleClicked( KviTalTreeWidgetItem * pItem)
 {
 	if(pItem)
 	{

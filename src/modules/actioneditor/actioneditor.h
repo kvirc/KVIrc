@@ -30,6 +30,7 @@
 
 #include <QWidget>
 #include <QTextDocument>
+#include <QTreeWidget>
 
 class QLineEdit;
 class QComboBox;
@@ -37,7 +38,7 @@ class QToolButton;
 class QSimpleRichText;
 class QPushButton;
 class QSplitter;
-class KviActionEditorListViewItem;
+class KviActionEditorTreeWidgetItem;
 class KviScriptEditor;
 class KviActionEditor;
 
@@ -54,7 +55,7 @@ public:
 	QString m_szSmallIcon;
 	QString m_szKeySequence;
 	unsigned int m_uFlags;
-	KviActionEditorListViewItem * m_pItem; // ummigarba tanto...
+	KviActionEditorTreeWidgetItem * m_pItem; // ummigarba tanto...
 public:
 	KviActionData(const QString &szName,
 		const QString &szScriptCode,
@@ -65,7 +66,7 @@ public:
 		const QString &szSmallIcon,
 		unsigned int uFlags,
 		const QString &szKeySequence,
-		KviActionEditorListViewItem * pItem)
+		KviActionEditorTreeWidgetItem * pItem)
 	: m_szName(szName), m_szScriptCode(szScriptCode), m_szVisibleName(szVisibleName),
 		m_szDescription(szDescription), m_szCategory(szCategory), m_szBigIcon(szBigIcon),
 		m_szSmallIcon(szSmallIcon), m_szKeySequence(szKeySequence), m_uFlags(uFlags),
@@ -74,34 +75,34 @@ public:
 };
 
 
-class KviActionEditorListViewItem : public KviTalListViewItem
+class KviActionEditorTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviActionEditorListViewItem(KviTalListView * v,KviActionData * a);
-	~KviActionEditorListViewItem();
+	KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a);
+	~KviActionEditorTreeWidgetItem();
 protected:
 	KviActionData * m_pActionData;
 	//QSimpleRichText * m_pText;
 	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
-	KviTalListView * m_pListView;
+	QTreeWidget * m_pTreeWidget;
 	QString m_szKey;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
-	void setupForActionData();
+	//void setupForActionData();
 public:
-	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
-	virtual void setup();
+	//virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
+	//virtual void setup();
 	virtual QString key(int,bool) const;
 };
 
 
-class KviActionEditorListView : public KviTalListView
+class KviActionEditorTreeView : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	KviActionEditorListView(QWidget * pParent);
-	~KviActionEditorListView();
+	KviActionEditorTreeView(QWidget * pParent);
+	~KviActionEditorTreeView();
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
 };
@@ -159,7 +160,7 @@ public:
 	KviActionEditor(QWidget * par);
 	~KviActionEditor();
 protected:
-	KviActionEditorListView * m_pListView;
+	KviActionEditorTreeView * m_pTreeWidget;
 	KviSingleActionEditor * m_pSingleActionEditor;
 	QSplitter * m_pSplitter;
 	QPushButton * m_pNewActionButton;
@@ -172,7 +173,7 @@ protected:
 	int selectedCount();
 	QString nameForAutomaticAction(const QString &szTemplate);
 protected slots:
-	void currentChanged(KviTalListViewItem * it);
+	void currentChanged(QTreeWidgetItem * it);
 	void newAction();
 	void deleteActions();
 	void exportActions();

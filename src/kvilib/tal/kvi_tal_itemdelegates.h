@@ -28,6 +28,8 @@
 #include "kvi_settings.h"
 #include <QItemDelegate>
 #include <QListWidget>
+#include <QTreeWidget>
+#include <QAbstractItemView>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -39,14 +41,14 @@
 class KVILIB_API KviTalIconAndRichTextItemDelegate : public QItemDelegate
 {
 public:
-	KviTalIconAndRichTextItemDelegate(QListWidget * pWidget=0)
-		: QItemDelegate(pWidget), m_pDefaultPix(0) {};
-
+	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget=0)
+		: QItemDelegate(pWidget), m_pDefaultPix(0), m_pParent(pWidget) {};
 	~KviTalIconAndRichTextItemDelegate(){};
 	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 	 void setDefaultIcon(QPixmap *pix){m_pDefaultPix=pix;};
 protected:
+	QAbstractItemView *m_pParent;
 	QPixmap *m_pDefaultPix;
 };
 

@@ -33,7 +33,7 @@
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200
 class KviTextIconWindow;
-class test;
+
 
 
 
@@ -60,16 +60,9 @@ private:
 	virtual void show();
 	bool findTypedSeq(); // returns true if it is a complete word
 	virtual void keyPressEvent(QKeyEvent *e);
-	//virtual void mouseMoveEvent ( QMouseEvent * e )
 	virtual void mousePressEvent(QMouseEvent *);
 	virtual void timerEvent(QTimerEvent *);
-	virtual void paintEvent (QPaintEvent* e)
-	{
-		QPainter p(viewport());
-		QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
-		if (pix) p.drawTiledPixmap(0,0,viewport()->width(),viewport()->height(),*pix);
-		QTableWidget::paintEvent (e);
-	}
+	
 
 public slots:
 	void fill();
@@ -77,19 +70,6 @@ public slots:
 	void currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev);
 	void itemSelected(KviTalIconViewItem * item);
 };
-/*
-class KVIRC_API test : public QWidget
-{
-	Q_OBJECT
-public:
-	test(){};
-	~test(){};
-protected:
-	virtual void paintEvent(QPaintEvent*e);
-
-	
-};
-*/
 class KVIRC_API KviTextIconWindowWidget : public QWidget
 {
 	Q_OBJECT
@@ -102,9 +82,6 @@ public:
 		show();
 	};
 	~KviTextIconWindowWidget(){};
-protected:
-	
-//	virtual void apaintEvent(QPaintEvent*);
 	
 };
 

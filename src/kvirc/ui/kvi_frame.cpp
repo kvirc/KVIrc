@@ -129,7 +129,8 @@ KviFrame::KviFrame()
 		// the init function)
 		m_pStatusBar->load();
 
-	} else
+	} 
+	else
 		m_pStatusBar = 0;
 
 	m_pTaskBar = 0;
@@ -872,8 +873,10 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 		g_pActiveWindow->view()->clearUnreaded();
 
 	emit activeWindowChanged();
-	if(bActiveContextChanged)emit activeContextChanged();
+	if(bActiveContextChanged)emit{
 
+		activeContextChanged();
+	}
 	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowActivated,wnd);
 }
 

@@ -24,34 +24,37 @@
 
 #define __KVIRC__
 
+#include "kvi_app.h"
 #include "kvi_actiondrawer.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
 #include "kvi_draganddrop.h"
+#include "kvi_tal_listwidget.h"
 
 #include <QLayout>
 #include <QLabel>
 //#include <qscrollview.h>
 #include <QPainter>
 #include <QPixmap>
-#include <QHeaderView>
-#include <q3simplerichtext.h>
+//#include <QHeaderView>
+//#include <q3simplerichtext.h>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QTextDocument>
 
-#define LVI_ICON_SIZE 32
+/*#define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
 #define LVI_SPACING 8
 #define LVI_MINIMUM_TEXT_WIDTH 300
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
-
-KviActionDrawerPageListViewItem::KviActionDrawerPageListViewItem(KviTalListView * v,KviAction * a)
-: KviTalListViewItem(v,"")
+*/
+KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * v,KviAction * a)
+: KviTalListWidgetItem(v)
 {
-	m_pListView = v;
-	setDragEnabled(true);
+	m_pListWidget = v;
+	//setDragEnabled(true);
 	m_szName = a->name();
 	QString t = "<b>" + a->visibleName() + "</b>";
 	if(a->isKviUserActionNeverOverrideThis())
@@ -59,27 +62,26 @@ KviActionDrawerPageListViewItem::KviActionDrawerPageListViewItem(KviTalListView 
 	t += "<br><font size=\"-1\">" + a->description()+ "</font>";
 	m_szKey = a->visibleName().upper();
 
-	m_pText = new Q3SimpleRichText(t,v->font());
-
 	QPixmap * p = a->bigIcon();
-	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
+	setIcon(*p);
+//	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
 }
 
-KviActionDrawerPageListViewItem::~KviActionDrawerPageListViewItem()
+KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
 {
-	delete m_pIcon;
-	delete m_pText;
+//delete m_pIcon;
+//	delete m_pText;
 }
-
-QString KviActionDrawerPageListViewItem::key(int,bool) const
+/*
+QString KviActionDrawerPageListWidgetItem::key(int,bool) const
 {
 	return m_szKey;
 }
 
-void KviActionDrawerPageListViewItem::setup()
+void KviActionDrawerPageListWidgetItem::setup()
 {
 	KviTalListViewItem::setup();
-	int iWidth = m_pListView->visibleWidth();
+	int iWidth = m_pListWidget->visibleWidth();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
 	m_pText->setWidth(iWidth);
@@ -88,13 +90,13 @@ void KviActionDrawerPageListViewItem::setup()
 	setHeight(iHeight);
 }
 
-void KviActionDrawerPageListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
+void KviActionDrawerPageListWidgetItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
 	KviTalListViewItem::paintCell(p,cg,column,width,align);
 	//p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
 	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
+	int www = m_pListWidget->visibleWidth() - (afterIcon + LVI_BORDER);
 	m_pText->setWidth(www);
 	if(isSelected())
 	{
@@ -105,43 +107,60 @@ void KviActionDrawerPageListViewItem::paintCell(QPainter * p,const QColorGroup &
 		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
 	}
 }
-
-KviActionDrawerPageListView::KviActionDrawerPageListView(KviActionDrawerPage * pParent)
-: KviListView(pParent)
+*/
+KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
+: KviTalListWidget(pParent)
 {
-	QPixmap * p = g_pIconManager->getImage("kvi_actiondrawer.png");
+	/*QPixmap * p = g_pIconManager->getImage("kvi_actiondrawer.png");
 	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
+*/
+	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(this);
+	setItemDelegate(itemDelegate);
+	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSortingEnabled(true);
+	setMinimumHeight(400);
+	setMinimumWidth(380);
+
+	QString szPic;
+	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
+
+	szPic += "/kvi_actiondrawer.png";
+	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
+	setStyleSheet(szStyle);
 
 //	m_pPage = pParent;
-	setSelectionMode(Single);
+//	setSelectionMode(Single);
 	//header()->hide();
-	int iWidth = visibleWidth();
+	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	addColumn("",iWidth);
-	setSorting(0,true);
+//	setHeaderLabel("");
+//	addColumn("",iWidth);
+//	setSorting(0,true);
 }
 
-KviActionDrawerPageListView::~KviActionDrawerPageListView()
+KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
 {
 }
 
 
-void KviActionDrawerPageListView::contentsMousePressEvent(QMouseEvent * e)
+void KviActionDrawerPageListWidget::contentsMousePressEvent(QMouseEvent * e)
 {
+	/*
 	KviListView::contentsMousePressEvent(e);
-	KviActionDrawerPageListViewItem * i = (KviActionDrawerPageListViewItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
+	KviActionDrawerPageListWidgetItem * i = (KviActionDrawerPageListWidgetItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
 	if(!i)return;
 	KviTextDrag * dr = new KviTextDrag();
 	dr->setText(i->name());
 	if(i->icon()) dr->setImageData(i->icon());
+	*/
 }
 
-void KviActionDrawerPageListView::resizeEvent(QResizeEvent * e)
+void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
 {
-	KviListView::resizeEvent(e);
-	int iWidth = visibleWidth();
+	KviTalListWidget::resizeEvent(e);
+	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	setColumnWidth(0,iWidth);
+	//setColumnWidth(0,iWidth);
 }
 
 
@@ -154,9 +173,9 @@ KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent,const QString &szDesc
 	QLabel * l = new QLabel(t,this);
 	g->addWidget(l,0,0);
 
-	m_pListView = new KviActionDrawerPageListView(this);
+	m_pListWidget = new KviActionDrawerPageListWidget(this);
 
-	g->addWidget(m_pListView,1,0);
+	g->addWidget(m_pListWidget,1,0);
 
 	g->setRowStretch(1,1);
 }
@@ -167,7 +186,7 @@ KviActionDrawerPage::~KviActionDrawerPage()
 
 void KviActionDrawerPage::add(KviAction * a)
 {
-	(void)new KviActionDrawerPageListViewItem(m_pListView,a);
+	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget,a);
 }
 
 KviActionDrawer::KviActionDrawer(QWidget * pParent)

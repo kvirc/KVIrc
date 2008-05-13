@@ -26,7 +26,7 @@
 #include "kvi_window.h"
 #include "kvi_string.h"
 #include "kvi_styled_controls.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QDialog>
 
@@ -44,7 +44,7 @@ public:
 	~KviChannelsJoinWindow();
 protected:
 	QLineEdit   * m_pChannelEdit; 
-	KviTalListView   * m_pListView;
+	KviTalTreeWidget   * m_pListView;
 	KviTalGroupBox   * m_pGroupBox;
 	QLineEdit   * m_pPass;
 	KviStyledCheckBox   * m_pShowAtStartupCheck;
@@ -58,8 +58,8 @@ public:
 	void setConsole(KviConsole  * pConsole);
 protected slots:
 	void editTextChanged(const QString &);
-	void itemClicked(KviTalListViewItem *it);
-	void itemDoubleClicked(KviTalListViewItem *it);
+	void itemClicked(KviTalTreeWidgetItem *it);
+	void itemDoubleClicked(KviTalTreeWidgetItem *it);
 	void editReturnPressed();
 	void cancelClicked();
 	void joinClicked();

@@ -62,10 +62,10 @@ protected:
 	bool function_itemCollapsedEvent(KviKvsObjectFunctionCall *c);
 	bool function_itemRenamedEvent(KviKvsObjectFunctionCall *c);
 	bool function_rightButtonClickedEvent(KviKvsObjectFunctionCall *c);
-	bool function_selectedItem(KviKvsObjectFunctionCall *c);
+	bool function_selectedItems(KviKvsObjectFunctionCall *c);
 	bool function_currentItem(KviKvsObjectFunctionCall *c);
 	bool function_setSelectionMode(KviKvsObjectFunctionCall *c);
-	bool function_firstChild(KviKvsObjectFunctionCall *c);
+	//bool function_firstChild(KviKvsObjectFunctionCall *c);
 	bool function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c);
 	bool function_showListViewHeader(KviKvsObjectFunctionCall *c);
 	bool function_hideListViewHeader(KviKvsObjectFunctionCall *c);

@@ -28,7 +28,8 @@
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_tal_listview.h"
+#include "kvi_heapobject.h"
+//#include "kvi_tal_listview.h"
 
 #include <QWidget>
 #include <QLineEdit>
@@ -42,7 +43,7 @@ class KviScriptEditor;
 class KviAliasNamespaceListViewItem;
 
 
-class KviAliasEditorListViewItem : public QTreeWidgetItem
+class KviAliasEditorListViewItem : public QTreeWidgetItem, public KviHeapObject
 {
 public:
 	enum Type { Alias, Namespace };

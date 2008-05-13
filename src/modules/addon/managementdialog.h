@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-#include "kvi_listview.h"
 #include "kvi_settings.h"
 #include "kvi_tal_listwidget.h"
 

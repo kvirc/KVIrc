@@ -106,7 +106,7 @@ void KviCompletionBox::updateContents(QString buffer)
 			szModule.remove(0,1);
 	}
 */	
-	QChar* pCur = (QChar *)buffer.ucs2();
+	QChar* pCur = (QChar *)buffer.utf16();
 	if(pCur->unicode() == '$')
 	{
 		buffer.remove(0,1);
@@ -173,10 +173,12 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	QGridLayout * g = new QGridLayout(this);
 
 	KviFontSelector * f = new KviFontSelector(this,__tr2qs_ctx("Font:","editor"),&g_fntNormal,true);
-	g->addMultiCellWidget(f,0,0,0,2);
+	g->addWidget(f,0,0,0,3);
+	//g->addMultiCellWidget(f,0,0,0,2);
 	m_pSelectorInterfaceList->append(f);
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Colors" ),this);
-	g->addMultiCellWidget(gbox,1,1,0,2);
+	g->addWidget(gbox,1,1,0,2);
+//g->addMultiCellWidget(gbox,1,1,0,2);
 	KviColorSelector * s = addColorSelector(gbox,__tr2qs_ctx("Background:","editor"),&g_clrBackground,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Normal text:","editor"),&g_clrNormalText,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Brackets:","editor"),&g_clrBracket,true);
@@ -228,10 +230,6 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 : QTextEdit(pParent)
 {
 	
-	/*QPalette p=palette();
-	p.setColor(QPalette::Base, QColor(0,0,0));
-	setPalette(p);
-	*/
 	setWordWrapMode(QTextOption::NoWrap);
 	m_pParent=pParent;
 	m_szHelp="Nothing";
@@ -249,8 +247,8 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent *event)
 {
 	QMenu *pop=createStandardContextMenu();
-	pop->insertItem(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
-	pop->insertItem(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
+	pop->addAction(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pop->addAction(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
 	pop->exec(event->globalPos());
      delete pop;
 }
@@ -258,7 +256,7 @@ void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent *event)
 void KviScriptEditorWidget::slotFind()
 {
 	m_szFind=((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->text();
-	setText(text());
+	setText(toPlainText());
 }
 
 void KviScriptEditorWidget::slotReplace()
@@ -283,11 +281,11 @@ void KviScriptEditorWidget::updateOptions()
 	p.setColor(QPalette::Text,g_clrNormalText);
 	setPalette(p);
 	setFont(g_fntNormal);
-	setColor(g_clrNormalText);
-	setTextFormat(Qt::PlainText);
+	setTextColor(g_clrNormalText);
+//	setTextFormat(Qt::PlainText);
 	
 	// this will rehighlight everything
-	setText(text()); // an "hack" to ensure Update all in the editor
+	setText(toPlainText()); // an "hack" to ensure Update all in the editor
 	KviScriptSyntaxHighlighter *h = new KviScriptSyntaxHighlighter(this);
 	(void)h;
 	p = ((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->palette(); 
@@ -298,7 +296,7 @@ void KviScriptEditorWidget::updateOptions()
 void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 {
 
-	if(e->state() == Qt::ControlButton)
+	if(e->modifiers() == Qt::ControlModifier)
 	{
 		switch(e->key())
 		{
@@ -324,7 +322,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 		}
 	}
 
-	if(e->state() == Qt::ShiftButton)
+	if(e->modifiers() == Qt::ShiftModifier)
 	{
 		if (e->key() == Qt::Key_Insert) 
 		{
@@ -491,8 +489,8 @@ void KviScriptEditorWidget::getWordOnCursor(QString &buffer,int index) const
 {
 	QRegExp re("[ \t=,\\(\\)\"}{\\[\\]\r\n+-*><;@!]");
 	//debug("BUFFER IS %s",buffer.toUtf8().data());
-	int start = buffer.findRev(re,index);
-	int end = buffer.find(re,index);
+	int start = buffer.lastIndexOf(re,index);
+	int end = buffer.lastIndexOf(re,index);
 
 	QString tmp;
 	if(start!=end)
@@ -553,11 +551,11 @@ void KviScriptEditorWidget::getWordBeforeCursor(QString &buffer,int index,bool *
 {
 	QString tmp = buffer.left(index);
 	buffer=tmp;
-	int idx = buffer.findRev(' ');
-	int idx1 = buffer.findRev("=");
-	int idx2 = buffer.findRev(','); 
-	int idx3 = buffer.findRev('(');
-	int idx4 = buffer.findRev('"');
+	int idx = buffer.lastIndexOf(' ');
+	int idx1 = buffer.lastIndexOf("=");
+	int idx2 = buffer.lastIndexOf(','); 
+	int idx3 = buffer.lastIndexOf('(');
+	int idx4 = buffer.lastIndexOf('"');
 	if(idx1 > idx) idx= idx1;	
 	if(idx2 > idx)idx = idx2;
 	if(idx3 > idx)idx = idx3;
@@ -608,7 +606,7 @@ KviScriptSyntaxHighlighter::~KviScriptSyntaxHighlighter()
 
 void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 {
-	const QChar * pBuf = (const QChar *)text.ucs2();
+	const QChar * pBuf = (const QChar *)text.utf16();
 	const QChar * c = pBuf;
 	QTextCharFormat commentFormat;
 	commentFormat.setForeground(g_clrComment);
@@ -745,7 +743,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 					{
 						// might be "else"
 						QString tmp(pBegin,4);
-						if(tmp.lower() == "else")bNewCommand = true;
+						if(tmp.toLower() == "else")bNewCommand = true;
 						continue;
 					}
 				}
@@ -756,7 +754,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 					{
 						// might be "function"
 						QString tmp(pBegin,8);
-						if(tmp.lower() == "function")bNewCommand = true;
+						if(tmp.toLower() == "function")bNewCommand = true;
 						continue;
 					}
 				}
@@ -767,7 +765,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 					{
 						// might be "internal"
 						QString tmp(pBegin,8);
-						if(tmp.lower() == "internal")bNewCommand = true;
+						if(tmp.toLower() == "internal")bNewCommand = true;
 						continue;
 					}
 				}
@@ -873,7 +871,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 		int index=0;
 		while (i)
 		{
-			index=text.find(szFind,index,false);
+			index=text.indexOf(szFind,index,Qt::CaseInsensitive);
 			if (index != -1)
 			{
 				setFormat(index,szFind.length(),findFormat);
@@ -1048,7 +1046,7 @@ void KviScriptEditorImplementation::saveToFile()
 		QString::null,
 		QString::null,false,true,true))
 	{
-		QString buffer = m_pEditor->text();
+		QString buffer = m_pEditor->toPlainText();
 
 		//if(tmp.isEmpty())tmp = "";
 		//KviStr buffer = tmp.toUtf8().data();
@@ -1065,15 +1063,15 @@ void KviScriptEditorImplementation::saveToFile()
 void KviScriptEditorImplementation::setText(const KviQCString &txt)
 {
 	m_pEditor->setText(txt.data());
-	m_pEditor->setTextFormat(Qt::PlainText);
+	//m_pEditor->setTextFormat(Qt::PlainText);
 	//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
-	m_pEditor->setModified(false);
+	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
 void KviScriptEditorImplementation::getText(KviQCString &txt)
 {
-	txt = m_pEditor->text().toUtf8();
+	txt = m_pEditor->toPlainText().toUtf8();
 }
 
 QLineEdit * KviScriptEditorImplementation::getFindlineedit()
@@ -1084,15 +1082,15 @@ QLineEdit * KviScriptEditorImplementation::getFindlineedit()
 void KviScriptEditorImplementation::setText(const QString &txt)
 {
 	m_pEditor->setText(txt);
-	m_pEditor->setTextFormat(Qt::PlainText);
+//	m_pEditor->setTextFormat(Qt::PlainText);
 //	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
-	m_pEditor->setModified(false);
+	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
 void KviScriptEditorImplementation::getText(QString &txt)
 {
-	txt = m_pEditor->text();
+	txt = m_pEditor->toPlainText();
 }
 
 void KviScriptEditorImplementation::setFindText(const QString &txt)
@@ -1195,42 +1193,51 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 		layout->setObjectName("replace layout"); 
 
 
-	QLabel *findlabel = new QLabel( this, "findlabel" );
+	QLabel *findlabel = new QLabel( this);
+	findlabel->setObjectName("findlabel");
 	findlabel->setText(tr("Word to Find"));
 	layout->addWidget( findlabel, 0, 0 );
  
-	m_pFindlineedit = new QLineEdit( this, "findlineedit" );
+	m_pFindlineedit = new QLineEdit( this);
+	m_pFindlineedit->setObjectName( "findlineedit" );
 	layout->addWidget(m_pFindlineedit,0,1);
 
 
-	QLabel *replacelabel = new QLabel( this, "replacelabel" );
-	replacelabel->setText(tr("Replace with"));
-	layout->addWidget( replacelabel, 1, 0 );
+	QLabel *replaceLabel = new QLabel( this);
+	replaceLabel->setObjectName( "replacelabel" );
+	replaceLabel->setText(tr("Replace with"));
+	layout->addWidget( replaceLabel, 1, 0 );
 
-	m_pReplacelineedit = new QLineEdit( this, "replacelineedit" );
+	m_pReplacelineedit = new QLineEdit( this);
+	m_pReplacelineedit->setObjectName( "replacelineedit" );
 	layout->addWidget( m_pReplacelineedit,1,1);
 
 	m_pFindlineedit->setFocus();
 
-	QPushButton *cancelbutton = new QPushButton( this, "cancelButton" );
-	cancelbutton->setText(tr("&Cancel"));
-	layout->addWidget( cancelbutton, 3, 1 );
+	QPushButton *cancelButton = new QPushButton( this);
+	cancelButton->setObjectName( "cancelButton" );
+	cancelButton->setText(tr("&Cancel"));
+	layout->addWidget( cancelButton, 3, 1 );
 
-	replacebutton = new QPushButton( this, "replacebutton" );
+	replacebutton = new QPushButton( this);
+	replacebutton->setObjectName("replacebutton" );
 	replacebutton->setText(tr("&Replace"));
 	replacebutton->setEnabled( FALSE );
 	layout->addWidget( replacebutton, 3, 2 );
 
-	checkReplaceAll = new KviStyledCheckBox( this, "replaceAll" );
+	checkReplaceAll = new QCheckBox( this);
+	checkReplaceAll->setObjectName("replaceAll" );
 	checkReplaceAll->setText(tr("&Replace in all Aliases"));
 	layout->addWidget( checkReplaceAll, 2, 0 );
 	
-	findNext = new QPushButton(this, "findNext(WIP)" );	
+	findNext = new QPushButton(this);
+	findNext->setObjectName( "findNext(WIP)" );	
 	findNext->setText(tr("&Findnext"));
 	layout->addWidget( findNext, 0, 2 );
 	findNext->setEnabled(false);
 
-	replace = new QPushButton(this, "replace" );	
+	replace = new QPushButton(this);
+	replace->setObjectName( "replace" );	
 	replace->setText(tr("&Replace(WIP)"));
 	layout->addWidget( replace, 1, 2 );
 	replace->setEnabled(false);
@@ -1238,7 +1245,7 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	// signals and slots connections
 	connect( replacebutton, SIGNAL( clicked() ), this, SLOT( slotReplace() ) );
 	connect( findNext, SIGNAL( clicked() ),this,SLOT( slotNextFind()));
-	connect( cancelbutton, SIGNAL( clicked() ), this, SLOT( reject() ) );
+	connect( cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
 	connect( m_pFindlineedit, SIGNAL( textChanged(const QString &)), this, SLOT( textChanged(const QString &)));
 }
 
@@ -1256,11 +1263,11 @@ void KviScriptEditorReplaceDialog::textChanged(const QString &txt)
 
 void KviScriptEditorReplaceDialog::slotReplace()
 {
-	QString txt=((KviScriptEditorWidget *)m_pParent)->text();
+	QString txt=((KviScriptEditorWidget *)m_pParent)->toPlainText();
 	if (checkReplaceAll->isChecked()) emit replaceAll(m_pFindlineedit->text(),m_pReplacelineedit->text());
 	txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),Qt::CaseInsensitive);
 	((KviScriptEditorWidget *)m_pParent)->setText(txt);
-	((KviScriptEditorWidget *)m_pParent)->setModified(true);
+	((KviScriptEditorWidget *)m_pParent)->document()->setModified(true);
 	m_pFindlineedit->setText("");
 	m_pReplacelineedit->setText("");
 	setTabOrder(m_pFindlineedit,m_pReplacelineedit);

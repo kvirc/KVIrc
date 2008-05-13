@@ -505,12 +505,12 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 	int index=a->index();
 
 	debug ("Move from to index %d",index);
-	removeWidget(m_pClickedApplet);
+	//removeWidget(m_pClickedApplet);
 	insertPermanentWidget(index,m_pClickedApplet);
 	
 	m_pClickedApplet->setIndex(index);
-	index++;
-	a->setIndex(index);
+	//index++;
+	//a->setIndex(index);
 	//removeWidget(m_pClickedApplet);
 	int idx = m_pAppletList->findRef(a);
 	if(idx == -1)m_pAppletList->append(m_pClickedApplet); // uhg ?

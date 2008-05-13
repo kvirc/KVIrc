@@ -39,7 +39,7 @@
 #include <QColorDialog>
 #include <QPalette>
 #include <QFontDialog>
-
+#include <QAbstractItemView>
 
 KviBoolSelector::KviBoolSelector(QWidget * par,const QString & txt,bool *pOption,bool bEnabled)
 : KviStyledCheckBox(txt,par), KviSelectorInterface()
@@ -706,8 +706,8 @@ void KviSoundSelector::setEnabled(bool bEnabled)
 	m_pPlayButton->setEnabled(bEnabled);
 }
 
-KviChanListViewItem::KviChanListViewItem(KviTalListView* pList,QString szChan,QString szPass)
-:KviTalListViewItem(pList,szChan)
+KviChanTreeViewItem::KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass)
+:KviTalTreeWidgetItem(pList,szChan)
 {
 	m_szPass=szPass;
 	QString mask;
@@ -719,7 +719,7 @@ KviCahnnelListSelector::KviCahnnelListSelector(QWidget * par,const QString & txt
 : KviTalVBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
-	m_pListView = new KviTalListView(this);
+	m_pListView = new KviTalTreeWidget(this);
 	m_pListView->addColumn(__tr2qs("Channel name"));
 	m_pListView->addColumn(__tr2qs("Channel password"));
 	
@@ -743,10 +743,10 @@ KviCahnnelListSelector::KviCahnnelListSelector(QWidget * par,const QString & txt
 	m_pOption = pOption;
 	
 	for ( QStringList::Iterator it = pOption->begin(); it != pOption->end(); ++it ) {
-		new KviChanListViewItem(m_pListView,(*it).section(':',0,0),(*it).section(':',1));
+		new KviChanTreeViewItem(m_pListView,(*it).section(':',0,0),(*it).section(':',1));
 	}
 
-	m_pListView->setSelectionMode(KviTalListView::Extended);
+	m_pListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListView->setAllColumnsShowFocus(TRUE);
 	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
 	setSpacing(4);
@@ -761,12 +761,16 @@ KviCahnnelListSelector::~KviCahnnelListSelector()
 void KviCahnnelListSelector::commit()
 {
 	m_pOption->clear();
-	register KviChanListViewItem* pItem;
-	KviTalListViewItemIterator it( m_pListView);
-	while ( it.current() ) {
-		pItem = (KviChanListViewItem*)( it.current() );
+	register KviChanTreeViewItem* pItem;
+	for (int i=0;i<m_pListView->topLevelItemCount();i++)
+	{
+		pItem=(KviChanTreeViewItem*)m_pListView->topLevelItem(i);
 		m_pOption->append(pItem->text(0)+":"+pItem->pass());
-		++it;
+	//KviTalTreeWidgetItemIterator it( m_pListView);
+	//while ( it.current() ) {
+	//	pItem = (KviChanTreeViewItem*)( it.current() );
+//		m_pOption->append(pItem->text(0)+":"+pItem->pass());
+//		++it;
 	}
 }
 
@@ -793,7 +797,7 @@ void KviCahnnelListSelector::addClicked()
 {
 	if(!m_pChanLineEdit->text().isEmpty())
 	{
-		new KviChanListViewItem(m_pListView,m_pChanLineEdit->text().stripWhiteSpace(),m_pPassLineEdit->text().stripWhiteSpace());
+		new KviChanTreeViewItem(m_pListView,m_pChanLineEdit->text().stripWhiteSpace(),m_pPassLineEdit->text().stripWhiteSpace());
 		m_pChanLineEdit->clear();
 		m_pPassLineEdit->clear();
 	}
@@ -801,11 +805,15 @@ void KviCahnnelListSelector::addClicked()
 
 void KviCahnnelListSelector::removeClicked()
 {
-	KviPointerList<KviTalListViewItem> lst;
-	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
-	while ( it.current() ) {
-		lst.append((KviTalListViewItem *)it.current() );
-		++it;
+	KviPointerList<KviTalTreeWidgetItem> lst;
+	QList<QTreeWidgetItem *> items=m_pListView->selectedItems () ;
+	//KviTalTreeWidgetItemIterator it( m_pListView, KviTalTreeWidgetItemIterator::Selected );
+	//while ( it.current() ) {
+	for (int i=0;i<items.count();i++)
+	{
+		lst.append((KviTalTreeWidgetItem *)items.at(i));
+	//	lst.append((KviTalTreeWidgetItem *)it.current() );
+	//	++it;
 	}
 	lst.setAutoDelete(TRUE);
 	lst.clear();

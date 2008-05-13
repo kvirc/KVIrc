@@ -628,25 +628,25 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	QFlags<QDir::Filter> iFlags = 0;
 	if(szFlags.isEmpty())iFlags = QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Writable | QDir::Executable | QDir::Hidden | QDir::System;
 	else {
-		if(szFlags.find('d',false) != -1)iFlags |= QDir::Dirs;
-		if(szFlags.find('f',false) != -1)iFlags |= QDir::Files;
-		if(szFlags.find('l',false) == -1)iFlags |= QDir::NoSymLinks;
-		if(szFlags.find('r',false) != -1)iFlags |= QDir::Readable;
-		if(szFlags.find('w',false) != -1)iFlags |= QDir::Writable;
-		if(szFlags.find('x',false) != -1)iFlags |= QDir::Executable;
-		if(szFlags.find('h',false) != -1)iFlags |= QDir::Hidden;
-		if(szFlags.find('s',false) != -1)iFlags |= QDir::System;
+		if(szFlags.indexOf('d',Qt::CaseInsensitive) != -1)iFlags |= QDir::Dirs;
+		if(szFlags.indexOf('f',Qt::CaseInsensitive) != -1)iFlags |= QDir::Files;
+		if(szFlags.indexOf('l',Qt::CaseInsensitive) == -1)iFlags |= QDir::NoSymLinks;
+		if(szFlags.indexOf('r',Qt::CaseInsensitive) != -1)iFlags |= QDir::Readable;
+		if(szFlags.indexOf('w',Qt::CaseInsensitive) != -1)iFlags |= QDir::Writable;
+		if(szFlags.indexOf('x',Qt::CaseInsensitive) != -1)iFlags |= QDir::Executable;
+		if(szFlags.indexOf('h',Qt::CaseInsensitive) != -1)iFlags |= QDir::Hidden;
+		if(szFlags.indexOf('s',Qt::CaseInsensitive) != -1)iFlags |= QDir::System;
 	}
 
 	QFlags<QDir::SortFlag> iSort = 0;
 	if(szFlags.isEmpty())iSort = QDir::Unsorted;
 	else {
-		if(szFlags.find('n',false) != -1)iSort |= QDir::Name;
-		if(szFlags.find('t',false) != -1)iSort |= QDir::Time;
-		if(szFlags.find('b',false) != -1)iSort |= QDir::Size;
-		if(szFlags.find('z',false) != -1)iSort |= QDir::DirsFirst;
-		if(szFlags.find('k',false) != -1)iSort |= QDir::Reversed;
-		if(szFlags.find('i',false) != -1)iSort |= QDir::IgnoreCase;
+		if(szFlags.indexOf('n',Qt::CaseInsensitive) != -1)iSort |= QDir::Name;
+		if(szFlags.indexOf('t',Qt::CaseInsensitive) != -1)iSort |= QDir::Time;
+		if(szFlags.indexOf('b',Qt::CaseInsensitive) != -1)iSort |= QDir::Size;
+		if(szFlags.indexOf('z',Qt::CaseInsensitive) != -1)iSort |= QDir::DirsFirst;
+		if(szFlags.indexOf('k',Qt::CaseInsensitive) != -1)iSort |= QDir::Reversed;
+		if(szFlags.indexOf('i',Qt::CaseInsensitive) != -1)iSort |= QDir::IgnoreCase;
 	}
 
 	QStringList sl;
@@ -714,7 +714,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	KviFileUtils::adjustFilePath(szNameZ);
 
 	QFile f(szNameZ);
-	if(!f.open(IO_ReadOnly))
+	if(!f.open(QIODevice::ReadOnly))
 	{
 		c->warning(__tr2qs("Can't open the file \"%Q\" for reading"),&szNameZ);
 		return true;
@@ -728,7 +728,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 	while((uReaded < uSize) && (!f.atEnd()))
 	{
-		int readedNow = f.readBlock(buf + uReaded,uSize - uReaded);
+		int readedNow = f.read(buf + uReaded,uSize - uReaded);
 		if(readedNow < 0)
 		{
 			kvi_free(buf);
@@ -748,7 +748,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 
 	buf[uReaded] = '\0';
 
-	if(szFlags.find('l',false) == -1)
+	if(szFlags.indexOf('l',Qt::CaseInsensitive) == -1)
 		c->returnValue()->setString(QString::fromUtf8(buf));
 	else
 		c->returnValue()->setString(QString::fromLocal8Bit(buf));
@@ -806,7 +806,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	KviFileUtils::adjustFilePath(szName);
 
 	QFile f(szName);
-	if(!f.open(IO_ReadOnly))
+	if(!f.open(QIODevice::ReadOnly))
 	{
 		c->warning(__tr2qs("Can't open the file \"%Q\" for reading"),&szName);
 		return true;
@@ -815,7 +815,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	if(c->params()->count() < 2)iStartLine = 0;
 	if(c->params()->count() < 3)iCount = -1;
 
-	bool bLocal8Bit = szFlags.find('l',0,false) != -1;
+	bool bLocal8Bit = szFlags.indexOf('l',0,Qt::CaseInsensitive) != -1;
 
 	KviKvsArray * a = new KviKvsArray();
 
@@ -1006,7 +1006,7 @@ static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("relative_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())szName.append(KVI_PATH_SEPARATOR_CHAR);
-	QString szPath = QDir::homeDirPath();
+	QString szPath = QDir::homePath();
 	KviQString::ensureLastCharIs(szPath,KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szName);
 	KviFileUtils::adjustFilePath(szPath);
@@ -1043,7 +1043,7 @@ static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("relative_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())szName.append(KVI_PATH_SEPARATOR_CHAR);
-	QString szPath = QDir::rootDirPath();
+	QString szPath = QDir::rootPath();
 	KviQString::ensureLastCharIs(szPath,KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szName);
 	KviFileUtils::adjustFilePath(szPath);
@@ -1078,7 +1078,7 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("relative_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())szName.append(KVI_PATH_SEPARATOR_CHAR);
-	QString szPath = QDir::currentDirPath();
+	QString szPath = QDir::currentPath();
 	KviQString::ensureLastCharIs(szPath,KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szName);
 	KviFileUtils::adjustFilePath(szPath);
@@ -1155,7 +1155,7 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filepath",KVS_PT_NONEMPTYSTRING,0,szName)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(QFileInfo(szName).dirPath(TRUE));
+	c->returnValue()->setString(QFileInfo(szName).absolutePath());
 	return true;
 }
 

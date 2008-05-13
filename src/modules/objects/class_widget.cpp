@@ -517,6 +517,9 @@ const Qt::WindowType widgettypes_cod[] = {
 		!fn: $insertIntoStatusBar(<index:unsigned integer>)
 		Insert the widget into the statusbar at the given index.
 		If index is out of range, the widget is appended.
+		See also [classfnc]$removeFromStatusBar[/classfnc]().
+		!fn: $removeFromStatusBar()
+		Remove the widget from statusbar.
 	@examples:
 		[example]
 			%Widget = $new(widget)
@@ -682,7 +685,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 
 	// statusbar
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"insertIntoStatusBar",function_insertIntoStatusBar)
-
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"removeFromStatusBar",function_removeFromStatusBar)
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mouseReleaseEvent")
@@ -1942,6 +1945,13 @@ bool KviKvsObject_widget::function_insertIntoStatusBar(KviKvsObjectFunctionCall 
 	KVSO_PARAMETERS_END(c)
 	if (widget())
 		g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
+	return true;
+}
+
+bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall *c)
+{
+	
+	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
 

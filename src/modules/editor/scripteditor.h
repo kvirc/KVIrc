@@ -179,7 +179,7 @@ protected:
 	QPushButton *findNext;
 
 //	QPushButton *cancelbutton;
-	KviStyledCheckBox *checkReplaceAll;
+	QCheckBox *checkReplaceAll;
 	QWidget *m_pParent;
 protected slots:
 	void textChanged(const QString &);

@@ -117,7 +117,7 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	setShowGrid(false);
 
 	m_pDelegate=new KviTalIconViewItemDelegate(this);
-		setItemDelegate(m_pDelegate);
+	setItemDelegate(m_pDelegate);
 	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(redirect_cellActivated(int,int)));
 	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 

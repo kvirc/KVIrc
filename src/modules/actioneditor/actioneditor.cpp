@@ -43,6 +43,7 @@
 #include "kvi_valuelist.h"
 #include "kvi_tal_vbox.h"
 #include <kvi_tal_groupbox.h>
+#include "kvi_tal_itemdelegates.h"
 
 #include <QSplitter>
 #include <QLayout>
@@ -66,76 +67,32 @@ static QString g_szLastEditedAction;
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
 #define LVI_SPACING 8
-#define LVI_MINIMUM_TEXT_WIDTH 150
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviActionEditorListViewItem::KviActionEditorListViewItem(KviTalListView * v,KviActionData * a)
-: KviTalListViewItem(v,"")
+KviActionEditorTreeWidgetItem::KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a)
+: QTreeWidgetItem(v)
 {
 	m_pActionData = a;
-	m_pListView = v;
-	m_pIcon = 0;
-	setupForActionData();
-}
-
-KviActionEditorListViewItem::~KviActionEditorListViewItem()
-{
-	if(m_pIcon)delete m_pIcon;
-	delete m_pActionData;
-}
-
-void KviActionEditorListViewItem::setupForActionData()
-{
+	m_pTreeWidget = v;
+	setFlags(Qt::ItemIsUserCheckable);
 	QString t = "<b>" + m_pActionData->m_szName + "</b>";
 	t += "<br><font color=\"#808080\" size=\"-1\">" + m_pActionData->m_szVisibleName + "</font>";
 	m_szKey = m_pActionData->m_szName.upper();
-	m_pText = new QTextDocument();
-	m_pText->setHtml(t);
-	m_pText->setDefaultFont(m_pListView->font());
-	if(m_pIcon)delete m_pIcon;
+	setText(0,t);
 	QPixmap * p = g_pIconManager->getBigIcon(m_pActionData->m_szBigIcon);
-	if(p)m_pIcon = new QPixmap(*p);
-	else {
-		p = g_pIconManager->getImage("kvi_bigicon_unknown.png");
-		if(p)m_pIcon = new QPixmap(*p);
-		else m_pIcon = new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
-	}
-	setup();
+	if(p)setIcon(0,*p);
 }
 
-QString KviActionEditorListViewItem::key(int,bool) const
+KviActionEditorTreeWidgetItem::~KviActionEditorTreeWidgetItem()
+{
+	delete m_pActionData;
+}
+
+
+QString KviActionEditorTreeWidgetItem::key(int,bool) const
 {
 	return m_szKey;
 }
-
-void KviActionEditorListViewItem::setup()
-{
-	KviTalListViewItem::setup();
-	int iWidth = m_pListView->visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	int iHeight = m_pText->pageSize().height() + (2 * LVI_BORDER);
-	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight);
-}
-
-void KviActionEditorListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
-{
-	if (isSelected())
-	{
-		QColor col(m_pListView->palette().highlight());
-		col.setAlpha(200);
-		p->setBrush(col);
-		p->drawRect(0, 0, m_pListView->visibleWidth(), height());
-	}
-	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	int www = m_pListView->visibleWidth() - (afterIcon + LVI_BORDER);
-	p->translate(afterIcon,LVI_BORDER);
-	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
-	m_pText->drawContents(p);
-}
-
 
 KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 : QWidget(par)
@@ -149,13 +106,14 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	g->addWidget(l,0,0);
 	m_pNameEdit = new QLineEdit(this);
 	g->addWidget(m_pNameEdit,0,1);
-	QToolTip::add(m_pNameEdit,__tr2qs("Internal unique name for the action"));
+	m_pNameEdit->setToolTip(__tr2qs("Internal unique name for the action"));
 
 	l = new QLabel(__tr2qs("Label:"),this);
 	g->addWidget(l,1,0);
 	m_pVisibleNameEdit = new QLineEdit(this);
 	g->addWidget(m_pVisibleNameEdit,1,1);
-	QToolTip::add(m_pVisibleNameEdit,__tr2qs("Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
+	m_pVisibleNameEdit->setToolTip(__tr2qs("Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
+
 
 	QTabWidget * tw = new QTabWidget(this);
 	g->addMultiCellWidget(tw,2,2,0,1);
@@ -178,13 +136,13 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(l,0,0);
 	m_pCategoryCombo = new QComboBox(false,tab);
 	gl->addMultiCellWidget(m_pCategoryCombo,0,0,1,3);
-	QToolTip::add(m_pCategoryCombo,__tr2qs("Choose the category that best fits for this action"));
+	m_pCategoryCombo->setToolTip(__tr2qs("Choose the category that best fits for this action"));
 
 	l = new QLabel(__tr2qs("Description:"),tab);
 	gl->addWidget(l,1,0);
 	m_pDescriptionEdit = new QLineEdit(tab);
 	gl->addMultiCellWidget(m_pDescriptionEdit,1,1,1,3);
-	QToolTip::add(m_pDescriptionEdit,__tr2qs("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
+	m_pDescriptionEdit->setToolTip(__tr2qs("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
 
 	l = new QLabel(__tr2qs("Small Icon:"),tab);
 	gl->addWidget(l,2,0);
@@ -197,8 +155,8 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	QString s= __tr2qs("The small icon associated to this action.<br>" \
 				"It will appear at least in the popup menus when this action is inserted.<br>" \
 				"It should be 16x16 pixels.");
-	QToolTip::add(m_pSmallIconEdit,s);
-	QToolTip::add(m_pSmallIconButton,s);
+	m_pSmallIconEdit->setToolTip(s);
+	m_pSmallIconButton->setToolTip(s);
 
 	l = new QLabel(__tr2qs("Big Icon:"),tab);
 	gl->addWidget(l,3,0);
@@ -212,14 +170,14 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	s = __tr2qs("The big icon associated to this action.<br>" \
 				"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
 				"It should be 32x32 pixels.");
-	QToolTip::add(m_pBigIconEdit,s);
-	QToolTip::add(m_pBigIconButton,s);
+	m_pBigIconEdit->setToolTip(s);
+	m_pBigIconButton->setToolTip(s);
 
 	l = new QLabel(__tr2qs("Key Sequence:"),tab);
 	gl->addMultiCellWidget(l,4,5,0,0);
 	m_pKeySequenceEdit = new QLineEdit(tab);
 	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
-	QToolTip::add(m_pKeySequenceEdit,__tr2qs("Optional keyboard sequence that will activate this action.<br>" \
+	m_pKeySequenceEdit->setToolTip(__tr2qs("Optional keyboard sequence that will activate this action.<br>" \
 		"The sequence should be expressed as a string of up to four key codes separated by commas " \
 		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
 		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."));
@@ -242,9 +200,10 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	m_pNeedsContextCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Context"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
-	QToolTip::add(m_pNeedsContextCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pNeedsContextCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window belongs to an irc context"));
 	gl->addMultiCellWidget(m_pNeedsContextCheck,0,0,0,3);
+	
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
@@ -252,60 +211,62 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	m_pNeedsConnectionCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Connection"),tab);
 	connect(m_pNeedsConnectionCheck,SIGNAL(toggled(bool)),this,SLOT(needsConnectionCheckToggled(bool)));
-	QToolTip::add(m_pNeedsConnectionCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pNeedsConnectionCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window has an active IRC connection"));
 	gl->addMultiCellWidget(m_pNeedsConnectionCheck,1,1,1,3);
+
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
 	gl->addWidget(l,2,1);
 
 	m_pEnableAtLoginCheck = new KviStyledCheckBox(__tr2qs("Enable at Login"),tab);
-	QToolTip::add(m_pEnableAtLoginCheck,__tr2qs("Check this option if this action should be enabled also during " \
+	m_pEnableAtLoginCheck->setToolTip(__tr2qs("Check this option if this action should be enabled also during " \
 						"the login operations (so when the logical IRC connection hasn't been estabilished yet)"));
 	gl->addMultiCellWidget(m_pEnableAtLoginCheck,2,2,2,3);
 
 	m_pSpecificWindowsCheck = new KviStyledCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
 	connect(m_pSpecificWindowsCheck,SIGNAL(toggled(bool)),this,SLOT(specificWindowsCheckToggled(bool)));
-	QToolTip::add(m_pSpecificWindowsCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pSpecificWindowsCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is of a specified type"));
 	gl->addMultiCellWidget(m_pSpecificWindowsCheck,3,3,0,3);
 
+
 	m_pWindowConsoleCheck = new KviStyledCheckBox(__tr2qs("Enable in Console Windows"),tab);
-	QToolTip::add(m_pWindowConsoleCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pWindowConsoleCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a console"));
 	connect(m_pWindowConsoleCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addMultiCellWidget(m_pWindowConsoleCheck,4,4,1,3);
 
 	m_pConsoleOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	QToolTip::add(m_pConsoleOnlyIfUsersSelectedCheck,__tr2qs("This will enable the action only if there are " \
+	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addMultiCellWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,5,2,3);
 
 	m_pWindowChannelCheck = new KviStyledCheckBox(__tr2qs("Enable in Channel Windows"),tab);
-	QToolTip::add(m_pWindowChannelCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pWindowChannelCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a channel"));
 	connect(m_pWindowChannelCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addMultiCellWidget(m_pWindowChannelCheck,6,6,1,3);
 
 	m_pChannelOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	QToolTip::add(m_pChannelOnlyIfUsersSelectedCheck,__tr2qs("This will enable the action only if there are " \
+	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addMultiCellWidget(m_pChannelOnlyIfUsersSelectedCheck,7,7,2,3);
 
 	m_pWindowQueryCheck = new KviStyledCheckBox(__tr2qs("Enable in Query Windows"),tab);
-	QToolTip::add(m_pWindowQueryCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pWindowQueryCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a query"));
 	connect(m_pWindowQueryCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addMultiCellWidget(m_pWindowQueryCheck,8,8,1,3);
 
 	m_pQueryOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	QToolTip::add(m_pQueryOnlyIfUsersSelectedCheck,__tr2qs("This will enable the action only if there are " \
+	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addMultiCellWidget(m_pQueryOnlyIfUsersSelectedCheck,9,9,2,3);
 
 	m_pWindowDccChatCheck = new KviStyledCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
-	QToolTip::add(m_pWindowDccChatCheck,__tr2qs("Check this option if this action should be enabled only when " \
+	m_pWindowDccChatCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a dcc chat"));
 	gl->addMultiCellWidget(m_pWindowDccChatCheck,10,10,1,3);
 
@@ -608,24 +569,28 @@ void KviSingleActionEditor::commit()
 }
 
 
-KviActionEditorListView::KviActionEditorListView(QWidget * pParent)
-: KviTalListView(pParent)
+KviActionEditorTreeView::KviActionEditorTreeView(QWidget * pParent)
+: QTreeWidget(pParent)
 {
-	setSelectionMode(Extended);
-	int iWidth = visibleWidth();
+	setColumnCount (1);
+	setHeaderLabel(__tr2qs("Action"));
+	setSelectionMode(QAbstractItemView::ExtendedSelection);
+	setSortingEnabled(true);
+	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	addColumn(__tr2qs("Action"),iWidth);
-	setSorting(0,true);
+	setRootIsDecorated(false);
+	setColumnWidth(0,iWidth);
+
 }
 
-KviActionEditorListView::~KviActionEditorListView()
+KviActionEditorTreeView::~KviActionEditorTreeView()
 {
 }
 
-void KviActionEditorListView::resizeEvent(QResizeEvent * e)
+void KviActionEditorTreeView::resizeEvent(QResizeEvent * e)
 {
-	KviTalListView::resizeEvent(e);
-	int iWidth = visibleWidth();
+	QTreeWidget::resizeEvent(e);
+	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setColumnWidth(0,iWidth);
 }
@@ -642,11 +607,12 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	
 	
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
-	m_pListView = new KviActionEditorListView(box);
-	//m_pListView->setMultiSelection(false);
-	m_pListView->setShowSortIndicator(true);
-	m_pListView->setFocusPolicy(Qt::StrongFocus);
-	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
+	m_pTreeWidget = new KviActionEditorTreeView(box);
+	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pTreeWidget);
+	m_pTreeWidget->setItemDelegate(itemDelegate);
+	//m_pTreeWidget->setShowSortIndicator(true);
+	m_pTreeWidget->setFocusPolicy(Qt::StrongFocus);
+	connect(m_pTreeWidget,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
 
 	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
 	connect(m_pNewActionButton,SIGNAL(clicked()),this,SLOT(newAction()));
@@ -661,8 +627,8 @@ KviActionEditor::KviActionEditor(QWidget * par)
 
 	m_pSingleActionEditor = new KviSingleActionEditor(m_pSplitter,this);
 
-	KviActionEditorListViewItem * last = 0;
-	KviActionEditorListViewItem * first = 0;
+	KviActionEditorTreeWidgetItem * last = 0;
+	KviActionEditorTreeWidgetItem * first = 0;
 
 	KviPointerHashTableIterator<QString,KviAction> it(*(KviActionManager::instance()->actions()));
 	while(KviAction * a = it.current())
@@ -679,7 +645,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 						a->flags(),
 						a->keySequence(),
 						0);
-			KviActionEditorListViewItem * lvi = new KviActionEditorListViewItem(m_pListView,ad);
+			KviActionEditorTreeWidgetItem * lvi = new KviActionEditorTreeWidgetItem(m_pTreeWidget,ad);
 			ad->m_pItem = lvi;
 			if(ad->m_szName == g_szLastEditedAction)
 				last = lvi;
@@ -693,7 +659,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 
 	if(last)
 	{
-		m_pListView->setCurrentItem(last);
+		m_pTreeWidget->setCurrentItem(last);
 		currentChanged(last);
 	} else {
 		currentChanged(0);
@@ -717,12 +683,11 @@ void KviActionEditor::exportActions()
 
 	QString szCode;
 
-	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)m_pListView->firstChild();
-	while(it)
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if(it->isSelected())
+		if(m_pTreeWidget->topLevelItem(i)->isSelected())
 		{
-			KviActionData * a = it->actionData();
+			KviActionData * a = ((KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->actionData();
 			
 			KviKvsUserAction::exportToKvs(szCode,
 				a->m_szName,
@@ -735,8 +700,6 @@ void KviActionEditor::exportActions()
 				a->m_uFlags,
 				a->m_szKeySequence);
 		}
-
-		it = (KviActionEditorListViewItem *)(it->nextSibling());
 	}
 
 	if(!KviFileUtils::writeFile(szFile,szCode))
@@ -747,16 +710,13 @@ void KviActionEditor::exportActions()
 
 void KviActionEditor::deleteActions()
 {
-	KviPointerList<KviActionEditorListViewItem> l;
+	KviPointerList<KviActionEditorTreeWidgetItem> l;
 	l.setAutoDelete(false);
 
-	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)m_pListView->firstChild();
-	while(it)
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if(it->isSelected())
-			l.append(it);
-
-		it = (KviActionEditorListViewItem *)(it->nextSibling());
+		if(m_pTreeWidget->topLevelItem(i)->isSelected())
+		l.append((KviActionEditorTreeWidgetItem * )m_pTreeWidget->topLevelItem(i));
 	}
 
 	if(l.isEmpty())return;
@@ -764,7 +724,7 @@ void KviActionEditor::deleteActions()
 	//if(QMessageBox::question(this,__tr2qsf("Confirm Deletion"),__tr2qsf("Do you really want to delete the selected actions ?"),__tr2qsf("Yes"),__tr2qsf("No")) != 0)
 	//	return;
 	
-	for(KviActionEditorListViewItem * i = l.first();i;i = l.next())
+	for(KviActionEditorTreeWidgetItem * i = l.first();i;i = l.next())
 	{
 		if(m_pSingleActionEditor->actionData() == i->actionData())
 			m_pSingleActionEditor->setActionData(0);
@@ -811,35 +771,30 @@ void KviActionEditor::newAction()
 			QString::null,
 			0);
 
-	KviActionEditorListViewItem * lvi = new KviActionEditorListViewItem(m_pListView,ad);
+	KviActionEditorTreeWidgetItem * lvi = new KviActionEditorTreeWidgetItem(m_pTreeWidget,ad);
 	ad->m_pItem = lvi;
-	m_pListView->setCurrentItem(lvi);
+	m_pTreeWidget->setCurrentItem(lvi);
 	currentChanged(lvi);
 }
 
 bool KviActionEditor::actionExists(const QString &szName)
 {
-	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)m_pListView->firstChild();
-	while(it)
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if(it->actionData()->m_szName == szName)return true;
-		it = (KviActionEditorListViewItem *)(it->nextSibling());
-	}
+		if(((KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->actionData()->m_szName == szName)return true;
+	}	
 	return false;
 }
 
 
-void KviActionEditor::currentChanged(KviTalListViewItem * i)
+void KviActionEditor::currentChanged(QTreeWidgetItem * i)
 {
 	if(m_pSingleActionEditor->actionData())
-	{
 		m_pSingleActionEditor->commit();
-		m_pSingleActionEditor->actionData()->m_pItem->setupForActionData();
-	}
+	
+	m_pTreeWidget->update();
 
-	m_pListView->update();
-
-	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)i;
+	KviActionEditorTreeWidgetItem * it = (KviActionEditorTreeWidgetItem *)i;
 	if(!it)
 	{
 		m_pSingleActionEditor->setActionData(0);
@@ -850,7 +805,7 @@ void KviActionEditor::currentChanged(KviTalListViewItem * i)
 	m_pDeleteActionsButton->setEnabled(true);
 	m_pExportActionsButton->setEnabled(true);
 
-	if(!it->isSelected())m_pListView->setSelected(it,true);
+	//if(!it->isSelected())m_pTreeWidget->setSelected(it,true);
 
 	m_pSingleActionEditor->setActionData(it->actionData());
 	g_szLastEditedAction = it->actionData()->m_szName;
@@ -864,9 +819,9 @@ void KviActionEditor::commit()
 
 	KviActionManager::instance()->killAllKvsUserActions();
 
-	KviActionEditorListViewItem * it = (KviActionEditorListViewItem *)m_pListView->firstChild();
-	while(it)
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
+		KviActionEditorTreeWidgetItem * it = (KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		KviKvsUserAction * a = KviKvsUserAction::createInstance( // msvc workaround
 			KviActionManager::instance(),
 			it->actionData()->m_szName,
@@ -880,8 +835,6 @@ void KviActionEditor::commit()
 			it->actionData()->m_szKeySequence);
 
 		KviActionManager::instance()->registerAction(a);
-
-		it = (KviActionEditorListViewItem *)(it->nextSibling());
 	}
 
 	KviCustomToolBarManager::instance()->updateVisibleToolBars();

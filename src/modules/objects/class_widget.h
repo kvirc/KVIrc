@@ -76,6 +76,7 @@ protected:
 	bool function_raise(KviKvsObjectFunctionCall *);
 	bool function_repaint(KviKvsObjectFunctionCall *c);
 	bool function_insertIntoStatusBar(KviKvsObjectFunctionCall *c);
+	bool function_removeFromStatusBar(KviKvsObjectFunctionCall *c);
 	bool function_reparent(KviKvsObjectFunctionCall *c);
 	bool function_resize(KviKvsObjectFunctionCall *c);
 	bool function_screenResolution(KviKvsObjectFunctionCall * c);

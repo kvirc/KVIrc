@@ -169,7 +169,7 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)); 
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii()); 
 	if(!c)c = QTextCodec::codecForLocale(); 
 	return c;
 
@@ -331,7 +331,7 @@ QString KviWinampInterface::mrl()
 			QTextCodec *c=mediaplayer_get_codec();
 			if (c) ret = c->toUnicode(szBuffer);
 			else ret=szBuffer;
-			if(!ret.startsWith("http://",false))
+			if(!ret.startsWith("http://",Qt::CaseInsensitive))
 				ret.prepend("file://");
 		}
 	}

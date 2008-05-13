@@ -48,11 +48,11 @@ class KviDynamicToolTip;
 class KviStyledToolButton;
 
 
-class KviThemeListBoxItem : public KviTalListWidgetItem
+class KviThemeListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	KviThemeListBoxItem(KviTalListWidget * box,KviThemeInfo * inf);
-	virtual ~KviThemeListBoxItem();
+	KviThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf);
+	virtual ~KviThemeListWidgetItem();
 public:
 	KviThemeInfo   * m_pThemeInfo;
 public:

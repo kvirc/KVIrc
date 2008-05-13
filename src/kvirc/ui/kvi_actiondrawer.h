@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_listview.h"
+#include "kvi_tal_listwidget.h"
 
 #include <QWidget>
 #include <QTabWidget>
@@ -34,36 +34,37 @@
 class KviAction;
 class KviActionDrawerPage;
 class QPixmap;
-class Q3SimpleRichText;
 
-class KVIRC_API KviActionDrawerPageListViewItem : public KviTalListViewItem
+class KVIRC_API KviActionDrawerPageListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	KviActionDrawerPageListViewItem(KviTalListView * v,KviAction * a);
-	~KviActionDrawerPageListViewItem();
+	KviActionDrawerPageListWidgetItem(KviTalListWidget * v,KviAction * a);
+	~KviActionDrawerPageListWidgetItem();
 protected:
 	QString m_szName;
-	Q3SimpleRichText * m_pText;
+//	Q3SimpleRichText * m_pText;
 	QPixmap * m_pIcon;
-	KviTalListView * m_pListView;
+	KviTalListWidget * m_pListWidget;
 	QString m_szKey;
 public:
-	QPixmap * icon(){ return m_pIcon; };
-	const QString & name(){ return m_szName; };
+//	QPixmap * icon(){ return m_pIcon; };
+//	const QString & name(){ return m_szName; };
+	/*
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 	virtual void setup();
 	virtual QString key(int,bool) const;
+	*/
 };
 
-class KVIRC_API KviActionDrawerPageListView : public KviListView
+class KVIRC_API KviActionDrawerPageListWidget : public KviTalListWidget
 {
 	friend class KviActionDrawerPage;
 	Q_OBJECT
 protected:
-	KviActionDrawerPageListView(KviActionDrawerPage * pParent);
+	KviActionDrawerPageListWidget(KviActionDrawerPage * pParent);
 public:
-	~KviActionDrawerPageListView();
+	~KviActionDrawerPageListWidget();
 //protected:
 //	KviActionDrawerPage * m_pPage;
 protected:
@@ -80,7 +81,7 @@ protected:
 public:
 	~KviActionDrawerPage();
 protected:
-	KviActionDrawerPageListView * m_pListView;
+	KviActionDrawerPageListWidget * m_pListWidget;
 protected:
 	void add(KviAction * a);
 };

@@ -71,7 +71,7 @@ static bool loadAmipDll()
 
 static QTextCodec * mediaplayer_get_codec()
 {
-  QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)); 
+QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii()); 
   if(!c)c = QTextCodec::codecForLocale(); 
   return c;
 }
@@ -215,9 +215,9 @@ QString KviAmipInterface::mrl()
   QString ret;
   QString fn = eval_str("var_fn");
   QTextCodec *c=mediaplayer_get_codec();
-  if (c) ret = c->toUnicode(fn);
+  if (c) ret = c->toUnicode(fn.toAscii());
   else ret=fn;
-  if(!ret.startsWith("http://",false))
+  if(!ret.startsWith("http://",Qt::CaseInsensitive))
     ret.prepend("file://");
   
   return ret;
@@ -227,7 +227,7 @@ QString getAmipString(const char * var) {
   QString ret;
   QString s = eval_str(var);
   QTextCodec *c=mediaplayer_get_codec();
-  if (c) ret = c->toUnicode(s);
+  if (c) ret = c->toUnicode(s.toAscii());
   else ret=s;
   return ret;
 }
@@ -391,7 +391,7 @@ QString KviAmipInterface::amipEval(const QString &cmd)
   if((ac_eval(szCmd, buff) == AC_ERR_NOERROR)) {
     QString s = buff;
     QTextCodec *c=mediaplayer_get_codec();
-    if (c) ret = c->toUnicode(s);
+	if (c) ret = c->toUnicode(s.toAscii());
     else ret=s;
   }
   return ret;

@@ -83,6 +83,7 @@ KviHttpFileTransfer::~KviHttpFileTransfer()
 
 void KviHttpFileTransfer::autoClean()
 {
+	killTimer(m_TimerId);
 	die();
 }
 
@@ -457,7 +458,8 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 		if(m_pAutoCleanTimer)delete m_pAutoCleanTimer;
 		m_pAutoCleanTimer = new QTimer();
 		connect(m_pAutoCleanTimer,SIGNAL(timeout()),this,SLOT(autoClean()));
-		m_pAutoCleanTimer->start(100,true);
+		m_pAutoCleanTimer->start(100);
+		m_TimerId=m_pAutoCleanTimer->timerId();
 	}
 }
 

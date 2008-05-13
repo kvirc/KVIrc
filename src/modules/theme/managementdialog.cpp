@@ -21,13 +21,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-/*
-#define LVI_ICON_SIZE 32
-#define LVI_BORDER 4
-#define LVI_SPACING 8
-#define LVI_MINIMUM_TEXT_WIDTH 300
-#define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
-*/
+
 #include "managementdialog.h"
 #include "packthemedialog.h"
 #include "savethemedialog.h"
@@ -75,7 +69,7 @@
 extern QRect g_rectManagementDialogGeometry;
 
 
-KviThemeListBoxItem::KviThemeListBoxItem(KviTalListWidget * box,KviThemeInfo * inf)
+KviThemeListWidgetItem::KviThemeListWidgetItem(KviTalListWidget * box,KviThemeInfo * inf)
 : KviTalListWidgetItem(box)
 {
 	m_pThemeInfo = inf;
@@ -105,7 +99,7 @@ KviThemeListBoxItem::KviThemeListBoxItem(KviTalListWidget * box,KviThemeInfo * i
 	setText(t);
 }
 
-KviThemeListBoxItem::~KviThemeListBoxItem()
+KviThemeListWidgetItem::~KviThemeListWidgetItem()
 {
 	delete m_pThemeInfo;
 
@@ -251,7 +245,7 @@ void KviThemeManagementDialog::packTheme()
 	dl.setAutoDelete(false);
 	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
 	for(int i=0;i<itemsSelected.count();i++)
-		dl.append(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo());
+		dl.append(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo());
 	if(dl.isEmpty())return;
 
 	KviPackThemeDialog * pDialog = new KviPackThemeDialog(this,&dl);
@@ -279,7 +273,7 @@ void KviThemeManagementDialog::applyTheme ( QListWidgetItem * it)
 
 void KviThemeManagementDialog::applyCurrentTheme()
 {
-	KviThemeListBoxItem * it = (KviThemeListBoxItem *)m_pListWidget->currentItem();
+	KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)m_pListWidget->currentItem();
 	if(!it)return;
 
 	if(KviMessageBox::yesNo(__tr2qs_ctx("Apply theme - KVIrc","theme"),
@@ -309,8 +303,8 @@ void KviThemeManagementDialog::deleteTheme()
 	{
 			if(!KviMessageBox::yesNo(__tr2qs_ctx("Delete Theme - KVIrc","theme"),
 				__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?","theme"),
-					&(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->name()),&(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
-			KviFileUtils::deleteDir(((KviThemeListBoxItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
+					&(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->name()),&(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->version())))goto jump_out;
+			KviFileUtils::deleteDir(((KviThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->absoluteDirectory());
 	}
 jump_out:
 	fillThemeBox();
@@ -365,8 +359,8 @@ void KviThemeManagementDialog::fillThemeBox(const QString &szDir)
 		if(inf->loadFromDirectory(szTest))
 		{
 			inf->setSubdirectory(*it);
-			KviThemeListBoxItem * item = 0;
-			item = new KviThemeListBoxItem(m_pListWidget,inf);
+			KviThemeListWidgetItem * item = 0;
+			item = new KviThemeListWidgetItem(m_pListWidget,inf);
 		} else {
 			delete inf;
 		}
@@ -408,7 +402,7 @@ void KviThemeManagementDialog::closeEvent(QCloseEvent * e)
 
 void KviThemeManagementDialog::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
 {
-	KviThemeListBoxItem * it = (KviThemeListBoxItem *)(m_pListWidget->itemAt(pnt));
+	KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
 
 	if(!it)return;
 

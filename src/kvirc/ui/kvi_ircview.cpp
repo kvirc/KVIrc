@@ -148,10 +148,10 @@
 #ifdef __STRICT_ANSI__
 	#ifdef COMPILE_USE_DYNAMIC_LABELS
 		// incompatible with -ansi
-		#undef COMPILE_USE_DYNAMIC_LABELS
+		
 	#endif
 #endif
-
+//#undef COMPILE_USE_DYNAMIC_LABELS
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
 #endif
@@ -2182,6 +2182,7 @@ check_char_loop:
 	}
 
 #endif // !COMPILE_USE_DYNAMIC_LABELS
+
 
 check_escape_switch:
 	switch(*p)

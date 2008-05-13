@@ -58,6 +58,7 @@
 #include <QInputDialog>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QAbstractItemView>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -175,7 +176,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	m_pListView->setAllColumnsShowFocus(true);
 
-	m_pListView->setSelectionMode(KviTalListView::Extended);
+	m_pListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListView->setRootIsDecorated(TRUE);
 
 	QToolTip::add(m_pListView,__tr2qs("<center>This is the list of registered users. " \

@@ -265,7 +265,7 @@ QString convertToHtml(const QString &text)
 	return result;
 }
 
-void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QColorGroup& cg,int height, int width)
+void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,int height, int width)
 {
 	QFontMetrics fm(p->font());
 	

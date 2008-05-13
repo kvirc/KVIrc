@@ -1310,7 +1310,7 @@ MP_KVS_FUNCTION(getEqData)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 
-	bool bQuiet = szOptions.find('q',false) != -1;
+	bool bQuiet = szOptions.indexOf('q',Qt::CaseInsensitive) != -1;
 
 	int ret = g_pMPInterface->getEqData(iValue);
 
@@ -1401,7 +1401,7 @@ MP_KVS_FUNCTION(localFile)
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	QString szRet = g_pMPInterface->mrl();
 	if(szRet.isEmpty())return true;
-	if(szRet.startsWith("file://",false))
+	if(szRet.startsWith("file://",Qt::CaseInsensitive))
 	{
 		szRet.remove(0,7);
 		c->returnValue()->setString(szRet);

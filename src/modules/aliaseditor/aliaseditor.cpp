@@ -52,15 +52,15 @@
 #include <QRegExp>
 #include <QTreeWidget>
 #include <QMouseEvent>
+#include <QList>
 
 extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
 KviAliasEditorListViewItem::KviAliasEditorListViewItem(QTreeWidget * pListView,Type eType,const QString &szName)
-: QTreeWidgetItem(pListView), m_eType(eType), m_pParentNamespaceItem(0)
+: QTreeWidgetItem(pListView), m_eType(eType), m_pParentNamespaceItem(0), KviHeapObject()
 {
 	setName(szName);
-	setFlags(Qt::ItemIsEditable|Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 
 KviAliasEditorListViewItem::KviAliasEditorListViewItem(KviAliasNamespaceListViewItem * pParentNamespaceItem,Type eType,const QString &szName)
@@ -122,7 +122,7 @@ KviAliasNamespaceListViewItem::KviAliasNamespaceListViewItem(KviAliasNamespaceLi
 
 KviAliasNamespaceListViewItem::~KviAliasNamespaceListViewItem()
 {
-
+	debug("Deleting %s and pointer %d",this->text(0).toUtf8().data(),this);
 }
 
 KviAliasNamespaceListViewItem * KviAliasNamespaceListViewItem::findNamespaceItem(const QString &szName)
@@ -229,7 +229,7 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 {
 	m_pLastEditedItem = 0;
 	m_pLastClickedItem = 0;
-	m_szDir = QDir::homeDirPath();
+	m_szDir = QDir::homePath();
 
 	QGridLayout * l = new QGridLayout(this);
 
@@ -336,15 +336,15 @@ KviAliasListViewItem * KviAliasEditor::getAliasItem(const QString &szName)
 
 void KviAliasEditor::splitFullAliasOrNamespaceName(const QString &szFullName,QStringList &lNamespaces,QString &szName)
 {
-	lNamespaces = QStringList::split("::",szFullName);
+	lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() < 1)
 	{
 		szName = "unnamed";
 		lNamespaces.append(QString(""));
 		return;
 	}
-	szName = *(lNamespaces.fromLast());
-	lNamespaces.remove(lNamespaces.fromLast());
+	szName = lNamespaces.last();
+	lNamespaces.removeLast();
 }
 
 QString KviAliasEditor::buildFullItemName(KviAliasEditorListViewItem * it)
@@ -579,10 +579,10 @@ void KviAliasEditor::recursiveSearchReplace(const QString &szSearch,KviAliasEdit
 	{
 		if(((KviAliasListViewItem *)it->child(i))->isAlias())
 		{
-			if(((KviAliasListViewItem *)it->child(i))->buffer().find(szSearch,0,false) != -1)
+			if(((KviAliasListViewItem *)it->child(i))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
 			{
 				it->child(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
-				if (bReplace) ((QString &)((KviAliasListViewItem *)it->child(i))->buffer()).replace(szSearch,szReplace,false);
+				if (bReplace) ((QString &)((KviAliasListViewItem *)it->child(i))->buffer()).replace(szSearch,szReplace,Qt::CaseInsensitive);
 				openParentItems(it);
 			} 
 			//else
@@ -602,13 +602,15 @@ void KviAliasEditor::slotFind()
 
 	g_pAliasEditorModule->lock();
 	bool bOk;
-	QString szSearch = QInputDialog::getText(
+	
+	QString szSearch = QInputDialog::getText(this,
 					__tr2qs("Find In Aliases"),
 					__tr2qs("Please enter the text to be searched for. The matching aliases will be highlighted."),
 					QLineEdit::Normal,
 					"",
-					&bOk,
-					this);
+					&bOk);
+	
+
 	g_pAliasEditorModule->unlock();
 	if(!bOk)return;
 	if(szSearch.isEmpty())return;
@@ -617,7 +619,7 @@ void KviAliasEditor::slotFind()
 	{
 		if(((KviAliasListViewItem *)m_pListView->topLevelItem(i))->isAlias())
 		{
-			if(((KviAliasListViewItem *)m_pListView->topLevelItem(i))->buffer().find(szSearch,0,false) != -1)
+			if(((KviAliasListViewItem *)m_pListView->topLevelItem(i))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
 			{
 				m_pListView->topLevelItem(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
 			} 
@@ -700,7 +702,7 @@ void KviAliasEditor::exportSelected()
 void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasListViewItem> *l)
 {
 	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
-	debug ("dir %s",m_szDir.latin1());
+	debug ("dir %s",m_szDir.toUtf8().data());
 	if (!l->first())
 	{
 		g_pAliasEditorModule->lock();
@@ -716,7 +718,7 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasListVi
 	}
 	
 	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
-	debug ("dir changed in %s",m_szDir.latin1());
+	debug ("dir changed in %s",m_szDir.toUtf8().data());
 	
 	bool bReplaceAll=false;
 	
@@ -803,7 +805,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 		g_pAliasEditorModule->unlock();		
 		return;
 	}
-	m_szDir=QFileInfo(szFile).dirPath(TRUE);
+	m_szDir=QFileInfo(szFile).absolutePath();
 	g_pAliasEditorModule->unlock();
 
 	if(!KviFileUtils::writeFile(szFile,out))
@@ -996,6 +998,7 @@ void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorListViewIt
 
 void KviAliasEditor::removeItemChildren(KviAliasEditorListViewItem *it)
 {
+	debug("Deleting");
 	for (int i=0;i<it->childCount();i++)
 	{
 		if (it->child(i)->childCount()) removeItemChildren((KviAliasEditorListViewItem *)it->child(i));
@@ -1039,6 +1042,7 @@ bool KviAliasEditor::removeItem(KviAliasEditorListViewItem *it,bool * pbYesToAll
 		m_pLastEditedItem = 0;
 	if(it == m_pLastClickedItem)
 		m_pLastClickedItem = 0;
+	debug ("Deleting");
 	if (it->childCount()) removeItemChildren(it);
 	delete it;
 	return true;
@@ -1086,13 +1090,12 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 	while(szNewName.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		szNewName = QInputDialog::getText(
+		szNewName = QInputDialog::getText(this,
 						szAction,
 						szText,
 						QLineEdit::Normal,
 						szInitialText,
-						&bOk,
-						this);
+						&bOk);
 		g_pAliasEditorModule->unlock();
 		if(!bOk)return QString::null;
 		if(szNewName.isEmpty())
@@ -1122,7 +1125,7 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 		// make sure that we have only doubled "::" and not ":" or ":::..."
 		QString tmp = szNewName;
 		tmp.replace("::","@"); // @ is not allowed by the rule above
-		if(tmp.find(":") != -1)
+		if(tmp.indexOf(":",Qt::CaseInsensitive) != -1)
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
@@ -1133,7 +1136,7 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 			szNewName = "";
 			continue;
 		}
-		if(tmp.find("@@") != -1)
+		if(tmp.indexOf("@@",Qt::CaseInsensitive) != -1)
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
@@ -1155,13 +1158,12 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 	while(szNewName.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		szNewName = QInputDialog::getText(
+		szNewName = QInputDialog::getText(this,
 						szAction,
 						szText,
 						QLineEdit::Normal,
 						szInitialText,
-						&bOk,
-						this);
+						&bOk);
 		g_pAliasEditorModule->unlock();
 		if(!bOk)return QString::null;
 		if(szNewName.isEmpty())
@@ -1191,7 +1193,7 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 		// make sure that we have only doubled "::" and not ":" or ":::..."
 		QString tmp = szNewName;
 		tmp.replace("::","@"); // @ is not allowed by the rule above
-		if(tmp.find(":") != -1)
+		if(tmp.indexOf(":",Qt::CaseInsensitive) != -1)
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
@@ -1202,7 +1204,7 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 			szNewName = "";
 			continue;
 		}
-		if(tmp.find("@@") != -1)
+		if(tmp.indexOf("@@",Qt::CaseInsensitive) != -1)
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,

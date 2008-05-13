@@ -447,6 +447,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tal\kvi_tal_treewidget.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\tal\kvi_tal_vbox.cpp"
 				>
 			</File>
@@ -1897,18 +1901,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -2237,6 +2230,30 @@
 						CommandLine="$(QTDIR)\bin\moc.exe .\tal\kvi_tal_tooltip.h -o tmp\moc\moc_kvi_tal_tooltip.cpp&#x0D;&#x0A;"
 						AdditionalDependencies="$(QTDIR)\bin\moc.exe;.\tal\kvi_tal_tooltip.h"
 						Outputs="tmp\moc\moc_kvi_tal_tooltip.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_treewidget.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step For $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
 			</File>

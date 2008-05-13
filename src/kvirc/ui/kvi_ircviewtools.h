@@ -25,17 +25,17 @@
 //=========================================================================================================
 
 #include "kvi_settings.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_tooltip.h"
-#include "kvi_tal_listview.h"
 
 #include <QFrame>
 #include <QString>
+#include <QTreeWidget>
+#include <QCheckBox>
 
 class QLabel;
 class QLineEdit;
 class KviIrcView;
-//class KviStyledCheckBox;
+
 
 class KviIrcViewToolTip : public KviTalToolTip
 {
@@ -56,17 +56,23 @@ public:
 
 class KviIrcViewToolWidget;
 
-class KviIrcMessageCheckListItem : public KviTalCheckListItem
+
+class KviIrcMessageCheckListItem : public QTreeWidgetItem
 {
 public:
-	KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id);
+	KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcViewToolWidget * w,int id);
 	~KviIrcMessageCheckListItem();
 private:
+	QCheckBox *m_pCbox;
 	int m_iId;
 	KviIrcViewToolWidget * m_pToolWidget;
 public:
-	void setToolWidget(KviIrcViewToolWidget * w){ m_pToolWidget = w; };
-	virtual void stateChange(bool bOn);
+	//void setToolWidget(KviIrcViewToolWidget * w){ m_pToolWidget = w; };
+	void setOn(bool b){setCheckState(0,b?Qt::Checked:Qt::Unchecked);};
+	bool isOn(){
+		if (checkState(0)==Qt::Checked) return true;
+		else return false;
+	}
 };
 
 //=========================================================================================================
@@ -87,19 +93,19 @@ protected:
 	QLineEdit  * m_pStringToFind;
 	QPoint       m_pressPoint;
 
-	KviStyledCheckBox  * m_pCaseSensitive;
-	KviStyledCheckBox  * m_pRegExp;
-	KviStyledCheckBox  * m_pExtendedRegExp;
+	QCheckBox  * m_pCaseSensitive;
+	QCheckBox  * m_pRegExp;
+	QCheckBox  * m_pExtendedRegExp;
 
 	QLabel     * m_pFindResult;
 
-	KviTalListView  * m_pFilterView;
+	QTreeWidget  * m_pFilterView;
 
 	KviIrcMessageCheckListItem ** m_pFilterItems;
 
 public:
 	void setFindResult(const QString & text);
-	inline bool messageEnabled(int msg_type){ return m_pFilterItems[msg_type]->isOn(); }
+	inline bool messageEnabled(int msg_type){ return m_pFilterItems[msg_type]->isOn();};
 	void forceRepaint();
 protected slots:
 	void findPrev();

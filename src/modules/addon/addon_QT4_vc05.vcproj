@@ -272,7 +272,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\moc_$(InputName).cpp"
 					/>
 				</FileConfiguration>

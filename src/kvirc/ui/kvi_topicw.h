@@ -102,7 +102,7 @@ public:
 	virtual QSize sizeHint() const;
 	void applyOptions();
 	
-	static void paintColoredText(QPainter *p, QString text,const QColorGroup& cg, int h=-1, int w=-1);
+	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, int h=-1, int w=-1);
 protected slots:
 	void acceptClicked();
 	void discardClicked();

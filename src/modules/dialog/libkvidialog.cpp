@@ -61,16 +61,24 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	const QString &szCode,
 	KviKvsVariantList * pMagicParams,
 	KviWindow * pWindow,bool modal)
-: QMessageBox(
+: QMessageBox(0)/*
 	szCaption,
 	szText,
 	QMessageBox::NoIcon,
 	szButton0.isEmpty() ? QMessageBox::NoButton : QMessageBox::Ok | QMessageBox::Default,
 	szButton1.isEmpty() ? QMessageBox::NoButton : (szButton2.isEmpty() ? QMessageBox::No | QMessageBox::Escape : QMessageBox::No),
 	szButton2.isEmpty() ? QMessageBox::NoButton : QMessageBox::Cancel | QMessageBox::Escape,
-	0,0,modal) ,
+	0,0,modal)*/ ,
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
+	setWindowTitle(szCaption);
+	setText(szText);
+	setIcon(QMessageBox::NoIcon);
+	QMessageBox::StandardButton buttons;
+	if (!szButton0.isEmpty())  buttons=QMessageBox::StandardButton::Ok | QMessageBox::StandardButton::Default;
+	if (!szButton2.isEmpty()) buttons|=QMessageBox::StandardButton::Cancel | QMessageBox::StandardButton::Escape;
+	else if(!szButton1.isEmpty()) buttons|=QMessageBox::No | QMessageBox::Escape;
+	setStandardButtons(buttons)
 	g_pDialogModuleDialogList->append(this);
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);

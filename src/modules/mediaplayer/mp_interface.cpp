@@ -84,7 +84,7 @@ QString KviMediaPlayerInterface::getLocalFile()
 {
 	QString ret = mrl();
 	if(ret.isEmpty())return ret;
-	if(ret.startsWith("file://",false))
+	if(ret.startsWith("file://",Qt::CaseInsensitive))
 	{
 		ret.remove(0,7);
 		return ret;
@@ -265,12 +265,12 @@ bool KviMediaPlayerInterface::setShuffle(bool &bVal)
 QString KviMediaPlayerInterface::mediaType()
 {
 	QString ret = mrl();
-	if(ret.endsWith(".mp3",false))ret = "MPEG Layer 3";
-	else if(ret.endsWith(".ogg",false))ret = "OGG Vorbis";
-	else if(ret.endsWith(".avi",false))ret = "Audio Video Interleave";
-	else if(ret.endsWith(".mpeg",false))ret = "MPEG Video";
-	else if(ret.endsWith(".mpg",false))ret = "MPEG Video";
-	else if(ret.startsWith("http://",false))ret = "HTTP Audio Stream";
+	if(ret.endsWith(".mp3",Qt::CaseInsensitive))ret = "MPEG Layer 3";
+	else if(ret.endsWith(".ogg",Qt::CaseInsensitive))ret = "OGG Vorbis";
+	else if(ret.endsWith(".avi",Qt::CaseInsensitive))ret = "Audio Video Interleave";
+	else if(ret.endsWith(".mpeg",Qt::CaseInsensitive))ret = "MPEG Video";
+	else if(ret.endsWith(".mpg",Qt::CaseInsensitive))ret = "MPEG Video";
+	else if(ret.startsWith("http://",Qt::CaseInsensitive))ret = "HTTP Audio Stream";
 	else ret = QString::null;
 	return ret;
 }

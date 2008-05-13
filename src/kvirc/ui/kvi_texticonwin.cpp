@@ -41,10 +41,12 @@
 
 #include <ctype.h>
 #include <QPalette>
+#include <QListView>
 
 KviTextIconWindow::KviTextIconWindow(QWidget *parent)
 : KviTalIconView(parent,Qt::Popup)
 {
+	
 	
 	m_iTimerId = -1;
 	m_pParent=parent;
@@ -329,27 +331,6 @@ KviTextIconWindowWidget::KviTextIconWindowWidget()
 	show();
 	hide();
 }
-/*
-void KviTextIconWindowWidget::paintEvent(QPaintEvent*e)
-{
-	QPainter p(this);
-	QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
-
-	if (pix) p.drawPixmap(0,0,this->width(),this->height(),*pix);
-	else debug("NO");
-	p.end();
-}
-/*
-void test::paintEvent(QPaintEvent*e)
-{
-	QPainter p(this);
-	QPixmap *pix=g_pIconManager->getPixmap("kvi_test.png");
-	if (pix) p.drawPixmap(0,0,this->width(),this->height(),*pix);
-	else debug("NO");
-	p.end();
-}
-
-*/
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_texticonwin.moc"

@@ -49,6 +49,7 @@
 #include <QLabel>
 #include <QToolTip>
 #include <QPushButton>
+#include <QAbstractItemView>
 
 
 extern KviPopupEditorWindow * g_pPopupEditorWindow;
@@ -998,7 +999,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 
 	m_pListView = new KviTalListView(box);
 	m_pListView->addColumn(__tr2qs("Popup"));
-	m_pListView->setSelectionMode(KviTalListView::Extended);
+	m_pListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListView->setShowSortIndicator(true);
 
 	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),box);

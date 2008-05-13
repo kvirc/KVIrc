@@ -48,9 +48,11 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QShortcut>
+#include <QHeaderView>
+#include <QScrollBar>
 
 // FIXME: Qt4 #include <QHeaderView>
-#include <q3header.h>
+//#include <q3header.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -59,13 +61,14 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(KviTalListView * par,KviIrcViewToolWidget * w,int id)
-: KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox)
+KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcViewToolWidget * w,int id)
+: QTreeWidgetItem(par)
 {
 	m_iId = id;
+	setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsUserCheckable);
+	setCheckState(0,Qt::Checked);
+	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_OPTION_MSGTYPE(id).pixId())));
 	m_pToolWidget = 0;
-	setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_OPTION_MSGTYPE(id).pixId())));
-	setOn(true);
 	m_pToolWidget = w;
 }
 
@@ -73,26 +76,32 @@ KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
 {
 }
 
-void KviIrcMessageCheckListItem::stateChange(bool bOn)
-{
-	KviTalCheckListItem::stateChange(bOn);
-	if(!m_pToolWidget)return;
-	m_pToolWidget->forceRepaint();
-}
-
-
 
 KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 : QFrame(par)
 {
 	m_pIrcView = par;
-	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
-
+	setFrameShadow(QFrame::Raised);
+	setFrameShape(QFrame::Panel);
+	setFrameStyle(QFrame::StyledPanel);
+	setAutoFillBackground(true);
+	//setStyleSheet("background-color: rgba(255,255, 180, 20%)") ;
+	QPalette p=palette();
+	QColor col=backgroundRole();
+	//installEventFilter(
+	col.setAlpha(255);
+	p.setColor(backgroundRole(),col);
+	setPalette(p);
+//	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
+	
 	QGridLayout * gl = new QGridLayout(this);
 
 	QLabel * l = new QLabel(__tr2qs("<b><font color=\"#EAEAEA\" size=\"-1\">Find Text</font></b>"),this);
-	l->setMaximumHeight(14);
-	l->setBackgroundColor(Qt::black);
+//	l->setMaximumHeight(14);
+	p = l->palette(); 
+	p.setColor(QPalette::Base, Qt::black);
+	l->setPalette(p); 
+	l->setAutoFillBackground(true);
 	gl->addWidget(l,0,0);
 
 	QToolButton *tb = new QToolButton(Qt::DownArrow,this,"down_arrow");
@@ -108,7 +117,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	// Find tab
 	QWidget * w = new QWidget(tw);
-
+	
 	QGridLayout * g = new QGridLayout(w);
 
 	m_pStringToFind = new QLineEdit(w);
@@ -118,12 +127,12 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	m_pRegExp = new KviStyledCheckBox(__tr2qs("&Regular expression"),w);
 	g->addMultiCellWidget(m_pRegExp,1,1,0,2);
 
-	m_pExtendedRegExp = new KviStyledCheckBox(__tr2qs("E&xtended regexp."),w);
+	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
 	g->addMultiCellWidget(m_pExtendedRegExp,2,2,0,2);
 	m_pExtendedRegExp->setEnabled(false);
 	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
 
-	m_pCaseSensitive = new KviStyledCheckBox(__tr2qs("C&ase sensitive"),w);
+	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
 	g->addMultiCellWidget(m_pCaseSensitive,3,3,0,2);
 
 	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);
@@ -145,11 +154,15 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	// Filter tab
 	QWidget * w1 = new QWidget(tw);
-
 	g = new QGridLayout(w1);
 
-	m_pFilterView = new KviTalListView(w1);
-	m_pFilterView->addColumn(__tr2qs("Type"));
+
+	m_pFilterView = new QTreeWidget(w1);
+	m_pFilterView->setMaximumWidth(60);
+	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	m_pFilterView->setRootIsDecorated(false);
+	m_pFilterView->setColumnCount(1);
+	//m_pFilterView->addColumn(__tr2qs("Type"));
 	m_pFilterView->header()->hide();
 	m_pFilterView->setMinimumSize(QSize(10,10));
 
@@ -198,22 +211,22 @@ void KviIrcViewToolWidget::filterEnableAll()
 {
 	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{
-		m_pFilterItems[i]->setToolWidget(0);
+	//	m_pFilterItems[i]->setToolWidget(0);
 		m_pFilterItems[i]->setOn(true);
-		m_pFilterItems[i]->setToolWidget(this);
+	//	m_pFilterItems[i]->setToolWidget(this);
 	}
-	forceRepaint();
+
 }
 
 void KviIrcViewToolWidget::filterEnableNone()
 {
 	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{
-		m_pFilterItems[i]->setToolWidget(0);
+	//	m_pFilterItems[i]->setToolWidget(0);
 		m_pFilterItems[i]->setOn(false);
-		m_pFilterItems[i]->setToolWidget(this);
+	//	m_pFilterItems[i]->setToolWidget(this);
 	}
-	forceRepaint();
+
 }
 
 void KviIrcViewToolWidget::hideEvent ( QHideEvent * ){
@@ -241,9 +254,9 @@ void KviIrcViewToolWidget::filterLoad()
 			f.close();
 			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 			{
-				m_pFilterItems[i]->setToolWidget(0);
+			//	m_pFilterItems[i]->setToolWidget(0);
 				m_pFilterItems[i]->setOn(buffer[i]);
-				m_pFilterItems[i]->setToolWidget(this);
+			///	m_pFilterItems[i]->setToolWidget(this);
 			}
 			forceRepaint();
 		} else {
@@ -276,13 +289,6 @@ void KviIrcViewToolWidget::filterSave()
 
 void KviIrcViewToolWidget::forceRepaint()
 {
-	/*
-	#if defined(COMPILE_USE_QT4) && defined(COMPILE_ON_WINDOWS)
-		m_pIrcView->repaint();
-	#else
-		m_pIrcView->paintEvent(0);
-	#endif
-	*/
 	#ifdef COMPILE_ON_WINDOWS
 		m_pIrcView->repaint();
 	#else
@@ -328,6 +334,7 @@ void KviIrcViewToolWidget::mouseMoveEvent(QMouseEvent *)
 		if((p.y() + height()) > hhh)p.setY(hhh - height());
 	}
 	move(p);
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

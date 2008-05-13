@@ -33,7 +33,7 @@
 #include "kvi_console.h"
 #include "kvi_regchan.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include <kvi_tal_groupbox.h>
 
 #include <QLabel>
@@ -43,9 +43,7 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>
-
-// FIXME: Qt4 #include <QHeaderView>
-#include <q3header.h>
+#include <QHeaderView>
 
 
 extern KviChannelsJoinWindow * g_pChannelsWindow;
@@ -55,22 +53,24 @@ extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 
 
 KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name) 
-: QDialog(par,name)
+: QDialog(par)
 {
+	setObjectName(name);
 	m_pConsole=0;
 	setWindowTitle(__tr2qs("Join Channels"));
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 
 	QGridLayout * g = new QGridLayout(this);
 	
-	m_pListView = new KviTalListView(this);
+	m_pListView = new KviTalTreeWidget(this);
 	m_pListView->addColumn(__tr2qs("Channel"));
 	m_pListView->setRootIsDecorated(true);
-	m_pListView->setSelectionMode(KviTalListView::Single);
-	g->addMultiCellWidget(m_pListView,0,0,0,1);
-	connect(m_pListView,SIGNAL(clicked(KviTalListViewItem *)),this,SLOT(itemClicked(KviTalListViewItem *)));
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
+	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
+	g->addWidget(m_pListView,0,0,0,2);
+	//g->addMultiCellWidget(m_pListView,0,0,0,1);
+	connect(m_pListView,SIGNAL(clicked(KviTalTreeWidgetItem *)),this,SLOT(itemClicked(KviTalTreeWidgetItem *)));
+	connect(m_pListView,SIGNAL(doubleClicked(KviTalTreeWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *)));
 
 
 	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel" ),this);
@@ -89,14 +89,16 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pPass = new QLineEdit(m_pGroupBox);
 	m_pPass->setEchoMode(QLineEdit::Password);
 
-	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
+	g->addWidget(m_pGroupBox,1,1,0,1);
+//	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
 	m_pJoinButton = new QPushButton(__tr2qs("&Join"),this);
 	// Join on return pressed
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
-	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
+g->addWidget(m_pJoinButton,2,2,0,0,Qt::AlignHCenter);
+//	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
 
 	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
@@ -153,9 +155,9 @@ void KviChannelsJoinWindow::fillListView()
 
 	m_pListView->header()->hide();
 
-	KviTalListViewItem * par = new KviTalListViewItem(m_pListView,__tr2qs("Recent Channels"));
-	par->setOpen(true);
-	KviTalListViewItem * chld;
+	KviTalTreeWidgetItem * par = new KviTalTreeWidgetItem(m_pListView,__tr2qs("Recent Channels"));
+	par->setExpanded(true);
+	KviTalTreeWidgetItem * chld;
 	
 	if(m_pConsole)
 	{
@@ -165,15 +167,15 @@ void KviChannelsJoinWindow::fillListView()
 		{
 			for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 			{
-				chld = new KviTalListViewItem(par,*it);
-				chld->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+				chld = new KviTalTreeWidgetItem(par,*it);
+				chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			}
 		}
 	}
 
 	// FIXME: Registered channels go here!
-	par = new KviTalListViewItem(m_pListView,__tr2qs("Registered Channels"));
-	par->setOpen(true);
+	par = new KviTalTreeWidgetItem(m_pListView,__tr2qs("Registered Channels"));
+	par->setExpanded(true);
 
 	KviPointerHashTable<const char *,KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
 	if(d)
@@ -181,23 +183,23 @@ void KviChannelsJoinWindow::fillListView()
 		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
-			chld = new KviTalListViewItem(par,it.currentKey());
-			chld->setPixmap(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+			chld = new KviTalTreeWidgetItem(par,it.currentKey());
+			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;
 		}
 	}
 }
 
-void KviChannelsJoinWindow::itemClicked(KviTalListViewItem * it) 
+void KviChannelsJoinWindow::itemClicked(KviTalTreeWidgetItem * it) 
 {
 	if(!it)return;
 	if(!it->parent())return;
-	KviStr tmp = it->text(0);
-	m_pChannelEdit->setText(tmp.ptr());
+	QString tmp = it->text(0);
+	m_pChannelEdit->setText(tmp);
 	enableJoin();
 }
 
-void KviChannelsJoinWindow::itemDoubleClicked(KviTalListViewItem * it) 
+void KviChannelsJoinWindow::itemDoubleClicked(KviTalTreeWidgetItem * it) 
 {
 	if(!it)return;
 	if(!it->parent())return;

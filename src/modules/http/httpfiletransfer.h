@@ -43,6 +43,7 @@ public:
 	KviHttpFileTransfer();
 	~KviHttpFileTransfer();
 private:
+	int m_TimerId;
 	KviHttpRequest * m_pHttpRequest;
 	GeneralStatus    m_eGeneralStatus;
 	QString          m_szStatusString;
