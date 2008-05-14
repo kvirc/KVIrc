@@ -35,6 +35,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_fileextensions.h"
+#include "kvi_msgbox.h"
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_draganddrop.h"
