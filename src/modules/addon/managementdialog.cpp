@@ -286,6 +286,8 @@ void KviScriptManagementDialog::installScript()
 
 	szFileName.replace("\\","\\\\");
 
+	QString szError;
+
 	// Switch between script and addon
 	if(szFileName.endsWith(".kvs"))
 	{
@@ -302,7 +304,6 @@ void KviScriptManagementDialog::installScript()
 		}
 	} else {
 		// Just for sanity check. We should NEVER enter here
-		QString szError;
 		KviAddonFunctions::notAValidAddonPackage(szError);
 		QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
