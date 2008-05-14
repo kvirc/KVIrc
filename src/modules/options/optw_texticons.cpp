@@ -139,7 +139,7 @@ void KviTextIconsOptionsWidget::iconSelected(int id)
 void KviTextIconsOptionsWidget::chooseFromFile()
 {
 	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString::null,"*.png","options");
+	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString::null,KVI_FILTER_IMAGE,"options");
 	if(!szFile.isEmpty())
 	{
 		if(g_pIconManager->getPixmap(szFile))

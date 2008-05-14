@@ -119,7 +119,7 @@ void KviMircServersIniImport::start()
 {
 	//KviStr buffer;
 	QString buffer;
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini file"),0,"*.ini",false,true))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a servers.ini file"),0,KVI_FILRER_INI,false,true))return;
 
 	doImport(buffer);
 	delete this;

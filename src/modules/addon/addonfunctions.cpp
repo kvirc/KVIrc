@@ -39,7 +39,7 @@
 
 namespace KviAddonFunctions
 {
-	static bool notAValidAddonPackage(QString &szError)
+	bool notAValidAddonPackage(QString &szError)
 	{
 		KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc addon package","addon"));
 		return false;

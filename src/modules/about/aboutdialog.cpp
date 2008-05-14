@@ -32,7 +32,7 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_buildinfo.h"
 #include "kvi_osinfo.h"
-#include <kvi_tal_textedit.h>
+#include "kvi_tal_textedit.h"
 
 #include <QWidget>
 #include <QLayout>

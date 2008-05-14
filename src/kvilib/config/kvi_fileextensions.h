@@ -26,12 +26,23 @@
 //=============================================================================
 
 //=============================================================================
-// This file contains the file extensions used by KVIrc
+// This file contains the file extensions and filters used by KVIrc
 //=============================================================================
 
 #define KVI_FILEEXTENSION_CONFIG "kvc"
 #define KVI_FILEEXTENSION_SCRIPT "kvs"
 #define KVI_FILEEXTENSION_THEMEPACKAGE "kvt"
 #define KVI_FILEEXTENSION_ADDONPACKAGE "kva"
+
+#define KVI_FILTER_CONFIG "KVIrc Config (*.kvc)"
+#define KVI_FILTER_SCRIPT "KVIrc Script (*.kvs)"
+#define KVI_FILTER_THEME "KVIrc Theme (*.kvt)"
+#define KVI_FILTER_ADDON "KVIrc Addon (*.kva)"
+// Provided for convenience
+#define KVI_FILTER_SCRIPTS "KVIrc Script and Addon (*.kvs *.kva)"
+
+#define KVI_FILRER_INI "INI File (*.ini)"
+#define KVI_FILTER_IMAGE "Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
+
 
 #endif //_KVI_FILEEXTENSIONS_H_

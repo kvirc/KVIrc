@@ -1149,8 +1149,7 @@ void KviScriptEditorImplementation::loadFromFile()
 	QString fName;
 	if(KviFileDialog::askForOpenFileName(fName,
 		__tr2qs_ctx("Load Script File - KVIrc","editor"),
-		QString::null,
-		QString::null,false,true))
+		QString::null,KVI_FILTER_SCRIPT,false,true))
 	{
 		QString buffer;
 		if(KviFileUtils::loadFile(fName,buffer))

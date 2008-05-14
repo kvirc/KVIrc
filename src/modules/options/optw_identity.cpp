@@ -260,7 +260,7 @@ void KviAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
  	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),
-		QString::null,QString::null,false,true,this))
+		QString::null,KVI_FILTER_IMAGE,false,true,this))
 	{
 		m_pLineEdit->setText(tmp);
 	}

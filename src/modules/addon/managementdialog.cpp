@@ -24,6 +24,7 @@
 
 #include "managementdialog.h"
 #include "packaddondialog.h"
+#include "addonfunctions.h"
 
 #include "kvi_app.h"
 #include "kvi_locale.h"
@@ -277,17 +278,32 @@ void KviScriptManagementDialog::getMoreScripts()
 
 void KviScriptManagementDialog::installScript()
 {
-	QString buffer;
+	QString szFileName, szError;
 
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs("Please select the addon installation file"),QString::null,"install.kvs",false,true))return;
+	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs("Please select the addon installation file"),QString::null,KVI_FILTER_SCRIPTS,false,true))return;
 
-	buffer.replace("\\","\\\\");
+	szFileName.replace("\\","\\\\");
 
-	QString szCmd = "parse \"";
-	szCmd += buffer;
-	szCmd += "\"";
-
-	KviKvsScript::run(szCmd,g_pActiveWindow);
+	// Switch between script and addon
+	if(szFileName.endsWith(".kvs"))
+	{
+		QString szCmd = "parse \"";
+		szCmd += szFileName;
+		szCmd += "\"";
+	
+		KviKvsScript::run(szCmd,g_pActiveWindow);
+	} else if(szFileName.endsWith(".kva")){
+		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
+		{
+			KviMessageBox::information(szError);
+			return;
+		}
+	} else {
+		// Just for sanity check. We should NEVER enter here
+		QString szError;
+		KviAddonFunctions::notAValidAddonPackage(szError);
+		QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	}
 
 	fillListView();
 	currentChanged(0,0);

@@ -366,8 +366,7 @@ void KviListWindow::importList()
 {
 	
 	QString szFile;
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString::null,
-		__tr2qs("Configuration files (*.kvc)"),false,
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString::null,KVI_FILTER_CONFIG,false,
 		false,this))
 	{
 		if(m_pConsole->isConnected())
