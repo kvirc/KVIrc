@@ -33,6 +33,7 @@
 #include "kvi_console.h"
 #include "kvi_optionswidget.h"
 #include "kvi_filedialog.h"
+#include "kvi_fileextensions.h"
 #include "kvi_iconmanager.h"
 #include "kvi_http.h"
 #include "kvi_tal_tooltip.h"

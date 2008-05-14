@@ -26,6 +26,7 @@
 #include "kvi_texticonmanager.h"
 #include "kvi_locale.h"
 #include "kvi_filedialog.h"
+#include "kvi_fileextensions.h"
 #include "kvi_tal_hbox.h"
 
 #include <QLayout>

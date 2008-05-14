@@ -26,6 +26,7 @@
 #include "scripteditor.h"
 
 #include "kvi_fileutils.h"
+#include "kvi_fileextensions.h"
 #include "kvi_locale.h"
 #include "kvi_filedialog.h"
 #include "kvi_qstring.h"
