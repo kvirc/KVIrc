@@ -115,9 +115,11 @@ ENDIF()
 #
 ###############################################################################
 
-OPTION(APPEND_VER_TO_BINARIES "Append version to binaries to maintain compatibility with older versions" OFF)
-IF(COEXISTENCE_VER)
-	SET(APPEND_VER_TO_BINARIES ON)
+OPTION(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" OFF)
+IF(COEXISTENCE)
+	SET(WANT_COEXISTENCE ON)
+ENDIF()
+IF(WANT_COEXISTENCE)
 	SET(CMAKE_STATUS_COEXISTENCE_VER "yes")
 ELSE()
 	SET(CMAKE_STATUS_COEXISTENCE_VER "no")
