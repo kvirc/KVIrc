@@ -136,7 +136,9 @@ bool KviPackAddonDialog::packAddon()
 	QString szPackageVersion = m_pPackAddonInfoCreateWidget->packageVersion();
 	QString szPackageDescription = m_pPackAddonInfoCreateWidget->packageDescription();
 	QString szSourcePath = m_pPackAddonFileSelectionWidget->sourcePath();
+	QString szConfigPath = m_pPackAddonFileSelectionWidget->configPath();
 	QString szImagePath = m_pPackAddonFileSelectionWidget->imagePath();
+	QString szLocalePath = m_pPackAddonFileSelectionWidget->localePath();
 	QString szHelpPath = m_pPackAddonFileSelectionWidget->helpPath();
 	QString szSoundPath = m_pPackAddonFileSelectionWidget->soundPath();
 	QString szInstallPath = m_pPackAddonFileSelectionWidget->installerPath();
@@ -144,7 +146,9 @@ bool KviPackAddonDialog::packAddon()
 
 	// We need mandatory unix like path separator
 	szSourcePath.replace('\\',"/");
+	szConfigPath.replace('\\',"/");
 	szImagePath.replace('\\',"/");
+	szLocalePath.replace('\\',"/");
 	szHelpPath.replace('\\',"/");
 	szSoundPath.replace('\\',"/");
 	szInstallPath.replace('\\',"/");
@@ -171,8 +175,26 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
 
+	// Add config dir
+	if(!pw.addDirectory(szConfigPath,"config/scripts/"))
+	{
+		szTmp = __tr2qs_ctx("Packaging failed","addon");
+		szTmp += ": ";
+		szTmp += pw.lastError();
+		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	}
+
 	// Add image dir
 	if(!pw.addDirectory(szImagePath,"pics/"))
+	{
+		szTmp = __tr2qs_ctx("Packaging failed","addon");
+		szTmp += ": ";
+		szTmp += pw.lastError();
+		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	}
+
+	// Add localization dir
+	if(!pw.addDirectory(szLocalePath,"locale/"))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
@@ -302,17 +324,25 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	m_pSourcePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select scripts directory:","addon"),&szSourcePath,true);
 	pLayout->addWidget(m_pSourcePathSelector,2,0);
 
+	// Select config dir
+	m_pConfigPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select config directory:","addon"),&szConfigPath,true);
+	pLayout->addWidget(m_pConfigPathSelector,3,0);
+
 	// Select image dir
 	m_pImagePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select images directory:","addon"),&szImagePath,true);
-	pLayout->addWidget(m_pImagePathSelector,3,0);
+	pLayout->addWidget(m_pImagePathSelector,4,0);
+
+	// Select localization dir
+	m_pLocalePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select localization directory:","addon"),&szLocalePath,true);
+	pLayout->addWidget(m_pLocalePathSelector,5,0);
 
 	// Select help dir
 	m_pHelpPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select help directory:","addon"),&szHelpPath,true);
-	pLayout->addWidget(m_pHelpPathSelector,4,0);
+	pLayout->addWidget(m_pHelpPathSelector,6,0);
 
 	// Select sound dir
 	m_pSoundPathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select sounds directory:","addon"),&szSoundPath,true);
-	pLayout->addWidget(m_pSoundPathSelector,5,0);
+	pLayout->addWidget(m_pSoundPathSelector,7,0);
 }
 
 KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDialog *pParent)
@@ -366,13 +396,16 @@ void KviPackAddonInfoWidget::showEvent(QShowEvent *)
 	KviPackAddonFileSelectionWidget * pFileWidget = m_pParent->m_pPackAddonFileSelectionWidget;
 	KviPackAddonSaveSelectionWidget * pSaveWidget = m_pParent->m_pPackAddonSaveSelectionWidget;
 
-	QString szText = "<b>" + __tr2qs_ctx("Package Author","addon") + ":</b> " + pCreateWidget->authorName() + "<br>";
+	QString szText = __tr2qs_ctx("This is what I will check for","addon") + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Package Author","addon") + ":</b> " + pCreateWidget->authorName() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Package Name","addon") + ":</b> " + pCreateWidget->packageName() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Package Version","addon") + ":</b> " + pCreateWidget->packageVersion() + "<br>";
-	szText += "<b>" + __tr2qs_ctx("Package Description","addon") + ":</b> " + pCreateWidget->packageDescription() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Package Description","addon") + ":</b> " + pCreateWidget->packageDescription() + "<br><br>";
 	szText += "<b>" + __tr2qs_ctx("Installer Script","addon") + ":</b> " + pFileWidget->installerPath() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Source Directory","addon") + ":</b> " + pFileWidget->sourcePath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Configuration Directory","addon") + ":</b> " + pFileWidget->configPath() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Image Directory","addon") + ":</b> " + pFileWidget->imagePath() + "<br>";
+	szText += "<b>" + __tr2qs_ctx("Localization Directory","addon") + ":</b> " + pFileWidget->localePath() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Help Directory","addon") + ":</b> " + pFileWidget->helpPath() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Sound Directory","addon") + ":</b> " + pFileWidget->soundPath() + "<br>";
 	szText += "<b>" + __tr2qs_ctx("Save Path","addon") + ":</b> " + pSaveWidget->savePath();

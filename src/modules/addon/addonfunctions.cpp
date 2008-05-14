@@ -34,7 +34,6 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_frame.h"
 
-//#include <qmime.h>
 #include <q3mimefactory.h>
 #define KviTalMimeSourceFactory Q3MimeSourceFactory
 
@@ -51,7 +50,6 @@ namespace KviAddonFunctions
 		KviPointerHashTable<QString,QString> * pInfoFields;
 		QString * pValue;
 		bool bInstall;
-		QPixmap pix;
 		QByteArray * pByteArray;
 		KviHtmlDialogData hd;
 
@@ -90,18 +88,6 @@ namespace KviAddonFunctions
 		if(iAddonCount < 1)return notAValidAddonPackage(szError);
 	
 		// ok.. it should be really valid at this point
-		
-		// load its picture
-		pByteArray = r.binaryInfoFields()->find("Image");
-		if(pByteArray)
-			pix.loadFromData(*pByteArray,0,0);
-		
-		if(pix.isNull())
-		{
-			// load the default icon
-			pix = *(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS));
-		}
-
 		QString szPackageName;
 		QString szPackageVersion;
 		QString szPackageAuthor;
@@ -248,9 +234,6 @@ namespace KviAddonFunctions
 			&szShowDetails
 		);
 
-		
-
-		KviTalMimeSourceFactory::defaultFactory()->setPixmap("Addon_dialog_pack_image",pix);
 		KviTalMimeSourceFactory::defaultFactory()->setText("addon_dialog_details",szDetails);
 		KviTalMimeSourceFactory::defaultFactory()->setText("addon_dialog_main",hd.szHtmlText);
 	
@@ -285,7 +268,6 @@ namespace KviAddonFunctions
 
 		return true;
 	}
-
 
 	void getAddonHtmlDescription(
 		QString &szBuffer,

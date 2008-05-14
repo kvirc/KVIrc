@@ -81,18 +81,24 @@ public:
 	KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent);
 	~KviPackAddonFileSelectionWidget(){};
 	QString sourcePath(){m_pSourcePathSelector->commit();return szSourcePath;};
+	QString configPath(){m_pConfigPathSelector->commit();return szConfigPath;};
 	QString imagePath(){m_pImagePathSelector->commit();return szImagePath;};
+	QString localePath(){m_pLocalePathSelector->commit();return szLocalePath;};
 	QString helpPath(){m_pHelpPathSelector->commit();return szHelpPath;};
 	QString soundPath(){m_pSoundPathSelector->commit();return szSoundPath;};
 	QString installerPath(){m_pInstallPathSelector->commit();return szInstallPath;};
 protected:
 	KviDirectorySelector * m_pSourcePathSelector;
+	KviDirectorySelector * m_pConfigPathSelector;
 	KviDirectorySelector * m_pImagePathSelector;
+	KviDirectorySelector * m_pLocalePathSelector;
 	KviDirectorySelector * m_pHelpPathSelector;
 	KviDirectorySelector * m_pSoundPathSelector;
 	KviFileSelector      * m_pInstallPathSelector;
 	QString szSourcePath;
+	QString szConfigPath;
 	QString szImagePath;
+	QString szLocalePath;
 	QString szHelpPath;
 	QString szSoundPath;
 	QString szInstallPath;
