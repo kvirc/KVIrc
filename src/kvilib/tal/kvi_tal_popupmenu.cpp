@@ -37,11 +37,11 @@ KviTalPopupMenu::KviTalPopupMenu(QWidget * pParent,const QString &szName)
 	setObjectName(szName);
 	identifier=0;
 }
-KviTalPopupMenu::~KviTalPopupMenu() 
+KviTalPopupMenu::~KviTalPopupMenu()
 {
 }
-	
-	
+
+
 int KviTalPopupMenu::insertItem(const QString &szText)
 {
 	QAction *a=addAction(szText);
@@ -87,17 +87,17 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const Q
 	actionsDict[identifier++]=action;
 	return identifier-1;
 }
-//	
+//
 int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,QMenu *pMenu)
 {
-	
+
 	QAction *a=addMenu(pMenu);
 	a->setText(szText);
 	a->setIcon(QIcon(pix));
 	actionsDict[identifier++]=a;
 	return identifier-1;
 }
-	
+
 int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 {
 	QAction *a=addMenu(pMenu);
@@ -105,7 +105,7 @@ int KviTalPopupMenu::insertItem(const QString &szText,QMenu *pMenu)
 	actionsDict[identifier++]=a;
 	return identifier-1;
 }
-	
+
 // FIXME
 int KviTalPopupMenu::insertItem(QWidget * pWidget)
 {
@@ -130,7 +130,7 @@ void KviTalPopupMenu::setItemParameter(int id, int param)
 int KviTalPopupMenu::itemParameter(int id)
 {
 	QAction * action=actionsDict.value(id);
-	if (action)	return action->data().asInt();
+	if (action)	return action->data().toInt();
 	else return 0;
 }
 void KviTalPopupMenu::clear()
@@ -161,7 +161,7 @@ void KviTalPopupMenu::slottriggered(QAction *a)
 	QHashIterator<int, QAction *> i(actionsDict);
 	int count=0;
 	bool found=false;
-	while (i.hasNext()) 
+	while (i.hasNext())
 	{
 	     i.next();
 		 if (i.value()!= a) count++;

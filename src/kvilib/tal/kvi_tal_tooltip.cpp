@@ -83,12 +83,12 @@ void KviTalToolTip::helperDying()
 
 void KviTalToolTip::add(QWidget * widget,const QString & text)
 {
-	QToolTip::add(widget,text);
+	QToolTip::showText (QPoint(), text, widget );
 }
 
 void KviTalToolTip::remove(QWidget * widget)
 {
-	QToolTip::remove(widget);
+	QToolTip::showText (QPoint(), "", widget );
 }
 
 void KviTalToolTip::tip(const QRect & rect,const QString & text)
