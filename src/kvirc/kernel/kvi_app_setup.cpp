@@ -348,7 +348,7 @@ bool KviApp::checkUriAssociations(const char * proto)
 }
 
 
-void KviApp::setupUriAssociations(char * proto)
+void KviApp::setupUriAssociations(const char * proto)
 {
 #ifdef COMPILE_ON_WINDOWS
 	HKEY hKey;
@@ -579,9 +579,7 @@ void KviApp::findGlobalKvircDirectory()
 		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
 			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
 			m_szGlobalKvircDir+= usualKvircGlobalDir[i];
-			#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-			//m_szGlobalKvircDir+= VERSION_BRANCH;
-			m_szGlobalKvircDir+= "4.0/";
+			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	}
@@ -590,9 +588,7 @@ void KviApp::findGlobalKvircDirectory()
 	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
 		m_szGlobalKvircDir = QDir::homeDirPath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-		#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-		//m_szGlobalKvircDir+= VERSION_BRANCH;
-		m_szGlobalKvircDir+= "4.0/";
+		m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	}
 
@@ -601,9 +597,7 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir = QDir::homeDirPath();
 			m_szGlobalKvircDir+= "/.kde";
 			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
-			#warning you must change back hardcoded 4.0 to VERSION_BRANCH
-			//m_szGlobalKvircDir+= VERSION_BRANCH;
-			m_szGlobalKvircDir+= "4.0/";
+			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	#endif //COMPILE_KDE_SUPPORT

@@ -533,7 +533,7 @@ namespace KviQString
 				case 's': // char * string
 				{
 					argString = kvi_va_arg(list,char *);
-					if(!argString)argString = "[!NULL!]";
+					if(!argString)argString = (char*) "[!NULL!]";
 					QString str(argString);
 					if(str.isEmpty())continue;
 					int len = str.length();

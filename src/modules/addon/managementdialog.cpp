@@ -286,8 +286,6 @@ void KviScriptManagementDialog::installScript()
 
 	szFileName.replace("\\","\\\\");
 
-	QString szError;
-
 	// Switch between script and addon
 	if(szFileName.endsWith(".kvs"))
 	{

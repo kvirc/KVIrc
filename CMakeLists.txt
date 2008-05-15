@@ -465,20 +465,35 @@ ENDIF()
 ############################################################################
 # DCC voice support
 ############################################################################
+CHECK_INCLUDE_FILE(linux/soundcard.h CMAKE_HAVE_LINUX_SOUNDCARD_H)
+CHECK_INCLUDE_FILE(sys/soundcard.h CMAKE_HAVE_SYS_SOUNDCARD_H)
+CHECK_INCLUDE_FILE(soundcard.h CMAKE_HAVE_SOUNDCARD_H)
+
 OPTION(WANT_DCC_VOICE "Compile DCC Voice Support" ON)
 IF(WITHOUT_DCC_VOICE)
 	SET(WANT_DCC_VOICE OFF)
 ENDIF()
 IF(WANT_DCC_VOICE)
-	SET(COMPILE_DISABLE_DCC_VOICE 1)
-	SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "yes")
+	IF(CMAKE_HAVE_LINUX_SOUNDCARD_H)
+		SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "yes, linux/soundcard.h found")
+		SET(HAVE_LINUX_SOUNDCARD_H 1)
+	ELSEIF(CMAKE_HAVE_SYS_SOUNDCARD_H)
+		SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "yes, sys/soundcard.h found")
+		SET(HAVE_SYS_SOUNDCARD_H 1)
+	ELSEIF(CMAKE_HAVE_SOUNDCARD_H)
+		SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "yes, soundcard.h found")
+		SET(HAVE_SOUNDCARD_H 1)
+	ELSE()
+		SET(COMPILE_DISABLE_DCC_VOICE 1)
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VOICE)
+		SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "no, soundcard.h not found")
+
+	ENDIF()
 ELSE()
+	SET(COMPILE_DISABLE_DCC_VOICE 1)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VOICE)
 	SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "user disabled")
 ENDIF()
-
-
-
 
 ############################################################################
 # ix86 asm support

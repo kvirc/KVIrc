@@ -309,7 +309,7 @@ private:
 	void setupFileAssociations();
 
 	bool checkUriAssociations(const char * proto);
-	void setupUriAssociations(char * proto);
+	void setupUriAssociations(const char * proto);
 
 	void saveKvircDirectory();
 

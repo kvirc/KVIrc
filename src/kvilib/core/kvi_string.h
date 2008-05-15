@@ -315,7 +315,7 @@ public:
 	//Replaces all occurences of char c with the string str
 	KviStr & replaceAll(const char c,const char *str);
 	//same as above but with a string
-	KviStr & replaceAll(char *toFind,const char *str,bool bCaseS = true);
+	KviStr & replaceAll(const char *toFind,const char *str,bool bCaseS = true);
 	
 	KviStr & transliterate(const char * szToFind,const char * szReplacement);
 

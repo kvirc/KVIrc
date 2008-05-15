@@ -2120,7 +2120,7 @@ KviStr & KviStr::replaceAll(const char c,const char *str)
 	return (*this);
 }
 
-KviStr & KviStr::replaceAll(char *toFind,const char *str,bool bCaseS)
+KviStr & KviStr::replaceAll(const char *toFind,const char *str,bool bCaseS)
 {
 	int len = (int)strlen(toFind);
 	int idx = findFirstIdx(toFind,bCaseS);
