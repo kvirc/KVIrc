@@ -22,6 +22,7 @@ IF(COMMAND cmake_policy)
 	CMAKE_POLICY(SET CMP0003 OLD)
 ENDIF()
 
+
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
