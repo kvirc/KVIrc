@@ -212,7 +212,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	: QDialog(), KviKvsCallbackObject("dialog.textinput",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	setModal(modal);
 	setWindowTitle(szCaption);
 
@@ -230,7 +230,8 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		g->addWidget(tl,0,1);
 	} else {
 		QLabel * tl = new QLabel(szLabel,this);
-		g->addMultiCellWidget(tl,0,0,0,1);
+		g->addWidget(tl,0,0,0,2);
+	//	g->addMultiCellWidget(tl,0,0,0,1);
 	}
 
 	g->setColumnStretch(1,1);
@@ -245,11 +246,12 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		m_pEdit = new QLineEdit(this);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
 	}
-
-	g->addMultiCellWidget(m_pEdit,1,1,0,1);
+	g->addWidget(m_pEdit,1,1,0,1);
+//	g->addMultiCellWidget(m_pEdit,1,1,0,1);
 
 	KviTalHBox * box = new KviTalHBox(this);
-	g->addMultiCellWidget(box,2,2,0,1);
+	g->addWidget(box,2,2,0,0);
+//	g->addMultiCellWidget(box,2,2,0,1);
 
 	m_iEscapeButton = 0;
 	m_iDefaultButton = 0;
@@ -505,7 +507,7 @@ void KviKvsCallbackFileDialog::done(int code)
 #ifdef COMPILE_KDE_SUPPORT
 		if(mode() == KFile::ExistingOnly)
 #else
-		if(mode() == QFileDialog::ExistingFiles)
+		if(fileMode() == QFileDialog::ExistingFiles)
 #endif
 		{
 			KviKvsArray * a = new KviKvsArray();
@@ -518,7 +520,7 @@ void KviKvsCallbackFileDialog::done(int code)
 			}
 			params.append(new KviKvsVariant(a));
 		} else {
-			params.append(new KviKvsVariant(selectedFile()));
+			params.append(new KviKvsVariant(selectedFiles().at(0)));
 		}
 	} else {
 		params.append(new KviKvsVariant(QString("")));
@@ -871,7 +873,6 @@ static bool dialog_module_init(KviModule * m)
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"textinput",dialog_kvs_cmd_textinput);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"file",dialog_kvs_cmd_file);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"image",dialog_kvs_cmd_image);
-
 	KVSM_REGISTER_FUNCTION(m,"yesno",dialog_kvs_fnc_yesno);
 
 	return true;

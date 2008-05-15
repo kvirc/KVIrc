@@ -183,11 +183,11 @@ static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.lowcase
 	@short:
-		Returns the given string with all characters turned to lower case
+		Returns the given string with all characters turned to toLower case
 	@syntax:
 		<string> $str.lowcase(<string_to_convert:string>)
 	@description:
-		Returns the <string_to_convert> with all characters turned to lower case.
+		Returns the <string_to_convert> with all characters turned to toLower case.
 		Warning: this function uses ISO-8859-1 locale to make the case translation.
 		If you want to use a locale aware translation mapping then please
 		use localelowcase.
@@ -209,11 +209,11 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.upcase
 	@short:
-		Returns the given string with all characters turned to upper case
+		Returns the given string with all characters turned to toUpper case
 	@syntax:
 		<string> $str.upcase(<string_to_convert:string>)
 	@description:
-		Returns the given <string_to_convert> with all characters turned to lower case.
+		Returns the given <string_to_convert> with all characters turned to toLower case.
 		Warning: this function uses ISO-8859-1 locale to make the case translation.
 		If you want to use a locale aware translation mapping then please
 		use $str.localeupcase.
@@ -235,11 +235,11 @@ static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.localelowcase
 	@short:
-		Returns the given string with all characters turned to lower case
+		Returns the given string with all characters turned to toLower case
 	@syntax:
 		<string> $str.localelowcase(<string_to_convert:string>)
 	@description:
-		Returns the given <string_to_convert> with all characters turned to lower case.
+		Returns the given <string_to_convert> with all characters turned to toLower case.
 		Warning: this function is locale aware and it may produce unexpected
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.lowcase
@@ -251,7 +251,7 @@ static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string_to_convert",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.lower());
+	c->returnValue()->setString(szString.toLower());
 	return true;
 }
 
@@ -262,11 +262,11 @@ static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.localeupcase
 	@short:
-		Returns the given string with all characters turned to upper case
+		Returns the given string with all characters turned to toUpper case
 	@syntax:
 		<string> $str.localeupcase(<string_to_convert:string>)
 	@description:
-		Returns the given <string_to_convert> with all characters turned to lower case.
+		Returns the given <string_to_convert> with all characters turned to toLower case.
 		Warning: this function is locale aware and it may produce unexpected
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.upcase
@@ -278,7 +278,7 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string_to_convert",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.upper());
+	c->returnValue()->setString(szString.toUpper());
 	return true;
 }
 
@@ -395,7 +395,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
 	KVSM_PARAMETERS_END(c)
-	bIs = szString.find(szSubString) != -1;
+	bIs = szString.indexOf(szSubString,Qt::CaseInsensitive) != -1;
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -425,7 +425,7 @@ static bool str_kvs_fnc_containsnocase(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
 	KVSM_PARAMETERS_END(c)
-	bIs = szString.find(szSubString,0,false) != -1;
+	bIs = szString.indexOf(szSubString,0,Qt::CaseInsensitive) != -1;
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -601,7 +601,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 
 	while (cnt<=pos)
 	{
-	 	idx = szFindIn.right(szFindIn.length() - totalIdx).find(szToFind);
+	 	idx = szFindIn.right(szFindIn.length() - totalIdx).indexOf(szToFind,Qt::CaseInsensitive);
 		if(idx == -1)
 		{
 			c->returnValue()->setInteger(-1);
@@ -638,7 +638,7 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.find(szString2));
+	c->returnValue()->setInteger(szString.indexOf(szString2));
 	return true;
 }
 /*
@@ -664,7 +664,7 @@ static bool str_kvs_fnc_findfirstnocase(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.find(szString2,0,false));
+	c->returnValue()->setInteger(szString.indexOf(szString2,0,Qt::CaseInsensitive));
 	return true;
 }
 /*
@@ -690,7 +690,7 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.findRev(szString2));
+	c->returnValue()->setInteger(szString.lastIndexOf(szString2));
 	return true;
 }
 /*
@@ -716,7 +716,7 @@ static bool str_kvs_fnc_findlastnocase(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.findRev(szString2,-1,false));
+	c->returnValue()->setInteger(szString.lastIndexOf(szString2,-1,Qt::CaseInsensitive));
 	return true;
 }
 /*
@@ -899,7 +899,7 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.stripWhiteSpace());
+	c->returnValue()->setString(szString.trimmed());
 	return true;
 }
 /*
@@ -1048,7 +1048,7 @@ static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("newstr",KVS_PT_STRING,0,szNewstr)
 		KVSM_PARAMETER("toreplace",KVS_PT_STRING,0,szToreplace)
 	KVSM_PARAMETERS_END(c)
-	szString.replace(szToreplace,szNewstr,false);
+	szString.replace(szToreplace,szNewstr,Qt::CaseInsensitive);
 	c->returnValue()->setString(szString);
 	return true;
 }
@@ -1094,7 +1094,7 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 
 	while(idx<sizeof(toReplace))
 	{
-		szNewString=szString.replace(toReplace[idx],newStr[idx],false);
+		szNewString=szString.replace(toReplace[idx],newStr[idx],Qt::CaseInsensitive);
 		idx++;
 	}
 
@@ -1128,7 +1128,7 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
 	KVSM_PARAMETERS_END(c)
-	where = szString.find(szNewstr,false);
+	where = szString.indexOf(szNewstr,Qt::CaseInsensitive);
 	if(where != -1) c->returnValue()->setString(szString.left(where));
 	else c->returnValue()->setString(szString);
 	return true;
@@ -1158,7 +1158,7 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
 	KVSM_PARAMETERS_END(c)
-	int where = szString.findRev(szNewstr,-1,false);
+	int where = szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
 	if(where != -1) c->returnValue()->setString(szString.left(where));
 	else c->returnValue()->setString(szString);
 	return true;
@@ -1188,7 +1188,7 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
 	KVSM_PARAMETERS_END(c)
-	int idx = szString.find(szNewstr,false);
+	int idx = szString.indexOf(szNewstr,Qt::CaseInsensitive);
 	if(idx != -1) c->returnValue()->setString(szString.right(szString.length()-(idx+szNewstr.length())));
 	else c->returnValue()->setString("");
 	return true;
@@ -1219,7 +1219,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("substring",KVS_PT_STRING,0,szNewstr)
 	KVSM_PARAMETERS_END(c)
-	int idx = szString.findRev(szNewstr,-1,false);
+	int idx = szString.lastIndexOf(szNewstr,-1,Qt::CaseInsensitive);
 	if(idx != -1) c->returnValue()->setString(szString.right(szString.length()-(idx+szNewstr.length())));
 	else c->returnValue()->setString("");
 	return true;
@@ -1264,8 +1264,8 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 	KVSM_PARAMETERS_END(c)
-	bool bRegExp = (szFlags.find(QChar('r')) != -1) || (szFlags.find(QChar('R')) != -1);
-	bool bExact = (szFlags.find(QChar('e')) != -1) || (szFlags.find(QChar('E')) != -1);
+	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
+	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
 	c->returnValue()->setBoolean(KviQString::matchStringCS(szWildcard,szString,bRegExp,bExact));
 	return true;
 }
@@ -1310,8 +1310,8 @@ static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
 	KVSM_PARAMETERS_END(c)
-	bool bRegExp = (szFlags.find(QChar('r')) != -1) || (szFlags.find(QChar('R')) != -1);
-	bool bExact = (szFlags.find(QChar('e')) != -1) || (szFlags.find(QChar('E')) != -1);
+	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
+	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
 	c->returnValue()->setBoolean(KviQString::matchStringCI(szWildcard,szString,bRegExp,bExact));
 	return true;
 }
@@ -1469,7 +1469,7 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 		Returns the sum of the character codes of the parameter <string>.
 		The sum is suitable for implementing a simple hashing algorithm.[br]
 		If <bCaseInsensitive> is specified and $true then the string
-		will be converted to lowercase first.
+		will be converted to toLowercase first.
 */
 
 
@@ -1488,7 +1488,7 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	{
 		while(idx < len)
 		{
-			sum += szString[idx].lower().unicode();
+			sum += szString[idx].toLower().unicode();
 			idx++;
 		}
 	} else {
@@ -1599,7 +1599,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	QString szRet;
-	bool bSkipEmpty = szFlags.find('n',0,false) != -1;
+	bool bSkipEmpty = szFlags.indexOf('n',0,Qt::CaseInsensitive) != -1;
 
 	bool bFirst = true;
 
@@ -1692,16 +1692,16 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * a = ac.array();
 
-	bool bCaseSensitive = szFlags.find('s',0,false) != -1;
-	bool bRegexp = szFlags.find('r',0,false) != -1;
-	bool bWild = szFlags.find('w',0,false) != -1;
+	bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;
+	bool bRegexp = szFlags.indexOf('r',0,Qt::CaseInsensitive) != -1;
+	bool bWild = szFlags.indexOf('w',0,Qt::CaseInsensitive) != -1;
 	int idx = 0;
 	int cnt = a->size();
 
 	int i = 0;
 	if(bRegexp || bWild)
 	{
-		QRegExp re(szMatch,bCaseSensitive,bWild);
+		QRegExp re(szMatch,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive,bRegexp?QRegExp::RegExp:QRegExp::Wildcard);
 		while(idx < cnt)
 		{
 			KviKvsVariant * v = a->at(idx);
@@ -1709,7 +1709,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			{
 				QString sz;
 				v->asString(sz);
-				if(re.search(sz) != -1)
+				if(re.indexIn(sz) != -1)
 				{
 					n->set(i,new KviKvsVariant(sz));
 					i++;
@@ -1725,7 +1725,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			{
 				QString sz;
 				v->asString(sz);
-				if(sz.find(szMatch,0,bCaseSensitive) != -1)
+				if(sz.indexOf(szMatch,0,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive) != -1)
 				{
 					n->set(i,new KviKvsVariant(sz));
 					i++;
@@ -1811,10 +1811,10 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 
 	if(iMaxItems == 0)return true;
 
-	bool bWild = szFla.find('w',0,false) != -1;
-	bool bContainsR = szFla.find('r',0,false) != -1;
-	bool bCaseSensitive = szFla.find('s',0,false) != -1;
-	bool bNoEmpty = szFla.find('n',0,false) != -1;
+	bool bWild = szFla.indexOf('w',0,Qt::CaseInsensitive) != -1;
+	bool bContainsR = szFla.indexOf('r',0,Qt::CaseInsensitive) != -1;
+	bool bCaseSensitive = szFla.indexOf('s',0,Qt::CaseInsensitive) != -1;
+	bool bNoEmpty = szFla.indexOf('n',0,Qt::CaseInsensitive) != -1;
 
 	int id = 0;
 
@@ -1824,11 +1824,11 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 
 	if(bContainsR || bWild)
 	{
-		QRegExp re(szSep,bCaseSensitive,bWild);
+		QRegExp re(szSep,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive,bWild?QRegExp::Wildcard:QRegExp::RegExp);
 
 		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems-1)) || (iMaxItems < 0)))
 		{
-			iMatch = re.search(szStr,iBegin);
+			iMatch = re.indexIn(szStr,iBegin);
 			if(iMatch != -1)
 			{
 				int len = re.matchedLength();
@@ -1854,7 +1854,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	} else {
 		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems-1)) || (iMaxItems < 0)))
 		{
-			iMatch = szStr.find(szSep,iBegin,bCaseSensitive);
+			iMatch = szStr.indexOf(szSep,iBegin,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive);
 			if(iMatch != -1)
 			{
 				QString tmp = szStr.mid(iBegin,iMatch - iBegin);
@@ -1920,7 +1920,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		[tr][td][b]?x[/b][/td][td]The next parameter is evaluated as an unsigned integer and its hexadecimal rappresentation
 			is substituted in place of ?x[/td][/tr]
 		[tr][td][b]?h[/b][/td][td]Same as ?x[/td][/tr]
-		[tr][td][b]?X[/b][/td][td]Same as ?x but uppercase hexadecimal digits are used[/td][/tr]
+		[tr][td][b]?X[/b][/td][td]Same as ?x but toUppercase hexadecimal digits are used[/td][/tr]
 		[tr][td][b]?H[/b][/td][td]Same as ?X[/td][/tr]
 		[tr][td][b]??[/b][/td][td]A literal question mark[/td][/tr]
 		[tr][td][b]?[.N]f[/b][/td][td]The next parameter is evaluated as a real floating point value
@@ -1929,7 +1929,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		[tr][td][b]?[.N]e[/b][/td][td]The next parameter is evaluated as a real floating point value
 			and its scientific rappresentation substituted in place of ?e. The optional [.N] modifier,
 			where N is an unsigned integer, rappresents the desired precision.[/td][/tr]
-		[tr][td][b]?[.N]E[/b][/td][td]Same as ?e but an uppercase E is used as the exponent prefix[/td][/tr]
+		[tr][td][b]?[.N]E[/b][/td][td]Same as ?e but an toUppercase E is used as the exponent prefix[/td][/tr]
 		[/table]
 	@examples:
 		[example]

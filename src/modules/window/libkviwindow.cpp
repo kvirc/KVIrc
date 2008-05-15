@@ -868,7 +868,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
 				} else {
-					if(szType.lower()==wnd->typeString())
+					if(szType.toLower()==wnd->typeString())
 					{
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
@@ -880,7 +880,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	} else if(KviQString::equalCI(szContext,"any"))
 	{
 		// all contexts and also "no_context" windows
-		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
+		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
@@ -890,7 +890,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 				pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 				id++;
 			} else {
-				if(szType.lower()==wnd->typeString())
+				if(szType.toLower()==wnd->typeString())
 				{
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
@@ -901,7 +901,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	} else if(KviQString::equalCI(szContext,"none"))
 	{
 		// only "no_context" windows
-		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
+		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
@@ -913,7 +913,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
 				} else {
-					if(szType.lower()==wnd->typeString())
+					if(szType.toLower()==wnd->typeString())
 					{
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
@@ -946,7 +946,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			uId = c->window()->console()->ircContextId();
 		}
 
-		bool bAllWindows = KviQString::equalCI(szType.lower(),"all");
+		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
@@ -960,7 +960,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
 					} else {
-						if(szType.lower()==wnd->typeString())
+						if(szType.toLower()==wnd->typeString())
 						{
 							pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 							id++;

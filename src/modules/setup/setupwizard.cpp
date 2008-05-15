@@ -109,7 +109,7 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	g->setColumnStretch(1,1);
 
 	QLabel * l = new QLabel(m_pVBox);
-	l->setAlignment(Qt::AlignAuto | Qt::AlignTop);
+	l->setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	/*
 	QString szHeader = "<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" style=\"margin:0px;padding:0px;\" width=\"100%\"><tr><td bgcolor=\"#303030\">" \
 			"<h1><font color=\"#FFFFFF\">KVIrc " KVI_VERSION "</font></h1>" \
@@ -118,9 +118,11 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	QString szHeader = "<h1><font color=\"#FFFFFF\">&nbsp;KVIrc " KVI_VERSION "</font></h1>";
 	l->setText(szHeader);
 	l->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	l->setAlignment(Qt::AlignAuto | Qt::AlignVCenter);
+	l->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 	l->setMargin(0);
-	l->setBackgroundColor(QColor(48,48,48));
+	QPalette p = l->palette(); 
+	p.setColor(backgroundRole(), QColor(48,48,48)); 
+	l->setPalette(p); 
 
 	m_pTextLabel = new QLabel(m_pVBox);
 	m_pTextLabel->setWordWrap(true);
@@ -261,9 +263,9 @@ KviSetupWizard::KviSetupWizard()
 #ifdef COMPILE_ON_WINDOWS
 	tmp = QTextCodec::codecForLocale()->toUnicode(getenv( "APPDATA" ));
 	if(tmp.isEmpty())
-		tmp = QDir::homeDirPath();
+		tmp = QDir::homePath();
 #else 
-	tmp = QDir::homeDirPath();
+	tmp = QDir::homePath();
 #endif //COMPILE_ON_WINDOWS
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 	tmp.append(KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME);
@@ -286,7 +288,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pNewIncomingBox->setSpacing(3);
 	m_pNewIncomingBox->setStretchFactor(m_pIncomingPathEdit,1);
 
-	tmp = QDir::homeDirPath();
+	tmp = QDir::homePath();
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 	tmp.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
 	KviFileUtils::adjustFilePath(tmp);
@@ -358,20 +360,20 @@ KviSetupWizard::KviSetupWizard()
 	
 	m_pAgeCombo = new QComboBox(hb);
 	
-	m_pAgeCombo->insertItem(__tr2qs("Unspecified"));
+	m_pAgeCombo->insertItem(0,__tr2qs("Unspecified"));
 	unsigned int i;
 	for(i=1;i<120;i++)
 	{
 		QString tmp;
 		tmp.setNum(i);
-		m_pAgeCombo->insertItem(tmp);
+		m_pAgeCombo->insertItem(m_pAgeCombo->count(),tmp);
 	}
 
 	bool bOk;
 	i = KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).toUInt(&bOk);
 	if(!bOk)i = 0;
 	if(i > 120)i = 120;
-	m_pAgeCombo->setCurrentItem(i);
+	m_pAgeCombo->setCurrentIndex(i);
 
 	hb->setStretchFactor(m_pAgeCombo,1);
 
@@ -384,16 +386,16 @@ KviSetupWizard::KviSetupWizard()
 
 	m_pGenderCombo = new QComboBox(hb);
 
-	m_pGenderCombo->insertItem(__tr2qs("Unspecified"));
-	m_pGenderCombo->insertItem(__tr2qs("Female"));
-	m_pGenderCombo->insertItem(__tr2qs("Male"));
+	m_pGenderCombo->insertItem(0,__tr2qs("Unspecified"));
+	m_pGenderCombo->insertItem(1,__tr2qs("Female"));
+	m_pGenderCombo->insertItem(2,__tr2qs("Male"));
 
 	if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender),"Male"))
-		m_pGenderCombo->setCurrentItem(2);
+		m_pGenderCombo->setCurrentIndex(2);
 	else if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender),"Female"))
-		m_pGenderCombo->setCurrentItem(1);
+		m_pGenderCombo->setCurrentIndex(1);
 	else
-		m_pGenderCombo->setCurrentItem(0);
+		m_pGenderCombo->setCurrentIndex(0);
 
 	hb->setStretchFactor(m_pGenderCombo,1);
 
@@ -938,13 +940,13 @@ void KviSetupWizard::accept()
 {
 	QString szDir;
 	
-	if(m_pDirUsePrev->isOn())
+	if(m_pDirUsePrev->isChecked())
 	{
 		bNeedToApplyDefaults=false;
 		g_pApp->m_szLocalKvircDir =  m_pOldDataPathEdit->text();
 	} else {
 		bNeedToApplyDefaults=true;
-		if(m_pDirUseNew->isOn()) {
+		if(m_pDirUseNew->isChecked()) {
 			szDir = m_pDataPathEdit->text();
 		}
 #ifdef COMPILE_ON_WINDOWS
@@ -976,7 +978,7 @@ void KviSetupWizard::accept()
 		g_pApp->m_szLocalKvircDir = szDir;
 		KviFileUtils::adjustFilePath(g_pApp->m_szLocalKvircDir);
 
-		if(m_pDirUseNew->isOn()) {
+		if(m_pDirUseNew->isChecked()) {
 			szDir = m_pIncomingPathEdit->text();
 		}
 #ifdef COMPILE_ON_WINDOWS
@@ -1038,7 +1040,7 @@ void KviSetupWizard::accept()
 			m_pLanguagesSelector->commit();
 			//m_pOtherInfoSelector->commit();
 			
-			KVI_OPTION_STRING(KviOption_stringNickname1).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			KVI_OPTION_STRING(KviOption_stringNickname1).replace(" ","");
 			
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() > 32)
@@ -1070,13 +1072,13 @@ void KviSetupWizard::accept()
 			alt.append("2");
 			KVI_OPTION_STRING(KviOption_stringNickname4) = alt;
 			
-			int i = m_pAgeCombo->currentItem();
+			int i = m_pAgeCombo->currentIndex();
 			if(i < 0)i = 0;
 			if(i > 120)i = 120;
 			if(i <= 0)KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 			else KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).setNum(i);
 			
-			switch(m_pGenderCombo->currentItem())
+			switch(m_pGenderCombo->currentIndex())
 			{
 				case 1:
 					// this should be in english
@@ -1108,13 +1110,13 @@ void KviSetupWizard::accept()
 			}
 			*/
 #ifdef COMPILE_ON_WINDOWS
-			if(m_pUseMircServerList->isEnabled() && m_pUseMircServerList->isOn())
+			if(m_pUseMircServerList->isEnabled() && m_pUseMircServerList->isChecked())
 				szMircServers = m_szMircServerIniFile;
 #endif
 		}
 	}
 #ifdef COMPILE_ON_WINDOWS
-	if(m_pDirMakePortable->isOn())
+	if(m_pDirMakePortable->isChecked())
 	{
 		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable","true");
 	} else {

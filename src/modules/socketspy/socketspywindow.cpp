@@ -38,7 +38,8 @@ KviSocketSpyWindow::KviSocketSpyWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole) , KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	setObjectName("spysocket_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	// Ensure proper focusing
 	//setFocusHandler(m_pIrcView,this);
@@ -81,15 +82,15 @@ void KviSocketSpyWindow::fillCaptionBuffers()
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii(),
 		m_pConsole->ircContextId());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii(),
 		m_pConsole->ircContextId());
 }
 

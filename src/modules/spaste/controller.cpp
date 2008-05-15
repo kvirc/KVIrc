@@ -64,7 +64,7 @@ bool SPasteController::pasteFileInit(QString &fileName)
 	if(m_pClipBuff)return false; // can't paste a file while pasting the clipboard
 	if(m_pFile)return false; // can't paste two files at a time
 	m_pFile = new QFile(fileName);
-	if(!m_pFile->open(IO_ReadOnly))return false;
+	if(!m_pFile->open(QIODevice::ReadOnly))return false;
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteFile()));
 	m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
 	return true;
@@ -76,9 +76,9 @@ bool SPasteController::pasteClipboardInit(void)
 	QString tmp(g_pApp->clipboard()->text());
 	if(m_pClipBuff)
 	{
-		(*m_pClipBuff) += QStringList::split("\n",tmp,true);
+		(*m_pClipBuff) += tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts);
 	} else {
-		m_pClipBuff = new QStringList(QStringList::split("\n",tmp,true));
+		m_pClipBuff = new QStringList(tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts));
 		m_clipBuffIterator = m_pClipBuff->begin();
 	}
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteClipboard()));
@@ -99,7 +99,7 @@ void SPasteController::pasteClipboard(void)
 		  	delete this;
 		else {
 			if((*m_clipBuffIterator).isEmpty())(*m_clipBuffIterator) = QChar(KVI_TEXT_RESET);
-			m_pWindow->ownMessage((*m_clipBuffIterator).ascii()); // <-- not good :/
+			m_pWindow->ownMessage((*m_clipBuffIterator).toAscii()); // <-- not good :/
 			++m_clipBuffIterator;
 		}
 	} else delete this;//Clipboard finished

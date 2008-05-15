@@ -31,7 +31,7 @@
 #include "kvi_moduleextension.h"
 #include "kvi_sharedfiles.h"
 #include "kvi_styled_controls.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QDialog>
 
@@ -41,11 +41,11 @@ class QLabel;
 class QLineEdit;
 class QPushButton;
 
-class KviSharedFilesListViewItem : public KviTalListViewItem
+class KviSharedFilesTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviSharedFilesListViewItem(KviTalListView * lv,KviSharedFile * f);
-	~KviSharedFilesListViewItem();
+	KviSharedFilesTreeWidgetItem(KviTalTreeWidget * lv,KviSharedFile * f);
+	~KviSharedFilesTreeWidgetItem();
 protected:
 	KviSharedFile * m_pSharedFilePointer; // THIS IS READ ONLY!
 public:
@@ -84,7 +84,7 @@ public:
 protected:
 	QSplitter           * m_pVertSplitter;
 
-	KviTalListView           * m_pListView;
+	KviTalTreeWidget           * m_pTreeWidget;
 
 	QPushButton         * m_pRemoveButton;
 	QPushButton         * m_pEditButton;

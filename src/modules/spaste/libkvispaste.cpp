@@ -101,15 +101,17 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
 	if( (!window) || window->console()->isNotConnected())return false;
-
-	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.ascii())))
+	
+	// FIXME
+	//if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.toAscii())))
+	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
 	{
 		c->warning(__tr2qs("File not found or empty"));
 		return false;
 	}
 
 	QFile tmp(szFile);
-	if(!tmp.open(IO_ReadOnly)) {
+	if(!tmp.open(QIODevice::ReadOnly)) {
 		c->warning(__tr2qs("I can't open that file"));
 		return false;
 	}

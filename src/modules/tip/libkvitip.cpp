@@ -138,7 +138,7 @@ KviTipWindow::KviTipWindow()
 
 	setFixedSize(KVI_TIP_WINDOW_WIDTH,KVI_TIP_WINDOW_HEIGHT);
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)));
 
 	setWindowTitle(__tr2qs("Did you know..."));
 

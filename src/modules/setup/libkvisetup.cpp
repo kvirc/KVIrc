@@ -76,7 +76,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		KVI_OPTION_STRING(KviOption_stringIncomingPath) = g_szChoosenIncomingDirectory;
 		// Reset the quit message and the real name... if they contain the KVIrc version
 		// then probably the user hasn't even edited them.
-		if(KVI_OPTION_STRING(KviOption_stringQuitMessage).find("KVIrc",0,false) != -1)
+		if(KVI_OPTION_STRING(KviOption_stringQuitMessage).indexOf("KVIrc",0,Qt::CaseInsensitive) != -1)
 			KVI_OPTION_STRING(KviOption_stringQuitMessage) = KVI_DEFAULT_QUIT_MESSAGE;
 		// We deserve to change the user's part message in something nice :)
 		KVI_OPTION_STRING(KviOption_stringPartMessage) = KVI_DEFAULT_PART_MESSAGE;

@@ -202,14 +202,15 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 	KVSM_PARAMETERS_END(c)
 
 	KviQCString szVar = szVariable.toLocal8Bit();
-#ifdef COMPILE_ON_WINDOWS
-	QString env = getenv(szVar.data());
-	QString def = __tr2qs("No environment variable found, please don't use the %% in the request");
+/*#ifdef COMPILE_ON_WINDOWS
+	QString env= getenv(szVar.data());
+	QString def= __tr2qs("No environment variable found, please don't use the %% in the request");
 	c->returnValue()->setString(env.isEmpty() ? QString::fromLocal8Bit(env) : QString::fromLocal8Bit(def));
 #else
+*/
 	char * b = kvi_getenv(szVar.data());
 	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString::null);
-#endif
+//#endif
 	return true;
 }
 

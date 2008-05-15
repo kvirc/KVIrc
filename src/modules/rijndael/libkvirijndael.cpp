@@ -529,9 +529,9 @@
 		unsigned char * p = (unsigned char *)encoded.ptr();
 		while(outb < oute)
 		{
-			Q_UINT32 * dd1 = (Q_UINT32 *)outb;
+			quint32 * dd1 = (quint32 *)outb;
 			outb += 4;
-			Q_UINT32 * dd2 = (Q_UINT32 *)outb;
+			quint32 * dd2 = (quint32 *)outb;
 			outb += 4;
 			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
 			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
@@ -576,9 +576,9 @@
 		unsigned char * bufp = buf;
 		while(p < e)
 		{
-			Q_UINT32 * dw1 = (Q_UINT32 *)bufp;
+			quint32 * dw1 = (quint32 *)bufp;
 			bufp += 4;
-			Q_UINT32 * dw2 = (Q_UINT32 *)bufp;
+			quint32 * dw2 = (quint32 *)bufp;
 			bufp += 4;
 			*dw2 = 0;
 			for(i=0;i < 6;i++)*dw2 |= (fake_base64dec(*p++)) << (i * 6);
