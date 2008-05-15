@@ -35,7 +35,6 @@
 #include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_fileextensions.h"
-#include "kvi_msgbox.h"
 #include "kvi_kvs_script.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_draganddrop.h"
@@ -297,7 +296,7 @@ void KviScriptManagementDialog::installScript()
 	} else if(szFileName.endsWith(".kva")){
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
-			KviMessageBox::information(szError);
+			QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 			return;
 		}
 	} else {
