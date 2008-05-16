@@ -45,8 +45,7 @@ namespace KviAddonFunctions
 		const QString &szAddonApplication,
 		const QString &szAddonAuthor,
 		const QString &szAddonDate,
-		const QString &szAddonAddonEngineVersion,
-		int iUniqueIndexInDocument = 0
+		const QString &szAddonAddonEngineVersion
 	);
 };
 

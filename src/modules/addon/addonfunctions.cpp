@@ -68,10 +68,9 @@ namespace KviAddonFunctions
 	
 		pValue = pInfoFields->find("PackageType");
 		if(!pValue)return notAValidAddonPackage(szError);
-		if(!KviQString::equalCI(*pValue,"AddonPack"))return notAValidAddonPackage(szError);
 		pValue = pInfoFields->find("AddonPackVersion");
 		if(!pValue)return notAValidAddonPackage(szError);
-		if(!KviQString::equalCI(*pValue,"1"))return notAValidAddonPackage(szError);
+		if(!KviQString::equalCI(*pValue,KVI_CURRENT_ADDONS_ENGINE_VERSION))return notAValidAddonPackage(szError);
 		
 		// make sure the default fields exist
 		for(int i=0;i<6;i++)
@@ -79,14 +78,7 @@ namespace KviAddonFunctions
 			pValue = pInfoFields->find(check_fields[i]);
 			if(!pValue)return notAValidAddonPackage(szError);
 		}
-	
-		pValue = pInfoFields->find("AddonCount");
-		if(!pValue)return notAValidAddonPackage(szError);
-		bool bOk;
-		int iAddonCount = pValue->toInt(&bOk);
-		if(!bOk)return notAValidAddonPackage(szError);
-		if(iAddonCount < 1)return notAValidAddonPackage(szError);
-	
+
 		// ok.. it should be really valid at this point
 		QString szPackageName;
 		QString szPackageVersion;
@@ -110,86 +102,59 @@ namespace KviAddonFunctions
 		QString szWarnings;
 		QString szDetails = "<html><body bgcolor=\"#ffffff\">";
 		QString szTmp;
-
-		int iIdx = 0;
-		int iValidAddonCount = iAddonCount;
 		
-		while(iIdx < iAddonCount)
+		bool bValid = true;
+	
+		QString szAddonName;
+		QString szAddonVersion;
+		QString szAddonDescription;
+		QString szAddonDate;
+		QString szAddonSubdirectory;
+		QString szAddonAuthor;
+		QString szAddonEngineVersion;
+		QString szAddonApplication;
+
+		r.getStringInfoField("AddonName",szAddonName);
+		r.getStringInfoField("AddonVersion",szAddonVersion);
+		r.getStringInfoField("AddonApplication",szAddonApplication);
+		r.getStringInfoField("AddonDescription",szAddonDescription);
+		r.getStringInfoField("AddonDate",szAddonDate);
+		r.getStringInfoField("AddonSubdirectory",szAddonSubdirectory);
+		r.getStringInfoField("AddonAuthor",szAddonAuthor);
+		r.getStringInfoField("AddonAddonEngineVersion",szAddonEngineVersion);
+
+		if(szAddonName.isEmpty() || szAddonVersion.isEmpty() || szAddonSubdirectory.isEmpty() || szAddonEngineVersion.isEmpty())
+			bValid = false;
+		if(KviMiscUtils::compareVersions(szAddonEngineVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
+			bValid = false;
+
+		QString szDetailsBuffer;
+
+		getAddonHtmlDescription(
+			szDetailsBuffer,
+			szAddonName,
+			szAddonVersion,
+			szAddonDescription,
+			szAddonSubdirectory,
+			szAddonApplication,
+			szAddonAuthor,
+			szAddonDate,
+			szAddonEngineVersion
+		);
+
+		szDetails += szDetailsBuffer;
+
+		if(!bValid)
 		{
-			bool bValid = true;
-		
-			QString szAddonName;
-			QString szAddonVersion;
-			QString szAddonDescription;
-			QString szAddonDate;
-			QString szAddonSubdirectory;
-			QString szAddonAuthor;
-			QString szAddonEngineVersion;
-			QString szAddonApplication;
-
-			KviQString::sprintf(szTmp,"Addon%dName",iIdx);
-			r.getStringInfoField(szTmp,szAddonName);
-			KviQString::sprintf(szTmp,"Addon%dVersion",iIdx);
-			r.getStringInfoField(szTmp,szAddonVersion);
-			KviQString::sprintf(szTmp,"Addon%dApplication",iIdx);
-			r.getStringInfoField(szTmp,szAddonApplication);
-			KviQString::sprintf(szTmp,"Addon%dDescription",iIdx);
-			r.getStringInfoField(szTmp,szAddonDescription);
-			KviQString::sprintf(szTmp,"Addon%dDate",iIdx);
-			r.getStringInfoField(szTmp,szAddonDate);
-			KviQString::sprintf(szTmp,"Addon%dSubdirectory",iIdx);
-			r.getStringInfoField(szTmp,szAddonSubdirectory);
-			KviQString::sprintf(szTmp,"Addon%dAuthor",iIdx);
-			r.getStringInfoField(szTmp,szAddonAuthor);
-			KviQString::sprintf(szTmp,"Addon%dAddonEngineVersion",iIdx);
-			r.getStringInfoField(szTmp,szAddonEngineVersion);
-
-			if(szAddonName.isEmpty() || szAddonVersion.isEmpty() || szAddonSubdirectory.isEmpty() || szAddonEngineVersion.isEmpty())
-				bValid = false;
-			if(KviMiscUtils::compareVersions(szAddonEngineVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
-				bValid = false;
-
-			QString szDetailsBuffer;
-
-			getAddonHtmlDescription(
-				szDetailsBuffer,
-				szAddonName,
-				szAddonVersion,
-				szAddonDescription,
-				szAddonSubdirectory,
-				szAddonApplication,
-				szAddonAuthor,
-				szAddonDate,
-				szAddonEngineVersion,
-				iIdx
-			);
-
-			if(iIdx > 0) szDetails += "<hr>";
-
-			szDetails += szDetailsBuffer;
-
-			if(!bValid)
-			{
-				szDetails += "<p><center><font color=\"#ff0000\"><b>";
-				szDetails += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
-				szDetails += "</b></font></center></p>";
-				iValidAddonCount--;
-			}
-
-			iIdx++;
+			szDetails += "<p><center><font color=\"#ff0000\"><b>";
+			szDetails += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
+			szDetails += "</b></font></center></p>";
 		}
 
 		szDetails += "<br><p><center><a href=\"Addon_dialog_main\">";
 		szDetails +=  __tr2qs_ctx("Go Back to Package Data","addon");
 		szDetails += "</a></center></p>";
 		szDetails += "</body></html>";
-
-		if(iValidAddonCount < iAddonCount)
-		{
-			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
-			szWarnings += __tr2qs_ctx("Warning: Some of the Addons contained in this package might be either corrupted or incompatible with this version of KVIrc","addon");
-			szWarnings += "</b></font></center></p>";
-		}
 
 		QString szShowDetails = __tr2qs_ctx("Show Details","addon");
 
@@ -278,8 +243,7 @@ namespace KviAddonFunctions
 		const QString &szAddonApplication,
 		const QString &szAddonAuthor,
 		const QString &szAddonDate,
-		const QString &szAddonAddonEngineVersion,
-		int iUniqueIndexInDocument
+		const QString &szAddonAddonEngineVersion
 	)
 	{
 		QString szAuthor = __tr2qs_ctx("Author","Addon");

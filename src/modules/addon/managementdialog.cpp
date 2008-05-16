@@ -288,12 +288,14 @@ void KviScriptManagementDialog::installScript()
 	// Switch between script and addon
 	if(szFileName.endsWith(".kvs"))
 	{
+		qDebug("Script file .kvs");
 		QString szCmd = "parse \"";
 		szCmd += szFileName;
 		szCmd += "\"";
 	
 		KviKvsScript::run(szCmd,g_pActiveWindow);
 	} else if(szFileName.endsWith(".kva")){
+		qDebug("Addon file .kva");
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
 			QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
@@ -301,6 +303,7 @@ void KviScriptManagementDialog::installScript()
 		}
 	} else {
 		// Just for sanity check. We should NEVER enter here
+		qDebug("Entered sanity check");
 		KviAddonFunctions::notAValidAddonPackage(szError);
 		QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 	}
