@@ -246,7 +246,7 @@ namespace KviAddonFunctions
 		const QString &szAddonAddonEngineVersion
 	)
 	{
-		QString szAuthor = __tr2qs_ctx("Author","Addon");
+		QString szAuthor = __tr2qs_ctx("Author","addon");
 		QString szCreatedAt = __tr2qs_ctx("Created at","addon");
 		QString szCreatedOn = __tr2qs_ctx("Created with","addon");
 		QString szAddonEngineVersion = __tr2qs_ctx("Addon Engine Version","addon");
