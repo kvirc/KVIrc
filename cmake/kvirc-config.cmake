@@ -10,7 +10,7 @@
 #   27-07-2002 Szymon Stefanek (Revised again for KVIrc 3.0.0)
 #   01-06-2007 Szymon Stefanek (Revised for SST)
 #   ??-10-2007 Szymon Stefanek (Revised for Humor)
-#   14-04-2007 CtrlAltCa (adapted to cmake branch)
+#   14-04-2008 CtrlAltCa (adapted to cmake branch)
 #
 #   This program is FREE software. You can redistribute it and/or
 #   modify it under the terms of the GNU General Public License
