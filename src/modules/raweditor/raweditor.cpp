@@ -338,7 +338,7 @@ void KviRawEditor::saveLastEditedItem()
 	{
 		
 		getUniqueHandlerName((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
-		debu ("Change name %
+		debug("Change name %s",buffer.toUtf8().data());
 	}
 
 	m_pLastEditedItem->m_szName = buffer;
