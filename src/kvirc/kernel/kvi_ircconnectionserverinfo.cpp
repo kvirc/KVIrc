@@ -57,16 +57,16 @@ void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSuppo
 {
 	int pos=-1;
 	
-	pos=szSupportedChannelModes.find(',');
+	pos=szSupportedChannelModes.indexOf(',');
 	if(pos>=0) m_szListModes=szSupportedChannelModes.left(pos);
 	
-	pos=szSupportedChannelModes.findRev(',');
+	pos=szSupportedChannelModes.lastIndexOf(',');
 	if(pos>=0) m_szPlainModes=szSupportedChannelModes.right(szSupportedChannelModes.length()+pos-1);
 	
 	m_szSupportedChannelModes = szSupportedChannelModes;
 	m_bSupportsModesIe = (szSupportedChannelModes.contains('e') && szSupportedChannelModes.contains('I'));
 	
-	QChar* aux=(QChar*)szSupportedChannelModes.ucs2();
+	QChar* aux=(QChar*)szSupportedChannelModes.utf16();
 	while(aux->unicode())
 	{
 		if(!m_szSupportedChannelModes.contains(*aux))
@@ -89,7 +89,7 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 	const QChar * cFlag = KviQString::nullTerminatedArray(m_szSupportedModeFlags);
 	if(!cPrefix || !cFlag)return; // eh ?
 	
-	m_uPrefixes=QMIN(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());
+	m_uPrefixes=qMin(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());
 	m_pModePrefixTable=(kvi_u32_t*)kvi_malloc(sizeof(kvi_u32_t)*3*m_uPrefixes);
 	
 	unsigned short uPrefix,uFlag;
@@ -189,11 +189,11 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 void KviIrcConnectionServerInfo::setServerVersion(const QString & version)
 {
 	if(m_pServInfo) delete m_pServInfo;
-	if(version.contains("unreal",false))
+	if(version.contains("unreal",Qt::CaseInsensitive))
 		m_pServInfo = new KviUnrealIrcServerInfo(version);
-	else if(version.contains("bahamut",false))
+	else if(version.contains("bahamut",Qt::CaseInsensitive))
 		m_pServInfo = new KviBahamutIrcServerInfo(version);
-	else if(version.contains("hyperion",false))
+	else if(version.contains("hyperion",Qt::CaseInsensitive))
 		m_pServInfo = new KviHyperionIrcServerInfo(version);
 	else
 		m_pServInfo = new KviBasicIrcServerInfo(version);

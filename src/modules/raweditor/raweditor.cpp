@@ -20,7 +20,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 #include "raweditor.h"
-
+#include "kvi_iconmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
@@ -48,47 +48,63 @@
 extern KviRawEditorWindow * g_pRawEditorWindow;
 
 
-KviRawListViewItem::KviRawListViewItem(KviTalListView *par,int idx)
-: KviTalListViewItem(par)
+KviRawTreeWidgetItem::KviRawTreeWidgetItem(KviTalTreeWidget *par,int idx,bool bEnabled)
+: KviTalTreeWidgetItem(par)
 {
 	m_iIdx = idx;
  	m_szName.setNum(idx);
 	if(idx < 100)m_szName.prepend('0');
 	if(idx < 10)m_szName.prepend('0');
+	setText(0,m_szName);
+	setEnabled(bEnabled);
 };
-
-const QPixmap * KviRawListViewItem::pixmap(int col) const
+/*
+const QPixmap * KviRawTreeWidgetItem::pixmap(int col) const
 {
 	return g_pIconManager->getSmallIcon(firstChild() ? KVI_SMALLICON_RAWEVENT : KVI_SMALLICON_RAWEVENTNOHANDLERS);
 }
 
-const QPixmap * KviRawHandlerListViewItem::pixmap(int col) const
+const QPixmap * KviRawHandlerTreeWidgetItem::pixmap(int col) const
 {
 	return g_pIconManager->getSmallIcon(m_bEnabled ? KVI_SMALLICON_HANDLER : KVI_SMALLICON_HANDLERDISABLED);
 }
-
+*/
 
 KviRawEditor::KviRawEditor(QWidget * par)
-: QWidget(par,"raw_event_editor")
+: QWidget(par)
 {
+	setObjectName("raw_event_editor");
 	QGridLayout * l = new QGridLayout(this);
-	QSplitter * spl = new QSplitter(Qt::Horizontal,this,"raweditorv");
+	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
+	spl->setObjectName("raweditor_splitter");
 	spl->setOpaqueResize(false);
 	l->addWidget(spl,0,0);
 
 	KviTalVBox * boxi = new KviTalVBox(spl);
-	m_pListView = new KviTalListView(boxi);
-	m_pListView->addColumn(__tr2qs("Raw Event"));
-	m_pListView->setMultiSelection(false);
-	m_pListView->setShowSortIndicator(true);
-	m_pListView->setRootIsDecorated(true);
+	boxi->setMaximumWidth(200);
+	m_pTreeWidget = new KviRawTreeWidget(boxi);
+
+	
+
+	m_pTreeWidget->setColumnCount(1);
+	m_pTreeWidget->setHeaderLabel(__tr2qs("Raw Event"));
+	
+//	m_pTreeWidget->setMultiSelection(false);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+//	m_pTreeWidget->setShowSortIndicator(true);
+	m_pTreeWidget->setRootIsDecorated(true);
+	m_pContextPopup = new KviTalPopupMenu(this);
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 
 	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),boxi);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 	
 	KviTalVBox * box = new KviTalVBox(spl);
 	m_pNameEditor = new QLineEdit(box);
-	QToolTip::add(m_pNameEditor,__tr2qs("Edit the raw event handler name."));
+	m_pNameEditor->setToolTip(__tr2qs("Edit the raw event handler name."));
 	m_pEditor = KviScriptEditor::createInstance(box);
 
 	m_bOneTimeSetupDone = false;
@@ -105,44 +121,42 @@ void KviRawEditor::oneTimeSetup()
 	if(m_bOneTimeSetupDone)return;
 	m_bOneTimeSetupDone = true;
 
-	KviRawListViewItem * it;
-	KviRawHandlerListViewItem * ch;
+	KviRawTreeWidgetItem * it;
+	KviRawHandlerTreeWidgetItem * ch;
 
 	for(unsigned int i = 0;i < 999;i++)
 	{
 		KviPointerList<KviKvsEventHandler> * l = KviKvsEventManager::instance()->rawHandlers(i);
 		if(l)
 		{
-			it = new KviRawListViewItem(m_pListView,i);
+			it = new KviRawTreeWidgetItem(m_pTreeWidget,i,true); 
 			for(KviKvsEventHandler * s = l->first();s;s = l->next())
 			{
 				if(s->type() == KviKvsEventHandler::Script)
 				{
-					ch = new KviRawHandlerListViewItem(it,((KviKvsScriptEventHandler *)s)->name(),
+					ch = new KviRawHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
 					((KviKvsScriptEventHandler *)s)->code(),((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}
-			it->setOpen(true);
+			it->setExpanded(true);
 		}
 	}
 
 
-	m_pContextPopup = new KviTalPopupMenu(this);
-
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(selectionChanged(KviTalListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-		this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
 }
 
-void KviRawEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
-{
+
+void KviRawEditor::customContextMenuRequested(const QPoint &pos)
+{	
+	KviTalTreeWidgetItem *it;
+	it=(KviTalTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	__range_valid(m_bOneTimeSetupDone);
 	m_pContextPopup->clear();
 	if(it)
 	{
 		if(it->parent())
 		{
-			if(!(((KviRawHandlerListViewItem *)it)->m_bEnabled))
+			if(!(((KviRawHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
 					__tr2qs("&Enable Handler"),this,SLOT(toggleCurrentHandlerEnabled()));
@@ -173,10 +187,10 @@ void KviRawEditor::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
 			__tr2qs("&Add Raw Event..."),
 			this,SLOT(addRaw()));
 
-	m_pContextPopup->popup(pnt);
+	m_pContextPopup->popup(mapToGlobal(pos));
 }
 
-void KviRawEditor::getUniqueHandlerName(KviRawListViewItem *it,QString &buffer)
+void KviRawEditor::getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer)
 {
 	__range_valid(m_bOneTimeSetupDone);
 
@@ -190,8 +204,9 @@ void KviRawEditor::getUniqueHandlerName(KviRawListViewItem *it,QString &buffer)
 	{
 		bFound = false;
 
-		for(KviRawHandlerListViewItem * ch = (KviRawHandlerListViewItem *)(it->firstChild());ch;ch = (KviRawHandlerListViewItem *)ch->nextSibling())
+		for (int i=0;i<it->childCount();i++)
 		{
+			KviRawHandlerTreeWidgetItem * ch =(KviRawHandlerTreeWidgetItem *) it->child(i);
 			if(KviQString::equalCI(newName,ch->m_szName))
 			{
 				bFound = true;
@@ -210,22 +225,23 @@ void KviRawEditor::addRaw()
 {
 	bool bOk = false;
 
-	int iIdx = QInputDialog::getInteger(__tr2qs("New Raw Event"),__tr2qs("Enter the numeric code of the message (0-999)"),0,0,999,1,&bOk,this);
+	int iIdx = QInputDialog::getInteger(this,__tr2qs("New Raw Event"),__tr2qs("Enter the numeric code of the message (0-999)"),0,0,999,1,&bOk);
 
 	if(!bOk)return;
 
-	KviRawListViewItem * it;
-	for(it = (KviRawListViewItem *)m_pListView->firstChild();it;it = (KviRawListViewItem *)it->nextSibling())
+	KviRawTreeWidgetItem * it;
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if(it->m_iIdx == iIdx)
+		it=(KviRawTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		if(((KviRawTreeWidgetItem *)it)->m_iIdx == iIdx)
 		{
-			m_pListView->setSelected(it,true);
+			it->setSelected(true);
 			goto add_handler;
 		}
 	}
 
-	it = new KviRawListViewItem(m_pListView,iIdx);
-	m_pListView->setSelected(it,true);
+	it = new KviRawTreeWidgetItem(m_pTreeWidget,iIdx,true);
+	it->setSelected(true);
 
 add_handler:
 	addHandlerForCurrentRaw();
@@ -236,16 +252,16 @@ void KviRawEditor::addHandlerForCurrentRaw()
 {
 	__range_valid(m_pOneTimeSetupDone);
 
-	KviTalListViewItem * it = m_pListView->selectedItem();
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *) m_pTreeWidget->currentItem();
 	if(it)
 	{
 		if(it->parent() == 0)
 		{
 			QString buffer = __tr2qs("default");
-			getUniqueHandlerName((KviRawListViewItem *)it,buffer);
-			KviTalListViewItem * ch = new KviRawHandlerListViewItem(it,buffer,"",true);
-			it->setOpen(true);
-			m_pListView->setSelected(ch,true);
+			getUniqueHandlerName((KviRawTreeWidgetItem *)it,buffer);
+			KviTalTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
+			it->setExpanded(true);
+			ch->setSelected(true);
 		}
 	}
 }
@@ -255,11 +271,13 @@ void KviRawEditor::removeCurrentHandler()
 	__range_valid(m_pOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
-		KviTalListViewItem * it = m_pLastEditedItem;
+		KviTalTreeWidgetItem * it = m_pLastEditedItem;
+		KviRawTreeWidgetItem * parent=(KviRawTreeWidgetItem *)it->parent();
 		m_pLastEditedItem = 0;
 		delete it;
 		m_pEditor->setEnabled(false);
 		m_pNameEditor->setEnabled(false);
+		if (!parent->childCount()) parent->setEnabled(false);
 	}
 }
 
@@ -269,8 +287,8 @@ void KviRawEditor::toggleCurrentHandlerEnabled()
 	if(m_pLastEditedItem)
 	{
 		m_pLastEditedItem->m_bEnabled = !(m_pLastEditedItem->m_bEnabled);
-		m_pListView->repaintItem(m_pLastEditedItem);
-		selectionChanged(m_pLastEditedItem);
+		m_pLastEditedItem->setEnabled(m_pLastEditedItem->m_bEnabled);
+		currentItemChanged(m_pLastEditedItem,m_pLastEditedItem);
 	}
 }
 
@@ -280,23 +298,28 @@ void KviRawEditor::commit()
 
 	saveLastEditedItem();
 	KviKvsEventManager::instance()->removeAllScriptRawHandlers();
-	for(KviTalListViewItem * it = m_pListView->firstChild();it;it = it->nextSibling())
+	KviTalTreeWidgetItem * it;
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		if(it->firstChild())
+		it=(KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		if(it->childCount())
 		{
 			QString szContext;
-			for(KviTalListViewItem * ch = it->firstChild();ch;ch = ch->nextSibling())
+			KviTalTreeWidgetItem * ch;
+			for (int j=0;j<it->childCount();j++)
 			{
-
-				KviQString::sprintf(szContext,"RawEvent%d::%Q",&(((KviRawListViewItem *)it)->m_iIdx),&(((KviRawHandlerListViewItem *)ch)->m_szName));
+				ch=(KviTalTreeWidgetItem *)it->child(j);
+				debug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->m_szBuffer.toUtf8().data());			
+				//int a=(KviRawTreeWidgetItem *)it)->m_iIdx;
+				KviQString::sprintf(szContext,"RawEvent%d::%Q",&(((KviRawTreeWidgetItem *)it)->m_iIdx),&(((KviRawHandlerTreeWidgetItem *)ch)->m_szName));
 				KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(
-						((KviRawHandlerListViewItem *)ch)->m_szName,
+						((KviRawHandlerTreeWidgetItem *)ch)->m_szName,
 						szContext,
-						((KviRawHandlerListViewItem *)ch)->m_szBuffer,
-						((KviRawHandlerListViewItem *)ch)->m_bEnabled
+						((KviRawHandlerTreeWidgetItem *)ch)->m_szBuffer,
+						((KviRawHandlerTreeWidgetItem *)ch)->m_bEnabled
 					);
 			
-				KviKvsEventManager::instance()->addRawHandler(((KviRawListViewItem *)it)->m_iIdx,s);
+				KviKvsEventManager::instance()->addRawHandler(((KviRawTreeWidgetItem *)it)->m_iIdx,s);
 			}
 		}
 	}
@@ -310,9 +333,12 @@ void KviRawEditor::saveLastEditedItem()
 	if(!m_pLastEditedItem)return;
 
 	QString buffer = m_pNameEditor->text();
+	debug("Check lineedit name %s and internal %s",buffer.toUtf8().data(),m_pLastEditedItem->m_szName.toUtf8().data());
 	if(!KviQString::equalCI(buffer,m_pLastEditedItem->m_szName))
 	{
-		getUniqueHandlerName((KviRawListViewItem *)(m_pLastEditedItem->parent()),buffer);
+		
+		getUniqueHandlerName((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
+		debu ("Change name %
 	}
 
 	m_pLastEditedItem->m_szName = buffer;
@@ -322,17 +348,17 @@ void KviRawEditor::saveLastEditedItem()
 	m_pLastEditedItem->m_szBuffer = tmp;
 }
 
-void KviRawEditor::selectionChanged(KviTalListViewItem * it)
+void KviRawEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
 	__range_valid(m_bOneTimeSetupDone);
 	saveLastEditedItem();
 	if(it->parent())
 	{
-		m_pLastEditedItem = (KviRawHandlerListViewItem *)it;
+		m_pLastEditedItem = (KviRawHandlerTreeWidgetItem *)it;
 		m_pNameEditor->setEnabled(true);
 		m_pNameEditor->setText(it->text(0));
 		m_pEditor->setEnabled(true);
-		m_pEditor->setText(((KviRawHandlerListViewItem *)it)->m_szBuffer);
+		m_pEditor->setText(((KviRawHandlerTreeWidgetItem *)it)->m_szBuffer);
 	} else {
 		m_pLastEditedItem = 0;
 		m_pNameEditor->setEnabled(false);
@@ -347,7 +373,7 @@ void KviRawEditor::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 }
 
-void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerListViewItem * it)
+void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerTreeWidgetItem * it)
 {
 	if(!it->parent())return;
 
@@ -356,7 +382,7 @@ void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerListViewIte
 	KviCommandFormatter::blockFromBuffer(szBuf);
 	
 	buffer = "event(";
-	buffer += ((KviRawListViewItem *)(it->parent()))->m_szName;
+	buffer += ((KviRawTreeWidgetItem *)(it->parent()))->m_szName;
 	buffer += ",";
 	buffer += it->m_szName;
 	buffer += ")\n";
@@ -367,7 +393,7 @@ void KviRawEditor::getExportEventBuffer(QString &buffer,KviRawHandlerListViewIte
 	{
 		buffer += "\n";
 		buffer += "eventctl -d ";
-		buffer += ((KviRawListViewItem *)(it->parent()))->m_szName;
+		buffer += ((KviRawTreeWidgetItem *)(it->parent()))->m_szName;
 		buffer += " ";
 		buffer += it->m_szName;
 	}
@@ -379,10 +405,10 @@ void KviRawEditor::exportCurrentHandler()
 	saveLastEditedItem();
 	if(!m_pLastEditedItem)return;
 
-	QString szName = QDir::homeDirPath();
+	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += "raw";
-	szName += ((KviRawListViewItem *)(m_pLastEditedItem->parent()))->m_szName;
+	szName += ((KviRawTreeWidgetItem *)(m_pLastEditedItem->parent()))->m_szName;
 	szName += ".";
 	szName += m_pLastEditedItem->m_szName;
 	szName += ".kvs";
@@ -404,25 +430,29 @@ void KviRawEditor::exportAllEvents()
 {
 	saveLastEditedItem();
 
-	KviRawListViewItem * it = (KviRawListViewItem *)m_pListView->firstChild();
+	KviRawTreeWidgetItem * it;// = (KviRawTreeWidgetItem *)m_pTreeWidget->firstChild();
 
 	QString out;
 
-	while(it)
+	//while(it)
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		KviRawHandlerListViewItem * item = (KviRawHandlerListViewItem *)it->firstChild();
-		while(item)
+		it=(KviRawTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		KviRawHandlerTreeWidgetItem * item;// = (KviRawHandlerTreeWidgetItem *)it->firstChild();
+		//while(item)
+		for (int j=0;j<it->childCount();j++)
 		{
 			QString tmp;
+			item=(KviRawHandlerTreeWidgetItem *)it->child(i);
 			getExportEventBuffer(tmp,item);
 			out += tmp;
 			out += "\n";
-			item = (KviRawHandlerListViewItem *)item->nextSibling();
+			//item = (KviRawHandlerTreeWidgetItem *)item->nextSibling();
 		}
-		it = (KviRawListViewItem *)it->nextSibling();
+		//it = (KviRawTreeWidgetItem *)it->nextSibling();
 	}
 
-	QString szName = QDir::homeDirPath();
+	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += "rawevents.kvs";
 	
@@ -462,7 +492,7 @@ KviRawEditorWindow::KviRawEditorWindow(KviFrame * lpFrm)
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
 
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 }
 
 KviRawEditorWindow::~KviRawEditorWindow()

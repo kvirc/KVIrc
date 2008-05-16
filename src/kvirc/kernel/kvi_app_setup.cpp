@@ -586,7 +586,7 @@ void KviApp::findGlobalKvircDirectory()
 
 	//Last resource , try $HOME and $HOME/.kde
 	for(int k=0;usualKvircGlobalDir[k] != 0;k++){
-		m_szGlobalKvircDir = QDir::homeDirPath();
+		m_szGlobalKvircDir = QDir::homePath();
 		m_szGlobalKvircDir+= usualKvircGlobalDir[k];
 		m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
@@ -594,7 +594,7 @@ void KviApp::findGlobalKvircDirectory()
 
 	#ifdef COMPILE_KDE_SUPPORT
 		for(int k=0;usualKvircGlobalDir[k] != 0;k++){
-			m_szGlobalKvircDir = QDir::homeDirPath();
+			m_szGlobalKvircDir = QDir::homePath();
 			m_szGlobalKvircDir+= "/.kde";
 			m_szGlobalKvircDir+= usualKvircGlobalDir[k];
 			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
@@ -670,7 +670,7 @@ bool KviApp::findLocalKvircDirectory()
 	}
 #endif
 	//Check if we have a special .kvirc.rc in $HOME
-	QString szF = QDir::homeDirPath();
+	QString szF = QDir::homePath();
 
 	if(!m_szConfigFile.isEmpty())
 	{
@@ -838,7 +838,7 @@ void KviApp::saveKvircDirectory()
 	}
 #endif //COMPILE_KDE_SUPPORT
 	// In NON-KDE we use $HOME/.kvirc.rc or $HOME/kvirc.ini
-	QString szF = QDir::homeDirPath();
+	QString szF = QDir::homePath();
 	if(!m_szConfigFile.isEmpty())
 	{
 		//Must be changed from QString::fromLocal8Bit to QTextCodec::codecForLocale()

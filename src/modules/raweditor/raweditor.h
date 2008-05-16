@@ -24,39 +24,63 @@
 
 #include "kvi_window.h"
 #include "kvi_qstring.h"
-#include "kvi_tal_listview.h"
-
+#include "kvi_tal_treewidget.h"
+#include "kvi_iconmanager.h"
 #include <QWidget>
 #include <QLineEdit>
 
 class KviScriptEditor;
 class KviTalPopupMenu;
 
-class KviRawListViewItem : public KviTalListViewItem
+class KviRawTreeWidget : public KviTalTreeWidget
+{
+	public:
+	KviRawTreeWidget(QWidget *par)
+		: KviTalTreeWidget(par){};
+	void updateItem(KviTalTreeWidgetItem *item)
+	{
+		update(indexFromItem(item,0));
+	};
+	~KviRawTreeWidget() {};
+};
+
+class KviRawTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
 	int m_iIdx;
 	QString m_szName;
 public:
-	KviRawListViewItem(KviTalListView * par,int idx);
-	~KviRawListViewItem() {};
+	KviRawTreeWidgetItem(KviTalTreeWidget * par,int idx,bool bEnabled);
+	~KviRawTreeWidgetItem() {};
 public:
+	void setEnabled(bool bEnabled)
+	{
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT))); 
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENTNOHANDLERS))); 
+			((KviRawTreeWidget*)treeWidget())->updateItem(this);
+	};
 	virtual QString text(int col) const { return m_szName; };
-	virtual const QPixmap * pixmap(int col) const;
 };
 
-class KviRawHandlerListViewItem : public KviTalListViewItem
+class KviRawHandlerTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviRawHandlerListViewItem(KviTalListViewItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: KviTalListViewItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) {};
-	~KviRawHandlerListViewItem() {};
+	KviRawHandlerTreeWidgetItem(KviTalTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
+	: KviTalTreeWidgetItem(par,name), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) 
+	{
+		setEnabled(bEnabled); 
+	};
+	~KviRawHandlerTreeWidgetItem() {};
 public:
+	void setEnabled(bool bEnabled)
+	{
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER))); 
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED))); 
+			((KviRawTreeWidget*)treeWidget())->updateItem(this);
+	};
 	QString m_szName;
 	QString m_szBuffer;
 	bool   m_bEnabled;
-	virtual QString text(int col) const { return m_szName; };
-	virtual const QPixmap * pixmap(int col) const;
 };
 
 class KviRawEditor : public QWidget
@@ -67,19 +91,19 @@ public:
 	~KviRawEditor();
 public:
 	KviScriptEditor * m_pEditor;
-	KviTalListView       * m_pListView;
+	KviRawTreeWidget       * m_pTreeWidget;
 	QLineEdit       * m_pNameEditor;
 	KviTalPopupMenu      * m_pContextPopup;
-	KviRawHandlerListViewItem * m_pLastEditedItem;
+	KviRawHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool              m_bOneTimeSetupDone;
 public:
 	void commit();
 	void saveLastEditedItem();
-	void getUniqueHandlerName(KviRawListViewItem *it,QString &buffer);
-	void getExportEventBuffer(QString &szBuffer,KviRawHandlerListViewItem * it);
+	void getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer);
+	void getExportEventBuffer(QString &szBuffer,KviRawHandlerTreeWidgetItem * it);
 protected slots:
-	void selectionChanged(KviTalListViewItem *it);
-	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
+	void customContextMenuRequested(const QPoint &pnt);
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentRaw();

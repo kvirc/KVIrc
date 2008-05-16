@@ -125,7 +125,7 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 			if(szData.isEmpty())
 			{
 				// unset ?
-				KVI_OPTION_STRING(KviOption_stringIncomingPath) = QDir::homeDirPath();
+				KVI_OPTION_STRING(KviOption_stringIncomingPath) = QDir::homePath();
 				if(!KVI_OPTION_STRING(KviOption_stringIncomingPath).endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
 					KVI_OPTION_STRING(KviOption_stringIncomingPath).append(KVI_PATH_SEPARATOR_CHAR);
 				KVI_OPTION_STRING(KviOption_stringIncomingPath).append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
@@ -399,7 +399,7 @@ bool KviApp::findUserFile(KviStr &szRetPath,const char *filename)
 	if(findImageInImageSearchPath(szRetPath,filename))return true;
 
 	// Last resort ...
-	szRetPath = QDir::homeDirPath();
+	szRetPath = QDir::homePath();
 	szRetPath.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
 	szRetPath.append(filename);
 	if(KviFileUtils::fileExists(szRetPath.ptr()))return true;;
@@ -481,7 +481,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 
 	QString szBestMatch;
 
-	while(szRetPath.find(KVI_PATH_SEPARATOR) != -1)
+	while(szRetPath.indexOf(KVI_PATH_SEPARATOR) != -1)
 	{
 		KviQString::cutToFirst(szRetPath,KVI_PATH_SEPARATOR);
 
@@ -521,7 +521,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 		}
 	
 		// Last resort
-		szBuffer = QDir::homeDirPath();
+		szBuffer = QDir::homePath();
 		szBuffer.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
 		szBuffer.append(szRetPath);
 		if(KviFileUtils::fileExists(szBuffer.ptr()))
@@ -596,7 +596,7 @@ bool KviApp::findImage(QString &szRetPath,const QString &filename)
 	if(findImageInImageSearchPath(szRetPath,filename))return true;
 
 	// Last resort
-	szRetPath = QDir::homeDirPath();
+	szRetPath = QDir::homePath();
 	KviQString::ensureLastCharIs(szRetPath,KVI_PATH_SEPARATOR_CHAR);
 	szRetPath.append(filename);
 	if(KviFileUtils::fileExists(szRetPath))return true;
@@ -675,7 +675,7 @@ bool KviApp::findSmallIcon(QString &szRetPath,const QString &filename)
 	if(findImageInImageSearchPath(szRetPath,filename))return true;
 
 	// Last resort... bleah :/
-	szRetPath = QDir::homeDirPath();
+	szRetPath = QDir::homePath();
 	KviQString::ensureLastCharIs(szRetPath,KVI_PATH_SEPARATOR_CHAR);
 	szRetPath.append(filename);
 	if(KviFileUtils::fileExists(szRetPath))return true;

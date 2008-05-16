@@ -60,7 +60,7 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 	if(a->isKviUserActionNeverOverrideThis())
 		t += " <font color=\"#a0a0a0\">[" + __tr2qs("Script") + "]</font>";
 	t += "<br><font size=\"-1\">" + a->description()+ "</font>";
-	m_szKey = a->visibleName().upper();
+	m_szKey = a->visibleName().toUpper();
 
 	QPixmap * p = a->bigIcon();
 	setIcon(*p);
@@ -231,6 +231,6 @@ void KviActionDrawer::fill()
 	if(p)
 	{
 		int iii = indexOf(p);
-		if(iii >= 0)setCurrentPage(iii);
+		if(iii >= 0)setCurrentIndex(iii);
 	}
 }

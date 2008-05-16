@@ -117,8 +117,9 @@
 // Basic NotifyListManager: this does completely nothing
 
 KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
-: QObject(0,"notify_list_manager")
+: QObject(0)
 {
+	setObjectName("notify_list_manager");
 	m_pConnection = pConnection;
 	m_pConsole = pConnection->console();
 }
@@ -172,14 +173,18 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 	
 	while(KviRegisteredUser * u = it.current())
 	{
-		if(QStringList::split(",",u->getProperty("notify")).findIndex(nick)!=-1)
+		QString prop=u->getProperty("notify");
+		if (!prop.isEmpty())
 		{
-			QString szComment=u->getProperty("comment");
-			if(!szComment.isEmpty())
-				KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" is on IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
-			else
-				KviQString::sprintf(szMsg,"%Q, Group \"%Q\" is on IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
-			break;
+			if(prop.split(",",QString::SkipEmptyParts).indexOf(nick)!=-1)
+			{
+				QString szComment=u->getProperty("comment");
+				if(!szComment.isEmpty())
+					KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" is on IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
+				else
+					KviQString::sprintf(szMsg,"%Q, Group \"%Q\" is on IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
+				break;
+			}
 		}
 		++it;
 	}
@@ -232,14 +237,18 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 		
 		while(KviRegisteredUser * u = it.current())
 		{
-			if(QStringList::split(",",u->getProperty("notify")).findIndex(nick)!=-1)
+			QString prop=u->getProperty("notify");
+			if (!prop.isEmpty())
 			{
-				QString szComment=u->getProperty("comment");
-				if(!szComment.isEmpty())
-					KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" has left IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
-				else
-					KviQString::sprintf(szMsg,"%Q, Group \"%Q\" has left IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
-				break;
+				if(prop.split(",",QString::SkipEmptyParts).indexOf(nick)!=-1)
+				{
+					QString szComment=u->getProperty("comment");
+					if(!szComment.isEmpty())
+						KviQString::sprintf(szMsg,"%Q (%Q), Group \"%Q\" has left IRC as (%Q)",&(u->name()),&szComment,&(u->group()),&szWho);
+					else
+						KviQString::sprintf(szMsg,"%Q, Group \"%Q\" has left IRC as (%Q)",&(u->name()),&(u->group()),&szWho);
+					break;
+				}
 			}
 			++it;
 		}
@@ -383,10 +392,10 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify",notify))
 		{
-			notify.stripWhiteSpace();
+			notify.trimmed();
 			while(!notify.isEmpty())
 			{
-				int idx = notify.find(' ');
+				int idx = notify.indexOf(' ');
 				if(idx > 0)
 				{
 					QString single = notify.left(idx);
@@ -416,7 +425,9 @@ void KviIsOnNotifyListManager::delayedNotifySession()
 		iTimeout = 15;
 		KVI_OPTION_UINT(KviOption_uintNotifyListCheckTimeInSecs) = 15;
 	}
-	m_pDelayedNotifyTimer->start(iTimeout * 1000,true);
+	m_pDelayedNotifyTimer->setInterval(iTimeout * 1000);
+	m_pDelayedNotifyTimer->setSingleShot(true);
+	m_pDelayedNotifyTimer->start();
 }
 
 void KviIsOnNotifyListManager::newNotifySession()
@@ -457,7 +468,9 @@ void KviIsOnNotifyListManager::delayedIsOnSession()
 		iTimeout = 5;
 		KVI_OPTION_UINT(KviOption_uintNotifyListIsOnDelayTimeInSecs) = 5;
 	}
-	m_pDelayedIsOnTimer->start(iTimeout * 1000,true);
+	m_pDelayedIsOnTimer->setInterval(iTimeout * 1000);
+	m_pDelayedIsOnTimer->setSingleShot(true);
+	m_pDelayedIsOnTimer->start();
 }
 
 void KviIsOnNotifyListManager::newIsOnSession()
@@ -714,7 +727,9 @@ void KviIsOnNotifyListManager::delayedUserhostSession()
 		iTimeout = 5;
 		KVI_OPTION_UINT(KviOption_uintNotifyListUserhostDelayTimeInSecs) = 5;
 	}
-	m_pDelayedUserhostTimer->start(iTimeout * 1000,true);
+	m_pDelayedUserhostTimer->setInterval(iTimeout * 1000);
+	m_pDelayedUserhostTimer->setSingleShot(true);
+	m_pDelayedUserhostTimer->start();
 }
 
 void KviIsOnNotifyListManager::newUserhostSession()
@@ -980,7 +995,7 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 		{
 			QString nkd = m_pConnection->decodeText(nk.ptr());
 			QString nksp = " " + nkd;
-			m_szLastIsOnMsg.replace(nksp,"",false);
+			m_szLastIsOnMsg.replace(nksp,"",Qt::CaseInsensitive);
 			if(!(m_pConsole->notifyListView()->findEntry(nkd)))
 			{
 				// not yet notified
@@ -989,7 +1004,7 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 		}
 	}
 	// ok...check the users that have left irc now...
-	QStringList sl = QStringList::split(' ',m_szLastIsOnMsg);
+	QStringList sl = m_szLastIsOnMsg.isEmpty()?QStringList():m_szLastIsOnMsg.split(' ',QString::SkipEmptyParts);
 
 	for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 	{
@@ -1093,8 +1108,8 @@ void KviWatchNotifyListManager::buildRegUserDict()
 		QString notify;
 		if(u->getProperty("notify",notify))
 		{
-			notify.stripWhiteSpace();
-			QStringList sl = QStringList::split(' ',notify);
+			notify.trimmed();
+			QStringList sl = notify.split(' ',QString::SkipEmptyParts);
 			for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
 			{
 				m_pRegUserDict->replace(*it,new QString(u->name()));
@@ -1116,7 +1131,7 @@ void KviWatchNotifyListManager::start()
 	while(it.current())
 	{
 		QString nk = it.currentKey();
-		if(nk.find('*') == -1)
+		if(nk.indexOf('*') == -1)
 		{
 			if((watchStr.length() + nk.length() + 2) > 501)
 			{

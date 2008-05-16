@@ -597,8 +597,8 @@ void KviConnectAction::activeContextStateChanged()
 		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
-			b->setPixmap(*p);
-			b->setTextLabel(txt);
+			b->setIcon(QIcon(*p));
+			b->setText(txt);
 		}
 	} else {
 		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
@@ -743,7 +743,7 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 			visibleName(),
 			visibleName(),
 			this,SLOT(activate()),t,name());
-	b->setPopup(m_pPopup);
+	b->setMenu(m_pPopup);
 	
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
 	t->addWidget(b);
@@ -922,7 +922,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 		QChar ccc = szModes[0];
 		szModes.remove(0,1);
 		id = m_pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MODE)),QString("+%1 Mode").arg(ccc));
-		m_pPopup->setItemChecked(id,c->connection()->userInfo()->hasUserMode(ccc.latin1()));
+		m_pPopup->setItemChecked(id,c->connection()->userInfo()->hasUserMode(ccc.toLatin1()));
 	}
 }
 
@@ -935,7 +935,7 @@ void KviChangeUserModeAction::popupActivated(int id)
 	if(!c->isConnected())return;
 	if(!text.isEmpty())
 	{
-		int idx = text.find('+');
+		int idx = text.indexOf('+');
 		if(idx != -1)
 		{
 			idx++;
@@ -1009,8 +1009,8 @@ void KviGoAwayAction::activeContextStateChanged()
 		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
-			b->setPixmap(*p);
-			b->setTextLabel(txt);
+			b->setIcon(QIcon(*p));
+			b->setText(txt);
 		}
 		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
 	} else {

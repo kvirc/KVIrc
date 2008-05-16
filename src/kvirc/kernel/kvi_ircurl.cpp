@@ -151,7 +151,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	result.iPort = 6667;
 	result.iError=0;
 
-	int iProtoLen = url.find("://");
+	int iProtoLen = url.indexOf("://");
 	if(iProtoLen!=-1) { 
 		if(KviQString::equalCIN(url,"irc",3)) {
 			// OK, seems to be a valid proto;
@@ -168,7 +168,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 				//irc(???):// proto??
 				result.iError |= InvalidProtocol;
 			}
-			iProtoLen = url.find("://");
+			iProtoLen = url.indexOf("://");
 			url = url.right(url.length()-iProtoLen-3);
 		} else {
 			result.iError |= InvalidProtocol;
@@ -176,13 +176,13 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	}
 	//Ok, we understand a protocol.. Now we shuld find a server name:)
 	int iTmp;
-	iTmp = url.find(':');
+	iTmp = url.indexOf(':');
 	if(iTmp!=-1) {
 		result.szHost = url.left(iTmp);
 		url = url.right(url.length()-iTmp-1);
 		// Accepted, now the time for the port:)
 		bool bOk;
-		if( (iTmp = url.find('/')) != -1) { // any channels pending?
+		if( (iTmp = url.indexOf('/')) != -1) { // any channels pending?
 			result.iPort = url.left(iTmp).toUInt(&bOk);
 			if(!bOk) {
 				result.iPort = 6667;
@@ -197,7 +197,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 			}
 			url = "";
 		}
-	} else if( (iTmp = url.find('/')) != -1) { // have channels??
+	} else if( (iTmp = url.indexOf('/')) != -1) { // have channels??
 		result.szHost = url.left(iTmp);
 		url = url.right(url.length()-iTmp-1);
 	} else {
@@ -206,8 +206,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	}
 
 	//and, finally, channels:D
-
-	result.chanList = QStringList::split(',',url);
+	result.chanList = url.isEmpty()?QStringList():url.split(',',QString::SkipEmptyParts);
 
 }
 
@@ -328,14 +327,14 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 				QString toPart;
 				for(KviChannel * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
 				{
-					tmp=c->name();
+					tmp=c->objectName();
 					if(c->hasChannelKey()) {
 						tmp.append("?");
 						tmp.append(c->channelKey());
 					}
-					if(!parts.chanList.remove(tmp))
+					if(!parts.chanList.removeAll(tmp))
 					{
-						toPart.append(c->name());
+						toPart.append(c->objectName());
 						toPart.append(",");
 					}
 				}

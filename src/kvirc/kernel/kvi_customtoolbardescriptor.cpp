@@ -128,7 +128,7 @@ void KviCustomToolBarDescriptor::fillToolBar()
 	if(m_pActions->count() == 0)
 	{
 		// force layout of the toolbar
-		QApplication::postEvent(m_pToolBar,new QEvent(QEvent::LayoutHint));
+		QApplication::postEvent(m_pToolBar,new QEvent(QEvent::LayoutRequest));
 	} else {
 		KviPointerList<QString> dying;
 		dying.setAutoDelete(false);
@@ -168,7 +168,7 @@ void KviCustomToolBarDescriptor::rename(const QString &szNewLabelCode)
 {
 	delete m_pLabelScript;
 	createLabelScript(szNewLabelCode);
-	if(m_pToolBar)m_pToolBar->setLabel(label());
+	if(m_pToolBar)m_pToolBar->setWindowTitle(label());
 }
 
 void KviCustomToolBarDescriptor::clear()

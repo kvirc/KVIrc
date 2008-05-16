@@ -45,7 +45,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	m_pWidgetStack = new KviTalWidgetStack(this);
 	g->addWidget(m_pWidgetStack,0,0);
 	m_pTabBar = new QTabBar(this);
-	m_pTabBar->setShape(QTabBar::TriangularBelow);
+	m_pTabBar->setShape(QTabBar::TriangularSouth);
 	connect(m_pTabBar,SIGNAL(selected(int)),this,SLOT(tabSelected(int)));
 	g->addWidget(m_pTabBar,1,0);
 
@@ -59,7 +59,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 
 	setMinimumSize(300,200);
 	setMaximumSize(780,580);
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CTCPREQUESTREPLIED)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CTCPREQUESTREPLIED)));
 
 	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
 }
@@ -111,7 +111,7 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 	l->setText(tmp);
 	m_pWidgetStack->addWidget(l);
 	m_pWidgetStack->widget(id)->raise();
-	m_pTabBar->setCurrentTab(id);
+	m_pTabBar->setCurrentIndex(id);
 }
 
 void KviCtcpPageDialog::closeEvent(QCloseEvent *)

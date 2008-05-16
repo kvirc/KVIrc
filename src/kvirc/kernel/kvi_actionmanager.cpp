@@ -274,7 +274,7 @@ KviAction * KviActionManager::getAction(const QString &szName)
 {
 	KviAction * a = m_pActions->find(szName);
 	if(a)return a;
-	int idx = szName.find('.');
+	int idx = szName.indexOf('.');
 	if(idx < 0)
 	{
 		// backward compatibility: try to lookup the name with the kvirc. prefix

@@ -70,7 +70,7 @@ void KviCustomToolBarManager::done()
 QString KviCustomToolBarManager::idForNewToolBar(const QString &szTemplate)
 {
 	QString s;
-	QString szTT = szTemplate.lower();
+	QString szTT = szTemplate.toLower();
 	szTT.remove(" ");
 	szTT.remove("$tr");
 	szTT.remove("(");

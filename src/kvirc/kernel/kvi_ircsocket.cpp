@@ -183,20 +183,22 @@ void KviIrcSocket::outputSSLError(const QString &szMsg)
 
 void KviIrcSocket::outputProxyMessage(const QString &szMsg)
 {
-	QStringList list=QStringList::split("\n",szMsg);
+	QStringList list=szMsg.isEmpty()?QStringList():szMsg.split("\n",QString::SkipEmptyParts);
+
 	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
 	{
-		QString szTemporary = (*it).stripWhiteSpace();
+		QString szTemporary = (*it).trimmed();
 		m_pConsole->output(KVI_OUT_SOCKETMESSAGE,__tr2qs("[PROXY]: %Q"),&(szTemporary));
 	}
 }
 
 void KviIrcSocket::outputProxyError(const QString &szMsg)
 {
-	QStringList list=QStringList::split("\n",szMsg);
+	QStringList list=szMsg.isEmpty()?QStringList():szMsg.split("\n",QString::SkipEmptyParts);
+
 	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
 	{
-		QString szTemporary = (*it).stripWhiteSpace();
+		QString szTemporary = (*it).trimmed();
 		m_pConsole->output(KVI_OUT_SOCKETERROR,__tr2qs("[PROXY ERROR]: %Q"),&(szTemporary));
 	}
 	
@@ -382,7 +384,9 @@ int KviIrcSocket::startConnection(KviIrcServer *srv,KviProxy * prx,const char * 
 	if(KVI_OPTION_UINT(KviOption_uintIrcSocketTimeout) < 5)KVI_OPTION_UINT(KviOption_uintIrcSocketTimeout) = 5;
 	m_pTimeoutTimer = new QTimer();
 	QObject::connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
-	m_pTimeoutTimer->start(KVI_OPTION_UINT(KviOption_uintIrcSocketTimeout) * 1000,true);
+	m_pTimeoutTimer->setSingleShot(true);
+	m_pTimeoutTimer->setInterval(KVI_OPTION_UINT(KviOption_uintIrcSocketTimeout) * 1000);
+	m_pTimeoutTimer->start();
 
 	// and wait for connect
 	setState(Connecting);
@@ -696,7 +700,7 @@ void KviIrcSocket::proxyLoginV4()
 	char *bufToSend = new char[iLen];
 	bufToSend[0]=(unsigned char)4; //Version 4
 	bufToSend[1]=(unsigned char)1; //Connect
-	Q_UINT16 port=(Q_UINT16)htons(m_pIrcServer->port());
+	quint16 port=(quint16)htons(m_pIrcServer->port());
 	kvi_memmove((void *)(bufToSend+2),(void *)&port,2);
 
 	struct in_addr ircInAddr;
@@ -704,7 +708,7 @@ void KviIrcSocket::proxyLoginV4()
 	if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))
 		debug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
 
-	Q_UINT32 host=(Q_UINT32)ircInAddr.s_addr;
+	quint32 host=(quint32)ircInAddr.s_addr;
 	kvi_memmove((void *)(bufToSend+4),(void *)&host,4);
 	kvi_memmove((void *)(bufToSend+8),(void *)(szUserAndPass.ptr()),szUserAndPass.len());
 	// send it into hyperspace...
@@ -908,7 +912,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		kvi_memmove((void *)(bufToSend + 5),
 			(void *)(m_pIrcServer->hostName().toUtf8().data()),
 			m_pIrcServer->hostName().toUtf8().length());
-		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
+		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()),(void *)&port,2);
 	} else if(m_pIrcServer->isIpV6()) {
 #ifdef COMPILE_IPV6_SUPPORT
@@ -916,16 +920,16 @@ void KviIrcSocket::proxySendTargetDataV5()
 
 		if(!kvi_stringIpToBinaryIp_V6(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
 		kvi_memmove((void *)(bufToSend + 4),(void *)(&ircInAddr),4);
-		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
+		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 20),(void *)&port,2);
 #endif
 	} else {
 		struct in_addr ircInAddr;
 
 		if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
-		Q_UINT32 host = (Q_UINT32)ircInAddr.s_addr;
+		quint32 host = (quint32)ircInAddr.s_addr;
 		kvi_memmove((void *)(bufToSend + 4),(void *)&host,4);
-		Q_UINT16 port = (Q_UINT16)htons(m_pIrcServer->port());
+		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 8),(void *)&port,2);
 	}
 

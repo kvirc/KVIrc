@@ -182,8 +182,9 @@
 	//////////////////////////////////////////////////////////////////////
 
 	KviIpcSentinel::KviIpcSentinel()
-	: QWidget(0,"kvirc4_ipc_sentinel")
+	: QWidget(0)
 	{
+		setObjectName("kvirc4_ipc_sentinel");
 #ifdef COMPILE_ON_WINDOWS
 		setWindowTitle("kvirc4_ipc_sentinel");
 #else //!COMPILE_ON_WINDOWS

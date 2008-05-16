@@ -20,28 +20,25 @@ src/kvilib/tal
 
 src/kvirc
 src/kvirc/kernel
-	kvi_app.cpp
-	kvi_customtoolbardescriptor.cpp
-	kvi_customtoolbardescriptor.h
-	kvi_customtoolbarmanager.cpp
-	kvi_customtoolbarmanager.h
+	app.cpp
+	kvi_filetransfer.cpp
 	kvi_iconmanager.cpp
-	kvi_iconmanager.h
-src/kvirc/ui
-	kvi_actiondrawer.cpp
-	kvi_actiondrawer.h
+	kvi_ircconnection.cpp
+	kvi_options.cpp
+/module(incomplete list):
+	kvi_modulemanager.cpp
+/ui(incomplete list):
+	kvi_channel.cpp
+	kvi_colorwin.cpp
+	kvi_ctcppagedialog.cpp
 	kvi_console.cpp
-	kvi_console.h
 	kvi_ircviewtools.cpp
 	kvi_listview.cpp
-	kvi_listview.h
 	kvi_mdicaption.cpp
 	kvi_mdichild.cpp
 	kvi_statusbar.cpp
 	kvi_styled_controls.cpp
-	kvi_styled_controls.h
 	kvi_toolwindows_container.cpp
-	kvi_toolwindows_container.h
 
 src/modules
 	addon -  q3support in dialog.*

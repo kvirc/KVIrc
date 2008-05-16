@@ -383,7 +383,8 @@ void KviIconWidget::init()
 	for(i = 0;i < KVI_NUM_SMALL_ICONS;i++)
 	{
 		KviStr tmp(KviStr::Format,"%d",i);
-		QLabel * l = new QLabel(this,tmp.ptr());
+		QLabel * l = new QLabel(this);
+		l->setObjectName(tmp.ptr());
 		l->setPixmap(*(g_pIconManager->getSmallIcon(i)));
 		g->addWidget(l,(i / 10) + 1,(i % 10) + 1);
 		l->installEventFilter(this);
@@ -407,7 +408,7 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 	{
 		if(o->inherits("QLabel"))
 		{
-			KviStr szName = ((QLabel *)o)->name();
+			KviStr szName = ((QLabel *)o)->objectName();
 			bool bOk;
 			int iVal = szName.toInt(&bOk);
 			if(bOk)emit selected(iVal);
@@ -666,8 +667,8 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString &s
 				scaleW = (scaleH * pix->width()) / pix->height();
 			}
 	
-			QImage img = pix->convertToImage();
-			pix->convertFromImage(img.smoothScale(scaleW,scaleH));
+			QImage img = pix->toImage();
+			pix->fromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 		}
 	} else {
 		return 0;
@@ -727,8 +728,8 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 		p = getSmallIcon(idx % KVI_NUM_SMALL_ICONS);
 		if(p)
 		{
-			QImage tmpi = p->convertToImage();
-			QImage tmp2 = tmpi.smoothScale(32,32);
+			QImage tmpi = p->toImage();
+			QImage tmp2 = tmpi.scaled(32,32,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
 			KviCachedPixmap * cp = new KviCachedPixmap(new QPixmap(tmp2),QString::null);
 			addToCache(tmpName,cp);
 			return cp->pixmap();
