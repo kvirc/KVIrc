@@ -47,8 +47,9 @@
 #define QIconDrag QMimeData
 
 KviCustomToolBarSeparator::KviCustomToolBarSeparator(KviCustomToolBar *pParent,const char * name)
-: QWidget(pParent,name)
+: QWidget(pParent)
 {
+	setObjectName(name);
 	m_pToolBar = pParent;
 	setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
 }
@@ -181,7 +182,7 @@ void KviCustomToolBar::syncDescriptor()
 	// store the item order in the descriptor
 	// There was boxLayouts
 	QLayout * lay = layout();
-	QLayoutIterator iter = lay->iterator();
+/*	QLayoutIterator iter = lay->iterator();
 	QLayoutItem * i;
 	m_pDescriptor->actions()->clear();
 	while((i = iter.current()))
@@ -190,6 +191,16 @@ void KviCustomToolBar::syncDescriptor()
 			m_pDescriptor->actions()->append(new QString(w->name()));
 		++iter;
 	}
+*/
+	int i = 0;
+	 for (int i=0;i<layout()->count();i++)
+	 {
+		 if (QWidget * w=layout()->itemAt(i)->widget())
+			m_pDescriptor->actions()->append(new QString(w->objectName()));
+	 }
+		
+
+
 }
 
 void KviCustomToolBar::childEvent(QChildEvent *e)
@@ -197,7 +208,7 @@ void KviCustomToolBar::childEvent(QChildEvent *e)
 	if(KviActionManager::customizingToolBars())
 	{
 		// this is useful for droppped and dragged-out children
-		if(e->type() == QEvent::ChildInserted)
+		if(e->type() == QEvent::ChildAdded)
 		{
 			if(e->child()->isWidgetType())
 				filterChild(e->child());
@@ -251,7 +262,7 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent *e)
 				//insertWidget(-1,m_pDraggedChild->sizeHint().width(),m_pDraggedChild,idx);
 				addWidget(m_pDraggedChild);
 #endif
-				QEvent ev(QEvent::LayoutHint);
+				QEvent ev(QEvent::LayoutRequest);
 				QApplication::sendEvent(this,&ev);
 			} else e->ignore();
 		} else e->ignore();
@@ -295,7 +306,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 	int idx = 0;
 
 	if(!l)return 0;
-	QLayoutIterator it = l->iterator();
+//	QLayoutIterator it = l->iterator();
 
 	// find the children with minimum distance
 	int iMinDistIdx = -1;
@@ -304,10 +315,11 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 	int iExcludeIdx = -1;
 	QPoint pntExclude;
 	QWidget * w = 0;
-
-	while((i = it.current()))
+//	QLayoutItem *child;
+//	while((i = it.current()))
+	for (int i=0;i<l->count();i++)
 	{
-		if((w = i->widget()))
+		if((w = l->itemAt(i)->widget()))
 		{
 			if(uMinDist != 0)
 			{
@@ -346,7 +358,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excl
 			}
 		}
 		idx++;
-		++it;
+		//++it;
 	}
 
 	if(!pMinDistW)
@@ -456,7 +468,7 @@ void KviCustomToolBar::drag(QWidget * child,const QPoint &pnt)
 	// not sure if i'm losing anythig from insertWidget(-1,child->width(),child,idx);
 	addWidget(child);
 #endif
-	QEvent ev(QEvent::LayoutHint);
+	QEvent ev(QEvent::LayoutRequest);
 	QApplication::sendEvent(this,&ev);
 }
 
@@ -505,7 +517,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 							goto unhandled; // let the applet handle the event it
 						}
 					}
-					g_pApp->setOverrideCursor(Qt::sizeAllCursor);
+					g_pApp->setOverrideCursor(Qt::SizeAllCursor);
 					return true;
 				}
 			}
@@ -535,10 +547,10 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 // FIXME: This is screwed up in Qt4.... :/
 				QDrag * d = new QDrag(this);
 				QMimeData * m = new QMimeData();
-				m->setText(m_pMovedChild->name());
+				m->setText(m_pMovedChild->objectName());
 				d->setMimeData(m);
 
-				KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->name());
+				KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->objectName());
 				if(act)
 				{
 					QPixmap * pixie = act->bigIcon();
@@ -558,7 +570,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 					pActionForMovedChild->setVisible(false);
 				m_pMovedChild->hide();
 
-				QEvent ev(QEvent::LayoutHint);
+				QEvent ev(QEvent::LayoutRequest);
 				QApplication::sendEvent(this,&ev);
 				if(!d->exec(Qt::MoveAction) != Qt::MoveAction)
 				{
@@ -575,7 +587,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 					//insertWidget(-1,m_pMovedChild->width(),m_pMovedChild,0);
 					addWidget(m_pMovedChild);
 #endif
-					QEvent ev(QEvent::LayoutHint);
+					QEvent ev(QEvent::LayoutRequest);
 					QApplication::sendEvent(this,&ev);
 				} else {
 					QApplication::sendPostedEvents(m_pMovedChild,0);
