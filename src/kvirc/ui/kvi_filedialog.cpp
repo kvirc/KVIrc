@@ -42,7 +42,7 @@ KviFileDialog::KviFileDialog(const QString &dirName, const QString &filter,
 : KviTalFileDialog(dirName,filter,parent,name,modal)
 {
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
 
 }
 

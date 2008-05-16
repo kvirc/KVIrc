@@ -35,9 +35,9 @@
 // FIXME: #warning "THIS COULD GO INTO libkvioptions ?"
 
 KviIpEditor::KviIpEditor(QWidget * parent,AddressType addrType,const QString &ipAddr,const char *name)
-:QFrame(parent,name)
+:QFrame(parent)
 {
-
+	setObjectName(name);
 	for(int i=0;i<7;i++)
 	{
 		m_pEdit[i]  = 0;
@@ -114,7 +114,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 
 	KviQCString ip = ipAddr.ascii(); // ip addresses are digits & latin letters abcdef (IpV6)
 
-	ip = ip.stripWhiteSpace();
+	ip = ip.trimmed();
 	const char * c = ip.data();
 
 	if(!c)return false; // huh ?....(should never happen at this point)

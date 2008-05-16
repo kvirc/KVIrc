@@ -48,7 +48,7 @@ int KviImageDialogItem::width(const KviTalListBox *lb) const
 	w = lb->fontMetrics().width(text()) + 4;
 	if(w > 100)w = 100;
 	if(w < 24)w = 24;
-	return QMAX(pixmap()->width() + 10,w);
+	return qMax(pixmap()->width() + 10,w);
 }
 
 void KviImageDialogItem::paint(QPainter * p)
@@ -110,7 +110,8 @@ KviImageDialog::KviImageDialog(QWidget * par,
 
 	m_pTypeComboBox = new QComboBox(this);
 
-	g->addMultiCellWidget(m_pTypeComboBox,0,0,0,2);
+	g->addWidget(m_pTypeComboBox,0,0,1,3);
+//	g->addMultiCellWidget(m_pTypeComboBox,0,0,0,2);
 
 	m_pTypeList = new KviValueList<int>;
 
@@ -124,21 +125,22 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	{
 		tmp += ": ";
 		tmp += __tr2qs("Small icons");
-		m_pTypeComboBox->insertItem(tmp);
+		m_pTypeComboBox->insertItem(0,tmp);
 		m_pTypeList->append(KID_TYPE_BUILTIN_IMAGES_SMALL);
 	}
 
 	if(types & KID_TYPE_FULL_PATH)
 	{
-		m_pTypeComboBox->insertItem(__tr2qs("Full path"));
+		m_pTypeComboBox->insertItem(m_pTypeComboBox->count(),__tr2qs("Full path"));
 		m_pTypeList->append(KID_TYPE_FULL_PATH);
 	}
 
-	int idx = m_pTypeList->findIndex(initialType);
+	int idx = m_pTypeList->indexOf(initialType);
 	if(idx < 0)idx = 0;
 
 	QWidget * l = new QWidget(this);
-	g->addMultiCellWidget(l,1,1,0,2);
+	g->addWidget(l,1,0,1,3);
+//	g->addMultiCellWidget(l,1,1,0,2);
 
 
 	m_pListBox = new KviTalListBox(this);
@@ -147,7 +149,8 @@ KviImageDialog::KviImageDialog(QWidget * par,
 
 	m_pTip = new KviDynamicToolTip(m_pListBox->viewport());
 
-	g->addMultiCellWidget(m_pListBox,2,2,0,2);
+	g->addWidget(m_pListBox,2,0,1,3);
+//	g->addMultiCellWidget(m_pListBox,2,2,0,2);
 
 	QPushButton * b = new QPushButton(__tr2qs("Cancel"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
@@ -164,7 +167,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(itemDoubleClicked(KviTalListBoxItem *)));
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
-	m_pTypeComboBox->setCurrentItem(idx);
+	m_pTypeComboBox->setCurrentIndex(idx);
 	jobTypeSelected(idx);
 
 	m_pListBox->setMinimumSize(420,350);
@@ -197,11 +200,11 @@ void KviImageDialog::startJob(int type,const QString &szInitialPath)
 	if(m_iJobType == KID_TYPE_FULL_PATH)
 	{
 		QDir d(szInitialPath);
-		if(!d.exists())d = QDir::homeDirPath();
-		if(!d.exists())d = QDir::rootDirPath();
-		m_szJobPath = d.absPath();
+		if(!d.exists())d = QDir::homePath();
+		if(!d.exists())d = QDir::rootPath();
+		m_szJobPath = d.absolutePath();
 		KVI_OPTION_STRING(KviOption_stringLastImageDialogPath) = m_szJobPath;
-		m_lJobFileList = d.entryList(QDir::Hidden | QDir::All,QDir::DirsFirst | QDir::Name | QDir::IgnoreCase);
+		m_lJobFileList = d.entryList(QDir::Hidden | QDir::AllEntries,QDir::DirsFirst | QDir::Name | QDir::IgnoreCase);
 	}
 
 	m_pTimer->start(100);
@@ -254,7 +257,7 @@ void KviImageDialog::heartbeat()
 			while((idx < 20) && (!m_lJobFileList.isEmpty()))
 			{
 				QString szFile = m_lJobFileList.first();
-				m_lJobFileList.remove(szFile);
+				m_lJobFileList.removeAll(szFile);
 				QString szPath = m_szJobPath;
 				szPath += KVI_PATH_SEPARATOR;
 				szPath += szFile;
@@ -276,8 +279,8 @@ void KviImageDialog::heartbeat()
 						QImage i(szPath);
 						if(i.isNull())continue;
 						QPixmap pix;
-						if((i.width() > 80) || (i.height() > 80))pix = i.scaled(80,80,Qt::KeepAspectRatio);
-						else pix = i;
+						if((i.width() > 80) || (i.height() > 80))pix = QPixmap::fromImage(i.scaled(80,80,Qt::KeepAspectRatio));
+						else pix = QPixmap::fromImage(i);
 
 						QString tip = szFile;
 						tip += "<br><hr>";

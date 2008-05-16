@@ -38,8 +38,9 @@ void KviDynamicToolTipHelper::maybeTip(const QPoint & pnt)
 }
 
 KviDynamicToolTip::KviDynamicToolTip(QWidget * parent,const char * name)
-: QObject(parent,name)
+: QObject(parent)
 {
+	setObjectName(name);
 	m_pHelper = new KviDynamicToolTipHelper(parent,this);
 }
 

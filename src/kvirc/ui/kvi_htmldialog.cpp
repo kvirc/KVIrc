@@ -43,7 +43,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		setWindowTitle(pData->szCaption);
 		
 	if(!pData->pixIcon.isNull())
-		setIcon(pData->pixIcon);
+		setWindowIcon(QIcon(pData->pixIcon));
 
 	QGridLayout * g = new QGridLayout(this);
 	
@@ -58,7 +58,8 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	{
 		l = new QLabel(this);
 		l->setText(pData->szUpperLabelText);
-		g->addMultiCellWidget(l,0,0,0,2);
+		g->addWidget(l,0,0,1,3);
+	//	g->addMultiCellWidget(l,0,0,0,2);
 		iUp = 1;
 	}
 
@@ -66,7 +67,8 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	{
 		l = new QLabel(this);
 		l->setText(pData->szLowerLabelText);
-		g->addMultiCellWidget(l,2,2,0,2);
+		g->addWidget(l,2,2,1,3);
+//		g->addMultiCellWidget(l,2,2,0,2);
 		iDown = 1;
 	}
 
@@ -78,7 +80,8 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		te->setMinimumSize(pData->iMinimumWidth,pData->iMinimumHeight);
 
 	//te->setReadOnly(true);
-	g->addMultiCellWidget(te,iUp,iDown,0,2);
+	g->addWidget(te,iUp,0,iDown-iUp+1,3);
+//	g->addMultiCellWidget(te,iUp,iDown,0,2);
 
 	int iButtons = pData->szButton3Text.isEmpty() ? (pData->szButton2Text.isEmpty() ? 1 : 2) : 3;
 	if(pData->iCancelButton > iButtons)pData->iCancelButton = iButtons;

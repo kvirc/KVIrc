@@ -56,8 +56,9 @@ static QPixmap                                  * g_pIccMemBuffer               
 static KviPointerList<KviToolBarGraphicalApplet>    * g_pToolBarGraphicalAppletList = 0;
 
 KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * name)
-: QToolButton(par,name)
+: QToolButton(par)
 {
+	setObjectName(name);
 	if(!g_pToolBarGraphicalAppletList)
 	{
 		g_pToolBarGraphicalAppletList = new KviPointerList<KviToolBarGraphicalApplet>();
@@ -123,13 +124,13 @@ void KviToolBarGraphicalApplet::mouseMoveEvent(QMouseEvent * e)
 			if(w > 480)w = 480;
 			m_sizeHint = QSize(w,22);
 			resize(w,height());
-			g_pApp->postEvent(parentWidget(),new QEvent(QEvent::LayoutHint));
+			g_pApp->postEvent(parentWidget(),new QEvent(QEvent::LayoutRequest));
 		}
 	} else {
 		if(e->pos().x() > width() - 4)
-			setCursor(Qt::sizeHorCursor);
+			setCursor(Qt::SizeHorCursor);
 		else
-			setCursor(Qt::arrowCursor);
+			setCursor(Qt::ArrowCursor);
 	}
 }
 
