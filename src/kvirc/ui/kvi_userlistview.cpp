@@ -191,7 +191,8 @@ KviUserListView::KviUserListView(QWidget * parent,KviWindowToolPageButton* butto
 	m_pEntryDict  = new KviPointerHashTable<QString,KviUserListEntry>(dictSize,false);
 	m_pEntryDict->setAutoDelete(true);
 
-	m_pUsersLabel = new QLabel(this,"userslabel");
+	m_pUsersLabel = new QLabel(this);
+	m_pUsersLabel->setObjectName("userslabel");
 	KviTalToolTip::add(m_pUsersLabel,label_text);
 
 	m_pViewArea   = new KviUserListViewArea(this);
@@ -307,7 +308,7 @@ void KviUserListView::applyOptions()
 }
 void KviUserListView::updateArea()
 {
-	bool bEnable = m_pViewArea->isUpdatesEnabled();
+	bool bEnable = m_pViewArea->updatesEnabled();
 	if(!bEnable) m_pViewArea->setUpdatesEnabled(true);
 	triggerUpdate();
 	if(!bEnable) m_pViewArea->setUpdatesEnabled(false);
@@ -635,7 +636,7 @@ KviUserListEntry * KviUserListView::join(const QString &nick,const QString &user
 void KviUserListView::triggerUpdate()
 {
 	// This stuff is useful on joins only
-	if(m_pViewArea->isUpdatesEnabled())
+	if(m_pViewArea->updatesEnabled())
 	{
 		//m_pViewArea->m_pScrollBar->setRange(0,m_iTotalHeight);
 		updateScrollBarRange();
@@ -1309,12 +1310,13 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * par)
 	m_pListView = par;
 	setAutoFillBackground(false);
 
-	m_pScrollBar = new QScrollBar(Qt::Vertical,this,"scrollbar");
+	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
+	m_pScrollBar->setObjectName("scrollbar");
 	m_pScrollBar->setRange(0,0);
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
 	m_pScrollBar->setPageStep(height());
-	m_pScrollBar->setLineStep(m_pListView->m_iFontHeight);
+	m_pScrollBar->setSingleStep(m_pListView->m_iFontHeight);
 	m_iLastScrollBarVal = 0;
 	m_iTopItemOffset = 0;
 	m_bIgnoreScrollBar = false;
@@ -1518,9 +1520,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 							p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid),0 /*,QPen::DotLine*/));
 							if((bShowState || bShowIcons) && (KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_3DGRID))
 								p.drawLine(iAvatarAndTextX,bottom - 1,iAvatarAndTextX,theY);
-							p.setPen(colorGroup().shadow());
+							p.setPen(palette().shadow());
 							p.drawLine(0,bottom - 1,wdth,bottom - 1);
-							p.setPen(colorGroup().light());
+							p.setPen(palette().light());
 							p.drawLine(0,theY,wdth,theY);
 							theY--;
 						}
@@ -1712,7 +1714,7 @@ void KviUserListViewArea::resizeEvent(QResizeEvent *)
 	int iScr = m_pScrollBar->sizeHint().width();
 	m_pScrollBar->setGeometry(width() - iScr,0,iScr,height());
 	m_pScrollBar->setPageStep(height());
-	m_pScrollBar->setLineStep(m_pListView->m_iFontHeight - 1);
+	m_pScrollBar->setSingleStep(m_pListView->m_iFontHeight - 1);
 }
 
 void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
