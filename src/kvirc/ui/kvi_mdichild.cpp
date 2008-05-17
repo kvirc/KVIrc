@@ -497,13 +497,14 @@ void KviMdiChild::setClient(QWidget *w)
 	//linkChildren(w);
 
 	if(m_pClient->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH && 
-		m_pClient->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT){
+		m_pClient->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT)
+	{
 		setMinimumWidth(m_pClient->minimumSize().width() + (KVI_MDICHILD_BORDER << 1));
-		setMinimumHeight(m_pClient->minimumSize().height()+ (KVI_MDICHILD_BORDER << 1) +
-					m_pCaption->heightHint() + KVI_MDICHILD_SPACING);
+		setMinimumHeight(m_pClient->minimumSize().height() + (KVI_MDICHILD_BORDER << 1) +
+				m_pCaption->heightHint() + KVI_MDICHILD_SPACING);
 	}
 
-	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName());
+	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName().utf8().data());
 	setObjectName(tmp.ptr());
 }
 
