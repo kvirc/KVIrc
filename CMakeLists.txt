@@ -590,22 +590,25 @@ IF(WANT_GETTEXT)
 	FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
 	FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 
-	# FIXME split up targets and relative dependencies
-	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE AND GETTEXT_XGETTEXT_EXECUTABLE)
+	IF(GETTEXT_XGETTEXT_EXECUTABLE)
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "yes")
 		# message target; ALL means "generate it at everytime"
 		# FIXME this is generated both at compilation and installation
 		ADD_CUSTOM_TARGET(translations ALL)
-
-		# message-update target;
-		ADD_CUSTOM_TARGET(message-update)
-		# message-extract target;
-		ADD_CUSTOM_TARGET(message-extract)
-
 		SET(USE_GETTEXT_TRANSLATIONS 1)
 	ELSE()
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "no")
 		SET(USE_GETTEXT_TRANSLATIONS 0)
+	ENDIF()
+	
+	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE)
+		# message-update target;
+		ADD_CUSTOM_TARGET(message-update)
+		# message-extract target;
+		ADD_CUSTOM_TARGET(message-extract)
+		SET(USE_GETTEXT_EXTRA 1)
+	ELSE()
+		SET(USE_GETTEXT_EXTRA 0)
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_GETTEXT_SUPPORT "user disabled")

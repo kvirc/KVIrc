@@ -10,6 +10,4 @@ transition autotools -> cmake.
 - uninstall: delete directories
 
 * Translation
-- create a make target for updating *.pot/*.po files
-- Cleanup: move the install target from cmake/modules/FindGetText
-        to a better place
+- should be ok, needs proper testing
