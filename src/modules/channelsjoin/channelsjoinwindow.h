@@ -58,8 +58,8 @@ public:
 	void setConsole(KviConsole  * pConsole);
 protected slots:
 	void editTextChanged(const QString &);
-	void itemClicked(KviTalTreeWidgetItem *it);
-	void itemDoubleClicked(KviTalTreeWidgetItem *it);
+	void itemClicked(QTreeWidgetItem *it,int);
+	void itemDoubleClicked(QTreeWidgetItem *it,int);
 	void editReturnPressed();
 	void cancelClicked();
 	void joinClicked();

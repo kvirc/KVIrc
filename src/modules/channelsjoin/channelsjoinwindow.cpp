@@ -67,10 +67,10 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pListView->addColumn(__tr2qs("Channel"));
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
-	g->addWidget(m_pListView,0,0,0,2);
+	g->addWidget(m_pListView,0,0,1,2);
 	//g->addMultiCellWidget(m_pListView,0,0,0,1);
-	connect(m_pListView,SIGNAL(clicked(KviTalTreeWidgetItem *)),this,SLOT(itemClicked(KviTalTreeWidgetItem *)));
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalTreeWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *)));
+	connect(m_pListView,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(itemClicked(QTreeWidgetItem *,int)));
+	connect(m_pListView,SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
 
 	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Channel" ),this);
@@ -89,7 +89,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pPass = new QLineEdit(m_pGroupBox);
 	m_pPass->setEchoMode(QLineEdit::Password);
 
-	g->addWidget(m_pGroupBox,1,1,0,1);
+	g->addWidget(m_pGroupBox,1,0,1,2);
 //	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
 	m_pJoinButton = new QPushButton(__tr2qs("&Join"),this);
@@ -97,7 +97,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
-g->addWidget(m_pJoinButton,2,2,0,0,Qt::AlignHCenter);
+g->addWidget(m_pJoinButton,2,0,1,2,Qt::AlignHCenter);
 //	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
 
 	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);
@@ -190,7 +190,7 @@ void KviChannelsJoinWindow::fillListView()
 	}
 }
 
-void KviChannelsJoinWindow::itemClicked(KviTalTreeWidgetItem * it) 
+void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it,int) 
 {
 	if(!it)return;
 	if(!it->parent())return;
@@ -199,7 +199,7 @@ void KviChannelsJoinWindow::itemClicked(KviTalTreeWidgetItem * it)
 	enableJoin();
 }
 
-void KviChannelsJoinWindow::itemDoubleClicked(KviTalTreeWidgetItem * it) 
+void KviChannelsJoinWindow::itemDoubleClicked(QTreeWidgetItem * it,int) 
 {
 	if(!it)return;
 	if(!it->parent())return;
