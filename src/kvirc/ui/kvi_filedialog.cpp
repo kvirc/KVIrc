@@ -31,6 +31,7 @@
 #include "kvi_tal_tooltip.h"
 
 #include <QDir>
+#include <QIcon>
 #include <QMessageBox>
 #include <QFileDialog>
 
