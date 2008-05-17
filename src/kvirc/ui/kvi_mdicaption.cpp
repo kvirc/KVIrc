@@ -48,6 +48,7 @@
 #include <QEvent>
 #include <QPaintEvent>
 #include <QStyleOption>
+#include <QTextDocument>
 
 #include <q3simplerichtext.h>
 #define QSimpleRichText Q3SimpleRichText
@@ -55,9 +56,10 @@
 
 
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
-: QToolButton(parent,name)
+: QToolButton(parent)
 {
-	setPixmap(pix);
+	setObjectName(name);
+	setIcon(QIcon(pix));
 	//setAutoRaise(true);
 	setMinimumSize(18,18);
 }
@@ -77,7 +79,7 @@ void KviMdiCaptionButton::drawButton(QPainter *p)
 	QBrush b(parentWidget()->palette().window());
 	
 	if(isDown())
-		qDrawShadePanel(p,0,0,width(),height(),colorGroup(),true,1,&b);
+		qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,&b);
 	else
 		p->fillRect(0,0,width(),height(),b);
 
@@ -88,8 +90,9 @@ void KviMdiCaptionButton::drawButton(QPainter *p)
 
 
 KviMdiCaption::KviMdiCaption(KviMdiChild * parent,const char * name)
-: QWidget(parent,name)
+: QWidget(parent)
 {
+	setObjectName(name);
 	m_pMaximizeButton    = new KviMdiCaptionButton(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MAXIMIZE)),this,"maximize_button");
 	connect(m_pMaximizeButton,SIGNAL(clicked()),parent,SLOT(maximize()));
 	m_pMinimizeButton    = new KviMdiCaptionButton(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),this,"minimize_button");
@@ -205,14 +208,17 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 	QRect r = e->rect();
 	QPainter p(this);
 	p.fillRect(r,m_bActive ? KVI_OPTION_COLOR(KviOption_colorMdiCaptionActive) : KVI_OPTION_COLOR(KviOption_colorMdiCaptionInactive));
-	QSimpleRichText rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption(),font());
-	rt.draw(&p,height() + 2,-1,rect(),colorGroup());
+	//FIXME
+	QTextDocument rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption());
+	rt.setDefaultFont(font());
+	//rt.draw(&p,height() + 2,-1,rect(),palette());
+	rt.drawContents(&p,rect());
 }
 
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
 {
 	m_bMouseGrabbed = false;
-	setCursor(Qt::arrowCursor);
+	setCursor(Qt::ArrowCursor);
 //	releaseMouse();
 }
 

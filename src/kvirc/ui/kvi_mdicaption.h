@@ -77,7 +77,7 @@ public:
 	int heightHint();
 	void setActive(bool bActive);
 	bool active(){ return m_bActive; };
-	void setSystemIcon(const QPixmap &pix){ m_pSystemButton->setPixmap(pix); m_pixSystemIcon = pix; };
+	void setSystemIcon(const QPixmap &pix){ m_pSystemButton->setIcon(QIcon(pix)); m_pixSystemIcon = pix; };
 	const QPixmap * systemIcon(){ return &m_pixSystemIcon; };
 	void enableClose(bool bEnable){ m_pCloseButton->setEnabled(bEnable); };
 	bool closeEnabled(){ return m_pCloseButton->isEnabled(); };

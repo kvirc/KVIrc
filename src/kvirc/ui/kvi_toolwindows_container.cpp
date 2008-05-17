@@ -43,7 +43,7 @@ KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButt
 	m_pButton=button;
 	m_bAutoDelete=1;
 	m_bHidden=0;
-	if(m_pButton) m_pButton->setOn(!isHidden());
+	if(m_pButton) m_pButton->setChecked(!isHidden());
 //	m_ObjectHandler.add(button);
 //	setMinimumWidth(0);
 }
@@ -107,8 +107,8 @@ KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const Q
 	setToolTip(text);
 	setObjectName("kvi_window_tool_button");
 	setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
-	setToggleButton(true);
-	setOn(bOn);
+	setCheckable(true);
+	setChecked(bOn);
 
 //	setSizePolicy(QSizePolicy(QSizePolicy::Fixed,QSizePolicy::Ignored));
 }

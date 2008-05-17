@@ -43,7 +43,7 @@ protected:
 public:
 	void setButtonCode(KviKvsScript * pScript);
 	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(pix); };
-	void setButtonText(const QString &text){ setTextLabel(text); };
+	void setButtonText(const QString &text){ setText(text); };
 	virtual KviWindow * window();
 protected slots:
 	void btnClicked();
@@ -58,7 +58,7 @@ public:
 protected:
 	KviWindow * m_pWnd;
 public:
-	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(QIcon(pix)); setUsesBigPixmap(false); };
+	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(QIcon(pix)); setIconSize(QSize(22,22)); };
 	virtual KviWindow * window(){ return m_pWnd; };
 };
 

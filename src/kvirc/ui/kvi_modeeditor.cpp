@@ -91,11 +91,14 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	g->addWidget(l,0,0);
 
 	l = new QLabel(__tr2qs("Channel Modes"),pBackground);
-	g->addMultiCellWidget(l,0,0,1,2);
+
+	g->addWidget(l,0,1,1,1);
+//	g->addMultiCellWidget(l,0,0,1,2);
 
 	QFrame * f = new QFrame(pBackground);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-	g->addMultiCellWidget(f,1,1,0,2);
+	g->addWidget(f,1,0,1,3);
+//	g->addMultiCellWidget(f,1,1,0,2);
 
 	int i = 1;
 	QString tmp;
@@ -118,19 +121,22 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		m_pCheckBoxes->append(cb);
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
 		i++;
-		g->addMultiCellWidget(cb,i,i,0,2);
+		g->addWidget(cb,i,0,1,3);
+	//	g->addMultiCellWidget(cb,i,i,0,2);
 	}
 
 	KviQString::sprintf(tmp,"l: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('l')));
 	m_pLimitBox = new KviStyledCheckBox(tmp,pBackground);
 	m_pLimitBox->setEnabled(isEnabled);
 	i++;
-	g->addMultiCellWidget(m_pLimitBox,i,i,0,2);
+	g->addWidget(m_pLimitBox,i,0,1,3);
+	//g->addMultiCellWidget(m_pLimitBox,i,i,0,2);
 	connect(m_pLimitBox,SIGNAL(toggled(bool)),this,SLOT(limitBoxToggled(bool)));
 	m_pLimitEdit = new QLineEdit(pBackground);
 	m_pLimitEdit->setEnabled(isEnabled);
 	i++;
-	g->addMultiCellWidget(m_pLimitEdit,i,i,1,2);
+	g->addWidget(m_pLimitEdit,i,1,1,2);
+//	g->addMultiCellWidget(m_pLimitEdit,i,i,1,2);
 	if(!m_szLimit.isEmpty())
 	{
 		m_pLimitBox->setChecked(true);
@@ -144,12 +150,15 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_pKeyBox = new KviStyledCheckBox(tmp,pBackground);
 	m_pKeyBox->setEnabled(isEnabled);
 	i++;
-	g->addMultiCellWidget(m_pKeyBox,i,i,0,2);
+
+	g->addWidget(m_pKeyBox,i,0,1,3);
+	//g->addMultiCellWidget(m_pKeyBox,i,i,0,2);
 	connect(m_pKeyBox,SIGNAL(toggled(bool)),this,SLOT(keyBoxToggled(bool)));
 	m_pKeyEdit = new QLineEdit(pBackground);
 	m_pKeyEdit->setEnabled(isEnabled);
 	i++;
-	g->addMultiCellWidget(m_pKeyEdit,i,i,1,2);
+	g->addWidget(m_pKeyEdit,i,1,1,2);
+//	g->addMultiCellWidget(m_pKeyEdit,i,i,1,2);
 	if(!m_szKey.isEmpty())
 	{
 		m_pKeyBox->setChecked(true);
@@ -165,7 +174,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 			szModes = c->connection()->serverInfo()->supportedChannelModes();
 	}
 
-	int idx = szModes.findRev(',');
+	int idx = szModes.lastIndexOf(',');
 	if(idx != -1)szModes.remove(0,idx+1);
 
 	szModes.replace("p","");
@@ -190,7 +199,8 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		m_pCheckBoxes->append(cb);
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
 		i++;
-		g->addMultiCellWidget(cb,i,i,0,2);
+		g->addWidget(cb,i,0,1,3);
+	//	g->addMultiCellWidget(cb,i,i,0,2);
 	}
 
 	i++;
@@ -228,7 +238,7 @@ void KviModeEditor::commit()
 		if(m_pKeyBox->isChecked())
 		{
 			// still have it
-			QString tmp = m_pKeyEdit->text().stripWhiteSpace();
+			QString tmp = m_pKeyEdit->text().trimmed();
 			if(!tmp.isEmpty())
 			{
 				if(tmp != m_szKey)
@@ -250,7 +260,7 @@ void KviModeEditor::commit()
 		// there was no key before
 		if(m_pKeyBox->isChecked())
 		{
-			QString tmp = m_pKeyEdit->text().stripWhiteSpace();
+			QString tmp = m_pKeyEdit->text().trimmed();
 			if(!tmp.isEmpty())
 			{
 				// new key to be set
@@ -266,7 +276,7 @@ void KviModeEditor::commit()
 		if(m_pLimitBox->isChecked())
 		{
 			// still have it
-			QString tmp = m_pLimitEdit->text().stripWhiteSpace();
+			QString tmp = m_pLimitEdit->text().trimmed();
 			bool bOk;
 			unsigned int uLimit = tmp.toUInt(&bOk);
 			if(bOk)
@@ -286,7 +296,7 @@ void KviModeEditor::commit()
 		// there was no limit before
 		if(m_pLimitBox->isChecked())
 		{
-			QString tmp = m_pLimitEdit->text().stripWhiteSpace();
+			QString tmp = m_pLimitEdit->text().trimmed();
 			bool bOk;
 			unsigned int uLimit = tmp.toUInt(&bOk);
 			if(bOk)

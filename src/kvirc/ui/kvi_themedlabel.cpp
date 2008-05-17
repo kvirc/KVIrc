@@ -33,8 +33,9 @@
 #endif
 
 KviThemedLabel::KviThemedLabel(QWidget * par,const char * name)
-: QFrame(par,name)
+: QFrame(par)
 {
+	setObjectName(name);
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	applyOptions();
 	m_bAutoHeight=0;
@@ -57,7 +58,7 @@ void KviThemedLabel::setText(const char * text)
 	m_szText = QString(text);
 	if(m_bAutoHeight)
 	{
-		int iHeight=fontMetrics().height()*QStringList::split('\n',m_szText).count()+4;
+		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
 		setMinimumHeight(iHeight);
 		//g_pApp->postEvent(parent(),new QEvent(QEvent::Resize));
 	}
@@ -69,7 +70,7 @@ void KviThemedLabel::setText(const QString& text)
 	m_szText = text;
 	if(m_bAutoHeight)
 	{
-		int iHeight=fontMetrics().height()*QStringList::split('\n',m_szText).count()+4;
+		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
 		setMinimumHeight(iHeight);
  		//g_pApp->postEvent(parent(),new QEvent(QEvent::Resize));
 	}

@@ -137,7 +137,7 @@ void KviStatusBarApplet::paintEvent(QPaintEvent * e)
 	// workaround to fix "Warning:QPainter::setCompositionMode: PorterDuff modes not supported on device on win"
 		#ifdef COMPILE_ON_WINDOWS
 			QPalette pal=palette();
-			QColor col=pal.highlight();
+			QColor col=pal.highlight().color();
 			col.setAlpha(127);
 			p.fillRect(rect(),QBrush(col));
 		#else

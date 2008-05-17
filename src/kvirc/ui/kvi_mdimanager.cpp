@@ -504,7 +504,7 @@ void KviMdiManager::updateSDIMode()
 		m_pSdiIconButton->show();
 		connect(m_pSdiIconButton,SIGNAL(destroyed()),this,SLOT(sdiIconButtonDestroyed()));
 	} else {
-		m_pSdiIconButton->setPixmap(*pix);
+		m_pSdiIconButton->setIcon(QIcon(*pix));
 	}
 #endif //COMPILE_ON_MAC
 }

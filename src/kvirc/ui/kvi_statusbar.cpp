@@ -90,7 +90,8 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 
 	m_pMessageTimer = 0;
 
-	m_pMessageLabel = new QLabel("<b>[x]</b> x",this,"msgstatuslabel");
+	m_pMessageLabel = new QLabel("<b>[x]</b> x",this);
+	m_pMessageLabel->setObjectName("msgstatuslabel");
 	m_pMessageLabel->setMargin(1);
 	//m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
 	//m_pMessageLabel->setMinimumWidth(350);
@@ -213,7 +214,7 @@ void KviStatusBar::resizeEvent(QResizeEvent * e)
 */
 bool KviStatusBar::event(QEvent * e)
 {
-	if(e->type() == QEvent::LayoutHint)
+	if(e->type() == QEvent::LayoutRequest)
 	{
 		//updateLayout();
 		return false; // send to parents too!
@@ -465,7 +466,7 @@ void KviStatusBar::paintEvent(QPaintEvent * e)
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
 	m_pClickedApplet = 0;
-	if((e->button() & Qt::LeftButton) && (e->state() & (Qt::ShiftButton | Qt::ControlButton)))
+	if((e->modifiers() & Qt::LeftButton) && (e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier)))
 	{
 		// move!
 		m_pClickedApplet = appletAt(mapToGlobal(e->pos()));

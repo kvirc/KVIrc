@@ -69,8 +69,9 @@
 
 
 KviMdiChild::KviMdiChild(KviMdiManager * par,const char * name)
-: QFrame(par->viewport(),name ? name : "mdi_child")
+: QFrame(par->viewport())
 {
+	setObjectName(name ? name : "mdi_child");
 	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	setFrameShape(NoFrame);
 	m_pManager = par;
@@ -311,29 +312,29 @@ QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 	{ 
 		case KVI_MDI_RESIZE_LEFT: 
 		case KVI_MDI_RESIZE_RIGHT: 
-			return Qt::sizeHorCursor;
+			return Qt::SizeHorCursor;
 			break; 
 		case KVI_MDI_RESIZE_TOP: 
 		case KVI_MDI_RESIZE_BOTTOM: 
-			return Qt::sizeVerCursor;
+			return Qt::SizeVerCursor;
 			break; 
 		case KVI_MDI_RESIZE_TOPLEFT: 
 		case KVI_MDI_RESIZE_BOTTOMRIGHT: 
-			return Qt::sizeFDiagCursor;
+			return Qt::SizeFDiagCursor;
 			break; 
 		case KVI_MDI_RESIZE_BOTTOMLEFT: 
 		case KVI_MDI_RESIZE_TOPRIGHT: 
-			return Qt::sizeBDiagCursor;
+			return Qt::SizeBDiagCursor;
 			break; 
 		default:
-			return Qt::arrowCursor;
+			return Qt::ArrowCursor;
 			break;
 	}
 }
 
 void KviMdiChild::mouseMoveEvent(QMouseEvent *e)
 {
-	if(e->state() & Qt::LeftButton)
+	if(e->modifiers() & Qt::LeftButton)
 	{
 		if(m_iResizeCorner && (m_state != Maximized))resizeWindowOpaque(m_iResizeCorner);
 	} else {
@@ -479,7 +480,9 @@ void KviMdiChild::setClient(QWidget *w)
 	if(w->parent()!=this){
 		//reparent to this widget , no flags , point , show it
 		QPoint pnt2(KVI_MDICHILD_BORDER,clientYPos);
-		w->reparent(this,pnt2,true);
+		w->setParent(this, w->windowFlags() & ~Qt::WindowType_Mask);
+		w->setGeometry(pnt2.x(),pnt2.y(),w->width(),w->height());
+		w->show();
 	} else w->move(KVI_MDICHILD_BORDER,clientYPos);
 
 	setFocusProxy(w);
@@ -500,8 +503,8 @@ void KviMdiChild::setClient(QWidget *w)
 					m_pCaption->heightHint() + KVI_MDICHILD_SPACING);
 	}
 
-	KviStr tmp(KviStr::Format,"mdi_child_%s",w->name());
-	setName(tmp.ptr());
+	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName());
+	setObjectName(tmp.ptr());
 }
 
 void KviMdiChild::unsetClient()
@@ -514,14 +517,21 @@ void KviMdiChild::unsetClient()
 	//Kewl...the reparent function has a small prob now..
 	//the new toplelvel widgets gets not reenabled for dnd
 #ifndef COMPILE_ON_MAC
-	m_pClient->reparent(0,m_pClient->mapToGlobal(QPoint(0,0)),true);
+	//m_pClient->reparent(0,m_pClient->mapToGlobal(QPoint(0,0)),true);
+	QPoint p=m_pClient->mapToGlobal(QPoint(0,0));
+	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);
+	m_pClient->setGeometry(p.x(),p.y(),m_pClient->width(),m_pClient->height());
+	m_pClient->show();
 #else
 	QRect r = g_pApp->desktop()->availableGeometry(m_pClient); 
 	r.moveBy(0, 22);
 	m_pClient->reparent(0,r.topLeft(),true);
+	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);
+	m_pClient->setGeometry(r.topLeft().x(),r.topLeft().y(),m_pClient->width(),m_pClient->height());
+	m_pClient->show();
 #endif
 	m_pClient=0;
-	setName("mdi_child");
+	setObjectName("mdi_child");
 }
 
 void KviMdiChild::activate(bool bSetFocus)

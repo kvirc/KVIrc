@@ -40,8 +40,9 @@ QString KviOptionsWidget::m_szBasicTipStart; // empty decl
 QString KviOptionsWidget::m_szBasicTipEnd;
 
 KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool bSunken)
-: QFrame(parent,name), KviSelectorInterface()
+: QFrame(parent), KviSelectorInterface()
 {
+	setObjectName(name);
 	if(m_szBasicTipStart.isEmpty())
 	{
 		m_szBasicTipStart = "<center><font color=\"#a0a0a0\">";

@@ -134,7 +134,7 @@ bool KviTextIconWindow::findTypedSeq()
 			int j;
 			for(j=0;j<((int)(szIt.length()));j++)
 			{
-				if(szIt[j].lower() != m_szTypedSeq[j].lower())break;
+				if(szIt[j].toLower() != m_szTypedSeq[j].toLower())break;
 			}
 			if(j < max)
 			{
@@ -238,7 +238,7 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		break;
 	}
 
-	int as = e->ascii();
+	int as = e->text().toInt();
 	if((as >= 'a' && as <= 'z') || (as >= 'A' && as <= 'Z') || (as >= '0' && as <= '9')
 		|| (as == '?') || (as == '$') || (as == '.') || (as == ',') || (as == '!') || (as =='&'))
 	{

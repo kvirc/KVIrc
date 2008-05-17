@@ -36,8 +36,9 @@
 #include <QResizeEvent>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
-:QFrame(par,name)
+:QFrame(par)
 {
+	setObjectName(name);
 	m_pChannel=chan;
 	m_pLabel=0;
 	m_pLineEdit=0;
@@ -95,7 +96,7 @@ void KviModeWidget::labelDoubleClick()
 	{
 		delete m_pLabel;
 		m_pLabel=0;
-		m_pLineEdit = new QLineEdit(this,0);
+		m_pLineEdit = new QLineEdit(this);
 		m_pLineEdit->setText(m_pChannel->channelMode());
 		m_pLineEdit->show();
 		m_pLineEdit->setFocus();
@@ -141,7 +142,7 @@ void KviModeWidget::editorReturnPressed()
 	if(!szNewModes.isEmpty()) mode+=QString("+"+szNewModes);
 	if(!mode.isEmpty())
 	{
-		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->name());
+		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->objectName());
 		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.toUtf8().data());
 	}
 	reset();
@@ -154,7 +155,7 @@ void KviModeWidget::editorTextChanged( const QString & text)
 	for(i=0;i<szText.length();i++)
 	{
 		if( !m_pChannel->connection()->serverInfo()->supportedPlainModes().contains(szText[i]) || 
-			szText.find(szText[i])<i )
+			szText.indexOf(szText[i])<i,Qt::CaseInsensitive )
 			szText.remove(i,1);
 	}
 	m_pLineEdit->setText(szText);

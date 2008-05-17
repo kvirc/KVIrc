@@ -41,7 +41,7 @@
 
 
 KviStyledControlInternal::KviStyledControlInternal( KviStyledControl* control)
-:QObject(0,0)
+:QObject(0)
 {
 	m_pControl=control;
 }

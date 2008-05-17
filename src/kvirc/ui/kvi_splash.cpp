@@ -40,7 +40,7 @@
 
 
 KviSplashScreen::KviSplashScreen()
-: QSplashScreen(QPixmap(1,1),Qt::WStyle_NoBorder | Qt::WType_TopLevel | Qt::WStyle_Customize | Qt::WStyle_StaysOnTop | Qt::WStyle_Splash)
+: QSplashScreen(QPixmap(1,1),Qt::FramelessWindowHint | Qt::Window | Qt::WindowStaysOnTopHint | Qt::SplashScreen)
 {
 	QString szPix;
 	QPixmap * pix = 0;
