@@ -1,0 +1,38 @@
+# Template rules for translations
+
+IF(USE_GETTEXT_TRANSLATIONS)
+	SET(_gmoFiles)
+	GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
+	GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+	SET(_firstPoFile)
+	
+	ADD_CUSTOM_TARGET(message-update-${_potBasename})
+	ADD_DEPENDENCIES(message-update message-update-${_potBasename})
+	
+	FOREACH (_currentPoFile ${pofiles})
+		GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+		GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+		GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+		SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
+	
+	
+		ADD_CUSTOM_COMMAND(
+			COMMENT "generating translations for ${_gmoFile}"
+			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+			TARGET message-update-${_potBasename}
+		)
+	
+		IF(UNIX)
+			IF(APPLE)
+				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
+			ELSE()
+				# Assume linux
+				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale RENAME ${_lang}.mo)
+			ENDIF()
+		ELSEIF(WIN32)
+			# FIXME: Use proper path
+			#INSTALL(FILES ${_gmoFile} DESTINATION share/locale/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
+		ENDIF()
+		SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
+	ENDFOREACH (_currentPoFile )
+ENDIF()

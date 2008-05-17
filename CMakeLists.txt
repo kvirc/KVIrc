@@ -572,10 +572,35 @@ IF(WANT_BEER)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_BEER)
 ENDIF()
 
-# Check for gettext
-# FindGettext.cmake - atm implemented in ./cmake/modules/
-# Use system-provided module from CMake 2.5
-FIND_PACKAGE(GetText)
+
+###############################################################################
+#
+# Translation (GetText) checks
+#
+###############################################################################
+OPTION(WANT_GETTEXT "Whether to use GetText to generate translations" ON)
+IF(WITHOUT_GETTEXT)
+	SET(WANT_GETTEXT OFF)
+ENDIF()
+IF(WANT_GETTEXT)
+	# Check for gettext
+	# atm implemented in here
+	# Use system-provided module from CMake 2.5
+	FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
+	FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
+	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE)
+		SET(CMAKE_STATUS_GETTEXT_SUPPORT "yes")
+		ADD_CUSTOM_TARGET(message-update ALL)
+		SET(USE_GETTEXT_TRANSLATIONS 1)
+	ELSE()
+		SET(CMAKE_STATUS_GETTEXT_SUPPORT "no")
+		SET(USE_GETTEXT_TRANSLATIONS 0)
+	ENDIF()
+ELSE()
+	SET(CMAKE_STATUS_GETTEXT_SUPPORT "user disabled")
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_GETTEXT)
+ENDIF()
+
 
 #Unused by now
 #CMakeUnixFindMake.cmake
@@ -758,6 +783,7 @@ MESSAGE(STATUS "  Build Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_B
 #MESSAGE(STATUS "  ix86 asm support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 MESSAGE(STATUS "  Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
+MESSAGE(STATUS "  GetText support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}")
 MESSAGE(STATUS "  Doxygen support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 MESSAGE(STATUS "  QtDBus                      : ${CMAKE_STATUS_QTDBUS}")
 MESSAGE(STATUS " ")

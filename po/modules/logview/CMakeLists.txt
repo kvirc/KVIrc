@@ -3,5 +3,7 @@
 FILE(GLOB pofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.po")
 FILE(GLOB mofiles "${CMAKE_CURRENT_SOURCE_DIR}/*.mo")
 
+SET(POTFILE logview.pot)
+
 # Install target
-GETTEXT_CREATE_TRANSLATIONS(logview.pot ALL ${pofiles})
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/translation.rules.txt)
