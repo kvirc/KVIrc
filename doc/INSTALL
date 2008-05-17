@@ -153,6 +153,9 @@ General notes for the installation of the 4.0 release of KVIrc
         so if you're really short in memory , you might use it,
         otherwise, IPC is a nice feature.
 
+    -DWITHOUT_GETTEXT
+        Disables the use of GetText to generate translation files.
+
     -DWITHOUT_DOXYGEN
         Disables docs generation through Doxygen
 
