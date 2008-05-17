@@ -121,19 +121,23 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	QGridLayout * g = new QGridLayout(w);
 
 	m_pStringToFind = new QLineEdit(w);
-	g->addMultiCellWidget(m_pStringToFind,0,0,0,2);
+	g->addWidget(m_pStringToFind,0,0,1,3);
+//	g->addMultiCellWidget(m_pStringToFind,0,0,0,2);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
 	
 	m_pRegExp = new KviStyledCheckBox(__tr2qs("&Regular expression"),w);
-	g->addMultiCellWidget(m_pRegExp,1,1,0,2);
+	g->addWidget(m_pRegExp,1,0,1,3);
+//	g->addMultiCellWidget(m_pRegExp,1,1,0,2);
 
 	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
-	g->addMultiCellWidget(m_pExtendedRegExp,2,2,0,2);
+	g->addWidget(m_pExtendedRegExp,2,0,1,3);
+//	g->addMultiCellWidget(m_pExtendedRegExp,2,2,0,2);
 	m_pExtendedRegExp->setEnabled(false);
 	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
 
 	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
-	g->addMultiCellWidget(m_pCaseSensitive,3,3,0,2);
+	g->addWidget(m_pCaseSensitive,3,0,1,3);
+//	g->addMultiCellWidget(m_pCaseSensitive,3,3,0,2);
 
 	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findPrev()));
@@ -142,11 +146,13 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	pb = new QPushButton(__tr2qs("&Find Next"),w);
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findNext()));
-	g->addMultiCellWidget(pb,4,4,1,2);
+	g->addWidget(pb,4,1,0,2);
+//	g->addMultiCellWidget(pb,4,4,1,2);
 
 	m_pFindResult = new QLabel(w);
 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	g->addMultiCellWidget(m_pFindResult,5,5,0,2);
+	g->addWidget(m_pFindResult,5,0,1,3);
+//	g->addMultiCellWidget(m_pFindResult,5,5,0,2);
 
 	//g->setResizeMode(QGridLayout::Fixed);
 
@@ -166,7 +172,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	m_pFilterView->header()->hide();
 	m_pFilterView->setMinimumSize(QSize(10,10));
 
-	g->addMultiCellWidget(m_pFilterView,0,4,0,0);
+	g->addWidget(m_pFilterView,0,0,5,1);
+//	g->addMultiCellWidget(m_pFilterView,0,4,0,0);
 
 
 	m_pFilterItems = (KviIrcMessageCheckListItem **)kvi_malloc(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
@@ -194,7 +201,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	tw->addTab(w1,__tr2qs("Filter"));
 
-	gl->addMultiCellWidget(tw,1,1,0,1);
+	gl->addWidget(tw,1,0,1,2);
+//	gl->addMultiCellWidget(tw,1,1,0,1);
 
 	gl->setResizeMode(QGridLayout::Fixed);
 	m_pStringToFind->setFocus();

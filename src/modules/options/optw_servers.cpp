@@ -102,26 +102,30 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	l->setAlignment(Qt::AlignCenter);
 	l->setMargin(10);
-	g->addMultiCellWidget(l,0,0,0,3);
+	g->addWidget(l,0,0,1,4);
+//	g->addMultiCellWidget(l,0,0,0,3);
 	l->setMinimumWidth(200);
 
 	l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	g->addWidget(l,1,0);
 	m_pDescEditor = new QLineEdit(this);
-	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
+	g->addWidget(m_pDescEditor,1,1,1,3);
+//	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
 	m_pDescEditor->setText(n->description());
 	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>Put here a brief description of the network.</center>","options"));
 
 	// Identity tab
 
 	QTabWidget * tw = new QTabWidget(this);
-	g->addMultiCellWidget(tw,2,2,0,3);
+	g->addWidget(tw,2,0,1,4);
+//	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
 
 	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
-	gl->addMultiCellWidget(gbox,0,0,0,1);
+	gl->addWidget(gbox,0,0,1,2);
+//	gl->addMultiCellWidget(gbox,0,0,0,1);
 
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
 	m_pUserEditor = new QLineEdit(gbox);
@@ -173,7 +177,8 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	m_pAutoConnectCheck = new KviStyledCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
-	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
+	gl->addWidget(m_pAutoConnectCheck,2,0,1,2);
+//	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
 	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
 
 
@@ -246,7 +251,8 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 	
 	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
-	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
+	gl->addWidget(m_pNickServCheck,0,0,1,3);
+//	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
@@ -259,8 +265,8 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Request Mask","options"));
 	m_pNickServListView->addColumn(__tr2qs_ctx("Identify Command","options"));
 	connect(m_pNickServListView,SIGNAL(selectionChanged()),this,SLOT(enableDisableNickServControls()));
-	
-	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
+	gl->addWidget(m_pNickServListView,1,0,1,3);
+////  gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
 	KviTalToolTip::add(m_pNickServListView,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 				"KVIrc will use them to model its automatic interaction with NickServ on this network.<br>" \
@@ -425,13 +431,15 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pHeaderLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pHeaderLabel->setAlignment(Qt::AlignCenter);
 	m_pHeaderLabel->setMargin(10);
-	g->addMultiCellWidget(m_pHeaderLabel,0,0,0,3);
+	g->addWidget(m_pHeaderLabel,0,0,1,4);
+//	g->addMultiCellWidget(m_pHeaderLabel,0,0,0,3);
 	m_pHeaderLabel->setMinimumWidth(200);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	g->addWidget(l,1,0);
 	m_pDescEditor = new QLineEdit(this);
-	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
+	g->addWidget(m_pDescEditor,1,1,1,3);
+//	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
 	m_pDescEditor->setText(s->description());
 	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
 			"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
@@ -439,7 +447,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	// Identity tab
 
 	QTabWidget * tw = new QTabWidget(this);
-	g->addMultiCellWidget(tw,2,2,0,3);
+	g->addWidget(tw,2,0,1,4);
+//	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
@@ -550,7 +559,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	}
 	
 	m_pCacheIpCheck = new KviStyledCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
-	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
+	gl->addWidget(m_pCacheIpCheck,2,0,1,2);
+//	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
 			"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 			"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
@@ -561,7 +571,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 
 	m_pUseIPV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
-	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
+	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
+//	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pUseIPV6Check->setChecked(s->isIpV6());
 #else
@@ -573,7 +584,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 			"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
 	m_pUseSSLCheck = new KviStyledCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
-	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
+	gl->addWidget(m_pUseSSLCheck,4,0,1,2);
+//	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
 			"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
@@ -585,7 +597,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseAutoConnect = new KviStyledCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 	
-	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
+	gl->addWidget(m_pUseAutoConnect,5,0,1,2);
+	//	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 	
 	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
@@ -678,7 +691,8 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 
 	l = new QLabel("",tab);
-	gl->addMultiCellWidget(l,10,10,0,1);
+	gl->addWidget(l,10,0,1,2);
+//	gl->addMultiCellWidget(l,10,10,0,1);
 
 	gl->setRowStretch(10,1);
 

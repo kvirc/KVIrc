@@ -88,27 +88,33 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
 	m_pShowChannelsCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
+	layout->addWidget(m_pShowChannelsCheck,0,0,1,2);
+//	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
 	
 	m_pShowQueryesCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
 	m_pShowQueryesCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
+	layout->addWidget(m_pShowQueryesCheck,1,0,1,2);
+//	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
 	
 	m_pShowConsolesCheck = new KviStyledCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
 	m_pShowConsolesCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
+	layout->addWidget(m_pShowConsolesCheck,2,0,1,2);
+//	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
 
 	m_pShowDccChatCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
 	m_pShowDccChatCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
+	layout->addWidget(m_pShowDccChatCheck,3,0,1,2);
+//	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
 	
 	m_pShowOtherCheck   = new KviStyledCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
 	m_pShowOtherCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
+	layout->addWidget(m_pShowOtherCheck,4,0,1,2);
+//	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
 	
 	QLabel *l;
 	l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
-	layout->addMultiCellWidget(l,5,5,0,1);
+	layout->addWidget(l,5,0,1,2);
+//	layout->addMultiCellWidget(l,5,5,0,1);
 
 	l = new QLabel(__tr2qs_ctx("Log name mask:","logview"),m_pSearchTab);
 	m_pFileNameMask = new QLineEdit(m_pSearchTab);

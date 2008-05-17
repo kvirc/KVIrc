@@ -75,11 +75,9 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	
 	QLabel * tl = new QLabel(__tr2qs("New mask must match an *!*@* expression"),this);
 	g->addWidget(tl,0,0,1,4);
-//	g->addMultiCellWidget(tl,0,0,0,3);
 	
 	m_pEdit=new QLineEdit(szMask,this);
 	g->addWidget(m_pEdit,1,0,1,4);
-//	g->addMultiCellWidget(m_pEdit,1,1,0,3);
 	
 	m_pOkButton= new QPushButton(__tr2qs("Ok"),this);
 	connect(m_pOkButton,SIGNAL(clicked()), this, SLOT(accept()));
@@ -175,7 +173,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 
 	KviTalHBox * hb = new KviTalHBox(this);
 	g->addWidget(hb,1,0,1,2);
-//	g->addMultiCellWidget(hb,1,1,0,1);
 
 	new QLabel(__tr2qs("Filter:"),hb);
 	m_pSearch = new QLineEdit(hb);
@@ -184,7 +181,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	l = new QLabel(__tr2qs("Use doubleclick to edit item"),this);
 	g->addWidget(l,1,1);
 	g->addWidget(l,2,0,1,2);
-//	g->addMultiCellWidget(l,2,2,0,1);
 	
 	//FIX ME
 	m_pMaskBox = new KviTalTreeWidget(this);
@@ -200,7 +196,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setSortingEnabled(true);
 	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalTreeWidgetItem * )),this,SLOT(listViewDoubleClicked( KviTalTreeWidgetItem * )));
 	g->addWidget(m_pMaskBox,3,0,1,2);
-//	g->addMultiCellWidget(m_pMaskBox,3,3,0,1);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 	m_pRemoveMask->setEnabled(isEnabled);

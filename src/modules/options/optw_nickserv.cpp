@@ -58,7 +58,8 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	
 	m_pRegisteredNickEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pRegisteredNickEdit,html_center_begin + __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options") + html_center_end);
-	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
+	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
+//	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
 	
 	l = new QLabel(__tr2qs_ctx("NickServ Mask","options"),this);
 	gl->addWidget(l,1,0);
@@ -70,13 +71,15 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 			"You can use wildcards for this field, but generally it is a security flaw. " \
 			"If you're 100%% sure that NO user on the network can use the nickname \"NickServ\", " \
 			"the mask <b>NickServ!*@*</b> may be safe to use in this field.","options") + html_center_end);
-	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
+	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
+//	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 	
 	l = new QLabel(__tr2qs_ctx("Message Regexp","options"),this);
 	gl->addWidget(l,2,0);
 
 	m_pMessageRegexpEdit = new QLineEdit(this);
-	gl->addMultiCellWidget(m_pMessageRegexpEdit,2,2,1,3);
+	gl->addWidget(m_pMessageRegexpEdit,2,2,1,3);
+//	gl->addMultiCellWidget(m_pMessageRegexpEdit,2,2,1,3);
 
 	KviTalToolTip::add(m_pMessageRegexpEdit,
 		html_center_begin + __tr2qs_ctx("This is the simple regular expression that the identification request message "  \
@@ -94,7 +97,8 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 			"This usually will be something like <b>msg NickServ identify &lt;yourpassword&gt;</b>.<br>" \
 			"You can use <b>msg -q</b> if you don't want the password echoed on the screen. " \
 			"Please note that there is no leading slash in this command.","options") + html_center_end);
-	gl->addMultiCellWidget(m_pIdentifyCommandEdit,3,3,1,3);
+	gl->addWidget(m_pIdentifyCommandEdit,3,1,1,3);
+//	gl->addMultiCellWidget(m_pIdentifyCommandEdit,3,3,1,3);
 
 	int iNextLine = 4;
 
@@ -107,7 +111,8 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 		KviTalToolTip::add(m_pServerMaskEdit,
 			html_center_begin + __tr2qs_ctx("This is the mask that the current server must match in order " \
 			"for this rule to apply. It can contain * and ? wildcards.<br>Do NOT use simply \"*\" here...","options") + html_center_end);
-		gl->addMultiCellWidget(m_pServerMaskEdit,4,4,1,3);
+		gl->addWidget(m_pServerMaskEdit,4,1,1,3);
+//		gl->addMultiCellWidget(m_pServerMaskEdit,4,4,1,3);
 		iNextLine++;
 	} else {
 		m_pServerMaskEdit = 0;
@@ -116,7 +121,8 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 
 	l = new QLabel(html_center_begin + __tr2qs_ctx("Hint: Move the mouse cursor over the fields to get help","options") + html_center_end,this);
 	l->setMargin(10);
-	gl->addMultiCellWidget(l,iNextLine,iNextLine,0,3);
+	gl->addWidget(l,iNextLine,0,1,4);
+//	gl->addMultiCellWidget(l,iNextLine,iNextLine,0,3);
 
 	iNextLine++;
 
@@ -224,7 +230,8 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 
 	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
-	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
+	gl->addWidget(m_pNickServCheck,0,0,1,3);
+//	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,
 			__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
@@ -239,7 +246,8 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	m_pNickServListView->addColumn(__tr2qs_ctx("Identify Command","options"));
 	connect(m_pNickServListView,SIGNAL(selectionChanged()),this,SLOT(enableDisableNickServControls()));
 
-	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
+	gl->addWidget(m_pNickServListView,1,0,1,3);
+//	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
 	KviTalToolTip::add(m_pNickServListView,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 			"KVIrc will use them to model its automatic interaction with NickServ on all the networks.<br>" \

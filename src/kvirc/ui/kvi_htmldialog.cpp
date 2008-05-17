@@ -59,7 +59,6 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		l = new QLabel(this);
 		l->setText(pData->szUpperLabelText);
 		g->addWidget(l,0,0,1,3);
-	//	g->addMultiCellWidget(l,0,0,0,2);
 		iUp = 1;
 	}
 
@@ -67,9 +66,8 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	{
 		l = new QLabel(this);
 		l->setText(pData->szLowerLabelText);
-		g->addWidget(l,2,2,1,3);
-//		g->addMultiCellWidget(l,2,2,0,2);
-		iDown = 1;
+		g->addWidget(l,2,0,1,3);
+	iDown = 1;
 	}
 
 	te = new QTextBrowser(this);
@@ -81,7 +79,6 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 
 	//te->setReadOnly(true);
 	g->addWidget(te,iUp,0,iDown-iUp+1,3);
-//	g->addMultiCellWidget(te,iUp,iDown,0,2);
 
 	int iButtons = pData->szButton3Text.isEmpty() ? (pData->szButton2Text.isEmpty() ? 1 : 2) : 3;
 	if(pData->iCancelButton > iButtons)pData->iCancelButton = iButtons;

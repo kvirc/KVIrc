@@ -93,12 +93,10 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	l = new QLabel(__tr2qs("Channel Modes"),pBackground);
 
 	g->addWidget(l,0,1,1,1);
-//	g->addMultiCellWidget(l,0,0,1,2);
 
 	QFrame * f = new QFrame(pBackground);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f,1,0,1,3);
-//	g->addMultiCellWidget(f,1,1,0,2);
 
 	int i = 1;
 	QString tmp;
@@ -122,7 +120,6 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
 		i++;
 		g->addWidget(cb,i,0,1,3);
-	//	g->addMultiCellWidget(cb,i,i,0,2);
 	}
 
 	KviQString::sprintf(tmp,"l: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('l')));

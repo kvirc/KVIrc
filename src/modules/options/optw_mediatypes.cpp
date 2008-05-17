@@ -75,55 +75,65 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 
 	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
 
-	layout()->addMultiCellWidget(m_pListView,0,0,0,2);
+	layout()->addWidget(m_pListView,0,0,1,3);
+//	layout()->addMultiCellWidget(m_pListView,0,0,0,2);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	layout()->addWidget(l,1,0);
 	m_pDescription = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pDescription,1,1,1,2);
+	layout()->addWidget(m_pDescription,1,1,1,2);
+//	layout()->addMultiCellWidget(m_pDescription,1,1,1,2);
 
 	l = new QLabel(__tr2qs_ctx("MIME type:","options"),this);
 	layout()->addWidget(l,2,0);
 	m_pIanaType = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pIanaType,2,2,1,2);
+	layout()->addWidget(m_pIanaType,2,1,1,2);
+//	layout()->addMultiCellWidget(m_pIanaType,2,2,1,2);
 
 	l = new QLabel(__tr2qs_ctx("File pattern:","options"),this);
 	layout()->addWidget(l,3,0);
 	m_pFileMask = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pFileMask,3,3,1,2);
+	layout()->addWidget(m_pFileMask,3,1,1,2);
+//	layout()->addMultiCellWidget(m_pFileMask,3,3,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Magic bytes:","options"),this);
 	layout()->addWidget(l,4,0);
 	m_pMagicBytes = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pMagicBytes,4,4,1,2);
+	layout()->addWidget(m_pMagicBytes,4,1,1,2);
+//	layout()->addMultiCellWidget(m_pMagicBytes,4,4,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Save path:","options"),this);
 	layout()->addWidget(l,5,0);
 	m_pSavePath = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pSavePath,5,5,1,2);
+	layout()->addWidget(m_pSavePath,5,1,1,2);
+//	layout()->addMultiCellWidget(m_pSavePath,5,5,1,2);
 
 	l = new QLabel(__tr2qs_ctx("Local open command:","options"),this);
 	layout()->addWidget(l,6,0);
 	m_pCommandline = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pCommandline,6,6,1,2);
+	layout()->addWidget(m_pCommandline,6,1,1,2);
+//	layout()->addMultiCellWidget(m_pCommandline,6,6,1,2);
 	mergeTip(m_pCommandline,__tr2qs_ctx("<center>This field contains the command to execute to open a local file.<br>" \
 		"<tt>$0</tt> is used in place of the filename</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Remote open command:","options"),this);
 	layout()->addWidget(l,7,0);
 	m_pRemoteExecCommandline = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pRemoteExecCommandline,7,7,1,2);
+	layout()->addWidget(m_pRemoteExecCommandline,7,1,1,2);
+//	layout()->addMultiCellWidget(m_pRemoteExecCommandline,7,7,1,2);
 	mergeTip(m_pRemoteExecCommandline,__tr2qs_ctx("<center>This field contains the command to execute when automatically opening a received file.<br>" \
 		"<tt>$0</tt> is used in place of the filename</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Icon","options"),this);
 	layout()->addWidget(l,8,0);
 	m_pIcon = new QLineEdit(this);
-	layout()->addMultiCellWidget(m_pIcon,8,8,1,2);
+	layout()->addWidget(m_pIcon,8,1,1,2);
+//	layout()->addMultiCellWidget(m_pIcon,8,8,1,2);
 
 	QFrame * f = new QFrame(this);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-	layout()->addMultiCellWidget(f,9,9,0,2);
+	layout()->addWidget(f,9,0,1,3);
+//	layout()->addMultiCellWidget(f,9,9,0,2);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&New","options"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(newMediaType()));

@@ -85,38 +85,31 @@
 		g->addWidget(l,0,0);
 		l = new QLabel(__tr2qs("Cryptography/text transformation"),this);
 		g->addWidget(l,0,1,1,3);
-//		g->addMultiCellWidget(l,0,0,1,3);
 
 		QFrame * frm = new QFrame(this);
 		frm->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 		g->addWidget(frm,1,0,1,4);
-//		g->addMultiCellWidget(frm,1,1,0,3);
 
 		m_pEnableCheck = new KviStyledCheckBox(__tr2qs("Use the crypt engine"),this);
 		g->addWidget(m_pEnableCheck,2,0,1,4);
-	//	g->addMultiCellWidget(m_pEnableCheck,2,2,0,3);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
 		m_pListBox = new KviTalListBox(this);
 		connect(m_pListBox,SIGNAL(highlighted(KviTalListBoxItem *)),this,SLOT(engineHighlighted(KviTalListBoxItem *)));
 		g->addWidget(m_pListBox,3,0,6,1);
-	//	g->addMultiCellWidget(m_pListBox,3,8,0,0);
-
+	
 		m_pDescriptionLabel = new QLabel(this);
 		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 		g->addWidget(m_pDescriptionLabel,3,1,1,3);
-	//	g->addMultiCellWidget(m_pDescriptionLabel,3,3,1,3);
-
+	
 		m_pAuthorLabel = new QLabel(this);
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		g->addWidget(m_pAuthorLabel,4,1,1,3);
-	//g->addMultiCellWidget(m_pAuthorLabel,4,4,1,3);
-
+	
 		m_pEnableEncrypt = new KviStyledCheckBox(__tr2qs("Enable encryption"),this);
 		g->addWidget(m_pEnableEncrypt,5,1,1,3);
-	// g->addMultiCellWidget(m_pEnableEncrypt,5,5,1,3);
-
+	
 		m_pEncryptKeyLabel = new QLabel(__tr2qs("Encrypt key:"),this);
 		g->addWidget(m_pEncryptKeyLabel,6,1);
 
@@ -128,8 +121,7 @@
 
 		m_pEnableDecrypt = new KviStyledCheckBox(__tr2qs("Enable decryption"),this);
 		g->addWidget(m_pEnableDecrypt,7,1,1,3);	
-	//	g->addMultiCellWidget(m_pEnableDecrypt,7,7,1,3);
-
+	
 		m_pDecryptKeyLabel = new QLabel(__tr2qs("Decrypt key:"),this);
 		g->addWidget(m_pDecryptKeyLabel,8,1);
 
@@ -141,7 +133,6 @@
 
 		m_pOkButton = new QPushButton(__tr2qs("OK"),this);
 		g->addWidget(m_pOkButton,9,0,1,4);
-	//	g->addMultiCellWidget(m_pOkButton,9,9,0,3);
 		connect(m_pOkButton,SIGNAL(clicked()),this,SLOT(okClicked()));
 
 		g->setRowStretch(3,1);

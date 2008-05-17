@@ -1831,7 +1831,8 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 	m_pLimitBox = new QSpinBox(0,MAX_DCC_BANDWIDTH_LIMIT-1,1,this);
 	m_pLimitBox->setEnabled((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));
 	connect(m_pEnableLimitCheck,SIGNAL(toggled(bool)),m_pLimitBox,SLOT(setEnabled(bool)));
-	g->addMultiCellWidget(m_pLimitBox,0,0,1,2);
+	g->addWidget(m_pLimitBox,0,1,1,2);
+//	g->addMultiCellWidget(m_pLimitBox,0,0,1,2);
 
 	szText = " ";
 	szText += __tr2qs_ctx("bytes/sec","dcc");

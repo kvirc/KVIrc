@@ -61,27 +61,31 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 		"alternative to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
 		"IRC network.</center>","options"));
-	g->addMultiCellWidget(l,0,0,0,2);
+	g->addWidget(l,0,0,1,3);
+//	g->addMultiCellWidget(l,0,0,0,2);
 
 	l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Alt. Nickname 1:","options"));
 	g->addWidget(l,1,0);
 	m_pNickEdit1 = new QLineEdit(this);
-	g->addMultiCellWidget(m_pNickEdit1,1,1,1,2);
+	g->addWidget(m_pNickEdit1,1,1,1,2);
+//	g->addMultiCellWidget(m_pNickEdit1,1,1,1,2);
 	m_pNickEdit1->setText(n1);
 
 	l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Alt. Nickname 2:","options"));
 	g->addWidget(l,2,0);
 	m_pNickEdit2 = new QLineEdit(this);
-	g->addMultiCellWidget(m_pNickEdit2,2,2,1,2);
+	g->addWidget(m_pNickEdit2,2,1,1,2);
+//	g->addMultiCellWidget(m_pNickEdit2,2,2,1,2);
 	m_pNickEdit2->setText(n2);
 
 	l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Alt. Nickname 3:","options"));
 	g->addWidget(l,3,0);
 	m_pNickEdit3 = new QLineEdit(this);
-	g->addMultiCellWidget(m_pNickEdit3,3,3,1,2);
+	g->addWidget(m_pNickEdit3,3,1,1,2);
+//	g->addMultiCellWidget(m_pNickEdit3,3,3,1,2);
 	m_pNickEdit3->setText(n3);
 	KviTalHBox * h = new KviTalHBox(this);
 	h->setSpacing(8);
@@ -122,7 +126,8 @@ KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &sz
 	QGridLayout * g = new QGridLayout(this);
 
 	m_pOutput = new QLabel(__tr2qs_ctx("<center>Please wait while the avatar is being downloaded</center>","options"),this);
-	g->addMultiCellWidget(m_pOutput,0,0,0,1);
+	g->addWidget(m_pOutput,0,0,1,2);
+//	g->addMultiCellWidget(m_pOutput,0,0,0,1);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("Abort","options"),this);
 	g->addWidget(b,1,1);
@@ -214,18 +219,22 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	QLabel * l = new QLabel(msg,this);
 	l->setMinimumWidth(250);
 
-	g->addMultiCellWidget(l,0,0,0,2);
+	g->addWidget(l,0,0,1,3);
+//	g->addMultiCellWidget(l,0,0,0,2);
 
 	m_pLineEdit = new QLineEdit(this);
 	m_pLineEdit->setText(szInitialPath);
 	m_pLineEdit->setMinimumWidth(180);
 
-	g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
+	g->addWidget(m_pLineEdit,1,0,1,2);
+//	g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	g->addWidget(b,1,2);
-	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);g->addMultiCellWidget(h,2,2,1,2);
+	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);
+	g->addWidget(h,2,1,1,2);
+//	g->addMultiCellWidget(h,2,2,1,2);
 	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);

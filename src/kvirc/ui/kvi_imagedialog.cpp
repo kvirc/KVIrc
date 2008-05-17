@@ -111,7 +111,6 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	m_pTypeComboBox = new QComboBox(this);
 
 	g->addWidget(m_pTypeComboBox,0,0,1,3);
-//	g->addMultiCellWidget(m_pTypeComboBox,0,0,0,2);
 
 	m_pTypeList = new KviValueList<int>;
 
@@ -140,7 +139,6 @@ KviImageDialog::KviImageDialog(QWidget * par,
 
 	QWidget * l = new QWidget(this);
 	g->addWidget(l,1,0,1,3);
-//	g->addMultiCellWidget(l,1,1,0,2);
 
 
 	m_pListBox = new KviTalListBox(this);
@@ -150,7 +148,6 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	m_pTip = new KviDynamicToolTip(m_pListBox->viewport());
 
 	g->addWidget(m_pListBox,2,0,1,3);
-//	g->addMultiCellWidget(m_pListBox,2,2,0,2);
 
 	QPushButton * b = new QPushButton(__tr2qs("Cancel"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));

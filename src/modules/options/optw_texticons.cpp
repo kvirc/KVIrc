@@ -97,7 +97,8 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 		++it;
 	}
 
-	layout()->addMultiCellWidget(m_pTable,0,0,0,1);
+	layout()->addWidget(m_pTable,0,0,1,2);
+//	layout()->addMultiCellWidget(m_pTable,0,0,0,1);
 
 	m_pAdd = new QPushButton(__tr2qs_ctx("Add","options"),this);
 	layout()->addWidget(m_pAdd,1,0);
