@@ -588,9 +588,20 @@ IF(WANT_GETTEXT)
 	# Use system-provided module from CMake 2.5
 	FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
 	FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
-	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE)
+	FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
+
+	# FIXME split up targets and relative dependencies
+	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE AND GETTEXT_XGETTEXT_EXECUTABLE)
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "yes")
-		ADD_CUSTOM_TARGET(message-update ALL)
+		# message target; ALL means "generate it at everytime"
+		# FIXME this is generated both at compilation and installation
+		ADD_CUSTOM_TARGET(translations ALL)
+
+		# message-update target;
+		ADD_CUSTOM_TARGET(message-update)
+		# message-extract target;
+		ADD_CUSTOM_TARGET(message-extract)
+
 		SET(USE_GETTEXT_TRANSLATIONS 1)
 	ELSE()
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "no")

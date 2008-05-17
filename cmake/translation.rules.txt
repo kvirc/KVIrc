@@ -5,23 +5,50 @@ IF(USE_GETTEXT_TRANSLATIONS)
 	GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
 	GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
 	SET(_firstPoFile)
+
+	ADD_CUSTOM_TARGET(translations-${_potBasename})
+	ADD_DEPENDENCIES(translations translations-${_potBasename})
 	
 	ADD_CUSTOM_TARGET(message-update-${_potBasename})
 	ADD_DEPENDENCIES(message-update message-update-${_potBasename})
+
+	ADD_CUSTOM_TARGET(message-extract-${_potBasename})
+	ADD_DEPENDENCIES(message-extract message-extract-${_potBasename})
 	
 	FOREACH (_currentPoFile ${pofiles})
 		GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
 		GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
 		GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
-		SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
-	
-	
+		SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)	
+		SET(_tempFile ${CMAKE_CURRENT_BINARY_DIR}/files)	
+
+		# message-extract	
+		ADD_CUSTOM_COMMAND(
+			COMMENT "extracting messages for ${_gmoFile}"
+			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+			COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+			TARGET message-extract-${_potBasename}
+		)
+
+		# message-update	
+		ADD_CUSTOM_COMMAND(
+			COMMENT "updating messages for ${_gmoFile}"
+#COMMAND find ${PROJECT_SOURCE_DIR}/data/defscript/ -maxdepth 10 -name *.kvs >> ${_tempFile}
+
+			COMMAND find ${XGETTEXT_SOURCESDIR} -maxdepth 10 -name *.cpp > ${_tempFile}
+			COMMAND find ${XGETTEXT_SOURCESDIR} -maxdepth 10 -name *.h >> ${_tempFile}
+			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${_tempFile}
+			COMMAND rm ${_tempFile}
+			TARGET message-update-${_potBasename}
+		)
+
+		# translations
 		ADD_CUSTOM_COMMAND(
 			COMMENT "generating translations for ${_gmoFile}"
 			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
-			TARGET message-update-${_potBasename}
+			TARGET translations-${_potBasename}
 		)
-	
+
 		IF(UNIX)
 			IF(APPLE)
 				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
