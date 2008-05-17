@@ -93,9 +93,9 @@ void KviModuleManager::completeModuleNames(const QString &path,const QString &wo
 {
 	QDir d(path);
 #ifdef COMPILE_ON_WINDOWS
-	d.setNameFilter("kvi*.dll");
+	d.setNameFilters(QStringList("kvi*.dll"));
 #else
-	d.setNameFilter("libkvi*.so");
+	d.setNameFilters(QStringList("libkvi*.so"));
 #endif
 	// FIXME: maybe check timestamps ? (old modules)
 
@@ -172,7 +172,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 #else
 	KviQString::appendFormatted(szName,"libkvi%Q.so",&modName);
 #endif
-	szName=szName.lower();
+	szName=szName.toLower();
 
 	g_pApp->getLocalKvircDirectory(tmp,KviApp::Plugins,szName);
 	if(!KviFileUtils::fileExists(tmp))

@@ -18,16 +18,13 @@ src/kvilib/tal
 	kvi_tal_scrollview.cpp
 	kvi_tal_scrollview.h
 
-src/kvirc
 src/kvirc/kernel
 	app.cpp
 	kvi_filetransfer.cpp
 	kvi_iconmanager.cpp
 	kvi_ircconnection.cpp
 	kvi_options.cpp
-/module(incomplete list):
-	kvi_modulemanager.cpp
-/ui(incomplete list):
+src/kvirc/ui:
 	kvi_channel.cpp
 	kvi_colorwin.cpp
 	kvi_ctcppagedialog.cpp
