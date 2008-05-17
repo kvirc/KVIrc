@@ -1050,7 +1050,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
 	
-	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,Qt::Horizontal,__tr2qs_ctx("Active Configuration","options"));
+	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,Qt::Vertical,__tr2qs_ctx("Active Configuration","options"));
 	m_pSrvNetLabel = new QLabel(__tr2qs_ctx("Server:","options"),gbox);
 
 	m_pSrvNetEdit = new QLineEdit(gbox);
