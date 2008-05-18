@@ -40,15 +40,13 @@ class KVILIB_API KviTalListWidget : public QListWidget
 public:
 	KviTalListWidget(QWidget * pParent,QString name,Qt::WFlags f = 0);
 	KviTalListWidget(QWidget * pParent)
-		: QListWidget (pParent)/*, m_pDelegate(0)*/{};
-	virtual ~KviTalListWidget() {	/*if (m_pDelegate) delete m_pDelegate;*/ };
-	/*void setDelegate(QItemDelegate *itemdelegate)
-	{	m_pDelegate=itemdelegate;
-		setItemDelegate(itemdelegate);
-	}
-	*/
+		: QListWidget (pParent){};
+	virtual ~KviTalListWidget()	{};
+
 protected:
-	//QItemDelegate *m_pDelegate;
+	virtual bool event(QEvent * e);
+signals:
+	void tipRequest(QListWidgetItem *,const QPoint &);
 
 };
 

@@ -190,7 +190,11 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
 	pTextEdit->setBackgroundRole(QPalette::Window);
 	pTextEdit->setReadOnly(true);
-	pTextEdit->setText(szThemesDescription);
+	QTextDocument *doc=new QTextDocument(pTextEdit);
+	debug("Create dialog html");
+	doc->setHtml(szThemesDescription);
+	pTextEdit->setDocument(doc);
+	//pTextEdit->setText(szThemesDescription);
 	pLayout->addWidget(pTextEdit,1,0);
 	pLayout->setRowStretch(1,1);
 

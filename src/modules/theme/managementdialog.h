@@ -93,7 +93,8 @@ protected slots:
 	void applyCurrentTheme();
 	void enableDisableButtons();
 	void contextMenuRequested(const QPoint & pos);
-	void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
+	//void tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt);
+	void tipRequest(QListWidgetItem *item,const QPoint &pnt);
 };
 /*
 class KviThemeDelegate : public QItemDelegate

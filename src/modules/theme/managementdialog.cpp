@@ -183,13 +183,16 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListWidget->setSortingEnabled(true);
 	connect(m_pListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
+	
+	//FIXME tooltip
+	//connect(m_pListWidget,SIGNAL(tipRequest(QListWidgetItem *,const QPoint &)),this,SLOT(tipRequest(QListWidgetItem *,const QPoint &)));
 	connect(m_pListWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 		this,SLOT(contextMenuRequested(const QPoint &)));
 	connect(m_pListWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableButtons()));
 	g->addWidget(m_pListWidget,1,0);
 
-	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget);
-	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+//	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget);
+//	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	QPushButton * b = new QPushButton(__tr2qs("Close"),this);
 	b->setMaximumSize(b->sizeHint().width(),b->sizeHint().height());
@@ -400,13 +403,15 @@ void KviThemeManagementDialog::closeEvent(QCloseEvent * e)
 	delete this;
 }
 
-void KviThemeManagementDialog::tipRequest(KviDynamicToolTip *pTip,const QPoint &pnt)
+void KviThemeManagementDialog::tipRequest(QListWidgetItem *it,const QPoint &pnt)
 {
-	KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
+	// FIXME
+	/*
+	//KviThemeListWidgetItem * it = (KviThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
 
-	if(!it)return;
+	//if(!it)return;
 
-	KviThemeInfo * pThemeInfo = it->themeInfo();
+	KviThemeInfo * pThemeInfo = ((KviThemeListWidgetItem *)it)->themeInfo();
 
 	QString szThemeDescription;
 
@@ -423,6 +428,12 @@ void KviThemeManagementDialog::tipRequest(KviDynamicToolTip *pTip,const QPoint &
 		pThemeInfo->mediumScreenshot(),
 		0
 	);
-
-	pTip->tip(m_pListWidget->visualItemRect(it),szThemeDescription);
+	QLabel *wid=new QLabel(0);
+	wid->setWindowFlags(Qt::Popup);
+	wid->setText("Prova del tooltip");
+	wid->move(pnt);
+	wid->show();
+//	pTip->tip(m_pListWidget->visualItemRect(it),szThemeDescription);
+*/
 }
+

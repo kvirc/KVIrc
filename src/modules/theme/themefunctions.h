@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+#include "kvi_htmldialog.h"
 
 #include <QWidget>
 #include <QPixmap>
@@ -44,7 +45,9 @@ namespace KviThemeFunctions
 		const QString &szThemeDate,
 		const QString &szThemeThemeEngineVersion,
 		const QPixmap &pixScreenshot,
-		int iUniqueIndexInDocument = 0
+		int iUniqueIndexInDocument = 0,
+		KviHtmlDialogData *hd=0
+		
 	);
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame = false);
 };

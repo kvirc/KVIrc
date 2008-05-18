@@ -27,13 +27,30 @@
 #include "kvi_tal_itemdelegates.h"
 
 #include <QListWidget>
+#include <QEvent>
+#include <QHelpEvent>
+
 KviTalListWidget::KviTalListWidget(QWidget * pParent,QString name,Qt::WFlags f)
 : QListWidget(pParent)
 {
 	setObjectName(name);
 	setWindowFlags(f);
 }
-
+bool KviTalListWidget::event(QEvent * e)
+{
+	
+	if (e->type() == QEvent::ToolTip) 
+	{
+	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
+		const QPoint &p=helpEvent->pos();
+		QListWidgetItem *item=itemAt(p);
+		if (item){
+			debug ("Emit tip request in listwidget");
+			emit tipRequest(item,p);
+		}
+	}
+	return QListWidget::event(e);
+}
 
 
 

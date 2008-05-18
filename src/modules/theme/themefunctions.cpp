@@ -35,9 +35,11 @@
 #include "kvi_theme.h"
 #include "kvi_frame.h"
 
+
 //#include <qmime.h>
-#include <q3mimefactory.h>
-#define KviTalMimeSourceFactory Q3MimeSourceFactory
+//#include <q3mimefactory.h>
+
+//#define KviTalMimeSourceFactory Q3MimeSourceFactory
 
 namespace KviThemeFunctions
 {
@@ -183,7 +185,7 @@ namespace KviThemeFunctions
 				szThemeDate,
 				szThemeEngineVersion,
 				pixScreenshot,
-				iIdx
+				iIdx,&hd
 			);
 
 			if(iIdx > 0)
@@ -256,12 +258,11 @@ namespace KviThemeFunctions
 			&szWarnings,
 			&szShowDetails
 		);
-
 		
+		hd.addImageResource("theme_dialog_pack_image",pix);
+		hd.addHtmlResource("theme_dialog_details",szDetails);
+		hd.addHtmlResource("theme_dialog_main",hd.szHtmlText);
 
-		KviTalMimeSourceFactory::defaultFactory()->setPixmap("theme_dialog_pack_image",pix);
-		KviTalMimeSourceFactory::defaultFactory()->setText("theme_dialog_details",szDetails);
-		KviTalMimeSourceFactory::defaultFactory()->setText("theme_dialog_main",hd.szHtmlText);
 	
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
@@ -307,7 +308,8 @@ namespace KviThemeFunctions
 		const QString &szThemeDate,
 		const QString &szThemeThemeEngineVersion,
 		const QPixmap &pixScreenshot,
-		int iUniqueIndexInDocument
+		int iUniqueIndexInDocument,
+		KviHtmlDialogData *hd
 	)
 	{
 		QString szAuthor = __tr2qs_ctx("Author","theme");
@@ -322,7 +324,10 @@ namespace KviThemeFunctions
 			KviQString::sprintf(szScreenshot,"<p><center><img src=\"theme_shot%d\"></center></p>",iUniqueIndexInDocument);
 			QString szTmp;
 			KviQString::sprintf(szTmp,"theme_shot%d",iUniqueIndexInDocument);
-			KviTalMimeSourceFactory::defaultFactory()->setPixmap(szTmp,pixScreenshot);
+			//FIXME in tooltip
+			if (hd)
+				hd->addImageResource(szTmp,pixScreenshot);
+			else szScreenshot = "";
 		} else {
 			szScreenshot = "";
 		}

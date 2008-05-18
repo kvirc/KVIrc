@@ -48,7 +48,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	QGridLayout * g = new QGridLayout(this);
 	
 	QLabel * l;
-	QTextBrowser * te;
+	KviTextBrowser * te;
 	QPushButton * pb;
 	
 	int iUp = 0;
@@ -70,8 +70,12 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	iDown = 1;
 	}
 
-	te = new QTextBrowser(this);
-	te->setText(pData->szHtmlText);
+	te = new KviTextBrowser(this,pData);
+	debug("Create dialog html");
+	pData->m_pDoc->setHtml(pData->szHtmlText);
+	te->setDocument(pData->m_pDoc);
+
+//	te->setText(pData->szHtmlText);
 	//te->setReadOnly(true);
 
 	if(pData->iFlags & KviHtmlDialogData::ForceMinimumSize)
