@@ -112,8 +112,10 @@ static bool file_kvs_cmd_addimagepath(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviFileUtils::adjustFilePath(szDst);
 
-	QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
-	if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
+	//QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
+	int index=KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).indexOf(szDst);
+	//if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
+	if (index==-1)
 		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).append(szDst);
 	return true;
 }
@@ -145,9 +147,11 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviFileUtils::adjustFilePath(szDst);
 
-	QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
-	if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
-		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).remove(szDst);
+	//QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
+	int index=KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).indexOf(szDst);
+	//if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
+	if(index!=-1)
+		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).removeAt(index);
 	return true;
 }
 
@@ -650,7 +654,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	}
 
 	QStringList sl;
-	if(!szFilter.isEmpty())sl = d.entryList(szFilter,iFlags,iSort);
+	if(!szFilter.isEmpty())sl = d.entryList(QStringList(szFilter),iFlags,iSort);
 	else sl = d.entryList(iFlags,iSort);
 
 	KviKvsArray * a = new KviKvsArray();
@@ -898,7 +902,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	KviFileUtils::adjustFilePath(szFile);
 
 	KviFile f(szFile);
-	int iFlags = IO_WriteOnly;
+	int iFlags = QIODevice::WriteOnly;
 
 	if(!f.openForWriting(c->switches()->find('a',"append")))
 	{
