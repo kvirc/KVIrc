@@ -40,6 +40,9 @@
 class KviHtmlDialogData
 {
 public:
+	KviHtmlDialogData() : m_pDoc(0){};
+	~KviHtmlDialogData(){if (m_pDoc) delete m_pDoc;};
+
 	void addImageResource(const QString &key,const QPixmap &pix)
 	{
 		if (!m_pDoc) m_pDoc=new QTextDocument();
@@ -47,6 +50,7 @@ public:
 		url.setFileName(key);
 		m_pDoc->addResource(2,url,pix);
 	}
+
 	void addHtmlResource(const QString key,const QString value)
 	{
 		htmlResource.insert(key,value);
@@ -77,16 +81,12 @@ public:
 
 	// output
 	int iSelectedButton;      // returns 1,2 or 3
-	KviHtmlDialogData::KviHtmlDialogData()
-		: m_pDoc(0){};
-
-	~KviHtmlDialogData(){if (m_pDoc) delete m_pDoc;};
 };
 
 class KviTextBrowser: public QTextBrowser
 {
 public:
-	KviTextBrowser::KviTextBrowser(QWidget *par,KviHtmlDialogData *ht)
+	KviTextBrowser(QWidget *par,KviHtmlDialogData *ht)
 		: QTextBrowser(par), m_pHt(ht){};
 	~KviTextBrowser(){};
 	virtual QVariant loadResource ( int type, const QUrl & name ) 
@@ -102,6 +102,7 @@ protected:
 	KviHtmlDialogData *m_pHt;
 	
 };
+
 class KVIRC_API KviHtmlDialog : public QDialog
 {
 	Q_OBJECT
