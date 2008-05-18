@@ -26,7 +26,6 @@
 
 #include "kvi_qstring.h"
 #include "kvi_settings.h"
-#include "kvi_resources.h"
 
 #include <QPixmap>
 #include <QDialog>
