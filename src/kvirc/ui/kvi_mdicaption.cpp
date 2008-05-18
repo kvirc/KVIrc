@@ -50,8 +50,8 @@
 #include <QStyleOption>
 #include <QTextDocument>
 
-#include <q3simplerichtext.h>
-#define QSimpleRichText Q3SimpleRichText
+//#include <q3simplerichtext.h>
+//#define QSimpleRichText Q3SimpleRichText
 
 
 
@@ -208,13 +208,19 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 	QRect r = e->rect();
 	QPainter p(this);
 	p.fillRect(r,m_bActive ? KVI_OPTION_COLOR(KviOption_colorMdiCaptionActive) : KVI_OPTION_COLOR(KviOption_colorMdiCaptionInactive));
-	//FIXME
-	//QTextDocument rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption());
-	//rt.setDefaultFont(font());
-	//rt.drawContents(&p,rect());
+	QString text;
+	if (m_bActive)text=((KviMdiChild *)parent())->xmlActiveCaption();
+	else text=((KviMdiChild *)parent())->xmlInactiveCaption();
 
-	 QSimpleRichText rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption(),font()); 
-    rt.draw(&p,height() + 2,-1,rect(),colorGroup()); 
+	// Q3SimpleRichText rt(text,font());
+
+	// QSimpleRichText rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption(),font()); 
+	// rt.draw(&p,height() + 2,-1,rect(),colorGroup()); 
+	 QTextDocument doc;
+	 p.translate(16,0);
+	 doc.setHtml(text);
+	 doc.setDefaultFont(font());
+	 doc.drawContents(&p);
 }
 
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
