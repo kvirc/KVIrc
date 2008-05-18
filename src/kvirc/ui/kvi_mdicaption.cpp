@@ -209,10 +209,12 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 	QPainter p(this);
 	p.fillRect(r,m_bActive ? KVI_OPTION_COLOR(KviOption_colorMdiCaptionActive) : KVI_OPTION_COLOR(KviOption_colorMdiCaptionInactive));
 	//FIXME
-	QTextDocument rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption());
-	rt.setDefaultFont(font());
-	//rt.draw(&p,height() + 2,-1,rect(),palette());
-	rt.drawContents(&p,rect());
+	//QTextDocument rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption());
+	//rt.setDefaultFont(font());
+	//rt.drawContents(&p,rect());
+
+	 QSimpleRichText rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption(),font()); 
+    rt.draw(&p,height() + 2,-1,rect(),colorGroup()); 
 }
 
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)
