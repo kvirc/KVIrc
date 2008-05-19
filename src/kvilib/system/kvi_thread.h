@@ -345,13 +345,13 @@ protected:
 public:
 	static void killPendingEvents(QObject * receiver);
 private:
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	QSocketNotifier * m_pSn;
 #endif
 	KviMutex * m_pMutex; // This class performs only atomic operations
 	KviPointerList<KviThread> * m_pThreadList;
 	int m_iWaitingThreads;
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	KviPointerList<KviThreadPendingEvent> * m_pEventQueue;
 	int m_fd[2];
 	int m_iTriggerCount;
