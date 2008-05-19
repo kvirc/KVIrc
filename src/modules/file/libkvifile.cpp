@@ -35,6 +35,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QTextStream>
+#include <QTextCodec>
 
 /*
 	@doc: file.copy
@@ -827,7 +828,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 
 	QTextStream stream( &f );
 
-	stream.setEncoding(bLocal8Bit ? QTextStream::Locale : QTextStream::UnicodeUTF8);
+	if (!bLocal8Bit) stream.setCodec(QTextCodec::codecForMib(106));
 	for(int i=0;i<iStartLine;i++)
 		stream.readLine();
 
