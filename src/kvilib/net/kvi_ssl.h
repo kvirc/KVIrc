@@ -84,7 +84,7 @@ public:
 	int serialNumber(){ return m_iSerialNumber; };
 
 	int version(){ return m_iVersion; };
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
 	// This bug is present in all the classes exported by a module that
@@ -112,7 +112,7 @@ public:
 	int bits(){ return m_iNumBits; };
 	int bitsUsed(){ return m_iNumBitsUsed; };
 	const char * version(){ return m_szVersion.ptr(); };
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
 	// This bug is present in all the classes exported by a module that
@@ -161,7 +161,7 @@ public:
 	KviSSLCipherInfo * getCurrentCipherInfo();
 	KviSSL::Result useCertificateFile(const char * cert,const char * pass);
 	KviSSL::Result usePrivateKeyFile(const char * key,const char * pass);
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
 	// This bug is present in all the classes exported by a module that

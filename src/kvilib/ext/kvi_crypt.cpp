@@ -27,7 +27,7 @@
 #include "kvi_crypt.h"
 #include "kvi_locale.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
 	#include "kvi_malloc.h"
 #endif
 

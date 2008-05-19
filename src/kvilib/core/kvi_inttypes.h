@@ -35,7 +35,7 @@
 #endif //!SYSTEM_SIZE_OF_SHORT_INT
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) && !defined(MINGW)
 	// we don't have a configure script here
 	// so we can't check the size of types
 	// We rely on the ms specific definitions then
