@@ -29,7 +29,7 @@
 
 #include <errno.h>
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <winsock2.h>
 
 	#ifdef COMPILE_IPV6_SUPPORT
@@ -97,12 +97,12 @@ KviDnsThread::~KviDnsThread()
 
 int KviDnsThread::translateDnsError(int iErr)
 {
-#if defined(COMPILE_IPV6_SUPPORT) || !defined(COMPILE_ON_WINDOWS)
+#if defined(COMPILE_IPV6_SUPPORT) || (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW))
 
 	switch(iErr)
 	{
 		case EAI_FAMILY:     return KviError_unsupportedAddressFamily; break; 
-#if !defined(COMPILE_ON_WINDOWS) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
 		case EAI_ADDRFAMILY: return KviError_unsupportedAddressFamily; break;
 #endif
 // NOT FreeBSD ARE WE?
@@ -117,12 +117,12 @@ int KviDnsThread::translateDnsError(int iErr)
 		case EAI_MEMORY:     return KviError_dnsInternalErrorOutOfMemory; break;
 		// got this when experimenting with protocols
 		case EAI_SERVICE:    return KviError_dnsInternalErrorServiceNotSupported; break;
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		case EAI_NONAME:     return KviError_dnsNoName; break;
 #endif
 		// got this when experimenting with protocols
 		case EAI_SOCKTYPE:   return KviError_dnsInternalErrorUnsupportedSocketType; break;
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		case EAI_SYSTEM:     return -errno;
 #endif
 	}
@@ -163,7 +163,7 @@ void KviDnsThread::run()
 	}
 #endif
 
-#if defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_IPV6_SUPPORT)
+#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)) && !defined(COMPILE_IPV6_SUPPORT)
 
 	if(m_queryType == KviDns::IpV6)
 	{
@@ -217,7 +217,7 @@ void KviDnsThread::run()
 	}
 
 
-#else //!COMPILE_ON_WINDOWS || COMPILE_IPV6_SUPPORT
+#else 
 
 	int retVal;
 

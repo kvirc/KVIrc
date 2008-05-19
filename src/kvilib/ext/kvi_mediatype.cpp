@@ -43,7 +43,7 @@
 #include <sys/stat.h>
 
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <unistd.h>
 	#include "kvi_malloc.h"
 #endif
@@ -66,7 +66,7 @@
 #define S_ISCHR(__f) (__f & _S_IFCHR)
 #endif
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <dirent.h>
 #else
 	#include "kvi_malloc.h"
@@ -251,7 +251,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 
 
 	// first of all , lstat() the file
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	struct _stat st;
 	if(_stat(szFullPath.ptr(),&st) != 0)
 #else
@@ -266,7 +266,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 		return findMediaTypeForRegularFile(szFullPath.ptr(),szFile.ptr(),false);
 	} else {
 		// If it is a link , stat() the link target
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		if(S_ISLNK(st.st_mode))
 		{
 			if(stat(szFullPath.ptr(),&st) != 0)
@@ -298,7 +298,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 	}
 
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if(S_ISSOCK(st.st_mode))
 	{
 		// Socket : return default media type
@@ -332,7 +332,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 		return mtd;
 	}
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if(S_ISBLK(st.st_mode))
 	{
 		// Block device: return default media type

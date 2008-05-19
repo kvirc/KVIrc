@@ -262,7 +262,7 @@ KviSSL::~KviSSL()
 	shutdown();
 }
 
-#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
+#ifdef COMPILE_ON_WINDOWS
 
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
@@ -496,7 +496,7 @@ KviSSLCertificate::~KviSSLCertificate()
 	delete m_pIssuer;
 }
 
-#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
+#ifdef COMPILE_ON_WINDOWS
 
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance
@@ -664,7 +664,7 @@ KviSSLCipherInfo::~KviSSLCipherInfo()
 {
 }
 
-#if defined(COMPILE_ON_WINDOWS) && ! defined(MINGW)
+#ifdef COMPILE_ON_WINDOWS
 
 	// On windows we need to override new and delete operators
 	// to ensure that always the right new/delete pair is called for an object instance

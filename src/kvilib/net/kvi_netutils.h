@@ -26,7 +26,7 @@
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <winsock2.h>
 	#ifdef COMPILE_IPV6_SUPPORT
 		#ifdef WIN2K

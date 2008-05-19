@@ -34,17 +34,15 @@
 
 #include <QStringList>
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/time.h> // struct timeval
+        #include <unistd.h>
+	#include <netdb.h>
+
 #endif
 
 #include <sys/types.h>
 #include "kvi_qstring.h"
-
-#ifndef COMPILE_ON_WINDOWS
-	#include <unistd.h>
-	#include <netdb.h>
-#endif
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
 	#include <sys/ioctl.h>
@@ -185,7 +183,7 @@ bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
 
 #else //HAVE_INET_NTOA
 
-bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
+bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)f
 {
 // FIXME: #warning "This is NOT thread safe!"
 
@@ -207,7 +205,7 @@ bool kvi_isValidStringIp(const char *szIp)
 
 #ifdef COMPILE_IPV6_SUPPORT
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 //#include <stdlib.h>
 //#include <sys/socket.h>
 //#include <arpa/inet.h>/

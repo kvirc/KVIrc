@@ -28,13 +28,13 @@
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/utsname.h>
 	#include <stdlib.h>
 	#include <unistd.h>
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
 
 typedef enum QueryInfo
@@ -426,7 +426,7 @@ namespace KviOsInfo
 {
 	QString type()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return queryWinInfo(Os_Type);
 #else
 		return "UNIX";
@@ -435,7 +435,7 @@ namespace KviOsInfo
 
 	QString name()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return "Windows";
 #else
 	#ifdef COMPILE_ON_MAC
@@ -451,7 +451,7 @@ namespace KviOsInfo
 	
 	QString version()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return queryWinInfo(Os_Version);
 #else
 		struct utsname uts;
@@ -463,7 +463,7 @@ namespace KviOsInfo
 	
 	QString release()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return queryWinInfo(Os_Release);
 #else
 		struct utsname uts;
@@ -475,7 +475,7 @@ namespace KviOsInfo
 	
 	QString machine()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		QString mach = getenv("PROCESSOR_IDENTIFIER");
 		return mach.section(",",0,0);
 #else
@@ -488,7 +488,7 @@ namespace KviOsInfo
 	
 	QString nodename()
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return "windows";
 #else
 		struct utsname uts;

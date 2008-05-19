@@ -35,11 +35,11 @@
 #include <QtGlobal>
 
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
-#if defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)
+#if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
 
 	#define FEEL_LIKE_I_AM_COMPILING_UNDER_WINDOZE
 	#define COMPILE_ON_WINDOWS
-
+      
 	// Windows has no config.h
 
 	#include "kvi_wincfg.h"
@@ -50,13 +50,16 @@
 		#define KVILIB_API __declspec(dllimport)
 	#endif
 
-	#ifdef __KVIRC__
+        #ifdef __KVIRC__
 		#define KVIRC_API __declspec(dllexport)
 	#else
 		#define KVIRC_API __declspec(dllimport)
 	#endif
-
 #else
+	#ifdef MINGW
+		#define COMPILE_ON_MINGW
+	#endif
+
 	#ifdef Q_OS_MACX
 		#define COMPILE_ON_MAC
 	#endif

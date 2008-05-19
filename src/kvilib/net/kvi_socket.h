@@ -42,7 +42,7 @@
 
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
@@ -126,7 +126,7 @@ inline bool kvi_socket_isValid(kvi_socket_t sock)
 
 inline void kvi_socket_destroy(kvi_socket_t sock)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	closesocket(sock);
 #else
 	close(sock);
@@ -141,7 +141,7 @@ inline void kvi_socket_destroy(kvi_socket_t sock)
 
 inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	unsigned long arg = 1;
 	return (ioctlsocket(sock,FIONBIO,(unsigned long FAR *)&arg) == 0);
 #else
@@ -170,7 +170,7 @@ inline bool kvi_socket_bind(kvi_socket_t sock,const struct sockaddr * sa,int sal
 
 inline bool kvi_socket_connect(kvi_socket_t sock,const struct sockaddr *sa,int salen)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return (WSAConnect(sock,sa,salen,0,0,0,0) == 0);
 #else
 	return (::connect(sock,sa,salen) == 0);
@@ -179,7 +179,7 @@ inline bool kvi_socket_connect(kvi_socket_t sock,const struct sockaddr *sa,int s
 
 inline bool kvi_socket_recoverableConnectError(int err)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return ((err == WSAEINPROGRESS) || (err == WSAEWOULDBLOCK));
 #else
 	return (err == EINPROGRESS);
@@ -188,7 +188,7 @@ inline bool kvi_socket_recoverableConnectError(int err)
 
 inline bool kvi_socket_recoverableError(int err)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return ((err == WSAEWOULDBLOCK) || (err == EINTR) || (err == EAGAIN));
 #else
 	return ((err == EINTR) || (err = EAGAIN));
@@ -204,7 +204,7 @@ inline bool kvi_socket_recoverableError(int err)
 
 inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock,struct sockaddr *sa,int * salen)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return (kvi_socket_t)::accept(sock,sa,salen);
 #else
 	return (kvi_socket_t)::accept(sock,sa,(socklen_t *)salen);
@@ -250,7 +250,7 @@ inline int kvi_socket_select(int nhpo,fd_set *r,fd_set *w,fd_set *e,struct timev
 inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 {
 	g_uOutgoingTraffic+=size;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return ::send(sock,(const char *)buf,size,0);
 #else
 	return ::send(sock,buf,size,MSG_NOSIGNAL | MSG_DONTWAIT);
@@ -270,7 +270,7 @@ inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
 {
 	int iReceived;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	iReceived = ::recv(sock,(char *)buf,maxlen,0);
 #else
 	iReceived = ::recv(sock,buf,maxlen,MSG_NOSIGNAL);
@@ -288,7 +288,7 @@ inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
 
 inline bool kvi_socket_getsockopt(kvi_socket_t sock,int level,int optname,void *optval,int *optlen)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return (::getsockopt(sock,level,optname,(char FAR *)optval,optlen) == 0);
 #else
 	return (::getsockopt(sock,level,optname,optval,(socklen_t *)optlen) == 0);
@@ -304,7 +304,7 @@ inline bool kvi_socket_getsockopt(kvi_socket_t sock,int level,int optname,void *
 
 inline bool kvi_socket_setsockopt(kvi_socket_t sock,int level,int optname,const void *optval,int optlen)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return (::setsockopt(sock,level,optname,(char FAR *)optval,optlen) == 0);
 #else
 	return (::setsockopt(sock,level,optname,optval,optlen) == 0);
@@ -336,7 +336,7 @@ inline bool kvi_socket_disableNagle(kvi_socket_t sock)
 
 inline bool kvi_socket_getsockname(kvi_socket_t sock,struct sockaddr * addr,int * addrlen)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return (::getsockname(sock,addr,addrlen) == 0);
 #else
 	return (::getsockname(sock,addr,(socklen_t *)addrlen) == 0);
@@ -345,7 +345,7 @@ inline bool kvi_socket_getsockname(kvi_socket_t sock,struct sockaddr * addr,int 
 
 inline int kvi_socket_error()
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return WSAGetLastError();
 #else
 	return errno;

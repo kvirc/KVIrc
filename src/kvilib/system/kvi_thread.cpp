@@ -31,7 +31,7 @@
 
 #include "kvi_thread.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <io.h> // for _pipe()
 #else
 	#include <unistd.h> //for pipe() and other tricks
@@ -54,7 +54,7 @@ static void kvi_threadIgnoreSigalarm()
 {
 	// On Windows this stuff is useless anyway
 #ifdef COMPILE_IGNORE_SIGALARM
-	#ifndef COMPILE_ON_WINDOWS
+	#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 			// Funky hack for some Solaris machines (maybe others ?)
 			// For an obscure (at least to me) reason
 			// when using threads ,some part of the system
@@ -104,7 +104,7 @@ static void kvi_threadIgnoreSigalarm()
 #endif
 }
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
 static void kvi_threadSigpipeHandler(int)
 {
@@ -116,7 +116,7 @@ static void kvi_threadSigpipeHandler(int)
 static void kvi_threadCatchSigpipe()
 {
 	// On windows this stuff is useless
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	struct sigaction act;
 	act.sa_handler=&kvi_threadSigpipeHandler;
 	sigemptyset(&(act.sa_mask));
@@ -139,7 +139,7 @@ static void kvi_threadCatchSigpipe()
 
 static void kvi_threadInitialize()
 {
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	kvi_threadIgnoreSigalarm();
 	kvi_threadCatchSigpipe();
 #endif
@@ -180,7 +180,7 @@ KviThreadManager::KviThreadManager()
 
 	m_iWaitingThreads = 0;
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
 	m_iTriggerCount = 0;
 
@@ -223,7 +223,7 @@ KviThreadManager::~KviThreadManager()
 	// there are no more child threads
 	// thus no more slave events are sent.
 	// Disable the socket notifier, we no longer need it
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	m_pSn->setEnabled(false);
 	delete m_pSn;
     m_pSn = 0;
@@ -232,7 +232,7 @@ KviThreadManager::~KviThreadManager()
 	// we're no longer in this world
 	g_pThreadManager = 0;
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// close the pipes
 	close(m_fd[KVI_THREAD_PIPE_SIDE_SLAVE]);
 	close(m_fd[KVI_THREAD_PIPE_SIDE_MASTER]);
@@ -259,7 +259,7 @@ KviThreadManager::~KviThreadManager()
 
 void KviThreadManager::killPendingEvents(QObject * receiver)
 {
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if(!g_pThreadManager)return;
 	g_pThreadManager->killPendingEventsByReceiver(receiver);
 #endif
@@ -267,7 +267,7 @@ void KviThreadManager::killPendingEvents(QObject * receiver)
 
 void KviThreadManager::killPendingEventsByReceiver(QObject * receiver)
 {
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	KviPointerList<KviThreadPendingEvent> l;
 	l.setAutoDelete(false);
 	m_pMutex->lock();
@@ -300,7 +300,7 @@ void KviThreadManager::unregisterSlaveThread(KviThread *t)
 
 void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QApplication::postEvent(o,e); // we believe this to be thread-safe
 #else
 	KviThreadPendingEvent * ev = new KviThreadPendingEvent;
@@ -329,7 +329,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 		// the master thread gets here! It will wait indefinitely for itself
 		// if(pthread_self() != m_hMasterThread) ... ????
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		::Sleep(1); // 1ms
 #else
 		// FIXME : use nanosleep() ?
@@ -363,7 +363,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 
 void KviThreadManager::eventsPending(int fd)
 {
-#ifndef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	char buf[10];
 	// do we need to check for errors here ?
 	int readed = read(fd,buf,10);
@@ -427,7 +427,7 @@ void KviThreadManager::threadLeftWaitState()
 	m_pMutex->unlock();
 }
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	bool KviMutex::locked()
 	{
 		if(!kvi_threadMutexTryLock(&m_mutex))return true;
@@ -436,7 +436,7 @@ void KviThreadManager::threadLeftWaitState()
 	}
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 DWORD WINAPI internal_start_thread(LPVOID arg)
 {
 	// Slave thread...
@@ -545,7 +545,7 @@ void KviThread::internalThreadRun_doNotTouchThis()
 
 void KviThread::usleep(unsigned long usec)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	int s = usec / 1000;
 	if(s < 1)s = 1;
 	::Sleep(s); // Sleep one millisecond...this is the best that we can do
@@ -557,7 +557,7 @@ void KviThread::usleep(unsigned long usec)
 
 void KviThread::msleep(unsigned long msec)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	::Sleep(msec);
 #else
 	// FIXME : use nanosleep() ?
@@ -567,7 +567,7 @@ void KviThread::msleep(unsigned long msec)
 
 void KviThread::sleep(unsigned long sec)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	::Sleep(sec * 1000);
 #else
 	::sleep(sec);

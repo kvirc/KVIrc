@@ -28,7 +28,7 @@
 #include "kvi_buildinfo.h"
 #include "kvi_sourcesdate.h"
 
-#if defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)
+#if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
 	#include "kvi_wincfg.h"
 #else
 	#include "kvi_sysbuildinfo.h"

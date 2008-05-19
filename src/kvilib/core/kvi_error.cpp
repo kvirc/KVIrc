@@ -31,7 +31,7 @@
 #include "kvi_settings.h"
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <winsock2.h> // for the WSAE* error codes
 #endif
 
@@ -190,7 +190,7 @@ namespace KviError
 	
 	int translateSystemError(int iErrNo)
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		switch(iErrNo)
 		{
 			case EBADF:		       return KviError_badFileDescriptor;          break;

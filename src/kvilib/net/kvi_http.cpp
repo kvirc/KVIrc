@@ -950,7 +950,7 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 			if(nRet < 0)
 			{
 				int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 				if((err != EAGAIN) && (err != EINTR))
@@ -1152,7 +1152,7 @@ bool KviHttpRequestThread::sendBuffer(const char * buffer,int bufLen,int iTimeou
 
 handle_system_error:
 					int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 					if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 					if((err != EAGAIN) && (err != EINTR))
@@ -1206,7 +1206,7 @@ int KviHttpRequestThread::selectForReadStep()
 		if(nRet < 0)
 		{
 			int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 			if((err != EAGAIN) && (err != EINTR))
@@ -1306,7 +1306,7 @@ bool KviHttpRequestThread::readDataStep()
 		{
 			// Read error ?
 			int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 			if((err != EAGAIN) && (err != EINTR))

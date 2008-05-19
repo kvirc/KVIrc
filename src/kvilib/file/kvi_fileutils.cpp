@@ -104,7 +104,7 @@ namespace KviFileUtils
 		adjustFilePath(dir);
 		QString createdDir;
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		int idx = dir.indexOf(':');
 		if(idx == 1)
 		{
@@ -207,7 +207,7 @@ namespace KviFileUtils
 
 	void adjustFilePath(QString &szPath)
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		szPath.replace('/',"\\");
 		szPath.replace("\\\\","\\");
 		// FIXME: Use the default drive here ?

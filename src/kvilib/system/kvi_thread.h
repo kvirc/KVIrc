@@ -41,7 +41,7 @@
 
 // Portability stuff
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	#include <winsock2.h> // this will pull in windows.h and will avoid windock.h inclusion
 	//#include <windows.h>
@@ -148,14 +148,14 @@ class KVILIB_API KviMutex : public KviHeapObject
 {
 private:
 	kvi_mutex_t m_mutex;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool        m_bLocked;
 #endif
 public:
 	KviMutex(){ kvi_threadMutexInit(&m_mutex); };
 	virtual ~KviMutex(){ kvi_threadMutexDestroy(&m_mutex); };
 public:
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	void lock(){ kvi_threadMutexLock(&m_mutex); m_bLocked = true; };
 	void unlock(){ m_bLocked = false; kvi_threadMutexUnlock(&m_mutex); };
 	bool locked(){ return m_bLocked; };
@@ -345,13 +345,13 @@ protected:
 public:
 	static void killPendingEvents(QObject * receiver);
 private:
-#ifndef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QSocketNotifier * m_pSn;
 #endif
 	KviMutex * m_pMutex; // This class performs only atomic operations
 	KviPointerList<KviThread> * m_pThreadList;
 	int m_iWaitingThreads;
-#ifndef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviPointerList<KviThreadPendingEvent> * m_pEventQueue;
 	int m_fd[2];
 	int m_iTriggerCount;

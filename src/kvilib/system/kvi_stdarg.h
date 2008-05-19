@@ -42,7 +42,7 @@
 // }
 //
 //
-#if defined(COMPILE_ON_WINDOWS) && !defined(MINGW)
+#ifdef COMPILE_ON_WINDOWS
 	#define kvi_va_start_by_reference(__list,__arg) \
 	{ \
 		int supercalifragilisticoespiralidoso=_INTSIZEOF(__arg); \

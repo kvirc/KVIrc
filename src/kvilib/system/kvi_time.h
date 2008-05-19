@@ -37,13 +37,13 @@
 
 #define kvi_time_t time_t
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	#include <winsock2.h> // struct timeval
 
 	extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv,struct timezone * tmz);
 
-#else //!COMPILE_ON_WINDOWS
+#else
 
 	#include <sys/time.h> // gettimeofday() , struct timeval
 
@@ -52,7 +52,7 @@
 		gettimeofday(tmv,tmz);
 	};
 
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 // this works for time intervals a bit longer than 24 days
 class KVILIB_API KviMSecTimeInterval

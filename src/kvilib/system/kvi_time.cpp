@@ -29,7 +29,7 @@
 #include "kvi_qstring.h"
 #include "kvi_locale.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <windows.h> // GetSystemTime
 
 	// Call SystemTimeToFileTime to copy the system time to a FILETIME structure.

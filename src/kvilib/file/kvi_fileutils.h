@@ -32,7 +32,7 @@
 #include <time.h>
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define KVI_PATH_SEPARATOR "\\"
 	#define KVI_PATH_SEPARATOR_CHAR '\\'
 #else
