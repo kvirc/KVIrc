@@ -346,8 +346,10 @@ IF(WANT_OPENSSL)
 		LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
 		SET(COMPILE_SSL_SUPPORT 1)
 		SET(CMAKE_STATUS_SSL_SUPPORT "yes")
-		# CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
-		LIST(APPEND LIBS -lcrypto)
+                IF(!MINGW)
+                        # CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
+                        LIST(APPEND LIBS -lcrypto)
+                ENDIF()
 	ELSE()
 		SET(CMAKE_STATUS_SSL_SUPPORT "not available")
 	ENDIF()
