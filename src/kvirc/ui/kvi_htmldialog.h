@@ -40,8 +40,10 @@
 class KviHtmlDialogData
 {
 public:
-	KviHtmlDialogData() : m_pDoc(0){};
-	~KviHtmlDialogData(){if (m_pDoc) delete m_pDoc;};
+	KviHtmlDialogData() { 
+		m_pDoc=new QTextDocument();
+	};
+	~KviHtmlDialogData(){delete m_pDoc;};
 
 	void addImageResource(const QString &key,const QPixmap &pix)
 	{
