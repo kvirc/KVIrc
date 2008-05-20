@@ -93,11 +93,11 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
 	pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index") );
 	
-	m_pIndexListBox = new KviTalListBox(m_pIndexTab);
+	m_pIndexListWidget = new KviTalListWidget(m_pIndexTab);
 	QStringList docList=g_pDocIndex->titlesList();
-	m_pIndexListBox->insertStringList(docList);
-	connect(m_pIndexListBox,SIGNAL(selected(int)),this,SLOT(indexSelected ( int )));
-	m_pIndexListBox->sort();
+	m_pIndexListWidget->addItems(docList);
+	connect(m_pIndexListWidget,SIGNAL(selected(int)),this,SLOT(indexSelected ( int )));
+	m_pIndexListWidget->sortItems();
 	
 	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->addTab(m_pSearchTab,__tr2qs("Search"));
@@ -108,7 +108,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect( m_pTermsEdit, SIGNAL( returnPressed() ),
 	     this, SLOT( startSearch() ) );
 	     
-	m_pResultBox = new KviTalListBox(m_pSearchTab);
+	m_pResultBox = new KviTalListWidget(m_pSearchTab);
 	connect(m_pResultBox,SIGNAL(selected(int)),this,SLOT(searchSelected ( int )));
 	
 	KviValueList<int> li;
@@ -141,7 +141,7 @@ void KviHelpWindow::loadProperties(KviConfig *cfg)
 
 void KviHelpWindow::refreshIndex()
 {
-	m_pIndexListBox->clear();
+	m_pIndexListWidget->clear();
 	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0,100 );
 	connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setValue(int)) );
 	g_pDocIndex->makeIndex();
@@ -150,8 +150,8 @@ void KviHelpWindow::refreshIndex()
 	delete pProgressDialog;
 	g_bIndexingDone=TRUE;
 	QStringList docList=g_pDocIndex->titlesList();
-	m_pIndexListBox->insertStringList(docList);
-	m_pIndexListBox->sort();
+	m_pIndexListWidget->addItems(docList);
+	m_pIndexListWidget->sortItems();
 }
 
 void KviHelpWindow::startSearch()
@@ -205,7 +205,7 @@ void KviHelpWindow::startSearch()
  
 	m_pResultBox->clear();
 	for ( it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it )
-		m_pResultBox->insertItem( g_pDocIndex->getDocumentTitle( *it ) );
+		m_pResultBox->addItem( g_pDocIndex->getDocumentTitle( *it ) );
 
 	m_terms.clear();
 	bool isPhrase = FALSE;
@@ -237,36 +237,39 @@ QTextBrowser * KviHelpWindow::textBrowser()
 
 void KviHelpWindow::showIndexTopic()
 {
-	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListBox->selectedItem()) return;
-	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListBox->selectedItem()->text());
+	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListWidget->selectedItems().count()) return;
+	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchInIndex( const QString &s )
 {
-	KviTalListBoxItem *i = m_pIndexListBox->firstItem();
+	QListWidgetItem *item ;//= m_pIndexListWidget->firstItem();
 	QString sl = s.toLower();
-	while ( i ) {
-		QString t = i->text();
+	for(int i=0;i<m_pIndexListWidget->count();i++)
+//	while ( i ) {
+	{
+		item=m_pIndexListWidget->item(i);
+		QString t = item->text();
 		if ( t.length() >= sl.length() &&
-		i->text().left(s.length()).toLower() == sl ) {
-			m_pIndexListBox->setCurrentItem( i );
-			m_pIndexListBox->setTopItem(m_pIndexListBox->index(i));
+		item->text().left(s.length()).toLower() == sl ) {
+			m_pIndexListWidget->setCurrentItem( item );
+			m_pIndexListWidget->scrollToItem(item,QAbstractItemView::PositionAtTop);
 			break;
 		}
-		i = i->next();
+	//	i = i->next();
 	}
 }
 
 void KviHelpWindow::indexSelected ( int index )
 {
-	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListBox->text(index));
+	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->item(index)->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchSelected ( int index )
 {
-	int i=g_pDocIndex->titlesList().indexOf(m_pResultBox->text(index));
+	int i=g_pDocIndex->titlesList().findIndex(m_pResultBox->item(index)->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 

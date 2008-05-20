@@ -477,7 +477,8 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 		qWarning( warn.toUtf8().data() );
 		return FALSE;
 	}
-	
+	else debug("Open file %s",fileName.utf8().data());
+	debug("Patterns %s and words %s",patterns.join(","),words.join(","));
 	wordNum = 3;
 	miniDict.clear();
 	
