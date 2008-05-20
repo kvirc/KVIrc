@@ -30,12 +30,17 @@
 #include "kvi_app.h"
 #include "kvi_htmldialog.h"
 #include "kvi_iconmanager.h"
+#include "kvi_fileutils.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_frame.h"
+#include "kvi_kvs_script.h"
 
+#include <QDir>
 #include <q3mimefactory.h>
 #define KviTalMimeSourceFactory Q3MimeSourceFactory
+
+#include <stdlib.h>
 
 namespace KviAddonFunctions
 {
@@ -49,6 +54,7 @@ namespace KviAddonFunctions
 	{
 		KviPointerHashTable<QString,QString> * pInfoFields;
 		QString * pValue;
+		QString szErr;
 		bool bInstall;
 		QByteArray * pByteArray;
 		KviHtmlDialogData hd;
@@ -59,7 +65,7 @@ namespace KviAddonFunctions
 		KviPackageReader r;
 		if(!r.readHeader(szAddonPackageFileName))
 		{
-			QString szErr = r.lastError();
+			szErr = r.lastError();
 			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","addon"),&szErr);
 			return false;
 		}
@@ -221,12 +227,55 @@ namespace KviAddonFunctions
 		
 		if(bInstall)
 		{
-			QString szUnpackPath;
-			g_pApp->getLocalKvircDirectory(szUnpackPath,KviApp::Themes);
+
+/*
+[02:25:41] <Pragma> (occhio a non cancellare niente di importante eh... bisogna sempre fare attenzione a fare i delete)
+[02:25:50] <Pragma> ed occhio anche agli attacchi
+[02:26:02] <Pragma> quando parsi dei file esterni che potrebbero essere forgiati
+[02:26:19] <Pragma> pensa sempre 3 volte a cosa potrebbe succedere
+[02:26:41] <Pragma> tipo se dentro il pacchetto ti ci mettono un path tipo "../../etc/passwd"
+[02:27:03] <Pragma> qui magari bisogna intervienire pure sullo spacchettatore eh
+[02:27:10] <Pragma> guarda un pò insomma
+[02:27:22] <Pragma> la gente co ste cose ci va a nozze
+*/
+			// Check for dir existence
+			QString szTmpPath, szUnpackPath;
+			QString szRandomDir = createRandomDir();
+
+			g_pApp->getLocalKvircDirectory(szTmpPath,KviApp::Tmp);
+			KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+			szUnpackPath = szTmpPath + szRandomDir;
+			QDir szTmpDir(szUnpackPath);
+
+			while(szTmpDir.exists())
+			{
+				szRandomDir = createRandomDir();
+				szUnpackPath = szTmpPath + szRandomDir;
+				szTmpDir = QDir(szUnpackPath);
+			}
+			debug("szUnpackPath: %s",szUnpackPath.toUtf8().data());
+
+			// Unpack addon package into the random tmp dir
 			if(!r.unpack(szAddonPackageFileName,szUnpackPath))
 			{
-				QString szErr2 = r.lastError();
-				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr2);
+				szErr = r.lastError();
+				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
+				return true;
+			}
+
+			// Now we have all stuff in ~/.config/KVIrc/tmp/$rand
+			KviKvsScript::run("parse " + szUnpackPath + "/install.kvs",g_pActiveWindow);
+
+			// Remove all files
+			QDir * pDir = new QDir(szUnpackPath);
+			QStringList list = pDir->entryList(QDir::AllEntries,QDir::DirsFirst);
+			debug("Path: %s",szUnpackPath.toUtf8().data());
+			debug("Count: %d",list.count());
+
+			if(!KviFileUtils::deleteDir(szUnpackPath))
+			{
+				szErr = __tr2qs_ctx("One or more files can't be deleted","addon");
+				KviQString::sprintf(szError,__tr2qs_ctx("Failed to unpack the selected file: %Q","addon"),&szErr);
 				return true;
 			}
 		}
@@ -285,5 +334,28 @@ namespace KviAddonFunctions
 			&szSubdirectory,
 			&szAddonSubdirectory
 		);
+	}
+
+	QString createRandomDir()
+	{
+		QString szDirName;
+		char chars[] = {
+			'A','B','C','D','E','F','G','H',
+			'I','J','K','L','M','N','O','P',
+			'Q','R','S','T','U','V','W','X',
+			'Y','Z','a','b','c','d','e','f',
+			'g','h','i','j','k','l','m','n',
+			'o','p','q','r','s','t','u','v',
+			'w','x','y','z','-','_','.'
+		};
+
+		// Generate dir name
+		for(int i=0;i<10;i++)
+		{
+			int n = rand() % sizeof(chars);
+			szDirName.append(chars[n]);
+		}
+
+		return szDirName;
 	}
 };

@@ -619,7 +619,7 @@ static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 	@syntax:
 		addon.install <package_path:string>
 	@description:
-		Attempts to install the addons in the package specified by <package_path>.
+		Attempts to install the addon in the package specified by <package_path>.
 */
 
 static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)

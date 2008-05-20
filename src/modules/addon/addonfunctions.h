@@ -47,6 +47,7 @@ namespace KviAddonFunctions
 		const QString &szAddonDate,
 		const QString &szAddonAddonEngineVersion
 	);
+	QString createRandomDir();
 };
 
 

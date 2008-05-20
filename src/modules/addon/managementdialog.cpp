@@ -79,7 +79,7 @@ KviScriptAddonListViewItem::KviScriptAddonListViewItem(KviTalListWidget *v,KviKv
 
 	setText(t);
 	QPixmap * p = a->icon();
-	if (p) setIcon(*p); 
+	if (p) setIcon(*p);
 }
 
 KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
