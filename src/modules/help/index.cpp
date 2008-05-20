@@ -53,13 +53,13 @@ QDataStream &operator>>( QDataStream &s, Document &l )
 
 QDataStream &operator<<( QDataStream &s, const Document &l )
 {
-	s << (Q_INT16)l.docNumber;
-	s << (Q_INT16)l.frequency;
+	s << (qint16)l.docNumber;
+	s << (qint16)l.frequency;
 	return s;
 }
 
 Index::Index( const QString &dp, const QString &hp )
-: QObject( 0, 0 ), dict( 8999 ), docPath( dp )
+: QObject( 0), dict( 8999 ), docPath( dp )
 {
 	alreadyHaveDocList = FALSE;
 	lastWindowClosed = FALSE;
@@ -67,7 +67,7 @@ Index::Index( const QString &dp, const QString &hp )
 }
 
 Index::Index( const QStringList &dl, const QString &hp )
-: QObject( 0, 0 ), dict( 8999 )
+: QObject( 0), dict( 8999 )
 {
 	docList = dl;
 	alreadyHaveDocList = TRUE;
@@ -116,7 +116,7 @@ void Index::setupDocumentList()
 	titleList.clear();
 	QDir d( docPath );
 	QString szCur;
-	QStringList lst = d.entryList( "*.html" );
+	QStringList lst = d.entryList( QStringList("*.html") );
 	QStringList::ConstIterator it = lst.begin();
 	for ( ; it != lst.end(); ++it )
 	{
@@ -151,7 +151,7 @@ void Index::parseDocument( const QString &filename, int docNum )
 		return;
 	}
 	QTextStream s( &file );
-	QString text = s.read();
+	QString text = s.readAll();
 	if (text.isNull()) return;
 	bool valid = TRUE;
 	const QChar *buf = text.unicode();
@@ -180,7 +180,7 @@ void Index::parseDocument( const QString &filename, int docNum )
 		}
 	
 		if ( ( c.isLetterOrNumber() || c == '_' ) && i < 63 ) {
-			str[i] = c.lower();
+			str[i] = c.toLower();
 			++i;
 		} else {
 			if ( i > 1 ) insertInDict( QString(str,i), docNum );
@@ -250,13 +250,13 @@ void Index::readDocumentList()
 	KviFile f( docListFile );
 	if ( !f.openForReading() ) return;
 	QTextStream s( &f );
-	docList = QStringList::split("[#item#]",s.read());
+	docList = s.readAll().split("[#item#]",QString::SkipEmptyParts,Qt::CaseInsensitive);
 	
 	//reading titles
 	KviFile f1( docListFile+".titles" );
 	if ( !f1.openForReading() ) return;
 	QTextStream s1( &f1 );
-	titleList = QStringList::split("[#item#]",s1.read());
+	titleList = s1.readAll().split("[#item#]",QString::SkipEmptyParts,Qt::CaseInsensitive);
 	//    qDebug(titleList);
 }
 
@@ -306,7 +306,7 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 				}
 			}
 		
-			if ( !found ) C = minDocs.remove( C );
+			if ( !found ) C = minDocs.erase( C );
 			else ++C;
 		}
 	}
@@ -340,10 +340,10 @@ QString Index::getDocumentTitle( const QString &fileName )
 	}
 	
 	QTextStream s( &file );
-	QString text = s.read();
+	QString text = s.readAll();
 	
-	int start = text.find( "<title>", 0, FALSE ) + 7;
-	int end = text.find( "</title>", 0, FALSE );
+	int start = text.indexOf( "<title>", 0, Qt::CaseInsensitive ) + 7;
+	int end = text.indexOf( "</title>", 0, Qt::CaseInsensitive);
 	
 	QString title = ( end - start <= 0 ? tr("Untitled") : text.mid( start, end - start ) );
 	
@@ -373,10 +373,10 @@ QStringList Index::getWildcardTerms( const QString &term )
 				break;
 			}
 		
-			index = text.find( *iter, index );
+			index = text.indexOf( *iter, index,Qt::CaseInsensitive );
 		
 			if ( *iter == terms.last() && index != (int)text.length()-1 ) {
-				index = text.findRev( *iter );
+				index = text.lastIndexOf( *iter,-1,Qt::CaseInsensitive );
 		
 				if ( index != (int)text.length() - (int)(*iter).length() ) {
 					found = FALSE;
@@ -405,7 +405,7 @@ QStringList Index::split( const QString &str )
 {
 	QStringList lst;
 	int j = 0;
-	int i = str.find( '*', j );
+	int i = str.indexOf( '*', j );
 	
 	while ( i != -1 ) {
 		if ( i > j && i <= (int)str.length() ) {
@@ -414,7 +414,7 @@ QStringList Index::split( const QString &str )
 		}
 	
 		j = i + 1;
-		i = str.find( '*', j );
+		i = str.indexOf( '*', j );
 	}
 	
 	int l = str.length() - 1;
@@ -453,7 +453,7 @@ KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 	while ( t ) {
 		KviValueList<Document> docs = t->documents;
 		for ( docIt = docs.begin(); docIt != docs.end(); ++docIt ) {
-			if ( maxList.findIndex( *docIt ) == -1 )
+			if ( maxList.indexOf( *docIt ) == -1 )
 				maxList.append( *docIt );
 		}
 		t = termList.next();
@@ -486,7 +486,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 		miniDict.insert( *cIt, new PosEntry( 0 ) );
 	
 	QTextStream s( &file );
-	QString text = s.read();
+	QString text = s.readAll();
 	bool valid = TRUE;
 	const QChar *buf = text.unicode();
 	QChar str[64];
@@ -514,7 +514,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 		}
 	
 		if ( ( c.isLetterOrNumber() || c == '_' ) && i < 63 ) {
-			str[i] = c.lower();
+			str[i] = c.toLower();
 			++i;
 		} else {
 			if ( i > 1 ) buildMiniDict( QString(str,i) );
@@ -535,7 +535,8 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 	KviValueList<uint>::iterator aIt;
 	
 	for ( ; patIt != patterns.end(); ++patIt ) {
-		wordLst = QStringList::split( ' ', *patIt );
+		QString tmp=*patIt;
+		wordLst = tmp.split( ' ');
 		a = miniDict[ wordLst[0] ]->positions;
 	
 		for ( int j = 1; j < (int)wordLst.count(); ++j ) {
@@ -547,7 +548,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 					(*aIt)++;
 					++aIt;
 				} else {
-					aIt = a.remove( aIt );
+					aIt = a.erase( aIt );
 				}
 			}
 		}

@@ -43,12 +43,14 @@ extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
 extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
 KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
-: QWidget(par,"help_widget")
+: QWidget(par)
 {
+	setObjectName("help_widget");
 	if(bIsStandalone)g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 
-	m_pTextBrowser = new QTextBrowser(this,"text_browser");
+	m_pTextBrowser = new QTextBrowser(this);
+	m_pTextBrowser->setObjectName("text_browser");
 	m_pTextBrowser->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pTextBrowser->setFocusPolicy(Qt::NoFocus);
 	m_pToolBar = new KviTalHBox(this);
@@ -132,8 +134,8 @@ bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
 	QClipboard *cb = QApplication::clipboard();
 
 	if(e->type() == QEvent::MouseButtonRelease) {
-		if(m_pTextBrowser->hasSelectedText()) {
-			cb->setText(m_pTextBrowser->selectedText());
+		if(m_pTextBrowser->textCursor().hasSelection()) {
+			cb->setText(m_pTextBrowser->textCursor().selectedText());
 		}
 	}
 

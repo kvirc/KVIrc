@@ -70,7 +70,8 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	}
 	
 	g_pHelpWindowList->append(this);
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("main_splitter");
 	m_pHelpWidget = new KviHelpWidget(m_pSplitter,lpFrm);
 
 	m_pToolBar=new KviTalVBox(m_pSplitter);
@@ -78,7 +79,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pTabWidget = new QTabWidget(m_pToolBar);
 	
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->insertTab(m_pIndexTab,__tr2qs("Index"));
+	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("Index"));
 	
 	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
@@ -90,7 +91,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	KviStyledToolButton* pBtnRefreshIndex = new KviStyledToolButton(pSearchBox);
 	pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
-	QToolTip::add( pBtnRefreshIndex, __tr2qs("Refresh index") );
+	pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index") );
 	
 	m_pIndexListBox = new KviTalListBox(m_pIndexTab);
 	QStringList docList=g_pDocIndex->titlesList();
@@ -99,7 +100,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pIndexListBox->sort();
 	
 	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->insertTab(m_pSearchTab,__tr2qs("Search"));
+	m_pTabWidget->addTab(m_pSearchTab,__tr2qs("Search"));
 	
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);
 /*	connect( m_pTermsEdit, SIGNAL( textChanged(const QString&) ),
@@ -162,13 +163,13 @@ void KviHelpWindow::startSearch()
 	QString buf = str;
 	str = str.replace( "-", " " );
 	str = str.replace( QRegExp( "\\s[\\S]?\\s" ), " " );
-	m_terms = QStringList::split( " ", str );
+	m_terms = str.split(" ",QString::SkipEmptyParts);
 	QStringList termSeq;
 	QStringList seqWords;
 	QStringList::iterator it = m_terms.begin();
 	for ( ; it != m_terms.end(); ++it ) {
-		(*it) = (*it).simplifyWhiteSpace();
-		(*it) = (*it).lower();
+		(*it) = (*it).simplified();
+		(*it) = (*it).toLower();
 		(*it) = (*it).replace( "\"", "" );
 	}
 	if ( str.contains( '\"' ) ) {
@@ -176,21 +177,21 @@ void KviHelpWindow::startSearch()
 			int beg = 0;
 			int end = 0;
 			QString s;
-			beg = str.find( '\"', beg );
+			beg = str.indexOf( '\"', beg );
 			while ( beg != -1 ) {
 				beg++;
-				end = str.find( '\"', beg );
+				end = str.indexOf( '\"', beg );
 				s = str.mid( beg, end - beg );
-				s = s.lower();
-				s = s.simplifyWhiteSpace();
+				s = s.toLower();
+				s = s.simplified();
 				if ( s.contains( '*' ) ) {
 				QMessageBox::warning( this, tr( "Full Text Search" ),
 					tr( "Using a wildcard within phrases is not allowed." ) );
 				return;
 				}
-				seqWords += QStringList::split( ' ', s );
+				seqWords += s.split( ' ', QString::SkipEmptyParts );
 				termSeq << s;
-				beg = str.find( '\"', end + 1);
+				beg = str.indexOf( '\"', end + 1);
 			}
 		} else {
 			QMessageBox::warning( this, tr( "Full Text Search" ),
@@ -212,12 +213,12 @@ void KviHelpWindow::startSearch()
 	for ( int i = 0; i < (int)buf.length(); ++i ) {
 		if ( buf[i] == '\"' ) {
 			isPhrase = !isPhrase;
-			s = s.simplifyWhiteSpace();
+			s = s.simplified();
 			if ( !s.isEmpty() )
 				m_terms << s;
 			s = "";
 		} else if ( buf[i] == ' ' && !isPhrase ) {
-			s = s.simplifyWhiteSpace();
+			s = s.simplified();
 			if ( !s.isEmpty() )
 				m_terms << s;
 			s = "";
@@ -237,18 +238,18 @@ QTextBrowser * KviHelpWindow::textBrowser()
 void KviHelpWindow::showIndexTopic()
 {
 	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListBox->selectedItem()) return;
-	int i=g_pDocIndex->titlesList().findIndex(m_pIndexListBox->selectedItem()->text());
+	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListBox->selectedItem()->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchInIndex( const QString &s )
 {
 	KviTalListBoxItem *i = m_pIndexListBox->firstItem();
-	QString sl = s.lower();
+	QString sl = s.toLower();
 	while ( i ) {
 		QString t = i->text();
 		if ( t.length() >= sl.length() &&
-		i->text().left(s.length()).lower() == sl ) {
+		i->text().left(s.length()).toLower() == sl ) {
 			m_pIndexListBox->setCurrentItem( i );
 			m_pIndexListBox->setTopItem(m_pIndexListBox->index(i));
 			break;
@@ -259,13 +260,13 @@ void KviHelpWindow::searchInIndex( const QString &s )
 
 void KviHelpWindow::indexSelected ( int index )
 {
-	int i=g_pDocIndex->titlesList().findIndex(m_pIndexListBox->text(index));
+	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListBox->text(index));
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchSelected ( int index )
 {
-	int i=g_pDocIndex->titlesList().findIndex(m_pResultBox->text(index));
+	int i=g_pDocIndex->titlesList().indexOf(m_pResultBox->text(index));
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 

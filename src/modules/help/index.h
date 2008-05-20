@@ -49,8 +49,8 @@ struct Document {
 	bool operator>( const Document &doc ) const {
 		return frequency < doc.frequency;
 	}
-	Q_INT16 docNumber;
-	Q_INT16 frequency;
+	qint16 docNumber;
+	qint16 frequency;
 };
 
 QDataStream &operator>>( QDataStream &s, Document &l );
