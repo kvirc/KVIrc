@@ -96,7 +96,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pIndexListWidget = new KviTalListWidget(m_pIndexTab);
 	QStringList docList=g_pDocIndex->titlesList();
 	m_pIndexListWidget->addItems(docList);
-	connect(m_pIndexListWidget,SIGNAL(selected(int)),this,SLOT(indexSelected ( int )));
+	connect(m_pIndexListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(indexSelected (QListWidgetItem * )));
 	m_pIndexListWidget->sortItems();
 	
 	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
@@ -109,7 +109,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	     this, SLOT( startSearch() ) );
 	     
 	m_pResultBox = new KviTalListWidget(m_pSearchTab);
-	connect(m_pResultBox,SIGNAL(selected(int)),this,SLOT(searchSelected ( int )));
+	connect(m_pResultBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(searchSelected (QListWidgetItem *)));
 	
 	KviValueList<int> li;
 	li.append(width()-80);
@@ -261,15 +261,17 @@ void KviHelpWindow::searchInIndex( const QString &s )
 	}
 }
 
-void KviHelpWindow::indexSelected ( int index )
+void KviHelpWindow::indexSelected ( QListWidgetItem *item )
 {
-	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->item(index)->text());
+	if (!item) return;
+	int i=g_pDocIndex->titlesList().indexOf(item->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
-void KviHelpWindow::searchSelected ( int index )
+void KviHelpWindow::searchSelected ( QListWidgetItem *item )
 {
-	int i=g_pDocIndex->titlesList().findIndex(m_pResultBox->item(index)->text());
+	if (!item) return;
+	int i=g_pDocIndex->titlesList().findIndex(item->text());
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 

@@ -65,11 +65,11 @@ public:
 	virtual QSize sizeHint() const;
 	QTextBrowser * textBrowser();
 public slots:
-	void indexSelected ( int );
+	void indexSelected ( QListWidgetItem * );
 	void searchInIndex( const QString &s );
 	void showIndexTopic();
 	void startSearch();
-	void searchSelected ( int index );
+	void searchSelected ( QListWidgetItem * );
 	void refreshIndex();
 };
 
