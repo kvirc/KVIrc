@@ -363,7 +363,7 @@ void KviThreadManager::postSlaveEvent(QObject *o,QEvent *e)
 
 void KviThreadManager::eventsPending(int fd)
 {
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	char buf[10];
 	// do we need to check for errors here ?
 	int readed = read(fd,buf,10);
