@@ -41,7 +41,6 @@ namespace KviAddonFunctions
 		const QString &szAddonName,
 		const QString &szAddonVersion,
 		const QString &szAddonDescription,
-		const QString &szAddonSubdirectory,
 		const QString &szAddonApplication,
 		const QString &szAddonAuthor,
 		const QString &szAddonDate,

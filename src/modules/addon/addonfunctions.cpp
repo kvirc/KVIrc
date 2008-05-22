@@ -152,7 +152,7 @@ namespace KviAddonFunctions
 			szDetails += "</b></font></center></p>";
 		}
 
-		szDetails += "<br><p><center><a href=\"Addon_dialog_main\">";
+		szDetails += "<br><p><center><a href=\"addon_dialog_main\">";
 		szDetails +=  __tr2qs_ctx("Go Back to Package Data","addon");
 		szDetails += "</a></center></p>";
 		szDetails += "</body></html>";
