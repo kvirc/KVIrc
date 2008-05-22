@@ -322,7 +322,7 @@ namespace KviAddonFunctions
 			&szCreatedOn,
 			&szAddonApplication,
 			&szAddonAddonEngineVersion,
-			&szAddonAddonEngineVersion,
+			&szAddonAddonEngineVersion
 		);
 	}
 
