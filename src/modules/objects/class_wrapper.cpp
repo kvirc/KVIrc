@@ -127,7 +127,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		pParams->at(i)->asString(s);
 		if (!s.isEmpty())
 		{
-		int idx = s.find("::");
+		int idx = s.indexOf("::");
 		if( idx != -1 ) {
 			szClass = s.left(idx);
 			szName  = s.right(s.length() - idx - 2);

@@ -330,7 +330,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 				bool bOk = true;
 				for(int j=0;j<lKeywords.count();j++)
 				{
-					if(szText.find(lKeywords.at(j),0,false) == -1)
+					if(szText.indexOf(lKeywords.at(j),0,Qt::CaseInsensitive) == -1)
 					{
 						bOk = false;
 						break;

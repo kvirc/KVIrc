@@ -99,8 +99,9 @@ bool KviKvsObject_textbrowser::function_setSource(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("I can't find the specified file '%Q'."),&szFile);
 		return true;
 	}
-
-	if (widget()) ((QTextBrowser *)widget())->setSource(szFile);
+	QUrl url;
+	url.setFileName(szFile);
+	if (widget()) ((QTextBrowser *)widget())->setSource(url);
 	return true;
 }
 

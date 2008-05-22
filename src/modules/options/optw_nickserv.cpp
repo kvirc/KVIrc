@@ -160,7 +160,7 @@ bool KviNickServRuleEditor::validate()
 		return false;
 	}
 	
-	if(s.find(QChar(' ')) != -1)
+	if(s.indexOf(QChar(' ')) != -1)
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't contain spaces!","options"),o);
 		return false;

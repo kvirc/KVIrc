@@ -319,7 +319,7 @@ void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &
 				for(KviIrcMask * m = i->user()->maskList()->first();m;m = i->user()->maskList()->next())
 				{
 					QString tmp = m->nick();
-					if((tmp.find('*') == -1) && (tmp.find('?') == -1) && (!tmp.isEmpty()))
+					if((tmp.indexOf('*') == -1) && (tmp.indexOf('?') == -1) && (!tmp.isEmpty()))
 					{
 						if(!szMask.isEmpty())szMask.append(' ');
 						szMask.append(tmp);

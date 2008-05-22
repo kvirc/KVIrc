@@ -584,13 +584,13 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 		{
 			// local path, loaded
 			QString tmp = szCurrent;
-			int idx = tmp.findRev("/");
+			int idx = tmp.lastIndexOf("/");
 			if(idx != -1)
 			{
 				szCurrent = tmp.right(tmp.length() - (idx + 1));
 				tmp = szCurrent;
 			}
-			idx = tmp.findRev("\\");
+			idx = tmp.lastIndexOf("\\");
 			if(idx != -1)
 			{
 				szCurrent = tmp.right(tmp.length() - (idx + 1));

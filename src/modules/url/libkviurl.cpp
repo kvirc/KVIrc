@@ -696,7 +696,7 @@ int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurence of 
 
 	for(KviStr *tmpi=g_pBanList->first();tmpi;tmpi=g_pBanList->next())
 	{
-		if (szUrl.find(QString(tmpi->ptr())) != -1) tmp++;
+		if (szUrl.indexOf(QString(tmpi->ptr()),Qt::CaseInsensitive) != -1) tmp++;
 	}
 	if (tmp > 0) return tmp;
 

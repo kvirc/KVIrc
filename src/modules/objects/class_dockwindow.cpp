@@ -191,13 +191,13 @@ bool KviKvsObject_dockwindow::function_setAllowedDockAreas(KviKvsObjectFunctionC
 	if(!widget())return true; // hum ? dead ?
 
 	Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
-	if(szFlags.find('t',false))fAreas |= Qt::TopDockWidgetArea;
-	if(szFlags.find('l',false))fAreas |= Qt::LeftDockWidgetArea;
-	if(szFlags.find('r',false))fAreas |= Qt::RightDockWidgetArea;
-	if(szFlags.find('b',false))fAreas |= Qt::BottomDockWidgetArea;
+	if(szFlags.indexOf('t',Qt::CaseInsensitive))fAreas |= Qt::TopDockWidgetArea;
+	if(szFlags.indexOf('l',Qt::CaseInsensitive))fAreas |= Qt::LeftDockWidgetArea;
+	if(szFlags.indexOf('r',Qt::CaseInsensitive))fAreas |= Qt::RightDockWidgetArea;
+	if(szFlags.indexOf('b',Qt::CaseInsensitive))fAreas |= Qt::BottomDockWidgetArea;
 	_pDockWindow->setAllowedAreas(fAreas);
 	QDockWidget::DockWidgetFeatures fFeatures = _pDockWindow->features();
-	if(szFlags.find('f',false))
+	if(szFlags.indexOf('f',Qt::CaseInsensitive))
 		fFeatures |= QDockWidget::DockWidgetFloatable;
 	else
 		fFeatures &= ~QDockWidget::DockWidgetFloatable;
@@ -218,13 +218,13 @@ bool KviKvsObject_dockwindow::function_dock(KviKvsObjectFunctionCall * c)
 
 	if(!widget())return true; // hum ? dead ?
 	g_pFrame->removeDockWidget(_pDockWindow);
-	if(szDock.find('m',false) == -1)_pDockWindow->setFloating(false);
-	if(szDock.find('t',false) != -1)g_pFrame->addDockWidget(Qt::TopDockWidgetArea,_pDockWindow);
-	else if(szDock.find('l',false) != -1)g_pFrame->addDockWidget(Qt::LeftDockWidgetArea,_pDockWindow);
-	else if(szDock.find('r',false) != -1)g_pFrame->addDockWidget(Qt::RightDockWidgetArea,_pDockWindow);
-	else if(szDock.find('b',false) != -1)g_pFrame->addDockWidget(Qt::BottomDockWidgetArea,_pDockWindow);
-	else if(szDock.find('f',false) != -1)_pDockWindow->setFloating(true);
-	else if(szDock.find('m',false) != -1)qDebug("Sorry: no support for minimized dock widgets in Qt4");
+	if(szDock.indexOf('m',Qt::CaseInsensitive) == -1)_pDockWindow->setFloating(false);
+	if(szDock.indexOf('t',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::TopDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('l',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::LeftDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('r',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::RightDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('b',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::BottomDockWidgetArea,_pDockWindow);
+	else if(szDock.indexOf('f',Qt::CaseInsensitive) != -1)_pDockWindow->setFloating(true);
+	else if(szDock.indexOf('m',Qt::CaseInsensitive) != -1)qDebug("Sorry: no support for minimized dock widgets in Qt4");
 	else c->warning(__tr2qs("Invalid dock area specified"));
 	return true;
 }
