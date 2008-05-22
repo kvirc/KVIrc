@@ -113,7 +113,6 @@ namespace KviAddonFunctions
 		QString szAddonVersion;
 		QString szAddonDescription;
 		QString szAddonDate;
-		QString szAddonSubdirectory;
 		QString szAddonAuthor;
 		QString szAddonEngineVersion;
 		QString szAddonApplication;
@@ -123,11 +122,10 @@ namespace KviAddonFunctions
 		r.getStringInfoField("AddonApplication",szAddonApplication);
 		r.getStringInfoField("AddonDescription",szAddonDescription);
 		r.getStringInfoField("AddonDate",szAddonDate);
-		r.getStringInfoField("AddonSubdirectory",szAddonSubdirectory);
 		r.getStringInfoField("AddonAuthor",szAddonAuthor);
 		r.getStringInfoField("AddonAddonEngineVersion",szAddonEngineVersion);
 
-		if(szAddonName.isEmpty() || szAddonVersion.isEmpty() || szAddonSubdirectory.isEmpty() || szAddonEngineVersion.isEmpty())
+		if(szAddonName.isEmpty() || szAddonVersion.isEmpty() || szAddonEngineVersion.isEmpty())
 			bValid = false;
 		if(KviMiscUtils::compareVersions(szAddonEngineVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
 			bValid = false;
@@ -139,7 +137,6 @@ namespace KviAddonFunctions
 			szAddonName,
 			szAddonVersion,
 			szAddonDescription,
-			szAddonSubdirectory,
 			szAddonApplication,
 			szAddonAuthor,
 			szAddonDate,
@@ -285,7 +282,6 @@ namespace KviAddonFunctions
 		const QString &szAddonName,
 		const QString &szAddonVersion,
 		const QString &szAddonDescription,
-		const QString &szAddonSubdirectory,
 		const QString &szAddonApplication,
 		const QString &szAddonAuthor,
 		const QString &szAddonDate,
@@ -328,8 +324,7 @@ namespace KviAddonFunctions
 			&szAddonApplication,
 			&szAddonAddonEngineVersion,
 			&szAddonAddonEngineVersion,
-			&szSubdirectory,
-			&szAddonSubdirectory
+			&szSubdirectory
 		);
 	}
 
