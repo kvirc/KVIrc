@@ -37,8 +37,6 @@
 #include "kvi_kvs_script.h"
 
 #include <QDir>
-#include <q3mimefactory.h>
-#define KviTalMimeSourceFactory Q3MimeSourceFactory
 
 #include <stdlib.h>
 
@@ -205,8 +203,8 @@ namespace KviAddonFunctions
 			&szShowDetails
 		);
 
-		KviTalMimeSourceFactory::defaultFactory()->setText("addon_dialog_details",szDetails);
-		KviTalMimeSourceFactory::defaultFactory()->setText("addon_dialog_main",hd.szHtmlText);
+		hd.addHtmlResource("addon_dialog_details",szDetails);
+		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);
 	
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
@@ -253,7 +251,6 @@ namespace KviAddonFunctions
 				szUnpackPath = szTmpPath + szRandomDir;
 				szTmpDir = QDir(szUnpackPath);
 			}
-			debug("szUnpackPath: %s",szUnpackPath.toUtf8().data());
 
 			// Unpack addon package into the random tmp dir
 			if(!r.unpack(szAddonPackageFileName,szUnpackPath))

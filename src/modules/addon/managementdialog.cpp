@@ -88,7 +88,7 @@ KviScriptAddonListViewItem::~KviScriptAddonListViewItem()
 }
 
 KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
-: QDialog(p/*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
+: QDialog(p)
 {
 	setWindowTitle(__tr2qs("Manage Script-Based Addons"));
 	setObjectName("Addon manager");

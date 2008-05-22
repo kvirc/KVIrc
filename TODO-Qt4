@@ -50,6 +50,7 @@ src/kvirc/ui:
 
 src/modules
 	clock - all excluded by #if
+	dcc
 	editor - q3support
 	iograph - all excluded by #if
 	objects - q3support
@@ -63,8 +64,6 @@ src/modules
 	notifier
 	popupeditor
 	reguser
+	theme (dynamic tooltip)
 	trayicon
 	toolbarEditor
-	addon (Q3MimeSourceFactory related stuff)
-	dcc
-	theme  (dynamic tooltip)
