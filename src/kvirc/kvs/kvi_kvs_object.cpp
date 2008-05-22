@@ -1256,12 +1256,12 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 			QFont fnt;
 			fnt.setFamily(szFf);
 			fnt.setPointSize(iPs);
-			if(szFl.find('b') != -1)fnt.setBold(true);
-			if(szFl.find('i') != -1)fnt.setItalic(true);
-			if(szFl.find('u') != -1)fnt.setUnderline(true);
-			if(szFl.find('o') != -1)fnt.setOverline(true);
-			if(szFl.find('f') != -1)fnt.setFixedPitch(true);
-			if(szFl.find('s') != -1)fnt.setStrikeOut(true);
+			if(szFl.indexOf('b',Qt::CaseInsensitive) != -1)fnt.setBold(true);
+			if(szFl.indexOf('i',Qt::CaseInsensitive) != -1)fnt.setItalic(true);
+			if(szFl.indexOf('u',Qt::CaseInsensitive) != -1)fnt.setUnderline(true);
+			if(szFl.indexOf('o',Qt::CaseInsensitive) != -1)fnt.setOverline(true);
+			if(szFl.indexOf('f',Qt::CaseInsensitive) != -1)fnt.setFixedPitch(true);
+			if(szFl.indexOf('s',Qt::CaseInsensitive) != -1)fnt.setStrikeOut(true);
 			m_pObject->setProperty(szName.toUtf8().data(),QVariant(fnt));
 		}
 		break;

@@ -1799,7 +1799,7 @@ void KviUserListViewArea::keyPressEvent( QKeyEvent * e )
 			while(aux)
 			{
 				//debug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().toUtf8().data(),aux->nick().find(szKey,0,0));
-				if(aux->nick().find(szKey,0,0)==0) 
+				if(aux->nick().indexOf(szKey,0,Qt::CaseInsensitive)==0) 
 				{
 					nick=aux;
 					break;

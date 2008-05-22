@@ -447,7 +447,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		
 		unsigned int uHandlerFlags = 0;
 
-		if(szLabel.lower() == "internal")
+		if(szLabel.toLower() == "internal")
 		{
 			uHandlerFlags |= KviKvsObjectFunctionHandler::Internal;
 			skipSpaces();
@@ -475,7 +475,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		}
 
 
-		if(szLabel.lower() == "function")
+		if(szLabel.toLower() == "function")
 		{
 			skipSpaces();
 			if(KVSP_curCharUnicode != '(')
@@ -1420,7 +1420,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		}
 
 		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
-		QString szLabelLow = szLabel.lower();
+		QString szLabelLow = szLabel.toLower();
 
 		bool bNeedParam = true;
 
@@ -1567,7 +1567,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 
 		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
-		QString szLabelLow = szLabel.lower();
+		QString szLabelLow = szLabel.toLower();
 
 		KviPointerList<QString> * pParameters = 0;
 		

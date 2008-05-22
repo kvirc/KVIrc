@@ -1804,7 +1804,7 @@ static void merge_to_stringlist_option(const QString &item,int iOption,int iMaxE
 			it != KVI_OPTION_STRINGLIST(iOption).end(); ++it)
 	{
 		// Do a case-insensitive search (for nicknames, servers, and channels)
-		if(!QString::compare(item.lower(),(*it).lower()))
+		if(!QString::compare(item.toLower(),(*it).toLower()))
 		{
 		// In the recent list, remove and put as first so more recent items
 		// are always first

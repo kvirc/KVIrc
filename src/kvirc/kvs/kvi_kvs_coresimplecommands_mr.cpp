@@ -881,7 +881,7 @@ namespace KviKvsCoreSimpleCommands
 			QString szCoords;
 			pCoords->asString(szCoords);
 
-			int idx = szCoords.find(',');
+			int idx = szCoords.indexOf(',');
 			bool bCoordsOk = true;
 			if(idx == -1)bCoordsOk = false;
 			else {

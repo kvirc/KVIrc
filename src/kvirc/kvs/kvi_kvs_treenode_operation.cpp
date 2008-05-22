@@ -1220,10 +1220,10 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 	QString str;
 	target->result()->asString(str);
 
-	bool bGlobal = szF.find('g',false) != -1;
+	bool bGlobal = szF.indexOf('g',Qt::CaseInsensitive) != -1;
 
-	QRegExp re(szL,szF.find('i',false) == -1,szF.find('w',false) != -1);
-	re.setMinimal(szF.find('m',false) != -1); // greedy or minimal ?
+	QRegExp re(szL,szF.find('i',Qt::CaseInsensitive) == -1,szF.find('w',Qt::CaseInsensitive) != -1);
+	re.setMinimal(szF.find('m',Qt::CaseInsensitive) != -1); // greedy or minimal ?
 
 	int idx = 0;
 

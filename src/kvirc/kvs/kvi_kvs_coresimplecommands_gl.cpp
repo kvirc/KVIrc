@@ -213,7 +213,7 @@ try_again:
 			if(!bFound && !bLowCaseTried)
 			{
 				// try again with lowercase
-				szTopic = szTopic.lower();
+				szTopic = szTopic.toLower();
 				bLowCaseTried = true;
 				goto try_again;
 			}

@@ -258,13 +258,13 @@ namespace KviKvsCoreCallbackCommands
 		// make sure that we have only doubled "::" and not ":" or ":::..."
 		QString tmp = szName;
 		tmp.replace("::","@"); // @ is not allowed by the rule above
-		if(tmp.find(":") != -1)
+		if(tmp.indexOf(":") != -1)
 		{
 			KVSCCC_pContext->error(__tr2qs("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"));
 			return false;
 		}
 
-		if(tmp.find("@@") != -1)
+		if(tmp.indexOf("@@") != -1)
 		{
 			KVSCCC_pContext->error(__tr2qs("Found an empty namespace in alias name"));
 			return false;

@@ -808,7 +808,7 @@ namespace KviKvsCoreFunctions
 			{
 				//Check for right Characters
 				#ifdef COMPILE_ON_WINDOWS
-					if (szAllowedCharacters.find((char)(c->unicode()),0,true) >= 0)	tmpFormat += '%';
+					if (szAllowedCharacters.indexOf((char)(c->unicode()),0,Qt::CaseSensitive) >= 0)	tmpFormat += '%';
 				#else
 					if (c->isLetter()) tmpFormat += '%';
 				#endif

@@ -432,7 +432,7 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 		}
 	} else if(e->type() == QEvent::DragEnter)
 	{
-		((QDragEnterEvent *)e)->accept(true);
+		((QDragEnterEvent *)e)->setAccepted(true);
 		return true;
 	}
 	return QWidget::eventFilter(o,e);
@@ -730,7 +730,9 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 		{
 			QImage tmpi = p->toImage();
 			QImage tmp2 = tmpi.scaled(32,32,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
-			KviCachedPixmap * cp = new KviCachedPixmap(new QPixmap(tmp2),QString::null);
+			QPixmap *pix=new QPixmap();
+			pix->fromImage(tmp2);
+			KviCachedPixmap * cp = new KviCachedPixmap(pix,QString::null);
 			addToCache(tmpName,cp);
 			return cp->pixmap();
 		}

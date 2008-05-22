@@ -1032,9 +1032,9 @@ namespace KviKvsCoreFunctions
 		if(szType.isEmpty())
 			KVSCF_pRetBuffer->setString(KVI_VERSION);
 		else {
-			if(szType.find('r') != -1)KVSCF_pRetBuffer->setString(KVI_RELEASE_NAME);
-			else if(szType.find('s') != -1)KVSCF_pRetBuffer->setString(KVI_SOURCES_DATE);
-			else if(szType.find('b') != -1)KVSCF_pRetBuffer->setString(KviBuildInfo::buildDate());
+			if(szType.indexOf('r') != -1)KVSCF_pRetBuffer->setString(KVI_RELEASE_NAME);
+			else if(szType.indexOf('s') != -1)KVSCF_pRetBuffer->setString(KVI_SOURCES_DATE);
+			else if(szType.indexOf('b') != -1)KVSCF_pRetBuffer->setString(KviBuildInfo::buildDate());
 			else KVSCF_pRetBuffer->setString(KVI_VERSION);
 		}
 		return true;

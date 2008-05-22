@@ -1286,11 +1286,11 @@ void KviIrcView::getLinkEscapeCommand(QString &buffer,const QString &szPayload,c
 {
 	if(szPayload.isEmpty())return;
 
-	int idx = szPayload.find(escape_label);
+	int idx = szPayload.indexOf(escape_label,Qt::CaseInsensitive);
 	if(idx == -1)return;
 	idx += escape_label.length();
 
-	int idx2 = szPayload.find("[!",idx);
+	int idx2 = szPayload.indexOf("[!",idx,Qt::CaseInsensitive);
 	int len = idx2 == -1 ? szPayload.length() - idx : idx2 - idx;
 
 	buffer = szPayload.mid(idx,len);
@@ -4014,7 +4014,7 @@ void KviIrcView::findNext(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 				idx = re.search(l->szText,0);
 			} else {
 				QString tmp = l->szText;
-				idx = tmp.find(szText,0,bCaseS);
+				idx = tmp.indexOf(szText,0,bCaseS?Qt::CaseSensitive:Qt::CaseInsensitive);
 			}
 
 			if(idx != -1)
@@ -4067,7 +4067,7 @@ void KviIrcView::findPrev(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 				idx = re.search(l->szText,0);
 			} else {
 				QString tmp = l->szText;
-				idx = tmp.find(szText,0,bCaseS);;
+				idx = tmp.indexOf(szText,0,bCaseS?Qt::CaseSensitive:Qt::CaseInsensitive);
 			}
 
 			if(idx != -1)
@@ -4880,7 +4880,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 			QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
 
-			if(linkText.find('*') != -1)
+			if(linkText.indexOf('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Unable to look it up hostname: Hostname appears to be masked");
 				else tip += __tr2qs("Unable to look it up hostname: Unknown host");
@@ -4906,7 +4906,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 
-			if(linkText.find('*') != -1)
+			if(linkText.indexOf('*') != -1)
 			{
 				if(linkText.length() > 1)tip += __tr2qs("Server appears to be a network hub<br>");
 				else tip += __tr2qs("Unknown server<br>"); // might happen...

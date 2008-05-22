@@ -233,7 +233,7 @@ void KviFrame::restoreModuleExtensionToolBars()
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).begin();it != KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).end();++it)
 	{
 		QString szEntry = *it;
-		int idx = szEntry.find(':');
+		int idx = szEntry.indexOf(':');
 		if(idx != -1)
 		{
 			QString szMod = szEntry.left(idx);

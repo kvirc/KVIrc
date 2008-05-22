@@ -60,8 +60,8 @@
 #include <QRegExp>
 
 // #define IS_CHANNEL_TYPE_FLAG(_str) ((*(_str) == '#') || (*(_str) == '&') || (*(_str) == '!'))
-#define IS_CHANNEL_TYPE_FLAG(_qchar) (msg->connection()->serverInfo()->supportedChannelTypes().find(_qchar) != -1)
-#define IS_USER_MODE_PREFIX(_qchar) (msg->connection()->serverInfo()->supportedModePrefixes().find(_qchar) != -1)
+#define IS_CHANNEL_TYPE_FLAG(_qchar) (msg->connection()->serverInfo()->supportedChannelTypes().indexOf(_qchar) != -1)
+#define IS_USER_MODE_PREFIX(_qchar) (msg->connection()->serverInfo()->supportedModePrefixes().indexOf(_qchar) != -1)
 
 // Numeric message handlers
 
@@ -681,7 +681,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 	QString szServ = msg->connection()->decodeText(msg->safeParam(4));
 	QString szNick = msg->connection()->decodeText(msg->safeParam(5));
 	QString szFlag = msg->connection()->decodeText(msg->safeParam(6));
-	bool bAway = szFlag.find('G') != -1;
+	bool bAway = szFlag.indexOf('G') != -1;
 
 	KviStr trailing = msg->safeTrailing();
 	KviStr hops = trailing.getToken(' ');

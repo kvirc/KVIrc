@@ -939,7 +939,7 @@ void KviInputEditor::insertText(const QString &text)
 	removeSelected();
 	m_bUpdatesEnabled = true;
 
-	if(szText.find('\n') == -1)
+	if(szText.indexOf('\n') == -1)
 	{
 		m_szTextBuffer.insert(m_iCursorPosition,szText);
 		m_szTextBuffer.truncate(m_iMaxBufferSize);
@@ -949,7 +949,7 @@ void KviInputEditor::insertText(const QString &text)
 		QString szBlock;
 		while(!szText.isEmpty())
 		{
-			int idx = szText.find('\n');
+			int idx = szText.indexOf('\n');
 			if(idx != -1)
 			{
 				szBlock = szText.left(idx);
@@ -1713,10 +1713,10 @@ void KviInputEditor::getWordBeforeCursor(QString &buffer,bool * bIsFirstWordInLi
 
 	buffer = m_szTextBuffer.left(m_iCursorPosition);
 
-	int idx = buffer.findRev(' ');
-	int idx2 = buffer.findRev(','); // This is for comma separated lists...
-	int idx3 = buffer.findRev('(');
-	int idx4 = buffer.findRev('"');
+	int idx = buffer.lastIndexOf(' ');
+	int idx2 = buffer.lastIndexOf(','); // This is for comma separated lists...
+	int idx3 = buffer.lastIndexOf('(');
+	int idx4 = buffer.lastIndexOf('"');
 	if(idx2 > idx)idx = idx2;
 	if(idx3 > idx)idx = idx3;
 	if(idx4 > idx)idx = idx4;
@@ -1861,7 +1861,7 @@ void KviInputEditor::completion(bool bShift)
 
 	if(!match.isEmpty())
 	{
-		//if(!bIsDir && !bIsNick)match = match.lower(); <-- why? It is nice to have
+		//if(!bIsDir && !bIsNick)match = match.toLower(); <-- why? It is nice to have
 		//						 $module.someFunctionName instad
 		//						 of unreadable $module.somefunctionfame
 		replaceWordBeforeCursor(word,match,false);

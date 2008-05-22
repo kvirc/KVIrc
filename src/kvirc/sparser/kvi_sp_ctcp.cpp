@@ -1789,7 +1789,7 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
 	if(e)
 	{
-		int pos = decoded.find("Gender=",0,false);	
+		int pos = decoded.indexOf("Gender=",0,Qt::CaseInsensitive);	
 		
 		if(pos>=0)
 		{

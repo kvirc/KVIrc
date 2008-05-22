@@ -1049,7 +1049,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 	{
 		if(szUser == "*")
 		{
-			if(szNick.find('.') != -1)
+			if(szNick.indexOf('.') != -1)
 			{
 				// server notice
 				// FIXME: "Dedicated window for server notices ?"
@@ -1682,7 +1682,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 		KviQString::sprintf(nickBuffer,"\r!n\r%Q\r",&szNick);
 		KviQString::sprintf(hostBuffer,"\r!h\r%Q\r",&szHost);
 	} else {
-		if(nickBuffer.find('.') != -1)
+		if(nickBuffer.indexOf('.') != -1)
 		{
 			// This looks a lot like a server!
 			KviQString::sprintf(nickBuffer,"\r!s\r%Q\r",&szNick);

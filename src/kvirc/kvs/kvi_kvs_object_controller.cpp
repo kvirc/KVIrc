@@ -164,7 +164,7 @@ void KviKvsObjectController::flushUserClasses()
 			if(c->isDirty())
 			{
 				QString szPath;
-				QString szFileName = c->name().lower();
+				QString szFileName = c->name().toLower();
 				szFileName += ".kvs";
 				szFileName.replace("::","--");
 				g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);
@@ -195,7 +195,7 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,b
 			if(bBuiltinOnly)return 0;
 			// maybe we need to load it from permanent storage...
 			QString szPath;
-			QString szFileName = szClass.lower();
+			QString szFileName = szClass.toLower();
 			szFileName += ".kvs";
 			szFileName.replace("::","--");
 			g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);
@@ -219,7 +219,7 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,b
 void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 {
 	QString szPath;
-	QString szFileName = pClass->name().lower();
+	QString szFileName = pClass->name().toLower();
 	szFileName += ".kvs";
 	szFileName.replace("::","--");
 	g_pApp->getLocalKvircDirectory(szPath,KviApp::Classes,szFileName);

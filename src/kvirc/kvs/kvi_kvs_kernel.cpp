@@ -114,7 +114,7 @@ void KviKvsKernel::done()
 
 void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
-	int idx = szCommandBegin.find(QChar('.'));
+	int idx = szCommandBegin.indexOf(QChar('.'));
 	if(idx == -1)
 	{
 		// no module name inside
@@ -157,7 +157,7 @@ void KviKvsKernel::completeModuleCommand(const QString &szModuleName,const QStri
 
 void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches)
 {
-	int idx = szFunctionBegin.find(QChar('.'));
+	int idx = szFunctionBegin.indexOf(QChar('.'));
 	if(idx == -1)
 	{
 		// no module name inside

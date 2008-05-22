@@ -118,7 +118,7 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext *
 		QString val;
 		pRealParameter->asString(val);
 	
-		if(reg.lower() != val.lower())return true;
+		if(reg.toLower() != val.toLower())return true;
 	}
 
 	if(m_pInstruction)

@@ -621,7 +621,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	{
 		while(aux->unicode())
 		{
-			if( KVI_OPTION_STRING(KviOption_stringWordSplitters).find(*aux) > -1 )
+			if( KVI_OPTION_STRING(KviOption_stringWordSplitters).indexOf(*aux,Qt::CaseInsensitive) > -1 )
 				szSource.append(' ');
 			else
 				szSource.append(*aux);
@@ -634,7 +634,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	szSource.prepend(' ');
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
-		if(szSource.find(QString(" %1 ").arg(connection()->userInfo()->nickName()),0,false) > -1)
+		if(szSource.indexOf(QString(" %1 ").arg(connection()->userInfo()->nickName()),0,Qt::CaseInsensitive) > -1)
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 	}
 
@@ -646,7 +646,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 			if((*it).isEmpty())
 				continue;
 			// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!) !!!!
-			if(szSource.find(QString(" %1 ").arg(*it),0,false) > -1)
+			if(szSource.indexOf(QString(" %1 ").arg(*it),0,Qt::CaseInsensitive) > -1)
 			{
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			}

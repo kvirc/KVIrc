@@ -818,7 +818,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	
 	while(KVSP_curCharIsLetter)KVSP_skipChar;
 	
-	QString szOp = QString(pBegin,KVSP_curCharPointer - pBegin).lower();
+	QString szOp = QString(pBegin,KVSP_curCharPointer - pBegin).toLower();
 
 	skipSpaces();
 	

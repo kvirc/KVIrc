@@ -488,8 +488,8 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 		if(!validateLocalAddress(m_pTarget->bindAddress(),bindAddress))
 		{
 			QString szBindAddress = m_pTarget->bindAddress();
-			if((szBindAddress.find('.') != -1) ||
-				(szBindAddress.find(':') != -1))
+			if((szBindAddress.indexOf('.') != -1) ||
+				(szBindAddress.indexOf(':') != -1))
 			{
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMWARNING,
@@ -514,7 +514,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress),bindAddress))
 					{
 						// if it is not an interface name , kill it for now and let the user correct the address
-						if(KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).find(':') != -1)
+						if(KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
@@ -543,7 +543,7 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress),bindAddress))
 					{
 						// if it is not an interface name , kill it for now and let the user correct the address
-						if(KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).find(':') != -1)
+						if(KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,

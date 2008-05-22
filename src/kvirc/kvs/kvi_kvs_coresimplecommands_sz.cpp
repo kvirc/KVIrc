@@ -514,6 +514,10 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(srand)
 	{
+		QString tmp;
+
+		for (int i=0;i<10;i++)
+			tmp.append(QChar((::rand() % 30)+65));
 		kvs_int_t iSeed;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("seed",KVS_PT_INT,KVS_PF_OPTIONAL,iSeed)
