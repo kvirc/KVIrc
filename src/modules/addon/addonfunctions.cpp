@@ -310,7 +310,6 @@ namespace KviAddonFunctions
 				"<font color=\"#808080\">" \
 					"%Q: %Q<br>" \
 					"%Q: %Q<br>" \
-					"%Q: %Q<br>" \
 				"</font>" \
 			"</center></p>",
 			&szAddonName,
@@ -324,7 +323,6 @@ namespace KviAddonFunctions
 			&szAddonApplication,
 			&szAddonAddonEngineVersion,
 			&szAddonAddonEngineVersion,
-			&szSubdirectory
 		);
 	}
 
