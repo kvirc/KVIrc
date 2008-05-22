@@ -261,11 +261,11 @@ KviIdentOptionsWidget::~KviIdentOptionsWidget()
 void KviIdentOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
-	if(m_pConsoleRadio->isOn())
+	if(m_pConsoleRadio->isChecked())
 		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::ToConsole;
-	if(m_pActiveRadio->isOn())
+	if(m_pActiveRadio->isChecked())
 		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::ToActiveWindow;
-	if(m_pQuietRadio->isOn())
+	if(m_pQuietRadio->isChecked())
 		KVI_OPTION_UINT(KviOption_uintIdentdOutputMode)=KviIdentdOutputMode::Quiet;
 }
 

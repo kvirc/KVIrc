@@ -158,9 +158,9 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 		
 		hostmask.mask(tmp1,(KviIrcMask::MaskType)i);
 		ipmask.mask(tmp2,(KviIrcMask::MaskType)i);
-		m_pBanTypeCombo->insertItem(QString("%1 (%2)").arg(tmp1).arg(tmp2));
+		m_pBanTypeCombo->insertItem(m_pBanTypeCombo->count(),QString("%1 (%2)").arg(tmp1).arg(tmp2));
 	}
-	m_pBanTypeCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
+	m_pBanTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
 	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
 	addBoolSelector(g,__tr2qs_ctx("Do not send /WHO request","options"),KviOption_boolDisableWhoRequestOnJoin);
@@ -187,7 +187,7 @@ KviChannelAdvancedOptionsWidget::~KviChannelAdvancedOptionsWidget()
 
 void KviChannelAdvancedOptionsWidget::commit()
 {
-	KVI_OPTION_UINT(KviOption_uintDefaultBanType)=m_pBanTypeCombo->currentItem();
+	KVI_OPTION_UINT(KviOption_uintDefaultBanType)=m_pBanTypeCombo->currentIndex();
 	if((KVI_OPTION_UINT(KviOption_uintDefaultBanType)<0 )|| (KVI_OPTION_UINT(KviOption_uintDefaultBanType)>26)) KVI_OPTION_UINT(KviOption_uintDefaultBanType)=7;
 	KviOptionsWidget::commit();
 }

@@ -49,44 +49,44 @@ KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,9,1,9);
 	
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Tile","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Left","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Right","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Center","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
 	
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Tile","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Top","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Bottom","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Center","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
 	
 	switch( KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
-			m_pHorizontalAlign->setCurrentItem(1);
+			m_pHorizontalAlign->setCurrentIndex(1);
 			break;
 		case Qt::AlignRight:
-			m_pHorizontalAlign->setCurrentItem(2);
+			m_pHorizontalAlign->setCurrentIndex(2);
 			break;
 		case Qt::AlignHCenter:
-			m_pHorizontalAlign->setCurrentItem(3);
+			m_pHorizontalAlign->setCurrentIndex(3);
 			break;
 		default:
-			m_pHorizontalAlign->setCurrentItem(0);
+			m_pHorizontalAlign->setCurrentIndex(0);
 	}
 	
 	switch( KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
-			m_pVerticalAlign->setCurrentItem(1);
+			m_pVerticalAlign->setCurrentIndex(1);
 			break;
 		case Qt::AlignBottom:
-			m_pVerticalAlign->setCurrentItem(2);
+			m_pVerticalAlign->setCurrentIndex(2);
 			break;
 		case Qt::AlignVCenter:
-			m_pVerticalAlign->setCurrentItem(3);
+			m_pVerticalAlign->setCurrentIndex(3);
 			break;
 		default:
-			m_pVerticalAlign->setCurrentItem(0);
+			m_pVerticalAlign->setCurrentIndex(0);
 	}
 
 
@@ -100,7 +100,7 @@ KviInputLookOptionsWidget::~KviInputLookOptionsWidget()
 void KviInputLookOptionsWidget::commit()
 {
 	int iFlags=0;
-	switch(m_pHorizontalAlign->currentItem())
+	switch(m_pHorizontalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignLeft;
@@ -112,7 +112,7 @@ void KviInputLookOptionsWidget::commit()
 			iFlags|=Qt::AlignHCenter;
 			break;
 	}
-	switch(m_pVerticalAlign->currentItem())
+	switch(m_pVerticalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignTop;

@@ -57,44 +57,44 @@ KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 		
 	addColorSelector(0,5,1,5,__tr2qs_ctx("Mark Line:","options"),KviOption_colorIrcViewMarkLine);
 	
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Tile","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Left","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Right","options"));
-	m_pHorizontalAlign->insertItem(__tr2qs_ctx("Center","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
+	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
 	
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Tile","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Top","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Bottom","options"));
-	m_pVerticalAlign->insertItem(__tr2qs_ctx("Center","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
+	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
 	
 	switch( KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
-			m_pHorizontalAlign->setCurrentItem(1);
+			m_pHorizontalAlign->setCurrentIndex(1);
 			break;
 		case Qt::AlignRight:
-			m_pHorizontalAlign->setCurrentItem(2);
+			m_pHorizontalAlign->setCurrentIndex(2);
 			break;
 		case Qt::AlignHCenter:
-			m_pHorizontalAlign->setCurrentItem(3);
+			m_pHorizontalAlign->setCurrentIndex(3);
 			break;
 		default:
-			m_pHorizontalAlign->setCurrentItem(0);
+			m_pHorizontalAlign->setCurrentIndex(0);
 	}
 	
 	switch( KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
-			m_pVerticalAlign->setCurrentItem(1);
+			m_pVerticalAlign->setCurrentIndex(1);
 			break;
 		case Qt::AlignBottom:
-			m_pVerticalAlign->setCurrentItem(2);
+			m_pVerticalAlign->setCurrentIndex(2);
 			break;
 		case Qt::AlignVCenter:
-			m_pVerticalAlign->setCurrentItem(3);
+			m_pVerticalAlign->setCurrentIndex(3);
 			break;
 		default:
-			m_pVerticalAlign->setCurrentItem(0);
+			m_pVerticalAlign->setCurrentIndex(0);
 	}
 	
 	layout()->setRowStretch(2,1);
@@ -107,7 +107,7 @@ KviIrcViewLookOptionsWidget::~KviIrcViewLookOptionsWidget()
 void KviIrcViewLookOptionsWidget::commit()
 {
 	int iFlags=0;
-	switch(m_pHorizontalAlign->currentItem())
+	switch(m_pHorizontalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignLeft;
@@ -119,7 +119,7 @@ void KviIrcViewLookOptionsWidget::commit()
 			iFlags|=Qt::AlignHCenter;
 			break;
 	}
-	switch(m_pVerticalAlign->currentItem())
+	switch(m_pVerticalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignTop;
@@ -139,11 +139,11 @@ void KviIrcViewLookOptionsWidget::commit()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcViewFeaturesOptionsWidget::KviIrcViewFeaturesOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ircviewfeatures_options_widget")
+: KviOptionsWidget(parent)
 {
 	createLayout();
 
-	
+	setObjectName("ircviewfeatures_options_widget");
 
 	addBoolSelector(0,7,0,7,__tr2qs_ctx("Enable URL highlighting","options"),KviOption_boolIrcViewUrlHighlighting);
 	addBoolSelector(0,8,0,8,__tr2qs_ctx("Use line wrap margin","options"),KviOption_boolIrcViewWrapMargin);

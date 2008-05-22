@@ -62,7 +62,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	KviTalHBox * h = new KviTalHBox(g);
 
-	m_pSoundSystemBox = new QComboBox(false,h);
+	m_pSoundSystemBox = new QComboBox(h);
 
 	m_pSoundAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect","options"),h);
 	connect(m_pSoundAutoDetectButton,SIGNAL(clicked()),this,SLOT(soundAutoDetect()));
@@ -77,7 +77,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	h = new KviTalHBox(g);
 
-	m_pMediaPlayerBox = new QComboBox(false,h);
+	m_pMediaPlayerBox = new QComboBox(h);
 
 	m_pMediaAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect","options"),h);
 	connect(m_pMediaAutoDetectButton,SIGNAL(clicked()),this,SLOT(mediaAutoDetect()));
@@ -99,8 +99,8 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	h = new KviTalHBox(g);
 
-	m_pTagsEncodingCombo = new QComboBox(false,h);
-	m_pTagsEncodingCombo->insertItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pTagsEncodingCombo = new QComboBox(h);
+	m_pTagsEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
 
 	int i = 0;
 	int iMatch = 0;
@@ -109,11 +109,11 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	while(d->szName)
 	{
 		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)))iMatch = i + 1;
-		m_pTagsEncodingCombo->insertItem(d->szName);
+		m_pTagsEncodingCombo->insertItem(m_pTagsEncodingCombo->count(),d->szName);
 		i++;
 		d = KviLocale::encodingDescription(i);
 	}
-	m_pTagsEncodingCombo->setCurrentItem(iMatch);
+	m_pTagsEncodingCombo->setCurrentIndex(iMatch);
 
 #ifdef COMPILE_ON_WINDOWS
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Winamp messages ecoding","options"),true);
@@ -122,7 +122,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	h = new KviTalHBox(g);
 
-	m_pWinampEncodingCombo = new QComboBox(false,h);
+	m_pWinampEncodingCombo = new QComboBox(h);
 	
 	m_pWinampEncodingCombo->insertItem(__tr2qs_ctx("Use Language Encoding","options"));
 	i = 0;
@@ -132,11 +132,11 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	while(d->szName)
 	{
 		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))iMatch = i + 1;
-		m_pWinampEncodingCombo->insertItem(d->szName);
+		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(),d->szName);
 		i++;
 		d = KviLocale::encodingDescription(i);
 	}
-	m_pWinampEncodingCombo->setCurrentItem(iMatch);
+	m_pWinampEncodingCombo->setCurrentIndex(iMatch);
 #endif
 }
 
@@ -187,17 +187,17 @@ void KviSoundGeneralOptionsWidget::soundFillBox()
 
 	for ( it = l.begin(); it != l.end(); ++it )
 	{
-		m_pSoundSystemBox->insertItem(*it);
+		m_pSoundSystemBox->addItem(*it);
 	}
 
 	cnt = m_pSoundSystemBox->count();
 
 	for(i=0;i<cnt;i++)
 	{
-		QString t = m_pSoundSystemBox->text(i);
+		QString t = m_pSoundSystemBox->itemText(i);
 		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringSoundSystem)))
 		{
-			m_pSoundSystemBox->setCurrentItem(i);
+			m_pSoundSystemBox->setCurrentIndex(i);
 			break;
 		}
 	}
@@ -223,7 +223,7 @@ void KviSoundGeneralOptionsWidget::mediaFillBox()
 	m_pMediaPlayerBox->clear();
 	for ( it = l.begin(); it != l.end(); ++it )
 	{
-		m_pMediaPlayerBox->insertItem(*it);
+		m_pMediaPlayerBox->addItem(*it);
 	}
 	cnt = m_pMediaPlayerBox->count();
 
@@ -232,7 +232,7 @@ void KviSoundGeneralOptionsWidget::mediaFillBox()
 		QString t = m_pMediaPlayerBox->text(i);
 		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)))
 		{
-			m_pMediaPlayerBox->setCurrentItem(i);
+			m_pMediaPlayerBox->setCurrentIndex(i);
 			break;
 		}
 	}
@@ -251,24 +251,24 @@ void KviSoundGeneralOptionsWidget::commit()
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = m_pSoundSystemBox->currentText();
 	KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = m_pMediaPlayerBox->currentText();
 	
-	int idx = m_pTagsEncodingCombo->currentItem();
+	int idx = m_pTagsEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding) = "";
 	} else {
-		KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding) = m_pTagsEncodingCombo->text(idx);
+		KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding) = m_pTagsEncodingCombo->itemText(idx);
 	}
 
 
 #ifdef COMPILE_ON_WINDOWS
-	idx = m_pWinampEncodingCombo->currentItem();
+	idx = m_pWinampEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringWinampTextEncoding) = "";
 	} else {
-		KVI_OPTION_STRING(KviOption_stringWinampTextEncoding) = m_pWinampEncodingCombo->text(idx);
+		KVI_OPTION_STRING(KviOption_stringWinampTextEncoding) = m_pWinampEncodingCombo->itemText(idx);
 	}
 #endif
 }

@@ -33,13 +33,15 @@
 #include <QDesktopWidget>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QIcon>
 
 
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 
 KviOptionsWidgetContainer::KviOptionsWidgetContainer(QWidget * par,bool bModal)
-: QDialog(par,"container","options")
+: QDialog(par)
 {
+	setObjectName("container");
 	m_pOptionsWidget = 0;
 	setModal(bModal);
 }
@@ -53,7 +55,8 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 {
 	QGridLayout * g = new QGridLayout(this);
 
-	g->addMultiCellWidget(w,0,0,0,2);
+	g->addWidget(w,0,0,1,3);
+	//g->addMultiCellWidget(w,0,0,0,2);
 
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
@@ -74,11 +77,11 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	g->setRowStretch(0,1);
 	g->setColumnStretch(0,1);
 
-	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->className());
+	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->metaObject()->className());
 	if(e)
 	{
 		//KviStr caption(KviStr::Format,"%s - KVIrc",e->szName);
-		setIcon(*(g_pIconManager->getSmallIcon(e->iIcon)));
+		setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(e->iIcon))));
 		setWindowTitle(e->szName);
 	}
 	m_pOptionsWidget = w;

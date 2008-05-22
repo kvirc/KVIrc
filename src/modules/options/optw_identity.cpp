@@ -352,13 +352,13 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	QString szTip1 = szCenterBegin + __tr2qs_ctx("Here you can specify your age.","options") + szTrailing;
 	KviTalToolTip::add(l,szTip1);
 	KviTalToolTip::add(m_pAgeCombo,szTip1);
-	m_pAgeCombo->insertItem(__tr2qs_ctx("Unspecified","options"));
+	m_pAgeCombo->addItem(__tr2qs_ctx("Unspecified","options"));
 	unsigned int i;
 	for(i=1;i<120;i++)
 	{
 		QString tmp;
 		tmp.setNum(i);
-		m_pAgeCombo->insertItem(tmp);
+		m_pAgeCombo->insertItem(m_pAgeCombo->count(),tmp);
 	}
 
 	bool bOk;
@@ -380,16 +380,16 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	QString szTip2 =  szCenterBegin + __tr2qs_ctx("Here you can specify your gender.","options") + szTrailing;
 	KviTalToolTip::add(l,szTip2);
 	KviTalToolTip::add(m_pGenderCombo,szTip2);
-	m_pGenderCombo->insertItem(__tr2qs_ctx("Unspecified","options"));
-	m_pGenderCombo->insertItem(__tr2qs_ctx("Female","options"));
-	m_pGenderCombo->insertItem(__tr2qs_ctx("Male","options"));
+	m_pGenderCombo->addItem(__tr2qs_ctx("Unspecified","options"));
+	m_pGenderCombo->addItem(__tr2qs_ctx("Female","options"));
+	m_pGenderCombo->addItem(__tr2qs_ctx("Male","options"));
 
 	if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender),"Male"))
-		m_pGenderCombo->setCurrentItem(2);
+		m_pGenderCombo->setCurrentIndex(2);
 	else if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender),"Female"))
-		m_pGenderCombo->setCurrentItem(1);
+		m_pGenderCombo->setCurrentIndex(1);
 	else
-		m_pGenderCombo->setCurrentItem(0);
+		m_pGenderCombo->setCurrentIndex(0);
 
 	hb->setStretchFactor(m_pGenderCombo,1);
 
@@ -438,13 +438,13 @@ void KviIdentityGeneralOptionsWidget::commit()
 	KVI_OPTION_STRING(KviOption_stringNickname4) = m_szAltNicknames[2];
 
 
-	int i = m_pAgeCombo->currentItem();
+	int i = m_pAgeCombo->currentIndex();
 	if(i < 0)i = 0;
 	if(i > 120)i = 120;
 	if(i <= 0)KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 	else KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).setNum(i);
 
-	switch(m_pGenderCombo->currentItem())
+	switch(m_pGenderCombo->currentIndex())
 	{
 		case 1:
 			// this should be in english
@@ -540,7 +540,7 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 	if(dlg.exec() != QDialog::Accepted)return;
 
 	szCurrent = dlg.avatarName();
-	szCurrent.stripWhiteSpace();
+	szCurrent.trimmed();
 
 	if(KviQString::equalCIN(szCurrent,"http://",7))
 	{
