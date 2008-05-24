@@ -81,7 +81,8 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 		"to close the connection.<br>" \
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
 #endif
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);    
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);
+	addRowSpacer(0,2,0,2);
 }
 
 KviIrcAdvancedOptionsWidget::~KviIrcAdvancedOptionsWidget()
