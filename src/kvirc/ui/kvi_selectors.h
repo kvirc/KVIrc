@@ -33,7 +33,7 @@
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_scrollview.h"
-#include "kvi_tal_listbox.h"
+#include "kvi_tal_listwidget.h"
 #include "kvi_tal_treewidget.h"
 
 #include <QCheckBox>
@@ -267,7 +267,7 @@ public:
 	~KviStringListSelector();
 private:
 	QLabel      * m_pLabel;
-	KviTalListBox    * m_pListBox;
+	KviTalListWidget    * m_pListWidget;
 	QLineEdit   * m_pLineEdit;
 	QPushButton * m_pAddButton;
 	QPushButton * m_pRemoveButton;
@@ -277,7 +277,7 @@ public:
 	virtual void setEnabled(bool bEnabled);
 private slots:
 	void textChanged(const QString &str);
-	void selectionChanged();
+	void itemSelectionChanged();
 	void addClicked();
 	void removeClicked();
 };
@@ -345,7 +345,7 @@ public:
 	~KviCahnnelListSelector();
 private:
 	QLabel       * m_pLabel;
-	KviTalTreeWidget    * m_pListView;
+	KviTalTreeWidget    * m_pTreeWidget;
 	QLineEdit    * m_pChanLineEdit;
 	QLineEdit    * m_pPassLineEdit;
 	QPushButton  * m_pAddButton;

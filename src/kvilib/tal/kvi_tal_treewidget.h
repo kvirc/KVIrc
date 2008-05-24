@@ -51,59 +51,37 @@ class KviTalTreeWidgetItem;
 
 class KVILIB_API KviTalTreeWidget : public QTreeWidget
 {
-	//friend class KviTalCheckListItem;
 	Q_OBJECT
 public:
 	KviTalTreeWidget(QWidget * pParent);
 	virtual ~KviTalTreeWidget() {};
 public:
 	void addColumn(const QString label){setHeaderLabel(label);}; 
-	// Shadow the internal Qt methods
-	/*KviTalTreeWidgetItem * firstChild() const { return (KviTalTreeWidgetItem *)Q3ListView::firstChild(); };
-	KviTalTreeWidgetItem * lastItem() const { return (KviTalTreeWidgetItem *)Q3ListView::lastItem(); };
-	KviTalTreeWidgetItem * selectedItem() const { return (KviTalTreeWidgetItem *)Q3ListView::selectedItem(); };
-	KviTalTreeWidgetItem * currentItem() const { return (KviTalTreeWidgetItem *)Q3ListView::currentItem(); };
-	KviTalTreeWidgetItem * itemAt(const QPoint &pnt) const { return (KviTalTreeWidgetItem *)Q3ListView::itemAt(pnt); };
-
+	
 signals:
-	void selectionChanged(KviTalTreeWidgetItem * pItem);
-	void currentChanged(KviTalTreeWidgetItem * pItem);
-	void clicked(KviTalTreeWidgetItem * pItem);
-	void clicked(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void pressed(KviTalTreeWidgetItem * pItem);
-	void pressed(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void doubleClicked(KviTalTreeWidgetItem * pItem);
-	void doubleClicked(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void returnPressed(KviTalTreeWidgetItem * pItem);
-	void spacePressed(KviTalTreeWidgetItem * pItem);
-	void rightButtonClicked(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void rightButtonPressed(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void mouseButtonClicked(int iButton,KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void mouseButtonPressed(int iButton,KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void contextMenuRequested(KviTalTreeWidgetItem * pItem,const QPoint &pnt,int uColumn);
-	void onItem(KviTalTreeWidgetItem * pItem);
-	void expanded(KviTalTreeWidgetItem * pItem);
-	void collapsed(KviTalTreeWidgetItem * pItem);
+	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
+	void itemActivated(KviTalTreeWidgetItem *,int);
+	void itemChanged(KviTalTreeWidgetItem *,int);
+	void itemClicked(KviTalTreeWidgetItem *,int);
+	
+	void itemCollapsed(KviTalTreeWidgetItem *);
+	void itemExpanded(KviTalTreeWidgetItem *);
+	void itemDoubleClicked(KviTalTreeWidgetItem *,int);
+	void itemEntered(KviTalTreeWidgetItem *,int);
+	void itemPressed(KviTalTreeWidgetItem *,int);
+	
+
+
 protected slots:
-	void redirect_selectionChanged(Q3ListViewItem * pItem);
-	void redirect_currentChanged(Q3ListViewItem * pItem);
-	void redirect_clicked(Q3ListViewItem * pItem);
-	void redirect_clicked(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_pressed(Q3ListViewItem * pItem);
-	void redirect_pressed(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_doubleClicked(Q3ListViewItem * pItem);
-	void redirect_doubleClicked(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_returnPressed(Q3ListViewItem * pItem);
-	void redirect_spacePressed(Q3ListViewItem * pItem);
-	void redirect_rightButtonClicked(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_rightButtonPressed(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_mouseButtonClicked(int iButton,Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_mouseButtonPressed(int iButton,Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_contextMenuRequested(Q3ListViewItem * pItem,const QPoint &pnt,int uColumn);
-	void redirect_onItem(Q3ListViewItem * pItem);
-	void redirect_expanded(Q3ListViewItem * pItem);
-	void redirect_collapsed(Q3ListViewItem * pItem);
-*/
+	void redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QTreeWidgetItem *pItemPrev);
+	void redirect_itemActivated(QTreeWidgetItem *pItem,int col);
+	void redirect_itemChanged(QTreeWidgetItem *pItem,int col);
+	void redirect_itemClicked(QTreeWidgetItem *pItem,int col);
+	void redirect_itemCollapsed(QTreeWidgetItem *pItem);
+	void redirect_itemExpanded(QTreeWidgetItem *pItem);
+	void redirect_itemDoubleClicked(QTreeWidgetItem *pItem,int col);
+	void redirect_itemEntered(QTreeWidgetItem *pItem,int col);
+	void redirect_itemPressed(QTreeWidgetItem *pItem,int col);
 };
 
 
@@ -122,7 +100,23 @@ public:
 		: QTreeWidgetItem(pParent) {
 	setText(0,szLabel);
 	};
-	int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
+	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1, const QString &szLabel2, const QString &szLabel3 )
+	: QTreeWidgetItem(pParent) {
+	setText(0,szLabel);
+	setText(1,szLabel1);
+	setText(2,szLabel2);
+	setText(3,szLabel3);
+
+	};
+	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1, const QString &szLabel2, const QString &szLabel3, const QString &szLabel4 )
+	: QTreeWidgetItem(pParent) {
+	setText(0,szLabel);
+	setText(1,szLabel1);
+	setText(2,szLabel2);
+	setText(3,szLabel3);
+	setText(4,szLabel4);
+	};
+		int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
 	{
 		QString key=text(col);
 		return key.localeAwareCompare(i->text(col));

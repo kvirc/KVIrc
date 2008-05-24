@@ -44,17 +44,17 @@ static void copyMediaType(KviMediaType * dst,const KviMediaType * src)
 	dst->szIcon                  = src->szIcon;
 }
 
-KviMediaTypeListViewItem::KviMediaTypeListViewItem(KviTalListView * w,KviMediaType * t)
-: KviTalListViewItem(w)
+KviMediaTypeTreeWidgetItem::KviMediaTypeTreeWidgetItem(KviTalTreeWidget * w,KviMediaType * t)
+: KviTalTreeWidgetItem(w)
 {
 	copyData(t);
 }
 
-KviMediaTypeListViewItem::~KviMediaTypeListViewItem()
+KviMediaTypeTreeWidgetItem::~KviMediaTypeTreeWidgetItem()
 {
 }
 
-void KviMediaTypeListViewItem::copyData(KviMediaType * t)
+void KviMediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 {
 	copyMediaType(&m_data,t);
 	setText(0,m_data.szFileMask.ptr());
@@ -67,16 +67,19 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	m_pListView = new KviTalListView(this);
-	m_pListView->addColumn(__tr2qs_ctx("Pattern","options"));
-	m_pListView->addColumn(__tr2qs_ctx("MIME Type","options"));
-	m_pListView->addColumn(__tr2qs_ctx("Description","options"));
-	m_pListView->setAllColumnsShowFocus(true);
+	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget->setColumnCount(3);
+	QStringList columnLabels;
+	columnLabels.append(__tr2qs_ctx("Pattern","options"));
+	columnLabels.append(__tr2qs_ctx("MIME Type","options"));
+	columnLabels.append(__tr2qs_ctx("Description","options"));
+	m_pTreeWidget->setHeaderLabels(columnLabels);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+	m_pTreeWidget->setRootIsDecorated(false);
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
 
-	connect(m_pListView,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentItemChanged(KviTalListViewItem *)));
-
-	layout()->addWidget(m_pListView,0,0,1,3);
-//	layout()->addMultiCellWidget(m_pListView,0,0,0,2);
+	layout()->addWidget(m_pTreeWidget,0,0,1,3);
+//	layout()->addMultiCellWidget(m_pTreeWidget,0,0,0,2);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	layout()->addWidget(l,1,0);
@@ -149,22 +152,22 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 
 	m_pLastItem = 0;
 
-	fillListView();
+	fillTreeWidget();
 }
 
 KviMediaTypesOptionsWidget::~KviMediaTypesOptionsWidget()
 {
 }
 
-void KviMediaTypesOptionsWidget::fillListView()
+void KviMediaTypesOptionsWidget::fillTreeWidget()
 {
-	m_pListView->clear();
+	m_pTreeWidget->clear();
 	g_pMediaManager->lock();
 	KviPointerList<KviMediaType> * l = g_pMediaManager->mediaTypeList();
-	KviMediaTypeListViewItem * it;
+	KviMediaTypeTreeWidgetItem * it;
 	for(KviMediaType * t = l->first();t;t = l->next())
 	{
-		it = new KviMediaTypeListViewItem(m_pListView,t);
+		it = new KviMediaTypeTreeWidgetItem(m_pTreeWidget,t);
 	}
 	g_pMediaManager->unlock();
 	enableOrDisable();
@@ -215,13 +218,13 @@ void KviMediaTypesOptionsWidget::setLineEdits()
 	m_pIcon->setText(m_pLastItem ? m_pLastItem->data()->szIcon.ptr() : "");
 }
 
-void KviMediaTypesOptionsWidget::currentItemChanged(KviTalListViewItem *it)
+void KviMediaTypesOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
 {
 	saveLastItem();
-	m_pLastItem = (KviMediaTypeListViewItem *)it;
+	m_pLastItem = (KviMediaTypeTreeWidgetItem *)it;
 	if(it)
 	{
-		if(!it->isSelected())m_pListView->setSelected(it,true);
+		if(!it->isSelected())it->setSelected(true);
 	}
 	setLineEdits();
 	enableOrDisable();
@@ -231,16 +234,16 @@ void KviMediaTypesOptionsWidget::newMediaType()
 {
 	KviMediaType empty;
 	empty.szDescription = __tr2qs_ctx("New Media Type","options");
-	KviMediaTypeListViewItem * it = new KviMediaTypeListViewItem(m_pListView,&empty);
-	m_pListView->setCurrentItem(it);
-	m_pListView->setSelected(it,true);
+	KviMediaTypeTreeWidgetItem * it = new KviMediaTypeTreeWidgetItem(m_pTreeWidget,&empty);
+	m_pTreeWidget->setCurrentItem(it);
+	it->setSelected(true);
 }
 
 void KviMediaTypesOptionsWidget::delMediaType()
 {
 	if(m_pLastItem)
 	{
-		KviMediaTypeListViewItem * it = m_pLastItem;
+		KviMediaTypeTreeWidgetItem * it = m_pLastItem;
 		m_pLastItem = 0;
 		delete it;
 	}
@@ -249,15 +252,17 @@ void KviMediaTypesOptionsWidget::delMediaType()
 void KviMediaTypesOptionsWidget::commit()
 {
 	saveLastItem();
-	KviMediaTypeListViewItem * it = (KviMediaTypeListViewItem *)m_pListView->firstChild();
+	KviMediaTypeTreeWidgetItem * it;// = (KviMediaTypeTreeWidgetItem *)m_pTreeWidget->firstChild();
 	g_pMediaManager->lock();
 	g_pMediaManager->clear();
-	while(it)
+	//while(it)
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
+		it=(KviMediaTypeTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		KviMediaType * t = new KviMediaType;
 		copyMediaType(t,it->data());
 		g_pMediaManager->insertMediaType(t);
-		it = (KviMediaTypeListViewItem *)it->nextSibling();
+	//	it = (KviMediaTypeTreeWidgetItem *)it->nextSibling();
 	}
 	g_pMediaManager->unlock();
 }

@@ -1388,7 +1388,7 @@ KviDccFileTransfer * KviDccFileTransfer::nonFailedTransferWithLocalFileName(cons
 	{
 #ifdef COMPILE_ON_WINDOWS
 		// on windows the file names are case insensitive
-		if(t->localFileName().lower() == szLocalFileName.lower())
+		if(t->localFileName().toLower() == szLocalFileName.toLower())
 #else
 		if(t->localFileName() == szLocalFileName)
 #endif

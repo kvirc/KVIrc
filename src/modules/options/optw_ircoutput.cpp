@@ -40,18 +40,18 @@ KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)
 	QLabel * l =new QLabel(__tr2qs_ctx("Output verbosity","options"),this);
 	addWidgetToLayout(l,0,0,0,0);
 
-	m_pVerbosityCombo = new QComboBox(false,this);
+	m_pVerbosityCombo = new QComboBox(this);
 	addWidgetToLayout(m_pVerbosityCombo,1,0,1,0);
 	
-	m_pVerbosityCombo->insertItem(__tr2qs_ctx("Mute","options"));
-	m_pVerbosityCombo->insertItem(__tr2qs_ctx("Quiet","options"));
-	m_pVerbosityCombo->insertItem(__tr2qs_ctx("Normal","options"));
-	m_pVerbosityCombo->insertItem(__tr2qs_ctx("Verbose","options"));
-	m_pVerbosityCombo->insertItem(__tr2qs_ctx("Paranoic","options"));
+	m_pVerbosityCombo->addItem(__tr2qs_ctx("Mute","options"));
+	m_pVerbosityCombo->addItem(__tr2qs_ctx("Quiet","options"));
+	m_pVerbosityCombo->addItem(__tr2qs_ctx("Normal","options"));
+	m_pVerbosityCombo->addItem(__tr2qs_ctx("Verbose","options"));
+	m_pVerbosityCombo->addItem(__tr2qs_ctx("Paranoic","options"));
 
 	if(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) > KVI_VERBOSITY_LEVEL_PARANOIC)
 		KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = KVI_VERBOSITY_LEVEL_NORMAL;
-	m_pVerbosityCombo->setCurrentItem(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
+	m_pVerbosityCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
 
 	KviTalGroupBox * g = addGroupBox(0,1,1,1,Qt::Horizontal,__tr2qs_ctx("Show in active window","options"));
 	addBoolSelector(g,__tr2qs_ctx("External messages","options"),KviOption_boolExternalMessagesToActiveWindow);
@@ -83,7 +83,7 @@ void KviIrcOutputOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
 	
-	int i = m_pVerbosityCombo->currentItem();
+	int i = m_pVerbosityCombo->currentIndex();
 	if((i < 0) || (i > KVI_VERBOSITY_LEVEL_PARANOIC))i = KVI_VERBOSITY_LEVEL_NORMAL;
 	KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = i;
 }

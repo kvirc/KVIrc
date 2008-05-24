@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_TreeWidget.h"
 
 #include <QDialog>
 #include <QButtonGroup>
@@ -50,12 +50,12 @@ class KviIrcNetworkData;
 class KviMexServerImport;
 
 
-class KviServerOptionsListViewItem : public KviTalListViewItem
+class KviServerOptionsTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviServerOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,const KviIrcNetwork *n);
-	KviServerOptionsListViewItem(KviTalListViewItem *parent,const QPixmap &pm,const KviIrcServer *s);
-	~KviServerOptionsListViewItem();
+	KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n);
+	KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s);
+	~KviServerOptionsTreeWidgetItem();
 public:
 	KviIrcServer * m_pServerData;
 	KviIrcNetwork * m_pNetworkData;
@@ -84,7 +84,7 @@ protected:
 	
 	QCheckBox             * m_pAutoConnectCheck;
 	
-	KviTalListView        * m_pNickServListView;
+	KviTalTreeWidget        * m_pNickServTreeWidget;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
@@ -157,7 +157,7 @@ public:
 	KviServerOptionsWidget(QWidget * parent);
 	~KviServerOptionsWidget();
 protected:
-	KviTalListView                    * m_pListView;
+	KviTalTreeWidget                    * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
 	//QLabel                       * m_pPortLabel;
@@ -170,7 +170,7 @@ protected:
 	//QCheckBox                    * m_pIpV6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
-	KviServerOptionsListViewItem * m_pLastEditedItem;
+	KviServerOptionsTreeWidgetItem * m_pLastEditedItem;
 	KviServerDetailsWidget       * m_pServerDetailsDialog;
 	KviNetworkDetailsWidget      * m_pNetworkDetailsDialog;
 	KviMexServerImport           * m_pImportFilter;
@@ -184,19 +184,20 @@ protected:
 private:
 	void fillServerList();
 	void saveLastItem();
-	KviServerOptionsListViewItem * findNetItem(const QString &netname);
+	KviServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
 protected slots:
 	void importerDead();
 	void importServer(const KviIrcServer & s,const QString &network);
 	void importPopupAboutToShow();
-	void listViewItemSelectionChanged(KviTalListViewItem *it);
-	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void currentItemChanged(KviTalTreeWidgetItem *cur,KviTalTreeWidgetItem *prev);
+	void customContextMenuRequested(const QPoint &pnt);
 	void newNetwork();
 	void removeCurrent();
 	void newServer();
 	void copyServer();
 	void pasteServer();
 	void clearList();
+	void itemDoubleClicked(KviTalTreeWidgetItem*, int );
 	void detailsClicked();
 	void connectCurrentClicked();
 	void recentServersPopupAboutToShow();

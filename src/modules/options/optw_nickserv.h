@@ -35,7 +35,7 @@ class QLineEdit;
 class QPushButton;
 class QCheckBox;
 class KviNickServRule;
-class KviTalListView;
+class KviTalTreeWidget;
 
 #define KVI_OPTIONS_WIDGET_ICON_KviNickServOptionsWidget KVI_SMALLICON_NICKSERV
 #define KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget __tr2qs_no_lookup("NickServ")
@@ -72,7 +72,7 @@ public:
 	KviNickServOptionsWidget(QWidget * parent);
 	~KviNickServOptionsWidget();
 protected:
-	KviTalListView             * m_pNickServListView;
+	KviTalTreeWidget             * m_pNickServTreeWidget;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;

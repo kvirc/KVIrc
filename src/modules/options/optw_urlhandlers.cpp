@@ -85,37 +85,37 @@ void KviUrlHandlersOptionsWidget::commit()
 	KviOptionsWidget::commit();
 
 #ifdef COMPILE_ON_WINDOWS
-	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("@MAGIC@","\\\\");
 
-	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("@MAGIC@","\\\\");
 
-	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("@MAGIC@","\\\\");
 
-	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("@MAGIC@","\\\\");
 
-	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("@MAGIC@","\\\\");
 
-	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\\\","@MAGIC@","options");
-	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\","\\\\","options");
-	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("@MAGIC@","\\\\","options");
+	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\\\","@MAGIC@");
+	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\","\\\\");
+	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("@MAGIC@","\\\\");
 	
 	//Check for escaped " in url handler ( \" )
-        KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\\"","\\\"","options");
-        KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\\\\"","\\\"","options");
-        KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\\\\"","\\\"","options");
-        KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\\\\"","\\\"","options");
-        KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\\\\"","\\\"","options");
-        KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\\\\"","\\\"","options");
+        KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\\"","\\\"");
+        KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\\\\"","\\\"");
+        KVI_OPTION_STRING(KviOption_stringUrlFtpCommand).replace("\\\\\"","\\\"");
+        KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand).replace("\\\\\"","\\\"");
+        KVI_OPTION_STRING(KviOption_stringUrlFileCommand).replace("\\\\\"","\\\"");
+        KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\\\\"","\\\"");
 #endif
 }
 

@@ -462,7 +462,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 	if(!t)return;
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
-	int idx = tmp.findRev("/");
+	int idx = tmp.lastIndexOf("/");
 	if(idx == -1)return;
 	tmp = tmp.left(idx);
 	tmp.append("\"");
@@ -477,7 +477,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
 
-		int idx = tmp.findRev("/");
+		int idx = tmp.lastIndexOf("/");
 		if(idx == -1)return;
 		tmp = tmp.left(idx);
 
@@ -603,7 +603,7 @@ void KviFileTransferWindow::openLocalFileFolder()
 		QString tmp = t->localFileName();
 		if(tmp.isEmpty())return;
 
-		int idx = tmp.findRev("/");
+		int idx = tmp.lastIndexOf("/");
 		if(idx == -1)return;
 		tmp = tmp.left(idx);
 

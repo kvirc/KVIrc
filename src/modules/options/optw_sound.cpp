@@ -124,7 +124,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	m_pWinampEncodingCombo = new QComboBox(h);
 	
-	m_pWinampEncodingCombo->insertItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pWinampEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
 	i = 0;
 	iMatch = 0;
 	
@@ -229,7 +229,7 @@ void KviSoundGeneralOptionsWidget::mediaFillBox()
 
 	for(i=0;i<cnt;i++)
 	{
-		QString t = m_pMediaPlayerBox->text(i);
+		QString t = m_pMediaPlayerBox->itemText(i);
 		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)))
 		{
 			m_pMediaPlayerBox->setCurrentIndex(i);

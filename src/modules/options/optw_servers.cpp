@@ -63,11 +63,14 @@
 #include <QComboBox>
 #include <QButtonGroup>
 #include <QInputDialog>
+#include <QIcon>
 
 
 KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n)
-	: QDialog(par,"network_details",true)
+	: QDialog(par)
 {
+	setModal(true);
+	setObjectName("network_details");
 	m_pOnConnectEditor=0;
 	m_pOnLoginEditor=0;
 	
@@ -81,7 +84,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 		
 	m_pAutoConnectCheck=0;
 		
-	m_pNickServListView=0;
+	m_pNickServTreeWidget=0;
 	m_pNickServCheck=0;
 	m_pAddRuleButton=0;
 	m_pDelRuleButton=0;
@@ -92,7 +95,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Network Details","options"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD))));
 
 	QString szTmp = "<font size=\"+1\"><b>";
 	szTmp += n->name();
@@ -138,7 +141,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
 	m_pNickEditor = new QLineEdit(gbox);
-	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*","options"),gbox);
+	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*",Qt::CaseSensitive),gbox);
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(n->nickName());
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
@@ -152,7 +155,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
 	gl->addWidget(l,1,0);
-	m_pEncodingEditor = new QComboBox(false,tab);
+	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
@@ -163,19 +166,19 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	int current = 0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	QString tmp;
-	m_pEncodingEditor->insertItem(__tr2qs_ctx("Use System Encoding","options"));
+	m_pEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-		m_pEncodingEditor->insertItem(tmp);
+		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->szName,n->encoding()))current = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
 
-	m_pEncodingEditor->setCurrentItem(current);
+	m_pEncodingEditor->setCurrentIndex(current);
 
-	m_pAutoConnectCheck = new KviStyledCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
+	m_pAutoConnectCheck = new QCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
 	gl->addWidget(m_pAutoConnectCheck,2,0,1,2);
 //	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
@@ -250,24 +253,27 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	KviNickServRuleSet * rs = n->nickServRuleSet();
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 	
-	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
+	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
 	
-	m_pNickServListView = new KviTalListView(tab);
-	m_pNickServListView->setSelectionMode(KviTalListView::Single);
-	m_pNickServListView->setAllColumnsShowFocus(true);
-	m_pNickServListView->addColumn(__tr2qs_ctx("Nickname","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Mask","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Request Mask","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("Identify Command","options"));
-	connect(m_pNickServListView,SIGNAL(selectionChanged()),this,SLOT(enableDisableNickServControls()));
-	gl->addWidget(m_pNickServListView,1,0,1,3);
-////  gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
-	KviTalToolTip::add(m_pNickServListView,
+	m_pNickServTreeWidget = new KviTalTreeWidget(tab);
+	m_pNickServTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pNickServTreeWidget->setAllColumnsShowFocus(true);
+	m_pNickServTreeWidget->setColumnCount(4);
+	QStringList columnLabels;
+	columnLabels.append(__tr2qs_ctx("Nickname","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ Mask","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ Request Mask","options"));
+	columnLabels.append(__tr2qs_ctx("Identify Command","options"));
+	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
+	connect(m_pNickServTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableNickServControls()));
+	gl->addWidget(m_pNickServTreeWidget,1,0,1,3);
+////  gl->addMultiCellWidget(m_pNickServTreeWidget,1,1,0,2);
+	KviTalToolTip::add(m_pNickServTreeWidget,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 				"KVIrc will use them to model its automatic interaction with NickServ on this network.<br>" \
 				"Please be aware that this feature can cause your NickServ passwords to be stolen " \
@@ -295,7 +301,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 		KviPointerList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
+			(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
 		}
 	}
 	
@@ -331,7 +337,7 @@ KviNetworkDetailsWidget::~KviNetworkDetailsWidget()
 
 void KviNetworkDetailsWidget::editNickServRule()
 {
-	KviTalListViewItem * it = m_pNickServListView->currentItem();
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *) m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	KviNickServRule r(it->text(0),it->text(1),it->text(2),it->text(3));
 	KviNickServRuleEditor ed(this,false);
@@ -349,12 +355,12 @@ void KviNetworkDetailsWidget::addNickServRule()
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,false);
 	if(ed.editRule(&r))
-		(void)new KviTalListViewItem(m_pNickServListView,r.registeredNick(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
+		(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,r.registeredNick(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
 }
 
 void KviNetworkDetailsWidget::delNickServRule()
 {
-	KviTalListViewItem * it = m_pNickServListView->currentItem();
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	delete it;
 	enableDisableNickServControls();
@@ -363,9 +369,9 @@ void KviNetworkDetailsWidget::delNickServRule()
 void KviNetworkDetailsWidget::enableDisableNickServControls()
 {
 	bool bEnabled = m_pNickServCheck->isChecked();
-	m_pNickServListView->setEnabled(bEnabled);
+	m_pNickServTreeWidget->setEnabled(bEnabled);
 	m_pAddRuleButton->setEnabled(bEnabled);
-	bEnabled = bEnabled && (m_pNickServListView->childCount() > 0) && m_pNickServListView->currentItem();
+	bEnabled = bEnabled && (m_pNickServTreeWidget->topLevelItemCount()) && m_pNickServTreeWidget->currentItem();
 	m_pDelRuleButton->setEnabled(bEnabled);
 	m_pEditRuleButton->setEnabled(bEnabled);
 }
@@ -379,26 +385,28 @@ void KviNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 	if(m_pAutoConnectCheck)
 		n->setAutoConnect(m_pAutoConnectCheck->isChecked());
 	if(m_pEncodingEditor)
-		if(m_pEncodingEditor->currentItem() <= 0)n->setEncoding(QString::null);
+		if(m_pEncodingEditor->currentIndex() <= 0)n->setEncoding(QString::null);
 		else {
-			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentItem() - 1);
+			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			n->setEncoding(d->szName);
 		}
 	if(m_pChannelListSelector)
 		m_pChannelListSelector->commit();
 	if(m_lstChannels.isEmpty())n->setAutoJoinChannelList(0);
 	else n->setAutoJoinChannelList(new QStringList(m_lstChannels));
-	if(m_pNickServListView)
+	if(m_pNickServTreeWidget)
 	{
-		if(m_pNickServListView->childCount() > 0)
+		if(m_pNickServTreeWidget->topLevelItemCount() > 0)
 		{
 			KviNickServRuleSet * rs = KviNickServRuleSet::createInstance();
 			rs->setEnabled(m_pNickServCheck->isChecked());
-			KviTalListViewItem * it = m_pNickServListView->firstChild();
-			while(it)
+			KviTalTreeWidgetItem * it;// = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->firstChild();
+			for (int i=0;i<m_pNickServTreeWidget->topLevelItemCount();i++)
+			//while(it)
 			{
+				it=(KviTalTreeWidgetItem *) m_pNickServTreeWidget->topLevelItem(i);
 				rs->addRule(KviNickServRule::createInstance(it->text(0),it->text(1),it->text(2),it->text(3)));
-				it = it->nextSibling();
+			//	it = it->nextSibling();
 			}
 			n->setNickServRuleSet(rs);
 		} else n->setNickServRuleSet(0);
@@ -419,13 +427,15 @@ void KviNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 
 
 KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
-    : QDialog(par,"server_details",true)
+    : QDialog(par)//,"server_details",true)
 {
+	setModal(true);
+	setObjectName("server_details");
 	m_szHostname = s->hostName();
 	QGridLayout * g = new QGridLayout(this);
 
 	setWindowTitle(__tr2qs_ctx("Server Details","options"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER))));
 
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later
 	m_pHeaderLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
@@ -488,7 +498,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 	
-	m_pUseDefaultInitUMode = new KviStyledCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
+	m_pUseDefaultInitUMode = new QCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
 	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
 			" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 	bool bHasUmode = !(s->initUMode().isEmpty());
@@ -496,17 +506,17 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseDefaultInitUMode->setChecked(!bHasUmode);
 	connect(m_pUseDefaultInitUMode,SIGNAL(toggled(bool)),this,SLOT(useDefaultInitUModeToggled(bool)));
 	
-	m_pIMode = new KviStyledCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
+	m_pIMode = new QCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
 	m_pIMode->setEnabled(bHasUmode);
-	m_pIMode->setChecked(bHasUmode ? s->initUMode().contains('i',false) : szDefUMode.contains('i',false));
+	m_pIMode->setChecked(bHasUmode ? s->initUMode().contains('i',Qt::CaseInsensitive) : szDefUMode.contains('i',Qt::CaseInsensitive));
 	
-	m_pSMode = new KviStyledCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
+	m_pSMode = new QCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
 	m_pSMode->setEnabled(bHasUmode);
-	m_pSMode->setChecked(bHasUmode ? s->initUMode().contains('s',false) : szDefUMode.contains('s',false));
+	m_pSMode->setChecked(bHasUmode ? s->initUMode().contains('s',Qt::CaseInsensitive) : szDefUMode.contains('s',Qt::CaseInsensitive));
 	
-	m_pWMode = new KviStyledCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
+	m_pWMode = new QCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
 	m_pWMode->setEnabled(bHasUmode);
-	m_pWMode->setChecked(bHasUmode ? s->initUMode().contains('w',false) : szDefUMode.contains('w',false));
+	m_pWMode->setChecked(bHasUmode ? s->initUMode().contains('w',Qt::CaseInsensitive) : szDefUMode.contains('w',Qt::CaseInsensitive));
 
 	l = new QLabel("",tab);
 	gl->addWidget(l,2,0);
@@ -558,7 +568,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 #endif
 	}
 	
-	m_pCacheIpCheck = new KviStyledCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
+	m_pCacheIpCheck = new QCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	gl->addWidget(m_pCacheIpCheck,2,0,1,2);
 //	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
@@ -570,7 +580,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
 
-	m_pUseIPV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
+	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
 	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
 //	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
 #ifdef COMPILE_IPV6_SUPPORT
@@ -583,7 +593,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 			"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
-	m_pUseSSLCheck = new KviStyledCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
+	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	gl->addWidget(m_pUseSSLCheck,4,0,1,2);
 //	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
@@ -594,7 +604,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseSSLCheck->setChecked(s->useSSL());
 	
 	
-	m_pUseAutoConnect = new KviStyledCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
+	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 	
 	gl->addWidget(m_pUseAutoConnect,5,0,1,2);
@@ -603,7 +613,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	
 	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
 	gl->addWidget(l,6,0);
-	m_pEncodingEditor = new QComboBox(false,tab);
+	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,6,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this sever. " \
@@ -614,26 +624,27 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	int current = 0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	QString tmp;
-	m_pEncodingEditor->insertItem(__tr2qs_ctx("Use Network Encoding","options"));
+	m_pEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
-		m_pEncodingEditor->insertItem(tmp);
+		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
 		if(KviQString::equalCI(d->szName,s->encoding()))current = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
 
-	m_pEncodingEditor->setCurrentItem(current);
+	m_pEncodingEditor->setCurrentIndex(current);
 
 
 	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
 	gl->addWidget(l,7,0);
-	m_pLinkFilterEditor = new QComboBox(true,tab);
+	m_pLinkFilterEditor = new QComboBox(tab);
+	m_pLinkFilterEditor->setEditable(true);
 	m_pLinkFilterEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pLinkFilterEditor,7,1);
 
-	m_pLinkFilterEditor->insertItem("");
+	m_pLinkFilterEditor->addItem("");
 
 	g_pModuleManager->loadModulesByCaps("linkfilter");
 	KviModuleExtensionDescriptorList * mexl = KviModuleExtensionManager::instance()->getExtensionList("linkfilter");
@@ -643,16 +654,23 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	if(mexl)
 	{
 		for(KviModuleExtensionDescriptor * d = mexl->first();d;d = mexl->next())
-			m_pLinkFilterEditor->insertItem(d->name().ptr());
+			m_pLinkFilterEditor->addItem(d->name().ptr());
 	} else {
 		if(!s->linkFilter().isEmpty())
-			m_pLinkFilterEditor->insertItem(s->linkFilter());
+			m_pLinkFilterEditor->addItem(s->linkFilter());
 	}
 
 	if(!s->linkFilter().isEmpty())
-		m_pLinkFilterEditor->setCurrentText(s->linkFilter());
+	{
+		//m_pLinkFilterEditor->setCurrentText(s->linkFilter());
+		int i = m_pLinkFilterEditor->findText(s->linkFilter());
+        if (i != -1)
+            m_pLinkFilterEditor->setCurrentIndex(i);
+        else 
+            m_pLinkFilterEditor->setEditText(s->linkFilter());
+	}
 	else
-		m_pLinkFilterEditor->setCurrentText("");
+		m_pLinkFilterEditor->setCurrentIndex(0);
 
 
 	KviTalToolTip::add(m_pLinkFilterEditor,__tr2qs_ctx("<center>This field specifies the name of a module that exports a link filter for this type of server.<br>" \
@@ -678,16 +696,16 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 			"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
 			"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 	
-	m_pProxyEditor->insertItem(__tr2qs_ctx("Default","options"));
-	m_pProxyEditor->insertItem(__tr2qs_ctx("Direct connection","options"));	
+	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
+	m_pProxyEditor->addItem(__tr2qs_ctx("Direct connection","options"));	
 	
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
-		m_pProxyEditor->insertItem(QString("%1:%2").arg(p->hostname()).arg(p->port()));
+		m_pProxyEditor->insertItem(m_pProxyEditor->count(),QString("%1:%2").arg(p->hostname()).arg(p->port()));
 	}
 	if(m_pProxyEditor->count() > (s->proxy()+2))
-		m_pProxyEditor->setCurrentItem(s->proxy()+2);
+		m_pProxyEditor->setCurrentIndex(s->proxy()+2);
 
 
 	l = new QLabel("",tab);
@@ -819,9 +837,9 @@ void KviServerDetailsWidget::fillData(KviIrcServer * s)
 	if(m_pLinkFilterEditor)
 		s->setLinkFilter(m_pLinkFilterEditor->lineEdit()->text());
 	if(m_pEncodingEditor)
-		if(m_pEncodingEditor->currentItem() <= 0)s->m_szEncoding = "";
+		if(m_pEncodingEditor->currentIndex() <= 0)s->m_szEncoding = "";
 		else {
-			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentItem() - 1);
+			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			s->m_szEncoding = d->szName;
 		}
 	s->setIpAddress("");
@@ -908,7 +926,7 @@ void KviServerDetailsWidget::fillData(KviIrcServer * s)
 	if(m_pUseAutoConnect)
 		s->setAutoConnect(m_pUseAutoConnect->isChecked());
 	if(m_pProxyEditor)
-		s->setProxy(m_pProxyEditor->currentItem()-2);
+		s->setProxy(m_pProxyEditor->currentIndex()-2);
 }
 
 void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
@@ -921,33 +939,33 @@ void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 // kvi_app.cpp
 extern KVIRC_API KviIrcServerDataBase * g_pIrcServerDataBase;
 
-KviServerOptionsListViewItem::KviServerOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,const KviIrcNetwork *n)
-    : KviTalListViewItem(parent)
+KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n)
+    : KviTalTreeWidgetItem(parent)
 {
-	setPixmap(0,pm);
+	setIcon(0,QIcon(pm));
 	m_pServerData = 0;
 	m_pNetworkData = new KviIrcNetwork(*n);
 	setText(0,n->name());
 	setText(1,n->description());
 }
 
-KviServerOptionsListViewItem::KviServerOptionsListViewItem(KviTalListViewItem *parent,const QPixmap &pm,const KviIrcServer *s)
-    : KviTalListViewItem(parent)
+KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s)
+    : KviTalTreeWidgetItem(parent)
 {
-	setPixmap(0,pm);
+	setIcon(0,QIcon(pm));
 	m_pServerData = new KviIrcServer(*s);
 	setText(0,s->hostName());
 	setText(1,s->description());
 	m_pNetworkData = 0;
 }
 
-KviServerOptionsListViewItem::~KviServerOptionsListViewItem()
+KviServerOptionsTreeWidgetItem::~KviServerOptionsTreeWidgetItem()
 {
 	if(m_pServerData)delete m_pServerData;
 	if(m_pNetworkData)delete m_pNetworkData;
 }
 
-void KviServerOptionsListViewItem::updateVisibleStrings()
+void KviServerOptionsTreeWidgetItem::updateVisibleStrings()
 {
 	if(m_pNetworkData)
 	{
@@ -978,43 +996,53 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pNetworkDetailsDialog = 0;
 	m_pImportFilter = 0;
 
-	m_pListView = new KviTalListView(this);
-	addWidgetToLayout(m_pListView,0,0,0,0);
-	m_pListView->addColumn(__tr2qs_ctx("Server","options"));
-	m_pListView->addColumn(__tr2qs_ctx("Description","options"));
-	m_pListView->setRootIsDecorated(true);
-	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(KviTalListView::Single);
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),
-		this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-		this,SLOT(listViewRightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem*, const QPoint&, int )),
-		this,SLOT(detailsClicked()));
+	m_pTreeWidget = new KviTalTreeWidget(this);
+	addWidgetToLayout(m_pTreeWidget,0,0,0,0);
+	m_pTreeWidget->setColumnCount(2);
+	m_pTreeWidget->setMinimumWidth(500);
+	QStringList columLabels;
+	columLabels.append(__tr2qs_ctx("Server","options"));
+	columLabels.append(__tr2qs_ctx("Description","options"));
+	m_pTreeWidget->setColumnWidth(0,150);
+	m_pTreeWidget->setColumnWidth(1,150);
+
+	m_pTreeWidget->setHeaderLabels(columLabels);
+	m_pTreeWidget->setRootIsDecorated(true);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(customContextMenuRequested(const QPoint &)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),
+		this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	
+	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem*, int )),
+		this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem*, int )));
 
 	QString tiptxt = __tr2qs_ctx("<center>This is the list of available IRC servers.<br>" \
 			"Right-click on the list to add or remove servers and perform other actions.<br>"\
 			"Double-click on a item for advanced options.</center>","options");
-	KviTalToolTip::add(m_pListView,tiptxt);
-	KviTalToolTip::add(m_pListView->viewport(),tiptxt);
+	KviTalToolTip::add(m_pTreeWidget,tiptxt);
+	KviTalToolTip::add(m_pTreeWidget->viewport(),tiptxt);
 
 	KviTalVBox * vbox = new KviTalVBox(this);
+	vbox->setSpacing(0);
 	addWidgetToLayout(vbox,1,0,1,0);
 
-	m_pNewNetworkButton = new KviStyledToolButton(vbox);
-	m_pNewNetworkButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)));
+	m_pNewNetworkButton = new QToolButton(vbox);
+	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
 
-	m_pNewServerButton = new KviStyledToolButton(vbox);
-	m_pNewServerButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
+	m_pNewServerButton = new QToolButton(vbox);
+	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
 
-	m_pRemoveButton = new KviStyledToolButton(vbox);
-	m_pRemoveButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)));
+	m_pRemoveButton = new QToolButton(vbox);
+	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeCurrent()));
@@ -1023,15 +1051,15 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
-	m_pCopyServerButton = new KviStyledToolButton(vbox);
-	m_pCopyServerButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)));
+	m_pCopyServerButton = new QToolButton(vbox);
+	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY))));
 	m_pCopyServerButton->setEnabled(false);
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
 	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
 
-	m_pPasteServerButton = new KviStyledToolButton(vbox);
-	m_pPasteServerButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)));
+	m_pPasteServerButton = new QToolButton(vbox);
+	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)));
 	m_pPasteServerButton->setEnabled(false);
 	m_pPasteServerButton->setAutoRaise(true);
 	connect(m_pPasteServerButton,SIGNAL(clicked()),this,SLOT(pasteServer()));
@@ -1040,11 +1068,11 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
-	m_pImportButton = new KviStyledToolButton(vbox);
-	m_pImportButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
+	m_pImportButton = new QToolButton(vbox);
+	m_pImportButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
 	m_pImportButton->setAutoRaise(true);
-	m_pImportButton->setPopup(m_pImportPopup);
-	m_pImportButton->setPopupDelay(1);
+	m_pImportButton->setMenu(m_pImportPopup);
+//	m_pImportButton->setPopupDelay(1);
 	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
 
 	QFrame * lll = new QFrame(vbox);
@@ -1057,7 +1085,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 
 /*
-	m_pIpV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
 
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIpV6Check->setEnabled(false);
@@ -1086,11 +1114,11 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 
-	QToolButton * tb = new KviStyledToolButton(this);
+	QToolButton * tb = new QToolButton(this);
 	addWidgetToLayout(tb,1,2,1,2);
-	tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
-	tb->setPopup(m_pRecentPopup);
-	tb->setPopupDelay(1);
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
+	tb->setMenu(m_pRecentPopup);
+//	tb->setPopupDelay(1);
 	KviTalToolTip::add(tb,__tr2qs_ctx("<center>This button shows a list of recently used servers. It allows you to quickly find them in the list.</center>","options"));
 
 	KviBoolSelector * b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Show this dialog at startup","options"),KviOption_boolShowServersConnectDialogOnStart);
@@ -1146,21 +1174,27 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	kvi_u32_t uPort = port.toUInt(&bOk);
 	// we have the port too
 
-	KviTalListViewItem * pFoundNet = 0;
-	KviTalListViewItem * pFoundSrv = 0;
+	KviTalTreeWidgetItem * pFoundNet = 0;
+	KviTalTreeWidgetItem * pFoundSrv = 0;
 
-	for(KviTalListViewItem * net = m_pListView->firstChild();net;net = net->nextSibling())
+	//for(KviTalTreeWidgetItem * net = m_pTreeWidget->firstChild();net;net = net->nextSibling()
+	KviTalTreeWidgetItem * net;
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		for(KviTalListViewItem * srv = net->firstChild();srv;srv = srv->nextSibling())
+		net=(KviTalTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		//for(KviTalTreeWidgetItem * srv = net->firstChild();srv;srv = srv->nextSibling())
+		KviTalTreeWidgetItem * srv;
+		for (int j=0;j<net->childCount();j++)
 		{
-			KviStr tmp = ((KviServerOptionsListViewItem *)srv)->m_pServerData->hostName();
+			srv=(KviTalTreeWidgetItem *)net->child(i);
+			KviStr tmp = ((KviServerOptionsTreeWidgetItem *)srv)->m_pServerData->hostName();
 			if(kvi_strEqualCI(tmp.ptr(),data.ptr()))
 			{
-				if(((KviServerOptionsListViewItem *)srv)->m_pServerData->port() == uPort)
+				if(((KviServerOptionsTreeWidgetItem *)srv)->m_pServerData->port() == uPort)
 				{
-					net->setOpen(true);
-					m_pListView->setCurrentItem(srv);
-					m_pListView->ensureItemVisible(srv);
+					net->setExpanded(true);
+					m_pTreeWidget->setCurrentItem(srv);
+					m_pTreeWidget->scrollToItem(srv);
 					return;
 				} else {
 					if(!pFoundNet)
@@ -1179,9 +1213,9 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	// fallback to the server with the wrong port
 	if(pFoundNet)
 	{
-		pFoundNet->setOpen(true);
-		m_pListView->setCurrentItem(pFoundSrv);
-		m_pListView->ensureItemVisible(pFoundSrv);
+		pFoundNet->setExpanded(true);
+		m_pTreeWidget->setCurrentItem(pFoundSrv);
+		m_pTreeWidget->scrollToItem(pFoundSrv);
 	}
 }
 
@@ -1196,37 +1230,40 @@ void KviServerOptionsWidget::connectCurrentClicked()
 
 void KviServerOptionsWidget::fillServerList()
 {
-	KviServerOptionsListViewItem * net;
-	KviServerOptionsListViewItem * srv;
-	KviServerOptionsListViewItem * cur = 0;
+	KviServerOptionsTreeWidgetItem * net;
+	KviServerOptionsTreeWidgetItem * srv;
+	KviServerOptionsTreeWidgetItem * cur = 0;
 
 	KviPointerHashTableIterator<QString,KviIrcServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
 
 	while(KviIrcServerDataBaseRecord * r = it.current())
 	{
-		net = new KviServerOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
+		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
 		KviPointerList<KviIrcServer> * sl = r->serverList();
 		bool bCurrent = r->network()->name() == g_pIrcServerDataBase->currentNetworkName().toUtf8().data();
-		net->setOpen(bCurrent);
+		net->setExpanded(bCurrent);
 		for(KviIrcServer * s = sl->first();s;s = sl->next())
 		{
-			srv = new KviServerOptionsListViewItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
+			srv = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
 
 			if((s == r->currentServer()) && bCurrent)
 			{
-				m_pListView->setSelected(srv,true);
+				srv->setSelected(true);
 				cur = srv;
 			}
 		}
 		++it;
 	}
-	if(cur)m_pListView->ensureItemVisible(cur);
+	if(cur)m_pTreeWidget->scrollToItem(cur);
 }
-
-void KviServerOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
+void KviServerOptionsWidget::itemDoubleClicked(KviTalTreeWidgetItem*, int )
+{
+	detailsClicked();
+}
+void KviServerOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
 {
 	saveLastItem();
-	m_pLastEditedItem = (KviServerOptionsListViewItem *)it;
+	m_pLastEditedItem = (KviServerOptionsTreeWidgetItem *)it;
 
 	if(m_pLastEditedItem)
 	{
@@ -1280,61 +1317,67 @@ void KviServerOptionsWidget::commit()
 {
 	saveLastItem();
 	g_pIrcServerDataBase->clear();
-	KviServerOptionsListViewItem * it = (KviServerOptionsListViewItem *)m_pListView->firstChild();
-	while(it)
+//	KviServerOptionsTreeWidgetItem * it = (KviServerOptionsTreeWidgetItem *)m_pTreeWidget->firstChild();
+	KviServerOptionsTreeWidgetItem * network;
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	//while(it)
 	{
-		QString tmp = it->m_pNetworkData ? it->m_pNetworkData->name() : QString::null;
-		if(!tmp.isEmpty())
+		network=(KviServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		QString tmp = network->m_pNetworkData->name();
+		KviIrcNetwork * net = 0;
+		KviIrcServerDataBaseRecord * r = g_pIrcServerDataBase->findRecord(tmp);
+		if(r)
 		{
-			KviIrcNetwork * net = 0;
-			KviIrcServerDataBaseRecord * r = g_pIrcServerDataBase->findRecord(tmp);
-			if(r)
-			{
-				net = r->network();
-				net->copyFrom(*(it->m_pNetworkData));
-			} else {
-				net = new KviIrcNetwork(tmp);
-				net->copyFrom(*(it->m_pNetworkData));
-				r = g_pIrcServerDataBase->insertNetwork(net);
-			}
-			if(it == m_pLastEditedItem)g_pIrcServerDataBase->setCurrentNetwork(net->name());
-
-			KviServerOptionsListViewItem * ch = (KviServerOptionsListViewItem *)it->firstChild();
+			net = r->network();
+			net->copyFrom(*(network->m_pNetworkData));
+		} else {
+			net = new KviIrcNetwork(tmp);
+			net->copyFrom(*(network->m_pNetworkData));
+			r = g_pIrcServerDataBase->insertNetwork(net);
+		}
+		if(network == m_pLastEditedItem)g_pIrcServerDataBase->setCurrentNetwork(net->name());
+	
+		KviServerOptionsTreeWidgetItem * ch;
+		for (int j=0;j<network->childCount();i++)
+		{
+			//KviServerOptionsTreeWidgetItem * ch;// = (KviServerOptionsTreeWidgetItem *)it->firstChild();
 			KviIrcServer *srv;
-			
-			while(ch)
+			ch=(KviServerOptionsTreeWidgetItem *)network->child(i);
+		//	while(ch)
+		//	{
+			if(ch->m_pServerData)
 			{
-				if(ch->m_pServerData)
+				if(!ch->m_pServerData->m_szHostname.isEmpty())
 				{
-					if(!ch->m_pServerData->m_szHostname.isEmpty())
+					srv = r->findServer(ch->m_pServerData);
+					if(!srv)
 					{
-						srv = r->findServer(ch->m_pServerData);
-						if(!srv)
-						{
-							srv = new KviIrcServer(*(ch->m_pServerData));
-							r->insertServer(srv);
-						} else *srv = *(ch->m_pServerData);
-						if(srv->id().isEmpty())srv->generateUniqueId();
-						if(ch == m_pLastEditedItem)
-						{
-							g_pIrcServerDataBase->setCurrentNetwork(net->name());
-							r->setCurrentServer(srv);
-						}
+						srv = new KviIrcServer(*(ch->m_pServerData));
+						r->insertServer(srv);
+					} else *srv = *(ch->m_pServerData);
+					if(srv->id().isEmpty())srv->generateUniqueId();
+					if(ch == m_pLastEditedItem)
+					{
+						g_pIrcServerDataBase->setCurrentNetwork(net->name());
+						r->setCurrentServer(srv);
 					}
 				}
-				ch = (KviServerOptionsListViewItem *)ch->nextSibling();
 			}
+			//ch = (KviServerOptionsTreeWidgetItem *)ch->nextSibling();
 		}
-		it = (KviServerOptionsListViewItem *)it->nextSibling();
+			
 	}
+	//	it = (KviServerOptionsTreeWidgetItem *)it->nextSibling();
+//}
 
 	KviOptionsWidget::commit();
 }
 
-void KviServerOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
+void KviServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
 {
 	int id;
-	bool bServer = (it && ((KviServerOptionsListViewItem *)it)->m_pServerData);
+	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
+	bool bServer = (it && ((KviServerOptionsTreeWidgetItem *)it)->m_pServerData);
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Remove Network","options"),this,SLOT(removeCurrent()));
@@ -1423,16 +1466,19 @@ void KviServerOptionsWidget::importerDead()
 
 void KviServerOptionsWidget::importServer(const KviIrcServer &s,const QString &network)
 {
-	KviServerOptionsListViewItem * net = findNetItem(network);
+	KviServerOptionsTreeWidgetItem * net = findNetItem(network);
 	if(!net)
 	{
 		KviIrcNetwork d(network);
-		net = new KviServerOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
-		net->setOpen(true);
+		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+		net->setExpanded(true);
 	}
 
-	for(KviServerOptionsListViewItem * srv = (KviServerOptionsListViewItem *)net->firstChild();srv;srv = (KviServerOptionsListViewItem *)srv->nextSibling())
+	//for(KviServerOptionsTreeWidgetItem * srv = (KviServerOptionsTreeWidgetItem *)net->firstChild();srv;srv = (KviServerOptionsTreeWidgetItem *)srv->nextSibling())
+	KviServerOptionsTreeWidgetItem * srv ;
+	for(int i=0;i<net->childCount();i++)
 	{
+		srv=(KviServerOptionsTreeWidgetItem *) net->child(i);
 		if((srv)->m_pServerData->useSSL() == s.useSSL())
 		{
 			if(srv->m_pServerData->isIpV6() == s.isIpV6())
@@ -1444,8 +1490,8 @@ void KviServerOptionsWidget::importServer(const KviIrcServer &s,const QString &n
 					if(!s.ipAddress().isEmpty())srv->m_pServerData->setIpAddress(s.ipAddress());
 					if(!s.password().isEmpty())srv->m_pServerData->setPassword(s.password());
 					if(!s.nickName().isEmpty())srv->m_pServerData->setNickName(s.nickName());
-					m_pListView->setCurrentItem(srv);
-					m_pListView->ensureItemVisible(srv);
+					m_pTreeWidget->setCurrentItem(srv);
+					m_pTreeWidget->scrollToItem(srv);
 					return;
 				}
 			}
@@ -1453,28 +1499,28 @@ void KviServerOptionsWidget::importServer(const KviIrcServer &s,const QString &n
 	}
 
 	// not found : add it!
-	KviServerOptionsListViewItem * newServer = new KviServerOptionsListViewItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&s);
-	m_pListView->setCurrentItem(newServer);
-	m_pListView->ensureItemVisible(newServer);
+	KviServerOptionsTreeWidgetItem * newServer = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&s);
+	m_pTreeWidget->setCurrentItem(newServer);
+	m_pTreeWidget->scrollToItem(newServer);
 }
 
 void KviServerOptionsWidget::newNetwork()
 {
 	KviIrcNetwork d(__tr2qs_ctx("New Network","options"));
-	KviServerOptionsListViewItem * it = new KviServerOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
-	it->setOpen(true);
-	m_pListView->setSelected(it,true);
-	m_pListView->ensureItemVisible(it);
+	KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
+	it->setExpanded(true);
+	it->setSelected(true);
+	m_pTreeWidget->scrollToItem(it);
 }
 
 void KviServerOptionsWidget::newServer()
 {
 	if(m_pLastEditedItem)
 	{
-		KviServerOptionsListViewItem * net;
+		KviServerOptionsTreeWidgetItem * net;
 		if(m_pLastEditedItem->m_pServerData)
 		{
-			net = (KviServerOptionsListViewItem *)m_pLastEditedItem->parent();
+			net = (KviServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
 			if(!net)return;
 		}
 		else net = m_pLastEditedItem;
@@ -1484,13 +1530,13 @@ void KviServerOptionsWidget::newServer()
 		tmp.setCacheIp(false);
 		tmp.generateUniqueId();
 
-		KviServerOptionsListViewItem * it = new KviServerOptionsListViewItem(net,
+		KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,
 									*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
 
-		net->setOpen(true);
+		net->setExpanded(true);
 
-		m_pListView->setSelected(it,true);
-		m_pListView->ensureItemVisible(it);
+		it->setSelected(true);
+		m_pTreeWidget->scrollToItem(it);
 	}
 }
 
@@ -1513,58 +1559,63 @@ void KviServerOptionsWidget::pasteServer()
 	{
 		if(m_pLastEditedItem)
 		{
-			KviServerOptionsListViewItem * net;
+			KviServerOptionsTreeWidgetItem * net;
 			if(m_pLastEditedItem->m_pServerData)
 			{
-				net = (KviServerOptionsListViewItem *)m_pLastEditedItem->parent();
+				net = (KviServerOptionsTreeWidgetItem *)m_pLastEditedItem->parent();
 				if(!net)return;
 			}
 			else net = m_pLastEditedItem;
 
-			KviServerOptionsListViewItem * it = new KviServerOptionsListViewItem(net,
+			KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,
 							*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),m_pClipboard);
 
-			net->setOpen(true);
+			net->setExpanded(true);
 
-			m_pListView->setSelected(it,true);
-			m_pListView->ensureItemVisible(it);
+			it->setSelected(true);
+			m_pTreeWidget->scrollToItem(it);
 		}
 	}
 }
 
 void KviServerOptionsWidget::removeCurrent()
 {
+	/*
 	if(m_pLastEditedItem)
 	{
-		KviTalListViewItem * it = m_pLastEditedItem->itemAbove();
+		KviTalTreeWidgetItem * it = m_pLastEditedItem->itemAbove();
 		if(!it)it = m_pLastEditedItem->firstChild() ? m_pLastEditedItem->nextSibling() : m_pLastEditedItem->itemBelow();
 		delete m_pLastEditedItem;
 		m_pLastEditedItem = 0;
-		if(!it)it = m_pListView->firstChild();
+		if(!it)it = m_pTreeWidget->firstChild();
 		if(it)
 		{
-			m_pListView->setSelected(it,true);
-			m_pListView->ensureItemVisible(it);
+			it->setSelected(true);
+			m_pTreeWidget->scrollToItem(it);
 		}
 	}
+	*/
 }
 
-KviServerOptionsListViewItem * KviServerOptionsWidget::findNetItem(const QString &netname)
+KviServerOptionsTreeWidgetItem * KviServerOptionsWidget::findNetItem(const QString &netname)
 {
-	KviServerOptionsListViewItem * it = (KviServerOptionsListViewItem *)m_pListView->firstChild();
-	while(it)
+	
+	KviServerOptionsTreeWidgetItem * it;// = (KviServerOptionsTreeWidgetItem *)m_pTreeWidget->firstChild();
+	//while(it)
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
+		it=(KviServerOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(KviQString::equalCI(it->text(0),netname))return it;
-		it = (KviServerOptionsListViewItem *)it->nextSibling();
+	//	it = (KviServerOptionsTreeWidgetItem *)it->nextSibling();
 	}
 	return 0;
 }
 
 void KviServerOptionsWidget::clearList()
 {
-	m_pListView->clear();
+	m_pTreeWidget->clear();
 	m_pLastEditedItem = 0;
-	listViewItemSelectionChanged(0);
+	currentItemChanged(0,0);
 }
 
 void KviServerOptionsWidget::detailsClicked()

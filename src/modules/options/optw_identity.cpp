@@ -365,7 +365,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	i = KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).toUInt(&bOk);
 	if(!bOk)i = 0;
 	if(i > 120)i = 120;
-	m_pAgeCombo->setCurrentItem(i);
+	m_pAgeCombo->setCurrentIndex(i);
 
 	hb->setStretchFactor(m_pAgeCombo,1);
 
@@ -479,7 +479,7 @@ KviIdentityAvatarOptionsWidget::KviIdentityAvatarOptionsWidget(QWidget * parent)
 		"The image also should be smaller than 800x600 pixels since<br>" \
 		"it will have to be viewable in everyone's monitor.","options");
 
-	m_pUseAvatarCheck = new KviStyledCheckBox(__tr2qs_ctx("Use avatar","options"),this);
+	m_pUseAvatarCheck = new QCheckBox(__tr2qs_ctx("Use avatar","options"),this);
 	addWidgetToLayout(m_pUseAvatarCheck,0,0,0,0);
 	m_pUseAvatarCheck->setChecked(bHaveAvatar);
 	mergeTip(m_pUseAvatarCheck,szTip);

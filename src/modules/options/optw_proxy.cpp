@@ -29,7 +29,7 @@
 #include "kvi_netutils.h"
 #include "kvi_settings.h"
 #include "kvi_options.h"
-#include "kvi_styled_controls.h"
+//#include "kvi_styled_controls.h"
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
@@ -40,16 +40,17 @@
 #include <QCheckBox>
 #include <QCursor>
 #include <QToolButton>
+#include <QIcon>
 
 
-KviProxyOptionsListViewItem::KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx)
-: KviTalListViewItem(parent,prx->m_szHostname.ptr())
+KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
+: KviTalTreeWidgetItem(parent,prx->m_szHostname.ptr())
 {
-	setPixmap(0,pm);
+	setIcon(0,QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
 }
 
-KviProxyOptionsListViewItem::~KviProxyOptionsListViewItem()
+KviProxyOptionsTreeWidgetItem::~KviProxyOptionsTreeWidgetItem()
 {
 	delete m_pProxyData;
 }
@@ -61,34 +62,35 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
 
-	m_pListView = new KviTalListView(this);
-	addWidgetToLayout(m_pListView,0,1,0,1);
-	m_pListView->addColumn(__tr2qs_ctx("Proxy","options"));
-	m_pListView->setRootIsDecorated(true);
-	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(KviTalListView::Single);
+	m_pTreeWidget = new KviTalTreeWidget(this);
+	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
+	m_pTreeWidget->addColumn(__tr2qs_ctx("Proxy","options"));
+	m_pTreeWidget->setRootIsDecorated(true);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),
-		this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-		this,SLOT(listViewRightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),
+		this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
+			this,SLOT(customContextMenuRequested(const QPoint &)));
 
 	QString tiptxt = __tr2qs_ctx("<center>This is the list of available proxy servers.<br>" \
 				"Right-click on the list to add or remove proxies.</center>","options");
-	mergeTip(m_pListView,tiptxt);
-	mergeTip(m_pListView->viewport(),tiptxt);
+	mergeTip(m_pTreeWidget,tiptxt);
+	mergeTip(m_pTreeWidget->viewport(),tiptxt);
 
 	KviTalVBox * vbox = new KviTalVBox(this);
 	addWidgetToLayout(vbox,1,1,1,1);
 	
-	QToolButton * tb = new KviStyledToolButton(vbox);
-	tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)));
+	QToolButton * tb = new QToolButton(vbox);
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY))));
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
 	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
 
-	tb = new KviStyledToolButton(vbox);
-	tb->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)));
+	tb = new QToolButton(vbox);
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
 	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
@@ -114,14 +116,14 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	m_pPassLabel = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
 	m_pPassEdit = new QLineEdit(gbox);
 	m_pProtocolLabel = new QLabel(__tr2qs_ctx("Protocol:","options"),gbox);
-	m_pProtocolBox = new QComboBox(false,gbox);
+	m_pProtocolBox = new QComboBox(gbox);
 
 	QStringList l;
 	KviProxy::getSupportedProtocolNames(l);
 
-	m_pProtocolBox->insertStringList(l);
+	m_pProtocolBox->addItems(l);
 
-	m_pIpV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
 	connect(m_pIpV6Check,SIGNAL(toggled(bool)),this,SLOT(ipV6CheckToggled(bool)));
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIpV6Check->setEnabled(false);
@@ -148,26 +150,26 @@ void KviProxyOptionsWidget::ipV6CheckToggled(bool bEnabled)
 
 void KviProxyOptionsWidget::fillProxyList()
 {
-	KviProxyOptionsListViewItem * prx;
+	KviProxyOptionsTreeWidgetItem * prx;
 
 	KviPointerList<KviProxy> * l = g_pProxyDataBase->proxyList();
 
 	for(KviProxy * p = l->first();p;p = l->next())
 	{
-		prx = new KviProxyOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),p);
+		prx = new KviProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),p);
 		if(p == g_pProxyDataBase->currentProxy())
 		{
-			m_pListView->setSelected(prx,true);
-			m_pListView->ensureItemVisible(prx);
+			prx->setSelected(true);
+			m_pTreeWidget->scrollToItem(prx);
 		}
 	}
-	if(!(g_pProxyDataBase->currentProxy()))listViewItemSelectionChanged(0);
+	if(!(g_pProxyDataBase->currentProxy()))currentItemChanged(0,0);
 }
 
-void KviProxyOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
+void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
 {
 	if(m_pLastEditedItem)saveLastItem();
-	m_pLastEditedItem = (KviProxyOptionsListViewItem *)it;
+	m_pLastEditedItem = (KviProxyOptionsTreeWidgetItem *)it;
 
 	m_pProxyLabel->setEnabled(m_pLastEditedItem);
 	m_pProxyEdit->setEnabled(m_pLastEditedItem);
@@ -193,10 +195,10 @@ void KviProxyOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it)
 
 		for(int i=0;i<m_pProtocolBox->count();i++)
 		{
-			KviStr txt = m_pProtocolBox->text(i);
+			KviStr txt = m_pProtocolBox->itemText(i);
 			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName(),txt.ptr()))
 			{
-				m_pProtocolBox->setCurrentItem(i);
+				m_pProtocolBox->setCurrentIndex(i);
 				break;
 			}
 		}
@@ -288,18 +290,21 @@ void KviProxyOptionsWidget::commit()
 {
 	saveLastItem();
 	g_pProxyDataBase->clear();
-	KviProxyOptionsListViewItem * it = (KviProxyOptionsListViewItem *)m_pListView->firstChild();
-	while(it)
+	KviProxyOptionsTreeWidgetItem * it;// = (KviProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItemCount();
+	
+	//while(it)
+	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		KviStr tmp = it->text(0);
-		if(tmp.hasData())
+		it=(KviProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);	
+		QString tmp = it->text(0);
+		if(!tmp.isEmpty())
 		{
-			KviProxy * prx = new KviProxy(*(((KviProxyOptionsListViewItem *)it)->m_pProxyData));
+			KviProxy * prx = new KviProxy(*(((KviProxyOptionsTreeWidgetItem *)it)->m_pProxyData));
 			g_pProxyDataBase->insertProxy(prx);
 
 			if(it == m_pLastEditedItem)g_pProxyDataBase->setCurrentProxy(prx);
 		}
-		it = (KviProxyOptionsListViewItem *)it->nextSibling();
+		//it = (KviProxyOptionsTreeWidgetItem *)it->nextSibling();
 	}
 
 	if(g_pProxyDataBase->currentProxy() == 0)
@@ -310,8 +315,9 @@ void KviProxyOptionsWidget::commit()
 	KviOptionsWidget::commit();
 }
 
-void KviProxyOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
+void KviProxyOptionsWidget::customContextMenuRequested(const QPoint &pos)
 {
+	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
 	m_pContextPopup->setItemEnabled(m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent())),it);
@@ -321,9 +327,9 @@ void KviProxyOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,co
 void KviProxyOptionsWidget::newProxy()
 {
 	KviProxy prx;
-	KviProxyOptionsListViewItem * it = new KviProxyOptionsListViewItem(m_pListView,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),&prx);
-	m_pListView->setSelected(it,true);
-	m_pListView->ensureItemVisible(it);
+	KviProxyOptionsTreeWidgetItem * it = new KviProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),&prx);
+	it->setSelected(true);
+	m_pTreeWidget->scrollToItem(it);
 }
 
 void KviProxyOptionsWidget::removeCurrent()
@@ -332,13 +338,13 @@ void KviProxyOptionsWidget::removeCurrent()
 	{
 		delete m_pLastEditedItem;
 		m_pLastEditedItem = 0;
-		KviTalListViewItem * it = m_pListView->firstChild();
+		KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
 		if(it)
 		{
-			m_pListView->setSelected(it,true);
-			m_pListView->ensureItemVisible(it);
+			it->setSelected(true);
+			//m_pTreeWidget->ensureItemVisible(it);
 		} else {
-			listViewItemSelectionChanged(0);
+			currentItemChanged(0,0);
 		}
 	}
 }

@@ -30,7 +30,7 @@
 #include "kvi_nickserv.h"
 #include "kvi_ircmask.h"
 #include "kvi_tal_tooltip.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_TreeWidget.h"
 
 #include <QLayout>
 #include <QLineEdit>
@@ -51,7 +51,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	QString html_center_begin = "<center>";
 	QString html_center_end = "</center>";
 
-	QGridLayout * gl = new QGridLayout(this,bUseServerMaskField ? 7 : 6,4,10,5);
+	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
 	
 	QLabel * l = new QLabel(__tr2qs_ctx("Registered NickName","options"),this);
 	gl->addWidget(l,0,0);
@@ -229,26 +229,28 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	KviNickServRuleSet * rs = g_pNickServRuleSet;
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 
-	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
+	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
-	KviTalToolTip::add(m_pNickServCheck,
-			__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
+	KviTalToolTip::add(m_pNickServCheck,__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
 
-	m_pNickServListView = new KviTalListView(this);
-	m_pNickServListView->setSelectionMode(KviTalListView::Single);
-	m_pNickServListView->setAllColumnsShowFocus(true);
-	m_pNickServListView->addColumn(__tr2qs_ctx("Nickname","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("Server mask","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Mask","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Request Mask","options"));
-	m_pNickServListView->addColumn(__tr2qs_ctx("Identify Command","options"));
-	connect(m_pNickServListView,SIGNAL(selectionChanged()),this,SLOT(enableDisableNickServControls()));
+	m_pNickServTreeWidget = new KviTalTreeWidget(this);
+	m_pNickServTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pNickServTreeWidget->setAllColumnsShowFocus(true);
+	QStringList columnLabels;
+	
+	columnLabels.append(__tr2qs_ctx("Nickname","options"));
+	columnLabels.append(__tr2qs_ctx("Server mask","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ Mask","options"));
+	columnLabels.append(__tr2qs_ctx("NickServ Request Mask","options"));
+	columnLabels.append(__tr2qs_ctx("Identify Command","options"));
+	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
+	connect(m_pNickServTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableNickServControls()));
 
-	gl->addWidget(m_pNickServListView,1,0,1,3);
-//	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
-	KviTalToolTip::add(m_pNickServListView,
+	gl->addWidget(m_pNickServTreeWidget,1,0,1,3);
+//	gl->addMultiCellWidget(m_pNickServTreeWidget,1,1,0,2);
+	KviTalToolTip::add(m_pNickServTreeWidget,\
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 			"KVIrc will use them to model its automatic interaction with NickServ on all the networks.<br>" \
 			"Please be aware that this feature can cause your NickServ passwords to be stolen " \
@@ -278,7 +280,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 		KviPointerList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->serverMask(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
+			(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,rule->registeredNick(),rule->serverMask(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
 		}
 	}
 
@@ -293,7 +295,7 @@ KviNickServOptionsWidget::~KviNickServOptionsWidget()
 
 void KviNickServOptionsWidget::editNickServRule()
 {
-	KviTalListViewItem * it = m_pNickServListView->currentItem();
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	KviNickServRule r(it->text(0),it->text(2),it->text(3),it->text(4),it->text(1));
 	KviNickServRuleEditor ed(this,true);
@@ -312,12 +314,12 @@ void KviNickServOptionsWidget::addNickServRule()
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,true);
 	if(ed.editRule(&r))
-		(void)new KviTalListViewItem(m_pNickServListView,r.registeredNick(),r.serverMask(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
+		(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,r.registeredNick(),r.serverMask(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
 }
 
 void KviNickServOptionsWidget::delNickServRule()
 {
-	KviTalListViewItem * it = m_pNickServListView->currentItem();
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	delete it;
 	enableDisableNickServControls();
@@ -326,9 +328,9 @@ void KviNickServOptionsWidget::delNickServRule()
 void KviNickServOptionsWidget::enableDisableNickServControls()
 {
 	bool bEnabled = m_pNickServCheck->isChecked();
-	m_pNickServListView->setEnabled(bEnabled);
+	m_pNickServTreeWidget->setEnabled(bEnabled);
 	m_pAddRuleButton->setEnabled(bEnabled);
-	bEnabled = bEnabled && (m_pNickServListView->childCount() > 0) && m_pNickServListView->currentItem();
+	bEnabled = bEnabled && (m_pNickServTreeWidget->topLevelItemCount()) && m_pNickServTreeWidget->currentItem();
 	m_pDelRuleButton->setEnabled(bEnabled);
 	m_pEditRuleButton->setEnabled(bEnabled);
 }
@@ -336,14 +338,16 @@ void KviNickServOptionsWidget::enableDisableNickServControls()
 void KviNickServOptionsWidget::commit()
 {
 	g_pNickServRuleSet->clear();
-	if(m_pNickServListView->childCount() > 0)
+	if(m_pNickServTreeWidget->topLevelItemCount())
 	{
 		g_pNickServRuleSet->setEnabled(m_pNickServCheck->isChecked());
-		KviTalListViewItem * it = m_pNickServListView->firstChild();
-		while(it)
+		KviTalTreeWidgetItem * it;// = m_pNickServTreeWidget->firstChild();
+		for (int i=0;i<m_pNickServTreeWidget->topLevelItemCount();i++)
+//		while(it)
 		{
+			it=(KviTalTreeWidgetItem *)m_pNickServTreeWidget->topLevelItem(i);
 			g_pNickServRuleSet->addRule(KviNickServRule::createInstance(it->text(0),it->text(2),it->text(3),it->text(4),it->text(1)));
-			it = it->nextSibling();
+			//it = it->nextSibling();
 		}
 	}
 	KviOptionsWidget::commit();

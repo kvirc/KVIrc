@@ -413,7 +413,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 		lbt = new KviTalListBoxText(m_pLevelListBox,tmpn);
 	}
 
-	m_pIconButton = new KviStyledToolButton(box);
+	m_pIconButton = new QToolButton(box);
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
 	m_pIconPopup = new KviTalPopupMenu(this);
@@ -422,7 +422,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pIconPopup->insertItem(iw);
 
 
-	m_pEnableLogging = new KviStyledCheckBox(__tr2qs_ctx("Log this","options"),box);
+	m_pEnableLogging = new QCheckBox(__tr2qs_ctx("Log this","options"),box);
 
 	KviTalHBox * h = new KviTalHBox(this);
 	addWidgetToLayout(h,0,1,3,1);

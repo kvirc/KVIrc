@@ -3503,7 +3503,11 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 	if(e->pWidget->parent() != par)
 	{
 		QWidget * oldPar = (QWidget *)e->pWidget->parent();
-		e->pWidget->reparent(par,QPoint(0,0));
+		//e->pWidget->reparent(par,QPoint(0,0));
+			e->pWidget->setParent(par);
+				e->pWidget->setGeometry(0,0,e->pWidget->width(),e->pWidget->height());
+	//		
+
 		delete oldPar;
 	}
 	if(e->bIsContainer)

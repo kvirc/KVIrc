@@ -25,17 +25,17 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_mediatype.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QLineEdit>
 #include <QPushButton>
 
 
-class KviMediaTypeListViewItem : public KviTalListViewItem
+class KviMediaTypeTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviMediaTypeListViewItem(KviTalListView * w,KviMediaType * t);
-	~KviMediaTypeListViewItem();
+	KviMediaTypeTreeWidgetItem(KviTalTreeWidget * w,KviMediaType * t);
+	~KviMediaTypeTreeWidgetItem();
 private:
 	KviMediaType m_data;
 public:
@@ -57,7 +57,7 @@ public:
 	KviMediaTypesOptionsWidget(QWidget * parent);
 	~KviMediaTypesOptionsWidget();
 private:
-	KviTalListView   * m_pListView;
+	KviTalTreeWidget  * m_pTreeWidget;
 	QLineEdit   * m_pDescription;
 	QLineEdit   * m_pIanaType;
 	QLineEdit   * m_pFileMask;
@@ -67,14 +67,14 @@ private:
 	QLineEdit   * m_pRemoteExecCommandline;
 	QLineEdit   * m_pIcon;
 	QPushButton * m_pDelete;
-	KviMediaTypeListViewItem * m_pLastItem;
+	KviMediaTypeTreeWidgetItem * m_pLastItem;
 private:
-	void fillListView();
+	void fillTreeWidget();
 	void saveLastItem();
 	void enableOrDisable();
 	void setLineEdits();
 private slots:
-	void currentItemChanged(KviTalListViewItem *it);
+	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
 	void newMediaType();
 	void delMediaType();
 public:

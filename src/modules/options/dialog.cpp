@@ -195,12 +195,12 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
-	vbox->setSpacing(2);
+	vbox->setSpacing(0);
 	vbox->setMargin(0);
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
-	m_pSearchButton = new KviStyledToolButton(hbox);
+	m_pSearchButton = new QToolButton(hbox);
 	m_pSearchButton->setUsesBigPixmap(false);
 	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)));
 	connect(m_pSearchButton,SIGNAL(clicked()),this,SLOT(searchClicked()));

@@ -54,7 +54,7 @@ typedef struct _KviOptionsWidgetInstanceEntry
 	bool                                        bIsContainer;
 	bool                                        bIsNotContained;
 	KviPointerList<KviOptionsWidgetInstanceEntry> * pChildList;
-	bool                                        bDoInsert; // a helper for KviOptionsDialog::fillListView()
+	bool                                        bDoInsert; // a helper for KviOptionsDialog::fillTreeWidget()
 } KviOptionsWidgetInstanceEntry;
 
 

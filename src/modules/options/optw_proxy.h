@@ -24,7 +24,7 @@
 //
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 class QLabel;
 class QLineEdit;
@@ -37,11 +37,11 @@ class KviProxyDataBase;
 
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-class KviProxyOptionsListViewItem : public KviTalListViewItem
+class KviProxyOptionsTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviProxyOptionsListViewItem(KviTalListView *parent,const QPixmap &pm,KviProxy * prx);
-	~KviProxyOptionsListViewItem();
+	KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx);
+	~KviProxyOptionsTreeWidgetItem();
 public:
 	KviProxy * m_pProxyData;
 };
@@ -60,7 +60,7 @@ public:
 	KviProxyOptionsWidget(QWidget * parent);
 	~KviProxyOptionsWidget();
 protected:
-	KviTalListView    * m_pListView;
+	KviTalTreeWidget    * m_pTreeWidget;
 	QLabel       * m_pProxyLabel;
 	QLineEdit    * m_pProxyEdit;
 	QLabel       * m_pIpLabel;
@@ -75,14 +75,14 @@ protected:
 	QComboBox    * m_pProtocolBox;
 	KviTalPopupMenu   * m_pContextPopup;
 	QCheckBox    * m_pIpV6Check;
-	KviProxyOptionsListViewItem * m_pLastEditedItem;
+	KviProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:
 
 	void fillProxyList();
 	void saveLastItem();
 protected slots:
-	void listViewItemSelectionChanged(KviTalListViewItem *it);
-	void listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
+	void customContextMenuRequested(const QPoint &pnt);
 	void newProxy();
 	void removeCurrent();
 	void ipV6CheckToggled(bool bEnabled);

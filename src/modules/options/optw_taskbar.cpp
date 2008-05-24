@@ -171,7 +171,7 @@ void KviTreeTaskBarBackgroundOptionsWidget::commit()
 	KviOptionsWidget::commit();
 
 	int iFlags=0;
-	switch(m_pHorizontalAlign->currentItem())
+	switch(m_pHorizontalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignLeft;
@@ -183,7 +183,7 @@ void KviTreeTaskBarBackgroundOptionsWidget::commit()
 			iFlags|=Qt::AlignHCenter;
 			break;
 	}
-	switch(m_pVerticalAlign->currentItem())
+	switch(m_pVerticalAlign->currentIndex())
 	{
 		case 1:
 			iFlags|=Qt::AlignTop;

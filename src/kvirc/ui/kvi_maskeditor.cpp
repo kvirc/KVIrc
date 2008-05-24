@@ -198,7 +198,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setAllColumnsShowFocus(true);
 //	m_pMaskBox->setShowSortIndicator(true);
 	m_pMaskBox->setSortingEnabled(true);
-	connect(m_pMaskBox,SIGNAL(doubleClicked ( KviTalTreeWidgetItem * )),this,SLOT(listViewDoubleClicked( KviTalTreeWidgetItem * )));
+	connect(m_pMaskBox,SIGNAL(itemDoubleClicked ( KviTalTreeWidgetItem * )),this,SLOT(itemDoubleClicked( KviTalTreeWidgetItem * )));
 	g->addWidget(m_pMaskBox,3,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
@@ -317,7 +317,7 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 	}
 }
 
-void KviMaskEditor::listViewDoubleClicked( KviTalTreeWidgetItem * pItem)
+void KviMaskEditor::itemDoubleClicked( KviTalTreeWidgetItem * pItem)
 {
 	if(pItem)
 	{
