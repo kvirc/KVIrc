@@ -32,7 +32,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>>@VERSION_RELEASE@</string>
+	<string>@VERSION_RELEASE@</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>NSAppleScriptEnabled</key>
