@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_TreeWidget.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QDialog>
 #include <QButtonGroup>

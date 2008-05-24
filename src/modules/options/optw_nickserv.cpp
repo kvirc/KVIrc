@@ -30,7 +30,7 @@
 #include "kvi_nickserv.h"
 #include "kvi_ircmask.h"
 #include "kvi_tal_tooltip.h"
-#include "kvi_tal_TreeWidget.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QLayout>
 #include <QLineEdit>
