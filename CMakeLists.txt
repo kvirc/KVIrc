@@ -346,7 +346,7 @@ IF(WANT_OPENSSL)
 		LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
 		SET(COMPILE_SSL_SUPPORT 1)
 		SET(CMAKE_STATUS_SSL_SUPPORT "yes")
-                IF(!MINGW)
+                IF(NOT MINGW)
                         # CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
                         LIST(APPEND LIBS -lcrypto)
                 ENDIF()
@@ -612,7 +612,7 @@ IF(WANT_GETTEXT)
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "no")
 		SET(USE_GETTEXT_TRANSLATIONS 0)
 	ENDIF()
-	
+
 	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE)
 		# message-update target;
 		ADD_CUSTOM_TARGET(message-update)
@@ -672,6 +672,23 @@ ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DOXYGEN)
 ENDIF()
 
+
+###############################################################################
+#
+# The User documentation target (kvirc internal help)
+#
+###############################################################################
+
+#currently WIP
+#OPTION(WANT_USERDOCS "Whether to generate user documentation (aka internal help)" ON)
+#IF(WITHOUT_USERDOCS)
+#	SET(WANT_USERDOCS OFF)
+#ENDIF()
+#IF(WANT_USERDOCS)
+#	SET(CMAKE_STATUS_GEN_USERDOC "yes")
+#ELSE()
+#	SET(CMAKE_STATUS_GEN_USERDOC "user disabled")
+#ENDIF()
 
 ###############################################################################
 #
@@ -811,6 +828,7 @@ MESSAGE(STATUS "  Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_B
 MESSAGE(STATUS "  Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 MESSAGE(STATUS "  Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 MESSAGE(STATUS "  GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}")
+#MESSAGE(STATUS "  Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
 MESSAGE(STATUS "  Doxygen Support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Build date                  : ${CMAKE_KVIRC_BUILD_DATE}")
