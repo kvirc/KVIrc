@@ -54,7 +54,11 @@ src/modules
 	editor - q3support
 	iograph - all excluded by #if
 	objects - q3support
-	options - optw_protection.cpp bugged
+	options
+		optw_connection: some checkboxes not working
+		optw_dcc: some checkboxes not working
+		optw_proxy: segfault removing proxy from list (listwidget issue)
+		optw_server: buttons on the right are messed
 	torrent - broken
 	fileTransferWindow
 	links

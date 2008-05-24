@@ -277,8 +277,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 				"cause more disk activity.<br>" \
 				"Reasonable values are from 512 to 4096 bytes.</center>","options"));
 
-	addRowSpacer(0,3,0,3);
-
+	addRowSpacer(0,3,0,4);
 }
 
 KviDccSendAdvancedOptionsWidget::~KviDccSendAdvancedOptionsWidget()

@@ -85,8 +85,6 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	m_pMediaTestButton = new QPushButton(__tr2qs_ctx("Test","options"),h);
 	connect(m_pMediaTestButton,SIGNAL(clicked()),this,SLOT(mediaTest()));
 
-	addRowSpacer(0,2,0,2);
-
 	soundFillBox();
 	mediaFillBox();
 	// FIXME!
@@ -137,6 +135,10 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 		d = KviLocale::encodingDescription(i);
 	}
 	m_pWinampEncodingCombo->setCurrentIndex(iMatch);
+
+	addRowSpacer(0,4,0,4);
+#else
+	addRowSpacer(0,3,0,3);
 #endif
 }
 
