@@ -1,0 +1,79 @@
+
+        KVIrc4 win32 compiling howto (WIP)
+        by CtrlAltCa
+
+This paper describes how to successfully compile a working copy ok KVIrc4 under Microsoft Windows operating systems.
+
+Requisites:
+
+  - A Microsoft Windows operating system:
+      [Needed to run KVIrc into, mandatory]
+      2000, preferably with service pack 4
+      xp, preferably with at least service pack 2
+      vista, preferably not :p
+      
+      Notice: dos-based Windows operating system (95,98,98se,me) are not officially supported by KVIrc.
+      Anyway, if you're still using such an old os, you've worst problems than this...
+      
+  - CMake from Kitware:
+      [Configuration tool; needed to compile KVIrc, mandatory]
+      Download it from http://www.cmake.org
+      The package you want is called "Windows (Win32 Installer) cmake-2.6.0-win32-x86.exe" (version number may vary).
+      You need at least version 2.4-patch8 to compile KVirc; version 2.6 will work well too. 
+
+  - Qt 4 from Trolltech:
+      [Graphic library, mandatory]
+      Download it from http://trolltech.com/developer/downloads/qt/windows
+      The package you want is called "qt-win-opensource-4.4.0-mingw.exe" (version number may vary).
+      KVIrc has been tested with Qt 4.3 upwards; older versions may not work as well.
+      A good advice is to use at least Qt version 4.4 to get a working Phonon (aka multimedia) support.
+
+  - MinGW from the MinGW team:
+      [Compiler; needed to compile KVIrc, mandatory]
+      You don't need to download it; while installing Qt4 you'll be asked if you want to perform a minimal install of MinGW too: simply answer 'yes'.
+      Anyway if you want to set up mingw by yourself, you can start from their website: http://www.mingw.org .
+  
+  - OpenSSL compiled for Win32 from Shining Light Productions:
+      [Enc/Decrypt library; needed to secure your irc sessions, optional]
+      Download it from http://www.slproweb.com/products/Win32OpenSSL.html
+      The package you want is called "Win32 OpenSSL v0.9.8g" (version number may vary; there should be a notice like "Recommended for software developers" in the package description).
+      Any recent version should work; general rule: more recent means more secure.
+      Note: probably GnuWin32's version (see infos for Zlib) works too.
+
+  - Zlib compiled for Win32:
+      [Compression library; needed for many stuffs, optional]
+      Many projects create win32 versions of zlib; a part of them support MinGW too. You can find a working version on GnuWin32's project website: http://gnuwin32.sourceforge.net/packages/zlib.htm .
+      The package you want is "Complete package, except sources" (version number may vary).
+
+  - Perl for Win32:
+      [Programming language; needed for documentation creation and optional scripting support, mandatory by now]
+      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/store/activeperl/download .
+
+  - Gnu GetText for Win32: 
+      [Localization library; needed to translate kvirc interface into your own language, optional]
+      Any version will work; We advice you to use the version you can find at http://sourceforge.net/projects/gettext .
+      The package you want is called "gettext-tools-0.13.1.bin.woe32.zip" (version number may vary).
+      
+
+Builder chain installation:
+
+First install CMake and Qt4. If you don't have already a MinGW working installation, be sure to accept the installation of a minimal MinGW offered by the Qt4 setup.
+Then install the rest of the packages. Remember to write down the installation paths of the packages: you'll need them later.
+
+Now you have to define some environmental variable:
+
+  CMAKE_INCLUDE_PATH
+  Set it to the include subdirectories of the paths where you installed mingw, zlib and openssl. Example: 
+  C:\ZLIB\INCLUDE;C:\MINGW\INCLUDE;C:\openssl\include
+
+  CMAKE_LIBRARY_PATH
+  Set it to the libs subdirectories of the paths where you installed mingw, zlib. If the library packages you are using support several compilers, be sure you're including the right libraries directory (tipically named MinGW). Add c:\windows\system32 too (the path to the system32 durectory of your windows installation). Example:
+  C:\ZLIB\LIB;C:\MINGW\LIB;C:\openssl\lib\mingw;c:\windows\system32
+
+  PATH
+  Add to the system PATH the bin directories of CMake, Qt, MinGW. Example:
+  C:\Programmi\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
+
+Now you should be ready to compile KVIrc.
+
+  
