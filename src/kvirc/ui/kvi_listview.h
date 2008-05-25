@@ -49,7 +49,7 @@ protected:
 	virtual void paintEmptyArea(QPainter * p, const QRect & rect );
 	virtual void drawContentsOffset(QPainter * p,int ox,int oy,int cx,int cy,int cw,int ch);
 	virtual void resizeEvent(QResizeEvent * e);
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	virtual void focusInEvent(QFocusEvent * e);
 	virtual void focusOutEvent(QFocusEvent * e);
 #endif

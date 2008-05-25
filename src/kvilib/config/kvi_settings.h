@@ -58,6 +58,7 @@
 #else
 	#ifdef MINGW
 		#define COMPILE_ON_MINGW
+                #define COMPILE_NO_X
 	#endif
 
 	#ifdef Q_OS_MACX

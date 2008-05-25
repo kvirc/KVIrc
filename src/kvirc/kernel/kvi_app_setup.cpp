@@ -40,8 +40,10 @@
 #include "kvi_iconmanager.h"
 #include "kvi_config.h"
 
-#ifndef COMPILE_ON_WINDOWS
-
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	#include <shlwapi.h>
+	#include <windows.h> // at least for GetModuleFileName and *PrivateProfileString
+#else
 	#include <stdlib.h> // for getenv()
 	#include <unistd.h> // for symlink() <-- unused ?
 
@@ -50,13 +52,7 @@
 		#include <KConfigGroup>
 //		#include <kstddirs.h>
 	#endif
-
-#else
-
-	#include <shlwapi.h>
-	#include <windows.h> // at least for GetModuleFileName and *PrivateProfileString
-
-#endif //COMPILE_ON_WINDOWS
+#endif
 
 #include <QTextCodec>
 #include <QFile>
@@ -103,7 +99,7 @@ bool KviApp::checkLocalKvircDirectory(const QString szDir)
 
 bool KviApp::checkFileAssociations()
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define QUERY_BUFFER 2048
 	char* buffer;
 	DWORD len = QUERY_BUFFER;
@@ -255,7 +251,7 @@ bool KviApp::checkFileAssociations()
 
 bool KviApp::checkUriAssociations(const char * proto)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define QUERY_BUFFER 2048
 	char* buffer;
 	DWORD len = QUERY_BUFFER;
@@ -350,7 +346,7 @@ bool KviApp::checkUriAssociations(const char * proto)
 
 void KviApp::setupUriAssociations(const char * proto)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	HKEY hKey;
 	DWORD err;
 
@@ -388,7 +384,7 @@ void KviApp::setupUriAssociations(const char * proto)
 
 void KviApp::setupFileAssociations()
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	HKEY hKey;
 	DWORD err;
 
@@ -492,7 +488,7 @@ void KviApp::setupFileAssociations()
 //#define I_DO_NOT_WANT_TO_HEAR_IT_ANYMORE_THAT_KVIRC_CAN_NOT_FIND_THE_BASE_PIXMAPS
 
 // search paths for Unix-like platforms
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	const char * usualKvircGlobalPrePath[]=
 	{
 		"/usr/local",       "/opt/kde",       "/usr",
@@ -514,7 +510,7 @@ void KviApp::setupFileAssociations()
 		"/kvirc/share/",            0
 	};
 
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 //#endif //BRAIN_DAMAGED_AUTHOR_PARANOIA
 
@@ -528,7 +524,7 @@ void KviApp::findGlobalKvircDirectory()
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 #endif //GLOBAL_KVIRC_DIR
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	m_szGlobalKvircDir = applicationDirPath();
 	KviFileUtils::adjustFilePath(m_szGlobalKvircDir);
@@ -538,7 +534,7 @@ void KviApp::findGlobalKvircDirectory()
 			"The usual path for this directory is c:\\kvirc\\" KVI_VERSION_BRANCH "\\.\n"\
 			"I have tried %Q, but it seemed to fail\n" \
 			"Trying to run anyway...\n",&m_szGlobalKvircDir);
-#else // !COMPILE_ON_WINDOWS
+#else
 
 	// Since I had many problems with it
 	// because of strange distributions or KDEDIRS
@@ -633,7 +629,7 @@ void KviApp::findGlobalKvircDirectory()
 				"shipped with the kvirc source dirstribution.\n"\
 				"Trying to run anyway...\n");
 	#endif //!COMPILE_ON_MAC
-#endif //!COMPILE_ON_WINDOWS
+#endif
 }
 
 
@@ -663,7 +659,7 @@ bool KviApp::findLocalKvircDirectory()
 	}
 #endif //COMPILE_KDE_SUPPORT
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable")) {
 		m_szLocalKvircDir=g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Settings";
 		if(checkLocalKvircDirectory(m_szLocalKvircDir)) return true;
@@ -735,7 +731,7 @@ void KviApp::setupBegin()
 	QString szSetupLib;
 	getGlobalKvircDirectory(szSetupLib,KviApp::Modules);
 	KviQString::ensureLastCharIs(szSetupLib,KVI_PATH_SEPARATOR_CHAR);
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	szSetupLib.append("kvisetup.dll");
 #else
 	szSetupLib.append("libkvisetup.so");
@@ -746,7 +742,7 @@ void KviApp::setupBegin()
 		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
 			"I have been looking for the %s library but I haven't been able to load it\n" \
 			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),kvi_library_error());
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		ExitProcess(-1);
 #else
 		::exit(-1);
@@ -759,7 +755,7 @@ void KviApp::setupBegin()
 		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_begin\" function.\n" \
 			"Aborting!"));
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		ExitProcess(-1);
 #else
 		::exit(-1);
@@ -771,11 +767,11 @@ void KviApp::setupBegin()
 	if(!bRet)
 	{
 		KviMessageBox::warning(__tr2qs("Setup aborted"));
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		ExitProcess(-1);
-#else //!COMPILE_ON_WINDOWS
+#else
 		::exit(-1);
-#endif //!COMPILE_ON_WINDOWS
+#endif
 	}
 
 	// Now save it
@@ -810,7 +806,7 @@ void KviApp::setupFinish()
 void KviApp::saveKvircDirectory()
 {
 /*
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#warning you must change back hardcoded 4.0 to VERSION_BRANCH
 	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",VERSION_BRANCH);
 	KviStr szKey(KviStr::Format,"LocalKvircDirectory%s",4.0);

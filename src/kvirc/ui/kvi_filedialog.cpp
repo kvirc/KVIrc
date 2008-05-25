@@ -74,7 +74,7 @@ void KviFileDialog::goHome()
 
 bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,const QString &initial,const QString &filter,bool showHidden, bool showNative,QWidget* parent)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(showNative)
 	{
 		buffer=QFileDialog::getOpenFileName(initial,filter,parent,"open_file_name_dialog",caption);
@@ -101,7 +101,7 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 
 bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,const QString &initial,const QString &filter,bool showHidden,bool bConfirmOverwrite,bool showNative,QWidget* parent)
 {
-	#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if (showNative)
 	{
 		while (1)
@@ -125,7 +125,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 
 	}
-	#endif
+#endif
 
 
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
@@ -173,7 +173,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(showNative)
 	{
 		buffer = QFileDialog::getExistingDirectory(initial,parent,"open_file_name_dialog",caption);
@@ -208,14 +208,14 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 
 bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
 {
-	#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if (showNative)
 	{
 		buffer=QFileDialog::getOpenFileNames(filter,initial,parent,"open_file_name_dialog",caption);
 		return (buffer.count()>0);
 	}
 
-	#endif
+#endif
 	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
 	d->setWindowTitle(caption);
 	// See line 190

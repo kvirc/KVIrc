@@ -34,7 +34,7 @@
 	#include "kvi_app.h"
 	#include "kvi_qstring.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	static HWND kvi_win_findIpcSentinel()
 	{
@@ -46,7 +46,7 @@
 		return hWnd;
 	}
 
-#else //!COMPILE_ON_WINDOWS
+#else
 
 	#ifdef COMPILE_X11_SUPPORT
 		#include <X11/Xatom.h>
@@ -124,14 +124,14 @@
 		}
 	#endif //!COMPILE_NO_X
 
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 
 	#define KVI_WINDOWS_IPC_MESSAGE 0x2FACE5
 
 	bool kvi_sendIpcMessage(const char * message)
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		HWND hSentinel = kvi_win_findIpcSentinel();
 		if(hSentinel != NULL)
 		{
@@ -144,7 +144,7 @@
 			::SendMessageTimeout(hSentinel,WM_COPYDATA,(WPARAM)NULL,(LPARAM)&cpd,SMTO_BLOCK,1000,&dwResult);
 			return true;
 		}
-#else //!COMPILE_ON_WINDOWS
+#else
 	#ifdef COMPILE_X11_SUPPORT
 
 		kvi_ipcLoadAtoms();
@@ -169,7 +169,7 @@
 			return true;
 		}
 	#endif //!COMPILE_NO_X
-#endif //!COMPILE_ON_WINDOWS
+#endif
 		return false;
 	}
 
@@ -185,9 +185,9 @@
 	: QWidget(0)
 	{
 		setObjectName("kvirc4_ipc_sentinel");
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		setWindowTitle("kvirc4_ipc_sentinel");
-#else //!COMPILE_ON_WINDOWS
+#else
 	#ifdef COMPILE_X11_SUPPORT
 		kvi_ipcLoadAtoms();
 
@@ -196,7 +196,7 @@
 
 		kvi_ipcSetRemoteCommand(winId(),"");
 	#endif //!COMPILE_NO_X
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 		move(-50,-50);
 		resize(1,1);
@@ -208,7 +208,7 @@
 	{
 	}
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	bool KviIpcSentinel::winEvent(MSG * msg)
 	{
@@ -228,7 +228,7 @@
 		return false;
 	}
 
-#else //!COMPILE_ON_WINDOWS
+#else
 	#ifdef COMPILE_X11_SUPPORT
 		bool KviIpcSentinel::x11Event(XEvent *e)
 		{
@@ -259,7 +259,7 @@
 			return false;
 		}
 	#endif //!COMPILE_NO_X
-#endif //!COMPILE_ON_WINDOWS
+#endif
 	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 		#include "kvi_ipc.moc"
 	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

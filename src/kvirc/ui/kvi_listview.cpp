@@ -189,7 +189,7 @@ void KviListView::resizeEvent(QResizeEvent * e)
 	repaintContents(); // force a full repaint (otherwise qt does not honor static background here)
 }
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 void KviListView::focusInEvent(QFocusEvent * e)
 {

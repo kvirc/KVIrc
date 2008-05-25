@@ -62,7 +62,7 @@
 
 	inline void * kvi_library_symbol(kvi_library_t lib,const char * symName)
 	{
-		return GetProcAddress(lib,symName);
+		return (void *) GetProcAddress(lib,symName);
 	};
 
 	inline const char * kvi_library_error()

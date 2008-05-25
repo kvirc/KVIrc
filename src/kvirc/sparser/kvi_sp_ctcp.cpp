@@ -1146,7 +1146,7 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 
 			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build ";
 			szVersion += KviBuildInfo::buildDate();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));
 #else
 			szVersion.append(QString(" - %1 (%2)").arg(KviOsInfo::name()).arg(KviOsInfo::release()));

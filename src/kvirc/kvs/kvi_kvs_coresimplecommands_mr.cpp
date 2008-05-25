@@ -389,7 +389,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand);
 		}
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
 			ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),
@@ -410,7 +410,7 @@ namespace KviKvsCoreSimpleCommands
 					KVSCSC_pContext->warning(__tr2qs("The commandline for this url type seems to be broken (%Q)"),&szUrl);
 		
 			} else KVSCSC_pContext->warning(__tr2qs("No commandline specified for this type of url (%Q)"),&szUrl);
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		}
 #endif
 

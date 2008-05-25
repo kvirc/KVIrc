@@ -794,7 +794,7 @@ namespace KviKvsCoreFunctions
 
 		KviStr tmpFormat("");
 		
-		#ifdef COMPILE_ON_WINDOWS
+		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			QString szAllowedCharacters;
 			//windows version of strftime()
 			//kvirc crashes if other then these characters get an % character in front of them
@@ -807,7 +807,7 @@ namespace KviKvsCoreFunctions
 			while(c->unicode())
 			{
 				//Check for right Characters
-				#ifdef COMPILE_ON_WINDOWS
+				#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 					if (szAllowedCharacters.indexOf((char)(c->unicode()),0,Qt::CaseSensitive) >= 0)	tmpFormat += '%';
 				#else
 					if (c->isLetter()) tmpFormat += '%';

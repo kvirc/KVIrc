@@ -564,6 +564,10 @@ ENDIF()
 ############################################################################
 IF(MINGW)
         ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES)
+        SET(CMAKE_SHARED_LINKER_FLAGS "-fPIC -Wl,--export-all-symbols,--enable-auto-import,--enable-runtime-pseudo-reloc -Wno-deprecated")
+        SET(CMAKE_MODULE_LINKER_FLAGS "-fPIC -Wl,--export-all-symbols,--enable-auto-import,--enable-runtime-pseudo-reloc -Wno-deprecated")
+
+        LIST(APPEND LIBS -lshlwapi)
 ENDIF()
 
 ############################################################################

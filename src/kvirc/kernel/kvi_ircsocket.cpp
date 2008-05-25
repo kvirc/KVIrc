@@ -50,7 +50,7 @@
 #include <QTimer>
 #include <QSocketNotifier>
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <unistd.h> //for gettimeofday()
 #endif
 //#include <fcntl.h>
@@ -1585,7 +1585,7 @@ void KviIrcSocket::handleInvalidSocketRead(int readedLength)
 	} else {
 		//check for transmission errors
 		int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 		if((err != EAGAIN) && (err != EINTR))
@@ -1781,7 +1781,7 @@ void KviIrcSocket::flushSendQueue()
 handle_system_error:
 			// Oops...error ?
 			int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if((err == EAGAIN) || (err == EINTR) || (err == WSAEWOULDBLOCK))
 #else
 			if((err == EAGAIN)||(err == EINTR))

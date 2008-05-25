@@ -496,7 +496,7 @@ void KviIrcView::dropEvent(QDropEvent *e)
 				QUrl url = *it;
 				QString path = url.path();
 				//QString tmp = *it; //wow :)
-				#ifndef COMPILE_ON_WINDOWS
+				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 					//if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
@@ -3301,7 +3301,7 @@ no_selection_paint:
 			int iH = lineWrapsHeight + m_iFontLineSpacing;
 
 			// workaround to fix "Warning:QPainter::setCompositionMode: PorterDuff modes not supported on device on win"
-			#ifdef COMPILE_ON_WINDOWS
+			#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),QBrush(QColor(0,0,0,200)));
 			#else
 			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);

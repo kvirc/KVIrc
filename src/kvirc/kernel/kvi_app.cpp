@@ -195,7 +195,7 @@ void KviApp::setup()
 	// Initialize the random number generator
 	::srand(::time(0));
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	// setup winsock.dll
 	WSADATA w;
 	WSAStartup(MAKELONG((unsigned short)2,(unsigned short)0),&w);
@@ -621,7 +621,7 @@ KviApp::~KviApp()
 	saveActions();
 	KviActionManager::done();
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	WSACleanup();
 #endif
 
@@ -717,7 +717,7 @@ void KviApp::loadDefaultScript()
 	getGlobalKvircDirectory(cmd,KviApp::DefScript,"default.kvs");
 	cmd.prepend("parse \"");
 	cmd.append("\"");
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	cmd.replace("\\","\\\\");
 #endif
 	KviKvsScript::run(cmd,g_pFrame->firstConsole());

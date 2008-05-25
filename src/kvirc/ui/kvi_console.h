@@ -46,13 +46,13 @@ class KviIrcUserEntry;
 class KviIrcServer;
 class KviIrcNetwork;
 class KviProxy;
-#ifndef COMPILE_ON_WINDOWS
-	class KviChannel;
-	class KviQuery;
-#else
+#ifdef COMPILE_ON_WINDOWS
 	// windoze wants it to compile QList<KviChannel> and QList<KviQuery>
 	#include "kvi_channel.h"
 	#include "kvi_query.h"
+#else
+	class KviChannel;
+	class KviQuery;
 #endif
 class KviUserListView;
 class KviNotifyListManager;

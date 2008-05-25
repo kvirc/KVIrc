@@ -80,7 +80,7 @@
 	#include <kdeversion.h>
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS)
 	#include <windows.h>
 #endif
 
@@ -225,7 +225,7 @@ void KviWindow::demandAttention()
 	if(mdiParent())
 	{
 		if(frame()->isActiveWindow())return;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
 		fwi.hwnd = (HWND)(frame()->winId());
@@ -242,7 +242,7 @@ void KviWindow::demandAttention()
 #endif
 	} else {
 		if(isActiveWindow())return;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS)
 		FLASHWINFO fwi;
 		fwi.cbSize = sizeof(fwi);
 		fwi.hwnd = (HWND)winId();

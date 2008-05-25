@@ -264,11 +264,11 @@ void KviApp::completeDirectory(const QString &word,KviPointerList<QString> * mat
 		{
 			delete t;
 		} else {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(KviQString::equalCIN(szFile,*t,szFile.length()))
-#else //!COMPILE_ON_WINDOWS
+#else
 			if(KviQString::equalCSN(szFile,*t,szFile.length()))
-#endif //COMPILE_ON_WINDOWS
+#endif
 			{
 				t->prepend(szDir);
 				t->append(KVI_PATH_SEPARATOR_CHAR);
@@ -284,11 +284,11 @@ void KviApp::completeDirectory(const QString &word,KviPointerList<QString> * mat
 	for(it = sl.begin();it != sl.end();++it)
 	{
 		QString * t = new QString(*it);
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(KviQString::equalCIN(szFile,*t,szFile.length()))
-#else //!COMPILE_ON_WINDOWS
+#else
 			if(KviQString::equalCSN(szFile,*t,szFile.length()))
-#endif //COMPILE_ON_WINDOWS
+#endif
 		{
 			t->prepend(szDir);
 			matches->append(t);

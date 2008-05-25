@@ -73,7 +73,7 @@ bool KviKvsProcessAsyncOperation::start()
 		QString szShell = m_pData->szShell;
 		if(szShell.isEmpty())
 		{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			// [01:26:00] <PragmaOff> btw, what is qt_winunicode ?
 			// [01:26:12] <kode54> Qt export specific to win32
 			// [01:26:27] <kode54> bool which indicates whether system is Unicode (NT) or not

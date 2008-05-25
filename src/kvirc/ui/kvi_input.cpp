@@ -257,7 +257,7 @@ void KviInputEditor::dropEvent(QDropEvent *e)
 			{
 				QUrl url = *it;
 				QString path = url.path();
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 				if(path.length() > 0)
 				{
 					if(path[0] != QChar('/'))path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)

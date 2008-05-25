@@ -312,7 +312,7 @@ namespace KviKvsCoreSimpleCommands
 	
 		if((uVolume > 100) || (uVolume < 1))uVolume = 100;
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		Beep(pitch,duration);
 #else
 	#ifdef COMPILE_X11_SUPPORT

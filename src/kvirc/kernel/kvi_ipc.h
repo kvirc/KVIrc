@@ -33,15 +33,15 @@
 
 	#include <QWidget>
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
  #include <winsock2.h>
 	#include <windows.h>
-#else //!COMPILE_ON_WINDOWS
+#else
 	#ifdef COMPILE_X11_SUPPORT
 		#include <qcoreevent.h>
 		#include "kvi_xlib.h" // for XEvent
 	#endif //!COMPILE_X11_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 	//////////////////////////////////////////////////////////////////////
 	// class KviIpcSentinel
@@ -55,17 +55,14 @@
 		KviIpcSentinel();
 		~KviIpcSentinel();
 	protected: // protected members
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		virtual bool winEvent(MSG * msg);
-#else //!COMPILE_ON_WINDOWS
+#else
 	#ifdef COMPILE_X11_SUPPORT
 		virtual bool x11Event(XEvent *e);
 	#endif //!COMPILE_X11_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 	};
-
 #endif //!COMPILE_NO_IPC
-
-
 
 #endif //_KVI_IPC_H_

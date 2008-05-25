@@ -297,7 +297,7 @@ void KviIrcViewToolWidget::filterSave()
 
 void KviIrcViewToolWidget::forceRepaint()
 {
-	#ifdef COMPILE_ON_WINDOWS
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		m_pIrcView->repaint();
 	#else
 		m_pIrcView->paintEvent(0);

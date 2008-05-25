@@ -90,7 +90,7 @@ int parseArgs(ParseArgs * a)
 
 			KviQString::appendFormatted(szMessage,"Home page: http://www.kvirc.net/\n");
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
 			debug(szMessage.toLocal8Bit().data());
@@ -138,7 +138,7 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage,"  [ircurl]     : URL in the following form:\n");
 			KviQString::appendFormatted(szMessage,"                 irc[6]://<server>[:<port>][/<channel>[?<pass>]]\n");
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
 			debug(szMessage.toLocal8Bit().data());
@@ -339,7 +339,7 @@ int main(int argc,char ** argv)
 			to start.
 			A weak file locking mechanism should be used too...
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szLock = convertSeparators(cleanDirPath(QDir::homeDirPath() + "/.kvirc.lock"));
 #else
 	QString szLock = convertSeparators(cleanDirPath(QDir::homeDirPath() + "/.kvirc.lock"));

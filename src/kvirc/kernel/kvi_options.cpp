@@ -168,14 +168,14 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoAcceptDccVoice", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVoice", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVoiceWhenAutoAccepted",true,KviOption_sectFlagDcc),
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	BOOL_OPTION("UseIdentService",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #else
 	BOOL_OPTION("UseIdentService",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #endif
 	BOOL_OPTION("ShowTipAtStartup",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("IdentdEnableIpV6",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	BOOL_OPTION("IdentdIpV6ContainsIpV4",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #else
 	BOOL_OPTION("IdentdIpV6ContainsIpV4",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
@@ -313,7 +313,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 
 // FIXME: #warning "Remove the unused string options here!"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define RUN_THE_BROWSER "run \"cmd.exe /c start \\\"\\\" \\\"$0\\\"\""
 #else
 	#ifdef COMPILE_KDE_SUPPORT
@@ -633,7 +633,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 
 KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	FONT_OPTION("IrcView","Arial",9,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
 	FONT_OPTION("Input","Arial",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
 	FONT_OPTION("UserListView","Arial",9,KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
