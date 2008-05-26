@@ -25,12 +25,13 @@
 //=============================================================================
 
 #include "kvi_window.h"
-#include "kvi_styled_controls.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QWidget>
 #include <QTextDocument>
-#include <QTreeWidget>
+#include <QCheckBox>
+#include <QToolButton>
+
 
 class QLineEdit;
 class QComboBox;
@@ -75,17 +76,17 @@ public:
 };
 
 
-class KviActionEditorTreeWidgetItem : public QTreeWidgetItem
+class KviActionEditorTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a);
+	KviActionEditorTreeWidgetItem(KviTalTreeWidget * v,KviActionData * a);
 	~KviActionEditorTreeWidgetItem();
 protected:
 	KviActionData * m_pActionData;
 	//QSimpleRichText * m_pText;
 	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
-	QTreeWidget * m_pTreeWidget;
+	KviTalTreeWidget * m_pTreeWidget;
 	QString m_szKey;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
@@ -97,7 +98,7 @@ public:
 };
 
 
-class KviActionEditorTreeView : public QTreeWidget
+class KviActionEditorTreeView : public KviTalTreeWidget
 {
 	Q_OBJECT
 public:
@@ -127,17 +128,17 @@ protected:
 	QLineEdit * m_pBigIconEdit;
 	QToolButton * m_pSmallIconButton;
 	QToolButton * m_pBigIconButton;
-	KviStyledCheckBox * m_pNeedsContextCheck;
-	KviStyledCheckBox * m_pNeedsConnectionCheck;
-	KviStyledCheckBox * m_pEnableAtLoginCheck;
-	KviStyledCheckBox * m_pSpecificWindowsCheck;
-	KviStyledCheckBox * m_pWindowConsoleCheck;
-	KviStyledCheckBox * m_pWindowChannelCheck;
-	KviStyledCheckBox * m_pWindowQueryCheck;
-	KviStyledCheckBox * m_pWindowDccChatCheck;
-	KviStyledCheckBox * m_pConsoleOnlyIfUsersSelectedCheck;
-	KviStyledCheckBox * m_pChannelOnlyIfUsersSelectedCheck;
-	KviStyledCheckBox * m_pQueryOnlyIfUsersSelectedCheck;
+	QCheckBox * m_pNeedsContextCheck;
+	QCheckBox * m_pNeedsConnectionCheck;
+	QCheckBox * m_pEnableAtLoginCheck;
+	QCheckBox * m_pSpecificWindowsCheck;
+	QCheckBox * m_pWindowConsoleCheck;
+	QCheckBox * m_pWindowChannelCheck;
+	QCheckBox * m_pWindowQueryCheck;
+	QCheckBox * m_pWindowDccChatCheck;
+	QCheckBox * m_pConsoleOnlyIfUsersSelectedCheck;
+	QCheckBox * m_pChannelOnlyIfUsersSelectedCheck;
+	QCheckBox * m_pQueryOnlyIfUsersSelectedCheck;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
 	void setActionData(KviActionData * d);
@@ -173,7 +174,7 @@ protected:
 	int selectedCount();
 	QString nameForAutomaticAction(const QString &szTemplate);
 protected slots:
-	void currentChanged(QTreeWidgetItem * it);
+	void currentItemChanged(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *prev);
 	void newAction();
 	void deleteActions();
 	void exportActions();

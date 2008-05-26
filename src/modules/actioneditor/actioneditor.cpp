@@ -69,15 +69,15 @@ static QString g_szLastEditedAction;
 #define LVI_SPACING 8
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviActionEditorTreeWidgetItem::KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a)
-: QTreeWidgetItem(v)
+KviActionEditorTreeWidgetItem::KviActionEditorTreeWidgetItem(KviTalTreeWidget * v,KviActionData * a)
+: KviTalTreeWidgetItem(v)
 {
 	m_pActionData = a;
 	m_pTreeWidget = v;
-	setFlags(Qt::ItemIsUserCheckable);
+	//setFlags(Qt::ItemIsUserSelectable);
 	QString t = "<b>" + m_pActionData->m_szName + "</b>";
 	t += "<br><font color=\"#808080\" size=\"-1\">" + m_pActionData->m_szVisibleName + "</font>";
-	m_szKey = m_pActionData->m_szName.upper();
+	m_szKey = m_pActionData->m_szName.toUpper();
 	setText(0,t);
 	QPixmap * p = g_pIconManager->getBigIcon(m_pActionData->m_szBigIcon);
 	if(p)setIcon(0,*p);
@@ -116,7 +116,8 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 
 	QTabWidget * tw = new QTabWidget(this);
-	g->addMultiCellWidget(tw,2,2,0,1);
+	g->addWidget(tw,2,0,1,2);
+//	g->addMultiCellWidget(tw,2,2,0,1);
 
 	// code tab
 	QWidget * tab = new QWidget(tw);
@@ -124,7 +125,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	m_pScriptEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pScriptEditor,0,0);
-	QToolTip::add(m_pScriptEditor,__tr2qs("Action code"));
+	m_pScriptEditor->setToolTip(__tr2qs("Action code"));
 
 	tw->addTab(tab,__tr2qs("Code"));
 
@@ -134,14 +135,16 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	l = new QLabel(__tr2qs("Category:"),tab);
 	gl->addWidget(l,0,0);
-	m_pCategoryCombo = new QComboBox(false,tab);
-	gl->addMultiCellWidget(m_pCategoryCombo,0,0,1,3);
+	m_pCategoryCombo = new QComboBox(tab);
+	gl->addWidget(m_pCategoryCombo,0,1,1,3);
+	//gl->addMultiCellWidget(m_pCategoryCombo,0,0,1,3);
 	m_pCategoryCombo->setToolTip(__tr2qs("Choose the category that best fits for this action"));
 
 	l = new QLabel(__tr2qs("Description:"),tab);
 	gl->addWidget(l,1,0);
 	m_pDescriptionEdit = new QLineEdit(tab);
-	gl->addMultiCellWidget(m_pDescriptionEdit,1,1,1,3);
+	gl->addWidget(m_pDescriptionEdit,1,1,1,3);
+//	gl->addMultiCellWidget(m_pDescriptionEdit,1,1,1,3);
 	m_pDescriptionEdit->setToolTip(__tr2qs("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
 
 	l = new QLabel(__tr2qs("Small Icon:"),tab);
@@ -164,9 +167,10 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(m_pBigIconEdit,3,1);
 	m_pBigIconButton = new QToolButton(tab);
 	m_pBigIconButton->setMinimumSize(QSize(48,48));
-	m_pBigIconButton->setUsesBigPixmap(true);
+	m_pBigIconButton->setIconSize(QSize(32,32));
 	connect(m_pBigIconButton,SIGNAL(clicked()),this,SLOT(chooseBigIcon()));
-	gl->addMultiCellWidget(m_pBigIconButton,3,4,2,3);
+	gl->addWidget(m_pBigIconButton,3,2,2,2);
+//	gl->addMultiCellWidget(m_pBigIconButton,3,4,2,3);
 	s = __tr2qs("The big icon associated to this action.<br>" \
 				"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
 				"It should be 32x32 pixels.");
@@ -174,18 +178,21 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pBigIconButton->setToolTip(s);
 
 	l = new QLabel(__tr2qs("Key Sequence:"),tab);
-	gl->addMultiCellWidget(l,4,5,0,0);
+	gl->addWidget(l,4,0,2,1);
+//	gl->addMultiCellWidget(l,4,5,0,0);
 	m_pKeySequenceEdit = new QLineEdit(tab);
-	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
+	gl->addWidget(m_pKeySequenceEdit,4,1,2,1);
+//	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
 	m_pKeySequenceEdit->setToolTip(__tr2qs("Optional keyboard sequence that will activate this action.<br>" \
 		"The sequence should be expressed as a string of up to four key codes separated by commas " \
 		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
 		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."));
 
 	l = new QLabel(tab);
-	gl->addMultiCellWidget(l,6,6,0,3);
+	gl->addWidget(l,6,0,1,4);
+//	gl->addMultiCellWidget(l,6,6,0,3);
 
-	gl->setColStretch(1,1);
+	gl->setColumnStretch(1,1);
 	gl->setRowStretch(6,1);
 
 	
@@ -198,93 +205,105 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl = new QGridLayout(tab);
 
 
-	m_pNeedsContextCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Context"),tab);
+	m_pNeedsContextCheck = new QCheckBox(__tr2qs("Needs IRC Context"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
 	m_pNeedsContextCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window belongs to an irc context"));
-	gl->addMultiCellWidget(m_pNeedsContextCheck,0,0,0,3);
+	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
+//	gl->addMultiCellWidget(m_pNeedsContextCheck,0,0,0,3);
 	
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
 	gl->addWidget(l,1,0);
 
-	m_pNeedsConnectionCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Connection"),tab);
+	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs("Needs IRC Connection"),tab);
 	connect(m_pNeedsConnectionCheck,SIGNAL(toggled(bool)),this,SLOT(needsConnectionCheckToggled(bool)));
 	m_pNeedsConnectionCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window has an active IRC connection"));
-	gl->addMultiCellWidget(m_pNeedsConnectionCheck,1,1,1,3);
+	gl->addWidget(m_pNeedsConnectionCheck,1,1,1,3);
+//	gl->addMultiCellWidget(m_pNeedsConnectionCheck,1,1,1,3);
 
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
 	gl->addWidget(l,2,1);
 
-	m_pEnableAtLoginCheck = new KviStyledCheckBox(__tr2qs("Enable at Login"),tab);
+	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs("Enable at Login"),tab);
 	m_pEnableAtLoginCheck->setToolTip(__tr2qs("Check this option if this action should be enabled also during " \
 						"the login operations (so when the logical IRC connection hasn't been estabilished yet)"));
-	gl->addMultiCellWidget(m_pEnableAtLoginCheck,2,2,2,3);
+	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
+//	gl->addMultiCellWidget(m_pEnableAtLoginCheck,2,2,2,3);
 
-	m_pSpecificWindowsCheck = new KviStyledCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
+	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
 	connect(m_pSpecificWindowsCheck,SIGNAL(toggled(bool)),this,SLOT(specificWindowsCheckToggled(bool)));
 	m_pSpecificWindowsCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is of a specified type"));
-	gl->addMultiCellWidget(m_pSpecificWindowsCheck,3,3,0,3);
+	gl->addWidget(m_pSpecificWindowsCheck,3,0,1,4);
+//	gl->addMultiCellWidget(m_pSpecificWindowsCheck,3,3,0,3);
 
 
-	m_pWindowConsoleCheck = new KviStyledCheckBox(__tr2qs("Enable in Console Windows"),tab);
+	m_pWindowConsoleCheck = new QCheckBox(__tr2qs("Enable in Console Windows"),tab);
 	m_pWindowConsoleCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a console"));
 	connect(m_pWindowConsoleCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addMultiCellWidget(m_pWindowConsoleCheck,4,4,1,3);
+	gl->addWidget(m_pWindowConsoleCheck,4,1,1,3);
+//	gl->addMultiCellWidget(m_pWindowConsoleCheck,4,4,1,3);
 
-	m_pConsoleOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
-	gl->addMultiCellWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,5,2,3);
+	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,2,1,2);
+//	gl->addMultiCellWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,5,2,3);
 
-	m_pWindowChannelCheck = new KviStyledCheckBox(__tr2qs("Enable in Channel Windows"),tab);
+	m_pWindowChannelCheck = new QCheckBox(__tr2qs("Enable in Channel Windows"),tab);
 	m_pWindowChannelCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a channel"));
 	connect(m_pWindowChannelCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addMultiCellWidget(m_pWindowChannelCheck,6,6,1,3);
+	gl->addWidget(m_pWindowChannelCheck,6,1,1,3);
+//	gl->addMultiCellWidget(m_pWindowChannelCheck,6,6,1,3);
 
-	m_pChannelOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
-	gl->addMultiCellWidget(m_pChannelOnlyIfUsersSelectedCheck,7,7,2,3);
+	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck,7,2,1,2);
+//	gl->addMultiCellWidget(m_pChannelOnlyIfUsersSelectedCheck,7,7,2,3);
 
-	m_pWindowQueryCheck = new KviStyledCheckBox(__tr2qs("Enable in Query Windows"),tab);
+	m_pWindowQueryCheck = new QCheckBox(__tr2qs("Enable in Query Windows"),tab);
 	m_pWindowQueryCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a query"));
 	connect(m_pWindowQueryCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addMultiCellWidget(m_pWindowQueryCheck,8,8,1,3);
+	gl->addWidget(m_pWindowQueryCheck,8,1,1,3);
+//	gl->addMultiCellWidget(m_pWindowQueryCheck,8,8,1,3);
 
-	m_pQueryOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
-	gl->addMultiCellWidget(m_pQueryOnlyIfUsersSelectedCheck,9,9,2,3);
+	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck,9,2,1,2);
+//	gl->addMultiCellWidget(m_pQueryOnlyIfUsersSelectedCheck,9,9,2,3);
 
-	m_pWindowDccChatCheck = new KviStyledCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
+	m_pWindowDccChatCheck = new QCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
 	m_pWindowDccChatCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a dcc chat"));
-	gl->addMultiCellWidget(m_pWindowDccChatCheck,10,10,1,3);
+	gl->addWidget(m_pWindowDccChatCheck,10,1,1,2);
+//	gl->addMultiCellWidget(m_pWindowDccChatCheck,10,10,1,3);
 
 	l = new QLabel(tab);
-	gl->addMultiCellWidget(l,11,11,0,3);
-	gl->setColStretch(3,1);
+	gl->addWidget(l,11,0,1,4);
+//	gl->addMultiCellWidget(l,11,11,0,3);
+	gl->setColumnStretch(3,1);
 	gl->setRowStretch(11,1);
 	
 	tw->addTab(tab,__tr2qs("Flags"));
-	tw->setCurrentPage(0);
+	tw->setCurrentIndex(0);
 
 	g->setRowStretch(2,1);
-	g->setColStretch(1,1);
+	g->setColumnStretch(1,1);
 
 	KviPointerHashTableIterator<QString,KviActionCategory> it(*(KviActionManager::instance()->categories()));
 	while(KviActionCategory * ac = it.current())
 	{
-		m_pCategoryCombo->insertItem(ac->visibleName() + " (" + ac->name() + ")");
+		m_pCategoryCombo->addItem(ac->visibleName() + " (" + ac->name() + ")");
 		++it;
 	}
 }
@@ -347,7 +366,7 @@ void KviSingleActionEditor::chooseSmallIcon()
 	QPixmap * p = g_pIconManager->getImage(s.toUtf8().data());
 	if(!p)return;
 	m_pSmallIconEdit->setText(s);
-	m_pSmallIconButton->setPixmap(*p);
+	m_pSmallIconButton->setIcon(QIcon(*p));
 }
 
 void KviSingleActionEditor::chooseBigIcon()
@@ -361,7 +380,7 @@ void KviSingleActionEditor::chooseBigIcon()
 	QPixmap * p = g_pIconManager->getBigIcon(s);
 	if(!p)return;
 	m_pBigIconEdit->setText(s);
-	m_pBigIconButton->setPixmap(*p);
+	m_pBigIconButton->setIcon(QIcon(*p));
 }
 
 void KviSingleActionEditor::setActionData(KviActionData * d)
@@ -383,20 +402,20 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 		int i;
 		for(i=0;i<m_pCategoryCombo->count();i++)
 		{
-			QString t = m_pCategoryCombo->text(i);
-			int idx = t.findRev('(');
+			QString t = m_pCategoryCombo->itemText(i);
+			int idx = t.lastIndexOf('(');
 			QString r = t.right(t.length() - (idx + 1));
 			QString r2 = r.left(r.length() - 1);
-			r2.stripWhiteSpace();
+			r2.trimmed();
 			if(r2 == d->m_szCategory)
 			{
-				m_pCategoryCombo->setCurrentItem(i);
+				m_pCategoryCombo->setCurrentIndex(i);
 				break;
 			}
 		}
 		if(i == m_pCategoryCombo->count())
 		{
-			m_pCategoryCombo->setCurrentItem(0);
+			m_pCategoryCombo->setCurrentIndex(0);
 		}
 		m_pScriptEditor->setText(d->m_szScriptCode);
 		m_pScriptEditor->setEnabled(true);
@@ -410,19 +429,19 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 		if(p)
 		{
 			m_pSmallIconEdit->setText(d->m_szSmallIcon);
-			m_pSmallIconButton->setPixmap(*p);
+			m_pSmallIconButton->setIcon(QIcon(*p));
 		} else {
 			m_pSmallIconEdit->setText("");
-			m_pSmallIconButton->setPixmap(QPixmap());
+			m_pSmallIconButton->setIcon(QIcon());
 		}
 		p = g_pIconManager->getImage(d->m_szBigIcon);
 		if(p)
 		{
 			m_pBigIconEdit->setText(d->m_szBigIcon);
-			m_pBigIconButton->setPixmap(*p);
+			m_pBigIconButton->setIcon(QIcon(*p));
 		} else {
 			m_pBigIconEdit->setText("");
-			m_pBigIconButton->setPixmap(QPixmap());
+			m_pBigIconButton->setIcon(QIcon());
 		}
 		m_pSmallIconButton->setEnabled(true);
 		m_pBigIconButton->setEnabled(true);
@@ -474,9 +493,9 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 		m_pSmallIconEdit->setEnabled(false);
 		m_pBigIconEdit->setText("");
 		m_pBigIconEdit->setEnabled(false);
-		m_pSmallIconButton->setPixmap(QPixmap());
+		m_pSmallIconButton->setIcon(QIcon());
 		m_pSmallIconButton->setEnabled(false);
-		m_pBigIconButton->setPixmap(QPixmap());
+		m_pBigIconButton->setIcon(QPixmap());
 		m_pBigIconButton->setEnabled(false);
 		m_pNeedsContextCheck->setChecked(false);
 		m_pNeedsContextCheck->setEnabled(false);
@@ -529,10 +548,10 @@ void KviSingleActionEditor::commit()
 	m_pActionData->m_szSmallIcon = m_pSmallIconEdit->text();
 	m_pActionData->m_szKeySequence = m_pKeySequenceEdit->text();
 	QString szCat = m_pCategoryCombo->currentText();
-	int idx = szCat.findRev(')');
+	int idx = szCat.lastIndexOf(')');
 	if(idx != -1)m_pActionData->m_szCategory = szCat.left(idx);
 	else m_pActionData->m_szCategory = szCat;
-	idx = m_pActionData->m_szCategory.findRev('(');
+	idx = m_pActionData->m_szCategory.lastIndexOf('(');
 	if(idx != -1)m_pActionData->m_szCategory.remove(0,idx+1);
 	m_pActionData->m_uFlags = 0;
 	if(m_pNeedsContextCheck->isChecked())
@@ -570,7 +589,7 @@ void KviSingleActionEditor::commit()
 
 
 KviActionEditorTreeView::KviActionEditorTreeView(QWidget * pParent)
-: QTreeWidget(pParent)
+: KviTalTreeWidget(pParent)
 {
 	setColumnCount (1);
 	setHeaderLabel(__tr2qs("Action"));
@@ -589,7 +608,7 @@ KviActionEditorTreeView::~KviActionEditorTreeView()
 
 void KviActionEditorTreeView::resizeEvent(QResizeEvent * e)
 {
-	QTreeWidget::resizeEvent(e);
+	KviTalTreeWidget::resizeEvent(e);
 	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setColumnWidth(0,iWidth);
@@ -612,7 +631,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	m_pTreeWidget->setItemDelegate(itemDelegate);
 	//m_pTreeWidget->setShowSortIndicator(true);
 	m_pTreeWidget->setFocusPolicy(Qt::StrongFocus);
-	connect(m_pTreeWidget,SIGNAL(currentChanged(KviTalListViewItem *)),this,SLOT(currentChanged(KviTalListViewItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
 
 	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
 	connect(m_pNewActionButton,SIGNAL(clicked()),this,SLOT(newAction()));
@@ -660,9 +679,9 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	if(last)
 	{
 		m_pTreeWidget->setCurrentItem(last);
-		currentChanged(last);
+		currentItemChanged(last,last);
 	} else {
-		currentChanged(0);
+		currentItemChanged(0,0);
 	}
 
 }
@@ -673,7 +692,7 @@ KviActionEditor::~KviActionEditor()
 
 void KviActionEditor::exportActions()
 {
-	QString szName = QDir::homeDirPath();
+	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += "myactions.kvs";
 	
@@ -774,7 +793,7 @@ void KviActionEditor::newAction()
 	KviActionEditorTreeWidgetItem * lvi = new KviActionEditorTreeWidgetItem(m_pTreeWidget,ad);
 	ad->m_pItem = lvi;
 	m_pTreeWidget->setCurrentItem(lvi);
-	currentChanged(lvi);
+	currentItemChanged(lvi,lvi);
 }
 
 bool KviActionEditor::actionExists(const QString &szName)
@@ -787,7 +806,7 @@ bool KviActionEditor::actionExists(const QString &szName)
 }
 
 
-void KviActionEditor::currentChanged(QTreeWidgetItem * i)
+void KviActionEditor::currentItemChanged(KviTalTreeWidgetItem * i,KviTalTreeWidgetItem *prev)
 {
 	if(m_pSingleActionEditor->actionData())
 		m_pSingleActionEditor->commit();
@@ -870,7 +889,7 @@ KviActionEditorWindow::KviActionEditorWindow(KviFrame * lpFrm)
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
 
-	g->setColStretch(0,1);
+	g->setColumnStretch(0,1);
 
 }
 
