@@ -13,7 +13,7 @@ SET(howto
 	themes.howto.txt
 	translations.howto.txt
 	ui-style.tips.txt
-	win32.compiling.1.2.txt
+	win32.compiling.2.0.txt
 )
 
 # User documentation
