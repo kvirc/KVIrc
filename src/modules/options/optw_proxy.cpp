@@ -46,12 +46,14 @@
 KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
 : KviTalTreeWidgetItem(parent,prx->m_szHostname.ptr())
 {
+	debug("Creating item");
 	setIcon(0,QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
 }
 
 KviProxyOptionsTreeWidgetItem::~KviProxyOptionsTreeWidgetItem()
 {
+	debug("Deleting item");
 	delete m_pProxyData;
 }
 
@@ -299,7 +301,8 @@ void KviProxyOptionsWidget::commit()
 		QString tmp = it->text(0);
 		if(!tmp.isEmpty())
 		{
-			KviProxy * prx = new KviProxy(*(((KviProxyOptionsTreeWidgetItem *)it)->m_pProxyData));
+			debug("Commit proxy name %s",tmp.toUtf8().data());
+			KviProxy * prx = new KviProxy(*(it->m_pProxyData));
 			g_pProxyDataBase->insertProxy(prx);
 
 			if(it == m_pLastEditedItem)g_pProxyDataBase->setCurrentProxy(prx);
