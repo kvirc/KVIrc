@@ -32,7 +32,6 @@
 #include "kvi_doublebuffer.h"
 #include "kvi_tal_toolbar.h"
 
-#include "kvi_styled_controls.h"
 #include <QPainter>
 #include <QImage>
 #include <QEvent>
@@ -227,7 +226,7 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 			p.drawText(pix.width()+3,0,width(),height(),0,szText);
 	//		bitBlt(this, rect.x(), rect.y(), pDoubleBufferPixmap, 0, 0, rect.width(), rect.height());
 			//debug("%s %s %i %i %i",__FILE__,__FUNCTION__,__LINE__,m_bMouseEnter,m_iStepNumber);
-		} else	{
+		} else {
 			QCheckBox::paintEvent(event);
 		}
 	} else
@@ -282,9 +281,9 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 			colorGroup().background()
 			);
 		*/
-		QPainter p(this); 
-			p.setPen(bActive ? QColor(206,215,223) :palette().background().color());
-			p.setBrush(bActive ? QColor(206,215,223) :palette().background());
+		QPainter p(this);
+		p.setPen(bActive ? QColor(206,215,223) : palette().background().color());
+		p.setBrush(bActive ? QBrush(QColor(206,215,223)) : palette().background());
 
 		p.drawRect(event->rect());
 		if(bActive)
@@ -295,11 +294,9 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 
 		p.translate(-rect.x(), -rect.y());
 		QPixmap pix=iconSet().pixmap(
-                                usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
-                                isEnabled() ? QIcon::Normal :
-                                              QIconSet::Disabled,
-                                isChecked() ? QIcon::On :
-                                              QIcon::Off);
+			usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
+			isEnabled() ? QIcon::Normal : QIconSet::Disabled,
+			isChecked() ? QIcon::On : QIcon::Off);
 		QPoint pos((iWidth-iPixWidth-pix.width())/2,(height()-pix.height())/2);
 		if(!pix.isNull())
 		{
