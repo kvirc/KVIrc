@@ -25,9 +25,11 @@
 //
 
 
-#include <KviStyledToolButton.h>
+
 #include "class_widget.h"
 #include "object_macros.h"
+
+#include "kvi_styled_controls.h"
 
 class KviKvsObject_toolbutton : public KviKvsObject_widget
 {
@@ -40,10 +42,10 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool functionsetImage(KviKvsObjectFunctionCall *c);
-    bool functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c);
-    bool functionusesBigPixmap(KviKvsObjectFunctionCall *c);
-    bool functionsetUsesTextLabel(KviKvsObjectFunctionCall *c);
-    bool functionusesTextLabel(KviKvsObjectFunctionCall *c);
+	bool functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c);
+	bool functionusesBigPixmap(KviKvsObjectFunctionCall *c);
+	bool functionsetUsesTextLabel(KviKvsObjectFunctionCall *c);
+	bool functionusesTextLabel(KviKvsObjectFunctionCall *c);
 	bool functionsetTextLabel(KviKvsObjectFunctionCall *c);
 	bool functiontextLabel(KviKvsObjectFunctionCall *c);
 	bool functionsetPopup(KviKvsObjectFunctionCall *c);

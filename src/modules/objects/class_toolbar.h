@@ -40,7 +40,7 @@ protected:
 	bool functionsetLabel(KviKvsObjectFunctionCall *c);
 	bool functionlabel(KviKvsObjectFunctionCall *c);
 	bool functionsetStretchableWidget(KviKvsObjectFunctionCall *c);
-    bool functionclear(KviKvsObjectFunctionCall *c);
+	bool functionclear(KviKvsObjectFunctionCall *c);
 };
 
 
