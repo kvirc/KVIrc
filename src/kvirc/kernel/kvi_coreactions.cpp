@@ -594,14 +594,14 @@ void KviConnectAction::activeContextStateChanged()
 
 	if(p)
 	{
-		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
+		for(KviStyledToolButton * b = (KviStyledToolButton *)bl->first();b;b =(KviStyledToolButton *)bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
 			b->setText(txt);
 		}
 	} else {
-		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
+		for(KviStyledToolButton * b = (KviStyledToolButton *)bl->first();b;b = (KviStyledToolButton *)bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
 		}
@@ -669,7 +669,7 @@ bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 QWidget * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new KviStyledToolButton(
+	KviStyledToolButton * b = new KviStyledToolButton(
 			*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),
 			m_szConnectString,
 			m_szConnectString,
@@ -745,7 +745,7 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 			this,SLOT(activate()),t,name());
 	b->setMenu(m_pPopup);
 	
-	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
+	b->setPopupMode( scriptCode().isEmpty() ? KviStyledToolButton::InstantPopup :  KviStyledToolButton::MenuButtonPopup);
 	t->addWidget(b);
 	registerWidget(b);
 	if(!isEnabled())b->setEnabled(false);
@@ -1006,7 +1006,7 @@ void KviGoAwayAction::activeContextStateChanged()
 
 	if(p)
 	{
-		for(QToolButton * b = (QToolButton *)bl->first();b;b =(QToolButton *)bl->next())
+		for(KviStyledToolButton * b = (KviStyledToolButton *)bl->first();b;b =(KviStyledToolButton *)bl->next())
 		{
 			if(!b->isEnabled())b->setEnabled(true);
 			b->setIcon(QIcon(*p));
@@ -1014,7 +1014,7 @@ void KviGoAwayAction::activeContextStateChanged()
 		}
 		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
 	} else {
-		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
+		for(KviStyledToolButton * b = (KviStyledToolButton *)bl->first();b;b = (KviStyledToolButton *)bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
 		}
@@ -1068,7 +1068,7 @@ bool KviGoAwayAction::addToPopupMenu(KviTalPopupMenu *p)
 QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new KviStyledToolButton(
+	KviStyledToolButton * b = new KviStyledToolButton(
 			*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")),
 			m_szAwayString,
 			m_szAwayString,

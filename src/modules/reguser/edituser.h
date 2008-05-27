@@ -103,7 +103,7 @@ protected:
 	QPushButton        * m_pEditMaskButton;
 	QPushButton        * m_pAddMaskButton;
 
-	QCheckBox          * m_pNotifyCheck;
+	KviStyledCheckBox          * m_pNotifyCheck;
 	QLineEdit          * m_pNotifyNick;
 
 	KviPixmap          * m_pAvatar;
@@ -111,18 +111,18 @@ protected:
 
 	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	
-	QCheckBox          * m_pCustomColorCheck;
+	KviStyledCheckBox          * m_pCustomColorCheck;
 	QColor             * m_pCustomColor;
 	KviColorSelector   * m_pCustomColorSelector;
 
 	//Ignore TAB
-	QCheckBox          * m_pIgnoreEnabled;
-	QCheckBox          * m_pIgnoreQuery;
-	QCheckBox          * m_pIgnoreChannel;
-	QCheckBox          * m_pIgnoreNotice;
-	QCheckBox          * m_pIgnoreCtcp;
-	QCheckBox          * m_pIgnoreInvite;
-	QCheckBox          * m_pIgnoreDcc;
+	KviStyledCheckBox          * m_pIgnoreEnabled;
+	KviStyledCheckBox          * m_pIgnoreQuery;
+	KviStyledCheckBox          * m_pIgnoreChannel;
+	KviStyledCheckBox          * m_pIgnoreNotice;
+	KviStyledCheckBox          * m_pIgnoreCtcp;
+	KviStyledCheckBox          * m_pIgnoreInvite;
+	KviStyledCheckBox          * m_pIgnoreDcc;
 
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

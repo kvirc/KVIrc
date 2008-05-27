@@ -37,11 +37,11 @@
 #include "kvi_memmove.h"
 
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QTabWidget>
 #include <QLayout>
 #include <QLabel>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QPushButton>
 #include <QLineEdit>
 #include <QCursor>
@@ -50,9 +50,8 @@
 #include <QShortcut>
 #include <QHeaderView>
 #include <QScrollBar>
+#include <QIcon>
 
-// FIXME: Qt4 #include <QHeaderView>
-//#include <q3header.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -104,7 +103,9 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	l->setAutoFillBackground(true);
 	gl->addWidget(l,0,0);
 
-	QToolButton *tb = new QToolButton(Qt::DownArrow,this,"down_arrow");
+	KviStyledToolButton *tb = new KviStyledToolButton(this);
+	tb->setArrowType(Qt::DownArrow);
+	tb->setObjectName("down_arrow");
 	tb->setFixedSize(14,14);
 	tb->setAutoRepeat(false);
 	connect(tb,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));
@@ -122,22 +123,18 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	m_pStringToFind = new QLineEdit(w);
 	g->addWidget(m_pStringToFind,0,0,1,3);
-//	g->addMultiCellWidget(m_pStringToFind,0,0,0,2);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
 	
 	m_pRegExp = new KviStyledCheckBox(__tr2qs("&Regular expression"),w);
 	g->addWidget(m_pRegExp,1,0,1,3);
-//	g->addMultiCellWidget(m_pRegExp,1,1,0,2);
 
-	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
+	m_pExtendedRegExp = new KviStyledCheckBox(__tr2qs("E&xtended regexp."),w);
 	g->addWidget(m_pExtendedRegExp,2,0,1,3);
-//	g->addMultiCellWidget(m_pExtendedRegExp,2,2,0,2);
 	m_pExtendedRegExp->setEnabled(false);
 	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
 
-	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
+	m_pCaseSensitive = new KviStyledCheckBox(__tr2qs("C&ase sensitive"),w);
 	g->addWidget(m_pCaseSensitive,3,0,1,3);
-//	g->addMultiCellWidget(m_pCaseSensitive,3,3,0,2);
 
 	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findPrev()));
@@ -147,12 +144,10 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findNext()));
 	g->addWidget(pb,4,1,0,2);
-//	g->addMultiCellWidget(pb,4,4,1,2);
 
 	m_pFindResult = new QLabel(w);
 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	g->addWidget(m_pFindResult,5,0,1,3);
-//	g->addMultiCellWidget(m_pFindResult,5,5,0,2);
 
 	//g->setResizeMode(QGridLayout::Fixed);
 
@@ -173,7 +168,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	m_pFilterView->setMinimumSize(QSize(10,10));
 
 	g->addWidget(m_pFilterView,0,0,5,1);
-//	g->addMultiCellWidget(m_pFilterView,0,4,0,0);
+
 
 
 	m_pFilterItems = (KviIrcMessageCheckListItem **)kvi_malloc(KVI_NUM_MSGTYPE_OPTIONS * sizeof(KviIrcMessageCheckListItem *));
@@ -202,11 +197,10 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	tw->addTab(w1,__tr2qs("Filter"));
 
 	gl->addWidget(tw,1,0,1,2);
-//	gl->addMultiCellWidget(tw,1,1,0,1);
 
-	gl->setResizeMode(QGridLayout::Fixed);
+	gl->setSizeConstraint(QGridLayout::SetFixedSize);
 	m_pStringToFind->setFocus();
-	tw->showPage(w);
+	tw->setCurrentIndex(tw->indexOf(w));
 	new QShortcut(Qt::Key_Escape,this,SLOT(close()));
 }
 
@@ -254,11 +248,11 @@ void KviIrcViewToolWidget::filterLoad()
 	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Select a Filter File"),szInit))
 	{
 		QFile f(szFile);
-		if(f.open(IO_ReadOnly))
+		if(f.open(QIODevice::ReadOnly))
 		{
 			char buffer[KVI_NUM_MSGTYPE_OPTIONS];
 			kvi_memset(buffer,0,KVI_NUM_MSGTYPE_OPTIONS);
-			f.readBlock(buffer,KVI_NUM_MSGTYPE_OPTIONS);
+			f.read(buffer,KVI_NUM_MSGTYPE_OPTIONS);
 			f.close();
 			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 			{
@@ -281,14 +275,14 @@ void KviIrcViewToolWidget::filterSave()
 	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Select a Name for the Filter File"),szInit,0,false,true))
 	{
 		QFile f(szFile);
-		if(f.open(IO_WriteOnly))
+		if(f.open(QIODevice::WriteOnly))
 		{
 			char buffer[KVI_NUM_MSGTYPE_OPTIONS];
 			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 			{
 				buffer[i] = messageEnabled(i) ? 1 : 0;
 			}
-			if(f.writeBlock(buffer,KVI_NUM_MSGTYPE_OPTIONS) < KVI_NUM_MSGTYPE_OPTIONS)
+			if(f.write(buffer,KVI_NUM_MSGTYPE_OPTIONS) < KVI_NUM_MSGTYPE_OPTIONS)
 				KviMessageBox::warning(__tr2qs("Failed to write the filter file %Q (IO Error)"),&szFile);
 			f.close();
 		} else KviMessageBox::warning(__tr2qs("Can't open the filter file %Q for writing"),&szFile);

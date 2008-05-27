@@ -37,7 +37,7 @@
 #include <QComboBox>
 
 class QToolBar;
-class QToolButton;
+class KviStyledToolButton;
 
 class KviAvatar;
 class KviDns;

@@ -65,7 +65,7 @@
 #include <QPushButton>
 #include <QDesktopWidget>
 #include <QVariant>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QMessageBox>
 #include <QEvent>
 #include <QCloseEvent>

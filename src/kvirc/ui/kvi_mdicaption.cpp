@@ -56,7 +56,7 @@
 
 
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
-: QToolButton(parent)
+: KviStyledToolButton(parent)
 {
 	setObjectName(name);
 	setIcon(QIcon(pix));

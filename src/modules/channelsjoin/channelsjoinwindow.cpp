@@ -39,7 +39,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QLayout>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>

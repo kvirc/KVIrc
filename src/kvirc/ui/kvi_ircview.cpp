@@ -113,7 +113,7 @@
 #include <QPainter>
 #include <QRegExp>
 #include <QFile>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QFontMetrics> // needed
 #include <QApplication>
 #include <QMessageBox>

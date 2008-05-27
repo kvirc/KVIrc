@@ -26,7 +26,7 @@
 #include <kvi_tal_wizard.h>
 
 class QGridLayout; 
-class QCheckBox;
+class KviStyledCheckBox;
 class QLabel;
 class QLineEdit;
 class QWidget;
@@ -64,7 +64,7 @@ public:
 	QLabel* m_pLabel3;
 	KviPixmapSelector * m_pAvatarSelector;
 	QWidget* m_pPage4;
-	QCheckBox* m_pNotifyCheck;
+	KviStyledCheckBox* m_pNotifyCheck;
 	QLabel* m_pNotifyNickLabel1;
 	QLabel* m_pNotifyNickLabel2;
 	QLabel* m_pLabel4;

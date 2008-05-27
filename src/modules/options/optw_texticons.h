@@ -28,7 +28,7 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QTableWidget>
 #include <QTableWidgetItem>
 

@@ -34,7 +34,7 @@
 #include <QDialog>
 
 class QLineEdit;
-class QCheckBox;
+class KviStyledCheckBox;
 class QPushButton;
 class QComboBox;
 class KviHttpRequest;
@@ -152,7 +152,7 @@ public:
 	KviIdentityAvatarOptionsWidget(QWidget * pParent);
 	~KviIdentityAvatarOptionsWidget();
 protected:
-	QCheckBox        * m_pUseAvatarCheck;
+	KviStyledCheckBox        * m_pUseAvatarCheck;
 	QLineEdit        * m_pAvatarNameEdit;
 	QPushButton      * m_pChooseAvatarButton;
 	KviPixmap        * m_pLocalAvatar;

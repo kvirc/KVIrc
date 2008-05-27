@@ -28,7 +28,7 @@
 #include "kvi_string.h"
 
 #include <QFrame>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLabel>
 
 class KviMdiManager;

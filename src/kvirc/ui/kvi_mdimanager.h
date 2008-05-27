@@ -32,7 +32,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QPixmap>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 
 #define KVI_MDICHILD_BORDER 4
 #define KVI_MDICHILD_SPACING 2

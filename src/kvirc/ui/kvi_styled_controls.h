@@ -29,9 +29,9 @@
 #include "kvi_heapobject.h"
 
 #include <QCheckBox>
-#include <QToolButton>
 #include <QEvent>
 #include <QTimer>
+#include <QToolButton>
 
 class KviStyledControl;
 class KviTalToolBar;

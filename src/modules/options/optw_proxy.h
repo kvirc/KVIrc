@@ -28,7 +28,7 @@
 
 class QLabel;
 class QLineEdit;
-class QCheckBox;
+class KviStyledCheckBox;
 class QComboBox;
 class KviIpEditor;
 class KviTalPopupMenu;
@@ -74,7 +74,7 @@ protected:
 	QLabel       * m_pProtocolLabel;
 	QComboBox    * m_pProtocolBox;
 	KviTalPopupMenu   * m_pContextPopup;
-	QCheckBox    * m_pIpV6Check;
+	KviStyledCheckBox    * m_pIpV6Check;
 	KviProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:
 

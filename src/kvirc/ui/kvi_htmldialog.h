@@ -94,10 +94,11 @@ public:
 	virtual QVariant loadResource ( int type, const QUrl & name ) 
 	{
 		QString p=m_pHt->htmlResource.value(name.fileName());
+		debug("resource %s type %d and page %s",name.fileName().toUtf8().data(),type,p.toUtf8().data());
 		if (!p.isEmpty()) return QVariant(p);
 		else return QVariant();
 		
-		debug("resource %s type %d",name.fileName().toUtf8().data(),type);
+		
 		//return QTextBrowser::loadResource(type,name);
 	}
 protected:

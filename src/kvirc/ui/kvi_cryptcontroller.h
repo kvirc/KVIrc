@@ -39,7 +39,7 @@
 
 	#include <QWidget>
 	#include <QPushButton>
-	#include <QCheckBox>
+	#include "kvi_styled_controls.h"
 	#include <QLabel>
 	#include <QLineEdit>
 	class KviWindow;

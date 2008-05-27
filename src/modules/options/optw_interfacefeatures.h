@@ -31,7 +31,7 @@
 #define KVI_OPTIONS_WIDGET_NAME_KviInterfaceFeaturesOptionsWidget __tr2qs_no_lookup("Interface")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviInterfaceFeaturesOptionsWidget 50000
 
-class QCheckBox;
+class KviStyledCheckBox;
 
 class KviInterfaceFeaturesOptionsWidget : public KviOptionsWidget
 {
@@ -40,7 +40,7 @@ public:
 	KviInterfaceFeaturesOptionsWidget(QWidget * parent);
 	~KviInterfaceFeaturesOptionsWidget();
 protected:
-	QCheckBox * m_pDisableSplash;
+	KviStyledCheckBox * m_pDisableSplash;
 public:
 	virtual void commit();
 };

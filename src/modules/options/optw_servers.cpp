@@ -54,9 +54,9 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLineEdit>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QCursor>
 #include <QValidator>
 #include <QMessageBox>
@@ -178,7 +178,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	m_pEncodingEditor->setCurrentIndex(current);
 
-	m_pAutoConnectCheck = new QCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
+	m_pAutoConnectCheck = new KviStyledCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
 	gl->addWidget(m_pAutoConnectCheck,2,0,1,2);
 //	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
@@ -253,7 +253,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	KviNickServRuleSet * rs = n->nickServRuleSet();
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 	
-	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
+	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,
@@ -498,7 +498,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 	
-	m_pUseDefaultInitUMode = new QCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
+	m_pUseDefaultInitUMode = new KviStyledCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
 	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
 			" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 	bool bHasUmode = !(s->initUMode().isEmpty());
@@ -506,15 +506,15 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseDefaultInitUMode->setChecked(!bHasUmode);
 	connect(m_pUseDefaultInitUMode,SIGNAL(toggled(bool)),this,SLOT(useDefaultInitUModeToggled(bool)));
 	
-	m_pIMode = new QCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
+	m_pIMode = new KviStyledCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
 	m_pIMode->setEnabled(bHasUmode);
 	m_pIMode->setChecked(bHasUmode ? s->initUMode().contains('i',Qt::CaseInsensitive) : szDefUMode.contains('i',Qt::CaseInsensitive));
 	
-	m_pSMode = new QCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
+	m_pSMode = new KviStyledCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
 	m_pSMode->setEnabled(bHasUmode);
 	m_pSMode->setChecked(bHasUmode ? s->initUMode().contains('s',Qt::CaseInsensitive) : szDefUMode.contains('s',Qt::CaseInsensitive));
 	
-	m_pWMode = new QCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
+	m_pWMode = new KviStyledCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
 	m_pWMode->setEnabled(bHasUmode);
 	m_pWMode->setChecked(bHasUmode ? s->initUMode().contains('w',Qt::CaseInsensitive) : szDefUMode.contains('w',Qt::CaseInsensitive));
 
@@ -568,7 +568,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 #endif
 	}
 	
-	m_pCacheIpCheck = new QCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
+	m_pCacheIpCheck = new KviStyledCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	gl->addWidget(m_pCacheIpCheck,2,0,1,2);
 //	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
@@ -580,7 +580,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pCacheIpCheck->setChecked(s->cacheIp());
 
 
-	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
+	m_pUseIPV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
 	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
 //	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
 #ifdef COMPILE_IPV6_SUPPORT
@@ -593,7 +593,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 			"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
-	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
+	m_pUseSSLCheck = new KviStyledCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	gl->addWidget(m_pUseSSLCheck,4,0,1,2);
 //	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
@@ -604,7 +604,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseSSLCheck->setChecked(s->useSSL());
 	
 	
-	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
+	m_pUseAutoConnect = new KviStyledCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 	
 	gl->addWidget(m_pUseAutoConnect,5,0,1,2);
@@ -1029,19 +1029,19 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	vbox->setSpacing(0);
 	addWidgetToLayout(vbox,1,0,1,0);
 
-	m_pNewNetworkButton = new QToolButton(vbox);
+	m_pNewNetworkButton = new KviStyledToolButton(vbox);
 	m_pNewNetworkButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD))));
 	m_pNewNetworkButton->setAutoRaise(true);
 	connect(m_pNewNetworkButton,SIGNAL(clicked()),this,SLOT(newNetwork()));
 	KviTalToolTip::add(m_pNewNetworkButton,__tr2qs_ctx("New Network","options"));
 
-	m_pNewServerButton = new QToolButton(vbox);
+	m_pNewServerButton = new KviStyledToolButton(vbox);
 	m_pNewServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER))));
 	m_pNewServerButton->setAutoRaise(true);
 	connect(m_pNewServerButton,SIGNAL(clicked()),this,SLOT(newServer()));
 	KviTalToolTip::add(m_pNewServerButton,__tr2qs_ctx("New Server","options"));
 
-	m_pRemoveButton = new QToolButton(vbox);
+	m_pRemoveButton = new KviStyledToolButton(vbox);
 	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
@@ -1051,14 +1051,14 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
-	m_pCopyServerButton = new QToolButton(vbox);
+	m_pCopyServerButton = new KviStyledToolButton(vbox);
 	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY))));
 	m_pCopyServerButton->setEnabled(false);
 	m_pCopyServerButton->setAutoRaise(true);
 	connect(m_pCopyServerButton,SIGNAL(clicked()),this,SLOT(copyServer()));
 	KviTalToolTip::add(m_pCopyServerButton,__tr2qs_ctx("Copy Server","options"));
 
-	m_pPasteServerButton = new QToolButton(vbox);
+	m_pPasteServerButton = new KviStyledToolButton(vbox);
 	m_pPasteServerButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)));
 	m_pPasteServerButton->setEnabled(false);
 	m_pPasteServerButton->setAutoRaise(true);
@@ -1068,7 +1068,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
 
-	m_pImportButton = new QToolButton(vbox);
+	m_pImportButton = new KviStyledToolButton(vbox);
 	m_pImportButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
 	m_pImportButton->setAutoRaise(true);
 	m_pImportButton->setMenu(m_pImportPopup);
@@ -1085,7 +1085,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 
 /*
-	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	m_pIpV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
 
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIpV6Check->setEnabled(false);
@@ -1114,7 +1114,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	connect(m_pRecentPopup,SIGNAL(aboutToShow()),this,SLOT(recentServersPopupAboutToShow()));
 	connect(m_pRecentPopup,SIGNAL(activated(int)),this,SLOT(recentServersPopupClicked(int)));
 
-	QToolButton * tb = new QToolButton(this);
+	KviStyledToolButton * tb = new KviStyledToolButton(this);
 	addWidgetToLayout(tb,1,2,1,2);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
 	tb->setMenu(m_pRecentPopup);
@@ -1338,11 +1338,11 @@ void KviServerOptionsWidget::commit()
 		if(network == m_pLastEditedItem)g_pIrcServerDataBase->setCurrentNetwork(net->name());
 	
 		KviServerOptionsTreeWidgetItem * ch;
-		for (int j=0;j<network->childCount();i++)
+		for (int j=0;j<network->childCount();j++)
 		{
 			//KviServerOptionsTreeWidgetItem * ch;// = (KviServerOptionsTreeWidgetItem *)it->firstChild();
 			KviIrcServer *srv;
-			ch=(KviServerOptionsTreeWidgetItem *)network->child(i);
+			ch=(KviServerOptionsTreeWidgetItem *)network->child(j);
 		//	while(ch)
 		//	{
 			if(ch->m_pServerData)

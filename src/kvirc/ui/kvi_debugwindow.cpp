@@ -38,7 +38,7 @@
 
 #include <QPixmap>
 #include <QSplitter>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 
 KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 

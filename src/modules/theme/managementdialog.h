@@ -42,7 +42,7 @@
 class QLineEdit;
 class QPushButton;
 class QLabel;
-class QCheckBox;
+class KviStyledCheckBox;
 
 class KviDynamicToolTip;
 class KviStyledToolButton;
@@ -71,8 +71,8 @@ protected:
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
 	KviTalListWidget    * m_pListWidget;
 	KviTalPopupMenu     * m_pContextPopup;
-	QToolButton         * m_pDeleteThemeButton;
-	QToolButton         * m_pPackThemeButton;
+	KviStyledToolButton         * m_pDeleteThemeButton;
+	KviStyledToolButton         * m_pPackThemeButton;
 public:
 	static KviThemeManagementDialog * instance(){ return m_pInstance; };
 	static void display();

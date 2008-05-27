@@ -35,7 +35,7 @@
 #include <QLayout>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QMessageBox>
 
 
@@ -229,7 +229,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	KviNickServRuleSet * rs = g_pNickServRuleSet;
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
 
-	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
+	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),this);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
 //	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 	KviTalToolTip::add(m_pNickServCheck,__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));

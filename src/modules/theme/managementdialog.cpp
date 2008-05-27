@@ -127,10 +127,10 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	hb->setSpacing(1);
 	g->addWidget(hb,0,0);
 
-	QToolButton * tb;
+	KviStyledToolButton * tb;
 	QFrame * sep;
 
-	tb = new QToolButton(hb);
+	tb = new KviStyledToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
 	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Save Current Theme...","theme"));
@@ -140,14 +140,14 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 	
-	m_pPackThemeButton = new QToolButton(hb);
+	m_pPackThemeButton = new KviStyledToolButton(hb);
 	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 
 	m_pPackThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pPackThemeButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
 	connect(m_pPackThemeButton,SIGNAL(clicked()),this,SLOT(packTheme()));
 
-	m_pDeleteThemeButton = new QToolButton(hb);
+	m_pDeleteThemeButton = new KviStyledToolButton(hb);
 	m_pDeleteThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pDeleteThemeButton->setIconSize(QSize(32,32));
 	QToolTip::add(m_pDeleteThemeButton,__tr2qs_ctx("Delete Selected Themes","theme"));
@@ -157,13 +157,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 
-	tb = new QToolButton(hb);
+	tb = new KviStyledToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installFromFile()));
 
-	tb = new QToolButton(hb);
+	tb = new KviStyledToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
 	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));

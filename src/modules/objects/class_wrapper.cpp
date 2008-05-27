@@ -89,7 +89,7 @@
                 Now %A. will be point to the wrapped object, therefore we could modify its property or to consider it as if it were an object created by us in scripting. [br]
                 Obviously, deleting the created object (for example %A) you don't will delete the object of Kvirc (in this case the statusbar). [br]
                 Another example could be this:[br]
-                %A=$new(wrapper,0,test,KviFrame::kvirc_frame,QToolButton::kvirc.identityoptions)[br]
+                %A=$new(wrapper,0,test,KviFrame::kvirc_frame,KviStyledToolButton::kvirc.identityoptions)[br]
                 %A->$setProperty(usesBigPixmap,0)[br]
                 In this fool example with the function $setProperty, we has setted the property usesBigPixmap to False, making to become the small icons of the ToolBar.[br]
                 [br]

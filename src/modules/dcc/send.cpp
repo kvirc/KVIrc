@@ -64,7 +64,7 @@
 #include <QPainter>
 #include <QDateTime>
 #include <qglobal.h>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QSpinBox>
 #include <QLayout>
 #include <QPushButton>

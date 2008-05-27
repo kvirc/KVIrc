@@ -43,8 +43,8 @@
 #include <QLabel>
 #include <QSplitter>
 #include <QPushButton>
-#include <QToolButton>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
+#include "kvi_styled_controls.h"
 #include <QPainter>
 #include <QFont>
 #include <QEvent>
@@ -200,7 +200,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
-	m_pSearchButton = new QToolButton(hbox);
+	m_pSearchButton = new KviStyledToolButton(hbox);
 	m_pSearchButton->setUsesBigPixmap(false);
 	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)));
 	connect(m_pSearchButton,SIGNAL(clicked()),this,SLOT(searchClicked()));
@@ -320,7 +320,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 			o = *it;
 			QString szText;
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
-			else if(o->inherits("QCheckBox"))szText = ((QCheckBox *)o)->text();
+			else if(o->inherits("KviStyledCheckBox"))szText = ((KviStyledCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 
 			if(o->inherits("QWidget"))

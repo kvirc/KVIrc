@@ -31,7 +31,7 @@
 #include <QPainter>
 #include <QApplication>
 #include <QLayout>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QObjectCleanupHandler>
 #include <QPushButton>
 

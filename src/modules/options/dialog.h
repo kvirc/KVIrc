@@ -36,7 +36,7 @@
 class QLabel;
 class QPushButton;
 class QLineEdit;
-class QToolButton;
+class KviStyledToolButton;
 class KviTalWidgetStack;
 
 class KviGeneralOptionsFrontWidget : public KviOptionsWidget
@@ -76,7 +76,7 @@ private:
 	KviGeneralOptionsFrontWidget* m_pFrontWidget;
 	QString        m_szGroup;
 	QLineEdit    * m_pSearchLineEdit;
-	QToolButton  * m_pSearchButton;
+	KviStyledToolButton  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsListViewItem *it);
 	void fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);

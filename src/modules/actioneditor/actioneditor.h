@@ -29,13 +29,13 @@
 
 #include <QWidget>
 #include <QTextDocument>
-#include <QCheckBox>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
+#include "kvi_styled_controls.h"
 
 
 class QLineEdit;
 class QComboBox;
-class QToolButton;
+class KviStyledToolButton;
 class QSimpleRichText;
 class QPushButton;
 class QSplitter;
@@ -126,19 +126,19 @@ protected:
 	QLineEdit * m_pDescriptionEdit;
 	QLineEdit * m_pSmallIconEdit;
 	QLineEdit * m_pBigIconEdit;
-	QToolButton * m_pSmallIconButton;
-	QToolButton * m_pBigIconButton;
-	QCheckBox * m_pNeedsContextCheck;
-	QCheckBox * m_pNeedsConnectionCheck;
-	QCheckBox * m_pEnableAtLoginCheck;
-	QCheckBox * m_pSpecificWindowsCheck;
-	QCheckBox * m_pWindowConsoleCheck;
-	QCheckBox * m_pWindowChannelCheck;
-	QCheckBox * m_pWindowQueryCheck;
-	QCheckBox * m_pWindowDccChatCheck;
-	QCheckBox * m_pConsoleOnlyIfUsersSelectedCheck;
-	QCheckBox * m_pChannelOnlyIfUsersSelectedCheck;
-	QCheckBox * m_pQueryOnlyIfUsersSelectedCheck;
+	KviStyledToolButton * m_pSmallIconButton;
+	KviStyledToolButton * m_pBigIconButton;
+	KviStyledCheckBox * m_pNeedsContextCheck;
+	KviStyledCheckBox * m_pNeedsConnectionCheck;
+	KviStyledCheckBox * m_pEnableAtLoginCheck;
+	KviStyledCheckBox * m_pSpecificWindowsCheck;
+	KviStyledCheckBox * m_pWindowConsoleCheck;
+	KviStyledCheckBox * m_pWindowChannelCheck;
+	KviStyledCheckBox * m_pWindowQueryCheck;
+	KviStyledCheckBox * m_pWindowDccChatCheck;
+	KviStyledCheckBox * m_pConsoleOnlyIfUsersSelectedCheck;
+	KviStyledCheckBox * m_pChannelOnlyIfUsersSelectedCheck;
+	KviStyledCheckBox * m_pQueryOnlyIfUsersSelectedCheck;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
 	void setActionData(KviActionData * d);

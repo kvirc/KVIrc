@@ -72,7 +72,7 @@
 #include <time.h>
 
 #include <QSplitter>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLabel>
 #include <QEvent>
 #include <QPalette>

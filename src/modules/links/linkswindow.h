@@ -31,7 +31,7 @@
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 
 class KviThemedLabel;
 
@@ -58,7 +58,7 @@ protected:
 	KviPointerList<KviLink> * m_pLinkList;
 	KviTalPopupMenu     * m_pHostPopup;
 	QString          m_szRootServer;
-	QToolButton    * m_pRequestButton;
+	KviStyledToolButton    * m_pRequestButton;
 	KviThemedLabel * m_pInfoLabel;
 public: // Methods
 	virtual void control(int msg);

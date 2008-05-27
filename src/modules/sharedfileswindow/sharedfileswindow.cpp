@@ -45,7 +45,7 @@
 #include <QPushButton>
 #include <QSplitter>
 #include <QLayout>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QMessageBox>
 #include <QFileInfo>
 

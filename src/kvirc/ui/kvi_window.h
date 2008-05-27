@@ -44,7 +44,7 @@
 
 class QPixmap;
 class QSplitter;
-class QToolButton;
+class KviStyledToolButton;
 class QTextCodec;
 class KviFrame;
 class KviTaskBarItem;
@@ -157,7 +157,7 @@ protected: // almost private: don't touch :D
 	KviCryptSessionInfo                 * m_pCryptSessionInfo;
 #endif
 	BUTTON_CLASS                        * m_pTextEncodingButton;
-	QToolButton                         * m_pHideToolsButton;
+	KviStyledToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
 	KviAccel                            * m_pAccel;
 	static const char                   * m_typeTable[KVI_WINDOW_NUM_TYPES + 1];

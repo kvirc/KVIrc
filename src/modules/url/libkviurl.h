@@ -36,10 +36,10 @@
 #include <QString>
 #include <QPushButton>
 #include <QFile>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QMenuBar>
 #include <QInputDialog>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QIcon>
 #include <QPixmap>
 

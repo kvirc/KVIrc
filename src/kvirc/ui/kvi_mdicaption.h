@@ -27,13 +27,13 @@
 #include "kvi_settings.h"
 #include "kvi_styled_controls.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLabel>
 
 class KviMdiManager;
 class KviMdiChild;
 
-class KVIRC_API KviMdiCaptionButton : public QToolButton
+class KVIRC_API KviMdiCaptionButton : public KviStyledToolButton
 {
 	Q_OBJECT
 public:

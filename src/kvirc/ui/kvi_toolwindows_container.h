@@ -30,7 +30,7 @@
 #include "kvi_tal_widgetstack.h"
 #include "kvi_tal_vbox.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QObjectCleanupHandler>
 #include <QPushButton>
 

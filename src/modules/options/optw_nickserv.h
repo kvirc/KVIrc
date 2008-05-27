@@ -33,7 +33,7 @@
 
 class QLineEdit;
 class QPushButton;
-class QCheckBox;
+class KviStyledCheckBox;
 class KviNickServRule;
 class KviTalTreeWidget;
 
@@ -73,7 +73,7 @@ public:
 	~KviNickServOptionsWidget();
 protected:
 	KviTalTreeWidget             * m_pNickServTreeWidget;
-	QCheckBox             * m_pNickServCheck;
+	KviStyledCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
 	QPushButton           * m_pEditRuleButton;

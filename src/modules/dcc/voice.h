@@ -33,7 +33,7 @@
 #include "kvi_tal_hbox.h"
 
 #include <QLabel>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QTimer>
 
 class QSlider;
@@ -113,7 +113,7 @@ protected:
 	QLabel                 * m_pOutputLabel;
 	QLabel                 * m_pRecordingLabel;
 	QLabel                 * m_pPlayingLabel;
-	QToolButton            * m_pTalkButton;
+	KviStyledToolButton            * m_pTalkButton;
 	QTimer                 * m_pUpdateTimer;
 	QString                  m_szTarget;
 	KviDccVoiceThread      * m_pSlaveThread;

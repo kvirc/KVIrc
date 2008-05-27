@@ -59,7 +59,7 @@
 
 #include <QPixmap>
 #include <QSplitter>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 
 
 KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)

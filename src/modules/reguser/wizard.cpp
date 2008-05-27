@@ -33,7 +33,7 @@
 #include "kvi_iconmanager.h"
 
 #include <QDesktopWidget>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -209,7 +209,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	m_pPage4Layout->addMultiCellWidget(f,1,1,0,1);
 
-	m_pNotifyCheck = new QCheckBox(m_pPage4);
+	m_pNotifyCheck = new KviStyledCheckBox(m_pPage4);
 	m_pNotifyCheck->setText(__tr2qs("Add this user to the notify list"));
 	m_pNotifyCheck->setChecked(false);
 	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),this,SLOT(notifyCheckToggled(bool)));

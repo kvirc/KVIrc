@@ -84,7 +84,7 @@
 
 #include <QSplitter>
 #include <QToolBar>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QMessageBox>
 #include <QStringList>

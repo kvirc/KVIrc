@@ -37,9 +37,9 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QComboBox>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QCursor>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QIcon>
 
 
@@ -85,13 +85,13 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	KviTalVBox * vbox = new KviTalVBox(this);
 	addWidgetToLayout(vbox,1,1,1,1);
 	
-	QToolButton * tb = new QToolButton(vbox);
+	KviStyledToolButton * tb = new KviStyledToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY))));
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
 	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
 
-	tb = new QToolButton(vbox);
+	tb = new KviStyledToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT))));
 	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
@@ -125,7 +125,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	m_pProtocolBox->addItems(l);
 
-	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	m_pIpV6Check = new KviStyledCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
 	connect(m_pIpV6Check,SIGNAL(toggled(bool)),this,SLOT(ipV6CheckToggled(bool)));
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIpV6Check->setEnabled(false);

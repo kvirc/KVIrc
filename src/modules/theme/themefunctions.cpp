@@ -263,7 +263,6 @@ namespace KviThemeFunctions
 		hd.addHtmlResource("theme_dialog_details",szDetails);
 		hd.addHtmlResource("theme_dialog_main",hd.szHtmlText);
 
-	
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
 

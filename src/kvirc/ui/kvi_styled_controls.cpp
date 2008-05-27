@@ -32,7 +32,7 @@
 #include "kvi_doublebuffer.h"
 #include "kvi_tal_toolbar.h"
 
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QPainter>
 #include <QImage>
 #include <QEvent>
@@ -82,7 +82,7 @@ void KviStyledControlInternal::paintTimerShot ()
 			m_pControl->m_pTimer->stop();
 		}
 	}
-	m_pControl->m_pWidget->repaint( false );
+	m_pControl->m_pWidget->repaint();
 }
 
 KviStyledControl::KviStyledControl(QWidget* w)
@@ -116,7 +116,7 @@ void KviStyledControl::enterEvent ( QEvent * )
 		}
 		m_bMouseEnter=1;
 		m_iStepNumber++;
-		m_pWidget->repaint( false );
+		m_pWidget->repaint();
 	}
 }
 
@@ -135,21 +135,23 @@ void KviStyledControl::leaveEvent ( QEvent * )
 		}
 		m_bMouseEnter=0;
 		m_iStepNumber--;
-		m_pWidget->repaint( false );
+		m_pWidget->repaint();
 	}
 }
 
 
 KviStyledCheckBox::KviStyledCheckBox ( QWidget * parent, const char * name )
-: QCheckBox(parent,name), KviStyledControl(this)
+: QCheckBox(parent), KviStyledControl(this)
 {
+	setObjectName(name);
 	//setWFlags(WNoAutoErase);
 
 }
 
 KviStyledCheckBox::KviStyledCheckBox ( const QString & text, QWidget * parent, const char * name )
-: QCheckBox(text,parent,name), KviStyledControl(this)
+: QCheckBox(text,parent), KviStyledControl(this)
 {
+	setObjectName(name);
 	//setWFlags(WNoAutoErase);
 }
 
@@ -186,7 +188,7 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 			QPixmap pix=*pStoredPix;
 			if(m_iStepNumber && isEnabled())
 			{
-				QImage image = pix.convertToImage();
+				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);;
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
 					{
@@ -201,7 +203,7 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 					}
 				p.drawImage(0,0,image);
 				} else if( !isEnabled()) {
-				QImage image = pix.convertToImage();
+				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
 					{
@@ -233,9 +235,10 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 }
 
 KviStyledToolButton::KviStyledToolButton( QWidget * parent, const char * name )
-: QToolButton(parent,name), KviStyledControl(this), bShowSubmenuIndicator(false)
+: QToolButton(parent), KviStyledControl(this), bShowSubmenuIndicator(false)
 {
 	//setWFlags(WNoAutoErase);
+	setObjectName(name);
 	resizeEvent(0);
 }
 
@@ -268,7 +271,7 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 			if(pArrowPix=g_pIconManager->getBigIcon("kvi_toolbutton_menuindicator.png"))
 				iPixWidth=pArrowPix->width();
 		}
-		bool bActive= isOn() || m_bMouseEnter;
+		bool bActive= isChecked() || m_bMouseEnter;
 		//KviDoubleBuffer doublebuffer(event->rect().width(),event->rect().height());
 		//QPixmap * pDoubleBufferPixmap = doublebuffer.pixmap();
 
@@ -280,12 +283,8 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 			);
 		*/
 		QPainter p(this); 
-			p.setPen(bActive ? QColor(206,215,223) :
-			colorGroup().background()
-			);
-			p.setBrush(bActive ? QColor(206,215,223) :
-			colorGroup().background()
-			);
+			p.setPen(bActive ? QColor(206,215,223) :palette().background().color());
+			p.setBrush(bActive ? QColor(206,215,223) :palette().background());
 
 		p.drawRect(event->rect());
 		if(bActive)
@@ -299,14 +298,14 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
                                 usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
                                 isEnabled() ? QIcon::Normal :
                                               QIconSet::Disabled,
-                                isOn() ? QIcon::On :
+                                isChecked() ? QIcon::On :
                                               QIcon::Off);
 		QPoint pos((iWidth-iPixWidth-pix.width())/2,(height()-pix.height())/2);
 		if(!pix.isNull())
 		{
 			if(m_iStepNumber && isEnabled())
 			{
-				QImage image = pix.convertToImage();
+				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
 					{
@@ -321,7 +320,7 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 					}
 				p.drawImage(pos,image);
 				} else if( !isEnabled()) {
-				QImage image = pix.convertToImage();
+				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
 					{
@@ -361,9 +360,9 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 	if(pStoredPix=g_pIconManager->getBigIcon("kvi_toolbutton_menuindicator.png"))
 	{
 		QPixmap pix=iconSet().pixmap(
-			usesBigPixmap() ? QIconSet::Large : QIconSet::Small,
+			iconSize().height() > 22 ? QIconSet::Large : QIconSet::Small,
 			isEnabled() ? QIcon::Normal : QIconSet::Disabled,
-			isOn() ? QIcon::On : QIcon::Off);
+			isChecked() ? QIcon::On : QIcon::Off);
 		
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}

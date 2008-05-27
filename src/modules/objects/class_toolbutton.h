@@ -25,7 +25,7 @@
 //
 
 
-#include <qtoolbutton.h>
+#include <KviStyledToolButton.h>
 #include "class_widget.h"
 #include "object_macros.h"
 

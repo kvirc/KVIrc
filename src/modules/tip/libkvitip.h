@@ -30,7 +30,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QPixmap>
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QTextDocument>
 
 

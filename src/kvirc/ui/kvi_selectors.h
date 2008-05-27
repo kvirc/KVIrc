@@ -36,7 +36,7 @@
 #include "kvi_tal_listwidget.h"
 #include "kvi_tal_treewidget.h"
 
-#include <QCheckBox>
+#include "kvi_styled_controls.h"
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>

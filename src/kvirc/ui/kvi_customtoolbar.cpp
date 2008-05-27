@@ -35,7 +35,7 @@
 #include <QCursor>
 #include <QLayout>
 #include <QPixmap>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QPainter>
 #include <QStyle>
 #include <QEvent>

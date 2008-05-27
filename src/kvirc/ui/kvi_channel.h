@@ -41,7 +41,7 @@
 
 class KviConsole;
 class QSplitter;
-class QToolButton;
+class KviStyledToolButton;
 class KviTopicWidget;
 class KviIrcMask;
 class KviThemedLabel;

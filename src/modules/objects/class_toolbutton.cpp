@@ -129,7 +129,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_toolbutton)
 
 bool KviKvsObject_toolbutton::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	SET_OBJECT(QToolButton);
+	SET_OBJECT(KviStyledToolButton);
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }
@@ -143,10 +143,10 @@ bool KviKvsObject_toolbutton::functionsetImage(KviKvsObjectFunctionCall *c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix){
-			((QToolButton *)widget())->setIcon(QIcon(*pix));
+			((KviStyledToolButton *)widget())->setIcon(QIcon(*pix));
 	}
 	else
-		((QToolButton *)widget())->setIcon(QIcon());
+		((KviStyledToolButton *)widget())->setIcon(QIcon());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c)
@@ -156,13 +156,13 @@ bool KviKvsObject_toolbutton::functionsetUsesBigPixmap(KviKvsObjectFunctionCall 
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setUsesBigPixmap(bEnabled);
+		((KviStyledToolButton *)widget())->setUsesBigPixmap(bEnabled);
 	return true;
 }
 bool KviKvsObject_toolbutton::functionusesBigPixmap(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->usesBigPixmap());
+		c->returnValue()->setBoolean(((KviStyledToolButton *)widget())->usesBigPixmap());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetUsesTextLabel(KviKvsObjectFunctionCall *c)
@@ -172,13 +172,13 @@ bool KviKvsObject_toolbutton::functionsetUsesTextLabel(KviKvsObjectFunctionCall 
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setUsesTextLabel(bEnabled);
+		((KviStyledToolButton *)widget())->setUsesTextLabel(bEnabled);
 	return true;
 }
 bool KviKvsObject_toolbutton::functionusesTextLabel(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->usesTextLabel());
+		c->returnValue()->setBoolean(((KviStyledToolButton *)widget())->usesTextLabel());
 	return true;
 }
 bool KviKvsObject_toolbutton::function_setAutoRaise(KviKvsObjectFunctionCall *c)
@@ -188,13 +188,13 @@ bool KviKvsObject_toolbutton::function_setAutoRaise(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setAutoRaise(bEnabled);
+		((KviStyledToolButton *)widget())->setAutoRaise(bEnabled);
 	return true;
 }
 bool KviKvsObject_toolbutton::function_autoRaise(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
+		c->returnValue()->setBoolean(((KviStyledToolButton *)widget())->autoRaise());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetOn(KviKvsObjectFunctionCall *c)
@@ -204,7 +204,7 @@ bool KviKvsObject_toolbutton::functionsetOn(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setOn(bEnabled);
+		((KviStyledToolButton *)widget())->setOn(bEnabled);
 	return true;
 }
 
@@ -215,13 +215,13 @@ bool KviKvsObject_toolbutton::functionsetToggleButton(KviKvsObjectFunctionCall *
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setCheckable(bEnabled);
+		((KviStyledToolButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
 bool KviKvsObject_toolbutton::functiontoggle(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		((QToolButton *)widget())->toggle();
+		((KviStyledToolButton *)widget())->toggle();
 	return true;
 }
 
@@ -233,14 +233,14 @@ bool KviKvsObject_toolbutton::functionsetTextLabel(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("tooltip",KVS_PT_STRING,KVS_PF_OPTIONAL,szTip)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	((QToolButton *)widget())->setText(szLabel);
-	if (!szTip.isEmpty()) ((QToolButton *)widget())->setToolTip(szTip);
+	((KviStyledToolButton *)widget())->setText(szLabel);
+	if (!szTip.isEmpty()) ((KviStyledToolButton *)widget())->setToolTip(szTip);
 	return true;
 }
 bool KviKvsObject_toolbutton::functiontextLabel(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setString(((QToolButton *)widget())->text());
+		c->returnValue()->setString(((KviStyledToolButton *)widget())->text());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
@@ -267,13 +267,13 @@ bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
         return TRUE;
     }
 	if(widget())
-		((QToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
+		((KviStyledToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
 	return true;
 }
 bool KviKvsObject_toolbutton::functionopenPopup(KviKvsObjectFunctionCall *c)
 {
 	if(widget())
-		((QToolButton *)widget())->showMenu();
+		((KviStyledToolButton *)widget())->showMenu();
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
@@ -283,13 +283,13 @@ bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("delay",KVS_PT_UNSIGNEDINTEGER,0,uDelay)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		  ((QToolButton *)widget())->setPopupDelay(uDelay);
+		  ((KviStyledToolButton *)widget())->setPopupDelay(uDelay);
 	return true;
 }
 bool KviKvsObject_toolbutton::functionpopupDelay(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setInteger(((QToolButton *)widget())->popupDelay());
+		c->returnValue()->setInteger(((KviStyledToolButton *)widget())->popupDelay());
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetTextPosition(KviKvsObjectFunctionCall *c)
@@ -300,9 +300,9 @@ bool KviKvsObject_toolbutton::functionsetTextPosition(KviKvsObjectFunctionCall *
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szPos,"BesideIcon"))
-			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+			((KviStyledToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	else if(KviQString::equalCI(szPos,"BelowIcon"))
-			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+			((KviStyledToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
 	else c->warning(__tr2qs("Unknown text position '%Q'"),&szPos);
 	return true;
 }
@@ -310,7 +310,7 @@ bool KviKvsObject_toolbutton::functiontextPosition(KviKvsObjectFunctionCall *c)
 {
 	if(!widget()) return true;
 	QString szPos="BelowIcon";
-	if ((((QToolButton *)widget())->toolButtonStyle())==(Qt::ToolButtonTextBesideIcon))
+	if ((((KviStyledToolButton *)widget())->toolButtonStyle())==(Qt::ToolButtonTextBesideIcon))
 		szPos="BesideIcon";
 	c->returnValue()->setString(szPos);
 	return true;

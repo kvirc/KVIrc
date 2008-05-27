@@ -35,7 +35,7 @@
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QPixmap>
 
