@@ -101,6 +101,8 @@ So we have to create a directory where to compile KVIrc into, and run cmake insi
 Example:
   - download kvirc's trunk from svn into c:\kvirc
   - create directory c:\kvirc\build
-  - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" for as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure". In both methods, cmake will 
-  
-(WIP)
+  - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" for as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure".
+  - cmake will check your system and create a set of Makefiles you'll need later to compile KVIrc. If it's complaining about some missing library it can't find, probably you haven't setted up properly the environmental variables needed. Refers to the errors to understand what you need to fix.
+  - once you get cmake to create the complete set of Makefiles, simply exec a "make" (exactly as you use to do under unix); KVIrc will start to compile.
+  - once compilation ends, exec a "make install" (exactly as you use to do under unix); the installation system should create a "release" directory (in our example: c:\kvirc\build\release) and move kvirc compiled binaries in there.
+  - simply running kvirc from that directory should work :)
