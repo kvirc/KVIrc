@@ -92,8 +92,10 @@ void KviModuleManager::loadModulesByCaps(const QString &caps)
 void KviModuleManager::completeModuleNames(const QString &path,const QString &word,KviPointerList<QString> * matches)
 {
 	QDir d(path);
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS)
 	d.setNameFilters(QStringList("kvi*.dll"));
+#elif defined(COMPILE_ON_MINGW)
+	d.setNameFilters(QStringList("libkvi*.dll"));
 #else
 	d.setNameFilters(QStringList("libkvi*.so"));
 #endif
@@ -167,8 +169,10 @@ bool KviModuleManager::loadModule(const QString &modName)
 	}
 	QString tmp;
 	QString szName;
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS) 
 	KviQString::appendFormatted(szName,"kvi%Q.dll",&modName);
+#elif defined(COMPILE_ON_MINGW)
+	KviQString::appendFormatted(szName,"libkvi%Q.dll",&modName);
 #else
 	KviQString::appendFormatted(szName,"libkvi%Q.so",&modName);
 #endif

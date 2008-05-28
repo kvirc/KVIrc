@@ -731,8 +731,10 @@ void KviApp::setupBegin()
 	QString szSetupLib;
 	getGlobalKvircDirectory(szSetupLib,KviApp::Modules);
 	KviQString::ensureLastCharIs(szSetupLib,KVI_PATH_SEPARATOR_CHAR);
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS)
 	szSetupLib.append("kvisetup.dll");
+#elif defined(COMPILE_ON_MINGW)
+	szSetupLib.append("libkvisetup.dll");
 #else
 	szSetupLib.append("libkvisetup.so");
 #endif
