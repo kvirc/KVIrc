@@ -1,12 +1,20 @@
 # Template rules for modules
 IF(WANT_COEXISTENCE)
+	SET(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})
 	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
 ELSE()
+	SET(KVIRC_BINARYNAME ${PACKAGE})
 	SET(KVILIB_BINARYNAME kvilib)
 ENDIF()
 
 ADD_LIBRARY(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
-TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
+
+IF(MINGW)
+        SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc")
+        TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
+ELSE()
+        TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
+ENDIF()
 
 IF(UNIX)
 	IF(APPLE)
