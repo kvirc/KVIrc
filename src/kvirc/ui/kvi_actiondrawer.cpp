@@ -35,21 +35,12 @@
 
 #include <QLayout>
 #include <QLabel>
-//#include <qscrollview.h>
 #include <QPainter>
 #include <QPixmap>
-//#include <QHeaderView>
-//#include <q3simplerichtext.h>
 #include <QEvent>
 #include <QMouseEvent>
 #include <QTextDocument>
 
-/*#define LVI_ICON_SIZE 32
-#define LVI_BORDER 4
-#define LVI_SPACING 8
-#define LVI_MINIMUM_TEXT_WIDTH 300
-#define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
-*/
 KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * v,KviAction * a)
 : KviTalListWidgetItem(v)
 {
@@ -63,8 +54,8 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 	m_szKey = a->visibleName().toUpper();
 
 	QPixmap * p = a->bigIcon();
-	setIcon(*p);
-//	m_pIcon = p ? new QPixmap(*p) : new QPixmap(LVI_ICON_SIZE,LVI_ICON_SIZE);
+	setIcon(QIcon(*p));
+	setText(t);
 }
 
 KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
@@ -123,13 +114,14 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 
 	QString szPic;
 	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
+	szPic.replace('\\',"/");
 
 	szPic += "/kvi_actiondrawer.png";
 	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
 	setStyleSheet(szStyle);
-
 //	m_pPage = pParent;
-//	setSelectionMode(Single);
+//	setSelectionMode(Single);[{['
+
 	//header()->hide();
 	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
