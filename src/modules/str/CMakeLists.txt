@@ -4,9 +4,6 @@ IF(UNIX)
 	IF(APPLE)
 		LIST(APPEND LIBS -lssl -lcrypto)
 	ENDIF()
-ELSE()
-	# Assume windows
-	LIST(APPEND LIBS -leay32 -lssleay32)
 ENDIF()
 
 SET(kvistr_SRCS

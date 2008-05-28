@@ -26,7 +26,7 @@
 //=============================================================================
 
 //=============================================================================
-// Enviroinement function wrappers
+// Environment function wrappers
 //=============================================================================
 
 #include "kvi_settings.h"
@@ -44,7 +44,7 @@ inline char * kvi_getenv(const char * name)
 #endif
 }
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define kvi_setenv(__name,__value) SetEnvironmentVariable(__name,__value)
 	#define kvi_unsetenv(__name) SetEnvironmentVariable(__name,NULL)
 #else

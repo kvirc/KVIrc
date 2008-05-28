@@ -84,7 +84,7 @@ Now you have to define some environmental variable:
   C:\ZLIB\LIB;C:\MINGW\LIB;C:\openssl\lib\mingw;c:\windows\system32
 
   PATH
-  Add to the system PATH the bin directories of CMake, Qt, MinGW. If you pan to use gdb and/or straceNT, add their bin directories too. Example:
+  Add to the system PATH the bin directories of CMake, Qt, MinGW. If you plan to use gdb and/or straceNT, add their bin directories too. Example:
   C:\Programmi\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
 
 
@@ -96,5 +96,11 @@ Compilation
 
 Download KVIrc sources from KVIrc's website, a mirror or using svn (see instructions on KVIrc website about how to do that).
 Using CMake we are able to compile the project in-sources or out-of-sources; we'll go with the second option, that keeps the source directories untouched without filling them with compiled objects and cmake definition files.
-So we have to create a directory where to compile KVIrc into.
+So we have to create a directory where to compile KVIrc into, and run cmake inside that dir, passing to cmake the dir containing kvirc sources as a parameter (and any other option).
+
+Example:
+  - download kvirc's trunk from svn into c:\kvirc
+  - create directory c:\kvirc\build
+  - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" for as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure". In both methods, cmake will 
+  
 (WIP)

@@ -30,7 +30,7 @@
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && ! defined(COMPILE_ON_MINGW)
 
 bool kvi_setenv(const char * name,const char * value)
 {
