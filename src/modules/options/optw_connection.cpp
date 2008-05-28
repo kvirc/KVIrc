@@ -236,7 +236,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
 	addLabel(0,4,0,4,
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
 			"This is a <b>non RFC 1413 compliant</b> ident daemon that implements " \
 			"only a limited subset of the Identification Protocol specifications. If it is possible, install a " \

@@ -113,7 +113,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	}
 	m_pTagsEncodingCombo->setCurrentIndex(iMatch);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Winamp messages ecoding","options"),true);
 
 	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
@@ -263,7 +263,7 @@ void KviSoundGeneralOptionsWidget::commit()
 	}
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	idx = m_pWinampEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{

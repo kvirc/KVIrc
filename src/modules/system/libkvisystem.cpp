@@ -39,7 +39,7 @@
 
 #include <QClipboard>
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/utsname.h>
 	#include <stdlib.h>
 	#include <unistd.h>

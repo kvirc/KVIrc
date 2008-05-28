@@ -63,7 +63,7 @@ protected:
 	QPushButton * m_pMediaTestButton;
 	QPushButton * m_pMediaAutoDetectButton;
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QComboBox * m_pWinampEncodingCombo;
 #endif
 	QComboBox * m_pTagsEncodingCombo;

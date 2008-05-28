@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "mp_mprisinterface.h"
-#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC))
+#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 #include "kvi_locale.h"
 
 MP_IMPLEMENT_DESCRIPTOR(

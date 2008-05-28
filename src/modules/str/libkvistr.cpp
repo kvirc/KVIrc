@@ -1552,7 +1552,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	for(i = 0; i < md_len; i++)
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		_snprintf(buff,3,"%02x",md_value[i]);
 #else
 		snprintf(buff,3,"%02x",md_value[i]);

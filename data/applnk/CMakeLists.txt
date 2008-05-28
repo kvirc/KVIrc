@@ -9,6 +9,4 @@ IF(UNIX)
 		# Assume linux
 		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
 	ENDIF()
-ELSEIF(WIN32)
-	#INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/applnk/)
 ENDIF()

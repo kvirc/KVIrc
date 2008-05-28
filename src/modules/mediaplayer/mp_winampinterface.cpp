@@ -25,7 +25,7 @@
 #include "mp_winampinterface.h"
 #include "kvi_options.h"
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 #include <QTextCodec>
 

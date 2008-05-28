@@ -1100,7 +1100,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 		} else {
 			//check for transmission errors
 			int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
 #else
 			if((err != EAGAIN) && (err != EINTR))
@@ -1195,7 +1195,7 @@ void KviKvsObject_socket::tryFlush()
 	} else {
 		// Oops...error ?
 		int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if((err == EAGAIN) || (err == EINTR) || (err = WSAEWOULDBLOCK))
 #else
 		if((err == EAGAIN)||(err == EINTR))

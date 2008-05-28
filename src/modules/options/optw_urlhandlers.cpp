@@ -34,7 +34,7 @@
 KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"urlhandlers_options_widget")
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define START_ROW 1
 #else
 	#define START_ROW 0
@@ -42,7 +42,7 @@ KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);
 #endif
 
@@ -53,7 +53,7 @@ KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 	m_pFileHandler=addStringSelector(0,START_ROW+4,0,START_ROW+4,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
 	m_pOtherHandler=addStringSelector(0,START_ROW+5,0,START_ROW+5,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pHttpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
 	m_pHttpsHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
 	m_pFtpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
@@ -84,7 +84,7 @@ void KviUrlHandlersOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\","@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\","\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("@MAGIC@","\\\\");

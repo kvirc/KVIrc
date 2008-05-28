@@ -45,7 +45,7 @@
 #include <QSlider>
 #include <QToolTip>
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/time.h>
 	#include <sys/types.h>
 	#include <unistd.h>
@@ -54,7 +54,7 @@
 	//#include "kvi_error.h"
 	#include <sys/stat.h>   // for open()
 	#include <sys/ioctl.h>  // for ioctl()
-#endif //!COMPILE_ON_WIDNOWS
+#endif
 
 extern KviDccBroker * g_pDccBroker;
 
@@ -72,7 +72,7 @@ extern KviDccBroker * g_pDccBroker;
 			#else
 				//CAN NOT COMPILE :(
 				#define COMPILE_DISABLE_DCC_VOICE
-				#ifndef COMPILE_ON_WINDOWS
+				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 					#warning "Cannot find the soundcard.h header; you will NOT be able to use DCC Voice"
 				#endif
 			#endif

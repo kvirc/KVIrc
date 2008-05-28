@@ -31,7 +31,7 @@
 #include "mp_interface.h"
 #include "kvi_library.h"
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS)  && !defined(COMPILE_ON_MINGW)
 	class KviXmmsInterface : public KviMediaPlayerInterface
 	{
 	public:

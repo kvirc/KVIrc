@@ -50,7 +50,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define ICON_SIZE 16
 #else
 	#define ICON_SIZE 22
@@ -603,21 +603,21 @@ static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 static bool trayicon_module_init(KviModule * m)
 {
 	QString buffer;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-0.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-0.png");
 #endif
 	g_pDock1 = new QPixmap(buffer);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-1.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-1.png");
 #endif
 	g_pDock2 = new QPixmap(buffer);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	g_pApp->findImage(buffer,"kvi_dock_win32-2.png");
 #else
 	g_pApp->findImage(buffer,"kvi_dock_part-2.png");

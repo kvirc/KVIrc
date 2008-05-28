@@ -42,7 +42,7 @@
 #include <QCursor>
 #include <QPainter>
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <unistd.h> // symlink()
 #endif
 
@@ -598,7 +598,7 @@ void KviMessageColorsOptionsWidget::load()
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApp::MsgColors);
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// symlink local to global
 	//KviStr szGlobal;
 	QString szGlobal;

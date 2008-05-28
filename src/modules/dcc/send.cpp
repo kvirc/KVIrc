@@ -1386,7 +1386,7 @@ KviDccFileTransfer * KviDccFileTransfer::nonFailedTransferWithLocalFileName(cons
 	if(!g_pDccFileTransfers)return 0;
 	for(KviDccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// on windows the file names are case insensitive
 		if(t->localFileName().toLower() == szLocalFileName.toLower())
 #else

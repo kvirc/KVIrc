@@ -95,7 +95,7 @@ public:
 	KviTalGroupBox * m_pDirButtonGroup;
 	QRadioButton  * m_pDirUsePrev;
 	QRadioButton  * m_pDirUseNew;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QRadioButton  * m_pDirMakePortable;
 #endif
 	//QRadioButton  * m_pDirRestore;
@@ -120,7 +120,7 @@ public:
 	//QRadioButton  * m_pServersSpecifyManually;
 	//QRadioButton  * m_pServersOpenIrcUrl;
 	//QRadioButton  * m_pServersLoadConfig;
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString         m_szMircServerIniFile;
 	QRadioButton  * m_pUseMircServerList;
 #endif

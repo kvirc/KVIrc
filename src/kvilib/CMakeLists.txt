@@ -233,5 +233,7 @@ IF(UNIX)
 		ENDIF()
 	ENDIF()
 ELSEIF(WIN32)
-	# INSTALL(TARGETS ${KVILIB_BINARYNAME} LIBRARY DESTINATION ???)
+        # For DLL platforms the DLL part of a shared library is treated as a RUNTIME target
+        # and the corresponding import library is treated as an ARCHIVE target
+	INSTALL(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
 ENDIF()

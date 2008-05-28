@@ -544,7 +544,7 @@ void KviKvsMdmListView::contentsDropEvent(QDropEvent *e)
 			{
 				QUrl url = *it;
 				QString path = url.path();
-				#ifndef COMPILE_ON_WINDOWS
+				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
 				KviTalListViewItem *i = itemAt( contentsToViewport(e->pos()) );

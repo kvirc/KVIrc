@@ -813,7 +813,7 @@ handle_system_error:
 			if(sentLen < 0)
 			{
 				int err = kvi_socket_error();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				if((err != EAGAIN) || (err != EINTR) || (err != WSAEWOULDBLOCK))
 #else
 				if((err != EAGAIN)||(err != EINTR))

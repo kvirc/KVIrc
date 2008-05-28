@@ -9,7 +9,7 @@
 //   This file is based on the mp3tech.h. It is released under the original
 //   license and the original copyright notice follows.
 //
-//   mp3tech.h
+//   mp3tech.hCO
 //
 //   Copyright (C) 2000  Cedric Tefft <cedric@earthling.net>
 //
@@ -53,7 +53,7 @@
 #include <stdlib.h>
 #include <QString>
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <windows.h>
 #else
 	#include <unistd.h>

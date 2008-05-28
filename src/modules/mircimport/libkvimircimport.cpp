@@ -236,9 +236,9 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 	{
 		m_pOutput->setText(__tr2qs("File downloaded: processing ..."));
 		m_pOutput->repaint();
-#ifndef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		g_pApp->syncX();
-#endif //!COMPILE_ON_WINDOWS
+#endif
 
 		int iCount = m_pFilter->doImport(m_szTmpFileName);
 

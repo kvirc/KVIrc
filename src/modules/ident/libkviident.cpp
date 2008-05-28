@@ -50,7 +50,7 @@ void startIdentService()
 	if(!g_pIdentDaemon->isRunning())g_pIdentDaemon->start();
 	while(g_pIdentDaemon->isStartingUp())
 	{
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		Sleep(10);
 #else
 		usleep(100);

@@ -361,7 +361,7 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 #endif //COMPILE_KDE_SUPPORT
 
 //-| Grifisx & Noldor |-
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				id = m_pLocalFilePopup->insertItem(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
 				m_pLocalFilePopup->setItemParameter(id,-1);
 				m_pOpenFilePopup->insertSeparator();
@@ -370,7 +370,7 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("MS-DOS Prompt at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
 				m_pLocalFilePopup->insertSeparator();
-#endif //COMPILE_ON_WINDOWS
+#endif
 // G&N end
 
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("&Copy Path to Clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
@@ -457,7 +457,7 @@ void KviFileTransferWindow::openFilePopupActivated(int id)
 void KviFileTransferWindow::openLocalFileTerminal()
 {
 //-| Grifisx & Noldor |-
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -469,7 +469,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturaly doesn't work
 	tmp.prepend("cmd.exe /k cd \"");
 	system(tmp.toLocal8Bit().data());
-#else //COMPILE_ON_WINDOWS
+#else
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
@@ -486,7 +486,7 @@ void KviFileTransferWindow::openLocalFileTerminal()
 
 		KRun::runCommand(tmp,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 }
 
 void KviFileTransferWindow::deleteLocalFile()
@@ -512,7 +512,7 @@ void KviFileTransferWindow::deleteLocalFile()
 void KviFileTransferWindow::openLocalFile()
 {
 //-| Grifisx & Noldor |-
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
@@ -520,7 +520,7 @@ void KviFileTransferWindow::openLocalFile()
 	if(tmp.isEmpty())return;
 	tmp.replace("/","\\");
 	ShellExecute(0,"open",tmp.toLocal8Bit().data(),NULL,NULL,SW_SHOWNORMAL);  //You have to link the shell32.lib
-#else //!COMPILE_ON_WINDOWS
+#else
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
@@ -543,13 +543,13 @@ void KviFileTransferWindow::openLocalFile()
 
 		KRun::run(*offer, lst, g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 }
 
 void KviFileTransferWindow::openLocalFileWith()
 {
 //-| Grifisx & Noldor |-
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -557,7 +557,7 @@ void KviFileTransferWindow::openLocalFileWith()
 	tmp.replace("/","\\");
 	tmp.prepend("rundll32.exe shell32.dll,OpenAs_RunDLL "); // this if to show the 'open with...' window
 	WinExec(tmp.toLocal8Bit().data(),SW_SHOWNORMAL);
-#else //!COMPILE_ON_WINDOWS
+#else
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
@@ -571,7 +571,7 @@ void KviFileTransferWindow::openLocalFileWith()
 		lst.append(url);
 		KRun::displayOpenWithDialog(lst,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 }
 
 void KviFileTransferWindow::copyLocalFileToClipboard()
@@ -586,7 +586,7 @@ void KviFileTransferWindow::copyLocalFileToClipboard()
 void KviFileTransferWindow::openLocalFileFolder()
 {
 //-| Grifisx & Noldor|-
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -595,7 +595,7 @@ void KviFileTransferWindow::openLocalFileFolder()
 	tmp.replace('/','\\');
 	tmp.prepend("explorer.exe ");
 	WinExec(tmp.toLocal8Bit().data(), SW_MAXIMIZE);
-#else //!COMPILE_ON_WINDOWS
+#else
 // G&N end
 	#ifdef COMPILE_KDE_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
@@ -617,7 +617,7 @@ void KviFileTransferWindow::openLocalFileFolder()
 		lst.append(url);
 		KRun::run(*offer,lst,g_pFrame);
 	#endif //COMPILE_KDE_SUPPORT
-#endif //!COMPILE_ON_WINDOWS
+#endif
 }
 
 void KviFileTransferWindow::heartbeat()

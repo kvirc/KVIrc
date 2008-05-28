@@ -4,6 +4,8 @@
 
 This paper describes how to successfully compile a working copy ok KVIrc4 under Microsoft Windows operating systems.
 
+
+
 Requisites:
 
   - A Microsoft Windows operating system:
@@ -54,6 +56,17 @@ Requisites:
       Any version will work; We advice you to use the version you can find at http://sourceforge.net/projects/gettext .
       The package you want is called "gettext-tools-0.13.1.bin.woe32.zip" (version number may vary).
       
+Further reccomended download if you plan to develop KVIrc:
+
+  - Gnu Debugger (gdb) for Win32:
+      [Dev Tool: Debugger; optional]
+      Download if from the MinGW website.
+      
+  - StraceNT (aka strace for Win32)
+      [Dev Tool: tracer; optional]
+      Download it from http://www.intellectualheaven.com/ .
+
+
 
 Builder chain installation:
 
@@ -71,9 +84,17 @@ Now you have to define some environmental variable:
   C:\ZLIB\LIB;C:\MINGW\LIB;C:\openssl\lib\mingw;c:\windows\system32
 
   PATH
-  Add to the system PATH the bin directories of CMake, Qt, MinGW. Example:
+  Add to the system PATH the bin directories of CMake, Qt, MinGW. If you pan to use gdb and/or straceNT, add their bin directories too. Example:
   C:\Programmi\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
+
 
 Now you should be ready to compile KVIrc.
 
-  
+
+
+Compilation
+
+Download KVIrc sources from KVIrc's website, a mirror or using svn (see instructions on KVIrc website about how to do that).
+Using CMake we are able to compile the project in-sources or out-of-sources; we'll go with the second option, that keeps the source directories untouched without filling them with compiled objects and cmake definition files.
+So we have to create a directory where to compile KVIrc into.
+(WIP)

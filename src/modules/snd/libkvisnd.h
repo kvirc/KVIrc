@@ -127,7 +127,7 @@ class KviPhononSoundThread : public KviSoundThread
 };
 #endif
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#ifdef COMPILE_OSS_SUPPORT
 		class KviOssSoundThread : public KviSoundThread
 		{
@@ -202,7 +202,7 @@ protected:
 #ifdef COMPILE_PHONON_SUPPORT
 	bool playPhonon(const QString &szFileName);
 #endif //!COMPILE_PHONON_SUPPORT
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool playWinmm(const QString &szFileName);
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT

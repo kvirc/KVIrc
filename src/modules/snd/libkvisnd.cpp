@@ -47,7 +47,7 @@
 	Phonon::MediaObject * g_pPhononPlayer=0;
 #endif //!COMPILE_PHONON_SUPPORT
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <mmsystem.h>
 #else //!COMPILE_ON_WINDOWS
 
@@ -99,7 +99,7 @@ KviSoundPlayer::KviSoundPlayer()
 #ifdef COMPILE_PHONON_SUPPORT
 	m_pSoundSystemDict->insert("phonon",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon)));
 #endif //!COMPILE_PHONON_SUPPORT
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pSoundSystemDict->insert("winmm",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playWinmm)));
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
@@ -130,7 +130,7 @@ KviSoundPlayer::~KviSoundPlayer()
 	KviThreadManager::killPendingEvents(this);
 	delete m_pSoundSystemDict;
 
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#ifdef COMPILE_ARTS_SUPPORT
 		if(g_pArtsDispatcher)delete g_pArtsDispatcher;
         g_pArtsDispatcher = 0;
@@ -183,7 +183,7 @@ void KviSoundPlayer::detectSoundSystem()
 	if(g_pPhononPlayer->state()!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
 	return;
 #endif
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
 #else
 	#ifdef COMPILE_ARTS_SUPPORT
@@ -235,7 +235,7 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 	return true;
 }
 #endif //!COMPILE_PHONON_SUPPORT
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	bool KviSoundPlayer::playWinmm(const QString &szFileName)
 	{
 		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
@@ -359,13 +359,13 @@ void KviSoundThread::play()
 void KviSoundThread::run()
 {
 	play();
-#ifndef COMPILE_ON_WINDOWS
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	postEvent(g_pSoundPlayer,new KviThreadEvent(KVI_THREAD_EVENT_SUCCESS));
 #endif
 }
 
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#ifdef COMPILE_OSS_SUPPORT
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			KviOssAudiofileSoundThread::KviOssAudiofileSoundThread(const QString &szFileName)

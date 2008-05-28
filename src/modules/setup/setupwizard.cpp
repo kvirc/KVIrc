@@ -47,7 +47,7 @@ bool g_bFoundMirc;
 #include <QLayout>
 #include <QDesktopWidget>
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#include <windows.h>
 	#include <winnls.h>  // for MultiByteToWideChar
 	#include <objbase.h> // CoCreateInstance , CoInitialize & CO.
@@ -67,7 +67,7 @@ extern QString szUrl;
 extern QString szMircServers;
 extern QString szMircIni;
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME "KVIrc4"
 #else
 	#define KVI_LOCAL_KVIRC_SUBDIRECTORY_NAME ".config/KVIrc"
@@ -179,7 +179,7 @@ KviSetupWizard::KviSetupWizard()
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// License
-#ifndef COMPILE_ON_WINDOWS //it have been already shown by installer
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) //it have been already shown by installer
 	KviSetupPage * m_pLicense = new KviSetupPage(this);
 	m_pLicense->m_pTextLabel->setText(__tr2qs( \
 		"<p>All of the files in this distribution are covered by the GPL. " \
@@ -260,7 +260,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pNewPathBox->setSpacing(3);
 	m_pNewPathBox->setStretchFactor(m_pDataPathEdit,1);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	tmp = QTextCodec::codecForLocale()->toUnicode(getenv( "APPDATA" ));
 	if(tmp.isEmpty())
 		tmp = QDir::homePath();
@@ -296,8 +296,8 @@ KviSetupWizard::KviSetupWizard()
 	
 	m_pDirUseNew->toggle();
 
-#ifdef COMPILE_ON_WINDOWS
-	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in  shared program folder (portable)")
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in shared program folder (portable)")
 			,m_pDirButtonGroup);
 #endif
 	// Pragma: Unused, takes only space.
@@ -497,7 +497,7 @@ KviSetupWizard::KviSetupWizard()
 
 	addPage(m_pDesktopIntegration,__tr2qs("Desktop Integration"));
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pCreateUrlHandlers = new KviStyledCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateUrlHandlers->setChecked(true);
 #endif
@@ -506,7 +506,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pCreateDesktopShortcut->setChecked(true);
 #endif
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pUseMircServerList = new QRadioButton(__tr2qs("Import server list from mIRC"),m_pDesktopIntegration->m_pVBox);
 	m_pUseMircServerList->setEnabled(false);
 #endif
@@ -553,7 +553,7 @@ KviSetupWizard::KviSetupWizard()
 	setHelpEnabled(m_pDesktopIntegration,false);
 
 	// Preconfigured values
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szTmp;
 	g_pApp->getGlobalKvircDirectory(szTmp,KviApp::Config,"preinstalled.kvc");
 	if(KviFileUtils::fileExists(szTmp))
@@ -643,7 +643,7 @@ KviSetupWizard::KviSetupWizard()
 	}
 	free(buffer);
 
-#endif // COMPILE_ON:WINDOWS
+#endif // COMPILE_ON_WINDOWS
 
 	newDirClicked();
 
@@ -770,7 +770,7 @@ void KviSetupWizard::chooseIncomingPath()
 
 void KviSetupWizard::makeLink()
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	// Let's make a link on the desktop :)
 	// You need this horrible snippet of code to create a shortcut!!!!
 	//
@@ -869,7 +869,7 @@ void KviSetupWizard::makeLink()
 
 void KviSetupWizard::setUrlHandlers()
 {
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szReg = "REGEDIT4\r\n" \
 		"\r\n" \
 		"[HKEY_CLASSES_ROOT\\irc]\r\n" \
@@ -949,7 +949,7 @@ void KviSetupWizard::accept()
 		if(m_pDirUseNew->isChecked()) {
 			szDir = m_pDataPathEdit->text();
 		}
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		else { //portable
 			szDir = g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Settings";
 		}
@@ -981,7 +981,7 @@ void KviSetupWizard::accept()
 		if(m_pDirUseNew->isChecked()) {
 			szDir = m_pIncomingPathEdit->text();
 		}
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		else { //portable
 			szDir = g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Downloads";
 		}
@@ -1002,7 +1002,7 @@ void KviSetupWizard::accept()
 
 		g_szChoosenIncomingDirectory = szDir;
 	
-#ifndef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
 		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
@@ -1014,7 +1014,7 @@ void KviSetupWizard::accept()
 			makeLink();
 #endif
 	
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(m_pCreateUrlHandlers->isChecked())
 			setUrlHandlers();
 #endif
@@ -1109,20 +1109,20 @@ void KviSetupWizard::accept()
 				szUrl=m_szServerUrl;
 			}
 			*/
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(m_pUseMircServerList->isEnabled() && m_pUseMircServerList->isChecked())
 				szMircServers = m_szMircServerIniFile;
 #endif
 		}
 	}
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(m_pDirMakePortable->isChecked())
 	{
 		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable","true");
 	} else {
 #endif
 		g_pApp->saveKvircDirectory();
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	}
 #endif
 	KviTalWizard::accept();
