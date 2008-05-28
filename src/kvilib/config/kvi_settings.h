@@ -59,6 +59,22 @@
 	#ifdef MINGW
 		#define COMPILE_ON_MINGW
                 #define COMPILE_NO_X
+                #define COMPILE_WITH_SYSTEM_MEMMOVE
+                
+                #ifdef __KVILIB__
+                        #define KVILIB_API __declspec(dllexport)
+                #else
+                        #define KVILIB_API __declspec(dllimport)
+                #endif
+        
+                #ifdef __KVIRC__
+                        #define KVIRC_API __declspec(dllexport)
+                #else
+                        #define KVIRC_API __declspec(dllimport)
+                #endif
+        #else
+                #define KVILIB_API
+                #define KVIRC_API
 	#endif
 
 	#ifdef Q_OS_MACX
@@ -91,9 +107,6 @@
 			#define VERSION_BRANCH KVIRC_VERSION_BRANCH
 		#endif
 	#endif
-
-	#define KVILIB_API
-	#define KVIRC_API
 
 #endif
 

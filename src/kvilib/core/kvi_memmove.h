@@ -46,7 +46,7 @@
 
 	#else
 
-		#ifdef COMPILE_ON_WINDOWS
+		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			#error "This stuff should be never compiled on Windows"
 		#endif
 

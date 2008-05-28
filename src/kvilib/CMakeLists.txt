@@ -210,6 +210,11 @@ ELSE()
 	SET(KVILIB_BINARYNAME kvilib)
 ENDIF()
 
+#we need this defined when mingw will compile moc files
+IF(MINGW)
+        ADD_DEFINITIONS(-D__KVILIB__)
+ENDIF()
+
 ADD_LIBRARY(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 TARGET_LINK_LIBRARIES(${KVILIB_BINARYNAME} ${LIBS})
 
