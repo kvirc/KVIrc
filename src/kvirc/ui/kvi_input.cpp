@@ -2300,7 +2300,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pCommandlineModeButton->setIcon(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
-		m_pCommandlineModeButton->setOn(true);
+		m_pCommandlineModeButton->setChecked(true);
 
 
 	m_pMultiEditorButton = new KviStyledToolButton(m_pButtonContainer,"multieditorbutton");
@@ -2362,7 +2362,7 @@ void KviInput::toggleToolButtons()
 void KviInput::inputEditorEnterPressed()
 {
 	QString szText = m_pInputEditor->text();
-	KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isOn());
+	KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isChecked());
 	m_pInputEditor->setText("");
 }
 
@@ -2430,7 +2430,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 							}
 						}
 					}
-					KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isOn());
+					KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isChecked());
 					m_pMultiLineEditor->setText("");
 				}
 			}
@@ -2458,7 +2458,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pInputEditor->show();
 		m_pWindow->childrenTreeChanged(0);
 		m_pInputEditor->setFocus();
-		m_pMultiEditorButton->setOn(false);
+		m_pMultiEditorButton->setChecked(false);
 	} else {
 		if(!bOn)return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
@@ -2469,7 +2469,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pMultiLineEditor->show();
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
-		m_pMultiEditorButton->setOn(true);
+		m_pMultiEditorButton->setChecked(true);
 	}
 }
 

@@ -34,8 +34,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"text", functionText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setAutoDefault", functionSetAutoDefault)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setToggleButton", functionSetToggleButton)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setOn", functionSetOn)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isOn", functionIsOn)
+	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setOn", functionSetChecked)/*DEPRECATED*/
+	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setChecked", functionSetChecked)
+	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isOn", functionIsChecked)/*DEPRECATED*/
+	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isChecked", functionIsChecked)
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"toggle", functionToggle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"clickEvent", functionclickEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setImage", functionSetImage)
@@ -95,7 +98,7 @@ bool KviKvsObject_button::functionSetToggleButton(KviKvsObjectFunctionCall *c)
 		((QPushButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
-bool KviKvsObject_button::functionSetOn(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_button::functionSetChecked(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -108,7 +111,7 @@ bool KviKvsObject_button::functionSetOn(KviKvsObjectFunctionCall *c)
 
 
 //
-bool KviKvsObject_button::functionIsOn(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_button::functionIsChecked(KviKvsObjectFunctionCall *c)
 {
 	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isChecked());
 	return true;

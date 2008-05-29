@@ -42,8 +42,8 @@ protected:
 	bool functionText(KviKvsObjectFunctionCall *c);
 	bool functionSetAutoDefault(KviKvsObjectFunctionCall *c);
 	bool functionSetToggleButton(KviKvsObjectFunctionCall *c);
-	bool functionSetOn(KviKvsObjectFunctionCall *c);
-	bool functionIsOn(KviKvsObjectFunctionCall *c);
+	bool functionSetChecked(KviKvsObjectFunctionCall *c);
+	bool functionisChecked(KviKvsObjectFunctionCall *c);
 	bool functionToggle(KviKvsObjectFunctionCall *c);
 	bool functionSetImage(KviKvsObjectFunctionCall *c);
 	bool functionclickEvent(KviKvsObjectFunctionCall *c);

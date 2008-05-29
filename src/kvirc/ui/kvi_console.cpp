@@ -436,10 +436,10 @@ void KviConsole::showNotifyList(bool bShow)
 	if(!bShow)
 	{
 		m_pNotifyListView->hide();
-		if(m_pNotifyViewButton->isOn())m_pNotifyViewButton->setOn(false);
+		if(m_pNotifyViewButton->isChecked())m_pNotifyViewButton->setChecked(false);
 	} else {
 		m_pNotifyListView->show();
-		if(!(m_pNotifyViewButton->isOn()))m_pNotifyViewButton->setOn(true);
+		if(!(m_pNotifyViewButton->isChecked()))m_pNotifyViewButton->setChecked(true);
 	}
 }
 

@@ -353,13 +353,13 @@ void KviChannel::showDoubleView(bool bShow)
 		m_VertSplitterSizesList=m_pVertSplitter->sizes();
 		delete m_pMessageView;
 		m_pMessageView = 0;
-		if(m_pDoubleViewButton->isOn())m_pDoubleViewButton->setOn(false);
+		if(m_pDoubleViewButton->isOn())m_pDoubleViewButton->setChecked(false);
 	} else {
 		if(!bShow)return;
 		m_pMessageView = new KviIrcView(m_pVertSplitter,m_pFrm,this);
 		m_pVertSplitter->setSizes(m_VertSplitterSizesList);
 		//setFocusHandler(m_pInput,m_pMessageView); //socket it!
-		if(!(m_pDoubleViewButton->isOn()))m_pDoubleViewButton->setOn(true);
+		if(!(m_pDoubleViewButton->isOn()))m_pDoubleViewButton->setChecked(true);
 		if(m_privateBackground.pixmap())
 		{
 			m_pMessageView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
@@ -381,10 +381,10 @@ void KviChannel::toggleListView()
 	if(m_pUserListView->isVisible())
 	{
 		m_pUserListView->hide();
-		if(m_pListViewButton->isOn())m_pListViewButton->setOn(false);
+		if(m_pListViewButton->isOn())m_pListViewButton->setChecked(false);
 	} else {
 		m_pUserListView->show();
-		if(!(m_pListViewButton->isOn()))m_pListViewButton->setOn(true);
+		if(!(m_pListViewButton->isOn()))m_pListViewButton->setChecked(true);
 	}
 }
 
@@ -396,7 +396,7 @@ void KviChannel::toggleModeEditor()
 		delete m_pModeEditor;
 		m_pModeEditor = 0;
 		m_pSplitter->setMinimumHeight(20); //gfgf
-		if(m_pModeEditorButton->isOn()) m_pModeEditorButton->setOn(false);
+		if(m_pModeEditorButton->isOn()) m_pModeEditorButton->setChecked(false);
 		resizeEvent(0);
 	} else {
 		m_pModeEditor = new KviModeEditor(m_pSplitter,m_pModeEditorButton,"mode_editor",console(),m_szChannelMode,m_szChannelKey,m_szChannelLimit.ptr());
@@ -404,7 +404,7 @@ void KviChannel::toggleModeEditor()
 		connect(m_pModeEditor,SIGNAL(done()),this,SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
-		if(!m_pModeEditorButton->isOn())m_pModeEditorButton->setOn(true);
+		if(!m_pModeEditorButton->isOn())m_pModeEditorButton->setChecked(true);
 	}
 }
 
@@ -445,7 +445,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		delete *ppEd;
 		*ppEd = 0;
 		if(!(*ppBtn))return;
-		if((*ppBtn)->isOn()) (*ppBtn)->setOn(false);
+		if((*ppBtn)->isOn()) (*ppBtn)->setChecked(false);
 	} else {
 		bool bHasList = true;
 		switch(flag)
@@ -487,7 +487,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		//setFocusHandler(m_pInput,*ppEd); //socket it!
 		(*ppEd)->show();
 		if(!(*ppBtn))return;
-		if(!((*ppBtn)->isOn()))(*ppBtn)->setOn(true);
+		if(!((*ppBtn)->isOn()))(*ppBtn)->setChecked(true);
 	}
 }
 

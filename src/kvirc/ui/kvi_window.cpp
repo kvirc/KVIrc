@@ -401,9 +401,8 @@ BUTTON_CLASS * KviWindow::createToolButton(QWidget * par,const char * nam,int pi
 	b->setFlat(true);
 	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
 
-	KviTalToolTip::add
-		(b,tooltip);
-	b->setOn(bOn);
+	KviTalToolTip::add(b,tooltip);
+	b->setChecked(bOn);
 	return b;
 }
 
@@ -427,7 +426,7 @@ void KviWindow::textEncodingButtonClicked()
 {
 	createSystemTextEncodingPopup();
 	g_pMdiWindowSystemTextEncodingPopup->popup(m_pTextEncodingButton->mapToGlobal(QPoint(0,m_pTextEncodingButton->height())));
-	m_pTextEncodingButton->setOn(false);
+	m_pTextEncodingButton->setChecked(false);
 }
 
 const QString & KviWindow::lastLineOfText()
@@ -448,7 +447,7 @@ const QString & KviWindow::lastMessageText()
 void KviWindow::toggleCryptController()
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	if(!m_pCryptControllerButton->isOn())
+	if(!m_pCryptControllerButton->isChecked())
 	{
 		if(m_pCryptController)
 		{
@@ -456,8 +455,8 @@ void KviWindow::toggleCryptController()
 			m_pCryptController = 0;
 			if(!m_pCryptControllerButton)
 				return;
-			if(m_pCryptControllerButton->isOn())
-				m_pCryptControllerButton->setOn(false);
+			if(m_pCryptControllerButton->isChecked())
+				m_pCryptControllerButton->setChecked(false);
 		}
 	} else {
 		if(m_pSplitter && m_pInput)
@@ -468,8 +467,8 @@ void KviWindow::toggleCryptController()
 			m_pCryptController->show();
 			if(!m_pCryptControllerButton)
 				return;
-			if(!(m_pCryptControllerButton->isOn()))
-				m_pCryptControllerButton->setOn(true);
+			if(!(m_pCryptControllerButton->isChecked()))
+				m_pCryptControllerButton->setChecked(true);
 		}
 	}
 #endif // COMPILE_CRYPT_SUPPORT
@@ -492,8 +491,8 @@ void KviWindow::setCryptSessionInfo(KviCryptSessionInfo * inf)
 		is.addPixmap(*(g_pIconManager->getSmallIcon(m_pCryptSessionInfo ? KVI_SMALLICON_LOCKED : KVI_SMALLICON_UNLOCKED)),QIcon::Normal,QIcon::On);
 		m_pCryptControllerButton->setIcon(is);
 
-		if(m_pCryptControllerButton->isOn())
-			m_pCryptControllerButton->setOn(false);
+		if(m_pCryptControllerButton->isChecked())
+			m_pCryptControllerButton->setChecked(false);
 	}
 }
 #endif // COMPILE_CRYPT_SUPPORT

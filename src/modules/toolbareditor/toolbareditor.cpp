@@ -36,11 +36,11 @@
 #include "kvi_filedialog.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_draganddrop.h"
+#include "kvi_tal_tooltip.h"
 
 #include <QPushButton>
 #include <QLayout>
 #include <QApplication>
-#include <QToolTip>
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
@@ -59,14 +59,14 @@ KviTrashcanLabel::KviTrashcanLabel(QWidget * p)
 : QLabel(p)
 {
 	setPixmap(*(g_pIconManager->getBigIcon("kvi_bigicon_trashcan.png")));
-	QToolTip::add(this,__tr2qs("Drop here the icons from the toolbars to remove them"));
+	KviTalToolTip::add(this,__tr2qs("Drop here the icons from the toolbars to remove them"));
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 	setAcceptDrops(true);
 	setAlignment(Qt::AlignCenter);
 	setMinimumSize(40,40);
 	m_uFlashCount = 0;
 	m_pFlashTimer = 0;
-	m_clrOriginal = paletteBackgroundColor();
+	m_clrOriginal =  palette().color(backgroundRole());
 	connect(KviActionManager::instance(),SIGNAL(removeActionsHintRequest()),this,SLOT(flash()));
 }
 
@@ -91,10 +91,16 @@ void KviTrashcanLabel::flash()
 void KviTrashcanLabel::heartbeat()
 {
 	m_uFlashCount++;
-	if(m_uFlashCount % 2)
-		setPaletteBackgroundColor(QColor(0,0,0));
-	else
-		setPaletteBackgroundColor(m_clrOriginal);
+	if(m_uFlashCount % 2){
+		QPalette p = palette();
+		p.setColor(backgroundRole(),QColor(0,0,0)); 
+		setPalette(p);
+	}
+	else{
+		QPalette p = palette();
+		p.setColor(backgroundRole(),m_clrOriginal); 
+		setPalette(p);
+	}
 	update();
 	if(m_uFlashCount == 8)
 	{
@@ -123,18 +129,20 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_szLabel = szLabel;
 
 	setWindowTitle(__tr2qs("ToolBar Properties"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR))));
 	
 	QGridLayout * g = new QGridLayout(this);
 	
 	QLabel * l = new QLabel(szText,this);
-	g->addMultiCellWidget(l,0,0,0,5);
+	g->addWidget(l,0,0,1,6);
+//	g->addMultiCellWidget(l,0,0,0,5);
 
 	l = new QLabel(__tr2qs("Label") + ":",this);
 	g->addWidget(l,1,0);
 
 	m_pLabelEdit = new QLineEdit(this);
-	g->addMultiCellWidget(m_pLabelEdit,1,1,1,5);
+	g->addWidget(m_pLabelEdit,1,1,1,5);
+//	g->addMultiCellWidget(m_pLabelEdit,1,1,1,5);
 	m_pLabelEdit->setText(szLabel);
 	connect(m_pLabelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(labelTextChanged(const QString &)));
 	
@@ -143,10 +151,13 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	
 	m_pIconEdit = new QLineEdit(this);
 	m_pIconEdit->setReadOnly(true);
-	g->addMultiCellWidget(m_pIconEdit,2,2,1,4);
+	g->addWidget(m_pIconEdit,2,1,1,4);
+
+	//g->addMultiCellWidget(m_pIconEdit,2,2,1,4);
 	
 	m_pIconButton = new QPushButton(this);
-	g->addMultiCellWidget(m_pIconButton,2,2,5,5);
+	g->addWidget(m_pIconButton,2,5,1,1);
+//	g->addMultiCellWidget(m_pIconButton,2,2,5,5);
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
 	iconSelected(szIconId);
@@ -164,7 +175,8 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 
 	m_pIdEdit->setText(szId);
 
-	g->addMultiCellWidget(m_pAdvanced,3,3,0,5);
+	g->addWidget(m_pAdvanced,3,0,1,6);
+//	g->addMultiCellWidget(m_pAdvanced,3,3,0,5);
 	m_pAdvanced->hide();
 
 	m_pLabelEdit->setFocus();
@@ -172,7 +184,8 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	QPushButton * pb = new QPushButton(__tr2qs("OK"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
 	pb->setMinimumWidth(80);
-	g->addMultiCellWidget(pb,4,4,4,5);
+	g->addWidget(pb,4,4,1,2);
+	//g->addMultiCellWidget(pb,4,4,4,5);
 	
 	pb = new QPushButton(__tr2qs("Cancel"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
@@ -182,7 +195,8 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pAdvancedButton = new QPushButton(__tr2qs("Advanced..."),this);
 	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advancedClicked()));
 	m_pAdvancedButton->setMinimumWidth(100);
-	g->addMultiCellWidget(m_pAdvancedButton,4,4,0,1);
+	g->addWidget(m_pAdvancedButton,4,0,1,2);
+//	g->addMultiCellWidget(m_pAdvancedButton,4,4,0,1);
 	
 	g->setRowStretch(0,1);
 	g->setColumnStretch(2,1);
@@ -197,7 +211,7 @@ void KviCustomToolBarPropertiesDialog::iconSelected(const QString &szIconId)
 	QPixmap * p = g_pIconManager->getImage(szIconId.toUtf8().data());
 	if(p)
 	{
-		m_pIconButton->setPixmap(*p);
+		m_pIconButton->setIcon(*p);
 		m_szIconId = szIconId;
 		m_pIconEdit->setText(szIconId);
 	} else {
@@ -275,16 +289,19 @@ void KviCustomToolBarPropertiesDialog::advancedClicked()
 
 
 KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
-: QDialog(p,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
+: QDialog(p)//,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
+	setObjectName("Toolbar_editor");
+	debug("TOol bar editor");
 	setWindowTitle(__tr2qs("Customize Toolbars"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 
 	m_pInstance = this;
 
 	QGridLayout * g = new QGridLayout(this);
 	m_pDrawer = new KviActionDrawer(this);
-	g->addMultiCellWidget(m_pDrawer,0,6,0,0);
+	g->addWidget(m_pDrawer,0,0,7,1);
+//	g->addMultiCellWidget(m_pDrawer,0,6,0,0);
 
 	QPushButton * b = new QPushButton(__tr2qs("New ToolBar"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(newToolBar()));
@@ -363,7 +380,7 @@ void KviCustomizeToolBarsDialog::deleteToolBar()
 	if(!t)return;
 	if(QMessageBox::question(this,
 			__tr2qs("Confirm ToolBar Deletion"),
-			__tr2qs("Do you really want to delete toolbar \"%1\" ?").arg(t->label()),
+			__tr2qs("Do you really want to delete toolbar \"%1\" ?").arg(t->windowTitle()),
 			__tr2qs("No"),
 			__tr2qs("Yes")) == 0)return;
 	KviCustomToolBarManager::instance()->destroyDescriptor(t->descriptor()->id());
@@ -374,7 +391,7 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 	KviCustomToolBar * t = KviActionManager::currentToolBar();
 	if(!t)return;
 
-	QString szName = QDir::homeDirPath();
+	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += t->descriptor()->id();
 	szName += ".kvs";
@@ -453,7 +470,7 @@ void KviCustomizeToolBarsDialog::renameToolBar()
 	if(!t)return;
 
 	KviCustomToolBarPropertiesDialog * dlg = new KviCustomToolBarPropertiesDialog(this,
-		__tr2qs("Please specify the properties for the toolbar \"%1\"").arg(t->label()),
+		__tr2qs("Please specify the properties for the toolbar \"%1\"").arg(t->windowTitle()),
 		t->descriptor()->id(),
 		t->descriptor()->labelCode(),
 		t->descriptor()->iconId());

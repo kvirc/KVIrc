@@ -491,10 +491,10 @@ void KviQuery::showListView(bool bShow)
 	if(!bShow)
 	{
 		m_pUserListView->hide();
-		if(m_pListViewButton->isOn())m_pListViewButton->setOn(false);
+		if(m_pListViewButton->isChecked())m_pListViewButton->setChecked(false);
 	} else {
 		m_pUserListView->show();
-		if(!(m_pListViewButton->isOn()))m_pListViewButton->setOn(true);
+		if(!(m_pListViewButton->isChecked()))m_pListViewButton->setChecked(true);
 	}
 }
 
