@@ -33,6 +33,14 @@
 #include <QTimer>
 #include <QToolButton>
 
+
+#ifdef COMPILE_ON_MINGW
+
+        #define KviStyledCheckBox QCheckBox
+        #define KviStyledToolButton QToolButton
+
+#else
+
 class KviStyledControl;
 class KviTalToolBar;
 
@@ -100,5 +108,7 @@ protected:
 	virtual void paintEvent ( QPaintEvent * );
 	virtual void resizeEvent ( QResizeEvent * ) ;
 };
+
+#endif
 
 #endif

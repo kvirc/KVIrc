@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
+#include "kvi_styled_controls.h"
 
 #include <QWidget>
 #include <QPixmap>      // needed
@@ -34,7 +35,7 @@
 class QScrollBar;
 class QLineEdit;
 class QFile;
-class KviStyledToolButton;
+//class KviStyledToolButton;
 class QFontMetrics;
 class KviTalPopupMenu;
 

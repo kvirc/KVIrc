@@ -24,9 +24,10 @@
 
 #include "kvi_string.h"
 #include <kvi_tal_wizard.h>
+#include "kvi_styled_controls.h"
 
 class QGridLayout; 
-class KviStyledCheckBox;
+//class KviStyledCheckBox;
 class QLabel;
 class QLineEdit;
 class QWidget;
