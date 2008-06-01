@@ -23,7 +23,6 @@
 #define __KVIRC__
 
 #include "kvi_ctcppagedialog.h"
-
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
@@ -38,9 +37,11 @@
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 KviCtcpPageDialog::KviCtcpPageDialog()
-: QWidget(0,"kvirc_ctcppage_dialog",
-	Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
+: QWidget(0,Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
 {
+	setObjectName("kvirc_ctcppage_dialog");
+	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
+
 	QGridLayout * g = new QGridLayout(this);
 	m_pWidgetStack = new KviTalWidgetStack(this);
 	g->addWidget(m_pWidgetStack,0,0);
@@ -50,7 +51,6 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	g->addWidget(m_pTabBar,1,0);
 
 	g->setRowStretch(0,1);
-
 	g->addRowSpacing(2,15);
 
 	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
@@ -60,8 +60,6 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	setMinimumSize(300,200);
 	setMaximumSize(780,580);
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CTCPREQUESTREPLIED)));
-
-	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
 }
 
 KviCtcpPageDialog::~KviCtcpPageDialog()
@@ -132,6 +130,7 @@ void KviCtcpPageDialog::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 	center();
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_ctcppagedialog.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

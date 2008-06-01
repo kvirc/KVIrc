@@ -37,8 +37,8 @@
 #include <QComboBox>
 
 class QToolBar;
-class KviStyledToolButton;
 
+class KviStyledToolButton;
 class KviAvatar;
 class KviDns;
 class KviIrcUserDataBase;
@@ -46,6 +46,11 @@ class KviIrcUserEntry;
 class KviIrcServer;
 class KviIrcNetwork;
 class KviProxy;
+class KviUserListView;
+class KviNotifyListManager;
+class KviRegisteredUser;
+class KviWindowToolPageButton;
+
 #ifdef COMPILE_ON_WINDOWS
 	// windoze wants it to compile QList<KviChannel> and QList<KviQuery>
 	#include "kvi_channel.h"
@@ -54,11 +59,6 @@ class KviProxy;
 	class KviChannel;
 	class KviQuery;
 #endif
-class KviUserListView;
-class KviNotifyListManager;
-class KviRegisteredUser;
-class KviWindowToolPageButton;
-
 
 
 //=================================================================================================
@@ -86,10 +86,10 @@ public:
 protected:
 	int                                m_iFlags; // FIXME: make this a KviWindow property ?
 	// UI
-	KviUserListView                  * m_pNotifyListView;
-	KviWindowToolPageButton          * m_pNotifyViewButton;
-	QComboBox						 * m_pAddressEdit;
-	QString                            m_szStatusString; // nick (flags) on server | not connected
+	KviUserListView         * m_pNotifyListView;
+	KviWindowToolPageButton * m_pNotifyViewButton;
+	QComboBox               * m_pAddressEdit;
+	QString                   m_szStatusString; // nick (flags) on server | not connected
 protected:
 	// UI
 	virtual QPixmap * myIconPtr();

@@ -33,12 +33,9 @@
 #include <QTimer>
 #include <QToolButton>
 
-
 #ifdef COMPILE_ON_MINGW
-
         #define KviStyledCheckBox QCheckBox
         #define KviStyledToolButton QToolButton
-
 #else
 
 class KviStyledControl;
@@ -62,7 +59,7 @@ public slots:
 protected:
 	bool eventFilter( QObject *obj, QEvent *ev );
 protected:
-	KviStyledControl*	m_pControl;
+	KviStyledControl * m_pControl;
 };
 
 class KVIRC_API KviStyledControl
@@ -75,11 +72,11 @@ protected:
 	virtual void enterEvent ( QEvent * );
 	virtual void leaveEvent ( QEvent * );
 	
-	int 				m_bMouseEnter;
-	int 				m_iStepNumber;
-	QTimer*				m_pTimer;
-	KviStyledControlInternal*	m_pInternal;
-	QWidget				*m_pWidget;
+	int                        m_bMouseEnter;
+	int                        m_iStepNumber;
+	QTimer                   * m_pTimer;
+	KviStyledControlInternal * m_pInternal;
+	QWidget                  * m_pWidget;
 };
 
 class KVIRC_API KviStyledCheckBox : public QCheckBox, public KviStyledControl
@@ -106,9 +103,9 @@ public:
 	void setShowSubmenuIndicator(bool bShow);
 protected:
 	virtual void paintEvent ( QPaintEvent * );
-	virtual void resizeEvent ( QResizeEvent * ) ;
+	virtual void resizeEvent ( QResizeEvent * );
 };
 
-#endif
+#endif //! COMPILE_ON_MINGW
 
 #endif

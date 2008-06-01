@@ -59,7 +59,6 @@
 #include "kvi_garbage.h"
 #include "kvi_modulemanager.h"
 #include "kvi_fileutils.h"
-#include "kvi_irctoolbar.h"
 #include "kvi_time.h"
 #include "kvi_mexlinkfilter.h"
 #include "kvi_avatarcache.h"
@@ -73,6 +72,7 @@
 #include "kvi_ircdatastreammonitor.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_msgbox.h"
+#include "kvi_styled_controls.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"
@@ -84,7 +84,6 @@
 
 #include <QSplitter>
 #include <QToolBar>
-#include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QMessageBox>
 #include <QStringList>
@@ -139,7 +138,6 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
-
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
@@ -156,7 +154,6 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging();
-
 }
 
 int KviConsole::selectedCount()
@@ -1180,7 +1177,7 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 	static QString html_spaceparclosed(")");
 
 	buffer = "<table width=\"100%\">" \
-						START_TABLE_BOLD_ROW;
+		START_TABLE_BOLD_ROW;
 	buffer += m_szStatusString;
 	buffer += END_TABLE_BOLD_ROW;
 	if((context()->state() == KviIrcContext::Connected) && connection())
