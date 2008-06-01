@@ -233,7 +233,7 @@ namespace KviAddonFunctions
 [02:27:10] <Pragma> guarda un pò insomma
 [02:27:22] <Pragma> la gente co ste cose ci va a nozze
 */
-			// Check for dir existence
+			// Create a random extraction dir
 			QString szTmpPath, szUnpackPath;
 			QString szRandomDir = createRandomDir();
 
@@ -242,6 +242,7 @@ namespace KviAddonFunctions
 			szUnpackPath = szTmpPath + szRandomDir;
 			QDir szTmpDir(szUnpackPath);
 
+			// Check for dir existence
 			while(szTmpDir.exists())
 			{
 				szRandomDir = createRandomDir();

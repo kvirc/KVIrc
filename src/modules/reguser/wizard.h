@@ -5,7 +5,7 @@
 //   Creation date : Fri Jun 26 2002 21:21:21 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,18 +23,18 @@
 //
 
 #include "kvi_string.h"
-#include <kvi_tal_wizard.h>
 #include "kvi_styled_controls.h"
+#include "kvi_tal_wizard.h"
 
-class QGridLayout; 
+class QGridLayout;
 //class KviStyledCheckBox;
 class QLabel;
 class QLineEdit;
 class QWidget;
 class KviPixmap;
 class KviPixmapSelector;
-class KviTalVBoxLayout; 
-class KviTalHBoxLayout; 
+class KviTalVBoxLayout;
+class KviTalHBoxLayout;
 class KviRegisteredUserDataBase;
 
 class KviRegistrationWizard : public KviTalWizard
