@@ -19,8 +19,10 @@ src/kvilib/tal
 	kvi_tal_scrollview.h
 
 src/kvirc/kernel
+	app.cpp - q3mimefactory
 	kvi_filetransfer.cpp
 	kvi_iconmanager.cpp
+
 src/kvirc/ui:
 	kvi_console.cpp - q3mimefactory
 	kvi_ircviewtools.cpp (graphic bug in panel view)
