@@ -1,5 +1,5 @@
 KVIrc hackers guide - Szymon Stefanek - 2004.05.26
-last updated on 2008.04.26
+last updated on 2008.06.02
 -------------------------------------------------------------------------------
 
 This is an always-work-in-progress guide for KVIrc source code hackers.
@@ -189,6 +189,8 @@ The source tree
 |   |   |-- lag           Lag meter
 |   |   |
 |   |   |-- lamerizer     A crypt/text-transformation engine
+|   |   |
+|   |   |-- language      A language detector module
 |   |   |
 |   |   |-- links         The links window
 |   |   |
@@ -407,8 +409,11 @@ Coding tips
 - Don't use the STL features: anything that you need IS either in the Qt library
 	or in kvilib.
 
-- Windows compilation has COMPILE_ON_WINDOWS #defined and a KDE compilation
-	has COMPILE_KDE_SUPPORT #defined.
+- Sources include some arch/compile specific defines:
+        - Windows compilation (using MS Visual c++ projects) has COMPILE_ON_WINDOWS #defined;
+        - Windows compilation (using Cmake+MinGW) has COMPILE_ON_MINGW #defined;
+        - a unix* compilation with KDE support has COMPILE_KDE_SUPPORT #defined;
+        - a MacOs compilation (using gnu tools) has COMPILE_ON_MAC #defined;
 
 - Modularize, abstract, modularize, abstract ...
 
@@ -876,14 +881,14 @@ if possible :)
 
 At the moment of writing the KVIrc svn tree has version 4.0.0 (but some 3.9.9
 definition is still floating around in the source code).
-Today is 26 Apr 2008 and the current svn revision number is 1594.
+Today is 02 Jun 2008 and the current svn revision number is 1880.
 The latest official release was 3.4.0 (where the internal revision number
 was omitted and implicitly assumed to be 0).
 If tomorrow we had to emit a quick fix for the official release we'll
 use 3.4.1. The next official is likely to be a qt4-only version 4.
 
 -------------------------------------------------------------------------------
-Porting to Qt 4.x (while mantaining Qt 3.x compatibility) (Old topic)
+Porting to Qt 4.x for version 4 (no Qt 3.x compatibility)
 -------------------------------------------------------------------------------
 
 For the moment, in random order:
@@ -892,51 +897,25 @@ For the moment, in random order:
   This is because Qt 4.x does NOT have a null static variable. Qt 4.x in fact
   does not have the distinction between null and empty strings (Note that for
   KviStr this choice was made since the beginning).
-  Do NOT replace all the uses of QString::null with QString() (as the qt 4.x
-  porting documentation suggests) since for Qt 3.x this construct is SLOW.
+  Do NOT replace all the uses of QString::null with QString(); for Qt 3.x this
+  construct was too SLOW, and the qt 4.x porting documentation suggests not to
+  do it anyway.
 
 - We're building a compatibility layer in kvilib.
   Before using ANY Qt class, look if there is an override in kvilib.
   In fact always, prefer Kvi* classes over the Q* ones and include
   the "kvi_*.h" files instead of the <qt*.h> ones.
 
-- Widgets will be probably abstracted in kvilib/tal.
+- Widgets have been abstracted in kvilib/tal.
 
 - Qt 4.x has no QCString anymore. It uses QByteArray instead. From my own
   point of view this is ugly since the name is misleading and QByteArray
   is forced to mantain the null terminator which is not needed
   in normal "byte array" operations...but well, we have to live with it.
   kvilib has kvi_qcstring.h that defines the KviQCString MACRO.
-  It expands to QCString under Qt 3.x and QByteArray under Qt 4.x.
+  It expands to QByteArray under Qt 4.x.
 
-- Use:
-    #ifdef COMPILE_USE_QT4
-  to check if the compilation requires Qt 4.x or Qt 3.x.
-  Later this *might* be automatically replaced with
-    #if QT_VERSION >= 0x040000
-
-- Use:
-    ./configure --enable-debug --enable-qt4 --with-qt4-moc=/path/moc
-    make clean
-    make
-  to switch to Qt 4.x
-  Use:
-    ./configure --enable-debug
-    make clean
-    make
-  to switch back to Qt 3.x  
-
-- Use less possible Qt3Compat features.
-
-- Before committing to the svn always test your changes under Qt 3.x: this is
-  the primary goal for now: keeping 3.x compatibility.
-  Qt 3.x-only developers are encouraged (but not required) to test their
-  changes agains Qt 4.x.
-
-- Use the KviQString::* wrapper functions around QString (take a look at
-  kvi_qstring.h) even if there exist QString functions that do the same
-  thing. This is because the QString interface has changed a lot between
-  Qt 3.x and Qt 4.x and KviQString introduces a compatibility layer.
+- Avoid any use of Q3Support features.
 
 - Do not use the "char * c = KviQString::toUtf8(string).data();" construct.
   It leads to crashes on many compilers since the returned KviQCString
