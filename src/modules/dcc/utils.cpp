@@ -40,7 +40,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 
 	if(KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault))
 	{
-		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).stripWhiteSpace();
+		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).trimmed();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
 			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
@@ -108,7 +108,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 
 	if(KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault))
 	{
-		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).stripWhiteSpace();
+		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).trimmed();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
 			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))

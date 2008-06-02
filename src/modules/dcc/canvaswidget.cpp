@@ -1303,10 +1303,10 @@
 				{
 					KviStr fam = txt;
 					fam.cutFromFirst(',',true);
-					fam.stripWhiteSpace();
+					fam.trimmed();
 					KviStr psz = txt;
 					psz.cutToFirst(',',true);
-					psz.stripWhiteSpace();
+					psz.trimmed();
 					bool bOk;
 					unsigned int uSize = psz.toUInt(&bOk);
 					if(!bOk)uSize = 12;

@@ -35,7 +35,7 @@
 #include <QListWidget>
 #include <QItemDelegate>
 
-class QToolButton;
+class KviStyledToolButton;
 class QPixmap;
 class KviKvsScriptAddon;
 
@@ -68,10 +68,10 @@ public:
 protected:
 	KviTalListWidget * m_pListWidget;
 	static KviScriptManagementDialog * m_pInstance;
-	QToolButton * m_pConfigureButton;
-	QToolButton * m_pHelpButton;
-	QToolButton * m_pPackButton;
-	QToolButton * m_pUninstallButton;
+	KviStyledToolButton * m_pConfigureButton;
+	KviStyledToolButton * m_pHelpButton;
+	KviStyledToolButton * m_pPackButton;
+	KviStyledToolButton * m_pUninstallButton;
 public:
 	static KviScriptManagementDialog * instance(){ return m_pInstance; };
 	static void display();

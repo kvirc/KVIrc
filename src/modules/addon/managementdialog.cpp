@@ -39,6 +39,7 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_draganddrop.h"
 #include "kvi_tal_listwidget.h"
+#include "kvi_tal_tooltip.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -46,10 +47,10 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QPushButton>
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLayout>
 #include <QApplication>
-#include <QToolTip>
+
 #include <QLineEdit>
 #include <QLabel>
 #include <QFrame>
@@ -102,51 +103,51 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	hb->setSpacing(1);
 	g->addWidget(hb,0,0);
 
-	QToolButton * tb;
+	KviStyledToolButton * tb;
 	QFrame * sep;
 
-	m_pConfigureButton = new QToolButton(hb);
+	m_pConfigureButton = new KviStyledToolButton(hb);
 	m_pConfigureButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS)));
 	m_pConfigureButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure Addon...","addon"));
+	KviTalToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure Addon...","addon"));
 	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
 
-	m_pHelpButton = new QToolButton(hb);
+	m_pHelpButton = new KviStyledToolButton(hb);
 	m_pHelpButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_HELP)));
 	m_pHelpButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pHelpButton,__tr2qs_ctx("Show Help","addon"));
+	KviTalToolTip::add(m_pHelpButton,__tr2qs_ctx("Show Help","addon"));
 	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
 
-	m_pUninstallButton = new QToolButton(hb);
+	m_pUninstallButton = new KviStyledToolButton(hb);
 	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pUninstallButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
+	KviTalToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete Selected Addons","addon"));
 	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 	
-	m_pPackButton = new QToolButton(hb);
+	m_pPackButton = new KviStyledToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pPackButton,__tr2qs_ctx("Create an Addon as a Distributable Package","addon"));
+	KviTalToolTip::add(m_pPackButton,__tr2qs_ctx("Create an Addon as a Distributable Package","addon"));
 	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
 
-	tb = new QToolButton(hb);
+	tb = new KviStyledToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Install Addon Package From Disk","addon"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("Install Addon Package From Disk","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installScript()));
 
-	tb = new QToolButton(hb);
+	tb = new KviStyledToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Get More Addons...","addon"));
+	KviTalToolTip::add(tb,__tr2qs_ctx("Get More Addons...","addon"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
 
 	QWidget *w= new QWidget(hb);

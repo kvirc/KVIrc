@@ -166,7 +166,7 @@ void KviDccBroker::rsendAskForFileName(KviDccDescriptor * dcc)
 				{
 					d = new KviDccDescriptor(*dcc);
 					d->szLocalFileName = *(it);
-					d->szLocalFileName.stripWhiteSpace();
+					d->szLocalFileName.trimmed();
 					++it;
 					if(d->szLocalFileName.isEmpty())
 						cancelDcc(d);
@@ -786,7 +786,7 @@ void KviDccBroker::sendFileManage(KviDccDescriptor * dcc)
 				{
 					d = new KviDccDescriptor(*dcc);
 					d->szLocalFileName = *(it);
-					d->szLocalFileName.stripWhiteSpace();
+					d->szLocalFileName.trimmed();
 					++it;
 					if(d->szLocalFileName.isEmpty())
 						cancelDcc(d);

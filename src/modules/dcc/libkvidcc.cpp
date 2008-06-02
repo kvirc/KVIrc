@@ -106,7 +106,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		} else {
 			// -c or -n , grab a local nick from somewhere
 			d->szLocalNick  = KVI_OPTION_STRING(KviOption_stringNickname1);
-			d->szLocalNick.stripWhiteSpace();
+			d->szLocalNick.trimmed();
 			if(d->szLocalNick.isEmpty())d->szLocalNick = KVI_DEFAULT_NICKNAME1;
 			d->szLocalUser  = __tr2qs_ctx("unknown","dcc"); // we can live without it
 			d->szLocalHost  = d->szLocalUser;  // we can live without it
@@ -1228,7 +1228,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		else {
 			// -c or -n , grab a local nick from somewhere
 			d->szLocalNick  = KVI_OPTION_STRING(KviOption_stringNickname1);
-			d->szLocalNick.stripWhiteSpace();
+			d->szLocalNick.trimmed();
 			if(d->szLocalNick.isEmpty())d->szLocalNick = KVI_DEFAULT_NICKNAME1;
 			d->szLocalUser  = __tr("unknown"); // we can live without it
 			d->szLocalHost  = d->szLocalUser;  // we can live without it

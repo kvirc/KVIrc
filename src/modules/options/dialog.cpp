@@ -291,7 +291,7 @@ KviOptionsDialog::~KviOptionsDialog()
 
 void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 {
-	QString txt = m_pSearchLineEdit->text().stripWhiteSpace();
+	QString txt = m_pSearchLineEdit->text().trimmed();
 	m_pSearchButton->setEnabled(txt.length() > 0);
 }
 
@@ -447,7 +447,7 @@ void KviOptionsDialog::search(const QString &szKeywords)
 
 void KviOptionsDialog::searchClicked()
 {
-	QString szTxt = m_pSearchLineEdit->text().stripWhiteSpace();
+	QString szTxt = m_pSearchLineEdit->text().trimmed();
 	if(!szTxt.isEmpty())
 		search(szTxt);
 }

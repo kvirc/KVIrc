@@ -91,7 +91,7 @@ KviCompletionBox::KviCompletionBox(QTextEdit * parent = 0)
 
 void KviCompletionBox::updateContents(QString buffer)
 {
-	//buffer=buffer.stripWhiteSpace();
+	//buffer=buffer.trimmed();
 	KviPointerList<QString> *list;
 	clear();
 	
