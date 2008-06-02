@@ -214,6 +214,8 @@ void KviApp::setup()
 	KviSSL::globalInit();
 #endif
 
+      	g_pIconManager = new KviIconManager();
+
 	// Setup our filesystem and initalize locale
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
@@ -278,11 +280,10 @@ void KviApp::setup()
 
 	// Create the module manager early: so the other managers can load modules
 	g_pModuleExtensionManager = new KviModuleExtensionManager();
+        
+      	KVI_SPLASH_SET_PROGRESS(4);
+
 	g_pModuleManager = new KviModuleManager();
-
-	KVI_SPLASH_SET_PROGRESS(4);
-
-	g_pIconManager = new KviIconManager();
 
 	KVI_SPLASH_SET_PROGRESS(5)
 

@@ -37,8 +37,6 @@
 #include <QTimer>
 #include <QPaintEvent>
 
-#ifndef COMPILE_ON_MINGW
-
 KviStyledControlInternal::KviStyledControlInternal( KviStyledControl* control)
 :QObject(0)
 {
@@ -356,5 +354,3 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_styled_controls.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-#endif

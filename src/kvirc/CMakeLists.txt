@@ -53,6 +53,7 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_splash.h
 	ui/kvi_statusbar.h
 	ui/kvi_statusbarapplet.h
+        ui/kvi_styled_controls.h
 	ui/kvi_taskbar.h
 	ui/kvi_texticonwin.h
 	ui/kvi_themedlabel.h
@@ -212,10 +213,6 @@ SET(kvirc_MOC_HDRS
 	kernel/kvi_useraction.h
 	kernel/kvi_userinput.h
 )
-
-IF(NOT MINGW)
-        LIST(APPEND kvirc_MOC_HDRS ui/kvi_styled_controls.h)
-ENDIF()
 
 SET(kvirc_SRCS
 	ui/kvi_actiondrawer.cpp
@@ -442,16 +439,14 @@ ENDIF()
 
 ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 
-#we need this defined when mingw will compile moc files
-IF(MINGW)
-        ADD_DEFINITIONS(-D__KVIRC__)
-ENDIF()
-
 # Link libraries
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 IF(MINGW)
+        # needed for linking
         SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
+        #we need this defined when mingw will compile moc files
+        ADD_DEFINITIONS(-D__KVIRC__)
 ENDIF()
 
 # Installation directives
