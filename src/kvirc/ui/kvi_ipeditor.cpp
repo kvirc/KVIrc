@@ -111,7 +111,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 	//       is valid before effectively setting the fields
 	clear();
 
-	KviQCString ip = ipAddr.ascii(); // ip addresses are digits & latin letters abcdef (IpV6)
+	KviQCString ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IpV6)
 
 	ip = ip.trimmed();
 	const char * c = ip.data();
@@ -285,7 +285,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 				break;
 				default:
 					// a normal key (this part substitutes a QValidator)
-					const char c = tolower(((QKeyEvent *)e)->ascii());
+					const char c = tolower(((QKeyEvent *)e)->text().toAscii().at(0));
 					if(m_addrType == IpV4)
 					{
 						if((c >= '0') && (c <= '9'))

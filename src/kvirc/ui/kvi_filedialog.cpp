@@ -77,7 +77,7 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(showNative)
 	{
-		buffer=QFileDialog::getOpenFileName(initial,filter,parent,"open_file_name_dialog",caption);
+		buffer=QFileDialog::getOpenFileName(parent,caption,initial,filter);
 		KviFileUtils::adjustFilePath(buffer);
 		return !buffer.isEmpty();
 	}
@@ -89,7 +89,9 @@ bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,co
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
-		buffer = d->selectedFile();
+		QStringList files = d->selectedFiles();
+		if (!files.isEmpty())
+			buffer = files[0];
 		KviFileUtils::adjustFilePath(buffer);
 		delete d;
 		return !buffer.isEmpty();
@@ -106,7 +108,7 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 	{
 		while (1)
 		{
-			buffer=QFileDialog::getSaveFileName(initial,filter,parent,"save_file_name_dialog",caption);
+			buffer=QFileDialog::getSaveFileName(parent,caption,initial,filter);
 			KviFileUtils::adjustFilePath(buffer);
 			//return !buffer.isEmpty();
 			if(buffer.isEmpty()) return false;
@@ -136,7 +138,9 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 
 	while(d->exec() == QDialog::Accepted)
 	{
-		buffer = d->selectedFile();
+		QStringList files = d->selectedFiles();
+		if (!files.isEmpty())
+			buffer = files[0];
 		KviFileUtils::adjustFilePath(buffer);
 
 		if(!buffer.isEmpty())
@@ -176,7 +180,7 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(showNative)
 	{
-		buffer = QFileDialog::getExistingDirectory(initial,parent,"open_file_name_dialog",caption);
+		buffer = QFileDialog::getExistingDirectory(parent,caption,initial);
 		return !buffer.isEmpty();
 	}
 #else
@@ -195,7 +199,9 @@ bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,
 	//d->setShowHiddenFiles(showHidden);
 	if(d->exec() == QDialog::Accepted)
 	{
-		buffer = d->selectedFile();
+		QStringList files = d->selectedFiles();
+		if (!files.isEmpty())
+			buffer = files[0];
 		KviFileUtils::adjustFilePath(buffer);
 		delete d;
 		return !buffer.isEmpty();
@@ -211,7 +217,7 @@ bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & capt
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if (showNative)
 	{
-		buffer=QFileDialog::getOpenFileNames(filter,initial,parent,"open_file_name_dialog",caption);
+		buffer=QFileDialog::getOpenFileNames(parent,caption,initial,filter);
 		return (buffer.count()>0);
 	}
 
