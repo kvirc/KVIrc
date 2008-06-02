@@ -80,26 +80,22 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 : QFrame(par)
 {
 	m_pIrcView = par;
-	setFrameShadow(QFrame::Raised);
-	setFrameShape(QFrame::Panel);
-	setFrameStyle(QFrame::StyledPanel);
+	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
 	setAutoFillBackground(true);
-	//setStyleSheet("background-color: rgba(255,255, 180, 20%)") ;
 	QPalette p=palette();
-	QColor col=backgroundRole();
+	QColor col=p.color(backgroundRole());
 	//installEventFilter(
-	col.setAlpha(255);
-	p.setColor(backgroundRole(),col);
+	p.setColor(backgroundRole(), col);
 	setPalette(p);
-//	setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
-	
+
 	QGridLayout * gl = new QGridLayout(this);
 
-	QLabel * l = new QLabel(__tr2qs("<b><font color=\"#EAEAEA\" size=\"-1\">Find Text</font></b>"),this);
+	QLabel * l = new QLabel(__tr2qs("Find Text"),this);
 //	l->setMaximumHeight(14);
-	p = l->palette(); 
-	p.setColor(QPalette::Base, Qt::black);
-	l->setPalette(p); 
+	p = l->palette();
+	p.setColor(l->backgroundRole(), QColor("#000000"));
+	p.setColor(l->foregroundRole(), QColor("#EAEAEA"));
+	l->setPalette(p);
 	l->setAutoFillBackground(true);
 	gl->addWidget(l,0,0);
 
@@ -118,13 +114,13 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 	// Find tab
 	QWidget * w = new QWidget(tw);
-	
+
 	QGridLayout * g = new QGridLayout(w);
 
 	m_pStringToFind = new QLineEdit(w);
 	g->addWidget(m_pStringToFind,0,0,1,3);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
-	
+
 	m_pRegExp = new KviStyledCheckBox(__tr2qs("&Regular expression"),w);
 	g->addWidget(m_pRegExp,1,0,1,3);
 
