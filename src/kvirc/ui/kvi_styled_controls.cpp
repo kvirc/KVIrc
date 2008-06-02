@@ -45,7 +45,7 @@ KviStyledControlInternal::KviStyledControlInternal( KviStyledControl* control)
 
 KviStyledControlInternal::~KviStyledControlInternal()
 {
-	
+
 }
 
 bool KviStyledControlInternal::eventFilter( QObject *obj, QEvent *ev )
@@ -73,7 +73,7 @@ void KviStyledControlInternal::paintTimerShot ()
 		}
 	} else {
 		m_pControl->m_iStepNumber--;
-		if(m_pControl->m_iStepNumber<=0) 
+		if(m_pControl->m_iStepNumber<=0)
 		{
 			m_pControl->m_iStepNumber=0;
 			m_pControl->m_pTimer->stop();
@@ -105,7 +105,7 @@ void KviStyledControl::enterEvent ( QEvent * )
 	{
 		if(m_iStepNumber<KVI_STYLE_NUM_STEPS)
 		{
-			if(!m_pTimer->isActive()) 
+			if(!m_pTimer->isActive())
 			{
 				m_pTimer->connect( m_pTimer, SIGNAL(timeout()), m_pInternal, SLOT(paintTimerShot()) );
 				m_pTimer->start(KVI_STYLE_TIMER_STEP);
@@ -122,7 +122,7 @@ void KviStyledControl::leaveEvent ( QEvent * )
 //	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 	if(m_pWidget->isEnabled() && KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects))
 	{
-		if(m_iStepNumber>0) 
+		if(m_iStepNumber>0)
 		{
 			if(!m_pTimer->isActive())
 			{
@@ -161,14 +161,14 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 	//debug("%s %s %i %i %i",__FILE__,__FUNCTION__,__LINE__,m_bMouseEnter,m_iStepNumber);
 	if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects))
 	{
-	
+
 		QRect rect=event->rect();
-		
-		QPainter p( this); 
-		p.translate(-rect.x(), -rect.y()); 
-		
+
+		QPainter p( this);
+		p.translate(-rect.x(), -rect.y());
+
 		QPixmap*  pStoredPix = 0;
-		
+
 		if(isChecked())
 			pStoredPix=g_pIconManager->getBigIcon("kvi_checkbox_selected.png");
 		else
@@ -194,7 +194,7 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 						image.setPixel(x,y,rgb);
 					}
 				p.drawImage(0,0,image);
-				} else if( !isEnabled()) {/*
+				} else if( !isEnabled()) {
 				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
@@ -210,8 +210,6 @@ void KviStyledCheckBox::paintEvent ( QPaintEvent * event)
 						image.setPixel(x,y,rgb);
 					}
 					p.drawImage(0,0,image);
-					*/
-					QCheckBox::paintEvent(event);
 			} else {
 			p.drawPixmap(0,0,pix);
 			}
@@ -266,7 +264,7 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 		}
 		bool bActive= isChecked() || m_bMouseEnter;
 		QRect rect=event->rect();
-		
+
 		QPainter p(this);
 		p.setPen(bActive ? QColor(206,215,223) : palette().background().color());
 		p.setBrush(bActive ? QBrush(QColor(206,215,223)) : palette().background());
@@ -302,7 +300,7 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 						image.setPixel(x,y,rgb);
 					}
 				p.drawImage(pos,image);
-				} else if( !isEnabled()) {/*
+				} else if( !isEnabled()) {
 				QImage image = pix.toImage().convertToFormat(QImage::Format_ARGB32);
 				for(int x=0; x<image.width(); x++)
 					for(int y=0; y<image.height(); y++)
@@ -318,13 +316,11 @@ void KviStyledToolButton::paintEvent ( QPaintEvent * event)
 						image.setPixel(x,y,rgb);
 					}
 					p.drawImage(pos,image);
-					*/
-					QToolButton::paintEvent(event);
 			} else {
 			p.drawPixmap(pos,pix);
 			}
 		}
-		
+
 		if(pArrowPix)
 		{
 			pos.setX(pix.width()+4);
@@ -346,7 +342,7 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 			iconSize().height() > 22 ? QIconSet::Large : QIconSet::Small,
 			isEnabled() ? QIcon::Normal : QIconSet::Disabled,
 			isChecked() ? QIcon::On : QIcon::Off);
-		
+
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}
 }
