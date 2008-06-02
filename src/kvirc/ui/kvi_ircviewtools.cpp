@@ -91,7 +91,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	QGridLayout * gl = new QGridLayout(this);
 
 	QLabel * l = new QLabel(__tr2qs("Find Text"),this);
-//	l->setMaximumHeight(14);
+	l->setMaximumHeight(16);
 	p = l->palette();
 	p.setColor(l->backgroundRole(), QColor("#000000"));
 	p.setColor(l->foregroundRole(), QColor("#EAEAEA"));
@@ -99,10 +99,10 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	l->setAutoFillBackground(true);
 	gl->addWidget(l,0,0);
 
-	KviStyledToolButton *tb = new KviStyledToolButton(this);
-	tb->setArrowType(Qt::DownArrow);
+	QPushButton *tb = new QPushButton(this);
+	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE))));
 	tb->setObjectName("down_arrow");
-	tb->setFixedSize(14,14);
+	tb->setFixedSize(16,16);
 	tb->setAutoRepeat(false);
 	connect(tb,SIGNAL(clicked()),m_pIrcView,SLOT(toggleToolWidget()));
 	gl->addWidget(tb,0,1);
