@@ -19,16 +19,13 @@ src/kvilib/tal
 	kvi_tal_scrollview.h
 
 src/kvirc/kernel
-	app.cpp
 	kvi_filetransfer.cpp
 	kvi_iconmanager.cpp
-	kvi_ircconnection.cpp
-	kvi_options.cpp
 src/kvirc/ui:
 	kvi_console.cpp - q3mimefactory
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
-	kvi_styled_controls.cpp (QIcon stuff)
+	kvi_styled_controls.cpp (QIcon stuff+segfault with mingw compiler)
 	kvi_mdichild.cpp (bug in resize)
 	kvi_menubar.cpp
 	kvi_topicw.cpp
