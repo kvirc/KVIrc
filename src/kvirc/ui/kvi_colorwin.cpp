@@ -88,11 +88,8 @@ void KviColorWindow::keyPressEvent(QKeyEvent *e)
 void KviColorWindow::mousePressEvent(QMouseEvent *e)
 {
 	QString str;
-	if(e->pos().x() < 0)goto hideme;
-    if(e->pos().x() > width())goto hideme;
-    if(e->pos().y() < 0)goto hideme;
-    if(e->pos().y() > height())goto hideme;
-
+	if(!((e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
+	{
 	int key=e->x()/18;
 	if (e->x()<36 && e->y()>18) key +=8;
 	if (e->x()>36 && e->y()>18) key -=2;
@@ -101,7 +98,7 @@ void KviColorWindow::mousePressEvent(QMouseEvent *e)
 	if (e->x()>36 && e->y()>18)
 		if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,Qt::NoModifier,"1"));
 	if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,key,(Qt::KeyboardModifiers)Qt::NoModifier,str));
-	hideme:
+	}
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);
 	hide();
