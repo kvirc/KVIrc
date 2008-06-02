@@ -37,7 +37,6 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_ircview.h
 	ui/kvi_ircviewprivate.h
 	ui/kvi_ircviewtools.h
-	ui/kvi_listview.h
 	ui/kvi_maskeditor.h
 	ui/kvi_mdicaption.h
 	ui/kvi_mdichild.h
@@ -238,7 +237,6 @@ SET(kvirc_SRCS
 	ui/kvi_irctoolbar.cpp
 	ui/kvi_ircview.cpp
 	ui/kvi_ircviewtools.cpp
-	ui/kvi_listview.cpp
 	ui/kvi_maskeditor.cpp
 	ui/kvi_mdicaption.cpp
 	ui/kvi_mdichild.cpp

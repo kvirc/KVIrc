@@ -185,11 +185,11 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const QString &na
 	m_pHideToolsButton = new KviStyledToolButton(m_pButtonBox,"hide_container_button");
 
 
-	m_pHideToolsButton->setUsesBigPixmap(false);
+	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(10);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
-		m_pHideToolsButton->setPixmap(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png")));
+		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
@@ -239,7 +239,7 @@ void KviChannel::toggleToolButtons()
 		g_pIconManager->getBigIcon("kvi_horizontal_left.png") :
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png");
 	if(pix)
-		m_pHideToolsButton->setPixmap(*pix);
+		m_pHideToolsButton->setIcon(QIcon(*pix));
 }
 
 void KviChannel::triggerCreationEvents()
@@ -353,13 +353,13 @@ void KviChannel::showDoubleView(bool bShow)
 		m_VertSplitterSizesList=m_pVertSplitter->sizes();
 		delete m_pMessageView;
 		m_pMessageView = 0;
-		if(m_pDoubleViewButton->isOn())m_pDoubleViewButton->setChecked(false);
+		if(m_pDoubleViewButton->isChecked())m_pDoubleViewButton->setChecked(false);
 	} else {
 		if(!bShow)return;
 		m_pMessageView = new KviIrcView(m_pVertSplitter,m_pFrm,this);
 		m_pVertSplitter->setSizes(m_VertSplitterSizesList);
 		//setFocusHandler(m_pInput,m_pMessageView); //socket it!
-		if(!(m_pDoubleViewButton->isOn()))m_pDoubleViewButton->setChecked(true);
+		if(!(m_pDoubleViewButton->isChecked()))m_pDoubleViewButton->setChecked(true);
 		if(m_privateBackground.pixmap())
 		{
 			m_pMessageView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
@@ -381,10 +381,10 @@ void KviChannel::toggleListView()
 	if(m_pUserListView->isVisible())
 	{
 		m_pUserListView->hide();
-		if(m_pListViewButton->isOn())m_pListViewButton->setChecked(false);
+		if(m_pListViewButton->isChecked())m_pListViewButton->setChecked(false);
 	} else {
 		m_pUserListView->show();
-		if(!(m_pListViewButton->isOn()))m_pListViewButton->setChecked(true);
+		if(!(m_pListViewButton->isChecked()))m_pListViewButton->setChecked(true);
 	}
 }
 
@@ -396,7 +396,7 @@ void KviChannel::toggleModeEditor()
 		delete m_pModeEditor;
 		m_pModeEditor = 0;
 		m_pSplitter->setMinimumHeight(20); //gfgf
-		if(m_pModeEditorButton->isOn()) m_pModeEditorButton->setChecked(false);
+		if(m_pModeEditorButton->isChecked()) m_pModeEditorButton->setChecked(false);
 		resizeEvent(0);
 	} else {
 		m_pModeEditor = new KviModeEditor(m_pSplitter,m_pModeEditorButton,"mode_editor",console(),m_szChannelMode,m_szChannelKey,m_szChannelLimit.ptr());
@@ -404,7 +404,7 @@ void KviChannel::toggleModeEditor()
 		connect(m_pModeEditor,SIGNAL(done()),this,SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
-		if(!m_pModeEditorButton->isOn())m_pModeEditorButton->setChecked(true);
+		if(!m_pModeEditorButton->isChecked())m_pModeEditorButton->setChecked(true);
 	}
 }
 
@@ -445,7 +445,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		delete *ppEd;
 		*ppEd = 0;
 		if(!(*ppBtn))return;
-		if((*ppBtn)->isOn()) (*ppBtn)->setChecked(false);
+		if((*ppBtn)->isChecked()) (*ppBtn)->setChecked(false);
 	} else {
 		bool bHasList = true;
 		switch(flag)
@@ -487,7 +487,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd,KviWindowToolPageButton ** p
 		//setFocusHandler(m_pInput,*ppEd); //socket it!
 		(*ppEd)->show();
 		if(!(*ppBtn))return;
-		if(!((*ppBtn)->isOn()))(*ppBtn)->setChecked(true);
+		if(!((*ppBtn)->isChecked()))(*ppBtn)->setChecked(true);
 	}
 }
 
@@ -661,7 +661,7 @@ void KviChannel::getTalkingUsersStats(QString &buffer,QStringList &l,bool bPast)
 		buffer += "</b> ";
 		buffer += __tr2qs("and");
 		buffer += " <b>";
-		l.remove(l.begin());
+		l.erase(l.begin());
 		buffer += l.first();
 		buffer += "</b> ";
 		buffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
@@ -669,14 +669,14 @@ void KviChannel::getTalkingUsersStats(QString &buffer,QStringList &l,bool bPast)
 		buffer += "<b>";
 		buffer += l.first();
 		buffer += "</b>, <b>";
-		l.remove(l.begin());
+		l.erase(l.begin());
 		buffer += l.first();
 		if(l.count() == 2)
 		{
 			buffer += "</b> ";
 			buffer += __tr2qs("and");
 			buffer += " <b>";
-			l.remove(l.begin());
+			l.erase(l.begin());
 			buffer += l.first();
 			buffer += "</b>";
 		} else {
@@ -1299,7 +1299,7 @@ void KviChannel::getChannelActivityStats(KviChannelActivityStats * s)
 		{
 			if(!userDict.find(a->szNick))
 			{
-				if(isOn(a->szNick.ascii()))
+				if(isOn(a->szNick.toAscii()))
 				{
 					if(a->tTime >= tTwoMinsAgo)s->lTalkingUsers.append(a->szNick);
 					else s->lWereTalkingUsers.append(a->szNick);
@@ -1581,7 +1581,7 @@ bool KviChannel::eventFilter(QObject * o, QEvent * e)
 
 void KviChannel::preprocessMessage(QString & szMessage)
 {
-	QStringList strings = QStringList::split(" ",szMessage, TRUE);
+	QStringList strings = szMessage.split(" ",QString::KeepEmptyParts);
 	for ( QStringList::Iterator it = strings.begin(); it != strings.end(); ++it ) {
 		if((*it).contains('\r')) continue;
 		QString tmp = KviMircCntrl::stripControlBytes(*it);

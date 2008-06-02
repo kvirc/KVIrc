@@ -121,15 +121,16 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pButtonBox = new KviTalHBox(this);
 	m_pButtonBox->setSpacing(0);
 	m_pButtonBox->setMargin(0);
-	new QLabel(__tr2qs("Address:"),m_pButtonBox,"url_label");
-	m_pAddressEdit = new QComboBox(m_pButtonBox,"url_editor");
+	new QLabel(__tr2qs("Address:"),m_pButtonBox);
+	m_pAddressEdit = new QComboBox(m_pButtonBox);
+	m_pAddressEdit->setObjectName("url_editor");
 	m_pAddressEdit->setAutoCompletion(true);
 	m_pAddressEdit->setDuplicatesEnabled(false);
 	m_pAddressEdit->setEditable(true);
-	m_pAddressEdit->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
+	m_pAddressEdit->addItem(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL))),"");
 	recentUrlsChanged();
-	m_pAddressEdit->setCurrentText("");
-	m_pAddressEdit->setInsertionPolicy(QComboBox::NoInsertion);
+	//m_pAddressEdit->setCurrentText("");
+	m_pAddressEdit->setInsertPolicy(QComboBox::NoInsert);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);
 	m_pButtonBox->setObjectName( QLatin1String( "kvi_window_button_box" ) );
@@ -138,7 +139,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("console_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 
@@ -169,9 +171,17 @@ void KviConsole::recentUrlsChanged(){
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
 		++it
 			) {
-		m_pAddressEdit->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)),*it);
+		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)),*it);
 	}
-	m_pAddressEdit->setCurrentText(cur);
+//	m_pAddressEdit->setCurrentText(cur);
+	int i = m_pAddressEdit->findText(cur);
+    if (i != -1)m_pAddressEdit->setCurrentIndex(i);
+	else
+	{
+		if (m_pAddressEdit->isEditable())m_pAddressEdit->setEditText(cur);
+		else
+	    m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), cur);
+	}
 }
 
 bool KviConsole::isNotConnected()
@@ -492,7 +502,7 @@ void KviConsole::updateUri()
 			KviChannel * last =connection()->channelList()->last();
 			for(KviChannel * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
 			{
-				uri.append(c->name());
+				uri.append(c->objectName().toLatin1());
 				if(c->hasChannelKey()) {
 					uri.append("?");
 					uri.append(c->channelKey());
@@ -501,7 +511,15 @@ void KviConsole::updateUri()
 			}
 		}
 	}
-	m_pAddressEdit->setCurrentText(uri);
+//	m_pAddressEdit->setCurrentText(uri);
+	int i = m_pAddressEdit->findText(uri);
+    if (i != -1)m_pAddressEdit->setCurrentIndex(i);
+	else
+	{
+		if (m_pAddressEdit->isEditable())m_pAddressEdit->setEditText(uri);
+		else
+	    m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), uri);
+	}
 }
 
 void KviConsole::connectionAttached()
@@ -613,7 +631,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	QString szPattern=KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
 	QString szStripMsg=KviMircCntrl::stripControlBytes(szMsg);
-	QChar* aux=(QChar*)(szStripMsg.ucs2());
+	QChar* aux=(QChar*)(szStripMsg.utf16());
 	if(aux)
 	{
 		while(aux->unicode())

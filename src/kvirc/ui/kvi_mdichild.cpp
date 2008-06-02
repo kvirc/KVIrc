@@ -505,7 +505,7 @@ void KviMdiChild::setClient(QWidget *w)
 				m_pCaption->heightHint() + KVI_MDICHILD_SPACING);
 	}
 
-	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName().utf8().data());
+	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName().toUtf8().data());
 	setObjectName(tmp.ptr());
 }
 

@@ -1520,9 +1520,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 							p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid),0 /*,QPen::DotLine*/));
 							if((bShowState || bShowIcons) && (KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_3DGRID))
 								p.drawLine(iAvatarAndTextX,bottom - 1,iAvatarAndTextX,theY);
-							p.setPen(palette().shadow());
+							p.setPen(palette().shadow().color());
 							p.drawLine(0,bottom - 1,wdth,bottom - 1);
-							p.setPen(palette().light());
+							p.setPen(palette().light().color());
 							p.drawLine(0,theY,wdth,theY);
 							theY--;
 						}
@@ -1725,14 +1725,14 @@ void KviUserListViewArea::mousePressEvent(QMouseEvent *e)
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry)
 		{
-			if(e->state() & Qt::ShiftButton)
+			if(e->modifiers() & Qt::ShiftModifier)
 			{
 				// Multiselect mode
 				if(!entry->m_bSelected)m_pListView->m_iSelectedCount++;
 				entry->m_bSelected = true;
 				if(m_pListView->m_iSelectedCount == 1)g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
 				update();
-			} else if(e->state() & Qt::ControlButton)
+			} else if(e->modifiers() & Qt::ControlModifier)
 			{
 				// Invert mode
 				if(!entry->m_bSelected)m_pListView->m_iSelectedCount++;
@@ -1835,12 +1835,12 @@ void KviUserListViewArea::mouseDoubleClickEvent(QMouseEvent *e)
 
 void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 {
-	if(e->state() & Qt::LeftButton)
+	if(e->modifiers() & Qt::LeftButton)
 	{
 		KviUserListEntry * entry = m_pListView->itemAt(e->pos());
 		if(entry && (entry != m_pLastEntryUnderMouse))
 		{
-			if(e->state() & Qt::ControlButton)
+			if(e->modifiers() & Qt::ControlModifier)
 			{
 				if(entry->m_bSelected)m_pListView->m_iSelectedCount--;
 				else m_pListView->m_iSelectedCount++;
@@ -1865,7 +1865,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 					m_pScrollBar->setValue(m_pScrollBar->value() - top->m_iHeight);
 					if(m_pListView->m_pTopItem != top)
 					{
-						if(e->state() & Qt::ControlButton)
+						if(e->modifiers() & Qt::ControlModifier)
 						{
 							if(m_pListView->m_pTopItem->m_bSelected)m_pListView->m_iSelectedCount--;
 							else m_pListView->m_iSelectedCount++;
@@ -1898,7 +1898,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent *e)
 						m_pScrollBar->setValue(m_pScrollBar->value() + bottom->m_iHeight);
 						if(bottom != m_pLastEntryUnderMouse)
 						{
-							if(e->state() & Qt::ControlButton)
+							if(e->modifiers() & Qt::ControlModifier)
 							{
 								if(bottom->m_bSelected)m_pListView->m_iSelectedCount--;
 								else m_pListView->m_iSelectedCount++;

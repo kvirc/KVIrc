@@ -234,7 +234,7 @@
 void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * ptr,kvi_wslen_t len)
 {
 	kvi_wslen_t oldLen = qstrptr->length();
-	qstrptr->setLength(oldLen + len);
+	qstrptr->resize(oldLen + len);
 	#ifdef WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
 		_WSTRING_WMEMCPY(qstrptr->unicode() + oldLen,ptr,len);
 	#else // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
@@ -275,8 +275,9 @@ void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * pt
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
-: QWidget(parent,"irc_view")
+: QWidget(parent)
 {
+	setObjectName("irc_view");
 	// Ok...here we go
 	// initialize the initializable
 
@@ -345,7 +346,19 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pToolTip = new KviIrcViewToolTip(this);
 
 	// Create the scroll bar
-	m_pScrollBar = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
+/*int minValue, int maxValue, int lineStep, int pageStep,
+                int value, Qt::Orientation, QWidget *parent=0, const char* name = 0);
+*/
+	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
+	m_pScrollBar->setMaximum(0);
+	m_pScrollBar->setMinimum(0);
+	m_pScrollBar->setSingleStep(1);
+	m_pScrollBar->setPageStep(10);
+	m_pScrollBar->setValue(0);
+	m_pScrollBar->setObjectName("irc_view_scrollbar");
+
+	//m_pScrollBar = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
+	
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
@@ -526,13 +539,13 @@ void KviIrcView::stopLogging()
 #ifdef COMPILE_ZLIB_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
 		{
-			if(m_pLogFile->open(IO_ReadOnly))
+			if(m_pLogFile->open(QIODevice::ReadOnly))
 			{
 				QByteArray bytes;
 				bytes=m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				QString szFname=fi.dirPath(true)+QString("/")+fi.baseName(true);
+				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
 				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
 				if(file)
 				{
@@ -552,12 +565,12 @@ void KviIrcView::stopLogging()
 
 void KviIrcView::getLogFileName(KviStr &buffer)
 {
-	if(m_pLogFile)buffer.append(m_pLogFile->name());
+	if(m_pLogFile)buffer.append(m_pLogFile->fileName());
 }
 
 void KviIrcView::getLogFileName(QString &buffer)
 {
-	if(m_pLogFile) buffer=m_pLogFile->name();
+	if(m_pLogFile) buffer=m_pLogFile->fileName();
 }
 
 void KviIrcView::getTextBuffer(QString &buffer)
@@ -579,13 +592,13 @@ void KviIrcView::flushLog()
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
 		{
 			m_pLogFile->close();
-			if(m_pLogFile->open(IO_ReadOnly))
+			if(m_pLogFile->open(QIODevice::ReadOnly))
 			{
 				QByteArray bytes;
 				bytes=m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				QString szFname=fi.dirPath(true)+QString("/")+fi.baseName(true);
+				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
 				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
 				if(file)
 				{
@@ -596,7 +609,7 @@ void KviIrcView::flushLog()
 					debug("Cannot open compressed stream");
 				}
 			}
-			m_pLogFile->open(IO_Append|IO_WriteOnly);
+			m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly);
 		} else
 #endif
 		m_pLogFile->flush();
@@ -677,14 +690,14 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 
 	if(m_pLogFile->exists())
 	{
-		if(!m_pLogFile->open(IO_Append|IO_WriteOnly))
+		if(!m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
 			m_pLogFile = 0;
 			return false;
 		}
 	} else {
-		if(!m_pLogFile->open(IO_WriteOnly))
+		if(!m_pLogFile->open(QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
 			m_pLogFile = 0;
@@ -712,7 +725,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 {
 	QString szToWrite=QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
 	KviQCString szTmp = KviQString::toUtf8(szToWrite);
-	if(m_pLogFile->writeBlock(szTmp.data(),szTmp.length())==-1) debug("WARNING : Can not write to the log file.");
+	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1) debug("WARNING : Can not write to the log file.");
 }
 
 //=============================================================================
@@ -746,19 +759,19 @@ void KviIrcView::clearBuffer()
 bool KviIrcView::saveBuffer(const char *filename)
 {
 	QFile f(QString::fromUtf8(filename));
-	if(!f.open(IO_WriteOnly|IO_Truncate))return false;
+	if(!f.open(QIODevice::WriteOnly|QIODevice::Truncate))return false;
 	QString tmp;
 	getTextBuffer(tmp);
 	KviQCString tmpx = KviQString::toUtf8(tmp);
-	f.writeBlock(tmpx.data(),tmpx.length());
+	f.write(tmpx.data(),tmpx.length());
 	f.close();
 	return true;
 }
 
-void KviIrcView::prevLine(){ m_pScrollBar->subtractLine(); }
-void KviIrcView::nextLine(){ m_pScrollBar->addLine(); }
-void KviIrcView::prevPage(){ m_pScrollBar->subtractPage(); }
-void KviIrcView::nextPage(){ m_pScrollBar->addPage(); }
+void KviIrcView::prevLine(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepSub); }
+void KviIrcView::nextLine(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepAdd); }
+void KviIrcView::prevPage(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepSub); }
+void KviIrcView::nextPage(){ m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepAdd);}
 
 void KviIrcView::setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint)
 {
@@ -1020,7 +1033,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 				{
 					m_iLastScrollBarValue--;
 					__range_valid(m_iLastScrollBarValue >= 0);
-					m_pScrollBar->subtractLine();
+					m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepSub);
 				} // else will stay in sync
 				m_bSkipScrollBarRepaint = false;
 			}
@@ -1030,7 +1043,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 			if(m_pCurLine==m_pLastLine)
 			{
 				m_bSkipScrollBarRepaint = true;
-				m_pScrollBar->addLine();
+				m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepAdd);
 				m_bSkipScrollBarRepaint = false;
 				if(bRepaint)
 					postUpdateEvent();
@@ -1046,7 +1059,7 @@ void KviIrcView::appendLine(KviIrcViewLine *ptr,bool bRepaint)
 		ptr->pNext = 0;
 		m_iNumLines    = 1;
 		m_pScrollBar->setRange(0,1);
-		m_pScrollBar->addLine();
+		m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepAdd);
 		if(bRepaint)
 			postUpdateEvent();
 	}
@@ -1906,9 +1919,8 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
 	{
 		QString szTimestamp;
-		szTimestamp=QDateTime::currentDateTime (
-				KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? Qt::UTC : Qt::LocalTime ).toString(
-					KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat) );
+		QDateTime datetime=KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? QDateTime::currentDateTime().toUTC(): QDateTime::currentDateTime();
+		szTimestamp=datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
 		int iTimeStampLength=szTimestamp.length();
 
@@ -1942,7 +1954,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 
 		// We need the timestamp string to be added
 		// alloc the necessary space
-		line_ptr->szText.setLength(iTimeStampLength);
+		line_ptr->szText.resize(iTimeStampLength);
 
 		iTextIdx = iTimeStampLength;                     // the rest of the string will begin 11 chars later
 
@@ -2321,7 +2333,7 @@ found_icon_escape:
 				*((kvi_wchar_t *)p) = 0;
 				// FIXME: this has to be changed! : lookupTextIcon must use wide characters!
 				QString tmpQ;
-				tmpQ.setUnicodeCodes(icon_name,datalen);
+				tmpQ.setUtf16(icon_name,datalen);
 				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(tmpQ);
 				// throw away constness!
 				*((kvi_wchar_t *)p) = save;
@@ -2541,7 +2553,7 @@ got_url:
 	if(m_pKviWindow)
 	{
 		QString tmp;
-		tmp.setUnicodeCodes(data_ptr,p-data_ptr);
+		tmp.setUtf16(data_ptr,p-data_ptr);
 		KVS_TRIGGER_EVENT_1(KviEvent_OnUrl,m_pKviWindow,tmp);
 	}
 
@@ -2626,7 +2638,7 @@ check_emoticon_char:
 					ng[0] = *begin;
 					ng[1] = *item;
 					if(item2)ng[2] = *item2;
-					lookupstring.setUnicodeCodes(ng,item2 ? 3 : 2);
+					lookupstring.setUtf16(ng,item2 ? 3 : 2);
 
 					KviTextIcon * icon  = g_pTextIconManager->lookupTextIcon(lookupstring);
 					// do we have that emoticon-icon association ?
@@ -3094,7 +3106,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 			theWdth=width()-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER+scrollbarWidth); \
 		pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,theWdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
 	} \
-	pa.drawText(curLeftCoord,curBottomCoord,_text_str,_text_idx,_text_len); \
+	pa.drawText(curLeftCoord,curBottomCoord,_text_str.mid(_text_idx,_text_len)); \
 	m_szLastSelectionLine.append(_text_str.mid(_text_idx,_text_len)); \
 	curLeftCoord += _text_width;
 
@@ -3106,8 +3118,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 			theWdth=width()-(curLeftCoord+KVI_IRCVIEW_HORIZONTAL_BORDER+scrollbarWidth); \
 		pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,theWdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
 	} \
-	pa.drawText(curLeftCoord,curBottomCoord,_text_str,_text_idx,_text_len); \
-	if(curBold)pa.drawText(curLeftCoord+1,curBottomCoord,_text_str,_text_idx,_text_len); \
+	pa.drawText(curLeftCoord,curBottomCoord,_text_str.mid(_text_idx,_text_len)); \
+	if(curBold)pa.drawText(curLeftCoord+1,curBottomCoord,_text_str.mid(_text_idx,_text_len)); \
 	if(curUnderline){ \
 		int theWdth = _text_width; \
 		if(theWdth < 0) \
@@ -3199,7 +3211,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 							kvi_wslen_t the_len = kvi_wstrlen(block->pChunk->szPayload);
 							m_szLastSelectionLine.append(QChar(block->pChunk->type));
 							QString tmp;
-							tmp.setUnicodeCodes(block->pChunk->szPayload,the_len);
+							tmp.setUtf16(block->pChunk->szPayload,the_len);
 							m_szLastSelectionLine.append(tmp);
 							goto no_selection_paint;
 						}
@@ -3236,7 +3248,7 @@ no_selection_paint:
 						pa.fillRect(curLeftCoord,curBottomCoord - m_iFontLineSpacing + m_iFontDescent,wdth,m_iFontLineSpacing,KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
 					QString tmpQ;
-					tmpQ.setUnicodeCodes(block->pChunk->szSmileId,kvi_wstrlen(block->pChunk->szSmileId));
+					tmpQ.setUtf16(block->pChunk->szSmileId,kvi_wstrlen(block->pChunk->szSmileId));
 					QPixmap * daIcon =0;
 					KviTextIcon* pIcon = g_pTextIconManager->lookupTextIcon(tmpQ);
 					if(pIcon)
@@ -3274,15 +3286,15 @@ no_selection_paint:
 					if(curLink)
 					{
 						SET_PEN(KVI_OPTION_MSGTYPE(KVI_OUT_LINK).fore(),block->pChunk ? block->pChunk->customFore : QColor());
-						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText,block->block_start,block->block_len);
-						pa.drawText(curLeftCoord+1,curBottomCoord,pCurTextLine->szText,block->block_start,block->block_len);
+						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText.mid(block->block_start,block->block_len));
+						pa.drawText(curLeftCoord+1,curBottomCoord,pCurTextLine->szText.mid(block->block_start,block->block_len));
 						pa.drawLine(curLeftCoord,curBottomCoord+2,curLeftCoord+wdth,curBottomCoord+2);
 					} else if(curBold) {
 						//Draw doubled font (simulate bold)
-						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText,block->block_start,block->block_len);
-						pa.drawText(curLeftCoord + 1,curBottomCoord,pCurTextLine->szText,block->block_start,block->block_len);
+						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText.mid(block->block_start,block->block_len));
+						pa.drawText(curLeftCoord + 1,curBottomCoord,pCurTextLine->szText.mid(block->block_start,block->block_len));
 					} else {
-						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText,block->block_start,block->block_len);
+						pa.drawText(curLeftCoord,curBottomCoord,pCurTextLine->szText.mid(block->block_start,block->block_len));
 					}
 
 					if(curUnderline)
@@ -3385,10 +3397,10 @@ no_selection_paint:
 	}
 
 	//Need to draw the sunken rect around the view now...
-	pa.setPen(colorGroup().dark());
+	pa.setPen(palette().dark().color());
 	pa.drawLine(0,0,widgetWidth,0);
 	pa.drawLine(0,0,0,widgetHeight);
-	pa.setPen(colorGroup().light());
+	pa.setPen(palette().light().color());
 	widgetWidth--;
 	pa.drawLine(1,widgetHeight-1,widgetWidth,widgetHeight-1);
 	pa.drawLine(widgetWidth,1,widgetWidth,widgetHeight);
@@ -4010,8 +4022,8 @@ void KviIrcView::findNext(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 
 			if(bRegExp)
 			{
-				QRegExp re(szText,bCaseS,!bExtended);
-				idx = re.search(l->szText,0);
+				QRegExp re(szText,bCaseS? Qt::CaseSensitive : Qt::CaseInsensitive,bExtended?QRegExp::RegExp : QRegExp::Wildcard);
+				idx = re.indexIn(l->szText,0);
 			} else {
 				QString tmp = l->szText;
 				idx = tmp.indexOf(szText,0,bCaseS?Qt::CaseSensitive:Qt::CaseInsensitive);
@@ -4063,8 +4075,8 @@ void KviIrcView::findPrev(const QString& szText,bool bCaseS,bool bRegExp,bool bE
 
 			if(bRegExp)
 			{
-				QRegExp re(szText,bCaseS,!bExtended);
-				idx = re.search(l->szText,0);
+				QRegExp re(szText,bCaseS? Qt::CaseSensitive : Qt::CaseInsensitive,bExtended?QRegExp::RegExp : QRegExp::Wildcard);
+				idx = re.indexIn(l->szText,0);
 			} else {
 				QString tmp = l->szText;
 				idx = tmp.indexOf(szText,0,bCaseS?Qt::CaseSensitive:Qt::CaseInsensitive);
@@ -4228,8 +4240,8 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							}
 							if(linkCmd)
 							{
-								linkCmd->setUnicodeCodes(l->pBlocks[iLastEscapeBlock].pChunk->szPayload,kvi_wstrlen(l->pBlocks[iLastEscapeBlock].pChunk->szPayload));
-								linkCmd->stripWhiteSpace();
+								linkCmd->setUtf16(l->pBlocks[iLastEscapeBlock].pChunk->szPayload,kvi_wstrlen(l->pBlocks[iLastEscapeBlock].pChunk->szPayload));
+								linkCmd->trimmed();
 								if((*linkCmd)=="nc") (*linkCmd)="n";
 							}
 							if(linkText)
@@ -4294,9 +4306,9 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							{
 								*linkCmd = "[!txt]";
 								QString tmp;
-								tmp.setUnicodeCodes(l->pBlocks[i].pChunk->szPayload,kvi_wstrlen(l->pBlocks[i].pChunk->szPayload));
+								tmp.setUtf16(l->pBlocks[i].pChunk->szPayload,kvi_wstrlen(l->pBlocks[i].pChunk->szPayload));
 								linkCmd->append(tmp);
-								linkCmd->stripWhiteSpace();
+								linkCmd->trimmed();
 							}
 							if(linkText)
 							{
@@ -4488,10 +4500,10 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 							case 'I':
 							case 'e':
 							case 'k':
-								KviQString::sprintf(cmd,"mode %Q %c%c $0",&target,plmn.latin1(),flag.latin1());
+								KviQString::sprintf(cmd,"mode %Q %c%c $0",&target,plmn.toLatin1(),flag.toLatin1());
 							break;
 							default:
-								KviQString::sprintf(cmd,"mode %Q %c%c",&target,plmn.latin1(),flag.latin1());
+								KviQString::sprintf(cmd,"mode %Q %c%c",&target,plmn.toLatin1(),flag.toLatin1());
 							break;
 						}
 					}
@@ -4578,7 +4590,7 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 
 		m_bMouseIsDown = true;
 
-		m_bShiftPressed = (e->state() & Qt::ShiftButton);
+		m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
 
 		calculateSelectionBounds();
 	}
@@ -4616,7 +4628,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	pParams->append(szCmd);
 
 
-	if(!(e->state() & Qt::ControlButton))//(e->button() & Qt::RightButton) && (
+	if(!(e->modifiers() & Qt::ControlModifier))//(e->button() & Qt::RightButton) && (
 	{
 		if(!linkCmd.isEmpty())
 		{
@@ -4711,7 +4723,7 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 			}
 		} else if(e->button() & Qt::RightButton) emit rightClicked();
 
-	} else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->state() & Qt::ControlButton)))
+	} else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->modifiers() & Qt::ControlModifier)))
 	{
 		QString tmp;
 		getLinkEscapeCommand(tmp,linkCmd,QString("[!mbt]"));
@@ -4762,7 +4774,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *)
 void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 {
 //	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
-	if(m_bMouseIsDown && (e->state() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+	if(m_bMouseIsDown && (e->modifiers() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 
 		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
@@ -4938,10 +4950,10 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 							case 'I':
 							case 'e':
 							case 'k':
-								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c %Q</b>"),&(m_pKviWindow->windowName()),plmn.latin1(),flag.latin1(),&linkText);
+								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c %Q</b>"),&(m_pKviWindow->windowName()),plmn.toLatin1(),flag.toLatin1(),&linkText);
 							break;
 							default:
-								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c</b>"),&(m_pKviWindow->windowName()),plmn.latin1(),flag.latin1());
+								KviQString::appendFormatted(tip,QString("<b>mode %Q %c%c</b>"),&(m_pKviWindow->windowName()),plmn.toLatin1(),flag.toLatin1());
 							break;
 						}
 					}

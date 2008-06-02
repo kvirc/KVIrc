@@ -27,13 +27,13 @@
 #include "kvi_toolwindows_container.h"
 #include "kvi_iconmanager.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_styled_controls.h"
 
 #include <QPainter>
 #include <QApplication>
 #include <QLayout>
-#include "kvi_styled_controls.h"
 #include <QObjectCleanupHandler>
-#include <QPushButton>
+#include <QIcon>
 
 
 KviWindowToolWidget::KviWindowToolWidget(QWidget * parent, KviWindowToolPageButton* button/*, const char * name, WFlags f*/ )
@@ -103,7 +103,7 @@ void KviWindowToolWidget::unregisterSelf()
 KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const QString & text, QWidget * parent,bool bOn, const char * name )
 :TOOL_PAGE_PARENT(parent)
 {
-	setFlat(true);
+//	setFlat(true);
 	setToolTip(text);
 	setObjectName("kvi_window_tool_button");
 	setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));

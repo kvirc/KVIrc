@@ -69,6 +69,7 @@
 #include <QMessageBox>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QIcon>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -294,7 +295,7 @@ bool KviWindow::setTextEncoding(const QString &szTextEncoding)
 {
 	if(!szTextEncoding.isEmpty())
 	{
-		m_pTextCodec = KviLocale::codecForName(szTextEncoding.latin1());
+		m_pTextCodec = KviLocale::codecForName(szTextEncoding.toLatin1());
 		if(m_pTextCodec)
 		{
 			m_szTextEncoding = szTextEncoding;
@@ -863,7 +864,7 @@ void KviWindow::autoRaise()
 	if(!mdiParent())
 	{
 		raise();
-		setActiveWindow();
+		activateWindow();
 	}
 	if(m_pFocusHandler)
 		m_pFocusHandler->setFocus();
@@ -889,7 +890,7 @@ void KviWindow::updateIcon()
 	{
 		((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	} else {
-		setIcon(*myIconPtr());
+		setWindowIcon(QIcon(*myIconPtr()));
 	}
 }
 
@@ -908,7 +909,7 @@ void KviWindow::youAreDocked()
 void KviWindow::youAreUndocked()
 {
 	m_pAccel = g_pFrame->installAccelerators(this);
-	setIcon(*myIconPtr());
+	setWindowIcon(QIcon(*myIconPtr()));
 	updateCaption();
 }
 
@@ -968,7 +969,7 @@ void KviWindow::focusInEvent(QFocusEvent *)
 		if(m_pFocusHandler)m_pFocusHandler->setFocus();
 		else {
 			// else too bad :/
-			debug("No widget able to handle focus for window %s",name());
+			debug("No widget able to handle focus for window %s",objectName().toUtf8().data());
 			return;
 		}
 	} else {
@@ -1018,7 +1019,7 @@ bool KviWindow::eventFilter(QObject *o,QEvent *e)
 				}
 			}
 			break;
-		case QEvent::ChildInserted:
+		case QEvent::ChildAdded:
 			if(((QChildEvent *)e)->child()->isWidgetType())
 				childInserted((QWidget *)((QChildEvent *)e)->child());
 			break;
@@ -1357,7 +1358,7 @@ void KviWindow::preprocessMessage(QString & szMessage)
 		QString tmp(*it);
 		if(tmp.contains('\r')) continue;
 		tmp = KviMircCntrl::stripControlBytes(tmp);
-		tmp.stripWhiteSpace();
+		tmp.trimmed();
 		if(m_pConsole)
 			if(m_pConsole->connection())
 				if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
