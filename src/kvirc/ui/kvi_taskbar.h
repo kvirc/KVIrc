@@ -27,7 +27,7 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_tal_tooltip.h"
-#include "kvi_tal_treewidget.h"
+#include "kvi_tal_listview.h"
 
 #include <QPushButton>
 #include <QFrame>
@@ -180,13 +180,13 @@ protected slots:
 class KviTreeTaskBar;
 class KviTreeTaskBarItemInternal;
 
-class KVIRC_API KviTreeTaskBarItem : public KviTalTreeWidgetItem , public KviTaskBarItem
+class KVIRC_API KviTreeTaskBarItem : public KviTalListViewItem , public KviTaskBarItem
 {
 	friend class KviTreeTaskBar;
-	friend class KviTreeTaskBarTreeWidget;
+	friend class KviTreeTaskBarListView;
 	friend class KviTreeTaskBarItemInternal;
 public:
-	KviTreeTaskBarItem(KviTalTreeWidget * par,KviWindow * wnd);
+	KviTreeTaskBarItem(KviTalListView * par,KviWindow * wnd);
 	KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd);
 	~KviTreeTaskBarItem();
 protected:
@@ -199,8 +199,8 @@ protected:
 	int m_iBlueDiff;
 public:
 	virtual QString key(int column,bool) const;
-//	virtual void paintCell(QPainter *p,const QColorGroup &cg,int column,int width,int alignment);
-//	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h);
+	virtual void paintCell(QPainter *p,const QColorGroup &cg,int column,int width,int alignment);
+	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h);
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
@@ -227,27 +227,23 @@ public slots:
 	void timerShot() { m_pItem->timerShot();};	
 };
 
-class KVIRC_API KviTreeTaskBarTreeWidget : public KviTalTreeWidget
+class KVIRC_API KviTreeTaskBarListView : public KviTalListView
 {
 	friend class KviTreeTaskBarItem;
 	Q_OBJECT
 	KviTreeTaskBarItem* m_pPrevItem;
 public:
-	KviTreeTaskBarTreeWidget(QWidget * par);
-	~KviTreeTaskBarTreeWidget();
-	void updateItem(KviTreeTaskBarItem *item)
-	{
-		update(indexFromItem(item,0));
-	};
+	KviTreeTaskBarListView(QWidget * par);
+	~KviTreeTaskBarListView();
 protected:
 	virtual void contentsMousePressEvent(QMouseEvent *e);
-//	virtual void paintEmptyArea(QPainter * p,const QRect &rct);
+	virtual void paintEmptyArea(QPainter * p,const QRect &rct);
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void contentsMouseMoveEvent ( QMouseEvent * e );
 	virtual void leaveEvent(QEvent *);
 signals:
-	void leftMousePress(KviTalTreeWidgetItem * it);
-	void rightMousePress(KviTalTreeWidgetItem * it);
+	void leftMousePress(KviTalListViewItem * it);
+	void rightMousePress(KviTalListViewItem * it);
 public slots:
 	void sort();
 	void reverseSort();
@@ -261,7 +257,7 @@ public:
 	KviTreeTaskBar();
 	~KviTreeTaskBar();
 private:
-	KviTreeTaskBarTreeWidget * m_pTreeWidget;
+	KviTreeTaskBarListView * m_pListView;
 	KviTreeTaskBarItem * m_pCurrentItem;
 	KviDynamicToolTip  * m_pToolTip;
 public:
