@@ -46,6 +46,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_fileextensions.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_tooltip.h"
 
 #include <QTimer>
 #include <QPainter>
@@ -60,7 +61,7 @@ extern KviPointerList<KviListWindow> * g_pListWindowList;
 //extern KVIRC_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
 
 
-KviChannelListViewItemData::KviChannelListViewItemData(const QString &szChan,const QString &szUsers,const QString &szTopic)
+KviChannelTreeWidgetItemData::KviChannelTreeWidgetItemData(const QString &szChan,const QString &szUsers,const QString &szTopic)
 {
 	m_szChan = szChan;
 	m_szUsers = szUsers;
@@ -70,24 +71,24 @@ KviChannelListViewItemData::KviChannelListViewItemData(const QString &szChan,con
 	while(m_szUsersKey.length() < 6)m_szUsersKey.prepend("0");
 }
 
-KviChannelListViewItemData::~KviChannelListViewItemData()
+KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 {
 }
 
 
-KviChannelListViewItem::KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData)
-: KviTalListViewItem(v)
+KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData)
+: KviTalTreeWidgetItem(v)
 {
 	m_pData = pData;
 }
 
 
-KviChannelListViewItem::~KviChannelListViewItem()
+KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 {
 	delete m_pData;
 }
 
-int KviChannelListViewItem::width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const
+int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const
 {
 	debug("width request");
 	QString szText;
@@ -105,43 +106,48 @@ int KviChannelListViewItem::width ( const QFontMetrics & fm, const KviTalListVie
 #define KVI_LABEL_DEF_BACK 100
 #define KVI_LABEL_DEF_FORE 101
 
-void KviChannelListViewItem::paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align)
+void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
 	QString szText;
-
-	switch(column)
+	QPalette cg;
+	KviChannelTreeWidgetItem *item=static_cast<KviChannelTreeWidgetItem *>(index.internalPointer());
+	switch(index.column())
 	{
-		case 0:  szText = m_pData->m_szChan;   break;
-		case 1:  szText = m_pData->m_szUsers;  break;
-		default: szText = m_pData->m_szTopic;  break;
+		case 0:  szText = item->channelData()->m_szChan;   break;
+		case 1:  szText = item->channelData()->m_szUsers;  break;
+		default: szText = item->channelData()->m_szTopic;  break;
 	}
 
-	KviTalListView* lv = (KviTalListView *)listView();
-	int marg = lv->itemMargin();
+	KviTalTreeWidget* lv = (KviTalTreeWidget *)item->treeWidget();
+	// FIXME
+	int marg = 5;//lv->itemMargin();
 	int r = marg;
 
-	p->fillRect( 0, 0, width, height(), cg.brush(lv->viewport()->backgroundRole()) );
+	p->fillRect( option.rect.x(), option.rect.y(), option.rect.width(), option.rect.height(), cg.brush(lv->viewport()->backgroundRole()) );
+	int width=option.rect.width();
 
-	if ( isSelected() &&
-		(column == 0 || lv->allColumnsShowFocus()) ) {
-		p->fillRect( r - marg, 0, width - r + marg, height(),
-		cg.brush( QColorGroup::Highlight ) );
+	if ((option.state & QStyle::State_Selected) && (index.column() == 0 || lv->allColumnsShowFocus()) ) {
+		p->fillRect( r - marg, 0, width - r + marg, option.rect.height(),
+		cg.brush( QPalette::Highlight ) );
 		
-		if ( isEnabled() || !lv )
-			p->setPen( cg.highlightedText() );
-		else if ( !isEnabled() && lv)
-			p->setPen( lv->palette().disabled().highlightedText() );
+		if ( (option.state & QStyle::State_Enabled) || !lv )
+			p->setPen( cg.highlightedText().color() );
+		else if ( !(option.state & QStyle::State_Enabled) && lv)
+			// FIXME
+			// p->setPen( lv->palette().currentColorGroup().inactive().highlightedText() );
+			p->setPen( lv->palette().highlightedText().color() );
 	} else {
-		if ( isEnabled() || !lv )
-			p->setPen( cg.text() );
-		else if ( !isEnabled() && lv)
-			p->setPen( lv->palette().disabled().text() );
+		if ( (option.state & QStyle::State_Enabled) || !lv )
+			p->setPen( cg.text().color() );
+		else if ( !(option.state & QStyle::State_Enabled) && lv)
+			//p->setPen( lv->palette().disabled().text() );
+			p->setPen(lv->palette().text().color());
 	}
 	
-	KviTopicWidget::paintColoredText(p,szText,cg,height(),width);
+	KviTopicWidget::paintColoredText(p,szText,cg,option.rect);
 }
 
-QString KviChannelListViewItem::key(int col,bool) const
+QString KviChannelTreeWidgetItem::key(int col,bool) const
 {
 	switch(col)
 	{
@@ -167,53 +173,62 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pFlushTimer = 0;
 
-	m_pItemList = new KviPointerList<KviChannelListViewItemData>;
+	m_pItemList = new KviPointerList<KviChannelTreeWidgetItemData>;
 	m_pItemList->setAutoDelete(false);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter->setObjectName("top_splitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter->setObjectName("vsplitter");
 
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
+	box->setSpacing(1);
+	box->setMargin(0);
 	m_pOpenButton = new KviStyledToolButton(box);
-	m_pOpenButton->setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
+	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN))));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));	
 
 	m_pSaveButton = new KviStyledToolButton(box);
-	m_pSaveButton->setPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
+	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));	
 
 	m_pRequestButton = new KviStyledToolButton(box,"request_button");
-	m_pRequestButton->setUsesBigPixmap(false);
-	m_pRequestButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST)));
+	m_pRequestButton->setIconSize(QSize(16,16));
+	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));	
-	QToolTip::add(m_pRequestButton,__tr2qs("Request List"));
+	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 	
 	m_pStopListDownloadButton = new KviStyledToolButton(box,"stoplistdownload_button");
-	m_pStopListDownloadButton->setUsesBigPixmap(false);
-	m_pStopListDownloadButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM)));
+	m_pStopListDownloadButton->setIconSize(QSize(16,16));
+	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
-	QToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
+	KviTalToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
 
 	m_pParamsEdit = new QLineEdit(box);
 	box->setStretchFactor(m_pParamsEdit,1);
-	QToolTip::add(m_pParamsEdit,__tr2qs("<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
+	KviTalToolTip::add(m_pParamsEdit,__tr2qs("<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
 						"allow you to filter the returned entries.<br>" \
 						"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings " \
 						"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"));
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
-	m_pListView  = new KviTalListView(m_pVertSplitter);
-	m_pListView->addColumn(__tr2qs("Channel"));
-	m_pListView->addColumn(__tr2qs("Users"));
-	m_pListView->addColumn(__tr2qs("Topic"));
-	m_pListView->setAllColumnsShowFocus(TRUE);
-	m_pListView->setColumnWidthMode(2,KviTalListView::Maximum);
-	m_pListView->setColumnWidthMode(3,KviTalListView::Maximum);
-	m_pListView->setSorting(100);
-	
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
+	m_pTreeWidget  = new KviTalTreeWidget(m_pVertSplitter);
+	m_pTreeWidget->setItemDelegate(new KviChannelTreeWidgetItemDelegate(m_pTreeWidget));
+	QStringList columnLabels;
+	columnLabels.append(__tr2qs("Channel"));
+	columnLabels.append(__tr2qs("Users"));
+	columnLabels.append(__tr2qs("Topic"));
+	m_pTreeWidget->setColumnCount(3);
+	m_pTreeWidget->setHeaderLabels(columnLabels);
+	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
+	//m_pTreeWidget->setColumnWidthMode(2,KviTalTreeWidget::Maximum);
+	//m_pTreeWidget->setColumnWidthMode(3,KviTalTreeWidget::Maximum);
+	//m_pTreeWidget->setSorting(100);
+	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
+	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -306,15 +321,15 @@ void KviListWindow::fillCaptionBuffers()
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel List</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii(),
 		m_pConsole->ircContextId());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel list</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii(),
 		m_pConsole->ircContextId());
 }
 
@@ -325,7 +340,7 @@ void KviListWindow::die()
 
 void KviListWindow::exportList()
 {
-	if(!m_pListView->firstChild())
+	if(!m_pTreeWidget->topLevelItemCount())
 	{
 		KviMessageBox::warning(__tr2qs("You cannot export an empty list"));
 		return;
@@ -344,21 +359,24 @@ void KviListWindow::exportList()
 		__tr2qs("Configuration files (*.kvc)"),false,
 		false,true,this))
 	{
-		if(QFileInfo(szFile).extension()!="kvc")
+		if(QFileInfo(szFile).completeSuffix()!="kvc")
 			szFile.append(".kvc");
 		KviConfig cfg(szFile,KviConfig::Write);
 		cfg.clear();
-		KviTalListViewItemIterator it(m_pListView);
-
-		while(it.current())
+		//KviTalTreeWidgetItemIterator it(m_pTreeWidget);
+		
+		//while(it.current())
+		KviChannelTreeWidgetItem *it;
+		for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 		{
-			KviChannelListViewItemData* pData= ((KviChannelListViewItem*) ( it.current() ))->m_pData;
+			it=(KviChannelTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+			KviChannelTreeWidgetItemData* pData= it->m_pData;
 			cfg.setGroup(pData->m_szChan);
 			// Write properties
 			cfg.writeEntry("topic",pData->m_szTopic);
 			cfg.writeEntry("users",pData->m_szUsers);
 //			cfg.writeEntry("usersKey",pData->m_szUsersKey);
-			++it;
+		//	++it;
 		}
 	}
 }
@@ -384,7 +402,7 @@ void KviListWindow::importList()
 		{
 			cfg.setGroup(it.currentKey());
 			m_pItemList->append( 
-					new KviChannelListViewItemData(
+					new KviChannelTreeWidgetItemData(
 						it.currentKey(),
 						cfg.readQStringEntry("users","0"),
 						cfg.readQStringEntry("topic","")
@@ -429,7 +447,7 @@ void KviListWindow::startOfList()
 	m_pItemList->clear();
 	m_pItemList->setAutoDelete(false);
 
-	m_pListView->clear();
+	m_pTreeWidget->clear();
 
 	m_pRequestButton->setEnabled(false);
 }
@@ -447,7 +465,7 @@ void KviListWindow::processData(KviIrcMessage *msg)
 	QString sz2 = msg->connection()->decodeText(msg->safeParam(2));
 
 	m_pItemList->append(
-		new KviChannelListViewItemData(
+		new KviChannelTreeWidgetItemData(
 			msg->connection()->decodeText(msg->safeParam(1)),
 			msg->connection()->decodeText(msg->safeParam(2)),
 			msg->connection()->decodeText(msg->safeTrailing()))
@@ -462,19 +480,19 @@ void KviListWindow::processData(KviIrcMessage *msg)
 
 void KviListWindow::flush()
 {
-	m_pListView->setUpdatesEnabled(true); /* for v_scroolbar */
-	while(KviChannelListViewItemData * d = m_pItemList->first())
+	m_pTreeWidget->setUpdatesEnabled(true); /* for v_scroolbar */
+	while(KviChannelTreeWidgetItemData * d = m_pItemList->first())
 	{
-		(void)new KviChannelListViewItem(m_pListView,d);
+		(void)new KviChannelTreeWidgetItem(m_pTreeWidget,d);
 		m_pItemList->removeFirst();
 	}
-	m_pListView->setUpdatesEnabled(true);
-	m_pListView->viewport()->update();
+	m_pTreeWidget->setUpdatesEnabled(true);
+	m_pTreeWidget->viewport()->update();
 }
 
-void KviListWindow::itemDoubleClicked(KviTalListViewItem *it)
+void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem *it)
 {
-	QString sz = ((KviChannelListViewItem *)it)->channel();
+	QString sz = ((KviChannelTreeWidgetItem *)it)->channel();
 	if(sz.isEmpty())return;
 	if(!connection())return;
 	KviQCString dat = connection()->encodeText(sz);

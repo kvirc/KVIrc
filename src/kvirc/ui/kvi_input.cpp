@@ -2329,15 +2329,12 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pIconButton->setAutoRaise(true);
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
-pLayout->addWidget(m_pHideToolsButton,0);	
-pLayout->addWidget(m_pButtonContainer,0);
+	
+	pLayout->addWidget(m_pHideToolsButton,0);	
+	pLayout->addWidget(m_pButtonContainer,0);
 	pLayout->addWidget(m_pInputEditor,10000);
 
 	
-/*	pLayout->setStretchFactor(m_pInputEditor,100000);
-	pLayout->setStretchFactor(
-	pLayout->setStretchFactor(
-	*/
 }
 
 KviInput::~KviInput()

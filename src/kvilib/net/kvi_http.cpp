@@ -463,7 +463,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		szHeader = "";
 	}
 
-	szResponse.stripWhiteSpace();
+	szResponse.trimmed();
 
 	bool bValid = false;
 
@@ -474,7 +474,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	{
 		KviStr szR = szResponse;
 		szR.cutToFirst(' ');
-		szR.stripWhiteSpace();
+		szR.trimmed();
 		int idx = szR.findFirstIdx(' ');
 		KviStr szNumber;
 		if(idx != -1)szNumber = szR.left(idx);
@@ -524,7 +524,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 		{
 			KviStr szName = s->left(idx);
 			s->cutLeft(idx + 1);
-			s->stripWhiteSpace();
+			s->trimmed();
 			hdr.replace(szName.ptr(),new KviStr(*s));
 			//debug("FOUND HEADER (%s)=(%s)",szName.ptr(),s->ptr());
 		}

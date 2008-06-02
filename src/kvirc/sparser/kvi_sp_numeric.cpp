@@ -806,14 +806,14 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	{
 		case 0:
 			// used a server specific nickname
-			KVI_OPTION_STRING(KviOption_stringNickname1).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
 			nextNick = KVI_OPTION_STRING(KviOption_stringNickname1);
 			uNickCnt = 1;
 		case 1:
 			// used the first nickname of the identity
-			KVI_OPTION_STRING(KviOption_stringNickname2).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringNickname2).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname2) = KVI_DEFAULT_NICKNAME2;
 			nextNick = KVI_OPTION_STRING(KviOption_stringNickname2);
@@ -821,7 +821,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 		break;
 		case 2:
 			// used the second nickname of the identity
-			KVI_OPTION_STRING(KviOption_stringNickname3).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringNickname3).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname3) = KVI_DEFAULT_NICKNAME3;
 			nextNick = KVI_OPTION_STRING(KviOption_stringNickname3);
@@ -832,7 +832,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 			// used all the nicknames of the identity
 			// fall back to a random string...
 			nextNick = msg->safeParam(1);
-			nextNick.stripWhiteSpace();
+			nextNick.trimmed();
 			if(nextNick.isEmpty())nextNick = KVI_DEFAULT_NICKNAME1;
 			nextNick = nextNick.left(7);
 			QString num;
@@ -1056,7 +1056,7 @@ void KviServerParser::parseNumericWhoisUser(KviIrcMessage *msg)
 		e->setHost(szHost);
 		e->setRealName(szReal);
 		if(e->gender()!=KviIrcUserEntry::Unknown) {
-			if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
+			if(KviQString::equalCS(g_pActiveWindow->metaObject()->className(),QString("KviChannel")))
 			{
 				((KviChannel*)g_pActiveWindow)->userListView()->updateArea();
 			}
@@ -1143,7 +1143,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
 			
-		QStringList sl = QStringList::split(" ",szChans);
+		QStringList sl = szChans.split(" ",QString::SkipEmptyParts);
 		QString szChanList;
 
 		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)

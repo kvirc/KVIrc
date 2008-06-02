@@ -450,7 +450,7 @@ ipv6_failure:
 					// Ok...parse the request
 					KviStr szReq = r->m_szData.left(idx);
 					r->m_szData.cutLeft(idx + 1);
-					szReq.stripWhiteSpace();
+					szReq.trimmed();
 	
 					if(szReq.hasData())
 					{

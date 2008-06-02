@@ -1969,7 +1969,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 	
 	QString tmp(pBegin,KVSP_curCharPointer - pBegin);
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 
 	const QString szHelpName("help");
 

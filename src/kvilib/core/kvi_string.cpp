@@ -2825,7 +2825,7 @@ int KviStr::findLastIdx(const char *str,bool caseS) const
 	}
 }
 
-KviStr & KviStr::stripWhiteSpace()
+KviStr & KviStr::trimmed()
 {
 	// 0123456789
 	//    abcd   0

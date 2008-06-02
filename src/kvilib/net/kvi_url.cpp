@@ -60,7 +60,7 @@ void KviUrl::parse()
 	m_szUser = "";
 	m_szPass = "";
 
-	m_szUrl.stripWhiteSpace();
+	m_szUrl.trimmed();
 
 	KviStr u = m_szUrl;
 
@@ -75,7 +75,7 @@ void KviUrl::parse()
 		m_szProtocol = u.left(i);
 		u.cutLeft(i + 2);
 		u.stripLeft('/');
-		u.stripWhiteSpace();
+		u.trimmed();
 		
 		// fix the default ports
 		if(kvi_strEqualCI(m_szProtocol,"https"))uDefaultPort = 443;
@@ -95,7 +95,7 @@ void KviUrl::parse()
 	if(i != -1)
 	{
 		KviStr szUserPass = u.left(i);
-		szUserPass.stripWhiteSpace();
+		szUserPass.trimmed();
 		u.cutLeft(i + 1);
 
 		i = szUserPass.findFirstIdx(':');
@@ -104,7 +104,7 @@ void KviUrl::parse()
 			m_szUser = szUserPass.left(i);
 			szUserPass.cutLeft(i + 1);
 			m_szPass = szUserPass;
-			m_szPass.stripWhiteSpace();
+			m_szPass.trimmed();
 		} else {
 			m_szUser = szUserPass;
 		}
@@ -123,7 +123,7 @@ void KviUrl::parse()
 			// has a port part
 			m_szHost = h.left(i);
 			h.cutLeft(i + 1);
-			h.stripWhiteSpace();
+			h.trimmed();
 			bool bOk;
 			m_uPort = h.toUInt(&bOk);
 			if(!bOk)m_uPort = uDefaultPort;
@@ -136,8 +136,8 @@ void KviUrl::parse()
 		m_szHost = u;
 	}
 
-	m_szHost.stripWhiteSpace();
-	m_szPath.stripWhiteSpace();
+	m_szHost.trimmed();
+	m_szPath.trimmed();
 	if(!m_szPath.firstCharIs('/'))m_szPath.prepend('/');
 }
 

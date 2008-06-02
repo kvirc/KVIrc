@@ -32,6 +32,7 @@
 #include <QLabel>
 #include <QPixmap>
 #include <QDesktopWidget>
+#include <QSpacerItem>
 
 // kvi_app.cpp
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -51,7 +52,8 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	g->addWidget(m_pTabBar,1,0);
 
 	g->setRowStretch(0,1);
-	g->addRowSpacing(2,15);
+	g->addItem(new QSpacerItem(0, 15), 2, 0); 
+	//g->addRowSpacing(2,15);
 
 	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
 	connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(die()));

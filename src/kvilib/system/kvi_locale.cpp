@@ -572,7 +572,7 @@ bool KviMessageCatalogue::load(const QString& name)
 		{
 			szHeader.cutLeft(idx + 8);
 			szHeader.cutFromFirst('\n');
-			szHeader.stripWhiteSpace();
+			szHeader.trimmed();
 			m_pTextCodec = KviLocale::codecForName(szHeader.ptr());
 			if(!m_pTextCodec)
 			{
@@ -901,7 +901,7 @@ namespace KviLocale
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LC_MESSAGES");
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LANG");
 		if(g_szLang.isEmpty())g_szLang = "en";
-		g_szLang.stripWhiteSpace();
+		g_szLang.trimmed();
 
 		// the main catalogue is supposed to be kvirc_<language>.mo
 		g_pMainCatalogue = new KviMessageCatalogue();

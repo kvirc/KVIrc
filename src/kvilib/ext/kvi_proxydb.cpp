@@ -78,8 +78,8 @@ void KviProxy::getSupportedProtocolNames(QStringList & buf)
 
 void KviProxy::normalizeUserAndPass()
 {
-	m_szUser.stripWhiteSpace();
-	m_szPass.stripWhiteSpace();
+	m_szUser.trimmed();
+	m_szPass.trimmed();
 }
 
 KviProxyDataBase::KviProxyDataBase()

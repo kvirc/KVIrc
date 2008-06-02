@@ -38,8 +38,9 @@ KviServerParser * g_pServerParser = 0;
 
 
 KviServerParser::KviServerParser()
-: QObject(0,"server_parser")
+: QObject(0)
 {
+	setObjectName("server_parser");
 }
 
 KviServerParser::~KviServerParser()

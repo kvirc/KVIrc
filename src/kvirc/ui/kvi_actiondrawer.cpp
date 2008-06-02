@@ -60,51 +60,11 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 
 KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
 {
-//delete m_pIcon;
-//	delete m_pText;
-}
-/*
-QString KviActionDrawerPageListWidgetItem::key(int,bool) const
-{
-	return m_szKey;
-}
 
-void KviActionDrawerPageListWidgetItem::setup()
-{
-	KviTalListViewItem::setup();
-	int iWidth = m_pListWidget->visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	m_pText->setWidth(iWidth);
-	int iHeight = m_pText->height() + (2 * LVI_BORDER);
-	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight);
 }
-
-void KviActionDrawerPageListWidgetItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
-{
-	KviTalListViewItem::paintCell(p,cg,column,width,align);
-	//p->fillRect(QRect(0,0,width,height()),isSelected() ? cg.highlight() : cg.base());
-	p->drawPixmap(LVI_BORDER,LVI_BORDER,*m_pIcon);
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	int www = m_pListWidget->visibleWidth() - (afterIcon + LVI_BORDER);
-	m_pText->setWidth(www);
-	if(isSelected())
-	{
-		QColorGroup cg2(cg);
-		cg2.setColor(QColorGroup::HighlightedText,cg.text());
-		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg2);
-	} else {
-		m_pText->draw(p,afterIcon,LVI_BORDER,QRect(afterIcon,LVI_BORDER,www,height() - (LVI_BORDER * 2)),cg);
-	}
-}
-*/
 KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
 : KviTalListWidget(pParent)
 {
-	/*QPixmap * p = g_pIconManager->getImage("kvi_actiondrawer.png");
-	if(p)setBackgroundOverlayPixmap(p,Qt::AlignRight | Qt::AlignBottom);
-*/
 	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(this);
 	setItemDelegate(itemDelegate);
 	setSelectionMode(QAbstractItemView::SingleSelection);
@@ -123,8 +83,8 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 //	setSelectionMode(Single);[{['
 
 	//header()->hide();
-	int iWidth = viewport()->width();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
+//	int iWidth = viewport()->width();
+//	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 //	setHeaderLabel("");
 //	addColumn("",iWidth);
 //	setSorting(0,true);

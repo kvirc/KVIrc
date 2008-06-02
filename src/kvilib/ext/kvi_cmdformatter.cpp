@@ -41,7 +41,7 @@ namespace KviCommandFormatter
 			} else {
 				// we pretend this line to be empty
 				KviStr tmp = *(*array);
-				tmp.stripWhiteSpace();
+				tmp.trimmed();
 				if(tmp.hasData())return false;
 				*(*array) = ""; // set it to empty also in the main buffer
 			}
@@ -139,7 +139,7 @@ namespace KviCommandFormatter
 
 	void bufferFromBlock(KviStr &buffer)
 	{
-		buffer.stripWhiteSpace();
+		buffer.trimmed();
 
 		if((*(buffer.ptr()) == '{') && buffer.lastCharIs('}'))
 		{
@@ -150,7 +150,7 @@ namespace KviCommandFormatter
 
 		unindent(buffer);
 
-		buffer.stripWhiteSpace();
+		buffer.trimmed();
 	}
 
 	void bufferFromBlock(QString &buffer)

@@ -717,46 +717,46 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 
 void KviSinglePopupEditor::addItemToMenu(KviKvsPopupMenu * p,KviPopupListViewItem *it)
 {
-	it->m_szId.stripWhiteSpace();
+	it->m_szId.trimmed();
 	switch(it->m_type)
 	{
 		case KviPopupListViewItem::Prologue:
-			it->m_szCode.stripWhiteSpace();
+			it->m_szCode.trimmed();
 			p->addPrologue(it->m_szId,it->m_szCode);
 		break;
 		case KviPopupListViewItem::Epilogue:
-			it->m_szCode.stripWhiteSpace();
+			it->m_szCode.trimmed();
 			p->addEpilogue(it->m_szId,it->m_szCode);
 		break;
 		case KviPopupListViewItem::Separator:
-			it->m_szCondition.stripWhiteSpace();
+			it->m_szCondition.trimmed();
 			p->addSeparator(it->m_szId,it->m_szCondition);
 		break;
 		case KviPopupListViewItem::Label:
-			it->m_szText.stripWhiteSpace();
-			it->m_szCondition.stripWhiteSpace();
-			it->m_szIcon.stripWhiteSpace();
+			it->m_szText.trimmed();
+			it->m_szCondition.trimmed();
+			it->m_szIcon.trimmed();
 			p->addLabel(it->m_szId,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
 		case KviPopupListViewItem::Item:
-			it->m_szText.stripWhiteSpace();
-			it->m_szIcon.stripWhiteSpace();
-			it->m_szCondition.stripWhiteSpace();
-			it->m_szCode.stripWhiteSpace();
+			it->m_szText.trimmed();
+			it->m_szIcon.trimmed();
+			it->m_szCondition.trimmed();
+			it->m_szCode.trimmed();
 			p->addItem(it->m_szId,it->m_szCode,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
 		case KviPopupListViewItem::ExtMenu:
-			it->m_szText.stripWhiteSpace();
-			it->m_szIcon.stripWhiteSpace();
-			it->m_szCondition.stripWhiteSpace();
-			it->m_szCode.stripWhiteSpace();// <-- this is the ext name in fact
+			it->m_szText.trimmed();
+			it->m_szIcon.trimmed();
+			it->m_szCondition.trimmed();
+			it->m_szCode.trimmed();// <-- this is the ext name in fact
 			p->addExtPopup(it->m_szId,it->m_szCode,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
 		case KviPopupListViewItem::Menu:
 		{
-			it->m_szText.stripWhiteSpace();
-			it->m_szIcon.stripWhiteSpace();
-			it->m_szCondition.stripWhiteSpace();
+			it->m_szText.trimmed();
+			it->m_szIcon.trimmed();
+			it->m_szCondition.trimmed();
 			KviKvsPopupMenu * menu = p->addPopup(it->m_szId,it->m_szText,it->m_szIcon,it->m_szCondition);
 			for(KviPopupListViewItem * item = (KviPopupListViewItem *)it->firstChild();item;item = (KviPopupListViewItem *)item->nextSibling())
 			{
@@ -774,7 +774,7 @@ KviKvsPopupMenu * KviSinglePopupEditor::getMenu()
 	saveLastSelectedItem();
 
 	QString tmp = m_pNameEditor->text();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 
 	KviKvsPopupMenu * p = new KviKvsPopupMenu(tmp);
 	for(KviPopupListViewItem * it = (KviPopupListViewItem *)m_pListView->firstChild();it;it = (KviPopupListViewItem *)it->nextSibling())

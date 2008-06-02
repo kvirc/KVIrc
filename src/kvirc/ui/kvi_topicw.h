@@ -103,6 +103,7 @@ public:
 	void applyOptions();
 	
 	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, int h=-1, int w=-1);
+	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, const QRect &rect);
 protected slots:
 	void acceptClicked();
 	void discardClicked();

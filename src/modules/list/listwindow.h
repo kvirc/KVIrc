@@ -31,21 +31,33 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "kvi_tal_popupmenu.h"
 
-#include <QToolButton>
+#include "kvi_styled_controls.h"
 #include <QLineEdit>
+#include <QItemDelegate>
 
 class KviThemedLabel;
 
-class KviChannelListViewItemData
+
+class KviChannelTreeWidgetItemDelegate : public QItemDelegate
 {
-	friend class KviChannelListViewItem;
-	friend class KviListWindow;
 public:
-	KviChannelListViewItemData(const QString &szChan,const QString &szUsers,const QString &szTopic);
-	~KviChannelListViewItemData();
+	KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget=0)
+		: QItemDelegate(pWidget) {};
+	~KviChannelTreeWidgetItemDelegate(){};
+	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	
+};
+class KviChannelTreeWidgetItemData
+{
+	friend class KviChannelTreeWidgetItem;
+	friend class KviListWindow;
+	friend class KviChannelTreeWidgetItemDelegate;
+public:
+	KviChannelTreeWidgetItemData(const QString &szChan,const QString &szUsers,const QString &szTopic);
+	~KviChannelTreeWidgetItemData();
 protected:
 	QString m_szChan;
 	QString m_szUsers;
@@ -53,19 +65,20 @@ protected:
 	QString m_szUsersKey;
 };
 
-class KviChannelListViewItem : public KviTalListViewItem
+class KviChannelTreeWidgetItem : public KviTalTreeWidgetItem
 {
 	friend class KviListWindow;
 public:
-	KviChannelListViewItem(KviTalListView * v,KviChannelListViewItemData * pData);
-	~KviChannelListViewItem();
+	KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData);
+	~KviChannelTreeWidgetItem();
 protected:
-	KviChannelListViewItemData * m_pData;
+	KviChannelTreeWidgetItemData * m_pData;
 public:
 	const QString & channel(){ return m_pData->m_szChan; };
-	int width ( const QFontMetrics & fm, const KviTalListView * lv, int column ) const;
+	const KviChannelTreeWidgetItemData * channelData(){ return m_pData;}
+	int width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const;
 protected:
-	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
+//	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
 	virtual QString key(int col,bool) const;
 };
 
@@ -79,15 +92,15 @@ public:
 protected:
 	QSplitter                              * m_pVertSplitter;
 	QSplitter                              * m_pTopSplitter;
-	KviTalListView                         * m_pListView;
+	KviTalTreeWidget                         * m_pTreeWidget;
 	QLineEdit                              * m_pParamsEdit;
-	QToolButton                            * m_pRequestButton;
-	QToolButton							   * m_pStopListDownloadButton;
-	QToolButton							   * m_pOpenButton;
-	QToolButton							   * m_pSaveButton;
+	KviStyledToolButton                            * m_pRequestButton;
+	KviStyledToolButton							   * m_pStopListDownloadButton;
+	KviStyledToolButton							   * m_pOpenButton;
+	KviStyledToolButton							   * m_pSaveButton;
 	KviThemedLabel                         * m_pInfoLabel;
 	QTimer                                 * m_pFlushTimer;
-	KviPointerList<KviChannelListViewItemData> * m_pItemList;
+	KviPointerList<KviChannelTreeWidgetItemData> * m_pItemList;
 public: // Methods
 	virtual void control(int msg);
 	virtual void processData(KviIrcMessage * msg);
@@ -100,7 +113,7 @@ protected:
 	virtual void getBaseLogFileName(KviStr &buffer);
 protected slots:
 	void flush();
-	void itemDoubleClicked(KviTalListViewItem *it);
+	void itemDoubleClicked(KviTalTreeWidgetItem *it);
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();

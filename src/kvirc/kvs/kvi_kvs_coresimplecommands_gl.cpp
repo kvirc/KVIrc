@@ -115,11 +115,11 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("topic",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szTopic)
 		KVSCSC_PARAMETERS_END
 
-		szTopic.stripWhiteSpace();
+		szTopic.trimmed();
 		if(szTopic.endsWith(";"))
 		{
 			szTopic.truncate(szTopic.length() - 1);
-			szTopic.stripWhiteSpace();
+			szTopic.trimmed();
 		}
 
 		QString szCommand;

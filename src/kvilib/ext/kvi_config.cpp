@@ -373,7 +373,7 @@ bool KviConfig::load()
 
 	do {
 		bContinue = kvi_readLine(&f,dataLine);
-		dataLine.stripWhiteSpace();
+		dataLine.trimmed();
 		if(dataLine.hasData())
 		{
 			switch(*(dataLine.ptr()))

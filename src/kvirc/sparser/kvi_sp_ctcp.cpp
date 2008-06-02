@@ -1241,7 +1241,7 @@ void KviServerParser::parseCtcpRequestClientinfo(KviCtcpMessage *msg)
 		{
 			KviStr szTag;
 			msg->pData = extractCtcpParameter(msg->pData,szTag,false);
-			szTag.stripWhiteSpace();
+			szTag.trimmed();
 			szTag.toUpper();
 			if(szTag.isEmpty())
 			{
@@ -1334,7 +1334,7 @@ void KviServerParser::parseCtcpRequestPage(KviCtcpMessage *msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpPage))
 		{
-			KVI_OPTION_STRING(KviOption_stringCtcpPageReply).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringCtcpPageReply).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringCtcpPageReply).isEmpty())
 			{
 				KVI_OPTION_STRING(KviOption_stringCtcpPageReply) = KVI_DEFAULT_CTCP_PAGE_REPLY;
@@ -1477,9 +1477,9 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 	if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpAvatar))
 	{
 		QString szGenderTag=" ";
-		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive)){
 			szGenderTag.append("M");
-		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive)){
 			szGenderTag.append("F");
 		} else {
 			szGenderTag.append("?");
@@ -1546,7 +1546,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 
 	decoded = extractCtcpParameter(decoded.toUtf8().data(),szRemoteFile,true);
 	decoded = extractCtcpParameter(decoded.toUtf8().data(),szGender,true);
-	szRemoteFile.stripWhiteSpace();
+	szRemoteFile.trimmed();
 
 	bool bPrivate = IS_ME(msg->msg,msg->szTarget);
 
@@ -1812,7 +1812,7 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 
 	if(bNeedToUpdateUserlist)
 	{
-		if(KviQString::equalCS(g_pActiveWindow->className(),QString("KviChannel")))
+		if(KviQString::equalCS(g_pActiveWindow->metaObject()->className(),QString("KviChannel")))
 		{
 			((KviChannel*)g_pActiveWindow)->userListView()->updateArea();
 		}

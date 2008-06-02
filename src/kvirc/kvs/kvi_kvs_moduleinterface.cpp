@@ -41,7 +41,7 @@ bool KviKvsModuleCallbackCommandCall::getParameterCode(unsigned int uParamIdx,QS
 	const QChar * pEnd = d->endingLocation();
 	if(!(pBegin && pEnd))return false;
 	szParamBuffer.setUnicode(pBegin,pEnd - pBegin);
-	szParamBuffer.stripWhiteSpace();
+	szParamBuffer.trimmed();
 	return true;
 }
 

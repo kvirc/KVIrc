@@ -75,13 +75,14 @@ int KviListBoxTopicItem::width ( const KviTalListBox * lb ) const
 
 void KviListBoxTopicItem::paint ( QPainter * p )
 {
-	KviTopicWidget::paintColoredText(p,text(),listBox()->colorGroup(),height(listBox()));
+	KviTopicWidget::paintColoredText(p,text(),listBox()->palette(),height(listBox()));
 }
 
 
 KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
-: QFrame(par,name)
+: QFrame(par)
 {
+	setObjectName(name);
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	m_pHistory = 0;
@@ -312,9 +313,9 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 	
 			if(curFore == KVI_LABEL_DEF_FORE)
 			{
-				p->setPen(cg.text());
+				p->setPen(cg.text().color());
 			} else {
-				if(curFore > 16)p->setPen(cg.background());
+				if(curFore > 16)p->setPen(cg.background().color());
 				else p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
 			}
 		
@@ -330,9 +331,9 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				}
 			}
 
-			p->drawText(curX,baseline,szText,0,len);
+			p->drawText(curX,baseline,szText.left(len));
 	
-			if(curBold)p->drawText(curX+1,baseline,szText,0,len);
+			if(curBold)p->drawText(curX+1,baseline,szText.left(len));
 			if(curUnderline)
 			{
 				p->drawLine(curX,baseline + 1,curX+wdth,baseline + 1);
@@ -403,7 +404,144 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		}
 	}
 }
+void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
+{
+	QFontMetrics fm(p->font());
+	
+	int height=rect.height();
+	int width=rect.width();
+	
+	bool curBold      = false;
+	bool curUnderline = false;
+	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
+	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
+	int baseline = ((height + fm.ascent() - fm.descent() + 1) >> 1);
 
+	int curX = rect.x() + 2; //2 is the margin
+
+	unsigned int idx = 0;
+
+	while((idx < text.length()) && (curX < width))
+	{
+		unsigned short c = text[(int)idx].unicode();
+
+		unsigned int start = idx;
+
+		while((idx < text.length()) &&
+				(c != KVI_TEXT_COLOR) &&
+				(c != KVI_TEXT_BOLD) &&
+				(c != KVI_TEXT_UNDERLINE) &&
+				(c != KVI_TEXT_REVERSE) &&
+				(c != KVI_TEXT_RESET) &&
+				(c != KVI_TEXT_ICON)
+			)
+		{
+			idx++;
+			c = text[(int)idx].unicode();
+		}
+
+		int len = idx - start;
+		int wdth;
+
+		if(len > 0)
+		{
+			QString szText = text.mid(start,len);
+
+			wdth = fm.width(szText);
+	
+			if(curFore == KVI_LABEL_DEF_FORE)
+			{
+				p->setPen(cg.text().color());
+			} else {
+				if(curFore > 16)p->setPen(cg.background().color());
+				else p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
+			}
+		
+			if(curBack != KVI_LABEL_DEF_BACK)
+			{
+				if(curBack > 16)
+				{
+					p->fillRect(curX,rect.y() + 2,wdth,height - 4,
+						cg.text());
+				} else {
+					p->fillRect(curX,rect.y() + 2,wdth,height - 4,
+						KVI_OPTION_MIRCCOLOR(curBack));
+				}
+			}
+
+			p->drawText(curX,baseline,szText.left(len));
+	
+			if(curBold)p->drawText(curX+1,baseline,szText.left(len));
+			if(curUnderline)
+			{
+				p->drawLine(curX,baseline + 1,curX+wdth,baseline + 1);
+			}
+		} else {
+			wdth = 0;
+		}
+
+
+		curX += wdth;
+
+		switch(c)
+		{
+			case KVI_TEXT_BOLD: curBold = !curBold; ++idx; break;
+			case KVI_TEXT_UNDERLINE: curUnderline = !curUnderline; ++idx; break;
+			case KVI_TEXT_REVERSE:
+				{
+					char auxBack = curBack;
+					curBack = curFore;
+					curFore = auxBack;
+				}
+				++idx;
+			break;
+			case KVI_TEXT_RESET:
+				curFore = KVI_LABEL_DEF_FORE;
+				curBack = KVI_LABEL_DEF_BACK;
+				curBold = false;
+				curUnderline = false;
+				++idx;
+			break;
+			case KVI_TEXT_COLOR:
+			{
+				++idx;
+				unsigned char fore;
+				unsigned char back;
+				idx = getUnicodeColorBytes(text,idx,&fore,&back);
+				if(fore != KVI_NOCHANGE)
+				{
+					curFore = fore;
+					if(back != KVI_NOCHANGE)curBack = back;
+				} else {
+					// only a CTRL+K
+					curBack = KVI_LABEL_DEF_BACK;
+					curFore = KVI_LABEL_DEF_FORE;
+				}
+			}
+			break;
+			case KVI_TEXT_ICON:
+			{
+				++idx;
+
+				unsigned int icoStart = idx;
+				while((idx < text.length()) && (text[(int)idx].unicode() > 32))idx++;
+
+				KviStr lookupString = text.mid(icoStart,idx - icoStart);
+
+				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
+				if(icon)
+				{
+					QPixmap * pigzmap = icon->pixmap();
+					p->drawPixmap(curX,(baseline + 2) - pigzmap->height(),*(pigzmap));
+					curX += pigzmap->width();
+				} else {
+					idx = icoStart;
+				}
+			}
+			break;
+		}
+	}
+}
 void KviTopicWidget::paintEvent(QPaintEvent * e)
 {
 	QPainter pa(this);
@@ -429,10 +567,10 @@ void KviTopicWidget::drawContents(QPainter *p)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-	QColorGroup colorGroup;
+	QPalette colorGroup;
 	//colorGroup()
-	colorGroup.setColor(QColorGroup::Text,KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-	colorGroup.setColor(QColorGroup::Background,KVI_OPTION_COLOR(KviOption_colorLabelBackground));
+	colorGroup.setColor(QPalette::Text,KVI_OPTION_COLOR(KviOption_colorLabelForeground));
+	colorGroup.setColor(QPalette::Background,KVI_OPTION_COLOR(KviOption_colorLabelBackground));
 	paintColoredText(p,m_szTopic,colorGroup);
 }
 
@@ -452,7 +590,7 @@ void KviTopicWidget::setTopic(const QString & topic)
 	{
 		if(g_pRecentTopicList->count() >= KVI_RECENT_TOPIC_ENTRIES)
 		{
-			g_pRecentTopicList->remove(g_pRecentTopicList->begin());
+			g_pRecentTopicList->erase(g_pRecentTopicList->begin());
 		}
 		g_pRecentTopicList->append(m_szTopic);
 	}
@@ -573,14 +711,14 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pInput->installEventFilter(this);
 
 		m_pHistory = new QPushButton(this);
-		m_pHistory->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
+		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
 		connect(m_pHistory,SIGNAL(clicked()),this,SLOT(historyClicked()));
 		
 		m_pAccept = new QPushButton(this);
-		m_pAccept->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
+		m_pAccept->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT))));
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
 		m_pAccept->show();
@@ -588,7 +726,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
 		
 		m_pDiscard = new QPushButton(this);
-		m_pDiscard->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
+		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
 		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
 		m_pDiscard->show();
@@ -642,7 +780,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 		case QEvent::MouseButtonRelease:
 			if ( m_pCompletionBox->rect().contains( ((QMouseEvent*)e)->pos() ) ) {
 				QMouseEvent tmp( QEvent::MouseButtonDblClick,
-						((QMouseEvent*)e)->pos(), ((QMouseEvent*)e)->button(), ((QMouseEvent*)e)->state() ) ;
+						((QMouseEvent*)e)->pos(), ((QMouseEvent*)e)->button(), ((QMouseEvent*)e)->modifiers() ) ;
 				// will hide popup
 				QApplication::sendEvent( object, &tmp );
 				return TRUE;
@@ -655,7 +793,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 			switch( ((QKeyEvent *)e)->key() ) {
 			case Qt::Key_Up:
 			case Qt::Key_Down:
-				if ( !(((QKeyEvent *)e)->state() & Qt::AltButton) )
+				if ( !(((QKeyEvent *)e)->modifiers() & Qt::AltModifier) )
 				break;
 			case Qt::Key_F4:
 			case Qt::Key_Escape:

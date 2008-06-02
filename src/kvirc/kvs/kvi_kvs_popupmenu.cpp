@@ -1140,7 +1140,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 	{
 		buffer.append("prologue\n");
 		tmp = s->code();
-		tmp.stripWhiteSpace();
+		tmp.trimmed();
 		KviCommandFormatter::blockFromBuffer(tmp);
 		buffer.append(tmp);
 		buffer.append('\n');
@@ -1193,7 +1193,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 	{
 		buffer.append("epilogue\n");
 		tmp = s->code();
-		tmp.stripWhiteSpace();
+		tmp.trimmed();
 		KviCommandFormatter::blockFromBuffer(tmp);
 		buffer.append(tmp);
 		buffer.append('\n');

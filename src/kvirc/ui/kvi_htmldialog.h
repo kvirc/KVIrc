@@ -49,7 +49,7 @@ public:
 	{
 		if (!m_pDoc) m_pDoc=new QTextDocument();
 		QUrl url;
-		url.setFileName(key);
+		url.setPath(key);
 		m_pDoc->addResource(2,url,pix);
 	}
 
@@ -93,8 +93,8 @@ public:
 	~KviTextBrowser(){};
 	virtual QVariant loadResource ( int type, const QUrl & name ) 
 	{
-		QString p=m_pHt->htmlResource.value(name.fileName());
-		debug("resource %s type %d and page %s",name.fileName().toUtf8().data(),type,p.toUtf8().data());
+		QString p=m_pHt->htmlResource.value(name.path());
+		debug("resource %s type %d and page %s",name.path().toUtf8().data(),type,p.toUtf8().data());
 		if (!p.isEmpty()) return QVariant(p);
 		else return QVariant();
 		

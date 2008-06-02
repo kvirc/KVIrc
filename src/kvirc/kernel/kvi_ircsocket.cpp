@@ -1145,7 +1145,7 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * buffer,int bufLen)
 	KviStr tmp = buffer;
 	// FIXME: #warning "We could even show the proxy output here...!"
 	tmp.cutFromFirst('\n');
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 
 	if(kvi_strEqualCIN(tmp.ptr(),"HTTP",4))
 	{

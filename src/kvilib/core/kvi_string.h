@@ -324,7 +324,7 @@ public:
 	KviStr & stripRightWhiteSpace();
 	// Stips inital and final WHITESPACE characters (see man isspace),<br>
 	// and returns a reference to this string.
-	KviStr & stripWhiteSpace();
+	KviStr & trimmed();
 
 	// Strips spaces and tabs only
 	KviStr & stripSpace();
