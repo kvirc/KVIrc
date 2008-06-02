@@ -161,8 +161,9 @@ static bool g_bInputFontMetricsDirty = true;
 
 
 KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * view)
-:QFrame(par,"input")
+:QFrame(par)
 {
+	setObjectName("input_frame");
 	m_pIconMenu            = 0;
 	m_pInputParent         = par;
 	m_iMaxBufferSize       = KVI_INPUT_MAX_BUFFER_SIZE;
@@ -190,12 +191,12 @@ KviInputEditor::KviInputEditor(QWidget * par,KviWindow *wnd,KviUserListView * vi
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = FALSE;
 
-	setInputMethodEnabled(true);
+	setAttribute(Qt::WA_InputMethodEnabled, true);
 
 	setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
 	setAcceptDrops(true);
-	setFrameStyle( LineEditPanel );
+	setFrameStyle( StyledPanel );
 	setFrameShadow( Plain );
 
 	m_pIconMenu = new KviTalPopupMenu();
@@ -280,9 +281,9 @@ int  KviInputEditor::heightHint() const
 QSize KviInputEditor::sizeHint() const
 {
 	//grabbed from qlineedit.cpp
-	constPolish();
+	ensurePolished();
 	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
-	int h = QMAX(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
+	int h = qMax(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
 	int w = fm.width( 'x' ) * 17; // "some"
 	int m = frameWidth() * 2;
 	QStyleOption opt;
@@ -425,7 +426,7 @@ void KviInputEditor::drawContents(QPainter *p)
 
 			// the block width is 4 pixels more than the actual character
 
-			pa.drawText(curXPos + 2,textBaseline,s,1);
+			pa.drawText(curXPos + 2,textBaseline,s.left(1));
 
 			pa.drawRect(curXPos,top,m_iBlockWidth-1,bottom);
 		} else {
@@ -1032,7 +1033,7 @@ void KviInputEditor::stopPasteSlow()
 
 void KviInputEditor::pasteFile()
 {
-	QString stmp = QFileDialog::getOpenFileName("","",this,"Paste File", "Choose a file" );
+	QString stmp = QFileDialog::getOpenFileName(this,"Choose a file","","");
 	if(stmp!="")
 	{
 		stmp.replace("\"", "\\\"");
@@ -1092,7 +1093,7 @@ void KviInputEditor::timerEvent(QTimerEvent *e)
 {
 	if(e->timerId() == m_iCursorTimer)
 	{
-		if(!hasFocus() || !isVisibleToTLW())
+		if(!hasFocus() || !isVisible())
 		{
 			killTimer(m_iCursorTimer);
 			m_iCursorTimer = 0;
@@ -1305,9 +1306,9 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 
 	if(!m_bReadOnly)
 	{
-		if((e->key() == Qt::Key_Tab) || (e->key() == Qt::Key_BackTab))
+		if((e->key() == Qt::Key_Tab) || (e->key() == Qt::Key_Backtab))
 		{
-			completion(e->state() & Qt::ShiftButton);
+			completion(e->modifiers() & Qt::ShiftModifier);
 			return;
 		} else {
 			m_bLastCompletionFinished=1;
@@ -1321,7 +1322,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
-	if((e->state() & Qt::AltButton) || (e->state() & Qt::ControlButton))
+	if((e->modifiers() & Qt::AltModifier) || (e->modifiers() & Qt::ControlModifier))
 	{
 		switch(e->key())
 		{
@@ -1336,12 +1337,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		}
 	}
 
+
 //Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
 //This way typical X11 and Apple shortcuts can be used simultanously within the input line.
 #ifndef COMPILE_ON_MAC
-	if(e->state() & Qt::ControlButton)
+	if(e->modifiers() & Qt::ControlModifier)
 #else
-	if((e->state() & Qt::ControlButton) || (e->state() & Qt::MetaButton))
+	if((e->modifiers() & Qt::ControlModifier) || (e->modifiers() & Qt::MetaModifier))
 #endif
 	{
 		switch(e->key())
@@ -1353,13 +1355,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 					{
 						if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->state() & Qt::ShiftButton);
+						internalCursorRight(e->modifiers() & Qt::ShiftModifier);
 					}
 					// skip nonwhitespace
 					while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 					{
 						if(m_szTextBuffer.at(m_iCursorPosition).isSpace())break;
-						internalCursorRight(e->state() & Qt::ShiftButton);
+						internalCursorRight(e->modifiers() & Qt::ShiftModifier);
 					}
 					repaintWithCursorOn();
 				}
@@ -1371,13 +1373,13 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 					while(m_iCursorPosition > 0)
 					{
 						if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->state() & Qt::ShiftButton);
+						internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
 					}
 					// skip nonwhitespace
 					while(m_iCursorPosition > 0)
 					{
 						if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())break;
-						internalCursorLeft(e->state() & Qt::ShiftButton);
+						internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
 					}
 					repaintWithCursorOn();
 				}
@@ -1502,16 +1504,16 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
-	if((e->state() & Qt::AltButton) && (e->state() & Qt::Keypad))
+	if((e->modifiers() & Qt::AltModifier) && (e->modifiers() & Qt::KeypadModifier))
 	{
 		// Qt::Key_Meta seems to substitute Qt::Key_Alt on some keyboards
 		if((e->key() == Qt::Key_Alt) || (e->key() == Qt::Key_Meta))
 		{
 			m_szAltKeyCode = "";
 			return;
-		} else if((e->ascii() >= '0') && (e->ascii() <= '9'))
+		} else if((e->text().unicode()->toLatin1() >= '0') && (e->text().unicode()->toLatin1() <= '9'))
 		{
-			m_szAltKeyCode += e->ascii();
+			m_szAltKeyCode += e->text().unicode()->toLatin1();
 			return;
 		}
 
@@ -1522,7 +1524,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		return;
 	}
 
-	if(e->state() & Qt::ShiftButton)
+	if(e->modifiers() & Qt::ShiftModifier)
 	{
 		switch(e->key())
 		{
@@ -1548,14 +1550,14 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 			if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 			{
-				internalCursorRight(e->state() & Qt::ShiftButton);
+				internalCursorRight(e->modifiers() & Qt::ShiftModifier);
 				repaintWithCursorOn();
 			}
 			break;
 		case Qt::Key_Left:
 			if(m_iCursorPosition > 0)
 			{
-				internalCursorLeft(e->state() & Qt::ShiftButton);
+				internalCursorLeft(e->modifiers() & Qt::ShiftModifier);
 				repaintWithCursorOn();
 			}
 			break;
@@ -1592,7 +1594,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Home:
 			if(m_iCursorPosition > 0)
 			{
-				if(e->state() & Qt::ShiftButton)
+				if(e->modifiers() & Qt::ShiftModifier)
 				{
 					if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionEnd = m_iCursorPosition - 1;
 					m_iSelectionBegin = 0;
@@ -1603,7 +1605,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 			}
 			break;
 		case Qt::Key_End://we should call it even the cursor is at the end for deselecting
-			if(e->state() & Qt::ShiftButton)
+			if(e->modifiers() & Qt::ShiftModifier)
 			{
 				if((m_iSelectionBegin == -1)&&(m_iSelectionEnd == -1))m_iSelectionBegin = m_iCursorPosition;
 				m_iSelectionEnd = m_szTextBuffer.length()-1;
@@ -1846,7 +1848,7 @@ void KviInputEditor::completion(bool bShift)
 				const QChar * c1 = b1;
 				const QChar * c2 = b2;
 				if(bIsDir)while(c1->unicode() && (c1->unicode() == c2->unicode()))c1++,c2++;
-				else while(c1->unicode() && (c1->lower().unicode() == c2->lower().unicode()))c1++,c2++;
+				else while(c1->unicode() && (c1->toLower().unicode() == c2->toLower().unicode()))c1++,c2++;
 				int len = wLen + (c1 - b1);
 				if(len < ((int)(match.length())))match.remove(len,match.length() - len);
 				if(!all.isEmpty())all.append(", ");
@@ -2233,25 +2235,26 @@ int KviInputEditor::xPositionFromCharIndex(int chIdx,bool bContentsCoords)
 
 
 KviInput::KviInput(KviWindow *par,KviUserListView * view)
-: QWidget(par,"input")
+: QWidget(par)
 {
-	QBoxLayout* pLayout=new QHBoxLayout(this);
-	pLayout->setAutoAdd(true);
+	setObjectName("input_widget");
+	QHBoxLayout* pLayout=new QHBoxLayout(this);
+//	pLayout->setAutoAdd(true);
 	pLayout->setDirection(QBoxLayout::RightToLeft);
 
 	pLayout->setMargin(0);
 	pLayout->setSpacing(0);
-
+//
 	m_pWindow = par;
 	m_pMultiLineEditor = 0;
 
 	m_pHideToolsButton = new KviStyledToolButton(this,"hide_container_button");
 
-	m_pHideToolsButton->setUsesBigPixmap(false);
+	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(10);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
-		m_pHideToolsButton->setPixmap(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png")));
+		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
@@ -2264,7 +2267,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
 	m_pHistoryButton = new KviStyledToolButton(m_pButtonContainer,"historybutton");
-	m_pHistoryButton->setUsesBigPixmap(false);
+	m_pHistoryButton->setIconSize(QSize(22,22));
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
 	QIcon is1;
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
@@ -2282,7 +2285,7 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	}
 
 	m_pIconButton = new KviStyledToolButton(m_pButtonContainer,"iconbutton");
-	m_pIconButton->setUsesBigPixmap(false);
+	m_pIconButton->setIconSize(QSize(22,22));
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)));
 	m_pIconButton->setIcon(is3);
@@ -2292,8 +2295,8 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 
 
 	m_pCommandlineModeButton = new KviStyledToolButton(m_pButtonContainer,"commandlinemodebutton");
-	m_pCommandlineModeButton->setUsesBigPixmap(false);
-	m_pCommandlineModeButton->setToggleButton(true);
+	m_pCommandlineModeButton->setIconSize(QSize(22,22));
+	m_pCommandlineModeButton->setCheckable(true);
 	QIcon is0;
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYSMILE)),QIcon::Normal,QIcon::On);
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYKVS)),QIcon::Normal,QIcon::Off);
@@ -2304,8 +2307,8 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 
 
 	m_pMultiEditorButton = new KviStyledToolButton(m_pButtonContainer,"multieditorbutton");
-	m_pMultiEditorButton->setToggleButton(true);
-	m_pMultiEditorButton->setUsesBigPixmap(false);
+	m_pMultiEditorButton->setCheckable(true);
+	m_pMultiEditorButton->setIconSize(QSize(22,22));
 	QIcon is2;
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::Off);
@@ -2326,10 +2329,15 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pIconButton->setAutoRaise(true);
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
+pLayout->addWidget(m_pHideToolsButton,0);	
+pLayout->addWidget(m_pButtonContainer,0);
+	pLayout->addWidget(m_pInputEditor,10000);
 
-	pLayout->setStretchFactor(m_pInputEditor,100000);
-	pLayout->setStretchFactor(m_pButtonContainer,0);
-	pLayout->setStretchFactor(m_pHideToolsButton,0);
+	
+/*	pLayout->setStretchFactor(m_pInputEditor,100000);
+	pLayout->setStretchFactor(
+	pLayout->setStretchFactor(
+	*/
 }
 
 KviInput::~KviInput()
@@ -2351,7 +2359,7 @@ void KviInput::setButtonsHidden(bool bHidden)
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png") :
 		g_pIconManager->getBigIcon("kvi_horizontal_left.png");
 	if(pix)
-		m_pHideToolsButton->setPixmap(*pix);
+		m_pHideToolsButton->setIcon(QIcon(*pix));
 }
 
 void KviInput::toggleToolButtons()
@@ -2370,7 +2378,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 {
 	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
 
-	if((e->state() & Qt::ControlButton) || (e->state() & Qt::AltButton) || (e->state() & Qt::MetaButton))
+	if((e->modifiers() & Qt::ControlModifier) || (e->modifiers() & Qt::AltModifier) || (e->modifiers() & Qt::MetaModifier))
 	{
 		switch(e->key())
 		{
@@ -2381,7 +2389,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 		}
 	}
 
-	if(e->state() & Qt::ControlButton)
+	if(e->modifiers() & Qt::ControlModifier)
 	{
 		switch(e->key())
 		{
