@@ -131,7 +131,7 @@ void Index::insertInDict( const QString &str, int docNum )
 	if (KviQString::equalCI( str, "amp" ) || KviQString::equalCI( str, "nbsp" ) ) return;
 	Entry *e = 0;
 	if ( dict.count() ) e = dict[ str ];
-	
+
 	if ( e ) {
 		if ( e->documents.first().docNumber != docNum )
 		e->documents.prepend( Document( docNum, 1 ) );
@@ -173,12 +173,12 @@ void Index::parseDocument( const QString &filename, int docNum )
 			c = buf[++j];
 			continue;
 		}
-	
+
 		if ( !valid ) {
 			c = buf[++j];
 			continue;
 		}
-	
+
 		if ( ( c.isLetterOrNumber() || c == '_' ) && i < 63 ) {
 			str[i] = c.toLower();
 			++i;
@@ -186,7 +186,7 @@ void Index::parseDocument( const QString &filename, int docNum )
 			if ( i > 1 ) insertInDict( QString(str,i), docNum );
 			i = 0;
 		}
-	
+
 		c = buf[++j];
 	}
 
@@ -199,15 +199,15 @@ void Index::writeDict()
 	KviPointerHashTableIterator<QString,Entry> it( dict );
 	KviFile f( dictFile );
 	if ( !f.openForWriting() ) return;
-	
+
 	QDataStream s( &f );
-	
+
 	for( ; it.current(); ++it ) {
 		Entry *e = it.current();
 		s << it.currentKey();
 		s << e->documents;
 	}
-	
+
 	f.close();
 	writeDocumentList();
 }
@@ -219,7 +219,7 @@ void Index::writeDocumentList()
 	QTextStream s( &f );
 	QString docs = docList.join("[#item#]");
 	s << docs;
-	
+
 	KviFile f1( docListFile+".titles" );
 	if ( !f1.openForWriting() ) return;
 	QTextStream s1( &f1 );
@@ -251,7 +251,7 @@ void Index::readDocumentList()
 	if ( !f.openForReading() ) return;
 	QTextStream s( &f );
 	docList = s.readAll().split("[#item#]",QString::SkipEmptyParts,Qt::CaseInsensitive);
-	
+
 	//reading titles
 	KviFile f1( docListFile+".titles" );
 	if ( !f1.openForReading() ) return;
@@ -264,7 +264,7 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 {
 	TermList termList;
 	QStringList::ConstIterator it = terms.begin();
-	
+
 	for ( it = terms.begin(); it != terms.end(); ++it ) {
 		Entry *e = 0;
 		if ( (*it).contains( '*' ) ) {
@@ -275,29 +275,29 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 			termList.append( new Term( *it, e->documents.count(), e->documents ) );
 		} else return QStringList();
 	}
-	
+
 	termList.sort();
-	
+
 	Term *minTerm = termList.first();
-	
+
 	if ( !termList.count() ) return QStringList();
-	
+
 	termList.removeFirst();
-	
+
 	KviValueList<Document> minDocs = minTerm->documents;
 	KviValueList<Document>::iterator C;
 	KviValueList<Document>::ConstIterator It;
-	
+
 	Term *t = termList.first();
 	for ( ; t; t = termList.next() ) {
-	
+
 		KviValueList<Document> docs = t->documents;
-	
+
 		C = minDocs.begin();
-	
+
 		while ( C != minDocs.end() ) {
 			bool found = FALSE;
-		
+
 			for ( It = docs.begin(); It != docs.end(); ++It ) {
 				if ( (*C).docNumber == (*It).docNumber ) {
 					(*C).frequency += (*It).frequency;
@@ -305,28 +305,28 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 					break;
 				}
 			}
-		
+
 			if ( !found ) C = minDocs.erase( C );
 			else ++C;
 		}
 	}
-	
+
 	QStringList results;
 	if ( termSeq.isEmpty() ) {
 		for ( C = minDocs.begin(); C != minDocs.end(); ++C )
 			results << docList[ (int)(*C).docNumber ];
-	
+
 		return results;
 	}
-	
+
 	QString fileName;
 	for ( C = minDocs.begin(); C != minDocs.end(); ++C ) {
 		fileName =  docList[ (int)(*C).docNumber ];
-	
+
 		if ( searchForPattern( termSeq, seqWords, fileName ) )
 			results << fileName;
 	}
-	
+
 	return results;
 }
 
@@ -338,15 +338,15 @@ QString Index::getDocumentTitle( const QString &fileName )
 		qWarning( warn.toUtf8().data() );
 		return fileName;
 	}
-	
+
 	QTextStream s( &file );
 	QString text = s.readAll();
-	
+
 	int start = text.indexOf( "<title>", 0, Qt::CaseInsensitive ) + 7;
 	int end = text.indexOf( "</title>", 0, Qt::CaseInsensitive);
-	
+
 	QString title = ( end - start <= 0 ? tr("Untitled") : text.mid( start, end - start ) );
-	
+
 	return title;
 }
 
@@ -355,36 +355,36 @@ QStringList Index::getWildcardTerms( const QString &term )
 	QStringList lst;
 	QStringList terms = split( term );
 	QStringList::Iterator iter;
-	
+
 	KviPointerHashTableIterator<QString,Entry> it( dict );
 	for( ; it.current(); ++it ) {
 		int index = 0;
 		bool found = FALSE;
 		QString text( it.currentKey() );
-	
+
 		for ( iter = terms.begin(); iter != terms.end(); ++iter ) {
 			if ( *iter == "*" ) {
 				found = TRUE;
 				continue;
 			}
-		
+
 			if ( iter == terms.begin() && (*iter)[0] != text[0] ) {
 				found = FALSE;
 				break;
 			}
-		
+
 			index = text.indexOf( *iter, index,Qt::CaseInsensitive );
-		
+
 			if ( *iter == terms.last() && index != (int)text.length()-1 ) {
 				index = text.lastIndexOf( *iter,-1,Qt::CaseInsensitive );
-		
+
 				if ( index != (int)text.length() - (int)(*iter).length() ) {
 					found = FALSE;
 					break;
 				}
-		
+
 			}
-		
+
 			if ( index != -1 ) {
 				found = TRUE;
 				index += (*iter).length();
@@ -394,10 +394,10 @@ QStringList Index::getWildcardTerms( const QString &term )
 				break;
 			}
 		}
-	
+
 		if ( found ) lst << text;
 	}
-	
+
 	return lst;
 }
 
@@ -406,22 +406,22 @@ QStringList Index::split( const QString &str )
 	QStringList lst;
 	int j = 0;
 	int i = str.indexOf( '*', j );
-	
+
 	while ( i != -1 ) {
 		if ( i > j && i <= (int)str.length() ) {
 			lst << str.mid( j, i - j );
 			lst << "*";
 		}
-	
+
 		j = i + 1;
 		i = str.indexOf( '*', j );
 	}
-	
+
 	int l = str.length() - 1;
-	
+
 	if ( str.mid( j, l - j + 1 ).length() > 0 )
 		lst << str.mid( j, l - j + 1 );
-	
+
 	return lst;
 }
 
@@ -429,26 +429,26 @@ KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 {
 	TermList termList;
 	QStringList::ConstIterator it = terms.begin();
-	
+
 	for ( ; it != terms.end(); ++it ) {
 		Entry *e = 0;
 		if ( dict[ *it ] ) {
 			e = dict[ *it ];
 			termList.append( new Term( *it, e->documents.count(), e->documents ) );
 		}
-	
+
 	}
-	
+
 	termList.sort();
-	
+
 	KviValueList<Document> maxList;
 	if ( !termList.count() ) return maxList;
-	
+
 	maxList = termList.last()->documents;
 	termList.removeLast();
-	
+
 	KviValueList<Document>::iterator docIt;
-	
+
 	Term *t = termList.first();
 	while ( t ) {
 		KviValueList<Document> docs = t->documents;
@@ -458,7 +458,7 @@ KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 		}
 		t = termList.next();
 	}
-	
+
 	return maxList;
 }
 
@@ -471,21 +471,21 @@ void Index::buildMiniDict( const QString &str )
 bool Index::searchForPattern( const QStringList &patterns, const QStringList &words, const QString &fileName )
 {
 	KviFile file( fileName );
-	
+
 	if ( !file.openForReading() ) {
 		QString warn = "cannot open file " + fileName;
 		qWarning( warn.toUtf8().data() );
 		return FALSE;
 	}
 	else debug("Open file %s",fileName.utf8().data());
-	debug("Patterns %s and words %s",patterns.join(","),words.join(","));
+	debug("Patterns %s and words %s",patterns.join(",").utf8().data(),words.join(",").utf8().data());
 	wordNum = 3;
 	miniDict.clear();
-	
+
 	QStringList::ConstIterator cIt = words.begin();
 	for ( ; cIt != words.end(); ++cIt )
 		miniDict.insert( *cIt, new PosEntry( 0 ) );
-	
+
 	QTextStream s( &file );
 	QString text = s.readAll();
 	bool valid = TRUE;
@@ -502,18 +502,18 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 			c = buf[++j];
 			continue;
 		}
-	
+
 		if ( ( c == '>' || c == ';' ) && !valid ) {
 			valid = TRUE;
 			c = buf[++j];
 			continue;
 		}
-	
+
 		if ( !valid ) {
 			c = buf[++j];
 			continue;
 		}
-	
+
 		if ( ( c.isLetterOrNumber() || c == '_' ) && i < 63 ) {
 			str[i] = c.toLower();
 			++i;
@@ -521,29 +521,29 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 			if ( i > 1 ) buildMiniDict( QString(str,i) );
 			i = 0;
 		}
-	
+
 		c = buf[++j];
 	}
-	
+
 	if ( i > 1 ) buildMiniDict( QString(str,i) );
-	
+
 	file.close();
-	
+
 	QStringList::ConstIterator patIt = patterns.begin();
 	QStringList wordLst;
-	
+
 	KviValueList<uint> a, b;
 	KviValueList<uint>::iterator aIt;
-	
+
 	for ( ; patIt != patterns.end(); ++patIt ) {
 		QString tmp=*patIt;
 		wordLst = tmp.split( ' ');
 		a = miniDict[ wordLst[0] ]->positions;
-	
+
 		for ( int j = 1; j < (int)wordLst.count(); ++j ) {
 			b = miniDict[ wordLst[j] ]->positions;
 			aIt = a.begin();
-	
+
 			while ( aIt != a.end() ) {
 				if ( b.find( *aIt + 1 ) != b.end() ) {
 					(*aIt)++;
@@ -554,9 +554,9 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 			}
 		}
 	}
-	
+
 	if ( a.count() ) return TRUE;
-	
+
 	return FALSE;
 }
 

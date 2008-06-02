@@ -280,7 +280,7 @@ void KviIrcConnection::start()
 void KviIrcConnection::linkEstabilished()
 {
 	m_eState = Connected;
-	
+
 	// setup reasonable defaults before notifying anyone
 	m_pStatistics->setConnectionStartTime(kvi_unixTime());
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
@@ -307,19 +307,19 @@ void KviIrcConnection::linkTerminated()
 		m_bIdentdAttached=false;
 	}
 	m_eState = Idle;
-	
+
 	if(m_pNotifyListManager)
 	{
 		delete m_pNotifyListManager;
 		m_pNotifyListManager = 0;
 	}
-	
+
 	if(m_pLagMeter)
 	{
 		delete m_pLagMeter;
 		m_pLagMeter = 0;
 	}
-	
+
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
@@ -614,7 +614,7 @@ void KviIrcConnection::delayedStartNotifyList()
 
 void KviIrcConnection::endOfMotdReceived()
 {
-	// if the timer is still there running then just 
+	// if the timer is still there running then just
 	if(m_pNotifyListTimer)restartNotifyList();
 }
 
@@ -703,7 +703,7 @@ void KviIrcConnection::resolveLocalHost()
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Local host address is %Q"),
 				&(m_pUserInfo->localHostIp()));
 	}
-	
+
 	// For now this is the only we know
 	m_pUserInfo->setHostName(m_pUserInfo->localHostIp());
 	m_pUserInfo->setHostIp(m_pUserInfo->localHostIp());
@@ -735,7 +735,7 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 	if(szHostName.isEmpty())return; // nothing to do anyway
 
 	if(KviQString::equalCS(m_pUserInfo->hostName(),szHostName))return; // again nothing to do
-	
+
 	static bool warned_once = false;
 
 	if(!warned_once)
@@ -792,17 +792,17 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The local IP address as seen by the IRC server is %Q"),&szHostName);
 			m_pUserInfo->setHostIp(szHostName);
-		} else 
+		} else
 #ifdef COMPILE_IPV6_SUPPORT
 		if(KviNetUtils::isValidStringIp(szUnmaskedHost) || KviNetUtils::isValidStringIp_V6(szUnmaskedHost))
 #else
 		if(KviNetUtils::isValidStringIp(szUnmaskedHost))
-#endif		 
+#endif
 		{
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The local IP address as seen by the IRC server is %Q"),&szUnmaskedHost);
 			m_pUserInfo->setHostIp(szUnmaskedHost);
-		
+
 		} else {
 			// look it up too
 			if(m_pLocalhostDns)delete m_pLocalhostDns; // it could be only another local host lookup
@@ -935,7 +935,7 @@ void KviIrcConnection::loginToIrcServer()
 			m_pUserInfo->setRealName(KVI_OPTION_STRING(KviOption_stringRealname));
 		}
 	}
-	
+
 	// FIXME: The server's encoding!
 	setupTextCodec();
 	KviQCString szNick = encodeText(m_pUserInfo->nickName()); // never empty
@@ -971,14 +971,14 @@ void KviIrcConnection::loginToIrcServer()
 			return;
 		}
 	}
-	
-	
+
+
 	if(!sendFmtData("NICK %s",szNick.data()))
 	{
 		// disconnected :(
 		return;
 	}
-	
+
 	QString szGenderTag;
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
@@ -1018,7 +1018,7 @@ void KviIrcConnection::loginToIrcServer()
 			}
 		}
 	} // else buuug
-	
+
 	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive)){
 			e->setGender(KviIrcUserEntry::Male);
 	} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive)){
@@ -1107,10 +1107,10 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	}
 
 	g_pApp->addRecentNickname(szNickName);
-	
+
 	bool bHaltOutput = false;
 	bHaltOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIrc,m_pConsole);
-	
+
 	if(!bHaltOutput)
 		m_pConsole->outputNoFmt(KVI_OUT_IRC,__tr2qs("Login operations complete, happy ircing!"));
 
@@ -1165,20 +1165,20 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 
 	// join saved channels
 	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
-	
+
 	if(!(m_pStateData->commandToExecAfterConnect().isEmpty()))
 	{
 		KviStr tmp = m_pStateData->commandToExecAfterConnect();
 		KviKvsScript::run(tmp.ptr(),m_pConsole);
 	}
-	
+
 	if(target()->server()->m_pReconnectInfo)
 	{
 		if(!target()->server()->m_pReconnectInfo->m_szJoinChannels.isEmpty())
 			sendFmtData("JOIN %s",encodeText(target()->server()->m_pReconnectInfo->m_szJoinChannels).data());
 
 		KviQuery * query;
-		
+
 		for(QStringList::Iterator it = target()->server()->m_pReconnectInfo->m_szOpenQueryes.begin();
 			it != target()->server()->m_pReconnectInfo->m_szOpenQueryes.end();it++)
 		{
@@ -1215,7 +1215,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 			if(l->count()!=0)
 			{
 				for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
-					
+
 					szCurPass=(*it).section(':',1);
 					if(szCurPass.isEmpty())
 					{
@@ -1237,7 +1237,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 						szPasswords.append(szCurPass);
 					}
 				}
-			}	
+			}
 		}
 
 		if(server()->autoJoinChannelList())
@@ -1272,7 +1272,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 				}
 			}
 		}
-		
+
 		QString szCommand;
 		if( (!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()) )
 		{
@@ -1282,7 +1282,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 			szCommand.append(szChannels);
 			szCommand.append(" ");
 			szCommand.append(szPasswords);
-			
+
 			sendFmtData("JOIN %s",encodeText(szCommand).data());
 		}
 	}
@@ -1343,7 +1343,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 							console()->output(KVI_OUT_VERBOSE,__tr2qs("Updating away state for channel %Q"),&szChanName);
 						if(lagMeter())
 						{
-							KviStr tmp(KviStr::Format,"WHO %s",pOldest->objectName().toLatin1());
+							KviStr tmp(KviStr::Format,"WHO %s",pOldest->objectName().toLatin1().data());
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();

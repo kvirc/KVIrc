@@ -129,7 +129,7 @@ void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionVi
 	if ((option.state & QStyle::State_Selected) && (index.column() == 0 || lv->allColumnsShowFocus()) ) {
 		p->fillRect( r - marg, 0, width - r + marg, option.rect.height(),
 		cg.brush( QPalette::Highlight ) );
-		
+
 		if ( (option.state & QStyle::State_Enabled) || !lv )
 			p->setPen( cg.highlightedText().color() );
 		else if ( !(option.state & QStyle::State_Enabled) && lv)
@@ -143,7 +143,7 @@ void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionVi
 			//p->setPen( lv->palette().disabled().text() );
 			p->setPen(lv->palette().text().color());
 	}
-	
+
 	KviTopicWidget::paintColoredText(p,szText,cg,option.rect);
 }
 
@@ -188,18 +188,18 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	box->setMargin(0);
 	m_pOpenButton = new KviStyledToolButton(box);
 	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN))));
-	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));	
+	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
 	m_pSaveButton = new KviStyledToolButton(box);
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
-	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));	
+	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
 	m_pRequestButton = new KviStyledToolButton(box,"request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
-	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));	
+	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
-	
+
 	m_pStopListDownloadButton = new KviStyledToolButton(box,"stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
 	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
@@ -238,7 +238,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 		this,SLOT(connectionStateChange()));
 
 	connectionStateChange();
-	
+
 }
 
 KviListWindow::~KviListWindow()
@@ -321,15 +321,15 @@ void KviListWindow::fillCaptionBuffers()
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel List</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii().data(),
 		m_pConsole->ircContextId());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel list</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii().data(),
 		m_pConsole->ircContextId());
 }
 
@@ -345,7 +345,7 @@ void KviListWindow::exportList()
 		KviMessageBox::warning(__tr2qs("You cannot export an empty list"));
 		return;
 	}
-		
+
 	QString szFile;
 	if(connection())
 	{
@@ -364,7 +364,7 @@ void KviListWindow::exportList()
 		KviConfig cfg(szFile,KviConfig::Write);
 		cfg.clear();
 		//KviTalTreeWidgetItemIterator it(m_pTreeWidget);
-		
+
 		//while(it.current())
 		KviChannelTreeWidgetItem *it;
 		for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -383,7 +383,7 @@ void KviListWindow::exportList()
 
 void KviListWindow::importList()
 {
-	
+
 	QString szFile;
 	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString::null,KVI_FILTER_CONFIG,false,
 		false,this))
@@ -401,7 +401,7 @@ void KviListWindow::importList()
 		while(it.current())
 		{
 			cfg.setGroup(it.currentKey());
-			m_pItemList->append( 
+			m_pItemList->append(
 					new KviChannelTreeWidgetItemData(
 						it.currentKey(),
 						cfg.readQStringEntry("users","0"),

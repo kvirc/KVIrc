@@ -82,15 +82,15 @@ void KviSocketSpyWindow::fillCaptionBuffers()
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii().data(),
 		m_pConsole->ircContextId());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii().data(),
 		m_pConsole->ircContextId());
 }
 

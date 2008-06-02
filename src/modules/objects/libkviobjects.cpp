@@ -118,7 +118,7 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_vbox::unregisterSelf();
 	KviKvsObject_label::unregisterSelf();
 	KviKvsObject_buttongroup::unregisterSelf();
-	KviKvsObject_groupbox::unregisterSelf();	
+	KviKvsObject_groupbox::unregisterSelf();
 	KviKvsObject_dialog::unregisterSelf();
 	KviKvsObject_checkbox::unregisterSelf();
 	KviKvsObject_textbrowser::unregisterSelf();
@@ -231,7 +231,7 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]object.disconnect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-	
+
 	KviKvsObject *obSrc;
 	KviKvsObject *obTrg;
 	QString szSignal,szSlot;
@@ -322,7 +322,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 		@seealso:
 			[doc:objects]objects documentation[/doc]
 	*/
-	
+
 	QString szClassName;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
@@ -380,7 +380,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<hash> objects.variables(<hobject>)
 	@description:
-		Returns an hash with the object's variables(useful only for debugging).			
+		Returns an hash with the object's variables(useful only for debugging).
 	@seealso:
 		[doc:objects]objects documentation[/doc]
 */
@@ -406,7 +406,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 
-	
+
 
 }
 /*
@@ -420,7 +420,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	@syntax:
 		<hash> objects.classAllHandlers(<class name:string>)
 	@description:
-		Returns an hash with the class's functions(useful only for debugging).			
+		Returns an hash with the class's functions(useful only for debugging).
 	@seealso:
 		[doc:objects]objects documentation[/doc]
 */
@@ -455,7 +455,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 
 static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 {
-	
+
 	/*
 		@doc: objects.classes
 		@title:
@@ -467,11 +467,11 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 		@syntax:
 			<array> $object.classes()
 		@description:
-			Returns an array with the user defined classes.			
+			Returns an array with the user defined classes.
 		@seealso:
 			[doc:objects]objects documentation[/doc]
 	*/
-	
+
 	KviKvsArray * pArry = new KviKvsArray();
 	c->returnValue()->setArray(pArry);
 	int uIdx=0;
@@ -492,8 +492,8 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	for(QStringList::Iterator it2 = sl.begin();it2 != sl.end();++it2)
 	{
 		QString szName=*it2;
-		szName.replace("--","::");		
-		if (szName!=".." && szName!=".") classdict->insert(szName.left(szName.length()-4),&bFake);	
+		szName.replace("--","::");
+		if (szName!=".." && szName!=".") classdict->insert(szName.left(szName.length()-4),&bFake);
 	}
 	KviKvsArray* pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
@@ -531,7 +531,7 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-	
+
 
 
 	KviKvsObject *obSrc;
@@ -579,7 +579,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		@description:
 			Copies a block of pixels from <source> to <destination> at the coordinates <x>,<y> .[br]
 			Source and destination must be a widget or pixmap.[br]
-		
+
 	*/
 
 	KviKvsObject *obSrc;
@@ -611,7 +611,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 
 	QImage  * imgSource=0;
 	QPaintDevice  * pdSource = 0;
-	
+
 	if(obSrc->inherits("KviKvsObject_pixmap")) pdSource =((KviKvsObject_pixmap *)obSrc)->getPixmap();
 	else if (obSrc->inherits("KviKvsObject_widget")) pdSource=((KviKvsObject_widget *)obSrc)->widget();
 	if (!pdSource)
@@ -653,13 +653,13 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		@short:
 			Blends two images  to a destination.
 		@syntax:
-			objects.blend <background: image hobject> <x_offset_bkg:unsigned integer> <y_offset_bkg:unsigned integer> 
-			<foreground: image hobject> <x_offset_fgr:unsigned integer> <y_offset_fgr:unsigned integer> 
+			objects.blend <background: image hobject> <x_offset_bkg:unsigned integer> <y_offset_bkg:unsigned integer>
+			<foreground: image hobject> <x_offset_fgr:unsigned integer> <y_offset_fgr:unsigned integer>
 			<destination: image, pixmap. widget hobject> <x_offset_dest:unsigned integer> <y_offset_dest:unsigned integer> <width:unsigned integer> <height:unsigned integer> <blend_factor>
 		@description:
 			Blends two images <background> and <foreground> and copy the result to <destination> at the coordinates <x_offset>,<y_offset> with a <blend_factor> value .[br]
 			Destination must be a widget or pixmap.[br]
-		
+
 	*/
 
 static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
@@ -691,12 +691,12 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 
 		KVSO_PARAMETER("blend_value",KVS_PT_REAL,0,dBlend)
 
-	
+
 
 	KVSO_PARAMETERS_END(c)
 
 	obFor=KviKvsKernel::instance()->objectController()->lookupObject(hFo);
-	
+
 
 	obBck=KviKvsKernel::instance()->objectController()->lookupObject(hBk);
 	obDest=KviKvsKernel::instance()->objectController()->lookupObject(hDest);
@@ -715,7 +715,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	QPaintDevice  * pdDest = 0;
 	if(obDest->inherits("KviKvsObject_pixmap")) pdDest = ((KviKvsObject_pixmap *)obDest)->getPixmap();
 	else if (obDest->inherits("KviKvsObject_widget")) pdDest=((KviKvsObject_widget *)obDest)->widget();
-	
+
 	if (!pdDest)
 	{
 		c->warning(__tr2qs("Widget or Pixmap required "));
@@ -754,8 +754,8 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		int a=0;
 		while(dst < end)
 		{
-			
-	
+
+
 			*dst = qRgba(
 				(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dBlend)),
 				(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dBlend)),
@@ -767,7 +767,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 			bkg++;
 			fgn++;
 		}
-		
+
 
 	}
 	QPainter p(pdDest);
@@ -789,14 +789,14 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	@title:
 			$objects.dump
 	@keyterms:
-		dump objects 
+		dump objects
 	@short:
 		Dump the kvirc widgets.
 	@syntax:
 		$objects.dump(<flag b>)
 	@description:
 		This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
-		will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br] 
+		will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br]
 		ES:
 		%A[]=$str.split("\|",$objects.dump(0))
 		%i=0
@@ -814,7 +814,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	KVSO_PARAMETERS_END(cmd)
 	if (bFlag) cmd->window()->output(80, "Objects dump:");
 		QWidgetList list = g_pApp->topLevelWidgets();
-	
+
 	KviStr spacing = ">";
 	QString  szTemp;
 	KviKvsArray * n = new KviKvsArray();
@@ -827,7 +827,7 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
 				list.at(i),
-				KVI_TEXT_BOLD, list.at(i)->objectName(), KVI_TEXT_BOLD,
+				KVI_TEXT_BOLD, list.at(i)->objectName().data(), KVI_TEXT_BOLD,
 				list.at(i)->metaObject()->className(),
 				list.at(i)->isVisible() ? "visible" : "hidden",
 				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
@@ -842,9 +842,9 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			debug ("string %s",szTemp.latin1());
 			debug ("class %s",szClass.latin1());
 			debug ("Obj %s",szObj.latin1());
-	
+
 			idx++;
-	
+
 			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
 		}
 	//++it;
@@ -868,7 +868,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			{
 				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
 					spacing, list.at(i), KVI_TEXT_BOLD,
-					list.at(i)->objectName(), KVI_TEXT_BOLD, list.at(i)->metaObject()->className()
+					list.at(i)->objectName().data(), KVI_TEXT_BOLD, list.at(i)->metaObject()->className()
 				);
 			}
 			QString szClass=list.at(i)->metaObject()->className();
@@ -902,7 +902,7 @@ static bool objects_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"dump",objects_kvs_fnc_listObjects);
 	KVSM_REGISTER_FUNCTION(m,"variables",objects_kvs_fnc_variables);
 	KVSM_REGISTER_FUNCTION(m,"classAllHandlers",objects_kvs_fnc_classAllHandlers);
-	
+
 	// commands
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"connect",objects_kvs_cmd_connect);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);
@@ -930,7 +930,7 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_lineedit::registerSelf();
 	KviKvsObject_menubar::registerSelf();
 	KviKvsObject_workspace::registerSelf();
-	
+
 
 
 	KviKvsObject_combobox::registerSelf();
@@ -958,7 +958,7 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_socket::registerSelf();
 	KviKvsObject_process::registerSelf();
 
-	
+
 	return true;
 }
 
