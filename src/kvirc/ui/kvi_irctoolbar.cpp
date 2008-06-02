@@ -115,7 +115,7 @@ toolbar.define(default)
 
 void KviToolBarGraphicalApplet::mouseMoveEvent(QMouseEvent * e)
 {
-	if(e->state() & Qt::LeftButton)
+	if(e->modifiers() & Qt::LeftButton)
 	{
 		if(m_bResizeMode)
 		{
@@ -173,7 +173,8 @@ void KviToolBarGraphicalApplet::resizeMemBuffer()
 		if(uMaxW < a->width())uMaxW = a->width();
 		if(uMaxH < a->height())uMaxH = a->height();
 	}
-	g_pIccMemBuffer->resize(uMaxW,uMaxH);
+	delete g_pIccMemBuffer;
+	g_pIccMemBuffer=new QPixmap(uMaxW,uMaxH);
 }
 
 void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
@@ -203,10 +204,10 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
 	drawContents(&pa);
 
 	//Need to draw the sunken rect around the view now...
-	pa.setPen(colorGroup().dark());
+	pa.setPen(palette().dark().color());
 	pa.drawLine(0,0,width(),0);
 	pa.drawLine(0,0,0,width());
-	pa.setPen(colorGroup().light());
+	pa.setPen(palette().light().color());
 	pa.drawLine(1,height() - 1,width() - 1,height() - 1);
 	pa.drawLine(width() - 1,1,width() - 1,height());
 
@@ -225,10 +226,13 @@ void KviToolBarGraphicalApplet::resizeEvent(QResizeEvent *e)
 	unsigned int uBufferH = g_pIccMemBuffer->height();
 	unsigned int uW = width();
 	unsigned int uH = height();
-
 	if((uBufferW != uW) || (uBufferH != uH))
 	{
-		if((uBufferW < uW) && (uBufferH < uH))g_pIccMemBuffer->resize(uW,uH);
+		if((uBufferW < uW) && (uBufferH < uH)){
+				delete g_pIccMemBuffer;
+				g_pIccMemBuffer=new QPixmap(uW,uH);
+			//			g_pIccMemBuffer->resize(uW,uH);
+		}
 		else resizeMemBuffer();
 	}
 }
@@ -399,15 +403,15 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			serv += xxx;
 			serv += nick;
 			serv += QChar(']');
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,16,serv,serv.length());
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,16,serv);
 		} else {
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,16,serv,serv.length());
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,30,nick,nick.length());
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,16,serv);
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,30,nick);
 		}
 
 		p->setClipping(false);
 
-		QColor base = colorGroup().background();
+		QColor base = palette().background().color();
 		QColor cntx = KVI_OPTION_ICCOLOR(c->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
 		base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 			(base.blue() + cntx.blue()) >> 1);

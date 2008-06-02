@@ -91,7 +91,7 @@ KviFrame::KviFrame()
 {
 	g_pFrame = this;
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC))));
 
 	m_pWinList  = new KviPointerList<KviWindow>;
 	m_pWinList->setAutoDelete(false);
@@ -103,7 +103,8 @@ KviFrame::KviFrame()
 
 	m_pDockExtension = 0;
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("main_frame_splitter");
 //	m_pSplitter->setFrameShape(QFrame::NoFrame);
 
 	setCentralWidget(m_pSplitter);
@@ -155,7 +156,7 @@ KviFrame::KviFrame()
 
 	installAccelerators(this);
 
-	layout()->setResizeMode(QLayout::FreeResize);
+	layout()->setSizeConstraint(QLayout::SetNoConstraint);
 }
 
 KviFrame::~KviFrame()
@@ -1184,7 +1185,7 @@ void KviFrame::saveToolBarPositions()
 	g_pApp->getLocalKvircDirectory(szTemp,KviApp::Config,KVI_CONFIGFILE_TOOLBARS);
 
 	QFile f(szTemp);
-	if(f.open(IO_WriteOnly | IO_Truncate))
+	if(f.open(QIODevice::WriteOnly | QIODevice::Truncate))
 	{
 		f.write(saveState(1));
 	}
@@ -1199,7 +1200,7 @@ void KviFrame::restoreToolBarPositions()
 
 	bool bNeedDefaults = false;
 
-	if(f.open(IO_ReadOnly))
+	if(f.open(QIODevice::ReadOnly))
 	{
 		if(!restoreState(f.readAll(),1))
 			debug("Error while restoring toolbars position");
@@ -1232,7 +1233,7 @@ void KviFrame::createTaskBar()
 
 void KviFrame::recreateTaskBar()
 {
-	QString szOldClass = m_pTaskBar->className();
+	QString szOldClass = m_pTaskBar->metaObject()->className();
 
 	saveToolBarPositions();
 	KviWindow * w;
