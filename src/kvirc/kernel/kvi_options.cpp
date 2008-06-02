@@ -1035,7 +1035,7 @@ namespace KviTheme
 	
 		g_pApp->getGlobalKvircDirectory(szPicsPath,KviApp::Pics);
 		QDir d(szPicsPath);
-		QStringList sl = d.entryList("kvi_bigicon_*.png",QDir::Files);
+		QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"),QDir::Files);
 	
 		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
 		{

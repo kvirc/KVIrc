@@ -665,7 +665,7 @@ QTextCodec * KviApp::defaultTextCodec()
 	QTextCodec * c = 0;
 	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
 	{
-		c = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).latin1());
+		c = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
 		if(c)return c;
 	}
 	c = QTextCodec::codecForLocale();
@@ -1237,12 +1237,12 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		if(g_pShadedChildGlobalDesktopBackground)delete g_pShadedChildGlobalDesktopBackground;
 		g_pShadedParentGlobalDesktopBackground = new QPixmap();
 		g_pShadedChildGlobalDesktopBackground = new QPixmap();
-		QImage img = pix->convertToImage();
+		QImage img = pix->toImage();
 		// play with the fade factors
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) > 0)
 		{
-			g_pShadedParentGlobalDesktopBackground->convertFromImage(
+			g_pShadedParentGlobalDesktopBackground->fromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100),
 					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
@@ -1250,7 +1250,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) > 0)
 		{
-			g_pShadedChildGlobalDesktopBackground->convertFromImage(
+			g_pShadedChildGlobalDesktopBackground->fromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
 					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
@@ -1343,7 +1343,7 @@ void KviApp::updateApplicationFont()
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont))
 	{
 		if(font() != KVI_OPTION_FONT(KviOption_fontApplication))
-			setFont(KVI_OPTION_FONT(KviOption_fontApplication),true);
+			setFont(KVI_OPTION_FONT(KviOption_fontApplication));
 	}
 	// FIXME: #warning "And what if this option is turned off ?...a reboot only"
 }
@@ -1808,13 +1808,13 @@ static void merge_to_stringlist_option(const QString &item,int iOption,int iMaxE
 		{
 		// In the recent list, remove and put as first so more recent items
 		// are always first
-			it = KVI_OPTION_STRINGLIST(iOption).remove(it);
+			it = KVI_OPTION_STRINGLIST(iOption).erase(it);
 			--it;
 		}
 	}
 	while(KVI_OPTION_STRINGLIST(iOption).count() >= (unsigned int)iMaxEntries)
 	{
-		KVI_OPTION_STRINGLIST(iOption).remove(KVI_OPTION_STRINGLIST(iOption).fromLast());
+		KVI_OPTION_STRINGLIST(iOption).erase(KVI_OPTION_STRINGLIST(iOption).isEmpty()?KVI_OPTION_STRINGLIST(iOption).end():--KVI_OPTION_STRINGLIST(iOption).end());
 	}
 	KVI_OPTION_STRINGLIST(iOption).prepend(item);
 }

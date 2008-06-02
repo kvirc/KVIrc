@@ -151,7 +151,7 @@ KviIrcConnection::~KviIrcConnection()
 
 void KviIrcConnection::setEncoding(const QString &szEncoding)
 {
-	QTextCodec * c = KviLocale::codecForName(szEncoding.latin1());
+	QTextCodec * c = KviLocale::codecForName(szEncoding.toLatin1());
 	if(c == m_pTextCodec)return;
 	if(!c)
 	{
@@ -185,7 +185,7 @@ void KviIrcConnection::setupTextCodec()
 	m_pTextCodec = 0;
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
-		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->encoding().latin1());
+		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->encoding().toLatin1());
 		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().toUtf8().data());
 	}
 	if(!m_pTextCodec)
@@ -193,7 +193,7 @@ void KviIrcConnection::setupTextCodec()
 		// try the network
 		if(!m_pTarget->network()->encoding().isEmpty())
 		{
-			m_pTextCodec = KviLocale::codecForName(m_pTarget->network()->encoding().latin1());
+			m_pTextCodec = KviLocale::codecForName(m_pTarget->network()->encoding().toLatin1());
 			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().toUtf8().data());
 		}
 	}
@@ -601,7 +601,9 @@ void KviIrcConnection::delayedStartNotifyList()
 	if(m_pNotifyListTimer)delete m_pNotifyListTimer;
 	m_pNotifyListTimer = new QTimer();
 	connect(m_pNotifyListTimer,SIGNAL(timeout()),this,SLOT(restartNotifyList()));
-	m_pNotifyListTimer->start(15000,true);
+	m_pNotifyListTimer->setInterval(15000);
+	m_pNotifyListTimer->setSingleShot(true);
+	m_pNotifyListTimer->start();
 
 	// This delay is large enough to fire after the MOTD has been sent,
 	// even on the weirdest network.
@@ -861,7 +863,7 @@ void KviIrcConnection::loginToIrcServer()
 	KviIrcNetwork * pNet = target()->network();
 
 	// Username
-	pServer->m_szUser.stripWhiteSpace();
+	pServer->m_szUser.trimmed();
 	if(!pServer->m_szUser.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
@@ -877,7 +879,7 @@ void KviIrcConnection::loginToIrcServer()
 		}
 	}
 
-	pServer->m_szUser.stripWhiteSpace();
+	pServer->m_szUser.trimmed();
 	if(pServer->m_szUser.isEmpty())pServer->m_szUser = KVI_DEFAULT_USERNAME;
 
 	// For now this is the only we know
@@ -885,7 +887,7 @@ void KviIrcConnection::loginToIrcServer()
 	m_pServerInfo->setName(pServer->m_szHostname);
 
 	// Nick stuff
-	pServer->m_szNick.stripWhiteSpace();
+	pServer->m_szNick.trimmed();
 	if(pServer->m_pReconnectInfo)
 	{
 		if(!_OUTPUT_MUTE)
@@ -906,7 +908,7 @@ void KviIrcConnection::loginToIrcServer()
 			m_pUserInfo->setNickName(pNet->nickName());
 			m_pStateData->setLoginNickIndex(0);
 		} else {
-			KVI_OPTION_STRING(KviOption_stringNickname1).stripWhiteSpace();
+			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
 			m_pUserInfo->setNickName(KVI_OPTION_STRING(KviOption_stringNickname1));
@@ -915,7 +917,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	// Real name
-	pServer->m_szRealName.stripWhiteSpace();
+	pServer->m_szRealName.trimmed();
 	if(!pServer->m_szRealName.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
@@ -951,7 +953,7 @@ void KviIrcConnection::loginToIrcServer()
 	// first the PASS, then NICK and then USER
 
 	// The pass ?
-	pServer->m_szPass.stripWhiteSpace();
+	pServer->m_szPass.trimmed();
 	if(!pServer->m_szPass.isEmpty())
 	{
 		KviStr szHidden;
@@ -981,10 +983,10 @@ void KviIrcConnection::loginToIrcServer()
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
 		szGenderTag.append(KVI_TEXT_COLOR);
-		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false))
+		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
 		{
 			szGenderTag.append("1");
-		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false))
+		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive))
 		{
 			szGenderTag.append("2");
 		}
@@ -1017,16 +1019,16 @@ void KviIrcConnection::loginToIrcServer()
 		}
 	} // else buuug
 	
-	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",false)){
+	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive)){
 			e->setGender(KviIrcUserEntry::Male);
-	} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",false)){
+	} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive)){
 			e->setGender(KviIrcUserEntry::Female);
 	}
 
 	// on connect stuff ?
 
 	QString tmp = pNet->onConnectCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1035,7 +1037,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	tmp = pServer->onConnectCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1044,7 +1046,7 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	tmp = m_pUserIdentity->onConnectCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1116,7 +1118,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 
 	// on connect stuff ?
 	QString tmp = target()->network()->onLoginCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1125,7 +1127,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	}
 
 	tmp = target()->server()->onLoginCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1134,7 +1136,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	}
 
 	tmp = m_pUserIdentity->onLoginCommand();
-	tmp.stripWhiteSpace();
+	tmp.trimmed();
 	if(!tmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
@@ -1336,16 +1338,16 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 					{
 						// ok, sent the request for this channel
 						stateData()->setLastSentChannelWhoRequest(tNow);
-						QString szChanName = encodeText(pOldest->name());
+						QString szChanName = encodeText(pOldest->objectName().toLatin1());
 						if(_OUTPUT_PARANOIC)
 							console()->output(KVI_OUT_VERBOSE,__tr2qs("Updating away state for channel %Q"),&szChanName);
 						if(lagMeter())
 						{
-							KviStr tmp(KviStr::Format,"WHO %s",pOldest->name());
+							KviStr tmp(KviStr::Format,"WHO %s",pOldest->objectName().toLatin1());
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();
-						if(!sendFmtData("WHO %s",encodeText(QString(pOldest->name())).data()))return;
+						if(!sendFmtData("WHO %s",encodeText(QString(pOldest->objectName().toLatin1())).data()))return;
 					}
 				}
 			}
