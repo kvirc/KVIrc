@@ -643,7 +643,8 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("dcc_window_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
 
 	m_pHBox = new KviTalHBox(this);
@@ -681,12 +682,12 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 
 	m_pTalkButton = new KviStyledToolButton(m_pHBox);
 	m_pTalkButton->setEnabled(false);
-	m_pTalkButton->setToggleButton(true);
+	m_pTalkButton->setCheckable(true);
 	QIcon iset;
 	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),QIcon::Normal,QIcon::Off);
 	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)),QIcon::Normal,QIcon::On);
 	m_pTalkButton->setIcon(iset);
-	m_pTalkButton->setUsesBigPixmap(true);
+	m_pTalkButton->setIconSize(QSize(32,32));
 	connect(m_pTalkButton,SIGNAL(toggled(bool)),this,SLOT(startOrStopTalking(bool)));
 
 	m_pHBox->setStretchFactor(vbox,1);
@@ -789,9 +790,9 @@ void KviDccVoice::fillCaptionBuffers()
 	m_szPlainTextCaption = tmp;
 
 	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),tmp.ptr());
 	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),tmp.ptr());
 }
 
 QPixmap * KviDccVoice::myIconPtr()
@@ -894,7 +895,7 @@ void KviDccVoice::handleMarshalError(int err)
 	QString ssss = KviError::getDescription(err);
 	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&ssss);
 	m_pTalkButton->setEnabled(false);
-	m_pTalkButton->setOn(false);
+	m_pTalkButton->setChecked(false);
 	m_pRecordingLabel->setEnabled(false);
 	m_pPlayingLabel->setEnabled(false);
 }

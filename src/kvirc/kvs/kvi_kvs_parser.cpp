@@ -2867,12 +2867,12 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 			if(bLong)
 				sw->addLong(QString(pSw,pSwEnd - pSw),p);
 			else
-				sw->addShort(pSw->lower().unicode(),p);
+				sw->addShort(pSw->toLower().unicode(),p);
 		} else {
 			if(bLong)
 				sw->addLong(QString(pSw,pSwEnd - pSw),new KviKvsTreeNodeConstantData(KVSP_curCharPointer,new KviKvsVariant(true))); // empty param
 			else
-				sw->addShort(pSw->lower().unicode(),new KviKvsTreeNodeConstantData(KVSP_curCharPointer,new KviKvsVariant(true))); // empty param
+				sw->addShort(pSw->toLower().unicode(),new KviKvsTreeNodeConstantData(KVSP_curCharPointer,new KviKvsVariant(true))); // empty param
 		}
 	}
 

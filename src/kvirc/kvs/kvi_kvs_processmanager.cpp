@@ -68,7 +68,7 @@ bool KviKvsProcessAsyncOperation::start()
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_NOSHELL)
 	{
-		args = QStringList::split(" ",m_pData->szCommandline);
+		args = m_pData->szCommandline.split(" ",QString::SkipEmptyParts);
 	} else {
 		QString szShell = m_pData->szShell;
 		if(szShell.isEmpty())
@@ -87,7 +87,7 @@ bool KviKvsProcessAsyncOperation::start()
 			szShell = "sh -c";
 #endif
 		}
-		args = QStringList::split(" ",szShell);
+		args = szShell.split(" ",QString::SkipEmptyParts);
 		args.append(m_pData->szCommandline);
 	}
 

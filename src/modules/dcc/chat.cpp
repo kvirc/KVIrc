@@ -87,7 +87,8 @@ extern KviDccBroker * g_pDccBroker;
 KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCCHAT,pFrm,name,dcc)
 {
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter->setObjectName("top_splitter");
 	KviThemedLabel * dummy;
 	dummy = new KviThemedLabel(m_pTopSplitter,"dummy_label");
 	KviTalVBox * box = new KviTalVBox(m_pTopSplitter);
@@ -275,9 +276,9 @@ void KviDccChat::fillCaptionBuffers()
 	m_szPlainTextCaption = tmp;
 
 	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),tmp.toUtf8().data());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),tmp.toUtf8().data());
 	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),tmp.toUtf8().data());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),tmp.toUtf8().data());
 }
 
 QPixmap * KviDccChat::myIconPtr()

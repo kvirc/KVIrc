@@ -1222,15 +1222,17 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 
 	bool bGlobal = szF.indexOf('g',Qt::CaseInsensitive) != -1;
 
-	QRegExp re(szL,szF.find('i',Qt::CaseInsensitive) == -1,szF.find('w',Qt::CaseInsensitive) != -1);
-	re.setMinimal(szF.find('m',Qt::CaseInsensitive) != -1); // greedy or minimal ?
+	//QRegExp re(szL,szF.indexOf('i',Qt::CaseInsensitive) == -1,szF.indexOf('w',Qt::CaseInsensitive) != -1);
+	QRegExp re(szL,szF.indexOf('i',Qt::CaseInsensitive) == -1?Qt::CaseSensitive:Qt::CaseInsensitive,szF.indexOf('w',Qt::CaseInsensitive) != -1?QRegExp::Wildcard:QRegExp::RegExp);
+
+	re.setMinimal(szF.indexOf('m',Qt::CaseInsensitive) != -1); // greedy or minimal ?
 
 	int idx = 0;
 
 	while((!str.isEmpty()) && (idx != -1))
 	{
 		int len;
-		idx = re.search(str,idx);
+		idx = re.indexIn(str,idx);
 		if(idx != -1)
 		{
 			len = re.matchedLength();

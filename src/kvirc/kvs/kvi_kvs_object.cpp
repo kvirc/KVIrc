@@ -1388,7 +1388,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setString(v.toString());
 		break;
 		case QVariant::ByteArray:
-			c->returnValue()->setString(QString::fromUtf8(v.toCString().data()));
+			c->returnValue()->setString(QString::fromUtf8(v.toByteArray().data()));
 		break;
 		case QVariant::Point:
 		{
@@ -1661,13 +1661,13 @@ KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szN
 			// any class matches
 			if(szName.isEmpty())return o; // any name matches
 			// name must match
-			if(KviQString::equalCI(szName,o->name()))return o;
+			if(KviQString::equalCI(szName,o->objectName()))return o;
 		} else {
 			if(KviQString::equalCI(szClass,o->getClass()->name()))
 			{
 				if(szName.isEmpty())return o; // any name matches
 				// name must match
-				if(KviQString::equalCI(szName,o->name()))return o;
+				if(KviQString::equalCI(szName,o->objectName()))return o;
 			}
 		}
 		KviKvsObject * c = o->findChild(szClass,szName);

@@ -383,7 +383,7 @@ try_again:
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		QStringList slChans = QStringList::split(",",szChans);
+		QStringList slChans = szChans.split(",",QString::SkipEmptyParts);
 
 		QString szChanTypes = KVSCSC_pConnection->serverInfo()->supportedChannelTypes();
 		for(QStringList::Iterator it=slChans.begin();it != slChans.end();++it)

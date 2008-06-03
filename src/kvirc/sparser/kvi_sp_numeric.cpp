@@ -75,7 +75,7 @@ void KviServerParser::parseNumeric001(KviIrcMessage *msg)
 	// FIXME: #warning "SET THE USERMASK FROM SERVER"
 	QString szText = msg->connection()->decodeText(msg->safeTrailing());
 	QRegExp rx( " ([^ ]+)!([^ ]+)@([^ ]+)$" );
-	if( rx.search(szText) != -1)
+	if( rx.indexIn(szText) != -1)
 	{
 		msg->connection()->userInfo()->setUnmaskedHostName(rx.cap(3));
 		msg->connection()->userInfo()->setNickName(rx.cap(1));

@@ -166,8 +166,8 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelMatch::execute(KviKvsRunTimeContext 
 	QString reg;
 	v.asString(reg);
 
-	QRegExp rx(reg,false,true);
-
+	//QRegExp rx(reg,false,true);
+	QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::Wildcard);
 	QString val;
 	pRealParameter->asString(val);
 
@@ -218,8 +218,8 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::execute(KviKvsRunTimeContext
 	QString reg;
 	v.asString(reg);
 
-	QRegExp rx(reg,false,false);
-
+//	QRegExp rx(reg,false,false);
+	QRegExp rx(reg,Qt::CaseInsensitive,QRegExp::RegExp);
 	QString val;
 	pRealParameter->asString(val);
 

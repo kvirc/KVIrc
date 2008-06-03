@@ -133,7 +133,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 		// perl.begin has a *really* half special parsing routine
 		if(iIdentifierLen == 4)
 		{
-			if(pIdentifier->lower().unicode() == 'p')
+			if(pIdentifier->toLower().unicode() == 'p')
 			{
 				if(KviQString::equalCI(szIdentifier,"perl"))
 				{

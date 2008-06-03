@@ -396,7 +396,7 @@ KviKvsPopupMenuItemMenu::~KviKvsPopupMenuItemMenu()
 
 KviKvsPopupMenuItem * KviKvsPopupMenuItemMenu::clone() const
 {
-	KviKvsPopupMenu * copy = new KviKvsPopupMenu(m_pMenu->name());
+	KviKvsPopupMenu * copy = new KviKvsPopupMenu(m_pMenu->objectName().toLatin1());
 	copy->copyFrom(m_pMenu);
 	return new KviKvsPopupMenuItemMenu(m_szItemName,copy,m_pKvsText,m_pKvsIcon,m_pKvsCondition);
 }
@@ -1203,7 +1203,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 
 void KviKvsPopupMenu::generateDefPopup(QString &buffer)
 {
-	KviQString::sprintf(buffer,"defpopup(%s)\n",name());
+	KviQString::sprintf(buffer,"defpopup(%s)\n",objectName().toLatin1());
 	QString core;
 
 	generateDefPopupCore(core);

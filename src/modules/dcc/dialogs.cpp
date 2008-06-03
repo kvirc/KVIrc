@@ -33,6 +33,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QShowEvent>
+#include <QIcon>
 
 KviDccBox::KviDccBox(KviDccBroker * br,KviDccDescriptor * dcc)
 {
@@ -53,8 +54,9 @@ void KviDccBox::forgetDescriptor()
 }
 
 KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const QString &text,const QString &capt)
-: QWidget(0,"dcc_accept_box") , KviDccBox(br,dcc)
+: QWidget(0) , KviDccBox(br,dcc)
 {
+	setObjectName("dcc_accept_box");
 	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QLabel * l = new QLabel(text,this);
 	l->setWordWrap(true);
@@ -71,10 +73,10 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	connect(btn,SIGNAL(clicked()),this,SLOT(rejectClicked()));
 	hb->addWidget(btn);
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG))));
 	setWindowTitle(capt);
 
-	l->setActiveWindow();
+	l->activateWindow();
 	l->setFocus();
 }
 
@@ -113,8 +115,9 @@ void KviDccAcceptBox::showEvent(QShowEvent *e)
 
 
 KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const QString &text,bool bDisableResume)
-: QWidget(0,"dcc_rename_box") , KviDccBox(br,dcc)
+: QWidget(0) , KviDccBox(br,dcc)
 {
+	setObjectName("dcc_rename_box");
 	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QLabel * l = new QLabel(text,this);
 	l->setWordWrap(true);
@@ -142,7 +145,7 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	btn->setDefault(true);
 	//btn->setFocus();
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG)));
+	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG))));
 	setWindowTitle(__tr2qs_ctx("File Already Exists - KVIrc","dcc"));
 }
 

@@ -35,8 +35,9 @@
 
 
 KviDccMarshal::KviDccMarshal(KviDccMarshalOutputContext * ctx)
-: QObject(0,"dcc_marshal")
+: QObject(0)
 {
+	setObjectName("dcc_marshal");
 	m_pSn                   = 0;
 	m_fd                    = KVI_INVALID_SOCKET;
 	m_pTimeoutTimer         = 0;
@@ -121,7 +122,9 @@ int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTime
 	if(m_pTimeoutTimer)delete m_pTimeoutTimer;
 	m_pTimeoutTimer = new QTimer();
 	connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(doListen()));
-	m_pTimeoutTimer->start(100,true);
+//	m_pTimeoutTimer->start(100,true);
+	m_pTimeoutTimer->setInterval(199);
+	m_pTimeoutTimer->setSingleShot(true);
 
 	return KviError_success;
 }
@@ -284,7 +287,9 @@ void KviDccMarshal::doListen()
 	{
 		m_pTimeoutTimer = new QTimer();
 		connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
-		m_pTimeoutTimer->start(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000,true);
+		//m_pTimeoutTimer->start(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000,true);
+		m_pTimeoutTimer->setInterval(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000);
+		m_pTimeoutTimer->setSingleShot(true);
 	}
 	// and wait for connect
 
@@ -309,8 +314,9 @@ int KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout
 	if(m_pTimeoutTimer)delete m_pTimeoutTimer;
 	m_pTimeoutTimer = new QTimer();
 	connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(doConnect()));
-	m_pTimeoutTimer->start(100,true);
-
+//	m_pTimeoutTimer->start(100,true);
+	m_pTimeoutTimer->setInterval(100);
+	m_pTimeoutTimer->setSingleShot(true);
 	return KviError_success;
 }
 

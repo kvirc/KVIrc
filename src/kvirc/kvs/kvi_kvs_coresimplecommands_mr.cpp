@@ -619,7 +619,7 @@ namespace KviKvsCoreSimpleCommands
 				if(QString * pszPath = KVSCSC_pContext->scriptFilePath())
 				{
 					QFileInfo inf2(*pszPath);
-					QString szCheckFileName = inf2.dirPath();
+					QString szCheckFileName = inf2.path();
 					KviQString::ensureLastCharIs(szCheckFileName,KVI_PATH_SEPARATOR_CHAR);
 					szCheckFileName += szFileName;
 					if(KviFileUtils::fileExists(szCheckFileName))
@@ -629,7 +629,7 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		QFileInfo infz(szFileName);
-		szFileName = infz.absFilePath();
+		szFileName = infz.absoluteFilePath();
 
 		QString szBuffer;
 		if(!KviFileUtils::loadFile(szFileName,szBuffer,true)) // <-- scripts SHOULD be shipped in utf8 format
@@ -719,7 +719,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
-		QStringList sl = QStringList::split(",",szChans);
+		QStringList sl = szChans.split(",",QString::SkipEmptyParts);
 	
 		if(!szMsg.isEmpty())
 		{
@@ -1004,7 +1004,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviQuery * query;
 		
-		QStringList sl = QStringList::split(",",szTargets);
+		QStringList sl = szTargets.split(",",QString::SkipEmptyParts);
 		for(QStringList::Iterator it = sl.begin();it != sl.end();it++)
 		{
 			QString szNick = *it;
@@ -1135,7 +1135,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_pWindow->frame()->raise();
 		//KVSCSC_pWindow->frame()->setActiveWindow();
 		//KVSCSC_pWindow->frame()->setFocus();
-		((KviTalMainWindow *)KVSCSC_pWindow->frame())->setActiveWindow();
+		((KviTalMainWindow *)KVSCSC_pWindow->frame())->activateWindow();
 		return true;
 	}
 

@@ -631,7 +631,7 @@ void KviKvsVariant::dump(const char * prefix) const
 	}
 	switch(m_pData->m_eType)
 	{
-		case KviKvsVariantData::String: debug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->utf8().data(),this); break;
+		case KviKvsVariantData::String: debug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->toUtf8().data(),this); break;
 		case KviKvsVariantData::Array: debug("%s Array(ptr=0x%lx) [this=0x%lx]",prefix,m_pData->m_u.pArray,this); break;
 		case KviKvsVariantData::Hash: debug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",prefix,m_pData->m_u.pHash,m_pData->m_u.pHash->dict(),this); break;
 		case KviKvsVariantData::Integer:  debug("%s Integer(%d) [this=0x%lx]",prefix,m_pData->m_u.iInteger,this); break;
