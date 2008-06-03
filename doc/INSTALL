@@ -85,6 +85,9 @@ General notes for the installation of the 4.0 release of KVIrc
         Compiles the executable with debug symbols.
         Useful to report bugs.
 
+    -DVERBOSE
+        Generate verbose output when compiling.
+
     -DCMAKE_INSTALL_PREFIX=/path
         It will install all stuff under /path directory
 

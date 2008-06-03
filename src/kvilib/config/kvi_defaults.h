@@ -47,7 +47,7 @@
 #define KVI_DEFAULT_NICKNAME3 "_newbie_"
 #define KVI_DEFAULT_NICKNAME4 "newbie4"
 #define KVI_DEFAULT_USERNAME "kvirc"
-#define KVI_DEFAULT_REALNAME "KVIrc " VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net/"
+#define KVI_DEFAULT_REALNAME "KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net/"
 
 #define KVI_DEFAULT_PART_MESSAGE "No matter how dark the night, somehow the Sun rises once again"
 #define KVI_DEFAULT_QUIT_MESSAGE "KVIrc $version $version(r) http://www.kvirc.net/"

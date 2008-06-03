@@ -69,9 +69,6 @@ ENDIF()
 # Set var to link with, for later use
 SET(LIBS)
 
-# Set verbose makefiles
-SET(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "Generate verbose Makefiles")
-
 # Install path
 IF(UNIX)
 	IF(APPLE)
@@ -107,7 +104,26 @@ IF(WANT_DEBUG)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
 ELSE()
 	SET(CMAKE_BUILD_TYPE Release)
-	SET(CMAKE_STATUS_DEBUG_SUPPORT "user disabled")
+	SET(CMAKE_STATUS_DEBUG_SUPPORT "no")
+ENDIF()
+
+
+###############################################################################
+#
+# Verbose Makefile
+#
+###############################################################################
+
+OPTION(WANT_VERBOSE "Generate verbose Makefiles" OFF)
+IF(VERBOSE)
+	SET(WANT_VERBOSE ON)
+ENDIF()
+IF(WANT_VERBOSE)
+	SET(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "Generate verbose Makefiles")
+	SET(CMAKE_STATUS_VERBOSE_SUPPORT "yes")
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS VERBOSE)
+ELSE()
+	SET(CMAKE_STATUS_VERBOSE_SUPPORT "no")
 ENDIF()
 
 
@@ -818,6 +834,7 @@ IF(${CONFIG_IS_UPTODATE})
 ENDIF()
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
+MESSAGE(STATUS "  Verbose Output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 MESSAGE(STATUS "  Coexistence Support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
 MESSAGE(STATUS "  Threading Support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
 MESSAGE(STATUS "  X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")

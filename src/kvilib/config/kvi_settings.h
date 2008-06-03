@@ -39,7 +39,7 @@
 
 	#define FEEL_LIKE_I_AM_COMPILING_UNDER_WINDOZE
 	#define COMPILE_ON_WINDOWS
-      
+
 	// Windows has no config.h
 
 	#include "kvi_wincfg.h"
@@ -58,23 +58,23 @@
 #else
 	#ifdef MINGW
 		#define COMPILE_ON_MINGW
-                #define COMPILE_NO_X
-                #define COMPILE_WITH_SYSTEM_MEMMOVE
-                
-                #ifdef __KVILIB__
-                        #define KVILIB_API __declspec(dllexport)
-                #else
-                        #define KVILIB_API __declspec(dllimport)
-                #endif
-        
-                #ifdef __KVIRC__
-                        #define KVIRC_API __declspec(dllexport)
-                #else
-                        #define KVIRC_API __declspec(dllimport)
-                #endif
-        #else
-                #define KVILIB_API
-                #define KVIRC_API
+		#define COMPILE_NO_X
+		#define COMPILE_WITH_SYSTEM_MEMMOVE
+
+		#ifdef __KVILIB__
+			#define KVILIB_API __declspec(dllexport)
+		#else
+			#define KVILIB_API __declspec(dllimport)
+		#endif
+	
+		#ifdef __KVIRC__
+			#define KVIRC_API __declspec(dllexport)
+		#else
+			#define KVIRC_API __declspec(dllimport)
+		#endif
+	#else
+		#define KVILIB_API
+		#define KVIRC_API
 	#endif
 
 	#ifdef Q_OS_MACX
@@ -86,26 +86,8 @@
 		// include the last configuration
 		#include "kvi_configstatus.h"
 	#else
-		#ifdef HAVE_CONFIG_H
-			#include "config.h"
-			// temporary fix
-			#ifndef COMPILE_NO_X
-				#ifndef COMPILE_X11_SUPPORT
-					#define COMPILE_X11_SUPPORT
-				#endif
-			#endif
-
-			#ifndef VERSION
-				#define VERSION "?.?.?"
-			#endif
-
-		#else
-			// assume CMake build system
-			#include "kvi_sysconfig.h"
-
-			#define VERSION KVIRC_VERSION_RELEASE
-			#define VERSION_BRANCH KVIRC_VERSION_BRANCH
-		#endif
+		// assume CMake build system
+		#include "kvi_sysconfig.h"
 	#endif
 
 #endif
@@ -115,23 +97,23 @@
 	#define COMPILE_USE_QT4
 #endif
 
-#define KVI_VERSION VERSION
-#define KVI_VERSION_BRANCH VERSION_BRANCH
+#define KVI_VERSION KVIRC_VERSION_RELEASE
+#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
 
 #define KVI_RELEASE_NAME "Insomnia"
 
 #ifndef COMPILE_ON_WINDOWS
-/* HACK: this is an hack to get dynamic labels while porting.
-         this line MUST be removed when the new Qt4 implementation
-         is working
-*/
-#define COMPILE_USE_DYNAMIC_LABELS
-#endif 
+	/* HACK: this is an hack to get dynamic labels while porting.
+		this line MUST be removed when the new Qt4 implementation
+		is working
+	*/
+	#define COMPILE_USE_DYNAMIC_LABELS
+#endif
+
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE
 	#define _GNU_SOURCE
 #endif
-
 
 #if defined(__GNUC__)
 	// gcc
