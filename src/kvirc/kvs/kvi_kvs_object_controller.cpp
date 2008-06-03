@@ -171,7 +171,7 @@ void KviKvsObjectController::flushUserClasses()
 				if(c->save(szPath))
 					c->clearDirtyFlag();
 				else
-					debug("Oops.. failed to save the object class %s",c->name().toLatin1());
+					debug("Oops.. failed to save the object class %s",c->name().toLatin1().data());
 			}
 		}
 		++it;

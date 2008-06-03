@@ -593,7 +593,7 @@ KviKvsPopupMenuTopLevelData * KviKvsPopupMenu::topLevelData()
 bool KviKvsPopupMenu::removeItemByName(const QString &szItemName,bool bRecursive)
 {
 	KviKvsScript * se;
-	
+
 	for(se = m_pEpilogues->first();se;se = m_pEpilogues->next())
 	{
 		if(KviQString::equalCI(szItemName,se->name()))
@@ -635,7 +635,7 @@ bool KviKvsPopupMenu::removeItemByName(const QString &szItemName,bool bRecursive
 			}
 		}
 	}
-	
+
 	return false;
 }
 
@@ -950,11 +950,11 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 	{
 		QString pre;
 		KviQString::sprintf(pre,"%Q_%d",&prefix,idx);
-		
+
 		KviQString::sprintf(tmp,"%Q_Id",&pre);
 		QString itemName = cfg->readQStringEntry(tmp,QString::null);
 		KviQString::sprintf(tmp,"%Q_Type",&pre);
-		
+
 		int type = cfg->readIntEntry(tmp,3);
 		switch(type)
 		{
@@ -1099,14 +1099,14 @@ void KviKvsPopupMenu::save(const QString & prefix,KviConfig * cfg)
 			KviQString::sprintf(tmp,"%Q_Icon",&pre);
 			cfg->writeEntry(tmp,s->code());
 		}
-		
+
 		s = it->kvsText();
 		if(s)
 		{
 			KviQString::sprintf(tmp,"%Q_Text",&pre);
 			cfg->writeEntry(tmp,s->code());
 		}
-		
+
 		s = it->kvsCode();
 		if(s)
 		{
@@ -1135,7 +1135,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 	buffer = "";
 
 	KviKvsScript * s;
-	
+
 	for(s = m_pPrologues->first();s;s = m_pPrologues->next())
 	{
 		buffer.append("prologue\n");
@@ -1203,7 +1203,7 @@ void KviKvsPopupMenu::generateDefPopupCore(QString &buffer)
 
 void KviKvsPopupMenu::generateDefPopup(QString &buffer)
 {
-	KviQString::sprintf(buffer,"defpopup(%s)\n",objectName().toLatin1());
+	KviQString::sprintf(buffer,"defpopup(%s)\n",objectName().toLatin1().data());
 	QString core;
 
 	generateDefPopupCore(core);

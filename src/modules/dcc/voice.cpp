@@ -412,7 +412,7 @@ bool KviDccVoiceThread::soundStep()
 				m_iLastSignalBufferSize = m_inSignalBuffer.size();
 			} else {
 				// have stuff to play , but it's not enough to fill the pre-buffer
-				// 
+				//
 				struct timeval tv;
 				gettimeofday(&tv,0);
 
@@ -656,14 +656,14 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pOutputLabel = new QLabel(__tr2qs_ctx("Output buffer","dcc"),vbox);
 	m_pOutputLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	vbox->setSpacing(1);
-	
+
 	KviTalVBox * vbox2 = new KviTalVBox(m_pHBox);
 
 	m_pRecordingLabel = new QLabel(vbox2);
 	m_pRecordingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RECORD)));
 	m_pRecordingLabel->setEnabled(false);
 	m_pRecordingLabel->setFrameStyle(QFrame::Raised | QFrame::Panel);
-	
+
 	m_pPlayingLabel = new QLabel(vbox2);
 	m_pPlayingLabel->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PLAY)));
 	m_pPlayingLabel->setEnabled(false);
@@ -746,7 +746,7 @@ void KviDccVoice::connectionInProgress()
 	{
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Contacting host %Q on port %Q","dcc"),&(m_pDescriptor->szIp),&(m_pDescriptor->szPort));
 	} else {
-		
+
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Listening on interface %Q port %Q","dcc"),
 			&(m_pMarshal->localIp()),&(m_pMarshal->localPort()));
 
@@ -790,9 +790,9 @@ void KviDccVoice::fillCaptionBuffers()
 	m_szPlainTextCaption = tmp;
 
 	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),tmp.ptr());
 	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),tmp.ptr());
 }
 
 QPixmap * KviDccVoice::myIconPtr()

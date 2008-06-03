@@ -47,13 +47,19 @@ void KviTalIconAndRichTextItemDelegate::paint( QPainter * painter, const QStyleO
 	QStyle::State state=option.state;
 	QRect rect=option.rect;
 	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-	QIcon ico=QIcon(value.value<QIcon>());
-	if (ico.isNull())
+	QIcon ico;
+	if(value.canConvert<QIcon>())
 	{
-		if (m_pDefaultPix) painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
-	}
-	else
+		ico= QIcon(value.value<QIcon>());
+		if (ico.isNull())
+		{
+			if (m_pDefaultPix) painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
+		} else {
+			painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
+		}
+	} else {
 		painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
+	}
 	QTextDocument doc;
 	doc.setHtml( text );
 	doc.setDefaultFont(painter->font());

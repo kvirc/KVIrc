@@ -189,7 +189,7 @@ void KviDccChat::connectionInProgress()
 				ip = m_pDescriptor->szFakeIp;
 			} else {
 				ip = m_pDescriptor->szListenIp;
-	
+
 				if(KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable))
 				{
 					if(!kvi_isRoutableIpString(ip.ptr()))
@@ -220,7 +220,7 @@ void KviDccChat::connectionInProgress()
 
 			QString szReq = QString("PRIVMSG %1 :%2DCC %3 chat %4 %5").arg(m_pDescriptor->szNick).arg((char)0x01).arg(m_pDescriptor->szType).arg(ip.ptr()).arg(port);
 
-			if(m_pDescriptor->isZeroPortRequest())	
+			if(m_pDescriptor->isZeroPortRequest())
 			{
 				szReq.append(" ");
 				szReq+=m_pDescriptor->zeroPortRequestTag();
@@ -276,9 +276,9 @@ void KviDccChat::fillCaptionBuffers()
 	m_szPlainTextCaption = tmp;
 
 	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii(),tmp.toUtf8().data());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),tmp.toUtf8().data());
 	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii(),tmp.toUtf8().data());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),tmp.toUtf8().data());
 }
 
 QPixmap * KviDccChat::myIconPtr()
@@ -298,11 +298,11 @@ void KviDccChat::ownMessage(const QString &text)
 		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
 		return;
 	}
-	
+
 	KviQCString szData = encodeText(text);
 	const char * d = szData.data();
 	if(!d)return;
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
@@ -435,7 +435,7 @@ bool KviDccChat::event(QEvent *e)
 									delete encoded;
 									return true;
 								break;
-								
+
 								default: // also case KviCryptEngine::DecryptError
 								{
 									QString szErr = cinf->pEngine->lastError();
@@ -500,7 +500,7 @@ void KviDccChat::connected()
 	}
 
 	updateCaption();
-	
+
 	m_pSlaveThread = new KviDccChatThread(this,m_pMarshal->releaseSocket());
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL * s = m_pMarshal->releaseSSL();
