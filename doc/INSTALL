@@ -1,4 +1,4 @@
-Szymon Stefanek                                                 Fri Apr 18 2008
+Elvio Basello (HelLViS69)                                       Tue Jun 03 2008
 ###############################################################################
 General notes for the installation of the 4.0 release of KVIrc
 ###############################################################################
@@ -14,16 +14,18 @@ General notes for the installation of the 4.0 release of KVIrc
     2. Minimal requirements
     3. Configuring the environment
     4. Interactive mode
-    5. Hacker-level installation
-    6. Creating a KVIrc package
+    5. Compiling
+    6. Compiling on MacOS X
+    7. Hacker-level installation
+    8. Creating a KVIrc package
+
 
 
 /*
     old autotools doc. remove when cmake stuff is complete
-    5. Human (detailed) installation instructions
-    6. How to compile KVIrc with Qt-embedded
-    7. Compiling KVIrc on Mac OS X
-    8. A note about Windows 95/98/ME
+    i. Human (detailed) installation instructions
+    ii. How to compile KVIrc with Qt-embedded
+    iii. A note about Windows 95/98/ME
 */
 
 ###############################################################################
@@ -50,8 +52,214 @@ General notes for the installation of the 4.0 release of KVIrc
     In order to compile KVIrc 4.0 you need at least these softwares:
     - Qt GUI Toolkit 4.3.4 - http://www.trolltech.com
     - CMake 2.4.6 - http://www.cmake.org
-    - C++ compiler, such as g++ - http://gcc.gnu.org/
-    - Perl - http://www.perl.com
+    - C++ compiler, such as g++ - http://gcc.gnu.org
+    - Pthread implementation
+    - KDE (Optional) - http://www.kde.org
+    - GNU gettext (Optional) - http://www.gnu.org/software/gettext
+    - Perl (Optional) - http://www.perl.com
+    - OpenSSL (Optional) - http://www.openssl.org
+
+    #
+    # Qt GUI Toolkit
+    #
+
+    If your distro has KDE installed then Qt is already installed. If not, simply
+    install qt4 from your distro's repositories.
+
+    So before running cmake make sure that the environment variable $QTDIR
+    points to the right location. This will help in finding the correct version
+    of Qt.
+
+    You might eventually set it with the command:
+
+    # export QTDIR="your qt dir"
+
+    On my system qt is installed in /usr/lib/qt4 so I actually execute
+
+    # export QTDIR=/usr/lib/qt4
+
+    To check you have the right version of Qt, simply run:
+
+    # qmake -v
+
+    On my system the output is:
+
+    # QMake version 2.01a
+    # Using Qt version 4.3.4 in /usr/lib/qt4/lib
+
+
+    #
+    # CMake
+    #
+
+    This is usually included in the last distros.
+    To check which cmake you have, simply run:
+
+    # cmake --version
+
+    On my system the ouput is:
+
+    # cmake version 2.4-patch 8
+
+
+    #
+    # C++ compiler
+    #
+
+    You need a decent C++ compiler. Usually under linux it is gcc from GNU tools.
+    It is preferred to use gcc 4.x, but gcc 3.4.6 works as well. Older version
+    *might* work.
+    To check your gcc version, just run:
+
+    # gcc -v
+
+    The output on my system is:
+
+    # Reading specs from /usr/lib/gcc/i486-slackware-linux/4.2.3/specs
+    # Target: i486-slackware-linux
+    # Configured with: ../gcc-4.2.3/configure --prefix=/usr --enable-shared
+      --enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix
+      --enable-__cxa_atexit --disable-checking --with-gnu-ld --verbose
+      --with-arch=i486 --target=i486-slackware-linux --host=i486-slackware-linux
+    # Thread model: posix
+    # gcc version 4.2.3
+
+
+    #
+    # Pthread implementation
+    #
+
+    This is usually included in your distribution and is probably already
+    installed. The library is called libpthread.so.
+    You can look for it with the "find" command:
+
+    # find / -name libpthread.so
+
+    On my system the output is:
+
+    # /usr/lib/libpthread.so
+
+    If you don't have it (cmake will tell you) you can download it from your
+    favorite GNU mirror.
+/*
+    On Solaris you can use the native libthread.so library instead but you will
+    have to pass the specific option to configure (see below).
+    FreeBSD has a native implementation of pthreads in libc_r and the gcc
+    compiler has a special -pthread flag to link to it.
+    If you're on FreeBSD, use the --with-freebsd-pthread configure option and
+    make sure that you don't have other pthread wrappers installed (that might
+    collide with the native header files).
+
+    The configure script will also fail if the library is hidden somewhere on
+    your system (eg. not in /lib , /usr/lib or /usr/local/lib): you should
+    probably move it.
+*/
+
+    #
+    # KDE (Optional)
+    #
+
+    If you want to compile the KDE integration support you obviousy need KDE.
+    The kdelibs package should suffice.
+
+    So before running cmake make sure that the environment variable $KDEDIR
+    points to the right location.
+
+    You might eventually set it with the command:
+
+    # export KDEDIR="your kde dir"
+
+    In my case KDE is installed in /usr so I use
+
+    # export KDEDIR=/usr
+
+
+    #
+    # GNU gettext (Optional)
+    #
+
+    If you want the translations to non-english languages to work then you need
+    the GNU gettext package. In particular KVIrc uses the msgfmt program.
+
+    This is usually included in your distribution and is probably already
+    installed. You can check it by running
+
+    # msgfmt --version
+
+    KVIrc will not complain if the command above is missing: it will just skip
+    the creation of the translation files.
+    If the command above fails then you need to install the gettext package if
+    you want any language other than english.
+
+
+    #
+    # Perl (Optional)
+    #
+
+    If you want to generate the on-line documentation you also need perl: any
+    version will do (I guess).
+
+    If you want perl scripting support to be compiled you need a working perl
+    installation. Your libperl.so MUST be compiled with the MULTIPLICITY option.
+    You can check it with perl -V
+
+
+    #
+    # OpenSSL (Optional)
+    #
+
+    If you want the secure socket layer (SSL) support to be compiled you need the
+    OpenSSL library and headers. (libssl.so and openssl/ssl.h)
+
+/*
+    - (Optional) If you want DCC VOICE to support the gsm codec,
+    you need a recent copy of libgsm. This is not strictly required
+    at compile time since KVIrc will look for the library at run-time,
+    and only if the DCC VOICE with the gsm codec is requested.
+    You can check for libgsm using the 'find' command.
+
+    # find / -name libgsm*
+
+    The output should be sometihg like
+
+    # /usr/lib/libgsm.so
+
+    This library is included in most distributions. Some distros ship
+    only the static version of the library "libgsm.a": if the previous
+    find returned only something similar to "/usr/lib/libgsm.a" , you might
+    create manually the shared archive by running:
+
+    # cd /usr/lib
+    # ld --whole-archive -shared -o libgsm.so.1 libgsm.a
+    # ln -s libgsm.so.1 libgsm.so
+    # ldconfig
+
+    If you don't have it installed at all, you might have a look in your
+    distribution CD, or download it from the web.
+
+
+    - (Optional) If you want the /snd plugin to play various audio formats
+    you either need a running artsd, a running esd or a reasonably recent
+    audiofile library. Without these KVIrc will be only able to play *.au
+    files.
+
+    - You need the dynamic linker interface library libdl.so.
+
+    This is usually installed on your system , so don't care until configure
+    complains about it. Some system have the interface builtin in libc. The
+    configure script can detect it.
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 ###############################################################################
 # 3. Configuring the environment
@@ -215,12 +423,9 @@ COMPILE_DCC_CANVAS
 COMPILE_ESD_SUPPORT
 COMPILE_GET_INTERFACE_ADDRESS
 COMPILE_IGNORE_SIGALARM
-COMPILE_KDE3_SUPPORT
 COMPILE_MMX_ASM
-COMPILE_ON_WINDOWS
 COMPILE_OSS_SUPPORT
 COMPILE_SCRIPTTOOLBAR
-COMPILE_THREADS_USE_POSIX
 COMPILE_WITH_NO_SOUND
 COMPILE_XSS_SUPPORT
 
@@ -231,7 +436,7 @@ COMPILE_XSS_SUPPORT
     The CMake build system provide also an interactive mode to configure
     the environment before compiling.
     Again, we encourage the "out-of-source" building: build all files
-    without dirtying the sources directory.
+    without dirting the sources directory.
 
     # mkdir release
     # cd release
@@ -241,20 +446,53 @@ COMPILE_XSS_SUPPORT
     to configure your compilation environment.
 
 ###############################################################################
-# 5. Hacker installation:
+# 5. Compiling
 ###############################################################################
 
-    If you're compiling the svn version of KVirc run ./autogen.sh
-    (You NEED automake >= 1.5 for autogen.sh to run).
+    This step is easy:
+    Cross your fingers and run
 
-    # export QTDIR="your qtlibrary path"
-    You need Qt >= 4.3.4
+    # make
 
-    eventually:
+    If your make is not a GNU make (this happens on FreeBSD for example) you
+    should use "gmake" instead.
+    The compilation process will take from 6-7 minutes to several hours
+    depending on the machine capabilities and load.
+    If you have a slow cpu but have a couple of computers in a lan you might
+    consider using distcc to distribute the compilation.
 
-    # export KDEDIR="your kde library path"
+    Once the compilation has been succesfull, run
 
-    We're using GNU tools here.
+    # make install
+
+    Same as above: use "gmake install" if your make is not GNU make.
+
+    This will install the executable in /usr/local/bin (if you don't have
+    specified a different -DCMAKE_INSTALL_PREFIX option in the cmake rules),
+    the libraries in /usr/local/lib (if you don't have specified a different
+    -DLIB_INSTALL_PREFIX option in the cmake rules) and the shared data in
+    /usr/local/share/kvirc.
+
+    Make sure that /usr/local/lib is in your /etc/ld.so.conf , if it isn't
+    there, put it there and run
+
+    # ldconfig
+
+    If you have decided to use the KDE support the installation might have
+    placed all these files in your $KDEDIR tree instead of /usr/local.
+    In this case you should be OK since KDE requires its library dir to be
+    in /etc/ld.so.conf
+
+###############################################################################
+# 6. Compiling on MacOS X
+###############################################################################
+
+    There is a detailed compilation and installation HOWTO for MacOSX systems
+    located in the doc directory. It's named INSTALL-MacOS.txt
+
+###############################################################################
+# 7. Hacker installation:
+###############################################################################
 
     # mkdir release
     # cd release
@@ -262,10 +500,10 @@ COMPILE_XSS_SUPPORT
     # make install
 
 ###############################################################################
-# 6. Creating a KVIrc package
+# 8. Creating a KVIrc package
 ###############################################################################
 
-    CMake support DESTDIR argument.
+    CMake supports DESTDIR argument.
     So, if you want to make a package for your distro, you simply have to pass
     it at "make install" stage: your install files will go to the choosed path.
 
@@ -282,177 +520,10 @@ COMPILE_XSS_SUPPORT
 
 
 
+
 ###############################################################################
-# 4. Human (detailed) installation:
+# i. Human (detailed) installation:
 ###############################################################################
-
-        If you're not a guru, or have problems with the installation
-        read these instructions carefully.
-
-    ###
-    ### Step 1 : Matching the requirements
-    ###
-
-        - You NEED a fully working C++ compiler.
-
-        Most linux distributions have it pre-installed and if you have
-        already compiled other programs before then you're probably ok,
-        so actually skip this check and go ahead. If anything fails
-        in the following steps then this is the very first thing to verify.
-        A broken compiler installation usually manifests itself
-        in failed dlopen capabilities.
-        Try
-
-        # gcc -v
-        # g++ -v
-
-        on the commandline. If it says something about "command not found"
-        then you miss some gcc related package. Install it from the distro cd.
-
-
-        - You NEED the Qt library.
-
-        You can download the latest version from ftp://ftp.trolltech.com.
-        The main Qt www site is http://www.trolltech.com.
-        Note for the GPL maniacs: Qt IS GPL.
-        The minimum required version is 4.3.4 (older versions *might* work)
-        Download and install it by following the rules
-        explained in the excellent documentation that comes with the library.
-
-
-        - You need a decent pthread implementation.
-
-        This is usually included in your distribution and is probably
-        already installed. The library is called libpthread.so.
-        You can look for it with the "find" command:
-
-        # find / -name libpthread.so
-
-        On my system the output is:
-
-        # /usr/lib/libpthread.so
-
-        If you don't have it (the configure script will tell you)
-        you can download it from your favorite GNU mirror.
-
-        On Solaris you can use the native libthread.so library instead
-        but you will have to pass the specific option to configure (see below).
-        FreeBSD has a native implementation of pthreads in libc_r and
-        the gcc compiler has a special -pthread flag to link to it.
-        If you're on FreeBSD, use the --with-freebsd-pthread configure
-        option and make sure that you don't have other pthread wrappers
-        installed (that might collide with the native header files).
-
-        The configure script will also fail if the library is
-        hidden somewhere on your system (eg. not in /lib , /usr/lib or
-        /usr/local/lib): you should probably move it.
-
-
-        - You need the dynamic linker interface library libdl.so.
-
-        This is usually installed on your system , so don't care until
-        configure complatins about it. Some system have the interface
-        builtin in libc. The configure script can detect it.
-
-
-        - (Optional) If you want to compile the KDE integration support
-        you obviousy need KDE. The kdelibs package should suffice.
-
-
-        - (Optional) If you want the translations to non-english languages to work
-        then you need the GNU gettext package. In particular KVIrc uses
-        the msgfmt program.
-
-        This is usually included in your distribution and is probably
-        already installed. You can check it by running 
-
-        # msgfmt --version
-
-        KVIrc will not complain if the command above is missing: it will
-        just skip the creation of the translation files.
-        If the command above fails then you need to install the gettext package
-        if you want any language other than english.
-
-
-        - (Optional) If you want DCC VOICE to support the gsm codec,
-        you need a recent copy of libgsm. This is not strictly required
-        at compile time since KVIrc will look for the library at run-time,
-        and only if the DCC VOICE with the gsm codec is requested.
-        You can check for libgsm using the 'find' command.
-
-        # find / -name libgsm*
-
-        The output should be sometihg like
-
-        # /usr/lib/libgsm.so
-
-        This library is included in most distributions. Some distros ship
-        only the static version of the library "libgsm.a": if the previous
-        find returned only something similar to "/usr/lib/libgsm.a" , you might
-        create manually the shared archive by running:
-
-        # cd /usr/lib
-        # ld --whole-archive -shared -o libgsm.so.1 libgsm.a
-        # ln -s libgsm.so.1 libgsm.so
-        # ldconfig
-
-        If you don't have it installed at all, you might have a look in your
-        distribution CD, or download it from the web.
-
-
-        - (Optional) If you want the /snd plugin to play various audio formats
-        you either need a running artsd, a running esd or a reasonably recent
-        audiofile library. Without these KVIrc will be only able to play *.au
-        files.
-
-
-        - (Optional) If you want to generate the on-line documentation
-        you also need perl: any version will do (I guess).
-
-
-        - (Optional) If you want the secure socket layer support to be compiled
-        you need the OpenSSL library and headers. (libssl.so and openssl/ssl.h)
-
-
-        - (Optional) If you want perl scripting support to be compiled
-        you need a working perl installation. Your libperl.so MUST be compiled
-        with the MULTIPLICITY option. (You can check it with perl -V).
-
-    ###
-    ### Step 2 : Running the configure script (mandatory)
-    ###
-
-        First of all you must run the configure script that will guess some
-        info about your system and prepare the compilation.
-        You may try to "simply run" it and check if it works...the configure
-        script tries to be smart , but in some cases it will fail.
-
-        So before running the script make sure that the enviroinement
-        variable $QTDIR points to the right location. This will help
-        in finding the correct version of Qt.
-        You might eventually set it with the command:
-
-        # export QTDIR="your qt dir"
-
-        On my system qt is installed in /usr/local/kde/qt
-        so I actually execute
-
-        # export QTDIR="/usr/local/kde/qt"
-
-        If you want to compile the KDE support you might want to do the same
-        with KDEDIR
-
-        # export KDEDIR="your kde dir"
-
-        In my case KDE is installed in /usr/local/kde so I use
-
-        # export KDEDIR="/usr/local/kde"
-
-        The configure script has a lot of options that can be listed by using
-
-        # ./configure --help
-
-        Here's a list with explainations (the most common are at the top):
 
         --enable-pipes
             Asks the compiler to use pipes instead of files for the
@@ -615,73 +686,14 @@ COMPILE_XSS_SUPPORT
         --with-qt-embedded
             You need this to compile KVIrc with qt-embedded
 
-        --without-splash-screen
-            Do not compile the splash screen code.
-            This will remove you that nice "banner" image that pops up
-            while kvirc is starting up. It will maybe help in making an
-            executable smaller by a couple of KB and save a couple
-            of extra milliseconds during the startup. Use it if you're
-            tring to build a performance critical executable and you're
-            short both in memory and CPU time :)
-
         --enable-profiling
             Asks the compiler/linker to include profiling informations in the
             executable. This is useful only if you want to profile KVIrc by
             using the gprof program. Note that this will generate a bigger
             and slower executable.
 
-
-    ###
-    ### Step 3 : Compiling (mandatory)
-    ###
-
-        This step is easy:
-        Cross your fingers and run
-
-        # make kvirc
-
-        If your make is not a GNU make (this happens on FreeBSD for example)
-        you should use "gmake" instead.
-        The compilation process will take from 6-7 minutes to several hours
-        depending on the machine capabilities and load.
-        If you have a slow cpu but have a couple of computers in a lan you
-        might consider using distcc to distribute the compilation.
-
-        Once the compilation has been succesfull, run
-
-        # make install
-
-        Same as above: use "gmake install" if your make is not GNU make.
-
-        This will install the executable in /usr/local/bin
-        (if you don't have specified a different --prefix option in
-        the configure script) , the libraries in /usr/local/lib
-        and the shared data in /usr/local/share/kvirc.
-        If you had a previous kvirc installation , the default prefix
-        will be referring to the directory where the old kvirc
-        executable was found.
-
-        Make sure that /usr/local/lib is in your /etc/ld.so.conf ,
-        if it isn't there, put it there and run
-
-        # ldconfig
-
-        If you have decided to use the KDE support the installation
-        might have placed all these files in your $KDEDIR tree
-        instead of /usr/local. In this case you should be OK since
-        KDE requires its library dir to be in /etc/ld.so.conf
-
-    ###
-    ### Step 4: Having fun
-    ###
-
-        # kvirc &
-
-        That's all folks.
-
-
 ###############################################################################
-# 5. Compiling KVIrc on qt-embedded
+# ii. Compiling KVIrc on qt-embedded
 ###############################################################################
 
     Do you want KVIrc 3 on your hand computer ?
@@ -720,14 +732,7 @@ COMPILE_XSS_SUPPORT
     9. Enjoy :)
 
 ###############################################################################
-# 6. Compiling KVIrc on MacOSX
-###############################################################################
-
-    There is a detailed compilation and installation HOWTO for MacOSX systems
-    located in the doc directory.
-
-###############################################################################
-# 7. A note about Windows 95/98/ME
+# iii. A note about Windows 95/98/ME
 ###############################################################################
 
     On Windows versions prior to 2000 the KVIrc binary may refuse to start
