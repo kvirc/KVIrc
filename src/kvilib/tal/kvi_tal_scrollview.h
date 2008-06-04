@@ -27,16 +27,13 @@
 
 #include "kvi_settings.h"
 
-// FIXME: Qt4 #include <QScrollArea>
 #include <QScrollArea>
 
-//class KVILIB_API KviTalScrollView : public QScrollArea
 class KVILIB_API KviTalScrollView : public QScrollArea
 {
 	Q_OBJECT
 public:
 	KviTalScrollView(QWidget * pParent)
-//	: QScrollArea(pParent) {};
 	: QScrollArea(pParent) {};
 	virtual ~KviTalScrollView() {};
 	int childX(QWidget * child);
