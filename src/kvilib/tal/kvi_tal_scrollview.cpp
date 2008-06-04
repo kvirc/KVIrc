@@ -25,6 +25,42 @@
 #define __KVILIB__
 #include "kvi_tal_scrollview.h"
 
+int KviTalScrollView::childX(QWidget * child)
+{
+	return child->x();
+}
+
+int KviTalScrollView::childY(QWidget * child)
+{
+	return child->y();
+}
+
+void KviTalScrollView::moveChild(QWidget * child, int x, int y)
+{
+	child->move(x,y);
+}
+
+void KviTalScrollView::resizeContents(int w, int h)
+{
+	viewport()->resize(w,h);
+}
+
+void KviTalScrollView::addChild(QWidget * child, int x, int y)
+{
+	child->setParent(this);
+	child->move(x,y);
+}
+
+int KviTalScrollView::visibleWidth()
+{
+	return width();
+}
+
+int KviTalScrollView::visibleHeight()
+{
+	return height();
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_scrollview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

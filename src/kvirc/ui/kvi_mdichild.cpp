@@ -177,7 +177,7 @@ void KviMdiChild::restore()
 	if((m_restoredGeometry.y() + m_restoredGeometry.height()) > m_pManager->height())
 		m_restoredGeometry.setHeight(m_pManager->height() - m_restoredGeometry.y());
 	*/
-	
+
 	switch(m_state)
 	{
 		case Maximized:
@@ -310,23 +310,23 @@ void KviMdiChild::mouseReleaseEvent(QMouseEvent *)
 QCursor KviMdiChild::getResizeCursor(int resizeCorner)
 {
 	switch (resizeCorner)
-	{ 
-		case KVI_MDI_RESIZE_LEFT: 
-		case KVI_MDI_RESIZE_RIGHT: 
+	{
+		case KVI_MDI_RESIZE_LEFT:
+		case KVI_MDI_RESIZE_RIGHT:
 			return Qt::SizeHorCursor;
-			break; 
-		case KVI_MDI_RESIZE_TOP: 
-		case KVI_MDI_RESIZE_BOTTOM: 
+			break;
+		case KVI_MDI_RESIZE_TOP:
+		case KVI_MDI_RESIZE_BOTTOM:
 			return Qt::SizeVerCursor;
-			break; 
-		case KVI_MDI_RESIZE_TOPLEFT: 
-		case KVI_MDI_RESIZE_BOTTOMRIGHT: 
+			break;
+		case KVI_MDI_RESIZE_TOPLEFT:
+		case KVI_MDI_RESIZE_BOTTOMRIGHT:
 			return Qt::SizeFDiagCursor;
-			break; 
-		case KVI_MDI_RESIZE_BOTTOMLEFT: 
-		case KVI_MDI_RESIZE_TOPRIGHT: 
+			break;
+		case KVI_MDI_RESIZE_BOTTOMLEFT:
+		case KVI_MDI_RESIZE_TOPRIGHT:
 			return Qt::SizeBDiagCursor;
-			break; 
+			break;
 		default:
 			return Qt::ArrowCursor;
 			break;
@@ -351,7 +351,7 @@ void KviMdiChild::setResizeCursor(int resizeCorner)
 	if(resizeCorner == KVI_MDI_NORESIZE)
 	{
 		setCursor(getResizeCursor(resizeCorner));
-		//if(QApplication::overrideCursor())QApplication::restoreOverrideCursor(); 
+		//if(QApplication::overrideCursor())QApplication::restoreOverrideCursor();
 	} else {
 		if(m_state != Maximized)
 		{
@@ -381,20 +381,20 @@ void KviMdiChild::calculateResizeRect(int resizeCorner,QPoint mousePos,QRect &re
 			resizeRect.setLeft(mousePos.x() - 1);
 			if(resizeRect.width() < minWidth)resizeRect.setLeft(resizeRect.right() - minWidth);
 			if(resizeRect.x() < 0)resizeRect.setX(0);
-			break; 
-		case KVI_MDI_RESIZE_RIGHT: 
+			break;
+		case KVI_MDI_RESIZE_RIGHT:
 			resizeRect.setRight(mousePos.x() + 1);
 			if(resizeRect.width() < minWidth)resizeRect.setRight(resizeRect.left() + minWidth);
-			break; 
+			break;
 		case KVI_MDI_RESIZE_TOP:
 			resizeRect.setTop(mousePos.y() - 1);
 			if(resizeRect.height() < minHeight)resizeRect.setTop(resizeRect.bottom() - minHeight);
 			if(resizeRect.y() < 0)resizeRect.setY(0);
-			break; 
-		case KVI_MDI_RESIZE_BOTTOM: 
+			break;
+		case KVI_MDI_RESIZE_BOTTOM:
 			resizeRect.setBottom(mousePos.y() + 1);
 			if(resizeRect.height() < minHeight)resizeRect.setBottom(resizeRect.top() + minHeight);
-			break; 
+			break;
 		case KVI_MDI_RESIZE_BOTTOMRIGHT:
 			resizeRect.setBottom(mousePos.y() + 1);
 			if(resizeRect.height() < minHeight)resizeRect.setBottom(resizeRect.top() + minHeight);
@@ -443,7 +443,7 @@ void KviMdiChild::resizeWindowOpaque(int resizeCorner)
 	int minHeight=0;
 	QRect resizeRect(m_pManager->childX(this),m_pManager->childY(this),width(),height());
 	calculateMinimumSize(minWidth,minHeight);
-	QPoint mousePos = m_pManager->viewportToContents(m_pManager->viewport()->mapFromGlobal(QCursor::pos()));
+	QPoint mousePos = m_pManager->mapFromGlobal(QCursor::pos());
 	calculateResizeRect(resizeCorner,mousePos,resizeRect,minWidth,minHeight);
 	m_pManager->moveChild(this,resizeRect.x(),resizeRect.y());
 	resize(resizeRect.width(),resizeRect.height());
@@ -459,12 +459,12 @@ void KviMdiChild::resizeWindowOpaque(int resizeCorner)
 
 int KviMdiChild::getResizeCorner(int ax,int ay)
 {
-	int ret = KVI_MDI_NORESIZE; 
-	if((ax>0)&&(ax<(KVI_MDICHILD_BORDER+2))) ret |= KVI_MDI_RESIZE_LEFT; 
-	if((ax<width())&&(ax>(width()-(KVI_MDICHILD_BORDER+2)))) ret |= KVI_MDI_RESIZE_RIGHT; 
+	int ret = KVI_MDI_NORESIZE;
+	if((ax>0)&&(ax<(KVI_MDICHILD_BORDER+2))) ret |= KVI_MDI_RESIZE_LEFT;
+	if((ax<width())&&(ax>(width()-(KVI_MDICHILD_BORDER+2)))) ret |= KVI_MDI_RESIZE_RIGHT;
 	if((ay>0)&&(ay<(KVI_MDICHILD_BORDER+2))) ret |= KVI_MDI_RESIZE_TOP;
-	if((ay<(height()))&&(ay>(height()-(KVI_MDICHILD_BORDER+2)))) ret |= KVI_MDI_RESIZE_BOTTOM; 
-	return ret; 
+	if((ay<(height()))&&(ay>(height()-(KVI_MDICHILD_BORDER+2)))) ret |= KVI_MDI_RESIZE_BOTTOM;
+	return ret;
 }
 
 void KviMdiChild::setClient(QWidget *w)
@@ -497,7 +497,7 @@ void KviMdiChild::setClient(QWidget *w)
 */
 	//linkChildren(w);
 
-	if(m_pClient->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH && 
+	if(m_pClient->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH &&
 		m_pClient->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT)
 	{
 		setMinimumWidth(m_pClient->minimumSize().width() + (KVI_MDICHILD_BORDER << 1));
@@ -525,7 +525,7 @@ void KviMdiChild::unsetClient()
 	m_pClient->setGeometry(p.x(),p.y(),m_pClient->width(),m_pClient->height());
 	m_pClient->show();
 #else
-	QRect r = g_pApp->desktop()->availableGeometry(m_pClient); 
+	QRect r = g_pApp->desktop()->availableGeometry(m_pClient);
 	r.moveBy(0, 22);
 	m_pClient->reparent(0,r.topLeft(),true);
 	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);

@@ -79,7 +79,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
 	viewport()->setAutoFillBackground(false);
-	setStaticBackground(true);
+//	setStaticBackground(true);
 	resizeContents(width(),height());
 
 	setFocusPolicy(Qt::NoFocus);
@@ -116,7 +116,7 @@ void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(contentsToViewport(r.topLeft()));
+		QPoint pnt = viewport()->mapToGlobal(r.topLeft());
 		p->drawTiledPixmap(r,*(g_pShadedParentGlobalDesktopBackground),pnt);
 		return;
 	}
@@ -194,11 +194,11 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 			pOldTop->captionLabel()->setActive(false);
 			if(pOldTop->m_state != KviMdiChild::Maximized)pMaximizedChild=0;
 		}
-		
+
 		m_pZ->setAutoDelete(true);
 		m_pZ->append(lpC);
 
-		if(pMaximizedChild)lpC->maximize(); //do not animate the change	
+		if(pMaximizedChild)lpC->maximize(); //do not animate the change
 		lpC->raise();
 		if(pMaximizedChild)pMaximizedChild->restore();
 	}
@@ -211,7 +211,7 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 			/*
 			if(topLevelWidget()->isActiveWindow())
 			{
-				
+
 			}
 			*/
 		}
@@ -302,7 +302,7 @@ void KviMdiManager::maximizeChild(KviMdiChild * lpC)
 	// position of the widget, otherwise, when restoring with moveChild()
 	// it will refuse to move it back to the original position
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	//// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 
@@ -321,7 +321,7 @@ void KviMdiManager::maximizeChild(KviMdiChild * lpC)
 		// make sure that the child is focused
 		lpC->setFocus();
 	}
-	
+
 	// fixme: we could hide all the other children now!
 }
 
@@ -534,9 +534,9 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 	if(!m_pSdiCloseButton)
 	{
 		KviMenuBar * b = m_pFrm->mainMenuBar();
-	
+
 		QWidget * pButtonParent;
-	
+
 		m_pSdiControls = new KviTalHBox(b);
 		m_pSdiControls->setMargin(0);
 		m_pSdiControls->setSpacing(2);
@@ -563,9 +563,9 @@ void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
 		// We handle this BUG in showEvent()
 		m_pSdiControls->show();
 		emit enteredSdiMode();
-		
-		setVScrollBarMode(KviTalScrollView::AlwaysOff);
-		setHScrollBarMode(KviTalScrollView::AlwaysOff);
+
+		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	}
 
 	updateSDIMode();
@@ -625,8 +625,8 @@ void KviMdiManager::leaveSDIMode()
 		m_pSdiIconButton = 0;
 	}
 
-	setVScrollBarMode(KviTalScrollView::Auto);
-	setHScrollBarMode(KviTalScrollView::Auto);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
 	emit leftSdiMode();
 }
@@ -752,7 +752,7 @@ void KviMdiManager::cascadeWindows()
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 
@@ -780,10 +780,10 @@ void KviMdiManager::cascadeMaximized()
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
-	
+
 	int idx=0;
 	KviPointerList<KviMdiChild> list(*m_pZ);
 
@@ -812,10 +812,10 @@ void KviMdiManager::expandVertical()
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
-	
+
 	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
@@ -838,10 +838,10 @@ void KviMdiManager::expandHorizontal()
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
-	
+
 	KviPointerList<KviMdiChild> list(*m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
@@ -948,7 +948,7 @@ void KviMdiManager::tileAllInternal(int maxWnds,bool bHorizontal)
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 
@@ -1017,7 +1017,7 @@ void KviMdiManager::tileAnodine()
 	ensureNoMaximized();
 	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
 	resizeContents(visibleWidth(),visibleHeight());
-	updateScrollBars();
+	// updateScrollBars();
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 
