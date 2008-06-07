@@ -350,9 +350,9 @@ bool KviPluginManager::checkUnload()
 			it.current()->unload();
 			m_pPluginDict->remove(it.currentKey());
 		} else {
-			m_pPluginDict++;
 			m_bCanUnload = false;
 		}
+		it.moveNext();
 	}
 	
 	return m_bCanUnload;
@@ -366,13 +366,14 @@ void KviPluginManager::unloadAll()
 	{
 			it.current()->unload();
 			m_pPluginDict->remove(it.currentKey());
+			it.moveNext();
 	}
 }
 
 bool KviPluginManager::findPlugin(QString& szPath)
 {
 	QString szFileName(KviFileUtils::extractFileName(szPath));
-//	szFileName.detach();
+
 	if(KviFileUtils::isAbsolutePath(szPath) && KviFileUtils::fileExists(szPath))
 	{
 		// Ok, 
