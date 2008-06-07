@@ -347,9 +347,9 @@ bool KviPluginManager::checkUnload()
 			it.current()->unload();
 			m_pPluginDict->remove(it.currentKey());
 		} else {
-			m_pPluginDict++;
 			m_bCanUnload = false;
 		}
+		it.moveNext();
 	}
 	
 	return m_bCanUnload;
@@ -361,8 +361,9 @@ void KviPluginManager::unloadAll()
 	
 	while(it.current())
 	{
-			it.current()->unload();
-			m_pPluginDict->remove(it.currentKey());
+		it.current()->unload();
+		m_pPluginDict->remove(it.currentKey());
+		it.moveNext();
 	}
 }
 
