@@ -82,11 +82,6 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 				return true;
 			}
 
-			if(c->continuePending())
-			{
-				c->handleContinue();
-				continue;
-			}
 			return false; // propagate false ret value
 		}
 	}
