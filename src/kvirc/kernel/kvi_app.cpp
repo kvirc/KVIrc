@@ -1243,7 +1243,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) > 0)
 		{
-			g_pShadedParentGlobalDesktopBackground->fromImage(
+			g_pShadedParentGlobalDesktopBackground->convertFromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100),
 					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
@@ -1251,7 +1251,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) > 0)
 		{
-			g_pShadedChildGlobalDesktopBackground->fromImage(
+			g_pShadedChildGlobalDesktopBackground->convertFromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
 					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
