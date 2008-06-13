@@ -71,6 +71,7 @@
 #include "kvi_kvs_treenode_specialcommand.h"
 #include "kvi_kvs_treenode_specialcommandbreak.h"
 #include "kvi_kvs_treenode_specialcommandclass.h"
+#include "kvi_kvs_treenode_specialcommandcontinue.h"
 #include "kvi_kvs_treenode_specialcommanddefpopup.h"
 #include "kvi_kvs_treenode_specialcommanddo.h"
 #include "kvi_kvs_treenode_specialcommandfor.h"
@@ -132,6 +133,8 @@
 // |  |     +--SpecialCommandFor(OK)
 // |  |     |
 // |  |     +--SpecialCommandBreak(OK)
+// |  |     |
+// |  |     +--SpecialCommandContinue(OK)
 // |  |     |
 // |  |     +--SpecialCommandSwitch(OK)
 // |  |     |

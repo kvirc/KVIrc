@@ -27,11 +27,12 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
-
 #include "kvi_pointerhashtable.h"
 
+class KviKvsScript;
+class KviKvsKernel;
+class KviWindow;
 class KviKvsTreeNode;
-
 class KviKvsTreeNodeInstruction;
 class KviKvsTreeNodeInstructionBlock;
 class KviKvsTreeNodeCommand;
@@ -47,10 +48,6 @@ class KviKvsTreeNodeExpressionBinaryOperator;
 class KviKvsTreeNodeFunctionCall;
 class KviKvsTreeNodeOperation;
 class KviKvsTreeNodeSpecialCommandDefpopupLabelPopup;
-
-class KviKvsScript;
-class KviKvsKernel;
-class KviWindow;
 
 // This is an ONE-TIME parser used by KviKvsScript
 
@@ -201,6 +198,9 @@ private:
 	// returns 0 only in case of error
 	// and stops after the end of the break command
 	KviKvsTreeNodeCommand                    * parseSpecialCommandBreak();
+	// returns 0 only in case of error
+	// and jumps to the next iteration after the end of the continue command
+	KviKvsTreeNodeCommand                    * parseSpecialCommandContinue();
 	// returns 0 only in case of error
 	// and stops after the end of the for command block
 	KviKvsTreeNodeCommand                    * parseSpecialCommandFor();

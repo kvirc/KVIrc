@@ -48,7 +48,7 @@ protected:
 	KviKvsSwitchList * m_pAliasSwitchList;        // switches for the aliases, shallow, may be 0
 	KviKvsObject     * m_pThisObject;             // the current object for object function calls
 	QString          * m_pScriptFilePath;         // the current script file path, shallow, may be 0
-	bool		   m_bAutoDelete;
+	bool               m_bAutoDelete;
 public:
 	// all shallow data, all may be 0
 	KviKvsExtendedRunTimeData()
@@ -121,7 +121,7 @@ protected:
 	// during the execution of the script
 	KviWindow                 * m_pWindow;                  // shallow, never 0
 
-	enum RunTimeFlags { BreakPending = 1, HaltCalled = 2, DisableReporting = 4 };
+	enum RunTimeFlags { BreakPending = 1, ContinuePending = 2, HaltCalled = 4, DisableReporting = 8 };
 	unsigned int                m_uRunTimeFlags;            // a combination of RunTimeFlags
 	
 	KviKvsExtendedRunTimeData * m_pExtendedData;            // shallow, may be 0
@@ -224,6 +224,16 @@ public:
 	// this is called by the commands that can handle a break
 	void handleBreak()
 		{ m_uRunTimeFlags &= ~BreakPending; };
+
+	// this is called by the parser when a continue is encountered
+	void setContinuePending()
+		{ m_uRunTimeFlags |= ContinuePending; };
+	// this tells if a continue command has been called
+	bool continuePending()
+		{ return (m_uRunTimeFlags & ContinuePending); };
+	// this is called by the commands that can handle a continue
+	void handleContinue()
+		{ m_uRunTimeFlags &= ~ContinuePending; };
 
 	// this is called by the parser when a halt is encountered
 	// the parser then returns false and all the stack frames

@@ -1,10 +1,12 @@
+#ifndef _KVI_KVS_TREENODE_SPECIALCOMMANDCONTINUE_H_
+#define _KVI_KVS_TREENODE_SPECIALCOMMANDCONTINUE_H_
 //=============================================================================
 //
-//   File : kvi_kvs_treenode_specialcommandbreak.cpp
-//   Created on Thu 06 Nov 2003 12:15:00 by Szymon Stefanek
+//   File : kvi_kvs_treenode_specialcommandcontinue.h
+//   Created on Fri 13 Jun 2008 01:25:00 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,33 +24,22 @@
 //
 //=============================================================================
 
-#define __KVIRC__
 
-#include "kvi_kvs_treenode_specialcommandbreak.h"
-#include "kvi_kvs_runtimecontext.h"
-#include "kvi_locale.h"
+#include "kvi_settings.h"
+#include "kvi_qstring.h"
+#include "kvi_kvs_treenode_specialcommand.h"
 
-KviKvsTreeNodeSpecialCommandBreak::KviKvsTreeNodeSpecialCommandBreak(const QChar * pLocation)
-: KviKvsTreeNodeSpecialCommand(pLocation,"break")
+class KviKvsRunTimeContext;
+
+class KVIRC_API KviKvsTreeNodeSpecialCommandContinue : public KviKvsTreeNodeSpecialCommand
 {
-}
+public:
+	KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation);
+	~KviKvsTreeNodeSpecialCommandContinue();
+public:
+	virtual void contextDescription(QString &szBuffer);
+	virtual void dump(const char * prefix);
+	virtual bool execute(KviKvsRunTimeContext * c);
+};
 
-KviKvsTreeNodeSpecialCommandBreak::~KviKvsTreeNodeSpecialCommandBreak()
-{
-}
-
-void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString &szBuffer)
-{
-	szBuffer = "Special Command \"break\"";
-}
-
-void KviKvsTreeNodeSpecialCommandBreak::dump(const char * prefix)
-{
-	qDebug("%s SpecialCommandBreak",prefix);
-}
-
-bool KviKvsTreeNodeSpecialCommandBreak::execute(KviKvsRunTimeContext * c)
-{
-	c->setBreakPending();
-	return false;
-}
+#endif //!_KVI_KVS_TREENODE_SPECIALCOMMANDCONTINUE_H_

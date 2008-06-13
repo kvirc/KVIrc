@@ -159,6 +159,7 @@ SET(kvirc_MOC_HDRS
 	kvs/kvi_kvs_treenode_specialcommand.h
 	kvs/kvi_kvs_treenode_specialcommandbreak.h
 	kvs/kvi_kvs_treenode_specialcommandclass.h
+	kvs/kvi_kvs_treenode_specialcommandcontinue.h
 	kvs/kvi_kvs_treenode_specialcommanddefpopup.h
 	kvs/kvi_kvs_treenode_specialcommanddo.h
 	kvs/kvi_kvs_treenode_specialcommandfor.h
@@ -370,6 +371,7 @@ SET(kvirc_SRCS
 	kvs/kvi_kvs_treenode_specialcommand.cpp
 	kvs/kvi_kvs_treenode_specialcommandbreak.cpp
 	kvs/kvi_kvs_treenode_specialcommandclass.cpp
+	kvs/kvi_kvs_treenode_specialcommandcontinue.cpp
 	kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp
 	kvs/kvi_kvs_treenode_specialcommanddo.cpp
 	kvs/kvi_kvs_treenode_specialcommandfor.cpp

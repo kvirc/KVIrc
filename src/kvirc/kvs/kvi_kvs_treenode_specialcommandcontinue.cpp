@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvi_kvs_treenode_specialcommandbreak.cpp
-//   Created on Thu 06 Nov 2003 12:15:00 by Szymon Stefanek
+//   File : kvi_kvs_treenode_specialcommandcontinue.cpp
+//   Created on Fri 13 Jun 2008 01:25:00 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,31 +24,31 @@
 
 #define __KVIRC__
 
-#include "kvi_kvs_treenode_specialcommandbreak.h"
+#include "kvi_kvs_treenode_specialcommandcontinue.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_locale.h"
 
-KviKvsTreeNodeSpecialCommandBreak::KviKvsTreeNodeSpecialCommandBreak(const QChar * pLocation)
-: KviKvsTreeNodeSpecialCommand(pLocation,"break")
+KviKvsTreeNodeSpecialCommandContinue::KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation)
+: KviKvsTreeNodeSpecialCommand(pLocation,"continue")
 {
 }
 
-KviKvsTreeNodeSpecialCommandBreak::~KviKvsTreeNodeSpecialCommandBreak()
+KviKvsTreeNodeSpecialCommandContinue::~KviKvsTreeNodeSpecialCommandContinue()
 {
 }
 
-void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandContinue::contextDescription(QString &szBuffer)
 {
-	szBuffer = "Special Command \"break\"";
+	szBuffer = "Special Command \"continue\"";
 }
 
-void KviKvsTreeNodeSpecialCommandBreak::dump(const char * prefix)
+void KviKvsTreeNodeSpecialCommandContinue::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandBreak",prefix);
+	qDebug("%s SpecialCommandContinue",prefix);
 }
 
-bool KviKvsTreeNodeSpecialCommandBreak::execute(KviKvsRunTimeContext * c)
+bool KviKvsTreeNodeSpecialCommandContinue::execute(KviKvsRunTimeContext * c)
 {
-	c->setBreakPending();
+	c->setContinuePending();
 	return false;
 }

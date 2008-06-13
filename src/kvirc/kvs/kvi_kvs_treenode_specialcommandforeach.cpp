@@ -106,13 +106,12 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					
 					if(!m_pLoop->execute(c))
 					{
-						// break allowed!
-	
 						if(c->error())
 						{
 							delete v;
 							return false;
 						}
+
 						// break allowed!
 						if(c->breakPending())
 						{
@@ -137,13 +136,12 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 
 					if(!m_pLoop->execute(c))
 					{
-						// break allowed!
-	
 						if(c->error())
 						{
 							delete v;
 							return false;
 						}
+
 						// break allowed!
 						if(c->breakPending())
 						{
@@ -165,13 +163,12 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					v->result()->copyFrom(*pArg);
 					if(!m_pLoop->execute(c))
 					{
-						// break allowed!
-	
 						if(c->error())
 						{
 							delete v;
 							return false;
 						}
+
 						// break allowed!
 						if(c->breakPending())
 						{

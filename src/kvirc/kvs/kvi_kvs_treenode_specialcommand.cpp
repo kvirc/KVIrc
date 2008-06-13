@@ -42,7 +42,6 @@ void KviKvsTreeNodeSpecialCommand::contextDescription(QString &szBuffer)
 	szBuffer += "\"";
 }
 
-
 void KviKvsTreeNodeSpecialCommand::dump(const char * prefix)
 {
 	qDebug("%s SpecialCommand(%s)",prefix,m_szCmdName.toUtf8().data());

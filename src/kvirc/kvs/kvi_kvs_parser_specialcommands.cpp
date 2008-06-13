@@ -147,6 +147,34 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 	return new KviKvsTreeNodeSpecialCommandBreak(pBegin);
 }
 
+KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandContinue()
+{
+	/*
+		@doc: continue
+		@type:
+			command
+		@title:
+			continue
+		@syntax:
+			continue
+		@short:
+			Continues an iteration loop
+		@description:
+			Continues an interation loop like [cmd]while[/cmd].[br]
+			This command always jumps to the next interation in the code block.[br]
+	*/
+	const QChar * pBegin = KVSP_curCharPointer; // FIXME: this is not accurate at all : it may be even the end of the cmd
+	skipSpaces();
+	if(!KVSP_curCharIsEndOfCommand)
+	{
+		warning(KVSP_curCharPointer,__tr2qs("Trailing garbage at the end of the continue command: ignored"));
+	}
+	
+	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	return new KviKvsTreeNodeSpecialCommandContinue(pBegin);
+}
+
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 {
 	/*

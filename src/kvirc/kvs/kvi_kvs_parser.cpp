@@ -62,19 +62,19 @@ void KviKvsParser::init()
 		pKern->registerSpecialCommandParsingRoutine(QString(__cntrlCmdName),r); \
 	}
 
-	_REG_CNTRL_CMD("if",parseSpecialCommandIf);
-	_REG_CNTRL_CMD("global",parseSpecialCommandGlobal);
-	_REG_CNTRL_CMD("while",parseSpecialCommandWhile);
 	_REG_CNTRL_CMD("break",parseSpecialCommandBreak);
+	_REG_CNTRL_CMD("class",parseSpecialCommandClass);
+	_REG_CNTRL_CMD("continue",parseSpecialCommandContinue);
+	_REG_CNTRL_CMD("defpopup",parseSpecialCommandDefpopup);
 	_REG_CNTRL_CMD("do",parseSpecialCommandDo);
 	_REG_CNTRL_CMD("for",parseSpecialCommandFor);
 	_REG_CNTRL_CMD("foreach",parseSpecialCommandForeach);
-	_REG_CNTRL_CMD("switch",parseSpecialCommandSwitch);
-	_REG_CNTRL_CMD("defpopup",parseSpecialCommandDefpopup);
-	_REG_CNTRL_CMD("unset",parseSpecialCommandUnset);
-	_REG_CNTRL_CMD("class",parseSpecialCommandClass);
+	_REG_CNTRL_CMD("global",parseSpecialCommandGlobal);
 	_REG_CNTRL_CMD("help",parseSpecialCommandHelp);
-
+	_REG_CNTRL_CMD("if",parseSpecialCommandIf);
+	_REG_CNTRL_CMD("switch",parseSpecialCommandSwitch);
+	_REG_CNTRL_CMD("unset",parseSpecialCommandUnset);
+	_REG_CNTRL_CMD("while",parseSpecialCommandWhile);
 #undef _REG_CNTRL_CMD
 }
 
@@ -2094,8 +2094,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		
 		[p]
-		There is also another subtle type of scalar called "nothing". It stands for an 
-		empty (unset) variable.
+		There is also another subtle type of scalar called "nothing". It stands for an empty (unset) variable.
 		[/p]
 		
 		[example]
@@ -2280,8 +2279,6 @@ void KviKvsParser::skipSpaces()
 	}
 }
 
-
-
 bool KviKvsParser::skipSpacesAndNewlines()
 {
 	while((KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t') || (KVSP_curCharUnicode == '\n') || (KVSP_curCharUnicode == '\r'))
@@ -2312,7 +2309,7 @@ bool KviKvsParser::skipSpacesAndNewlines()
 				KVSP_backChar;
 			}
 		break;
-		case '#': 
+		case '#':
 		case '/':
 			// we allow comments too!
 			(void)parseComment(); // this will return 0 anyway (and never trigger an error here)
@@ -2331,11 +2328,9 @@ void KviKvsParser::skipToNextLine()
 	if(KVSP_curCharUnicode == '\n')KVSP_skipChar;
 }
 
-
 KviKvsTreeNodeInstruction * KviKvsParser::parseInstructionList()
 {
 	KviKvsTreeNodeInstructionBlock * l = new KviKvsTreeNodeInstructionBlock(KVSP_curCharPointer);
-
 
 	for(;;)
 	{
@@ -2376,9 +2371,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstructionList()
 	return 0;
 }
 
-
-
-
 KviKvsTreeNodeData * KviKvsParser::parseParameterPercentOrDollar()
 {
 	KVSP_ASSERT((KVSP_curCharUnicode == '%') || (KVSP_curCharUnicode == '$') || (KVSP_curCharUnicode == '@'));
@@ -2407,8 +2399,6 @@ KviKvsTreeNodeData * KviKvsParser::parseParameterPercentOrDollar()
 
 	return parsePercentOrDollar();
 }
-
-
 
 KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 {
@@ -2609,9 +2599,6 @@ handle_scope_operator:
 
 	return new KviKvsTreeNodeScopeOperator(pBegin,r,r2);
 }
-
-
-
 
 
 KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
@@ -2879,8 +2866,6 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 	return sw;
 }
 
-
-
 KviKvsTreeNodeDataList * KviKvsParser::parseCommandParameterList()
 {
 	KviKvsTreeNodeDataList * l = new KviKvsTreeNodeDataList(KVSP_curCharPointer);
@@ -2917,7 +2902,6 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommandParameterList()
 	KVSP_ASSERT(false);
 	return 0;
 }
-
 
 KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 {
@@ -2986,7 +2970,6 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 	KVSP_ASSERT(false);
 	return 0;
 }
-
 
 KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 {
@@ -3803,7 +3786,7 @@ jumpout:
 					// attempt to convert to a numeric format if this is a constant data item
 					p->convertStringConstantToNumeric();
 				}
-			} 
+			}
 			p->setEndingLocation(KVSP_curCharPointer);
 		}
 		return p;
