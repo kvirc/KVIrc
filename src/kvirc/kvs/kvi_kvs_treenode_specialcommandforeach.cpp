@@ -119,6 +119,13 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							delete v;
 							return true;
 						}
+
+						if(c->continuePending())
+						{
+							c->handleContinue();
+							continue;
+						}
+
 						delete v;
 						return false; // propagate the false return value
 					}
@@ -149,6 +156,13 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							delete v;
 							return true;
 						}
+
+						if(c->continuePending())
+						{
+							c->handleContinue();
+							continue;
+						}
+
 						delete v;
 						return false; // propagate the false return value
 					}
@@ -176,6 +190,13 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 							delete v;
 							return true;
 						}
+
+						if(c->continuePending())
+						{
+							c->handleContinue();
+							continue;
+						}
+
 						delete v;
 						return false; // propagate the false return value
 					}
