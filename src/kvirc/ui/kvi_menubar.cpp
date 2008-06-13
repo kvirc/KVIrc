@@ -39,7 +39,6 @@
 #include "kvi_actionmanager.h"
 #include "kvi_coreactionnames.h"
 #include "kvi_kvs_script.h"
-
 #include "kvi_tal_popupmenu.h"
 
 KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
@@ -168,11 +167,13 @@ void KviMenuBar::setupHelpPopup()
 	}
 	connect(help,SIGNAL(activated(int)),this,SLOT(actionTriggered(int)));
 }
+
 void KviMenuBar::actionTriggered(int id)
 {
 	KviTalPopupMenu * help = (KviTalPopupMenu *)sender();
 	m_pFrm->executeInternalCommand(help->itemParameter(id));
 }
+
 void KviMenuBar::setupSettingsPopup()
 {
 	
@@ -251,7 +252,6 @@ void KviMenuBar::setupMainPopup()
 #endif //COMPILE_ON_MAC
 }
 
-
 void KviMenuBar::setupRecentServersPopup()
 {
 	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
@@ -265,8 +265,6 @@ void KviMenuBar::newConnectionToServer(int id)
 	QString text = m_pRecentServersPopup->text(id);
 	if(!text.isEmpty())
 	{
-		// the gentoo qt 3.3.4-r2 is broken
-		// since it adds random & characters to the popup texts...
 		if(text == __tr2qs("&Other..."))
 		{
 			KviKvsScript::run("options.edit KviServerOptionsWidget",m_pFrm->firstConsole());
@@ -314,7 +312,6 @@ void KviMenuBar::setupToolsPopup()
 	m->setItemParameter(id,KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 
-	
 	KviPointerList<KviAction> list;
 	KviActionManager::instance()->listActionsByCategory("tools",&list);
 	if(!list.isEmpty())
@@ -333,20 +330,14 @@ void KviMenuBar::toolsPopupSelected(int id)
 	g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());
 }
 
-
 void KviMenuBar::setupToolbarsPopup()
 {
 	m_pFrm->fillToolBarsPopup(m_pToolbarsPopup);
 }
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // Script items
 //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
@@ -406,8 +397,8 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 		m_pScriptItemList = new KviPointerList<KviScriptMenuBarItem>;
 		m_pScriptItemList->setAutoDelete(true);
 	}/* else {
-   		removeMenu(text);
-   	}*/
+		removeMenu(text);
+	}*/
 	KviScriptMenuBarItem * it = new KviScriptMenuBarItem;
 	it->szText = text;
 	it->szPopupName = p->name();

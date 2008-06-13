@@ -307,6 +307,11 @@ General notes for the installation of the 4.0 release of KVIrc
         Append version information to kvirc and libkvilib, so that different
         kvirc versions can cohexist in the same system.
 
+    -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
+        It will re-initialize the installation path to a good default.
+        Following compilations should use the correct path value cached by cmake.
+        This flag is useful to solve MacOS X install problems.
+
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
         Compile universal binary for MacOS X platform
 

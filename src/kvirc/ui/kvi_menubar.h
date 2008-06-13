@@ -26,11 +26,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-
-#include "kvi_tal_menubar.h"
-#include "kvi_string.h"
-
 #include "kvi_pointerlist.h"
+#include "kvi_string.h"
+#include "kvi_tal_menubar.h"
 
 class KviFrame;
 class KviTalPopupMenu;
