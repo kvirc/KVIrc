@@ -160,8 +160,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandContinue()
 		@short:
 			Continues an iteration loop
 		@description:
-			Continues an interation loop like [cmd]while[/cmd].[br]
-			This command always jumps to the next interation in the code block.[br]
+			Continues an iteration loop like [cmd]while[/cmd].[br]
+			This command always jumps to the next iteration in the code block.[br]
 	*/
 	const QChar * pBegin = KVSP_curCharPointer; // FIXME: this is not accurate at all : it may be even the end of the cmd
 	skipSpaces();
