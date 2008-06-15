@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-21 17:09+0100\n"
-"PO-Revision-Date: 2008-03-16 23:02+0200\n"
+"PO-Revision-Date: 2008-04-13 22:59+0300\n"
 "Last-Translator: Santeri Piippo <aleksanteri@users.sf.net>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "POT-Creation-Date: 2008-03-21 01:02+0100\n"
@@ -3612,7 +3612,7 @@ msgstr "%Q [%Q@%Q] on asettanut moodin %s %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1862
 msgid "%Q [%Q@%Q] has set channel mode %s"
-msgstr "%Q [%Q@%Q] on asettanut kanavamoodin %s %Q"
+msgstr "%Q [%Q@%Q] on asettanut kanavamoodin %s"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:147
 #, c-format
@@ -3682,7 +3682,7 @@ msgstr "(tuntematon)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:490
 msgid "Channel topic is: %Q"
-msgstr ""
+msgstr "Kanavan aihe on: %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:497
 msgid "Topic for \r!c\r%Q\r is: %Q"
@@ -6279,7 +6279,6 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lag/libkvilag.cpp:68
 #msgid "Lag meter was not enabled"
 #msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:103
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:162
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/log/libkvilog.cpp:215
@@ -8157,8 +8156,7 @@ msgstr ""
 msgid "Basic Properties"
 msgstr "Perusasetukset"
 
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/setup/setupwizard.cpp:322
