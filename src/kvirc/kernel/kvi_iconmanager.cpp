@@ -668,7 +668,7 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString &s
 			}
 	
 			QImage img = pix->toImage();
-			pix->fromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
+			pix->convertFromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 		}
 	} else {
 		return 0;
@@ -731,7 +731,7 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 			QImage tmpi = p->toImage();
 			QImage tmp2 = tmpi.scaled(32,32,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
 			QPixmap *pix=new QPixmap();
-			pix->fromImage(tmp2);
+			pix->convertFromImage(tmp2);
 			KviCachedPixmap * cp = new KviCachedPixmap(pix,QString::null);
 			addToCache(tmpName,cp);
 			return cp->pixmap();
