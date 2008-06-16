@@ -228,6 +228,7 @@ public:
 	KviStyledToolButton     * m_pIconButton;
 	KviStyledToolButton     * m_pCommandlineModeButton;
 	KviStyledToolButton     * m_pHideToolsButton;
+	QHBoxLayout		* m_pLayout;
 protected:
 //	virtual void resizeEvent(QResizeEvent * e);
 	virtual void focusInEvent(QFocusEvent * e);

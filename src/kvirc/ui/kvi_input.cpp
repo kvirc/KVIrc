@@ -2238,13 +2238,12 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 : QWidget(par)
 {
 	setObjectName("input_widget");
-	QHBoxLayout* pLayout=new QHBoxLayout(this);
-//	pLayout->setAutoAdd(true);
-	pLayout->setDirection(QBoxLayout::RightToLeft);
+	m_pLayout=new QHBoxLayout(this);
+	m_pLayout->setDirection(QBoxLayout::RightToLeft);
 
-	pLayout->setMargin(0);
-	pLayout->setSpacing(0);
-//
+	m_pLayout->setMargin(0);
+	m_pLayout->setSpacing(0);
+
 	m_pWindow = par;
 	m_pMultiLineEditor = 0;
 
@@ -2330,9 +2329,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
 	
-	pLayout->addWidget(m_pHideToolsButton,0);	
-	pLayout->addWidget(m_pButtonContainer,0);
-	pLayout->addWidget(m_pInputEditor,10000);
+	m_pLayout->addWidget(m_pHideToolsButton,0);	
+	m_pLayout->addWidget(m_pButtonContainer,0);
+	m_pLayout->addWidget(m_pInputEditor,10000);
 
 	
 }
@@ -2458,6 +2457,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	if(m_pMultiLineEditor)
 	{
 		if(bOn)return;
+		m_pLayout->removeWidget(m_pMultiLineEditor);
 		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
 		m_pMultiLineEditor = 0;
 		m_pInputEditor->show();
@@ -2471,7 +2471,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pMultiLineEditor->setFindText(szText);
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
-		m_pMultiLineEditor->show();
+		m_pLayout->add(m_pMultiLineEditor);
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
 		m_pMultiEditorButton->setChecked(true);
