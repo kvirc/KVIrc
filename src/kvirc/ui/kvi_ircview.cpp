@@ -4774,7 +4774,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *)
 void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 {
 //	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
-	if(m_bMouseIsDown && (e->modifiers() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
+	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
 
 		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
