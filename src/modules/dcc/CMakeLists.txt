@@ -38,6 +38,11 @@ SET(kvidcc_SRCS
 	window.cpp
 )
 
+
+SET(files
+	kvi_dccfiletransfericons.png
+)
+
 IF(WIN32)
 	LIST(APPEND LIBS -lws2_32)
 ENDIF()
@@ -46,3 +51,15 @@ ENDIF()
 QT4_WRAP_CPP(kvidcc_MOC_SRCS ${kvidcc_MOC_HDRS})
 SET(kvi_module_name kvidcc)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+
+IF(UNIX)
+	IF(APPLE)
+		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
+	ELSE()
+		# Assume linux
+		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/pics/)
+	ENDIF()
+ELSEIF(WIN32)
+	#INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/pics/)
+ENDIF()
+
