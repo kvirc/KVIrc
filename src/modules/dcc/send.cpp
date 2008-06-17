@@ -1112,6 +1112,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 	{
 		case COLUMN_TRANSFERTYPE:
 		{
+			if(!g_pDccFileTransferIcon)break;
 			int xoffset = 0;
 			int yoffset = 0;
 			if(m_pDescriptor->bRecvFile)yoffset = 64;
@@ -1361,7 +1362,7 @@ void KviDccFileTransfer::init()
 
 	QPixmap * pix = g_pIconManager->getImage("kvi_dccfiletransfericons.png");
 	if(pix)g_pDccFileTransferIcon = new QPixmap(*pix);
-	else g_pDccFileTransferIcon = new QPixmap(192,128);
+	else g_pDccFileTransferIcon = 0;
 }
 
 void KviDccFileTransfer::done()
@@ -1371,7 +1372,7 @@ void KviDccFileTransfer::done()
 		delete t;
 	delete g_pDccFileTransfers;
 	g_pDccFileTransfers = 0;
-	delete g_pDccFileTransferIcon;
+	if(g_pDccFileTransferIcon)delete g_pDccFileTransferIcon;
 	g_pDccFileTransferIcon = 0;
 }
 
