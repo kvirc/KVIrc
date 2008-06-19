@@ -44,20 +44,21 @@
 #include "kvi_qstring.h"
 
 #include <QTreeWidget>
-#include <QAbstractItemView>
+#include <QHeaderView>
 
 class KviTalTreeWidgetItem;
 
 
 class KVILIB_API KviTalTreeWidget : public QTreeWidget
 {
+	friend class KviTalTreeWidgetItem;
 	Q_OBJECT
 public:
 	KviTalTreeWidget(QWidget * pParent);
 	virtual ~KviTalTreeWidget() {};
 public:
-	void addColumn(const QString label){setHeaderLabel(label);}; 
-	
+	void addColumn(const QString label){ setHeaderLabel(label); };
+	void addColumn(const QString label, const int width ){ setHeaderLabel(label); setColumnWidth(0, width); };
 signals:
 	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
 	void itemActivated(KviTalTreeWidgetItem *,int);
@@ -121,6 +122,8 @@ public:
 		QString key=text(col);
 		return key.localeAwareCompare(i->text(col));
 	};
+	KviTalTreeWidget* treeWidget() { return (KviTalTreeWidget*) QTreeWidgetItem::treeWidget(); };
+
 	/*
 	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,KviTalTreeWidgetItem * pAfter)
 	: Q3ListViewItem(pParent,pAfter) {};

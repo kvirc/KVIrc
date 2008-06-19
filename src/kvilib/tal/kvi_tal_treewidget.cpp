@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_tal_listview.cpp
+//   File : kvi_tal_treewidget.cpp
 //   Creation date : Mon Jan 22 2007 11:25:08 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -27,14 +27,13 @@
 #include "kvi_tal_treewidget.h"
 #include "kvi_pointerhashtable.h"
 
-#include <qpainter.h>
-#include <qstyle.h>
-#include <q3header.h>
-#include <qapplication.h>
-#include <qhash.h>
-#include <qstyleoption.h>
-#include <qaccessible.h>
-#include <QTreeWidget>
+#include <QPainter>
+#include <QStyle>
+#include <QHeaderView>
+#include <QApplication>
+#include <QHash>
+#include <QStyleOption>
+#include <QAccessible>
 /*
 static QStyleOptionQ3ListView getStyleOption(const Q3ListView *lv, const Q3ListViewItem *item)
 {
@@ -96,8 +95,6 @@ KviTalTreeWidget::KviTalTreeWidget(QWidget * pParent)
 	connect(this,SIGNAL(itemPressed(QTreeWidgetItem *,int)),this,SLOT(redirect_itemPressed(QTreeWidgetItem *,int)));
 }
 
-
-
 void KviTalTreeWidget::redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QTreeWidgetItem *pItemPrev)
 {
 	emit currentItemChanged((KviTalTreeWidgetItem *)pItemCurr,(KviTalTreeWidgetItem *)pItemPrev);
@@ -124,13 +121,10 @@ void KviTalTreeWidget::redirect_itemCollapsed(QTreeWidgetItem *pItem)
 	emit itemCollapsed((KviTalTreeWidgetItem *)pItem);
 }
 
-
-
 void KviTalTreeWidget::redirect_itemExpanded(QTreeWidgetItem *pItem)
 {
 	emit itemExpanded((KviTalTreeWidgetItem *)pItem);
 }
-
 
 void KviTalTreeWidget::redirect_itemDoubleClicked(QTreeWidgetItem *pItem,int col)
 {
@@ -145,7 +139,6 @@ void KviTalTreeWidget::redirect_itemPressed(QTreeWidgetItem *pItem,int col)
 {
 	emit itemPressed((KviTalTreeWidgetItem *)pItem,col);
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_treewidget.moc"
