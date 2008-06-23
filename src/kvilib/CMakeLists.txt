@@ -211,7 +211,7 @@ ELSE()
 ENDIF()
 
 #we need this defined when mingw will compile moc files
-IF(MINGW)
+IF(WIN32)
         ADD_DEFINITIONS(-D__KVILIB__)
 ENDIF()
 

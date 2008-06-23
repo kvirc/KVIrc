@@ -16,9 +16,40 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
-msgid "Can't find a running winamp window"
-msgstr "Ei löydetty käynnissä olevaa winamp-ikkunaa"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net.\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+"Käyttöliittymä AMIP -lisäohjelmaan\n"
+"Voit ladata sen osoitteesta http://amip.tools-for.net.\n"
+"Käyttääksesi tätä käyttölittymää sinun täytyy asentaa AMIP -lisäohjelma "
+"soittimeesi"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+msgid "An interface to the AmaroK KDE media player."
+msgstr "Käyttöliitymä KDEn Amarok mediasoittimeen."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+msgid "An interface to the Juk KDE media player."
+msgstr "Käyttöliittymä KDEn Juk -mediasoittimeen"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Käyttöliittymä suosittuun UNIX audacious -mediasoittimeen.\n"
+"Lataa se osoitteesta http://audacious-media-player.org\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+"Käyttöliittymä suosittuun UNIX  -mediasoittimeen.\n"
+"Lataa se osoitteesta http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
@@ -30,9 +61,69 @@ msgid ""
 msgstr ""
 "Käyttöliittymä suositulle Winamp -mediasoittimelle.\n"
 "Voit ladata sen osoitteesta http://www.winamp.com.\n"
-"Saadaksesi kaikki ominaisuudet käyttöön, kopioi gen_kvirc.dll -tiedosto"
-"mikä löytyy KVIrcin kansiosta Winampin \"plugins\" -kansioon ja aloita"
-"winamp uudestaan."
+"Saadaksesi kaikki ominaisuudet käyttöön, kopioi gen_kvirc.dll -tiedostomikä "
+"löytyy KVIrcin kansiosta Winampin \"plugins\" -kansioon ja aloitawinamp "
+"uudestaan."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
+msgid "Can't find a running winamp window"
+msgstr "Ei löydetty käynnissä olevaa winamp-ikkunaa"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
+msgid "Can't find symbol %s in %Q"
+msgstr "Ei löydetty symbolia %s kohdassa %Q"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
+msgid "Can't load the player library (%Q)"
+msgstr "Ei voitu ladata soittimen kirjastoa (%Q)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
+msgid "Choosing media player interface \"%Q\""
+msgstr "Valitaan mediasoitin käyttöliittymä \"%Q\""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
+msgid "Function not implemented"
+msgstr "Funktiota ei ole kehitetty"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+msgid "Last interface error: "
+msgstr "Viimeisin käyttöliittymävirhe: "
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:115
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Ei mediasoitin-käyttöliittymää valittu. Yritä /mediaplayer.detect"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Ei varma tuloksista, yritetään toista, aggressiivisempaa etsintää"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:105
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Näyttää siltä ettei tässä koneessa ole käytettävää mediasoitinta"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr "Valittu mediasoitin ei voinut ajaa pyydettyä tehtävää"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
@@ -40,101 +131,10 @@ msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
 msgstr ""
-"Winampin lisäohjelmaa ei ole asennettu oikein. Tarkista /help mediaplayer.nowplaying"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
-msgid "Function not implemented"
-msgstr "Funktiota ei ole kehitetty"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
-msgid "An interface to the Juk KDE media player."
-msgstr "Käyttöliittymä KDEn Juk -mediasoittimeen"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
-msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://www.xmms.org\n"
-msgstr ""
-"Käyttöliittymä suosittuun UNIX  -mediasoittimeen.\n"
-"Lataa se osoitteesta http://www.xmms.org\n"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-"Käyttöliittymä suosittuun UNIX audacious -mediasoittimeen.\n"
-"Lataa se osoitteesta http://audacious-media-player.org\n"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
-msgid "Can't load the player library (%Q)"
-msgstr "Ei voitu ladata soittimen kirjastoa (%Q)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
-msgid "Can't find symbol %s in %Q"
-msgstr "Ei löydetty symbolia %s kohdassa %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net.\n"
-"To use this interface you must install AMIP plug-in for your player."
-msgstr ""
-"Käyttöliittymä AMIP -lisäohjelmaan\n"
-"Voit ladata sen osoitteesta http://amip.tools-for.net.\n"
-"Käyttääksesi tätä käyttölittymää sinun täytyy asentaa AMIP -lisäohjelma soittimeesi"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
-msgid "An interface to the AmaroK KDE media player."
-msgstr "Käyttöliitymä KDEn Amarok mediasoittimeen."
+"Winampin lisäohjelmaa ei ole asennettu oikein. Tarkista /help mediaplayer."
+"nowplaying"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:66
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Yritetään mediasoitin käyttöliittymää \"%Q\": tulos %d"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"Ei varma tuloksista, yritetään toista, aggressiivisempaa etsintää"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
-msgid "Choosing media player interface \"%Q\""
-msgstr "Valitaan mediasoitin käyttöliittymä \"%Q\""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:105
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Näyttää siltä ettei tässä koneessa ole käytettävää mediasoitinta"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:115
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Ei mediasoitin-käyttöliittymää valittu. Yritä /mediaplayer.detect"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:536
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:559
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:600
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:639
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1132
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1269
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1313
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1501
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1544
-msgid ""
-"The selected media player interface failed to execute the requested function"
-msgstr ""
-"Valittu mediasoitin ei voinut ajaa pyydettyä tehtävää"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:135
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:537
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:560
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:601
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:640
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1133
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1270
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1314
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1502
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1545
-msgid "Last interface error: "
-msgstr "Viimeisin käyttöliittymävirhe: "

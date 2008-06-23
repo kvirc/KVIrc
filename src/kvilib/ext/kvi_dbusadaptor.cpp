@@ -22,8 +22,13 @@
 //
 //=============================================================================
 
+#ifdef COMPILE_DBUS_SUPPORT
+
 #include "kvi_dbusadaptor.h"
 KviDbusAdaptor::KviDbusAdaptor(QObject * obj) : QDBusAbstractAdaptor(obj)
 {
 
 }
+
+#endif
+

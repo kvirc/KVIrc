@@ -17,57 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
-msgid "Preferences"
-msgstr "Préférences"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
-msgid "Font:"
-msgstr "Police :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
-msgid "Background:"
-msgstr "Fond :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
-msgid "Normal text:"
-msgstr "Texte normal :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
-msgid "Brackets:"
-msgstr "Crochets :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
-msgid "Comments:"
-msgstr "Commentaires :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
-msgid "Functions:"
-msgstr "Fonctions :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
-msgid "Keywords:"
-msgstr "Mots clés :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
-msgid "Variables:"
-msgstr "Variables :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
-msgid "Punctuation:"
-msgstr "Ponctuation :"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
-msgid "Find:"
-msgstr "Chercher :"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
+msgid "&Configure Editor..."
+msgstr "&Configurer l'Éditeur"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
 msgid "&OK"
 msgstr "&Valider"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
-msgid "Cancel"
-msgstr "Annuler"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
 msgid "&Open..."
@@ -77,22 +33,71 @@ msgstr "&Ouvrir"
 msgid "&Save As..."
 msgstr "&Sauvegarder Sous..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
-msgid "&Configure Editor..."
-msgstr "&Configurer l'Éditeur"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
+msgid "Background:"
+msgstr "Fond :"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
-msgid "Choose a Filename - KVIrc"
-msgstr "Choisir un Nom de Fichier - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
+msgid "Brackets:"
+msgstr "Crochets :"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
-msgid "Save Failed - KVIrc"
-msgstr "Sauvegarde Impossible - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Impossible d'ouvrir le fichier %s en lecture."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1001
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Impossible d'ouvrir le fichier %s en écriture."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
+msgid "Cancel"
+msgstr "Annuler"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
+msgid "Choose a Filename - KVIrc"
+msgstr "Choisir un Nom de Fichier - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
+msgid "Comments:"
+msgstr "Commentaires :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
+msgid "Find:"
+msgstr "Chercher :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Font:"
+msgstr "Police :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
+msgid "Functions:"
+msgstr "Fonctions :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
+msgid "Keywords:"
+msgstr "Mots clés :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
+msgid "Load Script File - KVIrc"
+msgstr "Chargement Fichier Script - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "Normal text:"
+msgstr "Texte normal :"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
+msgid "Open Failed - KVIrc"
+msgstr "Ouverture Impossible - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Preferences"
+msgstr "Préférences"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
+msgid "Punctuation:"
+msgstr "Ponctuation :"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1066
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1081
@@ -100,15 +105,10 @@ msgstr "Impossible d'ouvrir le fichier %s en écriture."
 msgid "Row: %d Col: %d"
 msgstr "Ligne : %d Col : %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
-msgid "Load Script File - KVIrc"
-msgstr "Chargement Fichier Script - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
+msgid "Save Failed - KVIrc"
+msgstr "Sauvegarde Impossible - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
-msgid "Open Failed - KVIrc"
-msgstr "Ouverture Impossible - KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
-#, c-format
-msgid "Can't open the file %s for reading."
-msgstr "Impossible d'ouvrir le fichier %s en lecture."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Variables:"
+msgstr "Variables :"

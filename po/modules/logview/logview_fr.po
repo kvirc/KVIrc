@@ -17,9 +17,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:312
+msgid "%Q on %Q"
+msgstr "%Q sur %Q"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:255
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:259
+msgid "Abort filtering"
+msgstr "Annuler le filtrage"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:147
+msgid "Apply filter"
+msgstr "Appliquer le filtre"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/libkvilogview.cpp:136
 msgid "Browse &Log Files"
 msgstr "Naviguer dans les &Journaux"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:63
+msgid "Channel"
+msgstr "Salon"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:69
+msgid "Console"
+msgstr "Console"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:116
+msgid "Contents filter"
+msgstr "Filtre de contenu"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:67
+msgid "DCC Chat"
+msgstr "DCC Chat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:91
+msgid "Filter"
+msgstr "Filtre"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:258
+msgid "Filtering files..."
+msgstr "Filtrage des fichiers..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:79
 msgid "Index"
@@ -29,92 +67,54 @@ msgstr "Index"
 msgid "Log File"
 msgstr "Journal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:91
-msgid "Filter"
-msgstr "Filtre"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:95
-msgid "Show channel logs"
-msgstr "Afficher les logs de salons"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:99
-msgid "Show query logs"
-msgstr "Afficher les logs de privés"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:103
-msgid "Show console logs"
-msgstr "Afficher les logs de console"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:107
-msgid "Show DCC chat logs"
-msgstr "Afficher les logs de DCC chat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:111
-msgid "Show other logs"
-msgstr "Afficher les autres logs"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:116
-msgid "Contents filter"
-msgstr "Filtre de contenu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:119
-msgid "Log name mask:"
-msgstr "Masque de nom de log"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:203
+msgid "Log Viewer"
+msgstr "Visualiseur de Journaux"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:125
 msgid "Log contents mask:"
 msgstr "Masque de contenu de log"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:131
-msgid "Only older than"
-msgstr "Seulement plus anciens que"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:119
+msgid "Log name mask:"
+msgstr "Masque de nom de log"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:139
 msgid "Only newier than"
 msgstr "Seulement plus récents que"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:147
-msgid "Apply filter"
-msgstr "Appliquer le filtre"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:131
+msgid "Only older than"
+msgstr "Seulement plus anciens que"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:203
-msgid "Log Viewer"
-msgstr "Visualiseur de Journaux"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:254
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:258
-msgid "Filtering files..."
-msgstr "Filtrage des fichiers..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:255
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:259
-msgid "Abort filtering"
-msgstr "Annuler le filtrage"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:312
-msgid "%Q on %Q"
-msgstr "%Q sur %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:381
-msgid "Remove file"
-msgstr "Supprimer le fichier"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:63
-msgid "Channel"
-msgstr "Salon"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:71
+msgid "Other"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:65
 msgid "Query"
 msgstr "Privé"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:67
-msgid "DCC Chat"
-msgstr "DCC Chat"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:381
+msgid "Remove file"
+msgstr "Supprimer le fichier"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:69
-msgid "Console"
-msgstr "Console"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:107
+msgid "Show DCC chat logs"
+msgstr "Afficher les logs de DCC chat"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:71
-msgid "Other"
-msgstr ""
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:95
+msgid "Show channel logs"
+msgstr "Afficher les logs de salons"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:103
+msgid "Show console logs"
+msgstr "Afficher les logs de console"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:111
+msgid "Show other logs"
+msgstr "Afficher les autres logs"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:99
+msgid "Show query logs"
+msgstr "Afficher les logs de privés"

@@ -19,21 +19,17 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:164
-msgid "Type"
-msgstr "Tipo"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:402
+msgid "&Clear Terminated"
+msgstr "&Limpeza Terminada"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:165
-msgid "Information"
-msgstr "Informação"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:375
+msgid "&Copy Path to Clipboard"
+msgstr "&Copiar 'Path0 para a Área de Transferência"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:166
-msgid "Progress"
-msgstr "Progresso"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:316
-msgid "Size: %1"
-msgstr "Tamanho: %1"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:377
+msgid "&Delete file"
+msgstr "&Apagar Ficheiro"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:334
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:364
@@ -44,82 +40,86 @@ msgstr "&Abrir"
 msgid "&Other..."
 msgstr "&Outro..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:355
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:367
-msgid "Open &With"
-msgstr "Abrir &Com..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:357
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:369
-msgid "Open &Location"
-msgstr "Abrir &Localização"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:358
-msgid "Terminal at Location"
-msgstr "Terminal na Localização"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
-msgid "MS-DOS Prompt at Location"
-msgstr "Linha de Comandos MS-DOS na Localização"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:375
-msgid "&Copy Path to Clipboard"
-msgstr "&Copiar 'Path0 para a Área de Transferência"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:377
-msgid "&Delete file"
-msgstr "&Apagar Ficheiro"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:379
-msgid "Local &File"
-msgstr "&Ficheiro Local"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:402
-msgid "&Clear Terminated"
-msgstr "&Limpeza Terminada"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:409
 msgid "Clear &All"
 msgstr "Limpar &Tudo"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:499
-msgid "Do you really want to delete the file %Q?"
-msgstr "Deseja realmente apagar o ficheiro %Q?"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
+msgid "Clear All Transfers? - KVIrc"
+msgstr "Limpar Todas as Transferências? - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:672
+msgid "Clear all transfers, including any in progress?"
+msgstr "Limpar todas as transferências, incluindo alguma em progresso?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:501
 msgid "Confirm delete"
 msgstr "Confirmar remoção"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
-msgid "Yes"
-msgstr "Sim"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:506
+msgid "Delete failed"
+msgstr "Remoção falhada"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:499
+msgid "Do you really want to delete the file %Q?"
+msgstr "Deseja realmente apagar o ficheiro %Q?"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:507
+msgid "Failed to remove the file"
+msgstr "Falha ao apagar o ficheiro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:711
+msgid "File Transfers"
+msgstr "Transferências de Ficheiros"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:165
+msgid "Information"
+msgstr "Informação"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:379
+msgid "Local &File"
+msgstr "&Ficheiro Local"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:370
+msgid "MS-DOS Prompt at Location"
+msgstr "Linha de Comandos MS-DOS na Localização"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
 msgid "No"
 msgstr "Não"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:506
-msgid "Delete failed"
-msgstr "Remoção falhada"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:507
-msgid "Failed to remove the file"
-msgstr "Falha ao apagar o ficheiro"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:508
 msgid "OK"
 msgstr "OK"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:672
-msgid "Clear all transfers, including any in progress?"
-msgstr "Limpar todas as transferências, incluindo alguma em progresso?"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:357
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:369
+msgid "Open &Location"
+msgstr "Abrir &Localização"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:355
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:367
+msgid "Open &With"
+msgstr "Abrir &Com..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:166
+msgid "Progress"
+msgstr "Progresso"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:316
+msgid "Size: %1"
+msgstr "Tamanho: %1"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:358
+msgid "Terminal at Location"
+msgstr "Terminal na Localização"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:164
+msgid "Type"
+msgstr "Tipo"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:502
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:676
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Limpar Todas as Transferências? - KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/filetransferwindow/filetransferwindow.cpp:711
-msgid "File Transfers"
-msgstr "Transferências de Ficheiros"
+msgid "Yes"
+msgstr "Sim"

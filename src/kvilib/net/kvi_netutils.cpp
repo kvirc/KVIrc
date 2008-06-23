@@ -41,6 +41,10 @@
 
 #endif
 
+#ifdef COMPILE_ON_WINDOWS
+	#include <Ws2tcpip.h>
+#endif
+
 #include <sys/types.h>
 #include "kvi_qstring.h"
 

@@ -20,17 +20,15 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:479
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:483
+msgid "Perl execution error:"
+msgstr "Erro de execução perl:"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
 msgid "The perlcore module can't be loaded: perl support not available"
-msgstr "O módulo perlcore não pode ser carregado: o suporte perl não está disponível"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:49
-msgid "To see more details about loading failure try /perlcore.load"
-msgstr "Para ver mais detalhes acerca da falha de carregamento tente /perlcore.load"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:62
-msgid "This KVIrc executable has been compiled without perl scripting support"
-msgstr "Este executável KVirc foi compilado sem suporte perl"
+msgstr ""
+"O módulo perlcore não pode ser carregado: o suporte perl não está disponível"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:462
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:536
@@ -41,8 +39,11 @@ msgstr ""
 "O módulo perlcore falhou ao executar o código: alguma coisa não está "
 "correcta no suporte perl"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:479
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:483
-msgid "Perl execution error:"
-msgstr "Erro de execução perl:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:62
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Este executável KVirc foi compilado sem suporte perl"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:49
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr ""
+"Para ver mais detalhes acerca da falha de carregamento tente /perlcore.load"

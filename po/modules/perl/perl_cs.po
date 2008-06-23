@@ -17,17 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:479
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:483
+msgid "Perl execution error:"
+msgstr "Spouštěcí chyba Perlu:"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Modul perlcore nemůže být nahrán: chybí podpora perlu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:49
-msgid "To see more details about loading failure try /perlcore.load"
-msgstr "Pro více detailů o selhání zkuste /perlcore.load"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:62
-msgid "This KVIrc executable has been compiled without perl scripting support"
-msgstr "Tato verze KVIrc byla zkompilována bez podpory perl skriptování"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:462
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:536
@@ -37,7 +34,10 @@ msgid ""
 msgstr ""
 "Modul perlcore selhal při spuštění kódu: něco je v nepořádku s podporou perlu"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:479
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:483
-msgid "Perl execution error:"
-msgstr "Spouštěcí chyba Perlu:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:62
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Tato verze KVIrc byla zkompilována bez podpory perl skriptování"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:49
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr "Pro více detailů o selhání zkuste /perlcore.load"

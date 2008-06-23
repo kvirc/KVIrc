@@ -206,7 +206,7 @@ void KviDnsThread::run()
 		{
 			QString tmp;
 			KviNetUtils::binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr_list[idx])),tmp);
-			if(tmp.hasData())dns->appendAddress(tmp);
+			if(!tmp.isEmpty())dns->appendAddress(tmp);
 			++idx;
 		}
 		if(pHostEntry->h_aliases[0])

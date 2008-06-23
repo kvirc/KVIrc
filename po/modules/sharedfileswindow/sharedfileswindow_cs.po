@@ -17,45 +17,91 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
-msgid "Manage S&hared Files"
-msgstr "Spravovat S&dílené soubory"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
-msgid "Edit Shared File - KVIrc"
-msgstr "Upravit sdílený soubor - KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
-msgid "Share name:"
-msgstr "Název sdílení:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
-msgid "File path:"
-msgstr "Cesta k souboru:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
+msgid "&Add..."
+msgstr "&Přidat..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:74
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
-msgid "User mask:"
-msgstr "Uživ. maska:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
-msgid "Expire at:"
-msgstr "Vyprší v:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
+msgid "&Edit"
+msgstr "&Upravit"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:94
 msgid "&OK"
 msgstr "&OK"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
+msgid "Can't open the file"
+msgstr "Nelze otevřít soubor"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:98
 msgid "Cancel"
 msgstr "Zrušit"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:60
+msgid "Edit Shared File - KVIrc"
+msgstr "Upravit sdílený soubor - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:84
+msgid "Expire at:"
+msgstr "Vyprší v:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
+msgid "Expires"
+msgstr "Vyprší"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:68
+msgid "File path:"
+msgstr "Cesta k souboru:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
+msgid "Filename"
+msgstr "Soubor"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:156
 msgid "Invalid expire time"
 msgstr "Neplatný čas vypršení"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
+msgid "Invalid share name"
+msgstr "Neplatný název sdílení"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:125
+msgid "Manage S&hared Files"
+msgstr "Spravovat S&dílené soubory"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
+msgid "Mask"
+msgstr "Maska"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
+msgid "Name"
+msgstr "Jméno"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
+msgid "Never"
+msgstr "Nikdy"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
+msgid "OK"
+msgstr "OK"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
+msgid "Re&move"
+msgstr "Od&ebrat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:62
+msgid "Share name:"
+msgstr "Název sdílení:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
+msgid "Shared Files"
+msgstr "Sdílené soubory"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:157
 msgid ""
@@ -65,60 +111,14 @@ msgstr ""
 "The expire date/time is in the past: please either remove the \"expires"
 "\"check mark or specify a expire date/time in the future"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:159
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:167
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:176
-msgid "OK"
-msgstr "OK"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:165
-msgid "Invalid share name"
-msgstr "Neplatný název sdílení"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
+msgid "The file doesn't exist or it is not readable, please check the path"
+msgstr "Soubor neexistuje nebo není čitelný, prosím zkontrolujte cestu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:166
 msgid "The share name can't be empty, please correct it"
 msgstr "Název sdílení nemůže být prázdný, prosím upravte jej"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:174
-msgid "Can't open the file"
-msgstr "Nelze otevřít soubor"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:175
-msgid "The file doesn't exist or it is not readable, please check the path"
-msgstr "Soubor neexistuje nebo není čitelný, prosím zkontrolujte cestu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:195
-msgid "Never"
-msgstr "Nikdy"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:220
-msgid "Name"
-msgstr "Jméno"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:221
-msgid "Filename"
-msgstr "Soubor"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:222
-msgid "Mask"
-msgstr "Maska"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:223
-msgid "Expires"
-msgstr "Vyprší"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:233
-msgid "&Add..."
-msgstr "&Přidat..."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:235
-msgid "Re&move"
-msgstr "Od&ebrat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:237
-msgid "&Edit"
-msgstr "&Upravit"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:689
-msgid "Shared Files"
-msgstr "Sdílené soubory"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/sharedfileswindow/sharedfileswindow.cpp:78
+msgid "User mask:"
+msgstr "Uživ. maska:"

@@ -24,6 +24,9 @@
 
 #ifndef KVI_DBUSADAPTOR_H
 #define KVI_DBUSADAPTOR_H
+
+#ifdef COMPILE_DBUS_SUPPORT
+
 #include <QDBusAbstractAdaptor>
 #include <QDBusInterface>
 #include <QObject>
@@ -37,5 +40,7 @@ class KviDbusAdaptor: public QDBusAbstractAdaptor
 public:
 	KviDbusAdaptor(QObject * obj);
 };
+
+#endif
 
 #endif

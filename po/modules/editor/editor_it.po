@@ -19,57 +19,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.2beta3\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
-msgid "Font:"
-msgstr "Carattere:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
-msgid "Background:"
-msgstr "Sfondo:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
-msgid "Normal text:"
-msgstr "Testo normale:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
-msgid "Brackets:"
-msgstr "Parentesi graffe:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
-msgid "Comments:"
-msgstr "Commenti:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
-msgid "Functions:"
-msgstr "Funzioni:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
-msgid "Keywords:"
-msgstr "Parole chiave:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
-msgid "Variables:"
-msgstr "Variabili:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
-msgid "Punctuation:"
-msgstr "Punteggiatura:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
-msgid "Find:"
-msgstr "Trova:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
+msgid "&Configure Editor..."
+msgstr "&Configura Editor..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
 msgid "&OK"
 msgstr "&OK"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
-msgid "Cancel"
-msgstr "Annulla"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
 msgid "&Open..."
@@ -79,22 +35,71 @@ msgstr "&Apri..."
 msgid "&Save As..."
 msgstr "&Salva con nome..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
-msgid "&Configure Editor..."
-msgstr "&Configura Editor..."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
+msgid "Background:"
+msgstr "Sfondo:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
-msgid "Choose a Filename - KVIrc"
-msgstr "Scegli un Nome - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
+msgid "Brackets:"
+msgstr "Parentesi graffe:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
-msgid "Save Failed - KVIrc"
-msgstr "Impossibile Salvare - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Impossibile aprire il file %s in lettura."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1001
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Impossible aprire il file %s in scrittura."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
+msgid "Cancel"
+msgstr "Annulla"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
+msgid "Choose a Filename - KVIrc"
+msgstr "Scegli un Nome - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
+msgid "Comments:"
+msgstr "Commenti:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
+msgid "Find:"
+msgstr "Trova:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Font:"
+msgstr "Carattere:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
+msgid "Functions:"
+msgstr "Funzioni:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
+msgid "Keywords:"
+msgstr "Parole chiave:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
+msgid "Load Script File - KVIrc"
+msgstr "Caricare lo Script - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "Normal text:"
+msgstr "Testo normale:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
+msgid "Open Failed - KVIrc"
+msgstr "Apertura Fallita - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
+msgid "Punctuation:"
+msgstr "Punteggiatura:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1066
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1081
@@ -102,36 +107,31 @@ msgstr "Impossible aprire il file %s in scrittura."
 msgid "Row: %d Col: %d"
 msgstr "Riga: %d Colonna: %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
-msgid "Load Script File - KVIrc"
-msgstr "Caricare lo Script - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
+msgid "Save Failed - KVIrc"
+msgstr "Impossibile Salvare - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
-msgid "Open Failed - KVIrc"
-msgstr "Apertura Fallita - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Variables:"
+msgstr "Variabili:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
-#, c-format
-msgid "Can't open the file %s for reading."
-msgstr "Impossibile aprire il file %s in lettura."
+#~ msgid "Choose a script file to load"
+#~ msgstr "Scegli un file da caricare"
+
+#~ msgid "Configure colors and fonts"
+#~ msgstr "Configura i colori ed i caratteri"
 
 #~ msgid "KVIrc Scripts (*.kvs);;All Files (*)"
 #~ msgstr "Script di KVIrc (*.kvs);;Tutti i File (*)"
+
+#~ msgid "Load failed"
+#~ msgstr "Caricamento fallito"
+
+#~ msgid "Load from file"
+#~ msgstr "Carica da file"
 
 #~ msgid "Ok"
 #~ msgstr "Ok"
 
 #~ msgid "Save to file"
 #~ msgstr "Salva su file"
-
-#~ msgid "Load from file"
-#~ msgstr "Carica da file"
-
-#~ msgid "Configure colors and fonts"
-#~ msgstr "Configura i colori ed i caratteri"
-
-#~ msgid "Choose a script file to load"
-#~ msgstr "Scegli un file da caricare"
-
-#~ msgid "Load failed"
-#~ msgstr "Caricamento fallito"

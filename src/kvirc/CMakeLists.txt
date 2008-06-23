@@ -447,9 +447,19 @@ TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 IF(MINGW)
         # needed for linking
         SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
-        #we need this defined when mingw will compile moc files
-        ADD_DEFINITIONS(-D__KVIRC__)
 ENDIF()
+
+IF(MSVC)
+	# needed for linking
+	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
+ENDIF()
+
+IF(WIN32)
+	#we need this defined when mingw will compile moc files
+  ADD_DEFINITIONS(-D__KVIRC__)
+  ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
+ENDIF()
+	
 
 # Installation directives
 IF(UNIX)

@@ -21,57 +21,13 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
-msgid "Preferences"
-msgstr "Предпочтения"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
-msgid "Font:"
-msgstr "Шрифт:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
-msgid "Background:"
-msgstr "Фон:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
-msgid "Normal text:"
-msgstr "Обычный текст:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
-msgid "Brackets:"
-msgstr "Скобки:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
-msgid "Comments:"
-msgstr "Комментарии:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
-msgid "Functions:"
-msgstr "Функции:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
-msgid "Keywords:"
-msgstr "Ключевые слова:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
-msgid "Variables:"
-msgstr "Переменные:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
-msgid "Punctuation:"
-msgstr "Знаки препинания:"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
-msgid "Find:"
-msgstr "Поиск:"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
+msgid "&Configure Editor..."
+msgstr "&Настроить редактор..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
 msgid "&OK"
 msgstr "&Ok"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
-msgid "Cancel"
-msgstr "Отмена"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
 msgid "&Open..."
@@ -81,22 +37,71 @@ msgstr "&Открыть..."
 msgid "&Save As..."
 msgstr "&Сохранить как..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
-msgid "&Configure Editor..."
-msgstr "&Настроить редактор..."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:180
+msgid "Background:"
+msgstr "Фон:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
-msgid "Choose a Filename - KVIrc"
-msgstr "Выберите имя файла - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:182
+msgid "Brackets:"
+msgstr "Скобки:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
-msgid "Save Failed - KVIrc"
-msgstr "Ошибка записи - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Невозможно открыть файл %s на чтение."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1001
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Невозможно открыть файл %s на запись."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:195
+msgid "Cancel"
+msgstr "Отмена"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
+msgid "Choose a Filename - KVIrc"
+msgstr "Выберите имя файла - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
+msgid "Comments:"
+msgstr "Комментарии:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
+msgid "Find:"
+msgstr "Поиск:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
+msgid "Font:"
+msgstr "Шрифт:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:184
+msgid "Functions:"
+msgstr "Функции:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:185
+msgid "Keywords:"
+msgstr "Ключевые слова:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
+msgid "Load Script File - KVIrc"
+msgstr "Загрузить файл скрипта - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:181
+msgid "Normal text:"
+msgstr "Обычный текст:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
+msgid "Open Failed - KVIrc"
+msgstr "Ошибка открытия - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
+msgid "Preferences"
+msgstr "Предпочтения"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:187
+msgid "Punctuation:"
+msgstr "Знаки препинания:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1066
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1081
@@ -104,15 +109,10 @@ msgstr "Невозможно открыть файл %s на запись."
 msgid "Row: %d Col: %d"
 msgstr "Строк: %d Колонок:%d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
-msgid "Load Script File - KVIrc"
-msgstr "Загрузить файл скрипта - KVIrc"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
+msgid "Save Failed - KVIrc"
+msgstr "Ошибка записи - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
-msgid "Open Failed - KVIrc"
-msgstr "Ошибка открытия - KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
-#, c-format
-msgid "Can't open the file %s for reading."
-msgstr "Невозможно открыть файл %s на чтение."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
+msgid "Variables:"
+msgstr "Переменные:"

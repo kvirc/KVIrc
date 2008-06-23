@@ -19,10 +19,6 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
-msgid "No client selected!"
-msgstr "Keine Schnittstelle ausgewählt!"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:45
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
@@ -31,30 +27,38 @@ msgstr ""
 "Eine Schnittstelle für KTorrent.\n"
 "Sie können es von http://www.ktorrent.org herunterladen.\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:103
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Benutze Torrent-Client Schnittstelle \"%Q\"."
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:61
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Index ausserhalb des gültigen Bereichs: %d [0-%d]!"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:63
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Versuche Torrent-Client Schnittstelle \"%Q\": %d Punkte."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:720
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Ungültige Client-Schnittstelle \"%Q\"!"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:103
-msgid "Choosing torrent client interface \"%Q\""
-msgstr "Benutze Torrent-Client Schnittstelle \"%Q\"."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:130
+msgid "Last interface error: "
+msgstr "Letzter Schnittstellen-Fehler: "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:110
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr ""
-"Es scheint kein Benutzbarer Torrent-Client auf diesem System installiert zu "
-"sein."
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
+msgid "No client selected!"
+msgstr "Keine Schnittstelle ausgewählt!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:119
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr ""
 "Keine Torrent-Client Schnittstelle ausgewählt. Probieren Sie /torrent.detect "
 "auszuführen."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:110
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr ""
+"Es scheint kein Benutzbarer Torrent-Client auf diesem System installiert zu "
+"sein."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:129
 msgid ""
@@ -64,14 +68,10 @@ msgstr ""
 "Die ausgewählte Torrent-Client Schnittstelle konnte die Funktion nicht "
 "ausführen."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:130
-msgid "Last interface error: "
-msgstr "Letzter Schnittstellen-Fehler: "
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:63
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Versuche Torrent-Client Schnittstelle \"%Q\": %d Punkte."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:712
 msgid "Using client interface \"%Q\"."
 msgstr "Benutze Client Schnittstelle \"%Q\"."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:720
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Ungültige Client-Schnittstelle \"%Q\"!"

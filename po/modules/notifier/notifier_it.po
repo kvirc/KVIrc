@@ -20,17 +20,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1247
-msgid "Hide"
-msgstr "Nascondi"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1254
+msgid "1 Hour"
+msgstr "1 ora"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1250
 msgid "1 Minute"
 msgstr "1 minuto"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1251
-msgid "5 Minutes"
-msgstr "5 minuti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1252
 msgid "15 Minutes"
@@ -40,37 +36,41 @@ msgstr "15 minuti"
 msgid "30 Minutes"
 msgstr "30 minuti"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1254
-msgid "1 Hour"
-msgstr "1 ora"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1256
-msgid "Until KVIrc is Restarted"
-msgstr "Fino al prossimo riavvio di KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1257
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Permanentemente (Finché non sia Abilitato)"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1251
+msgid "5 Minutes"
+msgstr "5 minuti"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1259
 msgid "Disable"
 msgstr "Disabilita"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1350
-msgid "Write text or commands to window"
-msgstr "Spedisci testo o comandi alla finestra"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1247
+msgid "Hide"
+msgstr "Nascondi"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr "La finestra specificata non esiste"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1257
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanentemente (Finché non sia Abilitato)"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Lo switch -t necessita di un timeout in secondi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Il timeout specificato non è valido, assumo 0"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
-msgid "The -t switch expects a timeout in seconds"
-msgstr "Lo switch -t necessita di un timeout in secondi"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "La finestra specificata non esiste"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1256
+msgid "Until KVIrc is Restarted"
+msgstr "Fino al prossimo riavvio di KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1350
+msgid "Write text or commands to window"
+msgstr "Spedisci testo o comandi alla finestra"
 
 #~ msgid "Close tab"
 #~ msgstr "Chiudi tab"

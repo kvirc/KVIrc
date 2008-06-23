@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-13 16:44+0100\n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
 "PO-Revision-Date: 2007-03-14 01:19+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,105 +16,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:80
-msgid "Index"
-msgstr "Indeks"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:82
-msgid "Log File"
-msgstr "Log Datoteka"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:92
-msgid "Filter"
-msgstr "Filter"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:96
-msgid "Show channel logs"
-msgstr "Prikaži logove soba"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:100
-msgid "Show query logs"
-msgstr "Prikaži logove razgovora"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:104
-msgid "Show console logs"
-msgstr "Prikaži logove konzola"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:108
-msgid "Show DCC chat logs"
-msgstr "Prikaži logove DCC razgovora"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:112
-msgid "Show other logs"
-msgstr "Prikaži ostale logove"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:117
-msgid "Contents filter"
-msgstr "Filter sadržaja"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:120
-msgid "Log name mask:"
-msgstr "Maska log imena:"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:126
-msgid "Log contents mask:"
-msgstr "Maska log sadržaja:"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:132
-msgid "Only older than"
-msgstr "Samo starije od"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:140
-msgid "Only newier than"
-msgstr "Samo novije od"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:148
-msgid "Apply filter"
-msgstr "Prihvati filter"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:213
-msgid "Log Viewer"
-msgstr "Log Preglednik"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:264
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:268
-msgid "Filtering files..."
-msgstr "Filtriranje datoteka..."
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:265
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:269
-msgid "Abort filtering"
-msgstr "Prekini filtriranje"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:322
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:312
 msgid "%Q on %Q"
 msgstr "%Q na %Q"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewmdiwindow.cpp:391
-msgid "Remove file"
-msgstr "Ukloni datoteku"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:255
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:259
+msgid "Abort filtering"
+msgstr "Prekini filtriranje"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/libkvilogview.cpp:136
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:147
+msgid "Apply filter"
+msgstr "Prihvati filter"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/libkvilogview.cpp:136
 msgid "Browse &Log Files"
 msgstr "Pregledaj &Log Datoteke"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewwidget.cpp:63
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:63
 msgid "Channel"
 msgstr "Sobe"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewwidget.cpp:65
-msgid "Query"
-msgstr "Razgovori"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewwidget.cpp:67
-msgid "DCC Chat"
-msgstr "DCC Razgovori"
-
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewwidget.cpp:69
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:69
 msgid "Console"
 msgstr "Konzole"
 
-#: /home/SpeedyGhost/kvirccvs/kvirc/src/modules/logview/logviewwidget.cpp:71
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:116
+msgid "Contents filter"
+msgstr "Filter sadržaja"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:67
+msgid "DCC Chat"
+msgstr "DCC Razgovori"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:91
+msgid "Filter"
+msgstr "Filter"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:258
+msgid "Filtering files..."
+msgstr "Filtriranje datoteka..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:79
+msgid "Index"
+msgstr "Indeks"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:81
+msgid "Log File"
+msgstr "Log Datoteka"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:203
+msgid "Log Viewer"
+msgstr "Log Preglednik"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:125
+msgid "Log contents mask:"
+msgstr "Maska log sadržaja:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:119
+msgid "Log name mask:"
+msgstr "Maska log imena:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:139
+msgid "Only newier than"
+msgstr "Samo novije od"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:131
+msgid "Only older than"
+msgstr "Samo starije od"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:71
 msgid "Other"
 msgstr "Ostalo"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewwidget.cpp:65
+msgid "Query"
+msgstr "Razgovori"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:381
+msgid "Remove file"
+msgstr "Ukloni datoteku"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:107
+msgid "Show DCC chat logs"
+msgstr "Prikaži logove DCC razgovora"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:95
+msgid "Show channel logs"
+msgstr "Prikaži logove soba"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:103
+msgid "Show console logs"
+msgstr "Prikaži logove konzola"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:111
+msgid "Show other logs"
+msgstr "Prikaži ostale logove"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/logview/logviewmdiwindow.cpp:99
+msgid "Show query logs"
+msgstr "Prikaži logove razgovora"
