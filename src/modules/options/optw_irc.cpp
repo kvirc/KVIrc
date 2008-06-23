@@ -72,7 +72,7 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent,"irc_advanced_options_widget")
 {
 	createLayout(3,1);
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
+	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);
 #ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to close " \
@@ -82,7 +82,6 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 		"Note that if you use this, your QUIT message may be not displayed.</center>","options"));
 #endif
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Prepend gender info to realname","options"),KviOption_boolPrependGenderInfoToRealname);
-	addRowSpacer(0,2,0,2);
 }
 
 KviIrcAdvancedOptionsWidget::~KviIrcAdvancedOptionsWidget()
@@ -123,7 +122,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 			"the channel window open after being kicked.<br>" \
 			"It might be a good idea to also enable the " \
 			"\"Rejoin channel\" option.</center>","options"));
-#endif 
+#endif
 
 	g = addGroupBox(0,1,0,1,1,Qt::Horizontal,__tr2qs_ctx("On Channel Part","options"));
 
@@ -132,7 +131,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will cause KVIrc to keep " \
 			"the channel window open after leaving it.</center>","options"));
-#endif 
+#endif
 
 	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Automatically join channel on invite","options"),KviOption_boolAutoJoinOnInvite);
 #ifdef COMPILE_INFO_TIPS
@@ -143,7 +142,7 @@ KviChannelGeneralOptionsWidget::KviChannelGeneralOptionsWidget(QWidget * pParent
 #endif
 
 	b = addBoolSelector(0,3,0,3, __tr2qs_ctx("Always open channels as minimized","options"),KviOption_boolCreateMinimizedChannels);
-    
+
 #ifdef COMPILE_INFO_TIPS
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes newly created " \
@@ -167,19 +166,19 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	createLayout(6,4);
 
 	KviBoolSelector * b = addBoolSelector(0,0,4,0,__tr2qs_ctx("Log joined channels history","options"),KviOption_boolLogChannelHistory);
-	
+
 	addLabel(0,1,0,1,__tr2qs_ctx("Default ban mask:","options"));
-	
+
 	m_pBanTypeCombo=new QComboBox(this);
 	addWidgetToLayout(m_pBanTypeCombo,1,1,4,1);
-	
+
 	KviIrcMask hostmask("nick!user@machine.host.top");
 	KviIrcMask ipmask("nick!user@192.168.1.2");
 	QString tmp1;
 	QString tmp2;
 	for(int i=0;i<=26;i++)
 	{
-		
+
 		hostmask.mask(tmp1,(KviIrcMask::MaskType)i);
 		ipmask.mask(tmp2,(KviIrcMask::MaskType)i);
 		m_pBanTypeCombo->insertItem(QString("%1 (%2)").arg(tmp1).arg(tmp2));
