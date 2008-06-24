@@ -26,25 +26,27 @@
 
 #include "kvi_settings.h"
 
-#ifndef COMPILE_NO_X
+#ifndef COMPILE_ON_WINDOWS
+	#ifndef COMPILE_NO_X
 
-	#ifdef Bool
-		// Someone has defined Bool ?
-		#undef Bool
-	#endif
-	
-	#include <X11/Xlib.h>
+		#ifdef Bool
+			// Someone has defined Bool ?
+			#undef Bool
+		#endif
+		
+		#include <X11/Xlib.h>
 
-	// Too bad that X11/Xlib.h defines Bool, Error and Success... this basically
-	// SUX since we can't use them anywhere in the source!
-	// this breaks, enums in Qt, enums in KVIrc and other stuff all around...
-	// Shame on you Xlib.h author :D
+		// Too bad that X11/Xlib.h defines Bool, Error and Success... this basically
+		// SUX since we can't use them anywhere in the source!
+		// this breaks, enums in Qt, enums in KVIrc and other stuff all around...
+		// Shame on you Xlib.h author :D
 
-	#ifdef Bool
-		// NO!
-		#undef Bool
-	#endif
+		#ifdef Bool
+			// NO!
+			#undef Bool
+		#endif
 
-#endif // !COMPILE_NO_X
+	#endif // !COMPILE_NO_X
+#endif
 
 #endif //_KVI_XLIB_H_

@@ -26,10 +26,6 @@
 
 #include "kvi_settings.h"
 
-
-
-// Qt4 moc bails out on this ??????
-
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 	#include "kvi_styled_controls.h"
 	#include "kvi_crypt.h"

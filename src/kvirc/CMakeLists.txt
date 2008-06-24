@@ -441,6 +441,15 @@ ENDIF()
 
 ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 
+
+IF(MSVC)
+	LIST(APPEND LIBS shlwapi.lib)
+ENDIF()
+
+IF(MINGW)
+	LIST(APPEND LIBS shlwapi)
+ENDIF()
+
 # Link libraries
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
@@ -458,6 +467,7 @@ IF(WIN32)
 	#we need this defined when mingw will compile moc files
   ADD_DEFINITIONS(-D__KVIRC__)
   ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
+  LIST(APPEND LIBS "shlwapi")
 ENDIF()
 	
 

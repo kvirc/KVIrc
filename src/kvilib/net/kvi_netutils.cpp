@@ -303,7 +303,8 @@ static unsigned int scan_ip6(const char *s,char ip[16])
 	return len;
 }
 
-#ifndef WIN2K
+#ifndef COMPILE_ON_WINDOWS
+// #include <Ws2tcpip.h> - already has it
 int inet_pton(int AF, const char *CP, void *BUF) {
 	int len;
 	if (AF==AF_INET) {

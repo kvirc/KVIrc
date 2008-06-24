@@ -34,13 +34,21 @@
 
 #include <QtGlobal>
 
+#ifdef KVIRC_EXTERNAL_MODULE
+		// when compiling an external module
+		// include the last configuration
+		#include "kvi_configstatus.h"
+#else
+	// assume CMake build system for all systems
+	#include "kvi_sysconfig.h"
+#endif
+
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
 
 	#define COMPILE_WITH_SYSTEM_MEMMOVE
 	#define FEEL_LIKE_I_AM_COMPILING_UNDER_WINDOZE
 	#define COMPILE_ON_WINDOWS
-	#define KVIRC_VERSION_RELEASE "COMPILED_WITH_VS"
 
 	#ifdef __KVILIB__
 		#define KVILIB_API __declspec(dllexport)
@@ -79,15 +87,6 @@
 		#define COMPILE_ON_MAC
 	#endif
 
-	#ifdef KVIRC_EXTERNAL_MODULE
-		// when compiling an external module
-		// include the last configuration
-		#include "kvi_configstatus.h"
-	#else
-		// assume CMake build system
-		#include "kvi_sysconfig.h"
-	#endif
-
 #endif
 
 #ifndef COMPILE_USE_QT4
@@ -96,11 +95,13 @@
 #endif
 
 #define KVI_VERSION KVIRC_VERSION_RELEASE
-#ifdef COMPILE_ON_WINDOWS
-#define KVI_VERSION_BRANCH "VS_BRANCH"
+
+#ifndef KVIRC_VERSION_BRANCH
+	#define KVI_VERSION_BRANCH "VS_BRANCH"
 #else
-#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
+	#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
 #endif
+
 #define KVI_RELEASE_NAME "Insomnia"
 
 #ifndef COMPILE_ON_WINDOWS
