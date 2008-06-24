@@ -53,6 +53,7 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_sharedfiles.h
 	ext/kvi_stringconversion.h
 	ext/kvi_xlib.h
+	ext/kvi_dbusadaptor.h
 	file/kvi_file.h
 	file/kvi_fileutils.h
 	file/kvi_packagefile.h
@@ -119,15 +120,6 @@ ELSE()
 	)
 ENDIF()
 
-IF(COMPILE_DBUS_SUPPORT)
-	LIST(APPEND kvilib_MOC_SRCS
-	ext/kvi_dbusadaptor.cpp
-	)
-	LIST(APPEND kvilib_MOC_HDRS
-	ext/kvi_dbusadaptor.h
-	)
-ENDIF()
-
 SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp
 	core/kvi_error.cpp
@@ -155,6 +147,7 @@ SET(kvilib_SRCS
 	ext/kvi_regusersdb.cpp
 	ext/kvi_sharedfiles.cpp
 	ext/kvi_stringconversion.cpp
+	ext/kvi_dbusadaptor.cpp
 	file/kvi_file.cpp
 	file/kvi_fileutils.cpp
 	file/kvi_packagefile.cpp
