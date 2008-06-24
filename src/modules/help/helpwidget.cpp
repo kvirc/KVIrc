@@ -37,6 +37,7 @@
 #include <QToolTip>
 #include <QTimer>
 #include <QClipboard>
+#include <QDir>
 
 extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
@@ -96,7 +97,13 @@ KviHelpWidget::~KviHelpWidget()
 
 void KviHelpWidget::showIndex()
 {
-	m_pTextBrowser->setSource(QUrl("index.html"));
+	QString szHelpDir;
+        QDir dirHelp;
+
+	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+        dirHelp = QDir(szHelpDir);
+
+	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
 }
 
 void KviHelpWidget::resizeEvent(QResizeEvent *e)

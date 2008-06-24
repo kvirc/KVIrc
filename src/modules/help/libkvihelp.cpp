@@ -29,6 +29,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 
+#include <QDir>
 #include <QFileInfo>
 #include <QSplitter>
 
@@ -135,14 +136,17 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString doc, szHelpDir;
+        QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
 	KVSM_PARAMETERS_END(c)
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
+        dirHelp = QDir(szHelpDir);
+
 	if(doc.isEmpty()){
-		doc = szHelpDir + "/index.html";
+		doc = dirHelp.absoluteFilePath("index.html");
 		qDebug ("No file, use default at path %s",doc.toUtf8().data());
 	} else qDebug("Doc set from user to %s",doc.toUtf8().data());
 
@@ -152,13 +156,13 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		if(!f->exists())
 		{
-			doc = szHelpDir + "/" + doc;
+			doc = dirHelp.absoluteFilePath(doc);
 			qDebug("No abs path, trying relative path: %s",doc.toUtf8().data());
 			f->setFile(doc);
 		}
 		if(!f->exists())
 		{
-			doc = szHelpDir + "/nohelpavailable.html";
+			doc = dirHelp.absoluteFilePath("nohelpavailable.html");
 			qDebug("No rel path, defaulting to error page: %s",doc.toUtf8().data());
 			f->setFile(doc);
 		}
@@ -169,19 +173,19 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child("help_widget","KviHelpWidget");
 		if(w)
 		{
-			w->textBrowser()->setSource(QUrl(doc));
+			w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
 			return true;
 		}
 	}
 	if(c->switches()->find('m',"mdi"))
 	{
 		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
-		w->textBrowser()->setSource(QUrl(doc));
+		w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
 		c->window()->frame()->addWindow(w);
 	} else {
 		KviHelpWidget *w = new KviHelpWidget(c->window()->frame()->splitter(),
 			c->window()->frame(),true);
-		w->textBrowser()->setSource(QUrl(doc));
+		w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));
 		w->show();
 	}
 
