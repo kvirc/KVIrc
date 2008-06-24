@@ -26,21 +26,20 @@
 #define KVI_DBUSADAPTOR_H
 
 #ifdef COMPILE_DBUS_SUPPORT
-
-#include <QDBusAbstractAdaptor>
-#include <QDBusInterface>
-#include <QObject>
-#include "kvi_settings.h"
-
-class KVILIB_API KviDbusAdaptor: public QDBusAbstractAdaptor
-{
-	Q_OBJECT
-	Q_CLASSINFO("Kvirc D-Bus Interface", "org.kvirc.KVIrc")
-
-public:
-	KviDbusAdaptor(QObject * obj);
-};
-
-#endif
+	#include "kvi_settings.h"
+	
+	#include <QDBusAbstractAdaptor>
+	#include <QDBusInterface>
+	#include <QObject>
+	
+	class KVILIB_API KviDbusAdaptor: public QDBusAbstractAdaptor
+	{
+		Q_OBJECT
+		Q_CLASSINFO("KVIrc D-Bus Interface", "org.kvirc.KVIrc")
+	
+	public:
+		KviDbusAdaptor(QObject * obj);
+	};
+#endif // COMPILE_DBUS_SUPPORT
 
 #endif

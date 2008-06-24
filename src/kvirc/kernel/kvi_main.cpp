@@ -39,7 +39,7 @@
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
 #endif
 
-#include <qglobal.h> //for debug()
+#include <qglobal.h> //for qDebug()
 
 #include <QMessageBox>
 
