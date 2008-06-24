@@ -140,8 +140,6 @@ KviAboutDialog::KviAboutDialog()
 	infoString += "<b>";
 	infoString += __tr2qs_ctx("Build Info","about");
 	infoString += ":</b><br>";
-// FIXME: Remove this line when win32 compiles using CMake
-#ifndef COMPILE_ON_WINDOWS
 	infoString += __tr2qs_ctx("Build Date","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildDate();
@@ -178,7 +176,7 @@ KviAboutDialog::KviAboutDialog()
 	infoString += __tr2qs_ctx("Compiler Flags","about");
 	infoString += ": ";
 	infoString += KviBuildInfo::buildCompilerFlags();
-#endif
+
 	v->setText(infoString);
 
 	addTab(w,__tr2qs_ctx("Executable Informations","about"));

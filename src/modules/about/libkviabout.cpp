@@ -91,7 +91,7 @@ KVIRC_MODULE(
 	"4.0.0",
 	"Till Bush <buti@geocities.com>\n" \
 	"Szymon Stefanek <pragma at kvirc dot net>" \
-	"Elvio Basello <hellvis69 at netsons dot org",
+	"Elvio Basello <hellvis69 at netsons dot org>",
 	"Exports the /about.kvirc command\n",
 	about_module_init ,
 	about_module_can_unload,

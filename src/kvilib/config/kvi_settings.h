@@ -35,9 +35,9 @@
 #include <QtGlobal>
 
 #ifdef KVIRC_EXTERNAL_MODULE
-		// when compiling an external module
-		// include the last configuration
-		#include "kvi_configstatus.h"
+	// when compiling an external module
+	// include the last configuration
+	#include "kvi_configstatus.h"
 #else
 	// assume CMake build system for all systems
 	#include "kvi_sysconfig.h"

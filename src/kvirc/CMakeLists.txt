@@ -454,22 +454,22 @@ ENDIF()
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 IF(MINGW)
-        # needed for linking
-        SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
+	# Needed for linking
+	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
 ENDIF()
 
 IF(MSVC)
-	# needed for linking
+	# Needed for linking
 	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
 ENDIF()
 
 IF(WIN32)
-	#we need this defined when mingw will compile moc files
-  ADD_DEFINITIONS(-D__KVIRC__)
-  ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
-  LIST(APPEND LIBS "shlwapi")
+	# We need this defined when mingw will compile moc files
+	ADD_DEFINITIONS(-D__KVIRC__)
+	ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
+	LIST(APPEND LIBS "shlwapi")
 ENDIF()
-	
+
 
 # Installation directives
 IF(UNIX)
