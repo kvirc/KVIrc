@@ -22,12 +22,16 @@
 //
 //=============================================================================
 
-#ifdef COMPILE_DBUS_SUPPORT
-
 #include "kvi_dbusadaptor.h"
+
+#ifdef COMPILE_DBUS_SUPPORT
 
 KviDbusAdaptor::KviDbusAdaptor(QObject * obj) : QDBusAbstractAdaptor(obj)
 {
 }
 
 #endif
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+#include "kvi_dbusadaptor.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
