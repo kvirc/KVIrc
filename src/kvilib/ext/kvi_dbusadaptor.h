@@ -32,7 +32,7 @@
 #include <QObject>
 #include "kvi_settings.h"
 
-class KviDbusAdaptor: public QDBusAbstractAdaptor
+class KVILIB_API KviDbusAdaptor: public QDBusAbstractAdaptor
 {
 	Q_OBJECT
 	Q_CLASSINFO("Kvirc D-Bus Interface", "org.kvirc.KVIrc")
