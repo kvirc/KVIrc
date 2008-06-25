@@ -1,8 +1,8 @@
 //   File : controller.cpp
-//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
+//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo ï¿½lvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002 Juanjo ï¿½lvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -93,9 +93,9 @@ void SPasteController::pasteFile(void)
 
 void SPasteController::pasteClipboard(void)
 {
-	if(m_clipBuffIterator != m_pClipBuff->end()) 
+	if(m_clipBuffIterator != m_pClipBuff->end())
 	{
-		if((!g_pApp->windowExists(m_pWindow)) || m_pWindow->console()->isNotConnected() )
+		if(!g_pApp->windowExists(m_pWindow))
 		  	delete this;
 		else {
 			if((*m_clipBuffIterator).isEmpty())(*m_clipBuffIterator) = QChar(KVI_TEXT_RESET);

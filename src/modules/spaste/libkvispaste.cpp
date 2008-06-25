@@ -100,8 +100,8 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
-	if( (!window) || window->console()->isNotConnected())return false;
-	
+	if(!window)return false;
+
 	// FIXME
 	//if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.toAscii())))
 	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
@@ -158,8 +158,8 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("window",KVS_PT_STRING,KVS_PF_OPTIONAL,szWindow)
 	KVSM_PARAMETERS_END(c)
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
-	if( (!window) || window->console()->isNotConnected())return false;
-	
+	if(!window)return false;
+
 	SPasteController * controller = spaste_find_controller(window);
 	if(!controller)controller = new SPasteController(window,++ctrlId);
 	controller->pasteClipboardInit();
@@ -227,7 +227,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 			}
 		} else {
 			//Delete the spaste with the given id
-			while( (item = it.current()) != 0) 
+			while( (item = it.current()) != 0)
 			{
 				++it;
 				if(item->getId() == iId)delete item;
@@ -307,7 +307,7 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-//-------------------------------------------------    
+//-------------------------------------------------
 static bool spaste_module_init(KviModule * m)
 {
 	g_pControllerList = new KviPointerList<SPasteController>;

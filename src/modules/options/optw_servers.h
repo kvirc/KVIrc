@@ -81,9 +81,9 @@ protected:
 	QLineEdit             * m_pDescEditor;
 
 	QComboBox             * m_pEncodingEditor;
-	
+
 	KviStyledCheckBox             * m_pAutoConnectCheck;
-	
+
 	KviTalTreeWidget        * m_pNickServTreeWidget;
 	KviStyledCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
@@ -91,7 +91,7 @@ protected:
 	QPushButton           * m_pEditRuleButton;
 
 	QStringList             m_lstChannels;
-	KviCahnnelListSelector * m_pChannelListSelector;
+	KviChannelListSelector * m_pChannelListSelector;
 public:
 	void fillData(KviIrcNetwork * d);
 protected slots:
@@ -131,8 +131,8 @@ protected:
 	KviStyledCheckBox             * m_pUseIPV6Check;
 	QLineEdit             * m_pPortEditor;
 	QStringList             m_lstChannels;
-	KviCahnnelListSelector * m_pChannelListSelector;
-	
+	KviChannelListSelector * m_pChannelListSelector;
+
 	QComboBox             * m_pProxyEditor;
 protected slots:
 	void useDefaultInitUModeToggled(bool);

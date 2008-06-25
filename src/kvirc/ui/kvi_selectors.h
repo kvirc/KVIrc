@@ -333,16 +333,16 @@ private:
 public:
 	KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass);
 	~KviChanTreeViewItem() {};
-	
+
 	const QString& pass() { return m_szPass; }
 };
 
-class KVIRC_API KviCahnnelListSelector : public KviTalVBox, public KviSelectorInterface
+class KVIRC_API KviChannelListSelector : public KviTalVBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviCahnnelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled);
-	~KviCahnnelListSelector();
+	KviChannelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled);
+	~KviChannelListSelector();
 private:
 	QLabel       * m_pLabel;
 	KviTalTreeWidget    * m_pTreeWidget;
