@@ -196,13 +196,8 @@ protected:
 	bool m_bIncreasing;
 	QTimer* m_pAnimTimer;
 	KviTreeTaskBarItemInternal *m_pInternal;
-	int m_iRedDiff;
-	int m_iGreenDiff;
-	int m_iBlueDiff;
 public:
 	virtual QString key(int column,bool) const;
-//	virtual void paintCell(QPainter *p,const QColorGroup &cg,int column,int width,int alignment);
-//	virtual void paintBranches(QPainter *p,const QColorGroup &cg,int w,int y,int h);
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
@@ -232,6 +227,7 @@ public slots:
 class KVIRC_API KviTreeTaskBarTreeWidget : public KviTalTreeWidget
 {
 	friend class KviTreeTaskBarItem;
+	friend class KviTreeTaskBarItemDelegate;
 	Q_OBJECT
 	KviTreeTaskBarItem* m_pPrevItem;
 public:
@@ -282,5 +278,28 @@ protected slots:
 	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
 };
 
+#define KVI_TTBID_STEPNUM Qt::UserRole
+#define KVI_TTBID_REDDIFF Qt::UserRole + 1
+#define KVI_TTBID_GREENDIFF Qt::UserRole + 2
+#define KVI_TTBID_BLUEDIFF Qt::UserRole + 3
+#define KVI_TTBID_HIGHLIGHT Qt::UserRole + 4
+#define KVI_TTBID_PROGRESS Qt::UserRole + 4
 
+class KVILIB_API KviTreeTaskBarItemDelegate : public KviTalIconAndRichTextItemDelegate
+{
+	Q_OBJECT
+public:
+	KviTreeTaskBarItemDelegate(QAbstractItemView * pWidget=0)
+		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+	~KviTreeTaskBarItemDelegate(){};
+	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	int calculateColor(int col1,int col2, int iStepNumber) const;
+/*
+	 void setDefaultIcon(QPixmap *pix){m_pDefaultPix=pix;};
+protected:
+	QAbstractItemView *m_pParent;
+	QPixmap *m_pDefaultPix;
+*/
+};
 #endif //_KVI_TASKBAR_H_

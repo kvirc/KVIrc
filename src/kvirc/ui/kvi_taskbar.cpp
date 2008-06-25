@@ -746,12 +746,6 @@ KviTreeTaskBarItem::KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd)
 	applyOptions();
 }
 
-int KviTreeTaskBarItem::calculateColor(int col1,int col2)
-{
-	int result=col1+(col2-col1)/KVI_NUM_STEPS*m_iStepNumber;
-	return result<255 ? result :255;
-}
-
 KviTreeTaskBarItem::~KviTreeTaskBarItem()
 {
 	KviTalTreeWidget* pView=(KviTalTreeWidget *)treeWidget();
@@ -763,9 +757,9 @@ KviTreeTaskBarItem::~KviTreeTaskBarItem()
 
 void KviTreeTaskBarItem::applyOptions()
 {
-	m_iRedDiff=(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).red()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red())/KVI_NUM_STEPS;
-	m_iGreenDiff=(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).green()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green())/KVI_NUM_STEPS;
-	m_iBlueDiff=(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).blue()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue())/KVI_NUM_STEPS;
+	setData(0, KVI_TTBID_REDDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).red()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red())/KVI_NUM_STEPS);
+	setData(0, KVI_TTBID_GREENDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).green()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green())/KVI_NUM_STEPS);
+	setData(0, KVI_TTBID_BLUEDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).blue()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue())/KVI_NUM_STEPS);
 }
 
 void KviTreeTaskBarItem::captionChanged()
@@ -791,6 +785,9 @@ void KviTreeTaskBarItem::captionChanged()
 			szText = m_pWindow->plainTextCaption();
 		break;
 	}
+	if(m_pWindow->isMinimized())
+		szText.prepend('(').append(')');
+
 	setData(0, Qt::DisplayRole, szText);
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
@@ -803,6 +800,8 @@ void KviTreeTaskBarItem::unhighlight()
 {
 	if(m_iHighlightLevel < 1)return;
 	m_iHighlightLevel = 0;
+	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
+	
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
 }
 
@@ -811,6 +810,8 @@ void KviTreeTaskBarItem::highlight(int iLevel)
 	if(iLevel <= m_iHighlightLevel)return;
 	if(isSelected() && g_pFrame->isActiveWindow())return;
 	m_iHighlightLevel = iLevel;
+	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
+
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
 	if(isSelected())return;
 }
@@ -819,6 +820,7 @@ void KviTreeTaskBarItem::setProgress(int progress)
 {
 	if(progress == m_iProgress)return;
 	m_iProgress = progress;
+	setData(0, KVI_TTBID_PROGRESS, m_iProgress);
 }
 
 void KviTreeTaskBarItem::setActive(bool bActive)
@@ -839,184 +841,11 @@ void KviTreeTaskBarItem::setActive(bool bActive)
 			// was selected: the list view will repaint it
 		}
 	}
-}
-/*
-void KviTreeTaskBarItem::paintBranches(QPainter *p,const QColorGroup &,int w,int y,int h)
-{
-	SET_ANTI_ALIASING(*p);
-	//((KviTreeTaskBarTreeWidget *)treeWidget())->paintEmptyArea(p,QRect(0,y,w,totalHeight() - height()));
-	((KviTreeTaskBarTreeWidget *)treeWidget())->paintEmptyArea(p,QRect(0,y,w,h));
+
+	//always repaint
+	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 }
 
-void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int column,int width,int height)
-{
-	//KviDoubleBuffer db(width,height());
-	KviDoubleBuffer db(width,height);
-	QPixmap * pMemBuffer = db.pixmap();
-	QPainter p(pMemBuffer);
-	SET_ANTI_ALIASING(p);
-	
-	if(isSelected())
-	{
-		p.fillRect(0,0,width,height,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
-	} else {
-		if(!m_iStepNumber)
-		{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-			if(g_pShadedChildGlobalDesktopBackground)
-			{
-				QPoint pnt = treeWidget()->viewport()->mapToGlobal(QPoint(int(painter->worldMatrix().dx()),int(painter->worldMatrix().dy())));
-				p.drawTiledPixmap(0,0,width,height,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
-			} else {
-#endif
-				p.fillRect(0,0,width,height,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-			}
-#endif		
-			QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
-			if(pix)
-			{
-				QPoint pnt = QPoint(int(painter->worldMatrix().dx()),int(painter->worldMatrix().dy()));
-				//p.drawTiledPixmap(0,0,width,height(),*pix,pnt.x(),pnt.y());
-//				debug("%i %i",pnt.x(),pnt.y());
-				p.translate(-pnt.x(),-pnt.y());
-				KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),QRect(pnt.x(),pnt.y(),width,height),treeWidget()->width(),treeWidget()->height());
-				p.translate(pnt.x(),pnt.y());
-			}
-		} else {
-			p.fillRect(0,0,width,height,
-				QColor(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red()+m_iRedDiff*m_iStepNumber,
-					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green()+m_iGreenDiff*m_iStepNumber,
-					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue()+m_iBlueDiff*m_iStepNumber
-					)
-				);
-			
-		}
-	}
-
-	int h = height;
-	int im = 0; //treeWidget()->itemMargin();
-	int yPixmap = (h - 16) >> 1;
-
-	QString szText;
-
-	QRect cRect(im + 3,0,width - (im << 1),height);
-
-	switch(m_pWindow->type())
-	{
-		case KVI_WINDOW_TYPE_CONSOLE:
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIrcContextIndicator))
-			{
-				QColor base = cg.background();
-				QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
-				base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
-					(base.blue() + cntx.blue()) >> 1);
-				p.fillRect(im + 2,yPixmap + 1,14,15,base);
-				//draw_frame_helper(&p,im + 1,yPixmap,im + 15,yPixmap + 15,base.light(180),base.dark());
-				if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-				{
-					p.drawPixmap(im + 20,yPixmap,*(m_pWindow->myIconPtr()));
-					cRect.setLeft(cRect.left() + 37);
-				} else {
-					cRect.setLeft(cRect.left() + 20);
-				}
-			} else {
-				if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-				{
-					p.drawPixmap(im,yPixmap,*(m_pWindow->myIconPtr()));
-					cRect.setLeft(cRect.left() + 17);
-				}
-			}
-			QFont f = QFont();
-			f.setBold(true);
-			p.setFont(f);
-			KviTaskBarBase::getTextForConsole(szText,(KviConsole *)m_pWindow);
-		}
-		break;
-		case KVI_WINDOW_TYPE_CHANNEL:
-		case KVI_WINDOW_TYPE_DEADCHANNEL:
-			szText = ((KviChannel *)m_pWindow)->nameWithUserFlag();
-			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-			{
-				p.drawPixmap(im,yPixmap,*(m_pWindow->myIconPtr()));
-				cRect.setLeft(cRect.left() + 17);
-			}
-		break;
-		case KVI_WINDOW_TYPE_QUERY:
-		case KVI_WINDOW_TYPE_DEADQUERY:
-			szText = m_pWindow->windowName();
-			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-			{
-				p.drawPixmap(im,yPixmap,*(m_pWindow->myIconPtr()));
-				cRect.setLeft(cRect.left() + 17);
-			}
-		break;
-		default:
-			szText = m_pWindow->plainTextCaption();
-			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-			{
-				p.drawPixmap(im,yPixmap,*(m_pWindow->myIconPtr()));
-				cRect.setLeft(cRect.left() + 17);
-			}
-		break;
-	}
-
-	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarActivityMeter))
-	{
-		unsigned int uActivityValue;
-		unsigned int uActivityTemperature;
-		if(m_pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
-		{
-			p.drawPixmap(cRect.left(),yPixmap,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
-			cRect.setLeft(cRect.left() + 7);
-		}
-	}
-
-	if(m_iProgress >= 0)
-	{
-		// paint the progress bar
-		int wdth = (m_iProgress * cRect.width()) / 100;
-		p.fillRect(cRect.x(),cRect.y(),wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarProgress));
-	}
-
-	if(isSelected())
-	{
-		p.setPen(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground));
-	} else {
-		int iLevel;
-		switch(m_iHighlightLevel)
-		{
-			case 0: iLevel = KviOption_colorTreeTaskBarForeground; break;
-			case 1: iLevel = KviOption_colorTreeTaskBarHighlight1Foreground; break;
-			case 2: iLevel = KviOption_colorTreeTaskBarHighlight2Foreground; break;
-			case 3: iLevel = KviOption_colorTreeTaskBarHighlight3Foreground; break;
-			case 4: iLevel = KviOption_colorTreeTaskBarHighlight4Foreground; break;
-			default: iLevel = KviOption_colorTreeTaskBarHighlight5Foreground; break;
-		}
-		p.setPen(
-			QColor(
-				calculateColor(KVI_OPTION_COLOR(iLevel).red(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).red()),
-				calculateColor(KVI_OPTION_COLOR(iLevel).green(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).green()),
-				calculateColor(KVI_OPTION_COLOR(iLevel).blue(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).blue())
-				)
-			);
-	}
-
-	if(m_pWindow->isMinimized())
-	{
-		QString tmp = QChar('(');
-		tmp += szText;
-		tmp += QChar(')');
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,tmp,-1,0);
-	} else {
-		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1,0);
-	}
-	
-	painter->drawPixmap(0,0,*pMemBuffer,0,0,width,height);
-	//bitBlt(painter->pixmap(),0,0,pMemBuffer,0,0,width,height(),Qt::CopyROP,false);
-}
-*/
 QString KviTreeTaskBarItem::key(int,bool) const
 {
 	QString ret = m_pWindow->typeString();
@@ -1039,6 +868,7 @@ void KviTreeTaskBarItem::timerShot()
 		m_pAnimTimer->stop();
 		m_iStepNumber=0; //make shure, that we cannot get out of range
 	}
+	setData(0, KVI_TTBID_STEPNUM, m_iStepNumber);
 }
 
 void KviTreeTaskBarItem::mouseEnter()
@@ -1075,6 +905,8 @@ KviTreeTaskBarTreeWidget::KviTreeTaskBarTreeWidget(QWidget * par)
 	viewport()->setMouseTracking(TRUE);
 	m_pPrevItem=0;
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setSelectionBehavior(QAbstractItemView::SelectItems);
+	setSelectionMode(QAbstractItemView::SingleSelection);
 }
 
 KviTreeTaskBarTreeWidget::~KviTreeTaskBarTreeWidget()
@@ -1167,9 +999,8 @@ void KviTreeTaskBarTreeWidget::paintEmptyArea(QPainter * p,const QRect &rct)
 	}
 }
 */
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // KviTreeTaskBar
-//
 
 KviTreeTaskBar::KviTreeTaskBar()
 : KviTaskBarBase()
@@ -1180,8 +1011,8 @@ KviTreeTaskBar::KviTreeTaskBar()
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	setWidget(m_pTreeWidget);
 
-	//TODO create an ad-hoc itemdelegate for this view
-	m_pItemDelegate = new KviTalIconAndRichTextItemDelegate(m_pTreeWidget);
+	//ad-hoc itemdelegate for this view
+	m_pItemDelegate = new KviTreeTaskBarItemDelegate(m_pTreeWidget);
 	m_pTreeWidget->setItemDelegate(m_pItemDelegate);
 
 	// FIXME: this code is useless ?
@@ -1461,6 +1292,170 @@ void KviTreeTaskBar::applyOptions()
 	}
 }
 
+// KviTreeTaskBarItemDelegate
+
+int KviTreeTaskBarItemDelegate::calculateColor(int col1,int col2, int iStepNumber) const
+{
+	int result=col1+(col2-col1)/KVI_NUM_STEPS*iStepNumber;
+	return result<255 ? result :255;
+}
+
+void KviTreeTaskBarItemDelegate::paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+	QRect rect=option.rect;
+	int height=rect.height(), width=rect.width();
+	KviDoubleBuffer db(width,height);
+	QPixmap * pMemBuffer = db.pixmap();
+	QPainter p(pMemBuffer);
+	SET_ANTI_ALIASING(p);
+	QString szText=index.data(Qt::DisplayRole).toString();
+	int iStepNumber=index.data(KVI_TTBID_STEPNUM).toInt();
+	int iRedDiff=index.data(KVI_TTBID_REDDIFF).toInt();
+	int iGreenDiff=index.data(KVI_TTBID_GREENDIFF).toInt();
+	int iBlueDiff=index.data(KVI_TTBID_BLUEDIFF).toInt();
+	int iHighlightLevel=index.data(KVI_TTBID_HIGHLIGHT).toInt();
+	int iProgress=index.data(KVI_TTBID_PROGRESS).toInt();
+
+	//FIXME not exactly model/view coding style..
+	KviTreeTaskBarTreeWidget* treeWidget = (KviTreeTaskBarTreeWidget*)parent();
+	KviTreeTaskBarItem* item = (KviTreeTaskBarItem*) treeWidget->itemFromIndex(index);
+	KviWindow* pWindow = item->kviWindow();
+	
+	if (option.state & QStyle::State_Selected)
+	{
+		p.fillRect(0,0,width,height,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
+	} else {
+		if(!iStepNumber)
+		{
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+			if(g_pShadedChildGlobalDesktopBackground)
+			{
+				QPoint pnt = treeWidget->viewport()->mapToGlobal(QPoint(int(painter->worldMatrix().dx()),int(painter->worldMatrix().dy())));
+				p.drawTiledPixmap(0,0,width,height,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+			} else {
+#endif
+				p.fillRect(0,0,width,height,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+			}
+#endif		
+			QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
+			if(pix)
+			{
+				QPoint pnt = QPoint(int(painter->worldMatrix().dx()),int(painter->worldMatrix().dy()));
+				p.translate(-pnt.x(),-pnt.y());
+				KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),QRect(pnt.x(),pnt.y(),width,height),treeWidget->width(),treeWidget->height());
+				p.translate(pnt.x(),pnt.y());
+			}
+		} else {
+			p.fillRect(0,0,width,height,
+				QColor(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red()+iRedDiff*iStepNumber,
+					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green()+iGreenDiff*iStepNumber,
+					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue()+iBlueDiff*iStepNumber
+					)
+				);
+			
+		}
+	}
+
+	int h = height;
+	int im = 0; //treeWidget()->itemMargin();
+	int yPixmap = (h - 16) >> 1;
+
+	QRect cRect(im + 3,0,width - (im << 1),height);
+
+	switch(pWindow->type())
+	{
+		case KVI_WINDOW_TYPE_CONSOLE:
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIrcContextIndicator))
+			{
+				QColor base = option.palette.window().color();
+				QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
+				base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
+					(base.blue() + cntx.blue()) >> 1);
+				p.fillRect(im + 2,yPixmap + 1,14,15,base);
+				if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
+				{
+					p.drawPixmap(im + 20,yPixmap,*(pWindow->myIconPtr()));
+					cRect.setLeft(cRect.left() + 37);
+				} else {
+					cRect.setLeft(cRect.left() + 20);
+				}
+			} else {
+				if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
+				{
+					p.drawPixmap(im,yPixmap,*(pWindow->myIconPtr()));
+					cRect.setLeft(cRect.left() + 17);
+				}
+			}
+			QFont f = QFont();
+			f.setBold(true);
+			p.setFont(f);
+		}
+		break;
+		case KVI_WINDOW_TYPE_CHANNEL:
+		case KVI_WINDOW_TYPE_DEADCHANNEL:
+		case KVI_WINDOW_TYPE_QUERY:
+		case KVI_WINDOW_TYPE_DEADQUERY:
+		default:
+			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
+			{
+				p.drawPixmap(im,yPixmap,*(pWindow->myIconPtr()));
+				cRect.setLeft(cRect.left() + 17);
+			}
+		break;
+	}
+
+	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarActivityMeter))
+	{
+		unsigned int uActivityValue;
+		unsigned int uActivityTemperature;
+		if(pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
+		{
+			p.drawPixmap(cRect.left(),yPixmap,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			cRect.setLeft(cRect.left() + 7);
+		}
+	}
+
+	if(iProgress >= 0)
+	{
+		// paint the progress bar
+		int wdth = (iProgress * cRect.width()) / 100;
+		p.fillRect(cRect.x(),cRect.y(),wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarProgress));
+	}
+
+	if (option.state & QStyle::State_Selected)
+	{
+		p.setPen(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground));
+	} else {
+		int iLevel;
+		switch(iHighlightLevel)
+		{
+			case 0: iLevel = KviOption_colorTreeTaskBarForeground; break;
+			case 1: iLevel = KviOption_colorTreeTaskBarHighlight1Foreground; break;
+			case 2: iLevel = KviOption_colorTreeTaskBarHighlight2Foreground; break;
+			case 3: iLevel = KviOption_colorTreeTaskBarHighlight3Foreground; break;
+			case 4: iLevel = KviOption_colorTreeTaskBarHighlight4Foreground; break;
+			default: iLevel = KviOption_colorTreeTaskBarHighlight5Foreground; break;
+		}
+		p.setPen(
+			QColor(
+				calculateColor(KVI_OPTION_COLOR(iLevel).red(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).red(),iStepNumber),
+				calculateColor(KVI_OPTION_COLOR(iLevel).green(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).green(),iStepNumber),
+				calculateColor(KVI_OPTION_COLOR(iLevel).blue(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground).blue(),iStepNumber)
+				)
+			);
+	}
+
+	p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText);
+	painter->drawPixmap(rect.x(),rect.y(),*pMemBuffer,0,0,width,height);
+}
+
+QSize KviTreeTaskBarItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+	QString text=index.data(Qt::DisplayRole).toString();
+	return QSize(((KviTreeTaskBarTreeWidget*)parent())->viewport()->size().width(), 20);
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_taskbar.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -126,6 +126,7 @@ class KVIRC_API KviWindow : public QWidget
 	friend class KviTaskBarItem;
 	friend class KviTaskBarButton;
 	friend class KviTreeTaskBarItem;
+	friend class KviTreeTaskBarItemDelegate;
 	friend class KviTreeTaskBar;
 	Q_PROPERTY(int KviProperty_ChildFocusOwner READ type)
 	Q_OBJECT
