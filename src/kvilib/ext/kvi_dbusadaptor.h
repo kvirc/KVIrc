@@ -1,3 +1,5 @@
+#ifndef KVI_DBUSADAPTOR_H
+#define KVI_DBUSADAPTOR_H
 //=============================================================================
 //
 //   File : kvi_dbusadaptor.h
@@ -22,13 +24,9 @@
 //
 //=============================================================================
 
-#ifndef KVI_DBUSADAPTOR_H
-#define KVI_DBUSADAPTOR_H
-
-	#include "kvi_settings.h"
+#include "kvi_settings.h"
 
 #ifdef COMPILE_DBUS_SUPPORT
-
 	#include <QDBusAbstractAdaptor>
 	#include <QDBusInterface>
 	#include <QObject>
