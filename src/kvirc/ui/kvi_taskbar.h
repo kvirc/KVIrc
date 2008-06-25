@@ -234,11 +234,13 @@ public:
 	KviTreeTaskBarTreeWidget(QWidget * par);
 	~KviTreeTaskBarTreeWidget();
 protected:
-	virtual void contentsMousePressEvent(QMouseEvent *e);
-	//virtual void paintEmptyArea(QPainter * p,const QRect &rct);
+	virtual void mousePressEvent(QMouseEvent *e);
+	virtual void paintEvent(QPaintEvent * event);
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void contentsMouseMoveEvent ( QMouseEvent * e );
+	virtual void mouseMoveEvent ( QMouseEvent * e );
 	virtual void leaveEvent(QEvent *);
+private:
+	KviTaskBarItem * lastItem();
 signals:
 	void leftMousePress(KviTalTreeWidgetItem * it);
 	void rightMousePress(KviTalTreeWidgetItem * it);
