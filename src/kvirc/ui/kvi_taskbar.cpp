@@ -764,15 +764,6 @@ void KviTreeTaskBarItem::applyOptions()
 	setData(0, KVI_TTBID_BLUEDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).blue()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue())/KVI_NUM_STEPS);
 }
 
-bool KviTreeTaskBarItem::operator< ( const KviTreeTaskBarItem & other ) const
-{
-	//this is needed because otherway our treewidget is sorted by the whole column,
-	int myNumber = currentCaption().toInt();
-	int otherNumber = other.currentCaption().toInt();
-	printf("%s %d < %s %d = %d\n",currentCaption().toUtf8().data(), other.currentCaption().toUtf8().data(), myNumber, otherNumber, myNumber < otherNumber);
-	return myNumber < otherNumber;
-}
-
 QString KviTreeTaskBarItem::currentCaption() const
 {
 	QString szText;
@@ -849,7 +840,6 @@ void KviTreeTaskBarItem::setActive(bool bActive)
 			m_iHighlightLevel = 0;
 	}
 
-	//always repaint
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 }
 
@@ -876,6 +866,7 @@ void KviTreeTaskBarItem::timerShot()
 		m_iStepNumber=0; //make shure, that we cannot get out of range
 	}
 	setData(0, KVI_TTBID_STEPNUM, m_iStepNumber);
+	treeWidget()->viewport()->update();
 }
 
 void KviTreeTaskBarItem::mouseEnter()
@@ -953,6 +944,18 @@ void KviTreeTaskBarTreeWidget::mousePressEvent(QMouseEvent *e)
 	}
 }
 
+void KviTreeTaskBarTreeWidget::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)itemAt(e->pos());
+	if(it)
+	{
+		if(e->button() & Qt::LeftButton)
+		{
+			it->setExpanded(!(it->isExpanded()));
+		}
+	}
+}
+
 void KviTreeTaskBarTreeWidget::sort()
 {
 	sortItems(0,Qt::AscendingOrder);
@@ -999,6 +1002,7 @@ void KviTreeTaskBarTreeWidget::paintEvent(QPaintEvent * event)
 	}
 	delete p;
 
+	//call paint on all childrens
 	KviTalTreeWidget::paintEvent(event);
 }
 
@@ -1233,7 +1237,9 @@ int KviTreeTaskBarItemDelegate::calculateColor(int col1,int col2, int iStepNumbe
 void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	QRect rect=option.rect;
-	SET_ANTI_ALIASING(*p);
+	QRect branchRect = QRect(0, rect.top(), rect.left(), rect.height());
+	QRect fullRect = QRect(0, rect.top(), rect.left()+rect.width(), rect.height());
+
 	QString szText=index.data(Qt::DisplayRole).toString();
 	int iStepNumber=index.data(KVI_TTBID_STEPNUM).toInt();
 	int iRedDiff=index.data(KVI_TTBID_REDDIFF).toInt();
@@ -1251,7 +1257,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 	if (option.state & QStyle::State_Selected)
 	{
 		//selection colored background
-		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
+		p->fillRect(fullRect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
 	} else {
 		if(!iStepNumber)
 		{
@@ -1259,8 +1265,8 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 			//pseudo transparent background
 			if(g_pShadedChildGlobalDesktopBackground)
 			{
-				QPoint pnt = treeWidget->viewport()->mapToGlobal(rect.topLeft());
-				p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+				QPoint pnt = treeWidget->viewport()->mapToGlobal(fullRect.topLeft());
+				p->drawTiledPixmap(fullRect,*g_pShadedChildGlobalDesktopBackground,pnt);
 			} else {
 #endif
 				p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
@@ -1271,11 +1277,11 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 			QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
 			if(pix)
 			{
-				KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),rect,rect.width(),rect.height());
+				KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),fullRect,fullRect.width(),fullRect.height());
 			}
 		} else {
 			// paint mouse over effect
-			p->fillRect(rect,
+			p->fillRect(fullRect,
 				QColor(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red()+iRedDiff*iStepNumber,
 					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green()+iGreenDiff*iStepNumber,
 					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue()+iBlueDiff*iStepNumber
@@ -1283,6 +1289,12 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 				);
 		}
 	}
+
+	//tree branches
+	treeWidget->drawBranches(p, branchRect, index);
+
+	//set anti aliasing (this comment is useless)
+	SET_ANTI_ALIASING(*p);
 
 	//draw window icon, irc context indicator (a colored square), set font properties for text
 	int im = rect.left();

@@ -203,7 +203,6 @@ public:
 	virtual void unhighlight();
 	virtual void setProgress(int progress);
 	virtual void applyOptions();
-	bool operator< ( const KviTreeTaskBarItem & other ) const;
 protected:
 	void setActive(bool bActive);
 	void mouseEnter();
@@ -236,9 +235,10 @@ public:
 	~KviTreeTaskBarTreeWidget();
 protected:
 	virtual void mousePressEvent(QMouseEvent *e);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void mouseMoveEvent ( QMouseEvent * e );
+	virtual void mouseMoveEvent (QMouseEvent * e);
 	virtual void leaveEvent(QEvent *);
 private:
 	KviTaskBarItem * lastItem();

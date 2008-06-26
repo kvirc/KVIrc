@@ -214,11 +214,11 @@ void KviApp::setup()
 	KviSSL::globalInit();
 #endif
 
-      	g_pIconManager = new KviIconManager();
-
 	// Setup our filesystem and initalize locale
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
+
+	g_pIconManager = new KviIconManager();
 
 #ifdef COMPILE_ON_WINDOWS
 	//need to load image plugins:(
