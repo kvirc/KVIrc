@@ -288,7 +288,7 @@ protected slots:
 #define KVI_TTBID_HIGHLIGHT Qt::UserRole + 4
 #define KVI_TTBID_PROGRESS Qt::UserRole + 5
 
-class KVILIB_API KviTreeTaskBarItemDelegate : public KviTalIconAndRichTextItemDelegate
+class KVIRC_API KviTreeTaskBarItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
 	Q_OBJECT
 public:
