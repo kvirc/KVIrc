@@ -24,16 +24,16 @@
 //=============================================================================
 
 #include "mp_interface.h"
-#include "mp_amarokinterface.h"
-#include "mp_amipinterface.h"
-#include "mp_mprisinterface.h"
-#include "mp_jukinterface.h"
-#include "mp_winampinterface.h"
 #include "mp_xmmsinterface.h"
-#include "mp_xmms2interface.h"
+#include "mp_amarokinterface.h"
+#include "mp_winampinterface.h"
+#include "mp_amipinterface.h"
+#include "mp_jukinterface.h"
 
 #include "kvi_module.h"
 #include "kvi_options.h"
+
+
 #include "kvi_locale.h"
 #include "kvi_out.h"
 
@@ -1242,7 +1242,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 	@syntax:
 		$mediaplayer.getRepeat()
 	@description:
-		Return the value of the Repeat flag for the current track (1 for ON, 0 for OFF).[br]
+		Return the value of the Repeat flag for the current track (1 for ON, 0 for OFF.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1265,7 +1265,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 	@syntax:
 		$mediaplayer.getShuffle()
 	@description:
-		Return the value of the Shuffle flag (1 for ON, 0 for OFF).[br]
+		Return the value of the Shuffle flag (1 for ON, 0 for OFF.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1310,7 +1310,7 @@ MP_KVS_FUNCTION(getEqData)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 
-	bool bQuiet = szOptions.indexOf('q',Qt::CaseInsensitive) != -1;
+	bool bQuiet = szOptions.find('q',false) != -1;
 
 	int ret = g_pMPInterface->getEqData(iValue);
 
@@ -1401,7 +1401,7 @@ MP_KVS_FUNCTION(localFile)
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	QString szRet = g_pMPInterface->mrl();
 	if(szRet.isEmpty())return true;
-	if(szRet.startsWith("file://",Qt::CaseInsensitive))
+	if(szRet.startsWith("file://",false))
 	{
 		szRet.remove(0,7);
 		c->returnValue()->setString(szRet);
@@ -1520,13 +1520,13 @@ MP_KVS_FUNCTION(status)
 	@type:
 		command
 	@title:
-		mediaplayer.setRepeat
+		$mediaplayer.setRepeat
 	@short:
 		Set the repeat flag.
 	@syntax:
-		mediaplayer.setRepeat [-q] <repeat:bool>
+		mediaplayer.getRepeat [-q] <repeat:bool>
 	@description:
-		Set the Repeat flag to "repeat" (1 for ON, 0 for OFF).[br]
+		Set the Repeat flag to "repeat" (1 for ON, 0 for OFF.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1563,13 +1563,13 @@ MP_KVS_COMMAND(setRepeat)
 	@type:
 		command
 	@title:
-		mediaplayer.setShuffle
+		$mediaplayer.setShuffle
 	@short:
 		Set the repeat flag.
 	@syntax:
-		mediaplayer.setShuffle [-q] <shuffle:bool>
+		mediaplayer.getShuffle [-q] <shuffle:bool>
 	@description:
-		Set the Shuffle flag to "shuffle" (1 for ON, 0 for OFF).[br]
+		Set the Shuffle flag to "shuffle" (1 for ON, 0 for OFF.[br]
 		Take a look at the [module:mediaplayer]mediaplayer module documentation[/module]
 		for more details about how it works.[br]
 	@seealso:
@@ -1605,20 +1605,17 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList = new KviPointerList<KviMediaPlayerInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
-#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
+#ifndef COMPILE_ON_WINDOWS
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmms2Interface));
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviBmpxInterface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousInterface));
 #endif
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#ifdef COMPILE_ON_WINDOWS
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmarokInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviJukInterface));
 #endif
@@ -1735,14 +1732,16 @@ static bool mediaplayer_module_ctrl(KviModule * m,const char * operation,void * 
 	return false;
 }
 
+
+
 KVIRC_MODULE(
 	"mediaplayer",
-	"4.0.0",
-	"Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)," \
+	"1.1.0",
+	"Copyright (C) 2001-2007 Szymon Stefanek (pragma at kvirc dot net), " \
 		"Christoph Thielecke (crissi99 at gmx dot de)," \
 		"Tonino Imbesi (grifisx at barmes dot org)," \
-		"Alessandro Carbone (elfonol at gmail dot com)," \
-		"Alexey Uzhva (wizard at opendoor dot ru)," \
+		"Alessandro Carbone (noldor at barmes dot org)," \
+		"Alexey Uzhva (wizard at opendoor dot ru), " \
 		"Serge Baranov (sbaranov at gmail dot com)",
 	"Interface to various media players",
 	mediaplayer_module_init,
