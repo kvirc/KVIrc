@@ -89,6 +89,7 @@ KviTaskBarBase::~KviTaskBarBase()
 
 void KviTaskBarBase::updateActivityMeter()
 {
+	
 }
 
 void KviTaskBarBase::getTextForConsole(QString &szText,KviConsole * pConsole)
@@ -719,10 +720,7 @@ bool KviClassicTaskBar::setIterationPointer(KviTaskBarItem * it)
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviTreeTaskBarItem
-//
-
 
 KviTreeTaskBarItem::KviTreeTaskBarItem(KviTalTreeWidget * par,KviWindow * wnd)
 : KviTalTreeWidgetItem(par) , KviTaskBarItem(wnd)
@@ -733,6 +731,8 @@ KviTreeTaskBarItem::KviTreeTaskBarItem(KviTalTreeWidget * par,KviWindow * wnd)
 	m_pAnimTimer=new QTimer();
 	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
+	//sort the widget
+	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeTaskBarItem::KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd)
@@ -744,6 +744,8 @@ KviTreeTaskBarItem::KviTreeTaskBarItem(KviTreeTaskBarItem * par,KviWindow * wnd)
 	m_pAnimTimer=new QTimer();
 	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
+	//sort the widget
+	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeTaskBarItem::~KviTreeTaskBarItem()
@@ -762,7 +764,16 @@ void KviTreeTaskBarItem::applyOptions()
 	setData(0, KVI_TTBID_BLUEDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground).blue()-KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue())/KVI_NUM_STEPS);
 }
 
-void KviTreeTaskBarItem::captionChanged()
+bool KviTreeTaskBarItem::operator< ( const KviTreeTaskBarItem & other ) const
+{
+	//this is needed because otherway our treewidget is sorted by the whole column,
+	int myNumber = currentCaption().toInt();
+	int otherNumber = other.currentCaption().toInt();
+	printf("%s %d < %s %d = %d\n",currentCaption().toUtf8().data(), other.currentCaption().toUtf8().data(), myNumber, otherNumber, myNumber < otherNumber);
+	return myNumber < otherNumber;
+}
+
+QString KviTreeTaskBarItem::currentCaption() const
 {
 	QString szText;
 
@@ -785,15 +796,20 @@ void KviTreeTaskBarItem::captionChanged()
 			szText = m_pWindow->plainTextCaption();
 		break;
 	}
+
+	return szText;
+}
+
+void KviTreeTaskBarItem::captionChanged()
+{
+	QString szText=currentCaption();
 	if(m_pWindow->isMinimized())
 		szText.prepend('(').append(')');
 
-	setData(0, Qt::DisplayRole, szText);
+	//sort the widget
+	treeWidget()->sortItems(0,Qt::AscendingOrder);
 
-	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIcons))
-	{
-		setData(0, Qt::DecorationRole, QIcon(*(m_pWindow->myIconPtr())));
-	}
+	setData(0, Qt::DisplayRole, szText);
 }
 
 void KviTreeTaskBarItem::unhighlight()
@@ -885,9 +901,7 @@ void KviTreeTaskBarItem::mouseLeave()
 KviTreeTaskBarTreeWidget::KviTreeTaskBarTreeWidget(QWidget * par)
 : KviTalTreeWidget(par)
 {
-	//setSorting(0);
-	header()->setSortIndicatorShown(true);
-	//setItemMargin(2);
+	header()->setSortIndicatorShown(false);
 	setFrameShape(NoFrame);
 	viewport()->setMouseTracking(TRUE);
 	m_pPrevItem=0;
@@ -921,18 +935,12 @@ void KviTreeTaskBarTreeWidget::leaveEvent(QEvent *)
 	setCursor(Qt::ArrowCursor);
 }
 
-
 void KviTreeTaskBarTreeWidget::mousePressEvent(QMouseEvent *e)
 {
 	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)itemAt(e->pos());
 	if(it)
 	{
-		if(e->button() & Qt::LeftButton)
-		{
-			clearSelection();
-			it->setSelected(true); // this MUST go after it->setActive()
-			emit leftMousePress(it);
-		}
+		if(e->button() & Qt::LeftButton)emit leftMousePress(it);
 		else if(e->button() & Qt::RightButton)emit rightMousePress(it);
 	} else {
 		if(e->button() & Qt::RightButton)
@@ -1140,6 +1148,9 @@ void KviTreeTaskBar::setActiveItem(KviTaskBarItem * it)
 		{
 			if(!((KviTreeTaskBarItem *)it)->parent()->isExpanded())((KviTreeTaskBarItem *)it)->parent()->setExpanded(true);
 		}
+
+		//default selectionModel doesn't enforce singleselection if done from the code
+		m_pTreeWidget->selectionModel()->clearSelection();
 		((KviTreeTaskBarItem *)it)->setActive(true);
 		((KviTreeTaskBarItem *)it)->setSelected(true); // this MUST go after it->setActive()
 		if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
@@ -1163,71 +1174,12 @@ KviTaskBarItem * KviTreeTaskBar::firstItem()
 KviTaskBarItem * KviTreeTaskBar::nextItem()
 {
 	if(!m_pCurrentItem)return 0;
-/*
-	if(m_pCurrentItem->firstChild())
-	{
-		m_pCurrentItem = (KviTreeTaskBarItem *)m_pCurrentItem->firstChild();
-	} else {
-		// this item has no children: try the next sibling
-		if(m_pCurrentItem->nextSibling())
-		{
-			m_pCurrentItem = (KviTreeTaskBarItem *)m_pCurrentItem->nextSibling();
-		} else {
-			if(m_pCurrentItem->parent())
-			{
-				// child with not siblings : try the sibling of the parent
-				m_pCurrentItem = (KviTreeTaskBarItem *)m_pCurrentItem->parent()->nextSibling();
-			} else {
-				m_pCurrentItem = 0; // toplevel with no siblings
-			}
-		}
-	}
-*/
 	return m_pCurrentItem = (KviTreeTaskBarItem *) m_pTreeWidget->itemBelow(m_pCurrentItem);
 }
 
 KviTaskBarItem * KviTreeTaskBar::prevItem()
 {	
-	//KviTreeTaskBarItem * it;
-
 	if(!m_pCurrentItem)return 0;
-/*
-	if(m_pCurrentItem->parent())
-	{
-		// a child item
-		it = (KviTreeTaskBarItem *)m_pCurrentItem->parent()->firstChild();
-
-		while(it)
-		{
-			if(((KviTreeTaskBarItem *)it->nextSibling()) == m_pCurrentItem)break;
-			else it = ((KviTreeTaskBarItem *)(it->nextSibling()));
-		}
-		if(!it)
-		{
-			it = (KviTreeTaskBarItem *)m_pCurrentItem->parent();
-		}
-
-	} else {
-		// a toplevel one
-		it = (KviTreeTaskBarItem *)m_pTreeWidget->firstChild();
-		while(it)
-		{
-			if(((KviTreeTaskBarItem *)it->nextSibling()) == m_pCurrentItem)break;
-			else it = ((KviTreeTaskBarItem *)(it->nextSibling()));
-		}
-		if(it)
-		{
-			if(it->firstChild())
-			{
-				it = ((KviTreeTaskBarItem *)(it->firstChild()));
-				while(it->nextSibling())it = ((KviTreeTaskBarItem *)(it->nextSibling()));
-			}
-		}
-	}
-
-	m_pCurrentItem = it;
-	return it;
-*/
 	return m_pCurrentItem = (KviTreeTaskBarItem *) m_pTreeWidget->itemAbove(m_pCurrentItem);
 }
 
@@ -1248,21 +1200,6 @@ KviTaskBarItem * KviTreeTaskBar::lastItem()
 	} else {
 		return 0;
 	}
-
-/*
-	m_pCurrentItem = (KviTreeTaskBarItem *)m_pTreeWidget->firstChild();
-	for(;;)
-	{
-		if(m_pCurrentItem->nextSibling())
-		{
-			m_pCurrentItem = (KviTreeTaskBarItem *)m_pCurrentItem->nextSibling();
-		} else if(m_pCurrentItem->firstChild())
-		{
-			m_pCurrentItem = (KviTreeTaskBarItem *)m_pCurrentItem->firstChild();
-		} else return m_pCurrentItem;
-	}
-	return 0;
-*/
 }
 
 bool KviTreeTaskBar::setIterationPointer(KviTaskBarItem * it)
@@ -1276,13 +1213,13 @@ bool KviTreeTaskBar::setIterationPointer(KviTaskBarItem * it)
 
 void KviTreeTaskBar::applyOptions()
 {
-	m_pTreeWidget->update();
 	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeTaskbarHeader))
 	{
 		m_pTreeWidget->header()->hide();
 	} else {
 		m_pTreeWidget->header()->show();
 	}
+	m_pTreeWidget->update();
 }
 
 // KviTreeTaskBarItemDelegate
@@ -1305,18 +1242,21 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 	int iHighlightLevel=index.data(KVI_TTBID_HIGHLIGHT).toInt();
 	int iProgress=index.data(KVI_TTBID_PROGRESS).toInt();
 
-	//FIXME not exactly model/view coding style..
+	//FIXME not exactly model/view coding style.. but we need to access data on the associated window
 	KviTreeTaskBarTreeWidget* treeWidget = (KviTreeTaskBarTreeWidget*)parent();
 	KviTreeTaskBarItem* item = (KviTreeTaskBarItem*) treeWidget->itemFromIndex(index);
 	KviWindow* pWindow = item->kviWindow();
-	
+
+	//paint cell background	
 	if (option.state & QStyle::State_Selected)
 	{
+		//selection colored background
 		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
 	} else {
 		if(!iStepNumber)
 		{
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
+			//pseudo transparent background
 			if(g_pShadedChildGlobalDesktopBackground)
 			{
 				QPoint pnt = treeWidget->viewport()->mapToGlobal(rect.topLeft());
@@ -1326,13 +1266,15 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 				p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 			}
-#endif		
+#endif
+			//background image (if defined)
 			QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
 			if(pix)
 			{
 				KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeTaskBarPixmapAlign),rect,rect.width(),rect.height());
 			}
 		} else {
+			// paint mouse over effect
 			p->fillRect(rect,
 				QColor(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).red()+iRedDiff*iStepNumber,
 					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).green()+iGreenDiff*iStepNumber,
@@ -1342,10 +1284,11 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 		}
 	}
 
-	int im = rect.left(); //treeWidget()->itemMargin();
+	//draw window icon, irc context indicator (a colored square), set font properties for text
+	int im = rect.left();
 	int yPixmap = (rect.top() + rect.height() - 16);
 
-	QRect cRect(im + 3,rect.top(),rect.width() - (im << 1),rect.height());
+	QRect cRect(im + 3,rect.top(),rect.width(),rect.height());
 
 	switch(pWindow->type())
 	{
@@ -1372,6 +1315,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 					cRect.setLeft(cRect.left() + 17);
 				}
 			}
+			//console window: bold font
 			QFont f = p->font();
 			f.setBold(true);
 			p->setFont(f);
@@ -1387,12 +1331,14 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 				p->drawPixmap(im,yPixmap,*(pWindow->myIconPtr()));
 				cRect.setLeft(cRect.left() + 17);
 			}
+			//channels, other windows: normal font
 			QFont f = p->font();
 			f.setBold(false);
 			p->setFont(f);
 		break;
 	}
 
+	// paint the channel activity meter
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarActivityMeter))
 	{
 		unsigned int uActivityValue;
@@ -1404,13 +1350,14 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 		}
 	}
 
+	// paint the progress bar
 	if(iProgress >= 0)
 	{
-		// paint the progress bar
 		int wdth = (iProgress * cRect.width()) / 100;
 		p->fillRect(cRect.x(),cRect.y(),wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarProgress));
 	}
 
+	//choose window name font color (highlighting)
 	if (option.state & QStyle::State_Selected)
 	{
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveForeground));
@@ -1434,6 +1381,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 			);
 	}
 
+	//draw window name
 	p->drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText);
 }
 

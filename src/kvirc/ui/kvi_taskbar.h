@@ -202,14 +202,15 @@ public:
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
 	virtual void setProgress(int progress);
-	virtual bool active(){ return isSelected(); };
 	virtual void applyOptions();
+	bool operator< ( const KviTreeTaskBarItem & other ) const;
 protected:
 	void setActive(bool bActive);
 	void mouseEnter();
 	void mouseLeave();
 	void timerShot();
 	int calculateColor(int col1,int col2);
+	QString currentCaption() const;
 };
 
 class KviTreeTaskBarItemInternal : public QObject
@@ -221,7 +222,7 @@ public:
 protected:
 	KviTreeTaskBarItem* m_pItem;
 public slots:
-	void timerShot() { m_pItem->timerShot();};	
+	void timerShot() { m_pItem->timerShot();};
 };
 
 class KVIRC_API KviTreeTaskBarTreeWidget : public KviTalTreeWidget
@@ -285,7 +286,7 @@ protected slots:
 #define KVI_TTBID_GREENDIFF Qt::UserRole + 2
 #define KVI_TTBID_BLUEDIFF Qt::UserRole + 3
 #define KVI_TTBID_HIGHLIGHT Qt::UserRole + 4
-#define KVI_TTBID_PROGRESS Qt::UserRole + 4
+#define KVI_TTBID_PROGRESS Qt::UserRole + 5
 
 class KVILIB_API KviTreeTaskBarItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
@@ -297,11 +298,5 @@ public:
 	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 	int calculateColor(int col1,int col2, int iStepNumber) const;
-/*
-	 void setDefaultIcon(QPixmap *pix){m_pDefaultPix=pix;};
-protected:
-	QAbstractItemView *m_pParent;
-	QPixmap *m_pDefaultPix;
-*/
 };
 #endif //_KVI_TASKBAR_H_
