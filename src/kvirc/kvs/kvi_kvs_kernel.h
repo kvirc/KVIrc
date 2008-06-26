@@ -136,6 +136,7 @@ public:
 	KviPointerList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin)
 	{
 		KviPointerList<QString> *p=new KviPointerList<QString>;
+		p->setAutoDelete(true);
 		completeFunction(szFunctionBegin,p);
 		return p;
 	}
@@ -147,6 +148,7 @@ public:
 			delete l->at(i);
 		}
 	*/
+		if(!l)return;
 		delete l;
 	}
 };
