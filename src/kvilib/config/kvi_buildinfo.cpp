@@ -91,7 +91,9 @@ namespace KviBuildInfo
 
 	QString buildCompilerFlags()
 	{
-		return QString(KVIRC_BUILD_COMPILER_FLAGS);
+		QString flags = QString(KVIRC_BUILD_COMPILER_FLAGS);
+		if(flags.isEmpty()) return "N/A";
+		else return flags;
 	}
 
 	QString buildRevision()
