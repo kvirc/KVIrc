@@ -85,48 +85,49 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 
 static bool objects_module_cleanup(KviModule *m)
 {
-	KviKvsObject_button::unregisterSelf();
-	KviKvsObject_buttongroup::unregisterSelf();
-	KviKvsObject_checkbox::unregisterSelf();
-	KviKvsObject_combobox::unregisterSelf();
-	KviKvsObject_dialog::unregisterSelf();
-	KviKvsObject_dockwindow::unregisterSelf();
-	KviKvsObject_file::unregisterSelf();
-	KviKvsObject_groupbox::unregisterSelf();
-	KviKvsObject_hbox::unregisterSelf();
-	KviKvsObject_label::unregisterSelf();
-	KviKvsObject_layout::unregisterSelf();
-	KviKvsObject_lcd::unregisterSelf();
-	KviKvsObject_lineedit::unregisterSelf();
-	KviKvsObject_list::unregisterSelf();
-	KviKvsObject_listbox::unregisterSelf();
-	KviKvsObject_listview::unregisterSelf();
-	KviKvsObject_listviewitem::unregisterSelf();
-	KviKvsObject_mainwindow::unregisterSelf();
-	KviKvsObject_menubar::unregisterSelf();
-	KviKvsObject_mledit::unregisterSelf();
-	KviKvsObject_painter::unregisterSelf();
-	KviKvsObject_pixmap::unregisterSelf();
-	KviKvsObject_popupmenu::unregisterSelf();
+	// Don't attempt to change the order of these calls.
+	// Derived classes must be unregistered before the base ones.
 	KviKvsObject_process::unregisterSelf();
-	KviKvsObject_progressbar::unregisterSelf();
-	KviKvsObject_radiobutton::unregisterSelf();
-	KviKvsObject_slider::unregisterSelf();
 	KviKvsObject_socket::unregisterSelf();
-	KviKvsObject_spinbox::unregisterSelf();
-	KviKvsObject_tabwidget::unregisterSelf();
-	KviKvsObject_textbrowser::unregisterSelf();
-	KviKvsObject_toolbar::unregisterSelf();
-	KviKvsObject_toolbutton::unregisterSelf();
-	KviKvsObject_urlabel::unregisterSelf();
-	KviKvsObject_vbox::unregisterSelf();
-	KviKvsObject_widget::unregisterSelf();
-	KviKvsObject_window::unregisterSelf();
-	KviKvsObject_wizard::unregisterSelf();
-	KviKvsObject_workspace::unregisterSelf();
-	KviKvsObject_wrapper::unregisterSelf();
 	KviKvsObject_xmlreader::unregisterSelf();
-
+	KviKvsObject_wrapper::unregisterSelf();
+	KviKvsObject_file::unregisterSelf();
+	KviKvsObject_progressbar::unregisterSelf();
+	KviKvsObject_dockwindow::unregisterSelf();
+	KviKvsObject_wizard::unregisterSelf();
+	KviKvsObject_window::unregisterSelf();
+	KviKvsObject_urlabel::unregisterSelf();
+	KviKvsObject_toolbutton::unregisterSelf();
+	KviKvsObject_toolbar::unregisterSelf();
+	KviKvsObject_tabwidget::unregisterSelf();
+	KviKvsObject_spinbox::unregisterSelf();
+	KviKvsObject_slider::unregisterSelf();
+	KviKvsObject_radiobutton::unregisterSelf();
+	KviKvsObject_popupmenu::unregisterSelf();
+	KviKvsObject_pixmap::unregisterSelf();
+	KviKvsObject_painter::unregisterSelf();
+	KviKvsObject_mainwindow::unregisterSelf();
+	KviKvsObject_listviewitem::unregisterSelf();
+	KviKvsObject_listview::unregisterSelf();
+	KviKvsObject_listbox::unregisterSelf();
+	KviKvsObject_combobox::unregisterSelf();
+	KviKvsObject_workspace::unregisterSelf();
+	KviKvsObject_menubar::unregisterSelf();
+	KviKvsObject_lineedit::unregisterSelf();
+	KviKvsObject_lcd::unregisterSelf();
+	KviKvsObject_layout::unregisterSelf();
+	KviKvsObject_hbox::unregisterSelf();
+	KviKvsObject_vbox::unregisterSelf();
+	KviKvsObject_label::unregisterSelf();
+	KviKvsObject_buttongroup::unregisterSelf();
+	KviKvsObject_groupbox::unregisterSelf();
+	KviKvsObject_dialog::unregisterSelf();
+	KviKvsObject_checkbox::unregisterSelf();
+	KviKvsObject_textbrowser::unregisterSelf();
+	KviKvsObject_mledit::unregisterSelf();
+	KviKvsObject_button::unregisterSelf();
+	KviKvsObject_widget::unregisterSelf();
+	KviKvsObject_list::unregisterSelf();
 	return true;
 }
 
@@ -945,47 +946,50 @@ static bool objects_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"killClass",objects_kvs_cmd_killClass);
 
+	// Don't attempt to change the order of these calls.
+	// Derived classes must be registered after the base ones.
+
+	KviKvsObject_list::registerSelf();
+	KviKvsObject_widget::registerSelf();
 	KviKvsObject_button::registerSelf();
-	KviKvsObject_buttongroup::registerSelf();
+	KviKvsObject_mledit::registerSelf();
+	KviKvsObject_textbrowser::registerSelf();
 	KviKvsObject_checkbox::registerSelf();
-	KviKvsObject_combobox::registerSelf();
 	KviKvsObject_dialog::registerSelf();
-	KviKvsObject_dockwindow::registerSelf();
-	KviKvsObject_file::registerSelf();
 	KviKvsObject_groupbox::registerSelf();
-	KviKvsObject_hbox::registerSelf();
+	KviKvsObject_buttongroup::registerSelf();
 	KviKvsObject_label::registerSelf();
+	KviKvsObject_vbox::registerSelf();
+	KviKvsObject_hbox::registerSelf();
 	KviKvsObject_layout::registerSelf();
 	KviKvsObject_lcd::registerSelf();
 	KviKvsObject_lineedit::registerSelf();
-	KviKvsObject_list::registerSelf();
+	KviKvsObject_menubar::registerSelf();
+	KviKvsObject_workspace::registerSelf();
+	KviKvsObject_combobox::registerSelf();
 	KviKvsObject_listbox::registerSelf();
 	KviKvsObject_listview::registerSelf();
 	KviKvsObject_listviewitem::registerSelf();
 	KviKvsObject_mainwindow::registerSelf();
-	KviKvsObject_menubar::registerSelf();
-	KviKvsObject_mledit::registerSelf();
 	KviKvsObject_painter::registerSelf();
 	KviKvsObject_pixmap::registerSelf();
 	KviKvsObject_popupmenu::registerSelf();
-	KviKvsObject_process::registerSelf();
-	KviKvsObject_progressbar::registerSelf();
 	KviKvsObject_radiobutton::registerSelf();
 	KviKvsObject_slider::registerSelf();
-	KviKvsObject_socket::registerSelf();
 	KviKvsObject_spinbox::registerSelf();
 	KviKvsObject_tabwidget::registerSelf();
-	KviKvsObject_textbrowser::registerSelf();
 	KviKvsObject_toolbar::registerSelf();
 	KviKvsObject_toolbutton::registerSelf();
 	KviKvsObject_urlabel::registerSelf();
-	KviKvsObject_vbox::registerSelf();
-	KviKvsObject_widget::registerSelf();
 	KviKvsObject_window::registerSelf();
 	KviKvsObject_wizard::registerSelf();
-	KviKvsObject_workspace::registerSelf();
+	KviKvsObject_dockwindow::registerSelf();
+	KviKvsObject_progressbar::registerSelf();
+	KviKvsObject_file::registerSelf();
 	KviKvsObject_wrapper::registerSelf();
 	KviKvsObject_xmlreader::registerSelf();
+	KviKvsObject_socket::registerSelf();
+	KviKvsObject_process::registerSelf();
 
 	return true;
 }
