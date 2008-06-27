@@ -23,45 +23,45 @@
 //=============================================================================
 
 #include "class_button.h"
-#include "class_checkbox.h"
-#include "class_urllabel.h"
-#include "class_lineedit.h"
-#include "class_multilineedit.h"
-#include "class_combobox.h"
-#include "class_widget.h"
-#include "class_list.h"
-#include "class_file.h"
-#include "class_socket.h"
-#include "class_layout.h"
-#include "class_menubar.h"
-#include "class_window.h"
-#include "class_listbox.h"
-#include "class_progressbar.h"
-#include "class_slider.h"
-#include "class_spinbox.h"
-#include "class_lcd.h"
-#include "class_radiobutton.h"
-#include "class_process.h"
-#include "class_groupbox.h"
 #include "class_buttongroup.h"
-#include "class_tabwidget.h"
-#include "class_workspace.h"
-#include "class_popupmenu.h"
+#include "class_checkbox.h"
+#include "class_combobox.h"
+#include "class_dialog.h"
+#include "class_dockwindow.h"
+#include "class_file.h"
+#include "class_groupbox.h"
+#include "class_hbox.h"
+#include "class_layout.h"
+#include "class_lcd.h"
+#include "class_lineedit.h"
+#include "class_list.h"
+#include "class_listbox.h"
 #include "class_listview.h"
 #include "class_listviewitem.h"
-#include "class_toolbar.h"
 #include "class_mainwindow.h"
-#include "class_toolbutton.h"
-#include "class_wizard.h"
-#include "class_tbrowser.h"
+#include "class_menubar.h"
+#include "class_multilineedit.h"
 #include "class_painter.h"
 #include "class_pixmap.h"
-#include "class_wrapper.h"
-#include "class_dialog.h"
-#include "class_xmlreader.h"
-#include "class_dockwindow.h"
+#include "class_popupmenu.h"
+#include "class_process.h"
+#include "class_progressbar.h"
+#include "class_radiobutton.h"
+#include "class_slider.h"
+#include "class_socket.h"
+#include "class_spinbox.h"
+#include "class_tabwidget.h"
+#include "class_tbrowser.h"
+#include "class_toolbar.h"
+#include "class_toolbutton.h"
+#include "class_urllabel.h"
 #include "class_vbox.h"
-#include "class_hbox.h"
+#include "class_widget.h"
+#include "class_window.h"
+#include "class_wizard.h"
+#include "class_workspace.h"
+#include "class_wrapper.h"
+#include "class_xmlreader.h"
 
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
@@ -85,47 +85,47 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 
 static bool objects_module_cleanup(KviModule *m)
 {
-	KviKvsObject_process::unregisterSelf();
-	KviKvsObject_socket::unregisterSelf();
-	KviKvsObject_xmlreader::unregisterSelf();
-	KviKvsObject_wrapper::unregisterSelf();
-	KviKvsObject_file::unregisterSelf();
-	KviKvsObject_progressbar::unregisterSelf();
-	KviKvsObject_dockwindow::unregisterSelf();
-	KviKvsObject_wizard::unregisterSelf();
-	KviKvsObject_window::unregisterSelf();
-	KviKvsObject_urlabel::unregisterSelf();
-	KviKvsObject_toolbutton::unregisterSelf();
-	KviKvsObject_toolbar::unregisterSelf();
-	KviKvsObject_tabwidget::unregisterSelf();
-	KviKvsObject_spinbox::unregisterSelf();
-	KviKvsObject_slider::unregisterSelf();
-	KviKvsObject_radiobutton::unregisterSelf();
-	KviKvsObject_popupmenu::unregisterSelf();
-	KviKvsObject_pixmap::unregisterSelf();
-	KviKvsObject_painter::unregisterSelf();
-	KviKvsObject_mainwindow::unregisterSelf();
-	KviKvsObject_listviewitem::unregisterSelf();
-	KviKvsObject_listview::unregisterSelf();
-	KviKvsObject_listbox::unregisterSelf();
-	KviKvsObject_combobox::unregisterSelf();
-	KviKvsObject_workspace::unregisterSelf();
-	KviKvsObject_menubar::unregisterSelf();
-	KviKvsObject_lineedit::unregisterSelf();
-	KviKvsObject_lcd::unregisterSelf();
-	KviKvsObject_layout::unregisterSelf();
-	KviKvsObject_hbox::unregisterSelf();
-	KviKvsObject_vbox::unregisterSelf();
-	KviKvsObject_label::unregisterSelf();
-	KviKvsObject_buttongroup::unregisterSelf();
-	KviKvsObject_groupbox::unregisterSelf();
-	KviKvsObject_dialog::unregisterSelf();
-	KviKvsObject_checkbox::unregisterSelf();
-	KviKvsObject_textbrowser::unregisterSelf();
-	KviKvsObject_mledit::unregisterSelf();
 	KviKvsObject_button::unregisterSelf();
-	KviKvsObject_widget::unregisterSelf();
+	KviKvsObject_buttongroup::unregisterSelf();
+	KviKvsObject_checkbox::unregisterSelf();
+	KviKvsObject_combobox::unregisterSelf();
+	KviKvsObject_dialog::unregisterSelf();
+	KviKvsObject_dockwindow::unregisterSelf();
+	KviKvsObject_file::unregisterSelf();
+	KviKvsObject_groupbox::unregisterSelf();
+	KviKvsObject_hbox::unregisterSelf();
+	KviKvsObject_label::unregisterSelf();
+	KviKvsObject_layout::unregisterSelf();
+	KviKvsObject_lcd::unregisterSelf();
+	KviKvsObject_lineedit::unregisterSelf();
 	KviKvsObject_list::unregisterSelf();
+	KviKvsObject_listbox::unregisterSelf();
+	KviKvsObject_listview::unregisterSelf();
+	KviKvsObject_listviewitem::unregisterSelf();
+	KviKvsObject_mainwindow::unregisterSelf();
+	KviKvsObject_menubar::unregisterSelf();
+	KviKvsObject_mledit::unregisterSelf();
+	KviKvsObject_painter::unregisterSelf();
+	KviKvsObject_pixmap::unregisterSelf();
+	KviKvsObject_popupmenu::unregisterSelf();
+	KviKvsObject_process::unregisterSelf();
+	KviKvsObject_progressbar::unregisterSelf();
+	KviKvsObject_radiobutton::unregisterSelf();
+	KviKvsObject_slider::unregisterSelf();
+	KviKvsObject_socket::unregisterSelf();
+	KviKvsObject_spinbox::unregisterSelf();
+	KviKvsObject_tabwidget::unregisterSelf();
+	KviKvsObject_textbrowser::unregisterSelf();
+	KviKvsObject_toolbar::unregisterSelf();
+	KviKvsObject_toolbutton::unregisterSelf();
+	KviKvsObject_urlabel::unregisterSelf();
+	KviKvsObject_vbox::unregisterSelf();
+	KviKvsObject_widget::unregisterSelf();
+	KviKvsObject_window::unregisterSelf();
+	KviKvsObject_wizard::unregisterSelf();
+	KviKvsObject_workspace::unregisterSelf();
+	KviKvsObject_wrapper::unregisterSelf();
+	KviKvsObject_xmlreader::unregisterSelf();
 
 	return true;
 }
@@ -369,23 +369,24 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-/*
-	@doc: objects.variables
-	@title:
-		objects.variables
-	@type:
-		command
-	@short:
-		List object's variables.
-	@syntax:
-		<hash> objects.variables(<hobject>)
-	@description:
-		Returns an hash with the object's variables(useful only for debugging).
-	@seealso:
-		[doc:objects]objects documentation[/doc]
-*/
 static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 {
+	/*
+		@doc: objects.variables
+		@title:
+			objects.variables
+		@type:
+			command
+		@short:
+			List object's variables.
+		@syntax:
+			<hash> objects.variables(<hobject>)
+		@description:
+			Returns an hash with the object's variables(useful only for debugging).
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+
 	kvs_hobject_t hObj;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("object",KVS_PT_HOBJECT,0,hObj)
@@ -409,24 +410,25 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 
 
 }
-/*
-	@doc: objects.classAllHandlers
-	@title:
-		objects.classAllHandlers
-	@type:
-		function
-	@short:
-		List all the functions .
-	@syntax:
-		<hash> objects.classAllHandlers(<class name:string>)
-	@description:
-		Returns an hash with the class's functions(useful only for debugging).
-	@seealso:
-		[doc:objects]objects documentation[/doc]
-*/
 
 static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 {
+	/*
+		@doc: objects.classAllHandlers
+		@title:
+			objects.classAllHandlers
+		@type:
+			function
+		@short:
+			List all the functions .
+		@syntax:
+			<hash> objects.classAllHandlers(<class name:string>)
+		@description:
+			Returns an hash with the class's functions(useful only for debugging).
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+
 	QString szClassName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("class name",KVS_PT_NONEMPTYSTRING,0,szClassName)
@@ -455,7 +457,6 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 
 static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 {
-
 	/*
 		@doc: objects.classes
 		@title:
@@ -510,6 +511,41 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 
 }
 
+static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
+{
+	/*
+		@doc: objects.name
+		@title:
+			objects.name
+		@type:
+			command
+		@short:
+			Returns class name
+		@syntax:
+			<array> $object.name()
+		@description:
+			Returns a string with the name of the class.
+		@seealso:
+			[doc:objects]objects documentation[/doc]
+	*/
+
+	KviKvsObject * obSrcClass;
+	kvs_hobject_t hClass;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("object class",KVS_PT_HOBJECT,0,hClass)
+	KVSM_PARAMETERS_END(c)
+
+	obSrcClass = KviKvsKernel::instance()->objectController()->lookupObject(hClass);
+	if(!obSrcClass)
+	{
+		c->warning(__tr2qs("Inexisting class object for objects.name"));
+		return true;
+	}
+
+	c->returnValue()->setString(obSrcClass->name());
+	return true;
+}
+
 static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 {
 	/*
@@ -530,9 +566,6 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 		@seealso:
 			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
-
-
-
 
 	KviKvsObject *obSrc;
 	KviKvsObject *obTrg;
@@ -896,68 +929,63 @@ static bool objects_module_can_unload(KviModule *m)
 static bool objects_module_init(KviModule * m)
 {
 	// functions
-	KVSM_REGISTER_FUNCTION(m,"exists",objects_kvs_fnc_exists);
-	KVSM_REGISTER_FUNCTION(m,"instances",objects_kvs_fnc_instances);
+	KVSM_REGISTER_FUNCTION(m,"classAllHandlers",objects_kvs_fnc_classAllHandlers);
 	KVSM_REGISTER_FUNCTION(m,"classes",objects_kvs_fnc_classes);
 	KVSM_REGISTER_FUNCTION(m,"dump",objects_kvs_fnc_listObjects);
+	KVSM_REGISTER_FUNCTION(m,"exists",objects_kvs_fnc_exists);
+	KVSM_REGISTER_FUNCTION(m,"instances",objects_kvs_fnc_instances);
+	KVSM_REGISTER_FUNCTION(m,"name",objects_kvs_fnc_name);
 	KVSM_REGISTER_FUNCTION(m,"variables",objects_kvs_fnc_variables);
-	KVSM_REGISTER_FUNCTION(m,"classAllHandlers",objects_kvs_fnc_classAllHandlers);
 
 	// commands
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"connect",objects_kvs_cmd_connect);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"killClass",objects_kvs_cmd_killClass);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"bitblt",objects_kvs_cmd_bitBlt);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"blend",objects_kvs_cmd_blend);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearObjects",objects_kvs_cmd_clearObjects);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"connect",objects_kvs_cmd_connect);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"killClass",objects_kvs_cmd_killClass);
 
-	KviKvsObject_list::registerSelf();
-
-	KviKvsObject_widget::registerSelf();
 	KviKvsObject_button::registerSelf();
-	KviKvsObject_mledit::registerSelf();
-
-	KviKvsObject_textbrowser::registerSelf();
-	KviKvsObject_checkbox::registerSelf();
-	KviKvsObject_dialog::registerSelf();
-	KviKvsObject_groupbox::registerSelf();
 	KviKvsObject_buttongroup::registerSelf();
-	KviKvsObject_label::registerSelf();
-	KviKvsObject_vbox::registerSelf();
+	KviKvsObject_checkbox::registerSelf();
+	KviKvsObject_combobox::registerSelf();
+	KviKvsObject_dialog::registerSelf();
+	KviKvsObject_dockwindow::registerSelf();
+	KviKvsObject_file::registerSelf();
+	KviKvsObject_groupbox::registerSelf();
 	KviKvsObject_hbox::registerSelf();
+	KviKvsObject_label::registerSelf();
 	KviKvsObject_layout::registerSelf();
 	KviKvsObject_lcd::registerSelf();
 	KviKvsObject_lineedit::registerSelf();
-	KviKvsObject_menubar::registerSelf();
-	KviKvsObject_workspace::registerSelf();
-
-
-
-	KviKvsObject_combobox::registerSelf();
+	KviKvsObject_list::registerSelf();
 	KviKvsObject_listbox::registerSelf();
 	KviKvsObject_listview::registerSelf();
 	KviKvsObject_listviewitem::registerSelf();
 	KviKvsObject_mainwindow::registerSelf();
+	KviKvsObject_menubar::registerSelf();
+	KviKvsObject_mledit::registerSelf();
 	KviKvsObject_painter::registerSelf();
 	KviKvsObject_pixmap::registerSelf();
 	KviKvsObject_popupmenu::registerSelf();
+	KviKvsObject_process::registerSelf();
+	KviKvsObject_progressbar::registerSelf();
 	KviKvsObject_radiobutton::registerSelf();
 	KviKvsObject_slider::registerSelf();
+	KviKvsObject_socket::registerSelf();
 	KviKvsObject_spinbox::registerSelf();
 	KviKvsObject_tabwidget::registerSelf();
+	KviKvsObject_textbrowser::registerSelf();
 	KviKvsObject_toolbar::registerSelf();
 	KviKvsObject_toolbutton::registerSelf();
 	KviKvsObject_urlabel::registerSelf();
+	KviKvsObject_vbox::registerSelf();
+	KviKvsObject_widget::registerSelf();
 	KviKvsObject_window::registerSelf();
 	KviKvsObject_wizard::registerSelf();
-	KviKvsObject_dockwindow::registerSelf();
-	KviKvsObject_progressbar::registerSelf();
-	KviKvsObject_file::registerSelf();
+	KviKvsObject_workspace::registerSelf();
 	KviKvsObject_wrapper::registerSelf();
 	KviKvsObject_xmlreader::registerSelf();
-	KviKvsObject_socket::registerSelf();
-	KviKvsObject_process::registerSelf();
-
 
 	return true;
 }

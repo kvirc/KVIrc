@@ -24,9 +24,9 @@
 //
 //=========================================================================================
 
+#include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object.h"
 #include "kvi_kvs_object_class.h"
-#include "kvi_kvs_kernel.h"
 #include "kvi_kvs_object_controller.h"
 #include "kvi_kvs_object_functioncall.h"
 
