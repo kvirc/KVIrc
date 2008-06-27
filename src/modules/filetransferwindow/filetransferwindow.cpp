@@ -50,8 +50,7 @@
 #include <QEvent>
 #include <QKeyEvent>
 
-// FIXME: Qt4 #include <QHeaderView>
-#include <q3header.h>
+#include <QHeaderView>
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <kurl.h>
@@ -61,19 +60,31 @@
 	#include <kiconloader.h>
 #endif //COMPILE_KDE_SUPPORT
 
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+#endif
+
 extern KviFileTransferWindow * g_pFileTransferWindow;
 
 
-KviFileTransferItem::KviFileTransferItem(KviTalListView * v,KviFileTransfer * t)
-: KviTalListViewItem(v)
+KviFileTransferItem::KviFileTransferItem(KviFileTransferWidget * v,KviFileTransfer * t)
+: KviTalTableWidgetItem(v)
 {
 	m_pTransfer = t;
 	m_pTransfer->setDisplayItem(this);
+
+	//create items for the second and the third column
+	col1Item = new KviTalTableWidgetItem(v, row(), 1);
+	col2Item = new KviTalTableWidgetItem(v, row(), 2);
+	//FIXME fixed row height
+	tableWidget()->setRowHeight( row(), 68 );
 }
 
 KviFileTransferItem::~KviFileTransferItem()
 {
 	m_pTransfer->setDisplayItem(0);
+	delete col1Item;
+	delete col2Item;
 }
 
 QString KviFileTransferItem::key(int column,bool bAcending) const
@@ -90,55 +101,62 @@ QString KviFileTransferItem::key(int column,bool bAcending) const
 	return ret;
 }
 
-void KviFileTransferItem::paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align)
+void KviFileTransferWidget::paintEvent(QPaintEvent * event)
 {
-	QPainter * newP;
-	QPixmap * pix = 0;
-	if(p->device() == listView()->viewport())
+	QPainter *p = new QPainter(viewport());
+	QStyleOptionViewItem option = viewOptions();
+	QRect rect = event->rect();
+	KviFileTransferItem* item;
+	int r, c;
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(g_pShadedChildGlobalDesktopBackground)
 	{
-		// ops.. there is no double buffering active ?
-		// we'll do it then
-		pix = g_pFileTransferWindow->memPixmap();
-		if((pix->width() < width) || (pix->height() < height()))
-		{
-			pix->resize(width,height());
-		} else {
-			if((pix->width() > 500) || (pix->height() > 110))
-			{
-				if((pix->width() * pix->height()) > (width * height() * 4))
-				{
-					// this is getting too big
-					pix->resize(width,height());
-				}
-			}
-		}
-		newP = new QPainter(pix);
+		QPoint pnt = viewport()->mapToGlobal(rect.topLeft());
+		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
 	} else {
-		newP = p;
+#endif
+		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
+#endif
+	delete p;
 
-	p->setFont(listView()->font());
-
-	newP->setPen(isSelected() ? cg.highlight() : cg.base());
-	newP->drawRect(0,0,width,height());
-	newP->setPen(m_pTransfer->active() ? QColor(180,180,180) : QColor(200,200,200));
-	newP->drawRect(1,1,width - 2,height() - 2);
-	newP->fillRect(2,2,width - 4,height() - 4,m_pTransfer->active() ? QColor(240,240,240) : QColor(225,225,225));
-
-	m_pTransfer->displayPaint(newP,column,width,height());
-
-	if(newP != p)
-	{
-		p->drawPixmap(0,0,*pix,0,0,width,height());
-		delete newP;
-	}
+	//call paint on all childrens
+	KviTalTableWidget::paintEvent(event);
 }
 
+void KviFileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+	//FIXME not exactly model/view coding style.. but we need to access data on the item by now
+	KviFileTransferWidget* tableWidget = (KviFileTransferWidget*)parent();
+	KviFileTransferItem* item = (KviFileTransferItem*) tableWidget->itemFromIndex(index);
+	KviFileTransfer* transfer = ((KviFileTransferItem*)tableWidget->item(item->row(), 0))->transfer();
+
+	p->setFont(option.font);
+
+	p->setPen(option.state & QStyle::State_Selected ? option.palette.highlight() : option.palette.base());
+
+	p->drawRect(option.rect);
+	p->setPen(transfer->active() ? QColor(180,180,180) : QColor(200,200,200));
+
+	p->drawRect(option.rect.left() + 1, option.rect.top() + 1, option.rect.width() - 2,option.rect.height() - 2);
+	p->fillRect(option.rect.left() + 2, option.rect.top() + 2, option.rect.width() - 4, option.rect.height() - 4,transfer->active() ? QColor(240,240,240) : QColor(225,225,225));
+
+	transfer->displayPaint(p, index.column(), option.rect);
+}
+
+QSize KviFileTransferItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+{
+	// FIXME fixed width
+	return QSize(((KviFileTransferWidget*)parent())->viewport()->size().width(), 68);
+}
+/*
 void KviFileTransferItem::setHeight(int h)
 {
-	KviTalListViewItem::setHeight(m_pTransfer->displayHeight(g_pFileTransferWindow->lineSpacing()));
+	KviTalTableWidgetItem::setHeight(m_pTransfer->displayHeight(g_pFileTransferWindow->lineSpacing()));
 }
-
+*/
 
 KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0) , KviModuleExtension(d)
@@ -159,30 +177,52 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
 
-	m_pListView  = new KviTalListView(m_pVertSplitter);
-	//m_pListView->header()->hide();
-	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->addColumn(__tr2qs_ctx("Type","filetransferwindow"),56);
-	m_pListView->addColumn(__tr2qs_ctx("Information","filetransferwindow"),350);
-	m_pListView->addColumn(__tr2qs_ctx("Progress","filetransferwindow"),350);
+	m_pTableWidget  = new KviFileTransferWidget(m_pVertSplitter);
 
-	KviDynamicToolTip * tp = new KviDynamicToolTip(m_pListView->viewport());
-	connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	//ad-hoc itemdelegate for this view
+	m_pItemDelegate = new KviFileTransferItemDelegate(m_pTableWidget);
+	m_pTableWidget->setItemDelegate(m_pItemDelegate);
 
-	//m_pListView->setFocusPolicy(NoFocus);
-	//m_pListView->viewport()->setFocusPolicy(NoFocus);
+	m_pTableWidget->verticalHeader()->hide();
+	m_pTableWidget->setShowGrid(false);
 
-	//connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-	// this,SLOT(showHostPopup(KviTalListViewItem *,const QPoint &,int)));
+	m_pTableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_pTableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+
+	m_pTableWidget->setColumnCount(3);
+
+	QStringList colHeaders;
+	colHeaders.append(__tr2qs_ctx("Type","filetransferwindow"));
+	colHeaders.append(__tr2qs_ctx("Information","filetransferwindow"));
+	colHeaders.append(__tr2qs_ctx("Progress","filetransferwindow"));
+	m_pTableWidget->setHorizontalHeaderLabels(colHeaders);
+	m_pTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Interactive);
+	m_pTableWidget->horizontalHeader()->setMinimumSectionSize(50);
+
+	//default column widths
+	m_pTableWidget->setColumnWidth(0, 68);
+	m_pTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
+	m_pTableWidget->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
+	m_pTableWidget->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
+
+	KviDynamicToolTip * tp = new KviDynamicToolTip(m_pTableWidget->viewport());
+	//TODO
+	//connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+
+	//m_pTableWidget->setFocusPolicy(NoFocus);
+	//m_pTableWidget->viewport()->setFocusPolicy(NoFocus);
+
+	//connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)),
+	// this,SLOT(showHostPopup(KviTalTableWidgetItem *,const QPoint &,int)));
 
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
-	m_pListView->installEventFilter(this);
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),this,SLOT(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *,const QPoint &,int)),this,SLOT(doubleClicked(KviTalListViewItem *,const QPoint &,int)));
+	m_pTableWidget->installEventFilter(this);
+	connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)),this,SLOT(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)));
+	connect(m_pTableWidget,SIGNAL(doubleClicked(KviTalTableWidgetItem *,const QPoint &,int)),this,SLOT(doubleClicked(KviTalTableWidgetItem *,const QPoint &,int)));
 	fillTransferView();
 
 	connect(KviFileTransferManager::instance(),SIGNAL(transferRegistered(KviFileTransfer *)),this,SLOT(transferRegistered(KviFileTransfer *)));
@@ -204,15 +244,15 @@ KviFileTransferWindow::~KviFileTransferWindow()
 
 bool KviFileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
 {
-	if( (obj==m_pListView) && ( ev->type() == QEvent::KeyPress ) )
+	if( (obj==m_pTableWidget) && ( ev->type() == QEvent::KeyPress ) )
 	{
 		QKeyEvent *keyEvent = (QKeyEvent*)ev;
 		switch(keyEvent->key())
 		{
 			case Qt::Key_Delete:
-				if(m_pListView->currentItem())
+				if(m_pTableWidget->currentItem())
 				{
-					delete m_pListView->currentItem();
+					delete m_pTableWidget->currentItem();
 					return TRUE;
 				}
 				break;
@@ -230,10 +270,10 @@ void KviFileTransferWindow::fontChange(const QFont &oldFont)
 
 void KviFileTransferWindow::tipRequest(KviDynamicToolTip * tip,const QPoint &pnt)
 {
-	KviFileTransferItem * it = (KviFileTransferItem *)m_pListView->itemAt(pnt);
+	KviFileTransferItem * it = (KviFileTransferItem *)m_pTableWidget->itemAt(pnt);
 	if(!it)return;
 	QString txt = it->transfer()->tipText();
-	tip->tip(m_pListView->itemRect(it),txt);
+	tip->tip(m_pTableWidget->visualItemRect(it),txt);
 }
 
 void KviFileTransferWindow::fillTransferView()
@@ -243,25 +283,27 @@ void KviFileTransferWindow::fillTransferView()
 	KviFileTransferItem * it;
 	for(KviFileTransfer * t = l->first();t;t = l->next())
 	{
-		it = new KviFileTransferItem(m_pListView,t);
+		it = new KviFileTransferItem(m_pTableWidget,t);
 		t->setDisplayItem(it);
 	}
 }
 
 KviFileTransferItem * KviFileTransferWindow::findItem(KviFileTransfer * t)
 {
-	KviFileTransferItem * it = (KviFileTransferItem *)m_pListView->firstChild();
-	while(it)
+	int i;
+	KviFileTransferItem * it;
+
+	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
+		it = (KviFileTransferItem *)m_pTableWidget->item(i,0);
 		if(it->transfer() == t)return it;
-		it = (KviFileTransferItem *)(it->nextSibling());
 	}
 	return 0;
 }
 
 void KviFileTransferWindow::transferRegistered(KviFileTransfer * t)
 {
-	KviFileTransferItem * it = new KviFileTransferItem(m_pListView,t);
+	KviFileTransferItem * it = new KviFileTransferItem(m_pTableWidget,t);
 	//t->setDisplayItem(it);
 }
 
@@ -273,12 +315,12 @@ void KviFileTransferWindow::transferUnregistering(KviFileTransfer * t)
     it = 0;
 }
 
-void KviFileTransferWindow::doubleClicked(KviTalListViewItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::doubleClicked(KviFileTransferItem *it,const QPoint &pnt,int col)
 {
 	if(it) openLocalFile();
 }
 
-void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt,int col)
 {
 	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
 	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
@@ -389,22 +431,24 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 
 
 	bool bHaveTerminated = false;
-	KviFileTransferItem * item = (KviFileTransferItem *)m_pListView->firstChild();
-	while(item)
+	int i;
+	KviFileTransferItem * item;
+
+	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
+		item = (KviFileTransferItem *)m_pTableWidget->item(i,0);
 		if(item->transfer()->terminated())
 		{
 			bHaveTerminated = true;
 			break;
 		}
-		item = (KviFileTransferItem *)item->nextSibling();
 	}
 
 	id = m_pContextPopup->insertItem(__tr2qs_ctx("&Clear Terminated","filetransferwindow"),this,SLOT(clearTerminated()));
 	m_pContextPopup->setItemEnabled(id,bHaveTerminated);
 
 	bool bAreTransfersActive = false;
-	if(m_pListView->childCount() >= 1)
+	if(m_pTableWidget->rowCount() >= 1)
 		bAreTransfersActive = true;
 
 	id = m_pContextPopup->insertItem(__tr2qs_ctx("Clear &All","filetransferwindow"),this,SLOT(clearAll()));
@@ -416,7 +460,8 @@ void KviFileTransferWindow::rightButtonPressed(KviTalListViewItem *it,const QPoi
 
 KviFileTransfer * KviFileTransferWindow::selectedTransfer()
 {
-	KviTalListViewItem * it = m_pListView->selectedItem();
+	if(m_pTableWidget->selectedItems().count() == 0) return 0;
+	KviFileTransferItem * it = (KviFileTransferItem *)m_pTableWidget->selectedItems().first();
 	if(!it)return 0;
 	KviFileTransferItem * i = (KviFileTransferItem *)it;
 	return i->transfer();
@@ -622,28 +667,32 @@ void KviFileTransferWindow::openLocalFileFolder()
 
 void KviFileTransferWindow::heartbeat()
 {
-	if(m_pListView->childCount() < 1)return;
+/*
+notice to the author: thank you for not have commented this code
 
-	KviTalListViewItem * i1;
-	KviTalListViewItem * i2;
+	if(m_pTableWidget->rowCount() < 1)return;
 
-	i1 = m_pListView->itemAt(QPoint(1,1));
+	KviFileTransferItem * i1;
+	KviFileTransferItem * i2;
+
+	i1 = (KviFileTransferItem *) m_pTableWidget->itemAt(QPoint(1,1));
 	if(!i1)
 	{
-		m_pListView->viewport()->update();
+		m_pTableWidget->viewport()->update();
 		return;
 	}
-	i2 = m_pListView->itemAt(QPoint(1,m_pListView->viewport()->height() - 2));
+	i2 = (KviFileTransferItem *) m_pTableWidget->itemAt(QPoint(1,m_pTableWidget->viewport()->height() - 2));
 	if(i2)i2 = i2->nextSibling();
 
 	while(i1 && (i1 != i2))
 	{
 		if(((KviFileTransferItem *)i1)->transfer()->active())
 		{
-			m_pListView->repaintItem(i1);
+			m_pTableWidget->repaintItem(i1);
 		}
 		i1 = i1->nextSibling();
 	}
+*/
 }
 
 void KviFileTransferWindow::clearAll()
@@ -651,15 +700,17 @@ void KviFileTransferWindow::clearAll()
 	QString tmp;
 
 	bool bHaveAllTerminated = true;
-	KviFileTransferItem * item = (KviFileTransferItem *)m_pListView->firstChild();
-	while(item)
+	int i;
+	KviFileTransferItem * item;
+
+	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
+		item = (KviFileTransferItem *)m_pTableWidget->item(i,0);
 		if(!item->transfer()->terminated())
 		{
 			bHaveAllTerminated = false;
 			break;
 		}
-		item = (KviFileTransferItem *)item->nextSibling();
 	}
 
 	KviQString::sprintf(tmp,__tr2qs_ctx("Clear all transfers, including any in progress?","filetransferwindow"));

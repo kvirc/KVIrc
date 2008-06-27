@@ -32,45 +32,67 @@
 #include "kvi_moduleextension.h"
 #include "kvi_filetransfer.h"
 #include "kvi_dynamictooltip.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_tablewidget.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_tal_itemdelegates.h"
 
 #include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QPixmap>
 
+class KviFileTransferWidget : public KviTalTableWidget
+{
+	friend class KviFileTransferItemDelegate;
+	Q_OBJECT
+public:
+	KviFileTransferWidget(QWidget * pParent) : KviTalTableWidget(pParent) {};
+	~KviFileTransferWidget() {};
+	void paintEvent(QPaintEvent * event);
+};
 
-class KviFileTransferItem : public KviTalListViewItem
+class KviFileTransferItem : public KviTalTableWidgetItem
 {
 public:
-	KviFileTransferItem(KviTalListView * v,KviFileTransfer * t);
+	KviFileTransferItem(KviFileTransferWidget * v,KviFileTransfer * t);
 	~KviFileTransferItem();
 protected:
 	KviFileTransfer * m_pTransfer;
+	KviTalTableWidgetItem * col1Item; //item on the second column
+	KviTalTableWidgetItem * col2Item; //item on the third column
 public:
 	KviFileTransfer * transfer(){ return m_pTransfer; };
-	virtual void paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align);
-	virtual void setHeight(int h);
 	virtual QString key(int column,bool bAcending) const;
 };
 
+class KviFileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate
+{
+	Q_OBJECT
+public:
+	KviFileTransferItemDelegate(QAbstractItemView * pWidget=0)
+		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+	~KviFileTransferItemDelegate(){};
+	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+};
 
 class KviFileTransferWindow : public KviWindow , public KviModuleExtension
 {
 	friend class KviFileTransferItem;
+	friend class KviFileTransferItemDelegate;
 	Q_OBJECT
 public:
 	KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
 	~KviFileTransferWindow();
 protected:
-	QSplitter           * m_pVertSplitter;
-	KviTalListView           * m_pListView;
-	KviTalPopupMenu          * m_pContextPopup;
-	KviTalPopupMenu          * m_pLocalFilePopup;
-	KviTalPopupMenu          * m_pOpenFilePopup;
-	QTimer              * m_pTimer;
-	QPixmap             * m_pMemPixmap;
-	int                   m_iLineSpacing; // cached fm value
+	QSplitter		* m_pVertSplitter;
+	KviFileTransferWidget	* m_pTableWidget;
+	QAbstractItemDelegate	* m_pItemDelegate;
+	KviTalPopupMenu		* m_pContextPopup;
+	KviTalPopupMenu		* m_pLocalFilePopup;
+	KviTalPopupMenu		* m_pOpenFilePopup;
+	QTimer			* m_pTimer;
+	QPixmap			* m_pMemPixmap;
+	int			m_iLineSpacing; // cached fm value
 public: // Methods
 	virtual void die();
 protected:
@@ -91,8 +113,8 @@ public:
 protected slots:
 	void transferRegistered(KviFileTransfer *t);
 	void transferUnregistering(KviFileTransfer *t);
-	void rightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
-	void doubleClicked(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt,int col);
+	void doubleClicked(KviFileTransferItem *it,const QPoint &pnt,int col);
 	void heartbeat();
 	void clearTerminated();
 	void clearAll();

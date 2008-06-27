@@ -1,13 +1,13 @@
-#ifndef _KVI_TAL_TREEWIDGET_H_
-#define _KVI_TAL_TREEWIDGET_H_
+#ifndef _KVI_TAL_TABLEWIDGET_H_
+#define _KVI_TAL_TABLEWIDGET_H_
 
 //=============================================================================
 //
-//   File : kvi_tal_treewidget.h
-//   Creation date : Mon Jan 22 2007 11:25:08 by Szymon Stefanek
+//   File : kvi_tal_tablewidget.h
+//   Creation date : Fri Jun 27 2008 10:00:08 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -28,22 +28,20 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
-#include <QTreeWidget>
+#include <QTableWidget>
 #include <QHeaderView>
 
-class KviTalTreeWidgetItem;
+class KviTalTableWidgetItem;
 
-
-class KVILIB_API KviTalTreeWidget : public QTreeWidget
+class KVILIB_API KviTalTableWidget : public QTableWidget
 {
-	friend class KviTalTreeWidgetItem;
+	friend class KviTalTableWidgetItem;
 	Q_OBJECT
 public:
-	KviTalTreeWidget(QWidget * pParent);
-	virtual ~KviTalTreeWidget() {};
+	KviTalTableWidget(QWidget * pParent);
+	virtual ~KviTalTableWidget() {};
 public:
-	void addColumn(const QString label){ setHeaderLabel(label); };
-	void addColumn(const QString label, const int width ){ setHeaderLabel(label); setColumnWidth(0, width); };
+/*
 signals:
 	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
 	void itemActivated(KviTalTreeWidgetItem *,int);
@@ -66,24 +64,43 @@ protected slots:
 	void redirect_itemDoubleClicked(QTreeWidgetItem *pItem,int col);
 	void redirect_itemEntered(QTreeWidgetItem *pItem,int col);
 	void redirect_itemPressed(QTreeWidgetItem *pItem,int col);
+*/
 };
 
 
-class KVILIB_API KviTalTreeWidgetItem : public QTreeWidgetItem
+class KVILIB_API KviTalTableWidgetItem : public QTableWidgetItem
 {
 public:
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent)
-	: QTreeWidgetItem(pParent) {};
-	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent)
-	: QTreeWidgetItem(pParent) {};
-	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent,const QString &szLabel)
-	: QTreeWidgetItem(pParent) {
+	KviTalTableWidgetItem(KviTalTableWidget * pParent)
+	: QTableWidgetItem()
+	{
+		pParent->insertRow(pParent->rowCount());
+		pParent->setItem(pParent->rowCount()-1, 0, this);
+	};
+
+	KviTalTableWidgetItem(KviTalTableWidget * pParent, int row, int column)
+	: QTableWidgetItem()
+	{
+		pParent->setItem(row, column, this);
+	};
+
+	KviTalTableWidgetItem(const KviTalTableWidgetItem & other)
+	: QTableWidgetItem(other) {};
+	void repaint()
+	{
+		if(tableWidget())
+			tableWidget()->viewport()->repaint(tableWidget()->visualItemRect(this));
+	};
+/*
+	KviTalTableWidgetItem(KviTalTableWidgetItem * pParent,const QString &szLabel)
+	: QTableWidgetItem(pParent) {
 		setText(0,szLabel);
 	};
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel)
-		: QTreeWidgetItem(pParent) {
+	KviTalTableWidgetItem(KviTalTableWidget * pParent,const QString &szLabel)
+		: QTableWidgetItem(pParent) {
 	setText(0,szLabel);
 	};
+
 	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1, const QString &szLabel2, const QString &szLabel3 )
 	: QTreeWidgetItem(pParent) {
 	setText(0,szLabel);
@@ -106,6 +123,7 @@ public:
 		return key.localeAwareCompare(i->text(col));
 	};
 	KviTalTreeWidget* treeWidget() { return (KviTalTreeWidget*) QTreeWidgetItem::treeWidget(); };
+*/
 };
 
-#endif // _KVI_TAL_TREEWIDGETW_H_
+#endif // _KVI_TAL_TABLEWIDGET_H_

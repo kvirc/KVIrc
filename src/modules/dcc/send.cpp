@@ -1102,9 +1102,9 @@ unsigned int KviDccFileTransfer::transferredBytes()
 	return uTransferred;
 }
 
-void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int height)
+void KviDccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 {
-
+	int width = rect.width(), height = rect.height();
 	QString txt;
 	bool bIsTerminated = ((m_eGeneralStatus == Success) || (m_eGeneralStatus == Failure));
 
@@ -1123,7 +1123,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 				case Success: xoffset = 96; break;
 				case Failure: xoffset = 144; break;
 			}
-			p->drawPixmap(3,3,*g_pDccFileTransferIcon,xoffset,yoffset,48,64);
+			p->drawPixmap(rect.left() + 3,rect.top() + 3,*g_pDccFileTransferIcon,xoffset,yoffset,48,64);
 		}
 		break;
 		case COLUMN_FILEINFO:
@@ -1146,31 +1146,31 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			KviStr szRemote(KviStr::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
 					m_pDescriptor->szFileName.toUtf8().data());
 
-			p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
+			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
 					m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
 			iY += iLineSpacing;
 
-			p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
+			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
 					m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
 			iY += iLineSpacing;
 
 
 			p->setPen(Qt::darkGray);
 
-			p->drawText(4,4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
-			p->drawText(4,4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
+			p->drawText(rect.left() + 4,4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
+			p->drawText(rect.left() + 4,4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
 
 
 			p->setPen(QColor(180,180,200));
 
 			iLineSpacing += 2;
 
-			p->drawRect(4,height - (iLineSpacing + 4),width - 8,iLineSpacing);
-			p->fillRect(5,height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4,height - (iLineSpacing + 4),width - 8,iLineSpacing);
+			p->fillRect(rect.left() + 5,height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 
 			p->setPen(Qt::black);
 
-			p->drawText(7,height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
+			p->drawText(rect.left() + 7,height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
 
 		}
 		break;
@@ -1211,7 +1211,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			}
 
 			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210,210,240));
-			p->drawRect(4,4,iW,12);
+			p->drawRect(rect.left() + 4, rect.top() + 4,iW,12);
 
 			iW -= 2;
 
@@ -1232,15 +1232,15 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 					double dPerc2 = (double)(((double)iAckedBytes) * 100.0) / (double)m_uTotalFileSize;
 					int iL2 = (int) ((((double)iW) * dPerc2) / 100.0);
 					int iW2 = iL1 - iL2;
-					if(iW2 > 0)p->fillRect(5 + iL2,5,iW2,10,bIsTerminated ? QColor(150,130,110) : QColor(220,170,100));
-					p->fillRect(5,5,iL2,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+					if(iW2 > 0)p->fillRect(rect.left() + 5 + iL2,rect.top() + 5,iW2,10,bIsTerminated ? QColor(150,130,110) : QColor(220,170,100));
+					p->fillRect(rect.left() + 5,rect.top() + 5,iL2,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
 					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(iAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
 				} else {
 					// we are receiving a file or not sending acks
 					double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
 					int iL = (int) ((((double)iW) * dPerc) / 100.0);
-					p->fillRect(5,5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+					p->fillRect(rect.left() + 5,rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
 					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
 				}
@@ -1251,7 +1251,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 
 			p->setPen(Qt::black);
 
-			p->drawText(4,19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
+			p->drawText(rect.left() + 4,rect.top() + 19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
 
 			int iLeftHalf = (iW - 2) / 2;
 			int iRightHalf = iW - (iLeftHalf + 1);
@@ -1293,10 +1293,10 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			int iDaH = height - (iLineSpacing + 4);
 
 			p->setPen(QColor(180,180,200));
-			p->drawRect(4,iDaH,iLeftHalf,iLineSpacing);
-			p->fillRect(5,iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4,rect.top() + iDaH,iLeftHalf,iLineSpacing);
+			p->fillRect(rect.left() + 5,rect.top() + iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(6,iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + 6,rect.top() + iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
 
 			if(bIsTerminated)
 			{
@@ -1320,10 +1320,10 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			}
 
 			p->setPen(QColor(180,180,200));
-			p->drawRect(width - (4 + iRightHalf),iDaH,iRightHalf,iLineSpacing);
-			p->fillRect(width - (3 + iRightHalf),iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + width - (4 + iRightHalf),rect.top() + iDaH,iRightHalf,iLineSpacing);
+			p->fillRect(rect.left() + width - (3 + iRightHalf),rect.top() + iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(width - (2 + iRightHalf),iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + width - (2 + iRightHalf),rect.top() + iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
 
 		}
 		break;

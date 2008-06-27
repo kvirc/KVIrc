@@ -214,7 +214,7 @@ public:
 	virtual KviWindow * dccMarshalOutputWindow();
 	virtual const char * dccMarshalOutputContextString();
 
-	virtual void displayPaint(QPainter * p,int column,int width,int height);
+	virtual void displayPaint(QPainter * p,int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
 	virtual void fillContextPopup(KviTalPopupMenu * m,int column);
 	virtual void fillStatusString(QString &szBuffer);

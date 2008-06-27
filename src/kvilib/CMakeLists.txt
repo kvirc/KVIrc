@@ -92,6 +92,7 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_menubar.h
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
+	tal/kvi_tal_tablewidget.h
 	tal/kvi_tal_toolbardocktype.h
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_textedit.h
@@ -184,6 +185,7 @@ SET(kvilib_SRCS
 	tal/kvi_tal_popupmenu.cpp
 	tal/kvi_tal_scrollview.cpp
 	tal/kvi_tal_tabdialog.cpp
+	tal/kvi_tal_tablewidget.cpp
 	tal/kvi_tal_textedit.cpp
 	tal/kvi_tal_toolbar.cpp
 	tal/kvi_tal_tooltip.cpp

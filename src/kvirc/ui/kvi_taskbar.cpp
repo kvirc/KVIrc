@@ -44,7 +44,6 @@
 #include "kvi_settings.h"
 #include "kvi_channel.h"
 #include "kvi_ircconnection.h"
-#include "kvi_doublebuffer.h"
 #include "kvi_tal_popupmenu.h"
 
 // FIXME: #warning "The tree taskbar min width should be configurable"
@@ -732,6 +731,7 @@ KviTreeTaskBarItem::KviTreeTaskBarItem(KviTalTreeWidget * par,KviWindow * wnd)
 	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
 	//sort the widget
+	//TODO should we implement an operator< to fine tune our sorting?
 	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
@@ -978,9 +978,7 @@ void KviTreeTaskBarTreeWidget::paintEvent(QPaintEvent * event)
 	QPainter *p = new QPainter(viewport());
 	QStyleOptionViewItem option = viewOptions();
 	QRect rect = event->rect();
-	int i;
 
-	SET_ANTI_ALIASING(*p);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -1293,9 +1291,6 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 	//tree branches
 	treeWidget->drawBranches(p, branchRect, index);
 
-	//set anti aliasing (this comment is useless)
-	SET_ANTI_ALIASING(*p);
-
 	//draw window icon, irc context indicator (a colored square), set font properties for text
 	int im = rect.left();
 	int yPixmap = (rect.top() + rect.height() - 16);
@@ -1400,6 +1395,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 QSize KviTreeTaskBarItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
 	QString text=index.data(Qt::DisplayRole).toString();
+	// FIXME fixed width: 20; compute from font size
 	return QSize(((KviTreeTaskBarTreeWidget*)parent())->viewport()->size().width(), 20);
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

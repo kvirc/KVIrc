@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvi_tal_treewidget.cpp
-//   Creation date : Mon Jan 22 2007 11:25:08 by Szymon Stefanek
+//   File : kvi_tal_tablewidget.cpp
+//   Creation date : Fri Jun 27 2008 10:00:08 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,7 +24,8 @@
 
 #define __KVILIB__
 
-#include "kvi_tal_treewidget.h"
+#include "kvi_tal_tablewidget.h"
+/*
 #include "kvi_pointerhashtable.h"
 
 #include <QPainter>
@@ -34,10 +35,11 @@
 #include <QHash>
 #include <QStyleOption>
 #include <QAccessible>
-
-KviTalTreeWidget::KviTalTreeWidget(QWidget * pParent)
-: QTreeWidget(pParent)
+*/
+KviTalTableWidget::KviTalTableWidget(QWidget * pParent)
+: QTableWidget(pParent)
 {
+/*
   	connect(this,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(redirect_currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(this,SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(redirect_itemActivated(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(redirect_itemChanged(QTreeWidgetItem *,int)));
@@ -47,8 +49,9 @@ KviTalTreeWidget::KviTalTreeWidget(QWidget * pParent)
 	connect(this,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(redirect_itemDoubleClicked(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemEntered(QTreeWidgetItem *,int)),this,SLOT(redirect_itemEntered(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemPressed(QTreeWidgetItem *,int)),this,SLOT(redirect_itemPressed(QTreeWidgetItem *,int)));
+*/
 }
-
+/*
 void KviTalTreeWidget::redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QTreeWidgetItem *pItemPrev)
 {
 	emit currentItemChanged((KviTalTreeWidgetItem *)pItemCurr,(KviTalTreeWidgetItem *)pItemPrev);
@@ -93,7 +96,7 @@ void KviTalTreeWidget::redirect_itemPressed(QTreeWidgetItem *pItem,int col)
 {
 	emit itemPressed((KviTalTreeWidgetItem *)pItem,col);
 }
-
+*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_treewidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

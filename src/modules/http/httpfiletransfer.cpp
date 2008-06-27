@@ -113,8 +113,9 @@ bool KviHttpFileTransfer::active()
 	return ((m_eGeneralStatus == Connecting) || (m_eGeneralStatus == Downloading));
 }
 
-void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int height)
+void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 {
+	int width = rect.width(), height = rect.height();
 	QString txt;
 	bool bIsTerminated = ((m_eGeneralStatus == Success) || (m_eGeneralStatus == Failure));
 
@@ -131,7 +132,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 				case Success: offset = 96; break;
 				case Failure: offset = 144; break;
 			}
-			p->drawPixmap(3,3,*g_pHttpIcon,offset,0,48,64);
+			p->drawPixmap(rect.left() + 3, rect.top() + 3,*g_pHttpIcon,offset,0,48,64);
 		}
 		break;
 		case COLUMN_FILEINFO:
@@ -148,30 +149,30 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 
 			p->setPen(Qt::black);
 
-			int iY = 4;
+			int iY = rect.top() + 4;
 
-			p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->url().url().ptr());
+			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->url().url().ptr());
 			iY += iLineSpacing;
 			if(!(m_pHttpRequest->fileName().isEmpty()))
 			{
-				p->drawText(4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->fileName());
+				p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->fileName());
 			}
 			iY += iLineSpacing;
 
 
 			p->setPen(Qt::darkGray);
 
-			p->drawText(4,4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
-			p->drawText(4,4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
+			p->drawText(rect.left() + 4, rect.top() + 4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
+			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
 
 			p->setPen(QColor(180,180,200));
 
 			iLineSpacing += 2;
 
-			p->drawRect(4,height - (iLineSpacing + 4),width - 8,iLineSpacing);
-			p->fillRect(5,height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4),width - 8,iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 			p->setPen(Qt::black);
-			p->drawText(7,height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
+			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
 		}
 		break;
 		case COLUMN_PROGRESS:
@@ -183,7 +184,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 			int iW = width - 8;
 
 			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210,210,240));
-			p->drawRect(4,4,iW,12);
+			p->drawRect(rect.left() + 4, rect.top() + 4,iW,12);
 
 			int iAvgSpeed = -1;
 			int iEta = -1;
@@ -209,7 +210,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 				iW -= 2;
 				int iL = (int) ((((double)iW) * dPerc) / 100.0);
 				//iR = iW - iL;
-				p->fillRect(5,5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+				p->fillRect(rect.left() + 5, rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
 
 				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)","http")).arg(KviQString::makeSizeReadable(uRecvd))
 					.arg(KviQString::makeSizeReadable(uTotal)).arg(dPerc,0,'f',2);
@@ -219,7 +220,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 
 			p->setPen(Qt::black);
 
-			p->drawText(4,19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
+			p->drawText(rect.left() + 4, rect.top() + 19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
 
 			int iLeftHalf = (iW - 2) / 2;
 			int iRightHalf = iW - (iLeftHalf + 1);
@@ -254,10 +255,10 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 			int iDaH = height - (iLineSpacing + 4);
 
 			p->setPen(QColor(180,180,200));
-			p->drawRect(4,iDaH,iLeftHalf,iLineSpacing);
-			p->fillRect(5,iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4, rect.top() + iDaH,iLeftHalf,iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(6,iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + 6, rect.top() + iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
 
 			unsigned int uD,uH,uM,uS;
 
@@ -282,10 +283,10 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column,int width,int hei
 			}
 
 			p->setPen(QColor(180,180,200));
-			p->drawRect(width - (4 + iRightHalf),iDaH,iRightHalf,iLineSpacing);
-			p->fillRect(width - (3 + iRightHalf),iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH,iRightHalf,iLineSpacing);
+			p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(width - (2 + iRightHalf),iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
 
 		}
 		break;

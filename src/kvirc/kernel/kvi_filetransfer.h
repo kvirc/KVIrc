@@ -27,7 +27,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_tablewidget.h"
 
 #include <QObject>
 
@@ -83,10 +83,10 @@ public:
 	~KviFileTransfer();
 protected:
 	int              m_iId;
-	KviTalListViewItem  * m_pDisplayItem;
+	KviTalTableWidgetItem  * m_pDisplayItem;
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(KviTalListViewItem * i){ m_pDisplayItem = i; };
+	void setDisplayItem(KviTalTableWidgetItem * i){ m_pDisplayItem = i; };
 	int id(){ return m_iId; };
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();
@@ -103,7 +103,7 @@ public:
 
 	// this must be implemented by the transfer
 	virtual bool active() = 0;
-	virtual void displayPaint(QPainter * p,int column,int width,int height) = 0;
+	virtual void displayPaint(QPainter * p,int column, QRect rect) = 0;
 	virtual QString tipText();
 	virtual QString localFileName();
 	virtual QString retryCommand();
