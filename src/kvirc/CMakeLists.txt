@@ -439,6 +439,15 @@ ELSE()
 	SET(KVILIB_BINARYNAME kvilib)
 ENDIF()
 
+IF(MINGW)
+        # resource compilation for mingw
+        ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
+          COMMAND windres.exe -I${CMAKE_SOURCE_DIR}/data/resources_win32/ -i${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc -o${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/data/resources_win32
+        )
+        LIST(APPEND kvirc_SRCS ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o)
+ENDIF()
+
 ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 
 # Link libraries

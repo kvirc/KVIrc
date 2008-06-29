@@ -57,7 +57,8 @@ Requisites:
       The package you want is called "gettext-tools-0.13.1.bin.woe32.zip" (version number may vary).
 
   - Phonon smplayer/vlc frontend for Mingw:
-      [Multimedia library; needed to play multimedia files using phonon without using ms's directshow, optional]
+      [Multimedia library; needed to play multimedia files using phonon, optional]
+      (For the little story, the default Windows backend for Phonon is based on DirectShow 9 and MinGW is not capable of compiling DS9 code, that's why Trolltech doesn't ship Phonon with Qt-4.4 MinGW)
       Get it at http://code.google.com/p/phonon-vlc-mplayer/; it needs some tweaking to work;
       Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
 
