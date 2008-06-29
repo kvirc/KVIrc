@@ -55,7 +55,12 @@ Requisites:
       [Localization library; needed to translate kvirc interface into your own language, optional]
       Any version will work; We advice you to use the version you can find at http://sourceforge.net/projects/gettext .
       The package you want is called "gettext-tools-0.13.1.bin.woe32.zip" (version number may vary).
-      
+
+  - Phonon smplayer/vlc frontend for Mingw:
+      [Multimedia library; needed to play multimedia files using phonon without using ms's directshow, optional]
+      Get it at http://code.google.com/p/phonon-vlc-mplayer/; it needs some tweaking to work;
+      Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
+
 Further reccomended download if you plan to develop KVIrc:
 
   - Gnu Debugger (gdb) for Win32:
@@ -101,8 +106,53 @@ So we have to create a directory where to compile KVIrc into, and run cmake insi
 Example:
   - download kvirc's trunk from svn into c:\kvirc
   - create directory c:\kvirc\build
-  - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" for as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure".
+  - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure".
   - cmake will check your system and create a set of Makefiles you'll need later to compile KVIrc. If it's complaining about some missing library it can't find, probably you haven't setted up properly the environmental variables needed. Refers to the errors to understand what you need to fix.
-  - once you get cmake to create the complete set of Makefiles, simply exec a "make" (exactly as you use to do under unix); KVIrc will start to compile.
-  - once compilation ends, exec a "make install" (exactly as you use to do under unix); the installation system should create a "release" directory (in our example: c:\kvirc\build\release) and move kvirc compiled binaries in there.
-  - simply running kvirc from that directory should work :)
+  - once you get cmake to create the complete set of Makefiles, simply exec a "make" (exactly as used to do under unix); KVIrc will start to get compiled.
+  - once the compilation ends, exec a "make install" (exactly as you use to do under unix); the installation system should create a "release" directory (in our example: c:\kvirc\build\release) and move kvirc compiled binaries in there.
+  - simply running kvirc from that directory should work :) . If instead it's complaining of some missing dll's, you may need to copy those dlls into kvirc binary directory (in our example: c:\kvirc\build\release) or to get those dlls recognized and loaded automatically from you o.s.
+
+
+
+Common errors, pitfalls, ..
+- Currently we're double #define'ing some things, this causes some warnings like this one:
+  ----------
+  C:\kvirctrunk\src\kvirc\kvs\kvi_kvs_corefunctions.cpp:25:1: warning: "__KVIRC__" redefined
+  <command line>:15:1: warning: this is the location of the previous definition
+  ----------
+  This is a simple warning, it doesn't block compilation or affects any functionality.
+
+- Rijndael module isn't compiling/loading/working at all:
+  It is excluded from the mingw port by now, because it uses class templates and virtual functions in a way gcc 3 () can't understand well.
+
+- On modules compilation we get a warning like this one:
+  ----------
+  C:\kvirctrunk\src\modules\clock\libkviclock.cpp:242: warning: `KVIrc_module_info' initialized and declared `extern'
+  ----------
+  This is a simple warning, it doesn't block compilation or affects any functionality.
+
+- During the compilation, we get some errors like this one:
+  ----------
+  C:/kvirctrunk/src/kvilib/system/kvi_time.h:0: Warning: No relevant classes found. No output generated.
+  ----------
+  In the compilation we call qt's moc to parse headers files and expand qt macros; that warning simply means that moc found nothing to expand in that header file. We can fix this removing headers that doesn't need to be moc-ed from the lists in CMakeLists.txt.
+
+
+
+Getting phonon to work with mplayer frontend
+
+- Install all needed requirements. Please note that to use the mplayer backend you have to install smplayer to C:\Program Files\SMPlayer\ !!
+- Get latest phonon-vlc-mplayer source from svn
+- In trunk/CMakeLists.txt disable (comment out) the lines referring to the "test" and "quarkplayer", "quarkplayer-app", "quarkplayer/style", "quarkplayer/plugins" subdirectories; here there's a little patch:
+- in the same file, change the installation path of the target mingwm10.dll like this:
+  install(FILES C:/mingw/bin/mingwm10.dll DESTINATION ${BIN_INSTALL_DIR})
+- go to /trunk/build/ and run:
+  run build_mingw-release.bat
+  mingw32-make
+  mingw32-make install
+- now you can copy compiled files from /trunk/build/win32-mingw-release/:
+  copy phonon.dll to QTDIR/bin and libphonon.dll.a to QTDIR/lib
+- in /trunk/build/win32-mingw-release/phonon_backend you find the backends for vlc and mplayer;
+  in the directory containing kvirc.exe create a subdirectory "phonon_backend" and copy phonon_mplayer.dll into it
+- Note: phonon_vlc.dll has not been tested. Debug versions of backends seems not to run properly.
+
