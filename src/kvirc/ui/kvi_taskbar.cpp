@@ -919,6 +919,7 @@ void KviTreeTaskBarTreeWidget::mouseMoveEvent ( QMouseEvent * e )
 		setCursor(Qt::ArrowCursor);
 	}
 }
+
 void KviTreeTaskBarTreeWidget::leaveEvent(QEvent *)
 {
 	if(m_pPrevItem) m_pPrevItem->mouseLeave();

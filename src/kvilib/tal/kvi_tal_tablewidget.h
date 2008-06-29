@@ -86,44 +86,20 @@ public:
 
 	KviTalTableWidgetItem(const KviTalTableWidgetItem & other)
 	: QTableWidgetItem(other) {};
-	void repaint()
-	{
-		if(tableWidget())
-			tableWidget()->viewport()->repaint(tableWidget()->visualItemRect(this));
-	};
-/*
-	KviTalTableWidgetItem(KviTalTableWidgetItem * pParent,const QString &szLabel)
-	: QTableWidgetItem(pParent) {
-		setText(0,szLabel);
-	};
-	KviTalTableWidgetItem(KviTalTableWidget * pParent,const QString &szLabel)
-		: QTableWidgetItem(pParent) {
-	setText(0,szLabel);
-	};
+};
 
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1, const QString &szLabel2, const QString &szLabel3 )
-	: QTreeWidgetItem(pParent) {
-	setText(0,szLabel);
-	setText(1,szLabel1);
-	setText(2,szLabel2);
-	setText(3,szLabel3);
+class KVILIB_API KviTalTableWidgetItemEx : public KviTalTableWidgetItem
+{
+public:
+	KviTalTableWidgetItemEx(KviTalTableWidget * pParent)
+	: KviTalTableWidgetItem(pParent) {};
 
-	};
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1, const QString &szLabel2, const QString &szLabel3, const QString &szLabel4 )
-	: QTreeWidgetItem(pParent) {
-	setText(0,szLabel);
-	setText(1,szLabel1);
-	setText(2,szLabel2);
-	setText(3,szLabel3);
-	setText(4,szLabel4);
-	};
-		int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
-	{
-		QString key=text(col);
-		return key.localeAwareCompare(i->text(col));
-	};
-	KviTalTreeWidget* treeWidget() { return (KviTalTreeWidget*) QTreeWidgetItem::treeWidget(); };
-*/
+	KviTalTableWidgetItemEx(KviTalTableWidget * pParent, int row, int column)
+	: KviTalTableWidgetItem(pParent, row, column) {};
+
+	KviTalTableWidgetItemEx(const KviTalTableWidgetItem & other)
+	: KviTalTableWidgetItem(other) {};
+	virtual void displayUpdate() = 0;
 };
 
 #endif // _KVI_TAL_TABLEWIDGET_H_

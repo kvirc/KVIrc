@@ -68,7 +68,7 @@ extern KviFileTransferWindow * g_pFileTransferWindow;
 
 
 KviFileTransferItem::KviFileTransferItem(KviFileTransferWidget * v,KviFileTransfer * t)
-: KviTalTableWidgetItem(v)
+: KviTalTableWidgetItemEx(v)
 {
 	m_pTransfer = t;
 	m_pTransfer->setDisplayItem(this);
@@ -85,6 +85,14 @@ KviFileTransferItem::~KviFileTransferItem()
 	m_pTransfer->setDisplayItem(0);
 	delete col1Item;
 	delete col2Item;
+}
+
+void KviFileTransferItem::displayUpdate()
+{
+	int dummy = (int) time(NULL);
+	tableWidget()->model()->setData(tableWidget()->model()->index(row(),0), dummy, Qt::DisplayRole);
+	tableWidget()->model()->setData(tableWidget()->model()->index(row(),1), dummy, Qt::DisplayRole);
+	tableWidget()->model()->setData(tableWidget()->model()->index(row(),2), dummy, Qt::DisplayRole);
 }
 
 QString KviFileTransferItem::key(int column,bool bAcending) const
@@ -209,8 +217,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	//TODO
 	//connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
-	//m_pTableWidget->setFocusPolicy(NoFocus);
-	//m_pTableWidget->viewport()->setFocusPolicy(NoFocus);
+	m_pTableWidget->setFocusPolicy(Qt::NoFocus);
+	m_pTableWidget->viewport()->setFocusPolicy(Qt::NoFocus);
 
 	//connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)),
 	// this,SLOT(showHostPopup(KviTalTableWidgetItem *,const QPoint &,int)));
@@ -667,32 +675,21 @@ void KviFileTransferWindow::openLocalFileFolder()
 
 void KviFileTransferWindow::heartbeat()
 {
-/*
-notice to the author: thank you for not have commented this code
+	int i;
+	QModelIndex index;
+	KviFileTransferItem* it;
+	int dummy = (int) time(NULL);
 
-	if(m_pTableWidget->rowCount() < 1)return;
-
-	KviFileTransferItem * i1;
-	KviFileTransferItem * i2;
-
-	i1 = (KviFileTransferItem *) m_pTableWidget->itemAt(QPoint(1,1));
-	if(!i1)
+	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
-		m_pTableWidget->viewport()->update();
-		return;
-	}
-	i2 = (KviFileTransferItem *) m_pTableWidget->itemAt(QPoint(1,m_pTableWidget->viewport()->height() - 2));
-	if(i2)i2 = i2->nextSibling();
-
-	while(i1 && (i1 != i2))
-	{
-		if(((KviFileTransferItem *)i1)->transfer()->active())
+		it = (KviFileTransferItem *)m_pTableWidget->item(i,0);
+		if(it->transfer()->active())
 		{
-			m_pTableWidget->repaintItem(i1);
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,0), dummy, Qt::DisplayRole);
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,1), dummy, Qt::DisplayRole);
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,2), dummy, Qt::DisplayRole);
 		}
-		i1 = i1->nextSibling();
 	}
-*/
 }
 
 void KviFileTransferWindow::clearAll()

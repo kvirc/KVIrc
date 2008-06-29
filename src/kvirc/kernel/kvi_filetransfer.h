@@ -74,7 +74,6 @@ signals:
 #define COLUMN_FILEINFO 1
 #define COLUMN_PROGRESS 2
 
-
 class KVIRC_API KviFileTransfer : public QObject
 {
 	Q_OBJECT
@@ -83,10 +82,10 @@ public:
 	~KviFileTransfer();
 protected:
 	int              m_iId;
-	KviTalTableWidgetItem  * m_pDisplayItem;
+	KviTalTableWidgetItemEx  * m_pDisplayItem;
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(KviTalTableWidgetItem * i){ m_pDisplayItem = i; };
+	void setDisplayItem(KviTalTableWidgetItemEx * i){ m_pDisplayItem = i; };
 	int id(){ return m_iId; };
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();

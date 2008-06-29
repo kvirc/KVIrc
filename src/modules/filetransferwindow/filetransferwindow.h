@@ -44,13 +44,15 @@ class KviFileTransferWidget : public KviTalTableWidget
 {
 	friend class KviFileTransferItemDelegate;
 	Q_OBJECT
+	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	KviFileTransferWidget(QWidget * pParent) : KviTalTableWidget(pParent) {};
 	~KviFileTransferWidget() {};
 	void paintEvent(QPaintEvent * event);
+	int dummyRead() const { return 0; };
 };
 
-class KviFileTransferItem : public KviTalTableWidgetItem
+class KviFileTransferItem : public KviTalTableWidgetItemEx
 {
 public:
 	KviFileTransferItem(KviFileTransferWidget * v,KviFileTransfer * t);
@@ -62,6 +64,7 @@ protected:
 public:
 	KviFileTransfer * transfer(){ return m_pTransfer; };
 	virtual QString key(int column,bool bAcending) const;
+	virtual void displayUpdate();
 };
 
 class KviFileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate

@@ -186,5 +186,5 @@ int KviFileTransfer::displayHeight(int iLineSpacing)
 
 void KviFileTransfer::displayUpdate()
 {
-	if(m_pDisplayItem)m_pDisplayItem->repaint();
+	if(m_pDisplayItem)m_pDisplayItem->displayUpdate();
 }
