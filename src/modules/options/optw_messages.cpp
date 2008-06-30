@@ -34,7 +34,6 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_vbox.h"
 
 #include <QLayout>

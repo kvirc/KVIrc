@@ -32,9 +32,9 @@
 #include "kvi_pixmap.h"
 
 #include <QDialog>
+#include <QCheckBox>
 
 class QLineEdit;
-class KviStyledCheckBox;
 class QPushButton;
 class QComboBox;
 class KviHttpRequest;
@@ -152,7 +152,7 @@ public:
 	KviIdentityAvatarOptionsWidget(QWidget * pParent);
 	~KviIdentityAvatarOptionsWidget();
 protected:
-	KviStyledCheckBox        * m_pUseAvatarCheck;
+	QCheckBox        * m_pUseAvatarCheck;
 	QLineEdit        * m_pAvatarNameEdit;
 	QPushButton      * m_pChooseAvatarButton;
 	KviPixmap        * m_pLocalAvatar;

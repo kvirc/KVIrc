@@ -38,14 +38,12 @@
 #include <QTextDocument>
 #include <QListWidget>
 #include <QItemDelegate>
+#include <QToolButton>
 
 class QLineEdit;
 class QPushButton;
 class QLabel;
-class KviStyledCheckBox;
-
 class KviDynamicToolTip;
-class KviStyledToolButton;
 
 
 class KviThemeListWidgetItem : public KviTalListWidgetItem
@@ -71,8 +69,8 @@ protected:
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
 	KviTalListWidget    * m_pListWidget;
 	KviTalPopupMenu     * m_pContextPopup;
-	KviStyledToolButton         * m_pDeleteThemeButton;
-	KviStyledToolButton         * m_pPackThemeButton;
+	QToolButton         * m_pDeleteThemeButton;
+	QToolButton         * m_pPackThemeButton;
 public:
 	static KviThemeManagementDialog * instance(){ return m_pInstance; };
 	static void display();

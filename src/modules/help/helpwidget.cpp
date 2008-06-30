@@ -29,7 +29,6 @@
 #include "kvi_app.h"
 #include "kvi_msgbox.h"
 #include "kvi_module.h"
-#include "kvi_styled_controls.h"
 #include "kvi_fileutils.h"
 
 #include <QToolButton>
@@ -56,18 +55,18 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 	m_pTextBrowser->setFocusPolicy(Qt::NoFocus);
 	m_pToolBar = new KviTalHBox(this);
 
-	m_pBtnIndex = new KviStyledToolButton(m_pToolBar);
+	m_pBtnIndex = new QToolButton(m_pToolBar);
 	m_pBtnIndex->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX));
 	connect(m_pBtnIndex,SIGNAL(clicked()),this,SLOT(showIndex()));
 	//m_pBtnIndex->setUsesBigPixmap(true);
 
-	m_pBtnBackward = new KviStyledToolButton(m_pToolBar);
+	m_pBtnBackward = new QToolButton(m_pToolBar);
 	m_pBtnBackward->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
 	connect(m_pBtnBackward,SIGNAL(clicked()),m_pTextBrowser,SLOT(backward()));
 	m_pBtnBackward->setEnabled(false);
 	//m_pBtnBackward->setUsesBigPixmap(true);
 
-	m_pBtnForward = new KviStyledToolButton(m_pToolBar);
+	m_pBtnForward = new QToolButton(m_pToolBar);
 	m_pBtnForward->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
 	connect(m_pBtnForward,SIGNAL(clicked()),m_pTextBrowser,SLOT(forward()));
 	m_pBtnForward->setEnabled(false);
@@ -77,7 +76,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
 
 	if(bIsStandalone)
 	{
-		QToolButton * b = new KviStyledToolButton(m_pToolBar);
+		QToolButton * b = new QToolButton(m_pToolBar);
 		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
 		connect(b,SIGNAL(clicked()),this,SLOT(doClose()));
 		//b->setUsesBigPixmap(true);

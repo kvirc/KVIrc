@@ -53,8 +53,6 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QComboBox>
-#include "kvi_styled_controls.h"
-#include "kvi_styled_controls.h"
 #include <QPainter>
 #include <QTabWidget>
 #include <QLabel>
@@ -151,7 +149,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(l,2,0);
 	m_pSmallIconEdit = new QLineEdit(tab);
 	gl->addWidget(m_pSmallIconEdit,2,1);
-	m_pSmallIconButton = new KviStyledToolButton(tab);
+	m_pSmallIconButton = new QToolButton(tab);
 	m_pSmallIconButton->setMinimumSize(QSize(20,20));
 	connect(m_pSmallIconButton,SIGNAL(clicked()),this,SLOT(chooseSmallIcon()));
 	gl->addWidget(m_pSmallIconButton,2,2);
@@ -165,7 +163,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(l,3,0);
 	m_pBigIconEdit = new QLineEdit(tab);
 	gl->addWidget(m_pBigIconEdit,3,1);
-	m_pBigIconButton = new KviStyledToolButton(tab);
+	m_pBigIconButton = new QToolButton(tab);
 	m_pBigIconButton->setMinimumSize(QSize(48,48));
 	m_pBigIconButton->setIconSize(QSize(32,32));
 	connect(m_pBigIconButton,SIGNAL(clicked()),this,SLOT(chooseBigIcon()));
@@ -205,7 +203,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl = new QGridLayout(tab);
 
 
-	m_pNeedsContextCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Context"),tab);
+	m_pNeedsContextCheck = new QCheckBox(__tr2qs("Needs IRC Context"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
 	m_pNeedsContextCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window belongs to an irc context"));
@@ -217,7 +215,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	l->setMinimumWidth(40);
 	gl->addWidget(l,1,0);
 
-	m_pNeedsConnectionCheck = new KviStyledCheckBox(__tr2qs("Needs IRC Connection"),tab);
+	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs("Needs IRC Connection"),tab);
 	connect(m_pNeedsConnectionCheck,SIGNAL(toggled(bool)),this,SLOT(needsConnectionCheckToggled(bool)));
 	m_pNeedsConnectionCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window has an active IRC connection"));
@@ -229,13 +227,13 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	l->setMinimumWidth(40);
 	gl->addWidget(l,2,1);
 
-	m_pEnableAtLoginCheck = new KviStyledCheckBox(__tr2qs("Enable at Login"),tab);
+	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs("Enable at Login"),tab);
 	m_pEnableAtLoginCheck->setToolTip(__tr2qs("Check this option if this action should be enabled also during " \
 						"the login operations (so when the logical IRC connection hasn't been estabilished yet)"));
 	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
 //	gl->addMultiCellWidget(m_pEnableAtLoginCheck,2,2,2,3);
 
-	m_pSpecificWindowsCheck = new KviStyledCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
+	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
 	connect(m_pSpecificWindowsCheck,SIGNAL(toggled(bool)),this,SLOT(specificWindowsCheckToggled(bool)));
 	m_pSpecificWindowsCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is of a specified type"));
@@ -243,46 +241,46 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 //	gl->addMultiCellWidget(m_pSpecificWindowsCheck,3,3,0,3);
 
 
-	m_pWindowConsoleCheck = new KviStyledCheckBox(__tr2qs("Enable in Console Windows"),tab);
+	m_pWindowConsoleCheck = new QCheckBox(__tr2qs("Enable in Console Windows"),tab);
 	m_pWindowConsoleCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a console"));
 	connect(m_pWindowConsoleCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowConsoleCheck,4,1,1,3);
 //	gl->addMultiCellWidget(m_pWindowConsoleCheck,4,4,1,3);
 
-	m_pConsoleOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,2,1,2);
 //	gl->addMultiCellWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,5,2,3);
 
-	m_pWindowChannelCheck = new KviStyledCheckBox(__tr2qs("Enable in Channel Windows"),tab);
+	m_pWindowChannelCheck = new QCheckBox(__tr2qs("Enable in Channel Windows"),tab);
 	m_pWindowChannelCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a channel"));
 	connect(m_pWindowChannelCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowChannelCheck,6,1,1,3);
 //	gl->addMultiCellWidget(m_pWindowChannelCheck,6,6,1,3);
 
-	m_pChannelOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck,7,2,1,2);
 //	gl->addMultiCellWidget(m_pChannelOnlyIfUsersSelectedCheck,7,7,2,3);
 
-	m_pWindowQueryCheck = new KviStyledCheckBox(__tr2qs("Enable in Query Windows"),tab);
+	m_pWindowQueryCheck = new QCheckBox(__tr2qs("Enable in Query Windows"),tab);
 	m_pWindowQueryCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a query"));
 	connect(m_pWindowQueryCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowQueryCheck,8,1,1,3);
 //	gl->addMultiCellWidget(m_pWindowQueryCheck,8,8,1,3);
 
-	m_pQueryOnlyIfUsersSelectedCheck = new KviStyledCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
+	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck,9,2,1,2);
 //	gl->addMultiCellWidget(m_pQueryOnlyIfUsersSelectedCheck,9,9,2,3);
 
-	m_pWindowDccChatCheck = new KviStyledCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
+	m_pWindowDccChatCheck = new QCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
 	m_pWindowDccChatCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a dcc chat"));
 	gl->addWidget(m_pWindowDccChatCheck,10,1,1,2);

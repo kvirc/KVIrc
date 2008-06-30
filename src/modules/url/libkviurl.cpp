@@ -20,7 +20,6 @@
 #include "libkviurl.h"
 #include "icons.h"
 
-#include "kvi_styled_controls.h"
 #include "kvi_module.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
@@ -346,11 +345,11 @@ ConfigDialog::ConfigDialog()
 	KviConfig *cfg = new KviConfig(szConfigPath.ptr(),KviConfig::Read);
 	cfg->setGroup("ConfigDialog");
 
-	cb[0] = new KviStyledCheckBox(__tr2qs("Save URL list on module unload"),this);
+	cb[0] = new QCheckBox(__tr2qs("Save URL list on module unload"),this);
 	cb[0]->setChecked(cfg->readBoolEntry("SaveUrlListOnUnload",false));
 	g->addMultiCellWidget(cb[0],0,0,0,1);
 
-	cb[1] = new KviStyledCheckBox(__tr2qs("Save columns width on URL list close"),this);
+	cb[1] = new QCheckBox(__tr2qs("Save columns width on URL list close"),this);
 	cb[1]->setChecked(cfg->readBoolEntry("SaveColumnWidthOnClose",false));
 	g->addMultiCellWidget(cb[1],1,1,0,1);
 
@@ -413,7 +412,7 @@ BanFrame::BanFrame(QWidget *parent, const char *name, bool banEnabled)
 
 	QGridLayout *g = new QGridLayout(this);
 
-	m_pEnable = new KviStyledCheckBox(__tr2qs("Enable URL ban list"),this);
+	m_pEnable = new QCheckBox(__tr2qs("Enable URL ban list"),this);
 	connect(m_pEnable,SIGNAL(clicked()),this,SLOT(enableClicked()));
 	m_pEnable->setChecked(banEnabled);
 	g->addMultiCellWidget(m_pEnable,0,0,0,1);

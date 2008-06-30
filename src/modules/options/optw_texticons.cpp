@@ -33,7 +33,7 @@
 #include <QCursor>
 #include <QTableWidget>
 #include <QTableWidgetItem>
-
+#include <QToolButton>
 
 
 KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
@@ -164,8 +164,8 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 		delete m_pBox;
 	m_pBox=new KviTalHBox(0);
 	m_pItem=(KviTextIconTableItem *)i;
-	KviStyledToolButton *iconButton=new KviStyledToolButton(m_pBox);
-	KviStyledToolButton *browseButton=new KviStyledToolButton(m_pBox);
+	QToolButton *iconButton=new QToolButton(m_pBox);
+	QToolButton *browseButton=new QToolButton(m_pBox);
 	browseButton->setText("...");
 	m_pBox->setSpacing(0);
 	m_pBox->setMargin(0);

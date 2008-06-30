@@ -30,10 +30,10 @@
 #include "kvi_console.h"
 #include "kvi_moduleextension.h"
 #include "kvi_sharedfiles.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_treewidget.h"
 
 #include <QDialog>
+#include <QCheckBox>
 
 class QGridLayout; 
 class QDateTimeEdit;
@@ -65,7 +65,7 @@ public:
 	QLineEdit     * m_pUserMaskEdit;
 	QPushButton   * m_pBrowseButton;
 	QLineEdit     * m_pShareNameEdit;
-	KviStyledCheckBox     * m_pExpireCheckBox;
+	QCheckBox     * m_pExpireCheckBox;
 public:
 	KviSharedFile * getResult();
 protected slots:

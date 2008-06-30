@@ -33,9 +33,7 @@
 
 class QLineEdit;
 class QPushButton;
-class KviStyledCheckBox;
 class QLabel;
-//class Q3MultiLineEdit;
 class KviTalTextEdit;
 class KviFileSelector;
 

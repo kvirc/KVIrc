@@ -36,7 +36,6 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_itemdelegates.h"
 
-#include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QPixmap>
 

@@ -29,8 +29,6 @@
 #include "class_widget.h"
 #include "object_macros.h"
 
-#include "kvi_styled_controls.h"
-
 class KviKvsObject_toolbutton : public KviKvsObject_widget
 {
 	Q_OBJECT

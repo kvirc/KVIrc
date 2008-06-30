@@ -35,7 +35,6 @@
 #include "kvi_themedlabel.h"
 #include "kvi_input.h"
 #include "kvi_filedialog.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
 
@@ -45,7 +44,6 @@
 #include <QPushButton>
 #include <QSplitter>
 #include <QLayout>
-#include "kvi_styled_controls.h"
 #include <QMessageBox>
 #include <QFileInfo>
 
@@ -87,7 +85,7 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 	g->addWidget(m_pUserMaskEdit,2,1,1,3);
 //	g->addMultiCellWidget( m_pUserMaskEdit, 2, 2, 1, 3 );
 
-	m_pExpireCheckBox = new KviStyledCheckBox(__tr2qs_ctx("Expire at:","sharedfileswindow"),this);
+	m_pExpireCheckBox = new QCheckBox(__tr2qs_ctx("Expire at:","sharedfileswindow"),this);
 	g->addWidget(m_pExpireCheckBox,3,0);
 
 	m_pExpireDateTimeEdit = new QDateTimeEdit(this);

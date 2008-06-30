@@ -680,7 +680,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pVolumeSlider->setMaximumHeight(2*m_pPlayingLabel->height());
 	connect(m_pVolumeSlider, SIGNAL(valueChanged(int)), this, SLOT(setMixerVolume(int)));
 
-	m_pTalkButton = new KviStyledToolButton(m_pHBox);
+	m_pTalkButton = new QToolButton(m_pHBox);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setCheckable(true);
 	QIcon iset;

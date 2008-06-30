@@ -23,14 +23,13 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#include "kvi_styled_controls.h"
 #include "kvi_string.h"
 #include "kvi_config.h"
 
 #include <QWidget>
 #include <QFrame>
 #include <QPixmap>
-#include "kvi_styled_controls.h"
+#include <QCheckBox>
 #include <QTextDocument>
 
 
@@ -57,7 +56,7 @@ public:
 	~KviTipWindow();
 protected:
 	KviTipFrame * m_pTipFrame;
-	KviStyledCheckBox   * m_pShowAtStartupCheck;
+	QCheckBox   * m_pShowAtStartupCheck;
 	KviConfig   * m_pConfig;
 	QString        m_szConfigFileName; // no path!
 protected:

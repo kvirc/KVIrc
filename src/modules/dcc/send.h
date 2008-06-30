@@ -34,7 +34,6 @@
 #include "kvi_pointerlist.h"
 #include "kvi_filetransfer.h"
 #include "kvi_time.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
@@ -43,6 +42,7 @@
 #include <QProgressBar>
 #include <QFile>
 #include <QDialog>
+#include <QCheckBox>
 
 class QSpinBox;
 class QTimer;
@@ -156,7 +156,7 @@ public:
 	~KviDccFileTransferBandwidthDialog();
 protected:
 	KviDccFileTransfer * m_pTransfer;
-	KviStyledCheckBox * m_pEnableLimitCheck;
+	QCheckBox * m_pEnableLimitCheck;
 	QSpinBox * m_pLimitBox;
 protected:
 	virtual void closeEvent(QCloseEvent *e);

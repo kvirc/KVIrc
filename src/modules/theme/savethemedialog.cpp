@@ -32,7 +32,6 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
-#include "kvi_styled_controls.h"
 #include "kvi_packagefile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_filedialog.h"

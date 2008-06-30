@@ -23,7 +23,6 @@
 #include "libkvitip.h"
 
 #include "kvi_module.h"
-#include "kvi_styled_controls.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
@@ -127,7 +126,7 @@ KviTipWindow::KviTipWindow()
 	connect(pb,SIGNAL(clicked()),this,SLOT(close()));
 	pb->setDefault(true);
 
-	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show at startup"),this);
+	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show at startup"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup));
 	m_pShowAtStartupCheck->setGeometry(
 		KVI_TIP_WINDOW_BORDER,

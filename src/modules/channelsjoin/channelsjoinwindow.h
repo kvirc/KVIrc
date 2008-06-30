@@ -25,9 +25,9 @@
 #define _CHANNELSJOIN_H_
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_treewidget.h"
 
+#include <QCheckBox>
 #include <QDialog>
 
 class QPushButton;
@@ -47,8 +47,8 @@ protected:
 	KviTalTreeWidget   * m_pListView;
 	KviTalGroupBox   * m_pGroupBox;
 	QLineEdit   * m_pPass;
-	KviStyledCheckBox   * m_pShowAtStartupCheck;
-	KviStyledCheckBox   * m_pCloseAfterJoinCheck;
+	QCheckBox   * m_pShowAtStartupCheck;
+	QCheckBox   * m_pCloseAfterJoinCheck;
 	QPushButton * m_pJoinButton;
 	KviConsole  * m_pConsole;
 public:

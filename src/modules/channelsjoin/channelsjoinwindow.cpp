@@ -39,7 +39,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QLayout>
-#include "kvi_styled_controls.h"
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>
@@ -100,7 +99,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 g->addWidget(m_pJoinButton,2,0,1,2,Qt::AlignHCenter);
 //	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
 
-	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);
+	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
 	g->addWidget(m_pShowAtStartupCheck,3,0);
 

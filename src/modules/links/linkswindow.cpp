@@ -51,7 +51,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	// The button box on the left
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 
-	m_pRequestButton = new KviStyledToolButton(box,"request_button");
+	m_pRequestButton = new QToolButton(box,"request_button");
 	m_pRequestButton->setUsesBigPixmap(false);
 	m_pRequestButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));

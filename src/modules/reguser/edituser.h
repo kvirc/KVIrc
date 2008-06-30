@@ -37,6 +37,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTableWidget>
+#include <QCheckBox>
 
 class KviRegisteredUser;
 
@@ -103,7 +104,7 @@ protected:
 	QPushButton        * m_pEditMaskButton;
 	QPushButton        * m_pAddMaskButton;
 
-	KviStyledCheckBox          * m_pNotifyCheck;
+	QCheckBox          * m_pNotifyCheck;
 	QLineEdit          * m_pNotifyNick;
 
 	KviPixmap          * m_pAvatar;
@@ -111,18 +112,18 @@ protected:
 
 	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
 	
-	KviStyledCheckBox          * m_pCustomColorCheck;
+	QCheckBox          * m_pCustomColorCheck;
 	QColor             * m_pCustomColor;
 	KviColorSelector   * m_pCustomColorSelector;
 
 	//Ignore TAB
-	KviStyledCheckBox          * m_pIgnoreEnabled;
-	KviStyledCheckBox          * m_pIgnoreQuery;
-	KviStyledCheckBox          * m_pIgnoreChannel;
-	KviStyledCheckBox          * m_pIgnoreNotice;
-	KviStyledCheckBox          * m_pIgnoreCtcp;
-	KviStyledCheckBox          * m_pIgnoreInvite;
-	KviStyledCheckBox          * m_pIgnoreDcc;
+	QCheckBox          * m_pIgnoreEnabled;
+	QCheckBox          * m_pIgnoreQuery;
+	QCheckBox          * m_pIgnoreChannel;
+	QCheckBox          * m_pIgnoreNotice;
+	QCheckBox          * m_pIgnoreCtcp;
+	QCheckBox          * m_pIgnoreInvite;
+	QCheckBox          * m_pIgnoreDcc;
 
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

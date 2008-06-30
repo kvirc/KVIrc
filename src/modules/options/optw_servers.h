@@ -31,13 +31,13 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include <QTabWidget>
+#include <QCheckBox>
+#include <QToolButton>
 
 class QLabel;
 class QLineEdit;
-class KviStyledCheckBox;
 class QComboBox;
 class QPushButton;
-class KviStyledToolButton;
 class KviIpEditor;
 class KviIrcServer;
 class KviTalPopupMenu;
@@ -82,10 +82,10 @@ protected:
 
 	QComboBox             * m_pEncodingEditor;
 
-	KviStyledCheckBox             * m_pAutoConnectCheck;
+	QCheckBox             * m_pAutoConnectCheck;
 
 	KviTalTreeWidget        * m_pNickServTreeWidget;
-	KviStyledCheckBox             * m_pNickServCheck;
+	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
 	QPushButton           * m_pEditRuleButton;
@@ -121,14 +121,14 @@ protected:
 	QComboBox             * m_pLinkFilterEditor;
 	QComboBox             * m_pEncodingEditor;
 	KviIpEditor           * m_pIpEditor;
-	KviStyledCheckBox             * m_pCacheIpCheck;
-	KviStyledCheckBox             * m_pUseSSLCheck;
-	KviStyledCheckBox             * m_pUseDefaultInitUMode;
-	KviStyledCheckBox             * m_pIMode;
-	KviStyledCheckBox             * m_pWMode;
-	KviStyledCheckBox             * m_pSMode;
-	KviStyledCheckBox             * m_pUseAutoConnect;
-	KviStyledCheckBox             * m_pUseIPV6Check;
+	QCheckBox             * m_pCacheIpCheck;
+	QCheckBox             * m_pUseSSLCheck;
+	QCheckBox             * m_pUseDefaultInitUMode;
+	QCheckBox             * m_pIMode;
+	QCheckBox             * m_pWMode;
+	QCheckBox             * m_pSMode;
+	QCheckBox             * m_pUseAutoConnect;
+	QCheckBox             * m_pUseIPV6Check;
 	QLineEdit             * m_pPortEditor;
 	QStringList             m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
@@ -167,7 +167,7 @@ protected:
 	KviTalPopupMenu                   * m_pContextPopup;
 	KviTalPopupMenu                   * m_pImportPopup;
 	KviIrcServer                 * m_pClipboard;
-	//KviStyledCheckBox                    * m_pIpV6Check;
+	//QCheckBox                    * m_pIpV6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
 	KviServerOptionsTreeWidgetItem * m_pLastEditedItem;
@@ -175,12 +175,12 @@ protected:
 	KviNetworkDetailsWidget      * m_pNetworkDetailsDialog;
 	KviMexServerImport           * m_pImportFilter;
 
-	KviStyledToolButton                  * m_pNewServerButton;
-	KviStyledToolButton                  * m_pNewNetworkButton;
-	KviStyledToolButton                  * m_pRemoveButton;
-	KviStyledToolButton                  * m_pCopyServerButton;
-	KviStyledToolButton                  * m_pPasteServerButton;
-	KviStyledToolButton                  * m_pImportButton;
+	QToolButton                  * m_pNewServerButton;
+	QToolButton                  * m_pNewNetworkButton;
+	QToolButton                  * m_pRemoveButton;
+	QToolButton                  * m_pCopyServerButton;
+	QToolButton                  * m_pPasteServerButton;
+	QToolButton                  * m_pImportButton;
 private:
 	void fillServerList();
 	void saveLastItem();

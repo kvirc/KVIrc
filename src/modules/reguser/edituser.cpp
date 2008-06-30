@@ -387,7 +387,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	g = new QGridLayout(p2);
 
-	m_pNotifyCheck = new KviStyledCheckBox(__tr2qs("Notify when user is online"),p2);
+	m_pNotifyCheck = new QCheckBox(__tr2qs("Notify when user is online"),p2);
 	g->addMultiCellWidget(m_pNotifyCheck,0,0,0,2);
 
 	l = new QLabel(__tr2qs("Notify nicknames:"),p2);
@@ -425,7 +425,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addMultiCellWidget(f,4,4,0,2);
 
-	m_pCustomColorCheck = new KviStyledCheckBox(__tr2qs("Use custom color in userlist"),p2);
+	m_pCustomColorCheck = new QCheckBox(__tr2qs("Use custom color in userlist"),p2);
 	if(r)
 		m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
 	g->addMultiCellWidget(m_pCustomColorCheck,5,5,0,1);
@@ -446,29 +446,29 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	KviTalVBox * vb = new KviTalVBox(this);
 	vb->setMargin(10);
 
-	m_pIgnoreEnabled = new KviStyledCheckBox(__tr2qs("Enable ignore for this user"),vb);
+	m_pIgnoreEnabled = new QCheckBox(__tr2qs("Enable ignore for this user"),vb);
 
 	QGroupBox * gb = new QGroupBox(__tr2qs("Ignore features"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
 	
 	QVBoxLayout * layout = new QVBoxLayout(gb,20,3);
 	
-	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),gb);
+	m_pIgnoreQuery = new QCheckBox(__tr2qs("Ignore query-messages"),gb);
 	layout->addWidget(m_pIgnoreQuery);
 
-	m_pIgnoreChannel = new KviStyledCheckBox(__tr2qs("Ignore channel-messages"),gb);
+	m_pIgnoreChannel = new QCheckBox(__tr2qs("Ignore channel-messages"),gb);
 	layout->addWidget(m_pIgnoreChannel);
 
-	m_pIgnoreNotice = new KviStyledCheckBox(__tr2qs("Ignore notice-messages"),gb);
+	m_pIgnoreNotice = new QCheckBox(__tr2qs("Ignore notice-messages"),gb);
 	layout->addWidget(m_pIgnoreNotice);
 
-	m_pIgnoreCtcp = new KviStyledCheckBox(__tr2qs("Ignore ctcp-messages"),gb);
+	m_pIgnoreCtcp = new QCheckBox(__tr2qs("Ignore ctcp-messages"),gb);
 	layout->addWidget(m_pIgnoreCtcp);
 
-	m_pIgnoreInvite = new KviStyledCheckBox(__tr2qs("Ignore invites"),gb);
+	m_pIgnoreInvite = new QCheckBox(__tr2qs("Ignore invites"),gb);
 	layout->addWidget(m_pIgnoreInvite);
 
-	m_pIgnoreDcc = new KviStyledCheckBox(__tr2qs("Ignore DCCs"),gb);
+	m_pIgnoreDcc = new QCheckBox(__tr2qs("Ignore DCCs"),gb);
 	layout->addWidget(m_pIgnoreDcc);
 
 	QWidget *w = new QWidget(vb);

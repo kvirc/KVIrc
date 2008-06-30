@@ -26,7 +26,6 @@
 #include "kvi_window.h"
 #include "kvi_tal_menubar.h"
 #include "kvi_mextoolbar.h"
-#include "kvi_styled_controls.h"
 #include "kvi_kvs_action.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_listbox.h"
@@ -36,12 +35,11 @@
 #include <QString>
 #include <QPushButton>
 #include <QFile>
-#include "kvi_styled_controls.h"
 #include <QMenuBar>
 #include <QInputDialog>
-#include "kvi_styled_controls.h"
 #include <QIcon>
 #include <QPixmap>
+#include <QCheckBox>
 
 typedef struct _KviUrl
 {
@@ -91,7 +89,7 @@ public:
 	~BanFrame();
 	void saveBans();
 private:
-	KviStyledCheckBox *m_pEnable;
+	QCheckBox *m_pEnable;
 	KviTalListBox *m_pBanList;
 	QPushButton *m_pAddBtn;
 	QPushButton *m_pRemoveBtn;
@@ -110,7 +108,7 @@ public:
 	ConfigDialog();
 	~ConfigDialog();
 private:
-	KviStyledCheckBox *cb[cbnum];
+	QCheckBox *cb[cbnum];
 	BanFrame *m_pBanFrame;
 	void closeEvent(QCloseEvent *);
 protected slots:

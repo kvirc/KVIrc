@@ -34,7 +34,7 @@
 #include "kvi_tal_treewidget.h"
 #include "kvi_tal_popupmenu.h"
 
-#include "kvi_styled_controls.h"
+#include <QToolButton>
 #include <QLineEdit>
 #include <QItemDelegate>
 
@@ -94,10 +94,10 @@ protected:
 	QSplitter                              * m_pTopSplitter;
 	KviTalTreeWidget                         * m_pTreeWidget;
 	QLineEdit                              * m_pParamsEdit;
-	KviStyledToolButton                            * m_pRequestButton;
-	KviStyledToolButton							   * m_pStopListDownloadButton;
-	KviStyledToolButton							   * m_pOpenButton;
-	KviStyledToolButton							   * m_pSaveButton;
+	QToolButton                            * m_pRequestButton;
+	QToolButton							   * m_pStopListDownloadButton;
+	QToolButton							   * m_pOpenButton;
+	QToolButton							   * m_pSaveButton;
 	KviThemedLabel                         * m_pInfoLabel;
 	QTimer                                 * m_pFlushTimer;
 	KviPointerList<KviChannelTreeWidgetItemData> * m_pItemList;

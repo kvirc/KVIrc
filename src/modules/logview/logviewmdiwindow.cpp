@@ -34,7 +34,6 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #include "kvi_valuelist.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
@@ -86,27 +85,27 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 
 	QGridLayout *layout = new QGridLayout(m_pSearchTab);
 	
-	m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
+	m_pShowChannelsCheck = new QCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
 	m_pShowChannelsCheck->setChecked(true);
 	layout->addWidget(m_pShowChannelsCheck,0,0,1,2);
 //	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
 	
-	m_pShowQueryesCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
+	m_pShowQueryesCheck  = new QCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
 	m_pShowQueryesCheck->setChecked(true);
 	layout->addWidget(m_pShowQueryesCheck,1,0,1,2);
 //	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
 	
-	m_pShowConsolesCheck = new KviStyledCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
+	m_pShowConsolesCheck = new QCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
 	m_pShowConsolesCheck->setChecked(true);
 	layout->addWidget(m_pShowConsolesCheck,2,0,1,2);
 //	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
 
-	m_pShowDccChatCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
+	m_pShowDccChatCheck  = new QCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
 	m_pShowDccChatCheck->setChecked(true);
 	layout->addWidget(m_pShowDccChatCheck,3,0,1,2);
 //	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
 	
-	m_pShowOtherCheck   = new KviStyledCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
+	m_pShowOtherCheck   = new QCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
 	m_pShowOtherCheck->setChecked(true);
 	layout->addWidget(m_pShowOtherCheck,4,0,1,2);
 //	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
@@ -128,7 +127,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	layout->addWidget(l,7,0);
 	layout->addWidget(m_pContentsMask,7,1);
 
-	m_pEnableFromFilter = new KviStyledCheckBox(__tr2qs_ctx("Only older than","logview"),m_pSearchTab);
+	m_pEnableFromFilter = new QCheckBox(__tr2qs_ctx("Only older than","logview"),m_pSearchTab);
 	m_pFromDateEdit = new QDateEdit(m_pSearchTab);
 	m_pFromDateEdit->setDate(QDate::currentDate());
 	layout->addWidget(m_pEnableFromFilter,8,0);
@@ -136,7 +135,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
 	m_pFromDateEdit->setEnabled(false);
 
-	m_pEnableToFilter = new KviStyledCheckBox(__tr2qs_ctx("Only newier than","logview"),m_pSearchTab);
+	m_pEnableToFilter = new QCheckBox(__tr2qs_ctx("Only newier than","logview"),m_pSearchTab);
 	m_pToDateEdit = new QDateEdit(m_pSearchTab);
 	m_pToDateEdit->setDate(QDate::currentDate());
 	layout->addWidget(m_pEnableToFilter,9,0);

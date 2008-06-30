@@ -24,8 +24,9 @@
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_locale.h"
-#include "kvi_styled_controls.h"
 #include "class_checkbox.h"
+
+#include <QCheckBox>
 
 /*
 	@doc:	checkbox
@@ -77,7 +78,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_checkbox)
 
 bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	KviStyledCheckBox  * cb = new KviStyledCheckBox(parentScriptWidget(), getName().toUtf8().data());
+	QCheckBox  * cb = new QCheckBox(parentScriptWidget(), getName().toUtf8().data());
 	setObject(cb, true);
 	connect(cb,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
@@ -86,7 +87,7 @@ bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 
 bool KviKvsObject_checkbox::function_isChecked(KviKvsObjectFunctionCall *c)
 {
-	if(widget()) c->returnValue()->setBoolean(((KviStyledCheckBox *)widget())->isChecked());
+	if(widget()) c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
 	return true;
 }
 
@@ -96,7 +97,7 @@ bool KviKvsObject_checkbox::function_setChecked(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,KVS_PF_OPTIONAL,bChecked)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((KviStyledCheckBox *)widget())->setChecked(bChecked);
+	if(widget()) ((QCheckBox *)widget())->setChecked(bChecked);
 	return true;
 }
 
@@ -106,7 +107,7 @@ bool KviKvsObject_checkbox::function_setText(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((KviStyledCheckBox *)widget())->setText(szText);
+	if(widget()) ((QCheckBox *)widget())->setText(szText);
 	return true;
 }
 

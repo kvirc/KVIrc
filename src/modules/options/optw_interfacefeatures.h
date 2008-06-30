@@ -26,12 +26,11 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
+#include <QCheckBox>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviInterfaceFeaturesOptionsWidget KVI_SMALLICON_IDEA
 #define KVI_OPTIONS_WIDGET_NAME_KviInterfaceFeaturesOptionsWidget __tr2qs_no_lookup("Interface")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviInterfaceFeaturesOptionsWidget 50000
-
-class KviStyledCheckBox;
 
 class KviInterfaceFeaturesOptionsWidget : public KviOptionsWidget
 {
@@ -40,7 +39,7 @@ public:
 	KviInterfaceFeaturesOptionsWidget(QWidget * parent);
 	~KviInterfaceFeaturesOptionsWidget();
 protected:
-	KviStyledCheckBox * m_pDisableSplash;
+	QCheckBox * m_pDisableSplash;
 public:
 	virtual void commit();
 };

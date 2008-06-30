@@ -35,11 +35,10 @@
 
 #include <QLabel>
 #include <QDialog>
-#include "kvi_styled_controls.h"
 #include <QEvent>
 #include <QTextEdit>
 #include <QListWidget>
-
+#include <QCheckBox>
 // Q3PopupMenu
 
 #include <QSyntaxHighlighter>
@@ -179,7 +178,7 @@ protected:
 	QPushButton *findNext;
 
 //	QPushButton *cancelbutton;
-	KviStyledCheckBox *checkReplaceAll;
+	QCheckBox *checkReplaceAll;
 	QWidget *m_pParent;
 protected slots:
 	void textChanged(const QString &);

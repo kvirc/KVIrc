@@ -26,9 +26,10 @@
 #include "kvi_optionswidget.h"
 #include "kvi_tal_treewidget.h"
 
+#include <QCheckBox>
+
 class QLabel;
 class QLineEdit;
-class KviStyledCheckBox;
 class QComboBox;
 class KviIpEditor;
 class KviTalPopupMenu;
@@ -74,7 +75,7 @@ protected:
 	QLabel       * m_pProtocolLabel;
 	QComboBox    * m_pProtocolBox;
 	KviTalPopupMenu   * m_pContextPopup;
-	KviStyledCheckBox    * m_pIpV6Check;
+	QCheckBox    * m_pIpV6Check;
 	KviProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:
 

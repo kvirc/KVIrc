@@ -32,7 +32,6 @@
 #include "kvi_config.h"
 #include "kvi_valuelist.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_styled_controls.h"
 
 #include <QFileInfo>
 #include <QSplitter>
@@ -88,7 +87,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	connect( m_pIndexSearch, SIGNAL( returnPressed() ),
 	     this, SLOT( showIndexTopic() ) );
 	
-	KviStyledToolButton* pBtnRefreshIndex = new KviStyledToolButton(pSearchBox);
+	QToolButton* pBtnRefreshIndex = new QToolButton(pSearchBox);
 	pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
 	pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index") );

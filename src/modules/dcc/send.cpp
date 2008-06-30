@@ -53,7 +53,6 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_sparser.h"
 #include "kvi_kvs_script.h"
-#include "kvi_styled_controls.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// Ugly Windoze compiler...
@@ -64,7 +63,6 @@
 #include <QPainter>
 #include <QDateTime>
 #include <qglobal.h>
-#include "kvi_styled_controls.h"
 #include <QSpinBox>
 #include <QLayout>
 #include <QPushButton>
@@ -1824,7 +1822,7 @@ KviDccFileTransferBandwidthDialog::KviDccFileTransferBandwidthDialog(QWidget * p
 
 	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to","dcc") : __tr2qs_ctx("Limit download bandwidth to","dcc");
 
-	m_pEnableLimitCheck = new KviStyledCheckBox(szText,this);
+	m_pEnableLimitCheck = new QCheckBox(szText,this);
 	g->addWidget(m_pEnableLimitCheck,0,0);
 
 	m_pEnableLimitCheck->setChecked((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));

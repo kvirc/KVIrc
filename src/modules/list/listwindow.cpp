@@ -42,7 +42,6 @@
 #include "kvi_topicw.h"
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
-#include "kvi_styled_controls.h"
 #include "kvi_msgbox.h"
 #include "kvi_fileextensions.h"
 #include "kvi_tal_hbox.h"
@@ -186,21 +185,21 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 	box->setSpacing(1);
 	box->setMargin(0);
-	m_pOpenButton = new KviStyledToolButton(box);
+	m_pOpenButton = new QToolButton(box);
 	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN))));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
-	m_pSaveButton = new KviStyledToolButton(box);
+	m_pSaveButton = new QToolButton(box);
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
-	m_pRequestButton = new KviStyledToolButton(box,"request_button");
+	m_pRequestButton = new QToolButton(box,"request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 
-	m_pStopListDownloadButton = new KviStyledToolButton(box,"stoplistdownload_button");
+	m_pStopListDownloadButton = new QToolButton(box,"stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
 	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));

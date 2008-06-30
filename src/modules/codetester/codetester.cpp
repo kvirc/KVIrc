@@ -38,7 +38,6 @@
 #include <QPushButton>
 #include <QLayout>
 #include <QLabel>
-#include "kvi_styled_controls.h"
 
 
 extern KviPointerList<KviCodeTesterWindow> * g_pCodeTesterWindowList;

@@ -498,11 +498,11 @@ KviSetupWizard::KviSetupWizard()
 	addPage(m_pDesktopIntegration,__tr2qs("Desktop Integration"));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	m_pCreateUrlHandlers = new KviStyledCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
+	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateUrlHandlers->setChecked(true);
 #endif
 #ifdef COMPILE_KDE_SUPPORT
-	m_pCreateDesktopShortcut = new KviStyledCheckBox(__tr2qs("Create desktop shortcut"),m_pDesktopIntegration->m_pVBox);
+	m_pCreateDesktopShortcut = new QCheckBox(__tr2qs("Create desktop shortcut"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateDesktopShortcut->setChecked(true);
 #endif
 

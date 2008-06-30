@@ -32,11 +32,11 @@
 
 #include <QDialog>
 #include <QStringList>
+#include <QToolButton>
 
 class QLabel;
 class QPushButton;
 class QLineEdit;
-class KviStyledToolButton;
 class KviTalWidgetStack;
 
 class KviGeneralOptionsFrontWidget : public KviOptionsWidget
@@ -76,7 +76,7 @@ private:
 	KviGeneralOptionsFrontWidget* m_pFrontWidget;
 	QString        m_szGroup;
 	QLineEdit    * m_pSearchLineEdit;
-	KviStyledToolButton  * m_pSearchButton;
+	QToolButton  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsListViewItem *it);
 	void fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);

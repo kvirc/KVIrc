@@ -47,7 +47,6 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QPushButton>
-#include "kvi_styled_controls.h"
 #include <QLayout>
 #include <QApplication>
 

@@ -41,10 +41,7 @@
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_scrollview.h"
 
-//FIXME
-
 #include <QLayout>
-#include "kvi_styled_controls.h"
 #include <QMessageBox>
 #include <QTimer>
 #include <QCursor>
@@ -919,7 +916,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
  
 	g->setRowStretch(0,1);
 
-	KviStyledToolButton * b = new KviStyledToolButton(this);
+	QToolButton * b = new QToolButton(this);
 	b->setArrowType(Qt::DownArrow);
 	b->setObjectName("ToolButtonEditor");
 
@@ -932,7 +929,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	pop->insertSeparator();
 	pop->insertItem(__tr2qs_ctx("&Configure Editor...","editor"),this,SLOT(configureColors()));
 	b->setMenu(pop);
-	b->setPopupMode(KviStyledToolButton::InstantPopup);
+	b->setPopupMode(QToolButton::InstantPopup);
 
 	g->setColumnStretch(1,1);
 	g->setColumnStretch(2,10);
@@ -1225,7 +1222,7 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	replacebutton->setEnabled( FALSE );
 	layout->addWidget( replacebutton, 3, 2 );
 
-	checkReplaceAll = new KviStyledCheckBox( this);
+	checkReplaceAll = new QCheckBox( this);
 	checkReplaceAll->setObjectName("replaceAll" );
 	checkReplaceAll->setText(tr("&Replace in all Aliases"));
 	layout->addWidget( checkReplaceAll, 2, 0 );

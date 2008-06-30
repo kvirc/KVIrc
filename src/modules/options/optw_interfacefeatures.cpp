@@ -47,7 +47,7 @@ KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * p
 	QString szSplashDisableFile;
 	g_pApp->getLocalKvircDirectory(szSplashDisableFile,KviApp::Pics,"disable-splash." KVI_VERSION);
 	bool bDisableSplash = KviFileUtils::fileExists(szSplashDisableFile);
-	m_pDisableSplash = new KviStyledCheckBox(__tr2qs_ctx("Disable splash screen","options"),this);
+	m_pDisableSplash = new QCheckBox(__tr2qs_ctx("Disable splash screen","options"),this);
 	addWidgetToLayout(m_pDisableSplash,0,3,0,3);
 	m_pDisableSplash->setChecked(bDisableSplash);
 	

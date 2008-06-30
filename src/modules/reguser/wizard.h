@@ -23,11 +23,11 @@
 //
 
 #include "kvi_string.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_wizard.h"
 
+#include <QCheckBox>
+
 class QGridLayout;
-//class KviStyledCheckBox;
 class QLabel;
 class QLineEdit;
 class QWidget;
@@ -65,7 +65,7 @@ public:
 	QLabel* m_pLabel3;
 	KviPixmapSelector * m_pAvatarSelector;
 	QWidget* m_pPage4;
-	KviStyledCheckBox* m_pNotifyCheck;
+	QCheckBox* m_pNotifyCheck;
 	QLabel* m_pNotifyNickLabel1;
 	QLabel* m_pNotifyNickLabel2;
 	QLabel* m_pLabel4;

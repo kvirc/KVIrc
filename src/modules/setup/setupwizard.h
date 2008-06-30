@@ -37,7 +37,7 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QComboBox>
-#include "kvi_styled_controls.h"
+#include <QCheckBox>
 #include <QGroupBox>
 #define KviTalVButtonGroup QGroupBox
 
@@ -86,8 +86,8 @@ public:
 	QRadioButton  * m_pThemeNone;
 	
 	// Welcome
-	KviStyledCheckBox     * m_pCreateUrlHandlers;
-	KviStyledCheckBox     * m_pCreateDesktopShortcut;
+	QCheckBox     * m_pCreateUrlHandlers;
+	QCheckBox     * m_pCreateDesktopShortcut;
 	
 	//Dir
 	QLineEdit     * m_pDataPathEdit;

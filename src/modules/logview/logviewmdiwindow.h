@@ -31,9 +31,9 @@
 
 #include <QTabWidget>
 #include <QDateTime>
+#include <QCheckBox>
 
 class QStringList;
-class QCheckBox;
 class QLineEdit;
 class QDateEdit;
 class KviTalListView;

@@ -30,10 +30,10 @@
 #include "kvi_optionswidget.h"
 
 #include <QDialog>
+#include <QCheckBox>
 
 class QLineEdit;
 class QPushButton;
-class KviStyledCheckBox;
 class KviNickServRule;
 class KviTalTreeWidget;
 
@@ -73,7 +73,7 @@ public:
 	~KviNickServOptionsWidget();
 protected:
 	KviTalTreeWidget             * m_pNickServTreeWidget;
-	KviStyledCheckBox             * m_pNickServCheck;
+	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
 	QPushButton           * m_pEditRuleButton;
