@@ -47,7 +47,6 @@
 #include "kvi_stringconversion.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
-#include "kvi_styled_controls.h"
 
 #include <QLabel>
 #include <QScrollBar>

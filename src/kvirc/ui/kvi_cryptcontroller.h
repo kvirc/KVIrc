@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
-	#include "kvi_styled_controls.h"
 	#include "kvi_crypt.h"
 	#include "kvi_heapobject.h"
 	#include "kvi_toolwindows_container.h"
@@ -35,9 +34,11 @@
 
 	#include <QWidget>
 	#include <QPushButton>
-	#include "kvi_styled_controls.h"
+	#include <QToolButton>
 	#include <QLabel>
 	#include <QLineEdit>
+	#include <QCheckBox>
+
 	class KviWindow;
 
 	class KVIRC_API KviCryptSessionInfo : public KviHeapObject
@@ -74,17 +75,17 @@
 		KviWindow            * m_pWindow;
 		KviTalListBox             * m_pListBox;
 		QPushButton          * m_pOkButton;
-		KviStyledCheckBox            * m_pEnableCheck;
+		QCheckBox            * m_pEnableCheck;
 		QLabel               * m_pDescriptionLabel;
 		QLabel               * m_pAuthorLabel;
-		KviStyledCheckBox            * m_pEnableEncrypt;
+		QCheckBox            * m_pEnableEncrypt;
 		QLabel               * m_pEncryptKeyLabel;
 		QLineEdit            * m_pEncryptKeyEdit;
-		KviStyledCheckBox            * m_pEncryptHexKeyCheck;
-		KviStyledCheckBox            * m_pEnableDecrypt;
+		QCheckBox            * m_pEncryptHexKeyCheck;
+		QCheckBox            * m_pEnableDecrypt;
 		QLabel               * m_pDecryptKeyLabel;
 		QLineEdit            * m_pDecryptKeyEdit;
-		KviStyledCheckBox            * m_pDecryptHexKeyCheck;
+		QCheckBox            * m_pDecryptHexKeyCheck;
 		KviEngineListBoxItem * m_pLastItem;
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:

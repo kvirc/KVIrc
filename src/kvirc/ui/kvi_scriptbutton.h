@@ -24,15 +24,14 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_styled_controls.h"
 
-#include "kvi_styled_controls.h"
+#include <QToolButton>
 #include <QToolBar>
 
 class KviKvsScript;
 class KviWindow;
 
-class KVIRC_API KviScriptUserButton : public KviStyledToolButton
+class KVIRC_API KviScriptUserButton : public QToolButton
 {
 	Q_OBJECT
 public:

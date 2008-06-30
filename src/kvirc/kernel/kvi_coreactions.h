@@ -29,8 +29,6 @@
 #include "kvi_kvs_action.h"
 #include "kvi_pointerlist.h"
 
-#include "kvi_styled_controls.h"
-
 class KviConnectAction : public KviAction
 {
 	Q_OBJECT

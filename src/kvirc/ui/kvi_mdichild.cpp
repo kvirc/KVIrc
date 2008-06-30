@@ -258,12 +258,14 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 
 void KviMdiChild::systemPopupSlot()
 {
-	if(sender()->inherits("KviStyledToolButton"))
+/*
+	if(sender()->inherits("QToolButton"))
 	{
-		emit systemPopupRequest(((KviStyledToolButton *)sender())->mapToGlobal(QPoint(0,((KviStyledToolButton *)sender())->height())));
+		emit systemPopupRequest(((QToolButton *)sender())->mapToGlobal(QPoint(0,((QToolButton *)sender())->height())));
 	} else {
+*/
 		emit systemPopupRequest(m_pCaption->mapToGlobal(QPoint(5,5)));
-	}
+//	}
 }
 
 void KviMdiChild::resizeEvent(QResizeEvent *e)

@@ -59,8 +59,6 @@
 
 #include <QPixmap>
 #include <QSplitter>
-#include "kvi_styled_controls.h"
-
 
 KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 : KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,nick,lpConsole)

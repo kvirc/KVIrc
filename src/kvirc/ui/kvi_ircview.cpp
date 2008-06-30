@@ -74,7 +74,6 @@
 #include "kvi_ircview.h"
 #include "kvi_ircviewtools.h"
 #include "kvi_ircviewprivate.h"
-#include "kvi_styled_controls.h"
 #include "kvi_debug.h"
 #include "kvi_app.h"
 #include "kvi_settings.h"
@@ -113,7 +112,6 @@
 #include <QPainter>
 #include <QRegExp>
 #include <QFile>
-#include "kvi_styled_controls.h"
 #include <QFontMetrics> // needed
 #include <QApplication>
 #include <QMessageBox>
@@ -364,7 +362,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setFocusProxy(this);
 
 
-	m_pToolsButton = new KviStyledToolButton(this,"btntools");
+	m_pToolsButton = new QToolButton(this,"btntools");
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
 	m_pToolsButton->setIcon(is1);

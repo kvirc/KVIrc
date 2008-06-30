@@ -50,7 +50,6 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_styled_controls.h"
 #include "kvi_kvs_script.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
@@ -65,7 +64,6 @@
 #include <QPushButton>
 #include <QDesktopWidget>
 #include <QVariant>
-#include "kvi_styled_controls.h"
 #include <QMessageBox>
 #include <QEvent>
 #include <QCloseEvent>

@@ -29,7 +29,6 @@
 #define __KVIRC__
 
 #include "kvi_toolwindows_container.h"
-#include "kvi_styled_controls.h"
 #include "kvi_channel.h"
 #include "kvi_console.h"
 #include "kvi_iconmanager.h"
@@ -72,7 +71,6 @@
 #include <time.h>
 
 #include <QSplitter>
-#include "kvi_styled_controls.h"
 #include <QLabel>
 #include <QEvent>
 #include <QPalette>
@@ -182,7 +180,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const QString &na
 	createCryptControllerButton(m_pButtonContainer);
 #endif
 
-	m_pHideToolsButton = new KviStyledToolButton(m_pButtonBox,"hide_container_button");
+	m_pHideToolsButton = new QToolButton(m_pButtonBox,"hide_container_button");
 
 
 	m_pHideToolsButton->setIconSize(QSize(22,22));

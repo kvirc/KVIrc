@@ -27,16 +27,15 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
-#include "kvi_styled_controls.h"
 
+#include <QToolButton>
 #include <QWidget>
 #include <QPixmap>      // needed
 
 class QScrollBar;
 class QLineEdit;
 class QFile;
-//class KviStyledToolButton;
-class QFontMetrics;
+class QFQs;
 class KviTalPopupMenu;
 
 class KviWindow;
@@ -89,7 +88,7 @@ private:
 
 	QPixmap                   * m_pPrivateBackgroundPixmap;
 	QScrollBar                * m_pScrollBar;
-	KviStyledToolButton               * m_pToolsButton;
+	QToolButton               * m_pToolsButton;
 	KviTalPopupMenu           * m_pToolsPopup;
 
 	KviIrcViewToolWidget      * m_pToolWidget;

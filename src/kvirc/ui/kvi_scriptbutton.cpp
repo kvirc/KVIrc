@@ -31,7 +31,7 @@
 
 
 KviScriptUserButton::KviScriptUserButton(QWidget * par,const char * name)
-: KviStyledToolButton(par,name)
+: QToolButton(par,name)
 {
 	m_pScript = 0;
 //	setAutoRaise(true);

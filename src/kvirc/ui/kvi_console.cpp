@@ -72,7 +72,6 @@
 #include "kvi_ircdatastreammonitor.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_msgbox.h"
-#include "kvi_styled_controls.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"

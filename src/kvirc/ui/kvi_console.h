@@ -35,10 +35,10 @@
 #include <time.h>
 
 #include <QComboBox>
+#include <QToolButton>
 
 class QToolBar;
 
-class KviStyledToolButton;
 class KviAvatar;
 class KviDns;
 class KviIrcUserDataBase;

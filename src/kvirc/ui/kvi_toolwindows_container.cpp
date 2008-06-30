@@ -27,7 +27,6 @@
 #include "kvi_toolwindows_container.h"
 #include "kvi_iconmanager.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_styled_controls.h"
 
 #include <QPainter>
 #include <QApplication>
@@ -101,7 +100,7 @@ void KviWindowToolWidget::unregisterSelf()
 }*/
 
 KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const QString & text, QWidget * parent,bool bOn, const char * name )
-:TOOL_PAGE_PARENT(parent)
+:QToolButton(parent)
 {
 //	setFlat(true);
 	setToolTip(text);

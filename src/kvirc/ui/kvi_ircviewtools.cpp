@@ -26,7 +26,6 @@
 
 #include "kvi_ircviewtools.h"
 #include "kvi_ircview.h"
-#include "kvi_styled_controls.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
 #include "kvi_locale.h"
@@ -36,12 +35,9 @@
 #include "kvi_app.h"
 #include "kvi_memmove.h"
 
-
-#include "kvi_styled_controls.h"
 #include <QTabWidget>
 #include <QLayout>
 #include <QLabel>
-#include "kvi_styled_controls.h"
 #include <QPushButton>
 #include <QLineEdit>
 #include <QCursor>
@@ -121,15 +117,15 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	g->addWidget(m_pStringToFind,0,0,1,3);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
 
-	m_pRegExp = new KviStyledCheckBox(__tr2qs("&Regular expression"),w);
+	m_pRegExp = new QCheckBox(__tr2qs("&Regular expression"),w);
 	g->addWidget(m_pRegExp,1,0,1,3);
 
-	m_pExtendedRegExp = new KviStyledCheckBox(__tr2qs("E&xtended regexp."),w);
+	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
 	g->addWidget(m_pExtendedRegExp,2,0,1,3);
 	m_pExtendedRegExp->setEnabled(false);
 	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
 
-	m_pCaseSensitive = new KviStyledCheckBox(__tr2qs("C&ase sensitive"),w);
+	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
 	g->addWidget(m_pCaseSensitive,3,0,1,3);
 
 	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);

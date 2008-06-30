@@ -42,7 +42,7 @@
 #include <QAbstractItemView>
 
 KviBoolSelector::KviBoolSelector(QWidget * par,const QString & txt,bool *pOption,bool bEnabled)
-: KviStyledCheckBox(txt,par), KviSelectorInterface()
+: QCheckBox(txt,par), KviSelectorInterface()
 {
 	setEnabled(bEnabled);
 	setChecked(*pOption);
@@ -215,7 +215,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 
 	m_localPixmap = *pOption;
 
-	m_pCheckBox = new KviStyledCheckBox(txt,this);
+	m_pCheckBox = new QCheckBox(txt,this);
 	m_pCheckBox->setChecked(m_localPixmap.pixmap());
 	connect(m_pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
 

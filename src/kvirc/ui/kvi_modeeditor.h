@@ -26,12 +26,11 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
-#include "kvi_styled_controls.h"
 #include "kvi_toolwindows_container.h"
 
 #include <QWidget>
 #include <QPushButton>
-#include "kvi_styled_controls.h"
+#include <QCheckBox>
 #include <QLineEdit>
 #include <QLabel>
 
@@ -52,10 +51,10 @@ protected: // fields
 	QString m_szMode;
 	QString m_szKey;
 	QString m_szLimit;
-	KviPointerList<KviStyledCheckBox> * m_pCheckBoxes;
-	KviStyledCheckBox * m_pLimitBox;
+	KviPointerList<QCheckBox> * m_pCheckBoxes;
+	QCheckBox * m_pLimitBox;
 	QLineEdit * m_pLimitEdit;
-	KviStyledCheckBox * m_pKeyBox;
+	QCheckBox * m_pKeyBox;
 	QLineEdit * m_pKeyEdit;
 signals:
 	void setMode(const char *);

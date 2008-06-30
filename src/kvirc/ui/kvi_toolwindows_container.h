@@ -26,14 +26,11 @@
 //=============================================================================
 
 #include "kvi_heapobject.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_widgetstack.h"
 #include "kvi_tal_vbox.h"
 
-#include "kvi_styled_controls.h"
+#include <QToolButton>
 #include <QObjectCleanupHandler>
-#include <QPushButton>
-
 
 class KviWindowToolWidget;
 class KviWindowToolPageButton;
@@ -69,14 +66,7 @@ protected:
 	
 };
 
-//#ifdef COMPILE_USE_QT4
-//	#define TOOL_PAGE_PARENT QPushButton
-//#else
-	#define TOOL_PAGE_PARENT KviStyledToolButton
-//#endif
-
-
-class KVIRC_API KviWindowToolPageButton : public TOOL_PAGE_PARENT
+class KVIRC_API KviWindowToolPageButton : public QToolButton
 {
 	Q_OBJECT
 public:

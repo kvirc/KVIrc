@@ -56,7 +56,7 @@
 
 
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
-: KviStyledToolButton(parent)
+: QToolButton(parent)
 {
 	setObjectName(name);
 	setIcon(QIcon(pix));
@@ -254,7 +254,7 @@ void KviMdiCaption::resizeEvent(QResizeEvent * e)
 
 
 KviMenuBarToolButton::KviMenuBarToolButton(QWidget * par,const QPixmap &img, const char * name)
-: KviStyledToolButton(par)
+: QToolButton(par)
 {
 	setProperty("name","name");
 	setIcon(img);

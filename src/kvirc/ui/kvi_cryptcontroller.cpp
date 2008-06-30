@@ -27,7 +27,6 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_cryptcontroller.h"
-	#include "kvi_styled_controls.h"
 	#include "kvi_window.h"
 	#include "kvi_locale.h"
 	#include "kvi_out.h"
@@ -90,7 +89,7 @@
 		frm->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 		g->addWidget(frm,1,0,1,4);
 
-		m_pEnableCheck = new KviStyledCheckBox(__tr2qs("Use the crypt engine"),this);
+		m_pEnableCheck = new QCheckBox(__tr2qs("Use the crypt engine"),this);
 		g->addWidget(m_pEnableCheck,2,0,1,4);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
@@ -107,7 +106,7 @@
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		g->addWidget(m_pAuthorLabel,4,1,1,3);
 	
-		m_pEnableEncrypt = new KviStyledCheckBox(__tr2qs("Enable encryption"),this);
+		m_pEnableEncrypt = new QCheckBox(__tr2qs("Enable encryption"),this);
 		g->addWidget(m_pEnableEncrypt,5,1,1,3);
 	
 		m_pEncryptKeyLabel = new QLabel(__tr2qs("Encrypt key:"),this);
@@ -116,10 +115,10 @@
 		m_pEncryptKeyEdit = new QLineEdit(this);
 		g->addWidget(m_pEncryptKeyEdit,6,2);
 
-		m_pEncryptHexKeyCheck = new KviStyledCheckBox(__tr2qs("Hex"),this);
+		m_pEncryptHexKeyCheck = new QCheckBox(__tr2qs("Hex"),this);
 		g->addWidget(m_pEncryptHexKeyCheck,6,3);
 
-		m_pEnableDecrypt = new KviStyledCheckBox(__tr2qs("Enable decryption"),this);
+		m_pEnableDecrypt = new QCheckBox(__tr2qs("Enable decryption"),this);
 		g->addWidget(m_pEnableDecrypt,7,1,1,3);	
 	
 		m_pDecryptKeyLabel = new QLabel(__tr2qs("Decrypt key:"),this);
@@ -128,7 +127,7 @@
 		m_pDecryptKeyEdit = new QLineEdit(this);
 		g->addWidget(m_pDecryptKeyEdit,8,2);
 
-		m_pDecryptHexKeyCheck = new KviStyledCheckBox(__tr2qs("Hex"),this);
+		m_pDecryptHexKeyCheck = new QCheckBox(__tr2qs("Hex"),this);
 		g->addWidget(m_pDecryptHexKeyCheck,8,3);
 
 		m_pOkButton = new QPushButton(__tr2qs("OK"),this);

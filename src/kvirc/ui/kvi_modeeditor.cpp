@@ -29,7 +29,6 @@
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_channel.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_styled_controls.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_tal_scrollview.h"
 
@@ -101,7 +100,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	int i = 1;
 	QString tmp;
 
-	m_pCheckBoxes = new KviPointerList<KviStyledCheckBox>;
+	m_pCheckBoxes = new KviPointerList<QCheckBox>;
 	m_pCheckBoxes->setAutoDelete(false);
 
 	
@@ -114,7 +113,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		szModes.remove(0,1);
 
 		KviQString::sprintf(tmp,"%c: %Q",ccc.unicode(),&(c->connection()->serverInfo()->getChannelModeDescription(ccc)));
-		KviStyledCheckBox * cb = new KviStyledCheckBox(tmp,pBackground);
+		QCheckBox * cb = new QCheckBox(tmp,pBackground);
 		cb->setEnabled(isEnabled);
 		m_pCheckBoxes->append(cb);
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
@@ -123,7 +122,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	}
 
 	KviQString::sprintf(tmp,"l: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('l')));
-	m_pLimitBox = new KviStyledCheckBox(tmp,pBackground);
+	m_pLimitBox = new QCheckBox(tmp,pBackground);
 	m_pLimitBox->setEnabled(isEnabled);
 	i++;
 	g->addWidget(m_pLimitBox,i,0,1,3);
@@ -144,7 +143,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	}
 
 	KviQString::sprintf(tmp,"k: %Q",&(c->connection()->serverInfo()->getChannelModeDescription('k')));
-	m_pKeyBox = new KviStyledCheckBox(tmp,pBackground);
+	m_pKeyBox = new QCheckBox(tmp,pBackground);
 	m_pKeyBox->setEnabled(isEnabled);
 	i++;
 
@@ -191,7 +190,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		szModes.remove(0,1);
 
 		KviQString::sprintf(tmp,"%c: %Q",(char)ccc.unicode(),&(c->connection()->serverInfo()->getChannelModeDescription(ccc)));
-		KviStyledCheckBox * cb = new KviStyledCheckBox(tmp,pBackground);
+		QCheckBox * cb = new QCheckBox(tmp,pBackground);
 		cb->setEnabled(isEnabled);
 		m_pCheckBoxes->append(cb);
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
@@ -306,7 +305,7 @@ void KviModeEditor::commit()
 	}
 
 
-	for(KviStyledCheckBox * cb = m_pCheckBoxes->first();cb;cb = m_pCheckBoxes->next())
+	for(QCheckBox * cb = m_pCheckBoxes->first();cb;cb = m_pCheckBoxes->next())
 	{
 		QString sz = cb->text();
 		sz.replace("&","");

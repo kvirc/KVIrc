@@ -320,7 +320,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 			o = *it;
 			QString szText;
 			if(o->inherits("QLabel"))szText = ((QLabel *)o)->text();
-			else if(o->inherits("KviStyledCheckBox"))szText = ((KviStyledCheckBox *)o)->text();
+			else if(o->inherits("QCheckBox"))szText = ((KviStyledCheckBox *)o)->text();
 			else if(o->inherits("KviTalGroupBox"))szText = ((KviTalGroupBox *)o)->title();
 
 			if(o->inherits("QWidget"))

@@ -63,7 +63,6 @@
 #include <QVariant>
 #include <QLineEdit>
 #include <QMessageBox>
-#include "kvi_styled_controls.h"
 #include <QTimer>
 #include <QLayout>
 #include <QDesktopWidget>

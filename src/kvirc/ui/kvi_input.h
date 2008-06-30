@@ -34,9 +34,9 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QFrame>
+#include <QToolButton>
 
 //#include <QDialog>
-#include "kvi_styled_controls.h"
 
 class KviUserListView;
 class KviWindow;
@@ -223,11 +223,11 @@ public:
 	KviInputEditor  * m_pInputEditor;
 	KviScriptEditor * m_pMultiLineEditor;
 	KviTalHBox	* m_pButtonContainer;
-	KviStyledToolButton     * m_pMultiEditorButton;
-	KviStyledToolButton     * m_pHistoryButton;
-	KviStyledToolButton     * m_pIconButton;
-	KviStyledToolButton     * m_pCommandlineModeButton;
-	KviStyledToolButton     * m_pHideToolsButton;
+	QToolButton     * m_pMultiEditorButton;
+	QToolButton     * m_pHistoryButton;
+	QToolButton     * m_pIconButton;
+	QToolButton     * m_pCommandlineModeButton;
+	QToolButton     * m_pHideToolsButton;
 	QHBoxLayout		* m_pLayout;
 protected:
 //	virtual void resizeEvent(QResizeEvent * e);

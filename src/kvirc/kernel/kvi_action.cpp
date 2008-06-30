@@ -35,10 +35,7 @@
 #include "kvi_channel.h"
 #include "kvi_console.h"
 #include "kvi_query.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_popupmenu.h"
-
-#include "kvi_styled_controls.h"
 
 KviAction::~KviAction()
 {
@@ -177,8 +174,8 @@ void KviAction::reloadImages()
 	QPixmap * p = bigIcon();
 	for(QWidget * b = m_pWidgetList->first();b;b = m_pWidgetList->next())
 	{
-		if(b->inherits("KviStyledToolButton"))
-			((KviStyledToolButton *)b)->setIcon(p ? *p : QPixmap());
+		if(b->inherits("QToolButton"))
+			((QToolButton *)b)->setIcon(p ? *p : QPixmap());
 	}
 }
 
@@ -412,7 +409,7 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 {
 	if(!setupDone())setup();
 	QPixmap * p = bigIcon();
-	KviStyledToolButton * b = new KviStyledToolButton(
+	QToolButton * b = new QToolButton(
 			p ? *p : QPixmap(),
 			visibleName(),
 			visibleName(),

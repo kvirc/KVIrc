@@ -38,10 +38,10 @@
 
 #include <QDateTime>
 #include <QStringList>
+#include <QToolButton>
 
 class KviConsole;
 class QSplitter;
-class KviStyledToolButton;
 class KviTopicWidget;
 class KviIrcMask;
 class KviThemedLabel;

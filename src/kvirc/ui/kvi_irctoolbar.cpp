@@ -56,7 +56,7 @@ static QPixmap                                  * g_pIccMemBuffer               
 static KviPointerList<KviToolBarGraphicalApplet>    * g_pToolBarGraphicalAppletList = 0;
 
 KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * name)
-: KviStyledToolButton(par)
+: QToolButton(par)
 {
 	setObjectName(name);
 	if(!g_pToolBarGraphicalAppletList)

@@ -29,14 +29,13 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_pixmap.h"
-#include "kvi_styled_controls.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_scrollview.h"
 #include "kvi_tal_listwidget.h"
 #include "kvi_tal_treewidget.h"
 
-#include "kvi_styled_controls.h"
+#include <QCheckBox>
 #include <QLineEdit>
 #include <QLabel>
 #include <QPushButton>
@@ -76,7 +75,7 @@ public:
 	virtual void commit(){};
 };
 
-class KVIRC_API KviBoolSelector : public KviStyledCheckBox, public KviSelectorInterface
+class KVIRC_API KviBoolSelector : public QCheckBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
@@ -139,7 +138,7 @@ public:
 	KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap * pOption,bool bEnabled);
 	~KviPixmapSelector();
 private:
-	KviStyledCheckBox * m_pCheckBox;
+	QCheckBox * m_pCheckBox;
 	QLabel            * m_pFileNameLabel;
 	KviPixmapPreview  * m_pPreview;
 	QPushButton       * m_pChooseButton;

@@ -30,7 +30,7 @@
 #include <QFrame>
 #include <QString>
 #include <QTreeWidget>
-#include "kvi_styled_controls.h"
+#include <QCheckBox>
 
 class QLabel;
 class QLineEdit;
@@ -63,7 +63,7 @@ public:
 	KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcViewToolWidget * w,int id);
 	~KviIrcMessageCheckListItem();
 private:
-	KviStyledCheckBox *m_pCbox;
+	QCheckBox *m_pCbox;
 	int m_iId;
 	KviIrcViewToolWidget * m_pToolWidget;
 public:
@@ -93,9 +93,9 @@ protected:
 	QLineEdit  * m_pStringToFind;
 	QPoint       m_pressPoint;
 
-	KviStyledCheckBox  * m_pCaseSensitive;
-	KviStyledCheckBox  * m_pRegExp;
-	KviStyledCheckBox  * m_pExtendedRegExp;
+	QCheckBox  * m_pCaseSensitive;
+	QCheckBox  * m_pRegExp;
+	QCheckBox  * m_pExtendedRegExp;
 
 	QLabel     * m_pFindResult;
 

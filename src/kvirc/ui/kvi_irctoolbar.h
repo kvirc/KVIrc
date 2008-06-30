@@ -32,7 +32,7 @@
 #include "kvi_tal_widgetstack.h"
 
 #include <QWidget>
-#include "kvi_styled_controls.h"
+#include <QToolButton>
 #include <QLabel>
 
 class KviTalPopupMenu;
@@ -45,7 +45,7 @@ class KviTalPopupMenu;
 // Can be a child of any AppletContainer
 //
 
-class KVIRC_API KviToolBarGraphicalApplet : public KviStyledToolButton
+class KVIRC_API KviToolBarGraphicalApplet : public QToolButton
 {
 	Q_OBJECT
 public:
