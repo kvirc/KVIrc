@@ -658,8 +658,11 @@ KviSetupWizard::~KviSetupWizard()
 
 void KviSetupWizard::showEvent(QShowEvent *e)
 {
-	int w = QApplication::desktop()->width();
-	int h = QApplication::desktop()->height();
+	int primary_screen = g_pApp->desktop()->primaryScreen();
+	QRect r = g_pApp->desktop()->screenGeometry(primary_screen);
+		
+	int w = r.width();
+	int h = r.height();
 
 	int ww = width();
 	int wh = height();
@@ -672,9 +675,7 @@ void KviSetupWizard::showEvent(QShowEvent *e)
 		if(ww < 770)ww = 770;
 	}
 	
-	//wh = sizeHint().height();
-	
-	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
+	setGeometry(r.left() + (w - ww) / 2, r.top() + (h - wh) / 2,ww,wh);
 
 	KviTalWizard::showEvent(e);
 }
