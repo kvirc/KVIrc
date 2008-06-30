@@ -786,6 +786,8 @@ sub process_file
 			{
 				substitute_keyterms($parts{'switches'},"$docfilename$g_fileextension");
 			}
+			use File::Path;
+			mkpath("$g_directory");
 			if(open(DOCFILE,">$g_directory/$docfilename$g_fileextension"))
 			{
 				$g_filehandle=DOCFILE;
