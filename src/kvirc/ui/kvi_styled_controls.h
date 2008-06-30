@@ -24,15 +24,19 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 ///////////////////////////////////////////////////////////////////////////////
-
+/*
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
-
-#include <QCheckBox>
 #include <QEvent>
 #include <QTimer>
+*/
+#include <QCheckBox>
 #include <QToolButton>
 
+#define KviStyledCheckBox QCheckBox
+#define KviStyledToolButton QToolButton
+
+/*
 class KviStyledControl;
 class KviTalToolBar;
 
@@ -100,5 +104,5 @@ protected:
 	virtual void paintEvent ( QPaintEvent * );
 	virtual void resizeEvent ( QResizeEvent * );
 };
-
+*/
 #endif

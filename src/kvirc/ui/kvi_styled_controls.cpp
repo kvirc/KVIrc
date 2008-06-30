@@ -24,7 +24,7 @@
 
 
 #define __KVIRC__
-
+/*
 #include "kvi_styled_controls.h"
 #include "kvi_iconmanager.h"
 #include "kvi_app.h"
@@ -346,7 +346,7 @@ void KviStyledToolButton::resizeEvent ( QResizeEvent * e)
 		setMinimumWidth(bShowSubmenuIndicator ? pix.width()+8+pStoredPix->width() : pix.width());
 	}
 }
-
+*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_styled_controls.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
