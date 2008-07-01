@@ -1196,7 +1196,7 @@ namespace KviKvsCoreSimpleCommands
 		@type:
 			command
 		@title:
-			rebind:
+			rebind
 		@syntax:
 			rebind [-q] <window_id:string>
 		@short:
@@ -1211,15 +1211,15 @@ namespace KviKvsCoreSimpleCommands
 			-q causes the command to run quietly.[br]
 			[b]Handle with care.[/b]
 		@examples:
-			[comment]# Try this example in a channel or query window[/comment]
-			[comment]# Remember the current window id[/comment]
-			%winid = $window
-			[comment]# Rebind to the console of the current irc context[/comment]
-			rebind $console
-			echo "Hello from the console :)"
-			echo "Hello again.. still in the console"
-			[comment]# Rebind back[/comment]
-			rebind %winid
+			[comment]# Try this example in a channel or query window[/comment][br]
+			[comment]# Remember the current window id[/comment][br]
+			%winid = $window[br]
+			[comment]# Rebind to the console of the current irc context[/comment][br]
+			rebind $console[br]
+			echo "Hello from the console :)"[br]
+			echo "Hello again.. still in the console"[br]
+			[comment]# Rebind back[/comment][br]
+			rebind %winid[br]
 			echo "Again in this window :)"
 	*/
 	
