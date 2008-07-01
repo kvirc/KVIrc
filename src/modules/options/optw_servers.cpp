@@ -1420,6 +1420,9 @@ void KviServerOptionsWidget::commit()
 	}
 
 	KviOptionsWidget::commit();
+
+	// Ensure saving of the server DB
+	g_pApp->saveIrcServerDataBase();
 }
 
 void KviServerOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)
