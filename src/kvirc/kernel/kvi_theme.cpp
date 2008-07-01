@@ -172,7 +172,7 @@ const QPixmap & KviThemeInfo::smallScreenshot()
 		if(pix.width() > 300 || pix.height() > 225)
 		{
 			QImage sbri = pix.toImage();
-			pix.convertFromImage(sbri.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			pix = QPixmap::fromImage(sbri.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
 		}
 		pix.save(szFileName,"PNG");
 
@@ -205,7 +205,7 @@ const QPixmap & KviThemeInfo::mediumScreenshot()
 		if(pix.width() > 600 || pix.height() > 450)
 		{
 			QImage sbri = pix.toImage();
-			pix.convertFromImage(sbri.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			pix.fromImage(sbri.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
 		}
 
 		pix.save(szFileName,"PNG");
@@ -263,9 +263,9 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 600 || pix.height() > 450)
-			out.convertFromImage(pix.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			out.fromImage(pix.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
 		else
-			out.convertFromImage(pix);
+			out.fromImage(pix);
 
 		szScreenshotFileName = options.absoluteDirectory();
 		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
@@ -277,9 +277,9 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 300 || pix.height() > 225)
-			out.convertFromImage(pix.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			out.fromImage(pix.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
 		else
-			out.convertFromImage(pix);
+			out.fromImage(pix);
 
 		szScreenshotFileName = options.absoluteDirectory();
 		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);

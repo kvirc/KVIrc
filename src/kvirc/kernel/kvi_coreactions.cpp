@@ -668,11 +668,12 @@ bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 QWidget * KviConnectAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new QToolButton(
-			*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),
-			m_szConnectString,
-			m_szConnectString,
-			this,SLOT(activate()),t,name());
+	QToolButton * b = new QToolButton(t);
+	b->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)));
+	b->setText(m_szConnectString);
+	b->setStatusTip(m_szConnectString);
+	b->setObjectName(name());
+	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
 	registerWidget(b);
 	t->addWidget(b);
 	activeContextStateChanged();
@@ -737,11 +738,13 @@ bool KviSubmenuAction::addToPopupMenu(KviTalPopupMenu *p)
 QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new QToolButton(
-			*(bigIcon()),
-			visibleName(),
-			visibleName(),
-			this,SLOT(activate()),t,name());
+	QToolButton * b = new QToolButton(t);
+	b->setIcon(*(bigIcon()));
+	b->setText(visibleName());
+	b->setStatusTip(visibleName());
+	b->setObjectName(name());
+	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
+
 	b->setMenu(m_pPopup);
 	
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
@@ -1067,11 +1070,14 @@ bool KviGoAwayAction::addToPopupMenu(KviTalPopupMenu *p)
 QWidget * KviGoAwayAction::addToCustomToolBar(KviCustomToolBar *t)
 {
 	if(!setupDone())setup();
-	QToolButton * b = new QToolButton(
-			*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")),
-			m_szAwayString,
-			m_szAwayString,
-			this,SLOT(activate()),t,name());
+
+	QToolButton * b = new QToolButton(t);
+	b->setIcon(*(g_pIconManager->getBigIcon("kvi_bigicon_nokeyboard.png")));
+	b->setText(m_szAwayString);
+	b->setStatusTip(m_szAwayString);
+	b->setObjectName(name());
+	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
+
 	registerWidget(b);
 	t->addWidget(b);
 	activeContextStateChanged();

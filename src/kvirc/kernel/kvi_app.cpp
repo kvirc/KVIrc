@@ -94,9 +94,6 @@
 #include <QTextCodec>
 #include <QMetaObject>
 
-// FIXME: Qt4 #include <QMimeData>
-#include <q3mimefactory.h>
-
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
 #endif
@@ -265,7 +262,8 @@ void KviApp::setup()
 	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpNoIntl);
 	list.append(tmp);
-	Q3MimeSourceFactory::defaultFactory()->setFilePath(list);
+	//FIXME reimplement as QResource
+	//Q3MimeSourceFactory::defaultFactory()->setFilePath(list);
 
 	KVI_SPLASH_SET_PROGRESS(1)
 
@@ -1244,18 +1242,18 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) > 0)
 		{
-			g_pShadedParentGlobalDesktopBackground->convertFromImage(
+			*g_pShadedParentGlobalDesktopBackground = QPixmap::fromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100),
-					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
+					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
 		}
 		KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) %= 100;
 		if(KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) > 0)
 		{
-			g_pShadedChildGlobalDesktopBackground->convertFromImage(
+			*g_pShadedChildGlobalDesktopBackground = QPixmap::fromImage(
 				kimageeffect_fade(img,
 					(float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100),
-					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)),0);
+					KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade)));
 		}
 		if(g_pFrame)g_pFrame->updatePseudoTransparency();
 	}

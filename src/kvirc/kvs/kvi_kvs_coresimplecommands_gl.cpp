@@ -37,8 +37,6 @@
 
 #include "kvi_out.h"
 
-#include <q3mimefactory.h>
-
 namespace KviKvsCoreSimpleCommands
 {
 	/*
@@ -125,6 +123,8 @@ namespace KviKvsCoreSimpleCommands
 		QString szCommand;
 		if(szTopic.isEmpty())szCommand = "help.open index.html";
 		else {
+/* FIXME removed this usage if the evil goto. better if reimplemented directly in the help module
+			
 			bool bWasFunc = false;
 			if(szTopic[0] == QChar('$'))
 			{
@@ -227,6 +227,8 @@ try_again:
 	
 			szCommand = "help.open ";
 			szCommand += topik;
+*/
+			szCommand = "help.open " + szTopic;
 		}
 
 		// We don't care about the return value...

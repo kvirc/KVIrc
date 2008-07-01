@@ -412,7 +412,8 @@ namespace KviKvsCoreSimpleCommands
 			return true;
 		}
 	
-		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName.toUtf8().data(),"KviWindowScriptButton");
+		//pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName.toUtf8().data(),"KviWindowScriptButton");
+		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->findChild<KviWindowScriptButton*>(tbName);
 
 		if(!pButton)
 		{

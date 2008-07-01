@@ -409,12 +409,13 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 {
 	if(!setupDone())setup();
 	QPixmap * p = bigIcon();
-	QToolButton * b = new QToolButton(
-			p ? *p : QPixmap(),
-			visibleName(),
-			visibleName(),
-			this,SLOT(activate()),pParentToolBar,
-			m_szName.toUtf8().data());
+	QToolButton * b = new QToolButton(pParentToolBar);
+
+	b->setIcon(p ? *p : QPixmap());
+	b->setText(visibleName());
+	b->setStatusTip(visibleName());
+	setObjectName(m_szName.toUtf8().data());
+	connect(b,SIGNAL(clicked()),this,SLOT(activate()));
 
 	pParentToolBar->addWidget(b);
 	if(!isEnabled())b->setEnabled(false);

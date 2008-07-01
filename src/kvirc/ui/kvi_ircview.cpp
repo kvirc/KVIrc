@@ -4857,7 +4857,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		case 'u': // url link
 		{
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"url_icon\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\":/url_icon\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -4866,7 +4866,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "url_icon");
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "/url_icon");
 			//QMimeSourceFactory::defaultFactory()->setPixmap("url_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
 			tip += __tr2qs("Double-click to open this link");
 			tip += "</td></tr></table>";
@@ -4875,7 +4875,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		case 'h': // host link
 		{
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"host_icon\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\":/host_icon\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -4884,7 +4884,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)->toImage().bits(), "host_icon");
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)->toImage().bits(), "/host_icon");
 			//QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
 
 			if(linkText.indexOf('*') != -1)
@@ -4902,8 +4902,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\"server_icon\"> <u><font color=\"blue\"><nowrap>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)->toImage().bits(), "server_icon");
+				"<tr><td valign=\"center\"><img src=\":/server_icon\"> <u><font color=\"blue\"><nowrap>";
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)->toImage().bits(), "/server_icon");
 			//QMimeSourceFactory::defaultFactory()->setPixmap("server_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)));
 			if(linkText.length() > 50)
 			{
@@ -4983,8 +4983,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			{
 				QString szChan = linkText;
 				QString buf;
-				tip = "<img src=\"chan_icon\"> ";
-				QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)->toImage().bits(), "chan_icon");
+				tip = "<img src=\":/chan_icon\"> ";
+				QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)->toImage().bits(), "/chan_icon");
 				//QMimeSourceFactory::defaultFactory()->setPixmap("chan_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 
 				if(szCmd.length()>0) szChan=szCmd;

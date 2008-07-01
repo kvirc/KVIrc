@@ -41,7 +41,6 @@
 
 #else
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-	//: Q3ToolBar(label,w,dock,bNewLine,nam)
 	: QToolBar(label,w)
 	{
 		//setFrameStyle(QFrame::NoFrame);

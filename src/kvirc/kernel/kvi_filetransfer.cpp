@@ -28,7 +28,6 @@
 
 #include "kvi_app.h"
 
-#include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
 static KviFileTransferManager * g_pFileTransferManager = 0;
@@ -90,8 +89,8 @@ void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateM
 	{
 		KviPointerHashTable<QString,QVariant> d(7,false);
 		d.setAutoDelete(true);
-		d.replace("bCreateMinimized",new QVariant(bCreateMinimized,0));
-		d.replace("bNoRaise",new QVariant(bNoRaise,0));
+		d.replace("bCreateMinimized",new QVariant(bCreateMinimized));
+		d.replace("bNoRaise",new QVariant(bNoRaise));
 
 		KviModuleExtensionManager::instance()->allocateExtension(
 				"tool",
