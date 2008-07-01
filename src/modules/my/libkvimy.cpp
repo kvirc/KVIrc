@@ -418,8 +418,8 @@ KVIRC_MODULE(
 	"My",                                              // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)" \
-	"		   (C) 2005 Tonino Imbesi (grifisx at barmes dot net)" \
-	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
+	"	(C) 2005 Tonino Imbesi (grifisx at barmes dot net)" \
+	"	(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
 	"Scripting irc-context related functions",
 	my_module_init,
 	my_module_can_unload,

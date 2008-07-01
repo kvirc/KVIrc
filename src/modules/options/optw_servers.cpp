@@ -661,10 +661,10 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	{
 		//m_pLinkFilterEditor->setCurrentText(s->linkFilter());
 		int i = m_pLinkFilterEditor->findText(s->linkFilter());
-        if (i != -1)
-            m_pLinkFilterEditor->setCurrentIndex(i);
-        else
-            m_pLinkFilterEditor->setEditText(s->linkFilter());
+		if (i != -1)
+			m_pLinkFilterEditor->setCurrentIndex(i);
+		else
+			m_pLinkFilterEditor->setEditText(s->linkFilter());
 	}
 	else
 		m_pLinkFilterEditor->setCurrentIndex(0);
@@ -1253,10 +1253,12 @@ void KviServerOptionsWidget::fillServerList()
 	}
 	if(cur)m_pTreeWidget->scrollToItem(cur);
 }
+
 void KviServerOptionsWidget::itemDoubleClicked(KviTalTreeWidgetItem*, int )
 {
 	detailsClicked();
 }
+
 void KviServerOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
 {
 	saveLastItem();
@@ -1368,6 +1370,9 @@ void KviServerOptionsWidget::commit()
 //}
 
 	KviOptionsWidget::commit();
+
+	// Ensure saving of the server DB
+	g_pApp->saveIrcServerDataBase();
 }
 
 void KviServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
@@ -1527,8 +1532,7 @@ void KviServerOptionsWidget::newServer()
 		tmp.setCacheIp(false);
 		tmp.generateUniqueId();
 
-		KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,
-									*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
+		KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),&tmp);
 
 		net->setExpanded(true);
 
