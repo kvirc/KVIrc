@@ -181,12 +181,13 @@ KviTaskBarItem::~KviTaskBarItem()
 
 
 KviTaskBarButton::KviTaskBarButton(QWidget * par,KviWindow * wnd,const char * name)
-: QPushButton(par,name) , KviTaskBarItem(wnd)
+: QPushButton(par) , KviTaskBarItem(wnd)
 {
+	setObjectName(name);
 	m_bActive         = false;
 	m_pTip            = new KviDynamicToolTip(this);
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
-	setToggleButton (true);
+	setCheckable(true); //setToggleButton (true);
 	setFlat ( KVI_OPTION_BOOL(KviOption_boolUseFlatClassicTaskbarButtons) );
 }
 
@@ -209,7 +210,7 @@ void KviTaskBarButton::mousePressEvent(QMouseEvent *e)
 {
 	if(e->button() & Qt::LeftButton)
 	{
-		if(e->state() & Qt::ShiftButton)
+		if(e->modifiers() & Qt::ShiftModifier)
 		{
 			m_pWindow->delayedClose();
 		} else {
@@ -239,7 +240,7 @@ void KviTaskBarButton::setActive(bool bActive)
 		}
 		m_bActive      = false;
 	}
-	setOn(bActive);
+	setChecked(bActive);
 	update();
 }
 
@@ -248,7 +249,7 @@ void KviTaskBarButton::paintEvent(QPaintEvent * e)
 	QPainter p(this);
 	QStyleOption opt;
 	opt.initFrom(this);
-	if(isOn())
+	if(isChecked())
 		opt.state = QStyle::State_On | QStyle::State_Active;
 	style()->drawPrimitive(QStyle::PE_PanelButtonTool,&opt,&p,this);
 	drawButtonLabel(&p);
@@ -266,7 +267,7 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIrcContextIndicator))
 	{
 		iHeight -= KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT;
-		QColor base = colorGroup().background();
+		QColor base = palette().color(QPalette::Background);
 		if(m_pWindow->console())
 		{
 			QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
@@ -274,7 +275,7 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 				(base.blue() + cntx.blue()) >> 1);
 			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,base);
 		} else {
-			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,colorGroup().brush(QColorGroup::Background));
+			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,palette().brush(QPalette::Background));
 		}
 	}
 
@@ -361,25 +362,25 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 		QString tmp = QChar('(');
 		tmp += szText;
 		tmp += QChar(')');
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,-1,&bRect);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,&bRect);
 	} else {
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1,&bRect);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
 	}
 
 	if(bRect.width() > cRect.width())
 	{
 		pPainter->setClipRect(cRect.right(),cRect.y(),10,cRect.height());
 		QColor base = pPainter->pen().color();
-		QColor bg   = colorGroup().color(QColorGroup::Background);
+		QColor bg   = palette().color(QPalette::Background);
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText);
 		pPainter->setClipRect(cRect.right(),cRect.y(),5,cRect.height());
 		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,-1);
+		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText);
 	}
 }
 
@@ -1098,7 +1099,7 @@ bool KviTreeTaskBar::eventFilter(QObject * o,QEvent *e)
 			{
 				if(ev->button() & Qt::LeftButton)
 				{
-					if(ev->state() & Qt::ShiftButton)
+					if(ev->modifiers() & Qt::ShiftModifier)
 					{
 						wnd->delayedClose();
 					} else {

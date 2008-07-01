@@ -104,7 +104,9 @@ void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
 	m_iNumDefaultItems++;
 	m_pDefaultItemId = (int *)kvi_realloc((void *)m_pDefaultItemId,sizeof(int) * m_iNumDefaultItems);
-	m_pDefaultItemId[m_iNumDefaultItems - 1] = insertItem(text,pop);
+	pop->menuAction()->setText(text);
+	addAction(pop->menuAction());
+	m_pDefaultItemId[m_iNumDefaultItems - 1] = actions().indexOf(pop->menuAction());
 }
 
 void KviMenuBar::setupHelpPopup()
@@ -343,8 +345,8 @@ int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
 	if(iDefaultIndex < 0)iDefaultIndex = 0;
 	if(iDefaultIndex >= m_iNumDefaultItems)
-		return indexOf(m_pDefaultItemId[m_iNumDefaultItems - 1]) + 1;
-	return indexOf(m_pDefaultItemId[iDefaultIndex]);
+		return m_pDefaultItemId[m_iNumDefaultItems - 1] + 1;
+	return m_pDefaultItemId[iDefaultIndex];
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString &text)
@@ -373,7 +375,7 @@ bool KviMenuBar::removeMenu(const QString &text)
 	if(i)
 	{
 		disconnect(i->pPopup,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
-		removeItem(i->id);
+		removeAction(actions().at(i->id));
 		m_pScriptItemList->removeRef(i);
 		return true;
 	}
@@ -385,7 +387,7 @@ void KviMenuBar::menuDestroyed()
 	KviScriptMenuBarItem * i = findMenu(((KviKvsPopupMenu *)sender()));
 	if(i)
 	{
-		removeItem(i->id);
+		removeAction(actions().at(i->id));
 		m_pScriptItemList->removeRef(i);
 	}
 }
@@ -401,9 +403,18 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 	}*/
 	KviScriptMenuBarItem * it = new KviScriptMenuBarItem;
 	it->szText = text;
-	it->szPopupName = p->name();
+	it->szPopupName = p->objectName();
 	it->pPopup = p;
-	it->id = insertItem(text,p,-1,index);
+	it->pPopup->menuAction()->setText(text);
+	if(index == -1 || index >= actions().count())
+	{
+		addAction(it->pPopup->menuAction());
+		it->id = actions().indexOf(it->pPopup->menuAction());
+	} else {
+		it->id = index;
+		insertAction(actions().value(index), it->pPopup->menuAction());
+	}
+
 	connect(p,SIGNAL(destroyed()),this,SLOT(menuDestroyed()));
 	m_pScriptItemList->append(it);
 }

@@ -112,7 +112,7 @@
 #include <QPainter>
 #include <QRegExp>
 #include <QFile>
-#include <QFontMetrics> // needed
+#include <QFontMetrics>
 #include <QApplication>
 #include <QMessageBox>
 #include <QTextCodec>
@@ -124,19 +124,12 @@
 #include <QClipboard>
 #include <QScrollBar>
 #include <QFontDialog>
-
-//#include <qcolor.h>   // needed
+#include <QResource>
 
 // FIXME: #warning "There are problems with the selection and wrapped lines: you can select something on the first line and get the second highlighted"
 // FIXME: #warning "This hack is temporary...later remove it"
 
-
-
 #include <time.h>
-
-
-#include <q3mimefactory.h>
-#define QMimeSourceFactory Q3MimeSourceFactory
 
 
 #ifdef COMPILE_ON_WINDOWS
@@ -362,7 +355,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setFocusProxy(this);
 
 
-	m_pToolsButton = new QToolButton(this,"btntools");
+	m_pToolsButton = new QToolButton(this);
+	m_pToolsButton->setObjectName("btntools");
+
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
 	m_pToolsButton->setIcon(is1);
@@ -4871,7 +4866,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QMimeSourceFactory::defaultFactory()->setPixmap("url_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "url_icon");
+			//QMimeSourceFactory::defaultFactory()->setPixmap("url_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
 			tip += __tr2qs("Double-click to open this link");
 			tip += "</td></tr></table>";
 		}
@@ -4888,7 +4884,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)->toImage().bits(), "host_icon");
+			//QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
 
 			if(linkText.indexOf('*') != -1)
 			{
@@ -4906,7 +4903,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 
 			tip = "<table width=\"100%\">" \
 				"<tr><td valign=\"center\"><img src=\"server_icon\"> <u><font color=\"blue\"><nowrap>";
-			QMimeSourceFactory::defaultFactory()->setPixmap("server_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)));
+			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)->toImage().bits(), "server_icon");
+			//QMimeSourceFactory::defaultFactory()->setPixmap("server_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)));
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -4986,7 +4984,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				QString szChan = linkText;
 				QString buf;
 				tip = "<img src=\"chan_icon\"> ";
-				QMimeSourceFactory::defaultFactory()->setPixmap("chan_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
+				QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)->toImage().bits(), "chan_icon");
+				//QMimeSourceFactory::defaultFactory()->setPixmap("chan_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 
 				if(szCmd.length()>0) szChan=szCmd;
 				KviChannel * c = console()->connection()->findChannel(szChan);

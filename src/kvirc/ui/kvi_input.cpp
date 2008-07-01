@@ -2246,7 +2246,8 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pWindow = par;
 	m_pMultiLineEditor = 0;
 
-	m_pHideToolsButton = new QToolButton(this,"hide_container_button");
+	m_pHideToolsButton = new QToolButton(this);
+	m_pHideToolsButton->setObjectName("hide_container_button");
 
 	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(10);
@@ -2264,7 +2265,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	//if(m_pButtonContainer->layout())
 	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
-	m_pHistoryButton = new QToolButton(m_pButtonContainer,"historybutton");
+	m_pHistoryButton = new QToolButton(m_pButtonContainer);
+	m_pHistoryButton->setObjectName("historybutton");
+
 	m_pHistoryButton->setIconSize(QSize(22,22));
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
 	QIcon is1;
@@ -2282,7 +2285,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
 	}
 
-	m_pIconButton = new QToolButton(m_pButtonContainer,"iconbutton");
+	m_pIconButton = new QToolButton(m_pButtonContainer);
+	m_pIconButton->setObjectName("iconbutton");
+
 	m_pIconButton->setIconSize(QSize(22,22));
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)));
@@ -2292,7 +2297,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
 
-	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer,"commandlinemodebutton");
+	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
+	m_pCommandlineModeButton->setObjectName("commandlinemodebutton");
+
 	m_pCommandlineModeButton->setIconSize(QSize(22,22));
 	m_pCommandlineModeButton->setCheckable(true);
 	QIcon is0;
@@ -2304,7 +2311,9 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 		m_pCommandlineModeButton->setChecked(true);
 
 
-	m_pMultiEditorButton = new QToolButton(m_pButtonContainer,"multieditorbutton");
+	m_pMultiEditorButton = new QToolButton(m_pButtonContainer);
+	m_pMultiEditorButton->setObjectName("multieditorbutton");
+
 	m_pMultiEditorButton->setCheckable(true);
 	m_pMultiEditorButton->setIconSize(QSize(22,22));
 	QIcon is2;
@@ -2470,7 +2479,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pMultiLineEditor->setFindText(szText);
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
 		m_pInputEditor->hide();
-		m_pLayout->add(m_pMultiLineEditor);
+		m_pLayout->addWidget(m_pMultiLineEditor);
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
 		m_pMultiEditorButton->setChecked(true);

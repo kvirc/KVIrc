@@ -180,8 +180,8 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const QString &na
 	createCryptControllerButton(m_pButtonContainer);
 #endif
 
-	m_pHideToolsButton = new QToolButton(m_pButtonBox,"hide_container_button");
-
+	m_pHideToolsButton = new QToolButton(m_pButtonBox);
+	m_pHideToolsButton->setObjectName("hide_container_button");
 
 	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(10);

@@ -31,9 +31,10 @@
 
 
 KviScriptUserButton::KviScriptUserButton(QWidget * par,const char * name)
-: QToolButton(par,name)
+: QToolButton(par)
 {
 	m_pScript = 0;
+	setObjectName(name);
 //	setAutoRaise(true);
 	connect(this,SIGNAL(clicked()),this,SLOT(btnClicked()));
 	setAutoRaise(true);
