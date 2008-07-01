@@ -7,13 +7,13 @@ SET(howto
 	FAQ
 	INSTALL
 	INSTALL-MacOS.txt
+	INSTALL-Win32.txt
 	firefox.hack.txt
 	hackers.guide.txt
 	scripting.faq.txt
 	themes.howto.txt
 	translations.howto.txt
 	ui-style.tips.txt
-	win32.compiling.2.0.txt
 )
 
 # User documentation

@@ -16,8 +16,9 @@ General notes for the installation of the 4.0 release of KVIrc
     4. Interactive mode
     5. Compiling
     6. Compiling on MacOS X
-    7. Hacker-level installation
-    8. Creating a KVIrc package
+    7. Compiling on Win32
+    8. Hacker-level installation
+    9. Creating a KVIrc package
 
 
 
@@ -496,7 +497,14 @@ COMPILE_XSS_SUPPORT
     located in the doc directory. It's named INSTALL-MacOS.txt
 
 ###############################################################################
-# 7. Hacker installation:
+# 7. Compiling on Win32
+###############################################################################
+
+    There is a detailed compilation and installation HOWTO for Win32 systems
+    located in the doc directory. It's named INSTALL-Win32.txt
+
+###############################################################################
+# 8. Hacker installation:
 ###############################################################################
 
     # mkdir release
@@ -505,7 +513,7 @@ COMPILE_XSS_SUPPORT
     # make install
 
 ###############################################################################
-# 8. Creating a KVIrc package
+# 9. Creating a KVIrc package
 ###############################################################################
 
     CMake supports DESTDIR argument.
