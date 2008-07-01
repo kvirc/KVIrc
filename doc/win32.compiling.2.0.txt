@@ -142,11 +142,14 @@ Common errors, pitfalls, ..
 
 Getting phonon to work with mplayer frontend
 
-- Install all needed requirements. Please note that to use the mplayer backend you have to install smplayer to C:\Program Files\SMPlayer\ !!
+- Install all needed requirements, including at least one of these players:
+  Smplayer: get it from http://smplayer.sourceforge.net/ (works, tested with kvirc)
+  VideoLAN: you need to use svn version; more info at http://www.videolan.org/ (untested with kvirc)
+  Please note that to use the mplayer backend you have to install smplayer to C:\Program Files\SMPlayer\ . If your are using a not-english localized version of windows, you'll probably need to change the proposed path to this one during installation.
 - Get latest phonon-vlc-mplayer source from svn
-- In trunk/CMakeLists.txt disable (comment out) the lines referring to the "test" and "quarkplayer", "quarkplayer-app", "quarkplayer/style", "quarkplayer/plugins" subdirectories; here there's a little patch:
-- in the same file, change the installation path of the target mingwm10.dll like this:
+- This frontend wants to install the mingwm10.dll library in its binary output directory; you'll probably need to fit the default path in trunk/CMakelists.txt from 
   install(FILES C:/mingw/bin/mingwm10.dll DESTINATION ${BIN_INSTALL_DIR})
+  to the right path where you have installed mingw in your system.
 - go to /trunk/build/ and run:
   run build_mingw-release.bat
   mingw32-make
@@ -155,5 +158,3 @@ Getting phonon to work with mplayer frontend
   copy phonon.dll to QTDIR/bin and libphonon.dll.a to QTDIR/lib
 - in /trunk/build/win32-mingw-release/phonon_backend you find the backends for vlc and mplayer;
   in the directory containing kvirc.exe create a subdirectory "phonon_backend" and copy phonon_mplayer.dll into it
-- Note: phonon_vlc.dll has not been tested. Debug versions of backends seems not to run properly.
-
