@@ -45,6 +45,7 @@
 		#include <phonon>
 	#endif //!COMPILE_KDE_SUPPORT
 	Phonon::MediaObject * g_pPhononPlayer=0;
+        #include <QUrl>
 #endif //!COMPILE_PHONON_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -179,7 +180,7 @@ bool KviSoundPlayer::event(QEvent * e)
 void KviSoundPlayer::detectSoundSystem()
 {
 #ifdef COMPILE_PHONON_SUPPORT
-	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::NotificationCategory);
+	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory);
 	if(g_pPhononPlayer->state()!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
 	return;
 #endif
@@ -230,8 +231,12 @@ void KviSoundPlayer::detectSoundSystem()
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
 	if(isMuted()) return true;
-	g_pPhononPlayer->setCurrentSource(szFileName);
-	g_pPhononPlayer->play();
+        if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory);
+	if(g_pPhononPlayer->state()!=Phonon::ErrorState)
+        {
+                g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
+                g_pPhononPlayer->play();
+        }
 	return true;
 }
 #endif //!COMPILE_PHONON_SUPPORT
@@ -585,8 +590,13 @@ void KviSoundThread::run()
 		KviPhononSoundThread::KviPhononSoundThread(const QString &szFileName)
 		: KviSoundThread(szFileName)
 		{
-			if(!g_pPhononPlayer) g_pPhononPlayer = Phonon::createPlayer(szFileName);
-			else g_pPhononPlayer->setCurrentSource(szFileName);
+			if(!g_pPhononPlayer)
+                        {
+                                g_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
+			} else {
+                                if(g_pPhononPlayer->state()!=Phonon::ErrorState)
+                                        g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
+                        }
 		}
 
 		KviPhononSoundThread::~KviPhononSoundThread()
