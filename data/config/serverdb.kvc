@@ -172,22 +172,6 @@ NServers=1
 0_Hostname=irc.brasilchat.org
 0_Description=Brasilchat:%20Random%20server
 NServers=1
-[Brasirc]
-0_Hostname=irc.brasirc.net
-0_Description=Brasirc:%20Random%20server
-1_Hostname=irc.libnet.com.br
-1_Description=Brasirc:%20BR,%20PA,%20Belem
-2_Hostname=irc.matrix.net.br
-2_Description=Brasirc:%20BR,%20SC,%20Florianopolis
-NServers=3
-[Brasnet]
-0_Hostname=irc.brasnet.org
-0_Description=Brasnet:%20Random%20server
-1_Hostname=eu.brasnet.org
-1_Description=Brasnet:%20Random%20European%20server
-2_Hostname=us.brasnet.org
-2_Description=Brasnet:%20Random%20US%20server
-NServers=3
 [Bulgaria]
 0_Hostname=irc.bulgaria.org
 0_Description=Bulgaria:%20Random%20server
@@ -1231,12 +1215,14 @@ NServers=1
 0_Hostname=irc.ptlink.net
 0_Description=PTlink:%20Random%20server
 NServers=1
+Description=Portuguese Network
 [PTnet]
 0_Hostname=telepac2.ptnet.org
 0_Description=PTnet:%20EU,%20PT,%20Lisboa
 1_Hostname=ualg.ptnet.org
 1_Description=PTnet:%20EU,%20PT,%20Faro
 NServers=2
+Description=Portuguese Network
 [QChat]
 0_Hostname=irc.qchat.net
 0_Description=QChat:%20Random%20server
@@ -1530,9 +1516,15 @@ NServers=1
 0_Hostname=irc.vidgamechat.com
 0_Description=Vidgamechat:%20Random%20server
 NServers=1
+[Virtualife]
+0_Hostname=irc.virtualife.com.br
+0_Description=Virtualife:%20Random%20server
+NServers=1
+Description=Brasilian Network
 [Vitamina]
 0_Hostname=irc-rr.vitamina.ca
 0_Description=Vitamina:%20Random%20server
+Description=Brasilian Network
 NServers=1
 [Orange/Voila]
 0_Hostname=chat14.x-echo.com
