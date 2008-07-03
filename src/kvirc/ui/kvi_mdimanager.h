@@ -98,7 +98,7 @@ protected:
 	virtual void focusInEvent(QFocusEvent *e);
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void drawContents(QPainter * p,int x,int y,int w,int h);
+	virtual void paintEvent(QPaintEvent * event);
 	virtual bool focusNextPrevChild(bool pNext);
 public slots:
 	void relayoutMenuButtons();

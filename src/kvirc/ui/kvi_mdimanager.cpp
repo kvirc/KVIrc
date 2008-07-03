@@ -108,25 +108,23 @@ bool KviMdiManager::focusNextPrevChild(bool bNext)
 	return m_pFrm->focusNextPrevChild(bNext);
 }
 
-void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
+void KviMdiManager::paintEvent(QPaintEvent * event)
 {
-	//debug("MY DRAW CONTENTS (%d,%d,%d,%d)",x,y,w,h);
-	QRect r(x,y,w,h);
-
+	QPainter p(viewport());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(r.topLeft());
-		p->drawTiledPixmap(r,*(g_pShadedParentGlobalDesktopBackground),pnt);
+		QPoint pnt = viewport()->mapToGlobal(event->rect().topLeft());
+		p.drawTiledPixmap(event->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
 		return;
 	}
 #endif
 
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		p->drawTiledPixmap(r,*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()));
+		p.drawTiledPixmap(event->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()));
 	} else {
-		p->fillRect(r,KVI_OPTION_COLOR(KviOption_colorMdiBackground));
+		p.fillRect(event->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
 	}
 }
 
