@@ -98,7 +98,7 @@ int KviMircServersIniImport::doImport(const QString& filename)
 				if(entry.isEmpty())entry = __tr2qs("Standalone Servers");
 				if(!serv.isEmpty())
 				{
-					KviIrcServer s;
+					KviServer s;
 					s.m_szHostname = serv;
 					s.m_szDescription = description;
 					s.m_uPort = uPort;
@@ -346,7 +346,7 @@ static bool mircimport_module_can_unload(KviModule * m)
 }
 
 /*
-KVIMODULEEXPORTFUNC KviIrcServerImport * mircimport_module_createIrcServerImport(const char *filterName)
+KVIMODULEEXPORTFUNC KviServerImport * mircimport_module_createIrcServerImport(const char *filterName)
 {
 	if(kvi_strEqualCI(filterName,__tr("Import from servers.ini")))
 	{

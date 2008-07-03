@@ -40,7 +40,7 @@
 #include <QStringList>
 
 namespace KviKvsParameterProcessor
-{	
+{
 	void setDefaultValue(KviKvsParameterProcessor::ParameterFormat * pFmtArray)
 	{
 		switch(pFmtArray->uType)

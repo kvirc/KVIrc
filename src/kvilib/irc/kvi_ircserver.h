@@ -36,13 +36,13 @@ class KviConfig;
 class KviNickServRuleSet;
 class KviProxy;
 class KviProxyDataBase;
-class KviIrcServer;
+class KviServer;
 
 #define KVI_IRCSERVER_FLAG_IPV6 1
 #define KVI_IRCSERVER_FLAG_CACHEIP 2
 #define KVI_IRCSERVER_FLAG_SSL 4
 
-class KVILIB_API KviIrcServerReconnectInfo {
+class KVILIB_API KviServerReconnectInfo {
 public:
 	QString               m_szNick;
 	QString               m_szAwayReason;
@@ -51,14 +51,14 @@ public:
 	bool                  m_bIsAway;
 };
 
-class KVILIB_API KviIrcServer : public KviHeapObject
+class KVILIB_API KviServer : public KviHeapObject
 {
 public:
-	KviIrcServer();
-	KviIrcServer(const KviIrcServer &serv);
-	~KviIrcServer();
+	KviServer();
+	KviServer(const KviServer &serv);
+	~KviServer();
 public:
-	KviIrcServerReconnectInfo *m_pReconnectInfo;
+	KviServerReconnectInfo *m_pReconnectInfo;
 	QString            m_szHostname;          // the server hostname (or ip eventually)
 	QString            m_szIp;                // the server's cached ip (if we're caching)
 	QString            m_szDescription;       // the server description
@@ -126,7 +126,7 @@ public:
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
 	void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect; };
 	void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
-	void setIpV6(bool bSet)
+	void setIPv6(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_IPV6;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_IPV6);
@@ -141,7 +141,7 @@ public:
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_CACHEIP;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CACHEIP);
 	};
-	void operator =(const KviIrcServer &s);
+	void operator =(const KviServer &s);
 
 	bool load(KviConfig * cfg,const QString &prefix);
 	void save(KviConfig * cfg,const QString &prefix);
@@ -152,13 +152,13 @@ public:
 	QString ircUri();
 };
 
-class KVILIB_API KviIrcNetwork : public KviHeapObject
+class KVILIB_API KviNetwork : public KviHeapObject
 {
-	friend class KviIrcServerDataBase;
+	friend class KviServerDataBase;
 public:
-	KviIrcNetwork(const KviIrcNetwork &src);
-	KviIrcNetwork(const QString &name);
-	~KviIrcNetwork();
+	KviNetwork(const KviNetwork &src);
+	KviNetwork(const QString &name);
+	~KviNetwork();
 protected:
 	QString              m_szName;
 	QString              m_szDescription;
@@ -187,7 +187,7 @@ public:
 	QStringList* autoJoinChannelList(){ return m_pChannelList; };
 	KviNickServRuleSet * nickServRuleSet(){ return m_pNickServRuleSet; };
 	void setNickServRuleSet(KviNickServRuleSet * s);
-	void copyFrom(const KviIrcNetwork &d);
+	void copyFrom(const KviNetwork &d);
 	void setName(const QString &szName){ m_szName = szName; };
 	void setEncoding(const QString &szEncoding){ m_szEncoding = szEncoding; };
 	void setDescription(const QString &szDescription){ m_szDescription = szDescription; };

@@ -48,7 +48,7 @@ public:
 	QString            szPass;
 	QString            szNick;
 	QString            szInitUMode;
-	KviIrcServerReconnectInfo * m_pReconnectInfo;
+	KviServerReconnectInfo * m_pReconnectInfo;
 };
 
 #endif //!_KVI_ASYNCHRONOUSCONNECTIONDATA_H_

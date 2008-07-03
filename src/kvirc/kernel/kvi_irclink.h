@@ -29,7 +29,7 @@
 #include <QObject>
 
 class KviConsole;
-class KviIrcServer;
+class KviServer;
 class KviProxy;
 class KviIrcSocket;
 class KviDns;

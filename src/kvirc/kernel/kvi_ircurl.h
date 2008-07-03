@@ -27,7 +27,7 @@
 #include "kvi_string.h"
 #include "kvi_inttypes.h"
 
-class KviIrcServer;
+class KviServer;
 class KviConsole;
 
 #include <QStringList>
@@ -71,7 +71,7 @@ namespace KviIrcUrl
 	extern KVIRC_API int  run(const QString& url,int contextSpec = FirstFreeContext,KviConsole* pConsole = 0);
 
 	extern KVIRC_API void split(QString url, KviIrcUrlParts& parts);
-	extern KVIRC_API void join(QString &url, KviIrcServer* server);
+	extern KVIRC_API void join(QString &url, KviServer* server);
 	extern KVIRC_API void makeJoinCmd(const QStringList& chans, QString& szJoinCommand);
 }
 

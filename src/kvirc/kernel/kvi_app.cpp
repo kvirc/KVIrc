@@ -108,7 +108,7 @@
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
 
 KviConfig                              * g_pWinPropertiesConfig    = 0;
-KVIRC_API KviIrcServerDataBase         * g_pIrcServerDataBase      = 0;
+KVIRC_API KviServerDataBase         * g_pIrcServerDataBase      = 0;
 KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
 
 // Global windows
@@ -212,7 +212,6 @@ void KviApp::setup()
 #endif
 
 	// Setup our filesystem and initalize locale
-	
 	loadDirectories();
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
@@ -229,7 +228,6 @@ void KviApp::setup()
 
 	// check if we want to permanently disable the splash screen
 	// we do it once for every version: the user should see the new splash screens at least once
-
 	QString szSplashDisableFile;
 	getLocalKvircDirectory(szSplashDisableFile,Pics,"disable-splash." KVI_VERSION);
 
@@ -279,8 +277,8 @@ void KviApp::setup()
 
 	// Create the module manager early: so the other managers can load modules
 	g_pModuleExtensionManager = new KviModuleExtensionManager();
-        
-      	KVI_SPLASH_SET_PROGRESS(4);
+
+	KVI_SPLASH_SET_PROGRESS(4);
 
 	g_pModuleManager = new KviModuleManager();
 
@@ -324,7 +322,7 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
-	g_pIrcServerDataBase   = new KviIrcServerDataBase();
+	g_pIrcServerDataBase   = new KviServerDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SERVERDB))
 		g_pIrcServerDataBase->load(tmp);
 
@@ -1525,10 +1523,10 @@ void KviApp::saveConfiguration()
 
 void KviApp::autoConnectToServers()
 {
-	KviPointerList<KviIrcServer> * l = g_pIrcServerDataBase->autoConnectOnStartupServers();
+	KviPointerList<KviServer> * l = g_pIrcServerDataBase->autoConnectOnStartupServers();
 	if(l)
 	{
-		for(KviIrcServer * s = l->first();s;s = l->next())
+		for(KviServer * s = l->first();s;s = l->next())
 		{
 			QString szCommand = "server -u \"id:";
 			if(s->id().isEmpty())s->generateUniqueId();
@@ -1539,10 +1537,10 @@ void KviApp::autoConnectToServers()
 		g_pIrcServerDataBase->clearAutoConnectOnStartupServers();
 	}
 
-	KviPointerList<KviIrcServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
+	KviPointerList<KviServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
 	if(lr)
 	{
-		for(KviIrcServerDataBaseRecord * r = lr->first();r;r = lr->next())
+		for(KviServerDataBaseRecord * r = lr->first();r;r = lr->next())
 		{
 			QString szCommandx = "server -u \"net:";
 			szCommandx += r->network()->name();

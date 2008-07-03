@@ -39,26 +39,26 @@ class QLineEdit;
 class QComboBox;
 class QPushButton;
 class KviIpEditor;
-class KviIrcServer;
+class KviServer;
 class KviTalPopupMenu;
 class KviScriptEditor;
 class KviNickServRule;
 class KviNickServRuleEditor;
-class KviIrcServer;
-class KviIrcNetwork;
-class KviIrcNetworkData;
+class KviServer;
+class KviNetwork;
+class KviNetworkData;
 class KviMexServerImport;
 
 
 class KviServerOptionsTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n);
-	KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s);
+	KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviNetwork *n);
+	KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s);
 	~KviServerOptionsTreeWidgetItem();
 public:
-	KviIrcServer * m_pServerData;
-	KviIrcNetwork * m_pNetworkData;
+	KviServer * m_pServerData;
+	KviNetwork * m_pNetworkData;
 public:
 	void updateVisibleStrings();
 };
@@ -68,7 +68,7 @@ class KviNetworkDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * d);
+	KviNetworkDetailsWidget(QWidget * par,KviNetwork * d);
 	~KviNetworkDetailsWidget();
 protected:
 	KviScriptEditor       * m_pOnConnectEditor;
@@ -93,7 +93,7 @@ protected:
 	QStringList             m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
 public:
-	void fillData(KviIrcNetwork * d);
+	void fillData(KviNetwork * d);
 protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
@@ -105,7 +105,7 @@ class KviServerDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	KviServerDetailsWidget(QWidget * par,KviIrcServer * s);
+	KviServerDetailsWidget(QWidget * par,KviServer * s);
 	~KviServerDetailsWidget();
 protected:
 	QString                 m_szHostname;
@@ -140,7 +140,7 @@ protected slots:
 	void useIPV6CheckToggled(bool);
 public:
 	void setHeaderLabelText();
-	void fillData(KviIrcServer *s);
+	void fillData(KviServer *s);
 };
 
 
@@ -166,7 +166,7 @@ protected:
 	KviTalPopupMenu                   * m_pRecentPopup;
 	KviTalPopupMenu                   * m_pContextPopup;
 	KviTalPopupMenu                   * m_pImportPopup;
-	KviIrcServer                 * m_pClipboard;
+	KviServer                 * m_pClipboard;
 	//QCheckBox                    * m_pIpV6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
@@ -187,7 +187,7 @@ private:
 	KviServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
 protected slots:
 	void importerDead();
-	void importServer(const KviIrcServer & s,const QString &network);
+	void importServer(const KviServer & s,const QString &network);
 	void importPopupAboutToShow();
 	void currentItemChanged(KviTalTreeWidgetItem *cur,KviTalTreeWidgetItem *prev);
 	void customContextMenuRequested(const QPoint &pnt);

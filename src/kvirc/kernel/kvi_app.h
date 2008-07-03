@@ -58,7 +58,7 @@ class KviConsole;
 class KviConfig;
 class KviRegisteredUser;
 class KviIrcConnection;
-class KviIrcServerDataBase;
+class KviServerDataBase;
 
 typedef struct _KviPendingAvatarChange
 {
@@ -338,7 +338,7 @@ signals:
 
 #ifndef _KVI_APP_CPP_
 	extern KVIRC_API KviApp * g_pApp;
-	extern KVIRC_API KviIrcServerDataBase * g_pIrcServerDataBase;
+	extern KVIRC_API KviServerDataBase * g_pIrcServerDataBase;
 #endif
 
 #endif //_KVI_APP_H_

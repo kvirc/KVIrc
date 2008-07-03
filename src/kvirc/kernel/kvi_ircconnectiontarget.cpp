@@ -28,13 +28,13 @@
 #include "kvi_ircserver.h"
 #include "kvi_proxydb.h"
 
-KviIrcConnectionTarget::KviIrcConnectionTarget(const KviIrcNetwork * pNetwork,
-							const KviIrcServer * pServer,
+KviIrcConnectionTarget::KviIrcConnectionTarget(const KviNetwork * pNetwork,
+							const KviServer * pServer,
 							const KviProxy * pProxy,
 							const QString &szBindAddress)
 {
-	m_pNetwork = new KviIrcNetwork(*pNetwork);
-	m_pServer = new KviIrcServer(*pServer);
+	m_pNetwork = new KviNetwork(*pNetwork);
+	m_pServer = new KviServer(*pServer);
 	m_pProxy = pProxy ? new KviProxy(*pProxy) : 0;
 	m_szBindAddress = szBindAddress;
 }

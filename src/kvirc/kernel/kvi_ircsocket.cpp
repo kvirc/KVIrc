@@ -239,7 +239,7 @@ void KviIrcSocket::raiseError(int iError)
 		outputSocketError(KviError::getDescription(iError));
 }
 
-int KviIrcSocket::startConnection(KviIrcServer *srv,KviProxy * prx,const char * bindAddress)
+int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bindAddress)
 {
 	// Attempts to estabilish an IRC connection
 	// to the server specified by *srv.
@@ -257,7 +257,7 @@ int KviIrcSocket::startConnection(KviIrcServer *srv,KviProxy * prx,const char * 
 	}
 
 	// Copy the server
-	m_pIrcServer = new KviIrcServer(*srv);
+	m_pIrcServer = new KviServer(*srv);
 
 	bool bTargetIpV6 = false;
 	bool bNeedServerIp = !prx;

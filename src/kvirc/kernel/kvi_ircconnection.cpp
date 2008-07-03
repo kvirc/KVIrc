@@ -69,7 +69,7 @@
 #include <QTimer>
 #include <QTextCodec>
 
-extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
@@ -240,7 +240,7 @@ const QString & KviIrcConnection::currentUserName()
 	return userInfo()->userName();
 }
 
-KviIrcServer * KviIrcConnection::server()
+KviServer * KviIrcConnection::server()
 {
 	return m_pTarget->server();
 }
@@ -859,8 +859,8 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *pDns)
 
 void KviIrcConnection::loginToIrcServer()
 {
-	KviIrcServer * pServer = target()->server();
-	KviIrcNetwork * pNet = target()->network();
+	KviServer * pServer = target()->server();
+	KviNetwork * pNet = target()->network();
 
 	// Username
 	pServer->m_szUser.trimmed();

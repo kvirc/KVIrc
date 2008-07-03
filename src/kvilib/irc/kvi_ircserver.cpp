@@ -44,8 +44,7 @@
 
 //extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-// FIXME: This should be renamed to KviServer or sth like that
-KviIrcServer::KviIrcServer()
+KviServer::KviServer()
 {
 	m_pReconnectInfo=0;
 	m_uFlags = 0;
@@ -55,7 +54,7 @@ KviIrcServer::KviIrcServer()
 	m_iProxy = -1;
 }
 
-KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)
+KviProxy* KviServer::proxyServer(KviProxyDataBase * pDb)
 {
 	int i=0;
 	if(proxy()<0) return 0;
@@ -68,7 +67,7 @@ KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 	return 0;
 }
 
-KviIrcServer::KviIrcServer(const KviIrcServer &serv)
+KviServer::KviServer(const KviServer &serv)
 {
 	m_pReconnectInfo     = 0;
 	m_szHostname         = serv.m_szHostname;
@@ -94,7 +93,7 @@ KviIrcServer::KviIrcServer(const KviIrcServer &serv)
 	m_bAutoConnect       = serv.m_bAutoConnect;
 }
 
-void KviIrcServer::operator=(const KviIrcServer &serv)
+void KviServer::operator=(const KviServer &serv)
 {
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
@@ -121,20 +120,20 @@ void KviIrcServer::operator=(const KviIrcServer &serv)
 }
 
 
-KviIrcServer::~KviIrcServer()
+KviServer::~KviServer()
 {
 	if(m_pChannelList)delete m_pChannelList;
 	if(m_pReconnectInfo) delete m_pReconnectInfo;
 }
 
-void KviIrcServer::generateUniqueId()
+void KviServer::generateUniqueId()
 {
 	struct timeval tv;
 	kvi_gettimeofday(&tv,0);
 	KviQString::sprintf(m_szId,"myserver%d%d%d",tv.tv_usec,rand() % 1000,rand() % 1000);
 }
 
-QString KviIrcServer::ircUri()
+QString KviServer::ircUri()
 {
 	QString uri("irc");
 	if(useSSL())uri += "s";
@@ -152,14 +151,14 @@ QString KviIrcServer::ircUri()
 	return uri;
 }
 
-void KviIrcServer::setAutoJoinChannelList(QStringList * pNewChannelList)
+void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pChannelList)delete m_pChannelList;
 	m_pChannelList = pNewChannelList;
 }
 
 
-bool KviIrcServer::load(KviConfig * cfg,const QString &prefix)
+bool KviServer::load(KviConfig * cfg,const QString &prefix)
 {
 	QString tmp;
 	KviQString::sprintf(tmp,"%QHostname",&prefix);
@@ -198,7 +197,7 @@ bool KviIrcServer::load(KviConfig * cfg,const QString &prefix)
 	m_szId = cfg->readQStringEntry(tmp);
 	if(m_szId.isEmpty())generateUniqueId();
 	KviQString::sprintf(tmp,"%QIpV6",&prefix);
-	setIpV6(cfg->readBoolEntry(tmp,false));
+	setIPv6(cfg->readBoolEntry(tmp,false));
 	KviQString::sprintf(tmp,"%QCacheIp",&prefix);
 	setCacheIp(cfg->readBoolEntry(tmp,false)); // true ?
 	KviQString::sprintf(tmp,"%QSSL",&prefix);
@@ -210,7 +209,7 @@ bool KviIrcServer::load(KviConfig * cfg,const QString &prefix)
 	return true;
 }
 
-void KviIrcServer::save(KviConfig * cfg,const QString &prefix)
+void KviServer::save(KviConfig * cfg,const QString &prefix)
 {
 	QString tmp;
 	KviQString::sprintf(tmp,"%QHostname",&prefix);
@@ -315,14 +314,14 @@ void KviIrcServer::save(KviConfig * cfg,const QString &prefix)
 }
 
 
-KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork &src)
+KviNetwork::KviNetwork(const KviNetwork &src)
 {
 	m_pChannelList = 0;
 	m_pNickServRuleSet = 0;
 	copyFrom(src);
 }
 
-KviIrcNetwork::KviIrcNetwork(const QString &name)
+KviNetwork::KviNetwork(const QString &name)
 {
 	m_szName = name;
 	m_pChannelList = 0;
@@ -331,25 +330,25 @@ KviIrcNetwork::KviIrcNetwork(const QString &name)
 	// m_szEncoding = QString::null; // set by default
 }
 
-KviIrcNetwork::~KviIrcNetwork()
+KviNetwork::~KviNetwork()
 {
 	if(m_pChannelList)delete m_pChannelList;
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 }
 
-void KviIrcNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
+void KviNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
 	if(m_pChannelList)delete m_pChannelList;
 	m_pChannelList = pNewChannelList;
 }
 
-void KviIrcNetwork::setNickServRuleSet(KviNickServRuleSet * s)
+void KviNetwork::setNickServRuleSet(KviNickServRuleSet * s)
 {
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 	m_pNickServRuleSet = s;
 }
 
-void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
+void KviNetwork::copyFrom(const KviNetwork &src)
 {
 	m_szName = src.m_szName;
 	m_szEncoding = src.m_szEncoding;

@@ -33,8 +33,8 @@
 #include <QObject>
 
 class KviConsole;
-class KviIrcNetworkData;
-class KviIrcServer;
+class KviNetworkData;
+class KviServer;
 class KviProxy;
 class KviIrcSocket;
 class KviIrcLink;
@@ -127,7 +127,7 @@ public:
 	// never null
 	KviIrcContext * context(){ return m_pContext; };
 	// forwarder from KviIrcConnectionTarget, never null
-	KVI_DEPRECATED KviIrcServer * server();
+	KVI_DEPRECATED KviServer * server();
 	// forwarder from KviIrcConnectionTarget, may be null
 	KVI_DEPRECATED KviProxy * proxy();
 	// never null!

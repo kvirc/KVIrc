@@ -95,7 +95,7 @@
 #include "kvi_debug.h"
 
 
-extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
@@ -494,7 +494,7 @@ void KviConsole::updateUri()
 	QString uri;
 	if(connection())
 	{
-		KviIrcServer* server = connection()->target()->server();
+		KviServer* server = connection()->target()->server();
 		if(server)
 		{
 			KviIrcUrl::join(uri,server);

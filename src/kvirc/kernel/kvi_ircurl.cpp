@@ -210,7 +210,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 
 }
 
-void KviIrcUrl::join(QString &uri, KviIrcServer* server)
+void KviIrcUrl::join(QString &uri, KviServer* server)
 {
 	if(server)
 	{	
@@ -312,7 +312,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 		szCommand.append(QString("%1 %2 ").arg(parts.szHost).arg(parts.iPort));
 
 		if(pConsole->connection()) {
-			KviIrcServer* server = pConsole->connection()->target()->server();
+			KviServer* server = pConsole->connection()->target()->server();
 			if(
 				( server->hostName() != parts.szHost ) ||
 				( server->port() != parts.iPort ) ||

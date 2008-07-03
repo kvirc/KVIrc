@@ -28,8 +28,8 @@
 #include "kvi_qstring.h"
 #include "kvi_heapobject.h"
 
-class KviIrcNetwork;
-class KviIrcServer;
+class KviNetwork;
+class KviServer;
 class KviProxy;
 
 class KVIRC_API KviIrcConnectionTarget : public KviHeapObject
@@ -38,19 +38,19 @@ class KVIRC_API KviIrcConnectionTarget : public KviHeapObject
 public:
 	// pServer is a shallow pointer: this class makes a copy of it internally, must NOT be null
 	// pProxy may be null if a proxy is not desired. this class makes a copy of it internally
-	KviIrcConnectionTarget(const KviIrcNetwork * pNetwork,
-							const KviIrcServer * pServer,
+	KviIrcConnectionTarget(const KviNetwork * pNetwork,
+							const KviServer * pServer,
 							const KviProxy * pProxy = 0,
 							const QString &szBindAddress = QString::null);
 	~KviIrcConnectionTarget();
 private:
-	KviIrcNetwork      * m_pNetwork;        // owned, never null
-	KviIrcServer       * m_pServer;         // owned, never null
+	KviNetwork      * m_pNetwork;        // owned, never null
+	KviServer       * m_pServer;         // owned, never null
 	KviProxy           * m_pProxy;          // owned, may be null
 	QString              m_szBindAddress;   // forced bind address
 public:
-	KviIrcServer * server(){ return m_pServer; };
-	KviIrcNetwork * network(){ return m_pNetwork; };
+	KviServer * server(){ return m_pServer; };
+	KviNetwork * network(){ return m_pNetwork; };
 	KviProxy * proxy(){ return m_pProxy; };
 	const QString & bindAddress(){ return m_szBindAddress; };
 	bool hasBindAddress(){ return (!m_szBindAddress.isEmpty()); };

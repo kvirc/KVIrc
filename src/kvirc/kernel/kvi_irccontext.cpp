@@ -61,7 +61,7 @@
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;
 
-extern KVIRC_API KviIrcServerDataBase * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 
@@ -448,7 +448,7 @@ void KviIrcContext::connectToCurrentServer()
 		{
 			// ok , have a server to look for in the db
 			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
-			KviIrcServerDefinition d;
+			KviServerDefinition d;
 			d.szServer = m_pAsynchronousConnectionData->szServer;
 			d.bPortIsValid = m_pAsynchronousConnectionData->bPortIsOk;
 			d.uPort = m_pAsynchronousConnectionData->uPort;
@@ -468,10 +468,10 @@ void KviIrcContext::connectToCurrentServer()
 		} // else we just connect to the globally selected irc server in the options dialog
 	}
 
-	KviIrcServerDataBaseRecord * rec = g_pIrcServerDataBase->currentRecord();
+	KviServerDataBaseRecord * rec = g_pIrcServerDataBase->currentRecord();
 	
-	KviIrcNetwork * net;
-	KviIrcServer  * srv;
+	KviNetwork * net;
+	KviServer  * srv;
 	
 	net = rec ? rec->network() : 0;
 	srv = net ? rec->currentServer() : 0;
@@ -609,7 +609,7 @@ void KviIrcContext::connectionFailed(int iError)
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,tmp);
 			}
 	
-			KviIrcServer oldServer(*(connection()->server()));
+			KviServer oldServer(*(connection()->server()));
 			QString oldNickname = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 	
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
@@ -684,16 +684,16 @@ void KviIrcContext::connectionEstabilished()
 
 	// save the last server this console used
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
-	//m_pLastIrcServer = new KviIrcServer(*(connection()->server()));
+	//m_pLastIrcServer = new KviServer(*(connection()->server()));
 }
 
 void KviIrcContext::connectionTerminated()
 {
 	if(!m_pConnection)return; // this may happen in the destructor!
 
-	KviIrcServer oldServer(*(connection()->server()));
+	KviServer oldServer(*(connection()->server()));
 	if(oldServer.m_pReconnectInfo) delete oldServer.m_pReconnectInfo;
-	KviIrcServerReconnectInfo* pInfo = new KviIrcServerReconnectInfo();
+	KviServerReconnectInfo* pInfo = new KviServerReconnectInfo();
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 	pInfo->m_bIsAway=connection()->userInfo()->isAway();
 	pInfo->m_szAwayReason=connection()->userInfo()->awayReason();

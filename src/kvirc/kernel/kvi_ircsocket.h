@@ -32,7 +32,7 @@
 
 #include <QObject>
 
-class KviIrcServer;
+class KviServer;
 class KviProxy;
 class KviIrcConnection;
 class KviIrcConnectionTarget;
@@ -86,7 +86,7 @@ protected:
 	SocketState              m_state;
 	QSocketNotifier      * m_pWsn;
 	QSocketNotifier      * m_pRsn;
-	KviIrcServer         * m_pIrcServer;
+	KviServer         * m_pIrcServer;
 	KviProxy             * m_pProxy;
 	QTimer               * m_pTimeoutTimer;
 	unsigned int           m_uReadBytes;
@@ -117,7 +117,7 @@ public:
 	unsigned int sentPackets(){ return m_uSentPackets; };
 	SocketState state(){ return m_state; };
 	bool isConnected(){ return m_state == Connected; };
-	int startConnection(KviIrcServer * srv,KviProxy * prx = 0,const char * bindAddress = 0);
+	int startConnection(KviServer * srv,KviProxy * prx = 0,const char * bindAddress = 0);
 
 	//bool sendData(const char *buffer,int buflen = -1) KVI_DEPRECATED;
 	//bool sendFmtData(const char *fmt,...) KVI_DEPRECATED;
