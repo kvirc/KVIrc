@@ -50,6 +50,7 @@ protected:
 	QCheckBox   * m_pShowAtStartupCheck;
 	QCheckBox   * m_pCloseAfterJoinCheck;
 	QPushButton * m_pJoinButton;
+	QPushButton * m_pRegButton;
 	KviConsole  * m_pConsole;
 public:
 	virtual void closeEvent(QCloseEvent *e);
@@ -63,6 +64,7 @@ protected slots:
 	void editReturnPressed();
 	void cancelClicked();
 	void joinClicked();
+	void regClicked();
 //	void whoClicked();
 //	void namesClicked();
 };

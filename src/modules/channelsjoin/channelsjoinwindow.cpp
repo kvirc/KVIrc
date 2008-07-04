@@ -91,13 +91,19 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	g->addWidget(m_pGroupBox,1,0,1,2);
 //	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
-	m_pJoinButton = new QPushButton(__tr2qs("&Join"),this);
+	KviTalHBox * hb = new KviTalHBox(this);
+	hb->setSpacing(4);
+
+	g->addWidget(hb,2,0,1,2,Qt::AlignHCenter);
+
+	m_pJoinButton = new QPushButton(__tr2qs("&Join"),hb);
 	// Join on return pressed
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
-g->addWidget(m_pJoinButton,2,0,1,2,Qt::AlignHCenter);
-//	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
+	m_pRegButton = new QPushButton(__tr2qs("&Register"),hb);
+	// Join on return pressed
+	connect(m_pRegButton,SIGNAL(clicked()),this,SLOT(regClicked()));
 
 	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
@@ -172,7 +178,6 @@ void KviChannelsJoinWindow::fillListView()
 		}
 	}
 
-	// FIXME: Registered channels go here!
 	par = new KviTalTreeWidgetItem(m_pListView,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
@@ -220,9 +225,13 @@ void KviChannelsJoinWindow::enableJoin()
 	if(c)
 	{
 		if(tmp.isEmpty())
+		{
 			m_pJoinButton->setEnabled(false);
-		else
+			m_pRegButton->setEnabled(false);
+		} else {
 			m_pJoinButton->setEnabled(true);
+			m_pRegButton->setEnabled(true);
+		}
 	} else {
 		m_pListView->setEnabled(false);
 		m_pGroupBox->setEnabled(false);
@@ -252,6 +261,23 @@ void KviChannelsJoinWindow::joinClicked()
 
 	m_pChannelEdit->setText("");
 	m_pPass->setText("");
+}
+
+void KviChannelsJoinWindow::regClicked()
+{
+	KviStr tmp = m_pChannelEdit->text();
+	QList<QModelIndex> index;
+
+	if(tmp.isEmpty())return;
+
+	KviStr command(KviStr::Format,"regchan.add %s",tmp.ptr());
+
+	KviConsole * c = g_pApp->topmostConnectedConsole();
+	if(!c)return; // no connection
+	KviWindow * w = g_pActiveWindow;
+	if(w->console() != c)w = c;
+	KviKvsScript::run(command.ptr(),w);
+	fillListView();
 }
 
 /*
