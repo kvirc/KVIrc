@@ -60,6 +60,11 @@
 
 #include <qdatetime.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <QTextDocument>
+#else
+	#include <qstylesheet.h>
+#endif
 
 
 
@@ -1445,7 +1450,11 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				QString szMsg = "<b>";
 				szMsg += msg->pSource->nick();
 				szMsg += "</b> ";
-				szMsg += szData;
+				#ifdef COMPILE_USE_QT4
+					szMsg += Qt::escape(szData);
+				#else
+					szMsg += QStyleSheet::escape(szData);
+				#endif
 				//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
 				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,90);
 			}

@@ -72,6 +72,12 @@
 //#include "kvi_iconmanager.h"
 #include <qdatetime.h>
 
+#ifdef COMPILE_USE_QT4
+	#include <QTextDocument>
+#else
+	#include <qstylesheet.h>
+#endif
+
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -910,15 +916,12 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					{
 						// don't send the message to the notifier twice
 						iFlags |= KviConsole::NoNotifier;
-						QString szMsg = "";
-						//QString szMsg = "<b>&lt;";
-						//szMsg += szNick;
-						//szMsg += "&gt;</b> ";
-						QString szHtml = szMsgText;
-						szHtml.replace("<","&lt;");
-						szHtml.replace(">","&gt;");
-						szMsg += szHtml;
-						//debug("kvi_sp_literal.cpp:908 debug: %s",szHtml.data());
+						#ifdef COMPILE_USE_QT4
+							QString szMsg = Qt::escape(szMsgText); 
+						#else
+							QString szMsg = QStyleSheet::escape(szMsgText);
+						#endif
+						//debug("kvi_sp_literal.cpp:908 debug: %s",szMsg.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,1800);
 					}
 				}
@@ -1271,15 +1274,12 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					{
 						// don't send the message twice to the notifier
 						iFlags |= KviConsole::NoNotifier;
-						QString szMsg = "";
-						//QString szMsg = "<b>&lt;";
-						//szMsg += szNick;
-						//szMsg += "&gt;</b> ";
-						QString szHtml = szMsgText;
-						szHtml.replace("<","&lt;");
-						szHtml.replace(">","&gt;");
-						szMsg += szHtml;
-						//debug("kvi_sp_literal.cpp:1262 debug: %s",szHtml.data());
+						#ifdef COMPILE_USE_QT4
+							QString szMsg = Qt::escape(szMsgText); 
+						#else
+							QString szMsg = QStyleSheet::escape(szMsgText);
+						#endif
+						//debug("kvi_sp_literal.cpp:908 debug: %s",szMsg.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYNOTICE,szMsg,1800);
 					}
 				}

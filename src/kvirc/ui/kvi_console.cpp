@@ -97,6 +97,11 @@
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
+#ifdef COMPILE_USE_QT4
+	#include <QTextDocument>
+#else
+	#include <qstylesheet.h>
+#endif
 
 extern KVIRC_API KviIrcServerDataBase           * g_pIrcServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
@@ -762,7 +767,11 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 					QString szMsg = "<b>&lt;";
 					szMsg += nick;
 					szMsg += "&gt;</b> ";
-					szMsg += szDecodedMessage;
+					#ifdef COMPILE_USE_QT4
+						szMsg += Qt::escape(szDecodedMessage);
+					#else
+						szMsg += QStyleSheet::escape(szDecodedMessage);
+					#endif
 					//debug("kvi_console.cpp:629 debug: %s",szMsg.data());
 					g_pApp->notifierMessage(wnd,KVI_OPTION_MSGTYPE(iSaveType).pixId(),szMsg,90);
 				}

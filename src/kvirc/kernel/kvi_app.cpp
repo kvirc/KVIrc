@@ -109,6 +109,12 @@
 #endif
 #endif
 
+#ifdef COMPILE_USE_QT4
+	#include <QTextDocument>
+#else
+	#include <qstylesheet.h>
+#endif
+
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
 
 KviConfig                              * g_pWinPropertiesConfig    = 0;
@@ -1048,7 +1054,11 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-			notifierMessage(0,iIconId,szMsg,30);
+#ifdef COMPILE_USE_QT4
+			notifierMessage(0,iIconId,Qt::escape(szMsg),30); 
+#else
+			notifierMessage(0,iIconId,QStyleSheet::escape(szMsg),30);
+#endif
 		}
 		return;
 	}
