@@ -220,7 +220,7 @@ bool KviPerlInterpreter::execute(
 {
 	if(!m_pInterpreter)
 	{
-		szError = __tr2qs_ctx("Internal error: perl interpreter not initialized","perlcore");
+		szError = __tr2qs_ctx("Internal error: perl interpreter not initialized","perl");
 		return false;
 	}
 	
@@ -404,7 +404,7 @@ static bool perlcore_module_can_unload(KviModule *m)
 KVIRC_MODULE(
 	"Perl",                                                 // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Perl scripting engine core",
 	perlcore_module_init,
 	perlcore_module_can_unload,

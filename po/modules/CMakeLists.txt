@@ -11,7 +11,8 @@ SUBDIRS(
 	notifier
 	options
 	perl
-	perlcore
+	proxydb
+	serverdb
 	sharedfileswindow
 	theme
 	torrent
