@@ -805,7 +805,9 @@ void KviMdiManager::cascadeWindows()
 	if(g_pApp->closingDown())return;
 
 	int idx=0;
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
+
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -833,7 +835,8 @@ void KviMdiManager::cascadeMaximized()
 	if(g_pApp->closingDown())return;
 	
 	int idx=0;
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
 
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
@@ -864,7 +867,8 @@ void KviMdiManager::expandVertical()
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 	
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -890,7 +894,9 @@ void KviMdiManager::expandHorizontal()
 	g_pApp->sendPostedEvents();
 	if(g_pApp->closingDown())return;
 	
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
+
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
@@ -908,9 +914,11 @@ void KviMdiManager::expandHorizontal()
 
 void KviMdiManager::minimizeAll()
 {
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
+
 	list.setAutoDelete(false);
-    m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
+	m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
 	while(!list.isEmpty())
 	{
 		KviMdiChild *lpC=list.first();
@@ -925,7 +933,9 @@ void KviMdiManager::minimizeAll()
 void KviMdiManager::restoreAll()
 {
 	int idx=0;
-	KviPointerList<KviMdiChild> list(*m_pZ);
+	KviPointerList<KviMdiChild> list;
+	list.copyFrom(m_pZ);
+
 	list.setAutoDelete(false);
 	while(!list.isEmpty())
 	{
