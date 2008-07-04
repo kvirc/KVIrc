@@ -369,6 +369,17 @@ bool KviWindow::activityMeter(unsigned int *,unsigned int *)
 }
 
 
+bool KviWindow::highlightMeter(unsigned int *v)
+{
+	if(!m_pTaskBarItem)
+	{
+		*v=0;
+		return false;
+	}
+	*v= m_pTaskBarItem->highlightLevel();
+	return true;
+}
+
 const char * KviWindow::m_typeTable[KVI_WINDOW_NUM_TYPES + 1]=
 {
 	"console",

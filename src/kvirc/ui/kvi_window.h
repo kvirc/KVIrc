@@ -235,6 +235,7 @@ public:
 #endif
 
 	virtual bool activityMeter(unsigned int * puActivityValue,unsigned int * puActivityTemperature);
+	virtual bool highlightMeter(unsigned int * puHighlightValue);
 
 	void unhighlight();
 

@@ -659,6 +659,37 @@ static bool window_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc: window.highlightLevel
+	@type:
+		function
+	@title:
+		$window.highlightLevel
+	@short:
+		Returns the current highlight (alert) level of a window
+	@syntax:
+		$window.highlightLevel
+		$window.highlightLevel(<window_id>)
+	@description:
+	@seealso:
+		[fnc]$window.activityTemperature[/fnc]
+		[fnc]$window.activityLevel[/fnc]
+*/
+
+static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
+{
+	GET_KVS_FNC_WINDOW_ID
+	if(pWnd)
+	{
+		unsigned int v;
+		pWnd->highlightMeter(&v);
+		c->returnValue()->setInteger(v);
+	} else {
+		c->returnValue()->setInteger(0);
+	}
+	return true;
+}
+
+/*
 	@doc: window.type
 	@type:
 		function
@@ -1467,6 +1498,7 @@ static bool window_module_init(KviModule *m)
 
 	KVSM_REGISTER_FUNCTION(m,"activityTemperature",window_kvs_fnc_activityTemperature);
 	KVSM_REGISTER_FUNCTION(m,"activityLevel",window_kvs_fnc_activityLevel);
+	KVSM_REGISTER_FUNCTION(m,"highlightLevel",window_kvs_fnc_highlightLevel);
 	KVSM_REGISTER_FUNCTION(m,"console",window_kvs_fnc_console);
 	KVSM_REGISTER_FUNCTION(m,"hasUserFocus",window_kvs_fnc_hasUserFocus);
 	KVSM_REGISTER_FUNCTION(m,"hasOutput",window_kvs_fnc_hasOutput);
@@ -1481,6 +1513,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"inputText",window_kvs_fnc_inputText);
 	KVSM_REGISTER_FUNCTION(m,"context",window_kvs_fnc_context);
 
+	//KVSM_REGISTER_SIMPLE_COMMAND(m,"highlight",window_kvs_cmd_highlight);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",window_kvs_cmd_close);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearOutput",window_kvs_cmd_clearOutput);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dock",window_kvs_cmd_dock);
