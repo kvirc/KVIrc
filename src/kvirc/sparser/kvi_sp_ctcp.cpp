@@ -60,6 +60,7 @@
 #include <stdlib.h>
 
 #include <QDateTime>
+#include <QTextDocument>
 
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -1440,7 +1441,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				QString szMsg = "<b>";
 				szMsg += msg->pSource->nick();
 				szMsg += "</b> ";
-				szMsg += szData;
+				szMsg += Qt::escape(szData);
 				//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
 				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,90);
 			}

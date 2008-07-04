@@ -93,6 +93,7 @@
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QMetaObject>
+#include <QTextDocument>
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
@@ -1032,7 +1033,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-			notifierMessage(0,iIconId,szMsg,30);
+			notifierMessage(0,iIconId,Qt::escape(szMsg),30);
 		}
 		return;
 	}
