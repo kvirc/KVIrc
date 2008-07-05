@@ -97,10 +97,8 @@
 
 KviAvatar::KviAvatar(const QString &szLocalPath,const QString &szName,QPixmap * pix)
 {
-	m_pPixmap = pix;
 	m_pScaledPixmap = 0;
-	if(m_pPixmap == 0)m_pPixmap = new QPixmap(32,32); // cool memory map :)
-
+	m_pPixmap = pix ? pix : new QPixmap(32,32);
 	m_bRemote = KviQString::equalCIN("http://",szName,7);
 
 	m_szLocalPath = szLocalPath;
@@ -115,45 +113,26 @@ KviAvatar::~KviAvatar()
 
 QPixmap * KviAvatar::scaledPixmap(unsigned int w,unsigned int h)
 {
-	if(((unsigned int)(m_pPixmap->width())) == w)
+	// To supress compiler warning we make a cast to int (QPixmap::width and 
+	// QPixmap::height return ints).
+	// This can be avoided by changing function parameter type to int
+	int width = static_cast<int>(w);
+	int height = static_cast<int>(h);
+	if ((m_pPixmap->width() == width) && (m_pPixmap->height() == height))
 	{
-		if(((unsigned int)(m_pPixmap->height())) == h)
-			return m_pPixmap;
+		return m_pPixmap;
 	}
-
-	if(m_pScaledPixmap)
+	// look if we have cached result
+	if (m_pScaledPixmap)
 	{
-		if((m_uLastScaleWidth == w) && (m_uLastScaleHeight == h))return m_pScaledPixmap;
+		if ((m_pScaledPixmap->width() == width) && (m_pScaledPixmap->height() == height))
+		{
+			return m_pScaledPixmap;
+		}
 		delete m_pScaledPixmap;
 		m_pScaledPixmap = 0;
 	}
-
-	int curW = m_pPixmap->width();
-	int curH = m_pPixmap->height();
-
-	if(curW < 1)curW = 1;
-	if(curH < 1)curH = 1;
-
-	m_uLastScaleWidth = w;
-	m_uLastScaleHeight = h;
-
-	int scaleW = w;
-	int scaleH;
-
-	/* We want to maintain the aspect of the image instead simply set
-	   height and width. The first step is trying to adapt the image size
-	   by "w" vaule */
-	
-	scaleH = (curH * scaleW) / curW;
-	
-	/* Now check the resized image size. If it is too wide or too tall,
-	   resize it again by "h" value */
-	if(scaleH > h) {
-		scaleH = h;
-		scaleW = (scaleH * curW) / curH;
-	}
-
-	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(scaleW,scaleH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-
+	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	return m_pScaledPixmap;
 }
+

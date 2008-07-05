@@ -43,9 +43,6 @@ private:
 
 	QPixmap    * m_pPixmap;
 	QPixmap    * m_pScaledPixmap;
-
-	unsigned int m_uLastScaleWidth;
-	unsigned int m_uLastScaleHeight;
 public:
 	QPixmap * pixmap(){ return m_pPixmap; };
 	QPixmap * scaledPixmap(unsigned int w,unsigned int h);
