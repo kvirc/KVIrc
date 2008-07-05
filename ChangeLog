@@ -2,7 +2,7 @@ buh :) - 25 June 2008
    [KVIrc Development Team]
    - Qt4 porting (wip)
    - Fixed many bugs
-   - New build system: removed autotools in favour of CMake (thanks to all peple who aid reaching this point :)
+   - New build system: removed autotools in favour of CMake (thanks to all people who aid reaching this point :)
 
    [HelLViS69]
    - finally updated this file :)
@@ -10,6 +10,7 @@ buh :) - 25 June 2008
    - New KVS command: added 'continue'
    - Improved About module
    - New KVS function: added $objects.name
+   - New KVS module: with serverdb you can manipulate the server list DB (wip)
 
    [Voker57]
    - New audio support: Phonon (wip)
@@ -27,7 +28,7 @@ buh :) - 25 June 2008
 02 May 2007
    [Alexey]
    - New KVS functions: $serialize and $unserialize to deal with JSON-serialized strings
-   
+
 16 Apr 2007
    [Noldor] (with the input from Pragma and Iakko)
    - Iakko's notifier is back. New in this version:
@@ -35,7 +36,7 @@ buh :) - 25 June 2008
 	 2) Added Option to disable fadein/out effect useful on slow machine (need test)
 	 3) Fixed strange crash on QT4 and some minor bug in show/hide event. (it is a trick... need to debug)
 	 This a w.i.p. and need some test on linux.
-	 
+
 12 Apr 2007
    [TheXception]
    - Added $system.call to call functions of dll/so files via kvs.

@@ -148,7 +148,7 @@ static const char * g_szAboutText = "" \
 "]" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#303030\">" \
-"bugfixes, german tutorials" \
+"bugfixes, german tutorials, core development" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"everything is possible, it only needs its time.\"" \
