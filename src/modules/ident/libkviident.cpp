@@ -304,10 +304,10 @@ ipv6_failure:
 	{
 		if(m_sock6 != KVI_INVALID_SOCKET) {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IPv4/V6 on separate namespaces)"),0);
+				postMessage(__tr("Starting identd service (IPv4/v6 on separate namespaces)"),0);
 		} else {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IPv4/V6 in IPv6 namespace)"),0);
+				postMessage(__tr("Starting identd service (IPv4/v6 in IPv6 namespace)"),0);
 		}
 
 	} else {
