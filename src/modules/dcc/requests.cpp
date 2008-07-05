@@ -185,7 +185,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,
 			struct in6_addr addr6;
 			if(kvi_stringIpToBinaryIp_V6(ipaddr,&addr6))
 			{
-				dcc->bIpV6 = true;
+				dcc->bIPv6 = true;
 				return true; // IPV6 address.
 			}
 #endif

@@ -278,9 +278,9 @@ namespace KviKvsCoreSimpleCommands
 			d->szLinkFilter = szSocketFilter;
 			d->bPortIsOk = (uPort > 0);
 #ifdef COMPILE_IPV6_SUPPORT
-			d->bUseIpV6 = (KVSCSC_pSwitches->find('i',"ipv6") != 0) || KviNetUtils::isValidStringIp_V6(szServer);
+			d->bUseIPv6 = (KVSCSC_pSwitches->find('i',"ipv6") != 0) || KviNetUtils::isValidStringIp_V6(szServer);
 #else
-			d->bUseIpV6 = false;
+			d->bUseIPv6 = false;
 #endif
 			d->szCommandToExecAfterConnect = szCmd;
 			d->szBindAddress = szBindAddress;

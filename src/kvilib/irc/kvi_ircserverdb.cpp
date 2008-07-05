@@ -62,7 +62,7 @@ KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer)
 		if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname) &&
 			(s->m_uPort == pServer->m_uPort) &&
 			(s->useSSL() == pServer->useSSL()) &&
-			(s->isIpV6() == pServer->isIpV6()))return s;
+			(s->isIPv6() == pServer->isIPv6()))return s;
 	}
 	return 0;
 }
@@ -257,7 +257,7 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 		{
 			if(KviQString::equalCI(srv->hostName(),d->szServer))
 			{
-				if(d->bIpV6 == srv->isIpV6())
+				if(d->bIPv6 == srv->isIPv6())
 				{
 					if(d->bSSL == srv->useSSL())
 					{
@@ -320,14 +320,14 @@ search_finished:
 	}
 
 	// no such server: is it a valid ip address or hostname ?
-	bool bIsValidIpV4 = KviNetUtils::isValidStringIp(d->szServer);
+	bool bIsValidIPv4 = KviNetUtils::isValidStringIp(d->szServer);
 #ifdef COMPILE_IPV6_SUPPORT
-	bool bIsValidIpV6 =KviNetUtils::isValidStringIp_V6(d->szServer);
+	bool bIsValidIPv6 =KviNetUtils::isValidStringIp_V6(d->szServer);
 #else
-	bool bIsValidIpV6 = false;
+	bool bIsValidIPv6 = false;
 #endif
 
-	if(!(bIsValidIpV4 || bIsValidIpV6))
+	if(!(bIsValidIPv4 || bIsValidIPv6))
 	{
 		// is it a valid hostname ? (must contain at least one dot)
 		if(!d->szServer.contains('.'))
@@ -350,17 +350,17 @@ search_finished:
 
 	KviServer * s = new KviServer();
 	s->m_szHostname = d->szServer;
-	if(bIsValidIpV4)
+	if(bIsValidIPv4)
 	{
 		s->m_szIp = d->szServer;
 		s->setCacheIp(true);
 #ifdef COMPILE_IPV6_SUPPORT
 	} else {
-		if(bIsValidIpV6)
+		if(bIsValidIPv6)
 		{
 			s->m_szIp = d->szServer;
 			s->setCacheIp(true);
-			d->bIpV6 = true;
+			d->bIPv6 = true;
 		}
 	}
 #else
@@ -371,7 +371,7 @@ search_finished:
 	s->m_szPass= d->szPass;
 	s->m_szNick= d->szNick;
 	s->m_szInitUMode = d->szInitUMode;
-	s->setIPv6(d->bIpV6);
+	s->setIPv6(d->bIPv6);
 	s->setUseSSL(d->bSSL);
 	r->insertServer(s);
 	m_szCurrentNetwork = r->network()->name();

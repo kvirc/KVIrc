@@ -537,10 +537,10 @@ void KviConsole::connectionDetached()
 	m_pNotifyListView->setUserDataBase(0); // this is rather for crash tests
 }
 
-bool KviConsole::isIpV6Connection()
+bool KviConsole::isIPv6Connection()
 {
 	__range_valid(connection());
-	return connection()->server()->isIpV6();
+	return connection()->server()->isIPv6();
 }
 
 void KviConsole::closeEvent(QCloseEvent *e)

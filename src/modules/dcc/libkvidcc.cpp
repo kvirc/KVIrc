@@ -1255,7 +1255,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 	} else {
 		if(d->console()->isConnected())
 		{
-			d->console()->socket()->getLocalHostIp(d->szListenIp,d->console()->isIpV6Connection());
+			d->console()->socket()->getLocalHostIp(d->szListenIp,d->console()->isIPv6Connection());
 		} else d->szListenIp = "127.0.0.1"; // huh ? :)
 	}
 

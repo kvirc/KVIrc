@@ -179,7 +179,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 {
 	bool bValidIp;
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_pTarget->proxy()->isIpV6())
+	if(m_pTarget->proxy()->isIPv6())
 	{
 		bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szIp.ptr());
 	} else {
@@ -201,7 +201,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		else terminate(Success,KviError_success);
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
-		if(m_pTarget->proxy()->isIpV6())
+		if(m_pTarget->proxy()->isIPv6())
 		{
 			bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szHostname.ptr());
 		} else {
@@ -233,7 +233,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			connect(m_pProxyDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(proxyLookupTerminated(KviDns *)));
 	
 			if(!m_pProxyDns->lookup(m_pTarget->proxy()->m_szHostname.ptr(),
-				m_pTarget->proxy()->isIpV6() ? KviDns::IpV6 : KviDns::IpV4))
+				m_pTarget->proxy()->isIPv6() ? KviDns::IPv6 : KviDns::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
 						__tr2qs("Unable to look up the IRC proxy hostname: Can't start the DNS slave"));
@@ -307,7 +307,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 	bool bValidIp;
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_pTarget->server()->isIpV6())
+	if(m_pTarget->server()->isIPv6())
 	{
 		bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->server()->m_szIp);
 	} else {
@@ -326,7 +326,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 		haveServerIp();
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
-		if(m_pTarget->server()->isIpV6())
+		if(m_pTarget->server()->isIPv6())
 		{
 			bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->server()->m_szHostname);
 		} else {
@@ -350,7 +350,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 			connect(m_pServerDns,SIGNAL(lookupDone(KviDns *)),this,
 				SLOT(serverLookupTerminated(KviDns *)));
 			if(!m_pServerDns->lookup(m_pTarget->server()->m_szHostname,
-				m_pTarget->server()->isIpV6() ? KviDns::IpV6 : KviDns::IpV4))
+				m_pTarget->server()->isIPv6() ? KviDns::IPv6 : KviDns::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
 					__tr2qs("Unable to look up the server hostname: Can't start the DNS slave"));
@@ -376,7 +376,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 				&szErr);
 
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!(m_pTarget->server()->isIpV6()))
+		if(!(m_pTarget->server()->isIPv6()))
 		{
 			m_pConsole->output(KVI_OUT_SYSTEMERROR,
 				__tr2qs("If this server is an IPv6 one, try /server -i %Q"),
@@ -453,7 +453,7 @@ bool KviIrcConnectionTargetResolver::validateLocalAddress(const QString &szAddre
 {
 	// szAddress may be an ip address or an interface name
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_pTarget->server()->isIpV6())
+	if(m_pTarget->server()->isIPv6())
 	{
 		if(KviNetUtils::isValidStringIp_V6(szAddress))
 		{
@@ -505,62 +505,62 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 	} else {
 		// the options specify a bind address ?
 #ifdef COMPILE_IPV6_SUPPORT
-		if(m_pTarget->server()->isIpV6())
+		if(m_pTarget->server()->isIPv6())
 		{
-			if(KVI_OPTION_BOOL(KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress))
+			if(KVI_OPTION_BOOL(KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress))
 			{
-				if(!KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).isEmpty())
+				if(!KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).isEmpty())
 				{
-					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress),bindAddress))
+					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress),bindAddress))
 					{
 						// if it is not an interface name , kill it for now and let the user correct the address
-						if(KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).indexOf(':') != -1)
+						if(KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv6 bind address (%s) is not valid"),
-									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).toUtf8().data());
-								KVI_OPTION_BOOL(KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress) = false;
+									KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
+								KVI_OPTION_BOOL(KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress) = false;
 						} else {
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv6 bind address (%s) is not valid (the interface it refers to might be down)"),
-									KVI_OPTION_STRING(KviOption_stringIpV6ConnectionBindAddress).toUtf8().data());
+									KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				} else {
 					// empty address....kill it
-					KVI_OPTION_BOOL(KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress) = false;
+					KVI_OPTION_BOOL(KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress) = false;
 				}
 			}
 		} else {
 #endif
-			if(KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress))
+			if(KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress))
 			{
-				if(!KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).isEmpty())
+				if(!KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).isEmpty())
 				{
-					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress),bindAddress))
+					if(!validateLocalAddress(KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress),bindAddress))
 					{
 						// if it is not an interface name , kill it for now and let the user correct the address
-						if(KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).indexOf(':') != -1)
+						if(KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).indexOf(':') != -1)
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv4 bind address (%s) is not valid"),
-									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).toUtf8().data());
-									KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress) = false;
+									KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
+									KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress) = false;
 						} else {
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 									__tr2qs("The system-wide IPv4 bind address (%s) is not valid (the interface it refers to might be down)"),
-									KVI_OPTION_STRING(KviOption_stringIpV4ConnectionBindAddress).toUtf8().data());
+									KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				} else {
 					// empty address....kill it
-					KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress) = false;
+					KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress) = false;
 				}
 			}
 #ifdef COMPILE_IPV6_SUPPORT

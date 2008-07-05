@@ -69,9 +69,9 @@ namespace KviKvsCoreCallbackCommands
 			Starts a DNS lookup for the <dnsquery> and reports the
 			results by calling the callback routine.
 			The -i switch causes the command to execute
-			in IpV6 mode (and lookup ONLY IpV6 hosts!).[br]
+			in IPv6 mode (and lookup ONLY IPv6 hosts!).[br]
 			The -a switch causes the command to run in "unspecified" mode
-			and return any available address: IpV4 or Ipv6.[br]
+			and return any available address: IPv4 or Ipv6.[br]
 			This command also performs reverse lookups (if you pass an IP address as <hostname>).[br]
 			The callback command gets passed five parameters:[br]
 			$0 contains the query string (<dnsquery> in fact)[br]
@@ -88,10 +88,10 @@ namespace KviKvsCoreCallbackCommands
 			reason then your callback MAY be called even before ahost() returns.[br]
 		@switches:
 			!sw: -i
-			Causes the command to execute in IpV6 mode (and lookup ONLY IpV6 hosts!).
+			Causes the command to execute in IPv6 mode (and lookup ONLY IPv6 hosts!).
 			!sw: -a
 			The -a switch causes the command to run in "unspecified" mode
-			and return any available address: IpV4 or Ipv6.
+			and return any available address: IPv4 or Ipv6.
 		@examples:
 			[example]
 			ahost("localhost")
@@ -143,8 +143,8 @@ namespace KviKvsCoreCallbackCommands
 			KVSCCC_PARAMETER("magic",KVS_PT_VARIANT,KVS_PF_OPTIONAL,pMagicPtr)
 		KVSCCC_PARAMETERS_END
 
-		KviDns::QueryType queryType = KviDns::IpV4;
-		if(KVSCCC_pSwitches->find('i',"ipv6"))queryType = KviDns::IpV6;
+		KviDns::QueryType queryType = KviDns::IPv4;
+		if(KVSCCC_pSwitches->find('i',"ipv6"))queryType = KviDns::IPv6;
 		if(KVSCCC_pSwitches->find('a',"any"))queryType = KviDns::Any;
 
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();

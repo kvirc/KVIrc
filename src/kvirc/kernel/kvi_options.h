@@ -168,8 +168,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseIntelligentNotifyListManager 74             /* ircengine::notifylist */
 #define KviOption_boolUseWatchListIfAvailable 75                     /* ircengine::notifylist */
 #define KviOption_boolUseTreeWindowListTaskBar 76                    /* interface::features::global */
-#define KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress 77    /* connection::transport */
-#define KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress 78    /* connection::transport */
+#define KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress 77    /* connection::transport */
+#define KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress 78    /* connection::transport */
 #define KviOption_boolUseAntiSpamOnNotice 79                         /* ircengine::antispam */
 #define KviOption_boolSetLastAvatarAsDefaultForRegisteredUsers 80    /* irc::ctcp::avatar */
 #define KviOption_boolCantAcceptIncomingDccConnections 81            /* dcc::general */
@@ -185,8 +185,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted 91     /* dcc::voice */
 #define KviOption_boolUseIdentService 92                             /* connection::ident */
 #define KviOption_boolShowTipAtStartup 93                            /* internal */
-#define KviOption_boolIdentdEnableIpV6 94                            /* connection::ident */
-#define KviOption_boolIdentdIpV6ContainsIpV4 95                      /* connection::ident */
+#define KviOption_boolIdentdEnableIPv6 94                            /* connection::ident */
+#define KviOption_boolIdentdIPv6ContainsIPv4 95                      /* connection::ident */
 #define KviOption_boolScaleAvatars 96                                /* ctcp::avatar */
 #define KviOption_boolColorNicks 97                                  /* interface::features::components::ircview */
 #define KviOption_boolBoldedNicks 98                                 /* interface::features::components::ircview */	
@@ -346,8 +346,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringUrlFileCommand 20                            /* urlhandlers */
 #define KviOption_stringNickCompletionPostfix 21
 #define KviOption_stringUrlUnknownCommand 22                         /* urlhandlers */
-#define KviOption_stringIpV4ConnectionBindAddress 23                 /* connection::transport */
-#define KviOption_stringIpV6ConnectionBindAddress 24                 /* connection::transport */
+#define KviOption_stringIPv4ConnectionBindAddress 23                 /* connection::transport */
+#define KviOption_stringIPv6ConnectionBindAddress 24                 /* connection::transport */
 #define KviOption_stringDccVoiceSoundDevice	25                       /* dcc::voice */
 #define KviOption_stringDccVoiceMixerDevice	26                       /* dcc::voice */
 #define KviOption_stringAwayMessage 27                               /* irc::away */

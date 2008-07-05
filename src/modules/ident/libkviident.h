@@ -71,8 +71,8 @@ public:
 private:
 	KviStr                    m_szUser;
 	kvi_u32_t        m_uPort;
-	bool                      m_bEnableIpV6;
-	bool                      m_bIpV6ContainsIpV4;
+	bool                      m_bEnableIPv6;
+	bool                      m_bIPv6ContainsIPv4;
 	kvi_socket_t              m_sock;
 	kvi_socket_t              m_sock6;
 	KviPointerList<KviIdentRequest> *  m_pRequestList;

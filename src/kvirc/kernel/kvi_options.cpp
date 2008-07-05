@@ -153,8 +153,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseIntelligentNotifyListManager",true,KviOption_sectFlagConnection | KviOption_resetRestartNotifyList),
 	BOOL_OPTION("UseWatchListIfAvailable",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseTreeWindowListTaskBar",true,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar | KviOption_groupTheme),
-	BOOL_OPTION("BindIrcIpV4ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
-	BOOL_OPTION("BindIrcIpV6ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
+	BOOL_OPTION("BindIrcIPv4ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
+	BOOL_OPTION("BindIrcIPv6ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseAntiSpamOnNotice",false,KviOption_sectFlagAntiSpam),
 	BOOL_OPTION("SetLastAvatarAsDefaultForRegisteredUsers",true,KviOption_sectFlagAvatar),
 	BOOL_OPTION("CantAcceptIncomingDccConnections",false,KviOption_sectFlagDcc),
@@ -174,11 +174,11 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseIdentService",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #endif
 	BOOL_OPTION("ShowTipAtStartup",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("IdentdEnableIpV6",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
+	BOOL_OPTION("IdentdEnableIPv6",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	BOOL_OPTION("IdentdIpV6ContainsIpV4",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
+	BOOL_OPTION("IdentdIPv6ContainsIPv4",false,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #else
-	BOOL_OPTION("IdentdIpV6ContainsIpV4",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
+	BOOL_OPTION("IdentdIPv6ContainsIPv4",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 #endif
 	BOOL_OPTION("ScaleAvatars",true,KviOption_sectFlagAvatar | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ColorNicks",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
@@ -352,8 +352,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("UrlFileCommand","play $0",KviOption_sectFlagUrl),
 	STRING_OPTION("NickCompletionPostfix",": ",KviOption_sectFlagInput),
 	STRING_OPTION("UrlUnknownCommand",RUN_THE_BROWSER,KviOption_sectFlagUrl),
-	STRING_OPTION("IpV4ConnectionBindAddress","",KviOption_sectFlagConnection),
-	STRING_OPTION("IpV6ConnectionBindAddress","",KviOption_sectFlagConnection),
+	STRING_OPTION("IPv4ConnectionBindAddress","",KviOption_sectFlagConnection),
+	STRING_OPTION("IPv6ConnectionBindAddress","",KviOption_sectFlagConnection),
 	STRING_OPTION("DccVoiceSoundDevice", "/dev/dsp",KviOption_sectFlagDcc),
 	STRING_OPTION("DccVoiceMixerDevice", "/dev/mixer",KviOption_sectFlagDcc),
 	STRING_OPTION("AwayMessage",KVI_DEFAULT_AWAY_MESSAGE,KviOption_sectFlagConnection),

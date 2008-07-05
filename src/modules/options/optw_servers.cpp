@@ -544,22 +544,22 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	l = new QLabel(__tr2qs_ctx("IP address:","options"),tab);
 	gl->addWidget(l,1,0);
-	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IpV4);
+	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IPv4);
 	gl->addWidget(m_pIpEditor,1,1);
 	KviTalToolTip::add(m_pIpEditor,__tr2qs_ctx("<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
 			"If you leave this field empty, KVIrc will fill it in the first time it connects to the server. " \
 			"If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" " \
 			"and avoid looking it up again.</center>","options"));
 #ifdef COMPILE_IPV6_SUPPORT
-	m_pIpEditor->setAddressType(s->isIpV6() ? KviIpEditor::IpV6 : KviIpEditor::IpV4);
+	m_pIpEditor->setAddressType(s->isIPv6() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 #else
-	m_pIpEditor->setAddressType(KviIpEditor::IpV4);
+	m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
 
 	if(!m_pIpEditor->setAddress(s->m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pIpEditor->setAddress(s->isIpV6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
+		m_pIpEditor->setAddress(s->isIPv6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
 #else
 		m_pIpEditor->setAddress("0.0.0.0");
 #endif
@@ -581,7 +581,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
 //	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
 #ifdef COMPILE_IPV6_SUPPORT
-	m_pUseIPV6Check->setChecked(s->isIpV6());
+	m_pUseIPV6Check->setChecked(s->isIPv6());
 #else
 	m_pUseIPV6Check->setEnabled(false);
 #endif
@@ -791,9 +791,9 @@ KviServerDetailsWidget::~KviServerDetailsWidget()
 void KviServerDetailsWidget::useIPV6CheckToggled(bool)
 {
 #ifdef COMPILE_IPV6_SUPPORT
-	m_pIpEditor->setAddressType(m_pUseIPV6Check->isChecked() ? KviIpEditor::IpV6 : KviIpEditor::IpV4);
+	m_pIpEditor->setAddressType(m_pUseIPV6Check->isChecked() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 #else
-	m_pIpEditor->setAddressType(KviIpEditor::IpV4);
+	m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
 	setHeaderLabelText();
 }
@@ -878,7 +878,7 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		if(!m_pIpEditor->hasEmptyFields())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
-			if(s->isIpV6())
+			if(s->isIPv6())
 			{
 				if((!kvi_strEqualCI(tmpAddr.ptr(),"0:0:0:0:0:0:0:0")) && kvi_isValidStringIp_V6(tmpAddr.ptr()))
 				{
@@ -1082,13 +1082,13 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	KviTalToolTip::add(m_pSrvNetEdit,__tr2qs_ctx("<center>This is the name of the currently selected server or network</center>","options"));
 
 /*
-	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	m_pIPv6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
 
 #ifndef COMPILE_IPV6_SUPPORT
-	m_pIpV6Check->setEnabled(false);
+	m_pIPv6Check->setEnabled(false);
 #endif
 
-	KviTalToolTip::add(m_pIpV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
+	KviTalToolTip::add(m_pIPv6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
 						"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
 	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:","options"),gbox);
@@ -1483,7 +1483,7 @@ void KviServerOptionsWidget::importServer(const KviServer &s,const QString &netw
 		srv=(KviServerOptionsTreeWidgetItem *) net->child(i);
 		if((srv)->m_pServerData->useSSL() == s.useSSL())
 		{
-			if(srv->m_pServerData->isIpV6() == s.isIpV6())
+			if(srv->m_pServerData->isIPv6() == s.isIPv6())
 			{
 				if(KviQString::equalCI(srv->m_pServerData->hostName(),s.hostName()))
 				{

@@ -1701,7 +1701,7 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam4);
 	msg->pData    = extractCtcpParameter(msg->pData,p.szParam5);
 	p.ctcpMsg     = msg;
-	p.bIpV6       = msg->msg->console()->isIpV6Connection();
+	p.bIPv6       = msg->msg->console()->isIPv6Connection();
 	p.pConsole    = msg->msg->console();
 
 	KviRegisteredUser * u = msg->msg->connection()->userDataBase()->registeredUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());

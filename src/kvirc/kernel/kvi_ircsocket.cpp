@@ -259,7 +259,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 	// Copy the server
 	m_pIrcServer = new KviServer(*srv);
 
-	bool bTargetIpV6 = false;
+	bool bTargetIPv6 = false;
 	bool bNeedServerIp = !prx;
 	if(prx) bNeedServerIp = (
 		prx->protocol() != KviProxy::Http && prx->protocol() != KviProxy::Socks5
@@ -273,19 +273,19 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 		// Yeah...here comes the proxy
 		m_pProxy = new KviProxy(*prx);
 		// check the proxy IP address
-		if(m_pProxy->isIpV6())
+		if(m_pProxy->isIPv6())
 		{
-			// IpV6 proxy :) (STILL QUITE UNTESTED ?)
+			// IPv6 proxy :) (STILL QUITE UNTESTED ?)
 #ifdef COMPILE_IPV6_SUPPORT
-			bTargetIpV6 = true;
+			bTargetIPv6 = true;
 			if(!kvi_isValidStringIp_V6(m_pProxy->ip()))return KviError_invalidProxyAddress;
-			// SOCKSV4 does not support IPV6 addresses
-			if(m_pProxy->protocol() == KviProxy::Socks4)return KviError_socksV4LacksIpV6Support;
+			// SOCKSv4 does not support IPV6 addresses
+			if(m_pProxy->protocol() == KviProxy::Socks4)return KviError_socksV4LacksIPv6Support;
 #else
-			return KviError_noIpV6Support;
+			return KviError_noIPv6Support;
 #endif
 		} else {
-			// IpV4 proxy
+			// IPv4 proxy
 			if(!kvi_isValidStringIp(m_pProxy->ip()))return KviError_invalidProxyAddress;
 		}
 	}
@@ -294,27 +294,27 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 	{
 		// check the irc host ip
 #ifdef COMPILE_IPV6_SUPPORT
-		if(m_pIrcServer->isIpV6())
+		if(m_pIrcServer->isIPv6())
 		{
-			// We have an IpV6 server host (Interesting if proxy is IpV4)
+			// We have an IPv6 server host (Interesting if proxy is IPv4)
 			if( !KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip()) )return KviError_invalidIpAddress;
-			if(!m_pProxy)bTargetIpV6 = true; // otherwise the proxy rules
+			if(!m_pProxy)bTargetIPv6 = true; // otherwise the proxy rules
 		} else {
 #endif
-			// We have an IpV4 server host
+			// We have an IPv4 server host
 			if(!KviNetUtils::isValidStringIp(m_pIrcServer->ip())) return KviError_invalidIpAddress;
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
 	}
 
-	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip().toUtf8().data(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIpV6);
+	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip().toUtf8().data(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
 
 	if(!sa.socketAddress())return KviError_invalidIpAddress;
 
 	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
-	m_sock = kvi_socket_create(bTargetIpV6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+	m_sock = kvi_socket_create(bTargetIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #endif
@@ -324,7 +324,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 	if(bindAddress)
 	{
 		// we have to bind the socket to a local address
-		KviSockaddr localSa(bindAddress,0,bTargetIpV6);
+		KviSockaddr localSa(bindAddress,0,bTargetIPv6);
 		bool bBindOk = localSa.socketAddress();
 
 		if(bBindOk)
@@ -657,7 +657,7 @@ void KviIrcSocket::proxyLoginHttp()
 
 void KviIrcSocket::proxyLoginV4()
 {
-	// SOCKSV4 protocol
+	// SOCKSv4 protocol
 	//
 	// 1) CONNECT
 	//
@@ -684,7 +684,7 @@ void KviIrcSocket::proxyLoginV4()
 	// or when the request is rejected or the operation fails. 
 	//
 	if(_OUTPUT_VERBOSE)
-		outputProxyMessage(__tr2qs("Using SOCKSV4 protocol."));
+		outputProxyMessage(__tr2qs("Using SOCKSv4 protocol."));
 
 	m_pProxy->normalizeUserAndPass();
 	// the protocol does not specify the "userid" format...
@@ -720,7 +720,7 @@ void KviIrcSocket::proxyLoginV4()
 
 void KviIrcSocket::proxyLoginV5()
 {
-	// SOCKSV5 protocol.
+	// SOCKSv5 protocol.
 	//
 	// When a TCP-based client wishes to establish a connection to an object
 	// that is reachable only via a firewall (such determination is left up
@@ -892,7 +892,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		&& m_pIrcServer->cacheIp()
 		);
 	int bufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().toUtf8().length() + 2
-		: (m_pIrcServer->isIpV6() ? 22 : 10);
+		: (m_pIrcServer->isIPv6() ? 22 : 10);
 	char * bufToSend = (char *)kvi_malloc(sizeof(char) * bufLen);
 	bufToSend[0]=(unsigned char)5;           //Proto 5
 	bufToSend[1]=(unsigned char)1;           //CONNECT
@@ -904,7 +904,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		bufToSend[3]=3;
 		bufToSend[4]=m_pIrcServer->hostName().toUtf8().length();		
 	} else {
-		bufToSend[3]=(unsigned char)m_pIrcServer->isIpV6() ? 4 : 1; // IPV6 : IPV4
+		bufToSend[3]=(unsigned char)m_pIrcServer->isIPv6() ? 4 : 1; // IPV6 : IPV4
 	}
 
 	if(bRemoteDns)
@@ -914,7 +914,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 			m_pIrcServer->hostName().toUtf8().length());
 		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()),(void *)&port,2);
-	} else if(m_pIrcServer->isIpV6()) {
+	} else if(m_pIrcServer->isIPv6()) {
 #ifdef COMPILE_IPV6_SUPPORT
 		struct in6_addr ircInAddr;
 
@@ -1804,11 +1804,11 @@ handle_system_error:
 	//flushed completely ...
 }
 
-bool KviIrcSocket::getLocalHostIp(QString &szIp,bool bIpV6)
+bool KviIrcSocket::getLocalHostIp(QString &szIp,bool bIPv6)
 {
 	if(m_state != Connected)return false;
 
-	if(bIpV6)
+	if(bIPv6)
 	{
 #ifdef COMPILE_IPV6_SUPPORT
 		struct sockaddr_in6 name;

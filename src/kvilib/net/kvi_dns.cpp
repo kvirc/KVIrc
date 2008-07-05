@@ -152,22 +152,22 @@ void KviDnsThread::run()
 	}
 
 #ifndef COMPILE_IPV6_SUPPORT
-	if(m_queryType != KviDns::IpV4)
+	if(m_queryType != KviDns::IPv4)
 	{
-		if(m_queryType == KviDns::IpV6)
+		if(m_queryType == KviDns::IPv6)
 		{
-			postDnsError(dns,KviError_noIpV6Support);
+			postDnsError(dns,KviError_noIPv6Support);
 			return;
 		}
-		m_queryType = KviDns::IpV4;
+		m_queryType = KviDns::IPv4;
 	}
 #endif
 
 #if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)) && !defined(COMPILE_IPV6_SUPPORT)
 
-	if(m_queryType == KviDns::IpV6)
+	if(m_queryType == KviDns::IPv6)
 	{
-		postDnsError(dns,KviError_noIpV6Support);
+		postDnsError(dns,KviError_noIPv6Support);
 		return;
 	}
 
@@ -227,29 +227,29 @@ void KviDnsThread::run()
 
 #ifdef COMPILE_IPV6_SUPPORT
 	struct sockaddr_in6 ipv6Addr;
-	bool bIsIpV6Ip = false;
+	bool bIsIPv6Ip = false;
 #endif
 
-	bool bIsIpV4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery,(struct in_addr *)&(ipv4Addr.sin_addr));
+	bool bIsIPv4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery,(struct in_addr *)&(ipv4Addr.sin_addr));
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(!bIsIpV4Ip)bIsIpV6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery,(struct in6_addr *)&(ipv6Addr.sin6_addr));
+	if(!bIsIPv4Ip)bIsIPv6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery,(struct in6_addr *)&(ipv6Addr.sin6_addr));
 #endif
 
 //#ifdef HAVE_GETNAMEINFO
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(bIsIpV4Ip || bIsIpV6Ip)
+	if(bIsIPv4Ip || bIsIPv6Ip)
 	{
 #else
-	if(bIsIpV4Ip)
+	if(bIsIPv4Ip)
 	{
 #endif
 		// use getnameinfo...
 		char retname[1025]; // should be enough....
 
 #ifdef COMPILE_IPV6_SUPPORT
-		if(bIsIpV4Ip)
+		if(bIsIPv4Ip)
 		{
 #endif
 			ipv4Addr.sin_family = AF_INET;
@@ -282,7 +282,7 @@ void KviDnsThread::run()
 		struct addrinfo hints;
 		hints.ai_flags     = 0; //AI_CANONNAME; <-- for IPV6 it makes cannoname to point to the IP address!
 #ifdef COMPILE_IPV6_SUPPORT
-		hints.ai_family    = (m_queryType == KviDns::IpV6) ? PF_INET6 : ((m_queryType == KviDns::IpV4) ? PF_INET : PF_UNSPEC);
+		hints.ai_family    = (m_queryType == KviDns::IPv6) ? PF_INET6 : ((m_queryType == KviDns::IPv4) ? PF_INET : PF_UNSPEC);
 #else
 		hints.ai_family    = PF_INET;
 #endif

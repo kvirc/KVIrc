@@ -44,9 +44,9 @@ public:
 	KviStr             m_szUser;
 	kvi_u32_t          m_uPort;
 	Protocol           m_protocol;
-	bool               m_bIsIpV6;
+	bool               m_bIsIPv6;
 public:
-	bool isIpV6() const             { return m_bIsIpV6; };
+	bool isIPv6() const             { return m_bIsIPv6; };
 	Protocol protocol() const       { return m_protocol; };
 	const char * protocolName() const;
 	void setNamedProtocol(const char * proto);

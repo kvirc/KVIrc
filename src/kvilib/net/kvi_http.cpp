@@ -184,7 +184,7 @@ bool KviHttpRequest::startDnsLookup()
 	m_pDns = new KviDns();
 	connect(m_pDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(dnsLookupDone(KviDns *)));
 
-	if(!m_pDns->lookup(m_url.host().ptr(),KviDns::IpV4))
+	if(!m_pDns->lookup(m_url.host().ptr(),KviDns::IPv4))
 	{
 		resetInternalStatus();
 		m_szLastError = __tr2qs("Unable to start the DNS lookup");

@@ -46,12 +46,12 @@ SUBDIRS(
 	# perl, perlcore
 
 	# forgotten ?
-	# offer
+	# offer, proxydb, serverdb
 )
 
 # this is currently broken on MINGW because of some virtual functions
 # messing up linker's brain
 
 IF(NOT MINGW)
-        ADD_SUBDIRECTORY( rijndael )
+	ADD_SUBDIRECTORY(rijndael)
 ENDIF()

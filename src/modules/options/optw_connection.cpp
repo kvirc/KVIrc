@@ -152,12 +152,12 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
 	
-	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv4 connections to:","options"),KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress);
-	KviStringSelector * s = addStringSelector(g,"",KviOption_stringIpV4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIpV4ConnectionsToSpecifiedAddress));
+	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv4 connections to:","options"),KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress);
+	KviStringSelector * s = addStringSelector(g,"",KviOption_stringIPv4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #ifdef COMPILE_IPV6_SUPPORT
-	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv6 connections to:","options"),KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress);
-	s = addStringSelector(g,"",KviOption_stringIpV6ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIpV6ConnectionsToSpecifiedAddress));
+	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv6 connections to:","options"),KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress);
+	s = addStringSelector(g,"",KviOption_stringIPv6ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #endif //!COMPILE_IPV6_SUPPORT
 
@@ -222,7 +222,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 
 	gbox = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	m_pEnableIpv6 = addBoolSelector(gbox,__tr2qs_ctx("Enable service for IPv6","options"),
-		KviOption_boolIdentdEnableIpV6,
+		KviOption_boolIdentdEnableIPv6,
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 #ifdef COMPILE_IPV6_SUPPORT
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),m_pEnableIpv6,SLOT(setEnabled(bool)));
@@ -231,8 +231,8 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	m_pEnableIpv6->setEnabled(false);
 #endif
 	m_pIpv4InIpv6 = addBoolSelector(gbox,__tr2qs_ctx("IP stack treats IPv4 as part of IPv6 namespace","options"),
-		KviOption_boolIdentdIpV6ContainsIpV4,
-		KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIpV6));
+		KviOption_boolIdentdIPv6ContainsIPv4,
+		KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIPv6));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
 	addLabel(0,4,0,4,

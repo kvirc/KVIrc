@@ -151,11 +151,11 @@ KviIdentDaemon::KviIdentDaemon()
 	if(m_szUser.isEmpty())m_szUser = "kvirc";
 	m_uPort = KVI_OPTION_UINT(KviOption_uintIdentdPort);
 #ifdef COMPILE_IPV6_SUPPORT
-	m_bEnableIpV6 = KVI_OPTION_BOOL(KviOption_boolIdentdEnableIpV6);
+	m_bEnableIPv6 = KVI_OPTION_BOOL(KviOption_boolIdentdEnableIPv6);
 #else
-	m_bEnableIpV6 = false;
+	m_bEnableIPv6 = false;
 #endif
-	m_bIpV6ContainsIpV4 = KVI_OPTION_BOOL(KviOption_boolIdentdIpV6ContainsIpV4);
+	m_bIPv6ContainsIPv4 = KVI_OPTION_BOOL(KviOption_boolIdentdIPv6ContainsIPv4);
 //	debug("Thread constructor done");
 }
 
@@ -204,7 +204,7 @@ void KviIdentDaemon::run()
 #ifdef COMPILE_IPV6_SUPPORT
 	// If we have enabled ipv6 and we have to use a single socket: this one is IPV6
 	// otherwise this one is IPV4
-	KviSockaddr sa(m_uPort,m_bEnableIpV6 && m_bIpV6ContainsIpV4);
+	KviSockaddr sa(m_uPort,m_bEnableIPv6 && m_bIPv6ContainsIPv4);
 #else
 	KviSockaddr sa(m_uPort,false);
 #endif
@@ -212,7 +212,7 @@ void KviIdentDaemon::run()
 	KviIdentRequest * r;
 
 #ifdef COMPILE_IPV6_SUPPORT
-	m_sock = kvi_socket_create((m_bEnableIpV6 && m_bIpV6ContainsIpV4) ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
+	m_sock = kvi_socket_create((m_bEnableIPv6 && m_bIPv6ContainsIPv4) ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_sock = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #endif
@@ -249,7 +249,7 @@ void KviIdentDaemon::run()
 
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_bEnableIpV6 && (!m_bIpV6ContainsIpV4))
+	if(m_bEnableIPv6 && (!m_bIPv6ContainsIPv4))
 	{
 		// Need to start the IPV6 socket too
 		KviSockaddr sa6(m_uPort,true);
@@ -257,13 +257,13 @@ void KviIdentDaemon::run()
 
 		if(m_sock6 == KVI_INVALID_SOCKET)
 		{
-			postMessage(__tr("Can't start the ident service on IpV6 : socket() failed"),0);
+			postMessage(__tr("Can't start the ident service on IPv6 : socket() failed"),0);
 			goto ipv6_failure;
 		}
 
 		if(!kvi_socket_setNonBlocking(m_sock6))
 		{
-			postMessage(__tr("Can't start the ident service on IpV6 : async setting failed"),0);
+			postMessage(__tr("Can't start the ident service on IPv6 : async setting failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -271,7 +271,7 @@ void KviIdentDaemon::run()
 
 		if(!sa6.socketAddress())
 		{
-			postMessage(__tr("Can't enable the ident service on IpV6 : can't setup the listen address"),0);
+			postMessage(__tr("Can't enable the ident service on IPv6 : can't setup the listen address"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -279,7 +279,7 @@ void KviIdentDaemon::run()
 	
 		if(!kvi_socket_bind(m_sock6,sa6.socketAddress(),((int)(sa6.addressLength()))))
 		{
-			postMessage(__tr("Can't start the ident service on IpV6 : bind() failed"),0);
+			postMessage(__tr("Can't start the ident service on IPv6 : bind() failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -288,7 +288,7 @@ void KviIdentDaemon::run()
 	
 		if(!kvi_socket_listen(m_sock6,128))
 		{
-			postMessage(__tr("Can't start the ident service on IpV6 : listen() failed"),0);
+			postMessage(__tr("Can't start the ident service on IPv6 : listen() failed"),0);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -300,23 +300,23 @@ void KviIdentDaemon::run()
 ipv6_failure:
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_bEnableIpV6)
+	if(m_bEnableIPv6)
 	{
 		if(m_sock6 != KVI_INVALID_SOCKET) {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IpV4/V6 on separate namespaces)"),0);
+				postMessage(__tr("Starting identd service (IPv4/V6 on separate namespaces)"),0);
 		} else {
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting identd service (IpV4/V6 in IpV6 namespace)"),0);
+				postMessage(__tr("Starting identd service (IPv4/V6 in IPv6 namespace)"),0);
 		}
 
 	} else {
 		if(_OUTPUT_PARANOIC)
-			postMessage(__tr("Starting identd service (IpV4)"),0);
+			postMessage(__tr("Starting identd service (IPv4)"),0);
 	}
 #else //!COMPILE_IPV6_SUPPORT
 	if(_OUTPUT_PARANOIC)
-		postMessage(__tr("Service startup (IpV4)"),0);
+		postMessage(__tr("Service startup (IPv4)"),0);
 #endif //!COMPILE_IPV6_SUPPORT
 
 
@@ -372,7 +372,7 @@ ipv6_failure:
 				if(FD_ISSET(m_sock,&rs))
 				{
 #ifdef COMPILE_IPV6_SUPPORT
-					KviSockaddr satmp(0,m_bEnableIpV6 && m_bIpV6ContainsIpV4);
+					KviSockaddr satmp(0,m_bEnableIPv6 && m_bIPv6ContainsIPv4);
 #else
 					KviSockaddr satmp(0,false);
 #endif

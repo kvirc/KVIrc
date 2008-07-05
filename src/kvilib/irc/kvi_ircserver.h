@@ -104,7 +104,7 @@ public:
 	const QString & userIdentityId() const { return m_szUserIdentityId; };
 	bool autoConnect() const { return m_bAutoConnect; };
 	QStringList* autoJoinChannelList(){ return m_pChannelList; };
-	bool isIpV6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
+	bool isIPv6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
 	bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
 	bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
 	

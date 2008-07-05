@@ -47,7 +47,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 			{
 				if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),"0.0.0.0"))
 				{
-					// Try to find the first available IpV4 interface
+					// Try to find the first available IPv4 interface
 					if(!kvi_getLocalHostAddress(szListenIp))
 					{
 						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPV4 address","dcc"),
@@ -87,7 +87,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 		if(pConsole->isConnected())
 		{
 			//#warning "The IPV6 choice is not OK here.... and maybe allow to bind to specified ports"
-			pConsole->socket()->getLocalHostIp(szListenIp,pConsole->isIpV6Connection());
+			pConsole->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
 		} else {
 			szListenIp = "0.0.0.0"; // huh ? :)
 		}
@@ -115,7 +115,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 			{
 				if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),"0.0.0.0"))
 				{
-					// Try to find the first available IpV4 interface
+					// Try to find the first available IPv4 interface
 					if(!kvi_getLocalHostAddress(szListenIp))
 					{
 						if(c)c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPV4 address","dcc"),
@@ -155,7 +155,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 		if(pConsole->isConnected())
 		{
 			//#warning "The IPV6 choice is not OK here.... and maybe allow to bind to specified ports"
-			pConsole->socket()->getLocalHostIp(szListenIp,pConsole->isIpV6Connection());
+			pConsole->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
 		} else {
 			szListenIp = "0.0.0.0"; // huh ? :)
 		}

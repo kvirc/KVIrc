@@ -115,7 +115,7 @@ const char * g_errorTable[KVI_NUM_ERRORS]=
 	__tr_no_lookup("Open parenthesis expected"),                                // 064
 	__tr_no_lookup("Open brace expected"),                                      // 065
 	__tr_no_lookup("Can't kill a builtin class"),                               // 066
-	__tr_no_lookup("The SOCKSV4 protocol lacks IpV6 support"),                  // 067
+	__tr_no_lookup("The SOCKSv4 protocol lacks IPv6 support"),                  // 067
 	__tr_no_lookup("Unrecognized proxy reply"),                                 // 068
 	__tr_no_lookup("Proxy response: auth failed: access denied"),
 	__tr_no_lookup("Proxy response: No acceptable auth method: request rejected"),

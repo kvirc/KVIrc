@@ -72,7 +72,7 @@ void KviIpEditor::setEnabled(bool bEnabled)
 
 void KviIpEditor::setAddressType(AddressType addrType)
 {
-	if((addrType != IpV4) && (addrType != IpV6))m_addrType = IpV4;
+	if((addrType != IPv4) && (addrType != IPv6))m_addrType = IPv4;
 	else m_addrType = addrType;
 	recreateChildren();
 }
@@ -98,7 +98,7 @@ bool KviIpEditor::hasEmptyFields() const
 void KviIpEditor::clear()
 {
 	if(!m_pEdit[0])return;
-	int maxW = (m_addrType == IpV4) ? 4 : 8;
+	int maxW = (m_addrType == IPv4) ? 4 : 8;
 	for(int i=0;i< maxW ;i++)
 	{
 		m_pEdit[i]->setText("");
@@ -111,14 +111,14 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 	//       is valid before effectively setting the fields
 	clear();
 
-	KviQCString ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IpV6)
+	KviQCString ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IPv6)
 
 	ip = ip.trimmed();
 	const char * c = ip.data();
 
 	if(!c)return false; // huh ?....(should never happen at this point)
 
-	if(m_addrType == IpV4)
+	if(m_addrType == IPv4)
 	{
 		for(int i=0;i<4;i++)
 		{
@@ -158,7 +158,7 @@ QString KviIpEditor::address() const
 {
 	QString ret;
 
-	if(m_addrType == IpV6)
+	if(m_addrType == IPv6)
 	{
 		for(int i=0;i<8;i++)
 		{
@@ -183,10 +183,10 @@ QString KviIpEditor::address() const
 void KviIpEditor::recreateChildren()
 {
 	// A bit slow , but compact
-	bool bIpV4 = (m_addrType == IpV4);
-	int max = bIpV4 ? 4 : 8;
+	bool bIPv4 = (m_addrType == IPv4);
+	int max = bIPv4 ? 4 : 8;
 	QFontMetrics fm(font());
-	//int minWidth = fm.width(bIpV4 ? "000" : "AAAA") + 4;
+	//int minWidth = fm.width(bIPv4 ? "000" : "AAAA") + 4;
 	for(int i=0;i<max;i++)
 	{
 		if(!m_pEdit[i]){
@@ -196,19 +196,19 @@ void KviIpEditor::recreateChildren()
 			m_pEdit[i]->setAlignment(Qt::AlignCenter);
 		}
 		//m_pEdit[i]->setMinimumWidth(minWidth);
-		m_pEdit[i]->setMaxLength(bIpV4 ? 3 : 4);
+		m_pEdit[i]->setMaxLength(bIPv4 ? 3 : 4);
 		m_pEdit[i]->show();
 		if(i < (max - 1))
 		{
 			if(!m_pLabel[i])m_pLabel[i] = new QLabel(this);
-			m_pLabel[i]->setText(bIpV4 ? "." : ":");
+			m_pLabel[i]->setText(bIPv4 ? "." : ":");
 			m_pLabel[i]->show();
 			// Is this the right way ? setBackgroundMode seems to not work well
 			m_pLabel[i]->setBackgroundRole(isEnabled() ? QPalette::Base : QPalette::Background);
 		}
 	}
 	// Kill the unused widgets , if any
-	if(bIpV4)
+	if(bIPv4)
 	{
 		for(int i=4;i<8;i++)
 		{
@@ -247,7 +247,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 				}
 			}
 			if(edIdx == -1)return QFrame::eventFilter(o,e); // user added QLineEdit child ?
-			int edMax = (m_addrType == IpV4) ? 3 : 7;
+			int edMax = (m_addrType == IPv4) ? 3 : 7;
 			int cursorPos = ((QLineEdit *)o)->cursorPosition();
 			switch(((QKeyEvent *)e)->key())
 			{
@@ -286,7 +286,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 				default:
 					// a normal key (this part substitutes a QValidator)
 					const char c = tolower(((QKeyEvent *)e)->text().toAscii().at(0));
-					if(m_addrType == IpV4)
+					if(m_addrType == IPv4)
 					{
 						if((c >= '0') && (c <= '9'))
 						{
@@ -375,7 +375,7 @@ void KviIpEditor::resizeEvent(QResizeEvent *e)
 {
 	if(m_pEdit[0])
 	{
-		int maxW = (m_addrType == IpV4) ? 4 : 8;
+		int maxW = (m_addrType == IPv4) ? 4 : 8;
 		int labHint = m_pLabel[0]->sizeHint().width();
 		int hghHint = height() - 4;
 		int ediWdth = ((width() - 4) - ((maxW - 1) * labHint)) / maxW;
@@ -401,7 +401,7 @@ QSize KviIpEditor::sizeHint()
 		int labHint = m_pLabel[0]->sizeHint().width();
 		int hghHint = m_pEdit[0]->sizeHint().height();
 		int ediHint = m_pEdit[0]->sizeHint().width();
-		if(m_addrType == IpV4)return QSize((labHint * 3) + (ediHint * 4) + 4,hghHint + 4);
+		if(m_addrType == IPv4)return QSize((labHint * 3) + (ediHint * 4) + 4,hghHint + 4);
 		else return QSize((labHint * 7) + (ediHint * 8) + 4,hghHint + 4);
 	} else return QFrame::sizeHint();
 }

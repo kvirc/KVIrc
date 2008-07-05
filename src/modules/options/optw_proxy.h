@@ -75,7 +75,7 @@ protected:
 	QLabel       * m_pProtocolLabel;
 	QComboBox    * m_pProtocolBox;
 	KviTalPopupMenu   * m_pContextPopup;
-	QCheckBox    * m_pIpV6Check;
+	QCheckBox    * m_pIPv6Check;
 	KviProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:
 

@@ -60,7 +60,7 @@ protected:
 	QString                      m_szIp;                    // Dcc initiator ip address (the one that listens)
 	QString                      m_szPort;                  // Dcc initiator port (the one that listens)
 	// other info
-	bool                         m_bIpV6;                   // Dcc mode
+	bool                         m_bIPv6;                   // Dcc mode
 	kvi_u32_t                    m_uPort;                   // Dcc initiator port
 	bool                         m_bOutgoing;               // true if WE have connected to the remote host (so m_szIp is the remote host ip)
 	QString                      m_szSecondaryIp;           // Ip of the client that has connected to the remote host

@@ -32,7 +32,7 @@ KviProxy::KviProxy()
 	m_szHostname = "proxy.example.net";
 	m_uPort      = 1080;
 	m_protocol   = Socks4;
-	m_bIsIpV6    = false;
+	m_bIsIPv6    = false;
 }
 
 KviProxy::KviProxy(const KviProxy &prx)
@@ -43,7 +43,7 @@ KviProxy::KviProxy(const KviProxy &prx)
 	m_szPass     = prx.m_szPass;
 	m_uPort      = prx.m_uPort;
 	m_protocol   = prx.m_protocol;
-	m_bIsIpV6    = prx.m_bIsIpV6;
+	m_bIsIPv6    = prx.m_bIsIPv6;
 }
 
 KviProxy::~KviProxy()
@@ -139,8 +139,8 @@ void KviProxyDataBase::load(const QString &filename)
 		KviStr type    = cfg.readEntry(tmp.ptr(),"SOCKSv4");
 		p->setNamedProtocol(type.ptr());
 
-		tmp.sprintf("%u_IsIpV6",i);
-		p->m_bIsIpV6   = cfg.readBoolEntry(tmp.ptr(),false);
+		tmp.sprintf("%u_IsIPv6",i);
+		p->m_bIsIPv6   = cfg.readBoolEntry(tmp.ptr(),false);
 		tmp.sprintf("%u_Current",i);
 		if(cfg.readBoolEntry(tmp.ptr(),false))m_pCurrentProxy = p;
 		m_pProxyList->append(p);
@@ -183,8 +183,8 @@ void KviProxyDataBase::save(const QString &filename)
 		}
 		cfg.writeEntry(tmp.ptr(),type.ptr());
 
-		tmp.sprintf("%u_IsIpV6",i);
-		cfg.writeEntry(tmp.ptr(),p->m_bIsIpV6);
+		tmp.sprintf("%u_IsIPv6",i);
+		cfg.writeEntry(tmp.ptr(),p->m_bIsIPv6);
 		tmp.sprintf("%u_Current",i);
 		if(m_pCurrentProxy == p)cfg.writeEntry(tmp.ptr(),true);
 		i++;

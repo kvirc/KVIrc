@@ -40,7 +40,7 @@ public:
 	bool               bUseLastServerInContext; // this is checked ONLY if szServer is empty
 	kvi_u32_t          uPort;
 	bool               bPortIsOk;
-	bool               bUseIpV6;
+	bool               bUseIPv6;
 	bool               bUseSSL;
 	QString            szBindAddress; // ip address (or interface name) to bind the connection to
 	QString            szCommandToExecAfterConnect;

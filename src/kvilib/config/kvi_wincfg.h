@@ -73,7 +73,7 @@
 /* define if you want to compile the localization support */
 #define COMPILE_LOCALE_STUFF 1
 
-/* define if you want the IpV6 support */
+/* define if you want the IPv6 support */
 #define COMPILE_IPV6_SUPPORT 1
 
 /* define if you want zlib support */

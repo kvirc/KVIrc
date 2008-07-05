@@ -42,7 +42,7 @@ class KviConsole;
 typedef  struct _KviIrcUrlParts {
 		QString szHost;
 		kvi_u32_t iPort;
-		bool bIpV6;
+		bool bIPv6;
 		bool bSsl;
 		QStringList chanList;
 		int iError;

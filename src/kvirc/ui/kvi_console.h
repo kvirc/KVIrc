@@ -135,7 +135,7 @@ public:
 	
 	// these should disappear!
 	bool isConnected(){ return context()->isConnected(); };
-	bool isIpV6Connection();
+	bool isIPv6Connection();
 	bool isNotConnected();
 	bool connectionInProgress();
 	//

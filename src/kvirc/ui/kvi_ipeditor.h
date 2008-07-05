@@ -36,8 +36,8 @@ class KVIRC_API KviIpEditor : public QFrame
 {
 	Q_OBJECT
 public:
-	enum AddressType { IpV4 , IpV6 };
-	KviIpEditor(QWidget * parent,AddressType = IpV4,const QString &ipAddr = QString::null,const char *name = 0);
+	enum AddressType { IPv4 , IPv6 };
+	KviIpEditor(QWidget * parent,AddressType = IPv4,const QString &ipAddr = QString::null,const char *name = 0);
 	~KviIpEditor();
 private:
 	QLabel      * m_pLabel[7];

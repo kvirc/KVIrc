@@ -45,7 +45,7 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 	KviStr szUrl = url;
 	//szUrl.replaceAll("$","\\$");
 	//szUrl.replaceAll(";","\\;");
-	bool bIpV6 = false;
+	bool bIPv6 = false;
 	bool bSSL = false;
 	KviStr szServer;
 	kvi_u32_t uPort = 0;
@@ -55,7 +55,7 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 		szUrl.cutLeft(6);
 	} else if(kvi_strEqualCIN(szUrl.ptr(),"irc6://",7))
 	{
-		bIpV6 = true;
+		bIPv6 = true;
 		szUrl.cutLeft(7);
 	} else if(kvi_strEqualCIN(szUrl.ptr(),"ircs://",7))
 	{
@@ -63,7 +63,7 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 		szUrl.cutLeft(7);
 	} else if(kvi_strEqualCIN(szUrl.ptr(),"ircs6://",8))
 	{
-		bIpV6 = true;
+		bIPv6 = true;
 		bSSL = true;
 		szUrl.cutLeft(8);
 	} else return false;
@@ -106,7 +106,7 @@ bool KviIrcUrl::parse(const char * url,KviStr &cmdBuffer,int contextSpec)
 			cmdBuffer.append("-n ");
 			break;
 	}
-	if(bIpV6)cmdBuffer.append(" -i ");
+	if(bIPv6)cmdBuffer.append(" -i ");
 	if(bSSL)cmdBuffer.append(" -s ");
 
 	if(szUrl.hasData())
@@ -147,7 +147,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 
 	//defaults
 	result.bSsl=false;
-	result.bIpV6=false;
+	result.bIPv6=false;
 	result.iPort = 6667;
 	result.iError=0;
 
@@ -161,7 +161,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 				url = url.right(url.length()-1);
 			}
 			if(KviQString::equalCIN(url,"6",1)) {
-				result.bIpV6=true;
+				result.bIPv6=true;
 				url = url.right(url.length()-1);
 			}
 			if(!KviQString::equalCIN(url,"://",3)) {
@@ -217,7 +217,7 @@ void KviIrcUrl::join(QString &uri, KviServer* server)
 		uri="irc";
 		
 		if(server->useSSL()) uri.append("s");
-		if(server->isIpV6()) uri.append("6");
+		if(server->isIPv6()) uri.append("6");
 
 		uri.append("://");
 		uri.append(server->hostName());
@@ -303,7 +303,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 		makeJoinCmd(parts.chanList,szJoinCommand);
 		QString szCommand("server ");
 		if(parts.bSsl) szCommand.append("-s ");
-		if(parts.bIpV6) szCommand.append("-i ");
+		if(parts.bIPv6) szCommand.append("-i ");
 		if(!szJoinCommand.isEmpty()){
 			szCommand.append("-c=\"");
 			szCommand.append(szJoinCommand);
@@ -317,7 +317,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 				( server->hostName() != parts.szHost ) ||
 				( server->port() != parts.iPort ) ||
 				( server->useSSL() != parts.bSsl ) ||
-				( server->isIpV6() != parts.bIpV6) )
+				( server->isIPv6() != parts.bIPv6) )
 			{ // New server, try to reconnect
 				KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pFrame->createNewConsole() : pConsole);
 				return parts.iError;

@@ -41,7 +41,7 @@ KviDccMarshal::KviDccMarshal(KviDccMarshalOutputContext * ctx)
 	m_pSn                   = 0;
 	m_fd                    = KVI_INVALID_SOCKET;
 	m_pTimeoutTimer         = 0;
-	m_bIpV6                 = false;
+	m_bIPv6                 = false;
 	m_pOutputContext        = ctx;
 #ifdef COMPILE_SSL_SUPPORT
 	m_pSSL                  = 0;
@@ -99,7 +99,7 @@ void KviDccMarshal::reset()
 		delete m_pTimeoutTimer;
 		m_pTimeoutTimer = 0;
 	}
-	m_bIpV6 = false;
+	m_bIPv6 = false;
 }
 
 int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTimeout,bool bUseSSL)
@@ -145,7 +145,7 @@ void KviDccMarshal::doListen()
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
-		} else m_bIpV6 = true;
+		} else m_bIPv6 = true;
 #else
 		emit error(KviError_invalidIpAddress);
 		return;
@@ -161,16 +161,16 @@ void KviDccMarshal::doListen()
 	}
 
 #ifndef COMPILE_IPV6_SUPPORT
-	if(m_bIpV6)
+	if(m_bIPv6)
 	{
-		emit error(KviError_noIpV6Support);
+		emit error(KviError_noIPv6Support);
 		return;
 	}
 #endif
 
 
 #ifdef COMPILE_IPV6_SUPPORT
-	m_fd = kvi_socket_create(m_bIpV6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
+	m_fd = kvi_socket_create(m_bIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
 								KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_fd = kvi_socket_create(KVI_SOCKET_PF_INET,KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
@@ -185,7 +185,7 @@ void KviDccMarshal::doListen()
 	if((!KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange)) || (m_uPort != 0))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
+		KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIPv6);
 #else
 		KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
@@ -210,7 +210,7 @@ void KviDccMarshal::doListen()
 		bool bBindSuccess;
 		do {
 #ifdef COMPILE_IPV6_SUPPORT
-			KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
+			KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIPv6);
 #else
 			KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
@@ -256,7 +256,7 @@ void KviDccMarshal::doListen()
 	// Reread the port in case we're binding to a random one (0)
 
 #ifdef COMPILE_IPV6_SUPPORT
-	KviSockaddr sareal(0,m_bIpV6);
+	KviSockaddr sareal(0,m_bIPv6);
 #else
 	KviSockaddr sareal(0,false);
 #endif
@@ -336,7 +336,7 @@ void KviDccMarshal::doConnect()
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
-		} else m_bIpV6 = true;
+		} else m_bIPv6 = true;
 #else
 		emit error(KviError_invalidIpAddress);
 		return;
@@ -354,7 +354,7 @@ void KviDccMarshal::doConnect()
 
 	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
-	m_fd = kvi_socket_create(m_bIpV6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
+	m_fd = kvi_socket_create(m_bIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
 					KVI_SOCKET_TYPE_STREAM,KVI_SOCKET_PROTO_TCP);
 #else
 	m_fd = kvi_socket_create(KVI_SOCKET_PF_INET,
@@ -378,7 +378,7 @@ void KviDccMarshal::doConnect()
 	// fill the sockaddr structure
 
 #ifdef COMPILE_IPV6_SUPPORT
-	KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIpV6);
+	KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,m_bIPv6);
 #else
 	KviSockaddr sa(m_szIp.toUtf8().data(),m_uPort,false);
 #endif
@@ -453,7 +453,7 @@ void KviDccMarshal::snActivated(int)
 	struct sockaddr * addr = (struct sockaddr *)&hostSockAddr;
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(m_bIpV6)
+	if(m_bIPv6)
 	{
 		addr = (struct sockaddr *)&hostSockAddr6;
 		size = sizeof(hostSockAddr6);
@@ -486,7 +486,7 @@ void KviDccMarshal::snActivated(int)
 			m_szSecondaryPort = __tr2qs_ctx("unknown","dcc");
 		} else {
 #ifdef COMPILE_IPV6_SUPPORT
-			if(m_bIpV6)
+			if(m_bIPv6)
 			{
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in6 *)addr)->sin6_port));
 				if(!kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
@@ -509,7 +509,7 @@ void KviDccMarshal::snActivated(int)
 			delete m_pSn;
 			m_pSn = 0;
 #ifdef COMPILE_IPV6_SUPPORT
-			if(m_bIpV6)
+			if(m_bIPv6)
 			{
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in6 *)addr)->sin6_port));
 				if(!kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))

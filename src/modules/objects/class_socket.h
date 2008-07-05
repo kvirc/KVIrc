@@ -58,7 +58,7 @@ protected:
 	char             * m_pInBuffer;
 	unsigned int       m_uInBufferLen;
 	unsigned int       m_uInDataLen;
-	bool               m_bIpV6;
+	bool               m_bIPv6;
 	unsigned int       m_uConnectionId;
 
 	KviDataBuffer    * m_pOutBuffer;
@@ -132,7 +132,7 @@ protected:
 	char             * m_pInBuffer;
 	unsigned int       m_uInBufferLen;
 	unsigned int       m_uInDataLen;
-	bool               m_bIpV6;
+	bool               m_bIPv6;
 	unsigned int       m_uConnectionId;
 	kvs_uint_t m_uRemotePort;
 	KviDataBuffer    * m_pOutBuffer;

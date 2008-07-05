@@ -167,7 +167,7 @@ protected:
 	KviTalPopupMenu                   * m_pContextPopup;
 	KviTalPopupMenu                   * m_pImportPopup;
 	KviServer                 * m_pClipboard;
-	//QCheckBox                    * m_pIpV6Check;
+	//QCheckBox                    * m_pIPv6Check;
 	QPushButton                  * m_pConnectCurrent;
 	QPushButton                  * m_pConnectNew;
 	KviServerOptionsTreeWidgetItem * m_pLastEditedItem;

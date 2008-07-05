@@ -288,7 +288,7 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setBoolean(wnd->connection()->server()->isIpV6());
+			c->returnValue()->setBoolean(wnd->connection()->server()->isIPv6());
 	}
 	return true;
 }

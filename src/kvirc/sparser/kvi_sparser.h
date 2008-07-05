@@ -82,7 +82,7 @@ typedef struct _KviDccRequest
 	KviStr           szParam3;
 	KviStr           szParam4;
 	KviStr           szParam5;
-	bool             bIpV6;
+	bool             bIPv6;
 	KviCtcpMessage * ctcpMsg;
 	KviConsole     * pConsole;
 } KviDccRequest;

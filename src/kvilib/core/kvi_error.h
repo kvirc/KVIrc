@@ -61,7 +61,7 @@
 #define KviError_dnsNoName 30
 #define KviError_dnsInternalErrorUnsupportedSocketType 31
 #define KviError_dnsQueryFailed 32
-#define KviError_noIpV6Support 33
+#define KviError_noIPv6Support 33
 #define KviError_hostNotFound 34
 #define KviError_dnsInternalIPCFailure 35
 
@@ -104,7 +104,7 @@
 #define KviError_openBraceExpected 65
 
 #define KviError_cantKillABuiltinClass 66
-#define KviError_socksV4LacksIpV6Support 67
+#define KviError_socksV4LacksIPv6Support 67
 #define KviError_unrecognizedProxyReply 68
 #define KviError_proxyAuthFailed 69
 #define KviError_proxyNoAcceptableAuthMethod 70

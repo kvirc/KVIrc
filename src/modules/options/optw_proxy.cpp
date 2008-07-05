@@ -110,7 +110,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:","options"),gbox);
 	m_pPortEdit = new QLineEdit(gbox);
 	m_pIpLabel = new QLabel(__tr2qs_ctx("IP address:","options"),gbox);
-	m_pIpEditor = new KviIpEditor(gbox,KviIpEditor::IpV4);
+	m_pIpEditor = new KviIpEditor(gbox,KviIpEditor::IPv4);
 	m_pUserLabel = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
 	m_pUserEdit = new QLineEdit(gbox);
 	m_pPassLabel = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
@@ -123,10 +123,10 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	m_pProtocolBox->addItems(l);
 
-	m_pIpV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
-	connect(m_pIpV6Check,SIGNAL(toggled(bool)),this,SLOT(ipV6CheckToggled(bool)));
+	m_pIPv6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
+	connect(m_pIPv6Check,SIGNAL(toggled(bool)),this,SLOT(ipV6CheckToggled(bool)));
 #ifndef COMPILE_IPV6_SUPPORT
-	m_pIpV6Check->setEnabled(false);
+	m_pIPv6Check->setEnabled(false);
 #endif
 
 	m_pLastEditedItem = 0;
@@ -145,7 +145,7 @@ KviProxyOptionsWidget::~KviProxyOptionsWidget()
 
 void KviProxyOptionsWidget::ipV6CheckToggled(bool bEnabled)
 {
-	m_pIpEditor->setAddressType(bEnabled ? KviIpEditor::IpV6 : KviIpEditor::IpV4);
+	m_pIpEditor->setAddressType(bEnabled ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 }
 
 void KviProxyOptionsWidget::fillProxyList()
@@ -185,9 +185,9 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 	m_pPortEdit->setEnabled(m_pLastEditedItem);
 
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pIpV6Check->setEnabled(m_pLastEditedItem);
+		m_pIPv6Check->setEnabled(m_pLastEditedItem);
 #else
-		m_pIpV6Check->setEnabled(false);
+		m_pIPv6Check->setEnabled(false);
 #endif
 	if(m_pLastEditedItem)
 	{
@@ -204,18 +204,18 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 		}
 
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pIpV6Check->setChecked(m_pLastEditedItem->m_pProxyData->isIpV6());
-		m_pIpEditor->setAddressType(m_pLastEditedItem->m_pProxyData->isIpV6() ? KviIpEditor::IpV6 : KviIpEditor::IpV4);
+		m_pIPv6Check->setChecked(m_pLastEditedItem->m_pProxyData->isIPv6());
+		m_pIpEditor->setAddressType(m_pLastEditedItem->m_pProxyData->isIPv6() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 #else
-		m_pIpV6Check->setChecked(false);
-		m_pIpEditor->setAddressType(KviIpEditor::IpV4);
+		m_pIPv6Check->setChecked(false);
+		m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
 
 
 		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp.ptr()))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
-			m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->isIpV6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
+			m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->isIPv6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
 #else
 			m_pIpEditor->setAddress("0.0.0.0");
 #endif
@@ -231,7 +231,7 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 		m_pPassEdit->setText("");
 		m_pPortEdit->setText("");
 		m_pIpEditor->setAddress("0.0.0.0");
-		m_pIpV6Check->setEnabled(false);
+		m_pIPv6Check->setEnabled(false);
 	}
 }
 
@@ -244,9 +244,9 @@ void KviProxyOptionsWidget::saveLastItem()
 		m_pLastEditedItem->setText(0,tmp.ptr());
 		m_pLastEditedItem->m_pProxyData->m_szHostname = tmp;
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pLastEditedItem->m_pProxyData->m_bIsIpV6 = m_pIpV6Check->isChecked();
+		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = m_pIPv6Check->isChecked();
 #else
-		m_pLastEditedItem->m_pProxyData->m_bIsIpV6 = false;
+		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = false;
 #endif
 		m_pLastEditedItem->m_pProxyData->m_szIp = "";
 		KviStr tmpAddr = m_pIpEditor->address();
@@ -254,7 +254,7 @@ void KviProxyOptionsWidget::saveLastItem()
 		if(!m_pIpEditor->hasEmptyFields())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
-			if(m_pIpV6Check->isChecked())
+			if(m_pIPv6Check->isChecked())
 			{
 				if((!kvi_strEqualCI(tmpAddr.ptr(),"0:0:0:0:0:0:0:0")) &&
 					kvi_isValidStringIp_V6(tmpAddr.ptr()))

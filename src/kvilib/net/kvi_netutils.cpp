@@ -714,13 +714,13 @@ bool kvi_getLocalHostAddress(QString &buffer)
 	return true;
 }
 
-KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIpV6,bool bUdp)
+KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIPv6,bool bUdp)
 {
 	struct addrinfo hints;
 	kvi_memset((void *)&hints,0,sizeof(hints));
 	hints.ai_flags = AI_NUMERICHOST;
 #ifdef COMPILE_IPV6_SUPPORT
-	hints.ai_family = bIpV6 ? PF_INET6 : PF_INET;
+	hints.ai_family = bIPv6 ? PF_INET6 : PF_INET;
 #else
 	hints.ai_family = PF_INET;
 #endif
@@ -733,14 +733,14 @@ KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIpV6,boo
 	getaddrinfo(szIpAddress,szPort.ptr(),&hints,(struct addrinfo **)&m_pData);
 }
 
-KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIpV6,bool bUdp) // passive sockaddr
+KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp) // passive sockaddr
 
 {
 	struct addrinfo hints;
 	kvi_memset((void *)&hints,0,sizeof(hints));
 	hints.ai_flags = AI_NUMERICHOST | AI_PASSIVE;
 #ifdef COMPILE_IPV6_SUPPORT
-	hints.ai_family = bIpV6 ? PF_INET6 : PF_INET;
+	hints.ai_family = bIPv6 ? PF_INET6 : PF_INET;
 #else
 	hints.ai_family = PF_INET;
 #endif
@@ -778,7 +778,7 @@ int KviSockaddr::addressFamily()
 	return ((struct addrinfo *)m_pData)->ai_family;
 }
 
-bool KviSockaddr::isIpV6()
+bool KviSockaddr::isIPv6()
 {
 	if(!m_pData)return false;
 #ifdef COMPILE_IPV6_SUPPORT

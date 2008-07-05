@@ -123,7 +123,7 @@ public:
 	//bool sendFmtData(const char *fmt,...) KVI_DEPRECATED;
 	bool sendPacket(KviDataBuffer * pData);
 	void abort();
-	bool getLocalHostIp(QString &szIp,bool bIpV6);
+	bool getLocalHostIp(QString &szIp,bool bIPv6);
 protected slots:
 	void connectionTimedOut();
 	void writeNotifierFired(int);

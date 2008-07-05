@@ -185,7 +185,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_serverIsIPV6,
-		c->returnValue()->setBoolean(pConnection->target()->server()->isIpV6())
+		c->returnValue()->setBoolean(pConnection->target()->server()->isIPv6())
 	)
 
 /*

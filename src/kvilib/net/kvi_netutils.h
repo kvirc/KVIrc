@@ -60,8 +60,8 @@ KVILIB_API extern bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffe
 class KVILIB_API KviSockaddr
 {
 public:
-	KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIpV6,bool bUdp = false);
-	KviSockaddr(kvi_u32_t uPort,bool bIpV6,bool bUdp = false); // passive
+	KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIPv6,bool bUdp = false);
+	KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp = false); // passive
 	~KviSockaddr();
 private:
 	void * m_pData; //addrinfo
@@ -69,7 +69,7 @@ public:
 	struct sockaddr * socketAddress();
 	size_t addressLength();
 	int addressFamily();
-	bool isIpV6();
+	bool isIPv6();
 	bool getStringAddress(QString &szBuffer);
 	kvi_u32_t port();
 	

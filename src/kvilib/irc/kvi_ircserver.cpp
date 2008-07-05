@@ -137,7 +137,7 @@ QString KviServer::ircUri()
 {
 	QString uri("irc");
 	if(useSSL())uri += "s";
-	if(isIpV6())uri += "6";
+	if(isIPv6())uri += "6";
 	uri += "://";
 	uri += m_szHostname;
 
@@ -196,7 +196,7 @@ bool KviServer::load(KviConfig * cfg,const QString &prefix)
 	KviQString::sprintf(tmp,"%QId",&prefix);
 	m_szId = cfg->readQStringEntry(tmp);
 	if(m_szId.isEmpty())generateUniqueId();
-	KviQString::sprintf(tmp,"%QIpV6",&prefix);
+	KviQString::sprintf(tmp,"%QIPv6",&prefix);
 	setIPv6(cfg->readBoolEntry(tmp,false));
 	KviQString::sprintf(tmp,"%QCacheIp",&prefix);
 	setCacheIp(cfg->readBoolEntry(tmp,false)); // true ?
@@ -286,10 +286,10 @@ void KviServer::save(KviConfig * cfg,const QString &prefix)
 		KviQString::sprintf(tmp,"%QPort",&prefix);
 		cfg->writeEntry(tmp,m_uPort);
 	}
-	if(isIpV6())
+	if(isIPv6())
 	{
-		KviQString::sprintf(tmp,"%QIpV6",&prefix);
-		cfg->writeEntry(tmp,isIpV6());
+		KviQString::sprintf(tmp,"%QIPv6",&prefix);
+		cfg->writeEntry(tmp,isIPv6());
 	}
 	if(cacheIp())
 	{

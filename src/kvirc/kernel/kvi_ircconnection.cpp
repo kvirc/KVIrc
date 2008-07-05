@@ -667,13 +667,13 @@ void KviIrcConnection::resolveLocalHost()
 {
 	QString szIp;
 
-	if(!socket()->getLocalHostIp(szIp,server()->isIpV6()))
+	if(!socket()->getLocalHostIp(szIp,server()->isIPv6()))
 	{
 		bool bGotIp = false;
 		if(!KVI_OPTION_STRING(KviOption_stringLocalHostIp).isEmpty())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
-			if(server()->isIpV6())
+			if(server()->isIPv6())
 			{
 				if(KviNetUtils::isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))bGotIp = true;
 			} else {
