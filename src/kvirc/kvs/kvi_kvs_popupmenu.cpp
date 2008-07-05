@@ -325,8 +325,11 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLe
 	m_pLabel = new QLabel(szText,pMenu);
 	QObject::connect(m_pLabel,SIGNAL(destroyed()),m_pSignalRelay,SLOT(labelDestroyed()));
 
-	m_pLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
+	QPalette p;
+	m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+
 	if(pPix)m_pLabel->setPixmap(*pPix);
+	pMenu->insertItem(m_pLabel);
 }
 
 

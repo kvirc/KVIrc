@@ -85,7 +85,8 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pAwayPopup = new KviTalPopupMenu(0);
 	
 	QLabel * l = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
-	l->setStyleSheet("background-color: gray");
+	QPalette p;
+	l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	m_pContextPopup->insertItem(l);
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);

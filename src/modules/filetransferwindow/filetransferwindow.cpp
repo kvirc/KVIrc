@@ -372,7 +372,8 @@ void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPo
 #endif //COMPILE_KDE_SUPPORT
 
 				QLabel * l = new QLabel(tmp,m_pLocalFilePopup);
-				l->setStyleSheet("background-color: gray");
+				QPalette p;
+				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 				m_pLocalFilePopup->insertItem(l);
 
 #ifdef COMPILE_KDE_SUPPORT

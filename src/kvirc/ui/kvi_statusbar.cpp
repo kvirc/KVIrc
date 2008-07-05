@@ -333,7 +333,8 @@ void KviStatusBar::contextPopupAboutToShow()
 		KviQString::sprintf(tmp,"<center><b>%Q</b></center>",&app);
 
 		QLabel * l = new QLabel(tmp,m_pContextPopup);
-		l->setStyleSheet("background-color: gray");
+		QPalette p;
+		l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 		m_pContextPopup->insertItem(l);
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
