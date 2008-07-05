@@ -21,7 +21,7 @@ INCLUDE_DIRECTORIES(
 
 SUBDIRS(
 	about action actioneditor addon aliaseditor avatar
-	chan channelsjoin clock codetester config context
+	chan channelsjoin codetester config context
 	dcc dialog
 	editor eventeditor
 	file filetransferwindow
