@@ -166,6 +166,10 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
 {
+	setApplicationName("KVIrc");
+	setApplicationVersion(KVIRC_VERSION_RELEASE);
+	setOrganizationDomain("kvirc.net");
+	setOrganizationName("KVIrc")
 	// Ok...everything begins here
 	g_pApp                  = this;
 	m_szConfigFile          = QString::null;
