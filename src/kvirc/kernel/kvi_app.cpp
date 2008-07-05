@@ -106,38 +106,37 @@
 #include <stdlib.h> // rand & srand
 #include <time.h> // time() in srand()
 
-KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
+// Global application pointer
+KVIRC_API KviApp                        * g_pApp                        = 0;
 
-KviConfig                              * g_pWinPropertiesConfig    = 0;
-KVIRC_API KviServerDataBase         * g_pIrcServerDataBase      = 0;
-KVIRC_API KviProxyDataBase             * g_pProxyDataBase          = 0;
+KviConfig                               * g_pWinPropertiesConfig        = 0;
+KVIRC_API KviServerDataBase             * g_pServerDataBase             = 0;
+KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
 
 // Global windows
+KVIRC_API KviColorWindow                * g_pColorWindow                = 0;
+KVIRC_API KviTextIconWindowWidget       * g_pTextIconWindow             = 0;
+KVIRC_API KviTalPopupMenu               * g_pInputPopup                 = 0;
+KVIRC_API QStringList                   * g_pRecentTopicList            = 0;
+KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
+KVIRC_API KviMediaManager               * g_pMediaManager               = 0;
+KVIRC_API KviSharedFilesManager         * g_pSharedFilesManager         = 0;
+KVIRC_API KviNickServRuleSet            * g_pNickServRuleSet            = 0;
+KVIRC_API KviGarbageCollector           * g_pGarbageCollector           = 0;
+KVIRC_API KviCtcpPageDialog             * g_pCtcpPageDialog             = 0;
+KVIRC_API KviRegisteredChannelDataBase  * g_pRegisteredChannelDataBase  = 0;
+KVIRC_API KviInputHistory               * g_pInputHistory               = 0;
+KVIRC_API KviHistoryWindowWidget        * g_pHistoryWindow              = 0;
 
-KVIRC_API KviColorWindow               * g_pColorWindow               = 0;
-KVIRC_API KviTextIconWindowWidget      * g_pTextIconWindow            = 0;
-KVIRC_API KviTalPopupMenu              * g_pInputPopup                = 0;
-KVIRC_API QStringList                  * g_pRecentTopicList           = 0;
-KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict = 0;
-KVIRC_API KviMediaManager              * g_pMediaManager              = 0;
-KVIRC_API KviSharedFilesManager        * g_pSharedFilesManager        = 0;
-KVIRC_API KviNickServRuleSet           * g_pNickServRuleSet           = 0;
-KVIRC_API KviGarbageCollector          * g_pGarbageCollector          = 0;
-KVIRC_API KviCtcpPageDialog            * g_pCtcpPageDialog            = 0;
-KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase = 0;
-KVIRC_API KviInputHistory              * g_pInputHistory              = 0;
-KVIRC_API KviHistoryWindowWidget       * g_pHistoryWindow             = 0;
+// this is eventually set by libkviident
+KVIRC_API int                             g_iIdentDaemonRunningUsers    = 0;
 
-
-KVIRC_API int                            g_iIdentDaemonRunningUsers   = 0; // this is eventually set by libkviident
-
-KVIRC_API KviSplashScreen       * g_pSplashScreen           = 0;
+KVIRC_API KviSplashScreen               * g_pSplashScreen               = 0;
 
 
 // Loaded and destroyed by KviIconManager
-QPixmap                             * g_pUserChanStatePixmap    = 0;
-QPixmap                             * g_pActivityMeterPixmap    = 0;
-
+QPixmap                                 * g_pUserChanStatePixmap        = 0;
+QPixmap                                 * g_pActivityMeterPixmap        = 0;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
@@ -149,7 +148,8 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 		#include <qdatastream.h>
 		#include <qcstring.h>
 
-		KSharedPixmap         * g_pKdeDesktopBackground             = 0; // the shared pixmap that we get from KWin
+		// the shared pixmap that we get from KWin
+		KSharedPixmap           * g_pKdeDesktopBackground      = 0;
 	#endif
 
 	#include <QImage>
@@ -160,7 +160,8 @@ QPixmap                             * g_pActivityMeterPixmap    = 0;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
-	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0; // global crypt engine manager
+	// global crypt engine manager
+	KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = 0;
 #endif
 
 KviApp::KviApp(int &argc,char ** argv)
@@ -327,9 +328,9 @@ void KviApp::setup()
 	KVI_SPLASH_SET_PROGRESS(50)
 
 	// Load the server database
-	g_pIrcServerDataBase   = new KviServerDataBase();
+	g_pServerDataBase   = new KviServerDataBase();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_SERVERDB))
-		g_pIrcServerDataBase->load(tmp);
+		g_pServerDataBase->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(53)
 
@@ -566,7 +567,7 @@ KviApp::~KviApp()
 	if(m_pRecentChannelsDict) delete m_pRecentChannelsDict;
 	// now kill the stuff that the frame depends on
 	saveIrcServerDataBase();
-	delete g_pIrcServerDataBase;
+	delete g_pServerDataBase;
 	saveProxyDataBase();
 	delete g_pProxyDataBase;
 	delete g_pWinPropertiesConfig;
@@ -1446,7 +1447,7 @@ void KviApp::saveIrcServerDataBase()
 {
 	QString tmp;
 	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SERVERDB);
-	g_pIrcServerDataBase->save(tmp);
+	g_pServerDataBase->save(tmp);
 }
 
 void KviApp::saveProxyDataBase()
@@ -1528,7 +1529,7 @@ void KviApp::saveConfiguration()
 
 void KviApp::autoConnectToServers()
 {
-	KviPointerList<KviServer> * l = g_pIrcServerDataBase->autoConnectOnStartupServers();
+	KviPointerList<KviServer> * l = g_pServerDataBase->autoConnectOnStartupServers();
 	if(l)
 	{
 		for(KviServer * s = l->first();s;s = l->next())
@@ -1539,10 +1540,10 @@ void KviApp::autoConnectToServers()
 			szCommand += "\"";
 			KviKvsScript::run(szCommand,activeConsole());
 		}
-		g_pIrcServerDataBase->clearAutoConnectOnStartupServers();
+		g_pServerDataBase->clearAutoConnectOnStartupServers();
 	}
 
-	KviPointerList<KviServerDataBaseRecord> * lr = g_pIrcServerDataBase->autoConnectOnStartupNetworks();
+	KviPointerList<KviServerDataBaseRecord> * lr = g_pServerDataBase->autoConnectOnStartupNetworks();
 	if(lr)
 	{
 		for(KviServerDataBaseRecord * r = lr->first();r;r = lr->next())
@@ -1552,7 +1553,7 @@ void KviApp::autoConnectToServers()
 			szCommandx += "\"";
 			KviKvsScript::run(szCommandx,activeConsole());
 		}
-		g_pIrcServerDataBase->clearAutoConnectOnStartupNetworks();
+		g_pServerDataBase->clearAutoConnectOnStartupNetworks();
 	}
 }
 
@@ -1570,7 +1571,7 @@ void KviApp::createFrame()
 	}
 
 	// auto connect to servers if needed
-	if(g_pIrcServerDataBase->autoConnectOnStartupServers() || g_pIrcServerDataBase->autoConnectOnStartupNetworks())
+	if(g_pServerDataBase->autoConnectOnStartupServers() || g_pServerDataBase->autoConnectOnStartupNetworks())
 	{
 		autoConnectToServers();
 	}

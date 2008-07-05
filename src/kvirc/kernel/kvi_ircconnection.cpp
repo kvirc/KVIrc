@@ -69,7 +69,7 @@
 #include <QTimer>
 #include <QTextCodec>
 
-extern KVIRC_API KviServerDataBase           * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 

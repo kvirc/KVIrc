@@ -55,14 +55,19 @@ void KviServerDataBaseRecord::insertServer(KviServer *srv)
 	m_pServerList->append(srv);
 }
 
-KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer)
+KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer, bool bName)
 {
 	for(KviServer *s=m_pServerList->first();s;s=m_pServerList->next())
 	{
-		if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname) &&
-			(s->m_uPort == pServer->m_uPort) &&
-			(s->useSSL() == pServer->useSSL()) &&
-			(s->isIPv6() == pServer->isIPv6()))return s;
+		if(bName)
+		{
+			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname)) return s;
+		} else {
+			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname) &&
+				(s->m_uPort == pServer->m_uPort) &&
+				(s->useSSL() == pServer->useSSL()) &&
+				(s->isIPv6() == pServer->isIPv6())) return s;
+		}
 	}
 	return 0;
 }

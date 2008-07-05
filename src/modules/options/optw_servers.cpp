@@ -934,7 +934,7 @@ void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 }
 
 // kvi_app.cpp
-extern KVIRC_API KviServerDataBase * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase * g_pServerDataBase;
 
 KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviNetwork *n)
     : KviTalTreeWidgetItem(parent)
@@ -1231,13 +1231,13 @@ void KviServerOptionsWidget::fillServerList()
 	KviServerOptionsTreeWidgetItem * srv;
 	KviServerOptionsTreeWidgetItem * cur = 0;
 
-	KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*(g_pIrcServerDataBase->recordDict()));
+	KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*(g_pServerDataBase->recordDict()));
 
 	while(KviServerDataBaseRecord * r = it.current())
 	{
 		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
 		KviPointerList<KviServer> * sl = r->serverList();
-		bool bCurrent = r->network()->name() == g_pIrcServerDataBase->currentNetworkName().toUtf8().data();
+		bool bCurrent = r->network()->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
 		net->setExpanded(bCurrent);
 		for(KviServer * s = sl->first();s;s = sl->next())
 		{
@@ -1315,7 +1315,7 @@ void KviServerOptionsWidget::saveLastItem()
 void KviServerOptionsWidget::commit()
 {
 	saveLastItem();
-	g_pIrcServerDataBase->clear();
+	g_pServerDataBase->clear();
 //	KviServerOptionsTreeWidgetItem * it = (KviServerOptionsTreeWidgetItem *)m_pTreeWidget->firstChild();
 	KviServerOptionsTreeWidgetItem * network;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -1324,7 +1324,7 @@ void KviServerOptionsWidget::commit()
 		network=(KviServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		QString tmp = network->m_pNetworkData->name();
 		KviNetwork * net = 0;
-		KviServerDataBaseRecord * r = g_pIrcServerDataBase->findRecord(tmp);
+		KviServerDataBaseRecord * r = g_pServerDataBase->findRecord(tmp);
 		if(r)
 		{
 			net = r->network();
@@ -1332,9 +1332,9 @@ void KviServerOptionsWidget::commit()
 		} else {
 			net = new KviNetwork(tmp);
 			net->copyFrom(*(network->m_pNetworkData));
-			r = g_pIrcServerDataBase->insertNetwork(net);
+			r = g_pServerDataBase->insertNetwork(net);
 		}
-		if(network == m_pLastEditedItem)g_pIrcServerDataBase->setCurrentNetwork(net->name());
+		if(network == m_pLastEditedItem)g_pServerDataBase->setCurrentNetwork(net->name());
 
 		KviServerOptionsTreeWidgetItem * ch;
 		for (int j=0;j<network->childCount();j++)
@@ -1357,7 +1357,7 @@ void KviServerOptionsWidget::commit()
 					if(srv->id().isEmpty())srv->generateUniqueId();
 					if(ch == m_pLastEditedItem)
 					{
-						g_pIrcServerDataBase->setCurrentNetwork(net->name());
+						g_pServerDataBase->setCurrentNetwork(net->name());
 						r->setCurrentServer(srv);
 					}
 				}

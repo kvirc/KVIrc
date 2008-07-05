@@ -61,7 +61,7 @@ public:
 	KviPointerList<KviServer> * serverList(){ return m_pServerList; };
 	KviServer * currentServer();
 	void insertServer(KviServer *srv);
-	KviServer * findServer(const KviServer * pServer);
+	KviServer * findServer(const KviServer * pServer, bool bName=0);
 	void setCurrentServer(KviServer *srv);
 };
 

@@ -61,7 +61,7 @@
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;
 
-extern KVIRC_API KviServerDataBase * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 
@@ -459,7 +459,7 @@ void KviIrcContext::connectToCurrentServer()
 			d.szNick = m_pAsynchronousConnectionData->szNick;
 			d.szInitUMode = m_pAsynchronousConnectionData->szInitUMode;
 			QString szError;
-			if(!g_pIrcServerDataBase->makeCurrentServer(&d,szError))
+			if(!g_pServerDataBase->makeCurrentServer(&d,szError))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,szError);
 				destroyAsynchronousConnectionData();
@@ -468,7 +468,7 @@ void KviIrcContext::connectToCurrentServer()
 		} // else we just connect to the globally selected irc server in the options dialog
 	}
 
-	KviServerDataBaseRecord * rec = g_pIrcServerDataBase->currentRecord();
+	KviServerDataBaseRecord * rec = g_pServerDataBase->currentRecord();
 	
 	KviNetwork * net;
 	KviServer  * srv;

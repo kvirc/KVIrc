@@ -54,7 +54,7 @@
 
 #include <QTimer>
 
-extern KVIRC_API KviServerDataBase           * g_pIrcServerDataBase;
+extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
@@ -417,7 +417,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 			__tr2qs("Server hostname resolved to %Q"),
 			&szIpAddress);
-	g_pIrcServerDataBase->updateServerIp(m_pTarget->server(),szIpAddress);
+	g_pServerDataBase->updateServerIp(m_pTarget->server(),szIpAddress);
 
 	QString szFirstHostname = m_pServerDns->firstHostname();
 

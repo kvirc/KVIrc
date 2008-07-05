@@ -153,7 +153,7 @@ QPixmap * KviAvatar::scaledPixmap(unsigned int w,unsigned int h)
 		scaleW = (scaleH * curW) / curH;
 	}
 
-	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(scaleW,scaleH));
+	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(scaleW,scaleH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 
 	return m_pScaledPixmap;
 }
