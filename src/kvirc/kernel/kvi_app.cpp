@@ -169,7 +169,7 @@ KviApp::KviApp(int &argc,char ** argv)
 	setApplicationName("KVIrc");
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
 	setOrganizationDomain("kvirc.net");
-	setOrganizationName("KVIrc")
+	setOrganizationName("KVIrc");
 	// Ok...everything begins here
 	g_pApp                  = this;
 	m_szConfigFile          = QString::null;
