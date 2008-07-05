@@ -332,12 +332,9 @@ void KviStatusBar::contextPopupAboutToShow()
 		QString tmp;
 		KviQString::sprintf(tmp,"<center><b>%Q</b></center>",&app);
 
-#ifndef COMPILE_USE_QT4
-		// FIXME: This is not supported under Qt4.. :(
 		QLabel * l = new QLabel(tmp,m_pContextPopup);
-		l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
+		l->setStyleSheet("background-color: gray");
 		m_pContextPopup->insertItem(l);
-#endif
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 		

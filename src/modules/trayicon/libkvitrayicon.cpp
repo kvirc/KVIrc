@@ -84,8 +84,8 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pTip = new KviDynamicToolTip(frm,"dock_tooltip");
 	m_pAwayPopup = new KviTalPopupMenu(0);
 	
-	QLabel * l = new QLabel(__tr2qs("KVIrc"),m_pContextPopup);
-	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
+	QLabel * l = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
+	l->setStyleSheet("background-color: gray");
 	m_pContextPopup->insertItem(l);
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);
@@ -96,7 +96,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("&About KVIrc"),m_pFrm,SLOT(executeInternalCommand(int)));
 	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	m_pContextPopup->insertSeparator();
-	m_iToggleFrame = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW)),QString(""),this,SLOT(toggleParentFrame()));
+	m_iToggleFrame = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAW)),__tr2qs("Hide/Show"),this,SLOT(toggleParentFrame()));
 	m_pContextPopup->insertSeparator();
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Un&dock"),m_pFrm,SLOT(executeInternalCommand(int)));
 	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_TRAYICON_HIDE);

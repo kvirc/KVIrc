@@ -29,13 +29,15 @@
 
 #include <QMenu>
 #include <QHash>
-
+#include <QSignalMapper>
 
 class KVILIB_API KviTalPopupMenu : public QMenu
 {
 	Q_OBJECT
 protected:
-	QHash<int,QAction *> actionsDict;
+	QHash<int, QAction*> actionsDict;
+	// We need QSignalMapper to keep slot system for insertItem()
+	QHash<QAction*, QSignalMapper*> signalMapper;
 	int identifier;
 public:
 	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::empty);
@@ -53,10 +55,7 @@ public:
 	void setItemEnabled(int id,bool bFlag);
 	void setItemParameter(int id, int param);
 	int itemParameter(int id);
-	QAction *getAction(int id){
-		QAction *a=actionsDict.value(id);
-		return a?a:0;
-	};
+	QAction * getAction(int id);
 	void clear();
 	QString text(int);
 	int insertSeparator();
@@ -65,6 +64,5 @@ protected slots:
 	void slotActionTriggered(bool);
 signals:
 	void activated(int);
-	
 };
 #endif // _KVI_TAL_POPUPMENU_H_

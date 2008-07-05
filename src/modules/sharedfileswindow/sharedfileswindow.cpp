@@ -434,7 +434,7 @@ void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPo
 #endif //COMPILE_KDE_SUPPORT
 
 				QLabel * l = new QLabel(tmp,m_pLocalFilePopup);
-				l->setFrameStyle(QFrame::Raised | QFrame::Panel);
+				l->setStyleSheet("background-color: gray");
 				m_pLocalFilePopup->insertItem(l);
 
 #ifdef COMPILE_KDE_SUPPORT
