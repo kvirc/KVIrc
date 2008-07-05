@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-#include "kvi_string.h"
 #include "kvi_heapobject.h"
 #include "kvi_settings.h"
 
@@ -57,21 +56,21 @@ public:
 	// the name is used.
 	// for local avatars the localPath is used instead
 	const QString &identificationString(){ return m_bRemote ? m_szName : m_szLocalPath; };
-	
+
 
 	// if name is http://xxxx
 	// then identification is the name
 	// if name is xxx.png
 	// then identification is the local path
-	
+
 
 	// name : visible name of the avatar : url or filename
 	//        ex: http://www.kvirc.net/img/pragma.png
 	//        ex: pragma.png
-	// local path : local path 
+	// local path : local path
 	//        ex: /home/pragma/.kvirc/avatars/http.www.kvirc.net.img.pragma.png
 	//        ex: /home/pragma/.kvirc/avatars/pragma.png
-	
+
 	// local path->name : strip leading path informations
 	// name->local path : replace : / and
 
