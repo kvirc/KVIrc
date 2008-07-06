@@ -658,6 +658,58 @@ static bool window_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc: window.highlight
+	@type:
+		command
+	@title:
+		window.highlight
+	@short:
+		Sets the highlight (alert) level of a window
+	@syntax:
+		window.highlight [-q] <level> [window_id]
+	@switches:
+		!sw: -q | --quiet
+		Be quiet
+	@description:
+		Sets the highlight the user window specified by [window_id] to <level>.[br]
+		If <window_id> is an empty string then the current window is assumed.[br]
+		If the specified window does not exist a warning is printed unless the -q switch is used.[br]
+		For more infos on this feature read the documentation about [fnc]$window.highlightLevel[/fnc].
+	@seealso:
+		[fnc]$window.highlightLevel[/fnc]
+*/
+
+static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
+{
+	QString szWnd;
+	KviWindow * pWnd;
+	kvs_uint_t level;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("level",KVS_PT_UINT,0,level)
+		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd)
+	KVSM_PARAMETERS_END(c)
+	if(c->parameterList()->count() == 1)
+	{
+		pWnd = c->window();
+	} else {
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+		if(!pWnd)
+		{
+			if(!c->hasSwitch('q',"quiet"))
+				c->warning(__tr2qs("The window with id '%s' does not exist"),szWnd.toUtf8().data());
+			return true;
+		}
+	}
+
+	//force the previous level to be lower
+	pWnd->unhighlight();
+	//level boundaries checking is done by the upstream function
+	pWnd->highlightMe(level);
+	return true;
+}
+
+/*
 	@doc: window.highlightLevel
 	@type:
 		function
@@ -669,9 +721,17 @@ static bool window_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 		$window.highlightLevel
 		$window.highlightLevel(<window_id>)
 	@description:
+		Every window has a current alert level; it corresponds to an highlight color of that window in the taskbar.
+		There are 6 defined levels, they start from 0 (normal) to 5 (max alarm level). The classic taskbar and the tree taskbar use different colors to represent these levels. Classic task bar uses options:
+		[ul][li]colorTaskBarNormalText : normale state[/li][li]colorTaskBarHighlight1Text : highlight state 1[/li][li]...[/li][li]colorTaskBarHighlight5Text : highlight state 5[/li][/ul]
+		While the tree taskbar uses options:
+		[ul][li]colorTreeTaskBarForeground : normale state[/li][li]colorTreeTaskBarHighlight1Foreground : highlight state 1[/li][li]...[/li][li]colorTreeTaskBarHighlight5Foreground : highlight state 5[/li][/ul]
+		You can use [fnc]$option[/fnc] to read these options and the [cmd]option[/cmd] command to set them.
 	@seealso:
 		[fnc]$window.activityTemperature[/fnc]
 		[fnc]$window.activityLevel[/fnc]
+		[fnc]$option[/fnc]
+		[cmd]option[/cmd]
 */
 
 static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
@@ -1512,7 +1572,7 @@ static bool window_module_init(KviModule *m)
 	KVSM_REGISTER_FUNCTION(m,"inputText",window_kvs_fnc_inputText);
 	KVSM_REGISTER_FUNCTION(m,"context",window_kvs_fnc_context);
 
-	//KVSM_REGISTER_SIMPLE_COMMAND(m,"highlight",window_kvs_cmd_highlight);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"highlight",window_kvs_cmd_highlight);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",window_kvs_cmd_close);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearOutput",window_kvs_cmd_clearOutput);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"dock",window_kvs_cmd_dock);

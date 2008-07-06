@@ -347,6 +347,16 @@ bool KviWindow::highlightMeter(unsigned int *v)
 	return true;
 }
 
+
+bool KviWindow::highlightMe(unsigned int v)
+{
+	if(v<0) v=0;
+	if(v>5) v=5;
+	if(m_pTaskBarItem)
+		m_pTaskBarItem->highlight(v);
+	return true;
+}
+
 const char * KviWindow::m_typeTable[KVI_WINDOW_NUM_TYPES + 1]=
 {
 	"console",

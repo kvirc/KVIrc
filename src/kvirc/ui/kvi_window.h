@@ -222,6 +222,7 @@ public:
 
 	virtual bool activityMeter(unsigned int * puActivityValue,unsigned int * puActivityTemperature);
 	virtual bool highlightMeter(unsigned int * puHighlightValue);
+	virtual bool highlightMe(unsigned int v);
 
 	void unhighlight();
 
