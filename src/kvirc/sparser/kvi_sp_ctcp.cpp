@@ -1437,10 +1437,8 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 
 	if(type < 0)return; // event stopped the message!
 
-//fix for bug #132 : open the notifier on every /me
-/*	if(type == KVI_OUT_HIGHLIGHT)
+	if(type == KVI_OUT_HIGHLIGHT || !bIsChannel)
 	{
-*/
 		if(!pOut->hasAttention())
 		{
 			if(KVI_OPTION_BOOL(KviOption_boolFlashWindowOnHighlightedMessages))
@@ -1459,7 +1457,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,90);
 			}
 		}
-// 	}
+	}
 
 	if(bTargetFound)
 	{
