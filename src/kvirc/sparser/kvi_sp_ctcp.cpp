@@ -1428,7 +1428,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 
 	if(type < 0)return; // event stopped the message!
 
-	if(type == KVI_OUT_HIGHLIGHT)
+	if(type == KVI_OUT_HIGHLIGHT || !bIsChannel)
 	{
 		if(!pOut->hasAttention())
 		{
