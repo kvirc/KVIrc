@@ -1,3 +1,27 @@
+GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
+GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+
+IF(USE_GETTEXT_EXTRA)
+	ADD_CUSTOM_TARGET(message-update-${_potBasename})
+	ADD_DEPENDENCIES(message-update message-update-${_potBasename})
+
+	ADD_CUSTOM_TARGET(message-extract-${_potBasename})
+	ADD_DEPENDENCIES(message-extract message-extract-${_potBasename})
+
+	# message-update
+	SET(XGETTEXT_FILES)
+	FOREACH(SDIR ${XGETTEXT_SOURCESDIR})
+		FILE(GLOB_RECURSE XGETTEXT_FILES_TEMP ${SDIR}/*.cpp ${SDIR}/*.h ${SDIR}/*.kvs)
+		LIST(APPEND XGETTEXT_FILES ${XGETTEXT_FILES_TEMP})
+	ENDFOREACH()
+	# FIXME if the file list gets too long for the commandline, use xgettext '-f' option
+	ADD_CUSTOM_COMMAND(
+		COMMENT "updating messages for ${_gmoFile}"
+		COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr ${XGETTEXT_FILES}
+		TARGET message-update-${_potBasename}
+	)
+ENDIF()
+
 MACRO(KVIRC_CREATE_TRANSLATIONS _potFile _firstPoFile)
 SET(_gmoFiles)
    GET_FILENAME_COMPONENT(_potBasename ${_potFile} NAME_WE)
