@@ -90,7 +90,7 @@
 #include <QTextDocument>
 
 // FIXME: Qt4 #include <QMimeData>
-#include <q3mimefactory.h>
+//#include <q3mimefactory.h>
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
@@ -343,8 +343,7 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 
 	if(e->avatar())
 	{
-		Q3MimeSourceFactory::defaultFactory()->setPixmap("ulv_avatar",*(e->avatar()->pixmap()));
-		buffer += QString("<tr><td><center><img src=\"ulv_avatar\" width=\"%1\"></center></td></tr>").arg(e->avatar()->pixmap()->width());
+		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath()).arg(e->avatar()->pixmap()->width());
 	}
 
 	if(e->hasRealName())
