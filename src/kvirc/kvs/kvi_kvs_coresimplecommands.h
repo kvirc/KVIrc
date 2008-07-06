@@ -115,6 +115,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(unban);
 	KVSCSC(voice);
 	KVSCSC(warning);
+	KVSCSC(who);
 	KVSCSC(whois);
 	KVSCSC(whowas);
 

@@ -883,9 +883,38 @@ namespace KviKvsCoreSimpleCommands
 			Requests WHO information
 		@description:
 			Requests WHO information about the specified user or channel.[br]
-			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
+			If no parameter is specified, requests a WHO information about the current channel.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@seealso:
+			[cmd]names[/cmd]
 	*/
-	// RFC2821 wrapper
+
+	KVSCSC(who)
+	{
+		QString szChannel;
+		KVSCSC_PARAMETERS_BEGIN
+			KVSCSC_PARAMETER("channel",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szChannel)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		if(szChannel.isEmpty())
+		{
+			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
+				szChannel = KVSCSC_pWindow->target();
+			else {
+				KVSCSC_pContext->error(__tr2qs("No target mask/channel specified and the current window is not a channel"));
+				return false;
+			}
+		}
+
+		KviQCString szC = KVSCSC_pConnection->encodeText(szChannel);
+
+		if(!KVSCSC_pConnection->sendFmtData("WHO %s",szC.data()))
+			return KVSCSC_pContext->warningNoIrcConnection();
+
+		return true;
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

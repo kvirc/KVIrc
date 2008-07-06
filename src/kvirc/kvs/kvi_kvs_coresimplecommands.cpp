@@ -130,7 +130,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("version",rfc2812wrapper)
 		_REGCMD("voice",voice)
 		_REGCMD("warning",warning)
-		_REGCMD("who",rfc2812wrapper)
+		_REGCMD("who",who)
 		_REGCMD("whois",whois)
 		_REGCMD("whowas",whowas)
 
