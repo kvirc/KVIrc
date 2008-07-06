@@ -34,12 +34,10 @@ src/kvirc/kernel
 src/kvirc/kvs
 	kvi_kvs_coresimplecommands_gl.cpp - q3mimefactory
 src/kvirc/ui:
-	kvi_console.cpp - q3mimefactory
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
 	kvi_styled_controls.cpp (QIcon stuff+segfault with mingw compiler)
 	kvi_mdichild.cpp (bug in resize)
-	kvi_ircview.cpp - q3mimefactory
 	kvi_menubar.cpp
 	kvi_topicw.cpp
 
