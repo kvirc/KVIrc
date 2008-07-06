@@ -620,32 +620,16 @@ IF(WITHOUT_GETTEXT)
 	SET(WANT_GETTEXT OFF)
 ENDIF()
 IF(WANT_GETTEXT)
-	# Check for gettext
-	# atm implemented in here
-	# Use system-provided module from CMake 2.5
-	FIND_PROGRAM(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
-	FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
-	FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
+	FIND_PACKAGE(Gettext)
 
-	IF(GETTEXT_XGETTEXT_EXECUTABLE)
+	IF(GETTEXT_FOUND)
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "yes")
 		# message target; ALL means "generate it at everytime"
 		# FIXME this is generated both at compilation and installation
-		ADD_CUSTOM_TARGET(translations ALL)
-		SET(USE_GETTEXT_TRANSLATIONS 1)
+			SET(USE_GETTEXT_TRANSLATIONS 1)
 	ELSE()
 		SET(CMAKE_STATUS_GETTEXT_SUPPORT "no")
 		SET(USE_GETTEXT_TRANSLATIONS 0)
-	ENDIF()
-
-	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_MSGFMT_EXECUTABLE)
-		# message-update target;
-		ADD_CUSTOM_TARGET(message-update)
-		# message-extract target;
-		ADD_CUSTOM_TARGET(message-extract)
-		SET(USE_GETTEXT_EXTRA 1)
-	ELSE()
-		SET(USE_GETTEXT_EXTRA 0)
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_GETTEXT_SUPPORT "user disabled")

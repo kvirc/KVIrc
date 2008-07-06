@@ -1,67 +1,34 @@
-# Template rules for translations
+MACRO(KVIRC_CREATE_TRANSLATIONS _potFile _firstPoFile)
+SET(_gmoFiles)
+   GET_FILENAME_COMPONENT(_potBasename ${_potFile} NAME_WE)
+   GET_FILENAME_COMPONENT(_absPotFile ${_potFile} ABSOLUTE)
 
-GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
-GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+   SET(_addToAll)
+   IF(${_firstPoFile} STREQUAL "ALL")
+      SET(_addToAll "ALL")
+      SET(_firstPoFile)
+   ENDIF()
 
-IF(USE_GETTEXT_EXTRA)
-	ADD_CUSTOM_TARGET(message-update-${_potBasename})
-	ADD_DEPENDENCIES(message-update message-update-${_potBasename})
-	
-	ADD_CUSTOM_TARGET(message-extract-${_potBasename})
-	ADD_DEPENDENCIES(message-extract message-extract-${_potBasename})
+   FOREACH (_currentPoFile ${ARGN})
+      GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+      GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+      GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+      SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
 
-	# message-update
-	SET(XGETTEXT_FILES)
-	FOREACH(SDIR ${XGETTEXT_SOURCESDIR})
-		FILE(GLOB_RECURSE XGETTEXT_FILES_TEMP ${SDIR}/*.cpp ${SDIR}/*.h ${SDIR}/*.kvs)
-		LIST(APPEND XGETTEXT_FILES ${XGETTEXT_FILES_TEMP})
-	ENDFOREACH()
-	# FIXME if the file list gets too long for the commandline, use xgettext '-f' option
-	ADD_CUSTOM_COMMAND(
-		COMMENT "updating messages for ${_gmoFile}"	
-		COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr ${XGETTEXT_FILES}
-		TARGET message-update-${_potBasename}
-	)
-ENDIF()
+      ADD_CUSTOM_COMMAND(
+         OUTPUT ${_gmoFile}
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+         COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+         DEPENDS ${_absPotFile} ${_absFile}
+      )
 
-IF(USE_GETTEXT_TRANSLATIONS)
-	SET(_gmoFiles)
-	ADD_CUSTOM_TARGET(translations-${_potBasename})
-	ADD_DEPENDENCIES(translations translations-${_potBasename})
+      INSTALL(FILES ${_gmoFile} DESTINATION share/${PACKAGE}/${VERSION_BRANCH}/locale/ RENAME ${_lang}.mo)
+      SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
 
-	FOREACH (_currentPoFile ${pofiles})
-		GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
-		GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
-		GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
-		SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)	
-	
-		# message-extract	
-		ADD_CUSTOM_COMMAND(
-			COMMENT "extracting messages for ${_gmoFile}"
-			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
-			COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
-			TARGET message-extract-${_potBasename}
-		)
-	
-		# translations
-		ADD_CUSTOM_COMMAND(
-			COMMENT "generating translations for ${_gmoFile}"
-			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
-			TARGET translations-${_potBasename}
-		)
-	
-		IF(UNIX)
-			IF(APPLE)
-				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale RENAME ${_lang}.mo)
-			ELSE()
-				# Assume linux
-				INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/locale RENAME ${_lang}.mo)
-			ENDIF()
-		ELSEIF(WIN32)
-			# FIXME: Use proper path
-			#INSTALL(FILES ${_gmoFile} DESTINATION share/locale/${_lang}/LC_MESSAGES RENAME ${_potBasename}.mo)
-		ENDIF()
-		SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
-	ENDFOREACH()
+   ENDFOREACH ()
 
-ENDIF()
+   ADD_CUSTOM_TARGET(translations ${_addToAll} DEPENDS ${_gmoFiles})
+
+ENDMACRO()
+
+KVIRC_CREATE_TRANSLATIONS(${POTFILE} ALL ${pofiles})
