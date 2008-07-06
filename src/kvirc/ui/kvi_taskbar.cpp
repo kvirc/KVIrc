@@ -359,13 +359,12 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 
 	if(bMinimized)
 	{
-		QString tmp = QChar('(');
-		tmp += szText;
-		tmp += QChar(')');
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,tmp,&bRect);
-	} else {
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
+		szText.prepend('(');
+		szText.append(')');
 	}
+
+	pPainter->setClipRect(cRect);
+	pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
 
 	if(bRect.width() > cRect.width())
 	{
