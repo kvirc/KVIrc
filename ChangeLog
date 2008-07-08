@@ -4,6 +4,12 @@ buh :) - 8 July 2008
    - Fixed many bugs
    - New build system: removed autotools in favour of CMake (thanks to all people who aid reaching this point :)
 
+   [CtrlAltCa]
+   - KVS: added window.highlight command and $window.highlightLevel function
+   - Avatar: added the ability to expose avatar in realname; others can understand if someone has an avatar set without
+     the need of a ctcp;
+   - got Phonon working under win32
+
    [HelLViS69]
    - Finally updated this file :)
    - Improved About module

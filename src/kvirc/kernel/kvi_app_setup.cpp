@@ -484,6 +484,7 @@ void KviApp::setupFileAssociations()
 #endif
 }
 
+/*
 //#ifdef BRAIN_DAMAGED_AUTHOR_PARANOIA
 //#define I_DO_NOT_WANT_TO_HEAR_IT_ANYMORE_THAT_KVIRC_CAN_NOT_FIND_THE_BASE_PIXMAPS
 
@@ -513,6 +514,7 @@ void KviApp::setupFileAssociations()
 #endif
 
 //#endif //BRAIN_DAMAGED_AUTHOR_PARANOIA
+*/
 
 void KviApp::findGlobalKvircDirectory()
 {
@@ -570,7 +572,12 @@ void KviApp::findGlobalKvircDirectory()
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	#endif //COMPILE_ON_MAC
 
+	m_szGlobalKvircDir = KVIRC_RESOURCES_DIR;
+	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+
+/*
 	// Check usual directories...
+
 	for(int j=0;usualKvircGlobalPrePath[j] != 0;j++){
 		for(int i=0;usualKvircGlobalDir[i] != 0;i++){
 			m_szGlobalKvircDir = usualKvircGlobalPrePath[j];
@@ -597,7 +604,7 @@ void KviApp::findGlobalKvircDirectory()
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
 	#endif //COMPILE_KDE_SUPPORT
-
+*/
 	m_szGlobalKvircDir="";
 
 	// DO NOT TRANSLATE THIS

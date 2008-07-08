@@ -144,6 +144,22 @@ ELSE()
 	SET(CMAKE_STATUS_COEXISTENCE_VER "no")
 ENDIF()
 
+###############################################################################
+#
+# Module install path: kvirc needs to know where they are installed
+#
+###############################################################################
+
+IF(UNIX)
+	IF(APPLE)
+		SET(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/Contents/Resources/")
+	ELSE()
+		# Assume linux
+		SET(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/")
+	ENDIF()
+ELSEIF(WIN32)
+	SET(CMAKE_KVIRC_RESOURCES_DIR "${CMAKE_INSTALL_PREFIX}/")
+ENDIF()
 
 ###############################################################################
 #
