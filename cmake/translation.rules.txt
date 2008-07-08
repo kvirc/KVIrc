@@ -1,3 +1,5 @@
+IF(USE_GETTEXT_TRANSLATIONS)
+
 MACRO(KVIRC_CREATE_TRANSLATIONS _potFile _firstPoFile)
 SET(_gmoFiles)
    GET_FILENAME_COMPONENT(_potBasename ${_potFile} NAME_WE)
@@ -40,16 +42,39 @@ IF(USE_GETTEXT_EXTRA)
 	ADD_CUSTOM_TARGET(message-extract-${_potBasename})
 	ADD_DEPENDENCIES(message-extract message-extract-${_potBasename})
 
-	# message-update
+	# message-extract
 	SET(XGETTEXT_FILES)
 	FOREACH(SDIR ${XGETTEXT_SOURCESDIR})
 		FILE(GLOB_RECURSE XGETTEXT_FILES_TEMP ${SDIR}/*.cpp ${SDIR}/*.h ${SDIR}/*.kvs)
 		LIST(APPEND XGETTEXT_FILES ${XGETTEXT_FILES_TEMP})
 	ENDFOREACH()
-	# FIXME if the file list gets too long for the commandline, use xgettext '-f' option
+	# Semicolons 2 spaces
+	SET(XGETTEXT_FILES_STRING)
+	foreach(arg ${XGETTEXT_FILES})
+		set(XGETTEXT_FILES_STRING "${XGETTEXT_FILES_STRING}
+${arg}")
+	endforeach()
+	GET_FILENAME_COMPONENT(PO_DIR ${_absPotFile} PATH)
+	WRITE_FILE(${PO_DIR}/filelist.txt ${XGETTEXT_FILES_STRING})
 	ADD_CUSTOM_COMMAND(
-		COMMENT "updating messages for ${_potBasename}"
-		COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr ${XGETTEXT_FILES}
-		TARGET message-update-${_potBasename}
+		COMMENT "extracting messages for ${_potBasename}"
+		COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -k__tr2qs_ctx -f ${PO_DIR}/filelist.txt
+		TARGET message-extract-${_potBasename}
 	)
+	# message-update
+	GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
+	GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+	FOREACH (_currentPoFile ${pofiles})
+      GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+      GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+      GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+
+      ADD_CUSTOM_COMMAND(
+		COMMENT "updating messages in ${_currentPoFile}"
+         COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+         DEPENDS ${_absPotFile} ${_absFile}
+         TARGET message-update-${_potBasename}
+      )
+     ENDFOREACH ()
+ENDIF()
 ENDIF()
