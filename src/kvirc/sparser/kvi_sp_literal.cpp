@@ -635,7 +635,7 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 			KviQCString szC = msg->connection()->encodeText(szChan);
 			if(!szPass.isEmpty())
 			{
-				KviQCString szP = msg->connection()->encodeText(szChan);
+				KviQCString szP = msg->connection()->encodeText(szPass);
 				msg->connection()->sendFmtData("JOIN %s %s",szC.data(),szP.data());
 			} else msg->connection()->sendFmtData("JOIN %s",szC.data());
 		}
