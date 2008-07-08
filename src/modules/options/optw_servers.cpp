@@ -839,7 +839,7 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			s->m_szEncoding = d->szName;
 		}
-	s->setIpAddress("");
+	s->setIp("");
 	if(m_pCacheIpCheck)
 		s->setCacheIp(m_pCacheIpCheck->isChecked());
 	if(m_pUseSSLCheck)
@@ -882,26 +882,26 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 			{
 				if((!kvi_strEqualCI(tmpAddr.ptr(),"0:0:0:0:0:0:0:0")) && kvi_isValidStringIp_V6(tmpAddr.ptr()))
 				{
-					s->setIpAddress(tmpAddr.ptr());
+					s->setIp(tmpAddr.ptr());
 				} else {
 					s->setCacheIp(false);
-					s->setIpAddress("");
+					s->setIp("");
 				}
 			} else {
 #endif
 				if((!kvi_strEqualCI(tmpAddr.ptr(),"0.0.0.0")) && kvi_isValidStringIp(tmpAddr.ptr()))
 				{
-					s->setIpAddress(tmpAddr.ptr());
+					s->setIp(tmpAddr.ptr());
 				} else {
 					s->setCacheIp(false);
-					s->setIpAddress("");
+					s->setIp("");
 				}
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
 		} else {
 			s->setCacheIp(false);
-			s->setIpAddress("");
+			s->setIp("");
 		}
 	}
 	if(m_pOnConnectEditor)
@@ -1489,7 +1489,7 @@ void KviServerOptionsWidget::importServer(const KviServer &s,const QString &netw
 				{
 					// update the port
 					srv->m_pServerData->setPort(s.port());
-					if(!s.ipAddress().isEmpty())srv->m_pServerData->setIpAddress(s.ipAddress());
+					if(!s.ip().isEmpty())srv->m_pServerData->setIp(s.ip());
 					if(!s.password().isEmpty())srv->m_pServerData->setPassword(s.password());
 					if(!s.nickName().isEmpty())srv->m_pServerData->setNickName(s.nickName());
 					m_pTreeWidget->setCurrentItem(srv);

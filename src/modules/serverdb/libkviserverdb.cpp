@@ -23,7 +23,6 @@
 #include "kvi_module.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"
-#include "kvi_kvs_script.h"
 #include "kvi_ircserver.h"
 #include "kvi_ircserverdb.h"
 
@@ -81,7 +80,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	@short:
 		Checks if the network already exists in the DB
 	@synthax:
-		<bool> $serverdb.serverExists(<string:servername>[,<networkname>])
+		<bool> $serverdb.serverExists(<string:servername>[,<string:networkname>])
 	@description:
 		Checks if the server already exists for a network in the DB.[br]
 		If no network name is provided, the check is made globally.[br]
@@ -111,120 +110,507 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetwork);
 		if(!pRecord)
 		{
-			debug("pRecord");
 			c->returnValue()->setBoolean(false);
 			return true;
 		}
 
 		KviServer * pServer = new KviServer();
 		pServer->setHostName(szServer);
-		debug("Server: %s",pServer->hostName().toUtf8().data());
 
 		KviServer * pCheckServer = pRecord->findServer(pServer,true);
 		if(!pCheckServer)
 		{
-			debug("pCheckServer");
 			c->returnValue()->setBoolean(false);
 			return true;
 		}
 
-		debug("Check server: %s",pCheckServer->hostName().toUtf8().data());
 		c->returnValue()->setBoolean(true);
 	} else {
-		// FIXME: Check through all networks
-		/*
+		// Check through all networks
 		KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*(g_pServerDataBase->recordDict()));
 	
 		while(KviServerDataBaseRecord * r = it.current())
 		{
-			net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
 			KviPointerList<KviServer> * sl = r->serverList();
-			bool bCurrent = r->network()->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
-			net->setExpanded(bCurrent);
-			for(KviServer * s = sl->first();s;s = sl->next())
+
+			for(KviServer * s = sl->first(); s; s = sl->next())
 			{
-				srv = new KviServerOptionsTreeWidgetItem(net,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),s);
-	
-				if((s == r->currentServer()) && bCurrent)
+				if(QString::compare(s->hostName().toUtf8().data(),szServer,Qt::CaseInsensitive)==0)
 				{
-					srv->setSelected(true);
-					cur = srv;
+					c->returnValue()->setBoolean(true);
+					return true;
 				}
 			}
 			++it;
 		}
-		*/
+
+		c->returnValue()->setBoolean(false);
 	}
 
-	//c->returnValue()->setBoolean(true);
 	return true;
 }
 
-#if 0
-#define SERVERDB_GET_PROPERTY(__functionName,__callName) \
+#define SERVERDB_GET_NETWORK_PROPERTY(__functionName,__callName) \
 	static bool __functionName(KviKvsModuleFunctionCall * c) \
 	{ \
 		QString szName; \
-		bool bServer = false; \
 		\
 		KVSM_PARAMETERS_BEGIN(c) \
 			KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) \
 		KVSM_PARAMETERS_END(c) \
 		\
-		if(c->switches()->find('s',"server")) bServer = true; \
-		\
 		if(szName.isEmpty()) \
 		{ \
-			c->error(__tr2qs_ctx("You must provide the network/server name as parameter","serverdb")); \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
 			return false; \
 		} \
 		\
-		if(!bServer) \
+		KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
+		if(!pNetwork) \
 		{ \
-			/* We want to get the property for the network*/ \
-			KviNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
-			if(!pNetwork) \
-			{ \
-				if(c->switches()->find('q',"quiet")) return true; \
-				c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
-				return false; \
-			} \
-			\
-			c->returnValue()->setString(pNetwork->__callName()); \
-		} else { \
-			/* We want to get the property for the server*/ \
-			KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szName); \
-			if(!pRecord) \
-			{ \
-				if(c->switches()->find('q',"quiet")) return true; \
-				c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
-				return false; \
-			} \
-			\
-			/* Ensure we are manipulating a server*/ \
-			KviServer * pServer = pRecord->currentServer(); \
-			if(!pServer) \
-			{ \
-				if(c->switches()->find('q',"quiet")) return true; \
-				c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
-				return false; \
-			} \
-			\
-			c->returnValue()->setString(pServer->__callName()); \
+			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			return false; \
 		} \
+		\
+		c->returnValue()->setString(pNetwork->__callName()); \
 		\
 		return true; \
 	}
 
+#define SERVERDB_GET_SERVER_PROPERTY(__functionName,__callName,__variantSetCallName) \
+	static bool __functionName(KviKvsModuleFunctionCall * c) \
+	{ \
+		QString szNetName, szServName; \
+		\
+		KVSM_PARAMETERS_BEGIN(c) \
+			KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetName) \
+			KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServName) \
+		KVSM_PARAMETERS_END(c) \
+		\
+		if(szNetName.isEmpty()) \
+		{ \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
+			return false; \
+		} \
+		\
+		if(szServName.isEmpty()) \
+		{ \
+			c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb")); \
+			return false; \
+		} \
+		\
+		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetName); \
+		if(!pRecord) \
+		{ \
+			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
+			return false; \
+		} \
+		\
+		KviServer * pCheckServer = new KviServer; \
+		pCheckServer->setHostName(szServName); \
+		\
+		KviServer * pServer = pRecord->findServer(pCheckServer,true); \
+		if(!pServer) \
+		{ \
+			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
+			return false; \
+		} \
+		\
+		c->returnValue()->__variantSetCallName(pServer->__callName()); \
+		\
+		return true; \
+	}
 
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getNickName,nickName)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getUserName,userName)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getRealName,realName)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getEncoding,encoding)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getDescription,description)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getConnectCommand,onConnectCommand)
-SERVERDB_GET_PROPERTY(serverdb_kvs_fnc_getLoginCommand,onLoginCommand)
-#endif
+/*
+	@doc: serverdb.getNetworkNickName
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkNickName
+	@short:
+		Returns the nickname
+	@synthax:
+		<string> $serverdb.getNetworkNickName(<string:network>)
+	@description:
+		Returns the nickname set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkNickName,nickName)
+
+/*
+	@doc: serverdb.getNetworkUserName
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkUserName
+	@short:
+		Returns the username
+	@synthax:
+		<string> $serverdb.getNetworkUserName(<string:network>)
+	@description:
+		Returns the username set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkUserName,userName)
+
+/*
+	@doc: serverdb.getNetworkRealName
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkRealName
+	@short:
+		Returns the realname
+	@synthax:
+		<string> $serverdb.getNetworkRealName(<string:network>)
+	@description:
+		Returns the realname set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkRealName,realName)
+
+/*
+	@doc: serverdb.getNetworkEncoding
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkEncoding
+	@short:
+		Returns the encoding
+	@synthax:
+		<string> $serverdb.getNetworkEncoding(<string:network>)
+	@description:
+		Returns the encoding set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkEncoding,encoding)
+
+/*
+	@doc: serverdb.getNetworkDescription
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkDescription
+	@short:
+		Returns the description
+	@synthax:
+		<string> $serverdb.getNetworkDescription(<string:network>)
+	@description:
+		Returns the description set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkDescription,description)
+
+/*
+	@doc: serverdb.getNetworkConnectCommand
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkConnectCommand
+	@short:
+		Returns the connect command
+	@synthax:
+		<string> $serverdb.getNetworkConnectCommand(<string:network>)
+	@description:
+		Returns the connect command set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkConnectCommand,onConnectCommand)
+
+/*
+	@doc: serverdb.getNetworkLoginCommand
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkLoginCommand
+	@short:
+		Returns the login command
+	@synthax:
+		<string> $serverdb.getNetworkLoginCommand(<string:network>)
+	@description:
+		Returns the login command set for the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkLoginCommand,onLoginCommand)
+
+/*
+	@doc: serverdb.getNetworkName
+	@type:
+		function
+	@title
+		$serverdb.getNetworkName
+	@short:
+		Returns the name
+	@synthax:
+		<string> $serverdb.getNetworkName(<string:network>)
+	@description:
+		Returns the name of the network <network>
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkName,name)
+
+/*
+	@doc: serverdb.getServerNickName
+	@type:
+		function
+	@title:
+		$serverdb.getServerNickName
+	@short:
+		Returns the nickname
+	@synthax:
+		<string> $serverdb.getServerNickName(<string:network>,<string:server>)
+	@description:
+		Returns the nickname set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerNickName,nickName,setString)
+
+/*
+	@doc: serverdb.getServerUserName
+	@type:
+		function
+	@title:
+		$serverdb.getServerUserName
+	@short:
+		Returns the username
+	@synthax:
+		<string> $serverdb.getServerUserName(<string:network>,<string:server>)
+	@description:
+		Returns the username set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerUserName,userName,setString)
+
+/*
+	@doc: serverdb.getServerRealName
+	@type:
+		function
+	@title:
+		$serverdb.getServerRealName
+	@short:
+		Returns the realname
+	@synthax:
+		<string> $serverdb.getServerRealName(<string:network>,<string:server>)
+	@description:
+		Returns the realname set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerRealName,realName,setString)
+
+/*
+	@doc: serverdb.getServerEncoding
+	@type:
+		function
+	@title:
+		$serverdb.getServerEncoding
+	@short:
+		Returns the encoding
+	@synthax:
+		<string> $serverdb.getServerEncoding(<string:network>,<string:server>)
+	@description:
+		Returns the encoding set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerEncoding,encoding,setString)
+
+/*
+	@doc: serverdb.getServerDescription
+	@type:
+		function
+	@title:
+		$serverdb.getServerDescription
+	@short:
+		Returns the description
+	@synthax:
+		<string> $serverdb.getServerDescription(<string:network>,<string:server>)
+	@description:
+		Returns the description set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerDescription,description,setString)
+
+/*
+	@doc: serverdb.getServerConnectCommand
+	@type:
+		function
+	@title:
+		$serverdb.getServerConnectCommand
+	@short:
+		Returns the connect command
+	@synthax:
+		<string> $serverdb.getServerConnectCommand(<string:network>,<string:server>)
+	@description:
+		Returns the connect command set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerConnectCommand,onConnectCommand,setString)
+
+/*
+	@doc: serverdb.getServerLoginCommand
+	@type:
+		function
+	@title:
+		$serverdb.getServerLoginCommand
+	@short:
+		Returns the login command
+	@synthax:
+		<string> $serverdb.getServerLoginCommand(<string:network>,<string:server>)
+	@description:
+		Returns the login command set for the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerLoginCommand,onLoginCommand,setString)
+
+/*
+	@doc: serverdb.getServerIp
+	@type:
+		function
+	@title:
+		$serverdb.getServerIp
+	@short:
+		Returns the IP address
+	@synthax:
+		<string> $serverdb.getServerIp(<string:network>,<string:server>)
+	@description:
+		Returns the IP address of the server <server> of the network <network>
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIp,ip,setString)
+
+/*
+	@doc: serverdb.getServerId
+	@type:
+		function
+	@title:
+		$serverdb.getServerId
+	@short:
+		Returns the ID
+	@synthax:
+		<string> $serverdb.getServerId(<string:network>,<string:server>)
+	@description:
+		Returns the ID of the server <server> of the network <network>
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerId,id,setString)
+
+/*
+	@doc: serverdb.getServerPassword
+	@type:
+		function
+	@title:
+		$serverdb.getServerPassword
+	@short:
+		Returns the password
+	@synthax:
+		<string> $serverdb.getServerPassword(<string:network>,<string:server>)
+	@description:
+		Returns the password of the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPassword,password,setString)
+
+/*
+	@doc: serverdb.getServerPort
+	@type:
+		function
+	@title:
+		$serverdb.getServerPort
+	@short:
+		Returns the port
+	@synthax:
+		<int> $serverdb.getServerPort(<string:network>,<string:server>)
+	@description:
+		Returns the port of the server <server> of the network <network> if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPort,port,setInteger)
+
+/*
+	@doc: serverdb.isAutoConnect
+	@type:
+		function
+	@title:
+		$serverdb.isAutoConnect
+	@short:
+		Returns the autoconnect status
+	@synthax:
+		<bool> $serverdb.isAutoConnect(<string:network>,<string:server>)
+	@description:
+		Returns true if the server <server> of the network <network> if set to autoconnect, false otherwise
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerAutoConnect,autoConnect,setBoolean)
+
+/*
+	@doc: serverdb.isIPv6
+	@type:
+		function
+	@title:
+		$serverdb.isIPv6
+	@short:
+		Returns the IPv6 status
+	@synthax:
+		<bool> $serverdb.isIPv6(<string:network>,<string:server>)
+	@description:
+		Returns true if the server <server> of the network <network> if set to connect using IPv6 sockets, false otherwise
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIPv6,isIPv6,setBoolean)
+
+/*
+	@doc: serverdb.isSSL
+	@type:
+		function
+	@title:
+		$serverdb.isSSL
+	@short:
+		Returns the SSL status
+	@synthax:
+		<bool> $serverdb.isSSL(<string:network>,<string:server>)
+	@description:
+		Returns true if the server <server> of the network <network> if set to connect using SSL (Secure Socket Layer) sockets, false otherwise
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerSSL,useSSL,setBoolean)
+
+/*
+	@doc: serverdb.cacheIp
+	@type:
+		function
+	@title:
+		$serverdb.cacheIp
+	@short:
+		Returns the cache-ip status
+	@synthax:
+		<bool> $serverdb.cacheIp(<string:network>,<string:server>)
+	@description:
+		Returns true if KVIrc is set to cache the ip of the server <server> of the network <network>, false otherwise
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerCacheIp,cacheIp,setBoolean)
 
 /*
 	@doc: serverdb.addNetwork
@@ -427,16 +813,23 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 #define SERVERDB_SET_SERVER_PROPERTY(__functionName,__callName) \
 	static bool __functionName(KviKvsModuleCommandCall * c) \
 	{ \
-		QString szName, szPropertyName; \
+		QString szNetName, szServName, szPropertyName; \
 		\
 		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) \
+			KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetName) \
+			KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServName) \
 			KVSM_PARAMETER("property",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szPropertyName) \
 		KVSM_PARAMETERS_END(c) \
 		\
-		if(szName.isEmpty()) \
+		if(szNetName.isEmpty()) \
 		{ \
 			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
+			return false; \
+		} \
+		\
+		if(szServName.isEmpty()) \
+		{ \
+			c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb")); \
 			return false; \
 		} \
 		\
@@ -446,15 +839,18 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szName); \
+		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetName); \
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
+			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
 			return false; \
 		} \
 		\
-		KviServer * pServer = pRecord->currentServer(); \
+		KviServer * pCheckServer = new KviServer(); \
+		pCheckServer->setHostName(szServName); \
+		\
+		KviServer * pServer = pRecord->findServer(pCheckServer,true); \
 		if(!pServer) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
@@ -822,15 +1218,30 @@ static bool serverdb_module_init(KviModule * m)
 	/*
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"updateList",serverdb_kvs_cmd_updateList);
 	*/
-#if 0
-	KVSM_REGISTER_FUNCTION(m,"getNickName",serverdb_kvs_fnc_getNickName);
-	KVSM_REGISTER_FUNCTION(m,"getRealName",serverdb_kvs_fnc_getRealName);
-	KVSM_REGISTER_FUNCTION(m,"getUserName",serverdb_kvs_fnc_getUserName);
-	KVSM_REGISTER_FUNCTION(m,"getConnectCommand",serverdb_kvs_fnc_getConnectCommand);
-	KVSM_REGISTER_FUNCTION(m,"getDescription",serverdb_kvs_fnc_getDescription);
-	KVSM_REGISTER_FUNCTION(m,"getEncoding",serverdb_kvs_fnc_getEncoding);
-	KVSM_REGISTER_FUNCTION(m,"getLoginCommand",serverdb_kvs_fnc_getLoginCommand);
-#endif
+
+	KVSM_REGISTER_FUNCTION(m,"cacheIp",serverdb_kvs_fnc_getServerCacheIp);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkConnectCommand",serverdb_kvs_fnc_getNetworkConnectCommand);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkDescription",serverdb_kvs_fnc_getNetworkDescription);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkEncoding",serverdb_kvs_fnc_getNetworkEncoding);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkLoginCommand",serverdb_kvs_fnc_getNetworkLoginCommand);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkName",serverdb_kvs_fnc_getNetworkName);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkNickName",serverdb_kvs_fnc_getNetworkNickName);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkRealName",serverdb_kvs_fnc_getNetworkRealName);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkUserName",serverdb_kvs_fnc_getNetworkUserName);
+	KVSM_REGISTER_FUNCTION(m,"getServerConnectCommand",serverdb_kvs_fnc_getServerConnectCommand);
+	KVSM_REGISTER_FUNCTION(m,"getServerDescription",serverdb_kvs_fnc_getServerDescription);
+	KVSM_REGISTER_FUNCTION(m,"getServerEncoding",serverdb_kvs_fnc_getServerEncoding);
+	KVSM_REGISTER_FUNCTION(m,"getServerId",serverdb_kvs_fnc_getServerId)
+	KVSM_REGISTER_FUNCTION(m,"getServerIp",serverdb_kvs_fnc_getServerIp)
+	KVSM_REGISTER_FUNCTION(m,"getServerLoginCommand",serverdb_kvs_fnc_getServerLoginCommand);
+	KVSM_REGISTER_FUNCTION(m,"getServerNickName",serverdb_kvs_fnc_getServerNickName);
+	KVSM_REGISTER_FUNCTION(m,"getServerPassword",serverdb_kvs_fnc_getServerPassword);
+	KVSM_REGISTER_FUNCTION(m,"getServerPort",serverdb_kvs_fnc_getServerPort);
+	KVSM_REGISTER_FUNCTION(m,"getServerRealName",serverdb_kvs_fnc_getServerRealName);
+	KVSM_REGISTER_FUNCTION(m,"getServerUserName",serverdb_kvs_fnc_getServerUserName);
+	KVSM_REGISTER_FUNCTION(m,"isAutoConnect",serverdb_kvs_fnc_getServerAutoConnect);
+	KVSM_REGISTER_FUNCTION(m,"isIPv6",serverdb_kvs_fnc_getServerIPv6);
+	KVSM_REGISTER_FUNCTION(m,"isSSL",serverdb_kvs_fnc_getServerSSL);
 	KVSM_REGISTER_FUNCTION(m,"networkExists",serverdb_kvs_fnc_networkExists);
 	KVSM_REGISTER_FUNCTION(m,"serverExists",serverdb_kvs_fnc_serverExists);
 

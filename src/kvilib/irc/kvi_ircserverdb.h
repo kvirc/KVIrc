@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_ircserver.h"
-
 #include "kvi_pointerhashtable.h"
 
 typedef struct _KviServerDefinition

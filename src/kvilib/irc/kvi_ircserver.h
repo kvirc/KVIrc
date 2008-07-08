@@ -87,7 +87,6 @@ public:
 	KviProxy* proxyServer(KviProxyDataBase * pDb);
 	
 	kvi_u32_t port() const { return m_uPort; };
-	const QString & ipAddress() const { return m_szIp; };
 	const QString & password() const { return m_szPass; };
 	const QString & nickName() const { return m_szNick; };
 	const QString & initUMode() const { return m_szInitUMode; };
@@ -109,7 +108,7 @@ public:
 	bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
 	
 	void setProxy(int p){ m_iProxy = p; };
-	void setIpAddress(const QString &a){ m_szIp = a; };
+	void setIp(const QString &a){ m_szIp = a; };
 	void setPort(kvi_u32_t p){ m_uPort = p; };
 	void setHostName(const QString &n){ m_szHostname = n; };
 	void setDescription(const QString &d){ m_szDescription = d; };

@@ -156,7 +156,7 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 		context_kvs_fnc_serverIpAddress,
-		c->returnValue()->setString(pConnection->target()->server()->ipAddress())
+		c->returnValue()->setString(pConnection->target()->server()->ip())
 	)
 
 /*
