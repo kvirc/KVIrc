@@ -979,19 +979,27 @@ void KviIrcConnection::loginToIrcServer()
 		return;
 	}
 
-	QString szGenderTag;
+	QString szGenderAvatarTag;
+	int iGenderAvatarTag=0;
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
-		szGenderTag.append(KVI_TEXT_COLOR);
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
 		{
-			szGenderTag.append("1");
+			iGenderAvatarTag|=1;
 		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive))
 		{
-			szGenderTag.append("2");
+			iGenderAvatarTag|=2;
 		}
-		szGenderTag.append(KVI_TEXT_RESET);
-		szReal.prepend(KviQString::toUtf8(szGenderTag));
+	}
+	if(KVI_OPTION_BOOL(KviOption_boolPrependAvatarInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
+	{
+		iGenderAvatarTag|=4;
+	}
+
+	if(iGenderAvatarTag!=0)
+	{
+		szGenderAvatarTag.sprintf("%c%d%c",KVI_TEXT_COLOR,iGenderAvatarTag,KVI_TEXT_RESET);
+		szReal.prepend(KviQString::toUtf8(szGenderAvatarTag));
 	}
 
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),

@@ -56,17 +56,21 @@ void KviIrcUserEntry::setRealName(const QString &rn)
 	{
 		if( (m_szRealName[0].unicode()==KVI_TEXT_COLOR) && (m_szRealName[2].unicode()==KVI_TEXT_RESET) )
 		{
-			switch(m_szRealName[1].unicode())
+			// hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
+			// for backwards compatibily, 3=bot
+			if(m_szRealName[1].unicode() & 1 & 2)
 			{
-				case '1': // hum.. encoded as hidden color code eh ? publish is somewhere, so others might implement this...
-					setGender(Male);
-					break;
-				case '2':
-					setGender(Female);
-					break;
-				case '3':
-					setBot(true);
-					break;
+				setBot(true); //3
+			} else {
+				if(m_szRealName[1].unicode() & 1)
+				{
+					setGender(Male); //1
+				} else {
+					if(m_szRealName[1].unicode() & 2)
+					{
+						setGender(Female); //2
+					}
+				}
 			}
 			m_szRealName.remove(0,3);
 		}

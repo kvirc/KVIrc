@@ -699,16 +699,30 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 		e->setUser(szUser);
 		e->setHost(szHost);
 		e->setServer(szServ);
-		e->setRealName(szReal);
 		e->setAway(bAway);
 		KviQuery * q = msg->connection()->findQuery(szNick);
 		if(q) q->updateLabelText();
+		//no avatar? check for a cached one
 		if(!e->avatar())
 		{
 			// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
 			// maybe now we can match this user ?
 			msg->console()->checkDefaultAvatar(e,szNick,szUser,szHost);
 		}
+		//still no avatar? check if the user is exposing the fact that he's got one
+		if(!e->avatar())
+		{
+			if( (szReal[0].unicode()==KVI_TEXT_COLOR) && (szReal[1].unicode() & 4) && (szReal[2].unicode()==KVI_TEXT_RESET) )
+			{
+				if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars))
+				{
+					KviQCString d = msg->connection()->encodeText(szNick);
+					msg->connection()->sendFmtData("%s %s :%c%s%c","PRIVMSG",d.data(),0x01,"AVATAR",0x01);
+				}
+			}
+		}
+		//this has to be done after the avatar part
+		e->setRealName(szReal);
 	}
 
 	KviChannel * chan = msg->connection()->findChannel(szChan);

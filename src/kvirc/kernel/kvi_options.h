@@ -314,9 +314,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
 #define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
 #define KviOption_boolPickRandomIpAddressForRoundRobinServers 222
+#define KviOption_boolPrependAvatarInfoToRealname 223
 
-
-#define KVI_NUM_BOOL_OPTIONS 223
+#define KVI_NUM_BOOL_OPTIONS 224
 
 
 
