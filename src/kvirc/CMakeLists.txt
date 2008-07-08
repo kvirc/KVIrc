@@ -35,7 +35,6 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_ipeditor.h
 	ui/kvi_irctoolbar.h
 	ui/kvi_ircview.h
-	ui/kvi_ircviewprivate.h
 	ui/kvi_ircviewtools.h
 	ui/kvi_maskeditor.h
 	ui/kvi_mdicaption.h
@@ -44,7 +43,6 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_menubar.h
 	ui/kvi_modeeditor.h
 	ui/kvi_modew.h
-	ui/kvi_msgbox.h
 	ui/kvi_optionswidget.h
 	ui/kvi_query.h
 	ui/kvi_scriptbutton.h
@@ -61,157 +59,35 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_topicw.h
 	ui/kvi_userlistview.h
 	ui/kvi_window.h
-	sparser/kvi_antispam.h
-	sparser/kvi_ircmessage.h
-	sparser/kvi_numeric.h
 	sparser/kvi_sparser.h
 	module/kvi_mexlinkfilter.h
 	module/kvi_mexserverimport.h
 	module/kvi_mextoolbar.h
-	module/kvi_module.h
-	module/kvi_moduleextension.h
 	module/kvi_modulemanager.h
-	kvs/kvi_kvs.h
 	kvs/kvi_kvs_action.h
-	kvs/kvi_kvs_aliasmanager.h
-	kvs/kvi_kvs_array.h
-	kvs/kvi_kvs_arraycast.h
 	kvs/kvi_kvs_asyncdnsoperation.h
 	kvs/kvi_kvs_asyncoperation.h
-	kvs/kvi_kvs_callbackobject.h
-	kvs/kvi_kvs_corecallbackcommands.h
-	kvs/kvi_kvs_corefunctions.h
-	kvs/kvi_kvs_coresimplecommands.h
 	kvs/kvi_kvs_dnsmanager.h
-	kvs/kvi_kvs_event.h
-	kvs/kvi_kvs_eventhandler.h
-	kvs/kvi_kvs_eventmanager.h
-	kvs/kvi_kvs_eventtable.h
-	kvs/kvi_kvs_eventtriggers.h
-	kvs/kvi_kvs_hash.h
-	kvs/kvi_kvs_kernel.h
-	kvs/kvi_kvs_moduleinterface.h
 	kvs/kvi_kvs_object.h
-	kvs/kvi_kvs_object_class.h
-	kvs/kvi_kvs_object_controller.h
-	kvs/kvi_kvs_object_functioncall.h
-	kvs/kvi_kvs_object_functionhandler.h
-	kvs/kvi_kvs_object_functionhandlerimpl.h
-	kvs/kvi_kvs_parameterprocessor.h
-	kvs/kvi_kvs_parser.h
-	kvs/kvi_kvs_parser_macros.h
-	kvs/kvi_kvs_popupmanager.h
 	kvs/kvi_kvs_popupmenu.h
 	kvs/kvi_kvs_processmanager.h
-	kvs/kvi_kvs_report.h
-	kvs/kvi_kvs_runtimecall.h
-	kvs/kvi_kvs_runtimecontext.h
-	kvs/kvi_kvs_rwevaluationresult.h
-	kvs/kvi_kvs_script.h
-	kvs/kvi_kvs_scriptaddonmanager.h
-	kvs/kvi_kvs_switchlist.h
 	kvs/kvi_kvs_timermanager.h
-	kvs/kvi_kvs_treenode.h
-	kvs/kvi_kvs_treenode_aliasfunctioncall.h
-	kvs/kvi_kvs_treenode_aliassimplecommand.h
-	kvs/kvi_kvs_treenode_arraycount.h
-	kvs/kvi_kvs_treenode_arrayelement.h
-	kvs/kvi_kvs_treenode_arrayorhashelement.h
-	kvs/kvi_kvs_treenode_arrayreferenceassert.h
-	kvs/kvi_kvs_treenode_base.h
-	kvs/kvi_kvs_treenode_baseobjectfunctioncall.h
-	kvs/kvi_kvs_treenode_callbackcommand.h
-	kvs/kvi_kvs_treenode_command.h
-	kvs/kvi_kvs_treenode_commandevaluation.h
-	kvs/kvi_kvs_treenode_commandwithparameters.h
-	kvs/kvi_kvs_treenode_compositedata.h
-	kvs/kvi_kvs_treenode_constantdata.h
-	kvs/kvi_kvs_treenode_corecallbackcommand.h
-	kvs/kvi_kvs_treenode_corefunctioncall.h
-	kvs/kvi_kvs_treenode_coresimplecommand.h
-	kvs/kvi_kvs_treenode_data.h
-	kvs/kvi_kvs_treenode_datalist.h
-	kvs/kvi_kvs_treenode_expression.h
-	kvs/kvi_kvs_treenode_expressionreturn.h
-	kvs/kvi_kvs_treenode_extendedscopevariable.h
-	kvs/kvi_kvs_treenode_functioncall.h
-	kvs/kvi_kvs_treenode_globalvariable.h
-	kvs/kvi_kvs_treenode_hashcount.h
-	kvs/kvi_kvs_treenode_hashelement.h
-	kvs/kvi_kvs_treenode_hashreferenceassert.h
-	kvs/kvi_kvs_treenode_indirectdata.h
-	kvs/kvi_kvs_treenode_instruction.h
-	kvs/kvi_kvs_treenode_instructionblock.h
-	kvs/kvi_kvs_treenode_localvariable.h
-	kvs/kvi_kvs_treenode_modulecallbackcommand.h
-	kvs/kvi_kvs_treenode_modulefunctioncall.h
-	kvs/kvi_kvs_treenode_modulesimplecommand.h
-	kvs/kvi_kvs_treenode_multipleparameteridentifier.h
-	kvs/kvi_kvs_treenode_objectfield.h
-	kvs/kvi_kvs_treenode_objectfunctioncall.h
-	kvs/kvi_kvs_treenode_operation.h
-	kvs/kvi_kvs_treenode_parameterreturn.h
-	kvs/kvi_kvs_treenode_rebindingswitch.h
-	kvs/kvi_kvs_treenode_scopeoperator.h
-	kvs/kvi_kvs_treenode_simplecommand.h
-	kvs/kvi_kvs_treenode_singleparameteridentifier.h
-	kvs/kvi_kvs_treenode_specialcommand.h
-	kvs/kvi_kvs_treenode_specialcommandbreak.h
-	kvs/kvi_kvs_treenode_specialcommandclass.h
-	kvs/kvi_kvs_treenode_specialcommandcontinue.h
-	kvs/kvi_kvs_treenode_specialcommanddefpopup.h
-	kvs/kvi_kvs_treenode_specialcommanddo.h
-	kvs/kvi_kvs_treenode_specialcommandfor.h
-	kvs/kvi_kvs_treenode_specialcommandforeach.h
-	kvs/kvi_kvs_treenode_specialcommandif.h
-	kvs/kvi_kvs_treenode_specialcommandswitch.h
-	kvs/kvi_kvs_treenode_specialcommandunset.h
-	kvs/kvi_kvs_treenode_specialcommandwhile.h
-	kvs/kvi_kvs_treenode_stringcast.h
-	kvs/kvi_kvs_treenode_switchlist.h
-	kvs/kvi_kvs_treenode_thisobjectfunctioncall.h
-	kvs/kvi_kvs_treenode_variable.h
-	kvs/kvi_kvs_treenode_voidfunctioncall.h
-	kvs/kvi_kvs_types.h
 	kvs/kvi_kvs_useraction.h
-	kvs/kvi_kvs_variant.h
-	kvs/kvi_kvs_variantlist.h
 	kernel/kvi_action.h
 	kernel/kvi_actionmanager.h
 	kernel/kvi_app.h
-	kernel/kvi_asynchronousconnectiondata.h
-	kernel/kvi_coreactionnames.h
 	kernel/kvi_coreactions.h
-	kernel/kvi_customtoolbardescriptor.h
-	kernel/kvi_customtoolbarmanager.h
 	kernel/kvi_filetransfer.h
 	kernel/kvi_iconmanager.h
-	kernel/kvi_internalcmd.h
 	kernel/kvi_ipc.h
 	kernel/kvi_ircconnection.h
-	kernel/kvi_ircconnectionantictcpflooddata.h
-	kernel/kvi_ircconnectionasyncwhoisdata.h
-	kernel/kvi_ircconnectionnetsplitdetectordata.h
-	kernel/kvi_ircconnectionserverinfo.h
-	kernel/kvi_ircconnectionstatedata.h
-	kernel/kvi_ircconnectionstatistics.h
-	kernel/kvi_ircconnectiontarget.h
 	kernel/kvi_ircconnectiontargetresolver.h
-	kernel/kvi_ircconnectionuserinfo.h
 	kernel/kvi_irccontext.h
-	kernel/kvi_ircdatastreammonitor.h
 	kernel/kvi_irclink.h
 	kernel/kvi_ircsocket.h
-	kernel/kvi_ircurl.h
 	kernel/kvi_lagmeter.h
 	kernel/kvi_notifylist.h
-	kernel/kvi_options.h
-	kernel/kvi_out.h
-	kernel/kvi_sslmaster.h
 	kernel/kvi_texticonmanager.h
-	kernel/kvi_theme.h
-	kernel/kvi_useraction.h
-	kernel/kvi_userinput.h
 )
 
 SET(kvirc_SRCS

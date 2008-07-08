@@ -12,94 +12,31 @@ INCLUDE_DIRECTORIES(
 )
 
 SET(kvilib_MOC_HDRS
-	config/kvi_buildinfo.h
-	config/kvi_confignames.h
-	config/kvi_debug.h
-	config/kvi_defaults.h
-	config/kvi_fileextensions.h
-	config/kvi_settings.h
-	config/kvi_sourcesdate.h
-	config/kvi_version.h
-	config/kvi_wincfg.h
-	core/kvi_bswap.h
-	core/kvi_error.h
-	core/kvi_heapobject.h
-	core/kvi_inttypes.h
-	core/kvi_malloc.h
-	core/kvi_memmove.h
-	core/kvi_qcstring.h
-	core/kvi_qstring.h
-	core/kvi_strasm.h
-	core/kvi_string.h
-	core/kvi_stringarray.h
-	ext/kvi_accel.h
-	ext/kvi_cmdformatter.h
-	ext/kvi_config.h
 	ext/kvi_crypt.h
-	ext/kvi_databuffer.h
-	ext/kvi_dcophelper.h
-	ext/kvi_doublebuffer.h
-	ext/kvi_draganddrop.h
 	ext/kvi_garbage.h
-	ext/kvi_md5.h
-	ext/kvi_mediatype.h
-	ext/kvi_miscutils.h
-	ext/kvi_msgtype.h
-	ext/kvi_osinfo.h
-	ext/kvi_pixmap.h
-	ext/kvi_proxydb.h
-	ext/kvi_regchan.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
-	ext/kvi_stringconversion.h
-	ext/kvi_xlib.h
 	ext/kvi_dbusadaptor.h
-	file/kvi_file.h
-	file/kvi_fileutils.h
-	file/kvi_packagefile.h
-	irc/kvi_avatar.h
-	irc/kvi_avatarcache.h
-	irc/kvi_ircmask.h
-	irc/kvi_ircserver.h
-	irc/kvi_ircserverdb.h
 	irc/kvi_ircuserdb.h
-	irc/kvi_mirccntrl.h
-	irc/kvi_nickserv.h
-	irc/kvi_useridentity.h
 	net/kvi_dns.h
 	net/kvi_http.h
-	net/kvi_netutils.h
-	net/kvi_socket.h
-	net/kvi_sockettype.h
-	net/kvi_ssl.h
-	net/kvi_url.h
-	system/kvi_byteorder.h
-	system/kvi_env.h
 	system/kvi_locale.h
-	system/kvi_process.h
-	system/kvi_stdarg.h
 	system/kvi_thread.h
-	system/kvi_time.h
 	tal/kvi_tal_popupmenu.h
-	tal/kvi_tal_application.h
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
-	tal/kvi_tal_itemdelegates.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
 	tal/kvi_tal_listwidget.h
-	tal/kvi_tal_menubar.h
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
 	tal/kvi_tal_tablewidget.h
-	tal/kvi_tal_toolbardocktype.h
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_textedit.h
 	tal/kvi_tal_treewidget.h
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_widgetstack.h
-	tal/kvi_tal_windowstate.h
 	tal/kvi_tal_wizard.h
 )
 
