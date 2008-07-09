@@ -347,9 +347,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setPageStep(10);
 	m_pScrollBar->setValue(0);
 	m_pScrollBar->setObjectName("irc_view_scrollbar");
-
-	//m_pScrollBar = new QScrollBar(0,0,1,10,0,Qt::Vertical,this,"irc_view_scrollbar");
-	
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
@@ -638,19 +635,6 @@ const QString & KviIrcView::lastLineOfText()
 	return m_pLastLine->szText;
 }
 
-//void KviIrcView::toggleLogging()
-//{
-//	if(isLogging())stopLogging();
-//	else {
-//#warning "FIX THIS COMMENTED STUFF"
-//
-//		KviStr tmp;
-//		m_pKviWindow->getDefaultLogName(tmp);
-//		startLogging(tmp.ptr());
-//
-//	}
-//}
-
 void KviIrcView::setMasterView(KviIrcView * v)
 {
 	if(m_pMasterView)disconnect(this,SLOT(masterDead()));
@@ -726,13 +710,6 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 // Some slots
 //
 
-//void KviIrcView::saveBufferToFile()
-//{
-//	// Yeah....this is powerful! :)
-////	KviStr cmd = "/DIALOG (savefile,Choose a file name,$deflogfile($window).savebuf,$window) "
-////		"if(\"$dialogresult\" != \"\")window $dialogmagic savebuffer $dialogresult";
-////	m_pFrm->m_pUserParser->parseUserCommand(cmd,m_pKviWindow);
-//}
 /*
 void KviIrcView::toggleTimestamp()
 {
@@ -1909,6 +1886,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	line_ptr->pChunks[0].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
 	line_ptr->pChunks[0].customFore=QColor();
 
+	// print a nice timestamp at the begin of the first line
 	if(bEnableTimeStamp && KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp))
 	{
 		QString szTimestamp;
@@ -1955,6 +1933,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 		register QChar * data_ptr_aux = (QChar *)line_ptr->szText.unicode();
 		register QChar * stamp_ptr_aux = (QChar *)szTimestamp.unicode();
 
+		//copy the timestamp into line_ptr->szText.unicode()
 		for(int i=0;i<iTimeStampLength;i++)
 			*data_ptr_aux++  = *stamp_ptr_aux++;
 	} else {
@@ -1969,19 +1948,35 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	// these could work well as functions too...but the macros are a lot faster :)
 	//
 
+/*
+ * Profane description: this adds a block of text of known length to a already created chunk inside this line.
+ */
 #define APPEND_LAST_TEXT_BLOCK(__data_ptr,__data_len) \
 	blockLen = (__data_len); \
 	line_ptr->pChunks[iCurChunk].iTextLen += blockLen; \
 	kvi_appendWCharToQStringWithLength(&(line_ptr->szText),__data_ptr,__data_len); \
 	iTextIdx+=blockLen;
 
+/*
+ * Profane description: this adds a block of text of known length to a already created chunk inside this line.
+ * text is hidden (eg: we want to display an emoticon instead of the ":)" text, so we insert it hidden)
+ */
+
 #define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr,__data_len) \
 	blockLen = (__data_len); \
 	kvi_appendWCharToQStringWithLength(&(line_ptr->szText),__data_ptr,__data_len); \
 	iTextIdx+=blockLen;
 
+/*
+ * Profane description: this is dummy
+ */
 
 #define APPEND_ZERO_LENGTH_BLOCK(__data_ptr) /* does nothing */
+
+/*
+ * Profane description: this adds a new chunk to the current line of the specified type. A chunk is a block of text
+ * with similar style properties (mainly with the same color)
+ */
 
 #define NEW_LINE_CHUNK(_chunk_type) \
 	line_ptr->uChunkCount++; \
@@ -1996,6 +1991,17 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	// EOF Macros
 
 	int partLen;
+
+/*
+ * Some additional description for the profanes: we want a fast way to check the presence of "active objects we have to process" in lines of text;
+ * such objects can be: EOF, urls, mirc control characters, emoticons, and so on. We implemented a jump table to accomplish this task very fast.
+ * This jump table is an array[256] containing label addresses (imagine them as functions). So something like "goto array[4];" is valid construct
+ * in C, that equivals to a function call to a function that starts on that label's line of code.
+ * Imagine to parse the input line one character at once and match it (as a switch can do) agains this big array. Every 1-byte character corresponds
+ * to an ascii integer between 0 and 255. If the array value for that integer key is defined and !=0, we jump to the corrispective label address.
+ * Example, if we find a "H" (72) we'll "goto char_to_check_jump_table[72]", aka "goto check_http_url".
+ * There exists two different versions of this tricky code, we switch them depending on the compiler abilities to accept our bad code :)
+ */
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 
@@ -2188,6 +2194,12 @@ check_char_loop:
 
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
+/*
+ * Profane description:
+ * Here the two different approches to the jump table ends. Following there's the list of all the possible
+ * codes found. The "check table" approach needs an additional switch to discriminate between different control codes,
+ * while the "jump table" approach directly jumps to the right case.
+ */
 
 check_escape_switch:
 	switch(*p)
@@ -2362,20 +2374,44 @@ found_mirc_escape:
 			p++;
 			break;
 	}
+
+/*
+ * Profane description: end of the additional switch needed in the "check table" approach;
+ * the next instruction re-starts the loop 
+ */
+
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
+/*
+ * Profane description: More codes. The difference from the previous block is that these codes doesn't need the additional switch in the
+ * "check table" approach as before.
+ */
+
 check_http_url:
 	p++;
+	/*
+	 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
+	 * "http://" tag, it takes us more cpu time)
+	 */
+
+	//
 	if((*p == 't') || (*p == 'T'))
 	{
+		/*
+		 * Profane description: we found it! now there's an high probability we're in front of an http url. Relax, rewind the last
+		 * character and try to match the complete url protocol tag
+ 		 */
 		p--;
 		if(kvi_hstrEqualCIN(p,"http://",7))
 		{
 			partLen = 7;
+			/*
+			* Profane description: we got it; save in partLen the length of the tag and jump to the got_url label.
+			*/
 			goto got_url;
 		}
 		if(kvi_hstrEqualCIN(p,"https://",8))
@@ -2519,41 +2555,58 @@ check_mailto_url:
 
 got_url:
 	//Url highlighting block
+
+/*
+ * Profane description: we just found a tag that we suppose to be the start of a url.
+ * p is the address of the start of our text buffer, partLen the length of the tag (eg. http:// = 7)
+ * We want to check if it's valid and highlight it creating an ad-hoc chunk for it in this line.
+ * The ascii value of the first character after the tag have to be >= 47, or we assume it as invalid
+ */
+
 	if(*(p + partLen) < 47)
 	{
+		//invalid: append all the text up to the end of the false url tag
 		p+=partLen;
 		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
 	} else {
-	APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
-	NEW_LINE_CHUNK(KVI_TEXT_ESCAPE)
+		//valid: append all the text before the start of the url tag
+		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+		//create a new chunk
+		NEW_LINE_CHUNK(KVI_TEXT_ESCAPE)
 // FIXME: #warning "Option for the URL escape...double click and right button!!!"
-//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
-	line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc(2 * sizeof(kvi_wchar_t));
-	line_ptr->pChunks[iCurChunk].szPayload[0] = 'u';
-	line_ptr->pChunks[iCurChunk].szPayload[1] = 0x0;
-	line_ptr->pChunks[iCurChunk].colors.fore = KVI_OPTION_MSGTYPE(KVI_OUT_URL).fore();
-	//and run until the presumed end of the url
-	data_ptr=p;
-	p+=partLen;
-	// Question : What characters are NOT allowed in an URL ?
-	// I assume [] () {} 'and chars below 33 (space too , and negative chars too! (for signed char systems))
-	// [] and () are used in ed2k links often
 
-	// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
-	while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
-			(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))p++;
+		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
 
-	if(m_pKviWindow)
-	{
-		QString tmp;
-		tmp.setUtf16(data_ptr,p-data_ptr);
-		KVS_TRIGGER_EVENT_1(KviEvent_OnUrl,m_pKviWindow,tmp);
+		//write into null-terminated char* szPayload an 'u' that means that this chunk represents an url
+		line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc(2 * sizeof(kvi_wchar_t));
+		line_ptr->pChunks[iCurChunk].szPayload[0] = 'u';
+		line_ptr->pChunks[iCurChunk].szPayload[1] = 0x0;
+		//set the color for this chunk
+		line_ptr->pChunks[iCurChunk].colors.fore = KVI_OPTION_MSGTYPE(KVI_OUT_URL).fore();
+		//now run until the presumed end of the url
+		data_ptr=p;
+		p+=partLen;
+		// Question : What characters are NOT allowed in an URL ?
+		// I assume [] () {} 'and chars below 33 (space too , and negative chars too! (for signed char systems))
+		// [] and () are used in ed2k links often
+	
+		// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
+		while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
+				(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))p++;
+	
+		if(m_pKviWindow)
+		{
+			QString tmp;
+			tmp.setUtf16(data_ptr,p-data_ptr);
+			KVS_TRIGGER_EVENT_1(KviEvent_OnUrl,m_pKviWindow,tmp);
+		}
+
+		//add all the text till the end of the url, then create a new "clean" chunk for the next cycle loop
+		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+		NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
+
 	}
-
-	APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
-	NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
-
-	}
+	//update the value of the main counter, then restart the loop
 	data_ptr=p;
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
