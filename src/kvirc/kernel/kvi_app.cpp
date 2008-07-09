@@ -71,6 +71,7 @@
 #include "kvi_fileutils.h"
 #include "kvi_time.h"
 #include "kvi_doublebuffer.h"
+#include "kvi_ircview.h"
 #include "kvi_stringconversion.h"
 #include "kvi_useridentity.h"
 
@@ -2038,6 +2039,8 @@ bool KviApp::playFile(const char * filename,KviStr &error,KviWindow * w)
 
 void KviApp::heartbeat(kvi_time_t tNow)
 {
+	const struct tm *pTm = localtime(&tNow);
+
 	if(g_pApp->topmostConnectedConsole())
 	{
 		// FIXME: this has huge precision problems...
@@ -2048,6 +2051,15 @@ void KviApp::heartbeat(kvi_time_t tNow)
 	// we don't need a really great precision here, so 128 is still ok
 	if(!(tNow & 0x7f))
 		KviDoubleBuffer::heartbeat();
+
+	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec) {
+		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
+			while(it.current()) {
+				if (it.current()->view() && it.current()->view()->isLogging())
+					it.current()->view()->startLogging(0);
+				++it;
+			}
+	}
 }
 
 void KviApp::timerEvent(QTimerEvent *e)
