@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2005-12-28 00:20+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
+#, fuzzy
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://bmpx.backtrace.info\n"
+msgstr ""
+"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
+"Вы можете загрузить его с http://www.xmms.org\n"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
 "An interface to the AMIP plug-in.\n"
@@ -23,13 +32,13 @@ msgid ""
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:42
 msgid "An interface to the AmaroK KDE media player."
 msgstr ""
 "Интерфейс для медиаплеера КДЕ AmaroK.\n"
 "Вы можете загрузить его с http://amarok.kde.org"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:44
 msgid "An interface to the Juk KDE media player."
 msgstr "Интерфейс к медиаплееру КДЕ Juk."
 
@@ -50,6 +59,15 @@ msgstr ""
 "Интерфейс к популярному в UNIX медиаплееру xmms.\n"
 "Вы можете загрузить его с http://www.xmms.org\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
+"Вы можете загрузить его с http://www.xmms.org\n"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
@@ -63,6 +81,15 @@ msgstr ""
 "Чтобы использовать все возможности этого интерфейса, Вы должны скопировать "
 "плагин gen_kvirc.dll, который можно найти в папке с дистрибутивом KVIrc в "
 "папку плагинов Winamp и перезапустить Winamp."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+msgstr ""
+"Интерфейс к популярному в UNIX медиаплееру xmms.\n"
+"Вы можете загрузить его с http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -82,7 +109,7 @@ msgstr "Не могу загрузить библиотеку xmms (libxmms.so)"
 msgid "Choosing media player interface \"%Q\""
 msgstr "Выбран интерфейс медиаплеера \"%Q\""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr ""
 

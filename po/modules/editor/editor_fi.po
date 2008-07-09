@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2007-11-21 18:00+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,19 +16,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:872
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1216
+#, fuzzy
+msgid "&Cancel"
+msgstr "Peruuta"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:930
 msgid "&Configure Editor..."
 msgstr "&Konfiguroi editori..."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1232
+msgid "&Findnext"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
 msgid "&OK"
 msgstr "&OK"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:927
 msgid "&Open..."
 msgstr "&Avaa..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:870
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:249
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1221
+msgid "&Replace"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1227
+msgid "&Replace in all Aliases"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1238
+msgid "&Replace(WIP)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:928
 msgid "&Save As..."
 msgstr "&Tallenna nimellä..."
 
@@ -40,12 +62,12 @@ msgstr "Tausta:"
 msgid "Brackets:"
 msgstr "Hakasulkeet:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1163
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Ei voitu avata tiedostoa %s luettavaksi."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1001
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1056
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
@@ -54,19 +76,36 @@ msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1043
 msgid "Choose a Filename - KVIrc"
 msgstr "Valitse tiedostonimi - KVIrc"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:177
+msgid "Colors"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
 msgid "Comments:"
 msgstr "Kommentit:"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:248
+msgid "Context sensitive help"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:938
+#, fuzzy
+msgid "Find"
+msgstr "Etsi:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:262
+msgid "Find & Repalce"
+msgstr ""
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
 msgid "Find:"
 msgstr "Etsi:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:175
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:173
 msgid "Font:"
 msgstr "Fontti:"
 
@@ -78,7 +117,7 @@ msgstr "Funktiot:"
 msgid "Keywords:"
 msgstr "Avainsanat:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1091
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1149
 msgid "Load Script File - KVIrc"
 msgstr "Lataa skriptitiedosto - KVIrc"
 
@@ -86,11 +125,11 @@ msgstr "Lataa skriptitiedosto - KVIrc"
 msgid "Normal text:"
 msgstr "Normaali teksti:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1104
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1162
 msgid "Open Failed - KVIrc"
 msgstr "Avaus epäonnistui - KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:172
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:170
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -98,16 +137,23 @@ msgstr "Asetukset"
 msgid "Punctuation:"
 msgstr "Välimerkit:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1066
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1081
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1205
+msgid "Replace with"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1113
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Rivi: %d Merkki: %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1000
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1055
 msgid "Save Failed - KVIrc"
 msgstr "Tallennus epäonnistui - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:186
 msgid "Variables:"
 msgstr "Muuttujat:"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1195
+msgid "Word to Find"
+msgstr ""

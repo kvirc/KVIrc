@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-13 00:55+0100\n"
+"POT-Creation-Date: 2008-07-09 17:28+0200\n"
 "PO-Revision-Date: 2007-11-21 17:43+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -24,46 +24,50 @@ msgstr ""
 "Un'interfaccia all'eccellente client KDE KTorrent.\n"
 "Scaricalo da http://www.ktorrent.org\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:103
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:101
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Scelgo l'interfaccia al client torrent \"%Q\""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:61
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Indice fuori dal range: %d [0-%d]!"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:720
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:718
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Interfaccia al client torrent \"%Q\" invalida!"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:130
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:128
 msgid "Last interface error: "
 msgstr "Ultimo errore: "
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:64
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:91
 msgid "No client selected!"
 msgstr "Nessun client selezionato!"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:117
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Nessuna interfaccia selezionata. Prova con /torrent.detect"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:110
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:108
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Sembra che non ci siano client torrent usabili su questa macchina"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:129
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:127
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr ""
 "L'interfaccia selezionata ha fallito nell'eseguire la funzione richiesta"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:63
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:60
+msgid "Torrent Client"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:61
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Provo l'interfaccia al client torrent \"%Q\": punteggio %d"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:712
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:710
 msgid "Using client interface \"%Q\"."
 msgstr "Scelgo l'interfaccia al client torrent \"%Q\"."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2007-10-27 22:50+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,31 +16,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:108
 msgid "About"
 msgstr "Névjegy"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:75
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:79
 msgid "About KVIrc..."
 msgstr "A KVIrcről..."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:76
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:136
+msgid "Architecture"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:163
+msgid "Build Command"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:143
+msgid "Build Date"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:167
+msgid "Build Flags"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:141
+msgid "Build Info"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:159
+msgid "CPU Name"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:80
 msgid "Close"
 msgstr "Bezárás"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:95
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:176
+msgid "Compiler Flags"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:172
+msgid "Compiler Name"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:182
+msgid "Executable Informations"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:102
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Edzette a <b>KVIrc Fejlesztő Csapata</b>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:118
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:195
 msgid "Honor && Glory"
 msgstr "Dicsőségcsarnok"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:144
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:221
 msgid "License"
 msgstr "Liszensz"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:137
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:214
 msgid ""
 "Oops... Can't find the license file...\n"
 "It MUST be included in the distribution...\n"
@@ -50,6 +86,24 @@ msgstr ""
 "Ennek benne KELL lennie a kiadásban...\n"
 "Kérlek jelezd ezt:<pragma at kvirc dot net>"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:97
-msgid "Sources date"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:151
+msgid "Revision Number"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:122
+msgid "Runtime Info"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:147
+#, fuzzy
+msgid "Sources Date"
 msgstr "Létrehozás ideje"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:124
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:155
+msgid "System Name"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/about/aboutdialog.cpp:132
+msgid "System Version"
+msgstr ""

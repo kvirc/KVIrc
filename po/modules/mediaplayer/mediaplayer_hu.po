@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2008-02-25 02:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -15,6 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
+#, fuzzy
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://bmpx.backtrace.info\n"
+msgstr ""
+"Kezelőfelület a népszerő UNIX xmms médialejátszóhoz.\n"
+"Letölthető a http://www.xmms.org címről\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -27,11 +36,11 @@ msgstr ""
 "Ahhoz, hogy ezt használni tudd telepítened kell az AMIP plugint a "
 "lejátszódba."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:42
 msgid "An interface to the AmaroK KDE media player."
 msgstr "Eszköz az AmaroK KDE médialjeátszóhoz."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:44
 msgid "An interface to the Juk KDE media player."
 msgstr "Eszköz a Juk KDE médialejátszóhoz."
 
@@ -51,6 +60,15 @@ msgstr ""
 "Kezelőfelület a népszerő UNIX xmms médialejátszóhoz.\n"
 "Letölthető a http://www.xmms.org címről\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Kezelőfelület a népszerő UNIX audacious médialejátszóhoz.\n"
+"Letölthető a http://www.xmms.org címről\n"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
@@ -64,6 +82,15 @@ msgstr ""
 "Hogy minden lehetséges funkciót ki tudj használni, másold a gen_kvirc.dll "
 "plugint a KVIrc modulok könyvtárából a Winamp pluginok mappájába és indítsd "
 "újra a Winampot."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+msgstr ""
+"Kezelőfelület a népszerő UNIX xmms médialejátszóhoz.\n"
+"Letölthető a http://www.xmms.org címről\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -81,7 +108,7 @@ msgstr "Lejátszó függvénytár nem betölthető (%Q)"
 msgid "Choosing media player interface \"%Q\""
 msgstr "Médialejátszó eszköz kiválasztva \"%Q\""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Művelet nem támogatott"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -15,6 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
+#, fuzzy
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://bmpx.backtrace.info\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -26,11 +35,11 @@ msgstr ""
 "Možete ga downloadati sa http://amip.tools-for.net.\n"
 "Za korištenje ovog sučelja morate instalirati AMIP plug-in za vaš player."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:42
 msgid "An interface to the AmaroK KDE media player."
 msgstr "Sučelje za Amarok KDE media player"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:44
 msgid "An interface to the Juk KDE media player."
 msgstr "Sučelje za Juk KDE media player."
 
@@ -50,6 +59,15 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Sučelje za popularni UNIX audacious media player.\n"
+"Preuzmite ga sa http://audacious-media-player.org\n"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
@@ -63,6 +81,15 @@ msgstr ""
 "Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se "
 "nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
 "restartati Winamp."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -80,7 +107,7 @@ msgstr "Ne mogu učitati bazu playera (%Q)"
 msgid "Choosing media player interface \"%Q\""
 msgstr "Odabirem media player \"%Q\""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Funkcija nije implementirana"
 

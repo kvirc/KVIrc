@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-21 01:02+0100\n"
+"POT-Creation-Date: 2008-07-09 17:29+0200\n"
 "PO-Revision-Date: 2007-11-14 01:30+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -16,6 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
+#, fuzzy
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://bmpx.backtrace.info\n"
+msgstr ""
+"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
+"Sie können ihn unter http://www.xmms.org herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -28,11 +37,11 @@ msgstr ""
 "Schnittstelle zu nutzen, muss dass AMIP-Zusatzmodul für Deinen Abspieler "
 "(player) installiert werden."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:42
 msgid "An interface to the AmaroK KDE media player."
 msgstr "Schnittstelle für AmaroK."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:44
 msgid "An interface to the Juk KDE media player."
 msgstr "Schnittstelle für Juk."
 
@@ -52,6 +61,15 @@ msgstr ""
 "Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
 "Sie können ihn unter http://www.xmms.org herunterladen.\n"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Eine Schnittstelle für den beliebten UNIX audacious media player.\n"
+"Sie können ihn unter http://audacious-media-player.org herunterladen.\n"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
@@ -64,6 +82,15 @@ msgstr ""
 "Sie können ihn unter http://www.winamp.com herunterladen.\n"
 "Um alle Funktionen zu nutzen, müssen Sie die Datei gen_kvirc.dll aus dem "
 "KVirc Ordner in den Plugin-Ordner von Winamp kopieren und Winamp neu starten."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+msgstr ""
+"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
+"Sie können ihn unter http://www.xmms.org herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -81,7 +108,7 @@ msgstr "Kann die Abspieler- (player) -Bibliothek (%Q) nicht laden"
 msgid "Choosing media player interface \"%Q\""
 msgstr "Benutze Schnittstelle \"%Q\"."
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Funktion nicht implementiert"
 
