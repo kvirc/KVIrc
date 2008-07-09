@@ -1,14 +1,14 @@
 # translation of mediaplayer_de.po to german
 # Copyright (C) 2005 THE KVIrc'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# 
-# Markus Rennings <kvirc@mrmx.de>, 2007.
+#
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-09 17:29+0200\n"
-"PO-Revision-Date: 2007-11-14 01:30+0100\n"
+"PO-Revision-Date: 2008-07-10 00:49+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,13 +18,12 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
-#, fuzzy
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://bmpx.backtrace.info\n"
 msgstr ""
-"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
-"Sie können ihn unter http://www.xmms.org herunterladen.\n"
+"Eine Schnittstelle für BMPx.\n"
+"Sie können ihn unter http://bmpx.backtrache.info herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -62,12 +61,11 @@ msgstr ""
 "Sie können ihn unter http://www.xmms.org herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
-#, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Eine Schnittstelle für den beliebten UNIX audacious media player.\n"
+"Eine Schnittstelle für den beliebten audacious media player.\n"
 "Sie können ihn unter http://audacious-media-player.org herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
@@ -84,13 +82,12 @@ msgstr ""
 "KVirc Ordner in den Plugin-Ordner von Winamp kopieren und Winamp neu starten."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
-#, fuzzy
 msgid ""
 "An interface to the xmms2 media player.\n"
 "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 msgstr ""
-"Eine Schnittstelle für den Beliebten UNIX xmms Player.\n"
-"Sie können ihn unter http://www.xmms.org herunterladen.\n"
+"Eine Schnittstelle für den xmms2 Media Player.\n"
+"Sie können ihn unter http://wiki.xmms2.xmms.se/index.php/Main_Page herunterladen.\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -132,8 +129,7 @@ msgstr ""
 "detect."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
 "Ergebnis war nicht eindeutig. Versuche einen zweiten, aggressiveren "
 "Durchlauf."
@@ -152,8 +148,7 @@ msgstr "Es scheint kein nutzbarer Mediaplayer auf diesem System zu sein."
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
-msgid ""
-"The selected media player interface failed to execute the requested function"
+msgid "The selected media player interface failed to execute the requested function"
 msgstr ""
 "Die ausgewählte Mediaplayer Schnittstelle konnte die Funktion nicht "
 "ausführen."
@@ -176,3 +171,4 @@ msgstr "Probiere Schnittstelle \"%Q\": %d Punkte."
 #~ msgstr ""
 #~ "Mediaplayer Schnittstelle existiert nicht (Versuchen Sie /mediaplayer."
 #~ "detect)."
+

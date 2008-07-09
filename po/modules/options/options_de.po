@@ -1,17 +1,17 @@
 # translation of options_de.po to german
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# 
+#
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:261
 # Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2005.
-# Markus Rennings <kvirc@mrmx.de>, 2007.
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:261
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-09 17:29+0200\n"
-"PO-Revision-Date: 2007-11-17 01:01+0100\n"
+"PO-Revision-Date: 2008-07-10 01:07+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -107,8 +107,7 @@ msgstr "3D-Gitter"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_urlhandlers.cpp:53
 msgid "<b>file://</b> handler command:"
@@ -240,8 +239,7 @@ msgstr ""
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1108
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -389,8 +387,7 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:150
 msgid ""
@@ -860,8 +857,7 @@ msgstr ""
 "liegen</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_servers.cpp:1082
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1070,8 +1066,7 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_highlighting.cpp:94
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -1236,6 +1231,8 @@ msgid ""
 "other hand, you might want to disable it if you want to rely on the dns "
 "server to provide the best choice.</center>"
 msgstr ""
+"<center>Diese Option bewirkt, dass der KVIrc-Netzwerk-Stack eine IP zufällig auswählt, wenn die DNS-Anfrage mehrere IP-Adressen zurückliefert. "
+"Dies ist harmlos und kann einige Probleme mit zwischenspeichernden DNS-Servern, die nicht sorgfältig die Einträge rotieren, beheben. Andererseits kannst Du dies deaktivieren, wenn Du darauf vertraust, dass der DNS-Server die beste Möglichkeit liefert.</center>"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:64
 msgid ""
@@ -2177,9 +2174,8 @@ msgid "Edit Rule"
 msgstr "Regel bearbeiten"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:80
-#, fuzzy
 msgid "Emoticon"
-msgstr "Nachrichten"
+msgstr "Emoticon"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_antispam.cpp:36
 msgid "Enable Anti-spam For"
@@ -2216,8 +2212,7 @@ msgstr "Lagmeter aktivieren"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.cpp:43
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:224
 msgid "Enable service for IPv6"
@@ -3182,7 +3177,7 @@ msgstr "Muster"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_connection.cpp:164
 msgid "Pick Random IP Address for Round-Robin Servers"
-msgstr ""
+msgstr "Zufällige IP-Adresse für Round-Robin-Server wählen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_userlist.cpp:94
 msgid "Plain Grid"
@@ -3235,9 +3230,8 @@ msgid "Prefix:"
 msgstr "Vorwahl:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:77
-#, fuzzy
 msgid "Prepend avatar info to realname"
-msgstr "Geschlechtsinformationen vor Realnamen stellen"
+msgstr "Avatar-Informationen dem Realnamen voranstellen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_irc.cpp:76
 msgid "Prepend gender info to realname"
@@ -3313,8 +3307,7 @@ msgstr "Proxy:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_query.h:28
 msgid "Query"
@@ -3652,8 +3645,7 @@ msgstr "Socket"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_dcc.cpp:177
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr ""
-"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_taskbar.cpp:36
 msgid "Sort windows by name"
@@ -3721,8 +3713,7 @@ msgstr "De Spitznamen-Feld darf nicht leer sein!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3752,8 +3743,7 @@ msgstr "Themeneinstellungen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:96
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_sound.cpp:119
 msgid "This allows you to select encoding of winamp messages."
@@ -3795,8 +3785,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -3889,7 +3878,7 @@ msgstr ""
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
-msgstr ""
+msgstr "Diese Option erzwingt eine statische Schrift für alle Elemente, die keine eigene Schrifteneinstellung haben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_protection.cpp:40
 msgid ""
@@ -4463,7 +4452,7 @@ msgstr "Zeit,Zeitstempel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_tray.h:32
 msgid "tray,TRAYICON"
-msgstr ""
+msgstr "tray,TRAYICON"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/options/optw_texticons.cpp:181
 msgid "unnamed"
@@ -13702,3 +13691,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+

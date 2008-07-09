@@ -259,7 +259,7 @@ void KviScriptEditorWidget::slotFind()
 
 void KviScriptEditorWidget::slotReplace()
 {
-	KviScriptEditorReplaceDialog *dialog=new KviScriptEditorReplaceDialog(this,__tr("Find & Repalce"));
+	KviScriptEditorReplaceDialog *dialog=new KviScriptEditorReplaceDialog(this,__tr("Find & Replace"));
 	connect (dialog,SIGNAL(replaceAll(const QString &,const QString &)),m_pParent,SLOT(slotReplaceAll(const QString &,const QString &)));
 	connect (dialog,SIGNAL(initFind()),m_pParent,SLOT(slotInitFind()));
 	connect (dialog,SIGNAL(nextFind(const QString &)),m_pParent,SLOT(slotNextFind(const QString &)));

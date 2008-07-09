@@ -1,15 +1,15 @@
 # translation of editor_de.po to german
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# 
+#
 # Christoph Thielecke <crissi99@gmx.de>, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2007.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-09 17:29+0200\n"
-"PO-Revision-Date: 2007-11-14 01:17+0100\n"
+"PO-Revision-Date: 2008-07-09 23:53+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,8 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1216
-#, fuzzy
 msgid "&Cancel"
-msgstr "Abbrechen"
+msgstr "Abbre&chen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:930
 msgid "&Configure Editor..."
@@ -29,7 +28,7 @@ msgstr "&Editor einrichten..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1232
 msgid "&Findnext"
-msgstr ""
+msgstr "&Nächstes"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:190
 msgid "&OK"
@@ -42,15 +41,15 @@ msgstr "&Öffnen..."
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:249
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1221
 msgid "&Replace"
-msgstr ""
+msgstr "E&rsetzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1227
 msgid "&Replace in all Aliases"
-msgstr ""
+msgstr "In allen Aliasen e&rsetzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1238
 msgid "&Replace(WIP)"
-msgstr ""
+msgstr "E&rsetzen(WIP)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:928
 msgid "&Save As..."
@@ -84,7 +83,7 @@ msgstr "Dateiname auswählen - KVIrc"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:177
 msgid "Colors"
-msgstr ""
+msgstr "Farben"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:183
 msgid "Comments:"
@@ -92,16 +91,15 @@ msgstr "Kommentare:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:248
 msgid "Context sensitive help"
-msgstr ""
+msgstr "Kontextsensitive Hilfe"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:938
-#, fuzzy
 msgid "Find"
-msgstr "Suche:"
+msgstr "Suche"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:262
 msgid "Find & Repalce"
-msgstr ""
+msgstr "Suchen & Ersetzen"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:188
 msgid "Find:"
@@ -141,7 +139,7 @@ msgstr "Zeichensetzung"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1205
 msgid "Replace with"
-msgstr ""
+msgstr "Ersetzen mit"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1113
 #, c-format
@@ -158,4 +156,5 @@ msgstr "Variablen:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1195
 msgid "Word to Find"
-msgstr ""
+msgstr "Zu suchendes Wort"
+
