@@ -653,6 +653,7 @@ IF(WANT_GETTEXT)
 		ADD_CUSTOM_TARGET(message-update)
 		# message-extract target;
 		ADD_CUSTOM_TARGET(message-extract)
+		ADD_DEPENDENCIES(message-update message-extract)
 		SET(USE_GETTEXT_EXTRA 1)
 	ELSE()
 		SET(USE_GETTEXT_EXTRA 0)

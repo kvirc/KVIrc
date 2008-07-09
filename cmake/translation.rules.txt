@@ -49,16 +49,16 @@ ${arg}")
 		GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
 		GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
 		FOREACH (_currentPoFile ${pofiles})
-		GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
-		GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
-		GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+			GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+			GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+			GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
 
-		ADD_CUSTOM_COMMAND(
-			COMMENT "updating messages in ${_currentPoFile}"
-		COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
-		DEPENDS ${_absPotFile} ${_absFile}
-		TARGET message-update-${_potBasename}
-		)
+			ADD_CUSTOM_COMMAND(
+				COMMENT "updating messages in ${_currentPoFile}"
+				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+			DEPENDS ${_absPotFile} ${_absFile}
+			TARGET message-update-${_potBasename}
+			)
 		ENDFOREACH ()
 	ENDIF()
 ENDIF()
