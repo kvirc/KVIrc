@@ -5,13 +5,13 @@
 # Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
 # Etherea <cle at virg0 dot org>, 2006.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-09 17:29+0200\n"
-"PO-Revision-Date: 2007-08-20 02:39+0200\n"
+"PO-Revision-Date: 2008-07-10 01:37+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,13 +20,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:44
-#, fuzzy
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://bmpx.backtrace.info\n"
 msgstr ""
-"Interfaccia per il popolare media player XMMS di UNIX.\n"
-"Scaricalo da http://www.xmms.org\n"
+"Interfaccia per BMPx.\n"
+"Scaricalo da http://bmpx.backtrace.info\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
@@ -63,12 +62,11 @@ msgstr ""
 "Scaricalo da http://www.xmms.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:33
-#, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
-"Interfaccia per il popolare media player audacious di UNIX.\n"
+"Interfaccia per il popolare media player audacious.\n"
 "Scaricalo da http://www.audacious-media-player.org\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
@@ -86,13 +84,12 @@ msgstr ""
 "directory dei plugin di Winamp e riavviare Winamp"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
-#, fuzzy
 msgid ""
 "An interface to the xmms2 media player.\n"
 "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 msgstr ""
-"Interfaccia per il popolare media player XMMS di UNIX.\n"
-"Scaricalo da http://www.xmms.org\n"
+"Interfaccia per il media player xmms2.\n"
+"Scaricalo da http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
@@ -134,10 +131,8 @@ msgstr ""
 "detect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
+msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgstr "I risultati non sono certi, provo un nuovo, più agressivo passo di analisi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
@@ -153,8 +148,7 @@ msgstr "Sembra non esserci un media player utilizzabile su questa macchina"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
-msgid ""
-"The selected media player interface failed to execute the requested function"
+msgid "The selected media player interface failed to execute the requested function"
 msgstr ""
 "L'interfaccia media player scelta non è riuscita ad eseguire la funzione "
 "richiesta"
@@ -172,3 +166,4 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Provo il media player \"%Q\": punteggio %d"
+
