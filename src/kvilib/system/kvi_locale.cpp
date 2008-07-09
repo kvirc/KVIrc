@@ -897,9 +897,9 @@ namespace KviLocale
 			g_szLang=szTmp;
 		}
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("KVIRC_LANG");
-		if(g_szLang.isEmpty())g_szLang = QLocale::system().name();
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LC_MESSAGES");
 		if(g_szLang.isEmpty())g_szLang = kvi_getenv("LANG");
+		if(g_szLang.isEmpty())g_szLang = QLocale::system().name();
 		if(g_szLang.isEmpty())g_szLang = "en";
 		g_szLang.trimmed();
 

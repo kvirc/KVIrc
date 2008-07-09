@@ -37,11 +37,7 @@
 
 inline char * kvi_getenv(const char * name)
 {
-#ifdef HAVE_GETENV
 	return getenv(name);
-#else
-	return 0;
-#endif
 }
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
