@@ -582,10 +582,9 @@ namespace KviIdentdOutputMode {
 #define KviOption_fontApplication 4                                  /* interface::look::global */
 #define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet */
 #define KviOption_fontTaskbar 6                                      /* interface::look::taskbar::classic taskbar */
+#define KviOption_fontTreeTaskbar 7                                  /* interface::look::taskbar::tree taskbar */
 
-/* fixme: taskbar font ? */
-
-#define KVI_NUM_FONT_OPTIONS 7
+#define KVI_NUM_FONT_OPTIONS 8
 
 
 

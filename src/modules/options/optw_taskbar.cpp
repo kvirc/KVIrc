@@ -73,8 +73,10 @@ KviTreeTaskBarForegroundOptionsWidget::KviTreeTaskBarForegroundOptionsWidget(QWi
 : KviOptionsWidget(parent,"treetaskbar_options_widget")
 {
 	createLayout();
+
+	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTreeTaskbar);
 	
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
+	KviTalGroupBox *g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeTaskBarForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeTaskBarActiveForeground);
@@ -84,9 +86,9 @@ KviTreeTaskBarForegroundOptionsWidget::KviTreeTaskBarForegroundOptionsWidget(QWi
 	addColorSelector(g,__tr2qs_ctx("Alert Level 4:","options"),KviOption_colorTreeTaskBarHighlight4Foreground);
 	addColorSelector(g,__tr2qs_ctx("Alert Level 5:","options"),KviOption_colorTreeTaskBarHighlight5Foreground);
 
-	addColorSelector(0,1,0,1,__tr2qs_ctx("Progress bar color:","options"),KviOption_colorTreeTaskBarProgress);
+	addColorSelector(0,2,0,2,__tr2qs_ctx("Progress bar color:","options"),KviOption_colorTreeTaskBarProgress);
 
-	addRowSpacer(0,2,0,2);
+	addRowSpacer(0,3,0,3);
 }
 
 

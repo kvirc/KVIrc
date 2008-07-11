@@ -641,7 +641,8 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Label","Arial",9,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
 	FONT_OPTION("Application","Arial",9,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Arial",9,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-	FONT_OPTION("Taskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
+	FONT_OPTION("Taskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
+	FONT_OPTION("TreeTaskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
 #else
 	FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
 	FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
@@ -649,7 +650,8 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Label","Sans Serif",10,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
 	FONT_OPTION("Application","Sans Serif",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-	FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
+	FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
+	FONT_OPTION("TreeTaskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
 #endif
 };
 

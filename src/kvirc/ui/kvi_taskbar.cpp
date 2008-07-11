@@ -476,15 +476,6 @@ void KviClassicTaskBar::orientationChangedSlot(Qt::Orientation o)
 	doLayout();
 }
 
-/*
-void KviClassicTaskBar::fontChange(const QFont &old)
-{
-	calcButtonHeight();
-	doLayout();
-	QToolBar::fontChange(old);
-}
-*/
-
 void KviClassicTaskBar::updateActivityMeter()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarActivityMeter))
@@ -1260,6 +1251,8 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 	KviTreeTaskBarTreeWidget* treeWidget = (KviTreeTaskBarTreeWidget*)parent();
 	KviTreeTaskBarItem* item = (KviTreeTaskBarItem*) treeWidget->itemFromIndex(index);
 	KviWindow* pWindow = item->kviWindow();
+
+	p->setFont(KVI_OPTION_FONT(KviOption_fontTreeTaskbar));
 
 	//paint cell background	
 	if (option.state & QStyle::State_Selected)
