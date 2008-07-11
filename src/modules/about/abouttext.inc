@@ -758,6 +758,25 @@ static char * g_szAboutText = "" \
 "\"I don't know what I want, but I know how to get it.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Fabio Bas</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"CtrlAltCa" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"ctrlaltca at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"bugfixing, porting, ..." \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"Can i haz KVIrc?\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
 "<br>" \
 "This list is far from being complete.<br>" \
 "A lot of more or less \"anonymous\" people have wasted their time, " \

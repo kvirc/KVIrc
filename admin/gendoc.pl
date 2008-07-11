@@ -45,7 +45,7 @@ $g_prefixes{'class'}="class";
 $g_prefixes{'module'}="module";
 $g_prefixes{'widget'}="widget";
 
-$g_version = "3.2.0.99";
+$g_version = "3.4.1";
 $g_filehandle="";
 $g_shortsIdx{"keyterms"}=0;
 $g_directory = "";
