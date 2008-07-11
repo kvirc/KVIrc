@@ -106,6 +106,7 @@ public:
 	virtual void switchWindow(bool bNext,bool bInContextOnly);
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions(){};
+	virtual void wheelEvent(QWheelEvent *e);
 	static void getTextForConsole(QString &szText,KviConsole * pConsole);
 protected slots:
 	virtual void updateActivityMeter();

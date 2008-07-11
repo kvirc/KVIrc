@@ -157,6 +157,15 @@ void KviTaskBarBase::switchWindow(bool bNext,bool bInContextOnly)
 	}
 }
 
+void KviTaskBarBase::wheelEvent(QWheelEvent *e)
+{
+	if ( e->delta() > 0 )
+		switchWindow(false, false);
+	else
+		switchWindow(true, false);
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviTaskBarItem
 //
