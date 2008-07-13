@@ -68,6 +68,7 @@
 #include <QPushButton>
 #include <QEvent>
 #include <QCloseEvent>
+#include <QTimer>
 
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS 3000
 #define INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS 3

@@ -28,7 +28,6 @@
 
 #include <QObject>
 #include <QSocketNotifier>
-#include <QTimer>
 
 class KviWindow;
 class KviDccMarshal;
@@ -68,7 +67,6 @@ protected:
 	// internals
 	kvi_socket_t                 m_fd;        // socket
 	QSocketNotifier            * m_pSn;
-	QTimer                     * m_pTimeoutTimer;
 	bool                         m_bUseTimeout;
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL                     * m_pSSL;
