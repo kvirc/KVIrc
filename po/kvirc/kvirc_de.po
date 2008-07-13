@@ -9998,7 +9998,7 @@ msgstr "Verbindungsfehler:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_socket.cpp:967
 msgid "Connect attempt timed out"
-msgstr "Der Verbindungsversuch ist ausgetimet."
+msgstr "tüberschreitung beim Verbindungsversuch."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_socket.cpp:993
 msgid "Can't start the DNS thread"
@@ -11127,7 +11127,7 @@ msgstr "Der Stückchen-Header ist zu lang: Er überschreitete 4096 Byte"
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/net/kvi_http.cpp:987
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/net/kvi_http.cpp:1193
 msgid "Operation timed out"
-msgstr "Der Vorgang ist ausgetimet"
+msgstr "Zeitüberschreitung bei diesem Vorgang"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/net/kvi_http.cpp:1003
 msgid "Unexpected SSL error"
@@ -11161,7 +11161,7 @@ msgstr "Es ist ein nicht behebbarer Fehler während des SSL-Handshakes aufgetret
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/net/kvi_http.cpp:1272
 msgid "Operation timed out (while selecting for read)"
-msgstr "Der Vergang ist ausgetimet (während des Auswählens zum Lesen)"
+msgstr "Zeitüberschreitung bei diesem Vorgang (während des Auswählens zum Lesen)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/net/kvi_http.cpp:1382
 msgid "This KVIrc executable has no SSL support"
