@@ -4215,11 +4215,11 @@ msgstr "Die Operation wurde abgebrochen"
 #: src/kvilib/net/kvi_http.cpp:965
 #: src/kvilib/net/kvi_http.cpp:1171
 msgid "Operation timed out"
-msgstr "Der Vorgang ist ausgetimet"
+msgstr "Zeitüberschreitung bei dem Vorgang"
 
 #: src/kvilib/net/kvi_http.cpp:1248
 msgid "Operation timed out (while selecting for read)"
-msgstr "Der Vergang ist ausgetimet (während des Auswählens zum Lesen)"
+msgstr "Zeitüberschreitung bei dem Vorgang (während des Auswählens zum Lesen)"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:100
 msgid "Ops... for some reason the link filter object has been destroyed"
@@ -8951,7 +8951,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Zusatzdeinstallation bestätigen"
 
 #~ msgid "Connect attempt timed out"
-#~ msgstr "Der Verbindungsversuch ist ausgetimet."
+#~ msgstr "Zeitüberschreitung beim Verbindungsversuch."
 
 #~ msgid "Connect failure: "
 #~ msgstr "Verbindungsfehler:"
