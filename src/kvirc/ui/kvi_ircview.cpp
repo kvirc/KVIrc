@@ -2815,6 +2815,10 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	// THIS FUNCTION IS A MONSTER
 	//
 
+	/*
+	 * Profane description: this is ircview's most important function. It takes a lot of cpu cycles to complete, so we want to be sure
+	 * it's well optimized. First, we want to skip this method everytime it's useless: it we're too short or we're covered by other windows.
+	 */
 	int scrollbarWidth = m_pScrollBar->width();
 	int widgetWidth  = width() - scrollbarWidth;
 	if(!isVisible() || (widgetWidth < 20))
@@ -2823,10 +2827,8 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		return; //can't show stuff here
 	}
 
-	// if the mdiManager is in SDI mode
-	// and this window is attacched but is not the toplevel one
-	// then it is hidden completely behind the other windows
-	// and we can avoid to paint it :)
+	// if the mdiManager is in SDI mode and this window is attacched but is not the toplevel one
+	// then it is hidden completely behind the other windows and we can avoid to paint it :)
 	if(g_pFrame->mdiManager()->isInSDIMode() &&
 		(m_pKviWindow->mdiParent() != g_pFrame->mdiManager()->topChild()) &&
 		(m_pKviWindow->mdiParent()))
@@ -2850,6 +2852,9 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 		r = rect();
 	}
 
+	/*
+	 * Profane description: we start the real paint here: set some geometry, a font, and paint the background
+	 */
 	int rectLeft   = r.x();
 	int rectTop    = r.y();
 	int rectHeight = r.height();
@@ -2889,12 +2894,18 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	}
 #endif
 
+	/*
+	 * Profane description: after the background, start to paint the contents (a list of text lines with "dynamic contents", correctly
+	 * wrapped at the right edge of this control).
+	 */
+
 	//Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth   = widgetWidth;
 	int defLeftCoord   = KVI_IRCVIEW_HORIZONTAL_BORDER;
 	int lineWrapsHeight;
 
+	// if we draw an icon as a line preamble, we have to change borders geometry accordingly
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
 	{
 		maxLineWidth -= KVI_IRCVIEW_PIXMAP_SEPARATOR_AND_DOUBLEBORDER_WIDTH;
@@ -4825,6 +4836,14 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 
 		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
 
+		//scroll the ircview if the user is trying to extend a selection near the ircview borders
+		int curY = e->pos().y();
+		if(curY < KVI_IRCVIEW_VERTICAL_BORDER)
+		{
+			prevLine();
+		} else if(curY > (height() - KVI_IRCVIEW_VERTICAL_BORDER)) {
+			nextLine();
+		}
 		/*if(m_iMouseTimer)
 		{
 			killTimer(m_iMouseTimer);
