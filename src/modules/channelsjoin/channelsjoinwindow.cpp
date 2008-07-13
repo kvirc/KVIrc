@@ -92,23 +92,18 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
-	KviTalHBox * hb = new KviTalHBox(this);
-	hb->setSpacing(4);
 
-#ifdef COMPILE_USE_QT4
-	g->addMultiCellWidget(hb,2,2,0,1,Qt::AlignHCenter);
-#else
-	g->addMultiCellWidget(hb,2,2,0,1,AlignHCenter);
-#endif
-
-	m_pJoinButton = new QPushButton(__tr2qs("&Join"),hb);
+	m_pJoinButton = new QPushButton(__tr2qs("&Join"),this);
 	// Join on return pressed
 	m_pJoinButton->setDefault(true);
 	connect(m_pJoinButton,SIGNAL(clicked()),this,SLOT(joinClicked()));
 
-	m_pRegButton = new QPushButton(__tr2qs("&Register"),hb);
-	// Join on return pressed
-	connect(m_pRegButton,SIGNAL(clicked()),this,SLOT(regClicked()));
+#ifdef COMPILE_USE_QT4
+	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,Qt::AlignHCenter);
+#else
+	g->addMultiCellWidget(m_pJoinButton,2,2,0,1,AlignHCenter);
+#endif
+
 
 	m_pShowAtStartupCheck = new KviStyledCheckBox(__tr2qs("Show this window after connecting"),this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc));
@@ -234,13 +229,9 @@ void KviChannelsJoinWindow::enableJoin()
 	if(c)
 	{
 		if(tmp.isEmpty())
-		{
 			m_pJoinButton->setEnabled(false);
-			m_pRegButton->setEnabled(false);
-		} else {
+		else
 			m_pJoinButton->setEnabled(true);
-			m_pRegButton->setEnabled(true);
-		}
 	} else {
 		m_pListView->setEnabled(false);
 		m_pGroupBox->setEnabled(false);
@@ -270,29 +261,6 @@ void KviChannelsJoinWindow::joinClicked()
 
 	m_pChannelEdit->setText("");
 	m_pPass->setText("");
-}
-
-void KviChannelsJoinWindow::regClicked()
-{
-	KviStr tmp = m_pChannelEdit->text();
-	KviTalListViewItem *item;
-
-	if(tmp.isEmpty())return;
-
-	KviStr command(KviStr::Format,"regchan.add %s",tmp.ptr());
-
-	KviConsole * c = g_pApp->topmostConnectedConsole();
-	if(!c)return; // no connection
-	KviWindow * w = g_pActiveWindow;
-	if(w->console() != c)w = c;
-	KviKvsScript::run(command.ptr(),w);
-	fillListView();
-	item = (KviTalListViewItem*)m_pListView->findItem(QString(tmp), 0);
-	if(item)
-	{
-		m_pListView->setSelected(item, true);
-		m_pListView->ensureItemVisible(item);
-	}
 }
 
 /*

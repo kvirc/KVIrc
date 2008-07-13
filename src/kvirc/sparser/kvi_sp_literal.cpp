@@ -72,12 +72,6 @@
 //#include "kvi_iconmanager.h"
 #include <qdatetime.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <QTextDocument>
-#else
-	#include <qstylesheet.h>
-#endif
-
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -640,7 +634,7 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 			KviQCString szC = msg->connection()->encodeText(szChan);
 			if(!szPass.isEmpty())
 			{
-				KviQCString szP = msg->connection()->encodeText(szPass);
+				KviQCString szP = msg->connection()->encodeText(szChan);
 				msg->connection()->sendFmtData("JOIN %s %s",szC.data(),szP.data());
 			} else msg->connection()->sendFmtData("JOIN %s",szC.data());
 		}
@@ -916,12 +910,15 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					{
 						// don't send the message to the notifier twice
 						iFlags |= KviConsole::NoNotifier;
-						#ifdef COMPILE_USE_QT4
-							QString szMsg = Qt::escape(szMsgText); 
-						#else
-							QString szMsg = QStyleSheet::escape(szMsgText);
-						#endif
-						//debug("kvi_sp_literal.cpp:908 debug: %s",szMsg.data());
+						QString szMsg = "";
+						//QString szMsg = "<b>&lt;";
+						//szMsg += szNick;
+						//szMsg += "&gt;</b> ";
+						QString szHtml = szMsgText;
+						szHtml.replace("<","&lt;");
+						szHtml.replace(">","&gt;");
+						szMsg += szHtml;
+						//debug("kvi_sp_literal.cpp:908 debug: %s",szHtml.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYPRIVMSG,szMsg,1800);
 					}
 				}
@@ -1274,12 +1271,15 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					{
 						// don't send the message twice to the notifier
 						iFlags |= KviConsole::NoNotifier;
-						#ifdef COMPILE_USE_QT4
-							QString szMsg = Qt::escape(szMsgText); 
-						#else
-							QString szMsg = QStyleSheet::escape(szMsgText);
-						#endif
-						//debug("kvi_sp_literal.cpp:908 debug: %s",szMsg.data());
+						QString szMsg = "";
+						//QString szMsg = "<b>&lt;";
+						//szMsg += szNick;
+						//szMsg += "&gt;</b> ";
+						QString szHtml = szMsgText;
+						szHtml.replace("<","&lt;");
+						szHtml.replace(">","&gt;");
+						szMsg += szHtml;
+						//debug("kvi_sp_literal.cpp:1262 debug: %s",szHtml.data());
 						g_pApp->notifierMessage(query,KVI_SMALLICON_QUERYNOTICE,szMsg,1800);
 					}
 				}

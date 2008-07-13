@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-08 02:40+0200\n"
+"POT-Creation-Date: 2008-03-21 01:02+0100\n"
 "PO-Revision-Date: 2005-06-02 18:36+0200\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr "Nelze nalézt běžící okno winampu"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -35,8 +35,8 @@ msgstr ""
 "zásuvný modul z KVIrc distribučního adresáře do složky Winamp zásuvných "
 "modulů a restartovat winamp."
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
@@ -44,15 +44,15 @@ msgstr ""
 "Zásovný modul winampu nebyl korektně nainstalován. Zkuste /help mediaplayer."
 "nowplaying"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_interface.cpp:41
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:41
 msgid "Function not implemented"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_jukinterface.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_jukinterface.cpp:45
 msgid "An interface to the Juk KDE media player."
 msgstr "Interface k Juk KDE přehrávači médií."
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://www.xmms.org\n"
@@ -60,7 +60,7 @@ msgstr ""
 "Interface k populárnímu UNIXovému xmms přehrávači médií.\n"
 "Stáhněte si jej na http://www.xmms.org\n"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 #, fuzzy
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
@@ -69,74 +69,74 @@ msgstr ""
 "Interface k populárnímu UNIXovému xmms přehrávači médií.\n"
 "Stáhněte si jej na http://www.xmms.org\n"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:133
 #, fuzzy
 msgid "Can't load the player library (%Q)"
 msgstr "Nelze načíst xmms knihovnu (libxmms.so)"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:142
 #, fuzzy
 msgid "Can't find symbol %s in %Q"
 msgstr "Nelze nalézt symbol %s v libxmms.so"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_amipinterface.cpp:83
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:83
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/mp_amarokinterface.cpp:43
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/mp_amarokinterface.cpp:43
 msgid "An interface to the AmaroK KDE media player."
 msgstr "Interface k AmaroK KDE přehrávač médií."
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:66
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:92
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:66
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Zkouší se interface  přehrávače médií \"%Q\": skóre %d"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:74
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:74
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr "Není jistý výsledek, zkouší se druhý, více agresivní detekční průběh"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:102
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:102
 msgid "Choosing media player interface \"%Q\""
 msgstr "Zvolen interface přehrávače médií \"%Q\""
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:105
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Vypadá to jako, že není použitelný přehrávač médií na tomto stroji"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:115
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:115
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr "Nebyl vybrán interface k prehrávači médií. Zkuste /mediaplayer.detect"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr ""
 "Zvolený interface přehrávače médií selhal při spuštění požadované funkce"
 
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:135
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:572
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:595
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:637
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:676
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1184
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1320
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1364
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:572
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:637
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:676
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1184
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1320
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1364
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1595
 msgid "Last interface error: "
 msgstr "Poslední chyba interface: "
 

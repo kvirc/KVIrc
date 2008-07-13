@@ -608,16 +608,16 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 
 	m_pUFore = uFore;
 	m_pUBack = uBack;
-
+	
 	m_uBack = *uBack;
 	m_uFore = *uFore;
 
 	setButtonPalette();
 
 	setEnabled(bEnabled);
-
+	
 	m_pContextPopup = new KviTalPopupMenu(this);
-
+	
 	m_pForePopup = new KviTalPopupMenu(this);
 	connect(m_pForePopup,SIGNAL(activated(int)),this,SLOT(foreSelected(int)));
 	int i;
@@ -672,7 +672,7 @@ void KviMircTextColorSelector::setEnabled(bool bEnabled)
 void KviMircTextColorSelector::setButtonPalette()
 {
 	QPalette pal;
-
+	
 	if(m_uBack > KVI_MIRCCOLOR_MAX_BACKGROUND)
 	{
 		if(m_uBack != KVI_TRANSPARENT)m_uBack = KVI_TRANSPARENT;
@@ -682,7 +682,7 @@ void KviMircTextColorSelector::setButtonPalette()
 	}
 
 	if(m_uFore > KVI_MIRCCOLOR_MAX_FOREGROUND)m_uFore = KVI_MIRCCOLOR_MAX_FOREGROUND;
-
+	
 	pal.setColor(QColorGroup::ButtonText,KVI_OPTION_MIRCCOLOR(m_uFore));
 	pal.setColor(QColorGroup::Text,KVI_OPTION_MIRCCOLOR(m_uFore));
 
@@ -740,33 +740,33 @@ KviChanListViewItem::KviChanListViewItem(KviTalListView* pList,QString szChan,QS
 	setText(1,mask);
 }
 
-KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled)
+KviCahnnelListSelector::KviCahnnelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled)
 : KviTalVBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
 	m_pListView = new KviTalListView(this);
 	m_pListView->addColumn(__tr2qs("Channel name"));
 	m_pListView->addColumn(__tr2qs("Channel password"));
-
+	
 	KviTalHBox* pEditsHBox = new KviTalHBox(this);
-
+	
 	m_pChanLineEdit = new QLineEdit(pEditsHBox);
 	connect(m_pChanLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pChanLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
-
+	
 	m_pPassLineEdit = new QLineEdit(pEditsHBox);
 	m_pPassLineEdit->setEchoMode(QLineEdit::Password);
 	connect(m_pPassLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pPassLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
-
-
+	
+	
 	KviTalHBox * hBox = new KviTalHBox(this);
 	m_pAddButton = new QPushButton(__tr2qs("A&dd"),hBox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),hBox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pOption = pOption;
-
+	
 	for ( QStringList::Iterator it = pOption->begin(); it != pOption->end(); ++it ) {
 		new KviChanListViewItem(m_pListView,(*it).section(':',0,0),(*it).section(':',1));
 	}
@@ -779,11 +779,11 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	setEnabled(bEnabled);
 }
 
-KviChannelListSelector::~KviChannelListSelector()
+KviCahnnelListSelector::~KviCahnnelListSelector()
 {
 }
 
-void KviChannelListSelector::commit()
+void KviCahnnelListSelector::commit()
 {
 	m_pOption->clear();
 	register KviChanListViewItem* pItem;
@@ -795,7 +795,7 @@ void KviChannelListSelector::commit()
 	}
 }
 
-void KviChannelListSelector::setEnabled(bool bEnabled)
+void KviCahnnelListSelector::setEnabled(bool bEnabled)
 {
 	m_pLabel->setEnabled(bEnabled);
 	m_pListView->setEnabled(bEnabled);
@@ -805,16 +805,16 @@ void KviChannelListSelector::setEnabled(bool bEnabled)
 	m_pRemoveButton->setEnabled(bEnabled);
 }
 
-void KviChannelListSelector::textChanged(const QString &str)
+void KviCahnnelListSelector::textChanged(const QString &str)
 {
 	m_pAddButton->setEnabled(!m_pChanLineEdit->text().isEmpty());
 }
 
-void KviChannelListSelector::selectionChanged()
+void KviCahnnelListSelector::selectionChanged()
 {
 }
 
-void KviChannelListSelector::addClicked()
+void KviCahnnelListSelector::addClicked()
 {
 	if(!m_pChanLineEdit->text().isEmpty())
 	{
@@ -824,7 +824,7 @@ void KviChannelListSelector::addClicked()
 	}
 }
 
-void KviChannelListSelector::removeClicked()
+void KviCahnnelListSelector::removeClicked()
 {
 	KviPointerList<KviTalListViewItem> lst;
 	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );

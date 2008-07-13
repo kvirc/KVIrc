@@ -305,8 +305,7 @@ bool KviSSL::initContext(Method m)
 	m_pSSLCtx = SSL_CTX_new(m == Client ? SSLv23_client_method() : SSLv23_server_method());
 	if(!m_pSSLCtx)return false;
 	// FIXME: this should be configurable ?
-	// NOTE: see bug ticket #155
-	SSL_CTX_set_cipher_list(m_pSSLCtx,"ALL:!ADH:!EXP:!SSLv2@STRENGTH");
+	SSL_CTX_set_cipher_list(m_pSSLCtx,"ALL:eNULL");
 	SSL_CTX_set_tmp_dh_callback(m_pSSLCtx,my_ugly_dh_callback);
 	return true;
 }

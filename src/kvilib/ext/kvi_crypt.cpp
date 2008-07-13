@@ -210,17 +210,14 @@
 
 	void KviCryptEngineManager::unregisterEngines(void * providerHandle)
 	{
-		KviPointerList<QString> lEnginesToRemove;
-		lEnginesToRemove.setAutoDelete(true);
-		
-		for(KviPointerHashTableEntry<QString,KviCryptEngineDescription> * e = m_pEngineDict->firstEntry();e;e = m_pEngineDict->nextEntry())
+		KviPointerHashTableIterator<QString,KviCryptEngineDescription> it(*m_pEngineDict);
+		while(it.current())
 		{
-			if(e->data()->providerHandle == providerHandle)
-				lEnginesToRemove.append(new QString(e->key()));
+			if(it.current()->providerHandle == providerHandle)
+				m_pEngineDict->remove(it.currentKey());
+			else
+				++it;
 		}
-
-		for(QString * pszEngineName = lEnginesToRemove.first();pszEngineName;pszEngineName = lEnginesToRemove.next())
-			m_pEngineDict->remove(*pszEngineName);
 	}
 
 	KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString &szName)

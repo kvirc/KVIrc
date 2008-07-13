@@ -72,25 +72,25 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 {
 	m_pOnConnectEditor=0;
 	m_pOnLoginEditor=0;
-
+	
 	m_pUserEditor=0;
 	m_pPassEditor=0;
 	m_pNickEditor=0;
 	m_pRealEditor=0;
 	m_pDescEditor=0;
-
+	
 	m_pEncodingEditor=0;
-
+		
 	m_pAutoConnectCheck=0;
-
+		
 	m_pNickServListView=0;
 	m_pNickServCheck=0;
 	m_pAddRuleButton=0;
 	m_pDelRuleButton=0;
 	m_pEditRuleButton=0;
-
+	
 	m_pChannelListSelector=0;
-
+	
 	QGridLayout * g = new QGridLayout(this,4,4,10,4);
 
 	setCaption(__tr2qs_ctx("Network Details","options"));
@@ -205,7 +205,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 
 	if(n->autoJoinChannelList())
 		m_lstChannels = *(n->autoJoinChannelList());
-	m_pChannelListSelector = new KviChannelListSelector(tab,
+	m_pChannelListSelector = new KviCahnnelListSelector(tab,
 		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
 #ifdef COMPILE_INFO_TIPS
   KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
@@ -219,7 +219,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	// after connect execute
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab,1,1,10,4);
-
+	
 	m_pOnConnectEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pOnConnectEditor,0,0);
 	m_pOnConnectEditor->setText(n->onConnectCommand());
@@ -230,9 +230,9 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 				"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
 				"command sequence.</center>","options"));
 #endif
-
+	
 	tw->addTab(tab,__tr2qs_ctx("On Connect","options"));
-
+	
 
 	// after login execute
 	tab = new QWidget(tw);
@@ -241,27 +241,27 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pOnLoginEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pOnLoginEditor,0,0);
 	m_pOnLoginEditor->setText(n->onLoginCommand());
-
+	
 	m_pOnLoginEditor->setMinimumHeight(150);
-
+	
 #ifdef COMPILE_INFO_TIPS
 	KviTalToolTip::add(m_pOnLoginEditor,
 				__tr2qs_ctx("<center>The following commands will be executed after a successful login to a server in this network.<br>" \
 						"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote privatelog</tt> instead of <tt>/quote privatelog</tt>).<br>"
 						"This is useful for automatically opening queries, setting variables, etc.</center>","options"));
 #endif
-
+	
 	tw->addTab(tab,__tr2qs_ctx("On Login","options"));
 
 
 	// nick serv rules
-
+	
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab,3,3,10,5);
-
+	
 	KviNickServRuleSet * rs = n->nickServRuleSet();
 	bool bNickServEnabled = rs ? (rs->isEnabled() && !rs->isEmpty()) : false;
-
+	
 	m_pNickServCheck = new KviStyledCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
 	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
 #ifdef COMPILE_INFO_TIPS
@@ -269,7 +269,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 #endif
 	m_pNickServCheck->setChecked(bNickServEnabled);
-
+	
 	m_pNickServListView = new KviTalListView(tab);
 	m_pNickServListView->setSelectionMode(KviTalListView::Single);
 	m_pNickServListView->setAllColumnsShowFocus(true);
@@ -278,7 +278,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 	m_pNickServListView->addColumn(__tr2qs_ctx("NickServ Request Mask","options"));
 	m_pNickServListView->addColumn(__tr2qs_ctx("Identify Command","options"));
 	connect(m_pNickServListView,SIGNAL(selectionChanged()),this,SLOT(enableDisableNickServControls()));
-
+	
 	gl->addMultiCellWidget(m_pNickServListView,1,1,0,2);
 #ifdef COMPILE_INFO_TIPS
 	KviTalToolTip::add(m_pNickServListView,
@@ -289,22 +289,22 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 				"In other words, be sure to know what you're doing.<br>" \
 				"Also note that the password that you provide is stored as <b>PLAIN TEXT</b>.</center>","options"));
 #endif
-
+	
 	m_pAddRuleButton = new QPushButton(__tr2qs_ctx("Add Rule","options"),tab);
 	connect(m_pAddRuleButton,SIGNAL(clicked()),this,SLOT(addNickServRule()));
 	gl->addWidget(m_pAddRuleButton,2,0);
-
-
+	
+	
 	m_pEditRuleButton = new QPushButton(__tr2qs_ctx("Edit Rule","options"),tab);
 	connect(m_pEditRuleButton,SIGNAL(clicked()),this,SLOT(editNickServRule()));
 	gl->addWidget(m_pEditRuleButton,2,1);
-
+	
 	m_pDelRuleButton = new QPushButton(__tr2qs_ctx("Delete Rule","options"),tab);
 	connect(m_pDelRuleButton,SIGNAL(clicked()),this,SLOT(delNickServRule()));
 	gl->addWidget(m_pDelRuleButton,2,2);
-
+	
 	connect(m_pNickServCheck,SIGNAL(toggled(bool)),this,SLOT(enableDisableNickServControls()));
-
+	
 	if(rs && rs->rules())
 	{
 		KviPointerList<KviNickServRule> * ll = rs->rules();
@@ -313,11 +313,11 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviIrcNetwork * n
 			(void)new KviTalListViewItem(m_pNickServListView,rule->registeredNick(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
 		}
 	}
-
+	
 	enableDisableNickServControls();
-
+	
 	gl->setRowStretch(1,1);
-
+	
 	tw->addTab(tab,__tr2qs_ctx("NickServ","options"));
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
@@ -516,7 +516,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 #endif
 	gbox = new KviTalGroupBox(1,Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
-
+	
 	m_pUseDefaultInitUMode = new KviStyledCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
 #ifdef COMPILE_INFO_TIPS
 	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
@@ -526,15 +526,15 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviStr szDefUMode = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 	m_pUseDefaultInitUMode->setChecked(!bHasUmode);
 	connect(m_pUseDefaultInitUMode,SIGNAL(toggled(bool)),this,SLOT(useDefaultInitUModeToggled(bool)));
-
+	
 	m_pIMode = new KviStyledCheckBox(__tr2qs_ctx("Invisible (+i)","options"),gbox);
 	m_pIMode->setEnabled(bHasUmode);
 	m_pIMode->setChecked(bHasUmode ? s->initUMode().contains('i',false) : szDefUMode.contains('i',false));
-
+	
 	m_pSMode = new KviStyledCheckBox(__tr2qs_ctx("Server notices (+s)","options"),gbox);
 	m_pSMode->setEnabled(bHasUmode);
 	m_pSMode->setChecked(bHasUmode ? s->initUMode().contains('s',false) : szDefUMode.contains('s',false));
-
+	
 	m_pWMode = new KviStyledCheckBox(__tr2qs_ctx("Wallops (+w)","options"),gbox);
 	m_pWMode->setEnabled(bHasUmode);
 	m_pWMode->setChecked(bHasUmode ? s->initUMode().contains('w',false) : szDefUMode.contains('w',false));
@@ -548,13 +548,13 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WHO)),__tr2qs_ctx("Identity","options"));
 
 	// Connection tab
-
+	
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab,11,1,10,4);
-
+	
 	l = new QLabel(__tr2qs_ctx("Port:","options"),tab);
 	gl->addWidget(l,0,0);
-
+	
 
 	m_pPortEditor = new QLineEdit(tab);
 	gl->addWidget(m_pPortEditor,0,1);
@@ -583,7 +583,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 #else
 	m_pIpEditor->setAddressType(KviIpEditor::IpV4);
 #endif
-
+	
 	if(!m_pIpEditor->setAddress(s->m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
@@ -592,7 +592,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 		m_pIpEditor->setAddress("0.0.0.0");
 #endif
 	}
-
+	
 	m_pCacheIpCheck = new KviStyledCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 #ifdef COMPILE_INFO_TIPS
@@ -631,16 +631,16 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	m_pUseSSLCheck->setEnabled(false);
 #endif
 	m_pUseSSLCheck->setChecked(s->useSSL());
-
-
+	
+	
 	m_pUseAutoConnect = new KviStyledCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
-
+	
 	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
 #ifdef COMPILE_INFO_TIPS
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 #endif
-
+	
 	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
 	gl->addWidget(l,6,0);
 	m_pEncodingEditor = new QComboBox(false,tab);
@@ -724,11 +724,11 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to thos server.\n" \
 										"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
 										"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
-#endif
-
+#endif	
+	
 	m_pProxyEditor->insertItem(__tr2qs_ctx("Default","options"));
-	m_pProxyEditor->insertItem(__tr2qs_ctx("Direct connection","options"));
-
+	m_pProxyEditor->insertItem(__tr2qs_ctx("Direct connection","options"));	
+	
 	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
 	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
 	{
@@ -752,7 +752,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 
 	if(s->autoJoinChannelList())
 		m_lstChannels = *(s->autoJoinChannelList());
-	m_pChannelListSelector = new KviChannelListSelector(tab,
+	m_pChannelListSelector = new KviCahnnelListSelector(tab,
 		__tr2qs_ctx("Channels to join automatically upon connect:","options"),&m_lstChannels,true);
 #ifdef COMPILE_INFO_TIPS
   KviTalToolTip::add(m_pChannelListSelector,__tr2qs_ctx("<center>Here you can set a list of channels to be joined automatically " \
@@ -815,7 +815,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	g->setColStretch(1,1);
 
 	tw->setMinimumWidth(390);
-
+	
 	setHeaderLabelText();
 }
 
@@ -856,7 +856,7 @@ void KviServerDetailsWidget::setHeaderLabelText()
 	num.setNum(uPort);
 	szTmp += num;
 	szTmp += "</b></font>";
-
+	
 	m_pHeaderLabel->setText(szTmp);
 }
 
@@ -896,7 +896,7 @@ void KviServerDetailsWidget::fillData(KviIrcServer * s)
 		}
 		s->setInitUMode(szUMode.ptr());
 	}
-
+	
 	QString tmp = m_pPortEditor->text();
 	bool bOk;
 	kvi_u32_t uPort = tmp.toUInt(&bOk);
@@ -911,7 +911,7 @@ void KviServerDetailsWidget::fillData(KviIrcServer * s)
 	if(m_pIpEditor)
 	{
 		KviStr tmpAddr = m_pIpEditor->address();
-
+	
 		if(!m_pIpEditor->hasEmptyFields())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
@@ -1121,7 +1121,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
-
+	
 	KviTalGroupBox *gbox = addGroupBox(0,1,1,1,3,Qt::Horizontal,__tr2qs_ctx("Active Configuration","options"));
 	m_pSrvNetLabel = new QLabel(__tr2qs_ctx("Server:","options"),gbox);
 
@@ -1226,7 +1226,7 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	data.cutFromLast(':');
 	data.replaceAll("/","");
 	// we should have a full server name now , with no port
-
+	
 	KviStr port = m_pRecentPopup->text(id);
 	port.cutToLast(':');
 	bool bOk;
@@ -1262,7 +1262,7 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 			}
 		}
 	}
-
+	
 	// fallback to the server with the wrong port
 	if(pFoundNet)
 	{
@@ -1338,7 +1338,7 @@ void KviServerOptionsWidget::listViewItemSelectionChanged(KviTalListViewItem *it
 	} else {
 		m_pRemoveButton->setEnabled(false);
 		m_pCopyServerButton->setEnabled(true);
-
+		
 		m_pConnectCurrent->setEnabled(false);
 		m_pSrvNetLabel->setEnabled(false);
 		m_pSrvNetEdit->setEnabled(false);
@@ -1392,7 +1392,7 @@ void KviServerOptionsWidget::commit()
 
 			KviServerOptionsListViewItem * ch = (KviServerOptionsListViewItem *)it->firstChild();
 			KviIrcServer *srv;
-
+			
 			while(ch)
 			{
 				if(ch->m_pServerData)
@@ -1420,9 +1420,6 @@ void KviServerOptionsWidget::commit()
 	}
 
 	KviOptionsWidget::commit();
-
-	// Ensure saving of the server DB
-	g_pApp->saveIrcServerDataBase();
 }
 
 void KviServerOptionsWidget::listViewRightButtonPressed(KviTalListViewItem *it,const QPoint &pnt,int col)

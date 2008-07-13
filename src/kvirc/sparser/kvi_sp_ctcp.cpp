@@ -60,11 +60,6 @@
 
 #include <qdatetime.h>
 
-#ifdef COMPILE_USE_QT4
-	#include <QTextDocument>
-#else
-	#include <qstylesheet.h>
-#endif
 
 
 
@@ -1436,8 +1431,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 	int type = msg->msg->console()->applyHighlighting(pOut,KVI_OUT_ACTION,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),szData);
 
 	if(type < 0)return; // event stopped the message!
-
-	if(type == KVI_OUT_HIGHLIGHT || !bIsChannel)
+	if(type == KVI_OUT_HIGHLIGHT)
 	{
 		if(!pOut->hasAttention())
 		{
@@ -1448,11 +1442,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				QString szMsg = "<b>";
 				szMsg += msg->pSource->nick();
 				szMsg += "</b> ";
-				#ifdef COMPILE_USE_QT4
-					szMsg += Qt::escape(szData);
-				#else
-					szMsg += QStyleSheet::escape(szData);
-				#endif
+				szMsg += szData;
 				//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
 				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,90);
 			}

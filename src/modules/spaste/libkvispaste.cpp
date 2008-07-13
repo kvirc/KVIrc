@@ -101,14 +101,14 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
-
-	if( (!window) )return false;
+	if( (!window) || window->console()->isNotConnected())return false;
 
 	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.ascii())))
 	{
         c->warning(__tr2qs("File not found or empty"));
 		return false;
 	}
+
 	QFile tmp(szFile);
 	if(!tmp.open(IO_ReadOnly)) {
 		c->warning(__tr2qs("I can't open that file"));
@@ -117,9 +117,7 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 	tmp.close();
 
 	SPasteController * controller = spaste_find_controller(window);
-
 	if(!controller)controller = new SPasteController(window,++ctrlId);
-
 	if(!controller->pasteFileInit(szFile)) {
 		c->warning(__tr2qs("Could not paste file"));
 		return false;
@@ -160,7 +158,7 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
 	if( (!window) || window->console()->isNotConnected())return false;
-
+	
 	SPasteController * controller = spaste_find_controller(window);
 	if(!controller)controller = new SPasteController(window,++ctrlId);
 	controller->pasteClipboardInit();
@@ -211,7 +209,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	} else {
 		KviPointerListIterator<SPasteController> it(*g_pControllerList);
 		SPasteController *item;
-
+        
 		if(!iId) //Delete all spaste's from the current window
 		{
 			if((c->window()->type() != KVI_WINDOW_TYPE_CHANNEL) && (c->window()->type() != KVI_WINDOW_TYPE_QUERY) && (c->window()->type() != KVI_WINDOW_TYPE_DCCCHAT))
@@ -228,8 +226,8 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 			}
 		} else //Delete the spaste with the given id
 		{
-			while( (item = it.current()) != 0)
-			{
+			while( (item = it.current()) != 0) 
+			{ 
 				++it;
 				if(item->getId() == iId)delete item;
 			}
@@ -262,7 +260,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 //--------------------------------------------------
 
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
-{
+{ 
 	KviPointerListIterator<SPasteController> it(*g_pControllerList);
 	SPasteController *item;
 
@@ -299,7 +297,7 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 
 
 static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
-{
+{ 
 	kvs_int_t delay;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("delay",KVS_PT_INTEGER,0,delay)
@@ -308,7 +306,7 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-//-------------------------------------------------
+//-------------------------------------------------    
 static bool spaste_module_init(KviModule * m)
 {
 	g_pControllerList = new KviPointerList<SPasteController>;

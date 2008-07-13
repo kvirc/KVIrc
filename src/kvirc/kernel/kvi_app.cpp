@@ -71,7 +71,6 @@
 #include "kvi_fileutils.h"
 #include "kvi_time.h"
 #include "kvi_doublebuffer.h"
-#include "kvi_ircview.h"
 #include "kvi_stringconversion.h"
 #include "kvi_useridentity.h"
 
@@ -108,12 +107,6 @@
 #ifdef COMPILE_ON_WINDOWS
 #include <QPluginLoader>
 #endif
-#endif
-
-#ifdef COMPILE_USE_QT4
-	#include <QTextDocument>
-#else
-	#include <qstylesheet.h>
 #endif
 
 KVIRC_API KviApp                       * g_pApp                    = 0; // global application pointer
@@ -1055,11 +1048,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-#ifdef COMPILE_USE_QT4
-			notifierMessage(0,iIconId,Qt::escape(szMsg),30); 
-#else
-			notifierMessage(0,iIconId,QStyleSheet::escape(szMsg),30);
-#endif
+			notifierMessage(0,iIconId,szMsg,30);
 		}
 		return;
 	}
@@ -2039,8 +2028,6 @@ bool KviApp::playFile(const char * filename,KviStr &error,KviWindow * w)
 
 void KviApp::heartbeat(kvi_time_t tNow)
 {
-	const struct tm *pTm = localtime(&tNow);
-
 	if(g_pApp->topmostConnectedConsole())
 	{
 		// FIXME: this has huge precision problems...
@@ -2051,15 +2038,6 @@ void KviApp::heartbeat(kvi_time_t tNow)
 	// we don't need a really great precision here, so 128 is still ok
 	if(!(tNow & 0x7f))
 		KviDoubleBuffer::heartbeat();
-
-	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec) {
-		KviPointerHashTableIterator<const char *,KviWindow> it(*g_pGlobalWindowDict);
-			while(it.current()) {
-				if (it.current()->view() && it.current()->view()->isLogging())
-					it.current()->view()->startLogging(0);
-				++it;
-			}
-	}
 }
 
 void KviApp::timerEvent(QTimerEvent *e)

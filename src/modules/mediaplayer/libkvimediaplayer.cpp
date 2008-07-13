@@ -987,7 +987,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(album,album)
 	@short:
 		Returns the currently played media type
 	@syntax:
-		$mediaplayer.mediaType()
+		$mediaplayer.medyaType()
 	@description:
 		Returns a string describing the media type currently played
 		by the selected media player interface. This function is not granted

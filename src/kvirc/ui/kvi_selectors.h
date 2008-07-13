@@ -334,16 +334,16 @@ private:
 public:
 	KviChanListViewItem(KviTalListView* pList,QString szChan,QString szPass);
 	~KviChanListViewItem() {};
-
+	
 	const QString& pass() { return m_szPass; }
 };
 
-class KVIRC_API KviChannelListSelector : public KviTalVBox, public KviSelectorInterface
+class KVIRC_API KviCahnnelListSelector : public KviTalVBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviChannelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled);
-	~KviChannelListSelector();
+	KviCahnnelListSelector(QWidget * par,const QString & txt,QStringList * pOption,bool bEnabled);
+	~KviCahnnelListSelector();
 private:
 	QLabel       * m_pLabel;
 	KviTalListView    * m_pListView;
