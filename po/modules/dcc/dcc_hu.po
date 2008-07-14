@@ -1,16 +1,17 @@
-# translation of dcc_hu.po to hungarian
+# translation of dcc_hu.po to Hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
+# Ádám Péter Fibinger <vfiber@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-08 02:39+0200\n"
-"PO-Revision-Date: 2007-10-27 23:04+0200\n"
-"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
-"Language-Team: hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2008-07-13 08:38+0200\n"
+"Last-Translator: Ádám Péter Fibinger <vfiber@gmail.com>\n"
+"Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -208,8 +209,7 @@ msgstr "A helyi IP privát cím, de az IRC szerver által nem lehet meghatározn
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/chat.cpp:212
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1515
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/chat.cpp:234
@@ -568,8 +568,7 @@ msgstr "A helyi IP magáncím, meghatárizás az IRC szerverrel: %1"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1561
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
-msgstr ""
-"DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
+msgstr "DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1563
 msgid "DCC %1 request not sent, awaiting manual connection"
@@ -593,7 +592,7 @@ msgstr "Kapcsolódva %1:%2"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1691
 msgid "Local end is %1:%2"
-msgstr ""
+msgstr "Helyi cím: %1:%2"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1735
 msgid "Transferring data"
@@ -609,8 +608,7 @@ msgstr "Belső hiba RESUME (folytatás) kérésnél"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1797
 msgid "Invalid RESUME request: Position %1 is larger than file size"
-msgstr ""
-"Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
+msgstr "Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/send.cpp:1801
 msgid "Accepting RESUME request, transfer will begin at position %1"
@@ -646,16 +644,14 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Próbálkozás: passzív DCC CANAVAS (vászon) kapcsolat"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Elküldött DCC CANVAS (vászon) kérés -> %Q, várakozás a távoli kliens "
 "kapcsolódására..."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/canvas.cpp:100
 msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr ""
-"DCC CANVAS (vászon) kérés nem lett elküldve, manuális csatlakozás szükséges"
+msgstr "DCC CANVAS (vászon) kérés nem lett elküldve, manuális csatlakozás szükséges"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/canvas.cpp:104
 msgid "Attempting an active DCC CANVAS connection"
@@ -777,6 +773,8 @@ msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
+"A fenti kérés hibás, bár úgy néz ki mint egy nulladik port tag nyugtázás de még "
+"soha nem láttam ilyen taget, vagy több, mint 120 másodperce küldték"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/requests.cpp:322
 msgid "It seems that I haven't requested this dcc chat"
@@ -811,8 +809,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/requests.cpp:528
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "Sikertelen DCC RECV folyamat: Adatátvitel nincs inicializálva %s fájlnak, %s "
 "porton keresztül"
@@ -835,8 +832,7 @@ msgstr ""
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
-msgstr ""
-"Az alábbi folytatási kérés mérete hiányzik, a fájl 0-tól lesz folytatva"
+msgstr "Az alábbi folytatási kérés mérete hiányzik, a fájl 0-tól lesz folytatva"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/dcc/requests.cpp:614
 msgid ""
@@ -990,3 +986,4 @@ msgid ""
 msgstr ""
 "Nem tudok hallgatózni az alapértelmezett '%s' eszközön, javítsd tiltással az "
 "opciókban (a következő DCC már működni fog)"
+
