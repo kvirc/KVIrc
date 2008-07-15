@@ -283,11 +283,28 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkRealName,realName)
 	@synthax:
 		<string> $serverdb.getNetworkEncoding(<string:network>)
 	@description:
-		Returns the encoding set for the network <network> if set
+		Returns the encoding used for the network <network> for server specific messages, like channel and nick names, if set
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkEncoding,encoding)
+
+/*
+	@doc: serverdb.getNetworkTextEncoding
+	@type:
+		function
+	@title:
+		$serverdb.getNetworkTextEncoding
+	@short:
+		Returns the encoding
+	@synthax:
+		<string> $serverdb.getNetworkTextEncoding(<string:network>)
+	@description:
+		Returns the encoding used for the network <network> for text messages, if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkTextEncoding,textEncoding)
 
 /*
 	@doc: serverdb.getNetworkDescription
@@ -419,11 +436,28 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerRealName,realName,setStri
 	@synthax:
 		<string> $serverdb.getServerEncoding(<string:network>,<string:server>)
 	@description:
-		Returns the encoding set for the server <server> of the network <network> if set
+		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerEncoding,encoding,setString)
+
+/*
+	@doc: serverdb.getServerTextEncoding
+	@type:
+		function
+	@title:
+		$serverdb.getServerTextEncoding
+	@short:
+		Returns the encoding
+	@synthax:
+		<string> $serverdb.getServerTextEncoding(<string:network>,<string:server>)
+	@description:
+		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerTextEncoding,textEncoding,setString)
 
 /*
 	@doc: serverdb.getServerDescription
@@ -949,7 +983,8 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName,setRealName)
 	@syntax:
 		serverdb.setNetworkEncoding [switches] <string:name> <string:encoding>
 	@description:
-		Sets the encoding <encoding> for the specified network <name>.
+		Sets the encoding <encoding> for the specified network <name>. This encoding will be used for server-specific
+		text, like channel names and nicknames.
 	@switches:
 		!sw: -q | --quiet
 		Do not print errors if the network already exists.
@@ -962,6 +997,31 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName,setRealName)
 		[module:serverdb]ServerDB module documentation[/module]
 */
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding,setEncoding)
+
+/*
+	@doc: serverdb.setNetworkTextEncoding
+	@type:
+		command
+	@title:
+		serverdb.setNetworkTextEncoding
+	@short:
+		Sets the encoding
+	@syntax:
+		serverdb.setNetworkTextEncoding [switches] <string:name> <string:encoding>
+	@description:
+		Sets the encoding <encoding> for the specified network <name>. This encoding will be used for text messages.
+	@switches:
+		!sw: -q | --quiet
+		Do not print errors if the network already exists.
+	@examples:
+		[example]
+		[comment]Quietly sets the text encoding UTF-8 for the Freenode network[/comment][br]
+		serverdb.setNetworkTextEncoding -q Freenode UTF-8
+		[/example]
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding,setTextEncoding)
 
 /*
 	@doc: serverdb.setNetworkDescription
@@ -1124,7 +1184,8 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName,setRealName)
 	@syntax:
 		serverdb.setServerEncoding [switches] <string:name> <string:encoding>
 	@description:
-		Sets the encoding <encoding> for the specified server <name>.
+		Sets the encoding <encoding> for the specified server <name>. This encoding will be used for server-specific
+		text, like channel names and nicknames.
 	@switches:
 		!sw: -q | --quiet
 		Do not print errors if the server already exists.
@@ -1137,6 +1198,31 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName,setRealName)
 		[module:serverdb]ServerDB module documentation[/module]
 */
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding,setEncoding)
+
+/*
+	@doc: serverdb.setServerTextEncoding
+	@type:
+		command
+	@title:
+		serverdb.setServerTextEncoding
+	@short:
+		Sets the text encoding
+	@syntax:
+		serverdb.setServerTextEncoding [switches] <string:name> <string:encoding>
+	@description:
+		Sets the encoding <encoding> for the specified server <name>. This encoding will be used for text messages.
+	@switches:
+		!sw: -q | --quiet
+		Do not print errors if the server already exists.
+	@examples:
+		[example]
+		[comment]Quietly sets the text encoding UTF-8 for the irc.freenode.net server[/comment][br]
+		serverdb.setServerTextEncoding -q Freenode UTF-8
+		[/example]
+	@seealso:
+		[module:serverdb]ServerDB module documentation[/module]
+*/
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding,setTextEncoding)
 
 /*
 	@doc: serverdb.setServerDescription
@@ -1223,6 +1309,7 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"getNetworkConnectCommand",serverdb_kvs_fnc_getNetworkConnectCommand);
 	KVSM_REGISTER_FUNCTION(m,"getNetworkDescription",serverdb_kvs_fnc_getNetworkDescription);
 	KVSM_REGISTER_FUNCTION(m,"getNetworkEncoding",serverdb_kvs_fnc_getNetworkEncoding);
+	KVSM_REGISTER_FUNCTION(m,"getNetworkTextEncoding",serverdb_kvs_fnc_getNetworkTextEncoding);
 	KVSM_REGISTER_FUNCTION(m,"getNetworkLoginCommand",serverdb_kvs_fnc_getNetworkLoginCommand);
 	KVSM_REGISTER_FUNCTION(m,"getNetworkName",serverdb_kvs_fnc_getNetworkName);
 	KVSM_REGISTER_FUNCTION(m,"getNetworkNickName",serverdb_kvs_fnc_getNetworkNickName);
@@ -1231,6 +1318,7 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"getServerConnectCommand",serverdb_kvs_fnc_getServerConnectCommand);
 	KVSM_REGISTER_FUNCTION(m,"getServerDescription",serverdb_kvs_fnc_getServerDescription);
 	KVSM_REGISTER_FUNCTION(m,"getServerEncoding",serverdb_kvs_fnc_getServerEncoding);
+	KVSM_REGISTER_FUNCTION(m,"getServerTextEncoding",serverdb_kvs_fnc_getServerTextEncoding);
 	KVSM_REGISTER_FUNCTION(m,"getServerId",serverdb_kvs_fnc_getServerId)
 	KVSM_REGISTER_FUNCTION(m,"getServerIp",serverdb_kvs_fnc_getServerIp)
 	KVSM_REGISTER_FUNCTION(m,"getServerLoginCommand",serverdb_kvs_fnc_getServerLoginCommand);
@@ -1249,6 +1337,7 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addServer",serverdb_kvs_cmd_addServer);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkConnectCommand",serverdb_kvs_cmd_setNetworkConnectCommand);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkEncoding",serverdb_kvs_cmd_setNetworkEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkTextEncoding",serverdb_kvs_cmd_setNetworkTextEncoding);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkDescription",serverdb_kvs_cmd_setNetworkDescription);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkLoginCommand",serverdb_kvs_cmd_setNetworkLoginCommand);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkNickName",serverdb_kvs_cmd_setNetworkNickName);
@@ -1256,6 +1345,7 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkUserName",serverdb_kvs_cmd_setNetworkUserName);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerConnectCommand",serverdb_kvs_cmd_setServerConnectCommand);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerEncoding",serverdb_kvs_cmd_setServerEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerTextEncoding",serverdb_kvs_cmd_setServerTextEncoding);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerDescription",serverdb_kvs_cmd_setServerDescription);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerLoginCommand",serverdb_kvs_cmd_setServerLoginCommand);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerNickName",serverdb_kvs_cmd_setServerNickName);

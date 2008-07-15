@@ -683,6 +683,22 @@ QTextCodec * KviApp::defaultTextCodec()
 	return c;
 }
 
+QTextCodec * KviApp::defaultSrvCodec()
+{
+	QTextCodec * c = 0;
+	//FIXME add a proper option for this
+	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
+	{
+		c = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
+		if(c)return c;
+	}
+	c = QTextCodec::codecForLocale();
+	if(c)return c;
+	c = KviLocale::codecForName("UTF-8");
+	if(!c)debug("KviApp::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
+	return c;
+}
+
 void KviApp::contextSensitiveHelp()
 {
 	// this stuff doesn't work with Qt 4.x

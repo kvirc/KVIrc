@@ -79,6 +79,7 @@ KviServer::KviServer(const KviServer &serv)
 	m_szNick             = serv.m_szNick;
 	m_szRealName         = serv.m_szRealName;
 	m_szEncoding         = serv.m_szEncoding;
+	m_szTextEncoding     = serv.m_szTextEncoding;
 	m_uFlags             = serv.m_uFlags;
 	m_szInitUMode        = serv.m_szInitUMode;
 	m_szOnConnectCommand = serv.m_szOnConnectCommand;
@@ -104,6 +105,7 @@ void KviServer::operator=(const KviServer &serv)
 	m_szNick             = serv.m_szNick;
 	m_szRealName         = serv.m_szRealName;
 	m_szEncoding         = serv.m_szEncoding;
+	m_szTextEncoding     = serv.m_szTextEncoding;
 	m_uFlags             = serv.m_uFlags;
 	m_szInitUMode = serv.m_szInitUMode;
 	m_szOnConnectCommand = serv.m_szOnConnectCommand;
@@ -185,6 +187,8 @@ bool KviServer::load(KviConfig * cfg,const QString &prefix)
 	m_bAutoConnect = cfg->readBoolEntry(tmp,false);
 	KviQString::sprintf(tmp,"%QEncoding",&prefix);
 	m_szEncoding = cfg->readQStringEntry(tmp);
+	KviQString::sprintf(tmp,"%QTextEncoding",&prefix);
+	m_szTextEncoding = cfg->readQStringEntry(tmp);
 	KviQString::sprintf(tmp,"%QOnConnectCommand",&prefix);
 	m_szOnConnectCommand = cfg->readQStringEntry(tmp);
 	KviQString::sprintf(tmp,"%QOnLoginCommand",&prefix);
@@ -266,6 +270,11 @@ void KviServer::save(KviConfig * cfg,const QString &prefix)
 		KviQString::sprintf(tmp,"%QEncoding",&prefix);
 		cfg->writeEntry(tmp,m_szEncoding);
 	}
+	if(!m_szTextEncoding.isEmpty())
+	{
+		KviQString::sprintf(tmp,"%QTextEncoding",&prefix);
+		cfg->writeEntry(tmp,m_szTextEncoding);
+	}
 	if(!m_szOnConnectCommand.isEmpty())
 	{
 		KviQString::sprintf(tmp,"%QOnConnectCommand",&prefix);
@@ -327,7 +336,6 @@ KviNetwork::KviNetwork(const QString &name)
 	m_pChannelList = 0;
 	m_pNickServRuleSet = 0;
 	m_bAutoConnect = false;
-	// m_szEncoding = QString::null; // set by default
 }
 
 KviNetwork::~KviNetwork()
@@ -352,6 +360,7 @@ void KviNetwork::copyFrom(const KviNetwork &src)
 {
 	m_szName = src.m_szName;
 	m_szEncoding = src.m_szEncoding;
+	m_szTextEncoding = src.m_szTextEncoding;
 	m_szDescription = src.m_szDescription;
 	m_szNickName = src.m_szNickName;
 	m_szRealName = src.m_szRealName;

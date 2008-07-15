@@ -78,6 +78,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pDescEditor=0;
 
 	m_pEncodingEditor=0;
+	m_pTextEncodingEditor=0;
 
 	m_pAutoConnectCheck=0;
 
@@ -150,42 +151,64 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
 			"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
+	//server encoding
+
+	l = new QLabel(__tr2qs_ctx("Server Encoding:","options"),tab);
 	gl->addWidget(l,1,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
+			"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
 			"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
 			"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
+	//text encoding
+
+	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	gl->addWidget(l,2,0);
+	m_pTextEncodingEditor = new QComboBox(tab);
+	m_pTextEncodingEditor->setDuplicatesEnabled(false);
+	gl->addWidget(m_pTextEncodingEditor,2,1);
+	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
+			"This encoding will be used as the default for text messages." \
+			"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+			"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
+
+	//common between server encoding and text encoding
+
 	int i = 0;
-	int current = 0;
+	int srvcurrent = 0, txtcurrent=0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	QString tmp;
 	m_pEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
+	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use System Encoding","options"));
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-		if(KviQString::equalCI(d->szName,n->encoding()))current = i + 1;
+		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+		if(KviQString::equalCI(d->szName,n->encoding()))srvcurrent = i + 1;
+		if(KviQString::equalCI(d->szName,n->textEncoding()))txtcurrent = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
 
-	m_pEncodingEditor->setCurrentIndex(current);
+	m_pEncodingEditor->setCurrentIndex(srvcurrent);
+	m_pTextEncodingEditor->setCurrentIndex(txtcurrent);
+
 
 	m_pAutoConnectCheck = new QCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
-	gl->addWidget(m_pAutoConnectCheck,2,0,1,2);
+	gl->addWidget(m_pAutoConnectCheck,3,0,1,2);
 //	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
 	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
 
 
 	l = new QLabel("",tab);
-	gl->addWidget(l,3,0);
+	gl->addWidget(l,4,0);
 
-	gl->setRowStretch(3,1);
+	gl->setRowStretch(4,1);
 	gl->setColumnStretch(1,1);
 
 	tw->addTab(tab,__tr2qs_ctx("General","options"));
@@ -386,6 +409,12 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 		else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			n->setEncoding(d->szName);
+		}
+	if(m_pTextEncodingEditor)
+		if(m_pTextEncodingEditor->currentIndex() <= 0)n->setTextEncoding(QString::null);
+		else {
+			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
+			n->setTextEncoding(dd->szName);
 		}
 	if(m_pChannelListSelector)
 		m_pChannelListSelector->commit();
@@ -608,38 +637,59 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	//	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 
-	l = new QLabel(__tr2qs_ctx("Encoding:","options"),tab);
+	//server encoding
+
+	l = new QLabel(__tr2qs_ctx("Server Encoding:","options"),tab);
 	gl->addWidget(l,6,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,6,1);
-	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this sever. " \
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
+			"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
 			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
 			"network that this server belongs to.</center>","options"));
 
+	//text encoding
+
+	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
+	gl->addWidget(l,7,0);
+	m_pTextEncodingEditor = new QComboBox(tab);
+	m_pTextEncodingEditor->setDuplicatesEnabled(false);
+	gl->addWidget(m_pTextEncodingEditor,7,1);
+	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
+			"This encoding will be used as the default for text messages." \
+			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
+			"network that this server belongs to.</center>","options"));
+
+	//common between server encoding and text encoding
+
 	int i = 0;
-	int current = 0;
+	int srvcurrent = 0, txtcurrent=0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	QString tmp;
 	m_pEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
+	m_pTextEncodingEditor->addItem(__tr2qs_ctx("Use Network Encoding","options"));
 	while(d->szName)
 	{
 		KviQString::sprintf(tmp,"%s (%s)",d->szName,d->szDescription);
 		m_pEncodingEditor->insertItem(m_pEncodingEditor->count(),tmp);
-		if(KviQString::equalCI(d->szName,s->encoding()))current = i + 1;
+		m_pTextEncodingEditor->insertItem(m_pTextEncodingEditor->count(),tmp);
+		if(KviQString::equalCI(d->szName,s->encoding()))srvcurrent = i + 1;
+		if(KviQString::equalCI(d->szName,s->textEncoding()))txtcurrent = i + 1;
 		i = i + 1;
 		d = KviLocale::encodingDescription(i);
 	}
 
-	m_pEncodingEditor->setCurrentIndex(current);
+	m_pEncodingEditor->setCurrentIndex(srvcurrent);
+	m_pTextEncodingEditor->setCurrentIndex(txtcurrent);
 
 
 	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
-	gl->addWidget(l,7,0);
+	gl->addWidget(l,8,0);
 	m_pLinkFilterEditor = new QComboBox(tab);
 	m_pLinkFilterEditor->setEditable(true);
 	m_pLinkFilterEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pLinkFilterEditor,7,1);
+	gl->addWidget(m_pLinkFilterEditor,8,1);
 
 	m_pLinkFilterEditor->addItem("");
 
@@ -674,11 +724,11 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
-	gl->addWidget(l,8,0);
+	gl->addWidget(l,9,0);
 	m_pIdEditor = new QLineEdit(tab);
 	if(s->id().isEmpty())s->generateUniqueId();
 	m_pIdEditor->setText(s->id());
-	gl->addWidget(m_pIdEditor,8,1);
+	gl->addWidget(m_pIdEditor,9,1);
 
 	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
@@ -686,10 +736,10 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 
 	l = new QLabel(__tr2qs_ctx("Proxy server:","options"),tab);
-	gl->addWidget(l,9,0);
+	gl->addWidget(l,10,0);
 	m_pProxyEditor = new QComboBox(tab);
-	gl->addWidget(m_pProxyEditor,9,1);
-	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to thos server.\n" \
+	gl->addWidget(m_pProxyEditor,10,1);
+	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
 			"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
 			"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 
@@ -706,10 +756,10 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 
 	l = new QLabel("",tab);
-	gl->addWidget(l,10,0,1,2);
+	gl->addWidget(l,11,0,1,2);
 //	gl->addMultiCellWidget(l,10,10,0,1);
 
-	gl->setRowStretch(10,1);
+	gl->setRowStretch(11,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SOCKETWARNING)),__tr2qs_ctx("Connection","options"));
 
@@ -838,6 +888,12 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			s->m_szEncoding = d->szName;
+		}
+	if(m_pTextEncodingEditor)
+		if(m_pTextEncodingEditor->currentIndex() <= 0)s->m_szTextEncoding = "";
+		else {
+			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
+			s->m_szTextEncoding = dd->szName;
 		}
 	s->setIp("");
 	if(m_pCacheIpCheck)

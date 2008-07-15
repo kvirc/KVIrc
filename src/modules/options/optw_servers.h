@@ -81,6 +81,7 @@ protected:
 	QLineEdit             * m_pDescEditor;
 
 	QComboBox             * m_pEncodingEditor;
+	QComboBox             * m_pTextEncodingEditor;
 
 	QCheckBox             * m_pAutoConnectCheck;
 
@@ -120,6 +121,7 @@ protected:
 	QLineEdit             * m_pIdEditor;
 	QComboBox             * m_pLinkFilterEditor;
 	QComboBox             * m_pEncodingEditor;
+	QComboBox             * m_pTextEncodingEditor;
 	KviIpEditor           * m_pIpEditor;
 	QCheckBox             * m_pCacheIpCheck;
 	QCheckBox             * m_pUseSSLCheck;

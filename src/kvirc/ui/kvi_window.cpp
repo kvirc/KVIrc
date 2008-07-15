@@ -93,7 +93,6 @@ static KviTalPopupMenu * g_pMdiWindowSystemTextEncodingPopupSmartUtf8 = 0;
 
 unsigned long int g_uUniqueWindowId = 1;
 
-// FIXME: #warning "Mouse wheel support"
 KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * lpConsole)
 		: QWidget(0)
 {

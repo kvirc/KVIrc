@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-
-// FIXME: The TextEncoding should be inherited from network!
-
 #define __KVIRC__
 
 #include "kvi_ircurl.h"

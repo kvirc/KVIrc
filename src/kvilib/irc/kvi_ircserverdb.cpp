@@ -525,6 +525,7 @@ void KviServerDataBase::load(const QString & filename)
 			KviServerDataBaseRecord * r = insertNetwork(n);
 			cfg.setGroup(it.currentKey());
 			n->m_szEncoding = cfg.readQStringEntry("Encoding");
+			n->m_szTextEncoding = cfg.readQStringEntry("TextEncoding");
 			n->m_szDescription = cfg.readQStringEntry("Description");
 			n->m_szNickName = cfg.readQStringEntry("NickName");
 			n->m_szRealName = cfg.readQStringEntry("RealName");
@@ -594,6 +595,8 @@ void KviServerDataBase::save(const QString &filename)
 			cfg.writeEntry("AutoConnect",true);
 		if(!n->m_szEncoding.isEmpty())
 			cfg.writeEntry("Encoding",n->m_szEncoding);
+		if(!n->m_szTextEncoding.isEmpty())
+			cfg.writeEntry("TextEncoding",n->m_szTextEncoding);
 		if(!n->m_szDescription.isEmpty())
 			cfg.writeEntry("Description",n->m_szDescription);
 		if(!n->m_szNickName.isEmpty())

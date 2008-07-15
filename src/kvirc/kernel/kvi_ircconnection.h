@@ -116,7 +116,8 @@ private:
 	KviIrcConnectionStatistics           * m_pStatistics;           // owned, never null
 
 	KviDns                               * m_pLocalhostDns;         // FIXME: this should go to an aux structure
-	
+
+	QTextCodec                           * m_pSrvCodec;             // connection codec: never null	
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
 public:
 	// returns a pointer to the owning console
@@ -162,6 +163,7 @@ public:
 	KviLagMeter * lagMeter(){ return m_pLagMeter; };
 	// should be never null.. but if really everything goes wrong, it might be...
 	QTextCodec * textCodec(){ return m_pTextCodec; };
+	QTextCodec * srvCodec(){ return m_pSrvCodec; };
 public:
 	// helper (really common access to userInfo()->nickName())
 	const QString & currentNickName();
@@ -273,6 +275,7 @@ public:
 	KviQCString encodeText(const QString &szText);
 private:
 	void setupTextCodec();
+	void setupSrvCodec();
 };
 
 

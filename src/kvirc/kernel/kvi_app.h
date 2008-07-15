@@ -142,9 +142,6 @@ public:
 	void ipcMessage(char * message);
 #endif
 
-	//static QTextCodec * defaultTextCodec();
-	//static const char * defaultTextEncoding();
-
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
 	bool firstTimeRun(){ return m_bFirstTimeRun; };
@@ -194,6 +191,7 @@ public:
 	void getChannelDumpLogFileName(QString &str);
 
 	static QTextCodec * defaultTextCodec();
+	static QTextCodec * defaultSrvCodec();
 
 	// if the mediatype can be guessed ,it is looked up in the media type save path
 	// if found , true is returned

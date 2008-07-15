@@ -78,6 +78,7 @@ public:
 	QString            m_szOnLoginCommand;    // the command to run after login
 	QString            m_szLinkFilter;        // the link filter object
 	QString            m_szEncoding;          // if empty, use network encoding
+	QString            m_szTextEncoding;      // if empty, use network encoding
 	QStringList      * m_pChannelList;        // Channels to auto join
 	bool               m_bAutoConnect;        // autoconnect
 	QString            m_szId;                // the server's may-be-unique id, may be auto-generated
@@ -99,6 +100,7 @@ public:
 	const QString & linkFilter() const { return m_szLinkFilter; };
 	const QString & description() const { return m_szDescription; };
 	const QString & encoding() const { return m_szEncoding; };
+	const QString & textEncoding() const { return m_szTextEncoding; };
 	const QString & id() const { return m_szId; };
 	const QString & userIdentityId() const { return m_szUserIdentityId; };
 	bool autoConnect() const { return m_bAutoConnect; };
@@ -117,6 +119,7 @@ public:
 	void setNickName(const QString &n){ m_szNick = n; };
 	void setRealName(const QString &r){ m_szRealName = r; };
 	void setEncoding(const QString &e){ m_szEncoding = e; };
+	void setTextEncoding(const QString &e){ m_szTextEncoding = e; };
 	void setInitUMode(const QString &u){ m_szInitUMode = u; };
 	void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
 	void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
@@ -162,6 +165,7 @@ protected:
 	QString              m_szName;
 	QString              m_szDescription;
 	QString              m_szEncoding;                // if empty, use system default
+	QString              m_szTextEncoding;                // if empty, use system default
 	QString              m_szNickName;                // preferred nick name
 	QString              m_szUserName;                // preferred user name
 	QString              m_szRealName;                // preferred real name
@@ -175,6 +179,7 @@ protected:
 public:
 	const QString & name() const { return m_szName; };
 	const QString & encoding() const { return m_szEncoding; };
+	const QString & textEncoding() const { return m_szTextEncoding; };
 	const QString & description() const { return m_szDescription; };
 	const QString & nickName() const { return m_szNickName; };
 	const QString & realName() const { return m_szRealName; };
@@ -189,6 +194,7 @@ public:
 	void copyFrom(const KviNetwork &d);
 	void setName(const QString &szName){ m_szName = szName; };
 	void setEncoding(const QString &szEncoding){ m_szEncoding = szEncoding; };
+	void setTextEncoding(const QString &szEncoding){ m_szTextEncoding = szEncoding; };
 	void setDescription(const QString &szDescription){ m_szDescription = szDescription; };
 	void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
 	void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
