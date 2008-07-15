@@ -645,7 +645,7 @@ defpopup(channelpopup)
 
 	item($tr("&Part") $0,40)
 	{
-		if($channel($0)) part $0 $option(stringPartMessage);
+		if($channel($0)) eval "part $0 $option(stringPartMessage)";
 	}
 
 	separator
@@ -704,7 +704,7 @@ defpopup(channeltextview)
 
 	item($tr("&Part") $0,40)
 	{
-		if($channel($0)) part $0 $option(stringPartMessage);
+		if($channel($0)) eval "part $0 $option(stringPartMessage)";
 	}
 
 	separator
