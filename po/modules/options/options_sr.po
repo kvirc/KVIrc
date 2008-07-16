@@ -15,8 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: src/modules/options/optw_avatar.cpp:70
-#: src/modules/options/optw_dcc.cpp:272
+#: src/modules/options/optw_avatar.cpp:70 src/modules/options/optw_dcc.cpp:272
 #, fuzzy
 msgid " bytes"
 msgstr "0 bajtova"
@@ -34,8 +33,7 @@ msgstr "odgovoreno"
 #: src/modules/options/optw_ircview.cpp:153
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_dcc.cpp:263
-#: src/modules/options/optw_lag.cpp:42
+#: src/modules/options/optw_dcc.cpp:263 src/modules/options/optw_lag.cpp:42
 #: src/modules/options/optw_lag.cpp:53
 msgid " msec"
 msgstr ""
@@ -94,8 +92,7 @@ msgstr "Mre¾a/Server"
 
 #: src/modules/options/optw_servers.cpp:311
 #: src/modules/options/optw_identity.cpp:237
-#: src/modules/options/dialog.cpp:237
-#: src/modules/options/container.cpp:62
+#: src/modules/options/dialog.cpp:237 src/modules/options/container.cpp:62
 #, fuzzy
 msgid "&OK"
 msgstr "OK"
@@ -1402,10 +1399,8 @@ msgstr "Dodaj"
 msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
 
-#: src/modules/options/optw_dcc.h:56
-#: src/modules/options/optw_dcc.h:100
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:56 src/modules/options/optw_dcc.h:100
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:43
 #, fuzzy
@@ -1541,8 +1536,7 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:67
-#: src/modules/options/optw_sound.cpp:82
+#: src/modules/options/optw_sound.cpp:67 src/modules/options/optw_sound.cpp:82
 msgid "Auto-detect"
 msgstr ""
 
@@ -1555,8 +1549,7 @@ msgstr "Automatski prihvati"
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:171
-#: src/modules/options/optw_dcc.cpp:301
+#: src/modules/options/optw_dcc.cpp:171 src/modules/options/optw_dcc.cpp:301
 #: src/modules/options/optw_dcc.cpp:322
 #, fuzzy
 msgid "Automatically accept"
@@ -1741,8 +1734,7 @@ msgstr "Ke¹iraj IP adresu"
 #: src/modules/options/optw_servers.cpp:772
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
-#: src/modules/options/dialog.cpp:250
-#: src/modules/options/container.cpp:70
+#: src/modules/options/dialog.cpp:250 src/modules/options/container.cpp:70
 msgid "Cancel"
 msgstr "Poni¹ti"
 
@@ -1752,8 +1744,7 @@ msgstr "Poni¹ti"
 #: src/modules/options/optw_taskbar.cpp:129
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
-#: src/modules/options/optw_input.cpp:55
-#: src/modules/options/optw_input.cpp:60
+#: src/modules/options/optw_input.cpp:55 src/modules/options/optw_input.cpp:60
 #, fuzzy
 msgid "Center"
 msgstr "Generalne opcije"
@@ -1864,13 +1855,11 @@ msgstr "Isprazni listu"
 msgid "Close in tray"
 msgstr "M&inimizuj"
 
-#: src/modules/options/dialog.cpp:238
-#: src/modules/options/container.cpp:63
+#: src/modules/options/dialog.cpp:238 src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:251
-#: src/modules/options/container.cpp:71
+#: src/modules/options/dialog.cpp:251 src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -2257,8 +2246,7 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Ne mogu da odredim lokalni port"
 
-#: src/modules/options/optw_ircview.h:69
-#: src/modules/options/optw_taskbar.h:98
+#: src/modules/options/optw_ircview.h:69 src/modules/options/optw_taskbar.h:98
 #: src/modules/options/optw_userlist.h:102
 msgid "Features"
 msgstr ""
@@ -2350,10 +2338,8 @@ msgid "Gender:"
 msgstr "Generalne opcije"
 
 #: src/modules/options/optw_servers.cpp:191
-#: src/modules/options/optw_messages.cpp:76
-#: src/modules/options/optw_dcc.h:43
-#: src/modules/options/optw_dcc.h:86
-#: src/modules/options/optw_irc.h:45
+#: src/modules/options/optw_messages.cpp:76 src/modules/options/optw_dcc.h:43
+#: src/modules/options/optw_dcc.h:86 src/modules/options/optw_irc.h:45
 #: src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_interfacelookglobal.h:32
 #: src/modules/options/optw_identity.h:119
@@ -2595,8 +2581,7 @@ msgstr ""
 msgid "Inactive Text (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr ""
 
@@ -2632,8 +2617,7 @@ msgstr "Ovo nije kanal"
 msgid "KVIrc Preferences"
 msgstr ""
 
-#: src/modules/options/optw_irc.cpp:107
-#: src/modules/options/optw_irc.cpp:116
+#: src/modules/options/optw_irc.cpp:107 src/modules/options/optw_irc.cpp:116
 #, fuzzy
 msgid "Keep channel open"
 msgstr "Zadr¾i kanal otvoren kad te izbace (KICK)"
@@ -3090,8 +3074,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/modules/options/optw_irc.cpp:167
-#: src/modules/options/optw_irc.cpp:179
+#: src/modules/options/optw_irc.cpp:167 src/modules/options/optw_irc.cpp:179
 #, fuzzy
 msgid "On Channel Join"
 msgstr "obave¹tenje kanala"
@@ -3177,8 +3160,7 @@ msgstr ""
 msgid "Open all minimized"
 msgstr "Kreiraj minimizirano"
 
-#: src/modules/options/optw_dcc.cpp:302
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:302 src/modules/options/optw_dcc.cpp:324
 #, fuzzy
 msgid "Open minimized when auto-accepted"
 msgstr "Napravi minimizirano kad automatski-prihvata¹"
@@ -3805,8 +3787,7 @@ msgstr ""
 msgid "Sound"
 msgstr "Po¹alji"
 
-#: src/modules/options/optw_sound.cpp:59
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:59 src/modules/options/optw_sound.h:47
 #, fuzzy
 msgid "Sound System"
 msgstr "Muzièki sistem"
@@ -3839,8 +3820,7 @@ msgstr "Taskbar"
 msgid "Taskbar Alert"
 msgstr "Taskbar"
 
-#: src/modules/options/optw_sound.cpp:70
-#: src/modules/options/optw_sound.cpp:85
+#: src/modules/options/optw_sound.cpp:70 src/modules/options/optw_sound.cpp:85
 #, fuzzy
 msgid "Test"
 msgstr "Tester"
@@ -4041,8 +4021,7 @@ msgstr ""
 #: src/modules/options/optw_taskbar.cpp:126
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_input.cpp:52 src/modules/options/optw_input.cpp:57
 #, fuzzy
 msgid "Tile"
 msgstr "&Parèe"
@@ -4464,8 +4443,7 @@ msgstr "Nepoznat tip medija"
 msgid "authentication,identify"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:230
-#: src/modules/options/optw_dcc.cpp:236
+#: src/modules/options/optw_dcc.cpp:230 src/modules/options/optw_dcc.cpp:236
 #, fuzzy
 msgid "bytes/sec"
 msgstr "0 bajtova/sek"
@@ -4544,10 +4522,8 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36
-#: src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66
-#: src/modules/options/optw_taskbar.h:81
+#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
+#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
 #: src/modules/options/optw_taskbar.h:100
 #: src/modules/options/optw_taskbar.h:115
 #, fuzzy
@@ -4565,8 +4541,7 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:38
-#: src/modules/options/optw_ircview.h:36
-#: src/modules/options/optw_ircview.h:50
+#: src/modules/options/optw_ircview.h:36 src/modules/options/optw_ircview.h:50
 msgid "theme,colors,output"
 msgstr ""
 

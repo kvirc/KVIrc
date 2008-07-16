@@ -25,8 +25,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:70
-#: src/modules/options/optw_dcc.cpp:272
+#: src/modules/options/optw_avatar.cpp:70 src/modules/options/optw_dcc.cpp:272
 msgid " bytes"
 msgstr " bytes"
 
@@ -41,8 +40,7 @@ msgstr " minutos"
 #: src/modules/options/optw_ircview.cpp:153
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_dcc.cpp:263
-#: src/modules/options/optw_lag.cpp:42
+#: src/modules/options/optw_dcc.cpp:263 src/modules/options/optw_lag.cpp:42
 #: src/modules/options/optw_lag.cpp:53
 msgid " msec"
 msgstr " mseg"
@@ -93,8 +91,7 @@ msgstr "&Novo Servidor"
 
 #: src/modules/options/optw_servers.cpp:311
 #: src/modules/options/optw_identity.cpp:237
-#: src/modules/options/dialog.cpp:237
-#: src/modules/options/container.cpp:62
+#: src/modules/options/dialog.cpp:237 src/modules/options/container.cpp:62
 msgid "&OK"
 msgstr "&OK"
 
@@ -1526,10 +1523,8 @@ msgstr "Adicionar"
 msgid "Add Rule"
 msgstr "Adicionar Regra"
 
-#: src/modules/options/optw_dcc.h:56
-#: src/modules/options/optw_dcc.h:100
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:56 src/modules/options/optw_dcc.h:100
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:43
 msgid "Advanced"
@@ -1644,8 +1639,7 @@ msgstr "Anexar à resposta VERSION:"
 msgid "Auto flush logs every"
 msgstr "Auto esvaziar registos a todos os"
 
-#: src/modules/options/optw_sound.cpp:67
-#: src/modules/options/optw_sound.cpp:82
+#: src/modules/options/optw_sound.cpp:67 src/modules/options/optw_sound.cpp:82
 msgid "Auto-detect"
 msgstr "Auto detectar"
 
@@ -1657,8 +1651,7 @@ msgstr "Detecção automática"
 msgid "Automatically Log"
 msgstr "Registar Automaticamente"
 
-#: src/modules/options/optw_dcc.cpp:171
-#: src/modules/options/optw_dcc.cpp:301
+#: src/modules/options/optw_dcc.cpp:171 src/modules/options/optw_dcc.cpp:301
 #: src/modules/options/optw_dcc.cpp:322
 msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
@@ -1816,8 +1809,7 @@ msgstr "Endereço IP em cache"
 #: src/modules/options/optw_servers.cpp:772
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
-#: src/modules/options/dialog.cpp:250
-#: src/modules/options/container.cpp:70
+#: src/modules/options/dialog.cpp:250 src/modules/options/container.cpp:70
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1827,8 +1819,7 @@ msgstr "Cancelar"
 #: src/modules/options/optw_taskbar.cpp:129
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
-#: src/modules/options/optw_input.cpp:55
-#: src/modules/options/optw_input.cpp:60
+#: src/modules/options/optw_input.cpp:55 src/modules/options/optw_input.cpp:60
 msgid "Center"
 msgstr "Centro"
 
@@ -1921,13 +1912,11 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Fechar no ícone da barra de tarefas"
 
-#: src/modules/options/dialog.cpp:238
-#: src/modules/options/container.cpp:63
+#: src/modules/options/dialog.cpp:238 src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diálogo, aceitando todas as alterações."
 
-#: src/modules/options/dialog.cpp:251
-#: src/modules/options/container.cpp:71
+#: src/modules/options/dialog.cpp:251 src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 
@@ -2271,8 +2260,7 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Falha ao iniciar a transferência"
 
-#: src/modules/options/optw_ircview.h:69
-#: src/modules/options/optw_taskbar.h:98
+#: src/modules/options/optw_ircview.h:69 src/modules/options/optw_taskbar.h:98
 #: src/modules/options/optw_userlist.h:102
 msgid "Features"
 msgstr "Opções"
@@ -2356,10 +2344,8 @@ msgid "Gender:"
 msgstr "Género:"
 
 #: src/modules/options/optw_servers.cpp:191
-#: src/modules/options/optw_messages.cpp:76
-#: src/modules/options/optw_dcc.h:43
-#: src/modules/options/optw_dcc.h:86
-#: src/modules/options/optw_irc.h:45
+#: src/modules/options/optw_messages.cpp:76 src/modules/options/optw_dcc.h:43
+#: src/modules/options/optw_dcc.h:86 src/modules/options/optw_irc.h:45
 #: src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_interfacelookglobal.h:32
 #: src/modules/options/optw_identity.h:119
@@ -2581,8 +2567,7 @@ msgstr "Texto Inactivo (Primário)"
 msgid "Inactive Text (Secondary)"
 msgstr "Texto Inactivo (Secundário)"
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Entrada"
 
@@ -2613,8 +2598,7 @@ msgstr "Entrar em Canais"
 msgid "KVIrc Preferences"
 msgstr "Preferências KVirc"
 
-#: src/modules/options/optw_irc.cpp:107
-#: src/modules/options/optw_irc.cpp:116
+#: src/modules/options/optw_irc.cpp:107 src/modules/options/optw_irc.cpp:116
 msgid "Keep channel open"
 msgstr "Manter janela do canal aberta"
 
@@ -3011,8 +2995,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/modules/options/optw_irc.cpp:167
-#: src/modules/options/optw_irc.cpp:179
+#: src/modules/options/optw_irc.cpp:167 src/modules/options/optw_irc.cpp:179
 msgid "On Channel Join"
 msgstr "Ao Entrar num Canal"
 
@@ -3090,8 +3073,7 @@ msgstr "Abrir Privado Para"
 msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
-#: src/modules/options/optw_dcc.cpp:302
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:302 src/modules/options/optw_dcc.cpp:324
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando auto-aceite"
 
@@ -3641,8 +3623,7 @@ msgstr "Ordenar janelas por nome"
 msgid "Sound"
 msgstr "Som"
 
-#: src/modules/options/optw_sound.cpp:59
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:59 src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Sistema de Som"
 
@@ -3670,8 +3651,7 @@ msgstr "Barra de Tarefas"
 msgid "Taskbar Alert"
 msgstr "Alerta da Barra de Tarefas"
 
-#: src/modules/options/optw_sound.cpp:70
-#: src/modules/options/optw_sound.cpp:85
+#: src/modules/options/optw_sound.cpp:70 src/modules/options/optw_sound.cpp:85
 msgid "Test"
 msgstr "Teste"
 
@@ -3902,8 +3882,7 @@ msgstr ""
 #: src/modules/options/optw_taskbar.cpp:126
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_input.cpp:52 src/modules/options/optw_input.cpp:57
 msgid "Tile"
 msgstr "Lado a lado"
 
@@ -4288,8 +4267,7 @@ msgstr "[Tipo de Média Desconhecido}"
 msgid "authentication,identify"
 msgstr "autenticação,identificar"
 
-#: src/modules/options/optw_dcc.cpp:230
-#: src/modules/options/optw_dcc.cpp:236
+#: src/modules/options/optw_dcc.cpp:230 src/modules/options/optw_dcc.cpp:236
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
@@ -4362,10 +4340,8 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr "som,xmms,áudio,tocar,amarok"
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36
-#: src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66
-#: src/modules/options/optw_taskbar.h:81
+#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
+#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
 #: src/modules/options/optw_taskbar.h:100
 #: src/modules/options/optw_taskbar.h:115
 msgid "theme"
@@ -4381,8 +4357,7 @@ msgid "theme,colors,messages,output"
 msgstr "tema,cores,mensagens,sída"
 
 #: src/modules/options/optw_messages.h:38
-#: src/modules/options/optw_ircview.h:36
-#: src/modules/options/optw_ircview.h:50
+#: src/modules/options/optw_ircview.h:36 src/modules/options/optw_ircview.h:50
 msgid "theme,colors,output"
 msgstr "tema,cores,saída"
 

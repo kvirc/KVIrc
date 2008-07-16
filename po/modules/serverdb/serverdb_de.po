@@ -17,6 +17,27 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
+#: src/modules/serverdb/libkviserverdb.cpp:656
+msgid "The network specified already exists"
+msgstr "Das angegebene Netzwerk existiert bereits"
+
+#: src/modules/serverdb/libkviserverdb.cpp:171
+#: src/modules/serverdb/libkviserverdb.cpp:205
+#: src/modules/serverdb/libkviserverdb.cpp:739
+#: src/modules/serverdb/libkviserverdb.cpp:804
+#: src/modules/serverdb/libkviserverdb.cpp:846
+msgid "The specified network does not exist"
+msgstr "Das angegebene Netzwerk existiert nicht"
+
+#: src/modules/serverdb/libkviserverdb.cpp:750
+msgid "The specified server already exists"
+msgstr "Der angegebene Server existiert bereits"
+
+#: src/modules/serverdb/libkviserverdb.cpp:215
+#: src/modules/serverdb/libkviserverdb.cpp:857
+msgid "The specified server does not exist"
+msgstr "Der angegebene Server existiert nicht"
+
 #: src/modules/serverdb/libkviserverdb.cpp:59
 #: src/modules/serverdb/libkviserverdb.cpp:164
 #: src/modules/serverdb/libkviserverdb.cpp:192
@@ -34,29 +55,7 @@ msgstr "Der Netzwerkname muss als Parameter angegeben werden"
 msgid "You must provide the server name as parameter"
 msgstr "Der Servername muss als Parameter angegeben werden"
 
-#: src/modules/serverdb/libkviserverdb.cpp:171
-#: src/modules/serverdb/libkviserverdb.cpp:205
-#: src/modules/serverdb/libkviserverdb.cpp:739
-#: src/modules/serverdb/libkviserverdb.cpp:804
-#: src/modules/serverdb/libkviserverdb.cpp:846
-msgid "The specified network does not exist"
-msgstr "Das angegebene Netzwerk existiert nicht"
-
-#: src/modules/serverdb/libkviserverdb.cpp:215
-#: src/modules/serverdb/libkviserverdb.cpp:857
-msgid "The specified server does not exist"
-msgstr "Der angegebene Server existiert nicht"
-
-#: src/modules/serverdb/libkviserverdb.cpp:656
-msgid "The network specified already exists"
-msgstr "Das angegebene Netzwerk existiert bereits"
-
-#: src/modules/serverdb/libkviserverdb.cpp:750
-msgid "The specified server already exists"
-msgstr "Der angegebene Server existiert bereits"
-
 #: src/modules/serverdb/libkviserverdb.cpp:796
 #: src/modules/serverdb/libkviserverdb.cpp:838
 msgid "You must provide the value as parameter"
 msgstr "Der Wert muss als Parameter angegeben werden"
-

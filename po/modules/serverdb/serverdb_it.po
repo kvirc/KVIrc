@@ -17,6 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#: src/modules/serverdb/libkviserverdb.cpp:656
+msgid "The network specified already exists"
+msgstr "La rete specificata esiste già"
+
+#: src/modules/serverdb/libkviserverdb.cpp:171
+#: src/modules/serverdb/libkviserverdb.cpp:205
+#: src/modules/serverdb/libkviserverdb.cpp:739
+#: src/modules/serverdb/libkviserverdb.cpp:804
+#: src/modules/serverdb/libkviserverdb.cpp:846
+msgid "The specified network does not exist"
+msgstr "La rete specificata non esiste"
+
+#: src/modules/serverdb/libkviserverdb.cpp:750
+msgid "The specified server already exists"
+msgstr "Il server specificato esiste già"
+
+#: src/modules/serverdb/libkviserverdb.cpp:215
+#: src/modules/serverdb/libkviserverdb.cpp:857
+msgid "The specified server does not exist"
+msgstr "Il server specificato non esiste"
+
 #: src/modules/serverdb/libkviserverdb.cpp:59
 #: src/modules/serverdb/libkviserverdb.cpp:164
 #: src/modules/serverdb/libkviserverdb.cpp:192
@@ -34,29 +55,7 @@ msgstr "Devi fornire il nome della rete come parametro"
 msgid "You must provide the server name as parameter"
 msgstr "Devi fornire il nome del server come parametro"
 
-#: src/modules/serverdb/libkviserverdb.cpp:171
-#: src/modules/serverdb/libkviserverdb.cpp:205
-#: src/modules/serverdb/libkviserverdb.cpp:739
-#: src/modules/serverdb/libkviserverdb.cpp:804
-#: src/modules/serverdb/libkviserverdb.cpp:846
-msgid "The specified network does not exist"
-msgstr "La rete specificata non esiste"
-
-#: src/modules/serverdb/libkviserverdb.cpp:215
-#: src/modules/serverdb/libkviserverdb.cpp:857
-msgid "The specified server does not exist"
-msgstr "Il server specificato non esiste"
-
-#: src/modules/serverdb/libkviserverdb.cpp:656
-msgid "The network specified already exists"
-msgstr "La rete specificata esiste già"
-
-#: src/modules/serverdb/libkviserverdb.cpp:750
-msgid "The specified server already exists"
-msgstr "Il server specificato esiste già"
-
 #: src/modules/serverdb/libkviserverdb.cpp:796
 #: src/modules/serverdb/libkviserverdb.cpp:838
 msgid "You must provide the value as parameter"
 msgstr "Devi fornire il valore come parametro"
-

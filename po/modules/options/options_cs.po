@@ -19,8 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/options/optw_avatar.cpp:70
-#: src/modules/options/optw_dcc.cpp:272
+#: src/modules/options/optw_avatar.cpp:70 src/modules/options/optw_dcc.cpp:272
 msgid " bytes"
 msgstr " bajtů"
 
@@ -35,8 +34,7 @@ msgstr " min"
 #: src/modules/options/optw_ircview.cpp:153
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_dcc.cpp:263
-#: src/modules/options/optw_lag.cpp:42
+#: src/modules/options/optw_dcc.cpp:263 src/modules/options/optw_lag.cpp:42
 #: src/modules/options/optw_lag.cpp:53
 msgid " msec"
 msgstr " msek"
@@ -87,8 +85,7 @@ msgstr "&Nový server"
 
 #: src/modules/options/optw_servers.cpp:311
 #: src/modules/options/optw_identity.cpp:237
-#: src/modules/options/dialog.cpp:237
-#: src/modules/options/container.cpp:62
+#: src/modules/options/dialog.cpp:237 src/modules/options/container.cpp:62
 msgid "&OK"
 msgstr "&OK"
 
@@ -1471,10 +1468,8 @@ msgstr "Přidat"
 msgid "Add Rule"
 msgstr "Přidat pravidlo"
 
-#: src/modules/options/optw_dcc.h:56
-#: src/modules/options/optw_dcc.h:100
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:56 src/modules/options/optw_dcc.h:100
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:43
 msgid "Advanced"
@@ -1590,8 +1585,7 @@ msgstr "Připojit k VERSION odezvě:"
 msgid "Auto flush logs every"
 msgstr "Auto flush logů každý"
 
-#: src/modules/options/optw_sound.cpp:67
-#: src/modules/options/optw_sound.cpp:82
+#: src/modules/options/optw_sound.cpp:67 src/modules/options/optw_sound.cpp:82
 msgid "Auto-detect"
 msgstr "Autodetekce"
 
@@ -1603,8 +1597,7 @@ msgstr "Automatická detekce"
 msgid "Automatically Log"
 msgstr "Automaticky logovat"
 
-#: src/modules/options/optw_dcc.cpp:171
-#: src/modules/options/optw_dcc.cpp:301
+#: src/modules/options/optw_dcc.cpp:171 src/modules/options/optw_dcc.cpp:301
 #: src/modules/options/optw_dcc.cpp:322
 msgid "Automatically accept"
 msgstr "Automaticky přijmout"
@@ -1762,8 +1755,7 @@ msgstr "Cache IP adresy"
 #: src/modules/options/optw_servers.cpp:772
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
-#: src/modules/options/dialog.cpp:250
-#: src/modules/options/container.cpp:70
+#: src/modules/options/dialog.cpp:250 src/modules/options/container.cpp:70
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -1773,8 +1765,7 @@ msgstr "Zrušit"
 #: src/modules/options/optw_taskbar.cpp:129
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
-#: src/modules/options/optw_input.cpp:55
-#: src/modules/options/optw_input.cpp:60
+#: src/modules/options/optw_input.cpp:55 src/modules/options/optw_input.cpp:60
 msgid "Center"
 msgstr "Centrovat"
 
@@ -1867,13 +1858,11 @@ msgstr "Smazat seznam"
 msgid "Close in tray"
 msgstr "Zavřít v panelu"
 
-#: src/modules/options/dialog.cpp:238
-#: src/modules/options/container.cpp:63
+#: src/modules/options/dialog.cpp:238 src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr "Zavře tento dialog a provede všechny změny."
 
-#: src/modules/options/dialog.cpp:251
-#: src/modules/options/container.cpp:71
+#: src/modules/options/dialog.cpp:251 src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr "Zavře tento dialog, bez provedení změn."
 
@@ -2217,8 +2206,7 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Stahování selhalo"
 
-#: src/modules/options/optw_ircview.h:69
-#: src/modules/options/optw_taskbar.h:98
+#: src/modules/options/optw_ircview.h:69 src/modules/options/optw_taskbar.h:98
 #: src/modules/options/optw_userlist.h:102
 msgid "Features"
 msgstr "Vlastnosti"
@@ -2302,10 +2290,8 @@ msgid "Gender:"
 msgstr "Pohlaví:"
 
 #: src/modules/options/optw_servers.cpp:191
-#: src/modules/options/optw_messages.cpp:76
-#: src/modules/options/optw_dcc.h:43
-#: src/modules/options/optw_dcc.h:86
-#: src/modules/options/optw_irc.h:45
+#: src/modules/options/optw_messages.cpp:76 src/modules/options/optw_dcc.h:43
+#: src/modules/options/optw_dcc.h:86 src/modules/options/optw_irc.h:45
 #: src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_interfacelookglobal.h:32
 #: src/modules/options/optw_identity.h:119
@@ -2520,8 +2506,7 @@ msgstr "Neaktivní text (Primární)"
 msgid "Inactive Text (Secondary)"
 msgstr "Neaktivní text (Sekundární)"
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Vstup"
 
@@ -2552,8 +2537,7 @@ msgstr "Příchod do kanálů"
 msgid "KVIrc Preferences"
 msgstr "KVIrc Předvolby"
 
-#: src/modules/options/optw_irc.cpp:107
-#: src/modules/options/optw_irc.cpp:116
+#: src/modules/options/optw_irc.cpp:107 src/modules/options/optw_irc.cpp:116
 msgid "Keep channel open"
 msgstr "Nechat kanál otevřený"
 
@@ -2949,8 +2933,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/modules/options/optw_irc.cpp:167
-#: src/modules/options/optw_irc.cpp:179
+#: src/modules/options/optw_irc.cpp:167 src/modules/options/optw_irc.cpp:179
 msgid "On Channel Join"
 msgstr "Při příchodu do kanálu"
 
@@ -3028,8 +3011,7 @@ msgstr "Otervřít Query pro"
 msgid "Open all minimized"
 msgstr "Otevřít vše minimalizovaně"
 
-#: src/modules/options/optw_dcc.cpp:302
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:302 src/modules/options/optw_dcc.cpp:324
 msgid "Open minimized when auto-accepted"
 msgstr "Otevřít minimalizovaně při auto-příjmu"
 
@@ -3580,8 +3562,7 @@ msgstr "Řadit okna podle názvu"
 msgid "Sound"
 msgstr "Zvuk"
 
-#: src/modules/options/optw_sound.cpp:59
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:59 src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Zvukový systém"
 
@@ -3609,8 +3590,7 @@ msgstr "Lišta"
 msgid "Taskbar Alert"
 msgstr "Výstraha lišty"
 
-#: src/modules/options/optw_sound.cpp:70
-#: src/modules/options/optw_sound.cpp:85
+#: src/modules/options/optw_sound.cpp:70 src/modules/options/optw_sound.cpp:85
 msgid "Test"
 msgstr "Testovat"
 
@@ -3827,8 +3807,7 @@ msgstr ""
 #: src/modules/options/optw_taskbar.cpp:126
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_input.cpp:52 src/modules/options/optw_input.cpp:57
 msgid "Tile"
 msgstr "Dlaždice"
 
@@ -4200,8 +4179,7 @@ msgstr "[Neznámý typ média]"
 msgid "authentication,identify"
 msgstr "autentifikace,identifikace"
 
-#: src/modules/options/optw_dcc.cpp:230
-#: src/modules/options/optw_dcc.cpp:236
+#: src/modules/options/optw_dcc.cpp:230 src/modules/options/optw_dcc.cpp:236
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
@@ -4274,10 +4252,8 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr "zvuk,xmms,audio,přehrávání,amarok"
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36
-#: src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66
-#: src/modules/options/optw_taskbar.h:81
+#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
+#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
 #: src/modules/options/optw_taskbar.h:100
 #: src/modules/options/optw_taskbar.h:115
 msgid "theme"
@@ -4293,8 +4269,7 @@ msgid "theme,colors,messages,output"
 msgstr "motiv,barvy,zprávy,výstup"
 
 #: src/modules/options/optw_messages.h:38
-#: src/modules/options/optw_ircview.h:36
-#: src/modules/options/optw_ircview.h:50
+#: src/modules/options/optw_ircview.h:36 src/modules/options/optw_ircview.h:50
 msgid "theme,colors,output"
 msgstr "motiv,barvy,výstup"
 
