@@ -686,10 +686,9 @@ QTextCodec * KviApp::defaultTextCodec()
 QTextCodec * KviApp::defaultSrvCodec()
 {
 	QTextCodec * c = 0;
-	//FIXME add a proper option for this
-	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
+	if(!KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).isEmpty())
 	{
-		c = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
+		c = KviLocale::codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1());
 		if(c)return c;
 	}
 	c = QTextCodec::codecForLocale();

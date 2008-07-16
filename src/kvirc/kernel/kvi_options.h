@@ -383,8 +383,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringOnQueryMessageSound 54				/* sounds */
 #define KviOption_stringIrcViewTimestampFormat 55			
 #define KviOption_stringPreferredTorrentClient 56          /* still missing in options ! */
+// empty string means guess from locale
+#define KviOption_stringDefaultSrvEncoding 57                       /* server encoding */
 
-#define KVI_NUM_STRING_OPTIONS 57
+#define KVI_NUM_STRING_OPTIONS 58
 
 
 

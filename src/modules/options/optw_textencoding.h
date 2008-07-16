@@ -42,6 +42,7 @@ public:
 protected:
 	QString     m_szLanguage;
 	QComboBox * m_pTextEncodingCombo;
+	QComboBox * m_pSrvEncodingCombo;
 	QComboBox * m_pForcedLocaleCombo;
 public:
 	virtual void commit();

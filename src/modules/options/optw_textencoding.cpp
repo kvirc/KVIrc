@@ -37,33 +37,48 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	addLabel(0,0,0,0,__tr2qs_ctx("Default text encoding:","options"));
+	//server encoding
+	addLabel(0,0,0,0,__tr2qs_ctx("Default server encoding:","options"));
+
+	m_pSrvEncodingCombo = new QComboBox(this);
+	addWidgetToLayout(m_pSrvEncodingCombo,1,0,1,0);
+
+	m_pSrvEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+
+	//text encoding
+	addLabel(0,1,0,1,__tr2qs_ctx("Default text encoding:","options"));
 
 	m_pTextEncodingCombo = new QComboBox(this);
-	addWidgetToLayout(m_pTextEncodingCombo,1,0,1,0);
+	addWidgetToLayout(m_pTextEncodingCombo,1,1,1,1);
 
 	m_pTextEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+
+	//common between text and server encoding
 	int i = 0;
-	int iMatch = 0;
+	int iTextMatch = 0, iSrvMatch=0;
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	while(d->szName)
 	{
-		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))iMatch = i + 1;
+		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))iTextMatch = i + 1;
+		if(KviQString::equalCI(d->szName,KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))iSrvMatch = i + 1;
+
 		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->szName);
+		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->szName);
 		i++;
 		d = KviLocale::encodingDescription(i);
 	}
 
-	m_pTextEncodingCombo->setCurrentIndex(iMatch);
+	m_pTextEncodingCombo->setCurrentIndex(iTextMatch);
+	m_pSrvEncodingCombo->setCurrentIndex(iSrvMatch);
 	
- 	addLabel(0,1,0,1,__tr2qs_ctx("Force language:","options"));
+ 	addLabel(0,2,0,2,__tr2qs_ctx("Force language:","options"));
 	
 	m_pForcedLocaleCombo = new QComboBox(this);
 	
-	addWidgetToLayout(m_pForcedLocaleCombo,1,1,1,1);
+	addWidgetToLayout(m_pForcedLocaleCombo,1,2,1,2);
 	
 	QLabel * l = new QLabel(__tr2qs_ctx("<b>Note:</b> You need to restart KVirc to apply a language changing","options"),this);
-	addWidgetToLayout(l,0,2,1,2);
+	addWidgetToLayout(l,0,3,1,3);
 	
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection","options"));
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en","options"));
@@ -85,7 +100,7 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 	QStringList list=QDir(szLocaleDir).entryList(QStringList("kvirc_*.mo"),QDir::Files);
 	
 	i = 0;
-	iMatch = 0;
+	int iMatch = 0;
 	
 	for ( QStringList::Iterator it = list.begin(); it != list.end(); ++it ) {
 		QString szTmp=*it;
@@ -102,7 +117,7 @@ KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
 		m_pForcedLocaleCombo->setCurrentIndex(1);
 	else
 		m_pForcedLocaleCombo->setCurrentIndex(iMatch);
-	addRowSpacer(0,3,1,3);
+	addRowSpacer(0,4,1,4);
 }
 
 KviTextEncodingOptionsWidget::~KviTextEncodingOptionsWidget()
@@ -118,6 +133,15 @@ void KviTextEncodingOptionsWidget::commit()
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = "";
 	} else {
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = m_pTextEncodingCombo->itemText(idx);
+	}
+
+	idx = m_pSrvEncodingCombo->currentIndex();
+	if(idx <= 0)
+	{
+		// guess from locale
+		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = "";
+	} else {
+		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = m_pSrvEncodingCombo->itemText(idx);
 	}
 	
 	idx=m_pForcedLocaleCombo->currentIndex();

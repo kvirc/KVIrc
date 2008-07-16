@@ -386,7 +386,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("OnMeKickedSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("OnQueryMessageSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("IrcViewTimestampFormat","[hh:mm:ss]",KviOption_sectFlagIrcView),
-	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame)
+	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame),
+	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame)
 };
 
 #define STRINGLIST_OPTION(_txt,_flags) \
