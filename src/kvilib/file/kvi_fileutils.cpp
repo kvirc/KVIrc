@@ -37,6 +37,7 @@
 #include <QTextCodec>
 #include <QTextStream>
 
+
 namespace KviFileUtils
 {
 	/*
@@ -434,6 +435,43 @@ namespace KviFileUtils
 		return !f.isRelative();
 	}
 };
+
+static char hexchars[16] = { '0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , 'A' , 'B' , 'C' , 'D' , 'E' , 'F' };
+
+
+void kvi_encodeFileName(KviStr & path)
+{
+	QString szPath(path.ptr());
+	kvi_encodeFileName(szPath);
+	path=szPath;
+}
+
+void kvi_encodeFileName(QString & path)
+{
+	QString src(path);
+	path="";
+	for(int i=0;i<src.length();i++)
+	{
+		QChar cur=src[i];
+		if( ! (cur.isLetter() || cur.isDigit() || cur==' ' || cur=='_' || cur=='.' || cur=='#' || cur=='%') )
+		{
+			if(cur.row()!=0)
+			{
+				path+='%';
+				path+=hexchars[cur.row() >> 4];
+				path+=hexchars[cur.row() & 15];
+			}
+			path+='%';
+			path+=hexchars[cur.cell() >> 4];
+			path+=hexchars[cur.cell() & 15];
+		} else if (cur=='%')
+		{
+			path+="%%";
+		} else {
+			path+=cur;
+		}
+	}
+}
 
 //================ kvi_isAbsolutePath ===============//
 

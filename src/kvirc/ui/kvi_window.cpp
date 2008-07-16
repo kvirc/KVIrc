@@ -68,7 +68,6 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QIcon>
-#include <QUrl>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -562,7 +561,8 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	date=dt.toString("yyyy.MM.dd");
 	QString base;
 	getBaseLogFileName(base);
-	base = QUrl(base).toEncoded();
+	kvi_encodeFileName(base);
+	base.replace("%%2e","%2e");
 	base=base.toLower();
 	QString tmp;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
@@ -571,6 +571,11 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.toUtf8().data(),date.toUtf8().data());
 	g_pApp->getLocalKvircDirectory(buffer,KviApp::Log,tmp);
 }
+
+/*void KviWindow::getBaseLogFileName(KviStr &buffer)
+{
+	buffer = m_szName;
+}*/
 
 void KviWindow::getBaseLogFileName(QString &buffer)
 {
