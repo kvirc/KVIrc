@@ -338,6 +338,7 @@ KviSetupWizard::KviSetupWizard()
 
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
+	m_pNickSelector->setMargin(0);
 	
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
 	m_pNickSelector->setValidator(v);
