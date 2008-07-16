@@ -22,6 +22,7 @@
 
 #include "logviewmdiwindow.h"
 #include "logviewwidget.h"
+
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
 #include "kvi_module.h"
@@ -33,9 +34,9 @@
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #ifdef COMPILE_USE_QT4
-	#include <q3progressdialog.h>
+        #include <q3progressdialog.h>
 #else
-	#include <qprogressdialog.h> 
+        #include <qprogressdialog.h> 
 #endif
 #include "kvi_valuelist.h"
 #include "kvi_accel.h"
@@ -53,7 +54,7 @@
 
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+        #include <zlib.h>
 #endif
 #include <qtextcodec.h>
 #include "kvi_styled_controls.h"
@@ -66,16 +67,16 @@ extern KviLogViewMDIWindow * g_pLogViewWindow;
 KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_LOGVIEW,lpFrm,"logview"), KviModuleExtension(d)
 {
-	g_pLogViewWindow = this;
-//	m_pLogViewWidget = new KviLogViewWidget(this);
-	#ifdef COMPILE_USE_QT4
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+        g_pLogViewWindow = this;
+//      m_pLogViewWidget = new KviLogViewWidget(this);
+        #ifdef COMPILE_USE_QT4
+        m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
 #else
-	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+        m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
 #endif
-	m_pTabWidget = new QTabWidget(m_pSplitter);
-	
-	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
+        m_pTabWidget = new QTabWidget(m_pSplitter);
+        
+        m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->insertTab(m_pIndexTab,__tr2qs_ctx("Index","logview"));
 	m_pListView = new KviTalListView(m_pIndexTab);
 	m_pListView->addColumn(__tr2qs_ctx("Log File","logview"),135);
@@ -87,37 +88,37 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemSelected(KviTalListViewItem *)));
 	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( KviTalListViewItem * , const QPoint &, int )));
 	
-	m_pSearchTab  = new QWidget(m_pTabWidget);
-	m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Filter","logview"));
+        m_pSearchTab  = new QWidget(m_pTabWidget);
+        m_pTabWidget->insertTab(m_pSearchTab,__tr2qs_ctx("Filter","logview"));
 
-	QGridLayout *layout = new QGridLayout(m_pSearchTab,10,2,3,5);
-	
-	m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
-	m_pShowChannelsCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
-	
-	m_pShowQueryesCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
-	m_pShowQueryesCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
-	
-	m_pShowConsolesCheck = new KviStyledCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
-	m_pShowConsolesCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
+        QGridLayout *layout = new QGridLayout(m_pSearchTab,10,2,3,5);
+        
+        m_pShowChannelsCheck = new KviStyledCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
+        m_pShowChannelsCheck->setChecked(true);
+        layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
+        
+        m_pShowQueryesCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
+        m_pShowQueryesCheck->setChecked(true);
+        layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
+        
+        m_pShowConsolesCheck = new KviStyledCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
+        m_pShowConsolesCheck->setChecked(true);
+        layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
 
-	m_pShowDccChatCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
-	m_pShowDccChatCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
-	
-	m_pShowOtherCheck   = new KviStyledCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
-	m_pShowOtherCheck->setChecked(true);
-	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
-	
-	QLabel *l;
-	l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
-	layout->addMultiCellWidget(l,5,5,0,1);
+        m_pShowDccChatCheck  = new KviStyledCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
+        m_pShowDccChatCheck->setChecked(true);
+        layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
+        
+        m_pShowOtherCheck   = new KviStyledCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
+        m_pShowOtherCheck->setChecked(true);
+        layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
+        
+        QLabel *l;
+        l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
+        layout->addMultiCellWidget(l,5,5,0,1);
 
-	l = new QLabel(__tr2qs_ctx("Log name mask:","logview"),m_pSearchTab);
-	m_pFileNameMask = new QLineEdit(m_pSearchTab);
+        l = new QLabel(__tr2qs_ctx("Log name mask:","logview"),m_pSearchTab);
+        m_pFileNameMask = new QLineEdit(m_pSearchTab);
 	connect(m_pFileNameMask,SIGNAL(returnPressed()),this,SLOT(applyFilter()));
 	layout->addWidget(l,6,0);
 	layout->addWidget(m_pFileNameMask,6,1);
@@ -125,21 +126,21 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	l = new QLabel(__tr2qs_ctx("Log contents mask:","logview"),m_pSearchTab);
 	m_pContentsMask = new QLineEdit(m_pSearchTab);
 	connect(m_pContentsMask,SIGNAL(returnPressed()),this,SLOT(applyFilter()));
-	layout->addWidget(l,7,0);
-	layout->addWidget(m_pContentsMask,7,1);
+        layout->addWidget(l,7,0);
+        layout->addWidget(m_pContentsMask,7,1);
 
-	m_pEnableFromFilter = new KviStyledCheckBox(__tr2qs_ctx("Only older than","logview"),m_pSearchTab);
-	m_pFromDateEdit = new QDateEdit(m_pSearchTab);
-	m_pFromDateEdit->setDate(QDate::currentDate());
-	layout->addWidget(m_pEnableFromFilter,8,0);
+        m_pEnableFromFilter = new KviStyledCheckBox(__tr2qs_ctx("Only older than","logview"),m_pSearchTab);
+        m_pFromDateEdit = new QDateEdit(m_pSearchTab);
+        m_pFromDateEdit->setDate(QDate::currentDate());
+        layout->addWidget(m_pEnableFromFilter,8,0);
 	layout->addWidget(m_pFromDateEdit,8,1);
-	connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
-	m_pFromDateEdit->setEnabled(false);
+        connect(m_pEnableFromFilter,SIGNAL(toggled(bool)),m_pFromDateEdit,SLOT(setEnabled(bool)));
+        m_pFromDateEdit->setEnabled(false);
 
-	m_pEnableToFilter = new KviStyledCheckBox(__tr2qs_ctx("Only newier than","logview"),m_pSearchTab);
-	m_pToDateEdit = new QDateEdit(m_pSearchTab);
-	m_pToDateEdit->setDate(QDate::currentDate());
-	layout->addWidget(m_pEnableToFilter,9,0);
+        m_pEnableToFilter = new KviStyledCheckBox(__tr2qs_ctx("Only newier than","logview"),m_pSearchTab);
+        m_pToDateEdit = new QDateEdit(m_pSearchTab);
+        m_pToDateEdit->setDate(QDate::currentDate());
+        layout->addWidget(m_pEnableToFilter,9,0);
 	layout->addWidget(m_pToDateEdit,9,1);
 	connect(m_pEnableToFilter,SIGNAL(toggled(bool)),m_pToDateEdit,SLOT(setEnabled(bool)));
 	m_pToDateEdit->setEnabled(false);
@@ -150,25 +151,25 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 
 	QWidget *w = new QWidget(m_pSearchTab);
 	w->setSizePolicy(QSizePolicy::Ignored,QSizePolicy::Ignored);
-	layout->addWidget(w,11,1);
+        layout->addWidget(w,11,1);
 
-	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
+        m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
 #ifdef COMPILE_USE_QT4
-	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
+        m_pIrcView->setFocusPolicy(Qt::ClickFocus);
 #else
-		m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
+                m_pIrcView->setFocusPolicy(QWidget::ClickFocus);
 #endif
-	KviValueList<int> li;
-	li.append(110);
-	li.append(width()-110);
+        KviValueList<int> li;
+        li.append(110);
+        li.append(width()-110);
 	m_pSplitter->setSizes(li);
 	
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
-	
-	cacheFileList();
-	setupItemList();
-	KviAccel *a = new KviAccel( this );
+        
+        cacheFileList();
+        setupItemList();
+        KviAccel *a = new KviAccel( this );
         a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
                         m_pIrcView,
                         SLOT(toggleToolWidget()) );
@@ -178,24 +179,24 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 
 KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {
-    g_pLogViewWindow = 0;
+        g_pLogViewWindow = 0;
 }
 
 void KviLogViewMDIWindow::applyFilter()
 {
-	setupItemList();
+        setupItemList();
 }
 
 
 QPixmap * KviLogViewMDIWindow::myIconPtr()
 {
-    return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
+        return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
 }
 
 
 void KviLogViewMDIWindow::resizeEvent(QResizeEvent *e)
 {
-	m_pSplitter->setGeometry(0,0,width(),height());
+        m_pSplitter->setGeometry(0,0,width(),height());
 }
 
 void KviLogViewMDIWindow::fillCaptionBuffers()
@@ -247,22 +248,22 @@ void KviLogViewMDIWindow::setupItemList()
 	const bool enableContentFilter = !contentFilterText.isEmpty();
 
 	QDate fromDate = m_pFromDateEdit->date();
-	QDate toDate   = m_pToDateEdit->date();
+        QDate toDate   = m_pToDateEdit->date();
 
-	QString textBuffer;
+        QString textBuffer;
 #ifdef COMPILE_USE_QT4
-	Q3ProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
-		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
-                          this, "progress", TRUE );
+        Q3ProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
+                __tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
+                                this, "progress", TRUE );
 #else
-	QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
-		__tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
+        QProgressDialog progress( __tr2qs_ctx("Filtering files...","logview"),
+                __tr2qs_ctx("Abort filtering","logview"), m_logList.count(),
                           this, "progress", TRUE );
 #endif
 
 
-	int i=0;
-	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
+        int i=0;
+        for(pFile=m_logList.first();pFile;pFile=m_logList.next())
 	{
 		progress.setProgress( i );
 		i++;
@@ -328,10 +329,10 @@ void KviLogViewMDIWindow::cacheFileList()
 	m_pFileNames.sort();
 	QString szFname;
 
-    for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
-    {
-        szFname=(*it);
-        QFileInfo fi(szFname);
+	for(QStringList::Iterator it = m_pFileNames.begin(); it != m_pFileNames.end(); ++it)
+	{
+		szFname=(*it);
+		QFileInfo fi(szFname);
 		if(fi.extension(false)=="gz" || fi.extension(false)=="log")
 			m_logList.append(new KviLogFile(szFname));
 	}
@@ -366,11 +367,11 @@ void KviLogViewMDIWindow::itemSelected(KviTalListViewItem * it)
 
 QStringList KviLogViewMDIWindow::getFileNames()
 {
-    QString logPath;
-    g_pApp->getLocalKvircDirectory(logPath,KviApp::Log);
-    QString qPath(logPath);
-    QDir logDir(qPath);
-    return logDir.entryList();
+	QString logPath;
+	g_pApp->getLocalKvircDirectory(logPath,KviApp::Log);
+	QString qPath(logPath);
+	QDir logDir(qPath);
+	return logDir.entryList();
 }
 
 void KviLogViewMDIWindow::rightButtonClicked ( KviTalListViewItem * it, const QPoint &, int )
@@ -417,16 +418,16 @@ KviLogFile::KviLogFile(const QString& name)
 		m_type = Other;
 
 	KviStr undecoded = m_szFilename.section('.',0,0);
-	undecoded.cutToFirst('_');
-	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
+        undecoded.cutToFirst('_');
+        m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
-	undecoded = m_szFilename.section('.',1,1).section('_',0,0);
-	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
-	
-	QString szDate = m_szFilename.section('.',1,3).section('_',1,1);
-	int iYear = szDate.section('.',0,0).toInt();
-	int iMonth = szDate.section('.',1,1).toInt();
-	int iDay = szDate.section('.',2,2).toInt();
+        undecoded = m_szFilename.section('.',1).section('_',0,0);
+        m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
+        
+        QString szDate = m_szFilename.section('.',-4,-1).section('_',1,1);
+        int iYear = szDate.section('.',0,0).toInt();
+        int iMonth = szDate.section('.',1,1).toInt();
+        int iDay = szDate.section('.',2,2).toInt();
 	m_date.setYMD(iYear,iMonth,iDay);
 	
 	//debug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
@@ -437,12 +438,12 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 	QFile logFile;
 	logName.append(fileName());
 #ifdef COMPILE_ZLIB_SUPPORT
-	if(m_bCompressed)
-	{
-		gzFile file=gzopen(logName.local8Bit().data(),"rb");
-		if(file)
-		{
-			char buff[1025];
+        if(m_bCompressed)
+        {
+                gzFile file=gzopen(logName.local8Bit().data(),"rb");
+                if(file)
+                {
+                        char buff[1025];
 			int len;
 			KviQCString data;
 			//QCString data;
@@ -453,12 +454,12 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 				data.append(buff);
 				len=gzread(file,buff,1024);
 			}
-			gzclose(file);
-			text = QString::fromUtf8(data);
-		} else {
-			debug("Cannot open compressed file %s",logName.local8Bit().data());
-		}
-	} else {
+                        gzclose(file);
+                        text = QString::fromUtf8(data);
+                } else {
+                        debug("Cannot open compressed file %s",logName.local8Bit().data());
+                }
+        } else {
 #endif
 		logFile.setName(logName);
 		
