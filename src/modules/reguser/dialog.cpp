@@ -36,8 +36,8 @@
 #include "kvi_options.h"
 #include "kvi_file.h"
 #include "kvi_filedialog.h"
-#include "kvi_msgbox.h"
 #include "kvi_fileutils.h"
+#include "kvi_msgbox.h"
 #include "kvi_settings.h"
 #include "kvi_stringconversion.h"
 #include "kvi_options.h"
@@ -59,6 +59,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QAbstractItemView>
+#include <QUrl>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -814,23 +815,23 @@ void KviRegisteredUsersDialog::importClicked()
 
 			if(img.isNull())debug("Ops.. readed a null image ?");
 
-			KviStr fName = u->name();
-			kvi_encodeFileName(fName);
+			QString fName = QUrl(u->name()).toEncoded();
 
-			KviStr fPath;
+			QString fPath;
 			int rnm = 0 ;
 			do
 			{
-				g_pApp->getLocalKvircDirectory(fPath,KviApp::Avatars,fName.ptr());
-				fPath.append(KviStr::Format,"%d.png",rnm);
+				g_pApp->getLocalKvircDirectory(fPath,KviApp::Avatars,fName);
+				fPath+= rnm;
+				fPath+= ".png";
 				rnm++;
-			} while(KviFileUtils::fileExists(fPath.ptr()));
+			} while(KviFileUtils::fileExists(fPath));
 
-			if(!img.save(fPath.ptr(),"PNG"))
+			if(!img.save(fPath,"PNG"))
 			{
-				debug("Can't save image %s",fPath.ptr());
+				debug("Can't save image %s",fPath.toUtf8().data());
 			} else {
-				u->setProperty("avatar",fPath.ptr());
+				u->setProperty("avatar",fPath);
 			}
 		}
 	}

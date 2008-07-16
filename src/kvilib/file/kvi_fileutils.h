@@ -44,8 +44,6 @@
 // #warning "or should it be availible only for dirbrowser module ?"
 namespace KviFileUtils
 {
-	//extern KVILIB_API bool readLine(QFile * f,QString &szBuffer,bool bClearBuffer = true);
-	//extern KVILIB_API bool loadFileStripCR(const QString &szPath,QString &szBuffer);
 
 	// loads the file at szPath to szBuffer eventually converting from utf8
 	extern KVILIB_API bool loadFile(const QString &szPath,QString &szBuffer,bool bUtf8 = true);
@@ -96,14 +94,8 @@ namespace KviFileUtils
 };
 
 // ALL THIS STUFF BELOW SHOULD DIE: IF YOU SEE IT, REPLACE WITH THE FUNCTIONS IN THE NAMESPACE ABOVE
-
 // Returns true if the path begins with '/'
 KVILIB_API extern bool kvi_isAbsolutePath(const char *path);
-// Translates ANY string into a valid filename (with no path!)
-// There is NO way to come back to the original string
-// the algo is one-way only
-KVILIB_API extern void kvi_encodeFileName(KviStr & path);
-KVILIB_API extern void kvi_encodeFileName(QString & path);
 
 // Reads a single line from the file and returns false if EOF was encountered.
 KVILIB_API extern bool kvi_readLine(QFile *f,KviStr &str);
