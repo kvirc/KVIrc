@@ -367,22 +367,22 @@ void KviIrcLink::socketStateChange()
 		case KviIrcSocket::Connecting:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Contacting %Q %s (%s) on port %u"),
 				connection()->proxy() ? &(__tr2qs("proxy host")) : &(__tr2qs("IRC server")),
-				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.toUtf8().data(),
-				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szHostname.toUtf8().data() : connection()->server()->m_szHostname.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szIp.toUtf8().data() : connection()->server()->m_szIp.toUtf8().data(),
 				connection()->proxy() ? connection()->proxy()->m_uPort : connection()->server()->m_uPort);
 		break;
 		case KviIrcSocket::SSLHandshake:
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Low-level transport connection established [%s (%s:%u)]"),
-				connection()->proxy() ? connection()->proxy()->m_szHostname.ptr() : connection()->server()->m_szHostname.toUtf8().data(),
-				connection()->proxy() ? connection()->proxy()->m_szIp.ptr() : connection()->server()->m_szIp.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szHostname.toUtf8().data() : connection()->server()->m_szHostname.toUtf8().data(),
+				connection()->proxy() ? connection()->proxy()->m_szIp.toUtf8().data() : connection()->server()->m_szIp.toUtf8().data(),
 				connection()->proxy() ? connection()->proxy()->m_uPort : connection()->server()->m_uPort);
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Starting Secure Socket Layer handshake"));
 		break;
 		case KviIrcSocket::ProxyLogin:
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
+			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%s established [%s (%s:%u)]"),
 				connection()->socket()->usingSSL() ? &(__tr2qs("Secure proxy connection")) : &(__tr2qs("Proxy connection")),
-				connection()->proxy()->m_szHostname.ptr(),
-				connection()->proxy()->m_szIp.ptr(),
+				connection()->proxy()->m_szHostname.toUtf8().data(),
+				connection()->proxy()->m_szIp.toUtf8().data(),
 				connection()->proxy()->m_uPort);
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Negotiating relay information"));
 		break;

@@ -55,8 +55,8 @@
 #include <QTimer>
 
 extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
-extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
+extern KVIRC_API KviProxyDataBase            * g_pProxyDataBase;
+extern KVIRC_API KviGarbageCollector         * g_pGarbageCollector;
 
 
 
@@ -165,7 +165,7 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 			__tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
-			m_pTarget->proxy()->m_szHostname.ptr(),
+			m_pTarget->proxy()->m_szHostname.toUtf8().data(),
 			m_pTarget->proxy()->m_uPort,
 			m_pTarget->proxy()->protocolName());
 
@@ -181,10 +181,10 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->proxy()->isIPv6())
 	{
-		bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szIp.ptr());
+		bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szIp);
 	} else {
 #endif
-		bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szIp.ptr());
+		bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szIp);
 #ifdef COMPILE_IPV6_SUPPORT
 	}
 #endif
@@ -194,19 +194,19 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 				__tr2qs("Using cached proxy IP address (%s)"),
-				m_pTarget->proxy()->m_szIp.ptr());
+				m_pTarget->proxy()->m_szIp.toUtf8().data());
 		if(m_pTarget->proxy()->protocol() != KviProxy::Http 
-			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5) 
+			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 				lookupServerHostname();
 		else terminate(Success,KviError_success);
 	} else {
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
 		{
-			bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szHostname.ptr());
+			bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szHostname);
 		} else {
 #endif
-			bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szHostname.ptr());
+			bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szHostname);
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
@@ -232,7 +232,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			m_pProxyDns = new KviDns();
 			connect(m_pProxyDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(proxyLookupTerminated(KviDns *)));
 	
-			if(!m_pProxyDns->lookup(m_pTarget->proxy()->m_szHostname.ptr(),
+			if(!m_pProxyDns->lookup(m_pTarget->proxy()->m_szHostname,
 				m_pTarget->proxy()->isIPv6() ? KviDns::IPv6 : KviDns::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
@@ -248,7 +248,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 							__tr2qs("Looking up the proxy hostname (%s)..."),
-							m_pTarget->proxy()->m_szHostname.ptr());
+							m_pTarget->proxy()->m_szHostname.toUtf8().data());
 			}
 		}
 	}
@@ -273,7 +273,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
 		
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.ptr(),szFirstIpAddress.toUtf8().data());
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp,szFirstIpAddress.toUtf8().data());
 
 		if(m_pProxyDns->hostnameCount() > 1)
 		{

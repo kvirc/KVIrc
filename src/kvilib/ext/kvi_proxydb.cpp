@@ -25,6 +25,7 @@
 
 #include "kvi_proxydb.h"
 #include "kvi_config.h"
+#include "kvi_qstring.h"
 
 
 KviProxy::KviProxy()
@@ -98,12 +99,29 @@ void KviProxyDataBase::updateProxyIp(const char * proxy,const char * ip)
 {
 	for(KviProxy * prx = m_pProxyList->first();prx;prx = m_pProxyList->next())
 	{
-		if(kvi_strEqualCI(proxy,prx->m_szHostname.ptr()))
+		if(kvi_strEqualCI(proxy,prx->m_szHostname))
 		{
 			prx->m_szIp = ip;
 			return;
 		}
 	}
+}
+
+KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
+{
+	for(KviProxy *p=m_pProxyList->first();p;p=m_pProxyList->next())
+	{
+		if(bName)
+		{
+			if(KviQString::equalCI(p->m_szHostname,pProxy->m_szHostname)) return p;
+		} else {
+			if(KviQString::equalCI(p->m_szHostname,pProxy->m_szHostname) &&
+				(p->m_uPort == pProxy->m_uPort) &&
+				(p->protocol() == pProxy->protocol()) &&
+				(p->isIPv6() == pProxy->isIPv6())) return p;
+		}
+	}
+	return 0;
 }
 
 void KviProxyDataBase::clear()
@@ -163,15 +181,15 @@ void KviProxyDataBase::save(const QString &filename)
 	for(KviProxy * p=m_pProxyList->first();p;p=m_pProxyList->next())
 	{
 		KviStr tmp(KviStr::Format,"%u_Hostname",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szHostname.ptr());
+		cfg.writeEntry(tmp.ptr(),p->m_szHostname);
 		tmp.sprintf("%u_Port",i);
 		cfg.writeEntry(tmp.ptr(),p->m_uPort);
 		tmp.sprintf("%u_Ip",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szIp.ptr());
+		cfg.writeEntry(tmp.ptr(),p->m_szIp);
 		tmp.sprintf("%u_User",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szUser.ptr());
+		cfg.writeEntry(tmp.ptr(),p->m_szUser);
 		tmp.sprintf("%u_Pass",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szPass.ptr());
+		cfg.writeEntry(tmp.ptr(),p->m_szPass);
 
 		tmp.sprintf("%u_Protocol",i);
 		KviStr type;

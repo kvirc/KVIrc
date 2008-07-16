@@ -42,7 +42,7 @@
 
 
 KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
-: KviTalTreeWidgetItem(parent,prx->m_szHostname.ptr())
+: KviTalTreeWidgetItem(parent,prx->m_szHostname)
 {
 	debug("Creating item");
 	setIcon(0,QIcon(pm));
@@ -191,7 +191,7 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 #endif
 	if(m_pLastEditedItem)
 	{
-		m_pProxyEdit->setText(m_pLastEditedItem->m_pProxyData->m_szHostname.ptr());
+		m_pProxyEdit->setText(m_pLastEditedItem->m_pProxyData->m_szHostname);
 
 		for(int i=0;i<m_pProtocolBox->count();i++)
 		{
@@ -212,7 +212,7 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 #endif
 
 
-		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp.ptr()))
+		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
 			m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->isIPv6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
@@ -221,8 +221,8 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 #endif
 		}
 
-		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->m_szUser.ptr());
-		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->m_szPass.ptr());
+		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->m_szUser);
+		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->m_szPass);
 		KviStr tmp(KviStr::Format,"%u",m_pLastEditedItem->m_pProxyData->m_uPort);
 		m_pPortEdit->setText(tmp.ptr());
 	} else {
