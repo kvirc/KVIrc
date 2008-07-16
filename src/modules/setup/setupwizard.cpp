@@ -351,9 +351,11 @@ KviSetupWizard::KviSetupWizard()
 
 	m_pRealNameSelector = new KviStringSelector(gbox,__tr2qs("Real name:"),&(KVI_OPTION_STRING(KviOption_stringRealname)),true);
 	m_pRealNameSelector->setMinimumLabelWidth(120);
+	m_pRealNameSelector->setMargin(0);
 
 	KviTalHBox* hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
+	hb->setMargin(0);
 	
 	l = new QLabel(__tr2qs("Age:"),hb);
 	l->setMinimumWidth(120);
@@ -380,6 +382,7 @@ KviSetupWizard::KviSetupWizard()
 
 	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
+	hb->setMargin(0);
 	
 	l = new QLabel(__tr2qs("Gender:"),hb);
 	l->setMinimumWidth(120);
@@ -401,9 +404,11 @@ KviSetupWizard::KviSetupWizard()
 
 	m_pLocationSelector = new KviStringSelector(gbox,__tr2qs("Location:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoLocation)),true);
 	m_pLocationSelector->setMinimumLabelWidth(120);
+	m_pLocationSelector->setMargin(0);
 
 	m_pLanguagesSelector = new KviStringSelector(gbox,__tr2qs("Languages:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoLanguages)),true);
 	m_pLanguagesSelector->setMinimumLabelWidth(120);
+	m_pLanguagesSelector->setMargin(0);
 
 	//m_pOtherInfoSelector = new KviStringSelector(gbox,__tr2qs("Other:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoOther)),true);
 	//m_pOtherInfoSelector->setMinimumLabelWidth(120);
