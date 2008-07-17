@@ -167,7 +167,7 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 			__tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
 			m_pTarget->proxy()->m_szHostname.toUtf8().data(),
 			m_pTarget->proxy()->m_uPort,
-			m_pTarget->proxy()->protocolName());
+			m_pTarget->proxy()->protocolName().toUtf8().data());
 
 		lookupProxyHostname();
 	} else {

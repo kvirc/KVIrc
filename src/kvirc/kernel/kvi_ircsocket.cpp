@@ -308,7 +308,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 #endif
 	}
 
-	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip().toUtf8().data(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
+	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
 
 	if(!sa.socketAddress())return KviError_invalidIpAddress;
 
@@ -644,7 +644,7 @@ void KviIrcSocket::proxyLoginHttp()
 	KviStr tmp(KviStr::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().toUtf8().data(),(unsigned int)(m_pIrcServer->port()));
 	if(m_pProxy->hasUser())
 	{
-		KviStr auth(KviStr::Format,"%s:%s",m_pProxy->user(),m_pProxy->pass());
+		KviStr auth(KviStr::Format,"%s:%s",m_pProxy->user().toUtf8().data(),m_pProxy->pass().toUtf8().data());
 		KviStr encoded;
 		encoded.bufferToBase64(auth.ptr(),auth.len());
 		tmp.append(KviStr::Format,"Proxy-Authorization: Basic %s\r\n\r\n",encoded.ptr());
@@ -816,9 +816,9 @@ void KviIrcSocket::proxyAuthUserPassV5()
 	char *bufToSend=new char[iLen];
 	bufToSend[0]=(unsigned char)1;                           //version x'01'
 	bufToSend[1]=(unsigned char)lUser;                       //length of the username
-	kvi_memmove((void *)(bufToSend+2),(void *)m_pProxy->user(),lUser); //username
+	kvi_memmove((void *)(bufToSend+2),(void *)m_pProxy->user().toUtf8().data(),lUser); //username
 	bufToSend[2+lUser]=(unsigned char)lPass;             //length of the password
-	kvi_memmove((void *)(bufToSend+3+lUser),(void *)m_pProxy->pass(),lPass);
+	kvi_memmove((void *)(bufToSend+3+lUser),(void *)m_pProxy->pass().toUtf8().data(),lPass);
 	// spit out the buffer and wait
 	setState(ProxyUserPassV5);
 	sendRawData(bufToSend,iLen);

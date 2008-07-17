@@ -48,13 +48,13 @@ public:
 public:
 	bool isIPv6() const             { return m_bIsIPv6; };
 	Protocol protocol() const       { return m_protocol; };
-	const char * protocolName() const;
+	const QString protocolName() const;
 	void setNamedProtocol(const char * proto);
 	kvi_u32_t port() const { return m_uPort; };
-	const char * user() const       { return m_szUser; };
-	const char * pass() const       { return m_szPass; };
-	const char * ip() const         { return m_szIp; };
-	const char * hostname() const   { return m_szHostname; };
+	const QString & user() const       { return m_szUser; };
+	const QString & pass() const       { return m_szPass; };
+	const QString & ip() const         { return m_szIp; };
+	const QString & hostname() const   { return m_szHostname; };
 	void normalizeUserAndPass();
 	bool hasPass() const         { return !m_szPass.isEmpty(); };
 	bool hasUser() const         { return !m_szUser.isEmpty(); };

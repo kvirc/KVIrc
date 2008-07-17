@@ -51,9 +51,9 @@ KviProxy::~KviProxy()
 {
 }
 
-static const char * proxy_protocols_table[3]= { "SOCKSv4", "SOCKSv5", "HTTP" };
+static const QString proxy_protocols_table[3]= { "SOCKSv4", "SOCKSv5", "HTTP" };
 
-const char * KviProxy::protocolName() const
+const QString KviProxy::protocolName() const
 {
 	switch(m_protocol)
 	{
