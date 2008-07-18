@@ -69,7 +69,7 @@ KviProxy* KviServer::proxyServer(KviProxyDataBase * pDb)
 
 KviServer::KviServer(const KviServer &serv)
 {
-	m_pReconnectInfo     = 0;
+	m_pReconnectInfo     = serv.m_pReconnectInfo;
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
 	m_szDescription      = serv.m_szDescription;
