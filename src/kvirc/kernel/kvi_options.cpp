@@ -124,7 +124,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseGlobalPseudoTransparency",false,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	BOOL_OPTION("UseNotifyList",false,KviOption_sectFlagConnection | KviOption_resetRestartNotifyList),
 	BOOL_OPTION("NotifyListChangesToActiveWindow",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("AutoResumeDccSendWhenAutoAccepted",true,KviOption_sectFlagDcc),
+	BOOL_OPTION("AutoResumeDccSendWhenAutoAccepted",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("LimitOutgoingTraffic",false,KviOption_sectFlagIrcSocket),
 	BOOL_OPTION("SendUnknownCommandsAsRaw",true,KviOption_sectFlagUserParser),
 	BOOL_OPTION("UserListViewDrawGrid",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
