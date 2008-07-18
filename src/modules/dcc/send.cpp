@@ -955,8 +955,7 @@ void KviDccFileTransfer::retryDCC()
 	abort();
 	QString szRemoteNick = m_pDescriptor->remoteNick();
 	QString szFileName = m_pDescriptor->localFileName();
-	QString szId;
-	szId.setNum(m_pDescriptor->id());
+	QString szId = m_pDescriptor->idString();
 	QString szCommand = "dcc.send -r=$console($dcc.irccontext(" + szId + ")) " + szRemoteNick + " " + "\"" + szFileName + "\"";
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
@@ -966,8 +965,7 @@ void KviDccFileTransfer::retryTDCC()
 	abort();
 	QString szRemoteNick = m_pDescriptor->remoteNick();
 	QString szFileName = m_pDescriptor->localFileName();
-	QString szId;
-	szId.setNum(m_pDescriptor->id());
+	QString szId = m_pDescriptor->idString();
 	QString szCommand = "dcc.send -r=$console($dcc.irccontext(" + szId + ")) -t " + szRemoteNick + " " + "\"" + szFileName + "\"";
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
@@ -977,8 +975,7 @@ void KviDccFileTransfer::retryRevDCC()
 	abort();
 	QString szRemoteNick = m_pDescriptor->remoteNick();
 	QString szFileName = m_pDescriptor->localFileName();
-	QString szId;
-	szId.setNum(m_pDescriptor->id());
+	QString szId = m_pDescriptor->idString();
 	QString szCommand = "dcc.rsend -z -r=$console($dcc.irccontext(" + szId + ")) " + szRemoteNick + " " + "\"" + szFileName + "\"";
 	KviKvsScript::run(szCommand,g_pActiveWindow);
 }

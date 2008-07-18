@@ -160,7 +160,6 @@ void KviDccBroker::rsendAskForFileName(KviDccDescriptor * dcc)
 			if(filenames.count() > 0)
 			{
 				KviDccDescriptor * d;
-				KviDccDescriptor * templ = dcc;
 				QStringList::Iterator it=filenames.begin();
 				while(it != filenames.end())
 				{
@@ -773,28 +772,25 @@ void KviDccBroker::recvFileExecute(KviDccBox *box,KviDccDescriptor * dcc)
 void KviDccBroker::sendFileManage(KviDccDescriptor * dcc)
 {
 	QStringList filenames;
-	if(
-		KviFileDialog::askForOpenFileNames(filenames,
-		__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),"")
-		) {
-			if(filenames.count() > 0)
+	if(KviFileDialog::askForOpenFileNames(filenames,__tr2qs_ctx("Choose Files to Send - KVIrc","dcc"),""))
+	{
+		if(filenames.count() > 0)
+		{
+			KviDccDescriptor * d;
+			QStringList::Iterator it=filenames.begin();
+			while(it != filenames.end())
 			{
-				KviDccDescriptor * d;
-				KviDccDescriptor * templ = dcc;
-				QStringList::Iterator it=filenames.begin();
-				while(it != filenames.end())
-				{
-					d = new KviDccDescriptor(*dcc);
-					d->szLocalFileName = *(it);
-					d->szLocalFileName.trimmed();
-					++it;
-					if(d->szLocalFileName.isEmpty())
-						cancelDcc(d);
-					else
-						sendFileExecute(0,d);
-				}
-				delete dcc;
+				d = new KviDccDescriptor(*dcc);
+				d->szLocalFileName = *(it);
+				d->szLocalFileName.trimmed();
+				++it;
+				if(d->szLocalFileName.isEmpty())
+					cancelDcc(d);
+				else
+					sendFileExecute(0,d);
 			}
+			delete dcc;
+		}
 	} else {
 		cancelDcc(dcc);
 	}
