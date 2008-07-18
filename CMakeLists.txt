@@ -47,16 +47,15 @@ SET(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 SET(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 
 # Get revision number from SVN
-# FIXME: this will break if no connection is available
-#FIND_PACKAGE(Subversion)
-#IF(Subversion_FOUND)
-#	MESSAGE("Found Subversion ${Subversion_VERSION_SVN}")
-#	Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
-#	SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
-#	MESSAGE("Current revision is ${KVIrc_WC_REVISION}")
-#ELSE()
-#	MESSAGE("Subversion not found. No revision number will be used")
-#ENDIF()
+FIND_PACKAGE(Subversion)
+IF(Subversion_FOUND)
+	MESSAGE("Found Subversion ${Subversion_VERSION_SVN}")
+	Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
+	SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
+	MESSAGE("Current revision is ${KVIrc_WC_REVISION}")
+ELSE()
+	MESSAGE("Subversion not found. No revision number will be used")
+ENDIF()
 
 # Get the build date
 TRY_RUN(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/datetime.cpp" OUTPUT_VARIABLE TEST_BUILD_DATE)
