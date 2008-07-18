@@ -198,7 +198,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoJoinOnInvite",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowServersConnectDialogOnStart",true, KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowServersConnectDialogAsToplevel",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("AcceptBrokenFileNameDccResumeRequests",true,KviOption_sectFlagFrame),
+	BOOL_OPTION("AcceptBrokenFileNameDccResumeRequests",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("AutoReconnectOnUnexpectedDisconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("RejoinChannelsAfterReconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ReopenQueriesAfterReconnect",true,KviOption_sectFlagFrame),
