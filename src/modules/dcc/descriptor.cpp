@@ -42,12 +42,10 @@ KviPointerHashTable<int,KviDccDescriptor> * KviDccDescriptor::descriptorDict()
 	return g_pDescriptorDict;
 }
 
-/*
 KviDccDescriptor::KviDccDescriptor(const KviDccDescriptor & src)
 {
 	copyFrom(src);
 }
-*/
 
 KviDccDescriptor::KviDccDescriptor(KviConsole * pConsole)
 {
@@ -154,12 +152,22 @@ KviDccDescriptor * KviDccDescriptor::find(unsigned int uId)
 	return g_pDescriptorDict->find((long)uId);
 }
 
-/*
 void KviDccDescriptor::copyFrom(const KviDccDescriptor &src)
 {
+	m_uId = g_uNextDescriptorId;
+	g_uNextDescriptorId++;	
+	m_szId.setNum(m_uId);
+
+	if(!g_pDescriptorDict)
+	{
+		g_pDescriptorDict = new KviPointerHashTable<int,KviDccDescriptor>;
+		g_pDescriptorDict->setAutoDelete(false);
+	}
+	g_pDescriptorDict->replace((long)m_uId,this);
+	m_bCreationEventTriggered=false;
+
 	m_pDccWindow          = src.m_pDccWindow;
 	m_pDccTransfer        = src.m_pDccTransfer;
-	m_uId                 = src.m_uId;
 	szType                = src.szType;
 	szNick                = src.szNick;
 	szUser                = src.szUser;
@@ -188,11 +196,15 @@ void KviDccDescriptor::copyFrom(const KviDccDescriptor &src)
 	bShowMinimized        = src.bShowMinimized;
 	bAutoAccept           = src.bAutoAccept;
 	bIsIncomingAvatar     = src.bIsIncomingAvatar;
+	szLocalFileName       = src.szLocalFileName;
+	szLocalFileSize       = src.szLocalFileSize;
 #ifdef COMPILE_SSL_SUPPORT
 	bIsSSL                = src.bIsSSL;
 #endif
+	// dcc voice only
+	szCodec               = src.szCodec;
+	iSampleRate           = src.iSampleRate;
 }
-*/
 
 bool KviDccDescriptor::isFileUpload()
 {

@@ -37,7 +37,8 @@ class KviDccDescriptor
 {
 public:
 	KviDccDescriptor(KviConsole * pConsole);
-	//KviDccDescriptor(const KviDccDescriptor & src);
+	KviDccDescriptor(const KviDccDescriptor & src);
+
 	~KviDccDescriptor();
 protected:
 	KviConsole         * m_pConsole;
@@ -74,8 +75,8 @@ public:
 	static KviPointerHashTable<int,KviDccDescriptor> * descriptorDict();
 
 	void triggerCreationEvent(); // this MUST be called by the creator of the descriptor!
-//private:
-//	void copyFrom(const KviDccDescriptor &src);
+private:
+	void copyFrom(const KviDccDescriptor &src);
 public:
 	// Generic parameters
 	QString         szType;            // DCC protocol : CHAT , SCHAT , SEND , TSSEND....
@@ -134,7 +135,6 @@ public:
 	KviStr         szCodec;           // codec name
 	int            iSampleRate;       // Sample rate
 public:
-	// new interface... but should be converted to QString...
 	QString protocol(){ return szType; };
 	bool isActive(){ return bActive; };
 	QString remoteNick(){ return szNick; };
