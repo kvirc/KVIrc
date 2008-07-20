@@ -72,7 +72,7 @@
 #include "kvi_doublebuffer.h"
 #include "kvi_stringconversion.h"
 #include "kvi_useridentity.h"
-#include "kvi_ircview.h" 
+#include "kvi_ircview.h"
 
 #ifndef COMPILE_NO_IPC
 	#include "kvi_ipc.h"
@@ -255,9 +255,11 @@ void KviApp::setup()
 	// encoding every time.
 	QTextCodec::setCodecForCStrings(KviLocale::codecForName("UTF-8"));
 
+	QString tmp;
+/*
 	// Set the default help files search path
 	QStringList list;
-	QString tmp;
+
 	getLocalKvircDirectory(tmp,Help); // localized help/lang or help if help/lang doesn't exist
 	list.append(tmp);
 	getLocalKvircDirectory(tmp,HelpEN); // help/en
@@ -270,8 +272,8 @@ void KviApp::setup()
 	list.append(tmp);
 	getGlobalKvircDirectory(tmp,HelpNoIntl);
 	list.append(tmp);
-	//FIXME reimplement as QResource
-	//Q3MimeSourceFactory::defaultFactory()->setFilePath(list);
+	QDir::setSearchPaths("help",list);
+*/
 
 	KVI_SPLASH_SET_PROGRESS(1)
 
