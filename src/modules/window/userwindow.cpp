@@ -41,8 +41,7 @@ KviUserWindow::KviUserWindow(KviFrame * pFrm,const char * name,int iIcon,KviCons
 	m_iIcon = iIcon;
 
 	m_szPlainTextCaption = name;
-	m_szHtmlActiveCaption = name;
-	m_szHtmlInactiveCaption = name;
+	fillSingleColorCaptionBuffers(m_szPlainTextCaption);
 
 	// Register ourselves
 	//connection()->registerChannel(this);

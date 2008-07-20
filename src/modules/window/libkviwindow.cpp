@@ -1117,6 +1117,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		you're allowed to use the &lt;nobr&gt;,&lt;font&gt;,&lt;b&gt; and &lt;i&gt; html tags.
 		It is better to avoid using colored fonts since you can't know which color scheme the
 		user will have set.[br]
+		If the windows get undocked, it will just use <plain_text_caption>, not the styled html captions.
 		If the specified window does not exist a warning is printed unless the -q switch is used.
 	@seealso:
 */
