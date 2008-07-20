@@ -4191,51 +4191,109 @@ KviIrcViewLine * KviIrcView::getVisibleLineAt(int xPos,int yPos)
 
 KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect * pRect,QString * linkCmd,QString * linkText)
 {
+	/*
+	 * Profane description: this functions sums up most of the complications involved in the ircview. We got a mouse position and have
+	 * to identify if there's a link inside the KviIrcViewLine at that position.
+	 * l contains the current KviIrcViewLine we're checking, iTop is the y coordinate of the
+	 * that line. We go from the bottom to the top: l is the last line and iTop is the y coordinate of the end of that line (imagine it
+	 * as the beginning of the "next" line that have to come.
+	 */
+
 	KviIrcViewLine * l = m_pCurLine;
 	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER;
 
+	// our current line begins after the mouse position... go on
 	while(iTop > yPos)
 	{
+		//no lines, go away
 		if(!l)return 0;
 
+		//subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
 		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
 
+		//we're still below the mouse position.. go on
 		if(iTop > yPos)
 		{
-			// still below the mouse
+			// next round, try with the previous line
 			l = l->pPrev;
 			continue;
 		}
 
-		// got the right KviIrcViewLine
+		/*
+		 * Profane description: if we are here we have found the right line where our mouse is over; l is the KviIrcViewLine *,
+		 * iTop is the line start y coordinate. Now we have to go through this line's text and find the exact text under the mouse.
+		 * The line start x posistion is iLeft; we save iTop to firstRowTop (many rows can be part of this lingle line of text)
+		 */
 		int iLeft = KVI_IRCVIEW_HORIZONTAL_BORDER;
 		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
 		int firstRowTop = iTop;
 		int i = 0;
 
+		int iLastEscapeBlock = -1;
+		int iLastEscapeBlockTop = -1;
+
 		for(;;)
 		{
-			if(yPos <= iTop + m_iFontLineSpacing)
+			// if the mouse position is > start_of_this_row + row_height, move on to the next row of this line
+			if(yPos > iTop + m_iFontLineSpacing)
 			{
-				// exactly this row of this line
+				// run until a word wrap block (aka a new line); move at least one block forward
+				i++;
+				while(i < l->iBlockCount)
+				{
+					if(l->pBlocks[i].pChunk == 0)
+					{
+						//word wrap found
+						break;
+					} else {
+						//still ok to run right, but check if we find an url
+						if(i >= l->iBlockCount) break;
+						//we try to save the position of the last "text escape" tag we find
+						if(l->pBlocks[i].pChunk)
+							if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
+							{
+								iLastEscapeBlock=i;
+								iLastEscapeBlockTop=iTop;
+							}
+						//we reset the position of the last "text escape" tag if we find a "unescape"
+						if(l->pBlocks[i].pChunk)
+							if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
+
+						i++;
+					}
+				}
+				if(i >= l->iBlockCount) return 0; //we reached the last chunk... there's something wrong, return
+				else iTop += m_iFontLineSpacing; //we found a word wrap, check the next row.
+			} else {
+			/*
+			 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
+			 * the index of the first chunk in this line i.
+			 * Calculate the left border of this row: if this is not the first one, add any margin.
+			 * Note: iLeft will contain the right border position of the current chunk.
+			 */
+				int iBlockWidth = 0;
+
+				// this is not the first row of this line and the margin option is enabled?
 				if(iTop != firstRowTop)
 					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))iLeft+=m_iWrapMargin;
-				if(xPos < iLeft)return 0;
-				int iBlockWidth = 0;
-				int iLastEscapeBlock = -1;
-				int iLastEscapeBlockTop = -1;
+					
+				if(xPos < iLeft) return 0; // Mouse is out of this row boundaries
 				for(;;)
 				{
 					int iLastLeft = iLeft;
+					//we've run till the end of the line, go away
 					if(i >= l->iBlockCount)return 0;
+					//we try to save the position of the last "text escape" tag we find
 					if(l->pBlocks[i].pChunk)
 						if(l->pBlocks[i].pChunk->type == KVI_TEXT_ESCAPE)
 						{
-						 iLastEscapeBlock=i;
-						 iLastEscapeBlockTop=iTop;
+							iLastEscapeBlock=i;
+							iLastEscapeBlockTop=iTop;
 						}
+					//we reset the position of the last "text escape" tag if we find a "unescape"
 					if(l->pBlocks[i].pChunk)
 						if(l->pBlocks[i].pChunk->type == KVI_TEXT_UNESCAPE) iLastEscapeBlock=-1;
+					// if the block width is > 0, update iLeft
 					if(l->pBlocks[i].block_width > 0)
 					{
 						iBlockWidth = l->pBlocks[i].block_width;
@@ -4243,8 +4301,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 					} else {
 						if(i < (l->iBlockCount - 1))
 						{
-							// There is another block...
-							// Check if it is a wrap...
+							// There is another block, check if it is a wrap (we reached the end of the row)
 							if(l->pBlocks[i+1].pChunk == 0)
 							{
 								iBlockWidth = width() - iLastLeft;
@@ -4253,6 +4310,9 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 							// else simply a zero characters block
 						}
 					}
+					/*
+					 * Profane description: mouse was not under the last chunk, try with this one..
+					 */
 					if(xPos < iLeft)
 					{
 						// Got it!
@@ -4269,7 +4329,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 						}
 						if(iLastEscapeBlock != -1)
 						{
- 									int iLeftBorder=iLeft;
+ 							int iLeftBorder=iLeft;
 							int k;
 							for(k = i ; k>=iLastEscapeBlock ; k--)
 								iLeftBorder-=l->pBlocks[k].block_width;
@@ -4377,20 +4437,6 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 					}
 					i++;
 				}
-			} else {
-				// run until a word wrap block
-				i++; //at least one block!
-				while(i < l->iBlockCount)
-				{
-					// still ok to run right
-					if(l->pBlocks[i].pChunk == 0)
-					{
-//								i++;
-						break;
-					} else i++;
-				}
-				if(i >= l->iBlockCount)return 0;
-				iTop += m_iFontLineSpacing;
 			}
 		}
 	}
