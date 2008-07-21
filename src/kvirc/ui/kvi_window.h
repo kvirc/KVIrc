@@ -42,6 +42,7 @@
 #include <QFrame>
 #include <QWidget>
 #include <QToolButton>
+#include <QTextEncoder>
 
 class QPixmap;
 class QSplitter;
@@ -140,7 +141,7 @@ protected: // almost private: don't touch :D
 	KviIrcContext                       * m_pContext;
 
 	int                                   m_iType;
-	
+
 	KviTaskBarItem                      * m_pTaskBarItem;
 	QWidget                             * m_pFocusHandler;
 	QString                               m_szPlainTextCaption;
@@ -240,6 +241,8 @@ public:
 	// encode the text from szSource by using m_uTextEncoding
 	KviQCString encodeText(const QString &szText);
 	QString decodeText(const char * szText);
+	//return a text encoder
+	QTextEncoder * makeEncoder();
 
 	void contextPopup();
 	// Raises the window (after a light delay to prevent focus pingpongs)
@@ -362,9 +365,9 @@ protected:
 	BUTTON_CLASS * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * widgetAdded);
-	
+
 	virtual bool focusNextPrevChild(bool bNext);
-	
+
 	virtual void preprocessMessage(QString & szMessage);
 };
 

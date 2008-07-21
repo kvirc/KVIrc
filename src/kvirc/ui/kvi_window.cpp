@@ -330,6 +330,12 @@ QString KviWindow::decodeText(const char * szText)
 	return m_pTextCodec->toUnicode(szText);
 }
 
+QTextEncoder * KviWindow::makeEncoder()
+{
+	if(!m_pTextCodec)return defaultTextCodec()->makeEncoder();
+	return m_pTextCodec->makeEncoder();
+}
+
 bool KviWindow::activityMeter(unsigned int *,unsigned int *)
 {
 	return false;
