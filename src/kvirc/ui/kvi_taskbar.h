@@ -238,7 +238,6 @@ protected:
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
-	virtual void resizeEvent(QResizeEvent *e);
 	virtual void mouseMoveEvent (QMouseEvent * e);
 	virtual void leaveEvent(QEvent *);
 private:

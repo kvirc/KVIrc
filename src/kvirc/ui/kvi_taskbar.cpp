@@ -88,7 +88,7 @@ KviTaskBarBase::~KviTaskBarBase()
 
 void KviTaskBarBase::updateActivityMeter()
 {
-	
+
 }
 
 void KviTaskBarBase::getTextForConsole(QString &szText,KviConsole * pConsole)
@@ -328,7 +328,7 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarNormalText));
 	} else {
 		int iLevel;
-	
+
 		switch(m_iHighlightLevel)
 		{
 			case 0: iLevel = bMinimized ? KviOption_colorTaskBarMinimizedText : KviOption_colorTaskBarNormalText; break;
@@ -623,7 +623,7 @@ void KviClassicTaskBar::doLayout()
 		}
 	}
 
-	if ((width() > height()) && 
+	if ((width() > height()) &&
 		(((unsigned int)rows) > m_pBase->height() / m_iButtonHeight ))
 	{
 		rows = m_pBase->height() / m_iButtonHeight;
@@ -652,7 +652,7 @@ void KviClassicTaskBar::doLayout()
 		} else {
 			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
 		}
-		
+
 		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) && (width() > height())
 			)
 				theWidth = KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth);
@@ -808,7 +808,7 @@ void KviTreeTaskBarItem::unhighlight()
 	if(m_iHighlightLevel < 1)return;
 	m_iHighlightLevel = 0;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
-	
+
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
 }
 
@@ -850,13 +850,13 @@ QString KviTreeTaskBarItem::key(int,bool) const
 	return ret;
 }
 
-void KviTreeTaskBarItem::timerShot() 
+void KviTreeTaskBarItem::timerShot()
 {
 	if(m_bIncreasing)
 		m_iStepNumber++;
 	else
 		m_iStepNumber--;
-	
+
 	if((m_iStepNumber>=KVI_NUM_STEPS) && m_bIncreasing)
 	{
 		if(m_pAnimTimer->isActive()) m_pAnimTimer->stop();
@@ -967,13 +967,6 @@ void KviTreeTaskBarTreeWidget::reverseSort()
 	sortItems(0,Qt::DescendingOrder);
 }
 
-void KviTreeTaskBarTreeWidget::resizeEvent(QResizeEvent *e)
-{
-	KviTalTreeWidget::resizeEvent(e);
-	setColumnWidth(0,viewport()->width());
-	resize(viewport()->width(),viewport()->height());
-}
-
 void KviTreeTaskBarTreeWidget::paintEvent(QPaintEvent * event)
 {
 	QPainter *p = new QPainter(viewport());
@@ -991,7 +984,7 @@ void KviTreeTaskBarTreeWidget::paintEvent(QPaintEvent * event)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-	
+
 	QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
 	if(pix)
 	{
@@ -1042,8 +1035,8 @@ KviTreeTaskBar::KviTreeTaskBar()
 		m_pTreeWidget->header()->show();
 	} else {
 		m_pTreeWidget->header()->hide();
-	} 
-	
+	}
+
 	m_pTreeWidget->header()->setResizeMode(QHeaderView::Interactive);
 	m_pTreeWidget->viewport()->installEventFilter(this);
 
@@ -1181,7 +1174,7 @@ KviTaskBarItem * KviTreeTaskBar::nextItem()
 }
 
 KviTaskBarItem * KviTreeTaskBar::prevItem()
-{	
+{
 	if(!m_pCurrentItem)return 0;
 	return m_pCurrentItem = (KviTreeTaskBarItem *) m_pTreeWidget->itemAbove(m_pCurrentItem);
 }
@@ -1254,7 +1247,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 
 	p->setFont(KVI_OPTION_FONT(KviOption_fontTreeTaskbar));
 
-	//paint cell background	
+	//paint cell background
 	if (option.state & QStyle::State_Selected)
 	{
 		//selection colored background
