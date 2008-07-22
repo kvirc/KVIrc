@@ -228,7 +228,7 @@ public:
 	QToolButton     * m_pIconButton;
 	QToolButton     * m_pCommandlineModeButton;
 	QToolButton     * m_pHideToolsButton;
-	QHBoxLayout		* m_pLayout;
+	QHBoxLayout	* m_pLayout;
 protected:
 //	virtual void resizeEvent(QResizeEvent * e);
 	virtual void focusInEvent(QFocusEvent * e);

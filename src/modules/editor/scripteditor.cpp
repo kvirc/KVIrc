@@ -1081,7 +1081,7 @@ void KviScriptEditorImplementation::setText(const QString &txt)
 {
 	m_pEditor->setText(txt);
 //	m_pEditor->setTextFormat(Qt::PlainText);
-//	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
+	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }

@@ -2387,7 +2387,6 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 		switch(e->key())
 		{
 			case Qt::Key_Backspace:
-				//if(m_pMultiLineEditor)
 				multilineEditorButtonToggled(!m_pMultiLineEditor);
 			break;
 		}
@@ -2465,9 +2464,13 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 	if(m_pMultiLineEditor)
 	{
 		if(bOn)return;
+		QString szTmp;
+		m_pMultiLineEditor->getText(szTmp);
 		m_pLayout->removeWidget(m_pMultiLineEditor);
 		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
 		m_pMultiLineEditor = 0;
+		szTmp.replace(QRegExp("[\a\f\n\r\t\v]"), QString(" "));
+		m_pInputEditor->setText(szTmp);
 		m_pInputEditor->show();
 		m_pWindow->childrenTreeChanged(0);
 		m_pInputEditor->setFocus();
@@ -2478,6 +2481,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		QString szText = __tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor");
 		m_pMultiLineEditor->setFindText(szText);
 		m_pMultiLineEditor->setFindLineeditReadOnly(true);
+		m_pMultiLineEditor->setText(m_pInputEditor->text());
 		m_pInputEditor->hide();
 		m_pLayout->addWidget(m_pMultiLineEditor);
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
