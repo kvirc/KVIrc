@@ -41,6 +41,7 @@ typedef struct _KviIrcServerDefinition
 	QString            szPass;
 	QString            szNick;
 	QString            szInitUMode;
+	QString            szId;                // the server's may-be-unique id, may be auto-generated
 } KviIrcServerDefinition;
 
 

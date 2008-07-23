@@ -421,6 +421,7 @@ void KviIrcContext::connectToCurrentServer()
 					// reuse the saved connection data
 					// the server for sure
 					m_pAsynchronousConnectionData->szServer = m_pSavedAsynchronousConnectionData->szServer;
+					m_pAsynchronousConnectionData->szId = m_pSavedAsynchronousConnectionData->szId;
 					m_pAsynchronousConnectionData->uPort = m_pSavedAsynchronousConnectionData->uPort;
 					m_pAsynchronousConnectionData->bPortIsOk = true;
 					m_pAsynchronousConnectionData->bUseIpV6 = m_pSavedAsynchronousConnectionData->bUseIpV6;
@@ -458,6 +459,7 @@ void KviIrcContext::connectToCurrentServer()
 			d.szPass = m_pAsynchronousConnectionData->szPass;
 			d.szNick = m_pAsynchronousConnectionData->szNick;
 			d.szInitUMode = m_pAsynchronousConnectionData->szInitUMode;
+			d.szId = m_pAsynchronousConnectionData->szId;
 			QString szError;
 			if(!g_pIrcServerDataBase->makeCurrentServer(&d,szError))
 			{

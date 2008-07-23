@@ -70,7 +70,8 @@ KviProxy* KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 
 KviIrcServer::KviIrcServer(const KviIrcServer &serv)
 {
-	m_pReconnectInfo     = serv.m_pReconnectInfo;
+	if(serv.m_pReconnectInfo) m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
+	else m_pReconnectInfo = 0;
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
 	m_szDescription      = serv.m_szDescription;
@@ -371,3 +372,20 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork &src)
 	else m_pNickServRuleSet = 0;
 }
 
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo()
+{
+	m_bIsAway=false;
+}
+
+KviIrcServerReconnectInfo::~KviIrcServerReconnectInfo()
+{
+}
+
+KviIrcServerReconnectInfo::KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo &info)
+{
+	m_szNick         = info.m_szNick;
+	m_szAwayReason   = info.m_szAwayReason;
+	m_szJoinChannels = info.m_szJoinChannels;
+	m_szOpenQueryes  = info.m_szOpenQueryes;
+	m_bIsAway        = info.m_bIsAway;
+}

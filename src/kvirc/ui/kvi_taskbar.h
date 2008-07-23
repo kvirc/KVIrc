@@ -198,8 +198,10 @@ public:
 	virtual bool setIterationPointer(KviTaskBarItem * it);
 	virtual void updateActivityMeter();
 	virtual void applyOptions();
+signals:
+	void orientationChanged(Qt::Orientation);
 protected slots:
-	void orientationChangedSlot(Qt::Orientation o);
+	void orientationChangedSlot(Qt::Orientation);
 };
 
 class KviTreeTaskBar;

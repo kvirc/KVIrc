@@ -44,6 +44,10 @@ class KviIrcServer;
 
 class KVILIB_API KviIrcServerReconnectInfo {
 public:
+	KviIrcServerReconnectInfo();
+	KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo &info);
+	~KviIrcServerReconnectInfo();
+public:
 	QString               m_szNick;
 	QString               m_szAwayReason;
 	QString               m_szJoinChannels;
@@ -90,7 +94,7 @@ public:
 	const QString & ipAddress() const { return m_szIp; };
 	const QString & password() const { return m_szPass; };
 	const QString & nickName() const { return m_szNick; };
-    const QString & initUMode() const { return m_szInitUMode; };
+	const QString & initUMode() const { return m_szInitUMode; };
 	const QString & hostName() const { return m_szHostname; };
 	const QString & ip() const { return m_szIp; };
 	const QString & onLoginCommand() const { return m_szOnLoginCommand; };

@@ -500,7 +500,7 @@ KviClassicTaskBar::KviClassicTaskBar()
 	
 #ifndef COMPILE_USE_QT4
 	setResizeEnabled( true );
-	connect(this,SIGNAL(orientationChanged(Orientation)),this,SLOT(orientationChangedSlot(Orientation)));
+	connect(this,SIGNAL(orientationChanged(Qt::Orientation)),this,SLOT(orientationChangedSlot(Qt::Orientation)));
 #endif
 }
 
