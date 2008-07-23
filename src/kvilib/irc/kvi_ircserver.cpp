@@ -69,7 +69,8 @@ KviProxy* KviServer::proxyServer(KviProxyDataBase * pDb)
 
 KviServer::KviServer(const KviServer &serv)
 {
-	m_pReconnectInfo     = serv.m_pReconnectInfo;
+	if(serv.m_pReconnectInfo) m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
+	else m_pReconnectInfo = 0;
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
 	m_szDescription      = serv.m_szDescription;
@@ -375,4 +376,22 @@ void KviNetwork::copyFrom(const KviNetwork &src)
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else m_pNickServRuleSet = 0;
+}
+
+KviServerReconnectInfo::KviServerReconnectInfo()
+{
+	m_bIsAway=false;
+}
+
+KviServerReconnectInfo::~KviServerReconnectInfo()
+{
+}
+
+KviServerReconnectInfo::KviServerReconnectInfo(const KviServerReconnectInfo &info)
+{
+	m_szNick         = info.m_szNick;
+	m_szAwayReason   = info.m_szAwayReason;
+	m_szJoinChannels = info.m_szJoinChannels;
+	m_szOpenQueryes  = info.m_szOpenQueryes;
+	m_bIsAway        = info.m_bIsAway;
 }

@@ -44,6 +44,10 @@ class KviServer;
 
 class KVILIB_API KviServerReconnectInfo {
 public:
+	KviServerReconnectInfo();
+	KviServerReconnectInfo(const KviServerReconnectInfo &info);
+	~KviServerReconnectInfo();
+public:
 	QString               m_szNick;
 	QString               m_szAwayReason;
 	QString               m_szJoinChannels;
