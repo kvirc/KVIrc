@@ -31,7 +31,7 @@ SUBDIRS(
 	mask math mediaplayer mircimport my
 	notifier
 	objects options
-	popupeditor proxydb
+	popupeditor
 	raweditor regchan reguser
 	serverdb setup sharedfile sharedfileswindow
 	snd socketspy spaste str system
@@ -46,7 +46,7 @@ SUBDIRS(
 	# perl, perlcore
 
 	# forgotten ?
-	# offer
+	# offer, proxydb
 )
 
 # this is currently broken on MINGW because of some virtual functions
