@@ -3,7 +3,6 @@
 SET(kviaddon_MOC_HDRS
 	managementdialog.h
 	packaddondialog.h
-	addonfunctions.h
 )
 
 SET(kviaddon_SRCS

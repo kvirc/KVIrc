@@ -1,13 +1,8 @@
 # CMakeLists for src/modules/notifier
 
 SET(kvinotifier_MOC_HDRS
-	notifiersettings.h
 	notifierwindow.h
-	notifiermessage.h
 	notifierwindowtabs.h
-	notifierwindowbody.h
-	notifierwindowborder.h
-	notifierwindowprogressbar.h
 )
 
 SET(kvinotifier_SRCS

@@ -1,9 +1,5 @@
 # CMakeLists for src/modules/iograph
 
-SET(kviiograph_MOC_HDRS
-	libkviiograph.h
-)
-
 SET(kviiograph_SRCS
 	libkviiograph.cpp
 )

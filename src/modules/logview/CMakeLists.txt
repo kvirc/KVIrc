@@ -3,7 +3,6 @@
 SUBDIRS(caps)
 
 SET(kvilogview_MOC_HDRS
-	logviewwidget.h
 	logviewmdiwindow.h
 )
 

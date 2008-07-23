@@ -1,19 +1,11 @@
 # CMakeLists for src/modules/dcc
 
 SET(kvidcc_MOC_HDRS
-	adpcmcodec.h
 	broker.h
-	canvas.h
-	canvaswidget.h
 	chat.h
-	codec.h
-	descriptor.h
 	dialogs.h
-	gsmcodec.h
 	marshal.h
 	send.h
-	thread.h
-	utils.h
 	voice.h
 	window.h
 )

@@ -9,29 +9,18 @@ ENDIF()
 
 SET(kviobjects_MOC_HDRS
 	class_button.h
-	class_buttongroup.h
 	class_checkbox.h
 	class_combobox.h
-	class_dialog.h
 	class_dockwindow.h
-	class_file.h
-	class_groupbox.h
-	class_label.h
-	class_layout.h
-	class_lcd.h
 	class_lineedit.h
-	class_list.h
 	class_listbox.h
 	class_listview.h
 	class_listviewitem.h
-	class_mainwindow.h
-	class_menubar.h
 	class_multilineedit.h
 	class_painter.h
 	class_pixmap.h
 	class_popupmenu.h
 	class_process.h
-	class_progressbar.h
 	class_radiobutton.h
 	class_slider.h
 	class_socket.h
@@ -40,16 +29,11 @@ SET(kviobjects_MOC_HDRS
 	class_tbrowser.h
 	class_toolbar.h
 	class_toolbutton.h
-	class_urllabel.h
 	class_widget.h
 	class_window.h
 	class_wizard.h
-	class_workspace.h
 	class_wrapper.h
 	class_xmlreader.h
-	class_vbox.h
-	class_hbox.h
-	object_macros.h
 )
 
 SET(kviobjects_SRCS

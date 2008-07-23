@@ -1,9 +1,5 @@
 # CMakeLists for src/modules/language
 
-SET(kvilanguage_MOC_HDRS
-	detector.h
-)
-
 SET(kvilanguage_SRCS
 	libkvilanguage.cpp
 	detector.cpp

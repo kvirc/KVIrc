@@ -1,18 +1,5 @@
 # CMakeLists for src/modules/mediaplayer
 
-SET(kvimediaplayer_MOC_HDRS
-	mp_amarokinterface.h
-	mp_dcopinterface.h
-	mp_interface.h
-	mp_jukinterface.h
-	mp_mp3.h
-	mp_winampinterface.h
-	mp_xmmsinterface.h
-	mp_amipinterface.h
-	mp_mprisinterface.h
-	mp_xmms2interface.h
-)
-
 SET(kvimediaplayer_SRCS
 	libkvimediaplayer.cpp
 	mp_amarokinterface.cpp
