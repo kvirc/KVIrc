@@ -40,6 +40,7 @@ typedef struct _KviServerDefinition
 	QString            szPass;
 	QString            szNick;
 	QString            szInitUMode;
+	QString            szId;
 } KviServerDefinition;
 
 
