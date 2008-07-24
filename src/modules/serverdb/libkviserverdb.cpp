@@ -803,7 +803,6 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 
 	if(c->switches()->getAsStringIfExisting('w',"password",tmp)) pServer->setPassword(tmp);
 
-	debug("Network: %s\nServer: %s\nPort: %d",szNetwork.toUtf8().data(),szServer.toUtf8().data(),uPort);
 	pRecord->insertServer(pServer);
 
 	return true;

@@ -62,8 +62,8 @@ public:
 	unsigned int userLen() const { return (unsigned int)m_szUser.length(); };
 	static void getSupportedProtocolNames(QStringList & buf);
 
-	void setProtocol(Protocol &p){ m_protocol = p; };
-	void setIPv6(bool &b){ m_bIsIPv6 = true; };
+	void setProtocol(Protocol p){ m_protocol = p; };
+	void setIPv6(bool b){ if(b) m_bIsIPv6 = true; else m_bIsIPv6 = false; };
 	void setPort(kvi_u32_t &p){ m_uPort = p; };
 	void setUser(const QString &u){ m_szUser = u; };
 	void setPass(const QString &p){ m_szPass = p; };
