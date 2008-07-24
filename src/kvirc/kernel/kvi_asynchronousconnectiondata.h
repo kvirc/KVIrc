@@ -48,6 +48,7 @@ public:
 	QString            szPass;
 	QString            szNick;
 	QString            szInitUMode;
+	QString            szServerId;
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
 };
 

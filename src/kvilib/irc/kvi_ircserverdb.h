@@ -41,6 +41,7 @@ typedef struct _KviIrcServerDefinition
 	QString            szPass;
 	QString            szNick;
 	QString            szInitUMode;
+	QString            szId;
 } KviIrcServerDefinition;
 
 

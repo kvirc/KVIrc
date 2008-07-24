@@ -270,16 +270,35 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 		{
 			if(KviQString::equalCI(srv->hostName(),d->szServer))
 			{
-				if(d->bIpV6 == srv->isIpV6())
+				if(KviQString::equalCI(srv->id(),d->szId))
 				{
-					if(d->bSSL == srv->useSSL())
+					if(d->bIpV6 == srv->isIpV6())
 					{
-						if(d->bPortIsValid)
+						if(d->bSSL == srv->useSSL())
 						{
-							// must match the port
-							if(d->uPort == srv->port())
+							if(d->bPortIsValid)
 							{
-								// port matches
+								// must match the port
+								if(d->uPort == srv->port())
+								{
+									// port matches
+									if(!d->szLinkFilter.isEmpty())
+									{
+										// must match the link filter
+										if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
+										{
+											// link filter matches
+											pServer = srv;
+											goto search_finished;
+										} // else link filter doesn't match
+									} else {
+										// no need to match the link filter
+										pServer = srv;
+										goto search_finished;
+									}
+								} // else port doesn't match
+							} else {
+								// no need to match the port
 								if(!d->szLinkFilter.isEmpty())
 								{
 									// must match the link filter
@@ -294,22 +313,6 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 									pServer = srv;
 									goto search_finished;
 								}
-							} // else port doesn't match
-						} else {
-							// no need to match the port
-							if(!d->szLinkFilter.isEmpty())
-							{
-								// must match the link filter
-								if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
-								{
-									// link filter matches
-									pServer = srv;
-									goto search_finished;
-								} // else link filter doesn't match
-							} else {
-								// no need to match the link filter
-								pServer = srv;
-								goto search_finished;
 							}
 						}
 					}

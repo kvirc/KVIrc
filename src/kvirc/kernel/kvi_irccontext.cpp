@@ -421,6 +421,7 @@ void KviIrcContext::connectToCurrentServer()
 					// reuse the saved connection data
 					// the server for sure
 					m_pAsynchronousConnectionData->szServer = m_pSavedAsynchronousConnectionData->szServer;
+					m_pAsynchronousConnectionData->szServerId = m_pSavedAsynchronousConnectionData->szServerId;
 					m_pAsynchronousConnectionData->uPort = m_pSavedAsynchronousConnectionData->uPort;
 					m_pAsynchronousConnectionData->bPortIsOk = true;
 					m_pAsynchronousConnectionData->bUseIpV6 = m_pSavedAsynchronousConnectionData->bUseIpV6;
@@ -567,6 +568,7 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->bUseIpV6 = srv->isIpV6();
 	m_pSavedAsynchronousConnectionData->bUseSSL = srv->useSSL();
 	m_pSavedAsynchronousConnectionData->szPass = srv->password();
+	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
 	m_pSavedAsynchronousConnectionData->szInitUMode = srv->m_szInitUMode;
 	m_pSavedAsynchronousConnectionData->m_pReconnectInfo=srv->m_pReconnectInfo;
 
@@ -614,6 +616,7 @@ void KviIrcContext::connectionFailed(int iError)
 	
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 			d->szServer = oldServer.m_szHostname;
+			d->szServerId = oldServer.id();
 			d->uPort = oldServer.port();
 			d->bPortIsOk = true;
 			d->bUseIpV6 = oldServer.isIpV6();
@@ -790,6 +793,7 @@ void KviIrcContext::connectionTerminated()
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
 		KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
+		d->szServerId = oldServer.id();
 		d->szServer = oldServer.m_szHostname;
 		d->uPort = oldServer.port();
 		d->bPortIsOk = true;
