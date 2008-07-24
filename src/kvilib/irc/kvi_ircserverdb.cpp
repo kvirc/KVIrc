@@ -64,7 +64,6 @@ KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer, bool 
 			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname)) return s;
 		} else {
 			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname) &&
-				(s->id() == pServer->m_szId) &&
 				(s->m_uPort == pServer->m_uPort) &&
 				(s->useSSL() == pServer->useSSL()) &&
 				(s->isIPv6() == pServer->isIPv6())) return s;
@@ -267,31 +266,12 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 				{
 					if(d->bSSL == srv->useSSL())
 					{
-						if(KviQString::equalCI(srv->id(),d->szId)) 
+						if(d->bPortIsValid)
 						{
-							if(d->bPortIsValid)
+							// must match the port
+							if(d->uPort == srv->port())
 							{
-								// must match the port
-								if(d->uPort == srv->port())
-								{
-									// port matches
-									if(!d->szLinkFilter.isEmpty())
-									{
-										// must match the link filter
-										if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
-										{
-											// link filter matches
-											pServer = srv;
-											goto search_finished;
-										} // else link filter doesn't match
-									} else {
-										// no need to match the link filter
-										pServer = srv;
-										goto search_finished;
-									}
-								} // else port doesn't match
-							} else {
-								// no need to match the port
+								// port matches
 								if(!d->szLinkFilter.isEmpty())
 								{
 									// must match the link filter
@@ -306,6 +286,22 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 									pServer = srv;
 									goto search_finished;
 								}
+							} // else port doesn't match
+						} else {
+							// no need to match the port
+							if(!d->szLinkFilter.isEmpty())
+							{
+								// must match the link filter
+								if(KviQString::equalCI(d->szLinkFilter,srv->linkFilter()))
+								{
+									// link filter matches
+									pServer = srv;
+									goto search_finished;
+								} // else link filter doesn't match
+							} else {
+								// no need to match the link filter
+								pServer = srv;
+								goto search_finished;
 							}
 						}
 					}

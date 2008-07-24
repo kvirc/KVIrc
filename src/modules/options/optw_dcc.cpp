@@ -258,7 +258,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 				"When this option is enabled the idle interval below will be " \
 				"forcibly inserted between each sent/received data packet.</center>","options"));
 
-	u = addUIntSelector(hb,__tr2qs_ctx("","options"),KviOption_uintDccSendIdleStepInMSec,1,65536,30,KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep));
+	u = addUIntSelector(hb,"",KviOption_uintDccSendIdleStepInMSec,1,65536,30,KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u->setSuffix(__tr2qs_ctx(" msec","options"));
 	
