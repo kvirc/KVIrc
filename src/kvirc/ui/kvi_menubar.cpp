@@ -277,8 +277,6 @@ void KviMenuBar::newConnectionToServer(int id)
 			{
 				KviKvsScript::run(szCommand.ptr(),g_pApp->activeConsole());
 			}
-/*			if(KviIrcUrl::parse(text.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_NEW))
-				KviKvsScript::run(szCommand.ptr(),m_pFrm->firstConsole());*/
 		}
 	}
 }

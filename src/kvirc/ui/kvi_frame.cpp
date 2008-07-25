@@ -555,6 +555,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	{
 		QString group;
 		wnd->getConfigGroupName(group);
+
 		// not uses default settings : store it always
 		saveWindowProperties(wnd,group);
 	}
