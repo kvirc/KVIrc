@@ -273,8 +273,12 @@ void KviMenuBar::newConnectionToServer(int id)
 		} else {
 			text.replace(QString("&"),QString(""));
 			KviStr szCommand;
-			if(KviIrcUrl::parse(text.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_NEW))
-				KviKvsScript::run(szCommand.ptr(),m_pFrm->firstConsole());
+			if(KviIrcUrl::parse(text.utf8().data(),szCommand,KVI_IRCURL_CONTEXT_FIRSTFREE))
+			{
+				KviKvsScript::run(szCommand.ptr(),g_pApp->activeConsole());
+			}
+/*			if(KviIrcUrl::parse(text.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_NEW))
+				KviKvsScript::run(szCommand.ptr(),m_pFrm->firstConsole());*/
 		}
 	}
 }
