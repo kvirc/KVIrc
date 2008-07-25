@@ -638,6 +638,9 @@ void KviIrcSocket::proxyLoginHttp()
 
 	setState(ProxyFinalHttp);
 	KviStr tmp(KviStr::Format,"CONNECT %s:%u HTTP/1.0\r\n",m_pIrcServer->hostName().utf8().data(),(unsigned int)(m_pIrcServer->port()));
+
+	tmp.append(KviStr::Format,"User-Agent: KVIrc-ProxyClient/1.0\r\n");
+
 	if(m_pProxy->hasUser())
 	{
 		KviStr auth(KviStr::Format,"%s:%s",m_pProxy->user(),m_pProxy->pass());
