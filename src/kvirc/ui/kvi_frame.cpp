@@ -34,6 +34,7 @@
 #include "kvi_mdimanager.h"
 #include "kvi_mdichild.h"
 #include "kvi_iconmanager.h"
+#include "kvi_channel.h"
 #include "kvi_window.h"
 #include "kvi_taskbar.h"
 #include "kvi_console.h"
@@ -561,6 +562,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties)) // && (wnd->type() == KVI_WINDOW_TYPE_CHANNEL))
 	{
 		QString group;
+		// saving, use only the new format for channels (channel@network)
 		wnd->getConfigGroupName(group);
 		// not uses default settings : store it always
 		saveWindowProperties(wnd,group);
@@ -618,9 +620,19 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 	wnd->createTaskBarItem(); // create the window taskbar item AFTER it has been constructed
 
 	QString group;
-	wnd->getConfigGroupName(group);
-
 	bool bGroupSettings = false;
+
+	//prefer the new specific format [#channel@network] for kvichannels, standard for kviwindow/others
+	wnd->getConfigGroupName(group);
+	if(wnd->type()==KVI_WINDOW_TYPE_CHANNEL)
+	{
+		//if this is a channel, try also the old format [#channel] is the new one doesn't work
+		if(!g_pWinPropertiesConfig->hasGroup(group))
+		{
+			KviChannel* chan = (KviChannel*) wnd;
+			chan->getConfigOldGroupName(group);
+		}
+	}
 
 	if(g_pWinPropertiesConfig->hasGroup(group))
 	{

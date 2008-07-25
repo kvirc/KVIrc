@@ -291,9 +291,22 @@ void KviChannel::applyOptions()
 	KviWindow::applyOptions();
 }
 
+void KviChannel::getConfigOldGroupName(QString &buf)
+{
+	buf = windowName();
+}
+
 void KviChannel::getConfigGroupName(QString &buf)
 {
 	buf = windowName();
+	buf.append("@");
+
+	if (console()->connection())
+	{
+		buf.append(console()->currentNetworkName());
+	} else {
+		buf.append(console()->ircContextId());
+	}
 }
 
 void KviChannel::saveProperties(KviConfig *cfg)

@@ -108,6 +108,7 @@ typedef struct _KviChannelActivityStats
 
 class KVIRC_API KviChannel : public KviWindow
 {
+	friend class KviFrame; //in KviWindow too,m but we export some more function
 	Q_OBJECT
 public:
 	KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name);
@@ -152,6 +153,10 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
 //	virtual void fillContextPopup(KviTalPopupMenu * p);
+
+	//retro-compatibility with <3.4.1: use window name in config
+	virtual void getConfigOldGroupName(QString &buf);
+	// new format window name @ windows network / irc context
 	virtual void getConfigGroupName(QString &buf);
 	virtual void saveProperties(KviConfig * cfg);
 	virtual void loadProperties(KviConfig * cfg);
