@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-08 02:36+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2008-07-25 17:10+0300\n"
+"Last-Translator: Santeri Piippo <aleksanteri@users.sf.net>\n"
+"Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -185,8 +185,7 @@ msgstr "Hienosäädä..."
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_filedialog.cpp:149
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
-msgstr ""
-"Tiedosto %s on jo olemassa.<br>Oletko varma että haluat ylikirjoittaa sen?"
+msgstr "Tiedosto %s on jo olemassa.<br>Oletko varma että haluat ylikirjoittaa sen?"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_filedialog.cpp:115
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_filedialog.cpp:150
@@ -720,10 +719,8 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Salaus: Ei voitu aloittaa koneistoa: %s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_cryptcontroller.cpp:302
-msgid ""
-"Crypt: You have to enable encryption and/or decryption for the engine to work"
-msgstr ""
-"Salaus: Sinun täytyy ottaa salaus ja/tai purku käyttöön jotta salaus toimisi"
+msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgstr "Salaus: Sinun täytyy ottaa salaus ja/tai purku käyttöön jotta salaus toimisi"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_ircview.cpp:385
 msgid "Search tools"
@@ -824,8 +821,7 @@ msgid "Unable to look it up hostname: Unknown host"
 msgstr "Ei voida selvittää isäntää: Tuntematon isäntä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_ircview.cpp:4949
-msgid ""
-"Double-click to look up this hostname<br>Right-click to view other options"
+msgid "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Kaksoisnapauta selvittääksesi tämän isännän<br>Oikea napautus näyttää muut "
 "valinnat"
@@ -840,8 +836,7 @@ msgstr "Tuntematon palvelin<br>"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_ircview.cpp:4976
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
-msgstr ""
-"Kaksoisnapauta lukeaksesi MOTD:n<br>Oike napautus näyttää muut valinnat"
+msgstr "Kaksoisnapauta lukeaksesi MOTD:n<br>Oike napautus näyttää muut valinnat"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_ircview.cpp:4989
 msgid "Double-click to set<br>"
@@ -1312,8 +1307,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_console.cpp:1028
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
-msgstr ""
-"Ei pystytty lataamaan avataria nimellä \"%Q\" ja paikallispolulla \"%Q\""
+msgstr "Ei pystytty lataamaan avataria nimellä \"%Q\" ja paikallispolulla \"%Q\""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_console.cpp:1107
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/ui/kvi_statusbar.cpp:624
@@ -1755,14 +1749,11 @@ msgstr "IP-osoite %d: %Q"
 msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
-msgstr ""
-"Rikkinäinen paikka '%Q' kohdeoliossa '%Q::%Q' kun lähetetään signaalia "
-"oliosta '%Q::%Q': yhteys katkaistaan"
+msgstr "Rikkinäinen paikka '%Q' kohdeoliossa '%Q::%Q' kun lähetetään signaalia %Q oliosta '%Q::%Q': yhteys katkaistaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_object.cpp:889
-msgid ""
-"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
-msgstr "Paikan kohdeolio tuhottu kun lähetetään signaalia oliosta '%Q::%Q'"
+msgid "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
+msgstr "Paikan kohdeolio tuhottu kun lähetetään signaalia %Q oliosta '%Q::%Q'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_object.cpp:1041
 msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
@@ -1824,8 +1815,7 @@ msgstr ""
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
-msgstr ""
-"Kuvapisteolio, kuvatunniste tai kuvapolku vaaditaan tälle ominaisuudelle"
+msgstr "Kuvapisteolio, kuvatunniste tai kuvapolku vaaditaan tälle ominaisuudelle"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_object.cpp:1353
 msgid "Can't find the requested image"
@@ -1854,12 +1844,11 @@ msgid ""
 "Q) from this context"
 msgstr ""
 "Ei voida kutsua sisäistä oliofunktiota $%Q (oliolle nimeltä \"%Q\" luokasta "
-"% Q) tästä kontekstista"
+"%Q) tästä kontekstista"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_command.cpp:69
 msgid "Stray dot ('.') character or invalid following module command name"
-msgstr ""
-"Irrallinen piste-operaattori ('.') -merkki tai viallinen moduulikomento"
+msgstr "Irrallinen piste-operaattori ('.') -merkki tai viallinen moduulikomento"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_command.cpp:70
 msgid "Syntax error: malformed module command identifier"
@@ -1936,8 +1925,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:849
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:872
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
-msgstr ""
-"Löydettiin merkki %q (unikoodi %x) missä kauttaviivan '/' oletettiin olevan"
+msgstr "Löydettiin merkki %q (unikoodi %x) missä kauttaviivan '/' oletettiin olevan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:842
 msgid ""
@@ -1948,8 +1936,7 @@ msgstr ""
 "puuttuu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:865
-msgid ""
-"Unexpected end of command in binding operation, at least one slash is missing"
+msgid "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Ei-oletettu loppu komennossa sitomisoperaatiossa, ainakin yksi kauttaviiva "
 "puuttuu"
@@ -2067,8 +2054,7 @@ msgstr "Ei komentoriviä ole annettu tälle url-tyypille (%Q)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:512
 msgid "Option setting error: Unknown option or invalid value for option type"
-msgstr ""
-"Valinnan asetus virhe: Tuntematon valinta tai kelpaamaton arvo valinnalle"
+msgstr "Valinnan asetus virhe: Tuntematon valinta tai kelpaamaton arvo valinnalle"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:606
 msgid "Choose a file to parse"
@@ -2144,10 +2130,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:262
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/aliaseditor/aliaseditor.cpp:903
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-"Irronnainen ':'-merkki aliaksen nimessä: tarkoititko ...<sisällin>::<nimi> ?"
+msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr "Irronnainen ':'-merkki aliaksen nimessä: tarkoititko ...<sisällin>::<nimi> ?"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:268
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/aliaseditor/aliaseditor.cpp:914
@@ -2268,10 +2252,8 @@ msgid "Say parse error: Broken command"
 msgstr "Say:n parsimisvirhe: Rikkinäinen komento"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:250
-msgid ""
-"Couldn't find a suitable IRC context for the connection, try using -n or -u"
-msgstr ""
-"Ei löydetty sopivaa IRC-kontekstia yhteydelle, kokeile käyttää -n ta -u"
+msgid "Couldn't find a suitable IRC context for the connection, try using -n or -u"
+msgstr "Ei löydetty sopivaa IRC-kontekstia yhteydelle, kokeile käyttää -n ta -u"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:259
 msgid "Another connection is already in progress in the selected IRC context"
@@ -2318,13 +2300,11 @@ msgstr ""
 "uudelleensitomiskytkimessä: ei uudelleensitomista suoritettu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:94
-msgid ""
-"The left side of the scope operator didn't evaluate as an object reference"
+msgid "The left side of the scope operator didn't evaluate as an object reference"
 msgstr "Tähystin-operaattorin vasen puoli ei evaluoitunut olio-kohdistimeksi"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:100
-msgid ""
-"The left side of the scope operator evaluated to a null object reference"
+msgid "The left side of the scope operator evaluated to a null object reference"
 msgstr "Tähystin-operaattorin vasen puoli evulaitui null-olio-kohdistimeksi"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:107
@@ -2337,8 +2317,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:77
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
-"Taulukon referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
+msgstr "Taulukon referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:247
 msgid "Operand of unary operator didn't evaluate to a number"
@@ -2372,8 +2351,7 @@ msgstr "rivillä %d, lähellä merkkiä %d"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:187
 msgid "This command can be used only in windows bound to an IRC context"
-msgstr ""
-"Tätä komentoa voi vain käyttää ikkunoissa jotka on liitetty IRC-kontekstiin"
+msgstr "Tätä komentoa voi vain käyttää ikkunoissa jotka on liitetty IRC-kontekstiin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:193
 msgid "You're not connected to an IRC server"
@@ -2406,8 +2384,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:77
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
-"Listan referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
+msgstr "Listan referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:100
 msgid "Failed to send an unknown command as /raw"
@@ -2420,8 +2397,7 @@ msgstr "Kutsu ei-määriteltyyn komentoon '%Q'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:116
 msgid "Error in inner alias command call '%Q', called from this context"
-msgstr ""
-"Virhe sisäisessä aliaksen komentokutsussa '%Q', kutsuttu tästä kontekstista"
+msgstr "Virhe sisäisessä aliaksen komentokutsussa '%Q', kutsuttu tästä kontekstista"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:56
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:74
@@ -2460,9 +2436,7 @@ msgstr "Moduulin komennon kutsu epäonnistui: ei voida ladata moduulia '%Q': %Q"
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a command named '%"
 "Q'"
-msgstr ""
-"Moduulin komennon kutsu epäonnistui: moduuli '%Q' ei vie komentoa nimeltä '% "
-"Q'"
+msgstr "Moduulin komennon kutsu epäonnistui: moduuli '%Q' ei vie komentoa nimeltä '%Q'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:113
 msgid "Broken condition in menu setup: assuming false"
@@ -2628,8 +2602,7 @@ msgid "Empty instruction block for command evaluation"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:101
-msgid ""
-"Parameter identifiers are forbidden in object scope (after the '->' operator)"
+msgid "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:147
@@ -2736,8 +2709,7 @@ msgid "Array index didn't evaluate to an integer"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:79
-msgid ""
-"Array index evaluated to a negative integer (non negative integer expected)"
+msgid "Array index evaluated to a negative integer (non negative integer expected)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:106
@@ -2765,8 +2737,7 @@ msgid "This is not a channel"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:99
-msgid ""
-"Unexpected end of command buffer while looking for the \"perl.end\" statement"
+msgid "Unexpected end of command buffer while looking for the \"perl.end\" statement"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:147
@@ -2922,8 +2893,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1244
-msgid ""
-"Found empty 'foreach' execution block: maybe you need to fix your script ?"
+msgid "Found empty 'foreach' execution block: maybe you need to fix your script ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1365
@@ -2990,8 +2960,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
-msgid ""
-"Found empty instruction for popup item: maybe you need to fix the script?"
+msgid "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1809
@@ -3162,8 +3131,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:91
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:104
-msgid ""
-"Internal error: trying to evaluate as read-write a read-only data location"
+msgid "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:98
@@ -3247,8 +3215,7 @@ msgid "Inexisting popup \"%Q\""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:698
-msgid ""
-"Popup menu self-modification is not allowed (the popup is probably open)"
+msgid "Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:705
@@ -3262,8 +3229,7 @@ msgid ""
 msgstr "Kytkimen -w annettu arvo ei ole ikkunan ID: käytetään nykyistä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:869
-msgid ""
-"The argument of the i switch did not evaluate to a number: using default"
+msgid "The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:981
@@ -3410,8 +3376,7 @@ msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_ctcp.cpp:1674
-msgid ""
-": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_ctcp.cpp:1679
@@ -3440,8 +3405,7 @@ msgid "Unable to process the above request: DCC module may be broken"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sparser.cpp:132
-msgid ""
-"[Server parser]: Encountered problems while parsing the following message:"
+msgid "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sparser.cpp:134
@@ -3475,8 +3439,7 @@ msgid "Received a join message for an unknown channel, possible desync"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:311
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:316
@@ -3564,25 +3527,21 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:782
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"Jätetään kyselyviesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
+msgstr "Jätetään kyselyviesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:849
-msgid ""
-"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
 "Spam-viesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q (täsmää spamsanan \"%"
 "s\" kanssa)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:987
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"Jätetään kanavaviesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
+msgstr "Jätetään kanavaviesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1109
 msgid "Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"Jätetään huomautus käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
+msgstr "Jätetään huomautus käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1145
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1162
@@ -3599,11 +3558,10 @@ msgstr ""
 "vaihda"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1216
-msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
 msgstr ""
-"Spam-huomautus käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q (täsmää spamsanan "
-"\"%s\" kanssa)"
+"Spam-huomautus käyttäjältä \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (täsmää spamsanan "
+"\"%Q\" kanssa)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1394
 msgid "Received a topic message for an unknown channel, possible desync"
@@ -3646,7 +3604,7 @@ msgstr "Liitetyn sisällön loppu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1540
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Jätetään kutsu \r!n\r%Q\r to \r!n\r%Q\r huomiotta"
+msgstr "Jätetään kutsu käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r] huomiotta"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_literal.cpp:1555
 msgid "autojoining"
@@ -3747,8 +3705,7 @@ msgstr "Saatavilla olevat kanavamoodit:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:197
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr ""
-"Palvelin %Q version %S tukee käyttäjämoodeja '%S' ja kanavamoodeja '%S'"
+msgstr "Palvelin %Q version %S tukee käyttäjämoodeja '%S' ja kanavamoodeja '%S'"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:244
 msgid "This server supports the WATCH notify list method, it will be used"
@@ -3790,35 +3747,35 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:516
 msgid "No channel topic is set"
-msgstr ""
+msgstr "Kanavalle ei ole asetettu aihetta"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:521
 msgid "No topic is set for channel \r!c\r%Q\r"
-msgstr ""
+msgstr "Kanavalle %Q ei ole asetettu aihetta"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:560
 msgid "Topic was set by %Q on %Q"
-msgstr ""
+msgstr "Aiheen asetti %Q %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:561
 msgid "Topic was set by %Q"
-msgstr ""
+msgstr "Aiheen asetti %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:569
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
-msgstr ""
+msgstr "Aiheen kanavalle \r!c\r%Q\r asetti %Q %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:572
 msgid "Topic for \r!c\r%Q\r was set by %Q"
-msgstr ""
+msgstr "Aiheen kanavalle \r!c\r%Q\r asetti %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:592
 msgid "Channel mode for \r!c\r%Q\r is %s"
-msgstr ""
+msgstr "Kanavamoodi kanavalle \r!c\r%Q\r on %s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:595
 msgid "User mode for \r!n\r%Q\r is %s"
-msgstr ""
+msgstr "Käyttäjämoodi\r!n\r%Q\r:lle on %s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:631
 msgid "End of channel %Q for \r!c\r%Q\r"
@@ -3857,7 +3814,7 @@ msgid ""
 "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
 "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
 "%c: %Q"
-msgstr "/WHO-"
+msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:797
 msgid "End of WHO list for %Q"
@@ -3867,29 +3824,29 @@ msgstr "/WHO -listan loppu käyttäjälle %Q"
 msgid ""
 "Something really weird is happening: the server is refusing all the login "
 "nicknames..."
-msgstr ""
+msgstr "Jotakin todella outoa on tekeillä: palvelin hylkää kaikki kirjautumisnimet"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:861
 msgid ""
 "The server is refusing all the login nicknames: giving up, you must send the "
 "nickname manually"
-msgstr ""
+msgstr "Palvelin hylkää kaikki kirjautumisnimet: annetaan periksi, sinun on annettava kirjautumisnimi itse"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:871
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
-msgstr ""
+msgstr "Ei voida kirjautua nimimerkillä '\r!n\r%Q\r' (%d: %Q), yritetään nimimerkkiä '%Q'..."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:945
 msgid "Command syntax %Q: %Q"
-msgstr ""
+msgstr "Komentosyntaksi %Q: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:973
 msgid "Tip: %Q"
-msgstr ""
+msgstr "Vihje: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:976
 msgid "Tip for %Q: %Q"
-msgstr ""
+msgstr "Vihje %Q:lle: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:993
 msgid "End of help about %Q"
@@ -3897,75 +3854,75 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1037
 msgid "%c\r!n\r%Q\r%c is away: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c on pois: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1090
 msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c on %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1095
 msgid "%c\r!n\r%Q\r%c's real name: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n oikea nimi: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1115
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c oli %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1119
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n oikea nimi oli: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1183
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n kanavat: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1220
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
-msgstr ""
+msgstr "Saatiin rikkinäinen RPL_WHOISIDLE, ei voida laskea idle-aikaa"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1230
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n idle-aika: %ud %uh %um %us"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1240
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n kirjautumisaika: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1274
 msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c:n palvelin: \r!s\r%Q\r - %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1293
 msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c on authentikoitunut %Q:ksi"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1325
 msgid "%c\r!n\r%Q\r%c's info: %Q"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c's: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1372
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c WHOIS-tiedot palvelimelta  \r!s\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1389
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
-msgstr ""
+msgstr "%c\r!n\r%Q\r%c WHOWAS-tiedot palvelimelta \r!s\r%Q\r"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1457
 msgid "Can't evaluate creation time"
-msgstr ""
+msgstr "Ei voida laskea luomisaikaa"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1465
 msgid "Channel was created at %Q"
-msgstr ""
+msgstr "Kanava luotiin %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1470
 msgid "Channel \r!c\r%Q\r was created at %Q"
-msgstr ""
+msgstr "Kanava \r!c\r%Q\r luotiin %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1511
 msgid "USERHOST info: %Q"
-msgstr ""
+msgstr "USERHOST: %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/sparser/kvi_sp_numeric.cpp:1532
 msgid "Channel list begin: channel, users, topic"
@@ -4103,8 +4060,7 @@ msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_ircconnection.cpp:640
-msgid ""
-"The server seems to support the WATCH notify list method, will try to use it"
+msgid "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_ircconnection.cpp:688
@@ -4443,8 +4399,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_sslmaster.cpp:116
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_sslmaster.cpp:123
@@ -4460,8 +4415,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_sslmaster.cpp:139
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_irccontext.cpp:375
@@ -4475,8 +4429,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_irccontext.cpp:483
-msgid ""
-"No servers available. Check the options dialog or use the /SERVER command"
+msgid "No servers available. Check the options dialog or use the /SERVER command"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_irccontext.cpp:491
@@ -5694,8 +5647,7 @@ msgstr "Proxy-vastaus: kirjautuminen OK: pääsy myönnetty"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_ircsocket.cpp:993
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
-msgstr ""
-"Proxy-vastaus: kirjautumismetodi OK: käytetään metodia 0 (ei kirjautumista)"
+msgstr "Proxy-vastaus: kirjautumismetodi OK: käytetään metodia 0 (ei kirjautumista)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_ircsocket.cpp:1000
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
@@ -6008,8 +5960,7 @@ msgid "Connect/Disconnect"
 msgstr "Yhdistä/Katkaise"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_coreactions.cpp:555
-msgid ""
-"Allows you to connect to a server or to terminate the current connection"
+msgid "Allows you to connect to a server or to terminate the current connection"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_coreactions.cpp:628
@@ -6175,43 +6126,43 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:186
 msgid "%Q is on IRC"
-msgstr ""
+msgstr "%Q on IRC:ssä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:248
 msgid "%Q has left IRC"
-msgstr ""
+msgstr "%Q on poistunut IRC:stä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:368
 msgid "Notify list: No users to check for, quitting"
-msgstr ""
+msgstr "Ilmoituslista: Ei käyttäjiä tarkistettavaksi, poistutaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:414
 #, c-format
 msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (15 sec)"
-msgstr ""
+msgstr "Ilmoituslista: Aikakatkaisu (%d sekuntia) on liian lyhyt, asetetaan johonkin toimivampaan (15 sekuntia)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:428
 msgid "Notify list: Notify list empty, quitting"
-msgstr ""
+msgstr "Ilmoituslista: Ilmoituslista tyhjä, poistutaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:455
 #, c-format
 msgid ""
 "Notify list: ISON delay (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
-msgstr ""
+msgstr "Ilmoituslista: ISON-viive (%d sekuntia) on liian lyhyt, asetetaan johonkin toimivampaan (5 sekuntia)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:491
 msgid "Notify list: Checking for: %Q"
-msgstr ""
+msgstr "Ilmoituslista: Tarkistetaan %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:535
 msgid ""
 "Notify list: Hey! You've used ISON behind my back? (I might be confused "
 "now...)"
-msgstr ""
+msgstr "Ilmoituslista: Hei, olet käyttänyt ISON:ia selkäni takana? (Saatan olla hiukan hämmentynyt...)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_notifylist.cpp:682
 msgid "registration mask changed, or nickname is being used by someone else"
@@ -6351,23 +6302,22 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_userinput.cpp:127
 msgid "You are not connected to a server"
-msgstr ""
+msgstr "Et ole yhdistynyt "
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/kernel/kvi_iconmanager.cpp:372
 msgid "Icon Table"
-msgstr ""
+msgstr "Kuvaketaulukko"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:190
 msgid "No "
-msgstr ""
+msgstr "Ei"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:196
 msgid "This module has no version informations: refusing to load it"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:204
-msgid ""
-"This module was compiled for a different KVIrc version and can't be loaded"
+msgid "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:232
@@ -6377,12 +6327,12 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:261
 #, c-format
 msgid "Loaded module '%s' (%s)"
-msgstr ""
+msgstr "Ladattiin moduuli '%s' (%s)"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvirc/module/kvi_modulemanager.cpp:306
 #, c-format
 msgid "Unloaded module '%s'"
-msgstr ""
+msgstr "Poistettiin moduuli '%s' käytöstä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/my/libkvimy.cpp:45
 msgid "This window has no associated irc context"
@@ -6413,11 +6363,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/log/libkvilog.cpp:121
 msgid "Can't log to file %Q"
-msgstr ""
+msgstr "Ei voida kirjata tiedostoon %Q"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/log/libkvilog.cpp:123
 msgid "This window has no logging capabilities"
-msgstr ""
+msgstr "Tällä ikkunalla ei ole kirjaamismahdollisuuksia"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/log/libkvilog.cpp:275
 msgid "Window with id '%Q' not found, returning empty string"
@@ -6442,11 +6392,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/tip/libkvitip.cpp:141
 msgid "Show at startup"
-msgstr ""
+msgstr "Näytä aloitettaessa"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/tip/libkvitip.cpp:154
 msgid "Did you know..."
-msgstr ""
+msgstr "Tiesitkö..."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/tip/libkvitip.cpp:220
 msgid "<b>Can't find any tip... :(</b>"
@@ -6457,8 +6407,7 @@ msgid "%Q algorytm is not supported"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/str/libkvistr.cpp:1566
-msgid ""
-"KVIrc is compiled without OpenSSL support. $str.digest function disabled"
+msgid "KVIrc is compiled without OpenSSL support. $str.digest function disabled"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/str/libkvistr.cpp:2030
@@ -6511,39 +6460,39 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:124
 msgid "&Configure"
-msgstr ""
+msgstr "&Konfiguroi"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:126
 msgid "Clo&se"
-msgstr ""
+msgstr "&Sulje"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:127
 msgid "&Module"
-msgstr ""
+msgstr "&Moduuli"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:130
 msgid "&Load"
-msgstr ""
+msgstr "&Lataa"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:131
 msgid "&Save"
-msgstr ""
+msgstr "&Tallenna"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:132
 msgid "&Clear"
-msgstr ""
+msgstr "T&yhjää"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:133
 msgid "&List"
-msgstr ""
+msgstr "L&ista"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:136
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:137
 msgid "Window"
-msgstr ""
+msgstr "Ikkuna"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:138
 msgid "Count"
@@ -6551,14 +6500,14 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:139
 msgid "Timestamp"
-msgstr ""
+msgstr "Aikaleima"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:216
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:294
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:468
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/mircimport/libkvimircimport.cpp:113
 msgid "Warning - KVIrc"
-msgstr ""
+msgstr "Varoitus - KVIrc"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/url/libkviurl.cpp:216
 msgid "Select an URL."
@@ -7219,8 +7168,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/aliaseditor/aliaseditor.cpp:972
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/aliaseditor/aliaseditor.cpp:983
@@ -8066,8 +8014,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/links/linkswindow.cpp:235
 #, c-format
-msgid ""
-"Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
+msgid "Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/links/linkswindow.cpp:238
@@ -8256,8 +8203,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:348
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:353
@@ -8275,15 +8221,15 @@ msgstr "Ikä:"
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:366
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:392
 msgid "Unspecified"
-msgstr ""
+msgstr "Ei annettu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:405
 msgid "Location:"
-msgstr ""
+msgstr "Paikka:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:408
 msgid "Languages:"
-msgstr ""
+msgstr "Kielet:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/setup/setupwizard.cpp:491
 msgid ""
@@ -8675,8 +8621,7 @@ msgid "The switch -s requires -w with a combination of flags 'c','x' and 'q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/action/libkviaction.cpp:420
-msgid ""
-"The action \"%1\" is already defined as core action and cannot be overridden"
+msgid "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/filetransferwindow/libkvifiletransferwindow.cpp:116
@@ -9062,8 +9007,7 @@ msgid "Pixmap object required"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_widget.cpp:1027
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_widget.cpp:1105
@@ -9391,8 +9335,7 @@ msgid "Can't start the DNS thread"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_socket.cpp:1143
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/objects/class_xmlreader.cpp:151
@@ -9892,8 +9835,7 @@ msgid "This plugin does not export the desired function."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/system/plugin.cpp:327
-msgid ""
-"The plugin has no function to free memory. This can result in Memory Leaks!"
+msgid "The plugin has no function to free memory. This can result in Memory Leaks!"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/modules/system/libkvisystem.cpp:209
@@ -11039,262 +10981,262 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1127
 msgid "Select color"
-msgstr ""
+msgstr "Valitse väri"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1128
 msgid "&Basic colors"
-msgstr ""
+msgstr "Perusvärit"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1129
 msgid "&Custom colors"
-msgstr ""
+msgstr "Mukautetut värit"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1130
 msgid "&Red"
-msgstr ""
+msgstr "&Punainen"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1131
 msgid "&Green"
-msgstr ""
+msgstr "&Vihreä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1132
 msgid "Bl&ue"
-msgstr ""
+msgstr "&Sininen"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1133
 msgid "&Define Custom Colors >>"
-msgstr ""
+msgstr "&Määrittele mukautetut värit"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1134
 msgid "&Add to Custom Colors"
-msgstr ""
+msgstr "&Lisää mukautettuihin väreihin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1136
 msgid "Select Font"
-msgstr ""
+msgstr "Valitse kirjaisin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1137
 msgid "&Font"
-msgstr ""
+msgstr "&Kirjaisin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1138
 msgid "Font st&yle"
-msgstr ""
+msgstr "Kirjaisin&tyyli"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1139
 msgid "&Size"
-msgstr ""
+msgstr "K&oko"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1140
 msgid "Sample"
-msgstr ""
+msgstr "Näyte"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1141
 msgid "Effects"
-msgstr ""
+msgstr "Efektit"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1142
 msgid "Stri&keout"
-msgstr ""
+msgstr "&Yliviivaus"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1143
 msgid "&Underline"
-msgstr ""
+msgstr "&Alleviivaus"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1144
 msgid "Scr&ipt"
-msgstr ""
+msgstr "Sk&ripti"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1146
 msgid "Parent Directory"
-msgstr ""
+msgstr "Ylähakemisto"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1148
 msgid "Forward"
-msgstr ""
+msgstr "Eteenpäin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1149
 msgid "Reload"
-msgstr ""
+msgstr "Uudelleenlataa"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1150
 msgid "New Directory"
-msgstr ""
+msgstr "Uusi hakemisto"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1151
 msgid "Bookmarks"
-msgstr ""
+msgstr "Kirjanmerkit"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1152
 msgid "Add Bookmark"
-msgstr ""
+msgstr "Lisää kirjanmerkki"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1153
 msgid "&Edit Bookmarks"
-msgstr ""
+msgstr "&Muokkaa kirjanmerkkejä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1154
 msgid "New Bookmark Folder..."
-msgstr ""
+msgstr "Uusi kirjanmerkkikansio..."
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1156
 msgid "Sorting"
-msgstr ""
+msgstr "Järjestetään"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1157
 msgid "By Name"
-msgstr ""
+msgstr "Nimen mukaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1158
 msgid "By Date"
-msgstr ""
+msgstr "Päiväyksen mukaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1159
 msgid "By Size"
-msgstr ""
+msgstr "Koon mukaan"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1160
 msgid "Reverse"
-msgstr ""
+msgstr "Takaperin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1161
 msgid "Directories First"
-msgstr ""
+msgstr "Hakemistot ensin"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1162
 msgid "Case Insensitive"
-msgstr ""
+msgstr "Ei riipu kirjainkoosta"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1163
 msgid "Short View"
-msgstr ""
+msgstr "Lyhyt näkymä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1164
 msgid "Detailed View"
-msgstr ""
+msgstr "Yksityiskohtainen näkymä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1165
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Näytä piilotiedostot"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1166
 msgid "Show Quick Access Navigation Panel"
-msgstr ""
+msgstr "Näytä navigointipaneeli"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1167
 msgid "Show Preview"
-msgstr ""
+msgstr "Näytä esikatselu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1168
 msgid "Separate Directories"
-msgstr ""
+msgstr "Erilliset hakemistot"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1169
 msgid "Often used directories"
-msgstr ""
+msgstr "Usein käytetyt hakemistot"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1170
 msgid "Desktop"
-msgstr ""
+msgstr "Työpöytä"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1171
 msgid "Home Directory"
-msgstr ""
+msgstr "Kotihakemisto"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1172
 msgid "Floppy"
-msgstr ""
+msgstr "Levyke"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1173
 msgid "Temporary Files"
-msgstr ""
+msgstr "Väliaikaistiedostot"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1174
 msgid "Network"
-msgstr ""
+msgstr "Verkko"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1175
 msgid "New Directory..."
-msgstr ""
+msgstr "Uusi hakemisto"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1176
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1177
 msgid "Thumbnail Previews"
-msgstr ""
+msgstr "Esikatselukuvakkeet"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1178
 msgid "Large Icons"
-msgstr ""
+msgstr "Suuret kuvakkeet"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1179
 msgid "Small Icons"
-msgstr ""
+msgstr "Pienet kuvakkeet"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1180
 msgid "Properties..."
-msgstr ""
+msgstr "Asetukset"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1181
 msgid "&Automatic Preview"
-msgstr ""
+msgstr "&Automaattinen esikatselu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1182
 msgid "&Preview"
-msgstr ""
+msgstr "&Esikatselu"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1183
 msgid "&Location:"
-msgstr ""
+msgstr "&Paikka:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1184
 msgid "&Filter:"
-msgstr ""
+msgstr "&Suodatin:"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_locale.cpp:1185
 msgid "All Files"
-msgstr ""
+msgstr "Kaikki tiedostot"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:104
 msgid "- d -- h -- m -- s"
-msgstr ""
+msgstr "- d -- h -- m -- s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:111
 #, c-format
 msgid "%u h %u m %u s"
-msgstr ""
+msgstr "%u h %u m %u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:113
 #, c-format
 msgid "%u h %u%u m %u%u s"
-msgstr ""
+msgstr "%u h %u%u m %u%u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:118
 #, c-format
 msgid "%u m %u s"
-msgstr ""
+msgstr "%u m %u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:120
 #, c-format
 msgid "%u m %u%u s"
-msgstr ""
+msgstr "%u m %u%u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:122
 #, c-format
 msgid "%u s"
-msgstr ""
+msgstr "%u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:127
 #, c-format
 msgid "%u d %u h %u m %u s"
-msgstr ""
+msgstr "%u d %u h %u m %u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/src/kvilib/system/kvi_time.cpp:129
 #, c-format
 msgid "%u d %u%u h %u%u m %u%u s"
-msgstr ""
+msgstr "%u d %u%u h %u%um %u%u s"
 
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/data/defscript/aliases.kvs:98
 #: /home/hellvis69/kvircsvn/tags/kvirc/3.4.0/data/defscript/aliases.kvs:133
@@ -11918,8 +11860,3 @@ msgid ""
 "source directory"
 msgstr ""
 
-#~ msgid "%c\r!s\r%s\r%c: %Q"
-#~ msgstr "%c\r!s\r%s\r%c: %Q"
-
-#~ msgid "Basic Properties"
-#~ msgstr "Perusasetukset"
