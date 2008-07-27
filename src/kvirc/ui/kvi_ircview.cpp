@@ -2124,7 +2124,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 		0                      ,0                      ,0                      ,0                        // 240-255
 	};
 
-	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
 		loop_begin = &&highlighting_check_loop;               // get the address of the return label
 		// forewer loop
@@ -2176,7 +2176,7 @@ escape_check_loop:
 	};
 
 check_char_loop:
-	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
 		for(;;)
 		{
@@ -2384,6 +2384,8 @@ found_mirc_escape:
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 check_http_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 't') || (*p == 'T'))
 	{
@@ -2400,14 +2402,16 @@ check_http_url:
 		}
 		p++;
 	}
+} else { p++; } 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
-
 check_file_or_ftp_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 'i') || (*p == 'I'))
 	{
@@ -2433,7 +2437,7 @@ check_file_or_ftp_url:
 		}
 		p++;
 	}
-
+} else { p++; }
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2441,6 +2445,8 @@ check_file_or_ftp_url:
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 check_e2k_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 'd') || (*p == 'D'))
 	{
@@ -2452,7 +2458,7 @@ check_e2k_url:
 		}
 		p++;
 	}
-
+} else { p++; }
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2460,6 +2466,8 @@ check_e2k_url:
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 check_www_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 'w') || (*p == 'W'))
 	{
@@ -2471,7 +2479,7 @@ check_www_url:
 		}
 		p++;
 	}
-
+} else { p++; }
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2479,6 +2487,8 @@ check_www_url:
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 check_irc_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 'r') || (*p == 'R'))
 	{
@@ -2505,7 +2515,7 @@ check_irc_url:
 		}
 		p++;
 	}
-
+} else { p++; }
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2513,6 +2523,8 @@ check_irc_url:
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 check_mailto_url:
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+{
 	p++;
 	if((*p == 'a') || (*p == 'A'))
 	{
@@ -2524,12 +2536,12 @@ check_mailto_url:
 		}
 		p++;
 	}
+} else { p++; }
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
-
 
 
 got_url:
