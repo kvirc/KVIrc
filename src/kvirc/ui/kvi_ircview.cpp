@@ -2114,7 +2114,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 		0                      ,0                      ,0                      ,0                        // 240-255
 	};
 
-	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
 		loop_begin = &&highlighting_check_loop;               // get the address of the return label
 		// forewer loop
@@ -2166,7 +2166,7 @@ escape_check_loop:
 	};
 
 check_char_loop:
-	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
 		for(;;)
 		{
@@ -2393,6 +2393,8 @@ found_mirc_escape:
 
 check_http_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	/*
 	 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
 	 * "http://" tag, it takes us more cpu time)
@@ -2421,6 +2423,7 @@ check_http_url:
 		}
 		p++;
 	}
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2430,6 +2433,8 @@ check_http_url:
 
 check_file_or_ftp_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	if((*p == 'i') || (*p == 'I'))
 	{
 		p--;
@@ -2454,7 +2459,7 @@ check_file_or_ftp_url:
 		}
 		p++;
 	}
-
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2463,6 +2468,8 @@ check_file_or_ftp_url:
 
 check_e2k_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	if((*p == 'd') || (*p == 'D'))
 	{
 		p--;
@@ -2473,7 +2480,7 @@ check_e2k_url:
 		}
 		p++;
 	}
-
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2482,6 +2489,8 @@ check_e2k_url:
 
 check_www_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	if((*p == 'w') || (*p == 'W'))
 	{
 		p--;
@@ -2492,7 +2501,7 @@ check_www_url:
 		}
 		p++;
 	}
-
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2501,6 +2510,8 @@ check_www_url:
 
 check_irc_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	if((*p == 'r') || (*p == 'R'))
 	{
 		p--;
@@ -2526,7 +2537,7 @@ check_irc_url:
 		}
 		p++;
 	}
-
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
@@ -2535,6 +2546,8 @@ check_irc_url:
 
 check_mailto_url:
 	p++;
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+{
 	if((*p == 'a') || (*p == 'A'))
 	{
 		p--;
@@ -2545,6 +2558,7 @@ check_mailto_url:
 		}
 		p++;
 	}
+}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
 	goto *loop_begin;
 #else // !COMPILE_USE_DYNAMIC_LABELS
