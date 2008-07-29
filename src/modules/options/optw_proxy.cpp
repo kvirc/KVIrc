@@ -29,7 +29,7 @@
 #include "kvi_netutils.h"
 #include "kvi_settings.h"
 #include "kvi_options.h"
-#include <kvi_tal_groupbox.h>
+#include "kvi_tal_groupbox.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_tooltip.h"
 
@@ -211,7 +211,6 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 		m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
 
-
 		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
@@ -295,11 +294,10 @@ void KviProxyOptionsWidget::commit()
 	//while(it)
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		it=(KviProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);	
+		it=(KviProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		QString tmp = it->text(0);
 		if(!tmp.isEmpty())
 		{
-			debug("Commit proxy name %s",tmp.toUtf8().data());
 			KviProxy * prx = new KviProxy(*(it->m_pProxyData));
 			g_pProxyDataBase->insertProxy(prx);
 
@@ -337,8 +335,13 @@ void KviProxyOptionsWidget::removeCurrent()
 {
 	if(m_pLastEditedItem)
 	{
-		delete m_pLastEditedItem;
+		//delete m_pLastEditedItem;
+		//m_pLastEditedItem = 0;
+
+		KviTalTreeWidgetItem * tmp = m_pLastEditedItem;
 		m_pLastEditedItem = 0;
+		delete tmp;
+
 		KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
 		if(it)
 		{
