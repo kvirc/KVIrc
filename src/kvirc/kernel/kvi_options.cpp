@@ -129,7 +129,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("SendUnknownCommandsAsRaw",true,KviOption_sectFlagUserParser),
 	BOOL_OPTION("UserListViewDrawGrid",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowChannelSyncTime",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("RejoinChannelOnKick",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("RejoinChannelOnKick",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("KeepChannelOpenOnKick",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("AutoCloseDccSendOnSuccess",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("NotifyDccSendSuccessInConsole",false,KviOption_sectFlagDcc),
