@@ -222,15 +222,15 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	}
 
 /*
-	@doc: serverdb.getNetworkNickName
+	@doc: serverdb.networkNickName
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkNickName
+		$serverdb.networkNickName
 	@short:
 		Returns the nickname
 	@synthax:
-		<string> $serverdb.getNetworkNickName(<string:network>)
+		<string> $serverdb.networkNickName(<string:network>)
 	@description:
 		Returns the nickname set for the network <network> if set
 	@seealso:
@@ -239,15 +239,15 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
 
 /*
-	@doc: serverdb.getNetworkUserName
+	@doc: serverdb.networkUserName
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkUserName
+		$serverdb.networkUserName
 	@short:
 		Returns the username
 	@synthax:
-		<string> $serverdb.getNetworkUserName(<string:network>)
+		<string> $serverdb.networkUserName(<string:network>)
 	@description:
 		Returns the username set for the network <network> if set
 	@seealso:
@@ -256,15 +256,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 
 /*
-	@doc: serverdb.getNetworkRealName
+	@doc: serverdb.networkRealName
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkRealName
+		$serverdb.networkRealName
 	@short:
 		Returns the realname
 	@synthax:
-		<string> $serverdb.getNetworkRealName(<string:network>)
+		<string> $serverdb.networkRealName(<string:network>)
 	@description:
 		Returns the realname set for the network <network> if set
 	@seealso:
@@ -273,15 +273,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
 
 /*
-	@doc: serverdb.getNetworkEncoding
+	@doc: serverdb.networkEncoding
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkEncoding
+		$serverdb.networkEncoding
 	@short:
 		Returns the encoding
 	@synthax:
-		<string> $serverdb.getNetworkEncoding(<string:network>)
+		<string> $serverdb.networkEncoding(<string:network>)
 	@description:
 		Returns the encoding used for the network <network> for server specific messages, like channel and nick names, if set
 	@seealso:
@@ -290,15 +290,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
 
 /*
-	@doc: serverdb.getNetworkTextEncoding
+	@doc: serverdb.networkTextEncoding
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkTextEncoding
+		$serverdb.networkTextEncoding
 	@short:
 		Returns the encoding
 	@synthax:
-		<string> $serverdb.getNetworkTextEncoding(<string:network>)
+		<string> $serverdb.networkTextEncoding(<string:network>)
 	@description:
 		Returns the encoding used for the network <network> for text messages, if set
 	@seealso:
@@ -307,15 +307,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
 
 /*
-	@doc: serverdb.getNetworkDescription
+	@doc: serverdb.networkDescription
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkDescription
+		$serverdb.networkDescription
 	@short:
 		Returns the description
 	@synthax:
-		<string> $serverdb.getNetworkDescription(<string:network>)
+		<string> $serverdb.networkDescription(<string:network>)
 	@description:
 		Returns the description set for the network <network> if set
 	@seealso:
@@ -324,15 +324,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
 
 /*
-	@doc: serverdb.getNetworkConnectCommand
+	@doc: serverdb.networkConnectCommand
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkConnectCommand
+		$serverdb.networkConnectCommand
 	@short:
 		Returns the connect command
 	@synthax:
-		<string> $serverdb.getNetworkConnectCommand(<string:network>)
+		<string> $serverdb.networkConnectCommand(<string:network>)
 	@description:
 		Returns the connect command set for the network <network> if set
 	@seealso:
@@ -341,15 +341,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCommand)
 
 /*
-	@doc: serverdb.getNetworkLoginCommand
+	@doc: serverdb.networkLoginCommand
 	@type:
 		function
 	@title:
-		$serverdb.getNetworkLoginCommand
+		$serverdb.networkLoginCommand
 	@short:
 		Returns the login command
 	@synthax:
-		<string> $serverdb.getNetworkLoginCommand(<string:network>)
+		<string> $serverdb.networkLoginCommand(<string:network>)
 	@description:
 		Returns the login command set for the network <network> if set
 	@seealso:
@@ -358,15 +358,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCo
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginCommand)
 
 /*
-	@doc: serverdb.getNetworkName
+	@doc: serverdb.networkName
 	@type:
 		function
 	@title
-		$serverdb.getNetworkName
+		$serverdb.networkName
 	@short:
 		Returns the name
 	@synthax:
-		<string> $serverdb.getNetworkName(<string:network>)
+		<string> $serverdb.networkName(<string:network>)
 	@description:
 		Returns the name of the network <network>
 	@seealso:
@@ -375,15 +375,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginComman
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
 
 /*
-	@doc: serverdb.getServerNickName
+	@doc: serverdb.serverNickName
 	@type:
 		function
 	@title:
-		$serverdb.getServerNickName
+		$serverdb.serverNickName
 	@short:
 		Returns the nickname
 	@synthax:
-		<string> $serverdb.getServerNickName(<string:network>,<string:server>)
+		<string> $serverdb.serverNickName(<string:network>,<string:server>)
 	@description:
 		Returns the nickname set for the server <server> of the network <network> if set
 	@seealso:
@@ -392,15 +392,15 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
 
 /*
-	@doc: serverdb.getServerUserName
+	@doc: serverdb.serverUserName
 	@type:
 		function
 	@title:
-		$serverdb.getServerUserName
+		$serverdb.serverUserName
 	@short:
 		Returns the username
 	@synthax:
-		<string> $serverdb.getServerUserName(<string:network>,<string:server>)
+		<string> $serverdb.serverUserName(<string:network>,<string:server>)
 	@description:
 		Returns the username set for the server <server> of the network <network> if set
 	@seealso:
@@ -409,15 +409,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 
 /*
-	@doc: serverdb.getServerRealName
+	@doc: serverdb.serverRealName
 	@type:
 		function
 	@title:
-		$serverdb.getServerRealName
+		$serverdb.serverRealName
 	@short:
 		Returns the realname
 	@synthax:
-		<string> $serverdb.getServerRealName(<string:network>,<string:server>)
+		<string> $serverdb.serverRealName(<string:network>,<string:server>)
 	@description:
 		Returns the realname set for the server <server> of the network <network> if set
 	@seealso:
@@ -426,15 +426,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
 
 /*
-	@doc: serverdb.getServerEncoding
+	@doc: serverdb.serverEncoding
 	@type:
 		function
 	@title:
-		$serverdb.getServerEncoding
+		$serverdb.serverEncoding
 	@short:
 		Returns the encoding
 	@synthax:
-		<string> $serverdb.getServerEncoding(<string:network>,<string:server>)
+		<string> $serverdb.serverEncoding(<string:network>,<string:server>)
 	@description:
 		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
 	@seealso:
@@ -443,15 +443,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
 
 /*
-	@doc: serverdb.getServerTextEncoding
+	@doc: serverdb.serverTextEncoding
 	@type:
 		function
 	@title:
-		$serverdb.getServerTextEncoding
+		$serverdb.serverTextEncoding
 	@short:
 		Returns the encoding
 	@synthax:
-		<string> $serverdb.getServerTextEncoding(<string:network>,<string:server>)
+		<string> $serverdb.serverTextEncoding(<string:network>,<string:server>)
 	@description:
 		Returns the encoding used for the server <server> of the network <network> for server specific messages, like channel and nick names, if set
 	@seealso:
@@ -460,15 +460,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,setString)
 
 /*
-	@doc: serverdb.getServerDescription
+	@doc: serverdb.serverDescription
 	@type:
 		function
 	@title:
-		$serverdb.getServerDescription
+		$serverdb.serverDescription
 	@short:
 		Returns the description
 	@synthax:
-		<string> $serverdb.getServerDescription(<string:network>,<string:server>)
+		<string> $serverdb.serverDescription(<string:network>,<string:server>)
 	@description:
 		Returns the description set for the server <server> of the network <network> if set
 	@seealso:
@@ -477,15 +477,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,se
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setString)
 
 /*
-	@doc: serverdb.getServerConnectCommand
+	@doc: serverdb.serverConnectCommand
 	@type:
 		function
 	@title:
-		$serverdb.getServerConnectCommand
+		$serverdb.serverConnectCommand
 	@short:
 		Returns the connect command
 	@synthax:
-		<string> $serverdb.getServerConnectCommand(<string:network>,<string:server>)
+		<string> $serverdb.serverConnectCommand(<string:network>,<string:server>)
 	@description:
 		Returns the connect command set for the server <server> of the network <network> if set
 	@seealso:
@@ -494,15 +494,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setS
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectCommand,setString)
 
 /*
-	@doc: serverdb.getServerLoginCommand
+	@doc: serverdb.serverLoginCommand
 	@type:
 		function
 	@title:
-		$serverdb.getServerLoginCommand
+		$serverdb.serverLoginCommand
 	@short:
 		Returns the login command
 	@synthax:
-		<string> $serverdb.getServerLoginCommand(<string:network>,<string:server>)
+		<string> $serverdb.serverLoginCommand(<string:network>,<string:server>)
 	@description:
 		Returns the login command set for the server <server> of the network <network> if set
 	@seealso:
@@ -511,15 +511,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectComm
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,setString)
 
 /*
-	@doc: serverdb.getServerIp
+	@doc: serverdb.serverIp
 	@type:
 		function
 	@title:
-		$serverdb.getServerIp
+		$serverdb.serverIp
 	@short:
 		Returns the IP address
 	@synthax:
-		<string> $serverdb.getServerIp(<string:network>,<string:server>)
+		<string> $serverdb.serverIp(<string:network>,<string:server>)
 	@description:
 		Returns the IP address of the server <server> of the network <network>
 	@seealso:
@@ -528,15 +528,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
 
 /*
-	@doc: serverdb.getServerId
+	@doc: serverdb.serverId
 	@type:
 		function
 	@title:
-		$serverdb.getServerId
+		$serverdb.serverId
 	@short:
 		Returns the ID
 	@synthax:
-		<string> $serverdb.getServerId(<string:network>,<string:server>)
+		<string> $serverdb.serverId(<string:network>,<string:server>)
 	@description:
 		Returns the ID of the server <server> of the network <network>
 	@seealso:
@@ -545,15 +545,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
 
 /*
-	@doc: serverdb.getServerPassword
+	@doc: serverdb.serverPassword
 	@type:
 		function
 	@title:
-		$serverdb.getServerPassword
+		$serverdb.serverPassword
 	@short:
 		Returns the password
 	@synthax:
-		<string> $serverdb.getServerPassword(<string:network>,<string:server>)
+		<string> $serverdb.serverPassword(<string:network>,<string:server>)
 	@description:
 		Returns the password of the server <server> of the network <network> if set
 	@seealso:
@@ -562,15 +562,15 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword,password,setString)
 
 /*
-	@doc: serverdb.getServerPort
+	@doc: serverdb.serverPort
 	@type:
 		function
 	@title:
-		$serverdb.getServerPort
+		$serverdb.serverPort
 	@short:
 		Returns the port
 	@synthax:
-		<int> $serverdb.getServerPort(<string:network>,<string:server>)
+		<int> $serverdb.serverPort(<string:network>,<string:server>)
 	@description:
 		Returns the port of the server <server> of the network <network> if set
 	@seealso:
