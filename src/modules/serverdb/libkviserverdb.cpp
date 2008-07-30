@@ -236,7 +236,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkNickName,nickName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
 
 /*
 	@doc: serverdb.getNetworkUserName
@@ -253,7 +253,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkNickName,nickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkUserName,userName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 
 /*
 	@doc: serverdb.getNetworkRealName
@@ -270,7 +270,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkUserName,userName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkRealName,realName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
 
 /*
 	@doc: serverdb.getNetworkEncoding
@@ -287,7 +287,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkRealName,realName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkEncoding,encoding)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
 
 /*
 	@doc: serverdb.getNetworkTextEncoding
@@ -304,7 +304,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkEncoding,encoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkTextEncoding,textEncoding)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
 
 /*
 	@doc: serverdb.getNetworkDescription
@@ -321,7 +321,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkTextEncoding,textEncodi
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkDescription,description)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
 
 /*
 	@doc: serverdb.getNetworkConnectCommand
@@ -338,7 +338,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkDescription,description
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkConnectCommand,onConnectCommand)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCommand)
 
 /*
 	@doc: serverdb.getNetworkLoginCommand
@@ -355,7 +355,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkConnectCommand,onConnec
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkLoginCommand,onLoginCommand)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginCommand)
 
 /*
 	@doc: serverdb.getNetworkName
@@ -372,7 +372,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkLoginCommand,onLoginCom
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkName,name)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
 
 /*
 	@doc: serverdb.getServerNickName
@@ -389,7 +389,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_getNetworkName,name)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerNickName,nickName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
 
 /*
 	@doc: serverdb.getServerUserName
@@ -406,7 +406,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerNickName,nickName,setStri
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerUserName,userName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 
 /*
 	@doc: serverdb.getServerRealName
@@ -423,7 +423,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerUserName,userName,setStri
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerRealName,realName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
 
 /*
 	@doc: serverdb.getServerEncoding
@@ -440,7 +440,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerRealName,realName,setStri
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerEncoding,encoding,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
 
 /*
 	@doc: serverdb.getServerTextEncoding
@@ -457,7 +457,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerEncoding,encoding,setStri
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerTextEncoding,textEncoding,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,setString)
 
 /*
 	@doc: serverdb.getServerDescription
@@ -474,7 +474,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerTextEncoding,textEncoding
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerDescription,description,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setString)
 
 /*
 	@doc: serverdb.getServerConnectCommand
@@ -491,7 +491,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerDescription,description,s
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerConnectCommand,onConnectCommand,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectCommand,setString)
 
 /*
 	@doc: serverdb.getServerLoginCommand
@@ -508,7 +508,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerConnectCommand,onConnectC
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerLoginCommand,onLoginCommand,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,setString)
 
 /*
 	@doc: serverdb.getServerIp
@@ -525,7 +525,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerLoginCommand,onLoginComma
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIp,ip,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
 
 /*
 	@doc: serverdb.getServerId
@@ -542,7 +542,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIp,ip,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerId,id,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
 
 /*
 	@doc: serverdb.getServerPassword
@@ -559,7 +559,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerId,id,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPassword,password,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword,password,setString)
 
 /*
 	@doc: serverdb.getServerPort
@@ -576,7 +576,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPassword,password,setStri
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPort,port,setInteger)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort,port,setInteger)
 
 /*
 	@doc: serverdb.isAutoConnect
@@ -593,7 +593,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerPort,port,setInteger)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerAutoConnect,autoConnect,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect,autoConnect,setBoolean)
 
 /*
 	@doc: serverdb.isIPv6
@@ -610,7 +610,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerAutoConnect,autoConnect,s
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIPv6,isIPv6,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6,isIPv6,setBoolean)
 
 /*
 	@doc: serverdb.isSSL
@@ -627,7 +627,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerIPv6,isIPv6,setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerSSL,useSSL,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
 
 /*
 	@doc: serverdb.cacheIp
@@ -644,7 +644,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerSSL,useSSL,setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_getServerCacheIp,cacheIp,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp,cacheIp,setBoolean)
 
 /*
 	@doc: serverdb.addNetwork
@@ -1304,31 +1304,31 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"updateList",serverdb_kvs_cmd_updateList);
 	*/
 
-	KVSM_REGISTER_FUNCTION(m,"cacheIp",serverdb_kvs_fnc_getServerCacheIp);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkConnectCommand",serverdb_kvs_fnc_getNetworkConnectCommand);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkDescription",serverdb_kvs_fnc_getNetworkDescription);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkEncoding",serverdb_kvs_fnc_getNetworkEncoding);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkTextEncoding",serverdb_kvs_fnc_getNetworkTextEncoding);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkLoginCommand",serverdb_kvs_fnc_getNetworkLoginCommand);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkName",serverdb_kvs_fnc_getNetworkName);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkNickName",serverdb_kvs_fnc_getNetworkNickName);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkRealName",serverdb_kvs_fnc_getNetworkRealName);
-	KVSM_REGISTER_FUNCTION(m,"getNetworkUserName",serverdb_kvs_fnc_getNetworkUserName);
-	KVSM_REGISTER_FUNCTION(m,"getServerConnectCommand",serverdb_kvs_fnc_getServerConnectCommand);
-	KVSM_REGISTER_FUNCTION(m,"getServerDescription",serverdb_kvs_fnc_getServerDescription);
-	KVSM_REGISTER_FUNCTION(m,"getServerEncoding",serverdb_kvs_fnc_getServerEncoding);
-	KVSM_REGISTER_FUNCTION(m,"getServerTextEncoding",serverdb_kvs_fnc_getServerTextEncoding);
-	KVSM_REGISTER_FUNCTION(m,"getServerId",serverdb_kvs_fnc_getServerId)
-	KVSM_REGISTER_FUNCTION(m,"getServerIp",serverdb_kvs_fnc_getServerIp)
-	KVSM_REGISTER_FUNCTION(m,"getServerLoginCommand",serverdb_kvs_fnc_getServerLoginCommand);
-	KVSM_REGISTER_FUNCTION(m,"getServerNickName",serverdb_kvs_fnc_getServerNickName);
-	KVSM_REGISTER_FUNCTION(m,"getServerPassword",serverdb_kvs_fnc_getServerPassword);
-	KVSM_REGISTER_FUNCTION(m,"getServerPort",serverdb_kvs_fnc_getServerPort);
-	KVSM_REGISTER_FUNCTION(m,"getServerRealName",serverdb_kvs_fnc_getServerRealName);
-	KVSM_REGISTER_FUNCTION(m,"getServerUserName",serverdb_kvs_fnc_getServerUserName);
-	KVSM_REGISTER_FUNCTION(m,"isAutoConnect",serverdb_kvs_fnc_getServerAutoConnect);
-	KVSM_REGISTER_FUNCTION(m,"isIPv6",serverdb_kvs_fnc_getServerIPv6);
-	KVSM_REGISTER_FUNCTION(m,"isSSL",serverdb_kvs_fnc_getServerSSL);
+	KVSM_REGISTER_FUNCTION(m,"cacheIp",serverdb_kvs_fnc_serverCacheIp);
+	KVSM_REGISTER_FUNCTION(m,"networkConnectCommand",serverdb_kvs_fnc_networkConnectCommand);
+	KVSM_REGISTER_FUNCTION(m,"networkDescription",serverdb_kvs_fnc_networkDescription);
+	KVSM_REGISTER_FUNCTION(m,"networkEncoding",serverdb_kvs_fnc_networkEncoding);
+	KVSM_REGISTER_FUNCTION(m,"networkTextEncoding",serverdb_kvs_fnc_networkTextEncoding);
+	KVSM_REGISTER_FUNCTION(m,"networkLoginCommand",serverdb_kvs_fnc_networkLoginCommand);
+	KVSM_REGISTER_FUNCTION(m,"networkName",serverdb_kvs_fnc_networkName);
+	KVSM_REGISTER_FUNCTION(m,"networkNickName",serverdb_kvs_fnc_networkNickName);
+	KVSM_REGISTER_FUNCTION(m,"networkRealName",serverdb_kvs_fnc_networkRealName);
+	KVSM_REGISTER_FUNCTION(m,"networkUserName",serverdb_kvs_fnc_networkUserName);
+	KVSM_REGISTER_FUNCTION(m,"serverConnectCommand",serverdb_kvs_fnc_serverConnectCommand);
+	KVSM_REGISTER_FUNCTION(m,"serverDescription",serverdb_kvs_fnc_serverDescription);
+	KVSM_REGISTER_FUNCTION(m,"serverEncoding",serverdb_kvs_fnc_serverEncoding);
+	KVSM_REGISTER_FUNCTION(m,"serverTextEncoding",serverdb_kvs_fnc_serverTextEncoding);
+	KVSM_REGISTER_FUNCTION(m,"serverId",serverdb_kvs_fnc_serverId)
+	KVSM_REGISTER_FUNCTION(m,"serverIp",serverdb_kvs_fnc_serverIp)
+	KVSM_REGISTER_FUNCTION(m,"serverLoginCommand",serverdb_kvs_fnc_serverLoginCommand);
+	KVSM_REGISTER_FUNCTION(m,"serverNickName",serverdb_kvs_fnc_serverNickName);
+	KVSM_REGISTER_FUNCTION(m,"serverPassword",serverdb_kvs_fnc_serverPassword);
+	KVSM_REGISTER_FUNCTION(m,"serverPort",serverdb_kvs_fnc_serverPort);
+	KVSM_REGISTER_FUNCTION(m,"serverRealName",serverdb_kvs_fnc_serverRealName);
+	KVSM_REGISTER_FUNCTION(m,"serverUserName",serverdb_kvs_fnc_serverUserName);
+	KVSM_REGISTER_FUNCTION(m,"isAutoConnect",serverdb_kvs_fnc_serverAutoConnect);
+	KVSM_REGISTER_FUNCTION(m,"isIPv6",serverdb_kvs_fnc_serverIPv6);
+	KVSM_REGISTER_FUNCTION(m,"isSSL",serverdb_kvs_fnc_serverSSL);
 	KVSM_REGISTER_FUNCTION(m,"networkExists",serverdb_kvs_fnc_networkExists);
 	KVSM_REGISTER_FUNCTION(m,"serverExists",serverdb_kvs_fnc_serverExists);
 
