@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_ssl.h"
@@ -318,7 +317,7 @@ bool KviSSL::initSocket(kvi_socket_t fd)
 	if(!m_pSSL)return false;
 	if(!SSL_set_fd(m_pSSL,fd))return false;
 	return true;
-	
+
 }
 
 static int cb(char *buf, int size, int rwflag, void *u)
@@ -383,7 +382,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(const char * key,const char * pass)
 
 unsigned long KviSSL::getLastError(bool bPeek)
 {
-	return bPeek ? ERR_peek_error() : ERR_get_error();	
+	return bPeek ? ERR_peek_error() : ERR_get_error();
 }
 
 bool KviSSL::getLastErrorString(KviStr &buffer,bool bPeek)
@@ -647,7 +646,7 @@ void KviSSLCertificate::extractSignature()
 /*
 const char * KviSSLCertificate::verify()
 {
-	
+
 }
 */
 

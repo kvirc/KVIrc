@@ -21,8 +21,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-#define __KVILIB__
-
 
 #include "kvi_avatarcache.h"
 #include "kvi_pointerlist.h"
@@ -47,7 +45,7 @@ void KviAvatarCache::init()
 		debug("WARNING: trying to initialize the avatar cache twice");
 		return;
 	}
-	
+
 	m_pAvatarCacheInstance = new KviAvatarCache();
 }
 
@@ -58,7 +56,7 @@ void KviAvatarCache::done()
 		debug("WARNING: trying to destroy an uninitialized avatar cache");
 		return;
 	}
-	
+
 	delete m_pAvatarCacheInstance;
 	m_pAvatarCacheInstance = 0;
 }
@@ -83,13 +81,13 @@ void KviAvatarCache::replace(const QString &szIdString,const KviIrcMask &mask,co
 	mask.mask(szKey,KviIrcMask::NickCleanUserSmartNet);
 	szKey.append(QChar('+'));
 	szKey.append(szNetwork);
-	
+
 	KviAvatarCacheEntry * e = new KviAvatarCacheEntry;
 	e->szIdString = szIdString;
 	e->tLastAccess = kvi_unixTime();
-	
+
 	m_pAvatarDict->replace(szKey,e);
-	
+
 	if(m_pAvatarDict->count() > MAX_AVATARS_IN_CACHE)
 	{
 		cleanup();
@@ -103,7 +101,7 @@ void KviAvatarCache::remove(const KviIrcMask &mask,const QString &szNetwork)
 	mask.mask(szKey,KviIrcMask::NickCleanUserSmartNet);
 	szKey.append(QChar('+'));
 	szKey.append(szNetwork);
-	
+
 	m_pAvatarDict->remove(szKey);
 }
 
@@ -132,9 +130,9 @@ void KviAvatarCache::load(const QString &szFileName)
 	kvi_time_t tNow = kvi_unixTime();
 
 	KviConfigIterator it(*(cfg.dict()));
-	
+
 	int cnt = 0;
-	
+
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
@@ -181,7 +179,7 @@ void KviAvatarCache::cleanup()
 {
 	// first do a quick run deleting the avatars really too old
 	KviPointerHashTableIterator<QString,KviAvatarCacheEntry> it(*m_pAvatarDict);
-	
+
 	kvi_time_t tNow = kvi_unixTime();
 
 	KviPointerList<QString> l;
@@ -197,21 +195,21 @@ void KviAvatarCache::cleanup()
 		}
 		++it;
 	}
-	
+
 	for(QString *s = l.first();s;s = l.next())m_pAvatarDict->remove(*s);
 
 	if(m_pAvatarDict->count() < CACHE_GUARD_LEVEL)return;
-	
+
 	// not done.. need to kill the last accessed :/
 
 	it.toFirst();
-	
+
 	KviPointerList<KviAvatarCacheEntry> ll;
 	ll.setAutoDelete(true);
 
 	// here we use the cache entries in another way
 	// szAvatar is the KEY instead of the avatar name
-	
+
 	while((e = it.current()))
 	{
 		KviAvatarCacheEntry * current = ll.first();
@@ -235,7 +233,7 @@ void KviAvatarCache::cleanup()
 		else ll.append(xx);
 		++it;
 	}
-	
+
 	// the oldest keys are at the beginning
 	int uRemove = ll.count() - CACHE_GUARD_LEVEL;
 	if(uRemove < 1)return; // huh ?

@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_useridentity.h"
 #include "kvi_locale.h"
@@ -83,7 +82,7 @@ void KviUserIdentity::copyFrom(const KviUserIdentity &src)
 {
 	m_szId = src.m_szId;
 	m_szNickName = src.m_szNickName;
-	
+
 	m_szAltNickName1 = src.m_szAltNickName1;
 	m_szAltNickName2 = src.m_szAltNickName2;
 	m_szAltNickName3 = src.m_szAltNickName3;
@@ -91,26 +90,26 @@ void KviUserIdentity::copyFrom(const KviUserIdentity &src)
 	m_szUserName = src.m_szUserName;
 	m_szRealName = src.m_szRealName;
 	m_szPassword = src.m_szPassword;
-	
+
 	m_pixAvatar = src.m_pixAvatar;
 
 	m_szUserName = src.m_szUserName;
 	m_szRealName = src.m_szRealName;
 	m_szPassword = src.m_szPassword;
-	
+
 	m_pixAvatar = src.m_pixAvatar;
-	
+
 	m_szPartMessage = src.m_szPartMessage;
 	m_szQuitMessage = src.m_szQuitMessage;
-	
+
 	m_szAge = src.m_szAge;
 	m_szGender = src.m_szGender;
 	m_szLocation = src.m_szLocation;
 	m_szLanguages = src.m_szLanguages;
 	m_szOtherInfo = src.m_szOtherInfo;
-	
+
 	m_szUserMode = src.m_szUserMode;
-	
+
 	m_szOnConnectCommand = src.m_szOnConnectCommand;
 	m_szOnLoginCommand = src.m_szOnLoginCommand;
 }
@@ -173,9 +172,9 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 	ret->setRealName(KVI_DEFAULT_REALNAME);
 	ret->setPartMessage(KVI_DEFAULT_PART_MESSAGE);
 	ret->setQuitMessage(KVI_DEFAULT_QUIT_MESSAGE);
-	
+
 	m_pIdentityDict->replace(ret->id(),ret);
-	
+
 	return ret;
 }
 
@@ -186,7 +185,7 @@ void KviUserIdentityManager::load(const QString &szFileName)
 	KviConfig cfg(szFileName,KviConfig::Read);
 
 	cfg.setGroup("KVIrc");
-	
+
 	m_szDefaultIdentity = cfg.readQStringEntry("DefaultIdentity","");
 
 	KviConfigIterator it(*(cfg.dict()));
@@ -210,11 +209,11 @@ void KviUserIdentityManager::save(const QString &szFileName)
 {
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
-	
+
 	cfg.setGroup("KVIrc");
 
 	cfg.writeEntry("DefaultIdentity",m_szDefaultIdentity);
-	
+
 	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
 	while(KviUserIdentity * id = it.current())
 	{

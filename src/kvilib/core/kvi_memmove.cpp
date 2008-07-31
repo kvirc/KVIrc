@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
@@ -33,7 +32,7 @@
 // FIXME: #warning "With system memmove could be guessed by configure"
 
 #ifndef COMPILE_WITH_SYSTEM_MEMMOVE
-	
+
 	#ifdef COMPILE_ix86_ASM
 
 
@@ -97,7 +96,7 @@
 			asm("	popl %esi");                      // restore %esi
 			return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
 		}
-	
+
 		void *kvi_memmoveodd(void * dst_ptr,const void *src_ptr,int len)
 		{
 			__range_valid(dst_ptr);
@@ -149,14 +148,14 @@
 		}
 
 	#else // ndef COMPILE_ix86_ASM
-	
+
 
 
 		// The next 4 functions could be optimized with the & and shift technique
 		// used in the assembly implementations but the compilers usually
 		// will not translate the carry bit trick producing code
 		// that works slower on short block of memory (really near the average case)
-	
+
 		// The trick would be:
 		//
 		//    if(len & 1) // the length is even
@@ -168,7 +167,7 @@
 		//    while(len--)*((int *)dst)-- = *((int *)src)--; // move four bytes at a time
 		//
 		//
-	
+
 		void *kvi_memmove(void *dst_ptr,const void *src_ptr,int len)
 		{
 			__range_valid(dst_ptr);
@@ -180,14 +179,14 @@
 				dst = (char *)dst_ptr + len - 1;
 				src = (const char *)src_ptr + len - 1;
 				while(len--)*dst-- = *src--;
-			} else { //it is valid even if dst_ptr == src_ptr 
+			} else { //it is valid even if dst_ptr == src_ptr
 				dst = (char *)dst_ptr;
 				src = (const char *)src_ptr;
 				while(len--)*dst++ = *src++;
 			}
 			return dst_ptr;
 		}
-	
+
 		void *kvi_memmoveodd(void *dst_ptr,const void *src_ptr,int len)
 		{
 			__range_valid(dst_ptr);
@@ -204,7 +203,7 @@
 					*dst-- = *src--;
 					len -= 2;
 				}
-			} else { //it is valid even if dst_ptr == src_ptr 
+			} else { //it is valid even if dst_ptr == src_ptr
 				dst = (short *)dst_ptr;
 				src = (const short *)src_ptr;
 				while(len > 0)
@@ -215,7 +214,7 @@
 			}
 			return dst_ptr;
 		}
-		
+
 		void kvi_fastmove(void *dst_ptr,const void *src_ptr,int len)
 		{
 			__range_valid(dst_ptr);
@@ -225,7 +224,7 @@
 			register char *dst = (char *)dst_ptr;
 			while(len--)*dst++ = *src++;
 		}
-	
+
 		void kvi_fastmoveodd(void *dst_ptr,const void *src_ptr,int len)
 		{
 			__range_valid(dst_ptr);
@@ -241,7 +240,7 @@
 		}
 
 	#endif // !COMPILE_ix86_ASM
-	
+
 	void kvi_memset(void *dst_ptr,char c,int len)
 	{
 		__range_valid(dst_ptr);

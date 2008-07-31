@@ -28,8 +28,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
-
 
 #include "kvi_qstring.h"
 #include "kvi_string.h"
@@ -59,9 +57,9 @@ namespace KviQString
 		unsigned int lmin = MY_MIN(sz1.length(),sz2.length());
 		if(lmin < len)return false;
 		const QChar * c1e = c1 + len;
-		
+
 		if(!c1 || !c2)return (c1 == c2);
-		
+
 		while(c1 < c1e)
 		{
 			if(c1->unicode() != c2->unicode())return false;
@@ -180,9 +178,9 @@ namespace KviQString
 		const QChar * c1 = sz1.unicode();
 		const QChar * c2 = sz2.unicode();
 		const QChar * c1e = c1 + sz1.length();
-		
+
 		if(!c1 || !c2)return (c1 == c2);
-		
+
 		while(c1 < c1e)
 		{
 			if(c1->unicode() != c2->unicode())return false;
@@ -434,14 +432,14 @@ namespace KviQString
 		//sz.resize(sz.length()); // detach!
 		return sz.constData();
 	}
-	
+
 	void appendNumber(QString &s,double dReal)
 	{
 		char buffer[512];
 		::sprintf(buffer,"%f",dReal);
 		s.append(buffer);
 	}
-	
+
 	void appendNumber(QString &s,int iInteger)
 	{
 		char buffer[64];
@@ -455,14 +453,14 @@ namespace KviQString
 		::sprintf(buffer,"%ld",iInteger);
 		s.append(buffer);
 	}
-	
+
 	void appendNumber(QString &s,kvi_u64_t uInteger)
 	{
 		char buffer[64];
 		::sprintf(buffer,"%lu",uInteger);
 		s.append(buffer);
 	}
-	
+
 	void appendNumber(QString &s,unsigned int uInteger)
 	{
 		char buffer[64];
@@ -492,7 +490,7 @@ namespace KviQString
 		char *argString;
 		long argValue;
 		unsigned long argUValue;
-	
+
 		//9999999999999999999999999999999\0
 		char numberBuffer[32]; //enough ? 10 is enough for 32bit unsigned int...
 		char *pNumBuf;
@@ -716,17 +714,17 @@ namespace KviQString
 	bool matchWildExpressionsCI(const QString &szM1,const QString &szM2)
 	{
 		//Matches two regular expressions containging wildcards (* and ?)
-	
+
 		//          s1
 		//          m1
 		// mask1 : *xor
 		// mask2 : xorand*xor
 		//         m2
 		//          s2
-	
+
 		//                        s2
 		//                       m2
-		//                       | 
+		//                       |
 		// XorT!xor@111.111.111.11
 		//
 		// *!*@*.net
@@ -869,7 +867,7 @@ namespace KviQString
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + 1);
 	}
-	
+
 	void cutToFirst(QString &s,const QChar &c,bool bIncluded,bool bClearIfNotFound)
 	{
 		int idx = s.indexOf(c);
@@ -880,7 +878,7 @@ namespace KviQString
 		}
 		s.remove(0,bIncluded ? idx + 1 : idx);
 	}
-	
+
 	void cutToLast(QString &s,const QChar &c,bool bIncluded,bool bClearIfNotFound)
 	{
 		int idx = s.lastIndexOf(c);
@@ -905,7 +903,7 @@ namespace KviQString
 		if(idx == -1)return;
 		s.truncate(bIncluded ? idx : idx + c.length());
 	}
-	
+
 	void cutToFirst(QString &s,const QString &c,bool bIncluded,bool bClearIfNotFound)
 	{
 		int idx = s.indexOf(c);
@@ -916,7 +914,7 @@ namespace KviQString
 		}
 		s.remove(0,bIncluded ? idx + c.length() : idx);
 	}
-	
+
 	void cutToLast(QString &s,const QString &c,bool bIncluded,bool bClearIfNotFound)
 	{
 		int idx = s.lastIndexOf(c);
@@ -953,7 +951,7 @@ namespace KviQString
 		kvi_free(buffer);
 		return ret;
 	}
-	
+
 	QString lowerISO88591(const QString &szSrc)
 	{
 		const QChar * c = nullTerminatedArray(szSrc);
@@ -997,9 +995,9 @@ namespace KviQString
 			i++;
 		}
 	}
-	
+
 	static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
-	
+
 	void bufferToHex(QString &szRetBuffer,const unsigned char * buffer,unsigned int len)
 	{
 		szRetBuffer.resize(len * 2);

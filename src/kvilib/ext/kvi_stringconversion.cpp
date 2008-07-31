@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #define _KVI_STRINGCONVERSION_CPP_
@@ -88,7 +87,7 @@ namespace KviStringConversion
 			}
 		}
 	}
-	
+
 	void encodePath(QStringList& buffer)
 	{
 		for ( QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it )
@@ -109,7 +108,7 @@ namespace KviStringConversion
 	{
 		buffer = bValue ? '1' : '0';
 	}
-	
+
 	bool fromString(const QString & szValue,bool &buffer)
 	{
 		if(szValue.isEmpty())buffer = false;
@@ -121,31 +120,31 @@ namespace KviStringConversion
 	{
 		buffer.setNum(iValue);
 	}
-	
+
 	bool fromString(const QString &szValue,int &buffer)
 	{
 		bool bOk;
 		buffer = szValue.toInt(&bOk);
 		return bOk;
 	}
-	
+
 	void toString(const unsigned int uValue,QString &buffer)
 	{
 		buffer.setNum(uValue);
 	}
-	
+
 	bool fromString(const QString & szValue,unsigned int &buffer)
 	{
 		bool bOk;
 		buffer= szValue.toUInt(&bOk);
 		return bOk;
 	}
-	
+
 	void toString(const QRect &rValue,QString &buffer)
 	{
 		buffer.sprintf("%d,%d,%d,%d",rValue.x(),rValue.y(),rValue.width(),rValue.height());
 	}
-	
+
 	bool fromString(const QString & szValue,QRect &buffer)
 	{
 		KviQCString tmp = KviQString::toUtf8(szValue);
@@ -156,24 +155,24 @@ namespace KviStringConversion
 		buffer.setRect(l,t,w,h);
 		return true;
 	}
-	
+
 	void toString(const QString &szValue,QString &buffer)
 	{
 		buffer = szValue;
 	}
-	
+
 	bool fromString(const QString & szValue,QString &buffer)
 	{
 		buffer = szValue;
 		return true;
 	}
-	
+
 	void toString(const KviPixmap &pValue,QString &buffer)
 	{
 		buffer=pValue.path();
 		encodePath(buffer);
 	}
-	
+
 	bool fromString(const QString & szValue,KviPixmap &buffer)
 	{
 		QString szPath(szValue);
@@ -185,12 +184,12 @@ namespace KviStringConversion
 			return buffer.load(szPath);
 		}
 	}
-	
+
 	void toString(const KviMsgType &mValue,QString &buffer)
 	{
 		buffer.sprintf("%d,%u,%u,%d,%d",mValue.m_iPixId,mValue.m_cForeColor,mValue.m_cBackColor,mValue.m_bLogEnabled,mValue.m_iLevel);
 	}
-	
+
 	bool fromString(const QString & szValue,KviMsgType &buffer)
 	{
 		int iId,iLog,iLevel;
@@ -202,17 +201,17 @@ namespace KviStringConversion
 		buffer = KviMsgType(buffer.m_szType,iId,uFore,uBack,iLog,iLevel);
 		return true;
 	}
-	
+
 	void toString(const QColor &cValue,QString &buffer)
 	{
 		buffer = cValue.name();
 	}
-	
+
 	bool fromString(const QString & szValue,QColor &buffer)
 	{
 		buffer.setNamedColor(szValue); return true;
 	}
-	
+
 	void toString(const QFont &fValue,QString &buffer)
 	{
 		QString family(fValue.family());
@@ -223,14 +222,14 @@ namespace KviStringConversion
 		if(fValue.underline())options.append('u');
 		if(fValue.strikeOut())options.append('s');
 		if(fValue.fixedPitch())options.append('f');
-	
+
 		if(!options.isEmpty())
 		{
 			buffer.append(',');
 			buffer.append(options);
 		}
 	}
-	
+
 	bool fromString(const QString & szValue,QFont &buffer)
 	{
 		KviStr str = szValue;
@@ -238,7 +237,7 @@ namespace KviStringConversion
 		str.getToken(family,',');
 		str.getToken(pointSize,',');
 		str.getToken(styleHint,',');
-		str.getToken(weight,','); 
+		str.getToken(weight,',');
 		if(!family.isEmpty())buffer.setFamily(family.ptr());
 		int i;
 		bool bOk;
@@ -258,12 +257,12 @@ namespace KviStringConversion
 		}
 		return true;
 	}
-	
+
 	void toString(const QStringList &sValue,QString &buffer)
 	{
 		buffer = sValue.join(",");
 	}
-	
+
 	bool fromString(const QString & szValue,QStringList &buffer)
 	{
 		buffer = szValue.split(",");

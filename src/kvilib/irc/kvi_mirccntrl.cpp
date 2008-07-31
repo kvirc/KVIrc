@@ -20,7 +20,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#define __KVILIB__
 
 #define _KVI_MIRCCNTRL_CPP_
 
@@ -254,7 +253,7 @@ namespace KviMircCntrl
 	QString stripControlBytes(const QString &szData)
 	{
 		QString ret;
-		
+
 		int i = 0;
 		int l = szData.length();
 		int begin = 0;

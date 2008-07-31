@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_tal_listview.h"
 #include "kvi_pointerhashtable.h"
@@ -392,7 +391,7 @@ void KviTalCheckListItem::setState(ToggleState s, bool update, bool store)
 						parent() && parent()->rtti() == 1 &&
 						((KviTalCheckListItem*)parent())->type() == CheckBoxController)
 					((KviTalCheckListItem*)parent())->updateController(update, store);
-		
+
 					updateController(update, store);
 				} else {
 					// if there are no children we simply set the CheckBoxController and update its parent
@@ -736,7 +735,7 @@ void KviTalCheckListItem::paintCell(QPainter * p, const QColorGroup & cg, int co
 			y = ((height() - boxsize) / 2) + marg;
 		else
 			y = (fm.height() + 2 + marg - boxsize) / 2;
-	
+
 		QStyleOptionQ3ListView opt = getStyleOption(lv, this);
 		opt.rect.setRect(x, y, boxsize, fm.height() + 2 + marg);
 		opt.palette = cg;

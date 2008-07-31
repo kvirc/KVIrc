@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 //#define _KVI_DEBUG_CHECK_RANGE_
@@ -55,7 +54,7 @@ static QTextCodec                        * g_pUtf8TextCodec       = 0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-// The following code was extracted and adapted from gutf8.c 
+// The following code was extracted and adapted from gutf8.c
 // from the GNU GLIB2 package.
 //
 // gutf8.c - Operations on UTF-8 strings.
@@ -114,7 +113,7 @@ fast_validate (const char *str)
 		else
 		{
 			const gchar *last;
-		
+
 			last = p;
 			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
@@ -138,7 +137,7 @@ fast_validate (const char *str)
 					val = *(guchar *)p & 0x07;
 				}
 				else goto error;
-	
+
 				p++;
 				CONTINUATION_CHAR;
 				TWO_REMAINING:
@@ -146,19 +145,19 @@ fast_validate (const char *str)
 				CONTINUATION_CHAR;
 				p++;
 				CONTINUATION_CHAR;
-			
+
 				if (val < min) goto error;
-			
+
 				if (!UNICODE_VALID(val)) goto error;
 			}
-		
+
 			continue;
 
 			error:
 			return last;
 		}
 	}
-	
+
 	return p;
 }
 
@@ -176,13 +175,13 @@ fast_validate_len (const char *str, gssize max_len)
 		else
 		{
 			const gchar *last;
-		
+
 			last = p;
 			if ((*(guchar *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
 			if (max_len >= 0 && max_len - (p - str) < 2)
 				goto error;
-		
+
 			if ((*(guchar *)p & 0x1e) == 0)
 				goto error;
 			p++;
@@ -195,7 +194,7 @@ fast_validate_len (const char *str, gssize max_len)
 				{
 					if (max_len >= 0 && max_len - (p - str) < 3)
 					goto error;
-			
+
 					min = (1 << 11);
 					val = *(guchar *)p & 0x0f;
 					goto TWO_REMAINING;
@@ -204,13 +203,13 @@ fast_validate_len (const char *str, gssize max_len)
 				{
 					if (max_len >= 0 && max_len - (p - str) < 4)
 					goto error;
-			
+
 					min = (1 << 16);
 					val = *(guchar *)p & 0x07;
 				}
 				else
 					goto error;
-			
+
 				p++;
 				CONTINUATION_CHAR;
 				TWO_REMAINING:
@@ -218,18 +217,18 @@ fast_validate_len (const char *str, gssize max_len)
 				CONTINUATION_CHAR;
 				p++;
 				CONTINUATION_CHAR;
-			
+
 				if (val < min) goto error;
 				if (!UNICODE_VALID(val)) goto error;
 			}
-		
+
 			continue;
-		
+
 			error:
 			return last;
 		}
 	}
-	
+
 	return p;
 }
 
@@ -238,14 +237,14 @@ static bool g_utf8_validate (const char   *str,
                                 const gchar **end)
 {
 	const gchar *p;
-	
+
 	if (max_len < 0)
 		p = fast_validate (str);
 	else
 		p = fast_validate_len (str, max_len);
-	
+
 	if (end) *end = p;
-	
+
 	if ((max_len >= 0 && p != str + max_len) ||
 	(max_len < 0 && *p != '\0'))
 		return false;
@@ -315,7 +314,7 @@ static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict
 //
 //   The following code was extracted and adapted from gettext.h and gettextP.h
 //   from the GNU gettext package.
-//   
+//
 //   Internal header for GNU gettext internationalization functions.
 //   Copyright (C) 1995, 1997 Free Software Foundation, Inc.
 //
@@ -332,7 +331,7 @@ static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict
 //   You should have received a copy of the GNU Library General Public
 //   License along with the GNU C Library; see the file COPYING.LIB.  If not,
 //   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-//   Boston, MA 02111-1307, USA. 
+//   Boston, MA 02111-1307, USA.
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -711,44 +710,44 @@ namespace KviLocale
 		{ "UTF-8 [ISO-8859-2]"     , 1 , 1 , "I: 8-bit Unicode / Central European 1, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-3]"     , 1 , 1 , "I: 8-bit Unicode / Central European 2, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-4]"     , 1 , 1 , "I: 8-bit Unicode / Baltic, Standard, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [ISO-8859-5]"     , 1 , 1 , "I: 8-bit Unicode / Cyrillic, ISO, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-6]"     , 1 , 1 , "I: 8-bit Unicode / Arabic, Standard, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-7]"     , 1 , 1 , "I: 8-bit Unicode / Greek, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-8]"     , 1 , 1 , "I: 8-bit Unicode / Hebrew, visually ordered, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [ISO-8859-8-i]"   , 1 , 1 , "I: 8-bit Unicode / Hebrew, logically ordered, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-9]"     , 1 , 1 , "I: 8-bit Unicode / Turkish, Latin-5, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-15]"    , 1 , 1 , "I: 8-bit Unicode / Western, Latin-1 + Euro, O: 8-bit Unicode" },
 		{ "UTF-8 [KOI8-R]"         , 1 , 1 , "I: 8-bit Unicode / Cyrillic, KOI, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [KOI8-U]"         , 1 , 1 , "I: 8-bit Unicode / Ukrainian, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1250]"        , 1 , 1 , "I: 8-bit Unicode / Central European 3, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1251]"        , 1 , 1 , "I: 8-bit Unicode / Cyrillic, Windows, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1252]"        , 1 , 1 , "I: 8-bit Unicode / Western, CP, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [CP-1253]"        , 1 , 1 , "I: 8-bit Unicode / Greek, CP, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1256]"        , 1 , 1 , "I: 8-bit Unicode / Arabic, CP, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1257]"        , 1 , 1 , "I: 8-bit Unicode / Baltic, CP, O: 8-bit Unicode" },
 		{ "UTF-8 [CP-1255]"        , 1 , 1 , "I: 8-bit Unicode / Hebrew, CP, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [CP-1254]"        , 1 , 1 , "I: 8-bit Unicode / Turkish, CP, O: 8-bit Unicode" },
 		{ "UTF-8 [TIS-620]"        , 1 , 1 , "I: 8-bit Unicode / Thai, O: 8-bit Unicode" },
 #ifndef QT_NO_BIG_CODECS
 		{ "UTF-8 [Big5]"           , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, O: 8-bit Unicode" },
 		{ "UTF-8 [Big5-HKSCS]"     , 1 , 1 , "I: 8-bit Unicode / Chinese Traditional, Hong Kong, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [GB18030]"        , 1 , 1 , "I: 8-bit Unicode / Chinese Simplified, O: 8-bit Unicode" },
 		{ "UTF-8 [JIS7]"           , 1 , 1 , "I: 8-bit Unicode / Japanese (JIS7), O: 8-bit Unicode" },
 		{ "UTF-8 [Shift-JIS]"      , 1 , 1 , "I: 8-bit Unicode / Japanese (Shift-JIS), O: Japanese (Shift-JIS)" },
 		{ "UTF-8 [EUC-JP]"         , 1 , 1 , "I: 8-bit Unicode / Japanese (EUC-JP), O: Japanese (EUC-JP)" },
-		
+
 		{ "UTF-8 [EUC-KR]"         , 1 , 1 , "I: 8-bit Unicode / Korean, O: 8-bit Unicode" },
 		{ "UTF-8 [TSCII]"          , 1 , 1 , "I: 8-bit Unicode / Tamil, O: 8-bit Unicode" },
 #endif
 		{ "UTF-8 [ISO-8859-10]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-10, O: 8-bit Unicode" },
 		{ "UTF-8 [ISO-8859-13]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-13, O: 8-bit Unicode" },
-		
+
 		{ "UTF-8 [ISO-8859-14]"    , 1 , 1 , "I: 8-bit Unicode / ISO-8859-14, O: 8-bit Unicode" },
 		{ "UTF-8 [IBM-850]"        , 1 , 1 , "I: 8-bit Unicode / IBM-850, O: 8-bit Unicode" },
 		{ "UTF-8 [IBM-866]"        , 1 , 1 , "I: 8-bit Unicode / IBM-866, O: 8-bit Unicode" },
@@ -756,7 +755,7 @@ namespace KviLocale
 
 		{ 0                        , 0 , 0 , 0 }
 	};
-	
+
 	EncodingDescription * encodingDescription(int iIdx)
 	{
 		if(iIdx > NUM_ENCODINGS)return &(supported_encodings[NUM_ENCODINGS]);
@@ -772,8 +771,8 @@ namespace KviLocale
 			// composite codec: either UTF-8 [child codec] or child codec [UTF-8]
 			KviSmartTextCodec * c = g_pSmartCodecDict->find(szName);
 			if(c)return c;
-			
-			
+
+
 			if(kvi_strEqualCIN("UTF-8 [",szName,7))
 			{
 				szTmp.replaceAll("UTF-8 [","");

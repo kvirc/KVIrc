@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_sharedfiles.h"
@@ -227,7 +226,7 @@ void KviSharedFilesManager::addSharedFile(KviSharedFile * f)
 		l->setAutoDelete(true);
 		m_pSharedListDict->replace(f->name(),l);
 	}
-	
+
 	doInsert(l,f);
 
 	if(((int)f->expireTime()) > 0)
@@ -251,7 +250,7 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString &szName,const
 			l->setAutoDelete(true);
 			m_pSharedListDict->replace(szName,l);
 		}
-	
+
 		// Now insert
 		KviSharedFile * o = new KviSharedFile(szName,szAbsPath,szMask,timeoutInSecs > 0 ? (((int)(time(0))) + timeoutInSecs) : 0,inf.size());
 

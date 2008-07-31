@@ -28,7 +28,6 @@
 // kvi_malloc , kvi_free and kvi_realloc are macros (see kvi_malloc.h)
 //=============================================================================
 
-#define __KVILIB__
 
 #define _KVI_MALLOC_CPP_
 #include "kvi_malloc.h"

@@ -315,8 +315,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
 #define KviOption_boolPickRandomIpAddressForRoundRobinServers 222
 #define KviOption_boolPrependAvatarInfoToRealname 223
+#define KviOption_boolEnableAnimatedAvatars 224
 
-#define KVI_NUM_BOOL_OPTIONS 224
+#define KVI_NUM_BOOL_OPTIONS 225
 
 
 

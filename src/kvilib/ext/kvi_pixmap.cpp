@@ -23,7 +23,6 @@
 //=============================================================================
 
 
-#define __KVILIB__
 
 
 #include "kvi_debug.h"
@@ -108,7 +107,7 @@ void KviPixmap::set(const QPixmap &pix,const QString &szPath)
 		setNull();
 		return;
 	}
-	
+
 	if(m_pPix)delete m_pPix;
 	m_pPix = new QPixmap(pix);
 	m_szPath = szPath;
@@ -155,21 +154,21 @@ void KviPixmapUtils::drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,c
 	int iPixHeight=pix->height();
 	int x=0;
 	int y=0;
-	
+
 	if( !(flags & Qt::AlignHorizontal_Mask ))
 		x=-1;
 	else if ( flags & Qt::AlignRight )
 		x=iWidgetWidth - iPixWidth;
 	else if( flags & Qt::AlignHCenter )
 		x=(iWidgetWidth - iPixWidth)/2;
-	
+
 	if( !(flags & Qt::AlignVertical_Mask ))
 		y=-1;
 	else if ( flags & Qt::AlignBottom )
 		y=iWidgetHeight - iPixHeight;
 	else if( flags & Qt::AlignVCenter )
 		y=(iWidgetHeight - iPixHeight)/2;
-	
+
 	if(x==-1) {
 		p->drawTiledPixmap(paintRect.left(),y,paintRect.width(),iPixHeight,*pix,dx,dy);
 	} else if(y==-1) {

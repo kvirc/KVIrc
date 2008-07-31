@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #define _KVI_ERROR_CPP_
 
@@ -48,7 +47,7 @@
 
 const char * g_errorTable[KVI_NUM_ERRORS]=
 {
-	__tr_no_lookup("Success"),                                                  // 000: success 
+	__tr_no_lookup("Success"),                                                  // 000: success
 	__tr_no_lookup("Unknown error"),                                            // 001: unkonwnError
 	__tr_no_lookup("Internal error"),                                           // 002: internalError
 	__tr_no_lookup("Unknown command"),                                          // 003: unknownCommand
@@ -182,12 +181,12 @@ namespace KviError
 #endif
 		return g_errorTable[KviError_unknownError];
 	}
-	
+
 	QString getDescription(int iErrorCode)
 	{
 		return __tr2qs_no_xgettext(getUntranslatedDescription(iErrorCode));
 	}
-	
+
 	int translateSystemError(int iErrNo)
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -203,14 +202,14 @@ namespace KviError
 			case WSAENETUNREACH:   return KviError_networkUnreachable;         break;
 			case EPIPE:			   return KviError_brokenPipe;                 break;
 			case WSAENOTCONN:      return KviError_socketNotConnected;         break;
-	
+
 			case WSAEACCES:        return KviError_accessDenied;               break;
 			case WSAEADDRINUSE:    return KviError_addressAlreadyInUse;        break;
 			case WSAEADDRNOTAVAIL: return KviError_cantAssignRequestedAddress; break;
 			case WSAEAFNOSUPPORT:  return KviError_unsupportedAddressFamily;   break;
 			case WSAECONNRESET:    return KviError_connectionResetByPeer;      break;
 			case WSAEHOSTUNREACH:  return KviError_hostUnreachable;            break;
-	
+
 			//case ENOBUFS:      return KviError_insufficientResources; break;
 			// Unhandled error...pass errno to the strerror function
 			default:              return -iErrNo;                              break;

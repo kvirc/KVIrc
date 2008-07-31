@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_heapobject.h"
@@ -65,7 +64,7 @@
 	{
 		return kvi_malloc(uSize);
 	}
-	
+
 	void KviHeapObject::operator delete(void * pData)
 	{
 		kvi_free(pData);
@@ -75,7 +74,7 @@
 	{
 		return kvi_malloc(uSize);
 	}
-	
+
 	void KviHeapObject::operator delete[](void * pData)
 	{
 		kvi_free(pData);
@@ -86,7 +85,7 @@
 	{
 		return kvi_malloc(uSize);
 	}
-	
+
 	void KviHeapObject::operator delete(void * pData,const char *,int)
 	{
 		kvi_free(pData);

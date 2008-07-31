@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_settings.h"
 
@@ -54,7 +53,7 @@
 		extern void *kvi_memmoveodd(void *dst_ptr,const void *src_ptr,int len);
 		extern void *kvi_memset(void *dst_ptr,char c,int len);
 		// In fastmove the src and dst may not overlap
-	
+
 		#ifdef COMPILE_ix86_ASM
 
 			// WE WANT repnz; movsq\n"!!!

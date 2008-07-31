@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #ifndef _GNU_SOURCE
@@ -88,17 +87,17 @@ static void kvi_threadIgnoreSigalarm()
 			struct sigaction ignr_act;
 			ignr_act.sa_handler = SIG_IGN;
 			sigemptyset(&ignr_act.sa_mask);
-		
+
 		#ifdef SA_NOMASK
 			ignr_act.sa_flags   = SA_NOMASK;
 		#else
 			ignr_act.sa_flags   = 0;
 		#endif
-		
+
 		#ifdef SA_RESTART
 			ignr_act.sa_flags  |= SA_RESTART;
 		#endif
-		
+
 			if(sigaction(SIGALRM,&ignr_act,0) == -1)debug("Failed to set SIG_IGN for SIGALRM.");
 	#endif
 #endif
@@ -133,7 +132,7 @@ static void kvi_threadCatchSigpipe()
 	act.sa_flags  |= SA_RESTART;
 #endif
 
-	if(sigaction(SIGPIPE,&act,0L) == -1)debug("Failed to set the handler for SIGPIPE."); 
+	if(sigaction(SIGPIPE,&act,0L) == -1)debug("Failed to set the handler for SIGPIPE.");
 #endif
 }
 

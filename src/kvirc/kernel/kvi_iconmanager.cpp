@@ -481,11 +481,11 @@ KviIconManager::KviIconManager()
 
 	g_pApp->findImage(buffer,KVI_ACTIVITYMETER_IMAGE_NAME);
 	g_pActivityMeterPixmap = new QPixmap(buffer.ptr());
-	
+
 	m_pIconNames = 0;
-	
+
 	// TEMP
-	
+
 	/*
 	for(i=0;i<KVI_NUM_SMALL_ICONS;i++)
 	{
@@ -532,7 +532,7 @@ int KviIconManager::getSmallIconIdFromName(const QString &szName)
 	{
 		m_pIconNames = new KviPointerHashTable<QString,int>(257,false);
 		m_pIconNames->setAutoDelete(true);
-		
+
 		for(int i=0;i<KVI_NUM_SMALL_ICONS;i++)
 		{
 			int * pInt = new int;
@@ -666,7 +666,7 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString &s
 				scaleH = iMaxHeight;
 				scaleW = (scaleH * pix->width()) / pix->height();
 			}
-	
+
 			QImage img = pix->toImage();
 			*pix = QPixmap::fromImage(img.scaled(scaleW,scaleH,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
 		}
@@ -787,7 +787,7 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 			urlToCachedFileName(szP);
 		} else {
 			szN = KviFileUtils::extractFileName(szName);
-			szP = szName;
+			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szName);
 		}
 	} else if(szName.isEmpty())
 	{
@@ -800,12 +800,30 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 	}
 
 	// avatars bigger than 1024x768 just sux: they can't be seen on tooltips anyway
-	KviCachedPixmap * p = KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad) ? getPixmapWithCacheScaleOnLoad(szP,
-		KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth)
-		,KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)) : getPixmapWithCache(szP);
-	if(!p)return 0;
+	//KviCachedPixmap * p = KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad) ? getPixmapWithCacheScaleOnLoad(szP,
+	//	KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth)
+	//	,KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)) : getPixmapWithCache(szP);
+	//if(!p)return 0;
 
-	return new KviAvatar(p->path(),szN,new QPixmap(*(p->pixmap())));
+
+
+	if(KviFileUtils::fileExists(szP))
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad))
+		{
+			return new KviAvatar(szP,szN,
+						QSize(
+							KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth),
+							KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)
+						)
+					);
+		} else {
+			return new KviAvatar(szP,szN);
+		}
+	} else {
+		return 0;
+	}
+
 }
 
 void KviIconManager::clearCache()
@@ -828,11 +846,11 @@ QPixmap * KviIconManager::loadSmallIcon(int idx)
 {
 	if(idx >= KVI_NUM_SMALL_ICONS)return 0;
 	if(idx < 0)return 0;
-	
+
 	QString szPath;
 	QString buffer;
 	KviQString::sprintf(szPath,KVI_SMALLICONS_PREFIX "%s.png",g_szIconNames[idx]);
-	
+
 	g_pApp->findSmallIcon(buffer,szPath);
 	m_smallIcons[idx] = new QPixmap(buffer);
 
@@ -855,7 +873,7 @@ void KviIconManager::cacheCleanup()
 	while(it.current())
 	{
 		kvi_time_t curTime = kvi_unixTime();
-		
+
 		if((((unsigned int)it.current()->timestamp) - ((unsigned int)curTime)) > 120)
 		{
 			// unused since 2 minutes

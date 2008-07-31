@@ -22,7 +22,6 @@
 
 #define _KVI_SOCKET_CPP_
 
-#define __KVILIB__
 
 #include "kvi_socket.h"
 #include "kvi_inttypes.h"

@@ -23,8 +23,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
-
 #include "kvi_buildinfo.h"
 #include "kvi_sourcesdate.h"
 

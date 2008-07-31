@@ -28,28 +28,96 @@
 #include "kvi_heapobject.h"
 #include "kvi_settings.h"
 
+#include "kvi_animatedpixmap.h"
+
 #include <QPixmap>
+#include <QHash>
+
+inline uint qHash(const QSize& s) { return uint(s.width() | s.height()); }
 
 class KVILIB_API KviAvatar : public KviHeapObject
 {
 public:
-	KviAvatar(const QString &szLocalPath,const QString &szName,QPixmap * pix);
+	KviAvatar(const QString &szLocalPath,
+			const QString &szName,
+			const QSize& scaleOnLoad = QSize());
 	~KviAvatar();
+
 private:
-	QString      m_szLocalPath;
-	QString      m_szName;
-	bool         m_bRemote;
+	QString                             m_szLocalPath;
+	QString                             m_szName;
+	bool                                m_bRemote;
 
-	QPixmap    * m_pPixmap;
-	QPixmap    * m_pScaledPixmap;
+	KviAnimatedPixmap                 * m_pPixmap;
+	QHash<QSize,KviAnimatedPixmap*>     m_scaledPixmapsCache;
+
 public:
-	QPixmap * pixmap(){ return m_pPixmap; };
-	QPixmap * scaledPixmap(unsigned int w,unsigned int h);
 
-	bool isRemote(){ return m_bRemote; };
+	/*
+	 * Returns true, if avatar is remote.
+	 */
+	inline bool isRemote() {
+		return m_bRemote;
+	}
 
-	const QString &localPath(){ return m_szLocalPath; };
-	const QString &name(){ return m_szName; };
+	/*
+	 * Returns filepath
+	 */
+	inline const QString &localPath() {
+		return m_szLocalPath;
+	}
+
+	/*
+	 * Returns fiename. For remote avatars, remote address will be returned.
+	 */
+	inline const QString &name() {
+		return m_szName;
+	}
+
+	/*
+	 * Returns true, if underlying pixmap contains more, then one frame.
+	 */
+	inline bool isAnimated() {
+		return (m_pPixmap->framesCount() > 1);
+	}
+
+	/*
+	 * Returns original pixmap's size
+	 */
+	inline const QSize& size() {
+		return m_pPixmap->size();
+	}
+
+	/*
+	 * Returns unscaled original frame.
+	 */
+	inline QPixmap* pixmap() {
+		return m_pPixmap->pixmap();
+	}
+
+	/*
+	 * Returns original animated pixmap.
+	 */
+	inline KviAnimatedPixmap * animatedPixmap() {
+		return m_pPixmap;
+	}
+
+	/*
+	 * Returns animated pixmap, scaled to the requisted size.
+	 * Scaling automagically keeps aspect ratio.
+	 * Scaled image cached.
+	 *
+	 * KviAvatar takes ownership on it, and will automatically delete it
+	 * in destructor.
+	 *
+	 * It is safe to connect returned KviAnimatedPixmap signals to external
+	 * slots.
+	 */
+
+	KviAnimatedPixmap * forSize(const QSize& size);
+	inline KviAnimatedPixmap * forSize(unsigned int w, unsigned int h) {
+		return forSize(QSize(w,h));
+	}
 
 	// string that uniquely identifies this avatar
 	// for remote avatars that have name starting with http://

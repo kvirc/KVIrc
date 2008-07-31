@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_itemdelegates.h"
 #include <QListWidget>
 #include <QPainter>
@@ -66,7 +65,7 @@ void KviTalIconAndRichTextItemDelegate::paint( QPainter * painter, const QStyleO
 	painter->translate(option.rect.x()+afterIcon,option.rect.y()+LVI_BORDER);
 	doc.setTextWidth(option.rect.width()-10);
 	QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-afterIcon,option.rect.height()-(LVI_BORDER*2)-4));
-	doc.drawContents(painter, cliprect);	
+	doc.drawContents(painter, cliprect);
 	painter->restore();
 }
 
@@ -77,7 +76,7 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint( const QStyleOptionViewItem & 
 	doc.setHtml( text );
 	int height=doc.documentLayout()->documentSize().height();
 	if (height<(LVI_ICON_SIZE+(2 * LVI_BORDER))) height=LVI_ICON_SIZE;
-	return QSize(((QListWidget*)parent())->viewport()->size().width(), height + (2 * LVI_BORDER));		
+	return QSize(((QListWidget*)parent())->viewport()->size().width(), height + (2 * LVI_BORDER));
 }
 
 

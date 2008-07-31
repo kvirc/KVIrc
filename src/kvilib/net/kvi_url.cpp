@@ -21,7 +21,6 @@
 //
 
 
-#define __KVILIB__
 
 
 #include "kvi_url.h"
@@ -49,7 +48,7 @@ KviUrl::KviUrl(const QString &szUrl)
 
 KviUrl::~KviUrl()
 {
-	
+
 }
 
 void KviUrl::parse()
@@ -65,7 +64,7 @@ void KviUrl::parse()
 	KviStr u = m_szUrl;
 
 	// proto
-	
+
 	kvi_u32_t uDefaultPort = 80;
 
 	int i = u.findFirstIdx(":/");
@@ -76,7 +75,7 @@ void KviUrl::parse()
 		u.cutLeft(i + 2);
 		u.stripLeft('/');
 		u.trimmed();
-		
+
 		// fix the default ports
 		if(kvi_strEqualCI(m_szProtocol,"https"))uDefaultPort = 443;
 		else if(kvi_strEqualCI(m_szProtocol,"ftp"))uDefaultPort = 21;
@@ -85,7 +84,7 @@ void KviUrl::parse()
 		u.stripLeft('/');
 		m_szProtocol = "http";
 	}
-	
+
 	m_uPort = uDefaultPort;
 
 	// user and pass

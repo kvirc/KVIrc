@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_popupmenu.h"
 
 #include <QMenu>
@@ -84,10 +83,10 @@ int KviTalPopupMenu::insertItem(const QString &szText,const QObject * pReceiver,
 	// create a compatible slot
 	signalMapper[action] = new QSignalMapper();
 	signalMapper[action]->setMapping(action, identifier);
-	
+
 	connect(action, SIGNAL(triggered()), signalMapper[action], SLOT(map()));
 	connect(signalMapper[action], SIGNAL(mapped(int)), pReceiver, szSlot);
-	
+
 	actionsDict[identifier++]=action;
 	return identifier-1;
 }
@@ -95,14 +94,14 @@ int KviTalPopupMenu::insertItem(const QString &szText,const QObject * pReceiver,
 int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const QObject * pReceiver,const char * szSlot)
 {
 	QAction * action = addAction(pix, szText);
-	
+
 	// create a compatible slot
 	signalMapper[action] = new QSignalMapper();
 	signalMapper[action]->setMapping(action, identifier);
-	
+
 	connect(action, SIGNAL(triggered()), signalMapper[action], SLOT(map()));
 	connect(signalMapper[action], SIGNAL(mapped(int)), pReceiver, szSlot);
-	
+
 	actionsDict.insert(identifier, action);
 	actionsDict[identifier++] = action;
 	return identifier-1;
@@ -143,14 +142,14 @@ void KviTalPopupMenu::setItemChecked(int id,bool check)
 void KviTalPopupMenu::setItemParameter(int id, int param)
 {
 	QAction * action = actionsDict.value(id);
-	
+
 	// take care of the slot
 	if (signalMapper[action])
 	{
 		signalMapper[action]->removeMappings(action);
 		signalMapper[action]->setMapping(action, param);
 	}
-	
+
 	QVariant par(param);
 	if (action) action->setData(par);
 }
@@ -192,11 +191,11 @@ int KviTalPopupMenu::insertSeparator()
 void KviTalPopupMenu::slottriggered(QAction * a)
 {
 	if (signalMapper[a]) return; // When signalmapper is used we don't need this event
-	
+
 	int i = actionsDict.key(a, -1); // See if action exists and get ID
 	if (i != -1)
 	{
-		emit activated(i);	
+		emit activated(i);
 	}
 
 	return;

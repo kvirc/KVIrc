@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_widgetstack.h"
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

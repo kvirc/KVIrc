@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_pointerlist.h"
@@ -126,7 +125,7 @@ public:
 		}
 		return NULL;
 	}
-	
+
 	int reindexPages()
 	{
 		int iEnabledCount = 0;
@@ -240,7 +239,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 			this,
 			SLOT(finishButtonClicked())
 		);
-		
+
 	m_p->pLayout->setMargin(8);
 	m_p->pLayout->setSpacing(4);
 	m_p->pLayout->setRowStretch(2,1);
@@ -354,7 +353,7 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 				(clrWin.green() + clrTxt.green()) / 2,
 				(clrWin.blue() + clrTxt.blue()) / 2
 			);
-		
+
 		szSteps = "<nobr><font color=\"";
 		szSteps += clrMid.name();
 		szSteps += "\"><b>[";
@@ -527,7 +526,7 @@ QPushButton * KviTalWizard::backButton()
 	return m_p->pBackButton;
 }
 
-#ifdef COMPILE_ON_WINDOWS 
+#ifdef COMPILE_ON_WINDOWS
 	#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 		#include "kvi_tal_wizard.moc"
 	#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

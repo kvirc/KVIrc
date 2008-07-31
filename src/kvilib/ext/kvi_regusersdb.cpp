@@ -23,7 +23,6 @@
 //=================================================================================================
 
 
-#define __KVILIB__
 #define _KVI_REGUSERDB_CPP_
 
 #include "kvi_debug.h"
@@ -309,7 +308,7 @@ KviRegisteredUserDataBase::KviRegisteredUserDataBase()
 
 	m_pMaskDict = new KviPointerHashTable<QString,KviRegisteredMaskList>(49,false); // copy keys here!
 	m_pMaskDict->setAutoDelete(true);
-	
+
 	m_pGroupDict = new  KviPointerHashTable<QString,KviRegisteredUserGroup>(5,false); // copy keys here!
 	m_pGroupDict->setAutoDelete(true);
 }
@@ -468,11 +467,11 @@ void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
 		u->setGroup(theCur->group());
 		++it;
 	}
-	
+
 	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*db->m_pGroupDict);
 	while(git.current())
 	{
-		addGroup(git.currentKey());	
+		addGroup(git.currentKey());
 		++git;
 	}
 }
@@ -632,7 +631,7 @@ KviRegisteredMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMask &m
 }
 /*
 bool KviRegisteredUserDataBase::isIgnoredUser(const QString & nick,const QString & user,const QString & host)
-{ 
+{
 	KviRegisteredUser * u = findMatchingUser(nick,user,host);
 	if(u)return u->getBoolProperty("IGNORE");
 	else return false;
@@ -654,7 +653,7 @@ void KviRegisteredUserDataBase::load(const QString & filename)
 			addGroup(szCurrent);
 		} else {
 			KviRegisteredUser * u = addUser(szCurrent);
-			
+
 			if(u)
 			{
 				u->setIgnoreEnabled(cfg.readBoolEntry("IgnoreEnabled",false));
@@ -724,7 +723,7 @@ void KviRegisteredUserDataBase::save(const QString & filename)
 		cfg.writeEntry("Group",it.current()->group());
 		++it;
 	}
-	
+
 	KviPointerHashTableIterator<QString,KviRegisteredUserGroup> git(*m_pGroupDict);
 	QString szTmp;
 	while(git.current())

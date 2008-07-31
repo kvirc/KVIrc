@@ -38,6 +38,7 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_wizard.h
+	ext/kvi_animatedpixmap.h
 )
 
 IF(COMPILE_KDE_SUPPORT)
@@ -80,6 +81,8 @@ SET(kvilib_SRCS
 	ext/kvi_msgtype.cpp
 	ext/kvi_osinfo.cpp
 	ext/kvi_pixmap.cpp
+	ext/kvi_animatedpixmap.cpp
+	ext/kvi_animatedpixmapcache.cpp
 	ext/kvi_proxydb.cpp
 	ext/kvi_regchan.cpp
 	ext/kvi_regusersdb.cpp

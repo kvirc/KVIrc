@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_tabdialog.h"
 
 #include <QDialog>

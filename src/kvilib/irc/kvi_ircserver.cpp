@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_ircserver.h"
 #include "kvi_malloc.h"

@@ -21,7 +21,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-#define __KVILIB__
 
 #define _KVI_ENV_CPP_
 

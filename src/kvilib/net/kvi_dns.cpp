@@ -21,7 +21,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-#define __KVILIB__
 
 #include "kvi_dns.h"
 #include "kvi_error.h"
@@ -101,7 +100,7 @@ int KviDnsThread::translateDnsError(int iErr)
 
 	switch(iErr)
 	{
-		case EAI_FAMILY:     return KviError_unsupportedAddressFamily; break; 
+		case EAI_FAMILY:     return KviError_unsupportedAddressFamily; break;
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
 		case EAI_ADDRFAMILY: return KviError_unsupportedAddressFamily; break;
 #endif
@@ -217,7 +216,7 @@ void KviDnsThread::run()
 	}
 
 
-#else 
+#else
 
 	int retVal;
 
@@ -269,7 +268,7 @@ void KviDnsThread::run()
 			dns->appendHostname(retname);
 			dns->appendAddress(m_szQuery);
 		}
-			
+
 	} else {
 //#endif //HAVE_GETNAMEINFO
 

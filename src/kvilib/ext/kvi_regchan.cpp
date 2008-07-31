@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_regchan.h"
 #include "kvi_config.h"
@@ -107,7 +106,7 @@ KviRegisteredChannel * KviRegisteredChannelDataBase::find(const char * name,cons
 	{
 		if(kvi_matchString(c->netMask().ptr(),net))return c;
 	}
-	
+
 	return 0;
 }
 

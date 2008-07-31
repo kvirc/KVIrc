@@ -20,43 +20,42 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#define __KVILIB__
 
 
 
 /*
    ######################################################################
-   
+
    MD5Sum - MD5 Message Digest Algorithm.
 
-   This code implements the MD5 message-digest algorithm. The algorithm is 
-   due to Ron Rivest.  This code was written by Colin Plumb in 1993, no 
-   copyright is claimed. This code is in the public domain; do with it what 
+   This code implements the MD5 message-digest algorithm. The algorithm is
+   due to Ron Rivest.  This code was written by Colin Plumb in 1993, no
+   copyright is claimed. This code is in the public domain; do with it what
    you wish.
- 
-   Equivalent code is available from RSA Data Security, Inc. This code has 
-   been tested against that, and is equivalent, except that you don't need to 
+
+   Equivalent code is available from RSA Data Security, Inc. This code has
+   been tested against that, and is equivalent, except that you don't need to
    include two pages of legalese with every copy.
 
    To compute the message digest of a chunk of bytes, instantiate the class,
-   and repeatedly call one of the Add() members. When finished the Result 
+   and repeatedly call one of the Add() members. When finished the Result
    method will return the Hash and finalize the value.
-   
+
    Changed so as no longer to depend on Colin Plumb's `usual.h' header
    definitions; now uses stuff from dpkg's config.h.
     - Ian Jackson <ijackson@nyx.cs.du.edu>.
-   
+
    Changed into a C++ interface and made work with APT's config.h.
     - Jason Gunthorpe <jgg@gpu.srv.ualberta.ca>
 
    Interface adapted to the KVIrc irc client
     - Szymon Stefanek <pragma at kvirc dot net>
-   
+
    The classes use arrays of char that are a specific size. We cast those
    arrays to uint8_t's and go from there. This allows us to advoid using
    the uncommon inttypes.h in a public header or internally newing memory.
    In theory if C9x becomes nicely accepted
-   
+
    ##################################################################### */
 
 #include "kvi_md5.h"
@@ -69,7 +68,7 @@
 	static void byteSwap(kvi_u32_t *buf,unsigned int words)
 	{
 //	   kvi_u8_t *p = (kvi_u8_t *)buf;
-//	   do 
+//	   do
 //	   {
 //	      *buf++ = (kvi_u32_t)((unsigned)p[3] << 8 | p[2]) << 16 | ((unsigned)p[1] << 8 | p[0]);
 //	      p += 4;
@@ -212,11 +211,11 @@ bool KviMd5::add(const unsigned char *data,unsigned long len)
 	// Update byte count and carry (this could be done with a long long?)
 	kvi_u32_t t = bytes[0];
 
-	if ((bytes[0] = t + len) < t)bytes[1]++;	
+	if ((bytes[0] = t + len) < t)bytes[1]++;
 
 	// Space available (at least 1)
-	t = 64 - (t & 0x3f);	
-	if (t > len) 
+	t = 64 - (t & 0x3f);
+	if (t > len)
 	{
 		kvi_fastmove((unsigned char *)in + 64 - t,data,len);
 		return true;
@@ -260,7 +259,7 @@ KviStr KviMd5::result()
 	if(!m_bDone)
 	{
 		// Number of bytes in In
-		int count = bytes[0] & 0x3f;	
+		int count = bytes[0] & 0x3f;
 		unsigned char *p = (unsigned char *)in + count;
 
 		// Set the first char of padding to 0x80.  There is always room.
@@ -269,8 +268,8 @@ KviStr KviMd5::result()
 		// Bytes of padding needed to make 56 bytes (-8..55)
 		count = 56 - 1 - count;
 
-		// Padding forces an extra block 
-		if (count < 0) 
+		// Padding forces an extra block
+		if (count < 0)
 		{
 			kvi_memset(p,0,count + 8);
 			byteSwap(in, 16);

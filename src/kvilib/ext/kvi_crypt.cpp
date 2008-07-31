@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_crypt.h"
 #include "kvi_locale.h"
@@ -212,7 +211,7 @@
 	{
 		KviPointerList<QString> lEnginesToRemove;
 		lEnginesToRemove.setAutoDelete(true);
-		
+
 		for(KviPointerHashTableEntry<QString,KviCryptEngineDescription> * e = m_pEngineDict->firstEntry();e;e = m_pEngineDict->nextEntry())
 		{
 			if(e->data()->providerHandle == providerHandle)

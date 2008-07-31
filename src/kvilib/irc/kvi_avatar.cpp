@@ -21,14 +21,12 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-#define __KVILIB__
-
 
 #include "kvi_avatar.h"
 #include "kvi_qstring.h"
 
 #include <QImage>
-
+#include <QImageReader>
 
 /*
 	@doc: ctcp_avatar
@@ -95,44 +93,51 @@
 		The "preferred" image size may grow with time, as the network transmission speed grows.
 */
 
-KviAvatar::KviAvatar(const QString &szLocalPath,const QString &szName,QPixmap * pix)
+KviAvatar::KviAvatar(
+		const QString &szLocalPath,
+		const QString &szName,
+		const QSize& scaleOnLoad)
 {
-	m_pScaledPixmap = 0;
-	m_pPixmap = pix ? pix : new QPixmap(32,32);
 	m_bRemote = KviQString::equalCIN("http://",szName,7);
 
 	m_szLocalPath = szLocalPath;
 	m_szName = szName;
+
+	m_pPixmap = new KviAnimatedPixmap(szLocalPath);
+
+	if(scaleOnLoad.isValid() && (
+				scaleOnLoad.height() < size().height() ||
+				scaleOnLoad.width() < size().width()
+				)
+			)
+	{
+		m_pPixmap->resize(scaleOnLoad,Qt::KeepAspectRatio);
+	}
+
+	m_pPixmap->start();
+
+	m_scaledPixmapsCache.insert(m_pPixmap->size(),m_pPixmap);
 }
 
 KviAvatar::~KviAvatar()
 {
-	delete m_pPixmap;
-	if(m_pScaledPixmap)delete m_pScaledPixmap;
+	foreach(KviAnimatedPixmap* pix,m_scaledPixmapsCache)
+	{
+		delete pix;
+	}
 }
 
-QPixmap * KviAvatar::scaledPixmap(unsigned int w,unsigned int h)
+KviAnimatedPixmap * KviAvatar::forSize(const QSize& size)
 {
-	// To supress compiler warning we make a cast to int (QPixmap::width and 
-	// QPixmap::height return ints).
-	// This can be avoided by changing function parameter type to int
-	int width = static_cast<int>(w);
-	int height = static_cast<int>(h);
-	if ((m_pPixmap->width() == width) && (m_pPixmap->height() == height))
+	if(m_scaledPixmapsCache.contains(size))
 	{
-		return m_pPixmap;
+		return m_scaledPixmapsCache[size];
 	}
-	// look if we have cached result
-	if (m_pScaledPixmap)
-	{
-		if ((m_pScaledPixmap->width() == width) && (m_pScaledPixmap->height() == height))
-		{
-			return m_pScaledPixmap;
-		}
-		delete m_pScaledPixmap;
-		m_pScaledPixmap = 0;
-	}
-	m_pScaledPixmap = new QPixmap(m_pPixmap->scaled(width, height, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-	return m_pScaledPixmap;
+
+	KviAnimatedPixmap* scaledPixmap = new KviAnimatedPixmap(m_pPixmap);
+	scaledPixmap->resize(size,Qt::KeepAspectRatio);
+
+	m_scaledPixmapsCache.insert(scaledPixmap->size(),scaledPixmap);
+	return scaledPixmap;
 }
 

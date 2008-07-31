@@ -92,21 +92,91 @@ void KviUserListToolTip::maybeTip(const QPoint &pnt)
 KviUserListEntry::KviUserListEntry(KviUserListView * parent,const QString &nick,
 	KviIrcUserEntry * e,short int iFlags,bool bJoinTimeUnknown)
 {
-	m_pListView      = parent;
-	m_szNick         = nick;
-	m_pGlobalData    = e;
-	m_iFlags         = iFlags;
-	m_lastActionTime = (kvi_time_t)0;
-	m_joinTime       = bJoinTimeUnknown ? (kvi_time_t)0 : kvi_unixTime();
-	m_iTemperature   = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
+	m_pListView       = parent;
+	m_szNick          = nick;
+	m_pGlobalData     = e;
+	m_iFlags          = iFlags;
+	m_lastActionTime  = (kvi_time_t)0;
+	m_joinTime        = bJoinTimeUnknown ? (kvi_time_t)0 : kvi_unixTime();
+	m_iTemperature    = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
 
-	m_bSelected      = false;
-	
+	m_bSelected       = false;
+	m_pConnectedAnimation = 0;
+
+
 	recalcSize();
+	updateAvatarData();
 }
 
 KviUserListEntry::~KviUserListEntry()
 {
+	if(m_pConnectedAnimation)
+	{
+		m_pConnectedAnimation->disconnect(SIGNAL(frameChanged() ),
+						m_pListView,SLOT(animatedAvatarUpdated()));
+	}
+}
+
+void KviUserListEntry::resetAvatarConnection()
+{
+	m_pConnectedAnimation = 0;
+}
+
+void KviUserListEntry::updateAvatarData()
+{
+	KviAnimatedPixmap* pOldMovie = m_pConnectedAnimation;
+
+	m_pConnectedAnimation = 0;
+
+	KviAvatar * av = m_pGlobalData->avatar();
+
+	if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))
+	{
+		if(av)
+		{
+			if( KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
+					(
+						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
+						(av->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+						(av->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+					)
+				)
+			{
+				m_pConnectedAnimation = av->forSize(
+							KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
+							KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
+						);
+			}
+			else
+			{
+				m_pConnectedAnimation = av->animatedPixmap();
+			}
+		}
+	}
+
+	if(m_pConnectedAnimation!=pOldMovie)
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
+		{
+			m_pConnectedAnimation->start();
+		} else {
+			m_pConnectedAnimation->stop();
+		}
+		m_pListView->connect(
+				m_pConnectedAnimation,SIGNAL(frameChanged() ),
+				m_pListView,SLOT(animatedAvatarUpdated()));
+
+		/*
+		The old one is deleted.
+		So it is disconnected automagically...
+		if(pOldMovie)
+		{
+			m_pListView->disconnect(
+						pOldMovie,SIGNAL(frameChanged()),
+						m_pListView,SLOT(animatedAvatarUpdated())
+						);
+		}*/
+	}
 }
 
 bool KviUserListEntry::color(QColor& color)
@@ -130,7 +200,7 @@ bool KviUserListEntry::color(QColor& color)
 			color = KVI_OPTION_COLOR(KviOption_colorUserListViewOwnForeground);
 			return true;
 		}
-	} 
+	}
 	if(m_iFlags == 0)
 	{
 		color=KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground);
@@ -152,7 +222,7 @@ void KviUserListEntry::recalcSize()
 	KviAvatar * av = m_pGlobalData->avatar();
 	m_iHeight = m_pListView->m_iFontHeight;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))m_iHeight = 20;
-	
+
 	if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))//G&N  2005
 	{
 		if(av)
@@ -160,18 +230,22 @@ void KviUserListEntry::recalcSize()
 			if( KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
 					(
 						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-						(av->pixmap()->width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-						(av->pixmap()->height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+						(av->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+						(av->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 					)
 				)
 			{
-				QPixmap * pix = av->scaledPixmap(KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth), KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight));
-			
-				m_iHeight += pix->height();
+				//don't worry about resize action
+				//it has to be done anyway on painting
+				//and result will be cached.
+				m_iHeight += av->forSize(
+							KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
+							KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
+						)->size().height();
 			}
 			else
 			{
-				m_iHeight += av->pixmap()->height();
+				m_iHeight += av->size().height();
 			}
 		}
 	}
@@ -280,11 +354,11 @@ void KviUserListView::updateScrollBarRange()
 
 void KviUserListView::applyOptions()
 {
-/*	if(!KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){ 
+/*	if(!KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){
 		m_pUsersLabel->hide();
 		m_pViewArea->setGeometry(0,0,width(),height());
 	}
-	if(KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){ 
+	if(KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){
 		m_pUsersLabel->show();
 		updateUsersLabel();
 	}*/
@@ -295,6 +369,15 @@ void KviUserListView::applyOptions()
 	m_iTotalHeight = 0;
 	while(e)
 	{
+		if(e->m_pConnectedAnimation)
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
+			{
+				e->m_pConnectedAnimation->start();
+			} else {
+				e->m_pConnectedAnimation->stop();
+			}
+		}
 		e->recalcSize();
 		m_iTotalHeight += e->m_iHeight;
 		e = e->m_pNext;
@@ -334,6 +417,32 @@ void KviUserListView::setMaskEntries(char type, int num)
 		break;
 	}
 	updateUsersLabel();
+}
+
+void KviUserListView::animatedAvatarUpdated()
+{
+	//update();
+	if(!m_pTopItem)return;
+	if(KVI_OPTION_BOOL(KviOption_boolDisableAvatars)) return;
+	QRect rct;
+	int curTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
+	KviUserListEntry * e = m_pTopItem;
+	int curBottom = 0;
+	while(e && (curTop <= m_pViewArea->height()))
+	{
+		curBottom = curTop + e->m_iHeight;
+		if(e->m_pConnectedAnimation==sender())
+		{
+			rct.setX(0);
+			rct.setY(curTop);
+			rct.setWidth(m_pViewArea->width());
+			rct.setHeight(e->m_iHeight);
+			
+			m_pViewArea->update(rct);
+		}
+		curTop = curBottom;
+		e = e->m_pNext;
+	}
 }
 
 void KviUserListView::completeNickBashLike(const QString &begin,KviPointerList<QString> *l,bool bAppendMask)
@@ -487,7 +596,7 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 					if(entry == m_pTopItem)bGotTopItem = true;
 					entry = entry->m_pNext;
 				}
-	
+
 				// is operator ?
 				if(!(e->m_iFlags & KVI_USERFLAG_OP))
 				{
@@ -498,7 +607,7 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 						if(entry == m_pTopItem)bGotTopItem = true;
 						entry = entry->m_pNext;
 					}
-	
+
 					// is half oped ?
 					if(!(e->m_iFlags & KVI_USERFLAG_HALFOP))
 					{
@@ -508,7 +617,7 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 							if(entry == m_pTopItem)bGotTopItem = true;
 							entry = entry->m_pNext;
 						}
-	
+
 						// is voiced ?
 						if(!(e->m_iFlags & KVI_USERFLAG_VOICE))
 						{
@@ -518,7 +627,7 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 								if(entry == m_pTopItem)bGotTopItem = true;
 								entry = entry->m_pNext;
 							}
-	
+
 							// is userop'd?
 							if(!(e->m_iFlags & KVI_USERFLAG_USEROP))
 							{
@@ -534,7 +643,7 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 				} // else it is op , chan admins are skipped
 			} // else it is chan admin , chan owners are skipped
 		} // else it is chan owner, so nothing to skip: the chan owners are first in the list
-		
+
 		// now strcmp within the current user-flag group...
 		while(entry && (KviQString::cmpCI(entry->m_szNick,e->m_szNick) < 0) &&
 				((entry->m_iFlags & flag) || (flag == 0)))
@@ -652,6 +761,7 @@ bool KviUserListView::avatarChanged(const QString &nick)
 		int oldH = it->m_iHeight;
 		m_iTotalHeight -= it->m_iHeight;
 		it->recalcSize();
+		it->updateAvatarData();
 		m_iTotalHeight += it->m_iHeight;
 		// if this was "over" the top item , we must adjust the scrollbar value
 		// otherwise scroll everything down
@@ -729,7 +839,7 @@ bool KviUserListView::userActionVerifyMask(const QString &nick,const QString &us
 					bChanged = true;
 				}
 				it->m_pGlobalData->setUser(user);
-			} 
+			}
 		}
 		it->m_iTemperature += actionTemperature;
 		// Don't allow it to grow too much
@@ -977,6 +1087,11 @@ bool KviUserListView::partInternal(const QString &nick,bool bRemove)
 			} else e = e->m_pNext;
 		}
 		if(bRemove)m_pIrcUserDataBase->removeUser(nick,it->m_pGlobalData);
+		if(!m_pIrcUserDataBase->find(nick))
+		{
+			//completelly removed. avatar is deleted
+			it->resetAvatarConnection();
+		}
 
 		// now just remove it
 		if(it->m_iFlags & KVI_USERFLAG_OP)m_iOpCount--;
@@ -1101,6 +1216,7 @@ void KviUserListView::removeAllEntries()
 	KviPointerHashTableIterator<QString,KviUserListEntry> it(*m_pEntryDict);
 	while(it.current())
 	{
+		it.current()->resetAvatarConnection();
 		m_pIrcUserDataBase->removeUser(it.currentKey(),
 			((KviUserListEntry *)it.current())->m_pGlobalData);
 		++it;
@@ -1282,7 +1398,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * tip,const QPoint &pnt)
 				buffer += __tr2qs("Joined on <b>%1</b>").arg(dt.toString());
 				buffer += "</nobr></td></tr>";
 			}
-	
+
 			if(it->m_lastActionTime != 0)
 			{
 				int secs = kvi_unixTime() - it->m_lastActionTime;
@@ -1295,7 +1411,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * tip,const QPoint &pnt)
 				buffer += "</nobr></td></tr>";
 			}
 			buffer += "</table>";
-	
+
 			tip->doTip(itRect,buffer);
 		}
 	}
@@ -1439,7 +1555,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 	bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons);
 	bool bShowState = KVI_OPTION_BOOL(KviOption_boolShowUserChannelState);
 	bool bShowGender = KVI_OPTION_BOOL(KviOption_boolDrawGenderIcons);
-	
+
 	while(e && theY <= r.bottom())
 	{
 		int bottom = theY + e->m_iHeight;
@@ -1451,19 +1567,23 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		if(bottom >= r.top())
 		{
 			QColor * pClrFore = 0;
-			bool bColorAllocated=0; // FIXME: bool is true or false
+			bool bColorAllocated=true;
 			if(e->m_bSelected)
 			{
 				QColor col=KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground);
 				col.setAlpha(150);
 				p.fillRect(0,theY,wdth,e->m_iHeight,col);
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
+				bColorAllocated = false;
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{
 				if(e->m_szNick==m_pListView->m_pKviWindow->connection()->currentNickName())
+				{
 					pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewOwnForeground));
-			} 
-			 
+					bColorAllocated = false;
+				}
+			}
+
 			if(!pClrFore){
 				// FIXME:
 				//
@@ -1481,6 +1601,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					if(e->m_iFlags == 0)
 					{
 						pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground));
+						bColorAllocated = false;
 					} else {
 						pClrFore = &(KVI_OPTION_COLOR((e->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 							KviOption_colorUserListViewChanOwnerForeground : ((e->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
@@ -1488,14 +1609,15 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 							KviOption_colorUserListViewOpForeground : ((e->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 							KviOption_colorUserListViewHalfOpForeground : ((e->m_iFlags & KVI_USERFLAG_VOICE) ? \
 							KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground))))));
+						bColorAllocated = false;
 					}
 				}
 			}
-			
+
 			int theX = KVI_USERLIST_BORDER_WIDTH + 1;
-	
+
 			int iAvatarAndTextX = theX;
-	
+
 			if(bShowGender)iAvatarAndTextX += 11;
 			if(bShowIcons)iAvatarAndTextX += 18;
 			if(bShowState)iAvatarAndTextX += 11;
@@ -1542,23 +1664,29 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 				p.setPen(*pClrFore);
 			}
 			theY+=2;
-		
+
+			//TODO: avatar animations
 			if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))//G&N  2005
 			{
 				KviAvatar * av = e->m_pGlobalData->avatar();
 				if(av && KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth) && KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 				{
-					QPixmap * pix;
+					QPixmap* pix;
 					if( KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
 						(
 							!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-							(av->pixmap()->width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-							(av->pixmap()->height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+							(av->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+							(av->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 						)
-					)
-					pix=av->scaledPixmap(KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight));
-					else 
+					) {
+						pix=av->forSize(
+								KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
+								KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
+								)->pixmap();
+					} else {
 						pix=av->pixmap();
+					}
+					//debug("Pixmap: null=%i;height=%i;width=%i",pix.isNull(),pix.height(),pix.width());
 					p.drawPixmap(iAvatarAndTextX,theY,*pix);
 					theY += pix->height() + 1;
 				}
@@ -1640,12 +1768,12 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 								// bit-cold
 								p.drawPixmap(theX,theY,*g_pUserChanStatePixmap,xOffTable[uTimeDiff],48,8,16);
 							}
-						} 
+						}
 					}
 				}
 				theX += 11;
 			}
-			
+
 			if(bShowIcons)
 			{
 				//p.drawRect(theX,theY + 2,18,e->m_iHeight - 4);
@@ -1694,7 +1822,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		e = e->m_pNext;
 	}
 
-	//we really do not need any self-draw borders. 
+	//we really do not need any self-draw borders.
 	//if we will need it, we will draw a better one with system style
 
 	//p.setPen(colorGroup().dark());
@@ -1789,6 +1917,19 @@ void KviUserListViewArea::keyPressEvent( QKeyEvent * e )
 	{
 		if(m_pListView->m_pKviWindow->input())
 			((QWidget*)(m_pListView->m_pKviWindow->input()))->setFocus();
+	} else if (
+			e->modifiers().testFlag(Qt::ControlModifier) &&
+			e->key() == 'a'
+			){
+		KviUserListEntry * aux = m_pListView->m_pHeadItem;
+		while(aux)
+		{
+			aux->m_bSelected = true;
+			aux = aux->m_pNext;
+		}
+
+		g_pFrame->childWindowSelectionStateChange(m_pListView->m_pKviWindow,true);
+		update();
 	} else {
 		QString szKey=e->text();
 		if(!szKey.isEmpty())
@@ -1798,7 +1939,7 @@ void KviUserListViewArea::keyPressEvent( QKeyEvent * e )
 			while(aux)
 			{
 				//debug("%s %s %i %s %i",__FILE__,__FUNCTION__,__LINE__,aux->nick().toUtf8().data(),aux->nick().find(szKey,0,0));
-				if(aux->nick().indexOf(szKey,0,Qt::CaseInsensitive)==0) 
+				if(aux->nick().indexOf(szKey,0,Qt::CaseInsensitive)==0)
 				{
 					nick=aux;
 					break;

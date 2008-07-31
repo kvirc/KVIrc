@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_scrollview.h"
 
 int KviTalScrollView::childX(QWidget * child)

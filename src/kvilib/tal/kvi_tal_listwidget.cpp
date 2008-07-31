@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_listwidget.h"
 #include "kvi_tal_itemdelegates.h"
 
@@ -38,8 +37,8 @@ KviTalListWidget::KviTalListWidget(QWidget * pParent,QString name,Qt::WFlags f)
 }
 bool KviTalListWidget::event(QEvent * e)
 {
-	
-	if (e->type() == QEvent::ToolTip) 
+
+	if (e->type() == QEvent::ToolTip)
 	{
 	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
 		const QPoint &p=helpEvent->pos();

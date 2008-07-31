@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include <QDir>
@@ -543,7 +542,7 @@ bool KviHttpRequest::processHeader(KviStr &szHeader)
 	{
 		m_bGzip = contentEncoding->equalsCI("gzip");
 	}
-	
+
 	KviStr * transferEncoding = hdr.find("Transfer-Encoding");
 	if(transferEncoding)
 	{
@@ -644,7 +643,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 	{
 		// time to process the header
 		m_pBuffer->append(*data);
-	
+
 		int idx = m_pBuffer->find((const unsigned char *)"\r\n\r\n",4);
 		if(idx == -1)
 		{
@@ -669,22 +668,22 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		}
 
 		m_uReceivedSize = m_pBuffer->size();
-		
+
 
 		// here the header is complete and the eventual remaining data is in m_pBuffer. data has been already used.
-		
+
 	} else {
 		// header already processed
 		m_uReceivedSize += data->size();
-		
+
 		// here the header is complete and some data *might* be already in m_pBuffer. data is unused yet.
-		
+
 		// Optimisation: If the transfer is NOT chunked (so we don't have to parse it)
 		// and the requested processing type is either Blocks or StoreToFile
 		// then we just can avoid to copy the data to m_pBuffer.
 		// This is a good optimisation since for large files we can save allocating
 		// space for and moving megabytes of data...
-		
+
 
 		if((!m_bChunkedTransferEncoding) && ((m_eProcessingType == Blocks) || (m_eProcessingType == StoreToFile)))
 		{
@@ -697,17 +696,17 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 					m_pFile->writeBlock((const char *)(data->data()),data->size());
 				break;
 			}
-	
+
 			if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
 			{
 				resetInternalStatus();
 				m_szLastError=__tr2qs("Stream exceeded expected length");
 				emit terminated(false);
 			}
-			
+
 			return;
 		}
-		
+
 		// need to append to m_pBuffer and process it
 		m_pBuffer->append(*data);
 	}
@@ -927,7 +926,7 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 		}
 
 		fd_set writeSet;
-	
+
 		FD_ZERO(&writeSet);
 
 		FD_SET(m_sock,&writeSet);
@@ -935,10 +934,10 @@ bool KviHttpRequestThread::selectForWrite(int iTimeoutInSecs)
 		struct timeval tmv;
 		tmv.tv_sec  = 0;
 		tmv.tv_usec = 1000; // we wait 1000 usecs for an event
-	
+
 
 		int nRet = kvi_socket_select(m_sock + 1,0,&writeSet,0,&tmv);
-	
+
 		if(nRet > 0)
 		{
 			if(FD_ISSET(m_sock,&writeSet))
@@ -1034,7 +1033,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 			return failure(__tr_no_lookup("Failed to initialize the SSL context"));
 		if(!m_pSSL->initSocket(m_sock))
 			return failure(__tr_no_lookup("Failed to initialize the SSL connection"));
-		
+
 		for(;;)
 		{
 			switch(m_pSSL->connect())
@@ -1071,7 +1070,7 @@ bool KviHttpRequestThread::connectToRemoteHost()
 				break;
 			}
 		}
-	
+
 		// never here
 		return true;
 	}
@@ -1258,7 +1257,7 @@ bool KviHttpRequestThread::readDataStep()
 	unsigned char buffer[2048];
 	int readed;
 
-	
+
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
 	{
@@ -1330,10 +1329,10 @@ void KviHttpRequestThread::run()
 {
 	// setup:
 	//    nothing needed
-	
+
 	// run:
 	runInternal();
-	
+
 	// cleanup:
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
@@ -1373,7 +1372,7 @@ void KviHttpRequestThread::runInternal()
 		case Post: szMethod = "POST"; break;
 		case Get: szMethod = "GET"; break;
 	}
-	
+
 	KviStr szRequest(KviStr::Format,"%s %s HTTP/1.1\r\n" \
 				"Host: %s\r\n" \
 				"Connection: Close\r\n" \

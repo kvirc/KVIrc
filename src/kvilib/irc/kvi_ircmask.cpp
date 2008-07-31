@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_debug.h"
@@ -274,7 +273,7 @@ KviIrcMask::KviIrcMask(const QString &szMask)
 		} else {
 			m_szHost = szWild; // ???
 		}
-		
+
 	} else {
 		m_szUser = szWild;
 		m_szHost = szWild;
@@ -319,7 +318,7 @@ bool KviIrcMask::hasNumericHost() const
 * 1 : nick!user@*.host.top        (nick!user@XXX.XXX.XXX.*)<br>
 * 2 : nick!user@*<br>
 * 3 : nick!*@machine.host.top     (nick!user@XXX.XXX.XXX.XXX)<br>
-* 4 : nick!*@*.host.top           (nick!user@XXX.XXX.XXX.*)<br>	
+* 4 : nick!*@*.host.top           (nick!user@XXX.XXX.XXX.*)<br>
 * 5 : nick!*@*<br>
 * 6 : *!user@machine.host.top     (*!user@XXX.XXX.XXX.XX)<br>
 * 7 : *!user@*.host.top           (*!user@XXX.XXX.XXX.*)<br>

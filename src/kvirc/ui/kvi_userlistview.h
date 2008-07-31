@@ -87,18 +87,21 @@ protected:
 	bool               m_bSelected;
 	KviUserListEntry * m_pNext;
 	KviUserListEntry * m_pPrev;
+	KviAnimatedPixmap* m_pConnectedAnimation;
 public:
 	short int flags() const { return m_iFlags; };
 	KviIrcUserEntry * globalData(){ return m_pGlobalData; };
 	const QString &nick() const { return m_szNick; };
 	KviUserListEntry * next(){ return m_pNext; };
 	bool color(QColor& color);
+	void updateAvatarData();
+	void resetAvatarConnection();
 protected:
 	void recalcSize();
 };
 
 
-typedef struct _KviUserListViewUserStats 
+typedef struct _KviUserListViewUserStats
 {
 	unsigned int uTotal;           // total users on the channel
 	unsigned int uActive;          // active users in the last 10 mins
@@ -220,6 +223,8 @@ public:
 	void emitDoubleClick();
 	bool completeNickStandard(const QString &begin,const QString &skipAfter,QString &buffer,bool bAppendMask);
 	void completeNickBashLike(const QString &begin,KviPointerList<QString> * l,bool bAppendMask);
+public slots:
+	void animatedAvatarUpdated();
 };
 
 class KVIRC_API KviUserListViewArea : public QWidget

@@ -231,8 +231,9 @@ KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * par
 	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Hide users label","options"),KviOption_boolDisableUserListLabel);
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
 	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide avatars","options"),KviOption_boolDisableAvatars);
+	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
 
-	addRowSpacer(0,6,0,6);
+	addRowSpacer(0,7,0,7);
 }
 
 KviUserListFeaturesOptionsWidget::~KviUserListFeaturesOptionsWidget()

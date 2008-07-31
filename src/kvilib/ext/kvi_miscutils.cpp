@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_miscutils.h"
 
 #include <QStringList>
@@ -33,7 +32,7 @@ namespace KviMiscUtils
 	{
 		QStringList sl1 = szVersion1.split(".");
 		QStringList sl2 = szVersion2.split(".");
-	
+
 		QStringList::Iterator it1 = sl1.begin();
 		QStringList::Iterator it2 = sl2.begin();
 		while((it1 != sl1.end()) && (it2 != sl2.end()))

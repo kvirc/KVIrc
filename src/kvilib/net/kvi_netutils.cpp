@@ -26,8 +26,10 @@
 // This effect is caused by the combination of broken CVS installation and
 // the ugly windows "text mode" files
 
-#define __KVILIB__
 #define _KVI_NETUTILS_CPP_
+
+#define NTDDI_VERSION NTDDI_WINXP
+#define _WIN32_WINNT _WIN32_WINNT_WINXP
 
 #include "kvi_netutils.h"
 #include "kvi_memmove.h"
@@ -210,11 +212,6 @@ bool kvi_isValidStringIp(const char *szIp)
 #ifdef COMPILE_IPV6_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-//#include <stdlib.h>
-//#include <sys/socket.h>
-//#include <arpa/inet.h>/
-//#include <errno.h>
-//#include "dietfeatures.h"
 
 static unsigned int scan_ip6(const char *s,char ip[16])
 {
@@ -303,8 +300,6 @@ static unsigned int scan_ip6(const char *s,char ip[16])
 	return len;
 }
 
-#ifndef COMPILE_ON_WINDOWS
-// #include <Ws2tcpip.h> - already has it
 int inet_pton(int AF, const char *CP, void *BUF) {
 	int len;
 	if (AF==AF_INET) {
@@ -319,12 +314,6 @@ int inet_pton(int AF, const char *CP, void *BUF) {
 	}
 	return 1;
 }
-#endif //WIN2K
-
-//#include <sys/socket.h>
-//#include <arpa/inet.h>
-
-//extern char *inet_ntoa_r(struct in_addr in,char* buf);
 
 static const unsigned char V4mappedprefix[12]={0,0,0,0,0,0,0,0,0,0,0xff,0xff};
 

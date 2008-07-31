@@ -340,7 +340,7 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 
 	if(e->avatar())
 	{
-		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath()).arg(e->avatar()->pixmap()->width());
+		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath()).arg(e->avatar()->size().width());
 	}
 
 	if(e->hasRealName())
@@ -1028,7 +1028,7 @@ KviAvatar * KviConsole::defaultAvatarFromOptions()
 	if(!avatar)return 0;
 	if(avatar->isNull())return 0;
 	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())return 0;
-	return new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar),new QPixmap(*avatar));
+	return new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar));
 }
 
 KviAvatar * KviConsole::currentAvatar()

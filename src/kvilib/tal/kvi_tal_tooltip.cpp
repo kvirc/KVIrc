@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_tooltip.h"
 
 #include <QEvent>
@@ -90,7 +89,7 @@ void KviTalToolTip::add(QWidget * widget,const QString & text)
 void KviTalToolTip::remove(QWidget * widget)
 {
 
-	//QToolTip::remove(widget); 
+	//QToolTip::remove(widget);
 }
 
 void KviTalToolTip::tip(const QRect & rect,const QString & text)

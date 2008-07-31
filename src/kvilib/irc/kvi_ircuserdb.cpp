@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_debug.h"
@@ -177,7 +176,7 @@ KviRegisteredUser* KviIrcUserDataBase::registeredUser(const QString & nick,const
 				u->m_bUseCustomColor=pUser->getBoolProperty("useCustomColor");
 				QString szTmp=pUser->getProperty("customColor");
 				KviStringConversion::fromString(szTmp,u->m_cachedColor);
-				
+
 				u->m_bNotFoundRegUserLoockup=false; //to be shure
 			} else {
 				u->m_szLastRegisteredMatchNick=nick;

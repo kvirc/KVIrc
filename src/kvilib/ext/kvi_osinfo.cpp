@@ -22,7 +22,6 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#define __KVILIB__
 
 #include "kvi_osinfo.h"
 #include "kvi_locale.h"
@@ -37,12 +36,13 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
 
-typedef enum QueryInfo
+typedef enum _QueryInfo
 {
 	Os_Release,
 	Os_Version,
 	Os_Type
-};
+} QueryInfo;
+
 typedef void (WINAPI *PGNSI)(LPSYSTEM_INFO);
 typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 
@@ -97,14 +97,14 @@ static QString queryWinInfo(QueryInfo info)
 	if( !(bOsVersionInfoEx = GetVersionEx ((OSVERSIONINFO *) &osvi)) )
 	{
 		osvi.dwOSVersionInfoSize = sizeof (OSVERSIONINFO);
-		if (! GetVersionEx ( (OSVERSIONINFO *) &osvi) ) 
+		if (! GetVersionEx ( (OSVERSIONINFO *) &osvi) )
 			return FALSE;
 	}
 
 	// Call GetNativeSystemInfo if supported or GetSystemInfo otherwise.
 
 	pGNSI = (PGNSI) GetProcAddress(
-		GetModuleHandle(TEXT("kernel32.dll")), 
+		GetModuleHandle(TEXT("kernel32.dll")),
 		"GetNativeSystemInfo");
 	if(NULL != pGNSI)
 		pGNSI(&si);
@@ -257,7 +257,7 @@ static QString queryWinInfo(QueryInfo info)
 					}
 
 					// Test for the server type.
-					else if ( osvi.wProductType == VER_NT_SERVER || 
+					else if ( osvi.wProductType == VER_NT_SERVER ||
 						osvi.wProductType == VER_NT_DOMAIN_CONTROLLER )
 					{
 						if(osvi.dwMajorVersion==5 && osvi.dwMinorVersion==2)
@@ -298,7 +298,7 @@ static QString queryWinInfo(QueryInfo info)
 								szVersion+= "Advanced Server " ;
 							else szVersion+= "Server " ;
 						}
-						else  // Windows NT 4.0 
+						else  // Windows NT 4.0
 						{
 							if( osvi.wSuiteMask & VER_SUITE_ENTERPRISE )
 								szVersion+="Server 4.0, Enterprise Edition " ;
@@ -308,7 +308,7 @@ static QString queryWinInfo(QueryInfo info)
 				}
 		}
 		// Test for specific product on Windows NT 4.0 SP5 and earlier
-		else  
+		else
 		{
 			HKEY hKey;
 			TCHAR szProductType[BUFSIZE];
@@ -339,9 +339,9 @@ static QString queryWinInfo(QueryInfo info)
 
 		// Display service pack (if any) and build number.
 
-		if( osvi.dwMajorVersion == 4 && 
+		if( osvi.dwMajorVersion == 4 &&
 			lstrcmpi( osvi.szCSDVersion, TEXT("Service Pack 6") ) == 0 )
-		{ 
+		{
 			HKEY hKey;
 			LONG lRet;
 
@@ -350,7 +350,7 @@ static QString queryWinInfo(QueryInfo info)
 				TEXT("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Hotfix\\Q246009"),
 				0, KEY_QUERY_VALUE, &hKey );
 			if( lRet == ERROR_SUCCESS )
-				szVersion+= QString("Service Pack 6a (Build %1)").arg( osvi.dwBuildNumber & 0xFFFF );         
+				szVersion+= QString("Service Pack 6a (Build %1)").arg( osvi.dwBuildNumber & 0xFFFF );
 			else // Windows NT 4.0 prior to SP6a
 			{
 				szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion).arg( osvi.dwBuildNumber & 0xFFFF);
@@ -358,7 +358,7 @@ static QString queryWinInfo(QueryInfo info)
 
 			RegCloseKey( hKey );
 		}
-		else // not Windows NT 4.0 
+		else // not Windows NT 4.0
 		{
 			szVersion+= QString( "%1 (Build %2)").arg( osvi.szCSDVersion).arg( osvi.dwBuildNumber & 0xFFFF);
 		}
@@ -373,19 +373,19 @@ static QString queryWinInfo(QueryInfo info)
 			szVersion+="Windows 95 ";
 			if (osvi.szCSDVersion[1]=='C' || osvi.szCSDVersion[1]=='B')
 				szVersion+="OSR2 ";
-		} 
+		}
 
 		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 10)
 		{
 			szVersion+="Windows 98 ";
 			if ( osvi.szCSDVersion[1]=='A' || osvi.szCSDVersion[1]=='B')
 				szVersion+="SE ";
-		} 
+		}
 
 		if (osvi.dwMajorVersion == 4 && osvi.dwMinorVersion == 90)
 		{
 			szVersion+="Windows Millennium Edition";
-		} 
+		}
 		break;
 
 	case VER_PLATFORM_WIN32s:
@@ -403,7 +403,7 @@ static QString queryWinInfo(QueryInfo info)
 		szMinor.setNum(minor);
 		szRelease.setNum(release);
 		szVersion = "Release : "+szMajor +"."+ szMinor +"."+ szRelease;
-		return szVersion;	
+		return szVersion;
 	}
 	if(info==Os_Type)
 	{
@@ -448,7 +448,7 @@ namespace KviOsInfo
 	#endif
 #endif
 	}
-	
+
 	QString version()
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -460,7 +460,7 @@ namespace KviOsInfo
 		return KviQString::empty;
 #endif
 	}
-	
+
 	QString release()
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -472,7 +472,7 @@ namespace KviOsInfo
 		return KviQString::empty;
 #endif
 	}
-	
+
 	QString machine()
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -485,7 +485,7 @@ namespace KviOsInfo
 		return KviQString::empty;
 #endif
 	}
-	
+
 	QString nodename()
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -497,7 +497,7 @@ namespace KviOsInfo
 		return KviQString::empty;
 #endif
 	}
-	
+
 	QString hostname()
 	{
 		char hbuffer[1024];

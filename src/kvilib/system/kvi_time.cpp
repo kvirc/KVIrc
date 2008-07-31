@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 
 #include "kvi_time.h"
@@ -92,7 +91,7 @@ namespace KviTimeUtils
 		*uM = uSecs / 60;
 		*uS = uSecs % 60;
 	}
-	
+
 	QString formatTimeInterval(unsigned int uSeconds,int iFlags)
 	{
 		unsigned int d,h,m,s;

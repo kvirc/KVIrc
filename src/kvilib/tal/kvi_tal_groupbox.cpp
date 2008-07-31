@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 #include "kvi_tal_groupbox.h"
 
 #include <QChildEvent>
@@ -77,7 +76,7 @@ void KviTalGroupBox::addSpace(int space)
 	if (m_pLayout){
 		if (mOrientation==Qt::Vertical)
 			((QHBoxLayout*)m_pLayout)->addSpacing(space);
-		else 
+		else
 			((QVBoxLayout*)m_pLayout)->addSpacing(space);
 	}
 }

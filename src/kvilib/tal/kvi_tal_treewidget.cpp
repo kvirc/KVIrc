@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
 
 #include "kvi_tal_treewidget.h"
 #include "kvi_pointerhashtable.h"
