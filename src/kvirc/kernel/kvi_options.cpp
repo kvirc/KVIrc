@@ -268,7 +268,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseSpecialColorForTimestamp",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableAwayListUpdates",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowAvatarsInUserlist",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("boolShowUserListStatisticLabel",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowUserListStatisticLabel",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowIconsInPopupMenus",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ScriptErrorsToDebugWindow",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowMinimizedDebugWindow",true,KviOption_sectFlagFrame),
