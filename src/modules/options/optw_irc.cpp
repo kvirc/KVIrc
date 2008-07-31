@@ -170,7 +170,7 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
   	addBoolSelector(g,__tr2qs_ctx("Do not request ban exception list","options"),KviOption_boolDisableBanExceptionListRequestOnJoin);
  	addBoolSelector(g,__tr2qs_ctx("Do not request invite list","options"),KviOption_boolDisableInviteListRequestOnJoin);
 
- 	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Do not update the away list","options"),KviOption_boolDisableAwayListUpdates);
+ 	b = addBoolSelector(0,3,4,3,__tr2qs_ctx("Keep away list updated by sending WHO requests","options"),KviOption_boolEnableAwayListUpdates);
 	mergeTip(b,
 		__tr2qs_ctx("<center>KVIrc sends out a channel /WHO message every now and then to keep " \
 			"the channel away list in sync. Use this option to disable this feature (and to save " \

@@ -248,7 +248,7 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 {
 	bool bCheck;
-	if(KVI_OPTION_BOOL(KviOption_boolForciblyDisableNotifier))
+	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))
 		bCheck=false;
 	else
 		bCheck=g_tNotifierDisabledUntil < kvi_unixTime();
@@ -301,7 +301,7 @@ static bool notifier_module_ctrl(KviModule *,const char *operation,void *param)
 			g_pNotifierWindow = new KviNotifierWindow();
 
 		g_pNotifierWindow->addMessage(p->pWindow,p->szIcon,p->szMessage,p->uMessageLifetime);
-		g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolDisableNotifierFadein)?false:true);
+		g_pNotifierWindow->doShow(KVI_OPTION_BOOL(KviOption_boolNotifierFading)? true : false);
 
 		return true;
 	}

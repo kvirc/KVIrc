@@ -228,9 +228,9 @@ KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * par
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show gender icons","options"),KviOption_boolDrawGenderIcons);
 	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user channel icons","options"),KviOption_boolShowUserChannelIcons);
 	b = addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
-	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Hide users label","options"),KviOption_boolDisableUserListLabel);
+	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
-	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide avatars","options"),KviOption_boolDisableAvatars);
+	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Show avatars in userlist","options"),KviOption_boolShowAvatarsInUserlist);
 	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
 
 	addRowSpacer(0,7,0,7);

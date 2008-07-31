@@ -280,7 +280,7 @@ void KviNotifierWindow::computeRect()
 
 void KviNotifierWindow::doShow(bool bDoAnimate)
 {
-	if(KVI_OPTION_BOOL(KviOption_boolForciblyDisableNotifier))return;
+	if(!KVI_OPTION_BOOL(KviOption_boolEnableNotifier))return;
 
 	kvi_time_t tNow = kvi_unixTime();
 	if(g_tNotifierDisabledUntil > tNow)return;
@@ -541,7 +541,7 @@ void KviNotifierWindow::startBlinking()
 	stopBlinkTimer();
 	m_bBlinkOn = false;
 
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableNotifierFlashing))
+	if(KVI_OPTION_BOOL(KviOption_boolNotifierFlashing))
 	{
 		m_pBlinkTimer = new QTimer();
 		connect(m_pBlinkTimer,SIGNAL(timeout()),this,SLOT(blink()));
@@ -1267,7 +1267,7 @@ void KviNotifierWindow::disableUntilKVIrcRestarted()
 
 void KviNotifierWindow::disablePermanently()
 {
-	KVI_OPTION_BOOL(KviOption_boolForciblyDisableNotifier) = true;
+	KVI_OPTION_BOOL(KviOption_boolEnableNotifier) = false;
 	hideNow();
 }
 

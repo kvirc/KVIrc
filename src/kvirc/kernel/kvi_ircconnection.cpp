@@ -1349,7 +1349,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 {
 	if(m_eState == Connected)
 	{
-		if(!KVI_OPTION_BOOL(KviOption_boolDisableAwayListUpdates))
+		if(KVI_OPTION_BOOL(KviOption_boolEnableAwayListUpdates))
 		{
 			// update the channel WHO lists (fixes users away state)
 			// first of all, we send our request not more often than every 50 secs

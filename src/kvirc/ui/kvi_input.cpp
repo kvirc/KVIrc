@@ -1459,7 +1459,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent *e)
 				}
 			break;
 			case Qt::Key_PageUp:
-				if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory)) break;
+				if(!KVI_OPTION_BOOL(KviOption_boolEnableInputHistory)) break;
 				if(m_pInputParent->inherits("KviInput"))
 					((KviInput*)(m_pInputParent))->historyButtonClicked();
 			break;
@@ -2271,15 +2271,13 @@ KviInput::KviInput(KviWindow *par,KviUserListView * view)
 	m_pHistoryButton->setIconSize(QSize(22,22));
 	//m_pHistoryButton->setUpdatesEnabled(TRUE); ???
 	QIcon is1;
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
-	}
-	else
-	{
+	}	else {
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
@@ -2564,22 +2562,19 @@ void KviInput::applyOptions()
 	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
 	g_pLastFontMetrics = 0;
 
-	if(KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))//G&N mar 2005
-	{
-		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)));
-		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
-		m_pHistoryButton->disconnect(SIGNAL(clicked()));
-	}
-
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 		m_pHistoryButton->setIcon(is1);
 		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show History<br>&lt;Ctrl+PageUp&gt;"));
 		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
+	} else {
+		QIcon is1;
+		is1.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITSPLIT)));
+		m_pHistoryButton->setIcon(is1);
+		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input History Disabled"));
+		m_pHistoryButton->disconnect(SIGNAL(clicked()));
 	}
 
 	m_pInputEditor->applyOptions();

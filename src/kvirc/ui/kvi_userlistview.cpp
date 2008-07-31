@@ -130,7 +130,7 @@ void KviUserListEntry::updateAvatarData()
 
 	KviAvatar * av = m_pGlobalData->avatar();
 
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))
+	if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
 	{
 		if(av)
 		{
@@ -223,7 +223,7 @@ void KviUserListEntry::recalcSize()
 	m_iHeight = m_pListView->m_iFontHeight;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons) && (m_iHeight < 20))m_iHeight = 20;
 
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))//G&N  2005
+	if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))//G&N  2005
 	{
 		if(av)
 		{
@@ -423,7 +423,7 @@ void KviUserListView::animatedAvatarUpdated()
 {
 	//update();
 	if(!m_pTopItem)return;
-	if(KVI_OPTION_BOOL(KviOption_boolDisableAvatars)) return;
+	if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist)) return;
 	QRect rct;
 	int curTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	KviUserListEntry * e = m_pTopItem;
@@ -1176,7 +1176,7 @@ bool KviUserListView::nickChange(const QString &oldNick,const QString &newNick)
 
 void KviUserListView::updateUsersLabel()
 {
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel))//G&N  2005
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))//G&N  2005
 	{
 		KviStr tmp;
 		tmp.sprintf("<nobr><b>[%u]</b>",m_pEntryDict->count());
@@ -1253,7 +1253,7 @@ void KviUserListView::partAll()
 void KviUserListView::resizeEvent(QResizeEvent *)
 {
 	int hght;
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel))//G&N  2005
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))//G&N  2005
 	{
 		hght = m_pUsersLabel->sizeHint().height();
 		if(hght < 16)hght = 16; // at least
@@ -1665,8 +1665,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 			}
 			theY+=2;
 
-			//TODO: avatar animations
-			if(!KVI_OPTION_BOOL(KviOption_boolDisableAvatars))//G&N  2005
+			if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))//G&N  2005
 			{
 				KviAvatar * av = e->m_pGlobalData->avatar();
 				if(av && KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth) && KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))

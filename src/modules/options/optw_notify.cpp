@@ -104,7 +104,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 {
 	createLayout();
 
-	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Forcibly and completely disable the notifier","options"),KviOption_boolForciblyDisableNotifier);
+	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
 	QString tip = "<center>";
 	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
 					"the notifier window. Please note that if this option is activated then " \
@@ -113,8 +113,8 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 					"will make all the /notifier.* commands fail silently.","options");
 	tip += "</center>";
 	mergeTip(b,tip);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable notifier window flashing","options"),KviOption_boolDisableNotifierFlashing);
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Disable notifier window fade effect","options"),KviOption_boolDisableNotifierFadein);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
 	addRowSpacer(0,3,0,3);
 }

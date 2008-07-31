@@ -261,7 +261,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowUserListViewToolTips 167                   /* interface::features::global */
 #define KviOption_boolWhoisRepliesToActiveWindow 168                 /* irc::output */
 #define KviOption_boolPopupNotifierOnNotifyOnLine 169                /* notify */
-#define KviOption_boolForciblyDisableNotifier 170                    /* notifier */
+#define KviOption_boolEnableNotifier 170                    /* notifier */
 #define KviOption_boolDccSendForceIdleStep 171                       /* dcc */
 #define KviOption_boolStatusBarVisible 172                           /* internal */
 #define KviOption_boolTrackLastReadTextViewLine 173                  /* ircview::features */
@@ -271,19 +271,19 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolLimitDccSendSpeed 177                          /* dcc::file transfers */
 #define KviOption_boolLimitDccRecvSpeed 178                          /* dcc::file transfers */
 #define KviOption_boolIgnoreModuleVersions 179
-#define KviOption_boolDisableInputHistory 180                        /* interface::input */
+#define KviOption_boolEnableInputHistory 180                        /* interface::input */
 #define KviOption_boolUseSpecialColorForTimestamp 181                /* interface::output */
-#define KviOption_boolDisableAwayListUpdates 182                     /* irc::output */
-#define KviOption_boolDisableAvatars 183				 /* interface::userlist */ 
-#define KviOption_boolDisableUserListLabel 184		        	 /* interface::userlist */ 
-#define KviOption_boolDisablePopupIcons 185			     /* themes::general */ 
+#define KviOption_boolEnableAwayListUpdates 182                     /* irc::output */
+#define KviOption_boolShowAvatarsInUserlist 183				 /* interface::userlist */ 
+#define KviOption_boolShowUserListStatisticLabel 184		        	 /* interface::userlist */ 
+#define KviOption_boolShowIconsInPopupMenus 185			     /* themes::general */ 
 #define KviOption_boolScriptErrorsToDebugWindow 186                  /* parser */
 #define KviOption_boolShowMinimizedDebugWindow 187                   /* parser */
 #define KviOption_boolShowExtendedInfoInQueryLabel 188               /* irc::query */
 #define KviOption_boolUseUserListColorsAsNickColors 189              /* irc::usermessages */
 #define KviOption_boolGzipLogs 190                                   /* ircengine::logging */
 #define KviOption_boolMinimizeInTray 191                                   /* interface */
-#define KviOption_boolDisableNotifierFlashing 192                                   /* interface::notifier */
+#define KviOption_boolNotifierFlashing 192                                   /* interface::notifier */
 #define KviOption_boolCommandlineInUserFriendlyModeByDefault 193     /* interface::input */
 #define KviOption_boolEnableVisualEffects 194     /* interface */
 #define KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores 195
@@ -311,7 +311,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
 #define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
 #define KviOption_boolScaleAvatarsOnLoad 219
-#define KviOption_boolDisableNotifierFadein 220 /* interface::notifier */
+#define KviOption_boolNotifierFading 220 /* interface::notifier */
 #define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
 #define KviOption_boolPickRandomIpAddressForRoundRobinServers 222
 #define KviOption_boolPrependAvatarInfoToRealname 223

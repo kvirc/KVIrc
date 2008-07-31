@@ -232,7 +232,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("DisableInviteListRequestOnJoin",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DisableWhoRequestOnJoin",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowDockExtension",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("GotAdressForDccByDnsMyNick",false,KviOption_sectFlagFrame),
+	BOOL_OPTION("DccAddressByIrcDns",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("MinimizeConsoleAfterConnect",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsg",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsgQueryToo",false,KviOption_sectFlagFrame),
@@ -254,7 +254,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowUserListViewToolTips",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("WhoisRepliesToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PopupNotifierOnNotifyOnLine",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("ForciblyDisableNotifier",false,KviOption_sectFlagConnection),
+	BOOL_OPTION("EnableNotifier",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DccSendForceIdleStep",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("StatusBarVisible",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("TrackLastReadTextViewLine",true,KviOption_sectFlagFrame),
@@ -264,19 +264,19 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("LimitDccSendSpeed",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("LimitDccRecvSpeed",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("IgnoreModuleVersions",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("DisableInputHistory",false,KviOption_sectFlagInput | KviOption_resetUpdateGui),
+	BOOL_OPTION("EnableInputHistory",true,KviOption_sectFlagInput | KviOption_resetUpdateGui),
 	BOOL_OPTION("UseSpecialColorForTimestamp",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("DisableAwayListUpdates",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("DisableAvatars",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("DisableUserListLabel",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("DisablePopupIcons",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("EnableAwayListUpdates",true,KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowAvatarsInUserlist",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("boolShowUserListStatisticLabel",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowIconsInPopupMenus",true,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ScriptErrorsToDebugWindow",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowMinimizedDebugWindow",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowExtendedInfoInQueryLabel",true,KviOption_resetUpdateGui),
 	BOOL_OPTION("UseUserListColorsAsNickColors",true,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("GzipLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("MinimizeInTray",false,KviOption_resetUpdateGui),
-	BOOL_OPTION("DisableNotifierFlashing",false,KviOption_sectFlagFrame),
+	BOOL_OPTION("NotifierFlashing",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("CommandlineInUserFriendlyModeByDefault",false,KviOption_sectFlagFrame), // this confuses existing users and is not mentioned in the docs where there are commandline examples : we need it to be off by default for now
 	BOOL_OPTION("EnableVisualEffects",true,KviOption_resetUpdateGui),
 	BOOL_OPTION("DCCFileTransferReplaceOutgoingSpacesWithUnderscores",true,KviOption_sectFlagDcc),
@@ -304,7 +304,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 	BOOL_OPTION("UseSystemUrlHandlers",true,KviOption_sectFlagUrl),
 	BOOL_OPTION("ScaleAvatarsOnLoad",true,KviOption_sectFlagAvatar),
-	BOOL_OPTION("DisableNotifierFadein",false,KviOption_sectFlagFrame),
+	BOOL_OPTION("NotifierFading",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("UseAntiAliasing",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("PickRandomIpAddressForRoundRobinServers",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PrependAvatarInfoToRealname",true,KviOption_sectFlagConnection),
@@ -537,11 +537,11 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 	PIXMAP_OPTION("GlobalTransparencyBackground",KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme)
 };
 
-//#define INT_OPTION(_name,_value,_flags) 
-//	{ 
-//		KVI_INT_OPTIONS_PREFIX _name , 
-//		_value , 
-//		_flags 
+//#define INT_OPTION(_name,_value,_flags)
+//	{
+//		KVI_INT_OPTIONS_PREFIX _name ,
+//		_value ,
+//		_flags
 //	}
 //
 //KviIntOption g_intOptionsTable[KVI_NUM_INT_OPTIONS]=
@@ -872,14 +872,14 @@ void KviApp::loadOptions()
 		READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,readStringListEntry)
 		READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable,readColorEntry)
 		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
-		
-		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++) 
+
+		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
 		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
-		} 
+		}
 
-		for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++) 
+		for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++)
 		{
 			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringlistOptionsTable[i].option);
@@ -892,12 +892,12 @@ void KviApp::loadOptions()
 void KviApp::saveOptions()
 {
 	QString buffer;
-	
+
 	saveRecentChannels();
-	
+
 	getLocalKvircDirectory(buffer,Config,KVI_CONFIGFILE_MAIN);
 	KviConfig cfg(buffer,KviConfig::Write);
-	
+
 	int i;
 
 	#define WRITE_OPTIONS(_num,_table) \
@@ -909,14 +909,14 @@ void KviApp::saveOptions()
 
 	WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
-		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++) 
-		{ 
+		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
+		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::encodePath(g_stringOptionsTable[i].option);
 		}
 	WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
-		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++) 
-		{ 
+		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
+		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
 		}
@@ -925,14 +925,14 @@ void KviApp::saveOptions()
 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable)
-	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++) 
-		{ 
+	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++)
+		{
 			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::encodePath(g_stringlistOptionsTable[i].option);
 		}
 	WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
-	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++) 
-	{ 
+	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++)
+	{
 		if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
 			KviStringConversion::decodePath(g_stringlistOptionsTable[i].option);
 	}
@@ -959,13 +959,13 @@ namespace KviTheme
 	bool save(KviThemeInfo &options)
 	{
 		QString szD = options.absoluteDirectory();
-	
+
 		if(szD.isEmpty())
 		{
 			options.setLastError(__tr2qs("Missing absolute directory for the theme information"));
 			return false;
 		}
-	
+
 		if(!KviFileUtils::directoryExists(szD))
 		{
 			if(!KviFileUtils::makeDir(szD))
@@ -974,25 +974,25 @@ namespace KviTheme
 				return false;
 			}
 		}
-	
+
 		szD.append(KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_THEMEINFO_FILE_NAME);
-	
+
 		if(!options.save(szD))
 		{
 			return false;
 		}
-	
+
 		szD = options.absoluteDirectory();
 		szD.append(KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_THEMEDATA_FILE_NAME);
-	
+
 		KviConfig cfg(szD,KviConfig::Write);
-	
+
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
-	
+
 		int i;
-	
+
 		WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
 		WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
 		WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
@@ -1003,9 +1003,9 @@ namespace KviTheme
 		WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
 		WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable)
 		WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable)
-	
+
 		#undef WRITE_OPTIONS
-	
+
 		// the pixmap options need special processing
 		for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
@@ -1018,7 +1018,7 @@ namespace KviTheme
 					QString szPixName = g_pixmapOptionsTable[i].name;
 					szPixName += ".png";
 					szPixPath += szPixName;
-	
+
 					if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixPath,"PNG"))
 					{
 						cfg.writeEntry(g_pixmapOptionsTable[i].name,szPixName);
@@ -1032,16 +1032,16 @@ namespace KviTheme
 				}
 			}
 		}
-	
+
 		cfg.writeEntry("stringIconThemeSubdir",options.subdirectory());
-	
+
 		// find all the "kvi_bigicon" images that we can find in the main pics directory
 		QString szPicsPath;
-	
+
 		g_pApp->getGlobalKvircDirectory(szPicsPath,KviApp::Pics);
 		QDir d(szPicsPath);
 		QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"),QDir::Files);
-	
+
 		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
 		{
 			KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
@@ -1050,7 +1050,7 @@ namespace KviTheme
 				QString szPixPath = options.absoluteDirectory();
 				szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
 				szPixPath += *it;
-	
+
 				if(!KviFileUtils::copyFile(p->path(),szPixPath))
 				{
 					options.setLastError(__tr2qs("Failed to save one of the theme images"));
@@ -1058,26 +1058,26 @@ namespace KviTheme
 				}
 			}
 		}
-	
-	
+
+
 		szD = options.absoluteDirectory();
 		szD.append(KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_SMALLICONS_SUBDIRECTORY);
-	
+
 		if(!KviFileUtils::makeDir(szD))
 		{
 			options.setLastError(__tr2qs("Failed to create the theme subdirectory"));
 			return false;
 		}
-	
+
 		// We actually need to *save* the small icons since
 		// we have a compatibility mode that can load them from
 		// the old format kvi_smallicon_XY.png multiimage libraries.
-	
+
 		for(int j=0;j<KVI_NUM_SMALL_ICONS;j++)
 		{
 			QPixmap * pix = g_pIconManager->getSmallIcon(j);
-	
+
 			QString szPixPath = options.absoluteDirectory();
 			szPixPath.append(KVI_PATH_SEPARATOR_CHAR);
 			szPixPath.append(KVI_SMALLICONS_SUBDIRECTORY);
@@ -1085,25 +1085,25 @@ namespace KviTheme
 			szPixPath.append("kcs_");
 			szPixPath.append(g_pIconManager->getSmallIconName(j));
 			szPixPath.append(".png");
-			
+
 			if(!pix->save(szPixPath,"PNG",90))
 			{
 				options.setLastError(__tr2qs("Failed to save one of the theme images"));
 				return false;
 			}
 		}
-	
+
 		return true;
 	}
-	
+
 	bool load(const QString &themeDir,KviThemeInfo &buffer)
 	{
 		if(!buffer.loadFromDirectory(themeDir))
 			return false; // makes sure that themedata exists too
-	
+
 		// reset the current theme subdir
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = "";
-		
+
 		// reset the splash screen pointer
 		QString szPointerFile;
 		g_pApp->getLocalKvircDirectory(szPointerFile,KviApp::Themes,"current-splash");
@@ -1112,16 +1112,16 @@ namespace KviTheme
 		QString szD = themeDir;
 		KviQString::ensureLastCharIs(szD,KVI_PATH_SEPARATOR_CHAR);
 		szD.append(KVI_THEMEDATA_FILE_NAME);
-	
+
 		KviConfig cfg(szD,KviConfig::Read);
-	
+
 		cfg.setGroup(KVI_THEMEDATA_CONFIG_GROUP);
-	
+
 		int i;
 		int iResetFlags = 0;
-	
+
 		#undef READ_OPTIONS
-	
+
 		#define READ_OPTIONS(_num,_table,_readFnc) \
 		for(i=0;i<_num;i++) \
 		{ \
@@ -1134,7 +1134,7 @@ namespace KviTheme
 				} \
 			} \
 		}
-		
+
 		#define READ_ALL_OPTIONS(_num,_table,_readFnc) \
 		for(i=0;i<_num;i++) \
 		{ \
@@ -1144,7 +1144,7 @@ namespace KviTheme
 				_table[i].option = cfg._readFnc(_table[i].name,_table[i].option); \
 			} \
 		}
-	
+
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,readRectEntry)
 		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,readBoolEntry)
 		READ_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable,readQStringEntry)
@@ -1155,12 +1155,12 @@ namespace KviTheme
 		READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,readStringListEntry)
 		READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS,g_mirccolorOptionsTable,readColorEntry)
 		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS,g_iccolorOptionsTable,readColorEntry)
-	
+
 		#undef READ_OPTIONS
 		#undef READ_ALL_OPTIONS
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
-	
-	
+
+
 		// the pixmap options need special processing
 		for(i=0;i<KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
@@ -1177,19 +1177,19 @@ namespace KviTheme
 					} else {
 						szBuffer = szVal;
 					}
-	
+
 					KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option);
-	
+
 					// reset anyway
 					iResetFlags |= g_pixmapOptionsTable[i].flags & KviOption_resetMask;
 				}
 			}
 		}
-	
+
 		// create the splash screen pointer if this theme has some pixmaps in it
 		if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 			KviFileUtils::writeFile(szPointerFile,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-	
+
 		// force reloading of images anyway
 		g_pApp->optionResetUpdate(iResetFlags | KviOption_resetReloadImages);
 
@@ -1305,7 +1305,7 @@ void KviApp::optionResetUpdate(int flags)
 	{
 		g_pApp->restartLagMeters();
 	}
-	
+
 	if(flags & KviOption_resetRecentChannels)
 	{
 		g_pApp->buildRecentChannels();
@@ -1361,7 +1361,7 @@ bool KviApp::setOptionValue(const QString &optName,const QString &value)
 		for(int i=0;i < KVI_NUM_PIXMAP_OPTIONS;i++)
 		{
 			if(KviQString::equalCI(optName,g_pixmapOptionsTable[i].name))
-			{	
+			{
 				if(!KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option))return false;
 				optionResetUpdate(g_pixmapOptionsTable[i].flags);
 				return true;

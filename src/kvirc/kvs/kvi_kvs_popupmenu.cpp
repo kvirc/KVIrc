@@ -206,7 +206,7 @@ KviKvsScript * KviKvsPopupMenuItemWithTextAndIcon::kvsText()
 
 QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLevelData * pData)
 {
-	if(KVI_OPTION_BOOL(KviOption_boolDisablePopupIcons))return 0;
+	if(!KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus))return 0;
 	if(!m_pKvsIcon)return 0;
 
 	KviKvsVariant vRet;

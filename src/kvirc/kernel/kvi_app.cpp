@@ -1414,7 +1414,7 @@ void KviApp::savePopups()
 
 void KviApp::saveInputHistory()
 {
-	if(!KVI_OPTION_BOOL(KviOption_boolDisableInputHistory))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 	{
 		QString tmp;
 		getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_INPUTHISTORY);
