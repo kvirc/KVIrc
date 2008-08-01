@@ -34,6 +34,8 @@ SET(VERSION_MAJOR "4")
 SET(VERSION_BRANCH "4.0")
 SET(VERSION_RELEASE "4.0.0")
 
+STRING(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
+
 SET(CMAKE_KVIRC_VERSION_MAJOR ${VERSION_MAJOR})
 SET(CMAKE_KVIRC_VERSION_BRANCH ${VERSION_BRANCH})
 SET(CMAKE_KVIRC_VERSION_RELEASE ${VERSION_RELEASE})
@@ -734,7 +736,38 @@ ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DOXYGEN)
 ENDIF()
 
+###############################################################################
+#
+# Packaging target, `cmake . -DWITH_PACKAGING=1 && make package` to build rpm,deb
+#
+###############################################################################
 
+IF(WITH_PACKAGING)
+	INCLUDE (InstallRequiredSystemLibraries)
+	SET (CPACK_CMAKE_GENERATOR "Unix Makefiles")
+	SET (CPACK_PACKAGE_NAME "kvirc")
+	SET (CPACK_GENERATOR "DEB;RPM")
+	SET (CPACK_PACKAGE_DESCRIPTION_SUMMARY "KDE based next generation IRC client with module support")
+	SET (CPACK_PACKAGE_VENDOR "KVIrc team")
+	SET (CPACK_DEBIAN_PACKAGE_SECTION "net")
+	SET (CPACK_DEBIAN_PACKAGE_DESCRIPTION "Extensible crossplatform download manager
+	 A highly configurable graphical IRC client with an MDI interface,
+ built-in scripting language, support for IRC DCC, drag & drop file
+ browsing, and much more. KVIrc uses the KDE widget set, can be extended
+ using its own scripting language, integrates with KDE, and supports
+ custom plugins.")
+	SET (CPACK_DEBIAN_PACKAGE_DEPENDS "libqt4-core (>= 4.4.0), libqt4-gui (>= 4.4.0),  libacl1 (>= 2.2.11-1), libart-2.0-2 (>= 2.3.18), libattr1 (>= 2.4.41-1), libaudio2, libaudiofile0 (>= 0.2.3-4), libc6 (>= 2.7-1), libesd0 (>= 0.2.35) | libesd-alsa0 (>= 0.2.35), libfam0, libfontconfig1 (>= 2.4.0), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1-21), libice6 (>= 1:1.0.0), libidn11 (>= 0.5.18), libjpeg62, libperl5.10 (>= 5.10.0), libpng12-0 (>= 1.2.13-4), libsm6, libssl0.9.8 (>= 0.9.8f-5), libstdc++6 (>= 4.1.1-21), libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxft2 (>> 2.1.1), libxi6, libxinerama1, libxrandr2 (>= 2:1.2.0), libxrender1, libxt6, zlib1g (>= 1:1.1.4")
+	SET (CPACK_PACKAGE_DESCRIPTION_FILE	"${CMAKE_CURRENT_SOURCE_DIR}/README")
+	SET (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+	SET (CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
+	SET (CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
+
+#	SET (CPACK_PACKAGE_INSTALL_DIRECTORY " ${CMake_VERSION_MAJOR}.${CMAK}")
+	SET (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}")
+	SET (CPACK_PACKAGE_CONTACT "voker57@gmail.com")
+	SET (CPACK_DEBIAN_PACKAGE_MAINTAINER "Voker57")
+	INCLUDE (CPack)
+ENDIF()
 ###############################################################################
 #
 # The User documentation target (kvirc internal help)
