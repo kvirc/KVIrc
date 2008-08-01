@@ -849,6 +849,4 @@ succesfull_import:
 	fillList();
 }
 
-#ifdef COMPILE_ON_WINDOWS
-	#include "dialog.moc"
-#endif
+

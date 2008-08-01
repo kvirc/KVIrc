@@ -322,6 +322,7 @@ IF(MINGW)
         LIST(APPEND kvirc_SRCS ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o)
 ENDIF()
 
+
 ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 
 # Link libraries

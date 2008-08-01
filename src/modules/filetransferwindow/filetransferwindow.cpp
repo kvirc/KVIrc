@@ -61,7 +61,7 @@
 #endif //COMPILE_KDE_SUPPORT
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern KviFileTransferWindow * g_pFileTransferWindow;
