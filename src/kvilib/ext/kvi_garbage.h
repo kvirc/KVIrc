@@ -28,6 +28,13 @@
 #include <QObject>
 #include <QTimer>
 
+/**
+ * FIXME: this class is an obsolete.
+ *
+ * We can safelly use QObject::deleteLater() with the same functionality,
+ * and much easier.
+ */
+
 
 class KVILIB_API KviGarbageCollector : public QObject
 {
