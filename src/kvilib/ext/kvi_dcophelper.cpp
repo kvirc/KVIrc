@@ -212,7 +212,7 @@ bool KviDCOPHelper::boolRetVoidDCOPCall(const KviQCString &szObj,const KviQCStri
 	return false;
 }
 
-bool KviDCOPHelper::qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviValueList<int> &ret, int iVal)
+bool KviDCOPHelper::qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QList<int> &ret, int iVal)
 {
 	if(!ensureAppRunning(m_szAppId))
 		return false;
@@ -227,7 +227,7 @@ bool KviDCOPHelper::qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const K
 	if(!g_pApp->dcopClient()->call(m_szAppId,szObj,szFunc,data,replyType,replyData))
 		return false;
 
-	if(replyType != "KviValueList<int>")
+	if(replyType != "QList<int>")
 		return false;
 
 	QDataStream replyStream(replyData, IO_ReadOnly);

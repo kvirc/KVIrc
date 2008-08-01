@@ -103,7 +103,6 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_doublebuffer.h"
 #include "kvi_ircurl.h"
-#include "kvi_draganddrop.h"
 #include "kvi_qcstring.h"
 #include "kvi_tal_popupmenu.h"
 // FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"

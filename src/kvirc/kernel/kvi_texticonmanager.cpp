@@ -141,19 +141,20 @@ void KviTextIconManager::checkDefaultAssociations()
 
 void KviTextIconManager::load()
 {
-	KviStr tmps;
+	QString tmp;
 	int upd = 0;
-	if(g_pApp->getReadOnlyConfigPath(tmps,KVI_CONFIGFILE_TEXTICONS))
+	if(g_pApp->getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_TEXTICONS))
 	{
-		upd = load(tmps.ptr(),false);
+		upd = load(tmp,false);
 	}
 
 	if(upd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)return;
 
 	// do a merge of the texticons if we have a new config version
-	QString tmp;
 	g_pApp->getGlobalKvircDirectory(tmp,KviApp::Config,KVI_CONFIGFILE_TEXTICONS);
-	if(QFile::exists(tmp))load(tmp,true);
+	if(QFile::exists(tmp)) {
+		load(tmp,true);
+	}
 }
 
 void KviTextIconManager::save()
@@ -176,18 +177,18 @@ int KviTextIconManager::load(const QString &filename,bool bMerge)
 	if(dict)
 	{
 		KviConfigGroupIterator it(*dict);
-	
+
 		KviPointerList<QString> names;
 		names.setAutoDelete(true);
-	
+
 		while(it.current())
 		{
 			names.append(new QString(it.currentKey()));
 			++it;
 		}
-	
+
 		cfg.setGroup("TextIcons");
-	
+
 		for(QString * s = names.first();s;s = names.next())
 		{
 			int id = cfg.readIntEntry(*s,-1);

@@ -34,8 +34,8 @@
 
 #include "kvi_parameterlist.h"
 #include "kvi_frame.h"
-#include "kvi_valuelist.h"
 
+#include <QList>
 #include <QPixmap>
 #include <QSplitter>
 
@@ -83,7 +83,7 @@ void KviDebugWindow::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	KviValueList<int> def;
+	QList<int> def;
 	def.append((w * 80) / 100);
 	def.append((w * 20) / 100);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));

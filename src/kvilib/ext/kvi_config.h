@@ -29,8 +29,8 @@
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_valuelist.h"
 
+#include <QList>
 #include <QColor>
 #include <QFont>
 #include <QRect>
@@ -125,8 +125,8 @@ public:
 	void writeEntry(const QString & szKey,const QRect &rct);
 	QStringList readStringListEntry(const QString & szKey,const QStringList &list);
 	void writeEntry(const QString & szKey,const QStringList &list);
-	KviValueList<int> readIntListEntry(const QString & ,const KviValueList<int> &list);
-	void writeEntry(const QString & szKey,const KviValueList<int> &list);
+	QList<int> readIntListEntry(const QString & ,const QList<int> &list);
+	void writeEntry(const QString & szKey,const QList<int> &list);
 	QString readQStringEntry(const QString & szKey,const QString &szDefault = QString::null)
 		{ return readEntry(szKey,szDefault); };
 	//void writeEntry(const QString & szKey,const QString &szValue);

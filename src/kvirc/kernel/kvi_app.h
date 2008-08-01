@@ -126,13 +126,7 @@ public:
 
 public:
 
-	void getClipboardText(KviStr &buffer);
-	void setClipboardText(const KviStr &str);
-
-	QString getClipboardText();
-	void setClipboardText(const QString &str);
-
-
+	//FIXME: obsolete. We can use QObject::deleteLater()
 	void collectGarbage(QObject * garbage);
 
 	void destroyFrame();
@@ -147,7 +141,11 @@ public:
 	bool firstTimeRun(){ return m_bFirstTimeRun; };
 	void setupBegin();
 	void setupFinish();
+
+	/*
+	Unused
 	inline void emitRecentUrlsChanged() { emit(recentUrlsChanged()); };
+	 */
 
 	// kvi_app.cpp (Saving options)
 	void saveIrcServerDataBase();
@@ -187,23 +185,13 @@ public:
 	void getLocalKvircDirectory(KviStr  &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
 	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
 	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString::null);
-	bool trashFile(const char *filename);
 	void getChannelDumpLogFileName(QString &str);
 
 	static QTextCodec * defaultTextCodec();
 	static QTextCodec * defaultSrvCodec();
 
-	// if the mediatype can be guessed ,it is looked up in the media type save path
-	// if found , true is returned
-	// if not found or the mediatype can't be guessed then false is returned
-	bool findFileByMediaType(KviStr &szRetPath,const char * filename) KVI_DEPRECATED;
-
-	bool findImageInImageSearchPath(KviStr &szRetPath,const QString &filename);
 	bool findImageInImageSearchPath(QString &szRetPath,const QString &filename);
 
-	bool findUserFile(KviStr &szRetPath,const char *filename) KVI_DEPRECATED;
-
-	bool findImage(KviStr &szRetPath,const char *filename);
 	bool findImage(QString &szRetPath,const QString &filename);
 	bool findImageThemeOnlyCompat(QString &szRetPath,const QString &filename); // temporary compat, will be removed soon (do not use)
 	bool findSmallIcon(QString &szRetPath,const QString &filename);
@@ -223,7 +211,6 @@ public:
 	// if no config file has been found: in this case the local config
 	// directory is used
 	//
-	bool getReadOnlyConfigPath(KviStr &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
 	bool getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
 
 	// kvi_app.cpp : Window stuff
@@ -254,13 +241,9 @@ public:
 
 	void setAvatarFromOptions();
 
-	bool playFile(const char * filename,KviStr &error,KviWindow * w = 0);
-
 	// uMessageLifetime is in seconds! and 0 means "forever"
 	void notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,unsigned int uMessageLifetime);
 
-
-	void addRecentNickname(const char * newNick);
 	void addRecentNickname(const QString& newNick);
 	void addRecentChannel(const QString& chan,const QString& net);
 	QStringList* getRecentChannels(const QString& net);

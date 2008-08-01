@@ -181,7 +181,7 @@ void KviApp::getGlobalKvircDirectory(KviStr &szData,KvircSubdir dir,const QStrin
 	QString szBuffer = szData.ptr();
 	getGlobalKvircDirectory(szBuffer,dir,appendFile);
 	szData=szBuffer;
-	
+
 }
 
 //=============== getLocalKvircDirectory ================//
@@ -208,39 +208,6 @@ void KviApp::getTmpFileName(QString &szBuffer,const QString &szEndingFileName)
 		KviQString::appendFormatted(szBuffer,"kvirc_%d_%Q",tmv.tv_usec,&szFileName);
 		tmv.tv_usec++;
 	} while(KviFileUtils::fileExists(szBuffer));
-}
-
-//====================== trashFile ====================//
-//
-// Moves a file to the local trash directory
-//
-
-bool KviApp::trashFile(const char *filename)
-{
-	// Exists ?
-	QFileInfo fi = QFileInfo(QString::fromUtf8(filename));
-	if( !fi.exists() ) return false; // nothing to trash
-
-	// Build the filename
-	KviStr lastPart = filename;
-	lastPart.cutToLast(KVI_PATH_SEPARATOR_CHAR); // need only the filename
-	lastPart.append(".bak_");
-	QDateTime tm(QDateTime::currentDateTime());
-	lastPart.append(tm.toString());
-	lastPart.replaceAll(' ',"_");
-	// Ok...have lastPart.bak_Dec_11_31_1999
-	// Find the thrash directory (make it if necessary)
-	KviStr trashFile;
-	getLocalKvircDirectory(trashFile,Trash,lastPart.ptr(),true);
-	// Check if a such file already exists
-	fi.setFile(trashFile.ptr());
-	while(fi.exists())
-	{
-		trashFile.append(".rnm");
-		fi.setFile(trashFile.ptr());
-	}
-	// rename the file
-	return KviFileUtils::renameFile(filename,trashFile.ptr());
 }
 
 void KviApp::completeDirectory(const QString &word,KviPointerList<QString> * matches)
@@ -323,96 +290,6 @@ void KviApp::getChannelDumpLogFileName(QString &str)
 	KviFileUtils::adjustFilePath(str);
 }
 
-bool KviApp::findFileByMediaType(KviStr &szRetPath,const char * filename)
-{
-	g_pMediaManager->lock();
-	KviMediaType * m = g_pMediaManager->findMediaType(filename,false);
-
-	if(m)
-	{
-		if(m->szSavePath.hasData())
-		{
-			szRetPath = m->szSavePath;
-			szRetPath.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
-			szRetPath.append(filename);
-			if(KviFileUtils::fileExists(szRetPath.ptr()))
-			{
-				// check again the media type... check the magic too
-				KviMediaType * mt = g_pMediaManager->findMediaType(szRetPath.ptr());
-				if(mt == m)
-				{
-					g_pMediaManager->unlock();
-					//if(retMediaType)*retMediaType = mt;
-					QString szTmp = szRetPath.ptr(); // FIXME
-					KviFileUtils::adjustFilePath(szTmp);
-					szRetPath = szTmp;
-					return true;
-				} // else mime type not matched...we should not be looking there!
-			}
-		}
-	}
-
-	g_pMediaManager->unlock();
-	return false;
-}
-
-//===================== findUserFile =====================//
-//
-// Looks for an user file in the standard directories
-//
-
-bool KviApp::findUserFile(KviStr &szRetPath,const char *filename)
-{
-	static KviApp::KvircSubdir localsubdirs[5]={ Avatars , Incoming , Pics , Audio , Log };
-	static KviApp::KvircSubdir globalsubdirs[3]={ Avatars , Pics , Audio };
-
-	// Absolute paths can not be "found"... they are obvious
-	if(kvi_isAbsolutePath(filename))
-	{
-		szRetPath=filename;
-		QString szTmp = szRetPath.ptr(); // FIXME
-		KviFileUtils::adjustFilePath(szTmp);
-		szRetPath = szTmp;
-		return KviFileUtils::fileExists(filename);
-	}
-
-	// FIXME: #warning "Use the user defined path ?"
-
-	// lookup the magic by name match only...
-
-	if(findFileByMediaType(szRetPath,filename))return true;
-
-	int i;
-
-	for(i= 0;i<5; i++)
-	{
-		getLocalKvircDirectory(szRetPath,localsubdirs[i],filename);
-		if(KviFileUtils::fileExists(szRetPath.ptr()))return true;
-	}
-
-	for(i= 0;i<3; i++)
-	{
-		getGlobalKvircDirectory(szRetPath,globalsubdirs[i],filename);
-		if(KviFileUtils::fileExists(szRetPath.ptr()))return true;
-	}
-
-	if(findImageInImageSearchPath(szRetPath,filename))return true;
-
-	// Last resort ...
-	szRetPath = QDir::homePath();
-	szRetPath.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
-	szRetPath.append(filename);
-	if(KviFileUtils::fileExists(szRetPath.ptr()))return true;;
-
-	szRetPath = filename;
-	//if(retMediaType)*retMediaType = m;
-	return false;
-
-//gotit:
-	//if(retMediaType)*retMediaType = g_pMediaManager->findMediaType(szRetPath.ptr());
-//	return true;
-}
-
 //========================= findImage ===========================//
 //
 // Find a file inside the default "Image" directories
@@ -423,22 +300,6 @@ bool KviApp::findUserFile(KviStr &szRetPath,const char *filename)
 //
 
 // FIXME: #warning "Check WHEN findImage is used and when findUserFile is used...we have a mess here"
-
-bool KviApp::findImageInImageSearchPath(KviStr &szRetPath,const QString &filename)
-{
-	// first lookup the user defined paths
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).begin();
-			it != KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end();++it)
-	{
-		szRetPath = *it;
-		szRetPath.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
-		szRetPath.append(filename);
-		//debug("LOOK FOR %s",szRetPath.ptr());
-		if(KviFileUtils::fileExists(szRetPath.ptr()))return true;
-	}
-
-	return false;
-}
 
 bool KviApp::findImageInImageSearchPath(QString &szRetPath,const QString &filename)
 {
@@ -504,7 +365,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 				}
 			}
 		}
-	
+
 		for(i=0;i<2;i++)
 		{
 			getGlobalKvircDirectory(szBuffer,pics_globalsubdirs[i],szRetPath);
@@ -519,7 +380,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 				}
 			}
 		}
-	
+
 		// Last resort
 		szBuffer = QDir::homePath();
 		szBuffer.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
@@ -547,14 +408,6 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 	return false;
 }
 
-
-bool KviApp::findImage(KviStr &szRetPath,const char *filename)
-{
-	QString buff;
-	bool ret=findImage(buff,filename);
-	szRetPath=buff;
-	return ret;
-}
 
 bool KviApp::findImage(QString &szRetPath,const QString &filename)
 {
@@ -690,15 +543,6 @@ bool KviApp::findSmallIcon(QString &szRetPath,const QString &filename)
 //
 // We want to READ a config file...find it
 //
-
-bool KviApp::getReadOnlyConfigPath(KviStr &buffer,const char *config_name,KvircSubdir sbd,bool bNoFail)
-{
-	// DEPRECATED
-	QString tmp;
-	bool bRet = getReadOnlyConfigPath(tmp,config_name,sbd,bNoFail);
-	buffer = tmp;
-	return bRet;
-}
 
 bool KviApp::getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd,bool bNoFail)
 {

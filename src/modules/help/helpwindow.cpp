@@ -30,9 +30,9 @@
 #include "kvi_locale.h"
 #include "kvi_module.h"
 #include "kvi_config.h"
-#include "kvi_valuelist.h"
 #include "kvi_sourcesdate.h"
 
+#include <QList>
 #include <QFileInfo>
 #include <QSplitter>
 #include <QLineEdit>
@@ -51,10 +51,10 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	if(!g_bIndexingDone)
 	{
 		QString szDoclist,szDict;
-		
+
 		g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
 		g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
-		
+
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();
 		} else {
@@ -67,7 +67,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 		}
 		g_bIndexingDone=TRUE;
 	}
-	
+
 	g_pHelpWindowList->append(this);
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
@@ -76,41 +76,41 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pToolBar=new KviTalVBox(m_pSplitter);
 
 	m_pTabWidget = new QTabWidget(m_pToolBar);
-	
+
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("Index"));
-	
+
 	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
 	connect( m_pIndexSearch, SIGNAL( textChanged(const QString&) ),
 	     this, SLOT( searchInIndex(const QString&) ) );
 	connect( m_pIndexSearch, SIGNAL( returnPressed() ),
 	     this, SLOT( showIndexTopic() ) );
-	
+
 	QToolButton* pBtnRefreshIndex = new QToolButton(pSearchBox);
 	pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
 	connect(pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
 	pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index") );
-	
+
 	m_pIndexListWidget = new KviTalListWidget(m_pIndexTab);
 	QStringList docList=g_pDocIndex->titlesList();
 	m_pIndexListWidget->addItems(docList);
 	connect(m_pIndexListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(indexSelected (QListWidgetItem * )));
 	m_pIndexListWidget->sortItems();
-	
+
 	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->addTab(m_pSearchTab,__tr2qs("Search"));
-	
+
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);
 /*	connect( m_pTermsEdit, SIGNAL( textChanged(const QString&) ),
 	     this, SLOT( searchInIndex(const QString&) ) );*/
 	connect( m_pTermsEdit, SIGNAL( returnPressed() ),
 	     this, SLOT( startSearch() ) );
-	     
+
 	m_pResultBox = new KviTalListWidget(m_pSearchTab);
 	connect(m_pResultBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(searchSelected (QListWidgetItem *)));
-	
-	KviValueList<int> li;
+
+	QList<int> li;
 	li.append(width()-80);
 	li.append(80);
 	m_pSplitter->setSizes(li);
@@ -130,7 +130,7 @@ void KviHelpWindow::saveProperties(KviConfig *cfg)
 
 void KviHelpWindow::loadProperties(KviConfig *cfg)
 {
-	KviValueList<int> def;
+	QList<int> def;
 	int w = width();
 	def.append((w * 82) / 100);
 	def.append((w * 18) / 100);
@@ -201,7 +201,7 @@ void KviHelpWindow::startSearch()
 	setCursor( Qt::WaitCursor );
 	m_foundDocs.clear();
 	m_foundDocs = g_pDocIndex->query( m_terms, termSeq, seqWords );
- 
+
 	m_pResultBox->clear();
 	for ( it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it )
 		m_pResultBox->addItem( g_pDocIndex->getDocumentTitle( *it ) );

@@ -48,8 +48,6 @@
 #include "kvi_toolwindows_container.h"
 #include "kvi_qcstring.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_draganddrop.h"
-#include "kvi_valuelist.h"
 #include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -59,6 +57,7 @@
 
 #include <QPixmap>
 #include <QSplitter>
+#include <QList>
 
 KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 : KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,nick,lpConsole)
@@ -77,7 +76,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 	// The button box on the right
 	//KviTalHBox * box = new KviTalHBox(m_pTopSplitter,"button_box");
 	m_pButtonGrid= (QFrame*) new KviTalHBox(m_pButtonBox);
-	
+
 	createTextEncodingButton(m_pButtonGrid);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
@@ -85,15 +84,15 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-		
-		
+
+
 	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("Show User List"),buttonContainer(),true,"list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(m_pButtonGrid);
 #endif
-	
+
 	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query Targets"),"user_list_view");
 
 	m_pInput   = new KviInput(this,m_pUserListView);
@@ -103,7 +102,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	m_pIrcView->enableDnd(TRUE);
 	connect(m_pIrcView,SIGNAL(fileDropped(const char *)),this,SLOT(slotDndEvents(const char *)));
-	
+
 	updateCaption();
 }
 
@@ -134,43 +133,43 @@ QString KviQuery::getInfoLabelTipText()
 	{
 		QString tmp;
 		QString szMask;
-		if(e->hasUser()) 
+		if(e->hasUser())
 			szMask+=e->user();
-		else 
+		else
 			szMask+="*";
 		szMask+="@";
-		if(e->hasHost()) 
+		if(e->hasHost())
 			szMask+=e->host();
-		else 
+		else
 			szMask+="*";
 		tmp+="\n";
 		QString szChans;
 		connection()->getCommonChannels(m_szName,szChans,0);
 		if(console()->connection())
 		{
-		
+
 			txt = "<html>" \
 				"<body>" \
 				"<table width=\"100%\">";
-		
+
 			txt +=          START_TABLE_BOLD_ROW;
 			txt += __tr2qs("Query target:");
 			txt +=              END_TABLE_BOLD_ROW;
 			txt +=          "<tr><td>";
-		
+
 			if(e->hasRealName())
 				tmp=__tr2qs("%1 is %2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
 			else
 				tmp=__tr2qs("%1 is %2").arg(m_szName).arg(szMask);
-			
+
 			tmp.replace('&',"&amp;");
 			tmp.replace('<',"&lt;");
 			tmp.replace('>',"&gt;");
-			
+
 			txt += tmp;
-			
+
 			txt += "</td></tr>";
-			
+
 			if(e->hasServer())
 			{
 				txt+="<tr><td>";
@@ -180,24 +179,24 @@ QString KviQuery::getInfoLabelTipText()
 					txt+=__tr2qs("%1 is using irc server: %2").arg(m_szName).arg(e->server());
 				txt+="</td></tr>";
 			}
-			
+
 			if(e->isAway())
 			{
 				txt+="<tr><td>";
 				txt+=__tr2qs("%1 is probably away").arg(m_szName);
 				txt+="</td></tr>";
 			}
-			
+
 			txt+="<tr><td>";
 			tmp=__tr2qs("Common channels with %1: %2").arg(m_szName).arg(szChans);
-			
+
 			tmp.replace('&',"&amp;");
 			tmp.replace('<',"&lt;");
 			tmp.replace('>',"&gt;");
-			
+
 			txt+=tmp;
-			txt +="</td></tr>";	
-			
+			txt +="</td></tr>";
+
 			txt += "</table>" \
 				"</body>" \
 			"<html>";
@@ -219,14 +218,14 @@ QString KviQuery::getInfoLabelText()
 			QString szMask;
 			if(console()->connection())
 			{
-				if(e->hasUser()) 
+				if(e->hasUser())
 					szMask+=e->user();
-				else 
+				else
 					szMask+="*";
 				szMask+="@";
-				if(e->hasHost()) 
+				if(e->hasHost())
 					szMask+=e->host();
-				else 
+				else
 					szMask+="*";
 				if(e->hasRealName())
 					tmp=__tr2qs("Query with %1!%2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
@@ -250,7 +249,7 @@ QString KviQuery::getInfoLabelText()
 	return tmp;
 }
 void KviQuery::slotDndEvents(const char *file)
-{	
+{
 	KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,QString(file));
 }
 
@@ -296,7 +295,7 @@ void KviQuery::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	KviValueList<int> def;
+	QList<int> def;
 	def.append((w * 80) / 100);
 	def.append((w * 20) / 100);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
@@ -369,7 +368,7 @@ KviUserListEntry * KviQuery::setTarget(const QString &nick,const QString &user,c
 
 	KVS_TRIGGER_EVENT_3(KviEvent_OnQueryTargetAdded,this,nick,user,host);
 	updateLabelText();
-	return e;	
+	return e;
 }
 
 void KviQuery::notifyCommonChannels(const QString &nick,const QString &user,const QString &host,int iChans,const QString &szChans)
@@ -591,7 +590,7 @@ void KviQuery::ownMessage(const QString &buffer)
 	QString szTmpBuffer(buffer);
 
 	if(!d)return;
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
@@ -645,7 +644,7 @@ void KviQuery::ownMessage(const QString &buffer)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * p_Encoder = makeEncoder(); // our temp encoder
-		KviQCString szTmp;		// used to calculate the length of an encoded message	
+		KviQCString szTmp;		// used to calculate the length of an encoded message
 		int iPos;			// contains the index where to truncate szTmpBuffer
 		int iC;				// cycles counter (debugging/profiling purpose)
 		float fPosDiff;			// optimization internal; aggressivity factor
@@ -658,7 +657,7 @@ void KviQuery::ownMessage(const QString &buffer)
 			iPos=szTmpBuffer.length();
 			iC=0;
 
-			// first part (optimization): quickly find an high index that is _surely_lesser_ 
+			// first part (optimization): quickly find an high index that is _surely_lesser_
 			// than the correct one
 			while(1)
 			{
@@ -716,7 +715,7 @@ void KviQuery::ownMessage(const QString &buffer)
 			szTmpBuffer.remove(0, iPos);
 			//printf("Sent %d chars, %d remaining in the Qstring\n",iPos, szTmpBuffer.length());
 		}
-		
+
 	} else {
 		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),d))
 		{

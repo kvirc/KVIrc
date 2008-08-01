@@ -131,7 +131,7 @@
 	
 		m_ti.clear();
 	
-		KviValueList<int> ret;
+		QList<int> ret;
 		if (!qvalueListIntRetIntDCOPCall("KTorrent", "getTorrentNumbers(int)", ret, 0))
 			ERROR_RET_VOID
 	

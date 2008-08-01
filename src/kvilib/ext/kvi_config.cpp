@@ -638,9 +638,9 @@ void KviConfig::writeEntry(const QString & szKey,const QStringList &list)
 	p_group->replace(szKey,p_data);
 }
 
-////////////////////////////////// KviValueList<int>
+////////////////////////////////// QList<int>
 
-KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviValueList<int> &list)
+QList<int> KviConfig::readIntListEntry(const QString & szKey,const QList<int> &list)
 {
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
@@ -651,7 +651,7 @@ KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviVal
 	}
 
 	QStringList sl = p_str->split(",");
-	KviValueList<int> ret;
+	QList<int> ret;
 
 	//debug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
 
@@ -666,12 +666,12 @@ KviValueList<int> KviConfig::readIntListEntry(const QString & szKey,const KviVal
 }
 
 
-void KviConfig::writeEntry(const QString & szKey,const KviValueList<int> &list)
+void KviConfig::writeEntry(const QString & szKey,const QList<int> &list)
 {
 	m_bDirty = true;
 	KviConfigGroup * p_group = getCurrentGroup();
 	KviStr szData;
-	for(KviValueList<int>::ConstIterator it = list.begin();it != list.end();++it)
+	for(QList<int>::ConstIterator it = list.begin();it != list.end();++it)
 	{
 		if(szData.hasData())szData.append(',');
 		szData.append(KviStr::Format,"%d",*it);

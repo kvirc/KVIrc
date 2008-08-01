@@ -40,11 +40,11 @@
 #include "kvi_action.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_customtoolbarmanager.h"
-#include "kvi_valuelist.h"
 #include "kvi_tal_vbox.h"
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_itemdelegates.h"
 
+#include <QList>
 #include <QSplitter>
 #include <QLayout>
 #include <QToolTip>
@@ -193,7 +193,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->setColumnStretch(1,1);
 	gl->setRowStretch(6,1);
 
-	
+
 	tw->addTab(tab,__tr2qs("Properties"));
 
 
@@ -209,7 +209,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 						"the active window belongs to an irc context"));
 	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
 //	gl->addMultiCellWidget(m_pNeedsContextCheck,0,0,0,3);
-	
+
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
@@ -291,7 +291,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 //	gl->addMultiCellWidget(l,11,11,0,3);
 	gl->setColumnStretch(3,1);
 	gl->setRowStretch(11,1);
-	
+
 	tw->addTab(tab,__tr2qs("Flags"));
 	tw->setCurrentIndex(0);
 
@@ -384,14 +384,14 @@ void KviSingleActionEditor::chooseBigIcon()
 void KviSingleActionEditor::setActionData(KviActionData * d)
 {
 	m_pActionData = d;
-	
+
 	if(d)
 	{
 		unsigned int uOldFlags = d->m_uFlags;
 		d->m_uFlags = KviAction::validateFlags(d->m_uFlags);
 		if(d->m_uFlags != uOldFlags)
 			debug("invalid action flags in KviSingleActionEditor::setActionData(): %d fixed to %d",uOldFlags,d->m_uFlags);
-	
+
 		m_pNameEdit->setText(d->m_szName);
 		m_pNameEdit->setEnabled(true);
 		m_pVisibleNameEdit->setText(d->m_szVisibleName);
@@ -523,7 +523,7 @@ void KviSingleActionEditor::setActionData(KviActionData * d)
 void KviSingleActionEditor::commit()
 {
 	if(!m_pActionData)return;
-	
+
 	QString tmp = m_pNameEdit->text();
 	if(tmp != m_pActionData->m_szName)
 	{
@@ -560,7 +560,7 @@ void KviSingleActionEditor::commit()
 			m_pActionData->m_uFlags |= KviAction::NeedsConnection;
 			if(m_pEnableAtLoginCheck->isChecked())m_pActionData->m_uFlags |= KviAction::EnableAtLogin;
 		}
-		
+
 	}
 	if(m_pSpecificWindowsCheck->isChecked())
 	{
@@ -616,13 +616,13 @@ void KviActionEditorTreeView::resizeEvent(QResizeEvent * e)
 KviActionEditor::KviActionEditor(QWidget * par)
 : QWidget(par)
 {
-	
+
 	QGridLayout * l = new QGridLayout(this);
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setOpaqueResize(false);
 	l->addWidget(m_pSplitter,0,0);
-	
-	
+
+
 	KviTalVBox * box = new KviTalVBox(m_pSplitter);
 	m_pTreeWidget = new KviActionEditorTreeView(box);
 	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pTreeWidget);
@@ -693,9 +693,9 @@ void KviActionEditor::exportActions()
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += "myactions.kvs";
-	
+
 	QString szFile;
-	
+
 	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString::null,true,true,true))return;
 
 	QString szCode;
@@ -705,7 +705,7 @@ void KviActionEditor::exportActions()
 		if(m_pTreeWidget->topLevelItem(i)->isSelected())
 		{
 			KviActionData * a = ((KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->actionData();
-			
+
 			KviKvsUserAction::exportToKvs(szCode,
 				a->m_szName,
 				a->m_szScriptCode,
@@ -740,7 +740,7 @@ void KviActionEditor::deleteActions()
 
 	//if(QMessageBox::question(this,__tr2qsf("Confirm Deletion"),__tr2qsf("Do you really want to delete the selected actions ?"),__tr2qsf("Yes"),__tr2qsf("No")) != 0)
 	//	return;
-	
+
 	for(KviActionEditorTreeWidgetItem * i = l.first();i;i = l.next())
 	{
 		if(m_pSingleActionEditor->actionData() == i->actionData())
@@ -799,7 +799,7 @@ bool KviActionEditor::actionExists(const QString &szName)
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		if(((KviActionEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->actionData()->m_szName == szName)return true;
-	}	
+	}
 	return false;
 }
 
@@ -808,7 +808,7 @@ void KviActionEditor::currentItemChanged(KviTalTreeWidgetItem * i,KviTalTreeWidg
 {
 	if(m_pSingleActionEditor->actionData())
 		m_pSingleActionEditor->commit();
-	
+
 	m_pTreeWidget->update();
 
 	KviActionEditorTreeWidgetItem * it = (KviActionEditorTreeWidgetItem *)i;
@@ -940,7 +940,7 @@ void KviActionEditorWindow::loadProperties(KviConfig *cfg)
 {
 	int w = width();
 	KviWindow::loadProperties(cfg);
-	KviValueList<int> def;
+	QList<int> def;
 	def.append((w * 25) / 100);
 	def.append((w * 75) / 100);
 	m_pEditor->m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));

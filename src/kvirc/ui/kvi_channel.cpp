@@ -299,7 +299,7 @@ void KviChannel::saveProperties(KviConfig *cfg)
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
 	QList<int> tmp = m_pVertSplitter->sizes();
-	KviValueList<int> tmp2;
+	QList<int> tmp2;
 	for(QList<int>::Iterator it = tmp.begin();it != tmp.end();++it)
 		tmp2.append(*it);
 	cfg->writeEntry("VertSplitter",m_pMessageView ? tmp2 : m_VertSplitterSizesList);
@@ -313,7 +313,7 @@ void KviChannel::saveProperties(KviConfig *cfg)
 void KviChannel::loadProperties(KviConfig *cfg)
 {
 	int w = width();
-	KviValueList<int> def;
+	QList<int> def;
 	def.append((w * 75) / 100);
 	def.append((w * 15) / 100);
 	def.append((w * 10) / 100);

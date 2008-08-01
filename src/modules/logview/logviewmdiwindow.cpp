@@ -33,10 +33,10 @@
 #include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
-#include "kvi_valuelist.h"
 #include "kvi_tal_listview.h"
 #include "kvi_tal_popupmenu.h"
 
+#include <QList>
 #include <q3progressdialog.h>
 #include <QPixmap>
 #include <QSplitter>
@@ -154,7 +154,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
 	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
 
-	KviValueList<int> li;
+	QList<int> li;
 	li.append(110);
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);

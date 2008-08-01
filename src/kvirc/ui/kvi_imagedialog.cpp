@@ -112,7 +112,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 
 	g->addWidget(m_pTypeComboBox,0,0,1,3);
 
-	m_pTypeList = new KviValueList<int>;
+	m_pTypeList = new QList<int>;
 
 	QString bi = __tr2qs("Builtin images");
 

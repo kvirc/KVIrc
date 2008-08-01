@@ -33,9 +33,9 @@
 #include "kvi_userlistview.h"
 #include "kvi_time.h"
 #include "kvi_modew.h"
-#include "kvi_valuelist.h"
 #include "kvi_pointerhashtable.h"
 
+#include <QList>
 #include <QDateTime>
 #include <QStringList>
 #include <QToolButton>
@@ -141,7 +141,7 @@ protected:
 	unsigned int                          m_uActionHistoryHotActionCount;
 	KviPointerList<KviChannelAction>        * m_pActionHistory;
 	kvi_time_t                            m_tLastReceivedWhoReply;
-	KviValueList<int>                     m_VertSplitterSizesList;
+	QList<int>                     m_VertSplitterSizesList;
 	KviTalHBox                          * m_pButtonContainer;
 protected:
 	bool eventFilter(QObject *, QEvent *);

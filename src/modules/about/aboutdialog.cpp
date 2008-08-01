@@ -80,19 +80,19 @@ KviAboutDialog::KviAboutDialog()
 	setOkButton(__tr2qs_ctx("Close","about"));
 
 	// About tab
-	KviStr buffer;
+	QString buffer;
 	g_pApp->findImage(buffer,"kvi_splash.png");
 
-	QPixmap pix(buffer.ptr());
+	QPixmap pix(buffer);
 
 	QWidget * w = new QWidget(this);
 	QGridLayout * g = new QGridLayout(w);
 
 	QLabel * l = new QLabel(w);
 	l->setFrameStyle(QFrame::WinPanel | QFrame::Sunken);
-	QPalette p = l->palette(); 
-	p.setColor(backgroundRole(), Qt::black); 
-	l->setPalette(p); 
+	QPalette p = l->palette();
+	p.setColor(backgroundRole(), Qt::black);
+	l->setPalette(p);
 	l->setAlignment(Qt::AlignCenter);
 	l->setPixmap(pix);
 
@@ -208,7 +208,7 @@ KviAboutDialog::KviAboutDialog()
 
 	QString szLicensePath;
 	g_pApp->getGlobalKvircDirectory(szLicensePath,KviApp::License,"COPYING");
-	
+
 	if(!KviFileUtils::loadFile(szLicensePath,szLicense))
 	{
 		szLicense = __tr2qs_ctx("Oops... Can't find the license file...\n" \

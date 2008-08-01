@@ -901,65 +901,6 @@ void KviApp::destroySplashScreen()
 }
 
 
-QString KviApp::getClipboardText()
-{
-	/*
-	QString buffer;
-#if QT_VERSION >= 300
-	bool bOldMode = clipboard()->selectionModeEnabled();
-	clipboard()->setSelectionMode(false);
-#endif
-	buffer = clipboard()->text();
-#if QT_VERSION >= 300
-	if(buffer.isEmpty())
-	{
-		// lookup the global clipboard
-		clipboard()->setSelectionMode(true);
-		buffer = clipboard()->text();
-	}
-	clipboard()->setSelectionMode(bOldMode);
-#endif
-	return buffer;
-	*/
-
-	QString buffer = clipboard()->text(QClipboard::Clipboard);
-	if(buffer.isEmpty())return clipboard()->text(QClipboard::Selection);
-	return buffer;
-}
-
-void KviApp::getClipboardText(KviStr &buffer)
-{
-	buffer = getClipboardText();
-}
-
-void KviApp::setClipboardText(const QString &str)
-{
-	/*
-#if QT_VERSION >= 300
-	if(clipboard()->supportsSelection())
-	{
-		bool bOldMode = clipboard()->selectionModeEnabled();
-		clipboard()->setSelectionMode(true);
-		clipboard()->setText(str);
-		clipboard()->setSelectionMode(false);
-		clipboard()->setText(str);
-		clipboard()->setSelectionMode(bOldMode);
-	} else {
-#endif
-		clipboard()->setText(str);
-#if QT_VERSION >= 300
-	}
-#endif*/
-	clipboard()->setText(str,QClipboard::Clipboard);
-	clipboard()->setText(str,QClipboard::Selection);
-}
-
-void KviApp::setClipboardText(const KviStr &str)
-{
-	qDebug("WARNING: KviApp::setClipboardText(const KviStr &) is deprecated!");
-	setClipboardText(QString(str.ptr()));
-}
-
 void KviApp::setAvatarFromOptions()
 {
 	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -1850,12 +1791,6 @@ void KviApp::addRecentUrl(const QString& text)
 	emit(recentUrlsChanged());
 }
 
-void KviApp::addRecentNickname(const char * newNick)
-{
-	QString nk(newNick);
-	merge_to_stringlist_option(nk,KviOption_stringlistRecentNicknames,KVI_MAX_RECENT_NICKNAMES);
-}
-
 void KviApp::addRecentNickname(const QString& newNick)
 {
 	merge_to_stringlist_option(newNick,KviOption_stringlistRecentNicknames,KVI_MAX_RECENT_NICKNAMES);
@@ -1996,37 +1931,6 @@ void KviApp::fillRecentServersListBox(KviTalListBox * l)
 		l->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 }
 */
-
-bool KviApp::playFile(const char * filename,KviStr &error,KviWindow * w)
-{
-	g_pMediaManager->lock();
-	KviMediaType * m = g_pMediaManager->findMediaType(filename);
-	if(m)
-	{
-		KviStr szCommandline = m->szCommandline;
-		KviStr szDescription = m->szDescription;
-		g_pMediaManager->unlock();
-		if(szCommandline.hasData())
-		{
-			KviKvsVariantList l;
-			l.append(new KviKvsVariant(QString(filename)));
-
-			if(!KviKvsScript::run(szCommandline.ptr(),w ? w : g_pActiveWindow,&l))
-			{
-				error.sprintf(__tr("The commandline for media type '%s' seems to be broken"),szDescription.ptr());
-				return false;
-			}
-		} else {
-			error.sprintf(__tr("Media type of file %s matched to '%s' but no commandline specified"),filename,szDescription.ptr());
-			return false;
-		}
-	} else {
-		g_pMediaManager->unlock();
-		error.sprintf(__tr("No idea on how to play file %s (no media type match)"),filename);
-		return false;
-	}
-	return true;
-}
 
 void KviApp::heartbeat(kvi_time_t tNow)
 {

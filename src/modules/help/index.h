@@ -28,8 +28,8 @@
 
 #include "kvi_pointerhashtable.h"
 #include "kvi_pointerlist.h"
-#include "kvi_valuelist.h"
 
+#include <QList>
 #include <QDataStream>
 #include <QObject>
 #include <QStringList>
@@ -62,12 +62,12 @@ class Index : public QObject
 public:
 	struct Entry {
 		Entry( int d ) { documents.append( Document( d, 1 ) ); }
-		Entry( KviValueList<Document> l ) : documents( l ) {}
-		KviValueList<Document> documents;
+		Entry( QList<Document> l ) : documents( l ) {}
+		QList<Document> documents;
 	};
 	struct PosEntry {
 		PosEntry( int p ) { positions.append( p ); }
-		KviValueList<uint> positions;
+		QList<uint> positions;
 	};
 	Index( const QString &dp, const QString &hp );
 	Index( const QStringList &dl, const QString &hp );
@@ -92,7 +92,7 @@ private:
 	void insertInDict( const QString&, int );
 	QStringList getWildcardTerms( const QString& );
 	QStringList split( const QString& );
-	KviValueList<Document> setupDummyTerm( const QStringList& );
+	QList<Document> setupDummyTerm( const QStringList& );
 	bool searchForPattern( const QStringList&, const QStringList&, const QString& );
 	void buildMiniDict( const QString& );
 	QStringList docList;
@@ -107,11 +107,11 @@ private:
 };
 
 struct Term {
-	Term( const QString &t, int f, KviValueList<Document> l )
+	Term( const QString &t, int f, QList<Document> l )
 	: term( t ), frequency( f ), documents( l ) {}
 	QString term;
 	int frequency;
-	KviValueList<Document>documents;
+	QList<Document>documents;
 };
 
 #define TermList KviPointerList<Term>

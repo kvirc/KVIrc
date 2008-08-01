@@ -449,10 +449,10 @@ void KviConsole::showNotifyList(bool bShow)
 void KviConsole::loadProperties(KviConfig *cfg)
 {
 	int w = width();
-	KviValueList<int> def;
+	QList<int> def;
 	def.append((w * 85) / 100);
 	def.append((w * 15) / 100);
-	KviValueList<int> cur = cfg->readIntListEntry("Splitter",def);
+	QList<int> cur = cfg->readIntListEntry("Splitter",def);
 	// check the size correctness
 	if(cur.count() != 2)cur = def;
 	else {

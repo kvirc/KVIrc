@@ -67,14 +67,14 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	m_pFrame = pFrame;
 	// ugh :D
 	setSizeGripEnabled(false);
-	
+
 	m_pContextPopup = 0;
 	m_pAppletsPopup = 0;
 	m_pClickedApplet = 0;
 
 	m_pAppletDescriptors = new KviPointerHashTable<QString,KviStatusBarAppletDescriptor>;
 	m_pAppletDescriptors->setAutoDelete(true);
-	
+
 	KviStatusBarClock::selfRegister(this);
 	KviStatusBarAwayIndicator::selfRegister(this);
 	KviStatusBarLagIndicator::selfRegister(this);
@@ -107,7 +107,7 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	connect(m_pFrame,SIGNAL(activeConnectionUserModeChanged()),this,SLOT(setPermanentMessage()));
 	connect(m_pFrame,SIGNAL(activeConnectionNickNameChanged()),this,SLOT(setPermanentMessage()));
 	setPermanentMessage();
-	
+
 	m_bStopLayoutOnAddRemove = false;
 
 
@@ -129,12 +129,12 @@ KviStatusBar::~KviStatusBar()
 
 void KviStatusBar::load()
 {
-	KviStr szBuf;
+	QString szBuf;
 	if(!g_pApp->getReadOnlyConfigPath(szBuf,"statusbar.kvc"))return; // no config file at all
 
-	KviConfig cfg(szBuf.ptr(),KviConfig::Read);
+	KviConfig cfg(szBuf,KviConfig::Read);
 	cfg.setGroup("Applets");
-	
+
 	int nApplets = cfg.readIntEntry("Count",0);
 	for(int i=0;i<nApplets;i++)
 	{
@@ -166,9 +166,9 @@ void KviStatusBar::save()
 
 	KviConfig cfg(szBuf.ptr(),KviConfig::Write);
 	cfg.setGroup("Applets");
-	
+
 	cfg.writeEntry("Count",m_pAppletList->count());
-	
+
 	int i = 0;
 	for(KviStatusBarApplet * a = m_pAppletList->first();a;a = m_pAppletList->next())
 	{
@@ -219,7 +219,7 @@ bool KviStatusBar::event(QEvent * e)
 		//updateLayout();
 		return false; // send to parents too!
 	}
-	if (e->type() == QEvent::ToolTip) 
+	if (e->type() == QEvent::ToolTip)
 	{
 	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
 		tipRequest(helpEvent);
@@ -266,7 +266,7 @@ KviStatusBarApplet * KviStatusBar::appletAt(const QPoint &pnt,bool bBestMatch)
 		}
 		return m_pAppletList->last(); // last anyway
 	}
-	
+
 	for(KviStatusBarApplet * a = m_pAppletList->first();a;a = m_pAppletList->next())
 	{
 		if((local.x() >= a->x()) && (local.y() >= a->y()))
@@ -314,7 +314,7 @@ void KviStatusBar::contextMenuRequested(const QPoint &pos)
 		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(contextPopupAboutToShow()));
 	}
-	
+
 	m_pClickedApplet = appletAt(QCursor::pos());
 	m_pContextPopup->popup(mapToGlobal(pos));
 }
@@ -323,7 +323,7 @@ void KviStatusBar::contextPopupAboutToShow()
 {
 	if(!m_pContextPopup)return;
 	m_pContextPopup->clear();
-	
+
 
 	if(appletExists(m_pClickedApplet))
 	{
@@ -338,7 +338,7 @@ void KviStatusBar::contextPopupAboutToShow()
 		m_pContextPopup->insertItem(l);
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
-		
+
 		KviQString::sprintf(tmp,__tr2qs("Remove %Q"),&app);
 		m_pContextPopup->insertSeparator();
 		m_pContextPopup->insertItem(tmp,this,SLOT(removeClickedApplet()));
@@ -350,7 +350,7 @@ void KviStatusBar::contextPopupAboutToShow()
 		connect(m_pAppletsPopup,SIGNAL(aboutToShow()),this,SLOT(appletsPopupAboutToShow()));
 		connect(m_pAppletsPopup,SIGNAL(activated(int)),this,SLOT(appletsPopupActivated(int)));
 	}
-	
+
 	m_pContextPopup->insertItem(__tr2qs("Add Applet"),m_pAppletsPopup);
 }
 
@@ -365,10 +365,10 @@ void KviStatusBar::appletsPopupAboutToShow()
 {
 	if(!m_pAppletsPopup)return;
 	m_pAppletsPopup->clear();
-	
+
 	// FIXME: could we cache the module results in some way ?
 	g_pModuleManager->loadModulesByCaps("statusbarapplet");
-	
+
 	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
@@ -498,15 +498,15 @@ void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 			if(a == m_pClickedApplet)return; // no way to move
 		}
 	}
-	
+
 	m_pAppletList->removeRef(m_pClickedApplet);
-	
+
 	int index=a->index();
 
 	debug ("Move from to index %d",index);
 	//removeWidget(m_pClickedApplet);
 	insertPermanentWidget(index,m_pClickedApplet);
-	
+
 	m_pClickedApplet->setIndex(index);
 	//index++;
 	//a->setIndex(index);
@@ -560,7 +560,7 @@ void KviStatusBar::messageTimerFired()
 	// nothing else to show
 	delete m_pMessageTimer;
 	m_pMessageTimer = 0;
-	
+
 	setPermanentMessage();
 }
 

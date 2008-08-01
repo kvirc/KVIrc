@@ -51,7 +51,6 @@
 #include "kvi_kvs_kernel.h"
 #include "kvi_doublebuffer.h"
 #include "kvi_texticonmanager.h"
-#include "kvi_draganddrop.h"
 #include "kvi_pointerlist.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"

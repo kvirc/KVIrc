@@ -30,7 +30,6 @@
 #include "kvi_actionmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_locale.h"
-#include "kvi_draganddrop.h"
 #include "kvi_tal_listwidget.h"
 
 #include <QLayout>

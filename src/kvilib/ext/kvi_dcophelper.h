@@ -28,11 +28,11 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
-#include "kvi_valuelist.h"
+#include <QList>
 
 #ifdef COMPILE_KDE3_SUPPORT
 
-typedef KviValueList<KviQCString> KviQCStringList;
+typedef QList<KviQCString> KviQCStringList;
 
 class KVILIB_API KviDCOPHelper
 {
@@ -72,7 +72,7 @@ protected:
 	bool 	intRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,int &ret, int iVal);
 	bool 	boolRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool &ret);
 
-	bool		qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviValueList<int> &ret, int iVal);
+	bool		qvalueListIntRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,QList<int> &ret, int iVal);
 	bool		qcstringListRetIntDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviQCStringList &ret, int iVal);
 	bool		qcstringListRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviQCStringList &ret);
 };

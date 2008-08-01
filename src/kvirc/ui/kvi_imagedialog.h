@@ -24,14 +24,13 @@
 
 #include "kvi_settings.h"
 #include "kvi_dynamictooltip.h"
-#include "kvi_valuelist.h"
 #include "kvi_tal_listbox.h"
 
 #include <QDialog>
 #include <QComboBox>
 #include <QTimer>
 #include <QStringList>
-
+#include <QList>
 
 class KviImageDialogItem : public KviTalListBoxPixmap
 {
@@ -71,7 +70,7 @@ public:
 	virtual ~KviImageDialog();
 protected:
 	QComboBox       * m_pTypeComboBox;
-	KviValueList<int> * m_pTypeList;
+	QList<int> * m_pTypeList;
 	KviTalListBox        * m_pListBox;
 	QTimer          * m_pTimer;
 	int               m_iJobType;

@@ -473,14 +473,14 @@ KviIconManager::KviIconManager()
 
 	m_pIconWidget = 0;
 
-	KviStr buffer;
+	QString buffer;
 
 	// Load the userchanstate image
 	g_pApp->findImage(buffer,KVI_USERCHANSTATE_IMAGE_NAME);
-	g_pUserChanStatePixmap = new QPixmap(buffer.ptr());
+	g_pUserChanStatePixmap = new QPixmap(buffer);
 
 	g_pApp->findImage(buffer,KVI_ACTIVITYMETER_IMAGE_NAME);
-	g_pActivityMeterPixmap = new QPixmap(buffer.ptr());
+	g_pActivityMeterPixmap = new QPixmap(buffer);
 
 	m_pIconNames = 0;
 

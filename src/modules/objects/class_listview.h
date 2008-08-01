@@ -27,7 +27,6 @@
 //=================================================================================
 
 #include "kvi_tal_listview.h"
-#include "kvi_draganddrop.h"
 #include "class_widget.h"
 #include "class_listviewitem.h"
 

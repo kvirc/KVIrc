@@ -844,10 +844,10 @@ static void config_set_section(int flag,KviConfig * cfg)
 
 void KviApp::loadOptions()
 {
-	KviStr buffer;
+	QString buffer;
 	if(getReadOnlyConfigPath(buffer,KVI_CONFIGFILE_MAIN))
 	{
-		KviConfig cfg(buffer.ptr(),KviConfig::Read);
+		KviConfig cfg(buffer,KviConfig::Read);
 
 		int prg = 12;
 		int i;

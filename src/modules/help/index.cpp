@@ -234,7 +234,7 @@ void Index::readDict()
 	dict.clear();
 	QDataStream s( &f );
 	QString key;
-	KviValueList<Document> docs;
+	QList<Document> docs;
 	while ( !s.atEnd() ) {
 		s >> key;
 		s >> docs;
@@ -268,7 +268,7 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 	for ( it = terms.begin(); it != terms.end(); ++it ) {
 		Entry *e = 0;
 		if ( (*it).contains( '*' ) ) {
-			KviValueList<Document> wcts = setupDummyTerm( getWildcardTerms( *it ) );
+			QList<Document> wcts = setupDummyTerm( getWildcardTerms( *it ) );
 			termList.append( new Term( "dummy", wcts.count(), wcts ) );
 		} else if ( dict[ *it ] ) {
 			e = dict[ *it ];
@@ -284,14 +284,14 @@ QStringList Index::query( const QStringList &terms, const QStringList &termSeq, 
 
 	termList.removeFirst();
 
-	KviValueList<Document> minDocs = minTerm->documents;
-	KviValueList<Document>::iterator C;
-	KviValueList<Document>::ConstIterator It;
+	QList<Document> minDocs = minTerm->documents;
+	QList<Document>::iterator C;
+	QList<Document>::ConstIterator It;
 
 	Term *t = termList.first();
 	for ( ; t; t = termList.next() ) {
 
-		KviValueList<Document> docs = t->documents;
+		QList<Document> docs = t->documents;
 
 		C = minDocs.begin();
 
@@ -425,7 +425,7 @@ QStringList Index::split( const QString &str )
 	return lst;
 }
 
-KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
+QList<Document> Index::setupDummyTerm( const QStringList &terms )
 {
 	TermList termList;
 	QStringList::ConstIterator it = terms.begin();
@@ -441,17 +441,17 @@ KviValueList<Document> Index::setupDummyTerm( const QStringList &terms )
 
 	termList.sort();
 
-	KviValueList<Document> maxList;
+	QList<Document> maxList;
 	if ( !termList.count() ) return maxList;
 
 	maxList = termList.last()->documents;
 	termList.removeLast();
 
-	KviValueList<Document>::iterator docIt;
+	QList<Document>::iterator docIt;
 
 	Term *t = termList.first();
 	while ( t ) {
-		KviValueList<Document> docs = t->documents;
+		QList<Document> docs = t->documents;
 		for ( docIt = docs.begin(); docIt != docs.end(); ++docIt ) {
 			if ( maxList.indexOf( *docIt ) == -1 )
 				maxList.append( *docIt );
@@ -532,8 +532,8 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 	QStringList::ConstIterator patIt = patterns.begin();
 	QStringList wordLst;
 
-	KviValueList<uint> a, b;
-	KviValueList<uint>::iterator aIt;
+	QList<uint> a, b;
+	QList<uint>::iterator aIt;
 
 	for ( ; patIt != patterns.end(); ++patIt ) {
 		QString tmp=*patIt;

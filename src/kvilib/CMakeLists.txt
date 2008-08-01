@@ -67,7 +67,6 @@ SET(kvilib_SRCS
 	core/kvi_memmove.cpp
 	core/kvi_qstring.cpp
 	core/kvi_string.cpp
-	core/kvi_stringarray.cpp
 	ext/kvi_cmdformatter.cpp
 	ext/kvi_config.cpp
 	ext/kvi_crypt.cpp

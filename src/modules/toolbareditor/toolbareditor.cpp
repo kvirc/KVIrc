@@ -35,7 +35,6 @@
 #include "kvi_fileutils.h"
 #include "kvi_filedialog.h"
 #include "kvi_kvs_useraction.h"
-#include "kvi_draganddrop.h"
 #include "kvi_tal_tooltip.h"
 
 #include <QPushButton>
