@@ -1,8 +1,9 @@
 # translation of options_pt.po to Português
 # translation of options_pt.po to
 # translation of kvirc_pt.po to
-# 
+#
 # Copyright (C) 2002,2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+#: src/modules/options/optw_dcc.cpp:261
 # Ze <mmodem00@netvisao.pt>, 2003.
 # Américo José Melo <mmodem00@netvisao.pt>, 2004, 2005, 2006.
 # Zé <mmodem00@netvisao.pt>, 2004, 2005, 2006.
@@ -10,13 +11,12 @@
 # Zé <mmodem@netcabo.pt>, 2005.
 # Zé <mmodem00@gmail.com>, 2006, 2007, 2008.
 # Zé <ze@mandriva.org>, 2008.
-#: src/modules/options/optw_dcc.cpp:261
 msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-07-09 17:29+0200\n"
-"PO-Revision-Date: 2008-03-31 10:18+0100\n"
+"PO-Revision-Date: 2008-08-01 07:46+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -109,8 +109,7 @@ msgstr "Grelha 3D"
 
 #: src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b> Precisa reiniciar o KVirc para aplicar a mudança de língua"
+msgstr "<b>Nota:</b> Precisa reiniciar o KVirc para aplicar a mudança de língua"
 
 #: src/modules/options/optw_urlhandlers.cpp:53
 msgid "<b>file://</b> handler command:"
@@ -238,8 +237,7 @@ msgstr ""
 "\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1108
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Prima este botão para conectar ao actual servidor seleccionado.</"
 "center>"
@@ -373,15 +371,13 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>0 seg</b><br>Valor máximo: <b>86400 seg</b></center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
+msgstr "<center>Valor mínimo: <b>1 seg</b><br>Valor máximo: <b>3600 seg</b></center>"
 
 #: src/modules/options/optw_connection.cpp:150
 msgid ""
@@ -848,10 +844,8 @@ msgstr ""
 "K).</center>"
 
 #: src/modules/options/optw_servers.cpp:1082
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
-msgstr ""
-"<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
+msgstr "<center>Este é o nome do servidor ou rede actualmente seleccionado.</center>"
 
 #: src/modules/options/optw_lag.cpp:61
 msgid ""
@@ -1058,8 +1052,7 @@ msgstr ""
 "opção \"Usar ecrã KDE para transparência.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:94
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Esta opção define o nível de alerta mínimo para a barra de tarefas.</"
 "center>"
@@ -2149,7 +2142,7 @@ msgstr "Editar Regra"
 
 #: src/modules/options/optw_texticons.cpp:80
 msgid "Emoticon"
-msgstr ""
+msgstr "Emoção"
 
 #: src/modules/options/optw_antispam.cpp:36
 msgid "Enable Anti-spam For"
@@ -2186,8 +2179,7 @@ msgstr "Activar medição de lag"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
+msgstr "Activar mensagens de notificação por nível (mensagem não baseada no tipo)"
 
 #: src/modules/options/optw_connection.cpp:224
 msgid "Enable service for IPv6"
@@ -3362,8 +3354,7 @@ msgstr "Reabrir privados após reconectar"
 
 #: src/modules/options/optw_dcc.cpp:220
 msgid "Replace spaces with underscores in outgoing filenames"
-msgstr ""
-"Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
+msgstr "Substituir espaços por traços 'underscore' nos nomes de ficheiros a sair"
 
 #: src/modules/options/optw_avatar.cpp:63
 msgid "Request CTCP"
@@ -3681,8 +3672,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
+msgstr "A mascara Nickserv não pode estar vazia!<br>Tem que pelo menos ter um *."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3752,10 +3742,8 @@ msgid "This executable has no SSL support."
 msgstr "Este executável não tem suporte SSL."
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
-msgstr ""
-"este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgstr "este campo é opcional e irá aparecer como parte da resposta CTCP USERINFO."
 
 #: src/modules/options/optw_notify.cpp:109
 msgid ""
@@ -4426,5 +4414,3 @@ msgstr "lista de utilizadores,canal"
 msgid "within:"
 msgstr "dentro de:"
 
-#~ msgid "tray,dockwidget"
-#~ msgstr "barra de tarefas"
