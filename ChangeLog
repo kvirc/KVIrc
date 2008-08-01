@@ -1,14 +1,17 @@
-buh :) - 8 July 2008
+buh :) - 1 August 2008
    [KVIrc Development Team]
    - Qt4 porting (wip)
-   - Fixed many bugs
+   - Fixed tons bugs
    - New build system: removed autotools in favour of CMake (thanks to all people who aid reaching this point :)
+
+   [Alexey]
+   - Added support for animated avatars :)
 
    [CtrlAltCa]
    - KVS: added window.highlight command and $window.highlightLevel function
-   - Avatar: added the ability to expose avatar in realname; others can understand if someone has an avatar set without
-     the need of a ctcp;
-   - got Phonon working under win32
+   - Avatar: added the ability to expose avatar in realname; others can understand
+     if someone has an avatar set without the need of a ctcp;
+   - Got Phonon working under win32
 
    [HelLViS69]
    - Finally updated this file :)
@@ -17,6 +20,7 @@ buh :) - 8 July 2008
    - New KVS command: added 'continue'
    - New KVS function: added $objects.name
    - New KVS module: with serverdb you can manipulate the server list DB
+   - New KVS module: with proxydb you can manipulate the proxy list DB
 
    [Voker57]
    - New audio support: Phonon (wip)
