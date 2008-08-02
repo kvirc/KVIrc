@@ -656,7 +656,7 @@ IF(WANT_GETTEXT)
 		FOREACH(curFile ${FILES_TO_TIDY})
 			ADD_CUSTOM_COMMAND(TARGET message-tidy
 			COMMENT "tidying ${curFile}..."
-			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*\\(src/kvirc.*\\)$|#: \\1|g" "${curFile}"
+			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
 			VERBATIM
 			DEPENDS ${curFile}
 			)
