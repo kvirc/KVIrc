@@ -738,15 +738,15 @@ ENDIF()
 
 ###############################################################################
 #
-# Packaging target, `cmake . -DWITH_PACKAGING=1 && make package` to build rpm,deb
+# Package target, `cmake . -DWITH_PACKAGES="<semicolon-separated formats>" && make package` to build packages
+# ex. -DWITH_PACKAGES="RPM;DEB"
 #
 ###############################################################################
-
-IF(WITH_PACKAGING)
+IF(WITH_PACKAGES)
 	INCLUDE (InstallRequiredSystemLibraries)
 	SET (CPACK_CMAKE_GENERATOR "Unix Makefiles")
 	SET (CPACK_PACKAGE_NAME "kvirc")
-	SET (CPACK_GENERATOR "DEB;RPM")
+	SET (CPACK_GENERATOR ${WITH_PACKAGES})
 	SET (CPACK_PACKAGE_DESCRIPTION_SUMMARY "KDE based next generation IRC client with module support")
 	SET (CPACK_PACKAGE_VENDOR "KVIrc team")
 	SET (CPACK_DEBIAN_PACKAGE_SECTION "net")
@@ -762,7 +762,7 @@ IF(WITH_PACKAGING)
 	SET (CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
 	SET (CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
 
-#	SET (CPACK_PACKAGE_INSTALL_DIRECTORY " ${CMake_VERSION_MAJOR}.${CMAK}")
+	SET (CPACK_PACKAGE_INSTALL_DIRECTORY "KVIrc")
 	SET (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}")
 	SET (CPACK_PACKAGE_CONTACT "voker57@gmail.com")
 	SET (CPACK_DEBIAN_PACKAGE_MAINTAINER "Voker57")
