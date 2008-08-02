@@ -400,7 +400,9 @@ void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
-	m_bUtc = false;
+	m_bUtc  = false;
+	m_b24h  = true;
+	m_iType = KviStatusBarClock::HMS;
 
 	startTimer(1000);
 
@@ -419,13 +421,62 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 	kvi_time_t tt = kvi_unixTime();
 	struct tm * t = m_bUtc ? gmtime(&tt) : localtime(&tt);
 	QString tmp;
-	KviQString::sprintf(tmp,"%d%d:%d%d:%d%d",
-		t->tm_hour / 10,
-		t->tm_hour % 10,
-		t->tm_min / 10,
-		t->tm_min % 10,
-		t->tm_sec / 10,
-		t->tm_sec % 10);
+	QString szDay = "AM";
+
+	if(!m_b24h)
+	{
+		// 12 hours format
+		if(t->tm_hour > 12)
+		{
+			t->tm_hour-=12;
+			szDay="PM";
+		}
+
+		if(t->tm_hour == 0) t->tm_hour = 12;
+
+		switch(m_iType)
+		{
+			case KviStatusBarClock::HMS:
+				KviQString::sprintf(tmp,"%d%d:%d%d:%d%d %s",
+					t->tm_hour / 10,
+					t->tm_hour % 10,
+					t->tm_min / 10,
+					t->tm_min % 10,
+					t->tm_sec / 10,
+					t->tm_sec % 10,
+					szDay.toUtf8().data());
+				break;
+			case KviStatusBarClock::HM:
+				KviQString::sprintf(tmp,"%d%d:%d%d %s",
+					t->tm_hour / 10,
+					t->tm_hour % 10,
+					t->tm_min / 10,
+					t->tm_min % 10,
+					szDay.toUtf8().data());
+				break;
+		}
+	} else {
+		// 24 hours format
+		switch(m_iType)
+		{
+			case KviStatusBarClock::HMS:
+				KviQString::sprintf(tmp,"%d%d:%d%d:%d%d",
+					t->tm_hour / 10,
+					t->tm_hour % 10,
+					t->tm_min / 10,
+					t->tm_min % 10,
+					t->tm_sec / 10,
+					t->tm_sec % 10);
+				break;
+			case KviStatusBarClock::HM:
+				KviQString::sprintf(tmp,"%d%d:%d%d",
+					t->tm_hour / 10,
+					t->tm_hour % 10,
+					t->tm_min / 10,
+					t->tm_min % 10);
+				break;
+		}
+	}
 	setText(tmp);
 }
 
@@ -433,6 +484,21 @@ void KviStatusBarClock::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id = p->insertItem("UTC",this,SLOT(toggleUtc()));
 	p->setItemChecked(id,m_bUtc);
+	id = p->insertItem("24h",this,SLOT(toggle24h()));
+	p->setItemChecked(id,m_b24h);
+	p->insertSeparator();
+
+	// Format menu
+	QMenu * pMenu = new QMenu(p);
+	QAction * pAction = pMenu->addAction("hh:mm:ss");
+	pAction->setData(QVariant(KviStatusBarClock::HMS));
+	
+	pAction = pMenu->addAction("hh:mm");
+	pAction->setData(QVariant(KviStatusBarClock::HM));
+	connect(pMenu,SIGNAL(triggered(QAction *)),this,SLOT(changeFormat(QAction *)));
+
+	id = p->insertItem(__tr2qs("Format"),pMenu);
+	p->setItemEnabled(id,true);
 }
 
 void KviStatusBarClock::toggleUtc()
@@ -441,16 +507,37 @@ void KviStatusBarClock::toggleUtc()
 	timerEvent(0);
 }
 
+void KviStatusBarClock::toggle24h()
+{
+	m_b24h = !m_b24h;
+	timerEvent(0);
+}
+
+void KviStatusBarClock::changeFormat(QAction * act)
+{
+	bool bOk;
+	m_iType = act->data().toInt(&bOk);
+	if(!bOk) return;
+}
+
 void KviStatusBarClock::loadState(const char * prefix,KviConfig *cfg)
 {
 	KviStr tmp(KviStr::Format,"%s_Utc",prefix);
 	m_bUtc = cfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp2(KviStr::Format,"%s_24h",prefix);
+	m_b24h = cfg->readBoolEntry(tmp2.ptr(),false);
+	KviStr tmp3(KviStr::Format,"%s_Format",prefix);
+	m_iType = cfg->readIntEntry(tmp3.ptr(),KviStatusBarClock::HMS);
 }
 
 void KviStatusBarClock::saveState(const char * prefix,KviConfig *cfg)
 {
 	KviStr tmp(KviStr::Format,"%s_Utc",prefix);
 	cfg->writeEntry(tmp.ptr(),m_bUtc);
+	KviStr tmp2(KviStr::Format,"%s_24h",prefix);
+	cfg->writeEntry(tmp2.ptr(),m_b24h);
+	KviStr tmp3(KviStr::Format,"%s_Format",prefix);
+	cfg->writeEntry(tmp3.ptr(),m_iType);
 }
 
 KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
@@ -465,7 +552,6 @@ void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
 		__tr2qs("Simple Clock"),"clock",CreateStatusBarClock,"",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME)));
 	pBar->registerAppletDescriptor(d);
-	
 }
 
 

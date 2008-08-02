@@ -28,7 +28,6 @@
 #include "kvi_settings.h"
 #include "kvi_selectors.h"
 #include "kvi_pointerlist.h"
-#include <kvi_tal_groupbox.h>
 #include "kvi_tal_groupbox.h"
 
 #include <QFrame>

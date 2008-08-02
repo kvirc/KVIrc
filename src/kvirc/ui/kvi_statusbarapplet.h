@@ -116,8 +116,11 @@ class KviStatusBarClock : public KviStatusBarApplet
 public:
 	KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
 	virtual ~KviStatusBarClock();
+	enum Format { HMS , HM };
 protected:
 	bool m_bUtc;
+	bool m_b24h;
+	int  m_iType;
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
@@ -128,6 +131,8 @@ protected:
 	virtual void saveState(const char * prefix,KviConfig *cfg);
 protected slots:
 	void toggleUtc();
+	void toggle24h();
+	void changeFormat(QAction *);
 };
 
 
