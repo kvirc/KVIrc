@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 17:29+0200\n"
+"POT-Creation-Date: 2008-08-02 23:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
-"An interface to the xmms2 media player.\n"
-"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:133
+msgid "Can't load the player library (%Q)"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:142
+msgid "Can't find symbol %s in %Q"
+msgstr ""
+
+#: src/modules/mediaplayer/mp_amipinterface.cpp:83
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net.\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+
+#: src/modules/mediaplayer/mp_jukinterface.cpp:44
+msgid "An interface to the Juk KDE media player."
 msgstr ""
 
 #: src/modules/mediaplayer/mp_mprisinterface.cpp:33
@@ -54,43 +79,18 @@ msgid ""
 "nowplaying"
 msgstr ""
 
-#: src/modules/mediaplayer/mp_interface.cpp:43
-msgid "Function not implemented"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_jukinterface.cpp:44
-msgid "An interface to the Juk KDE media player."
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
 msgid ""
-"An interface to the popular UNIX xmms media player.\n"
-"Download it from http://www.xmms.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
-msgid ""
-"An interface to the popular UNIX audacious media player.\n"
-"Download it from http://audacious-media-player.org\n"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:133
-msgid "Can't load the player library (%Q)"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:142
-msgid "Can't find symbol %s in %Q"
-msgstr ""
-
-#: src/modules/mediaplayer/mp_amipinterface.cpp:83
-msgid ""
-"An interface to the AMIP plug-in.\n"
-"You can download it from http://amip.tools-for.net.\n"
-"To use this interface you must install AMIP plug-in for your player."
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
 msgstr ""
 
 #: src/modules/mediaplayer/mp_amarokinterface.cpp:42
 msgid "An interface to the AmaroK KDE media player."
+msgstr ""
+
+#: src/modules/mediaplayer/mp_interface.cpp:43
+msgid "Function not implemented"
 msgstr ""
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:66

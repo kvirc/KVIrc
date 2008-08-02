@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 17:29+0200\n"
+"POT-Creation-Date: 2008-08-02 23:18+0200\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -20,12 +20,12 @@ msgstr ""
 msgid "\"any\""
 msgstr "\"bármilyen\""
 
-#: src/modules/dcc/send.cpp:1247
+#: src/modules/dcc/send.cpp:1245
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/send.cpp:1236
-#: src/modules/dcc/send.cpp:1243
+#: src/modules/dcc/send.cpp:1234
+#: src/modules/dcc/send.cpp:1241
 msgid "%1 of %2 (%3%)"
 msgstr "%2 van hátra %1 bájtból (%3%)"
 
@@ -109,7 +109,7 @@ msgstr "(ismeretlen)"
 msgid "-c requires -i and -p"
 msgstr "a '-c' igényli '-i' és '-p' -t"
 
-#: src/modules/dcc/broker.cpp:268
+#: src/modules/dcc/broker.cpp:267
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
@@ -117,7 +117,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> kérte <b>Közvetlen Kliens Kapcsolat (DCC) létrehozását %4 "
 "</b>módban</b><br>"
 
-#: src/modules/dcc/broker.cpp:409
+#: src/modules/dcc/broker.cpp:408
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -127,7 +127,7 @@ msgstr ""
 "(vászon)</b> módban.<br>A kapcsolat célja:<b>%4</b> címen <b>%5</b> porton "
 "keresztül történne<br>"
 
-#: src/modules/dcc/broker.cpp:339
+#: src/modules/dcc/broker.cpp:338
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -137,7 +137,7 @@ msgstr ""
 "módban<b></b><br>A kapcsolat célja: <b>%4</b> címen <b>%5</b>porton "
 "keresztül történne.<br>"
 
-#: src/modules/dcc/broker.cpp:498
+#: src/modules/dcc/broker.cpp:497
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
@@ -145,7 +145,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> küldeni akar egy fájlt neked:'<b>%4</b>', ami <b>%5</b>."
 "<br>A kapcsolat célja a <b>%6</b> a <b>%7</b> porton.<br>"
 
-#: src/modules/dcc/broker.cpp:511
+#: src/modules/dcc/broker.cpp:510
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
@@ -153,7 +153,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> küldeni akar egy fájlt neked:'<b>%4</b>', ami <b>%5</b>."
 "<br>Te lennél a passzív a kapcsolaton belül.<br>"
 
-#: src/modules/dcc/broker.cpp:524
+#: src/modules/dcc/broker.cpp:523
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -177,16 +177,16 @@ msgstr ""
 msgid "<unknown size>"
 msgstr "<ismeretlen méret>"
 
-#: src/modules/dcc/send.cpp:939
+#: src/modules/dcc/send.cpp:940
 msgid "Abort"
 msgstr "Megszakítás"
 
-#: src/modules/dcc/send.cpp:910
-#: src/modules/dcc/send.cpp:921
+#: src/modules/dcc/send.cpp:911
+#: src/modules/dcc/send.cpp:922
 msgid "Aborted"
 msgstr "Megszakítva"
 
-#: src/modules/dcc/send.cpp:1792
+#: src/modules/dcc/send.cpp:1790
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Elfogadott RESUME (folytatás), adatátvitel %1 pozíciótól kezdődik"
 
@@ -212,7 +212,7 @@ msgstr ""
 msgid "Actual codec used is '%s'"
 msgstr "Aktuális codec: %s"
 
-#: src/modules/dcc/send.cpp:810
+#: src/modules/dcc/send.cpp:811
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Passzív DCC %1 kapcsolat létrehozása"
 
@@ -229,7 +229,7 @@ msgstr "Próbálkozás: passzív DCC CANAVAS (vászon) kapcsolat"
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Passzív DCC VOICE kapcsolat létrehozása"
 
-#: src/modules/dcc/send.cpp:814
+#: src/modules/dcc/send.cpp:815
 msgid "Attempting an active DCC %1 connection"
 msgstr "Aktív DCC %1 kapcsolat létrehozása"
 
@@ -246,15 +246,15 @@ msgstr "Próbálkozás aktív DCC CANAVAS (vászon) kapcsolat létrehozására"
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Aktív DCC VOICE kapcsolat létrehozása"
 
-#: src/modules/dcc/broker.cpp:552
+#: src/modules/dcc/broker.cpp:551
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Automatikus DCC fogadás %Q kérésre %Q!%Q@%Q -tól/től %Q fájlra."
 
-#: src/modules/dcc/broker.cpp:626
+#: src/modules/dcc/broker.cpp:625
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Automatikus DCC mentés: Fájl: %Q %Q mint: \r![!dbl]play $0\r%Q\r"
 
-#: src/modules/dcc/send.cpp:1275
+#: src/modules/dcc/send.cpp:1273
 msgid "Avg:"
 msgstr "Átl:"
 
@@ -267,8 +267,8 @@ msgstr ""
 "Nem tudok hallgatózni az alapértelmezett '%s' eszközön, javítsd tiltással az "
 "opciókban (a következő DCC már működni fog)"
 
-#: src/modules/dcc/broker.cpp:199
-#: src/modules/dcc/broker.cpp:816
+#: src/modules/dcc/broker.cpp:198
+#: src/modules/dcc/broker.cpp:812
 msgid "Can't open file %Q for reading"
 msgstr "Nem lehet megnyitni %Q fájlt olvasásra"
 
@@ -293,12 +293,12 @@ msgstr ""
 msgid "Can't retrieve a suitable local IPV4 address"
 msgstr "Nincs megfelelő helyi IPv4 cím"
 
-#: src/modules/dcc/broker.cpp:189
+#: src/modules/dcc/broker.cpp:188
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/send.cpp:1846
 #: src/modules/dcc/dialogs.cpp:142
+#: src/modules/dcc/send.cpp:1844
 msgid "Cancel"
 msgstr "Mégsem"
 
@@ -307,12 +307,12 @@ msgstr "Mégsem"
 msgid "Cannot send data: No active connection"
 msgstr "Nem lehet adatot küldeni: Nincs aktív kapcsolat"
 
-#: src/modules/dcc/broker.cpp:613
+#: src/modules/dcc/broker.cpp:612
 msgid "Choose Files to Save - KVIrc"
 msgstr "Fájlnév megadása mentéshez - KVIrc"
 
 #: src/modules/dcc/broker.cpp:158
-#: src/modules/dcc/broker.cpp:778
+#: src/modules/dcc/broker.cpp:775
 msgid "Choose Files to Send - KVIrc"
 msgstr "Küldendő Fájl Kiválaszása - KVIrc"
 
@@ -321,40 +321,40 @@ msgstr "Küldendő Fájl Kiválaszása - KVIrc"
 msgid "Concurrent transfer limit reached (%u of %u transfers running)"
 msgstr "Konkurens átviteli korlát elérve (%u -ból/ből %u átvitel fut)"
 
-#: src/modules/dcc/send.cpp:931
+#: src/modules/dcc/send.cpp:932
 msgid "Configure Bandwidth..."
 msgstr "Sávszélesség beállítása..."
 
-#: src/modules/dcc/send.cpp:1820
+#: src/modules/dcc/send.cpp:1818
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 
-#: src/modules/dcc/send.cpp:1681
+#: src/modules/dcc/send.cpp:1679
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/chat.cpp:517
 #: src/modules/dcc/voice.cpp:905
+#: src/modules/dcc/chat.cpp:517
 #: src/modules/dcc/canvas.cpp:281
 msgid "Connected to %Q:%Q"
 msgstr "Kapcsolódva %Q:%Q"
 
-#: src/modules/dcc/send.cpp:1474
+#: src/modules/dcc/send.cpp:1472
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/chat.cpp:180
 #: src/modules/dcc/voice.cpp:747
+#: src/modules/dcc/chat.cpp:180
 #: src/modules/dcc/canvas.cpp:107
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
 
-#: src/modules/dcc/broker.cpp:288
-#: src/modules/dcc/broker.cpp:539
+#: src/modules/dcc/broker.cpp:287
+#: src/modules/dcc/broker.cpp:538
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 Kérés - KVIrc"
 
-#: src/modules/dcc/send.cpp:1557
+#: src/modules/dcc/send.cpp:1555
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 kérés nem lett elküldve, manuális kapcsolódás szükséges"
 
@@ -366,11 +366,11 @@ msgstr "DCC %Q sikertelen: %Q"
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q kérés küldése sikertelen, manuális kapcsolat szükséges"
 
-#: src/modules/dcc/send.cpp:1619
+#: src/modules/dcc/send.cpp:1617
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s adatátvitel %Q@%Q:%Q felől, kész: \r![!dbl]play $0\r%s\r"
 
-#: src/modules/dcc/broker.cpp:415
+#: src/modules/dcc/broker.cpp:414
 msgid "DCC CANVAS request"
 msgstr "DCC CANVAS (vászon) kérés"
 
@@ -384,7 +384,7 @@ msgstr ""
 msgid "DCC Failed: %Q"
 msgstr "DCC Sikertelen %Q"
 
-#: src/modules/dcc/broker.cpp:345
+#: src/modules/dcc/broker.cpp:344
 msgid "DCC VOICE request"
 msgstr "DCC VOICE (hang) kérés"
 
@@ -396,7 +396,7 @@ msgstr "DCC VOICE kérés nem lett elküldve, várakozás manuális kapcsolódá
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "DCC VOICE nem volt engedélyezve fordításkor"
 
-#: src/modules/dcc/send.cpp:361
+#: src/modules/dcc/send.cpp:362
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
@@ -404,16 +404,16 @@ msgstr ""
 "Adatátvitel megszakítva, 30 másodperc várkozás a peerre, hogy zárja a "
 "kapcsolatot..."
 
-#: src/modules/dcc/send.cpp:368
+#: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
-#: src/modules/dcc/chat.cpp:399
 #: src/modules/dcc/voice.cpp:813
+#: src/modules/dcc/chat.cpp:399
 msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
-#: src/modules/dcc/broker.cpp:742
+#: src/modules/dcc/broker.cpp:741
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "Fájl: %s létezik, automatikus átnevezés: %Q"
 
@@ -421,7 +421,7 @@ msgstr "Fájl: %s létezik, automatikus átnevezés: %Q"
 msgid "File Already Exists - KVIrc"
 msgstr "Fájl Már Létezik - KVirc"
 
-#: src/modules/dcc/send.cpp:1132
+#: src/modules/dcc/send.cpp:1130
 msgid "From: "
 msgstr "Feladó: "
 
@@ -450,7 +450,7 @@ msgstr "Beviteli puffer"
 msgid "Input buffer: %d bytes"
 msgstr "Beviteli puffer: %d bájt"
 
-#: src/modules/dcc/send.cpp:1783
+#: src/modules/dcc/send.cpp:1781
 msgid "Internal error in RESUME request"
 msgstr "Belső hiba RESUME (folytatás) kérésnél"
 
@@ -469,7 +469,7 @@ msgstr "Érvénytelen IP cím, régi formátumban %s"
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr "Helytelen RECV kérés, Pozíció: %u nagyobb mint a fájlméret"
 
-#: src/modules/dcc/send.cpp:1788
+#: src/modules/dcc/send.cpp:1786
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Helytelen RESUME (folytatás)kérés, %1 pozíció nagyobb, mint a fájl mérete"
@@ -496,36 +496,36 @@ msgstr "Helytelen meghatározott mintavételi ráta, váltás 8000-re"
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Látszólag nem kértem ezt a dcc beszélgetést"
 
-#: src/modules/dcc/send.cpp:1823
+#: src/modules/dcc/send.cpp:1821
 msgid "Limit download bandwidth to"
 msgstr "Letöltési sávszélesség korlátozása"
 
-#: src/modules/dcc/send.cpp:1823
+#: src/modules/dcc/send.cpp:1821
 msgid "Limit upload bandwidth to"
 msgstr "Feltöltési sávszélesség korlátozása "
 
-#: src/modules/dcc/send.cpp:1481
+#: src/modules/dcc/send.cpp:1479
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/chat.cpp:182
 #: src/modules/dcc/voice.cpp:750
+#: src/modules/dcc/chat.cpp:182
 #: src/modules/dcc/canvas.cpp:83
 msgid "Listening on interface %Q port %Q"
 msgstr "Hallgatózás %Q eszközön, %Q porton"
 
-#: src/modules/dcc/send.cpp:1682
+#: src/modules/dcc/send.cpp:1680
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:519
 #: src/modules/dcc/voice.cpp:907
+#: src/modules/dcc/chat.cpp:519
 #: src/modules/dcc/canvas.cpp:283
 msgid "Local end is %Q:%Q"
 msgstr "Local end is %Q:%Q"
 
 #: src/modules/dcc/chat.cpp:242
-#: src/modules/dcc/send.cpp:1568
+#: src/modules/dcc/send.cpp:1566
 msgid "Low-level transport connection established"
 msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 
@@ -542,7 +542,7 @@ msgstr "Nincs megfelelő eszköz, amin hallgatóznék, további próbálkozások
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Nincs hallgatásra alkalmas eszköz, használd: -i"
 
-#: src/modules/dcc/send.cpp:1841
+#: src/modules/dcc/send.cpp:1839
 msgid "OK"
 msgstr "OK"
 
@@ -565,7 +565,7 @@ msgstr "Kimeneti puffer: %d bájt"
 msgid "Over&write"
 msgstr "Felülírás"
 
-#: src/modules/dcc/send.cpp:1752
+#: src/modules/dcc/send.cpp:1750
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME(folytatás) elfogadva, az átvitel %1 pozíciótól kezdődik"
 
@@ -573,19 +573,19 @@ msgstr "RESUME(folytatás) elfogadva, az átvitel %1 pozíciótól kezdődik"
 msgid "Re&sume"
 msgstr "&Folytatás"
 
-#: src/modules/dcc/send.cpp:933
+#: src/modules/dcc/send.cpp:934
 msgid "Resend DCC"
 msgstr "DCC újraküldés"
 
-#: src/modules/dcc/send.cpp:935
+#: src/modules/dcc/send.cpp:936
 msgid "Resend RevDCC"
 msgstr "RevDCC újraküldés"
 
-#: src/modules/dcc/send.cpp:934
+#: src/modules/dcc/send.cpp:935
 msgid "Resend TDCC"
 msgstr "TDCC újraküldés"
 
-#: src/modules/dcc/send.cpp:1555
+#: src/modules/dcc/send.cpp:1553
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
@@ -603,7 +603,7 @@ msgstr ""
 "Elküldött DCC CANVAS (vászon) kérés -> %Q, várakozás a távoli kliens "
 "kapcsolódására..."
 
-#: src/modules/dcc/send.cpp:840
+#: src/modules/dcc/send.cpp:841
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC RESUME elküldve, kérés %1 felé, várakozás Elfogadásra"
 
@@ -615,7 +615,7 @@ msgstr ""
 "DCC VOICE kérés (%s) elküldve %Q felé, várakozás a távoli kliens "
 "kapcsolódására.."
 
-#: src/modules/dcc/send.cpp:751
+#: src/modules/dcc/send.cpp:752
 msgid "Setting up the connection"
 msgstr "Kapcsolat beállítása"
 
@@ -624,16 +624,16 @@ msgstr "Kapcsolat beállítása"
 msgid "Slot limit reached (%u slots of %u)"
 msgstr "Slot korlát elérve (%u slot a %u -ból/ből)"
 
-#: src/modules/dcc/send.cpp:1260
+#: src/modules/dcc/send.cpp:1258
 msgid "Spd:"
 msgstr "Seb:"
 
 #: src/modules/dcc/chat.cpp:243
-#: src/modules/dcc/send.cpp:1569
+#: src/modules/dcc/send.cpp:1567
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL kézfogás megkezdése"
 
-#: src/modules/dcc/send.cpp:728
+#: src/modules/dcc/send.cpp:729
 #, c-format
 msgid "TRANSFER %d"
 msgstr "ADATÁTVITEL: %d"
@@ -709,11 +709,11 @@ msgid ""
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:283
+#: src/modules/dcc/broker.cpp:282
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr "A kapcsolat célja: <b>%1</b> <b>%2</b> porton keresztül <br>"
 
-#: src/modules/dcc/broker.cpp:273
+#: src/modules/dcc/broker.cpp:272
 msgid "The connection will be secured using SSL.<br>"
 msgstr "A kapcsolat titkosítva SSL segítségével.<br>"
 
@@ -731,7 +731,7 @@ msgstr ""
 msgid "The current window has no associated DCC session"
 msgstr "Az aktuális ablaknak nincs hozzárendelt DCC 'session'-ja"
 
-#: src/modules/dcc/broker.cpp:660
+#: src/modules/dcc/broker.cpp:659
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
@@ -741,7 +741,7 @@ msgstr ""
 "b> a létező fájlt,<br> <b>automatikusan átnevezni</b> az új fájlt, "
 "vagy<br><b>folytatni</b> egy befejezetlen letöltést?"
 
-#: src/modules/dcc/broker.cpp:672
+#: src/modules/dcc/broker.cpp:671
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
@@ -760,19 +760,19 @@ msgstr ""
 "visszafejteni: %Q"
 
 #: src/modules/dcc/chat.cpp:209
-#: src/modules/dcc/send.cpp:1509
+#: src/modules/dcc/send.cpp:1507
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
 
 #: src/modules/dcc/chat.cpp:206
-#: src/modules/dcc/send.cpp:1506
+#: src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr "A helyi IP privát cím, de az IRC szerver által nem lehet meghatározni"
 
-#: src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/send.cpp:1502
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "A helyi IP magáncím, meghatárizás az IRC szerverrel: %1"
 
@@ -858,7 +858,7 @@ msgstr ""
 "Az ablaknak nincs hozzárendelt IRC környezete (IRC környezet szükséges, "
 "kivéve -c vagy -n esetén)"
 
-#: src/modules/dcc/send.cpp:1133
+#: src/modules/dcc/send.cpp:1131
 msgid "To: "
 msgstr "Címzett:"
 
@@ -866,21 +866,21 @@ msgstr "Címzett:"
 msgid "Too many pending connections"
 msgstr "Túl sok függő kapcsolat"
 
-#: src/modules/dcc/send.cpp:1345
+#: src/modules/dcc/send.cpp:1343
 msgid "Transfer Log"
 msgstr "Adatátviteli napló"
 
-#: src/modules/dcc/send.cpp:1634
+#: src/modules/dcc/send.cpp:1632
 msgid "Transfer completed"
 msgstr "Adatátvitel kész"
 
-#: src/modules/dcc/send.cpp:920
-#: src/modules/dcc/send.cpp:1594
-#: src/modules/dcc/send.cpp:1672
+#: src/modules/dcc/send.cpp:921
+#: src/modules/dcc/send.cpp:1592
+#: src/modules/dcc/send.cpp:1670
 msgid "Transfer failed: "
 msgstr "Adatátvitel megszakadt: "
 
-#: src/modules/dcc/send.cpp:1726
+#: src/modules/dcc/send.cpp:1724
 msgid "Transferring data"
 msgstr "Adatátvitel"
 
@@ -910,7 +910,7 @@ msgstr ""
 msgid "Volume: %i"
 msgstr "Hangerő: %i"
 
-#: src/modules/dcc/send.cpp:260
+#: src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
@@ -918,13 +918,13 @@ msgstr ""
 "FIGYELMEZTETÉS: Fájlvég után további bejövő adatok mellőzése, kapcsolat "
 "lezárása"
 
-#: src/modules/dcc/send.cpp:596
+#: src/modules/dcc/send.cpp:597
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 "FIGYELMEZTETÉS: beérkező adat DCC TSEND-ként, nem kellene elismervénynek "
 "lennie"
 
-#: src/modules/dcc/send.cpp:259
+#: src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "FIGYELMEZTETÉS: A peer szemét adatot küldött a fájl végén"
 
@@ -947,7 +947,7 @@ msgstr ""
 "FIGYELMEZTETÉS: a kért mintavételi-korrekció érvénytelen: (%d): a "
 "legközelebbi egyezés: %d, ezt használom"
 
-#: src/modules/dcc/broker.cpp:279
+#: src/modules/dcc/broker.cpp:278
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Te leszel a passzív oldal a kapcsolatban.<br>"
 
@@ -959,7 +959,7 @@ msgstr ""
 "Nem csatlakoztál a szerverhez, (aktív kapcsolat szükséges, vagy legalább -c "
 "vagy -n szükséges)"
 
-#: src/modules/dcc/send.cpp:1576
+#: src/modules/dcc/send.cpp:1574
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL HIBA]: %1"
 
@@ -968,11 +968,10 @@ msgstr "[SSL HIBA]: %1"
 msgid "[SSL ERROR]: %s"
 msgstr "[SSL HIBA]: %s"
 
-#: src/modules/dcc/send.cpp:1837
+#: src/modules/dcc/send.cpp:1835
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/descriptor.cpp:67
 #: src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408
 #: src/modules/dcc/libkvidcc.cpp:443
@@ -982,11 +981,12 @@ msgstr "bájt/másodperc "
 #: src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121
 #: src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/marshal.cpp:486
-#: src/modules/dcc/marshal.cpp:516
-#: src/modules/dcc/marshal.cpp:521
 #: src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137
 #: src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/marshal.cpp:442
+#: src/modules/dcc/marshal.cpp:472
+#: src/modules/dcc/marshal.cpp:477
 msgid "unknown"
 msgstr "ismertelen"

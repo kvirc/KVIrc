@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-07-09 17:29+0200\n"
+"POT-Creation-Date: 2008-08-02 23:18+0200\n"
 "PO-Revision-Date: 2008-08-01 07:45+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -126,10 +126,12 @@ msgstr "Último erro do interface: "
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:115
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nenhum interface reprodutor de médias seleccionado. Tente /mediaplayer.detect"
+msgstr ""
+"Nenhum interface reprodutor de médias seleccionado. Tente /mediaplayer.detect"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:74
-msgid "Not sure about the results, trying a second, more agressive detection pass"
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
 "Não há certezas acerca dos resultados, tentar novamente, estado de detecção "
 "mais agressivo"
@@ -148,7 +150,8 @@ msgstr "Parece que não existe um reprodutor de médias nesta máquina"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
-msgid "The selected media player interface failed to execute the requested function"
+msgid ""
+"The selected media player interface failed to execute the requested function"
 msgstr "O interface reprodutor de médias falhou ao executar a função pedida"
 
 #: src/modules/mediaplayer/mp_winampinterface.cpp:316
@@ -164,4 +167,3 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:92
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "A tentar o interface reprodutor de médias \"%Q\": resultado %d"
-
