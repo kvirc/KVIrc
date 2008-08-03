@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-02 23:18+0200\n"
-"PO-Revision-Date: 2008-07-10 01:07+0200\n"
+"PO-Revision-Date: 2008-08-03 02:21+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -106,8 +106,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:80
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:53
 msgid "<b>file://</b> handler command:"
@@ -239,8 +238,7 @@ msgstr ""
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -388,8 +386,7 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: src/modules/options/optw_connection.cpp:150
 msgid ""
@@ -490,33 +487,24 @@ msgstr ""
 "Setzen von Variablen, etc.</center>"
 
 #: src/modules/options/optw_servers.cpp:173
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used as the default for text messages."
 "If you choose \"Use System Encoding\" then the encoding will be set to the "
 "systemwide value that you choose in the \"Encoding\" page of the options "
 "dialog.</center>"
-msgstr ""
-"<center>Hier kann die bevorzugte Kodierung für diesen Server festgelegt "
-"werden. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die "
-"Kodierung vom Netzwerk, zu dem der Server gehört, vererbt.</center>"
+msgstr "<center>Hier kann die bevorzugte Kodierung für die Server dieses Netzwerkes festgelegt werden. Diese Kodierung wird als Standard für Textnachrichten benutzt. Wenn \"Systemkodierung benutzen\" gewählt ist, wird die Kodierung auf diesen programmweiten Wert eingestellt, der auf der Seite \"Kodierung\" in den Optionen eingestellt werden kann.</center>"
 
 #: src/modules/options/optw_servers.cpp:161
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used for server specific needs, like "
 "referencing nicknames and channel names.If you choose \"Use System Encoding"
 "\" then the encoding will be set to the systemwide value that you choose in "
 "the \"Encoding\" page of the options dialog.</center>"
-msgstr ""
-"<center>Hier kann die bevorzugte Kodierung für diesen Server festgelegt "
-"werden. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die "
-"Kodierung vom Netzwerk, zu dem der Server gehört, vererbt.</center>"
+msgstr "<center>Hier kann die bevorzugte Kodierung für die Server dieses Netzwerkes festgelegt werden. Diese Kodierung wird für serverspezifische Zwecke gebraucht, z. B. um Nicknames oder Raumnamen zu referenzieren.Wenn \"Systemkodierung benutzen\" aktiviert ist, so wird die Standardkodierung benutzt, die auf der Seite \"Kodierung\" in den Optionen eingestellt werden kann.</center>"
 
 #: src/modules/options/optw_servers.cpp:659
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -524,11 +512,10 @@ msgid ""
 "network that this server belongs to.</center>"
 msgstr ""
 "<center>Hier kann die bevorzugte Kodierung für diesen Server festgelegt "
-"werden. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die "
-"Kodierung vom Netzwerk, zu dem der Server gehört, vererbt.</center>"
+"werden. Diese Kodierung wird als Standard für alle Textnachrichten benutzt. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die "
+"Kodierung vom Netzwerk, zu dem der Server gehört, geerbt.</center>"
 
 #: src/modules/options/optw_servers.cpp:647
-#, fuzzy
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used for server specific needs, like "
@@ -537,8 +524,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 "<center>Hier kann die bevorzugte Kodierung für diesen Server festgelegt "
-"werden. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die "
-"Kodierung vom Netzwerk, zu dem der Server gehört, vererbt.</center>"
+"werden. Diese Kodierung wird für alle serverspezifischen Zwecke benutzt, z. B. Nicknames und Raumnamen. Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die Kodierung vom Netzwerk, zu dem der Server gehört, geerbt.</center>"
 
 #: src/modules/options/optw_servers.cpp:1175
 msgid ""
@@ -710,7 +696,6 @@ msgstr ""
 "vermeiden.</center>"
 
 #: src/modules/options/optw_servers.cpp:742
-#, fuzzy
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -890,8 +875,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1138
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1100,8 +1084,7 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:94
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -2095,9 +2078,8 @@ msgid "Default ban mask:"
 msgstr "Standard Bann-Maske:"
 
 #: src/modules/options/optw_textencoding.cpp:41
-#, fuzzy
 msgid "Default server encoding:"
-msgstr "Standard-Textkodierung:"
+msgstr "Standard-Serverkodierung:"
 
 #: src/modules/options/optw_textencoding.cpp:49
 msgid "Default text encoding:"
@@ -2223,9 +2205,8 @@ msgid "Enable URL highlighting"
 msgstr "URL-Hervorhebung aktivieren"
 
 #: src/modules/options/optw_userlist.cpp:234
-#, fuzzy
 msgid "Enable animated avatars"
-msgstr "Lagmeter aktivieren"
+msgstr "Animierte Avatars aktivieren"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:68
 msgid "Enable fake transparency"
@@ -2245,18 +2226,15 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:117
-#, fuzzy
 msgid "Enable notifier window fade effect"
-msgstr "Ausblend-Effekt des Benachrichtigungsfensters ausschalten"
+msgstr "Ausblend-Effekt des Benachrichtigungsfensters einschalten"
 
 #: src/modules/options/optw_notify.cpp:116
-#, fuzzy
 msgid "Enable notifier window flashing"
-msgstr "Blinken des Benachrichtigungsfensters ausschalten"
+msgstr "Blinken des Benachrichtigungsfensters einschalten"
 
 #: src/modules/options/optw_connection.cpp:224
 msgid "Enable service for IPv6"
@@ -2267,14 +2245,12 @@ msgid "Enable target user tracking"
 msgstr "Benutzerverfolgung aktivieren"
 
 #: src/modules/options/optw_input.cpp:140
-#, fuzzy
 msgid "Enable the input history logging"
-msgstr "Eingabeverlaufsfenster deaktivieren und in Speicher loggen"
+msgstr "Eingabeverlaufsfenster einschalten"
 
 #: src/modules/options/optw_notify.cpp:107
-#, fuzzy
 msgid "Enable the notifier"
-msgstr "Beim Login aktivieren"
+msgstr "Benachrichtigungsfenster einschalten"
 
 #: src/modules/options/optw_tray.cpp:38
 msgid "Enable tray icon"
@@ -2663,7 +2639,7 @@ msgstr "KVIrc-Einstellungen"
 
 #: src/modules/options/optw_irc.cpp:173
 msgid "Keep away list updated by sending WHO requests"
-msgstr ""
+msgstr "Abwesenheitsliste aktuell halten durch WHO-Anfragen"
 
 #: src/modules/options/optw_irc.cpp:107
 #: src/modules/options/optw_irc.cpp:116
@@ -3345,8 +3321,7 @@ msgstr "Proxy:"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: src/modules/options/optw_query.h:28
 msgid "Query"
@@ -3538,9 +3513,8 @@ msgstr "Serverdetails"
 
 #: src/modules/options/optw_servers.cpp:156
 #: src/modules/options/optw_servers.cpp:642
-#, fuzzy
 msgid "Server Encoding:"
-msgstr "Serverping"
+msgstr "Serverkodierung:"
 
 #: src/modules/options/optw_nickserv.cpp:106
 #: src/modules/options/optw_nickserv.cpp:243
@@ -3587,9 +3561,8 @@ msgid "Show activity meter in taskbar"
 msgstr "Aktivitätsmeter in Fensterleiste anzeigen"
 
 #: src/modules/options/optw_userlist.cpp:233
-#, fuzzy
 msgid "Show avatars in userlist"
-msgstr "Avatar benutzen"
+msgstr "Avatars in Benutzerliste anzeigen"
 
 #: src/modules/options/optw_messages.cpp:89
 msgid "Show channel mode prefix"
@@ -3620,9 +3593,8 @@ msgid "Show header"
 msgstr "Kopfzeilen (header) anzeigen"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:41
-#, fuzzy
 msgid "Show icons in popup menus"
-msgstr "Zeigt ein Fenster zum Bearbeiten von Aufklappmenüs an"
+msgstr "Symbole in Aufklappmenüs anzeigen"
 
 #: src/modules/options/optw_ircoutput.cpp:56
 msgid "Show in active window"
@@ -3636,7 +3608,7 @@ msgstr ""
 
 #: src/modules/options/optw_userlist.cpp:231
 msgid "Show label with userlist stats"
-msgstr ""
+msgstr "Label mit Benutzerlistenstatistik anzeigen"
 
 #: src/modules/options/optw_lag.cpp:60
 msgid "Show lag in IRC context display"
@@ -3704,8 +3676,7 @@ msgstr "Socket"
 
 #: src/modules/options/optw_dcc.cpp:177
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr ""
-"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: src/modules/options/optw_taskbar.cpp:36
 msgid "Sort windows by name"
@@ -3756,9 +3727,8 @@ msgstr "Text"
 
 #: src/modules/options/optw_servers.cpp:168
 #: src/modules/options/optw_servers.cpp:654
-#, fuzzy
 msgid "Text Encoding:"
-msgstr "Text&kodierung"
+msgstr "Textkodierung:"
 
 #: src/modules/options/optw_texticons.h:37
 msgid "Text icons"
@@ -3779,8 +3749,7 @@ msgstr "De Spitznamen-Feld darf nicht leer sein!"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3810,8 +3779,7 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_sound.cpp:96
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:119
 msgid "This allows you to select encoding of winamp messages."
@@ -3853,8 +3821,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -13767,3 +13734,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
