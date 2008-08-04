@@ -328,8 +328,6 @@ IF(WANT_KDE4)
 		LIST(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY})
 		SET(CMAKE_STATUS_KDE4_SUPPORT "Yes")
 		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_KDE_SUPPORT)
-		SET(CMAKE_STATUS_PHONON_SUPPORT "KDE")
-		SET(COMPILE_PHONON_SUPPORT 1)
 
 		# The KDE4 cmake module has a VERY WEIRD behaviour: it adds -Wl,--no-undefined
 		# to the CMAKE_MODULE_LINKER_FLAGS .. which is BAD
@@ -656,7 +654,7 @@ IF(WANT_GETTEXT)
 		FOREACH(curFile ${FILES_TO_TIDY})
 			ADD_CUSTOM_COMMAND(TARGET message-tidy
 			COMMENT "tidying ${curFile}..."
-			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/trunk/kvirc/\\(.*\\)$|#: \\1|g" "${curFile}"
 			VERBATIM
 			DEPENDS ${curFile}
 			)
