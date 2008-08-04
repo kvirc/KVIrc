@@ -339,7 +339,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 			getLocalKvircDirectory(szBuffer,pics_localsubdirs[i],szRetPath);
 			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QFileInfo fi2(QString::fromUtf8(szBuffer));
+				QFileInfo fi2(szBuffer);
 				if(size == fi2.size())
 				{
 					// probably the same file
@@ -354,7 +354,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 			//debug("CHECK %s",szBuffer.ptr());
 			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QFileInfo fi2(QString::fromUtf8(szBuffer));
+				QFileInfo fi2(szBuffer);
 				if(size == fi2.size())
 				{
 					// probably the same file
@@ -369,7 +369,7 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 		szBuffer.append(szRetPath);
 		if(KviFileUtils::fileExists(szBuffer))
 		{
-			QFileInfo fi2(QString::fromUtf8(szBuffer));
+			QFileInfo fi2(szBuffer);
 			if(size == fi2.size())
 			{
 				// prolly the same file
