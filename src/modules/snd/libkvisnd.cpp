@@ -37,15 +37,10 @@
 #include <QSound>
 
 #ifdef COMPILE_PHONON_SUPPORT
-	#ifdef COMPILE_KDE_SUPPORT
-		#include <Phonon/MediaObject>
-		#include <Phonon/Path>
-		#include <Phonon/Global>
-	#else //!COMPILE_KDE_SUPPORT
-		#include <phonon>
-	#endif //!COMPILE_KDE_SUPPORT
+	#include <phonon/mediaobject.h>
+	#include <phonon/path.h>
 	Phonon::MediaObject * g_pPhononPlayer=0;
-        #include <QUrl>
+	#include <QUrl>
 #endif //!COMPILE_PHONON_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -98,6 +93,7 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pSoundSystemDict = new KviPointerHashTable<QString,SoundSystemRoutine>(17,false);
 	m_pSoundSystemDict->setAutoDelete(true);
 #ifdef COMPILE_PHONON_SUPPORT
+	qDebug("Inserting phonon");
 	m_pSoundSystemDict->insert("phonon",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon)));
 #endif //!COMPILE_PHONON_SUPPORT
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)

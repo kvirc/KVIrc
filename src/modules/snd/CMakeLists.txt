@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/snd
 
+INCLUDE_DIRECTORIES(${PHONON_INCLUDE_DIR})
+
 IF(WIN32)
 	LIST(APPEND LIBS -lwinmm)
 ENDIF()
