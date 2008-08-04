@@ -401,6 +401,7 @@ void KviTalWizard::showEvent(QShowEvent * e)
 			setCurrentPage(pData->pWidget);
 	}
 	QDialog::showEvent(e);
+	emit pageChanged(m_p->pCurrentPage->szTitle);
 }
 
 void KviTalWizard::closeEvent(QCloseEvent * e)
@@ -414,11 +415,13 @@ void KviTalWizard::backButtonClicked()
 	if(!m_p->pCurrentPage)
 		return;
 	setCurrentPage(m_p->findPrevEnabledPage(m_p->pCurrentPage->pWidget));
+	emit pageChanged(m_p->pCurrentPage->szTitle);
 }
 
 void KviTalWizard::nextButtonClicked()
 {
 	setCurrentPage(m_p->findNextEnabledPage(m_p->pCurrentPage->pWidget));
+	emit pageChanged(m_p->pCurrentPage->szTitle);
 }
 
 void KviTalWizard::helpButtonClicked()

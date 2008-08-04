@@ -143,11 +143,13 @@ signals:
 	/// Emitted when the help button is clicked.
 	///
 	void helpClicked();
+	void pageChanged(QString title);
 protected:
 	///
 	/// Displays the first page if no other page is shown yet.
 	///
 	virtual void showEvent(QShowEvent * e);
+
 	///
 	/// Handles redirects the close button to the "cancel" operation.
 	///
