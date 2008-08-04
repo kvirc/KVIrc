@@ -97,5 +97,5 @@ void KviTalTreeWidget::redirect_itemPressed(QTreeWidgetItem *pItem,int col)
 }
 */
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_treewidget.moc"
+	#include "kvi_tal_tablewidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

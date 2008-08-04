@@ -1061,14 +1061,14 @@ bool KviKvsObject_mledit::functionloadFile(KviKvsObjectFunctionCall *c)
 	}
 
 	QFile file( szFile );
-    if ( !file.open( IO_ReadOnly ) )
+	if ( !file.open( QIODevice::ReadOnly ) )
 	{
 		c->warning(__tr2qs(" I cannot read the file %Q'."),&szFile);
         return true;
 	}
 
 	QTextStream ts( &file );
-    QString txt = ts.read();
+    QString txt = ts.readAll();
 	if ( !Q3StyleSheet::mightBeRichText( txt ) )
 	txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
 	((KviTalMultiLineEdit *)widget())->setText( txt );

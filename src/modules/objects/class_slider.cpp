@@ -242,17 +242,17 @@ bool KviKvsObject_slider::functionsetTickmarks(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szTick,"NoMarks"))
-		((QSlider *)widget())->setTickPosition(QSlider::NoMarks);
+		((QSlider *)widget())->setTickPosition(QSlider::NoTicks);
 	else if(KviQString::equalCI(szTick,"Both"))
-		((QSlider *)widget())->setTickPosition(QSlider::Both);
+		((QSlider *)widget())->setTickPosition(QSlider::TicksBothSides);
 	else if(KviQString::equalCI(szTick,"Above"))
-		((QSlider *)widget())->setTickPosition(QSlider::Above);
+		((QSlider *)widget())->setTickPosition(QSlider::TicksAbove);
 	else if(KviQString::equalCI(szTick,"Below"))
-		((QSlider *)widget())->setTickPosition(QSlider::Below);
+		((QSlider *)widget())->setTickPosition(QSlider::TicksBelow);
 	else if(KviQString::equalCI(szTick,"Left"))
-		((QSlider *)widget())->setTickPosition(QSlider::Left);
+		((QSlider *)widget())->setTickPosition(QSlider::TicksLeft);
 	else if(KviQString::equalCI(szTick,"Right"))
-			((QSlider *)widget())->setTickPosition(QSlider::Right);
+			((QSlider *)widget())->setTickPosition(QSlider::TicksRight);
 	else c->warning( __tr2qs("Unknown tickmark '%Q'"),&szTick);
 	return true;
 }

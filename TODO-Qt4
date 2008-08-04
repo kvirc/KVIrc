@@ -3,16 +3,6 @@ Files listed below need working to be ported to Qt4.
 They still have Qt3 code, unworking Qt4 code, q3support, fuzzy ifdefs
 os simply they're still the old unchecked kvirc3 files.
 
-Qt3 support member convertFromImage() seems to behave differently than
-Qt4 fromImage(), hence the transparency is currently broken and needs
-to be revised.
-Qt3 Support Member: bool QPixmap::convertFromImage ( const QImage & image, ColorMode mode )
-Qt4: QPixmap QPixmap::fromImage ( const QImage & image, Qt::ImageConversionFlags flags = Qt::AutoColor )   [static]
-some changes in code were just
-s/convertFromImage/fromImage/ (for example revision 1886)
-which doesn't sound right
-(affected is g_pShadedChildGlobalDesktopBackground from
- src/kvirc/kernel/kvi_app.cpp and possibly some other)
 
 PLEASE KEEP THIS FILE UPDATED!
 
@@ -29,30 +19,39 @@ src/kvilib/tal
 
 src/kvirc/kernel
 	app.cpp - q3mimefactory
-	kvi_filetransfer.cpp
 	kvi_iconmanager.cpp
+	kvi_ircconnectiontargetresolver (QString related stuff)
+	kvi_ircsocket.cpp (QString related stuff)
+	
 src/kvirc/kvs
 	kvi_kvs_coresimplecommands_gl.cpp - q3mimefactory
 src/kvirc/ui:
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
-	kvi_styled_controls.cpp (QIcon stuff+segfault with mingw compiler)
 	kvi_mdichild.cpp (bug in resize)
 	kvi_menubar.cpp
+	kvi_query.cpp (QString related stuff)
 	kvi_topicw.cpp
 
 src/modules
 	dcc
 	editor - q3support
 	iograph - all excluded by #if
-	objects - q3support
+	objects - qt3support:
+		listbox
+		listview
+		listviewitem
+		menubar
+		multilineedit
+		toolbutton
+		urllabel
+		wrapper
 	options
 		optw_connection: some checkboxes not working
 		optw_dcc: some checkboxes not working
 		optw_proxy: segfault removing proxy from list (listwidget issue)
 		optw_server: buttons on the right are messed
 	torrent - broken
-	fileTransferWindow
 	links
 	help
 	list

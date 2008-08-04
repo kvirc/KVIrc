@@ -44,7 +44,7 @@
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
-				PreprocessorDefinitions="QT3_SUPPORT;WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -130,7 +130,7 @@
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
-				PreprocessorDefinitions="QT3_SUPPORT;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="2"
@@ -1179,10 +1179,6 @@
 					>
 				</File>
 				<File
-					RelativePath=".\ui\kvi_styled_controls.cpp"
-					>
-				</File>
-				<File
 					RelativePath="ui\kvi_taskbar.cpp"
 					>
 				</File>
@@ -1664,6 +1660,10 @@
 				</File>
 				<File
 					RelativePath=".\kvs\kvi_kvs_treenode_specialcommandclass.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\kvs\kvi_kvs_treenode_specialcommandcontinue.cpp"
 					>
 				</File>
 				<File
@@ -2233,6 +2233,10 @@
 				</File>
 				<File
 					RelativePath=".\kvs\kvi_kvs_treenode_specialcommandclass.h"
+					>
+				</File>
+				<File
+					RelativePath=".\kvs\kvi_kvs_treenode_specialcommandcontinue.h"
 					>
 				</File>
 				<File
@@ -3568,28 +3572,6 @@
 							Name="VCCustomBuildTool"
 							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 							Outputs="$(InputDir)\moc_$(InputName).cpp"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath=".\ui\kvi_styled_controls.h"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\$(InputName).moc"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\$(InputName).moc"
 						/>
 					</FileConfiguration>
 				</File>

@@ -222,7 +222,7 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 	{
 		for ( int idx=0;idx<modes.count();idx++)
 		{
-			mod = IO_ReadOnly;
+			mod = QIODevice::ReadOnly;
 			for(unsigned int j = 0; j < mod_num; j++)
 			{
 				if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
@@ -231,7 +231,7 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 					break;
 				}
 			}
-			if(mod!=IO_ReadOnly)
+			if(mod!=QIODevice::ReadOnly)
 				sum = sum | mod;
 			else
 				c->warning(__tr2qs("No such open mode: '%Q'"),&modes.at(idx));
@@ -335,7 +335,7 @@ bool KviKvsObject_file::functionunGetch(KviKvsObjectFunctionCall *c)
 	{
 		if (szChar.length()>1) c->warning(__tr2qs("Argument to long, using only first char"));
 		const char *ch=szChar.toUtf8().data();
-		if (m_pFile->ungetch(ch[0])<0) c->warning(__tr2qs("An error occured !"));// c->error ?
+		m_pFile->ungetChar(ch[0]);
 	}
 	return true;
 }
@@ -352,7 +352,7 @@ bool KviKvsObject_file::functionreadBlock(KviKvsObjectFunctionCall *c)
 	{
 		char * buff = new char[uLen + 1];
 		m_pFile->flush(); // advice from QFile man page (to avoid trash)
-		int rlen = m_pFile->readBlock(buff, uLen);
+		int rlen = m_pFile->read(buff, uLen);
 		buff[rlen] = '\0';
 		QString szBlock(buff);
 		c->returnValue()->setString(szBlock);
@@ -372,7 +372,7 @@ bool KviKvsObject_file::functionwriteBlock(KviKvsObjectFunctionCall *c)
 	if(!m_pFile->isOpen())
 		c->warning(__tr("File is not open !"));
 	const char *block=szBlock.toUtf8().data();
-	int rlen = m_pFile->writeBlock(block, uLen);
+	int rlen = m_pFile->write(block, uLen);
 	c->returnValue()->setInteger(rlen);
 	m_pFile->flush();
 	return true;

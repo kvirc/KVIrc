@@ -143,7 +143,7 @@ void KviFileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 
 	p->setFont(option.font);
 
-	p->setPen(option.state & QStyle::State_Selected ? option.palette.highlight() : option.palette.base());
+	p->setPen(option.state & QStyle::State_Selected ? option.palette.highlight().color() : option.palette.base().color());
 
 	p->drawRect(option.rect);
 	p->setPen(transfer->active() ? QColor(180,180,180) : QColor(200,200,200));
@@ -182,9 +182,11 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 
 	m_pInput   = new KviInput(this,0);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
-
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("transferwindow_hsplitter");
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter->setObjectName("transferwindow_vsplitter");
+	
 	m_pTableWidget  = new KviFileTransferWidget(m_pVertSplitter);
 
 	//ad-hoc itemdelegate for this view
@@ -645,7 +647,7 @@ void KviFileTransferWindow::openLocalFileFolder()
 	if(!t)return;
 	QString tmp = t->localFileName();
 	if(tmp.isEmpty())return;
-	tmp=QFileInfo(tmp).dirPath(TRUE);
+	tmp=QFileInfo(tmp).absolutePath();
 	tmp.replace('/','\\');
 	tmp.prepend("explorer.exe ");
 	WinExec(tmp.toLocal8Bit().data(), SW_MAXIMIZE);

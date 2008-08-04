@@ -37,7 +37,7 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_painter)
 protected:
 	QPainter * m_pPainter;
-	QWMatrix  m_pMatrix;
+	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
 public:

@@ -100,7 +100,7 @@ bool KviKvsObject_textbrowser::function_setSource(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QUrl url;
-	url.setFileName(szFile);
+	url.setPath(szFile);
 	if (widget()) ((QTextBrowser *)widget())->setSource(url);
 	return true;
 }

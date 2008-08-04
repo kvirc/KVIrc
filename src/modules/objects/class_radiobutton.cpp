@@ -119,7 +119,7 @@ bool KviKvsObject_radiobutton::functionSetImage(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)widget()->setIcon(*pix);
+	if(pix)((QRadioButton *)widget())->setIcon(*pix);
 	return true;
 }
 bool KviKvsObject_radiobutton::function_toggleEvent(KviKvsObjectFunctionCall *c)

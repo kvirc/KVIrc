@@ -317,17 +317,17 @@ bool KviKvsObject_combobox::functionsetInsertionPolicy(KviKvsObjectFunctionCall 
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	if(KviQString::equalCI(szPolicy,"NoInsertion"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::NoInsertion);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::NoInsert);
 	else if(KviQString::equalCI(szPolicy,"AtTop"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtTop);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtTop);
 	else if(KviQString::equalCI(szPolicy,"AtBotton"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtBottom);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtBottom);
 	else if(KviQString::equalCI(szPolicy,"AtCurrent"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::AtCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtCurrent);
 	else if(KviQString::equalCI(szPolicy,"AfterCurrent"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::AfterCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAfterCurrent);
 	else if(KviQString::equalCI(szPolicy,"BeforeCurrent"))
-			((QComboBox *)widget())->setInsertPolicy(QComboBox::BeforeCurrent);
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertBeforeCurrent);
 	else c->warning(__tr2qs("Invalid insertion Policy %Q"),&szPolicy);
 	return true;
 }

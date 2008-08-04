@@ -153,7 +153,7 @@ bool KviKvsObject_spinbox::functionsetMinValue(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("min_value",KVS_PT_INT,0,iMinvalue)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setMinValue(iMinvalue);
+    if (widget()) ((QSpinBox *)widget())->setMinimum(iMinvalue);
 	return true;
 }
 bool KviKvsObject_spinbox::functionsetMaxValue(KviKvsObjectFunctionCall *c)
@@ -162,7 +162,7 @@ bool KviKvsObject_spinbox::functionsetMaxValue(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_value",KVS_PT_INT,0,iMaxvalue)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setMaxValue(iMaxvalue);
+    if (widget()) ((QSpinBox *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
@@ -172,7 +172,7 @@ bool KviKvsObject_spinbox::functionsetLineStep(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line_step",KVS_PT_INT,0,iLinestep)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setLineStep(iLinestep);
+    if (widget()) ((QSpinBox *)widget())->setSingleStep(iLinestep);
 	return true;
 }
 
@@ -185,12 +185,12 @@ bool KviKvsObject_spinbox::functionvalue(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_spinbox::functionminValue(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->minValue());
+	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->minimum());
 	return true;
 }
 bool KviKvsObject_spinbox::functionmaxValue(KviKvsObjectFunctionCall *c)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->maxValue());
+	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->maximum());
 	return true;
 }
 bool KviKvsObject_spinbox::functionlineStep(KviKvsObjectFunctionCall *c)

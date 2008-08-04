@@ -336,9 +336,9 @@ void KviPackThemeDialog::imageSelectionChanged(const QString &szImagePath)
 	{
 		QPixmap out;
 		if(pix.width() > 300 || pix.height() > 225)
-			out.convertFromImage(pix.scaled(300,225,Qt::KeepAspectRatio,Qt::SmoothTransformation));
+			out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio,Qt::SmoothTransformation));
 		else
-			out.convertFromImage(pix);
+			out.fromImage(pix);
 		m_pImageLabel->setPixmap(out);
 		return;
 	}
@@ -371,9 +371,9 @@ bool KviPackThemeDialog::packTheme()
 	if(!pix.isNull())
 	{
 		if(pix.width() > 300 || pix.height() > 225)
-			out.convertFromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
+			out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
 		else
-			out.convertFromImage(pix);
+			out.fromImage(pix);
 	} else {
 		if(!m_szImagePath.isEmpty())
 		{

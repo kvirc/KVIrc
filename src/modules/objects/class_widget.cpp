@@ -81,13 +81,11 @@ const char * const widgettypes_tbl[] = {
 	"Dialog",
 	"Popup",
 	"Desktop",
-	"Customize",
 	"Title",
 	"StaysOnTop",
 	"SysMenu",
 	"Minimize",
 	"Maximize",
-	"NoAutoErase"
 };
 
 const Qt::WidgetAttribute widgetattributes_cod[] = {
@@ -140,17 +138,15 @@ const char * const colorrole_tbl[] = {
 
 
 const Qt::WindowType widgettypes_cod[] = {
-	Qt::WType_TopLevel,
-	Qt::WType_Dialog,
-	Qt::WType_Popup,
-	Qt::WType_Desktop,
-	Qt::WStyle_Customize,
-	Qt::WStyle_Title,
-	Qt::WStyle_StaysOnTop,
-	Qt::WStyle_SysMenu,
-	Qt::WStyle_Minimize,
-	Qt::WStyle_Maximize,
-	Qt::WNoAutoErase
+	Qt::Window,
+	Qt::Dialog,
+	Qt::Popup,
+	Qt::Desktop,
+	Qt::WindowTitleHint,
+	Qt::WindowStaysOnTopHint,
+	Qt::WindowSystemMenuHint,
+	Qt::WindowMinimizeButtonHint,
+	Qt::WindowMaximizeButtonHint,
 };
 
 #define QT_WIDGET_TABFOCUS Qt::TabFocus
@@ -411,10 +407,6 @@ const Qt::WindowType widgettypes_cod[] = {
 		Dialog		- indicates that this widget is a top-level window that should be decorated as a dialog[br]
 		Desktop		- indicates that this widget is the desktop[br]
 		Popup		- indicates that this widget is a popup top-level window[br]
-		NoAutoErase - indicates that this widget paints all its pixels. Updating, resizing, scrolling and focus changes should therefore not erase the widget.
-		Customize	- let's the user to customize the style of the widget.[br]
-		[br]
-		Valid parameter for a customized widget are:[br]
 		Title			- gives the window a title bar[br]
 		StaysOnTop	- window stays on top [br]
 		SysMenu		- add a windows system menu[br]
@@ -901,13 +893,13 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 
 			break;
 			case QEvent::MouseMove:
-				if( (((QMouseEvent *)e)->state()) & Qt::LeftButton) aparam = 0;
+				if( (((QMouseEvent *)e)->button()) & Qt::LeftButton) aparam = 0;
 				else
 				{
-					if(((QMouseEvent *)e)->state() & Qt::RightButton)aparam = 1;
+					if(((QMouseEvent *)e)->button() & Qt::RightButton)aparam = 1;
 					else
 						{
-							if(((QMouseEvent *)e)->state() & Qt::MidButton)aparam = 2;
+							if(((QMouseEvent *)e)->button() & Qt::MidButton)aparam = 2;
 							else aparam = -1;
 						}
 				}
@@ -1029,7 +1021,7 @@ bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-	widget()->repaint(bEnabled);
+	widget()->repaint();
 	return true;
 }
 
@@ -1766,8 +1758,8 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 	if(!widget())    return true;
 	if(!ob)
 	{
-		widget()->reparent(0,QPoint(widget()->x(),widget()->y()));
-		return true;
+		setParent(0); 
+   		return true;
 	}
 	else
 	if(!ob->object()->isWidgetType())
@@ -1775,7 +1767,9 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 		c->warning(__tr("Parent must be a widget object"));
 		return true;
 	}
-	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
+		setParent(((QWidget *)(ob->object()))); 
+  	
+//	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
 	return true;
 }
 

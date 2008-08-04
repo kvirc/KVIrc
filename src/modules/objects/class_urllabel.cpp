@@ -196,7 +196,7 @@ bool KviKvsObject_urlabel::eventFilter(QObject * o, QEvent * e)
 	switch(e->type())
 	{
 		case QEvent::Enter:
-			pal.setColor(QColorGroup::Foreground, m_enterClr);
+			pal.setColor(QPalette::Foreground, m_enterClr);
 			break;
 		case QEvent::Leave:
 			// this doesn't work...

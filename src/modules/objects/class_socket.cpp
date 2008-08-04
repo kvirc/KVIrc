@@ -606,12 +606,12 @@ bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
 #endif
 	{
 		debug ("ok connecting");
-		debug ("connectinhg on ip %s ",m_szRemoteIp.latin1());
+		debug ("connectinhg on ip %s ",m_szRemoteIp.toUtf8().data());
 		debug ("non so ip");
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_CONNECTING;
 		delayedConnect();
 	} else {
-		debug ("connectinhg on ip %s port %d",m_szRemoteIp.latin1(),m_uRemotePort);
+		debug ("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),m_uRemotePort);
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_DNS;
 		delayedLookupRemoteIp();
 	}
@@ -858,7 +858,9 @@ void KviKvsObject_socket::delayedConnect()
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	m_pDelayTimer = new QTimer();
 	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(doConnect()));
-	m_pDelayTimer->start(0,true);
+	m_pDelayTimer->setInterval(0);
+	m_pDelayTimer->setSingleShot(true);
+	m_pDelayTimer->start();
 }
 
 void KviKvsObject_socket::doConnect()
@@ -952,7 +954,9 @@ debug ("Socket created");
 	debug ("Socket connected");
 	m_pDelayTimer = new QTimer();
 	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(connectTimeout()));
-	m_pDelayTimer->start(m_uConnectTimeout,true);
+	m_pDelayTimer->setInterval(m_uConnectTimeout);
+	m_pDelayTimer->setSingleShot(true);
+	m_pDelayTimer->start();
 
 	m_pSn = new QSocketNotifier((int)m_sock,QSocketNotifier::Write);
 	QObject::connect(m_pSn,SIGNAL(activated(int)),this,SLOT(writeNotifierFired(int)));
@@ -974,7 +978,10 @@ void KviKvsObject_socket::delayedLookupRemoteIp()
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	m_pDelayTimer = new QTimer();
 	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(lookupRemoteIp()));
-	m_pDelayTimer->start(0,true);
+
+	m_pDelayTimer->setInterval(0);
+	m_pDelayTimer->setSingleShot(true);
+	m_pDelayTimer->start();
 }
 
 void KviKvsObject_socket::lookupRemoteIp()
@@ -1011,7 +1018,7 @@ void KviKvsObject_socket::lookupDone(KviDns *pDns)
 		return;
 	}
 	m_szRemoteIp = pDns->firstIpAddress();
-	debug ("Dns resolved in %s",m_szRemoteIp.latin1());
+	debug ("Dns resolved in %s",m_szRemoteIp.toUtf8().data());
 
 	delete m_pDns;
 	m_pDns = 0;

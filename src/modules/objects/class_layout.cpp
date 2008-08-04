@@ -244,7 +244,7 @@ bool KviKvsObject_layout::functionAddColSpacing(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QGridLayout *)object())->addColSpacing(uCol,uSpacing);
+    if (widget()) ((QGridLayout *)object())->addItem(new QSpacerItem(uSpacing,0), 0, uCol);
 	return true;
 }
 

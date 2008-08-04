@@ -152,7 +152,11 @@ bool KviKvsObject_pixmap::functionresize(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,0,uWidth)
 		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,0,uHeight)
 	KVSO_PARAMETERS_END(c)
-	m_pPixmap->resize(uWidth,uHeight);
+	if (m_pPixmap)
+	{
+		delete m_pPixmap;
+		m_pPixmap=new QPixmap(uWidth,uHeight);
+	}
 	bPixmapModified=true;
 	return true;
 }
@@ -184,6 +188,7 @@ bool KviKvsObject_pixmap::functionwidth(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(m_pPixmap->width());	
 	return true;
 }
+// maybe DEPRECATED?
 bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pPixmap)return true; 
@@ -219,7 +224,7 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	QImage *buffer=((KviKvsObject_pixmap *)pObDest)->getImage();
 	((KviKvsObject_pixmap *)pObDest)->imageChanged();
 	if (bPixmapModified) {
-		*m_pImage=m_pPixmap->convertToImage();
+		*m_pImage=m_pPixmap->toImage();
 	}
 	if (uWidth>buffer->width() || uHeight>buffer->height())
 	{
@@ -255,7 +260,7 @@ if(uXoffset+uWidth>m_pImage->width())
 		return true;
 	}
 
-	buffer->setAlphaBuffer(true);
+//	buffer->setAlphaBuffer(true);
 	int iHedge=uHeight?uHeight:m_pImage->height();
 	int iWedge=uWidth?uWidth:m_pImage->width();
 		
@@ -285,7 +290,7 @@ if(uXoffset+uWidth>m_pImage->width())
 QPixmap * KviKvsObject_pixmap::getPixmap() 
 {
 	if (bImageModified) {
-		m_pPixmap->convertFromImage(*m_pImage);
+		m_pPixmap->fromImage(*m_pImage);
 		bImageModified=false;
 	}
 	return m_pPixmap;
@@ -293,7 +298,7 @@ QPixmap * KviKvsObject_pixmap::getPixmap()
 QImage * KviKvsObject_pixmap::getImage()
 {
 	if (bPixmapModified) {
-		*m_pImage=m_pPixmap->convertToImage();
+		*m_pImage=m_pPixmap->toImage();
 		//debug ("image info2  %d and %d",test.width(),test.height());
 		
 		bPixmapModified=false;

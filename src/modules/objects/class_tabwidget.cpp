@@ -247,7 +247,7 @@ bool KviKvsObject_tabwidget::functioninsertTab(KviKvsObjectFunctionCall *c)
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix){
-			((QTabWidget *)widget())->insertTab( (iIndex,(QWidget *)(ob->object())),QIcon(*pix),szLabel);
+			((QTabWidget *)widget())->insertTab(iIndex,(QWidget *)(ob->object()),QIcon(*pix),szLabel);
 	}
 	else ((QTabWidget *)widget())->insertTab(iIndex,((QWidget *)(ob->object())),szLabel);	
 	return true;
@@ -259,7 +259,7 @@ bool KviKvsObject_tabwidget::functionsetCurrentPage(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QTabWidget *)widget())->setCurrentPage(iIndex);
+	if (widget()) ((QTabWidget *)widget())->setCurrentIndex(iIndex);
     return true;
 }
 bool KviKvsObject_tabwidget::functionsetTabToolTip(KviKvsObjectFunctionCall *c)
@@ -483,9 +483,9 @@ bool KviKvsObject_tabwidget::functionsetTabPosition(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szPos,"Top"))
-		((QTabWidget *)widget())->setTabPosition(QTabWidget::Top);
+		((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
 	else if(KviQString::equalCI(szPos,"Bottom"))
-		((QTabWidget *)widget())->setTabPosition(QTabWidget::Bottom);
+		((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
 	else c->warning( __tr2qs("Unknown position 'Q%'"),&szPos);
 	return true;
 }

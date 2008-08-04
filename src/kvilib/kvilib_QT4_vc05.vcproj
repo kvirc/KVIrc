@@ -43,12 +43,12 @@
 				Optimization="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include\&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(ZLIBINCDIR)&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;QT3_SUPPORT;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="WIN32;_DEBUG;QT3_SUPPORT;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				WarningLevel="3"
+				WarningLevel="1"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="4"
 			/>
@@ -131,12 +131,12 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include\&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(ZLIBINCDIR)&quot;"
-				PreprocessorDefinitions="WIN32;QT3_SUPPORT;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="WIN32;QT3_SUPPORT;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
 				MinimalRebuild="false"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
-				WarningLevel="3"
+				WarningLevel="0"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 			/>
@@ -198,6 +198,14 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
 			>
+			<File
+				RelativePath=".\ext\kvi_animatedpixmap.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ext\kvi_animatedpixmapcache.cpp"
+				>
+			</File>
 			<File
 				RelativePath="irc\kvi_avatar.cpp"
 				>
@@ -371,10 +379,6 @@
 				>
 			</File>
 			<File
-				RelativePath="core\kvi_stringarray.cpp"
-				>
-			</File>
-			<File
 				RelativePath="ext\kvi_stringconversion.cpp"
 				>
 			</File>
@@ -432,6 +436,10 @@
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_tabdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tablewidget.cpp"
 				>
 			</File>
 			<File
@@ -502,6 +510,23 @@
 						Description="Performing Custom Build Step $(InputName)"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\ext\kvi_animatedpixmap.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\moc_$(InputName).cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\ext\kvi_animatedpixmapcache.h"
+				>
 			</File>
 			<File
 				RelativePath="irc\kvi_avatar.h"
@@ -1628,26 +1653,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="core\kvi_stringarray.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="ext\kvi_stringconversion.h"
 				>
 				<FileConfiguration
@@ -1901,7 +1906,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1909,6 +1914,15 @@
 			<File
 				RelativePath=".\tal\kvi_tal_listwidget.h"
 				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
@@ -2094,6 +2108,28 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Performing Custom Build Step $(InputName)"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\tal\kvi_tal_tablewidget.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
@@ -2434,10 +2470,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\core\kvi_valuelist.h"
-				>
-			</File>
-			<File
 				RelativePath="config\kvi_wincfg.h"
 				>
 				<FileConfiguration
@@ -2489,6 +2521,10 @@
 			UniqueIdentifier="{fe6e9830-be46-497d-995d-44b99b58e215}"
 			ParseFiles="false"
 			>
+			<File
+				RelativePath=".\ext\moc_kvi_animatedpixmap.cpp"
+				>
+			</File>
 			<File
 				RelativePath="ext\moc_kvi_crypt.cpp"
 				>
