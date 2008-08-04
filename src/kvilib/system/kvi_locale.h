@@ -132,8 +132,6 @@ class KVILIB_API KviTranslator : public QTranslator
 		~KviTranslator();
 	public:
 	virtual QString translate(const char * context,const char * message,const char * comment) const;
-		// Deprecated in qt 4.x
-	virtual QString find(const char * context,const char * message) const;
 };
 
 

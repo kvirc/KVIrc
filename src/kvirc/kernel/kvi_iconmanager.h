@@ -423,7 +423,7 @@ signals:
 //      access is really fast. The icons used here are used mostly in KviIrcView (but not exclusively).
 //
 // The generic images are just "any" image that the underlying Qt engine
-//      is able to load. They are loaded by (relative) path and 
+//      is able to load. They are loaded by (relative) path and
 //      cached by name.
 //
 // The builtin big icons are (actually) just generic images
@@ -481,7 +481,6 @@ public:
 	// if szName is empty then it is found from szLocalPath
 	KviAvatar * getAvatar(const QString &szLocalPath,const QString &szName);
 
-	void urlToCachedFileName(KviStr &szFName);
 	void urlToCachedFileName(QString &szFName);
 
 	void clearCache();

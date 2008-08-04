@@ -73,7 +73,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_iChannels = 0;
 	m_iQueries  = 0;
 	m_iOther    = 0;
-	
+
 	m_pFlashingTimer = new QTimer(this,"flashing_timer");
 	connect( m_pFlashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()) );
 	m_bFlashed=0;
@@ -83,7 +83,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 
 	m_pTip = new KviDynamicToolTip(frm,"dock_tooltip");
 	m_pAwayPopup = new KviTalPopupMenu(0);
-	
+
 	QLabel * l = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
 	l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
@@ -91,7 +91,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);
 	m_pContextPopup->changeItem(m_iAwayMenuId,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)),__tr2qs("Away"));
-	
+
 	int id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_OPTIONS)),__tr2qs("&Configure KVIrc..."),m_pFrm,SLOT(executeInternalCommand(int)));
 	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_OPTIONS_DIALOG);
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("&About KVIrc"),m_pFrm,SLOT(executeInternalCommand(int)));
@@ -104,7 +104,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pApp,SLOT(quit()));
 	m_pContextPopup->setAccel(__tr2qs("Ctrl+Q"),id);
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
-	
+
 	QIcon icon(*g_pDock1);
 	setIcon(icon);
 
@@ -163,7 +163,7 @@ void KviTrayIcon::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
 
 	for(KviTaskBarItem * b = t->firstItem();b;b = t->nextItem())
 	{
-	
+
 		if(b->kviWindow()->view())
 		{
 			if(b->kviWindow()->view()->haveUnreadedMessages())
@@ -249,15 +249,15 @@ void KviTrayIcon::fillContextPopup()
 	{
 		m_pContextPopup->setItemVisible(m_iAwayMenuId,true);
 		m_pAwayPopup->clear();
-		
+
 		int iAllAway=m_pAwayPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on all"),this,SLOT(doAway(int)));
 		m_pAwayPopup->setItemParameter(iAllAway,-1);
-		
+
 		int iAllUnaway=m_pAwayPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on all"),this,SLOT(doAway(int)));
 		m_pAwayPopup->setItemParameter(iAllUnaway,-2);
-		
+
 		int iSeparator=m_pAwayPopup->insertSeparator();
-		
+
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
 		bool bAllAway=1;
 		bool bAllUnaway=1;
@@ -278,7 +278,7 @@ void KviTrayIcon::fillContextPopup()
 						id=m_pAwayPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(int)));
 						bAllAway=0;
 					}
-					m_pAwayPopup->setItemParameter(id,pConsole->ircContextId());
+					m_pAwayPopup->setItemParameter(id,pConsole->context()->id());
 					iNetCount++;
 				}
 			}
@@ -308,7 +308,7 @@ void KviTrayIcon::toggleParentFrame()
 		top_widget->show();
 		top_widget->raise();
 		top_widget->setActiveWindow();
-		if(g_pActiveWindow) g_pActiveWindow->setFocus(); 
+		if(g_pActiveWindow) g_pActiveWindow->setFocus();
 		if(m_pFrm->isMinimized())
 			m_pFrm->showNormal();
 		else
@@ -320,7 +320,7 @@ void KviTrayIcon::refresh()
 {
 	grabActivityInfo();
 
-	if( (m_iChannels == 2) || (m_iQueries == 2) ) 
+	if( (m_iChannels == 2) || (m_iQueries == 2) )
 	{
 		if(!m_pFlashingTimer->isActive() && KVI_OPTION_BOOL(KviOption_boolEnableTrayIconFlashing) )
 			m_pFlashingTimer->start(1000);
@@ -338,24 +338,24 @@ void KviTrayIcon::refresh()
 		thisRestrictionOfQt4IsNotNice.drawPixmap((ICON_SIZE-16)/2,(ICON_SIZE-16)/2,16,16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MESSAGE)),0,0,16,16);
 	} else {
 		thisRestrictionOfQt4IsNotNice.drawPixmap(0,0,ICON_SIZE/2,ICON_SIZE/2,
-			m_iOther ? 
+			m_iOther ?
 				((m_iOther == 2) ? *g_pDock3 : *g_pDock2)
 				: *g_pDock1,0,0,ICON_SIZE/2,ICON_SIZE/2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,
 			m_iConsoles ?
-				((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2) 
+				((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2)
 				: *g_pDock1,0,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2,
 			m_iQueries ?
-			((m_iQueries == 2) 
-			? *g_pDock3 : *g_pDock2) 
+			((m_iQueries == 2)
+			? *g_pDock3 : *g_pDock2)
 			: *g_pDock1,ICON_SIZE/2,0,ICON_SIZE/2,ICON_SIZE/2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,
 			m_iChannels ?
-			((m_iChannels == 2) ? *g_pDock3 : *g_pDock2) 
+			((m_iChannels == 2) ? *g_pDock3 : *g_pDock2)
 			: *g_pDock1
 			,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2,ICON_SIZE/2);
 
@@ -374,15 +374,15 @@ void KviTrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 void KviTrayIcon::grabActivityInfo()
 {
 	KviTaskBarBase * t = m_pFrm->taskBar();
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 	{
 		if(KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)>5) KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)=5;
 		if(KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)>5) KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)=5;
-		
+
 		if(KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)<1) KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)=1;
 		if(KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)<1) KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)=1;
-		
+
 		if(KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)<KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage))
 			KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)=KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage);
 	}
@@ -442,21 +442,21 @@ void KviTrayIcon::grabActivityInfo()
 			}
 		}
 	}
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 	{
 		if(m_iConsoles >= KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)) m_iConsoles=2;
 		else if(m_iConsoles >= KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)) m_iConsoles=1;
 		else m_iConsoles=0;
-		
+
 		if(m_iChannels >= KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)) m_iChannels=2;
 		else if(m_iChannels >= KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)) m_iChannels=1;
 		else m_iChannels=0;
-		
+
 		if(m_iQueries >= KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)) m_iQueries=2;
 		else if(m_iQueries >= KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)) m_iQueries=1;
 		else m_iQueries=0;
-		
+
 		if(m_iOther >= KVI_OPTION_UINT(KviOption_uintMinTrayHighLevelMessage)) m_iOther=2;
 		else if(m_iOther >= KVI_OPTION_UINT(KviOption_uintMinTrayLowLevelMessage)) m_iOther=1;
 		else m_iOther=0;
@@ -645,10 +645,10 @@ static bool trayicon_module_cleanup(KviModule *m)
 
 	delete g_pDock1;
 	g_pDock1 = 0;
-	
+
 	delete g_pDock2;
 	g_pDock2 = 0;
-	
+
 	delete g_pDock3;
 	g_pDock3 = 0;
 

@@ -357,7 +357,7 @@ namespace KviKvsCoreFunctions
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: boolean
 		@type:
@@ -640,7 +640,7 @@ namespace KviKvsCoreFunctions
 			cons = KVSCF_pContext->window()->console();
 		}
 
-		KVSCF_pRetBuffer->setInteger(cons ? cons->ircContextId() : 0);
+		KVSCF_pRetBuffer->setInteger(cons ? cons->context()->id() : 0);
 		return true;
 	}
 
@@ -793,14 +793,14 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviStr tmpFormat("");
-		
+
 		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			QString szAllowedCharacters;
 			//windows version of strftime()
 			//kvirc crashes if other then these characters get an % character in front of them
 			szAllowedCharacters = "AaBbcdHIjMmpSUWwXxYyZz";
 		#endif
-		
+
 		const QChar * c = KviQString::nullTerminatedArray(szFormat);
 		if(c)
 		{
@@ -832,7 +832,7 @@ namespace KviKvsCoreFunctions
 		} else {
 			KVSCF_pContext->warning(__tr2qs("The specified format string wasn't accepted by the underlying system time formatting function"));
 		}
-		
+
 		return true;
 	}
 

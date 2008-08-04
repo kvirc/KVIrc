@@ -279,7 +279,7 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 		QColor base = palette().color(QPalette::Background);
 		if(m_pWindow->console())
 		{
-			QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
+			QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 			base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 				(base.blue() + cntx.blue()) >> 1);
 			pPainter->fillRect(2,iHeight,iWidth - 4,KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT - 2,base);
@@ -1300,7 +1300,7 @@ void KviTreeTaskBarItemDelegate::paint(QPainter * p, const QStyleOptionViewItem 
 			if(KVI_OPTION_BOOL(KviOption_boolUseTaskBarIrcContextIndicator))
 			{
 				QColor base = option.palette.window().color();
-				QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
+				QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 				base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 					(base.blue() + cntx.blue()) >> 1);
 				p->fillRect(im + 2,yPixmap,14,15,base);

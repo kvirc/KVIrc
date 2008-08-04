@@ -137,9 +137,9 @@ private:
 	KviPointerList<KviIrcViewLine> * m_pMessagesStoppedWhileSelecting;
 	KviIrcView                * m_pMasterView;
 	QFontMetrics              * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
-	
+
 	QMouseEvent              *  m_pLastEvent;
-	
+
 	KviIrcViewToolTip         * m_pToolTip;
 	bool m_bHaveUnreadedHighlightedMessages;
 	bool m_bHaveUnreadedMessages;
@@ -174,7 +174,6 @@ public:
 	bool startLogging(const QString& fname = QString::null,bool bPrependCurBuffer = false);
 	void stopLogging();
 	bool isLogging(){ return (m_pLogFile != 0); };
-	void getLogFileName(KviStr &buffer);
 	void getLogFileName(QString &buffer);
 	//void add2Log(const char *buffer,int buf_len=-1);
 	void add2Log(const QString &szBuffer,int iMsgType=0);

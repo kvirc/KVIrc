@@ -1182,7 +1182,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	}
 
 	// Set the configured umode
-	KviStr modeStr = server()->initUMode();
+	QString modeStr = server()->initUMode();
 
 	if(modeStr.isEmpty())modeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 
@@ -1190,7 +1190,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Setting configured user mode"));
-		sendFmtData("MODE %s +%s",encodeText(QString(m_pUserInfo->nickName())).data(),modeStr.ptr());
+		sendFmtData("MODE %s +%s",encodeText(m_pUserInfo->nickName()).data(),encodeText(modeStr).data());
 	}
 
 	delayedStartNotifyList();
@@ -1375,16 +1375,17 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 					{
 						// ok, sent the request for this channel
 						stateData()->setLastSentChannelWhoRequest(tNow);
-						QString szChanName = encodeText(pOldest->objectName().toLatin1());
+						QString szChanName = encodeText(pOldest->windowName()).data();
 						if(_OUTPUT_PARANOIC)
 							console()->output(KVI_OUT_VERBOSE,__tr2qs("Updating away state for channel %Q"),&szChanName);
 						if(lagMeter())
 						{
-							KviStr tmp(KviStr::Format,"WHO %s",pOldest->objectName().toLatin1().data());
+							KviStr tmp(KviStr::Format,"WHO %s",encodeText(pOldest->windowName()).data());
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();
-						if(!sendFmtData("WHO %s",encodeText(QString(pOldest->objectName().toLatin1())).data()))return;
+						if(!sendFmtData("WHO %s",encodeText(pOldest->windowName()).data()))
+								return;
 					}
 				}
 			}

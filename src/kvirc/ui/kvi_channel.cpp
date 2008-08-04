@@ -255,15 +255,15 @@ void KviChannel::getBaseLogFileName(QString &buffer)
 {
 	QString szChan(windowName());
 	szChan.replace(".","%2e");
-	if (console()->connection())
+	if (connection())
 	{
 		buffer=szChan;
 		buffer.append(".");
-		buffer.append(console()->currentNetworkName());
+		buffer.append(connection()->networkName());
 	} else {
 		buffer=szChan;
 		buffer.append(".");
-		buffer.append(console()->ircContextId());
+		buffer.append(context()->id());
 	}
 }
 
@@ -285,11 +285,11 @@ void KviChannel::getConfigGroupName(QString &buf)
 	buf = windowName();
 	buf.append("@");
 
-	if (console()->connection())
+	if (connection())
 	{
 		buf.append(console()->currentNetworkName());
 	} else {
-		buf.append(console()->ircContextId());
+		buf.append(context()->id());
 	}
 }
 

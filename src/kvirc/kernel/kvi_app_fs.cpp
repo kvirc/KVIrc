@@ -175,24 +175,6 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 	KviFileUtils::adjustFilePath(szData);
 }
 
-
-void KviApp::getGlobalKvircDirectory(KviStr &szData,KvircSubdir dir,const QString &appendFile)
-{
-	QString szBuffer = szData.ptr();
-	getGlobalKvircDirectory(szBuffer,dir,appendFile);
-	szData=szBuffer;
-
-}
-
-//=============== getLocalKvircDirectory ================//
-
-void KviApp::getLocalKvircDirectory(KviStr &szData,KvircSubdir dir,const QString &appendFile,bool bCreateIfNeeded)
-{
-	QString szBuffer = szData.ptr();
-	getLocalKvircDirectory(szBuffer,dir,appendFile,bCreateIfNeeded);
-	szData=szBuffer;
-}
-
 void KviApp::getTmpFileName(QString &szBuffer,const QString &szEndingFileName)
 {
 	QString tmp;
@@ -348,16 +330,16 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 
 		if(szRetPath.isEmpty())break;
 
-		KviStr szBuffer;
+		QString szBuffer;
 
 		int i;
 
 		for(i=0;i<2;i++)
 		{
 			getLocalKvircDirectory(szBuffer,pics_localsubdirs[i],szRetPath);
-			if(KviFileUtils::fileExists(szBuffer.ptr()))
+			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QFileInfo fi2(QString::fromUtf8(szBuffer.ptr()));
+				QFileInfo fi2(QString::fromUtf8(szBuffer));
 				if(size == fi2.size())
 				{
 					// probably the same file
@@ -370,9 +352,9 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 		{
 			getGlobalKvircDirectory(szBuffer,pics_globalsubdirs[i],szRetPath);
 			//debug("CHECK %s",szBuffer.ptr());
-			if(KviFileUtils::fileExists(szBuffer.ptr()))
+			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QFileInfo fi2(QString::fromUtf8(szBuffer.ptr()));
+				QFileInfo fi2(QString::fromUtf8(szBuffer));
 				if(size == fi2.size())
 				{
 					// probably the same file
@@ -383,11 +365,11 @@ bool KviApp::mapImageFile(QString &szRetPath,const QString &filename)
 
 		// Last resort
 		szBuffer = QDir::homePath();
-		szBuffer.ensureLastCharIs(KVI_PATH_SEPARATOR_CHAR);
+		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
 		szBuffer.append(szRetPath);
-		if(KviFileUtils::fileExists(szBuffer.ptr()))
+		if(KviFileUtils::fileExists(szBuffer))
 		{
-			QFileInfo fi2(QString::fromUtf8(szBuffer.ptr()));
+			QFileInfo fi2(QString::fromUtf8(szBuffer));
 			if(size == fi2.size())
 			{
 				// prolly the same file

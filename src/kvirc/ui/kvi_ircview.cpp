@@ -138,7 +138,7 @@
 #ifdef __STRICT_ANSI__
 	#ifdef COMPILE_USE_DYNAMIC_LABELS
 		// incompatible with -ansi
-		
+
 	#endif
 #endif
 //#undef COMPILE_USE_DYNAMIC_LABELS
@@ -550,11 +550,6 @@ void KviIrcView::stopLogging()
 		delete m_pLogFile;
 		m_pLogFile = 0;
 	}
-}
-
-void KviIrcView::getLogFileName(KviStr &buffer)
-{
-	if(m_pLogFile)buffer.append(m_pLogFile->fileName());
 }
 
 void KviIrcView::getLogFileName(QString &buffer)
@@ -2376,7 +2371,7 @@ found_mirc_escape:
 
 /*
  * Profane description: end of the additional switch needed in the "check table" approach;
- * the next instruction re-starts the loop 
+ * the next instruction re-starts the loop
  */
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
@@ -2392,7 +2387,7 @@ found_mirc_escape:
 
 check_http_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	/*
 	 * Profane description: we found an 'h' using the "jump/check table", now check for a 't' (we don't want to search directly for the
@@ -2432,7 +2427,7 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_file_or_ftp_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	if((*p == 'i') || (*p == 'I'))
 	{
@@ -2467,7 +2462,7 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_e2k_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	if((*p == 'd') || (*p == 'D'))
 	{
@@ -2488,7 +2483,7 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_www_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	if((*p == 'w') || (*p == 'W'))
 	{
@@ -2509,7 +2504,7 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_irc_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	if((*p == 'r') || (*p == 'R'))
 	{
@@ -2545,7 +2540,7 @@ if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 
 check_mailto_url:
 	p++;
-if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting)) 
+if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 {
 	if((*p == 'a') || (*p == 'A'))
 	{
@@ -2602,11 +2597,11 @@ got_url:
 		// Question : What characters are NOT allowed in an URL ?
 		// I assume [] () {} 'and chars below 33 (space too , and negative chars too! (for signed char systems))
 		// [] and () are used in ed2k links often
-	
+
 		// These characters are "{", "}", "|", "\", "^", "~", "[", "]", and "`". (RFC1738)
 		while((*p > 32) && (*p != '[') && (*p != '|') && (*p != '{') && (*p != '>') &&
 				(*p != ']')  && (*p != '}') && (*p != '<') && (*p != '"'))p++;
-	
+
 		if(m_pKviWindow)
 		{
 			QString tmp;
@@ -4289,7 +4284,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 				// this is not the first row of this line and the margin option is enabled?
 				if(iTop != firstRowTop)
 					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))iLeft+=m_iWrapMargin;
-					
+
 				if(xPos < iLeft) return 0; // Mouse is out of this row boundaries
 				for(;;)
 				{

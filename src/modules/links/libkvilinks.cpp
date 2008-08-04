@@ -58,11 +58,11 @@ KviPointerList<KviLinksWindow> * g_pLinksWindowList = 0;
 
 static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	
-	// FIND ME
-	if(!c->window()->console())return c->context()->errorNoIrcContext();
 
-	if(!(c->window()->console()->ircContext()->linksWindow()))
+	// FIND ME
+	if(!c->window()->context())return c->context()->errorNoIrcContext();
+
+	if(!(c->window()->context()->linksWindow()))
 	{
 		KviLinksWindow *w = new KviLinksWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);

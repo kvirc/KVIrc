@@ -114,12 +114,12 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 
 	int uParams = msg->paramCount();
 	int uModeParam = 3;
-	
+
 	if(uParams < 2)uParams = 2;
 
 	KviStr version   = msg->safeParam(2);
 	msg->connection()->serverInfo()->setServerVersion(msg->safeParam(2));
-	
+
 	KviStr umodes;
 	// skip version number (great, thanks WEBMASTER INCORPORATED -_-)
 	do
@@ -168,7 +168,7 @@ void KviServerParser::parseNumeric004(KviIrcMessage *msg)
 				QString tmp2 = __tr2qs(": Unknown user mode");
 				KviQString::sprintf(tmp,"%c: %Q",*aux,&tmp2);
 			}
-			
+
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,tmp);
 			aux++;
 		}
@@ -419,14 +419,14 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 		int iPrevFlags = chan->myFlags();
 
 		KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
-		
+
 		while(*aux)
 		{
 			int iFlags = 0;
 			// @ = op (+o), + = voiced (+v), % = halfop (+h), - = userop (+u), ^ = protected (+a?), * = chan owner (+q), !, & = channel admin (+a?)
 			// ^  +a is a weird mode: it also breaks nicknames on some networks!
 			// not a valid first char(s) of nickname, must be a mode prefix
-			
+
 			bool bContinue = true;
 
 			while(pServerInfo->isSupportedModePrefix((unsigned char)(*aux)))
@@ -435,7 +435,7 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 				iFlags |= pServerInfo->modeFlagFromPrefixChar(*aux);
 				aux++;
 			}
-			
+
 			char * begin = aux;
 			while(*aux && (*aux != ' '))aux++;
 			char save = *aux;
@@ -751,7 +751,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 
 		pOut->output(KVI_OUT_WHO,
 			__tr2qs("WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"),
-			KVI_TEXT_BOLD,&szNick, KVI_TEXT_BOLD, 
+			KVI_TEXT_BOLD,&szNick, KVI_TEXT_BOLD,
 			&szUser,&szHost,KVI_TEXT_UNDERLINE,
 			KVI_TEXT_UNDERLINE,&szChan,KVI_TEXT_UNDERLINE,
 			KVI_TEXT_UNDERLINE,&szServ,KVI_TEXT_UNDERLINE,
@@ -761,7 +761,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 			KVI_TEXT_UNDERLINE, &szReal);
 	}
 
-	
+
 }
 
 void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
@@ -788,7 +788,7 @@ void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 			chan->setHasWhoList();
 			return;
 		}
-		
+
 		if(chan->sentSyncWhoRequest())
 		{
 			// FIXME: #warning "IF VERBOSE && SHOW INTERNAL WHO REPLIES...."
@@ -867,7 +867,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 	{
 		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
 			__tr2qs("Something really weird is happening: the server is refusing all the login nicknames..."));
-			
+
 		if(msg->connection()->stateData()->loginNickIndex() > 10)
 		{
 			msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
@@ -988,7 +988,7 @@ void KviServerParser::parseChannelHelp(KviIrcMessage *msg)
 			pOut = (KviWindow *)(msg->console());
 			pOut->output(KVI_OUT_HELP,__tr2qs("Tip for %Q: %Q"),&szChan,&szText);
 		}
-		
+
 	}
 }
 
@@ -1144,7 +1144,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 	QString szChans = msg->connection()->decodeText(msg->safeTrailing());
-	
+
 	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(i)
 	{
@@ -1156,7 +1156,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?
 			msg->console()->activeWindow() : (KviWindow *)(msg->console());
-			
+
 		QStringList sl = szChans.split(" ",QString::SkipEmptyParts);
 		QString szChanList;
 
@@ -1168,7 +1168,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 			int i =0;
 			while(i < len)
 			{
-				
+
 				if(IS_CHANNEL_TYPE_FLAG(szCur[i]) && (!IS_USER_MODE_PREFIX(szCur[i])))break;
 				i++;
 			}
@@ -1180,7 +1180,7 @@ void KviServerParser::parseNumericWhoisChannels(KviIrcMessage *msg)
 					if(szChanList.length() > 0)szChanList.append(", ");
 					szChanList += szCur.left(i);
 					QString szR = szCur.right(len);
-					KviQString::appendFormatted(szChanList,"\r!c\r%Q\r",&szR); 
+					KviQString::appendFormatted(szChanList,"\r!c\r%Q\r",&szR);
 				} else {
 					if(szChanList.length() > 0)szChanList.append(", ");
 					KviQString::appendFormatted(szChanList,"\r!c\r%Q\r",&szCur);
@@ -1355,7 +1355,7 @@ void KviServerParser::parseNumericEndOfWhois(KviIrcMessage *msg)
 	if(i)
 	{
 		if(!g_pApp->windowExists(i->pWindow))i->pWindow = msg->console();
-		
+
 		// that's the new KVS engine!
 		KviKvsVariantList vl;
 		vl.setAutoDelete(true);
@@ -1411,7 +1411,7 @@ void KviServerParser::parseNumericNoSuchNick(KviIrcMessage *msg)
 	// :prefix 401 <target> <nick> :No such nick/channel
 	// :prefix 406 <target> <nick> :There was no such nickname
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
-	
+
 	if(msg->numeric() == ERR_NOSUCHNICK)
 	{
 		KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNick);
@@ -1530,17 +1530,17 @@ void KviServerParser::parseNumericListStart(KviIrcMessage *msg)
 	// 321: RPL_LISTSTART [I,E,U,D]
 	// :prefix 321 <target> :Channel users name
 	if(msg->haltOutput())return;  // stopped by raw
-	
-	if(!(msg->console()->ircContext()->listWindow()))
+
+	if(!(msg->console()->context()->listWindow()))
 	{
 		// attempt to load the module...
-		msg->console()->ircContext()->createListWindow();
+		msg->console()->context()->createListWindow();
 	}
 
-	if(msg->console()->ircContext()->listWindow())
+	if(msg->console()->context()->listWindow())
 	{
 		// module loaded
-		msg->console()->ircContext()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA);
+		msg->console()->context()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA);
 	} else {
 		msg->console()->output(KVI_OUT_LIST,__tr2qs("Channel list begin: channel, users, topic"));
 	}
@@ -1552,20 +1552,20 @@ void KviServerParser::parseNumericList(KviIrcMessage *msg)
 	// :prefix 364 <target> <channel> <users> :<topic>
 	if(msg->haltOutput())return;  // stopped by raw
 
-	if(!(msg->console()->ircContext()->listWindow()))
+	if(!(msg->console()->context()->listWindow()))
 	{
 		// attempt to load the module...
-		msg->console()->ircContext()->createListWindow();
-		if(msg->console()->ircContext()->listWindow())
+		msg->console()->context()->createListWindow();
+		if(msg->console()->context()->listWindow())
 		{
-			msg->console()->ircContext()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA);
+			msg->console()->context()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA);
 		}
 	}
 
-	if(msg->console()->ircContext()->listWindow())
+	if(msg->console()->context()->listWindow())
 	{
 		// module loaded
-		msg->console()->ircContext()->listWindow()->processData(msg);
+		msg->console()->context()->listWindow()->processData(msg);
 	} else {
 		// ops...can't load the module...
 		QString szList = msg->connection()->decodeText(msg->allParams());
@@ -1579,9 +1579,9 @@ void KviServerParser::parseNumericListEnd(KviIrcMessage *msg)
 	// :prefix 323 <target> :End of /LIST
 	if(msg->haltOutput())return;  // stopped by raw
 
-	if(msg->console()->ircContext()->listWindow())
+	if(msg->console()->context()->listWindow())
 	{
-		msg->console()->ircContext()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA);
+		msg->console()->context()->listWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA);
 	} else {
 		msg->console()->output(KVI_OUT_LIST,__tr2qs("End of LIST"));
 	}
@@ -1592,16 +1592,16 @@ void KviServerParser::parseNumericLinks(KviIrcMessage *msg)
 {
 	// 364: RPL_LINKS [I,E,U,D]
 	// :prefix 364 <target> <host> <parent> :<hops> <description>
-	if(!(msg->console()->ircContext()->linksWindow()))
+	if(!(msg->console()->context()->linksWindow()))
 	{
 		// attempt to load the module...
-		msg->console()->ircContext()->createLinksWindow();
+		msg->console()->context()->createLinksWindow();
 	}
 
-	if(msg->console()->ircContext()->linksWindow())
+	if(msg->console()->context()->linksWindow())
 	{
 		// module loaded
-		msg->console()->ircContext()->linksWindow()->processData(msg);
+		msg->console()->context()->linksWindow()->processData(msg);
 	} else {
 		// ops...can't load the module... or the event halted the window creation
 		if(!msg->haltOutput())
@@ -1616,9 +1616,9 @@ void KviServerParser::parseNumericEndOfLinks(KviIrcMessage *msg)
 {
 	// 365: RPL_ENDOFLINKS [I,E,U,D]
 	// :prefix 365 <target> :End of /LINKS
-	if(msg->console()->ircContext()->linksWindow())
+	if(msg->console()->context()->linksWindow())
 	{
-		msg->console()->ircContext()->linksWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA);
+		msg->console()->context()->linksWindow()->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA);
 	} else {
 		if(!msg->haltOutput())
 		{
@@ -1675,7 +1675,7 @@ void KviServerParser::parseNumericAway(KviIrcMessage * msg)
 	// :prefix 305 <target> :You're away man
 	msg->connection()->changeAwayState(true);
 	QString szWText = msg->connection()->decodeText(msg->safeTrailing());
-	
+
 	if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnMeAway,msg->console(),szWText))msg->setHaltOutput();
 
 	if(!msg->haltOutput())
@@ -1933,7 +1933,7 @@ void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 	// a nice extension for irc.wenet.ru
 	// 700: RPL_CODEPAGESET
 	// :prefix 700 target <encoding> :is now your translation scheme
-	
+
 	QString encoding = msg->connection()->decodeText(msg->safeParam(1));
 	if(msg->connection()->serverInfo()->supportsCodePages())
 	{
@@ -1970,7 +1970,7 @@ void KviServerParser::parseNumericCodePageScheme(KviIrcMessage *msg)
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 		QString szCodepage = msg->connection()->decodeText(msg->safeParam(2));
-	
+
 		if(!msg->haltOutput())
 		{
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ?

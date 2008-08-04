@@ -293,7 +293,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 		}
 
 		QString szNum;
-		szNum.setNum(c->ircContextId());
+		szNum.setNum(c->context()->id());
 
 		QString szIrcContext = QChar('(');
 		szIrcContext += __tr2qs("IRC Context");
@@ -412,7 +412,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 		p->setClipping(false);
 
 		QColor base = palette().background().color();
-		QColor cntx = KVI_OPTION_ICCOLOR(c->ircContextId() % KVI_NUM_ICCOLOR_OPTIONS);
+		QColor cntx = KVI_OPTION_ICCOLOR(c->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 		base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
 			(base.blue() + cntx.blue()) >> 1);
 

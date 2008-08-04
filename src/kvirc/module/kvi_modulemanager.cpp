@@ -169,7 +169,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	}
 	QString tmp;
 	QString szName;
-#if defined(COMPILE_ON_WINDOWS) 
+#if defined(COMPILE_ON_WINDOWS)
 	KviQString::appendFormatted(szName,"kvi%Q.dll",&modName);
 #elif defined(COMPILE_ON_MINGW)
 	KviQString::appendFormatted(szName,"libkvi%Q.dll",&modName);
@@ -220,16 +220,16 @@ bool KviModuleManager::loadModule(const QString &modName)
 
 	// the module is probably up.. the only thing can fail is the init_routine now
 	// load the message catalogue if any
-	KviStr szDir;
+	QString szDir;
 	// it's more probable to have the translations in the global directory
 	// try it as first... (yes, catalogue overriding is impossible this way.. but , anybody cares ?)
 	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Locale);
 
-	if(!KviLocale::loadCatalogue(modName,szDir.ptr()))
+	if(!KviLocale::loadCatalogue(modName,szDir))
 	{
 		// try the local directory then
 		g_pApp->getLocalKvircDirectory(szDir,KviApp::Locale);
-		KviLocale::loadCatalogue(modName,szDir.ptr());
+		KviLocale::loadCatalogue(modName,szDir);
 	}
 
 	if(info->init_routine)
@@ -354,7 +354,7 @@ void KviModuleManager::cleanupUnusedModules()
 		}
 		++it;
 	}
-	
+
 	for(KviModule * pModule = lModulesToUnload.first();pModule;pModule = lModulesToUnload.next())
 		unloadModule(pModule);
 }

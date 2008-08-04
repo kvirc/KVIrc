@@ -1627,14 +1627,6 @@ KviConsole * KviApp::findConsole(QString &server,QString &nick)
 	return 0;
 }
 
-KviConsole * KviApp::findConsole(KviStr &server,KviStr &nick)
-{
-	// DEPRECATED: TO BE KILLED (if nobody is using it)
-	QString s = server.ptr();
-	QString n = nick.ptr();
-	return findConsole(s,n);
-}
-
 void KviApp::restartLagMeters()
 {
 	KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -1687,7 +1679,7 @@ KviConsole * KviApp::findConsole(unsigned int ircContextId)
 	{
 		if(it.current()->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			if(((KviConsole *)it.current())->ircContextId() == ircContextId)
+			if(((KviConsole *)it.current())->context()->id() == ircContextId)
 				return ((KviConsole *)it.current());
 		}
 		++it;
@@ -1755,7 +1747,9 @@ KviConsole * KviApp::activeConsole()
 	if(!g_pFrame)return 0;
 	if(g_pActiveWindow)
 	{
-		if(g_pActiveWindow->console())return g_pActiveWindow->console();
+		if(g_pActiveWindow->console()) {
+			return g_pActiveWindow->console();
+		}
 	}
 	return g_pFrame->firstConsole();
 }

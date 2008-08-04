@@ -745,20 +745,6 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 	return cp->pixmap();
 }
 
-void KviIconManager::urlToCachedFileName(KviStr &szFName)
-{
-	szFName.replaceAll(':',"_");
-	szFName.replaceAll(';',"_");
-	szFName.replaceAll('/',"_");
-	szFName.replaceAll('\\',"_");
-	szFName.replaceAll("\"","_");
-	szFName.replaceAll("\'","_");
-	szFName.replaceAll("(","_");
-	szFName.replaceAll(")","_");
-	szFName.replaceAll("?","_");
-	szFName.replaceAll("___",".");
-}
-
 void KviIconManager::urlToCachedFileName(QString &szFName)
 {
 	szFName.replace(":","_");

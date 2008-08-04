@@ -643,15 +643,6 @@ namespace KviNetUtils
 	}
 };
 
-bool kvi_getInterfaceAddress(const char * ifname,QString &buffer)
-{
-	debug("kvi_getInterfaceAddress is deprecated: use KviNetUtils::getInterfaceAddress");
-	QString szRet;
-	bool bRes = KviNetUtils::getInterfaceAddress(QString(ifname),szRet);
-	buffer = szRet;
-	return bRes;
-}
-
 bool kvi_isRoutableIpString(const char * ipstring)
 {
 	struct in_addr a;

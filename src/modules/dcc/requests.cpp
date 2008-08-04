@@ -227,7 +227,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 	// with the same random number appended, and then should listen for a connection.
 	//
 	// when a zero port request is initiated by another party we get
-	// 
+	//
 	//      DCC CHAT chat <fakeipaddress> 0 <tag>
 	//
 	// and we reply with
@@ -279,7 +279,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
-	d->szUser            = dcc->ctcpMsg->pSource->username();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
 
 	dcc_fill_local_nick_user_host(d,dcc);
@@ -314,7 +314,7 @@ static void dccModuleParseDccChat(KviDccRequest *dcc)
 			if(!t)
 			{
 				// hum.. not our tag
-				
+
 				// FIXME: As segnaled by PRAEDO, ezbounce seems to send a fourth parameter in response to /quote ezb log
 				// Pragma: That's a bug in ezbounce, it sends the filesize of the log as a DCC CHAT parameter...
 				//         The author probably copied and pasted the CTCP line from DCC SEND and forgot to remove the filesize.
@@ -425,7 +425,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		// swap the tag and the filename (we have added a fileoffer with this tag)
 		dcc->szParam1 = dcc->szParam5;
 		dcc->szParam5 = "";
-		
+
 		dccModuleParseDccRecv(dcc);
 		return;
 	}
@@ -444,7 +444,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number, trying to continue","dcc"),dcc->szParam4.ptr());
-		}		
+		}
 		dcc->szParam4 = __tr2qs_ctx("<unknown size>","dcc");
 	}
 
@@ -454,7 +454,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
-		}		
+		}
 		dcc->szParam1.cutToLast('/');
 	}
 
@@ -474,7 +474,7 @@ static void dccModuleParseDccSend(KviDccRequest *dcc)
 
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
-	d->szUser            = dcc->ctcpMsg->pSource->username();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
 	dcc_fill_local_nick_user_host(d,dcc);
 
@@ -539,7 +539,7 @@ static void dccModuleParseDccAccept(KviDccRequest *dcc)
 static void dccModuleParseDccResume(KviDccRequest *dcc)
 {
 	// This is usually RESUME <filename> <port> <resumesize>
-	
+
 	// when a zero port request is initiated by us we send out
 	//      DCC SEND <filename> <fakeipaddress> 0 <filesize> <tag>
 	// and if the remote party wants to resume then we get
@@ -595,7 +595,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		{
 			dcc->ctcpMsg->msg->console()->outputNoFmt(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request has resume file size missing, assuming a resume file size of 0","dcc"));
-		}		
+		}
 		dcc->szParam4 = "0";
 	}
 
@@ -605,7 +605,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
-		}		
+		}
 		dcc->szParam1.cutToLast('/');
 	}
 
@@ -649,7 +649,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 
 		d->szFileName        = dcc->szParam1.ptr();
 		d->szFileSize        = dcc->szParam4.ptr();
-  
+
 		//d->bResume           = false; // This is actually useless
 
 		d->szLocalFileName   = o->absFilePath();
@@ -690,7 +690,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 			__tr2qs_ctx("%Q [%Q@%Q] is ready to receive the file \"%s\"","dcc"),
 			&(dcc->ctcpMsg->pSource->nick()),
-			&(dcc->ctcpMsg->pSource->username()),
+			&(dcc->ctcpMsg->pSource->user()),
 			&(dcc->ctcpMsg->pSource->host()),
 			dcc->szParam1.ptr());
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
@@ -734,7 +734,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request is broken: The fourth parameter should be the file size but does not appear to be an unsigned number; trying to continue","dcc"),dcc->szParam2.ptr());
-		}		
+		}
 		dcc->szParam2 = __tr_ctx("<unknown size>","dcc");
 	}
 
@@ -744,7 +744,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("The above request is broken: The filename contains path components, stripping the leading path and trying to continue","dcc"),dcc->szParam1.ptr());
-		}		
+		}
 		dcc->szParam1.cutToLast('/');
 	}
 
@@ -766,7 +766,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
-	d->szUser            = dcc->ctcpMsg->pSource->username();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
 	d->szIp              = __tr2qs_ctx("(unknown)","dcc");
 	d->szPort            = d->szIp;
@@ -786,7 +786,7 @@ static void dccModuleParseDccRSend(KviDccRequest *dcc)
 	d->szFileName        = dcc->szParam1.ptr();
 	d->szFileSize        = dcc->szParam2.ptr();
 	d->bActive           = false; // we have to listen!
-	d->bResume           = false; 
+	d->bResume           = false;
 	d->bRecvFile         = true;  // we have to receive the file!
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -855,7 +855,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 					__tr2qs_ctx("No file offer named '%s' (with size %s) available for %Q [%Q@%Q]","dcc"),
 					dcc->szParam1.ptr(),uSize > 0 ? dcc->szParam2.ptr() : __tr_ctx("\"any\"","dcc"),
 					&(dcc->ctcpMsg->pSource->nick()),
-					&(dcc->ctcpMsg->pSource->username()),
+					&(dcc->ctcpMsg->pSource->user()),
 					&(dcc->ctcpMsg->pSource->host()));
 			dcc_module_request_error(dcc,szError);
 		}
@@ -863,7 +863,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	}
 
 	//#warning "IF NOT IGNORE DCC GET!"
-	
+
 	//#warning "CREATE IT MINIMIZED ETC..."
 	//#warning "MAYBE USE A DIALOG TO ACCEPT THE REQUEST ?"
 	//#warning "DO NOT ACCEPT /etc/* requests..."
@@ -874,7 +874,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 		KviStr szSubproto("RSEND");
 		szSubproto.prepend(szExtensions);
 
-		
+
 		QString szFileName = QFileInfo(o->absFilePath()).fileName();
 		if(o->name() != szFileName)
 		{
@@ -899,7 +899,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 				__tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %s since we can't accept incoming connections (user option)","dcc"),
 				&(dcc->ctcpMsg->pSource->nick()),
-				&(dcc->ctcpMsg->pSource->username()),
+				&(dcc->ctcpMsg->pSource->user()),
 				&(dcc->ctcpMsg->pSource->host()),dcc->szParam1.ptr(),
 				&(o->absFilePath()),szSubproto.ptr());
 		}
@@ -915,11 +915,11 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
 	d->szLocalFileName   = o->absFilePath();
-	d->szUser            = dcc->ctcpMsg->pSource->username();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
 	d->bRecvFile         = false;
 	dcc_fill_local_nick_user_host(d,dcc);
-	
+
 	QString tmp;
 	if(!dcc_kvs_get_listen_ip_address(0,d->console(),tmp))
 	{
@@ -956,7 +956,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
 			__tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %Q","dcc"),
 			&(dcc->ctcpMsg->pSource->nick()),
-			&(dcc->ctcpMsg->pSource->username()),
+			&(dcc->ctcpMsg->pSource->user()),
 			&(dcc->ctcpMsg->pSource->host()),
 			dcc->szParam1.ptr(),
 			&(o->absFilePath()),&(d->szType));
@@ -1019,7 +1019,7 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 
 	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
 	d->szNick            = dcc->ctcpMsg->pSource->nick();
-	d->szUser            = dcc->ctcpMsg->pSource->username();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
 	d->szHost            = dcc->ctcpMsg->pSource->host();
 	dcc_fill_local_nick_user_host(d,dcc);
 
@@ -1141,7 +1141,7 @@ static dccParseProcEntry dccParseProcTable[KVI_NUM_KNOWN_DCC_TYPES]=
 KVIMODULEEXPORTFUNC void dccModuleCtcpDccParseRoutine(KviDccRequest *dcc)
 {
 	dcc->szType.toUpper();
-	
+
 	for(int i=0;i<KVI_NUM_KNOWN_DCC_TYPES;i++)
 	{
 		if(kvi_strEqualCS(dccParseProcTable[i].type,dcc->szType.ptr()))

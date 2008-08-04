@@ -181,9 +181,8 @@ public:
 
 	// kvi_app_fs.cpp : Filesystem thingies
 	void getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null);
-	void getGlobalKvircDirectory(KviStr &szData,KvircSubdir dir,const QString &appendFile = QString::null);
-	void getLocalKvircDirectory(KviStr  &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
 	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
+
 	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString::null);
 	void getChannelDumpLogFileName(QString &str);
 
@@ -217,7 +216,6 @@ public:
 	KviWindow       * findWindow(const QString &windowId);
 	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);
 	KviConsole      * findConsole(unsigned int ircContextId);
-	KviConsole      * findConsole(KviStr & server,KviStr & nick);
 	KviConsole      * findConsole(QString & servr,QString & nick);
 	KviConsole      * topmostConnectedConsole();
 	KviConsole      * activeConsole();

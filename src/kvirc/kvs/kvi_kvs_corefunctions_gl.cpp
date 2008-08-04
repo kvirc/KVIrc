@@ -202,23 +202,22 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pContext->window()->console())
+		if(
+				KVSCF_pContext->window()->console() &&
+				KVSCF_pContext->window()->console()->isConnected())
 		{
-			if(KVSCF_pContext->window()->console()->isConnected())
-			{
 				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
 				if(e)
 				{
 					KVSCF_pRetBuffer->setString(e->host());
 					return true;
 				}
-			}
 		}
 
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
-	
+
 	//-------------------------------------------------
 	/*
 	@doc: lag
@@ -233,7 +232,7 @@ namespace KviKvsCoreFunctions
 	@description:
 		This function returns the lag in the current server, in milliseconds.[br]
 	*/
-	
+
 	KVSCF(lag)
 	{
 		if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();

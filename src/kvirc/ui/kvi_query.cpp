@@ -145,7 +145,7 @@ QString KviQuery::getInfoLabelTipText()
 		tmp+="\n";
 		QString szChans;
 		connection()->getCommonChannels(m_szName,szChans,0);
-		if(console()->connection())
+		if(connection())
 		{
 
 			txt = "<html>" \
@@ -216,7 +216,7 @@ QString KviQuery::getInfoLabelText()
 		if(e)
 		{
 			QString szMask;
-			if(console()->connection())
+			if(connection())
 			{
 				if(e->hasUser())
 					szMask+=e->user();
@@ -261,7 +261,7 @@ void KviQuery::triggerCreationEvents()
 
 void KviQuery::getBaseLogFileName(QString &buffer)
 {
-	if(console()->connection())
+	if(connection())
 	{
 		buffer=windowName();
 		buffer += ".";
@@ -269,7 +269,7 @@ void KviQuery::getBaseLogFileName(QString &buffer)
 	} else {
 		buffer=windowName();
 		buffer+=".";
-		buffer+=console()->ircContextId();
+		buffer+=console()->context()->id();
 	}
 }
 
@@ -362,7 +362,7 @@ KviUserListEntry * KviQuery::setTarget(const QString &nick,const QString &user,c
 	if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing))
 	{
 		QString szChans;
-		int iChans = m_pConsole->connection()->getCommonChannels(nick,szChans);
+		int iChans = connection()->getCommonChannels(nick,szChans);
 		notifyCommonChannels(nick,user,host,iChans,szChans);
 	}
 
@@ -411,7 +411,7 @@ void KviQuery::fillCaptionBuffers()
 	static QString endoffont("\">");
 	static QString end("</font></nobr>");
 
-	if(!console()->connection())
+	if(!connection())
 	{
 		QString dead = __tr2qs("[Dead query]");
 

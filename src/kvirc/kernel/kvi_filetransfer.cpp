@@ -47,15 +47,18 @@ KviFileTransferManager::~KviFileTransferManager()
 
 KviFileTransferManager * KviFileTransferManager::instance()
 {
-	if(!g_pFileTransferManager)g_pFileTransferManager = new KviFileTransferManager();
+	if(!g_pFileTransferManager) {
+		g_pFileTransferManager = new KviFileTransferManager();
+	}
 	return g_pFileTransferManager;
 }
 
 void KviFileTransferManager::cleanup()
 {
-	if(!g_pFileTransferManager)return;
-	delete g_pFileTransferManager;
-	g_pFileTransferManager = 0;
+	if(g_pFileTransferManager) {
+		delete g_pFileTransferManager;
+		g_pFileTransferManager = 0;
+	}
 }
 
 void KviFileTransferManager::killAllTransfers()
@@ -69,18 +72,21 @@ void KviFileTransferManager::killAllTransfers()
 
 void KviFileTransferManager::killTerminatedTransfers()
 {
-	if(!m_pTransferList)return;
-
-	KviPointerList<KviFileTransfer> l;
-	l.setAutoDelete(false);
-
-	for(KviFileTransfer * f = m_pTransferList->first();f;f = m_pTransferList->next())
+	if(m_pTransferList)
 	{
-		if(f->terminated())l.append(f);
-	}
+		KviPointerList<KviFileTransfer> l;
+		l.setAutoDelete(false);
 
-	for(KviFileTransfer * d = l.first();d;d = l.next())
-		d->die();
+		for(KviFileTransfer * f = m_pTransferList->first();f;f = m_pTransferList->next())
+		{
+			if(f->terminated()) {
+				l.append(f);
+			}
+		}
+
+		for(KviFileTransfer * d = l.first();d;d = l.next())
+			d->die();
+	}
 }
 
 void KviFileTransferManager::invokeTransferWindow(KviWindow * pWnd,bool bCreateMinimized,bool bNoRaise)

@@ -114,7 +114,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[big]How to extract the CTCP message[/big][br]
 		The IRC messages do not allow the following characters to be sent:[br]
 		<NUL> (Ascii character 0), <CR> (Carriage return), <LF> (Line feed).[br]
-		So finally we have four characters that [b]cannot appear literally into a 
+		So finally we have four characters that [b]cannot appear literally into a
 		CTCP message[/b]: <NUL>,<CR>,<LF>,<0x01>.[br]
 		To extract a <ctcp_message> from an IRC PRIVMSG or NOTICE command you
 		have to perform the following actions:[br]
@@ -311,7 +311,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>USERINFO <user_info_data><0x01>[br]
 		The <user_info_data> should be a human readable "user defined" string;
-	
+
 		[big]CLIENTINFO[/big][br]
 		[b]Syntax: <0x01>CLIENTINFO<0x01>[/b][br]
 		The CLIENTINFO request asks for informations about another user's IRC client program.
@@ -451,7 +451,7 @@ void KviServerParser::encodeCtcpParameter(const char * param,KviStr &buffer,bool
 			break;
 		}
 	}
-	
+
 	if(param != begin)buffer.append(begin,param - begin);
 }
 
@@ -569,7 +569,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviStr &buff
 	// null escape: just append the following
 	// character (thus discarding its semantics)
 	//
-	
+
 	buffer.append(msg_ptr);
 	return ++msg_ptr;
 }
@@ -620,7 +620,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviQCString 
 	// null escape: just append the following
 	// character (thus discarding its semantics)
 	//
-	
+
 	buffer+=*msg_ptr;
 	return ++msg_ptr;
 }
@@ -631,7 +631,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	//
 	// This one extracts the "next" ctcp parameter in msg_ptr
 	// and puts it in the supplied buffer.
-	// It is assumed that the leading and trailing CTCP 
+	// It is assumed that the leading and trailing CTCP
 	// tags have been already removed.
 	// Skips the leading and trailing spaces.
 	// bSpaceBreaks should be set to false if (and only if) the
@@ -642,7 +642,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	int bInString = 0;
 	if(!msg_ptr) return 0;
 	while(*msg_ptr == ' ')msg_ptr++; // skip leading spaces
-	
+
 	if(*msg_ptr == '"')
 	{
 		// a quoted parameter
@@ -651,7 +651,7 @@ const char * KviServerParser::extractCtcpParameter(const char * msg_ptr,KviStr &
 	}
 
 	const char * begin = msg_ptr;
-	
+
 	while(*msg_ptr)
 	{
 		switch(*msg_ptr)
@@ -716,7 +716,7 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 	//
 	// This one extracts the "next" ctcp parameter in p_msg_ptr
 	// and puts it in the supplied buffer.
-	// It is assumed that the leading and trailing CTCP 
+	// It is assumed that the leading and trailing CTCP
 	// tags have been already removed.
 	// Skips the leading and trailing spaces.
 	// bSpaceBreaks should be set to false if (and only if) the
@@ -729,14 +729,14 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 	int bInString = 0;
 	if(!msg_ptr) return 0;
 	while(*msg_ptr == ' ')msg_ptr++; // skip leading spaces
-	
+
 	if(*msg_ptr == '"')
 	{
 		// a quoted parameter
 		bInString = 1;
 		msg_ptr++;
 	}
-	
+
 	while(*msg_ptr)
 	{
 		switch(*msg_ptr)
@@ -821,7 +821,7 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 	} else {
 		KviRegisteredUser * u = msg->msg->connection()->userDataBase()->registeredUser(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 		//Ignore it?
-		if(u) 
+		if(u)
 		{
 			if( (!bAction && u->isIgnoreEnabledFor(KviRegisteredUser::Ctcp)) ||
 				(bAction && u->isIgnoreEnabledFor(IS_ME(msg->msg,msg->szTarget) ? KviRegisteredUser::Query : KviRegisteredUser::Channel)) )
@@ -886,7 +886,7 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 void KviServerParser::parseCtcpReply(KviCtcpMessage *msg)
 {
 	msg->pData = extractCtcpParameter(msg->pData,msg->szTag);
-	
+
 	for(int i=0;m_ctcpReplyParseProcTable[i].msgName;i++)
 	{
 		if(KviQString::equalCI(msg->szTag,m_ctcpReplyParseProcTable[i].msgName))
@@ -922,7 +922,7 @@ bool KviServerParser::checkCtcpFlood(KviCtcpMessage *msg)
 	if(!KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection))return false;
 
 	kvi_time_t tNow = kvi_unixTime();
-	
+
 	KviIrcConnectionAntiCtcpFloodData * d = msg->msg->connection()->antiCtcpFloodData();
 
 	unsigned int interval = (unsigned int)(((unsigned int)tNow) - ((unsigned int)d->lastCtcpTime()));
@@ -1025,7 +1025,7 @@ void KviServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 		if(msg->bIsFlood)
 		{
 			QString szData = msg->msg->connection()->decodeText(msg->pData);
-			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpFlood,pOut,msg->pSource->nick(),msg->pSource->username(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
+			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpFlood,pOut,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
 				pOut->output(KVI_OUT_CTCPREQUESTFLOOD,
 					__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"),
 					&szWhat,&szTag,KVI_TEXT_RESET,&(msg->pSource->nick()),
@@ -1034,7 +1034,7 @@ void KviServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 			QString szAction = msg->bUnknown ? __tr2qs("ignored (unrecognized)") :
 									(msg->bIgnored ? __tr2qs("ignored") : __tr2qs("replied"));
 			pOut->output(
-				msg->bUnknown ? KVI_OUT_CTCPREQUESTUNKNOWN : 
+				msg->bUnknown ? KVI_OUT_CTCPREQUESTUNKNOWN :
 					(msg->bIgnored ? KVI_OUT_CTCPREQUESTIGNORED : KVI_OUT_CTCPREQUESTREPLIED),
 				__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"),
 				&szWhat,&szTag,KVI_TEXT_RESET,&(msg->pSource->nick()),
@@ -1122,7 +1122,7 @@ void KviServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 			if(uDiffSecs > 0)uDiffSecs --;
 		}
 		unsigned int uDiffMSecs = (tv.tv_usec - uMSecs) / 1000;
-		
+
 		QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");
 
 		pOut->output(
@@ -1387,7 +1387,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				// Give the scripter a chance to filter it out again
 				if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryWindowRequest,msg->msg->console(),
 							msg->pSource->nick(),
-							msg->pSource->username(),
+							msg->pSource->user(),
 							msg->pSource->host(),
 							szData))
 				{
@@ -1397,7 +1397,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 					// no query yet, create it!
 					// this will trigger OnQueryWindowCreated
 					query = msg->msg->console()->connection()->createQuery(msg->pSource->nick());
-					query->setTarget(msg->pSource->nick(),msg->pSource->username(),msg->pSource->host());
+					query->setTarget(msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 				}
 			}
 		}
@@ -1414,7 +1414,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 
 	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnAction,pOut,
 				msg->pSource->nick(),
-				msg->pSource->username(),
+				msg->pSource->user(),
 				msg->pSource->host(),
 				msg->szTarget,
 				szData
@@ -1503,8 +1503,8 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 
 				// escape the spaces with the right octal code
 				encodeCtcpParameter(szFileName.toUtf8().data(),szReply);
-				
-				
+
+
 				if(!a->isRemote())
 				{
 					KviSharedFile * o;
@@ -1521,7 +1521,7 @@ void KviServerParser::parseCtcpRequestAvatar(KviCtcpMessage *msg)
 					}
 					//if(o)szReply.append(QString(" %1").arg(o->fileSize()));
 				}
-				
+
 				szReply.append(szGenderTag);
 				replyCtcp(msg,szReply);
 			}
@@ -1583,7 +1583,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 		if(_OUTPUT_VERBOSE)
 			KviQString::appendFormatted(textLine," (%Q %Q)",&szWhere,&szWhat);
 	} else {
-		
+
 		// FIXME: #warning "The avatar should be the one with the requested size!!"
 		KviQString::sprintf(textLine,__tr2qs("%Q changes avatar to %s"),
 			&nickLink,szRemoteFile.toUtf8().data(),&szWhere,&szWhat);
@@ -1611,11 +1611,11 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 				// FIXME: #warning "Ask before making the request ?"
 				if(bIsUrl)
 				{
-					KviStr szLocalFilePath;
-					KviStr szLocalFile = szRemoteFile;
+					QString szLocalFilePath;
+					QString szLocalFile = szRemoteFile;
 					g_pIconManager->urlToCachedFileName(szLocalFile);
-					g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile.ptr());
-					szLocalFilePath.replaceAll('\\',"\\\\"); // <-- this is especially for windows
+					g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApp::Avatars,szLocalFile);
+					szLocalFilePath.replace('\\',"\\\\"); // <-- this is especially for windows
 					QString szCommand = "http.get -w=nm ";
 					unsigned int uMaxSize = KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize);
 					if(uMaxSize > 0)KviQString::appendFormatted(szCommand,"-m=%u ",uMaxSize);
@@ -1623,7 +1623,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 					szRemoteFile = szRemoteFile.replace("\"","%22");
 					szCommand += "\""+szRemoteFile+"\"";
 					szCommand += " \"";
-					szCommand += szLocalFilePath.ptr();
+					szCommand += szLocalFilePath;
 					szCommand += "\"";
 
 					if(KviKvsScript::run(szCommand,msg->msg->console()))
@@ -1635,7 +1635,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 								szRemoteFile.toUtf8().data());
 						}
 						g_pApp->setAvatarOnFileReceived(msg->msg->console(),
-							szRemoteFile,msg->pSource->nick(),msg->pSource->username(),msg->pSource->host());
+							szRemoteFile,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 					} else {
 						if(_OUTPUT_VERBOSE)
 							KviQString::appendFormatted(textLine,__tr2qs(": No valid local copy of avatar available; failed to start an HTTP transfer, ignoring"));
@@ -1655,7 +1655,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 						msg->msg->connection()->sendFmtData("PRIVMSG %s :%cDCC GET %s%c",
 								msg->msg->connection()->encodeText(msg->pSource->nick()).data(),0x01,msg->msg->connection()->encodeText(szFName.toUtf8().data()).data(),0x01);
 						g_pApp->setAvatarOnFileReceived(msg->msg->console(),
-							szRemoteFile,msg->pSource->nick(),msg->pSource->username(),msg->pSource->host());
+							szRemoteFile,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host());
 					} else {
 						if(_OUTPUT_VERBOSE)
 							KviQString::appendFormatted(textLine,__tr2qs(": No valid local copy of avatar available; flood limit exceeded, ignoring"));
@@ -1735,7 +1735,7 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 
 	bool bIsFlood = checkCtcpFlood(msg);
 
-	if(bIsFlood && 
+	if(bIsFlood &&
 			((kvi_strEqualCI(p.szType.ptr(),"SEND")) ||
 			(kvi_strEqualCI(p.szType.ptr(),"RSEND")) ||
 			(kvi_strEqualCI(p.szType.ptr(),"TSEND")) ||
@@ -1786,13 +1786,13 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 	QString szRemoteFile;
 	QString szGender;
 	QString decoded=msg->msg->console()->decodeText(msg->pData);
-	
+
 	bool bNeedToUpdateUserlist = false;
 	KviIrcUserEntry * e = msg->msg->connection()->userDataBase()->find(msg->pSource->nick());
 	if(e)
 	{
-		int pos = decoded.indexOf("Gender=",0,Qt::CaseInsensitive);	
-		
+		int pos = decoded.indexOf("Gender=",0,Qt::CaseInsensitive);
+
 		if(pos>=0)
 		{
 			QChar c = decoded[pos+7];
@@ -1818,7 +1818,7 @@ void KviServerParser::parseCtcpReplyUserinfo(KviCtcpMessage *msg)
 		{
 			((KviChannel*)g_pActiveWindow)->userListView()->updateArea();
 		}
-		
+
 	}
 
 	echoCtcpReply(msg);

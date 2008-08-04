@@ -231,7 +231,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
-	m_pConsole->ircContext()->setListWindowPointer(this);
+	m_pConsole->context()->setListWindowPointer(this);
 
 	connect(m_pConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));
@@ -243,7 +243,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 KviListWindow::~KviListWindow()
 {
 	g_pListWindowList->removeRef(this);
-	m_pConsole->ircContext()->setListWindowPointer(0);
+	m_pConsole->context()->setListWindowPointer(0);
 	if(m_pFlushTimer)delete m_pFlushTimer;
 	m_pItemList->setAutoDelete(true);
 	delete m_pItemList;
@@ -251,7 +251,7 @@ KviListWindow::~KviListWindow()
 
 void KviListWindow::getBaseLogFileName(KviStr &buffer)
 {
-	buffer.sprintf("LIST_%d",console()->ircContextId());
+	buffer.sprintf("LIST_%d",context()->id());
 }
 
 void KviListWindow::requestList()
@@ -315,21 +315,21 @@ QSize KviListWindow::sizeHint() const
 
 void KviListWindow::fillCaptionBuffers()
 {
-	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Channel List [IRC Context %u]"),m_pConsole->ircContextId());
+	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Channel List [IRC Context %u]"),m_pConsole->context()->id());
 
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel List</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii().data(),
-		m_pConsole->ircContextId());
+		m_pConsole->context()->id());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Channel list</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii().data(),
-		m_pConsole->ircContextId());
+		m_pConsole->context()->id());
 }
 
 void KviListWindow::die()

@@ -119,8 +119,6 @@ public:
 	bool isConnected(){ return m_state == Connected; };
 	int startConnection(KviServer * srv,KviProxy * prx = 0,const char * bindAddress = 0);
 
-	//bool sendData(const char *buffer,int buflen = -1) KVI_DEPRECATED;
-	//bool sendFmtData(const char *fmt,...) KVI_DEPRECATED;
 	bool sendPacket(KviDataBuffer * pData);
 	void abort();
 	bool getLocalHostIp(QString &szIp,bool bIPv6);

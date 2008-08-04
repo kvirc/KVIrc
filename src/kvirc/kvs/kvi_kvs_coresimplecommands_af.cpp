@@ -97,7 +97,7 @@ namespace KviKvsCoreSimpleCommands
 			current [b]IRC context[/b].[br] This command is "server based";
 			this means that the effects will be visible only after the
 			server has acknowledged the change.[br]
-			When you use this command, other people will know that you are 
+			When you use this command, other people will know that you are
 			away from the keyboard, and they will know why you're not here.[br]
 			To return from being away you must use [cmd]back[/cmd].[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
@@ -117,7 +117,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_REQUIRE_CONNECTION
 
 		if(szReason.isEmpty())szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
-	
+
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
 			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -138,7 +138,7 @@ namespace KviKvsCoreSimpleCommands
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s",szR.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
-	
+
 		return true;
 	}
 
@@ -171,7 +171,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(back)
 	{
-		
+
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
 			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -187,14 +187,14 @@ namespace KviKvsCoreSimpleCommands
 			}
 		} else {
 			KVSCSC_REQUIRE_CONNECTION
-	
+
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY")))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
-	
+
 		return true;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
@@ -209,7 +209,7 @@ namespace KviKvsCoreSimpleCommands
 			Sets ban masks for the channel
 		@description:
 			Sets the ban masks specified in the <mask_list>,
-			which is a comma separated list of nicknames. 
+			which is a comma separated list of nicknames.
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +b flags.
@@ -309,7 +309,7 @@ namespace KviKvsCoreSimpleCommands
 				duration = -1;
 			}
 		}
-	
+
 		if((uVolume > 100) || (uVolume < 1))uVolume = 100;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -393,7 +393,7 @@ namespace KviKvsCoreSimpleCommands
 
 //#warning	"ALSO /HELP must NOT interpret the identifiers!"
 //#warning	"ALSO /DEBUG that relays to the DEBUG WINDOW"
-	
+
 	KVSCSC(buttonctl)
 	{
 		QString tbTypeUnused,tbName,tbOp,tbPar;
@@ -411,7 +411,7 @@ namespace KviKvsCoreSimpleCommands
 			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs("The specified window has no button containers"));
 			return true;
 		}
-	
+
 		//pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName.toUtf8().data(),"KviWindowScriptButton");
 		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->findChild<KviWindowScriptButton*>(tbName);
 
@@ -453,7 +453,7 @@ namespace KviKvsCoreSimpleCommands
 			break;
 		}
 		return true;
-	
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -514,7 +514,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
-		
+
 		if(KviQString::equalCI(szCtcpData,"PING"))
 		{
 			struct timeval tv;
@@ -524,7 +524,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
 		KviQCString szD = KVSCSC_pConnection->encodeText(szCtcpData);
-	
+
 		if(!(KVSCSC_pConnection->sendFmtData("%s %s :%c%s%c",
 				KVSCSC_pSwitches->find('n',"notice") ? "NOTICE" : "PRIVMSG",szT.data(),0x01,szD.data(),0x01)))
 			return KVSCSC_pContext->warningNoIrcConnection();
@@ -691,19 +691,19 @@ namespace KviKvsCoreSimpleCommands
 				KVSCSC_pContext->warning(__tr2qs("Inexisting popup \"%Q\""),&szPopupName);
 			return true;
 		}
-	
+
 		if(p->isLocked())
 		{
 			KVSCSC_pContext->error(__tr2qs("Popup menu self-modification is not allowed (the popup is probably open)"));
 			return false;
 		}
-	
+
 		if(!p->removeItemByName(szItemId,KVSCSC_pSwitches->find('d',"deep")))
 		{
 			if(!KVSCSC_pSwitches->find('q',"quiet"))
 				KVSCSC_pContext->warning(__tr2qs("The menu item with id \"%Q\" does not exist in popup \"%Q\""),&szItemId,&szPopupName);
 		}
-	
+
 		return true;
 	}
 
@@ -721,7 +721,7 @@ namespace KviKvsCoreSimpleCommands
 			Removes chanop status from the specified users
 		@description:
 			Removes channel operator status to the users specified in <nickname_list>,
-			which is a comma separated list of nicknames. 
+			which is a comma separated list of nicknames.
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -o flags.
@@ -753,7 +753,7 @@ namespace KviKvsCoreSimpleCommands
 			Removes voice flag for the specified users
 		@description:
 			Removes the voice flag for the users specified in <nickname_list>,
-			which is a comma separated list of nicknames. 
+			which is a comma separated list of nicknames.
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of -v flags.
@@ -821,7 +821,7 @@ namespace KviKvsCoreSimpleCommands
 			the default one (0).[br]
 			If the -d switch is used then the output is sent to a special
 			window called "Debug" (the window is created if not existing yet).
-			This is useful for script debugging purposes (you get the output 
+			This is useful for script debugging purposes (you get the output
 			in Debug regardless of the window that the executed command is attacched to).
 			The KVIrc view widgets support clickable links that can be realized by using special [doc:escape_sequences]escape sequences[/doc].[br]
 			The 'n' switch disables timestamping so you can output your own timestamp
@@ -860,7 +860,7 @@ namespace KviKvsCoreSimpleCommands
 					pWnd = KVSCSC_pContext->window();
 				}
 			}
-				
+
 			if((v = KVSCSC_pSwitches->find('i',"icon")))
 			{
 				if(!v->asInteger(iMsgType))
@@ -871,7 +871,7 @@ namespace KviKvsCoreSimpleCommands
 					iMsgType = iMsgType % KVI_NUM_MSGTYPE_OPTIONS;
 				}
 			}
-			
+
 			if(KVSCSC_pSwitches->find('d',"debug"))
 			{
 				pWnd = KviDebugWindow::getInstance();
@@ -984,11 +984,10 @@ namespace KviKvsCoreSimpleCommands
 		{
 			QString szWin;
 			v->asString(szWin);
-			KviStr window = szWin;
-			pWnd = g_pApp->findWindow(window.ptr());
+			pWnd = g_pApp->findWindow(szWin);
 			if(!pWnd)
 			{
-				KVSCSC_pContext->warning(__tr2qs("Window '%s' not found, using current one"),window.ptr());
+				KVSCSC_pContext->warning(__tr2qs("Window '%Q' not found, using current one"),&szWin);
 				pWnd = KVSCSC_pWindow;
 			}
 		}
@@ -1012,7 +1011,7 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('n',"no-highlighting"))iFlags |= KviConsole::NoHighlighting;
 		if(KVSCSC_pSwitches->find('f',"no-flashing"))iFlags |= KviConsole::NoWindowFlashing;
 		if(KVSCSC_pSwitches->find('x',"no-notifier"))iFlags |= KviConsole::NoNotifier;
-		
+
 		pConsole->outputPrivmsg(pWnd,type,
 				szNick,szUser,szHost,szText,
 				iFlags,
@@ -1173,7 +1172,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("handler_name",KVS_PT_NONEMPTYSTRING,0,szHandlerName)
 			KVSCSC_PARAMETER("parameters",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
 		KVSCSC_PARAMETERS_END
-		
+
 		bool bOk;
 		int iNumber = szEventName.toInt(&bOk);
 		bool bIsRaw = (bOk && (iNumber >= 0) && (iNumber < 1000));
@@ -1226,14 +1225,14 @@ namespace KviKvsCoreSimpleCommands
 			// trigger it
 			KviKvsScriptEventHandler * h;
 			QString code;
-			
+
 			if(bIsRaw)
 			{
 				h = KviKvsEventManager::instance()->findScriptRawHandler(iNumber,szHandlerName);
 			} else {
 				h = KviKvsEventManager::instance()->findScriptAppHandler(iNumber,szHandlerName);
 			}
-	
+
 			if(h)
 			{
 				KviKvsScript * s = h->script();

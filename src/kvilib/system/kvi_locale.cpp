@@ -1017,12 +1017,6 @@ QString KviTranslator::translate(const char *context,const char * message,const 
 	return g_pMainCatalogue->translateToQString(message);
 }
 
-QString KviTranslator::find(const char *context,const char * message) const
-{
-	// we ignore contexts for qt translations
-	return g_pMainCatalogue->translateToQString(message);
-}
-
 #if 0
 
 // a fake table that will force these translations

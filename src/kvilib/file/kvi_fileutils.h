@@ -56,7 +56,7 @@ namespace KviFileUtils
 	extern KVILIB_API bool directoryExists(const QString &szPath);
 	extern KVILIB_API bool directoryExists(const char* path);
 	// returns true if szPath points to an existing file
-	extern KVILIB_API bool fileExists(const QString &szPath);
+	inline bool fileExists(const QString &szPath) {	return QFile::exists(szPath); };
 	extern KVILIB_API bool fileExists(const char* szPath);
 	// removes a file
 	extern KVILIB_API bool removeFile(const QString &szPath);

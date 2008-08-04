@@ -28,6 +28,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_window.h"
 #include "kvi_ircsocket.h"
+#include "kvi_ircserver.h"
 #include "kvi_string.h"
 #include "kvi_irccontext.h"
 #include "kvi_pointerlist.h"
@@ -109,39 +110,33 @@ protected:
 	//void unregisterLinkMonitor(KviIrcSocketMonitor * m);
 	virtual void loadProperties(KviConfig * cfg);
 	virtual void saveProperties(KviConfig * cfg);
-	
+
 	void destroyConnection();
 	// internal helper for applyHighlighting
 	int triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger);
-	
+
 	void showNotifyList(bool bShow);
 
 public:
 	// UI
-	KviUserListView * notifyListView(){ return m_pNotifyListView; };
-	int selectedCount();
+	inline KviUserListView * notifyListView(){ return m_pNotifyListView; };
+	inline int selectedCount();
 
 
 	//
 	// State
 	//
-	KviIrcContext::State state(){ return context()->state(); };
-	KVI_DEPRECATED KviIrcContext * ircContext(){ return context(); };
-	unsigned int ircContextId() KVI_DEPRECATED;
-	//
-	// Sock state
-	//
-	KviIrcSocket * socket() KVI_DEPRECATED;
-	
+	inline KviIrcContext::State state(){ return context()->state(); };
+
 	// these should disappear!
-	bool isConnected(){ return context()->isConnected(); };
-	bool isIPv6Connection();
-	bool isNotConnected();
+	inline bool isConnected(){ return context()->isConnected(); };
+	inline bool isIPv6Connection();
+	inline bool isNotConnected();
 	bool connectionInProgress();
 	//
 	// This connection info
 	//
-	QString currentNetworkName();
+	inline QString currentNetworkName();
 	KviAvatar * currentAvatar();
 	//
 	// IRC Context wide helpers (connection related)
@@ -169,7 +164,7 @@ public:
 	KviAvatar * setAvatar(const QString &nick,const QString &user,const QString &host,const QString &szLocalPath,const QString &szName);
 	void checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host);
 	void setAvatarFromOptions();
-	
+
 	// This returns the default avatar for the current KVIrc user
 	// if he has choosen a valid avatar in the options dialog
 	// otherwise returns 0.
@@ -180,17 +175,7 @@ public:
 	void terminateConnectionRequest(bool bForce = false,const char * quitMsg = 0);
 
 	// Status string (usermode + nick) (connection related too)
-	const QString & statusString(){ return m_szStatusString; };
-	
-	// forwarders from KviIrcConnection
-	KVI_DEPRECATED KviPointerList<KviChannel> * channelList(){ return connection() ? connection()->channelList() : 0; };
-	KVI_DEPRECATED KviPointerList<KviQuery> * queryList(){ return connection() ? connection()->queryList() : 0; };
-	KVI_DEPRECATED unsigned int channelCount(){ return (connection() ? connection()->channelList()->count() : 0); };
-	KVI_DEPRECATED unsigned int queryCount(){ return (connection() ? connection()->queryList()->count() : 0); };
-	
-	// Window management
-	//KVI_DEPRECATED KviChannel * findChannel(const char * name){ return connection() ? connection()->findChannel(name) : 0; };
-	//KVI_DEPRECATED KviQuery * findQuery(const char * nick){ return connection() ? connection()->findQuery(nick) : 0; };
+	inline const QString & statusString(){ return m_szStatusString; };
 
 	KviWindow * activeWindow();
 	// User db, connection related
@@ -207,5 +192,26 @@ protected slots:
 	void toggleNotifyView();
 	void textViewRightClicked();
 };
+
+inline int KviConsole::selectedCount()
+{
+	return m_pNotifyListView->selectedCount();
+}
+
+inline bool KviConsole::isIPv6Connection()
+{
+	__range_valid(connection());
+	return connection()->server()->isIPv6();
+}
+
+inline bool KviConsole::isNotConnected()
+{
+	return (context()->state() == KviIrcContext::Idle);
+}
+
+inline QString KviConsole::currentNetworkName()
+{
+	return (connection() ? connection()->networkName() : QString::null);
+}
 
 #endif //_KVI_CONSOLE_H_

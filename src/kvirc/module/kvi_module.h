@@ -124,7 +124,7 @@ typedef struct _KviModuleInfo
 		_ctrl_routine, \
 		_cleanup_routine \
 	};
-	
+
 
 // old type parsing procedures
 /*
@@ -160,7 +160,7 @@ public:
 	const QString & filename(){ return m_szFileName; };
 	kvi_library_t   handle(){ return m_dlHandle; };
 	KviModuleInfo * moduleInfo(){ return m_pModuleInfo; };
-	
+
 	//
 	// This is a locking method a bit stronger than the can_unload routine
 	// in the descriptor. It will behave in the same way plus
@@ -180,11 +180,10 @@ public:
 	void            lock(){ m_uLock++; };
 	void            unlock(){ if(m_uLock > 0)m_uLock--; };
 	bool            isLocked(){ return (m_uLock > 0); };
-	
+
 	void          * getSymbol(const char * symname);
 	bool            ctrl(const char * operation,void * param);
 
-	void getDefaultConfigFileName(KviStr &buffer);
 	void getDefaultConfigFileName(QString &szBuffer);
 
 	static void unregisterMetaObject(const char * metaObjName);

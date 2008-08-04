@@ -302,7 +302,7 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 
 	if(pConsole)
 	{
-		switch(pConsole->ircContext()->state())
+		switch(pConsole->context()->state())
 		{
 			case KviIrcContext::Idle:
 				c->returnValue()->setString(QString("idle"));
@@ -359,7 +359,7 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		if(pWnd->type() == KVI_WINDOW_TYPE_CONSOLE)
 		{
-			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsole *)pWnd)->ircContextId()));
+			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsole *)pWnd)->context()->id()));
 			idx++;
 		}
 	}

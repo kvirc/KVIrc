@@ -234,7 +234,7 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		// the channel requests must be sent AFTER we have created and accessed the chan
 		// since it MAY happen that a sendFmtData() call fails by detecting a disconnect
 		// and thus destroys the channel window!
-		
+
 		// If this problem persists in other parts of the KVIrc core then
 		// we should disable disconnection detection during the parsing of a single
 		// message in KviIrcSocket. See the comment in KviIrcSocket::processData() for more info.
@@ -469,7 +469,7 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 			time_t curTime = kvi_unixTime();
 			int diff = ((unsigned int)curTime) - ((unsigned int)ndd->lastNetsplitOnQuitTime());
 			bool bDuplicate = false;
-			
+
 			QString szReason = aux;
 			if(diff < 6)
 			{
@@ -486,7 +486,7 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 			{
 				KviStr sz1(aux,daSpace - aux);
 				KviStr sz2(daSpace + 1);
-				
+
 				QString szD1 = msg->connection()->decodeText(sz1.ptr());
 				QString szD2 = msg->connection()->decodeText(sz2.ptr());
 				if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnNetsplit,console,szD1,szD2))
@@ -505,19 +505,25 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 		// compute the channel list
 		QString chanlist;
 		QString szReason = msg->connection()->decodeText(msg->safeTrailing());
-		
-		for(KviChannel *daChan=console->channelList()->first();daChan;daChan=console->channelList()->next())
+
+		if(console->connection())
 		{
-			if(daChan->isOn(szNick))
+			for(
+					KviChannel *daChan=console->connection()->channelList()->first();
+					daChan;
+					daChan=console->connection()->channelList()->next())
 			{
-				if(chanlist.isEmpty())chanlist = daChan->windowName();
-				else {
-					chanlist.append(',');
-					chanlist.append(daChan->windowName());
+				if(daChan->isOn(szNick))
+				{
+					if(chanlist.isEmpty())chanlist = daChan->windowName();
+					else {
+						chanlist.append(',');
+						chanlist.append(daChan->windowName());
+					}
 				}
 			}
 		}
-		
+
 		KviKvsVariantList vList;
 		vList.append(szNick);
 		vList.append(szUser);
@@ -530,7 +536,7 @@ void KviServerParser::parseLiteralQuit(KviIrcMessage *msg)
 	}
 
 
-	for(KviChannel *c=console->channelList()->first();c;c=console->channelList()->next())
+	for(KviChannel *c=console->connection()->channelList()->first();c;c=console->connection()->channelList()->next())
 	{
 		if(c->part(szNick))
 		{
@@ -805,7 +811,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		//								KviStr cmd(KviStr::Format,"DCC SEND %s %s",talker.nick(),filePath.ptr());
 		//								m_pFrm->m_pUserParser->parseUserCommand(cmd,m_pConsole);
 		//								return;
-	
+
 		//							} else {
 		//								m_pFrm->activeWindow()->output(KVI_OUT_INTERNAL,__tr("%s requests file %s: no such file was offered , ignoring"),talker.nick(),file.ptr());
 		//								return;
@@ -815,11 +821,11 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		//				}
 		//			}
 		//		}
-				
+
 		// A query request
 		// do we have a matching window ?
 		KviQuery * query = msg->connection()->findQuery(szNick);
-		
+
 		if(!query)
 		{
 			// New query requested. Check if we really should create it or not
@@ -850,7 +856,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			}
 
 			// this is not a spam, or at least it hasn't been recognized as spam
-			
+
 			// user option ? (this should again override any script)
 			// if the scripters want really to force the query creation they can do
 			// it manually or they can set the option to true at KVIrc startup
@@ -884,9 +890,9 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			DECRYPT_IF_NEEDED(query,msg->safeTrailing(),KVI_OUT_QUERYPRIVMSG,KVI_OUT_QUERYPRIVMSGCRYPTED,szBuffer,txtptr,msgtype)
 			// trigger the script event and eventually kill the output
 			QString szMsgText = query->decodeText(txtptr);
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText)) 
+			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,query,szNick,szUser,szHost,szMsgText))
 				msg->setHaltOutput();
-			
+
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && query!=g_pActiveWindow)
 			{
 				// KviKvsScript does NOT take parameters ownership
@@ -894,7 +900,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			 	//KviKvsScript::run("snd.play $0",0,&soundParams); <-- we also should provide a window for the script: it's always a good idea
 				KviKvsScript::run("snd.play $0",query,&soundParams);
 			}
-			
+
 			// spit out the message text
 			if(!msg->haltOutput())
 			{
@@ -924,7 +930,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryMessage,console,szNick,szUser,szHost,szMsgText))
 					msg->setHaltOutput();
-			
+
 			// we don't have a query here!
 			//if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && query!=g_pActiveWindow)
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && console!=g_pActiveWindow)
@@ -966,7 +972,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 		QString szPrefixes;
 
 		//Ignore it?
-		if(u) 
+		if(u)
 		{
 			if(u->isIgnoreEnabledFor(KviRegisteredUser::Channel))
 			{
@@ -983,7 +989,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 		if(!chan)
 		{
-			// check if the channel has some leading mode prefixes 
+			// check if the channel has some leading mode prefixes
 			while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
 			{
 				szPrefixes += szTarget[0];
@@ -997,7 +1003,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 			if(!msg->haltOutput())
 			{
 				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ? 
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				QString broad;
 				KviQString::sprintf(broad,"[>> %Q] %Q",&szOriginalTarget,&szMsgText);
@@ -1181,7 +1187,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		// A query request
 		// do we have a matching window ?
 		KviQuery * query = msg->connection()->findQuery(szNick);
-		
+
 		if(!query)
 		{
 			// New query requested. Check if we really should create it or not
@@ -1213,7 +1219,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			}
 
 			// this is not a spam, or at least it hasn't been recognized as spam
-			
+
 			// user option ? (this should again override any script)
 			// if the scripters want really to force the query creation they can do
 			// it manually or they can set the option to true at KVIrc startup
@@ -1246,7 +1252,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			DECRYPT_IF_NEEDED(query,msg->safeTrailing(),KVI_OUT_QUERYNOTICE,KVI_OUT_QUERYNOTICECRYPTED,szBuffer,txtptr,msgtype)
 			QString szMsgText = query->decodeText(txtptr);
 			// trigger the script event and eventually kill the output
-			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryNotice,query,szNick,szUser,szHost,szMsgText)) 
+			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnQueryNotice,query,szNick,szUser,szHost,szMsgText))
 				msg->setHaltOutput();
 			// spit out the message text
 			if(!msg->haltOutput())
@@ -1308,13 +1314,13 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 
 	// Channel NOTICE
 	KviChannel * chan = msg->connection()->findChannel(szTarget);
-	
+
 	QString szOriginalTarget = szTarget;
 	QString szPrefixes;
 
 	if(!chan)
 	{
-		// check if the channel has some leading mode prefixes 
+		// check if the channel has some leading mode prefixes
 		while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
 		{
 			szPrefixes += szTarget[0];
@@ -1327,7 +1333,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 	{
 		if(!msg->haltOutput())
 		{
-			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ? 
+			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
 				console->activeWindow() : (KviWindow *)(console);
 			QString szBroad;
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
@@ -1372,7 +1378,7 @@ void KviServerParser::parseLiteralTopic(KviIrcMessage *msg)
 	QString szNick,szUser,szHost;
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
-	
+
 	// Now lookup the channel
 	KviChannel * chan = msg->connection()->findChannel(szTarget);
 
@@ -1425,7 +1431,7 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 				msg->setHaltOutput();
 	}
 
-	for(KviChannel * c = console->channelList()->first();c;c = console->channelList()->next())
+	for(KviChannel * c = console->connection()->channelList()->first();c;c = console->connection()->channelList()->next())
 	{
 		if(c->nickChange(szNick,szNewNick))
 		{
@@ -1442,12 +1448,19 @@ void KviServerParser::parseLiteralNick(KviIrcMessage *msg)
 
 	if(bIsMe)
 	{
-		// just update all the captions : we have changed OUR nick
-		for(KviQuery * q = console->queryList()->first();q;q = console->queryList()->next())
+		if(console->connection())
 		{
-			if(!msg->haltOutput())
-				q->output(KVI_OUT_NICK,__tr2qs("You have changed your nickname to %Q"),&szNewNick);
-			q->updateCaption();
+			// just update all the captions : we have changed OUR nick
+			for(
+					KviQuery * q = console->connection()->queryList()->first();
+					q;
+					q = console->connection()->queryList()->next()
+				)
+			{
+				if(!msg->haltOutput())
+					q->output(KVI_OUT_NICK,__tr2qs("You have changed your nickname to %Q"),&szNewNick);
+				q->updateCaption();
+			}
 		}
 	}
 	KviQuery * q = console->connection()->findQuery(szNick);
@@ -1534,7 +1547,7 @@ void KviServerParser::parseLiteralInvite(KviIrcMessage *msg)
 	{
 		if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnInvite,msg->console(),szNick,szUser,szHost,szChannel))
 			msg->setHaltOutput();
-		
+
 		if(!msg->haltOutput())
 		{
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolInvitesToActiveWindow) ?
@@ -1663,7 +1676,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 
 	QString nickBuffer;
 	QString hostBuffer;
-	
+
 	if(szHost != "*")
 	{
 		KviQString::sprintf(nickBuffer,"\r!n\r%Q\r",&szNick);
@@ -1711,7 +1724,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 					if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnKeyUnset,chan,szNick,szUser,szHost))
 						msg->setHaltOutput();
 				}
-				
+
 				if(!(msg->haltOutput() || KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges)))
 				{
 					if(bSet)chan->output(KVI_OUT_KEY,
@@ -1726,7 +1739,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				if(bSet)aParam = msg->safeParam(curParam++);
 				else aParam = "";
 				chan->setChannelLimit(aParam.toUtf8().data());
-				
+
 				if(bSet) {
 					if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnLimitSet,chan,szNick,szUser,szHost,aParam))
 						msg->setHaltOutput();
@@ -1734,7 +1747,7 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 					if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnLimitUnset,chan,szNick,szUser,szHost))
 						msg->setHaltOutput();
 				}
-				
+
 				if(!(msg->haltOutput() || KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges)))
 				{
 					if(bSet)chan->output(KVI_OUT_LIMIT,

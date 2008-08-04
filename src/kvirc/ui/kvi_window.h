@@ -169,47 +169,47 @@ protected: // almost private: don't touch :D
 //	KviToolWindowsContainer             * m_pEditorsContainer;
 public:
 	// The global ID of this window: unique in the application
-	QString id(){ return QString("%1").arg(m_uId); };
-	unsigned long int numericId(){ return m_uId; };
+	inline QString id(){ return QString("%1").arg(m_uId); };
+	inline unsigned long int numericId(){ return m_uId; };
 public:
 	// THIS is the function that should be used
-	const QString & windowName(){ return m_szName; };
+	inline const QString & windowName(){ return m_szName; };
 	void setWindowName(const QString &szName);
 
 	// Window type management
-	int type() const { return m_iType; };
+	inline int type() const { return m_iType; };
 	// This returns a descriptive name of the window type
 	// if the window is an user window, the typeString returned
 	// by THIS implementation is "unknown"
 	virtual const char * typeString();
 
-	QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
+	inline QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
 	void forceTextCodec(QTextCodec * c);
 
 	// The frame that this window belongs to
 	// It is always non-null and never changes
-	KviFrame * frame() const { return m_pFrm; };
+	inline KviFrame * frame() const { return m_pFrm; };
 	// The KviIrcView of this window: may be NULL if the window has no KviIrcView (and thus supports no direct output)
-	KviIrcView * view() const { return m_pIrcView; };
+	inline KviIrcView * view() const { return m_pIrcView; };
 	// The mdiParent widget: may be nulll if the window is undocked
-	KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
+	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
 	// The console that this window belongs to: may be null for windows that aren't bound to irc contexts
-	KviConsole * console(){ return m_pConsole; };
+	inline KviConsole * console(){ return m_pConsole; };
 	// same as above
-	KviIrcContext * context(){ return m_pContext; };
+	inline KviIrcContext * context(){ return m_pContext; };
 	// the current IRC connection (if any)
 	KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
-	QSplitter * splitter(){ return m_pSplitter; };
+	inline QSplitter * splitter(){ return m_pSplitter; };
 	// The window has ALWAYS a taskbar item
-	KviTaskBarItem * taskBarItem(){ return m_pTaskBarItem; };
+	inline KviTaskBarItem * taskBarItem(){ return m_pTaskBarItem; };
 	// The window *might* have a button container
 	virtual QFrame * buttonContainer(){ return (QFrame*)m_pButtonBox; };
 	virtual void toggleButtonContainer();
 	// The window *might* have an output proxy: if it has no view() for example
 	virtual KviWindow * outputProxy();
 	// The window input widget
-	KviInput * input(){ return m_pInput; };
+	inline KviInput * input(){ return m_pInput; };
 
 	// The target of this window: empty when it makes no sense :D
 	virtual const QString & target(){ return KviQString::empty; };

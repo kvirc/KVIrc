@@ -129,7 +129,7 @@ KviFrame::KviFrame()
 		// the init function)
 		m_pStatusBar->load();
 
-	} 
+	}
 	else
 		m_pStatusBar = 0;
 
@@ -358,7 +358,7 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 		Qt::Key_Escape +Qt::CTRL,         // minimize window
 		Qt::Key_Left + Qt::ALT + Qt::SHIFT ,  // prev window in context
 		Qt::Key_Right + Qt::ALT + Qt::SHIFT,  // next window in context
-*/	
+*/
 		Qt::Key_F4 + Qt::CTRL ,     // close current window
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
 		Qt::Key_2 + Qt::CTRL ,
@@ -500,7 +500,7 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 	{
 		// Kill the oldest group
 		KviConfigIterator it(*(g_pWinPropertiesConfig->dict()));
-		KviStr minKey;
+		QString minKey;
 		unsigned int minVal = time(0);
 		while(it.current() && minVal)
 		{
@@ -527,7 +527,7 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 			++it;
 		}
 
-		if(minKey.hasData())g_pWinPropertiesConfig->clearGroup(minKey.ptr());
+		if(!minKey.isEmpty())g_pWinPropertiesConfig->clearGroup(minKey);
 		else debug("Oops...no minimum key found!");
 	}
 

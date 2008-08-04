@@ -72,12 +72,11 @@ public:
 	bool isIPv6();
 	bool getStringAddress(QString &szBuffer);
 	kvi_u32_t port();
-	
+
 };
 
 
 KVILIB_API extern bool kvi_select(int fd,bool * bCanRead,bool * bCanWrite,int iUSecs = 0);
-KVILIB_API extern bool kvi_getInterfaceAddress(const char * ifname,QString &buffer);
 
 // Warning : NOT THREAD SAFE!
 KVILIB_API extern bool kvi_getLocalHostAddress(QString &buffer);

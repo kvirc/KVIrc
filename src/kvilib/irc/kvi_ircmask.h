@@ -71,11 +71,9 @@ public:
 	// Returns the nick of this user.<br>
 	// In the worst case you get a string == "*"<br>
 	const QString &nick() const { return m_szNick; };
-	// DEPRECATED!
-	const QString &username() const { return m_szUser; };
 	const QString &user() const { return m_szUser; };
 	const QString &host() const { return m_szHost; };
-	
+
 	bool hasUser() const { return !(m_szUser.isEmpty() || (m_szUser == m_szWild)); };
 	bool hasHost() const { return !(m_szHost.isEmpty() || (m_szHost == m_szWild)); };
 
@@ -116,7 +114,7 @@ public:
 		NickCleanUserSmartNet = 25, // 25 : nick!*user@*.host.top          (nick!*user@XXX.XXX.*)
 		CleanUserSmartNet = 26      // 26 : *!*user@*.host.top          (*!user@*XXX.XXX.*)
 	};
-	
+
 	void mask(QString &szMask,MaskType eMaskType = NickCleanUserHost) const;
 	bool hasWildNick();
 

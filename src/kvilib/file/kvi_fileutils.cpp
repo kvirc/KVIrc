@@ -240,12 +240,6 @@ namespace KviFileUtils
 		return (f.exists() && f.isDir());
 	}
 
-	bool fileExists(const QString &szPath)
-	{
-		QFileInfo f(szPath);
-		return (f.exists() && f.isFile());
-	}
-
 	bool fileExists(const char* path)
 	{
 		QString szPath=QString::fromUtf8(path);

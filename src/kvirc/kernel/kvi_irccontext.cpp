@@ -83,7 +83,7 @@ KviIrcContext::KviIrcContext(KviConsole * pConsole)
 
 	m_pLinksWindow = 0;
 	m_pListWindow = 0;
-	
+
 	m_eState = Idle;
 
 	m_pAsynchronousConnectionData = 0;
@@ -93,7 +93,7 @@ KviIrcContext::KviIrcContext(KviConsole * pConsole)
 	m_pReconnectTimer = 0;
 
 	m_uConnectAttemptCount = 1;
-	
+
 	m_iHeartbeatTimerId = startTimer(5000);
 }
 
@@ -119,7 +119,7 @@ KviIrcContext::~KviIrcContext()
 	closeAllDeadChannels();
 	closeAllDeadQueries();
 	closeAllContextWindows();
-	
+
 	destroyConnection();
 	if(m_pAsynchronousConnectionData)delete m_pAsynchronousConnectionData;
 	if(m_pSavedAsynchronousConnectionData)delete m_pSavedAsynchronousConnectionData;
@@ -315,7 +315,7 @@ void KviIrcContext::destroyConnection()
 	if(!m_pConnection)return;
 	m_pConnection->closeAllChannels();
 	m_pConnection->closeAllQueries();
-	
+
 	if(m_pLinksWindow)m_pLinksWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
 	if(m_pListWindow)m_pListWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
 
@@ -444,7 +444,7 @@ void KviIrcContext::connectToCurrentServer()
 					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
 			} // else it just means "do connect" to the globally selected irc server in the options dialog
 		}
-	
+
 		if(!(m_pAsynchronousConnectionData->szServer.isEmpty()))
 		{
 			// ok , have a server to look for in the db
@@ -471,22 +471,22 @@ void KviIrcContext::connectToCurrentServer()
 	}
 
 	KviServerDataBaseRecord * rec = g_pServerDataBase->currentRecord();
-	
+
 	KviNetwork * net;
 	KviServer  * srv;
-	
+
 	net = rec ? rec->network() : 0;
 	srv = net ? rec->currentServer() : 0;
 
 	KviProxy      * prx = 0;
-	
+
 	if(!srv)
 	{
 		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
 		return;
 	}
-	
+
 	if(!net)
 	{
 		// BUG
@@ -494,10 +494,10 @@ void KviIrcContext::connectToCurrentServer()
 		destroyAsynchronousConnectionData();
 		return;
 	}
-	
+
 
 	prx = srv->proxyServer(g_pProxyDataBase);
-	
+
 	if(!prx && (srv->proxy()!=-1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))
 	{
 		prx = g_pProxyDataBase->currentProxy();
@@ -507,7 +507,7 @@ void KviIrcContext::connectToCurrentServer()
 		}
 	}
 
-	KviStr szBindAddress;
+	QString szBindAddress;
 
 	if(m_pAsynchronousConnectionData)
 	{
@@ -517,9 +517,9 @@ void KviIrcContext::connectToCurrentServer()
 
 	// Find out the identity we'll be using in this connection
 	// First check the server for one
-	
+
 	const KviUserIdentity * pIdentity = 0;
-	
+
 	QString szUserIdentityId = srv->userIdentityId();
 	if(!szUserIdentityId.isEmpty())
 		pIdentity = KviUserIdentityManager::instance()->findIdentity(szUserIdentityId);
@@ -530,7 +530,7 @@ void KviIrcContext::connectToCurrentServer()
 
 	if(!szUserIdentityId.isEmpty())
 		pIdentity = KviUserIdentityManager::instance()->findIdentity(szUserIdentityId);
-	
+
 	// If not found, get the default identity (this is GRANTED to be never null, eventually filled up with defaults)
 	pIdentity = KviUserIdentityManager::instance()->defaultIdentity();
 
@@ -542,7 +542,7 @@ void KviIrcContext::connectToCurrentServer()
 					net,
 					srv,
 					prx,
-					szBindAddress.ptr()
+					szBindAddress
 				),
 				new KviUserIdentity(*pIdentity)
 			);
@@ -596,13 +596,13 @@ void KviIrcContext::connectionFailed(int iError)
 			(m_uConnectAttemptCount < KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))))
 		{
 			m_uConnectAttemptCount++;
-			//FIXME: Multiply the delay by (m_uConnectAttemptCount / 2) so later connects are less frequent. 
+			//FIXME: Multiply the delay by (m_uConnectAttemptCount / 2) so later connects are less frequent.
 			if(!_OUTPUT_MUTE)
 			{
 				QString tmp;
 				KviQString::sprintf(tmp,__tr2qs("Will attempt to reconnect in %d seconds"),KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
 				QString num;
-				
+
 				if(!KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))
 				    KviQString::sprintf(num,__tr2qs("%d"),m_uConnectAttemptCount);
 				else
@@ -611,10 +611,10 @@ void KviIrcContext::connectionFailed(int iError)
 				tmp += " [" + num + "]";
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,tmp);
 			}
-	
+
 			KviServer oldServer(*(connection()->server()));
 			QString oldNickname = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
-	
+
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 			d->szServer = oldServer.m_szHostname;
 			d->szServerId = oldServer.id();
@@ -628,9 +628,9 @@ void KviIrcContext::connectionFailed(int iError)
 			d->szCommandToExecAfterConnect = "";
 			setAsynchronousConnectionData(d);
 			beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
-			
+
 			setState(Idle); // destroy the actual connection
-			
+
 			return;
 		} else {
 			if(!_OUTPUT_MUTE)
@@ -671,7 +671,7 @@ void KviIrcContext::connectionEstabilished()
 	setState(LoggingIn); // this must be set in order for $server and other functions to return the correct values
 
 	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIrcConnectionEstabilished,m_pConsole);
-	
+
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
@@ -748,8 +748,8 @@ void KviIrcContext::connectionTerminated()
 					pInfo->m_szJoinChannels.append(szPasswords);
 				}
 			}
-	
-	
+
+
 			if(KVI_OPTION_BOOL(KviOption_boolReopenQueriesAfterReconnect))
 			{
 				for(KviQuery * q = connection()->queryList()->first();q;q = connection()->queryList()->next())
@@ -771,7 +771,7 @@ void KviIrcContext::connectionTerminated()
 		if(KVI_OPTION_BOOL(KviOption_boolKeepQueriesOpenOnDisconnect))
 			connection()->keepQueriesOpenAfterDisconnect();
 	}
-	
+
 	setState(Idle);
 
 	bool bStopOutput = false;
@@ -902,7 +902,7 @@ void KviIrcContext::timerEvent(QTimerEvent *e)
 	}
 
 	// our heartbeat
-	
+
 	kvi_time_t tNow = kvi_unixTime();
 
 	if(m_pConnection)

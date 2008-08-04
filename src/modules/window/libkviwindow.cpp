@@ -799,7 +799,7 @@ static bool window_kvs_fnc_context(KviKvsModuleFunctionCall * c)
 	GET_KVS_FNC_WINDOW_ID
 	if(pWnd)
 	{
-		c->returnValue()->setInteger(pWnd->console() ? pWnd->console()->ircContextId() : 0);
+		c->returnValue()->setInteger(pWnd->context() ? pWnd->context()->id() : 0);
 	}
 	return true;
 }
@@ -1034,7 +1034,7 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			{
 				return true;
 			}
-			uId = c->window()->console()->ircContextId();
+			uId = c->window()->context()->id();
 		}
 
 		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
@@ -1042,9 +1042,9 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 
 		while(KviWindow * wnd = it.current())
 		{
-			if(wnd->console())
+			if(wnd->context())
 			{
-				if(wnd->console()->ircContextId() == uId)
+				if(wnd->context()->id() == uId)
 				{
 					if(bAllWindows)
 					{
@@ -1391,7 +1391,7 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	if(pWnd)
 		pWnd->view()->setPrivateBackgroundPixmap(*pix);
 	*/
-	
+
 	//FIXME: This is broken
 
 	return true;

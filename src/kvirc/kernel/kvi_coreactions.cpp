@@ -108,7 +108,7 @@ void register_core_actions(KviActionManager * m)
 		__accel); \
 	QObject::connect(a,SIGNAL(activated()),__object,__slot); \
 	m->registerAction(a)
-	
+
 	SCRIPT_ACTION(
 		KVI_COREACTION_SERVEROPTIONS,
 		"options.edit KviServerOptionsWidget",
@@ -352,7 +352,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_SMALLICON_KVIRC,
 		0,
 		QString::null);
-	
+
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCRUHOMEPAGE,
 		"openurl http://www.kvirc.ru",
@@ -399,7 +399,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_SMALLICON_TILEWINDOWS,
 		0,
 		QString::null);
-		
+
 	SLOT_ACTION(
 		KVI_COREACTION_MINIMIZEALLWINDOWS,
 		g_pFrame->mdiManager(),
@@ -626,7 +626,7 @@ bool KviConnectAction::addToPopupMenu(KviTalPopupMenu *p)
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pFrame->activeContext();
 	int id;
-	
+
 
 	QString t;
 	if(c)
@@ -746,7 +746,7 @@ QWidget * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 	connect(b, SIGNAL(clicked()), this, SLOT(activate()));
 
 	b->setMenu(m_pPopup);
-	
+
 	b->setPopupMode( scriptCode().isEmpty() ? QToolButton::InstantPopup :  QToolButton::MenuButtonPopup);
 	t->addWidget(b);
 	registerWidget(b);
@@ -877,8 +877,8 @@ void KviConnectToServerAction::popupActivated(int id)
 			activate();
 		} else {
 			KviStr szCommand;
-			KviStr szText = text;
-			if(KviIrcUrl::parse(szText.ptr(),szCommand,KVI_IRCURL_CONTEXT_THIS))
+			QString szText = text;
+			if(KviIrcUrl::parse(szText,szCommand,KVI_IRCURL_CONTEXT_THIS))
 			{
 				KviKvsScript::run(szCommand.ptr(),c);
 			}
@@ -907,15 +907,15 @@ void KviChangeUserModeAction::popupAboutToShow()
 
 	m_pPopup->clear();
 	int id;
-	QString szModes = g_pActiveWindow->console()->connection()->serverInfo()->supportedUserModes();
-	
+	QString szModes = g_pActiveWindow->connection()->serverInfo()->supportedUserModes();
+
 	id = m_pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WALLOPS)),__tr2qs("Wallops (+w)"));
 	m_pPopup->setItemChecked(id,c->connection()->userInfo()->hasUserMode('w'));
 	id = m_pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVERNOTICE)),__tr2qs("Server Notices (+s)"));
 	m_pPopup->setItemChecked(id,c->connection()->userInfo()->hasUserMode('s'));
 	id = m_pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_INVISIBLE)),__tr2qs("Invisible (+i)"));
 	m_pPopup->setItemChecked(id,c->connection()->userInfo()->hasUserMode('i'));
-	
+
 	szModes.replace("w","");
 	szModes.replace("s","");
 	szModes.replace("i","");

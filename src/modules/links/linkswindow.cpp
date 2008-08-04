@@ -86,7 +86,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 
 	connectionStateChange();
 
-	m_pConsole->ircContext()->setLinksWindowPointer(this);
+	m_pConsole->context()->setLinksWindowPointer(this);
 
 	m_szRootServer = __tr2qs("(None)");
 }
@@ -94,14 +94,14 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 KviLinksWindow::~KviLinksWindow()
 {
 	g_pLinksWindowList->removeRef(this);
-	m_pConsole->ircContext()->setLinksWindowPointer(0);
+	m_pConsole->context()->setLinksWindowPointer(0);
 	delete m_pLinkList;
 	delete m_pHostPopup;
 }
 
 void KviLinksWindow::getBaseLogFileName(KviStr &buffer)
 {
-	buffer.sprintf("LINKS_%d",console()->ircContextId());
+	buffer.sprintf("LINKS_%d",context()->id());
 }
 
 void KviLinksWindow::requestLinks()
@@ -151,7 +151,7 @@ QSize KviLinksWindow::sizeHint() const
 
 void KviLinksWindow::fillCaptionBuffers()
 {
-	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Links for %Q [IRC Context %u]"),&m_szRootServer,m_pConsole->ircContextId());
+	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Links for %Q [IRC Context %u]"),&m_szRootServer,m_pConsole->context()->id());
 
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
@@ -159,7 +159,7 @@ void KviLinksWindow::fillCaptionBuffers()
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
 		&m_szRootServer,
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii(),
-		m_pConsole->ircContextId());
+		m_pConsole->context()->id());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
@@ -167,7 +167,7 @@ void KviLinksWindow::fillCaptionBuffers()
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
 		&m_szRootServer,
 		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii(),
-		m_pConsole->ircContextId());
+		m_pConsole->context()->id());
 }
 
 void KviLinksWindow::die()
@@ -262,7 +262,7 @@ void KviLinksWindow::endOfLinks()
 			}
 		}
 	}
-	
+
 	avgHops = ((totalHosts > 0) ? ((totalHops * 100) / totalHosts) : 0 );
 	int nearProcent = ((totalHosts > 0) ? ((nearLinks * 10000) / totalHosts) : 0);
 	int directProcent = ((totalHosts > 0) ? ((directLinks * 10000) / totalHosts) : 0);

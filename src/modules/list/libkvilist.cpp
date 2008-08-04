@@ -52,7 +52,7 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!c->window()->console())return c->context()->errorNoIrcContext();
 
-	if(!(c->window()->console()->ircContext()->listWindow()))
+	if(!(c->window()->context()->listWindow()))
 	{
 		KviListWindow *w = new KviListWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);

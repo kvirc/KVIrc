@@ -56,7 +56,7 @@ KviPointerList<UrlDlgList> *g_pUrlDlgList;
 KviPointerList<KviStr> *g_pBanList;
 ConfigDialog *g_pConfigDialog;
 
-KviStr szConfigPath;
+QString szConfigPath;
 
 void saveUrlList();
 void loadUrlList();
@@ -112,7 +112,7 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *g_pList)
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
 	m_pUrlList = new KviTalListView(this);
 	//m_pUrlList = new KviListView(this,"list");
-	KviConfig cfg(szConfigPath.ptr(),KviConfig::Read);
+	KviConfig cfg(szConfigPath,KviConfig::Read);
 
 	KviTalPopupMenu *pop;
 
@@ -312,7 +312,7 @@ void UrlDialog::resizeEvent(QResizeEvent *)
 
 UrlDialog::~UrlDialog()
 {
-	KviConfig cfg(szConfigPath.ptr(),KviConfig::Write);
+	KviConfig cfg(szConfigPath,KviConfig::Write);
 	cfg.setGroup("ConfigDialog");
 	if (cfg.readBoolEntry("SaveColumnWidthOnClose",false)) {
 		cfg.setGroup("ColsWidth");
@@ -342,7 +342,7 @@ ConfigDialog::ConfigDialog()
 
 	QGridLayout *g = new QGridLayout(this);
 
-	KviConfig *cfg = new KviConfig(szConfigPath.ptr(),KviConfig::Read);
+	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Read);
 	cfg->setGroup("ConfigDialog");
 
 	cb[0] = new QCheckBox(__tr2qs("Save URL list on module unload"),this);
@@ -381,7 +381,7 @@ void ConfigDialog::acceptbtn()
 {
 	if (m_pBanFrame) m_pBanFrame->saveBans();
 
-	KviConfig *cfg = new KviConfig(szConfigPath.ptr(),KviConfig::Write);
+	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Write);
 	cfg->setGroup("ConfigDialog");
 	cfg->writeEntry("SaveUrlListOnUnload",cb[0]->isChecked());
 	cfg->writeEntry("SaveColumnWidthOnClose",cb[1]->isChecked());
@@ -477,7 +477,7 @@ void BanFrame::removeBan()
 void BanFrame::saveBans()
 {
 	if (m_pEnable->isChecked()) saveBanList();
-	KviConfig *cfg = new KviConfig(szConfigPath.ptr(),KviConfig::Write);
+	KviConfig *cfg = new KviConfig(szConfigPath,KviConfig::Write);
 	cfg->setGroup("ConfigDialog");
 	cfg->writeEntry("BanEnabled",m_pEnable->isChecked());
 	delete cfg;
@@ -500,7 +500,7 @@ void saveUrlList()
 	file.open(IO_WriteOnly);
 
 	QTextStream stream(&file);
-	
+
 	stream << g_pList->count() << endl;
 
 	for(KviUrl *tmp=g_pList->first();tmp;tmp=g_pList->next())
@@ -516,11 +516,11 @@ void saveUrlList()
 
 void loadUrlList()
 {
-	KviStr urllist;
+	QString urllist;
 	g_pApp->getLocalKvircDirectory(urllist,KviApp::ConfigPlugins);
 	urllist += g_pUrlListFilename;
 	QFile file;
-	file.setName(QString::fromUtf8(urllist.ptr()));
+	file.setName(urllist);
 	if (!file.open(IO_ReadOnly))return;
 
 	QTextStream stream(&file);
@@ -556,11 +556,11 @@ void loadUrlList()
 
 void saveBanList()
 {
-	KviStr banlist;
+	QString banlist;
 	g_pApp->getLocalKvircDirectory(banlist,KviApp::ConfigPlugins);
 	banlist += g_pBanListFilename;
 	QFile file;
-	file.setName(QString::fromUtf8(banlist.ptr()));
+	file.setName(banlist);
 	file.open(IO_WriteOnly);
 
 	QTextStream stream(&file);
@@ -576,13 +576,13 @@ void saveBanList()
 
 void loadBanList()
 {
-	KviStr banlist;
+	QString banlist;
 	g_pApp->getLocalKvircDirectory(banlist,KviApp::ConfigPlugins);
 	banlist += g_pBanListFilename;
 	QFile file;
-	file.setName(QString::fromUtf8(banlist.ptr()));
+	file.setName(banlist);
 	if (!file.open(IO_ReadOnly))return;
-	
+
 	QTextStream stream(&file);
 
 	g_pBanList->clear();
@@ -809,13 +809,13 @@ static bool url_module_init(KviModule *m)
 	UrlDlgList *udl = new UrlDlgList();
 	udl->dlg = 0;
 	g_pUrlDlgList->append(udl);
-	
+
 	return true;
 }
 
 static bool url_module_cleanup(KviModule *m)
 {
-	KviConfig cfg(szConfigPath.ptr(),KviConfig::Read);
+	KviConfig cfg(szConfigPath,KviConfig::Read);
 	cfg.setGroup("ConfigDialog");
 	if (cfg.readBoolEntry("SaveUrlListOnUnload",false) == true) saveUrlList();
 	for (UrlDlgList *tmpitem=g_pUrlDlgList->first();tmpitem;tmpitem=g_pUrlDlgList->next()) {

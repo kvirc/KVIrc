@@ -155,11 +155,6 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging();
 }
 
-int KviConsole::selectedCount()
-{
-	return m_pNotifyListView->selectedCount();
-}
-
 void KviConsole::recentUrlsChanged(){
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
@@ -179,11 +174,6 @@ void KviConsole::recentUrlsChanged(){
 		else
 	    m_pAddressEdit->setItemText(m_pAddressEdit->currentIndex(), cur);
 	}
-}
-
-bool KviConsole::isNotConnected()
-{
-	return (context()->state() == KviIrcContext::Idle);
 }
 
 bool KviConsole::connectionInProgress()
@@ -214,21 +204,6 @@ KviConsole::~KviConsole()
 	m_pContext = 0;
 }
 
-KviIrcSocket * KviConsole::socket()
-{
-	return connection() ? connection()->socket() : 0;
-}
-
-unsigned int KviConsole::ircContextId()
-{
-	return m_pContext->id();
-}
-
-QString KviConsole::currentNetworkName()
-{
-	return (connection() ? connection()->networkName() : QString::null);
-}
-
 void KviConsole::triggerCreationEvents()
 {
 	if(m_iFlags & KVI_CONSOLE_FLAG_FIRSTINAPP) // this is the first context in the application
@@ -255,8 +230,8 @@ void KviConsole::fillContextPopup(KviTalPopupMenu * p)
 	// FIXME: add items to close dead queries and channels ?
 	if(connection())
 	{
-		cc = channelCount();
-		qc = queryCount();
+		cc = connection()->channelList()->count();
+		qc = connection()->queryList()->count();
 		p->insertSeparator();
 		id = p->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Part All Channels"),connection(),SLOT(partAllChannels()));
 		if(!cc)p->setItemEnabled(id,false);
@@ -431,7 +406,7 @@ void KviConsole::saveProperties(KviConfig *cfg)
 
 void KviConsole::getBaseLogFileName(QString &buffer)
 {
-	buffer=QString("CONSOLE%1").arg(ircContextId());
+	buffer=QString("CONSOLE%1").arg(context()->id());
 }
 
 void KviConsole::showNotifyList(bool bShow)
@@ -531,12 +506,6 @@ void KviConsole::connectionDetached()
 	//need to update URI?
 	m_pNotifyListView->partAll();
 	m_pNotifyListView->setUserDataBase(0); // this is rather for crash tests
-}
-
-bool KviConsole::isIPv6Connection()
-{
-	__range_valid(connection());
-	return connection()->server()->isIPv6();
 }
 
 void KviConsole::closeEvent(QCloseEvent *e)

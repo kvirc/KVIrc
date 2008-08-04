@@ -40,7 +40,7 @@
 #include "kvi_channel.h"
 #include "kvi_ircurl.h"
 #include "kvi_frame.h"
-#include "kvi_modulemanager.h" 
+#include "kvi_modulemanager.h"
 #include "kvi_kvs_moduleinterface.h"
 
 #include "kvi_kvs_variantlist.h"
@@ -298,7 +298,7 @@ namespace KviKvsCoreSimpleCommands
 			Sets chanop status to the specified users
 		@description:
 			Sets channel operator status to the users specified in <nickname_list>,
-			which is a comma separated list of nicknames. 
+			which is a comma separated list of nicknames.
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
 			a variable number of +o flags.
@@ -397,7 +397,7 @@ namespace KviKvsCoreSimpleCommands
 		} else {
 #endif
 			if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
-		
+
 			if(!szCommand.isEmpty())
 			{
 				KviKvsVariantList vList;
@@ -408,7 +408,7 @@ namespace KviKvsCoreSimpleCommands
 
 				if(!script.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams))
 					KVSCSC_pContext->warning(__tr2qs("The commandline for this url type seems to be broken (%Q)"),&szUrl);
-		
+
 			} else KVSCSC_pContext->warning(__tr2qs("No commandline specified for this type of url (%Q)"),&szUrl);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		}
@@ -511,7 +511,7 @@ namespace KviKvsCoreSimpleCommands
 		} else {
 			if(!g_pApp->setOptionValue(szName,szValue))KVSCSC_pContext->warning(__tr2qs("Option setting error: Unknown option or invalid value for option type"));
 		}
-	
+
 		return true;
 	}
 
@@ -558,7 +558,7 @@ namespace KviKvsCoreSimpleCommands
 			passed to the script. The parameter $0 will contain the
 			path of the file being parsed, the other parameters will
 			be available starting from $1.[br]
-			If <filename> is an existing directory name a file dialog 
+			If <filename> is an existing directory name a file dialog
 			will pop up, allowing you to choose a file to parse.
 			The file dialog will start in the directory specified by <filename>.
 			If you don't know the name of an existing directory, just pass "."
@@ -586,7 +586,7 @@ namespace KviKvsCoreSimpleCommands
 				echo ${ parse -r /home/pragma/fetchdata.kvs; };
 			[/example]
 	*/
-	
+
 	KVSCSC(parse)
 	{
 		QString szFileName;
@@ -602,7 +602,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			QString szTmp;
 			KVSCSC_pContext->enterBlockingSection();
-			
+
 			bool bResult = KviFileDialog::askForOpenFileName(szTmp,__tr2qs("Choose a file to parse"),szFileName.toUtf8().data(),"*.kvs");
 
 			if(!KVSCSC_pContext->leaveBlockingSection())return false; // need to stop immediately
@@ -720,7 +720,7 @@ namespace KviKvsCoreSimpleCommands
 		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
 		QStringList sl = szChans.split(",",QString::SkipEmptyParts);
-	
+
 		if(!szMsg.isEmpty())
 		{
 			KviQCString szText;
@@ -742,7 +742,7 @@ namespace KviKvsCoreSimpleCommands
 			if(!(KVSCSC_pConnection->sendFmtData("PART %s",szEncodedChans.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
-	
+
 		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
 		{
 			KviChannel * ch = KVSCSC_pConnection->findChannel(*it);
@@ -812,11 +812,11 @@ namespace KviKvsCoreSimpleCommands
 
 		KviKvsModuleCommandCall call(m,KVSCSC_pContext,KVSCSC_pParams,KVSCSC_pSwitches);
 
-		return (*proc)(&call); 
+		return (*proc)(&call);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: popup
 		@type:
@@ -842,7 +842,7 @@ namespace KviKvsCoreSimpleCommands
 		@seealso:
 			[cmd]defpopup[/cmd]
 	*/
-	
+
 	KVSCSC(popup)
 	{
 		QString szPopupName;
@@ -856,7 +856,7 @@ namespace KviKvsCoreSimpleCommands
 		while(KviKvsVariant * v = KVSCSC_pParams->next())pPopupParams->append(new KviKvsVariant(*v));
 
 		KviKvsPopupMenu * pMenu = KviKvsPopupManager::instance()->lookup(szPopupName);
-		
+
 		if(!pMenu)
 		{
 			delete pPopupParams;
@@ -893,7 +893,7 @@ namespace KviKvsCoreSimpleCommands
 				if(bOk1 && bOk2)pnt = QPoint(iX,iY);
 				else bCoordsOk = false;
 			}
-			
+
 			if(!bCoordsOk)KVSCSC_pContext->warning(__tr2qs("Invalid syntax for screen coordinates, using cursor position"));
 		}
 
@@ -1003,16 +1003,16 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_REQUIRE_CONNECTION
 
 		KviQuery * query;
-		
+
 		QStringList sl = szTargets.split(",",QString::SkipEmptyParts);
 		for(QStringList::Iterator it = sl.begin();it != sl.end();it++)
 		{
 			QString szNick = *it;
 			if(szNick.isEmpty())KVSCSC_pContext->warning(__tr2qs("Empty target specified"));
 			else {
-				query = KVSCSC_pWindow->console()->connection()->findQuery(szNick);
+				query = KVSCSC_pWindow->connection()->findQuery(szNick);
 				if(!query) {
-					query = KVSCSC_pWindow->console()->connection()->createQuery(szNick);
+					query = KVSCSC_pWindow->connection()->createQuery(szNick);
 					QString user;
 					QString host;
 					KviIrcUserDataBase * db = KVSCSC_pWindow->connection()->userDataBase();
@@ -1058,12 +1058,12 @@ namespace KviKvsCoreSimpleCommands
 			Simulates an "unexpected disconnection"
 		@description:
 			Terminates the current IRC session.[br]
-			By default this command sends a QUIT message 
+			By default this command sends a QUIT message
 			and waits for the server to close the connection.[br]
-			If you want to force KVIrc to close the connection 
+			If you want to force KVIrc to close the connection
 			immediately after sending the QUIT message you must use the -f switch.[br]
-			Forcing the connection may cause your quit message to not be 
-			displayed to the other IRC users: most likely it will be replaced 
+			Forcing the connection may cause your quit message to not be
+			displayed to the other IRC users: most likely it will be replaced
 			by a 'Connection reset by peer' or a 'EOF from client'.[br]
 			If the -u switch is specified then an "unexpected disconnection" will be simulated
 			and all the related options will be applied (e.g. automatic reconnection,
@@ -1090,7 +1090,7 @@ namespace KviKvsCoreSimpleCommands
 		} else {
 			KVSCSC_REQUIRE_CONNECTION
 			KVSCSC_pWindow->context()->terminateConnectionRequest(KVSCSC_pSwitches->find('f',"force"),szReason,KVSCSC_pSwitches->find('u',"unexpected"));
-		}	
+		}
 		return true;
 	}
 
@@ -1190,7 +1190,7 @@ namespace KviKvsCoreSimpleCommands
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: rebind
 		@type:
@@ -1222,7 +1222,7 @@ namespace KviKvsCoreSimpleCommands
 			rebind %winid[br]
 			echo "Again in this window :)"
 	*/
-	
+
 	KVSCSC(rebind)
 	{
 		QString szWinId;
@@ -1240,7 +1240,7 @@ namespace KviKvsCoreSimpleCommands
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: return
 		@type:
@@ -1263,7 +1263,7 @@ namespace KviKvsCoreSimpleCommands
 		@seealso:
 			[cmd]setreturn[/cmd], [cmd]break[/cmd], [cmd]halt[/cmd]
 	*/
-	
+
 	KVSCSC(returnCKEYWORDWORKAROUND)
 	{
 		if(KVSCSC_pParams->count() == 0)

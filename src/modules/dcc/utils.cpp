@@ -133,7 +133,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {
 #endif
-				if(!kvi_getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data(),szListenIp))
+				if(!KviNetUtils::getInterfaceAddress(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),szListenIp))
 				{
 					KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault) = false;
 					if(c)c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next dcc will work)","dcc"),
@@ -155,7 +155,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 		if(pConsole->isConnected())
 		{
 			//#warning "The IPV6 choice is not OK here.... and maybe allow to bind to specified ports"
-			pConsole->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
+			pConsole->connection()->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
 		} else {
 			szListenIp = "0.0.0.0"; // huh ? :)
 		}
