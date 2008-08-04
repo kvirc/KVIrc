@@ -146,6 +146,7 @@ signals:
 	/// Emitted when the help button is clicked.
 	///
 	void helpClicked();
+	void pageChanged(QString title);
 protected:
 	///
 	/// Displays the first page if no other page is shown yet.

@@ -182,7 +182,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	setNextEnabled(vb,false);
 	setFinishEnabled(vb,true);
 
-	connect(this,SIGNAL(selected(const QString &)),this,SLOT(pageSelected(const QString &)));
+	connect(this,SIGNAL(pageChanged(const QString &)),this,SLOT(pageSelected(const QString &)));
 }
 
 KviRemoteMircServerImportWizard::~KviRemoteMircServerImportWizard()
