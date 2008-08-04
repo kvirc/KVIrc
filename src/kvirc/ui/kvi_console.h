@@ -32,6 +32,7 @@
 #include "kvi_string.h"
 #include "kvi_irccontext.h"
 #include "kvi_pointerlist.h"
+#include "kvi_userlistview.h"
 
 #include <time.h>
 
