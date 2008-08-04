@@ -1125,6 +1125,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pImportButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
 	m_pImportButton->setAutoRaise(true);
 	m_pImportButton->setMenu(m_pImportPopup);
+	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
 //	m_pImportButton->setPopupDelay(1);
 	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
 
