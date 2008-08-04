@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-02 23:18+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2002-08-09 21:21+0200\n"
 "Last-Translator: Balboy <balboy@kvirc.net>\n"
 "Language-Team: Nederlands <kvirc@realityx.net>\n"
@@ -70,7 +70,7 @@ msgstr ""
 msgid "&Browse..."
 msgstr "Bladeren..."
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1453
 #, fuzzy
 msgid "&Copy Server"
 msgstr "Kopiëren..."
@@ -85,7 +85,7 @@ msgstr "&Nieuw"
 msgid "&New Proxy"
 msgstr "Popup"
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1450
 #, fuzzy
 msgid "&New Server"
 msgstr "Netwerk"
@@ -98,7 +98,7 @@ msgstr "Netwerk"
 msgid "&OK"
 msgstr "OK"
 
-#: src/modules/options/optw_servers.cpp:1449
+#: src/modules/options/optw_servers.cpp:1455
 #, fuzzy
 msgid "&Paste Server"
 msgstr "Plakken"
@@ -148,7 +148,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1158
+#: src/modules/options/optw_servers.cpp:1159
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 
@@ -212,7 +212,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1164
+#: src/modules/options/optw_servers.cpp:1165
 #, fuzzy
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
@@ -264,7 +264,7 @@ msgid ""
 "printed and KVIrc is not the active window</center>"
 msgstr "<center> is de<b></b> de</center>"
 
-#: src/modules/options/optw_servers.cpp:1179
+#: src/modules/options/optw_servers.cpp:1180
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -424,7 +424,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -684,7 +684,7 @@ msgid ""
 "</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1138
+#: src/modules/options/optw_servers.cpp:1139
 #, fuzzy
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
@@ -1156,7 +1156,7 @@ msgstr ""
 msgid "Active Background"
 msgstr "Actief"
 
-#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1135
 #, fuzzy
 msgid "Active Configuration"
 msgstr "Op&slaan"
@@ -1208,7 +1208,7 @@ msgstr "Toevoegen..."
 msgid "Advanced configuration"
 msgstr "Op&slaan"
 
-#: src/modules/options/optw_servers.cpp:1156
+#: src/modules/options/optw_servers.cpp:1157
 #, fuzzy
 msgid "Advanced..."
 msgstr "Toevoegen..."
@@ -1645,7 +1645,7 @@ msgstr "Kiezen..."
 msgid "Classic Taskbar"
 msgstr "Takenbalk"
 
-#: src/modules/options/optw_servers.cpp:1454
+#: src/modules/options/optw_servers.cpp:1460
 #, fuzzy
 msgid "Clear List"
 msgstr "Beginwaarde"
@@ -1692,7 +1692,7 @@ msgstr "Op&slaan"
 msgid "Confirm quit with active connections"
 msgstr "nee actief"
 
-#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1161
 #, fuzzy
 msgid "Connect &Now"
 msgstr "Verbinden"
@@ -2354,8 +2354,8 @@ msgstr ""
 msgid "Image width:"
 msgstr "Minimale snelheid"
 
-#: src/modules/options/optw_servers.cpp:1129
-#: src/modules/options/optw_servers.cpp:1456
+#: src/modules/options/optw_servers.cpp:1130
+#: src/modules/options/optw_servers.cpp:1462
 #, fuzzy
 msgid "Import List"
 msgstr "Poort"
@@ -2726,7 +2726,7 @@ msgstr "Netwerk is onbereikbaar"
 msgid "Network Properties"
 msgstr "Eigenschappen"
 
-#: src/modules/options/optw_servers.cpp:1338
+#: src/modules/options/optw_servers.cpp:1344
 #, fuzzy
 msgid "Network:"
 msgstr "Netwerk:"
@@ -2737,8 +2737,8 @@ msgid "New Media Type"
 msgstr "Nieuw"
 
 #: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1440
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1573
 #, fuzzy
 msgid "New Network"
 msgstr "Nieuw"
@@ -2826,7 +2826,7 @@ msgstr "Bijnaam:"
 msgid "Nicknames"
 msgstr "Bijnaam"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1354
 #, fuzzy
 msgid "No selection"
 msgstr "Nee"
@@ -2939,13 +2939,13 @@ msgstr "Auto naar"
 msgid "On Voice Request"
 msgstr "Zoeken"
 
-#: src/modules/options/optw_servers.cpp:1493
+#: src/modules/options/optw_servers.cpp:1499
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1510
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3230,7 +3230,7 @@ msgstr "Verwijderen"
 msgid "Re&move Proxy"
 msgstr "Verwijderen"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1451
 #, fuzzy
 msgid "Re&move Server"
 msgstr "Verwijderen"
@@ -3280,7 +3280,7 @@ msgstr "Onbekende operator"
 msgid "Remote open command:"
 msgstr "Op afstand"
 
-#: src/modules/options/optw_servers.cpp:1441
+#: src/modules/options/optw_servers.cpp:1447
 #, fuzzy
 msgid "Remove Network"
 msgstr "Verwijderen"
@@ -3446,8 +3446,8 @@ msgstr "s Server"
 msgid "Server replies"
 msgstr "Algemene opties"
 
-#: src/modules/options/optw_servers.cpp:1135
-#: src/modules/options/optw_servers.cpp:1335
+#: src/modules/options/optw_servers.cpp:1136
+#: src/modules/options/optw_servers.cpp:1341
 #, fuzzy
 msgid "Server:"
 msgstr "Server:"
@@ -3573,7 +3573,7 @@ msgstr "Tonen"
 msgid "Show the CTCP replies in the active window"
 msgstr "nee"
 
-#: src/modules/options/optw_servers.cpp:1177
+#: src/modules/options/optw_servers.cpp:1178
 #, fuzzy
 msgid "Show this dialog at startup"
 msgstr "Tonen de geregistreerd gebruikers"
@@ -3955,7 +3955,7 @@ msgstr "Faalde naar de file"
 msgid "Unknown protocol handler command:"
 msgstr "Onbekend"
 
-#: src/modules/options/optw_servers.cpp:1365
+#: src/modules/options/optw_servers.cpp:1371
 msgid "UnknownNet"
 msgstr ""
 
@@ -4315,7 +4315,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1587
+#: src/modules/options/optw_servers.cpp:1594
 #, fuzzy
 msgid "irc.unknown.net"
 msgstr "onbekend"

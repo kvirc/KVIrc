@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-02 23:18+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -66,7 +66,7 @@ msgstr "&Alkalmaz"
 msgid "&Browse..."
 msgstr "Tallózás"
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1453
 msgid "&Copy Server"
 msgstr "Szerver másolása"
 
@@ -78,7 +78,7 @@ msgstr "Új"
 msgid "&New Proxy"
 msgstr "Új Proxy"
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1450
 msgid "&New Server"
 msgstr "Új szerver"
 
@@ -89,7 +89,7 @@ msgstr "Új szerver"
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/options/optw_servers.cpp:1449
+#: src/modules/options/optw_servers.cpp:1455
 msgid "&Paste Server"
 msgstr "Szerver beillesztése"
 
@@ -139,7 +139,7 @@ msgstr ""
 "keresztül. Ezek az üzenetek tartalmazhatnak információ kéréseket a "
 "klienstől, vagy fájl kapcsolatok egyeztetésében segíthetnek.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1158
+#: src/modules/options/optw_servers.cpp:1159
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Kattints ide, hogy a haladó beállításokat elérd ehhez az elemhez.</"
@@ -233,7 +233,7 @@ msgstr ""
 "létrehozta a kapcsolatot a szerverrel. Csatorna hozzáadásához írd be a "
 "csatorna nevét és kattints a \"<b>Hozzád</b>\" gombra.</center>"
 
-#: src/modules/options/optw_servers.cpp:1164
+#: src/modules/options/optw_servers.cpp:1165
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -300,7 +300,7 @@ msgstr ""
 "jobb alsó sarokban, amikor kiemelt szöveget észlel, és a KVIrc ablaka éppen "
 "nem aktív.</center>"
 
-#: src/modules/options/optw_servers.cpp:1179
+#: src/modules/options/optw_servers.cpp:1180
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -525,7 +525,7 @@ msgstr ""
 "kódolást a hálózati beállításoknál megadottra állítja, amihez a szerver "
 "tartozik.</center>"
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -860,7 +860,7 @@ msgstr ""
 "<br>Ésszerű ennek az értéknek körülbelül 102400 bájtnak lennie (100 K).</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:1138
+#: src/modules/options/optw_servers.cpp:1139
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Ez a kiválasztott szerver vagy hálózat neve.</center>"
@@ -1487,7 +1487,7 @@ msgstr "Hibás Folytatás kérés elfogadása (mIRC file.kit)"
 msgid "Active Background"
 msgstr "Aktív Háttér"
 
-#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1135
 msgid "Active Configuration"
 msgstr "Aktív Konfiguráció"
 
@@ -1533,7 +1533,7 @@ msgstr "Haladó"
 msgid "Advanced configuration"
 msgstr "Haladó Beállítások"
 
-#: src/modules/options/optw_servers.cpp:1156
+#: src/modules/options/optw_servers.cpp:1157
 msgid "Advanced..."
 msgstr "Haladó..."
 
@@ -1907,7 +1907,7 @@ msgstr "Kiválaszás..."
 msgid "Classic Taskbar"
 msgstr "Klasszikus lista"
 
-#: src/modules/options/optw_servers.cpp:1454
+#: src/modules/options/optw_servers.cpp:1460
 msgid "Clear List"
 msgstr "Lista Törlése"
 
@@ -1948,7 +1948,7 @@ msgstr "Beállítások"
 msgid "Confirm quit with active connections"
 msgstr "Kilépés megerősítése aktív kapcsolatnál"
 
-#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1161
 msgid "Connect &Now"
 msgstr "Kapcsolódás"
 
@@ -2546,8 +2546,8 @@ msgstr "Kép magassága:"
 msgid "Image width:"
 msgstr "Kép szélessége:"
 
-#: src/modules/options/optw_servers.cpp:1129
-#: src/modules/options/optw_servers.cpp:1456
+#: src/modules/options/optw_servers.cpp:1130
+#: src/modules/options/optw_servers.cpp:1462
 msgid "Import List"
 msgstr "Lista Importálása"
 
@@ -2873,7 +2873,7 @@ msgstr "Hálózati Eszközök"
 msgid "Network Properties"
 msgstr "Hálózati Tulajdonságok"
 
-#: src/modules/options/optw_servers.cpp:1338
+#: src/modules/options/optw_servers.cpp:1344
 msgid "Network:"
 msgstr "Hálózat: "
 
@@ -2882,8 +2882,8 @@ msgid "New Media Type"
 msgstr "Új Médiatípus"
 
 #: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1440
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1573
 msgid "New Network"
 msgstr "Új Hálózat"
 
@@ -2958,7 +2958,7 @@ msgstr "Név: "
 msgid "Nicknames"
 msgstr "Nicknevek"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1354
 msgid "No selection"
 msgstr "Nincs kijelölt"
 
@@ -3052,7 +3052,7 @@ msgstr "Váratlan Kapcsolatbontáskor"
 msgid "On Voice Request"
 msgstr "Hangos beszélgetéskor"
 
-#: src/modules/options/optw_servers.cpp:1493
+#: src/modules/options/optw_servers.cpp:1499
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3060,7 +3060,7 @@ msgstr ""
 "Hűha, valami furcsa történt: <br>Nem találok kezelőmodult, ami importálni "
 "tudna szervereket."
 
-#: src/modules/options/optw_servers.cpp:1510
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3314,7 +3314,7 @@ msgstr "Eltávolítás"
 msgid "Re&move Proxy"
 msgstr "Proxy Eltávolítása"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1451
 msgid "Re&move Server"
 msgstr "Szerver eltávolítása"
 
@@ -3356,7 +3356,7 @@ msgstr "Emlékezzen az ablakbeállításokra"
 msgid "Remote open command:"
 msgstr "Távoli megnyitás parancsa: "
 
-#: src/modules/options/optw_servers.cpp:1441
+#: src/modules/options/optw_servers.cpp:1447
 msgid "Remove Network"
 msgstr "Hálózat Eltávolítása"
 
@@ -3502,8 +3502,8 @@ msgstr "Szerver értesítők (+s)"
 msgid "Server replies"
 msgstr "Szerver válaszokat"
 
-#: src/modules/options/optw_servers.cpp:1135
-#: src/modules/options/optw_servers.cpp:1335
+#: src/modules/options/optw_servers.cpp:1136
+#: src/modules/options/optw_servers.cpp:1341
 msgid "Server:"
 msgstr "Szerver: "
 
@@ -3610,7 +3610,7 @@ msgstr "Szerver pingelésének megjelenítése"
 msgid "Show the CTCP replies in the active window"
 msgstr "Mutasd a CTCP válaszokat az aktív ablakban"
 
-#: src/modules/options/optw_servers.cpp:1177
+#: src/modules/options/optw_servers.cpp:1178
 msgid "Show this dialog at startup"
 msgstr "Párbeszédablak megjelenítése indításkor"
 
@@ -4004,7 +4004,7 @@ msgstr "Nyelv információinak írása írása sikertelen: "
 msgid "Unknown protocol handler command:"
 msgstr "Ismeretlen protokollt kezelő parancs:"
 
-#: src/modules/options/optw_servers.cpp:1365
+#: src/modules/options/optw_servers.cpp:1371
 msgid "UnknownNet"
 msgstr "IsmertelenHálózat"
 
@@ -4343,7 +4343,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr "fájl,audió,videó,programok"
 
-#: src/modules/options/optw_servers.cpp:1587
+#: src/modules/options/optw_servers.cpp:1594
 msgid "irc.unknown.net"
 msgstr "irc.ismeretlen.net"
 

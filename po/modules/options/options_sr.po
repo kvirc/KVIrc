@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-02 23:18+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -72,7 +72,7 @@ msgstr "Primeni"
 msgid "&Browse..."
 msgstr "Pregledaj..."
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1453
 #, fuzzy
 msgid "&Copy Server"
 msgstr "Kopiraj server"
@@ -86,7 +86,7 @@ msgstr "&Novi"
 msgid "&New Proxy"
 msgstr "Iskaèuæi meni"
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1450
 #, fuzzy
 msgid "&New Server"
 msgstr "Mre¾a/Server"
@@ -99,7 +99,7 @@ msgstr "Mre¾a/Server"
 msgid "&OK"
 msgstr "OK"
 
-#: src/modules/options/optw_servers.cpp:1449
+#: src/modules/options/optw_servers.cpp:1455
 #, fuzzy
 msgid "&Paste Server"
 msgstr "Prenesi server"
@@ -150,7 +150,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1158
+#: src/modules/options/optw_servers.cpp:1159
 #, fuzzy
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
@@ -233,7 +233,7 @@ msgid ""
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1164
+#: src/modules/options/optw_servers.cpp:1165
 #, fuzzy
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
@@ -295,7 +295,7 @@ msgstr ""
 "<center>Ako oznaèite ovu opciju , videæete ovaj dijalog svaki put kad "
 "pokrenete KVIrc</center>"
 
-#: src/modules/options/optw_servers.cpp:1179
+#: src/modules/options/optw_servers.cpp:1180
 #, fuzzy
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
@@ -488,7 +488,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 #, fuzzy
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
@@ -800,7 +800,7 @@ msgstr ""
 "automatski zahtevani.(Pogledajte opciju ispod)<br>Rezonska vrednost mo¾e "
 "biti 1024000 Bajtova=100 KB</center>"
 
-#: src/modules/options/optw_servers.cpp:1138
+#: src/modules/options/optw_servers.cpp:1139
 #, fuzzy
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
@@ -1385,7 +1385,7 @@ msgstr ""
 msgid "Active Background"
 msgstr "Aktivna pozadina"
 
-#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1135
 #, fuzzy
 msgid "Active Configuration"
 msgstr "&Saèuvaj pode¹avanja"
@@ -1436,7 +1436,7 @@ msgstr "Napredno ..."
 msgid "Advanced configuration"
 msgstr "&Saèuvaj pode¹avanja"
 
-#: src/modules/options/optw_servers.cpp:1156
+#: src/modules/options/optw_servers.cpp:1157
 #, fuzzy
 msgid "Advanced..."
 msgstr "Napredno ..."
@@ -1873,7 +1873,7 @@ msgstr "Izaberi..."
 msgid "Classic Taskbar"
 msgstr "Taskbar"
 
-#: src/modules/options/optw_servers.cpp:1454
+#: src/modules/options/optw_servers.cpp:1460
 #, fuzzy
 msgid "Clear List"
 msgstr "Isprazni listu"
@@ -1920,7 +1920,7 @@ msgstr "&Saèuvaj pode¹avanja"
 msgid "Confirm quit with active connections"
 msgstr "Ne mogu da zahtevam listu: nema aktivne konekcije"
 
-#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1161
 #, fuzzy
 msgid "Connect &Now"
 msgstr "Pove¾i se"
@@ -2575,8 +2575,8 @@ msgstr ""
 msgid "Image width:"
 msgstr "Minimalna ¹irina"
 
-#: src/modules/options/optw_servers.cpp:1129
-#: src/modules/options/optw_servers.cpp:1456
+#: src/modules/options/optw_servers.cpp:1130
+#: src/modules/options/optw_servers.cpp:1462
 #, fuzzy
 msgid "Import List"
 msgstr "Uvezi"
@@ -2951,7 +2951,7 @@ msgstr "Mre¾a je nedostupna"
 msgid "Network Properties"
 msgstr "Pode¹avanja"
 
-#: src/modules/options/optw_servers.cpp:1338
+#: src/modules/options/optw_servers.cpp:1344
 msgid "Network:"
 msgstr "Mre¾a"
 
@@ -2961,8 +2961,8 @@ msgid "New Media Type"
 msgstr "Nov tip medija"
 
 #: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1440
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1573
 msgid "New Network"
 msgstr "Nova Mre¾a"
 
@@ -3048,7 +3048,7 @@ msgstr "Nickname (nadimak):"
 msgid "Nicknames"
 msgstr "Nadimak"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1354
 msgid "No selection"
 msgstr "Bez izbora"
 
@@ -3159,13 +3159,13 @@ msgstr "Automatski zakaèi na neoèekivano odkaèinjanje"
 msgid "On Voice Request"
 msgstr "voiced korisnici"
 
-#: src/modules/options/optw_servers.cpp:1493
+#: src/modules/options/optw_servers.cpp:1499
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1510
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3450,7 +3450,7 @@ msgstr "Ukloni"
 msgid "Re&move Proxy"
 msgstr "Ukloni proksi"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1451
 #, fuzzy
 msgid "Re&move Server"
 msgstr "Ukloni server"
@@ -3500,7 +3500,7 @@ msgstr "Prozor nije pronaðen"
 msgid "Remote open command:"
 msgstr "Daljinska izvr¹na komanda"
 
-#: src/modules/options/optw_servers.cpp:1441
+#: src/modules/options/optw_servers.cpp:1447
 #, fuzzy
 msgid "Remove Network"
 msgstr "Ukloni mre¾u"
@@ -3666,8 +3666,8 @@ msgstr "s (Obave¹tenja servera)"
 msgid "Server replies"
 msgstr "serverov ping"
 
-#: src/modules/options/optw_servers.cpp:1135
-#: src/modules/options/optw_servers.cpp:1335
+#: src/modules/options/optw_servers.cpp:1136
+#: src/modules/options/optw_servers.cpp:1341
 msgid "Server:"
 msgstr "Server:"
 
@@ -3787,7 +3787,7 @@ msgstr "Prikazi pingove servera"
 msgid "Show the CTCP replies in the active window"
 msgstr "nema spoljnih poruka"
 
-#: src/modules/options/optw_servers.cpp:1177
+#: src/modules/options/optw_servers.cpp:1178
 #, fuzzy
 msgid "Show this dialog at startup"
 msgstr "Poka¾i ovaj dijalog za servere uvek kada se pokrene KVIrc"
@@ -4175,7 +4175,7 @@ msgstr "Neuspe¹no pisanje u fajl %s"
 msgid "Unknown protocol handler command:"
 msgstr "Nepoznata komanda"
 
-#: src/modules/options/optw_servers.cpp:1365
+#: src/modules/options/optw_servers.cpp:1371
 msgid "UnknownNet"
 msgstr "NepoznataMre¾a"
 
@@ -4540,7 +4540,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1587
+#: src/modules/options/optw_servers.cpp:1594
 msgid "irc.unknown.net"
 msgstr "irc.nepoznat.net"
 

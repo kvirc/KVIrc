@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: proxydb_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-03 17:08+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2008-08-03 17:11+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -16,56 +16,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:58
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:101
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:355
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:427
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:496
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:551
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:595
-msgid "You must provide the proxy hostname as parameter"
-msgstr "Devi passare l'hostname del proxy come parametro"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:68
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:111
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:372
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:444
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:507
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:568
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:612
-msgid "The specified proxy does not exist"
-msgstr "Il proxy specificato non esiste"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:271
-msgid "You must provide the proxy name as parameter"
-msgstr "Devi passare il nome del proxy come parametro"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:282
-msgid "The specified proxy already exists"
-msgstr "Il proxy specificato esiste già"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:309
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:576
-msgid "The specified protocol does not exist"
-msgstr "Il protocollo specificato non esiste"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:361
-msgid "You must provide the port number as parameter"
-msgstr "Devi passare il numero di porta come parametro"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:433
-msgid "You must provide the IP as parameter"
-msgstr "Devi passare l'indirizzo IP come parametro"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:452
+#: src/modules/proxydb/libkviproxydb.cpp:452
 msgid "The specified IP is not valid"
 msgstr "L'indirizzo IP specificato non è valido"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:557
+#: src/modules/proxydb/libkviproxydb.cpp:309
+#: src/modules/proxydb/libkviproxydb.cpp:576
+msgid "The specified protocol does not exist"
+msgstr "Il protocollo specificato non esiste"
+
+#: src/modules/proxydb/libkviproxydb.cpp:282
+msgid "The specified proxy already exists"
+msgstr "Il proxy specificato esiste già"
+
+#: src/modules/proxydb/libkviproxydb.cpp:68
+#: src/modules/proxydb/libkviproxydb.cpp:111
+#: src/modules/proxydb/libkviproxydb.cpp:372
+#: src/modules/proxydb/libkviproxydb.cpp:444
+#: src/modules/proxydb/libkviproxydb.cpp:507
+#: src/modules/proxydb/libkviproxydb.cpp:568
+#: src/modules/proxydb/libkviproxydb.cpp:612
+msgid "The specified proxy does not exist"
+msgstr "Il proxy specificato non esiste"
+
+#: src/modules/proxydb/libkviproxydb.cpp:433
+msgid "You must provide the IP as parameter"
+msgstr "Devi passare l'indirizzo IP come parametro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:361
+msgid "You must provide the port number as parameter"
+msgstr "Devi passare il numero di porta come parametro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:557
 msgid "You must provide the protocol as parameter"
 msgstr "Devi passare il protocollo come parametro"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:601
+#: src/modules/proxydb/libkviproxydb.cpp:58
+#: src/modules/proxydb/libkviproxydb.cpp:101
+#: src/modules/proxydb/libkviproxydb.cpp:355
+#: src/modules/proxydb/libkviproxydb.cpp:427
+#: src/modules/proxydb/libkviproxydb.cpp:496
+#: src/modules/proxydb/libkviproxydb.cpp:551
+#: src/modules/proxydb/libkviproxydb.cpp:595
+msgid "You must provide the proxy hostname as parameter"
+msgstr "Devi passare l'hostname del proxy come parametro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:271
+msgid "You must provide the proxy name as parameter"
+msgstr "Devi passare il nome del proxy come parametro"
+
+#: src/modules/proxydb/libkviproxydb.cpp:601
 msgid "You must provide the value as parameter"
 msgstr "Devi passare il valore come parametro"
-

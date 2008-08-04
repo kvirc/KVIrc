@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-02 23:18+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -69,7 +69,7 @@ msgstr "&Appliquer"
 msgid "&Browse..."
 msgstr "&Parcourir..."
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1453
 msgid "&Copy Server"
 msgstr "&Copier Serveur"
 
@@ -81,7 +81,7 @@ msgstr "&Nouveau"
 msgid "&New Proxy"
 msgstr "&Nouveau Serveur se Proximité"
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1450
 msgid "&New Server"
 msgstr "&Nouveau Serveur"
 
@@ -92,7 +92,7 @@ msgstr "&Nouveau Serveur"
 msgid "&OK"
 msgstr "&Valider"
 
-#: src/modules/options/optw_servers.cpp:1449
+#: src/modules/options/optw_servers.cpp:1455
 msgid "&Paste Server"
 msgstr "C&oller Serveur"
 
@@ -143,7 +143,7 @@ msgstr ""
 "peuvent permettre d'obtenir des informations sur les clients ou négocier des "
 "transferts de fichiers.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1158
+#: src/modules/options/optw_servers.cpp:1159
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Cliquez ici pour éditer les options avancées de cette entrée</center>"
@@ -238,7 +238,7 @@ msgstr ""
 "ajouter un salon, entrez son nom dans le champ ci-dessous et cliquez sur "
 "\"<b>Ajouter</b>\".</center>"
 
-#: src/modules/options/optw_servers.cpp:1164
+#: src/modules/options/optw_servers.cpp:1165
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -305,7 +305,7 @@ msgstr ""
 "notificatrice dans le coin en bas à droite de votre bureau quand un message "
 "surligné est affiché et que KVIrc n'est pas la fenêtre active</center>"
 
-#: src/modules/options/optw_servers.cpp:1179
+#: src/modules/options/optw_servers.cpp:1180
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -538,7 +538,7 @@ msgstr ""
 "serveur. Si vous utilisez \"Utiliser l'Encodage du Réseau\", l'encodage va "
 "être défini par celui du réseau dont le serveur dépend.</center>"
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -886,7 +886,7 @@ msgstr ""
 "automatiquement recquise.<br>Une valeur raisonnable peut être de 102400 "
 "octets (100 K).</center>"
 
-#: src/modules/options/optw_servers.cpp:1138
+#: src/modules/options/optw_servers.cpp:1139
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1535,7 +1535,7 @@ msgstr "Accepter les RESUME cassés (fichier.ext mIRC)"
 msgid "Active Background"
 msgstr "Fond actif"
 
-#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1135
 msgid "Active Configuration"
 msgstr "Connexion active"
 
@@ -1581,7 +1581,7 @@ msgstr "Avancé"
 msgid "Advanced configuration"
 msgstr "Configuration avancée"
 
-#: src/modules/options/optw_servers.cpp:1156
+#: src/modules/options/optw_servers.cpp:1157
 msgid "Advanced..."
 msgstr "Avancée..."
 
@@ -1955,7 +1955,7 @@ msgstr "Choisir..."
 msgid "Classic Taskbar"
 msgstr "Barre de tâches classique"
 
-#: src/modules/options/optw_servers.cpp:1454
+#: src/modules/options/optw_servers.cpp:1460
 msgid "Clear List"
 msgstr "Effacer la liste"
 
@@ -1996,7 +1996,7 @@ msgstr "Configuration"
 msgid "Confirm quit with active connections"
 msgstr "Confirmer un quit avec connexions actives"
 
-#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1161
 msgid "Connect &Now"
 msgstr "Se Connecter &Maintenant"
 
@@ -2595,8 +2595,8 @@ msgstr "Hauteur de l'image :"
 msgid "Image width:"
 msgstr "Largeur de l'image :"
 
-#: src/modules/options/optw_servers.cpp:1129
-#: src/modules/options/optw_servers.cpp:1456
+#: src/modules/options/optw_servers.cpp:1130
+#: src/modules/options/optw_servers.cpp:1462
 msgid "Import List"
 msgstr "Importer Liste"
 
@@ -2922,7 +2922,7 @@ msgstr "Interfaces réseau"
 msgid "Network Properties"
 msgstr "Propriétés de réseau"
 
-#: src/modules/options/optw_servers.cpp:1338
+#: src/modules/options/optw_servers.cpp:1344
 msgid "Network:"
 msgstr "Réseau :"
 
@@ -2931,8 +2931,8 @@ msgid "New Media Type"
 msgstr "Nouveau type de média"
 
 #: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1440
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1573
 msgid "New Network"
 msgstr "Nouveau Réseau"
 
@@ -3007,7 +3007,7 @@ msgstr "Pseudo :"
 msgid "Nicknames"
 msgstr "Pseudos"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1354
 msgid "No selection"
 msgstr "Aucune selection"
 
@@ -3102,7 +3102,7 @@ msgstr "En cas de Déconnexion Imprevue"
 msgid "On Voice Request"
 msgstr "En cas de requête Voice"
 
-#: src/modules/options/optw_servers.cpp:1493
+#: src/modules/options/optw_servers.cpp:1499
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3110,7 +3110,7 @@ msgstr ""
 "Oups... un truc étrange vient de se produire :<br>Impossible de trouver un "
 "module capable d'importer des serveurs."
 
-#: src/modules/options/optw_servers.cpp:1510
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3364,7 +3364,7 @@ msgstr "Suppri&mer"
 msgid "Re&move Proxy"
 msgstr "Su&pprimer Alias"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1451
 msgid "Re&move Server"
 msgstr "Suppri&mer Serveur"
 
@@ -3406,7 +3406,7 @@ msgstr "Se rappeler des propriétés des fenêtres"
 msgid "Remote open command:"
 msgstr "Commande d'ouverture à distance :"
 
-#: src/modules/options/optw_servers.cpp:1441
+#: src/modules/options/optw_servers.cpp:1447
 msgid "Remove Network"
 msgstr "Supprimer Réseau"
 
@@ -3555,8 +3555,8 @@ msgstr "Notices de serveur (+s)"
 msgid "Server replies"
 msgstr "Réponses du serveur"
 
-#: src/modules/options/optw_servers.cpp:1135
-#: src/modules/options/optw_servers.cpp:1335
+#: src/modules/options/optw_servers.cpp:1136
+#: src/modules/options/optw_servers.cpp:1341
 msgid "Server:"
 msgstr "Serveur :"
 
@@ -3663,7 +3663,7 @@ msgstr "Montrer les pings du serveur"
 msgid "Show the CTCP replies in the active window"
 msgstr "Montrer les réponses aux CTCP dans la fenêtre active"
 
-#: src/modules/options/optw_servers.cpp:1177
+#: src/modules/options/optw_servers.cpp:1178
 msgid "Show this dialog at startup"
 msgstr "Montrer cette boîte de dialogue au démarrage"
 
@@ -4060,7 +4060,7 @@ msgstr "Impossible d'écrire les infos sur la langue dans"
 msgid "Unknown protocol handler command:"
 msgstr "Commande pour gérer les protocoles inconnus :"
 
-#: src/modules/options/optw_servers.cpp:1365
+#: src/modules/options/optw_servers.cpp:1371
 msgid "UnknownNet"
 msgstr "RéseauInconnu"
 
@@ -4403,7 +4403,7 @@ msgstr "fr"
 msgid "file,audio,video,programs"
 msgstr "fichiers,audio,vidéo,programmes"
 
-#: src/modules/options/optw_servers.cpp:1587
+#: src/modules/options/optw_servers.cpp:1594
 msgid "irc.unknown.net"
 msgstr "irc.inconnu.net"
 

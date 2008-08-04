@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-02 23:18+0200\n"
+"POT-Creation-Date: 2008-08-05 01:20+0200\n"
 "PO-Revision-Date: 2007-03-31 10:19+0400\n"
 "Last-Translator: Alexey Uzhva <alexey at kvirc dot ru>\n"
 "Language-Team: Russian\n"
@@ -75,7 +75,7 @@ msgstr "&Применить"
 msgid "&Browse..."
 msgstr "&Выбрать..."
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1453
 msgid "&Copy Server"
 msgstr "&Копировать сервер"
 
@@ -87,7 +87,7 @@ msgstr "&Новый"
 msgid "&New Proxy"
 msgstr "&Новый прокси"
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1450
 msgid "&New Server"
 msgstr "&Новый сервер"
 
@@ -98,7 +98,7 @@ msgstr "&Новый сервер"
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/options/optw_servers.cpp:1449
+#: src/modules/options/optw_servers.cpp:1455
 msgid "&Paste Server"
 msgstr "&Вставить сервер"
 
@@ -148,7 +148,7 @@ msgstr ""
 "передачи специальных сообщений поверх IRC соединения. Эти сообщения могут "
 "запрашивать информацию у клиента а также позволяют обмениваться файлами.</p>"
 
-#: src/modules/options/optw_servers.cpp:1158
+#: src/modules/options/optw_servers.cpp:1159
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Кликните здесь для редактирования дополнительных опций</center>"
@@ -239,7 +239,7 @@ msgstr ""
 "добавления канала введите его имя в текстовом поле внизу и нажмите кнопку "
 "\"<b>Добавить</b>\".</center>"
 
-#: src/modules/options/optw_servers.cpp:1164
+#: src/modules/options/optw_servers.cpp:1165
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -306,7 +306,7 @@ msgstr ""
 "извещателя в правом нижнем углу десктопа когда выделенное сообщение "
 "появилось в неактивном окне KVIrc</center>"
 
-#: src/modules/options/optw_servers.cpp:1179
+#: src/modules/options/optw_servers.cpp:1180
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -533,7 +533,7 @@ msgstr ""
 "сервера. Если вы выберите \"Использовать кодировку сети\", то унаследуется "
 "кодировка заданная для сети, к которой принадлежит этот сервер.</center>"
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -877,7 +877,7 @@ msgstr ""
 "<center>Это максимальный размер аватара который будет автоматически "
 "запрашиваться.<br>Разумное значение 102400 байт (100 K).</center>"
 
-#: src/modules/options/optw_servers.cpp:1138
+#: src/modules/options/optw_servers.cpp:1139
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Это имя текущего выбранного сервера или сети</center>"
@@ -1503,7 +1503,7 @@ msgstr "Принимать битый RESUME (mIRC file.ext)"
 msgid "Active Background"
 msgstr "Активный фон"
 
-#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1135
 msgid "Active Configuration"
 msgstr "Текущая конфигурация"
 
@@ -1550,7 +1550,7 @@ msgstr "Дополнительно"
 msgid "Advanced configuration"
 msgstr "Расширенные настройки"
 
-#: src/modules/options/optw_servers.cpp:1156
+#: src/modules/options/optw_servers.cpp:1157
 msgid "Advanced..."
 msgstr "Дополнительно..."
 
@@ -1924,7 +1924,7 @@ msgstr "Выбрать..."
 msgid "Classic Taskbar"
 msgstr "Классическая панель задач"
 
-#: src/modules/options/optw_servers.cpp:1454
+#: src/modules/options/optw_servers.cpp:1460
 msgid "Clear List"
 msgstr "Очистить список"
 
@@ -1965,7 +1965,7 @@ msgstr "Конфигурация"
 msgid "Confirm quit with active connections"
 msgstr "Подтверждать выход при активных соединениях"
 
-#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1161
 msgid "Connect &Now"
 msgstr "Подключиться &сейчас"
 
@@ -2565,8 +2565,8 @@ msgstr "Высота картинки:"
 msgid "Image width:"
 msgstr "Ширина картинки:"
 
-#: src/modules/options/optw_servers.cpp:1129
-#: src/modules/options/optw_servers.cpp:1456
+#: src/modules/options/optw_servers.cpp:1130
+#: src/modules/options/optw_servers.cpp:1462
 msgid "Import List"
 msgstr "Импортировать список"
 
@@ -2892,7 +2892,7 @@ msgstr "Сетевые интерфейсы"
 msgid "Network Properties"
 msgstr "Свойства сети"
 
-#: src/modules/options/optw_servers.cpp:1338
+#: src/modules/options/optw_servers.cpp:1344
 msgid "Network:"
 msgstr "Сеть:"
 
@@ -2901,8 +2901,8 @@ msgid "New Media Type"
 msgstr "Новый медиа тип"
 
 #: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1440
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1573
 msgid "New Network"
 msgstr "Новая сеть"
 
@@ -2977,7 +2977,7 @@ msgstr "Ник:"
 msgid "Nicknames"
 msgstr "Ники"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1354
 msgid "No selection"
 msgstr "Не выбрано"
 
@@ -3071,7 +3071,7 @@ msgstr "При неожиданном разъединении"
 msgid "On Voice Request"
 msgstr "Запросы разговора"
 
-#: src/modules/options/optw_servers.cpp:1493
+#: src/modules/options/optw_servers.cpp:1499
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3079,7 +3079,7 @@ msgstr ""
 "Упс... произошло что-то странное:<br>Не могу найти ни одного модуля "
 "способного импортировать сервера."
 
-#: src/modules/options/optw_servers.cpp:1510
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3334,7 +3334,7 @@ msgstr "&Удалить"
 msgid "Re&move Proxy"
 msgstr "Уда&лить прокси"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1451
 msgid "Re&move Server"
 msgstr "Уда&лить сервер"
 
@@ -3376,7 +3376,7 @@ msgstr "Запоминать состояние окон"
 msgid "Remote open command:"
 msgstr "Команда удалённого открытия:"
 
-#: src/modules/options/optw_servers.cpp:1441
+#: src/modules/options/optw_servers.cpp:1447
 msgid "Remove Network"
 msgstr "Удалить сеть"
 
@@ -3525,8 +3525,8 @@ msgstr "Извещения сервера (+s)"
 msgid "Server replies"
 msgstr "Ответы сервера"
 
-#: src/modules/options/optw_servers.cpp:1135
-#: src/modules/options/optw_servers.cpp:1335
+#: src/modules/options/optw_servers.cpp:1136
+#: src/modules/options/optw_servers.cpp:1341
 msgid "Server:"
 msgstr "Сервер:"
 
@@ -3633,7 +3633,7 @@ msgstr "Показывать пинги сервера"
 msgid "Show the CTCP replies in the active window"
 msgstr "Показывать ответы CTCP в активном окне"
 
-#: src/modules/options/optw_servers.cpp:1177
+#: src/modules/options/optw_servers.cpp:1178
 msgid "Show this dialog at startup"
 msgstr "Показать этот диалог при старте"
 
@@ -4031,7 +4031,7 @@ msgstr "Не могу записать информацию о языке в"
 msgid "Unknown protocol handler command:"
 msgstr "Команда обработки неизвестных протоколов:"
 
-#: src/modules/options/optw_servers.cpp:1365
+#: src/modules/options/optw_servers.cpp:1371
 msgid "UnknownNet"
 msgstr "Неизвестная Сеть"
 
@@ -4370,7 +4370,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr "файл,аудио,видео,программы"
 
-#: src/modules/options/optw_servers.cpp:1587
+#: src/modules/options/optw_servers.cpp:1594
 msgid "irc.unknown.net"
 msgstr "irc.сервер.net"
 
