@@ -106,6 +106,7 @@ public:
 		return key.localeAwareCompare(i->text(col));
 	};
 	KviTalTreeWidget* treeWidget() { return (KviTalTreeWidget*) QTreeWidgetItem::treeWidget(); };
+	virtual ~KviTalTreeWidgetItem() {};
 };
 
 #endif // _KVI_TAL_TREEWIDGETW_H_

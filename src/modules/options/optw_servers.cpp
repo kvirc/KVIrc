@@ -1307,7 +1307,12 @@ void KviServerOptionsWidget::fillServerList()
 		}
 		++it;
 	}
-	if(cur)m_pTreeWidget->scrollToItem(cur);
+	if(cur)
+	{
+		cur->setSelected(true);
+		m_pTreeWidget->setCurrentItem(cur);
+		m_pTreeWidget->scrollToItem(cur);
+	}
 }
 
 void KviServerOptionsWidget::itemDoubleClicked(KviTalTreeWidgetItem*, int )
@@ -1568,6 +1573,7 @@ void KviServerOptionsWidget::newNetwork()
 	KviServerOptionsTreeWidgetItem * it = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),&d);
 	it->setExpanded(true);
 	it->setSelected(true);
+	m_pTreeWidget->setCurrentItem(it);
 	m_pTreeWidget->scrollToItem(it);
 }
 
@@ -1593,6 +1599,7 @@ void KviServerOptionsWidget::newServer()
 		net->setExpanded(true);
 
 		it->setSelected(true);
+		m_pTreeWidget->setCurrentItem(it);
 		m_pTreeWidget->scrollToItem(it);
 	}
 }
@@ -1630,6 +1637,7 @@ void KviServerOptionsWidget::pasteServer()
 			net->setExpanded(true);
 
 			it->setSelected(true);
+			m_pTreeWidget->setCurrentItem(it);
 			m_pTreeWidget->scrollToItem(it);
 		}
 	}
@@ -1637,21 +1645,30 @@ void KviServerOptionsWidget::pasteServer()
 
 void KviServerOptionsWidget::removeCurrent()
 {
-	/*
 	if(m_pLastEditedItem)
 	{
-		KviTalTreeWidgetItem * it = m_pLastEditedItem->itemAbove();
-		if(!it)it = m_pLastEditedItem->firstChild() ? m_pLastEditedItem->nextSibling() : m_pLastEditedItem->itemBelow();
-		delete m_pLastEditedItem;
-		m_pLastEditedItem = 0;
-		if(!it)it = m_pTreeWidget->firstChild();
+		QTreeWidgetItem * it = m_pTreeWidget->itemAbove(m_pLastEditedItem);
+		if(!it)it = m_pTreeWidget->topLevelItemCount()>0 ? m_pTreeWidget->itemBelow(m_pLastEditedItem) : m_pTreeWidget->itemBelow(m_pLastEditedItem);
+
+		int index = m_pTreeWidget->indexOfTopLevelItem(m_pLastEditedItem);
+		if(index > -1)
+		{
+			// top level item
+			m_pTreeWidget->takeTopLevelItem(m_pTreeWidget->indexOfTopLevelItem(m_pLastEditedItem));
+		} else {
+			QTreeWidgetItem * tmp = m_pLastEditedItem->parent();
+			index = tmp->indexOfChild(m_pLastEditedItem);
+			if(index > -1) tmp->takeChild(index);
+		}
+
+		if(!it)it = m_pTreeWidget->topLevelItem(0);
 		if(it)
 		{
 			it->setSelected(true);
+			m_pTreeWidget->setCurrentItem(it);
 			m_pTreeWidget->scrollToItem(it);
 		}
 	}
-	*/
 }
 
 KviServerOptionsTreeWidgetItem * KviServerOptionsWidget::findNetItem(const QString &netname)
