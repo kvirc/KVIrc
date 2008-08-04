@@ -98,7 +98,7 @@ void KviProxyDataBase::updateProxyIp(const char * proxy,const char * ip)
 {
 	for(KviProxy * prx = m_pProxyList->first();prx;prx = m_pProxyList->next())
 	{
-		if(kvi_strEqualCI(proxy,prx->m_szHostname))
+		if(QString::compare(proxy,prx->m_szHostname,Qt::CaseInsensitive))
 		{
 			prx->m_szIp = ip;
 			return;
@@ -112,9 +112,9 @@ KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 	{
 		if(bName)
 		{
-			if(KviQString::equalCI(p->m_szHostname,pProxy->m_szHostname)) return p;
+			if(QString::compare(p->m_szHostname,pProxy->m_szHostname,Qt::CaseInsensitive)) return p;
 		} else {
-			if(KviQString::equalCI(p->m_szHostname,pProxy->m_szHostname) &&
+			if(QString::compare(p->m_szHostname,pProxy->m_szHostname,Qt::CaseInsensitive) &&
 				(p->m_uPort == pProxy->m_uPort) &&
 				(p->protocol() == pProxy->protocol()) &&
 				(p->isIPv6() == pProxy->isIPv6())) return p;
