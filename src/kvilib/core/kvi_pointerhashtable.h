@@ -954,7 +954,9 @@ public:
 	///
 	const Key & currentKey() const
 	{
-		return m_pIterator ? m_pIterator->current()->key() : kvi_hash_key_default(((Key *)NULL));
+		if(m_pIterator)
+			return m_pIterator->current()->key();
+		return kvi_hash_key_default(((Key *)NULL));
 	}
 
 	///
