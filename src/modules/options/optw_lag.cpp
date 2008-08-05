@@ -31,8 +31,9 @@
 
 
 KviLagOptionsWidget::KviLagOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"lag_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("lag_options_widget");
 	createLayout();
 
 	KviBoolSelector * pUse = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable lag meter","options"), KviOption_boolUseLagMeterEngine);

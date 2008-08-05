@@ -72,8 +72,10 @@
 
 
 KviCtcpFloodProtectionOptionsWidget::KviCtcpFloodProtectionOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ctcpfloodprotection_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ctcpfloodprotection_options_widget");
+
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection (recommended)","options"),KviOption_boolUseCtcpFloodProtection);

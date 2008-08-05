@@ -52,8 +52,9 @@ KviSoundOptionsWidget::~KviSoundOptionsWidget()
 
 
 KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"sound_system_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("sound_system_options_widget");
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Sound System","options"),true);
@@ -276,8 +277,9 @@ void KviSoundGeneralOptionsWidget::commit()
 }
 
 KviSoundsOptionsWidget::KviSoundsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"sound_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("sound_options_widget");
 	createLayout();
 	addLabel(0,0,0,0,__tr2qs_ctx("New Query opened","options"));
 	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);

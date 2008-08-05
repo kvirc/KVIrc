@@ -29,8 +29,9 @@
 
 
 KviIgnoreOptionsWidget::KviIgnoreOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ignore_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ignore_options_widget");
 	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Ignore For","options"));

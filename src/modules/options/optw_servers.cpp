@@ -68,6 +68,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 {
 	setModal(true);
 	setObjectName("network_details");
+
 	m_pOnConnectEditor=0;
 	m_pOnLoginEditor=0;
 
@@ -457,6 +458,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 {
 	setModal(true);
 	setObjectName("server_details");
+
 	m_szHostname = s->hostName();
 	QGridLayout * g = new QGridLayout(this);
 
@@ -1035,8 +1037,10 @@ void KviServerOptionsTreeWidgetItem::updateVisibleStrings()
 
 
 KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
-    : KviOptionsWidget(parent,"server_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("server_options_widget");
+
 	createLayout();
 
 	m_pContextPopup = new KviTalPopupMenu(this);

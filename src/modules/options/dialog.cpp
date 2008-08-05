@@ -59,8 +59,9 @@ extern KVIRC_API KviApp * g_pApp;
 extern KviOptionsInstanceManager * g_pOptionsInstanceManager;
 
 KviGeneralOptionsFrontWidget::KviGeneralOptionsFrontWidget(QWidget *parent,const QString &szText)
-:KviOptionsWidget(parent,"general_options_front_widget")
+:KviOptionsWidget(parent)
 {
+	setObjectName("general_options_front_widget");
 	createLayout();
 	QLabel * l = new QLabel(szText,this);
 	l->setWordWrap(true);
@@ -111,8 +112,10 @@ void KviOptionsListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int c
 
 
 KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
-: QDialog(par,"general_options_dialog")
+: QDialog(par)
 {
+	setObjectName("general_options_dialog");
+
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 
 	m_szGroup = szGroup;

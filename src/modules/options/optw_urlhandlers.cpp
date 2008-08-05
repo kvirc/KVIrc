@@ -32,13 +32,15 @@
 
 
 KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"urlhandlers_options_widget")
+: KviOptionsWidget(parent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define START_ROW 1
 #else
 	#define START_ROW 0
 #endif
+
+	setObjectName("urlhandlers_options_widget");
 
 	createLayout();
 

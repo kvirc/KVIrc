@@ -63,8 +63,10 @@ void KviMediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 }
 
 KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"mediatypes_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("mediatypes_options_widget");
+
 	createLayout();
 
 	m_pTreeWidget = new KviTalTreeWidget(this);

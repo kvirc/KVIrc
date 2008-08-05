@@ -31,9 +31,9 @@
 #include <QLayout>
 
 KviToolsOptionsWidget::KviToolsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"tools_options_widget")
+: KviOptionsWidget(parent)
 {
-	
+	setObjectName("tools_options_widget");
 	createLayout();
 
 	QLabel * l;

@@ -31,8 +31,10 @@
 
 
 KviTrayOptionsWidget::KviTrayOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"tray_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("tray_options_widget");
+
 	createLayout();
 	
 	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);

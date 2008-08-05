@@ -30,8 +30,10 @@
 
 
 KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"logging_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("logging_options_widget");
+
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Automatically Log","options"));

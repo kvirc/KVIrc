@@ -29,8 +29,9 @@
 #include <QLabel>
 
 KviAntispamOptionsWidget::KviAntispamOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"antispam_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("antispam_options_widget");
 	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Anti-spam For","options"));

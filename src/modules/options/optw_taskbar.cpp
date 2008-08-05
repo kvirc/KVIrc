@@ -28,8 +28,10 @@
 
 
 KviTaskBarOptionsWidget::KviTaskBarOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"taskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("taskbar_options_widget");
+
 	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Use tree taskbar","options"),KviOption_boolUseTreeWindowListTaskBar);
@@ -58,8 +60,9 @@ KviTaskBarOptionsWidget::~KviTaskBarOptionsWidget()
 
 
 KviTreeTaskBarOptionsWidget::KviTreeTaskBarOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"treetaskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("treetaskbar_options_widget");
 }
 
 KviTreeTaskBarOptionsWidget::~KviTreeTaskBarOptionsWidget()
@@ -70,8 +73,10 @@ KviTreeTaskBarOptionsWidget::~KviTreeTaskBarOptionsWidget()
 
 
 KviTreeTaskBarForegroundOptionsWidget::KviTreeTaskBarForegroundOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"treetaskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("treetaskbar_options_widget");
+
 	createLayout();
 
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTreeTaskbar);
@@ -102,8 +107,10 @@ KviTreeTaskBarForegroundOptionsWidget::~KviTreeTaskBarForegroundOptionsWidget()
 
 
 KviTreeTaskBarBackgroundOptionsWidget::KviTreeTaskBarBackgroundOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"treetaskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("treetaskbar_options_widget");
+
 	createLayout();
 	
 	KviTalGroupBox * g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
@@ -204,8 +211,10 @@ void KviTreeTaskBarBackgroundOptionsWidget::commit()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviTreeTaskBarFeaturesOptionsWidget::KviTreeTaskBarFeaturesOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"treetaskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("treetaskbar_options_widget");
+
 	createLayout();
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Show header","options"),KviOption_boolShowTreeTaskbarHeader);
@@ -225,9 +234,12 @@ KviTreeTaskBarFeaturesOptionsWidget::~KviTreeTaskBarFeaturesOptionsWidget()
 
 
 KviClassicTaskBarOptionsWidget::KviClassicTaskBarOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"classictaskbar_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("classictaskbar_options_widget");
+
 	createLayout();
+
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTaskbar);
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTaskBarNormalText);

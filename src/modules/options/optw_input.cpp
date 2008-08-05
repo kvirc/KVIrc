@@ -27,8 +27,9 @@
 #include <QLayout>
 
 KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ircviewlook_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ircviewlook_options_widget");
 	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font","options"),KviOption_fontInput);
@@ -130,10 +131,10 @@ void KviInputLookOptionsWidget::commit()
 }
 
 
-
 KviInputFeaturesOptionsWidget::KviInputFeaturesOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ircviewfeatures_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ircviewfeatures_options_widget");
 	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Warp cursor at the end of line when browsing history","options"),KviOption_boolInputHistoryCursorAtEnd);

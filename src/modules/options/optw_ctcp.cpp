@@ -28,8 +28,10 @@
 
 
 KviCtcpOptionsWidget::KviCtcpOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ctcp_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ctcp_options_widget");
+
 	createLayout();
 
 	QLabel * l;

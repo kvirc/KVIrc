@@ -29,8 +29,10 @@
 #include <QLayout>
 
 KviAwayOptionsWidget::KviAwayOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"away_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("away_options_widget");
+
 	createLayout();
 
 	addStringSelector(0,0,0,0, __tr2qs_ctx("Default away message:","options"), KviOption_stringAwayMessage);
@@ -58,7 +60,7 @@ KviAwayOptionsWidget::~KviAwayOptionsWidget()
 {
 }
 
-void KviAwayOptionsWidget::enableCustomAwayText(bool) 
+void KviAwayOptionsWidget::enableCustomAwayText(bool)
 {
 	m_pCustomAwayNick->setEnabled(m_pEnableAwayNick->isChecked() && !(m_pEnableCustomAwayNick->isChecked()));
 

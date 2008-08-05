@@ -29,8 +29,10 @@
 #include <QLayout>
 
 KviNotifyOptionsWidget::KviNotifyOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"notify_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("notify_options_widget");
+
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use online notify list","options"),KviOption_boolUseNotifyList);
@@ -100,8 +102,10 @@ KviNotifyOptionsWidget::~KviNotifyOptionsWidget()
 
 
 KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"notifier_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("notifier_options_widget");
+
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);

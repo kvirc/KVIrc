@@ -43,8 +43,9 @@ KviDccOptionsWidget::~KviDccOptionsWidget()
 
 
 KviDccGeneralOptionsWidget::KviDccGeneralOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccgeneral_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccgeneral_options_widget");
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use workaround for firewall","options"),KviOption_boolCantAcceptIncomingDccConnections);
@@ -63,8 +64,9 @@ KviDccGeneralOptionsWidget::~KviDccGeneralOptionsWidget()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccgeneral_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccgeneral_options_widget");
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
@@ -151,8 +153,9 @@ KviDccAdvancedOptionsWidget::~KviDccAdvancedOptionsWidget()
 
 
 KviDccSendOptionsWidget::KviDccSendOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccsend_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccsend_options_widget");
 }
 
 KviDccSendOptionsWidget::~KviDccSendOptionsWidget()
@@ -161,8 +164,9 @@ KviDccSendOptionsWidget::~KviDccSendOptionsWidget()
 
 
 KviDccSendGeneralOptionsWidget::KviDccSendGeneralOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccsend_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccsend_options_widget");
 	createLayout();
 
 	KviBoolSelector * b;
@@ -201,8 +205,9 @@ KviDccSendGeneralOptionsWidget::~KviDccSendGeneralOptionsWidget()
 
 
 KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccsend_advanced_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccsend_advanced_options_widget");
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
@@ -282,7 +287,6 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 
 KviDccSendAdvancedOptionsWidget::~KviDccSendAdvancedOptionsWidget()
 {
-	
 }
 
 
@@ -293,8 +297,9 @@ KviDccSendAdvancedOptionsWidget::~KviDccSendAdvancedOptionsWidget()
 
 
 KviDccChatOptionsWidget::KviDccChatOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"dccchat_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("dccchat_options_widget");
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));

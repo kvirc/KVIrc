@@ -31,8 +31,10 @@
 
 
 KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"query_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("query_options_widget");
+
 	createLayout();
 
 	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));

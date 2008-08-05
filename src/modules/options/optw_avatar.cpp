@@ -30,8 +30,10 @@
 #include "kvi_tal_tooltip.h"
 
 KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"avatar_advanced_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("avatar_advanced_options_widget");
+
 	createLayout();
 	// AVATAR
 

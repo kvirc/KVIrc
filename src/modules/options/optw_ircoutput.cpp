@@ -33,8 +33,9 @@
 
 
 KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ircoutput_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ircoutput_options_widget");
 	createLayout();
 
 	QLabel * l =new QLabel(__tr2qs_ctx("Output verbosity","options"),this);

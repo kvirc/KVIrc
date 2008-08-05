@@ -32,10 +32,10 @@
 
 
 KviIrcOptionsWidget::KviIrcOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"irc_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("irc_options_widget");
 }
-
 
 KviIrcOptionsWidget::~KviIrcOptionsWidget()
 {
@@ -43,8 +43,9 @@ KviIrcOptionsWidget::~KviIrcOptionsWidget()
 
 
 KviIrcGeneralOptionsWidget::KviIrcGeneralOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"irc_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("irc_options_widget");
 	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
 
@@ -56,15 +57,15 @@ KviIrcGeneralOptionsWidget::KviIrcGeneralOptionsWidget(QWidget * parent)
 	addRowSpacer(0,2,0,2);
 }
 
-
 KviIrcGeneralOptionsWidget::~KviIrcGeneralOptionsWidget()
 {
 }
 
 
 KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"irc_advanced_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("irc_advanced_options_widget");
 	createLayout();
 	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
 	mergeTip(b,

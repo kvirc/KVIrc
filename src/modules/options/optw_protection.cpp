@@ -31,9 +31,10 @@
 #include <QLayout>
 
 KviProtectionOptionsWidget::KviProtectionOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"protection_options_widget")
+: KviOptionsWidget(parent)
 {
-	
+	setObjectName("protection_options_widget");
+
 	createLayout();
 
 	QLabel * l;

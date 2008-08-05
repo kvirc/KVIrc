@@ -36,8 +36,9 @@
 
 
 KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"interfacefeatures_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("interfacefeatures_options_widget");
 	createLayout();
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize on startup","options"),KviOption_boolStartupMinimized);

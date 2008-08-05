@@ -33,8 +33,9 @@
 QString g_szPrevSettedLocale;
 
 KviTextEncodingOptionsWidget::KviTextEncodingOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"textencoding_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("textencoding_options_widget");
 	createLayout();
 
 	//server encoding

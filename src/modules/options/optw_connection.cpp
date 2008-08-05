@@ -33,8 +33,9 @@
 
 
 KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"connection_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("connection_options_widget");
 	createLayout();
 	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
@@ -95,11 +96,12 @@ KviConnectionOptionsWidget::~KviConnectionOptionsWidget()
 
 
 KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ssl_options_widget")
+: KviOptionsWidget(parent)
 {
-#ifdef COMPILE_SSL_SUPPORT
+	setObjectName("ssl_options_widget");
 	createLayout();
 
+#ifdef COMPILE_SSL_SUPPORT
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Certificate","options"));
 
 	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL certificate (PEM format only)","options"),
@@ -122,7 +124,6 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 	addRowSpacer(0,2,0,2);
 #else
-	createLayout();
 	addLabel(0,0,0,0,__tr2qs_ctx("This executable has no SSL support.","options"));
 #endif
 }
@@ -133,8 +134,9 @@ KviSSLOptionsWidget::~KviSSLOptionsWidget()
 
 
 KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"transport_options_widget")
+: KviOptionsWidget(parent,)
 {
+	setObjectName("transport_options_widget");
 	createLayout();
 	KviUIntSelector * u;
 	
@@ -163,11 +165,11 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick Random IP Address for Round-Robin Servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause the KVIrc networking stack to pick up " \
-							"a random entry when multiple IP address are retrieved for a server " \
-							"dns lookup. This is harmless and can fix some problems with caching " \
-							"dns servers that do not properly rotate the records as the authoritative " \
-							"ones would do. On the other hand, you might want to disable it if " \
-							"you want to rely on the dns server to provide the best choice.</center>","options"));
+		"a random entry when multiple IP address are retrieved for a server " \
+		"dns lookup. This is harmless and can fix some problems with caching " \
+		"dns servers that do not properly rotate the records as the authoritative " \
+		"ones would do. On the other hand, you might want to disable it if " \
+		"you want to rely on the dns server to provide the best choice.</center>","options"));
 
 	addRowSpacer(0,5,0,5);
 }
@@ -178,8 +180,9 @@ KviTransportOptionsWidget::~KviTransportOptionsWidget()
 
 
 KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ident_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("ident_options_widget");
 	createLayout();
 
 	m_pEnableIdent = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable ident service (bad practice on UNIX!)","options"),KviOption_boolUseIdentService);
@@ -278,14 +281,13 @@ void KviIdentOptionsWidget::enableIpv4InIpv6(bool)
 
 
 KviConnectionAdvancedOptionsWidget::KviConnectionAdvancedOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"connection_advanced_options_widget")
+: KviOptionsWidget(parent)
 {
-
+	setObjectName("connection_advanced_options_widget");
 }
 
 KviConnectionAdvancedOptionsWidget::~KviConnectionAdvancedOptionsWidget()
 {
-
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

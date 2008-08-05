@@ -30,9 +30,9 @@
 
 
 KviGeneralOptOptionsWidget::KviGeneralOptOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"generalopt_options_widget")
+: KviOptionsWidget(parent)
 {
-
+	setObjectName("generalopt_options_widget");
 	createLayout();
 
 	QLabel * l;
@@ -41,7 +41,6 @@ KviGeneralOptOptionsWidget::KviGeneralOptOptionsWidget(QWidget * parent)
 		"</p>","options"));
 	addAdvancedButton(4,1,4,1);
 }
-
 
 KviGeneralOptOptionsWidget::~KviGeneralOptOptionsWidget()
 {

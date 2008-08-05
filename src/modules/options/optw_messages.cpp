@@ -66,8 +66,9 @@ KviMessageOptionsWidget::~KviMessageOptionsWidget()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"privmsg_options_widget")
+: KviOptionsWidget(parent)
 {
+	setObjectName("privmsg_options_widget");
 	createLayout();
 
 	KviBoolSelector * b1;
@@ -115,7 +116,6 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 
 KviPrivmsgOptionsWidget::~KviPrivmsgOptionsWidget()
 {
-
 }
 
 KviTimestampOptionsWidget::KviTimestampOptionsWidget(QWidget * pParent)
@@ -157,8 +157,9 @@ void KviTimestampOptionsWidget::enableDisableTimestampSelector(bool)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviStandardColorsOptionsWidget::KviStandardColorsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"stdcolors")
+: KviOptionsWidget(parent)
 {
+	setObjectName("stdcolors");
 	createLayout();
 	
 	addColorSelector(0,0,0,0,"0:",&(KVI_OPTION_MIRCCOLOR(0)));
@@ -363,14 +364,14 @@ KviIrcColorsOptionsWidget::~KviIrcColorsOptionsWidget()
 */
 
 KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"messages")
+: KviOptionsWidget(parent)
 {
-	int i;
+	setObjectName("messages");
 
 	createLayout();
 
+	int i;
 	m_pLastItem = 0;
-
 
 	m_pListView = new KviMessageListView(this);
 	m_pListView->addColumn(__tr2qs_ctx("Message Type","options"));
