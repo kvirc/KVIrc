@@ -134,7 +134,7 @@ KviSSLOptionsWidget::~KviSSLOptionsWidget()
 
 
 KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,)
+: KviOptionsWidget(parent)
 {
 	setObjectName("transport_options_widget");
 	createLayout();
