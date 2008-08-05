@@ -596,9 +596,18 @@ ENDIF()
 ############################################################################
 # Win32 mingw/cmake build checks
 ############################################################################
+
+IF(WIN32)
+	ADD_DEFINITIONS(-D_WIN32_WINNT=0x501 -DWINVER=0x501)
+ENDIF()
+
 IF(MINGW)
-        ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES -D_WIN32_WINNT=0x501 -DWINVER=0x501 -mwindows)
+        ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES -mwindows)
         LIST(APPEND LIBS -lshlwapi)
+ENDIF()
+
+IF(MSVC)
+	      ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
 ENDIF()
 
 ############################################################################
