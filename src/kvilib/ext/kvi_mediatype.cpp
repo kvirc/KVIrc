@@ -238,7 +238,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename,bool bCheckM
 	__range_valid(locked());
 
 	KviStr szFullPath = filename;
-	if(!kvi_isAbsolutePath(szFullPath.ptr()))
+	if(!KviFileUtils::isAbsolutePath(szFullPath.ptr()))
 	{
 		KviStr tmp = QDir::currentPath();
 		tmp.ensureLastCharIs('/');

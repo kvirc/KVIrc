@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_kvs_asyncoperation.h"
 #include "kvi_kvs_kernel.h"

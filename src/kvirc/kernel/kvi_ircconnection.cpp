@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
@@ -79,7 +79,6 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 	m_bIdentdAttached = false;
 	m_pContext = pContext;
 	m_pConsole = pContext->console();
-	m_pFrame = m_pConsole->frame();
 	m_pTarget = pTarget;
 	m_pUserIdentity = pIdentity;
 	m_pChannelList = new KviPointerList<KviChannel>;
@@ -251,22 +250,7 @@ void KviIrcConnection::serverInfoReceived(const QString &szServerName,const QStr
 	serverInfo()->setSupportedUserModes(szUserModes);
 	serverInfo()->setSupportedChannelModes(szChanModes);
 	m_pConsole->updateCaption(); // for server name
-	m_pFrame->childConnectionServerInfoChange(this);
-}
-
-const QString & KviIrcConnection::currentServerName()
-{
-	return serverInfo()->name();
-}
-
-const QString & KviIrcConnection::currentNickName()
-{
-	return userInfo()->nickName();
-}
-
-const QString & KviIrcConnection::currentUserName()
-{
-	return userInfo()->userName();
+	m_pConsole->frame()->childConnectionServerInfoChange(this);
 }
 
 KviServer * KviIrcConnection::server()
@@ -425,7 +409,7 @@ void KviIrcConnection::closeAllChannels()
 {
 	while(m_pChannelList->first())
 	{
-		m_pFrame->closeWindow(m_pChannelList->first());
+		m_pChannelList->first()->close();
 	}
 }
 
@@ -433,7 +417,7 @@ void KviIrcConnection::closeAllQueries()
 {
 	while(m_pQueryList->first())
 	{
-		m_pFrame->closeWindow(m_pQueryList->first());
+		m_pQueryList->first()->close();
 	}
 }
 
@@ -449,8 +433,8 @@ KviChannel * KviIrcConnection::createChannel(const QString &szName)
 			c->setFocus();
 		}
 	} else {
-		c = new KviChannel(m_pFrame,m_pConsole,szName);
-		m_pFrame->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
+		c = new KviChannel(m_pConsole->frame(),m_pConsole,szName);
+		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
 		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels)) c->minimize();
 	}
 	return c;
@@ -473,8 +457,8 @@ KviQuery * KviIrcConnection::createQuery(const QString &szNick)
 			q->setFocus();
 		}
 	} else {
-		q = new KviQuery(m_pFrame,m_pConsole,szNick);
-		m_pFrame->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
+		q = new KviQuery(m_pConsole->frame(),m_pConsole,szNick);
+		m_pConsole->frame()->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
 		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))q->minimize();
 	}
 	return q;
@@ -744,7 +728,7 @@ void KviIrcConnection::changeAwayState(bool bAway)
 	else m_pUserInfo->setBack();
 
 	m_pConsole->updateCaption();
-	m_pFrame->childConnectionAwayStateChange(this);
+	m_pConsole->frame()->childConnectionAwayStateChange(this);
 
 	emit awayStateChanged();
 }
@@ -1101,7 +1085,7 @@ void KviIrcConnection::nickChange(const QString &szNewNick)
 	m_pUserInfo->setNickName(szNewNick);
 	m_pConsole->output(KVI_OUT_NICK,__tr2qs("You have changed your nickname to %Q"),&szNewNick);
 	m_pConsole->updateCaption();
-	m_pFrame->childConnectionNickNameChange(this);
+	m_pConsole->frame()->childConnectionNickNameChange(this);
 	emit nickNameChanged();
 	g_pApp->addRecentNickname(szNewNick);
 }
@@ -1118,7 +1102,7 @@ bool KviIrcConnection::changeUserMode(char mode,bool bSet)
 		m_pUserInfo->removeUserMode(mode);
 	}
 	m_pConsole->updateCaption();
-	m_pFrame->childConnectionUserModeChange(this);
+	console()->frame()->childConnectionUserModeChange(this);
 	emit userModeChanged();
 	return true;
 }
@@ -1197,7 +1181,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	restartLagMeter();
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc))
-		m_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_CHANNELSJOIN_OPEN);
+		m_pConsole->frame()->executeInternalCommand(KVI_INTERNALCOMMAND_CHANNELSJOIN_OPEN);
 
 
 	// join saved channels

@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_kvs_variant.h"
 #include "kvi_kvs_arraycast.h"

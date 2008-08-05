@@ -151,7 +151,7 @@ void KviHttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			int iY = rect.top() + 4;
 
-			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->url().url().ptr());
+			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->url().url());
 			iY += iLineSpacing;
 			if(!(m_pHttpRequest->fileName().isEmpty()))
 			{
@@ -441,7 +441,7 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 		m_eGeneralStatus = Success;
 		displayUpdate();
 		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSUCCESS,__tr2qs_ctx("[HTTP %d]: Transfer completed","http"),id());
-		g_pApp->fileDownloadTerminated(true,m_pHttpRequest->url().url().ptr(),m_pHttpRequest->fileName(),QString::null,QString::null,!m_bNotifyCompletion);
+		g_pApp->fileDownloadTerminated(true,m_pHttpRequest->url().url(),m_pHttpRequest->fileName(),QString::null,QString::null,!m_bNotifyCompletion);
 	} else {
 		m_szStatusString = __tr2qs_ctx("Transfer failed","http");
 		m_szStatusString += ": ";
@@ -449,7 +449,7 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 		m_eGeneralStatus = Failure;
 		displayUpdate();
 		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICERROR,__tr2qs_ctx("[HTTP %d]: Transfer failed: %Q","http"),id(),&(m_pHttpRequest->lastError()));
-		g_pApp->fileDownloadTerminated(false,m_pHttpRequest->url().url().ptr(),m_pHttpRequest->fileName(),QString::null,m_pHttpRequest->lastError(),!m_bNotifyCompletion);
+		g_pApp->fileDownloadTerminated(false,m_pHttpRequest->url().url(),m_pHttpRequest->fileName(),QString::null,m_pHttpRequest->lastError(),!m_bNotifyCompletion);
 	}
 	
 	if(m_bAutoClean)

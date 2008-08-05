@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_customtoolbarmanager.h"
 #include "kvi_customtoolbardescriptor.h"

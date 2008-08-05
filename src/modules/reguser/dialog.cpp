@@ -814,14 +814,14 @@ void KviRegisteredUsersDialog::importClicked()
 
 			if(img.isNull())debug("Ops.. readed a null image ?");
 
-			KviStr fName = u->name();
-			kvi_encodeFileName(fName);
+			QString fName = u->name();
+			KviFileUtils::adjustFilePath(fName);
 
 			QString fPath;
 			int rnm = 0 ;
 			do
 			{
-				g_pApp->getLocalKvircDirectory(fPath,KviApp::Avatars,fName.ptr());
+				g_pApp->getLocalKvircDirectory(fPath,KviApp::Avatars,fName);
 				fPath.append(QString("%1.png").arg(rnm));
 				rnm++;
 			} while(KviFileUtils::fileExists(fPath));

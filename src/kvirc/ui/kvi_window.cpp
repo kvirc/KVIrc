@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
 #define KVI_WINDOW_MIN_WIDTH 100
 #define KVI_WINDOW_MIN_HEIGHT 100
 
@@ -176,11 +175,6 @@ void KviWindow::toggleButtonContainer()
 	}
 }
 
-KviIrcConnection * KviWindow::connection()
-{
-	return m_pContext ? m_pContext->connection() : 0;
-}
-
 void KviWindow::reloadImages()
 {
 	updateIcon();
@@ -305,29 +299,6 @@ bool KviWindow::setTextEncoding(const QString &szTextEncoding)
 	m_pTextCodec = 0;
 	m_szTextEncoding = ""; // empty: we're using the default
 	return false;
-}
-
-QTextCodec * KviWindow::defaultTextCodec()
-{
-	// if we have a connection try to inherit from there...
-	if(connection())
-	{
-		QTextCodec * c = connection()->textCodec();
-		if(c)return c;
-	}
-	return KviApp::defaultTextCodec();
-}
-
-KviQCString KviWindow::encodeText(const QString &szText)
-{
-	if(!m_pTextCodec)return defaultTextCodec()->fromUnicode(szText);
-	return m_pTextCodec->fromUnicode(szText);
-}
-
-QString KviWindow::decodeText(const char * szText)
-{
-	if(!m_pTextCodec)return defaultTextCodec()->toUnicode(szText);
-	return m_pTextCodec->toUnicode(szText);
 }
 
 QTextEncoder * KviWindow::makeEncoder()
@@ -567,7 +538,7 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	date=dt.toString("yyyy.MM.dd");
 	QString base;
 	getBaseLogFileName(base);
-	kvi_encodeFileName(base);
+	KviFileUtils::encodeFileName(base);
 	base.replace("%%2e","%2e");
 	base=base.toLower();
 	QString tmp;
@@ -1394,6 +1365,17 @@ void KviWindow::preprocessMessage(QString & szMessage)
 					}
 	}
 	szMessage=strings.join(" ");
+}
+
+QTextCodec * KviWindow::defaultTextCodec()
+{
+	// if we have a connection try to inherit from there...
+	if(connection())
+	{
+		QTextCodec * c = connection()->textCodec();
+		if(c)return c;
+	}
+	return KviApp::defaultTextCodec();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_arrayorhashelement.h"
 
 KviKvsTreeNodeArrayOrHashElement::KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource)

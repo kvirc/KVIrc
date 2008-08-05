@@ -216,7 +216,7 @@ void KviDccChat::connectionInProgress()
 
 			//FIXME: #warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned number)"
 			struct in_addr a;
-			if(kvi_stringIpToBinaryIp(ip.ptr(),&a))ip.setNum(htonl(a.s_addr));
+			if(KviNetUtils::stringIpToBinaryIp(ip.ptr(),&a))ip.setNum(htonl(a.s_addr));
 
 			QString szReq = QString("PRIVMSG %1 :%2DCC %3 chat %4 %5").arg(m_pDescriptor->szNick).arg((char)0x01).arg(m_pDescriptor->szType).arg(ip.ptr()).arg(port);
 

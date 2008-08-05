@@ -75,7 +75,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_CRYPT_SUPPORT
+#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
 
 //Block Structure

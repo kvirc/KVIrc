@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #include "kvi_maskeditor.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"

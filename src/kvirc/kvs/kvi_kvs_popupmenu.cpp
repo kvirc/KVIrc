@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_popupmenu.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"

@@ -49,15 +49,12 @@ namespace KviFileUtils
 
 	// loads the file at szPath to szBuffer eventually converting from utf8
 	extern KVILIB_API bool loadFile(const QString &szPath,QString &szBuffer,bool bUtf8 = true);
-	extern KVILIB_API bool loadFile(const char* szPath,QString &szBuffer,bool bUtf8 = true);
 	// adjusts the file path to the current platform
 	extern KVILIB_API void adjustFilePath(QString &szPath);
 	// returns true if szPath points to an existing directory
 	extern KVILIB_API bool directoryExists(const QString &szPath);
-	extern KVILIB_API bool directoryExists(const char* path);
 	// returns true if szPath points to an existing file
 	inline bool fileExists(const QString &szPath) {	return QFile::exists(szPath); };
-	extern KVILIB_API bool fileExists(const char* szPath);
 	// removes a file
 	extern KVILIB_API bool removeFile(const QString &szPath);
 	extern KVILIB_API bool removeFile(const char* path);
@@ -93,20 +90,15 @@ namespace KviFileUtils
 	extern KVILIB_API bool readLines(QFile * f,QStringList &buffer,int iStartLine = 0, int iCount = -1, bool bUtf8 = true);
 	extern KVILIB_API bool isReadable(const QString &szFname);
 	extern KVILIB_API bool isAbsolutePath(const QString &szPath);
+
+	// Translates ANY string into a valid filename (with no path!)
+	// There is NO way to come back to the original string
+	// the algo is one-way only
+	KVILIB_API extern void encodeFileName(QString & path);
 };
 
 // ALL THIS STUFF BELOW SHOULD DIE: IF YOU SEE IT, REPLACE WITH THE FUNCTIONS IN THE NAMESPACE ABOVE
 
-// Returns true if the path begins with '/'
-KVILIB_API extern bool kvi_isAbsolutePath(const char *path);
-// Translates ANY string into a valid filename (with no path!)
-// There is NO way to come back to the original string
-// the algo is one-way only
-KVILIB_API extern void kvi_encodeFileName(KviStr & path);
-KVILIB_API extern void kvi_encodeFileName(QString & path);
 
-// Reads a single line from the file and returns false if EOF was encountered.
-KVILIB_API extern bool kvi_readLine(QFile *f,KviStr &str);
-// Removes a file
 
 #endif //_KVI_FILEUTILS_H_INCLUDED_

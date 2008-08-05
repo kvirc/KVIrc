@@ -600,9 +600,9 @@ bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
 
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()) || kvi_isValidStringIp_V6(m_szRemoteIp.toUtf8().data()))
+	if(KviNetUtils::isValidStringIp(m_szRemoteIp) || KviNetUtils::isValidStringIp_V6(m_szRemoteIp))
 #else
-	if(kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()))
+	if(KviNetUtils::isValidStringIp(m_szRemoteIp))
 #endif
 	{
 		debug ("ok connecting");
@@ -658,10 +658,10 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 	{
 
 		// Check the address type
-		if(kvi_isValidStringIp(m_szLocalIp.toUtf8().data()))bGotIp = true;
+		if(KviNetUtils::isValidStringIp(m_szLocalIp))bGotIp = true;
 		else {
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(m_szLocalIp.toUtf8().data()))
+			if(KviNetUtils::isValidStringIp_V6(m_szLocalIp))
 			{
 				bGotIp = true;
 				m_bIPv6 = true;
@@ -803,12 +803,12 @@ void KviKvsObject_socket::incomingConnection(int)
 		if(m_bIPv6)
 		{
 			m_uSecondaryPort = ntohs(((struct sockaddr_in6 *)addr)->sin6_port);
-			if(!kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
+			if(!KviNetUtils::binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
 				m_szSecondaryIp = __tr("unknown");
 		} else {
 #endif
 			m_uSecondaryPort = ntohs(((struct sockaddr_in *)addr)->sin_port);
-			if(!kvi_binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
+			if(!KviNetUtils::binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
 				m_szSecondaryIp = __tr("unknown");
 #ifdef COMPILE_IPV6_SUPPORT
 		}
@@ -870,7 +870,7 @@ void KviKvsObject_socket::doConnect()
 	m_pDelayTimer = 0;
 
 
-	KviSockaddr sa(m_szRemoteIp.toUtf8().data(),m_uRemotePort,!kvi_isValidStringIp(m_szRemoteIp.toUtf8().data()),m_bUdp);
+	KviSockaddr sa(m_szRemoteIp.toUtf8().data(),m_uRemotePort,!KviNetUtils::isValidStringIp(m_szRemoteIp),m_bUdp);
 
 	if(!sa.socketAddress())
 	{

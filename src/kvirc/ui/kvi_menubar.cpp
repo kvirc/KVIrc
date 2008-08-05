@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #include "kvi_menubar.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"

@@ -20,7 +20,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 
-#define __KVIRC__
+
 #include "kvi_imagedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"

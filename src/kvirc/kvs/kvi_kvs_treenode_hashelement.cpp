@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_hashelement.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_locale.h"

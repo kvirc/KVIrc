@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #include "kvi_theme.h"
 #include "kvi_fileutils.h"
 #include "kvi_config.h"

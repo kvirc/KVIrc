@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_texticonwin.h"
 #include "kvi_texticonmanager.h"

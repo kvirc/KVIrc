@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 // FIXME: #warning "CTCP BEEP == WAKEUP == AWAKE"
 // FIXME: #warning "CTCP AVATARREQ or QUERYAVATAR"
 

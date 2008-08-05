@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #include "kvi_debugwindow.h"
 #include "kvi_console.h"
 #include "kvi_iconmanager.h"

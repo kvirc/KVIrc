@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #define _KVI_SELECTORS_CPP_
 
 #include "kvi_selectors.h"

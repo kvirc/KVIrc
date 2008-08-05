@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_object.h"
 #include "kvi_kvs_hash.h"
 #include "kvi_kvs_kernel.h"

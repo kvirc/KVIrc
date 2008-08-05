@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #include "kvi_mexlinkfilter.h"
 
 KviMexLinkFilter::KviMexLinkFilter(KviModuleExtensionDescriptor * d)

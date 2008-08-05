@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_objectfield.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_object.h"

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_objectfunctioncall.h"
 
 KviKvsTreeNodeObjectFunctionCall::KviKvsTreeNodeObjectFunctionCall(const QChar * pLocation,const QString &szFncName,KviKvsTreeNodeDataList * pParams)

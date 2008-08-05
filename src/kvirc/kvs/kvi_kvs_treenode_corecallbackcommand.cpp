@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_corecallbackcommand.h"
 #include "kvi_kvs_treenode_datalist.h"
 #include "kvi_kvs_treenode_switchlist.h"

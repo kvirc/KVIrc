@@ -59,7 +59,7 @@
 		virtual QString album();
 		virtual int position();
 		virtual int length();
-		//virtual int bitRate(); unsupported
+		virtual int bitRate();
 		virtual int sampleRate();
 		virtual bool playMrl(const QString &mrl);
 		virtual KviMediaPlayerInterface::PlayerStatus status();

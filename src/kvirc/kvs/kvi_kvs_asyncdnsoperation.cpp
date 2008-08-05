@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_kvs_asyncdnsoperation.h"
 #include "kvi_dns.h"

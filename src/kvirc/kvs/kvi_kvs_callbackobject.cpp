@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_kvs_callbackobject.h"
 #include "kvi_console.h"

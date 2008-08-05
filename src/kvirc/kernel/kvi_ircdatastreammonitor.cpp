@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_ircdatastreammonitor.h"
 #include "kvi_irccontext.h"

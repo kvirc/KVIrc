@@ -26,7 +26,7 @@
 // Channel widget : abstraction of an IRC channel
 //
 
-#define __KVIRC__
+
 
 #include "kvi_toolwindows_container.h"
 #include "kvi_channel.h"

@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 #define _KVI_USERLISTVIEW_CPP_
 
 #include "kvi_debug.h"

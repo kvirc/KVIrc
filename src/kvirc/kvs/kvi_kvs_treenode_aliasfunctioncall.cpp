@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_aliasfunctioncall.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_aliasmanager.h"

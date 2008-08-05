@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_eventhandler.h"
 
 KviKvsEventHandler::KviKvsEventHandler(Type t)

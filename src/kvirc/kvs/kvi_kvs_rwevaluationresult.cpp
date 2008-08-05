@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_kvs_rwevaluationresult.h"
 #include "kvi_kvs_hash.h"

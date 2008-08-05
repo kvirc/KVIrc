@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
-
 #include "kvi_kvs_parser.h"
 #include "kvi_kvs_treenode.h"
 #include "kvi_kvs_report.h"

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_scopeoperator.h"
 
 #include "kvi_qstring.h"

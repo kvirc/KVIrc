@@ -46,17 +46,6 @@
 
 #include "kvi_string.h"
 
-
-KVILIB_API extern bool kvi_isValidStringIp(const char * szIp);
-KVILIB_API extern bool kvi_stringIpToBinaryIp(const char * szIp,struct in_addr * address);
-KVILIB_API extern bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer);
-
-#ifdef COMPILE_IPV6_SUPPORT
-	KVILIB_API extern bool kvi_isValidStringIp_V6(const char * szIp);
-	KVILIB_API extern bool kvi_stringIpToBinaryIp_V6(const char * szIp,struct in6_addr * address);
-	KVILIB_API extern bool kvi_binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer);
-#endif
-
 class KVILIB_API KviSockaddr
 {
 public:

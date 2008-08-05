@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_object_functionhandlerimpl.h"
 #include "kvi_kvs_object_functioncall.h"
 #include "kvi_kvs_script.h"

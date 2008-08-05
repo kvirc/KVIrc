@@ -22,7 +22,7 @@
 //
 //================================================================================
 
-#define __KVIRC__
+
 #define _KVI_ICONMANAGER_CPP_
 
 #include "kvi_iconmanager.h"

@@ -121,10 +121,10 @@ int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTime
 void KviDccMarshal::doListen()
 {
 	// Check the address type
-	if(!kvi_isValidStringIp(m_szIp.toUtf8().data()))
+	if(!KviNetUtils::isValidStringIp(m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!kvi_isValidStringIp_V6(m_szIp.toUtf8().data()))
+		if(!KviNetUtils::isValidStringIp_V6(m_szIp))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
@@ -295,10 +295,10 @@ int KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout
 void KviDccMarshal::doConnect()
 {
 	// Check the address type
-	if(!kvi_isValidStringIp(m_szIp.toUtf8().data()))
+	if(!KviNetUtils::isValidStringIp(m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!kvi_isValidStringIp_V6(m_szIp.toUtf8().data()))
+		if(!KviNetUtils::isValidStringIp_V6(m_szIp))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
@@ -445,12 +445,12 @@ void KviDccMarshal::snActivated(int)
 			if(m_bIPv6)
 			{
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in6 *)addr)->sin6_port));
-				if(!kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
+				if(!KviNetUtils::binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
 					m_szSecondaryIp = "localhost";
 			} else {
 #endif
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in *)addr)->sin_port));
-				if(!kvi_binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
+				if(!KviNetUtils::binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
 					m_szSecondaryIp = "localhost";
 #ifdef COMPILE_IPV6_SUPPORT
 			}
@@ -468,12 +468,12 @@ void KviDccMarshal::snActivated(int)
 			if(m_bIPv6)
 			{
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in6 *)addr)->sin6_port));
-				if(!kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
+				if(!KviNetUtils::binaryIpToStringIp_V6(((struct sockaddr_in6 *)addr)->sin6_addr,m_szSecondaryIp))
 					m_szSecondaryIp = __tr2qs_ctx("unknown","dcc");
 			} else {
 #endif
 				m_szSecondaryPort.setNum(ntohs(((struct sockaddr_in *)addr)->sin_port));
-				if(!kvi_binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
+				if(!KviNetUtils::binaryIpToStringIp(((struct sockaddr_in *)addr)->sin_addr,m_szSecondaryIp))
 					m_szSecondaryIp = __tr2qs_ctx("unknown","dcc");
 #ifdef COMPILE_IPV6_SUPPORT
 			}

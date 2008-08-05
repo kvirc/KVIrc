@@ -22,7 +22,6 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define __KVIRC__
 
 #include "kvi_ircsocket.h"
 #include "kvi_ircserver.h"
@@ -156,7 +155,7 @@ void KviIrcSocket::reset()
 	}
 
 	m_bInProcessData             = false;
-	
+
 	m_uReadBytes                 = 0;
 	m_uSentBytes                 = 0;
 	m_uSentPackets               = 0;
@@ -201,7 +200,7 @@ void KviIrcSocket::outputProxyError(const QString &szMsg)
 		QString szTemporary = (*it).trimmed();
 		m_pConsole->output(KVI_OUT_SOCKETERROR,__tr2qs("[PROXY ERROR]: %Q"),&(szTemporary));
 	}
-	
+
 }
 
 void KviIrcSocket::outputSocketMessage(const QString &szMsg)
@@ -264,7 +263,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 	if(prx) bNeedServerIp = (
 		prx->protocol() != KviProxy::Http && prx->protocol() != KviProxy::Socks5
 		);
-	
+
 	// We're going to check the addresses now
 
 	// check the proxy stuff...
@@ -278,7 +277,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 			// IPv6 proxy :) (STILL QUITE UNTESTED ?)
 #ifdef COMPILE_IPV6_SUPPORT
 			bTargetIPv6 = true;
-			if(!kvi_isValidStringIp_V6(m_pProxy->ip()))return KviError_invalidProxyAddress;
+			if(!KviNetUtils::isValidStringIp_V6(m_pProxy->ip()))return KviError_invalidProxyAddress;
 			// SOCKSv4 does not support IPV6 addresses
 			if(m_pProxy->protocol() == KviProxy::Socks4)return KviError_socksV4LacksIPv6Support;
 #else
@@ -286,10 +285,10 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 #endif
 		} else {
 			// IPv4 proxy
-			if(!kvi_isValidStringIp(m_pProxy->ip()))return KviError_invalidProxyAddress;
+			if(!KviNetUtils::isValidStringIp(m_pProxy->ip()))return KviError_invalidProxyAddress;
 		}
 	}
-	
+
 	if(bNeedServerIp)
 	{
 		// check the irc host ip
@@ -461,7 +460,7 @@ void KviIrcSocket::connectedToProxy()
 	}
 
 	m_pRsn = new QSocketNotifier((int)m_sock,QSocketNotifier::Read);
-		
+
 	QObject::connect(m_pRsn,SIGNAL(activated(int)),this,SLOT(readProxyData(int)));
 
 	switch(m_pProxy->protocol())
@@ -482,14 +481,14 @@ void KviIrcSocket::readHttpProxyErrorData(int)
 {
 	char buffer[256];
 	int readLength;
-	
+
 	readLength = kvi_socket_recv(m_sock,buffer,255);
 	if(readLength <= 0)
 	{
 		handleInvalidSocketRead(readLength);
 		return;
 	}
-	
+
 	outputProxyMessage(m_pConsole->decodeText(buffer));
 }
 
@@ -636,7 +635,7 @@ void KviIrcSocket::proxyLoginHttp()
 	// Then expect a server reply header (2 newlines)
 	// HTTP 200 = Success
 	// HTTP Anything else = Failure
-	
+
 	if(_OUTPUT_VERBOSE)
 		outputProxyMessage(__tr2qs("Using HTTP protocol."));
 
@@ -684,7 +683,7 @@ void KviIrcSocket::proxyLoginV4()
 	// consulting IDENT, cf. RFC 1413.  If the request is granted, the SOCKS
 	// server makes a connection to the specified port of the destination host.
 	// A reply packet is sent to the client when this connection is established,
-	// or when the request is rejected or the operation fails. 
+	// or when the request is rejected or the operation fails.
 	//
 	if(_OUTPUT_VERBOSE)
 		outputProxyMessage(__tr2qs("Using SOCKSv4 protocol."));
@@ -708,7 +707,7 @@ void KviIrcSocket::proxyLoginV4()
 
 	struct in_addr ircInAddr;
 
-	if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))
+	if(!KviNetUtils::stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))
 		debug("SOCKET INTERNAL ERROR IN IPV4 (SOCKS4) ADDR CONVERSION");
 
 	quint32 host=(quint32)ircInAddr.s_addr;
@@ -884,9 +883,9 @@ void KviIrcSocket::proxySendTargetDataV5()
 	//
 	//   The address is a version-6 IP address, with a length of 16 octets.
 	bool bRemoteDns=!(
-		
+
 		(
-		KviNetUtils::isValidStringIp(m_pIrcServer->ip()) 
+		KviNetUtils::isValidStringIp(m_pIrcServer->ip())
 		#ifdef COMPILE_IPV6_SUPPORT
 			|| KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip())
 		#endif
@@ -900,12 +899,12 @@ void KviIrcSocket::proxySendTargetDataV5()
 	bufToSend[0]=(unsigned char)5;           //Proto 5
 	bufToSend[1]=(unsigned char)1;           //CONNECT
 	bufToSend[2]=(unsigned char)0;           //RSV
-	
+
 	if(bRemoteDns)
 	{
 		bRemoteDns=true;
 		bufToSend[3]=3;
-		bufToSend[4]=m_pIrcServer->hostName().toUtf8().length();		
+		bufToSend[4]=m_pIrcServer->hostName().toUtf8().length();
 	} else {
 		bufToSend[3]=(unsigned char)m_pIrcServer->isIPv6() ? 4 : 1; // IPV6 : IPV4
 	}
@@ -921,7 +920,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 #ifdef COMPILE_IPV6_SUPPORT
 		struct in6_addr ircInAddr;
 
-		if(!kvi_stringIpToBinaryIp_V6(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
+		if(!KviNetUtils::stringIpToBinaryIp_V6(m_pIrcServer->ip(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV6 ADDR CONVERSION");
 		kvi_memmove((void *)(bufToSend + 4),(void *)(&ircInAddr),4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
 		kvi_memmove((void *)(bufToSend + 20),(void *)&port,2);
@@ -929,7 +928,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 	} else {
 		struct in_addr ircInAddr;
 
-		if(!kvi_stringIpToBinaryIp(m_pIrcServer->ip().toUtf8().data(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
+		if(!KviNetUtils::stringIpToBinaryIp(m_pIrcServer->ip(),&ircInAddr))debug("SOCKET INTERNAL ERROR IN IPV4 ADDR CONVERSION");
 		quint32 host = (quint32)ircInAddr.s_addr;
 		kvi_memmove((void *)(bufToSend + 4),(void *)&host,4);
 		quint16 port = (quint16)htons(m_pIrcServer->port());
@@ -1088,7 +1087,7 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char reply)
 	// If the request is granted, the SOCKS
 	// server makes a connection to the specified port of the destination host.
 	// A reply packet is sent to the client when this connection is established,
-	// or when the request is rejected or the operation fails. 
+	// or when the request is rejected or the operation fails.
 	//
 	//
 	//                +----+----+----+----+----+----+----+----+
@@ -1165,14 +1164,14 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * buffer,int bufLen)
 				return;
 			}
 		}
-		
+
 	}
 
 	outputProxyError(__tr2qs("Proxy said something about: \n"));
 	outputProxyMessage(m_pConsole->decodeText(buffer));
-	
+
 	//Read HTTP error page and show it
-	
+
 	if(m_pWsn)
 	{
 		delete m_pWsn;
@@ -1188,9 +1187,9 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * buffer,int bufLen)
 	m_pRsn = new QSocketNotifier((int)m_sock,QSocketNotifier::Read);
 	QObject::connect(m_pRsn,SIGNAL(activated(int)),this,SLOT(readHttpProxyErrorData(int)));
 	m_pRsn->setEnabled(true);
-	
+
 	setState(ProxyHttpError);
-	
+
 //	raiseError(KviError_proxyHttpFailure);
 //	reset();
 }
@@ -1350,7 +1349,7 @@ void KviIrcSocket::linkUp()
 	m_pRsn = new QSocketNotifier((int)m_sock,QSocketNotifier::Read);
 	QObject::connect(m_pRsn,SIGNAL(activated(int)),this,SLOT(readData(int)));
 	m_pRsn->setEnabled(true);
-	
+
 	// yahoo!
 }
 
@@ -1399,7 +1398,7 @@ void KviIrcSocket::readData(int)
 					reset();
 					return;
 				break;
-	
+
 			}
 			handleInvalidSocketRead(readLength);
 			return;
@@ -1501,7 +1500,7 @@ void KviIrcSocket::processData(char * buffer,int)
 			//   the disconnect and thus destroying the irc context).
 			// For now we try to rely on the remaining parts to handle correctly
 			// such conditions. Let's see...
-			
+
 			m_pConsole->incomingMessage(messageBuffer);
 
 			if(m_state != Connected)
@@ -1769,7 +1768,7 @@ void KviIrcSocket::flushSendQueue()
 
 					// Partial send...need to finish it later
 					m_pSendQueueHead->pData->remove(result);
-					
+
 					m_uSentBytes += result;
 					if(_OUTPUT_VERBOSE)
 						outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
@@ -1819,7 +1818,7 @@ bool KviIrcSocket::getLocalHostIp(QString &szIp,bool bIPv6)
 		if(!kvi_socket_getsockname(m_sock, (struct sockaddr *)&name,&len))return false;
 		//I assume that getsockname returns data in Network byte order...
 		//The man page misses to specify that...
-		if(!kvi_binaryIpToStringIp_V6(name.sin6_addr,szIp))return false;
+		if(!KviNetUtils::binaryIpToStringIp_V6(name.sin6_addr,szIp))return false;
 		return true;
 #else
 		return false; // no support
@@ -1830,7 +1829,7 @@ bool KviIrcSocket::getLocalHostIp(QString &szIp,bool bIPv6)
 	if(!kvi_socket_getsockname(m_sock, (struct sockaddr *)&name,&len))return false;
 	//I assume that getsockname returns data in Network byte order...
 	//The man page misses to specify that...
-	if(!kvi_binaryIpToStringIp(name.sin_addr,szIp))return false;
+	if(!KviNetUtils::binaryIpToStringIp(name.sin_addr,szIp))return false;
 	return true;
 }
 

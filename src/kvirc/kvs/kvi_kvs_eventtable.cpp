@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_event.h"
 #include "kvi_kvs_eventtable.h"
 #include "kvi_kvs_eventmanager.h"

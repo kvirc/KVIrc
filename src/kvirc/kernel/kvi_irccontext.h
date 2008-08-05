@@ -45,12 +45,12 @@ class KviServer;
 	KviIrcContext is the structure that groups the objects and resources
 	usable for a single irc connection: a console, a set of channels and queries,
 	and a KviIrcConnection object.
-	
+
 	The objects grouped here are mostly permanent across connections.
-	
+
 	Each irc context has its own unique numeric identifier. The identifiers start
 	from 1 so 0 is an invalid irc context id (this is useful in the scripting engine).
-	
+
 	The irc context is created in the KviConsole constructor and destroyed
 	in the KviConsole destructor. No other class can allocate KviIrcContext objects.
 */
@@ -80,9 +80,9 @@ protected:
 	KviIrcConnection                 * m_pConnection;
 
 	unsigned int                       m_uId;                  // this irc context id
-	
+
 	State                              m_eState;               // this context state
-	
+
 	// helper pointers
 	KviFrame                         * m_pFrame;               // the owning frame, shallow, never null
 
@@ -103,20 +103,20 @@ protected:
 	KviPointerList<KviQuery>             * m_pDeadQueries;
 	// other context bound windows
 	KviPointerList<KviWindow>            * m_pContextWindows;
-	
+
 	int                                m_iHeartbeatTimerId;
 public:
-	unsigned int id(){ return m_uId; };
+	inline unsigned int id(){ return m_uId; };
 	// never null and always the same!
-	KviConsole * console(){ return m_pConsole; };
+	inline KviConsole * console(){ return m_pConsole; };
 	// never null and always the same
-	KviFrame * frame(){ return m_pFrame; };
+	inline KviFrame * frame(){ return m_pFrame; };
 	// may be null and may change!
-	KviIrcConnection * connection(){ return m_pConnection; };
+	inline KviIrcConnection * connection(){ return m_pConnection; };
 	// state
-	State state(){ return m_eState; }; 
-	bool isConnected(){ return m_eState == Connected; };
-	bool isLoggingIn(){ return m_eState == LoggingIn; };
+	inline State state(){ return m_eState; };
+	inline bool isConnected(){ return m_eState == Connected; };
+	inline bool isLoggingIn(){ return m_eState == LoggingIn; };
 	// dead channels and queries
 	void closeAllDeadChannels();
 	void closeAllDeadQueries();
@@ -132,26 +132,26 @@ public:
 	void registerContextWindow(KviWindow * pWnd);
 	bool unregisterContextWindow(KviWindow * pWnd);
 
-	KviPointerList<KviIrcDataStreamMonitor> * monitorList(){ return m_pMonitorList; };
+	inline KviPointerList<KviIrcDataStreamMonitor> * monitorList(){ return m_pMonitorList; };
 
 	// links window
 	void createLinksWindow();
-	void setLinksWindowPointer(KviExternalServerDataParser * l){ m_pLinksWindow = l; };
-	KviExternalServerDataParser * linksWindow(){ return m_pLinksWindow; };
+	inline void setLinksWindowPointer(KviExternalServerDataParser * l){ m_pLinksWindow = l; };
+	inline KviExternalServerDataParser * linksWindow(){ return m_pLinksWindow; };
 
 	// list window
 	void createListWindow();
-	void setListWindowPointer(KviExternalServerDataParser * l){ m_pListWindow = l; };
-	KviExternalServerDataParser * listWindow(){ return m_pListWindow; };
+	inline void setListWindowPointer(KviExternalServerDataParser * l){ m_pListWindow = l; };
+	inline KviExternalServerDataParser * listWindow(){ return m_pListWindow; };
 
 	void setAsynchronousConnectionData(KviAsynchronousConnectionData * d);
-	KviAsynchronousConnectionData * asynchronousConnectionData(){ return m_pAsynchronousConnectionData; };
+	inline KviAsynchronousConnectionData * asynchronousConnectionData(){ return m_pAsynchronousConnectionData; };
 	void destroyAsynchronousConnectionData();
 	// used by KviConsole (for now) and KviUserParser
 	void connectToCurrentServer();
-	
+
 	void beginAsynchronousConnect(unsigned int uDelayInMSecs);
-	
+
 	void registerDataStreamMonitor(KviIrcDataStreamMonitor * m);
 	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m);
 

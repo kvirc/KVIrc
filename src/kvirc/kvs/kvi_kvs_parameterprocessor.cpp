@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_parameterprocessor.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_runtimecontext.h"

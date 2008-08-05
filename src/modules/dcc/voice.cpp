@@ -752,16 +752,18 @@ void KviDccVoice::connectionInProgress()
 
 		if(m_pDescriptor->bSendRequest)
 		{
-			KviStr ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
+			QString ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
 			KviStr port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 //#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 			struct in_addr a;
-			if(kvi_stringIpToBinaryIp(ip.ptr(),&a))ip.setNum(htonl(a.s_addr));
+			if(KviNetUtils::stringIpToBinaryIp(ip,&a)) {
+				ip.setNum(htonl(a.s_addr));
+			}
 
-			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC VOICE %s %s %s %d%c",
+			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC VOICE %s %Q %s %d%c",
 					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
 					0x01,m_pDescriptor->szCodec.ptr(),
-					ip.ptr(),port.ptr(),m_pDescriptor->iSampleRate,0x01);
+					&ip,port.ptr(),m_pDescriptor->iSampleRate,0x01);
 			output(KVI_OUT_DCCMSG,__tr2qs_ctx("Sent DCC VOICE (%s) request to %Q, waiting for the remote client to connect...","dcc"),
 					m_pDescriptor->szCodec.ptr(),&(m_pDescriptor->szNick));
 		} else output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC VOICE request not sent: awaiting manual connections","dcc"));

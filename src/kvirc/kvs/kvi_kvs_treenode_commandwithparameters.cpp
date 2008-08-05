@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_commandwithparameters.h"
 #include "kvi_kvs_treenode_datalist.h"
 

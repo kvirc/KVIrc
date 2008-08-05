@@ -167,7 +167,7 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,
 	{
 		addr.s_addr = htonl((unsigned long)ipaddr.toULong());
 		QString tmp;
-		if(!kvi_binaryIpToStringIp(addr,tmp))
+		if(!KviNetUtils::binaryIpToStringIp(addr,tmp))
 		{
 			if(!dcc->ctcpMsg->msg->haltOutput())
 			{
@@ -179,11 +179,12 @@ static bool dcc_module_normalize_target_data(KviDccRequest * dcc,KviStr &ipaddr,
 		}
 		ipaddr = tmp;
 	} else {
-		if(!kvi_stringIpToBinaryIp(ipaddr,&addr))
+		//FIXME: KviStr -> QString
+		if(!KviNetUtils::stringIpToBinaryIp(QString(ipaddr),&addr))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
 			struct in6_addr addr6;
-			if(kvi_stringIpToBinaryIp_V6(ipaddr,&addr6))
+			if(KviNetUtils::stringIpToBinaryIp_V6(QString(ipaddr),&addr6))
 			{
 				dcc->bIPv6 = true;
 				return true; // IPV6 address.

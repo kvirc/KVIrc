@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_report.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_window.h"

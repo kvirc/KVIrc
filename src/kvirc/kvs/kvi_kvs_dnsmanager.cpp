@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_dnsmanager.h"
 #include "kvi_dns.h"
 #include "kvi_app.h"

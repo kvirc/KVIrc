@@ -172,6 +172,14 @@ QString KviAmarokInterface::mrl()
 	return url.prettyURL();
 }
 
+int KviAmarokInterface::bitRate()
+{
+	QString ret;
+	if(!stringRetVoidDCOPCall("player","bitrate()",ret))return false;
+	int a = ret.toInt();
+	return a;
+}
+
 bool KviAmarokInterface::playMrl(const QString &mrl)
 {
 	QString title;

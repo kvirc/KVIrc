@@ -58,7 +58,7 @@
 
 
 
-#ifdef COMPILE_CRYPT_SUPPORT
+#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 	#include "kvi_memmove.h"
 	#include "kvi_malloc.h"
 	#include "kvi_pointerlist.h"

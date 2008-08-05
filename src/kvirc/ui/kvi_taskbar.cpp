@@ -22,7 +22,7 @@
 //
 //===============================================================================================
 
-#define __KVIRC__
+
 //#define KVI_TASKBARBUTTON_MIN_WIDTH 100
 #define KVI_TASKBARBUTTON_CONTEXTINDICATORHEIGHT 6
 #define KVI_TASKBAR_MIN_WIDTH 120

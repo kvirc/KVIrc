@@ -103,7 +103,7 @@ void KviHttpRequest::resetData()
 	m_szFileName = "";
 	m_eProcessingType = WholeFile;
 	m_eExistingFileAction = RenameIncoming;
-	m_url = "";
+	m_url = QString("");
 	m_uMaxContentLength = 0;
 	m_uContentOffset = 0;
 	m_bChunkedTransferEncoding = false;
@@ -161,14 +161,14 @@ bool KviHttpRequest::start()
 		return false;
 	}
 
-	if((!kvi_strEqualCI(m_url.protocol().ptr(),"http")) && (!kvi_strEqualCI(m_url.protocol().ptr(),"https")))
+	if((m_url.protocol()!="http") && (m_url.protocol()!="https"))
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_url.protocol().ptr());
+		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_url.protocol());
 		return false;
 	}
 
-	if(kvi_isValidStringIp(m_url.host().ptr()))
+	if(KviNetUtils::isValidStringIp(m_url.host()))
 	{
 		m_szIp = m_url.host();
 		QTimer::singleShot(10,this,SLOT(haveServerIp()));
@@ -183,7 +183,7 @@ bool KviHttpRequest::startDnsLookup()
 	m_pDns = new KviDns();
 	connect(m_pDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(dnsLookupDone(KviDns *)));
 
-	if(!m_pDns->lookup(m_url.host().ptr(),KviDns::IPv4))
+	if(!m_pDns->lookup(m_url.host(),KviDns::IPv4))
 	{
 		resetInternalStatus();
 		m_szLastError = __tr2qs("Unable to start the DNS lookup");
@@ -191,10 +191,10 @@ bool KviHttpRequest::startDnsLookup()
 	}
 
 	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs("Looking up host %s"),m_url.host().ptr());
+	KviQString::sprintf(tmp,__tr2qs("Looking up host %Q"),&(m_url.host()));
 	emit status(tmp); // FIXME
 
-	emit resolvingHost(QString(m_url.host().ptr()));
+	emit resolvingHost(m_url.host());
 
 	return true;
 }
@@ -207,7 +207,7 @@ void KviHttpRequest::dnsLookupDone(KviDns *d)
 		delete m_pDns;
 		m_pDns = 0;
 		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Host %s resolved to %Q"),m_url.host().ptr(),&m_szIp);
+		KviQString::sprintf(tmp,__tr2qs("Host %Q resolved to %Q"),&(m_url.host()),&m_szIp);
 		emit status(tmp);
 		haveServerIp();
 	} else {
@@ -231,14 +231,14 @@ void KviHttpRequest::haveServerIp()
 
 	m_pThread = new KviHttpRequestThread(
 						this,
-						m_url.host().ptr(),
+						m_url.host(),
 						m_szIp,
 						uPort,
-						m_url.path().ptr(),
+						m_url.path(),
 						m_uContentOffset,
 						(m_eProcessingType == HeadersOnly) ? KviHttpRequestThread::Head : (m_szPostData.isEmpty() ? KviHttpRequestThread::Get : KviHttpRequestThread::Post),
 						m_szPostData,
-						kvi_strEqualCI(m_url.protocol().ptr(),"https"));
+						m_url.protocol()=="https");
 
 	if(!m_pThread->start())
 	{

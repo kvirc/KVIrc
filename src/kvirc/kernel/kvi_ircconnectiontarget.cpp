@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircserver.h"

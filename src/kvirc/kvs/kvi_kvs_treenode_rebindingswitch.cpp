@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_rebindingswitch.h"
 #include "kvi_kvs_treenode_data.h"
 #include "kvi_window.h"

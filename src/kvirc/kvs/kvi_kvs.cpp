@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_kvs_aliasmanager.h"

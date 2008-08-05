@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_treenode_variable.h"
 
 KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation,const QString &szIdentifier)

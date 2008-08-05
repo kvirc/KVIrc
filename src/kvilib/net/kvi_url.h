@@ -35,26 +35,26 @@ public:
 	KviUrl(const KviUrl &u);
 	~KviUrl();
 protected:
-	KviStr             m_szUrl;
+	QString             m_szUrl;
 
-	KviStr             m_szProtocol;
-	KviStr             m_szHost;
-	KviStr             m_szPath;
-	KviStr             m_szUser;
-	KviStr             m_szPass;
-	kvi_u32_t          m_uPort;
+	QString             m_szProtocol;
+	QString             m_szHost;
+	QString             m_szPath;
+	QString             m_szUser;
+	QString             m_szPass;
+	kvi_u32_t           m_uPort;
 protected:
 	void parse();
 public:
-	const KviStr & url() const { return m_szUrl; };
-	const KviStr & protocol() const { return m_szProtocol; };
-	const KviStr & host() const { return m_szHost; };
-	const KviStr & path() const { return m_szPath; };
-	const KviStr & user() const { return m_szUser; };
-	const KviStr & pass() const { return m_szPass; };
+	const QString & url() const { return m_szUrl; };
+	const QString & protocol() const { return m_szProtocol; };
+	const QString & host() const { return m_szHost; };
+	const QString & path() const { return m_szPath; };
+	const QString & user() const { return m_szUser; };
+	const QString & pass() const { return m_szPass; };
 	kvi_u32_t port() const { return m_uPort; };
 
-	KviUrl & operator = (const char * szUrl);
+	KviUrl & operator = (const QString& szUrl);
 	KviUrl & operator = (const KviUrl &u);
 
 };

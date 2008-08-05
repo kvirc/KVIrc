@@ -23,7 +23,7 @@
 //
 
 
-#define __KVIRC__
+
 
 #include "kvi_historywin.h"
 #include "kvi_app.h"

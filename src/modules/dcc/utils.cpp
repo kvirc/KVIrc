@@ -111,7 +111,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 		KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).trimmed();
 		if(!KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).isEmpty())
 		{
-			if(kvi_isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
+			if(KviNetUtils::isValidStringIp(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface),"0.0.0.0"))
 				{
@@ -128,7 +128,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 				return true;
 			}
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
+			if(KviNetUtils::isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {

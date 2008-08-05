@@ -24,6 +24,7 @@
 
 
 #include "kvi_url.h"
+#include <QUrl>
 
 KviUrl::KviUrl()
 {
@@ -36,7 +37,7 @@ KviUrl::KviUrl(const KviUrl & u)
 
 KviUrl::KviUrl(const char * szUrl)
 {
-	m_szUrl = szUrl;
+	m_szUrl = QString::fromLocal8Bit(szUrl);
 	parse();
 }
 
@@ -53,95 +54,17 @@ KviUrl::~KviUrl()
 
 void KviUrl::parse()
 {
-	m_szProtocol = "";
-	m_szHost = "";
-	m_szPath = "";
-	m_szUser = "";
-	m_szPass = "";
-
-	m_szUrl.trimmed();
-
-	KviStr u = m_szUrl;
-
-	// proto
-
-	kvi_u32_t uDefaultPort = 80;
-
-	int i = u.findFirstIdx(":/");
-	if(i != -1)
-	{
-		// there is a protocol path
-		m_szProtocol = u.left(i);
-		u.cutLeft(i + 2);
-		u.stripLeft('/');
-		u.trimmed();
-
-		// fix the default ports
-		if(kvi_strEqualCI(m_szProtocol,"https"))uDefaultPort = 443;
-		else if(kvi_strEqualCI(m_szProtocol,"ftp"))uDefaultPort = 21;
-	} else {
-		// no proto... assume http
-		u.stripLeft('/');
-		m_szProtocol = "http";
-	}
-
-	m_uPort = uDefaultPort;
-
-	// user and pass
-
-	i = u.findFirstIdx('@');
-
-	if(i != -1)
-	{
-		KviStr szUserPass = u.left(i);
-		szUserPass.trimmed();
-		u.cutLeft(i + 1);
-
-		i = szUserPass.findFirstIdx(':');
-		if(i != -1)
-		{
-			m_szUser = szUserPass.left(i);
-			szUserPass.cutLeft(i + 1);
-			m_szPass = szUserPass;
-			m_szPass.trimmed();
-		} else {
-			m_szUser = szUserPass;
-		}
-	}
-
-	// host
-
-	i = u.findFirstIdx('/');
-	if(i != -1)
-	{
-		KviStr h = u.left(i);
-		u.cutLeft(i + 1);
-		i = h.findFirstIdx(':');
-		if(i != -1)
-		{
-			// has a port part
-			m_szHost = h.left(i);
-			h.cutLeft(i + 1);
-			h.trimmed();
-			bool bOk;
-			m_uPort = h.toUInt(&bOk);
-			if(!bOk)m_uPort = uDefaultPort;
-		} else {
-			// no port : assume default
-			m_szHost = h;
-		}
-		m_szPath = u;
-	} else {
-		m_szHost = u;
-	}
-
-	m_szHost.trimmed();
-	m_szPath.trimmed();
-	if(!m_szPath.firstCharIs('/'))m_szPath.prepend('/');
+	QUrl url(m_szUrl);
+	m_szProtocol = url.scheme();
+	m_szHost = url.host();
+	m_szPath = url.path();
+	m_szUser = url.userName();
+	m_szPass = url.password();
+	m_uPort = url.port() > 0 ? url.port() : 80 ;
 }
 
 
-KviUrl & KviUrl::operator=(const char * szUrl)
+KviUrl & KviUrl::operator=(const QString& szUrl)
 {
 	m_szUrl = szUrl;
 	parse();

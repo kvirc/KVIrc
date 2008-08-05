@@ -24,6 +24,7 @@
 //
 //=============================================================================
 
+#include "kvi_app.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
@@ -31,6 +32,8 @@
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_widgetstack.h"
 #include "kvi_accel.h"
+#include "kvi_irccontext.h"
+#include "kvi_ircconnection.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -53,7 +56,6 @@ class KviConfig;
 class KviIrcView;
 class KviInput;
 class KviConsole;
-class KviIrcContext;
 class KviIrcConnection;
 class KviWindowToolPageButton;
 class KviTalPopupMenu;
@@ -198,7 +200,7 @@ public:
 	// same as above
 	inline KviIrcContext * context(){ return m_pContext; };
 	// the current IRC connection (if any)
-	KviIrcConnection * connection();
+	inline KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
 	inline QSplitter * splitter(){ return m_pSplitter; };
 	// The window has ALWAYS a taskbar item
@@ -233,14 +235,14 @@ public:
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
 
-	const QString &textEncoding(){ return m_szTextEncoding; };
+	inline const QString &textEncoding(){ return m_szTextEncoding; };
 	// returns true if the encoding could be succesfully set
 	bool setTextEncoding(const QString &szTextEncoding);
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
-	KviQCString encodeText(const QString &szText);
-	QString decodeText(const char * szText);
+	inline KviQCString encodeText(const QString &szText);
+	inline QString decodeText(const char * szText);
 	//return a text encoder
 	QTextEncoder * makeEncoder();
 
@@ -380,5 +382,29 @@ protected:
 	//   you're running very early at startup or very late at shutdown
 	extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif
+
+inline KviQCString KviWindow::encodeText(const QString &szText)
+{
+	if(m_pTextCodec) {
+		return m_pTextCodec->fromUnicode(szText);
+	} else {
+		return defaultTextCodec()->fromUnicode(szText);
+	}
+}
+
+inline QString KviWindow::decodeText(const char * szText)
+{
+	if(m_pTextCodec) {
+		return m_pTextCodec->toUnicode(szText);
+	} else {
+		return defaultTextCodec()->toUnicode(szText);
+	}
+}
+
+inline KviIrcConnection * KviWindow::connection()
+{
+	return m_pContext ? m_pContext->connection() : 0;
+}
+
 
 #endif //_KVI_WINDOW_H_

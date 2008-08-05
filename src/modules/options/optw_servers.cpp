@@ -931,25 +931,25 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 
 	if(m_pIpEditor)
 	{
-		KviStr tmpAddr = m_pIpEditor->address();
+		QString tmpAddr = m_pIpEditor->address();
 
 		if(!m_pIpEditor->hasEmptyFields())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
 			if(s->isIPv6())
 			{
-				if((!kvi_strEqualCI(tmpAddr.ptr(),"0:0:0:0:0:0:0:0")) && kvi_isValidStringIp_V6(tmpAddr.ptr()))
+				if((!KviQString::equalCI(tmpAddr,"0:0:0:0:0:0:0:0")) && KviNetUtils::isValidStringIp(tmpAddr))
 				{
-					s->setIp(tmpAddr.ptr());
+					s->setIp(tmpAddr);
 				} else {
 					s->setCacheIp(false);
 					s->setIp("");
 				}
 			} else {
 #endif
-				if((!kvi_strEqualCI(tmpAddr.ptr(),"0.0.0.0")) && kvi_isValidStringIp(tmpAddr.ptr()))
+				if((!KviQString::equalCI(tmpAddr,"0.0.0.0")) && KviNetUtils::isValidStringIp(tmpAddr))
 				{
-					s->setIp(tmpAddr.ptr());
+					s->setIp(tmpAddr);
 				} else {
 					s->setCacheIp(false);
 					s->setIp("");

@@ -22,7 +22,7 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define __KVIRC__
+
 
 #include "kvi_ircconnectiontargetresolver.h"
 #include "kvi_dns.h"
@@ -181,10 +181,10 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->proxy()->isIPv6())
 	{
-		bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szIp.toUtf8().data());
+		bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->proxy()->m_szIp);
 	} else {
 #endif
-		bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szIp.toUtf8().data());
+		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szIp);
 #ifdef COMPILE_IPV6_SUPPORT
 	}
 #endif
@@ -203,10 +203,10 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
 		{
-			bValidIp = kvi_isValidStringIp_V6(m_pTarget->proxy()->m_szHostname.toUtf8().data());
+			bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->proxy()->m_szHostname);
 		} else {
 #endif
-			bValidIp = kvi_isValidStringIp(m_pTarget->proxy()->m_szHostname.toUtf8().data());
+			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szHostname);
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
@@ -273,7 +273,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
 
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.toUtf8().data(),szFirstIpAddress.toUtf8().data());
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp,szFirstIpAddress.toUtf8().data());
 
 		if(m_pProxyDns->hostnameCount() > 1)
 		{

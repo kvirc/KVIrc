@@ -198,12 +198,6 @@ namespace KviFileUtils
 		return true;
 	}
 
-	bool loadFile(const char* path,QString &szBuffer,bool bUtf8)
-	{
-		QString szPath=QString::fromUtf8(path);
-		return loadFile(szPath,szBuffer,bUtf8);
-	}
-
 	void adjustFilePath(QString &szPath)
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -225,25 +219,6 @@ namespace KviFileUtils
 		szPath=QDir::cleanPath(szPath);
 #endif
 
-	}
-
-	bool directoryExists(const QString &szPath)
-	{
-		QFileInfo f(szPath);
-		return (f.exists() && f.isDir());
-	}
-
-	bool directoryExists(const char* path)
-	{
-		QString szPath=QString::fromUtf8(path);
-		QFileInfo f(szPath);
-		return (f.exists() && f.isDir());
-	}
-
-	bool fileExists(const char* path)
-	{
-		QString szPath=QString::fromUtf8(path);
-		return fileExists(szPath);
 	}
 
 	bool removeFile(const QString &szPath)
@@ -410,6 +385,12 @@ namespace KviFileUtils
 		return buffer.count()!= 0;
 	}
 
+	bool directoryExists(const QString &szPath)
+	{
+		QFileInfo f(szPath);
+		return (f.exists() && f.isDir());
+	}
+
 	bool isReadable(const QString &szFname)
 	{
 		QFileInfo f(szFname);
@@ -427,63 +408,35 @@ namespace KviFileUtils
 		QFileInfo f(szPath);
 		return !f.isRelative();
 	}
-};
 
 static char hexchars[16] = { '0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8' , '9' , 'A' , 'B' , 'C' , 'D' , 'E' , 'F' };
 
 
-void kvi_encodeFileName(KviStr & path)
-{
-	QString szPath(path.ptr());
-	kvi_encodeFileName(szPath);
-	path=szPath;
-}
-
-void kvi_encodeFileName(QString & path)
-{
-	QString src(path);
-	path="";
-	for(int i=0;i<src.length();i++)
+	void encodeFileName(QString & path)
 	{
-		QChar cur=src[i];
-		if( ! (cur.isLetter() || cur.isDigit() || cur==' ' || cur=='_' || cur=='.' || cur=='#' || cur=='%') )
+		QString src(path);
+		path="";
+		for(int i=0;i<src.length();i++)
 		{
-			if(cur.row()!=0)
+			QChar cur=src[i];
+			if( ! (cur.isLetter() || cur.isDigit() || cur==' ' || cur=='_' || cur=='.' || cur=='#' || cur=='%') )
 			{
+				if(cur.row()!=0)
+				{
+					path+='%';
+					path+=hexchars[cur.row() >> 4];
+					path+=hexchars[cur.row() & 15];
+				}
 				path+='%';
-				path+=hexchars[cur.row() >> 4];
-				path+=hexchars[cur.row() & 15];
+				path+=hexchars[cur.cell() >> 4];
+				path+=hexchars[cur.cell() & 15];
+			} else if (cur=='%')
+			{
+				path+="%%";
+			} else {
+				path+=cur;
 			}
-			path+='%';
-			path+=hexchars[cur.cell() >> 4];
-			path+=hexchars[cur.cell() & 15];
-		} else if (cur=='%')
-		{
-			path+="%%";
-		} else {
-			path+=cur;
 		}
 	}
-}
 
-//================ kvi_isAbsolutePath ===============//
-
-bool kvi_isAbsolutePath(const char *path)
-{
-	if(*path == '/')return true;
-	if(isalpha(*path))
-	{
-		if((*(path + 1)) == ':')return true;
-	}
-	return false;
-}
-
-//=================== kvi_readLine =====================//
-
-bool kvi_readLine(QFile *f,KviStr &str)
-{
-	QTextStream stream(f);
-	QString szBuff=stream.readLine();
-	str=szBuff;
-	return szBuff.isNull() ? 1 : 0;
-}
+};

@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_ircconnectionasyncwhoisdata.h"
 #include "kvi_kvs_script.h"

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
 #include "kvi_kvs_coresimplecommands.h"
 
 #include "kvi_kvs_popupmanager.h"

@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
-
-
 #include "kvi_kvs_treenode_callbackcommand.h"
 #include "kvi_kvs_treenode_datalist.h"
 #include "kvi_kvs_script.h"

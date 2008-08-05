@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#define __KVIRC__
 
 #include "kvi_action.h"
 #include "kvi_customtoolbar.h"

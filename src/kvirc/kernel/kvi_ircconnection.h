@@ -29,6 +29,8 @@
 #include "kvi_qcstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
+#include "kvi_ircconnectionuserinfo.h"
+#include "kvi_ircconnectionserverinfo.h"
 
 #include <QObject>
 
@@ -77,21 +79,20 @@ public:
 public:
 	enum State { Idle, Connecting, Connected };
 private:
-	KviFrame                             * m_pFrame;                // shallow, never null
 	KviConsole                           * m_pConsole;              // shallow, never null
 	KviIrcContext                        * m_pContext;              // shallow, never null
-	
+
 	State                                  m_eState;
 	bool                                   m_bIdentdAttached;
 
 	KviIrcConnectionTarget               * m_pTarget;               // owned, never null
 
 	KviIrcLink                           * m_pLink;                 // owned, never null
-	
+
 	// The initial informations about the user we'll send out to the server
 	// Note that the ACTUAL user informations are in m_pUserInfo instead
 	KviUserIdentity                      * m_pUserIdentity;         // owned, never null
-	
+
 	// The ACTUAL user informations
 	KviIrcConnectionUserInfo             * m_pUserInfo;             // owned, never null
 	// The ACTUAL server informations
@@ -103,7 +104,7 @@ private:
 	KviPointerList<KviQuery>                 * m_pQueryList;            // owned, never null, elements shallow
 
 	KviIrcUserDataBase                   * m_pUserDataBase;         // owned, never null
-	
+
 	KviNotifyListManager                 * m_pNotifyListManager;    // owned, see restartNotifyList()
 	QTimer                               * m_pNotifyListTimer;      // delayed startup timer for the notify lists
 
@@ -112,65 +113,63 @@ private:
 	KviIrcConnectionAntiCtcpFloodData    * m_pAntiCtcpFloodData;    // owned, never null
 	KviIrcConnectionNetsplitDetectorData * m_pNetsplitDetectorData; // owned, never null
 	KviIrcConnectionAsyncWhoisData       * m_pAsyncWhoisData;       // owned, never null
-	
+
 	KviIrcConnectionStatistics           * m_pStatistics;           // owned, never null
 
 	KviDns                               * m_pLocalhostDns;         // FIXME: this should go to an aux structure
 
-	QTextCodec                           * m_pSrvCodec;             // connection codec: never null	
+	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
 public:
 	// returns a pointer to the owning console
 	// the pointer is NEVER null
-	KviConsole * console(){ return m_pConsole; };
+	inline KviConsole * console(){ return m_pConsole; };
 	// never null
-	KviFrame * frame(){ return m_pFrame; };
-	// never null
-	KviIrcContext * context(){ return m_pContext; };
+	inline KviIrcContext * context(){ return m_pContext; };
 	// forwarder from KviIrcConnectionTarget, never null
 	KVI_DEPRECATED KviServer * server();
 	// forwarder from KviIrcConnectionTarget, may be null
 	KVI_DEPRECATED KviProxy * proxy();
 	// never null!
-	KviIrcConnectionTarget * target(){ return m_pTarget; };
+	inline KviIrcConnectionTarget * target(){ return m_pTarget; };
 	// never null!
-	KviIrcLink * link(){ return m_pLink; };
+	inline KviIrcLink * link(){ return m_pLink; };
 	// this should not be used...
 	KviIrcSocket * socket() KVI_DEPRECATED;
 	// the current state
-	State state(){ return m_eState; };
+	inline State state(){ return m_eState; };
 	// forwarder from KviIrcConnectionTarget, always non-empty string
 	const QString & networkName();
 	// never null!
-	KviIrcUserDataBase * userDataBase(){ return m_pUserDataBase; };
+	inline KviIrcUserDataBase * userDataBase(){ return m_pUserDataBase; };
 	// never null. Use #include "kvi_ircconnectionuserinfo.h"
-	KviIrcConnectionUserInfo * userInfo(){ return m_pUserInfo; };
+	inline KviIrcConnectionUserInfo * userInfo(){ return m_pUserInfo; };
 	// never null. Use #include "kvi_ircconnectionserverinfo.h"
-	KviIrcConnectionServerInfo * serverInfo(){ return m_pServerInfo; };
+	inline KviIrcConnectionServerInfo * serverInfo(){ return m_pServerInfo; };
 	// never null. Use #include "kvi_ircconnectionstatedata.h"
-	KviIrcConnectionStateData * stateData(){ return m_pStateData; };
+	inline KviIrcConnectionStateData * stateData(){ return m_pStateData; };
 	// never null. Use #include "kvi_ircconnectionantictcpflooddata.h"
-	KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData(){ return m_pAntiCtcpFloodData; };
-	// never null. Use #include "kvi_ircconnectionnetsplitdetectordata.h" 
-	KviIrcConnectionNetsplitDetectorData * netsplitDetectorData(){ return m_pNetsplitDetectorData; };
+	inline KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData(){ return m_pAntiCtcpFloodData; };
+	// never null. Use #include "kvi_ircconnectionnetsplitdetectordata.h"
+	inline KviIrcConnectionNetsplitDetectorData * netsplitDetectorData(){ return m_pNetsplitDetectorData; };
 	// never null. Use #include "kvi_ircconnectionasyncwhoisdata.h"
-	KviIrcConnectionAsyncWhoisData * asyncWhoisData(){ return m_pAsyncWhoisData; };
+	inline KviIrcConnectionAsyncWhoisData * asyncWhoisData(){ return m_pAsyncWhoisData; };
 	// never null. Use #include "kvi_ircconnectionstatistics.h"
-	KviIrcConnectionStatistics * statistics(){ return m_pStatistics; };
+	inline KviIrcConnectionStatistics * statistics(){ return m_pStatistics; };
 	// may be null
-	KviNotifyListManager * notifyListManager(){ return m_pNotifyListManager; };
+	inline KviNotifyListManager * notifyListManager(){ return m_pNotifyListManager; };
 	// may be null (when not running)
-	KviLagMeter * lagMeter(){ return m_pLagMeter; };
+	inline KviLagMeter * lagMeter(){ return m_pLagMeter; };
 	// should be never null.. but if really everything goes wrong, it might be...
-	QTextCodec * textCodec(){ return m_pTextCodec; };
-	QTextCodec * srvCodec(){ return m_pSrvCodec; };
+	inline QTextCodec * textCodec(){ return m_pTextCodec; };
+	inline QTextCodec * srvCodec(){ return m_pSrvCodec; };
 public:
 	// helper (really common access to userInfo()->nickName())
-	const QString & currentNickName();
+	inline const QString & currentNickName();
 	// helper (really common access to userInfo()->userName())
-	const QString & currentUserName();
+	inline const QString & currentUserName();
 	// helper (really common access to serverInfo()->name())
-	const QString & currentServerName();
+	inline const QString & currentServerName();
 
 	// world interface: the following three functions use m_pLink->sendPacket()
 	bool sendData(const char *buffer,int buflen = -1);
@@ -180,7 +179,7 @@ public:
 	//
 	// ----> KviChannelManager ?
 	KviChannel * findChannel(const QString &name);
-	KviPointerList<KviChannel> * channelList(){ return m_pChannelList; };
+	inline KviPointerList<KviChannel> * channelList(){ return m_pChannelList; };
 	int getCommonChannels(const QString &nick,QString &szChansBuffer,bool bAddEscapeSequences = true);
 	KviChannel * createChannel(const QString &name);
 	void registerChannel(KviChannel *c);
@@ -200,7 +199,7 @@ public:
 	//
 	// ----> KviQueryManager ?
 	KviQuery * findQuery(const QString &nick);
-	KviPointerList<KviQuery> * queryList(){ return m_pQueryList; };
+	inline KviPointerList<KviQuery> * queryList(){ return m_pQueryList; };
 	KviQuery * createQuery(const QString &nick);
 	void registerQuery(KviQuery *q);
 	void unregisterQuery(KviQuery *q);
@@ -281,6 +280,20 @@ private:
 
 // TODO: KviIdentity
 
+inline const QString & KviIrcConnection::currentServerName()
+{
+	return serverInfo()->name();
+}
+
+inline const QString & KviIrcConnection::currentNickName()
+{
+	return userInfo()->nickName();
+}
+
+inline const QString & KviIrcConnection::currentUserName()
+{
+	return userInfo()->userName();
+}
 
 #endif //!_KVI_IRCCONNECTION_H_
 

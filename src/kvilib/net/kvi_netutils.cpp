@@ -189,6 +189,14 @@ bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
 
 #else //HAVE_INET_NTOA
 
+bool kvi_isValidStringIp(const char *szIp)
+{
+	struct in_addr address;
+	if(!szIp)return false;
+	if(!isdigit(*szIp))return false;
+	return kvi_stringIpToBinaryIp(szIp,&address);
+}
+
 bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)f
 {
 // FIXME: #warning "This is NOT thread safe!"
@@ -439,19 +447,6 @@ const char* inet_ntop(int AF, const void *CP, char *BUF, size_t LEN)
 }
 #endif
 
-bool kvi_stringIpToBinaryIp_V6(const char *szIp,struct in6_addr *address)
-{
-	if(!szIp)return false;
-	return (inet_pton(AF_INET6,szIp,(void *)address) == 1);
-}
-
-bool kvi_isValidStringIp_V6(const char *szIp)
-{
-	struct in6_addr address;
-	if(!szIp)return false;
-	return kvi_stringIpToBinaryIp_V6(szIp,&address);
-}
-
 bool kvi_binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer)
 {
 	char buf[46];
@@ -460,6 +455,7 @@ bool kvi_binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer)
 	szBuffer= buf;
 	return bRet;
 }
+
 #endif
 
 #include <errno.h>

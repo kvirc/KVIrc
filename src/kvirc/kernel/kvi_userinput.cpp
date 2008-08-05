@@ -22,7 +22,7 @@
 //
 //=============================================================================
 
-#define __KVIRC__
+
 
 #include "kvi_userinput.h"
 #include "kvi_kvs_variantlist.h"

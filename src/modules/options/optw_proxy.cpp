@@ -82,7 +82,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	KviTalVBox * vbox = new KviTalVBox(this);
 	addWidgetToLayout(vbox,1,1,1,1);
-	
+
 	QToolButton * tb = new QToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY))));
 	tb->setAutoRaise(true);
@@ -95,7 +95,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
 	mergeTip(tb,__tr2qs_ctx("Remove Proxy","options"));
-	
+
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
 
@@ -248,22 +248,22 @@ void KviProxyOptionsWidget::saveLastItem()
 		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = false;
 #endif
 		m_pLastEditedItem->m_pProxyData->m_szIp = "";
-		KviStr tmpAddr = m_pIpEditor->address();
+		QString tmpAddr = m_pIpEditor->address();
 
 		if(!m_pIpEditor->hasEmptyFields())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
 			if(m_pIPv6Check->isChecked())
 			{
-				if((!kvi_strEqualCI(tmpAddr.ptr(),"0:0:0:0:0:0:0:0")) &&
-					kvi_isValidStringIp_V6(tmpAddr.ptr()))
+				if((!KviQString::equalCI(tmpAddr,"0:0:0:0:0:0:0:0")) &&
+						KviNetUtils::isValidStringIp_V6(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
 			} else {
 #endif
-				if((!kvi_strEqualCI(tmpAddr.ptr(),"0.0.0.0")) &&
-					kvi_isValidStringIp(tmpAddr.ptr()))
+				if((!KviQString::equalCI(tmpAddr,"0.0.0.0")) &&
+						KviNetUtils::isValidStringIp(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
@@ -290,7 +290,7 @@ void KviProxyOptionsWidget::commit()
 	saveLastItem();
 	g_pProxyDataBase->clear();
 	KviProxyOptionsTreeWidgetItem * it;// = (KviProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItemCount();
-	
+
 	//while(it)
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{

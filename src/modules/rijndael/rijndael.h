@@ -81,7 +81,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_CRYPT_SUPPORT
+#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
 #define _MAX_KEY_COLUMNS (256/32)
 #define _MAX_ROUNDS      14
