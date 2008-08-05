@@ -617,14 +617,16 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("ToolBarAppletPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("TreeTaskBarPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("InputPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
-	UINT_OPTION("AutoFlushLogs",30,KviOption_sectFlagFrame ),
-	UINT_OPTION("MinTrayLowLevelMessage",1,KviOption_sectFlagFrame ),
-	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame ),
-	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection ),
-	UINT_OPTION("ScaleAvatarsOnLoadHeight",600,KviOption_sectFlagAvatar ),
-	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar ),
-	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagFrame ),
-	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagFrame )
+	UINT_OPTION("AutoFlushLogs",30,KviOption_sectFlagFrame),
+	UINT_OPTION("MinTrayLowLevelMessage",1,KviOption_sectFlagFrame),
+	UINT_OPTION("MinTrayHighLevelMessage",4,KviOption_sectFlagFrame),
+	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection),
+	UINT_OPTION("ScaleAvatarsOnLoadHeight",600,KviOption_sectFlagAvatar),
+	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar),
+	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagFrame),
+	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagFrame),
+	UINT_OPTION("IrcViewMarkerStyle",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	UINT_OPTION("IrcViewMarkerSize",1,KviOption_sectFlagIrcView | KviOption_groupTheme)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \
@@ -831,7 +833,6 @@ static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =
 	"Logging",       "AntiSpam",    "Avatar",           "Url",
 	"Recent",        "Geometry"
 };
-
 
 static void config_set_section(int flag,KviConfig * cfg)
 {

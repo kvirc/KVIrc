@@ -3447,8 +3447,31 @@ no_selection_paint:
 			{
 				// need to mark it!
 				//pa.setRasterOp(NotROP);
-				//pa.setPen(Qt::black);
-				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
+
+				QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),KVI_OPTION_UINT(KviOption_uintIrcViewMarkerSize));
+
+				switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
+				{
+					case 1:
+						pen.setStyle(Qt::DashLine);
+						break;
+					case 2:
+						pen.setStyle(Qt::SolidLine);
+						break;
+					case 3:
+						pen.setStyle(Qt::DashDotLine);
+						break;
+					case 4:
+						pen.setStyle(Qt::DashDotDotLine);
+						break;
+					default:
+						pen.setStyle(Qt::DotLine);
+				}
+
+				pa.setPen(pen);
+
+				//pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
+
 				int x = widgetWidth - 8;
 				int y = KVI_IRCVIEW_VERTICAL_BORDER;
 				pa.drawLine(x,y,x,y);
@@ -5171,14 +5194,16 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 
 	m_pToolTip->doTip(rct,tip);
 }
-void KviIrcView::leaveEvent ( QEvent * )
+
+void KviIrcView::leaveEvent(QEvent * )
 {
 	if(m_pLastLinkUnderMouse)
-    {
+	{
 		 m_pLastLinkUnderMouse=0;
 		 update();
 	}
 }
+
 void KviIrcView::timerEvent(QTimerEvent *e)
 {
 	m_mouseCurrentPos = mapFromGlobal(QCursor::pos());

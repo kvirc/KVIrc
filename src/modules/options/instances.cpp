@@ -297,6 +297,11 @@ KviOptionsWidget * classKviIrcViewFeaturesOptionsWidget_createInstanceProc(QWidg
 	return new KviIrcViewFeaturesOptionsWidget(parent);
 }
 
+KviOptionsWidget * classKviIrcViewMarkerOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviIrcViewMarkerOptionsWidget(parent);
+}
+
 KviOptionsWidget * classKviLagOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviLagOptionsWidget(parent);
@@ -569,6 +574,8 @@ static const char * g_szName_KviIrcViewLookOptionsWidget = KVI_OPTIONS_WIDGET_NA
 static const char * g_szClassName_KviIrcViewLookOptionsWidget = "KviIrcViewLookOptionsWidget";
 static const char * g_szName_KviIrcViewFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewFeaturesOptionsWidget;
 static const char * g_szClassName_KviIrcViewFeaturesOptionsWidget = "KviIrcViewFeaturesOptionsWidget";
+static const char * g_szName_KviIrcViewMarkerOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIrcViewMarkerOptionsWidget;
+static const char * g_szClassName_KviIrcViewMarkerOptionsWidget = "KviIrcViewMarkerOptionsWidget";
 static const char * g_szName_KviLagOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviLagOptionsWidget;
 static const char * g_szClassName_KviLagOptionsWidget = "KviLagOptionsWidget";
 static const char * g_szName_KviLoggingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviLoggingOptionsWidget;
@@ -2826,6 +2833,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviIrcViewMarkerOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviIrcViewMarkerOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIrcViewMarkerOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewMarkerOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewMarkerOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewMarkerOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIrcViewMarkerOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIrcViewMarkerOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIrcViewMarkerOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewMarkerOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIrcViewMarkerOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewMarkerOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIrcViewMarkerOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviIrcViewMarkerOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIrcViewMarkerOptionsWidget,"options");
+		e0->pChildList->append(e1);
+		e1->pChildList = 0;
+
 	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviMessageOptionsWidget_createInstanceProc;
 	e0->pWidget = 0;
@@ -3503,11 +3544,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 	if(e->pWidget->parent() != par)
 	{
 		QWidget * oldPar = (QWidget *)e->pWidget->parent();
-		//e->pWidget->reparent(par,QPoint(0,0));
-			e->pWidget->setParent(par);
-				e->pWidget->setGeometry(0,0,e->pWidget->width(),e->pWidget->height());
-	//		
-
+		e->pWidget->reparent(par,QPoint(0,0));
 		delete oldPar;
 	}
 	if(e->bIsContainer)

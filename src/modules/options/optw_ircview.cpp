@@ -38,9 +38,11 @@ KviIrcViewThemeOptionsWidget::~KviIrcViewThemeOptionsWidget()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"ircviewlook_options_widget")
+: KviOptionsWidget(parent)
 {
 	createLayout();
+
+	setObjectName("ircviewlook_options_widget");
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcView);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorIrcViewBackground);
@@ -54,8 +56,6 @@ KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 	addLabel(0,4,0,4,__tr2qs_ctx("Vertical align:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,4,1,4);
-		
-	addColorSelector(0,5,1,5,__tr2qs_ctx("Mark Line:","options"),KviOption_colorIrcViewMarkLine);
 	
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
@@ -153,16 +153,89 @@ KviIrcViewFeaturesOptionsWidget::KviIrcViewFeaturesOptionsWidget(QWidget * paren
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
 	s = addUIntSelector(0,11,0,11,__tr2qs_ctx("Link tooltip hide delay:","options"),KviOption_uintIrcViewToolTipHideTimeoutInMsec,256,10000,12000);
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
-	addBoolSelector(0,12,0,12,__tr2qs_ctx("Track last read text line","options"),KviOption_boolTrackLastReadTextViewLine);
-	addRowSpacer(0,13,0,13);
-
+	
+	addRowSpacer(0,12,0,12);
 }
 
 KviIrcViewFeaturesOptionsWidget::~KviIrcViewFeaturesOptionsWidget()
 {
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+KviIrcViewMarkerOptionsWidget::KviIrcViewMarkerOptionsWidget(QWidget * parent)
+: KviOptionsWidget(parent)
+{
+	createLayout();
+
+	setObjectName("ircviewmarker_options_widget");
+
+	addBoolSelector(0,0,1,0,__tr2qs_ctx("Track last read text line","options"),KviOption_boolTrackLastReadTextViewLine);
+	addColorSelector(0,1,1,1,__tr2qs_ctx("Marker color:","options"),KviOption_colorIrcViewMarkLine);
+
+	KviUIntSelector * s = addUIntSelector(0,2,1,2,__tr2qs_ctx("Marker size:","options"),KviOption_uintIrcViewMarkerSize,1,5,1);
+	s->setSuffix(__tr2qs_ctx(" pixels","options"));
+
+	addLabel(0,3,0,3,__tr2qs_ctx("Marker style:","options"));
+	m_pMarkerStyle=new QComboBox(this);
+	addWidgetToLayout(m_pMarkerStyle,1,3,1,3);
+
+	addRowSpacer(0,4,0,4);
+
+	m_pMarkerStyle->addItem(__tr2qs_ctx("DotLine","options"));
+	m_pMarkerStyle->addItem(__tr2qs_ctx("DashLine","options"));
+	m_pMarkerStyle->addItem(__tr2qs_ctx("SolidLine","options"));
+	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotLine","options"));
+	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotDotLine","options"));
+
+	//switch( KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle) & Qt::PenStyle)
+	//switch(Qt::PenStyle)
+	switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
+	{
+		case Qt::DashLine:
+			m_pMarkerStyle->setCurrentIndex(1);
+			break;
+		case Qt::SolidLine:
+			m_pMarkerStyle->setCurrentIndex(2);
+			break;
+		case Qt::DashDotLine:
+			m_pMarkerStyle->setCurrentIndex(3);
+			break;
+		case Qt::DashDotDotLine:
+			m_pMarkerStyle->setCurrentIndex(4);
+			break;
+		default:
+			m_pMarkerStyle->setCurrentIndex(0);
+	}
+
+}
+
+KviIrcViewMarkerOptionsWidget::~KviIrcViewMarkerOptionsWidget()
+{
+}
+
+void KviIrcViewMarkerOptionsWidget::commit()
+{
+	int iFlags=0;
+	switch(m_pMarkerStyle->currentIndex())
+	{
+		case 1:
+			iFlags|=Qt::DashLine;
+			break;
+		case 2:
+			iFlags|=Qt::SolidLine;
+			break;
+		case 3:
+			iFlags|=Qt::DashDotLine;
+			break;
+		case 4:
+			iFlags|=Qt::DashDotDotLine;
+			break;
+	}
+	
+	KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle)=iFlags;
+	KviOptionsWidget::commit();
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_ircview.moc"

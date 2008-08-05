@@ -56,8 +56,8 @@ class KviIrcViewLookOptionsWidget : public KviOptionsWidget
 {
 	Q_OBJECT
 private:
-	QComboBox* m_pHorizontalAlign;
-	QComboBox* m_pVerticalAlign;
+	QComboBox * m_pHorizontalAlign;
+	QComboBox * m_pVerticalAlign;
 public:
 	KviIrcViewLookOptionsWidget(QWidget * parent);
 	~KviIrcViewLookOptionsWidget();
@@ -79,6 +79,22 @@ public:
 	~KviIrcViewFeaturesOptionsWidget();
 };
 
+#define KVI_OPTIONS_WIDGET_ICON_KviIrcViewMarkerOptionsWidget KVI_SMALLICON_IRCVIEW
+#define KVI_OPTIONS_WIDGET_NAME_KviIrcViewMarkerOptionsWidget __tr2qs_no_lookup("Marker")
+#define KVI_OPTIONS_WIDGET_GROUP_KviIrcViewMarkerOptionsWidget "theme"
+#define KVI_OPTIONS_WIDGET_PARENT_KviIrcViewMarkerOptionsWidget KviIrcViewThemeOptionsWidget
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcViewMarkerOptionsWidget 10
+
+class KviIrcViewMarkerOptionsWidget : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	KviIrcViewMarkerOptionsWidget(QWidget * pParent);
+	~KviIrcViewMarkerOptionsWidget();
+	virtual void commit();
+private:
+	QComboBox * m_pMarkerStyle;
+};
 
 
 #endif //!_OPTW_IRCVIEW_H_
