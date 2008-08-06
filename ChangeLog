@@ -2,6 +2,8 @@ buh :) - 3 August 2008
    [KVIrc Development Team]
    - Qt4 porting (wip)
    - Fixed tons bugs
+   - Cleaned up source code: many unused or deprecated functions have been removed,
+     code optimizazions and many comments have been added
    - New build system: removed autotools in favour of CMake (thanks to all people
      who aid reaching this point :)
 
@@ -18,11 +20,13 @@ buh :) - 3 August 2008
    - Finally updated this file :)
    - Improved About module
    - New StatusBar applet: Update Indicator
+   - Improved StatusBar clock applet
    - New KVS command: added 'continue'
    - New KVS function: added $objects.name
    - New KVS module: with serverdb you can manipulate the server list DB
    - New KVS module: with proxydb you can manipulate the proxy list DB
-   - Improved StatusBar clock applet
+   - Added style customization to the last read marker line, its own new icon will
+     appear above to improve readablity :)
 
    [Voker57]
    - New audio support: Phonon (wip)
