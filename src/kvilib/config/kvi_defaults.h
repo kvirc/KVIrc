@@ -43,9 +43,9 @@
 #define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "download"
 
 #define KVI_DEFAULT_NICKNAME1 "newbie"
-#define KVI_DEFAULT_NICKNAME2 "[newbie]"
-#define KVI_DEFAULT_NICKNAME3 "_newbie_"
-#define KVI_DEFAULT_NICKNAME4 "newbie4"
+#define KVI_DEFAULT_NICKNAME2 "%nick%|2"
+#define KVI_DEFAULT_NICKNAME3 "%nick%|3"
+#define KVI_DEFAULT_NICKNAME4 "%nick%|4"
 #define KVI_DEFAULT_USERNAME "kvirc"
 #define KVI_DEFAULT_REALNAME "KVIrc " KVI_VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net/"
 
