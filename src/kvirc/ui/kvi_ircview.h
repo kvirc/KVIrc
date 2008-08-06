@@ -221,6 +221,8 @@ private:
 	void calculateSelectionBounds();
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
+	void doMarkerToolTip(const QRect &rct);
+	bool checkMarkerArea(const QRect & area, const QPoint & mousePos);
 protected:
 	virtual void paintEvent(QPaintEvent *);
 	virtual void resizeEvent(QResizeEvent *);

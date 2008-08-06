@@ -342,7 +342,8 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"screenshot", // 291
 	"update", // 292
 	"notupdate", // 293
-	"failupdate" // 294
+	"failupdate", // 294
+	"unreadtext" // 295
 };
 
 KviIconWidget::KviIconWidget()

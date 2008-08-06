@@ -188,8 +188,6 @@ KviIrcViewMarkerOptionsWidget::KviIrcViewMarkerOptionsWidget(QWidget * parent)
 	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotLine","options"));
 	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotDotLine","options"));
 
-	//switch( KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle) & Qt::PenStyle)
-	//switch(Qt::PenStyle)
 	switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
 	{
 		case Qt::DashLine:

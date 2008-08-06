@@ -1,10 +1,10 @@
-//=============================================================================
+//===========================================================================
 //
 //   File : kvi_ircview.cpp
 //   Creation date : Tue Jul 6 1999 14:45:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//=============================================================================
+//===========================================================================
 
 
 // Damn complex class ...but it works :)
@@ -3483,7 +3483,7 @@ no_selection_paint:
 				* y++; pa.drawLine(x-3,y,x+3,y);
 				* y++; pa.drawLine(x-4,y,x+4,y);
 				*/
-				QPixmap * pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE);
+				QPixmap * pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_UNREADTEXT);
 				pa.drawPixmap(x,y,16,16,*pIcon);
 				//pa.setRasterOp(CopyROP);
 			}
@@ -5022,7 +5022,6 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "/url_icon");
-			//QMimeSourceFactory::defaultFactory()->setPixmap("url_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)));
 			tip += __tr2qs("Double-click to open this link");
 			tip += "</td></tr></table>";
 		}
@@ -5040,7 +5039,6 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)->toImage().bits(), "/host_icon");
-			//QMimeSourceFactory::defaultFactory()->setPixmap("host_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)));
 
 			if(linkText.indexOf('*') != -1)
 			{
@@ -5059,7 +5057,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			tip = "<table width=\"100%\">" \
 				"<tr><td valign=\"center\"><img src=\":/server_icon\"> <u><font color=\"blue\"><nowrap>";
 			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)->toImage().bits(), "/server_icon");
-			//QMimeSourceFactory::defaultFactory()->setPixmap("server_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)));
+
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -5140,7 +5138,6 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				QString buf;
 				tip = "<img src=\":/chan_icon\"> ";
 				QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)->toImage().bits(), "/chan_icon");
-				//QMimeSourceFactory::defaultFactory()->setPixmap("chan_icon",*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 
 				if(szCmd.length()>0) szChan=szCmd;
 				KviChannel * c = console()->connection()->findChannel(szChan);
@@ -5201,6 +5198,26 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 	m_pToolTip->doTip(rct,tip);
 }
 
+void KviIrcView::doMarkerToolTip(const QRect &rct)
+{
+	QString tip;
+	tip = "<table width=\"100%\">" \
+		"<tr><td valign=\"center\"><img src=\":/marker_icon\"> <u><font color=\"blue\"><nowrap>";
+	tip += __tr2qs("Scroll up to read from the last read line");
+	tip += "</nowrap></font></u></td></tr><tr><td>";
+	QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_UNREADTEXT)->toImage().bits(), "/marker_icon");
+	tip += "</td></tr></table>";
+
+	if(tip.isEmpty())return;
+
+	m_pToolTip->doTip(rct,tip);
+}
+
+bool KviIrcView::checkMarkerArea(const QRect & area, const QPoint & mousePos)
+{
+	return (area.contains(mousePos)) ? true : false;
+}
+
 void KviIrcView::leaveEvent(QEvent * )
 {
 	if(m_pLastLinkUnderMouse)
@@ -5254,14 +5271,25 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 {
 	QString linkCmd;
 	QString linkText;
-
 	QRect rctLink;
+	QRect markerArea;
 
+	// Check if the mouse is over the marker icon
+	// 16(width) + 5(border) = 21
+	int widgetWidth = width()-m_pScrollBar->width();
+	int x = widgetWidth - 21;
+	int y = KVI_IRCVIEW_VERTICAL_BORDER;
+
+	markerArea = QRect(QPoint(x,y),QSize(16,16));
+	if(checkMarkerArea(markerArea,pnt)) doMarkerToolTip(markerArea);
+
+	// Check if the mouse is over a link
 	KviIrcViewWrappedBlock * linkUnderMouse = getLinkUnderMouse(pnt.x(),pnt.y(),&rctLink,&linkCmd,&linkText);
 
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
 	else m_pLastLinkUnderMouse = 0; //
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_ircview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
