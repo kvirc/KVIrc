@@ -3406,7 +3406,29 @@ no_selection_paint:
 				// visible!
 				bLineMarkPainted = true;
 				//pa.setRasterOp(NotROP);
-				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
+
+				// Pen setup for marker line
+				QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),KVI_OPTION_UINT(KviOption_uintIrcViewMarkerSize));
+
+				switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
+				{
+					case 1:
+						pen.setStyle(Qt::DashLine);
+						break;
+					case 2:
+						pen.setStyle(Qt::SolidLine);
+						break;
+					case 3:
+						pen.setStyle(Qt::DashDotLine);
+						break;
+					case 4:
+						pen.setStyle(Qt::DashDotDotLine);
+						break;
+					default:
+						pen.setStyle(Qt::DotLine);
+				}
+
+				pa.setPen(pen);
 				pa.drawLine(0,curBottomCoord,widgetWidth,curBottomCoord);
 				//pa.setRasterOp(CopyROP);
 			} // else was partially visible only
@@ -3447,38 +3469,22 @@ no_selection_paint:
 			{
 				// need to mark it!
 				//pa.setRasterOp(NotROP);
+				pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
 
-				QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),KVI_OPTION_UINT(KviOption_uintIrcViewMarkerSize));
-
-				switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
-				{
-					case 1:
-						pen.setStyle(Qt::DashLine);
-						break;
-					case 2:
-						pen.setStyle(Qt::SolidLine);
-						break;
-					case 3:
-						pen.setStyle(Qt::DashDotLine);
-						break;
-					case 4:
-						pen.setStyle(Qt::DashDotDotLine);
-						break;
-					default:
-						pen.setStyle(Qt::DotLine);
-				}
-
-				pa.setPen(pen);
-
-				//pa.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorIrcViewMarkLine),1,Qt::DotLine));
-
-				int x = widgetWidth - 8;
+				// Marker icon
+				// 16(width) + 5(border) = 21
+				int x = widgetWidth - 21;
 				int y = KVI_IRCVIEW_VERTICAL_BORDER;
-				pa.drawLine(x,y,x,y);
-				y++; pa.drawLine(x-1,y,x+1,y);
-				y++; pa.drawLine(x-2,y,x+2,y);
-				y++; pa.drawLine(x-3,y,x+3,y);
-				y++; pa.drawLine(x-4,y,x+4,y);
+				/*
+				* Old icon... what a lame code :D
+				* pa.drawLine(x,y,x,y);
+				* y++; pa.drawLine(x-1,y,x+1,y);
+				* y++; pa.drawLine(x-2,y,x+2,y);
+				* y++; pa.drawLine(x-3,y,x+3,y);
+				* y++; pa.drawLine(x-4,y,x+4,y);
+				*/
+				QPixmap * pIcon = g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE);
+				pa.drawPixmap(x,y,16,16,*pIcon);
 				//pa.setRasterOp(CopyROP);
 			}
 		}
