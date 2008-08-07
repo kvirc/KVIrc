@@ -158,7 +158,7 @@ bool KviDccVoiceThread::checkSoundcard()
 
 	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
 	{
-		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard , use the DCC VOICE option to force half-duplex algorithm","dcc"));
+		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard , use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
 		if(bOpened)closeSoundcard();
 		return false;
 	}
@@ -166,7 +166,7 @@ bool KviDccVoiceThread::checkSoundcard()
 	if(!(caps & DSP_CAP_DUPLEX))
 	{
 		m_pOpt->bForceHalfDuplex = true; // the device is half duplex...use it in that way
-		postMessageEvent(__tr2qs_ctx("Half duplex soundcard detected, you will not be able to talk and listen at the same time","dcc"));
+		postMessageEvent(__tr2qs_ctx("Half duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
 	}
 
 	if(bOpened)closeSoundcard();
@@ -207,7 +207,7 @@ bool KviDccVoiceThread::openSoundcard(int mode)
 	if(ioctl(m_soundFd,SNDCTL_DSP_SPEED,&speed)<0)goto exit_false;
 	if(speed != m_pOpt->iSampleRate)
 	{
-		KviStr tmp(KviStr::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc"),
+		KviStr tmp(KviStr::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
 						m_pOpt->iSampleRate,speed);
 		postMessageEvent(tmp.ptr());
 	}
@@ -265,7 +265,7 @@ bool KviDccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
 					if(!openSoundcard(openMode))return false;
 					if(!checkSoundcard())
 					{
-						postMessageEvent(__tr2qs_ctx("Ops...failed to test the soundcard capabilities...expect problems...","dcc"));
+						postMessageEvent(__tr2qs_ctx("Ops...failed to test the soundcard capabilities...expect problems...","dcc").toUtf8().data());
 					}
 				} // else the test has been done and it is a full duplex card that is just busy
 			}

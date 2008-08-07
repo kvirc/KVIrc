@@ -307,7 +307,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 #endif
 	}
 
-	KviSockaddr sa(prx ? m_pProxy->ip() : m_pIrcServer->ip(),prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
+	KviSockaddr sa(prx ? m_pProxy->ip().toUtf8().data() : m_pIrcServer->ip().toUtf8().data(), prx ? m_pProxy->port() : m_pIrcServer->port(),bTargetIPv6);
 
 	if(!sa.socketAddress())return KviError_invalidIpAddress;
 

@@ -273,7 +273,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDns *)
 				__tr2qs("Proxy hostname resolved to %Q"),&szFirstIpAddress);
 
 		m_pTarget->proxy()->m_szIp = m_pProxyDns->firstIpAddress();
-		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp,szFirstIpAddress.toUtf8().data());
+		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->m_szIp.toUtf8().data(),szFirstIpAddress.toUtf8().data());
 
 		if(m_pProxyDns->hostnameCount() > 1)
 		{

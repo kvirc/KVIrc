@@ -196,7 +196,7 @@ void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTr
 		for(int i=0;i<m_pProtocolBox->count();i++)
 		{
 			KviStr txt = m_pProtocolBox->itemText(i);
-			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName(),txt.ptr()))
+			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName().toUtf8().data(),txt.ptr()))
 			{
 				m_pProtocolBox->setCurrentIndex(i);
 				break;
