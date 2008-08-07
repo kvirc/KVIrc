@@ -383,10 +383,17 @@ void KviLogViewMDIWindow::deleteCurrent()
 
 KviLogFile::KviLogFile(const QString& name)
 {
+	QString szTmpName=name;
 	m_szFilename=name;
+
 	QFileInfo fi(m_szFilename);
 	m_bCompressed=(fi.extension(false)=="gz");
-	QString typeToken = m_szFilename.section('_',0,0);
+	if(m_bCompressed)
+	{
+		//removes trailing dot and extension
+		szTmpName.chop(3);
+	}
+	QString typeToken = szTmpName.section('_',0,0);
     // Ignore non-logs files, this includes '.' and '..'
 	if( KviQString::equalCI(typeToken,"channel") )
 		m_type = Channel;
@@ -399,14 +406,14 @@ KviLogFile::KviLogFile(const QString& name)
 	else
 		m_type = Other;
 
-	KviStr undecoded = m_szFilename.section('.',0,0);
+	KviStr undecoded = szTmpName.section('.',0,0);
 	undecoded.cutToFirst('_');
 	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
-	undecoded = m_szFilename.section('.',1).section('_',0,0);
+	undecoded = szTmpName.section('.',1).section('_',0,0);
 	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
 	
-	QString szDate = m_szFilename.section('.',-4,-1).section('_',1,1);
+	QString szDate = szTmpName.section('.',-4,-1).section('_',1,1);
 	int iYear = szDate.section('.',0,0).toInt();
 	int iMonth = szDate.section('.',1,1).toInt();
 	int iDay = szDate.section('.',2,2).toInt();
