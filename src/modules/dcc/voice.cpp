@@ -671,8 +671,15 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 
 	vbox2->setSpacing(1);
 
-//#warning "The volume slider should be enabled only when receiving data"
-	m_pVolumeSlider = new QSlider(-100, 0, 10, 0, Qt::Vertical, m_pHBox, "dcc_voice_volume_slider");
+	//#warning "The volume slider should be enabled only when receiving data"
+	//m_pVolumeSlider = new QSlider(-100, 0, 10, 0, Qt::Vertical, m_pHBox, "dcc_voice_volume_slider");
+	m_pVolumeSlider = new QSlider(Qt::Vertical,m_pHBox);
+	m_pVolumeSlider->setObjectName("dcc_voice_volume_slider");
+	m_pVolumeSlider->setMinimum(-100);
+	m_pVolumeSlider->setMaximum(0);
+	m_pVolumeSlider->setPageStep(10);
+	m_pVolumeSlider->setValue(0);
+
 	m_pVolumeSlider->setValue(getMixerVolume());
 	/* Update the tooltip */
 	setMixerVolume(m_pVolumeSlider->value());
