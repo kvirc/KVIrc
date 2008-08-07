@@ -203,29 +203,29 @@ void KviDccDescriptor::copyFrom(const KviDccDescriptor &src)
 
 bool KviDccDescriptor::isFileUpload()
 {
-	if(szType.upper()=="SEND")return true;
-	if(szType.upper()=="TSEND")return true;
+	if(szType.toUpper()=="SEND")return true;
+	if(szType.toUpper()=="TSEND")return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.upper()=="SSEND")return true;
+	if(szType.toUpper()=="SSEND")return true;
 #endif
 	return false;
 }
 
 bool KviDccDescriptor::isFileDownload()
 {
-	if(szType.upper()=="RECV")return true;
-	if(szType.upper()=="TRECV")return true;
+	if(szType.toUpper()=="RECV")return true;
+	if(szType.toUpper()=="TRECV")return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.upper()=="SRECV")return true;
+	if(szType.toUpper()=="SRECV")return true;
 #endif
 	return false;
 }
 
 bool KviDccDescriptor::isDccChat()
 {
-	if(szType.upper()=="CHAT")return true;
+	if(szType.toUpper()=="CHAT")return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.upper()=="SCHAT")return true;
+	if(szType.toUpper()=="SCHAT")return true;
 #endif
 	return false;
 }

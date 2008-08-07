@@ -57,12 +57,17 @@ KviDccAcceptBox::KviDccAcceptBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 : QWidget(0) , KviDccBox(br,dcc)
 {
 	setObjectName("dcc_accept_box");
-	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
+	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
+	QVBoxLayout * vb = new QVBoxLayout(this);
+	vb->setMargin(4);
+	vb->setSpacing(4);
 	QLabel * l = new QLabel(text,this);
 	l->setWordWrap(true);
 	vb->addWidget(l);
 
-	QHBoxLayout *hb = new QHBoxLayout(4);
+	//QHBoxLayout *hb = new QHBoxLayout(4);
+	QHBoxLayout *hb = new QHBoxLayout();
+	hb->setSpacing(4);
 	vb->addLayout(hb,Qt::AlignCenter);
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Accept","dcc"),this);
 	btn->setDefault(true);
@@ -118,12 +123,17 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 : QWidget(0) , KviDccBox(br,dcc)
 {
 	setObjectName("dcc_rename_box");
-	QVBoxLayout * vb = new QVBoxLayout(this,4,4);
+	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
+	QVBoxLayout * vb = new QVBoxLayout(this);
+	vb->setMargin(4);
+	vb->setSpacing(4);
 	QLabel * l = new QLabel(text,this);
 	l->setWordWrap(true);
 	vb->addWidget(l);
 
-	QHBoxLayout *hb = new QHBoxLayout(4);
+	//QHBoxLayout *hb = new QHBoxLayout(4);
+	QHBoxLayout *hb = new QHBoxLayout();
+	hb->setSpacing(4);
 	vb->addLayout(hb,Qt::AlignCenter);	
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename","dcc"),this);

@@ -51,8 +51,9 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 //#warning "The broker might lookup the remote host name"
 
 KviDccBroker::KviDccBroker()
-: QObject(0,"dcc_broker")
+: QObject(0)
 {
+	setObjectName("dcc_broker");
 	KviDccFileTransfer::init();
 
 	m_pBoxList = new KviPointerList<KviDccBox>;
@@ -214,7 +215,7 @@ void KviDccBroker::rsendExecute(KviDccDescriptor * dcc)
 		// retag it with something more reasonable
 		KviDccZeroPortTag * t = addZeroPortTag();
 		t->m_uFileSize = fi.size();
-		dcc->setZeroPortRequestTag(t->m_szTag.latin1()); // latin1() should be ok here
+		dcc->setZeroPortRequestTag(t->m_szTag.toLatin1()); // latin1() should be ok here
 		szTag = t->m_szTag;
 
 		// DCC [ST]SEND <filename> <fakeipaddress> <zero-port> <filesize> <sessionid>
