@@ -200,15 +200,15 @@ bool KviKvsObject_urlabel::eventFilter(QObject * o, QEvent * e)
 			break;
 		case QEvent::Leave:
 			// this doesn't work...
-			if(((QMouseEvent *)e)->state() & QT_LEFT_BUTTON)
-				pal.setColor(QColorGroup::Foreground, \
+			if(((QMouseEvent *)e)->button() & QT_LEFT_BUTTON)
+				pal.setColor(QPalette::Foreground, \
 					m_activeClr);
 			else
-				pal.setColor(QColorGroup::Foreground, \
+				pal.setColor(QPalette::Foreground, \
 					m_normalClr);
 			break;
 		case QEvent::MouseButtonRelease:
-			pal.setColor(QColorGroup::Foreground, m_enterClr);
+			pal.setColor(QPalette::Foreground, m_enterClr);
 			// perform actions here
 			if(!m_lastClickWasDbl && !m_useSingleClick)
 				break;
@@ -227,13 +227,13 @@ bool KviKvsObject_urlabel::eventFilter(QObject * o, QEvent * e)
 			if(!((QMouseEvent * )e)->button() & \
 			  QT_LEFT_BUTTON || !m_useSingleClick)
 				break;
-			pal.setColor(QColorGroup::Foreground, m_activeClr);
+			pal.setColor(QPalette::Foreground, m_activeClr);
 			break;
 		case QEvent::MouseButtonDblClick:
 			m_lastClickWasDbl = true;
 			if(m_useSingleClick)
 				break;
-			pal.setColor(QColorGroup::Foreground, m_activeClr);
+			pal.setColor(QPalette::Foreground, m_activeClr);
 			break;
 		default: // make gcc happy
 		break;
@@ -301,9 +301,9 @@ bool KviKvsObject_urlabel::functionsetCursorChange(KviKvsObjectFunctionCall *c)
 	if(!widget())
 		return true;
 	if(m_changeCursor = bFlag)
-		widget()->setCursor(Qt::pointingHandCursor);
+		widget()->setCursor(Qt::PointingHandCursor);
 	else
-		widget()->setCursor(Qt::arrowCursor);
+		widget()->setCursor(Qt::ArrowCursor);
 	return true;
 }
 bool KviKvsObject_urlabel::functionsetUseSingleClick(KviKvsObjectFunctionCall *c)

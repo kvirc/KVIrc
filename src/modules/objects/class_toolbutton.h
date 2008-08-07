@@ -51,8 +51,8 @@ protected:
 	bool functionsetOn(KviKvsObjectFunctionCall *c);
 	bool functionsetToggleButton(KviKvsObjectFunctionCall *c);
 	bool functiontoggle(KviKvsObjectFunctionCall *c);
-	bool functionsetPopupDelay(KviKvsObjectFunctionCall *c);
-	bool functionpopupDelay(KviKvsObjectFunctionCall *c);
+//	bool functionsetPopupDelay(KviKvsObjectFunctionCall *c);
+//	bool functionpopupDelay(KviKvsObjectFunctionCall *c);
 	bool functionsetTextPosition(KviKvsObjectFunctionCall *c);
 	bool functiontextPosition(KviKvsObjectFunctionCall *c);
 

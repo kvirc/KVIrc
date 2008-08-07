@@ -199,18 +199,17 @@ QWidget *KviKvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, c
 	return 0;
 }
 
-QWidget *KviKvsObject_wrapper::findWidgetToWrap(const char *szClass, const char *szName, QWidget *childOf)
+QWidget *KviKvsObject_wrapper::findWidgetToWrap(const QString szClass, const QString szName, QWidget *childOf)
 {
-
-	QObjectList list = childOf->queryList(szClass ? szClass : 0, szName ? szName : 0, false, true);
+	QList<QObject *> list=childOf->children();
 	if( !list.count() ) return 0;
 	for(int idx=0;idx<list.count();idx++)
 	{
-		if( list.at(idx)->isWidgetType() ) {
+		if( list.at(idx)->isWidgetType() ) 
+		{
 			QWidget *w = (QWidget *)list.at(idx);
-			return w;
+			if (KviQString::equalCI(w->metaObject()->className(),szClass) &&KviQString::equalCI(w->objectName(),szName))return w;
 		}
-		
 	}
 	return 0;
 }

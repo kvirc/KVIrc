@@ -8,8 +8,6 @@ PLEASE KEEP THIS FILE UPDATED!
 
 src/kvilib
 src/kvilib/tal
-	kvi_tal_iconview.cpp
-	kvi_tal_iconview.h
 	kvi_tal_listbox.cpp
 	kvi_tal_listbox.h
 	kvi_tal_popupmenu.cpp
@@ -18,13 +16,10 @@ src/kvilib/tal
 	kvi_tal_listview.h
 
 src/kvirc/kernel
-	app.cpp - q3mimefactory
 	kvi_iconmanager.cpp
 	kvi_ircconnectiontargetresolver (QString related stuff)
 	kvi_ircsocket.cpp (QString related stuff)
 	
-src/kvirc/kvs
-	kvi_kvs_coresimplecommands_gl.cpp - q3mimefactory
 src/kvirc/ui:
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
@@ -34,18 +29,9 @@ src/kvirc/ui:
 	kvi_topicw.cpp
 
 src/modules
-	dcc
-	editor - q3support
 	iograph - all excluded by #if
 	objects - qt3support:
-		listbox
-		listview
-		listviewitem
-		menubar
 		multilineedit
-		toolbutton
-		urllabel
-		wrapper
 	options
 		optw_connection: some checkboxes not working
 		optw_dcc: some checkboxes not working

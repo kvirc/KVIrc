@@ -37,9 +37,7 @@
 
 
 //#include <qmime.h>
-//#include <q3mimefactory.h>
 
-//#define KviTalMimeSourceFactory Q3MimeSourceFactory
 
 namespace KviThemeFunctions
 {

@@ -44,7 +44,7 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 	QWidget * findTopLevelWidgetToWrap(const QString szClass, const QString szName);
-	QWidget * findWidgetToWrap(const char *szClass, const char *szName, QWidget *childOf);
+	QWidget * findWidgetToWrap(const QString szClass, const QString szName, QWidget *childOf);
 
 };
 

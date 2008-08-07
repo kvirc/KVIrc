@@ -27,28 +27,50 @@
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
+const int item_flags[] = {
+	Qt::ItemIsSelectable,
+	Qt::ItemIsEditable,
+	Qt::ItemIsDragEnabled,
+	Qt::ItemIsDropEnabled,
+	Qt::ItemIsUserCheckable,
+	Qt::ItemIsEnabled,
+	Qt::ItemIsTristate
+};
+
+const char * const itemflags_tbl[] = {
+	"selectable",
+	"editable",
+	"dragEnabled",
+	"dropEnabled",
+	"userCheckable",
+	"enabled",
+	"tristate"
+};
+
+#define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
+
 
 
 /*
-	@doc: listviewitem
+	@doc: treewidgetitem
 	@keyterms:
-		listview listviewitem class
+		treewidget treewidgetitem class
 	@title:
-		listviewitem class
+		treewidgetitem class
 	@type:
 		class
 	@short:
-		A listviewitem class
+		A treewidgetitem class
 	@inherits:
-		[class]listviewitem[/class]
+		[class]treewidgetitem[/class]
 	@description:
-		The listviewitem class implements a list view item.
-		A list view item is a multi-column object capable of displaying itself in a [class]listview[/class].
-		To use this class you must instantiate it with another listviewitem or a [class]listview[/class]
+		The treewidgetitem class implements a list view item.
+		A list view item is a multi-column object capable of displaying itself in a [class]treewidget[/class].
+		To use this class you must instantiate it with another treewidgetitem or a [class]treewidget[/class]
 		as parent. The item will be automatically displayed.
 		You can set the text and a pixmap in each column and you can make it checkable
-		with [classfnc:listviewitem]$setCheckable[/classfnc]().
-		A checkable listviewitem will display a small check mark in the first column.
+		with [classfnc:treewidgetitem]$setCheckable[/classfnc]().
+		A checkable treewidgetitem will display a small check mark in the first column.
 	@functions:
 		!fn: $setText(<column:integer>,<text:string>)
 		Sets the text in column column to text, if column is a valid column number and text is different from the existing text.
@@ -85,90 +107,92 @@
 		Returns $true if this item is checkable and $false otherwise
 
 		!fn: $setChecked(<bChecked:boolean>)
-		Sets this item to be checked or not. [classfnc:listviewitem]$setCheckable[/classfnc]() must
+		Sets this item to be checked or not. [classfnc:treewidgetitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
 		!fn: $isChecked()
-		Returns the check status of this item. [classfnc:listviewitem]$setCheckable[/classfnc]() must
+		Returns the check status of this item. [classfnc:treewidgetitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
-		!fn: <listviewitem> $firstChild()
-		Returns the first child item of this listviewitem or $null if this item has no children.
+		!fn: <treewidgetitem> $firstChild()
+		Returns the first child item of this treewidgetitem or $null if this item has no children.
 
-		!fn: <listviewitem> $nextSibling()
-		Returns the next sibling item of this listviewitem or $null if there are no sibling items.
+		!fn: <treewidgetitem> $nextSibling()
+		Returns the next sibling item of this treewidgetitem or $null if there are no sibling items.
 		Next sibling stands for the item at the same tree level coming just after :)
 */
 
 
 //===========================================================================================
 
-KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listviewitem,"listviewitem","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setText",function_setText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"text",function_text)
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setPixmap",function_setPixmap);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setRenameEnabled",function_setRenameEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setEnabled",function_setEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"isEnabled",function_isEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setOpen",function_setOpen);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"isOpen",function_isOpen);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setCheckable",function_setCheckable);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"isCheckable",function_isCheckable);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"setChecked",function_setChecked);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"isChecked",function_isChecked);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"firstChild",function_firstChild);
-	KVSO_REGISTER_HANDLER(KviKvsObject_listviewitem,"nextSibling",function_nextSibling);
-KVSO_END_REGISTERCLASS(KviKvsObject_listviewitem)
+KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setText",function_setText)
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"text",function_text)
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setPixmap",function_setPixmap);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setRenameEnabled",function_setRenameEnabled);
+	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
+	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setOpen",function_setOpen);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isOpen",function_isOpen);
+	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
+	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setChecked",function_setChecked);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isChecked",function_isChecked);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"firstChild",function_firstChild);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setFlags",function_setFlags);
+
+	//	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
+KVSO_END_REGISTERCLASS(KviKvsObject_treewidgetitem)
 
 
-KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_listviewitem,KviKvsObject)
+KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_treewidgetitem,KviKvsObject)
 
 	m_pListViewItem = 0;
 
-KVSO_END_CONSTRUCTOR(KviKvsObject_listviewitem)
+KVSO_END_CONSTRUCTOR(KviKvsObject_treewidgetitem)
 
 
-KVSO_BEGIN_DESTRUCTOR(KviKvsObject_listviewitem)
+KVSO_BEGIN_DESTRUCTOR(KviKvsObject_treewidgetitem)
 
 	if(m_pListViewItem)delete m_pListViewItem;
 
-KVSO_END_CONSTRUCTOR(KviKvsObject_listviewitem)
+KVSO_END_CONSTRUCTOR(KviKvsObject_treewidgetitem)
 
-bool KviKvsObject_listviewitem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	if (!parentObject())
 	{
-			pContext->error(__tr2qs("The listviewitem cannot be parentless"));
+			pContext->error(__tr2qs("The treewidgetitem cannot be parentless"));
 			return false;
 	}
-	if(parentObject()->inherits("KviKvsObject_listviewitem"))
+	if(parentObject()->inherits("KviKvsObject_treewidgetitem"))
 	{
-		 m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviKvsObject_listviewitem *)parentObject())->m_pListViewItem);
+		 m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviKvsObject_treewidgetitem *)parentObject())->m_pListViewItem);
 	} else {
-		if(parentObject()->inherits("KviKvsObject_listview"))
-			m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviTalListView *)parentScriptWidget()));
+		if(parentObject()->inherits("KviKvsObject_treewidget"))
+			m_pListViewItem = new KviKvsMdmStandardListViewItem(this,((KviTalTreeWidget *)parentScriptWidget()));
 		else {
-			pContext->error(__tr2qs("The parent of the listviewitem must be either another listviewitem or a listview"));
+			pContext->error(__tr2qs("The parent of the treewidgetitem must be either another treewidgetitem or a treewidget"));
 			return false;
 		}
 	}
 	return true;
 }
 
-void KviKvsObject_listviewitem::childDestroyed()
+void KviKvsObject_treewidgetitem::childDestroyed()
 {
 	if(m_pListViewItem == 0)return;
 	m_pListViewItem = 0;
 	die();
 }
 
-KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par)
-:KviTalListViewItem(par), m_pMasterObject(ob)
+KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par)
+:KviTalTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
-KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par)
-:KviTalListViewItem(par), m_pMasterObject(ob)
+KviKvsMdmStandardListViewItem::KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par)
+:KviTalTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
@@ -176,15 +200,15 @@ KviKvsMdmStandardListViewItem::~KviKvsMdmStandardListViewItem()
 {
 	if(m_pMasterObject)m_pMasterObject->childDestroyed();
 }
+/*
 
 
-
-KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par)
+KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par)
 :KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
 
-KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par)
+KviKvsMdmCheckListViewItem::KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par)
 :KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
@@ -193,20 +217,21 @@ KviKvsMdmCheckListViewItem::~KviKvsMdmCheckListViewItem()
 {
 	if(m_pMasterObject)m_pMasterObject->childDestroyed();
 }
+*/
 
-
-kvs_hobject_t KviKvsObject_listviewitem::itemToHandle(KviTalListViewItem * it)
+kvs_hobject_t KviKvsObject_treewidgetitem::itemToHandle(KviTalTreeWidgetItem * it)
 {
 	if(!it)return (kvs_hobject_t)0;
-	KviKvsObject_listviewitem * pObject;
-	if(it->rtti() == 1)pObject = ((KviKvsMdmCheckListViewItem *)it)->masterObject();
-	else pObject = ((KviKvsMdmStandardListViewItem *)it)->masterObject();
+	KviKvsObject_treewidgetitem * pObject;
+//	if(it->rtti() == 1)pObject = ((KviKvsMdmCheckListViewItem *)it)->masterObject();
+//	else 
+	pObject = ((KviKvsMdmStandardListViewItem *)it)->masterObject();
 	if(!pObject)return (kvs_hobject_t)0;
 	return pObject->handle();
 }
 
 
-bool KviKvsObject_listviewitem::function_setText(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_setText(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol;
 	QString szText;
@@ -219,16 +244,16 @@ bool KviKvsObject_listviewitem::function_setText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_firstChild(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_firstChild(KviKvsObjectFunctionCall *c)
 {
 	if(m_pListViewItem)
-		c->returnValue()->setHObject(itemToHandle(m_pListViewItem->firstChild()));
+		c->returnValue()->setHObject(itemToHandle((KviTalTreeWidgetItem*)m_pListViewItem->child(0)));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
-
-bool KviKvsObject_listviewitem::function_nextSibling(KviKvsObjectFunctionCall *c)
+/*
+bool KviKvsObject_treewidgetitem::function_nextSibling(KviKvsObjectFunctionCall *c)
 {
 	if(m_pListViewItem)
 		c->returnValue()->setHObject(itemToHandle(m_pListViewItem->nextSibling()));
@@ -236,9 +261,9 @@ bool KviKvsObject_listviewitem::function_nextSibling(KviKvsObjectFunctionCall *c
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
+*/
 
-
-bool KviKvsObject_listviewitem::function_setRenameEnabled(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_setRenameEnabled(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol;
 	bool bEnabled;
@@ -247,11 +272,49 @@ bool KviKvsObject_listviewitem::function_setRenameEnabled(KviKvsObjectFunctionCa
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 		KVSO_PARAMETERS_END(c)
 	if(m_pListViewItem)
-		m_pListViewItem->setRenameEnabled(uCol,bEnabled);
+		m_pListViewItem->setFlags(m_pListViewItem->flags()|Qt::ItemIsEditable);
 	return true;
+
 }
 
-bool KviKvsObject_listviewitem::function_setEnabled(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_setFlags(KviKvsObjectFunctionCall *c)
+{
+	QStringList itemflags;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+	KVSO_PARAMETERS_END(c)
+	int flag,sum=0;
+	for ( int i=0;i<itemflags.count();i++)
+		{
+		
+			flag = 0;
+			for(unsigned int j = 0; j < itemflags_num; j++)
+			{
+				if(KviQString::equalCI(itemflags.at(i), itemflags_tbl[j]))
+				{
+					flag=item_flags[j];
+					break;
+				}
+			}
+			if(flag){
+				if (flag==Qt::ItemIsUserCheckable) 
+						m_pListViewItem->setCheckState(0,Qt::Unchecked);
+				sum = sum | flag;
+			}
+			else
+				c->warning(__tr2qs("Unknown item flag: %s"),&itemflags.at(i));
+				
+		}
+	if(m_pListViewItem)
+		m_pListViewItem->setFlags((Qt::ItemFlags)sum);
+	
+	return true;
+
+
+
+}
+/*
+bool KviKvsObject_treewidgetitem::function_setEnabled(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -262,7 +325,7 @@ bool KviKvsObject_listviewitem::function_setEnabled(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_isEnabled(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_isEnabled(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pListViewItem)
 	{
@@ -272,59 +335,60 @@ bool KviKvsObject_listviewitem::function_isEnabled(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setBoolean(m_pListViewItem->isEnabled());
 	return true;
 }
-
-bool KviKvsObject_listviewitem::function_setOpen(KviKvsObjectFunctionCall *c)
+*/
+bool KviKvsObject_treewidgetitem::function_setOpen(KviKvsObjectFunctionCall *c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(m_pListViewItem)
-		m_pListViewItem->setOpen(bEnabled);
+		m_pListViewItem->setExpanded(bEnabled);
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_isOpen(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_isOpen(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pListViewItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pListViewItem->isOpen());
+	c->returnValue()->setBoolean(m_pListViewItem->isExpanded());
 	return true;
 }
 
 
-bool KviKvsObject_listviewitem::function_setChecked(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_setChecked(KviKvsObjectFunctionCall *c)
 {
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pListViewItem)return true;
-	if(m_pListViewItem->rtti() != 1)return true; // not a QCheckListItem
-	((KviKvsMdmCheckListViewItem *)m_pListViewItem)->setOn(bChecked);
+//	if(m_pListViewItem->rtti() != 1)return true; // not a QCheckListItem
+	((KviTalTreeWidgetItem *)m_pListViewItem)->setCheckState(0,bChecked?Qt::Checked:Qt::Unchecked);
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_isChecked(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_isChecked(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pListViewItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	if(m_pListViewItem->rtti() != 1)
+	/*if(m_pListViewItem->rtti() != 1)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(((KviKvsMdmCheckListViewItem *)m_pListViewItem)->isOn());
+	*/
+	c->returnValue()->setBoolean(((KviTalTreeWidgetItem *)m_pListViewItem)->checkState(0)==Qt::Checked?1:0);
 	return true;
 }
-
-bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *c)
+/*
+bool KviKvsObject_treewidgetitem::function_setCheckable(KviKvsObjectFunctionCall *c)
 {
 	bool bCheckable;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -334,10 +398,10 @@ bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *
 	if(bCheckable)
 	{
 		if(m_pListViewItem->rtti() == 1)return true; // a QCheckListItem already
-		KviTalListViewItem * pParent = m_pListViewItem->parent();
-		KviTalListView * pLV = (KviTalListView *)m_pListViewItem->listView();
+		KviTalTreeWidgetItem * pParent = m_pListViewItem->parent();
+		KviTalTreeWidget * pLV = (KviTalTreeWidget *)m_pListViewItem->listView();
 		// swap the items, so we don't die now
-		KviTalListViewItem * pThis = m_pListViewItem;
+		KviTalTreeWidgetItem * pThis = m_pListViewItem;
 		m_pListViewItem = 0;
 		delete pThis;
 		if(pParent)
@@ -346,10 +410,10 @@ bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *
 			m_pListViewItem = new KviKvsMdmCheckListViewItem(this,pLV);
 	} else {
 		if(m_pListViewItem->rtti() != 1)return true; // not a QCheckListItem yet
-		KviTalListViewItem * pParent = m_pListViewItem->parent();
-		KviTalListView * pLV = (KviTalListView *)m_pListViewItem->listView();
+		KviTalTreeWidgetItem * pParent = m_pListViewItem->parent();
+		KviTalTreeWidget * pLV = (KviTalTreeWidget *)m_pListViewItem->listView();
 		// swap the items, so we don't die now
-		KviTalListViewItem * pThis = m_pListViewItem;
+		KviTalTreeWidgetItem * pThis = m_pListViewItem;
 		m_pListViewItem = 0;
 		delete pThis;
 		if(pParent)
@@ -360,7 +424,7 @@ bool KviKvsObject_listviewitem::function_setCheckable(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_isCheckable(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_isCheckable(KviKvsObjectFunctionCall *c)
 {
 	if(!m_pListViewItem)
 	{
@@ -370,8 +434,8 @@ bool KviKvsObject_listviewitem::function_isCheckable(KviKvsObjectFunctionCall *c
 	c->returnValue()->setBoolean(m_pListViewItem->rtti() == 1);
 	return true;
 }
-
-bool KviKvsObject_listviewitem::function_text(KviKvsObjectFunctionCall *c)
+*/
+bool KviKvsObject_treewidgetitem::function_text(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -382,7 +446,7 @@ bool KviKvsObject_listviewitem::function_text(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidgetitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol;
 	KviKvsObject *obPixmap;
@@ -413,7 +477,7 @@ bool KviKvsObject_listviewitem::function_setPixmap(KviKvsObjectFunctionCall *c)
 			return true;
 		}
 	}
-	m_pListViewItem->setPixmap(uCol,*pix);
+	m_pListViewItem->setIcon(uCol,QIcon(*pix));
 	return true;
 }
 

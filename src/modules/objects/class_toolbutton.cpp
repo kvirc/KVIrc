@@ -70,11 +70,6 @@
 		Sets whether the tool button is on to the bool value: 1 enable, 0 disable.
 		// findme
 		!fn:$setPopup (<toolbutton:object>)
-		!fn:$setPopupDelay (<int delay>)
-		Sets the time delay between pressing the button and the appearance of the associated popup menu in milliseconds to delay.[br]
-		A good value is 100.
-		!fn:<integer> $pupupDelay()
-		Returns the time delay between pressing the button and the appearance of the associated popup menu in milliseconds.
 		!fn:$openPopup()
 		Opens the associated popup menu. If there is no such menu, this function does nothing.
 		!fn:setTextPosition(<text_position:string>)
@@ -93,6 +88,14 @@
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().[br]
 */
 
+// we should remove these functions?
+/*
+	!fn:$setPopupDelay (<int delay>)
+		Sets the time delay between pressing the button and the appearance of the associated popup menu in milliseconds to delay.[br]
+		A good value is 100.
+		!fn:<integer> $pupupDelay()
+		Returns the time delay between pressing the button and the appearance of the associated popup menu in milliseconds.
+*/ 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setImage", functionsetImage)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setUsesBigPixmap", functionsetUsesBigPixmap)
@@ -109,9 +112,11 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setToggleButton", functionsetToggleButton)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"toggle", functiontoggle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setOn", functionsetOn)
-
+/*
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setPopupDelay", functionsetPopupDelay)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"popupDelay", functionpopupDelay)
+	*/
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setTextPosition", functionsetTextPosition)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"textPosition", functiontextPosition)
 
@@ -156,13 +161,13 @@ bool KviKvsObject_toolbutton::functionsetUsesBigPixmap(KviKvsObjectFunctionCall 
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setUsesBigPixmap(bEnabled);
+		((QToolButton *)widget())->setIconSize(bEnabled?QSize(32,32):QSize(22,22));
 	return true;
 }
 bool KviKvsObject_toolbutton::functionusesBigPixmap(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->usesBigPixmap());
+		c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
 	return true;
 }
 bool KviKvsObject_toolbutton::functionsetUsesTextLabel(KviKvsObjectFunctionCall *c)
@@ -172,13 +177,13 @@ bool KviKvsObject_toolbutton::functionsetUsesTextLabel(KviKvsObjectFunctionCall 
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setUsesTextLabel(bEnabled);
+		((QToolButton *)widget())->setToolButtonStyle(bEnabled?Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
 	return true;
 }
 bool KviKvsObject_toolbutton::functionusesTextLabel(KviKvsObjectFunctionCall *c)
 {
 	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->usesTextLabel());
+		c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
 	return true;
 }
 bool KviKvsObject_toolbutton::function_setAutoRaise(KviKvsObjectFunctionCall *c)
@@ -204,7 +209,7 @@ bool KviKvsObject_toolbutton::functionsetOn(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
-		((QToolButton *)widget())->setOn(bEnabled);
+		((QToolButton *)widget())->setChecked(bEnabled);
 	return true;
 }
 
@@ -276,6 +281,7 @@ bool KviKvsObject_toolbutton::functionopenPopup(KviKvsObjectFunctionCall *c)
 		((QToolButton *)widget())->showMenu();
 	return true;
 }
+/*
 bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
 {
 	kvs_int_t uDelay;
@@ -292,6 +298,7 @@ bool KviKvsObject_toolbutton::functionpopupDelay(KviKvsObjectFunctionCall *c)
 		c->returnValue()->setInteger(((QToolButton *)widget())->popupDelay());
 	return true;
 }
+*/
 bool KviKvsObject_toolbutton::functionsetTextPosition(KviKvsObjectFunctionCall *c)
 {
 	QString szPos;

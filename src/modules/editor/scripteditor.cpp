@@ -88,6 +88,7 @@ KviCompletionBox::KviCompletionBox(QTextEdit * parent = 0)
 
 void KviCompletionBox::updateContents(QString buffer)
 {
+	return;
 	//buffer=buffer.trimmed();
 	KviPointerList<QString> *list;
 	clear();
@@ -227,7 +228,7 @@ void KviScriptEditorWidgetColorOptions::okClicked()
 KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 : QTextEdit(pParent)
 {
-	
+	setTabStopWidth(48);
 	setWordWrapMode(QTextOption::NoWrap);
 	m_pParent=pParent;
 	m_szHelp="Nothing";
@@ -539,8 +540,8 @@ void KviScriptEditorWidget::completition(bool bCanComplete)
 		else completelistbox->resize(completelistbox->width(),6*completelistbox->fontMetrics().height()+20);
 //		int posy=paragraphRect(line).bottom();
 //		int posx=fontMetrics().width(this->text(line).left(index));
-		completelistbox->move(0,0);
-		completelistbox->show();
+//		completelistbox->move(0,0);
+//		completelistbox->show();
 	}
 
 }
@@ -1081,7 +1082,7 @@ void KviScriptEditorImplementation::setText(const QString &txt)
 {
 	m_pEditor->setText(txt);
 //	m_pEditor->setTextFormat(Qt::PlainText);
-	m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
+	m_pEditor->textCursor().movePosition(QTextCursor::End);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }

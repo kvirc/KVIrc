@@ -107,8 +107,8 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_pixmap::unregisterSelf();
 	KviKvsObject_painter::unregisterSelf();
 	KviKvsObject_mainwindow::unregisterSelf();
-	KviKvsObject_listviewitem::unregisterSelf();
-	KviKvsObject_listview::unregisterSelf();
+	KviKvsObject_treewidgetitem::unregisterSelf();
+	KviKvsObject_treewidget::unregisterSelf();
 	KviKvsObject_listbox::unregisterSelf();
 	KviKvsObject_combobox::unregisterSelf();
 	KviKvsObject_workspace::unregisterSelf();
@@ -968,8 +968,8 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_workspace::registerSelf();
 	KviKvsObject_combobox::registerSelf();
 	KviKvsObject_listbox::registerSelf();
-	KviKvsObject_listview::registerSelf();
-	KviKvsObject_listviewitem::registerSelf();
+	KviKvsObject_treewidget::registerSelf();
+	KviKvsObject_treewidgetitem::registerSelf();
 	KviKvsObject_mainwindow::registerSelf();
 	KviKvsObject_painter::registerSelf();
 	KviKvsObject_pixmap::registerSelf();

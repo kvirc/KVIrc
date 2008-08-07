@@ -70,6 +70,6 @@ bool KviKvsObject_menubar::functionInsertItem(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_STRING,0,szItem)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QMenuBar *)widget())->insertItem(szItem);
+	if (widget()) ((QMenuBar *)widget())->addAction(szItem);
 	return true;
 }

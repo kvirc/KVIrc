@@ -2,7 +2,7 @@
 #define	_CLASS_LISTVIEW_H_
 //=================================================================================
 //
-//   File : class_listview.h
+//   File : class_treewidget.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
@@ -26,21 +26,21 @@
 //
 //=================================================================================
 
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "class_widget.h"
 #include "class_listviewitem.h"
 
 #include "object_macros.h"
 
-class KviKvsObject_listview : public KviKvsObject_widget
+class KviKvsObject_treewidget : public KviKvsObject_widget
 {
 	Q_OBJECT
 public:
-	KVSO_DECLARE_OBJECT(KviKvsObject_listview)
+	KVSO_DECLARE_OBJECT(KviKvsObject_treewidget)
 
 public:
 	QWidget * widget() { return (QWidget *)object(); };
-	void fileDropped(QString &,KviTalListViewItem *);
+	void fileDropped(QString &,KviTalTreeWidgetItem *);
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
@@ -54,48 +54,49 @@ protected:
 	bool function_itemClickedEvent(KviKvsObjectFunctionCall *c);
 	bool function_selectionChangedEvent(KviKvsObjectFunctionCall *c);
 	bool function_currentChangedEvent(KviKvsObjectFunctionCall *c);
-	bool function_returnPressedEvent(KviKvsObjectFunctionCall *c);
-	bool function_spacePressedEvent(KviKvsObjectFunctionCall *c);
+	bool function_itemActivatedEvent(KviKvsObjectFunctionCall *c);
 	bool function_onItemEvent(KviKvsObjectFunctionCall *c);
 	bool function_itemExpandedEvent(KviKvsObjectFunctionCall *c);
 	bool function_itemCollapsedEvent(KviKvsObjectFunctionCall *c);
-	bool function_itemRenamedEvent(KviKvsObjectFunctionCall *c);
+	bool function_itemChangedEvent(KviKvsObjectFunctionCall *c);
 	bool function_rightButtonClickedEvent(KviKvsObjectFunctionCall *c);
-	bool function_selectedItem(KviKvsObjectFunctionCall *c);
+	bool function_selectedItems(KviKvsObjectFunctionCall *c);
 	bool function_currentItem(KviKvsObjectFunctionCall *c);
 	bool function_setSelectionMode(KviKvsObjectFunctionCall *c);
 	bool function_firstChild(KviKvsObjectFunctionCall *c);
 	bool function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c);
 	bool function_showListViewHeader(KviKvsObjectFunctionCall *c);
 	bool function_hideListViewHeader(KviKvsObjectFunctionCall *c);
-
 	bool function_setAcceptDrops(KviKvsObjectFunctionCall *c);
+	bool function_setHeaderLabels(KviKvsObjectFunctionCall *c);
+	bool function_setColumnCount(KviKvsObjectFunctionCall *c);
+
 
 protected slots:
-	void slotClicked(KviTalListViewItem *);
-	void slotSelectionChanged(KviTalListViewItem *);
-	void slotMultipleSelectionChanged();
-	void slotCurrentChanged(KviTalListViewItem *);
-	void slotReturnPressed(KviTalListViewItem *);
-	void slotSpacePressed(KviTalListViewItem *);
-	void slotOnItem(KviTalListViewItem *);
-	void slotItemExpanded(KviTalListViewItem *);
-	void slotItemCollapsed(KviTalListViewItem *);
-	void slotItemRenamed(KviTalListViewItem *,int,const QString &);
-	void slotRightButtonClicked(KviTalListViewItem * i,const QPoint &coor, int col);
+	void slotClicked(KviTalTreeWidgetItem *,int);
+	void customContextMenuRequested(const QPoint &pnt);
+	void slotSelectionChanged();
+	void slotCurrentChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
+	void slotItemActivated(KviTalTreeWidgetItem *,int col);
+	void slotOnItemEntered(KviTalTreeWidgetItem *,int col);
+	void slotItemExpanded(KviTalTreeWidgetItem *);
+	void slotItemCollapsed(KviTalTreeWidgetItem *);
+	void slotItemChanged(KviTalTreeWidgetItem *,int);
 };
 
-class KviKvsMdmListView :  public KviTalListView
+class KviKvsMdmListView :  public KviTalTreeWidget
 {
 	Q_OBJECT
 public:
-	KviKvsMdmListView(QWidget * par,const char * name,KviKvsObject_listview *);
+	KviKvsMdmListView(QWidget * par,const char * name,KviKvsObject_treewidget *);
 
 	virtual ~KviKvsMdmListView();
 protected:
-	KviKvsObject_listview *m_pParentScript;
-	void contentsDropEvent(QDropEvent *e);
-	void contentsDragEnterEvent( QDragEnterEvent *e );
+	KviKvsObject_treewidget *m_pParentScript;
+	void dropEvent(QDropEvent *e);
+	void dragEnterEvent( QDragEnterEvent *e );
+	
+
 
 };
 #endif	//!_CLASS_LISTVIEW_H_

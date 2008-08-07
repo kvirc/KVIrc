@@ -22,21 +22,21 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "class_widget.h"
 
 
 
 #include "object_macros.h"
 
-class KviKvsObject_listviewitem : public KviKvsObject
+class KviKvsObject_treewidgetitem : public KviKvsObject
 {
 	Q_OBJECT
 public:
-	KVSO_DECLARE_OBJECT(KviKvsObject_listviewitem)
+	KVSO_DECLARE_OBJECT(KviKvsObject_treewidgetitem)
 	void childDestroyed();
 protected:
-	KviTalListViewItem * m_pListViewItem;
+	KviTalTreeWidgetItem * m_pListViewItem;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
@@ -54,35 +54,37 @@ protected:
 	bool function_setChecked(KviKvsObjectFunctionCall *c);
 	bool function_isChecked(KviKvsObjectFunctionCall *c);
 	bool function_firstChild(KviKvsObjectFunctionCall *c);
-	bool function_nextSibling(KviKvsObjectFunctionCall *c);
+	//bool function_nextSibling(KviKvsObjectFunctionCall *c);
+	bool function_setFlags(KviKvsObjectFunctionCall *c);
+
 public:
-	static kvs_hobject_t itemToHandle(KviTalListViewItem * it);
+	static kvs_hobject_t itemToHandle(KviTalTreeWidgetItem * it);
 };
 
 
 
-class KviKvsMdmStandardListViewItem : public KviTalListViewItem
+class KviKvsMdmStandardListViewItem : public KviTalTreeWidgetItem
 {
 public:
-	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par);
-	KviKvsMdmStandardListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par);
+	KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
+	KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
 	virtual ~KviKvsMdmStandardListViewItem();
 protected:
-	KviKvsObject_listviewitem * m_pMasterObject;
+	KviKvsObject_treewidgetitem * m_pMasterObject;
 public:
-	KviKvsObject_listviewitem * masterObject(){ return m_pMasterObject; }
+	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
 };
-
+/*
 class KviKvsMdmCheckListViewItem : public KviTalCheckListItem
 {
 public:
-	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListView * par);
-	KviKvsMdmCheckListViewItem(KviKvsObject_listviewitem * ob,KviTalListViewItem * par);
+	KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
+	KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
 	virtual ~KviKvsMdmCheckListViewItem();
 protected:
-	KviKvsObject_listviewitem * m_pMasterObject;
+	KviKvsObject_treewidgetitem * m_pMasterObject;
 public:
-	KviKvsObject_listviewitem * masterObject(){ return m_pMasterObject; }
+	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
 };
-
+*/
 #endif	// !_CLASS_LISTVIEWITEM_H_
