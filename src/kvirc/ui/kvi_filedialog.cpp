@@ -128,6 +128,9 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
 	d->setCaption(caption);
 	d->setMode(QFileDialog::AnyFile);
+	#ifdef COMPILE_KDE_SUPPORT
+	d->setKeepLocation(true);
+	#endif
 	//d->setShowHiddenFiles(showHidden);
 
 	while(d->exec() == QDialog::Accepted)
