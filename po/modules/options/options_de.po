@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-08 20:23+0200\n"
-"PO-Revision-Date: 2008-08-03 02:21+0200\n"
+"PO-Revision-Date: 2008-08-08 20:43+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,6 @@ msgid " msec"
 msgstr " ms"
 
 #: src/modules/options/optw_ircview.cpp:177
-#, fuzzy
 msgid " pixels"
 msgstr "Pixel"
 
@@ -111,8 +110,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:55
 msgid "<b>file://</b> handler command:"
@@ -244,8 +242,7 @@ msgstr ""
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1169
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -393,8 +390,7 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: src/modules/options/optw_connection.cpp:152
 msgid ""
@@ -898,8 +894,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1143
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1108,8 +1103,7 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -2088,15 +2082,15 @@ msgstr "DCC/TDCC"
 
 #: src/modules/options/optw_ircview.cpp:189
 msgid "DashDotDotLine"
-msgstr ""
+msgstr "Strich-Punkt-Punkt-Linie"
 
 #: src/modules/options/optw_ircview.cpp:188
 msgid "DashDotLine"
-msgstr ""
+msgstr "Strich-Punkt-Linie"
 
 #: src/modules/options/optw_ircview.cpp:186
 msgid "DashLine"
-msgstr ""
+msgstr "gestrichelte Linie"
 
 #: src/modules/options/optw_servers.cpp:748
 msgid "Default"
@@ -2192,7 +2186,7 @@ msgstr "Keine Farben in Benutzernachrichten anzeigen"
 
 #: src/modules/options/optw_ircview.cpp:185
 msgid "DotLine"
-msgstr ""
+msgstr "gepunktete Linie"
 
 #: src/modules/options/optw_userlist.cpp:95
 msgid "Dotted Grid"
@@ -2267,8 +2261,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:121
 msgid "Enable notifier window fade effect"
@@ -2830,24 +2823,20 @@ msgstr ""
 "wenn der Cursor ein paar Sekunden über dem Label steht."
 
 #: src/modules/options/optw_ircview.h:83
-#, fuzzy
 msgid "Marker"
-msgstr "Parser"
+msgstr "Markierung"
 
 #: src/modules/options/optw_ircview.cpp:174
-#, fuzzy
 msgid "Marker color:"
-msgstr "Hintergrundfarbe:"
+msgstr "Markierungsfarbe:"
 
 #: src/modules/options/optw_ircview.cpp:176
-#, fuzzy
 msgid "Marker size:"
-msgstr "Paketgrösse:"
+msgstr "Markierungsgröße:"
 
 #: src/modules/options/optw_ircview.cpp:179
-#, fuzzy
 msgid "Marker style:"
-msgstr "Nachrichtenstil"
+msgstr "Markierungsstil:"
 
 #: src/modules/options/optw_connection.cpp:77
 msgid "Maximum attempts (0: unlimited):"
@@ -3379,8 +3368,7 @@ msgstr "Proxy:"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: src/modules/options/optw_query.h:28
 msgid "Query"
@@ -3735,12 +3723,11 @@ msgstr "Socket"
 
 #: src/modules/options/optw_ircview.cpp:187
 msgid "SolidLine"
-msgstr ""
+msgstr "durchgezogene Linie"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr ""
-"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: src/modules/options/optw_taskbar.cpp:38
 msgid "Sort windows by name"
@@ -3813,8 +3800,7 @@ msgstr "De Spitznamen-Feld darf nicht leer sein!"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3844,8 +3830,7 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -3887,8 +3872,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -13798,3 +13782,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
