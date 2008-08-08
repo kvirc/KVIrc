@@ -3125,23 +3125,33 @@ channel
 			Triggered when ircd sets a registered user mode.
 	*/
         EVENT("OnNickServAuth",""),
-        /*
-                @doc: onmeaction
-                @type:
-                        event
-                @title:
-                        OnMeAction
-                @short:
-                        User issued a CTCP ACTION
-                @parameters:
-                        $0 = action message text
-                @window:
-                        Channels and query windows
-                @description:
-                        This event is triggered when user issues a CTCP ACTION.[br]
-                        (The CTCP ACTION is usually triggered by the /me command).[br]
+	/*
+		@doc: onmeaction
+		@type:
+			event
+		@title:
+			OnMeAction
+		@short:
+			User issued a CTCP ACTION
+		@parameters:
+			$0 = action message text
+			$1 = action target (channel or nickname)
+		@window:
+			Channels and query windows
+		@description:
+			This event is triggered when user issues a CTCP ACTION.[br]
+			(The CTCP ACTION is usually triggered by the /me command).[br]
+			Warning: don't use a /me inside this event handler, or you'll get an infinite recursion.
+			If you need to halt the action (eg. to do some text substitution), follow the example code.
+		@examples:
+			[example]
+				ctcp $1 action "this text was changed in scripting, old one was $0";
+				echo -i=$msgtype(action) -w=$active "$me this text was changed in scripting, old one was $0";
+				halt;
+			[/example]
+
         */
 
-        EVENT("OnMeAction","$0 = action message text")
+        EVENT("OnMeAction","$0 = action message text\n$1 = action target")
 };
 
